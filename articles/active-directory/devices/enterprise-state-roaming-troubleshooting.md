@@ -1,6 +1,6 @@
 ---
 title: Problemen met Enterprise State Roaming in Azure Active Directory oplossen
-description: Geeft antwoorden op een aantal vragen die IT-beheerders kunnen hebben over instellingen en het synchroniseren van app-gegevens.
+description: Hier vindt u antwoorden op enkele vragen die beheerders kunnen hebben over instellingen en app-gegevens synchronisatie.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,174 +12,174 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672354"
 ---
-# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problemen met de roaming-instellingen voor bedrijfsstatus in Azure Active Directory oplossen
+# <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problemen met Enterprise State Roaming instellingen in Azure Active Directory oplossen
 
-In dit onderwerp vindt u informatie over het oplossen en diagnosticeren van problemen met Enterprise State Roaming en wordt een lijst met bekende problemen weergegeven.
+In dit onderwerp vindt u informatie over het oplossen en diagnosticeren van problemen met Enterprise State Roaming en vindt u een lijst met bekende problemen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Dit artikel is van toepassing op de Microsoft Edge Legacy HTML-gebaseerde browser die in juli 2015 met Windows 10 is gelanceerd. Het artikel is niet van toepassing op de nieuwe Microsoft Edge Chromium-gebaseerde browser uitgebracht op 15 januari 2020. Zie het artikel Microsoft Edge Sync voor meer informatie over het gedrag Synchroniseren voor de nieuwe Microsoft [Edge.](/deployedge/microsoft-edge-enterprise-sync)
+> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Voorbereidende stappen voor het oplossen van problemen 
 
-Voordat u begint met het oplossen van problemen, controleert u of de gebruiker en het apparaat correct zijn geconfigureerd en of aan alle vereisten van Enterprise State Roaming is voldaan door het apparaat en de gebruiker. 
+Voordat u begint met het oplossen van problemen, controleert u of de gebruiker en het apparaat correct zijn geconfigureerd en of het apparaat en de gebruiker voldoen aan de vereisten van Enterprise State Roaming. 
 
-1. Windows 10, met de nieuwste updates, en een minimum versie 1511 (OS Build 10586 of hoger) is geïnstalleerd op het apparaat. 
-1. Het apparaat is Azure AD lid geworden of hybride Azure AD toegetreden. Zie voor meer informatie [hoe u een apparaat onder de controle van Azure AD krijgt.](overview.md)
-1. Controleer of **Enterprise State Roaming** is ingeschakeld voor de tenant in Azure AD, zoals beschreven in Enterprise State [Roaming](enterprise-state-roaming-enable.md)inschakelen . U roaming inschakelen voor alle gebruikers of voor slechts een geselecteerde groep gebruikers.
-1. De gebruiker krijgt een Azure Active Directory Premium-licentie toegewezen.  
-1. Het apparaat moet opnieuw worden opgestart en de gebruiker moet zich opnieuw aanmelden om toegang te krijgen tot enterprise state roaming-functies.
+1. Windows 10, met de meest recente updates en een minimum versie 1511 (OS Build 10586 of hoger) is geïnstalleerd op het apparaat. 
+1. Het apparaat is toegevoegd aan Azure AD of hybride Azure AD. Zie [een apparaat verkrijgen onder het beheer van Azure AD](overview.md)voor meer informatie.
+1. Zorg ervoor dat **Enterprise State roaming** is ingeschakeld voor de Tenant in azure AD, zoals wordt beschreven in [om Enterprise State roaming in te scha kelen](enterprise-state-roaming-enable.md). U kunt roaming inschakelen voor alle gebruikers of voor alleen een geselecteerde groep gebruikers.
+1. Aan de gebruiker is een Azure Active Directory Premium-licentie toegewezen.  
+1. Het apparaat moet opnieuw worden opgestart en de gebruiker moet zich opnieuw aanmelden om toegang te krijgen tot Enterprise State Roaming functies.
 
 ## <a name="information-to-include-when-you-need-help"></a>Benodigde informatie om snel te worden geholpen
-Als u uw probleem niet oplossen met de onderstaande richtlijnen, u contact opnemen met onze ondersteuningstechnici. Wanneer u contact met hen opneemt, moet u de volgende informatie opnemen:
+Als u het probleem niet kunt oplossen met de onderstaande instructies, neemt u contact op met onze ondersteunings medewerkers. Wanneer u contact met hen opneemt, neemt u de volgende informatie op:
 
-* **Algemene beschrijving van de fout:** Zijn er foutmeldingen gezien door de gebruiker? Als er geen foutmelding is geweest, beschrijf dan het onverwachte gedrag dat u opmerkte, in detail. Welke functies zijn ingeschakeld voor synchronisatie en wat verwacht de gebruiker te synchroniseren? Zijn meerdere functies niet synchroniseren of is het geïsoleerd om een?
-* **Getroffen gebruikers** : werkt/mislukt de synchronisatie voor één gebruiker of meerdere gebruikers? Om hoeveel apparaten gaat het per gebruiker? Zijn ze allemaal niet synchroniseren of zijn sommige van hen synchroniseren en sommige niet synchroniseren?
-* **Informatie over de gebruiker** : welke identiteit gebruikt de gebruiker om zich aan te melden bij het apparaat? Hoe meldt de gebruiker zich bij het apparaat? Maken ze deel uit van een geselecteerde beveiligingsgroep die mag synchroniseren? 
-* **Informatie over het apparaat** : is dit apparaat dat is aangesloten bij Azure AD of met een domein verbonden? Op welke build staat het apparaat? Wat zijn de meest recente updates?
-* **Datum / Tijd / Tijdzone** - Wat was de precieze datum en tijd zag je de fout (inclusief de tijdzone)?
+* **Algemene beschrijving van de fout**: zijn er fout berichten die door de gebruiker worden weer gegeven? Als er geen fout bericht wordt weer gegeven, beschrijf dan het onverwachte gedrag dat u in detail hebt gezien. Welke functies zijn ingeschakeld voor synchronisatie en wat is de verwachte synchronisatie van de gebruiker? Worden er meerdere functies die niet worden gesynchroniseerd of zijn ze geïsoleerd voor één?
+* **Betrokken gebruikers** : is synchroniseren/mislukken voor één gebruiker of meerdere gebruikers? Hoeveel apparaten zijn er betrokken bij per gebruiker? Zijn ze niet synchroon of worden ze gesynchroniseerd en worden sommige niet gesynchroniseerd?
+* **Informatie over de gebruiker** : welke identiteit is de gebruiker die wordt gebruikt om u aan te melden bij het apparaat? Hoe wordt de gebruiker aangemeld bij het apparaat? Zijn ze onderdeel van een geselecteerde beveiligings groep die kan worden gesynchroniseerd? 
+* **Informatie over het apparaat** : dit apparaat is lid van Azure AD en is lid van een domein? Welke build is het apparaat? Wat zijn de meest recente updates?
+* **Datum/tijd/tijds zone** – wat is de exacte datum en tijd waarop u de fout hebt gezien (Neem de tijd zone op)?
 
-Het opnemen van deze informatie helpt ons om uw probleem zo snel mogelijk op te lossen.
+Met inbegrip van deze informatie kan ons uw probleem zo snel mogelijk oplossen.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Het oplossen en diagnosticeren van problemen
 
-In dit gedeelte vindt u suggesties voor het oplossen en diagnosticeren van problemen in verband met Enterprise State Roaming.
+In deze sectie vindt u meer informatie over het oplossen van problemen met Enterprise State Roaming.
 
-## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Synchronisatie verifiëren en de instellingenpagina 'Uw instellingen synchroniseren' 
+## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Controleer de synchronisatie en de instellingen pagina uw instellingen synchroniseren 
 
-1. Nadat u uw Windows 10-pc hebt aangesloten bij een domein dat is geconfigureerd om Enterprise State Roaming toe te staan, meldt u zich aan met uw werkaccount. Ga naar **Instellingen** > **Accounts** > **Synchroniseer je instellingen** en bevestig dat de synchronisatie en de afzonderlijke instellingen zijn ingeschakeld en dat de bovenkant van de instellingenpagina aangeeft dat je synchroniseert met je werkaccount. Controleer of hetzelfde account ook wordt gebruikt als je aanmeldingsaccount in **Instellingen** > **accounts** > **Je Gegevens**. 
-1. Controleer of synchronisatie werkt op meerdere machines door enkele wijzigingen aan te brengen op de oorspronkelijke machine, zoals het verplaatsen van de taakbalk naar de rechter- of bovenzijde van het scherm. Bekijk hoe de wijziging zich binnen vijf minuten voortplant naar de tweede machine. 
+1. Nadat u uw Windows 10-PC hebt toegevoegd aan een domein dat is geconfigureerd om Enterprise State Roaming toe te staan, meldt u zich aan met uw werk account. Ga naar **instellingen** > **accounts** > **Synchroniseer uw instellingen** en controleer of de synchronisatie en de afzonderlijke instellingen zijn ingeschakeld en of de bovenkant van de pagina instellingen aangeeft dat u synchroniseert met uw werk account. Bevestig dat hetzelfde account ook wordt gebruikt als uw aanmeldings account in **instellingen** > **accounts** > **uw gegevens**. 
+1. Controleer of de synchronisatie werkt op meerdere computers door enkele wijzigingen aan te brengen op de oorspronkelijke computer, zoals het verplaatsen van de taak balk naar de rechter-of bovenkant van het scherm. Bekijk de wijziging in de tweede computer binnen vijf minuten. 
 
-   * Het vergrendelen en ontgrendelen van het scherm (Win + L) kan helpen bij het activeren van een synchronisatie.
-   * U moet zich aanmelden met hetzelfde account op beide pc's voor synchronisatie naar werk , omdat Enterprise State Roaming is gekoppeld aan het gebruikersaccount en niet aan het machineaccount.
+   * Het vergren delen en ontgrendelen van het scherm (Win + L) kan helpen bij het activeren van een synchronisatie.
+   * U moet zich op beide Pc's aanmelden met hetzelfde account als Enterprise State Roaming is gekoppeld aan het gebruikers account en niet op het computer account.
 
-**Mogelijk probleem:** als de besturingselementen op de pagina **Instellingen** niet beschikbaar zijn en u het bericht 'Sommige Windows-functies zijn alleen beschikbaar als u een Microsoft-account of werkaccount gebruikt'. Dit probleem kan zich voordoen voor apparaten die zijn ingesteld om te worden samengevoegd en geregistreerd bij Azure AD, maar het apparaat is nog niet geverifieerd naar Azure AD. Een mogelijke oorzaak is dat het apparaatbeleid moet worden toegepast, maar deze toepassing gebeurt asynchroon en kan met een paar uur worden vertraagd. 
+**Mogelijk probleem**: als de besturings elementen op de pagina **instellingen** niet beschikbaar zijn en u het bericht ' sommige Windows-onderdelen zijn alleen beschikbaar als u een Microsoft-account of een werk account gebruikt ' ziet. Dit probleem kan zich voordoen voor apparaten die zijn ingesteld om te worden toegevoegd aan een domein en die zijn geregistreerd bij Azure AD, maar het apparaat is nog niet met succes geverifieerd naar Azure AD. Een mogelijke oorzaak is dat het apparaatbeleid moet worden toegepast, maar deze toepassing wordt asynchroon uitgevoerd en kan enkele uren worden uitgesteld. 
 
-### <a name="verify-the-device-registration-status"></a>De registratiestatus van het apparaat controleren
+### <a name="verify-the-device-registration-status"></a>De registratie status van het apparaat controleren
 
-Enterprise State Roaming vereist dat het apparaat is geregistreerd bij Azure AD. Hoewel niet specifiek voor Enterprise State Roaming, kan het volgen van de onderstaande instructies helpen bevestigen dat de Windows 10-client is geregistreerd en duimafdruk, URL van Azure AD-instellingen, NGC-status en andere informatie bevestigen.
+Enterprise State Roaming vereist dat het apparaat wordt geregistreerd bij Azure AD. Hoewel het niet specifiek is voor Enterprise State Roaming, kunt u aan de hand van de onderstaande instructies controleren of de Windows 10-client is geregistreerd en bevestigen de vinger afdruk, URL van Azure AD-instellingen, NGC-status en andere informatie.
 
-1. Open de opdrachtprompt niet-verhoogd. Open hiervoor de startlauncher (Win + R) en typ 'cmd' om te openen in Windows.
-1. Zodra de opdrachtprompt is geopend, typt u "*dsregcmd.exe /status*".
-1. Voor de verwachte uitvoer moet de veldwaarde **AzureAdJoined** 'JA' zijn, de veldwaarde **Van WamDefaultSet** moet 'JA' zijn en moet de **veldwaarde WamDefaultGUID** aan het einde een GUID zijn met '(AzureAd)'.
+1. Open de opdracht prompt zonder verhoogde bevoegdheden. Als u dit wilt doen in Windows, opent u het start programma (Win + R) en typt u cmd om te openen.
+1. Zodra de opdracht prompt is geopend, typt u "*dsregcmd. exe/status*".
+1. Voor de verwachte uitvoer moet de waarde van het veld **AzureAdJoined** ' Yes ' zijn, **WamDefaultSet** veld waarde moet ' Yes ' zijn en de waarde van het **WAMDEFAULTGUID** -veld moet een GUID zijn met ' (AzureAd) ' aan het einde.
 
-**Mogelijk probleem**: **WamDefaultSet** en **AzureAdJoined** hebben beide 'NEE' in de veldwaarde, het apparaat is verbonden met het domein en geregistreerd bij Azure AD en het apparaat synchroniseert niet. Als dit wordt weergegeven, moet het apparaat mogelijk wachten tot het beleid is toegepast of is de verificatie voor het apparaat mislukt wanneer het verbinding maakt met Azure AD. Het kan zijn dat de gebruiker een paar uur moet wachten voordat het beleid wordt toegepast. Andere stappen voor het oplossen van problemen kunnen bestaan uit het opnieuw proberen van automatische registratie door u af te melden en weer in te sluiten, of de taak te starten in Taakplanner. In sommige gevallen kan het uitvoeren van "*dsregcmd.exe /leave*" in een verhoogd opdrachtpromptvenster, opnieuw opstarten en opnieuw registreren proberen helpen bij dit probleem.
+**Mogelijk probleem**: **WamDefaultSet** en **AzureAdJoined** hebben beide ' no ' in de veld waarde, het apparaat is toegevoegd aan een domein en is geregistreerd bij Azure AD, en het apparaat wordt niet gesynchroniseerd. Als dit wordt weer gegeven, moet het apparaat mogelijk wachten totdat het beleid is toegepast of de verificatie van het apparaat is mislukt bij het maken van verbinding met Azure AD. Het kan zijn dat de gebruiker enkele uren moet wachten voordat het beleid wordt toegepast. Andere stappen voor het oplossen van problemen zijn onder andere het opnieuw proberen van de herregistratie door u af te melden en weer in te schrijven, of door de taak te starten in taak planner. In sommige gevallen voert u '*dsregcmd. exe/Leave*' uit in een opdracht prompt venster met verhoogde bevoegdheid, waarna u de registratie opnieuw kunt uitvoeren. Dit kan helpen bij het oplossen van het probleem.
 
-**Mogelijk probleem:** het veld voor **SettingsUrl** is leeg en het apparaat synchroniseert niet. Mogelijk is de gebruiker voor het laatst aangemeld bij het apparaat voordat Enterprise State Roaming is ingeschakeld in de Azure Active Directory Portal. Start het apparaat opnieuw op en laat de gebruiker inloggen. Probeer de IT-beheerder in de portal te laten navigeren naar **Azure Active Directory** > **Devices** > **Enterprise State Roaming** en schakel instellingen **en app-gegevens**op verschillende apparaten opnieuw in. Zodra het apparaat opnieuw is ingeschakeld, start u het apparaat opnieuw op en laat u de gebruiker inloggen. Als dit het probleem niet oplost, kan **SettingsUrl** leeg zijn als er een slecht apparaatcertificaat is. In dit geval kan het uitvoeren van "*dsregcmd.exe /leave*" in een verhoogd opdrachtpromptvenster, opnieuw opstarten en opnieuw registreren proberen helpen bij dit probleem.
+**Mogelijk probleem**: het veld voor **SettingsUrl** is leeg en het apparaat wordt niet gesynchroniseerd. De gebruiker is mogelijk voor het laatst aangemeld bij het apparaat voordat Enterprise State Roaming was ingeschakeld in de Azure Active Directory Portal. Start het apparaat opnieuw op en laat de gebruiker zich aanmelden. Probeer eventueel in de Portal de IT-beheerder naar **Azure Active Directory** > **apparaten** > te navigeren**Enterprise State roaming** **gebruikers kunnen instellingen en app-gegevens op meerdere apparaten synchroniseren**en weer inschakelen. Zodra het opnieuw is ingeschakeld, start u het apparaat opnieuw op en laat u de gebruiker zich aanmelden. Als het probleem hiermee niet is opgelost, kan **SettingsUrl** leeg zijn als er een beschadigd apparaat is. In dit geval kunt u '*dsregcmd. exe/Leave*' uitvoeren in een opdracht prompt venster met verhoogde bevoegdheden, en het opnieuw proberen van de registratie mogelijk helpen bij het oplossen van het probleem.
 
-## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Roaming voor ondernemingsstatus en multifactorauthenticatie 
+## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming en Multi-Factor Authentication 
 
-Onder bepaalde voorwaarden kan Enterprise State Roaming gegevens niet synchroniseren als Azure Multi-Factor Authentication is geconfigureerd. Zie het ondersteuningsdocument [KB3193683](https://support.microsoft.com/kb/3193683)voor meer informatie over deze symptomen. 
+Onder bepaalde omstandigheden kan Enterprise State Roaming gegevens niet synchroniseren als Azure Multi-Factor Authentication is geconfigureerd. Zie het document [KB3193683](https://support.microsoft.com/kb/3193683)voor ondersteuning voor meer informatie over deze symptomen. 
 
-**Mogelijk probleem:** als uw apparaat is geconfigureerd om multifactorauthenticatie op de Azure Active Directory-portal te vereisen, u de instellingen mogelijk niet synchroniseren terwijl u zich aanmeldt bij een Windows 10-apparaat met een wachtwoord. Dit type multi-factor authenticatie configuratie is bedoeld om een Azure-beheerdersaccount te beschermen. Beheerders gebruikers kunnen nog steeds synchroniseren door zich aan te melden bij hun Windows 10-apparaten met hun Microsoft Passport for Work-pincode of door multi-factorverificatie in te vullen terwijl ze toegang krijgen tot andere Azure-services zoals Office 365.
+**Mogelijk probleem**: als uw apparaat zo is geconfigureerd dat multi-factor Authentication op de Azure Active Directory Portal vereist is, kunt u de instellingen niet synchroniseren tijdens het aanmelden bij een Windows 10-apparaat met een wacht woord. Dit type Multi-Factor Authentication configuratie is bedoeld om een Azure Administrator-account te beveiligen. Gebruikers met beheerders rechten kunnen nog steeds synchroniseren door zich aan te melden bij hun Windows 10-apparaten met hun Microsoft Passport for Work pincode of door Multi-Factor Authentication in te vullen bij het openen van andere Azure-Services zoals Office 365.
 
-**Mogelijk probleem:** Synchronisatie kan mislukken als de beheerder het beleid voor voorwaardelijke toegangsbeleid voor multifactorauthenticatie van Active Directory Federation Services configureert en het toegangstoken op het apparaat verloopt. Zorg ervoor dat u zich afmeldt en afmeldt met de pincode voor Microsoft Passport for Work of multifactorauthenticatie voltooien terwijl u toegang hebt tot andere Azure-services zoals Office 365.
+**Mogelijk probleem**: de synchronisatie kan mislukken als de beheerder de Active Directory Federation Services multi-factor Authentication beleid voor voorwaardelijke toegang configureert en het toegangs token op het apparaat is verlopen. Zorg ervoor dat u zich aanmeldt en u zich afmeldt met behulp van de Microsoft Passport for Work pincode of volt ooien Multi-Factor Authentication bij het openen van andere Azure-Services zoals Office 365.
 
 ### <a name="event-viewer"></a>Logboeken
 
-Voor geavanceerde probleemoplossing kan Logboeken worden gebruikt om specifieke fouten te vinden. Deze zijn gedocumenteerd in de onderstaande tabel. De gebeurtenissen zijn te vinden onder Logboeken >-logboeken voor toepassingen en services > **Microsoft** > **Windows** > **SettingSync-Azure** en voor identiteitsgerelateerde problemen met synchronisatie van **Microsoft** > **Windows** > **AAD**.
+Voor geavanceerde probleem oplossing kunt u Logboeken gebruiken om specifieke fouten te vinden. Deze worden beschreven in de volgende tabel. De gebeurtenissen vindt u in Logboeken >-logboeken van toepassingen en services > **micro soft** > **Windows** > **SettingSync-Azure** en voor identiteits problemen met synchronisatie van **micro soft** > **Windows** > **Aad**.
 
 ## <a name="known-issues"></a>Bekende problemen
 
-### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Synchroniseren werkt niet op apparaten waarop apps aan de zijkant zijn geladen met MDM-software
+### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Synchronisatie werkt niet op apparaten waarop apps zijn geladen met MDM-software
 
-Is van invloed op apparaten waarop de Windows 10 Anniversary Update wordt uitgevoerd (versie 1607). In Logboeken onder de logboeken InstellingSync-Azure wordt de gebeurtenis-id 6013 met fout 80070259 vaak gezien.
+Beïnvloedt apparaten met de Windows 10 jubileum update (versie 1607). In Logboeken onder de SettingSync-Azure-Logboeken wordt gebeurtenis-ID 6013 met fout 80070259 vaak weer gegeven.
 
 **Aanbevolen actie**  
-Zorg ervoor dat de Windows 10 v1607-client de cumulatieve update van 23 augustus 2016 heeft ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393.82). 
+Zorg ervoor dat de Windows 10 v1607-client de cumulatieve update van 23 augustus 2016 ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393,82) heeft. 
 
 ---
 
-### <a name="internet-explorer-favorites-do-not-sync"></a>Internet Explorer-favorieten worden niet gesynchroniseerd
+### <a name="internet-explorer-favorites-do-not-sync"></a>Favorieten van Internet Explorer worden niet gesynchroniseerd
 
-Dit is van invloed op apparaten waarop de Windows 10 November Update wordt uitgevoerd (versie 1511).
+Beïnvloedt apparaten waarop de update voor Windows 10 november (versie 1511) wordt uitgevoerd.
 
 **Aanbevolen actie**  
-Zorg ervoor dat de Windows 10 v1511-client de cumulatieve update van juli 2016 heeft[(KB3172985](https://support.microsoft.com/kb/3172985) OS Build 10586.494).
+Zorg ervoor dat de Windows 10 v1511-client de cumulatieve update van juli 2016 ([KB3172985](https://support.microsoft.com/kb/3172985) OS Build 10586,494) heeft.
 
 ---
 
-### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Thema wordt niet gesynchroniseerd, evenals gegevens die worden beschermd met Windows Information Protection 
+### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>Het thema wordt niet gesynchroniseerd, evenals gegevens die zijn beveiligd met Windows Information Protection 
 
-Om gegevenslekken te voorkomen, worden gegevens die zijn beveiligd met [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) niet gesynchroniseerd via Enterprise State Roaming voor apparaten die de Windows 10 Anniversary Update gebruiken.
+Om te voor komen dat gegevens lekken, worden gegevens die zijn beveiligd met [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) , niet gesynchroniseerd via Enterprise State roaming voor apparaten met de update voor Windows 10 jubileum.
 
 **Aanbevolen actie**  
-Geen. Toekomstige updates voor Windows kunnen dit probleem oplossen.
+Geen. In toekomstige updates voor Windows is dit probleem mogelijk opgelost.
 
 ---
 
-### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>Datum-, tijd- en regio-instellingen worden niet gesynchroniseerd op het apparaat dat is verbonden met een domein 
+### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>De datum-, tijd-en regio-instellingen worden niet gesynchroniseerd op een apparaat dat lid is van een domein 
   
-Apparaten die zijn verbonden met een domein, ervaren geen synchronisatie voor de instelling Datum, Tijd en Regio: automatische tijd. Het gebruik van automatische tijd kan de andere instellingen voor datum, tijd en regio overschrijven en ervoor zorgen dat deze instellingen niet worden gesynchroniseerd. 
+Voor apparaten die lid zijn van een domein, wordt de instellings datum, tijd en regio niet automatisch gesynchroniseerd. Het gebruik van automatische tijd kan de andere datum-, tijd-en regio-instellingen overschrijven en ervoor zorgen dat de instellingen niet worden gesynchroniseerd. 
 
 **Aanbevolen actie**  
 Geen. 
 
 ---
 
-### <a name="uac-prompts-when-syncing-passwords"></a>UAC-vragen bij het synchroniseren van wachtwoorden
+### <a name="uac-prompts-when-syncing-passwords"></a>UAC vraagt bij het synchroniseren van wacht woorden
 
-Is van invloed op apparaten waarop de Windows 10 November Update (versie 1511) wordt uitgevoerd, met een draadloze NIC die is geconfigureerd om wachtwoorden te synchroniseren.
+Beïnvloedt apparaten waarop de update van Windows 10 november (versie 1511) wordt uitgevoerd met een draadloze NIC die is geconfigureerd voor het synchroniseren van wacht woorden.
 
 **Aanbevolen actie**  
-Zorg ervoor dat de Windows 10 v1511-client de cumulatieve update heeft[(KB3140743](https://support.microsoft.com/kb/3140743) OS Build 10586.494).
+Zorg ervoor dat de Windows 10 v1511-client de cumulatieve update ([KB3140743](https://support.microsoft.com/kb/3140743) OS Build 10586,494) heeft.
 
 ---
 
-### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>Synchroniseren werkt niet op apparaten die smartcard gebruiken om in te loggen
+### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>Synchronisatie werkt niet op apparaten die gebruikmaken van een Smart Card voor aanmelding
 
-Als u zich met een smartcard of virtuele smartcard bij uw Windows-apparaat probeert aan te melden, werkt de synchronisatie van de instellingen niet meer.     
+Als u zich probeert aan te melden bij uw Windows-apparaat met behulp van een Smart Card of virtuele Smart Card, werkt de synchronisatie van instellingen niet meer.     
 
 **Aanbevolen actie**  
-Geen. Toekomstige updates voor Windows kunnen dit probleem oplossen.
+Geen. In toekomstige updates voor Windows is dit probleem mogelijk opgelost.
 
 ---
 
-### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>Apparaat dat is verbonden met een domein synchroniseert niet nadat het bedrijfsnetwerk is verlaten     
+### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>Een apparaat dat lid is van een domein wordt niet gesynchroniseerd nadat het bedrijfs netwerk is verlaten     
 
-Domeingebonden apparaten die zijn geregistreerd bij Azure AD kunnen synchronisatiefouten ondervinden als het apparaat langere tijd niet op locatie is en domeinverificatie niet kan worden voltooid.
+Apparaten die lid zijn van een domein en die zijn geregistreerd bij Azure AD, kunnen een synchronisatie fout ondervinden als het apparaat gedurende lange tijd een site uitvalt en de domein authenticatie niet kan worden voltooid.
 
 **Aanbevolen actie**  
-Sluit het apparaat aan op een bedrijfsnetwerk, zodat de synchronisatie kan worden hervat.
+Verbind het apparaat met een bedrijfs netwerk, zodat de synchronisatie kan worden hervat.
 
 ---
 
-### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Azure AD Joined-apparaat wordt niet gesynchroniseerd en de gebruiker heeft een gebruikersnaam voor gemengde letters.
+### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Het gekoppelde Azure AD-apparaat wordt niet gesynchroniseerd en de gebruiker heeft een User Principal name met een gemengde case.
 
-Als de gebruiker een upn met gemengde behuizing heeft (bijvoorbeeld UserName in plaats van gebruikersnaam) en de gebruiker zich op een Azure AD Joined-apparaat bevindt, dat is geüpgraded van Windows 10 Build 10586 naar 14393, kan het apparaat van de gebruiker niet worden gesynchroniseerd. 
+Als de gebruiker een gemengde UPN heeft (bijvoorbeeld gebruikers naam in plaats van gebruikers naam) en de gebruiker zich op een aan Azure AD gekoppelde apparaat bevindt dat is bijgewerkt van Windows 10 build 10586 naar 14393, kan het apparaat van de gebruiker niet worden gesynchroniseerd. 
 
 **Aanbevolen actie**  
-De gebruiker moet de join losmaken en opnieuw aansluiten bij het apparaat in de cloud. Meld u hiervoor aan als gebruiker van de lokale beheerder en schakelt de verbinding met het apparaat uit door naar > **Instellingensysteem** > **Over** te gaan en selecteer 'Beheren of loskoppelen van werk of school'. **Settings** Ruim de onderstaande bestanden op en vervolgens Word lid van Azure AD Opnieuw lid van het apparaat in > **Instellingensysteem** > **Over** en selecteer 'Verbinding maken met werk of school'. **Settings** Blijf het apparaat aansluiten bij Azure Active Directory en voltooi de stroom.
+De gebruiker moet het apparaat ontkoppelen en opnieuw toevoegen aan de Cloud. Als u dit wilt doen, meldt u zich aan als de lokale beheerders gebruiker en ontkoppelt u het apparaat door naar het **instellingen** > **systeem** > **over** te gaan en ' beheren of verbinding met werk of school verbreken ' te selecteren. Ruim de onderstaande bestanden op en probeer Azure AD vervolgens opnieuw toe te voegen in het **instellingen** > **systeem** > **over** en selecteer verbinding maken met werk of school. Ga door met het toevoegen van het apparaat aan Azure Active Directory en voltooi de stroom.
 
-Ruim in de opruimstap de volgende bestanden op:
-- Instellingen.dat in`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Alle bestanden onder de map`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+Ruim de volgende bestanden op in de opschoon stap:
+- Settings. dat in`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- Alle bestanden in de map`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Gebeurtenis-id 6065: 80070533 Deze gebruiker kan zich niet aanmelden omdat dit account momenteel is uitgeschakeld  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Gebeurtenis-ID 6065:80070533 deze gebruiker kan zich niet aanmelden omdat dit account momenteel is uitgeschakeld  
 
-In Logboeken onder de logboeken InstellingSync/Foutopsporing kan deze fout worden waargenomen wanneer de referenties van de gebruiker zijn verlopen. Bovendien kan dit gebeuren wanneer de tenant niet automatisch AzureRMS heeft ingericht. 
+In Logboeken onder de logboeken SettingSync/debug kan deze fout worden weer gegeven wanneer de referenties van de gebruiker zijn verlopen. Daarnaast kan het gebeuren wanneer de Tenant niet automatisch AzureRMS ingericht heeft. 
 
 **Aanbevolen actie**  
-Laat de gebruiker in het eerste geval zijn referenties bijwerken en inloggen op het apparaat met de nieuwe referenties. Als u het AzureRMS-probleem wilt oplossen, gaat u verder met de stappen in [KB3193791](https://support.microsoft.com/kb/3193791). 
+In het eerste geval moet de gebruiker de referenties bijwerken en zich aanmelden bij het apparaat met de nieuwe referenties. Als u het probleem met AzureRMS wilt oplossen, gaat u verder met de stappen die worden vermeld in [KB3193791](https://support.microsoft.com/kb/3193791). 
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Gebeurtenis-id 1098: fout: 0xCAA5001C Token-brokerbewerking is mislukt  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Gebeurtenis-ID 1098: fout: er is een 0xCAA5001C-token Broker-bewerking mislukt  
 
-In Logboeken onder de AAD/Operationele logboeken kan deze fout worden weergegeven met gebeurtenis 1104: AAD Cloud AP-plug-ingesprek Token geretourneerde fout: 0xC000005F. Dit probleem treedt op als er geen machtigingen of eigendomskenmerken zijn.  
+In Logboeken onder de AAD/Operation-logboeken kan deze fout worden weer gegeven met gebeurtenis 1104: het Get-resultaat van de aanroep van de AAD-Cloud-AP-invoeg toepassing is geretourneerd fout: 0xC000005F. Dit probleem treedt op als er machtigingen of eigendoms kenmerken ontbreken.  
 
 **Aanbevolen actie**  
-Ga verder met de stappen die [KB3196528](https://support.microsoft.com/kb/3196528)worden vermeld .  
+Ga verder met de stappen die worden weer gegeven [KB3196528](https://support.microsoft.com/kb/3196528).  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [roamingoverzicht enterprise state voor](enterprise-state-roaming-overview.md)een overzicht van de bedrijfsstatus .
+Zie [overzicht van ENTER prise State roaming](enterprise-state-roaming-overview.md)voor een overzicht.

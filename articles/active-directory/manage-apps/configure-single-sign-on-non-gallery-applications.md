@@ -1,6 +1,6 @@
 ---
-title: SAML single sign-on - non-gallery applications - Microsoft identity platform | Microsoft Documenten
-description: Eenmalige aanmelding (SSO) configureren voor niet-galerietoepassingen in Microsoft-identiteitsplatform (Azure AD)
+title: SSO-toepassingen voor eenmalige aanmelding-micro soft-identiteits platform | Microsoft Docs
+description: Eenmalige aanmelding (SSO) configureren voor niet-galerie toepassingen in het micro soft Identity platform (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,154 +13,154 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244210"
 ---
-# <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Saml-gebaseerde aanmelding configureren voor niet-galerietoepassingen
+# <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerie toepassingen
 
-Wanneer u [een galerie-app](add-gallery-app.md) of een [web-app zonder galerie](add-non-gallery-app.md) toevoegt aan uw Azure AD Enterprise-toepassingen, is een van de opties voor één aanmelding die voor u beschikbaar [is, saml-gebaseerde eenmalige aanmelding](what-is-single-sign-on.md#saml-sso). Kies SAML waar mogelijk voor toepassingen die verifiëren met behulp van een van de SAML-protocollen. Met SAML single sign-on verifieert Azure AD de toepassing met behulp van het Azure AD-account van de gebruiker. Azure AD communiceert de aanmeldingsgegevens naar de toepassing via een verbindingsprotocol. U gebruikers toewijzen aan specifieke toepassingsrollen op basis van regels die u definieert in uw SAML-claims. In dit artikel wordt beschreven hoe u SAML-gebaseerde eenmalige aanmelding configureert voor een niet-galerij-app. 
+Wanneer u [een galerie-app](add-gallery-app.md) of een [niet-galerij web-app](add-non-gallery-app.md) toevoegt aan uw Azure AD-zakelijke toepassingen, is een van de opties voor eenmalige aanmelding op basis van het op [SAML gebaseerde eenmalige aanmelding](what-is-single-sign-on.md#saml-sso). Kies zo mogelijk SAML voor toepassingen die worden geverifieerd met een van de SAML-protocollen. Met eenmalige aanmelding via SAML verifieert Azure AD bij de toepassing met behulp van het Azure AD-account van de gebruiker. Azure AD communiceert de aanmeldings gegevens met de toepassing via een verbindings protocol. U kunt gebruikers toewijzen aan specifieke toepassings rollen op basis van regels die u in uw SAML-claims definieert. In dit artikel wordt beschreven hoe u eenmalige aanmelding op basis van SAML kunt configureren voor een niet-galerij-app. 
 
 > [!NOTE]
-> Een galerie-app toevoegen? Stapsgewijze installatie-instructies zoeken in de [lijst met zelfstudies van de SaaS-app](../saas-apps/tutorial-list.md)
+> Een galerie-app toevoegen? Stapsgewijze instructies voor het instellen van de installatie vindt u in de [lijst met zelf studies over SaaS-apps](../saas-apps/tutorial-list.md)
 
-Als u SAML-een-aanmelding wilt configureren voor een niet-galerietoepassing zonder code te schrijven, moet u een abonnement hebben samen met een Azure AD Premium-licentie en moet de toepassing SAML 2.0 ondersteunen. Ga naar Azure AD-prijzen voor meer informatie over Azure [AD-versies.](https://azure.microsoft.com/pricing/details/active-directory/)
+Als u eenmalige SAML-aanmelding wilt configureren voor een niet-galerie toepassing zonder code te schrijven, moet u een abonnement hebben, samen met een Azure AD Premium-licentie en de toepassing SAML 2,0 ondersteunen. Ga voor meer informatie over Azure AD-versies naar [Azure ad-prijzen](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Zie [Een niet-galerie-app toevoegen](add-non-gallery-app.md)als de toepassing niet is toegevoegd aan uw Azure AD-tenant.
+Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een niet-galerie-app toevoegen](add-non-gallery-app.md).
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>Step 1. De basisSAML-configuratie bewerken
+## <a name="step-1-edit-the-basic-saml-configuration"></a>Step 1. De basis-SAML-configuratie bewerken
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
-2. Navigeer naar **Azure Active Directory** > **Enterprise-toepassingen** en selecteer de toepassing in de lijst. 
+2. Ga naar **Azure Active Directory** > **bedrijfs toepassingen** en selecteer de toepassing in de lijst. 
    
-   - Als u naar de toepassing wilt zoeken, selecteert u in het menu **Toepassingstype** **Alle toepassingen**en selecteert u **Toepassen**. Voer de naam van de toepassing in het zoekvak in en selecteer de toepassing in de resultaten.
+   - Als u wilt zoeken naar de toepassing, selecteert u in het menu **toepassings type** **alle toepassingen**en selecteert u vervolgens **Toep assen**. Voer de naam van de toepassing in het zoekvak in en selecteer vervolgens de toepassing in de resultaten.
 
-3. Selecteer onder de sectie **Beheren** de optie **Eén aanmelding**. 
+3. Selecteer onder de sectie **beheren** de optie **eenmalige aanmelding**. 
 
-4. Selecteer **SAML**. De pagina **Eén aanmelding instellen met SAML - Voorbeeld** wordt weergegeven.
+4. Selecteer **SAML**. De pagina **eenmalige aanmelding met SAML-preview instellen** wordt weer gegeven.
 
-   ![Stap 1 De basisSAML-configuratie bewerken](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
+   ![Stap 1 de eenvoudige SAML-configuratie bewerken](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
 
-5. Als u de basisconfiguratieopties voor SAML wilt bewerken, selecteert u het pictogram **Bewerken** (een potlood) in de rechterbovenhoek van de sectie **BasisSAML-configuratie.**
+5. Als u de basis opties voor SAML-configuratie wilt bewerken, selecteert u het **bewerkings** pictogram (een potlood) in de rechter bovenhoek van de **basis-SAML-configuratie** sectie.
 
-1. Voer de volgende instellingen in. U moet de waarden van de toepassingsleverancier krijgen. U handmatig de waarden invoeren of een metagegevensbestand uploaden om de waarde van de velden te extraheren.
+1. Voer de volgende instellingen in. U moet de waarden van de leverancier van de toepassing ophalen. U kunt de waarden hand matig invoeren of een meta gegevensbestand uploaden om de waarde van de velden te extra heren.
 
-    | Basis-SAML-configuratie-instelling | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
+    | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
     |:--|:--|:--|:--|
-    | **Id (Entiteits-id)** | Vereist voor sommige apps | Vereist voor sommige apps | Identificeert de toepassing op unieke wijze. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die het<subdomain>volgende patroon gebruikt: 'https:// .contoso.com' *U deze waarde vinden als het element **Uitgever** in het **AuthnRequest-verzoek** (SAML-verzoek) dat door de toepassing wordt verzonden.* |
-    | **Url van antwoord beantwoorden** | Vereist | Vereist | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U de extra antwoord-URL-velden gebruiken om meerdere antwoord-URL's op te geven. U hebt bijvoorbeeld extra antwoord-URL's nodig voor meerdere subdomeinen. Of voor testdoeleinden u meerdere antwoord-URL's (lokale host- en openbare URL's) tegelijk opgeven. |
-    | **Aanmeldings-URL** | Vereist | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Wanneer azure AD leeg is, voert u aanmelding met IdP uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD Access-paneel of de URL van Azure AD SSO.|
-    | **Relaystatus** | Optioneel | Optioneel | Hiermee geeft u aan de toepassing op waar de gebruiker naar moet worden omgeleid nadat de verificatie is voltooid. Meestal is de waarde een geldige URL voor de toepassing. Sommige toepassingen gebruiken dit veld echter anders. Vraag de leverancier van de toepassing voor meer informatie.
-    | **Afmeldings-URL** | Optioneel | Optioneel | Wordt gebruikt om de SAML Logout-antwoorden terug te sturen naar de toepassing.
+    | **Id (Entiteits-id)** | Vereist voor sommige apps | Vereist voor sommige apps | Unieke identificatie van de toepassing. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die gebruikmaakt van het volgende patroon:<subdomain>' https://. contoso.com ' *u kunt deze waarde vinden als het element van de **Uitgever** in de **AuthnRequest** (SAML-aanvraag) die door de toepassing is verzonden.* |
+    | **Antwoord-URL** | Vereist | Vereist | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |
+    | **Aanmeldings-URL** | Vereist | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Als deze leeg is, voert Azure AD een door IdP geïnitieerde aanmelding uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD-toegangs venster of de Azure AD SSO-URL.|
+    | **Relaystatus** | Optioneel | Optioneel | Hiermee geeft u aan de toepassing op waar de gebruiker naar moet worden omgeleid nadat de verificatie is voltooid. De waarde is doorgaans een geldige URL voor de toepassing. Sommige toepassingen gebruiken dit veld echter anders. Vraag de leverancier van de toepassing voor meer informatie.
+    | **Afmeldings-URL** | Optioneel | Optioneel | Wordt gebruikt om de antwoorden op SAML-afmeldingen terug te sturen naar de toepassing.
 
-Zie [Saml-protocol met één aanmelding voor](../develop/single-sign-on-saml-protocol.md)meer informatie .
+Zie [het SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md)voor meer informatie.
 
-## <a name="step-2-configure-user-attributes-and-claims"></a>Stap 2. Gebruikerskenmerken en -claims configureren 
+## <a name="step-2-configure-user-attributes-and-claims"></a>Stap 2. Gebruikers kenmerken en claims configureren 
 
-Wanneer een gebruiker zich verifieert naar de toepassing, geeft Azure AD de toepassing een SAML-token uit met informatie (of claims) over de gebruiker die deze persoon op unieke wijze identificeert. Standaard bevat deze informatie de gebruikersnaam, het e-mailadres, de voornaam en de achternaam van de gebruiker. Mogelijk moet u deze claims aanpassen als de toepassing bijvoorbeeld specifieke claimwaarden of een **andere naamnotatie** dan gebruikersnaam vereist. Vereisten voor galerij-apps worden beschreven in de [toepassingsspecifieke zelfstudies](../saas-apps/tutorial-list.md)of u het de leverancier van de toepassing vragen. De algemene stappen voor het configureren van gebruikerskenmerken en claims worden hieronder beschreven.
+Wanneer een gebruiker zich verifieert bij de toepassing, geeft Azure AD aan de toepassing een SAML-token door met informatie (of claims) over de gebruiker die deze uniek identificeert. Standaard bevat deze informatie de gebruikers naam, het e-mail adres, de voor naam en de achternaam van de gebruiker. Mogelijk moet u deze claims aanpassen als de toepassing bijvoorbeeld specifieke claim waarden of een andere **naam** indeling dan username vereist. De vereisten voor galerij-apps worden beschreven in de [toepassingsspecifieke zelf studies](../saas-apps/tutorial-list.md), of u kunt de leverancier van de toepassing vragen. De algemene stappen voor het configureren van gebruikers kenmerken en claims worden hieronder beschreven.
 
-1. Selecteer in de sectie **Gebruikerskenmerken en Claims** het pictogram **Bewerken** (een potlood) in de rechterbovenhoek.
+1. Selecteer in de sectie **gebruikers kenmerken en claims** het **bewerkings** pictogram (een potlood) in de rechter bovenhoek.
 
-   ![Stap 2 Gebruikerskenmerken en -claims configureren](media/configure-single-sign-on-non-gallery-applications/step-two-user-attributes-claims.png)
+   ![Stap 2 gebruikers kenmerken en claims configureren](media/configure-single-sign-on-non-gallery-applications/step-two-user-attributes-claims.png)
 
-2. Controleer de waarde van de **naam-id**. De standaardwaarde is *user.principalname*. De gebruikers-id is uniek voor elke gebruiker in de toepassing. Als het e-mailadres bijvoorbeeld zowel de gebruikersnaam als de unieke id is, wordt de waarde ingesteld op *user.mail*.
+2. Controleer de **waarde**van de naam-id. De standaard waarde is *User. Principal*name. De gebruikers-id is uniek voor elke gebruiker in de toepassing. Als het e-mailadres bijvoorbeeld zowel de gebruikersnaam als de unieke id is, wordt de waarde ingesteld op *user.mail*.
 
-3. Als u de waarde van de **naam-id wilt**wijzigen, selecteert u het pictogram **Bewerken** (een potlood) voor het veld Waarde van de **naam-id.** Breng indien nodig de juiste wijzigingen aan in de indeling en bron van de id. Zie [NameId bewerken](../develop/active-directory-saml-claims-customization.md#editing-nameid)voor meer informatie . Sla de wijzigingen op wanneer u klaar bent. 
+3. Als u de **naam-id-waarde**wilt wijzigen, selecteert u het **bewerkings** pictogram (een potlood) voor het veld **naam-id** . Breng de gewenste wijzigingen aan in de id-indeling en-bron, indien nodig. Zie voor meer informatie [bewerken van NameID](../develop/active-directory-saml-claims-customization.md#editing-nameid). Sla de wijzigingen op wanneer u klaar bent. 
  
-4. Als u groepsclaims wilt configureren, selecteert u het pictogram **Bewerken** voor het veld Groepen dat is geretourneerd in het veld **Claim.** Zie [Groepsclaims configureren](../hybrid/how-to-connect-fed-group-claims.md)voor meer informatie .
+4. Als u groeps claims wilt configureren, selecteert u het **bewerkings** pictogram voor de groepen die zijn **geretourneerd in claim** veld. Zie [groeps claims configureren](../hybrid/how-to-connect-fed-group-claims.md)voor meer informatie.
 
-5. Als u een claim wilt toevoegen, selecteert u **Nieuwe claim toevoegen** boven aan de pagina. Voer de **naam in** en selecteer de juiste bron. Als u de **kenmerkbron** selecteert, moet u het **kenmerk Bron** kiezen dat u wilt gebruiken. Als u de **vertaalbron** selecteert, moet u de **transformatie** en **parameter 1** kiezen die u wilt gebruiken. Zie [Toepassingsspecifieke claims toevoegen](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims)voor meer informatie. Sla de wijzigingen op wanneer u klaar bent. 
+5. Als u een claim wilt toevoegen, selecteert u **nieuwe claim toevoegen** boven aan de pagina. Voer de **naam** in en selecteer de juiste bron. Als u de **kenmerk** bron selecteert, moet u het **bron kenmerk** kiezen dat u wilt gebruiken. Als u de **Vertaal** bron selecteert, moet u de **trans formatie** en **para meter 1** kiezen die u wilt gebruiken. Zie voor meer informatie [toepassingsspecifieke claims toevoegen](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims). Sla de wijzigingen op wanneer u klaar bent. 
 
-6. Selecteer **Opslaan**. De nieuwe claim wordt weergegeven in de tabel.
+6. Selecteer **Opslaan**. De nieuwe claim wordt weer gegeven in de tabel.
 
    > [!NOTE]
-   > Zie de volgende bronnen voor aanvullende manieren om het SAML-token van Azure AD aan uw toepassing aan te passen.
-   >- Zie [Rolclaims configureren](../develop/active-directory-enterprise-app-role-management.md)als u aangepaste rollen wilt maken via de Azure-portal.
-   >- Zie [Claims aanpassen - PowerShell](../develop/active-directory-claims-mapping.md)om de claims via PowerShell aan te passen.
-   >- Zie [Optionele claims configureren](../develop/active-directory-optional-claims.md)als u het toepassingsmanifest wilt wijzigen om optionele claims voor uw toepassing te configureren.
-   >- Zie [Token-levensduur](../develop/active-directory-configurable-token-lifetimes.md)instellen als u tokenlevenslangbeleid voor vernieuwingstokens wilt instellen, toegang tot tokens, sessietokens en ID-tokens. Of zie [verificatiesessiebeheermogelijkheden](https://go.microsoft.com/fwlink/?linkid=2083106)om verificatiesessies via Voorwaardelijke toegang voor Azure AD te beperken.
+   > Raadpleeg de volgende bronnen voor meer manieren om het SAML-token van Azure AD aan uw toepassing aan te passen.
+   >- Zie [Configure Role claims](../develop/active-directory-enterprise-app-role-management.md)voor het maken van aangepaste rollen via de Azure Portal.
+   >- Zie [claims aanpassen-Power shell](../develop/active-directory-claims-mapping.md)voor informatie over het aanpassen van claims via Power shell.
+   >- Zie [optionele claims configureren](../develop/active-directory-optional-claims.md)om het toepassings manifest te wijzigen voor het configureren van optionele claims voor uw toepassing.
+   >- Zie [token levensduur configureren](../develop/active-directory-configurable-token-lifetimes.md)voor meer informatie over het instellen van de token levensduur beleid voor vernieuwings tokens, toegangs tokens, sessie tokens en id-tokens. Als u verificatie sessies via voorwaardelijke toegang van Azure AD wilt beperken, raadpleegt u de [beheer mogelijkheden voor verificatie sessies](https://go.microsoft.com/fwlink/?linkid=2083106).
 
-## <a name="step-3-manage-the-saml-signing-certificate"></a>Stap 3. Het SAML-ondertekeningscertificaat beheren
+## <a name="step-3-manage-the-saml-signing-certificate"></a>Stap 3. Het SAML-handtekening certificaat beheren
 
-Azure AD gebruikt een certificaat om de SAML-tokens te ondertekenen die naar de toepassing worden verzendt. U hebt dit certificaat nodig om de vertrouwensrelatie tussen Azure AD en de toepassing in te stellen. Zie de SAML-documentatie van de toepassing voor meer informatie over de certificaatindeling. Zie [Certificaten beheren voor federatieve opties voor één aanmelding](manage-certificates-for-federated-single-sign-on.md) en Geavanceerde [certificaatondertekening in het SAML-token](certificate-signing-options.md)voor meer informatie.
+Azure AD maakt gebruik van een certificaat voor het ondertekenen van de SAML-tokens die worden verzonden naar de toepassing. U hebt dit certificaat nodig om de vertrouwens relatie tussen Azure AD en de toepassing in te stellen. Zie de SAML-documentatie van de toepassing voor meer informatie over de indeling van het certificaat. Zie voor meer informatie [certificaten beheren voor federatieve eenmalige aanmelding](manage-certificates-for-federated-single-sign-on.md) en [Geavanceerde opties voor certificaat ondertekening in het SAML-token](certificate-signing-options.md).
 
-Vanuit Azure AD u het actieve certificaat in Base64- of Raw-indeling rechtstreeks downloaden vanaf de hoofdpagina **Eén aanmelding instellen met SAML-pagina.** U het actieve certificaat ook ophalen door het XML-bestand met toepassingsmetagegevens te downloaden of door de URL van de app-federatiemetagegevens te gebruiken. Voer deze stappen uit om uw certificaten weer te geven, te maken of te downloaden (actief of inactief).
+Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtstreeks downloaden vanuit de hoofd **set eenmalige aanmelding met de SAML-** pagina. U kunt ook het actieve certificaat ophalen door het XML-bestand met meta gegevens van de toepassing te downloaden of door gebruik te maken van de URL voor de federatieve meta gegevens van de app. Als u uw certificaten (actief of inactief) wilt weer geven, maken of downloaden, voert u de volgende stappen uit.
 
-1. Ga naar de sectie **SAML-ondertekeningscertificaat.** 
+1. Ga naar de sectie **SAML-handtekening certificaat** . 
 
-   ![Stap 3 Het SAML-ondertekeningscertificaat beheren](./media/configure-single-sign-on-non-gallery-applications/step-three-certificate.png)
+   ![Stap 3 het SAML-handtekening certificaat beheren](./media/configure-single-sign-on-non-gallery-applications/step-three-certificate.png)
 
-2. Controleer of het certificaat het:
+2. Controleer of het certificaat het volgende heeft:
 
-   - *De gewenste vervaldatum.* U de vervaldatum tot drie jaar in de toekomst configureren.
-   - *Een status van actief voor het gewenste certificaat.* Als de status **inactief**is, wijzigt u de status in **Actief**. Als u de status wilt wijzigen, klikt u met de rechtermuisknop op de rij van het gewenste certificaat en selecteert u **Certificaat actief maken**.
-   - *De juiste ondertekeningsoptie en algoritme.*
-   - *Het juiste e-mailadres(en) van de melding.* Wanneer het actieve certificaat zich in de buurt van de vervaldatum bevindt, stuurt Azure AD een melding naar het e-mailadres dat in dit veld is geconfigureerd.
+   - *De gewenste verloop datum.* U kunt de verval datum Maxi maal drie jaar in de toekomst configureren.
+   - *De status actief voor het gewenste certificaat.* Als de status niet **actief**is, wijzigt u de status in **actief**. Als u de status wilt wijzigen, klikt u met de rechter muisknop op de rij van het gewenste certificaat en selecteert **u certificaat actief maken**.
+   - *De juiste handtekening optie en algoritme.*
+   - *Het juiste e-mail adres (sen) van de melding.* Wanneer het actieve certificaat bijna de verloop datum heeft, stuurt Azure AD een melding naar het e-mail adres dat in dit veld is geconfigureerd.
 
-2. Als u het certificaat wilt downloaden, selecteert u een van de opties voor Base64-indeling, Raw-indeling of Federatie-metagegevens XML. Azure AD biedt ook de **url met ametagegevens van de appfederatie** waar u toegang hebt tot de metagegevens die specifiek zijn voor de toepassing in de indeling. `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`
+2. Als u het certificaat wilt downloaden, selecteert u een van de opties voor Base64-indeling, RAW-indeling of federatieve meta gegevens-XML. Azure AD biedt ook de **URL voor de federatieve meta gegevens** van de app, waar u de meta gegevens die specifiek `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`zijn voor de toepassing kunt openen in de indeling.
 
-3. Als u een certificaat wilt beheren, maken of importeren, selecteert u het pictogram **Bewerken** (een potlood) in de rechterbovenhoek van de sectie **SAML-ondertekeningscertificaat.**
+3. Als u een certificaat wilt beheren, maken of importeren, selecteert u het **bewerkings** pictogram (een potlood) in de rechter bovenhoek van de sectie **SAML-handtekening certificaat** .
 
-   ![SAML-ondertekeningscertificaat](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+   ![SAML-handtekening certificaat](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
 
-   Onderneem een van de volgende acties:
+   Voer een van de volgende acties uit:
 
-   - Als u een nieuw certificaat wilt maken, selecteert u **Nieuw certificaat,** selecteert u de **vervaldatum**en selecteert u **Opslaan**. Als u het certificaat wilt activeren, selecteert u het contextmenu (**... )** en selecteert u Certificaat **actief maken**.
-   - Als u een certificaat wilt uploaden met persoonlijke sleutel- en pfx-referenties, selecteert u **Certificaat importeren** en bladert u naar het certificaat. Voer het **PFX-wachtwoord in**en selecteer **Toevoegen**.  
-   - Als u geavanceerde opties voor het ondertekenen van certificaten wilt configureren, gebruikt u de volgende opties. Zie het artikel Opties voor [geavanceerde certificaatondertekeningvoor](certificate-signing-options.md) beschrijvingen van deze opties.
-      - Kies in de vervolgkeuzelijst **Ondertekeningsoptie** de optie **SamL-antwoord ondertekenen,** **de bewering van Sign SAML**of De reactie en bewering van Sign **SAML**.
-      - Kies in de vervolgkeuzelijst **Ondertekeningsalgoritme** de optie **SHA-1** of **SHA-256**.
-   - Als u extra mensen wilt melden wanneer het actieve certificaat de vervaldatum is, voert u de e-mailadressen in de velden **E-mailadressen van de melding** in.
+   - Als u een nieuw certificaat wilt maken, selecteert u **Nieuw certificaat**, selecteert u de **verval datum**en selecteert u **Opslaan**. Als u het certificaat wilt activeren, selecteert u het context menu (**...**) en selecteert **u certificaat actief maken**.
+   - Als u een certificaat met persoonlijke sleutel-en pfx-referenties wilt uploaden, selecteert u **certificaat importeren** en bladert u naar het certificaat. Voer het **PFX-wacht woord**in en selecteer vervolgens **toevoegen**.  
+   - Als u geavanceerde opties voor certificaat ondertekening wilt configureren, gebruikt u de volgende opties. Zie het artikel [Geavanceerde opties voor certificaat ondertekening](certificate-signing-options.md) voor een beschrijving van deze opties.
+      - Kies in de vervolg keuzelijst **handtekening opties** de optie **SAML-respons ondertekenen**, **SAML-bevestiging ondertekenen**of **SAML-respons en-bevestiging ondertekenen**.
+      - Kies in de vervolg keuzelijst **handtekening algoritme** **SHA-1** of **SHA-256**.
+   - Geef de e-mail adressen in de velden **e-mail adres** van de melding op als u meer mensen wilt laten weten wanneer het actieve certificaat bijna is verlopen.
 
-4. Als u wijzigingen hebt aangebracht, selecteert **u Opslaan** boven aan de sectie **SAML-ondertekeningscertificaat.** 
+4. Als u wijzigingen hebt aangebracht, selecteert u **Opslaan** boven aan de sectie **SAML-handtekening certificaat** . 
 
-## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Stap 4. De toepassing instellen voor het gebruik van Azure AD
+## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Stap 4. De toepassing instellen voor gebruik van Azure AD
 
-In de sectie ** \<ApplicationName>instellen** worden de waarden weergegeven die in de toepassing moeten worden geconfigureerd, zodat Azure AD wordt gebruikt als SAML-identiteitsprovider. De vereiste waarden variëren afhankelijk van de toepassing. Zie voor meer informatie de SAML-documentatie van de toepassing. Als u de documentatie wilt vinden, gaat u naar de ** \<van de toepassingsnaam>** instellen en selecteert **u Stapsgewijze instructies weergeven.** De documentatie wordt weergegeven op de **aanmeldingspagina configureren.** Op die pagina u de **URL voor aanmelding,** **Azure AD-id**en **URL-logboeken** invullen in de kop **>van de toepassing instellen. \<**
+De sectie ** \<ApplicationName->instellen** bevat de waarden die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. De vereiste waarden variëren afhankelijk van de toepassing. Zie de SAML-documentatie van de toepassing voor meer informatie. Als u de documentatie wilt vinden, gaat u naar de kop ** \<toepassings naam instellen>** en selecteert u **Stapsgewijze instructies weer geven**. De documentatie wordt weer gegeven op de pagina **aanmelden configureren** . Op deze pagina vindt u instructies voor het invullen van de **aanmeldings-URL**, de **Azure ad-id**en de **afmeldings-URL** -waarden in de kop ** \<toepassings naam instellen>** .
 
-1. Schuif omlaag naar de sectie **ApplicationName>\<instellen.** 
+1. Schuif omlaag naar de sectie ** \<toepassings groep instellen>** . 
    
-   ![Stap 4 De toepassing instellen](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
+   ![Stap 4 de toepassing instellen](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 
-1. Kopieer de waarde van elke rij in deze sectie indien nodig en volg de toepassingsspecifieke instructies voor het toevoegen van de waarde aan de toepassing. Voor galerie-apps u de documentatie bekijken door **stapsgewijze instructies weergeven**te selecteren. 
-   - De **URL-waarden voor aanmelding** en **bijloguit** worden beide opgelost tot hetzelfde eindpunt, het eindpunt voor het afhandelen van SAML-aanvragen voor uw exemplaar van Azure AD. 
-   - De **Azure AD-id** is de waarde van de **emittent** in het SAML-token dat aan de toepassing is uitgegeven.
+1. Kopieer de waarde van elke rij in deze sectie naar wens en volg de toepassingsspecifieke instructies om de waarde toe te voegen aan de toepassing. Voor galerie-apps kunt u de documentatie weer geven door stapsgewijze **instructies weer geven**te selecteren. 
+   - De waarden van de **aanmeldings-URL** en de **afmeldings-URL** worden beide omgezet naar hetzelfde eind punt. Dit is het SAML-eind punt voor aanvraag verwerking voor uw exemplaar van Azure AD. 
+   - De **Azure ad-id** is de waarde van de **VERLENER** in het SAML-token dat is uitgegeven aan de toepassing.
 2. Wanneer u alle waarden in de juiste velden hebt geplakt, selecteert u **Opslaan**.
 
 ## <a name="step-5-validate-single-sign-on"></a>Stap 5. Eenmalige aanmelding valideren
 
-Zodra u uw toepassing hebt geconfigureerd om Azure AD te gebruiken als een saml-gebaseerde identiteitsprovider, u de instellingen testen om te zien of eenmalige aanmelding werkt voor uw account. 
+Nadat u uw toepassing hebt geconfigureerd voor het gebruik van Azure AD als id-provider op basis van SAML, kunt u de instellingen testen om te zien of eenmalige aanmelding werkt voor uw account. 
 
-2. Schuif naar de **sectie Eén <applicationName> aanmelding valideren met** sectie.
+2. Schuif naar de sectie **eenmalige aanmelding valideren met <applicationName> ** .
 
-   ![Stap 5 Eenmalige aanmelding valideren](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
+   ![Stap 5 eenmalige aanmelding valideren](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
 
 3. Selecteer **Valideren**. De test-opties worden weergegeven.
 
 4. Selecteer **Aanmelden als huidige gebruiker**. 
 
-Als aanmelding succesvol is, u gebruikers en groepen toewijzen aan uw SAML-toepassing.
-Als er een foutbericht wordt weergegeven, voert u de volgende stappen uit:
+Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing.
+Als er een fout bericht wordt weer gegeven, voert u de volgende stappen uit:
 
 1. Kopieer en plak de gegevens in het vak **Hoe ziet de fout eruit?**.
 
     ![Hulp krijgen bij het oplossen van problemen](media/configure-single-sign-on-non-gallery-applications/error-guidance.png)
 
-2. Selecteer **Richtlijnen voor resolutie ontvangen**. De richtlijnen voor de oorzaak en de oplossing van het probleem worden weergegeven.  In dit voorbeeld was de gebruiker niet toegewezen aan de toepassing.
+2. Selecteer **ondersteuning**voor het oplossen van oplossingen. De richtlijnen voor de oorzaak en de oplossing van het probleem worden weergegeven.  In dit voorbeeld was de gebruiker niet toegewezen aan de toepassing.
 
-3. Lees de oplossingsrichtlijnen en los het probleem, indien mogelijk, op.
+3. Lees de richt lijnen voor oplossingen en los indien mogelijk het probleem op.
 
 4. Voer de test opnieuw uit totdat de bewerking is voltooid.
 
-Zie [SamL-gebaseerde aanmelding op basis van toepassingen in Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)voor meer informatie.
+Zie voor meer informatie [debug op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruikers of groepen toewijzen aan de toepassing](methods-for-assigning-users-and-groups.md)
-- [Automatische gebruikersaccountinrichting configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [Automatisch inrichten van gebruikers accounts configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)

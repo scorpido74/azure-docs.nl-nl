@@ -6,28 +6,28 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: mimart
 ms.openlocfilehash: ef08f1adc15475cd5dd38548ed39dc57532c0ef5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185829"
 ---
-## <a name="guidelines-for-using-javascript"></a>Richtlijnen voor het gebruik van JavaScript
+## <a name="guidelines-for-using-javascript"></a>Richt lijnen voor het gebruik van Java script
 
-Volg deze richtlijnen wanneer u de interface van uw toepassing aanpast met JavaScript:
+Volg deze richt lijnen bij het aanpassen van de interface van uw toepassing met behulp van Java script:
 
-- Bind geen klikgebeurtenis aan `<a>` HTML-elementen.
-- Neem geen afhankelijkheid van Azure AD B2C-code of opmerkingen.
-- Wijzig de volgorde of hiërarchie van Azure AD B2C HTML-elementen niet. Gebruik een Azure AD B2C-beleid om de volgorde van de ui-elementen te beheren.
-- U elke RESTful-service bellen met de volgende overwegingen:
-    - Mogelijk moet u uw RESTful-service CORS zo instellen dat http-oproepen aan de clientzijde mogelijk zijn.
-    - Zorg ervoor dat uw RESTful-service veilig is en alleen het HTTPS-protocol gebruikt.
-    - Gebruik JavaScript niet rechtstreeks om Azure AD B2C-eindpunten aan te roepen.
-- U uw JavaScript insluiten of u een koppeling maken naar externe JavaScript-bestanden. Wanneer u een extern JavaScript-bestand gebruikt, moet u de absolute URL gebruiken en niet een relatieve URL.
-- JavaScript-frameworks:
-    - Azure AD B2C gebruikt een specifieke versie van jQuery. Neem geen andere versie van jQuery op. Het gebruik van meer dan één versie op dezelfde pagina veroorzaakt problemen.
+- Bind een Click-gebeurtenis op `<a>` HTML-elementen niet.
+- Maak geen afhankelijkheid van Azure AD B2C code of opmerkingen.
+- Wijzig de volg orde of hiërarchie van Azure AD B2C HTML-elementen niet. Gebruik een Azure AD B2C beleid om de volg orde van de elementen van de gebruikers interface te bepalen.
+- U kunt een wille keurige REST-service aanroepen met de volgende overwegingen:
+    - Mogelijk moet u de CORS van de REST-service instellen om HTTP-aanroepen aan de client zijde toe te staan.
+    - Zorg ervoor dat de REST-service veilig is en alleen het HTTPS-protocol gebruikt.
+    - Gebruik Java script niet rechtstreeks om Azure AD B2C-eind punten aan te roepen.
+- U kunt uw Java script insluiten of u kunt een koppeling maken naar externe java script-bestanden. Wanneer u een extern java script-bestand gebruikt, moet u ervoor zorgen dat u de absolute URL gebruikt en geen relatieve URL.
+- Java script-frameworks:
+    - Azure AD B2C maakt gebruik van een specifieke versie van jQuery. Neem geen andere versie van jQuery op. Als u meer dan één versie op dezelfde pagina gebruikt, worden er problemen veroorzaakt.
     - Het gebruik van RequireJS wordt niet ondersteund.
-    - De meeste JavaScript-frameworks worden niet ondersteund door Azure AD B2C.
-- Azure AD B2C-instellingen kunnen `window.SETTINGS` `window.CONTENT` worden gelezen door objecten aan te roepen, zoals de huidige gebruikersinterfacetaal. Wijzig de waarde van deze objecten niet.
-- Als u het Azure AD B2C-foutbericht wilt aanpassen, gebruikt u lokalisatie in een beleid.
-- Als er iets kan worden bereikt met behulp van een beleid, over het algemeen is het de aanbevolen manier.
+    - De meeste Java script-frameworks worden niet ondersteund door Azure AD B2C.
+- Azure AD B2C-instellingen kunnen worden gelezen door `window.SETTINGS`- `window.CONTENT` objecten, zoals de huidige taal van de gebruikers interface, aan te roepen. Wijzig de waarde van deze objecten niet.
+- Als u het fout bericht Azure AD B2C wilt aanpassen, gebruikt u lokalisatie in een beleid.
+- Als er iets kan worden bereikt met behulp van een beleid, is dit doorgaans de aanbevolen manier.

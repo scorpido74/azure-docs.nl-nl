@@ -1,6 +1,6 @@
 ---
-title: Aanbevelingen herstellen in Azure Security Center | Microsoft Documenten
-description: In dit artikel wordt uitgelegd hoe u aanbevelingen herstellen in Azure Security Center om uw resources te beschermen en te voldoen aan het beveiligingsbeleid.
+title: Aanbevelingen herstellen in Azure Security Center | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u aanbevelingen in Azure Security Center herstelt om uw resources te beschermen en te voldoen aan het beveiligings beleid.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,89 +14,89 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77603494"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Aanbevelingen oplossen in Azure Security Center
 
-Aanbevelingen geven u suggesties over hoe u uw resources beter beveiligen. U implementeert een aanbeveling door de herstelstappen in de aanbeveling te volgen.
+Aanbevelingen bieden suggesties voor een betere beveiliging van uw resources. U implementeert een aanbeveling door de herstels tappen te volgen die worden beschreven in de aanbeveling.
 
-## <a name="remediation-steps"></a>Herstelstappen<a name="remediation-steps"></a>
+## <a name="remediation-steps"></a>Herstels tappen<a name="remediation-steps"></a>
 
-Na het bekijken van alle aanbevelingen, beslissen welke eerst te saneren. We raden u aan de impact van de [beveiligde score](security-center-recommendations.md#monitor-recommendations) te gebruiken om prioriteit te geven aan wat u eerst moet doen.
+Nadat u alle aanbevelingen hebt bekeken, moet u bepalen welke u het eerst wilt herstellen. U wordt aangeraden de effect op een [beveiligde Score](security-center-recommendations.md#monitor-recommendations) te gebruiken om te helpen bepalen wat u eerst moet doen.
 
 1. Klik in de lijst op de aanbeveling.
 
-1. Volg de instructies in de sectie **Herstelstappen.** Elke aanbeveling heeft zijn eigen set van instructies. In de volgende schermafbeelding worden herstelstappen weergegeven voor het configureren van toepassingen om alleen verkeer via HTTPS toe te staan.
+1. Volg de instructies in de sectie **herstel stappen** . Elke aanbeveling heeft een eigen set instructies. De volgende scherm afbeelding toont herbemiddelings stappen voor het configureren van toepassingen zodat alleen verkeer via HTTPS wordt toegestaan.
 
-    ![Aanbevelingsdetails](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    ![Details van aanbeveling](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
 
-1. Nadat u bent voltooid, wordt u op de hoogte gesteld of de herstelprocedure is geslaagd.
+1. Zodra dit is voltooid, wordt een melding weer gegeven dat u wordt geïnformeerd als het herstel is geslaagd.
 
-## <a name="quick-fix-remediation"></a>Herstel van snelle oplossing<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>Snel herstel oplossen<a name="one-click"></a>
 
-Met Quick Fix u snel een aanbeveling over meerdere resources herstellen. Het is alleen beschikbaar voor specifieke aanbevelingen. Quick Fix vereenvoudigt de hersteling en stelt u in staat om uw Secure Score snel te verhogen, waardoor de beveiliging van uw omgeving wordt verbeterd.
+Met snelle oplossing kunt u snel een aanbeveling op meerdere resources herstellen. Het is alleen beschikbaar voor specifieke aanbevelingen. Snelle oplossing vereenvoudigt herstel en stelt u in staat snel uw beveiligde score te verhogen en de beveiliging van uw omgeving te verbeteren.
 
-Ga als een snelle oplossingsherstel:
+Voor het implementeren van herstel met snelle oplossingen:
 
-1. Uit de lijst met aanbevelingen die de **Quick Fix hebben!** label, klik op de aanbeveling.
+1. In de lijst met aanbevelingen waarvoor de **snelle oplossing** is geïnstalleerd. Label, klikt u op de aanbeveling.
 
-    [![Selecteer Quick Fix!](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
+    [![Selecteer snelle oplossing.](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. Selecteer op het tabblad **Ongezonde resources** de resources waarop u de aanbeveling wilt implementeren en klik op **Herstellen**.
-
-    > [!NOTE]
-    > Sommige van de vermelde bronnen kunnen zijn uitgeschakeld, omdat u niet over de juiste machtigingen beschikt om ze te wijzigen.
-
-1. Lees in het bevestigingsvak de details en implicaties van de herstelprocedure.
-
-    ![Snelle oplossing](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+1. Op het tabblad **beschadigde bronnen** selecteert u de resources waarvoor u de aanbeveling wilt implementeren en klikt u op **herstellen**.
 
     > [!NOTE]
-    > De implicaties worden vermeld in het grijze vak in het venster **Resources herstellen** dat wordt geopend nadat u op **Remediate**hebt geklikt. Ze geven aan welke wijzigingen er gebeuren wanneer u verdergaat met de quick fix-herstel.
+    > Sommige van de vermelde bronnen zijn mogelijk uitgeschakeld, omdat u niet over de juiste machtigingen beschikt om deze te wijzigen.
 
-1. Voeg indien nodig de relevante parameters in en keur de herstelprocedure goed.
+1. In het bevestigings venster leest u de details van het herstel en de implicaties.
+
+    ![Snel oplossen](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
     > [!NOTE]
-    > Het kan enkele minuten duren nadat de herstelprocedure is voltooid om de resources op het tabblad **Gezonde resources** te bekijken. Als u de herstelacties wilt weergeven, controleert u het [activiteitenlogboek](#activity-log).
+    > De implicaties worden weer gegeven in het grijze vak in het venster **resources herstellen** dat wordt geopend nadat u op **herstellen**hebt geklikt. Ze geven een lijst weer met de wijzigingen die worden aangebracht wanneer u doorgaat met het oplossen van problemen met snel herstel.
 
-1. Nadat u bent voltooid, wordt u op de hoogte gesteld of de herstelprocedure is geslaagd.
+1. Voer indien nodig de relevante para meters in en goed keuring van het herstel.
 
-## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Logboekregistratie voor herstel van snelle oplossing in het activiteitenlogboek<a name="activity-log"></a>
+    > [!NOTE]
+    > Het kan enkele minuten duren voordat het herstel is voltooid om de resources te bekijken op het tabblad onterecht **resources** . Controleer het [activiteiten logboek](#activity-log)om de herstel acties weer te geven.
 
-De herstelbewerking maakt gebruik van een sjabloonimplementatie of REST PATCH API-aanroep om de configuratie op de bron toe te passen. Deze bewerkingen zijn aangemeld bij [azure-activiteitenlogboek](../azure-resource-manager/management/view-activity-logs.md).
+1. Zodra dit is voltooid, wordt een melding weer gegeven dat u wordt geïnformeerd als het herstel is geslaagd.
+
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Snel herstel logboek registratie in het activiteiten logboek<a name="activity-log"></a>
+
+Voor de herstel bewerking wordt gebruikgemaakt van een sjabloon implementatie of REST PATCH-API-aanroep om de configuratie van de bron toe te passen. Deze bewerkingen worden geregistreerd in het [Azure-activiteiten logboek](../azure-resource-manager/management/view-activity-logs.md).
 
 
-## <a name="recommendations-with-quick-fix-remediation"></a>Aanbevelingen met quick fix-herstel
+## <a name="recommendations-with-quick-fix-remediation"></a>Aanbevelingen met snel herstel
 
 |Aanbeveling|Implicatie|
 |---|---|
-|Controle op SQL-servers moet worden ingeschakeld|Met deze actie sql-controle op deze servers en hun databases worden ingeschakeld. <br>**Opmerking**: <ul><li>Voor elke regio van de geselecteerde SQL-servers wordt een opslagaccount voor het opslaan van controlelogboeken gemaakt en gedeeld door alle servers in die regio.</li><li>Als u een goede controle wilt controleren, verwijdert of wijzigt u de naam van de brongroep of de opslagaccounts niet.</li></ul>|
-|Geavanceerde gegevensbeveiliging moet worden ingeschakeld op uw SQL-beheerde exemplaren|Met deze actie wordt SQL Advanced Data Security (ADS) ingeschakeld op de geselecteerde SQL-beheerde instanties. <br>**Opmerking**: <ul><li>Voor elke regio en resourcegroep van de geselecteerde SQL-beheerde exemplaren wordt een opslagaccount voor het opslaan van scanresultaten gemaakt en gedeeld door alle instanties in die regio.</li><li> ADS wordt in rekening gebracht voor $ 15 per SQL-beheerde instantie.</li></ul>|
-|Kwetsbaarheidsbeoordeling moet worden ingeschakeld op uw SQL-beheerde exemplaren|Met deze actie wordt SQL Vulnerability Assessment ingeschakeld voor de geselecteerde SQL managed instances. <br>**Opmerking**:<ul><li>SQL Vulnerability Assessment maakt deel uit van het SQL Advanced Data Security (ADS) pakket. Als ADS nog niet is ingeschakeld, wordt dit automatisch ingeschakeld op de beheerde instantie.</li><li>Voor elke regio en resourcegroep van de geselecteerde SQL-beheerde exemplaren wordt een opslagaccount voor het opslaan van scanresultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>Ads wordt in rekening gebracht voor $ 15 per SQL-server.</li></ul>||
-|Geavanceerde gegevensbeveiliging moet worden ingeschakeld op uw SQL-servers|Met deze actie kunnen Advanced Data Security (ADS) op deze geselecteerde servers en hun databases worden ingeschakeld. <br>**Opmerking**:<ul><li>Voor elke regio en resourcegroep van de geselecteerde SQL-servers wordt een opslagaccount voor het opslaan van scanresultaten gemaakt en gedeeld door alle servers in die regio.<</li><li>Ads wordt in rekening gebracht voor $ 15 per SQL-server.</li></ul>||
-|Kwetsbaarheidsbeoordeling moet worden ingeschakeld op uw SQL-servers|Met deze actie wordt SQL Vulnerability Assessment ingeschakeld op deze geselecteerde servers en hun databases. <br>**Opmerking**:<ul><li>SQL Vulnerability Assessment maakt deel uit van het SQL Advanced Data Security (ADS) pakket. Als ADS nog niet is ingeschakeld, wordt dit automatisch ingeschakeld op de SQL-server.</li><li>Voor elke regio en resourcegroep van de geselecteerde SQL-servers wordt een opslagaccount voor het opslaan van scanresultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>Ads wordt in rekening gebracht voor $ 15 per SQL-server.</li></ul>||
-|Transparante gegevensversleuteling in SQL-databases moet worden ingeschakeld|Met deze actie kan SQL Database Transparent Data Encryption (TDE) in de geselecteerde databases worden ingeschakeld. <br>**Opmerking**: Standaard worden servicebeheerde TDE-sleutels gebruikt.
-|Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld|Met deze actie wordt de beveiliging van uw opslagaccount bijgewerkt om alleen aanvragen via beveiligde verbindingen toe te staan. (HTTPS). <br>**Opmerking**:<ul><li>Alle aanvragen met HTTP worden afgewezen.</li><li>Wanneer u de Azure-bestandenservice gebruikt, mislukt de verbinding zonder versleuteling, inclusief scenario's met SMB 2.1, SMB 3.0 zonder versleuteling en enkele smaken van de Linux SMB-client. Meer informatie.</li></ul>|
-|Webtoepassing mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt al het verkeer van HTTP naar HTTPS omgeleid naar de geselecteerde bronnen. <br>**Opmerking**:<ul><li>Een HTTPS-eindpunt zonder SSL-certificaat wordt weergegeven in de browser met een 'Privacy error'. Gebruikers die een aangepast domein hebben, moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat firewalls voor pakketten en webtoepassingen de app-service beschermen en dat https-sessies worden doorgestuurd.</li></ul>|
-|Functie-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt al het verkeer van HTTP naar HTTPS omgeleid naar de geselecteerde bronnen. <br>**Opmerking**:<ul><li>Een HTTPS-eindpunt zonder SSL-certificaat wordt weergegeven in de browser met een 'Privacy error'. Gebruikers die een aangepast domein hebben, moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat firewalls voor pakketten en webtoepassingen de app-service beschermen en dat https-sessies worden doorgestuurd.</li></ul>|
-|API-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt al het verkeer van HTTP naar HTTPS omgeleid naar de geselecteerde bronnen. <br>**Opmerking**:<ul><li>Een HTTPS-eindpunt zonder SSL-certificaat wordt weergegeven in de browser met een 'Privacy error'. Gebruikers die een aangepast domein hebben, moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat firewalls voor pakketten en webtoepassingen de app-service beschermen en dat https-sessies worden doorgestuurd.</li></ul>|
-|Externe foutopsporing moet worden uitgeschakeld voor webtoepassing|Met deze actie wordt het opsporen van externe fouten op afstand uitgeschakeld.|
-|Externe foutopsporing moet worden uitgeschakeld voor functie-app|Met deze actie wordt het opsporen van externe fouten op afstand uitgeschakeld.|
-|Externe foutopsporing moet worden uitgeschakeld voor API-app|Met deze actie wordt het opsporen van externe fouten op afstand uitgeschakeld.|
-|CORS mag niet toestaan dat elke bron toegang krijgt tot uw webtoepassing|Met deze actie worden andere domeinen uitgesloten van toegang tot uw webtoepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld Toegestane oorsprong (gescheiden door komma's). <br>**Opmerking**: Als u het veld leeg laat, worden alle oproepen van cross-origine geblokkeerd.'Param-veldtitel: 'Toegestane oorsprong'|
-|CORS mag niet toestaan dat elke resource toegang krijgt tot uw functie-app|Met deze actie worden andere domeinen uitgesloten van toegang tot uw functietoepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld Toegestane oorsprong (gescheiden door komma's). <br>**Opmerking**: Als u het veld leeg laat, worden alle oproepen van cross-origine geblokkeerd.'Param-veldtitel: 'Toegestane oorsprong'|
-|CORS mag niet toestaan dat elke bron toegang krijgt tot uw API-app|Met deze actie worden andere domeinen uitgesloten van toegang tot uw API-toepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld Toegestane oorsprong (gescheiden door komma's). <br>**Opmerking**: Als u het veld leeg laat, worden alle oproepen van cross-origine geblokkeerd.'Param-veldtitel: 'Toegestane oorsprong'|
-|Monitoringagent moet ingeschakeld zijn op uw virtuele machines|Met deze actie wordt een bewakingsagent op de geselecteerde virtuele machines geïnstalleerd. Selecteer een werkruimte waaraan de agent moet rapporteren.<ul><li>Als uw updatebeleid is ingesteld op automatisch, wordt het geïmplementeerd op nieuwe bestaande exemplaren.</li><li>Als uw updatebeleid is ingesteld op handmatig en u de agent op bestaande instanties wilt installeren, schakelt u de optie selectievakje in. [Meer informatie](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
-|Diagnostische logboeken in Key Vault moeten zijn ingeschakeld|Met deze actie kunnen diagnostische logboeken op belangrijke kluizen worden ingeschakeld. Diagnostische logboeken en statistieken worden opgeslagen in de geselecteerde werkruimte.|
-|Diagnostische logboeken in servicebus moeten zijn ingeschakeld|Met deze actie kunnen diagnostische logboeken op de servicebus worden ingeschakeld. Diagnostische logboeken en statistieken worden opgeslagen in de geselecteerde werkruimte.|
+|Controle op SQL-servers moet zijn ingeschakeld|Met deze actie wordt SQL-controle op deze servers en de bijbehorende data bases ingeschakeld. <br>**Opmerking**: <ul><li>Voor elke regio van de geselecteerde SQL-servers wordt een opslag account voor het opslaan van audit logboeken gemaakt en gedeeld door alle servers in die regio.</li><li>Verwijder of wijzig de naam van de resource groep of de opslag accounts niet om de juiste controle te garanderen.</li></ul>|
+|Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw door SQL beheerde instanties|Met deze actie wordt SQL Advanced Data Security (ADS) ingeschakeld voor de geselecteerde SQL Managed instances. <br>**Opmerking**: <ul><li>Voor elke regio en resource groep van de geselecteerde SQL Managed instances wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li> ADS wordt in rekening gebracht op $15 per SQL Managed instance.</li></ul>|
+|De evaluatie van beveiligings problemen moet worden ingeschakeld voor uw door SQL beheerde instanties|Met deze actie wordt SQL-evaluatie van beveiligings problemen voor de geselecteerde SQL Managed instances ingeschakeld. <br>**Opmerking**:<ul><li>Evaluatie van SQL-beveiligings problemen maakt deel uit van het SQL Advanced Data Security-pakket (ADS). Als ADS niet al is ingeschakeld, wordt deze automatisch ingeschakeld op het beheerde exemplaar.</li><li>Voor elke regio en resource groep van de geselecteerde SQL Managed instances wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>ADS wordt in rekening gebracht op $15 per SQL Server.</li></ul>||
+|Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers|Met deze actie wordt Geavanceerd gegevens beveiliging (ADS) ingeschakeld op deze geselecteerde servers en de bijbehorende data bases. <br>**Opmerking**:<ul><li>Voor elke regio en resource groep van de geselecteerde SQL-servers wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle servers in die regio. <</li><li>ADS wordt in rekening gebracht op $15 per SQL Server.</li></ul>||
+|De evaluatie van beveiligings problemen moet worden ingeschakeld op uw SQL-servers|Met deze actie wordt SQL-evaluatie van beveiligings problemen op deze geselecteerde servers en de bijbehorende data bases ingeschakeld. <br>**Opmerking**:<ul><li>Evaluatie van SQL-beveiligings problemen maakt deel uit van het SQL Advanced Data Security-pakket (ADS). Als ADS nog niet is ingeschakeld, wordt deze automatisch ingeschakeld op de SQL-Server.</li><li>Voor elke regio en resource groep van de geselecteerde SQL-servers wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>ADS wordt in rekening gebracht op $15 per SQL Server.</li></ul>||
+|Transparante gegevens versleuteling voor SQL-data bases moet zijn ingeschakeld|Met deze actie wordt SQL Database Transparent Data Encryption (TDE) ingeschakeld voor de geselecteerde data bases. <br>**Opmerking**: standaard worden door service beheerde TDe-sleutels gebruikt.
+|Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld|Met deze actie wordt de beveiliging van uw opslag account bijgewerkt zodat alleen aanvragen voor beveiligde verbindingen worden toegestaan. (HTTPS). <br>**Opmerking**:<ul><li>Aanvragen die gebruikmaken van HTTP, worden geweigerd.</li><li>Wanneer u de service Azure files gebruikt, mislukt de verbinding zonder versleuteling, inclusief scenario's met SMB 2,1, SMB 3,0 zonder versleuteling en enkele van de Linux SMB-client. Meer informatie.</li></ul>|
+|Webtoepassing mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
+|functie-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
+|De API-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
+|Externe fout opsporing moet worden uitgeschakeld voor webtoepassing|Met deze actie wordt externe fout opsporing uitgeschakeld.|
+|Fout opsporing op afstand moet worden uitgeschakeld voor functie-app|Met deze actie wordt externe fout opsporing uitgeschakeld.|
+|Fout opsporing op afstand moet worden uitgeschakeld voor de API-app|Met deze actie wordt externe fout opsporing uitgeschakeld.|
+|CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw webtoepassing|Deze actie blokkeert andere domeinen om toegang te krijgen tot uw webtoepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld toegestane oorsprong in (gescheiden door komma's). <br>**Opmerking**: als u het veld leeg laat, worden alle cross-Origin-aanroepen geblokkeerd. de titel van het parameter veld: toegestane oorsprongen|
+|CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw functie-app|Deze actie blokkeert andere domeinen om toegang te krijgen tot uw functie toepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld toegestane oorsprong in (gescheiden door komma's). <br>**Opmerking**: als u het veld leeg laat, worden alle cross-Origin-aanroepen geblokkeerd. de titel van het parameter veld: toegestane oorsprongen|
+|CORS mag niet alle bronnen toestaan om toegang te krijgen tot uw API-app|Deze actie blokkeert andere domeinen om toegang te krijgen tot uw API-toepassing. Als u specifieke domeinen wilt toestaan, voert u deze in het veld toegestane oorsprong in (gescheiden door komma's). <br>**Opmerking**: als u het veld leeg laat, worden alle cross-Origin-aanroepen geblokkeerd. de titel van het parameter veld: toegestane oorsprongen|
+|Monitoring agent moet zijn ingeschakeld op uw virtuele machines|Met deze actie wordt een bewakings agent op de geselecteerde virtuele machines geïnstalleerd. Selecteer een werk ruimte voor de agent die u wilt rapporteren.<ul><li>Als uw update beleid is ingesteld op automatisch, wordt het geïmplementeerd op nieuwe bestaande exemplaren.</li><li>Als uw update beleid is ingesteld op hand matig en u de agent wilt installeren op bestaande exemplaren, schakelt u de optie selectie vakje in. [Meer informatie](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
+|Diagnostische logboeken in Key Vault moeten worden ingeschakeld|Met deze actie worden Diagnostische logboeken ingeschakeld op sleutel kluizen. Diagnostische logboeken en metrische gegevens worden opgeslagen in de geselecteerde werk ruimte.|
+|Diagnostische logboeken in service bus moeten worden ingeschakeld|Met deze actie worden Diagnostische logboeken ingeschakeld op de service bus. Diagnostische logboeken en metrische gegevens worden opgeslagen in de geselecteerde werk ruimte.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document werd u getoond hoe u aanbevelingen herstellen in Security Center. Zie de volgende onderwerpen voor meer informatie over Security Center:
+In dit document hebt u geleerd hoe u aanbevelingen in Security Center kunt herstellen. Zie de volgende onderwerpen voor meer informatie over Security Center:
 
-* [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md) - Meer informatie over het configureren van beveiligingsbeleid voor uw Azure-abonnementen en brongroepen.
-* [Beveiligingsstatusbewaking in Azure Security Center](security-center-monitoring.md) - Meer informatie over het bewaken van de status van uw Azure-resources.
+* [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md) -meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
+* [Beveiligings status bewaken in azure Security Center](security-center-monitoring.md) -meer informatie over het controleren van de status van uw Azure-resources.

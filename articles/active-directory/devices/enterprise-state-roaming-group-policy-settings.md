@@ -1,6 +1,6 @@
 ---
-title: Groepsbeleids- en MDM-instellingen voor ESR - Azure Active Directory
-description: Beheerinstellingen voor roaming van enterprisestate
+title: Groepsbeleid-en MDM-instellingen voor ESR-Azure Active Directory
+description: Beheer instellingen voor Enterprise State Roaming
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,51 +12,51 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672372"
 ---
-# <a name="group-policy-and-mdm-settings"></a>Groepsbeleids- en MDM-instellingen
+# <a name="group-policy-and-mdm-settings"></a>groepsbeleid-en MDM-instellingen
 
-Gebruik deze MDM-instellingen (Group Policy and Mobile Device Management) alleen op apparaten die eigendom zijn van bedrijven, omdat dit beleid wordt toegepast op het hele apparaat van de gebruiker. Het toepassen van een MDM-beleid om instellingensynchronisatie uit te schakelen voor een persoonlijk apparaat dat eigendom is van de gebruiker, heeft een negatieve invloed op het gebruik van dat apparaat. Daarnaast worden ook andere gebruikersaccounts op het apparaat beïnvloed door het beleid.
+Gebruik de volgende instellingen voor groeps beleid en de Mobile Device Management (MDM) alleen voor apparaten in bedrijfs eigendom omdat deze beleids regels worden toegepast op het hele apparaat van de gebruiker. Het Toep assen van een MDM-beleid om instellingen synchronisatie uit te scha kelen voor een persoonlijk apparaat, wordt een negatieve invloed op het gebruik van het apparaat. Daarnaast worden ook andere gebruikers accounts op het apparaat door het beleid beïnvloed.
 
-Ondernemingen die roaming voor persoonlijke (onbeheerde) apparaten willen beheren, kunnen de Azure-portal gebruiken om roaming in te schakelen of uit te schakelen, in plaats van groepsbeleid of MDM te gebruiken.
-In de volgende tabellen worden de beschikbare beleidsinstellingen beschreven.
+Ondernemingen die roaming voor persoonlijke (onbeheerde) apparaten willen beheren, kunnen de Azure Portal gebruiken om roaming in of uit te scha kelen, in plaats van groepsbeleid of MDM te gebruiken.
+In de volgende tabellen worden de beschik bare beleids instellingen beschreven.
 
 > [!NOTE]
-> Dit artikel is van toepassing op de Microsoft Edge Legacy HTML-gebaseerde browser die in juli 2015 met Windows 10 is gelanceerd. Het artikel is niet van toepassing op de nieuwe Microsoft Edge Chromium-gebaseerde browser uitgebracht op 15 januari 2020. Zie het artikel Microsoft Edge Sync voor meer informatie over het gedrag Synchroniseren voor de nieuwe Microsoft [Edge.](/deployedge/microsoft-edge-enterprise-sync)
+> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
 ## <a name="mdm-settings"></a>MDM-instellingen
 
-De MDM-beleidsinstellingen zijn van toepassing op zowel Windows 10 als Windows 10 Mobile.  Windows 10 Mobile-ondersteuning bestaat alleen voor Microsoft-accountgebaseerde roaming via het OneDrive-account van de gebruiker. Raadpleeg [Apparaten en eindpunten](enterprise-state-roaming-windows-settings-reference.md) voor meer informatie over welke apparaten worden ondersteund voor synchronisatie op basis van Azure AD.
+De MDM-beleids instellingen zijn van toepassing op Windows 10 en Windows 10 Mobile.  Ondersteuning voor Windows 10 Mobile bestaat alleen voor zwerven op basis van Microsoft-account via het OneDrive-account van de gebruiker. Raadpleeg [apparaten en eind punten](enterprise-state-roaming-windows-settings-reference.md) voor meer informatie over welke apparaten worden ondersteund voor synchronisatie op basis van Azure AD.
 
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
-| Microsoft-accountverbinding toestaan |Hiermee kunnen gebruikers zich verifiëren met een Microsoft-account op het apparaat |
-| Synchronisatie met mijn instellingen toestaan |Hiermee kunnen gebruikers door Windows-instellingen en app-gegevens zwerven; Als u dit beleid uitschakelt, worden synchronisatie en back-ups op mobiele apparaten uitgeschakeld |
+| Verbinding met micro soft-account toestaan |Hiermee kunnen gebruikers verifiëren met behulp van een Microsoft-account op het apparaat |
+| Synchronisatie van mijn instellingen toestaan |Hiermee kunnen gebruikers Windows-instellingen en app-gegevens roamen; Als u dit beleid uitschakelt, worden de synchronisatie en back-ups op mobiele apparaten uitgeschakeld |
 
 ## <a name="group-policy-settings"></a>Instellingen voor groepsbeleid
 
-De groepsbeleidsinstellingen zijn van toepassing op Windows 10-apparaten die zijn verbonden met een Active Directory-domein. De tabel bevat ook oudere instellingen die synchronisatie-instellingen lijken te beheren, maar die niet werken voor Enterprise State Roaming voor Windows 10, die worden opgemerkt met 'Niet gebruiken' in de beschrijving.
+De instellingen voor groeps beleid zijn van toepassing op Windows 10-apparaten die lid zijn van een Active Directory domein. De tabel bevat ook verouderde instellingen die zouden moeten worden gebruikt voor het beheren van synchronisatie-instellingen, maar die niet werken voor Enterprise State Roaming voor Windows 10, die worden vermeld bij ' niet gebruiken ' in de beschrijving.
 
-Deze instellingen bevinden zich op:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
+Deze instellingen bevinden zich in:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name | Beschrijving |
+| Naam | Beschrijving |
 | --- | --- |
-| Accounts: Microsoft-accounts blokkeren |Met deze beleidsinstelling voorkomt u dat gebruikers nieuwe Microsoft-accounts op deze computer toevoegen |
-| Niet synchroniseren |Hiermee voorkomt u dat gebruikers roamen met Windows-instellingen en app-gegevens |
-| Niet synchroniseren personaliseren |Hiermee schakelt u synchronisatie van de groep Thema's uit |
-| Browserinstellingen niet synchroniseren |Hiermee schakelt u de synchronisatie van de groep Internet Explorer uit |
-| Wachtwoorden niet synchroniseren |Hiermee wordt het synchroniseren van de groep Wachtwoorden uitgeschakeld |
-| Andere Windows-instellingen niet synchroniseren |Hiermee wordt het synchroniseren van de groep Andere Windows-instellingen uitgeschakeld |
-| Bureaubladpersonalisatie niet synchroniseren |Niet gebruiken; heeft geen effect |
-| Niet synchroniseren op verbindingen met datalimiet |Hiermee schakelt u roaming op verbindingen met datalimiet uit, zoals mobiel 3G |
+| Accounts: micro soft-accounts blok keren |Met deze beleids instelling wordt voor komen dat gebruikers nieuwe micro soft-accounts toevoegen op deze computer |
+| Niet synchroniseren |Hiermee voor komt u dat gebruikers Windows-instellingen en app-gegevens kunnen roamen |
+| Geen persoonlijke instellingen synchroniseren |Hiermee schakelt u de synchronisatie van de groep Thema's uit |
+| Geen browser instellingen synchroniseren |Hiermee schakelt u het synchroniseren van de Internet Explorer-groep uit |
+| Geen wacht woorden synchroniseren |Hiermee schakelt u het synchroniseren van de groep wacht woorden uit |
+| Andere Windows-instellingen niet synchroniseren |Hiermee schakelt u de synchronisatie van een andere Windows-instellingen groep uit |
+| Geen persoonlijke bureau bladen synchroniseren |Niet gebruiken; heeft geen effect |
+| Niet synchroniseren via verbindingen met data limiet |Hiermee schakelt u roaming uit op verbindingen met data limiet, zoals mobiele 3G |
 | Apps niet synchroniseren |Niet gebruiken; heeft geen effect |
-| App-instellingen niet synchroniseren |Hiermee schakelt u roaming van app-gegevens uit |
-| Startinstellingen niet synchroniseren |Niet gebruiken; heeft geen effect |
+| App-instellingen niet synchroniseren |Hiermee wordt roaming van app-gegevens uitgeschakeld |
+| Start instellingen niet synchroniseren |Niet gebruiken; heeft geen effect |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzicht enterprise State Roaming voor](enterprise-state-roaming-overview.md)een overzicht van enterprise State Roaming voor een overzicht.
+Zie [overzicht van ENTER prise State roaming](enterprise-state-roaming-overview.md)voor een overzicht.

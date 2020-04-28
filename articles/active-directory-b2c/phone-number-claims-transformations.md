@@ -1,7 +1,7 @@
 ---
-title: Telefoonnummer claimt transformaties in aangepast beleid
+title: Claim transformaties voor het telefoon nummer in aangepaste beleids regels
 titleSuffix: Azure AD B2C
-description: Aangepaste beleidsverwijzing voor transformaties van telefoonnummerclaims in Azure AD B2C.
+description: Verwijzing naar het aangepaste beleid voor claim transformaties voor telefoon nummer in Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,30 +12,30 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183925"
 ---
-# <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Wijzigingen in telefoonnummerclaims definiëren in Azure AD B2C
+# <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Geef claim transformaties voor het telefoon nummer op in Azure AD B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel vindt u naslagwerk en voorbeelden voor het gebruik van het telefoonnummerclaimstransformaties van het Identity Experience Framework-schema in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie over claimstransformaties in het algemeen.
+In dit artikel vindt u Naslag informatie en voor beelden voor het gebruik van de claim transformaties van het Framework voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie over claim transformaties in het algemeen.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="convertphonenumberclaimtostring"></a>ConverterenPhoneNumberClaimToString
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
 
-Hiermee `phoneNumber` converteert u `string` een gegevenstype in een gegevenstype.
+Hiermee wordt `phoneNumber` een gegevens type geconverteerd `string` naar een gegevens type.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | phoneNumber | phoneNumber |  Het ClaimType om te converteren naar een tekenreeks. |
-| Uitvoerclaim | phoneNumberString | tekenreeks | Het ClaimType dat wordt geproduceerd nadat deze claimtransformatie is ingeschakeld. |
+| Input claim | phoneNumber | phoneNumber |  Het claim type dat moet worden geconverteerd naar een teken reeks. |
+| Output claim | phoneNumberString | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
 
-In dit voorbeeld `phoneNumber` wordt de claim cellPhoneNumber met een waardetype omgezet in `string`een celtelefoonclaim met een waardetype van .
+In dit voor beeld `phoneNumber` wordt de claim cellPhoneNumber met het waardetype ' geconverteerd naar een cellPhone-claim met het waardetype. `string`
 
 ```XML
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
@@ -50,27 +50,27 @@ In dit voorbeeld `phoneNumber` wordt de claim cellPhoneNumber met een waardetype
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **telefoonnummer**: +11234567890 (telefoonnummer)
-- Output claims:
-  - **phoneNumberString**: +11234567890 (tekenreeks)
+- Invoer claims:
+  - **phonenumber**: + 11234567890 (phonenumber)
+- Uitvoer claims:
+  - **phoneNumberString**: + 11234567890 (teken reeks)
 
 
-## <a name="convertstringtophonenumberclaim"></a>ConverterenStringToPhoneNumberClaim
+## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-Deze claimtransformatie valideert de indeling van het telefoonnummer. Als deze in een geldige indeling is, wijzigt u deze in een standaardindeling die wordt gebruikt door Azure AD B2C. Als het opgegeven telefoonnummer niet in een geldige indeling is, wordt een foutbericht geretourneerd.
+Deze claim transformatie valideert de notatie van het telefoon nummer. Als het een geldige indeling heeft, wijzigt u deze in een standaard indeling die wordt gebruikt door Azure AD B2C. Als het opgegeven telefoon nummer geen geldige indeling heeft, wordt een fout bericht weer gegeven.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | phoneNumberString | tekenreeks |  De string claim voor het telefoonnummer. Het telefoonnummer moet in internationale vorm zijn, compleet met een toonaangevende "+" en landcode. Als invoerclaim `country` wordt verstrekt, is het telefoonnummer in lokale indeling (zonder de landcode). |
-| Invoerclaim | land | tekenreeks | [Optioneel] De tekenreeksclaim voor de landcode van het telefoonnummer in iso3166-formaat (de tweeletterige ISO-3166-landcode). |
-| Uitvoerclaim | outputClaim | phoneNumber | Het resultaat van deze claims transformatie. |
+| Input claim | phoneNumberString | tekenreeks |  De teken reeks claim voor het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land nummer. Als er een `country` invoer claim wordt opgegeven, is het telefoon nummer in de lokale indeling (zonder de land code). |
+| Input claim | land | tekenreeks | Beschrijving De teken reeks claim voor de land code van het telefoon nummer in de ISO3166-indeling (de twee letters ISO-3166-land code). |
+| Output claim | Output claim | phoneNumber | Het resultaat van deze claim transformatie. |
 
-De **convertstringtophonenumberclaimtransformatie** wordt altijd uitgevoerd vanuit een [validatietechnisch profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelfgeclaimd technisch profiel](self-asserted-technical-profile.md) of [displaycontrole.](display-controls.md) De **UserMessageIfClaimsTransformationInvalidPhoneNumber** zelf geclaimde technische profielmetadata regelt het foutbericht dat aan de gebruiker wordt gepresenteerd.
+De **ConvertStringToPhoneNumberClaim** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md) of een [Weergave besturings element](display-controls.md). De meta gegevens van het zelfondertekende technische profiel **UserMessageIfClaimsTransformationInvalidPhoneNumber** bepalen het fout bericht dat aan de gebruiker wordt gepresenteerd.
 
-![Diagram van het uitvoeringspad van foutmeldingen](./media/phone-authentication/assert-execution.png)
+![Diagram van het uitvoerings traject voor het fout bericht](./media/phone-authentication/assert-execution.png)
 
-U deze claimtransformatie gebruiken om ervoor te zorgen dat de opgegeven tekenreeksclaim een geldig telefoonnummer is. Zo niet, dan wordt er een foutmelding gegenereerd. In het volgende voorbeeld wordt gecontroleerd of het **phoneString** ClaimType inderdaad een geldig telefoonnummer is en wordt het telefoonnummer geretourneerd in de standaard Azure AD B2C-indeling. Anders wordt een foutbericht gegenereerd.
+U kunt deze claim transformatie gebruiken om ervoor te zorgen dat de gegeven teken reeks claim een geldig telefoon nummer is. Als dat niet het geval is, wordt er een fout bericht gegenereerd. In het volgende voor beeld wordt gecontroleerd of het **phoneString** claim type inderdaad een geldig telefoon nummer is en retourneert het telefoon nummer in de standaard indeling Azure AD B2C. Anders wordt er een fout bericht gegenereerd.
 
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
@@ -84,7 +84,7 @@ U deze claimtransformatie gebruiken om ervoor te zorgen dat de opgegeven tekenre
 </ClaimsTransformation>
 ```
 
-Het zelfverklaarde technische profiel dat het validatietechnische profiel aanroept dat deze claimtransformatie bevat, kan de foutmelding definiëren.
+Het zelfondertekende technische profiel dat het validatie technische profiel aanroept dat deze claim transformatie bevat, kan het fout bericht definiëren.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
@@ -97,40 +97,40 @@ Het zelfverklaarde technische profiel dat het validatietechnische profiel aanroe
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-- Invoerclaims:
+- Invoer claims:
   - **phoneNumberString**: 033 456-7890
   - **land**: DK
-- Output claims:
-  - **outputClaim**: +450334567890
+- Uitvoer claims:
+  - **output claim**: + 450334567890
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-- Invoerclaims:
-  - **phoneNumberString**: +1 (123) 456-7890
-- Output claims:
-  - **outputClaim**: +11234567890
+- Invoer claims:
+  - **phoneNumberString**: + 1 (123) 456-7890
+- Uitvoer claims:
+  - **output claim**: + 11234567890
 
 
-## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberandCountryCodeFromPhoneNumberString
+## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
-Hiermee wordt de landcode en het nationale nummer uit de invoerclaim gehaald en wordt optioneel een uitzondering gemaakt als het opgegeven telefoonnummer niet geldig is.
+Hiermee worden de land code en het nationale nummer uit de invoer claim geëxtraheerd en wordt eventueel een uitzonde ring gegenereerd als het opgegeven telefoon nummer ongeldig is.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | phoneNumber | tekenreeks | De string claim van het telefoonnummer. Het telefoonnummer moet in internationale vorm zijn, compleet met een toonaangevende "+" en landcode. |
-| Inputparameter | throwExceptionOnFailure | booleaans | [Optioneel] Een parameter die aangeeft of er een uitzondering wordt gegenereerd wanneer het telefoonnummer niet geldig is. De standaardwaarde is onwaar. |
-| Inputparameter | countryCodeType | tekenreeks | [Optioneel] Een parameter die het type landcode in de uitvoerclaim aangeeft. Beschikbare waarden zijn **CallingCode** (de internationale belcode voor een land, bijvoorbeeld +1) of **ISO3166** (de tweeletterige ISO-3166-landcode). |
-| Uitvoerclaim | nationaalAantal | tekenreeks | De string claim voor het nationale nummer van het telefoonnummer. |
-| Uitvoerclaim | landCode | tekenreeks | De string claim voor de landcode van het telefoonnummer. |
+| Input claim | phoneNumber | tekenreeks | De teken reeks claim van het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land nummer. |
+| Parameter | throwExceptionOnFailure | booleaans | Beschrijving Een para meter die aangeeft of er een uitzonde ring wordt gegenereerd wanneer het telefoon nummer ongeldig is. De standaard waarde is False. |
+| Parameter | countryCodeType | tekenreeks | Beschrijving Een para meter die het type land code in de uitvoer claim aangeeft. Beschik bare waarden zijn **CallingCode** (de internationale aanroepende code voor een land, bijvoorbeeld + 1) of **iso3166** (de ISO-3166-land code van twee letters). |
+| Output claim | nationalNumber | tekenreeks | De teken reeks claim voor het nationale nummer van het telefoon nummer. |
+| Output claim | countryCode | tekenreeks | De teken reeks claim voor de land code van het telefoon nummer. |
 
 
-Als de **GetNationalNumberAndCountryCodeFromPhoneNumberString-claimtransformatie** wordt uitgevoerd vanuit een [validatietechnisch profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelfgeclaimd technisch profiel](self-asserted-technical-profile.md) of een [displaycontrolactie,](display-controls.md#display-control-actions)regelt de **UserMessageIfPhoneNumberNumberParseFailure** zelfgeclaimde technische profielmetagegevens het foutbericht dat aan de gebruiker wordt gepresenteerd.
+Als de **GetNationalNumberAndCountryCodeFromPhoneNumberString** -claim transformatie wordt uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelfondertekend technisch profiel](self-asserted-technical-profile.md) of een [Weergave besturings actie](display-controls.md#display-control-actions), bepaalt de meta gegevens van het door de **UserMessageIfPhoneNumberParseFailure** zelf gedefinieerde technische profiel de fout melding die wordt weer gegeven aan de gebruiker.
 
-![Diagram van het uitvoeringspad van foutmeldingen](./media/phone-authentication/assert-execution.png)
+![Diagram van het uitvoerings traject voor het fout bericht](./media/phone-authentication/assert-execution.png)
 
-U deze claimtransformatie gebruiken om een volledig telefoonnummer op te splitsen in de landcode en het nationale nummer. Als het opgegeven telefoonnummer niet geldig is, u ervoor kiezen om een foutbericht te sturen.
+U kunt deze claim transformatie gebruiken om een volledig telefoon nummer te splitsen in de land code en het nationale nummer. Als het ingevoerde telefoon nummer niet geldig is, kunt u een fout bericht genereren.
 
-In het volgende voorbeeld wordt geprobeerd het telefoonnummer op te splitsen in nationale nummer- en landcode. Als het telefoonnummer geldig is, wordt het telefoonnummer overschreven door het nationale nummer. Als het telefoonnummer niet geldig is, wordt er geen uitzondering gemaakt en heeft het telefoonnummer nog steeds de oorspronkelijke waarde.
+In het volgende voor beeld wordt geprobeerd het telefoon nummer te splitsen in nationaal nummer en land nummer. Als het telefoon nummer geldig is, wordt het telefoon nummer overschreven door het nationale nummer. Als het telefoon nummer ongeldig is, wordt er geen uitzonde ring gegenereerd en heeft het telefoon nummer nog steeds de oorspronkelijke waarde.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
@@ -148,7 +148,7 @@ In het volgende voorbeeld wordt geprobeerd het telefoonnummer op te splitsen in 
 </ClaimsTransformation>
 ```
 
-Het zelfverklaarde technische profiel dat het validatietechnische profiel aanroept dat deze claimtransformatie bevat, kan de foutmelding definiëren.
+Het zelfondertekende technische profiel dat het validatie technische profiel aanroept dat deze claim transformatie bevat, kan het fout bericht definiëren.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
@@ -161,22 +161,22 @@ Het zelfverklaarde technische profiel dat het validatietechnische profiel aanroe
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-- Invoerclaims:
-  - **telefoonnummer**: +49 (123) 456-7890
-- Invoerparameters:
-  - **throwExceptionOnFailure**: false
-  - **countryCodeType**: ISO3166
-- Output claims:
-  - **nationaalNummer**: 1234567890
-  - **countryCode**: DE
+- Invoer claims:
+  - **phonenumber**: + 49 (123) 456-7890
+- Invoer parameters:
+  - **throwExceptionOnFailure**: False
+  - **countryCodeType**: iso3166
+- Uitvoer claims:
+  - **nationalNumber**: 1234567890
+  - **countryCode**: de
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-- Invoerclaims:
-  - **telefoonnummer**: +49 (123) 456-7890
-- Invoerparameters
-  - **throwExceptionOnFailure**: false
+- Invoer claims:
+  - **phonenumber**: + 49 (123) 456-7890
+- Invoer parameters
+  - **throwExceptionOnFailure**: False
   - **countryCodeType**: CallingCode
-- Output claims:
-  - **nationaalNummer**: 1234567890
-  - **countryCode**: +49
+- Uitvoer claims:
+  - **nationalNumber**: 1234567890
+  - **countryCode**: + 49

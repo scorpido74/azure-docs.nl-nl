@@ -9,43 +9,43 @@ ms.date: 02/18/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e950d194ab48cec1a70c7bd17617332cb858a55d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77485616"
 ---
-## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. De Azure AD-tenant maken
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. de Azure AD-Tenant maken
 
-Maak een Azure AD-tenant met de stappen in [het artikel Een nieuw tenant](../articles/active-directory/fundamentals/active-directory-access-create-new-tenant.md) maken:
+Maak een Azure AD-Tenant met behulp van de stappen in het artikel [een nieuwe Tenant maken](../articles/active-directory/fundamentals/active-directory-access-create-new-tenant.md) :
 
-* Organisatienaam
+* Organisatie naam
 * Oorspronkelijke domeinnaam
 
   Voorbeeld:
 
-   ![Nieuwe Azure AD-tenant](./media/openvpn-azure-ad-tenant-multi-app/new-tenant.png)
+   ![Nieuwe Azure AD-Tenant](./media/openvpn-azure-ad-tenant-multi-app/new-tenant.png)
 
-## <a name="2-create-tenant-users"></a><a name="users"></a>2. Tenant-gebruikers maken
+## <a name="2-create-tenant-users"></a><a name="users"></a>2. Tenant gebruikers maken
 
-In deze stap maakt u twee Azure AD-tenantgebruikers: één algemeen beheerdersaccount en één hoofdgebruikersaccount. Het hoofdgebruikersaccount wordt gebruikt als uw hoofdinsluitingsaccount (serviceaccount). Wanneer u een Azure AD-tenantgebruikersaccount maakt, past u de maprol aan voor het type gebruiker dat u wilt maken. Gebruik de stappen in [dit artikel](../articles/active-directory/fundamentals/add-users-azure-active-directory.md) om ten minste twee gebruikers voor uw Azure AD-tenant te maken. Wijzig de **maprol** om de accounttypen te maken:
+In deze stap maakt u twee Azure AD-Tenant gebruikers: één globaal beheerders account en één hoofd gebruikers account. Het hoofd gebruikers account wordt gebruikt als uw hoofd account voor insluiten (Service-account). Wanneer u een Azure AD-Tenant gebruikers account maakt, past u de Directory-rol aan voor het type gebruiker dat u wilt maken. Volg de stappen in [dit artikel](../articles/active-directory/fundamentals/add-users-azure-active-directory.md) om ten minste twee gebruikers te maken voor uw Azure AD-Tenant. Zorg ervoor dat u de **Directory-rol** wijzigt om de volgende account typen te maken:
 
 * Globale beheerder
 * Gebruiker
 
-## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3. Registreer de VPN-client
+## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3. de VPN-client registreren
 
-Registreer de VPN-client in de Azure AD-tenant.
+Registreer de VPN-client in de Azure AD-Tenant.
 
-1. Zoek de directory-id van de map die u wilt gebruiken voor verificatie. Het wordt vermeld in de sectie Eigenschappen van de Active Directory-pagina.
+1. Zoek de Directory-ID van de map die u voor verificatie wilt gebruiken. Deze wordt weer gegeven in de sectie eigenschappen van de pagina Active Directory.
 
-    ![Directory-id](./media/openvpn-azure-ad-tenant-multi-app/directory-id.png)
+    ![Map-ID](./media/openvpn-azure-ad-tenant-multi-app/directory-id.png)
 
 2. Kopieer de Map-id.
 
-3. Meld u aan bij de Azure-portal als gebruiker waaraan de **globale beheerdersrol** is toegewezen.
+3. Meld u aan bij de Azure Portal als gebruiker aan wie de rol van **globale beheerder** is toegewezen.
 
-4. Geef vervolgens toestemming van de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatielocatie in de adresbalk van uw browser:
+4. Geef vervolgens toestemming voor de beheerder. Kopieer en plak de URL die betrekking heeft op uw implementatie locatie in de adres balk van uw browser:
 
     Public
 
@@ -71,71 +71,71 @@ Registreer de VPN-client in de Azure AD-tenant.
     https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. Selecteer het globale **beheerdersaccount** als u daarom wordt gevraagd.
+5. Selecteer het account van de **globale beheerder** als u hierom wordt gevraagd.
 
-    ![Directory-id](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
+    ![Map-ID](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
 
-6. Selecteer **Accepteren** wanneer daarom wordt gevraagd.
+6. Selecteer **accepteren** wanneer u hierom wordt gevraagd.
 
     ![Accepteren](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
-7. Onder uw Azure AD wordt in **Enterprise-toepassingen** **Azure VPN** weergegeven.
+7. Onder uw Azure AD, in **bedrijfs toepassingen**, wordt **Azure VPN** weer gegeven.
 
      ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-vpn.png)
 
-## <a name="4-register-additional-applications"></a><a name="register-apps"></a>4. Aanvullende aanvragen registreren
+## <a name="4-register-additional-applications"></a><a name="register-apps"></a>4. aanvullende toepassingen registreren
 
-In deze stap registreert u extra toepassingen voor verschillende gebruikers en groepen.
+In deze stap registreert u aanvullende toepassingen voor verschillende gebruikers en groepen.
 
-1. Klik onder uw Azure Active Directory op **App-registraties** en vervolgens **+ Nieuwe registratie**.
+1. Klik onder uw Azure Active Directory op **app-registraties** en vervolgens op **+ nieuwe registratie**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app1.png)
 
-2. Voer **op** de pagina Een aanvraag registreren de **naam**in . Selecteer de gewenste **ondersteunde accounttypen**en klik op **Registreren**.
+2. Op de pagina **een toepassing registreren** voert u de **naam**in. Selecteer de gewenste **ondersteunde account typen**en klik vervolgens op **registreren**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app2.png)
 
-3. Zodra de nieuwe app is geregistreerd, klikt u op Een API onder het app-blad **blootstellen.**
+3. Zodra de nieuwe app is geregistreerd, klikt u op **een API beschikbaar** maken onder de app-Blade.
 
-4. Klik **op + Een bereik toevoegen**.
+4. Klik op **+ een bereik toevoegen**.
 
-5. Laat de **standaard-toepassings-id URI**. Klik **op Opslaan en doorgaan**.
+5. De standaard **-URI voor de toepassings-id**behouden. Klik op **opslaan en door gaan**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
-6. Vul de vereiste velden in en zorg ervoor dat **status** is **ingeschakeld**. Klik **op Bereik toevoegen**.
+6. Vul de vereiste velden in en zorg ervoor dat de **status** is **ingeschakeld**. Klik op **bereik toevoegen**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 
-7. Klik **op Een API blootstellen** en vervolgens + Een **clienttoepassing toevoegen**.  Voer **voor client-id**de volgende waarden in, afhankelijk van de cloud:
+7. Klik op **een API beschikbaar** maken en vervolgens **een client toepassing toevoegen**.  Voer voor **client-id**de volgende waarden in, afhankelijk van de Cloud:
 
-    - Voer **41b23e61-6c1e-4545-b367-cd054e0ed4b4** in voor Azure **Public**
+    - Voer **41b23e61-6c1e-4545-b367-cd054e0ed4b4** voor Azure **Public** in
     - Voer **51bb15d4-3a4f-4ebf-9dca-40096fe32426** in voor Azure **Government**
-    - Voer **538ee9e6-310a-468d-afef-ea97365856a9** voor Azure **Duitsland in**
-    - Voer **49f817b6-84ae-4cc0-928c-73f27289b3a a** voor Azure **China 21Vianet in**
+    - **538ee9e6-310A-468d-afef-ea97365856a9** invoeren voor Azure **Duitsland**
+    - **49f817b6-84ae-4cc0-928c-73f27289b3aa** invoeren voor Azure **China 21vianet**
 
-8. Klik **op Toepassing toevoegen**.
+8. Klik op **toepassing toevoegen**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app5.png)
 
-9. Kopieer de **toepassings-id (client)** van de pagina **Overzicht.** U hebt deze informatie nodig om uw VPN-gateway(s) te configureren.
+9. Kopieer de **toepassings-id (client)** van de pagina **overzicht** . U hebt deze informatie nodig om uw VPN-gateway (s) te configureren.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app6.png)
 
-10. Herhaal de stappen in deze [sectie extra toepassingen](#register-apps) registreren om zoveel mogelijk toepassingen te maken die nodig zijn voor uw beveiligingsvereiste. Elke toepassing wordt gekoppeld aan een VPN-gateway en kan een andere set gebruikers hebben. Er kan slechts één toepassing aan een gateway worden gekoppeld.
+10. Herhaal de stappen in de sectie [aanvullende toepassingen registreren](#register-apps) om zoveel toepassingen te maken die nodig zijn voor uw beveiligings vereiste. Elke toepassing wordt gekoppeld aan een VPN-gateway en kan een andere set gebruikers hebben. Er kan slechts één toepassing aan een gateway worden gekoppeld.
 
-## <a name="5-assign-users-to-applications"></a><a name="assign-users"></a>5. Gebruikers toewijzen aan toepassingen
+## <a name="5-assign-users-to-applications"></a><a name="assign-users"></a>5. gebruikers toewijzen aan toepassingen
 
 Wijs de gebruikers toe aan uw toepassingen.
 
-1. Selecteer onder **Azure AD-> Enterprise-toepassingen**de nieuw geregistreerde toepassing en klik op **Eigenschappen**. Ervoor zorgen dat **de gebruiker toewijzing vereist?** is ingesteld op **ja**. Klik op **Opslaan**.
+1. Selecteer onder **Azure AD-> Enter prise-toepassingen**de zojuist geregistreerde toepassing en klik op **Eigenschappen**. Zorg ervoor dat de **gebruikers toewijzing vereist** is. is ingesteld op **Ja**. Klik op **Opslaan**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 
-2. Klik op de app-pagina op **Gebruikers en groepen**en klik vervolgens op Gebruiker **toevoegen**.
+2. Klik op de pagina app op **gebruikers en groepen**en klik vervolgens op **+ gebruiker toevoegen**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. Klik **onder Toewijzing toevoegen**op Gebruikers en **groepen**. Selecteer de gebruikers die u toegang wilt hebben tot deze VPN-toepassing. Klik **op Selecteren**.
+3. Klik onder **toewijzing toevoegen**op **gebruikers en groepen**. Selecteer de gebruikers die u toegang wilt geven tot deze VPN-toepassing. Klik op **selecteren**.
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

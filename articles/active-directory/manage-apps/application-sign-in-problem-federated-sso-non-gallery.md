@@ -1,6 +1,6 @@
 ---
-title: Problemen met het aanmelden bij niet-galerijfederatie's app voor één aanmelding
-description: Richtlijnen voor de specifieke problemen waarmee u te maken krijgen bij het aanmelden bij een toepassing die is geconfigureerd voor een op SAML gebaseerde federatieve enkele aanmelding met Azure AD
+title: Problemen bij het aanmelden bij een niet-galerie federatieve eenmalige aanmelding-app
+description: Richt lijnen voor de specifieke problemen die u kunt tegen komen wanneer u zich aanmeldt bij een toepassing die is geconfigureerd voor op SAML gebaseerde federatieve eenmalige aanmelding met Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,52 +17,52 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8cd951f0b4d2f4887630e29cbd3b0ae429b9f6f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77367859"
 ---
-# <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemen met het aanmelden bij een niet-galerietoepassing die is geconfigureerd voor een gefedereerde enkele aanmelding
+# <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemen bij het aanmelden bij een niet-galerie toepassing die is geconfigureerd voor federatieve eenmalige aanmelding
 
-Om de onderstaande aanmeldingsproblemen op te lossen, raden we u aan deze suggestie te volgen om een betere diagnose te krijgen en de oplossingsstappen te automatiseren:
+Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze suggestie te volgen om betere diagnose te krijgen en de oplossings stappen te automatiseren:
 
-- Installeer de [my apps secure browser extensie](access-panel-extension-problem-installing.md) om Azure Active Directory (Azure AD) te helpen betere diagnoses en oplossingen te bieden bij het gebruik van de testervaring in de Azure-portal.
-- De fout reproduceren met behulp van de testervaring op de configuratiepagina van de app in de Azure-portal. Meer informatie over [op SamL gebaseerde toepassingen voor foutopsporing saml](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- Installeer de [beveiligde browser uitbreiding mijn apps](access-panel-extension-problem-installing.md) om Azure Active Directory (Azure AD) te helpen bij het verbeteren van de test ervaring in de Azure Portal.
+- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het [opsporen van op SAML gebaseerde toepassingen voor eenmalige aanmelding](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
 
-## <a name="application-not-found-in-directory"></a>Toepassing niet gevonden in directory
+## <a name="application-not-found-in-directory"></a>Kan de toepassing niet vinden in de map
 
-*Fout AADSTS70001: Toepassing `https://contoso.com` met id is niet gevonden in de map.*
+*Fout AADSTS70001: de toepassing met `https://contoso.com` de id is niet gevonden in de map*.
 
 **Mogelijke oorzaak**
 
-Het kenmerk Issuer verzendt vanuit de toepassing naar Azure AD in het SAML-verzoek komt niet overeen met de id-waarde die is geconfigureerd in de toepassing Azure AD.
+Het kenmerk van de verlener verzendt van de toepassing naar Azure AD in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd in de toepassing Azure AD.
 
 **Afsluiting**
 
-Controleer of `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in Azure AD. Als u de [testervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure-portal gebruikt met de beveiligde browserextensie Mijn apps, hoeft u deze stappen niet handmatig te volgen.
+Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing die u wilt configureren als u zich wilt aanmelden.
+6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren.
 
-7. Zodra de toepassing is geladen, klikt u op de **aanmelding in één** keer in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of de waarde in het tekstvak Identifier overeenkomt met de waarde voor de id-waarde die in de fout wordt weergegeven.
+8. Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of de waarde in het tekstvak id overeenkomt met de waarde voor de id-waarde die wordt weer gegeven in de fout.
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Het antwoordadres komt niet overeen met de antwoordadressen die voor de toepassing zijn geconfigureerd. 
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Het antwoord adres komt niet overeen met de antwoord adressen die voor de toepassing zijn geconfigureerd. 
 
-*Fout AADSTS50011: Het `https://contoso.com` antwoordadres komt niet overeen met de antwoordadressen die voor de toepassing zijn geconfigureerd* 
+*Fout AADSTS50011: het antwoord adres `https://contoso.com` komt niet overeen met de antwoord adressen die voor de toepassing zijn geconfigureerd* 
 
 **Mogelijke oorzaak** 
 
@@ -70,31 +70,31 @@ De waarde AssertionConsumerServiceURL in de SAML-aanvraag komt niet overeen met 
 
 **Afsluiting** 
 
-Controleer of `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in Azure AD. Als u de [testervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure-portal gebruikt met de beveiligde browserextensie Mijn apps, hoeft u deze stappen niet handmatig te volgen.
+Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
  
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.** 
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.** 
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken. 
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant. 
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.** 
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item. 
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker. 
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant. 
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven. 
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven. 
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
   
-6. Selecteer de toepassing die u wilt configureren als u één aanmelding wilt configureren
+6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren
 
-7. Zodra de toepassing is geladen, klikt u op de **aanmelding in één** keer in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of werk de waarde in het `AssertionConsumerServiceURL` tekstvak Van de URL van antwoord bij om de waarde in het SAML-verzoek te evenaren.    
+8. Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of werk de waarde in het tekstvak antwoord-URL in op `AssertionConsumerServiceURL` overeenkomst met de waarde in de SAML-aanvraag.    
     
-Nadat u de waarde van de URL voor beantwoorden in Azure AD hebt bijgewerkt en overeenkomt met de waarde die door de toepassing in het SAML-verzoek wordt verzonden, moet u zich bij de toepassing kunnen aanmelden.
+Nadat u de waarde voor de antwoord-URL in azure AD hebt bijgewerkt en deze overeenkomt met de waarde die door de toepassing in de SAML-aanvraag is verzonden, moet u zich kunnen aanmelden bij de toepassing.
 
-## <a name="user-not-assigned-a-role"></a>Gebruiker die geen rol heeft toegewezen
+## <a name="user-not-assigned-a-role"></a>Gebruiker heeft geen rol toegewezen
 
-*Fout AADSTS50105: De `brian\@contoso.com` aangemelde gebruiker is niet toegewezen aan een rol voor de toepassing*
+*Fout AADSTS50105: de aangemelde gebruiker `brian\@contoso.com` is niet toegewezen aan een rol voor de toepassing*
 
 **Mogelijke oorzaak**
 
@@ -102,45 +102,45 @@ De gebruiker heeft in Azure AD geen toegang gekregen tot de toepassing.
 
 **Afsluiting**
 
-Volg de onderstaande stappen om een of meer gebruikers rechtstreeks aan een toepassing toe te wijzen. Als u de [testervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure-portal gebruikt met de beveiligde browserextensie Mijn apps, hoeft u deze stappen niet handmatig te volgen.
+Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing waaraan u een gebruiker wilt toewijzen uit de lijst.
+6. Selecteer in de lijst de toepassing waaraan u een gebruiker wilt toewijzen.
 
-7. Zodra de toepassing wordt geladen, klikt u op **Gebruikers en groepen** in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Klik **op** de knop Toevoegen boven aan de lijst **Gebruikers en groepen** om het deelvenster Toewijzing **toevoegen** te openen.
+8. Klik op de knop **toevoegen** boven aan de lijst **gebruikers en groepen** om het deel venster **toewijzing toevoegen** te openen.
 
-9. klik op de selectie **voor gebruikers en groepen** in het deelvenster Toewijzing **toevoegen.**
+9. Klik op de selector **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
-10. Typ de **volledige naam** of het volledige **e-mailadres** van de gebruiker die u wilt toewijzen aan het zoekvak Zoeken op naam of **e-mailadres.**
+10. Typ de **volledige naam** of het **e-mail adres** van de gebruiker die u wilt toewijzen in het zoekvak **zoeken op naam of e-mail adres** .
 
-11. Plaats de **plaats van** de gebruiker in de lijst om een **selectievakje**te onthullen. Klik op het selectievakje naast de profielfoto of het logo van de gebruiker om uw gebruiker toe te voegen aan de **lijst Geselecteerde.**
+11. Beweeg de muis aanwijzer over de **gebruiker** in de lijst om een **selectie vakje**weer te geven. Klik op het selectie vakje naast de foto of het logo van het profiel van de gebruiker om uw gebruiker toe te voegen aan de **geselecteerde** lijst.
 
-12. **Optioneel:** Als u meer dan één gebruiker wilt **toevoegen,** typt u een andere **volledige naam** of **e-mailadres** in het zoekvak **Zoeken op naam of e-mailadres** en klikt u op het selectievakje om deze gebruiker toe te voegen aan de **lijst Geselecteerde.**
+12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
 
-13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **Selecteren** om deze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
+13. Wanneer u klaar bent met het selecteren van gebruikers, klikt u op de knop **selecteren** om ze toe te voegen aan de lijst met gebruikers en groepen die aan de toepassing moeten worden toegewezen.
 
-14. **Optioneel:** klik op de rolkiezer **selecteren** in het deelvenster **Toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
+14. **Optioneel:** Klik op het selectie vakje **rol** selecteren in het deel venster **toewijzing toevoegen** om een rol te selecteren die u wilt toewijzen aan de gebruikers die u hebt geselecteerd.
 
-15. Klik **op** de knop Toewijzen om de toepassing toe te wijzen aan de geselecteerde gebruikers.
+15. Klik op de knop **toewijzen** om de toepassing aan de geselecteerde gebruikers toe te wijzen.
 
-Na een korte periode kunnen de gebruikers die u hebt geselecteerd deze toepassingen starten met behulp van de methoden die zijn beschreven in de sectie oplossingsbeschrijving.
+Na korte tijd kunnen de gebruikers die u hebt geselecteerd deze toepassingen starten met behulp van de methoden die worden beschreven in de sectie Beschrijving van oplossing.
 
 ## <a name="not-a-valid-saml-request"></a>Geen geldige SAML-aanvraag
 
-*Fout AADSTS75005: De aanvraag is geen geldig Saml2-protocolbericht.*
+*Fout AADSTS75005: de aanvraag is geen geldig Saml2-protocol bericht.*
 
 **Mogelijke oorzaak**
 
@@ -152,125 +152,125 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die door de toepassing i
 
 **Afsluiting**
 
-1.  Leg SAML-verzoek vast. volg de zelfstudie over [het opsporen van SAML-gebaseerde eenmalige aanmelding voor toepassingen in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) om te leren hoe u de SAML-aanvraag vastleggen.
+1.  SAML-aanvraag vastleggen. Volg de zelf studie over het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) voor meer informatie over het vastleggen van de SAML-aanvraag.
 
 2.  Neem contact op met de leverancier van de toepassing en deel:
 
     -   SAML-aanvraag
 
-    -   [Azure AD Single Sign-on SAML-protocolvereisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+    -   [Vereisten voor het SAML-protocol voor eenmalige aanmelding voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-De leverancier van de toepassing moet valideren dat hij de Azure AD SAML-implementatie voor eenmalige aanmelding ondersteunt.
+De leverancier van de toepassing moet valideren dat de Azure AD SAML-implementatie voor eenmalige aanmelding wordt ondersteund.
 
-## <a name="misconfigured-application"></a>Verkeerd geconfigureerde toepassing
+## <a name="misconfigured-application"></a>Onjuist geconfigureerde toepassing
 
-*Fout AADSTS650056: Verkeerd geconfigureerde toepassing. Dit kan te wijten zijn aan een van de volgende: De client heeft geen machtigingen vermeld in de gevraagde machtigingen in de aanvraagregistratie van de client. Of de beheerder heeft geen toestemming gegeven in de tenant. Of controleer de toepassings-id in het verzoek om te controleren of deze overeenkomt met de geconfigureerde clienttoepassings-id. Neem contact op met uw beheerder om de configuratie of toestemming namens de tenant te herstellen.*
+*Fout AADSTS650056: onjuist geconfigureerde toepassing. Dit kan een van de volgende oorzaken hebben: de client heeft geen machtigingen vermeld in de aangevraagde machtigingen in de registratie van de client toepassing. Of de beheerder heeft geen toestemming gegeven in de Tenant. Of Controleer de toepassings-id in de aanvraag om er zeker van te zijn dat deze overeenkomt met de geconfigureerde client toepassings-id. Neem contact op met uw beheerder om de configuratie of instemming namens de Tenant op te lossen.*
 
 **Mogelijke oorzaak**
 
-Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD wordt verzonden in de SAML-aanvraag, komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in Azure AD.
+Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in azure AD.
 
 **Afsluiting**
 
-Controleer of `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in Azure AD. Als u de [testervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure-portal gebruikt met de beveiligde browserextensie Mijn apps, hoeft u de volgende stappen niet handmatig te volgen:
+Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
 
-1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **medebeheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 
-1.  Open de **Azure Active Directory-extensie** door **Alle services** boven aan het linkernavigatiemenu te selecteren.
+1.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
 
-1.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+1.  Typ **' Azure Active Directory '** in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-1.  Selecteer **Bedrijfstoepassingen** in het linkernavigatiemenu van Azure Active Directory.
+1.  Selecteer **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-1.  Selecteer **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+1.  Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-    Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen**.
+    Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen**in.
 
 1.  Selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
 
-1.  Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of de waarde in het tekstvak Identifier overeenkomt met de waarde voor de id-waarde die in de fout wordt weergegeven.
+1.  Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of de waarde in het tekstvak id overeenkomt met de waarde voor de id-waarde die wordt weer gegeven in de fout.
 
-## <a name="certificate-or-key-not-configured"></a>Certificaat of sleutel niet geconfigureerd
+## <a name="certificate-or-key-not-configured"></a>Het certificaat of de sleutel is niet geconfigureerd
 
-Fout AADSTS50003: Geen ondertekeningssleutel geconfigureerd.
+Fout AADSTS50003: er is geen handtekening sleutel geconfigureerd.
 
 **Mogelijke oorzaak**
 
-Het toepassingsobject is beschadigd en Azure AD herkent het certificaat dat is geconfigureerd voor de toepassing niet.
+Het toepassings object is beschadigd en het certificaat dat is geconfigureerd voor de toepassing wordt niet herkend door Azure AD.
 
 **Afsluiting**
 
-Voer de onderstaande stappen uit om een nieuw certificaat te verwijderen en te maken:
+Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken:
 
-1. Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
+1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
-2. Open de **Azure Active Directory Extension** door boven aan het linkernavigatiemenu op Alle **services** te klikken.
+2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4. klik op **Bedrijfstoepassingen** in het navigatiemenu van Azure Active Directory met de linker.
+4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5. klik op **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
-6. Selecteer de toepassing die u wilt configureren als u zich wilt aanmelden.
+6. Selecteer de toepassing waarvoor u eenmalige aanmelding wilt configureren.
 
-7. Zodra de toepassing is geladen, klikt u op de **aanmelding in één** keer in het linkernavigatiemenu van de toepassing.
+7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. klik **op Nieuw certificaat maken** onder de sectie **SAML-ondertekeningscertificaat.**
+8. Klik op **Nieuw certificaat maken** onder de sectie **SAML-handtekening certificaat** .
 
-9. Selecteer Vervaldatum. Klik vervolgens op **Opslaan.**
+9. Selecteer een verval datum. Klik vervolgens op **opslaan.**
 
-10. Schakel **Nieuw certificaat actief maken** om het actieve certificaat te overschrijven. Klik vervolgens op **Opslaan** boven in het deelvenster en accepteer het rollovercertificaat om het te activeren.
+10. Schakel het selectie vakje **Nieuw certificaat actief maken** in om het actieve certificaat te onderdrukken. Klik vervolgens op **Opslaan** boven in het deelvenster en accepteer het rollovercertificaat om het te activeren.
 
-11. Klik onder de sectie **SAML-ondertekeningscertificaat** op **Verwijderen** om het **ongebruikte** certificaat te verwijderen.
+11. Klik onder de sectie **SAML-handtekening certificaat** op **verwijderen** om het **ongebruikte** certificaat te verwijderen.
 
-## <a name="saml-request-not-present-in-the-request"></a>SAML Request niet aanwezig in het verzoek
+## <a name="saml-request-not-present-in-the-request"></a>SAML-aanvraag is niet aanwezig in de aanvraag
 
-*Fout AADSTS750054: SAMLRequest of SAMLResponse moet aanwezig zijn als querytekenreeksparameters in HTTP-aanvraag voor SAML Redirect-binding.*
+*Fout AADSTS750054: SAMLRequest of SAMLResponse moet aanwezig zijn als query reeks parameters in HTTP-aanvraag voor de binding van SAML-omleiding.*
 
 **Mogelijke oorzaak**
 
-Azure AD heeft de SAML-aanvraag niet kunnen identificeren binnen de URL-parameters in de HTTP-aanvraag. Dit kan gebeuren als de toepassing http-omleidingsbinding niet gebruikt bij het verzenden van het SAML-verzoek naar Azure AD.
+Azure AD kan de SAML-aanvraag niet identificeren binnen de URL-para meters in de HTTP-aanvraag. Dit kan gebeuren als de toepassing geen gebruik maakt van een binding voor HTTP-omleiding bij het verzenden van de SAML-aanvraag naar Azure AD.
 
 **Afsluiting**
 
-De toepassing moet de SAML-aanvraag gecodeerd in de locatieheader verzenden met HTTP redirect binding. Lees de sectie over binding voor HTTP-omleidingen in het [specificatiedocument over het SAML-protocol](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+De toepassing moet de SAML-aanvraag die is gecodeerd naar de locatie header verzenden met behulp van binding van HTTP-omleiding. Lees de sectie over binding voor HTTP-omleidingen in het [specificatiedocument over het SAML-protocol](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
-## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure AD verzendt het token naar een onjuist eindpunt
+## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure AD stuurt het token naar een onjuist eind punt
 
 **Mogelijke oorzaak**
 
-Als de aanmeldingsaanvraag tijdens eenmalige aanmelding geen expliciete antwoord-URL bevat (URL van de Bevestigingsconsumentenservice), selecteert Azure AD een van de geconfigureerde rely-URL's voor die toepassing. Zelfs als de toepassing een expliciete antwoord-URL heeft geconfigureerd, kan de gebruiker worden doorgestuurd. https://127.0.0.1:444 
+Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-URL (assertion Consumer Service-URL) bevat, selecteert Azure AD een van de geconfigureerde vertrouwens-Url's voor die toepassing. Zelfs als de toepassing een expliciete antwoord-URL heeft geconfigureerd, kan de gebruiker worden omgeleid https://127.0.0.1:444. 
 
 Toen de toepassing werd toegevoegd als niet-galerie-app, is deze antwoord-URL in Azure Active Directory gemaakt als standaardwaarde. Dit gedrag is gewijzigd en deze URL wordt niet meer standaard toegevoegd in Azure Active Directory. 
 
 **Afsluiting**
 
-Verwijder de ongebruikte antwoord-URL's die voor de toepassing zijn geconfigureerd.
+Verwijder de ongebruikte antwoord-Url's die voor de toepassing zijn geconfigureerd.
 
-1.  Open de [**Azure-portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **medebeheerder.**
+1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 
-2.  Open de **Azure Active Directory-extensie** door **Alle services** boven aan het linkernavigatiemenu te selecteren.
+2.  Open de **uitbrei ding Azure Active Directory** door **alle services** boven aan het hoofd navigatie menu te selecteren.
 
-3.  Typ **'Azure Active Directory'** in het zoekvak van het filter en selecteer het **Azure Active Directory-item.**
+3.  Typ **' Azure Active Directory '** in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
-4.  Selecteer **Bedrijfstoepassingen** in het linkernavigatiemenu van Azure Active Directory.
+4.  Selecteer **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
-5.  Selecteer **Alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+5.  Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-    Als u de gewenste toepassing hier niet ziet, gebruikt u het besturingselement **Filter** boven aan de **lijst Alle toepassingen** en stelt u de optie **Weergeven** in op **Alle toepassingen**.
+    Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen**in.
 
 6.  Selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
 
-7.  Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Verwijder in de URL van de **antwoord -URL (Bevestigingsconsumentenservice)** ongebruikte of standaard-antwoord-URL's die door het systeem zijn gemaakt. Bijvoorbeeld `https://127.0.0.1:444/applications/default.aspx`.
+7.  Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Verwijder in de **antwoord-URL (assertion Consumer Service-URL)** ongebruikte of standaard antwoord-url's die zijn gemaakt door het systeem. Bijvoorbeeld `https://127.0.0.1:444/applications/default.aspx`.
 
 
 
-## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Probleem bij het aanpassen van de SAML-claims die naar een toepassing worden verzonden
+## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Probleem bij het aanpassen van de SAML-claims die worden verzonden naar een toepassing
 
-Zie Claimtoewijzing in Azure Active Directory voor meer informatie voor meer informatie voor het aanpassen van de SAML-attribuutclaims die naar uw toepassing zijn [verzonden.](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+Zie [claim toewijzing in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) voor meer informatie over het aanpassen van de SAML-kenmerk claims die naar uw toepassing worden verzonden.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Azure AD Single Sign-on SAML-protocolvereisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+[Vereisten voor het SAML-protocol voor eenmalige aanmelding voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)

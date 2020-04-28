@@ -9,15 +9,15 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117140"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hoeveel VPN-clienteindpunten kan mijn punt-naar-site-configuratie hebben?
 
-Het hangt af van de gateway SKU. Zie [Gateway SKU's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het aantal ondersteunde verbindingen.
+Dit is afhankelijk van de gateway-SKU. Zie [Gateway-sku's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het aantal ondersteunde verbindingen.
 
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welke clientbesturingssystemen kan ik met punt-naar-site gebruiken?
 
@@ -30,7 +30,7 @@ De volgende clientbesturingssystemen worden ondersteund:
 * Windows Server 2012 R2 (alleen 64-bits)
 * Windows Server 2016 (alleen 64-bits)
 * Windows 10
-* Mac OS X versie 10.11 of hoger
+* Mac OS X-versie 10,11 of hoger
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ De volgende clientbesturingssystemen worden ondersteund:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Kan ik met punt-naar-site-functionaliteit proxy's en firewalls passeren?
 
-Azure ondersteunt drie soorten VPN-opties van point-to-site:
+Azure ondersteunt drie typen punt-naar-site VPN-opties:
 
-* Secure Socket Tunneling Protocol (SSTP). SSTP is een op Microsoft eigen SSL-gebaseerde oplossing die firewalls kan binnendringen, omdat de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
+* Secure Socket Tunneling Protocol (SSTP). SSTP is een eigen op SSL gebaseerde oplossing van micro soft die firewalls kan binnendringen, aangezien de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
 
-* Openvpn. OpenVPN is een SSL-gebaseerde oplossing die firewalls kan binnendringen, omdat de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
+* OpenVPN. OpenVPN is een op SSL gebaseerde oplossing die firewalls kan binnendringen, aangezien de meeste firewalls de uitgaande TCP-poort openen die 443 SSL gebruikt.
 
-* IKEv2 VPN. IKEv2 VPN is een op standaarden gebaseerde IPsec VPN-oplossing die uitgaande UDP-poorten 500 en 4500 en IP-protocol no gebruikt. 50. Firewalls openen deze poorten niet altijd, zodat de kans bestaat dat een IKEv2 VPN proxy's en firewalls niet kan passeren.
+* IKEv2 VPN. IKEv2 VPN is een op standaarden gebaseerde IPsec VPN-oplossing die gebruikmaakt van uitgaande UDP-poorten 500 en 4500 en IP-protocol nummer. 50. Firewalls openen deze poorten niet altijd, zodat de kans bestaat dat een IKEv2 VPN proxy's en firewalls niet kan passeren.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Als ik een clientcomputer die is geconfigureerd voor punt-naar-site opnieuw start, wordt de VPN-verbinding dan automatisch opnieuw tot stand gebracht?
 
@@ -58,13 +58,13 @@ Automatisch opnieuw verbinding maken en DDNS worden momenteel niet ondersteund i
 
 Ja. Voor het Resource Manager-implementatiemodel moet u een RouteBased VPN-type hebben voor uw gateway. Voor het klassieke implementatiemodel hebt u een dynamische gateway nodig. Point-to-site wordt niet ondersteund voor VPN-gateways met statische routering of PolicyBased VPN-gateways.
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Kan ik een Point-to-Site-client configureren om verbinding te maken met meerdere virtuele netwerkgateways tegelijk?
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Kan ik een punt-naar-site-client zo configureren dat deze op hetzelfde moment verbinding maakt met meerdere virtuele netwerk gateways?
 
-Afhankelijk van de gebruikte VPN-clientsoftware u mogelijk verbinding maken met meerdere Virtual Network Gateways, op voorwaarde dat de virtuele netwerken die zijn verbonden geen conflicterende adresruimten tussen hen hebben of het netwerk van de client verbinding maakt.  Hoewel de Azure VPN-client veel VPN-verbindingen ondersteunt, kan er op elk moment slechts één verbinding worden verbonden.
+Afhankelijk van de gebruikte VPN-client software, kunt u verbinding maken met meerdere Virtual Network gateways, op voor voor de virtuele netwerken waarmee verbinding wordt gemaakt en er zijn geen conflicterende adres ruimten tussen de clients of het netwerk van waaruit de client verbinding maakt.  Terwijl de Azure VPN-client veel VPN-verbindingen ondersteunt, kan slechts één verbinding op een bepaald moment worden aangesloten.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Kan ik een punt-naar-site-client configureren om verbinding te maken met meerdere virtuele netwerken tegelijk?
 
-Ja, Point-to-Site-verbindingen met een Virtuele Netwerkgateway die is geïmplementeerd in een VNet dat is gekeken met andere VNets, hebben mogelijk toegang tot andere peered VNets.  Op voorwaarde dat de peered VNets de UseRemoteGateway / AllowGatewayTransit-functies gebruiken, kan de Point-to-Site-client verbinding maken met die peered VNets.  Voor meer informatie verwijzen wij u naar [dit](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) artikel.
+Ja, punt-naar-site-verbindingen met een Virtual Network gateway die is geïmplementeerd in een VNet dat is gekoppeld aan andere VNets, kan toegang hebben tot andere peered VNets.  Als de peered VNets gebruikmaakt van de UseRemoteGateway/AllowGatewayTransit-functies, kan de punt-naar-site-client verbinding maken met die peered VNets.  Raadpleeg [Dit](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) artikel voor meer informatie.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Hoeveel doorvoer kan ik verwachten via site-naar-site- of punt-naar-site-verbindingen?
 
@@ -72,11 +72,11 @@ Het is moeilijk om de exacte doorvoer van de VPN-tunnels te onderhouden. IPSec e
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Kan ik voor point-to-site elke VPN-softwareclient gebruiken die SSTP en/of IKEv2 ondersteunt?
 
-Nee. U kunt alleen de systeemeigen VPN-client van Windows voor SSTP en de systeemeigen VPN-client van Mac voor IKEv2 gebruiken. U de OpenVPN-client echter op alle platforms gebruiken om verbinding te maken via het OpenVPN-protocol. Raadpleeg de lijst met ondersteunde clientbesturingssystemen.
+Nee. U kunt alleen de systeemeigen VPN-client van Windows voor SSTP en de systeemeigen VPN-client van Mac voor IKEv2 gebruiken. U kunt echter de OpenVPN-client op alle platforms gebruiken om verbinding te maken via het OpenVPN-protocol. Raadpleeg de lijst met ondersteunde clientbesturingssystemen.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Biedt Azure ondersteuning voor IKEv2-VPN met Windows?
 
-IKEv2 wordt ondersteund op Windows 10 en Server 2016. Als u IKEv2 wilt gebruiken, moet u lokaal updates installeren en een registersleutelwaarde instellen. OS-versies voorafgaand aan Windows 10 worden niet ondersteund en kunnen alleen SSTP of **OpenVPN® Protocol**gebruiken.
+IKEv2 wordt ondersteund op Windows 10 en Server 2016. Als u IKEv2 wilt gebruiken, moet u lokaal updates installeren en een registersleutelwaarde instellen. Versies van besturings systemen voorafgaand aan Windows 10 worden niet ondersteund en kunnen alleen gebruikmaken van het SSTP-of **OpenVPN®-protocol**.
 
 Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
@@ -86,7 +86,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
    |---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 Versie 1709 | 22 maart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 versie 1709 | 22 maart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. De registersleutelwaarde instellen. Maak of stel de REG_DWORD-sleutel 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload' in het register in op 1.
@@ -103,9 +103,9 @@ Azure biedt voor P2S VPN ondersteuning voor Windows, Mac en Linux.
 
 Ja, u kunt deze nieuwe functies op reeds geïmplementeerde gateways inschakelen met behulp van PowerShell of Azure Portal, mits de gateway-SKU die u gebruikt RADIUS en/of IKEv2 ondersteunt. Bijvoorbeeld de VPN-gateway Basic SKU ondersteunt RADIUS of IKEv2 niet.
 
-### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Hoe verwijder ik de configuratie van een P2S-verbinding?
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Hoe kan ik de configuratie van een P2S-verbinding verwijderen?
 
-Een P2S-configuratie kan worden verwijderd met behulp van Azure CLI en PowerShell met behulp van de volgende opdrachten:
+Een P2S-configuratie kan worden verwijderd met behulp van Azure CLI en Power shell met behulp van de volgende opdrachten:
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -115,7 +115,7 @@ $gw.VPNClientConfiguration = $null`
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"

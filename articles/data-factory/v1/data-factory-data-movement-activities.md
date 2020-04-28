@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen met Kopieeractiviteit
-description: 'Meer informatie over gegevensverplaatsing in Data Factory-pijplijnen: gegevensmigratie tussen cloudstores en tussen een on-premises winkel en een cloudwinkel. Kopieeractiviteit gebruiken.'
+title: Gegevens verplaatsen met behulp van Kopieer activiteit
+description: 'Meer informatie over het verplaatsen van gegevens in Data Factory pijp lijnen: gegevens migratie tussen Cloud archieven en tussen een on-premises Store en een Cloud archief. Kopieer activiteit gebruiken.'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,57 +13,57 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281884"
 ---
-# <a name="move-data-by-using-copy-activity"></a>Gegevens verplaatsen met Kopieeractiviteit
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="move-data-by-using-copy-activity"></a>Gegevens verplaatsen met behulp van Kopieer activiteit
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](data-factory-data-movement-activities.md)
 > * [Versie 2 (huidige versie)](../copy-activity-overview.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Activiteit kopiëren in V2](../copy-activity-overview.md)als u de huidige versie van de service Gegevensfabriek gebruikt.
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [Kopieer activiteit in v2](../copy-activity-overview.md).
 
 ## <a name="overview"></a>Overzicht
-In Azure Data Factory u Activiteit kopiëren gebruiken om gegevens te kopiëren tussen on-premises en cloudgegevensopslag. Nadat de gegevens zijn gekopieerd, kan deze verder worden getransformeerd en geanalyseerd. U kopieeractiviteit ook gebruiken om transformatie- en analyseresultaten te publiceren voor business intelligence (BI) en toepassingsverbruik.
+In Azure Data Factory kunt u de Kopieer activiteit gebruiken om gegevens te kopiëren tussen on-premises en gegevens archieven in de Cloud. Nadat de gegevens zijn gekopieerd, kunnen ze verder worden getransformeerd en geanalyseerd. U kunt ook Kopieer activiteit gebruiken om trans formatie-en analyse resultaten te publiceren voor business intelligence (BI) en het gebruik van toepassingen.
 
-![Rol van kopieeractiviteit](media/data-factory-data-movement-activities/copy-activity.png)
+![Rol van Kopieer activiteit](media/data-factory-data-movement-activities/copy-activity.png)
 
-Copy Activity wordt aangedreven door een veilige, betrouwbare, schaalbare en [wereldwijd beschikbare service.](#global) In dit artikel vindt u informatie over gegevensverplaatsing in Data Factory en Kopieeractiviteit.
+De Kopieer activiteit wordt aangedreven door een beveiligde, betrouw bare, schaal bare en [wereld wijd beschik bare service](#global). Dit artikel bevat informatie over het verplaatsen van gegevens in Data Factory en de Kopieer activiteit.
 
-Laten we eerst eens kijken hoe gegevensmigratie plaatsvindt tussen twee cloudgegevensopslag en tussen een on-premises gegevensopslag en een cloudgegevensarchief.
+Eerst laten we zien hoe gegevens migratie plaatsvindt tussen twee Cloud gegevensopslag en tussen een on-premises gegevens archief en een gegevens archief in de Cloud.
 
 > [!NOTE]
-> Zie [Pijplijnen en activiteiten begrijpen](data-factory-create-pipelines.md)voor meer informatie over activiteiten in het algemeen.
+> Zie informatie over [pijp lijnen en activiteiten](data-factory-create-pipelines.md)voor meer informatie over activiteiten in het algemeen.
 >
 >
 
-### <a name="copy-data-between-two-cloud-data-stores"></a>Gegevens kopiëren tussen twee cloudgegevensopslag
-Wanneer zowel bron- als sinkdatastores zich in de cloud bevinden, gaat Kopieeractiviteit door de volgende fasen om gegevens van de bron naar de gootsteen te kopiëren. De service die kopieeractiviteit aandrijft:
+### <a name="copy-data-between-two-cloud-data-stores"></a>Gegevens tussen twee gegevens archieven in de Cloud kopiëren
+Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, gaat de Kopieer activiteit door de volgende fasen om gegevens van de bron naar de sink te kopiëren. De service die de Kopieer activiteit toestuurt:
 
-1. Hiermee leest u gegevens uit het brongegevensarchief.
-2. Hiermee wordt serialisatie/deserialisatie, compressie/decompressie, kolomtoewijzing en typeconversie uitgevoerd. Deze bewerkingen worden uitgevoerd op basis van de configuraties van de invoergegevensset, uitvoergegevensset en Kopieeractiviteit.
-3. Schrijft gegevens naar het doelgegevensarchief.
+1. Hiermee worden gegevens uit de brongegevens opslag gelezen.
+2. Voert serialisatie/deserialisatie, compressie/decompressie, kolom toewijzing en type conversie uit. Deze bewerkingen worden uitgevoerd op basis van de configuraties van de invoer gegevensset, uitvoer gegevensset en kopieer activiteit.
+3. Schrijft gegevens naar het doel gegevens archief.
 
-De service kiest automatisch de optimale regio om de gegevensbeweging uit te voeren. Deze regio is meestal degene die het dichtst bij de gootsteen gegevens op te slaan.
+De service kiest automatisch de optimale regio om de gegevens verplaatsing uit te voeren. Deze regio is doorgaans het dichtst bij de Sink-gegevens opslag.
 
-![Cloud-to-cloud-kopie](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
+![Kopie van Cloud naar Cloud](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
 
-### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Gegevens kopiëren tussen een on-premises gegevensopslag en een cloudgegevensarchief
-Als u gegevens veilig wilt verplaatsen tussen een on-premises gegevensopslag en een cloudgegevensarchief, installeert u Data Management Gateway op uw on-premises machine. Data Management Gateway is een agent die hybride gegevensverkeer en -verwerking mogelijk maakt. U het installeren op dezelfde machine als het gegevensarchief zelf, of op een aparte machine die toegang heeft tot het gegevensarchief.
+### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Gegevens kopiëren tussen een on-premises gegevens opslag en een gegevens archief in de Cloud
+Als u gegevens veilig wilt verplaatsen tussen een on-premises gegevens opslag en een gegevens archief in de Cloud, installeert u Data Management Gateway op uw on-premises machine. Data Management Gateway is een agent die het verplaatsen en verwerken van hybride gegevens mogelijk maakt. U kunt deze op dezelfde computer installeren als het gegevens archief zelf of op een afzonderlijke computer die toegang heeft tot het gegevens archief.
 
-In dit scenario voert Data Management Gateway de serialisatie/deserialisatie, compressie/decompressie, kolomtoewijzing en typeconversie uit. Gegevens worden niet door de Azure Data Factory-service gestroomd. In plaats daarvan schrijft Data Management Gateway de gegevens rechtstreeks naar het doelarchief.
+In dit scenario voert Data Management Gateway de serialisatie/deserialisatie, compressie/decompressie, kolom toewijzing en type conversie uit. De gegevens worden niet door de Azure Data Factory-Service getransporteerd. In plaats daarvan schrijft Data Management Gateway de gegevens rechtstreeks naar het doel archief.
 
-![On-premises-naar-cloud-kopie](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
+![Kopie van on-premises naar de Cloud](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
 
-Zie [Gegevens verplaatsen tussen on-premises en cloudgegevenswinkels](data-factory-move-data-between-onprem-and-cloud.md) voor een introductie en walkthrough. Zie [Data Management Gateway](data-factory-data-management-gateway.md) voor gedetailleerde informatie over deze agent.
+Zie [gegevens verplaatsen tussen on-premises en gegevens archieven in de Cloud](data-factory-move-data-between-onprem-and-cloud.md) voor een inleiding en een overzicht. Zie [Data Management Gateway](data-factory-data-management-gateway.md) voor gedetailleerde informatie over deze agent.
 
-U gegevens ook verplaatsen van/naar ondersteunde gegevensopslag die worden gehost op virtuele Azure-machines (VM's) met behulp van Data Management Gateway. In dit geval u Data Management Gateway installeren op dezelfde VM als het gegevensarchief zelf, of op een aparte VM die toegang heeft tot het gegevensarchief.
+U kunt ook gegevens verplaatsen van/naar ondersteunde gegevens archieven die worden gehost op Azure IaaS virtual machines (Vm's) met behulp van Data Management Gateway. In dit geval kunt u Data Management Gateway op dezelfde VM installeren als het gegevens archief zelf of op een afzonderlijke virtuele machine die toegang heeft tot het gegevens archief.
 
-## <a name="supported-data-stores-and-formats"></a>Ondersteunde gegevensarchieven en -indelingen
+## <a name="supported-data-stores-and-formats"></a>Ondersteunde gegevens archieven en-indelingen
 De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchief naar een sinkgegevensarchief. Data Factory ondersteunt de volgende gegevensarchieven. Gegevens vanuit elke willekeurige bron kunnen naar een sink worden geschreven. Klik op een gegevensarchief voor informatie over het kopiëren van gegevens naar en van dat archief.
 
 > [!NOTE] 
@@ -75,24 +75,24 @@ De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchi
 > Gegevensarchieven met een * kunnen zich on-premises of op Azure IaaS bevinden. Hiervoor moet u [Data Management Gateway](data-factory-data-management-gateway.md) installeren op een on-premises/Azure IaaS-computer.
 
 ### <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
-U Kopieeractiviteit gebruiken om bestanden te **kopiëren tussen** twee bestandsgebaseerde gegevensarchieven, u de [indelingssectie](data-factory-create-datasets.md) overslaan in zowel de definities van de invoer- als de uitvoerset. De gegevens worden efficiënt gekopieerd zonder serialisatie/deserialisatie.
+U kunt Kopieer activiteit gebruiken om **bestanden te kopiëren** tussen twee bestanden op basis van een bestand, u kunt de [sectie opmaak](data-factory-create-datasets.md) in zowel de definitie van de invoer-als uitvoer gegevensset overs Laan. De gegevens worden efficiënt gekopieerd zonder serialisatie/deserialisatie.
 
-Copy Activity leest ook van en schrijft naar bestanden in opgegeven indelingen: **Tekst, JSON, Avro, ORC en Parquet**en compressiecode C **Zip, Deflate, BZip2 en ZipDeflate** worden ondersteund. Zie [Ondersteunde bestands- en compressie-indelingen](data-factory-supported-file-and-compression-formats.md) met details.
+Kopieer activiteit leest ook van en schrijft naar bestanden in de opgegeven indelingen: **Text, JSON, AVRO, Orc en Parquet**, en de compressie **-codec gzip, Deflate, bzip2 en ZipDeflate** worden ondersteund. Zie [ondersteunde bestands-en compressie-indelingen](data-factory-supported-file-and-compression-formats.md) met details.
 
-U bijvoorbeeld de volgende kopieeractiviteiten uitvoeren:
+U kunt bijvoorbeeld de volgende Kopieer activiteiten uitvoeren:
 
-* Kopieer gegevens in on-premises SQL Server en schrijf naar Azure Data Lake Store in ORC-indeling.
-* Kopieer bestanden in de CSV-indeling (text) van on-premises bestandssysteem en schrijf naar Azure Blob in Avro-indeling.
-* Kopieer bestanden met rits en decomprimeer vervolgens naar Azure Data Lake Store.
-* Kopieer gegevens in de CSV-indeling (GZip-indeling voor gecomprimeerde tekst) vanuit Azure Blob en schrijf naar Azure SQL Database.
+* Kopieer gegevens in on-premises SQL Server en schrijf naar Azure Data Lake Store in de ORC-indeling.
+* Kopieer bestanden in de tekst indeling (CSV) van on-premises bestands systeem en schrijf naar Azure Blob in de Avro-indeling.
+* Kopieer gezipte bestanden van het on-premises bestands systeem en decomprimeren vervolgens land tot Azure Data Lake Store.
+* Kopieer gegevens in de indeling voor gecomprimeerde tekst van GZip (CSV) van Azure Blob en schrijf naar Azure SQL Database.
 
-## <a name="globally-available-data-movement"></a><a name="global"></a>Wereldwijd beschikbare gegevensverplaatsing
-Azure Data Factory is alleen beschikbaar in de regio's West-VS, Oost-VS en Noord-Europa. De service die kopieeractiviteit mogelijk maakt, is echter wereldwijd beschikbaar in de volgende regio's en regio's. De wereldwijd beschikbare topologie zorgt voor een efficiënte gegevensverplaatsing die hop tussen regio's meestal vermijdt. Zie [Services per regio](https://azure.microsoft.com/regions/#services) voor de beschikbaarheid van gegevensfabriek en gegevensverplaatsing in een regio.
+## <a name="globally-available-data-movement"></a><a name="global"></a>Wereld wijd beschik bare gegevens verplaatsing
+Azure Data Factory is alleen beschikbaar in de regio's VS-Oost, VS-West en Europa-noord. De service die de Kopieer activiteit toestuurt, is echter algemeen beschikbaar in de volgende regio's en in de geografische gebieden. De wereld wijd beschik bare topologie zorgt voor een efficiënte verplaatsing van gegevens die doorgaans interregionale hops voor komt. Zie [Services per regio](https://azure.microsoft.com/regions/#services) voor Beschik baarheid van Data Factory en het verplaatsen van gegevens in een regio.
 
-### <a name="copy-data-between-cloud-data-stores"></a>Gegevens kopiëren tussen cloudgegevensarchieven
-Wanneer zowel bron- als sinkdataopslag zich in de cloud bevinden, gebruikt Data Factory een service-implementatie in de regio die het dichtst bij de gootsteen in dezelfde geografie ligt om de gegevens te verplaatsen. Raadpleeg de volgende tabel voor toewijzing:
+### <a name="copy-data-between-cloud-data-stores"></a>Gegevens kopiëren tussen gegevens archieven in de Cloud
+Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, gebruikt Data Factory een service-implementatie in de regio die het dichtst bij de Sink ligt die zich in dezelfde geografie bevindt om de gegevens te verplaatsen. Raadpleeg de volgende tabel voor toewijzing:
 
-| Geografie van de doelgegevensopslag | Regio van het doelgegevensarchief | Regio die wordt gebruikt voor gegevensverplaatsing |
+| Geografie van de doel gegevens archieven | Regio van het doel gegevens archief | Regio die wordt gebruikt voor gegevens verplaatsing |
 |:--- |:--- |:--- |
 | Verenigde Staten | VS - oost | VS - oost |
 | &nbsp; | VS - oost 2 | VS - oost 2 |
@@ -121,29 +121,29 @@ Wanneer zowel bron- als sinkdataopslag zich in de cloud bevinden, gebruikt Data 
 | Korea | Korea - centraal | Korea - centraal |
 | &nbsp; | Korea - zuid | Korea - centraal |
 
-U ook expliciet aangeven in welk gebied gegevensfabriek de kopie moet `executionLocation` worden uitgevoerd `typeProperties`door de eigenschap op te geven onder Activiteit kopiëren. Ondersteunde waarden voor deze eigenschap worden in bovengebied gebruikt voor de kolom **Gegevensverplaatsing.** Let op: uw gegevens gaan door die regio over de draad tijdens het kopiëren. Als u bijvoorbeeld wilt kopiëren tussen Azure-winkels in Korea, u opgeven om door de regio Japan te routeren `"executionLocation": "Japan East"` (zie voorbeeld [JSON](#by-using-json-scripts) als referentie).
+U kunt de regio van Data Factory service die moet worden gebruikt voor het uitvoeren van de kopie, ook expliciet aangeven `executionLocation` door de eigenschap op `typeProperties`te geven onder Kopieer activiteit. Ondersteunde waarden voor deze eigenschap worden weer gegeven in de bovenstaande **regio die wordt gebruikt voor de kolom gegevens verplaatsing** . Houd er rekening mee dat uw gegevens tijdens het kopiëren over de kabel heen gaan. Als u bijvoorbeeld wilt kopiëren tussen Azure-winkels in Korea, kunt u `"executionLocation": "Japan East"` opgeven om te routeren via een Japanse regio (Zie voor [beeld van JSON](#by-using-json-scripts) als referentie).
 
 > [!NOTE]
-> Als het gebied van het doelgegevensarchief niet in de voorgaande lijst staat of niet detecteerbaar is, mislukt kopiëren activiteit standaard in plaats van door een alternatief gebied te gaan, tenzij `executionLocation` is opgegeven. De lijst met ondersteunde regio's wordt in de loop van de tijd uitgebreid.
+> Als de regio van het doel gegevens archief zich niet in de voor gaande lijst bevindt of niet detecteerbaar is, mislukt de standaard Kopieer activiteit in plaats van `executionLocation` een alternatieve regio, tenzij is opgegeven. De lijst met ondersteunde regio's wordt na verloop van tijd uitgebreid.
 >
 
-### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Gegevens kopiëren tussen een on-premises gegevensopslag en een cloudgegevensarchief
-Wanneer gegevens worden gekopieerd tussen on-premises (of Azure virtual machines/IaaS) en cloudstores, voert [Data Management Gateway](data-factory-data-management-gateway.md) gegevensbewegingen uit op een on-premises machine of virtuele machine. De gegevens stromen niet door de service in de cloud, tenzij u de [gefaseerde kopieermogelijkheid](data-factory-copy-activity-performance.md#staged-copy) gebruikt. In dit geval stromen gegevens door de Azure Blob-opslag met tijdelijke bestanden voordat deze in het sink-gegevensarchief wordt geschreven.
+### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Gegevens kopiëren tussen een on-premises gegevens opslag en een gegevens archief in de Cloud
+Wanneer gegevens worden gekopieerd tussen on-premises (of virtuele Azure-machines/IaaS) en Cloud archieven, voert [Data Management Gateway](data-factory-data-management-gateway.md) gegevens verplaatsing uit op een on-premises machine of virtuele machine. De gegevens stroomt niet door de service in de Cloud, tenzij u de mogelijkheid tot [gefaseerd kopiëren](data-factory-copy-activity-performance.md#staged-copy) gebruikt. In dit geval stroomt gegevens via de staging Azure Blob-opslag voordat deze wordt geschreven in de Sink-gegevens opslag.
 
-## <a name="create-a-pipeline-with-copy-activity"></a>Een pijplijn maken met kopieeractiviteit
-U op een aantal manieren een pijplijn maken met Kopieeractiviteit:
+## <a name="create-a-pipeline-with-copy-activity"></a>Een pijp lijn maken met de Kopieer activiteit
+U kunt op verschillende manieren een pijp lijn maken met de Kopieer activiteit:
 
-### <a name="by-using-the-copy-wizard"></a>Met de wizard Kopiëren
-Met de wizard Gegevensfabriekkopiëren u een pijplijn maken met Kopieeractiviteit. Met deze pijplijn u gegevens uit ondersteunde bronnen naar bestemmingen kopiëren *zonder JSON-definities* te schrijven voor gekoppelde services, gegevenssets en pijplijnen. Zie [wizard Gegevensfabriek kopiëren](data-factory-copy-wizard.md) voor meer informatie over de wizard.  
+### <a name="by-using-the-copy-wizard"></a>Met de wizard kopiëren
+De wizard Data Factory kopiëren helpt u bij het maken van een pijp lijn met Kopieer activiteit. Met deze pijp lijn kunt u gegevens van ondersteunde bronnen naar bestemmingen kopiëren *zonder* dat u JSON-definities voor gekoppelde services, gegevens sets en pijp lijnen hoeft te schrijven. Zie [Data Factory wizard kopiëren](data-factory-copy-wizard.md) voor meer informatie over de wizard.  
 
-### <a name="by-using-json-scripts"></a>Door JSON-scripts te gebruiken
-U De Editor van Gegevensfabriek in Visual Studio of Azure PowerShell gebruiken om een JSON-definitie voor een pijplijn te maken (met Kopieeractiviteit). Vervolgens u deze implementeren om de pijplijn in Data Factory te maken. Zie [Zelfstudie: Kopieeractiviteit gebruiken in een Azure Data Factory-pijplijn](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor een zelfstudie met stapsgewijze instructies.    
+### <a name="by-using-json-scripts"></a>Met behulp van JSON-scripts
+U kunt Data Factory editor gebruiken in Visual Studio of Azure PowerShell om een JSON-definitie voor een pijp lijn te maken (met behulp van Kopieer activiteit). Vervolgens kunt u de app implementeren om de pijp lijn te maken in Data Factory. Zie [zelf studie: Kopieer activiteit gebruiken in een Azure Data Factory pijp lijn](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor een zelf studie met stapsgewijze instructies.    
 
-Json-eigenschappen (zoals naam, beschrijving, invoer- en uitvoertabellen en beleidsregels) zijn beschikbaar voor alle soorten activiteiten. Eigenschappen die beschikbaar `typeProperties` zijn in het gedeelte van de activiteit, verschillen per activiteitstype.
+JSON-eigenschappen (zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels) zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in `typeProperties` de sectie van de activiteit, verschillen per type activiteit.
 
-Voor Kopieeractiviteit `typeProperties` is de sectie afhankelijk van de typen bronnen en putten. Klik op een bron/gootsteen in de sectie [Ondersteunde bronnen en sinks](#supported-data-stores-and-formats) voor meer informatie over teksteigenschappen die Activiteit kopiëren ondersteunt voor dat gegevensarchief.
+Voor kopieer activiteiten is de `typeProperties` sectie afhankelijk van de typen bronnen en Sinks. Klik op een bron/sink in de sectie [ondersteunde bronnen en sinks](#supported-data-stores-and-formats) voor meer informatie over type-eigenschappen die door de Kopieer activiteit worden ondersteund voor die gegevens opslag.
 
-Hier is een voorbeeld JSON definitie:
+Hier volgt een voor beeld van een JSON-definitie:
 
 ```json
 {
@@ -186,30 +186,30 @@ Hier is een voorbeeld JSON definitie:
   }
 }
 ```
-Het schema dat is gedefinieerd in de uitvoergegevensset bepaalt wanneer de activiteit wordt uitgevoerd (bijvoorbeeld: **dagelijks**, frequentie als **dag**en interval als **1**). De activiteit kopieert gegevens uit een invoergegevensset **(bron)** naar een uitvoergegevensset **(sink).**
+De planning die in de uitvoer gegevensset is gedefinieerd, bepaalt wanneer de activiteit wordt uitgevoerd (bijvoorbeeld **dagelijks**, frequentie als **dag**en interval als **1**). Met de activiteit worden gegevens gekopieerd van een invoer-gegevensset (**bron**) naar een uitvoer gegevensset (**sink**).
 
-U meer dan één invoergegevensset opgeven voor Activiteit kopiëren. Ze worden gebruikt om de afhankelijkheden te verifiëren voordat de activiteit wordt uitgevoerd. Alleen de gegevens van de eerste gegevensset worden echter gekopieerd naar de doelgegevensset. Zie [Plannen en uitvoeren](data-factory-scheduling-and-execution.md)voor meer informatie.  
+U kunt meer dan één invoer gegevensset opgeven om de activiteit te kopiëren. Ze worden gebruikt om de afhankelijkheden te controleren voordat de activiteit wordt uitgevoerd. Alleen de gegevens van de eerste gegevensset worden echter gekopieerd naar de doel-DataSet. Zie [planning en uitvoering](data-factory-scheduling-and-execution.md)voor meer informatie.  
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie de [handleiding voor prestaties en tuning kopiëren,](data-factory-copy-activity-performance.md)waarin de belangrijkste factoren worden beschreven die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory. Het bevat ook de waargenomen prestaties tijdens interne tests en bespreekt verschillende manieren om de prestaties van kopieeractiviteit te optimaliseren.
+Zie de gids voor het kopiëren van de prestaties van de [Kopieer activiteit](data-factory-copy-activity-performance.md), waarin de belangrijkste factoren worden beschreven die van invloed zijn op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory. Het bevat ook een lijst met de waargenomen prestaties tijdens interne tests en behandelt verschillende manieren om de prestaties van de Kopieer activiteit te optimaliseren.
 
 ## <a name="fault-tolerance"></a>Fouttolerantie
-Standaard stopt kopieeractiviteit met het kopiëren van gegevens en retourfouten wanneer er onverenigbare gegevens tussen bron en gootsteen worden aangetroffen; terwijl u expliciet configureren om de incompatibele rijen over te slaan en te loggen en alleen deze compatibele gegevens kopiëren om de kopie te laten slagen. Zie de [fouttolerantie Activiteit kopiëren](data-factory-copy-activity-fault-tolerance.md) voor meer details.
+De Kopieer activiteit stopt standaard met het kopiëren van gegevens en retourneert een fout wanneer er incompatibele gegevens tussen de bron en de Sink optreden. u kunt expliciet configureren om de niet-compatibele rijen over te slaan en te registreren en alleen die compatibele gegevens kopiëren om het kopiëren te laten verlopen. Zie de [fout tolerantie van de Kopieer activiteit](data-factory-copy-activity-fault-tolerance.md) voor meer informatie.
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
-Zie de [beveiligingsoverwegingen](data-factory-data-movement-security-considerations.md)die de beveiligingsinfrastructuur beschrijven die gegevensverplaatsingsservices in Azure Data Factory gebruiken om uw gegevens te beveiligen.
+Zie de [beveiligings overwegingen](data-factory-data-movement-security-considerations.md)die de beveiligings infrastructuur beschrijft die services voor gegevens verplaatsing in azure Data Factory gebruiken om uw gegevens te beveiligen.
 
 ## <a name="scheduling-and-sequential-copy"></a>Planning en sequentiële kopie
-Zie [Planning en uitvoering](data-factory-scheduling-and-execution.md) voor gedetailleerde informatie over hoe planning en uitvoering werkt in Data Factory. Het is mogelijk om meerdere kopieerbewerkingen achter elkaar uit te voeren op een sequentiële /geordende manier. Zie de sectie [Opeenvolgend kopiëren.](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)
+Zie [planning en uitvoering](data-factory-scheduling-and-execution.md) voor gedetailleerde informatie over de werking van planning en uitvoering in Data Factory. Het is mogelijk om meerdere Kopieer bewerkingen achter elkaar op een sequentieve of bestelde manier uit te voeren. Zie de sectie [opeenvolgend kopiëren](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) .
 
 ## <a name="type-conversions"></a>Typeconversies
-Verschillende gegevensopslag heeft verschillende native type systemen. Copy Activity voert automatische typeconversies uit van brontypen naar sinktypen met de volgende aanpak in twee stappen:
+Verschillende gegevens archieven hebben verschillende systeem eigen type systemen. Met de Kopieer activiteit worden automatische type conversies van bron typen naar Sink-typen uitgevoerd met de volgende twee stappen:
 
-1. Converteren van native brontypen naar een .NET-type.
-2. Converteren van een .NET-type naar een native gootsteentype.
+1. Converteren van systeem eigen bron typen naar een .NET-type.
+2. Converteren van een .NET-type naar een systeem eigen Sink-type.
 
-De toewijzing van een native typesysteem naar een .NET-type voor een gegevensarchief bevindt zich in het desbetreffende gegevensarchiefartikel. (Klik op de specifieke koppeling in de tabel Ondersteunde gegevensopslag). U deze toewijzingen gebruiken om de juiste typen te bepalen tijdens het maken van uw tabellen, zodat Kopieeractiviteit de juiste conversies uitvoert.
+De toewijzing van een systeem systeem eigen type aan een .NET-type voor een gegevens archief bevindt zich in het desbetreffende artikel van het gegevens archief. (Klik op de specifieke koppeling in de tabel ondersteunde gegevens archieven). U kunt deze toewijzingen gebruiken om de juiste typen te bepalen tijdens het maken van uw tabellen, zodat de Kopieer activiteit de juiste conversies uitvoert.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Gegevens kopiëren van Azure Blob-opslag naar Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor meer informatie over de activiteit kopiëren.
-* Zie [Gegevens verplaatsen van on-premises naar cloudgegevensarchieven voor](data-factory-move-data-between-onprem-and-cloud.md)meer informatie over het verplaatsen van gegevens van een on-premises gegevensarchief naar een cloudgegevensarchief.
+* Zie [gegevens kopiëren van Azure Blob-opslag naar Azure SQL database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor meer informatie over de Kopieer activiteit.
+* Zie voor meer informatie over het verplaatsen van gegevens van een on-premises gegevens opslag naar een gegevens archief in de Cloud [gegevens verplaatsen van on-premises naar gegevens](data-factory-move-data-between-onprem-and-cloud.md)opslag in de Cloud.

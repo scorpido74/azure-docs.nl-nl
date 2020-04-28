@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph API's gebruiken om provisioning te configureren - Azure Active Directory | Microsoft Documenten
-description: Wilt u provisioning instellen voor meerdere exemplaren van een toepassing? Meer informatie over het besparen van tijd door de Microsoft Graph API's te gebruiken om de configuratie van automatische inrichting te automatiseren.
+title: Gebruik Microsoft Graph Api's om inrichting te configureren-Azure Active Directory | Microsoft Docs
+description: Moet u inrichten instellen voor meerdere exemplaren van een toepassing? Meer informatie over hoe u tijd kunt besparen met behulp van de Microsoft Graph-Api's om de configuratie van automatische inrichting te automatiseren.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,43 +17,43 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481463"
 ---
-# <a name="configure-provisioning-using-microsoft-graph-apis"></a>Inrichting configureren met Microsoft Graph API's
+# <a name="configure-provisioning-using-microsoft-graph-apis"></a>Inrichting configureren met behulp van Microsoft Graph-Api's
 
-De Azure-portal is een handige manier om de inrichting voor afzonderlijke apps één voor één te configureren. Maar als u meerdere of zelfs honderden exemplaren van een toepassing maakt, kan het eenvoudiger zijn om het maken en configureren van apps te automatiseren met de Microsoft Graph API's. In dit artikel wordt beschreven hoe u de inrichtingsconfiguratie automatiseren via API's. Deze methode wordt vaak gebruikt voor toepassingen zoals [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
+De Azure Portal is een handige manier om de inrichting van afzonderlijke apps per keer te configureren. Maar als u meerdere of zelfs honderden exemplaren van een toepassing maakt, is het eenvoudiger om het maken en configureren van apps met de Microsoft Graph Api's te automatiseren. In dit artikel wordt beschreven hoe u de inrichtings configuratie kunt automatiseren via Api's. Deze methode wordt doorgaans gebruikt voor toepassingen als [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
-**Overzicht van stappen voor het gebruik van Microsoft Graph API's om de inrichtingsconfiguratie te automatiseren**
+**Overzicht van de stappen voor het gebruik van Microsoft Graph-Api's voor het automatiseren van de inrichtings configuratie**
 
 
 |Stap  |Details  |
 |---------|---------|
-|[Stap 1. De galerietoepassing maken](#step-1-create-the-gallery-application)     |Aanmelden bij de API-client <br> De sjabloon voor galerietoepassingen ophalen <br> De galerietoepassing maken         |
-|[Stap 2. Inrichtingstaak maken op basis van sjabloon](#step-2-create-the-provisioning-job-based-on-the-template)     |De sjabloon voor de inrichtingsconnector ophalen <br> De inrichtingstaak maken         |
-|[Stap 3. Toegang autoriseren](#step-3-authorize-access)     |De verbinding met de toepassing testen <br> De referenties opslaan         |
-|[Stap 4. Begin met het inrichten van taak](#step-4-start-the-provisioning-job)     |Taak starten         |
-|[Stap 5. Toezicht houden op de inrichting](#step-5-monitor-provisioning)     |Controleer de status van de inrichtingstaak <br> De inrichtingslogboeken ophalen         |
+|[Stap 1. De galerie toepassing maken](#step-1-create-the-gallery-application)     |Meld u aan bij de API-client <br> De sjabloon voor de galerie toepassing ophalen <br> De galerie toepassing maken         |
+|[Stap 2. Inrichtings taak maken op basis van sjabloon](#step-2-create-the-provisioning-job-based-on-the-template)     |De sjabloon voor de inrichtings connector ophalen <br> De inrichtings taak maken         |
+|[Stap 3. Toegang toestaan](#step-3-authorize-access)     |De verbinding met de toepassing testen <br> De referenties opslaan         |
+|[Stap 4. De inrichtings taak starten](#step-4-start-the-provisioning-job)     |Taak starten         |
+|[Stap 5. Inrichting controleren](#step-5-monitor-provisioning)     |De status van de inrichtings taak controleren <br> De inrichtings logboeken ophalen         |
 
 > [!NOTE]
-> De reactieobjecten in dit artikel kunnen worden ingekort voor leesbaarheid. Alle eigenschappen worden geretourneerd van een daadwerkelijk gesprek.
+> De antwoord objecten die in dit artikel worden weer gegeven, kunnen worden inge kort op Lees baarheid. Alle eigenschappen worden geretourneerd op basis van een daad werkelijke aanroep.
 
-## <a name="step-1-create-the-gallery-application"></a>Stap 1: De galerietoepassing maken
+## <a name="step-1-create-the-gallery-application"></a>Stap 1: de galerie toepassing maken
 
-### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>Meld u aan bij Microsoft Graph Explorer (aanbevolen), Postbode of een andere API-client die u gebruikt
+### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>Meld u aan bij Microsoft Graph Explorer (aanbevolen), Postman of een andere API-client die u gebruikt
 
-1. [Microsoft Graph Explorer starten](https://developer.microsoft.com/graph/graph-explorer)
-1. Selecteer de knop Aanmelden met Microsoft en meld u aan met algemene ad-referenties voor Azure AD of App Admin.
+1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) starten
+1. Selecteer de knop aanmelden bij micro soft en meld u aan met behulp van de Azure AD Global-beheerder of de referenties van de app-beheerder.
 
-    ![Aanmelding in grafiek](./media/application-provisioning-configure-api/wd_export_02.png)
+    ![Graph-aanmelding](./media/application-provisioning-configure-api/wd_export_02.png)
 
-1. Bij een succesvolle aanmelding ziet u de gegevens van het gebruikersaccount in het linkerdeelvenster.
+1. Wanneer de aanmelding is geslaagd, worden de gegevens van het gebruikers account in het linkerdeel venster weer gegeven.
 
-### <a name="retrieve-the-gallery-application-template-identifier"></a>De sjabloon-id voor galerietoepassingen ophalen
-Toepassingen in de Azure AD-toepassingsgalerie hebben elk een [toepassingssjabloon](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) waarin de metagegevens voor die toepassing worden beschreven. Met deze sjabloon u een instantie van de toepassing en serviceprincipal in uw tenant maken voor beheer.
+### <a name="retrieve-the-gallery-application-template-identifier"></a>De id van de galerie toepassings sjabloon ophalen
+Toepassingen in de Azure AD-toepassings galerie hebben elk een [toepassings sjabloon](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) waarmee de meta gegevens voor die toepassing worden beschreven. Met deze sjabloon kunt u een exemplaar van de toepassing en Service-Principal in uw Tenant maken voor beheer.
 
 #### <a name="request"></a>*Aanvraag*
 
@@ -66,7 +66,7 @@ Toepassingen in de Azure AD-toepassingsgalerie hebben elk een [toepassingssjablo
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 
 <!-- {
   "blockType": "response",
@@ -103,9 +103,9 @@ Content-type: application/json
 }
 ```
 
-### <a name="create-the-gallery-application"></a>De galerietoepassing maken
+### <a name="create-the-gallery-application"></a>De galerie toepassing maken
 
-Gebruik de sjabloon-id die in de laatste stap voor uw toepassing is opgehaald om een instantie van de toepassing en serviceprincipal in uw tenant te [maken.](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
+Gebruik de sjabloon-ID die is opgehaald voor uw toepassing in de laatste stap om [een exemplaar](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) van de toepassing en Service-Principal in uw Tenant te maken.
 
 #### <a name="request"></a>*Aanvraag*
 
@@ -123,7 +123,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 
 
 <!-- {
@@ -170,11 +170,11 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>Stap 2: De inrichtingstaak maken op basis van de sjabloon
+## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>Stap 2: de inrichtings taak maken op basis van de sjabloon
 
-### <a name="retrieve-the-template-for-the-provisioning-connector"></a>De sjabloon voor de inrichtingsconnector ophalen
+### <a name="retrieve-the-template-for-the-provisioning-connector"></a>De sjabloon voor de inrichtings connector ophalen
 
-Toepassingen in de galerie die zijn ingeschakeld voor het inrichten, hebben sjablonen om de configuratie te stroomlijnen. Gebruik de onderstaande aanvraag om [de sjabloon voor de inrichtingsconfiguratie op](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)te halen. Houd er rekening mee dat u de id moet verstrekken. De id verwijst naar de voorgaande resource, die in dit geval de ServicePrincipal is. 
+Toepassingen in de galerie die zijn ingeschakeld voor inrichting, hebben sjablonen voor het stroom lijnen van de configuratie. Gebruik de onderstaande aanvraag om [de sjabloon voor de inrichtings configuratie](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)op te halen. Houd er rekening mee dat u de ID moet opgeven. De ID verwijst naar de voor gaande resource, in dit geval de ServicePrincipal. 
 
 #### <a name="request"></a>*Aanvraag*
 
@@ -187,7 +187,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 ```
 
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -211,8 +211,8 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="create-the-provisioning-job"></a>De inrichtingstaak maken
-Als u inrichten wilt inschakelen, moet u eerst [een taak maken.](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http) Gebruik de onderstaande aanvraag om een inrichtingstaak te maken. Gebruik de templateId uit de vorige stap wanneer u de sjabloon opgeeft die voor de taak moet worden gebruikt.
+### <a name="create-the-provisioning-job"></a>De inrichtings taak maken
+Als u het inrichten wilt inschakelen, moet u eerst [een taak maken](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http). Gebruik de onderstaande aanvraag om een inrichtings taak te maken. Gebruik de ontbrekende templateid uit de vorige stap wanneer u de sjabloon opgeeft die voor de taak moet worden gebruikt.
 
 #### <a name="request"></a>*Aanvraag*
 <!-- {
@@ -228,7 +228,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -262,11 +262,11 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-3-authorize-access"></a>Stap 3: Toegang autoriseren
+## <a name="step-3-authorize-access"></a>Stap 3: toegang autoriseren
 
 ### <a name="test-the-connection-to-the-application"></a>De verbinding met de toepassing testen
 
-Test de verbinding met de toepassing van derden. Het onderstaande voorbeeld is voor een toepassing waarvoor clientSecret en secretToken vereist zijn. Elke toepassing heeft zijn op vereisten. Toepassingen maken vaak gebruik van BaseAddress in plaats van ClientSecret. Als u wilt bepalen welke referenties uw app nodig heeft, navigeert u naar de configuratiepagina voor het inrichten van uw toepassing en klikt u in de ontwikkelaarsmodus op testverbinding. Het netwerkverkeer toont de parameters die worden gebruikt voor referenties. De volledige lijst met referenties is [hier](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)te vinden. 
+Test de verbinding met de toepassing van derden. Het onderstaande voor beeld is voor een toepassing waarvoor clientSecret en secretToken is vereist. Voor elke toepassing gelden de vereisten. Toepassingen gebruiken vaak BaseAddress in plaats van ClientSecret. Ga naar de inrichtings configuratie pagina voor uw toepassing en klik in de ontwikkelaars modus op verbinding testen om te bepalen welke referenties vereist zijn voor uw app. Het netwerk verkeer toont de para meters die worden gebruikt voor referenties. De volledige lijst met referenties vindt u [hier](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
 
 #### <a name="request"></a>*Aanvraag*
 ```msgraph-interactive
@@ -278,7 +278,7 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
     ]
 }
 ```
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -290,7 +290,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>Uw referenties opslaan
 
-Voor het configureren van de inrichting moet een vertrouwensrelatie worden ingesteld tussen Azure AD en de toepassing. Toegang tot de toepassing van derden autoriseren. Het onderstaande voorbeeld is voor een toepassing waarvoor clientSecret en secretToken vereist zijn. Elke toepassing heeft zijn op vereisten. Bekijk de [API-documentatie](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) om de beschikbare opties te bekijken. 
+Voor het configureren van de inrichting moet u een vertrouwens relatie tussen Azure AD en de toepassing tot stand brengen. Toegang verlenen tot de toepassing van derden. Het onderstaande voor beeld is voor een toepassing waarvoor clientSecret en secretToken is vereist. Voor elke toepassing gelden de vereisten. Raadpleeg de [API-documentatie](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) voor een overzicht van de beschik bare opties. 
 
 #### <a name="request"></a>*Aanvraag*
 ```msgraph-interactive
@@ -304,7 +304,7 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 }
 ```
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -314,8 +314,8 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 HTTP/1.1 204 No Content
 ```
 
-## <a name="step-4-start-the-provisioning-job"></a>Stap 4: Start de inrichtingstaak
-Nu de inrichtingstaak is geconfigureerd, gebruikt u de volgende opdracht om [de taak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)te starten . 
+## <a name="step-4-start-the-provisioning-job"></a>Stap 4: de inrichtings taak starten
+Nu de inrichtings taak is geconfigureerd, gebruikt u de volgende opdracht om [de taak te starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
 
 
 #### <a name="request"></a>*Aanvraag*
@@ -327,7 +327,7 @@ Nu de inrichtingstaak is geconfigureerd, gebruikt u de volgende opdracht om [de 
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/start
 ```
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -338,11 +338,11 @@ HTTP/1.1 204 No Content
 ```
 
 
-## <a name="step-5-monitor-provisioning"></a>Stap 5: Monitorprovisioning
+## <a name="step-5-monitor-provisioning"></a>Stap 5: inrichting controleren
 
-### <a name="monitor-the-provisioning-job-status"></a>De status van de inrichtingstaak controleren
+### <a name="monitor-the-provisioning-job-status"></a>De status van de inrichtings taak controleren
 
-Nu de inrichtingstaak wordt uitgevoerd, gebruikt u de volgende opdracht om de voortgang van de huidige inrichtingscyclus en statistieken tot nu toe bij te houden, zoals het aantal gebruikers en groepen dat in het doelsysteem is gemaakt. 
+Nu de inrichtings taak wordt uitgevoerd, gebruikt u de volgende opdracht om de voortgang van de huidige inrichtings cyclus te volgen, evenals statistieken tot datum, zoals het aantal gebruikers en groepen dat in het doel systeem is gemaakt. 
 
 #### <a name="request"></a>*Aanvraag*
 <!-- {
@@ -353,7 +353,7 @@ Nu de inrichtingstaak wordt uitgevoerd, gebruikt u de volgende opdracht om de vo
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
 ```
 
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -396,14 +396,14 @@ Content-length: 2577
 ```
 
 
-### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Provisioningsgebeurtenissen controleren met behulp van de inloglogboeken
-Naast het bewaken van de status van de inrichtingstaak, u de [inrichtingslogboeken](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) gebruiken om te zoeken naar alle gebeurtenissen die zich voordoen (bijvoorbeeld query's voor een bepaalde gebruiker en bepalen of ze met succes zijn ingericht).
+### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Inrichtings gebeurtenissen bewaken met behulp van de inrichtings logboeken
+Naast het controleren van de status van de inrichtings taak, kunt u de [inrichtings logboeken](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) gebruiken om een query uit te zoeken naar alle gebeurtenissen die plaatsvinden (bijvoorbeeld een query voor een bepaalde gebruiker en te bepalen of ze zijn ingericht).
 
 #### <a name="request"></a>*Aanvraag*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
-#### <a name="response"></a>*Reactie*
+#### <a name="response"></a>*Beantwoord*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -531,5 +531,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>Verwante artikelen:
 
-- [De documentatie van Microsoft Graph voor synchronisatie controleren](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Raadpleeg de documentatie voor synchronisatie Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Een aangepaste SCIM-app integreren met Azure AD](use-scim-to-provision-users-and-groups.md)

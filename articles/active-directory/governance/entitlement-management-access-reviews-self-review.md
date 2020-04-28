@@ -1,6 +1,6 @@
 ---
-title: Zelfbeoordeling van een toegangspakket in Azure AD-rechtenbeheer
-description: Meer informatie over het controleren van de toegang van gebruikers tot toegangspakketten voor beheer van rechten in Azure Active Directory-toegangsbeoordelingen (Preview).
+title: Zelf beoordeling van een toegangs pakket in het beheer van rechten van Azure AD
+description: Meer informatie over het controleren van de gebruikers toegang van rechten voor toegangs pakketten in Azure Active Directory-toegangs beoordelingen (preview).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,49 +17,49 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78967762"
 ---
-# <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Zelfbeoordeling van een toegangspakket in Azure AD-rechtenbeheer
+# <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Zelf beoordeling van een toegangs pakket in het beheer van rechten van Azure AD
 
-Azure AD-rechtenbeheer vereenvoudigt de manier waarop ondernemingen de toegang tot groepen, toepassingen en SharePoint-sites beheren. In dit artikel wordt beschreven hoe een gebruiker zijn toegewezen toegangspakket(en) zelf controleert.
+Het beheer van rechten van Azure AD vereenvoudigt de manier waarop bedrijven de toegang tot groepen, toepassingen en share point-sites beheren. In dit artikel wordt beschreven hoe een gebruiker zelf de toegewezen toegangs pakket (en) kunt controleren.
 
-## <a name="open-the-access-review"></a>De toegangscontrole openen
+## <a name="open-the-access-review"></a>Open de toegangs beoordeling
 
-Als u een toegangscontrole wilt doen, moet u eerst de toegangscontrole openen. Gebruik de volgende procedure om de toegangscontrole te zoeken en te openen:
+Als u een toegangs beoordeling wilt uitvoeren, moet u eerst de toegangs beoordeling openen. Gebruik de volgende procedure om de toegangs beoordeling te zoeken en te openen:
 
-1. U ontvangt mogelijk een e-mail van Microsoft waarin u wordt gevraagd de toegang te bekijken. Zoek de e-mail om de toegangscontrole te openen. Hier is een voorbeeld van een e-mail met het verzoek om een herziening van de toegang: 
+1. U ontvangt mogelijk een e-mail van micro soft waarin u wordt gevraagd de toegang te controleren. Zoek het e-mail bericht om de toegangs beoordeling te openen. Hier volgt een voor beeld van een e-mail bericht met een verzoek om een beoordeling van de toegang: 
     
-    ![E-mail voor beoordeling van de beoordeling van de toegang](./media/entitlement-management-access-reviews-review-access/self-review-reviewer-email.png)
+    ![E-mail adres voor de Self-revisor van toegangs controle](./media/entitlement-management-access-reviews-review-access/self-review-reviewer-email.png)
 
-1. Klik op de koppeling **Toegangs controleren.**
+1. Klik op de koppeling **toegang controleren** .
 
-1. Je ook https://myaccess.microsoft.com rechtstreeks naar je in behandeling zijnde toegangsbeoordelingen gaan als je geen e-mail ontvangt.  (Voor de Amerikaanse `https://myaccess.microsoft.us` regering, gebruik in plaats daarvan.)
+1. U kunt ook rechtstreeks naar uw https://myaccess.microsoft.com beoordelingen over openstaande toegang zoeken als u geen e-mail ontvangt.  (Gebruik `https://myaccess.microsoft.us` in plaats daarvan voor Amerikaanse overheid.)
 
-1. Klik op **Toegangsbeoordelingen** op de linkernavigatiebalk om een lijst met in behandeling zijnde toegangsbeoordelingen te bekijken die aan u zijn toegewezen.
+1. Klik op **toegangs beoordelingen** op de linkernavigatiebalk om een lijst weer te geven met openstaande toegangs beoordelingen die aan u zijn toegewezen.
 
 
-1.  Klik op de beoordeling waarmee u wilt beginnen.
+1.  Klik op het beoordeling dat u wilt beginnen.
 
-## <a name="perform-the-access-review"></a>De toegangscontrole uitvoeren
+## <a name="perform-the-access-review"></a>De toegangs beoordeling uitvoeren
 
-Zodra u de toegangscontrole opent, u uw toegang zien. Gebruik de volgende procedure om de toegangscontrole uit te voeren:
+Zodra u de toegangs beoordeling hebt geopend, ziet u uw toegang. Gebruik de volgende procedure om de toegangs beoordeling uit te voeren:
 
-1.  Bepaal of u nog steeds toegang nodig hebt tot het toegangspakket. Het project waaraan u werkt, is bijvoorbeeld niet voltooid, dus u hebt nog steeds toegang nodig om aan het project te blijven werken.
+1.  Bepaal of u nog steeds toegang tot het toegangs pakket nodig hebt. Het project waaraan u werkt, is bijvoorbeeld niet voltooid, dus u hebt nog steeds toegang nodig om verder te kunnen werken aan het project.
 
-1.  Klik **op Ja** om uw toegang te behouden of klik op **Nee** om uw toegang te verwijderen.
+1.  Klik op **Ja** om uw toegang te beperken of op **Nee** om uw toegang te verwijderen.
     >[!NOTE]
-    >Als u hebt aangegeven dat u geen toegang meer nodig hebt, wordt u niet onmiddellijk uit het toegangspakket verwijderd. U wordt uit het toegangspakket verwijderd wanneer de beoordeling afloopt of als een beheerder de beoordeling stopt.
+    >Als u hebt opgegeven dat u geen toegang meer nodig hebt, wordt u niet direct uit het toegangs pakket verwijderd. Wanneer de controle eindigt of als een beheerder de controle stopt, wordt het toegangs pakket verwijderd.
 
-1.  Als u op **Ja**hebt geklikt, moet u mogelijk een motiveringsverklaring opnemen in het vak **Reden.**
+1.  Als u op **Ja**hebt geklikt, moet u mogelijk een instructie voor de motivering in het vak **reden** toevoegen.
 
-1.  Klik **op Verzenden**.
+1.  Klik op **verzenden**.
 
-U terugkeren naar de beoordeling als u van gedachten verandert en besluit uw reactie te wijzigen voor het einde van de beoordeling.
+U kunt teruggaan naar de beoordeling als u van gedachten verandert en besluit uw antwoord te wijzigen voor het einde van de beoordeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang tot toegangspakketten controleren](entitlement-management-access-reviews-review-access.md) 
+- [Toegang tot toegangs pakketten controleren](entitlement-management-access-reviews-review-access.md) 

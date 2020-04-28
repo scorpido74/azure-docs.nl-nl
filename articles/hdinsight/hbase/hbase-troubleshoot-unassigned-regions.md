@@ -1,6 +1,6 @@
 ---
-title: Problemen met regioservers in Azure HDInsight
-description: Problemen met regioservers in Azure HDInsight
+title: Problemen met regio servers in azure HDInsight
+description: Problemen met regio servers in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,73 +8,73 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272758"
 ---
-# <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problemen met regioservers in Azure HDInsight
+# <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problemen met regio servers in azure HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
-## <a name="scenario-unassigned-regions"></a>Scenario: Niet-toegewezen gebieden
+## <a name="scenario-unassigned-regions"></a>Scenario: niet-toegewezen regio's
 
 ### <a name="issue"></a>Probleem
 
-Wanneer `hbase hbck` u de opdracht uitvoert, ziet u een foutbericht dat vergelijkbaar is met:
+Wanneer u `hbase hbck` de opdracht uitvoert, wordt een fout bericht weer gegeven dat er ongeveer als volgt uitziet:
 
 ```
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Vanuit de Apache HBase Master UI u het aantal regio's zien dat niet in balans is tussen alle regioservers. Vervolgens u `hbase hbck` de opdracht uitvoeren om gaten in de regioketen te zien.
+Vanuit de Apache-HBase Master gebruikers interface ziet u het aantal regio's dat niet in balans is over alle regio servers. Vervolgens kunt u de opdracht `hbase hbck` uitvoeren om gaten in de regio keten weer te geven.
 
 ### <a name="cause"></a>Oorzaak
 
-Gaten kunnen het gevolg zijn van offline regio's.
+Openingen kunnen het resultaat zijn van offline regio's.
 
 ### <a name="resolution"></a>Oplossing
 
-Repareer de opdrachten. Volg de onderstaande stappen om de niet-toegewezen gebieden weer in de normale staat te brengen:
+Los de toewijzingen op. Volg de onderstaande stappen om de niet-toegewezen regio's weer in de normale staat te brengen:
 
-1. Meld u aan bij het HDInsight HBase-cluster met SSH.
+1. Meld u met SSH aan bij het HDInsight HBase-cluster.
 
-1. Voer `hbase zkcli` de opdracht uit om verbinding te maken met de shell ZooKeeper.
+1. Voer `hbase zkcli` de opdracht uit om verbinding te maken met de ZooKeeper-shell.
 
-1. Uitvoeren `rmr /hbase/regions-in-transition` `rmr /hbase-unsecure/regions-in-transition` of opdracht geven.
+1. Uitvoeren `rmr /hbase/regions-in-transition` of `rmr /hbase-unsecure/regions-in-transition` opdracht.
 
-1. Verlaat de dierenverzorgersmethet commando. `exit`
+1. Sluit Zookeeper-shell af `exit` met behulp van de opdracht.
 
-1. Open de Apache Ambari-gebruikersinterface en start de Active HBase Master-service opnieuw.
+1. Open de Apache Ambari-gebruikers interface en start de Active HBase Master-service opnieuw.
 
 1. Voer `hbase hbck` de opdracht opnieuw uit (zonder verdere opties). Controleer de uitvoer en zorg ervoor dat alle regio's worden toegewezen.
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>Scenario: Servers van dode regio's
+## <a name="scenario-dead-region-servers"></a>Scenario: Dead-regio servers
 
 ### <a name="issue"></a>Probleem
 
-Regioservers starten niet.
+De regio servers kunnen niet worden gestart.
 
 ### <a name="cause"></a>Oorzaak
 
-Meerdere splitsenDE WAL-mappen.
+Meerdere mappen voor het splitsen van WAL.
 
-1. Overzicht som met `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`huidige WAL's: .
+1. Lijst met huidige WALs ophalen: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
-1. Controleer `wals.out` het bestand. Als er te veel splitsing mappen (te beginnen met *-splitsing), de regio server is waarschijnlijk niet als gevolg van deze mappen.
+1. Inspecteer `wals.out` het bestand. Als er te veel splitsings mappen zijn (te beginnen met *-splitsen), mislukt de regio server waarschijnlijk vanwege deze directory's.
 
 ### <a name="resolution"></a>Oplossing
 
-1. Stop HBase van Ambari portal.
+1. Stop HBase van de Ambari-Portal.
 
-1. Uitvoeren `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` om nieuwe lijst van WALs te krijgen.
+1. Voer `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out` uit om een nieuwe lijst met WALs op te halen.
 
-1. Verplaats de mappen *splitsen naar een `splitWAL`tijdelijke map en verwijder de mappen *-splitsing.
+1. Verplaats de *-splitsings mappen naar een tijdelijke map `splitWAL`en verwijder de *-splitsings mappen.
 
-1. Voer `hbase zkcli` opdracht uit om verbinding te maken met de shell van zookeeper.
+1. Voer `hbase zkcli` de opdracht uit om verbinding te maken met de Zookeeper-shell.
 
 1. Uitvoeren `rmr /hbase-unsecure/splitWAL`.
 
@@ -82,10 +82,10 @@ Meerdere splitsenDE WAL-mappen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

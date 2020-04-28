@@ -1,7 +1,7 @@
 ---
-title: Claims verifiëren met weergavebesturingselementen
+title: Claims met besturings elementen voor weer gave controleren
 titleSuffix: Azure AD B2C
-description: Meer informatie over het gebruik van Azure AD B2C-weergavebesturingselementen om de claims te verifiëren in de gebruikersreizen die worden geleverd door uw aangepaste beleid.
+description: Meer informatie over het gebruik van Azure AD B2C besturings elementen voor weer gave om de claims te controleren in de door uw aangepaste beleids regels verschafte gebruikers ritten.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,46 +12,46 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188780"
 ---
-# <a name="verification-display-control"></a>Controlecontrole voor de weergave controle van verificatie
+# <a name="verification-display-control"></a>Besturings element voor verificatie weergave
 
-Gebruik een [verificatiecontroleom](display-controls.md) een claim te verifiëren, bijvoorbeeld een e-mailadres of telefoonnummer, met een verificatiecode die naar de gebruiker wordt verzonden.
+Gebruik een [besturings element](display-controls.md) voor controle weergave om een claim te verifiëren, bijvoorbeeld een e-mail adres of telefoon nummer, waarbij een verificatie code wordt verzonden naar de gebruiker.
 
-## <a name="verificationcontrol-actions"></a>Acties VerificationControl
+## <a name="verificationcontrol-actions"></a>VerificationControl-acties
 
-Het besturingselement voor de verificatieweergave bestaat uit twee stappen (acties):
+Het besturings element voor controle weergave bestaat uit twee stappen (acties):
 
-1. Vraag een bestemming aan van de gebruiker, zoals een e-mailadres of telefoonnummer, waarnaar de verificatiecode moet worden verzonden. Wanneer de gebruiker de knop **Code verzenden** selecteert, wordt de **actie SendCode** van het controlebesturingselement voor verificatieweergave uitgevoerd. De **Actie SendCode** genereert een code, construeert de inhoud die moet worden verzonden en stuurt deze naar de gebruiker. De waarde van het adres kan vooraf worden ingevuld en dienen als een tweede-factor authenticatie.
+1. Vraag een bestemming aan bij de gebruiker, zoals een e-mail adres of telefoon nummer waarnaar de verificatie code moet worden verzonden. Wanneer de gebruiker de knop **code verzenden** selecteert, wordt de **actie SendCode** van het besturings element controle weer gegeven. Met de **actie SendCode** wordt een code gegenereerd, wordt de inhoud gemaakt die moet worden verzonden en verzonden naar de gebruiker. De waarde van het adres kan vooraf worden ingevuld en fungeert als een tweede factor verificatie.
 
-    ![Voorbeeldpagina voor codeactie verzenden](media/display-control-verification/display-control-verification-email-action-01.png)
+    ![Voorbeeld pagina voor de actie code verzenden](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. Nadat de code is verzonden, leest de gebruiker het bericht, voert de verificatiecode in het besturingselement dat door het weergavebesturingselement wordt verstrekt en selecteert **u Code verifiëren**. Door **Code verifiëren**te selecteren, wordt de **actie VerifyCode** uitgevoerd om de code te verifiëren die aan het adres is gekoppeld. Als de gebruiker **Nieuwe code**verzenden selecteert, wordt de eerste actie opnieuw uitgevoerd.
+1. Nadat de code is verzonden, leest de gebruiker het bericht, voert de verificatie code in het besturings element van het weergave besturings element in en selecteert **code controleren**. Als u **code controleren**selecteert, wordt de **actie VerifyCode** uitgevoerd om de code te controleren die aan het adres is gekoppeld. Als de gebruiker **nieuwe code verzenden**selecteert, wordt de eerste actie opnieuw uitgevoerd.
 
-    ![Voorbeeldpagina voor codeactie verifiëren](media/display-control-verification/display-control-verification-email-action-02.png)
+    ![Voorbeeld pagina voor het controleren van code actie](media/display-control-verification/display-control-verification-email-action-02.png)
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="verificationcontrol-required-elements"></a>VerificatieControle vereiste elementen
+## <a name="verificationcontrol-required-elements"></a>Vereiste elementen VerificationControl
 
-De **verificatiecontrole** moet de volgende elementen bevatten:
+De **VerificationControl** moet de volgende elementen bevatten:
 
-- Het type `DisplayControl` van `VerificationControl`de is .
+- Het type `DisplayControl` is `VerificationControl`.
 - `DisplayClaims`
-  - **Verzenden naar** - Een of meer claims waarin wordt aangegeven waar u de verificatiecode naartoe moet sturen. Bijvoorbeeld *e-mail-* of *landcode* en *telefoonnummer*.
-  - **Verificatiecode** : de verificatiecodeclaim die de gebruiker verstrekt nadat de code is verzonden. Deze claim moet worden ingesteld `ControlClaimType` als vereist, `VerificationCode`en de moet worden ingesteld op .
-- Uitvoerclaim (optioneel) die moet worden geretourneerd naar de zelfverklaarde pagina nadat de gebruiker het verificatieproces heeft voltooid. Bijvoorbeeld *e-mail-* of *landcode* en *telefoonnummer*. Het zelfverklaarde technische profiel gebruikt de claims om de gegevens voort te houden of de uitvoerclaims naar de volgende orchestration-stap op te voeren.
+  - **Verzenden naar** -een of meer claims waarmee wordt aangegeven waarnaar de verificatie code moet worden verzonden. Bijvoorbeeld *e-mail adres* of *land code* en *telefoon nummer*.
+  - **Verificatie code** -de claim van de verificatie code die door de gebruiker wordt verstrekt nadat de code is verzonden. Deze claim moet worden ingesteld als vereist en `ControlClaimType` moet worden ingesteld op. `VerificationCode`
+- Uitvoer claim (optioneel) die moet worden geretourneerd naar de zelfbevestigende pagina nadat het verificatie proces door de gebruiker is voltooid. Bijvoorbeeld *e-mail adres* of *land code* en *telefoon nummer*. Het zelfondertekende technische profiel gebruikt de claims om de gegevens op te slaan of de uitvoer claims samen te stellen aan de volgende Orchestration-stap.
 - Twee `Action`s met de volgende namen:
-  - **SendCode** - Stuurt een code naar de gebruiker. Deze actie bevat meestal twee validatie technische profiel, om een code te genereren en te verzenden.
-  - **VerifyCode** - Verifieert de code. Deze actie bevat meestal één technisch validatieprofiel.
+  - **SendCode** : stuurt een code naar de gebruiker. Deze actie bevat doorgaans twee technische validatie profielen, waarmee een code kan worden gegenereerd en verzonden.
+  - **VerifyCode** : verifieert de code. Deze actie bevat meestal een technische profiel voor validatie.
 
-In het onderstaande voorbeeld wordt een **e-mailtekstvak** weergegeven op de pagina. Wanneer de gebruiker zijn e-mailadres invoert en **SendCode**selecteert, wordt de actie **SendCode** geactiveerd in de Back-end van Azure AD B2C.
+In het onderstaande voor beeld wordt een tekstvak voor **e-mail** op de pagina weer gegeven. Wanneer de gebruiker zijn of haar e-mail adres invoert en **SendCode**selecteert, wordt de actie **SendCode** geactiveerd in de back-end van Azure AD B2C.
 
-Vervolgens voert de gebruiker de **verificatiecode** in en selecteert **u VerifyCode** om de actie **VerifyCode** in de back-end te activeren. Als alle validaties slagen, wordt het **Verificatiebesturingselement** als voltooid beschouwd en kan de gebruiker doorgaan naar de volgende stap.
+Vervolgens voert de gebruiker de **verificationCode** in en selecteert **VerifyCode** om de **VerifyCode** -actie in de back-end te activeren. Als alle validaties worden door gegeven, wordt de **VerificationControl** beschouwd als voltooid en kan de gebruiker door gaan met de volgende stap.
 
 ```XML
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">

@@ -9,37 +9,37 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471507"
 ---
-Conditional Access zorgt voor fijnkorrelige toegangscontrole per toepassing. Als u Voorwaardelijke toegang wilt gebruiken, moet azure AD Premium 1 of meer licenties worden toegepast op de gebruikers waarop de regels voor voorwaardelijke toegang zijn onderworpen.
+Met voorwaardelijke toegang kunt u nauw keurig toegangs beheer per toepassing instellen. Als u voorwaardelijke toegang wilt gebruiken, moet u Azure AD Premium 1 of hoger licentiëring hebben toegepast op de gebruikers die zijn onderworpen aan de regels voor voorwaardelijke toegang.
 
-1. Navigeer naar de **Enterprise-toepassingen - Alle toepassingenpagina** en klik op **Azure VPN**.
+1. Ga naar de pagina **Enter prise Applications-alle toepassingen** en klik op **Azure VPN**.
 
-   - Klik **op Voorwaardelijke toegang**.
-   - Klik **op Nieuw beleid** om het deelvenster **Nieuw** te openen.
-2. Navigeer in het deelvenster **Nieuw** naar **Toewijzingen -> gebruikers en groepen**. Ga op het tabblad **Gebruikers en groepen >** **opnemen:**
+   - Klik op **voorwaardelijke toegang**.
+   - Klik op **Nieuw beleid** om het **nieuwe** deel venster te openen.
+2. Navigeer in het **nieuwe** deel venster naar **toewijzingen-> gebruikers en groepen**. Op het tabblad **gebruikers en groepen->** **toevoegen** :
 
-   - Klik **op Gebruikers en groepen selecteren**.
-   - **Gebruikers en groepen controleren**.
-   - Klik **op Selecteren** om een groep of een groep gebruikers te selecteren die door MFA worden beïnvloed.
+   - Klik op **gebruikers en groepen selecteren**.
+   - Controleer de **gebruikers en groepen**.
+   - Klik op **selecteren** om een groep of een set gebruikers te selecteren die wordt beïnvloed door MFA.
    - Klik op **Gereed**.
 
    ![Toewijzingen](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-assignments.png)
-3. Navigeer in het deelvenster **Nieuw** naar het deelvenster **Access-besturingselementen -> verlenen:**
+3. Ga in het **nieuwe** deel venster naar het deel venster **toegangs beheer-> toekenning** :
 
-   - Klik **op Toegang verlenen**.
-   - Klik **op Meervoudige verificatie vereisen**.
-   - Klik **op Alle geselecteerde besturingselementen vereisen**.
-   - Klik **op Selecteren**.
+   - Klik op **toegang verlenen**.
+   - Klik op **multi-factor Authentication vereisen**.
+   - Klik op **alle geselecteerde besturings elementen vereisen**.
+   - Klik op **selecteren**.
    
-   ![Subsidietoegang - MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
-4. Ga als bedoeld in de sectie **Beleid inschakelen:**
+   ![Toegang verlenen voor MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
+4. In de sectie **beleid inschakelen** :
 
-   - Selecteer **Op**.
-   - Klik **op Maken**.
+   - Selecteer **aan**.
+   - Klik op **maken**.
 
    ![Beleid inschakelen](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

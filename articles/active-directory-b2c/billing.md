@@ -1,6 +1,6 @@
 ---
-title: Factureringsmodel voor Azure Active Directory B2C
-description: Meer informatie over het mau-factureringsmodel (Monthly Active Users) van Azure AD B2C en hoe u facturering voor een specifiek Azure-abonnement inschakelen.
+title: Facturerings model voor Azure Active Directory B2C
+description: Meer informatie over het facturerings model voor het maandelijkse actieve gebruikers (MAU) van Azure AD B2C's en het inschakelen van facturering voor een specifiek Azure-abonnement.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,133 +11,133 @@ ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190004"
 ---
-# <a name="billing-model-for-azure-active-directory-b2c"></a>Factureringsmodel voor Azure Active Directory B2C
+# <a name="billing-model-for-azure-active-directory-b2c"></a>Facturerings model voor Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) wordt gefactureerd aan een gekoppeld Azure-abonnement en maakt gebruik van een mau-factureringsmodel (monthly active users). Meer informatie over het koppelen van een Azure AD B2C-bron aan een abonnement en hoe het MAU-factureringsmodel werkt in de volgende secties.
+Het gebruik van Azure Active Directory B2C (Azure AD B2C) wordt gefactureerd aan een gekoppeld Azure-abonnement en maakt gebruik van een maandelijks MAU-facturerings model (actieve gebruikers). Leer hoe u een Azure AD B2C resource koppelt aan een abonnement en hoe het facturerings model van MAU werkt in de volgende secties.
 
 > [!IMPORTANT]
-> Dit artikel bevat geen prijsinformatie. Zie [Azure Active Directory B2C-prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente informatie over facturering en prijzen voor gebruiksfacturering en -prijzen.
+> Dit artikel bevat geen prijs informatie. Zie [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente informatie over het gebruik van facturering en prijzen.
 
-## <a name="monthly-active-users-mau-billing"></a>Maandelijksactieve gebruikers (MAU) facturering
+## <a name="monthly-active-users-mau-billing"></a>Facturering van maandelijkse actieve gebruikers (MAU)
 
-Azure AD B2C-facturering wordt gemeten op het aantal unieke gebruikers met verificatieactiviteit binnen een kalendermaand, bekend als mau-facturering (monthly active users).
+Azure AD B2C facturering wordt gemeten op basis van het aantal unieke gebruikers met verificatie activiteiten binnen een kalender maand, ook wel maandelijks actieve gebruikers (MAU)-facturering.
 
-Vanaf **1 november 2019**worden alle nieuw gemaakte Azure AD B2C-tenants gefactureerd per maandelijkse actieve gebruikers (MAU). Bestaande huurders die op of na 1 november 2019 [zijn gekoppeld aan een abonnement,](#link-an-azure-ad-b2c-tenant-to-a-subscription) worden per maand actieve gebruikers (MAU) gefactureerd.
+Vanaf **01 November 2019**worden alle nieuw gemaakte Azure AD B2C tenants gefactureerd per maandelijks actieve gebruikers (Mau). Bestaande tenants die zijn [gekoppeld aan een abonnement](#link-an-azure-ad-b2c-tenant-to-a-subscription) op of na 01 november 2019 worden gefactureerd per maandelijks actieve gebruikers (Mau).
 
-Als u een bestaande Azure AD B2C-tenant hebt die vóór 1 november 2019 aan een abonnement is gekoppeld, u ervoor kiezen om een van de volgende handelingen uit te voeren:
+Als u een bestaande Azure AD B2C-Tenant hebt die is gekoppeld aan een abonnement van vóór 01 november 2019, kunt u kiezen uit een van de volgende opties:
 
-* Upgrade naar het mau-factureringsmodel (monthly active users), of
-* Blijf op het factureringsmodel per verificatie
+* Voer een upgrade uit naar het maandelijkse actieve gebruikers (MAU) facturerings model of
+* Blijf op het facturerings model per verificatie
 
-### <a name="upgrade-to-monthly-active-users-billing-model"></a>Upgraden naar het factureringsmodel voor maandelijksactieve gebruikers
+### <a name="upgrade-to-monthly-active-users-billing-model"></a>Upgrade uitvoeren naar het facturerings model voor maandelijkse actieve gebruikers
 
-Eigenaren van Azure-abonnementen die beheerderstoegang hebben tot de Azure AD B2C-bron, kunnen overschakelen naar het MAU-factureringsmodel. Factureringsopties zijn geconfigureerd in uw Azure AD B2C-bron.
+Eigen aars van Azure-abonnementen met beheerders toegang tot de Azure AD B2C resource kunnen overschakelen naar het facturerings model MAU. Facturerings opties worden geconfigureerd in uw Azure AD B2C-resource.
 
-De overstap naar maandelijkse actieve gebruikers (MAU) facturering is **onomkeerbaar**. Zodra u een Azure AD B2C-bron converteert naar het factureringsmodel op basis van MAU, u die bron niet terugzetten naar het factureringsmodel per verificatie.
+De schakel optie voor facturering van maandelijkse actieve gebruikers (MAU) is **onomkeerbaar**. Nadat u een Azure AD B2C resource hebt geconverteerd naar het MAU-factuur model, kunt u die resource niet herstellen naar het facturerings model per verificatie.
 
-U als u de overstap maken naar MAU-facturering voor een bestaande Azure AD B2C-bron:
+Ga als volgt te werk om de overschakeling naar MAU facturering voor een bestaande Azure AD B2C resource te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als eigenaar van het abonnement.
-1. Selecteer het **filter Directory + abonnement** in het bovenste menu en selecteer vervolgens de Azure AD B2C-map die u wilt upgraden naar MAU-facturering.<br/>
-    ![Directory- en abonnementsfilter in Azure-portal](./media/billing/portal-mau-01-select-b2c-directory.png)
-1. Selecteer Azure AD **B2C**in het linkermenu . Selecteer Ook **Alle services** en zoek naar Azure AD **B2C**en selecteer deze .
-1. Selecteer op de pagina **Overzicht** van de Azure AD B2C-tenant de koppeling onder **Resourcenaam**. U wordt doorverwezen naar de Azure AD B2C-bron in uw Azure AD-tenant.<br/>
-    ![Azure AD B2C-bronkoppeling gemarkeerd in Azure-portal](./media/billing/portal-mau-02-b2c-resource-link.png)
-1. Selecteer op de **overzichtspagina** van de Azure AD B2C-bron onder **Factureerbare eenheden**de koppeling **Per verificatie (Wijzigen in MAU).**<br/>
-    ![Wijzigen in MAU-koppeling die is gemarkeerd in Azure-portal](./media/billing/portal-mau-03-change-to-mau-link.png)
-1. Selecteer **Bevestigen** om de upgrade naar MAU-facturering te voltooien.<br/>
-    ![Dialoogvenster factureringsbevestiging op basis van MAU in Azure-portal](./media/billing/portal-mau-04-confirm-change-to-mau.png)
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als eigenaar van het abonnement.
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de Azure AD B2C Directory die u wilt bijwerken naar Mau-facturering.<br/>
+    ![Directory-en abonnements filter in Azure Portal](./media/billing/portal-mau-01-select-b2c-directory.png)
+1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer op de pagina **overzicht** van de Azure AD B2C Tenant de koppeling onder **resource naam**. U wordt omgeleid naar de Azure AD B2C-resource in uw Azure AD-Tenant.<br/>
+    ![Azure AD B2C resource koppeling gemarkeerd in Azure Portal](./media/billing/portal-mau-02-b2c-resource-link.png)
+1. Selecteer op de pagina **overzicht** van de Azure AD B2C resource onder **factureer bare eenheden**de koppeling **per verificatie (wijzigen in Mau)** .<br/>
+    ![Wijziging in de MAU-koppeling is gemarkeerd in Azure Portal](./media/billing/portal-mau-03-change-to-mau-link.png)
+1. Selecteer **bevestigen** om de upgrade naar Mau-facturering te volt ooien.<br/>
+    ![Bevestigings venster voor facturering op basis van MAU in Azure Portal](./media/billing/portal-mau-04-confirm-change-to-mau.png)
 
-### <a name="what-to-expect-when-you-transition-to-mau-billing-from-per-authentication-billing"></a>Wat u verwachten wanneer u overstapt op MAU-facturering vanaf facturering per verificatie
+### <a name="what-to-expect-when-you-transition-to-mau-billing-from-per-authentication-billing"></a>Wat u kunt verwachten wanneer u overstapt naar MAU-facturering vanuit facturering per verificatie
 
-Mau-gebaseerde meting is ingeschakeld zodra u, de eigenaar van het abonnement/bron, de wijziging bevestigt. Uw maandelijkse factuur weerspiegelt de eenheden van authenticatie gefactureerd tot de wijziging, en nieuwe eenheden van MAU te beginnen met de wijziging.
+MAU Metering is ingeschakeld zodra u, de eigenaar van het abonnement/de resource, de wijziging bevestigt. Op uw maandelijkse factuur worden de gefactureerde verificatie-eenheden weer gegeven totdat de wijziging en de nieuwe eenheden van MAU beginnen met de wijziging.
 
-Gebruikers worden niet dubbel geteld tijdens de overgangsmaand. Unieke actieve gebruikers die voorafgaand aan de wijziging verifiëren, betalen een tarief per verificatie in een kalendermaand. Diezelfde gebruikers worden niet opgenomen in de MAU-berekening voor de rest van de factureringscyclus van het abonnement. Bijvoorbeeld:
+Gebruikers worden niet dubbel geteld tijdens de overgangs maand. Unieke actieve gebruikers die zich vóór de wijziging verifiëren, worden in rekening gebracht per verificatie tarief in een kalender maand. Dezelfde gebruikers worden niet opgenomen in de berekening van de MAU voor de rest van de facturerings cyclus van het abonnement. Bijvoorbeeld:
 
-* De Contoso B2C huurder heeft 1.000 gebruikers. 250 gebruikers zijn actief in een bepaalde maand. De abonnementsbeheerder verandert op de 10e van de maand van per-authenticatie naar maandelijks actieve gebruikers (MAU).
-* Facturering voor 1e-10e wordt gefactureerd met behulp van het per-authenticatiemodel.
-  * Als 100 gebruikers zich tijdens deze periode (1e-10e) aanmelden, worden deze gebruikers getagd als *betaald voor de maand*.
-* Facturering vanaf de 10e (het effectieve tijdstip van overgang) wordt gefactureerd tegen het MAU-tarief.
-  * Als er in deze periode nog eens 150 gebruikers zich aanmelden (10e-30e), worden alleen de extra 150 gefactureerd.
-  * De voortgezette activiteit van de eerste 100 gebruikers heeft geen invloed op facturering voor de rest van de kalendermaand.
+* De contoso B2C-Tenant heeft 1.000 gebruikers. 250 gebruikers zijn in een bepaalde maand actief. De abonnements beheerder verandert van per verificatie voor maandelijkse actieve gebruikers (MAU) op de tiende van de maand.
+* Facturering voor 1e tiende wordt gefactureerd met het model per verificatie.
+  * Als 100 gebruikers zich aanmelden tijdens deze periode (1 tot en met 10), worden deze gebruikers gemarkeerd als *betaald voor de maand*.
+* Facturering van de tiende (de geldigheids duur van de overgang) wordt gefactureerd op basis van het MAU tarief.
+  * Als een aanvullend 150-gebruiker zich tijdens deze periode (tiende-30) aanmeldt, wordt alleen de extra 150 gefactureerd.
+  * De continue activiteit van de eerste 100-gebruikers heeft geen invloed op de facturering voor de rest van de kalender maand.
 
-Tijdens de factureringsperiode van de overgang ziet de eigenaar van het abonnement waarschijnlijk vermeldingen voor beide methoden (per verificatie en per MAU) in hun Azure-abonnementsfactureringsoverzicht:
+Tijdens de facturerings periode van de overgang ziet de eigenaar van het abonnement waarschijnlijk vermeldingen voor beide methoden (per verificatie en per MAU) in hun facturerings overzicht van het Azure-abonnement:
 
-* Een vermelding voor het gebruik tot de datum/tijd van wijziging die per verificatie weergeeft.
-* Een vermelding voor het gebruik na de wijziging die maandelijks actieve gebruikers (MAU) weerspiegelt.
+* Een vermelding voor het gebruik tot de datum/tijd van de wijziging die per verificatie weerspiegelt.
+* Een vermelding voor het gebruik na de wijziging die maandelijkse actieve gebruikers (MAU) weergeeft.
 
-Zie [Azure Active Directory B2C-prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente informatie over facturering en prijzen voor gebruiksfacturering en -prijzen voor Azure AD B2C.
+Zie [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente informatie over het factureren van gebruik en de prijzen voor Azure AD B2C.
 
-## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Een Azure AD B2C-tenant koppelen aan een abonnement
+## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Een Azure AD B2C-Tenant koppelen aan een abonnement
 
-Gebruikskosten voor Azure Active Directory B2C (Azure AD B2C) worden gefactureerd aan een Azure-abonnement. Wanneer een Azure AD B2C-tenant wordt gemaakt, moet de tenantbeheerder de Azure AD B2C-tenant expliciet koppelen aan een Azure-abonnement.
+Gebruiks kosten voor Azure Active Directory B2C (Azure AD B2C) worden gefactureerd voor een Azure-abonnement. Wanneer een Azure AD B2C-Tenant wordt gemaakt, moet de Tenant beheerder de Azure AD B2C Tenant expliciet koppelen aan een Azure-abonnement.
 
-De abonnementskoppeling wordt bereikt door een *resource* Azure AD B2C-bron te maken binnen het doelAzure-abonnement. Er kunnen verschillende Azure AD B2C-resources worden gemaakt in één Azure-abonnement, samen met andere Azure-bronnen zoals virtuele machines, opslagaccounts en Logische apps. U alle bronnen binnen een abonnement bekijken door naar de Azure AD-tenant (Azure Directory) te gaan waaraan het abonnement is gekoppeld.
+De koppeling van het abonnement wordt bereikt door een Azure AD B2C *resource* te maken binnen het doel-Azure-abonnement. Verschillende Azure AD B2C resources kunnen worden gemaakt in één Azure-abonnement, samen met andere Azure-resources, zoals virtuele machines, opslag accounts en Logic Apps. U kunt alle resources in een abonnement zien door te gaan naar de Azure Active Directory (Azure AD)-Tenant waaraan het abonnement is gekoppeld.
 
-Een abonnement dat is gekoppeld aan een Azure AD B2C-tenant, kan worden gebruikt voor de facturering van Azure AD B2C-gebruik of andere Azure-resources, waaronder extra Azure AD B2C-resources. Het kan niet worden gebruikt om andere Azure-licentiegebaseerde services of Office 365-licenties toe te voegen aan de Azure AD B2C-tenant.
+Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt voor het factureren van Azure AD B2C gebruik of andere Azure-resources, inclusief aanvullende Azure AD B2C resources. Het kan niet worden gebruikt voor het toevoegen van andere Azure-licentie services of Office 365-licenties in de Azure AD B2C Tenant.
 
 ### <a name="prerequisites"></a>Vereisten
 
 * [Azure-abonnement](https://azure.microsoft.com/free/)
-* [Azure AD B2C-tenant](tutorial-create-tenant.md) die u aan een abonnement wilt koppelen
-  * U moet een tenantbeheerder zijn
-  * De huurder mag nog niet zijn gekoppeld aan een abonnement
+* [Azure AD B2C Tenant](tutorial-create-tenant.md) die u wilt koppelen aan een abonnement
+  * U moet een Tenant beheerder zijn
+  * De Tenant mag niet al zijn gekoppeld aan een abonnement
 
 ### <a name="create-the-link"></a>De koppeling maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer het **filter Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met het Azure-abonnement dat u wilt gebruiken *(niet* de map met de Azure AD B2C-tenant).
-1. Selecteer Een resource `Active Directory B2C` **maken,** voer het veld Zoeken in de **marketplace** in en selecteer vervolgens Azure Active **Directory B2C**.
-1. Selecteer **Maken**
-1. Selecteer **Een bestaande Azure AD B2C-tenant koppelen aan mijn Azure-abonnement**.
-1. Selecteer een **Azure AD B2C-tenant** in de vervolgkeuzelijst. Alleen huurders waarvoor u een globale beheerder bent en die nog niet zijn gekoppeld aan een abonnement, worden weergegeven. Het azure **AD B2C-bronnaamveld** wordt gevuld met de domeinnaam van de Azure AD B2C-tenant die u selecteert.
-1. Selecteer een actief **Azure-abonnement** waarvan u beheerder bent.
-1. Selecteer **onder Resourcegroep** **Nieuw maken**en geef vervolgens de locatie van de **resourcegroep**op . De instellingen voor resourcegroepen hier hebben geen invloed op de locatie, prestaties of factureringsstatus van uw Azure AD B2C-tenant.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met het Azure-abonnement dat u wilt gebruiken (*niet* de map die de Azure AD B2C Tenant bevat).
+1. Selecteer **een resource maken**, Voer `Active Directory B2C` in het veld **Marketplace doorzoeken** in en selecteer vervolgens **Azure Active Directory B2C**.
+1. Selecteer **maken**
+1. Selecteer **een bestaande Azure AD B2C-Tenant koppelen aan mijn Azure-abonnement**.
+1. Selecteer een **Azure AD B2C Tenant** in de vervolg keuzelijst. Alleen tenants waarvoor u een globale beheerder bent en die nog niet aan een abonnement zijn gekoppeld, worden weer gegeven. Het veld **Azure AD B2C resource naam** wordt ingevuld met de domein naam van de Azure AD B2C-Tenant die u selecteert.
+1. Selecteer een actief Azure- **abonnement** waarvan u een beheerder bent.
+1. Selecteer onder **resource groep**de optie **nieuwe maken**en geef vervolgens de **locatie van de resource groep**op. De instellingen voor de resource groep zijn hier niet van invloed op uw Azure AD B2C Tenant locatie, prestaties of facturerings status.
 1. Selecteer **Maken**.
-    ![De pagina azure AD B2C-resourcecreatie in Azure-portal](./media/billing/portal-01-create-b2c-resource-page.png)
+    ![De pagina Azure AD B2C het maken van resources in Azure Portal](./media/billing/portal-01-create-b2c-resource-page.png)
 
-Nadat u deze stappen hebt voltooid voor een Azure AD B2C-tenant, wordt uw Azure-abonnement gefactureerd in overeenstemming met uw Azure Direct- of Enterprise-overeenkomstgegevens, indien van toepassing.
+Nadat u deze stappen voor een Azure AD B2C Tenant hebt voltooid, wordt uw Azure-abonnement gefactureerd volgens uw Azure direct-of Enterprise Agreement-gegevens, indien van toepassing.
 
-### <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Uw Azure AD B2C-tenantbronnen beheren
+### <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Uw Azure AD B2C-Tenant resources beheren
 
-Nadat u de Azure AD B2C-bron in een Azure-abonnement hebt gemaakt, moet u een nieuwe bron van het type 'B2C-tenant' zien verschijnen met uw andere Azure-resources.
+Nadat u de Azure AD B2C resource in een Azure-abonnement hebt gemaakt, ziet u een nieuwe resource van het type ' B2C-Tenant ' weer gegeven met uw andere Azure-resources.
 
-U deze bron gebruiken om:
+U kunt deze resource gebruiken voor het volgende:
 
-* Naar het abonnement navigeren om factureringsgegevens te bekijken
-* De tenant-id van de Azure AD B2C-tenant in de GUID-indeling aanschaffen
-* Ga naar uw Azure AD B2C-tenant
-* Een ondersteuningsverzoek indienen
-* Uw Azure AD B2C-tenantbron verplaatsen naar een ander Azure-abonnement of -brongroep
+* Navigeer naar het abonnement om facturerings gegevens te bekijken
+* De Tenant-ID van de Azure AD B2C Tenant in GUID-indeling ophalen
+* Ga naar uw Azure AD B2C-Tenant
+* Een ondersteunings aanvraag indienen
+* Uw Azure AD B2C Tenant resource verplaatsen naar een ander Azure-abonnement of een andere resource groep
 
-![Pagina B2C-broninstellingen in de Azure-portal](./media/billing/portal-02-b2c-resource-overview.png)
+![De pagina B2C-bron instellingen in de Azure Portal](./media/billing/portal-02-b2c-resource-overview.png)
 
 ### <a name="regional-restrictions"></a>Regionale beperkingen
 
-Als u in uw abonnement regionale beperkingen hebt ingesteld voor het maken van Azure-resources, u met die beperking de Azure AD B2C-bron maken.
+Als u regionale beperkingen hebt ingesteld voor het maken van Azure-resources in uw abonnement, kan deze beperking ertoe leiden dat u de Azure AD B2C resource niet kunt maken.
 
-Om dit probleem te beperken, u uw regionale beperkingen versoepelen.
+Om dit probleem te verhelpen, kunt u uw regionale beperkingen versoepelen.
 
-## <a name="azure-cloud-solution-providers-csp-subscriptions"></a>CSP-abonnementen (Azure Cloud Solution Providers)
+## <a name="azure-cloud-solution-providers-csp-subscriptions"></a>Azure Cloud Solution Providers (CSP)-abonnementen
 
-CSP-abonnementen (Azure Cloud Solution Providers) worden ondersteund in Azure AD B2C. De functionaliteit is beschikbaar met API's of de Azure-portal voor Azure AD B2C en voor alle Azure-resources. CSP-abonnementsbeheerders kunnen relaties met Azure AD B2C koppelen, verplaatsen en verwijderen, zoals met andere Azure-bronnen.
+Azure Cloud Solution Providers (CSP)-abonnementen worden ondersteund in Azure AD B2C. De functionaliteit is beschikbaar via Api's of de Azure Portal voor Azure AD B2C en voor alle Azure-resources. Beheerders van CSP-abonnementen kunnen relaties met Azure AD B2C koppelen, verplaatsen en verwijderen, net als bij andere Azure-resources.
 
-Het beheer van Azure AD B2C met behulp van op rollen gebaseerd toegangscontrole wordt niet beïnvloed door de koppeling tussen de Azure AD B2C-tenant en een Azure CSP-abonnement. Op rollen gebaseerd toegangsbeheer wordt bereikt door tenantrollen te gebruiken, niet op abonnementen gebaseerde rollen.
+Het beheer van Azure AD B2C met op rollen gebaseerd toegangs beheer wordt niet beïnvloed door de koppeling tussen de Azure AD B2C Tenant en een Azure CSP-abonnement. Toegangs beheer op basis van rollen wordt bereikt door gebruik te maken van op tenants gebaseerde rollen, niet op abonnementen gebaseerde rollen.
 
-## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Het factureringsabonnement voor Azure AD B2C-tenant wijzigen
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Het facturerings abonnement voor de Azure AD B2C-Tenant wijzigen
 
-Azure AD B2C-tenants kunnen naar een ander abonnement worden verplaatst als de bron- en doelabonnementen binnen dezelfde Azure Active Directory-tenant bestaan.
+Azure AD B2C-tenants kunnen worden verplaatst naar een ander abonnement als de bron-en doel abonnementen binnen dezelfde Azure Active Directory Tenant bestaan.
 
-Zie Resources verplaatsen [naar een nieuwe brongroep of -abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van Azure-resources zoals uw Azure AD B2C-tenant naar een ander abonnement.
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van Azure-resources, zoals uw Azure AD B2C-Tenant naar een ander abonnement.
 
-Voordat u de verhuizing start, moet u het hele artikel lezen om de beperkingen en vereisten voor een dergelijke verhuizing volledig te begrijpen. Naast instructies voor het verplaatsen van resources, bevat het kritieke informatie zoals een checklist voor het verplaatsen van vooraf en het valideren van de verplaatsingsbewerking.
+Lees voordat u begint met verplaatsen het hele artikel om de beperkingen en vereisten voor een dergelijke verplaatsing volledig te begrijpen. Naast instructies voor het verplaatsen van resources bevat deze essentiële informatie zoals een controle lijst voorafgaand aan het verplaatsen en het valideren van de verplaatsings bewerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Active Directory B2C-prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente prijsinformatie.
+Zie [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente prijs informatie.

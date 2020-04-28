@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Databricks SCIM-connector configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het automatisch inrichten en de-inrichten van gebruikersaccounts van Azure AD naar Azure Databricks SCIM Connector.
+title: 'Zelf studie: Azure Databricks SCIM-connector configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts van Azure AD naar Azure Databricks SCIM-connector.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,99 +16,99 @@ ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77370534"
 ---
-# <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Zelfstudie: Azure Databricks SCIM-connector configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Zelf studie: Azure Databricks SCIM-connector configureren voor automatische gebruikers inrichting
 
-In deze zelfstudie worden de stappen beschreven die u moet uitvoeren in zowel Azure Databricks SCIM Connector als Azure Active Directory (Azure AD) om automatische gebruikersinrichting te configureren. Wanneer azure AD is geconfigureerd, worden gebruikers en groepen automatisch ingericht en de-bepalingen naar [Azure Databricks SCIM Connector](https://databricks.com/) met behulp van de Azure AD Provisioning-service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel Azure Databricks SCIM-connector als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en ongedaan gemaakt voor [Azure DATABRICKS scim-connector](https://databricks.com/) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]
-> * Gebruikers maken in Azure Databricks SCIM Connector
-> * Gebruikers verwijderen in Azure Databricks SCIM Connector wanneer ze geen toegang meer nodig hebben
-> * Gebruikerskenmerken gesynchroniseerd houden tussen Azure AD en Azure Databricks SCIM Connector
-> * Groepen en groepslidmaatschappen inrichten in Azure Databricks SCIM Connector
+> * Gebruikers maken in Azure Databricks SCIM-connector
+> * Gebruikers in Azure Databricks SCIM-connector verwijderen wanneer ze niet meer toegang nodig hebben
+> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en Azure Databricks SCIM-connector
+> * Inrichtings groepen en groepslid maatschappen in Azure Databricks SCIM-connector
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* [Een Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Een gebruikersaccount in Azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) om provisioning te configureren (bijvoorbeeld toepassingsbeheerder, cloudtoepassingsbeheerder, toepassingseigenaar of globale beheerder). 
-* Een Azure Databricks-account met beheerdersmachtigingen.
+* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
+* Een Azure Databricks account met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtingsimplementatie plannen
-1. Meer informatie over [hoe de inprovisioningservice werkt.](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
-2. Bepaal wie in de ruimte voor [de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)zal zijn .
-3. Bepaal welke gegevens u wilt [toewijzen tussen Azure AD en Azure Databricks SCIM Connector](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en Azure DATABRICKS scim-connector](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-## <a name="step-2-configure-azure-databricks-scim-connector-to-support-provisioning-with-azure-ad"></a>Stap 2. Azure Databricks SCIM Connector configureren om provisioning met Azure AD te ondersteunen
+## <a name="step-2-configure-azure-databricks-scim-connector-to-support-provisioning-with-azure-ad"></a>Stap 2. Azure Databricks SCIM-connector configureren ter ondersteuning van inrichting met Azure AD
 
-1. Als u Azure Databricks SCIM-inrichting wilt instellen, voegt u deze toe als een bron in uw Azure Active Directory-tenant en configureert u deze met behulp van de onderstaande instellingen.
+1. Als u Azure Databricks SCIM-inrichting wilt instellen, voegt u deze toe als een resource in uw Azure Active Directory Tenant en configureert u deze met behulp van de onderstaande instellingen.
 
-    ![Azure Databricks-installatie](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/setup.png)
+    ![Azure Databricks instellen](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/setup.png)
 
-2. Als u een persoonlijk toegangstoken wilt genereren in Azure Databricks, verwijst [u dit](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#token-management)door.
+2. Als u een persoonlijk toegangs token wilt genereren in Azure Databricks raadpleegt u [Dit](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#token-management).
 
-3. Kopieer de **token**. Deze waarde wordt ingevoerd in het veld Geheim token op het tabblad Provisioning van uw Azure Databricks SCIM Connector-toepassing in de Azure-portal.
+3. Kopieer het **token**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van de Azure Databricks SCIM connector-toepassing in de Azure Portal.
 
-## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>Stap 3. Azure Databricks SCIM-connector toevoegen vanuit de Azure AD-toepassingsgalerie
+## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>Stap 3. Azure Databricks SCIM-connector toevoegen vanuit de Azure AD-toepassings galerie
 
-Voeg Azure Databricks SCIM Connector toe vanuit de Azure AD-toepassingsgalerie om de inrichting voor Azure Databricks SCIM Connector te beheren. Als u azure Databricks SCIM Connector voor SSO eerder hebt ingesteld, u dezelfde toepassing gebruiken. Het wordt echter aanbevolen om een aparte app te maken bij het testen van de integratie in eerste instantie. Meer informatie over het toevoegen van een toepassing uit de galerie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Voeg Azure Databricks SCIM-connector toe vanuit de Azure AD-toepassings galerie om het beheer van de inrichting te starten voor Azure Databricks SCIM-connector. Als u eerder Azure Databricks SCIM-connector voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Bepalen wie in het vermogen van de inrichting 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
 
-Met de Azure AD-inrichtingsservice u scopen die worden ingericht op basis van toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker /groep. Als u ervoor kiest om het bereik te bepalen wie op basis van toewijzing aan uw app wordt toegewezen, u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om scope die zal worden ingericht uitsluitend op basis van attributen van de gebruiker of groep, u gebruik maken van een scoping filter zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)beschreven. 
+Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
 
-* Wanneer u gebruikers en groepen toewijs aan Azure Databricks SCIM Connector, moet u een andere rol dan **Standaardtoegang**selecteren. Gebruikers met de functie Standaardtoegang zijn uitgesloten van inrichten en worden gemarkeerd als niet effectief gerechtigd in de inrichtingslogboeken. Als de enige rol die beschikbaar is in de toepassing de standaardtoegangsrol is, u [het toepassingsmanifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen toewijst aan Azure Databricks SCIM-connector, moet u een andere rol dan de **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-* Begin klein. Test met een kleine set gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer de inrichtingsruimte is ingesteld op toegewezen gebruikers en groepen, u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, u een [op kenmerken gebaseerd scopingfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
+* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-azure-databricks-scim-connector"></a>Stap 5. Automatische gebruikersinrichting configureren voor Azure Databricks SCIM-connector 
+## <a name="step-5-configure-automatic-user-provisioning-to-azure-databricks-scim-connector"></a>Stap 5. Automatische gebruikers inrichting configureren voor Azure Databricks SCIM-connector 
 
-In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!NOTE]
-> Raadpleeg [dit](https://docs.databricks.com/dev-tools/api/latest/scim.html
-)voor meer informatie over het SCIM-eindpunt van Azure Databricks.
+> Raadpleeg voor meer informatie over Azure Databricks SCIM-eind punt [.](https://docs.databricks.com/dev-tools/api/latest/scim.html
+)
 
-### <a name="to-configure-automatic-user-provisioning-for-azure-databricks-scim-connector-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor Azure Databricks SCIM Connector in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-azure-databricks-scim-connector-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Azure Databricks SCIM-connector in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer Azure **Databricks SCIM Connector**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Azure DATABRICKS scim-connector**.
 
-    ![De koppeling Azure Databricks SCIM Connector in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling Azure Databricks SCIM-connector in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie **Beheerdersreferenties** de scim-eindpuntwaarde in **tenant-URL**in . De tenant-URL moet `https://<region>.azuredatabricks.net/api/2.0/preview/scim` zich bevinden in de indeling waarin de **regio** te vinden is in de URL van de azure databricks-startpagina. Een SCIM-eindpunt voor **de westusregio** is `https://westus.azuredatabricks.net/api/2.0/preview/scim`bijvoorbeeld . Voer de tokenwaarde in die eerder in **Secret Token**is opgehaald. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Azure Databricks SCIM Connector. Als de verbinding mislukt, moet u ervoor zorgen dat uw Azure Databricks SCIM Connector-account beheerdersmachtigingen heeft en het opnieuw proberen.
+5. Voer in de sectie **beheerders referenties** de scim-eindpunt waarde in voor de **Tenant-URL**. De URL van de Tenant moet de indeling `https://<region>.azuredatabricks.net/api/2.0/preview/scim` hebben waarin de **regio** kan worden gevonden in de URL van uw Azure Databricks start pagina. Zo is een SCIM-eind punt voor de regio **westus** `https://westus.azuredatabricks.net/api/2.0/preview/scim`. Voer de token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Azure Databricks scim-connector. Als de verbinding mislukt, controleert u of uw Azure Databricks SCIM-Connector account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Provisioning](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
+    ![inrichtings](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 
-6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fout moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden in wanneer er een fout optreedt.**
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Selecteer **Opslaan**.
 
-8. Selecteer azure **active directory-gebruikers synchroniseren met Azure Databricks SCIM-connector**onder de sectie **Toewijzingen** .
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Azure Databricks scim-connector**.
 
-9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Azure Databricks SCIM Connector in de sectie **Attribute-Mapping.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Azure Databricks SCIM Connector te matchen voor updatebewerkingen. Als u ervoor kiest het [overeenkomende doelkenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de Azure Databricks SCIM Connector API filteringgebruikers ondersteunt op basis van dat kenmerk. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Azure Databricks SCIM-connector in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in azure Databricks scim-connector voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de Azure Databricks scim-connector-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
    |Kenmerk|Type|
    |---|---|
@@ -116,47 +116,47 @@ In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of
    |displayName|Tekenreeks|
    |actief|Booleaans|
 
-10. Selecteer azure **Active Directory-groepen synchroniseren met Azure Databricks SCIM-connector**onder de sectie **Toewijzingen** .
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren om Azure Databricks scim-connector**.
 
-11. Controleer de groepskenmerken die zijn gesynchroniseerd van Azure AD naar Azure Databricks SCIM Connector in de sectie **Attribute-Mapping.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de groepen in Azure Databricks SCIM Connector te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Azure Databricks SCIM-connector in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groepen in azure Databricks scim-connector voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
      |Kenmerk|Type|
      |---|---|
      |displayName|Tekenreeks|
      |leden|Naslaginformatie|
 
-11. Selecteer azure **Active Directory-groepen synchroniseren met Azure Databricks SCIM-connector**onder de sectie **Toewijzingen** .
+11. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren om Azure Databricks scim-connector**.
 
-12. Als u de Azure AD-inrichtingsservice voor Azure Databricks SCIM-connector wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
+12. Als u de Azure AD Provisioning Service voor Azure Databricks SCIM- **connector wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-13. Definieer de gebruikers en/of groepen die u wilt inrichten voor Azure Databricks SCIM Connector door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
+13. Definieer de gebruikers en/of groepen die u wilt inrichten Azure Databricks SCIM-connector door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-14. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+14. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste cyclus duurt langer om uit te voeren dan de volgende cycli, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
+Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
-Zodra u de inrichting hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te controleren:
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
 
-* Gebruik de [inrichtingslogboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers met succes of zonder succes zijn ingericht
-* Controleer de [voortgangsbalk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtingscyclus te bekijken en hoe dicht deze bij voltooiing is
-* Als de inrichtingsconfiguratie in een ongezonde status lijkt te zijn, wordt de toepassing in quarantaine geplaatst. Meer informatie over quarantainestaten [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+* De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
+* Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
+* Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
-* Databricks zet altijd hun gebruikersnaamwaarden om in kleine letters bij het opslaan naar hun directory, ongeacht de hoofdletters die we via SCIM naar hen sturen.
-* Momenteel get aanvragen tegen Azure Databricks 'SCIM API voor gebruikers USER@contoso.com zijn hoofdlettergevoelig, dus als we user@contoso.comvragen voor het zal komen met 0 resultaten als ze het opslaan als .
+* Met Databricks worden de waarden van de gebruikers namen altijd omgezet in kleine letters bij het opslaan naar de Directory, ongeacht het hoofdletter gebruik dat wordt verzonden via SCIM.
+* Momenteel krijgen aanvragen voor Azure Databricks ' SCIM-API voor gebruikers hoofdletter gevoelig, dus als we er query's USER@contoso.com voor uitvoeren, worden ze in de buurt van 0 resultaten opgeslagen user@contoso.comals.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)

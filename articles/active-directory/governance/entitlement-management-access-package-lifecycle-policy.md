@@ -1,6 +1,6 @@
 ---
-title: Levenscyclusinstellingen wijzigen voor een toegangspakket in Azure AD-rechtenbeheer - Azure Active Directory
-description: Meer informatie over het wijzigen van levenscyclusinstellingen voor een toegangspakket in Azure Active Directory-rechtenbeheer.
+title: Levenscyclus instellingen voor een toegangs pakket wijzigen in azure AD-recht beheer-Azure Active Directory
+description: Meer informatie over het wijzigen van de levenscyclus instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,42 +17,42 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261981"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Levenscyclusinstellingen wijzigen voor een toegangspakket in Azure AD-rechtenbeheer
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Levenscyclus instellingen voor een toegangs pakket wijzigen in het beheer van rechten van Azure AD
 
-Als toegangspakketbeheerder u de levenscyclusinstellingen voor een toegangspakket op elk gewenst moment wijzigen door een bestaand beleid te bewerken. Als u de vervaldatum voor een beleid wijzigt, wordt de vervaldatum voor aanvragen die al in behandeling zijn, of goedgekeurde status, niet gewijzigd.
+Als Access Package Manager kunt u de levenscyclus instellingen voor een toegangs pakket op elk gewenst moment wijzigen door een bestaand beleid te bewerken. Als u de verval datum voor een beleid wijzigt, wordt de verval datum voor aanvragen waarvoor al een goed keuring in behandeling of goedgekeurd staat, niet gewijzigd.
 
-In dit artikel wordt beschreven hoe u de levenscyclusinstellingen voor een bestaand toegangspakket wijzigen.
+In dit artikel wordt beschreven hoe u de levenscyclus instellingen voor een bestaand toegangs pakket wijzigt.
 
-## <a name="open-lifecycle-settings"></a>Instellingen voor open levenscyclus
+## <a name="open-lifecycle-settings"></a>Open levenscyclus instellingen
 
-Als u de levenscyclusinstellingen voor een toegangspakket wilt wijzigen, moet u het bijbehorende beleid openen. Volg deze stappen om de levenscyclusinstellingen voor een toegangspakket te openen.
+Als u de levenscyclus instellingen voor een toegangs pakket wilt wijzigen, moet u het bijbehorende beleid openen. Volg deze stappen om de levenscyclus instellingen voor een toegangs pakket te openen.
 
-**Vereiste rol:** Globale beheerder, gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Klik in de Azure-portal op **Azure Active Directory** en klik vervolgens op **Identiteitsbeheer**.
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
-1. Klik in het linkermenu op **Access-pakketten** en open het toegangspakket.
+1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
-1. Klik **op Beleid** en klik vervolgens op het beleid met de levenscyclusinstellingen die u wilt bewerken.
+1. Klik op **beleids regels** en klik vervolgens op het beleid met de levenscyclus instellingen die u wilt bewerken.
 
-    Het deelvenster Details van het beleid wordt onder aan de pagina geopend.
+    Het deel venster beleids Details wordt geopend onder aan de pagina.
 
-    ![Toegangspakket - deelvenster Beleidsdetails](./media/entitlement-management-shared/policy-details.png)
+    ![Toegangs venster pakket-Details van beleid](./media/entitlement-management-shared/policy-details.png)
 
-1. Klik **op Bewerken** om het beleid te bewerken.
+1. Klik op **bewerken** om het beleid te bewerken.
 
-    ![Toegangspakket - Beleid bewerken](./media/entitlement-management-shared/policy-edit.png)
+    ![Toegangs beleid voor pakket bewerken](./media/entitlement-management-shared/policy-edit.png)
 
-1. Klik op het tabblad **Levenscyclus** om de levenscyclusinstellingen te openen.
+1. Klik op het tabblad **levens cyclus** om de levenscyclus instellingen te openen.
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanvraag- en goedkeuringsinstellingen voor een toegangspakket wijzigen](entitlement-management-access-package-request-policy.md)
+- [Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)

@@ -1,6 +1,6 @@
 ---
-title: Toegang tot een toegangspakket controleren in Azure AD-rechtenbeheer
-description: Meer informatie over het voltooien van een toegangscontrole van toegangsbeheerpakketten voor rechten in Azure Active Directory-toegangsbeoordelingen (Preview).
+title: Toegang tot een toegangs pakket controleren in het beheer van rechten van Azure AD
+description: Meer informatie over het volt ooien van een toegangs beoordeling van rechten voor beheer toegangs pakketten in Azure Active Directory toegangs beoordelingen (preview).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,90 +17,90 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968745"
 ---
-# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Toegang tot een toegangspakket controleren in Azure AD-rechtenbeheer
+# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Toegang tot een toegangs pakket controleren in het beheer van rechten van Azure AD
 
-Azure AD-rechtenbeheer vereenvoudigt de manier waarop ondernemingen de toegang tot groepen, toepassingen en SharePoint-sites beheren. In dit artikel wordt beschreven hoe u toegangsbeoordelingen uitvoert voor andere gebruikers die als aangewezen revisor aan een toegangspakket zijn toegewezen.
+Het beheer van rechten van Azure AD vereenvoudigt de manier waarop bedrijven de toegang tot groepen, toepassingen en share point-sites beheren. In dit artikel wordt beschreven hoe u toegangs beoordelingen uitvoert voor andere gebruikers die zijn toegewezen aan een toegangs pakket als aangewezen revisor.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de actieve toegangspakkettoewijzingen van gebruikers wilt bekijken, moet u voldoen aan de vereisten voor het uitvoeren van een toegangscontrole:
+Als u de actieve toegangs pakket toewijzingen van gebruikers wilt beoordelen, moet u voldoen aan de vereisten voor een toegangs beoordeling:
 - Azure AD Premium P2
 - Globale beheerder
-- Aangewezen gebruikersbeheerder, cataloguseigenaar of Access-pakketbeheer
+- Aangewezen gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-Zie [Licentievereisten voor](entitlement-management-overview.md#license-requirements)meer informatie.
+Zie [licentie vereisten](entitlement-management-overview.md#license-requirements)voor meer informatie.
 
 
-## <a name="open-the-access-review"></a>De toegangscontrole openen
+## <a name="open-the-access-review"></a>Open de toegangs beoordeling
 
-Gebruik de volgende stappen om de toegangscontrole te zoeken en te openen:
+Gebruik de volgende stappen om de toegangs beoordeling te zoeken en te openen:
 
-1. U ontvangt mogelijk een e-mail van Microsoft waarin u wordt gevraagd de toegang te bekijken. Zoek de e-mail om de toegangscontrole te openen. Hier is een voorbeeld e-mail om toegang te bekijken:
+1. U ontvangt mogelijk een e-mail van micro soft waarin u wordt gevraagd de toegang te controleren. Zoek het e-mail bericht om de toegangs beoordeling te openen. Hier volgt een voor beeld van een e-mail bericht om toegang te controleren:
     
-    ![E-mail van de controleur van de toegang](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
+    ![E-mail adres van revisor voor toegang](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
 
-1. Klik op de koppeling **Gebruikerstoegang controleren** om de toegangscontrole te openen. 
+1. Klik op de koppeling **gebruikers toegang controleren** om de toegangs beoordeling te openen. 
 
-1. Als u de e-mail niet hebt, u uw https://myaccess.microsoft.comopenstaande toegangsbeoordelingen vinden door rechtstreeks naar.  (Voor de Amerikaanse `https://myaccess.microsoft.us` regering, gebruik in plaats daarvan.)
+1. Als u de e-mail niet hebt, kunt u uw openstaande toegangs beoordelingen vinden door rechtstreeks naar https://myaccess.microsoft.comte navigeren.  (Gebruik `https://myaccess.microsoft.us` in plaats daarvan voor Amerikaanse overheid.)
 
-1. Klik op **Toegangsbeoordelingen** op de linkernavigatiebalk om een lijst met in behandeling zijnde toegangsbeoordelingen te bekijken die aan u zijn toegewezen.
+1. Klik op **toegangs beoordelingen** op de linkernavigatiebalk om een lijst weer te geven met openstaande toegangs beoordelingen die aan u zijn toegewezen.
     
-    ![Toegangsrecensies selecteren op Mijn toegang](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
+    ![Toegangs beoordelingen selecteren voor mijn toegang](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
 
-1. Klik op de beoordeling waarmee u wilt beginnen.
+1. Klik op het beoordeling dat u wilt beginnen.
     
-    ![De toegangscontrole selecteren](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
+    ![Selecteer de toegangs beoordeling](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
 
-## <a name="perform-the-access-review"></a>De toegangscontrole uitvoeren
+## <a name="perform-the-access-review"></a>De toegangs beoordeling uitvoeren
 
-Zodra u de toegangscontrole opent, ziet u de namen van gebruikers waarvoor u moet controleren. Er zijn twee manieren waarop u de toegang goedkeuren of weigeren:
-- U de toegang voor een of meer gebruikers handmatig goedkeuren of weigeren
-- U de systeemaanbevelingen accepteren
+Zodra u de toegangs beoordeling hebt geopend, ziet u de namen van de gebruikers die u moet controleren. Er zijn twee manieren waarop u toegang kunt goed keuren of weigeren:
+- U kunt de toegang hand matig goed keuren of weigeren voor een of meer gebruikers
+- U kunt de systeem aanbevelingen accepteren
 
-### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>Toegang voor een of meer gebruikers handmatig goedkeuren of weigeren
-1. Bekijk de lijst met gebruikers en bepaal welke gebruikers toegang moeten blijven hebben.
+### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>De toegang voor een of meer gebruikers hand matig goed keuren of weigeren
+1. Bekijk de lijst met gebruikers en bepaal welke gebruikers nog steeds toegang moeten hebben.
 
-    ![Lijst met gebruikers die u wilt bekijken](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
+    ![Lijst met gebruikers die moeten worden beoordeeld](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
 
-1. Als u de toegang wilt goedkeuren of weigeren, selecteert u de keuzerondjelinks van de naam van de gebruiker.
+1. Als u de toegang wilt goed keuren of weigeren, selecteert u het keuze rondje links van de naam van de gebruiker.
 
-1. Selecteer **Goedkeuren** of **Weigeren** op de balk boven de gebruikersnamen.
+1. Selecteer in de balk boven de gebruikers namen **goed keuren** of **weigeren** .
 
     ![De gebruiker selecteren](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
 
-1. Als u het niet zeker weet, u op de knop **Weet niet klikken.**
+1. Als u niet zeker weet, kunt u klikken op de knop **niet kennen** .
 
-    Als u deze selectie maakt, behoudt de gebruiker de toegang en deze selectie vindt deze plaats in de controlelogboeken. In het logboek worden alle andere revisoren weergegeven die u nog steeds hebt voltooid.
+    Als u deze selectie maakt, onderhoudt de gebruiker de toegang en wordt deze selectie in de audit Logboeken opgenomen. Het logboek bevat alle andere revisoren die u nog steeds de controle hebt voltooid.
 
-1. Mogelijk moet u een reden voor uw beslissing geven. Typ een reden in en klik op **Verzenden**.
+1. Mogelijk moet u een reden opgeven voor uw beslissing. Typ een reden en klik op **verzenden**.
 
-    ![Toegang goedkeuren of weigeren](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
+    ![Toegang goed keuren of weigeren](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
 
-1. U uw beslissing op elk gewenst moment voor het einde van de beoordeling wijzigen. Selecteer hiervoor de gebruiker in de lijst en wijzigt de beslissing. U bijvoorbeeld de toegang goedkeuren voor een gebruiker die u eerder hebt geweigerd.
+1. U kunt uw beslissing op elk gewenst moment wijzigen vóór het einde van de beoordeling. Als u dit wilt doen, selecteert u de gebruiker in de lijst en wijzigt u de beslissing. U kunt bijvoorbeeld de toegang goed keuren voor een gebruiker die u eerder hebt geweigerd.
 
-Als er meerdere revisoren zijn, wordt het laatst ingediende antwoord geregistreerd. Houd rekening met een voorbeeld waarin een beheerder twee revisoren aanwijst: Alice en Bob. Alice opent de beoordeling eerst en keurt de toegang goed. Voordat de beoordeling afloopt, opent Bob de beoordeling en weigert toegang. In dit geval wordt de laatste beslissing tot weigeringstoegang geregistreerd.
+Als er meerdere revisoren zijn, wordt de laatste verzonden reactie vastgelegd. Bekijk een voor beeld waarin een beheerder twee revisoren (Alice en Bob) toewijst. Anja opent de beoordeling eerst en keurt de toegang goed. Voordat de controle eindigt, wordt de controle geopend en wordt de toegang geweigerd. In dit geval wordt de laatste beslissing voor het weigeren van toegang vastgelegd.
 
 >[!NOTE]
->Als een gebruiker de toegang wordt geweigerd, wordt deze niet onmiddellijk uit het toegangspakket verwijderd. De gebruiker wordt uit het toegangspakket verwijderd wanneer de beoordeling afloopt of een beheerder beëindigt de beoordeling.
+>Als een gebruiker de toegang wordt geweigerd, worden deze niet direct uit het toegangs pakket verwijderd. De gebruiker wordt verwijderd uit het toegangs pakket wanneer de controle eindigt of een beheerder de controle beëindigt.
 
-### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>Toegang goedkeuren of weigeren met behulp van de door het systeem gegenereerde aanbevelingen
+### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>Toegang goed keuren of weigeren met de door het systeem gegenereerde aanbevelingen
 
-Als u de toegang voor meerdere gebruikers sneller wilt controleren, u de door het systeem gegenereerde aanbevelingen gebruiken en de aanbevelingen met één klik accepteren. De aanbevelingen worden gegenereerd op basis van de aanmeldingsactiviteit van de gebruiker.
+Als u de toegang voor meerdere gebruikers sneller wilt bekijken, kunt u de door het systeem gegenereerde aanbevelingen gebruiken om de aanbevelingen met één klik te accepteren. De aanbevelingen worden gegenereerd op basis van de aanmeldings activiteit van de gebruiker.
 
-1.  Klik op de balk boven aan de pagina op **Aanbevelingen accepteren**.
+1.  Klik in de balk boven aan de pagina op **aanbevelingen accepteren**.
     
-    ![Aanbevelingen accepteren selecteren](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
+    ![Selecteer aanbevelingen accepteren](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
     
-    U ziet een overzicht van de aanbevolen acties.
+    Er wordt een samen vatting van de aanbevolen acties weer gegeven.
 
-1.  Klik **op Verzenden** om de aanbevelingen te accepteren.
+1.  Klik op **verzenden** om de aanbevelingen te accepteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfbeoordeling van toegangspakketten](entitlement-management-access-reviews-self-review.md)
+- [Zelf beoordeling van toegangs pakketten](entitlement-management-access-reviews-self-review.md)

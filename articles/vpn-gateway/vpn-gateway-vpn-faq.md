@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Azure VPN-gateway
+title: Veelgestelde vragen over Azure VPN Gateway
 description: Veelgestelde vragen over VPN-gateways. Veelgestelde vragen over cross-premises verbindingen, verbindingen voor hybride configuraties en VPN-gateways voor Microsoft Azure Virtual Network.
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279882"
 ---
 # <a name="vpn-gateway-faq"></a>Veelgestelde vragen VPN-gateways
@@ -30,7 +30,7 @@ Ja.
 
 U kunt verbinding maken met meerdere sites met behulp van Windows PowerShell en de REST-API's van Azure. Raadpleeg de sectie Veelgestelde vragen bij [Multi-site- en VNet-naar-VNet-connectiviteit](#V2VMulti).
 
-### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Zijn er extra kosten verbonden aan het opzetten van een VPN-gateway die actief is?
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Zijn er extra kosten verbonden aan het instellen van een VPN-gateway als actief-actief?
 
 Nee. 
 
@@ -42,13 +42,13 @@ De volgende cross-premises verbindingen worden ondersteund:
 * Punt-naar-site: VPN-verbinding via SSTP (Secure Socket Tunneling Protocol) of IKE v2. Voor deze verbinding is geen VPN-apparaat vereist. Zie [Punt-naar-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) voor meer informatie.
 * VNet-naar-VNet: dit type verbinding is hetzelfde als de site-naar-site-configuratie. VNet-naar-VNet is een VPN-verbinding via IPsec (IKE v1 en IKE v2). Hiervoor is geen VPN-apparaat vereist. Zie [VNet-naar-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) voor meer informatie.
 * Multi-site: dit is een variant op een site-naar-site-configuratie waarmee u meerdere on-premises sites kunt verbinden met een virtueel netwerk. Zie [Multi-site](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) voor meer informatie.
-* ExpressRoute – ExpressRoute is een privéverbinding met Azure vanaf uw WAN, geen VPN-verbinding via het openbare internet. Raadpleeg het [Technisch overzicht van ExpressRoute](../expressroute/expressroute-introduction.md) en de [Veelgestelde vragen over ExpressRoute](../expressroute/expressroute-faqs.md) voor meer informatie.
+* ExpressRoute: ExpressRoute is een particuliere verbinding met Azure van uw WAN, en niet een VPN-verbinding via het open bare Internet. Raadpleeg het [Technisch overzicht van ExpressRoute](../expressroute/expressroute-introduction.md) en de [Veelgestelde vragen over ExpressRoute](../expressroute/expressroute-faqs.md) voor meer informatie.
 
 Zie [Informatie over VPN Gateway](vpn-gateway-about-vpngateways.md) voor meer informatie over VPN-gatewayverbindingen.
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>Wat is het verschil tussen een site-naar-site-verbinding en een punt-naar-site?
 
-Er is sprake van **site-naar-site**-configuraties (IPsec-/IKE VPN-tunnel) tussen uw on-premises locatie en Azure. Dit betekent dat u vanaf elke computer op uw locatie verbinding kunt maken met elke virtuele machine of rolinstantie binnen uw virtuele netwerk, afhankelijk van hoe u routering en machtigingen wilt configureren. Het is een geweldige optie voor een cross-premises-verbinding die altijd beschikbaar is. Dit type verbinding is afhankelijk van een IPsec-VPN-apparaat (hardwareapparaat of software) dat aan de rand van uw netwerk moet worden geïmplementeerd. Als u dit type verbinding wilt maken, moet u een iPv4-adres hebben dat extern wordt aangericht.
+Er is sprake van **site-naar-site**-configuraties (IPsec-/IKE VPN-tunnel) tussen uw on-premises locatie en Azure. Dit betekent dat u vanaf elke computer op uw locatie verbinding kunt maken met elke virtuele machine of rolinstantie binnen uw virtuele netwerk, afhankelijk van hoe u routering en machtigingen wilt configureren. Het is een geweldige optie voor een cross-premises-verbinding die altijd beschikbaar is. Dit type verbinding is afhankelijk van een IPsec-VPN-apparaat (hardwareapparaat of software) dat aan de rand van uw netwerk moet worden geïmplementeerd. Als u dit type verbinding wilt maken, moet u een extern gericht IPv4-adres hebben.
 
 Met **punt-naar-site**-configuraties (VPN via SSTP) kunt u vanaf één computer waar dan ook verbinding maken met alles binnen het virtuele netwerk. Hiervoor wordt de met Windows meegeleverde VPN-client gebruikt. Als onderdeel van de punt-naar-site-configuratie installeert u een certificaat en een VPN-clientconfiguratiepakket. Dit pakket bevat de instellingen waarmee de computer verbinding kan maken met elke virtuele machine of rolinstantie in het virtuele netwerk. Het is ideaal wanneer u verbinding wilt maken met een virtueel netwerk maar u zich niet on-premises bevindt. Het is ook een goede optie wanneer u geen toegang hebt tot VPN-hardware of een extern gericht IPv4-adres, twee zaken die vereist zijn voor een site-naar-site-verbinding.
 
@@ -68,15 +68,15 @@ Op beleid gebaseerde gateways implementeren op beleid gebaseerde VPN's. Op belei
 
 Op route gebaseerde gateways implementeren op route gebaseerde VPN's. VPN-verbindingen op basis van een route gebruiken "routes" in de IP-doorstuurtabel of routeringstabel om pakketten naar de bijbehorende tunnelinterfaces te sturen. De tunnelinterfaces versleutelen of ontsleutelen de pakketten vervolgens naar en vanuit de tunnels. Het beleid of de verkeersselector voor op route gebaseerde VPN's is geconfigureerd als alles-naar-alles (of jokertekens).
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan ik mijn op beleid gebaseerde VPN-gateway updaten naar routegebaseerde?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan ik mijn op beleid gebaseerde VPN-gateway bijwerken naar op route gebaseerd?
 
 Nee.Een gateway van het type Azure-Vnet kan niet worden gewijzigd van op beleid gebaseerd in op route gebaseerd, of andersom. De gateway moet worden verwijderd en opnieuw worden gemaakt. Dit duurt ongeveer 60 minuten. Het IP-adres van de gateway en ook de PSK (vooraf gedeelde sleutel) blijven niet behouden.
 1. Verwijder alle verbindingen die zijn gekoppeld aan de gateway die moet worden verwijderd.
 1. Gateway verwijderen:
-   - [Azure-portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell - klassiek](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Maak een nieuwe gateway van het type dat u wilt en voltooi de VPN-installatie.](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure PowerShell-klassiek](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Maak een nieuwe gateway van het type dat u wilt en voltooi de VPN-installatie](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Heb ik een gatewaysubnet nodig?
 
@@ -90,15 +90,15 @@ Nee.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Kan ik het IP-adres van de VPN-gateway verkrijgen voordat ik de gateway maak?
 
-Zoneredundante en zonale gateways (gateway SKU's met _AZ_ in de naam) zijn beide afhankelijk van een standaard Openbare IP-bron van _SKU_ Azure. Openbare IP-resources van Azure Standard SKU moeten een statische toewijzingsmethode gebruiken. Daarom hebt u het openbare IP-adres voor uw VPN-gateway zodra u de standaard SKU-openbare IP-bron maakt die u hiervoor wilt gebruiken.
+Zone-redundante en zonegebonden-gateways (gateway-Sku's die _AZ_ in de naam hebben) beide vertrouwen op een _standaard-SKU_ Azure open bare IP-resource. Open bare IP-resources voor Azure Standard SKU moeten een statische toewijzings methode gebruiken. Daarom hebt u het open bare IP-adres voor uw VPN-gateway wanneer u de open bare standaard-SKU-resource maakt die u wilt gebruiken.
 
-Voor niet-zone-redundante en niet-zonale gateways (gateway SKU's die _geen_ _AZ_ in de naam hebben), u het IP-adres van de VPN-gateway niet krijgen voordat het wordt gemaakt. Het IP-adres wordt alleen gewijzigd als u uw VPN-gateway verwijdert en opnieuw maakt.
+Voor niet-zone-redundante en niet-zonegebonden gateways (gateway-Sku's _zonder_ _AZ_ in de naam), kunt u het IP-adres van de VPN-gateway niet ophalen voordat het wordt gemaakt. Het IP-adres wordt alleen gewijzigd als u de VPN-gateway verwijdert en opnieuw maakt.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Kan ik een statisch openbaar IP-adres voor mijn VPN-gateway aanvragen?
 
-Zoals hierboven vermeld, zijn zoneredundante en zonale gateways (gateway SKU's die _AZ_ in de naam hebben) beide afhankelijk van een standaard Openbare IP-bron _van SKU_ Azure. Openbare IP-resources van Azure Standard SKU moeten een statische toewijzingsmethode gebruiken.
+Zoals hierboven vermeld, zijn zone-redundante en zonegebonden-gateways (gateway-Sku's met _AZ_ in de naam) beide gebaseerd op een _standaard-SKU_ Azure open bare IP-resource. Open bare IP-resources voor Azure Standard SKU moeten een statische toewijzings methode gebruiken.
 
-Voor niet-zoneredundante en niet-zonale gateways (gateway SKU's die _geen_ _AZ_ in de naam hebben), wordt alleen dynamische IP-adrestoewijzing ondersteund. Dit betekent echter niet dat het IP-adres verandert nadat het is toegewezen aan uw VPN-gateway. De enige keer dat het IP-adres van de VPN-gateway wordt gewijzigd, is wanneer de gateway wordt verwijderd en vervolgens opnieuw wordt gemaakt. Het openbare IP-adres van de VPN-gateway verandert niet wanneer u het formaat, de reset of het voltooien van ander intern onderhoud en upgrades van uw VPN-gateway wijzigt.
+Voor niet-zone-redundante en niet-zonegebonden gateways (gateway-Sku's _zonder_ _AZ_ in de naam) wordt alleen dynamische IP-adres toewijzing ondersteund. Dit betekent echter niet dat het IP-adres verandert nadat het aan uw VPN-gateway is toegewezen. De enige keer dat het IP-adres van de VPN-gateway verandert wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het open bare IP-adres van de VPN-gateway verandert niet wanneer u het formaat van het apparaat wijzigt, opnieuw instelt of een ander intern onderhoud en upgrades van uw VPN-gateway uitvoert.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Hoe wordt mijn VPN-tunnel geverifieerd?
 
@@ -131,11 +131,11 @@ Ja. Zie [Configure force tunneling](vpn-gateway-about-forced-tunneling.md) (Gefo
 
 Ja, kunt u uw eigen VPN-gateways of -servers in Azure implementeren vanuit de Azure Marketplace of door uw eigen VPN-routers te implementeren. U moet in het virtuele netwerk zelfgedefinieerde routes configureren om ervoor te zorgen dat verkeer juist wordt gerouteerd tussen uw on-premises netwerken en de subnetten van het virtuele netwerk.
 
-### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>Waarom worden bepaalde poorten geopend op mijn virtuele netwerkgateway?
+### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>Waarom worden bepaalde poorten geopend op mijn virtuele netwerk gateway?
 
 Deze zijn nodig voor communicatie met de Azure-infrastructuur. Ze zijn beveiligd (vergrendeld) met Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten, waaronder de klanten van deze gateways, niets uitvoeren op de eindpunten.
 
-Een virtuele netwerkgateway is in wezen een multi-homed apparaat met een NIC tikken in de klant prive-netwerk, en een NIC geconfronteerd met het openbare netwerk. Infrastructuurentiteiten van Azure hebben om wettelijke redenen geen toegang tot particuliere netwerken van klanten. Daarom moeten ze voor infrastructuurcommunicatie gebruikmaken van openbare eindpunten. De openbare eindpunten worden periodiek gescand door de beveiligingscontrole van Azure.
+Een virtuele netwerk gateway is fundamenteel een multi-Home apparaat met één NIC die op het privé netwerk van de klant tikt en één NIC gericht op het open bare netwerk. Infrastructuurentiteiten van Azure hebben om wettelijke redenen geen toegang tot particuliere netwerken van klanten. Daarom moeten ze voor infrastructuurcommunicatie gebruikmaken van openbare eindpunten. De openbare eindpunten worden periodiek gescand door de beveiligingscontrole van Azure.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>Meer informatie over gatewaytypen, vereisten en doorvoer
 
@@ -169,9 +169,9 @@ Windows Server 2012 RRAS-servers (Routering en RAS) worden ondersteund voor site
 
 Andere VPN-softwareoplossingen zouden in principe met onze gateway moeten werken zolang ze voldoen aan de standaard-IPSec-implementaties. Neem contact op met de leverancier van de software voor configuratie- en ondersteuningsinstructies.
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Hoe wijzig ik het verificatietype voor mijn point-to-site-verbindingen?
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>Hoe kan ik het verificatie type voor mijn punt-naar-site-verbindingen wijzigen?
 
-U de verificatiemethode voor uw point-to-site-verbindingen wijzigen door naar de **sectie Point-to-site-configuratie** onder de VPN-gateway te gaan en de gewenste keuzerondje te controleren. De huidige opties zijn **Azure-certificaat, RADIUS-verificatie en Azure Active Directory.** Houd er rekening mee dat huidige clients **mogelijk geen verbinding kunnen maken** na de wijziging totdat het nieuwe profiel is gedownload en geconfigureerd op de client.
+U kunt de verificatie methode voor uw punt-naar-site-verbindingen wijzigen door te gaan naar de sectie **punt-naar-site-configuratie** onder het VPN gateway en het gewenste keuze rondje te controleren. De huidige opties zijn **Azure-certificaat, RADIUS-verificatie en Azure Active Directory**. Houd er rekening mee dat de huidige clients **mogelijk geen verbinding kunnen maken** na de wijziging totdat het nieuwe profiel is gedownload en geconfigureerd op de client.
 
 ## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>Point-to-site met behulp van systeemeigen Azure-certificaatverificatie
 
@@ -199,7 +199,7 @@ Transitverkeer via Azure VPN-gateway is mogelijk met het klassieke implementatie
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Genereert Azure dezelfde vooraf gedeelde IPsec/IKE-sleutel voor al mijn VPN-verbindingen voor hetzelfde virtuele netwerk?
 
-Nee, Azure genereert standaard verschillende vooraf gedeelde sleutels voor verschillende VPN-verbindingen. U kunt echter de REST-API of PowerShell-cmdlet Set VPN Gateway gebruiken om de gewenste sleutelwaarde in te stellen. De sleutel moet afdrukbare ASCII-tekens zijn.
+Nee, Azure genereert standaard verschillende vooraf gedeelde sleutels voor verschillende VPN-verbindingen. U kunt echter de REST-API of PowerShell-cmdlet Set VPN Gateway gebruiken om de gewenste sleutelwaarde in te stellen. De sleutel moet Afdruk bare ASCII-tekens zijn.
 
 ### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network"></a>Krijg ik meer bandbreedte met meerdere site-naar-site-VPN-verbindingen dan met één virtueel netwerk?
 
@@ -243,7 +243,7 @@ Nee. Alleen het verkeer met een doel-IP dat zich bevindt in de door u opgegeven 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="virtual-network-faq"></a><a name="faq"></a>Veelgestelde vragen over virtueel netwerk
+## <a name="virtual-network-faq"></a><a name="faq"></a>Veelgestelde vragen over Virtual Network
 
 Aanvullende informatie over virtuele netwerken vindt u in de [Veelgestelde vragen over Virtual Network](../virtual-network/virtual-networks-faq.md).
 
@@ -252,4 +252,4 @@ Aanvullende informatie over virtuele netwerken vindt u in de [Veelgestelde vrage
 * Zie [Over VPN Gateway](vpn-gateway-about-vpngateways.md) voor meer informatie over VPN Gateway.
 * Zie [Informatie over VPN-gatewayconfiguratie-instellingen](vpn-gateway-about-vpn-gateway-settings.md) voor meer informatie over VPN-gatewayconfiguratie-instellingen.
 
-**"OpenVPN" is een handelsmerk van OpenVPN Inc.**
+**' OpenVPN ' is een handels merk van OpenVPN Inc.**

@@ -1,6 +1,6 @@
 ---
-title: Herhaalbare kopie in Azure Data Factory
-description: Meer informatie over het voorkomen van duplicaten, ook al wordt een segment dat gegevens kopieert meerdere tijd uitgevoerd.
+title: Herhaal bare kopie in Azure Data Factory
+description: Meer informatie over het voor komen van duplicaten, zelfs als een segment dat de gegevens kopieert, meer dan één keer wordt uitgevoerd.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,21 +13,21 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281143"
 ---
-# <a name="repeatable-copy-in-azure-data-factory"></a>Herhaalbare kopie in Azure Data Factory
+# <a name="repeatable-copy-in-azure-data-factory"></a>Herhaal bare kopie in Azure Data Factory
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaalbaar lezen uit relationele bronnen
-Houd bij het kopiëren van gegevens uit relationele gegevensopslag rekening met herhaalbaarheid om onbedoelde resultaten te voorkomen. In Azure Data Factory u een segment handmatig opnieuw uitvoeren. U ook het beleid voor een wijziging opnieuw configureren, zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment in beide richtingen wordt opnieuw uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht hoe vaak een segment wordt uitgevoerd.  
+## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
+Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart.  
  
 > [!NOTE]
-> De volgende voorbeelden zijn voor Azure SQL, maar zijn van toepassing op elk gegevensarchief dat rechthoekige gegevenssets ondersteunt. Mogelijk moet u het **type** bron en de **eigenschap query** (bijvoorbeeld query in plaats van sqlReaderQuery) aanpassen voor het gegevensarchief.   
+> De volgende voor beelden zijn voor Azure SQL, maar zijn van toepassing op alle gegevens archieven die ondersteuning bieden voor rechthoekige data sets. Mogelijk moet u het **type** bron en de **query** -eigenschap (bijvoorbeeld: query in plaats van sqlReaderQuery) aanpassen voor het gegevens archief.   
 
-Meestal, bij het lezen van relationele winkels, wilt u alleen de gegevens die overeenkomen met dat segment te lezen. Een manier om dit te doen is door gebruik te maken van de WindowsStart- en WindowEnd-systeemvariabelen die beschikbaar zijn in Azure Data Factory. Lees meer over de variabelen en functies in Azure Data Factory hier in het artikel [Azure Data Factory - Functions and System Variables.](data-factory-functions-variables.md) Voorbeeld: 
+Normaal gesp roken wilt u bij het lezen van relationele winkels alleen de gegevens lezen die overeenkomen met dat segment. Een manier om dit te doen is met behulp van de systeem variabelen WindowStart en WindowEnd die beschikbaar zijn in Azure Data Factory. Meer informatie over de variabelen en functies in Azure Data Factory hier vindt u in het artikel [Azure Data Factory functies en systeem variabelen](data-factory-functions-variables.md) . Voorbeeld: 
 
 ```json
 "source": {
@@ -35,9 +35,9 @@ Meestal, bij het lezen van relationele winkels, wilt u alleen de gegevens die ov
     "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
 },
 ```
-Deze query leest gegevens die in het segmentduurbereik (WindowStart-> WindowEnd) vallen uit de tabel MyTable. Het opnieuw uitvoeren van dit segment zou er ook altijd voor zorgen dat dezelfde gegevens worden gelezen. 
+Met deze query worden gegevens gelezen die in het segment duur bereik (WindowStart-> WindowEnd) vallen van de tabel MyTable. Als u dit segment opnieuw wilt uitvoeren, moet u er ook voor zorgen dat dezelfde gegevens worden gelezen. 
 
-In andere gevallen u de hele tabel lezen en de sqlReaderQuery als volgt definiëren:
+In andere gevallen kunt u de hele tabel lezen en kan de sqlReaderQuery als volgt definiëren:
 
 ```json
 "source": 
@@ -47,10 +47,10 @@ In andere gevallen u de hele tabel lezen en de sqlReaderQuery als volgt definië
 },
 ```
 
-## <a name="repeatable-write-to-sqlsink"></a>Herhaalbare schrijven naar SqlSink
-Wanneer u gegevens kopieert naar **Azure SQL/SQL Server** vanuit andere gegevensarchieven, moet u rekening houden met herhaalbaarheid om onbedoelde resultaten te voorkomen. 
+## <a name="repeatable-write-to-sqlsink"></a>Herhaal bare schrijf bewerkingen naar SqlSink
+Bij het kopiëren van gegevens naar **Azure SQL/SQL Server** van andere gegevens archieven, moet u de Herhaal baarheid blijven gebruiken om onbedoelde resultaten te voor komen. 
 
-Wanneer u gegevens kopieert naar Azure SQL/SQL Server Database, voegt de kopieeractiviteit gegevens standaard toe aan de sinktabel. U kopieert bijvoorbeeld gegevens uit een CSV-bestand (door komma's gescheiden waarden) met twee records naar de volgende tabel in een Azure SQL/SQL Server-database. Wanneer een segment wordt uitgevoerd, worden de twee records gekopieerd naar de SQL-tabel. 
+Bij het kopiëren van gegevens naar Azure SQL/SQL Server Data Base, voegt de Kopieer activiteit standaard gegevens toe aan de Sink-tabel. Stel dat u gegevens kopieert uit een CSV-bestand (Comma-Separated Values) met twee records naar de volgende tabel in een Azure SQL/SQL Server-Data Base. Wanneer een segment wordt uitgevoerd, worden de twee records gekopieerd naar de SQL-tabel. 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -59,7 +59,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Stel dat u fouten in het bronbestand hebt gevonden en de hoeveelheid Down Tube hebt bijgewerkt van 2 naar 4. Als u het gegevenssegment voor die periode handmatig opnieuw uitvoert, vindt u twee nieuwe records die zijn toegevoegd aan Azure SQL/SQL Server Database. In dit voorbeeld wordt ervan uitgegaan dat geen van de kolommen in de tabel de primaire sleutelbeperking heeft.
+Stel dat u fouten in het bron bestand hebt gevonden en de hoeveelheid van de omlaagbalken hebt bijgewerkt van 2 tot 4. Als u het gegevens segment voor die periode hand matig opnieuw moet uitvoeren, vindt u twee nieuwe records die zijn toegevoegd aan Azure SQL/SQL Server Data Base. In dit voor beeld wordt ervan uitgegaan dat geen van de kolommen in de tabel de beperking Primary Key heeft.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -70,10 +70,10 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Om dit gedrag te voorkomen, moet u upsert semantiek opgeven met behulp van een van de volgende twee mechanismen:
+Om dit gedrag te voor komen, moet u UPSERT-semantiek opgeven met een van de volgende twee mechanismen:
 
 ### <a name="mechanism-1-using-sqlwritercleanupscript"></a>Mechanisme 1: sqlWriterCleanupScript gebruiken
-U de eigenschap **sqlWriterCleanupScript** gebruiken om gegevens uit de gootsteentabel op te schonen voordat u de gegevens invoegt wanneer een segment wordt uitgevoerd. 
+U kunt de eigenschap **sqlWriterCleanupScript** gebruiken om gegevens uit de Sink-tabel op te schonen voordat u de gegevens invoegt wanneer een segment wordt uitgevoerd. 
 
 ```json
 "sink":  
@@ -83,7 +83,7 @@ U de eigenschap **sqlWriterCleanupScript** gebruiken om gegevens uit de gootstee
 }
 ```
 
-Wanneer een segment wordt uitgevoerd, wordt het opschoningsscript als eerste uitgevoerd om gegevens die overeenkomen met het segment uit de SQL-tabel te verwijderen. De kopieeractiviteit voegt vervolgens gegevens in de SQL-tabel in. Als het segment opnieuw wordt uitgevoerd, wordt de hoeveelheid naar wens bijgewerkt.
+Wanneer een segment wordt uitgevoerd, wordt het opschoon script eerst uitgevoerd om gegevens te verwijderen die overeenkomen met het segment uit de SQL-tabel. Met de Kopieer activiteit worden gegevens vervolgens ingevoegd in de SQL-tabel. Als het segment opnieuw wordt uitgevoerd, wordt de hoeveelheid naar wens bijgewerkt.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -92,7 +92,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Stel dat de record Flat Washer wordt verwijderd uit de oorspronkelijke csv. Als u het segment vervolgens opnieuw uitvoert, wordt het volgende resultaat opgeleverd: 
+Stel dat de record voor een vlakke ring is verwijderd uit de oorspronkelijke CSV. Vervolgens wordt het volgende resultaat gegenereerd: 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -100,20 +100,20 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Met de kopieeractiviteit is het opschoningsscript uitgevoerd om de bijbehorende gegevens voor dat segment te verwijderen. Vervolgens las het de input van de csv (die vervolgens bevatte slechts een record) en ingevoegd in de tabel. 
+De Kopieer activiteit heeft het opschoon script uitgevoerd om de bijbehorende gegevens voor dat segment te verwijderen. Vervolgens wordt de invoer gelezen uit het CSV-bestand (dat vervolgens slechts één record bevat) en ingevoegd in de tabel. 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanisme 2: sliceIdentifierColumnName gebruiken
 > [!IMPORTANT]
-> Momenteel wordt sliceIdentifierColumnName niet ondersteund voor Azure SQL Data Warehouse. 
+> SliceIdentifierColumnName wordt momenteel niet ondersteund voor Azure SQL Data Warehouse. 
 
-Het tweede mechanisme om herhaalbaarheid te bereiken is door een speciale kolom (sliceIdentifierColumnName) in de doeltabel te hebben. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en bestemming gesynchroniseerd blijven. Deze aanpak werkt wanneer er flexibiliteit is bij het wijzigen of definiëren van het sql-tabelschema voor doel. 
+Het tweede mechanisme om Herhaal baarheid te bereiken, is door een toegewezen kolom (sliceIdentifierColumnName) te hebben in de doel tabel. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en het doel gesynchroniseerd blijven. Deze aanpak werkt als er flexibiliteit is bij het wijzigen of definiëren van het doel-SQL-tabel schema. 
 
-Deze kolom wordt door Azure Data Factory gebruikt voor herhaalbaarheidsdoeleinden en in het proces brengt Azure Data Factory geen schemawijzigingen aan in de tabel. Manier om deze aanpak te gebruiken:
+Deze kolom wordt door Azure Data Factory gebruikt voor Herhaal bare doel einden en in het proces Azure Data Factory worden geen schema wijzigingen aangebracht in de tabel. Manier om deze aanpak te gebruiken:
 
-1. Definieer een kolom met binaire tekst **(32)** in de SQL-tabel van de bestemming. Er mogen geen beperkingen zijn voor deze kolom. Laten we deze kolom voor dit voorbeeld benoemen als AdfSliceIdentifier.
+1. Een kolom van het type **binary (32)** in de doel-SQL-tabel definiëren. Er mogen zich geen beperkingen voor deze kolom voordoen. We noemen deze kolom als AdfSliceIdentifier voor dit voor beeld.
 
 
-    Brontabel:
+    Bron tabel:
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -122,7 +122,7 @@ Deze kolom wordt door Azure Data Factory gebruikt voor herhaalbaarheidsdoeleinde
     )
     ```
 
-    Bestemmingstabel: 
+    Doel tabel: 
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -132,7 +132,7 @@ Deze kolom wordt door Azure Data Factory gebruikt voor herhaalbaarheidsdoeleinde
     )
     ```
 
-1. Gebruik het in de kopieeractiviteit als volgt:
+1. Gebruik het in de Kopieer activiteit als volgt:
    
     ```json
     "sink":  
@@ -143,13 +143,13 @@ Deze kolom wordt door Azure Data Factory gebruikt voor herhaalbaarheidsdoeleinde
     }
     ```
 
-Azure Data Factory vult deze kolom in als de behoefte om ervoor te zorgen dat de bron en bestemming gesynchroniseerd blijven. De waarden van deze kolom mogen niet buiten deze context worden gebruikt. 
+Azure Data Factory vult deze kolom in aan de hand van de nood zaak om ervoor te zorgen dat de bron en de bestemming synchroon blijven. De waarden van deze kolom mogen niet buiten deze context worden gebruikt. 
 
-Net als bij mechanisme 1 ruimt Copy Activity automatisch de gegevens op voor het opgegeven segment uit de SQL-tabel van bestemming. Vervolgens worden gegevens van de bron in de doeltabel ingevoegd. 
+Net als bij mechanisme 1 worden met de Kopieer activiteit automatisch de gegevens voor het opgegeven segment uit de doel-SQL-tabel opgeschoond. Vervolgens worden gegevens uit de bron in toegevoegd aan de doel tabel. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de volgende connectorartikelen die voor volledige JSON-voorbeelden: 
+Bekijk de volgende connector artikelen voor volledige JSON-voor beelden: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL-gegevensmagazijn](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

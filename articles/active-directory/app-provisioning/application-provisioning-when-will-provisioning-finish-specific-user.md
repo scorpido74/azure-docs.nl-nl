@@ -1,6 +1,6 @@
 ---
-title: Ontdek wanneer een specifieke gebruiker toegang heeft tot een app
-description: Hoe u erachter komt wanneer een uiterst belangrijke gebruiker toegang heeft tot een toepassing die u hebt geconfigureerd voor gebruikersvoorziening met Azure AD
+title: Nagaan wanneer een specifieke gebruiker toegang kan krijgen tot een app
+description: Nagaan of een belang rijke gebruiker toegang heeft tot een toepassing die u hebt geconfigureerd voor het inrichten van gebruikers met Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,92 +17,92 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48370e2806b70d550bce95ceff3857a79561f247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264139"
 ---
-# <a name="check-the-status-of-user-provisioning"></a>Controleer de status van de gebruikersinrichting
+# <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
-De Azure AD-inrichtingsservice voert een eerste inrichtingscyclus uit ten opzichte van het bronsysteem en het doelsysteem, gevolgd door periodieke incrementele cycli. Wanneer u de inrichting voor een app configureert, u de huidige status van de inrichtingsservice controleren en zien wanneer een gebruiker toegang heeft tot een app.
+De Azure AD-inrichtings service voert een eerste inrichtings cyclus uit op het bron systeem en het doel systeem, gevolgd door periodieke incrementele cycli. Wanneer u inrichting voor een app configureert, kunt u de huidige status van de inrichtings service controleren en zien wanneer een gebruiker toegang heeft tot een app.
 
-## <a name="view-the-provisioning-progress-bar"></a>De voortgangsbalk voor het inrichten weergeven
+## <a name="view-the-provisioning-progress-bar"></a>De voortgangs balk van de inrichting weer geven
 
- Op de **inrichtingspagina** voor een app u de status van de Azure AD-inrichtingsservice weergeven. In de sectie **Huidige status** onder aan de pagina wordt weergegeven of een inrichtingscyclus is begonnen met het inrichten van gebruikersaccounts. U de voortgang van de cyclus bekijken, zien hoeveel gebruikers en groepen zijn ingericht en zien hoeveel rollen er zijn gemaakt.
+ Op de **inrichtings** pagina voor een app kunt u de status van de Azure AD-inrichtings service weer geven. In het gedeelte **huidige status** onder aan de pagina ziet u of een inrichtings cyclus is gestart met het inrichten van gebruikers accounts. U kunt de voortgang van de cyclus bekijken, bekijken hoeveel gebruikers en groepen zijn ingericht en bekijken hoeveel rollen er zijn gemaakt.
 
-Wanneer u de automatische inrichting voor het eerst configureert, wordt in de sectie **Huidige status** onder aan de pagina de status van de oorspronkelijke inrichtingscyclus weergegeven. Deze sectie wordt bijgewerkt telkens wanneer een incrementele cyclus wordt uitgevoerd. De volgende details worden weergegeven:
-- Het type inrichtingscyclus (initieel of incrementeel) dat momenteel wordt uitgevoerd of voor het laatst is voltooid.
-- Een **voortgangsbalk** met het percentage van de inrichtingscyclus dat is voltooid. Het percentage geeft het aantal ingerichte pagina's weer. Houd er rekening mee dat elke pagina meerdere gebruikers of groepen kan bevatten, zodat het percentage niet direct correleert met het aantal gebruikers, groepen of ingerichte rollen.
-- Een **knop Vernieuwen** die u gebruiken om de weergave bijgewerkt te houden.
-- Het aantal **gebruikers** en **groepen** in het connectorgegevensarchief. Het aantal neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet afgebroken als een gebruiker is soft-verwijderd of hard-verwijderd als dit niet het object te verwijderen uit de connector gegevens archief. De telling wordt opnieuw ingesteld op de eerste synchronisatie nadat de CDS is [gereset](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
-- Een koppeling **Controlelogboeken weergeven,** waarmee de azure AD-inrichtingslogboeken worden geopend voor meer informatie over alle bewerkingen die worden uitgevoerd door de service voor het inrichten van de gebruiker, inclusief de inrichtingsstatus voor individuele gebruikers (zie de sectie [Logboeken voor het inrichten van het gebruik](#use-provisioning-logs-to-check-a-users-provisioning-status) hieronder).
+Wanneer u voor het eerst automatische inrichting configureert, ziet u in de sectie **huidige status** onder aan de pagina de status van de eerste inrichtings cyclus. Deze sectie wordt telkens bijgewerkt wanneer een incrementele cyclus wordt uitgevoerd. De volgende details worden weer gegeven:
+- Het type inrichtings cyclus (eerste of incrementeel) dat momenteel wordt uitgevoerd of de laatste keer is voltooid.
+- Een **voortgangs balk** met het percentage van de inrichtings cyclus dat is voltooid. Het percentage weerspiegelt het aantal pagina's dat is ingericht. Houd er rekening mee dat elke pagina meerdere gebruikers of groepen kan bevatten, zodat het percentage niet rechtstreeks overeenkomt met het aantal gebruikers, groepen of rollen dat is ingericht.
+- Een knop voor **vernieuwen** die u kunt gebruiken om de weer gave bijgewerkt te laten worden.
+- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. Het aantal wordt recaculated de eerste synchronisatie nadat de CD'S opnieuw zijn [ingesteld](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
+- Een koppeling **voor controle logboeken weer geven** waarmee de Azure AD-inrichtings logboeken worden geopend voor meer informatie over alle bewerkingen die worden uitgevoerd door de gebruikers Provisioning Service, inclusief de inrichtings status voor afzonderlijke gebruikers (Zie de sectie [inrichtings Logboeken gebruiken](#use-provisioning-logs-to-check-a-users-provisioning-status) ).
 
-Nadat een inrichtingscyclus is voltooid, toont de sectie **Statistieken tot op heden** het cumulatieve aantal gebruikers en groepen dat tot nu toe is ingericht, samen met de voltooiingsdatum en duur van de laatste cyclus. De **activiteits-id** identificeert op unieke wijze de meest recente inrichtingscyclus. De **taak-id** is een unieke id voor de inrichtingstaak en is specifiek voor de app in uw tenant.
+Nadat een inrichtings cyclus is voltooid, toont de sectie **statistieken tot datum** de cumulatieve aantallen gebruikers en groepen die zijn ingericht tot datum, samen met de voltooiings datum en duur van de laatste cyclus. Met de **activiteit-ID** wordt de meest recente inrichtings cyclus uniek geïdentificeerd. De **taak-id** is een unieke id voor de inrichtings taak en is specifiek voor de app in uw Tenant.
 
-De inrichtingsvoortgang kan worden weergegeven in de Azure-portal op het tabblad **Azure Active &gt; Directory Enterprise Apps-toepassingsnaam &gt; \[\] &gt; Provisioning.**
+De inrichtings voortgang kan worden weer gegeven in de Azure Portal op het tabblad **Azure Active Directory &gt; &gt; \[toepassings\] &gt; naam** van de toepassing.
 
-![Voortgangsbalk voor het inrichten van pagina's](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
+![Voortgangs balk van de inrichtings pagina](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
-## <a name="use-provisioning-logs-to-check-a-users-provisioning-status"></a>Inrichtingslogboeken gebruiken om de inrichtingsstatus van een gebruiker te controleren
+## <a name="use-provisioning-logs-to-check-a-users-provisioning-status"></a>Inrichtings Logboeken gebruiken om de inrichtings status van een gebruiker te controleren
 
-Raadpleeg de [provisioninglogs (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) in Azure AD om de inrichtingsstatus voor een geselecteerde gebruiker te bekijken. Alle bewerkingen die door de gebruikersinrichtingsservice worden uitgevoerd, worden geregistreerd in de Azure AD-inrichtingslogboeken. Dit omvat alle lees- en schrijfbewerkingen die zijn uitgevoerd naar de bron- en doelsystemen en de gebruikersgegevens die tijdens elke bewerking zijn gelezen of geschreven.
+Als u de inrichtings status voor een geselecteerde gebruiker wilt weer geven, raadpleegt u de [inrichtings Logboeken (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) in azure AD. Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden vastgelegd in de Azure AD-inrichtings Logboeken. Dit omvat alle Lees-en schrijf bewerkingen die zijn aangebracht op de bron-en doel systemen en de gebruikers gegevens die tijdens elke bewerking zijn gelezen of geschreven.
 
-U hebt toegang tot de inrichtingslogboeken in de Azure-portal door **Azure Active Directory** &gt; **Enterprise Apps** &gt; **Provisioning logs (preview)** te selecteren in de sectie **Activiteit.** U de inrichtingsgegevens doorzoeken op basis van de naam van de gebruiker of de id in het bronsysteem of het doelsysteem. Zie [Logboeken inrichten (voorbeeld) voor](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)meer informatie. 
+U kunt toegang krijgen tot de inrichtings Logboeken in de Azure portal door **Azure Active Directory** &gt; **Enter prise apps** &gt; **Provisioning logs (preview)** te selecteren in de sectie **activiteit** . U kunt de inrichtings gegevens zoeken op basis van de naam van de gebruiker of de id in het bron systeem of het doel systeem. Zie [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)voor meer informatie. 
 
-In de inrichtingslogboeken worden alle bewerkingen van de inrichtingsservice geregistreerd, waaronder:
+De inrichtings logboeken registreren alle bewerkingen die worden uitgevoerd door de inrichtings service, waaronder:
 
-* Azure AD opvragen voor toegewezen gebruikers die in het bereik van de inrichting zijn
-* De doel-app opvragen voor het bestaan van die gebruikers
-* De gebruikersobjecten tussen het systeem vergelijken
-* Het gebruikersaccount in het doelsysteem toevoegen, bijwerken of uitschakelen op basis van de vergelijking
+* Query's uitvoeren voor Azure AD voor toegewezen gebruikers die binnen het bereik van de inrichting vallen
+* Query's uitvoeren op de doel-app voor het bestaan van deze gebruikers
+* De gebruikers objecten tussen het systeem vergelijken
+* Toevoegen, bijwerken of uitschakelen van het gebruikers account in het doel systeem op basis van de vergelijking
 
-Zie de [rapportagehandleiding voor het inrichten](check-status-user-account-provisioning.md)van de inloglogboeken in de Azure-portal voor meer informatie over het lezen van de inrichtingslogboeken in de Azure-portal.
+Voor meer informatie over het lezen van de inrichtings Logboeken in de Azure Portal raadpleegt u de [hand leiding](check-status-user-account-provisioning.md)voor het inrichten van de rapportage.
 
-## <a name="how-long-will-it-take-to-provision-users"></a>Hoe lang duurt het om gebruikers te voorzien?
-Wanneer azure AD automatische gebruikersinrichting met een toepassing gebruikt, worden gebruikersaccounts in een app automatisch ingericht en bijgewerkt op basis van zaken als [gebruikers- en groepstoewijzing](../manage-apps/assign-user-or-group-access-portal.md) op een regelmatig gepland tijdsinterval, meestal elke 40 minuten.
+## <a name="how-long-will-it-take-to-provision-users"></a>Hoe lang duurt het om gebruikers in te richten?
+Wanneer u automatische gebruikers inrichting met een toepassing gebruikt, worden gebruikers accounts in een app automatisch door Azure AD ingericht en bijgewerkt op basis van dingen zoals [gebruikers-en groeps toewijzing](../manage-apps/assign-user-or-group-access-portal.md) met een regel matig gepland tijds interval, meestal elke 40 minuten.
 
-De tijd die nodig is voor een bepaalde gebruiker om te worden ingericht, hangt voornamelijk af van de vraag of uw inrichtingstaak een eerste cyclus of een incrementele cyclus uitvoert.
+Hoe lang het duurt voordat een bepaalde gebruiker is ingericht, hangt voornamelijk af van de vraag of uw inrichtings taak een eerste cyclus of een incrementele cyclus uitvoert.
 
-- Voor de **eerste cyclus**is de taaktijd afhankelijk van vele factoren, waaronder het aantal gebruikers en groepen dat geschikt is voor inrichten en het totale aantal gebruikers en groepen in het bronsysteem. De eerste synchronisatie tussen Azure AD en een app kan 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers dat in het bereik is voor inlevering. Een uitgebreide lijst met factoren die van invloed zijn op de initiële cyclusprestaties worden later in deze sectie samengevat.
+- Voor de **eerste cyclus**is de tijd van de taak afhankelijk van veel factoren, zoals het aantal gebruikers en groepen in het bereik voor inrichting en het totale aantal gebruikers en de groep in het bron systeem. De eerste synchronisatie tussen Azure AD en een app kan van 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-adres lijst en het aantal gebruikers in het bereik dat moet worden ingericht. Verderop in deze sectie vindt u een uitgebreide lijst met factoren die van invloed zijn op de prestaties van de initiële cyclus.
 
-- Voor **incrementele cycli** na de eerste cyclus zijn de taaktijden meestal sneller (bijvoorbeeld binnen 10 minuten), omdat de provisioningservice watermerken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van de volgende synchronisaties worden verbeterd. De werktijd is afhankelijk van het aantal wijzigingen dat in die inrichtingscyclus is gedetecteerd. Als er minder dan 5.000 wijzigingen in het gebruikers- of groepslidmaatschap zijn, kan de taak binnen één incrementele inrichtingscyclus worden voltooid. 
+- Voor **incrementele cycli** na de eerste cyclus zijn taak tijden korter (bijvoorbeeld binnen tien minuten), omdat de inrichtings service water merken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van volgende synchronisaties worden verbeterd. De tijd van de taak is afhankelijk van het aantal wijzigingen dat is gedetecteerd in die inrichtings cyclus. Als er minder dan 5.000 gebruikers-of groepslid maatschappen worden gewijzigd, kan de taak binnen één incrementele inrichtings cyclus worden voltooid. 
 
-In de volgende tabel worden synchronisatietijden voor algemene inrichtingsscenario's samengevat. In deze scenario's is het bronsysteem Azure AD en is het doelsysteem een SaaS-toepassing. De synchronisatietijden zijn afgeleid van een statistische analyse van synchronisatietaken voor de SaaS-toepassingen ServiceNow, Workplace, Salesforce en G Suite.
+De volgende tabel bevat een overzicht van de synchronisatie tijden voor veelvoorkomende inrichtings scenario's. In deze scenario's is het bron systeem Azure AD en is het doel systeem een SaaS-toepassing. De synchronisatie tijden zijn afgeleid van een statistische analyse van synchronisatie taken voor de SaaS-toepassingen ServiceNow, Workplace, Sales Force en G suite.
 
 
-| Scope-configuratie | Gebruikers, groepen en leden in scope | Initiële cyclustijd | Incrementele cyclustijd |
+| Scope configuratie | Gebruikers, groepen en leden in bereik | Eerste cyclus tijd | Incrementele cyclus tijd |
 | -------- | -------- | -------- | -------- |
 | Alleen toegewezen gebruikers en groepen synchroniseren |  < 1.000 |  < 30 minuten | < 30 minuten |
-| Alleen toegewezen gebruikers en groepen synchroniseren |  1,000 - 10,000 | 142 - 708 minuten | < 30 minuten |
-| Alleen toegewezen gebruikers en groepen synchroniseren |   10,000 - 100,000 | 1.170 - 2.340 minuten | < 30 minuten |
-| Alle gebruikers en groepen synchroniseren in Azure AD |  < 1.000 | < 30 minuten  | < 30 minuten |
-| Alle gebruikers en groepen synchroniseren in Azure AD |  1,000 - 10,000 | < 30 - 120 minuten | < 30 minuten |
-| Alle gebruikers en groepen synchroniseren in Azure AD |  10,000 - 100,000  | 713 - 1.425 minuten | < 30 minuten |
-| Alle gebruikers synchroniseren in Azure AD|  < 1.000  | < 30 minuten | < 30 minuten |
-| Alle gebruikers synchroniseren in Azure AD | 1,000 - 10,000  | 43 - 86 minuten | < 30 minuten |
+| Alleen toegewezen gebruikers en groepen synchroniseren |  1.000-10.000 | 142-708 minuten | < 30 minuten |
+| Alleen toegewezen gebruikers en groepen synchroniseren |   10.000-100.000 | 1.170-2.340 minuten | < 30 minuten |
+| Alle gebruikers en groepen in azure AD synchroniseren |  < 1.000 | < 30 minuten  | < 30 minuten |
+| Alle gebruikers en groepen in azure AD synchroniseren |  1.000-10.000 | < 30-120 minuten | < 30 minuten |
+| Alle gebruikers en groepen in azure AD synchroniseren |  10.000-100.000  | 713-1.425 minuten | < 30 minuten |
+| Alle gebruikers in azure AD synchroniseren|  < 1.000  | < 30 minuten | < 30 minuten |
+| Alle gebruikers in azure AD synchroniseren | 1.000-10.000  | 43-86 minuten | < 30 minuten |
 
 
-Alleen voor de **toegewezen gebruiker en groepen met configuratiesynchronisatie**u de volgende formules gebruiken om de geschatte minimale en maximale verwachte **initiële cyclustijden** te bepalen:
+Voor de configuratie **synchronisatie alleen gebruiker en groepen toegewezen**, kunt u de volgende formules gebruiken om de geschatte minimale en maximale verwachte **initiële cyclus** tijden te bepalen:
 
     Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
     Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
     
-Samenvatting van factoren die van invloed zijn op de tijd die nodig is om een **eerste cyclus**te voltooien:
+Samen vatting van factoren die van invloed zijn op de tijd die nodig is om een **eerste cyclus**te volt ooien:
 
-- Het totale aantal gebruikers en groepen dat geschikt is voor voorzieningen.
+- Het totale aantal gebruikers en groepen in het bereik voor inrichting.
 
-- Het totale aantal gebruikers, groepen en groepsleden dat aanwezig is in het bronsysteem (Azure AD).
+- Het totale aantal gebruikers, groepen en groeps leden dat aanwezig is in het bron systeem (Azure AD).
 
-- Of gebruikers die geschikt zijn voor inrichten, zijn afgestemd op bestaande gebruikers in de doeltoepassing of voor het eerst moeten worden gemaakt. Synchronisatietaken waarvoor alle gebruikers voor het eerst zijn gemaakt, duurt ongeveer *twee keer zo lang als* synchronisatietaken waarvoor alle gebruikers zijn gekoppeld aan bestaande gebruikers.
+- Of gebruikers in het bereik voor het inrichten worden afgestemd op bestaande gebruikers in de doel toepassing of moeten worden gemaakt voor de eerste keer. Synchronisatie taken waarvoor alle gebruikers voor de eerste keer *twee keer zo lang* duren als synchronisatie taken waarvoor alle gebruikers overeenkomen met bestaande gebruikers.
 
-- Aantal fouten in de [inrichtingslogboeken](check-status-user-account-provisioning.md). De prestaties zijn trager als er veel fouten zijn en de inrichtingsservice in een quarantainestatus is gegaan. 
+- Aantal fouten in de [inrichtings logboeken](check-status-user-account-provisioning.md). De prestaties zijn langzamer als er veel fouten zijn en de inrichtings service een quarantaine status heeft. 
 
-- Verzoek tarieflimieten en beperking geïmplementeerd door het doelsysteem. Sommige doelsystemen implementeren limieten voor het beginvan de aanvraag en beperking, wat van invloed kan zijn op de prestaties tijdens grote synchronisatiebewerkingen. Onder deze voorwaarden kan een app die te snel te veel aanvragen ontvangt, de responssnelheid vertragen of de verbinding sluiten. Om de prestaties te verbeteren, moet de connector worden aangepast door de app-verzoeken niet sneller te verzenden dan de app kan verwerken. Het inrichten van connectors die door Microsoft zijn gebouwd, voeren deze aanpassing uit. 
+- Frequentie limieten en beperking van aanvragen die worden geïmplementeerd door het doel systeem. Sommige doel systemen implementeren limieten en beperking van aanvragen, wat de prestaties kan beïnvloeden tijdens grote synchronisatie bewerkingen. Onder deze omstandigheden kan een app die te snel te veel aanvragen ontvangt, de reactie snelheid vertragen of de verbinding sluiten. Om de prestaties te verbeteren, moet de connector worden aangepast door de app-aanvragen sneller te verzenden dan deze door de app kunnen worden verwerkt. Voor het inrichten van connectors die door micro soft zijn gebouwd, doet u deze aanpassing. 
 
-- Het aantal en de grootte van toegewezen groepen. Het synchroniseren van toegewezen groepen duurt langer dan het synchroniseren van gebruikers. Zowel het aantal als de grootte van de toegewezen groepen hebben invloed op de prestaties. Als een toepassing toewijzingen heeft [ingeschakeld voor het synchroniseren van groepsobjecten,](customize-application-attributes.md#editing-group-attribute-mappings)worden groepseigenschappen zoals groepsnamen en lidmaatschappen naast gebruikers gesynchroniseerd. Deze extra synchronisaties duren langer dan alleen het synchroniseren van gebruikersobjecten.
+- Het aantal en de grootte van toegewezen groepen. Het synchroniseren van toegewezen groepen duurt langer dan gebruikers synchroniseren. Zowel het aantal als de grootte van de toegewezen groepen zijn van invloed op de prestaties. Als een toepassing [toewijzingen voor groeps object synchronisatie heeft ingeschakeld](customize-application-attributes.md#editing-group-attribute-mappings), worden groeps eigenschappen zoals groeps namen en lidmaatschappen naast gebruikers gesynchroniseerd. Deze aanvullende synchronisaties nemen meer tijd in beslag dan alleen gebruikers objecten synchroniseren.
 
-- Als de prestaties een probleem worden en u probeert de meerderheid van de gebruikers en groepen in uw tenant in te richten, gebruikt u scopingfilters. Met scopingfilters u de gegevens die de inrichtingsservice uit Azure AD haalt, verfijnen door gebruikers uit te filteren op basis van specifieke kenmerkwaarden. Zie [Op kenmerken gebaseerde toepassingsinrichting met scopingfilters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor meer informatie over scopingfilters.
+- Als de prestaties een probleem vormen en u probeert het meren deel van de gebruikers en groepen in uw Tenant in te richten, gebruikt u bereik filters. Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren met Azure Active Directory](user-provisioning.md)
+[Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory automatiseren](user-provisioning.md)

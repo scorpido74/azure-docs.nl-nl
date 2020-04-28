@@ -1,6 +1,6 @@
 ---
-title: 'Een VNet verbinden met meerdere sites via VPN Gateway: Classic'
-description: Verbind meerdere lokale on-premises sites met een klassiek virtueel netwerk met behulp van een VPN-gateway.
+title: 'Een VNet verbinden met meerdere sites met behulp van VPN Gateway: klassiek'
+description: Meerdere lokale on-premises sites verbinden met een klassiek virtueel netwerk met behulp van een VPN Gateway.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -9,74 +9,74 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: yushwang
 ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198089"
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Een Site-to-Site-verbinding toevoegen aan een VNet met een bestaande VPN-gatewayverbinding (klassiek)
+# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding (klassiek)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [PowerShell (klassiek)](vpn-gateway-multi-site.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Power shell (klassiek)](vpn-gateway-multi-site.md)
 >
 >
 
-In dit artikel u powershell gebruiken om Site-to-Site -verbindingen toe te voegen aan een VPN-gateway met een bestaande verbinding. Dit type verbinding wordt vaak aangeduid als een "multi-site" configuratie. De stappen in dit artikel zijn van toepassing op virtuele netwerken die zijn gemaakt met behulp van het klassieke implementatiemodel (ook wel Servicebeheer genoemd). Deze stappen zijn niet van toepassing op samenbestaande verbindingsconfiguraties van ExpressRoute/Site-to-Site.
+Dit artikel helpt u bij het gebruik van Power shell om S2S-verbindingen (site-naar-site) toe te voegen aan een VPN-gateway die een bestaande verbinding heeft. Dit type verbinding wordt vaak een ' multi-site ' configuratie genoemd. De stappen in dit artikel zijn van toepassing op virtuele netwerken die zijn gemaakt met het klassieke implementatie model (ook wel bekend als Service beheer). Deze stappen zijn niet van toepassing op ExpressRoute/site-to-site naast elkaar bestaande verbindings configuraties.
 
 ### <a name="deployment-models-and-methods"></a>Implementatiemodellen en -methoden
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-We werken deze tabel bij als er nieuwe artikelen en extra tools beschikbaar komen voor deze configuratie. Wanneer een artikel beschikbaar is, koppelen we er rechtstreeks naar vanuit deze tabel.
+Deze tabel wordt bijgewerkt naar nieuwe artikelen en er worden extra hulpprogram ma's beschikbaar voor deze configuratie. Wanneer er een artikel beschikbaar is, wordt er rechtstreeks vanuit deze tabel een koppeling naar de sjabloon.
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="about-connecting"></a>Over verbinding maken
+## <a name="about-connecting"></a>Verbinding maken
 
-U meerdere on-premises sites verbinden met één virtueel netwerk. Dit is vooral aantrekkelijk voor het bouwen van hybride cloudoplossingen. Het maken van een verbinding met meerdere plaatsen met uw Azure-virtuele netwerkgateway is vergelijkbaar met het maken van andere site-to-site-verbindingen. In feite u een bestaande Azure VPN-gateway gebruiken, zolang de gateway dynamisch is (routegebaseerd).
+U kunt meerdere on-premises sites verbinden met één virtueel netwerk. Dit is met name handig voor het bouwen van hybride cloud oplossingen. Het maken van een multi-site-verbinding met uw virtuele Azure-netwerk gateway is vergelijkbaar met het maken van andere site-naar-site-verbindingen. U kunt een bestaande Azure VPN-gateway gebruiken, zolang de gateway dynamisch is (op route gebaseerd).
 
-Als u al een statische gateway hebt aangesloten op uw virtuele netwerk, u het gatewaytype wijzigen in dynamisch zonder dat u het virtuele netwerk hoeft opnieuw op te bouwen om plaats te bieden aan meerdere servers. Voordat u het routetype wijzigt, moet u ervoor zorgen dat uw on-premises VPN-gateway routegebaseerde VPN-configuraties ondersteunt.
+Als u al een statische gateway hebt verbonden met uw virtuele netwerk, kunt u het gateway type wijzigen in dynamisch, zonder dat u het virtuele netwerk opnieuw hoeft op te bouwen om ruimte te bieden aan meerdere locaties. Voordat u het routerings type wijzigt, moet u ervoor zorgen dat uw on-premises VPN-gateway op route gebaseerde VPN-configuraties ondersteunt.
 
-![diagram met meerdere plaatsen](./media/vpn-gateway-multi-site/multisite.png "meerdere site's")
+![diagram voor meerdere locaties](./media/vpn-gateway-multi-site/multisite.png "meerdere locaties")
 
 ## <a name="points-to-consider"></a>Punten om in overweging te nemen
 
-**U de portal niet gebruiken om wijzigingen aan te brengen in dit virtuele netwerk.** U moet wijzigingen aanbrengen in het netwerkconfiguratiebestand in plaats van de portal te gebruiken. Als u wijzigingen aanbrengt in de portal, overschrijven ze uw referentie-instellingen voor meerdere plaatsen voor dit virtuele netwerk.
+**U kunt de portal niet gebruiken om wijzigingen aan te brengen in dit virtuele netwerk.** U moet wijzigingen aanbrengen in het netwerk configuratie bestand in plaats van de portal te gebruiken. Als u wijzigingen aanbrengt in de portal, worden de referentie-instellingen voor meerdere sites voor dit virtuele netwerk overschreven.
 
-U moet zich comfortabel voelen met het netwerkconfiguratiebestand tegen de tijd dat u de procedure met meerdere plaatsen hebt voltooid. Als u echter meerdere mensen hebt die aan uw netwerkconfiguratie werken, moet u ervoor zorgen dat iedereen op de hoogte is van deze beperking. Dit betekent niet dat je het portaal helemaal niet gebruiken. U het voor al het andere gebruiken, behalve het aanbrengen van configuratiewijzigingen in dit specifieke virtuele netwerk.
+U kunt het beste het netwerk configuratie bestand gebruiken op het moment dat u de procedure voor meerdere locaties hebt voltooid. Als u echter meerdere mensen aan uw netwerk configuratie wilt laten werken, moet u ervoor zorgen dat iedereen over deze beperking weet. Dit betekent niet dat u de portal helemaal niet kunt gebruiken. U kunt het gebruiken voor alle andere, behalve dat u configuratie wijzigingen aanbrengt in dit specifieke virtuele netwerk.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Controleer voordat u met de configuratie begint of u het volgende hebt:
+Controleer voordat u met de configuratie begint of u over het volgende beschikt:
 
-* Compatibele VPN-hardware voor elke on-premises locatie. Controleer [Over VPN-apparaten voor virtuele netwerkconnectiviteit](vpn-gateway-about-vpn-devices.md) om te controleren of het apparaat dat u wilt gebruiken iets is waarvan bekend is dat het compatibel is.
-* Een extern gericht openbaar IPv4 IP-adres voor elk VPN-apparaat. Het IP-adres kan niet achter een NAT worden geplaatst. Dit is vereiste.
-* Iemand die bedreven is in het configureren van uw VPN-hardware. Je moet een goed begrip hebben van hoe je je VPN-apparaat configureren, of werken met iemand die dat wel doet.
-* De IP-adresbereiken die u wilt gebruiken voor uw virtuele netwerk (als u er nog geen hebt gemaakt).
-* De IP-adresbereiken voor elk van de lokale netwerksites waarmee u verbinding maakt. U moet ervoor zorgen dat de IP-adresbereiken voor elk van de lokale netwerksites waarmee u verbinding wilt maken, elkaar niet overlappen. Anders weigert de portal of de REST API de configuratie die wordt geüpload.<br>Als u bijvoorbeeld twee lokale netwerksites hebt die beide het IP-adresbereik 10.2.3.0/24 bevatten en u een pakket hebt met een doeladres 10.2.3.3, weet Azure niet naar welke site u het pakket wilt verzenden omdat de adresbereiken elkaar overlappen. Om routeringsproblemen te voorkomen, staat Azure u niet toe een configuratiebestand te uploaden met overlappende bereiken.
+* Compatibele VPN-hardware voor elke on-premises locatie. Controleer [over VPN-apparaten op Virtual Network connectiviteit](vpn-gateway-about-vpn-devices.md) om te controleren of het apparaat dat u wilt gebruiken, iets is dat bekend is om compatibel te zijn.
+* Een extern gericht openbaar IPv4-IP-adres voor elk VPN-apparaat. Het IP-adres kan zich niet achter een NAT bevinden. Dit is vereist.
+* Iemand die zich kan bezig zijn met het configureren van uw VPN-hardware. U moet een duidelijk beeld hebben van de manier waarop u uw VPN-apparaat kunt configureren of met iemand die wel of niet werkt.
+* De IP-adresbereiken die u wilt gebruiken voor het virtuele netwerk (als u er nog geen hebt gemaakt).
+* De IP-adresbereiken voor elk van de lokale netwerk sites waarmee u verbinding maakt. U moet ervoor zorgen dat de IP-adresbereiken voor elk van de lokale netwerk sites waarmee u verbinding wilt maken, elkaar niet overlappen. Anders wordt de configuratie die wordt geüpload geweigerd door de portal of het REST API.<br>Als u bijvoorbeeld twee lokale netwerk sites hebt die het IP-adres bereik 10.2.3.0/24 bevatten en u een pakket hebt met een doel adres 10.2.3.3, weet Azure niet welke site u het pakket wilt sturen, omdat de adresbereiken elkaar overlappen. Om routerings problemen te voor komen, is het niet toegestaan om een configuratie bestand met overlappende bereiken te uploaden met Azure.
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-## <a name="1-create-a-site-to-site-vpn"></a>1. Een site-to-site VPN maken
-Als je al een Site-to-Site VPN hebt met een dynamische routing gateway, geweldig! U doorgaan met [Het exporteren van de instellingen voor virtuele netwerkconfiguratie](#export). Zo niet, ga dan als volgt te werk:
+## <a name="1-create-a-site-to-site-vpn"></a>1. Maak een site-naar-site-VPN
+Als u al een site-naar-site-VPN hebt met een dynamische routerings gateway, fantastisch! U kunt door gaan met [het exporteren van de configuratie-instellingen van het virtuele netwerk](#export). Als dat niet het geval is, gaat u als volgt te werk:
 
-### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Als u al een virtueel netwerk van site-naar-site hebt, maar een statische (op beleid gebaseerde) routeringsgateway heeft:
-1. Wijzig uw gatewaytype in dynamische routering. Een multi-site VPN vereist een dynamische (ook wel route-gebaseerde) routing gateway. Als u het gatewaytype wilt wijzigen, moet u eerst de bestaande gateway verwijderen en vervolgens een nieuwe gateway maken.
-2. Configureer uw nieuwe gateway en maak uw VPN-tunnel. Zie Voor instructies Voor instructies [het SKU- en VPN-type opgeven](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Zorg ervoor dat u het routeringstype opgeeft als 'Dynamisch'.
+### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>Als u al een site-naar-site-virtueel netwerk hebt, maar dit een statische routerings gateway (op beleid gebaseerd) heeft:
+1. Wijzig uw gateway type in dynamische route ring. Een VPN voor meerdere locaties vereist een dynamische routerings gateway (ook wel bekend als op route gebaseerd). Als u het gateway type wilt wijzigen, moet u eerst de bestaande gateway verwijderen en vervolgens een nieuwe maken.
+2. Configureer uw nieuwe gateway en maak uw VPN-tunnel. Zie voor instructies [het type SKU en VPN opgeven](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Zorg ervoor dat u het routerings type opgeeft als dynamisch.
 
-### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Als u geen virtueel netwerk van site-naar-site hebt:
-1. Maak uw site-to-site virtuele netwerk met behulp van deze instructies: [Maak een virtueel netwerk met een Site-to-Site VPN-verbinding](vpn-gateway-site-to-site-create.md).  
-2. Een dynamische routeringgateway configureren met behulp van deze instructies: [Een VPN-gateway configureren.](vpn-gateway-configure-vpn-gateway-mp.md) Selecteer dynamische **routering** voor uw gatewaytype.
+### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Als u geen site-naar-site-virtueel netwerk hebt:
+1. Maak uw site-naar-site-virtueel netwerk met behulp van deze instructies: [Maak een Virtual Network met een site-naar-site-VPN-verbinding](vpn-gateway-site-to-site-create.md).  
+2. Een dynamische routerings gateway configureren met behulp van deze instructies: [Configure a VPN gateway](vpn-gateway-configure-vpn-gateway-mp.md). Zorg ervoor dat u **dynamische route ring** selecteert voor uw gateway type.
 
-## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. Het netwerkconfiguratiebestand exporteren
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. het netwerk configuratie bestand exporteren
 
-Open uw PowerShell-console met verhoogde rechten. Als u wilt overschakelen naar servicebeheer, gebruikt u deze opdracht:
+Open de Power shell-console met verhoogde bevoegdheden. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
 
 ```powershell
 azure config mode asm
@@ -88,14 +88,14 @@ Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het 
 Add-AzureAccount
 ```
 
-Exporteer uw Azure-netwerkconfiguratiebestand door de volgende opdracht uit te voeren. U de locatie van het bestand wijzigen om indien nodig naar een andere locatie te exporteren.
+Exporteer uw Azure-netwerk configuratie bestand door de volgende opdracht uit te voeren. Als dat nodig is, kunt u de locatie van het bestand wijzigen zodat het naar een andere locatie kan worden geëxporteerd.
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-## <a name="3-open-the-network-configuration-file"></a>3. Het netwerkconfiguratiebestand openen
-Open het netwerkconfiguratiebestand dat u in de laatste stap hebt gedownload. Gebruik elke xml-editor die u leuk vindt. Het bestand moet er hetzelfde uitzien als het volgende:
+## <a name="3-open-the-network-configuration-file"></a>3. Open het netwerk configuratie bestand
+Open het netwerk configuratie bestand dat u in de laatste stap hebt gedownload. Gebruik een XML-editor die u wilt gebruiken. Het bestand moet er ongeveer als volgt uitzien:
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -144,8 +144,8 @@ Open het netwerkconfiguratiebestand dat u in de laatste stap hebt gedownload. Ge
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-## <a name="4-add-multiple-site-references"></a>4. Meerdere sitereferenties toevoegen
-Wanneer u informatie over siteverwijzingen toevoegt of verwijdert, brengt u configuratiewijzigingen aan in de ConnectionsToLocalNetwork/LocalNetworkSiteRef. Als u een nieuwe lokale siteverwijzing toevoegt, wordt Azure geactiveerd om een nieuwe tunnel te maken. In het onderstaande voorbeeld is de netwerkconfiguratie voor een verbinding met één site. Sla het bestand op zodra u klaar bent met het aanbrengen van wijzigingen.
+## <a name="4-add-multiple-site-references"></a>4. Voeg meerdere site verwijzingen toe
+Wanneer u site referentie gegevens toevoegt of verwijdert, moet u configuratie wijzigingen aanbrengen in de ConnectionsToLocalNetwork/LocalNetworkSiteRef. Als u een nieuwe lokale site verwijzing toevoegt, wordt Azure geactiveerd om een nieuwe tunnel te maken. In het onderstaande voor beeld is de netwerk configuratie voor een verbinding met één site. Sla het bestand op wanneer u klaar bent met het maken van de wijzigingen.
 
 ```xml
   <Gateway>
@@ -155,7 +155,7 @@ Wanneer u informatie over siteverwijzingen toevoegt of verwijdert, brengt u conf
   </Gateway>
 ```
 
-Als u extra sitereferenties wilt toevoegen (een configuratie met meerdere locaties maken), voegt u gewoon extra 'LocalNetworkSiteRef'-regels toe, zoals in het onderstaande voorbeeld wordt weergegeven:
+Als u aanvullende site verwijzingen wilt toevoegen (Maak een configuratie met meerdere locaties), voegt u extra ' LocalNetworkSiteRef-regels toe, zoals wordt weer gegeven in het voor beeld hieronder:
 
 ```xml
   <Gateway>
@@ -166,11 +166,11 @@ Als u extra sitereferenties wilt toevoegen (een configuratie met meerdere locati
   </Gateway>
 ```
 
-## <a name="5-import-the-network-configuration-file"></a>5. Het netwerkconfiguratiebestand importeren
-Het netwerkconfiguratiebestand importeren. Wanneer u dit bestand importeert met de wijzigingen, worden de nieuwe tunnels toegevoegd. De tunnels maken gebruik van de dynamische gateway die u eerder hebt gemaakt. U PowerShell gebruiken om het bestand te importeren.
+## <a name="5-import-the-network-configuration-file"></a>5. Importeer het netwerk configuratie bestand
+Importeer het netwerk configuratie bestand. Wanneer u dit bestand importeert met de wijzigingen, worden de nieuwe tunnels toegevoegd. De tunnels gebruiken de dynamische gateway die u eerder hebt gemaakt. U kunt Power shell gebruiken om het bestand te importeren.
 
-## <a name="6-download-keys"></a>6. Downloadtoetsen
-Zodra uw nieuwe tunnels zijn toegevoegd, gebruikt u de PowerShell-cmdlet 'Get-AzureVNetGatewayKey' om de vooraf gedeelde iPsec/IKE-sleutels voor elke tunnel te krijgen.
+## <a name="6-download-keys"></a>6. sleutels downloaden
+Zodra de nieuwe tunnels zijn toegevoegd, gebruikt u de Power shell-cmdlet Get-AzureVNetGatewayKey om de vooraf gedeelde IPsec/IKE-sleutels voor elke tunnel op te halen.
 
 Bijvoorbeeld:
 
@@ -179,16 +179,16 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 ```
 
-Als u dat liever hebt, u ook de Api Voor gedeelde sleutel rest van de *virtuele netwerkgateway* gebruiken om de vooraf gedeelde sleutels te krijgen.
+Als u wilt, kunt u ook de *gedeelde rest API sleutel Virtual Network gateway ophalen* gebruiken om de vooraf gedeelde sleutels op te halen.
 
-## <a name="7-verify-your-connections"></a>7. Uw verbindingen verifiëren
-Controleer de status van de tunnel met meerdere plaatsen. Nadat u de sleutels voor elke tunnel hebt gedownload, wilt u de verbindingen verifiëren. Gebruik 'Get-AzureVnetConnection' om een lijst met virtuele netwerktunnels te krijgen, zoals in het onderstaande voorbeeld wordt weergegeven. VNet1 is de naam van de VNet.
+## <a name="7-verify-your-connections"></a>7. Controleer uw verbindingen
+Controleer de tunnel status voor meerdere sites. Nadat u de sleutels voor elke tunnel hebt gedownload, wilt u de verbindingen controleren. Gebruik ' Get-AzureVnetConnection ' om een lijst met virtuele netwerk tunnels op te halen, zoals wordt weer gegeven in het onderstaande voor beeld. VNet1 is de naam van het VNet.
 
 ```powershell
 Get-AzureVnetConnection -VNetName VNET1
 ```
 
-Voorbeeld retour:
+Voor beeld van resultaat:
 
 ```
     ConnectivityState         : Connected
@@ -218,4 +218,4 @@ Voorbeeld retour:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Over VPN-gateways voor meer informatie over [VPN-gateways.](vpn-gateway-about-vpngateways.md)
+Zie [over VPN-gateways](vpn-gateway-about-vpngateways.md)voor meer informatie over VPN-gateways.

@@ -1,6 +1,6 @@
 ---
-title: Gebruikersstroomversies in Azure Active Directory B2C | Microsoft Documenten
-description: Meer informatie over de versies van gebruikersstromen die beschikbaar zijn in Azure Active Directory B2C.
+title: Versies van de gebruikers stroom in Azure Active Directory B2C | Microsoft Docs
+description: Meer informatie over de versies van gebruikers stromen die beschikbaar zijn in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,44 +11,44 @@ ms.date: 09/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185617"
 ---
-# <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Gebruikersstroomversies in Azure Active Directory B2C
+# <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Versies van de gebruikers stroom in Azure Active Directory B2C
 
-Gebruikersstromen in Azure Active Directory B2C (Azure AD B2C) helpen u bij het instellen van algemene [beleidsregels](user-flow-overview.md) waarin de identiteitservaringen van klanten volledig worden beschreven. Deze ervaringen omvatten aanmelding, aanmelding, wachtwoordreset of profielbewerking. In Azure AD B2C u kiezen uit een verzameling aanbevolen gebruikersstromen en gebruikersstromen bekijken.
+Gebruikers stromen in Azure Active Directory B2C (Azure AD B2C) helpen u bij het instellen van een gemeen schappelijke [beleids](user-flow-overview.md) regel voor het beschrijven van de ervaring van de klant identiteit. Deze ervaring omvat het aanmelden, aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen. In Azure AD B2C kunt u kiezen uit een verzameling van zowel aanbevolen gebruikers stromen als voor beeld van gebruikers stromen.
 
-Nieuwe gebruikersstromen worden toegevoegd als nieuwe versies. Naarmate gebruikersstromen stabiel worden, worden ze aanbevolen voor gebruik. Gebruikersstromen worden gemarkeerd als **Aanbevolen** als ze grondig zijn getest. Gebruikersstromen worden in preview in aanmerking genomen totdat deze zijn gemarkeerd als aanbevolen. Gebruik een aanbevolen gebruikersstroom voor elke productietoepassing, maar kies uit andere versies om nieuwe functionaliteit te testen zodra deze beschikbaar is. U mag geen oudere versies van aanbevolen gebruikersstromen gebruiken.
+Nieuwe gebruikers stromen worden toegevoegd als nieuwe versies. Wanneer gebruikers stromen stabiel worden, worden ze aanbevolen voor gebruik. Gebruikers stromen worden gemarkeerd als **Aanbevolen** als ze uitvoerig zijn getest. Gebruikers stromen worden in de preview-fase opgenomen tot ze als aanbevolen zijn gemarkeerd. Gebruik een aanbevolen gebruikers stroom voor een productie toepassing, maar kies uit andere versies om de nieuwe functionaliteit te testen zodra deze beschikbaar wordt. Gebruik geen oudere versies van aanbevolen gebruikers stromen.
 
 >[!IMPORTANT]
-> Tenzij een gebruikersstroom wordt geïdentificeerd als **aanbevolen,** wordt deze beschouwd als in *preview*. U moet alleen aanbevolen gebruikersstromen gebruiken voor uw productietoepassingen.
+> Tenzij een gebruikers stroom wordt aangeduid als **Aanbevolen**, wordt deze als *Preview*beschouwd. Gebruik alleen aanbevolen gebruikers stromen voor uw productie toepassingen.
 
 ## <a name="v1"></a>V1
 
 | Gebruikersstroom | Aanbevolen | Beschrijving |
 | --------- | ----------- | ----------- |
-| Wachtwoord opnieuw instellen | Ja | Hiermee kan een gebruiker een nieuw wachtwoord kiezen nadat hij zijn e-mail heeft geverifieerd. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>[Vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul> |
-| Profielbewerking | Ja | Hiermee kan een gebruiker zijn gebruikerskenmerken configureren. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li></ul> |
-| Aanmelden met ROPC | Nee | Hiermee kan een gebruiker met een lokaal account zich rechtstreeks aanmelden in native toepassingen (geen browser vereist). Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li></ul> |
-| Aanmelden | Nee | Hiermee kan een gebruiker zich aanmelden bij zijn/haar account. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li><li>Aanmelden blokkeren</li><li>Wachtwoord opnieuw instellen forceren</li><li>Houd me ingelogd (KMSI)</ul><br>U de gebruikersinterface met deze gebruikersstroom niet aanpassen. |
-| Aanmelden | Nee | Hiermee kan een gebruiker een account maken. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li><li>[Vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul> |
-| Registreren en aanmelden | Ja | Hiermee kan een gebruiker een account maken of zich aanmelden bij zijn/haar account. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li><li>[Vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul>|
+| Wachtwoord opnieuw instellen | Ja | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Profiel bewerken | Ja | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li></ul> |
+| Aanmelden met ROPC | Nee | Hiermee kan een gebruiker met een lokaal account zich rechtstreeks aanmelden bij systeem eigen toepassingen (er is geen browser vereist). Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li></ul> |
+| Aanmelden | Nee | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>Aanmelden blok keren</li><li>Wacht woord opnieuw instellen afdwingen</li><li>Aangemeld blijven (KMSI)</ul><br>U kunt de gebruikers interface niet aanpassen met deze gebruikers stroom. |
+| Aanmelden | Nee | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Registreren en aanmelden | Ja | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul>|
 
-## <a name="v11"></a>V1.1
+## <a name="v11"></a>V 1.1
 
 | Gebruikersstroom | Aanbevolen | Beschrijving |
 | --------- | ----------- | ----------- |
-| Wachtwoordreset v1.1 | Nee | Hiermee kan een gebruiker een nieuw wachtwoord kiezen nadat hij zijn e-mail heeft geverifieerd (nieuwe pagina-indeling beschikbaar). Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>[Vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul> |
+| Wacht woord opnieuw instellen v 1.1 | Nee | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres (nieuwe pagina-indeling beschikbaar). Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
 
 ## <a name="v2"></a>V2
 
 | Gebruikersstroom | Aanbevolen | Beschrijving |
 | --------- | ----------- | ----------- |
-| Wachtwoordreset v2 | Nee | Hiermee kan een gebruiker een nieuw wachtwoord kiezen nadat hij zijn e-mail heeft geverifieerd. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul> |
-| Profielbewerking v2 | Ja | Hiermee kan een gebruiker zijn gebruikerskenmerken configureren. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li></ul> |
-| Inloggen v2 | Nee | Hiermee kan een gebruiker zich aanmelden bij zijn/haar account. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>Aanpassing aan de aanmeldingspagina</li></ul> |
-| Aanmelden v2 | Nee | Hiermee kan een gebruiker een account maken. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Token levensduur](tokens-overview.md)</li><li>Compatibiliteitsinstellingen voor token's</li><li>Sessiegedrag</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul> |
-| Meld je aan en meld je aan v2 | Nee | Hiermee kan een gebruiker een account maken of zich aanmelden voor zijn/haar account. Met deze gebruikersstroom u het als volgt configureren: <ul><li>[Multi-factor authentication](custom-policy-multi-factor-authentication.md)</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor complexiteit van wachtwoorden](user-flow-password-complexity.md)</li></ul> |
+| Wacht woord opnieuw instellen v2 | Nee | Hiermee kan een gebruiker een nieuw wacht woord kiezen na het verifiëren van het e-mail adres. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Profiel bewerken v2 | Ja | Hiermee kan een gebruiker hun gebruikers kenmerken configureren. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li></ul> |
+| Aanmelden v2 | Nee | Hiermee kan een gebruiker zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>Aanpassing van de aanmeldings pagina</li></ul> |
+| Registreren v2 | Nee | Hiermee kan een gebruiker een account maken. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Levens duur van token](tokens-overview.md)</li><li>Compatibiliteits instellingen voor tokens</li><li>Gedrag van sessie</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |
+| Registreren en aanmelden v2 | Nee | Hiermee kan een gebruiker een account maken of zich aanmelden bij hun account. Met deze gebruikers stroom kunt u het volgende configureren: <ul><li>[Meervoudige verificatie](custom-policy-multi-factor-authentication.md)</li><li>[Leeftijdsbeperking](basic-age-gating.md)</li><li>[Vereisten voor wachtwoord complexiteit](user-flow-password-complexity.md)</li></ul> |

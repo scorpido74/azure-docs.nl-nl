@@ -1,6 +1,6 @@
 ---
-title: Apache Storm met Python-componenten - Azure HDInsight
-description: Meer informatie over het maken van een Apache Storm-topologie die Python-componenten gebruikt in Azure HDInsight
+title: Apache Storm met python-onderdelen-Azure HDInsight
+description: Meer informatie over het maken van een Apache Storm topologie die gebruikmaakt van python-onderdelen in azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,40 +9,40 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
 ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77460021"
 ---
-# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Ontwikkel Apache Storm topologieën met Python op HDInsight
+# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm topologieën ontwikkelen met behulp van python in HDInsight
 
-Meer informatie over het maken van een [Apache Storm-topologie](https://storm.apache.org/) die python-componenten gebruikt. Apache Storm ondersteunt meerdere talen, zodat u zelfs componenten uit verschillende talen in één topologie combineren. Met het [Flux-framework](https://storm.apache.org/releases/current/flux.html) (geïntroduceerd met Storm 0.10.0) u eenvoudig oplossingen maken die gebruikmaken van Python-componenten.
+Meer informatie over het maken van een [Apache Storm](https://storm.apache.org/) topologie die gebruikmaakt van python-onderdelen. Apache Storm ondersteunt meerdere talen, waardoor u zelfs onderdelen uit verschillende talen in één topologie kunt combi neren. Met het [stroom](https://storm.apache.org/releases/current/flux.html) kader (geïntroduceerd in Storm 0.10.0) kunt u eenvoudig oplossingen maken die gebruikmaken van python-onderdelen.
 
 > [!IMPORTANT]  
-> De informatie in dit document is getest met Storm op HDInsight 3.6.
+> De informatie in dit document is getest met Storm op HDInsight 3,6.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Storm cluster op HDInsight. Zie [Apache Hadoop-clusters maken met de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en Selecteer **Storm** voor **clustertype**.
+* Een Apache Storm cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor het **cluster type**.
 
-* Een lokale ontwikkelomgeving van Storm (optioneel). Een lokale Storm-omgeving is alleen nodig als u de topologie lokaal wilt uitvoeren. Zie [Een ontwikkelomgeving instellen](https://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
+* Een lokale Storm-ontwikkel omgeving (optioneel). Een lokale Storm-omgeving is alleen nodig als u de topologie lokaal wilt uitvoeren. Zie [een ontwikkel omgeving instellen](https://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
 
-* [Python 2.7 of hoger](https://www.python.org/downloads/).
+* [Python 2,7 of hoger](https://www.python.org/downloads/).
 
-* [Java Developer Kit (JDK) versie 8](https://aka.ms/azure-jdks).
+* [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks).
 
-* [Apache Maven](https://maven.apache.org/download.cgi) goed [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project build systeem voor Java projecten.
+* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
 
-## <a name="storm-multi-language-support"></a>Ondersteuning voor storm in meerdere talen
+## <a name="storm-multi-language-support"></a>Ondersteuning voor Storm meerdere talen
 
-Apache Storm is ontworpen om te werken met componenten geschreven met behulp van een programmeertaal. De componenten moeten begrijpen hoe te werken met de Thrift-definitie voor Storm. Voor Python wordt een module geleverd als onderdeel van het Apache Storm-project waarmee u eenvoudig communiceren met Storm. U vindt deze [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)module op .
+Apache Storm is ontworpen om te werken met onderdelen die zijn geschreven met behulp van een programmeer taal. De onderdelen moeten weten hoe u kunt werken met de Thrift-definitie voor Storm. Voor python wordt een module meegeleverd als onderdeel van het Apache Storm project, waarmee u eenvoudig kunt interface met storm. U kunt deze module vinden op [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Storm is een Java-proces dat draait op de Java Virtual Machine (JVM). Componenten die in andere talen zijn geschreven, worden uitgevoerd als subprocessen. De Storm communiceert met deze subprocessen met behulp van JSON-berichten die via stdin/stdout worden verzonden. Meer details over de communicatie tussen componenten zijn te vinden in de [multi-lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) documentatie.
+Storm is een Java-proces dat wordt uitgevoerd op de Java Virtual Machine (JVM). Onderdelen die in andere talen zijn geschreven, worden uitgevoerd als subprocessen. De Storm communiceert met deze subprocessen met behulp van JSON-berichten die via stdin/stdout worden verzonden. Meer informatie over de communicatie tussen onderdelen vindt u in de documentatie over het [multi-lang protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) .
 
-## <a name="python-with-the-flux-framework"></a>Python met het Flux-framework
+## <a name="python-with-the-flux-framework"></a>Python met het stroom kader
 
-Met het Flux-framework u Storm-topologieën afzonderlijk van de componenten definiëren. Het Flux-framework gebruikt YAML om de Stormtopologie te definiëren. De volgende tekst is een voorbeeld van het verwijzen naar een Python-component in het YAML-document:
+Met het stroom raamwerk kunt u Storm-topologieën afzonderlijk van de onderdelen definiëren. Het stroom raamwerk gebruikt YAML om de Storm-topologie te definiëren. De volgende tekst is een voor beeld van het verwijzen naar een python-onderdeel in het YAML-document:
 
 ```yaml
 # Spout definitions
@@ -58,9 +58,9 @@ spouts:
     parallelism: 1
 ```
 
-De `FluxShellSpout` klasse wordt gebruikt `sentencespout.py` om het script te starten dat de uitloop implementeert.
+De klasse `FluxShellSpout` wordt gebruikt om het `sentencespout.py` script te starten dat de Spout implementeert.
 
-Flux verwacht dat de Python-scripts zich in de `/resources` map bevinden in het potbestand dat de topologie bevat. Dit voorbeeld slaat de Python-scripts op in de `/multilang/resources` map. De `pom.xml` bevat dit bestand met behulp van de volgende XML:
+Stroom verwacht dat de python-scripts zich bevinden in de `/resources` map in het jar-bestand dat de topologie bevat. In dit voor beeld worden de python-scripts `/multilang/resources` in de Directory opgeslagen. Het `pom.xml` bevat dit bestand met de volgende XML:
 
 ```xml
 <!-- include the Python components -->
@@ -70,51 +70,51 @@ Flux verwacht dat de Python-scripts zich in de `/resources` map bevinden in het 
 </resource>
 ```
 
-Zoals eerder vermeld, is `storm.py` er een bestand dat de Thrift definitie voor Storm implementeert. Het Flux-framework omvat `storm.py` automatisch wanneer het project wordt gebouwd, zodat u zich geen zorgen hoeft te maken over het opnemen ervan.
+Zoals eerder vermeld, is er een `storm.py` bestand dat de Thrift-definitie voor Storm implementeert. Het stroom kader wordt `storm.py` automatisch opgenomen wanneer het project is gemaakt, zodat u zich geen zorgen hoeft te maken over het opnemen ervan.
 
 ## <a name="build-the-project"></a>Het project bouwen
 
-1. Download het [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)project van .
+1. Down load het project [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)van.
 
-1. Open een opdrachtprompt en navigeer `hdinsight-python-storm-wordcount-master`naar de projecthoofd: . Voer de volgende opdracht in:
+1. Open een opdracht prompt en ga naar de hoofdmap van het `hdinsight-python-storm-wordcount-master`project:. Voer de volgende opdracht in:
 
     ```cmd
     mvn clean compile package
     ```
 
-    Met deze `target/WordCount-1.0-SNAPSHOT.jar` opdracht wordt een bestand gemaakt dat de gecompileerde topologie bevat.
+    Met deze opdracht maakt `target/WordCount-1.0-SNAPSHOT.jar` u een bestand met de gecompileerde topologie.
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>Voer de Storm topologie uit op HDInsight
+## <a name="run-the-storm-topology-on-hdinsight"></a>De Storm-topologie op HDInsight uitvoeren
 
-1. Gebruik [de ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om het `WordCount-1.0-SNAPSHOT.jar` bestand naar het cluster Storm op HDInsight te kopiëren. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer de opdracht in:
+1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om `WordCount-1.0-SNAPSHOT.jar` het bestand te kopiëren naar uw Storm op HDInsight-cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
     ```cmd
     scp target/WordCount-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
     ```
 
-1. Zodra het bestand is geüpload, maakt u verbinding met het cluster via SSH:
+1. Nadat het bestand is geüpload, maakt u met SSH verbinding met het cluster:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Gebruik vanuit de SSH-sessie de volgende opdracht om de topologie op het cluster te starten:
+1. Gebruik in de SSH-sessie de volgende opdracht om de topologie op het cluster te starten:
 
     ```bash
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-    Eenmaal begonnen, een Storm topologie loopt tot gestopt.
+    Zodra het is gestart, wordt een storm-topologie uitgevoerd totdat deze wordt gestopt.
 
-1. Gebruik de gebruikersinterface storm om de topologie in het cluster weer te geven. De Storm UI `https://CLUSTERNAME.azurehdinsight.net/stormui`bevindt zich op . Vervang `CLUSTERNAME` door uw clusternaam.
+1. Gebruik de Storm-gebruikers interface om de topologie op het cluster weer te geven. De Storm-gebruikers interface bevindt zich op `https://CLUSTERNAME.azurehdinsight.net/stormui`. Vervang `CLUSTERNAME` door de naam van uw cluster.
 
-1. Stop de Storm topologie. Gebruik de volgende opdracht om de topologie in het cluster te stoppen:
+1. Stop de Storm-topologie. Gebruik de volgende opdracht om de topologie op het cluster te stoppen:
 
     ```bash
     storm kill wordcount
     ```
 
-    U ook de gebruikersinterface van Storm gebruiken. Selecteer **onder Topologie-acties** voor de topologie de optie **Doden**.
+    U kunt ook de Storm-gebruikers interface gebruiken. Selecteer in **topologie acties** voor de topologie **Kill**.
 
 ## <a name="run-the-topology-locally"></a>De topologie lokaal uitvoeren
 
@@ -125,9 +125,9 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 ```
 
 > [!NOTE]  
-> Dit commando vereist een lokale Storm ontwikkelingsomgeving. Zie [Een ontwikkelomgeving instellen](https://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
+> Voor deze opdracht is een lokale Storm-ontwikkel omgeving vereist. Zie [een ontwikkel omgeving instellen](https://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
 
-Zodra de topologie wordt gestart, wordt informatie naar de lokale console gestuurd die vergelijkbaar is met de volgende tekst:
+Zodra de topologie is gestart, wordt er informatie verzonden naar de lokale console, vergelijkbaar met de volgende tekst:
 
 ```output
 24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
@@ -141,8 +141,8 @@ Zodra de topologie wordt gestart, wordt informatie naar de lokale console gestuu
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-Als u de topologie wilt stoppen, gebruikt u __Ctrl + C__.
+Gebruik __CTRL + C__om de topologie te stoppen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de volgende documenten voor andere manieren om Python te gebruiken met HDInsight: [Hoe gebruik je Python User Defined Functions (UDF) in Apache Pig en Apache Hive.](../hadoop/python-udf-hdinsight.md)
+Raadpleeg de volgende documenten voor andere manieren om python met HDInsight te gebruiken: [het gebruik van python door de gebruiker gedefinieerde functies (UDF) in Apache varken en Apache Hive](../hadoop/python-udf-hdinsight.md).

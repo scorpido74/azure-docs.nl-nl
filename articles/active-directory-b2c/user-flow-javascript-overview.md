@@ -1,7 +1,7 @@
 ---
-title: JavaScript- en pagina-indelingsversies
+title: Versies van Java script en pagina-indeling
 titleSuffix: Azure AD B2C
-description: Meer informatie over het inschakelen van JavaScript en het gebruik van pagina-indelingsversies in Azure Active Directory B2C.
+description: Meer informatie over het inschakelen van Java script en het gebruik van pagina-indelings versies in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,42 +12,42 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 23d345ea9f22be5c4dac20e6e8784a8de079bccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185830"
 ---
-# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript- en pagina-indelingsversies in Azure Active Directory B2C
+# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Java script-en pagina-indelings versies in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C biedt een set verpakte inhoud die HTML, CSS en JavaScript bevat voor de gebruikersinterface-elementen in uw gebruikersstromen en aangepaste beleidsregels.
+Azure AD B2C biedt een set verpakte inhoud die HTML, CSS en Java script bevat voor de elementen van de gebruikers interface in uw gebruikers stromen en aangepaste beleids regels.
 
-Ga als u JavaScript inschakelen voor uw toepassingen:
+Java script inschakelen voor uw toepassingen:
 
-* Deze inschakelen op de gebruikersstroom met behulp van de Azure-portal
-* Een [pagina-indeling selecteren](page-layout.md)
-* Gebruik [b2clogin.com](b2clogin.md) in uw verzoeken
+* Schakel deze in op de gebruikers stroom met behulp van de Azure Portal
+* Selecteer een [pagina-indeling](page-layout.md)
+* [B2clogin.com](b2clogin.md) in uw aanvragen gebruiken
 
-Als u [JavaScript-clientcode](javascript-samples.md) wilt inschakelen, moeten de elementen waarop u uw JavaScript baseert onveranderlijk zijn. Als ze niet onveranderlijk zijn, kunnen wijzigingen onverwacht gedrag veroorzaken op uw gebruikerspagina's. Als u deze problemen wilt voorkomen, dwingt u het gebruik van een pagina-indeling af en geeft u een pagina-indelingsversie op om ervoor te zorgen dat de inhoudsdefinities waarop u uw JavaScript hebt gebaseerd, onveranderlijk zijn. Zelfs als u niet van plan bent JavaScript in te schakelen, u een pagina-indelingsversie voor uw pagina's opgeven.
+Als u van plan bent om [Java script](javascript-samples.md) -client code in te scha kelen, moeten de elementen waarop u uw Java script baseert, onveranderbaar zijn. Als ze niet onveranderbaar zijn, kunnen wijzigingen op de pagina's van uw gebruikers onverwacht gedrag veroorzaken. Als u deze problemen wilt voor komen, dwingt u het gebruik van een pagina-indeling af en geeft u een versie van de pagina-indeling op om ervoor te zorgen dat de inhouds definities waarop u uw Java script hebt gebaseerd, onveranderbaar Zelfs als u niet van plan bent java script in te scha kelen, kunt u een versie van de pagina-indeling opgeven voor uw pagina's.
 
 ## <a name="enable-javascript"></a>JavaScript inschakelen
 
-In de **eigenschappen**van de gebruikersstroom u JavaScript inschakelen. Het inschakelen van JavaScript dwingt ook het gebruik van een pagina-indeling af. Vervolgens u de pagina-indelingsversie instellen voor de gebruikersstroom zoals beschreven in de volgende sectie.
+In de **Eigenschappen**van de gebruikers stroom kunt u Java script inschakelen. Als u Java script inschakelt, wordt ook het gebruik van een pagina-indeling afgedwongen. U kunt vervolgens de versie van de pagina-indeling instellen voor de gebruikers stroom zoals beschreven in de volgende sectie.
 
-![Pagina Eigenschappen van gebruikersstroom met JavaScript-instelling inschakelen gemarkeerd](media/user-flow-javascript-overview/javascript-settings.png)
+![Eigenschappen pagina gebruikers stroom met de instelling Java script inschakelen gemarkeerd](media/user-flow-javascript-overview/javascript-settings.png)
 
-## <a name="select-a-page-layout-version"></a>Een pagina-indelingsversie selecteren
+## <a name="select-a-page-layout-version"></a>Een versie van een pagina-indeling selecteren
 
-Of u JavaScript nu wel of niet inschakelt in de eigenschappen van uw gebruikersstroom, u een pagina-indelingsversie opgeven voor uw gebruikersstroompagina's. Open de gebruikersstroom en selecteer **Pagina-indelingen**. Selecteer **onder INDELINGSNAAM**een gebruikersstroompagina en kies de **pagina-indelingsversie**.
+Ongeacht of u Java script in de eigenschappen van de gebruikers stroom inschakelt, kunt u een versie van de pagina-indeling opgeven voor de pagina's van de gebruikers stroom. Open de gebruikers stroom en selecteer **pagina-indelingen**. Selecteer onder **indelings naam**een pagina gebruikers stroom en kies de **versie**van de pagina-indeling.
 
-Zie het [logboek Pagina-indelingsversie wijzigen](page-layout.md)voor informatie over de verschillende pagina-indelingsversies.
+Zie voor meer informatie over de verschillende versies van de pagina-indeling het [logboek met versie wijzigingen](page-layout.md)voor de pagina.
 
-![Instellingen voor pagina-indeling in portal met vervolgkeuzelijst pagina-indelingsversie](media/user-flow-javascript-overview/page-layout-version.png)
+![Instellingen voor pagina-indeling in portal met de vervolg keuzelijst versie van pagina-indeling](media/user-flow-javascript-overview/page-layout-version.png)
 
 [!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U voorbeelden van JavaScript-gebruik vinden in [JavaScript-voorbeelden voor gebruik in Azure Active Directory B2C](javascript-samples.md).
+Voor beelden van Java script-gebruik in [Java script-voor beelden vindt u in azure Active Directory B2C](javascript-samples.md).

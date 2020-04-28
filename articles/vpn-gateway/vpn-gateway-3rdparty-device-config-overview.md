@@ -1,6 +1,6 @@
 ---
-title: Configuratie van Partner VPN-apparaten voor verbinding met Azure VPN-gateways
-description: In dit artikel vindt u een overzicht van de configuratie van vpn-apparaten van partners voor verbinding maken met Azure VPN-gateways.
+title: VPN-configuraties van partners voor verbinding maken met Azure VPN-gateways
+description: In dit artikel vindt u een overzicht van VPN-configuraties van partners voor het maken van verbinding met Azure VPN-gateways.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,45 +8,45 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279401"
 ---
-# <a name="overview-of-partner-vpn-device-configurations"></a>Overzicht van de configuratie van partner-VPN-apparaten
-Dit artikel biedt een overzicht van het configureren van on-premises VPN-apparaten voor verbinding maken met Azure VPN-gateways. Een voorbeeld van het virtuele netwerk en de VPN-gateway wordt gebruikt om u te laten zien hoe u verbinding maken met verschillende on-premises VPN-apparaatconfiguraties met behulp van dezelfde parameters.
+# <a name="overview-of-partner-vpn-device-configurations"></a>Overzicht van configuraties van VPN-apparaten voor partners
+Dit artikel bevat een overzicht van het configureren van on-premises VPN-apparaten om verbinding te maken met Azure VPN-gateways. Een voor beeld van een virtueel Azure-netwerk en een VPN-gateway Setup wordt gebruikt om te laten zien hoe u verbinding kunt maken met verschillende on-premises VPN-configuraties met dezelfde para meters.
 
 
 
 ## <a name="device-requirements"></a>Vereisten voor apparaten
-Azure VPN-gateways gebruiken standaard IPsec/IKE-protocolsuites voor site-to-site (S2S) VPN-tunnels. Zie [Over VPN-apparaten](vpn-gateway-about-vpn-devices.md)voor een lijst met IPsec/IKE-parameters en cryptografische algoritmen voor Azure VPN-gateways. U ook de exacte algoritmen en belangrijke sterktes opgeven voor een specifieke verbinding zoals beschreven in [Over cryptografische vereisten.](vpn-gateway-about-compliance-crypto.md)
+Azure VPN-gateways gebruiken standaard IPsec/IKE-protocol suites voor VPN-tunnels van het site-naar-site (S2S). Zie [over VPN-apparaten](vpn-gateway-about-vpn-devices.md)voor een lijst met IPSec/IKE-para meters en cryptografische algoritmen voor Azure VPN-gateways. U kunt ook de exacte algoritmen en belangrijkste sterke punten voor een specifieke verbinding opgeven, zoals wordt beschreven in [informatie over cryptografische vereisten](vpn-gateway-about-compliance-crypto.md).
 
 ## <a name="single-vpn-tunnel"></a><a name ="singletunnel"></a>Eén VPN-tunnel
-De eerste configuratie in het voorbeeld bestaat uit één S2S VPN-tunnel tussen een Azure VPN-gateway en een on-premises VPN-apparaat. U het [Border Gateway Protocol (BGP)](#bgp)optioneel configureren in de VPN-tunnel.
+De eerste configuratie in het voor beeld bestaat uit één S2S VPN-tunnel tussen een Azure VPN-gateway en een on-premises VPN-apparaat. U kunt eventueel de [Border Gateway Protocol (BGP) configureren via de VPN-tunnel](#bgp).
 
 ![Diagram van één S2S VPN-tunnel](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Zie [Een site-to-site-verbinding configureren](vpn-gateway-howto-site-to-site-resource-manager-portal.md)voor stapsgewijze instructies voor het instellen van één VPN-tunnel. In de volgende secties worden de verbindingsparameters voor de voorbeeldconfiguratie opgegeven en wordt een PowerShell-script weergegeven waarmee u aan de slag.
+Zie [een site-naar-site-verbinding configureren](vpn-gateway-howto-site-to-site-resource-manager-portal.md)voor stapsgewijze instructies voor het instellen van één VPN-tunnel. In de volgende secties worden de verbindings parameters voor de voorbeeld configuratie opgegeven en wordt een Power shell-script geboden waarmee u aan de slag kunt.
 
 ### <a name="connection-parameters"></a>Verbindingsparameters
-In deze sectie worden de parameters weergegeven voor de voorbeelden die in de vorige secties worden beschreven.
+In deze sectie vindt u de para meters voor de voor beelden die in de vorige secties worden beschreven.
 
-| **Parameter**                | **Waarde**                    |
+| **Bepaalde**                | **Waarde**                    |
 | ---                          | ---                          |
-| Voorvoegsels voor virtueel netwerkadres        | 10.11.0.0/16<br>10.12.0.0/16 |
-| IP-gateway azure VPN-gateway         | Azure VPN-gateway-IP         |
-| On-premises adresvoorvoegsels | 10.51.0.0/16<br>10.52.0.0/16 |
-| On-premises IP-apparaat VPN-apparaat    | On-premises IP-apparaat VPN-apparaat    |
-| * Virtueel netwerk BGP ASN                | 65010                        |
+| Adres voorvoegsels van virtuele netwerken        | 10.11.0.0/16<br>10.12.0.0/16 |
+| Azure VPN-gateway-IP         | Azure VPN Gateway IP         |
+| On-premises adres voorvoegsels | 10.51.0.0/16<br>10.52.0.0/16 |
+| IP-adres van on-premises VPN-apparaat    | IP-adres van on-premises VPN-apparaat    |
+| * BGP ASN van virtueel netwerk                | 65010                        |
 | * Azure BGP-peer-IP           | 10.12.255.30                 |
 | * On-premises BGP ASN         | 65050                        |
-| * On-premises BGP peer IP     | 10.52.255.254                |
+| * On-premises BGP-peer-IP     | 10.52.255.254                |
 
-\*Optionele parameter alleen voor BGP.
+\*Optionele para meter voor alleen BGP.
 
-### <a name="sample-powershell-script"></a>Voorbeeld van PowerShell-script
-In deze sectie vindt u een voorbeeldscript om u op weg te helpen. Zie [Een S2S VPN-verbinding maken met PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)voor gedetailleerde instructies.
+### <a name="sample-powershell-script"></a>Power shell-voorbeeld script
+Deze sectie bevat een voorbeeld script om aan de slag te gaan. Zie [een S2S-VPN-verbinding maken met behulp van Power shell](vpn-gateway-create-site-to-site-rm-powershell.md)voor gedetailleerde instructies.
 
 ```powershell
 # Declare your variables
@@ -111,18 +111,18 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>(Optioneel) Gebruik aangepast IPsec/IKE-beleid met UsePolicyBasedTrafficSelectors
-Als uw VPN-apparaten geen verkeersselectors ondersteunen, zoals routegebaseerde of VTI-configuraties, maakt u een aangepast IPsec/IKE-beleid met de optie [UsePolicyBasedTrafficSelectors.](vpn-gateway-connect-multiple-policybased-rm-ps.md)
+### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>Beschrijving Aangepast IPsec/IKE-beleid gebruiken met UsePolicyBasedTrafficSelectors
+Als uw VPN-apparaten geen ondersteuning bieden voor een-op-geen-verkeer selecters, zoals op route gebaseerde of VTI configuraties, maakt u een aangepast IPsec/IKE-beleid met de optie [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) .
 
 > [!IMPORTANT]
-> U moet een IPsec/IKE-beleid maken om de optie **UsePolicyBasedTrafficSelectors** op de verbinding in te schakelen.
+> U moet een IPsec/IKE-beleid maken om de **UsePolicyBasedTrafficSelectors** -optie voor de verbinding in te scha kelen.
 
 
-Het voorbeeldscript maakt een IPsec/IKE-beleid met de volgende algoritmen en parameters:
+Met het voorbeeld script maakt u een IPsec/IKE-beleid met de volgende algoritmen en para meters:
 * IKEv2: AES256, SHA384, DHGroup24
-* IPsec: AES256, SHA1, PFS24, SA Lifetime 7.200 seconden en 20.480.000 KB (20 GB)
+* IPsec: AES256, SHA1, PFS24, SA-levens duur van 7.200 seconden en 20.480.000 KB (20 GB)
 
-Het script past het IPsec/IKE-beleid toe en maakt de optie **UsePolicyBasedTrafficSelectors** op de verbinding mogelijk.
+Met het script wordt het IPsec/IKE-beleid toegepast en wordt de optie **UsePolicyBasedTrafficSelectors** ingeschakeld op de verbinding.
 
 ```powershell
 $ipsecpolicy5 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -133,10 +133,10 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>(Optioneel) BGP gebruiken op S2S VPN-verbinding
-Wanneer u de S2S VPN-verbinding maakt, u optioneel BGP gebruiken [voor de VPN-gateway.](vpn-gateway-bgp-resource-manager-ps.md) Deze aanpak kent twee verschillen:
+### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>Beschrijving BGP gebruiken in S2S VPN-verbinding
+Wanneer u de S2S-VPN-verbinding maakt, kunt u eventueel [BGP gebruiken voor de VPN-gateway](vpn-gateway-bgp-resource-manager-ps.md). Deze aanpak heeft twee verschillen:
 
-* De on-premises adresvoorvoegsels kunnen één hostadres zijn. Het on-premises IP-adres met BGP-peer wordt als volgt opgegeven:
+* De on-premises adres voorvoegsels kunnen één hostadres zijn. Het IP-adres van de on-premises BGP-peer wordt als volgt opgegeven:
 
     ```powershell
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
@@ -149,5 +149,5 @@ Wanneer u de S2S VPN-verbinding maakt, u optioneel BGP gebruiken [voor de VPN-ga
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Active-active VPN-gateways configureren voor stapsgewijze instructies](vpn-gateway-activeactive-rm-powershell.md)voor het instellen van actieve VPN-gateways.
+Zie voor stapsgewijze instructies voor het instellen van actieve VPN-gateways [Active/Active VPN-gateways configureren voor cross-premises en vnet-naar-vnet-verbindingen](vpn-gateway-activeactive-rm-powershell.md).
 

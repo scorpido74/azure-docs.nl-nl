@@ -1,6 +1,6 @@
 ---
-title: Redirect URI & antwoord URL beperkingen - Microsoft identity platform | Azure
-description: Beperkingen voor het beantwoorden van URL's/omleidingen & beperkingen
+title: Omleidings-URI-& antwoord-URL-beperkingen-micro soft Identity-platform | Azure
+description: Antwoord Url's/omleidings-Url's beperkingen & beperkingen
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
@@ -11,66 +11,66 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77656735"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Beperkingen voor omleidings-URI en antwoord-URL
 
-Een omleidingsURI of een url voor het beantwoorden is de locatie waarnaar de autorisatieserver de gebruiker stuurt zodra de app is geautoriseerd en een autorisatiecode of toegangstoken heeft gekregen. De code of token is opgenomen in de omleiding URI of antwoord token dus het is belangrijk dat u de juiste locatie te registreren als onderdeel van de app registratieproces.
+Een omleidings-URI of antwoord-URL is de locatie waarnaar de autorisatie server de gebruiker verzendt zodra de app is geautoriseerd en een autorisatie code of toegangs token heeft verleend. De code of het token bevindt zich in de omleidings-URI of het antwoord token. het is belang rijk dat u de juiste locatie registreert als onderdeel van het registratie proces van de app.
 
- De volgende beperkingen zijn van toepassing op het beantwoorden van URL's:
+ De volgende beperkingen zijn van toepassing op antwoord-Url's:
 
-    * De url van het `https`antwoord moet beginnen met de regeling .
-    * De antwoord-URL is hoofdlettergevoelig. De case moet overeenkomen met het geval van het URL-pad van uw lopende toepassing. Als uw toepassing bijvoorbeeld als onderdeel `.../abc/response-oidc`van het `.../ABC/response-oidc` pad wordt weergegeven, geeft u dit niet op in de antwoord-URL. Omdat de webbrowser paden als hoofdlettergevoelig behandelt, `.../abc/response-oidc` kunnen cookies die zijn gekoppeld aan `.../ABC/response-oidc` cookies worden uitgesloten als ze worden doorgestuurd naar de URL die niet op de plaats van de aanvraag is gekoppeld.
+    * De antwoord-URL moet beginnen met het `https`schema.
+    * De antwoord-URL is hoofdletter gevoelig. Het hoofdletter gebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad `.../abc/response-oidc`bevat, moet u niet opgeven `.../ABC/response-oidc` in de antwoord-URL. Omdat in de webbrowser paden worden beschouwd als hoofdletter gevoelig, `.../abc/response-oidc` kunnen cookies die zijn gekoppeld aan, worden uitgesloten als deze worden omgeleid naar de niet- `.../ABC/response-oidc` overeenkomende URL.
     
-## <a name="maximum-number-of-redirect-uris"></a>Maximaal aantal omleidings-URI's
+## <a name="maximum-number-of-redirect-uris"></a>Maximum aantal omleidings-Uri's
 
-In de volgende tabel ziet u het maximum aantal omleidings-URI's dat u toevoegen wanneer u uw app registreert.
+In de volgende tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevoegen wanneer u uw app registreert.
 
-| Accounts die zijn ondertekend | Maximaal aantal omleidings-URI's | Beschrijving |
+| Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Beschrijving |
 |--------------------------|---------------------------------|-------------|
-| Microsoft-werk- of schoolaccounts in de Azure Active Directory-tenant (Azure AD) van een organisatie | 256 | `signInAudience`veld in het toepassingsmanifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs* |
-| Persoonlijke Microsoft-accounts en werk- en schoolaccounts | 100 | `signInAudience`veld in het toepassingsmanifest is ingesteld op *AzureADandPersonalMicrosoftAccount* |
+| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience`het veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs* |
+| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience`het veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>Maximale URI-lengte
 
-U maximaal 256 tekens gebruiken voor elke omleidingsURI die u toevoegt aan een app-registratie.
+U kunt Maxi maal 256 tekens gebruiken voor elke omleidings-URI die u toevoegt aan een app-registratie.
 
-## <a name="supported-schemes"></a>Ondersteunde regelingen
-Het Azure AD-toepassingsmodel ondersteunt vandaag zowel HTTP- als HTTPS-schema's voor apps die zich aanmelden bij Microsoft-werk- of schoolaccounts in de Azure Active Directory -tenant (Azure AD) van een organisatie. Dat `signInAudience` is veld in het toepassingsmanifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs*. Voor de apps die zich aanmelden bij Persoonlijke Microsoft-accounts en werk- en schoolaccounts (die is `signInAudience` ingesteld op *AzureADandPersonalMicrosoftAccount)* is alleen https-schema toegestaan.
+## <a name="supported-schemes"></a>Ondersteunde schema's
+Het Azure AD-toepassings model ondersteunt nu HTTP-en HTTPS-schema's voor apps die zich aanmelden bij micro soft-werk-of school accounts in de Azure Active Directory (Azure AD)-Tenant van een organisatie. Een `signInAudience` veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs*. Voor de apps die zich aanmelden persoonlijke micro soft-accounts en werk-en school accounts `signInAudience` (die is ingesteld op *AzureADandPersonalMicrosoftAccount*), is alleen https-schema toegestaan.
 
 > [!NOTE]
-> De nieuwe ervaring [met app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) staat ontwikkelaars niet toe om URI's toe te voegen met HTTP-schema op de gebruikersinterface. Het toevoegen van HTTP-URL's voor apps die zich aanmelden voor werk- of schoolaccounts wordt alleen ondersteund via de manifesteditor van de app. In de toekomst kunnen nieuwe apps http-schema's niet gebruiken in de omleidings-URI. Oudere apps die HTTP-schema's bevatten in omleidings-URI's blijven echter werken. Ontwikkelaars moeten HTTPS-schema's gebruiken in de omleidings-URI's.
+> Met de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring kunnen ontwikkel aars geen uri's toevoegen met een HTTP-schema in de gebruikers interface. Het toevoegen van HTTP-Uri's voor apps die aanmelden op werk-of school accounts worden alleen ondersteund via de manifest editor van de app. Nieuwe apps kunnen geen HTTP-schema's gebruiken in de omleidings-URI. Oudere apps die HTTP-schema's in omleidings-Uri's bevatten, blijven echter werken. Ontwikkel aars moeten HTTPS-schema's gebruiken in de omleidings-Uri's.
 
-## <a name="restrictions-using-a-wildcard-in-uris"></a>Beperkingen met een wildcard in URI's
+## <a name="restrictions-using-a-wildcard-in-uris"></a>Beperkingen met behulp van een Joker teken in Uri's
 
-Wildcard URI's, `https://*.contoso.com`zoals , zijn handig, maar moeten worden vermeden. Het gebruik van wildcards in de omleiding URI heeft gevolgen voor de beveiliging. Volgens de OAuth 2.0 specificatie[(punt 3.1.2 van RFC 6749)](https://tools.ietf.org/html/rfc6749#section-3.1.2)moet een omleidingseindpunt URI een absolute URI zijn. 
+Joker teken-Uri's, `https://*.contoso.com`zoals, zijn handig, maar moeten worden vermeden. Het gebruik van joker tekens in de omleidings-URI heeft gevolgen voor de beveiliging. Volgens de OAuth 2,0-specificatie ([sectie 3.1.2 van RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) moet een omleidings EINDPUNT-URI een absolute URI zijn. 
 
-Het Azure AD-toepassingsmodel biedt geen ondersteuning voor urinoir-URI's voor apps die zijn geconfigureerd om persoonlijke Microsoft-accounts en werk- of schoolaccounts aan te melden. Er zijn echter wildcard-URI's toegestaan voor apps die zijn geconfigureerd om zich vandaag aan te melden bij werk- of schoolaccounts in de Azure AD-tenant van een organisatie. 
+Het Azure AD-toepassings model biedt geen ondersteuning voor joker tekens voor apps die zijn geconfigureerd om persoonlijke micro soft-accounts en werk-of school accounts te ondertekenen. Joker teken-Uri's zijn echter toegestaan voor apps die zijn geconfigureerd om werk-of school accounts te registreren in de Azure AD-Tenant van een organisatie. 
  
 > [!NOTE]
-> Met de nieuwe ervaring [met app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) kunnen ontwikkelaars geen wildcard-URI's toevoegen aan de gebruikersinterface. Het toevoegen van wilcard URI voor apps die zich aanmelden voor werk- of schoolaccounts wordt alleen ondersteund via de manifesteditor van de app. In de toekomst kunnen nieuwe apps geen wildcards gebruiken in de omleiding uri. Oudere apps die wildcards bevatten in omleidings-URI's blijven echter werken.
+> Met de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring kunnen ontwikkel aars geen joker tekens toevoegen aan de gebruikers interface. Het toevoegen van een Joker teken-URI voor apps die aanmelden op werk-of school accounts wordt alleen ondersteund via de manifest editor van de app. Door te gaan, kunnen nieuwe apps geen joker tekens gebruiken in de omleidings-URI. Oudere apps die joker tekens bevatten in omleidings-Uri's, blijven echter werken.
 
-Als voor uw scenario meer omleidings-URI's nodig zijn dan de maximaal toegestane limiet, moet u in plaats van een wildcard-omleidinguri toevoegen, rekening houden met de volgende benadering.
+Als voor uw scenario meer omleidings-Uri's zijn vereist dan de Maxi maal toegestane limiet, moet u rekening houden met de volgende benadering, in plaats van het toevoegen van een Joker teken-URI.
 
-### <a name="use-a-state-parameter"></a>Een parameter status gebruiken
+### <a name="use-a-state-parameter"></a>Een para meter State gebruiken
 
-Als u een aantal subdomeinen hebt en als u in uw scenario vereist dat u gebruikers doorverwijst naar succesvolle verificatie naar dezelfde pagina waar ze zijn begonnen, kan het nuttig zijn om een statusparameter te gebruiken. 
+Als u een aantal subdomeinen hebt, en als uw scenario vereist dat u gebruikers omleidt bij geslaagde verificatie op dezelfde pagina waar ze worden gestart, kan het handig zijn om een para meter State te gebruiken. 
 
 In deze benadering:
 
-1. Maak een 'gedeelde' omleiding uri per toepassing om de beveiligingstokens te verwerken die u ontvangt van het autorisatieeindpunt.
-1. Uw toepassing kan toepassingsspecifieke parameters (zoals een URL van het subdomein waar de gebruiker vandaan komt of iets dergelijks merkinformatie) in de parameter status verzenden. Bescherm bij het gebruik van een parameter in de toestand tegen de bescherming van CSRF zoals gespecificeerd in [punt 10.12 van RFC 6749](https://tools.ietf.org/html/rfc6749#section-10.12)). 
-1. De toepassingsspecifieke parameters bevatten alle informatie die nodig is voor de toepassing om de juiste ervaring voor de gebruiker weer te geven, dat wil zeggen de juiste toepassingsstatus te construeren. Het eindpunt van de Azure AD-autorisatie stript HTML van de parameter status, dus zorg ervoor dat u geen HTML-inhoud in deze parameter doorgeeft.
-1. Wanneer Azure AD een antwoord stuurt op de 'gedeelde' omleidinguri, wordt de parameter status teruggestuurd naar de toepassing.
-1. De toepassing kan vervolgens de waarde in de parameter status gebruiken om te bepalen naar welke URL de gebruiker verder moet worden verzonden. Zorg ervoor dat u valideert voor CSRF-bescherming.
+1. Maak een ' gedeelde ' omleidings-URI per toepassing voor het verwerken van de beveiligings tokens die u van het autorisatie-eind punt ontvangt.
+1. Uw toepassing kan toepassingsspecifieke para meters (zoals subdomein-URL waar de gebruiker afkomstig is of iets zoals huismerk gegevens) verzenden in de para meter State. Wanneer u een para meter State gebruikt, beschermt u tegen CSRF-beveiliging zoals beschreven in [sectie 10,12 van RFC 6749](https://tools.ietf.org/html/rfc6749#section-10.12)). 
+1. De toepassingsspecifieke para meters bevatten alle informatie die nodig is voor de toepassing om de juiste ervaring voor de gebruiker te genereren, dat wil zeggen, de juiste toepassings status te maken. De Azure AD-autorisatie-eind punt verwijdert HTML uit de para meter State, dus zorg ervoor dat u geen HTML-inhoud in deze para meter opgeeft.
+1. Wanneer Azure AD een reactie verzendt naar de ' gedeelde ' omleidings-URI, wordt de para meter State teruggestuurd naar de toepassing.
+1. De toepassing kan vervolgens de waarde in de para meter State gebruiken om te bepalen met welke URL de gebruiker verder moet worden verzonden. Zorg ervoor dat u valideert voor CSRF-beveiliging.
 
 > [!NOTE]
-> Met deze benadering kan een gecompromitteerde client de extra parameters wijzigen die in de parameter status worden verzonden, waardoor de gebruiker wordt omgeleid naar een andere URL, de [open redirector-bedreiging](https://tools.ietf.org/html/rfc6819#section-4.2.4) die wordt beschreven in RFC 6819. Daarom moet de client deze parameters beschermen door de status te versleutelen of deze op een andere manier te verifiëren, zoals het valideren van domeinnaam in de omleiding uri tegen het token.
+> Met deze aanpak kan een aangetaste client de aanvullende para meters wijzigen die in de para meter State worden verzonden, waardoor de gebruiker wordt omgeleid naar een andere URL. Dit is de [Open redirector-bedreiging](https://tools.ietf.org/html/rfc6819#section-4.2.4) die wordt beschreven in RFC 6819. Daarom moet de client deze para meters beveiligen door de status te versleutelen of op een andere manier te verifiëren, zoals het valideren van de domein naam in de omleidings-URI op basis van het token.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [toepassingsmanifest](reference-app-manifest.md)
+- Meer informatie over het [toepassings manifest](reference-app-manifest.md)

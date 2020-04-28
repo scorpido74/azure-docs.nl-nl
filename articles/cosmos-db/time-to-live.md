@@ -1,6 +1,6 @@
 ---
-title: Gegevens verlopen in Azure Cosmos DB met Time to Live
-description: Met TTL biedt Microsoft Azure Cosmos DB de mogelijkheid om documenten na een bepaalde periode automatisch uit het systeem te laten verwijderen.
+title: Gegevens laten verlopen in Azure Cosmos DB met Time to Live
+description: Met TTL biedt Microsoft Azure Cosmos DB de mogelijkheid om documenten na een bepaalde tijd automatisch van het systeem te verwijderen.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,82 +8,82 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77188722"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) configureren in Azure Cosmos DB 
 
-Met **Time to Live** of TTL biedt Azure Cosmos DB de mogelijkheid om items na een bepaalde periode automatisch uit een container te verwijderen. Standaard u de tijd instellen om op containerniveau te leven en de waarde per item te overschrijven. Nadat u de TTL hebt ingesteld op een container of op itemniveau, verwijdert Azure Cosmos DB deze items automatisch na de periode, sinds de tijd dat ze voor het laatst zijn gewijzigd. Time to live waarde is geconfigureerd in seconden. Wanneer u TTL configureert, verwijdert het systeem automatisch de verlopen items op basis van de TTL-waarde, zonder dat een verwijderbewerking nodig is die expliciet is uitgegeven door de clienttoepassing.
+Met **time to Live** of TTL biedt Azure Cosmos DB de mogelijkheid om automatisch items uit een container te verwijderen na een bepaalde tijds periode. Standaard kunt u time to Live instellen op container niveau en de waarde per item overschrijven. Nadat u de TTL hebt ingesteld op een container of op item niveau, worden deze items na de periode door Azure Cosmos DB automatisch verwijderd, sinds de tijd waarop ze voor het laatst zijn gewijzigd. De waarde voor time to Live wordt in seconden geconfigureerd. Wanneer u TTL configureert, worden de verlopen items automatisch door het systeem verwijderd op basis van de TTL-waarde, zonder dat er een Verwijder bewerking hoeft te worden uitgevoerd die expliciet door de client toepassing wordt verleend.
 
-Verwijdering van verlopen items is een achtergrondtaak die overgebleven [aanvraageenheden](request-units.md)verbruikt, dat wil zeggen Aanvraageenheden die niet zijn verbruikt door gebruikersverzoeken. Zelfs nadat de TTL is verlopen, als de container is overladen met aanvragen en als er niet genoeg RU's beschikbaar zijn, wordt de verwijdering van gegevens vertraagd. Gegevens worden verwijderd zodra er voldoende R's beschikbaar zijn om de verwijderingsbewerking uit te voeren. Hoewel het verwijderen van gegevens vertraagd is, worden gegevens niet geretourneerd door query's (door een API) nadat de TTL is verlopen.
+Het verwijderen van verlopen items is een achtergrond taak die gebruikmaakt van aanvragen voor links op [aanvraag](request-units.md), die aanvraag eenheden zijn die niet zijn verbruikt door gebruikers aanvragen. Zelfs nadat de TTL is verlopen, wordt de verwijdering van gegevens vertraagd als de container is overbelast met aanvragen en als er onvoldoende RU beschikbaar is. Gegevens worden verwijderd wanneer voldoende RUs beschikbaar is om de Verwijder bewerking uit te voeren. Hoewel het verwijderen van gegevens is vertraagd, worden er geen gegevens geretourneerd door query's (door een API) nadat de TTL is verlopen.
 
-## <a name="time-to-live-for-containers-and-items"></a>Tijd om te leven voor containers en items
+## <a name="time-to-live-for-containers-and-items"></a>Time to Live voor containers en items
 
-De tijd tot live waarde wordt in seconden ingesteld en wordt geïnterpreteerd als een delta vanaf het moment dat een item voor het laatst is gewijzigd. U de tijd instellen om te leven op een container of een item in de container:
+De waarde voor TTL (time to Live) wordt ingesteld in seconden en wordt geïnterpreteerd als een verschil vanaf het tijdstip waarop een item voor het laatst is gewijzigd. U kunt time to Live instellen voor een container of een item in de container:
 
-1. **Time to Live on** a `DefaultTimeToLive`container (set using):
+1. **Time to Live op een container** (ingesteld met `DefaultTimeToLive`):
 
-   - Als items ontbreken (of ingesteld op null) verlopen niet automatisch.
+   - Als de waarde ontbreekt (of is ingesteld op null), worden items niet automatisch verlopen.
 
-   - Als de huidige waarde is ingesteld op '-1', is deze gelijk aan oneindig en verlopen items niet standaard.
+   - Indien aanwezig en de waarde is ingesteld op '-1 ', is deze gelijk aan oneindig en worden items niet standaard verloopt.
 
-   - Als aanwezig en de waarde is ingesteld op een getal *"n"* - items vervallen *"n"* seconden na hun laatste gewijzigde tijd.
+   - Indien aanwezig en de waarde is ingesteld op een aantal *' n '* : items verlopen *' n '* seconden na het tijdstip waarop het voor het laatst is gewijzigd.
 
-2. **Tijd om te leven** op `ttl`een item (ingesteld met behulp van:
+2. **Time to Live voor een item** (ingesteld met `ttl`):
 
-   - Deze eigenschap is alleen `DefaultTimeToLive` van toepassing als deze aanwezig is en is niet ingesteld op null voor de bovenliggende container.
+   - Deze eigenschap is alleen van toepassing `DefaultTimeToLive` als deze aanwezig is en niet is ingesteld op null voor de bovenliggende container.
 
-   - Als dit aanwezig is, wordt de `DefaultTimeToLive` waarde van de bovenliggende container overschreven.
+   - Indien aanwezig, wordt de `DefaultTimeToLive` waarde van de bovenliggende container overschreven.
 
-## <a name="time-to-live-configurations"></a>Time to Live-configuraties
+## <a name="time-to-live-configurations"></a>Time to Live configuraties
 
-* Als TTL is ingesteld op *'n'* op een container, vervallen de artikelen in die container na *n* seconden.  Als er items in dezelfde container zijn die hun eigen tijd hebben om te leven, ingesteld op -1 (wat aangeeft dat ze niet verlopen) of als sommige items de tijd tot live-instelling met een ander getal hebben overschreven, verlopen deze items op basis van hun eigen geconfigureerde TTL-waarde. 
+* Als TTL op een container is ingesteld op *' n '* , verlopen de items in die container na *n* seconden.  Als er items in dezelfde container zijn die hun eigen tijd hebben, ingesteld op-1 (wat aangeeft dat ze niet verlopen) of als sommige items de time-to-Live-instelling hebben overschreven met een ander nummer, verlopen deze items op basis van hun eigen geconfigureerde TTL-waarde. 
 
-* Als TTL niet is ingesteld op een container, heeft de tijd om te leven op een item in deze container geen effect. 
+* Als TTL niet is ingesteld voor een container, heeft de time-to-Live voor een item in deze container geen effect. 
 
-* Als TTL op een container is ingesteld op -1, vervalt een item in deze container dat de tijd heeft om te leven ingesteld op n, na n seconden en verlopen de resterende items niet.
+* Als TTL voor een container is ingesteld op-1, verloopt een item in deze container met de time to Live ingesteld op n, vervalt na n seconden en blijven de resterende items verlopen.
 
 ## <a name="examples"></a>Voorbeelden
 
-In deze sectie worden enkele voorbeelden weergegeven met verschillende tijds- en leefwaarden die zijn toegewezen aan container en items:
+In deze sectie worden enkele voor beelden weer gegeven met verschillende time to Live-waarden die zijn toegewezen aan containers en items:
 
 ### <a name="example-1"></a>Voorbeeld 1
 
-TTL op container is ingesteld op null (DefaultTimeToLive = null)
+De TTL voor de container is ingesteld op Null (DefaultTimeToLive = null)
 
-|TTL op object| Resultaat|
+|TTL voor item| Resultaat|
 |---|---|
-|ttl = null|    TTL is uitgeschakeld. Het item vervalt nooit (standaard).|
-|ttl = -1   |TTL is uitgeschakeld. Het item vervalt nooit.|
-|ttl = 2000 |TTL is uitgeschakeld. Het item vervalt nooit.|
+|TTL = Null|    TTL is uitgeschakeld. Het item verloopt nooit (standaard).|
+|TTL =-1   |TTL is uitgeschakeld. Het item verloopt nooit.|
+|TTL = 2000 |TTL is uitgeschakeld. Het item verloopt nooit.|
 
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-TTL op container is ingesteld op -1 (DefaultTimeToLive = -1)
+TTL in container is ingesteld op-1 (DefaultTimeToLive =-1)
 
-|TTL op object| Resultaat|
+|TTL voor item| Resultaat|
 |---|---|
-|ttl = null |TTL is ingeschakeld. Het item vervalt nooit (standaard).|
-|ttl = -1   |TTL is ingeschakeld. Het item vervalt nooit.|
-|ttl = 2000 |TTL is ingeschakeld. Het artikel vervalt na 2000 seconden.|
+|TTL = Null |TTL is ingeschakeld. Het item verloopt nooit (standaard).|
+|TTL =-1   |TTL is ingeschakeld. Het item verloopt nooit.|
+|TTL = 2000 |TTL is ingeschakeld. Het item verloopt na 2000 seconden.|
 
 
 ### <a name="example-3"></a>Voorbeeld 3
 
-TTL op container is ingesteld op 1000 (DefaultTimeToLive = 1000)
+TTL in container is ingesteld op 1000 (DefaultTimeToLive = 1000)
 
-|TTL op object| Resultaat|
+|TTL voor item| Resultaat|
 |---|---|
-|ttl = null|    TTL is ingeschakeld. Het item vervalt na 1000 seconden (standaard).|
-|ttl = -1   |TTL is ingeschakeld. Het item vervalt nooit.|
-|ttl = 2000 |TTL is ingeschakeld. Het artikel vervalt na 2000 seconden.|
+|TTL = Null|    TTL is ingeschakeld. Het item verloopt na 1000 seconden (standaard).|
+|TTL =-1   |TTL is ingeschakeld. Het item verloopt nooit.|
+|TTL = 2000 |TTL is ingeschakeld. Het item verloopt na 2000 seconden.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het configureren van Time to Live in de volgende artikelen:
 
-* [Tijd configureren om te leven](how-to-time-to-live.md)
+* [Time to Live configureren](how-to-time-to-live.md)

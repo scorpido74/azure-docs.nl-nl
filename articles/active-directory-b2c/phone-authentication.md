@@ -1,7 +1,7 @@
 ---
-title: Aanmelden via de telefoon en aanmelden met aangepast beleid (Voorbeeld)
+title: Aanmelden bij de telefoon en aanmelden met aangepast beleid (preview-versie)
 titleSuffix: Azure AD B2C
-description: Stuur eenmalige wachtwoorden (OTP) in tekstberichten naar de telefoons van uw toepassingsgebruikers met aangepast beleid in Azure Active Directory B2C.
+description: Eenmalige wacht woorden (OTP) in tekst berichten verzenden naar de telefoons van uw toepassings gebruikers met aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,75 +12,75 @@ ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183955"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Aanmelden voor telefoon en aanmelden met aangepast beleid instellen in Azure AD B2C (Voorbeeld)
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Stel de telefoon registratie in en meld u aan met aangepast beleid in Azure AD B2C (preview-versie)
 
-Met aanmelding en aanmelding via azure Active Directory B2C (Azure AD B2C) kunnen uw gebruikers zich aanmelden en zich aanmelden bij uw toepassingen met behulp van een eenmalig wachtwoord (OTP) dat in een sms-bericht naar hun telefoon wordt verzonden. Eenmalige wachtwoorden kunnen helpen het risico te minimaliseren dat uw gebruikers hun wachtwoorden vergeten of in gevaar brengen.
+Met aanmelden en aanmelden in Azure Active Directory B2C (Azure AD B2C) kunnen uw gebruikers zich registreren en aanmelden bij uw toepassingen met behulp van een eenmalig wacht woord (OTP) dat in een tekst bericht naar de telefoon wordt verzonden. Eenmalige wacht woorden kunnen u helpen het risico te verkleinen dat uw gebruikers hun wacht woord verg eten of het probleem hebben aangetast.
 
-Volg de stappen in dit artikel om het aangepaste beleid te gebruiken om uw klanten in staat te stellen zich aan te melden en zich aan te melden bij uw toepassingen met behulp van een eenmalig wachtwoord dat naar hun telefoon wordt verzonden.
+Volg de stappen in dit artikel om het aangepaste beleid te gebruiken zodat uw klanten zich kunnen registreren en aanmelden bij uw toepassingen met behulp van een eenmalig wacht woord dat naar hun telefoon wordt verzonden.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="pricing"></a>Prijzen
 
-Eenmalige wachtwoorden worden naar uw gebruikers verzonden met sms-berichten en voor elk verzonden bericht worden mogelijk kosten in rekening gebracht. Zie het gedeelte Afzonderlijke kosten van [Azure Active Directory B2C-prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor prijsinformatie. **Separate Charges**
+Eenmalige wacht woorden worden naar uw gebruikers verzonden met behulp van SMS-berichten en er worden kosten in rekening gebracht voor elk bericht dat wordt verzonden. Zie de sectie **afzonderlijke kosten** van [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor prijs informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources nodig voordat u OTP instelt.
+U hebt de volgende resources nodig voordat u OTP kunt instellen.
 
-* [Azure AD B2C-tenant](tutorial-create-tenant.md)
-* [Webtoepassing geregistreerd](tutorial-register-applications.md) in uw tenant
-* [Aangepast beleid](custom-policy-get-started.md) geüpload naar uw tenant
+* [Azure AD B2C Tenant](tutorial-create-tenant.md)
+* [Webtoepassing geregistreerd](tutorial-register-applications.md) in uw Tenant
+* [Aangepast beleid](custom-policy-get-started.md) dat is geüpload naar uw Tenant
 
-## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Ontvang het aanmeldingspakket & aanmelding
+## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Het Start pakket voor aanmelding via de telefoon &
 
-Begin met het bijwerken van de aanmeldings- en aanmeldingsstandaardbestanden voor telefoon om te werken met uw Azure AD B2C-tenant.
+Begin met het bijwerken van de aangepaste beleids bestanden voor het registreren van de telefoon en het aanmelden om met uw Azure AD B2C-Tenant te werken.
 
-De volgende stappen gaan ervan uit dat u de [vereisten](#prerequisites) hebt voltooid en de [aangepaste starterpackrepository][starter-pack] voor het beleid al hebt gekloond op uw lokale machine.
+Bij de volgende stappen wordt ervan uitgegaan dat u de [vereiste onderdelen](#prerequisites) hebt voltooid en dat de [aangepaste beleids][starter-pack] opslagplaats voor het werk Archief al is gekloond op uw lokale machine.
 
-1. Zoek de [telefoon aanmeldings- en aanmeldingsbestanden][starter-pack-phone] in uw lokale kloon van het startpakket repo, of download ze rechtstreeks. De XML-beleidsbestanden bevinden zich in de volgende map:
+1. Zoek de [aangepaste beleids bestanden][starter-pack-phone] voor het registreren van de telefoon en het aanmelden in uw lokale kloon van de opslag plaats van het Start pakket, of down load deze rechtstreeks. De XML-beleids bestanden bevinden zich in de volgende map:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Vervang in elk bestand `yourtenant` de tekenreeks door de naam van uw Azure AD B2C-tenant. Als bijvoorbeeld de naam van uw B2C-tenant *contosob2c*is, worden alle gevallen van `yourtenant.onmicrosoft.com` geworden `contosob2c.onmicrosoft.com`.
+1. Vervang in elk bestand de teken reeks `yourtenant` door de naam van uw Azure AD B2C-Tenant. Als de naam van uw B2C-Tenant bijvoorbeeld *contosob2c*is, worden `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com`alle exemplaren van.
 
-1. Voer de stappen uit in de [sectie Toepassings-id's toevoegen aan de sectie Aangepast beleid](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) van Aan de slag met aangepast beleid in Azure Active Directory [B2C](custom-policy-get-started.md). Werk in dit `/phone-number-passwordless/` **`Phone_Email_Base.xml`** geval bij met de **applicatie(client) id's** van de twee applicaties die je hebt geregistreerd bij het invullen van de voorwaarden, *IdentityExperienceFramework* en *ProxyIdentityExperienceFramework.*
+1. Volg de stappen in de sectie [toepassings-Id's toevoegen aan het aangepaste beleid](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) van aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md). In dit geval moet u `/phone-number-passwordless/` **`Phone_Email_Base.xml`** bijwerken met de **toepassings-id's (client)** van de twee toepassingen die u hebt geregistreerd bij het volt ooien van de vereisten, *IdentityExperienceFramework* en *ProxyIdentityExperienceFramework*.
 
-## <a name="upload-the-policy-files"></a>De beleidsbestanden uploaden
+## <a name="upload-the-policy-files"></a>De beleids bestanden uploaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en navigeer naar uw Azure AD B2C-tenant.
-1. Selecteer **onder Beleid**het Framework Voor **identiteitservaring**.
-1. Selecteer **Aangepast beleid uploaden**.
-1. Upload de beleidsbestanden in de volgende volgorde:
-    1. *Phone_Email_Base.xml*
-    1. *SignUpOrSignInWithPhone.xml*
-    1. *SignuporSignInWithPhoneorEmail.xml*
-    1. *ProfielEditPhoneOnly.xml*
-    1. *ProfielEditPhoneEmail.xml*
-    1. *ChangePhoneNumber.xml*
-    1. *PasswordResetEmail.xml*
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw Azure AD B2C-Tenant.
+1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
+1. Selecteer **aangepast beleid uploaden**.
+1. Upload de beleids bestanden in de volgende volg orde:
+    1. *Phone_Email_Base. XML*
+    1. *SignUpOrSignInWithPhone. XML*
+    1. *SignUpOrSignInWithPhoneOrEmail. XML*
+    1. *ProfileEditPhoneOnly. XML*
+    1. *ProfileEditPhoneEmail. XML*
+    1. *ChangePhoneNumber. XML*
+    1. *PasswordResetEmail. XML*
 
-Terwijl u elk bestand uploadt, `B2C_1A_`voegt Azure het voorvoegsel toe.
+Wanneer u elk bestand uploadt, voegt Azure het `B2C_1A_`voor voegsel toe.
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
-1. Selecteer onder **Aangepast beleid** **B2C_1A_SignUpOrSignInWithPhone**.
-1. Selecteer **onder Toepassing selecteren**de *webapp1-toepassing* die u hebt geregistreerd bij het invullen van de vereisten.
-1. Kies `https://jwt.ms`voor **De antwoord-url selecteren**.
-1. Selecteer **Nu uitvoeren** en meld u aan met een e-mailadres of een telefoonnummer.
-1. Selecteer Nu opnieuw **uitvoeren** en meld u aan met hetzelfde account om te bevestigen dat u de juiste configuratie hebt.
+1. Selecteer **B2C_1A_SignUpOrSignInWithPhone**onder **aangepast beleid**.
+1. Onder **toepassing selecteren**selecteert u de *webapp1* -toepassing die u hebt geregistreerd bij het volt ooien van de vereisten.
+1. Kies `https://jwt.ms`bij **Selecteer antwoord-URL**.
+1. Selecteer **nu uitvoeren** en meld u aan met een e-mail adres of telefoon nummer.
+1. Selecteer **nu opnieuw uitvoeren** en meld u aan met hetzelfde account om te controleren of u de juiste configuratie hebt.
 
-## <a name="get-user-account-by-phone-number"></a>Gebruikersaccount ontvangen op telefoonnummer
+## <a name="get-user-account-by-phone-number"></a>Gebruikers account op telefoon nummer ophalen
 
-Een gebruiker die zich aanmeldt met een telefoonnummer, maar geen herstel-e-mailadres opgeeft, wordt opgenomen in uw Azure AD B2C-map met zijn telefoonnummer als aanmeldingsnaam. Als de gebruiker vervolgens zijn telefoonnummer wil wijzigen, moet uw helpdesk of ondersteuningsteam eerst zijn account vinden en vervolgens zijn telefoonnummer bijwerken.
+Een gebruiker die zich aanmeldt met een telefoon nummer, maar geen herstel-e-mail adres opgeeft, wordt in uw Azure AD B2C Directory opgeslagen met hun telefoon nummer als aanmeldings naam. Als de gebruiker zijn of haar telefoon nummer wil wijzigen, moet uw Help Desk of ondersteunings team eerst zijn of haar account vinden en vervolgens hun telefoon nummer bijwerken.
 
-U een gebruiker vinden op basis van zijn telefoonnummer (aanmeldingsnaam) met [Microsoft Graph:](manage-user-accounts-graph-api.md)
+U kunt een gebruiker vinden op basis van hun telefoon nummer (aanmeldings naam) door gebruik te maken van [Microsoft Graph](manage-user-accounts-graph-api.md):
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
@@ -94,14 +94,14 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U vindt het aanmeldings- en aanmeldingspakket voor het beleid (en andere startpakketten) op GitHub:
+U vindt de aanmeldings-en aanmeldings opties voor het aangepaste beleid voor de telefoon (en andere Starter Packs) op GitHub:
 
-[Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone]
+[Azure-samples/Active-Directory-B2C-Custom-Policy-starterpack/scenarios/telefoon nummer: wacht woordloos][starter-pack-phone]
 
-De beleidsbestanden van het startpakket maken gebruik van technische profielen voor meervoudige verificatie en wijzigingen in telefoonnummerclaims:
+De Starter Pack-beleids bestanden gebruiken multi-factor Authentication-technische profielen en claim transformaties voor het telefoon nummer:
 
-* [Een technisch azure multi-factor verificatieprofiel definiëren](multi-factor-auth-technical-profile.md)
-* [Wijzigingen in telefoonnummerclaims definiëren](phone-number-claims-transformations.md)
+* [Een Azure Multi-Factor Authentication Technical-profiel definiëren](multi-factor-auth-technical-profile.md)
+* [Claim transformaties voor telefoon nummers definiëren](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

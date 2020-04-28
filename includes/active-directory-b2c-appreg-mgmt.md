@@ -6,35 +6,35 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 31d4b65c6cd6a3dfe3cb779022329f338436c69b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78184340"
 ---
-Als u een toepassing wilt registreren in uw Azure AD B2C-tenant, u de huidige **ervaring met toepassingen** of onze nieuwe uniforme **app-registratie (Preview)-ervaring** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
-1. Zoek en selecteer **Azure Active Directory**in de Azure-portal.
-1. Selecteer **onder Beheren** **app-registraties (Legacy)**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Selecteer onder **beheren**de optie **app-registraties (verouderd)**.
 1. Selecteer **Nieuwe toepassing registreren**.
-1. Voer een naam in voor de toepassing. Bijvoorbeeld, *managementapp1*.
-1. Selecteer **Web-app / API**voor **toepassingstype**.
-1. Voer een geldige URL in **aanmeldings-URL**in . Bijvoorbeeld `https://localhost`. Het eindpunt hoeft niet bereikbaar te zijn, maar moet wel een geldige URL zijn.
+1. Voer een naam in voor de toepassing. Bijvoorbeeld *managementapp1*.
+1. Selecteer **Web-app/API**voor het **toepassings type**.
+1. Voer een geldige URL in voor de **aanmeldings-URL**. Bijvoorbeeld `https://localhost`. Het eind punt hoeft niet bereikbaar te zijn, maar moet een geldige URL zijn.
 1. Selecteer **Maken**.
-1. De **toepassings-id** registreren die wordt weergegeven op de **overzichtspagina geregistreerde apps.** U gebruikt deze waarde in een latere stap.
+1. Noteer de **toepassings-id** die wordt weer gegeven op de overzichts pagina van de **geregistreerde app** . U gebruikt deze waarde in een latere stap.
 
-#### <a name="app-registrations-preview"></a>[App-registraties (voorbeeld)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
-1. Zoek en selecteer **Azure AD B2C**in de Azure-portal .
-1. Selecteer **App-registraties (Voorbeeld)** en selecteer **Vervolgens Nieuwe registratie**.
-1. Voer een **naam** voor de toepassing in. Bijvoorbeeld, *managementapp1*.
-1. Selecteer **alleen Accounts in deze organisatiemap**.
-1. Schakel **onder Machtigingen**het selectievakje Toestemming voor beheerders verlenen voor *openid en offline_access machtigingen* uit.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
+1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
+1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *managementapp1*.
+1. Selecteer **alleen accounts in deze organisatie Directory**.
+1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming voor openid connect-en offline_access machtigingen* uit.
 1. Selecteer **Registreren**.
-1. Neem de **toepassings-id (client) op** die wordt weergegeven op de pagina toepassingsoverzicht. U gebruikt deze waarde in een latere stap.
+1. Noteer de **toepassings-id** van de toepassing die wordt weer gegeven op de overzichts pagina van de toepassing. U gebruikt deze waarde in een latere stap.

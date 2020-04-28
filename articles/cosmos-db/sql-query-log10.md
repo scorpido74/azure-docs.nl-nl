@@ -1,6 +1,6 @@
 ---
-title: LOG10 in Azure Cosmos DB-querytaal
-description: Meer informatie over de FUNCTIE LOG10 SQL-systeem in Azure Cosmos DB om de base-10 logaritme van de opgegeven numerieke expressie terug te sturen
+title: LOG10 in Azure Cosmos DB query taal
+description: Meer informatie over de SQL-functie LOG10 in Azure Cosmos DB om de logaritme met grondtal 10 van de opgegeven numerieke expressie te retour neren
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302488"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
- Geeft als resultaat de logaritme basis-10 van de opgegeven numerieke expressie.  
+ Retourneert de logaritme met grondtal 10 van de opgegeven numerieke expressie.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -28,23 +28,23 @@ LOG10 (<numeric_expr>)
 *numeric_expression*  
    Is een numerieke expressie.  
   
-## <a name="return-types"></a>Retourtypen
+## <a name="return-types"></a>Retour typen
   
-  Geeft als resultaat een numerieke expressie.  
+  Retourneert een numerieke expressie.  
   
 ## <a name="remarks"></a>Opmerkingen
   
-  De log10- en POWER-functies zijn omgekeerd met elkaar verbonden. Bijvoorbeeld 10 ^ LOG10(n) = n.  
+  De functies LOG10 en POWER zijn inverse gerelateerd aan elkaar. Bijvoorbeeld: 10 ^ LOG10 (n) = n.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voorbeeld wordt een variabele gedeclareerd en wordt de LOG10-waarde van de opgegeven variabele (100) geretourneerd.  
+  In het volgende voor beeld wordt een variabele gedeclareerd en wordt de waarde LOG10 van de opgegeven variabele (100) geretourneerd.  
   
 ```sql
 SELECT LOG10(100) AS log10 
 ```  
   
- Hier is het resultaat ingesteld.  
+ Dit is de resultatenset.  
   
 ```json
 [{log10: 2}]  
@@ -52,10 +52,10 @@ SELECT LOG10(100) AS log10
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeemfunctie maakt geen gebruik van de index.
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wiskundige functies Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
+- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

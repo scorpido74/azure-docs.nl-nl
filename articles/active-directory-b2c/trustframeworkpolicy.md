@@ -1,6 +1,6 @@
 ---
-title: TrustFrameworkPolicy - Azure Active Directory B2C | Microsoft Documenten
-description: Geef het element TrustFrameworkPolicy van een aangepast beleid op in Azure Active Directory B2C.
+title: TrustFrameworkPolicy-Azure Active Directory B2C | Microsoft Docs
+description: Geef het TrustFrameworkPolicy-element van een aangepast beleid in Azure Active Directory B2C op.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186383"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Een aangepast beleid wordt weergegeven als een of meer XML-opgemaakte bestanden, die naar elkaar verwijzen in een hiërarchische keten. De XML-elementen definiëren elementen van het beleid, zoals het claimschema, claimstransformaties, inhoudsdefinities, claimproviders, technische profielen, gebruikersreis en orkestratiestappen. Elk beleidsbestand wordt gedefinieerd in het element **TrustFrameworkPolicy** op het hoogste niveau van een beleidsbestand.
+Een aangepast beleid wordt weer gegeven als een of meer XML-indelings bestanden die naar elkaar in een hiërarchische keten verwijzen. Met de XML-elementen worden elementen van het beleid gedefinieerd, zoals het claim schema, claim transformaties, inhouds definities, claim providers, technische profielen, gebruikers traject en indelings stappen. Elk beleids bestand wordt gedefinieerd in het **TrustFrameworkPolicy** -element van het hoogste niveau van een beleids bestand.
 
 ```XML
 <TrustFrameworkPolicy
@@ -36,20 +36,20 @@ Een aangepast beleid wordt weergegeven als een of meer XML-opgemaakte bestanden,
 ```
 
 
-Het element **TrustFrameworkPolicy** bevat de volgende kenmerken:
+Het **TrustFrameworkPolicy** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 |---------- | -------- | ----------- |
-| PolicySchemaVersie | Ja | De schemaversie die moet worden gebruikt om het beleid uit te voeren. De waarde moet`0.3.0.0` |
-| TenantObjectId | Nee | De unieke object-id van de Azure Active Directory B2C (Azure AD B2C) tenant. |
-| TenantId | Ja | De unieke id van de tenant waartoe dit beleid behoort. |
-| PolicyId | Ja | De unieke id voor het beleid. Deze identificatieid moet vooraf zijn vastgesteld door *B2C_1A_* |
-| PublicPolicyUri | Ja | Uri voor het beleid, dat een combinatie is van de tenant-id en de beleids-ID. |
-| Implementatiemodus | Nee | Mogelijke waarden: `Production` `Development`, of . `Production` is de standaardwaarde. Gebruik deze eigenschap om uw beleid te debuggen. Zie [Logboeken verzamelen voor](troubleshoot-with-application-insights.md)meer informatie. |
-| UserJourneyRecorderEndpoint | Nee | Het eindpunt dat wordt gebruikt wanneer `Development` **DeploymentMode** is ingesteld op . De waarde `urn:journeyrecorder:applicationinsights`moet . Zie [Logboeken verzamelen voor](troubleshoot-with-application-insights.md)meer informatie. |
+| PolicySchemaVersion | Ja | De schema versie die moet worden gebruikt om het beleid uit te voeren. De waarde moet`0.3.0.0` |
+| TenantObjectId | Nee | De unieke object-id van de Azure Active Directory B2C (Azure AD B2C)-Tenant. |
+| TenantId | Ja | De unieke id van de Tenant waartoe dit beleid behoort. |
+| PolicyId | Ja | De unieke id voor het beleid. Deze id moet worden voorafgegaan door *B2C_1A_* |
+| PublicPolicyUri | Ja | De URI voor het beleid, dat een combi natie is van de Tenant-ID en de beleids-ID. |
+| Als Deployment mode | Nee | Mogelijke waarden: `Production`, of `Development`. `Production` is de standaardwaarde. Gebruik deze eigenschap om fouten in uw beleid op te sporen. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
+| UserJourneyRecorderEndpoint | Nee | Het eind punt dat wordt gebruikt wanneer **als Deployment mode** is ingesteld `Development`op. De waarde moet zijn `urn:journeyrecorder:applicationinsights`. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
 
 
-In het volgende voorbeeld ziet u hoe u het element **TrustFrameworkPolicy** opgeeft:
+In het volgende voor beeld ziet u hoe u het **TrustFrameworkPolicy** -element opgeeft:
 
 ``` XML
 <TrustFrameworkPolicy
@@ -62,39 +62,39 @@ In het volgende voorbeeld ziet u hoe u het element **TrustFrameworkPolicy** opge
    PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-## <a name="inheritance-model"></a>Overervingsmodel
+## <a name="inheritance-model"></a>Overname model
 
-Deze typen beleidsbestanden worden meestal gebruikt in een gebruikersreis:
+Deze typen beleids bestanden worden doorgaans gebruikt in een gebruikers traject:
 
-- Een **basisbestand** dat de meeste definities bevat. Om u te helpen bij het oplossen van problemen en het langdurig onderhouden van uw beleid, wordt aanbevolen om een minimum aantal wijzigingen aan te brengen in dit bestand.
-- Een **extensiesbestand** met de unieke configuratiewijzigingen voor uw tenant. Dit beleidsbestand is afgeleid van het bestand Base. Gebruik dit bestand om nieuwe functionaliteit toe te voegen of bestaande functionaliteit te overschrijven. Gebruik dit bestand bijvoorbeeld om te reageren op nieuwe identiteitsproviders.
-- Een **RP-bestand (Relying Party)** dat het afzonderlijke taakgerichte bestand is dat rechtstreeks wordt aangeroepen door de toepassing van de relying party, zoals uw web-, mobiele of desktoptoepassingen. Elke unieke taak, zoals aanmelden of aanmelden, wachtwoordopnieuw instellen of profielbewerken, vereist een eigen RP-beleidsbestand. Dit beleidsbestand is afgeleid van het bestand Extensies.
+- Een **basis** bestand dat de meeste definities bevat. Als u hulp nodig hebt bij het oplossen van problemen en het onderhoud op lange termijn van uw beleid, kunt u het beste een minimum aantal wijzigingen aanbrengen in dit bestand.
+- Een **extensie** bestand dat de unieke configuratie wijzigingen voor uw Tenant bevat. Dit beleids bestand is afgeleid van het basis bestand. Gebruik dit bestand om nieuwe functionaliteit toe te voegen of bestaande functionaliteit te overschrijven. Gebruik dit bestand bijvoorbeeld om met nieuwe id-providers te communiceren.
+- Een **RP-bestand (Relying Party)** dat het bestand met de taak focus is dat rechtstreeks wordt aangeroepen door de Relying Party toepassing, zoals uw web-, mobiele of bureaublad toepassingen. Voor elke unieke taak, zoals aanmelden of aanmelden, wacht woord opnieuw instellen of profiel bewerken, is een eigen RP-beleids bestand vereist. Dit beleids bestand is afgeleid van het extensies-bestand.
 
-Een relying party-toepassing roept het RP-beleidsbestand aan om een specifieke taak uit te voeren. Bijvoorbeeld om de aanmeldingsstroom te starten. Het Identity Experience Framework in Azure AD B2C voegt alle elementen toe uit het basisbestand en vervolgens vanuit het bestand Extensies en ten slotte vanuit het RP-beleidsbestand om het huidige beleid te assembleren. Elementen van hetzelfde type en dezelfde naam in het RP-bestand overschrijven deze elementen in de extensies en Extensies overschrijven Base. In het volgende diagram ziet u de relatie tussen de beleidsbestanden en de toepassingen van de relying party.
+Een Relying Party toepassing roept het RP-beleids bestand aan om een specifieke taak uit te voeren. Bijvoorbeeld om de aanmeldings stroom te initiëren. In het Framework voor identiteits ervaring in Azure AD B2C worden alle elementen eerst van het basis bestand en vervolgens uit het bestand extensies en ten slotte vanuit het bestand met de RP-beleids regel toegevoegd om het huidige beleid in werking te stellen. Elementen van hetzelfde type en dezelfde naam in het RP-bestand overschrijven die elementen in de uitbrei dingen en de basis van uitbrei dingen voor extensies. In het volgende diagram ziet u de relatie tussen de beleids bestanden en de Relying Party toepassingen.
 
-![Diagram met het overervingsmodel voor het vertrouwenskaderbeleid](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
+![Diagram van het overname model voor het vertrouwens raamwerk beleid](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
 
-Het overervingsmodel ziet er als volgt uit:
+Het overname model is als volgt:
 
-- Het bovenliggende beleid en het onderliggende beleid hebben hetzelfde schema.
-- Het onderliggende beleid op elk niveau kan overerven van het bovenliggende beleid en uitbreiden door nieuwe elementen toe te voegen.
-- Er is geen limiet op het aantal niveaus.
+- Het bovenliggende beleid en het onderliggende beleid zijn van hetzelfde schema.
+- Het onderliggende beleid op elk niveau kan overnemen van het bovenliggende beleid en het uitbreiden door nieuwe elementen toe te voegen.
+- Er is geen limiet voor het aantal niveaus.
 
-Zie [Aan de slag met aangepast beleid](custom-policy-get-started.md)voor meer informatie .
+Zie [aan de slag met aangepaste beleids regels](custom-policy-get-started.md)voor meer informatie.
 
-## <a name="base-policy"></a>Basisbeleid
+## <a name="base-policy"></a>Basis beleid
 
-Als u een beleid wilt overnemen van een ander beleid, moet een element **BasePolicy** worden gedeclareerd onder het element **TrustFrameworkPolicy** van het beleidsbestand. Het element **BasePolicy** is een verwijzing naar het basisbeleid waaruit dit beleid is afgeleid.
+Als u een beleid van een ander beleid wilt overnemen, moet u een **BasePolicy** -element declareren onder het element **TrustFrameworkPolicy** van het beleids bestand. Het element **BasePolicy** is een verwijzing naar het basis beleid van waaruit dit beleid is afgeleid.
 
-Het element **Basisbeleid** bevat de volgende elementen:
+Het **BasePolicy** -element bevat de volgende elementen:
 
-| Element | Voorvallen | Beschrijving |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | --------|
-| TenantId | 1:1 | De id van uw Azure AD B2C-tenant. |
+| TenantId | 1:1 | De id van uw Azure AD B2C-Tenant. |
 | PolicyId | 1:1 | De id van het bovenliggende beleid. |
 
 
-In het volgende voorbeeld ziet u hoe u een basisbeleid opgeeft. Dit **B2C_1A_TrustFrameworkExtensions** beleid is afgeleid van het **B2C_1A_TrustFrameworkBase** beleid.
+In het volgende voor beeld ziet u hoe u een basis beleid opgeeft. Dit **B2C_1A_TrustFrameworkExtensions** beleid wordt afgeleid van het **B2C_1A_TrustFrameworkBase** -beleid.
 
 ``` XML
 <TrustFrameworkPolicy
@@ -114,11 +114,11 @@ In het volgende voorbeeld ziet u hoe u een basisbeleid opgeeft. Dit **B2C_1A_Tru
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>Beleidsuitvoering
+## <a name="policy-execution"></a>Uitvoering van beleid
 
-Een toepassing van relying party, zoals een web-, mobiele of desktoptoepassing, noemt het beleid van de [relying party (RP).](relyingparty.md) In het RP-beleidsbestand wordt een specifieke taak uitgevoerd, zoals aanmelden, het opnieuw instellen van een wachtwoord of het bewerken van een profiel. Het RP-beleid configureert de lijst met claims die de toepassing van de relying party ontvangt als onderdeel van het token dat wordt uitgegeven. Meerdere toepassingen kunnen hetzelfde beleid gebruiken. Alle toepassingen ontvangen hetzelfde token met claims, en de gebruiker gaat door dezelfde gebruikersreis. Eén toepassing kan meerdere beleidsregels gebruiken.
+Een Relying Party toepassing, zoals een web-, mobiele of bureaublad toepassing, roept het [beleid voor Relying Party (RP)](relyingparty.md)aan. Het RP-beleids bestand voert een specifieke taak uit, zoals het aanmelden, het opnieuw instellen van een wacht woord of het bewerken van een profiel. Met het RP-beleid wordt de lijst met claims geconfigureerd die de Relying Party toepassing ontvangt als onderdeel van het token dat wordt uitgegeven. Meerdere toepassingen kunnen hetzelfde beleid gebruiken. Alle toepassingen ontvangen hetzelfde token met claims en de gebruiker verloopt over hetzelfde traject van de gebruiker. Eén toepassing kan meerdere beleids regels gebruiken.
 
-In het RP-beleidsbestand geeft u het element **DefaultUserJourney** op, dat naar de [UserJourney](userjourneys.md)verwijst. De gebruikersreis wordt meestal gedefinieerd in het beleid Basis of Extensies.
+In het RP-beleids bestand geeft u het element **DefaultUserJourney** op dat verwijst naar de [UserJourney](userjourneys.md). De gebruikers traject wordt meestal gedefinieerd in het basis-of uitbrei ding beleid.
 
 B2C_1A_signup_signin beleid:
 
@@ -136,23 +136,23 @@ B2C_1A_TrustFrameWorkBase of B2C_1A_TrustFrameworkExtensionPolicy:
   ...
 ```
 
-Een gebruikersreis definieert de bedrijfslogica van wat een gebruiker doormaakt. Elke gebruikersreis is een reeks orkestratiestappen die een reeks acties uitvoert, in volgorde op het gebied van verificatie en het verzamelen van informatie.
+Een gebruikers traject definieert de bedrijfs logica van wat een gebruiker doorloopt. Elke gebruikers traject is een set Orchestration-stappen die een reeks acties uitvoert, in volg orde van de verificatie-en informatie verzameling.
 
-Het beleidsbestand **SocialAndLocalAccounts** in het [startpakket](custom-policy-get-started.md#custom-policy-starter-pack) bevat de gebruikersreizen SignUpOrSignIn, ProfileEdit, PasswordReset. U meer gebruikersreizen toevoegen voor andere scenario's, zoals het wijzigen van een e-mailadres of het koppelen en ontkoppelen van een sociaal account.
+Het **SocialAndLocalAccounts** -beleids bestand in het [Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack) bevat de SignUpOrSignIn-, ProfileEdit-, PasswordReset-gebruikers ritten. U kunt meer gebruikers ritten toevoegen voor andere scenario's, zoals het wijzigen van een e-mail adres of het koppelen en ontkoppelen van een sociaal account.
 
-De orkestratiestappen kunnen een [technisch profiel](technicalprofiles.md)aanroepen. Een technisch profiel biedt een kader met een ingebouwd mechanisme om te communiceren met verschillende soorten partijen. Een technisch profiel kan bijvoorbeeld deze acties uitvoeren:
+De Orchestration-stappen kunnen een [technisch profiel](technicalprofiles.md)aanroepen. Een technisch profiel biedt een Framework met een ingebouwd mechanisme om te communiceren met verschillende soorten partijen. Een technisch profiel kan bijvoorbeeld onder andere de volgende acties uitvoeren:
 
-- Een gebruikerservaring weergeven.
-- Gebruikers toestaan zich aan te melden met een sociaal of een bedrijfsaccount, zoals Facebook, Microsoft-account, Google, Salesforce of een andere identiteitsprovider.
-- Telefoonverificatie instellen voor MFA.
-- Gegevens lezen en schrijven van en naar een Azure AD B2C-identiteitsarchief.
-- Bel een aangepaste Rustgevende API-service.
+- Een gebruikers ervaring weer geven.
+- Gebruikers toestaan zich aan te melden met sociale of een Enter prise-account, zoals Facebook, Microsoft-account, Google, Sales Force of een andere ID-provider.
+- Telefoon verificatie voor MFA instellen.
+- Gegevens lezen en schrijven van een Azure AD B2C-identiteits opslag.
+- Een aangepaste rest API-service aanroepen.
 
-![Diagram met de uitvoeringsstroom van het beleid](./media/trustframeworkpolicy/custom-policy-execution.png)
+![Diagram waarin de stroom voor het uitvoeren van beleid wordt weer gegeven](./media/trustframeworkpolicy/custom-policy-execution.png)
 
- Het element **TrustFrameworkPolicy** bevat de volgende elementen:
+ Het **TrustFrameworkPolicy** -element bevat de volgende elementen:
 
-- Basisbeleid zoals hierboven aangegeven
+- BasePolicy zoals hierboven is beschreven
 - [BuildingBlocks](buildingblocks.md)
 - [ClaimsProviders](claimsproviders.md)
 - [UserJourneys](userjourneys.md)

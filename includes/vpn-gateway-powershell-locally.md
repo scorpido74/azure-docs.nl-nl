@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8d5c54dbc3d207ac0c16121b2c0368d052b10cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77660472"
 ---
-U de Azure PowerShell-cmdlets ook lokaal op uw computer installeren en uitvoeren. PowerShell-cmdlets worden regelmatig bijgewerkt. Als u de nieuwste versie niet hebt geïnstalleerd, kunnen de waarden die in de instructies zijn opgegeven, mislukken. Als u de versies van Azure PowerShell `Get-Module -ListAvailable Az` wilt vinden die op uw computer zijn geïnstalleerd, gebruikt u de cmdlet. Zie De Azure [PowerShell-module installeren](/powershell/azure/install-az-ps)als u de Azure PowerShell-module wilt installeren.
+U kunt ook de Azure PowerShell-cmdlets lokaal op uw computer installeren en uitvoeren. Power shell-cmdlets worden regel matig bijgewerkt. Als u niet de nieuwste versie hebt geïnstalleerd, kunnen de in de instructies opgegeven waarden mislukken. Gebruik de `Get-Module -ListAvailable Az` cmdlet om de versies van Azure PowerShell te vinden die op uw computer zijn geïnstalleerd. Zie [de module Azure PowerShell installeren](/powershell/azure/install-az-ps)om te installeren of bij te werken.

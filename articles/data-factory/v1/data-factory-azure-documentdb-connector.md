@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen naar/van Azure Cosmos DB
-description: Meer informatie over het verplaatsen van gegevens van/naar Azure Cosmos DB-verzameling met Azure Data Factory
+title: Gegevens verplaatsen van/naar Azure Cosmos DB
+description: Meer informatie over het verplaatsen van gegevens naar of van Azure Cosmos DB verzameling met behulp van Azure Data Factory
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
@@ -13,53 +13,53 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260512"
 ---
-# <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Gegevens verplaatsen van en naar Azure Cosmos DB met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Gegevens verplaatsen van en naar Azure Cosmos DB met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](data-factory-azure-documentdb-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Azure Cosmos DB-connector in V2](../connector-azure-cosmos-db.md)als u de huidige versie van de datafabriekservice gebruikt.
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure Cosmos DB-connector in v2](../connector-azure-cosmos-db.md).
 
-In dit artikel wordt uitgelegd hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens naar/van Azure Cosmos DB (SQL API) te verplaatsen. Het bouwt voort op het artikel [Data Movement Activities,](data-factory-data-movement-activities.md) dat een algemeen overzicht geeft van gegevensverplaatsing met de kopieeractiviteit.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te verplaatsen van/naar Azure Cosmos DB (SQL-API). Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
-U gegevens uit elk ondersteund brongegevensarchief kopiëren naar Azure Cosmos DB of van Azure Cosmos DB naar een ondersteund sink datastore. Zie de tabel [Ondersteunde gegevensopslag](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bronnen of sinks door de kopieeractiviteit.
+U kunt gegevens van elk ondersteund bron gegevens archief kopiëren naar Azure Cosmos DB of van Azure Cosmos DB naar een ondersteunde Sink-gegevens opslag. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit.
 
 > [!IMPORTANT]
-> Azure Cosmos DB-connector ondersteunt alleen de SQL API.
+> Azure Cosmos DB connector ondersteunt alleen de SQL-API.
 
-Zie [JSON-documenten importeren/exporteren](#importexport-json-documents)als u gegevens wilt kopiëren naar/naar JSON-bestanden of een andere Cosmos DB-verzameling.
+Zie [JSON-documenten importeren/exporteren](#importexport-json-documents)als u gegevens wilt kopiëren naar/van json-bestanden of een andere Cosmos DB verzameling.
 
 ## <a name="getting-started"></a>Aan de slag
-U een pijplijn maken met een kopieeractiviteit die gegevens van/naar Azure Cosmos DB verplaatst met behulp van verschillende hulpprogramma's/API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van/naar Azure Cosmos DB met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
-Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
-1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
-2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven.
-3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt.
+1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
+2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
+3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
 
-Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling. Zie [JSON-voorbeelden](#json-examples) sectie van dit artikel voor voorbeelden van JSON-instellingen voor entiteiten in Gegevensfabriek die worden gebruikt om gegevens naar/van Cosmos DB te kopiëren.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie de sectie [JSON-voor beelden](#json-examples) in dit artikel voor steek proeven met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens naar/van Cosmos db.
 
-In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor Cosmos DB:
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Cosmos DB:
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
-In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek zijn voor de gekoppelde service azure cosmos DB.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor Azure Cosmos DB gekoppelde service.
 
 | **Eigenschap** | **Beschrijving** | **Vereist** |
 | --- | --- | --- |
-| type |De eigenschap type moet zijn ingesteld op: **DocumentDb** |Ja |
-| Connectionstring |Geef informatie op die nodig is om verbinding te maken met de Azure Cosmos DB-database. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **DocumentDb** |Ja |
+| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Cosmos DB Data Base. |Ja |
 
 Voorbeeld:
 
@@ -76,13 +76,13 @@ Voorbeeld:
 ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Raadpleeg het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een jsonsetgegevenszijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, enz.).
+Raadpleeg het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties als structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
-De sectie typeEigenschappen is verschillend voor elk type gegevensset en geeft informatie over de locatie van de gegevens in het gegevensarchief. De sectie typeEigenschappen voor de gegevensset van het type **DocumentDbCollection** heeft de volgende eigenschappen.
+De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **DocumentDbCollection** heeft de volgende eigenschappen.
 
 | **Eigenschap** | **Beschrijving** | **Vereist** |
 | --- | --- | --- |
-| collectionNaam |Naam van de Cosmos DB-documentverzameling. |Ja |
+| collectionName |De naam van de verzameling Cosmos DB documenten. |Ja |
 
 Voorbeeld:
 
@@ -103,63 +103,63 @@ Voorbeeld:
   }
 }
 ```
-### <a name="schema-by-data-factory"></a>Schema op gegevensfabriek
-Voor gegevensarchieven zonder schema, zoals Azure Cosmos DB, leidt de service Data Factory het schema op een van de volgende manieren af:
+### <a name="schema-by-data-factory"></a>Schema door Data Factory
+Voor gegevens archieven zonder schema, zoals Azure Cosmos DB, leidt de Data Factory-service het schema op een van de volgende manieren af:
 
-1. Als u de structuur van gegevens opgeeft met behulp van de **eigenschap structuur** in de gegevenssetdefinitie, eert de service Gegevensfabriek deze structuur als het schema. In dit geval wordt een null-waarde opgegeven als een rij geen waarde voor een kolom bevat.
-2. Als u de structuur van gegevens niet opgeeft met behulp van de **eigenschap structuur** in de gegevenssetdefinitie, leidt de service Gegevensfabriek het schema af met behulp van de eerste rij in de gegevens. Als de eerste rij in dit geval niet het volledige schema bevat, ontbreken in het resultaat van de kopieerbewerking enkele kolommen.
+1. Als u de structuur van gegevens opgeeft met behulp van de eigenschap **structure** in de definitie van de gegevensset, wordt deze structuur door de Data Factory-service als schema geaccepteerd. Als in dit geval een rij geen waarde voor een kolom bevat, wordt er een null-waarde voor gegeven.
+2. Als u de structuur van gegevens niet opgeeft met behulp van de eigenschap **structure** in de definitie van de gegevensset, wordt het schema door de Data Factory-service door de eerste rij in de gegevens afgeleid. Als in dit geval de eerste rij niet het volledige schema bevat, ontbreken sommige kolommen in het resultaat van de Kopieer bewerking.
 
-Daarom is het voor schemavrije gegevensbronnen de beste praktijk om de structuur van gegevens op te geven met behulp van de **eigenschap structuur.**
+Daarom is het best practice voor gegevens bronnen met een schema om de structuur van de gegevens op te geven met behulp van de eigenschap **structure** .
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Raadpleeg het artikel [Pijplijnmaken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleid zijn beschikbaar voor alle soorten activiteiten.
+Raadpleeg het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
 > [!NOTE]
-> De kopieeractiviteit neemt slechts één invoer en produceert slechts één uitvoer.
+> De Kopieer activiteit heeft slechts één invoer en produceert slechts één uitvoer.
 
-Eigenschappen die beschikbaar zijn in de sectie typeEigenschappen van de activiteit daarentegen variëren per activiteitstype en in het geval van kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
+De eigenschappen die beschikbaar zijn in het gedeelte typeProperties van de activiteit, verschillen per type activiteit en in het geval van een Kopieer activiteit, afhankelijk van de typen bronnen en Sinks.
 
-In het geval van kopieeractiviteit wanneer de bron van het type **DocumentDbCollectionSource is,** zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties:**
+In het geval van een Kopieer activiteit wanneer de bron van het type **DocumentDbCollectionSource** de volgende eigenschappen zijn beschikbaar in de sectie **typeProperties** :
 
 | **Eigenschap** | **Beschrijving** | **Toegestane waarden** | **Vereist** |
 | --- | --- | --- | --- |
-| query |Geef de query op om gegevens te lezen. |Querytekenreeks die wordt ondersteund door Azure Cosmos DB. <br/><br/>Voorbeeld: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nee <br/><br/>Als deze niet is opgegeven, wordt de SQL-instructie uitgevoerd:`select <columns defined in structure> from mycollection` |
-| nestingSeparator |Speciaal teken om aan te geven dat het document is genest |Elk karakter. <br/><br/>Azure Cosmos DB is een NoSQL-archief voor JSON-documenten, waar geneste structuren zijn toegestaan. Azure Data Factory stelt de gebruiker in staat om hiërarchie aan te duiden via nestingSeparator, wat '' is. in de bovenstaande voorbeelden. Met de scheidingsteken genereert de kopieeractiviteit het object "Naam" met drie onderliggende elementen Eerste, Midden en Laatste, volgens 'Name.First', 'Name.Middle' en 'Name.Last' in de tabeldefinitie. |Nee |
+| query |Geef de query op om gegevens te lezen. |De query teken reeks die wordt ondersteund door Azure Cosmos DB. <br/><br/>Voorbeeld: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nee <br/><br/>Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd:`select <columns defined in structure> from mycollection` |
+| nestingSeparator |Speciaal teken om aan te geven dat het document is genest |Wille keurig teken. <br/><br/>Azure Cosmos DB is een NoSQL-Archief voor JSON-documenten, waarbij geneste structuren zijn toegestaan. Azure Data Factory stelt de gebruiker in staat om de hiërarchie aan te duiden via nestingSeparator, dat wil zeggen. in de bovenstaande voor beelden. Met het scheidings teken genereert de Kopieer activiteit het object ' name ' met drie onderliggende elementen eerst, middelste en laatste, volgens ' naam. First ', ' naam. midden ' en ' naam. last ' in de tabel definitie. |Nee |
 
 **DocumentDbCollectionSink** ondersteunt de volgende eigenschappen:
 
 | **Eigenschap** | **Beschrijving** | **Toegestane waarden** | **Vereist** |
 | --- | --- | --- | --- |
-| nestingSeparator |Een speciaal teken in de naam van de bronkolom om aan te geven dat genest document nodig is. <br/><br/>Bijvoorbeeld hierboven: `Name.First` in de uitvoertabel produceert de volgende JSON-structuur in het Cosmos DB-document:<br/><br/>"Naam": {<br/>    "Ten eerste": "John"<br/>}, |Teken dat wordt gebruikt voor het scheiden van geneste niveaus.<br/><br/>Standaardwaarde `.` is (stip). |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. <br/><br/>Standaardwaarde `.` is (stip). |
-| writeBatchSize |Aantal parallelle aanvragen voor Azure Cosmos DB-service om documenten te maken.<br/><br/>U de prestaties verfijnen bij het kopiëren van gegevens naar/van Cosmos DB met behulp van deze eigenschap. U betere prestaties verwachten wanneer u writeBatchSize verhoogt omdat er meer parallelle aanvragen naar Cosmos DB worden verzonden. U moet echter voorkomen dat throttling die de foutmelding kan gooien: "Verzoeksnelheid is groot".<br/><br/>Beperking wordt bepaald door een aantal factoren, waaronder de grootte van documenten, het aantal termen in documenten, indexeringsbeleid van doelverzameling, enz. Voor kopieerbewerkingen u een betere verzameling (bijvoorbeeld S3) gebruiken om de meeste doorvoer beschikbaar te hebben (2.500 aanvraageenheden per seconde). |Geheel getal |Nee (standaard: 5) |
-| writeBatchTimeout |Wacht de tijd voordat de bewerking is voltooid voordat deze een time-out heeft. |Tijdspanne<br/><br/> Voorbeeld: "00:30:00" (30 minuten). |Nee |
+| nestingSeparator |Een speciaal teken in de naam van de bron kolom om aan te geven dat genest document nodig is. <br/><br/>Voor beeld: `Name.First` in de uitvoer tabel levert de volgende JSON-structuur in het Cosmos DB document:<br/><br/>"Naam": {<br/>    "Eerste": "John"<br/>}, |Teken dat wordt gebruikt voor het scheiden van geneste niveaus.<br/><br/>De standaard waarde `.` is (dot). |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. <br/><br/>De standaard waarde `.` is (dot). |
+| writeBatchSize |Aantal parallelle aanvragen voor het Azure Cosmos DB-service om documenten te maken.<br/><br/>U kunt de prestaties afstemmen bij het kopiëren van gegevens naar/van Cosmos DB met behulp van deze eigenschap. U kunt een betere prestaties verwachten wanneer u writeBatchSize verhoogt, omdat er meer parallelle aanvragen naar Cosmos DB worden verzonden. U moet er echter voor zorgen dat het fout bericht niet kan worden vertraagd: ' de aanvraag snelheid is groot '.<br/><br/>Beperking wordt bepaald door een aantal factoren, zoals de grootte van documenten, het aantal voor waarden in documenten, het indexerings beleid van de doel verzameling, enzovoort. Voor kopieer bewerkingen kunt u een betere verzameling (bijvoorbeeld S3) gebruiken om de meeste door Voer beschikbaar te hebben (2.500 aanvraag eenheden per seconde). |Geheel getal |Nee (standaard: 5) |
+| writeBatchTimeout |Wacht tijd voordat de bewerking is voltooid voordat er een time-out optreedt. |tijdsbestek<br/><br/> Voor beeld: "00:30:00" (30 minuten). |Nee |
 
-## <a name="importexport-json-documents"></a>Json-documenten importeren/exporteren
-Met deze Cosmos DB-connector u
+## <a name="importexport-json-documents"></a>JSON-documenten importeren/exporteren
+Met deze Cosmos DB-connector kunt u eenvoudig
 
-* Json-documenten uit verschillende bronnen importeren in Cosmos DB, waaronder Azure Blob, Azure Data Lake, on-premises bestandssysteem of andere bestanden die worden ondersteund door Azure Data Factory.
-* Exporteer JSON-documenten uit Cosmos DB-verzameling naar verschillende bestandenwinkels.
-* Migreer gegevens tussen twee Cosmos DB-verzamelingen as-is.
+* Importeer JSON-documenten uit verschillende bronnen in Cosmos DB, waaronder Azure Blob, Azure Data Lake, on-premises bestands systeem of andere op bestanden gebaseerde archieven die door Azure Data Factory worden ondersteund.
+* JSON-documenten uit Cosmos DB verzameling exporteren naar verschillende archieven op basis van bestanden.
+* Migreer gegevens tussen twee Cosmos DB verzamelingen.
 
-Om een dergelijke schema-agnostische kopie te bereiken,
-* Wanneer u de wizard Kopiëren gebruikt, schakelt u de optie **'Exporteren naar JSON-bestanden of Cosmos DB-verzameling'** in.
-* Geef bij het gebruik van JSON-bewerking de sectie "structuur" niet op in de gegevensset (s) van Cosmos DB of 'nestingSeparator' op cosmos DB bron/sink in kopieeractiviteit. Als u wilt importeren van/exporteren naar JSON-bestanden, geeft u in de bestandsarchiefsetgegevens het indelingstype op als 'JsonFormat', config "filePattern" en slaat u de instellingen voor de rustindeling over, zie sectie [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format) over details.
+Om een dergelijke schema-neutraal kopie te krijgen,
+* Wanneer u de wizard kopiëren gebruikt, schakelt u de optie **' exporteren naar json-bestanden of Cosmos DB verzameling ' in** .
+* Wanneer u JSON Editing wilt gebruiken, geeft u de sectie ' Structure ' niet op in Cosmos DB gegevensset (s) of de eigenschap ' nestingSeparator ' op Cosmos DB bron/sink in Kopieer activiteit. Als u wilt importeren uit/exporteren naar JSON-bestanden, geeft u in de bestands archief-gegevensset notatie op als ' JsonFormat ', config ' filePattern ' en slaat u de instellingen voor de rest-indeling op. Zie de sectie [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format) voor meer informatie.
 
-## <a name="json-examples"></a>VOORBEELDEN VAN JSON
-In de volgende voorbeelden worden voorbeeld-JSON-definities gegeven die u gebruiken om een pijplijn te maken met [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md) Ze laten zien hoe u gegevens van en naar Azure Cosmos DB en Azure Blob Storage kopieert. Gegevens kunnen echter **rechtstreeks** worden gekopieerd van een van de bronnen naar een van de putten die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) zijn vermeld met behulp van de kopieeractiviteit in Azure Data Factory.
+## <a name="json-examples"></a>JSON-voor beelden
+De volgende voor beelden bieden voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kunt kopiëren van en naar Azure Cosmos DB en Azure Blob Storage. Gegevens kunnen echter **rechtstreeks** vanuit een van de bronnen naar een van de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aangegeven sinks worden gekopieerd met behulp van de Kopieer activiteit in azure Data Factory.
 
-## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>Voorbeeld: Gegevens van Azure Cosmos DB kopiëren naar Azure Blob
-Het onderstaande voorbeeld toont:
+## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>Voor beeld: gegevens kopiëren van Azure Cosmos DB naar Azure Blob
+In het onderstaande voor beeld ziet u:
 
 1. Een gekoppelde service van het type [DocumentDb](#linked-service-properties).
-2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een [invoergegevensset](data-factory-create-datasets.md) van het type [DocumentDbCollection](#dataset-properties).
-4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [DocumentDbCollectionSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
+2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [DocumentDbCollection](#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [DocumentDbCollectionSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld kopieert gegevens in Azure Cosmos DB naar Azure Blob. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
+In het voor beeld worden gegevens in Azure Cosmos DB naar Azure Blob gekopieerd. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**Gekoppelde Azure Cosmos DB-service:**
+**Azure Cosmos DB gekoppelde service:**
 
 ```JSON
 {
@@ -172,7 +172,7 @@ Het voorbeeld kopieert gegevens in Azure Cosmos DB naar Azure Blob. De JSON-eige
   }
 }
 ```
-**Gekoppelde Azure Blob-opslagservice:**
+**Gekoppelde Azure Blob Storage-service:**
 
 ```JSON
 {
@@ -185,11 +185,11 @@ Het voorbeeld kopieert gegevens in Azure Cosmos DB naar Azure Blob. De JSON-eige
   }
 }
 ```
-**Gegevensset Azure Document DB-invoer:**
+**Invoer gegevensset van Azure document DB:**
 
-In het voorbeeld wordt ervan uitgegaan dat u een verzameling met de naam **Persoon** in een Azure Cosmos DB-database hebt.
+In het voor beeld wordt ervan uitgegaan dat u een verzameling met de naam **persoon** in een Azure Cosmos DB-Data Base hebt.
 
-'Extern': 'true': 'true' instellen en externegegevens opgevenGegevens van de Azure Data Factory-service dat de tabel zich buiten de gegevensfabriek bevindt en niet is geproduceerd door een activiteit in de gegevensfabriek.
+Externe instelling: "True" en externalData-beleid opgeven de Azure Data Factory-service dat de tabel zich buiten het data factory bevindt en niet door een activiteit in de data factory wordt gemaakt.
 
 ```JSON
 {
@@ -209,9 +209,9 @@ In het voorbeeld wordt ervan uitgegaan dat u een verzameling met de naam **Perso
 }
 ```
 
-**Azure Blob-uitvoergegevensset:**
+**Azure Blob-uitvoer gegevensset:**
 
-Gegevens worden elk uur naar een nieuwe blob gekopieerd met het pad voor de blob dat de specifieke datumtijd met uurgranulariteit weergeeft.
+Gegevens worden elk uur naar een nieuwe BLOB gekopieerd met het pad voor de blob die de specifieke datum/tijd weergeeft met de granulatie van het uur.
 
 ```JSON
 {
@@ -234,7 +234,7 @@ Gegevens worden elk uur naar een nieuwe blob gekopieerd met het pad voor de blob
   }
 }
 ```
-Voorbeeld van JSON-document in de verzameling Personen in een Cosmos DB-database:
+Voor beeld van een JSON-document in de verzameling persoon in een Cosmos DB-Data Base:
 
 ```JSON
 {
@@ -246,7 +246,7 @@ Voorbeeld van JSON-document in de verzameling Personen in een Cosmos DB-database
   }
 }
 ```
-Cosmos DB ondersteunt het opvragen van documenten met behulp van een SQL-achtige syntaxis ten opzichte van hiërarchische JSON-documenten.
+Cosmos DB biedt ondersteuning voor het opvragen van documenten met behulp van een SQL like-syntaxis voor hiërarchische JSON-documenten.
 
 Voorbeeld:
 
@@ -254,7 +254,7 @@ Voorbeeld:
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
 ```
 
-Met de volgende pijplijn worden gegevens uit de verzameling Personen in de Azure Cosmos DB-database gekopieerd naar een Azure-blob. Als onderdeel van de kopieeractiviteit zijn de invoer- en uitvoergegevenssets opgegeven.
+Met de volgende pijp lijn worden gegevens uit de verzameling persoon in de Azure Cosmos DB-Data Base naar een Azure-Blob gekopieerd. Als onderdeel van de Kopieer activiteit zijn de invoer-en uitvoer gegevens sets opgegeven.
 
 ```JSON
 {
@@ -297,18 +297,18 @@ Met de volgende pijplijn worden gegevens uit de verzameling Personen in de Azure
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Voorbeeld: Gegevens van Azure Blob kopiëren naar Azure Cosmos DB
-Het onderstaande voorbeeld toont:
+## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Voor beeld: gegevens kopiëren van een Azure-Blob naar Azure Cosmos DB
+In het onderstaande voor beeld ziet u:
 
 1. Een gekoppelde service van het type DocumentDb.
-2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een [invoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type DocumentDbCollection.
-5. Een [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en DocumentDbCollectionSink gebruikt.
+2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type DocumentDbCollection.
+5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en DocumentDbCollectionSink.
 
-Het voorbeeld kopieert gegevens van Azure blob naar Azure Cosmos DB. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
+In het voor beeld worden gegevens gekopieerd van de Azure-Blob naar Azure Cosmos DB. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**Gekoppelde Azure Blob-opslagservice:**
+**Gekoppelde Azure Blob Storage-service:**
 
 ```JSON
 {
@@ -321,7 +321,7 @@ Het voorbeeld kopieert gegevens van Azure blob naar Azure Cosmos DB. De JSON-eig
   }
 }
 ```
-**Gekoppelde Azure Cosmos DB-service:**
+**Azure Cosmos DB gekoppelde service:**
 
 ```JSON
 {
@@ -334,7 +334,7 @@ Het voorbeeld kopieert gegevens van Azure blob naar Azure Cosmos DB. De JSON-eig
   }
 }
 ```
-**Azure Blob-invoergegevensset:**
+**Invoer gegevensset voor Azure Blob:**
 
 ```JSON
 {
@@ -377,9 +377,9 @@ Het voorbeeld kopieert gegevens van Azure blob naar Azure Cosmos DB. De JSON-eig
   }
 }
 ```
-**Azure Cosmos DB-uitvoergegevensset:**
+**Uitvoer gegevensset Azure Cosmos DB:**
 
-Het voorbeeld kopieert gegevens naar een verzameling met de naam 'Persoon'.
+In het voor beeld worden gegevens gekopieerd naar een verzameling met de naam ' persoon '.
 
 ```JSON
 {
@@ -415,7 +415,7 @@ Het voorbeeld kopieert gegevens naar een verzameling met de naam 'Persoon'.
   }
 }
 ```
-Met de volgende pijplijn worden gegevens van Azure Blob kopieën gemaakt van de verzameling Personen in de Cosmos DB. Als onderdeel van de kopieeractiviteit zijn de invoer- en uitvoergegevenssets opgegeven.
+Met de volgende pijp lijn worden gegevens gekopieerd van de Azure-Blob naar de verzameling personen in de Cosmos DB. Als onderdeel van de Kopieer activiteit zijn de invoer-en uitvoer gegevens sets opgegeven.
 
 ```JSON
 {
@@ -460,12 +460,12 @@ Met de volgende pijplijn worden gegevens van Azure Blob kopieën gemaakt van de 
   }
 }
 ```
-Als de invoer van de voorbeeldblob is als
+Als de invoer van de voor beeld-BLOB zo is
 
 ```
 1,John,,Doe
 ```
-Dan is de output JSON in Cosmos DB zal zijn als:
+De uitvoer JSON in Cosmos DB is dan als volgt:
 
 ```JSON
 {
@@ -478,21 +478,21 @@ Dan is de output JSON in Cosmos DB zal zijn als:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos DB is een NoSQL-archief voor JSON-documenten, waar geneste structuren zijn toegestaan. Azure Data Factory stelt de gebruiker in staat om hiërarchie aan te duiden via **nestingSeparator,** wat '' is. in dit voorbeeld. Met de scheidingsteken genereert de kopieeractiviteit het object "Naam" met drie onderliggende elementen Eerste, Midden en Laatste, volgens 'Name.First', 'Name.Middle' en 'Name.Last' in de tabeldefinitie.
+Azure Cosmos DB is een NoSQL-Archief voor JSON-documenten, waarbij geneste structuren zijn toegestaan. Azure Data Factory stelt de gebruiker in staat om de hiërarchie aan te duiden via **nestingSeparator**, dat wil zeggen. in dit voor beeld. Met het scheidings teken genereert de Kopieer activiteit het object ' name ' met drie onderliggende elementen eerst, middelste en laatste, volgens ' naam. First ', ' naam. midden ' en ' naam. last ' in de tabel definitie.
 
 ## <a name="appendix"></a>Bijlage
-1. **Vraag:** Ondersteunt de kopieeractiviteit een update van bestaande records?
+1. **Vraag:** Ondersteunt de Kopieer activiteit een update van bestaande records?
 
     **Antwoord:** nee.
-2. **Vraag:** Hoe gaat een kopie van een kopie naar Azure Cosmos DB om met reeds gekopieerde records?
+2. **Vraag:** Hoe probeert een kopie opnieuw te Azure Cosmos DB worden verwerkt met al gekopieerde records?
 
-    **Antwoord:** Als records een veld 'ID' hebben en de kopieerbewerking een record met dezelfde id probeert in te voegen, wordt er in de kopieerbewerking een fout gegenereerd.
-3. **Vraag:** Ondersteunt Data Factory [het bereik of de op hash gebaseerde gegevenspartitionering?](../../cosmos-db/sql-api-partition-data.md)
+    **Antwoord:** Als records een ID-veld hebben en er wordt geprobeerd een record met dezelfde ID in te voegen, wordt er een fout gegenereerd door de Kopieer bewerking.
+3. **Vraag:** Ondersteunt Data Factory [bereik of gegevens partities op basis van hashes](../../cosmos-db/sql-api-partition-data.md)?
 
     **Antwoord:** nee.
-4. **Vraag:** Kan ik meer dan één Azure Cosmos DB-verzameling opgeven voor een tabel?
+4. **Vraag:** Kan ik meer dan één Azure Cosmos DB verzameling opgeven voor een tabel?
 
-    **Antwoord:** nee. Er kan op dit moment slechts één verzameling worden opgegeven.
+    **Antwoord:** nee. Op dit moment kan slechts één verzameling worden opgegeven.
 
-## <a name="performance-and-tuning"></a>Prestaties en tuning
-Zie [Handleiding activiteitsprestaties kopiëren & tuningom](data-factory-copy-activity-performance.md) meer te weten te komen over de belangrijkste factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en op verschillende manieren om deze te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

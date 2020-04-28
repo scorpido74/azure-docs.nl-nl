@@ -1,6 +1,6 @@
 ---
-title: On-premises API's openen met Azure AD-toepassingsproxy
-description: Met de toepassingsproxy van Azure Active Directory kunnen native apps veilig toegang krijgen tot API's en bedrijfslogica die u on-premises of op cloud-VM's host.
+title: Toegang tot on-premises Api's met Azure AD-toepassingsproxy
+description: Met de toepassings proxy van Azure Active Directory kunnen systeem eigen apps veilig toegang krijgen tot Api's en bedrijfs logica die u on-premises of op Cloud-Vm's host.
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -12,131 +12,131 @@ ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77166012"
 ---
-# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Beveiligde toegang tot on-premises API's met Azure AD-toepassingsproxy
+# <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Veilige toegang tot on-premises Api's met Azure AD-toepassingsproxy
 
-Mogelijk worden API's voor bedrijfslogica on-premises uitgevoerd of gehost op virtuele machines in de cloud. Uw eigen Android-, iOS-, Mac- of Windows-apps moeten communiceren met de API-eindpunten om gegevens te gebruiken of gebruikersinteractie te bieden. Azure AD Application Proxy en de [Azure Active Directory Authentication Libraries (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) geven uw eigen apps veilig toegang tot uw on-premises API's. Azure Active Directory Application Proxy is een snellere en veiligere oplossing dan het openen van firewallpoorten en het beheren van verificatie en autorisatie op de app-laag. 
+U hebt mogelijk bedrijfs logica-Api's die on-premises worden uitgevoerd of die worden gehost op virtuele machines in de Cloud. Uw systeem eigen Android-, iOS-, Mac-of Windows-apps moeten communiceren met de API-eind punten om gegevens te gebruiken of gebruikers interactie te bieden. Met Azure AD-toepassingsproxy en de [Azure Active Directory-verificatie bibliotheken (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) kunnen uw eigen apps veilig toegang krijgen tot uw on-premises api's. Azure Active Directory-toepassingsproxy is een snellere en veiliger oplossing dan het openen van Firewall poorten en het beheren van verificatie en autorisatie op de app-laag. 
 
-In dit artikel u een Azure AD Application Proxy-oplossing instellen voor het hosten van een web-API-service waartoe native apps toegang hebben. 
+Dit artikel begeleidt u bij het instellen van een Azure AD-toepassingsproxy-oplossing voor het hosten van een web-API-service waarmee systeem eigen apps toegang hebben. 
 
 ## <a name="overview"></a>Overzicht
 
-Het volgende diagram toont een traditionele manier om on-premises API's te publiceren. Deze aanpak vereist het openen van inkomende havens 80 en 443.
+Het volgende diagram toont een traditionele manier om on-premises Api's te publiceren. Deze benadering vereist het openen van binnenkomende poorten 80 en 443.
 
 ![Traditionele API-toegang](./media/application-proxy-secure-api-access/overview-publish-api-open-ports.png)
 
-In het volgende diagram ziet u hoe u Azure AD Application Proxy gebruiken om API's veilig te publiceren zonder inkomende poorten te openen:
+In het volgende diagram ziet u hoe u Azure AD-toepassingsproxy kunt gebruiken om Api's veilig te publiceren zonder binnenkomende poorten te openen:
 
-![Azure AD Application Proxy API-toegang](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
+![Toegang tot Azure AD-toepassingsproxy-API](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-De Azure AD Application Proxy vormt de ruggengraat van de oplossing, werkt als een openbaar eindpunt voor API-toegang en biedt verificatie en autorisatie. U hebt toegang tot uw API's vanaf een breed scala aan platforms via de [ADAL-bibliotheken.](/azure/active-directory/develop/active-directory-authentication-libraries) 
+De Azure AD-toepassingsproxy vormt de ruggen graat van de oplossing, werkt als een openbaar eind punt voor API-toegang en biedt verificatie en autorisatie. U kunt toegang krijgen tot uw Api's vanuit een groot aantal platformen met behulp van de [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) -bibliotheken. 
 
-Aangezien azure AD-toepassingsproxyverificatie en -autorisatie bovenop Azure AD zijn gebouwd, u voorwaardelijke toegang voor Azure AD gebruiken om ervoor te zorgen dat alleen vertrouwde apparaten toegang hebben tot API's die zijn gepubliceerd via Application Proxy. Gebruik Azure AD Join of Azure AD Hybrid Joined voor desktops en Intune Beheerd voor apparaten. U ook profiteren van Azure Active Directory Premium-functies zoals Azure Multi-Factor Authentication en de door machine learning gesteunde beveiliging van [Azure Identity Protection.](/azure/active-directory/active-directory-identityprotection)
+Omdat Azure AD-toepassingsproxy-verificatie en-autorisatie zijn gebouwd op Azure AD, kunt u voorwaardelijke toegang van Azure AD gebruiken om ervoor te zorgen dat alleen vertrouwde apparaten toegang hebben tot Api's die zijn gepubliceerd via de toepassings proxy. Gebruik Azure AD join of Azure AD hybride gekoppeld voor Desk tops en intune-beheer voor apparaten. U kunt ook profiteren van Azure Active Directory Premium functies zoals Azure Multi-Factor Authentication en de beveiliging van de machine learning-back-up van [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze walkthrough te volgen, heb je het volgende nodig:
+Als u dit scenario wilt volgen, hebt u het volgende nodig:
 
-- Beheerderstoegang tot een Azure-map, met een account waarmee apps kunnen worden gemaakt en geregistreerd
-- De voorbeeldweb-API en native client-apps van[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
+- Beheerders toegang tot een Azure-map, met een account dat apps kan maken en registreren
+- De voor beeld-Web-API en native client-apps uit[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp) 
 
-## <a name="publish-the-api-through-application-proxy"></a>De API publiceren via application proxy
+## <a name="publish-the-api-through-application-proxy"></a>De API publiceren via toepassings proxy
 
-Als u een API buiten uw intranet wilt publiceren via Application Proxy, volgt u hetzelfde patroon als voor het publiceren van web-apps. Zie [Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
+Als u een API buiten uw intranet wilt publiceren via toepassings proxy, volgt u hetzelfde patroon als voor het publiceren van web-apps. Zie [zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in azure Active Directory](application-proxy-add-on-premises-application.md)voor meer informatie.
 
-Ga als een te werk om de SecretAPI-web-API te publiceren via Application Proxy:
+De SecretAPI-Web-API publiceren via toepassings proxy:
 
-1. Bouw en publiceer het voorbeeld SecretAPI-project als een ASP.NET web-app op uw lokale computer of intranet. Zorg ervoor dat u lokaal toegang hebt tot de web-app. 
+1. Bouw en publiceer het voorbeeld SecretAPI-project als een ASP.NET-Web-app op uw lokale computer of intranet. Zorg ervoor dat u lokaal toegang tot de Web-App kunt krijgen. 
    
-1. Selecteer Azure Active Directory in de [Azure-portal](https://portal.azure.com). **Azure Active Directory** Selecteer vervolgens **Enterprise-toepassingen**.
+1. Selecteer **Azure Active Directory**In het [Azure Portal](https://portal.azure.com). Selecteer vervolgens **bedrijfs toepassingen**.
    
-1. Boven aan de **enterprise-toepassingen - Alle toepassingen pagina,** selecteert **US nieuwe toepassing**.
+1. Selecteer boven aan de pagina **bedrijfs toepassingen-alle toepassingen** de optie **nieuwe toepassing**.
    
-1. Selecteer op de pagina **Een toepassingstoevoegen** de optie **On-premises toepassingen**. De **pagina Uw eigen on-premises toepassings** toevoegen wordt weergegeven.
+1. Selecteer op de pagina **een toepassing toevoegen** de optie **on-premises toepassingen**. De pagina **uw eigen on-premises toepassing toevoegen** wordt weer gegeven.
    
-1. Als u geen Application Proxy Connector hebt geïnstalleerd, wordt u gevraagd deze te installeren. Selecteer **Application Proxy Connector downloaden** om de connector te downloaden en te installeren. 
+1. Als er geen toepassings proxy connector is geïnstalleerd, wordt u gevraagd deze te installeren. Selecteer **toepassings proxy connector downloaden** om de connector te downloaden en te installeren. 
    
-1. Zodra u de application proxy connector hebt geïnstalleerd, op de pagina **Uw eigen on-premises toepassings** toevoegen:
+1. Nadat u de toepassings proxy connector hebt geïnstalleerd, op de pagina **uw eigen on-premises toepassing toevoegen** :
    
-   1. Voer naast **Naam** *SecretAPI*in .
+   1. Voer *SecretAPI*in bij **naam**.
       
-   1. Voer naast **Interne url**de URL in die u gebruikt om toegang te krijgen tot de API vanuit uw intranet.
+   1. Voer naast **interne URL**de URL in die u gebruikt voor toegang tot de API vanuit uw intranet.
       
-   1. Controleer of **Pre-Authentication** is ingesteld op **Azure Active Directory**. 
+   1. Zorg ervoor dat **verificatie vooraf** is ingesteld op **Azure Active Directory**. 
       
-   1. Selecteer **Toevoegen** boven aan de pagina en wacht tot de app is gemaakt.
+   1. Selecteer boven aan de pagina **toevoegen** en wacht totdat de app is gemaakt.
    
    ![API-app toevoegen](./media/application-proxy-secure-api-access/3-add-api-app.png)
    
-1. Selecteer op de pagina **Enterprise-toepassingen - Alle toepassingen** de **SecretAPI-app.** 
+1. Selecteer op de pagina **bedrijfs toepassingen-alle toepassingen** de **SecretAPI** -app. 
    
-1. Selecteer **eigenschappen** in de linkernavigatie op de pagina **SecretAPI - Overzicht.**
+1. Selecteer op de pagina **SecretAPI-overzicht** de optie **Eigenschappen** in het linkernavigatievenster.
    
-1. U wilt niet dat API's beschikbaar zijn voor eindgebruikers in het deelvenster **MyApps,** dus stel **Zichtbaar in voor gebruikers** op **Nee** onder aan de pagina **Eigenschappen** en selecteer **Vervolgens Opslaan**.
+1. U wilt niet dat Api's beschikbaar zijn voor eind gebruikers in het deel venster **MyApps** , dus stel de optie **zichtbaar voor gebruikers** in op **Nee** onder aan de pagina **Eigenschappen** en selecteer vervolgens **Opslaan**.
    
    ![Niet zichtbaar voor gebruikers](./media/application-proxy-secure-api-access/5-not-visible-to-users.png)
    
-U hebt uw web-API gepubliceerd via Azure AD Application Proxy. Voeg nu gebruikers toe die toegang hebben tot de app. 
+U hebt uw web-API gepubliceerd via Azure AD-toepassingsproxy. Voeg nu gebruikers toe die toegang hebben tot de app. 
 
-1. Selecteer op de pagina **SecretAPI - Overzicht** de optie **Gebruikers en groepen** in de linkernavigatie.
+1. Selecteer op de pagina **overzicht van SecretAPI** **gebruikers en groepen** in de linkernavigatiebalk.
    
-1. Selecteer gebruiker **toevoegen**op de pagina **Gebruikers en groepen** .  
+1. Selecteer op de pagina **gebruikers en groepen** de optie **gebruiker toevoegen**.  
    
-1. Selecteer op de pagina **Toewijzing toevoegen** de optie Gebruikers **en groepen**. 
+1. Selecteer op de pagina **toewijzing toevoegen** de optie **gebruikers en groepen**. 
    
-1. Zoek **op** de pagina Gebruikers en groepen naar en selecteer gebruikers die toegang hebben tot de app, ook uzelf. Nadat u alle gebruikers hebt geselecteerd, selecteert **u Selecteren**. 
+1. Zoek en selecteer op de pagina **gebruikers en groepen** de gebruikers die toegang hebben tot de app, inclusief ten minste uzelf. Nadat u alle gebruikers hebt geselecteerd, selecteert u **selecteren**. 
    
    ![Gebruiker selecteren en toewijzen](./media/application-proxy-secure-api-access/7-select-admin-user.png)
    
-1. Selecteer Toewijzing toewijzen op de pagina **Toewijzing** **toevoegen**. 
+1. Selecteer op de pagina **toewijzing toevoegen** de optie **toewijzen**. 
 
 > [!NOTE]
-> API's die geïntegreerde Windows-verificatie gebruiken, vereisen mogelijk [extra stappen.](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)
+> Voor Api's die gebruikmaken van geïntegreerde Windows-verificatie zijn mogelijk [extra stappen](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd)vereist.
 
-## <a name="register-the-native-app-and-grant-access-to-the-api"></a>De native app registreren en toegang verlenen tot de API
+## <a name="register-the-native-app-and-grant-access-to-the-api"></a>De systeem eigen app registreren en toegang verlenen tot de API
 
-Native apps zijn programma's die zijn ontwikkeld om te gebruiken op een bepaald platform of apparaat. Voordat uw native app verbinding kan maken en toegang heeft tot een API, moet u deze registreren in Azure AD. In de volgende stappen wordt uitgelegd hoe u een native app registreert en deze toegang geeft tot de web-API die u hebt gepubliceerd via Application Proxy.
+Systeem eigen apps zijn Program ma's die zijn ontwikkeld voor gebruik op een bepaald platform of apparaat. Voordat uw systeem eigen app verbinding kan maken en een API kan openen, moet u deze registreren in azure AD. De volgende stappen laten zien hoe u een systeem eigen app kunt registreren en toegang krijgt tot de Web-API die u via de toepassings proxy hebt gepubliceerd.
 
-Ga als volgende over de native app AppProxyNativeAppSample:
+De systeem eigen app AppProxyNativeAppSample registreren:
 
-1. Selecteer op de pagina Azure Active **Directory-overzicht** de optie **App-registraties**en selecteer boven aan het deelvenster **App-registraties** de optie **Nieuwe registratie**.
+1. Selecteer op de pagina **overzicht** van Azure Active Directory **app-registraties**, en selecteer boven in het deel venster **app-registraties** de optie **nieuwe registratie**.
    
-1. Ga op de pagina **Registreer een aanvraag:**
+1. Op de pagina **een toepassing registreren** :
    
-   1. Voer **onder Naam** *AppProxyNativeAppSample in*. 
+   1. Voer onder **naam** *AppProxyNativeAppSample*in. 
       
    1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**. 
       
-   1. Onder **URL omleiden,** devalert en selecteer **Openbare client (mobile & desktop)** en voer vervolgens *https in:\//appproxynativeapp*. 
+   1. Onder **omleidings-URL**, vervolg keuzelijst en selecteer **open bare client (mobiele & bureau blad)** en voer vervolgens *https:\//appproxynativeapp*. 
       
-   1. Selecteer **Registreren**en wacht tot de app is geregistreerd. 
+   1. Selecteer **registreren**en wacht totdat de app is geregistreerd. 
       
       ![Nieuwe toepassing registreren](./media/application-proxy-secure-api-access/8-create-reg-ga.png)
    
-U hebt nu de AppProxyNativeAppSample-app geregistreerd in Azure Active Directory. Ga als u uw eigen app toegang geven tot de SecretAPI-web-API:
+U hebt de AppProxyNativeAppSample-app nu geregistreerd in Azure Active Directory. Om uw eigen app toegang te geven tot de SecretAPI-Web-API:
 
-1. Selecteer op de pagina Azure Active Directory **Overview** > **App Registrations** de app **AppProxyNativeAppSample.** 
+1. Selecteer de **AppProxyNativeAppSample** -app op de pagina **overzicht** > van**app-registraties** Azure Active Directory. 
    
-1. Selecteer **api-machtigingen** in de linkernavigatie op de pagina **AppProxyNativeAppSample.** 
+1. Selecteer op de pagina **AppProxyNativeAppSample** de optie **API-machtigingen** in het linkernavigatievenster. 
    
-1. Selecteer op de pagina **API-machtigingen** de optie **Een machtiging toevoegen**.
+1. Selecteer op de pagina **API-machtigingen** de optie **een machtiging toevoegen**.
    
-1. Selecteer op de pagina **Api-machtigingen** voor aanvragen de **API's die mijn organisatie gebruikt** en zoek en selecteer Vervolgens **SecretAPI**. 
+1. Selecteer op de eerste pagina **API-machtigingen voor aanvragen** de **api's mijn organisatie tabblad gebruikt** en zoek naar en selecteer **SecretAPI**. 
    
-1. Schakel op de pagina Volgende **api-machtigingen aanvragen** het selectievakje naast **user_impersonation**in en selecteer **machtigingen toevoegen**. 
+1. Schakel op de pagina volgende **aanvraag API-machtigingen** het selectie vakje naast **user_impersonation**in en selecteer vervolgens **machtigingen toevoegen**. 
    
     ![Een API selecteren](./media/application-proxy-secure-api-access/10-secretapi-added.png)
    
-1. Terug op de pagina **API-machtigingen** u **toestemming voor de beheerder verlenen voor Contoso** selecteren om te voorkomen dat andere gebruikers individueel toestemming moeten geven voor de app. 
+1. Terug op de pagina **API-machtigingen** kunt u **toestemming geven voor de beheerder toestaan** om te voor komen dat andere gebruikers individueel toestemming voor de app moeten krijgen. 
 
-## <a name="configure-the-native-app-code"></a>De native app-code configureren
+## <a name="configure-the-native-app-code"></a>De systeem eigen app-code configureren
 
-De laatste stap is het configureren van de native app. Het volgende fragment uit het *Form1.cs-bestand* in de NativeClient-voorbeeld-app zorgt ervoor dat de ADAL-bibliotheek het token voor het aanvragen van de API-aanroep verwerft en als drager aan de app-header wordt gekoppeld. 
+De laatste stap is het configureren van de systeem eigen app. Het volgende code fragment uit het *Form1.cs* -bestand in de NativeClient-voor beeld-app veroorzaakt de ADAL-bibliotheek om het token te verkrijgen voor het aanvragen van de API-aanroep en om het te koppelen als Bearer aan de app-header. 
    
    ```csharp
        AuthenticationResult result = null;
@@ -155,24 +155,24 @@ De laatste stap is het configureren van de native app. Het volgende fragment uit
        MessageBox.Show(s);
    ```
    
-Als u de native app wilt configureren om verbinding te maken met Azure Active Directory en de PROXY van de API-app aan te roepen, werkt u de tijdelijke aanduidingswaarden in het *app.config-bestand* van de voorbeeldapp NativeClient bij met waarden uit Azure AD: 
+Als u de systeem eigen app wilt configureren om verbinding te maken met Azure Active Directory en de API-app-proxy aan te roepen, werkt u de waarden van de tijdelijke aanduiding bij in het bestand *app. config* van de voor beeld-app NativeClient met waarden uit Azure AD: 
 
-- Plak de **map (tenant) id** in het `<add key="ida:Tenant" value="" />` veld. U deze waarde (een GUID) vinden en kopiëren op de pagina **Overzicht** van een van uw apps. 
+- Plak de **Directory-id (Tenant)** in `<add key="ida:Tenant" value="" />` het veld. U kunt deze waarde (een GUID) zoeken en kopiëren op de pagina **overzicht** van een van uw apps. 
   
-- Plak de **appProxyNativeAppSample-toepassings-id (client)** in het `<add key="ida:ClientId" value="" />` veld. U deze waarde (een GUID) vinden en kopiëren via de **pagina** Overzicht van AppProxyNativeAppSample.
+- Plak de ID van de AppProxyNativeAppSample **-toepassing (client)** in het `<add key="ida:ClientId" value="" />` veld. U kunt deze waarde (een GUID) zoeken en kopiëren op de pagina **overzicht** van AppProxyNativeAppSample.
   
-- Plak de AppProxyNativeAppSample Redirect `<add key="ida:RedirectUri" value="" />` **URI** in het veld. U deze waarde (een URI) vinden en kopiëren via de pagina AppProxyNativeAppSample **Authentication.** 
+- Plak de **omleidings** -URI `<add key="ida:RedirectUri" value="" />` AppProxyNativeAppSample in het veld. U kunt deze waarde (een URI) zoeken en kopiëren van de AppProxyNativeAppSample- **verificatie** pagina. 
   
-- Plak de URI van de `<add key="todo:TodoListResourceId" value="" />` SecretAPI-toepassings-id in het veld. **Application ID URI** U deze waarde (een URI) vinden en kopiëren vanuit de SecretAPI **Expose an API-pagina.**
+- Plak de URI van de SecretAPI **-toepassings-id** in het `<add key="todo:TodoListResourceId" value="" />` veld. U kunt deze waarde (een URI) zoeken en kopiëren van de SecretAPI **een API** -pagina beschikbaar maken.
   
-- Plak de **URL van** de `<add key="todo:TodoListBaseAddress" value="" />` startpagina secretapi in het veld. U deze waarde (een URL) vinden en kopiëren vanaf de pagina SecretAPI **Branding.**
+- Plak de URL van de SecretAPI- **Start pagina** in het `<add key="todo:TodoListBaseAddress" value="" />` veld. U kunt deze waarde (URL) zoeken en kopiëren van de SecretAPI **huisstijl** pagina.
 
-Nadat u de parameters hebt geconfigureerd, bouwt en voert u de native app uit. Wanneer u de **knop Aanmelden** selecteert, u zich met de app aanmelden en vervolgens een successcherm weergeven om te bevestigen dat deze met de SecretAPI is verbonden.
+Nadat u de para meters hebt geconfigureerd, bouwt u de systeem eigen app en voert u deze uit. Wanneer u de knop **Aanmelden** selecteert, kunt u zich aanmelden met de app en vervolgens een geslaagd scherm weer geven om te bevestigen dat het verbinding heeft gemaakt met de SecretAPI.
 
 ![Geslaagd](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via toepassingsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Snelstart: een clienttoepassing configureren om toegang te krijgen tot web-API's](../develop/quickstart-configure-app-access-web-apis.md)
-- [Native clienttoepassingen inschakelen om te communiceren met proxytoepassingen](application-proxy-configure-native-client-application.md)
+- [Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's](../develop/quickstart-configure-app-access-web-apis.md)
+- [Systeem eigen client toepassingen inschakelen voor interactie met proxy toepassingen](application-proxy-configure-native-client-application.md)

@@ -1,26 +1,26 @@
 ---
-title: Logboeken voor taaktaakbeheer weergeven - Taken
-description: Logboeken die zijn gegenereerd door ACR-taken weergeven en beheren.
+title: Taak uitvoer logboeken weer geven-taken
+description: Uitvoerings logboeken weer geven en beheren die door ACR-taken worden gegenereerd.
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246966"
 ---
-# <a name="view-and-manage-task-run-logs"></a>Logboeken voor taakbeheer weergeven en beheren
+# <a name="view-and-manage-task-run-logs"></a>Taak uitvoer logboeken weer geven en beheren
 
-Elke taak die wordt uitgevoerd in [Azure Container Registry-taken](container-registry-tasks-overview.md) genereert logboekuitvoer die u controleren om te bepalen of de taakstappen zijn uitgevoerd. 
+Elke taak die in [Azure container Registry taken](container-registry-tasks-overview.md) wordt uitgevoerd, genereert logboek uitvoer die u kunt controleren om te bepalen of de taak stappen zijn uitgevoerd. 
 
-In dit artikel wordt uitgelegd hoe logboeken voor taakbeheer worden bekeken en beheerd.
+In dit artikel wordt uitgelegd hoe u taak uitvoer Logboeken kunt weer geven en beheren.
 
-## <a name="view-streamed-logs"></a>Gestreamde logboeken weergeven
+## <a name="view-streamed-logs"></a>Gestreamde logboeken weer geven
 
-Wanneer u een taak handmatig activeert, wordt de logboekuitvoer rechtstreeks naar de console gestreamd. Wanneer u bijvoorbeeld een taak handmatig activeert met behulp van de [opdracht AZ ACR Build,](/cli/azure/acr#az-acr-build) [AZ ACR Run](/cli/azure/acr#az-acr-run)of az [acr task run,](/cli/azure/acr/task#az-acr-task-run) ziet u loguitvoer gestreamd naar de console. 
+Wanneer u een taak hand matig start, wordt de logboek uitvoer rechtstreeks naar de console gestreamd. Wanneer u bijvoorbeeld een taak hand matig start met behulp van de opdracht [AZ ACR build](/cli/azure/acr#az-acr-build), [AZ ACR run](/cli/azure/acr#az-acr-run)of [AZ ACR Task run](/cli/azure/acr/task#az-acr-task-run) , ziet u de logboek uitvoer die is gestreamd naar de-console. 
 
-Met de volgende [voorbeeldopdracht az acr run](/cli/azure/acr#az-acr-run) activeert u handmatig een taak die een container uitvoert die uit hetzelfde register is getrokken:
+In het volgende voor beeld [AZ ACR run](/cli/azure/acr#az-acr-run) wordt hand matig een taak geactiveerd waarmee een container uit hetzelfde REGI ster wordt opgehaald:
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
@@ -56,34 +56,34 @@ This message shows that your installation appears to be working correctly.
 Run ID: cf4 was successful after 5s
 ```
 
-## <a name="view-stored-logs"></a>Opgeslagen logboeken weergeven 
+## <a name="view-stored-logs"></a>Opgeslagen logboeken weer geven 
 
-Azure Container Registry-opslag voert logboeken uit voor alle taken. U opgeslagen run-logboeken weergeven in de Azure-portal. Of gebruik de opdracht [az acr-taaklogboeken](/cli/azure/acr/task#az-acr-task-logs) om een geselecteerd logboek weer te geven. Logopeerlogboeken worden standaard 30 dagen bewaard.
+Azure Container Registry Stores-uitvoerings logboeken voor alle taken. U kunt opgeslagen uitvoerings logboeken weer geven in de Azure Portal. U kunt ook de opdracht [AZ ACR taak logs](/cli/azure/acr/task#az-acr-task-logs) gebruiken om een geselecteerd logboek weer te geven. Standaard worden logboeken 30 dagen bewaard.
 
-Als een taak automatisch wordt geactiveerd, bijvoorbeeld door een broncode-update, is toegang tot de opgeslagen logboeken de *enige* manier om de run logs weer te geven. Automatische taaktriggers omvatten broncodecommits of pull-aanvragen, basisafbeeldingsupdates en timertriggers.
+Als een taak automatisch wordt geactiveerd, bijvoorbeeld door het bijwerken van de bron code, is toegang tot de opgeslagen logboeken de *enige* manier om de uitvoerings logboeken weer te geven. Automatische taak triggers zijn onder andere door voeringen van de bron code of pull-aanvragen, updates van basis installatie kopieën en timer triggers.
 
-Ga als bedoeld als u logboeken in de portal weerziet:
+Uitvoerings logboeken weer geven in de portal:
 
-1. Navigeer naar uw containerregister.
-1. Selecteer Taken **uitvoeren** > **Runs**in **Services**.
-1. Selecteer een **run-id** om de runstatus weer te geven en logboeken uit te voeren. Het logboek bevat dezelfde informatie als een gestreamd logboek, als er een wordt gegenereerd.
+1. Navigeer naar het container register.
+1. In **Services**selecteert u **taken** > worden**uitgevoerd**.
+1. Selecteer een **Run-id** om de uitvoerings status te bekijken en Logboeken uit te voeren. Het logboek bevat dezelfde informatie als een gestreamd logboek als er een wordt gegenereerd.
 
-![Inlogportal voor taakbeheer weergeven](./media/container-registry-tasks-logs/portal-task-run-logs.png)
+![Aanmeldings portal voor taak uitvoering weer geven](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-Als u een logboek wilt weergeven met de Azure CLI, voert u [az acr-taaklogboeken](/cli/azure/acr/task#az-acr-task-logs) uit en geeft u een run-id, een taaknaam of een specifieke afbeelding op die door een buildtaak wordt gemaakt. Als een taaknaam is opgegeven, wordt in de opdracht het logboek voor de laatst gemaakte run weergegeven.
+Als u een logboek wilt weer geven met behulp van de Azure CLI, voert u [AZ ACR-taak logboeken](/cli/azure/acr/task#az-acr-task-logs) uit en geeft u een run-id, een taak naam of een specifieke installatie kopie op die wordt gemaakt door een build-taak. Als er een taak naam wordt opgegeven, wordt in de opdracht het logboek voor de laatst gemaakte uitvoering weer gegeven.
 
-In het volgende voorbeeld wordt het logboek voor de run uitgevoerd met ID *cf4:*
+In het volgende voor beeld wordt het logboek uitgevoerd voor de run with ID *cf4*:
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4
 ```
 
-## <a name="alternative-log-storage"></a>Alternatieve logboekopslag
+## <a name="alternative-log-storage"></a>Alternatieve logboek opslag
 
-U logboeken voor taakbeheer opslaan op een lokaal bestandssysteem of een alternatieve archiveringsoplossing gebruiken, zoals Azure Storage.
+U kunt de logboeken voor het uitvoeren van taken opslaan op een lokaal bestands systeem of een andere archiverings oplossing gebruiken, zoals Azure Storage.
 
-Maak bijvoorbeeld een lokale *taaklogboekmap* en verwijs de uitvoer van [az acr-taaklogboeken](/cli/azure/acr/task#az-acr-task-logs) om naar een lokaal bestand:
+U kunt bijvoorbeeld een lokale *tasklogs* -Directory maken en de uitvoer van [AZ ACR-taak logboeken](/cli/azure/acr/task#az-acr-task-logs) omleiden naar een lokaal bestand:
 
 ```azurecli
 mkdir ~/tasklogs
@@ -92,12 +92,12 @@ az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4 > ~/tasklogs/cf4.log
 ```
 
-U ook lokale logboekbestanden opslaan in Azure Storage. Gebruik bijvoorbeeld de [Azure CLI,](../storage/blobs/storage-quickstart-blobs-cli.md)de [Azure-portal](../storage/blobs/storage-quickstart-blobs-portal.md)of andere methoden om bestanden naar een opslagaccount te uploaden.
+U kunt ook lokale logboek bestanden opslaan in Azure Storage. Gebruik bijvoorbeeld de [Azure cli](../storage/blobs/storage-quickstart-blobs-cli.md), de [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)of andere methoden om bestanden te uploaden naar een opslag account.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Container Registry Tasks](container-registry-tasks-overview.md)
+* Meer informatie over [Azure container Registry taken](container-registry-tasks-overview.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

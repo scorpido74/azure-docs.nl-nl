@@ -1,6 +1,6 @@
 ---
-title: Gegevens van Sybase verplaatsen met Azure Data Factory
-description: Meer informatie over het verplaatsen van gegevens uit Sybase Database met Azure Data Factory.
+title: Gegevens van Sybase verplaatsen met behulp van Azure Data Factory
+description: Meer informatie over het verplaatsen van gegevens uit de Sybase-data base met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,104 +13,104 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281247"
 ---
-# <a name="move-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase verplaatsen met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="move-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase verplaatsen met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](data-factory-onprem-sybase-connector.md)
 > * [Versie 2 (huidige versie)](../connector-sybase.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Sybase-connector in V2](../connector-sybase.md)als u de huidige versie van de datafabriekservice gebruikt.
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Sybase connector in v2](../connector-sybase.md).
 
-In dit artikel wordt uitgelegd hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een on-premises Sybase-database te verplaatsen. Het bouwt voort op het artikel [Data Movement Activities,](data-factory-data-movement-activities.md) dat een algemeen overzicht geeft van gegevensverplaatsing met de kopieeractiviteit.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een on-premises Sybase-data base te verplaatsen. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
-U gegevens uit een on-premises Sybase-gegevensarchief kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die als sinks worden ondersteund door de kopieeractiviteit. Datafactory ondersteunt momenteel alleen het verplaatsen van gegevens van een Sybase-gegevensarchief naar andere gegevensopslag, maar niet voor het verplaatsen van gegevens van andere gegevensopslag naar een Sybase-gegevensarchief. 
+U kunt gegevens van een on-premises Sybase-gegevens opslag kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory biedt momenteel alleen ondersteuning voor het verplaatsen van gegevens van een Sybase-gegevens opslag naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een Sybase-gegevens archief. 
 
 ## <a name="prerequisites"></a>Vereisten
-Data Factory-service ondersteunt het verbinden met on-premises Sybase-bronnen via de Data Management Gateway. Bekijk [het verplaatsen van gegevens tussen on-premises locaties en een cloudartikel](data-factory-move-data-between-onprem-and-cloud.md) voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway.
+Data Factory-service ondersteunt het maken van verbinding met on-premises Sybase-bronnen met behulp van de Data Management Gateway. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway.
 
-Gateway is vereist, zelfs als de Sybase-database wordt gehost in een Azure IaaS VM. U de gateway installeren op dezelfde IaaS VM als het gegevensarchief of op een andere VM, zolang de gateway verbinding kan maken met de database.
+De gateway is vereist, zelfs als de Sybase-data base wordt gehost in een Azure IaaS-VM. U kunt de gateway op dezelfde IaaS-VM installeren als het gegevens archief of op een andere virtuele machine zolang de gateway verbinding kan maken met de data base.
 
 > [!NOTE]
-> Zie [Problemen met de gateway oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van verbindings-/gatewaygerelateerde problemen.
+> Zie problemen [met gateway problemen oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van problemen met verbinding/gateway.
 
 ## <a name="supported-versions-and-installation"></a>Ondersteunde versies en installatie
-Als u datamanagementgateway wilt verbinden met de Sybase-database, moet u de [gegevensprovider voor Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 of hoger installeren op hetzelfde systeem als de Data Management Gateway. 
+Als Data Management Gateway verbinding met de Sybase-Data Base wilt maken, moet u de [gegevens provider voor Sybase iAnywhere. data. SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 of hoger installeren op hetzelfde systeem als de Data Management Gateway. 
 
 SAP Sybase SQL Anywhere (ASA) versie 16 en hoger wordt ondersteund; IQ en ASE worden niet ondersteund.
 
 ## <a name="getting-started"></a>Aan de slag
-U een pijplijn maken met een kopieeractiviteit die gegevens verplaatst van een on-premises Cassandra-gegevensarchief met behulp van verschillende hulpprogramma's/API's. 
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
 
-- De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren. 
-- U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken. 
+- De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
-Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
-1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
-2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven. 
-3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt. 
+1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
+2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. 
+3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. 
 
-Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling.  Zie [JSON-voorbeeld JSON-voorbeeld: Gegevens van Sybase kopiëren naar Azure Blob.](#json-example-copy-data-from-sybase-to-azure-blob) 
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie [JSON-voor beeld: gegevens kopiëren van Sybase naar Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) in dit artikel voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een on-premises Sybase-gegevens opslag. 
 
-In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor een Sybase-gegevensarchief:
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een Sybase-gegevens opslag:
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
-In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek zijn voor de gekoppelde service van Sybase.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor een met Sybase gekoppelde service.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesSybase** |Ja |
-| server |Naam van de Sybase-server. |Ja |
-| database |Naam van de Sybase-database. |Ja |
-| schema |Naam van het schema in de database. |Nee |
-| authenticationType |Type verificatie wordt gebruikt om verbinding te maken met de Sybase-database. Mogelijke waarden zijn: Anoniem, Basic en Windows. |Ja |
-| gebruikersnaam |Geef de gebruikersnaam op als u basis- of Windows-verificatie gebruikt. |Nee |
-| wachtwoord |Geef een wachtwoord op voor het gebruikersaccount dat u hebt opgegeven voor de gebruikersnaam. |Nee |
-| gatewayNaam |Naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises Sybase-database. |Ja |
+| server |De naam van de Sybase-server. |Ja |
+| database |De naam van de Sybase-data base. |Ja |
+| schema |De naam van het schema in de data base. |Nee |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
+| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises Sybase-data base. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, etc.).
+Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
-De sectie typeEigenschappen is verschillend voor elk type gegevensset en geeft informatie over de locatie van de gegevens in het gegevensarchief. De sectie **typeEigenschappen** voor de gegevensset van type **RelationalTable** (die sybase-gegevensset bevat) heeft de volgende eigenschappen:
+De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **RelationalTable** (inclusief Sybase dataset) heeft de volgende eigenschappen:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |Naam van de tabel in de instantie Sybase Database waarnaar de gekoppelde service verwijst. |Nee (als **query** van **RelationalSource** is opgegeven) |
+| tableName |De naam van de tabel in het data base-exemplaar van Sybase waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie Artikel [Pijplijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleid zijn beschikbaar voor alle soorten activiteiten.
+Zie [het artikel pipelines maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
-Overwegende dat de eigenschappen die beschikbaar zijn in de sectie typeEigenschappen van de activiteit per activiteitstype verschillen. Voor Kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
+Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit, verschillen per activiteitstype. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
 
-Wanneer de bron van type **RelationalSource** is (inclusief Sybase), zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties:**
+Wanneer de bron van het type **RelationalSource** (inclusief Sybase) is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-querytekenreeks. Selecteer bijvoorbeeld * in MyTable. |Nee (als **tabelNaam** van **de gegevensset** is opgegeven) |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
 
-## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON-voorbeeld: gegevens van Sybase kopiëren naar Azure Blob
-In het volgende voorbeeld vindt u voorbeeld-JSON-definities die u gebruiken om een pijplijn te maken met Behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md) Ze laten zien hoe u gegevens uit de Sybase-database kopieert naar Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar een van de putten die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) zijn vermeld met behulp van de kopieeractiviteit in Azure Data Factory.   
+## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van Sybase naar Azure Blob
+In het volgende voor beeld worden voor beeld-JSON-definities weer gegeven die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens van Sybase-Data Base kunt kopiëren naar Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.   
 
-Het voorbeeld heeft de volgende gegevensfabriekentiteiten:
+Het voor beeld heeft de volgende data factory entiteiten:
 
 1. Een gekoppelde service van het type [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties).
-2. Een gelikete service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een [invoergegevensset](data-factory-create-datasets.md) van type [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties).
-4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. De [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
+2. Een leuk service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. De [pijp lijn](data-factory-create-pipelines.md) met Kopieer activiteit die gebruikmaakt van [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld kopieert elk uur gegevens uit een queryresultaat in de Sybase-database naar een blob. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
+In het voor beeld worden gegevens gekopieerd van een query resultaat in Sybase-Data Base naar een BLOB elk uur. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-Als eerste stap, het instellen van de data management gateway. De instructies bevinden zich in de [verhuisgegevens tussen on-premises locaties en cloudartikelen.](data-factory-move-data-between-onprem-and-cloud.md)
+De eerste stap is het instellen van de Data Management Gateway. De instructies bevinden zich in het [verplaatsen van gegevens tussen on-premises locaties en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikelen.
 
-**Gekoppelde service sybase:**
+**Gekoppelde Sybase-service:**
 
 ```JSON
 {
@@ -130,7 +130,7 @@ Als eerste stap, het instellen van de data management gateway. De instructies be
 }
 ```
 
-**Gekoppelde Azure Blob-opslagservice:**
+**Gekoppelde Azure Blob Storage-service:**
 
 ```JSON
 {
@@ -144,11 +144,11 @@ Als eerste stap, het instellen van de data management gateway. De instructies be
 }
 ```
 
-**Sybase-invoergegevensset:**
+**Sybase-invoer gegevensset:**
 
-In het voorbeeld wordt ervan uitgegaan dat u een tabel "MyTable" in Sybase hebt gemaakt en dat er een kolom met de naam "tijdstempel" voor tijdreeksgegevens is opgenomen.
+In het voor beeld wordt ervan uitgegaan dat u een tabel ' MyTable ' hebt gemaakt in Sybase en deze een kolom bevat met de naam Time Stamp voor tijdreeks gegevens.
 
-Instelling "extern": true informeert de Data Factory-service dat deze gegevensset buiten de gegevensfabriek staat en niet wordt geproduceerd door een activiteit in de gegevensfabriek. Het **type** gekoppelde service is ingesteld op: **RelationalTable**.
+Als u ' Extern ': True informeert de Data Factory-service dat deze gegevensset extern is voor de data factory en niet wordt geproduceerd door een activiteit in de data factory. U ziet dat het **type** van de gekoppelde service is ingesteld op: **RelationalTable**.
 
 ```JSON
 {
@@ -173,9 +173,9 @@ Instelling "extern": true informeert de Data Factory-service dat deze gegevensse
 }
 ```
 
-**Azure Blob-uitvoergegevensset:**
+**Azure Blob-uitvoer gegevensset:**
 
-Gegevens worden elk uur naar een nieuwe blob geschreven (frequentie: uur, interval: 1). Het mappad voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van de begintijd van jaar, maand, dag en uur.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```JSON
 {
@@ -233,9 +233,9 @@ Gegevens worden elk uur naar een nieuwe blob geschreven (frequentie: uur, interv
 }
 ```
 
-**Pijplijn met kopieeractiviteit:**
+**Pijp lijn met Kopieer activiteit:**
 
-De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken en die elk uur wordt uitgevoerd. In de JSON-definitie van pijplijn wordt het **brontype** ingesteld op **RelationalSource** en wordt **het gootsteentype** ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **eigenschap query** selecteert de gegevens uit de DBA. De tabel Orders in de database.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens uit de DBA geselecteerd. De tabel Orders in de data base.
 
 ```JSON
 {
@@ -281,19 +281,19 @@ De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en u
 }
 ```
 
-## <a name="type-mapping-for-sybase"></a>Typetoewijzing voor Sybase
-Zoals vermeld in het artikel [Gegevensverplaatsingsactiviteiten](data-factory-data-movement-activities.md) voert de activiteit Kopiëren automatische typeconversies uit van brontypen naar sinktypen met de volgende benadering in twee stappen:
+## <a name="type-mapping-for-sybase"></a>Type toewijzing voor Sybase
+Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert de Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen:
 
-1. Converteren van native brontypen naar .NET-type
-2. Converteren van .NET-type naar native sinktype
+1. Converteren van systeem eigen bron typen naar .NET-type
+2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Sybase ondersteunt T-SQL- en T-SQL-typen. Zie [Azure SQL Connector-artikel](data-factory-azure-sql-connector.md) voor een toewijzingstabel van sql-typen tot .NET-type.
+Sybase ondersteunt T-SQL-en T-SQL-typen. Zie het artikel over [Azure SQL-connector](data-factory-azure-sql-connector.md) voor een toewijzings tabel van SQL-typen naar .net-type.
 
-## <a name="map-source-to-sink-columns"></a>Kaartbron om kolommen te laten zinken
-Zie Kolommen van [gegevenssetsin Azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in brongegevensset naar kolommen in sink dataset.
+## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
+Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaalbaar lezen uit relationele bronnen
-Houd bij het kopiëren van gegevens uit relationele gegevensopslag rekening met herhaalbaarheid om onbedoelde resultaten te voorkomen. In Azure Data Factory u een segment handmatig opnieuw uitvoeren. U ook het beleid voor een wijziging opnieuw configureren, zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment in beide richtingen wordt opnieuw uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht hoe vaak een segment wordt uitgevoerd. Zie [Herhaalbaar lezen uit relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
+Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Prestaties en tuning
-Zie [Handleiding activiteitsprestaties kopiëren & tuningom](data-factory-copy-activity-performance.md) meer te weten te komen over de belangrijkste factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en op verschillende manieren om deze te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

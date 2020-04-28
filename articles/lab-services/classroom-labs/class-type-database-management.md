@@ -1,6 +1,6 @@
 ---
-title: Een lab opzetten om databasebeheer voor relationele databases te onderwijzen | Microsoft Documenten
-description: Meer informatie over het opzetten van een lab om het beheer van relationele databases te onderwijzen.
+title: Stel een lab in om database beheer voor relationele data bases te leren | Microsoft Docs
+description: Meer informatie over het instellen van een lab om het beheer van relationele data bases te leren kennen.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -14,65 +14,65 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
 ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469915"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Een lab opzetten om databasebeheer voor relationele databases te onderwijzen
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Stel een lab in om database beheer te leren voor relationele data bases
 
-In dit artikel wordt beschreven hoe u een lab instelt voor een basisbeheerklasse voor databases in Azure Lab Services. Databases concepten zijn een van de inleidende cursussen onderwezen in de meeste van de Informatica afdelingen op de universiteit. Structured Query Language (SQL) is een internationale standaard. SQL is de standaardtaal voor relatiedatabasebeheer, inclusief het toevoegen, openen en beheren van inhoud in een database.  Het is het meest bekend om zijn snelle verwerking, bewezen betrouwbaarheid, gemak en flexibiliteit van het gebruik.
+In dit artikel wordt beschreven hoe u een Lab instelt voor een basis beheer klasse voor data bases in Azure Lab Services. Data bases zijn concepten van een van de in de meeste computer wetenschappen geschoolde opleidingen. Structured Query Language (SQL) is een internationale standaard. SQL is de standaard taal voor het beheer van relationele data bases, zoals het toevoegen, openen en beheren van inhoud in een Data Base.  Het wordt het meest vermeld voor de snelle verwerking, bewezen betrouw baarheid, het gemak en de flexibiliteit van gebruik.
 
-In dit artikel laten we zien hoe je een virtuele machinesjabloon in een lab instellen met zowel MySQL Database Server als SQL Server 2019-server.  [MySQL](https://www.mysql.com/) is een vrij beschikbaar open source Relational Database Management System (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) is de nieuwste versie van Microsoft's RDBMS.
+In dit artikel laten we zien hoe u een virtuele-machine sjabloon kunt instellen in een Lab met zowel de MySQL-database server als SQL Server 2019-server.  [MySQL](https://www.mysql.com/) is een vrij beschik bare open-source relationeel database beheersysteem (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) is de nieuwste versie van de RDBMS van micro soft.
 
-## <a name="lab-configuration"></a>Labconfiguratie
+## <a name="lab-configuration"></a>Lab-configuratie
 
-Om dit lab in te stellen, hebt u een Azure-abonnement en labaccount nodig om aan de slag te gaan. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zodra u een Azure-abonnement hebt, u een nieuw labaccount maken in Azure Lab Services. Zie [Zelfstudie om een Lab-account op te zetten voor](tutorial-setup-lab-account.md)meer informatie over het maken van een nieuw labaccount.  U ook een bestaand labaccount gebruiken.
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md)voor meer informatie over het maken van een nieuw Lab-account.  U kunt ook een bestaand Lab-account gebruiken.
 
-### <a name="lab-account-settings"></a>Lab-accountinstellingen
+### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
-Schakel de instellingen in die in de onderstaande tabel worden beschreven voor het labaccount. Zie Marketplace-afbeeldingen opgeven die beschikbaar zijn voor makers van het lab voor meer informatie over het inschakelen [van marketplace-afbeeldingen.](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
 
-| Lab-accountinstelling | Instructies |
+| Account instelling Lab | Instructies |
 | ------------------- | ------------ |
-|Afbeelding van Marktplaats| Schakel de afbeelding 'SQL Server 2019 Standard on Windows Server 2019' in voor gebruik binnen uw labaccount.|
+|Marketplace-installatie kopie| Schakel de installatie kopie ' SQL Server 2019 Standard op Windows Server 2019 ' in voor gebruik binnen uw Lab-account.|
 
 ### <a name="lab-settings"></a>Lab-instellingen
 
-Gebruik de instellingen in de onderstaande tabel bij het instellen van een klaslokaallab.  Zie een lesprogramma voor een klaslokaal voor meer informatie over het maken van een [leslokaallab.](tutorial-setup-classroom-lab.md)
+Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslokaal Lab.  Voor meer informatie over het maken van een leslokaal Lab raadpleegt u [een klassikale Lab-zelf studie instellen](tutorial-setup-classroom-lab.md).
 
 | Lab-instellingen | Waarde/instructies |
 | ------------ | ------------------ |
-|Virtuele machinegrootte| Gemiddeld. Deze grootte is het meest geschikt voor relationele databases, in-memory caching en analytics.|
-|Afbeelding van virtuele machine| SQL Server 2019 Standaard op Windows Server 2019|
+|Grootte van virtuele machine| Gemiddeld. Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse.|
+|Installatie kopie van virtuele machine| SQL Server 2019-standaard op Windows Server 2019|
 
-## <a name="template-machine-configuration"></a>Sjabloonmachineconfiguratie
+## <a name="template-machine-configuration"></a>Configuratie van de sjabloon machine
 
-Als u MySQL op Windows Server 2019 wilt installeren, u de stappen volgen die worden genoemd in [Het installeren en uitvoeren van MySQL Community Server op een virtuele machine.](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)
+Als u MySQL wilt installeren op Windows Server 2019, kunt u de stappen volgen die worden beschreven in [install en run mysql community server op een virtuele machine](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
 
-SQL Server 2019 is vooraf geïnstalleerd in het beeld van de virtuele machine dat we hebben gekozen bij het maken van het nieuwe lab.
+SQL Server 2019 is vooraf geïnstalleerd in de installatie kopie van de virtuele machine die u hebt gekozen bij het maken van het nieuwe lab.
 
-## <a name="cost-estimate"></a>Kostenraming
+## <a name="cost-estimate"></a>Kosten raming
 
-Laten we een mogelijke kostenraming voor deze klasse bespreken.  We gebruiken een klas van 25 studenten.  Er zijn 20 uur geplande lestijd.  Ook krijgt elke student een quotum van 10 uur voor huiswerk of opdrachten buiten de geplande lestijd.  De virtuele machine grootte die we kozen was medium, dat is 42 lab eenheden.
+Laten we een mogelijke schatting van de kosten voor deze klasse beslaan.  We gebruiken een klasse van 25 studenten.  Er zijn 20 uur geplande tijd voor de klasse.  Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd.  Het formaat van de virtuele machine die we hebben gekozen is gemiddeld, dat wil zeggen 42 Lab-eenheden.
 
-Hier volgt een voorbeeld van een mogelijke kostenraming voor deze klasse:
+Hier volgt een voor beeld van een mogelijke schatting van de kosten voor deze klasse:
 
-25 \* studenten (20 geplande uren + \* 10 quota-uren) 0,42 USD per uur = 315,00 USD
+25 studenten \* (20 geplande uren + 10 quotum uren) \* 0,42 usd per uur = 315,00 USD
 
-Meer informatie over prijzen, zie [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor meer informatie over prijzen.
 
 ## <a name="conclusion"></a>Conclusie
 
-In dit artikel hebt u de stappen doorlopen die nodig zijn om een lab te maken voor basisconcepten voor databasebeheer met behulp van zowel MySQL als SQL Server. U een vergelijkbare instelling gebruiken voor andere databasesklassen.
+In dit artikel werd uitgelegd hoe u stapsgewijs door de stappen die nodig zijn om een lab te maken voor basis concepten voor database beheer met behulp van MySQL en SQL Server. U kunt een vergelijk bare instelling voor andere data base-klassen gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende stappen zijn gebruikelijk voor het opzetten van een lab.
+De volgende stappen zijn gebruikelijk voor het instellen van elk lab.
 
 - [Een sjabloon maken en beheren](how-to-create-manage-template.md)
 - [Gebruikers toevoegen](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Quotum instellen](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Een schema instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Koppelingen naar e-mailregistratie naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
+- [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)

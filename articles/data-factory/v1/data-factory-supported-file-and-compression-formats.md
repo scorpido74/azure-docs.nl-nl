@@ -1,6 +1,6 @@
 ---
-title: Bestands- en compressieindelingen in Azure Data Factory
-description: Meer informatie over de bestandsindelingen die worden ondersteund door Azure Data Factory.
+title: Bestands-en compressie-indelingen in Azure Data Factory
+description: Meer informatie over de bestands indelingen die door Azure Data Factory worden ondersteund.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,32 +12,32 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281611"
 ---
-# <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Bestands- en compressieindelingen die worden ondersteund door Azure Data Factory
-*Dit onderwerp is van toepassing op de volgende connectors: [Amazon S3,](data-factory-amazon-simple-storage-service-connector.md) [Azure Blob,](data-factory-azure-blob-connector.md) [Azure Data Lake Store,](data-factory-azure-datalake-connector.md) [Bestandssysteem,](data-factory-onprem-file-system-connector.md) [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [HTTP](data-factory-http-connector.md)en [SFTP](data-factory-sftp-connector.md).*
+# <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory
+*Dit onderwerp is van toepassing op de volgende connectors: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure data Lake Store](data-factory-azure-datalake-connector.md), [Bestands systeem](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [http](data-factory-http-connector.md)en [SFTP](data-factory-sftp-connector.md).*
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Azure Data Factory. Als u de huidige versie van de datafabriekservice gebruikt, raadpleegt u [ondersteunde bestandsindelingen en compressiecodecs in Gegevensfabriek](../supported-file-formats-and-compression-codecs.md).
+> Dit artikel is van toepassing op versie 1 van Azure Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [ondersteunde bestands indelingen en compressie-codecs in Data Factory](../supported-file-formats-and-compression-codecs.md).
 
-Azure Data Factory ondersteunt de volgende bestandsindelingstypen:
+Azure Data Factory ondersteunt de volgende typen bestands indelingen:
 
-* [Tekstnotatie](#text-format)
+* [Tekst indeling](#text-format)
 * [JSON-indeling](#json-format)
-* [Avro-formaat](#avro-format)
+* [Avro-indeling](#avro-format)
 * [ORC-indeling](#orc-format)
-* [Parketformaat](#parquet-format)
+* [Parquet-indeling](#parquet-format)
 
-## <a name="text-format"></a>Tekstnotatie
-Als u wilt lezen uit een tekstbestand of naar `type` een `format` tekstbestand wilt schrijven, stelt u de eigenschap in de sectie van de gegevensset in op **TextFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Raadpleeg het gedeelte [TextFormat-voorbeeld](#textformat-example) voor configuratie-instructies.
+## <a name="text-format"></a>Tekst indeling
+Als u wilt lezen uit een tekst bestand of naar een tekst bestand wilt schrijven, stelt u `type` de eigenschap in `format` het gedeelte van de gegevensset in op **TextFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Raadpleeg het gedeelte [TextFormat-voorbeeld](#textformat-example) voor configuratie-instructies.
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U overwegen om een zeldzame niet-afdrukbare char te gebruiken die waarschijnlijk niet in uw gegevens bestaat. Geef bijvoorbeeld '\u0001' op, wat het begin van kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')**. <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code ervoor te krijgen. |Nee |
+| columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen om een zeldzaam niet-afdrukbaar teken te gebruiken dat waarschijnlijk niet aanwezig is in uw gegevens. Geef bijvoorbeeld ' \u0001 ' op, die het begin van de kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')**. <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code te verkrijgen. |Nee |
 | rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'**. |Nee |
 | escapeChar |Dit speciale teken wordt gebruikt om een scheidingsteken voor kolommen van de inhoud van het invoerbestand om te zetten. <br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: 'Hallo, wereld'), kunt u '$' als het omzettingsteken opgeven en in de bron de tekenreeks 'Hallo$, wereld' gebruiken. |Nee |
 | quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |Nee |
@@ -48,7 +48,7 @@ Als u wilt lezen uit een tekstbestand of naar `type` een `format` tekstbestand w
 | treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |Nee |
 
 ### <a name="textformat-example"></a>Voorbeeld van TextFormat
-In de volgende JSON-definitie voor een gegevensset worden enkele optionele eigenschappen opgegeven.
+In de volgende JSON-definitie voor een gegevensset zijn enkele van de optionele eigenschappen opgegeven.
 
 ```json
 "typeProperties":
@@ -81,21 +81,21 @@ Gebruik een `escapeChar` in plaats van `quoteChar`, vervang de regel door `quote
 * U wilt kopiëren uit een tekstbestand en wilt een paar regels aan het begin overslaan die geen gegevens of headerinformatie bevatten. Geef `skipLineCount` op om aan te geven hoeveel regels er moeten worden overgeslagen. Als de rest van het bestand een headerregel bevat, kunt u ook `firstRowAsHeader` opgeven. Als zowel `skipLineCount` als `firstRowAsHeader` is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand
 
 ## <a name="json-format"></a>JSON-indeling
-Als **u een JSON-bestand as-is wilt importeren/exporteren naar/vanuit Azure Cosmos DB,** raadpleegt u de sectie [JSON-documenten importeren/exporteren](data-factory-azure-documentdb-connector.md#importexport-json-documents) in het artikel [Gegevens verplaatsen van/naar Azure Cosmos DB.](data-factory-azure-documentdb-connector.md)
+Als u **een JSON-bestand wilt importeren/exporteren naar/van Azure Cosmos DB**, raadpleegt u de sectie [JSON-documenten importeren/exporteren](data-factory-azure-documentdb-connector.md#importexport-json-documents) in [gegevens verplaatsen naar/van Azure Cosmos DB](data-factory-azure-documentdb-connector.md) artikel.
 
-Als u de JSON-bestanden wilt ontleden of de gegevens `type` in `format` JSON-indeling wilt schrijven, stelt u de eigenschap in de sectie in op **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
+Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schrijven `type` , stelt u `format` de eigenschap in de sectie in op **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
 | jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren van gegevens uit JSON-bestanden. | Nee |
 | jsonPathDefinition | Hiermee geeft u de JSON-padexpressie aan voor elke kolomtoewijzing met een aangepaste kolomnaam (begin met een kleine letter). Deze eigenschap wordt alleen ondersteund bij het kopiëren van gegevens uit JSON-bestanden. U kunt gegevens ophalen uit het object of een matrix. <br/><br/> Voor velden onder het hoofdobject begint u met root $; voor velden binnen de matrix die is gekozen door de eigenschap `jsonNodeReference`, begint u vanaf het element van de matrix. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies. | Nee |
-| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Bijvoorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is: **UTF-8**. |Nee |
+| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Bijvoorbeeld: windows 1250 of shift_jis. De **standaard** waarde is: **UTF-8**. |Nee |
 | nestingSeparator |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. De standaardwaarde is '.' (punt). |Nee |
 
 ### <a name="json-file-patterns"></a>JSON-bestandpatronen
 
-Kopieeractiviteit kan de volgende patronen van JSON-bestanden ontleden:
+Met de Kopieer activiteit kunt u de volgende patronen van JSON-bestanden parseren:
 
 - **Type I: setOfObjects**
 
@@ -188,7 +188,7 @@ Kopieeractiviteit kan de volgende patronen van JSON-bestanden ontleden:
 
 **Voorbeeld 1: gegevens uit JSON-bestanden kopiëren**
 
-Zie de volgende twee voorbeelden bij het kopiëren van gegevens uit JSON-bestanden. De generieke punten op te merken:
+Bekijk de volgende twee voor beelden bij het kopiëren van gegevens uit JSON-bestanden. De algemene punten die moeten worden genoteerd:
 
 **Voorbeeld 1: gegevens ophalen uit object en matrix**
 
@@ -225,8 +225,8 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door ge
 
 De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
-- Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [Kolommen met gegevenssetgegevenssets toewijzen aan](data-factory-map-columns.md) de sectie Doelgegevenssetkolommen voor meer details.
-- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens uit array wilt kopiëren, u **array[x].eigenschap** gebruiken om de waarde van de gegeven eigenschap uit het xth-object te extraheren, of u **array[*]. eigenschap** gebruiken om de waarde te vinden van een object dat een dergelijke eigenschap bevat.
+- Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie de sectie [bron gegevensset toewijzen aan kolommen voor doel gegevensset](data-factory-map-columns.md) voor meer informatie.
+- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens wilt kopiëren uit een matrix, kunt u **matrix [x]. Property** gebruiken om de waarde van de gegeven eigenschap uit het Xth-object op te halen, of u kunt **matrix [*]. Property** gebruiken om de waarde te vinden van een object dat dergelijke eigenschap bevat.
 
 ```json
 "properties": {
@@ -298,7 +298,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling, door d
 
 De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
-- Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [Kolommen met gegevenssetgegevenssets toewijzen aan](data-factory-map-columns.md) de sectie Doelgegevenssetkolommen voor meer details.
+- Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie de sectie [bron gegevensset toewijzen aan kolommen voor doel gegevensset](data-factory-map-columns.md) voor meer informatie.
 - Met `jsonNodeReference` geeft u aan dat moet worden gebladerd naar het object en dat er gegevens uit moeten worden opgehaald met hetzelfde patroon onder de **matrix** orderlines.
 - Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. In dit voorbeeld bevinden 'ordernumber', 'orderdate' en 'city' zich onder het root-object. Het JSON-pad begint met '$.', terwijl 'order_pd' en 'order_price' worden gedefinieerd met het pad dat is afgeleid van het matrixelement zonder '$.'.
 
@@ -347,7 +347,7 @@ De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (
 
 **Voorbeeld 2: gegevens schrijven naar een JSON-bestand**
 
-Als u de volgende tabel in SQL-database hebt:
+Als u de volgende tabel in SQL Database hebt:
 
 | id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
@@ -355,7 +355,7 @@ Als u de volgende tabel in SQL-database hebt:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-en voor elke record verwacht u naar een JSON-object in de volgende indeling te schrijven:
+voor elke record gaat u naar een JSON-object in de volgende indeling schrijven:
 ```json
 {
     "id": "1",
@@ -367,7 +367,7 @@ en voor elke record verwacht u naar een JSON-object in de volgende indeling te s
 }
 ```
 
-De uitvoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer specifiek `structure` definieert sectie de aangepaste `nestingSeparator` eigenschapsnamen in het doelbestand (standaard is '.") worden gebruikt om de nestlaag van de naam te identificeren. Dit gedeelte is **optioneel**, tenzij u de naam van de eigenschap wilt wijzigen ten opzichte van de naam van de bronkolom of sommige eigenschappen wilt nesten.
+De uitvoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer specifiek: `structure` in de sectie worden de aangepaste eigenschapnamen in het doel `nestingSeparator` bestand gedefinieerd (de standaard waarde is '. ') worden gebruikt om de nest laag te identificeren uit de naam. Dit gedeelte is **optioneel**, tenzij u de naam van de eigenschap wilt wijzigen ten opzichte van de naam van de bronkolom of sommige eigenschappen wilt nesten.
 
 ```json
 "properties": {
@@ -398,7 +398,7 @@ De uitvoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: 
 }
 ```
 
-## <a name="avro-format"></a>AVRO-formaat
+## <a name="avro-format"></a>AVRO-indeling
 Als u de Avro-bestanden wilt parseren of de gegevens in Avro-indeling wilt schrijven, stelt u de eigenschap `format` `type` in op **AvroFormat**. U hoeft geen eigenschappen op te geven in het gedeelte Indeling binnen het gedeelte typeProperties. Voorbeeld:
 
 ```json
@@ -412,7 +412,7 @@ Als u de Avro-indeling wilt gebruiken in een Hive-tabel, kunt u de [Zelfstudie v
 
 Houd rekening met de volgende punten:  
 
-* [Complexe gegevenstypen](https://avro.apache.org/docs/current/spec.html#schema_complex) worden niet ondersteund (records, enums, arrays, kaarten, vakbonden en vaste bestanden).
+* [Complexe gegevens typen](https://avro.apache.org/docs/current/spec.html#schema_complex) worden niet ondersteund (records, enums, matrices, kaarten, vakbonden en vast).
 
 ## <a name="orc-format"></a>ORC-indeling
 Als u de ORC-bestanden wilt parseren of de gegevens in ORC-indeling wilt schrijven, stelt u de eigenschap `format` `type` in op **OrcFormat**. U hoeft geen eigenschappen op te geven in het gedeelte Indeling binnen het gedeelte typeProperties. Voorbeeld:
@@ -454,9 +454,9 @@ Houd rekening met de volgende punten:
 * Parquet-bestanden hebben de volgende opties voor compressie: NONE, SNAPPY, GZIP en LZO. Data Factory ondersteunt het lezen van gegevens uit ORC-bestanden in een van deze gecomprimeerde indelingen. Hierbij wordt de compressiecodec in de metagegevens gebruikt om de gegevens te lezen. Bij het schrijven naar een Parquet-bestand kiest Data Factory echter SNAPPY, de standaardinstelling voor Parquet. Er is momenteel geen optie om dit gedrag te overschrijven.
 
 ## <a name="compression-support"></a>Ondersteuning voor compressie
-Het verwerken van grote gegevenssets kan i/o- en netwerkknelpunten veroorzaken. Daarom kunnen gecomprimeerde gegevens in winkels niet alleen de gegevensoverdracht over het netwerk versnellen en schijfruimte besparen, maar ook aanzienlijke prestatieverbeteringen opleveren bij de verwerking van big data. Momenteel wordt compressie ondersteund voor bestandsgebaseerde gegevensopslag, zoals Azure Blob of On-premises Bestandssysteem.  
+Het verwerken van grote gegevens sets kan I/O-en netwerk knelpunten veroorzaken. Gecomprimeerde gegevens in archieven kunnen daarom niet alleen de gegevens overdracht over het netwerk versnellen en schijf ruimte besparen, maar ook aanzienlijke prestatie verbeteringen in de verwerking van big data. Momenteel wordt compressie ondersteund voor gegevens archieven op basis van bestanden zoals Azure Blob of een on-premises bestands systeem.  
 
-Als u compressie voor een gegevensset wilt opgeven, gebruikt u de **compressieeigenschap** in de gegevensset JSON zoals in het volgende voorbeeld:   
+Als u compressie voor een gegevensset wilt opgeven, gebruikt u de eigenschap **Compression** in de JSON van de gegevensset, zoals in het volgende voor beeld:   
 
 ```json
 {  
@@ -480,35 +480,35 @@ Als u compressie voor een gegevensset wilt opgeven, gebruikt u de **compressieei
 }  
 ```
 
-Stel dat de voorbeeldgegevensset wordt gebruikt als de uitvoer van een kopieeractiviteit, comprimeert de kopieeractiviteit de uitvoergegevens met GZIP-codec met behulp van een optimale verhouding en schrijft u de gecomprimeerde gegevens vervolgens in een bestand met de naam pagecounts.csv.gz in de Azure Blob Storage.
+Stel dat de voor beeld-gegevensset wordt gebruikt als uitvoer van een Kopieer activiteit. de Kopieer activiteit comprimeert de uitvoer gegevens met de GZIP-codec met een optimale verhouding en schrijft vervolgens de gecomprimeerde gegevens naar een bestand met de naam Counters. CSV. gz in de Azure-Blob Storage.
 
 > [!NOTE]
-> Compressie-instellingen worden niet ondersteund voor gegevens in het **AvroFormat**, **OrcFormat**of **Parketformaat**. Bij het lezen van bestanden in deze indelingen detecteert en gebruikt Data Factory de compressiecodec in de metagegevens. Bij het schrijven naar bestanden in deze indelingen kiest Data Factory de standaardcompressiecodec voor die indeling. Bijvoorbeeld ZLIB voor OrcFormat en SNAPPY voor ParketFormat.   
+> Compressie-instellingen worden niet ondersteund voor gegevens in de **Avro Format**, **OrcFormat**of **ParquetFormat**. Bij het lezen van bestanden in deze indelingen Data Factory detecteert en gebruikt de compressie-codec in de meta gegevens. Wanneer u naar bestanden in deze indelingen schrijft, kiest Data Factory de standaard compressie-codec voor die indeling. Bijvoorbeeld ZLIB voor OrcFormat en SNAPPY voor ParquetFormat.   
 
-De **compressiesectie** heeft twee eigenschappen:  
+De sectie **compressie** heeft twee eigenschappen:  
 
-* **Type:** de compressiecodec, die **GZIP,** **Deflate,** **BZIP2**of **ZipDeflate**kan zijn.  
-* **Niveau:** de compressieverhouding, die **optimaal** of **snelste**kan zijn.
+* **Type:** de compressie-codec, die **gzip**, **Deflate**, **bzip2**of **ZipDeflate**kan zijn.  
+* **Niveau:** de compressie ratio, die **optimaal** of **snelst**kan zijn.
 
-  * **Snelste:** De compressiebewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.
-  * **Optimaal**: De compressiebewerking moet optimaal worden gecomprimeerd, zelfs als de bewerking langer duurt.
+  * **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.
+  * **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt.
 
-    Zie Onderwerp [compressieniveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie.
+    Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie.
 
-Wanneer u `compression` de eigenschap opgeeft in een JSON van de invoerset, kan de pijplijn gecomprimeerde gegevens uit de bron lezen. en wanneer u de eigenschap in een uitvoergegevensset JSON opgeeft, kan de kopieeractiviteit gecomprimeerde gegevens naar de bestemming schrijven. Hier volgen een paar voorbeeldscenario's:
+Wanneer u een `compression` eigenschap opgeeft in een JSON van een invoer gegevensset, kan de pijp lijn gecomprimeerde gegevens uit de bron lezen. en wanneer u de eigenschap in een JSON van een uitvoer gegevensset opgeeft, kan de Kopieer activiteit gecomprimeerde gegevens naar het doel schrijven. Hier volgen enkele voor beelden van scenario's:
 
-* Lees GZIP-gecomprimeerde gegevens uit een Azure-blob, decomprimeer deze en schrijf resultaatgegevens naar een Azure SQL-database. U definieert de invoer-Azure Blob-gegevensset met de `compression` `type` eigenschap JSON als GZIP.
-* Lees gegevens uit een bestand met platte tekst van on-premises bestandssysteem, comprimeer het met de GZip-indeling en schrijf de gecomprimeerde gegevens naar een Azure-blob. U definieert een uitvoer-Azure Blob-gegevensset met de `compression` `type` eigenschap JSON als GZip.
-* Lees .zip-bestand van ftp-server, decomprimeer het om de bestanden binnen te krijgen en land deze bestanden in Azure Data Lake Store. U definieert een FTP-invoerset met de `compression` `type` eigenschap JSON als ZipDeflate.
-* Lees een GZIP-gecomprimeerde gegevens uit een Azure-blob, decomprimeer deze, comprimeer deze met BZIP2 en schrijf resultaatgegevens naar een Azure-blob. U definieert de invoer-Azure Blob-gegevensset `compression` `type` met `compression` `type` ingesteld op GZIP en de uitvoergegevensset met ingesteld op BZIP2 in dit geval.   
+* Lees de door GZIP gecomprimeerde gegevens van een Azure-Blob, Decomprimeer deze en schrijf resultaat gegevens naar een Azure-SQL database. U definieert de invoer van de Azure Blob- `compression` `type` gegevensset met de JSON-eigenschap als gzip.
+* Gegevens lezen uit een bestand met een onbewerkte tekst vanuit een on-premises bestands systeem, comprimeren met de GZip-indeling en de gecomprimeerde gegevens schrijven naar een Azure-Blob. U definieert een uitvoer van een Azure Blob- `compression` `type` gegevensset met de JSON-eigenschap als gzip.
+* Lees het zip-bestand van de FTP-server, Decomprimeer het om de bestanden erin op te halen en de bestanden naar Azure Data Lake Store te brengen. U definieert een invoer-FTP-gegevensset `compression` `type` met de JSON-eigenschap als ZipDeflate.
+* Lees een door GZIP gecomprimeerde gegevens uit een Azure-Blob, Decomprimeer het, comprimeer deze met BZIP2 en schrijf resultaat gegevens naar een Azure-Blob. In dit geval definieert u de invoer van `compression` `type` de Azure Blob-gegevensset die is ingesteld `compression` `type` op gzip en de uitvoer gegevensset met ingesteld op bzip2.   
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor bestandsgebaseerde gegevensopslag die worden ondersteund door Azure Data Factory:
+Raadpleeg de volgende artikelen voor gegevens archieven op basis van bestanden die worden ondersteund door Azure Data Factory:
 
 - [Azure Blob Storage](data-factory-azure-blob-connector.md)
 - [Azure Data Lake Store](data-factory-azure-datalake-connector.md)
 - [FTP](data-factory-ftp-connector.md)
 - [HDFS](data-factory-hdfs-connector.md)
-- [File System](data-factory-onprem-file-system-connector.md)
+- [Bestandssysteem](data-factory-onprem-file-system-connector.md)
 - [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)
