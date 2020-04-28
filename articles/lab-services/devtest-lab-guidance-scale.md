@@ -1,6 +1,6 @@
 ---
-title: Uw Azure DevTest Labs-infrastructuur opschalen
-description: In dit artikel vindt u richtlijnen voor het opschalen van uw Azure DevTest Labs-infrastructuur.
+title: Uw Azure DevTest Labs-infra structuur omhoog schalen
+description: Dit artikel bevat richt lijnen voor het schalen van uw Azure DevTest Labs-infra structuur.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,57 +14,57 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75644831"
 ---
-# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Uw Azure DevTest Labs-infrastructuur opschalen
-Voorafgaand aan de implementatie van DevTest Labs op bedrijfsschaal, zijn er verschillende belangrijke beslissingspunten. Inzicht in deze beslissingspunten op een hoog niveau helpt een organisatie met ontwerpbeslissingen in de toekomst. Deze punten mogen echter niet voorkomen dat een organisatie een proof of concept start. De top drie gebieden voor de eerste scale-up planning zijn:
+# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Uw Azure DevTest Labs-infra structuur omhoog schalen
+Voordat u DevTest Labs implementeert op het niveau van de onderneming, zijn er verschillende belang rijke beslissings punten. Met betrekking tot deze beslissings punten op een hoog niveau kan een organisatie in de toekomst ontwerp beslissingen nemen. Deze punten mogen echter niet terugvallen op het begin van het testen van een concept. De drie belangrijkste gebieden voor het plannen van de eerste schaal zijn:
 
 - Netwerken en beveiliging
-- Abonnementstopologie
+- Topologie van abonnement
 - Rollen en verantwoordelijkheden
 
 ## <a name="networking-and-security"></a>Netwerken en beveiliging
-Netwerken en beveiliging zijn hoekstenen voor alle organisaties. Hoewel een bedrijfsbrede implementatie een veel diepere analyse vereist, zijn er een beperkt aantal vereisten om een proof of concept succesvol te realiseren. Een paar belangrijke aandachtsgebieden zijn:
+Netwerken en beveiliging zijn hoek stenen voor alle organisaties. Hoewel een implementatie op ondernemings niveau een veel diepere analyse vereist, is er een kleiner aantal vereisten om een proef van het concept uit te voeren. Enkele belang rijke aspecten van de focus zijn:
 
-- **Azure-abonnement** : als u DevTest Labs wilt implementeren, moet u toegang hebben tot een Azure-abonnement met de juiste rechten om resources te maken. Er zijn een aantal manieren om toegang te krijgen tot Azure-abonnementen, waaronder een Enterprise Agreement en Pay As You Go. Zie Azure voor het bedrijf [licenties voor meer](https://azure.microsoft.com/pricing/enterprise-agreement/)informatie over het verkrijgen van toegang tot een Azure-abonnement.
-- **Toegang tot on-premises resources** : sommige organisaties hebben hun resources in DevTest Labs nodig om toegang te krijgen tot on-premises resources. Er is een beveiligde verbinding nodig van uw on-premises omgeving met Azure. Daarom is het belangrijk dat u een VPN- of Express Route-verbinding instelt/configureert voordat u aan de slag gaat. Zie [Overzicht virtuele netwerken](../virtual-network/virtual-networks-overview.md)voor meer informatie.
-- **Aanvullende beveiligingsvereisten** - Andere beveiligingsvereisten, zoals machinebeleid, toegang tot openbare IP-adressen, verbinding maken met internet zijn scenario's die mogelijk moeten worden herzien voordat een proof of concept wordt geïmplementeerd. 
+- **Azure-abonnement** : als u DevTest Labs wilt implementeren, moet u toegang hebben tot een Azure-abonnement met de juiste rechten voor het maken van resources. Er zijn een aantal manieren om toegang te krijgen tot Azure-abonnementen, met inbegrip van een Enterprise Agreement en betalen naar gebruik. Zie [licenties voor Azure voor ondernemingen](https://azure.microsoft.com/pricing/enterprise-agreement/)voor meer informatie over het verkrijgen van toegang tot een Azure-abonnement.
+- **Toegang tot on-premises resources** : sommige organisaties vereisen dat hun resources in DevTest Labs toegang hebben tot on-premises resources. Er is een beveiligde verbinding van uw on-premises omgeving naar Azure nodig. Daarom is het belang rijk dat u een VPN-of Express route-verbinding instelt of configureert voordat u aan de slag gaat. Zie [overzicht van virtuele netwerken](../virtual-network/virtual-networks-overview.md)voor meer informatie.
+- **Aanvullende beveiligings vereisten** : andere beveiligings vereisten, zoals computer beleid, toegang tot open bare IP-adressen, verbinding maken met internet, zijn scenario's die mogelijk moeten worden beoordeeld voordat een testen van het concept wordt geïmplementeerd. 
 
-## <a name="subscription-topology"></a>Abonnementstopologie
-Subscription Topology is een kritische ontwerpoverweging bij het implementeren van DevTest Labs in de Enterprise. Het is echter niet nodig om alle beslissingen te stollen tot nadat een proof of concept is voltooid. Bij de evaluatie van het aantal abonnementen dat nodig is voor een bedrijfsimplementatie, zijn er twee uitersten: 
+## <a name="subscription-topology"></a>Topologie van abonnement
+De topologie van abonnementen is een kritische ontwerp overweging bij het implementeren van DevTest Labs in de onderneming. Het is echter niet nodig om alle beslissingen te versterkenen totdat een concept is voltooid. Bij het evalueren van het aantal abonnementen dat vereist is voor een bedrijfs implementatie, zijn er twee extreme: 
 
 - Eén abonnement voor de hele organisatie
 - Abonnement per gebruiker
 
-Vervolgens belichten we de pluspunten van elke aanpak.
+Vervolgens markeren we de voor delen van elke benadering.
 
 ### <a name="one-subscription"></a>Eén abonnement
-Vaak is de aanpak van één abonnement niet beheersbaar in een grote onderneming. Het beperken van het aantal abonnementen biedt echter de volgende voordelen:
+Vaak is de aanpak van één abonnement niet beheerbaar in een grote onderneming. Het beperken van het aantal abonnementen biedt echter de volgende voor delen:
 
-- **Kosten voor ondernemingen voorspellen.**  Budgettering wordt veel gemakkelijker in één abonnement omdat alle resources zich in één groep bevinden. Deze aanpak maakt eenvoudigere besluitvorming mogelijk over wanneer kostenbeheersingsmaatregelen op een bepaald moment in een factureringscyclus moeten worden genomen.
-- **Beheerbaarheid** van VM's, artefacten, formules, netwerkconfiguratie, machtigingen, beleid, enz.
-- **Netwerkinspanningen** worden sterk vereenvoudigd in één abonnement voor ondernemingen waar on-premises connectiviteit een vereiste is. Het aansluiten van virtuele netwerken tussen abonnementen (hub-spoke model) is vereist met extra abonnementen, waarvoor extra configuratie, beheer, IP-adresruimten, enz.
-- **Teamsamenwerking** is eenvoudiger wanneer iedereen in hetzelfde abonnement werkt , bijvoorbeeld om een VM opnieuw toe te wijzen aan een collega, teamresources te delen, enz.
+- **Prognose** van de kosten voor Enter prise.  Budget tering wordt veel eenvoudiger in één abonnement, omdat alle resources zich in één groep bevinden. Deze aanpak maakt het mogelijk om eenvoudig besluit te nemen bij het uitvoeren van kostencontrole maatregelen op een bepaald moment in een facturerings cyclus.
+- **Beheer baarheid** van vm's, artefacten, formules, netwerk configuratie, machtigingen, beleids regels, enzovoort is eenvoudiger omdat alle updates alleen in één abonnement zijn vereist, in plaats van updates te maken voor veel abonnementen.
+- De **netwerk** inspanning is aanzienlijk vereenvoudigd in één abonnement voor ondernemingen waarbij een on-premises connectiviteit een vereiste is. Het verbinden van virtuele netwerken tussen abonnementen (hub-spoke model) is vereist voor extra abonnementen, waarvoor aanvullende configuratie, beheer, IP-adres ruimten, enzovoort.
+- **Samen werking tussen teams** is eenvoudiger wanneer iedereen in hetzelfde abonnement werkt. het is bijvoorbeeld eenvoudiger om een virtuele machine opnieuw toe te wijzen aan een mede werker, team resources te delen, enzovoort.
 
 ### <a name="subscription-per-user"></a>Abonnement per gebruiker
-Een apart abonnement per gebruiker biedt gelijke kansen voor het alternatieve spectrum. De voordelen van het hebben van veel abonnementen zijn:
+Een afzonderlijk abonnement per gebruiker biedt gelijke kansen voor het alternatieve spectrum. De voor delen van het gebruik van veel abonnementen zijn:
 
-- **Azure-schaalquota** vormen geen belemmering voor acceptatie. Vanaf dit schrijven staat Azure bijvoorbeeld 200 opslagaccounts per abonnement toe. Er zijn operationele quota voor de meeste services in Azure (veel kunnen worden aangepast, sommige niet). In dit model van een abonnement per gebruiker is het hoogst onwaarschijnlijk dat de meeste quota worden bereikt. Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de huidige Azure-schalingsquota.
-- **Terugboekingen** naar groepen of individuele ontwikkelaars worden veel gemakkelijker, waardoor organisaties de kosten kunnen verantwoorden met behulp van hun huidige model.
-- **Eigendom & machtigingen** van de DevTest Labs-omgevingen zijn eenvoudig. U geeft ontwikkelaars toegang op abonnementsniveau en zij zijn 100% verantwoordelijk voor alles, inclusief de netwerkconfiguratie, het labbeleid en vm-beheer.
+- **Quota** voor het schalen van Azure worden niet belemmerd. Zo kunnen met behulp van deze schrijf bewerkingen in azure 200 opslag accounts per abonnement worden opgesteld. Er zijn operationele quota's voor de meeste services in azure (veel kunnen worden aangepast, sommige niet). In dit model van een abonnement per gebruiker is het zeer onwaarschijnlijk dat de meeste quota worden bereikt. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de huidige quota voor het schalen van Azure.
+- Het maken van **instortingen** naar groepen of individuele ontwikkel aars is veel eenvoudiger, waardoor organisaties hun kosten met hun huidige model kunnen verrekenen.
+- **Eigendom & machtigingen** van de DevTest Labs-omgevingen zijn eenvoudig. U geeft ontwikkel aars de toegang op abonnements niveau en ze zijn 100% verantwoordelijk voor alles, met inbegrip van de netwerk configuratie, het lab-beleid en het beheer van virtuele machines.
 
-In de Enterprise kunnen er voldoende beperkingen zijn aan de uitersten van het spectrum. Daarom moet u mogelijk abonnementen instellen op een manier die in het midden van deze uitersten valt. Als een best practice, het doel van een organisatie moet zijn om het minimale aantal abonnementen te gebruiken als mogelijk met het oog op de dwingende functies die het totale aantal abonnementen te verhogen. Om te herhalen, abonnement topologie is van cruciaal belang voor een onderneming inzet van DevTest Labs, maar mag niet vertragen een proof of concept. Er zijn aanvullende details in het [artikel Governance](devtest-lab-guidance-governance-policy-compliance.md) over hoe te beslissen over abonnement en lab granulariteit in de organisatie.
+In de onderneming zijn er mogelijk voldoende beperkingen voor de Extremes van het spectrum. Daarom moet u mogelijk abonnementen instellen op een manier die in het midden van deze extremees valt. Als best practice moet het doel van een organisatie het minimale aantal abonnementen gebruiken, zodat u rekening houdt met de afdwingings functies die het totale aantal abonnementen verhogen. De topologie van abonnementen is essentieel voor een Enter prise-implementatie van DevTest Labs, maar mag geen testen van het concept vertragen. In het artikel [governance](devtest-lab-guidance-governance-policy-compliance.md) vindt u meer informatie over het kiezen van een abonnement en een Lab-granulatie in de organisatie.
 
 ## <a name="roles-and-responsibilities"></a>Rollen en verantwoordelijkheden
-Een DevTest Labs proof of concept heeft drie primaire rollen met gedefinieerde verantwoordelijkheden - Eigenaar van een abonnement, Eigenaar Van DevTest Labs, DevTest Labs gebruiker, en optioneel een Bijdrager.
+Een DevTest Labs-concept heeft drie primaire rollen met gedefinieerde verantwoordelijkheden: abonnements eigenaar, DevTest Labs-eigenaar, DevTest Labs-gebruiker en optioneel een mede werker.
 
-- **Eigenaar van een abonnement** : de eigenaar van het abonnement heeft rechten om een Azure-abonnement toe te dienen, waaronder het toewijzen van gebruikers, het beheren van beleid, het maken van & het beheren van netwerktopologie, het aanvragen van quotaverhogingen, enz. Zie voor meer informatie [dit artikel.](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- **DevTest Labs eigenaar** - De DevTest Labs eigenaar heeft volledige administratieve toegang tot het lab. Deze persoon is verantwoordelijk voor het toevoegen/verwijderen van gebruikers, het beheren van kosteninstellingen, algemene labinstellingen en andere vm/artefact-gebaseerde taken. Een lab eigenaar heeft ook alle rechten van een DevTest Labs Gebruiker.
-- **DevTest Labs gebruiker** - De DevTest Labs gebruiker kan maken en consumeren van de virtuele machines in het lab. Deze personen hebben een aantal minimale administratieve mogelijkheden op VM's die ze maken (start/stop/delete/configureer hun VM's). De gebruikers kunnen vm's van andere gebruikers niet beheren.
+- **Abonnements eigenaar** : de eigenaar van het abonnement heeft rechten om een Azure-abonnement te beheren, met inbegrip van het toewijzen van gebruikers, het beheren van beleid, het maken van & netwerk topologie, het aanvragen van quotum verhogingen, enzovoort. Zie [dit artikel](../role-based-access-control/rbac-and-directory-admin-roles.md)voor meer informatie.
+- **Eigenaar van DevTest Labs** : de eigenaar van de DevTest Labs heeft volledige beheerders toegang tot het lab. Deze persoon is verantwoordelijk voor het toevoegen/verwijderen van gebruikers, het beheren van kosten instellingen, algemene Lab-instellingen en andere taken op basis van virtuele machines en artefacten. Een Lab-eigenaar heeft ook alle rechten van een DevTest Labs-gebruiker.
+- **DevTest Labs-gebruiker** : de DevTest Labs-gebruiker kan de virtuele machines in het lab maken en gebruiken. Deze personen hebben een aantal minimale beheer mogelijkheden op Vm's die ze maken (starten/stoppen/verwijderen/configureren van de Vm's). De gebruikers kunnen geen Vm's van andere gebruikers beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel in deze serie: [Orkestreren van de implementatie van Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)
+Zie het volgende artikel in deze serie: [de implementatie van Azure DevTest Labs organiseren](devtest-lab-guidance-orchestrate-implementation.md)

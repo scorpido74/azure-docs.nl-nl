@@ -9,49 +9,49 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d88fcfc4d3e073bf544f2ca0f4d01dbe305b45da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75775509"
 ---
 # <a name="direct-peering-walkthrough"></a>Overzicht van Direct peering
 
-In dit gedeelte worden de stappen uitgelegd die u moet volgen om een direct peering in te stellen en te beheren.
+In deze sectie worden de stappen beschreven die u moet volgen om een directe peering in te stellen en te beheren.
 
-## <a name="create-a-direct-peering"></a>Een direct peering maken
+## <a name="create-a-direct-peering"></a>Een directe peering maken
 > [!div class="mx-imgBorder"]
-> ![Direct peering-werkstroom en verbindingsstatus](./media/direct-peering.png)
+> ![Werk stroom voor directe peering en verbindings status](./media/direct-peering.png)
 
-De volgende stappen moeten worden gevolgd om een Direct peering te voorzien:
-1. Bekijk het [peeringbeleid van](https://peering.azurewebsites.net/peering) Microsoft om inzicht te krijgen in de vereisten voor direct peering.
-1. Volg de instructies in [Een direct peering maken of wijzigen](howto-direct-powershell.md) om een peering-aanvraag in te dienen.
-1. Nadat u een peering-verzoek hebt ingediend, neemt Microsoft contact op met uw geregistreerde e-mailadres om LOA (Autorisatiebrief) of voor andere informatie te verstrekken.
-1. Zodra peering-aanvraag is goedgekeurd, wordt de verbindingsstatus gewijzigd in ProvisioningStarted.
-1. Je moet:
-    1. volledige bedrading volgens de LOA
-    1. (optioneel) linktest uitvoeren met 169.254.0.0/16
-    1. BGP-sessie configureren en ons vervolgens op de hoogte stellen.
-1. Microsoft voorziet in Een BGP-sessie met DENY ALL-beleid en valideert end-to-end.
-1. Als dit is gelukt, ontvangt u een melding dat de status peering-verbinding actief is.
-1. Het verkeer wordt dan toegestaan door de nieuwe peering.
+De volgende stappen moeten worden gevolgd om een rechtstreekse peering in te richten:
+1. Bekijk het micro soft- [beleid voor peering](https://peering.azurewebsites.net/peering) om inzicht te krijgen in de vereisten voor directe peering.
+1. Volg de instructies in [een directe peering maken of wijzigen](howto-direct-powershell.md) om een peering-aanvraag in te dienen.
+1. Nadat u een aanvraag voor peering hebt ingediend, neemt micro soft contact met uw geregistreerde e-mail adres op om LOA (Authorization) of voor andere informatie te bieden.
+1. Zodra een peering-aanvraag is goedgekeurd, wordt de verbindings status gewijzigd in ProvisioningStarted.
+1. U moet het volgende doen:
+    1. bekabeling volt ooien volgens de LOA
+    1. (optioneel) Voer een koppelings test uit met 169.254.0.0/16
+    1. Configureer de BGP-sessie en informeer ons.
+1. Micro soft richt zich op de BGP-sessie met alle beleids regels weigeren en end-to-end valideren.
+1. Als dit lukt, ontvangt u een melding dat de verbindings status van de peering actief is.
+1. Het verkeer wordt dan via de nieuwe peering toegestaan.
 
-Houd er rekening mee dat verbindingsstatussen niet mogen worden verward met standaard [BGP-sessiestatussen.](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)
+Houd er rekening mee dat verbindings statussen niet moeten worden verward met standaard [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) -sessie statussen.
 
 ## <a name="convert-a-legacy-direct-peering-to-azure-resource"></a>Een verouderde Direct-peering converteren in een Azure-resource
-De volgende stappen moeten worden gevolgd om een verouderde directe peering om te zetten in Azure-bron:
-1. De instructies volgen in [Een verouderde direct peering naar Azure-bron converteren](howto-legacy-direct-powershell.md)
-1. Nadat u de conversieaanvraag hebt ingediend, controleert Microsoft het verzoek en neemt u indien nodig contact met u op.
-1. Na goedkeuring ziet u uw direct peering met een verbindingsstatus als Actief.
+De volgende stappen moeten worden gevolgd om een verouderde directe peering te converteren naar Azure-resource:
+1. Volg de instructies in [een verouderde directe peering converteren naar Azure-resource](howto-legacy-direct-powershell.md)
+1. Nadat u de conversie aanvraag hebt ingediend, wordt de aanvraag door micro soft gecontroleerd en wordt u indien nodig contact met u opgenomen.
+1. Na goed keuring worden uw directe peering met een verbindings status actief weer geven.
 
-## <a name="deprovision-direct-peering"></a>Deprovision Direct-peering
-Neem contact op met [Microsoft peering](mailto:peering@microsoft.com) team om direct peering te deprovisionen.
+## <a name="deprovision-direct-peering"></a>Inrichting direct-peering ongedaan maken
+Neem contact op met het [micro soft-peering](mailto:peering@microsoft.com) -team om de inrichting van rechtstreekse peering ongedaan
 
-Wanneer een direct peering is ingesteld voor deprovision, ziet u de verbindingsstatus als **PendingRemove**
+Wanneer een directe peering is ingesteld voor het ongedaan maken van de inrichting, wordt de verbindings status weer geven als **PendingRemove**
 
 > [!NOTE]
-> Als u PowerShell-cmdlet uitvoert om het direct peering te verwijderen wanneer de verbindingstaat is voorzienGestart of ProvisioningCompleted, mislukt de bewerking.
+> Als u de Power shell-cmdlet uitvoert om de directe peering te verwijderen wanneer de ConnectionState ProvisioningStarted of ProvisioningCompleted is, mislukt de bewerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [vereisten voor het instellen van peering met Microsoft](prerequisites.md).
+* Meer informatie over [vereisten voor het instellen van peering met micro soft](prerequisites.md).

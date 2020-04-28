@@ -1,26 +1,26 @@
 ---
 title: Referentiemateriaal voor aangepaste resource-cache
-description: Aangepaste broncacheverwijzing voor Azure Custom Resource Providers. Dit artikel gaat door de vereisten voor eindpunten implementeren cache aangepaste bronnen.
+description: Aangepaste Naslag informatie voor de resource-cache voor aangepaste Azure-resource providers. In dit artikel worden de vereisten beschreven voor eind punten die aangepaste cache-resources implementeren.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650381"
 ---
-# <a name="custom-resource-cache-reference"></a>Naslaginformatie over aangepaste broncache
+# <a name="custom-resource-cache-reference"></a>Verwijzing naar aangepaste resource-cache
 
-Dit artikel gaat door de vereisten voor eindpunten implementeren cache aangepaste bronnen. Als u niet bekend bent met Azure Custom Resource Providers, raadpleegt u [het overzicht over aangepaste resourceproviders.](overview.md)
+In dit artikel worden de vereisten beschreven voor eind punten die aangepaste cache-resources implementeren. Als u niet bekend bent met aangepaste Azure-resource providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
 
-## <a name="how-to-define-a-cache-resource-endpoint"></a>Een eindpunt van een cachebron definiëren
+## <a name="how-to-define-a-cache-resource-endpoint"></a>Het definiëren van een cache resource-eind punt
 
-Er kan een proxybron worden gemaakt door de **routingType** naar 'Proxy, Cache' op te geven.
+U kunt een proxy bron maken door de **routingType** aan te geven als ' proxy, cache '.
 
-Voorbeeld van aangepaste resourceprovider:
+Voor beeld van aangepaste resource provider:
 
 ```JSON
 {
@@ -40,17 +40,17 @@ Voorbeeld van aangepaste resourceprovider:
 }
 ```
 
-## <a name="building-proxy-resource-endpoint"></a>Eindpunt van proxyresource
+## <a name="building-proxy-resource-endpoint"></a>Resource-eind punt van de proxy bouwen
 
-Een **eindpunt** dat een **eindpunt** voor de bron proxy, cache implementeert, moet de aanvraag en het antwoord voor de nieuwe API in Azure verwerken. In dit geval genereert **de resourceType** een `PUT`nieuwe `GET`Azure-bron-API voor , en `DELETE` om `GET` CRUD uit te voeren op één resource, en om alle bestaande resources op te halen:
+Een **eind punt** dat het resource- **eind punt** proxy, cache implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. In dit geval genereert het **resource type** een nieuwe Azure-resource-API `PUT`voor `GET`,, `DELETE` en voor het uitvoeren van ruw op één resource, en `GET` voor het ophalen van alle bestaande resources:
 
 > [!NOTE]
-> De Azure API genereert de `PUT` `GET`aanvraagmethoden `DELETE`en , maar het eindpunt `PUT` `DELETE` **van** de cache hoeft alleen te worden verwerkt en .
-> We hebben aanbevolen **endpoint** dat het `GET`eindpunt ook implementeert.
+> De Azure API genereert de aanvraag methoden `PUT`, `GET`en `DELETE`, maar het cache- **eind punt** hoeft alleen te worden `PUT` verwerkt `DELETE`en.
+> Het is raadzaam dat het **eind punt** ook `GET`implementeert.
 
 ### <a name="create-a-custom-resource"></a>Een aangepaste resource maken
 
-Inkomende aanvraag voor Azure API:
+Inkomende Azure API-aanvraag:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Op dezelfde manier wordt het antwoord van het **eindpunt** vervolgens doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
+Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
 
-- Een geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
-- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
-- De aangepaste resourceprovider overschrijft `type`de `id` `name`velden en velden voor de aanvraag.
-- De aangepaste resourceprovider retourneert `properties` alleen velden onder het object voor een cacheeindpunt.
+- Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
+- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
+- De aangepaste resource provider overschrijft de `name`velden `type`,, `id` en voor de aanvraag.
+- De aangepaste resource provider retourneert alleen velden onder het `properties` object voor een cache-eind punt.
 
-**Eindpunt** Reactie:
+**Eind punt** Beantwoord
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -107,9 +107,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-De `name` `id`velden `type` en velden worden automatisch gegenereerd voor de aangepaste resource door de aangepaste resourceprovider.
+De `name`velden `id`, en `type` en worden automatisch gegenereerd voor de aangepaste resource door de aangepaste resource provider.
 
-Reactie van Azure Custom Resource Provider:
+Reactie van de aangepaste Azure-resource provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -130,7 +130,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>Een aangepaste resource verwijderen
 
-Inkomende aanvraag voor Azure API:
+Inkomende Azure API-aanvraag:
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,20 +146,20 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-Ook wordt de reactie van het **eindpunt** doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
+Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
 
-- Een geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
-- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
-- De Azure Custom Resource Provider verwijdert het item alleen uit de cache als een reactie van 200 niveaus wordt geretourneerd. Zelfs als de resource niet bestaat, moet het **eindpunt** 204 retourneren.
+- Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
+- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
+- De resource provider van Azure wordt alleen het item uit de cache verwijderd als een antwoord op 200-niveau wordt geretourneerd. Zelfs als de resource niet bestaat, moet het **eind punt** 204 retour neren.
 
-**Eindpunt** Reactie:
+**Eind punt** Beantwoord
 
 ``` HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-Reactie van Azure Custom Resource Provider:
+Reactie van de aangepaste Azure-resource provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -168,7 +168,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="retrieve-a-custom-resource"></a>Een aangepaste resource ophalen
 
-Inkomende aanvraag voor Azure API:
+Inkomende Azure API-aanvraag:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -176,9 +176,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-De aanvraag wordt **niet** doorgestuurd naar het **eindpunt**.
+De aanvraag wordt **niet** doorgestuurd naar het **eind punt**.
 
-Reactie van Azure Custom Resource Provider:
+Reactie van de aangepaste Azure-resource provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -199,7 +199,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="enumerate-all-custom-resources"></a>Alle aangepaste resources opsommen
 
-Inkomende aanvraag voor Azure API:
+Inkomende Azure API-aanvraag:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources?api-version=2018-09-01-preview
@@ -207,9 +207,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Deze aanvraag wordt **niet** doorgestuurd naar het **eindpunt**.
+Deze aanvraag wordt **niet** doorgestuurd naar het **eind punt**.
 
-Reactie van Azure Custom Resource Provider:
+Reactie van de aangepaste Azure-resource provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -234,8 +234,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Custom Resource Providers](overview.md)
-- [Snelstart: Azure Custom Resource Provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
-- [How To: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Naslaginformatie: Aangepaste naslaggids voor resourceproxy](proxy-resource-endpoint-reference.md)
+- [Overzicht van aangepaste Azure-resource providers](overview.md)
+- [Snelstartgids: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
+- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Naslag informatie: Naslag informatie over aangepaste resource proxy](proxy-resource-endpoint-reference.md)

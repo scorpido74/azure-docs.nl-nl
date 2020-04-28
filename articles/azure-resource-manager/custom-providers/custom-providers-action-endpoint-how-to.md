@@ -1,26 +1,26 @@
 ---
 title: Aangepaste acties toevoegen aan Azure REST API
-description: Meer informatie over het toevoegen van aangepaste acties aan de Azure REST API. In dit artikel worden de vereisten en best practices voor eindpunten doorlopen die aangepaste acties willen implementeren.
+description: Meer informatie over het toevoegen van aangepaste acties aan de Azure REST API. In dit artikel worden de vereisten en aanbevolen procedures besproken voor eind punten die aangepaste acties willen implementeren.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650394"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Aangepaste acties toevoegen aan Azure REST API
 
-In dit artikel worden de vereisten en aanbevolen procedures voor het maken van Azure Custom Resource Provider-eindpunten doorlopen die aangepaste acties implementeren. Als u niet bekend bent met Azure Custom Resource Providers, raadpleegt u [het overzicht over aangepaste resourceproviders.](overview.md)
+In dit artikel worden de vereisten en aanbevolen procedures beschreven voor het maken van eind punten van aangepaste Azure-resource providers waarmee aangepaste acties worden geïmplementeerd. Als u niet bekend bent met aangepaste Azure-resource providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
 
-## <a name="how-to-define-an-action-endpoint"></a>Een actieeindpunt definiëren
+## <a name="how-to-define-an-action-endpoint"></a>Een actie-eind punt definiëren
 
-Een **eindpunt** is een URL die verwijst naar een service, die het onderliggende contract tussen het en Azure implementeert. Het eindpunt wordt gedefinieerd in de aangepaste resourceprovider en kan elke openbaar toegankelijke URL zijn. De onderstaande steekproef `myCustomAction` heeft een `endpointURL` **actie** genaamd uitgevoerd door .
+Een **eind punt** is een URL die verwijst naar een service, waarmee het onderliggende contract tussen IT en Azure wordt geïmplementeerd. Het eind punt wordt gedefinieerd in de aangepaste resource provider en kan een openbaar toegankelijke URL zijn. In het onderstaande voor beeld **action** is de `myCustomAction` actie geïmplementeerd `endpointURL`door.
 
-Voorbeeld **van ResourceProvider:**
+Voor beeld van **resource provider**:
 
 ```JSON
 {
@@ -40,15 +40,15 @@ Voorbeeld **van ResourceProvider:**
 }
 ```
 
-## <a name="building-an-action-endpoint"></a>Een actieeindpunt bouwen
+## <a name="building-an-action-endpoint"></a>Een actie-eind punt bouwen
 
-Een **eindpunt** dat een **actie** implementeert, moet de aanvraag en het antwoord voor de nieuwe API in Azure verwerken. Wanneer een aangepaste resourceprovider met een **actie** wordt gemaakt, genereert deze een nieuwe set API's in Azure. In dit geval genereert de actie een `POST` nieuwe Azure-actie-API voor aanroepen:
+Een **eind punt** dat een **actie** implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. Wanneer er een aangepaste resource provider met een **actie** wordt gemaakt, wordt er een nieuwe set Api's in azure gegenereerd. In dit geval genereert de actie een nieuwe Azure Action API voor `POST` aanroepen:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
 ```
 
-Inkomende aanvraag voor Azure API:
+Inkomende Azure API-aanvraag:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction?api-version=2018-09-01-preview
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het **eindpunt** in het formulier:
+Deze aanvraag wordt vervolgens doorgestuurd naar het **eind punt** in de vorm:
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,10 +78,10 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Op dezelfde manier wordt het antwoord van het **eindpunt** vervolgens doorgestuurd naar de klant. Het antwoord van het eindpunt moet terugkeren:
+Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de klant. Het antwoord van het eind punt moet het volgende retour neren:
 
-- Een geldig JSON-objectdocument. Alle arrays en tekenreeksen moeten onder een bovenobject worden genest.
-- De `Content-Type` header moet worden ingesteld op "toepassing/ json; charset=utf-8".
+- Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
+- De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -95,7 +95,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Reactie van Azure Custom Resource Provider:
+Reactie van de aangepaste Azure-resource provider:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -111,12 +111,12 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="calling-a-custom-action"></a>Een aangepaste actie aanroepen
 
-Er zijn twee belangrijke manieren om een aangepaste actie af te roepen van een aangepaste resourceprovider:
+Er zijn twee hoofd manieren voor het aanroepen van een aangepaste actie voor een aangepaste resource provider:
 
-- Azure-CLI
-- Azure Resource Manager-sjablonen
+- Azure CLI
+- Azure Resource Manager sjablonen
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az resource invoke-action --action {actionName} \
@@ -132,16 +132,16 @@ az resource invoke-action --action {actionName} \
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-action | *Ja* | De naam van de actie die is gedefinieerd in de **ResourceProvider**.
-Ids | *Ja* | De resource-id van de **ResourceProvider**.
-aanvraag-lichaam | *nee* | De aanvraaginstantie die naar het **eindpunt**wordt verzonden.
+action | *klikt* | De naam van de actie die is gedefinieerd in de **resource provider**.
+id's | *klikt* | De resource-ID van de **resource provider**.
+aanvraag-hoofd tekst | *geen* | De hoofd tekst van de aanvraag die naar het **eind punt**wordt verzonden.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
 > [!NOTE]
-> Acties hebben beperkte ondersteuning in Azure Resource Manager-sjablonen. Om de actie in een sjabloon aan te [`list`](../templates/template-functions-resource.md#list) roepen, moet het voorvoegsel in de naam bevatten.
+> Acties hebben beperkte ondersteuning in Azure Resource Manager sjablonen. De actie kan alleen worden aangeroepen in een sjabloon als deze het [`list`](../templates/template-functions-resource.md#list) voor voegsel in de naam bevat.
 
-Voorbeeld **van resourceprovider** met lijstactie:
+Voor beeld van **resource provider** met lijst actie:
 
 ```JSON
 {
@@ -158,7 +158,7 @@ Voorbeeld **van resourceprovider** met lijstactie:
 }
 ```
 
-Voorbeeld van Azure Resource Manager-sjabloon:
+Voor beeld van Azure Resource Manager sjabloon:
 
 ``` JSON
 {
@@ -186,13 +186,13 @@ Voorbeeld van Azure Resource Manager-sjabloon:
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-resourceIdentifier | *Ja* | De resource-id van de **ResourceProvider**.
-apiVersion | *Ja* | De API-versie van de resourceruntime. Dit moet altijd "2018-09-01-preview" zijn.
-functieWaarden | *nee* | De aanvraaginstantie die naar het **eindpunt**wordt verzonden.
+resourceIdentifier | *klikt* | De resource-ID van de **resource provider**.
+apiVersion | *klikt* | De API-versie van de resource-runtime. Dit moet altijd ' 2018-09-01-preview ' zijn.
+functionValues | *geen* | De hoofd tekst van de aanvraag die naar het **eind punt**wordt verzonden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Custom Resource Providers](overview.md)
-- [Snelstart: Azure Custom Resource Provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
-- [How To: Aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [Overzicht van aangepaste Azure-resource providers](overview.md)
+- [Snelstartgids: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
+- [Procedure: aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)

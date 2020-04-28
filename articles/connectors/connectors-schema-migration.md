@@ -1,43 +1,43 @@
 ---
-title: Apps migreren naar het nieuwste schema
-description: Json-definities voor logische app-werkstroom migreren naar de meest recente schemaversie van de werkstroomdefinitie
+title: Apps migreren naar het laatste schema
+description: De JSON-definities van de werk stroom voor logische apps migreren naar de meest recente schema versie van de werk stroom definitie taal
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75666785"
 ---
-# <a name="migrate-logic-apps-to-latest-schema-version"></a>Logische apps migreren naar de nieuwste schemaversie
+# <a name="migrate-logic-apps-to-latest-schema-version"></a>Logische apps migreren naar de meest recente schema versie
 
-Voer de volgende stappen uit om uw bestaande logische apps naar het nieuwste schema te verplaatsen: 
+Voer de volgende stappen uit om uw bestaande Logic apps naar het nieuwste schema te verplaatsen: 
 
-1. Open uw logische app in de Logische App Designer in de [Azure-portal.](https://portal.azure.com)
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-2. Kies **Overzicht**in het menu van uw logische app. Kies Op de werkbalk **Schema bijwerken**.
+2. Kies **overzicht**in het menu van de logische app. Kies op de werk balk de optie **schema bijwerken**.
 
    > [!NOTE]
-   > Wanneer u **Schema**bijwerken kiest, voert Azure Logic Apps automatisch de migratiestappen uit en biedt het de code-uitvoer voor u. U deze uitvoer gebruiken voor het bijwerken van de definitie van uw logische app. Zorg er echter voor dat u de aanbevolen procedures volgt zoals beschreven in de volgende sectie **Aanbevolen procedures.**
+   > Wanneer u **schema bijwerken**kiest, worden de migratie stappen automatisch door Azure Logic apps uitgevoerd en wordt de code-uitvoer voor u verstrekt. U kunt deze uitvoer gebruiken voor het bijwerken van de definitie van de logische app. Zorg er echter voor dat u de aanbevolen procedures volgt, zoals beschreven in de sectie **Aanbevolen procedures** .
 
    ![Schema bijwerken](./media/connectors-schema-migration/update-schema.png)
 
-   De pagina Schema bijwerken wordt weergegeven en toont een koppeling naar een document waarin de verbeteringen in het nieuwe schema worden beschreven.
+   De pagina schema bijwerken wordt weer gegeven en toont een koppeling naar een document waarin de verbeteringen in het nieuwe schema worden beschreven.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Hier volgen enkele aanbevolen procedures voor het migreren van uw logische apps naar de nieuwste schemaversie:
+Hier volgen enkele aanbevolen procedures voor het migreren van uw Logic apps naar de meest recente schema versie:
 
-* Kopieer het gemigreerde script naar een nieuwe logische app. Overschrijf de oude versie niet totdat u uw tests hebt voltooid en bevestig dat uw gemigreerde app werkt zoals verwacht.
+* Kopieer het gemigreerde script naar een nieuwe logische app. Overschrijf de oude versie pas nadat u de tests hebt voltooid en controleer of uw gemigreerde app werkt zoals verwacht.
 
-* Test uw logische app **voordat u** de productie invoert.
+* Test uw logische app **voordat** u deze in productie neemt.
 
-* Nadat u de migratie hebt voltooid, begint u met het bijwerken van uw logische apps om de [beheerde API's](../connectors/apis-list.md) waar mogelijk te gebruiken. Gebruik bijvoorbeeld Dropbox v2 overal waar je DropBox v1 gebruikt.
+* Nadat u de migratie hebt voltooid, start u de Logic apps zo dat mogelijk wordt uitgevoerd met behulp van de [beheerde api's](../connectors/apis-list.md) . Begin bijvoorbeeld met behulp van Dropbox v2, overal waar u DropBox v1 gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [handmatig migreren van uw Logic-apps](../logic-apps/logic-apps-schema-2015-08-01.md)
+* Meer informatie over het [hand matig migreren van uw Logic apps](../logic-apps/logic-apps-schema-2015-08-01.md)

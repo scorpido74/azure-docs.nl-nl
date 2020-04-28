@@ -1,22 +1,22 @@
 ---
-title: TextBox-element UI
-description: Beschrijft het Gebruikersinterface-element Microsoft.Common.TextBox voor Azure-portal. Gebruiken voor het toevoegen van niet-opgemaakte tekst.
+title: INTERFACE-element TextBox
+description: Hierin wordt het gebruikers interface-element micro soft. common. TextBox beschreven voor Azure Portal. Gebruiken voor het toevoegen van niet-opgemaakte tekst.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652279"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox-element UI
+# <a name="microsoftcommontextbox-ui-element"></a>Gebruikers interface-element van micro soft. common. TextBox
 
-Een besturingselement dat kan worden gebruikt om niet-opgemaakte tekst te bewerken.
+Een besturings element dat kan worden gebruikt voor het bewerken van niet-opgemaakte tekst.
 
-## <a name="ui-sample"></a>UI-voorbeeld
+## <a name="ui-sample"></a>UI-voor beeld
 
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
@@ -46,12 +46,12 @@ Een besturingselement dat kan worden gebruikt om niet-opgemaakte tekst te bewerk
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Als `constraints.required` dit is ingesteld op **true,** moet het tekstvak een waarde hebben om te valideren. De standaardwaarde is **onwaar**.
-- `constraints.regex`is een JavaScript-regelmatig expressiepatroon. Als dit is opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon dat met succes moet worden gevalideerd. De standaardwaarde is **null**.
-- `constraints.validationMessage`is een tekenreeks die moet worden weergegeven wanneer de waarde van het tekstvak de validatie mislukt. Als dit niet is opgegeven, worden de ingebouwde validatieberichten van het tekstvak gebruikt. De standaardwaarde is **null**.
-- Het is mogelijk om een `constraints.regex` `constraints.required` waarde op te geven voor wanneer deze is ingesteld op **false.** In dit scenario is een waarde niet vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere expressiepatroon.
+- Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaardwaarde is **onwaar**.
+- `constraints.regex`is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
+- `constraints.validationMessage`is een teken reeks die moet worden weer gegeven wanneer de validatie van de waarde van het tekstvak mislukt. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
+- Het is mogelijk om een waarde op te `constraints.regex` geven `constraints.required` voor wanneer is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
-* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

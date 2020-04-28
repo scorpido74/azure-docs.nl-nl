@@ -1,71 +1,71 @@
 ---
-title: Opslagdoelen voor Azure HPC-cache bijwerken
-description: Azure HPC-cacheopslagdoelen bewerken
+title: Doel doelen voor Azure HPC-cache bijwerken
+description: Doel doelen van de Azure HPC-cache bewerken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/08/2020
 ms.author: rohogue
 ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75867008"
 ---
 # <a name="edit-storage-targets"></a>Opslagdoelen bewerken
 
-U een opslagdoel verwijderen of wijzigen op de pagina **Opslagdoelen** in de cache.
+U kunt een opslag doel verwijderen of wijzigen op de pagina **opslag doelen** van de cache.
 
-## <a name="remove-a-storage-target"></a>Een opslagdoel verwijderen
+## <a name="remove-a-storage-target"></a>Een opslag doel verwijderen
 
-Als u een opslagdoel wilt verwijderen, selecteert u deze in de lijst en klikt u op **verwijderen.**
+Als u een opslag doel wilt verwijderen, selecteert u het in de lijst en klikt u op de knop **verwijderen** .
 
-Met deze actie wordt de koppeling met het opslagdoel met dit Azure HPC-cachesysteem verwijderd, maar wordt het back-endopslagsysteem niet gewijzigd. Als u bijvoorbeeld een Azure Blob-opslagcontainer hebt gebruikt, bestaan de container en de inhoud ervan nog steeds nadat u deze uit de cache hebt verwijderd. U de container toevoegen aan een andere Azure HPC-cache, deze opnieuw toevoegen aan deze cache of verwijderen met de Azure-portal.
+Met deze actie wordt de opslag doel koppeling met dit Azure HPC-cache systeem verwijderd, maar wordt het back-end-opslag systeem niet gewijzigd. Als u bijvoorbeeld een Azure Blob Storage-container hebt gebruikt, bestaan de container en de inhoud ervan nog steeds nadat u deze uit de cache hebt verwijderd. U kunt de container toevoegen aan een andere Azure HPC-cache door deze opnieuw toe te voegen aan deze cache of door de Azure Portal te verwijderen.
 
-Bestandswijzigingen die in de cache zijn opgeslagen, worden naar het back-endopslagsysteem geschreven voordat het opslagdoel wordt verwijderd. Dit proces kan een uur of langer duren als er veel gewijzigde gegevens in de cache liggen.
+Alle bestands wijzigingen die in de cache zijn opgeslagen, worden naar het back-end-opslag systeem geschreven voordat het opslag doel wordt verwijderd. Dit proces kan een uur of langer duren als er veel gewijzigde gegevens in de cache staan.
 
-## <a name="update-storage-targets"></a>Opslagdoelen bijwerken
+## <a name="update-storage-targets"></a>Opslag doelen bijwerken
 
-U opslagdoelen bewerken om een aantal van hun eigenschappen te wijzigen. Verschillende eigenschappen zijn bewerkbaar voor verschillende soorten opslag:
+U kunt opslag doelen bewerken om sommige eigenschappen te wijzigen. Verschillende eigenschappen zijn bewerkbaar voor verschillende soorten opslag:
 
-* Voor blob-opslagdoelen u het naamruimtepad wijzigen.
+* Voor Blob Storage-doelen kunt u het pad naar de naam ruimte wijzigen.
 
-* Voor NFS-opslagdoelen u deze eigenschappen wijzigen:
+* Voor NFS-opslag doelen kunt u de volgende eigenschappen wijzigen:
 
-  * Naamruimtepad
-  * Gebruiksmodel
+  * Pad naar naam ruimte
+  * Gebruiks model
   * Exporteren
   * Submap exporteren
 
-U de naam, het type of het back-endopslagsysteem van een opslagdoel niet bewerken (Blob-container- of NFS-hostnaam/IP-adres). Als u deze eigenschappen wilt wijzigen, verwijdert u het opslagdoel en maakt u een vervanging met de nieuwe waarde.
+U kunt de naam, het type of het back-end-opslag systeem (BLOB-container of NBS-hostnaam/IP-adres) van een opslag doel niet bewerken. Als u deze eigenschappen wilt wijzigen, verwijdert u het opslag doel en maakt u een vervanging met de nieuwe waarde.
 
-Als u een opslagdoel wilt wijzigen, klikt u op de naam van het opslagdoel om de pagina met details te openen. Sommige velden op de pagina zijn bewerkbaar.
+Als u een opslag doel wilt wijzigen, klikt u op de naam van de opslag doel om de detail pagina ervan te openen. Sommige velden op de pagina kunnen worden bewerkt.
 
-![schermafbeelding van de bewerkingspagina voor een NFS-opslagdoel](media/hpc-cache-edit-storage-nfs.png)
+![scherm afbeelding van de bewerkings pagina voor een NFS-opslag doel](media/hpc-cache-edit-storage-nfs.png)
 
-## <a name="update-an-nfs-storage-target"></a>Een NFS-opslagdoel bijwerken
+## <a name="update-an-nfs-storage-target"></a>Een NFS-opslag doel bijwerken
 
-Voor een NFS-opslagdoel u verschillende eigenschappen bijwerken. (Raadpleeg de bovenstaande schermafbeelding voor een voorbeeldbewerkingspagina.)
+Voor een NFS-opslag doel kunt u verschillende eigenschappen bijwerken. (Raadpleeg de bovenstaande scherm afbeelding voor een voor beeld van een pagina bewerken.)
 
-* **Gebruiksmodel** - Het gebruiksmodel beïnvloedt hoe de cache gegevens bewaart. Lees [Een gebruiksmodel kiezen](hpc-cache-add-storage.md#choose-a-usage-model) voor meer informatie.
-* **Virtueel naamruimtepad** - Het pad dat clients gebruiken om dit opslagdoel te monteren. Lees [De samengevoegde naamruimte](hpc-cache-namespace.md) plannen voor meer informatie.
-* **NFS-exportpad** - Het opslagsysteem exporteert naar het gebruik voor dit naamruimtepad.
-* **Submappad** - De submap (onder de export) om te koppelen aan dit naamruimtepad. Laat dit veld leeg als u geen submap hoeft op te geven.
+* **Gebruiks model** : het gebruiks model is van invloed op de manier waarop de cache gegevens behoudt. Lees [een gebruiks model kiezen](hpc-cache-add-storage.md#choose-a-usage-model) voor meer informatie.
+* **Pad naar virtuele naam ruimte** : het pad dat clients gebruiken om dit opslag doel te koppelen. [Plan de geaggregeerde naam ruimte](hpc-cache-namespace.md) voor meer informatie.
+* **Pad naar NFS-export** -de export van het opslag systeem die moet worden gebruikt voor dit pad naar de naam ruimte.
+* **Pad** naar de submap: de submap (onder de export) die moet worden gekoppeld aan dit pad naar de naam ruimte. Laat dit veld leeg als u geen submap hoeft op te geven.
 
-Elk naamruimtepad heeft een unieke combinatie van export en submap nodig. Dat wil zeggen, je niet twee verschillende client-facing paden naar exact dezelfde directory op de back-end opslagsysteem.
+Elk pad naar een naam ruimte moet een unieke combi natie van export en submap hebben. Dat wil zeggen dat u niet twee verschillende client paden naar dezelfde map op het back-end-opslag systeem kunt maken.
 
-Nadat u wijzigingen hebt aangebracht, klikt u op **OK** om het opslagdoel bij te werken of klikt u op **Annuleren** om wijzigingen te verwijderen.
+Nadat u wijzigingen hebt aangebracht, klikt u op **OK** om het opslag doel bij te werken of klikt u op **Annuleren** om de wijzigingen te negeren.
 
-## <a name="update-an-azure-blob-storage-target"></a>Een Azure Blob-opslagdoel bijwerken
+## <a name="update-an-azure-blob-storage-target"></a>Een Azure Blob-opslag doel bijwerken
 
-Op de pagina details voor een Blob-opslagdoel u het virtuele naamruimtepad wijzigen.
+Op de pagina Details voor een Blob Storage-doel kunt u het pad van de virtuele naam ruimte wijzigen.
 
-![schermafbeelding van de bewerkingspagina voor een blobopslagdoel](media/hpc-cache-edit-storage-blob.png)
+![scherm afbeelding van de bewerkings pagina voor een Blob Storage-doel](media/hpc-cache-edit-storage-blob.png)
 
-Als u klaar bent, klikt u op **OK** om het opslagdoel bij te werken of klik u op **Annuleren** om wijzigingen te verwijderen.
+Wanneer u klaar bent, klikt u op **OK** om het opslag doel bij te werken of klikt u op **Annuleren** om de wijzigingen te negeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees [Opslagdoelen toevoegen](hpc-cache-add-storage.md) voor meer informatie over deze opties.
-* Lees [De samengevoegde naamruimte plannen](hpc-cache-namespace.md) voor meer tips over het gebruik van virtuele paden.
+* Lees [opslag doelen toevoegen](hpc-cache-add-storage.md) voor meer informatie over deze opties.
+* [Plan de geaggregeerde naam ruimte](hpc-cache-namespace.md) voor meer tips over het gebruik van virtuele paden.

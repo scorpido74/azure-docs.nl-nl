@@ -1,6 +1,6 @@
 ---
-title: Diagnose en problemen met de verbindingen met Azure IoT Hub DPS
-description: Meer informatie over het diagnosticeren en oplossen van veelvoorkomende fouten met apparaatconnectiviteit voor Azure IoT Hub Device Provisioning Service (DPS)
+title: Problemen met Azure IoT Hub DPS diagnosticeren en oplossen
+description: Meer informatie over het vaststellen en oplossen van veelvoorkomende fouten met connectiviteit van apparaten voor Azure IoT Hub Device Provisioning Service (DPS)
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646469"
 ---
-# <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Probleemoplossing met Azure IoT Hub Device Provisioning Service
+# <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Problemen oplossen met Azure IoT Hub Device Provisioning Service
 
-Verbindingsproblemen voor IoT-apparaten kunnen moeilijk op te lossen zijn omdat er veel mogelijke fouten zijn, zoals attestfouten, registratiefouten enz. In dit artikel vindt u richtlijnen voor het detecteren en oplossen van problemen met apparaatconnectiviteit via [Azure Monitor.](https://docs.microsoft.com/azure/azure-monitor/overview)
+Connectiviteits problemen voor IoT-apparaten kunnen lastig zijn om problemen op te lossen omdat er veel mogelijke fout punten zijn, zoals Attestation-fouten, registratie fouten etc. Dit artikel bevat richt lijnen voor het detecteren en oplossen van problemen met connectiviteit met apparaten via [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 
-## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Azure Monitor gebruiken om statistieken weer te geven en waarschuwingen in te stellen
+## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>Azure Monitor weer geven van metrische gegevens en waarschuwingen instellen
 
-In de volgende procedure wordt beschreven hoe u de statistiek Van IoT Hub Device Provisioning Service weergeven en instellen. 
+In de volgende procedure wordt beschreven hoe u een waarschuwing kunt weer geven en instellen voor IoT Hub Device Provisioning Service metriek. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT Hub Device Provisioning Service.
 
 3. Selecteer **Metrische gegevens**.
 
-4. Selecteer de gewenste statistiek. 
-   <br />Momenteel zijn er drie statistieken voor DPS:
+4. Selecteer de gewenste waarde. 
+   <br />Er zijn momenteel drie metrische gegevens voor DPS:
 
     | Metrische naam | Beschrijving |
     |-------|------------|
-    | Attestpogingen | Aantal apparaten dat heeft geprobeerd te verifiëren met de service voor apparaatinrichting|
-    | Registratiepogingen | Aantal apparaten dat zich heeft geregistreerd bij IoT Hub na succesvolle verificatie|
-    | Toegewezen apparaat | Aantal apparaten dat is toegewezen aan IoT Hub|
+    | Attestation-pogingen | Aantal apparaten dat is geprobeerd te verifiëren met Device Provisioning Service|
+    | Registratie pogingen | Aantal apparaten dat is geprobeerd bij IoT Hub te registreren na een geslaagde verificatie|
+    | Apparaat toegewezen | Aantal apparaten dat is toegewezen aan IoT Hub|
 
-5. Selecteer de gewenste aggregatiemethode om een visuele weergave van de statistiek te maken. 
+5. Selecteer de gewenste aggregatie methode om een visuele weer gave van de metriek te maken. 
 
-6. Als u een waarschuwing van een statistiek wilt instellen, selecteert u **Nieuwe waarschuwingsregels** rechtsboven in het metrische blad, op dezelfde manier u naar **het hoofd van waarschuwing** gaan en Nieuwe **waarschuwingsregels**selecteren.
+6. Als u een waarschuwing van een metriek wilt instellen, selecteert u **nieuwe waarschuwings regels** in de rechter bovenhoek van de Blade metrische gegevens, en gaat u naar Blade voor **waarschuwingen** en selecteert u **nieuwe waarschuwings regels**.
 
-7. Selecteer **Voorwaarde toevoegen**en selecteer vervolgens de gewenste statistiek en drempelwaarde door aanwijzingen te volgen.
+7. Selecteer **voor waarde toevoegen**en selecteer vervolgens de gewenste metrische gegevens en drempel waarde door de volgende aanwijzingen te volgen.
 
-Zie [Wat zijn klassieke waarschuwingen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md)
+Zie [Wat zijn klassieke waarschuwingen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md) voor meer informatie.
 
-## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Log-analytische gebruiken om fouten weer te geven en op te lossen
+## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Logboek analyse gebruiken om fouten weer te geven en op te lossen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
-3. Selecteer **Diagnostische instellingen**.
+3. Selecteer **instellingen voor diagnostische gegevens**.
 
 4. Selecteer **Diagnostische gegevens inschakelen**.
 
-5. Schakel de gewenste logboeken in om te worden verzameld.
+5. De gewenste logboeken kunnen worden verzameld.
 
     | Logboeknaam | Beschrijving |
     |-------|------------|
-    | Apparaatbewerkingen | Logboeken met betrekking tot gebeurtenissen in apparaatverbinding |
-    | ServiceBewerkingen | Gebeurtenislogboeken met betrekking tot het gebruik van service SDK (bijvoorbeeld inschrijvingsgroepen maken of bijwerken)|
+    | DeviceOperations | Logboeken met betrekking tot verbindings gebeurtenissen voor apparaten |
+    | ServiceOperations | Gebeurtenis logboeken met betrekking tot het gebruik van Service SDK (bijvoorbeeld voor het maken of bijwerken van inschrijvings groepen)|
 
-6. Schakel **Verzenden naar logboekanalyse** in[(zie prijzen).](https://azure.microsoft.com/pricing/details/log-analytics/) 
+6. Schakel **Send to log Analytics** in ([Zie prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)). 
 
-7. Ga naar het tabblad **Logboeken** in de Azure-portal onder de bron Device Provisioning Service.
+7. Ga naar het tabblad **Logboeken** in de Azure portal onder Device Provisioning Service Resource.
 
-8. Klik **op Uitvoeren** om recente gebeurtenissen weer te geven.
+8. Klik op **uitvoeren** om recente gebeurtenissen weer te geven.
 
-9. Als er resultaten zijn, `OperationName`zoekt u naar , `ResultType`, `ResultSignature`en `ResultDescription` (foutbericht) om meer details over de fout te krijgen.
+9. Als er resultaten zijn, zoekt u `OperationName`naar `ResultType`, `ResultSignature`, en `ResultDescription` (fout bericht) om meer details te krijgen over de fout.
 
 
 ## <a name="common-error-codes"></a>Veelvoorkomende foutcodes
 Gebruik deze tabel om veelvoorkomende fouten te begrijpen en op te lossen.
 
-| Foutcode| Beschrijving | HTTP-statuscode |
+| Foutcode| Beschrijving | HTTP-status code |
 |-------|------------|------------|
-| 400 | De instantie van het verzoek is niet geldig; het kan bijvoorbeeld niet worden ontleed of het object kan niet worden gevalideerd.| 400 Slecht formaat |
-| 401 | Het autorisatietoken kan niet worden gevalideerd; het is bijvoorbeeld verlopen of is niet van toepassing op de URI van het verzoek. Deze foutcode wordt ook geretourneerd naar apparaten als onderdeel van de TPM-atteststroom. | 401 Ongeautoriseerd|
-| 404 | De instantie Apparaatinrichtingsservice of een resource (bijvoorbeeld een inschrijving) bestaat niet. |404 Niet gevonden |
-| 412 | De ETag in de aanvraag komt niet overeen met de ETag van de bestaande resource, volgens RFC7232. | 412 Voorwaarde mislukt |
-| 429 | Operaties worden beperkt door de service. Zie Voor specifieke servicelimieten de [limieten voor het inrichten van IoT-hubapparaten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 Te veel aanvragen |
+| 400 | De hoofd tekst van de aanvraag is ongeldig. het kan bijvoorbeeld niet worden geparseerd of het object kan niet worden gevalideerd.| 400 onjuiste indeling |
+| 401 | Het autorisatie token kan niet worden gevalideerd; het is bijvoorbeeld verlopen of is niet van toepassing op de URI van de aanvraag. Deze fout code wordt ook geretourneerd naar apparaten als onderdeel van de TPM-attest stroom. | 401 niet gemachtigd|
+| 404 | Het Device Provisioning service-exemplaar of een bron (bijvoorbeeld een inschrijving) bestaat niet. |404 Niet gevonden |
+| 412 | De ETag in de aanvraag komt niet overeen met de ETag van de bestaande resource, conform RFC7232. | 412-voor waarde is mislukt |
+| 429 | Bewerkingen worden beperkt door de service. Zie [IOT hub Device Provisioning Service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)voor specifieke service limieten. | 429 te veel aanvragen |
 | 500 | Er is een interne fout opgetreden. | 500 Interne serverfout|

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: configuratiewerkstromen voor circuit'
-description: Op deze pagina worden de werkstromen weergegeven voor het configureren van ExpressRoute-circuits en peerings
+title: 'Azure ExpressRoute: werk stromen voor circuit configuratie'
+description: Op deze pagina worden de werk stromen weer gegeven voor het configureren van ExpressRoute-circuit en peerings
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,96 +8,96 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864363"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-werkstromen voor circuitinrichting en -statussen
-Deze pagina leidt u door de werkstromen voor het inrichten en routeren van configuratieop hoog niveau.
+Op deze pagina wordt u begeleid bij het inrichten en routeren van configuratie werk stromen op hoog niveau.
 
-![circuitwerkstroom](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+![circuit werk stroom](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
-In de volgende cijfers en bijbehorende stappen worden de taken beschreven die een ExpressRoute-circuit end-to-end moeten inrichten. 
+In de volgende afbeelding en de bijbehorende stappen worden de taken beschreven voor het inrichten van een ExpressRoute-circuit end-to-end. 
 
-1. Gebruik PowerShell om een ExpressRoute-circuit te configureren. Volg de instructies in het artikel [ExpressRoute-circuits maken](expressroute-howto-circuit-classic.md) voor meer informatie.
-2. Bestel connectiviteit bij de serviceprovider. Dit proces varieert. Neem contact op met uw connectiviteitsprovider voor meer informatie over het bestellen van connectiviteit.
-3. Zorg ervoor dat het circuit met succes is ingericht door de inrichtingsstatus van het ExpressRoute-circuit via PowerShell te verifiëren. 
-4. Routeringsdomeinen configureren. Als uw connectiviteitsprovider de Layer 3-configuratie beheert, configureert deze routering voor uw circuit. Als uw connectiviteitsprovider alleen Layer 2-services aanbiedt, moet u routering configureren volgens de richtlijnen die zijn beschreven in de [routeringsvereisten](expressroute-routing.md) en [routeringsconfiguratiepagina's.](expressroute-howto-routing-classic.md)
+1. Gebruik Power shell om een ExpressRoute-circuit te configureren. Volg de instructies in het artikel [ExpressRoute-circuits maken](expressroute-howto-circuit-classic.md) voor meer informatie.
+2. Volg de verbinding van de service provider. Dit proces varieert. Neem contact op met uw connectiviteits provider voor meer informatie over het best Ellen van connectiviteit.
+3. Controleer of het circuit is ingericht door de inrichtings status van het ExpressRoute-circuit via Power shell te controleren. 
+4. Routerings domeinen configureren. Als uw connectiviteits provider de laag-3 configuratie beheert, wordt route ring voor uw circuit geconfigureerd. Als uw connectiviteits provider alleen Layer 2-Services biedt, moet u route ring configureren volgens de richt lijnen die worden beschreven in de [routerings vereisten](expressroute-routing.md) en [routerings configuratie](expressroute-howto-routing-classic.md) pagina's.
    
-   * Azure private peering inschakelen - Schakel deze peering in om verbinding te maken met VM's / cloudservices die zijn geïmplementeerd binnen virtuele netwerken.
+   * Persoonlijke Azure-peering inschakelen: Schakel deze peering in om verbinding te maken met Vm's/Cloud Services die zijn geïmplementeerd in virtuele netwerken.
 
-   * Microsoft-peering inschakelen - Schakel dit in om toegang te krijgen tot onlineservices van Microsoft, zoals Office 365. Alle Azure PaaS-services zijn toegankelijk via Microsoft-peering.
+   * Micro soft-peering inschakelen: Schakel dit in om toegang te krijgen tot micro soft onlineservices, zoals Office 365. Alle Azure PaaS-Services zijn toegankelijk via micro soft-peering.
      
      > [!IMPORTANT]
-     > U moet ervoor zorgen dat u een aparte proxy / rand gebruikt om verbinding te maken met Microsoft dan degene die u gebruikt voor het internet. Het gebruik van dezelfde rand voor zowel ExpressRoute als internet zal leiden tot asymmetrische routering en verbindingsonderbrekingen voor uw netwerk veroorzaken.
+     > U moet ervoor zorgen dat u een afzonderlijke proxy/Edge gebruikt om verbinding te maken met micro soft dan het account dat u voor Internet gebruikt. Het gebruik van dezelfde rand voor zowel ExpressRoute als het internet zorgt voor asymmetrische route ring en veroorzaakt connectiviteits storingen voor uw netwerk.
      > 
      > 
      
-     ![routeringswerkstromen](./media/expressroute-workflows/routing-workflow.png)
-5. Virtuele netwerken koppelen aan ExpressRoute-circuits - U virtuele netwerken koppelen aan uw ExpressRoute-circuit. Volg instructies [om VNets](expressroute-howto-linkvnet-arm.md) aan uw circuit te koppelen. Deze VNets kunnen zich in hetzelfde Azure-abonnement bevinden als het ExpressRoute-circuit, of kunnen een ander abonnement hebben.
+     ![werk stromen voor route ring](./media/expressroute-workflows/routing-workflow.png)
+5. Virtuele netwerken koppelen aan ExpressRoute-circuits: u kunt virtuele netwerken koppelen aan uw ExpressRoute-circuit. Volg de instructies [om VNets te koppelen](expressroute-howto-linkvnet-arm.md) aan uw circuit. Deze VNets kunnen zich in hetzelfde Azure-abonnement bevindt als het ExpressRoute-circuit of zich in een ander abonnement bevindt.
 
-## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute circuit provisioning staten
-Elk ExpressRoute circuit heeft twee staten:
+## <a name="expressroute-circuit-provisioning-states"></a>Inrichtings statussen ExpressRoute-circuit
+Elk ExpressRoute-circuit heeft twee statussen:
 
-* Status van de voorziening van dienstverleners
+* Inrichtings status van service provider
 * Status
 
-Status vertegenwoordigt de inrichtingsstatus van Microsoft. Deze eigenschap is ingesteld op Ingeschakeld wanneer u een Expressroute-circuit maakt
+Status staat voor de inrichtings status van micro soft. Deze eigenschap wordt ingesteld op ingeschakeld wanneer u een Expressroute-circuit maakt
 
-De status van de connectiviteitsprovider vertegenwoordigt de status aan de kant van de connectiviteitsprovider. Het kan *notprovisioneerd*, *provisioning*, of *ingericht*. Het expressroute-circuit moet in een ingerichte status staan om peering te configureren.
+De inrichtings status van de connectiviteits provider vertegenwoordigt de status van de zijde van de connectiviteits provider. De naam kan *NotProvisioned*, *Provisioning*of *ingericht*zijn. Het ExpressRoute-circuit moet een ingerichte status hebben in de volg orde voor het configureren van peering.
 
-### <a name="possible-states-of-an-expressroute-circuit"></a>Mogelijke toestanden van een ExpressRoute circuit
-In deze sectie worden de mogelijke toestanden van een ExpressRoute-circuit weergegeven.
+### <a name="possible-states-of-an-expressroute-circuit"></a>Mogelijke statussen van een ExpressRoute-circuit
+In deze sectie wordt een overzicht gegeven van de mogelijke statussen van een ExpressRoute-circuit.
 
-**Op creatietijd**
+**Tijdstip van aanmaak**
 
-Het ExpressRoute-circuit rapporteert de volgende toestanden bij het maken van resources.
+Het ExpressRoute-circuit rapporteert de volgende statussen bij het maken van resources.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-**Wanneer connectiviteitsprovider bezig is met het inrichten van het circuit**
+**Wanneer de connectiviteits provider bezig is met het inrichten van het circuit**
 
-Het ExpressRoute-circuit rapporteert de volgende statussen terwijl de connectiviteitsprovider werkt aan de inrichting van het circuit.
+Het ExpressRoute-circuit rapporteert de volgende statussen wanneer de connectiviteits provider bezig is met het inrichten van het circuit.
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
 
-**Wanneer de connectiviteitsprovider het inrichtingsproces heeft voltooid**
+**Wanneer de connectiviteits provider het inrichtings proces heeft voltooid**
 
-Het ExpressRoute-circuit rapporteert de volgende staten zodra de connectiviteitsprovider het circuit met succes heeft ingericht.
+Het ExpressRoute-circuit rapporteert de volgende statussen zodra de connectiviteits provider het circuit heeft ingericht.
 
     ServiceProviderProvisioningState : Provisioned
     Status                           : Enabled
 
 
-**Wanneer connectiviteitsprovider het circuit deprovisionert**
+**Wanneer de inrichting van de connectiviteits provider het circuit ongedaan maakt**
 
-Als het ExpressRoute-circuit moet worden gedeprovisioneerd, rapporteert het circuit de volgende statussen zodra de serviceprovider het deprovisioningproces heeft voltooid.
+Als het ExpressRoute-circuit moet worden verwijderd, zal het circuit de volgende statussen rapporteren zodra de service provider het ongedaan maken van de inrichting heeft voltooid.
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
 
 
-U ervoor kiezen om het indien nodig opnieuw in te schakelen of PowerShell-cmdlets uit te voeren om het circuit te verwijderen.  
+U kunt ervoor kiezen om deze indien nodig opnieuw in te scha kelen of Power shell-cmdlets uit te voeren om het circuit te verwijderen.  
 
 > [!IMPORTANT]
-> Een circuit kan niet worden verwijderd wanneer de ServiceProviderProvisioningState is provisioning of provisioned. De connectiviteitsprovider moet het circuit deprovisioneren voordat het kan worden verwijderd. Microsoft blijft het circuit factureren totdat de ExpressRoute-circuitbron is verwijderd in Azure.
+> Een circuit kan niet worden verwijderd wanneer de ServiceProviderProvisioningState wordt ingericht of ingericht. De connectiviteits provider moet het circuit ongedaan maken voordat deze kan worden verwijderd. Micro soft blijft het circuit factureren totdat de ExpressRoute-circuit resource in azure wordt verwijderd.
 > 
 
-## <a name="routing-session-configuration-state"></a>Status van configuratie van de routeringssessie
-De BGP-status rapporteert als de BGP-sessie is ingeschakeld op de Microsoft-rand. De status moet zijn ingeschakeld om privé- of Microsoft-peering te gebruiken.
+## <a name="routing-session-configuration-state"></a>Configuratie status van routerings sessie
+De BGP-inrichtings status rapporten als de BGP-sessie is ingeschakeld op de micro soft Edge. De status moet zijn ingeschakeld om persoonlijke of micro soft-peering te kunnen gebruiken.
 
-Het is belangrijk om de Status van de BGP-sessie te controleren, vooral voor Microsoft-peering. Naast de BGP-provisioningstatus is er een andere status die *geadverteerde openbare voorvoegsels staat*. De geadverteerde openbare voorvoegsels status moet in de *geconfigureerde* status, zowel voor de BGP-sessie te worden en voor uw routing te werken end-to-end. 
+Het is belang rijk om de status van de BGP-sessie te controleren met name voor micro soft-peering. Naast de BGP-inrichtings status is er een andere status genaamd *aangekondigde open bare voor voegsels*. De status van de geadverteerde open bare voor voegsels moet in de *geconfigureerde* status zijn, zowel voor de BGP-sessie als voor uw route ring om de eind-tot-eind te kunnen uitvoeren. 
 
-Als de geadverteerde openbare voorvoegselstatus is ingesteld op een *validatiestatus* die nodig is, is de BGP-sessie niet ingeschakeld, omdat de geadverteerde voorvoegsels niet overeenkomen met het AS-nummer in een van de routeringsregisters. 
+Als de status van de aangekondigde open bare voor voegsel is ingesteld op de status *validatie is vereist* , is de BGP-sessie niet ingeschakeld, omdat de geadverteerde voor voegsels niet overeenkomen met het as-nummer in een van de routerings registers. 
 
 > [!IMPORTANT]
-> Als de geadverteerde openbare voorvoegselsstaat in *handmatige validatiestatus* is, moet u een ondersteuningsticket openen met [Microsoft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) en het bewijs leveren dat u eigenaar bent van de IP-adressen die worden geadverteerd, samen met het bijbehorende autonome systeemnummer.
+> Als de status aangekondigde open bare voor voegsels zich in *hand matige validatie* status bevindt, moet u een ondersteunings ticket openen met [micro soft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) en aantonen dat u beschikt over de IP-adressen die zijn geadverteerd samen met het gekoppelde autonome systeem nummer.
 > 
 > 
 

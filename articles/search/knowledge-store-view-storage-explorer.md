@@ -1,7 +1,7 @@
 ---
-title: Een kennisarchief (voorbeeld) weergeven met Storage Explorer
+title: Een kennis archief (preview) weer geven met Storage Explorer
 titleSuffix: Azure Cognitive Search
-description: Een Azure Cognitive Search-kennisarchief weergeven en analyseren met de Storage Explorer van de Azure-portal. kennisop te slaan is momenteel in openbare preview.
+description: Bekijk en analyseer een Azure Cognitive Search Knowledge Store met de Storage Explorer van Azure Portal. het kennis archief is momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,57 +9,57 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754061"
 ---
-# <a name="view-a-knowledge-store-with-storage-explorer"></a>Een kenniswinkel weergeven met Storage Explorer
+# <a name="view-a-knowledge-store-with-storage-explorer"></a>Een kennis archief met Storage Explorer weer geven
 
 > [!IMPORTANT] 
-> Knowledge store is momenteel in openbare preview. Preview-functionaliteit wordt geleverd zonder overeenkomst op serviceniveau en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. De [REST API versie 2019-05-06-Preview](search-api-preview.md) biedt preview functies. Er is momenteel beperkte portalondersteuning en geen .NET SDK-ondersteuning.
+> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
-In dit artikel leert u bijvoorbeeld hoe u verbinding maken met een kennisarchief en een kennisarchief verkennen met Storage Explorer in de Azure-portal.
+In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Storage Explorer in de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Volg de stappen in [Een kennisarchief maken in azure-portal](knowledge-store-create-portal.md) om de voorbeeldkenniswinkel te maken die in deze walkthrough wordt gebruikt.
++ Volg de stappen in [een kennis archief maken in azure Portal](knowledge-store-create-portal.md) om het voor beeld-kennis archief te maken dat wordt gebruikt in dit overzicht.
 
-+ U hebt ook de naam nodig van het Azure-opslagaccount dat u hebt gebruikt om de kenniswinkel te maken, samen met de toegangssleutel van de Azure-portal.
++ U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
 
-## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Een kennisarchief weergeven, bewerken en opvragen in Storage Explorer
+## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Een kennis archief in Storage Explorer weer geven, bewerken en er een query op uitvoeren
 
-1. Open in de Azure-portal [het opslagaccount](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) dat u hebt gebruikt om de kenniswinkel te maken.
+1. Open in het Azure Portal [het opslag account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) dat u hebt gebruikt om het kennis archief te maken.
 
-1. Klik in het linkernavigatiedeelvenster van het opslagaccount op **Storage Explorer**.
+1. Klik op **Storage Explorer**in het linkernavigatievenster van het opslag account.
 
-1. Vouw de lijst **TABELLEN** uit om een lijst met Azure-tabelprojecties weer te geven die zijn gemaakt toen u de wizard **Gegevens importeren** op de voorbeeldgegevens van uw hotelbeoordelingen gebruikte.
+1. Vouw de lijst **tabellen** uit om een lijst met Azure-tabel prognoses weer te geven die zijn gemaakt tijdens het uitvoeren van de wizard **gegevens importeren** in uw hotel voor beeld van de voorbeeld gegevens.
 
-Selecteer een tabel om de verrijkte gegevens weer te geven, inclusief belangrijke zinnen en sentimentscores.
+Selecteer een tabel om de verrijkte gegevens weer te geven, met inbegrip van belang rijke zinsdelen en sentiment-scores.
 
-   ![Tabellen weergeven in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Tabellen weergeven in Storage Explorer")
+   ![Tabellen in Storage Explorer weer geven](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Tabellen in Storage Explorer weer geven")
 
-Als u het gegevenstype voor een tabelwaarde wilt wijzigen of afzonderlijke waarden in de tabel wilt wijzigen, klikt u op **Bewerken**. Wanneer u het gegevenstype voor een kolom in één tabelrij wijzigt, wordt deze op alle rijen toegepast.
+Klik op **bewerken**als u het gegevens type voor tabel waarden wilt wijzigen of afzonderlijke waarden in de tabel wilt wijzigen. Wanneer u het gegevens type voor een kolom in één tabelrij wijzigt, wordt deze toegepast op alle rijen.
 
-   ![Tabel bewerken in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Tabel bewerken in Storage Explorer")
+   ![Tabel in Storage Explorer bewerken](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Tabel in Storage Explorer bewerken")
 
-Als u query's wilt uitvoeren, klikt u op **Query** op de opdrachtbalk en voert u de voorwaarden in.  
+Als u query's wilt uitvoeren, klikt u op **query** op de opdracht balk en voert u de voor waarden in.  
 
-   ![Querytabel in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Querytabel in Storage Explorer")
+   ![Query tabel in Storage Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Query tabel in Storage Explorer")
 
 ## <a name="clean-up"></a>Opruimen
 
 Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de resources die u hebt gemaakt, nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-U resources in de portal vinden en beheren met de koppeling **Alle resources** of **Resourcegroepen** in het linkernavigatiedeelvenster.
+U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u beperkt bent tot drie indexen, indexeerders en gegevensbronnen. U afzonderlijke items in de portal verwijderen om onder de limiet te blijven.
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verbind deze kenniswinkel met Power BI voor een diepere analyse of ga verder met code, met behulp van de REST API en Postman om een andere kenniswinkel te maken.
+Verbind dit kennis archief met Power BI voor een diepere analyse of ga door met de code met behulp van de REST API en postman om een ander kennis archief te maken.
 
 > [!div class="nextstepaction"]
-> [Maak verbinding met Power BI](knowledge-store-connect-power-bi.md)
-> [Maak een kenniswinkel in REST](knowledge-store-create-rest.md)
+> [Maak verbinding met Power bi](knowledge-store-connect-power-bi.md)
+> [een kennis archief maken in rest](knowledge-store-create-rest.md)

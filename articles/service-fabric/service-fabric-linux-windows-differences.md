@@ -1,27 +1,27 @@
 ---
-title: Azure Service Fabric-verschillen tussen Linux en Windows
+title: Azure Service Fabric verschillen tussen Linux en Windows
 description: Verschillen tussen Azure Service Fabric in Linux en Azure Service Fabric in Windows.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: sfrev
 ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75748525"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Verschillen tussen Service Fabric in Linux en Windows
 
-Er zijn enkele functies die wel worden ondersteund in Windows, maar nog niet in Linux. Uiteindelijk zullen de functiesets gelijk zijn en met elke versie wordt het functiegat kleiner. De volgende verschillen bestaan tussen de meest recente beschikbare releases.
+Er zijn enkele functies die wel worden ondersteund in Windows, maar nog niet in Linux. Uiteindelijk zullen de functiesets gelijk zijn en met elke versie wordt het functiegat kleiner. De volgende verschillen bestaan tussen de nieuwste beschik bare releases.
 
-* Envoy (Reverse Proxy) is in preview op Linux
+* Envoy (reverse proxy) is beschikbaar in de preview-versie van Linux
 * Het zelfstandige installatieprogramma voor Linux is nog niet beschikbaar in Linux
 * Console-omleiding (niet ondersteund in Linux- en Windows-productieclusters)
 * De FAS (Fault Analysis Service) in Linux
 * DNS-service voor Service Fabric-services (DNS-service wordt ondersteund voor containers in Linux)
 * Equivalenten van CLI-opdrachten voor bepaalde Powershell-opdrachten (zie de onderstaande lijst, waarvan de meeste opdrachten alleen van toepassing zijn op zelfstandige clusters)
-* [Verschillen in logboekimplementatie die van invloed kunnen zijn op de schaalbaarheid](service-fabric-concepts-scalability.md#choosing-a-platform)
+* [Verschillen in de implementatie van het logboek die van invloed kunnen zijn op de schaal baarheid](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-cmdlets die niet werken voor een Service Fabric-cluster in Linux
 
@@ -83,6 +83,6 @@ Er zijn enkele functies die wel worden ondersteund in Windows, maar nog niet in 
 * [Uw ontwikkelomgeving voorbereiden in Linux](service-fabric-get-started-linux.md)
 * [Uw ontwikkelomgeving voorbereiden in OSX](service-fabric-get-started-mac.md)
 * [Uw eerste Service Fabric Java-toepassing in Linux maken en implementeren met behulp van Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
-* [Maak en implementeer uw eerste Service Fabric Java-applicatie op Linux met behulp van Service Fabric Plugin voor Eclipse](service-fabric-get-started-eclipse.md)
+* [Uw eerste Service Fabric Java-toepassing maken en implementeren in Linux met behulp van Service Fabric-invoeg toepassing voor eclips](service-fabric-get-started-eclipse.md)
 * [Uw eerste CSharp-toepassing in Linux maken](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [De Service Fabric-CLI gebruiken voor het beheren van uw toepassingen](service-fabric-application-lifecycle-sfctl.md)

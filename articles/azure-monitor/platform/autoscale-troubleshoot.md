@@ -1,132 +1,132 @@
 ---
-title: Azure-autoscale oplossen
-description: Problemen met Azure-autoscaling opsporen die worden gebruikt in Service Fabric, Virtual Machines, Web Apps en cloudservices.
+title: Problemen oplossen met Azure automatisch schalen
+description: Het bijhouden van problemen met Azure-automatisch schalen die wordt gebruikt in Service Fabric, Virtual Machines, Web Apps en Cloud Services.
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75751330"
 ---
-# <a name="troubleshooting-azure-autoscale"></a>Azure-autoscale oplossen
+# <a name="troubleshooting-azure-autoscale"></a>Problemen oplossen met Azure automatisch schalen
  
-Met Azure Monitor-autoscale u de juiste hoeveelheid resources uitvoeren om de belasting van uw toepassing af te handelen. Het stelt u in staat om resources toe te voegen om de toename van de belasting aan te kunnen en ook geld te besparen door resources te verwijderen die niet actief zijn. U schalen op basis van een planning, vaste datumtijd of resourcestatistiek die u kiest. Zie [Overzicht autoscale voor](autoscale-overview.md)meer informatie.
+Azure Monitor automatisch schalen helpt u het juiste aantal resources te laten werken om de belasting van uw toepassing af te handelen. U kunt hiermee resources toevoegen voor het afhandelen van toename van de belasting en bespaart u geld door resources te verwijderen die niet actief zijn. U kunt schalen op basis van een planning, een vaste datum/tijd of de metrische gegevens van de resource die u kiest. Zie [overzicht van automatisch schalen](autoscale-overview.md)voor meer informatie.
 
-De autoscale-service biedt u statistieken en logboeken om te begrijpen welke schaalacties hebben plaatsgevonden en de evaluatie van de voorwaarden die tot deze acties hebben geleid. U antwoorden vinden op vragen zoals:
+De service voor automatisch schalen biedt u metrische gegevens en Logboeken om te begrijpen welke schaal acties hebben plaatsgevonden en de evaluatie van de voor waarden die naar die acties hebben geleid. U vindt antwoorden op vragen zoals:
 
-- Waarom scaleerde mijn service of in?
-- Waarom schaalde mijn service niet?
-- Waarom is een actie op autoschaal mislukt?
-- Waarom neemt een autoscale-actie de tijd om te schalen?
+- Waarom is mijn service uitgeschaald of in?
+- Waarom is mijn service niet geschaald?
+- Waarom is een actie voor automatisch schalen mislukt?
+- Waarom neemt een actie voor automatisch schalen de tijd om te schalen?
   
-## <a name="autoscale-metrics"></a>Statistieken voor autoschaal
+## <a name="autoscale-metrics"></a>Metrische gegevens automatisch schalen
 
-Autoscale biedt u [vier statistieken](metrics-supported.md#microsoftinsightsautoscalesettings) om de werking ervan te begrijpen. 
+Automatisch schalen biedt u [vier metrische gegevens](metrics-supported.md#microsoftinsightsautoscalesettings) om inzicht te krijgen in de werking ervan. 
 
-- **Waargenomen metrische waarde** - De waarde van de statistiek waarop u hebt gekozen om de schaalactie uit te voeren, zoals gezien of berekend door de autoscale-engine. Omdat één instelling voor automatische waarden meerdere regels en dus meerdere metrische bronnen kan hebben, u filteren met behulp van 'metrische bron' als dimensie.
-- **Metrische drempelwaarde** : de drempel die u instelt om de schaalactie uit te voeren. Omdat één instelling voor automatische waarden meerdere regels en dus meerdere metrische bronnen kan hebben, u filteren met behulp van 'metrische regel' als dimensie.
-- **Waargenomen capaciteit** - Het actieve aantal exemplaren van de doelbron zoals gezien door autoscale-engine.
-- **Gestarte schaalacties**: het aantal acties voor uit- en inschalen dat door de engine voor automatisch schalen wordt gestart. U filteren op schaal-out versus schaal in acties.
+- **Waargenomen metrische waarde** : de waarde van de metrische gegevens die u hebt gekozen om de schaal actie op te halen, zoals wordt weer gegeven of berekend door de engine voor automatisch schalen. Omdat één instelling voor automatisch schalen meerdere regels en daarom meerdere metrische bronnen kan hebben, kunt u filteren met metrische bronnen als een dimensie.
+- **Drempel waarde voor metrische gegevens** : de drempel waarde die u hebt ingesteld om de schaal actie uit te voeren. Omdat één instelling voor automatisch schalen meerdere regels en daarom meerdere metrische bronnen kan hebben, kunt u filteren met metrische regel als een dimensie.
+- **Waargenomen capaciteit** : het actieve aantal exemplaren van de doel resource, zoals wordt gezien door de engine voor automatisch schalen.
+- **Gestarte schaalacties**: het aantal acties voor uit- en inschalen dat door de engine voor automatisch schalen wordt gestart. U kunt filteren op uitschalen versus schalen in acties.
 
-U de [Metrics Explorer](metrics-getting-started.md) gebruiken om de bovenstaande statistieken allemaal op één plaats in kaart te brengen. De grafiek moet het als eerste te zien zijn:
+U kunt de [Metrics Explorer](metrics-getting-started.md) gebruiken om de bovenstaande metrische gegevens op één plek te diagram. In de grafiek moet het volgende worden weer gegeven:
 
-  - de werkelijke statistiek
-  - de statistiek zoals gezien/berekend door autoscale engine
-  - de drempel voor een schaalactie
-  - de verandering in capaciteit 
+  - de werkelijke metrische waarde
+  - de metrische gegevens zoals weer gegeven/berekend door de engine voor automatisch schalen
+  - de drempel waarde voor een schaal actie
+  - de wijziging in de capaciteit 
 
-## <a name="example-1---analyzing-a-simple-autoscale-rule"></a>Voorbeeld 1 - Een eenvoudige regel voor automatisch schalen analyseren 
+## <a name="example-1---analyzing-a-simple-autoscale-rule"></a>Voor beeld 1: een eenvoudige regel voor automatisch schalen analyseren 
 
-We hebben een eenvoudige autoscale instelling voor een virtuele machine schaal set die:
+We hebben een eenvoudige instelling voor automatisch schalen voor een schaalset voor virtuele machines die:
 
-- schaalt uit wanneer het gemiddelde CPU-percentage van een set groter is dan 70% gedurende 10 minuten 
-- schalen in wanneer het CPU-percentage van de set is minder dan 5% voor meer dan 10 minuten. 
+- Hiermee wordt uitgeschaald wanneer het gemiddelde CPU-percentage van een set langer is dan 70% gedurende tien minuten 
+- Hiermee wordt geschaald wanneer het CPU-percentage van de set meer dan 10 minuten minder dan 5% is. 
 
-Bekijk de statistieken van de autoscale-service.
+Laten we de metrische gegevens van de service voor automatisch schalen eens bekijken.
  
-![Voorbeeld van virtuele machineschaalsetpercentage CPU-voorbeeld](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![CPU-voor beeld van schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
-![Voorbeeld van virtuele machineschaalsetpercentage CPU-voorbeeld](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
+![CPU-voor beeld van schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***Figuur 1a - Percentage CPU-statistiek voor virtuele machineschaalset en de statistiek Waargenomen metrische waarde voor instelling automatisch schalen***
+***Afbeelding 1a: percentage CPU-metriek voor schaal sets voor virtuele machines en de waargenomen metrische waarde voor metrische gegevens voor automatisch schalen***
 
-![Metrische drempel en waargenomen capaciteit](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
+![Metrische drempel waarde en waargenomen capaciteit](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***Figuur 1b - Metrische drempel en waargenomen capaciteit***
+***Afbeelding 1B-metrische drempel waarde en waargenomen capaciteit***
 
-In figuur 1b is de **metrische drempel** (lichtblauwe lijn) voor de uitschalijnregel 70.  De **waargenomen capaciteit** (donkerblauwe lijn) toont het aantal actieve exemplaren, dat momenteel 3 is. 
+In afbeelding 1B is de **metrische drempel waarde** (licht blauwe lijn) voor de scale-out-regel 70.  De **waargenomen capaciteit** (donker blauwe lijn) toont het aantal actieve instanties, dat nu 3 is. 
 
 > [!NOTE]
-> U moet de **metrische drempelwaarde** filteren op de dimensieschaal schaal van de metrische triggerregel (verhoging) om de schaaldrempel en de schaal in regel (afname) te zien. 
+> U moet de **drempel waarde voor metrische gegevens** filteren met de regel dimensie scale-out trigger regel (toename) om de drempel waarde voor uitschalen en de schaal in regel (afname) te bekijken. 
 
-## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Voorbeeld 2 - Geavanceerde automatische schaling voor een virtuele machineschaalset
+## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Voor beeld 2: Geavanceerd automatisch schalen voor een schaalset voor virtuele machines
 
-We hebben een instelling voor automatische schaal waarmee een bron voor virtuele machineschaalkan worden uitgeschaald op basis van zijn eigen metrische **uitgaande stromen.** De optie **Verdeling per instantietelling** voor de metrische drempelwaarde is ingeschakeld. 
+We hebben een instelling voor automatisch schalen waarmee een bron van een schaalset voor virtuele machines kan worden uitgeschaald op basis van de eigen metrische **uitgaande stromen**. U ziet dat de optie **metrische gegevens delen per exemplaar aantal** voor de metrische drempel waarde is ingeschakeld. 
 
-De regel schaalactie is: 
+De regel voor de schaal actie is: 
 
-Als de waarde van **Uitgaande stroom per instantie** groter is dan 10, moet de automatische schaalservice met 1 instantie worden uitschaald. 
+Als de waarde van de **uitgaande stroom per instantie** groter is dan 10, moet de service voor automatisch schalen worden uitgeschaald op 1 exemplaar. 
 
-In dit geval wordt de waargenomen metrische waarde van de automatische schaalmotor berekend als de werkelijke metrische waarde gedeeld door het aantal exemplaren. Als de waargenomen metrische waarde lager is dan de drempelwaarde, wordt er geen scale-outactie gestart. 
+In dit geval wordt de geobserveerde metrische waarde van de engine voor automatisch schalen berekend als de werkelijke metrische waarde gedeeld door het aantal exemplaren. Als de waargenomen metrische waarde lager is dan de drempelwaarde, wordt er geen uitschaal actie gestart. 
  
-![Voorbeeld van het voorbeeld van automatische schaaldiagrammen voor automatische schaal](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Voor beeld van grafieken met metrische gegevens voor de schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
-![Voorbeeld van het voorbeeld van automatische schaaldiagrammen voor automatische schaal](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
+![Voor beeld van grafieken met metrische gegevens voor de schaalset voor virtuele machines](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***Figuur 2 - Voorbeeld van automatische schaalsetmetstabellen voor automatische schaal***
+***Afbeelding 2: voor beeld van de grafieken schaal sets voor virtuele machines automatisch schalen***
 
-In figuur 2 ziet u twee metrische grafieken. 
+In afbeelding 2 ziet u twee metrische grafieken. 
 
-De grafiek bovenaan toont de werkelijke waarde van de statistiek **Uitgaande stromen.** De werkelijke waarde is 6. 
+In de grafiek bovenaan ziet u de werkelijke waarde van de metrische gegevens van de **uitgaande stromen** . De werkelijke waarde is 6. 
 
-De grafiek aan de onderkant toont een paar waarden. 
- - De **waargenomen metrische waarde** (lichtblauw) is 3 omdat er 2 actieve exemplaren zijn en 6 gedeeld door 2 is 3. 
- - De **waargenomen capaciteit** (paars) toont het aantal gevallen van autoscale-engine. 
- - De **metrische drempel** (lichtgroen) is ingesteld op 10. 
+In de grafiek onderaan ziet u een aantal waarden. 
+ - De **waargenomen metrische waarde** (licht blauw) is 3, omdat er 2 actieve instanties zijn en 6 gedeeld door 2 3. 
+ - De **waargenomen capaciteit** (paars) toont het aantal instanties dat wordt weer gegeven door de engine voor automatisch schalen. 
+ - De **metrische drempel** waarde (licht groen) is ingesteld op 10. 
 
-Als er meerdere regels voor schaalactie zijn, u splitsen of de optie **Filter toevoegen gebruiken** in het grafiek Metrics explorer om metrische gegevens te bekijken op basis van een specifieke bron of regel. Zie Geavanceerde functies van metrische [grafieken voor](metrics-charts.md#apply-splitting-to-a-chart) meer informatie over het splitsen van een metrische grafiek : splitsen
+Als er meerdere schaal actie regels zijn, kunt u splitsen of de optie **filter toevoegen** gebruiken in de grafiek metrische gegevens Verkenner om de metrische gegevens te bekijken op basis van een specifieke bron of regel. Zie [geavanceerde functies van metrische grafieken-splitsen](metrics-charts.md#apply-splitting-to-a-chart) voor meer informatie over het splitsen van een metrische grafiek
 
-## <a name="example-3---understanding-autoscale-events"></a>Voorbeeld 3 - Gebeurtenissen voor automatisch schalen begrijpen
+## <a name="example-3---understanding-autoscale-events"></a>Voor beeld 3: informatie over automatisch schalen
 
-Ga in het instellingsscherm automatisch schalen naar het tabblad **Geschiedenis uitvoeren** om de meest recente schaalacties te bekijken. Het tabblad toont ook de wijziging in **de waargenomen capaciteit in de** loop van de tijd. Als u meer informatie wilt over alle acties voor automatisch schalen, inclusief bewerkingen zoals instellingen voor automatisch schalen bijwerken/verwijderen, bekijkt u het activiteitenlogboek en filtert u op bewerkingen voor automatische schaal.
+In het scherm instelling voor automatisch schalen gaat u naar het tabblad **uitvoerings geschiedenis** om de meest recente schaal acties weer te geven. Op het tabblad ziet u ook de wijziging van de **waargenomen capaciteit** gedurende een bepaalde periode. Voor meer informatie over alle acties voor automatisch schalen, waaronder bewerkingen zoals het bijwerken/verwijderen van instellingen voor automatisch schalen, bekijkt u het activiteiten logboek en filtert u op automatisch schalen.
 
-![Voergeschiedenis voor automatische schaal](media/autoscale-troubleshoot/autoscale-setting-run-history-smaller.png)
+![Geschiedenis van instellingen voor automatisch schalen uitvoeren](media/autoscale-troubleshoot/autoscale-setting-run-history-smaller.png)
 
-## <a name="autoscale-resource-logs"></a>Bronlogboeken automatisch schalen
+## <a name="autoscale-resource-logs"></a>Resource logboeken automatisch schalen
 
-Net als elke andere Azure-bron biedt de autoscale-service [bronlogboeken.](platform-logs-overview.md) Er zijn twee categorieën logboeken.
+Net als elke andere Azure-resource biedt de service voor automatisch schalen [resource logboeken](platform-logs-overview.md). Er zijn twee soorten logboeken.
 
-- **Autoscale Evaluaties** - De autoscale engine registreert logboekvermeldingen voor elke conditie-evaluatie elke keer dat het een controle doet.  De vermelding bevat details over de waargenomen waarden van de statistieken, de geëvalueerde regels en of de evaluatie heeft geleid tot een schaalactie of niet.
+- **Evaluaties automatisch schalen** : de engine voor automatisch schalen legt logboek vermeldingen voor elke evaluatie van één voor waarde vast telkens wanneer er een controle wordt gedaan.  De vermelding bevat details over de waargenomen waarden van de metrische gegevens, de regels die zijn geëvalueerd en als de evaluatie een schaal actie heeft veroorzaakt.
 
-- **Acties voor schaalvergroting** automatisch schalen : de actiegebeurtenissen voor de schaal van de engine worden opgenomen die zijn geïnitieerd door de autoscale-service en de resultaten van deze schalen (succes, fout en hoeveel schaling heeft plaatsgevonden zoals die is gezien door de autoscale-service).
+- **Schaal acties** voor automatisch schalen: de engine registreert actie gebeurtenissen die zijn geïnitieerd door de service voor automatisch schalen en de resultaten van deze schalen (geslaagd, mislukt, en hoeveel schalen er is opgetreden, zoals gezien door de service voor automatisch schalen).
 
-Zoals bij elke azure monitor ondersteunde service, u [diagnostische instellingen](diagnostic-settings.md) gebruiken om deze logboeken te routeren:
+Net als bij elke Azure Monitor ondersteunde service kunt u [Diagnostische instellingen](diagnostic-settings.md) gebruiken om deze logboeken te routeren:
 
-- naar uw Log Analytics-werkruimte voor gedetailleerde analyses
-- naar Gebeurtenishubs en vervolgens naar niet-Azure-hulpprogramma's
-- naar uw Azure-opslagaccount voor archivering  
+- naar uw Log Analytics-werk ruimte voor gedetailleerde analyse
+- Event Hubs en vervolgens naar niet-Azure-hulpprogram ma's
+- naar uw Azure Storage-account voor archivering  
 
 ![Diagnostische instellingen automatisch schalen](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-De vorige afbeelding toont de diagnostische instellingen voor automatische schaal van de Azure-portal. Daar u het tabblad Diagnostische/bronlogboeken selecteren en logboekverzameling en -routering inschakelen. U dezelfde actie ook uitvoeren met REST API, CLI, PowerShell, Resource Manager-sjablonen voor diagnostische instellingen door het brontype te kiezen als *Microsoft.Insights/AutoscaleSettings*. 
+In de vorige afbeelding ziet u de Azure Portal Diagnostische instellingen voor automatisch schalen. Hier kunt u het tabblad Diagnostische/resource logs selecteren en logboek verzameling en route ring inschakelen. U kunt ook dezelfde actie uitvoeren met behulp van REST API, CLI, Power shell, Resource Manager-sjablonen voor Diagnostische instellingen door het resource type te kiezen als *micro soft. Insights/AutoscaleSettings*. 
 
-## <a name="troubleshooting-using-autoscale-logs"></a>Probleemoplossing met logboeken voor automatisch schalen 
+## <a name="troubleshooting-using-autoscale-logs"></a>Problemen oplossen met Logboeken voor automatisch schalen 
 
-Voor de beste probleemoplossingservaring raden we u aan uw logboeken via een werkruimte te routeren naar Azure Monitor Logs (Log Analytics) wanneer u de instelling voor automatisch schalen maakt. Dit proces wordt weergegeven in de afbeelding in de vorige sectie. U de evaluaties valideren en acties beter schalen met Behulp van Log Analytics.
+Voor de beste probleemoplossings ervaring raden wij u aan om uw logboeken te routeren naar Azure Monitor logs (Log Analytics) via een werk ruimte wanneer u de instelling voor automatisch schalen maakt. Dit proces wordt weer gegeven in de afbeelding in de vorige sectie. U kunt de evaluaties en schaal acties beter valideren met behulp van Log Analytics.
 
-Nadat u de automatische schaallogboeken hebt geconfigureerd om naar de werkruimte Log Analytics te worden verzonden, u de volgende query's uitvoeren om de logboeken te controleren. 
+Zodra u de logboeken voor automatisch schalen hebt geconfigureerd om te worden verzonden naar de Log Analytics-werk ruimte, kunt u de volgende query's uitvoeren om de logboeken te controleren. 
 
-Probeer deze query om aan de slag te gaan om de meest recente evaluatielogboeken voor automatische waarden weer te geven:
+Om aan de slag te gaan, kunt u deze query proberen om de meest recente evaluatie logboeken voor automatisch schalen weer te geven:
 
 ```Kusto
 AutoscaleEvaluationsLog
 | limit 50
 ```
 
-Of probeer de volgende query om de meest recente schaalactielogboeken weer te geven:
+Of voer de volgende query uit om de meest recente schaal actie logboeken weer te geven:
 
 ```Kusto
 AutoscaleScaleActionsLog
@@ -135,27 +135,27 @@ AutoscaleScaleActionsLog
 
 Gebruik de volgende secties voor deze vragen. 
 
-## <a name="a-scale-action-occurred-that-i-didnt-expect"></a>Er is een schaalactie opgetreden die ik niet had verwacht
+## <a name="a-scale-action-occurred-that-i-didnt-expect"></a>Er is een schaal actie opgetreden die niet verwacht
 
-Voer eerst de query uit voor schaalactie om de schaalactie te vinden waarin u geïnteresseerd bent. Als dit de laatste schaalactie is, gebruikt u de volgende query:
+Voer eerst de query voor schaal actie uit om de schaal actie te vinden waarin u bent geïnteresseerd. Als het de meest recente schaal actie is, gebruikt u de volgende query:
 
 ```Kusto
 AutoscaleScaleActionsLog
 | take 1
 ```
 
-Selecteer het veld CorrelationId in het logboek van schaalacties. Gebruik de CorrelationId om het juiste evaluatielogboek te vinden. Als u de onderstaande query uitvoert, worden alle geëvalueerde regels en voorwaarden weergegeven die tot die schaalactie leiden.
+Selecteer het veld CorrelationId in het logboek met schaal acties. Gebruik de CorrelationId om het juiste evaluatie logboek te vinden. Als de onderstaande query wordt uitgevoerd, worden alle regels en voor waarden weer gegeven die het resultaat zijn van die schaal actie.
 
 ```Kusto
 AutoscaleEvaluationsLog
 | where CorrelationId = "<correliationId>"
 ```
 
-## <a name="what-profile-caused-a-scale-action"></a>Welk profiel heeft een schaalactie veroorzaakt?
+## <a name="what-profile-caused-a-scale-action"></a>Welk profiel heeft een schaal actie veroorzaakt?
 
-Er is een geschaalde actie opgetreden, maar u hebt overlappende regels en profielen en moet worden opgespoord welke actie de oorzaak is van de actie. 
+Er is een geschaalde actie opgetreden, maar u hebt overlappende regels en profielen en u moet bijhouden wat de actie heeft veroorzaakt. 
 
-Zoek de correlationId van de schaalactie (zoals uitgelegd in voorbeeld 1) en voer de query uit op evaluatielogboeken om meer te weten te komen over het profiel.
+Zoek de correlatie van de schaal actie (zoals beschreven in voor beeld 1) en voer vervolgens de query uit op evaluatie logboeken voor meer informatie over het profiel.
 
 ```Kusto
 AutoscaleEvaluationsLog
@@ -164,7 +164,7 @@ AutoscaleEvaluationsLog
 | project ProfileEvaluationTime, Profile, ProfileSelected, EvaluationResult
 ```
 
-De hele profielevaluatie kan ook beter worden begrepen aan de hand van de volgende vraag
+De volledige profiel evaluatie kan ook beter worden begrepen met behulp van de volgende query
 
 ```Kusto
 AutoscaleEvaluationsLog
@@ -173,13 +173,13 @@ AutoscaleEvaluationsLog
 | project OperationName, Profile, ProfileEvaluationTime, ProfileSelected, EvaluationResult
 ```
 
-## <a name="a-scale-action-did-not-occur"></a>Er is geen schaalactie uitgevoerd
+## <a name="a-scale-action-did-not-occur"></a>Er is geen schaal actie uitgevoerd
 
-Ik verwachtte een schaal actie en het gebeurde niet. Er mogen geen schaalactiegebeurtenissen of logboeken zijn.
+Er werd een schaal actie verwacht, maar deze is niet uitgevoerd. Er zijn mogelijk geen schaal actie gebeurtenissen of Logboeken.
 
-Bekijk de statistieken voor automatisch schalen als u een op metrische gegevens gebaseerde schaalregel gebruikt. Het is mogelijk dat de **waargenomen metrische waarde** of **waargenomen capaciteit** niet zijn wat u verwachtte dat ze zouden zijn en daarom heeft de schaalregel niet brand gesticht. Je zou nog steeds evaluaties zien, maar geen scale-out regel. Het is ook mogelijk dat de afkoeltijd een schaalactie voorkwam. 
+Controleer de metrische gegevens voor automatisch schalen als u een schaal regel op basis van metrische gegevens gebruikt. Het is mogelijk dat de **waargenomen metrische waarde** of de **waargenomen capaciteit** niet naar verwachting is en dat de schaal regel niet is geactiveerd. U ziet nog wel evaluaties, maar geen scale-out-regel. Het is ook mogelijk dat de uitgekoelde tijd een schaal actie heeft behouden. 
 
- Bekijk de evaluatielogboeken voor automatische schaal gedurende de periode waarin u verwachtte dat de schaalactie zou plaatsvinden. Bekijk alle evaluaties die het deed en waarom het besloot om geen schaalactie op gang te brengen.
+ Bekijk de logboeken voor automatisch schalen tijdens de periode waarin u werd verwacht dat de schaal actie wordt uitgevoerd. Bekijk alle evaluaties en waarom het heeft besloten geen schaal actie te activeren.
 
 
 ```Kusto
@@ -189,9 +189,9 @@ AutoscaleEvaluationsLog
 | project OperationName, MetricData, ObservedValue, Threshold, EstimateScaleResult
 ```
 
-## <a name="scale-action-failed"></a>Schaalactie is mislukt
+## <a name="scale-action-failed"></a>Schaal actie mislukt
 
-Er kan een geval zijn waarin de autoscale-service de schaalactie heeft ondernomen, maar het systeem heeft besloten de schaalactie niet te schalen of niet te voltooien. Gebruik deze query om de mislukte schaalacties te vinden.
+Er is mogelijk een situatie waarbij de schaal actie door de service voor automatisch schalen is uitgevoerd, maar het systeem heeft besloten de schaal actie niet te schalen of niet is gelukt. Gebruik deze query om de uitgevallen schaal acties te vinden.
 
 ```Kusto
 AutoscaleScaleActionsLog
@@ -199,11 +199,11 @@ AutoscaleScaleActionsLog
 | project ResultDescription
 ```
 
-Maak waarschuwingsregels om op de hoogte te worden gesteld van acties of fouten op de automatische schaal. U ook waarschuwingsregels maken om een melding te krijgen over automatisch schaalgebeurtenissen.
+Maak waarschuwings regels om op de hoogte te worden gesteld van acties voor automatisch schalen of fouten. U kunt ook waarschuwings regels maken om een melding te ontvangen over gebeurtenissen voor automatisch schalen.
 
-## <a name="schema-of-autoscale-resource-logs"></a>Schema van bronlogboeken voor automatisch schalen
+## <a name="schema-of-autoscale-resource-logs"></a>Schema voor het automatisch schalen van resource logboeken
 
-Zie [bronlogboeken voor automatisch schalen voor](autoscale-resource-log-schema.md) meer informatie
+Zie [resource logboeken automatisch schalen](autoscale-resource-log-schema.md) voor meer informatie
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees informatie over [de aanbevolen procedures voor automatische schaal](autoscale-best-practices.md). 
+Lees informatie over [Aanbevolen procedures voor automatisch schalen](autoscale-best-practices.md). 

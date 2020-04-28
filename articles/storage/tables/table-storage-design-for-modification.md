@@ -1,6 +1,6 @@
 ---
-title: Azure-tabelopslag ontwerpen voor gegevenswijziging | Microsoft Documenten
-description: Ontwerptabellen voor gegevenswijziging in Azure Table-opslag.
+title: Azure-tabel opslag ontwerpen voor het wijzigen van gegevens | Microsoft Docs
+description: Ontwerp tabellen voor het wijzigen van gegevens in azure-tabel opslag.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,43 +9,43 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75771543"
 ---
 # <a name="design-for-data-modification"></a>Ontwerp voor gegevenswijziging
-Dit artikel richt zich op de ontwerpoverwegingen voor het optimaliseren van inserts, updates en deletes. In sommige gevallen moet u de afweging tussen ontwerpen die optimaliseren voor het opvragen tegen ontwerpen die optimaliseren voor gegevenswijziging evalueren, net zoals u doet in ontwerpen voor relationele databases (hoewel de technieken voor het beheren van de ontwerpafwegingen verschillen in een relationele database). De sectie Tabelontwerppatronen beschrijft enkele gedetailleerde ontwerppatronen voor de tabelservice en belicht enkele van deze afwegingen. In de praktijk zult u merken dat veel ontwerpen die zijn geoptimaliseerd voor het opvragen van entiteiten ook goed werken voor het wijzigen van entiteiten.  
+Dit artikel richt zich op de ontwerp overwegingen voor het optimaliseren van invoegingen, updates en verwijderingen. In sommige gevallen moet u de afweging evalueren tussen de ontwerpen die worden geoptimaliseerd voor het uitvoeren van query's op ontwerpen die worden geoptimaliseerd voor het wijzigen van gegevens, net zoals bij ontwerpen voor relationele data bases (hoewel de technieken voor het beheer van de ontwerp traden verschillen in een relationele data base). In de sectie tabel ontwerp patronen worden een aantal gedetailleerde ontwerp patronen voor de Table service beschreven en worden enkele van deze trans acties gemarkeerd. In de praktijk zult u merken dat veel modellen die zijn geoptimaliseerd voor het uitvoeren van query's, ook geschikt zijn voor het wijzigen van entiteiten.  
 
-## <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>De prestaties van invoegbewerkingen optimaliseren, bijwerken en verwijderen
-Als u een entiteit wilt bijwerken of verwijderen, moet u deze kunnen identificeren met behulp van de waarden **PartitionKey** en **RowKey.** In dit verband moet uw keuze voor **PartitionKey** en **RowKey** voor het wijzigen van entiteiten vergelijkbare criteria volgen als uw keuze om puntquery's te ondersteunen, omdat u entiteiten zo efficiënt mogelijk wilt identificeren. U wilt geen inefficiënte partitie- of tabelscan gebruiken om een entiteit te vinden om de **partitionkey-** en **rowkey-waarden** te ontdekken die u moet bijwerken of verwijderen.  
+## <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>De prestaties van INSERT-, update-en delete-bewerkingen optimaliseren
+Als u een entiteit wilt bijwerken of verwijderen, moet u deze kunnen identificeren met behulp van de waarden **PartitionKey** en **RowKey** . In dit opzicht moeten uw keuze van **PartitionKey** en **RowKey** voor het wijzigen van entiteiten vergelijk bare criteria volgen op uw keuze om punt query's te ondersteunen, omdat u zo efficiënt mogelijk entiteiten wilt identificeren. U wilt geen inefficiënte partitie of tabel Scan gebruiken om een entiteit te vinden om de **PartitionKey** -en **RowKey** -waarden te ontdekken die u moet bijwerken of verwijderen.  
 
-De volgende patronen in de ontwerppatronen van de sectie Tabel zijn gericht op het optimaliseren van de prestaties of uw bewerkingen voor invoegen, bijwerken en verwijderen:  
+De volgende patronen in het ontwerp patroon van de sectie tabel maken het optimaliseren van de prestaties of uw insert-, update-en delete-bewerkingen:  
 
-* [Patroon voor het verwijderen](table-storage-design-patterns.md#high-volume-delete-pattern) van een hoog volume - Schakel het verwijderen van een groot aantal entiteiten in door alle entiteiten op te slaan voor gelijktijdige verwijdering in hun eigen afzonderlijke tabel; u de entiteiten verwijdert door de tabel te verwijderen.  
-* [Patroon van gegevensreeksen](table-storage-design-patterns.md#data-series-pattern) - Sla volledige gegevensreeksen op in één entiteit om het aantal aanvragen dat u doet te minimaliseren.  
-* [Breed entiteitenpatroon](table-storage-design-patterns.md#wide-entities-pattern) - Gebruik meerdere fysieke entiteiten om logische entiteiten met meer dan 252 eigenschappen op te slaan.  
-* [Patroon grote entiteiten](table-storage-design-patterns.md#large-entities-pattern) : gebruik blobopslag om grote eigenschapswaarden op te slaan.  
+* [Patroon voor grote volumes verwijderen](table-storage-design-patterns.md#high-volume-delete-pattern) : Hiermee wordt het verwijderen van een groot aantal entiteiten ingeschakeld door alle entiteiten voor gelijktijdige verwijdering in hun eigen afzonderlijke tabel op te slaan. u verwijdert de entiteiten door de tabel te verwijderen.  
+* [Patroon van de gegevens reeks](table-storage-design-patterns.md#data-series-pattern) : Sla volledige gegevens reeksen op in één entiteit om het aantal aanvragen dat u maakt, te minimaliseren.  
+* [Patroon voor grote entiteiten](table-storage-design-patterns.md#wide-entities-pattern) : gebruik meerdere fysieke entiteiten om logische entiteiten met meer dan 252 eigenschappen op te slaan.  
+* [Patroon voor grote entiteiten](table-storage-design-patterns.md#large-entities-pattern) : gebruik Blob Storage om grote eigenschaps waarden op te slaan.  
 
-## <a name="ensure-consistency-in-your-stored-entities"></a>Zorgen voor consistentie in uw opgeslagen entiteiten
-De andere belangrijke factor die uw keuze van sleutels voor het optimaliseren van gegevenswijzigingen beïnvloedt, is hoe u consistentie garanderen door atomaire transacties te gebruiken. U een EGT alleen gebruiken om te werken op entiteiten die in dezelfde partitie zijn opgeslagen.  
+## <a name="ensure-consistency-in-your-stored-entities"></a>Consistentie in uw opgeslagen entiteiten garanderen
+De andere sleutel factor die van invloed is op uw keuze van sleutels voor het optimaliseren van gegevens wijzigingen is het garanderen van consistentie met behulp van atomische trans acties. U kunt alleen een EGT gebruiken om te werken aan entiteiten die zijn opgeslagen in dezelfde partitie.  
 
-De volgende patronen in het artikel [Tabelontwerppatronen](table-storage-design-patterns.md) hebben betrekking op het beheren van consistentie:  
+De volgende patronen in het artikel [tabel ontwerp patronen](table-storage-design-patterns.md) adres consistentie beheer:  
 
-* [Secundair indexpatroon binnen partitie](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - Sla meerdere kopieën van elke entiteit op met verschillende **RowKey-waarden** (in dezelfde partitie) om snelle en efficiënte opzoekingen en alternatieve sorteerorders in te schakelen met behulp van verschillende **RowKey-waarden.**  
-* [Secundair indexpatroon tussen partities](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - Sla meerdere kopieën van elke entiteit op met verschillende RowKey-waarden in afzonderlijke partities of in afzonderlijke tabellen om snelle en efficiënte opzoekingen en alternatieve sorteerorders in te schakelen met behulp van verschillende **RowKey-waarden.**  
-* [Uiteindelijk consistent transactiepatroon](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) - Uiteindelijk consistent gedrag inschakelen over de grenzen van de partitie of de grenzen van het opslagsysteem met Azure-wachtrijen.
-* [Patroon indexentiteiten](table-storage-design-patterns.md#index-entities-pattern) - Indexentiteiten onderhouden om efficiënte zoekopdrachten mogelijk te maken die lijsten met entiteiten retourneren.  
-* [Denormalisatiepatroon](table-storage-design-patterns.md#denormalization-pattern) - Combineer gerelateerde gegevens samen in één entiteit zodat u alle gegevens ophalen die u nodig hebt met één puntquery.  
-* [Patroon van gegevensreeksen](table-storage-design-patterns.md#data-series-pattern) - Sla volledige gegevensreeksen op in één entiteit om het aantal aanvragen dat u doet te minimaliseren.  
+* [Intra-Partition secundair index patroon](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) : Sla meerdere kopieën van elke entiteit op met behulp van verschillende **RowKey** -waarden (in dezelfde partitie) om snelle en efficiënte zoek acties en alternatieve Sorteer volgorden mogelijk te maken met behulp van verschillende **RowKey** -waarden.  
+* [Secundair index patroon tussen partities](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) : Sla meerdere kopieën van elke entiteit op met behulp van verschillende RowKey-waarden in afzonderlijke partities of in afzonderlijke tabellen om snelle en efficiënte zoek acties en alternatieve Sorteer volgorden mogelijk te maken met behulp van verschillende **RowKey** -waarden.  
+* [Patroon uiteindelijk consistent trans acties](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) : Schakel uiteindelijk consistent gedrag in voor de partitie grenzen of de grenzen van het opslag systeem met behulp van Azure-wacht rijen.
+* [Patroon van index entiteiten](table-storage-design-patterns.md#index-entities-pattern) : behoud index entiteiten om efficiënte Zoek opdrachten in te scha kelen waarmee lijsten met entiteiten worden geretourneerd.  
+* [Denormalisatie patroon](table-storage-design-patterns.md#denormalization-pattern) : gerelateerde gegevens samen in één entiteit combi neren zodat u alle gegevens kunt ophalen die u nodig hebt met één punt query.  
+* [Patroon van de gegevens reeks](table-storage-design-patterns.md#data-series-pattern) : Sla volledige gegevens reeksen op in één entiteit om het aantal aanvragen dat u maakt, te minimaliseren.  
 
-Zie de sectie [Entiteitgroepgroeptransacties](table-storage-design.md#entity-group-transactions)voor informatie over transacties van entiteitsgroepen .  
+Zie de sectie [trans acties voor entiteits](table-storage-design.md#entity-group-transactions)groepen voor meer informatie over entiteits transacties.  
 
-## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Zorg ervoor dat uw ontwerp voor efficiënte aanpassingen efficiënte vragen vergemakkelijkt
-In veel gevallen resulteert een ontwerp voor efficiënt query's in efficiënte wijzigingen, maar u moet altijd evalueren of dit het geval is voor uw specifieke scenario. Sommige patronen in het artikel [Tabelontwerppatronen](table-storage-design-patterns.md) evalueren expliciet afwegingen tussen query's en wijzigenvan entiteiten en u moet altijd rekening houden met het aantal van elk type bewerking.  
+## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Zorg ervoor dat uw ontwerp voor efficiënte wijzigingen efficiënte query's vereenvoudigt
+In veel gevallen kan een ontwerp voor efficiënte query resultaten leiden tot efficiënte wijzigingen, maar moet u altijd evalueren of dit het geval is voor uw specifieke scenario. Sommige van de patronen in de [tabel ontwerp patronen](table-storage-design-patterns.md) van het artikel evalueren expliciet de verhoudingen van het opvragen en aanpassen van entiteiten, en u moet altijd rekening houden met het aantal van elk type bewerking.  
 
-De volgende patronen in het artikel [Tabelontwerppatronen](table-storage-design-patterns.md) hebben betrekking op afwegingen tussen het ontwerpen voor efficiënte query's en het ontwerpen voor efficiënte gegevenswijziging:  
+De volgende patronen in de [tabel met ontwerp patronen](table-storage-design-patterns.md) voor het artikel zijn een afweging tussen het ontwerpen van efficiënte query's en het ontwerpen voor efficiënte gegevens aanpassing:  
 
-* [Samengestelde sleutelpatroon](table-storage-design-patterns.md#compound-key-pattern) - Gebruik samengestelde **RowKey-waarden** om een client in staat te stellen gerelateerde gegevens op te zoeken met één puntquery.  
-* [Logboekstaartpatroon](table-storage-design-patterns.md#log-tail-pattern) - Haal de *n-entiteiten* op die onlangs aan een partitie zijn toegevoegd met behulp van een **RowKey-waarde** die wordt sorteert in omgekeerde datum en tijdvolgorde.  
+* [Samengesteld sleutel patroon](table-storage-design-patterns.md#compound-key-pattern) : gebruik samengestelde **RowKey** -waarden om een client in staat te stellen gerelateerde gegevens te zoeken met een single point-query.  
+* [Eind patroon van logboek](table-storage-design-patterns.md#log-tail-pattern) : Haal de *n* -entiteiten op die het laatst aan een partitie zijn toegevoegd met behulp van een **RowKey** -waarde die in omgekeerde datum-en tijd volgorde wordt gesorteerd.  

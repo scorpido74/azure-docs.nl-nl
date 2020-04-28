@@ -1,6 +1,6 @@
 ---
-title: Opslaguitzondering na het resetten van de verbinding in Azure HDInsight
-description: Opslaguitzondering na het resetten van de verbinding in Azure HDInsight
+title: Opslag uitzondering na opnieuw instellen van verbinding in azure HDInsight
+description: Opslag uitzondering na opnieuw instellen van verbinding in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887220"
 ---
-# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scenario: Opslaguitzondering na het opnieuw instellen van de verbinding in Azure HDInsight
+# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scenario: uitzonde ring voor opslag na opnieuw instellen van verbinding in azure HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
@@ -24,24 +24,24 @@ Kan geen nieuwe Apache HBase-tabel maken.
 
 ## <a name="cause"></a>Oorzaak
 
-Tijdens een tabeltruncation proces, was er een opslag verbinding probleem. De tabelvermelding is verwijderd in de tabel metagegevens van HBase. Op één na is op één blobbestand na verwijderd.
+Tijdens het afkappen van een tabel is er een probleem met de opslag verbinding. De tabel vermelding is verwijderd uit de HBase-meta gegevens tabel. Er is maar één blob-bestand verwijderd.
 
-Hoewel er geen map `/hbase/data/default/ThatTable` blob genaamd zittend in de opslag. Het WASB-stuurprogramma vond het bestaan van het bovenstaande blobbestand `/hbase/data/default/ThatTable` en zou het niet toestaan om een blob te maken die wordt aangeroepen omdat het ervan uitging dat de bovenliggende mappen bestonden, waardoor het maken van een tabel mislukt.
+Er is geen map-blob met `/hbase/data/default/ThatTable` de naam in de opslag. Het WASB-stuur programma heeft vastgesteld dat het bestand het bovenliggende element bevat en dat er geen blob zou kunnen `/hbase/data/default/ThatTable` worden gemaakt, omdat er wordt ervan uitgegaan dat er voor het hoofd mappen bestaan, waardoor de tabel niet kan worden gemaakt.
 
 ## <a name="resolution"></a>Oplossing
 
-1. Start vanaf Apache Ambari UI de actieve HMaster opnieuw. Hierdoor wordt een van de twee stand-by HMaster de actieve en zal de nieuwe actieve HMaster de metadata tabelinfo herladen. Zo ziet u `already-deleted` de tabel niet in HMaster UI.
+1. Start de actieve HMaster opnieuw vanuit Apache Ambari UI. Hiermee kan een van de twee stand-HMaster worden geactiveerd en wordt de gegevens tabel informatie opnieuw geladen met de nieuwe Active HMaster. Daarom ziet u de tabel niet `already-deleted` in de HMaster-gebruikers interface.
 
-1. U het zwevende blobbestand vinden in de `hdfs dfs -ls /xxxxxx/yyyyy`gebruikersinterfacetools zoals Cloud Explorer of de opdracht uitvoeren zoals. Voer `hdfs dfs -rmr /xxxxx/yyyy` uit om die blob te verwijderen. Bijvoorbeeld `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. U vindt het zwevende blob-bestand in UI-hulpprogram ma's zoals Cloud Explorer of `hdfs dfs -ls /xxxxxx/yyyyy`het uitvoeren van opdrachten zoals. Voer `hdfs dfs -rmr /xxxxx/yyyy` uit om de BLOB te verwijderen. Bijvoorbeeld `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
-Nu u nieuwe tabel met dezelfde naam maken in HBase.
+U kunt nu een nieuwe tabel met dezelfde naam maken in HBase.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

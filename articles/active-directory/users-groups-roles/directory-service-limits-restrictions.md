@@ -1,6 +1,6 @@
 ---
-title: Servicelimieten en -beperkingen - Azure Active Directory | Microsoft Documenten
-description: Gebruiksbeperkingen en andere servicelimieten voor de Azure Active Directory-service
+title: Service limieten en beperkingen-Azure Active Directory | Microsoft Docs
+description: Gebruiks beperkingen en andere service limieten voor de Azure Active Directory-service
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,14 +16,14 @@ ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659641"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Servicelimieten en -beperkingen voor Azure AD
-Dit artikel bevat de gebruiksbeperkingen en andere servicelimieten voor de Azure AD-service (Azure AD) van Azure. Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)als u op zoek bent naar de volledige set Microsoft Azure-servicelimieten.
+Dit artikel bevat de gebruiks beperkingen en andere service limieten voor de service Azure Active Directory (Azure AD). Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)als u op zoek bent naar de volledige set Microsoft Azure service limieten.
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 

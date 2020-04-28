@@ -1,41 +1,41 @@
 ---
-title: Een toepassing toegang verlenen tot andere Azure-bronnen
-description: In dit artikel wordt uitgelegd hoe u uw servicefabric-toepassing met beheerde identiteit toegang verleent tot andere Azure-bronnen die azure Active Directory-gebaseerde verificatie ondersteunen.
+title: Een toepassing toegang verlenen tot andere Azure-resources
+description: In dit artikel wordt uitgelegd hoe u uw beheerde identiteits Service Fabric toegang tot toepassingen kunt verlenen aan andere Azure-resources die op Azure Active Directory gebaseerde verificatie ondersteunen.
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614790"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>De beheerde identiteitstoegang van een Service Fabric-toepassing verlenen tot Azure-bronnen (voorbeeld)
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
 
-Voordat de toepassing de beheerde identiteit kan gebruiken om toegang te krijgen tot andere bronnen, moeten machtigingen worden verleend aan die identiteit op de beveiligde Azure-bron die wordt geopend. Het verlenen van machtigingen is meestal een beheeractie op het 'controlevlak' van de Azure-service die eigenaar is van de beveiligde bron die via Azure Resource Manager wordt gerouteerd, waardoor elke toepasselijke op rollen gebaseerde toegangscontrole wordt afgedwongen.
+Voordat de toepassing de beheerde identiteit voor toegang tot andere bronnen kan gebruiken, moeten er machtigingen worden verleend aan deze identiteit op de beveiligde Azure-resource die wordt geopend. Het verlenen van machtigingen is doorgaans een beheer actie op het ' besturings vlak ' van de Azure-service die eigenaar is van de beveiligde resource die wordt gerouteerd via Azure Resource Manager, waardoor alle toepasselijke op rollen gebaseerde toegangs controle wordt afgedwongen.
 
-De exacte volgorde van de stappen is dan afhankelijk van het type Azure-bron dat wordt geopend, evenals de taal/client die wordt gebruikt om machtigingen te verlenen. De rest van het artikel gaat uit van een door de gebruiker toegewezen identiteit die aan de toepassing is toegewezen en bevat een aantal typische voorbeelden voor uw gemak, maar het is op geen enkele wijze een uitputtende referentie voor dit onderwerp; raadpleeg de documentatie van de betreffende Azure-services voor actuele instructies over het verlenen van machtigingen.  
+De exacte volg orde van de stappen is afhankelijk van het type Azure-resource waartoe toegang wordt verkregen en de taal/client die wordt gebruikt om machtigingen te verlenen. In de rest van het artikel wordt ervan uitgegaan dat er een door de gebruiker toegewezen identiteit aan de toepassing is toegewezen en een aantal typische voor beelden bevat voor uw gemak, maar dit is op geen enkele manier een uitgebreide verwijzing naar dit onderwerp. Raadpleeg de documentatie van de betreffende Azure-Services voor actuele instructies voor het verlenen van machtigingen.  
 
 ## <a name="granting-access-to-azure-storage"></a>Toegang verlenen tot Azure Storage
-U de beheerde identiteit van de Service Fabric-toepassing (in dit geval door de gebruiker toegewezen) gebruiken om de gegevens uit een Azure-opslagblob op te halen. Geef de identiteit de vereiste machtigingen in de Azure-portal toe aan de volgende stappen:
+U kunt de Service Fabric beheerde identiteit van de toepassing (in dit geval toegewezen door de gebruiker) gebruiken om de gegevens op te halen uit een Azure Storage-blob. Wijs de vereiste machtigingen toe aan de Azure Portal met de volgende stappen:
 
-1. Navigeren naar het opslagaccount
+1. Navigeer naar het opslag account
 2. Klik op de koppeling Toegangsbeheer (IAM) in het linkerpaneel.
-3. (facultatief) Controleer bestaande toegang: selecteer Door het systeem toegewezen beheerde identiteit in het besturingselement 'Zoeken'; de juiste identiteit selecteren in de resultatenlijst van de daarop
-4. Klik op + Roltoewijzing toevoegen boven aan de pagina om een nieuwe roltoewijzing toe te voegen voor de identiteit van de toepassing.
-Selecteer onder Rol in de vervolgkeuzelijst De optie Opslagblob-gegevenslezer.
-5. Kies in de volgende vervolgkeuzelijst `User assigned managed identity`onder Toegang toewijzen tot de optie .
+3. Beschrijving Controleer de bestaande toegang: een door het systeem of de gebruiker toegewezen beheerde identiteit selecteren in het besturings element ' zoeken '; Selecteer de juiste identiteit in de lijst met resultaten
+4. Klik boven aan de pagina op functie toewijzing toevoegen om een nieuwe roltoewijzing toe te voegen voor de identiteit van de toepassing.
+Selecteer onder rol in de vervolg keuzelijst Storage BLOB data Reader.
+5. Kies `User assigned managed identity`in de volgende vervolg keuzelijst toegang toewijzen aan.
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst Abonnement, en stel Resourcegroep in op Alle resourcegroepen.
-7. Kies onder Selecteren de gebruikersinterface die overeenkomt met de servicefabric-toepassing en klik op Opslaan.
+7. Kies onder selecteren de UAI die overeenkomt met de Service Fabric toepassing en klik vervolgens op opslaan.
 
-Ondersteuning voor door het systeem toegewezen servicefabricbeheerde identiteiten omvat geen integratie in de Azure-portal. Als uw toepassing een door het systeem toegewezen identiteit gebruikt, moet u eerst de client-id van `Azure AD user, group, or service principal` de identiteit van de toepassing vinden en vervolgens de bovenstaande stappen herhalen, maar de optie selecteren in het besturingselement Zoeken.
+Ondersteuning voor door het systeem toegewezen Service Fabric beheerde identiteiten omvatten geen integratie in de Azure Portal; Als uw toepassing gebruikmaakt van een door het systeem toegewezen identiteit, moet u eerst de client-ID van de identiteit van de toepassing zoeken en vervolgens de bovenstaande stappen herhalen, maar `Azure AD user, group, or service principal` de optie selecteren in het besturings element zoeken.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Toegang verlenen tot Azure Key Vault
-Op dezelfde manier u met toegang tot opslag gebruikmaken van de beheerde identiteit van een Service Fabric-toepassing om toegang te krijgen tot een Azure-sleutelkluis. De stappen voor het verlenen van toegang in de Azure-portal zijn vergelijkbaar met de bovenstaande stappen en worden hier niet herhaald. Raadpleeg de afbeelding hieronder voor verschillen.
+Net als bij het openen van opslag kunt u gebruikmaken van de beheerde identiteit van een Service Fabric toepassing om toegang te krijgen tot een Azure-sleutel kluis. De stappen voor het verlenen van toegang in de Azure Portal zijn vergelijkbaar met die hierboven vermeld, en worden hier niet herhaald. Raadpleeg de onderstaande afbeelding voor verschillen.
 
-![Toegangsbeleid voor belangrijke vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
+![Toegangs beleid Key Vault](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-In het volgende voorbeeld wordt geïllustreerd dat toegang tot een kluis wordt toegekend via een sjabloonimplementatie; voeg het fragment(s) hieronder toe `resources` als een ander item onder het element van de sjabloon. Het voorbeeld toont toegang verlenen voor zowel de gebruiker toegewezen en systeem-toegewezen identiteitstypen, respectievelijk - kies de toepasselijke.
+Het volgende voor beeld illustreert het verlenen van toegang tot een kluis via een sjabloon implementatie. Voeg de onderstaande fragmenten toe als een andere vermelding onder het `resources` element van de sjabloon. In het voor beeld wordt gedemonstreerd hoe toegang wordt verleend voor door de gebruiker toegewezen en door het systeem toegewezen identiteits typen, respectievelijk het betreffende type kiezen.
 
 ```json
     # under 'variables':
@@ -102,8 +102,8 @@ En voor door het systeem toegewezen beheerde identiteiten:
     }
 ```
 
-Zie [Vaults - Toegangsbeleid bijwerken](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)voor meer informatie.
+Zie [kluizen-Access Policy bijwerken](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een Azure Service Fabric-toepassing implementeren met een beheerde identiteit met systeemtoegewezen](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

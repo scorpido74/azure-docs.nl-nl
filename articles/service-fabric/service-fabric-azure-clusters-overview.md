@@ -1,6 +1,6 @@
 ---
 title: Clusters maken op Windows Server en Linux
-description: Service Fabric-clusters draaien op Windows Server en Linux, wat betekent dat u Service Fabric-toepassingen overal implementeren en hosten waar u Windows Server of Linux uitvoeren.
+description: Service Fabric-clusters worden uitgevoerd op Windows Server en Linux, wat betekent dat u Service Fabric toepassingen kunt implementeren en hosten overal waar u Windows Server of Linux moet uitvoeren.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -8,95 +8,95 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614669"
 ---
-# <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van clusters van servicefabric op Azure
-Een Service Fabric-cluster is een met het netwerk verbonden set virtuele of fysieke machines waarin uw microservices worden geïmplementeerd en beheerd. Een machine of VM die deel uitmaakt van een cluster, wordt een clusterknooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knooppunten. Als u nieuwe knooppunten aan het cluster toevoegt, brengt Service Fabric de replica's en instanties van de servicepartitie opnieuw in evenwicht in het toegenomen aantal knooppunten. De algehele prestaties van toepassingen verbeteren en de discussie over de toegang tot het geheugen neemt af. Als de knooppunten in het cluster niet efficiënt worden gebruikt, u het aantal knooppunten in het cluster verminderen. Service Fabric brengt de partitiereplica's en instanties opnieuw in evenwicht in het verminderde aantal knooppunten om beter gebruik te maken van de hardware op elk knooppunt.
+# <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van Service Fabric clusters op Azure
+Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
 
-Een knooppunttype definieert de grootte, het aantal en de eigenschappen voor een set knooppunten (virtuele machines) in het cluster. Elk knooppunttype kan dan onafhankelijk omhoog of omlaag worden geschaald, verschillende open poorten bevatten en diverse capaciteitsstatistieken hebben. Knooppunttypen worden gebruikt voor het definiëren van rollen voor een set clusterknooppunten, zoals 'front-end' of 'back-end'. Uw cluster kan meer dan één knooppunttype hebben, maar voor productieclusters moet het primaire knooppunttype ten minste vijf VM's bevatten (of ten minste drie VM's voor testclusters). [Service Fabric-systeemservices](service-fabric-technical-overview.md#system-services) worden op de knooppunten van het primaire knooppunttype geplaatst. 
+Een knooppunt type definieert de grootte, het aantal en de eigenschappen van een set knoop punten (virtuele machines) in het cluster. Elk knooppunttype kan dan onafhankelijk omhoog of omlaag worden geschaald, verschillende open poorten bevatten en diverse capaciteitsstatistieken hebben. Knooppunttypen worden gebruikt voor het definiëren van rollen voor een set clusterknooppunten, zoals 'front-end' of 'back-end'. Uw cluster kan meer dan één knooppunttype hebben, maar voor productieclusters moet het primaire knooppunttype ten minste vijf VM's bevatten (of ten minste drie VM's voor testclusters). [Service Fabric-systeemservices](service-fabric-technical-overview.md#system-services) worden op de knooppunten van het primaire knooppunttype geplaatst. 
 
-## <a name="cluster-components-and-resources"></a>Clustercomponenten en -bronnen
-Een Cluster Van Servicefabric op Azure is een Azure-bron die andere Azure-bronnen gebruikt en ermee communiceert:
-* VM's en virtuele netwerkkaarten
+## <a name="cluster-components-and-resources"></a>Cluster onderdelen en bronnen
+Een Service Fabric cluster op Azure is een Azure-resource die gebruikmaakt van en samenwerkt met andere Azure-resources:
+* Vm's en virtuele netwerk kaarten
 * schaalsets voor virtuele machines
 * virtuele netwerken
 * load balancers
-* opslagaccounts
-* openbare IP-adressen
+* opslag accounts
+* open bare IP-adressen
 
-![Cluster servicestructuur][Image]
+![Service Fabric cluster][Image]
 
 ### <a name="virtual-machine"></a>Virtuele machine
-Een [virtuele machine](/azure/virtual-machines/) die deel uitmaakt van een cluster wordt wel een knooppunt genoemd, maar technisch gezien is een clusterknooppunt een runtime-proces van Service Fabric. Aan elk knooppunt wordt een knooppuntnaam toegewezen (een tekenreeks). Knooppunten hebben kenmerken, zoals [plaatsingseigenschappen.](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) Elke machine of VM heeft een auto-start service, *FabricHost.exe*, die begint te draaien op de boot tijd en start dan twee executables, *Fabric.exe* en *FabricGateway.exe*, die deel uitmaken van het knooppunt. Een productie-implementatie is één knooppunt per fysieke of virtuele machine. Voor het testen van scenario's u meerdere knooppunten hosten op één machine of VM door meerdere exemplaren van *Fabric.exe* en *FabricGateway.exe*uit te voeren.
+Een [virtuele machine](/azure/virtual-machines/) die deel uitmaakt van een cluster, wordt een knoop punt genoemd, maar een cluster knooppunt is een service Fabric runtime proces. Aan elk knooppunt wordt een knooppuntnaam toegewezen (een tekenreeks). Knoop punten hebben kenmerken, zoals [plaatsings eigenschappen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Elke machine of VM heeft een service voor automatisch starten, *FabricHost. exe*, die wordt uitgevoerd op het moment dat de computer wordt opgestart en vervolgens twee uitvoer bare bestanden, *Fabric. exe* en *FabricGateway. exe*, die het knoop punt vormen, worden gestart. Een productie-implementatie is één knoop punt per fysieke of virtuele machine. Voor het testen van scenario's kunt u meerdere knoop punten op één computer of virtuele machine hosten door meerdere exemplaren van *Fabric. exe* en *FabricGateway. exe*uit te voeren.
 
-Elke VM is gekoppeld aan een virtuele netwerkinterfacekaart (NIC) en elke NIC krijgt een privé-IP-adres.  Een VM wordt toegewezen aan een virtueel netwerk en lokale balancer via de NIC.
+Elke VM is gekoppeld aan een virtuele netwerk interface kaart (NIC) en aan elke NIC wordt een privé-IP-adres toegewezen.  Een virtuele machine wordt toegewezen aan een virtueel netwerk en een lokale Balancer via de NIC.
 
-Alle VM's in een cluster worden in een virtueel netwerk geplaatst.  Alle knooppunten in hetzelfde knooppunttype/schaalset worden op hetzelfde subnet op het virtuele netwerk geplaatst.  Deze knooppunten hebben alleen privé-IP-adressen en zijn niet direct adresseerbaar buiten het virtuele netwerk.  Clients hebben toegang tot services op de knooppunten via de Azure load balancer.
+Alle Vm's in een cluster worden in een virtueel netwerk geplaatst.  Alle knoop punten in dezelfde knooppunt type/schaalset worden op hetzelfde subnet in het virtuele netwerk geplaatst.  Deze knoop punten hebben alleen particuliere IP-adressen en zijn niet direct gericht buiten het virtuele netwerk.  Clients hebben toegang tot services op de knoop punten via de Azure-load balancer.
 
-### <a name="scale-setnode-type"></a>Type schaalset/knooppunt
-Wanneer u een cluster maakt, definieert u een of meer knooppunttypen.  De knooppunten of VM's in een knooppunttype hebben dezelfde grootte en kenmerken, zoals het aantal CPU's, het geheugen, het aantal schijven en de i/o van de schijf.  Bijvoorbeeld, een knooppunt type kan worden voor kleine, front-end VM's met poorten open voor het internet, terwijl een ander knooppunt type zou kunnen zijn voor grote, back-end VM's die gegevens verwerken. In Azure-clusters wordt elk knooppunttype toegewezen aan een [virtuele machineschaalset.](/azure/virtual-machine-scale-sets/)
+### <a name="scale-setnode-type"></a>Schaalset/knooppunt type
+Wanneer u een cluster maakt, definieert u een of meer knooppunt typen.  De knoop punten, of Vm's, in een knooppunt type hebben dezelfde grootte en kenmerken, zoals het aantal Cpu's, het geheugen, het aantal schijven en de schijf-I/O.  U kunt bijvoorbeeld één type knoop punt hebben voor kleine, front-end Vm's met poorten die op internet zijn geopend, terwijl een ander type knoop punt voor grote, back-end Vm's is die gegevens verwerken. In azure-clusters wordt elk knooppunt type toegewezen aan een [schaalset voor virtuele machines](/azure/virtual-machine-scale-sets/).
 
-U schaalsets gebruiken om een verzameling virtuele machines als set te implementeren en te beheren. Elk knooppunttype dat u definieert in een Azure Service Fabric-cluster, stelt een aparte schaalset in. De runtime van Service Fabric wordt op elke virtuele machine in de schaalset gestart met Azure VM-extensies. U elk knooppunttype zelfstandig omhoog of omlaag schalen, de OS SKU wijzigen die op elk clusterknooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteitsstatistieken gebruiken. Een schaalset heeft vijf [upgradedomeinen](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) en vijf [foutdomeinen](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) en kan maximaal 100 VM's hebben.  U maakt clusters van meer dan 100 knooppunten door meerdere schaalsets/knooppunttypen te maken.
+U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk knooppunt type dat u in een Azure Service Fabric-cluster definieert, stelt een afzonderlijke schaalset in. De Service Fabric runtime wordt naar elke virtuele machine in de schaalset getrapt met behulp van Azure VM-extensies. U kunt elk knooppunt type omhoog of omlaag schalen, de SKU van het besturings systeem wijzigen dat op elk cluster knooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken. Een schaalset heeft vijf [upgrade domeinen](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) en vijf [fout domeinen](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) en kan Maxi maal 100 vm's hebben.  U maakt clusters van meer dan 100 knoop punten door meerdere schaal sets/knooppunt typen te maken.
 
 > [!IMPORTANT]
-> Het kiezen van het aantal knooppunttypen voor uw cluster en de eigenschappen van elk knooppunttype (grootte, primair, internetgericht, aantal VM's, enz.) is een belangrijke taak.  Lees voor meer informatie [overwegingen voor clustercapaciteitsplanning](service-fabric-cluster-capacity.md).
+> Het kiezen van het aantal knooppunt typen voor uw cluster en de eigenschappen van elk type knoop punt (grootte, primair, Internet Facing, aantal Vm's, enzovoort) is een belang rijke taak.  Lees voor meer informatie overwegingen voor het [plannen van cluster capaciteit](service-fabric-cluster-capacity.md).
 
-Lees voor meer informatie [servicestructuurtypen en virtuele machineschaalsets](service-fabric-cluster-nodetypes.md).
+Lees [service Fabric knooppunt typen en schaal sets voor virtuele machines](service-fabric-cluster-nodetypes.md)voor meer informatie.
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM-exemplaren worden samengevoegd achter een [Azure-load balancer,](/azure/load-balancer/load-balancer-overview)die is gekoppeld aan een [openbaar IP-adres](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) en DNS-label.  Wanneer u een cluster met * &lt;&gt;clusternaam*indient, de DNS-naam, * &lt;&gt;clusternaam .&lt; locatie&gt;.cloudapp.azure.com* is het DNS-label dat is gekoppeld aan de load balancer voor de schaalset.
+VM-exemplaren worden toegevoegd achter een [Azure-Load Balancer](/azure/load-balancer/load-balancer-overview), die is gekoppeld aan een [openbaar IP-adres](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) en een DNS-label.  Bij het inrichten van een cluster met * &lt;clustername&gt;*, de DNS-naam, * &lt;clustername&gt;.&lt; Location&gt;. cloudapp.Azure.com* is het DNS-label dat is gekoppeld aan de Load Balancer vóór de schaalset.
 
-VM's in een cluster hebben alleen [privé-IP-adressen.](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)  Het verkeer en het serviceverkeer worden omgeleid via de openbare laadbalans.  Netwerkverkeer wordt naar deze machines doorgestuurd via NAT-regels (clients maken verbinding met specifieke knooppunten/instanties) of regels voor taakverdeling (verkeer gaat naar VM's rond roodborstje).  Een load balancer heeft een gekoppeld openbaar IP met een DNS-naam in de indeling: * &lt;clusternaam&gt;.&lt; locatie&gt;.cloudapp.azure.com*.  Een openbaar IP-adres is een andere Azure-bron in de brongroep.  Als u meerdere knooppunttypen in een cluster definieert, wordt voor elk knooppunttype/schaalset een load balancer gemaakt. U ook één load balancer instellen voor meerdere nodetypen.  Het primaire knooppunttype heeft de * &lt;clusternaam&gt;DNS-label .&lt; locatie&gt;.cloudapp.azure.com*, andere knooppunttypen hebben het * &lt;nodetype&gt;-&lt;DNS-labelclusternaam&gt;&lt; . locatie&gt;.cloudapp.azure.com*.
+Vm's in een cluster hebben alleen [privé-IP-adressen](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Verkeer van beheer en service verkeer wordt gerouteerd via de open bare load balancer.  Netwerk verkeer wordt doorgestuurd naar deze machines via NAT-regels (clients maken verbinding met specifieke knoop punten/instanties) of taakverdelings regels (verkeer gaat naar Vm's round robin).  Een Load Balancer heeft een openbaar IP-adres dat is gekoppeld aan een DNS-naam in de indeling: * &lt;clustername&gt;.&lt; Location&gt;. cloudapp.Azure.com*.  Een openbaar IP-adres is een andere Azure-resource in de resource groep.  Als u meerdere knooppunt typen in een cluster definieert, wordt er een load balancer gemaakt voor elk type knoop punt/schaalset. U kunt ook één load balancer instellen voor meerdere knooppunt typen.  Het primaire knooppunt type heeft de DNS-label * &lt;cluster&gt;naam&lt; . Location&gt;. cloudapp.Azure.com*, andere knooppunt typen hebben het DNS- * &lt;label cluster&gt;-&lt;naam&gt;NodeType&lt; . Location&gt;. cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Opslagaccounts
-Elk clusterknooppunttype wordt ondersteund door een [Azure-opslagaccount](/azure/storage/common/storage-introduction) en beheerde schijven.
+Elk type cluster knooppunt wordt ondersteund door een [Azure-opslag account](/azure/storage/common/storage-introduction) en beheerde schijven.
 
 ## <a name="cluster-security"></a>Clusterbeveiliging
-Een cluster van ServiceFabric is een bron waarvan u eigenaar bent.  Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voorkomen dat onbevoegde gebruikers er verbinding mee maken. Een beveiligd cluster is vooral belangrijk wanneer u productieworkloads op het cluster uitvoert. 
+Een Service Fabric cluster is een bron waarvan u eigenaar bent.  Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voor komen dat onbevoegde gebruikers verbinding kunnen maken. Een beveiligd cluster is vooral belang rijk wanneer u werk belastingen voor productie op het cluster uitvoert. 
 
-### <a name="node-to-node-security"></a>Beveiliging van knooppunt tot knooppunt
-Beveiliging van knooppunten beveiligt de communicatie tussen de VM's of computers in een cluster. Dit beveiligingsscenario zorgt ervoor dat alleen computers die gemachtigd zijn om deel te nemen aan het cluster, kunnen deelnemen aan hostingtoepassingen en -services in het cluster. Service Fabric gebruikt X.509-certificaten om een cluster te beveiligen en beveiligingsfuncties voor toepassingen te bieden.  Er is een clustercertificaat vereist om clusterverkeer te beveiligen en cluster- en serververificatie te bieden.  Zelfondertekende certificaten kunnen worden gebruikt voor testclusters, maar een certificaat van een vertrouwde certificaatautoriteit moet worden gebruikt om productieclusters te beveiligen.
+### <a name="node-to-node-security"></a>Beveiliging van knoop punt naar knoop punt
+Beveiliging van knoop punt naar knoop punt beveiligt de communicatie tussen de Vm's of computers in een cluster. Dit beveiligings scenario zorgt ervoor dat alleen computers die gemachtigd zijn om deel te nemen aan het cluster, kunnen deel nemen aan het hosten van toepassingen en services in het cluster. Service Fabric maakt gebruik van X. 509-certificaten voor het beveiligen van een cluster en het bieden van beveiligings functies van toepassingen.  Een cluster certificaat is vereist voor het beveiligen van het cluster verkeer en het bieden van cluster-en server authenticatie.  Zelfondertekende certificaten kunnen worden gebruikt voor test clusters, maar een certificaat van een vertrouwde certificerings instantie moet worden gebruikt voor het beveiligen van productie clusters.
 
-Lees [de beveiliging van knooppunt tot knooppunt voor](service-fabric-cluster-security.md#node-to-node-security) meer informatie
+Lees voor meer informatie [knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security)
 
-### <a name="client-to-node-security"></a>Client-to-node beveiliging
-Client-to-node beveiliging verifieert clients en helpt de communicatie tussen een client en afzonderlijke knooppunten in het cluster te beveiligen. Dit type beveiliging zorgt ervoor dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de toepassingen die op het cluster worden geïmplementeerd. Clients worden uniek geïdentificeerd door middel van hun X.509 certificaat beveiligingsreferenties. Een willekeurig aantal optionele clientcertificaten kan worden gebruikt om beheerders- of gebruikersclients met het cluster te verifiëren.
+### <a name="client-to-node-security"></a>Beveiliging van client naar knoop punt
+Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de communicatie tussen een client en afzonderlijke knoop punten in het cluster beveiligd. Met dit type beveiliging kunt u ervoor zorgen dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de toepassingen die op het cluster worden geïmplementeerd. Clients zijn uniek geïdentificeerd via de beveiligings referenties van het X. 509-certificaat. Een wille keurig aantal optionele client certificaten kan worden gebruikt om beheerders of gebruikers clients te verifiëren met het cluster.
 
-Naast clientcertificaten kan Azure Active Directory ook worden geconfigureerd om clients met het cluster te verifiëren.
+Naast client certificaten kan Azure Active Directory ook worden geconfigureerd voor het verifiëren van clients met het cluster.
 
-Lees voor meer informatie [client-to-nodebeveiliging](service-fabric-cluster-security.md#client-to-node-security)
+Lees voor meer informatie [client-naar-knoop punt beveiliging](service-fabric-cluster-security.md#client-to-node-security)
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
-Met RBAC (Role-Based Access Control) u fijnmazige toegangsbesturingselementen toewijzen aan Azure-bronnen.  U verschillende toegangsregels toewijzen aan abonnementen, brongroepen en resources.  RBAC-regels worden overgenomen in de resourcehiërarchie, tenzij deze op een lager niveau worden overschreven.  U elke gebruiker of gebruikersgroepen aan uw AAD toewijzen met RBAC-regels, zodat aangewezen gebruikers en groepen uw cluster kunnen wijzigen.  Lees voor meer informatie het [Azure RBAC-overzicht.](/azure/role-based-access-control/overview)
+Met Access Control op basis van rollen (RBAC) kunt u nauw keurige toegangs controles toewijzen aan Azure-resources.  U kunt verschillende toegangs regels toewijzen aan abonnementen, resource groepen en resources.  RBAC-regels worden overgenomen in de resource hiërarchie, tenzij deze op een lager niveau worden overschreven.  U kunt elke gebruiker of elk gebruikers groep op uw AAD toewijzen met RBAC-regels zodat aangewezen gebruikers en groepen uw cluster kunnen wijzigen.  Lees voor meer informatie het [overzicht van Azure RBAC](/azure/role-based-access-control/overview).
 
-Service Fabric ondersteunt ook toegangscontrole om de toegang tot bepaalde clusterbewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster veiliger te maken. Er worden twee typen toegangsbeheer ondersteund voor clients die verbinding maken met een cluster: de rol Administrator en de rol Gebruiker.  
+Service Fabric biedt ook ondersteuning voor toegangs beheer om de toegang tot bepaalde cluster bewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster beter te beveiligen. Twee typen toegangs beheer worden ondersteund voor clients die verbinding maken met een cluster: beheerdersrol en gebruikersrol.  
 
-Lees voor meer informatie [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Lees [service Fabric op rollen gebaseerde Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)voor meer informatie.
 
 ### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen 
-Netwerkbeveiligingsgroepen (NSG's) beheren binnenkomend en uitgaand verkeer van een subnet, VM of specifieke NIC.  Wanneer meerdere VM's op hetzelfde virtuele netwerk worden geplaatst, kunnen ze standaard met elkaar communiceren via elke poort.  Als u de communicatie tussen de machines wilt beperken, u NSGs definiëren om het netwerk te segmenteren of VM's van elkaar te isoleren.  Als u meerdere knooppunttypen in een cluster hebt, u NSG's toepassen op subnetten om te voorkomen dat machines die tot verschillende knooppunttypen behoren, met elkaar communiceren.  
+Netwerk beveiligings groepen (Nsg's) bepalen binnenkomend en uitgaand verkeer van een subnet, VM of specifieke NIC.  Wanneer meerdere Vm's in hetzelfde virtuele netwerk worden geplaatst, kunnen ze standaard met elkaar communiceren via een wille keurige poort.  Als u de communicatie tussen de computers wilt beperken, kunt u Nsg's definiëren om het netwerk te segmenteren of Vm's van elkaar te isoleren.  Als u meerdere knooppunt typen in een cluster hebt, kunt u Nsg's Toep assen op subnetten om te voor komen dat computers die deel uitmaken van verschillende knooppunt typen, met elkaar communiceren.  
 
-Lees voor meer informatie over [beveiligingsgroepen](/azure/virtual-network/security-overview)
+Lees voor meer informatie over [beveiligings groepen](/azure/virtual-network/security-overview)
 
 ## <a name="scaling"></a>Schalen
 
-Toepassingseisen veranderen in de loop van de tijd. Mogelijk moet u de clusterresources vergroten om te voldoen aan de toegenomen toepassingsworkload of het netwerkverkeer of clusterbronnen verlagen wanneer de vraag daalt. Nadat u een cluster servicestructuur hebt gemaakt, u het cluster horizontaal schalen (het aantal knooppunten wijzigen) of verticaal wijzigen (de bronnen van de knooppunten wijzigen). U het cluster op elk gewenst moment schalen, zelfs wanneer workloads op het cluster worden uitgevoerd. Naarmate het cluster schaalt, schalen uw toepassingen ook automatisch.
+Toepassings vereisten veranderen in de loop van de tijd. Mogelijk moet u cluster bronnen verg Roten om te voldoen aan de toegenomen werk belasting van de toepassing of het netwerk verkeer of cluster bronnen verlagen wanneer de vraag wordt neergezet. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het cluster horizon taal schalen (Wijzig het aantal knoop punten) of verticaal (Wijzig de resources van de knoop punten). U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd. Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
 
-Lees [Azure-clusters schalen](service-fabric-cluster-scaling.md)voor meer informatie.
+Lees voor meer informatie [Azure-clusters schalen](service-fabric-cluster-scaling.md).
 
-## <a name="upgrading"></a>Upgraden
-Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent, maar die gedeeltelijk door Microsoft wordt beheerd. Microsoft is verantwoordelijk voor het patchen van het onderliggende besturingssysteem en het uitvoeren van servicefabric-runtime-upgrades op uw cluster. U instellen dat uw cluster automatische runtime-upgrades ontvangt, wanneer Microsoft een nieuwe versie uitbrengt, of ervoor kiezen om een ondersteunde runtime-versie te selecteren die u wilt. Naast runtime-upgrades u ook clusterconfiguratie bijwerken, zoals certificaten of toepassingspoorten.
+## <a name="upgrading"></a>Abonnement
+Een Azure Service Fabric-cluster is een resource waarvan u de eigenaar bent, maar wordt gedeeltelijk beheerd door micro soft. Micro soft is verantwoordelijk voor het patchen van het onderliggende besturings systeem en het uitvoeren van Service Fabric runtime-upgrades voor uw cluster. U kunt uw cluster zo instellen dat automatische runtime-upgrades worden ontvangen, wanneer micro soft een nieuwe versie uitgeeft of een door u gewenste ondersteunde runtime versie selecteert. Naast runtime-upgrades kunt u ook de cluster configuratie, zoals certificaten of toepassings poorten, bijwerken.
 
-Lees voor meer informatie [clusters voor upgraden.](service-fabric-cluster-upgrade.md)
+Lees [upgrades voor clusters](service-fabric-cluster-upgrade.md)voor meer informatie.
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
-U clusters maken op virtuele machines waarop deze besturingssystemen worden uitgevoerd:
+U kunt clusters maken op virtuele machines waarop deze besturings systemen worden uitgevoerd:
 
-| Besturingssysteem | Vroegst ondersteunde Service Fabric-versie |
+| Besturingssysteem | Eerste ondersteunde Service Fabric versie |
 | --- | --- |
 | Windows Server 2012 R2 | Alle versies |
 | Windows Server 2016 | Alle versies |
@@ -104,18 +104,18 @@ U clusters maken op virtuele machines waarop deze besturingssystemen worden uitg
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 16,04 | 6.0 |
 
-Zie Ondersteunde [clusterversies in Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems) voor meer informatie
+Zie [ondersteunde cluster versies in azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems) voor meer informatie.
 
 > [!NOTE]
-> Als u besluit Service Fabric te implementeren op Windows Server 1709, moet u er rekening mee houden dat (1) het geen servicebranch voor lange termijn is, dus het kan zijn dat u in de toekomst versies moet verplaatsen en (2) als u containers implementeert, werken containers die op Windows Server 2016 zijn gebouwd, niet op Windows Server 1709, en vice versa (je moet ze opnieuw opbouwen om ze te implementeren).
+> Als u besluit Service Fabric te implementeren op Windows Server 1709, moet u er rekening mee houden dat (1) het geen langlopende onderhouds vertakking is, dus u moet mogelijk versies in de toekomst verplaatsen en (2) als u containers implementeert, zijn de containers die zijn gebouwd op Windows Server 2016 niet in Windows Server 1709 en vice versa (u moet ze opnieuw bouwen om deze te implementeren
 >
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer over [het beveiligen,](service-fabric-cluster-security.md) [schalen](service-fabric-cluster-scaling.md)en [upgraden van](service-fabric-cluster-upgrade.md) Azure-clusters.
+Meer informatie over het [beveiligen](service-fabric-cluster-security.md), [schalen](service-fabric-cluster-scaling.md)en [upgraden](service-fabric-cluster-upgrade.md) van Azure-clusters.
 
-Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md).
+Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 
 [Image]: media/service-fabric-azure-clusters-overview/Cluster.PNG

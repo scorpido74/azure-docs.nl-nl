@@ -1,40 +1,40 @@
 ---
 title: Beheerde app met beheerde identiteit
-description: Beheerde toepassing configureren met Beheerde identiteit voor koppelingen naar bestaande resources, het beheren van Azure-resources en het bieden van operationele identiteit voor activiteitslogboek.
+description: Configureer beheerde toepassingen met beheerde identiteit voor het koppelen van bestaande resources, het beheren van Azure-resources en het leveren van operationele identiteit voor het activiteiten logboek.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651655"
 ---
-# <a name="azure-managed-application-with-managed-identity"></a>Azure Managed Application with Managed Identity
+# <a name="azure-managed-application-with-managed-identity"></a>Door Azure beheerde toepassing met beheerde identiteit
 
 > [!NOTE]
-> Managed Identity-ondersteuning voor beheerde toepassingen is momenteel in preview. Gebruik de api-versie 2018-09-01-preview om Managed Identity te gebruiken.
+> Beheerde identiteits ondersteuning voor beheerde toepassingen is momenteel beschikbaar als preview-versie. Gebruik de API-versie 2018-09-01-Preview om de beheerde identiteit te gebruiken.
 
-Meer informatie over het configureren van een beheerde toepassing om een beheerde identiteit te bevatten. Managed Identity kan worden gebruikt om de klant toegang te geven tot extra bestaande bronnen. De identiteit wordt beheerd door het Azure-platform en vereist niet dat u geheimen indient of roteert. Zie [Beheerde identiteiten voor Azure-resources voor](../../active-directory/managed-identities-azure-resources/overview.md)meer informatie over beheerde identiteiten in Azure Active Directory (AAD).
+Meer informatie over hoe u een beheerde toepassing kunt configureren voor het opnemen van een beheerde identiteit. Beheerde identiteit kan worden gebruikt om de klant in staat te stellen de toegang tot de beheerde toepassing toe te kennen aan aanvullende bestaande resources. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. Zie [beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten in azure Active Directory (Aad).
 
-Uw aanvraag kan worden toegekend twee soorten identiteiten:
+Aan uw toepassing kunnen twee typen identiteiten worden verleend:
 
-- Een **door het systeem toegewezen identiteit** is gekoppeld aan uw toepassing en wordt verwijderd als uw app wordt verwijderd. Een app kan slechts één door het systeem toegewezen identiteit hebben.
-- Een door de gebruiker toegewezen identiteit is een zelfstandige **Azure-bron** die aan uw app kan worden toegewezen. Een app kan meerdere door de gebruiker toegewezen identiteiten hebben.
+- Een door het **systeem toegewezen identiteit** is gekoppeld aan uw toepassing en wordt verwijderd als uw app wordt verwijderd. Een app kan slechts één door het systeem toegewezen identiteit hebben.
+- Een door de **gebruiker toegewezen identiteit** is een zelfstandige Azure-resource die aan uw app kan worden toegewezen. Een app kan meerdere door de gebruiker toegewezen identiteiten hebben.
 
-## <a name="how-to-use-managed-identity"></a>Managed Identity gebruiken
+## <a name="how-to-use-managed-identity"></a>Beheerde identiteit gebruiken
 
-Managed Identity maakt veel scenario's mogelijk voor beheerde toepassingen. Enkele veelvoorkomende scenario's die kunnen worden opgelost zijn:
+Met beheerde identiteit kunt u veel scenario's voor beheerde toepassingen maken. Enkele veelvoorkomende scenario's die kunnen worden opgelost zijn:
 
-- Een beheerde toepassing implementeren die is gekoppeld aan bestaande Azure-resources. Een voorbeeld is het implementeren van een Virtuele Azure-machine (VM) in de beheerde toepassing die is gekoppeld aan een [bestaande netwerkinterface.](../../virtual-network/virtual-network-network-interface-vm.md)
-- De beheerde toepassing en uitgever toegang verlenen tot Azure-bronnen buiten de **beheerde brongroep**.
-- Een operationele identiteit van beheerde toepassingen voor activiteitenlogboek en andere services binnen Azure.
+- Een beheerde toepassing implementeren die is gekoppeld aan bestaande Azure-resources. Een voor beeld is het implementeren van een virtuele Azure-machine (VM) in de beheerde toepassing die is gekoppeld aan een [bestaande netwerk interface](../../virtual-network/virtual-network-network-interface-vm.md).
+- Het verlenen van de beheerde toepassing en uitgever toegang tot Azure-resources buiten de **beheerde resource groep**.
+- Het bieden van een operationele identiteit van beheerde toepassingen voor activiteiten logboeken en andere services in Azure.
 
 ## <a name="adding-managed-identity"></a>Beheerde identiteit toevoegen
 
-Voor het maken van een beheerde toepassing met een beheerde identiteit moet een extra eigenschap worden ingesteld op de Azure-bron. In het volgende voorbeeld wordt een **voorbeeldidentiteitseigenschap** weergegeven:
+Voor het maken van een beheerde toepassing met een beheerde identiteit moet een extra eigenschap worden ingesteld voor de Azure-resource. In het volgende voor beeld ziet u een voor beeld van een **identiteits** eigenschap:
 
 ```json
 {
@@ -46,11 +46,11 @@ Voor het maken van een beheerde toepassing met een beheerde identiteit moet een 
 }
 ```
 
-Er zijn twee veelvoorkomende manieren om een beheerde toepassing met **identiteit**te maken: [CreateUIDefinition.json-](./create-uidefinition-overview.md) en [Azure Resource Manager-sjablonen](../templates/template-syntax.md). Voor eenvoudige scenario's voor één create moet CreateUIDefinition worden gebruikt om Beheerde identiteit in te schakelen, omdat het een rijkere ervaring biedt. Wanneer het echter gaat om geavanceerde of complexe systemen waarvoor geautomatiseerde of meerdere beheerde toepassingsimplementaties nodig zijn, kunnen sjablonen worden gebruikt.
+Er zijn twee algemene manieren om een beheerde toepassing te maken met **identiteit**: [CreateUIDefinition. json](./create-uidefinition-overview.md) en [Azure Resource Manager sjablonen](../templates/template-syntax.md). Voor eenvoudige enkelvoudige scenario's moet CreateUIDefinition worden gebruikt om beheerde identiteit in te scha kelen, omdat het een rijkere ervaring biedt. Bij het verwerken van geavanceerde of complexe systemen waarvoor geautomatiseerde of meerdere beheerde toepassings implementaties zijn vereist, kunnen sjablonen echter worden gebruikt.
 
-### <a name="using-createuidefinition"></a>CreateUiDefinition gebruiken
+### <a name="using-createuidefinition"></a>CreateUIDefinition gebruiken
 
-Een beheerde toepassing kan worden geconfigureerd met Beheerde identiteit via [de CreateUIDefinition.json](./create-uidefinition-overview.md). In de [sectie uitvoer](./create-uidefinition-overview.md#outputs) `managedIdentity` kan de sleutel worden gebruikt om de identiteitseigenschap van de sjabloon Beheerde toepassing te overschrijven. De voorbeeldbalg maakt **een systeemtoegewezen** identiteit mogelijk op de beheerde toepassing. Complexere identiteitsobjecten kunnen worden gevormd door createuidefinitie-elementen te gebruiken om de consument om inputs te vragen. Deze ingangen kunnen worden gebruikt om beheerde toepassingen te construeren met **een door de gebruiker toegewezen identiteit.**
+Een beheerde toepassing kan met beheerde identiteit worden geconfigureerd via de [CreateUIDefinition. json](./create-uidefinition-overview.md). In de [sectie outputs](./create-uidefinition-overview.md#outputs)kan de sleutel `managedIdentity` worden gebruikt om de eigenschap Identity van de sjabloon beheerde toepassing te overschrijven. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd met behulp van CreateUIDefinition-elementen om de gebruiker te vragen om invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
 
 ```json
 "outputs": {
@@ -58,17 +58,17 @@ Een beheerde toepassing kan worden geconfigureerd met Beheerde identiteit via [d
 }
 ```
 
-#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>Wanneer createuidefinition gebruiken voor beheerde identiteit
+#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>Wanneer u CreateUIDefinition gebruikt voor beheerde identiteit
 
-Hieronder vindt u enkele aanbevelingen over het gebruik van CreateUIDefinition voor het inschakelen van Beheerde identiteit op beheerde toepassingen.
+Hieronder vindt u enkele aanbevelingen voor het gebruik van CreateUIDefinition voor het inschakelen van beheerde identiteit voor beheerde toepassingen.
 
-- Het maken van beheerde toepassingen gaat via de Azure-portal of marketplace.
-- De Managed Identity vereist complexe input van de consument.
-- De beheerde identiteit is nodig bij het maken van de beheerde toepassing.
+- Het maken van beheerde toepassingen gaat via de Azure Portal of Marketplace.
+- Voor de beheerde identiteit is complexe consumenten invoer vereist.
+- De beheerde identiteit is vereist bij het maken van de beheerde toepassing.
 
-#### <a name="systemassigned-createuidefinition"></a>Systeemtoegewezen CreateUiDefinition
+#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
 
-Een basisCreateUIDefinition waarmee de SystemAssigned-identiteit voor de beheerde toepassing kan worden toegewezen.
+Een basis CreateUIDefinition die de SystemAssigned-identiteit voor de beheerde toepassing mogelijk maakt.
 
 ```json
 {
@@ -90,7 +90,7 @@ Een basisCreateUIDefinition waarmee de SystemAssigned-identiteit voor de beheerd
 
 #### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
 
-Een basis -CreateUIDefinition die een **door de gebruiker toegewezen identiteitsbron** als invoer gebruikt en de door gebruikers toegewezen identiteit voor de beheerde toepassing inschakelt.
+Een Basic-CreateUIDefinition die een door de **gebruiker toegewezen identiteits** bron als invoer gebruikt en de UserAssigned-identiteit voor de beheerde toepassing maakt.
 
 ```json
 {
@@ -128,29 +128,29 @@ Een basis -CreateUIDefinition die een **door de gebruiker toegewezen identiteits
 }
 ```
 
-Met de bovenstaande CreateUIDefinition.json wordt een gebruikerservaring gemaakt met een tekstvak waarmee een consument de **door de gebruiker toegewezen identiteits-Azure-bron-id** kan invoeren. De gegenereerde ervaring zou eruit zien als volgt:
+Met de CreateUIDefinition. json hierboven wordt een gebruikers ervaring gemaakt met een tekstvak voor een gebruiker om de door de klant **toegewezen identiteit** Azure-resource-id in te voeren. De gegenereerde ervaring ziet er als volgt uit:
 
-![Voorbeeld van door de gebruiker toegewezen identiteit CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
+![Voor beeld van door gebruiker toegewezen identiteits CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
 > [!NOTE]
-> Marketplace Managed Application-sjablonen worden automatisch gegenereerd voor klanten die via de Azure-portal gaan, en ervaring creëren.
-> Voor deze scenario's moet de `managedIdentity` uitvoersleutel op de CreateUIDefinition worden gebruikt om de identiteit in te schakelen.
+> Door Marketplace beheerde toepassings sjablonen worden automatisch gegenereerd voor klanten die de Azure Portal maken.
+> Voor deze scenario's moet de `managedIdentity` uitvoer sleutel op de CreateUIDefinition worden gebruikt om de identiteit in te scha kelen.
 
-De Beheerde identiteit kan ook worden ingeschakeld via Azure Resource Manager-sjablonen. De voorbeeldbalg maakt **een systeemtoegewezen** identiteit mogelijk op de beheerde toepassing. Complexere identiteitsobjecten kunnen worden gevormd door sjabloonparameters van Azure Resource Manager te gebruiken om invoer te bieden. Deze ingangen kunnen worden gebruikt om beheerde toepassingen te construeren met **een door de gebruiker toegewezen identiteit.**
+De beheerde identiteit kan ook via Azure Resource Manager sjablonen worden ingeschakeld. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd door Azure Resource Manager sjabloon parameters te gebruiken voor het leveren van invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
 
-#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Wanneer azure resource manager-sjablonen gebruiken voor Beheerde identiteit
+#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Wanneer u Azure Resource Manager sjablonen voor beheerde identiteiten wilt gebruiken
 
-Hieronder vindt u enkele aanbevelingen over het gebruik van Azure Resource Manager-sjablonen voor het inschakelen van Beheerde identiteit op beheerde toepassingen.
+Hieronder vindt u enkele aanbevelingen voor het gebruik van Azure Resource Manager sjablonen voor het inschakelen van beheerde identiteit voor beheerde toepassingen.
 
 - Beheerde toepassingen kunnen programmatisch worden geïmplementeerd op basis van een sjabloon.
 - Aangepaste roltoewijzingen voor de beheerde identiteit zijn nodig om de beheerde toepassing in te richten.
-- De beheerde toepassing heeft de stroom voor het maken van Azure-portal en marktplaatsen niet nodig.
+- De beheerde toepassing heeft de stroom voor het maken van Azure Portal en Marketplace niet nodig.
 
-#### <a name="systemassigned-template"></a>Sjabloon SystemAssigned
+#### <a name="systemassigned-template"></a>SystemAssigned-sjabloon
 
-Een basissjabloon voor Azure Resource Manager waarmee een beheerde toepassing wordt geïmplementeerd met **een door het systeem toegewezen** identiteit.
+Een basis Azure Resource Manager sjabloon waarmee een beheerde toepassing wordt geïmplementeerd met een door het **systeem toegewezen** identiteit.
 
 ```json
 "resources": [
@@ -172,7 +172,7 @@ Een basissjabloon voor Azure Resource Manager waarmee een beheerde toepassing wo
 
 ### <a name="userassigned-template"></a>UserAssigned-sjabloon
 
-Een basissjabloon voor Azure Resource Manager waarmee een beheerde toepassing wordt geïmplementeerd met een **door de gebruiker toegewezen identiteit**.
+Een basis Azure Resource Manager sjabloon waarmee een beheerde toepassing met een door de **gebruiker toegewezen identiteit**wordt geïmplementeerd.
 
 ```json
 "resources": [
@@ -201,24 +201,24 @@ Een basissjabloon voor Azure Resource Manager waarmee een beheerde toepassing wo
 ]
 ```
 
-## <a name="granting-access-to-azure-resources"></a>Toegang verlenen tot Azure-bronnen
+## <a name="granting-access-to-azure-resources"></a>Toegang verlenen tot Azure-resources
 
-Zodra een beheerde toepassing een identiteit heeft gekregen, kan deze toegang krijgen tot bestaande azure-bronnen. Dit proces kan worden uitgevoerd via de IAM-interface (Access Control) in de Azure-portal. De naam van de beheerde toepassing of **door de gebruiker toegewezen identiteit** kan worden doorzocht om een roltoewijzing toe te voegen.
+Zodra een beheerde toepassing een identiteit heeft verleend, kan deze toegang krijgen tot bestaande Azure-resources. Dit proces kan worden uitgevoerd via de interface toegangs beheer (IAM) in de Azure Portal. De naam van de beheerde toepassing of de door de **gebruiker toegewezen identiteit** kan worden doorzocht om een roltoewijzing toe te voegen.
 
-![Roltoewijzing toevoegen voor Beheerde toepassing](./media/publish-managed-identity/identity-role-assignment.png)
+![Roltoewijzing toevoegen voor beheerde toepassing](./media/publish-managed-identity/identity-role-assignment.png)
 
-## <a name="linking-existing-azure-resources"></a>Bestaande Azure-bronnen koppelen
+## <a name="linking-existing-azure-resources"></a>Bestaande Azure-resources koppelen
 
 > [!NOTE]
-> Een **door de gebruiker toegewezen identiteit** moet worden [geconfigureerd](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) voordat de beheerde toepassing wordt geïmplementeerd. Bovendien wordt gekoppelde resourceimplementatie van beheerde toepassingen alleen ondersteund voor de **marktsoort.**
+> Een door de **gebruiker toegewezen identiteit** moet worden [geconfigureerd](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) voordat u de beheerde toepassing implementeert. Daarnaast wordt het implementeren van gekoppelde resources van beheerde toepassingen alleen ondersteund voor het **Marketplace** -type.
 
-Managed Identity kan ook worden gebruikt om een beheerde toepassing te implementeren die toegang tot bestaande bronnen vereist tijdens de implementatie. Wanneer de beheerde toepassing door de klant is ingericht, kunnen **door de gebruiker toegewezen identiteiten** worden toegevoegd om extra autorisaties te bieden aan de **mainTemplate-implementatie.**
+Beheerde identiteiten kunnen ook worden gebruikt voor het implementeren van een beheerde toepassing die toegang tot bestaande bronnen vereist tijdens de implementatie. Wanneer de beheerde toepassing wordt ingericht door de klant, kunnen door de **gebruiker toegewezen identiteiten** worden toegevoegd om extra autorisaties toe te voegen aan de **mainTemplate** -implementatie.
 
-### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>De CreateUIDefinition maken met een gekoppelde resource
+### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>De CreateUIDefinition ontwerpen met een gekoppelde resource
 
-Wanneer u de implementatie van de beheerde toepassing koppelt aan bestaande resources, moet zowel de bestaande **Azure-bron** als een door de gebruiker toegewezen identiteit worden gekoppeld aan de toepasselijke roltoewijzing op die bron.
+Wanneer u de implementatie van de beheerde toepassing koppelt aan bestaande resources, moeten zowel de bestaande Azure-resource als een door de **gebruiker toegewezen identiteit** worden gegeven met de toepasselijke roltoewijzing voor die bron.
 
- Een voorbeeld van CreateUIDefinition waarvoor twee ingangen nodig zijn: een netwerkinterfacebron-id en een door de gebruiker toegewezen identiteitsbron-id.
+ Een voor beeld van een CreateUIDefinition waarvoor twee invoer vereist is: een resource-ID van een netwerk interface en een door de gebruiker toegewezen id-resource-id.
 
 ```json
 {
@@ -266,15 +266,15 @@ Wanneer u de implementatie van de beheerde toepassing koppelt aan bestaande reso
 }
 ```
 
-Deze CreateUIDefinition.json genereert een gebruikerservaring die twee velden heeft. In het eerste veld kan de gebruiker de Azure-bron-id invoeren voor de resource die wordt gekoppeld aan de implementatie van beheerde toepassingen. De tweede is dat een consument de **door de gebruiker toegewezen identiteitsAzure-bron-id** invoert, die toegang heeft tot de gekoppelde Azure-bron. De gegenereerde ervaring zou eruit zien als volgt:
+Met deze CreateUIDefinition. json wordt een gebruikers ervaring gemaakt met twee velden. In het eerste veld kan de gebruiker de Azure-Resource-ID invoeren voor de resource die wordt gekoppeld aan de implementatie van de beheerde toepassing. De tweede is voor een consument dat de door de **gebruiker toegewezen identiteit** Azure-resource-id wordt ingevoerd die toegang heeft tot de gekoppelde Azure-resource. De gegenereerde ervaring ziet er als volgt uit:
 
-![Voorbeeld van CreateUIDefinition met twee ingangen: een netwerkinterfacebron-id en een door de gebruiker toegewezen identiteitsbron-id](./media/publish-managed-identity/network-interface-cuid.png)
+![Voor beeld van CreateUIDefinition met twee invoer: een resource-ID van een netwerk interface en een door de gebruiker toegewezen id Resource-ID](./media/publish-managed-identity/network-interface-cuid.png)
 
-### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Het ontwerpen van de mainTemplate met een gekoppelde resource
+### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>De mainTemplate ontwerpen met een gekoppelde resource
 
-Naast het bijwerken van de CreateUIDefinition, moet de hoofdsjabloon ook worden bijgewerkt om de doorgegeven in gekoppelde resource-ID te accepteren. De hoofdsjabloon kan worden bijgewerkt om de nieuwe uitvoer te accepteren door een nieuwe parameter toe te voegen. Aangezien `managedIdentity` de uitvoer de waarde op de gegenereerde beheerde toepassingssjabloon overschrijft, wordt deze niet doorgegeven aan de hoofdsjabloon en mag deze niet worden opgenomen in de sectie parameters.
+Naast het bijwerken van de CreateUIDefinition moet de hoofd sjabloon ook worden bijgewerkt om het door gegeven in de gekoppelde Resource-ID te accepteren. De hoofd sjabloon kan worden bijgewerkt om de nieuwe uitvoer te accepteren door een nieuwe para meter toe te voegen. Omdat de `managedIdentity` uitvoer de waarde van de gegenereerde sjabloon voor de beheerde toepassing overschrijft, wordt deze niet door gegeven aan de hoofd sjabloon en mag deze niet worden opgenomen in de para meters van de sectie.
 
-Een voorbeeldsjabloon waarmee het netwerkprofiel wordt ingesteld op een bestaande netwerkinterface die wordt geleverd door de CreateUIDefinition.
+Een voor beeld van een hoofd sjabloon waarmee het netwerk profiel wordt ingesteld op een bestaande netwerk interface van de CreateUIDefinition.
 
 ```json
 {
@@ -308,15 +308,15 @@ Een voorbeeldsjabloon waarmee het netwerkprofiel wordt ingesteld op een bestaand
 
 ### <a name="consuming-the-managed-application-with-a-linked-resource"></a>De beheerde toepassing gebruiken met een gekoppelde resource
 
-Zodra het pakket Beheerde toepassing is gemaakt, kan de beheerde toepassing worden verbruikt via de Azure-portal. Voordat het kan worden geconsumeerd, zijn er verschillende vereiste stappen.
+Zodra het beheerde toepassings pakket is gemaakt, kan de beheerde toepassing worden gebruikt via de Azure Portal. Voordat deze kan worden gebruikt, zijn er verschillende vereiste stappen.
 
-- Er moet een exemplaar van de vereiste gekoppelde Azure-bron worden gemaakt.
-- De **door de gebruiker toegewezen identiteit** moet worden gemaakt en [roltoewijzingen aan](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) de gekoppelde resource worden gegeven.
-- De bestaande gekoppelde **resource-id** en de door de gebruiker toegewezen identiteits-id worden verstrekt aan de CreateUIDefinition.
+- Er moet een exemplaar van de vereiste gekoppelde Azure-resource worden gemaakt.
+- De door de **gebruiker toegewezen identiteit** moet worden [gemaakt en toegewezen roltoewijzingen](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) aan de gekoppelde resource.
+- De bestaande gekoppelde Resource-ID en de door de **gebruiker toegewezen identiteits** -id worden aan de CreateUIDefinition toegewezen.
 
-## <a name="accessing-the-managed-identity-token"></a>Toegang tot het token Beheerde identiteit
+## <a name="accessing-the-managed-identity-token"></a>Toegang tot het beheerde identiteits token
 
-Het token van de beheerde toepassing `listTokens` is nu toegankelijk via de api van de uitgevertenant. Een voorbeeldaanvraag kan er uitzien als:
+Het token van de beheerde toepassing is nu toegankelijk via de `listTokens` API van de Publisher-Tenant. Een voorbeeld aanvraag kan er als volgt uitzien:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -329,15 +329,15 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
-Hoofdparameters aanvragen:
+Para meters van aanvraag hoofdtekst:
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-autorisatiePubliek | *nee* | De App ID URI van de doelbron. Het is `aud` ook de (publieks)claim van het uitgegeven token. De standaardwaardehttps://management.azure.com/is " "
-userAssignedIdentities | *nee* | De lijst met door de gebruiker toegewezen beheerde identiteiten om een token voor op te halen. Als dit `listTokens` niet is opgegeven, retourneert u het token voor de door het systeem toegewezen beheerde identiteit.
+authorizationAudience | *geen* | De App-ID-URI van de doel resource. Het is ook de `aud` claim (doel groep) van het uitgegeven token. De standaard waarde is "https://management.azure.com/"
+userAssignedIdentities | *geen* | De lijst met door de gebruiker toegewezen beheerde identiteiten voor het ophalen van een token voor. Als u niets opgeeft `listTokens` , wordt het token geretourneerd voor de door het systeem toegewezen beheerde identiteit.
 
 
-Een voorbeeldreactie kan er uitzien als:
+Een voor beeld van een antwoord kan er als volgt uitzien:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -358,17 +358,17 @@ Content-Type: application/json
 }
 ```
 
-Het antwoord bevat een reeks `value` tokens onder de eigenschap:
+Het antwoord bevat een matrix met tokens onder de `value` eigenschap:
 
 Parameter | Beschrijving
 ---|---
-access_token | Het gevraagde toegangstoken.
-expires_in | Het aantal seconden dat het toegangstoken geldig is.
-expires_on | De tijdspanne wanneer het toegangstoken verloopt. Dit wordt weergegeven als het aantal seconden uit het tijdperk.
-not_before | De tijdspanne waarin het toegangstoken van kracht wordt. Dit wordt weergegeven als het aantal seconden uit het tijdperk.
-autorisatiePubliek | Het `aud` (publiek) van het toegangstoken is aangevraagd. Dit is hetzelfde als wat `listTokens` in het verzoek is vermeld.
-resourceId | De Azure-bron-id voor het uitgegeven token. Dit is de beheerde toepassings-id of de door de gebruiker toegewezen identiteits-id.
-token_type | Het type token.
+access_token | Het aangevraagde toegangs token.
+expires_in | Het aantal seconden dat het toegangs token geldig is.
+expires_on | De time span op het moment dat het toegangs token verloopt. Dit wordt weer gegeven als het aantal seconden vanaf epoche.
+not_before | De time span op het moment dat het toegangs token van kracht wordt. Dit wordt weer gegeven als het aantal seconden vanaf epoche.
+authorizationAudience | De `aud` (doel groep) het toegangs token is aangevraagd. Dit is hetzelfde als de gegevens in de `listTokens` aanvraag.
+resourceId | De Azure-Resource-ID voor het gepubliceerde token. Dit is de ID van de beheerde toepassing of de door de gebruiker toegewezen identiteits-ID.
+token_type | Het type van het token.
 
 ## <a name="next-steps"></a>Volgende stappen
 

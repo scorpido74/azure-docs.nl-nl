@@ -1,6 +1,6 @@
 ---
-title: Voorbeeldconfiguratie voor het verbinden van Cisco ASA-apparaten met Azure VPN-gateways
-description: In dit artikel vindt u een voorbeeldconfiguratie voor het verbinden van Cisco ASA-apparaten met Azure VPN-gateways.
+title: Voorbeeld configuratie voor het verbinden van Cisco ASA-apparaten met Azure VPN-gateways
+description: Dit artikel bevat een voorbeeld configuratie voor het verbinden van Cisco ASA-apparaten met Azure VPN-gateways.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,67 +8,67 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75778079"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Voorbeeldconfiguratie: Cisco ASA-apparaat (IKEv2/no BGP)
-In dit artikel vindt u voorbeeldconfiguraties voor het verbinden van ASA-apparaten (Cisco Adaptive Security Appliance) op Azure VPN-gateways. Het voorbeeld is van toepassing op Cisco ASA-apparaten waarop IKEv2 wordt uitgevoerd zonder het Border Gateway Protocol (BGP). 
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Voorbeeld configuratie: Cisco ASA-apparaat (IKEv2/geen BGP)
+In dit artikel vindt u voor beelden van configuraties voor het koppelen van Cisco Adaptive Security Appliance-apparaten (ASA) aan Azure VPN-gateways. Het voor beeld is van toepassing op Cisco ASA-apparaten met IKEv2 zonder de Border Gateway Protocol (BGP). 
 
 ## <a name="device-at-a-glance"></a>Apparaat in één oogopslag
 
 |                        |                                   |
 | ---                    | ---                               |
-| Apparaatleverancier          | Cisco                             |
+| Leverancier van apparaat          | Cisco                             |
 | Apparaatmodel           | ASA                               |
-| Doelversie         | 8.4 en hoger                     |
+| Doel versie         | 8,4 en hoger                     |
 | Getest model           | ASA 5505                          |
-| Geteste versie         | 9.2                               |
+| Geteste versie         | 9,2                               |
 | IKE-versie            | IKEv2                             |
 | BGP                    | Nee                                |
-| Azure VPN-gatewaytype | Vpn-gateway op basis van route           |
+| Azure VPN-gateway type | Op route gebaseerde VPN-gateway           |
 |                        |                                   |
 
 > [!NOTE]
-> De voorbeeldconfiguratie verbindt een Cisco ASA-apparaat met een **Azure-routegebaseerde VPN-gateway.** De verbinding maakt gebruik van een aangepast IPsec/IKE-beleid met de optie **UsePolicyBasedTrafficSelectors,** zoals beschreven in [dit artikel.](vpn-gateway-connect-multiple-policybased-rm-ps.md)
+> De voorbeeld configuratie verbindt een Cisco ASA-apparaat met een **op Azure route gebaseerde** VPN-gateway. De verbinding maakt gebruik van een aangepast IPsec/IKE-beleid met de optie **UsePolicyBasedTrafficSelectors** , zoals beschreven in [dit artikel](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 >
-> Het voorbeeld vereist dat ASA-apparaten het **IKEv2-beleid** gebruiken met op toegangslijst gebaseerde configuraties, niet vti-gebaseerd. Raadpleeg de specificaties van de leveranciers van uw VPN-apparaat om te controleren of het IKEv2-beleid wordt ondersteund op uw on-premises VPN-apparaten.
+> Het voor beeld vereist dat ASA-apparaten het **IKEv2** -beleid gebruiken met op toegangs lijsten gebaseerde configuraties, niet op VTI. Raadpleeg de specificaties van de leverancier van uw VPN-apparaat om te controleren of het IKEv2-beleid wordt ondersteund op uw on-premises VPN-apparaten.
 
 
 ## <a name="vpn-device-requirements"></a>Vereisten voor VPN-apparaten
-Azure VPN-gateways gebruiken de standaard IPsec/IKE-protocolsuites om Vpn-tunnels (Site-to-Site) op te zetten. Zie [Over VPN-apparaten](vpn-gateway-about-vpn-devices.md)voor de gedetailleerde IPsec/IKE-protocolparameters en standaardcryptografische algoritmen voor Azure VPN-gateways.
+Azure VPN-gateways gebruiken de standaard IPsec/IKE-protocol suites om een S2S-VPN-tunnel (site-naar-site) tot stand te brengen. Zie [over VPN-apparaten](vpn-gateway-about-vpn-devices.md)voor de gedetailleerde IPSec/IKE-protocol parameters en standaard cryptografische algoritmen voor Azure VPN-gateways.
 
 > [!NOTE]
-> U optioneel een exacte combinatie van cryptografische algoritmen en belangrijke sterke punten opgeven voor een specifieke verbinding, zoals beschreven in [Over cryptografische vereisten.](vpn-gateway-about-compliance-crypto.md) Als u een exacte combinatie van algoritmen en sterke punten opgeeft, moet u de bijbehorende specificaties op uw VPN-apparaten gebruiken.
+> U kunt optioneel een exacte combi natie van cryptografische algoritmen en sleutel sterkten voor een specifieke verbinding opgeven, zoals beschreven in [informatie over cryptografische vereisten](vpn-gateway-about-compliance-crypto.md). Als u een exacte combi natie van algoritmen en sleutel sterkte opgeeft, moet u ervoor zorgen dat u de corresponderende specificaties op uw VPN-apparaten gebruikt.
 
 ## <a name="single-vpn-tunnel"></a>Eén VPN-tunnel
-Deze configuratie bestaat uit één S2S VPN-tunnel tussen een Azure VPN-gateway en een on-premises VPN-apparaat. U de BGP optioneel configureren in de VPN-tunnel.
+Deze configuratie bestaat uit één S2S VPN-tunnel tussen een Azure VPN-gateway en een on-premises VPN-apparaat. U kunt de BGP ook configureren via de VPN-tunnel.
 
-![Enkele S2S VPN-tunnel](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
+![Single S2S VPN-tunnel](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Zie [Single VPN-tunnelsetup](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)voor stapsgewijze instructies voor het bouwen van de Azure-configuraties.
+Zie [Single VPN tunnel Setup](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)(Engelstalig) voor stapsgewijze instructies voor het bouwen van de Azure-configuraties.
 
-### <a name="virtual-network-and-vpn-gateway-information"></a>Informatie over virtuele netwerk- en VPN-gateway
-In deze sectie worden de parameters voor het voorbeeld weergegeven.
+### <a name="virtual-network-and-vpn-gateway-information"></a>Informatie over virtuele netwerk-en VPN-gateway
+In deze sectie vindt u de para meters voor het voor beeld.
 
-| **Parameter**                | **Waarde**                    |
+| **Bepaalde**                | **Waarde**                    |
 | ---                          | ---                          |
-| Voorvoegsels voor virtueel netwerkadres        | 10.11.0.0/16<br>10.12.0.0/16 |
-| IP-gateway azure VPN-gateway         | Azure_Gateway_Public_IP      |
-| On-premises adresvoorvoegsels | 10.51.0.0/16<br>10.52.0.0/16 |
-| On-premises IP-apparaat VPN-apparaat    | OnPrem_Device_Public_IP     |
-| * Virtueel netwerk BGP ASN                | 65010                        |
+| Adres voorvoegsels van virtuele netwerken        | 10.11.0.0/16<br>10.12.0.0/16 |
+| Azure VPN-gateway-IP         | Azure_Gateway_Public_IP      |
+| On-premises adres voorvoegsels | 10.51.0.0/16<br>10.52.0.0/16 |
+| IP-adres van on-premises VPN-apparaat    | OnPrem_Device_Public_IP     |
+| * BGP ASN van virtueel netwerk                | 65010                        |
 | * Azure BGP-peer-IP           | 10.12.255.30                 |
 | * On-premises BGP ASN         | 65050                        |
-| * On-premises BGP peer IP     | 10.52.255.254                |
+| * On-premises BGP-peer-IP     | 10.52.255.254                |
 |                              |                              |
 
-\*Optionele parameter alleen voor BGP.
+\*Optionele para meter voor alleen BGP.
 
-### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE-beleid en -parameters
-In de volgende tabel worden de IPsec/IKE-algoritmen en parameters weergegeven die in het voorbeeld worden gebruikt. Raadpleeg de specificaties van uw VPN-apparaat om de algoritmen te verifiëren die worden ondersteund voor uw VPN-apparaatmodellen en firmwareversies.
+### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE-beleid en-para meters
+De volgende tabel bevat de IPsec/IKE-algoritmen en-para meters die in het voor beeld worden gebruikt. Raadpleeg de specificaties van uw VPN-apparaat om de algoritmen te controleren die worden ondersteund voor de modellen van uw VPN-apparaten en firmware.
 
 | **IPsec/IKEv2**  | **Waarde**                            |
 | ---              | ---                                  |
@@ -76,47 +76,47 @@ In de volgende tabel worden de IPsec/IKE-algoritmen en parameters weergegeven di
 | IKEv2-integriteit  | SHA384                               |
 | DH-groep         | DHGroup24                            |
 | * IPsec-versleuteling | AES256                               |
-| * IPsec Integriteit  | SHA1                                 |
+| * IPsec-integriteit  | SHA1                                 |
 | PFS-groep        | PFS24                                |
 | QM SA-levensduur   | 7.200 seconden                         |
-| Verkeersselector | GebruikPolicyBasedTrafficSelectors $True |
+| Verkeersselector | UsePolicyBasedTrafficSelectors $True |
 | Vooraf gedeelde sleutel   | PreSharedKey                         |
 |                  |                                      |
 
-\*Op sommige apparaten moet IPsec-integriteit een null-waarde zijn wanneer het IPsec-versleutelingsalgoritme AES-GCM is.
+\*Op sommige apparaten moet IPsec-integriteit een null-waarde zijn wanneer de IPsec-versleutelings algoritme AES-GCM is.
 
-### <a name="asa-device-support"></a>ASA-apparaatondersteuning
+### <a name="asa-device-support"></a>Ondersteuning voor het ASA-apparaat
 
-* Ondersteuning voor IKEv2 vereist ASA versie 8.4 en hoger.
+* Ondersteuning voor IKEv2 vereist ASA versie 8,4 en hoger.
 
-* Ondersteuning voor DH Group en PFS Group buiten Groep 5 vereist ASA versie 9.x.
+* Ondersteuning voor DH-groep en PFS-groep buiten groep 5 vereist ASA versie 9. x.
 
-* Ondersteuning voor IPsec-versleuteling met AES-GCM en IPsec-integriteit met SHA-256, SHA-384 of SHA-512 vereist ASA-versie 9.x. Deze ondersteuningsvereiste is van toepassing op nieuwere ASA-apparaten. Op het moment van publicatie ondersteunen ASA-modellen 5505, 5510, 5520, 5540, 5550 en 5580 deze algoritmen niet. Raadpleeg de specificaties van uw VPN-apparaat om de algoritmen te verifiëren die worden ondersteund voor uw VPN-apparaatmodellen en firmwareversies.
+* Ondersteuning voor IPsec-versleuteling met AES-GCM en IPsec-integriteit met SHA-256, SHA-384 of SHA-512 vereist ASA versie 9. x. Deze ondersteunings vereiste is van toepassing op nieuwere ASA-apparaten. Op het moment van publicatie, hebben ASA-modellen 5505, 5510, 5520, 5540, 5550 en 5580 geen ondersteuning voor deze algoritmen. Raadpleeg de specificaties van uw VPN-apparaat om de algoritmen te controleren die worden ondersteund voor de modellen van uw VPN-apparaten en firmware.
 
 
-### <a name="sample-device-configuration"></a>Voorbeeldapparaatconfiguratie
-Het script biedt een voorbeeld dat is gebaseerd op de configuratie en parameters die in de vorige secties worden beschreven. De S2S VPN-tunnelconfiguratie bestaat uit de volgende onderdelen:
+### <a name="sample-device-configuration"></a>Voor beeld van apparaatconfiguratie
+Het script bevat een voor beeld dat is gebaseerd op de configuratie en para meters die in de vorige secties worden beschreven. De configuratie van de S2S VPN-tunnel bestaat uit de volgende onderdelen:
 
 1. Interfaces en routes
-2. Toegangslijsten
-3. IKE-beleid en -parameters (fase 1 of hoofdmodus)
-4. IPsec-beleid en -parameters (fase 2 of snelle modus)
-5. Andere parameters, zoals TCP MSS-klemmen
+2. Toegangs lijsten
+3. IKE-beleid en-para meters (fase 1 of hoofd modus)
+4. IPsec-beleid en-para meters (fase 2 of snelle modus)
+5. Andere para meters, zoals TCP MSS-klem
 
 > [!IMPORTANT]
-> Voer de volgende stappen uit voordat u het voorbeeldscript gebruikt. Vervang de tijdelijke aanduidingswaarden in het script door de apparaatinstellingen voor uw configuratie.
+> Voer de volgende stappen uit voordat u het voorbeeld script gebruikt. Vervang de waarden van de tijdelijke aanduidingen in het script door de apparaatinstellingen voor uw configuratie.
 
-* Geef de interfaceconfiguratie op voor zowel binnen- als buiteninterfaces.
-* Identificeer de routes voor uw binnen/privé en buiten/openbare netwerken.
-* Zorg ervoor dat alle namen en beleidsnummers uniek zijn op uw apparaat.
-* Zorg ervoor dat de cryptografische algoritmen worden ondersteund op uw apparaat.
-* Vervang de volgende **tijdelijke aanduidingswaarden** door werkelijke waarden voor uw configuratie:
-  - Naam buiteninterface: **buiten**
+* De configuratie van de interface voor zowel binnen-als externe interfaces opgeven.
+* Identificeer de routes voor uw binnen/privé-en buiten-en open bare netwerken.
+* Zorg ervoor dat alle namen en beleids nummers uniek zijn op uw apparaat.
+* Zorg ervoor dat de cryptografische algoritmen op uw apparaat worden ondersteund.
+* Vervang de volgende **waarden voor de tijdelijke aanduiding** door de werkelijke waarden voor uw configuratie:
+  - Buiten de interface naam: **buiten**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - Namen van virtuele netwerk- en lokale netwerkgateways: **VNetName** en **LNGName**
-  - Voorvoegsels voor virtueel netwerk en on-premises **netwerkadressen**
+  - Namen van virtuele netwerk-en lokale netwerk gateways: **VNetName** en **LNGName**
+  - Virtuele netwerk-en on-premises netwerk adres **voorvoegsels**
   - Juiste **netmaskers**
 
 #### <a name="sample-script"></a>Voorbeeldscript
@@ -272,24 +272,24 @@ sysopt connection tcpmss 1350
 !
 ```
 
-## <a name="simple-debugging-commands"></a>Eenvoudige foutopsporingsopdrachten
+## <a name="simple-debugging-commands"></a>Eenvoudige opdrachten voor fout opsporing
 
-Gebruik de volgende ASA-opdrachten voor foutopsporingsdoeleinden:
+Gebruik de volgende ASA-opdrachten voor fout opsporing:
 
-* De IPsec- of IKE-beveiligingskoppeling (SA) weergeven:
+* De IPsec-of IKE-beveiligings koppeling (SA) weer geven:
     ```
     show crypto ipsec sa
     show crypto ikev2 sa
     ```
 
-* Voer de foutopsporingsmodus in:
+* Modus voor fout opsporing invoeren:
     ```
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    De `debug` opdrachten kunnen aanzienlijke uitvoer genereren op de console.
+    Met `debug` de opdrachten kan aanzienlijke uitvoer op de console worden gegenereerd.
 
-* De huidige configuraties op het apparaat weergeven:
+* De huidige configuraties op het apparaat weer geven:
     ```
     show run
     ```
@@ -301,4 +301,4 @@ Gebruik de volgende ASA-opdrachten voor foutopsporingsdoeleinden:
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Active-active VPN-gateways configureren](vpn-gateway-activeactive-rm-powershell.md)voor actieve cross-premises en VNet-naar-VNet-verbindingen.
+Zie [actieve en actieve VPN-gateways configureren](vpn-gateway-activeactive-rm-powershell.md)voor meer informatie over het configureren van Active-Active-cross-premises en vnet-naar-vnet-verbindingen.

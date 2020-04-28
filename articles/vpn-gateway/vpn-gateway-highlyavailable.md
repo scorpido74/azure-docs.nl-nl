@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN-gateway: overzicht - zeer beschikbare gatewayconfiguraties'
+title: 'Azure VPN Gateway: overzicht-configuraties met Maxi maal beschik bare gateways'
 description: Dit artikel bevat een overzicht van maximaal beschikbare configuratieopties met Azure VPN-gateways.
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779617"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Maximaal beschikbare cross-premises en VNet-naar-VNet-connectiviteit
@@ -36,12 +36,12 @@ U kunt meerdere VPN-apparaten van uw on-premises netwerk gebruiken om verbinding
 
 Deze configuratie biedt meerdere actieve tunnels van dezelfde Azure VPN-gateway op on-premises apparaten op dezelfde locatie. Er zijn enkele vereisten en beperkingen:
 
-1. U moet meerdere S2S VPN-verbindingen maken van uw VPN-apparaten naar Azure. Wanneer u meerdere VPN-apparaten van hetzelfde on-premises netwerk met Azure verbindt, moet u één lokale netwerkgateway maken voor elk VPN-apparaat en één verbinding van uw Azure VPN-gateway naar elke lokale netwerkgateway.
+1. U moet meerdere S2S VPN-verbindingen maken van uw VPN-apparaten naar Azure. Wanneer u meerdere VPN-apparaten van hetzelfde on-premises netwerk verbindt met Azure, moet u één lokale netwerk gateway maken voor elk VPN-apparaat en één verbinding van uw Azure VPN-gateway naar elke lokale netwerk gateway.
 2. De lokale netwerkgateways die overeenkomen met uw VPN-apparaten moeten unieke openbare IP-adressen hebben in de eigenschap 'GatewayIpAddress'.
 3. BGP is vereist voor deze configuratie. Elke lokale netwerkgateway voor een VPN-apparaat moet een uniek IP-adres voor BGP-peering hebben in de eigenschap 'BgpPeerIpAddress'.
 4. Het veld van de eigenschap AddressPrefix in elke lokale netwerkgateway mag niet overlappen. U moet 'BgpPeerIpAddress' in /32 CIDR-indeling opgeven in het veld AddressPrefix, bijvoorbeeld 10.200.200.254/32.
 5. Gebruik BGP om dezelfde voorvoegsels van dezelfde on-premises netwerkvoorvoegsels te adverteren naar uw Azure VPN-gateway. Het verkeer wordt tegelijkertijd doorgestuurd via deze tunnels.
-6. U moet ECMP (Equal-cost multi-path routing) gebruiken.
+6. U moet een gelijke-kosten multi-path routing (ECMP) gebruiken.
 7. Elke verbinding wordt geteld tegen het maximale aantal tunnels voor uw Azure VPN-gateway, 10 voor de Basic en Standaard SKU's en 30 voor de HighPerformance SKU. 
 
 In deze configuratie bevindt de Azure VPN-gateway zich nog steeds in de actieve stand-bymodus, dus hetzelfde failovergedrag en de korte onderbreking die [hierboven](#activestandby) worden beschreven, zullen optreden. Deze installatie beschermt echter tegen storingen of onderbrekingen op uw on-premises netwerk en VPN-apparaten.

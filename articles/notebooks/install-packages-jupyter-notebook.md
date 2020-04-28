@@ -1,26 +1,26 @@
 ---
-title: Pakketten installeren in Jupyter-notitieblokken - Proefversie van Azure Notebooks
-description: Meer informatie over het installeren van Python-, R- en F#-pakketten vanuit een Jupyter-notitieblok dat op Azure wordt uitgevoerd.
+title: Pakketten in Jupyter-notebooks installeren-Azure Notebooks preview
+description: 'Meer informatie over het installeren van python-, R-en F #-pakketten in een Jupyter-notebook dat wordt uitgevoerd op Azure.'
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646225"
 ---
-# <a name="install-packages-from-within-azure-notebooks-preview"></a>Pakketten installeren vanuit Azure Notebooks Preview
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>Pakketten installeren vanuit Azure Notebooks preview
 
-Hoewel u de [omgeving voor uw notitieblok op projectniveau](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)configureren, u pakketten rechtstreeks in een afzonderlijk notitieblok installeren.
+Hoewel u de [omgeving voor uw notitie blok kunt configureren op project niveau](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), wilt u mogelijk pakketten rechtstreeks in een afzonderlijk notitie blok installeren.
 
-Pakketten die vanuit het notitieblok zijn geïnstalleerd, zijn alleen van toepassing op de huidige serversessie. Pakketinstallaties worden niet gehandhaafd zodra de server is uitgeschakeld.
+Pakketten die vanaf het notitie blok zijn geïnstalleerd, zijn alleen van toepassing op de huidige Server sessie. Pakket installaties blijven niet behouden zodra de server is afgesloten.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
-Pakketten in Python kunnen worden geïnstalleerd met behulp van pip of conda met behulp van opdrachten in codecellen:
+Pakketten in python kunnen worden geïnstalleerd met behulp van PIP of Conda met behulp van opdrachten in code cellen:
 
 ```bash
 !pip install <package_name>
@@ -28,17 +28,17 @@ Pakketten in Python kunnen worden geïnstalleerd met behulp van pip of conda met
 !conda install <package_name> -y
 ```
 
-Als de opdrachtuitvoer aangeeft dat al aan de vereiste is voldaan, kunnen Azure-notitieblokken het pakket standaard bevatten. Het pakket kan ook worden geïnstalleerd via een [projectomgevinginstallatiestap.](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)
+Als de uitvoer van de opdracht aangeeft dat de vereiste al is voldaan, dan kan Azure Notebooks standaard het pakket bevatten. Het pakket kan ook worden geïnstalleerd via een [installatie stap van een project omgeving](configure-manage-azure-notebooks-projects.md#configure-the-project-environment).
 
 ## <a name="r"></a>R
 
-Pakketten in R kunnen vanaf CRAN of `install.packages` GitHub worden geïnstalleerd met behulp van de functie in een codecel:
+Pakketten in R kunnen worden geïnstalleerd vanuit KRANen of GitHub met `install.packages` behulp van de functie in een code-cel:
 
 ```r
 install.packages("package_name")
 ```
 
-U ook prerelease-versies en andere ontwikkelingspakketten van GitHub installeren met behulp van de devtools-bibliotheek:
+U kunt ook prerelease-versies en andere ontwikkel pakketten van GitHub installeren met behulp van de devtools-bibliotheek:
 
 ```r
 options(unzip = 'internal')
@@ -48,7 +48,7 @@ install_github('<user>/<repo>')
 
 ## <a name="f"></a>F#
 
-Pakketten in F# kunnen vanaf [nuget.org](https://www.nuget.org) worden geïnstalleerd door de afhankelijkheidsmanager paket vanuit codecellen te bellen. Laad eerst de Paket-manager:
+Pakketten in F # kunnen worden geïnstalleerd vanuit [nuget.org](https://www.nuget.org) door de Paket-afhankelijkheids Manager aan te roepen vanuit code cellen. Eerst moet u de Paket Manager laden:
 
 ```fsharp
 #load "Paket.fsx"
@@ -63,7 +63,7 @@ Paket.Package
   ]
 ```
 
-Laad vervolgens de Paket generator:
+Laad vervolgens de Paket-Generator:
 ```fsharp
 #load "Paket.Generated.Refs.fsx"
 ```
@@ -75,5 +75,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Hoe: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-- [Hoe: Een diavoorstelling presenteren](present-jupyter-notebooks-slideshow.md)
+- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: een diavoorstelling presen teren](present-jupyter-notebooks-slideshow.md)

@@ -1,5 +1,5 @@
 ---
-title: 'On-premises netwerken verbinden met een virtueel netwerk: Site-to-Site VPN: CLI'
+title: 'On-premises netwerken verbinden met een virtueel netwerk: site-naar-site-VPN: CLI'
 description: Stappen voor het maken van een IPSec-verbinding van uw on-premises netwerk met een virtueel Azure-netwerk via het openbare internet. Deze stappen helpen u een cross-premises site-naar-site-VPN-gatewayverbinding te maken met CLI.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: 6d28a5a37be2947ea6cc7019d2b3cc73932c60d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779090"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Een virtueel netwerk maken met een site-naar-site-VPN-verbinding met CLI
@@ -20,8 +20,8 @@ ms.locfileid: "75779090"
 In dit artikel leest u hoe u de Azure CLI gebruikt om een site-naar-site-VPN-gatewayverbinding te maken vanaf uw on-premises netwerk naar het VNet. De stappen in dit artikel zijn van toepassing op het Resource Manager-implementatiemodel. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:<br>
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Powershell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
@@ -39,11 +39,11 @@ Controleer voordat u met de configuratie begint, of aan de volgende criteria is 
 * U hebt een compatibel VPN-apparaat nodig en iemand die dit kan configureren. Zie [Over VPN-apparaten](vpn-gateway-about-vpn-devices.md) voor meer informatie over compatibele VPN-apparaten en -apparaatconfiguratie.
 * Controleer of u een extern gericht openbaar IPv4-adres voor het VPN-apparaat hebt.
 * Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die u hierbij kan helpen en de benodigde gegevens kan verstrekken. Wanneer u deze configuratie maakt, moet u de IP-adresbereikvoorvoegsels opgeven die Azure naar uw on-premises locatie doorstuurt. Geen van de subnetten van uw on-premises netwerk kan overlappen met de virtuele subnetten waarmee u verbinding wilt maken.
-* U Azure Cloud Shell gebruiken om uw CLI-opdrachten uit te voeren (instructies hieronder). Als u uw opdrachten echter liever lokaal uitvoert, controleert u of u de nieuwste versie van de CLI-opdrachten (2.0 of hoger) hebt geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) en [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli) voor meer informatie over de CLI-opdrachten. 
+* U kunt Azure Cloud Shell gebruiken om uw CLI-opdrachten uit te voeren (onderstaande instructies). Als u uw opdrachten echter liever lokaal wilt uitvoeren, controleert u of u de meest recente versie van de CLI-opdrachten hebt geïnstalleerd (2,0 of hoger). Zie [Azure CLI installeren](/cli/azure/install-azure-cli) en [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli) voor meer informatie over de CLI-opdrachten. 
  
   [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="example-values"></a><a name="example"></a>Voorbeeldwaarden
+### <a name="example-values"></a><a name="example"></a>Voorbeeld waarden
 
 U kunt de volgende waarden gebruiken om een testomgeving te maken of ze raadplegen om meer inzicht te krijgen in de voorbeelden in dit artikel:
 
@@ -68,13 +68,13 @@ GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
-## <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. Verbinding maken met uw abonnement
+## <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. Maak verbinding met uw abonnement
 
-Als u ervoor kiest OM CLI lokaal uit te voeren, maakt u verbinding met uw abonnement. Als u Azure Cloud Shell in de browser gebruikt, hoeft u geen verbinding te maken met uw abonnement. U maakt automatisch verbinding in Azure Cloud Shell. U echter controleren of u het juiste abonnement gebruikt nadat u verbinding hebt gemaakt.
+Als u ervoor kiest om CLI lokaal uit te voeren, maakt u verbinding met uw abonnement. Als u Azure Cloud Shell in de browser gebruikt, hoeft u geen verbinding te maken met uw abonnement. U maakt automatisch verbinding in Azure Cloud Shell. U kunt echter controleren of u het juiste abonnement gebruikt nadat u verbinding hebt gemaakt.
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="2-create-a-resource-group"></a><a name="rg"></a>2. Een resourcegroep maken
+## <a name="2-create-a-resource-group"></a><a name="rg"></a>2. een resource groep maken
 
 In het volgende voorbeeld wordt een resourcegroep met de naam 'TestRG1' gemaakt op de locatie 'eastus'. Als u al een resourcegroep hebt in de regio waarin u uw VNet wilt maken, kunt u desgewenst ook deze gebruiken.
 
@@ -82,7 +82,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam 'TestRG1' gemaakt 
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="3-create-a-virtual-network"></a><a name="VNet"></a>3. Een virtueel netwerk maken
+## <a name="3-create-a-virtual-network"></a><a name="VNet"></a>3. een virtueel netwerk maken
 
 Als u nog geen virtueel netwerk hebt, kunt u er een maken met de opdracht [az network vnet create](/cli/azure/network/vnet). Controleer bij het maken van een virtueel netwerk of de adresruimten die u opgeeft, niet overlappen met adresruimten in uw on-premises netwerk.
 
@@ -97,7 +97,7 @@ In het volgende voorbeeld worden een virtueel netwerk met de naam 'TestVNet1' en
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
-## <a name="4-create-the-gateway-subnet"></a>4. <a name="gwsub"> </a>Het gateway-subnet maken
+## <a name="4-create-the-gateway-subnet"></a>4. <a name="gwsub"> </a>het gateway-subnet maken
 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
@@ -110,7 +110,7 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="5-create-the-local-network-gateway"></a><a name="localnet"></a>5. De lokale netwerkgateway maken
+## <a name="5-create-the-local-network-gateway"></a><a name="localnet"></a>5. de lokale netwerk gateway maken
 
 De lokale netwerkgateway verwijst doorgaans naar uw on-premises locatie. U geeft de site een naam waarmee Azure hiernaar kan verwijzen en geeft vervolgens het IP-adres op van het on-premises VPN-apparaat waarmee u verbinding maakt. U geeft ook de IP-adresvoorvoegsels op die via de VPN-gateway worden doorgestuurd naar het VPN-apparaat. De adresvoorvoegsels die u opgeeft, zijn de voorvoegsels die zich in uw on-premises netwerk bevinden. Als uw on-premises netwerk verandert, kunt u de voorvoegsels eenvoudig bijwerken.
 
@@ -125,7 +125,7 @@ Gebruik de opdracht [az network local-gateway create](/cli/azure/network/local-g
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
-## <a name="6-request-a-public-ip-address"></a><a name="PublicIP"></a>6. Een openbaar IP-adres aanvragen
+## <a name="6-request-a-public-ip-address"></a><a name="PublicIP"></a>6. een openbaar IP-adres aanvragen
 
 Een VPN Gateway moet een openbaar IP-adres hebben. U vraagt eerst de resource van het IP-adres aan en verwijst hier vervolgens naar bij het maken van uw virtuele netwerkgateway. Het IP-adres wordt dynamisch aan de resource toegewezen wanneer de VPN Gateway wordt gemaakt. VPN Gateway ondersteunt momenteel alleen *dynamische* toewijzing van openbare IP-adressen. U kunt geen toewijzing van een statisch openbaar IP-adres aanvragen. Dit betekent echter niet dat het IP-adres wordt gewijzigd nadat het aan uw VPN Gateway is toegewezen. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
 
@@ -135,14 +135,14 @@ Gebruik de opdracht [az network public-ip create](/cli/azure/network/public-ip) 
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
 ```
 
-## <a name="7-create-the-vpn-gateway"></a><a name="CreateGateway"></a>7. Maak de VPN-gateway
+## <a name="7-create-the-vpn-gateway"></a><a name="CreateGateway"></a>7. de VPN-gateway maken
 
 Maak de VPN-gateway van het virtuele netwerk. Het maken van een VPN-gateway kan 45 minuten of langer duren.
 
 Gebruik de volgende waarden:
 
 * Het *--gateway-type* voor een site-naar-site-configuratie is *VPN*. Het gatewaytype is altijd specifiek voor de configuratie die u implementeert. Zie [Soorten gateways](vpn-gateway-about-vpn-gateway-settings.md#gwtype) voor meer informatie.
-* Het *--vpn-type* kan *RouteBased* zijn (in sommige documentatie een Dynamic Gateway genoemd), of *PolicyBased* (in sommige documentatie aangeduid als een Statische Gateway). De instelling is specifiek voor de vereisten van het apparaat waarmee u verbinding maakt. Zie [Informatie over VPN-gatewayconfiguratie-instellingen](vpn-gateway-about-vpn-gateway-settings.md#vpntype) voor meer informatie over soorten VPN-gateways.
+* Het *--VPN-type* kan *RouteBased* (een dynamische gateway in sommige documentatie genoemd) of *PolicyBased* (in sommige documentatie een statische gateway genoemd) zijn. De instelling is specifiek voor de vereisten van het apparaat waarmee u verbinding maakt. Zie [Informatie over VPN-gatewayconfiguratie-instellingen](vpn-gateway-about-vpn-gateway-settings.md#vpntype) voor meer informatie over soorten VPN-gateways.
 * Selecteer de gateway-SKU die u wilt gebruiken. Voor bepaalde SKU's gelden configuratiebeperkingen. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
 
 Maak de VPN Gateway met behulp van de opdracht [az network vnet-gateway create](/cli/azure/network/vnet-gateway). Als u deze opdracht uitvoert met de parameter --no-wait, ziet u geen feedback of uitvoer. Deze parameter zorgt ervoor dat de gateway op de achtergrond wordt gemaakt. Het duurt ongeveer 45 minuten om een gateway te maken.
@@ -151,7 +151,7 @@ Maak de VPN Gateway met behulp van de opdracht [az network vnet-gateway create](
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
-## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. Configureer uw VPN-apparaat
+## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. uw VPN-apparaat configureren
 
 Voor site-naar-site-verbindingen met een on-premises netwerk is een VPN-apparaat vereist. In deze stap configureert u het VPN-apparaat. Bij de configuratie van uw VPN-apparaat hebt u het volgende nodig:
 
@@ -166,7 +166,7 @@ Voor site-naar-site-verbindingen met een on-premises netwerk is een VPN-apparaat
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="9-create-the-vpn-connection"></a><a name="CreateConnection"></a>9. De VPN-verbinding maken
+## <a name="9-create-the-vpn-connection"></a><a name="CreateConnection"></a>9. de VPN-verbinding maken
 
 Maak de site-naar-site-VPN-verbinding tussen de gateway van uw virtuele netwerk en het on-premises VPN-apparaat. Let vooral op de waarde van de gedeelde sleutel. Deze moet overeenkomen met de geconfigureerde waarde van de gedeelde sleutel voor het VPN-apparaat.
 
@@ -178,7 +178,7 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 
 Na een korte tijd wordt de verbinding tot stand gebracht.
 
-## <a name="10-verify-the-vpn-connection"></a><a name="toverify"></a>10. De VPN-verbinding verifiëren
+## <a name="10-verify-the-vpn-connection"></a><a name="toverify"></a>10. Controleer de VPN-verbinding
 
 [!INCLUDE [verify connection](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
@@ -198,7 +198,7 @@ Deze sectie bevat veelgebruikte opdrachten die nuttig zijn bij het werken met si
 
 * Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Virtuele machines](https://docs.microsoft.com/azure/) voor meer informatie.
 * Voor meer informatie over BGP raadpleegt u [BGP Overview](vpn-gateway-bgp-overview.md) (BGP-overzicht) en [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (BGP configureren).
-* Voor informatie over gedwongen tunneling, zie [Over gedwongen tunneling](vpn-gateway-forced-tunneling-rm.md).
+* Zie [over geforceerde](vpn-gateway-forced-tunneling-rm.md)tunneling voor meer informatie over geforceerde tunneling.
 * Zie [Maximaal beschikbare cross-premises en VNet-naar-VNet-connectiviteit](vpn-gateway-highlyavailable.md) voor meer informatie over maximaal beschikbare actieve verbindingen.
 * Zie [Azure CLI](https://docs.microsoft.com/cli/azure/network) voor een lijst met Azure CLI-opdrachten voor netwerken.
 * Zie [Een site-naar-site-VPN-verbinding maken](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/) voor meer informatie over het maken van een site-naar-site-VPN-verbinding met behulp van een Azure Resource Manager-sjabloon.

@@ -10,10 +10,10 @@ ms.date: 08/30/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f031f55bbff534181459bb1bf7469f315aee27cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887781"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(AFGESCHAFT) Veelgestelde vragen over Container Service
@@ -56,7 +56,7 @@ Als u Azure CLI-opdrachten gebruikt om een Container Service-cluster te implemen
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Hoe kan ik een service-principal maken voor mijn Kubernetes-cluster?
 
-Voor het maken van een Kubernetes-cluster in Azure Container Service zijn ook een id en wachtwoord nodig voor de service-principal van Azure Active Directory nodig. Zie [Over de serviceprincipal voor een Kubernetes-cluster voor](../../container-service/kubernetes/container-service-kubernetes-service-principal.md)meer informatie.
+Voor het maken van een Kubernetes-cluster in Azure Container Service zijn ook een id en wachtwoord nodig voor de service-principal van Azure Active Directory nodig. Zie [over de service-principal voor een Kubernetes-cluster](../../container-service/kubernetes/container-service-kubernetes-service-principal.md)voor meer informatie.
 
 Als u [Azure CLI-opdrachten](../../container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) gebruikt om een Kubernetes-cluster te implementeren, kunnen de referenties van de service-principal automatisch worden gegenereerd voor uw cluster.
 
@@ -114,7 +114,7 @@ Zie [Verbinding maken met een Azure Container Service-cluster](../../container-s
 
 ### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Mijn DNS-naamomzetting werkt niet in Windows. Wat moet ik doen?
 
-Er zijn een aantal bekende DNS-problemen op Windows waarvan de oplossingen nog steeds actief worden uitgefaseerd. Zorg ervoor dat u de meest bijgewerkte acs-engine en Windows-versie gebruikt (met [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) en [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) geïnstalleerd) zodat uw omgeving hiervan kan profiteren. Zie anders de tabel hieronder voor oplossingsstappen:
+Er zijn enkele bekende DNS-problemen in Windows waarvan de oplossingen nog steeds actief zijn. Zorg ervoor dat u de meest recente ACS-engine en Windows-versie (met [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) en [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) geïnstalleerd) gebruikt, zodat uw omgeving hiervan kan profiteren. Zie anders de tabel hieronder voor oplossingsstappen:
 
 | DNS-symptoom | Tijdelijke oplossing  |
 |-------------|-------------|

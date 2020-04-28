@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN-gateway: installeer een Point-to-Site-clientcertificaat'
-description: Clientcert installeren voor P2S-certificaatverificatie - Windows, Mac, Linux.
+title: 'Azure VPN Gateway: een punt-naar-site-client certificaat installeren'
+description: Installeer het client certificaat voor P2S-certificaat verificatie-Windows, Mac, Linux.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 787b8a34ed4b232b9e6cc033e67b1a8162c85f6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75902849"
 ---
-# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Clientcertificaten voor Verificatieverbindingen voor P2S-certificaten installeren
+# <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Client certificaten installeren voor P2S-certificaat authenticatie verbindingen
 
-Alle clients die verbinding maken met een virtueel netwerk met Point-to-Site Azure-certificaatverificatie vereisen een clientcertificaat. Met dit artikel u een clientcertificaat installeren dat wordt gebruikt voor verificatie wanneer u verbinding maakt met een VNet via P2S.
+Alle clients die verbinding maken met een virtueel netwerk met behulp van punt-naar-site-Azure-certificaat verificatie, vereisen een client certificaat. Dit artikel helpt u bij het installeren van een client certificaat dat wordt gebruikt voor verificatie wanneer u verbinding maakt met een VNet met behulp van P2S.
 
-## <a name="acquire-a-client-certificate"></a><a name="generate"></a>Een clientcertificaat verkrijgen
+## <a name="acquire-a-client-certificate"></a><a name="generate"></a>Een client certificaat verkrijgen
 
-Het maakt niet uit van welk clientbesturingssysteem u verbinding wilt maken, u moet altijd over een clientcertificaat beschikken. U een clientcertificaat genereren uit een basiscertificaat dat is gegenereerd met behulp van een Enterprise CA-oplossing of een zelfondertekend rootcertificaat. Zie de [powershell-,](vpn-gateway-certificates-point-to-site.md) [makecert-](vpn-gateway-certificates-point-to-site-makecert.md)of [Linux-instructies](vpn-gateway-certificates-point-to-site-linux.md) voor stappen om een clientcertificaat te genereren. 
+Ongeacht het besturings systeem van de client waarmee u verbinding wilt maken, moet u altijd een client certificaat hebben. U kunt een client certificaat genereren van een basis certificaat dat is gegenereerd met een bedrijfs CA-oplossing of een zelfondertekend basis certificaat. Zie de [Power shell](vpn-gateway-certificates-point-to-site.md)-, [makecert](vpn-gateway-certificates-point-to-site-makecert.md)-of [Linux](vpn-gateway-certificates-point-to-site-linux.md) -instructies voor de stappen voor het genereren van een client certificaat. 
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 
@@ -29,7 +29,7 @@ Het maakt niet uit van welk clientbesturingssysteem u verbinding wilt maken, u m
 ## <a name="mac"></a><a name="installmac"></a>Mac
 
 >[!NOTE]
->Mac VPN-clients worden alleen ondersteund voor het Resource Manager-implementatiemodel. Ze worden niet ondersteund voor het klassieke implementatiemodel.
+>Mac VPN-clients worden alleen ondersteund voor het Resource Manager-implementatie model. Ze worden niet ondersteund voor het klassieke implementatie model.
 >
 >
 
@@ -37,8 +37,8 @@ Het maakt niet uit van welk clientbesturingssysteem u verbinding wilt maken, u m
 
 ## <a name="linux"></a><a name="installlinux"></a>Linux
 
-Het Linux-clientcertificaat wordt op de client geïnstalleerd als onderdeel van de clientconfiguratie. Zie [Clientconfiguratie - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) voor instructies.
+Het Linux-client certificaat wordt geïnstalleerd op de client als onderdeel van de client configuratie. Zie [client configuratie-Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli) voor instructies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga verder met de configuratiestappen Point-to-Site voor [het maken en installeren van VPN-clientconfiguratiebestanden.](point-to-site-vpn-client-configuration-azure-cert.md)
+Ga door met de stappen voor punt-naar-site [-configuratie om configuratie bestanden voor VPN-clients te maken en te installeren](point-to-site-vpn-client-configuration-azure-cert.md).

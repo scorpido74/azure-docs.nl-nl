@@ -1,6 +1,6 @@
 ---
-title: Analytics met U-SQL op Azure Data Lake - Team Data Science Process
-description: Voorbeelden die door het gebruik van U-SQL op Azure Data Lake lopen om voorspellende analyses uit te kunnen doen.
+title: Analyse met U-SQL op Azure Data Lake-team data Science process
+description: Voor beelden van het gebruik van U-SQL op Azure Data Lake om predictive analytics uit te voeren.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864176"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake data science walkthroughs met U-SQL
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake data Science-instructies met U-SQL
 
-Deze walkthroughs gebruiken U-SQL met Azure Data Lake om voorspellende analyses uit te doen. Ze volgen de stappen die zijn beschreven in het Team Data Science Process. Zie Data Science Process voor een overzicht van het Team Data Science [Process.](overview.md) Zie [Overzicht van Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md)voor een inleiding tot Azure Data Lake.
+Deze scenario's maken gebruik van U-SQL met Azure Data Lake om predictive analytics uit te voeren. Ze volgen de stappen die worden beschreven in het team data Science process. Zie [Data Science process](overview.md)(Engelstalig) voor een overzicht van het team data Science process. Zie [overzicht van Azure data Lake Store](../../data-lake-store/data-lake-store-overview.md)voor een inleiding tot Azure data Lake.
 
-Aanvullende data science walkthroughs die het Team Data Science Process uitvoeren, worden gegroepeerd door het **platform** dat ze gebruiken. Zie [Walkthroughs die het Team Data Science-proces uitvoeren](walkthroughs.md) voor een itemisering van deze voorbeelden.
+Aanvullende data Science-instructies die het team data Science proces uitvoeren, worden gegroepeerd op het **platform** dat ze gebruiken. Zie [de stapsgewijze instructies voor het uitvoeren van het team data Science process](walkthroughs.md) voor een specificatie van deze voor beelden.
 
 
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Voorspel taxitips met U-SQL met Azure Data Lake
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Bevoors pellen van de taxi tips met U-SQL met Azure Data Lake
 
-De walkthrough [Azure Data Lake gebruiken voor gegevenswetenschap](data-lake-walkthrough.md) laat zien hoe u Azure Data Lake gebruiken om gegevensverkenning en binaire classificatietaken uit te voeren.  De gegevens zijn een voorbeeld van de NYC taxi dataset.  De taak is het voorspellen of een tip wordt betaald door een klant. 
+In de walkthrough [Azure data Lake voor data Science](data-lake-walkthrough.md) kunt u zien hoe u Azure data Lake gebruikt voor het uitvoeren van gegevens met betrekking tot verkennen en binaire classificatie taken.  De gegevens zijn een voor beeld van de NYC taxi-gegevensset.  De taak wordt voor speld of een tip door een klant wordt betaald. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Team Data Science Process overview voor een overzicht van het Team Data Science Process voor een overzicht van het Team [Data Science Process.](overview.md)
+Zie [overzicht van team data Science process](overview.md)voor een overzicht van het team data Science process.
 
-Zie De levenscyclus van het Team [Data Science Process](lifecycle.md)voor een discussie over de levenscyclus van het Team Data Science Process. Deze levenscyclus geeft een overzicht van de stappen die projecten meestal volgen wanneer ze worden uitgevoerd. 
+Zie voor een bespreking van de team data Science proces levenscyclus de [team data Science process Lifecycle](lifecycle.md). Deze levens cyclus bevat een overzicht van de stappen die projecten meestal volgen wanneer ze worden uitgevoerd. 

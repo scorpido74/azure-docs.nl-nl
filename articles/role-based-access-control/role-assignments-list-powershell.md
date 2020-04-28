@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen weergeven met Azure RBAC en Azure PowerShell
-description: Meer informatie over het bepalen van welke resources gebruikers, groepen, serviceprincipals of beheerde identiteiten toegang hebben tot het gebruik van RBAC (Azure Role-based Access Control) en Azure PowerShell.
+title: Roltoewijzingen weer geven met behulp van Azure RBAC en Azure PowerShell
+description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben geopend met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure PowerShell van Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,28 +15,28 @@ ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931157"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Roltoewijzingen weergeven met Azure RBAC en Azure PowerShell
+# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en Azure PowerShell
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen weergeven met Azure PowerShell.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen met Azure PowerShell kunt weer geven.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Als uw organisatie beheerfuncties heeft uitbesteed aan een serviceprovider die [azure-gedelegeerd resourcebeheer](../lighthouse/concepts/azure-delegated-resource-management.md)gebruikt, worden roltoewijzingen die zijn geautoriseerd door die serviceprovider, hier niet weergegeven.
+> Als uw organisatie uitbestede beheer functies heeft voor een service provider die gebruikmaakt van [Azure delegated resource management](../lighthouse/concepts/azure-delegated-resource-management.md), worden roltoewijzingen die door die service provider worden toegestaan, hier niet weer gegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [PowerShell in Azure Cloud Shell](/azure/cloud-shell/overview) of Azure [PowerShell](/powershell/azure/install-az-ps)
+- [Power shell in azure Cloud shell](/azure/cloud-shell/overview) of [Azure PowerShell](/powershell/azure/install-az-ps)
 
-## <a name="list-role-assignments-for-the-current-subscription"></a>Roltoewijzingen voor het huidige abonnement aanbieden
+## <a name="list-role-assignments-for-the-current-subscription"></a>Roltoewijzingen voor het huidige abonnement weer geven
 
-De eenvoudigste manier om een lijst te krijgen van alle roltoewijzingen in het huidige abonnement (inclusief overgenomen roltoewijzingen van root- en beheergroepen) is door [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) zonder parameters te gebruiken.
+De eenvoudigste manier om een lijst op te halen met alle roltoewijzingen in het huidige abonnement (inclusief overgenomen roltoewijzingen van basis-en beheer groepen) is door [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) zonder para meters te gebruiken.
 
 ```azurepowershell
 Get-AzRoleAssignment
@@ -70,7 +70,7 @@ CanDelegate        : False
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Roltoewijzingen weergeven voor een abonnement
 
-Als u alle roltoewijzingen op een abonnementsgebied wilt weergeven, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Als u de abonnements-ID wilt krijgen, u deze vinden op het blade **Abonnementen** in de Azure-portal of u [Get-AzSubscription gebruiken.](/powershell/module/Az.Accounts/Get-AzSubscription)
+Gebruik [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)om alle roltoewijzingen in een abonnements bereik weer te geven. Als u de abonnements-ID wilt ophalen, kunt u deze vinden op de Blade **abonnementen** in de Azure portal of u kunt [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)gebruiken.
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -82,7 +82,7 @@ PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-00000
 
 ## <a name="list-role-assignments-for-a-user"></a>Roltoewijzingen voor een gebruiker weergeven
 
-Als u alle rollen wilt weergeven die aan een bepaalde gebruiker zijn toegewezen, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Gebruik [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)om alle rollen weer te geven die aan een opgegeven gebruiker zijn toegewezen.
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname>
@@ -96,7 +96,7 @@ RoleDefinitionName : BizTalk Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-Als u alle rollen wilt weergeven die aan een bepaalde gebruiker zijn toegewezen en de rollen die zijn toegewezen aan de groepen waartoe de gebruiker behoort, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Gebruik [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)om alle rollen weer te geven die zijn toegewezen aan een opgegeven gebruiker en de rollen die zijn toegewezen aan de groepen waartoe de gebruiker behoort.
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGroups
@@ -108,7 +108,7 @@ Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | F
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Roltoewijzingen voor een resourcegroep opvragen
 
-Als u alle roltoewijzingen wilt weergeven in een resourcegroepbereik, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Als u alle roltoewijzingen wilt weer geven in een bereik van een resource groep, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
 ```azurepowershell
 Get-AzRoleAssignment -ResourceGroupName <resource_group_name>
@@ -130,9 +130,9 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-## <a name="list-role-assignments-for-a-management-group"></a>Roltoewijzingen voor een beheergroep opsommen
+## <a name="list-role-assignments-for-a-management-group"></a>Roltoewijzingen voor een beheer groep weer geven
 
-Als u alle roltoewijzingen wilt weergeven in een beheergroepbereik, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment). Als u de beheergroep-id wilt krijgen, u deze vinden op het blade **van beheergroepen** in de Azure-portal of u [Get-AzManagementGroup gebruiken.](/powershell/module/az.resources/get-azmanagementgroup)
+Gebruik [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)om alle roltoewijzingen in een beheer groeps bereik weer te geven. Als u de beheer groep-ID wilt ophalen, kunt u deze vinden op de Blade **beheer groepen** in de Azure portal of u kunt [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)gebruiken.
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -142,25 +142,25 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Roltoewijzingen voor klassieke servicebeheerders en medebeheerders weergeven
+## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Roltoewijzingen voor de klassieke service beheerder en mede beheerders weer geven
 
-Als u roltoewijzingen wilt weergeven voor de klassieke abonnementsbeheerder en medebeheerders, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+Gebruik [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)om roltoewijzingen voor de klassieke abonnements beheerder en mede beheerders weer te geven.
 
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="list-role-assignments-for-a-managed-identity"></a>Roltoewijzingen voor een beheerde identiteit opsommen
+## <a name="list-role-assignments-for-a-managed-identity"></a>Roltoewijzingen voor een beheerde identiteit weer geven
 
-1. De object-id van de door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteit opte halen. 
+1. Haal de object-ID op van de door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteit. 
 
-    Als u de object-id van een door de gebruiker toegewezen beheerde identiteit wilt krijgen, u [Get-AzADServicePrincipal gebruiken.](/powershell/module/az.resources/get-azadserviceprincipal)
+    U kunt [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)gebruiken om de object-id van een door de gebruiker toegewezen beheerde identiteit op te halen.
 
     ```azurepowershell
     Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
     ```
 
-1. Als u de roltoewijzingen wilt weergeven, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
+1. Als u de roltoewijzingen wilt weer geven, gebruikt u [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId <objectid>
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen toevoegen of verwijderen met Azure RBAC en Azure PowerShell](role-assignments-powershell.md)
+- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure PowerShell](role-assignments-powershell.md)

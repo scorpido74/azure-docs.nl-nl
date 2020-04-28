@@ -1,40 +1,40 @@
 ---
-title: Azure Service Fabric reverse proxy diagnostics Azure Service Fabric reverse proxy diagnostics Azure Service Fabric reverse proxy diagnostics Azure Service
-description: Meer informatie over het bewaken en diagnosticeren van aanvraagverwerking bij de omgekeerde proxy voor een Azure Service Fabric-toepassing.
+title: Diagnostische gegevens van Azure Service Fabric reverse-proxy
+description: Meer informatie over het bewaken en diagnosticeren van aanvraag verwerking bij de omgekeerde proxy voor een Azure Service Fabric-toepassing.
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645460"
 ---
-# <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Verwerking van aanvragen controleren en diagnosticeren bij de omgekeerde proxy
+# <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Verwerking van aanvragen bewaken en diagnoses uitvoeren bij de omgekeerde proxy
 
-Vanaf de 5.7 release van Service Fabric zijn reverse proxy-gebeurtenissen beschikbaar voor verzameling. De gebeurtenissen zijn beschikbaar in twee kanalen, één met alleen foutgebeurtenissen met betrekking tot foutloos reageren op de reverse proxy en het tweede kanaal met verbose-gebeurtenissen met vermeldingen voor zowel geslaagde als mislukte aanvragen.
+Vanaf de 5,7-release van Service Fabric zijn omgekeerde proxy gebeurtenissen beschikbaar voor de verzameling. De gebeurtenissen zijn beschikbaar in twee kanalen, één met alleen fout gebeurtenissen met betrekking tot het verwerken van aanvragen bij de omgekeerde proxy en het tweede kanaal met uitgebreide gebeurtenissen met vermeldingen voor zowel geslaagde als mislukte aanvragen.
 
-Raadpleeg [Omgekeerde proxygebeurtenissen verzamelen](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) om het verzamelen van gebeurtenissen uit deze kanalen in lokale en Azure Service Fabric-clusters mogelijk te maken.
+Raadpleeg [reverse proxy-gebeurtenissen verzamelen](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) om het verzamelen van gebeurtenissen van deze kanalen in lokale en Azure service Fabric-clusters mogelijk te maken.
 
-## <a name="troubleshoot-using-diagnostics-logs"></a>Problemen oplossen met diagnostische logboeken
-Hier volgen enkele voorbeelden over het interpreteren van de algemene foutlogboeken die men kan tegenkomen:
+## <a name="troubleshoot-using-diagnostics-logs"></a>Problemen oplossen met Diagnostische logboeken
+Hier volgen enkele voor beelden van het interpreteren van de veelvoorkomende fout logboeken die zich kunnen voordoen:
 
-1. Reverse proxy returns response status code 504 (Timeout).
+1. Reverse proxy retourneert antwoord status code 504 (time-out).
 
-    Een reden kan zijn te wijten aan de dienst niet te antwoorden binnen de aanvraag time-out periode.
-   De eerste gebeurtenis hieronder registreert de details van het verzoek ontvangen op de reverse proxy. 
-   De tweede gebeurtenis geeft aan dat de aanvraag is mislukt tijdens het doorsturen naar de service, als gevolg van "interne fout = ERROR_WINHTTP_TIMEOUT" 
+    Een reden kan zijn dat de service niet reageert binnen de time-outperiode van de aanvraag.
+   De eerste gebeurtenis hieronder registreert de details van de aanvraag die bij de omgekeerde proxy is ontvangen. 
+   De tweede gebeurtenis geeft aan dat de aanvraag is mislukt tijdens het door sturen naar de service vanwege "interne fout = ERROR_WINHTTP_TIMEOUT" 
 
-    Het laadvermogen omvat:
+    De payload omvat:
 
-   * **traceid**: Deze GUID kan worden gebruikt om alle gebeurtenissen die overeenkomen met één aanvraag te correleren. In de onderstaande twee gebeurtenissen, de traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, wat impliceert dat ze behoren tot hetzelfde verzoek.
-   * **requestUrl**: De URL (Reverse proxy URL) waarnaar de aanvraag is verzonden.
-   * **werkwoord**: HTTP-werkwoord.
-   * **remoteAddress**: Adres van de klant die de aanvraag verzendt.
-   * **resolvedServiceUrl:** URL van serviceeindpunt waarop de binnenkomende aanvraag is opgelost. 
-   * **errorDetails**: Aanvullende informatie over de fout.
+   * **traceId**: deze GUID kan worden gebruikt om alle gebeurtenissen te correleren die overeenkomen met één aanvraag. In de onderstaande twee gebeurtenissen is het traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**dat ze tot dezelfde aanvraag behoren.
+   * **requestUrl**: de URL (reverse proxy-URL) waarnaar de aanvraag is verzonden.
+   * **Verb**: HTTP-term.
+   * **remoteAddress**: het adres van de client die de aanvraag verzendt.
+   * **resolvedServiceUrl**: de URL van het service-eind punt waarnaar de binnenkomende aanvraag is opgelost. 
+   * **Error Details**: aanvullende informatie over de fout.
 
      ```
      {
@@ -73,12 +73,12 @@ Hier volgen enkele voorbeelden over het interpreteren van de algemene foutlogboe
      }
      ```
 
-2. Reverse proxy returns response status code 404 (Not Found). 
+2. Reverse proxy retourneert antwoord status code 404 (niet gevonden). 
     
-    Hier is een voorbeeldgebeurtenis waarbij omgekeerde proxy 404 retourneert omdat het overeenkomende serviceeindpunt niet is gevonden.
-    De payload inzendingen van belang hier zijn:
-   * **processRequestPhase**: geeft de fase aan tijdens de verwerking van aanvragen wanneer de fout is opgetreden, ***TryGetEndpoint*** d.w.z. terwijl u het serviceeindpunt probeert te ophalen om naar door te sturen. 
-   * **errorDetails:** geeft de zoekcriteria voor eindpunten weer. Hier u zien dat de listenerName opgegeven = **FrontEndListener,** terwijl de replica eindpunt lijst bevat alleen een luisteraar met de naam **OldListener**.
+    Hier volgt een voorbeeld gebeurtenis waarbij reverse proxy 404 retourneert omdat het overeenkomende service-eind punt niet is gevonden.
+    De nettolading van de volgende belang rijke items zijn:
+   * **processRequestPhase**: geeft de fase aan tijdens de verwerking van aanvragen wanneer de fout is opgetreden, ***TryGetEndpoint*** dat wil zeggen tijdens een poging om het service-eind punt op te halen om door te gaan. 
+   * **Error Details**: geeft een lijst van de zoek criteria voor het eind punt. Hier kunt u zien dat de listenerName opgegeven = **FrontEndListener** , terwijl de lijst met replica-eind punten alleen een listener bevat met de naam **OldListener**.
     
      ```
      {
@@ -96,16 +96,16 @@ Hier volgen enkele voorbeelden over het interpreteren van de algemene foutlogboe
      }
      }
      ```
-     Een ander voorbeeld waar reverse proxy 404 Not Found kan retourneren is: ApplicationGateway\Http-configuratieparameter **SecureOnlyMode** is ingesteld op true met de omgekeerde proxy luisteren op **HTTPS,** maar alle replica eindpunten zijn onveilig (luisteren op HTTP).
-     Reverse proxy retourneert 404 omdat het geen eindpunt kan vinden om te luisteren op HTTPS om de aanvraag door te sturen. Het analyseren van de parameters in de gebeurtenis payload helpt om het probleem te beperken:
+     Een ander voor beeld waarbij omgekeerde proxy 404 niet kan worden gevonden is: ApplicationGateway\Http Configuration para meter **SecureOnlyMode** is ingesteld op True met de reverse proxy luistert op **https**, maar niet alle replica-eind punten zijn onveilig (Luis teren op http).
+     Omgekeerde proxy retourneert 404 omdat er geen eind punt luistert op HTTPS om de aanvraag door te sturen. Het analyseren van de para meters in de gebeurtenis lading helpt het probleem te verfijnen:
     
      ```
       "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
      ```
 
-3. Verzoek om de omgekeerde proxy mislukt met een time-out fout. 
-    De gebeurtenislogboeken bevatten een gebeurtenis met de gegevens van de ontvangen aanvraag (hier niet weergegeven).
-    De volgende gebeurtenis laat zien dat de service heeft gereageerd met een statuscode van 404 en dat reverse proxy een nieuwe oplossing initieert. 
+3. De aanvraag voor de omgekeerde proxy mislukt met een time-outfout. 
+    De gebeurtenis logboeken bevatten een gebeurtenis met de ontvangen aanvraag Details (deze worden hier niet weer gegeven).
+    De volgende gebeurtenis geeft aan dat de service heeft gereageerd met een 404-status code en een omgekeerde proxy initieert een nieuwe oplossing. 
 
     ```
     {
@@ -126,11 +126,11 @@ Hier volgen enkele voorbeelden over het interpreteren van de algemene foutlogboe
       }
     }
     ```
-    Bij het verzamelen van alle gebeurtenissen, zie je een trein van gebeurtenissen met elke vastberaden en voorwaartse poging.
-    De laatste gebeurtenis in de reeks toont de verwerking van de aanvraag is mislukt met een time-out, samen met het aantal geslaagde resolve-pogingen.
+    Bij het verzamelen van alle gebeurtenissen ziet u een Train van gebeurtenissen die elke keer oplossen en door sturen worden weer gegeven.
+    De laatste gebeurtenis in de reeks toont de verwerking van de aanvraag is mislukt met een time-out, samen met het aantal geslaagde verholpen pogingen.
     
     > [!NOTE]
-    > Het wordt aanbevolen om de verbose-kanaalgebeurtenisverzameling standaard uitgeschakeld te houden en deze in te schakelen voor het oplossen van problemen op basis van problemen.
+    > Het is raadzaam om de uitgebreide kanaal gebeurtenis verzameling standaard uitgeschakeld te laten en deze in te scha kelen voor probleem oplossing op basis van behoefte.
 
     ```
     {
@@ -149,13 +149,13 @@ Hier volgen enkele voorbeelden over het interpreteren van de algemene foutlogboe
     }
     ```
     
-    Als verzameling alleen is ingeschakeld voor kritieke/foutgebeurtenissen, ziet u één gebeurtenis met details over de time-out en het aantal resolve-pogingen. 
+    Als de verzameling is ingeschakeld voor kritieke/fout gebeurtenissen, ziet u één gebeurtenis met details over de time-out en het aantal pogingen tot oplossen. 
     
-    Services die van plan zijn een statuscode van 404 terug te sturen naar de gebruiker, moeten in het antwoord een "X-ServiceFabric"-header toevoegen. Nadat de koptekst aan het antwoord is toegevoegd, stuurt de omgekeerde proxy de statuscode terug naar de client.  
+    Services die van plan zijn een 404-status code terug te sturen naar de gebruiker, moet een ' X-ServiceFabric-header in het antwoord toevoegen. Nadat de header aan het antwoord is toegevoegd, stuurt de reverse-proxy de status code terug naar de client.  
 
-4. Gevallen waarin de client de aanvraag heeft losgekoppeld.
+4. Gevallen waarin de client de verbinding met de aanvraag heeft verbroken.
 
-    De volgende gebeurtenis wordt geregistreerd wanneer reverse proxy het antwoord op de client doorstuurt, maar de client de verbinding verbreekt:
+    De volgende gebeurtenis wordt vastgelegd wanneer de omgekeerde proxy de reactie doorstuurt naar de client, maar de client verbreekt de verbinding:
 
     ```
     {
@@ -173,24 +173,24 @@ Hier volgen enkele voorbeelden over het interpreteren van de algemene foutlogboe
       }
     }
     ```
-5. Reverse Proxy retourneert 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
+5. Reverse proxy retourneert 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    FABRIC_E_SERVICE_DOES_NOT_EXIST fout wordt geretourneerd als het URI-schema niet is opgegeven voor het serviceeindpunt in het servicemanifest.
+    FABRIC_E_SERVICE_DOES_NOT_EXIST fout wordt geretourneerd als het URI-schema niet is opgegeven voor het service-eind punt in het service manifest.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
     ```
 
-    Als u het probleem wilt oplossen, geeft u het URI-schema in het manifest op.
+    Om het probleem op te lossen, geeft u het URI-schema op in het manifest.
     ```
     <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
     ```
 
 > [!NOTE]
-> Gebeurtenissen met betrekking tot verwerking van websocketaanvragen worden momenteel niet geregistreerd. Dit zal worden toegevoegd in de volgende release.
+> Gebeurtenissen met betrekking tot de verwerking van WebSocket-aanvragen zijn momenteel niet geregistreerd. Deze wordt toegevoegd aan de volgende release.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Aggregatie en verzameling van gebeurtenissen met Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) voor het inschakelen van logboekverzameling in Azure-clusters.
-* Zie [Lokaal controleren en diagnosticeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)om servicefabric-gebeurtenissen in Visual Studio weer te geven.
-* Raadpleeg [Reverse proxy configureren om verbinding te maken met beveiligde services](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) voor sjabloonvoorbeelden van Azure Resource Manager om veilige reverse proxy te configureren met de verschillende validatieopties voor servicecertificaten.
-* Lees [Service Fabric reverse proxy](service-fabric-reverseproxy.md) voor meer informatie.
+* [Gebeurtenis aggregatie en verzameling met behulp van Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) voor het inschakelen van logboek verzameling in azure-clusters.
+* Zie voor het weer geven van Service Fabric gebeurtenissen in Visual Studio [lokaal controleren en diagnoses](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)uitvoeren.
+* Raadpleeg [reverse proxy configureren om verbinding te maken met beveiligde services](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) voor voor beelden van Azure Resource Manager-sjablonen voor het configureren van beveiligde omgekeerde proxy met de verschillende validatie opties voor service certificaten.
+* Lees [service Fabric omgekeerde proxy](service-fabric-reverseproxy.md) voor meer informatie.

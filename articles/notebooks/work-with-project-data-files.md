@@ -1,74 +1,74 @@
 ---
-title: Gegevens importeren en exporteren met projecten met Azure Notebooks Preview
-description: Meer informatie over het weergeven van gegevens in een Azure Notebooks Preview-project uit externe bronnen en hoe u gegevens uit een project exporteert.
+title: Gegevens importeren en exporteren met projecten met Azure Notebooks preview
+description: Meer informatie over het inbrengen van gegevens in een Azure Notebooks preview-project uit externe bronnen en het exporteren van gegevens uit een project.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646973"
 ---
-# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Werken met gegevensbestanden in Azure Notebooks Preview-projecten
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Werken met gegevens bestanden in Azure Notebooks preview-projecten
 
-Data is de levensader van veel Jupyter notebooks, vooral notebooks die worden gebruikt voor data science. Met Azure Notebooks u eenvoudig importeren uit verschillende bronnen in een project en die gegevens uit notitieblokken gebruiken. U notitieblokken ook gegevens laten genereren die in het project zijn opgeslagen, die u vervolgens elders downloaden.
+Gegevens zijn de lifeblood van veel Jupyter-notebooks, met name notebooks die worden gebruikt voor gegevens wetenschap. Met Azure Notebooks kunt u eenvoudig importeren uit verschillende bronnen in een project en vervolgens die gegevens van notebooks gebruiken. U kunt notitie blokken ook gegevens laten genereren die zijn opgeslagen in het project, die u vervolgens kunt downloaden voor gebruik op een andere locatie.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Het menu **Gegevens** in een lopend notitieblok biedt ook **opdrachten uploaden** en **downloaden,** die werken met bestanden in het project en tijdelijke bestanden voor de huidige notitiebloksessie.
+Het menu **Data** van een actief notitie blok biedt ook **Upload** -en **Download** opdrachten, die met bestanden in het project werken, evenals tijdelijke bestanden voor de huidige notitieblok sessie.
 
-U ook code in een notitieblok gebruiken om rechtstreeks toegang te krijgen tot verschillende gegevensbronnen, waaronder bestanden binnen een project. U ook toegang krijgen tot willekeurige gegevens door opdrachten in een codecel te gebruiken. Omdat dergelijke gegevens worden opgeslagen in variabelen binnen de notitiebloksessie, worden deze niet opgeslagen in het project, tenzij u code gebruikt om specifiek projectbestanden te genereren.
+U kunt ook code binnen een notebook gebruiken om rechtstreeks toegang te krijgen tot een verscheidenheid aan gegevens bronnen, met inbegrip van bestanden in een project. U kunt ook toegang tot wille keurige gegevens krijgen met behulp van opdrachten in een code-cel. Omdat dergelijke gegevens worden opgeslagen in variabelen binnen de notitieblok sessie, worden deze niet opgeslagen in het project, tenzij u code gebruikt om specifiek project bestanden te genereren.
 
-Werken met code in gegevens wordt het beste ervaren in een lopend notitieblok zelf: raadpleeg daarvoor het [voorbeeldnotitieblok van Uw gegevens in Azure Notebooks.](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb)
+Werken met code in gegevens is het meest geschikt in een actief notitie blok zelf: Raadpleeg voor dat doel de [informatie over het verkrijgen van uw gegevens in azure notebooks voorbeeld notitieblok](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb).
 
-De rest van dit artikel bevat details over bestandsbewerkingen op projectniveau.
+In de rest van dit artikel vindt u meer informatie over bestands bewerkingen op project niveau.
 
 ## <a name="import-data"></a>Gegevens importeren
 
-U bestanden naar een project brengen vanuit het projectdashboard **Data** of in een `curl`lopend notitieblok met behulp van het menu Gegevens of een opdracht zoals.
+U kunt bestanden vanuit het project-dash board of in een actief notitie blok naar een project brengen met behulp van het menu **Data** of `curl`een opdracht, zoals.
 
-### <a name="import-files-from-the-project-dashboard"></a>Bestanden importeren uit het projectdashboard
+### <a name="import-files-from-the-project-dashboard"></a>Bestanden importeren uit het project dashboard
 
-1. Navigeer in het project naar de map waar u de bestanden wilt importeren.
+1. Navigeer in het project naar de map waarnaar u de bestanden wilt importeren.
 
-1. Selecteer de opdracht **Uploaden** en vervolgens **van URL** of **van computer** en projecteer de benodigde gegevens voor de gegevens die u wilt importeren:
+1. Selecteer de **Upload** opdracht, vervolgens **op basis van URL** of **van computer** en projecteer de benodigde gegevens voor de gegevens die u wilt importeren:
 
-   - **Van URL:** voer het bronadres in het **veld URL van bestand** in en de bestandsnaam die u wilt toewijzen aan het notitieblok in uw project in het veld **Bestandsnaam.** Selecteer vervolgens **+ Bestand toevoegen** om de URL toe te voegen aan de uploadlijst. Herhaal het proces voor eventuele extra URL's en selecteer **Gereed**.
+   - **Van URL**: Voer het bron adres in het veld **bestands-URL** in en geef de bestands naam op die aan het notitie blok in het project moet worden toegewezen in het veld **Bestands naam** . Selecteer vervolgens **+ bestand toevoegen** om de URL toe te voegen aan de upload lijst. Herhaal dit proces voor eventuele extra Url's en selecteer vervolgens **gereed**.
 
-     ![Uploaden vanuit URL pop-up](media/quickstarts/upload-from-url-popup.png)
+     ![Uploaden via URL-pop-up](media/quickstarts/upload-from-url-popup.png)
 
-   - **Vanaf de computer**: Sleep en drop bestanden naar de pop-up of selecteer **Bestanden kiezen**, blader naar en selecteer de gegevensbestanden die u wilt importeren. U een willekeurig aantal bestanden, van elk type en formaat, laten vallen of kiezen, omdat het aan de code in het notitieblok is om het bestand te openen en de gegevens ervan te ontzeggen.
+   - **Van computer**: Sleep en zet bestanden neer in de pop-up, of selecteer **bestanden kiezen**, blader naar en selecteer de gegevens bestanden die u wilt importeren. U kunt een wille keurig aantal bestanden neerzetten of kiezen, van elk type en elke indeling, omdat het tot de code in het notitie blok gaat om het bestand te openen en de gegevens te parseren.
 
-     ![Uploaden vanaf computerpop-up](media/quickstarts/upload-from-computer-popup.png)
+     ![Van de computer uploaden](media/quickstarts/upload-from-computer-popup.png)
 
-1. Eenmaal geïmporteerd, worden bestanden weergegeven in het projectdashboard en kunnen ze worden geopend in de notebookcode met behulp van relatieve pathnamen naar de map met inhoud.
+1. Nadat de bestanden zijn geïmporteerd, worden deze weer gegeven op het project dashboard en kunnen ze in de notitieblok code worden geopend met relatieve padnamen naar de bovenliggende map.
 
-### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Bestanden importeren uit het menu Bestand in een notitieblok
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Bestanden importeren vanuit het menu bestand in een notitie blok
 
-1. Selecteer in een lopend notitieblok de opdracht **Bestand** > **uploaden:**
+1. Selecteer in een actief notitie blok de opdracht voor het**uploaden** van **bestanden** > :
 
-    ![Menu opdracht Voor het uploaden van bestanden in een notitieblok](media/file-menu-upload.png)
+    ![Menu opdracht bestand uploaden binnen een notitie blok](media/file-menu-upload.png)
 
-1. Navigeer in het dialoogvenster dat wordt geopend naar en selecteer de bestanden die u wilt uploaden. U een willekeurig aantal bestanden van elk type selecteren. Selecteer **Openen** wanneer u klaar bent.
+1. In het dialoog venster dat wordt geopend, gaat u naar en selecteert u de bestanden die u wilt uploaden. U kunt een wille keurig aantal bestanden van elk type selecteren. Selecteer **openen** wanneer u klaar bent.
 
-1. Selecteer in de pop-up **Status uploaden** die wordt weergegeven een **doelmap** in de vervolgkeuzelijst:
+1. Selecteer in het pop-upvenster **Upload status** dat wordt weer gegeven een **doelmap** in de vervolg keuzelijst:
 
-    - Sessiemap*~/* : Hiermee worden bestanden geüpload naar de huidige notitiebloksessie, maar worden er geen bestanden in het project gemaakt. De sessiemap is een peer naar de projectmap, maar blijft niet bestaan nadat de sessie is afgelopen. Als u sessiebestanden in code wilt openen, moet u de bestandsnamen vooraf fixeren met het relatieve pad *.. /*.
+    - Sessiemap ()*~/* : uploadt bestanden naar de huidige notebook sessie, maar maakt geen bestanden in het project. De sessiemap is een peer met de projectmap, maar blijft niet behouden nadat de sessie is beëindigd. Als u toegang wilt krijgen tot sessie bestanden in code, moet u de bestands namen voor het relatieve pad opgeven *. /*.
 
-        Het gebruik van de sessiemap is handig voor experimenten en voorkomt dat het project wordt verrommeld met bestanden die u al dan niet op lange termijn nodig hebt. U ook bestanden uploaden naar de sessiemap met identieke namen als bestanden in het project zonder conflicten te veroorzaken en zonder de naam van de bestanden te hoeven wijzigen. Stel dat u al één versie van *data.csv* in het project hebt, maar dat u wilt experimenteren met een andere versie van *data.csv*. Door het bestand in de sessiemap te uploaden, u het notitieblok uitvoeren met behulp van gegevens in het geüploade bestand (verwijzend naar het bestand in code met behulp van *.. /data.csv)* in plaats van de gegevens in het bestand van het project.
+        Het gebruik van de sessiemap is handig voor experimenten en voor komt dat u het project overzichtelijk maakt met bestanden die u mogelijk op lange termijn nodig hebt. U kunt ook bestanden uploaden naar de sessiemap met identieke namen naar bestanden in het project zonder dat er conflicten ontstaan en zonder dat u de bestanden hoeft te wijzigen. Stel bijvoorbeeld dat er al één versie van *Data. CSV* in het project is, maar u wilt experimenteren met een andere versie van *Data. CSV*. Als u het bestand in de map Session uploadt, kunt u het notitie blok uitvoeren met behulp van gegevens in het geüploade bestand (in code verwijzen met behulp van *.. /data.CSV*) in plaats van de gegevens in het bestand van het project.
 
-    - Projectmap (*/project*): uploadt bestanden naar het project waar ze toegankelijk zijn met behulp van relatieve pathnames in code. Het uploaden van een bestand naar deze map is hetzelfde als het uploaden van een bestand op het projectdashboard. Het bestand wordt opgeslagen bij het project en is beschikbaar in latere sessies.
+    - Projectmap (*/project*): uploadt bestanden naar het project waar ze toegankelijk zijn met relatieve padnamen in de code. Het uploaden van een bestand naar deze map is hetzelfde als het uploaden van een bestand in het project dashboard. Het bestand wordt opgeslagen met het project en is beschikbaar in latere sessies.
 
-        Uploaden mislukt als u probeert een bestand met dezelfde naam te uploaden als een bestand dat al in het project bestaat. Als u een bestand wilt overschrijven, uploadt u het nieuwe bestand in plaats daarvan vanuit het projectdashboard, waardoor u de optie hebt om te overschrijven.
+        Uploaden mislukt als u een bestand met dezelfde naam probeert te uploaden dat al in het project bestaat. Als u een bestand wilt overschrijven, uploadt u het nieuwe bestand vanuit het project dashboard in plaats daarvan, waarmee u de optie voor overschrijven kunt gebruiken.
 
-1. Selecteer **Upload starten** om het proces te voltooien.
+1. Selecteer **uploaden starten** om het proces te volt ooien.
 
-### <a name="create-or-import-files-using-commands"></a>Bestanden maken of importeren met opdrachten
+### <a name="create-or-import-files-using-commands"></a>Bestanden maken of importeren met behulp van opdrachten
 
-U opdrachten binnen een terminal of binnen een Python-codecel gebruiken om bestanden te maken in zowel de project- als sessiemappen. Bijvoorbeeld opdrachten zoals `curl` en `wget` download bestanden rechtstreeks van het internet.
+U kunt opdrachten binnen een Terminal of binnen een python-code-cel gebruiken om bestanden te maken binnen de project-en sessie mappen. Bijvoorbeeld opdrachten, zoals `curl` en `wget` downloaden van bestanden vanaf internet rechtstreeks.
 
-Als u bestanden in de terminal wilt downloaden, selecteert u de opdracht **Terminal** op het projectdashboard en voert u geschikte opdrachten in:
+Als u bestanden in de Terminal wilt downloaden, selecteert u de **Terminal** opdracht in het project dashboard en voert u de volgende opdrachten in:
 
 ```bash
 curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
@@ -76,41 +76,41 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Wanneer u een Python-codecel in een notitieblok `!`gebruikt, u de opdrachten vooraf fixeren met.
+Wanneer u een python-code-cel in een notitie blok gebruikt, `!`moet u de opdrachten voorzien van een voor voegsel.
 
-De projectmap is de standaardmap, dus door een doelbestandsnaam op te geven zoals *oil_price.csv* maakt het bestand in het project. Als u een sessiebestand wilt maken, moet u de naam vooraf fixeren met *.. /* zoals in *.. /oil_price.csv*.
+De projectmap is de standaardmap. u kunt dus een doel bestandsnaam opgeven, zoals *oil_price. CSV* maakt het bestand in het project. Als u een sessie bestand wilt maken, maakt u een voor voegsel van de naam met *.. /* als in *.. /oil_price. CSV*.
 
-### <a name="create-files-in-code"></a>Bestanden maken in code
+### <a name="create-files-in-code"></a>Bestanden in code maken
 
-Bij het gebruik van code die een `write_csv` bestand maakt, zoals de functie panda's, zijn padnamen altijd relatief ten opzichte van de projectmap. Met behulp van *.. /* maakt een sessiebestand dat wordt verwijderd wanneer het notitieblok wordt gestopt en gesloten.
+Wanneer u code gebruikt waarmee een bestand wordt gemaakt, zoals de `write_csv` functie Pandas, zijn padnamen altijd relatief ten opzichte van de projectmap. Gebruiken *.. /* maakt een sessie bestand dat wordt genegeerd wanneer het notitie blok wordt gestopt en gesloten.
 
 ## <a name="export-files"></a>Bestanden exporteren
 
-U gegevens exporteren vanuit het projectdashboard of vanuit een notitieblok.
+U kunt gegevens exporteren vanuit het project dashboard of vanuit een notitie blok.
 
-## <a name="export-files-from-the-project-dashboard"></a>Bestanden exporteren vanuit het projectdashboard
+## <a name="export-files-from-the-project-dashboard"></a>Bestanden vanuit het project dashboard exporteren
 
-Klik op het projectdashboard met de rechtermuisknop op een bestand en selecteer **Downloaden:**
+Klik in het project dashboard met de rechter muisknop op een bestand en selecteer **downloaden**:
 
-![Opdracht downloaden in het contextmenu van projectitem](media/download-command.png)
+![Opdracht downloaden in het context menu van het project item](media/download-command.png)
 
-U ook een bestand selecteren en de opdracht **Downloaden** (sneltoets: d) op het dashboard gebruiken:
+U kunt ook een bestand selecteren en de **down load** opdracht (sneltoets: d) op het dash board gebruiken:
 
-![Opdracht Werkbalk downloaden op projectdashboard](media/download-command-toolbar.png)
+![Opdracht werk balk downloaden in Project dashboard](media/download-command-toolbar.png)
 
-## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Bestanden exporteren vanuit het menu Gegevens in een notitieblok
+## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Bestanden exporteren vanuit het menu Data in een notitie blok
 
-1. Selecteer de menuopdracht **Bestand** > **downloaden:**
+1. Selecteer de menu opdracht **bestand** > **downloaden** :
 
-    ![Menu opdracht Gegevens downloaden in een notitieblok](media/file-menu-download.png)
+    ![Menu opdracht voor het downloaden van gegevens binnen een notitie blok](media/file-menu-download.png)
 
-1. Er verschijnt een pop-up met de mappen in de sessie. de *projectmap* bevat de projectbestanden:
+1. Er wordt een pop-upvenster weer gegeven waarin de mappen in de sessie worden weer gegeven. de *projectmap bevat de project bestanden* :
 
-    ![Pop-up van de opdracht Gegevens downloaden waarin u bestanden en mappen selecteert](media/file-menu-download-popup.png)
+    ![Pop-up van de opdracht gegevens downloaden, waarin u bestanden en mappen selecteert](media/file-menu-download-popup.png)
 
-1. Selecteer de vakken links van de bestanden en mappen die u wilt downloaden en selecteer **Selecteer Geselecteerd downloaden**.
+1. Selecteer de vakken Links van de bestanden en mappen die u wilt downloaden en selecteer vervolgens **geselecteerd downloaden**.
 
-1. Het notitieblok bereidt één *.zip-bestand* voor met de geselecteerde bestanden, die u vervolgens opslaat zoals u normaal doet vanuit uw browser. Het notitieblok maakt een *.zip-bestand,* zelfs wanneer u één bestand downloadt.
+1. Het notitie blok bereidt één *zip* -bestand voor met de geselecteerde bestanden, die u vervolgens opslaat zoals u normaal gesp roken kunt doen vanuit uw browser. Het notitie blok maakt een *zip* -bestand, zelfs wanneer u een enkel bestand downloadt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

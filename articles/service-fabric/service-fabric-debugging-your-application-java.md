@@ -1,45 +1,45 @@
 ---
-title: Debuging uw toepassing in Eclipse
-description: Verbeter de betrouwbaarheid en prestaties van uw services door ze te ontwikkelen en te debuggen in Eclipse op een lokaal ontwikkelingscluster.
+title: Fouten opsporen in uw toepassing in eclips
+description: Verbeter de betrouw baarheid en prestaties van uw services door deze te ontwikkelen en fouten op te sporen in eclips op een lokaal ontwikkelings cluster.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614482"
 ---
-# <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debuging uw Java Service Fabric applicatie met eclipse
+# <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Fout opsporing voor uw Java Service Fabric-toepassing met behulp van eclips
 > [!div class="op_single_selector"]
-> * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Visual Studio-CSharp](service-fabric-debugging-your-application.md) 
+> * [Eclips/java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. Start een lokaal ontwikkelcluster door de stappen te volgen in [Het instellen van uw servicefabric-ontwikkelomgeving.](service-fabric-get-started-linux.md)
+1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started-linux.md)in te stellen.
 
-2. Werk entryPoint.sh van de service die u wilt debuggen, zodat het java-proces met externe foutopsporingsparameters wordt gestart. Dit bestand is te vinden `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`op de volgende locatie: . Poort 8001 is in dit voorbeeld voor foutopsporing ingesteld.
+2. Update entryPoint.sh van de service waarvoor u fouten wilt opsporen, zodat het Java-proces wordt gestart met externe debug-para meters. Dit bestand bevindt zich op de volgende locatie `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`:. Poort 8001 is in dit voorbeeld voor foutopsporing ingesteld.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Werk het toepassingsmanifest bij door het aantal instantie of het aantal replica's in te stellen voor de service die wordt gedebugged tot 1. Deze instelling voorkomt conflicten voor de poort die wordt gebruikt voor het opsporen van fouten. Stel bijvoorbeeld voor stateless services `InstanceCount="1"` in en stel voor stateful services de doel- en min-replicasetgrootten als volgt in op 1: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
+3. Werk het toepassings manifest bij door het aantal exemplaren of het aantal replica's voor de service waarvoor fouten worden opgespoord, in te stellen op 1. Deze instelling voorkomt conflicten voor de poort die wordt gebruikt voor het opsporen van fouten. Stel bijvoorbeeld voor stateless services `InstanceCount="1"` in en stel voor stateful services de doel- en min-replicasetgrootten als volgt in op 1: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. De toepassing implementeren.
 
-5. Selecteer in de Eclipse IDE **Debug->-> eigenschappen van externe Java-toepassing en invoerverbindingseigenschappen** uitvoeren en stel de eigenschappen als volgt in:
+5. Selecteer in de eclips IDE de optie **Run-> debug-configuraties: > externe Java-toepassing en eigenschappen van de invoer verbinding** en stel de eigenschappen als volgt in:
 
    ```
    Host: ipaddress
    Port: 8001
    ```
-6.  Stel breekpunten in op de gewenste punten en debugt de toepassing.
+6.  Stel onderbrekings punten in op de gewenste posities en spoor fouten op in de toepassing.
 
-Als de toepassing vastloopt, u ook coredumps inschakelen. Uitvoeren `ulimit -c` in een shell en als het 0 retourneert, worden coredumps niet ingeschakeld. Voer de volgende opdracht uit om `ulimit -c unlimited`onbeperkte coredumps in te schakelen: . U de status ook `ulimit -a`verifiëren met de opdracht.  Als u het pad voor het `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`genereren van coredump wilt bijwerken, voert u uit . 
+Als de toepassing vastloopt, wilt u mogelijk ook coredumps inschakelen. Voer `ulimit -c` uit in een shell en als deze 0 retourneert, zijn coredumps niet ingeschakeld. Als u onbeperkte coredumps wilt inschakelen, voert u de `ulimit -c unlimited`volgende opdracht uit:. U kunt ook de status controleren met behulp `ulimit -a`van de opdracht.  Als u het pad voor het genereren van coredump wilt bijwerken `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`, voert u uit. 
 
 ### <a name="next-steps"></a>Volgende stappen
 
-* [Logboeken verzamelen met Linux Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md).
-* [Services lokaal controleren en diagnosticeren.](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
+* [Verzamelen van logboeken met Linux Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md).
+* [Services lokaal controleren en diagnosticeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

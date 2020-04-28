@@ -9,13 +9,13 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75772917"
 ---
-Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de **foutopsporingsschakelaar** met CLI en de **foutopsporingsschakelaar** met PowerShell door te geven. Volg dit document om de fouten op te lossen nadat u de fout hebt gevonden.
+Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de switch **debug** te geven met CLI en de switch **debug** met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Kan geen galerie met gedeelde installatiekopieën maken
@@ -24,79 +24,79 @@ Mogelijke oorzaken:
 
 *De naam van de galerie is ongeldig.*
 
-Toegestane tekens voor galerienaam zijn hoofdletters, cijfers, stippen en perioden. De naam van de galerie mag geen streepjes bevatten. Wijzig de naam van de galerie en probeer het opnieuw. 
+Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten. Wijzig de naam van de galerie en probeer het opnieuw. 
 
 *De naam van de galerie is niet uniek in uw abonnement.*
 
-Kies een andere galerijnaam en probeer het opnieuw.
+Kies een andere galerie naam en probeer het opnieuw.
 
 
 ## <a name="unable-to-create-an-image-definition"></a>Kan geen definitie voor de installatiekopie maken 
 
 Mogelijke oorzaken:
 
-*afbeeldingsdefinitienaam is ongeldig.*
+*de naam van de definitie van de installatie kopie is ongeldig.*
 
-Toegestane tekens voor afbeeldingsdefinitie zijn hoofdletters of kleine letters, cijfers, stippen, streepjes en perioden. Wijzig de naam van de afbeeldingsdefinitie en probeer het opnieuw.
+Toegestane tekens voor de definitie van de installatie kopie zijn hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Wijzig de naam van de definitie van de installatie kopie en probeer het opnieuw.
 
-*De verplichte eigenschappen voor het maken van een afbeeldingsdefinitie worden niet ingevuld.*
+*De verplichte eigenschappen voor het maken van een definitie van een installatie kopie zijn niet ingevuld.*
 
-De eigenschappen zoals naam, uitgever, aanbieding, sku en OS-type zijn verplicht. Controleer of alle eigenschappen worden doorgegeven.
+De eigenschappen, zoals naam, uitgever, aanbieding, SKU en type besturings systeem, zijn verplicht. Controleer of alle eigenschappen worden door gegeven.
 
-Zorg ervoor dat de **OSType**, Linux of Windows, van de afbeeldingsdefinitie hetzelfde is als de bronbeheerde afbeelding die u gebruikt om de afbeeldingsversie te maken. 
+Zorg ervoor dat de **OSTYPE**, Linux of Windows, van de definitie van de installatie kopie hetzelfde is als de door de bron beheerde installatie kopie die u gebruikt om de installatie kopie versie te maken. 
 
 
 ## <a name="unable-to-create-an-image-version"></a>Kan geen versie voor de installatiekopie maken 
 
 Mogelijke oorzaken:
 
-*De naam van de afbeeldingsversie is ongeldig.*
+*De naam van de installatie kopie versie is ongeldig.*
 
-Toegestane tekens voor de afbeeldingsversie zijn getallen en perioden. Getallen moeten zich binnen het bereik van een 32-bits geheel getal bevinden. Formaat: *MajorVersion.MinorVersion.Patch*. Wijzig de naam van de afbeeldingsversie en probeer het opnieuw.
+Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion. MinorVersion. patch*. Wijzig de versie naam van de installatie kopie en probeer het opnieuw.
 
-*Bronbeheerde afbeelding waaruit de afbeeldingsversie wordt gemaakt, wordt niet gevonden.* 
+*Een door de bron beheerde installatie kopie van waaruit de installatie kopie versie wordt gemaakt, is niet gevonden.* 
 
-Controleer of de bronafbeelding bestaat en zich in hetzelfde gebied bevindt als de afbeeldingsversie.
+Controleer of de bron installatie kopie bestaat en zich in dezelfde regio bevindt als de versie van de installatie kopie.
 
-*De beheerde afbeelding is nog niet klaar met inrichten.*
+*De beheerde installatie kopie wordt niet ingericht.*
 
-Controleer of de inrichtingsstatus van de door de bron **beheerde**afbeelding is geslaagd .
+Zorg ervoor dat de inrichtings status van de door de bron beheerde installatie kopie is **geslaagd**.
 
-*De lijst met doelregio's bevat niet het brongebied.*
+*De lijst met doel regio's bevat niet de bron regio.*
 
-De lijst met doelregio's moet het brongebied van de afbeeldingsversie bevatten. Zorg ervoor dat u het brongebied hebt opgenomen in de lijst met doelregio's waaraan Azure uw afbeeldingsversie wilt repliceren.
+De doel regio lijst moet de bron regio van de versie van de installatie kopie bevatten. Zorg ervoor dat u de bron regio hebt opgenomen in de lijst met doel regio's waarvoor Azure de versie van de installatie kopie moet repliceren.
 
-*Replicatie naar alle doelgebieden die niet zijn voltooid.*
+*De replicatie naar alle doel regio's is niet voltooid.*
 
-Gebruik de vlag **Replicatiestatus uitvouwen** om te controleren of de replicatie naar alle opgegeven doelgebieden is voltooid. Zo niet, wacht dan tot 6 uur voordat de taak is voltooid. Als dit niet lukt, voert u de opdracht opnieuw uit om de afbeeldingsversie te maken en te repliceren. Als er veel doelgebieden zijn waarin de afbeeldingsversie wordt gerepliceerd, u overwegen de replicatie gefaseerd uit te brengen.
+Gebruik de markering **--expand ReplicationStatus** om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. Als dat niet het geval is, wacht u tot 6 uur totdat de taak is voltooid. Als dit mislukt, voert u de opdracht opnieuw uit om de installatie kopie versie te maken en te repliceren. Als er sprake is van een groot aantal doel regio's, wordt de versie van de installatie kopie gerepliceerd naar. Overweeg de replicatie in fasen uit te voeren.
 
 ## <a name="unable-to-create-a-vm-or-a-scale-set"></a>Kan geen VM of schaalset maken 
 
 Mogelijke oorzaken:
 
-*De gebruiker die een vm- of virtuele machineschaalset probeert te maken, heeft geen leestoegang tot de afbeeldingsversie.*
+*De gebruiker die probeert een virtuele machine of VM-schaalset te maken, heeft geen lees toegang tot de versie van de installatie kopie.*
 
-Neem contact op met de eigenaar van het abonnement en vraag hen om leestoegang te geven tot de afbeeldingsversie of de bovenliggende bronnen (zoals de gedeelde afbeeldingsgalerie of afbeeldingsdefinitie) via [Role Based Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Neem contact op met de eigenaar van het abonnement en vraag hen om Lees toegang te verlenen aan de installatie kopie versie of de bovenliggende resources (zoals de galerie met gedeelde afbeeldingen of de definitie van de installatie kopie) via [op rollen gebaseerd Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
 
-*De afbeeldingsversie wordt niet gevonden.*
+*De versie van de installatie kopie is niet gevonden.*
 
-Controleer of het gebied waarin u een vm- of virtuele machineschaal probeert te maken, is opgenomen in de lijst met doelgebieden van de afbeeldingsversie. Als het gebied al in de lijst met doelgebieden staat, controleert u of de replicatietaak is voltooid. U de vlag **-Replicatiestatus** gebruiken om te controleren of de replicatie naar alle opgegeven doelgebieden is voltooid. 
+Controleer of de regio waarvoor u een VM of virtuele machine wilt maken, is opgenomen in de lijst met doel regio's van de versie van de installatie kopie. Als de regio al in de lijst met doel regio's staat, controleert u of de replicatie taak is voltooid. U kunt de vlag **-ReplicationStatus** gebruiken om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. 
 
-*Het maken van de vm- of virtuele machineschaalset duurt lang.*
+*Het maken van de virtuele machine of de VM-schaalset neemt veel tijd in beslag.*
 
-Controleer of het **OSType** van de afbeeldingsversie waarvan u de vm- of virtuele machineschaalset probeert te maken, dezelfde **OSType** heeft als de bronbeheerde afbeelding die u hebt gebruikt om de afbeeldingsversie te maken. 
+Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeert te maken van de virtuele machine en de VM-schaalset hetzelfde **OSTYPE** heeft van de door de bron beheerde installatie kopie die u hebt gebruikt voor het maken van de installatie kopie versie. 
 
 ## <a name="unable-to-share-resources"></a>Kan geen resources delen
 
-Het delen van bronnen voor gedeelde afbeeldingen, afbeeldingsdefinitie en bronnen van afbeeldingsversies tussen abonnementen is ingeschakeld met [RBAC (Role-Based Access Control).](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) 
+Het delen van de galerie met gedeelde installatie kopieën, de definitie van de installatie kopie en de versie van de installatie kopie van de verschillende abonnementen is ingeschakeld met behulp [van op rollen gebaseerde Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
 
-## <a name="replication-is-slow"></a>Replicatie is traag
+## <a name="replication-is-slow"></a>De replicatie is traag
 
-Gebruik de vlag **Replicatiestatus uitvouwen** om te controleren of de replicatie naar alle opgegeven doelgebieden is voltooid. Zo niet, wacht dan tot 6 uur voordat de taak is voltooid. Als dit niet lukt, activeert u de opdracht opnieuw om de afbeeldingsversie te maken en te repliceren. Als er veel doelgebieden zijn waarin de afbeeldingsversie wordt gerepliceerd, u overwegen de replicatie gefaseerd uit te brengen.
+Gebruik de markering **--expand ReplicationStatus** om te controleren of de replicatie naar alle opgegeven doel regio's is voltooid. Als dat niet het geval is, wacht u tot 6 uur totdat de taak is voltooid. Als dit mislukt, moet u de opdracht opnieuw activeren om de installatie kopie versie te maken en te repliceren. Als er sprake is van een groot aantal doel regio's, wordt de versie van de installatie kopie gerepliceerd naar. Overweeg de replicatie in fasen uit te voeren.
 
 ## <a name="azure-limits-and-quotas"></a>Limieten en quota in Azure 
 
-[Azure-limieten en -quota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zijn van toepassing op alle bronnen voor gedeelde afbeeldingen, afbeeldingsdefinitie en afbeeldingsversiebronnen. Zorg ervoor dat u binnen de limieten voor uw abonnementen bent. 
+[Azure-limieten en-quota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) zijn van toepassing op alle resources van de gedeelde installatie kopie, de afbeeldings definitie en de versie van de installatie kopie. Zorg ervoor dat u zich binnen de limieten voor uw abonnementen bevindt. 
 
 
 

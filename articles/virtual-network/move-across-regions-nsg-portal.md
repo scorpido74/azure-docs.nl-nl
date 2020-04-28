@@ -1,52 +1,52 @@
 ---
-title: Azure-netwerkbeveiligingsgroep (NSG) verplaatsen naar een andere Azure-regio met behulp van de Azure-portal
-description: Gebruik de sjabloon Azure Resource Manager om azure-netwerkbeveiligingsgroep van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure-portal.
+title: Verplaats de Azure-netwerk beveiligings groep (NSG) naar een andere Azure-regio met behulp van de Azure Portal
+description: Gebruik Azure Resource Manager sjabloon om de Azure-netwerk beveiligings groep van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75647183"
 ---
-# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Azure-netwerkbeveiligingsgroep (NSG) verplaatsen naar een andere regio met behulp van de Azure-portal
+# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Verplaats de Azure-netwerk beveiligings groep (NSG) naar een andere regio met behulp van de Azure Portal
 
-Er zijn verschillende scenario's waarin u uw bestaande NSGs van de ene regio naar de andere wilt verplaatsen. U bijvoorbeeld een NSG maken met dezelfde configuratie- en beveiligingsregels voor het testen. U ook een NSG verplaatsen naar een andere regio als onderdeel van de planning voor noodherstel.
+Er zijn verschillende scenario's waarin u uw bestaande Nsg's van de ene naar de andere regio wilt verplaatsen. U kunt bijvoorbeeld een NSG maken met dezelfde configuratie-en beveiligings regels om te testen. Het is ook mogelijk dat u een NSG naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
 
-Azure-beveiligingsgroepen kunnen niet van de ene regio naar de andere worden verplaatst. U echter wel een Azure Resource Manager-sjabloon gebruiken om de bestaande configuratie- en beveiligingsregels van een NSG te exporteren.  U de resource vervolgens in een andere regio fasen door de NSG naar een sjabloon te exporteren, de parameters te wijzigen die overeenkomen met het doelgebied en de sjabloon vervolgens te implementeren in de nieuwe regio.  Zie [Snelaande: Azure Resource Manager-sjablonen maken en implementeren met behulp van de Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)voor meer informatie over ResourceBeheer en sjablonen.
+Azure-beveiligings groepen kunnen niet worden verplaatst van de ene regio naar een andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie-en beveiligings regels van een NSG te exporteren.  U kunt de resource vervolgens in een andere regio zetten door de NSG naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio.  Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat de Azure-netwerkbeveiligingsgroep zich in het Azure-gebied bevindt van waaruit u wilt verplaatsen.
+- Zorg ervoor dat de Azure-netwerk beveiligings groep zich bevindt in de Azure-regio van waaruit u wilt verplaatsen.
 
-- Azure-netwerkbeveiligingsgroepen kunnen niet tussen regio's worden verplaatst.  U moet de nieuwe NSG koppelen aan resources in de doelregio.
+- Azure-netwerk beveiligings groepen kunnen niet worden verplaatst tussen regio's.  U moet de nieuwe NSG koppelen aan resources in de doel regio.
 
-- Als u een NSG-configuratie wilt exporteren en een sjabloon wilt implementeren om een NSG in een andere regio te maken, hebt u de rol Netwerkbijdrager of hoger nodig.
+- Als u een NSG-configuratie wilt exporteren en een sjabloon wilt implementeren om een NSG in een andere regio te maken, hebt u de rol netwerk bijdrager of hoger nodig.
 
-- Identificeer de indeling van de bronnetwerkindeling en alle bronnen die u momenteel gebruikt. Deze lay-out omvat, maar is niet beperkt tot load balancers, openbare IP's en virtuele netwerken.
+- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, open bare Ip's en virtuele netwerken.
 
-- Controleer of u met uw Azure-abonnement NSG's maken in het doelgebied dat wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
+- Controleer of u met uw Azure-abonnement Nsg's kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
-- Zorg ervoor dat uw abonnement voldoende middelen heeft om de toevoeging van NSG's voor dit proces te ondersteunen.  Zie [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van Nsg's voor dit proces.  Raadpleeg [Azure-abonnement en -servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
-In de volgende stappen wordt uitgelegd hoe u de netwerkbeveiligingsgroep voorbereidt op de verplaatsing van de configuratie- en beveiligingsregel met behulp van een resourcebeheersjabloon en de NSG-configuratie- en beveiligingsregels via de portal naar het doelgebied verplaatsen.
+De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt voor de configuratie en beveiligings regel verplaatsen met behulp van een resource manager-sjabloon en de NSG-configuratie en beveiligings regels naar de doel regio verplaatst met behulp van de portal.
 
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>De sjabloon exporteren en implementeren vanuit de portal
 
-1. Log in bij de [Azure-portal](https://portal.azure.com) > **Resourcegroepen**.
-2. Zoek de resourcegroep die de bron NSG bevat en klik erop.
-3. Selecteer > **>-instellingen-exportsjabloon**. **Settings**
-4. Kies **Implementeren** in het **sjabloonblad Exporteren.**
-5. Klik **op PARAMETERS SJABLOON** > **bewerken** om het bestand **parameters.json** in de online editor te openen.
-6. Als u de parameter van de NSG-naam wilt bewerken, wijzigt u de **eigenschap waarde** onder **parameters:**
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+2. Zoek de resource groep die de bron NSG bevat en klik erop.
+3. Selecteer > **instellingen** > **sjabloon exporteren**.
+4. Kies **implementeren** op de Blade **sjabloon exporteren** .
+5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+6. Als u de para meter van de naam van de NSG wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
 
     ```json
             {
@@ -60,13 +60,13 @@ In de volgende stappen wordt uitgelegd hoe u de netwerkbeveiligingsgroep voorber
             }
     ```
 
-7. Wijzig de bron-NSG-waarde in de editor in een naam naar keuze voor de doel-NSG. Zorg ervoor dat u de naam in aanhalingstekens bijsluit.
+7. Wijzig de waarde van de bron NSG in de editor in een naam van uw keuze voor de doel-NSG. Zorg ervoor dat u de naam tussen aanhalings tekens plaatst.
 
-8.  Klik **op Opslaan** in de editor.
+8.  Klik op **Opslaan** in de editor.
 
-9.  Klik **op sjabloon** > **Bewerken sjabloon** om het **bestand template.json** in de online editor te openen.
+9.   > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
 
-10. Als u het doelgebied wilt bewerken waar de NSG-configuratie- en beveiligingsregels worden verplaatst, wijzigt u de **locatieeigenschap** onder **resources** in de onlineeditor:
+10. Als u de doel regio wilt bewerken waar de NSG-configuratie en beveiligings regels worden verplaatst, wijzigt u de eigenschap **Location** onder **resources** in de online-editor:
 
     ```json
             "resources": [
@@ -84,11 +84,11 @@ In de volgende stappen wordt uitgelegd hoe u de netwerkbeveiligingsgroep voorber
 
     ```
 
-11. Zie Azure-locaties voor het verkrijgen van [locatiecodes voor regio's.](https://azure.microsoft.com/global-infrastructure/locations/)  De code voor een regio is de regionaam zonder spaties, **Central US** = **centralus**.
+11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
 
-12. U desgevraagd ook andere parameters in de sjabloon wijzigen en zijn optioneel, afhankelijk van uw vereisten:
+12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Beveiligingsregels** : welke regels worden geïmplementeerd in de beoogde NSG, u bewerken door regels toe te voegen of te verwijderen aan de sectie **securityRules** in het bestand **template.json:**
+    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan of te verwijderen uit de sectie **securityRules** in het bestand **sjabloon. json** :
 
         ```json
            "resources": [
@@ -124,7 +124,7 @@ In de volgende stappen wordt uitgelegd hoe u de netwerkbeveiligingsgroep voorber
             }
         ```
 
-      Als u de toevoeging of verwijdering van de regels in de doel-NSG wilt voltooien, moet u ook de aangepaste regeltypen aan het einde van het **bestand template.json** bewerken in de indeling van het onderstaande voorbeeld:
+      Als u het toevoegen of verwijderen van de regels in de doel-NSG wilt volt ooien, moet u ook de aangepaste regel typen aan het einde van het bestand **sjabloon. json** bewerken in de indeling van het voor beeld hieronder:
 
       ```json
            {
@@ -151,31 +151,31 @@ In de volgende stappen wordt uitgelegd hoe u de netwerkbeveiligingsgroep voorber
             }
       ```
 
-13. Klik **op Opslaan** in de online editor.
+13. Klik op **Opslaan** in de online editor.
 
-14. Klik op > **BASICS-abonnement** om het abonnement te kiezen waarbij het doel NSG wordt geïmplementeerd. **BASICS**
+14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin de doel-NSG wordt geïmplementeerd.
 
-15. Klik op **de** > **groep BASICS Resource** om de resourcegroep te kiezen waar de doel-NSG wordt geïmplementeerd.  U op **Nieuw maken** klikken om een nieuwe resourcegroep voor de doel-NSG te maken.  Zorg ervoor dat de naam niet hetzelfde is als de bronbrongroep van de bestaande NSG.
+15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin de doel-NSG wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de doel-NSG.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande NSG.
 
-16. Controleer **basics** > **locatie** is ingesteld op de doellocatie waar u wilt dat de NSG wordt geïmplementeerd.
+16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u de NSG wilt implementeren.
 
-17. Controleer onder **INSTELLINGEN** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande parameterseditor.
+17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.
 
-18. Schakel het selectievakje in onder **ALGEMENE VOORWAARDEN**.
+18. Schakel het selectie vakje onder **voor waarden**in.
 
-19. Klik **op** de knop Aankoop om de beveiligingsgroep van het doelnetwerk te implementeren.
+19. Klik op de knop **aanschaffen** om de netwerk beveiligings groep te implementeren.
 
 ## <a name="discard"></a>Verwijderen
 
-Als u de doelNSG wilt verwijderen, verwijdert u de brongroep die de beoogde NSG bevat.  Selecteer hiervoor de brongroep in uw dashboard in de portal en selecteer **Verwijderen** boven aan de overzichtspagina.
+Als u de doel-NSG wilt verwijderen, verwijdert u de resource groep die de doel-NSG bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de wijzigingen wilt vastleggen en de verplaatsing van de NSG wilt voltooien, verwijdert u de bron NSG of resourcegroep. Selecteer hiervoor de netwerkbeveiligingsgroep of -brongroep in uw dashboard in de portal en selecteer **Verwijderen** boven aan elke pagina.
+Als u de wijzigingen wilt door voeren en de NSG wilt verplaatsen, verwijdert u de bron-NSG of de resource groep. Hiertoe selecteert u de netwerk beveiligings groep of de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan elke pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een Azure-netwerkbeveiligingsgroep van de ene regio naar de andere verplaatst en de bronbronnen opgeschoond.  Zie voor meer informatie over het verplaatsen van resources tussen regio's en disaster recovery in Azure:
+In deze zelf studie hebt u een Azure-netwerk beveiligings groep verplaatst van de ene regio naar een andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

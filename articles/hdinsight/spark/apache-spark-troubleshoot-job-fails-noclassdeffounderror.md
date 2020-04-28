@@ -1,6 +1,6 @@
 ---
-title: NoClassDefFoundError - Apache Spark met Apache Kafka-gegevens in Azure HDInsight
-description: Apache Spark streaming taak die gegevens leest van een Apache Kafka cluster mislukt met een NoClassDefFoundError in Azure HDInsight
+title: NoClassDefFoundError-Apache Spark met Apache Kafka gegevens in azure HDInsight
+description: Apache Spark streaming-taak waarmee gegevens van een Apache Kafka cluster worden gelezen, mislukt met een NoClassDefFoundError in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894350"
 ---
-# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Spark streaming taak die Apache Kafka-gegevens leest mislukt met NoClassDefFoundError in HDInsight
+# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Spark streaming-taak waarmee Apache Kafka gegevens worden gelezen, mislukt met NoClassDefFoundError in HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij het gebruik van Apache Spark-componenten in Azure HDInsight-clusters.
+In dit artikel worden probleemoplossings stappen en mogelijke oplossingen voor problemen beschreven bij het gebruik van Apache Spark-onderdelen in azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Het Cluster Apache Spark voert een Spark-streamingtaak uit die gegevens van een Cluster Apache Kafka leest. De spark-streamingtaak mislukt als de Kafka-streamcompressie is ingeschakeld. In dit geval is de Spark streaming Yarn-app application_1525986016285_0193 mislukt, als gevolg van een fout:
+Het Apache Spark cluster voert een Spark-streaming-taak uit waarmee gegevens uit een Apache Kafka cluster worden gelezen. De Spark streaming-taak mislukt als de Kafka-stroom compressie is ingeschakeld. In dit geval is de application_1525986016285_0193 van de Spark streaming-app mislukt vanwege een fout:
 
 ```
 18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
@@ -32,9 +32,9 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout kan worden veroorzaakt door `spark-streaming-kafka` een versie van het jar-bestand op te geven die anders is dan de versie van het Kafka-cluster dat u uitvoert.
+Deze fout kan worden veroorzaakt door een versie van het `spark-streaming-kafka` jar-bestand op te geven die afwijkt van de versie van het Kafka-cluster dat u uitvoert.
 
-Als u bijvoorbeeld een Kafka-clusterversie 0.10.1 uitvoert, resulteert de volgende opdracht in een fout:
+Als u bijvoorbeeld een Kafka-cluster versie 0.10.1 uitvoert, resulteert de volgende opdracht in een fout:
 
 ```
 spark-submit \
@@ -46,14 +46,14 @@ spark-submit \
 
 ## <a name="resolution"></a>Oplossing
 
-Gebruik de opdracht Spark-submit met de `–packages` optie en zorg ervoor dat de versie van het spark-streaming-kafka-jar-bestand hetzelfde is als de versie van het Kafka-cluster dat u uitvoert.
+Gebruik de opdracht Spark-Submit met de `–packages` optie en zorg ervoor dat de versie van het bestand Spark-streaming-Kafka jar hetzelfde is als de versie van het Kafka-cluster dat u uitvoert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

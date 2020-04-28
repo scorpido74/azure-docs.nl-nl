@@ -1,5 +1,5 @@
 ---
-title: 'Een VNet verbinden met een VNet met een VNet-naar-VNet-verbinding: Azure CLI'
+title: 'Een VNet verbinden met een VNet met behulp van een VNet-naar-VNet-verbinding: Azure CLI'
 description: Virtuele netwerken met elkaar verbinden met behulp van een VNet-naar-VNet-verbinding en Azure CLI.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834579"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Een VPN-gatewayverbinding tussen VNets configureren met behulp van Azure CLI
@@ -22,8 +22,8 @@ Dit artikel helpt u om virtuele netwerken te verbinden met behulp van het verbin
 De stappen in dit artikel zijn van toepassing op het Resource Manager-implementatiemodel en gebruiken Azure CLI. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Powershell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinding maken tussen verschillende implementatiemodellen - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -269,7 +269,7 @@ In dit scenario verbindt u TestVNet1 met TestVNet5. De VNets behoren tot verschi
 
 ### <a name="step-5---create-and-configure-testvnet1"></a><a name="TestVNet1diff"></a>Stap 5: TestVNet1 maken en configureren
 
-Deze instructies gaan verder na de stappen in de voorgaande secties. U moet [stap 1](#Connect) en stap [2](#TestVNet1) voltooien om TestVNet1 en de VPN-gateway voor TestVNet1 te maken en te configureren. Voor deze configuratie is het niet vereist TestVNet4 uit de vorige sectie te maken. Als u deze wel maakt, levert dit geen problemen op met de volgende stappen. Nadat u stap 1 en stap 2 hebt voltooid, gaat u verder met stap 6 hieronder.
+Deze instructies gaan verder na de stappen in de voorgaande secties. U moet [stap 1](#Connect) en [stap 2](#TestVNet1) uitvoeren om TestVNet1 en de VPN gateway voor TestVNet1 te maken en te configureren. Voor deze configuratie is het niet vereist TestVNet4 uit de vorige sectie te maken. Als u deze wel maakt, levert dit geen problemen op met de volgende stappen. Nadat u stap 1 en stap 2 hebt voltooid, gaat u verder met stap 6 hieronder.
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a><a name="verifyranges"></a>Stap 6: de IP-adresbereiken controleren
 
@@ -292,7 +292,7 @@ Als u extra verbindingen maakt, is het belangrijk dat u controleert of de IP-adr
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>Stap 7: TestVNet5 maken en configureren
 
-Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement, abonnement 5. Dit deel kan worden uitgevoerd door de beheerder in een andere organisatie die eigenaar is van het abonnement. Als u wilt `az account list --all` schakelen tussen abonnementen, gebruikt u `az account set --subscription <subscriptionID>` de abonnementen die beschikbaar zijn voor uw account en schakelt u over naar het abonnement dat u wilt gebruiken.
+Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement, abonnement 5. Dit deel kan worden uitgevoerd door de beheerder in een andere organisatie die eigenaar is van het abonnement. Als u wilt scha kelen `az account list --all` tussen abonnementen gebruiken om de abonnementen weer te geven die beschikbaar `az account set --subscription <subscriptionID>` zijn voor uw account, kunt u gebruiken om over te scha kelen naar het abonnement dat u wilt gebruiken.
 
 1. Zorg ervoor dat u bent verbonden met abonnement 5 en maak vervolgens een resourcegroep.
 
@@ -331,7 +331,7 @@ Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement, abonne
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>Stap 8: de verbindingen maken
 
-Deze stap is opgesplitst in twee CLI-sessies, aangeduid als **[Abonnement 1]** en **[Abonnement 5]** omdat de gateways onderdeel uitmaken van verschillende abonnementen. Als u wilt `az account list --all` schakelen tussen abonnementen, gebruikt u `az account set --subscription <subscriptionID>` de abonnementen die beschikbaar zijn voor uw account en schakelt u over naar het abonnement dat u wilt gebruiken.
+Deze stap is opgesplitst in twee CLI-sessies, aangeduid als **[Abonnement 1]** en **[Abonnement 5]** omdat de gateways onderdeel uitmaken van verschillende abonnementen. Als u wilt scha kelen `az account list --all` tussen abonnementen gebruiken om de abonnementen weer te geven die beschikbaar `az account set --subscription <subscriptionID>` zijn voor uw account, kunt u gebruiken om over te scha kelen naar het abonnement dat u wilt gebruiken.
 
 1. **[Abonnement 1]** Meld u aan bij en maak verbinding met Abonnement 1. Voer de volgende opdracht uit om de naam en id van de gateway op te halen in de uitvoer:
 

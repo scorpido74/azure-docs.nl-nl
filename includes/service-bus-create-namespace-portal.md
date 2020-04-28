@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75927798"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Een naamruimte in Azure Portal maken
@@ -20,15 +20,15 @@ Als u Service Bus-berichtenentiteiten wilt gebruiken in Azure, moet u eerst een 
 
 Ga als volgt te werk om een naamruimte te maken:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com)
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
 2. Klik in het linkernavigatievenster van de portal achtereenvolgens op **+ Een resource maken**, **Integratie** en **Service Bus**.
 
     ![Een resource maken -> Integratie -> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. Voer in het dialoogvenster **Naamruimte maken** de volgende stappen uit: 
-    1. Voer een **naam in voor de naamruimte**. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is. Zie [Namespace REST API maken](/rest/api/servicebus/create-namespace)voor een lijst met regels voor het benoemen van naamruimten.
+    1. Voer een **naam in voor de naam ruimte**. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is. Zie [Create namespace rest API](/rest/api/servicebus/create-namespace)voor een lijst met regels voor het benoemen van naam ruimten.
     2. Selecteer de prijscategorie (Basic, Standard of Premium) voor de naamruimte. Kies Standard of Premium indien u gebruik wilt maken van [onderwerpen en abonnementen](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions). Onderwerpen/abonnementen worden niet ondersteund in de prijscategorie Basic.
     3. Als u de **Premium** prijscategorie hebt geselecteerd, gaat u als volgt te werk: 
-        1. Geef het aantal **Messaging-eenheden** op. De Premium-prijscategorie biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload geïsoleerd wordt uitgevoerd. Deze resourcecontainer wordt een Messaging-eenheid genoemd. Een premium naamruimte heeft ten minste één berichteneenheid. U kunt voor elke Service Bus Premium-naamruimte 1, 2 of 4 Messaging-eenheden selecteren. Zie [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md) voor meer informatie.
+        1. Geef het aantal **Messaging-eenheden** op. De Premium-prijscategorie biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload geïsoleerd wordt uitgevoerd. Deze resourcecontainer wordt een Messaging-eenheid genoemd. Een Premium-naam ruimte heeft ten minste één Messa ging-eenheid. U kunt voor elke Service Bus Premium-naamruimte 1, 2 of 4 Messaging-eenheden selecteren. Zie [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md) voor meer informatie.
         2. Geef aan of u de naamruimte **zone-redundant** wilt maken. Door zone-redundantie wordt de beschikbaarheid verbeterd door replica's te verspreiden over verschillende beschikbaarheidszones binnen één regio, zonder aanvullende kosten. Zie [Beschikbaarheidszones in Azure](../articles/availability-zones/az-overview.md) voor meer informatie.
     4. Kies voor **Abonnement** een Azure-abonnement waarin u de naamruimte maakt.
     5. Kies voor **Resourcegroep** een bestaande resourcegroep waarin de naamruimte moet worden opgenomen of maak een nieuwe resourcegroep.      

@@ -1,7 +1,7 @@
 ---
-title: Peer ASN koppelen aan Azure-abonnement met PowerShell
+title: Peer-ASN koppelen aan een Azure-abonnement met behulp van Power shell
 titleSuffix: Azure
-description: Peer ASN koppelen aan Azure-abonnement met PowerShell
+description: Peer-ASN koppelen aan een Azure-abonnement met behulp van Power shell
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75908988"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Peer ASN koppelen aan Azure-abonnement met PowerShell
+# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Peer-ASN koppelen aan een Azure-abonnement met behulp van Power shell
 
-Voordat u een peering-aanvraag indient, moet u uw ASN eerst koppelen aan Azure-abonnement via de onderstaande stappen.
+Voordat u een peering-aanvraag indient, moet u eerst uw ASN met het Azure-abonnement koppelen met behulp van de onderstaande stappen.
 
-Als u dat liever hebt, u deze handleiding voltooien via de [portal.](howto-subscription-association-portal.md)
+Als u wilt, kunt u deze hand leiding volt ooien met behulp van de [Portal](howto-subscription-association-portal.md).
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>PeerASN maken om uw ASN te koppelen aan Azure-abonnement
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>PeerASN maken om uw ASN te koppelen aan een Azure-abonnement
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Meld u aan bij uw Azure-account en selecteer uw abonnement
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="register-for-peering-resource-provider"></a>Registreren voor peering resource provider
-Registreer u voor peering resource provider in uw abonnement met behulp van de onderstaande opdracht. Als u dit niet uitvoert, zijn Azure-resources die nodig zijn om peering in te stellen niet toegankelijk.
+### <a name="register-for-peering-resource-provider"></a>Registreren voor de resource provider voor peering
+Registreer u voor de resource provider voor de peering in uw abonnement met behulp van de onderstaande opdracht. Als u deze niet uitvoert, zijn Azure-resources die vereist zijn voor het instellen van peering, niet toegankelijk.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
-U de registratiestatus controleren met de onderstaande opdrachten:
+U kunt de registratie status controleren met behulp van de onderstaande opdrachten:
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> Wacht tot *RegistrationState* "Geregistreerd" wordt ingeschakeld voordat u verdergaat. Het kan 5 tot 30 minuten duren nadat u de opdracht hebt uitgevoerd.
+> Wacht tot *RegistrationState* is ingesteld op ' geregistreerd ' voordat u doorgaat. Het kan 5 tot 30 minuten duren nadat u de opdracht hebt uitgevoerd.
 
-### <a name="update-the-peer-information-associated-with-this-subscription"></a>De peer-informatie die aan dit abonnement is gekoppeld bijwerken
+### <a name="update-the-peer-information-associated-with-this-subscription"></a>De peer gegevens bijwerken die zijn gekoppeld aan dit abonnement
 
-Hieronder vindt u een voorbeeld om peer-informatie bij te werken.
+Hieronder ziet u een voor beeld van het bijwerken van peer gegevens.
 
 ```powershell
 New-AzPeerAsn `
@@ -58,23 +58,23 @@ New-AzPeerAsn `
 ```
 
 > [!NOTE]
-> -Naam komt overeen met de naam van de resource en kan alles zijn wat je kiest. PeerName komt echter overeen met de naam van uw bedrijf en moet zo dicht mogelijk bij uw PeeringDB-profiel staan. Houd er rekening mee dat waarde voor -peerName alleen tekens a-z, A-Z en ruimte ondersteunt.
+> -De naam komt overeen met de resource naam en kan alles zijn wat u kiest. -Peer naam komt echter overeen met de naam van uw bedrijf en moet zo dicht mogelijk bij uw PeeringDB-profiel staan. Houd er rekening mee dat waarde voor-peernaam alleen de tekens a-z, A-Z en spaties ondersteunt.
 
-Een abonnement kan meerdere ASN's hebben. Werk de peering-informatie voor elke ASN bij. Zorg ervoor dat "naam" uniek is voor elke ASN.
+Een abonnement kan meerdere Asn's hebben. Werk de peering-informatie voor elke ASN bij. Zorg ervoor dat ' naam ' uniek is voor elke ASN.
 
-Peers zullen naar verwachting een volledig en up-to-date profiel hebben op [PeeringDB](https://www.peeringdb.com). We gebruiken deze informatie tijdens de registratie om de gegevens van de peer te valideren, zoals NOC-informatie, technische contactgegevens en hun aanwezigheid in de peeringfaciliteiten, enz.
+Peers wordt verwacht een volledig en bijgewerkt profiel te hebben op [PeeringDB](https://www.peeringdb.com). We gebruiken deze informatie tijdens de registratie om de details van de peer te valideren, zoals NOC-informatie, technische contact gegevens en hun aanwezigheid bij de peering-faciliteiten, enzovoort.
 
-Houd er rekening mee dat in plaats van **{subscriptionId}** in de bovenstaande uitvoer de werkelijke abonnements-ID wordt weergegeven.
+Houd er rekening mee dat in plaats van **{subscriptionId}** in de bovenstaande uitvoer de werkelijke abonnements-id wordt weer gegeven.
 
-## <a name="view-status-of-a-peerasn"></a>Status van een PeerASN weergeven
+## <a name="view-status-of-a-peerasn"></a>De status van een PeerASN weer geven
 
-Controleer op de status ASN-validatie met de onderstaande opdracht:
+Controleer op ASN-validatie status met behulp van de onderstaande opdracht:
 
 ```powershell
 Get-AzPeerAsn
 ```
 
-Hieronder is een voorbeeld reactie:
+Hieronder ziet u een voor beeld van een antwoord:
 ```powershell
 PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
 PeerName        : Contoso
@@ -86,27 +86,27 @@ Type            : Microsoft.Peering/peerAsns
 ```
 
 > [!IMPORTANT]
-> Wacht tot de validatiestatus 'Goedgekeurd' wordt ingeschakeld voordat u een peering-aanvraag indient. Het kan tot 12 uur duren voor deze goedkeuring.
+> Wacht totdat de ValidationState is ingeschakeld voordat een peering-aanvraag wordt verzonden. Het kan tot 12 uur duren voordat deze goed keuring is uitgevoerd.
 
 ## <a name="modify-peerasn"></a>PeerAsn wijzigen
-U noc-contactgegevens op elk gewenst moment wijzigen.
+U kunt NOC elke contact gegevens op elk gewenst moment wijzigen.
 
-Hieronder is een voorbeeld:
+Hieronder ziet u een voor beeld:
 
 ```powershell
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
 ## <a name="delete-peerasn"></a>PeerAsn verwijderen
-Het verwijderen van een PeerASN wordt momenteel niet ondersteund. Als u PeerASN wilt verwijderen, neemt u contact op met [Microsoft peering](mailto:peering@microsoft.com).
+Het is momenteel niet mogelijk om een PeerASN te verwijderen. Als u PeerASN moet verwijderen, neemt u contact op met [micro soft-peering](mailto:peering@microsoft.com).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Direct-peering maken of bewerken](howto-direct-powershell.md)
 * [Een verouderde Direct-peering converteren in een Azure-resource](howto-legacy-direct-powershell.md)
-* [Exchange-peering maken of wijzigen](howto-exchange-powershell.md)
+* [Uitwisseling van peering maken of wijzigen](howto-exchange-powershell.md)
 * [Een verouderde Exchange-peering converteren in een Azure-resource](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-Ga voor meer informatie naar [veelgestelde vragen over internetpeering](faqs.md)
+Ga voor meer informatie naar [Veelgestelde vragen over Internet peering](faqs.md)

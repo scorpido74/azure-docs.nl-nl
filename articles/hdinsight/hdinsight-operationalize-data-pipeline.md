@@ -1,6 +1,6 @@
 ---
-title: Een pijplijn voor gegevensanalyse operationaliseren - Azure
-description: Een voorbeeldgegevenspijplijn instellen en uitvoeren die wordt geactiveerd door nieuwe gegevens en beknopte resultaten oplevert.
+title: Operationeel maken a Data Analytics-pijp lijn-Azure
+description: Stel een voorbeeld gegevens pijplijn in en voer deze uit die wordt geactiveerd door nieuwe gegevens en die beknopte resultaten oplevert.
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
 ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75922669"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Een pijplijn voor gegevensanalyse operationeel maken
 
-*Datapipelines* zijn onder meer veel data-analyseoplossingen. Zoals de naam al doet vermoeden, neemt een gegevenspijplijn ruwe gegevens op, reinigt en hervormt deze indien nodig opnieuw en voert deze doorgaans berekeningen of aggregaties uit voordat de verwerkte gegevens worden opgeslagen. De verwerkte gegevens worden verbruikt door clients, rapporten of API's. Een gegevenspijplijn moet herhaalbare resultaten opleveren, zowel volgens een planning als wanneer deze wordt geactiveerd door nieuwe gegevens.
+*Gegevens pijplijnen* met veel gegevens analyse oplossingen. Zoals in de naam wordt voorgesteld, neemt een gegevens pijplijn in onbewerkte gegevens, reinigt en vormt deze naar wens en voert doorgaans berekeningen of aggregaties uit voordat de verwerkte gegevens worden opgeslagen. De verwerkte gegevens worden gebruikt door clients, rapporten of Api's. Een gegevens pijplijn moet herhaal bare resultaten opleveren, hetzij volgens een planning of wanneer ze worden geactiveerd door nieuwe gegevens.
 
-In dit artikel wordt beschreven hoe u uw gegevenspijplijnen operationaliseren voor herhaalbaarheid, met Oozie die wordt uitgevoerd op HDInsight Hadoop-clusters. Het voorbeeldscenario leidt u door een gegevenspijplijn die gegevens over vluchttijdreeksen van luchtvaartmaatschappijen voorbereidt en verwerkt.
+In dit artikel wordt beschreven hoe u uw gegevens pijplijnen kunt operationeel makenen voor Herhaal baarheid, met behulp van Oozie die worden uitgevoerd op HDInsight Hadoop-clusters. In het voorbeeld scenario wordt u begeleid bij een gegevens pijplijn die de gegevens reeks van de vliegtuig vlucht voorbereidt en verwerkt.
 
-In het volgende scenario zijn de invoergegevens een plat bestand met een batch vluchtgegevens gedurende een maand. Deze vluchtgegevens omvatten informatie zoals de herkomst en bestemmingluchthaven, de gevlogen mijlen, de vertrek- en aankomsttijden, enzovoort. Het doel met deze pijplijn is om de dagelijkse prestaties van luchtvaartmaatschappijen samen te vatten, waarbij elke luchtvaartmaatschappij één rij heeft voor elke dag met de gemiddelde vertragingen voor vertrek en aankomst in minuten en de totale gevlogen mijlen die dag.
+In het volgende scenario zijn de invoer gegevens een plat bestand met een batch vlucht gegevens gedurende één maand. Deze vlucht gegevens omvatten informatie zoals de oorsprong en bestemming lucht haven, de mijlen, de vertrek-en aankomst tijden, enzovoort. Het doel van deze pijp lijn is de dagelijkse vliegtuig prestaties samen te vatten, waarbij elke luchtvaart maatschappij één rij voor elke dag heeft, met de gemiddelde vertrek-en aankomst vertraging in minuten, en de totale hoeveelheid kilo meters die dag.
 
-| YEAR | MONTH | DAY_OF_MONTH | Vervoerder |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| YEAR | MONTH | DAY_OF_MONTH | MAATSCHAPPIJ |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2017 | 1 | 3 | Aa | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 1 | 3 | Dl | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | A | 10,142229 | 7,862926 | 2644539 |
+| 2017 | 1 | 3 | AS | 9,435449 | 5,482143 | 572289 |
+| 2017 | 1 | 3 | DISTRIBUTIE | 6,935409 | -2,1893024 | 1909696 |
 
-De voorbeeldpijplijn wacht tot de vluchtgegevens van een nieuwe periode binnenkomen en worden die gedetailleerde vluchtgegevens opgeslagen in uw Apache Hive-gegevensmagazijn voor langetermijnanalyses. De pijplijn maakt ook een veel kleinere gegevensset die alleen de dagelijkse vluchtgegevens samenvat. Deze dagelijkse vluchtoverzichtsgegevens worden naar een SQL-database verzonden om rapporten te verstrekken, zoals voor een website.
+De voorbeeld pijplijn wacht totdat er een nieuwe vlucht gegevens van de periode arriveert en slaat vervolgens die gedetailleerde vlucht gegevens op in uw Apache Hive data warehouse voor lange termijn analyses. De pijp lijn maakt ook een veel kleinere gegevensset die alleen de dagelijkse vlucht gegevens samenvat. Deze dagelijkse vlucht samenvattings gegevens worden verzonden naar een SQL Database om rapporten te bieden, zoals voor een website.
 
-In het volgende diagram wordt de voorbeeldpijplijn geïllustreerd.
+In het volgende diagram ziet u de voorbeeld pijplijn.
 
-![OVERZICHT van hdi-vluchtvoorbeeldgegevenspijplijn](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+![Overzicht van gegevens pijplijn voor HDI Flight](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
-## <a name="apache-oozie-solution-overview"></a>Overzicht apache Oozie-oplossing
+## <a name="apache-oozie-solution-overview"></a>Overzicht van Apache Oozie-oplossing
 
-Deze pijplijn maakt gebruik van Apache Oozie die wordt uitgevoerd op een HDInsight Hadoop-cluster.
+Deze pijp lijn gebruikt Apache Oozie dat wordt uitgevoerd op een HDInsight Hadoop-cluster.
 
-Oozie beschrijft de pijplijnen in termen van *acties*, *workflows*en *coördinatoren*. Acties bepalen het werkelijke werk dat moet worden uitgevoerd, zoals het uitvoeren van een Hive-query. Werkstromen definiëren de volgorde van acties. Coördinatoren bepalen de planning voor wanneer de werkstroom wordt uitgevoerd. Coördinatoren kunnen ook wachten op de beschikbaarheid van nieuwe gegevens voordat ze een exemplaar van de workflow starten.
+Oozie beschrijft de pijp lijnen in termen van *acties*, *werk stromen*en *coördinatoren*. Acties bepalen het werkelijke werk dat moet worden uitgevoerd, zoals het uitvoeren van een Hive-query. Met werk stromen wordt de reeks acties gedefinieerd. Coördinatoren definiëren het schema voor wanneer de werk stroom wordt uitgevoerd. Coördinatoren kunnen ook wachten op de beschik baarheid van nieuwe gegevens voordat een exemplaar van de werk stroom wordt gestart.
 
-Het volgende diagram toont het ontwerp op hoog niveau van dit voorbeeld Oozie-pijplijn.
+Het volgende diagram toont het ontwerp op hoog niveau van dit voor beeld Oozie-pijp lijn.
 
-![Oozie Vlucht voorbeeld Gegevenspijplijn](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Voorbeeld gegevens pijplijn van Oozie Flight](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
-## <a name="provision-azure-resources"></a>Azure-bronnen inrichten
+## <a name="provision-azure-resources"></a>Azure-resources inrichten
 
-Voor deze pijplijn is een Azure SQL Database en een HDInsight Hadoop-cluster op dezelfde locatie vereist. De Azure SQL Database slaat zowel de overzichtsgegevens op die door de pijplijn zijn geproduceerd als het Oozie-metagegevensarchief.
+Voor deze pijp lijn is een Azure SQL Database en een HDInsight Hadoop-cluster op dezelfde locatie vereist. In de Azure SQL Database worden de samenvattings gegevens opgeslagen die zijn geproduceerd door de pijp lijn en de Oozie-meta gegevens opslag.
 
-### <a name="provision-azure-sql-database"></a>Azure SQL-database inrichten
+### <a name="provision-azure-sql-database"></a>Azure SQL Database inrichten
 
-1. Maak een Azure SQL Database. Zie [Een Azure SQL-database maken in de Azure-portal](../sql-database/sql-database-single-database-get-started.md).
+1. Maak een Azure SQL Database. Zie [een Azure SQL database maken in de Azure Portal](../sql-database/sql-database-single-database-get-started.md).
 
-1. Als u ervoor wilt zorgen dat uw HDInsight-cluster toegang heeft tot de verbonden Azure SQL Database, configureert u Azure SQL Database-firewallregels zodat Azure-services en -bronnen toegang krijgen tot de server. U deze optie inschakelen in de Azure-portal door **Serverfirewall instellen**te selecteren en **ONDER** **Azure-services en -bronnen toestaan om toegang te krijgen tot deze server** voor de Azure SQL Database-server of -database. Zie [IP-firewallregels maken en beheren](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)voor meer informatie.
+1. Om ervoor te zorgen dat uw HDInsight-cluster toegang heeft tot de verbonden Azure SQL Database, configureert u Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server. U kunt deze optie inschakelen in de Azure Portal door **Server firewall instellen** **te selecteren en onder andere** Azure- **Services en-bronnen toestaan toegang te krijgen tot deze server** voor de Azure SQL database-server of-Data Base. Zie [IP-firewall regels maken en beheren](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)voor meer informatie.
 
-1. Gebruik [queryeditor](../sql-database/sql-database-single-database-get-started.md#query-the-database) om de volgende SQL-instructies uit te voeren om de `dailyflights` tabel te maken die de samengevatte gegevens van elke uitvoering van de pijplijn opslaat.
+1. Gebruik de [query-editor](../sql-database/sql-database-single-database-get-started.md#query-the-database) om de volgende SQL-instructies uit `dailyflights` te voeren om de tabel te maken waarin de samenvattings gegevens van elke uitvoering van de pijp lijn worden opgeslagen.
 
     ```sql
     CREATE TABLE dailyflights
@@ -74,52 +74,52 @@ Voor deze pijplijn is een Azure SQL Database en een HDInsight Hadoop-cluster op 
     GO
     ```
 
-Uw Azure SQL Database is nu klaar.
+Uw Azure SQL Database is nu gereed.
 
-### <a name="provision-an-apache-hadoop-cluster"></a>Een Apache Hadoop-cluster inrichten
+### <a name="provision-an-apache-hadoop-cluster"></a>Een Apache Hadoop cluster inrichten
 
-Maak een Apache Hadoop-cluster met een aangepaste metastore. Zorg ervoor dat u tijdens het maken van het cluster vanuit de portal via het tabblad **Opslag** uw SQL-database selecteert onder **Metastore-instellingen.** Zie Een aangepaste metastore selecteren tijdens het maken van een metastore voor meer informatie over het selecteren van een [metastore.](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation) Zie Aan de slag [met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor meer informatie over het maken van clusteren.
+Een Apache Hadoop cluster maken met een aangepaste meta Store. Zorg ervoor dat u tijdens het maken van het cluster vanuit de portal op het tabblad **opslag** uw SQL database selecteert onder instellingen voor de **META Store**. Zie voor meer informatie over het selecteren van een meta Store [een aangepaste meta Store selecteren tijdens het maken](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation)van het cluster. Zie [aan de slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor meer informatie over het maken van een cluster.
 
-## <a name="verify-ssh-tunneling-set-up"></a>SSH-tunneling controleren
+## <a name="verify-ssh-tunneling-set-up"></a>Instellen van SSH-Tunneling controleren
 
-Als u de Oozie-webconsole wilt gebruiken om de status van uw coördinator en werkstroominstanties weer te geven, stelt u een SSH-tunnel in voor uw HDInsight-cluster. Zie [SSH Tunnel](hdinsight-linux-ambari-ssh-tunnel.md)voor meer informatie.
+Als u de Oozie-webconsole wilt gebruiken om de status van uw coördinator en werk stroom exemplaren weer te geven, stelt u een SSH-tunnel in op uw HDInsight-cluster. Zie [SSH-tunnel](hdinsight-linux-ambari-ssh-tunnel.md)voor meer informatie.
 
 > [!NOTE]  
-> U Chrome ook gebruiken met de [Foxy Proxy-extensie](https://getfoxyproxy.org/) om door de webbronnen van uw cluster in de SSH-tunnel te bladeren. Configureer het naar proxy `localhost` alle aanvragen via de host op de poort van de tunnel 9876. Deze aanpak is compatibel met het Windows-subsysteem voor Linux, ook bekend als Bash op Windows 10.
+> U kunt Chrome ook gebruiken met de [foxy-proxy](https://getfoxyproxy.org/) extensie om te bladeren door de webbronnen van uw cluster in de SSH-tunnel. Stel deze in op proxy voor alle aanvragen via `localhost` de host op de poort 9876 van de tunnel. Deze benadering is compatibel met het Windows-subsysteem voor Linux, ook wel bekend als bash in Windows 10.
 
-1. Voer de volgende opdracht uit om een SSH-tunnel naar uw cluster te openen, waar `CLUSTERNAME` is de naam van uw cluster:
+1. Voer de volgende opdracht uit om een SSH-tunnel naar uw cluster te `CLUSTERNAME` openen, waarbij de naam van uw cluster is:
 
     ```cmd
     ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Controleer of de tunnel operationeel is door op uw hoofdknooppunt naar Ambari te navigeren door te bladeren naar:
+1. Controleer of de tunnel operationeel is door te navigeren naar Ambari op het hoofd knooppunt door te bladeren naar:
 
     `http://headnodehost:8080`
 
-1. Als u de **Oozie-webconsole** vanuit Ambari wilt openen, navigeert u naar **Oozie** > **Quick Links** > [Active server] > **Oozie Web UI.**
+1. Om toegang te krijgen tot de **Oozie-webconsole** vanuit Ambari, gaat u naar **Oozie** > **snelle koppelingen** > [Active Server] > **Oozie Web UI**.
 
 ## <a name="configure-hive"></a>Hive configureren
 
 ### <a name="upload-data"></a>Gegevens uploaden
 
-1. Download een voorbeeld CSV-bestand dat vluchtgegevens bevat voor een maand. Download het `2017-01-FlightData.zip` ZIP-bestand uit de [HDInsight GitHub-repository](https://github.com/hdinsight/hdinsight-dev-guide) en rits het uit naar het CSV-bestand. `2017-01-FlightData.csv`
+1. Een voor beeld van een CSV-bestand met vlucht gegevens voor één maand downloaden. Down load het ZIP `2017-01-FlightData.zip` -bestand uit de [HDInsight github-opslag plaats](https://github.com/hdinsight/hdinsight-dev-guide) en pak het `2017-01-FlightData.csv`uit naar het CSV-bestand.
 
-1. Kopieer dit CSV-bestand naar het Azure Storage-account dat is `/example/data/flights` gekoppeld aan uw HDInsight-cluster en plaats het in de map.
+1. Kopieer dit CSV-bestand naar het Azure Storage-account dat aan uw HDInsight-cluster is gekoppeld en `/example/data/flights` plaats het in de map.
 
-    1. Gebruik SCP om de bestanden van uw lokale machine te kopiëren naar de lokale opslag van uw HDInsight-clusterkopknooppunt.
+    1. Gebruik SCP om de bestanden van uw lokale computer te kopiëren naar de lokale opslag van het hoofd knooppunt van het HDInsight-cluster.
 
         ```cmd
         scp ./2017-01-FlightData.csv sshuser@CLUSTERNAME-ssh.azurehdinsight.net:2017-01-FlightData.csv
         ```
 
-    1. Gebruik [de ssh-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande `CLUSTERNAME` opdracht door de naam van uw cluster te vervangen en voer de opdracht in:
+    1. Gebruik de [SSH-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van uw cluster te vervangen en voer de volgende opdracht in:
 
         ```cmd
         ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
         ```
 
-    1. Gebruik de opdracht HDFS om het bestand te kopiëren van de lokale opslag van uw hoofdknooppunt naar Azure Storage.
+    1. Gebruik vanuit SSH-sessie de HDFS-opdracht om het bestand te kopiëren van de lokale opslag van uw hoofd knooppunt naar Azure Storage.
 
         ```bash
         hadoop fs -mkdir /example/data/flights
@@ -128,19 +128,19 @@ Als u de Oozie-webconsole wilt gebruiken om de status van uw coördinator en wer
 
 ### <a name="create-tables"></a>Tabellen maken
 
-De voorbeeldgegevens zijn nu beschikbaar. De pijplijn vereist echter twee Hive-tabellen voor verwerking,`rawFlights`een voor de binnenkomende gegevens ( ) en een voor de samengevatte gegevens (`flights`). Maak deze tabellen als volgt in Ambari.
+De voorbeeld gegevens zijn nu beschikbaar. Voor de pijp lijn zijn echter twee Hive-tabellen vereist voor de verwerking, één voor de`rawFlights`inkomende gegevens () en één voor de samenvattings gegevens (`flights`). Maak deze tabellen in Ambari als volgt.
 
-1. Log in bij Ambari `http://headnodehost:8080`door te navigeren naar .
+1. Meld u aan bij Ambari door naar te `http://headnodehost:8080`navigeren.
 
-2. Selecteer **Hive**in de lijst met services.
+2. Selecteer **Hive**in de lijst met Services.
 
-    ![Lijst met Apache Ambari-services met de selectie van Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Component Apache Ambari Services-lijst selectie](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. Selecteer **Ga naar weergave** naast het Hive View 2.0-label.
+3. Selecteer **Ga naar weer gave** naast het label component weergave 2,0.
 
-    ![Ambari Apache Hive overzichtslijst](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Overzichts lijst van Ambari-Apache Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. Plak in het gebied van querytekst `rawFlights` de volgende instructies om de tabel te maken. De `rawFlights` tabel bevat een schema-on-read voor `/example/data/flights` de CSV-bestanden in de map in Azure Storage.
+4. Plak in het tekst gebied query de volgende instructies om de `rawFlights` tabel te maken. De `rawFlights` tabel bevat een schema-bij-lezen voor de CSV-bestanden in `/example/data/flights` de map in azure Storage.
 
     ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
@@ -165,11 +165,11 @@ De voorbeeldgegevens zijn nu beschikbaar. De pijplijn vereist echter twee Hive-t
     LOCATION '/example/data/flights'
     ```
 
-5. Selecteer **Uitvoeren** om de tabel te maken.
+5. Selecteer **uitvoeren** om de tabel te maken.
 
-    ![hdi ambari diensten hive query](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![HDI ambari Services-Hive-query](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. Als u `flights` de tabel wilt maken, vervangt u de tekst in het querytekstgebied door de volgende instructies. De `flights` tabel is een door Hive beheerde tabel die gegevens partities die erin zijn geladen per jaar, maand en maand. Deze tabel bevat alle historische vluchtgegevens, met de laagste granulariteit aanwezig in de brongegevens van één rij per vlucht.
+6. Als u de `flights` tabel wilt maken, vervangt u de tekst in het tekst gebied query door de volgende instructies. De `flights` tabel is een door een module beheerde tabel waarin de gegevens worden gepartitioneerd per jaar, maand en dag van de maand. Deze tabel bevat alle historische vlucht gegevens, waarbij de laagste granulatie aanwezig is in de bron gegevens van één rij per vlucht.
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -195,22 +195,22 @@ De voorbeeldgegevens zijn nu beschikbaar. De pijplijn vereist echter twee Hive-t
     );
     ```
 
-7. Selecteer **Uitvoeren** om de tabel te maken.
+7. Selecteer **uitvoeren** om de tabel te maken.
 
-## <a name="create-the-oozie-workflow"></a>De Oozie-werkstroom maken
+## <a name="create-the-oozie-workflow"></a>De Oozie-werk stroom maken
 
-Pijplijnen verwerken gegevens doorgaans in batches met een bepaald tijdsinterval. In dit geval verwerkt de pijplijn de vluchtgegevens dagelijks. Deze aanpak maakt het mogelijk voor de input CSV-bestanden te komen dagelijks, wekelijks, maandelijks, of jaarlijks.
+In pijp lijnen worden gegevens doorgaans met een bepaald tijds interval verwerkt in batches. In dit geval wordt de vlucht gegevens dagelijks verwerkt door de pijp lijn. Op deze manier kan de invoer CSV-bestanden dagelijks, wekelijks, maandelijks of jaarlijks worden aangeleverd.
 
-De voorbeeldworkflow verwerkt de vluchtgegevens van dag tot dag in drie belangrijke stappen:
+De voorbeeld werk stroom verwerkt de vlucht gegevens per dag, in drie belang rijke stappen:
 
-1. Voer een Hive-query uit om de gegevens voor het datumbereik van `rawFlights` die dag uit `flights` het bronCSV-bestand te halen dat door de tabel wordt weergegeven en de gegevens in de tabel in te voegen.
-2. Voer een Hive-query uit om dynamisch een faseringstabel te maken in Hive voor de dag, die een kopie bevat van de vluchtgegevens die zijn samengevat per dag en luchtvaartmaatschappij.
-3. Gebruik Apache Sqoop om alle gegevens uit de dagelijkse `dailyflights` faseringstabel in Hive te kopiëren naar de doeltabel in Azure SQL Database. Sqoop leest de bronrijen van de gegevens achter de Hive-tabel die zich in Azure Storage bevinden en laadt deze in SQL-database met behulp van een JDBC-verbinding.
+1. Voer een Hive-query uit om de gegevens voor het datum bereik van die dag te extra heren uit het CSV `rawFlights` -bron bestand dat wordt vertegenwoordigd door `flights` de tabel en de gegevens in de tabel in te voegen.
+2. Voer een Hive-query uit om dynamisch een faserings tabel in de Hive te maken, die een kopie bevat van de vlucht gegevens, die worden samengestuurd per dag en transporteur.
+3. Gebruik Apache Sqoop om alle gegevens van de dagelijkse faserings tabel in de component te kopiëren naar `dailyflights` de doel tabel in Azure SQL database. Sqoop leest de bron rijen van de gegevens achter de Hive-tabel die zich bevindt in Azure Storage en laadt deze in SQL Database met behulp van een JDBC-verbinding.
 
-Deze drie stappen worden gecoördineerd door een Oozie workflow.
+Deze drie stappen worden gecoördineerd door een Oozie-werk stroom.
 
-1. Maak vanaf uw lokale werkstation een bestand met de naam `job.properties`. Gebruik de tekst hieronder als startinhoud voor het bestand.
-Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de tekst geeft een overzicht van elk van de eigenschappen en geeft aan waar u de waarden voor uw eigen omgeving vinden.
+1. Maak een bestand met de naam `job.properties`van uw lokale werk station. Gebruik de onderstaande tekst als de begin inhoud voor het bestand.
+Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de tekst bevat een overzicht van de eigenschappen en geeft aan waar u de waarden voor uw eigen omgeving kunt vinden.
 
     ```text
     nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -230,25 +230,25 @@ Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de te
     day=03
     ```
 
-    | Eigenschap | Waardebron |
+    | Eigenschap | Waarde bron |
     | --- | --- |
-    | nameNode | Het volledige pad naar de Azure Storage Container die is gekoppeld aan uw HDInsight-cluster. |
-    | jobTracker | De interne hostnaam van het YARN-hoofdknooppunt van uw actieve cluster. Selecteer op de startpagina van Ambari GAREN in de lijst met services en kies Active Resource Manager. De hostname URI wordt boven aan de pagina weergegeven. Sluit de poort 8050 toe. |
-    | queueName | De naam van de GARENwachtrij die wordt gebruikt bij het plannen van de Hive-acties. Laat als standaard. |
-    | oozie.use.system.libpath | Laat als waar. |
-    | appBase | Het pad naar de submap in Azure Storage waar u de Oozie-werkstroom implementeert en ondersteunende bestanden. |
-    | oozie.wf.application.path | De locatie van de `workflow.xml` Oozie-werkstroom die moet worden uitgevoerd. |
-    | hiveScriptLoadPartition | Het pad in Azure Storage `hive-load-flights-partition.hql`naar het Hive-querybestand . |
-    | hiveScript'sMaakDailyTable | Het pad in Azure Storage `hive-create-daily-summary-table.hql`naar het Hive-querybestand . |
-    | hiveDailyTableName | De dynamisch gegenereerde naam die u wilt gebruiken voor de faseringstabel. |
-    | hiveDataFolder | Het pad in Azure Storage naar de gegevens van de faseringstabel. |
-    | sqlDatabaseConnectionString | De jdbc-syntaxisverbindingstekenreeks met uw Azure SQL-database. |
-    | sqlDatabaseTableName | De naam van de tabel in Azure SQL Database waarin overzichtsrijen worden ingevoegd. Vertrek `dailyflights`als . |
-    | jaar | De jaarcomponent van de dag waarvoor vluchtsamenvattingen worden berekend. Ga weg zoals het is. |
-    | maand | De maandcomponent van de dag waarvoor vluchtsamenvattingen worden berekend. Ga weg zoals het is. |
-    | day | De dag van de maand component van de dag waarvoor vlucht samenvattingen worden berekend. Ga weg zoals het is. |
+    | nameNode | Het volledige pad naar de Azure Storage container die aan uw HDInsight-cluster is gekoppeld. |
+    | jobTracker | De interne hostnaam naar het hoofd knooppunt van uw actieve cluster. Selecteer op de start pagina van Ambari de optie GARENs in de lijst met Services en kies vervolgens actieve Resource Manager. De hostnaam-URI wordt boven aan de pagina weer gegeven. Voeg poort 8050 toe. |
+    | queueName | De naam van de garen wachtrij die wordt gebruikt bij het plannen van de Hive-acties. Als standaard laten. |
+    | oozie. System. libpad | Geef waar. |
+    | appBase | Het pad naar de submap in Azure Storage waar u de Oozie-werk stroom en ondersteunende bestanden implementeert. |
+    | oozie. WF. Application. Path | De locatie van de Oozie- `workflow.xml` werk stroom die moet worden uitgevoerd. |
+    | hiveScriptLoadPartition | Het pad in Azure Storage naar het Hive-query `hive-load-flights-partition.hql`bestand. |
+    | hiveScriptCreateDailyTable | Het pad in Azure Storage naar het Hive-query `hive-create-daily-summary-table.hql`bestand. |
+    | hiveDailyTableName | De dynamisch gegenereerde naam die voor de faserings tabel moet worden gebruikt. |
+    | hiveDataFolder | Het pad in Azure Storage naar de gegevens die zijn opgenomen in de faserings tabel. |
+    | sqlDatabaseConnectionString | De JDBC-syntaxis connection string uw Azure SQL Database. |
+    | sqlDatabaseTableName | De naam van de tabel in Azure SQL Database waarin de samenvattings rijen worden ingevoegd. Laten staan `dailyflights`. |
+    | jaar | Het jaar gedeelte van de dag waarvoor vlucht overzichten worden berekend. Laten. |
+    | maand | Het maand gedeelte van de dag waarvoor vlucht overzichten worden berekend. Laten. |
+    | day | Het onderdeel dag van de maand van de dag waarvoor vlucht overzichten worden berekend. Laten. |
 
-1. Maak vanaf uw lokale werkstation een bestand met de naam `hive-load-flights-partition.hql`. Gebruik de onderstaande code als de inhoud voor het bestand.
+1. Maak een bestand met de naam `hive-load-flights-partition.hql`van uw lokale werk station. Gebruik de onderstaande code als de inhoud van het bestand.
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -272,9 +272,9 @@ Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de te
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Oozie-variabelen gebruiken `${variableName}`de syntaxis . Deze variabelen zijn ingesteld `job.properties` in het bestand. Oozie vervangt de werkelijke waarden bij runtime.
+    Oozie-variabelen gebruiken de `${variableName}`syntaxis. Deze variabelen worden ingesteld in het `job.properties` bestand. Oozie vervangt de werkelijke waarden tijdens runtime.
 
-1. Maak vanaf uw lokale werkstation een bestand met de naam `hive-create-daily-summary-table.hql`. Gebruik de onderstaande code als de inhoud voor het bestand.
+1. Maak een bestand met de naam `hive-create-daily-summary-table.hql`van uw lokale werk station. Gebruik de onderstaande code als de inhoud van het bestand.
 
     ```sql
     DROP TABLE ${hiveTableName};
@@ -298,9 +298,9 @@ Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de te
     HAVING year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Met deze query wordt een faseringstabel opgesteld die alleen de samengevatte gegevens voor één dag opslaat, kennis neemt van de SELECT-instructie die de gemiddelde vertragingen en het totaal van de afstand per vervoerder per dag berekent. De gegevens die in deze tabel zijn ingevoegd, zijn opgeslagen op een bekende locatie (het pad dat wordt aangegeven door de variabele hiveDataFolder), zodat deze in de volgende stap als bron voor Sqoop kunnen worden gebruikt.
+    Met deze query maakt u een faserings tabel die alleen de samenvattings gegevens voor één dag opslaat, noteert u de SELECT-instructie die de gemiddelde vertragingen en het totale aantal overlopen per expediteur per dag berekent. De gegevens die in deze tabel zijn ingevoegd, worden opgeslagen op een bekende locatie (het pad dat wordt aangegeven door de variabele hiveDataFolder), zodat deze kan worden gebruikt als bron voor Sqoop in de volgende stap.
 
-1. Maak vanaf uw lokale werkstation een bestand met de naam `workflow.xml`. Gebruik de onderstaande code als de inhoud voor het bestand. Deze bovenstaande stappen worden uitgedrukt als afzonderlijke acties in oozie-werkstroombestand.
+1. Maak een bestand met de naam `workflow.xml`van uw lokale werk station. Gebruik de onderstaande code als de inhoud van het bestand. Deze stappen worden weer gegeven als afzonderlijke acties in het Oozie-werk stroom bestand.
 
     ```xml
     <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -378,25 +378,25 @@ Werk vervolgens de waarden voor uw specifieke omgeving bij. De tabel onder de te
     </workflow-app>
     ```
 
-De twee Hive-query's worden geopend via hun pad in Azure `job.properties` Storage en de resterende variabele waarden worden door het bestand geleverd. In dit bestand wordt de werkstroom geconfigureerd voor de datum 3 januari 2017.
+De twee Hive-query's worden geopend door hun pad in Azure Storage en de resterende waarden van de variabele worden door `job.properties` het bestand verschaft. Met dit bestand wordt de werk stroom geconfigureerd die moet worden uitgevoerd voor de datum van 3 januari 2017.
 
-## <a name="deploy-and-run-the-oozie-workflow"></a>De Oozie-werkstroom implementeren en uitvoeren
+## <a name="deploy-and-run-the-oozie-workflow"></a>De Oozie-werk stroom implementeren en uitvoeren
 
-Gebruik SCP vanuit uw bash-sessie om`workflow.xml`uw Oozie-werkstroom ( ), de Hive-query's (en`hive-load-flights-partition.hql` `hive-create-daily-summary-table.hql`) en de taakconfiguratie (`job.properties`) te implementeren.  In Oozie kan `job.properties` alleen het bestand bestaan op de lokale opslag van de headnode. Alle andere bestanden moeten worden opgeslagen in HDFS, in dit geval Azure Storage. De Sqoop-actie die door de werkstroom wordt gebruikt, is afhankelijk van een JDBC-stuurprogramma voor de communicatie met uw SQL-database, die moet worden gekopieerd van het hoofdknooppunt naar HDFS.
+Gebruik SCP vanuit uw bash-sessie om uw Oozie-werk`workflow.xml`stroom (), de Hive`hive-load-flights-partition.hql` - `hive-create-daily-summary-table.hql`query's (en) en de taak`job.properties`configuratie () te implementeren.  In Oozie kan alleen het `job.properties` bestand bestaan in de lokale opslag van de hoofd knooppunt. Alle andere bestanden moeten in dit geval Azure Storage worden opgeslagen in HDFS. De Sqoop-actie die door de werk stroom wordt gebruikt, is afhankelijk van een JDBC-stuur programma voor de communicatie met uw SQL Database, dat moet worden gekopieerd van het hoofd knooppunt naar HDFS.
 
-1. Maak `load_flights_by_day` de submap onder het pad van de gebruiker in de lokale opslag van het hoofdknooppunt. Voer vanuit uw geopende ssh-sessie de volgende opdracht uit:
+1. Maak de `load_flights_by_day` submap onder het pad van de gebruiker in de lokale opslag van het hoofd knooppunt. Voer vanuit uw open SSH-sessie de volgende opdracht uit:
 
     ```bash
     mkdir load_flights_by_day
     ```
 
-1. Kopieer alle bestanden in de `workflow.xml` `job.properties` huidige map (de en bestanden) naar de `load_flights_by_day` submap. Voer vanaf uw lokale werkstation de volgende opdracht uit:
+1. Kopieer alle bestanden in de huidige map ( `workflow.xml` en `job.properties` bestanden) naar de `load_flights_by_day` submap. Voer vanaf uw lokale werk station de volgende opdracht uit:
 
     ```cmd
     scp ./* sshuser@CLUSTERNAME-ssh.azurehdinsight.net:load_flights_by_day
     ```
 
-1. Werkstroombestanden naar HDFS kopiëren. Voer vanuit uw geopende ssh-sessie de volgende opdrachten uit:
+1. Kopieer de werk stroom bestanden naar HDFS. Voer de volgende opdrachten uit vanuit uw open SSH-sessie:
 
     ```bash
     cd load_flights_by_day
@@ -404,31 +404,31 @@ Gebruik SCP vanuit uw bash-sessie om`workflow.xml`uw Oozie-werkstroom ( ), de Hi
     hdfs dfs -put ./* /oozie/load_flights_by_day
     ```
 
-1. Kopieer `mssql-jdbc-7.0.0.jre8.jar` vanuit het lokale hoofdknooppunt naar de werkstroommap in HDFS. Herzie de opdracht indien nodig als uw cluster een ander jar-bestand bevat. Herzien `workflow.xml` indien nodig om een ander potbestand weer te geven. Voer vanuit uw geopende ssh-sessie de volgende opdracht uit:
+1. Kopieer `mssql-jdbc-7.0.0.jre8.jar` van het lokale hoofd knooppunt naar de map werk stroom in HDFS. Wijzig indien nodig de opdracht als uw cluster een ander jar-bestand bevat. Wijzig `workflow.xml` indien nodig om een ander jar-bestand weer te geven. Voer vanuit uw open SSH-sessie de volgende opdracht uit:
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /oozie/load_flights_by_day
     ```
 
-1. Voer de werkstroom uit. Voer vanuit uw geopende ssh-sessie de volgende opdracht uit:
+1. Voer de werk stroom uit. Voer vanuit uw open SSH-sessie de volgende opdracht uit:
 
     ```bash
     oozie job -config job.properties -run
     ```
 
-1. Let op de status met behulp van de Oozie Web Console. Selecteer **Oozie,** **Snelle koppelingen**en vervolgens **Oozie Web Console**vanuit Ambari . Selecteer alle **taken**onder het tabblad **Werkstroomtaken** .
+1. Bekijk de status met behulp van de Oozie-webconsole. In Ambari selecteert u **Oozie**, **snelle koppelingen**en vervolgens **Oozie web-console**. Selecteer op het tabblad **werk stroom taken** de optie **alle taken**.
 
-    ![hdi oozie webconsole workflows](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![HDI oozie-webconsole-werk stromen](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. Wanneer de status is GESLAAGD, stelt u de SQL Database-tabel op om de ingevoegde rijen weer te geven. Navigeer met de Azure-portal naar het deelvenster voor uw SQL-database, selecteer **Extra**en open de **queryeditor**.
+1. Als de status geslaagd is, query's uitvoeren op de tabel SQL Database om de ingevoegde rijen weer te geven. Ga met behulp van de Azure Portal naar het deel venster voor uw SQL Database, selecteer **extra**en open de **query-editor**.
 
         SELECT * FROM dailyflights
 
-Nu de werkstroom wordt uitgevoerd voor de enkele testdag, u deze werkstroom inpakken met een coördinator die de werkstroom zo plant dat deze dagelijks wordt uitgevoerd.
+Nu de werk stroom wordt uitgevoerd voor de enkele test dag, kunt u deze werk stroom verpakken met een coördinator waarmee de werk stroom wordt gepland zodat deze dagelijks wordt uitgevoerd.
 
-## <a name="run-the-workflow-with-a-coordinator"></a>De werkstroom uitvoeren met een coördinator
+## <a name="run-the-workflow-with-a-coordinator"></a>De werk stroom uitvoeren met een coördinator
 
-Als u deze werkstroom zo wilt plannen dat deze dagelijks (of alle dagen in een datumbereik) wordt uitgevoerd, u een coördinator gebruiken. Een coördinator wordt gedefinieerd door `coordinator.xml`een XML-bestand, bijvoorbeeld:
+Als u deze werk stroom wilt plannen zodat deze dagelijks (of alle dagen in een datum bereik) wordt uitgevoerd, kunt u een coördinator gebruiken. Een coördinator wordt gedefinieerd door een XML-bestand, bijvoorbeeld `coordinator.xml`:
 
 ```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
@@ -497,17 +497,17 @@ Als u deze werkstroom zo wilt plannen dat deze dagelijks (of alle dagen in een d
 </coordinator-app>
 ```
 
-Zoals u zien, is de meerderheid van de coördinator alleen configuratiegegevens doorgeven aan de werkstroominstantie. Er zijn echter een paar belangrijke items om uit te roepen.
+Zoals u ziet, geeft de meerderheid van de coördinator alleen configuratie-informatie door aan het werk stroom exemplaar. Er zijn echter enkele belang rijke items die u kunt aanroepen.
 
-* Punt 1: `start` `end` De en `coordinator-app` de kenmerken van het element zelf bepalen het tijdsinterval waarover de coördinator wordt uitgevoerd.
+* Punt 1: de `start` kenmerken `end` en van het `coordinator-app` element zelf bepalen het tijds interval voor de uitvoering van de coördinator.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Een coördinator is verantwoordelijk `start` voor `end` het plannen van acties binnen `frequency` het en datumbereik, afhankelijk van het interval dat door het kenmerk is opgegeven. Elke geplande actie voert op zijn beurt de werkstroom uit zoals geconfigureerd. In de bovenstaande coördinatordefinitie is de coördinator geconfigureerd om acties uit te voeren van 1 januari 2017 tot 5 januari 2017. De frequentie wordt ingesteld op één dag door `${coord:days(1)}`de [frequentieexpressie Oozie Expression Language](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) . Dit resulteert in het plannen van een actie (en dus de workflow) één keer per dag. Voor datumbereiken die in het verleden zijn, zoals in dit voorbeeld, wordt de actie gepland om zonder vertraging uit te voeren. Het begin van de datum waarop een actie wordt uitgevoerd, wordt de *nominale tijd*genoemd . Als u bijvoorbeeld de gegevens voor 1 januari 2017 wilt verwerken, plant de coördinator actie met een nominale tijd van 2017-01-01T00:00:00 GMT.
+    Een coördinator is verantwoordelijk voor het plannen van acties `start` binnen `end` het datum bereik en op basis van het interval dat `frequency` is opgegeven door het kenmerk. Elke geplande actie op zijn beurt voert de werk stroom uit zoals geconfigureerd. In de coördinator definitie hierboven is de coördinator geconfigureerd om acties uit te voeren vanaf 1 januari 2017 tot 5 januari 2017. De frequentie wordt ingesteld op één dag met de expressie voor de [taal](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frequentie `${coord:days(1)}`van Oozie. Dit leidt ertoe dat de coördinator een actie (en dus de werk stroom) één keer per dag plant. Voor datumbereiken die zich in het verleden bevinden, zoals in dit voor beeld, wordt de actie gepland om zonder vertraging te worden uitgevoerd. Het begin van de datum vanaf welke de uitvoering van een actie wordt gepland, wordt de *nominale tijd*genoemd. Als u bijvoorbeeld de gegevens voor 1 januari 2017 wilt verwerken, zal de coördinator een actie plannen met een nominale tijd van 2017-01-01T00:00:00 GMT.
 
-* Punt 2: Binnen het datumbereik `dataset` van de werkstroom geeft het element aan waar u in HDFS moet zoeken naar de gegevens voor een bepaald datumbereik en configureert het hoe Oozie bepaalt of de gegevens nog beschikbaar zijn voor verwerking.
+* Punt 2: binnen het datum bereik van de werk stroom geeft `dataset` het element op waar u wilt zoeken naar HDFS voor de gegevens voor een bepaald datum bereik en configureert u hoe Oozie bepaalt of de gegevens nog beschikbaar zijn voor verwerking.
 
     ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -516,11 +516,11 @@ Zoals u zien, is de meerderheid van de coördinator alleen configuratiegegevens 
     </dataset>
     ```
 
-    Het pad naar de gegevens in HDFS is dynamisch `uri-template` gebouwd volgens de expressie in het element. In deze coördinator wordt ook een frequentie van één dag gebruikt met de dataset. Terwijl de begin- en einddatum op het coördinatorelement bepalen wanneer `initial-instance` de `frequency` acties zijn gepland (en hun nominale tijden `uri-template`worden gedefinieerd), bepalen de en op de gegevensset de berekening van de datum die wordt gebruikt bij het bouwen van de . Stel in dit geval de eerste instantie in op één dag voor de start van de coördinator om ervoor te zorgen dat de gegevens van de eerste dag (1/1/2017) worden opgehaald. De datumberekening van de gegevensset `initial-instance` wordt naar voren geschoven vanaf de waarde van (12/31/2016) die vordert in stappen van de frequentie van gegevenssets (één dag) totdat de meest recente datum wordt gevonden die niet voldoet aan de nominale tijd die is ingesteld door de coördinator (2017-01-01T00:00:00 GMT voor de eerste actie).
+    Het pad naar de gegevens in HDFS wordt dynamisch gebouwd op basis van de expressie in het `uri-template` -element. In deze coördinator wordt er ook een frequentie van één dag gebruikt voor de gegevensset. De begin-en eind datum van het element van de coördinator bepalen wanneer de acties worden gepland (en definieert hun nominale tijden) `initial-instance` , `frequency` de en op de gegevensset bepalen de berekening van de datum die wordt gebruikt voor het `uri-template`bouwen van de. In dit geval stelt u het oorspronkelijke exemplaar in op één dag vóór het begin van de coördinator om ervoor te zorgen dat het de eerste dag (1/1/2017) aan gegevens ophaalt. De datum berekening van de gegevensset wordt voorwaarts uitgevoerd op basis van `initial-instance` de waarde van (12/31/2016), in stappen van de frequentie (één dag), tot de meest recente datum waarop de nominale tijd die door de coördinator is ingesteld (2017-01-01T00:00:00 GMT voor de eerste actie) wordt gevonden.
 
-    Het `done-flag` lege element geeft aan dat wanneer Oozie controleert op de aanwezigheid van invoergegevens op het afgesproken tijdstip, Oozie gegevens bepaalt of beschikbaar is door aanwezigheid van een directory of bestand. In dit geval is het de aanwezigheid van een csv-bestand. Als er een csv-bestand aanwezig is, gaat Oozie ervan uit dat de gegevens klaar zijn en start een werkstroominstantie om het bestand te verwerken. Als er geen csv-bestand aanwezig is, gaat Oozie ervan uit dat de gegevens nog niet klaar zijn en dat de uitvoering van de werkstroom in een wachtstand gaat.
+    Het lege `done-flag` element geeft aan dat wanneer Oozie controleert op de aanwezigheid van invoer gegevens op de aangewezen tijd, Oozie bepaalt of gegevens beschikbaar zijn door aanwezigheid van een map of bestand. In dit geval is het de aanwezigheid van een CSV-bestand. Als er een CSV-bestand aanwezig is, gaat Oozie ervan uit dat de gegevens gereed zijn en wordt een workflowexemplaar gestart om het bestand te verwerken. Als er geen CSV-bestand aanwezig is, gaat Oozie ervan uit dat de gegevens nog niet gereed zijn en dat de werk stroom wordt uitgevoerd in een wacht status.
 
-* Punt 3: `data-in` Het element geeft de specifieke tijdstempel op die `uri-template` moet worden gebruikt als de nominale tijd bij het vervangen van de waarden voor de bijbehorende gegevensset.
+* Punt 3: in `data-in` het element wordt de specifieke tijds tempel aangegeven die moet worden gebruikt als de nominale tijd `uri-template` bij het vervangen van de waarden in voor de bijbehorende gegevensset.
 
     ```xml
     <data-in name="event_input1" dataset="ds_input1">
@@ -528,17 +528,17 @@ Zoals u zien, is de meerderheid van de coördinator alleen configuratiegegevens 
     </data-in>
     ```
 
-    Stel in dit geval de `${coord:current(0)}`instantie in op de expressie , wat zich vertaalt in het gebruik van de nominale tijd van de actie zoals oorspronkelijk gepland door de coördinator. Met andere woorden, wanneer de coördinator de te lopen actie plant met een nominale tijd van 01/01/2017, dan is 01/01/2017 wat wordt gebruikt om de variabelen JAAR (2017) en MONTH (01) in de URI-sjabloon te vervangen. Zodra de URI-sjabloon voor dit exemplaar is berekend, controleert Oozie of de verwachte map of bestand beschikbaar is en plant de volgende uitvoering van de werkstroom dienovereenkomstig.
+    In dit geval stelt u het exemplaar in op de `${coord:current(0)}`expressie, waarmee wordt gebruikgemaakt van de nominale tijd van de actie, zoals oorspronkelijk gepland door de coördinator. Met andere woorden, wanneer de coördinator de actie plant om te worden uitgevoerd met een nominale tijd van 01/01/2017, wordt 01/01/2017 wat wordt gebruikt om de variabelen YEAR (2017) en MONTH (01) in de URI-sjabloon te vervangen. Zodra de URI-sjabloon voor dit exemplaar is berekend, controleert Oozie of de verwachte map of het bestand beschikbaar is en wordt de volgende uitvoering van de werk stroom dienovereenkomstig gepland.
 
-De drie voorgaande punten leveren samen een situatie op waarin de coördinator de verwerking van de brongegevens van dag tot dag plant.
+De drie voorafgaande punten combi neren om een situatie op te leveren waarbij de coördinator de verwerking van de bron gegevens op een dag per dag plant.
 
-* Punt 1: De coördinator begint met een nominale datum 2017-01-01.
+* Punt 1: de coördinator begint met een nominale datum van 2017-01-01.
 
-* Punt 2: Oozie zoekt `sourceDataFolder/2017-01-FlightData.csv`naar gegevens die beschikbaar zijn in .
+* Punt 2: Oozie zoekt naar gegevens die beschikbaar `sourceDataFolder/2017-01-FlightData.csv`zijn in.
 
-* Punt 3: Wanneer Oozie dat bestand vindt, plant het een instantie van de werkstroom die de gegevens voor 2017-01-01 verwerkt. Oozie gaat dan verder met de verwerking voor 2017-01-02. Deze evaluatie wordt herhaald tot maar niet inclusief 2017-01-05.
+* Punt 3: wanneer Oozie dat bestand vindt, wordt een exemplaar van de werk stroom gepland dat de gegevens verwerkt voor 2017-01-01. Oozie gaat vervolgens verder met de verwerking van 2017-01-02. Deze evaluatie wordt herhaald tot maar niet inclusief 2017-01-05.
 
-Net als bij werkstromen wordt de configuratie `job.properties` van een coördinator gedefinieerd in een bestand, dat een superset heeft van de instellingen die door de werkstroom worden gebruikt.
+Net als bij werk stromen wordt de configuratie van een coördinator gedefinieerd in `job.properties` een bestand met een superset van de instellingen die door de werk stroom worden gebruikt.
 
 ```text
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -556,52 +556,52 @@ sqlDatabaseConnectionString="jdbc:sqlserver://[SERVERNAME].database.windows.net;
 sqlDatabaseTableName=dailyflights
 ```
 
-De enige nieuwe eigenschappen `job.properties` die in dit bestand zijn geïntroduceerd, zijn:
+De enige nieuwe eigenschappen die in dit `job.properties` bestand zijn geïntroduceerd zijn:
 
-| Eigenschap | Waardebron |
+| Eigenschap | Waarde bron |
 | --- | --- |
-| oozie.coord.application.path | Geeft de locatie `coordinator.xml` aan van het bestand met de Oozie-coördinator die moet worden uitgevoerd. |
-| hiveDailyTableNameVoorvoegsel | Het voorvoegsel dat wordt gebruikt bij het dynamisch maken van de tabelnaam van de faseringstabel. |
-| hiveDataFolderVoorvoegsel | Het voorvoegsel van het pad waar alle faseringstabellen worden opgeslagen. |
+| oozie. coord. Application. Path | Hiermee wordt de locatie van `coordinator.xml` het bestand met de Oozie-coördinator aangegeven dat moet worden uitgevoerd. |
+| hiveDailyTableNamePrefix | Het voor voegsel dat wordt gebruikt bij het dynamisch maken van de tabel naam van de faserings tabel. |
+| hiveDataFolderPrefix | Het voor voegsel van het pad waar alle faserings tabellen worden opgeslagen. |
 
-## <a name="deploy-and-run-the-oozie-coordinator"></a>Oozie-coördinator implementeren en uitvoeren
+## <a name="deploy-and-run-the-oozie-coordinator"></a>De Oozie-coördinator implementeren en uitvoeren
 
-Als u de pijplijn met een coördinator wilt uitvoeren, gaat u op dezelfde manier te werk als voor de werkstroom, behalve dat u vanuit een map één niveau boven de map werkt die uw werkstroom bevat. Deze mapconventie scheidt de coördinatoren van de werkstromen op schijf, zodat u één coördinator koppelen aan verschillende onderliggende werkstromen.
+Als u de pijp lijn met een coördinator wilt uitvoeren, gaat u op een vergelijk bare manier als voor de werk stroom, met uitzonde ring van een map die één niveau boven de map met uw werk stroom bevat. Deze map scheidt de coördinatoren van de werk stromen op de schijf, zodat u één coördinator kunt koppelen aan verschillende onderliggende werk stromen.
 
-1. Gebruik SCP vanaf uw lokale machine om de coördinatorbestanden te kopiëren tot de lokale opslag van het hoofdknooppunt van uw cluster.
+1. Gebruik SCP van uw lokale computer om de coördinator bestanden te kopiëren naar de lokale opslag van het hoofd knooppunt van uw cluster.
 
     ```bash
     scp ./* sshuser@CLUSTERNAME-ssh.azurehdinsight.net:~
     ```
 
-2. SSH in je hoofdknooppunt.
+2. SSH in uw hoofd knooppunt.
 
     ```bash
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Kopieer de coördinatorbestanden naar HDFS.
+3. Kopieer de bestanden van de coördinator naar HDFS.
 
     ```bash
     hdfs dfs -put ./* /oozie/
     ```
 
-4. Voer de coördinator uit.
+4. De coördinator uit te voeren.
 
     ```bash
     oozie job -config job.properties -run
     ```
 
-5. Controleer de status met de Oozie-webconsole, selecteer dit keer het tabblad **Afdruktaken** en vervolgens **Alle taken**.
+5. Controleer de status met behulp van de Oozie-webconsole. deze keer dat u het tabblad **coördinator taken** selecteert en vervolgens **alle taken**.
 
-    ![Oozie Web Console Coördinator Vacatures](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    ![Taken voor Oozie web console-coördinator](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 
-6. Selecteer een coördinatorinstantie om de lijst met geplande acties weer te geven. In dit geval ziet u vier acties met nominale tijden in het bereik van 1/1/2017 tot 1/4/2017.
+6. Selecteer een coördinator instantie om de lijst met geplande acties weer te geven. In dit geval ziet u vier acties met nominale tijden in het bereik van 1/1/2017 tot 1/4/2017.
 
-    ![Oozie Web Console Coördinator Job](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    ![Taak Oozie web console-coördinator](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
 
-    Elke actie in deze lijst komt overeen met een instantie van de werkstroom die gegevens van één dag verwerkt, waarbij het begin van die dag wordt aangegeven door de nominale tijd.
+    Elke actie in deze lijst komt overeen met een exemplaar van de werk stroom die de gegevens van één dag verwerkt, waarbij het begin van die dag wordt aangegeven door de nominale tijd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Apache Oozie Documentatie](https://oozie.apache.org/docs/4.2.0/index.html)
+[Documentatie voor Apache Oozie](https://oozie.apache.org/docs/4.2.0/index.html)

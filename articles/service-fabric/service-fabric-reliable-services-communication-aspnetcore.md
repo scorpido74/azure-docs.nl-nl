@@ -1,110 +1,110 @@
 ---
-title: Servicecommunicatie met de ASP.NET Core
-description: Meer informatie over het gebruik van ASP.NET Core in stateloze en stateful Azure Service Fabric Reliable Services-toepassingen.
+title: Service communicatie met de ASP.NET Core
+description: Meer informatie over het gebruik van ASP.NET Core in stateless en stateful Azure Service Fabric Reliable Services-toepassingen.
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639629"
 ---
-# <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in Azure Service Fabric Reliable Services
+# <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in azure Service Fabric Reliable Services
 
-ASP.NET Core is een open-source en cross-platform framework. Dit framework is ontworpen voor het bouwen van cloudgebaseerde, met internetverbinding verbonden toepassingen, zoals web-apps, IoT-apps en mobiele back-ends.
+ASP.NET Core is een open-source-en platformoverschrijdende Framework. Dit framework is ontworpen voor het bouwen van Cloud toepassingen die zijn verbonden met internet, zoals web apps, IoT apps en mobiele back-ends.
 
-Dit artikel is een uitgebreide handleiding voor het hosten van ASP.NET Core-services in Service Fabric Reliable Services met behulp van de **Microsoft.ServiceFabric.AspNetCore.** set NuGet-pakketten.
+Dit artikel is een diep gaande hand leiding voor het hosten van ASP.NET Core Services in Service Fabric Reliable Services met behulp van de **micro soft. ServiceFabric. AspNetCore.** set NuGet-pakketten.
 
-Zie [Zelfstudie: Een toepassing maken en implementeren met een ASP.NET Core Web API front-endservice en een stateful back-endservice](service-fabric-tutorial-create-dotnet-app.md)voor een inleidende zelfstudie over ASP.NET Core in Service Fabric en instructies voor het instellen van uw ontwikkelomgeving.
+Zie [zelf studie: een toepassing maken en implementeren met een ASP.net core web API-front-end-service en een stateful back-end-service](service-fabric-tutorial-create-dotnet-app.md)voor een inleidende zelf studie over ASP.NET Core in service Fabric en instructies over het instellen van uw ontwikkel omgeving.
 
-De rest van dit artikel gaat ervan uit dat je al bekend bent met ASP.NET Core. Zo niet, lees dan door de [ASP.NET Core fundamentals](https://docs.microsoft.com/aspnet/core/fundamentals/index).
+In de rest van dit artikel wordt ervan uitgegaan dat u al bekend bent met ASP.NET Core. Als dat niet het geval is, lees dan de [ASP.net core fundamentals](https://docs.microsoft.com/aspnet/core/fundamentals/index).
 
-## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core in de Service Fabric-omgeving
+## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core in de Service Fabric omgeving
 
-Zowel ASP.NET Core- als Service Fabric-apps kunnen worden uitgevoerd op .NET Core of full .NET Framework. U ASP.NET Core op twee verschillende manieren gebruiken in Service Fabric:
- - **Gehost als een gast uitvoerbaar**. Op deze manier wordt voornamelijk gebruikt om bestaande ASP.NET Core-toepassingen op Service Fabric uit te voeren zonder codewijzigingen.
- - **Run binnen een betrouwbare service.** Op deze manier zorgt een betere integratie met de Service Fabric runtime en maakt stateful ASP.NET Core-services.
+Zowel ASP.NET Core-als Service Fabric-apps kunnen worden uitgevoerd op .NET core-of volledige .NET Framework. U kunt ASP.NET Core op twee verschillende manieren gebruiken in Service Fabric:
+ - **Gehost als een gast-uitvoerbaar bestand**. Op deze manier wordt hoofd zakelijk gebruikt om bestaande ASP.NET Core-toepassingen uit te voeren op Service Fabric zonder code wijzigingen.
+ - **Binnen een betrouw bare service worden uitgevoerd**. Op deze manier kunt u de integratie met de Service Fabric-runtime verbeteren en stateful ASP.NET Core-Services toestaan.
 
-In de rest van dit artikel wordt uitgelegd hoe ASP.NET Core worden gebruikt in een betrouwbare service, via de ASP.NET Core-integratiecomponenten die worden verzonden met de Service Fabric SDK.
+In de rest van dit artikel wordt uitgelegd hoe u ASP.NET Core in een betrouw bare service kunt gebruiken via de ASP.NET Core-integratie onderdelen die bij de Service Fabric SDK worden geleverd.
 
-## <a name="service-fabric-service-hosting"></a>Service Fabric-servicehosting
+## <a name="service-fabric-service-hosting"></a>Hosting van Service Fabric-service
 
-In Service Fabric worden een of meer exemplaren en/of replica's van uw service uitgevoerd in een *servicehostproces:* een uitvoerbaar bestand waarin uw servicecode wordt uitgevoerd. U bent als serviceauteur eigenaar van het servicehostproces en Service Fabric activeert en bewaakt het voor u.
+In Service Fabric worden een of meer instanties en/of replica's van de service uitgevoerd in een *hostproces*: een uitvoerbaar bestand dat uw service code uitvoert. Als auteur van een service kunt u eigenaar zijn van het proces van de servicehost en Service Fabric het activeren en controleren.
 
-Traditionele ASP.NET (tot MVC 5) is nauw gekoppeld aan IIS via System.Web.dll. ASP.NET Core biedt een scheiding tussen de webserver en uw webtoepassing. Deze scheiding maakt het mogelijk webapplicaties draagbaar te zijn tussen verschillende webservers. Het maakt het ook mogelijk webservers te worden *self-hosted*. Dit betekent dat u een webserver starten in uw eigen proces, in tegenstelling tot een proces dat eigendom is van speciale webserversoftware, zoals IIS.
+Traditionele ASP.NET (tot MVC 5) is nauw gekoppeld aan IIS via System. Web. dll. ASP.NET Core biedt een schei ding tussen de webserver en uw webtoepassing. Met deze schei ding kunnen webtoepassingen worden overdraagbaar tussen verschillende webservers. Ook kunnen webservers *zichzelf hosten*. Dit betekent dat u een webserver in uw eigen proces kunt starten, in tegens telling tot een proces dat eigendom is van toegewezen webserver software, zoals IIS.
 
-Als u een Service Fabric-service wilt combineren en ASP.NET, als gast uitvoerbaar of in een betrouwbare service, moet u ASP.NET kunnen starten binnen uw servicehostproces. ASP.NET Core self-hosting u dit doen.
+Als u een Service Fabric-service en ASP.NET wilt combi neren als een uitvoerbaar gast bestand of in een betrouw bare service, moet u ASP.NET in uw hostproces van de service kunnen starten. Met ASP.NET Core self-hosting kunt u dit doen.
 
-## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Hosting ASP.NET Core in een betrouwbare service
-Meestal maken zelfgehoste ASP.NET Kerntoepassingen een WebHost in het ingangspunt van een toepassing, zoals de `static void Main()` methode in `Program.cs`. In dit geval is de levenscyclus van de WebHost gebonden aan de levenscyclus van het proces.
+## <a name="hosting-aspnet-core-in-a-reliable-service"></a>ASP.NET Core hosten in een betrouw bare service
+Zelf-hostende ASP.NET Core toepassingen maken meestal een WebHost in het ingangs punt van een toepassing, zoals `static void Main()` de methode `Program.cs`in. In dit geval is de levens cyclus van de WebHost gebonden aan de levens cyclus van het proces.
 
-![Hosting ASP.NET Core in een proces][0]
+![ASP.NET Core in een proces hosten][0]
 
-Maar het ingangspunt voor toepassingen is niet de juiste plek om een WebHost te maken in een betrouwbare service. Dat komt omdat het invoerpunt voor toepassingen alleen wordt gebruikt om een servicetype te registreren met de runtime servicefabric, zodat het exemplaren van dat servicetype kan maken. De WebHost moet worden gemaakt in een betrouwbare service zelf. Binnen het servicehostproces kunnen service-exemplaren en/of replica's meerdere levenscycli doorlopen. 
+Maar het ingangs punt van de toepassing is niet de juiste plek om een WebHost in een betrouw bare service te maken. Dat komt doordat het ingangs punt van de toepassing alleen wordt gebruikt voor het registreren van een service type bij de runtime van Service Fabric, zodat het instanties van dat Service type kan maken. De WebHost moet worden gemaakt in een betrouw bare service zelf. Binnen het proces van de servicehost kunnen service-exemplaren en/of replica's meerdere levens cycli passeren. 
 
-Een instantie Betrouwbare Service wordt vertegenwoordigd door uw `StatelessService` `StatefulService`serviceklasse die afkomstig is van of . De communicatiestack voor een service `ICommunicationListener` is opgenomen in een implementatie in uw serviceklasse. De `Microsoft.ServiceFabric.AspNetCore.*` NuGet-pakketten bevatten `ICommunicationListener` implementaties van die start en beheren de ASP.NET Core WebHost voor kestrel of HTTP.sys in een betrouwbare service.
+Een betrouwbaar service-exemplaar wordt vertegenwoordigd door de service klasse die is `StatelessService` afgeleid `StatefulService`van of. De communicatie stack voor een service is opgenomen in een `ICommunicationListener` implementatie in uw service klasse. De `Microsoft.ServiceFabric.AspNetCore.*` NuGet-pakketten bevatten implementaties `ICommunicationListener` van waarmee de ASP.net core WEBHOST voor Kestrel of http. sys in een betrouw bare service wordt gestart en beheerd.
 
-![Diagram voor het hosten van ASP.NET Core in een betrouwbare service][1]
+![Diagram voor het hosten van ASP.NET Core in een betrouw bare service][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListeners
-De `ICommunicationListener` implementaties voor Torenvalk en `Microsoft.ServiceFabric.AspNetCore.*` HTTP.sys in de NuGet-pakketten hebben vergelijkbare gebruikspatronen. Maar ze voeren iets verschillende acties uit die specifiek zijn voor elke webserver. 
+De `ICommunicationListener` implementaties voor Kestrel en http. sys in de `Microsoft.ServiceFabric.AspNetCore.*` NuGet-pakketten hebben vergelijk bare gebruiks patronen. Maar ze voeren enigszins verschillende acties uit die specifiek zijn voor elke webserver. 
 
-Beide communicatielisteners bieden een constructeur die de volgende argumenten aanneemt:
- - **`ServiceContext serviceContext`**: Dit `ServiceContext` is het object dat informatie bevat over de lopende service.
- - **`string endpointName`**: Dit is de `Endpoint` naam van een configuratie in ServiceManifest.xml. Het is vooral waar de twee communicatie luisteraars verschillen. HTTP.sys *requires* vereist `Endpoint` een configuratie, terwijl Torenvalk dat niet doet.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Dit is een lambda die u implementeert, waarin u een `IWebHost`. Hiermee u `IWebHost` de manier configureren waarop u normaal gesproken in een ASP.NET Core-toepassing zou configureren. De lambda biedt een URL die voor u wordt gegenereerd, afhankelijk van `Endpoint` de integratieopties voor Service Fabric die u gebruikt en de configuratie die u biedt. U die URL vervolgens wijzigen of gebruiken om de webserver te starten.
+Beide communicatie listeners bieden een constructor die de volgende argumenten gebruikt:
+ - **`ServiceContext serviceContext`**: Dit is het `ServiceContext` object dat informatie bevat over de uitgevoerde service.
+ - **`string endpointName`**: Dit is de naam van een `Endpoint` configuratie in ServiceManifest. XML. Het is hoofd zakelijk waar de twee communicatie-listeners verschillen. HTTP. sys *vereist* een `Endpoint` configuratie, terwijl Kestrel niet is.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Dit is een lambda die u implementeert, waarin u een `IWebHost`maakt en retourneert. Zo kunt u de manier `IWebHost` configureren waarop u normaal gesp roken zou doen in een ASP.net core-toepassing. De Lambda bevat een URL die voor u wordt gegenereerd, afhankelijk van de Service Fabric integratie opties die u gebruikt en de `Endpoint` configuratie die u opgeeft. U kunt deze URL vervolgens wijzigen of gebruiken om de webserver te starten.
 
-## <a name="service-fabric-integration-middleware"></a>Service Fabric integratie middleware
-Het `Microsoft.ServiceFabric.AspNetCore` NuGet-pakket `UseServiceFabricIntegration` bevat `IWebHostBuilder` de uitbreidingsmethode waarop Service Fabric-bewuste middleware wordt toegevoegd. Deze middleware configureert de Torenvalk of HTTP.sys `ICommunicationListener` om een unieke service-URL te registreren met de Service Fabric Naming Service. Vervolgens valideert het clientaanvragen om ervoor te zorgen dat clients verbinding maken met de juiste service. 
+## <a name="service-fabric-integration-middleware"></a>Middleware voor Service Fabric integratie
+Het `Microsoft.ServiceFabric.AspNetCore` NuGet-pakket bevat `UseServiceFabricIntegration` de uitbreidings methode `IWebHostBuilder` voor het toevoegen van service Fabric bewuste middleware. Deze middleware configureert de Kestrel of HTTP. sys `ICommunicationListener` voor het registreren van een unieke service-URL met de service Fabric Naming Service. Vervolgens worden client aanvragen gevalideerd om ervoor te zorgen dat clients verbinding maken met de juiste service. 
 
-Deze stap is nodig om te voorkomen dat clients per ongeluk verbinding maken met de verkeerde service. Dat komt omdat in een gedeelde hostomgeving, zoals Service Fabric, meerdere webtoepassingen op dezelfde fysieke of virtuele machine kunnen worden uitgevoerd, maar geen unieke hostnamen gebruiken. Dit scenario wordt in de volgende sectie nader beschreven.
+Deze stap is nodig om te voor komen dat clients per ongeluk verbinding maken met de verkeerde service. Dat komt doordat meerdere webtoepassingen in een omgeving met gedeelde host, zoals Service Fabric, op dezelfde fysieke of virtuele machine kunnen worden uitgevoerd, maar geen unieke hostnamen. Dit scenario wordt uitgebreid beschreven in de volgende sectie.
 
-### <a name="a-case-of-mistaken-identity"></a>Een geval van verkeerde identiteit
-Servicereplica's, ongeacht het protocol, luisteren naar een unieke IP:-poortcombinatie. Zodra een servicereplica is begonnen met luisteren op een IP:poorteindpunt, wordt dat eindpunt gerapporteerd aan de Service Fabric Naming Service. Daar kunnen klanten of andere diensten het ontdekken. Als services dynamisch toegewezen toepassingspoorten gebruiken, kan een servicereplica toevallig hetzelfde IP:-poorteindpunt van een andere service gebruiken die voorheen op dezelfde fysieke of virtuele machine was toegewezen. Dit kan ertoe leiden dat een client per ongeluk verbinding maakt met de verkeerde service. Dit scenario kan het gevolg zijn als de volgende reeks gebeurtenissen optreedt:
+### <a name="a-case-of-mistaken-identity"></a>Een geval van een onjuiste identiteit
+Service replica's, ongeacht het Protocol, kunnen Luis teren naar een unieke combi natie van IP: poort. Zodra een service replica is begonnen met Luis teren op een IP: poort eindpunt, wordt het eind punt gerapporteerd aan de Service Fabric Naming Service. Daar kunnen clients of andere services het detecteren. Als services dynamisch toegewezen toepassings poorten gebruiken, kan een service replica het hetzelfde IP-adres van de poort van een andere service die eerder op dezelfde fysieke of virtuele machine wordt gebruikt, per keer gebruiken. Dit kan ertoe leiden dat een client per ongeluk verbinding maakt met de verkeerde service. Dit scenario kan optreden als de volgende reeks gebeurtenissen zich voordoet:
 
  1. Service A luistert op 10.0.0.1:30000 via HTTP. 
- 2. Client lost Service A op en krijgt adres 10.0.0.1:30000.
- 3. Service A wordt verplaatst naar een ander knooppunt.
- 4. Service B is geplaatst op 10.0.0.1 en maakt toevallig gebruik van dezelfde poort 30000.
- 5. Client probeert verbinding te maken met service A met adres in de cache 10.0.0.1:30000.
- 6. Client is nu met succes verbonden met service B, niet realiserend dat deze is aangesloten op de verkeerde service.
+ 2. De client lost Service A op en krijgt adres 10.0.0.1:30000.
+ 3. Service een verplaatst naar een ander knoop punt.
+ 4. Service B wordt op 10.0.0.1 geplaatst en maakt gebruik van dezelfde poort 30000.
+ 5. De client probeert verbinding te maken met de service A met het adres in de cache 10.0.0.1:30000.
+ 6. De client is nu verbonden met Service B, maar het is niet gelukt om verbinding te hebben met de verkeerde service.
 
-Dit kan leiden tot bugs op willekeurige momenten die moeilijk te diagnosticeren kunnen zijn.
+Dit kan leiden tot fouten op wille keurige tijdstippen die lastig kunnen worden vastgesteld.
 
-### <a name="using-unique-service-urls"></a>Unieke service-URL's gebruiken
-Om deze bugs te voorkomen, kunnen services een eindpunt naar de naamgevingsservice plaatsen met een unieke id en die unieke id valideren tijdens clientaanvragen. Dit is een samenwerkingsverband tussen diensten in een niet-vijandige-tenant vertrouwde omgeving. Het biedt geen veilige serviceverificatie in een vijandige tenant-omgeving.
+### <a name="using-unique-service-urls"></a>Unieke service-Url's gebruiken
+Om deze fouten te voor komen, kunnen services een eind punt plaatsen op de Naming Service met een unieke id en vervolgens die unieke id valideren tijdens client aanvragen. Dit is een coöperatieve actie tussen services in een niet-vijandelijke, vertrouwde Tenant omgeving. Het biedt geen veilige verificatie van de service in een vijandelijke Tenant omgeving.
 
-In een vertrouwde omgeving voegt de middleware `UseServiceFabricIntegration` die door de methode wordt toegevoegd automatisch een unieke id toe aan het adres dat naar de naamgevingsservice is geplaatst. Het valideert die id op elke aanvraag. Als de id niet overeenkomt, retourneert de middleware onmiddellijk een HTTP 410 Gone-antwoord.
+In een vertrouwde omgeving voegt de middleware die wordt toegevoegd door de `UseServiceFabricIntegration` methode automatisch een unieke id toe aan het adres dat wordt geplaatst op de Naming Service. De id controleert op elke aanvraag. Als de id niet overeenkomt, retourneert de middleware onmiddellijk een HTTP 410-antwoord.
 
-Services die een dynamisch toegewezen poort gebruiken, moeten gebruik maken van deze middleware.
+Services die gebruikmaken van een dynamisch toegewezen poort, moeten gebruikmaken van deze middleware.
 
-Services die gebruik maken van een vaste unieke poort hebben dit probleem niet in een coöperatieve omgeving. Een vaste unieke poort wordt meestal gebruikt voor extern gerichte services die een bekende poort nodig hebben voor clienttoepassingen om verbinding mee te maken. De meeste internetgerichte webtoepassingen gebruiken bijvoorbeeld poort 80 of 443 voor webbrowserverbindingen. In dit geval mag de unieke id niet zijn ingeschakeld.
+Services die gebruikmaken van een vaste unieke poort, hebben dit probleem niet in een samenwerkings omgeving. Een vaste unieke poort wordt doorgaans gebruikt voor extern gerichte services die een bekende poort nodig hebben voor client toepassingen om verbinding mee te maken. De meeste Internet gerichte webtoepassingen gebruiken bijvoorbeeld poort 80 of 443 voor webbrowser verbindingen. In dit geval moet de unieke id niet worden ingeschakeld.
 
-In het volgende diagram ziet u de aanvraagstroom met de middleware ingeschakeld:
+In het volgende diagram ziet u de aanvraag stroom waarbij de middleware is ingeschakeld:
 
-![Service Fabric ASP.NET Core-integratie][2]
+![Integratie van Service Fabric ASP.NET Core][2]
 
-Zowel Kestrel als `ICommunicationListener` HTTP.sys implementaties gebruiken dit mechanisme op precies dezelfde manier. Hoewel HTTP.sys aanvragen intern kan differentiëren op basis van unieke URL-paden met *not* behulp van de `ICommunicationListener` onderliggende functie voor het delen van **http.sys-poorten,** wordt die functionaliteit niet gebruikt door de HTTP.sys-implementatie. Dat komt omdat het resulteert in HTTP 503 en HTTP 404 foutstatuscodes in het eerder beschreven scenario. Dat maakt het op zijn beurt moeilijk voor klanten om de bedoeling van de fout te bepalen, omdat HTTP 503 en HTTP 404 vaak worden gebruikt om andere fouten aan te geven. 
+Zowel Kestrel-als HTTP. `ICommunicationListener` sys-implementaties gebruiken dit mechanisme op dezelfde manier. Hoewel HTTP. sys aanvragen intern kan onderscheiden op basis van unieke URL-paden door gebruik te maken van de onderliggende **http. sys-** functie *not* voor het delen van poorten, wordt `ICommunicationListener` deze functionaliteit niet gebruikt door de http. sys-implementatie. Dat komt doordat de HTTP 503-en HTTP 404-fout status codes in het scenario dat eerder is beschreven, worden veroorzaakt. Op die manier is het voor clients lastig om het doel van de fout te bepalen, omdat HTTP 503 en HTTP 404 vaak worden gebruikt om andere fouten aan te geven. 
 
-Zo standaardiseren zowel Kestrel `ICommunicationListener` als HTTP.sys implementaties `UseServiceFabricIntegration` op middleware die door de uitbreidingsmethode worden geleverd. Clients hoeven daarom alleen een serviceeindpunt uit te voeren dat opnieuw wordt opgelost op HTTP 410-antwoorden.
+Daarom wordt zowel Kestrel-als HTTP. `ICommunicationListener` sys-implementaties standaard gestandardization op middleware `UseServiceFabricIntegration` die door de uitbreidings methode wordt verschaft. Daarom hoeven clients alleen een actie voor het opnieuw oplossen van het service-eind punt uit te voeren op HTTP 410-reacties.
 
-## <a name="httpsys-in-reliable-services"></a>HTTP.sys in Betrouwbare Services
-U HTTP.sys gebruiken in Betrouwbare services door het **Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet-pakket te importeren. Dit pakket `HttpSysCommunicationListener`bevat een `ICommunicationListener`implementatie van . `HttpSysCommunicationListener`hiermee u een ASP.NET Core WebHost maken in een betrouwbare service met HTTP.sys als webserver.
+## <a name="httpsys-in-reliable-services"></a>HTTP. sys in Reliable Services
+U kunt HTTP. sys in Reliable Services gebruiken door het pakket **micro soft. ServiceFabric. AspNetCore. HttpSys** NuGet te importeren. Dit pakket bevat `HttpSysCommunicationListener`een implementatie van `ICommunicationListener`. `HttpSysCommunicationListener`Hiermee kunt u een ASP.NET Core WebHost maken binnen een betrouw bare service met behulp van HTTP. sys als de webserver.
 
-HTTP.sys is gebouwd op de [Windows HTTP Server API.](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) Deze API gebruikt het **HTTP.sys-kernelstuurprogramma** om HTTP-aanvragen te verwerken en door te sturen naar processen die webtoepassingen uitvoeren. Hierdoor kunnen meerdere processen op dezelfde fysieke of virtuele machine webtoepassingen hosten op dezelfde poort, gedesbigbiguated door een uniek URL-pad of hostnaam. Deze functies zijn handig in Service Fabric voor het hosten van meerdere websites in hetzelfde cluster.
+HTTP. sys is gebaseerd op de [Windows HTTP-Server-API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Deze API gebruikt het **http. sys-** kernelstuurprogramma om HTTP-aanvragen te verwerken en te routeren naar processen die webtoepassingen uitvoeren. Hierdoor kunnen meerdere processen op dezelfde fysieke of virtuele machine fungeren als host voor webtoepassingen op dezelfde poort, disambiguated door een unieke URL-pad of hostnaam. Deze functies zijn handig in Service Fabric voor het hosten van meerdere websites in hetzelfde cluster.
 
 >[!NOTE]
->HTTP.sys-implementatie werkt alleen op het Windows-platform.
+>HTTP. sys-implementatie werkt alleen op het Windows-platform.
 
-In het volgende diagram ziet u hoe HTTP.sys het **HTTP.sys-kernelstuurprogramma** in Windows gebruikt voor het delen van poorten:
+In het volgende diagram ziet u hoe HTTP. sys het stuur programma **http. sys** gebruikt in Windows voor het delen van poorten:
 
-![HTTP.sys-diagram][3]
+![HTTP. sys-diagram][3]
 
-### <a name="httpsys-in-a-stateless-service"></a>HTTP.sys in een staatloze service
-Als `HttpSys` u deze wilt gebruiken `CreateServiceInstanceListeners` in een `HttpSysCommunicationListener` service zonder staat, overschrijft u de methode en retourneert u een instantie:
+### <a name="httpsys-in-a-stateless-service"></a>HTTP. sys in een stateless service
+Als u `HttpSys` wilt gebruiken in een stateless service, `CreateServiceInstanceListeners` overschrijft u de `HttpSysCommunicationListener` -methode en retourneert u een exemplaar:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -127,17 +127,17 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="httpsys-in-a-stateful-service"></a>HTTP.sys in een stateful service
+### <a name="httpsys-in-a-stateful-service"></a>HTTP. sys in een stateful service
 
-`HttpSysCommunicationListener`is momenteel niet ontworpen voor gebruik in stateful **HTTP.sys** services vanwege complicaties met de onderliggende HTTP.sys-poortdelingfunctie. Zie voor meer informatie het volgende gedeelte over dynamische poorttoewijzing met HTTP.sys. Voor stateful diensten, Torenvalk is de voorgestelde webserver.
+`HttpSysCommunicationListener`is momenteel niet ontworpen voor gebruik in stateful Services vanwege complicaties met de onderliggende **http. sys-** functie voor het delen van poorten. Zie de volgende sectie over dynamische poort toewijzing met HTTP. sys voor meer informatie. Voor stateful Services is Kestrel de voorgestelde webserver.
 
-### <a name="endpoint-configuration"></a>Eindpuntconfiguratie
+### <a name="endpoint-configuration"></a>Eindpunt configuratie
 
-Er `Endpoint` is een configuratie vereist voor webservers die de Windows HTTP Server API gebruiken, waaronder HTTP.sys. Webservers die de Windows HTTP Server API gebruiken, moeten eerst hun URL reserveren met HTTP.sys (dit wordt normaal gesproken bereikt met het [netsh-hulpprogramma).](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) 
+Een `Endpoint` configuratie is vereist voor webservers die gebruikmaken van de Windows http-server-API, met inbegrip van http. sys. Webservers die gebruikmaken van de Windows HTTP-Server-API moeten eerst hun URL reserveren met HTTP. sys (dit wordt normaal gesp roken uitgevoerd met het hulp programma [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) ). 
 
-Deze actie vereist verhoogde bevoegdheden die uw services standaard niet hebben. De opties 'http' of 'https' voor de `Protocol` eigenschap van de `Endpoint` configuratie in ServiceManifest.xml worden specifiek gebruikt om de runtime van Service Fabric te instrueren om namens u een URL te registreren bij HTTP.sys. Het doet dit met behulp van de [*sterke wildcard*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL voorvoegsel.
+Voor deze actie zijn verhoogde bevoegdheden vereist die uw services niet standaard hebben. De opties http of HTTPS voor de `Protocol` eigenschap van de `Endpoint` configuratie in ServiceManifest. XML worden speciaal gebruikt om de service Fabric-runtime te instrueren om een URL met http. sys namens u te registreren. Dit wordt gedaan met behulp van het URL-voor voegsel voor [*sterke joker tekens*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) .
 
-Als u bijvoorbeeld `http://+:80` wilt reserveren voor een service, gebruikt u de volgende configuratie in ServiceManifest.xml:
+Als u bijvoorbeeld wilt reserveren `http://+:80` voor een service, gebruikt u de volgende configuratie in ServiceManifest. XML:
 
 ```xml
 <ServiceManifest ... >
@@ -151,7 +151,7 @@ Als u bijvoorbeeld `http://+:80` wilt reserveren voor een service, gebruikt u de
 </ServiceManifest>
 ```
 
-En de naam van het `HttpSysCommunicationListener` eindpunt moet worden doorgegeven aan de constructeur:
+En de naam van het eind punt moet worden `HttpSysCommunicationListener` door gegeven aan de constructor:
 
 ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -164,8 +164,8 @@ En de naam van het `HttpSysCommunicationListener` eindpunt moet worden doorgegev
  })
 ```
 
-#### <a name="use-httpsys-with-a-static-port"></a>HTTP.sys gebruiken met een statische poort
-Als u een statische poort met HTTP.sys `Endpoint` wilt gebruiken, geeft u het poortnummer in de configuratie op:
+#### <a name="use-httpsys-with-a-static-port"></a>HTTP. sys gebruiken met een statische poort
+Geef het poort nummer op in de `Endpoint` configuratie als u een statische poort met http. sys wilt gebruiken:
 
 ```xml
   <Resources>
@@ -175,8 +175,8 @@ Als u een statische poort met HTTP.sys `Endpoint` wilt gebruiken, geeft u het po
   </Resources>
 ```
 
-#### <a name="use-httpsys-with-a-dynamic-port"></a>HTTP.sys gebruiken met een dynamische poort
-Als u een dynamisch toegewezen poort met HTTP.sys wilt gebruiken, laat u de `Port` eigenschap in de `Endpoint` configuratie weg:
+#### <a name="use-httpsys-with-a-dynamic-port"></a>HTTP. sys gebruiken met een dynamische poort
+Als u een dynamisch toegewezen poort met HTTP. sys wilt gebruiken, `Port` laat u de `Endpoint` eigenschap in de configuratie weg:
 
 ```xml
   <Resources>
@@ -186,17 +186,17 @@ Als u een dynamisch toegewezen poort met HTTP.sys wilt gebruiken, laat u de `Por
   </Resources>
 ```
 
-Een dynamische poort die `Endpoint` door een configuratie wordt toegewezen, biedt slechts één poort *per hostproces.* Met het huidige Service Fabric-hostingmodel kunnen meerdere service-exemplaren en/of replica's in hetzelfde proces worden gehost. Dit betekent dat elk dezelfde poort deelt `Endpoint` wanneer deze via de configuratie wordt toegewezen. Meerdere **HTTP.sys-exemplaren** kunnen een poort delen met behulp van de onderliggende functie voor het delen van **HTTP.sys-poorten.** Maar het wordt niet `HttpSysCommunicationListener` ondersteund door vanwege de complicaties die het introduceert voor verzoeken van klanten. Voor dynamisch poortgebruik is Torenvalk de voorgestelde webserver.
+Een dynamische poort die door een `Endpoint` configuratie wordt toegewezen, biedt slechts één poort *per hostproces*. Met het huidige Service Fabric hosting model kunnen meerdere service-exemplaren en/of replica's worden gehost in hetzelfde proces. Dit betekent dat elke poort hetzelfde is wanneer deze wordt toegewezen via de `Endpoint` configuratie. Meerdere **http. sys-** exemplaren kunnen een poort delen met behulp van de onderliggende **http. sys-** functie voor het delen van poorten. Maar het wordt niet ondersteund door `HttpSysCommunicationListener` de complicaties die het biedt voor client aanvragen. Voor dynamisch poort gebruik is Kestrel de aanbevolen webserver.
 
-## <a name="kestrel-in-reliable-services"></a>Torenvalk in betrouwbare diensten
-U Kestrel gebruiken in Betrouwbare Services door het **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet-pakket te importeren. Dit pakket `KestrelCommunicationListener`bevat een `ICommunicationListener`implementatie van . `KestrelCommunicationListener`stelt u in staat om een ASP.NET Core WebHost te maken in een betrouwbare service met behulp van Torenvalk als webserver.
+## <a name="kestrel-in-reliable-services"></a>Kestrel in Reliable Services
+U kunt Kestrel in Reliable Services gebruiken door het NuGet-pakket **micro soft. ServiceFabric. AspNetCore. Kestrel** te importeren. Dit pakket bevat `KestrelCommunicationListener`een implementatie van `ICommunicationListener`. `KestrelCommunicationListener`Hiermee kunt u een ASP.NET Core WebHost in een betrouw bare service maken met behulp van Kestrel als de webserver.
 
-Torenvalk is een cross-platform webserver voor ASP.NET Core. In tegenstelling tot HTTP.sys gebruikt Kestrel geen gecentraliseerde endpointmanager. Ook in tegenstelling tot HTTP.sys ondersteunt Kestrel geen poortdeling tussen meerdere processen. Elk geval van Torenvalk moet gebruik maken van een unieke poort. Voor meer informatie over Torenvalk, zie de [implementatie details](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
+Kestrel is een cross-platform webserver voor ASP.NET Core. In tegens telling tot HTTP. sys gebruikt Kestrel geen gecentraliseerd eindpunt beheer. Ook in tegens telling tot HTTP. sys biedt Kestrel geen ondersteuning voor het delen van poorten tussen meerdere processen. Elk exemplaar van Kestrel moet een unieke poort gebruiken. Zie de [Implementatie Details](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)voor meer informatie over Kestrel.
 
-![Torenvalkdiagram][4]
+![Kestrel diagram][4]
 
-### <a name="kestrel-in-a-stateless-service"></a>Torenvalk in een staatloze dienst
-Als `Kestrel` u deze wilt gebruiken `CreateServiceInstanceListeners` in een `KestrelCommunicationListener` service zonder staat, overschrijft u de methode en retourneert u een instantie:
+### <a name="kestrel-in-a-stateless-service"></a>Kestrel in een stateless service
+Als u `Kestrel` wilt gebruiken in een stateless service, `CreateServiceInstanceListeners` overschrijft u de `KestrelCommunicationListener` -methode en retourneert u een exemplaar:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -220,8 +220,8 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-### <a name="kestrel-in-a-stateful-service"></a>Torenvalk in een statige dienst
-Als `Kestrel` u deze wilt gebruiken `CreateServiceReplicaListeners` in een `KestrelCommunicationListener` stateful service, overschrijft u de methode en retourneert u een instantie:
+### <a name="kestrel-in-a-stateful-service"></a>Kestrel in een stateful service
+Als u `Kestrel` wilt gebruiken in een stateful service, `CreateServiceReplicaListeners` overschrijft u de `KestrelCommunicationListener` -methode en retourneert u een exemplaar:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -246,12 +246,12 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-In dit voorbeeld wordt een `IReliableStateManager` singleton-exemplaar van wordt verstrekt aan de WebHost-afhankelijkheidsinjectiecontainer. Dit is niet strikt noodzakelijk, maar `IReliableStateManager` het stelt u in staat om te gebruiken en betrouwbare collecties in uw MVC controller actiemethoden.
+In dit voor beeld wordt er een singleton `IReliableStateManager` -exemplaar van aan de container voor het inspuiten van de webhost-afhankelijkheids gegeven. Dit is niet strikt nood zakelijk, maar u kunt met `IReliableStateManager` behulp van betrouw bare verzamelingen in uw actie methoden van MVC-controller.
 
-Een `Endpoint` configuratienaam *not* wordt `KestrelCommunicationListener` niet verstrekt aan een stateful service. Dit wordt in de volgende sectie nader toegelicht.
+Er `Endpoint` is *geen* configuratie naam aan `KestrelCommunicationListener` een stateful service door gegeven. Dit wordt gedetailleerd beschreven in de volgende sectie.
 
 ### <a name="configure-kestrel-to-use-https"></a>Kestrel configureren voor gebruik van HTTPS
-Wanneer u HTTPS inschakelt met Torenvalk in uw service, moet u verschillende luisteropties instellen. Werk `ServiceInstanceListener` het eindpunt bijom een *eindpunthttps-eindpunt* te gebruiken en te luisteren op een specifieke poort (zoals poort 443). Wanneer u de webhost configureert om de Kestrel-webserver te gebruiken, moet u Torenvalk configureren om naar IPv6-adressen te luisteren op alle netwerkinterfaces: 
+Wanneer u HTTPS inschakelt met Kestrel in uw service, moet u verschillende luisterende opties instellen. Werk de `ServiceInstanceListener` om een *EndpointHttps* -eind punt te gebruiken en luister naar een specifieke poort (zoals poort 443). Wanneer u de webhost configureert voor het gebruik van de Kestrel-webserver, moet u Kestrel configureren om te Luis teren naar IPv6-adressen op alle netwerk interfaces: 
 
 ```csharp
 new ServiceInstanceListener(
@@ -291,18 +291,18 @@ serviceContext =>
         }))
 ```
 
-Zie [Torenvalk configureren om HTTPS te gebruiken](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#configure-kestrel-to-use-https)voor een volledig voorbeeld in een zelfstudie.
+Zie [Kestrel configureren voor het gebruik van HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#configure-kestrel-to-use-https)voor een volledig voor beeld in een zelf studie.
 
 
-### <a name="endpoint-configuration"></a>Eindpuntconfiguratie
-Een `Endpoint` configuratie is niet vereist om Torenvalk te gebruiken. 
+### <a name="endpoint-configuration"></a>Eindpunt configuratie
+Er `Endpoint` is geen configuratie vereist voor het gebruik van Kestrel. 
 
-Torenvalk is een eenvoudige standalone webserver. In tegenstelling tot HTTP.sys (of HttpListener) heeft het geen `Endpoint` configuratie nodig in ServiceManifest.xml omdat er geen URL-registratie nodig is voordat deze wordt gestart. 
+Kestrel is een eenvoudige, zelfstandige webserver. In tegens telling tot HTTP. sys (of HttpListener), hebt `Endpoint` u geen configuratie nodig in ServiceManifest. XML omdat hiervoor geen URL-registratie nodig is. 
 
-#### <a name="use-kestrel-with-a-static-port"></a>Kestrelen gebruiken met een statische poort
-U een statische `Endpoint` poort configureren in de configuratie van ServiceManifest.xml voor gebruik met Torenvalk. Hoewel dit niet strikt noodzakelijk is, biedt het twee potentiële voordelen:
- - Als de poort niet in het bereik van de toepassingspoort valt, wordt deze geopend via de OS-firewall van Service Fabric.
- - De URL die `KestrelCommunicationListener` u via wordt verstrekt, gebruikt deze poort.
+#### <a name="use-kestrel-with-a-static-port"></a>Kestrel gebruiken met een statische poort
+U kunt een statische poort configureren in de `Endpoint` configuratie van ServiceManifest. XML voor gebruik met Kestrel. Hoewel dit niet strikt nood zakelijk is, biedt dit twee mogelijke voor delen:
+ - Als de poort niet in het poort bereik van de toepassing valt, wordt deze geopend via de firewall van het besturings systeem door Service Fabric.
+ - De URL die u hebt ontvangen `KestrelCommunicationListener` , zal deze poort gebruiken.
 
 ```xml
   <Resources>
@@ -312,35 +312,35 @@ U een statische `Endpoint` poort configureren in de configuratie van ServiceMani
   </Resources>
 ```
 
-Als `Endpoint` een een is geconfigureerd, moet `KestrelCommunicationListener` de naam worden doorgegeven aan de constructor: 
+Als er `Endpoint` een is geconfigureerd, moet de naam ervan worden door `KestrelCommunicationListener` gegeven aan de constructor: 
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) => ...
 ```
 
-Als ServiceManifest.xml geen `Endpoint` configuratie gebruikt, laat u `KestrelCommunicationListener` de naam in de constructor weg. In dit geval zal het gebruik maken van een dynamische poort. Zie de volgende sectie voor meer informatie hierover.
+Als ServiceManifest. XML geen `Endpoint` configuratie gebruikt, laat u de naam in de `KestrelCommunicationListener` constructor weg. In dit geval wordt een dynamische poort gebruikt. Zie de volgende sectie voor meer informatie hierover.
 
-#### <a name="use-kestrel-with-a-dynamic-port"></a>Gebruik Torenvalk met een dynamische poort
-Torenvalk kan de automatische poorttoewijzing `Endpoint` vanuit de configuratie in ServiceManifest.xml niet gebruiken. Dat komt omdat automatische poorttoewijzing vanuit een `Endpoint` configuratie een unieke poort per *hostproces*toewijst en één hostproces meerdere Torenvalk-exemplaren kan bevatten. Dit werkt niet met Torenvalk omdat het geen ondersteuning biedt voor het delen van poorten. Daarom moet elke Torenvalk-instantie op een unieke poort worden geopend.
+#### <a name="use-kestrel-with-a-dynamic-port"></a>Kestrel gebruiken met een dynamische poort
+Kestrel kan de automatische poort toewijzing niet gebruiken van `Endpoint` de configuratie in ServiceManifest. XML. Dat komt doordat bij automatische poort toewijzing van `Endpoint` een configuratie een unieke poort per *hostproces*wordt toegewezen en één hostproces meerdere Kestrel-exemplaren kan bevatten. Dit werkt niet met Kestrel omdat het geen ondersteuning biedt voor het delen van poorten. Daarom moet elk Kestrel-exemplaar op een unieke poort worden geopend.
 
-Als u dynamische poorttoewijzing met Torenvalk wilt gebruiken, laat u de `Endpoint` configuratie in ServiceManifest.xml volledig weg en geeft u geen eindpuntnaam als volgt door aan de `KestrelCommunicationListener` constructor:
+Als u dynamische poort toewijzing met Kestrel wilt gebruiken, `Endpoint` laat u de configuratie in ServiceManifest. XML volledig weg en geeft u de naam `KestrelCommunicationListener` van het eind punt niet door aan de constructor. dit doet u als volgt:
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
-In deze `KestrelCommunicationListener` configuratie selecteert u automatisch een ongebruikte poort uit het bereik van de toepassingspoort.
+In deze configuratie `KestrelCommunicationListener` selecteert u automatisch een ongebruikte poort uit het poort bereik van de toepassing.
 
-Voor HTTPS moet het eindpunt zijn geconfigureerd met HTTPS-protocol zonder een poort die is opgegeven in ServiceManifest.xml en de naam van het eindpunt doorgeven aan de constructor KestrelCommunicationListener.
+Voor HTTPS moet het eind punt zijn geconfigureerd met het HTTPS-protocol zonder een poort die is opgegeven in ServiceManifest. XML en de naam van het eind punt door geven aan KestrelCommunicationListener-constructor.
 
 
-## <a name="service-fabric-configuration-provider"></a>Leverancier van servicefabric-configuratie
-De app-configuratie in ASP.NET Core is gebaseerd op sleutelwaardeparen die zijn ingesteld door de configuratieprovider. Lees [Configuratie in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) om meer te weten te komen over algemene ASP.NET Core-configuratieondersteuning.
+## <a name="service-fabric-configuration-provider"></a>Configuratie provider Service Fabric
+App-configuratie in ASP.NET Core is gebaseerd op sleutel-waardeparen die zijn ingesteld door de configuratie provider. Lees de [configuratie in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) voor meer informatie over algemene ondersteuning voor ASP.net core-configuratie.
 
-In dit gedeelte wordt beschreven hoe de provider van de `Microsoft.ServiceFabric.AspNetCore.Configuration` Service Fabric-configuratie integreert met ASP.NET Core-configuratie door het NuGet-pakket te importeren.
+In deze sectie wordt beschreven hoe de Service Fabric-configuratie provider integreert met ASP.NET Core configuratie `Microsoft.ServiceFabric.AspNetCore.Configuration` door het pakket NuGet te importeren.
 
-### <a name="addservicefabricconfiguration-startup-extensions"></a>Opstartextensies addServiceFabricConfiguration
-Nadat u `Microsoft.ServiceFabric.AspNetCore.Configuration` het NuGet-pakket hebt geïmporteerd, moet u de bron voor servicestructuurconfiguratie registreren met ASP.NET Core-configuratie-API. U doet dit door **addservicefabricconfiguratie-extensies** in de `Microsoft.ServiceFabric.AspNetCore.Configuration` naamruimte te controleren tegen `IConfigurationBuilder`.
+### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration-opstart extensies
+Nadat u het `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-pakket hebt geïmporteerd, moet u de configuratie bron van de service Fabric registreren bij ASP.net Core Configuratie-API. U doet dit door **AddServiceFabricConfiguration** -uitbrei dingen `Microsoft.ServiceFabric.AspNetCore.Configuration` in de `IConfigurationBuilder`naam ruimte te controleren op basis van.
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;
@@ -359,7 +359,7 @@ public Startup(IHostingEnvironment env)
 public IConfigurationRoot Configuration { get; }
 ```
 
-Nu heeft de ASP.NET Core-service toegang tot de configuratie-instellingen van Service Fabric, net als alle andere toepassingsinstellingen. U bijvoorbeeld het optiepatroon gebruiken om instellingen in sterk getypte objecten te laden.
+De ASP.NET Core-Service heeft nu toegang tot de Service Fabric configuratie-instellingen, net als bij andere toepassings instellingen. U kunt bijvoorbeeld het patroon opties gebruiken om instellingen te laden in sterk getypte objecten.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -368,13 +368,13 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();
 }
 ```
-### <a name="default-key-mapping"></a>Standaardsleuteltoewijzing
-Standaard bevat de provider van de Service Fabric-configuratie de naam van het pakket, de naam van de sectie en de naam van de eigenschap. Samen vormen deze de ASP.NET Core-configuratiesleutel:
+### <a name="default-key-mapping"></a>Standaard sleutel toewijzing
+Standaard bevat de Service Fabric-configuratie provider de naam van het pakket, de naam van de sectie en de naam van de eigenschap. Deze vormen samen de ASP.NET Core configuratie sleutel, als volgt:
 ```csharp
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
 
-Als u bijvoorbeeld een configuratiepakket `MyConfigPackage` hebt met de naam van de volgende `IConfiguration` inhoud, is de configuratiewaarde beschikbaar op ASP.NET Core via *MyConfigPackage:MyConfigSection:MyParameter.*
+Als u bijvoorbeeld een configuratie pakket `MyConfigPackage` met de volgende inhoud hebt, is de configuratie waarde beschikbaar op ASP.net core `IConfiguration` via *MyConfigPackage: MyConfigSection: MyParameter*.
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
@@ -383,11 +383,11 @@ Als u bijvoorbeeld een configuratiepakket `MyConfigPackage` hebt met de naam van
   </Section>  
 </Settings>
 ```
-### <a name="service-fabric-configuration-options"></a>Configuratieopties voor servicefabric
-De servicefabric-configuratieprovider `ServiceFabricConfigurationOptions` ondersteunt ook om het standaardgedrag van sleuteltoewijzing te wijzigen.
+### <a name="service-fabric-configuration-options"></a>Configuratie opties Service Fabric
+De Service Fabric-configuratie provider biedt `ServiceFabricConfigurationOptions` ook ondersteuning voor het wijzigen van het standaard gedrag van sleutel toewijzing.
 
 #### <a name="encrypted-settings"></a>Versleutelde instellingen
-Service Fabric ondersteunt versleutelde instellingen, net als de servicefabric-configuratieprovider. De versleutelde instellingen worden niet standaard gedecodeerd naar ASP.NET Core. `IConfiguration` De versleutelde waarden worden daar opgeslagen. Maar als u de waarde wilt decoderen om op te slaan in ASP.NET Core `AddServiceFabricConfiguration` IConfiguration, u de *decryptValue-vlag* als volgt in de extensie instellen:
+Service Fabric ondersteunt versleutelde instellingen, zoals de Service Fabric-configuratie provider. De versleutelde instellingen worden niet standaard `IConfiguration` naar ASP.net Core gedecodeerd. In plaats daarvan worden de versleutelde waarden opgeslagen. Maar als u de waarde die u wilt opslaan in ASP.NET Core IConfiguration wilt ontsleutelen, kunt *DecryptValue* u als volgt de vlag DecryptValue `AddServiceFabricConfiguration` in de extensie instellen op False:
 
 ```csharp
 public Startup()
@@ -398,8 +398,8 @@ public Startup()
     Configuration = builder.Build();
 }
 ```
-#### <a name="multiple-configuration-packages"></a>Meerdere configuratiepakketten
-Service Fabric ondersteunt meerdere configuratiepakketten. Standaard is de pakketnaam opgenomen in de configuratiesleutel. Maar u kunt `IncludePackageName` de vlag als volgt op onwaar instellen:
+#### <a name="multiple-configuration-packages"></a>Meerdere configuratie pakketten
+Service Fabric ondersteunt meerdere configuratie pakketten. De naam van het pakket is standaard opgenomen in de configuratie sleutel. U kunt de `IncludePackageName` vlag echter als volgt instellen op False:
 ```csharp
 public Startup()
 {
@@ -410,10 +410,10 @@ public Startup()
     Configuration = builder.Build();
 }
 ```
-#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Aangepaste sleuteltoewijzing, waardeextractie en gegevenspopulatie
-De servicefabric-configuratieprovider ondersteunt ook meer geavanceerde `ExtractKeyFunc` scenario's om de `ExtractValueFunc`sleuteltoewijzing aan te passen en de waarden op maat te extraheren met . U zelfs het hele proces van het vullen van gegevens `ConfigAction`wijzigen van de configuratie van Service Fabric naar ASP.NET Core-configuratie met behulp van.
+#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Aangepaste sleutel toewijzing, waarde extractie en gegevens populatie
+De provider van de Service Fabric-configuratie biedt ook ondersteuning voor meer geavanceerde scenario's voor `ExtractKeyFunc` het aanpassen van de sleutel toewijzing met `ExtractValueFunc`en aangepast-extract de waarden met. U kunt zelfs het hele proces voor het vullen van gegevens van Service Fabric configuratie naar ASP.NET Core configuratie wijzigen met `ConfigAction`behulp van.
 
-In de volgende voorbeelden `ConfigAction` ziet u hoe u gegevenspopulatie aanpassen:
+De volgende voor beelden laten zien hoe u `ConfigAction` kunt gebruiken om de gegevens populatie aan te passen:
 ```csharp
 public Startup()
 {
@@ -448,36 +448,36 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Configuratie-updates
-De servicefabric-configuratieprovider ondersteunt ook configuratie-updates. U ASP.NET `IOptionsMonitor` Core gebruiken om wijzigingsmeldingen te ontvangen en vervolgens configuratiegegevens `IOptionsSnapshot` opnieuw te laden. Zie [ASP.NET Kernopties voor](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)meer informatie.
+De configuratie provider Service Fabric ondersteunt ook configuratie-updates. U kunt ASP.NET Core `IOptionsMonitor` gebruiken om wijzigings meldingen te ontvangen en vervolgens `IOptionsSnapshot` gebruiken om configuratie gegevens opnieuw te laden. Zie [ASP.net core Options (opties](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)) voor meer informatie.
 
-Deze opties worden standaard ondersteund. Er is geen verdere codering nodig om configuratie-updates in te schakelen.
+Deze opties worden standaard ondersteund. Er is geen verdere code ring nodig om configuratie-updates in te scha kelen.
 
 ## <a name="scenarios-and-configurations"></a>Scenario's en configuraties
-In deze sectie vindt u de combinatie van webserver, poortconfiguratie, servicestructuur-integratieopties en diverse instellingen die we aanbevelen om de volgende scenario's op te lossen:
- - Extern blootgestelde ASP.NET Core stateless services
- - Intern-only ASP.NET Core stateless services
- - Interne ASP.NET Core stateful services
+In deze sectie vindt u een combi natie van webserver, poort configuratie, Service Fabric integratie opties en diverse instellingen voor het oplossen van de volgende scenario's:
+ - Extern beschikbaar ASP.NET Core stateless Services
+ - Alleen intern ASP.NET Core stateless Services
+ - Alleen intern ASP.NET Core stateful Services
 
-Een **extern belichte service** is een service die een eindpunt blootlegt dat van buiten het cluster wordt aangeroepen, meestal via een load balancer.
+Een **extern** beschik bare service is een eind punt dat wordt aangeroepen van buiten het cluster, meestal via een Load Balancer.
 
-Een **interne** service is een service waarvan het eindpunt alleen vanuit het cluster wordt aangeroepen.
+Een service met **alleen interne** services waarvan het eind punt alleen binnen het cluster wordt aangeroepen.
 
 > [!NOTE]
-> Stateful service eindpunten over het algemeen niet moeten worden blootgesteld aan het internet. Clusters achter load balancers die niet op de hoogte zijn van de serviceoplossing van de Service Fabric-service, zoals Azure Load Balancer, kunnen stateful-services niet blootstellen. Dat komt omdat de load balancer het verkeer niet kan lokaliseren en routeren naar de juiste stateful servicereplica. 
+> Stateful service-eind punten mogen doorgaans niet worden blootgesteld aan Internet. Clusters achter de load balancers die geen inzicht hebben in Service Fabric service oplossing, zoals Azure Load Balancer, kunnen stateful Services niet weer geven. Dat komt doordat de load balancer geen verkeer naar de juiste stateful service replica kunt vinden en routeren. 
 
-### <a name="externally-exposed-aspnet-core-stateless-services"></a>Extern blootgestelde ASP.NET Core stateless services
-Torenvalk is de voorgestelde webserver voor front-endservices die externe, internetgerichte HTTP-eindpunten blootleggen. In Windows kan HTTP.sys mogelijkheden bieden voor het delen van poorten, waarmee u meerdere webservices op dezelfde set knooppunten hosten met dezelfde poort. In dit scenario worden de webservices onderscheiden op naam of pad van de host, zonder afhankelijk te zijn van een front-end proxy of gateway om HTTP-routering te bieden.
+### <a name="externally-exposed-aspnet-core-stateless-services"></a>Extern beschikbaar ASP.NET Core stateless Services
+Kestrel is de voorgestelde webserver voor front-end-services die externe, Internet gerichte HTTP-eind punten beschikbaar maken. In Windows kan HTTP. sys mogelijkheden voor het delen van poorten bieden, waarmee u meerdere webservices op dezelfde set knoop punten kunt hosten met behulp van dezelfde poort. In dit scenario worden de webservices onderscheiden door de hostnaam of het pad, zonder dat hiervoor een front-end-proxy of-gateway nodig is om HTTP-route ring te bieden.
  
-Wanneer blootgesteld aan het internet, een stateless service moet gebruik maken van een bekende en stabiele eindpunt dat bereikbaar is via een load balancer. U geeft deze URL aan de gebruikers van uw toepassing. Wij raden de volgende configuratie aan:
+Wanneer een stateless service wordt blootgesteld aan Internet, moet een bekende en stabiele eind punt worden gebruikt dat bereikbaar is via een load balancer. U geeft deze URL naar de gebruikers van uw toepassing. We raden u aan de volgende configuratie uit te voeren:
 
 |  |  | **Opmerkingen** |
 | --- | --- | --- |
-| Webserver | Torenvalk | Torenvalk is de favoriete webserver, omdat het wordt ondersteund in Windows en Linux. |
-| Poortconfiguratie | statisch | Een bekende statische poort moet worden `Endpoints` geconfigureerd in de configuratie van ServiceManifest.xml, zoals 80 voor HTTP of 443 voor HTTPS. |
-| ServiceFabric-integratieopties | Geen | Gebruik `ServiceFabricIntegrationOptions.None` de optie bij het configureren van Middleware voor servicefabric-integratie, zodat de service niet probeert inkomende aanvragen voor een unieke id te valideren. Externe gebruikers van uw toepassing zullen de unieke identificerende informatie die de middleware gebruikt, niet kennen. |
-| Aantal instanties | -1 | In typische use cases moet de instelling voor het aantal gevallen worden ingesteld op *-1*. Dit wordt gedaan zodat een instantie beschikbaar is op alle knooppunten die verkeer ontvangen van een load balancer. |
+| Webserver | Kestrel | Kestrel is de voorkeurs webserver, omdat deze wordt ondersteund in Windows en Linux. |
+| Poort configuratie | statisch | Een bekende statische poort moet worden geconfigureerd in de `Endpoints` configuratie van ServiceManifest. XML, zoals 80 voor HTTP of 443 voor HTTPS. |
+| ServiceFabricIntegrationOptions | Geen | Gebruik de `ServiceFabricIntegrationOptions.None` optie bij het configureren van service Fabric Integration-middleware, zodat de service niet probeert binnenkomende aanvragen voor een unieke id te valideren. Externe gebruikers van uw toepassing weten niet de unieke identiteits gegevens die door de middleware worden gebruikt. |
+| Aantal instanties | -1 | Bij typische gebruiks voorbeelden moet de instelling voor het aantal instanties worden ingesteld op *-1*. Dit wordt gedaan, zodat er een exemplaar beschikbaar is op alle knoop punten die verkeer ontvangen van een load balancer. |
 
-Als meerdere extern belichte services dezelfde set knooppunten delen, u HTTP.sys gebruiken met een uniek maar stabiel URL-pad. U dit bereiken door de URL te wijzigen die wordt verstrekt bij het configureren van IWebHost. Houd er rekening mee dat dit alleen geldt voor HTTP.sys.
+Als meerdere extern beschik bare Services dezelfde set knoop punten delen, kunt u HTTP. sys gebruiken met een uniek, maar een stabiel URL-pad. U kunt dit doen door de URL die u hebt ingevoerd bij het configureren van IWebHost te wijzigen. Houd er rekening mee dat dit alleen van toepassing is op HTTP. sys.
 
  ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -492,24 +492,24 @@ Als meerdere extern belichte services dezelfde set knooppunten delen, u HTTP.sys
  })
  ```
 
-### <a name="internal-only-stateless-aspnet-core-service"></a>Alleen intern staatloze ASP.NET Core-service
-Stateloze services die alleen vanuit het cluster worden aangeroepen, moeten unieke URL's en dynamisch toegewezen poorten gebruiken om de samenwerking tussen meerdere services te garanderen. Wij raden de volgende configuratie aan:
+### <a name="internal-only-stateless-aspnet-core-service"></a>Alleen stateless ASP.NET Core Service met alleen interne status
+Stateless services die alleen binnen het cluster worden aangeroepen, moeten unieke Url's en dynamisch toegewezen poorten gebruiken om de samen werking tussen meerdere services te garanderen. We raden u aan de volgende configuratie uit te voeren:
 
 |  |  | **Opmerkingen** |
 | --- | --- | --- |
-| Webserver | Torenvalk | Hoewel u HTTP.sys gebruiken voor interne stateless services, is Torenvalk de beste server waarmee meerdere service-exemplaren een host kunnen delen.  |
-| Poortconfiguratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturingssysteem delen en hebben dus unieke poorten nodig. |
-| ServiceFabric-integratieopties | GebruikUniqueServiceUrl | Bij dynamische poorttoewijzing voorkomt deze instelling het eerder beschreven foutieve identiteitsprobleem. |
-| InstanceCount | elke | De instelling voor het aantal instantie en de instantie kan worden ingesteld op elke waarde die nodig is om de service te kunnen bedienen. |
+| Webserver | Kestrel | Hoewel u HTTP. sys kunt gebruiken voor interne stateless Services, is Kestrel de beste server waarmee meerdere service-exemplaren een host kunnen delen.  |
+| Poort configuratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturings systeem delen, waardoor er unieke poorten nodig zijn. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Met dynamische poort toewijzing voor komt u met deze instelling dat eerder beschreven identiteits problemen worden opgelost. |
+| InstanceCount | iedere | De instelling voor het aantal instanties kan worden ingesteld op elke waarde die nodig is om de service te kunnen uitvoeren. |
 
-### <a name="internal-only-stateful-aspnet-core-service"></a>Alleen intern stateful ASP.NET Core-service
-Stateful services die alleen vanuit het cluster worden aangeroepen, moeten dynamisch toegewezen poorten gebruiken om de samenwerking tussen meerdere services te waarborgen. Wij raden de volgende configuratie aan:
+### <a name="internal-only-stateful-aspnet-core-service"></a>Alleen stateful ASP.NET Core-Service
+Stateful services die alleen binnen het cluster worden aangeroepen, moeten dynamisch toegewezen poorten gebruiken om de samen werking tussen meerdere services te garanderen. We raden u aan de volgende configuratie uit te voeren:
 
 |  |  | **Opmerkingen** |
 | --- | --- | --- |
-| Webserver | Torenvalk | Het `HttpSysCommunicationListener` is niet ontworpen voor gebruik door stateful services waarin replica's een hostproces delen. |
-| Poortconfiguratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturingssysteem delen en hebben dus unieke poorten nodig. |
-| ServiceFabric-integratieopties | GebruikUniqueServiceUrl | Bij dynamische poorttoewijzing voorkomt deze instelling het eerder beschreven foutieve identiteitsprobleem. |
+| Webserver | Kestrel | De `HttpSysCommunicationListener` is niet bedoeld voor gebruik door stateful services waarin replica's een hostproces delen. |
+| Poort configuratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturings systeem delen, waardoor er unieke poorten nodig zijn. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Met dynamische poort toewijzing voor komt u met deze instelling dat eerder beschreven identiteits problemen worden opgelost. |
 
 ## <a name="next-steps"></a>Volgende stappen
 [Foutopsporing uitvoeren in uw Service Fabric-toepassing met behulp van Visual Studio](service-fabric-debugging-your-application.md)

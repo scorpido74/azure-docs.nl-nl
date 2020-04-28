@@ -1,6 +1,6 @@
 ---
-title: hbase hbck retourneert inconsistenties in Azure HDInsight
-description: hbase hbck retourneert inconsistenties in Azure HDInsight
+title: hbase hbck retourneert inconsistenties in azure HDInsight
+description: hbase hbck retourneert inconsistenties in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,33 +8,33 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887322"
 ---
-# <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scenario: `hbase hbck` opdracht retourneert inconsistenties in Azure HDInsight
+# <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scenario: `hbase hbck` opdracht retourneert inconsistenties in azure HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>Probleem: Regio is niet in`hbase:meta`
+## <a name="issue-region-is-not-in-hbasemeta"></a>Probleem: regio bevindt zich niet in`hbase:meta`
 
-Regio xxx op HDFS, maar `hbase:meta` niet vermeld in of geïmplementeerd op een regioserver.
+Regio xxx op HDFS, maar niet vermeld in `hbase:meta` of geïmplementeerd op een server met regio's.
 
 ### <a name="cause"></a>Oorzaak
 
-Varieert.
+Hangt.
 
 ### <a name="resolution"></a>Oplossing
 
-1. Repareer de metatabel door het uitvoeren van:
+1. Herstel de meta tabel door uit te voeren:
 
     ```
     hbase hbck -ignorePreCheckPermission –fixMeta
     ```
 
-1. Gebieden toewijzen aan RegionServers door het uitvoeren van:
+1. Regio's toewijzen aan RegionServers door uit te voeren:
 
     ```
     hbase hbck -ignorePreCheckPermission –fixAssignment
@@ -43,15 +43,15 @@ Varieert.
 
 ## <a name="issue-region-is-offline"></a>Probleem: regio is offline
 
-Regio xxx niet geïmplementeerd op een RegioServer. Dit betekent dat `hbase:meta`de regio zich binnen, maar offline bevindt.
+Regio xxx is niet geïmplementeerd op een wille keurige RegionServer. Dit betekent dat de regio zich `hbase:meta`in, maar offline bevindt.
 
 ### <a name="cause"></a>Oorzaak
 
-Varieert.
+Hangt.
 
 ### <a name="resolution"></a>Oplossing
 
-Regio's online brengen door te draaien:
+Regio's online plaatsen door uit te voeren:
 
 ```
 hbase hbck -ignorePreCheckPermission –fixAssignment
@@ -59,15 +59,15 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 ---
 
-## <a name="issue-regions-have-the-same-startend-keys"></a>Probleem: regio's hebben dezelfde begin-/eindtoetsen
+## <a name="issue-regions-have-the-same-startend-keys"></a>Probleem: regio's hebben dezelfde begin-en eind sleutels
 
 ### <a name="cause"></a>Oorzaak
 
-Varieert.
+Hangt.
 
 ### <a name="resolution"></a>Oplossing
 
-Deze overlappende regio's handmatig samenvoegen. Ga naar de tabelsectie HBase HMaster Web UI, selecteer de tabelkoppeling met het probleem. U ziet startsleutel/eindsleutel van elke regio die tot die tabel behoort. Voeg vervolgens die overlappende gebieden samen. In HBase shell, doen `merge_region 'xxxxxxxx','yyyyyyy', true`. Bijvoorbeeld:
+Deze overlappende regio's hand matig samen voegen. Ga naar de sectie HBase HMaster Web UI Table en selecteer de tabel koppeling. Dit heeft het probleem. U ziet de start sleutel/eind sleutel van elke regio die deel uitmaakt van deze tabel. Voeg deze overlappende regio's vervolgens samen. Doe `merge_region 'xxxxxxxx','yyyyyyy', true`in HBase-shell. Bijvoorbeeld:
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -77,36 +77,36 @@ RegionB, startkey:001, endkey:080,
 RegionC, startkey:010, endkey:080.
 ```
 
-In dit scenario moet u RegioA en RegionC samenvoegen en RegionD met hetzelfde sleutelbereik krijgen als RegioB en vervolgens RegioB en RegioD samenvoegen. xxxxxxx en yyyyyy zijn de hash string aan het einde van elke regio naam. Wees voorzichtig hier niet te fuseren twee discontinu regio's. Na elke samenvoeging, zoals samenvoegen A en C, zal HBase een verdichting starten op RegionD. Wacht tot de verdichting is voltooid voordat u een nieuwe samenvoeging met RegionD doet. U vindt de verdichtingsstatus op die regioserverpagina in HBase HMaster UI.
+In dit scenario moet u Regioa en RegionC samen voegen en met hetzelfde sleutel bereik worden geregiod als RegionB en vervolgens de RegionB en de regio samenvoegt. XXXXXXX en yyyyyy zijn de hash-teken reeks aan het einde van elke regio naam. Wees hier voorzichtig om twee niet-aaneengesloten regio's samen te voegen. Na elke samen voeging, zoals samen voegen A en C, HBase wordt een compressie gestart in de regio. Wacht totdat de compressie is voltooid voordat u een andere samenvoeg bewerking uitvoert. U kunt de status van de compressie vinden op de server pagina van de betreffende regio in de gebruikers interface van HBase HMaster.
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>Probleem: Kan niet laden`.regioninfo`
+## <a name="issue-cant-load-regioninfo"></a>Probleem: kan niet laden`.regioninfo`
 
-Kan niet `.regioninfo` laden `/hbase/data/default/tablex/regiony`voor regio.
+Kan de `.regioninfo` regio `/hbase/data/default/tablex/regiony`niet laden.
 
 ### <a name="cause"></a>Oorzaak
 
-Dit is waarschijnlijk te wijten aan gedeeltelijke verwijdering van regio's wanneer RegionServer vastloopt of VM opnieuw wordt opgestart. Momenteel is de Azure Storage een plat blob-bestandssysteem en sommige bestandsbewerkingen zijn niet atoom.
+Dit komt waarschijnlijk doordat regio gedeeltelijk wordt verwijderd wanneer RegionServer vastloopt of het opnieuw opstarten van de VM. Op dit moment is het Azure Storage een plat bestands systeem voor blobs en sommige Bestands bewerkingen zijn niet atomisch.
 
 ### <a name="resolution"></a>Oplossing
 
-Deze resterende bestanden en mappen handmatig opschonen:
+Deze resterende bestanden en mappen hand matig opschonen:
 
-1. Uitvoeren `hdfs dfs -ls /hbase/data/default/tablex/regiony` om te controleren welke mappen/bestanden er nog onder zitten.
+1. Voer `hdfs dfs -ls /hbase/data/default/tablex/regiony` uit om te controleren welke mappen/bestanden er nog zijn.
 
 1. Uitvoeren `hdfs dfs -rmr /hbase/data/default/tablex/regiony/filez` om alle onderliggende bestanden/mappen te verwijderen
 
-1. Uitvoeren `hdfs dfs -rmr /hbase/data/default/tablex/regiony` om de regiomap te verwijderen.
+1. Voer `hdfs dfs -rmr /hbase/data/default/tablex/regiony` uit om de map Region te verwijderen.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

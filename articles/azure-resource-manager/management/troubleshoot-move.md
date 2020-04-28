@@ -1,51 +1,51 @@
 ---
-title: Verplaatsingsfouten oplossen
-description: Gebruik Azure Resource Manager om resources naar een nieuwe brongroep of -abonnement te verplaatsen.
+title: Fouten bij verplaatsen oplossen
+description: Gebruik Azure Resource Manager om resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75891264"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Problemen oplossen met het verplaatsen van Azure-resources naar een nieuwe resourcegroep of een nieuw abonnement
 
-In dit artikel vindt u suggesties om problemen op te lossen bij het verplaatsen van resources.
+Dit artikel bevat suggesties voor het oplossen van problemen bij het verplaatsen van resources.
 
 ## <a name="upgrade-a-subscription"></a>Een abonnement upgraden
 
-Als u uw Azure-abonnement daadwerkelijk wilt upgraden (zoals overstappen van gratis naar betalen per gebruik), moet u uw abonnement converteren.
+Als u een upgrade wilt uitvoeren van uw Azure-abonnement (zoals overschakelen van gratis naar betalen per gebruik), moet u uw abonnement converteren.
 
-* Zie [Uw gratis proefversie of Microsoft Imagine Azure-abonnement upgraden naar betalen per gebruik](../../billing/billing-upgrade-azure-subscription.md)als u een gratis proefversie wilt uitvoeren.
-* Zie [Uw Azure Pay-As-You-Go-abonnement wijzigen in een andere aanbieding](../../billing/billing-how-to-switch-azure-offer.md)als u een betalen per gebruik-account wilt wijzigen.
+* Als u een gratis proef versie wilt upgraden, raadpleegt u [uw gratis proef versie bijwerken of Microsoft Imagine Azure-abonnement naar betalen per](../../billing/billing-upgrade-azure-subscription.md)gebruik.
+* Als u een betalen naar gebruik-account wilt wijzigen, raadpleegt u [uw Azure betalen naar gebruik-abonnement wijzigen in een andere aanbieding](../../billing/billing-how-to-switch-azure-offer.md).
 
-Als u het abonnement niet converteren, [maakt u een Azure-ondersteuningsaanvraag](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het type probleem.
+Als u het abonnement niet kunt converteren, moet u [een Azure-ondersteunings aanvraag maken](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **abonnements beheer** voor het type probleem.
 
-## <a name="service-limitations"></a>Servicebeperkingen
+## <a name="service-limitations"></a>Service beperkingen
 
-Sommige services vereisen aanvullende overwegingen bij het verplaatsen van resources. Als u de volgende services verplaatst, controleert u de richtlijnen en beperkingen.
+Voor sommige services zijn aanvullende overwegingen vereist bij het verplaatsen van resources. Als u de volgende services wilt verplaatsen, controleert u of u de richt lijnen en beperkingen hebt gecontroleerd.
 
 * [App Services](./move-limitations/app-service-move-limitations.md)
 * [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [Klassiek implementatiemodel](./move-limitations/classic-model-move-limitations.md)
-* [Networking](./move-limitations/networking-move-limitations.md)
+* [Netwerken](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
 * [Virtuele machines](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Grote aanvragen
 
-Wanneer mogelijk, breek grote bewegingen in afzonderlijke verplaatsingen. Resourcemanager retourneert onmiddellijk een fout wanneer er meer dan 800 resources in één bewerking zijn. Echter, het verplaatsen van minder dan 800 middelen kan ook mislukken door timing uit.
+Als dat mogelijk is, verbreekt u grote verplaatsingen in afzonderlijke Verplaats bewerkingen. Resource Manager retourneert onmiddellijk een fout wanneer er meer dan 800 resources zijn in één bewerking. Het verplaatsen van minder dan 800 resources kan echter ook mislukken door een time-out.
 
-## <a name="resource-not-in-succeeded-state"></a>Resource niet in de geslaagde status
+## <a name="resource-not-in-succeeded-state"></a>De resource heeft de status niet voltooid
 
-Wanneer u een foutbericht ontvangt dat aangeeft dat een resource niet kan worden verplaatst omdat deze niet is opgevolgd, kan het in feite een afhankelijke bron zijn die de verplaatsing blokkeert. Doorgaans is de foutcode **MoveCannotProceedWithResourcesNotInSucceededState**.
+Wanneer er een fout bericht wordt weer gegeven dat aangeeft dat een resource niet kan worden verplaatst, omdat deze niet de status geslaagd heeft, is het mogelijk een afhankelijke resource die de verplaatsing blokkeert. Normaal gesp roken is de fout code **MoveCannotProceedWithResourcesNotInSucceededState**.
 
-Als de bron- of doelgroepeen virtueel netwerk bevat, worden de statussen van alle afhankelijke bronnen voor het virtuele netwerk tijdens de verhuizing gecontroleerd. De controle omvat deze bronnen die direct en indirect afhankelijk zijn van het virtuele netwerk. Als een van deze resources zich in een mislukte status bevindt, wordt de verplaatsing geblokkeerd. Als een virtuele machine die het virtuele netwerk gebruikt bijvoorbeeld is mislukt, wordt de verplaatsing geblokkeerd. De verplaatsing wordt geblokkeerd, zelfs wanneer de virtuele machine niet een van de resources is die wordt verplaatst en zich niet in een van de resourcegroepen voor de verhuizing bevindt.
+Als de bron-of doel resource groep een virtueel netwerk bevat, worden de statussen van alle afhankelijke resources voor het virtuele netwerk gecontroleerd tijdens de verplaatsing. De controle bevat de resources rechtstreeks en indirect afhankelijk van het virtuele netwerk. Als een van deze resources een mislukte status heeft, wordt de verplaatsing geblokkeerd. Als bijvoorbeeld een virtuele machine die gebruikmaakt van het virtuele netwerk is mislukt, wordt de verplaatsing geblokkeerd. De verplaatsing wordt geblokkeerd, zelfs wanneer de virtuele machine niet een van de resources is die worden verplaatst en die zich niet in een van de resource groepen bevindt voor de verplaatsing.
 
-Wanneer u deze fout ontvangt, hebt u twee opties. Verplaats uw resources naar een resourcegroep die geen virtueel netwerk heeft of [neem contact op met ondersteuning.](../../azure-portal/supportability/how-to-create-azure-support-request.md)
+Wanneer deze fout wordt weer gegeven, hebt u twee opties. Verplaats uw resources naar een resource groep die geen virtueel netwerk heeft of [Neem contact op met de ondersteuning](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Resources verplaatsen naar [een nieuwe resourcegroep of -abonnement](move-resource-group-and-subscription.md)voor opdrachten om resources te verplaatsen.
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](move-resource-group-and-subscription.md)voor opdrachten voor het verplaatsen van resources.

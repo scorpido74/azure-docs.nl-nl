@@ -1,5 +1,5 @@
 ---
-title: Wat is een Azure DNS-privézone
+title: Wat is een Azure DNS privé zone?
 description: Overzicht van een privé-DNS-zone
 services: dns
 author: rohinkoul
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646792"
 ---
-# <a name="what-is-a-private-azure-dns-zone"></a>Wat is een privé-Azure DNS-zone
+# <a name="what-is-a-private-azure-dns-zone"></a>Wat is een privé Azure DNS zone
 
-Azure Private DNS biedt een betrouwbare, veilige DNS-service voor het beheren en oplossen van domeinnamen in een virtueel netwerk zonder dat u een aangepaste DNS-oplossing hoeft toe te voegen. Door privé-DNS-zones te gebruiken, u uw eigen aangepaste domeinnamen gebruiken in plaats van de door Azure verstrekte namen die vandaag beschikbaar zijn. 
+Azure Privé-DNS biedt een betrouw bare, veilige DNS-service voor het beheren en omzetten van domein namen in een virtueel netwerk zonder dat u een aangepaste DNS-oplossing hoeft toe te voegen. Met behulp van privé-DNS-zones kunt u uw eigen aangepaste domein namen gebruiken in plaats van de door Azure meegeleverde namen die vandaag beschikbaar zijn. 
 
-De records in een privé-DNS-zone zijn niet oplosbaar vanaf het internet. DNS-resolutie tegen een privé-DNS-zone werkt alleen vanuit virtuele netwerken die eraan zijn gekoppeld.
+De records in een privé-DNS-zone kunnen niet van het Internet worden omgezet. DNS-omzetting voor een privé-DNS-zone werkt alleen vanuit virtuele netwerken die eraan zijn gekoppeld.
 
-U een privé-DNS-zone koppelen aan een of meer virtuele netwerken door [virtuele netwerkkoppelingen](./private-dns-virtual-network-links.md)te maken.
-U ook de functie voor automatische registratie inschakelen om automatisch de levenscyclus van de [DNS-records](./private-dns-autoregistration.md) voor de virtuele machines die in een virtueel netwerk worden geïmplementeerd, te beheren.
+U kunt een privé-DNS-zone koppelen aan een of meer virtuele netwerken door koppelingen naar het [virtuele netwerk](./private-dns-virtual-network-links.md)te maken.
+U kunt ook de functie voor [automatische registratie](./private-dns-autoregistration.md) inschakelen voor het automatisch beheren van de levens cyclus van de DNS-records voor de virtuele machines die zijn geïmplementeerd in een virtueel netwerk.
 
 ## <a name="limits"></a>Limieten
 
-Als u wilt begrijpen hoeveel privé-DNS-zones u maken in een abonnement en hoeveel recordsets worden ondersteund in een privé-DNS-zone, [raadpleegt u Azure DNS-limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over het aantal privé-DNS-zones dat u kunt maken in een abonnement en hoeveel record sets worden ondersteund in een privé-DNS-zone
 
 ## <a name="restrictions"></a>Beperkingen
 
-* Private DNS-zones met één label worden niet ondersteund. Uw privé-DNS-zone moet twee of meer labels hebben. Bijvoorbeeld contoso.com twee labels heeft die door een stip worden gescheiden. Een private DNS-zone kan maximaal 34 labels hebben.
-* U geen zonedelegaties (NS-records) maken in een privé-DNS-zone. Als u een onderliggend domein wilt gebruiken, u het domein rechtstreeks maken als een privé-DNS-zone en het koppelen aan een virtueel netwerk zonder een naamserverdelegatie vanuit de bovenliggende zone in te stellen.
+* Enkelvoudige privé-DNS-zones worden niet ondersteund. Uw privé-DNS-zone moet twee of meer labels hebben. Bijvoorbeeld contoso.com heeft twee labels gescheiden door een punt. Een persoonlijke DNS-zone kan een maximum van 34 labels hebben.
+* U kunt geen zone overdrachten (NS-records) maken in een privé-DNS-zone. Als u van plan bent een onderliggend domein te gebruiken, kunt u het domein rechtstreeks als een persoonlijke DNS-zone maken en koppelen aan een virtueel netwerk zonder een naam server-delegering vanuit de bovenliggende zone in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het maken van een privézone in Azure DNS met [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure CLI](./private-dns-getstarted-cli.md).
+* Meer informatie over het maken van een privé zone in Azure DNS met behulp van [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure cli](./private-dns-getstarted-cli.md).
 
-* Lees meer over enkele veelvoorkomende [privézonescenario's](./private-dns-scenarios.md) die kunnen worden gerealiseerd met privézones in Azure DNS.
+* Meer informatie over enkele veelvoorkomende [scenario's voor particuliere zones](./private-dns-scenarios.md) die kunnen worden gerealiseerd met persoonlijke zones in azure DNS.
 
-* Zie [Veelgestelde vragen](./dns-faq-private.md)over privé-informatie over privézones in Azure DNS, inclusief specifiek gedrag dat u voor bepaalde soorten bewerkingen verwachten.
+* Voor veelgestelde vragen en antwoorden over persoonlijke zones in Azure DNS, met inbegrip van specifieke gedrag dat u kunt verwachten voor bepaalde soorten bewerkingen, raadpleegt u [privé-DNS Veelgestelde vragen](./dns-faq-private.md).

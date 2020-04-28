@@ -1,19 +1,19 @@
 ---
-title: Acteurs opsommen op Azure Service Fabric
-description: Meer informatie over het opsommen van betrouwbare actoren en hun metagegevens in een Azure Service Fabric-toepassing aan de hand van voorbeelden.
+title: Actors op Azure Service Fabric opsommen
+description: Meer informatie over de inventarisatie van Reliable Actors en de meta gegevens in een Azure Service Fabric-toepassing met voor beelden.
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645596"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Opsommen Service Fabric Betrouwbare Actoren
-Met de Service Betrouwbare Actoren kan een klant metadata opsommen over de actoren die de service host. Omdat de actorservice een partitievolle service is, wordt de opsomming per partitie uitgevoerd. Omdat elke partitie veel actoren kan bevatten, wordt de opsomming geretourneerd als een reeks oppiepende resultaten. De pagina's worden overgelooped totdat alle pagina's worden gelezen. In het volgende voorbeeld ziet u hoe u een lijst maakt met alle actieve actoren in één partitie van een actorservice:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors opsommen
+Met de Reliable Actors-service kan een client meta gegevens over de actors opsommen waarvoor de service wordt gehost. Omdat de actor-service een gepartitioneerde stateful service is, wordt er een inventarisatie uitgevoerd per partitie. Omdat elke partitie veel actors kan bevatten, wordt de inventarisatie geretourneerd als een set met pagina resultaten. De pagina's worden herhaald totdat alle pagina's zijn gelezen. In het volgende voor beeld ziet u hoe u een lijst met alle actieve actors maakt in één partitie van een actor service:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -59,11 +59,11 @@ while (continuationToken != null);
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Actor staatbeheer](service-fabric-reliable-actors-state-management.md)
-* [Levenscyclus van actor's en garbage collection](service-fabric-reliable-actors-lifecycle.md)
-* [Verwijzingen naar API-verwijzingen van actoren](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Beheer van actor status](service-fabric-reliable-actors-state-management.md)
+* [Actor-levens cyclus en garbagecollection](service-fabric-reliable-actors-lifecycle.md)
+* [Naslag documentatie voor actors-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [.NET-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

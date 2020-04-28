@@ -1,6 +1,6 @@
 ---
-title: Certificaat-inhoud converteren naar basis-64 - Azure HDInsight
-description: Inhoud van serviceprincipal-certificaat converteren naar basis-64 gecodeerde tekenreeksindeling in Azure HDInsight
+title: Certificaat inhoud converteren naar base-64-Azure HDInsight
+description: De inhoud van een Service-Principal-certificaat converteren naar een met base 64 gecodeerde teken reeks indeling in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,27 +8,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.openlocfilehash: d6119e4f8c651ba482a24f46b44ff15f870858ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894175"
 ---
-# <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>Inhoud van serviceprincipal certificaat converteren naar basis-64 gecodeerde tekenreeksindeling in HDInsight
+# <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>De inhoud van een Service-Principal-certificaat converteren naar een met base 64 gecodeerde teken reeks notatie in HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-U ontvangt een foutbericht waarin staat dat de invoer geen geldige Base-64-tekenreeks is, omdat deze een niet-base 64-teken, meer dan twee opvullingstekens of een niet-wit spatieteken tussen de opvullingstekens bevat.
+Er wordt een fout bericht weer gegeven met de melding dat de invoer geen geldige base-64-teken reeks is, omdat deze een niet-base-64 teken bevat, meer dan twee opvullings tekens of een niet-spatie teken tussen de opvul tekens.
 
 ## <a name="cause"></a>Oorzaak
 
-Wanneer u PowerShell- of Azure-sjabloonimplementatie gebruikt om clusters met Data Lake als primaire of aanvullende opslag te maken, bevindt de hoofdcertificaatinhoud van de service om toegang te krijgen tot het Data Lake-opslagaccount in de base-64-indeling. Onjuiste omzetting van de inhoud van het PFX-certificaat naar de basis-64 gecodeerde tekenreeks kan tot deze fout leiden.
+Wanneer u een Power shell-of Azure-sjabloon implementatie gebruikt om clusters te maken met Data Lake als primaire of extra opslag ruimte, is de inhoud van het Service-Principal-certificaat voor toegang tot het Data Lake Storage-account in de basis-64-indeling. Een onjuiste conversie van de PFX-certificaat inhoud naar een met base 64 gecodeerde teken reeks kan leiden tot deze fout.
 
 ## <a name="resolution"></a>Oplossing
 
-Zodra u het serviceprincipal certificaat in pfx-indeling hebt (zie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) voor voorbeeldserviceprincipalcreatiestappen), gebruikt u de volgende PowerShell-opdracht of C#-fragment om de certificaatinhoud om te zetten in de base-64-indeling.
+Als u het certificaat van de Service-Principal in PFX-indeling hebt (Zie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) voor voor beelden van de stappen voor het maken van een service-principal), gebruikt u de volgende Power shell-opdracht of C#-code om de certificaat inhoud te converteren naar de indeling base-64.
 
 ```powershell
 $servicePrincipalCertificateBase64 = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(path-to-servicePrincipalCertificatePfxFile))
@@ -54,10 +54,10 @@ namespace ConsoleApplication
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

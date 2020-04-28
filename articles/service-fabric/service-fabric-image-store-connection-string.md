@@ -1,47 +1,47 @@
 ---
-title: Verbindingstekenreeks azure Service Fabric-afbeeldingsarchief
-description: Meer informatie over de verbindingstekenreeks voor afbeeldingenopteplaatsen, inclusief het gebruik en de toepassingen ervan in een cluster van Servicefabric.
+title: Installatie kopie Archief van Azure Service Fabric connection string
+description: Meer informatie over de connection string voor het opslaan van afbeeldingen, inclusief het gebruik en de toepassingen naar een Service Fabric cluster.
 author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
 ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645664"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Meer informatie over de instelling ImageStoreConnectionString
 
-In sommige van onze documentatie vermelden we kort het bestaan van een parameter "ImageStoreConnectionString" zonder te beschrijven wat het werkelijk betekent. En na het doorlopen van een artikel als [Implementeren en verwijderen van toepassingen met PowerShell,][10]het lijkt erop dat alles wat je doet is kopiëren / plakken van de waarde zoals weergegeven in het cluster manifest van het doelcluster. De instelling moet dus configureerbaar zijn per cluster, maar wanneer u een cluster maakt via de [Azure-portal,][11]is er geen optie om deze instelling te configureren en is het altijd "fabric:ImageStore". Wat is dan het doel van deze instelling?
+In sommige documentatie wordt het bestaan van een ' ImageStoreConnectionString-para meter in het kort vermeld, zonder te beschrijven wat het echt betekent. En nadat u een artikel hebt door lopen zoals het [implementeren en verwijderen van toepassingen met behulp van Power shell][10], lijkt het alsof het kopiëren/plakken van de waarde zoals wordt weer gegeven in het cluster manifest van het doel cluster. De instelling moet dus per cluster kunnen worden geconfigureerd, maar wanneer u een cluster maakt via de [Azure Portal][11], is er geen optie om deze instelling te configureren en is het altijd ' Fabric: installatie kopie opslag '. Wat is het doel van deze instelling?
 
-![Clustermanifest][img_cm]
+![Cluster manifest][img_cm]
 
-Service Fabric begon als een platform voor interne Microsoft-consumptie door vele verschillende teams, dus sommige aspecten ervan zijn zeer aanpasbaar - de "Image Store" is een dergelijk aspect. In wezen is de Image Store een pluggable repository voor het opslaan van toepassingspakketten. Wanneer uw toepassing wordt geïmplementeerd op een knooppunt in het cluster, downloadt dat knooppunt de inhoud van uw toepassingspakket uit de Image Store. De ImageStoreConnectionString is een instelling die alle benodigde informatie bevat voor zowel clients als knooppunten om de juiste Image Store voor een bepaald cluster te vinden.
+Service Fabric is gestart als een platform voor intern micro soft-gebruik door veel verschillende teams, waardoor sommige aspecten van IT zeer aanpasbaar zijn: de ' Image Store ' is een van de voor beelden. Het Image Store is in wezen een pluggable opslag plaats voor het opslaan van toepassings pakketten. Wanneer uw toepassing wordt geïmplementeerd naar een knoop punt in het cluster, wordt de inhoud van het toepassings pakket door het knoop punt gedownload van de Image Store. De ImageStoreConnectionString is een instelling die alle benodigde informatie voor clients en knoop punten bevat om de juiste Image Store voor een bepaald cluster te vinden.
 
-Er zijn momenteel drie mogelijke soorten Image Store-providers en de bijbehorende verbindingstekenreeksen zijn als volgt:
+Er zijn momenteel drie mogelijke soorten Image Store providers en de bijbehorende verbindings reeksen:
 
-1. Image Store-service: "fabric:ImageStore"
+1. Image Store-service: ' Fabric: installatie kopie opslag '
 
-2. Bestandssysteem: "bestand:[bestandssysteempad]"
+2. Bestands systeem: ' bestand: [bestandssysteempad] '
 
-3. Azure Storage: "xstore:DefaultEndpointsProtocol=https; AccountName=[...]; AccountKey=[...]; Container=[...]"
+3. Azure Storage: "xstore: DefaultEndpointsProtocol = https; AccountName = [...]; AccountKey = [...]; Container = [...]
 
-Het type provider dat wordt gebruikt in de productie is de Image Store-service, een stateful persisted-systeemservice die u zien in Service Fabric Explorer. 
+Het provider type dat in productie wordt gebruikt, is de Image Store-service. Dit is een stateful persistente systeem service die u vanuit Service Fabric Explorer kunt zien. 
 
 ![Image Store-service][img_is]
 
-Als u de Image Store host in een systeemservice binnen het cluster zelf, worden externe afhankelijkheden voor de pakketopslagplaats geëlimineerd en hebben we meer controle over de plaats van opslag. Toekomstige verbeteringen rond de Image Store zijn waarschijnlijk eerst gericht op de Image Store-provider, zo niet uitsluitend. De verbindingstekenreeks voor de Image Store-serviceprovider heeft geen unieke informatie, omdat de client al is verbonden met het doelcluster. De client hoeft alleen te weten dat protocollen die zich richten op de systeemservice moeten worden gebruikt.
+Als host fungeert voor de Image Store in een systeem service binnen het cluster zelf, worden externe afhankelijkheden voor de pakket opslagplaats geëlimineerd en hebt u meer controle over de lokale opslag ruimte. Toekomstige verbeteringen rond de Image Store zijn waarschijnlijk eerst gericht op de Image Store provider, indien niet alleen. De connection string voor de Image Store-service provider heeft geen unieke informatie omdat de client al is verbonden met het doel cluster. De client hoeft alleen te weten dat de protocollen die zijn gericht op de systeem service moeten worden gebruikt.
 
-De bestandssysteemprovider wordt gebruikt in plaats van de Image Store-service voor lokale clusters met één doos tijdens de ontwikkeling om het cluster iets sneller op te starten. Het verschil is meestal klein, maar het is een nuttige optimalisatie voor de meeste mensen tijdens de ontwikkeling. Het is ook mogelijk om een lokaal cluster met één doos te implementeren met de andere typen opslagleveranciers, maar er is meestal geen reden om dit te doen omdat de ontwikkel-/testworkflow hetzelfde blijft, ongeacht de provider. De Azure Storage-provider bestaat alleen voor oudere ondersteuning van oude clusters die zijn geïmplementeerd voordat de Image Store-serviceprovider werd geïntroduceerd.
+De bestandssysteem provider wordt gebruikt in plaats van de Image Store-service voor lokale clusters met één vak tijdens de ontwikkeling om het cluster iets sneller te Boots trappen. Het verschil is doorgaans klein, maar het is een handige Optima Lise ring voor de meeste mensen tijdens de ontwikkeling. Het is ook mogelijk om een lokaal cluster met één doos met de andere typen opslag providers te implementeren, maar er is meestal geen reden om dit te doen omdat de werk stroom ontwikkelen/testen hetzelfde blijft, ongeacht de provider. De Azure Storage provider bestaat alleen voor oudere ondersteuning van oude clusters die zijn geïmplementeerd voordat de Image Store-service provider werd geïntroduceerd.
 
-Bovendien moet niet de bestandssysteemprovider of de Azure Storage-provider worden gebruikt als een methode om een Image Store tussen meerdere clusters te delen - dit zal resulteren in beschadiging van clusterconfiguratiegegevens, omdat elk cluster conflicterende gegevens naar de afbeelding kan schrijven Winkel. Als u ingerichte toepassingspakketten wilt delen tussen meerdere clusters, gebruikt u in plaats daarvan [sfpkg-bestanden,][12] die kunnen worden geüpload naar elke externe winkel met een download-URI.
+Daarnaast moet de provider van het bestands systeem of de Azure Storage niet worden gebruikt als methode voor het delen van een Image Store tussen meerdere clusters. Dit leidt ertoe dat de cluster configuratie gegevens beschadigd raken, omdat elk cluster conflicterende gegevens naar de Image Store kan schrijven. Als u de ingerichte toepassings pakketten tussen meerdere clusters wilt delen, gebruikt u [sfpkg][12] -bestanden in plaats daarvan, die kunnen worden geüpload naar een externe opslag met een download-URI.
 
-Dus terwijl de ImageStoreConnectionString configureerbaar is, gebruikt u gewoon de standaardinstelling. Wanneer u via Visual Studio naar Azure publiceert, wordt de parameter automatisch voor u ingesteld. Voor programmatische implementatie naar clusters die in Azure worden gehost, is de verbindingstekenreeks altijd 'fabric:ImageStore'. Hoewel bij twijfel, de waarde ervan kan altijd worden geverifieerd door het ophalen van het clustermanifest door [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)of [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Zowel on-premises test- als productieclusters moeten altijd worden geconfigureerd om ook de Image Store-serviceprovider te gebruiken.
+Dus wanneer de ImageStoreConnectionString is geconfigureerd, gebruikt u gewoon de standaard instelling. Wanneer u naar Azure publiceert via Visual Studio, wordt de para meter automatisch voor u ingesteld. Voor een programmatische implementatie naar clusters die worden gehost in azure, is het connection string altijd ' Fabric: installatie kopie opslag '. Hoewel de waarde ervan onzeker is, kan deze altijd worden geverifieerd door het cluster manifest op te halen door [Power shell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.net](https://msdn.microsoft.com/library/azure/mt161375.aspx)of [rest](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Zowel on-premises test-als productie clusters moeten altijd worden geconfigureerd voor het gebruik van de Image Store-service provider.
 
 ### <a name="next-steps"></a>Volgende stappen
-[Toepassingen implementeren en verwijderen met PowerShell][10]
+[Toepassingen implementeren en verwijderen met behulp van Power shell][10]
 
 <!--Image references-->
 [img_is]: ./media/service-fabric-image-store-connection-string/image_store_service.png

@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75912169"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Peer-ASN koppelen aan Azure-abonnement met de portal
 
-Voordat u een peering-aanvraag indient, moet u uw ASN eerst koppelen aan Azure-abonnement via de onderstaande stappen.
+Voordat u een peering-aanvraag indient, moet u eerst uw ASN met het Azure-abonnement koppelen met behulp van de onderstaande stappen.
 
-Als u dat liever hebt, u deze handleiding voltooien met behulp van de [PowerShell.](howto-subscription-association-powershell.md)
+Als u wilt, kunt u deze hand leiding volt ooien met behulp van [Power shell](howto-subscription-association-powershell.md).
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>PeerAsn maken om uw ASN te koppelen aan Azure-abonnement
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>PeerAsn maken om uw ASN te koppelen aan een Azure-abonnement
 
-### <a name="sign-in-to-the-portal"></a>Inloggen op de portal
+### <a name="sign-in-to-the-portal"></a>Aanmelden bij de portal
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="register-for-peering-resource-provider"></a>Registreren voor peering resource provider
-Registreer u voor peering resource provider in uw abonnement door de onderstaande stappen te volgen. Als u dit niet uitvoert, zijn Azure-resources die nodig zijn om peering in te stellen niet toegankelijk.
+### <a name="register-for-peering-resource-provider"></a>Registreren voor de resource provider voor peering
+Registreer u voor de resource provider voor de peering in uw abonnement door de volgende stappen uit te voeren. Als u deze niet uitvoert, zijn Azure-resources die vereist zijn voor het instellen van peering, niet toegankelijk.
 
-1. Klik op **Abonnementen** in de linkerbovenhoek van de portal. Als u het niet ziet, klikt u op **Meer services** en zoekt u ernaar.
+1. Klik op **abonnementen** in de linkerbovenhoek van de portal. Als u deze niet ziet, klikt u op **meer services** en zoekt u deze.
 
     > [!div class="mx-imgBorder"]
     > ![Abonnementen openen](./media/rp-subscriptions-open.png)
@@ -39,75 +39,75 @@ Registreer u voor peering resource provider in uw abonnement door de onderstaand
     > [!div class="mx-imgBorder"]
     > ![Abonnement starten](./media/rp-subscriptions-launch.png)
 
-1. Zodra het abonnement wordt geopend, klik je aan de linkerkant op **Resourceproviders**. Zoek vervolgens in het rechterdeelvenster naar *peering* in het zoekvenster of gebruik de schuifbalk om **Microsoft.Peering** te vinden en kijk naar de **status**. Als de status is ***geregistreerd,*** slaat u de onderstaande stappen over en gaat u verder met **sectie PeerAsn maken**. Als de status ***niet geregistreerd***is, selecteert u **Microsoft.Peering** en klikt u op **Registreren**.
+1. Zodra het abonnement wordt geopend, klikt u aan de linkerkant op **resource providers**. Zoek vervolgens in het rechterdeel venster op *peering* in het zoek venster of gebruik de schuif balk om **micro soft. peering** te zoeken en de **status**te bekijken. Als de status is ***geregistreerd***, kunt u de onderstaande stappen overs Laan en door gaan naar de sectie **PeerAsn maken**. Als de status ***NotRegistered***is, selecteert u **micro soft. peering** en klikt u op **REGI ster**.
 
     > [!div class="mx-imgBorder"]
-    > ![Registratie start](./media/rp-register-start.png)
+    > ![Begin registratie](./media/rp-register-start.png)
 
-1. Houd er rekening mee dat de status verandert in ***Registreren***.
-
-    > [!div class="mx-imgBorder"]
-    > ![Registratie in uitvoering](./media/rp-register-progress.png)
-
-1. Wacht tot een min of zo voor het om registratie te voltooien. Klik vervolgens op **Vernieuwen** en controleer of de status is ***geregistreerd.***
+1. Houd er rekening mee dat de status wordt gewijzigd in ***registratie***.
 
     > [!div class="mx-imgBorder"]
-    > ![Inschrijving voltooid](./media/rp-register-completed.png)
+    > ![Registratie wordt uitgevoerd](./media/rp-register-progress.png)
+
+1. Wacht totdat de registratie is voltooid. Klik vervolgens op **vernieuwen** en controleer of de status is ***geregistreerd***.
+
+    > [!div class="mx-imgBorder"]
+    > ![Registratie is voltooid](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn maken
-U een nieuwe PeerAsn-bron maken voor het koppelen van een ASN (Autonomous System Number) aan Azure-abonnementen. U meerdere ASN's aan een abonnement koppelen door een **PeerAsn** te maken voor elke ASN die u moet koppelen.
+U kunt een nieuwe PeerAsn-resource maken voor het koppelen van een autonoom systeem nummer (ASN) aan een Azure-abonnement. U kunt meerdere Asn's koppelen aan een abonnement door een **PeerAsn** te maken voor elke ASN die u moet koppelen.
 
-1. Klik **op Een resource maken** > **Zie alles**.
+1. Klik op **een resource** > maken**Alles bekijken**.
 
     > [!div class="mx-imgBorder"]
-    > ![Zoeken peerasn](./media/peerasn-seeall.png)
+    > ![PeerAsn zoeken](./media/peerasn-seeall.png)
 
-1. Zoek naar *PeerAsn* in het zoekvak en druk op *Enter* op het toetsenbord. Klik in de resultaten op **PeerAsn-bron.**
+1. Zoek naar *PeerAsn* in het zoekvak en druk op *Enter* op het toetsen bord. Klik in de resultaten op **PeerAsn** resource.
 
     > [!div class="mx-imgBorder"]
     > ![PeerAsn starten](./media/peerasn-launch.png)
 
-1. Zodra **PeerAsn** is gestart, klik op **Maken**.
+1. Wanneer **PeerAsn** wordt gestart, klikt u op **maken**.
 
     > [!div class="mx-imgBorder"]
     > ![PeerAsn maken](./media/peerasn-create.png)
 
-1. Vul op de **pagina Een peer ASN** koppelen onder het tabblad **Basisbeginselen** de velden in zoals hieronder wordt weergegeven.
+1. Vul op de pagina **een peer-ASN koppelen** onder het tabblad **basis beginselen** de velden in zoals hieronder wordt weer gegeven.
 
     > [!div class="mx-imgBorder"]
-    > ![Tabblad Basisbeginselen van PeerAsn](./media/peerasn-basics-tab.png)
+    > ![Tabblad PeerAsn-basis](./media/peerasn-basics-tab.png)
 
-    * **Naam** komt overeen met resource naam en kan alles wat je kiest.  
-    * Kies het **abonnement** waaraan u de ASN moet koppelen.
-    * **De naam** van uw bedrijf komt overeen met de naam van uw bedrijf en moet zo dicht mogelijk bij uw PeeringDB-profiel staan. Houd er rekening mee dat waarde alleen tekens a-z, A-Z en spatie ondersteunt
-    * Voer uw ASN in het veld **Peer ASN** in.
-    * Klik op **Nieuw maken** en voer **e-mailadres** en **telefoonnummer** in voor uw Network Operations Center (NOC)
-1. Klik vervolgens op **Controleren + maken** en observeer dat portal de basisvalidatie van de ingevoerde informatie uitvoert. Dit wordt weergegeven in een lint aan de bovenkant, als *Laatste validatie uitvoeren...*.
-
-    > [!div class="mx-imgBorder"]
-    > ![Tabblad PeerAsn-beoordeling](./media/peerasn-review-tab-validation.png)
-
-1. Zodra het bericht op het lint wordt ingeschakeld in *Validatie geslaagd,* controleert u uw gegevens en verzendt u de aanvraag door op **Maken te**klikken. Als de validatie niet doorgaat, klikt u op **Vorige** en herhaalt u de bovenstaande stappen om uw aanvraag te wijzigen en ervoor te zorgen dat de waarden die u invoert geen fouten hebben.
+    * De **naam** komt overeen met de resource naam en kan alles zijn wat u kiest.  
+    * Kies het **abonnement** waaraan u het ASN wilt koppelen.
+    * De naam van de **peer** komt overeen met de naam van uw bedrijf en moet zo dicht mogelijk bij uw PeeringDB-profiel staan. Houd er rekening mee dat waarde alleen de tekens a-z, A-Z en spatie ondersteunt
+    * Voer uw ASN in het veld **peer ASN** in.
+    * Klik op **nieuwe maken** en voer een **e-mail adres** en **telefoon nummer** in voor uw netwerk Operations Center (NOC)
+1. Klik vervolgens op **controleren + maken** en houd er rekening mee dat de basis validatie van de gegevens die u hebt ingevoerd, wordt uitgevoerd. Dit wordt weer gegeven in een lint bovenaan, zoals het *uitvoeren van definitieve validatie...*.
 
     > [!div class="mx-imgBorder"]
-    > ![Tabblad PeerAsn-beoordeling](./media/peerasn-review-tab.png)
+    > ![Tabblad controle PeerAsn](./media/peerasn-review-tab-validation.png)
 
-1. Nadat u de aanvraag hebt ingediend, wacht u tot de implementatie is voltooid. Als de implementatie mislukt, neemt u contact op met [Microsoft peering](mailto:peering@microsoft.com). Een succesvolle implementatie wordt hieronder weergegeven.
+1. Wanneer het bericht in het lint wordt *gevalideerd*, controleert u uw gegevens en verzendt u de aanvraag door op **maken**te klikken. Als de validatie niet is geslaagd, klikt u op **vorige** en herhaalt u de bovenstaande stappen om uw aanvraag aan te passen en te controleren of de ingevoerde waarden geen fouten bevatten.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn Succes](./media/peerasn-success.png)
+    > ![Tabblad controle PeerAsn](./media/peerasn-review-tab.png)
 
-### <a name="view-status-of-a-peerasn"></a>Status van een PeerAsn weergeven
-Zodra peerasn-bron is geïmplementeerd, moet u wachten tot Microsoft de koppelingsaanvraag goedkeurt. Het kan tot 12 uur duren voor goedkeuring. Na goedkeuring ontvangt u een melding naar het e-mailadres dat in de bovenstaande sectie is ingevoerd.
+1. Nadat u de aanvraag hebt ingediend, wacht u totdat de implementatie is voltooid. Als de implementatie mislukt, neemt u contact op met [micro soft-peering](mailto:peering@microsoft.com). Er wordt een geslaagde implementatie weer gegeven.
+
+    > [!div class="mx-imgBorder"]
+    > ![PeerAsn geslaagd](./media/peerasn-success.png)
+
+### <a name="view-status-of-a-peerasn"></a>De status van een PeerAsn weer geven
+Zodra de PeerAsn-resource is geïmplementeerd, moet u wachten tot micro soft de koppelings aanvraag heeft goedgekeurd. Het kan tot 12 uur duren voordat goed keuring is uitgevoerd. Na goed keuring ontvangt u een melding voor het e-mail adres dat is ingevoerd in de bovenstaande sectie.
 
 > [!IMPORTANT]
-> Wacht tot de validatiestatus 'Goedgekeurd' wordt ingeschakeld voordat u een peering-aanvraag indient. Het kan tot 12 uur duren voor deze goedkeuring.
+> Wacht totdat de ValidationState is ingeschakeld voordat een peering-aanvraag wordt verzonden. Het kan tot 12 uur duren voordat deze goed keuring is uitgevoerd.
 
 ## <a name="modify-peerasn"></a>PeerAsn wijzigen
-Het wijzigen van PeerAsn wordt momenteel niet ondersteund. Als u wilt wijzigen, neemt u contact op met [Microsoft peering](mailto:peering@microsoft.com).
+Het wijzigen van PeerAsn wordt momenteel niet ondersteund. Als u wijzigingen wilt aanbrengen, neemt u contact op met [micro soft-peering](mailto:peering@microsoft.com).
 
 ## <a name="delete-peerasn"></a>PeerAsn verwijderen
-Het verwijderen van een PeerAsn wordt momenteel niet ondersteund. Als u PeerAsn wilt verwijderen, neemt u contact op met [Microsoft peering](mailto:peering@microsoft.com).
+Het is momenteel niet mogelijk om een PeerAsn te verwijderen. Als u PeerAsn moet verwijderen, neemt u contact op met [micro soft-peering](mailto:peering@microsoft.com).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -118,4 +118,4 @@ Het verwijderen van een PeerAsn wordt momenteel niet ondersteund. Als u PeerAsn 
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-Ga voor meer informatie naar [veelgestelde vragen over internetpeering](faqs.md)
+Ga voor meer informatie naar [Veelgestelde vragen over Internet peering](faqs.md)

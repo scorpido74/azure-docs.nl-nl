@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75708352"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Opslaan in cache toevoegen om de prestaties in Azure API Management te verbeteren
@@ -50,7 +50,7 @@ Vereisten om deze zelfstudie te voltooien:
 
 Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de bewerking **GetSpeakers** een antwoord geretourneerd van de back-endservice. Dit antwoord wordt in de cache opgeslagen en voorzien van een sleutel door de opgegeven headers en querytekenreeksparameters. Voor volgende aanroepen voor de bewerking, met overeenkomende parameters, wordt het antwoord geretourneerd dat in de cache is opgeslagen, tot het cacheduurinterval is verlopen.
 
-1. Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
+1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 2. Blader naar de APIM-instantie.
 3. Selecteer het tabblad **API**.
 4. Klik in de API-lijst op **Demo Conference API**.
@@ -81,7 +81,7 @@ Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de 
 Als u opslaan in de cache in actie wilt zien, roept u de bewerking aan vanuit de ontwikkelaarsportal.
 
 1. Blader in Azure Portal naar de APIM-instantie.
-2. Selecteer het tabblad **API's.**
+2. Selecteer het tabblad **api's** .
 3. Selecteer de API waaraan u cachebeleidsregels wilt toevoegen.
 4. Selecteer de bewerking **GetSpeakers**.
 5. Klik rechtsboven in het menu op het tabblad **Test**.

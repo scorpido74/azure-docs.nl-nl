@@ -1,6 +1,6 @@
 ---
-title: 'Instellingen voor IP-adres gateway wijzigen: PowerShell'
-description: In dit artikel u ip-adresvoorvoegsels voor uw lokale netwerkgateway bekijken met PowerShell
+title: 'IP-adres instellingen van gateway wijzigen: Power shell'
+description: In dit artikel vindt u instructies voor het wijzigen van IP-adres voorvoegsels voor uw lokale netwerk gateway met behulp van Power shell
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: cherylmc
 ms.openlocfilehash: dbaef6e0c81a9230b24aa1e85e7fdc421444047d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75863992"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Instellingen voor lokale netwerkgateway wijzigen met PowerShell
 
-Soms worden de instellingen voor uw lokale netwerkgateway AddressPrefix of GatewayIPAddress gewijzigd. In dit artikel ziet u hoe u de instellingen van de lokale netwerkgateway wijzigen. U deze instellingen ook op een andere methode wijzigen door een andere optie uit de volgende lijst te selecteren:
+Soms worden de instellingen voor de AddressPrefix of GatewayIPAddress van uw lokale netwerk gateway gewijzigd. In dit artikel wordt beschreven hoe u de instellingen van uw lokale netwerk gateway wijzigt. U kunt deze instellingen ook met behulp van een andere methode wijzigen door een andere optie te selecteren in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-modify-local-network-gateway-portal.md)
-> * [Powershell](vpn-gateway-modify-local-network-gateway.md)
+> * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
@@ -30,7 +30,7 @@ Soms worden de instellingen voor uw lokale netwerkgateway AddressPrefix of Gatew
 
 Installeer de meest recente versie van de PowerShell-cmdlets van Azure Resource Manager. Zie [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets.
 
-## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP-adresvoorvoegsels wijzigen
+## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP-adres voorvoegsels wijzigen
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
@@ -40,4 +40,4 @@ Installeer de meest recente versie van de PowerShell-cmdlets van Azure Resource 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U uw gatewayverbinding verifiëren. Zie [Een gatewayverbinding verifiëren](vpn-gateway-verify-connection-resource-manager.md).
+U kunt uw gateway verbinding controleren. Zie [een gateway verbinding controleren](vpn-gateway-verify-connection-resource-manager.md).

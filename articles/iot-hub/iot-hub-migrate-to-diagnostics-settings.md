@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub migreren naar diagnostische instellingen | Microsoft Documenten
-description: Azure IoT Hub bijwerken om Azure-diagnostische instellingen te gebruiken in plaats van bedrijfscontrole om de status van bewerkingen op uw IoT-hub in realtime te controleren.
+title: Azure IoT Hub migreren naar Diagnostische instellingen | Microsoft Docs
+description: Azure IoT Hub bijwerken om de diagnostische instellingen van Azure te gebruiken in plaats van bewerkingen voor bewaking om de status van bewerkingen op uw IoT-hub in realtime te controleren.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750695"
 ---
-# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Uw IoT-hub migreren van operationsmonitoring naar diagnostische instellingen
+# <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migreer uw IoT Hub van operations monitoring naar Diagnostische instellingen
 
-Klanten die [bedrijfsbewaking](iot-hub-operations-monitoring.md) gebruiken om de status van bewerkingen in IoT Hub bij te houden, kunnen die werkstroom migreren naar [Azure-diagnostische instellingen](../azure-monitor/platform/platform-logs-overview.md), een functie van Azure Monitor. Diagnostische instellingen leveren diagnostische informatie op resourceniveau voor veel Azure-services.
+Klanten die bewerkings [bewaking](iot-hub-operations-monitoring.md) gebruiken om de status van bewerkingen in IOT hub bij te houden, kunnen die werk stroom migreren naar de [Diagnostische instellingen van Azure](../azure-monitor/platform/platform-logs-overview.md), een functie van Azure monitor. Diagnostische instellingen geven diagnostische gegevens op resource niveau voor veel Azure-Services.
 
-**De operationele monitoringfunctionaliteit van IoT Hub is afgeschaft**en is verwijderd uit de portal. In dit artikel vindt u stappen om uw workloads te verplaatsen van operations monitoring naar diagnostische instellingen. Zie [Uw Azure IoT-oplossingen met Azure Monitor en Azure Resource Health controleren](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)voor meer informatie over de afschrijvingstijdlijn.
+**De functionaliteit voor de bewaking van bewerkingen van IOT hub is afgeschaft**en is verwijderd uit de portal. In dit artikel worden de stappen beschreven voor het verplaatsen van de workloads van bewerkingen die worden bewaakt naar Diagnostische instellingen. Zie [uw Azure IOT-oplossingen bewaken met Azure monitor en Azure resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)voor meer informatie over de tijd lijn van de afschaffing.
 
-## <a name="update-iot-hub"></a>IoT-hub bijwerken
+## <a name="update-iot-hub"></a>IoT Hub bijwerken
 
-Als u uw IoT-hub wilt bijwerken in de Azure-portal, schakelt u eerst diagnostische instellingen in en schakelt u de bewaking van bewerkingen uit.  
+Als u uw IoT Hub in de Azure Portal wilt bijwerken, schakelt u eerst de instellingen voor diagnostische gegevens in en schakelt u de bewaking van bewerkingen uit.  
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
-### <a name="turn-off-operations-monitoring"></a>Bedrijfscontrole uitschakelen
+### <a name="turn-off-operations-monitoring"></a>Bewaking van bewerkingen uitschakelen
 
 > [!NOTE]
-> Vanaf 11 maart 2019 wordt de functie voor bedrijfsbewaking verwijderd uit de Azure-portalinterface van IoT Hub. De onderstaande stappen zijn niet meer van toepassing. Als u wilt migreren, controleert u of de juiste categorieën zijn ingeschakeld in de diagnostische instellingen van Azure Monitor hierboven.
+> Vanaf 11 maart 2019 wordt de functie voor het controleren van bewerkingen verwijderd uit de Azure Portal-interface van IoT Hub. De onderstaande stappen zijn niet meer van toepassing. Als u wilt migreren, moet u ervoor zorgen dat de juiste categorieën zijn ingeschakeld in Azure Monitor Diagnostische instellingen hierboven.
 
-Zodra u de nieuwe diagnostische instellingen in uw werkstroom hebt getest, u de functie voor bedrijfscontrole uitschakelen. 
+Wanneer u de nieuwe diagnostische instellingen in uw werk stroom hebt getest, kunt u de functie voor het controleren van bewerkingen uitschakelen. 
 
-1. Selecteer in het menu Van de IoT-hub de optie **Operations-bewaking**.
+1. Selecteer in het menu IoT Hub de optie **bewerkingen bewaken**.
 
-2. Selecteer Onder elke controlecategorie **Geen**.
+2. Selecteer onder elke bewakings categorie de optie **geen**.
 
-3. Sla de wijzigingen voor het bewaken van bewerkingen op.
+3. Sla de wijzigingen van de operations-bewaking op.
 
-## <a name="update-applications-that-use-operations-monitoring"></a>Toepassingen bijwerken die bedrijfsbewaking gebruiken
+## <a name="update-applications-that-use-operations-monitoring"></a>Toepassingen bijwerken die gebruikmaken van operations monitoring
 
-De schema's voor operationele monitoring en diagnostische instellingen variëren enigszins. Het is belangrijk dat u de toepassingen bijwerkt die de bewaking van bewerkingen vandaag gebruiken om het schema in kaart te brengen dat wordt gebruikt door diagnostische instellingen. 
+De schema's voor de instellingen voor het bewaken van bewerkingen en diagnostische gegevens variëren enigszins. Het is belang rijk dat u de toepassingen die vandaag gebruikmaken van operations monitoring, bijwerkt om toe te wijzen aan het schema dat wordt gebruikt door de diagnostische instellingen. 
 
-Ook biedt diagnostische instellingen vijf nieuwe categorieën voor het bijhouden. Nadat u toepassingen voor het bestaande schema hebt bijgewerkt, voegt u ook de nieuwe categorieën toe:
+Daarnaast biedt de diagnostische instellingen vijf nieuwe categorieën voor het bijhouden van gegevens. Nadat u toepassingen voor het bestaande schema hebt bijgewerkt, voegt u ook de nieuwe categorieën toe:
 
-* Cloud-to-device twin operations
-* Dubbele bewerkingen van device-to-cloud
+* Dubbele bewerkingen van het Cloud naar het apparaat
+* Dubbele bewerkingen van het apparaat naar de Cloud
 * Dubbele query's
 * Taakbewerkingen
 * Directe methoden
 
-Zie [Het schema voor diagnostische instellingen begrijpen voor](iot-hub-monitor-resource-health.md#understand-the-logs)de specifieke schemastructuren .
+Zie [inzicht in het schema voor Diagnostische instellingen](iot-hub-monitor-resource-health.md#understand-the-logs)voor de specifieke schema structuren.
 
-## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Controleapparaat sluit gebeurtenissen aan en koppelt deze los met lage latentie
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Bewaking van het apparaat verbinding maken en verbreken van gebeurtenissen met een lage latentie
 
-Als u de verbinding tussen apparaten wilt controleren en gebeurtenissen in productie wilt verbreken, raden we u aan u te abonneren op de [ **verbinding tussen** ](iot-hub-event-grid.md#event-types) het apparaat en gebeurtenis op Gebeurtenisraster om waarschuwingen te ontvangen en de status van de apparaatverbinding te controleren. Gebruik deze [zelfstudie](iot-hub-how-to-order-connection-state-events.md) voor meer informatie over het integreren van door apparaten verbonden en apparaatverbroken van IoT Hub in uw IoT-oplossing.
+Als u verbinding met het apparaat wilt bewaken en de gebeurtenissen in de productie verbinding wilt verbreken, kunt u het beste abonneren op de [ **verbroken** gebeurtenis](iot-hub-event-grid.md#event-types) van het apparaat op Event grid om waarschuwingen op te halen en de verbindings status van het apparaat te controleren. Gebruik deze [zelf studie](iot-hub-how-to-order-connection-state-events.md) voor meer informatie over het integreren van met het apparaat verbonden en verbroken gebeurtenissen van het apparaat van IOT hub in uw IOT-oplossing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

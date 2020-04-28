@@ -1,24 +1,24 @@
 ---
-title: Referentie van definitieartefact weergeven
-description: Biedt een voorbeeld van het artefact voor weergavedefinitie voor Azure Managed Applications. De bestandsnaam is viewDefinition.json.
+title: Naslag informatie over definitie artefacten weer geven
+description: Hier vindt u een voor beeld van het weer geven van definitie artefacten voor Azure Managed Applications. De bestands naam is viewDefinition. json.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651200"
 ---
-# <a name="reference-view-definition-artifact"></a>Referentie: Artefact voor definitie weergeven
+# <a name="reference-view-definition-artifact"></a>Verwijzing: definitie-artefact weer geven
 
-Dit artikel is een verwijzing naar een *viewDefinition.json-artefact* in Azure Managed Applications. Zie Artefact definitie van weergaven [weergeven](concepts-view-definition.md)voor meer informatie over de configuratie van weergaven.
+Dit artikel bevat een verwijzing naar een *viewDefinition. json* -artefact in azure Managed Applications. Zie [definition artefact weer geven](concepts-view-definition.md)voor meer informatie over de configuratie van de ontwerp weergaven.
 
 ## <a name="view-definition"></a>Definitie weergeven
 
-In het volgende JSON wordt een voorbeeld weergegeven van het bestand *viewDefinition.json* voor Azure Managed Applications:
+In de volgende JSON ziet u een voor beeld van het bestand *viewDefinition. json* voor Azure Managed Applications:
 
 ```json
 {
@@ -87,6 +87,6 @@ In het volgende JSON wordt een voorbeeld weergegeven van het bestand *viewDefini
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
-- [Naslag: Artefact van gebruikersinterface-elementen](reference-createuidefinition-artifact.md)
-- [Naslag: Artefact van implementatiesjablonen](reference-main-template-artifact.md)
+- [Zelf studie: een beheerde toepassing maken met aangepaste acties en resources](tutorial-create-managed-app-with-custom-provider.md)
+- [Verwijzing: elementen artefact van gebruikers interface](reference-createuidefinition-artifact.md)
+- [Verwijzing: implementatie sjabloon artefact](reference-main-template-artifact.md)

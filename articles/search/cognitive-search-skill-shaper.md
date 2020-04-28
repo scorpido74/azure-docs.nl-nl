@@ -1,7 +1,7 @@
 ---
 title: Cognitieve vaardigheid van shaper
 titleSuffix: Azure Cognitive Search
-description: Metagegevens en gestructureerde informatie extraheren uit ongestructureerde gegevens en vorm deze als een complex type in een AI-verrijkingspijplijn in Azure Cognitive Search.
+description: Haal meta gegevens en gestructureerde informatie op uit ongestructureerde gegevens en vorm deze als een complex type in een AI-verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754113"
 ---
 # <a name="shaper-cognitive-skill"></a>Cognitieve vaardigheid van shaper
 
-De **Shaper-vaardigheid** consolideert verschillende ingangen in een [complex type](search-howto-complex-data-types.md) waarnaar later in de verrijkingspijplijn kan worden verwezen. Met **de Shaper-vaardigheid** u in wezen een structuur maken, de naam van de leden van die structuur definiëren en waarden toewijzen aan elk lid. Voorbeelden van geconsolideerde velden die nuttig zijn in zoekscenario's zijn het combineren van een voor- en achternaam in één structuur, stad en staat in één structuur, of naam en geboortedatum in één structuur om een unieke identiteit tot stand te brengen.
+De **shaper** -vaardigheid consolideert diverse invoer in een [complex type](search-howto-complex-data-types.md) waarnaar later in de verrijkings pijplijn kan worden verwezen. Met de **shaper** -vaardigheid kunt u in wezen een structuur maken, de naam van de leden van die structuur definiëren en waarden aan elk lid toewijzen. Voor beelden van geconsolideerde velden die handig zijn in zoek scenario's zijn onder andere het combi neren van een voor-en achternaam in één structuur, plaats en provincie in één structuur, of naam en geboorte datum in één structuur om unieke identiteiten te bepalen.
 
-Bovendien voegt de **shaper-vaardigheid** die in [scenario 3](#nested-complex-types) wordt geïllustreerd, een optionele *eigenschap sourceContext* toe aan de invoer. De *eigenschappen bron* en *bronContext* sluiten elkaar uit. Als de invoer zich op de context van de vaardigheid bevindt, gebruikt u gewoon *bron*. Als de invoer zich in een *andere* context bevindt dan de vaardigheidscontext, gebruikt u de *bronContext*. De *bronContext* vereist dat u een geneste invoer definieert met het specifieke element dat als bron wordt geadresseerd. 
+Daarnaast voegt de **shaper** -vaardigheid die in [scenario 3](#nested-complex-types) wordt geïllustreerd, een optionele eigenschap *sourceContext* toe aan de invoer. De *bron* -en *sourceContext* -eigenschappen sluiten elkaar wederzijds uit. Als de invoer zich in de context van de vaardigheid bevindt, hoeft u alleen *bron*te gebruiken. Als de invoer zich in een *andere* context bevindt dan de context van de kwalificatie, gebruikt u de *sourceContext*. De *sourceContext* vereist dat u een geneste invoer definieert met het specifieke element dat als bron wordt behandeld. 
 
-De uitvoernaam is altijd "output". Intern kan de pijplijn een andere naam in kaart brengen, zoals 'analyzedText' zoals weergegeven in de onderstaande voorbeelden, maar de **Shaper-vaardigheid** zelf retourneert 'uitvoer' in het antwoord. Dit kan belangrijk zijn als u verrijkte documenten debuggen en de naamgevingsdiscrepantie opmerkt, of als u een aangepaste vaardigheid opbouwt en de respons zelf structureert.
+De uitvoer naam is altijd "uitvoer". Intern kan de pijp lijn een andere naam toewijzen, zoals ' analyzedText ', zoals wordt weer gegeven in de onderstaande voor beelden, maar de **shaper** -vaardigheid zelf retourneert ' output ' in het antwoord. Dit kan belang rijk zijn als u fouten opspoort in verrijkte documenten en u merkt dat de naam verschilt, of als u een aangepaste vaardigheid bouwt en het antwoord zelf structureert.
 
 > [!NOTE]
-> De **Shaper-vaardigheid** is niet gebonden aan een API voor Cognitive Services en u wordt niet in rekening gebracht voor het gebruik ervan. U moet echter nog steeds [een resource voor Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md)om de optie **Gratis** resource te overschrijven die u beperkt tot een klein aantal dagelijkse verrijkingen per dag.
+> De **shaper** -vaardigheid is niet gebonden aan een COGNITIVE Services-API en er worden geen kosten in rekening gebracht voor het gebruik ervan. U moet nog steeds [een Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md)om de optie **gratis** resource te overschrijven, waardoor u een klein aantal dagelijkse verrijkingen per dag beperkt.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.ShaperSkill
+Micro soft. skills. util. ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scenario 1: complexe typen
 
-Overweeg een scenario waarin u een structuur wilt maken die *analyzedText* wordt genoemd en die twee leden heeft: *respectievelijk tekst* en *sentiment.* In een index wordt een doorzoekbaar veld met meerdere delen een *complex type* genoemd en wordt het vaak gemaakt wanneer brongegevens een overeenkomstige complexe structuur hebben die erop wordt toegewezen.
+Overweeg een scenario waarin u een structuur wilt maken met de naam *analyzedText* die twee leden bevat: respectievelijk *Text* en *sentiment*. In een index wordt een doorzoekbaar veld dat uit meerdere delen bestaat een *complex type* genoemd. het wordt vaak gemaakt wanneer bron gegevens een overeenkomende complexe structuur hebben die hieraan wordt toegewezen.
 
-Een andere benadering voor het maken van complexe typen is echter de **Shaper-vaardigheid.** Door deze vaardigheid op te tellen in een skillset, kunnen de in-memory bewerkingen tijdens skillset processing gegevensvormen uitvoeren met geneste structuren, die vervolgens kunnen worden toegewezen aan een complex type in uw index. 
+Een andere benadering voor het maken van complexe typen is echter via de **shaper** -vaardigheid. Door deze vaardigheid op te nemen in een vaardig heden, kunnen de in-Memory bewerkingen tijdens de kwalificatieset-verwerking gegevensshapes uitvoeren met geneste structuren, die vervolgens kunnen worden toegewezen aan een complex type in uw index. 
 
-In de volgende voorbeeldvaardigheidsdefinitie worden de ledennamen als invoer gegeven. 
+In het volgende voor beeld van de vaardigheids definitie worden de lidnamen als invoer opgegeven. 
 
 
 ```json
@@ -61,9 +61,9 @@ In de volgende voorbeeldvaardigheidsdefinitie worden de ledennamen als invoer ge
 }
 ```
 
-### <a name="sample-index"></a>Voorbeeldindex
+### <a name="sample-index"></a>Voor beeld-index
 
-Een skillset wordt aangeroepen door een indexeerder en een indexer vereist een index. Een complexe veldweergave in uw index lijkt mogelijk op het volgende voorbeeld. 
+Een vaardig heden wordt aangeroepen door een Indexeer functie en voor een Indexeer functie is een index vereist. Een weer gave met complexe velden in uw index kan eruitzien als in het volgende voor beeld. 
 
 ```json
 
@@ -88,9 +88,9 @@ Een skillset wordt aangeroepen door een indexeerder en een indexer vereist een i
                 },
 ```
 
-### <a name="skill-input"></a>Vaardigheidsinvoer
+### <a name="skill-input"></a>Vaardigheids invoer
 
-Een binnenkomend JSON-document met bruikbare invoer voor deze **Shaper-vaardigheid** kan zijn:
+Een binnenkomend JSON-document dat bruikbare invoer biedt voor deze **shaper** -vaardigheid kan het volgende zijn:
 
 ```json
 {
@@ -107,9 +107,9 @@ Een binnenkomend JSON-document met bruikbare invoer voor deze **Shaper-vaardighe
 ```
 
 
-### <a name="skill-output"></a>Vaardigheidsuitvoer
+### <a name="skill-output"></a>Vaardigheids uitvoer
 
-De **Shaper-vaardigheid** genereert een nieuw element genaamd *analyzedText* met de gecombineerde elementen van *tekst* en *sentiment.* Deze uitvoer voldoet aan het indexschema. Het wordt geïmporteerd en geïndexeerd in een Azure Cognitive Search-index.
+De **shaper** -vaardigheid genereert een nieuw element met de naam *analyzedText* met de gecombineerde elementen van *Text* en *sentiment*. Deze uitvoer voldoet aan het index schema. Het wordt geïmporteerd en geïndexeerd in een Azure Cognitive Search-index.
 
 ```json
 {
@@ -129,11 +129,11 @@ De **Shaper-vaardigheid** genereert een nieuw element genaamd *analyzedText* met
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>Scenario 2: invoerconsolidatie
+## <a name="scenario-2-input-consolidation"></a>Scenario 2: invoer consolidatie
 
-Stel je in een ander voorbeeld voor dat je in verschillende stadia van pijplijnverwerking de titel van een boek en hoofdstuktitels op verschillende pagina's van het boek hebt uitgepakt. U nu één structuur maken die bestaat uit deze verschillende ingangen.
+Een ander voor beeld: Stel dat u in verschillende stadia van pijplijn verwerking de titel van een boek hebt geëxtraheerd en hoofdstuk titels op verschillende pagina's van het boek hebt. U kunt nu één structuur maken die bestaat uit de volgende verschillende invoer.
 
-De **shaper-vaardigheidsdefinitie** voor dit scenario lijkt mogelijk op het volgende voorbeeld:
+De **shaper** -vaardigheids definitie voor dit scenario kan er als volgt uitzien:
 
 ```json
 {
@@ -158,8 +158,8 @@ De **shaper-vaardigheidsdefinitie** voor dit scenario lijkt mogelijk op het volg
 }
 ```
 
-### <a name="skill-output"></a>Vaardigheidsuitvoer
-In dit geval vlakt de **Shaper** alle hoofdstuktitels af om één array te maken. 
+### <a name="skill-output"></a>Vaardigheids uitvoer
+In dit geval worden alle hoofdstuk titels door de **shaper** afgevlakt om één matrix te maken. 
 
 ```json
 {
@@ -183,11 +183,11 @@ In dit geval vlakt de **Shaper** alle hoofdstuktitels af om één array te maken
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scenario 3: invoerconsolidatie van geneste contexten
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scenario 3: invoer consolidatie vanuit geneste contexten
 
-Stel je hebt de titel, hoofdstukken en de inhoud van een boek en hebben uitgevoerd entiteit erkenning en sleutelzinnen op de inhoud en nu nodig hebt om de resultaten van de verschillende vaardigheden te splitsen in een enkele vorm met het hoofdstuk naam, entiteiten, en de belangrijkste zinnen.
+Stel dat u de titel, de hoofd stukken en de inhoud van een boek hebt en dat u entiteits herkenning en sleutel zinnen op de inhoud hebt uitgevoerd en nu de resultaten van de verschillende vaardig heden in één vorm kunt samen voegen met de hoofdstuk naam, entiteiten en sleutel zinnen.
 
-De **shaper-vaardigheidsdefinitie** voor dit scenario lijkt mogelijk op het volgende voorbeeld:
+De **shaper** -vaardigheids definitie voor dit scenario kan er als volgt uitzien:
 
 ```json
 {
@@ -223,8 +223,8 @@ De **shaper-vaardigheidsdefinitie** voor dit scenario lijkt mogelijk op het volg
 }
 ```
 
-### <a name="skill-output"></a>Vaardigheidsuitvoer
-In dit geval maakt de **Shaper** een complex type. Deze structuur bestaat in het geheugen. Als u het wilt opslaan in een [kenniswinkel,](knowledge-store-concept-intro.md)moet u een projectie maken in uw vaardighedendie opslagkenmerken definieert.
+### <a name="skill-output"></a>Vaardigheids uitvoer
+In dit geval maakt de **shaper** een complex type. Deze structuur bevindt zich in het geheugen. Als u het wilt opslaan in een [Knowledge Store](knowledge-store-concept-intro.md), moet u een projectie maken in uw vaardig heden die opslag kenmerken definieert.
 
 ```json
 {
@@ -249,7 +249,7 @@ In dit geval maakt de **Shaper** een complex type. Deze structuur bestaat in het
 ## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
-+ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Complexe typen gebruiken](search-howto-complex-data-types.md)
 + [Knowledge Store (preview)](knowledge-store-concept-intro.md)
-+ [Maak een kenniswinkel in REST](knowledge-store-create-rest.md)
++ [Een kennis archief maken in REST](knowledge-store-create-rest.md)

@@ -1,52 +1,52 @@
 ---
-title: Azure-portal gebruiken om een beheerde app te controleren
-description: Hier ziet u hoe u de Azure-portal gebruikt om de beschikbaarheid en waarschuwingen voor een beheerde toepassing te controleren.
+title: Azure Portal gebruiken om een beheerde app te bewaken
+description: Laat zien hoe u de Azure Portal kunt gebruiken om de beschik baarheid en waarschuwingen voor een beheerde toepassing te bewaken.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651746"
 ---
-# <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Een geïmplementeerdexemplaar van een beheerde toepassing controleren
+# <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Een geïmplementeerd exemplaar van een beheerde toepassing bewaken
 
-Nadat u een beheerde toepassing hebt geïmplementeerd in uw Azure-abonnement, u de status van de toepassing controleren. In dit artikel worden opties in de Azure-portal weergegeven om de status te controleren. U de beschikbaarheid van de resources in uw beheerde toepassing controleren. U ook waarschuwingen instellen en bekijken.
+Nadat u een beheerde toepassing hebt geïmplementeerd voor uw Azure-abonnement, wilt u mogelijk de status van de toepassing controleren. In dit artikel ziet u de opties in de Azure Portal om de status te controleren. U kunt de beschik baarheid van de resources in uw beheerde toepassing bewaken. U kunt ook waarschuwingen instellen en weer geven.
 
 ## <a name="view-resource-health"></a>Resourcestatus weergeven
 
-1. Selecteer de beheerde toepassingsinstantie.
+1. Selecteer uw beheerde toepassings exemplaar.
 
    ![Beheerde toepassing selecteren](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. Selecteer **Resourcestatus**.
+1. Selecteer **resource Health**.
 
-   ![Resourcestatus selecteren](./media/monitor-managed-application-portal/select-resource-health.png)
+   ![Resource status selecteren](./media/monitor-managed-application-portal/select-resource-health.png)
 
-1. Bekijk de beschikbaarheid van de resources in uw beheerde toepassing.
+1. Bekijk de beschik baarheid van de resources in uw beheerde toepassing.
 
    ![Resourcestatus weergeven](./media/monitor-managed-application-portal/view-health.png)
 
 ## <a name="view-alerts"></a>Waarschuwingen weergeven
 
-1. Selecteer **Waarschuwingen**.
+1. Selecteer **waarschuwingen**.
 
    ![Waarschuwingen selecteren](./media/monitor-managed-application-portal/select-alerts.png)
 
-1. Als u waarschuwingsregels hebt geconfigureerd, ziet u informatie over waarschuwingen die zijn gegenereerd.
+1. Als er waarschuwings regels zijn geconfigureerd, wordt er informatie weer gegeven over waarschuwingen die zijn gegenereerd.
 
    ![Waarschuwingen weergeven](./media/monitor-managed-application-portal/view-alerts.png)
 
-1. Als u waarschuwingsregels wilt toevoegen, selecteert u **+ Nieuwe waarschuwingsregel**.
+1. Als u waarschuwings regels wilt toevoegen, selecteert u **+ nieuwe waarschuwings regel**.
 
    ![Waarschuwing maken](./media/monitor-managed-application-portal/create-new-alert.png)
 
-U waarschuwingen maken voor uw beheerde toepassingsinstantie of de bronnen in de beheerde toepassing. Zie Overzicht van waarschuwingen in Microsoft Azure voor informatie over het maken [van waarschuwingen.](../../azure-monitor/platform/alerts-overview.md)
+U kunt waarschuwingen maken voor uw beheerde toepassings exemplaar of van de resources in de beheerde toepassing. Zie [overzicht van waarschuwingen in Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)voor meer informatie over het maken van waarschuwingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Voorbeeldprojecten voor beheerde toepassingen voor](sample-projects.md)beheerde toepassingen voor beheerde toepassingen .
-* Zie [De app Servicecatalogus implementeren via Azure-portal](deploy-service-catalog-quickstart.md)als u een beheerde toepassing wilt implementeren.
+* Zie [voorbeeld projecten voor door Azure beheerde toepassingen](sample-projects.md)voor voor beelden van beheerde toepassingen.
+* Als u een beheerde toepassing wilt implementeren, raadpleegt u [Service Catalog-app implementeren via Azure Portal](deploy-service-catalog-quickstart.md).

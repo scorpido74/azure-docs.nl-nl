@@ -1,54 +1,54 @@
 ---
-title: Azure internal Load Balancer verplaatsen naar een andere Azure-regio met behulp van de Azure-portal
-description: Sjabloon Azure Resource Manager gebruiken om Azure internal Load Balancer van het ene Azure-gebied naar het andere te verplaatsen met behulp van de Azure-portal
+title: Interne Azure-Load Balancer verplaatsen naar een andere Azure-regio met behulp van de Azure Portal
+description: Gebruik Azure Resource Manager sjabloon om de interne Azure-Load Balancer van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal
 author: asudbring
 ms.service: load-balancer
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75638803"
 ---
-# <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure internal Load Balancer verplaatsen naar een andere regio met behulp van de Azure-portal
+# <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Verplaats de interne Azure-Load Balancer naar een andere regio met behulp van de Azure Portal
 
-Er zijn verschillende scenario's waarin u uw bestaande interne load balancer van de ene regio naar de andere wilt verplaatsen. U bijvoorbeeld een interne load balancer maken met dezelfde configuratie voor het testen. U ook een interne load balancer naar een andere regio verplaatsen als onderdeel van de planning voor noodherstel.
+Er zijn verschillende scenario's waarin u uw bestaande interne load balancer van de ene naar de andere regio wilt verplaatsen. U kunt bijvoorbeeld een interne load balancer maken met dezelfde configuratie voor testen. Het is ook mogelijk dat u een interne load balancer naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
 
-Azure interne load balancers kunnen niet van de ene regio naar de andere worden verplaatst. U echter wel een Azure Resource Manager-sjabloon gebruiken om de bestaande configuratie en het virtuele netwerk van een interne load balancer te exporteren.  U de resource vervolgens in een andere regio fasen door de load balancer en het virtuele netwerk naar een sjabloon te exporteren, de parameters te wijzigen die overeenkomen met het doelgebied en de sjablonen vervolgens naar de nieuwe regio te implementeren.  Zie [Snelaande: Azure Resource Manager-sjablonen maken en implementeren met behulp van de Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)voor meer informatie over ResourceBeheer en sjablonen.
+Interne load balancers van Azure kunnen niet van de ene regio naar de andere worden verplaatst. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie en het virtuele netwerk van een interne load balancer te exporteren.  U kunt de resource vervolgens in een andere regio zetten door de load balancer en het virtuele netwerk naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjablonen te implementeren in de nieuwe regio.  Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat de interne load balancer van Azure zich in het Azure-gebied bevindt van waaruit u wilt verplaatsen.
+- Zorg ervoor dat de interne Azure-load balancer zich bevindt in de Azure-regio van waaruit u wilt verplaatsen.
 
-- Azure internal load balancers kunnen niet tussen regio's worden verplaatst.  U moet de nieuwe load balancer koppelen aan resources in het doelgebied.
+- Interne load balancers van Azure kunnen niet tussen regio's worden verplaatst.  U moet de nieuwe load balancer koppelen aan resources in de doel regio.
 
-- Als u een interne configuratie van de load balancer wilt exporteren en een sjabloon wilt implementeren om een interne load balancer in een andere regio te maken, hebt u de rol Netwerkbijdrager of hoger nodig.
+- Als u een interne load balancer configuratie wilt exporteren en een sjabloon wilt implementeren voor het maken van een interne load balancer in een andere regio, hebt u de rol netwerk bijdrager of hoger nodig.
 
-- Identificeer de indeling van de bronnetwerkindeling en alle bronnen die u momenteel gebruikt. Deze lay-out omvat, maar is niet beperkt tot load balancers, netwerkbeveiligingsgroepen, virtuele machines en virtuele netwerken.
+- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen, virtuele machines en virtuele netwerken.
 
-- Controleer of u met uw Azure-abonnement interne load balancers maken in het doelgebied dat wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
+- Controleer of u met uw Azure-abonnement interne load balancers kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
-- Zorg ervoor dat uw abonnement voldoende resources heeft om de toevoeging van load balancers voor dit proces te ondersteunen.  Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
+- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van load balancers voor dit proces.  Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)
 
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen
-In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereidt op de verhuizing met behulp van een Resource Manager-sjabloon en de interne configuratie van de load balancer naar het doelgebied verplaatsen met behulp van de Azure-portal.  Als onderdeel van dit proces moet de virtuele netwerkconfiguratie van de interne load balancer worden opgenomen en moet dit eerst worden gedaan voordat de interne load balancer wordt verplaatst.
+De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor het verplaatsen met behulp van een resource manager-sjabloon en de interne load balancer configuratie naar de doel regio verplaatst met behulp van de Azure Portal.  Als onderdeel van dit proces moet de virtuele-netwerk configuratie van de interne load balancer worden opgenomen en moet eerst worden uitgevoerd voordat de interne load balancer wordt verplaatst.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>De virtuele netwerksjabloon exporteren en implementeren vanuit de Azure-portal
+### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>De virtuele-netwerk sjabloon exporteren en implementeren vanuit de Azure Portal
 
-1. Log in bij de [Azure-portal](https://portal.azure.com) > **Resourcegroepen**.
-2. Zoek de resourcegroep die het virtuele bronnetwerk bevat en klik erop.
-3. Selecteer > **>-instellingen-exportsjabloon**. **Settings**
-4. Kies **Implementeren** in het **sjabloonblad Exporteren.**
-5. Klik **op PARAMETERS SJABLOON** > **bewerken** om het bestand **parameters.json** in de online editor te openen.
-6. Als u de parameter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de **eigenschap waarde** onder **parameters:**
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+2. Zoek de resource groep die het virtuele bron netwerk bevat en klik erop.
+3. Selecteer > **instellingen** > **sjabloon exporteren**.
+4. Kies **implementeren** op de Blade **sjabloon exporteren** .
+5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+6. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
 
     ```json
     {
@@ -61,13 +61,13 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
         }
     }
     ```
-7. Wijzig de waarde van de bronvirtuele netwerknaam in de editor in een naam naar keuze voor het doel VNET. Zorg ervoor dat u de naam in aanhalingstekens bijsluit.
+7. Wijzig de waarde van de naam van het virtuele netwerk van de bron in de editor in een naam van uw keuze voor het doel-VNET. Zorg ervoor dat u de naam tussen aanhalings tekens plaatst.
 
-8. Klik **op Opslaan** in de editor.
+8. Klik op **Opslaan** in de editor.
 
-9. Klik **op sjabloon** > **Bewerken sjabloon** om het **bestand template.json** in de online editor te openen.
+9.  > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
 
-10. Als u het doelgebied wilt bewerken waar het VNET wordt verplaatst, wijzigt u de **locatieeigenschap** onder resources:
+10. Als u de doel regio wilt bewerken waar het VNET wordt verplaatst, wijzigt u de eigenschap **Location** onder resources:
 
     ```json
     "resources": [
@@ -87,11 +87,11 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
 
     ```
 
-11. Zie Azure-locaties voor het verkrijgen van [locatiecodes voor regio's.](https://azure.microsoft.com/global-infrastructure/locations/)  De code voor een regio is de regionaam zonder spaties, **Central US** = **centralus**.
+11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
 
-12. U desgevraagd ook andere parameters in het **bestand template.json** wijzigen en zijn optioneel, afhankelijk van uw vereisten:
+12. U kunt ook andere para meters in het bestand **sjabloon. json** wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Adresruimte** - De adresruimte van het VNET kan worden gewijzigd voordat u deze opslaat door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **adresvoorvoegsels** in het **bestand template.json** te wijzigen:
+    * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u opslaat door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** in het bestand **Template. json** te wijzigen:
 
         ```json
                 "resources": [
@@ -111,7 +111,7 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
 
         ```
 
-    * **Subnet** - De subnetnaam en de subnetadresruimte kunnen worden gewijzigd of toegevoegd door de **subnettensectie** van het **bestand template.json** te wijzigen. De naam van het subnet kan worden gewijzigd door de **eigenschap naam** te wijzigen. De subnetadresruimte kan worden gewijzigd door de eigenschap **addressPrefix** in het **bestand template.json te** wijzigen:
+    * **Subnet** : de naam van het subnet en de adres ruimte van het subnet kunnen worden gewijzigd of toegevoegd aan door de sectie **subnets** van het bestand **sjabloon. json** te wijzigen. De naam van het subnet kan worden gewijzigd door de eigenschap **name** te wijzigen. De adres ruimte van het subnet kan worden gewijzigd door de eigenschap **addressPrefix** in het bestand **Template. json** te wijzigen:
 
         ```json
                 "subnets": [
@@ -142,7 +142,7 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
                 ]
         ```
 
-         In het **bestand template.json** moet het, om het adresvoorvoegsel te wijzigen, op twee plaatsen worden bewerkt, de bovenstaande sectie en de **onderstaande tekstsectie.**  Wijzig de eigenschap **adresvoorvoegsel** dat overeenkomt met de bovenstaande eigenschap:
+         Als u het adres voorvoegsel wilt wijzigen in het bestand **Template. json** , moet dit worden bewerkt op twee plaatsen, de hierboven vermelde sectie en de sectie **type** die hieronder wordt weer gegeven.  Wijzig de eigenschap **addressPrefix** zodat deze overeenkomt met het bovenstaande:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -178,29 +178,29 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
          ]
         ```
 
-13. Klik **op Opslaan** in de online editor.
+13. Klik op **Opslaan** in de online editor.
 
-14. Klik op > **BASICS-abonnement** om het abonnement te kiezen waarbij het doel VNET wordt geïmplementeerd. **BASICS**
+14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin het doel-VNET wordt geïmplementeerd.
 
-15. Klik op **de** > **groep BASICS Resource** om de resourcegroep te kiezen waarin de doelgroep VNET wordt geïmplementeerd.  U op **Nieuw maken** klikken om een nieuwe resourcegroep voor het doel VNET te maken.  Zorg ervoor dat de naam niet hetzelfde is als de bronbrongroep van het bestaande VNET.
+15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het doel-VNET wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het doel-VNET.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van het bestaande VNET.
 
-16. Controleer **basics** > **locatie** is ingesteld op de doellocatie waar u wilt dat de VNET worden ingezet.
+16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u het VNET wilt implementeren.
 
-17. Controleer onder **INSTELLINGEN** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande parameterseditor.
+17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.
 
-18. Schakel het selectievakje in onder **ALGEMENE VOORWAARDEN**.
+18. Schakel het selectie vakje onder **voor waarden**in.
 
-19. Klik **op** de knop Aankoop om het virtuele doelnetwerk te implementeren.
+19. Klik op de knop **aanschaffen** om het virtuele doel netwerk te implementeren.
 
-### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>De sjabloon voor interne lastenbalans exporteren en implementeren vanuit Azure PowerShell
+### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>De interne load balancer sjabloon exporteren en implementeren vanuit Azure PowerShell
 
-1. Log in bij de [Azure-portal](https://portal.azure.com) > **Resourcegroepen**.
-2. Zoek de resourcegroep met de broninterne load balancer en klik erop.
-3. Selecteer > **>-instellingen-exportsjabloon**. **Settings**
-4. Kies **Implementeren** in het **sjabloonblad Exporteren.**
-5. Klik **op PARAMETERS SJABLOON** > **bewerken** om het bestand **parameters.json** in de online editor te openen.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+2. Zoek de resource groep die de interne bron load balancer bevat en klik erop.
+3. Selecteer > **instellingen** > **sjabloon exporteren**.
+4. Kies **implementeren** op de Blade **sjabloon exporteren** .
+5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
 
-6. Als u de parameter van de naam van de interne load balancer wilt bewerken, wijzigt u de standaardwaarde van de eigenschap **standaardWaarde** van de naam van de broninterne load balancer in de naam van uw doelinterne load balancer, moet u ervoor zorgen dat de naam tussen aanhalingstekens staat:
+6. Als u de para meter van de naam van de interne load balancer wilt bewerken, wijzigt u de eigenschap **DefaultValue** van de interne bron Load Balancer naam in de naam van de interne Load Balancer van het doel. Controleer of de naam tussen aanhalings tekens is:
 
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -216,13 +216,13 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
              }
     ```
 
-6. Als u de waarde wilt bewerken van het hierboven verplaatste doelnetwerk, moet u eerst de bron-id verkrijgen en vervolgens kopiëren en plakken in het bestand **parameters.json.** Ga als het gaat om het verkrijgen van de id:
+6. Als u de waarde van het virtuele doelnet werk dat hierboven is verplaatst, wilt bewerken, moet u eerst de resource-ID ophalen en deze vervolgens kopiëren en plakken in het bestand **para meters. json** . De ID ophalen:
 
-    1. Meld u aan bij de [Azure-portal](https://portal.azure.com) > **ResourceGroepen** in een ander browsertabblad of -venster.
-    2. Zoek de doelgroep die het verplaatste virtuele netwerk bevat vanuit de bovenstaande stappen en klik erop.
-    3. Selecteer **>-instellingen** > **eigenschappen**.
-    4. Markeer in het blad naar rechts de **resource-id** en kopieer deze naar het klembord.  U ook klikken op de **knop kopiëren naar klembord** rechts van het **Resource ID-pad.**
-    5. Plak de resource-id in de eigenschap **defaultValue** in de editor **Parameters bewerken** die is geopend in het andere browservenster of tabblad:
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > **resource groepen** op een ander browser tabblad of-venster.
+    2. Zoek de doel resource groep die het verplaatste virtuele netwerk bevat uit de bovenstaande stappen en klik erop.
+    3. Selecteer**Eigenschappen**van > **instellingen** > .
+    4. Markeer de **resource-id** op de Blade aan de rechter kant en kopieer deze naar het klem bord.  U kunt ook op de knop **kopiëren naar klem bord** rechts van het **resource-id-** pad klikken.
+    5. Plak de resource-ID in de eigenschap **DefaultValue** in de editor **para meters bewerken** open in het andere browser venster of tabblad:
 
         ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -237,10 +237,10 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
              "type": "String"
              }
         ```
-    6. Klik **op Opslaan** in de online editor.
+    6. Klik op **Opslaan** in de online editor.
 
-7. Klik **op sjabloon** > **Bewerken sjabloon** om het **bestand template.json** in de online editor te openen.
-8. Als u het doelgebied wilt bewerken waar de configuratie van de interne load balancer wordt verplaatst, wijzigt u de **locatieeigenschap** onder **resources** in het **bestand template.json:**
+7.  > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
+8. Als u de doel regio wilt bewerken waar de interne load balancer configuratie wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het bestand **sjabloon. json** :
 
     ```json
         "resources": [
@@ -255,11 +255,11 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
                 },
     ```
 
-9.  Zie Azure-locaties voor het verkrijgen van [locatiecodes voor regio's.](https://azure.microsoft.com/global-infrastructure/locations/)  De code voor een regio is de regionaam zonder spaties, **Central US** = **centralus**.
+9.  Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
 
-10. U desgevraagd ook andere parameters in de sjabloon wijzigen en zijn optioneel, afhankelijk van uw vereisten:
+10. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Sku** - U de sku van de interne load balancer in de configuratie wijzigen van standaard naar basis- of standaard door de eigenschap **sku-naam** > **name** in het **bestand template.json** te wijzigen:
+    * **SKU** : u kunt de SKU van de interne Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in het bestand **sjabloon. json** :
 
         ```json
         "resources": [
@@ -273,9 +273,9 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
                 "tier": "Regional"
             },
         ```
-      Zie overzicht van [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) voor meer informatie over de verschillen tussen basis- en standaardsku-loadbalancers
+      Zie [overzicht van Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) voor meer informatie over de verschillen tussen de Basic-en Standard SKU load balancers
 
-    * **Regels voor taakverdeling** - U regels voor taakverdeling toevoegen of verwijderen in de configuratie door items toe te voegen of te verwijderen aan het gedeelte **loadBalancingRules** van het **bestand template.json:**
+    * Taakverdelings **regels** : u kunt regels voor taak verdeling toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van het bestand **sjabloon. json** :
 
         ```json
         "loadBalancingRules": [
@@ -305,9 +305,9 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
                     }
                 ]
         ```
-       Zie Wat is Azure Load [Balancer voor](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) meer informatie over regels voor het balanceren van de belasting?
+       Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over taakverdelings regels.
 
-    * **Probes** - U een sonde voor de load balancer in de configuratie toevoegen of verwijderen door items toe te voegen of te verwijderen aan het **sectie probes-bestand** van het **bestand template.json:**
+    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het bestand **sjabloon. json** :
 
         ```json
         "probes": [
@@ -325,9 +325,9 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
                     }
                 ],
         ```
-       Zie [Statusssen](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) van Load Balancer voor meer informatie over statussen van Azure Load Balancer.
+       Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) (Engelstalig) voor meer informatie over Azure Load Balancer status tests
 
-    * **Binnenkomende NAT-regels** - U binnenkomende NAT-regels voor de load balancer toevoegen of verwijderen door vermeldingen toe te voegen of te verwijderen in het gedeelte **inboundNatRules** van het **sjabloon.json-bestand:**
+    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van het bestand **sjabloon. json** :
 
         ```json
         "inboundNatRules": [
@@ -349,7 +349,7 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
                     }
                 ]
         ```
-        Als u de toevoeging of verwijdering van een binnenkomende NAT-regel wilt voltooien, moet de regel aanwezig zijn of worden verwijderd als een **eigenschap type** aan het einde van het **bestand template.json:**
+        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van het bestand **sjabloon. json** :
 
         ```json
         {
@@ -373,33 +373,33 @@ In de volgende stappen wordt uitgelegd hoe u de interne load balancer voorbereid
             }
         }
         ```
-        Zie Wat is Azure Load Balancer voor meer informatie over binnenkomende [NAT-regels?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+        Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over binnenkomende NAT-regels.
 
-12. Klik **op Opslaan** in de online editor.
+12. Klik op **Opslaan** in de online editor.
 
-13. Klik op > **BASICS-abonnement** om het abonnement te kiezen waarbij de interne load balancer wordt geïmplementeerd. **BASICS**
+13. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin de interne doel-Load Balancer worden geïmplementeerd.
 
-15. Klik op **de** > **groep BASICS Resource** om de resourcegroep te kiezen waarin de doellastbalancer wordt geïmplementeerd.  U op **Nieuw maken** klikken om een nieuwe resourcegroep voor de interne loadbalancer van de doelgroep te maken of de bestaande resourcegroep te kiezen die hierboven is gemaakt voor het virtuele netwerk.  Zorg ervoor dat de naam niet hetzelfde is als de bronbrongroep van de bestaande broninterne load balancer.
+15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin de doel-Load Balancer worden geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de interne doel Load Balancer of de bestaande resource groep kiezen die hierboven voor het virtuele netwerk is gemaakt.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande interne load balancer van de bron.
 
-16. Controleer **basics** > **locatie** is ingesteld op de doellocatie waar u wilt dat de interne load balancer wordt geïmplementeerd.
+16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u de interne Load Balancer wilt implementeren.
 
-17. Controleer onder **INSTELLINGEN** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande parameterseditor.  Controleer of de bron-id's worden ingevuld voor virtuele netwerken in de configuratie.
+17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.  Controleer of de resource-Id's zijn ingevuld voor virtuele netwerken in de configuratie.
 
-18. Schakel het selectievakje in onder **ALGEMENE VOORWAARDEN**.
+18. Schakel het selectie vakje onder **voor waarden**in.
 
-19. Klik **op** de knop Aankoop om het virtuele doelnetwerk te implementeren.
+19. Klik op de knop **aanschaffen** om het virtuele doel netwerk te implementeren.
 
 ## <a name="discard"></a>Verwijderen
 
-Als u het doelvirtuele netwerk en de interne load balancer wilt verwijderen, verwijdert u de brongroep die het doelvirtuele netwerk en de interne load balancer bevat.  Selecteer hiervoor de brongroep in uw dashboard in de portal en selecteer **Verwijderen** boven aan de overzichtspagina.
+Als u het virtuele doel netwerk en de interne load balancer wilt verwijderen, verwijdert u de resource groep die het virtuele doel netwerk en interne load balancer bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de wijzigingen wilt vastleggen en de verplaatsing van het virtuele netwerk en de interne load balancer wilt voltooien, verwijdert u het virtuele netwerk en de interne load balancer of resourcegroep. Selecteer hiervoor de virtuele netwerk- en interne loadbalancer of resourcegroep in uw dashboard in de portal en selecteer **Verwijderen** boven aan elke pagina.
+Als u de wijzigingen wilt door voeren en het virtuele netwerk en interne load balancer wilt verplaatsen, verwijdert u het virtuele bron netwerk en de interne load balancer of resource groep. Als u dit wilt doen, selecteert u het virtuele netwerk en de interne load balancer of resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan elke pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een interne laadbakvan Azure van de ene regio naar de andere verplaatst en de bronbronnen opgeschoond.  Zie voor meer informatie over het verplaatsen van resources tussen regio's en disaster recovery in Azure:
+In deze zelf studie hebt u een interne Azure-load balancer verplaatst van de ene regio naar de andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

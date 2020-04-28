@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Facebook
-description: Werk- en werkstromen automatiseren die uw Facebook-tijdlijn en -pagina beheren met Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee u uw Facebook-tijd lijn en-pagina beheert met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75665799"
 ---
-# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Uw Facebook-tijdlijn en -pagina beheren met Azure Logic Apps
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Uw Facebook-tijd lijn en-pagina beheren met Azure Logic Apps
 
-Maak verbinding met Facebook en plaats op een tijdlijn, ontvang een paginafeed en meer. Met Facebook kun je:
+Maak verbinding met Facebook en post naar een tijd lijn, ontvang een pagina-feed en meer. Met Facebook kunt u het volgende doen:
 
-* Bouw je bedrijfsstroom op basis van de gegevens die je van Facebook krijgt. 
-* Gebruik een trigger wanneer een nieuw bericht wordt ontvangen.
-* Gebruik acties die berichten plaatsen op je tijdlijn, een paginafeed en meer. Deze acties krijgen een antwoord en maken de uitvoer beschikbaar voor andere acties. Als er bijvoorbeeld een nieuw bericht op je tijdlijn staat, kun je dat bericht naar je Twitter-feed pushen. 
+* Bouw uw bedrijfs stroom op basis van de gegevens die u van Facebook krijgt. 
+* Gebruik een trigger wanneer er een nieuwe post wordt ontvangen.
+* Gebruik acties die op uw tijd lijn worden geplaatst, ontvang een pagina-feed en meer. Deze acties ontvangen een antwoord en maken vervolgens de uitvoer beschikbaar voor andere acties. Als er bijvoorbeeld een nieuw bericht op uw tijd lijn staat, kunt u dit bericht verzenden en naar uw Twitter-feed pushen. 
 
-U nu aan de slag door een logische app te maken, zie [Een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+U kunt nu aan de slag met het maken van een logische app, Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-facebook"></a>Een verbinding met Facebook maken
+## <a name="create-a-connection-to-facebook"></a>Verbinding maken met Facebook
 
-Wanneer je deze connector toevoegt aan je logische apps, moet je logische apps autoriseren om verbinding te maken met je Facebook.
+Wanneer u deze connector aan uw Logic apps toevoegt, moet u logische apps autoriseren om verbinding te maken met uw Facebook.
 
-1. Meld je aan bij je Facebook-account.
+1. Meld u aan bij uw Facebook-account.
 
-2. Selecteer **Autoriseren**en laat je logische apps verbinding maken en gebruik je Facebook. 
+2. Selecteer **autoriseren**en sta toe dat uw logische apps verbinding maken en uw Facebook gebruiken. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentiepagina van](/connectors/facebook/)de connector voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI-bestand (voorheen Swagger).
+Zie de [referentie pagina van de connector](/connectors/facebook/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

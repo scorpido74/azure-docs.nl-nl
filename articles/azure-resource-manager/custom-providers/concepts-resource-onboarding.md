@@ -1,43 +1,43 @@
 ---
 title: Onboarding van resources
-description: Meer informatie over het uitvoeren van resource onboarding met Azure Custom Providers om beheer of configuratie toe te passen op andere Azure-brontypen.
+description: Meer informatie over het voorbereiden van resources met behulp van aangepaste Azure-providers om beheer of configuratie toe te passen op andere Azure-resource typen.
 author: jjbfour
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650407"
 ---
-# <a name="azure-custom-providers-resource-onboarding-overview"></a>Overzicht van azure Custom Providers resource onboarding
+# <a name="azure-custom-providers-resource-onboarding-overview"></a>Overzicht van de resource voor het onboarding van Azure Custom providers
 
-Azure Custom Providers resource onboarding is een extensibiliteitsmodel voor Azure-brontypen. Hiermee u bewerkingen of beheer toepassen op bestaande Azure-resources op schaal. Zie [hoe Azure Custom Providers Azure kunnen uitbreiden](overview.md)voor meer informatie. In dit artikel wordt beschreven:
+Het onboarden van resources van Azure Custom providers is een uitbreidings model voor Azure-resource typen. Zo kunt u bewerkingen of beheer Toep assen op bestaande Azure-resources op schaal. Zie How to extend Azure [Custom providers Azure](overview.md)voor meer informatie. In dit artikel wordt beschreven:
 
-- Wat resource onboarding kan doen.
-- Resource onboarding basics en hoe het te gebruiken.
-- Waar gidsen en codevoorbeelden te vinden om aan de slag te gaan.
+- Wat voor onboarding van resources kan doen.
+- Basis beginselen voor het onboarding van resources en hoe u deze kunt gebruiken.
+- Waar u gidsen en code voorbeelden kunt vinden om aan de slag te gaan.
 
 > [!IMPORTANT]
-> Aangepaste providers is momenteel in openbare preview.
-> Deze preview-versie wordt geleverd zonder een service-level overeenkomst, en we raden het niet aan voor productie workloads. Bepaalde functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Aangepaste providers zijn momenteel beschikbaar als open bare preview.
+> Deze preview-versie is beschikbaar zonder een service overeenkomst en wij raden deze niet aan voor productie werkbelastingen. Bepaalde functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="what-can-resource-onboarding-do"></a>Wat kan resource onboarding doen?
+## <a name="what-can-resource-onboarding-do"></a>Wat kan onboarding van resources doen?
 
-Net als [bij aangepaste resources van Azure Custom Providers](./custom-providers-resources-endpoint-how-to.md)definieert resource onboarding een contract dat proxy 'onboarding' aanvragen naar een eindpunt. In tegenstelling tot aangepaste resources maakt resource onboarding geen nieuw resourcetype. In plaats daarvan maakt het de uitbreiding van bestaande resourcetypen mogelijk. En resource onboarding werkt met Azure Policy, zodat beheer en configuratie van resources op schaal kunnen worden uitgevoerd. Enkele voorbeelden van resource onboarding-workflows:
+Net als bij [aangepaste Azure-providers](./custom-providers-resources-endpoint-how-to.md), wordt in de bron onboarding een contract gedefinieerd waarmee aanvragen voor het uitvoeren van een proxy naar een eind punt worden gestart. In tegens telling tot aangepaste resources maakt resource-onboarding geen nieuw resource type. In plaats daarvan kan de uitbrei ding van bestaande resource typen worden toegestaan. En de voor bereiding van resources werkt met Azure Policy, zodat het beheer en de configuratie van resources op schaal kunnen worden uitgevoerd. Enkele voor beelden van werk stromen voor onboarding van resources:
 
-- Installeren en beheren op virtuele machine-extensies.
-- Standaardinstellingen uploaden en configureren op Azure-opslagaccounts.
-- Schakel diagnostische basislijninstellingen op schaal in.
+- Installeren en beheren op virtuele-machine uitbreidingen.
+- Upload en configureer standaard instellingen voor Azure Storage-accounts.
+- De basis instellingen voor diagnostische gegevens op schaal inschakelen.
 
-## <a name="resource-onboarding-basics"></a>Basisbeginselen voor resourceonboarding
+## <a name="resource-onboarding-basics"></a>Basis beginselen van resources voor onboarding
 
-U configureert resource onboarding via Azure Custom Providers met behulp van Microsoft.CustomProviders/resourceProviders en Microsoft.CustomProviders/associations resourcetypes. Als u resource onboarding voor een aangepaste provider wilt inschakelen, maakt u tijdens het configuratieproces een **resourceType** met de naam 'koppelingen' met een **routingType** met 'Extensie'. De Microsoft.CustomProviders/-koppelingen en Microsoft.CustomProviders/resourceProviders hoeven niet tot dezelfde brongroep te behoren.
+U configureert het voorbereiden van resources via aangepaste Azure-providers met behulp van de resource typen micro soft. CustomProviders/resourceProviders en micro soft. CustomProviders/Associations. Als u het voorbereiden van resources voor een aangepaste provider wilt inschakelen, maakt u tijdens het configuratie proces een **resource type** met de naam ' Associations ' met een **RoutingType** dat ' extension ' bevat. Micro soft. CustomProviders/Associations en micro soft. CustomProviders/resourceProviders hoeven geen deel uit te maken van dezelfde resource groep.
 
-Hier is een voorbeeld van een aangepaste Azure-provider:
+Hier volgt een voor beeld van een aangepaste Azure-provider:
 
 ```JSON
 {
@@ -56,16 +56,16 @@ Hier is een voorbeeld van een aangepaste Azure-provider:
 
 Eigenschap | Vereist? | Beschrijving
 ---|---|---
-name | Ja | De naam van de eindpuntdefinitie. Voor resource onboarding moet de naam "associaties" zijn.
-routingType | Ja | Hiermee bepaalt u het type contract met het eindpunt. Voor resource onboarding zijn de geldige **routeringstypen** 'Proxy,Cache, Extension' en 'Webhook,Cache, Extension'.
-endpoint | Ja | Het eindpunt om de aanvragen naar te leiden. Dit zal de reactie en eventuele bijwerkingen van het verzoek te behandelen.
+name | Ja | De naam van de eindpunt definitie. Voor het onboarden van resources moet de naam ' Associations ' zijn.
+routingType | Ja | Bepaalt het type contract met het eind punt. Voor onboarding van resources zijn de geldige **routingTypes** ' proxy, cache, extensie ' en ' webhook, cache, extensie '.
+endpoint | Ja | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
 
-Nadat u de aangepaste provider hebt gemaakt met het resourcetype koppelingen, u targeten met Microsoft.CustomProviders/-koppelingen. Microsoft.CustomProviders/associations is een extensiebron die elke andere Azure-bron kan uitbreiden. Wanneer een instantie van Microsoft.CustomProviders/-koppelingen wordt gemaakt, wordt een **eigenschaptargetResourceId**nodig, die een geldige Microsoft.CustomProviders/resourceProviders of Microsoft.Solutions/applications resource ID moet zijn. In deze gevallen wordt de aanvraag doorgestuurd naar het resourcetype van koppelingen op het exemplaar Microsoft.CustomProviders/resourceProviders dat u hebt gemaakt.
+Nadat u de aangepaste provider met het resource type voor koppelingen hebt gemaakt, kunt u een target gebruiken met behulp van micro soft. CustomProviders/Associations. Micro soft. CustomProviders/Associations is een extensie resource waarmee elke andere Azure-resource kan worden uitgebreid. Wanneer een exemplaar van micro soft. CustomProviders/Associations wordt gemaakt, wordt er een eigenschap **targetResourceId**, die een geldige resource-id van micro soft. CustomProviders/ResourceProviders of micro soft. Solutions/Applications moet zijn. In deze gevallen wordt de aanvraag doorgestuurd naar het resource type van de koppeling voor het micro soft. CustomProviders/resourceProviders-exemplaar dat u hebt gemaakt.
 
 > [!NOTE]
-> Als een Microsoft.Solutions/applications resource ID wordt geleverd als de **targetResourceId,** moet er een Microsoft.CustomProviders/resourceProviders zijn geïmplementeerd in de beheerde resourcegroep met de naam 'openbaar'.
+> Als de resource-ID van micro soft. Solutions/toepassingen is ingesteld als **targetResourceId**, moet er een micro soft. CustomProviders/resourceProviders zijn geïmplementeerd in de beheerde resource groep met de naam ' Public '.
 
-Voorbeeld van de koppeling Azure Custom Providers:
+Voor beeld van een Azure Custom providers-koppeling:
 
 ```JSON
 {
@@ -78,15 +78,15 @@ Voorbeeld van de koppeling Azure Custom Providers:
 
 Eigenschap | Vereist? | Beschrijving
 ---|---|---
-targetResourceId | Ja | De bron-id van de Microsoft.CustomProviders/resourceProviders of Microsoft.Solutions/applications.
+targetResourceId | Ja | De resource-ID van micro soft. CustomProviders/resourceProviders of micro soft. Solutions/Applications.
 
-## <a name="how-to-use-resource-onboarding"></a>Resource onboarding gebruiken
+## <a name="how-to-use-resource-onboarding"></a>Het gebruik van resource-onboarding
 
-Resource onboarding werkt door andere bronnen uit te breiden met de extensiebron Microsoft.CustomProviders/associations. In het volgende voorbeeld wordt de aanvraag voor een virtuele machine ingediend, maar elke resource kan worden uitgebreid.
+Het onboarden van resources werkt door andere resources uit te breiden met de extensie resource micro soft. CustomProviders/Associations. In het volgende voor beeld wordt de aanvraag ingediend voor een virtuele machine, maar een resource kan worden uitgebreid.
 
-Eerst moet u een aangepaste providerbron maken met een resourcetype voor koppelingen. Hiermee wordt de terugbel-URL aangegeven die wordt gebruikt wanneer een overeenkomstige Microsoft.CustomProviders/associations-bron wordt gemaakt, die zich richt op de aangepaste provider.
+Eerst moet u een aangepaste provider resource maken met het resource type van een koppeling. Hiermee wordt de call back-URL gedeclareerd die wordt gebruikt wanneer een bijbehorende micro soft. CustomProviders/Associations-resource wordt gemaakt, die gericht is op de aangepaste provider.
 
-Voorbeeld van Microsoft.CustomProviders/resourceProviders maken aanvraag:
+Voor beeld van micro soft. CustomProviders/resourceProviders Create aanvraag:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}?api-version=2018-09-01-preview
@@ -107,9 +107,9 @@ Content-Type: application/json
 }
 ```
 
-Nadat u de aangepaste provider hebt gemaakt, u andere bronnen targeten en de bijwerkingen van de aangepaste provider op deze bronnen toepassen.
+Nadat u de aangepaste provider hebt gemaakt, kunt u andere resources richten en de neven effecten van de aangepaste provider hierop Toep assen.
 
-Voorbeeld van Microsoft.CustomProviders/-koppelingen maken een aanvraag:
+Voor beeld van micro soft. CustomProviders/Associations-aanvraag maken:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.CustomProviders/associations/{associationName}?api-version=2018-09-01-preview
@@ -127,7 +127,7 @@ Content-Type: application/json
 }
 ```
 
-Deze aanvraag wordt vervolgens doorgestuurd naar het eindpunt dat is opgegeven in de aangepaste provider die u hebt gemaakt, waarnaar wordt verwezen door de **targetResourceId** in dit formulier:
+Deze aanvraag wordt vervolgens doorgestuurd naar het eind punt dat is opgegeven in de aangepaste provider die u hebt gemaakt, waarnaar wordt verwezen door de **targetResourceId** in dit formulier:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,18 +146,18 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-Het eindpunt moet reageren met een `Content-Type` toepassing/json en een geldige JSON-responsinstantie. Velden die worden geretourneerd onder het **object Eigenschappen** van de JSON, worden toegevoegd aan de retourreactie van de koppeling.
+Het eind punt moet reageren met een toepassing/ `Content-Type` JSON en een geldige JSON-antwoord tekst. Velden die worden geretourneerd onder het object **Properties** van de JSON, worden toegevoegd aan de Association retour-antwoord.
 
 ## <a name="getting-help"></a>Ondersteuning vragen
 
-Als u vragen hebt over de ontwikkeling van Azure Custom Resource Providers, probeert u deze te vragen op [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Een soortgelijke vraag kan al zijn beantwoord, dus controleer eerst voor het posten. Voeg de ```azure-custom-providers``` tag toe om snel te reageren!
+Als u vragen hebt over het ontwikkelen van aangepaste Azure-resource providers, vraagt u deze op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag beantwoord, dus controleer eerst vóór het boeken. Voeg de tag ```azure-custom-providers``` toe om een snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leerde u over aangepaste providers. Zie deze artikelen voor meer informatie:
+In dit artikel hebt u geleerd over aangepaste providers. Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Zelfstudie: Resource onboarding met aangepaste providers](./tutorial-resource-onboarding.md)
-- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
-- [Snelstart: een aangepaste resourceprovider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [How to: Aangepaste acties toevoegen aan een Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [How to: Aangepaste resources toevoegen aan een Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [Zelf studie: onboarding van resources met aangepaste providers](./tutorial-resource-onboarding.md)
+- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
+- [Snelstartgids: een aangepaste resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Procedure: aangepaste acties toevoegen aan een Azure-REST API](./custom-providers-action-endpoint-how-to.md)
+- [Procedure: aangepaste resources toevoegen aan een Azure-REST API](./custom-providers-resources-endpoint-how-to.md)

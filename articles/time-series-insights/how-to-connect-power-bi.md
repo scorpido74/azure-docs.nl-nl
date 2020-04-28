@@ -1,6 +1,6 @@
 ---
-title: Uw omgeving verbinden met Inzichten in Power BI - Azure Time Series | Microsoft Documenten
-description: Meer informatie over het verbinden van Inzichten in Azure Time Series met Power BI om gegevens in uw hele organisatie te delen, in kaart te brengen en weer te geven.
+title: Verbind uw omgeving met Power BI-Azure Time Series Insights | Microsoft Docs
+description: Informatie over het verbinden van Azure Time Series Insights naar Power BI voor het delen, het diagram en weer geven van gegevens in uw organisatie.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -9,141 +9,141 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75863839"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Visualiseer gegevens uit inzichten uit de Time Series in Power BI
+# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Time Series Insights in Power BI
 
-Azure Time Series Insights is een platform voor het opslaan, beheren, bevragen en visualiseren van tijdreeksgegevens in de cloud. [Power BI](https://powerbi.microsoft.com) is een business analytics tool met uitgebreide visualisatiemogelijkheden waarmee u inzichten en resultaten in uw hele organisatie delen. Beide services kunnen nu worden geïntegreerd om het beste uit de inherente visualisatiemogelijkheden van Time Series Insights te halen, evenals die van Power BI.
+Azure Time Series Insights is een platform voor het opslaan, beheren, opvragen en visualiseren van Time Series-gegevens in de Cloud. [Power bi](https://powerbi.microsoft.com) is een Business Analytics-hulp programma met uitgebreide visualisatie mogelijkheden waarmee u inzichten en resultaten kunt delen binnen uw organisatie. Beide services kunnen nu worden geïntegreerd om optimaal gebruik te maken van de Time Series Insights ' inherente visualisatie mogelijkheden en Power BI.
 
 U leert het volgende:
 
-* Connect Time Series Insights to Power BI met de cloudconnector
+* Time Series Insights verbinding maken met Power BI met behulp van de Cloud connector
 * Visuals maken met uw gegevens in Power BI
 * Het rapport publiceren naar Power BI en delen met de rest van uw organisatie
 
-Tegen het einde leert u hoe u tijdreeksgegevens visualiseren via Azure Time Series Insights en deze verbeteren met de sterke gegevensvisualisatie en eenvoudige mogelijkheden voor het delen van Power BI.
+Aan het einde leert u hoe u gegevens in de tijd reeks kunt visualiseren met Azure Time Series Insights en deze kunt uitbreiden met de krachtige gegevens visualisatie en eenvoudig delen van Power BI.
 
 Zorg ervoor dat u zich aanmeldt voor een [gratis Azure-abonnement](https://azure.microsoft.com/free/) als u er nog geen hebt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De nieuwste versie van [Power BI Desktop](https://powerbi.microsoft.com/downloads/) downloaden en installeren
-* Een voorbeeld van [Azure Time Series Insights Preview](time-series-insights-update-how-to-manage.md) hebben of maken
+* Down load en installeer de nieuwste versie van [Power bi Desktop](https://powerbi.microsoft.com/downloads/)
+* Een [Azure time series Insights preview-exemplaar](time-series-insights-update-how-to-manage.md) hebben of maken
 
 > [!IMPORTANT]
-> De Power BI-connector wordt momenteel ondersteund in Time Series Insights *Preview-pay-as-you-go-omgevingen* die zijn geconfigureerd voor **Warm Store.**
+> De Power BI-connector wordt momenteel ondersteund in Time Series Insights voor beeld van *betalen naar gebruik* -omgevingen die zijn geconfigureerd voor **warme Store**.
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Gegevens uit inzichten uit de time-serie verbinden met Power BI
+## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Gegevens verbinden van Time Series Insights naar Power BI
 
-Voer de volgende stappen uit om uw Time Series Insights-omgeving aan te sluiten op Power BI:
+Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden met Power BI:
 
-1. Inzichten Explorer voor open tijdreeksen
-1. Gegevens exporteren als query of als ruwe gegevens
-1. Power BI-bureaublad openen
+1. Time Series Insights Explorer openen
+1. Gegevens exporteren als een query of als onbewerkte gegevens
+1. Power BI Desktop openen
 1. Laden vanuit aangepaste query
 
-### <a name="export-data-into-power-bi-desktop"></a>Gegevens exporteren naar Power BI-bureaublad
+### <a name="export-data-into-power-bi-desktop"></a>Gegevens exporteren naar Power BI bureau blad
 
 Aan de slag:
 
-1. Open de Time Series Insights Preview Explorer en beheer uw gegevens.
-1. Zodra u een weergave hebt gemaakt waarmee u tevreden bent, navigeert u naar het vervolgkeuzemenu **Meer acties** en selecteert u Verbinding maken met **Power BI**.
+1. Open de Time Series Insights preview Explorer en uw gegevens te openen.
+1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en selecteert u **verbinding maken met Power bi**.
 
-    [![Export van Time Series Insights Preview Explorer](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Time Series Insights preview Explorer exporteren](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
-1. Stel uw parameters in op dit tabblad:
+1. Stel de para meters in op dit tabblad:
 
-   1. Geef een relatief tijdsbestek op dat moet worden weergegeven. Als u tevreden bent met uw bestaande weergave, laat dit dan als **bestaand tijdsbestek**.
+   1. Geef een relatieve periode op die u wilt weer geven. Als u tevreden bent met uw bestaande weer gave, kunt u deze als een **bestaande periode**laten staan.
    
-   1. Kies tussen **geaggregeerde** en **ruwe gebeurtenissen**. 
+   1. U kunt kiezen tussen **geaggregeerde** en **onbewerkte gebeurtenissen**. 
    
        > [!NOTE]
-       > U uw gegevens later in Power BI altijd samenvoegen, maar u na aggregatie niet terugkeren naar ruwe gegevens. 
+       > U kunt uw gegevens later in Power BI samen voegen, maar niet herstellen naar onbewerkte gegevens na aggregatie. 
        
        > [!NOTE]
-       > Er is een limiet voor het aantal gebeurtenissen van 100.000 voor gegevens op Raw-gebeurtenisniveau.
+       > Er is een limiet van 100 kB voor het aantal gebeurtenissen voor onbewerkte gebeurtenis niveau.
 
        [![Verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Als u uw Time Series Insights-exemplaar voor **Warm Store**niet hebt geconfigureerd, ontvangt u een waarschuwing.
+   1. Als u uw Time Series Insights-exemplaar voor **warme Store**niet hebt geconfigureerd, wordt een waarschuwing weer gegeven.
 
-       [![Waarschuwing warme winkel](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![Waarschuwing voor warme Store](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > U uw bestaande instantie configureren voor **Warm Store** in de Azure-portal.
+       > U kunt uw bestaande exemplaar configureren voor **warme Store** in de Azure Portal.
 
-1. Selecteer **Query kopiëren naar klembord**.
+1. Selecteer **query kopiëren naar klem bord**.
 1. Start nu Power BI Desktop.
-1. Selecteer in Power BI-bureaublad op het tabblad **Start** de optie Gegevens in de linkerbovenhoek **opvragen** en vervolgens **Meer**.
+1. Selecteer in Power BI Desktop op het tabblad **Start** de optie **gegevens ophalen** in de **linkerbovenhoek.**
 
-    [![Home dropdown](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
+    [![Start vervolg keuzelijst](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. Zoek naar **Time Series Insights,** selecteer **Azure Time Series Insights (Beta)** en **maak vervolgens verbinding**.
+1. Zoek naar **Time Series Insights**, selecteer **Azure time series Insights (bèta)** en vervolgens **verbinding maken**.
 
-    [![Power BI verbinden met inzichten uit de tijdreeks](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Power BI verbinden met Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
-    U ook naar het **tabblad Azure** navigeren, azure **timeseries insights (bèta)** selecteren en **vervolgens Verbinding maken**.
+    U kunt ook naar het tabblad **Azure** gaan, **Azure time series Insights (bèta)** selecteren en vervolgens **verbinding maken**.
     
-1. In een dialoogvenster voor berichtdialogen wordt toestemming gevraagd om verbinding te maken met bronnen van derden. Selecteer **Doorgaan**.
+1. In een dialoog venster voor bericht wordt u gevraagd om toestemming te geven om verbinding te maken met bronnen van derden. Selecteer **door gaan**.
 
-    [![Aangepaste query maken kiezen](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
+    [![Kies aangepaste query maken](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
 
-1. Kies in het vervolgkeuzemenu onder **Gegevensbron**de optie **Aangepaste query maken**. Plak van het klembord in het optionele veld **Aangepaste query (optioneel)** hieronder en druk op **OK**.
+1. Kies **aangepaste query maken**in het vervolg keuzemenu onder **gegevens bron**. Plak vanuit het klem bord in het onderstaande veld optionele **aangepaste query (optioneel)** en druk vervolgens op **OK**.
 
     [![Geef de aangepaste query door en selecteer OK](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-1. De gegevenstabel wordt nu geladen. Druk **op Laden** om in Power BI te laden.
+1. De gegevens tabel wordt nu geladen. Druk op **laden** om in Power bi te laden.
 
-    [![De geladen gegevens in de tabel controleren en Laden selecteren](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
+    [![Bekijk de geladen gegevens in de tabel en selecteer laden](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 
-Als u deze stappen hebt voltooid, gaat u verder naar de volgende sectie.
+Als u deze stappen hebt voltooid, gaat u verder met de volgende sectie.
 
 ## <a name="create-a-report-with-visuals"></a>Een rapport maken met visuele elementen
 
-Nu u de gegevens hebt geïmporteerd in Power BI, is het tijd om een rapport met visuals te maken.
+Nu u de gegevens in Power BI hebt geïmporteerd, is het tijd om een rapport met visuals te maken.
 
-1. Controleer aan de linkerkant van het venster of u de **rapportweergave** hebt geselecteerd.
+1. Zorg ervoor dat op de linkerkant van het venster de **rapport** weergave is geselecteerd.
 
-    [![De rapportweergave selecteren](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
-1.  Selecteer in de kolom **Visualisaties** de visuele weergave van keuze. Selecteer bijvoorbeeld **Lijndiagram**. Hiermee wordt een leeg lijndiagram aan uw canvas toegevoegd.
+1.  Selecteer in de kolom **Visualisaties** uw visuele element van uw keuze. Selecteer bijvoorbeeld **lijn diagram**. Hiermee wordt een leeg lijn diagram aan uw canvas toegevoegd.
  
-1.  Selecteer **in** de lijst Velden **Timestamp** en sleep deze naar het veld **As** om items langs de X-as weer te geven.
+1.  Selecteer in de lijst **velden** de optie **tijds tempel** en sleep deze naar het **asveld** om items weer te geven langs de X-as.
 
-1.  Selecteer nogmaals in de lijst **Velden** **TimeSeriesId** en sleep deze naar het veld **Waarden** om items langs de Y-as weer te geven.
+1.  Klik opnieuw in de lijst **velden** op **TimeSeriesId** en sleep deze naar het veld **waarden** om items weer te geven op de Y-as.
 
     [![Een lijndiagram maken](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Als u een andere grafiek aan uw canvas wilt toevoegen, selecteert u ergens op het canvas buiten het lijndiagram en herhaalt u dit proces.
+1.  Als u nog een grafiek aan uw canvas wilt toevoegen, selecteert u ergens op het canvas buiten het lijn diagram en herhaalt u dit proces.
 
     [![Extra grafieken maken om te delen](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
-Zodra u uw rapport hebt gemaakt, u het publiceren naar Power BI Reporting Services.
+Zodra u het rapport hebt gemaakt, kunt u het publiceren naar Power BI Reporting Services.
 
-## <a name="advanced-editing"></a>Geavanceerde bewerking
+## <a name="advanced-editing"></a>Geavanceerd bewerken
 
-Als u al een gegevensset in Power BI hebt geladen, maar de query wilt wijzigen (zoals de parameters datum/tijd of omgevings-ID), u dit doen via de Geavanceerde editor-functionaliteit van Power BI. Raadpleeg de [Power BI-documentatie](https://docs.microsoft.com/power-bi/desktop-query-overview) voor meer informatie.
+Als u al een gegevensset in Power BI hebt geladen, maar u de query wilt wijzigen (zoals de para meters voor datum/tijd of omgevings-ID), kunt u dit doen via de Geavanceerde editor functionaliteit van Power BI. Raadpleeg de [documentatie van Power bi](https://docs.microsoft.com/power-bi/desktop-query-overview) voor meer informatie.
 
-Als overzicht:
+Als een overzicht:
 
-1. Selecteer in Power BI-bureaublad **query's bewerken**.
+1. In Power BI Desktop selecteert u **Query's bewerken**.
 1. Druk op **Geavanceerde editor**.
 
-    [![Query's bewerken in de geavanceerde editor](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
+    [![Query's bewerken in de Geavanceerde editor](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
 
-1. Wijzig de JSON payload naar wens.
-1. Selecteer **Gereed** en **sluit & toepassen** in het Venster Power **Query-editor**.
+1. Wijzig de JSON-Payload naar wens.
+1. Selecteer **gereed** en **sluit & pas** in het venster van de **Power query editor**toe.
 
-De interface geeft nu de gewenste wijzigingen weer die u hebt toegepast.  
+De interface geeft nu de gewenste wijzigingen weer.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees meer over [Power BI-connectorconcepten](https://docs.microsoft.com/power-bi/desktop-query-overview) voor Azure Time Series Insights.
+* Meer informatie over [Power bi connector concepten](https://docs.microsoft.com/power-bi/desktop-query-overview) voor Azure time series Insights.
 
-* Meer informatie over [Power BI-bureaublad](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* Meer informatie over [Power bi bureau blad](https://docs.microsoft.com/power-bi/desktop-query-overview).
 
-* Lees [Time Series Insights GA Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) en Time Series Insights Preview [Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+* Lees [Time Series INSIGHTS ga Verkenner](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) en [Time Series Insights preview Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

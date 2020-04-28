@@ -1,24 +1,24 @@
 ---
-title: Verwijzing naar aangepaste provider C# RESTful-eindpunt
-description: Biedt basisverwijzing voor een Azure Custom Providers C# RESTful-eindpunt. Het eindpunt wordt geleverd via een Azure-functie-app.
+title: Naslag informatie voor C#-REST van aangepaste provider
+description: Biedt een eenvoudige referentie voor een gerust eind punt van een Azure Custom providers C#. Het eind punt wordt gegeven via een Azure-functie-app.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651174"
 ---
-# <a name="custom-provider-c-restful-endpoint-reference"></a>Verwijzing naar aangepaste provider C# RESTful-eindpunt
+# <a name="custom-provider-c-restful-endpoint-reference"></a>Naslag informatie voor C#-REST van aangepaste provider
 
-Dit artikel is een basisverwijzing voor een aangepast c#RESTful-eindpunt. Als u niet bekend bent met Azure Custom Providers, raadpleegt u [het overzicht over aangepaste resourceproviders.](overview.md)
+Dit artikel is een basis referentie voor een gerust eind punt in de C# van een aangepaste provider. Als u niet bekend bent met aangepaste Azure-providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure-functie-app RESTful-eindpunt
+## <a name="azure-function-app-restful-endpoint"></a>REST-eind punt van Azure function-app
 
-De volgende code werkt met een Azure-functie-app. Zie de zelfstudie over het [instellen van Azure-functies voor Azure Custom Providers](./tutorial-custom-providers-function-setup.md)voor meer informatie over het instellen van een Azure-functie-app voor het werken met Azure Custom Providers.
+De volgende code werkt met een Azure-functie-app. Zie voor meer informatie over het instellen van een Azure function-app voor gebruik met aangepaste Azure-providers [de zelf studie over het instellen van Azure functions voor aangepaste Azure-providers](./tutorial-custom-providers-function-setup.md).
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -255,7 +255,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Custom Resource Providers](overview.md)
-- [Zelfstudie: Een aangepaste Azure-bronprovider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [How to: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Naslaginformatie: Verwijzing naar aangepaste broncache](proxy-cache-resource-endpoint-reference.md)
+- [Overzicht van aangepaste Azure-resource providers](overview.md)
+- [Zelf studie: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Verwijzing: verwijzing naar aangepaste resource-cache](proxy-cache-resource-endpoint-reference.md)

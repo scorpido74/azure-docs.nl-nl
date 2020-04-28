@@ -1,6 +1,6 @@
 ---
-title: Lokale HDFS vast in veilige modus op Azure HDInsight-cluster
-description: Problemen oplossen met lokale Apache HDFS die vastzitten in veilige modus op Apache-cluster in Azure HDInsight
+title: Lokale HDFS vastgelopen in veilige modus in azure HDInsight-cluster
+description: Problemen met lokale Apache HDFS in veilige modus in een Apache-cluster in azure HDInsight oplossen
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 4d19a05129970b26ca1af20263fbfe93a0053c7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894194"
 ---
-# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>Scenario: Lokale HDFS vast in veilige modus op Azure HDInsight-cluster
+# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>Scenario: lokale HDFS vastgelopen in veilige modus in azure HDInsight-cluster
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Het lokale Apache Hadoop Distributed File System (HDFS) zit vast in de veilige modus op het HDInsight-cluster. U ontvangt een soortgelijk foutbericht als volgt:
+De lokale Apache Hadoop Distributed File System (HDFS) is vastgelopen in de veilige modus op het HDInsight-cluster. Er wordt een fout bericht van de volgende strekking weer gegeven:
 
 ```output
 hdiuser@spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -34,11 +34,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ## <a name="cause"></a>Oorzaak
 
-Het HDInsight-cluster is verkleind tot zeer weinig knooppunten hieronder, of het aantal knooppunten ligt dicht bij de HDFS-replicatiefactor.
+Het HDInsight-cluster is omlaag geschaald naar enkele knoop punten hieronder of het aantal knoop punten bevindt zich dicht bij de HDFS-replicatie factor.
 
 ## <a name="resolution"></a>Oplossing
 
-1. Rapport over de status van HDFS op het HDInsight-cluster met de volgende opdracht:
+1. Rapporteert de status van HDFS op het HDInsight-cluster met de volgende opdracht:
 
     ```bash
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -50,7 +50,7 @@ Het HDInsight-cluster is verkleind tot zeer weinig knooppunten hieronder, of het
     hdiuser@spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
-1. Als vastgesteld dat er geen ontbrekende, corrupte of onder gerepliceerde blokken of die blokken kunnen worden genegeerd voer de volgende opdracht om de naam knooppunt uit de veilige modus:
+1. Als wordt vastgesteld dat er geen ontbrekend, beschadigd of onder gerepliceerde blokken of die blokken kunnen worden genegeerd, voert u de volgende opdracht uit om het naam-knoop punt uit de veilige modus te halen:
 
     ```bash
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
@@ -58,10 +58,10 @@ Het HDInsight-cluster is verkleind tot zeer weinig knooppunten hieronder, of het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

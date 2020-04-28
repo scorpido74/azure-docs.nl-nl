@@ -1,26 +1,26 @@
 ---
 title: Aangepaste resources toevoegen aan Azure REST API
-description: Meer informatie over het toevoegen van aangepaste resources aan de Azure REST API. In dit artikel worden de vereisten en aanbevolen procedures voor eindpunten doorlopen die aangepaste resources willen implementeren.
+description: Meer informatie over het toevoegen van aangepaste resources aan Azure REST API. In dit artikel worden de vereisten en aanbevolen procedures besproken voor eind punten die aangepaste resources willen implementeren.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650524"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Aangepaste resources toevoegen aan Azure REST API
 
-In dit artikel worden de vereisten en aanbevolen procedures voor het maken van Azure Custom Resource Provider-eindpunten doorlopen die aangepaste resources implementeren. Als u niet bekend bent met Azure Custom Resource Providers, raadpleegt u [het overzicht over aangepaste resourceproviders.](overview.md)
+In dit artikel worden de vereisten en aanbevolen procedures beschreven voor het maken van eind punten van een aangepaste Azure-resource provider die aangepaste resources implementeert. Als u niet bekend bent met aangepaste Azure-resource providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
 
-## <a name="how-to-define-a-resource-endpoint"></a>Een eindpunt van een resource definiëren
+## <a name="how-to-define-a-resource-endpoint"></a>Een resource-eind punt definiëren
 
-Een **eindpunt** is een URL die verwijst naar een service, die het onderliggende contract tussen het en Azure implementeert. Het eindpunt wordt gedefinieerd in de aangepaste resourceprovider en kan elke openbaar toegankelijke URL zijn. Het onderstaande voorbeeld heeft `myCustomResource` een `endpointURL` **resourceType** genaamd geïmplementeerd door .
+Een **eind punt** is een URL die verwijst naar een service, waarmee het onderliggende contract tussen IT en Azure wordt geïmplementeerd. Het eind punt wordt gedefinieerd in de aangepaste resource provider en kan een openbaar toegankelijke URL zijn. In het onderstaande voor beeld wordt een `myCustomResource` **resource type** met de naam geïmplementeerd door `endpointURL`beschreven.
 
-Voorbeeld **van ResourceProvider:**
+Voor beeld van **resource provider**:
 
 ```JSON
 {
@@ -40,50 +40,50 @@ Voorbeeld **van ResourceProvider:**
 }
 ```
 
-## <a name="building-a-resource-endpoint"></a>Een resourceeindpunt bouwen
+## <a name="building-a-resource-endpoint"></a>Een resource-eind punt bouwen
 
-Een **eindpunt** dat een **resourceType implementeert,** moet de aanvraag en het antwoord voor de nieuwe API in Azure verwerken. Wanneer een aangepaste resourceprovider met een **resourceType** wordt gemaakt, genereert deze een nieuwe set API's in Azure. In dit geval genereert **de resourceType** een `PUT`nieuwe `GET`Azure-bron-API voor , en om `DELETE` CRUD uit te voeren op één resource en `GET` om alle bestaande resources op te halen:
+Een **eind punt** dat een **resource type** implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. Wanneer er een aangepaste resource provider met een **resource type** wordt gemaakt, wordt er een nieuwe set Api's in azure gegenereerd. In dit geval genereert het **resource type** een nieuwe Azure-resource-API `PUT`voor `GET`,, `DELETE` en voor het uitvoeren van ruw op één resource en `GET` voor het ophalen van alle bestaande resources:
 
-Eén resource`PUT`manipuleren `GET`( `DELETE`, en :
+Eén resource (`PUT`, `GET`en `DELETE`) bewerken:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource/{myCustomResourceName}
 ```
 
-Alle resources`GET`ophalen ( ):
+Alle resources ophalen (`GET`):
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-Voor aangepaste resources bieden aangepaste resourceproviders twee`Proxy`soorten **routeringstypen:**" " en "`Proxy, Cache`".
+Aangepaste resource providers bieden aangepaste resources twee typen **routingTypes**: "`Proxy`" en "`Proxy, Cache`".
 
-### <a name="proxy-routing-type"></a>type proxyroutering
+### <a name="proxy-routing-type"></a>proxy routerings type
 
-De`Proxy`" **" routingType** proxy's alle aanvraagmethoden naar het **eindpunt** opgegeven in de aangepaste resource provider. Wanneer te`Proxy`gebruiken " ":
+`Proxy`De **routingType** -proxy's worden alle aanvraag methoden naar het **eind punt** dat is opgegeven in de aangepaste resource provider. Wanneer gebruikt`Proxy`u:
 
-- Volledige controle over de reactie is nodig.
-- Het integreren van systemen met bestaande bronnen.
+- Volledige controle over het antwoord is vereist.
+- Systemen integreren met bestaande bronnen.
 
-Zie de aangepaste`Proxy` [resourceproxyverwijzing](proxy-resource-endpoint-reference.md) voor meer informatie over " resources
+Zie voor meer informatie over`Proxy`' ' bronnen, [de verwijzing naar de aangepaste resource proxy](proxy-resource-endpoint-reference.md)
 
-### <a name="proxy-cache-routing-type"></a>type proxycacheroutering
+### <a name="proxy-cache-routing-type"></a>routerings type van proxy cache
 
-De`Proxy, Cache`" **" routingType** `PUT` proxy's alleen en `DELETE` verzoek methoden naar het **eindpunt** opgegeven in de aangepaste resource provider. De aangepaste resourceprovider retourneert `GET` automatisch aanvragen op basis van wat deze in de cache heeft opgeslagen. Als een aangepaste resource is gemarkeerd met cache, voegt de aangepaste resourceprovider ook velden toe / overschrijft in het antwoord om de API's Azure compliant te maken. Wanneer te`Proxy, Cache`gebruiken " ":
+De '`Proxy, Cache`" **routingType** -proxy's `PUT` en `DELETE` aanvraag methoden naar het **eind punt** dat is opgegeven in de aangepaste resource provider. De aangepaste resource provider retourneert `GET` automatisch aanvragen op basis van de inhoud die is opgeslagen in de cache. Als een aangepaste resource is gemarkeerd met cache, worden in de aangepaste resource provider ook velden toegevoegd/overschreven in het antwoord om de Api's van Azure compatibel te maken. Wanneer gebruikt`Proxy, Cache`u:
 
-- Het creëren van een nieuw systeem dat geen bestaande bronnen heeft.
-- Werken met het bestaande Azure-ecosysteem.
+- Er wordt een nieuw systeem gemaakt dat geen bestaande resources heeft.
+- Werken met een bestaand Azure-ecosysteem.
 
-Zie de referentie`Proxy, Cache` [voor aangepaste broncache](proxy-cache-resource-endpoint-reference.md) voor meer informatie over " resources
+Zie voor meer informatie over`Proxy, Cache`' ' bronnen [de verwijzing naar de aangepaste resource-cache](proxy-cache-resource-endpoint-reference.md)
 
 ## <a name="creating-a-custom-resource"></a>Een aangepaste resource maken
 
-Er zijn twee belangrijke manieren om een aangepaste resource te maken voor een aangepaste resourceprovider:
+Er zijn twee belang rijke manieren voor het maken van een aangepaste resource uit een aangepaste resource provider:
 
-- Azure-CLI
-- Azure Resource Manager-sjablonen
+- Azure CLI
+- Azure Resource Manager sjablonen
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Een aangepaste resource maken:
 
@@ -104,11 +104,11 @@ az resource create --is-full-object \
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-is-full-object | *Ja* | Geeft aan dat het eigenschappenobject andere opties bevat, zoals locatie, tags, sku en/of plan.
-id | *Ja* | De resource-id van de aangepaste resource. Dit moet bestaan off van de **ResourceProvider**
-properties | *Ja* | De aanvraaginstantie die naar het **eindpunt**wordt verzonden.
+is-Full-object | *klikt* | Geeft aan dat het eigenschappen object andere opties bevat, zoals locatie, tags, SKU en/of plan.
+id | *klikt* | De resource-ID van de aangepaste resource. Dit moet bestaan uit de **resource provider**
+properties | *klikt* | De hoofd tekst van de aanvraag die naar het **eind punt**wordt verzonden.
 
-Een aangepaste Azure-bron verwijderen:
+Een aangepaste Azure-resource verwijderen:
 
 ```azurecli-interactive
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
@@ -116,9 +116,9 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-id | *Ja* | De resource-id van de aangepaste resource. Dit moet bestaan off van de **ResourceProvider**.
+id | *klikt* | De resource-ID van de aangepaste resource. Dit zou moeten bestaan uit de **resource provider**.
 
-Een Azure Custom Resource ophalen:
+Een aangepaste Azure-resource ophalen:
 
 ```azurecli-interactive
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
@@ -126,16 +126,16 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-id | *Ja* | De resource-id van de aangepaste resource. Dit moet bestaan off van de **ResourceProvider**
+id | *klikt* | De resource-ID van de aangepaste resource. Dit moet bestaan uit de **resource provider**
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
 > [!NOTE]
-> Resources vereisen dat het `id`antwoord `name`een `type` passend antwoord bevat , en vanaf het **eindpunt**.
+> Resources vereisen dat het antwoord een `id`geschikte, `name`, en `type` van het **eind punt**bevat.
 
-Azure Resource Manager-sjablonen `name`vereisen `type` dat `id`, en correct worden geretourneerd vanaf het downstream eindpunt. Een geretourneerde resourcereactie moet in de vorm staan:
+Azure Resource Manager sjablonen vereisen dat `id`, `name`en `type` correct worden geretourneerd vanaf het downstream-eind punt. Een geretourneerd resource antwoord moet de volgende indeling hebben:
 
-Eindpuntrespons **van** de steekproef:
+Voor beeld van **eindpunt** reactie:
 
 ``` JSON
 {
@@ -151,7 +151,7 @@ Eindpuntrespons **van** de steekproef:
 }
 ```
 
-Voorbeeld van Azure Resource Manager-sjabloon:
+Voor beeld van Azure Resource Manager sjabloon:
 
 ```JSON
 {
@@ -176,15 +176,15 @@ Voorbeeld van Azure Resource Manager-sjabloon:
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-resourceTypeName | *Ja* | De **naam** van de **resourceType** die is gedefinieerd in de aangepaste provider.
-resourceProviderName | *Ja* | De instantienaam van de aangepaste resourceprovider.
-aangepaste ResourceName | *Ja* | De aangepaste resourcenaam.
+resourceTypeName | *klikt* | De **naam** van het **resource type** dat in de aangepaste provider is gedefinieerd.
+resourceProviderName | *klikt* | De naam van de aangepaste resource provider-instantie.
+customResourceName | *klikt* | De aangepaste resource naam.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Custom Resource Providers](overview.md)
-- [Snelstart: Azure Custom Resource Provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
-- [How To: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Naslaginformatie: Aangepaste naslaggids voor resourceproxy](proxy-resource-endpoint-reference.md)
-- [Naslaginformatie: Verwijzing naar aangepaste cachebronnen](proxy-cache-resource-endpoint-reference.md)
+- [Overzicht van aangepaste Azure-resource providers](overview.md)
+- [Snelstartgids: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
+- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Naslag informatie: Naslag informatie over aangepaste resource proxy](proxy-resource-endpoint-reference.md)
+- [Verwijzing: verwijzing naar aangepaste resource-cache](proxy-cache-resource-endpoint-reference.md)

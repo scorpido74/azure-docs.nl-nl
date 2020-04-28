@@ -1,6 +1,6 @@
 ---
-title: Apache HBase REST reageert niet op aanvragen in Azure HDInsight
-description: Probleem met Apache HBase REST oplossen en reageert niet op aanvragen in Azure HDInsight.
+title: Apache HBase-REST reageert niet op aanvragen in azure HDInsight
+description: Probleem oplossen met Apache HBase REST reageert niet op aanvragen in azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,23 +8,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 49b547829a369ea6df35e2f1c2f7d60458e41040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887169"
 ---
-# <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Scenario: Apache HBase REST reageert niet op aanvragen in Azure HDInsight
+# <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Scenario: Apache HBase REST reageert niet op aanvragen in azure HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-De Apache HBase REST-service reageert niet op aanvragen in Azure HDInsight.
+De Apache HBase REST-service reageert niet op aanvragen in azure HDInsight.
 
 ## <a name="cause"></a>Oorzaak
 
-De mogelijke oorzaak hier zou kunnen zijn Apache HBase REST service lekt sockets, die vooral gebruikelijk is wanneer de dienst is uitgevoerd voor een lange tijd (bijvoorbeeld, maanden). Van de SDK van de client ziet u mogelijk een foutbericht dat vergelijkbaar is met:
+De mogelijke oorzaak kan zijn dat Apache HBase REST service een lek vormt voor sockets. Dit is met name gebruikelijk wanneer de service gedurende een lange periode actief is (bijvoorbeeld maanden). Vanuit de client-SDK ziet u mogelijk een fout bericht van de volgende strekking:
 
 ```
 System.Net.WebException : Unable to connect to the remote server --->
@@ -33,15 +33,15 @@ System.Net.Sockets.SocketException : A connection attempt failed because the con
 
 ## <a name="resolution"></a>Oplossing
 
-Start HBase REST opnieuw op met de onderstaande opdracht na SSHing naar de host. U ook scriptacties gebruiken om deze service opnieuw te starten op alle werknemersknooppunten:
+Start HBase REST opnieuw op met behulp van de onderstaande opdracht na ssh naar de host. U kunt ook script acties gebruiken om deze service opnieuw te starten op alle worker-knoop punten:
 
 ```bash
 sudo service hdinsight-hbrest restart
 ```
 
-Met deze opdracht stopt HBase Region Server op dezelfde host. U HBase Region Server handmatig starten via Ambari of ambari automatisch de functionaliteit laten herstellen van de Functionaliteit hbase-regioserver automatisch herstellen.
+Met deze opdracht wordt de HBase-regio server op dezelfde host gestopt. U kunt de HBase-regio server hand matig starten via Ambari, of de functionaliteit van Ambari automatisch opnieuw starten HBase regio server automatisch herstellen.
 
-Als het probleem nog steeds bestaat, u het volgende mitigatiescript installeren als een CRON-taak die elke 5 minuten wordt uitgevoerd op elk werknemersknooppunt. Dit mitigatiescript pingt de REST-service en start deze opnieuw op voor het geval de REST-service niet reageert.
+Als het probleem zich blijft voordoen, kunt u het volgende beperkende script installeren als een CRON-taak die elke vijf minuten op elk worker-knoop punt wordt uitgevoerd. Dit beperkings script pingt de REST-service en start deze opnieuw op als de REST-service niet reageert.
 
 ```bash
 #!/bin/bash
@@ -55,10 +55,10 @@ fi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie raadpleegt u [Hoe u een Azure-ondersteuningsaanvraag maakt.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
