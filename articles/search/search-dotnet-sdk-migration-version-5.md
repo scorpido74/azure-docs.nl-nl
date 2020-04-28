@@ -1,7 +1,7 @@
 ---
-title: Upgraden naar Azure Search .NET SDK versie 5
+title: Een upgrade uitvoeren naar Azure Search .NET SDK versie 5
 titleSuffix: Azure Cognitive Search
-description: Migreer code naar de Azure Search .NET SDK versie 5 van oudere versies. Meer informatie over wat nieuw is en welke codewijzigingen vereist zijn.
+description: Code migreren naar de Azure Search .NET SDK versie 5 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,94 +10,94 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793023"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Upgraden naar Azure Search .NET SDK versie 5
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 5
 
-Als u versie 4.0-preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u uw toepassing te upgraden naar versie 5.
+Als u versie 4,0-Preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 5.
 
-Zie [Azure Search gebruiken vanuit een .NET-toepassing](search-howto-dotnet-sdk.md)voor een meer algemene walkthrough van de SDK met voorbeelden.
+Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
 
-Versie 5 van de Azure Search .NET SDK bevat enkele wijzigingen ten opzichte van eerdere versies. Deze zijn meestal klein, dus het wijzigen van uw code moet slechts minimale inspanning vereisen. Zie [Stappen om te upgraden](#UpgradeSteps) voor instructies over het wijzigen van uw code om de nieuwe SDK-versie te gebruiken.
+Versie 5 van de Azure Search .NET SDK bevat enkele wijzigingen ten opzichte van eerdere versies. Dit zijn voornamelijk minder jarigen, zodat het wijzigen van uw code slechts een minimale inspanning vereist. Zie de stappen voor het uitvoeren van een [upgrade](#UpgradeSteps) voor instructies over het wijzigen van de code voor het gebruik van de nieuwe SDK-versie.
 
 > [!NOTE]
-> Als u versie 2.0-preview of ouder gebruikt, moet u eerst upgraden naar versie 3 en vervolgens upgraden naar versie 5. Zie [Upgraden naar de Azure Search .NET SDK versie 3](search-dotnet-sdk-migration.md) voor instructies.
+> Als u versie 2,0-Preview of ouder gebruikt, moet u eerst een upgrade uitvoeren naar versie 3 en vervolgens een upgrade uitvoeren naar versie 5. Zie [upgraden naar de Azure Search .NET SDK versie 3](search-dotnet-sdk-migration.md) voor instructies.
 >
-> Uw Azure Search-serviceinstantie ondersteunt verschillende REST API-versies, waaronder de nieuwste. U een versie blijven gebruiken wanneer deze niet langer de laatste is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u de API-versie in elke aanvraag opgeven via de parameter api-versie. Bij gebruik van de .NET SDK bepaalt de versie van de SDK die u gebruikt de overeenkomstige versie van de REST API. Als u een oudere SDK gebruikt, u die code zonder wijzigingen blijven uitvoeren, zelfs als de service is geüpgraded om een nieuwere API-versie te ondersteunen.
+> Uw Azure Search service-exemplaar ondersteunt verschillende REST API versies, met inbegrip van de meest recente versie. U kunt een versie blijven gebruiken wanneer deze niet langer het meest recent is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u in elke aanvraag de API-versie opgeven via de para meter API-Version. Wanneer u de .NET SDK gebruikt, bepaalt de versie van de SDK die u gebruikt, de corresponderende versie van de REST API. Als u een oudere SDK gebruikt, kunt u deze code zonder wijzigingen blijven uitvoeren, zelfs niet als de service wordt bijgewerkt voor ondersteuning van een nieuwere API-versie.
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-5"></a>Nieuw in versie 5
-Versie 5 van de Azure Search .NET SDK is gericht op de nieuwste algemeen beschikbare versie van de Azure Search REST API, met name 2017-11-11. Dit maakt het mogelijk om nieuwe functies van Azure Search te gebruiken vanuit een .NET-toepassing, waaronder het volgende:
+## <a name="whats-new-in-version-5"></a>Wat is er nieuw in versie 5
+Versie 5 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API, met name 2017-11-11. Dit maakt het mogelijk om nieuwe functies van Azure Search van een .NET-toepassing te gebruiken, met inbegrip van het volgende:
 
 * [Synoniemen](search-synonyms.md).
-* U nu programmatisch toegang krijgen tot waarschuwingen `Warning` in `IndexerExecutionResult` de uitvoeringsgeschiedenis van de indexer (zie de eigenschap in de [.NET-verwijzing](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) voor meer details).
+* U kunt nu programmatisch toegang krijgen tot waarschuwingen in de indexerings geschiedenis (Zie `Warning` de eigenschap `IndexerExecutionResult` van in de [.net-referentie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) voor meer informatie).
 * Ondersteuning voor .NET Core 2.
-* Nieuwe pakketstructuur ondersteunt het gebruik van alleen de onderdelen van de SDK die u nodig hebt (zie [Wijzigingen in versie 5 verbreken](#ListOfChanges) voor meer informatie).
+* De nieuwe pakket structuur biedt ondersteuning voor het gebruik van alleen de onderdelen van de SDK die u nodig hebt (Zie voor meer informatie [wijzigingen in versie 5 afbreken](#ListOfChanges) ).
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Stappen om te upgraden
-Werk eerst uw NuGet-referentie bij voor `Microsoft.Azure.Search` het gebruik van de NuGet Package Manager Console of door met de rechtermuisknop op uw projectreferenties te klikken en "NuGet-pakketten beheren..." te selecteren. in Visual Studio.
+## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
+Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
 
-Zodra NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u uw project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat zo is, ben je klaar om te gaan!
+Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat het geval is, bent u klaar om aan de slag te gaan.
 
-Als uw build mislukt, ziet u een buildfout zoals:
+Als uw build mislukt, ziet u een build-fout als de volgende:
 
     The name 'SuggesterSearchMode' does not exist in the current context
 
-De volgende stap is het oplossen van deze buildfout. Zie [Wijzigingen in versie 5 verbreken](#ListOfChanges) voor meer informatie over de oorzaak van de fout en hoe u deze oplossen.
+De volgende stap is het oplossen van deze build-fout. Zie belang rijke [wijzigingen in versie 5](#ListOfChanges) voor meer informatie over de oorzaak van de fout en hoe u deze kunt oplossen.
 
-Houd er rekening mee dat als gevolg van wijzigingen in de verpakking van de Azure Search .NET SDK, u uw toepassing opnieuw moet opbouwen om versie 5 te kunnen gebruiken. Deze wijzigingen worden beschreven in [Het breken van wijzigingen in versie 5](#ListOfChanges).
+Als gevolg van wijzigingen in de verpakking van de Azure Search .NET SDK, moet u uw toepassing opnieuw samen stellen om versie 5 te kunnen gebruiken. Deze wijzigingen worden gedetailleerd beschreven in de belang rijke [wijzigingen in versie 5](#ListOfChanges).
 
-Mogelijk ziet u aanvullende buildwaarschuwingen met betrekking tot verouderde methoden of eigenschappen. De waarschuwingen bevatten instructies over wat te gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` de methode gebruikt, moet u een waarschuwing krijgen met de tekst 'Dit gedrag is nu standaard ingeschakeld, dus het aanroepen van deze methode is niet langer nodig.'
+Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de- `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` methode, ontvangt u een waarschuwing met de tekst ' dit gedrag is nu standaard ingeschakeld, zodat deze methode niet meer nodig is. '
 
-Zodra u buildfouten of waarschuwingen hebt opgelost, u wijzigingen aanbrengen in uw toepassing om te profiteren van nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 5](#WhatsNew).
+Wanneer u eventuele build-fouten of-waarschuwingen hebt opgelost, kunt u wijzigingen aanbrengen in uw toepassing om te profiteren van de nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 5](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-5"></a>Wijzigingen in versie 5 verbreken
 
-### <a name="new-package-structure"></a>Nieuwe pakketstructuur
+### <a name="new-package-structure"></a>Nieuwe pakket structuur
 
-De meest substantiële verandering in versie `Microsoft.Azure.Search` 5 is dat de assemblage en de inhoud ervan zijn verdeeld in vier afzonderlijke samenstellingen die nu worden gedistribueerd als vier afzonderlijke NuGet-pakketten:
+De meest substantiële wijziging in versie 5 is dat de `Microsoft.Azure.Search` assembly en de inhoud ervan zijn onderverdeeld in vier afzonderlijke assembly's die nu worden gedistribueerd als vier afzonderlijke NuGet-pakketten:
 
- - `Microsoft.Azure.Search`: Dit is een meta-pakket dat alle andere Azure Search-pakketten als afhankelijkheden bevat. Als u een upgrade uitvoert van een eerdere versie van de SDK, moet het upgraden van dit pakket en het opnieuw bouwen voldoende zijn om de nieuwe versie te gebruiken.
- - `Microsoft.Azure.Search.Data`: Gebruik dit pakket als u een .NET-toepassing ontwikkelt met Azure Search en u hoeft alleen documenten in uw indexen op te vragen of bij te werken. Als u ook indexen, synoniemkaarten of andere bronnen op serviceniveau `Microsoft.Azure.Search` moet maken of bijwerken, gebruikt u het pakket in plaats daarvan.
- - `Microsoft.Azure.Search.Service`: Gebruik dit pakket als u automatisering ontwikkelt in .NET om Azure Search-indexen, synoniemkaarten, indexers, gegevensbronnen of andere bronnen op serviceniveau te beheren. Als u alleen documenten in uw indexen hoeft `Microsoft.Azure.Search.Data` op te vragen of bij te werken, gebruikt u het pakket in plaats daarvan. Als u alle functionaliteit van Azure Search `Microsoft.Azure.Search` nodig hebt, gebruikt u het pakket in plaats daarvan.
- - `Microsoft.Azure.Search.Common`: Veelvoorkomende typen die nodig zijn voor de Azure Search .NET-bibliotheken. U hoeft dit pakket niet rechtstreeks in uw toepassing te gebruiken; Het is alleen bedoeld om te worden gebruikt als een afhankelijkheid.
+ - `Microsoft.Azure.Search`: Dit is een meta pakket dat alle andere Azure Search pakketten als afhankelijkheden bevat. Als u een upgrade uitvoert van een eerdere versie van de SDK, moet u een upgrade uitvoeren voor het pakket en het opnieuw samen stellen van de nieuwe versie.
+ - `Microsoft.Azure.Search.Data`: Gebruik dit pakket als u een .NET-toepassing ontwikkelt met Azure Search en u alleen documenten in uw indexen hoeft op te vragen of bij te werken. Als u ook indexen, synoniemen of andere bronnen op service niveau wilt maken of bijwerken, gebruikt u in plaats `Microsoft.Azure.Search` daarvan het pakket.
+ - `Microsoft.Azure.Search.Service`: Gebruik dit pakket als u Automation in .NET ontwikkelt voor het beheren van Azure Search indexen, synoniemen, Indexeer functies, gegevens bronnen of andere bronnen op service niveau. Als u alleen documenten in uw indexen hoeft op te vragen of bij te werken `Microsoft.Azure.Search.Data` , gebruikt u in plaats daarvan het pakket. Als u de functionaliteit van Azure Search nodig hebt, gebruikt u `Microsoft.Azure.Search` in plaats daarvan het pakket.
+ - `Microsoft.Azure.Search.Common`: Algemene typen die nodig zijn voor de Azure Search .NET-bibliotheken. U hoeft dit pakket niet rechtstreeks in uw toepassing te gebruiken. Het is alleen bedoeld om te worden gebruikt als afhankelijkheid.
  
-Deze verandering is technisch breken, omdat veel soorten werden verplaatst tussen de samenstellingen. Dit is de reden waarom het opnieuw opbouwen van uw toepassing noodzakelijk is om te upgraden naar versie 5 van de SDK.
+Deze wijziging is technisch afgebroken omdat er veel typen tussen assembly's zijn verplaatst. Daarom is het opnieuw samen stellen van uw toepassing nood zakelijk om een upgrade uit te kunnen zetten naar versie 5 van de SDK.
 
-Er is een klein aantal andere wijzigingen in versie 5 waarvoor mogelijk ook codewijzigingen nodig zijn naast het opnieuw opbouwen van uw toepassing.
+Er is een klein aantal andere belang rijke wijzigingen in versie 5 waarvoor code wijzigingen nodig zijn naast het opnieuw samen stellen van uw toepassing.
 
 ### <a name="change-to-suggesters"></a>Wijzigen in suggesties 
 
-De `Suggester` constructeur heeft `enum` geen `SuggesterSearchMode`parameter meer voor . Dit enum had slechts één waarde en was daarom overbodig. Als u buildfouten als gevolg hiervan ziet, verwijdert `SuggesterSearchMode` u verwijzingen naar de parameter.
+De `Suggester` constructor heeft geen `enum` para meter meer voor `SuggesterSearchMode`. Deze enum heeft slechts één waarde en is daarom overbodig. Als er fouten in de build worden weer geven, verwijder dan de verwijzingen naar de `SuggesterSearchMode` para meter.
 
-### <a name="removed-obsolete-members"></a>Verouderde leden verwijderd
+### <a name="removed-obsolete-members"></a>Verouderde leden zijn verwijderd
 
-Mogelijk ziet u buildfouten met betrekking tot methoden of eigenschappen die in eerdere versies als verouderd zijn gemarkeerd en vervolgens zijn verwijderd in versie 5. Als u dergelijke fouten tegenkomt, u deze als geen andere manier oplossen:
+Mogelijk worden er Build-fouten met betrekking tot methoden of eigenschappen weer geven die in eerdere versies als verouderd zijn gemarkeerd en vervolgens in versie 5 zijn verwijderd. Als u dergelijke fouten tegen komt, kunt u deze als volgt oplossen:
 
-- Als u de `IndexingParametersExtensions.IndexStorageMetadataOnly` methode `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` gebruikt, gebruikt u in plaats daarvan.
-- Als u de `IndexingParametersExtensions.SkipContent` methode `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` gebruikt, gebruikt u in plaats daarvan.
+- Als u de `IndexingParametersExtensions.IndexStorageMetadataOnly` methode gebruikt, gebruikt `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` u in plaats daarvan.
+- Als u de `IndexingParametersExtensions.SkipContent` methode gebruikt, gebruikt `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` u in plaats daarvan.
 
-### <a name="removed-preview-features"></a>Verwijderde voorbeeldfuncties
+### <a name="removed-preview-features"></a>De preview-functies zijn verwijderd
 
-Als u een upgrade uitvoert van versie 4.0-preview naar versie 5, moet u er rekening mee houden dat json-array- en CSV-parsing-ondersteuning voor Blob Indexers is verwijderd omdat deze functies nog steeds in preview zijn. In het bijzonder zijn `IndexingParametersExtensions` de volgende methoden van de klasse verwijderd:
+Als u een upgrade uitvoert van versie 4,0-Preview naar versie 5, moet u er rekening mee houden dat JSON-matrix en de ondersteuning voor het parseren van CSV voor BLOB-Indexeer functies zijn verwijderd, omdat deze onderdelen nog in Preview zijn. Met name de volgende methoden van de `IndexingParametersExtensions` klasse zijn verwijderd:
 
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Als uw toepassing een harde afhankelijkheid van deze functies heeft, u niet upgraden naar versie 5 van de Azure Search .NET SDK. U versie 4.0-preview blijven gebruiken. Houd er echter rekening mee dat **we het gebruik van preview-SDK's in productietoepassingen niet aanraden.** Preview-functies zijn alleen voor evaluatie en kunnen veranderen.
+Als uw toepassing een vaste afhankelijkheid van deze functies heeft, kunt u niet upgraden naar versie 5 van de Azure Search .NET SDK. U kunt versie 4,0-Preview blijven gebruiken. Bedenk echter dat het **gebruik van preview-sdk's in productie toepassingen niet wordt aangeraden**. Preview-functies zijn alleen voor evaluatie en kunnen worden gewijzigd.
 
 ## <a name="conclusion"></a>Conclusie
-Zie de [.NET How-to](search-howto-dotnet-sdk.md).
+Als u meer informatie wilt over het gebruik van de Azure Search .NET SDK, raadpleegt u de [.net How-to](search-howto-dotnet-sdk.md).
 
-Wij zijn blij met uw feedback op de SDK. Als u problemen ondervindt, u ons gerust om hulp vragen op [Stack Overflow.](https://stackoverflow.com/questions/tagged/azure-search) Als u een bug vindt, u een probleem indienen in de [Azure .NET SDK GitHub-repository.](https://github.com/Azure/azure-sdk-for-net/issues) Zorg ervoor dat u de uitgiftetitel vooraf opmaakt met '[Azure Search]'.
+We stellen uw feedback op de SDK. Als u problemen ondervindt, kunt u ons vragen om hulp over [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vindt, kunt u een probleem in de [Azure .NET SDK github-opslag plaats](https://github.com/Azure/azure-sdk-for-net/issues)opslaan. Zorg ervoor dat u de titel van het probleem voordoet met ' [Azure Search] '.
 
-Bedankt voor het gebruik van Azure Search!
+Hartelijk dank dat u Azure Search hebt gebruikt.

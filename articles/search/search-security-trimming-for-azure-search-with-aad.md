@@ -1,7 +1,7 @@
 ---
-title: Beveiligingsfilters om resultaten bij te snijden met Active Directory
+title: Beveiligings filters voor het afkappen van resultaten met behulp van Active Directory
 titleSuffix: Azure Cognitive Search
-description: Toegangsbeheer voor Azure Cognitive Search-inhoud met behulp van beveiligingsfilters en AAD-identiteiten (Azure Active Directory).
+description: Toegangs beheer op Azure Cognitive Search inhoud met behulp van beveiligings filters en de identiteit van Azure Active Directory (AAD).
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,61 +9,61 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72794306"
 ---
-# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Beveiligingsfilters voor het bijsnijden van Azure Cognitive Search-resultaten met Active Directory-identiteiten
+# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Beveiligings filters voor het verkleinen van Azure Cognitive Search-resultaten met behulp van Active Directory-identiteiten
 
-In dit artikel wordt uitgelegd hoe u aad-beveiligingsidentiteiten (Azure Active Directory) gebruiken, samen met filters in Azure Cognitive Search om zoekresultaten bij te snijden op basis van gebruikersgroepslidmaatschap.
+In dit artikel wordt beschreven hoe u met behulp van Azure Active Directory (AAD)-beveiligings identiteiten samen met filters in azure Cognitive Search Zoek resultaten kunt knippen op basis van het lidmaatschap van de gebruikers groep.
 
 Dit artikel behandelt de volgende taken:
 > [!div class="checklist"]
-> - Aadgroepen en -gebruikers maken
+> - AAD-groepen en-gebruikers maken
 > - De gebruiker koppelen aan de groep die u hebt gemaakt
-> - De nieuwe groepen caches
-> - Documenten met gekoppelde groepen indexeren
-> - Een zoekaanvraag uitgeven met het filter groep-id's
+> - De nieuwe groepen in de cache opslaan
+> - Documenten indexeren met gekoppelde groepen
+> - Een zoek opdracht met groeps-id's filteren
 > 
 > [!NOTE]
-> Voorbeeldcodefragmenten in dit artikel zijn geschreven in C#. U vindt de volledige broncode [op GitHub](https://aka.ms/search-dotnet-howto). 
+> Voorbeeld code fragmenten in dit artikel zijn geschreven in C#. U vindt de volledige broncode [op GitHub](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Uw index in Azure Cognitive Search moet een [beveiligingsveld](search-security-trimming-for-azure-search.md) hebben om de lijst met groepsidentiteiten op te slaan die de toegang tot het document hebben gelezen. Deze use case gaat uit van een één-op-één correspondentie tussen een securable item (zoals de universiteitsaanvraag van een individu) en een beveiligingsveld waarin wordt aangegeven wie toegang heeft tot dat item (toelatingspersoneel).
+Uw index in azure Cognitive Search moet een [beveiligings veld](search-security-trimming-for-azure-search.md) bevatten voor het opslaan van de lijst met groeps-id's met lees toegang tot het document. In dit voor beeld wordt uitgegaan van een een-op-een-correspondentie tussen een beveiligbaar item (zoals een college van een persoon) en een beveiligings veld dat bepaalt wie toegang heeft tot dat item (Admissions).
 
-U moet aad-beheerdersmachtigingen hebben die vereist zijn in deze walkthrough voor het maken van gebruikers, groepen en koppelingen in AAD.
+U moet beschikken over AAD-beheerders machtigingen die zijn vereist in dit overzicht voor het maken van gebruikers, groepen en koppelingen in AAD.
 
-Uw aanvraag moet ook geregistreerd zijn bij AAD, zoals beschreven in de volgende procedure.
+Uw toepassing moet ook zijn geregistreerd bij AAD, zoals beschreven in de volgende procedure.
 
-### <a name="register-your-application-with-aad"></a>Registreer uw sollicitatie bij AAD
+### <a name="register-your-application-with-aad"></a>Uw toepassing registreren bij AAD
 
-Deze stap integreert uw toepassing met AAD met het oog op het accepteren van aanmeldingen van gebruikers- en groepsaccounts. Als u geen AAD-beheerder in uw organisatie bent, moet u mogelijk [een nieuwe tenant maken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) om de volgende stappen uit te voeren.
+Deze stap integreert uw toepassing met AAD voor het accepteren van aanmeldingen van gebruikers-en groeps accounts. Als u geen AAD-beheerder bent in uw organisatie, moet u mogelijk [een nieuwe Tenant maken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) om de volgende stappen uit te voeren.
 
-1. Ga naar de app Portal voor [**aanvraagregistratie**](https://apps.dev.microsoft.com) >  **converged** > **voeg een app toe.**
-2. Voer een naam voor uw toepassing in en klik op **Maken**. 
-3. Selecteer uw nieuw geregistreerde aanvraag op de pagina Mijn toepassingen.
-4. Kies **Web API**op de pagina voor toepassingregistratie > **Platforms** > **Add Platform**.
-5. Ga nog steeds op de pagina voor toepassingsregistratie naar > **Microsoft Graph Permissions** > **Add**.
-6. Voeg in Machtigingen selecteren de volgende gedelegeerde machtigingen toe en klik op **OK:**
+1. Ga naar de**app** > voor het registreren van de [**toepassings registratie Portal**](https://apps.dev.microsoft.com) >  **een app toevoegen**.
+2. Voer een naam in voor uw toepassing en klik vervolgens op **maken**. 
+3. Selecteer de zojuist geregistreerde toepassing op de pagina mijn toepassingen.
+4. Kies op de pagina Toepassings registratie > **platforms** > **platform toevoegen**de optie **Web-API**.
+5. Ga nog steeds op de pagina Toepassings registratie naar > **Microsoft Graph machtigingen** > **toevoegen**.
+6. Voeg in machtigingen selecteren de volgende gedelegeerde machtigingen toe en klik vervolgens op **OK**:
 
-   + **Directory.ReadWrite.All**
+   + **Map. ReadWrite. all**
    + **Group.ReadWrite.All**
-   + **User.ReadWrite.All**
+   + **User. ReadWrite. all**
 
-Microsoft Graph biedt een API waarmee programmatische toegang tot AAD via een REST API. Het codevoorbeeld voor deze walkthrough gebruikt de machtigingen om de Microsoft Graph API aan te roepen voor het maken van groepen, gebruikers en koppelingen. De API's worden ook gebruikt om groeps-id's in de cache te bewaren voor sneller filteren.
+Microsoft Graph biedt een API die programmatische toegang tot AAD via een REST API mogelijk maakt. In het code voorbeeld voor deze walkthrough worden de machtigingen gebruikt voor het aanroepen van de Microsoft Graph-API voor het maken van groepen, gebruikers en koppelingen. De Api's worden ook gebruikt om groeps-id's in de cache op te slaan voor snellere filtering.
 
 ## <a name="create-users-and-groups"></a>Gebruikers en groepen maken
 
-Als u zoeken toevoegt aan een gevestigde toepassing, hebt u mogelijk bestaande gebruikers- en groeps-id's in AAD. In dit geval u de volgende drie stappen overslaan. 
+Als u een zoek opdracht toevoegt aan een vastgelegde toepassing, hebt u mogelijk bestaande gebruikers-en groeps-id's in AAD. In dit geval kunt u de volgende drie stappen overs Laan. 
 
-Als u echter geen bestaande gebruikers hebt, u Api's van Microsoft Graph gebruiken om de beveiligingsprincipals te maken. In de volgende codefragmenten wordt uitgelegd hoe u id's genereren, die gegevenswaarden worden voor het beveiligingsveld in uw Azure Cognitive Search-index. In onze hypothetische toelatingsaanvraag van de universiteit, zou dit de beveiligingsidentificaties zijn voor toelatingspersoneel.
+Als u echter geen bestaande gebruikers hebt, kunt u Microsoft Graph-Api's gebruiken om de beveiligings-principals te maken. De volgende code fragmenten laten zien hoe u id's kunt genereren, die gegevens waarden worden voor het veld beveiliging in uw Azure Cognitive Search index. In onze hypothetische toepassing voor colleges is dit de beveiligings-id's voor admission medewerkers.
 
-Gebruikers- en groepslidmaatschap kan zeer vloeiend zijn, vooral in grote organisaties. Code die gebruikers- en groepsidentiteiten bouwt, moet vaak genoeg worden uitgevoerd om wijzigingen in het lidmaatschap van de organisatie op te pikken. Op dezelfde manier vereist uw Azure Cognitive Search-index een vergelijkbaar updateschema om de huidige status van toegestane gebruikers en resources weer te geven.
+Gebruikers-en groepslid maatschappen kunnen zeer onvoorzichtig zijn, met name voor grote organisaties. Code die gebruikers-en groeps-id's bouwt, moet vaak genoeg worden uitgevoerd om wijzigingen in het lidmaatschap van de organisatie op te halen. Op dezelfde manier moet uw Azure Cognitive Search-index een vergelijk bare update planning hebben om de huidige status van toegestane gebruikers en resources weer te geven.
 
-### <a name="step-1-create-aad-group"></a>Stap 1: [AAD-groep maken](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-group"></a>Stap 1: [Aad-groep](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) maken 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>Stap 2: [AAD-gebruiker maken](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-user"></a>Stap 2: [Aad-gebruiker](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) maken
 ```csharp
 User user = new User()
 {
@@ -92,25 +92,25 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>Stap 3: Gebruiker en groep koppelen
+### <a name="step-3-associate-user-and-group"></a>Stap 3: een gebruiker en groep koppelen
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>Stap 4: De groepen-id's cache
-Optioneel u, om de netwerklatentie te verminderen, de gebruikersgroepkoppelingen in de cache opslaan, zodat groepen, wanneer een zoekverzoek wordt uitgegeven, worden teruggestuurd uit de cache, waardoor een retourvlucht naar AAD wordt opgeslagen. U [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) gebruiken om één Http-aanvraag met meerdere gebruikers te verzenden en de cache te bouwen.
+### <a name="step-4-cache-the-groups-identifiers"></a>Stap 4: de groeps-id's in de cache opslaan
+Als u de netwerk latentie wilt beperken, kunt u de groeps beleidsobjecten van de gebruiker in de cache opslaan zodat er groepen worden geretourneerd uit de cache, waarbij een retour naar AAD wordt opgeslagen. U kunt [Aad batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) gebruiken om één HTTP-aanvraag met meerdere gebruikers te verzenden en de cache te bouwen.
 
-Microsoft Graph is ontworpen om een groot aantal aanvragen te verwerken. Als er een overweldigend aantal aanvragen optreedt, mislukt Microsoft Graph de aanvraag met HTTP-statuscode 429. Zie [Microsoft Graph throttling voor](https://developer.microsoft.com/graph/docs/concepts/throttling)meer informatie.
+Microsoft Graph is ontworpen om een groot aantal aanvragen af te handelen. Als er sprake is van een overweldigend aantal aanvragen, mislukt de aanvraag met de HTTP-status code 429 van Microsoft Graph. Zie [Microsoft Graph beperking](https://developer.microsoft.com/graph/docs/concepts/throttling)voor meer informatie.
 
-## <a name="index-document-with-their-permitted-groups"></a>Indexdocument met de toegestane groepen
+## <a name="index-document-with-their-permitted-groups"></a>Document indexeren met de toegestane groepen
 
-Querybewerkingen in Azure Cognitive Search worden uitgevoerd via een Azure Cognitive Search-index. In deze stap importeert een indexeringsbewerking doorzoekbare gegevens in een index, inclusief de id's die als beveiligingsfilters worden gebruikt. 
+Query bewerkingen in azure Cognitive Search worden uitgevoerd via een Azure Cognitive Search-index. In deze stap importeert een indexerings bewerking Doorzoek bare gegevens in een index, inclusief de id's die als beveiligings filters worden gebruikt. 
 
-Azure Cognitive Search verifieert geen gebruikersidentiteiten of biedt geen logica om vast te stellen welke inhoud een gebruiker toestemming heeft om te bekijken. De use case voor security trimming gaat ervan uit dat u de koppeling tussen een gevoelig document en de groeps-id die toegang heeft tot dat document, intact in een zoekindex hebt geïmporteerd. 
+Azure Cognitive Search verifieert geen gebruikers identiteiten of biedt logica om te bepalen welke inhoud een gebruiker mag weer geven. Bij het gebruik van beveiligings beperking wordt ervan uitgegaan dat u de koppeling tussen een gevoelig document en de groeps-id die toegang heeft tot het document, hebt geïmporteerd in een zoek index. 
 
-In het hypothetische voorbeeld bevat de instantie van de PUT-aanvraag op een Azure Cognitive Search-index het college-essay of -transcript van een sollicitant, samen met de groeps-id die toestemming heeft om die inhoud te bekijken. 
+In het hypothetische voor beeld bevat de hoofd tekst van de PUT-aanvraag in een Azure Cognitive Search index het College of transcript van een sollicitant samen met de groeps-id die gemachtigd is om die inhoud weer te geven. 
 
-In het algemene voorbeeld dat wordt gebruikt in het codevoorbeeld voor deze walkthrough, ziet de indexactie er mogelijk als volgt uit:
+In het algemene voor beeld dat in het code voorbeeld voor dit scenario wordt gebruikt, kan de index actie er als volgt uitzien:
 
 ```csharp
 var actions = new IndexAction<SecuredFiles>[]
@@ -130,15 +130,15 @@ var batch = IndexBatch.New(actions);
 _indexClient.Documents.Index(batch);  
 ```
 
-## <a name="issue-a-search-request"></a>Een zoekverzoek uitgeven
+## <a name="issue-a-search-request"></a>Een zoek opdracht uitgeven
 
-Voor beveiligingsdoeleinden zijn de waarden in uw beveiligingsveld in de index statische waarden die worden gebruikt voor het opnemen of uitsluiten van documenten in zoekresultaten. Als de groeps-id voor toelatingen bijvoorbeeld "A11B22C33D4-E55F66G77-H88I99JKK" is, worden alle documenten in een Azure Cognitive Search-index met die id in de ingediende beveiliging opgenomen (of uitgesloten) in de zoekresultaten die naar de aanvrager worden teruggestuurd.
+Voor beveiligings beperking zijn de waarden in uw beveiligings veld in de index statische waarden die worden gebruikt voor het opnemen of uitsluiten van documenten in Zoek resultaten. Als de groeps-id voor Admissions bijvoorbeeld "A11B22C33D44-E55F66G77-H88I99JKK" is, worden alle documenten in een Azure Cognitive Search index met de id in het beveiligings document opgenomen (of uitgesloten) in de zoek resultaten die worden teruggestuurd naar de aanvrager.
 
-Als u documenten wilt filteren die zijn geretourneerd in zoekresultaten op basis van groepen van de gebruiker die de aanvraag uitgeeft, controleert u de volgende stappen.
+Als u documenten wilt filteren die zijn geretourneerd in de zoek resultaten op basis van groepen van de gebruiker die de aanvraag heeft verzonden, raadpleegt u de volgende stappen.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>Stap 1: Groeps-id's van de gebruiker ophalen
+### <a name="step-1-retrieve-users-group-identifiers"></a>Stap 1: de groeps-id's van de gebruiker ophalen
 
-Als de groepen van de gebruiker nog niet in de cache zijn opgeslagen of als de cache is verlopen, geeft u het [groepsverzoek](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0)
+Als de gebruikers groepen nog niet in de cache zijn opgeslagen of de cache is verlopen, geeft u de aanvraag voor de [groep](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) op
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -164,9 +164,9 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>Stap 2: De zoekaanvraag opstellen
+### <a name="step-2-compose-the-search-request"></a>Stap 2: de zoek opdracht opstellen
 
-Ervan uitgaande dat u het groepslidmaatschap van de gebruiker hebt, u de zoekaanvraag met de juiste filterwaarden opgeven.
+Ervan uitgaande dat u het lidmaatschap van de groep van de gebruiker hebt, kunt u de zoek opdracht uitgeven met de juiste filter waarden.
 
 ```csharp
 string filter = String.Format("groupIds/any(p:search.in(p, '{0}'))", string.Join(",", groups.Select(g => g.ToString())));
@@ -178,16 +178,16 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>Stap 3: De resultaten verwerken
+### <a name="step-3-handle-the-results"></a>Stap 3: de resultaten verwerken
 
-Het antwoord bevat een gefilterde lijst met documenten, bestaande uit documenten die de gebruiker toestemming heeft om te bekijken. Afhankelijk van hoe u de pagina met zoekresultaten maakt, u visuele aanwijzingen opnemen om de gefilterde resultaatset weer te geven.
+Het antwoord bevat een gefilterde lijst met documenten, die bestaan uit degene die de gebruiker mag bekijken. Afhankelijk van hoe u de pagina met zoek resultaten bouwt, wilt u mogelijk visuele aanwijzingen toevoegen aan de gefilterde resultatenset.
 
 ## <a name="conclusion"></a>Conclusie
 
-In deze walkthrough hebt u technieken geleerd voor het gebruik van AAD-aanmeldingen om documenten te filteren in Azure Cognitive Search-resultaten, waarbij de resultaten worden bijgemaakt van documenten die niet overeenkomen met het filter dat op de aanvraag wordt verstrekt.
+In dit overzicht hebt u technieken geleerd voor het gebruik van AAD-aanmeldingen om documenten te filteren in azure Cognitive Search resultaten, waardoor de resultaten van documenten die niet overeenkomen met het filter dat is opgegeven in de aanvraag, worden afgekapt.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Op identiteit gebaseerdtoegangsbeheer met Azure Cognitive Search-filters](search-security-trimming-for-azure-search.md)
-+ [Filters in Azure Cognitive Search](search-filters.md)
-+ [Gegevensbeveiliging en toegangscontrole in Azure Cognitive Search-bewerkingen](search-security-overview.md)
++ [Toegangs beheer op basis van identiteiten met behulp van Azure Cognitive Search filters](search-security-trimming-for-azure-search.md)
++ [Filters in azure Cognitive Search](search-filters.md)
++ [Gegevens beveiliging en toegangs beheer in azure Cognitive Search bewerkingen](search-security-overview.md)

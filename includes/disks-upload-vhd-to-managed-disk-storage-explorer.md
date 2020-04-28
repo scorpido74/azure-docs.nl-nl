@@ -9,123 +9,123 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74013773"
 ---
-Met Storage Explorer 1.10.0 kunnen gebruikers beheerde schijven uploaden, downloaden en kopiëren en snapshots maken. Vanwege deze extra mogelijkheden u Storage Explorer gebruiken om gegevens van on-premises naar Azure te migreren en gegevens te migreren in Azure-regio's.
+Met Storage Explorer 1.10.0 kunnen gebruikers Managed disks uploaden, downloaden en kopiëren, en moment opnamen maken. Als gevolg van deze aanvullende mogelijkheden kunt u Storage Explorer gebruiken om gegevens van on-premises naar Azure te migreren en gegevens te migreren tussen Azure-regio's.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om dit artikel te voltooien, heb je het volgende nodig:
+U hebt het volgende nodig om dit artikel te volt ooien:
 - Een Azure-abonnement
-- Een of meer door Azure beheerde schijven
+- Een of meer Azure Managed disks
 - De nieuwste versie van [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="connect-to-an-azure-subscription"></a>Verbinding maken met een Azure-abonnement
 
-Als uw Storage Explorer niet is verbonden met Azure, u deze niet gebruiken om resources te beheren. In deze sectie wordt het aansluiten op uw Azure-account uitgevoerd, zodat u resources beheren met Storage Explorer.
+Als uw Storage Explorer niet is verbonden met Azure, kunt u dit niet gebruiken om resources te beheren. In deze sectie wordt verbinding gemaakt met uw Azure-account, zodat u resources kunt beheren met Storage Explorer.
 
-1. Start Azure Storage Explorer en klik op het **pictogram plug-in** aan de linkerkant.
+1. Start Azure Storage Explorer en klik op het pictogram voor de **invoeg toepassing** aan de linkerkant.
 
-    ![Klik op het insteekpictogram](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
+    ![Klik op het pictogram voor de invoeg toepassing](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 
-1. Selecteer **Een Azure-account toevoegen**en klik op **Volgende**.
+1. Selecteer **een Azure-account toevoegen**en klik op **volgende**.
 
     ![Een Azure-account toevoegen](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
 
-1. Voer in het dialoogvenster **Azure Sign-in** uw Azure-referenties in.
+1. Voer in het dialoog venster **Aanmelden bij Azure** uw Azure-referenties in.
 
-    ![Dialoogvenster Azure-aanmelding](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
+    ![Dialoog venster Aanmelden bij Azure](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
 
 1. Selecteer uw abonnement in de lijst en klik op **Toepassen**.
 
     ![Selecteer uw abonnement](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
-## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Een beheerde schijf uploaden vanaf een on-prem VHD
+## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>Een beheerde schijf uploaden van een on-premises VHD
 
-1. **Vouw** schijven uit in het linkerdeelvenster en selecteer de brongroep waarnaar u uw schijf wilt uploaden.
+1. Vouw in het linkerdeel venster **schijven** uit en selecteer de resource groep waarnaar u uw schijf wilt uploaden.
 
-    ![Resourcegroep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    ![Resource groep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
 1. Selecteer **Uploaden**.
 
     ![Uploaden selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
-1. Geef in **VHD uploaden** uw bron VHD op, de naam van de schijf, het ostype, het gebied waaru de schijf wilt uploaden en het accounttype. In sommige regio's worden beschikbaarheidszones ondersteund, voor die regio's u een zone naar keuze selecteren.
-1. Selecteer **Maken** om te beginnen met het uploaden van uw schijf.
+1. Geef in **VHD uploaden** de bron-VHD op, de naam van de schijf, het type besturings systeem, de regio waarnaar u de schijf wilt uploaden, evenals het account type. In sommige regio's worden beschikbaarheids zones ondersteund voor deze regio's kunt u een door u gewenste zone selecteren.
+1. Selecteer **maken** om te beginnen met het uploaden van uw schijf.
 
-    ![Vhd-dialoogvenster uploaden](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
+    ![Dialoog venster VHD uploaden](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
 
-1. De status van de upload wordt nu weergegeven in **Activiteiten**.
+1. De status van de upload wordt nu weer gegeven in **activiteiten**.
 
-    ![Uploadstatus](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
+    ![Upload status](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
 
-1. Als de upload is voltooid en u de schijf niet in het rechterdeelvenster ziet, selecteert u **Vernieuwen**.
+1. Als het uploaden is voltooid en u de schijf niet ziet in het rechterdeel venster, selecteert u **vernieuwen**.
 
 ## <a name="download-a-managed-disk"></a>Een beheerde schijf downloaden
 
-In de volgende stappen wordt uitgelegd hoe u een beheerde schijf downloaden naar een on-prem VHD. De status van een schijf moet worden **ontkoppeld** om te kunnen worden gedownload, u geen **gekoppelde** schijf downloaden.
+In de volgende stappen wordt uitgelegd hoe u een beheerde schijf kunt downloaden naar een on-premises VHD. De status van een schijf moet **ongekoppeld** zijn om te kunnen worden gedownload. u kunt een **bijgevoegde** schijf niet downloaden.
 
-1. Als deze niet is uitgevouwen, vouwt u **schijven** uit en selecteert u in het linkerdeelvenster de brongroep waarvan u uw schijf wilt downloaden.
+1. Als deze nog niet is uitgevouwen, vouwt u in het linkerdeel venster de optie **schijven** uit en selecteert u de resource groep waarvan u de schijf wilt downloaden.
 
-    ![Resourcegroep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    ![Resource groep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. Selecteer in het rechterdeelvenster de schijf die u wilt downloaden.
-1. Selecteer **Downloaden** en kies vervolgens waar u de schijf wilt opslaan.
+1. Selecteer in het rechterdeel venster de schijf die u wilt downloaden.
+1. Selecteer **downloaden** en kies vervolgens waar u de schijf wilt opslaan.
 
     ![Een beheerde schijf downloaden](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button.png)
 
-1. Selecteer **Opslaan** en uw schijf begint met downloaden. De status van de download wordt weergegeven in **Activiteiten**.
+1. Selecteer **Opslaan** om te beginnen met het downloaden van de schijf. De status van de down load wordt weer gegeven in **activiteiten**.
 
-    ![Downloadstatus](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
+    ![Download status](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
 
 ## <a name="copy-a-managed-disk"></a>Een beheerde schijf kopiëren
 
-Met Storage Explorer u een manged-schijf binnen of tussen regio's kopiëren. Een schijf kopiëren:
+Met Storage Explorer kunt u een beheerd-schijf kopiëren binnen of tussen verschillende regio's. Een schijf kopiëren:
 
-1. Selecteer in de vervolgkeuzelijst **Schijven** aan de linkerkant de brongroep die de schijf bevat die u wilt kopiëren.
+1. Selecteer in de vervolg keuzelijst **schijven** aan de linkerkant de resource groep die de schijf bevat die u wilt kopiëren.
 
-    ![Resourcegroep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    ![Resource groep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. Selecteer in het rechterdeelvenster de schijf die u wilt kopiëren en selecteer **Kopiëren**.
+1. Selecteer in het rechterdeel venster de schijf die u wilt kopiëren en selecteer **kopiëren**.
 
     ![Een beheerde schijf kopiëren](media/disks-upload-vhd-to-managed-disk-storage-explorer/copy-button.png)
 
-1. Selecteer in het linkerdeelvenster de resourcegroep waarin u de schijf wilt plakken.
+1. Selecteer in het linkerdeel venster de resource groep waarin u de schijf wilt plakken.
 
-    ![Resourcegroep 2 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2.png)
+    ![Resource groep 2 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2.png)
 
-1. Selecteer **Plakken** in het rechterdeelvenster.
+1. Selecteer **Plakken** in het rechterdeel venster.
 
     ![Een beheerde schijf plakken](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-button.png)
 
-1. Vul in het dialoogvenster **Schijf plakken** de waarden in. U ook een beschikbaarheidszone opgeven in ondersteunde regio's.
+1. Vul in het dialoog venster **schijf plakken** de waarden in. U kunt ook een beschikbaarheids zone opgeven in ondersteunde regio's.
 
-    ![Dialoogvenster Schijf plakken](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
+    ![Dialoog venster schijf plakken](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
 
-1. Selecteer **Plakken** en uw schijf begint te kopiëren, de status wordt weergegeven in **Activiteiten**.
+1. Selecteer **Plakken** en de schijf wordt gekopieerd, de status wordt weer gegeven in **activiteiten**.
 
-    ![Plakstatus kopiëren](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
+    ![Plak status kopiëren](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
 
 ## <a name="create-a-snapshot"></a>Een momentopname maken
 
-1. Selecteer in de vervolgkeuzelijst **Schijven** aan de linkerkant de brongroep die de schijf bevat die u wilt momentopnamemaken.
+1. Selecteer in de vervolg keuzelijst **schijven** aan de linkerkant de resource groep die de schijf bevat waarvan u een moment opname wilt maken.
 
-    ![Resourcegroep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
+    ![Resource groep 1 selecteren](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. Selecteer aan de rechterkant de schijf die u wilt momentopname maken en selecteer **Momentopname maken**.
+1. Selecteer aan de rechter kant de schijf die u wilt moment opname en selecteer **moment opname maken**.
 
     ![Een momentopname maken](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. Geef in **Momentopname maken**de naam op van de momentopname en de resourcegroep waarin u deze wilt maken. Selecteer vervolgens **Maken**.
+1. Geef in **moment opname maken**de naam op van de moment opname en de resource groep waarin u deze wilt maken. Selecteer vervolgens **maken**.
 
-    ![Dialoogvenster Momentopname maken](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
+    ![Dialoog venster moment opname maken](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 
-1. Zodra de momentopname is gemaakt, u **Openen in Portal** in **Activiteiten** selecteren om de momentopname in de Azure-portal weer te geven.
+1. Zodra de moment opname is gemaakt, kunt u in **activiteiten** **openen in portal** selecteren om de moment opname in de Azure portal weer te geven.
 
-    ![Momentopname openen in portal](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
+    ![Moment opname openen in de portal](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 
 ## <a name="next-steps"></a>Volgende stappen

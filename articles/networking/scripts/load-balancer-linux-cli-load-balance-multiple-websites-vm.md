@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Script-voorbeeld - Laadbalans meerdere websites met de Azure CLI | Microsoft Documenten
-description: Azure CLI Script-voorbeeld - Laadbalans meerdere websites naar dezelfde virtuele machine
+title: Voor beeld van Azure CLI-script-taak verdeling meerdere websites met Azure CLI | Microsoft Docs
+description: Voor beeld van Azure CLI-script-taak verdeling meerdere websites naar dezelfde virtuele machine
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: allensu
 ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889453"
 ---
 # <a name="load-balance-multiple-websites"></a>Taakverdeling instellen voor meerdere websites
 
-Met dit scriptvoorbeeld wordt een virtueel netwerk gemaakt met twee virtuele machines (VM) die lid zijn van een beschikbaarheidsset. Een load balancer stuurt verkeer voor twee afzonderlijke IP-adressen door naar de twee virtuele machines. Nadat het script is uitgevoerd, kunt u webserversoftware implementeren op de virtuele machines en meerdere websites hosten, elk met een eigen IP-adres.
+Met dit voorbeeld script maakt u een virtueel netwerk met twee virtuele machines (VM) die lid zijn van een beschikbaarheidsset. Een load balancer stuurt verkeer voor twee afzonderlijke IP-adressen door naar de twee virtuele machines. Nadat het script is uitgevoerd, kunt u webserversoftware implementeren op de virtuele machines en meerdere websites hosten, elk met een eigen IP-adres.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

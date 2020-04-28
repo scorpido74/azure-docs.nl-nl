@@ -1,6 +1,6 @@
 ---
 title: U-SQL-scripts uitbreiden met R in Azure Data Lake Analytics
-description: Meer informatie over het uitvoeren van R-code in U-SQL-scripts met Azure Data Lake Analytics. Inline-code insluiten of verwijzen uit bestanden.
+description: Meer informatie over het uitvoeren van R-code in U-SQL-scripts met behulp van Azure Data Lake Analytics. R-code inline of referentie van bestanden insluiten.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,23 +10,23 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: c5dd3f493e85afc925b639c142a293eed1e8cbd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672684"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>U-SQL-scripts uitbreiden met R-code in Azure Data Lake Analytics
 
-In het volgende voorbeeld worden de basisstappen voor het implementeren van R-code geïllustreerd:
-* Gebruik `REFERENCE ASSEMBLY` de instructie om R-extensies in te schakelen voor het U-SQL Script.
-* Gebruik `REDUCE` de bewerking om de invoergegevens op een sleutel te partitioneren.
-* De R-extensies voor U-SQL bevatten een`Extension.R.Reducer`ingebouwde reducer ( ) die R-code uitvoert op elke hoekpunt toegewezen aan de reducer. 
-* Het gebruik van speciale `inputFromUSQL` `outputToUSQL` benoemde gegevensframes die worden aangeroepen en respectievelijk om gegevens door te geven tussen U-SQL en R. Namen van invoer- en uitvoergegevensframe-id's zijn vastgesteld (dat wil zeggen dat gebruikers deze vooraf gedefinieerde namen van invoer- en uitvoergegevensniet kunnen wijzigen).
+In het volgende voor beeld ziet u de basis stappen voor het implementeren van R-code:
+* Gebruik de `REFERENCE ASSEMBLY` instructie om R-extensies in te scha kelen voor het U-SQL-script.
+* Gebruik de `REDUCE` bewerking voor het partitioneren van de invoer gegevens op een sleutel.
+* De R-uitbrei dingen voor U-SQL bevatten een ingebouwde versmaller () waarmee R-`Extension.R.Reducer`code wordt uitgevoerd op elk hoek punt dat aan de verminderr is toegewezen. 
+* Het gebruik van toegewezen benoemde gegevens frames `inputFromUSQL` met `outputToUSQL` de naam en respectievelijk door geven van gegevens tussen U-SQL en R. invoer-en uitvoer data frame-id-id's zijn vast (dat wil zeggen, gebruikers kunnen deze vooraf gedefinieerde namen van invoer-en uitvoer data frame-id's niet wijzigen).
 
-## <a name="embedding-r-code-in-the-u-sql-script"></a>R-code insluiten in het U-SQL-script
+## <a name="embedding-r-code-in-the-u-sql-script"></a>R-code in het U-SQL-script insluiten
 
-U de R-code van uw U-SQL-script `Extension.R.Reducer`inline met behulp van de opdrachtparameter van de. U het R-script bijvoorbeeld als een tekenreeksvariabele declareren en als parameter doorgeven aan de Reducer.
+U kunt de R-code van uw U-SQL-script inline met behulp van `Extension.R.Reducer`de opdracht parameter van de. U kunt bijvoorbeeld het R-script declareren als een teken reeks variabele en dit door geven als een para meter voor de reducer.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -42,16 +42,16 @@ U de R-code van uw U-SQL-script `Extension.R.Reducer`inline met behulp van de op
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Bewaar de R-code in een apart bestand en verwijs ernaar naar het U-SQL-script
+## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>De R-code in een afzonderlijk bestand opslaan en ernaar verwijzen naar het U-SQL-script
 
-In het volgende voorbeeld wordt een complexer gebruik geïllustreerd. In dit geval wordt de R-code geïmplementeerd als een RESOURCE die het U-SQL-script is.
+In het volgende voor beeld wordt een complexere gebruik geïllustreerd. In dit geval wordt de R-code geïmplementeerd als een RESOURCE die het U-SQL-script is.
 
-Sla deze R-code op als een apart bestand.
+Sla deze R-code op als een afzonderlijk bestand.
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-Gebruik een U-SQL-script om dat R-script te implementeren met de deploy resource-instructie.
+Gebruik een U-SQL-script om dat R-script te implementeren met de instructie DEPLOY RESOURCE.
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -90,26 +90,26 @@ Gebruik een U-SQL-script om dat R-script te implementeren met de deploy resource
 
 ## <a name="how-r-integrates-with-u-sql"></a>Hoe R integreert met U-SQL
 
-### <a name="datatypes"></a>Datatypes
-* Tekenreeks- en numerieke kolommen van U-SQL worden geconverteerd tussen R DataFrame `bool`en `integer` `byte`U-SQL [ondersteunde typen: `double`, `string`, , , ].
-* Het `Factor` gegevenstype wordt niet ondersteund in U-SQL.
-* `byte[]`moeten worden geserialiseerd als een `string`basis64-gecodeerd .
-* U-SQL-tekenreeksen kunnen worden geconverteerd naar factoren in R-code, zodra U-SQL R-invoergegevensframe maakt of door de parameter reducer in te `stringsAsFactors: true`stellen.
+### <a name="datatypes"></a>Gegevens typen
+* Teken reeks-en numerieke kolommen van U-SQL worden geconverteerd als-tussen R data frame en U-SQL [ondersteunde typen `double`: `string`, `bool`, `integer`, `byte`,].
+* Het `Factor` gegevens type wordt niet ondersteund in U-SQL.
+* `byte[]`moet worden geserialiseerd als een base64-gecodeerd `string`.
+* U-SQL-teken reeksen kunnen worden geconverteerd naar factoren in R-code, wanneer U-SQL een R-invoer data frame maakt of door `stringsAsFactors: true`de para meter reducer in te stellen.
 
 ### <a name="schemas"></a>Schema 's
-* U-SQL-gegevenssets mogen geen dubbele kolomnamen hebben.
-* Kolomnamen van U-SQL-gegevenssets moeten tekenreeksen zijn.
-* Kolomnamen moeten hetzelfde zijn in U-SQL- en R-scripts.
-* De kolom Voorlezen kan geen deel uitmaken van het uitvoergegevensframe. Omdat alleen-lezen kolommen automatisch worden teruggespoten in de U-SQL-tabel als het een onderdeel is van het uitvoerschema van UDO.
+* U-SQL-gegevens sets mogen geen dubbele kolom namen bevatten.
+* U-SQL-gegevens sets kolom namen moeten teken reeksen zijn.
+* Kolom namen moeten hetzelfde zijn in U-SQL-en R-scripts.
+* Een alleen-lezen kolom kan geen deel uitmaken van de uitvoer data frame. Omdat alleen-lezen kolommen automatisch worden ingevoegd in de U-SQL-tabel als deze deel uitmaakt van het uitvoer schema van UDO.
 
 ### <a name="functional-limitations"></a>Functionele beperkingen
-* De R Engine kan niet twee keer worden geinstantieerd in hetzelfde proces. 
-* Momenteel ondersteunt U-SQL geen Combiner UDO's voor voorspelling met behulp van partitiemodellen die worden gegenereerd met Reducer UDO's. Gebruikers kunnen de gepartitioneerde modellen als resource declareren en `ExtR_PredictUsingLMRawStringReducer.usql`gebruiken in hun R Script (zie voorbeeldcode)
+* De R-engine kan niet twee maal in hetzelfde proces worden geïnstantieerd. 
+* Op dit moment biedt U-SQL geen ondersteuning voor de combi natie Udo's voor voor spellingen met behulp van gepartitioneerde modellen die zijn gegenereerd met de verkorter Udo's. Gebruikers kunnen de gepartitioneerde modellen als resource declareren en gebruiken in hun R-script (Zie `ExtR_PredictUsingLMRawStringReducer.usql`voorbeeld code)
 
 ### <a name="r-versions"></a>R-versies
 Alleen R 3.2.2 wordt ondersteund.
 
-### <a name="standard-r-modules"></a>Standaard R-modules
+### <a name="standard-r-modules"></a>Standard R-modules
 
     base
     boot
@@ -159,15 +159,15 @@ Alleen R 3.2.2 wordt ondersteund.
     utils
     XML
 
-### <a name="input-and-output-size-limitations"></a>Beperkingen voor invoer- en uitvoergrootte
-Elke hoekpunt heeft een beperkte hoeveelheid geheugen toegewezen aan het. Omdat de invoer- en uitvoergegevensframes in het geheugen in de R-code moeten bestaan, mag de totale grootte voor de invoer en uitvoer niet groter zijn dan 500 MB.
+### <a name="input-and-output-size-limitations"></a>Limieten voor invoer en uitvoer
+Aan elk hoek punt is een beperkte hoeveelheid geheugen toegewezen. Omdat de invoer-en uitvoer DataFrames in het geheugen van de R-code moeten bestaan, mag de totale grootte van de invoer en uitvoer niet groter zijn dan 500 MB.
 
 ### <a name="sample-code"></a>Voorbeeldcode
-Meer voorbeeldcode is beschikbaar in uw Data Lake Store-account nadat u de U-SQL Advanced Analytics-extensies hebt geïnstalleerd. Het pad voor meer `<your_account_address>/usqlext/samples/R`voorbeeldcode is: . 
+Meer voorbeeld code is beschikbaar in uw Data Lake Store-account nadat u de U-SQL Advanced Analytics-extensies hebt geïnstalleerd. Het pad voor meer voorbeeld code is: `<your_account_address>/usqlext/samples/R`. 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Aangepaste R-modules implementeren met U-SQL
 
-Maak eerst een aangepaste R-module en rits deze vast en upload vervolgens het aangepaste modulebestand met ritsr naar uw ADL-winkel. In het voorbeeld uploaden we magittr_1.5.zip naar de root van het standaard ADLS-account voor het ADLA-account dat we gebruiken. Zodra u de module uploadt naar de ADL-winkel, verklaart u deze als `install.packages` DEPLOY RESOURCE gebruiken om deze beschikbaar te maken in uw U-SQL-script en te bellen om deze te installeren.
+Maak eerst een aangepaste R-module en verzend deze en upload het bestand met de aangepaste module zip R naar uw ADL Store. In het voor beeld worden magittr_1 0,5. zip geüpload naar de hoofdmap van het standaard ADLS-account voor het ADLA-account dat we gebruiken. Wanneer u de module uploadt naar de ADL-Store, declareert u deze als RESOURCE voor DEPLOY gebruiken om deze beschikbaar te maken in `install.packages` uw U-SQL-script en aanroepen om het te installeren.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -209,4 +209,4 @@ Maak eerst een aangepaste R-module en rits deze vast en upload vervolgens het aa
 ## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [U-SQL-scripts ontwikkelen met Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [U-SQL-vensterfuncties gebruiken voor Azure Data Lake Analytics-taken](data-lake-analytics-use-window-functions.md)
+* [U-SQL-venster functies gebruiken voor Azure Data Lake Analytics taken](data-lake-analytics-use-window-functions.md)

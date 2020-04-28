@@ -1,6 +1,6 @@
 ---
-title: Azure-bronnen ontdekken die moeten worden beheren in PIM - Azure AD | Microsoft Documenten
-description: Meer informatie over het ontdekken van Azure-resources die u beheren in Azure AD Privileged Identity Management (PIM).
+title: Azure-resources ontdekken voor beheer in PIM-Azure AD | Microsoft Docs
+description: Meer informatie over hoe u Azure-resources kunt detecteren om te beheren in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,56 +15,56 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87da43100c7494937ddc842e0f903ba3a360959e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022897"
 ---
-# <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Azure-bronnen ontdekken die moeten worden beheerd in Privileged Identity Management
+# <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Azure-resources ontdekken om te beheren in Privileged Identity Management
 
-Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) u de beveiliging van uw Azure-resources verbeteren. Dit is handig voor organisaties die al Privileged Identity Management gebruiken om Azure AD-rollen te beschermen, en voor beheergroep- en abonnementseigenaren die productieresources willen beveiligen.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u de beveiliging van uw Azure-resources verbeteren. Dit is nuttig voor organisaties die al gebruikmaken van Privileged Identity Management voor het beveiligen van Azure AD-rollen, en voor de beheer groep en de eigenaar van het abonnement die productie resources willen beveiligen.
 
-Wanneer u voor het eerst Privileged Identity Management instelt voor Azure-resources, moet u de resources ontdekken en selecteren die u wilt beveiligen met Privileged Identity Management. Er is geen limiet aan het aantal resources dat u beheren met Privileged Identity Management. We raden u echter aan om te beginnen met uw meest kritieke (productie)middelen.
+Wanneer u Privileged Identity Management voor het eerst instelt voor Azure-resources, moet u de resources ontdekken en selecteren die u wilt beveiligen met Privileged Identity Management. Er is geen limiet voor het aantal resources dat u kunt beheren met Privileged Identity Management. We raden u echter aan om te beginnen met uw meest kritieke resources (productie).
 
 ## <a name="discover-resources"></a>Resources doorzoeken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Azure **AD Privileged Identity Management openen**.
+1. Open **Azure AD privileged Identity Management**.
 
 1. Selecteer **Azure-resources**.
 
-    Als dit de eerste keer is dat u Privileged Identity Management voor Azure-bronnen gebruikt, ziet u een pagina **Resources ontdekken.**
+    Als dit de eerste keer is dat u Privileged Identity Management voor Azure-resources gebruikt, ziet u een pagina **bronnen detecteren** .
 
-    ![Deelvenster Resources ontdekken zonder resources die worden vermeld voor de eerste ervaring](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![Het deel venster Resources detecteren zonder resources die worden weer gegeven voor de eerste keer-ervaring](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
-    Als een andere beheerder in uw organisatie azure-resources al beheert in Privileged Identity Management, ziet u een lijst met de resources die momenteel worden beheerd.
+    Als een andere beheerder in uw organisatie al Azure-resources in Privileged Identity Management beheert, ziet u een lijst met de resources die momenteel worden beheerd.
 
-    ![Bronnenvenster met bronnen zoeken met bronnen die momenteel worden beheerd](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![Het deel venster Resources detecteren bronnen weer geven die momenteel worden beheerd](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. Selecteer **Resources ontdekken** om de detectie-ervaring te starten.
+1. Selecteer **bronnen detecteren** om de detectie-ervaring te starten.
 
-    ![Detectievenster met bronnen die kunnen worden beheerd, zoals abonnementen en beheergroepen](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![In het deel venster zoeken worden bronnen weer gegeven die kunnen worden beheerd, zoals abonnementen en beheer groepen](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. Gebruik op de pagina **Detectie** **het filter resourcestatus** en **Resourcetype selecteren** om de beheergroepen of abonnementen te filteren waartoe u schrijftoestemming hebt gegeven. Het is waarschijnlijk het gemakkelijkst om te beginnen met **Alle** in eerste instantie.
+1. Gebruik op de pagina **detectie** de **resource status filter** en **Selecteer resource type** om de beheer groepen of abonnementen te filteren waarvoor u schrijf machtigingen hebt. Het is waarschijnlijk het gemakkelijkst om eerst **Alles** te beginnen.
 
-    U alleen zoeken naar beheergroep- of abonnementsbronnen die u wilt beheren met behulp van Privileged Identity Management. Wanneer u een beheergroep of een abonnement beheert in Privileged Identity Management, u ook de onderliggende bronnen beheren.
+    U kunt alleen zoeken naar en selecteren van beheer groep of abonnements bronnen om te beheren met Privileged Identity Management. Wanneer u een beheer groep of een abonnement beheert in Privileged Identity Management, kunt u ook de bijbehorende onderliggende resources beheren.
 
-1. Schakel het selectievakje in naast onbeheerde resources die u wilt beheren.
+1. Schakel het selectie vakje in naast de onbeheerde resources die u wilt beheren.
 
-1. Selecteer **Resources beheren** om de geselecteerde resources te beheren.
+1. Selecteer **resource beheren** om te beginnen met het beheren van de geselecteerde resources.
 
     > [!NOTE]
-    > Zodra een beheergroep of abonnement is beheerd, kan deze niet meer worden beheerd. Dit voorkomt dat een andere resourcebeheerder instellingen voor bevoegde identiteitsbeheer verwijdert.
+    > Zodra een beheer groep of-abonnement wordt beheerd, kan deze niet onbeheerd worden. Zo voor komt u dat een andere resource beheerder Privileged Identity Management-instellingen kan verwijderen.
 
-    ![Deelvenster Detectie met een resource geselecteerd en de optie Resource beheren gemarkeerd](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![Paneel voor detectie waarvoor een resource is geselecteerd en de optie resource beheren gemarkeerd](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Als u een bericht ziet om de onboarding van de geselecteerde resource voor beheer te bevestigen, selecteert u **Ja**.
+1. Als er een bericht wordt weer gegeven waarin u de onboarding van de geselecteerde resource voor beheer bevestigt, selecteert u **Ja**.
 
-    ![Bericht dat bevestigt aan boord van de geselecteerde bronnen voor beheer](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![Bericht dat er wordt bevestigd dat de geselecteerde resources voor beheer worden vrijgegeven](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-bronrolinstellingen configureren in Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
-- [Azure-bronrollen toewijzen in Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Instellingen voor Azure-resource-rollen configureren in Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
+- [Azure-resource rollen toewijzen in Privileged Identity Management](pim-resource-roles-assign-roles.md)

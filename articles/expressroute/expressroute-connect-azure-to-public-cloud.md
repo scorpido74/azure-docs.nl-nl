@@ -1,6 +1,6 @@
 ---
-title: Azure verbinden met openbare clouds | Microsoft Documenten
-description: Verschillende manieren beschrijven om Azure te verbinden met andere openbare clouds
+title: Verbinding maken tussen Azure en open bare Clouds | Microsoft Docs
+description: Verschillende manieren voor het verbinden van Azure met andere open bare Clouds beschrijven
 services: expressroute
 author: osamazia
 ms.service: expressroute
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
 ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73889633"
 ---
-# <a name="connecting-azure-with-public-clouds"></a>Azure verbinden met openbare clouds
+# <a name="connecting-azure-with-public-clouds"></a>Azure verbinden met open bare Clouds
 
-Veel ondernemingen volgen een multi-cloudstrategie vanwege zakelijke en technische doelstellingen. Deze omvatten kosten, flexibiliteit, beschikbaarheid van functies, redundantie, gegevenssoevereiniteit enz. Deze strategie helpt hen het beste van beide clouds te benutten. 
+Veel ondernemingen beleven een strategie voor meerdere clouds vanwege zakelijke en technische doelen. Dit zijn onder andere kosten, flexibiliteit, Beschik baarheid van functies, redundantie, data soevereiniteit, enzovoort. Deze strategie helpt hen het beste van beide Clouds te benutten. 
 
-Deze aanpak brengt ook uitdagingen met zich mee voor de onderneming op het gebied van netwerk- en toepassingsarchitectuur. Sommige van deze uitdagingen zijn latentie en gegevensdoorvoer. Om deze uitdagingen het hoofd te bieden, willen klanten direct verbinding maken met meerdere clouds. Sommige serviceproviders bieden een oplossing om meerdere cloudproviders voor de klanten met elkaar te verbinden. In andere gevallen kan de klant zijn eigen router implementeren om meerdere openbare clouds met elkaar te verbinden.
+Deze benadering vormt ook uitdagingen voor de onderneming in termen van netwerk-en toepassings architectuur. Enkele van deze uitdagingen zijn latentie en gegevens doorvoer. Om deze uitdagingen te verhelpen, is het aan te raden om rechtstreeks verbinding te maken met meerdere clouds. Sommige service providers bieden een oplossing voor het verbinden van meerdere cloud providers voor de klanten. In andere gevallen kan de klant hun eigen router implementeren om meerdere open bare Clouds te verbinden.
 ## <a name="connectivity-via-expressroute"></a>Connectiviteit via ExpressRoute
-Met ExpressRoute kunnen klanten hun on-premises netwerken uitbreiden naar de Microsoft-cloud via een privéverbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunnen klanten verbindingen leggen met Microsoft-cloudservices.
+Met ExpressRoute kunnen klanten hun on-premises netwerken uitbreiden naar de micro soft-Cloud via een persoonlijke verbinding die wordt vereenvoudigd door een connectiviteits provider. Met ExpressRoute kunnen klanten verbindingen tot stand brengen met micro soft-Cloud Services.
 
 Er zijn drie manieren om verbinding te maken via ExpressRoute.
 
@@ -30,38 +30,38 @@ Er zijn drie manieren om verbinding te maken via ExpressRoute.
 
 ### <a name="layer3-provider"></a>Layer3-provider
 
-Layer3 providers zijn algemeen bekend als IP VPN of MPLS VPN providers. Klanten maken gebruik van deze providers voor multipoint-connectiviteit tussen hun datacenters, vestigingen en de cloud. Klanten maken verbinding met de L3-provider via BGP of via een statische standaardroute. De serviceprovider adverteert routes tussen de klantsites, datacenters en de public cloud. 
+Layer3-providers worden meestal IP VPN-of MPLS-VPN-providers genoemd. Klanten maken gebruik van deze providers voor multi point connectiviteit tussen hun data centers, vertakkingen en de Cloud. Klanten maken verbinding met de L3-provider via BGP of via statische standaard route. Service provider adverteert routes tussen de sites van de klant, data centers en open bare Cloud. 
  
-Wanneer u verbinding maakt via Layer3-provider, adverteert Microsoft vnet-routes van klanten naar de serviceprovider via BGP. De provider kan twee verschillende implementaties hebben.
+Wanneer u verbinding maakt via een Layer3-provider, adverteert micro soft klant VNET-routes naar de service provider via BGP. De provider kan twee verschillende implementaties hebben.
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-Provider kan worden landing elke cloud provider in een aparte VRF, als het verkeer van alle cloud providers zal bereiken op de router van de klant. Als de klant BGP met een serviceprovider uitvoert, worden deze routes standaard opnieuw geadverteerd aan andere cloudproviders. 
+Provider kan elke Cloud provider in een afzonderlijke VRF uitbrengen als verkeer van alle cloud providers op de klant router wordt bereikt. Als de klant BGP met service provider uitvoert, worden deze routes standaard opnieuw aangekondigd aan andere cloud providers. 
 
-Als de serviceprovider alle cloudproviders in dezelfde VRF binnenbrengt, worden routes rechtstreeks geadverteerd naar andere cloudproviders van de serviceprovider. Dit is uitgaande van standaard BGP operatie waar eBGP routes worden geadverteerd aan andere eBGP buren standaard.
+Als de service provider alle cloud providers in hetzelfde VRF afgeeft, worden routes rechtstreeks naar andere cloud providers van de service provider geadverteerd. Hierbij wordt uitgegaan van een standaard BGP-bewerking waarbij eBGP-routes standaard worden geadverteerd naar andere eBGP-neighbors.
 
-Elke openbare cloud heeft verschillende voorvoegsellimiet, dus tijdens het distribueren van de routes moet serviceprovider voorzichtig zijn bij het distribueren van de routes.
+Elke open bare Cloud heeft een andere voorvoegsel limiet, dus bij het distribueren van de routes service provider moet er rekening mee worden gehouden bij het distribueren van de routes.
 
 ### <a name="layer2-provider-and-direct-connection"></a>Layer2-provider en directe verbinding
 
-Hoewel fysieke connectiviteit in beide modellen anders is, maar bij layer3 wordt BGP direct tussen MSEE en de klantrouter tot stand gebracht. Voor ExpressRoute Direct maakt de klant rechtstreeks verbinding met MSEE. In het geval van Layer2 breidt de serviceprovider VLAN uit van klantentot de cloud. Klanten draaien BGP bovenop het layer2-netwerk om hun DC's met de cloud te verbinden.
+Hoewel fysieke connectiviteit in beide modellen anders is, maar op Layer3 BGP direct wordt ingesteld tussen MSEE en de klant router. Voor ExpressRoute direct-klanten maakt rechtstreeks verbinding met MSEE. In het geval van Layer2 breidt de service provider VLAN uit van de lokale locatie van de klant naar de Cloud. Klanten voeren BGP uit op het Layer2-netwerk om hun Dc's te verbinden met de Cloud.
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
-In beide gevallen heeft de klant point-to-point verbindingen met elk van de openbare clouds. De klant zal een aparte BGP-verbinding met elke openbare cloud tot stand brengen. Routes die door één cloudprovider worden ontvangen, worden standaard geadverteerd aan andere cloudprovider. Elke cloudprovider heeft een andere voorvoegsellimiet, dus tijdens het adverteren van de routes moet de klant deze limieten regelen. De klant kan gebruikelijke BGP-knoppen gebruiken met Microsoft, terwijl u advertenties adverteert vanuit andere openbare clouds.
+In beide gevallen heeft de klant Point-to-point-verbindingen met elk van de open bare Clouds. De klant brengt een afzonderlijke BGP-verbinding tot stand met elke open bare Cloud. Routes die door een Cloud provider worden ontvangen, worden standaard naar een andere Cloud provider geadverteerd. Elke Cloud provider heeft een andere voorvoegsel limiet, zodat de routes die de klant aankondigen, deze limieten moeten overnemen. Klanten kunnen gebruikelijke BGP-knoppen met micro soft gebruiken tijdens het adverteren van routes van andere open bare Clouds.
 
 ## <a name="direct-connection-with-expressroute"></a>Directe verbinding met ExpressRoute
 
-Klanten kunnen ervoor kiezen om ExpressRoute rechtstreeks te verbinden met het directe connectiviteitsaanbod van de cloudprovider. Twee cloudproviders worden terug naar achteren verbonden en BGP zal direct tussen hun routers worden gevestigd. Dit type verbinding is vandaag beschikbaar met Oracle.
+Klanten kunnen ervoor kiezen om ExpressRoute rechtstreeks te verbinden met de directe connectiviteits aanbieding van de Cloud provider. Er worden twee cloud providers verbonden met de achtergrond en BGP wordt direct tot stand gebracht tussen hun routers. Dit type verbinding is vandaag beschikbaar met Oracle.
 
 ## <a name="site-to-site-vpn"></a>Site-naar-site-VPN
 
-Klanten kunnen internet gebruiken om hun exemplaren in Azure te verbinden met andere openbare clouds. Bijna alle cloudproviders bieden vpn-mogelijkheden van site-to-site. Er kunnen echter onverenigbaarheden zijn vanwege het ontbreken van bepaalde varianten. Sommige cloudproviders ondersteunen bijvoorbeeld alleen IKEv1, dus er is een VPN-eindpunt vereist in die cloud. Voor die cloudproviders die IKEv2 ondersteunen, kan een directe tunnel worden gelegd tussen VPN-gateways bij beide cloudproviders.
+Klanten kunnen gebruikmaken van Internet om hun instanties in azure te verbinden met andere open bare Clouds. Bijna alle cloud providers bieden mogelijkheden voor site-naar-site-VPN. Er kunnen echter incompatibiliteits problemen zijn door bepaalde varianten te missen. Sommige cloud providers ondersteunen bijvoorbeeld alleen IKEv1, dus er is een VPN-eind punt vereist in die Cloud. Voor cloud providers die IKEv2 ondersteunen, kan verbinding worden gemaakt tussen VPN-gateways bij beide cloud providers.
 
-Site-to-site VPN wordt niet beschouwd als een oplossing met een hoge doorvoer en lage latentie. Het kan echter worden gebruikt als een back-up van fysieke connectiviteit.
+Site-naar-site-VPN wordt niet beschouwd als een oplossing met hoge door Voer en lage latentie. Het kan echter worden gebruikt als back-up naar fysieke connectiviteit.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Veelgestelde vragen][ER-FAQ] over ExpressRoute voor verdere vragen over ExpressRoute en virtuele netwerkconnectiviteit.
+Zie [Veelgestelde vragen over ExpressRoute][ER-FAQ] voor meer vragen over de connectiviteit van ExpressRoute en het virtuele netwerk.
 
-Zie [Directe verbinding tussen Azure en Oracle Cloud instellen][ER-OCI] voor connectiviteit tussen Azure en Oracle
+Zie [een rechtstreekse verbinding tussen Azure en Oracle-Cloud instellen][ER-OCI] voor connectiviteit tussen Azure en Oracle
 
 <!--Link References-->
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs

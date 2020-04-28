@@ -1,6 +1,6 @@
 ---
-title: Meldingen van aanmeldingsfouten oplossen | Microsoft Documenten
-description: Meer informatie over het oplossen van aanmeldingsfouten met Azure Active Directory-rapporten in de Azure-portal
+title: Problemen oplossen met rapporten over het registreren van fouten | Microsoft Docs
+description: Meer informatie over het oplossen van aanmeldings fouten met behulp van Azure Active Directory-rapporten in de Azure Portal
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,53 +15,53 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74008062"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>How to: Aanmeldingsfouten oplossen met Azure Active Directory-rapporten
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Procedure: problemen met aanmelden oplossen met behulp van Azure Active Directory-rapporten
 
-Met [het aanmeldingsrapport](concept-sign-ins.md) in Azure Active Directory (Azure AD) u antwoorden vinden op vragen over het beheren van toegang tot de toepassingen in uw organisatie, waaronder:
+Met het [aanmeld rapport](concept-sign-ins.md) in azure Active Directory (Azure AD) kunt u antwoorden vinden op vragen over het beheren van de toegang tot de toepassingen in uw organisatie, waaronder:
 
 - Wat is het aanmeldingspatroon van een gebruiker?
 - Hoeveel keer hebben gebruikers zich aangemeld gedurende een week?
 - Wat is de status van deze aanmeldingen?
 
 
-Bovendien kan het aanmeldingsrapport u ook helpen bij het oplossen van aanmeldingsfouten voor gebruikers in uw organisatie. In deze handleiding leert u hoe u een aanmeldingsfout in het aanmeldingsrapport isoleren en deze gebruiken om de hoofdoorzaak van de fout te begrijpen.
+Daarnaast kan het rapport aanmeldingen u helpen bij het oplossen van aanmeldings fouten voor gebruikers in uw organisatie. In deze hand leiding leert u hoe u een mislukte aanmelding kunt isoleren in het rapport aanmeldingen, en hoe u deze gebruikt om de hoofd oorzaak van de fout te begrijpen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt de volgende zaken nodig:
 
-* Een Azure AD-tenant met een premiumlicentie (P1/P2). Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden.
-* Een gebruiker die zich in de **globale beheerder,** **beveiligingsbeheerder,** **beveiligingslezer**of **rapportlezerrol** voor de tenant bevindt. Bovendien kan elke gebruiker toegang krijgen tot eigen aanmeldingen. 
+* Een Azure AD-Tenant met een Premium-licentie (P1/P2). Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden.
+* Een gebruiker die zich in de rol **globale beheerder**, **beveiligings beheerder**, **beveiligings lezer**of **rapport lezer** voor de Tenant bevindt. Bovendien kan elke gebruiker toegang krijgen tot eigen aanmeldingen. 
 
-## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Aanmeldingsfouten oplossen met behulp van het aanmeldingsrapport
+## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Fouten bij het aanmelden oplossen met behulp van het rapport aanmeldingen
 
 1. Ga naar de [Azure-portal](https://portal.azure.com) en selecteer uw map.
 2. Selecteer **Azure Active Directory** en selecteer in de sectie **Controle** de optie **Aanmeldingen**. 
-3. Gebruik de meegeleverde filters om de fout te beperken, met de gebruikersnaam of object-id, de naam van de toepassing of de datum. Selecteer bovendien **Fout in** de vervolgkeuzelijst **Status** om alleen de mislukte aanmeldingen weer te geven. 
+3. Gebruik de meegeleverde filters om de fout te verfijnen, hetzij door de gebruikers naam of object-id of de datum van de toepassing. Selecteer bovendien **fout** in de vervolg keuzelijst **status** om alleen de mislukte aanmeldingen weer te geven. 
 
     ![Resultaten filteren](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Identificeer de mislukte aanmelding die u wilt onderzoeken. Selecteer deze optie om het venster met extra details te openen met meer informatie over de mislukte aanmelding. Noteer de **foutcode aanmelding** en **reden tot fout .** 
+4. Identificeer de mislukte aanmelding die u wilt onderzoeken. Selecteer deze optie om het venster met aanvullende details te openen met meer informatie over de mislukte aanmelding. Noteer de **fout code voor aanmelding** en de **reden**van de fout. 
 
     ![Record selecteren](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
-5. U deze informatie ook vinden op het tabblad **Probleemoplossing en ondersteuning** in het detailvenster.
+5. U kunt deze informatie ook vinden op het tabblad **probleem oplossing en ondersteuning** in het detail venster.
 
-    ![Probleemoplossing en ondersteuning](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
+    ![Probleem oplossing en ondersteuning](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. De reden voor de fout beschrijft de fout. In het bovenstaande scenario is de foutreden bijvoorbeeld **ongeldige gebruikersnaam of wachtwoord of ongeldige on-premises gebruikersnaam of wachtwoord.** De oplossing is om gewoon weer inloggen met de juiste gebruikersnaam en wachtwoord.
+6. De reden van de fout is een beschrijving van de fout. In het bovenstaande scenario is de reden van de fout bijvoorbeeld een **Ongeldige gebruikers naam of wacht woord of een ongeldige on-premises gebruikers naam of wacht woord**. De oplossing is om gewoon opnieuw aan te melden met de juiste gebruikers naam en wacht woord.
 
-7. U aanvullende informatie krijgen, waaronder ideeën voor herstel, door te zoeken naar de foutcode, **50126** in dit voorbeeld, in de verwijzing naar de foutcodes van [aanmeldingen.](reference-sign-ins-error-codes.md) 
+7. U kunt aanvullende informatie krijgen, inclusief ideeën voor herstel, door te zoeken naar de fout code **50126** in dit voor beeld, in de [Naslag Gids voor fout codes voor aanmeldingen](reference-sign-ins-error-codes.md). 
 
-8. Als al het andere faalt of als het probleem blijft bestaan ondanks het nemen van de aanbevolen actie, [opent u een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) volgens de stappen op het tabblad **Probleemoplossing en ondersteuning.** 
+8. Als dat niet het geval is, of als het probleem zich blijft voordoen ondanks de aanbevolen actie, [opent u een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) volgens de stappen op het tabblad **probleem oplossing en ondersteuning** . 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verwijzing naar foutcodes van aanmelding](reference-sign-ins-error-codes.md)
-* [Overzicht van aanmeldingsrapport](concept-sign-ins.md)
+* [Naslag informatie over fout codes voor aanmeldingen](reference-sign-ins-error-codes.md)
+* [Overzicht van het rapport met aanmeldingen](concept-sign-ins.md)

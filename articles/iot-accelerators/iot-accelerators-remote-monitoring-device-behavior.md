@@ -1,6 +1,6 @@
 ---
-title: Gesimuleerd apparaat in oplossing voor bewaking op afstand - Azure | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u JavaScript gebruiken om het gedrag van een gesimuleerd apparaat in de oplossing voor externe bewaking te definiëren.
+title: Gesimuleerd apparaat in de oplossing voor externe controle-Azure | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Java script gebruikt voor het definiëren van het gedrag van een gesimuleerd apparaat in de oplossing voor externe controle.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,37 +9,37 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890846"
 ---
-# <a name="implement-the-device-model-behavior"></a>Het gedrag van het apparaatmodel implementeren
+# <a name="implement-the-device-model-behavior"></a>Het gedrag van het model apparaat implementeren
 
-In het artikel [Het schema van het apparaatmodel begrijpen,](iot-accelerators-remote-monitoring-device-schema.md) wordt het schema beschreven dat een gesimuleerd apparaatmodel definieert. In dat artikel werd verwezen naar twee typen JavaScript-bestanden die het gedrag van een gesimuleerd apparaat implementeren:
+In het artikel wordt het schema voor [model lering](iot-accelerators-remote-monitoring-device-schema.md) beschreven dat het schema beschrijft dat een model met gesimuleerd apparaat definieert. Dit artikel wordt verwezen naar twee typen java script-bestanden waarmee het gedrag van een gesimuleerd apparaat wordt geïmplementeerd:
 
-- **Staat** JavaScript-bestanden die met vaste intervallen worden uitgevoerd om de interne status van het apparaat bij te werken.
-- **Methode** JavaScript-bestanden die worden uitgevoerd wanneer de oplossing een methode op het apparaat aanroept.
+- **Status** Java script-bestanden die op vaste intervallen worden uitgevoerd om de interne status van het apparaat bij te werken.
+- **Methode** Java script-bestanden die worden uitgevoerd wanneer de oplossing een methode op het apparaat aanroept.
 
 > [!NOTE]
-> Apparaatmodelgedrag is alleen voor gesimuleerde apparaten die worden gehost in de apparaatsimulatieservice. Als u een echt apparaat wilt maken, [raadpleegt u Uw apparaat verbinden met de versneller van de oplossing voor externe bewaking.](iot-accelerators-connecting-devices.md)
+> Gedrag van het apparaats model is alleen voor gesimuleerde apparaten die worden gehost in de Device simulatie service. Als u een echt apparaat wilt maken, raadpleegt u [uw apparaat aansluiten op de oplossings versneller voor externe controle](iot-accelerators-connecting-devices.md).
 
 In dit artikel leert u het volgende:
 
 >[!div class="checklist"]
 > * De status van een gesimuleerd apparaat bepalen
-> * Definiëren hoe een gesimuleerd apparaat reageert op een methodeaanroep vanuit de oplossing voor externe bewaking
-> * Uw scripts debuggen
+> * Definiëren hoe een gesimuleerd apparaat reageert op een methode aanroep van de oplossing voor controle op afstand
+> * Fouten opsporen in uw scripts
 
-## <a name="state-behavior"></a>Staatsgedrag
+## <a name="state-behavior"></a>Status gedrag
 
-De [sectie Simulatie](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) van het schema van het apparaatmodel definieert de interne status van een gesimuleerd apparaat:
+In het gedeelte [simulatie](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) van het model voor het Apparaatbeheer definieert u de interne status van een gesimuleerd apparaat:
 
-- `InitialState`definieert de oorspronkelijke waarden voor alle eigenschappen van het object apparaatstatus.
-- `Script`hiermee wordt een JavaScript-bestand geïdentificeerd dat volgens een schema wordt uitgevoerd om de apparaatstatus bij te werken.
+- `InitialState`Hiermee worden de initiële waarden voor alle eigenschappen van het object Apparaatstatus gedefinieerd.
+- `Script`identificeert een Java script-bestand dat volgens een schema wordt uitgevoerd om de status van het apparaat bij te werken.
 
-In het volgende voorbeeld wordt de definitie van het object apparaatstatus voor een gesimuleerde koeler weergegeven:
+In het volgende voor beeld ziet u de definitie van het object Apparaatstatus voor een gesimuleerd Chiller-apparaat:
 
 ```json
 "Simulation": {
@@ -61,9 +61,9 @@ In het volgende voorbeeld wordt de definitie van het object apparaatstatus voor 
 }
 ```
 
-De status van het gesimuleerde apparaat, `InitialState` zoals gedefinieerd in de sectie, wordt in het geheugen gehouden door de simulatieservice. De statusinformatie wordt doorgegeven `main` als invoer voor de functie gedefinieerd in **chiller-01-state.js**. In dit voorbeeld voert de simulatieservice het bestand **chiller-01-state.js** elke vijf seconden uit. Het script kan de status van het gesimuleerde apparaat wijzigen.
+De status van het gesimuleerde apparaat, zoals gedefinieerd in `InitialState` de sectie, wordt in het geheugen van de simulatie service bewaard. De status informatie wordt als invoer door gegeven aan `main` de functie die is gedefinieerd in **Chiller-01-State. js**. In dit voor beeld voert de simulatie service elke vijf seconden het bestand **Chiller-01-State. js** uit. Met het script kan de status van het gesimuleerde apparaat worden gewijzigd.
 
-Het volgende toont de `main` omtrek van een typische functie:
+Hieronder ziet u het overzicht van een typische `main` functie:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -76,15 +76,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-De `context` parameter heeft de volgende eigenschappen:
+De `context` para meter heeft de volgende eigenschappen:
 
-- `currentTime`als een tekenreeks met opmaak`yyyy-MM-dd'T'HH:mm:sszzz`
+- `currentTime`Als een teken reeks met notatie`yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`, bijvoorbeeld`Simulated.Chiller.123`
 - `deviceModel`, bijvoorbeeld`Chiller`
 
-De `state` parameter bevat de status van het apparaat zoals onderhouden door de apparaatsimulatieservice. Deze waarde `state` is het object dat `main`wordt geretourneerd door de vorige aanroep naar .
+De `state` para meter bevat de status van het apparaat die wordt onderhouden door de Device simulatie service. Deze waarde is het `state` object dat `main`wordt geretourneerd door de vorige aanroep van.
 
-In het volgende voorbeeld ziet `main` u een typische implementatie van de methode voor het verwerken van de apparaatstatus die wordt onderhouden door de simulatieservice:
+In het volgende voor beeld ziet u een typische `main` implementatie van de-methode voor het afhandelen van de status van het apparaat die wordt onderhouden door de simulatie service:
 
 ```javascript
 // Default state
@@ -118,7 +118,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-In het volgende `main` voorbeeld ziet u hoe de methode telemetriewaarden kan simuleren die in de loop van de tijd variëren:
+In het volgende voor beeld ziet `main` u hoe de methode telemetrische waarden kan simuleren die gedurende een bepaalde periode variëren:
 
 ```javascript
 /**
@@ -156,13 +156,13 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-U de volledige [chiller-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) bekijken op GitHub.
+U kunt de volledige [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) weer geven op github.
 
-## <a name="method-behavior"></a>Methodegedrag
+## <a name="method-behavior"></a>Methode gedrag
 
-De sectie [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) van het schema van het apparaatmodel definieert de methoden waarop een gesimuleerd apparaat reageert.
+De sectie [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) van het model van het apparaat definieert de methoden waarop een gesimuleerd apparaat reageert.
 
-In het volgende voorbeeld wordt de lijst met methoden weergegeven die worden ondersteund door een gesimuleerde koelmachine:
+In het volgende voor beeld ziet u de lijst met methoden die worden ondersteund door een gesimuleerd Chiller-apparaat:
 
 ```json
 "CloudToDeviceMethods": {
@@ -185,11 +185,11 @@ In het volgende voorbeeld wordt de lijst met methoden weergegeven die worden ond
 }
 ```
 
-Elke methode heeft een bijbehorend JavaScript-bestand dat het gedrag van de methode implementeert.
+Elke methode heeft een bijbehorend java script-bestand waarmee het gedrag van de methode wordt geïmplementeerd.
 
-De status van het gesimuleerde apparaat, `InitialState` zoals gedefinieerd in de sectie van het schema, wordt in het geheugen gehouden door de simulatieservice. De statusgegevens worden doorgegeven `main` als invoer naar de functie die is gedefinieerd in het JavaScript-bestand wanneer de methode wordt aangeroepen. Het script kan de status van het gesimuleerde apparaat wijzigen.
+De status van het gesimuleerde apparaat, zoals gedefinieerd in `InitialState` de sectie van het schema, wordt in het geheugen van de simulatie service bewaard. De status informatie wordt als invoer door gegeven aan `main` de functie die is gedefinieerd in het Java script-bestand wanneer de methode wordt aangeroepen. Met het script kan de status van het gesimuleerde apparaat worden gewijzigd.
 
-Het volgende toont de `main` omtrek van een typische functie:
+Hieronder ziet u het overzicht van een typische `main` functie:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -197,23 +197,23 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-De `context` parameter heeft de volgende eigenschappen:
+De `context` para meter heeft de volgende eigenschappen:
 
-- `currentTime`als een tekenreeks met opmaak`yyyy-MM-dd'T'HH:mm:sszzz`
+- `currentTime`Als een teken reeks met notatie`yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`, bijvoorbeeld`Simulated.Chiller.123`
 - `deviceModel`, bijvoorbeeld`Chiller`
 
-De `state` parameter bevat de status van het apparaat zoals onderhouden door de apparaatsimulatieservice.
+De `state` para meter bevat de status van het apparaat die wordt onderhouden door de Device simulatie service.
 
-De `properties` parameter bevat de eigenschappen van het apparaat die als gerapporteerde eigenschappen naar de IoT Hub-apparaattweeling zijn geschreven.
+De `properties` para meter bevat de eigenschappen van het apparaat die zijn geschreven als gerapporteerde eigenschappen naar het IOT hub-apparaat dubbele.
 
-Er zijn drie algemene functies die u gebruiken om het gedrag van de methode te implementeren:
+Er zijn drie globale functies die u kunt gebruiken om het gedrag van de-methode te implementeren:
 
-- `updateState`om de status van de simulatieservice bij te werken.
-- `updateProperty`om één apparaateigenschap bij te werken.
+- `updateState`de status van de simulatie service bijwerken.
+- `updateProperty`om één apparaat-eigenschap bij te werken.
 - `sleep`om de uitvoering te onderbreken om een langlopende taak te simuleren.
 
-In het volgende voorbeeld wordt een verkorte versie van het script **IncreasePressure-method.js** weergegeven dat wordt gebruikt door de gesimuleerde koelerapparaten:
+In het volgende voor beeld ziet u een verkorte versie van het script **IncreasePressure-method. js** dat wordt gebruikt door de gesimuleerde Chiller-apparaten:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -248,27 +248,27 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-## <a name="debugging-script-files"></a>Scriptbestanden debuggen
+## <a name="debugging-script-files"></a>Script bestanden voor fout opsporing
 
-Het is niet mogelijk om een foutopsporing toe te voegen aan de Javascript-tolk die door de apparaatsimulatieservice wordt gebruikt om status- en methodescripts uit te voeren. U echter wel informatie inloggen in het servicelogboek. Met de `log()` ingebouwde functie u informatie opslaan om de uitvoering van de functie bij te houden en te debuggen.
+Het is niet mogelijk om een fout opsporingsprogramma te koppelen aan de Java script-interpreter die wordt gebruikt door de Device simulatie service om status-en methode scripts uit te voeren. U kunt echter gegevens in het service logboek registreren. Met de ingebouwde `log()` functie kunt u gegevens opslaan om de uitvoering van de functie bij te houden en fouten op te sporen.
 
-Als er een syntaxisfout optreedt, `Jint.Runtime.JavaScriptException` mislukt de tolk en schrijft hij een vermelding in het servicelogboek.
+Als er een syntaxis fout optreedt, mislukt de interpreter en schrijft hij `Jint.Runtime.JavaScriptException` een vermelding naar het service logboek.
 
-In het artikel [Lokaal uitvoeren van de service](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) op GitHub ziet u hoe u de apparaatsimulatieservice lokaal uitvoeren. Als u de service lokaal uitvoert, u uw gesimuleerde apparaten gemakkelijker debuggen voordat u ze implementeert in de cloud.
+Het [lokaal artikel over het uitvoeren van de service](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) in github laat zien hoe u de Device simulatie service lokaal uitvoert. Als u de service lokaal uitvoert, kunt u eenvoudiger fouten opsporen in uw gesimuleerde apparaten voordat u ze in de Cloud implementeert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt beschreven hoe u het gedrag van uw eigen aangepaste gesimuleerde apparaatmodel definiëren. Dit artikel liet je zien hoe je:
+In dit artikel wordt beschreven hoe u het gedrag definieert van uw eigen aangepaste model voor gesimuleerde apparaten. In dit artikel wordt uitgelegd hoe u:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
 > * De status van een gesimuleerd apparaat bepalen
-> * Definiëren hoe een gesimuleerd apparaat reageert op een methodeaanroep vanuit de oplossing voor externe bewaking
-> * Uw scripts debuggen
+> * Definiëren hoe een gesimuleerd apparaat reageert op een methode aanroep van de oplossing voor controle op afstand
+> * Fouten opsporen in uw scripts
 
-Nu u hebt geleerd hoe u het gedrag van een gesimuleerd apparaat opgeven, is de voorgestelde volgende stap om te leren hoe [u een gesimuleerd apparaat maakt.](iot-accelerators-remote-monitoring-create-simulated-device.md)
+Nu u hebt geleerd hoe u het gedrag van een gesimuleerd apparaat kunt opgeven, is de voorgestelde volgende stap informatie over het [maken van een gesimuleerd apparaat](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-Zie voor meer informatie van ontwikkelaars over de oplossing voor externe monitoring:
+Voor meer informatie over ontwikkel aars over de oplossing voor controle op afstand raadpleegt u:
 
 * [Snelzoekgids voor ontwikkelaars](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Ontwikkelaarsgids voor het oplossen van problemen](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

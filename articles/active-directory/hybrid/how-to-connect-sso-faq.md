@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: naadloze aanmeldingsprobleem - veelgestelde vragen | Microsoft Documenten'
-description: Antwoorden op veelgestelde vragen over Azure Active Directory Seamless Single Sign-On.
+title: 'Azure AD Connect: naadloze eenmalige aanmelding-Veelgestelde vragen | Microsoft Docs'
+description: Antwoorden op veelgestelde vragen over Azure Active Directory naadloze eenmalige aanmelding.
 services: active-directory
-keywords: wat is Azure AD Connect, Active Directory installeren, vereiste onderdelen voor Azure AD, SSO, Single Sign-on
+keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,139 +17,139 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72025673"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory Seamless Single Sign-On: veelgestelde vragen
+# <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory naadloze eenmalige aanmelding: veelgestelde vragen
 
-In dit artikel behandelen we veelgestelde vragen over Azure Active Directory Seamless Single Sign-On (Seamless SSO). Blijf terugkomen voor nieuwe inhoud.
+In dit artikel adresseren we veelgestelde vragen over Azure Active Directory naadloze eenmalige aanmelding (naadloze SSO). Blijf op de hoogte van nieuwe inhoud.
 
-**V: Met welke aanmeldingsmethoden werken Seamless SSO**
+**V: welke aanmeldings methoden maken naadloze SSO mogelijk met**
 
-Naadloze SSO kan worden gecombineerd met de [aanmeldingsmethoden voor wachtwoordhashsynchronisatie](how-to-connect-password-hash-synchronization.md) of [pass-through-verificatie.](how-to-connect-pta.md) Deze functie kan echter niet worden gebruikt met Active Directory Federation Services (ADFS).
+Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoord-hash](how-to-connect-password-hash-synchronization.md) of [Pass-Through-verificatie](how-to-connect-pta.md) . Deze functie kan echter niet worden gebruikt met Active Directory Federation Services (ADFS).
 
-**V: Is Seamless SSO een gratis functie?**
+**V: is naadloze SSO een gratis functie?**
 
-Naadloze SSO is een gratis functie en u hebt geen betaalde edities van Azure AD nodig om het te gebruiken.
+Naadloze SSO is een gratis functie en u hebt geen betaalde versies van Azure AD nodig om deze te gebruiken.
 
-**V: Is Seamless SSO beschikbaar in de [Microsoft Azure Germany-cloud](https://www.microsoft.de/cloud-deutschland) en de [Microsoft Azure Government-cloud?](https://azure.microsoft.com/features/gov/)**
+**V: is naadloze SSO beschikbaar in de [Microsoft Azure Duitsland Cloud](https://www.microsoft.de/cloud-deutschland) en de [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/)?**
 
-Nee. Naadloze SSO is alleen beschikbaar in het wereldwijde exemplaar van Azure AD.
+Nee. Naadloze SSO is alleen beschikbaar in het wereld wijde exemplaar van Azure AD.
 
-**V: Welke toepassingen `domain_hint` maken `login_hint` gebruik van of parametermogelijkheden van Seamless SSO?**
+**V: welke toepassingen profiteren van `domain_hint` de of `login_hint` parameter mogelijkheden van naadloze SSO?**
 
-Hieronder vindt u een niet-limitatieve lijst met toepassingen die deze parameters naar Azure AD kunnen verzenden en biedt gebruikers daarom een stille aanmeldingservaring met Naadloze SSO (d.w.z. uw gebruikers hoeven hun gebruikersnamen of wachtwoorden niet in te voeren):
+Hieronder vindt u een niet-limitatieve lijst met toepassingen die deze para meters naar Azure AD kunnen verzenden, en waarmee gebruikers zich op de achtergrond aanmelden met naadloze SSO (dat wil zeggen dat uw gebruikers geen gebruikers namen of wacht woorden hoeven in te voeren):
 
-| De naam van de toepassing | Te gebruiken URL van toepassing |
+| De naam van de toepassing | URL van de toepassing die moet worden gebruikt |
 | -- | -- |
-| Toegangsvenster | https:\//myapps.microsoft.com/contoso.com |
-| Outlook on Web | https:\//outlook.office365.com/contoso.com |
-| Office 365-portals | https:\//portal.office.com?domain_hint=contoso.com,\/https: /www.office.com?domain_hint=contoso.com |
+| Toegangsvenster | https:\//MyApps.Microsoft.com/contoso.com |
+| Outlook op Internet | https:\//Outlook.office365.com/contoso.com |
+| Office 365-portals | https:\//portal.office.com? domain_hint = contoso. com, https:\//www.Office.com? domain_hint = contoso. com |
 
-Daarnaast krijgen gebruikers een stille aanmeldingservaring als een toepassing aanmeldingsverzoeken verzendt naar de eindpunten van\/Azure AD\/die zijn ingesteld als tenants - https: /login.microsoftonline.com/contoso.com/<..> of https: /login.microsoftonline.com/<tenant_ID>/<.. > - in plaats van het algemene eindpunt van\/Azure AD - https: /login.microsoftonline.com/common/<...>. Hieronder vindt u een niet-limitatieve lijst van toepassingen die dit soort aanmeldingsverzoeken indienen.
+Daarnaast krijgen gebruikers een stille aanmeldings ervaring als een toepassing aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen, https:\//login.microsoftonline.com/contoso.com/<.. > of https:\//login.microsoftonline.com/<tenant_ID>/<. >-in plaats van het gemeen schappelijke eind punt van Azure AD\/, dat wil zeggen, https:/Login.microsoftonline.com/common/<... >. Hieronder vindt u een niet-limitatieve lijst van toepassingen die deze typen aanmeldings aanvragen maken.
 
-| De naam van de toepassing | Te gebruiken URL van toepassing |
+| De naam van de toepassing | URL van de toepassing die moet worden gebruikt |
 | -- | -- |
-| SharePoint Online | https:\//contoso.sharepoint.com |
-| Azure Portal | https:\//portal.azure.com/contoso.com |
+| SharePoint Online | https:\//contoso.SharePoint.com |
+| Azure Portal | https:\//Portal.Azure.com/contoso.com |
 
-Vervang in de bovenstaande tabellen 'contoso.com' door uw domeinnaam om bij de juiste toepassings-URL's voor uw tenant te komen.
+Vervang in de bovenstaande tabellen ' contoso.com ' door de domein naam om naar de juiste toepassings-Url's voor uw Tenant te gaan.
 
-Als u andere toepassingen wilt gebruiken met onze stille aanmeldingservaring, laat het ons dan weten in de feedbacksectie.
+Als u wilt dat andere toepassingen gebruikmaken van de aanmeldings ervaring op de achtergrond, laat het ons weten in het gedeelte feedback.
 
-**V: Ondersteunt Seamless `Alternate ID` SSO als gebruikersnaam, in plaats van `userPrincipalName`?**
+**V: biedt naadloze SSO- `Alternate ID` ondersteuning als de gebruikers naam, `userPrincipalName`in plaats van?**
 
-Ja. Naadloze SSO `Alternate ID` ondersteunt als gebruikersnaam wanneer deze is geconfigureerd in Azure AD Connect, zoals [hier](how-to-connect-install-custom.md)wordt weergegeven. Niet alle Office 365-toepassingen ondersteunen `Alternate ID`. Raadpleeg de documentatie van de specifieke toepassing voor de ondersteuningsverklaring.
+Ja. Naadloze SSO ondersteunt `Alternate ID` als de gebruikers naam wanneer deze is geconfigureerd in azure AD Connect, zoals [hier](how-to-connect-install-custom.md)wordt weer gegeven. Niet alle Office 365-toepassingen `Alternate ID`ondersteunen. Raadpleeg de documentatie van de specifieke toepassing voor de ondersteunings verklaring.
 
-**V: Wat is het verschil tussen de single sign-on ervaring van [Azure AD Join](../active-directory-azureadjoin-overview.md) en Seamless SSO?**
+**V: wat is het verschil tussen de eenmalige aanmelding van [Azure AD](../active-directory-azureadjoin-overview.md) en naadloze SSO?**
 
-[Azure AD Join](../active-directory-azureadjoin-overview.md) biedt SSO aan gebruikers als hun apparaten zijn geregistreerd bij Azure AD. Deze apparaten hoeven niet per se met het domein te worden verbonden. SSO wordt geleverd met behulp van *primaire refresh tokens* of *PWT's,* en niet Kerberos. De gebruikerservaring is het meest optimaal op Windows 10-apparaten. SSO gebeurt automatisch in de Microsoft Edge-browser. Het werkt ook op Chrome met het gebruik van een browserextensie.
+[Azure AD-deelname](../active-directory-azureadjoin-overview.md) levert SSO aan gebruikers als hun apparaten zijn geregistreerd bij Azure AD. Deze apparaten hoeven geen lid te zijn van een domein. SSO wordt met behulp van *primaire vernieuwings tokens* of *PRTs*, en niet met Kerberos. De gebruikers ervaring is het meest optimaal op Windows 10-apparaten. SSO wordt automatisch uitgevoerd in de micro soft Edge-browser. Het werkt ook op Chrome met het gebruik van een browser extensie.
 
-U zowel Azure AD Join als Seamless SSO gebruiken op uw tenant. Deze twee functies zijn complementair. Als beide functies zijn ingeschakeld, heeft SSO van Azure AD Join voorrang op Seamless SSO.
+U kunt zowel Azure AD-deelname als naadloze SSO gebruiken voor uw Tenant. Deze twee functies zijn complementair. Als beide functies zijn ingeschakeld, heeft SSO van Azure AD-deelname voor rang op naadloze SSO.
 
-**V: Ik wil niet-Windows 10-apparaten registreren bij Azure AD, zonder AD FS te gebruiken. Kan ik in plaats daarvan Seamless SSO gebruiken?**
+**V: Ik wil niet-Windows 10-apparaten registreren bij Azure AD zonder AD FS te gebruiken. Kan ik in plaats daarvan naadloze SSO gebruiken?**
 
-Ja, dit scenario vereist versie 2.1 of hoger van de client die lid is van de [werkplek.](https://www.microsoft.com/download/details.aspx?id=53554)
+Ja, voor dit scenario is versie 2,1 of hoger van de [werk plek-client](https://www.microsoft.com/download/details.aspx?id=53554)vereist.
 
-**V: Hoe kan ik de Kerberos-decryptiesleutel van het `AZUREADSSOACC` computeraccount omrollen?**
+**V: hoe kan ik de Kerberos-ontsleutelings sleutel van het `AZUREADSSOACC` computer account inrollen?**
 
-Het is belangrijk om de Kerberos-decryptiesleutel van het `AZUREADSSOACC` computeraccount (dat Azure AD vertegenwoordigt) die is gemaakt in uw on-premises AD-forest, regelmatig over te rollen.
+Het is belang rijk dat u de Kerberos-ontsleutelings sleutel voor `AZUREADSSOACC` het computer account (dat staat voor Azure AD) die is gemaakt in uw on-PREMISes AD-forest regel matig wilt door lopen.
 
 >[!IMPORTANT]
->We raden u ten zeerste aan om de Decryptiesleutel van Kerberos minstens elke 30 dagen te omrollen.
+>We raden u ten zeerste aan de Kerberos-ontsleutelingssleutel ten minste elke 30 dagen uit te voeren.
 
-Volg de volgende stappen op de on-premises server waar u Azure AD Connect uitvoert:
+Volg deze stappen op de on-premises server waarop u Azure AD Connect:
 
-   **Stap 1. Bekijk een lijst met AD-forests waar Seamless SSO is ingeschakeld**
+   **Stap 1. Lijst met AD-forests ophalen waar naadloze SSO is ingeschakeld**
 
-   1. Download en installeer [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
    2. Navigeer naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
-   3. Importeer de Seamless SSO PowerShell-module met deze opdracht: `Import-Module .\AzureADSSO.psd1`.
-   4. Voer PowerShell uit als beheerder. Bel in `New-AzureADSSOAuthenticationContext`PowerShell. Met deze opdracht moet u een pop-up geven om de globale beheerdersreferenties van uw tenant in te voeren.
-   5. Bel `Get-AzureADSSOStatus | ConvertFrom-Json`. Met deze opdracht vindt u de lijst met AD-forests (kijk naar de lijst Domeinen) waarop deze functie is ingeschakeld.
+   3. Importeer de naadloze SSO Power shell-module met de `Import-Module .\AzureADSSO.psd1`volgende opdracht:.
+   4. Voer Power shell uit als beheerder. Bel `New-AzureADSSOAuthenticationContext`in Power shell. Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.
+   5. Aanroep `Get-AzureADSSOStatus | ConvertFrom-Json`. Met deze opdracht geeft u de lijst met AD-forests weer (Bekijk de lijst ' domeinen ') waarop deze functie is ingeschakeld.
 
-   **Stap 2. Werk de Kerberos decryptiesleutel op elk AD-forest dat het is ingesteld op**
+   **Stap 2. De Kerberos-ontsleutelings sleutel bijwerken op elk AD-forest waarop deze is ingesteld**
 
-   1. Bel `$creds = Get-Credential`. Wanneer u daarom wordt gevraagd, voert u de referenties van de domeinbeheerder in voor het beoogde AD-forest.
+   1. Aanroep `$creds = Get-Credential`. Wanneer u hierom wordt gevraagd, voert u de referenties voor de domein beheerder in voor het beoogde AD-forest.
 
    > [!NOTE]
-   >De gebruikersnaam van de domeinbeheerder moet worden ingevoerd in de SAM-accountnaamnotatie (contoso\johndoe of contoso.com\johndoe). We gebruiken het domeingedeelte van de gebruikersnaam om de domeincontroller van de domeinbeheerder te vinden met BEHULP van DNS.
+   >De gebruikers naam van de domein beheerder referenties moet worden opgegeven in de indeling SAM-account naam (contoso\johndoe of contoso. com\johndoe). We gebruiken het domein gedeelte van de gebruikers naam voor het zoeken van de domein controller van de domein beheerder met behulp van DNS.
 
    >[!NOTE]
-   >Het gebruikte domeinbeheerdersaccount mag geen lid zijn van de groep Beveiligde gebruikers. Als dat het zo is, zal de bewerking mislukken.
+   >Het domein beheerders account dat wordt gebruikt, mag geen lid zijn van de groep met beveiligde gebruikers. Als dit het geval is, mislukt de bewerking.
 
-   2. Bel `Update-AzureADSSOForest -OnPremCredentials $creds`. Met deze opdracht wordt de `AZUREADSSOACC` Kerberos-decryptiesleutel voor het computeraccount in dit specifieke AD-forest bijgewerkt en wordt deze bijgewerkt in Azure AD.
-   3. Herhaal de voorgaande stappen voor elk AD-forest waarop u de functie hebt ingesteld.
+   2. Aanroep `Update-AzureADSSOForest -OnPremCredentials $creds`. Met deze opdracht wordt de Kerberos-ontsleutelings `AZUREADSSOACC` sleutel voor het computer account in dit specifieke AD-forest bijgewerkt en bijgewerkt in azure AD.
+   3. Herhaal de voor gaande stappen voor elk AD-forest waarop u de functie hebt ingesteld.
 
    >[!IMPORTANT]
-   >Zorg ervoor _don't_ dat u `Update-AzureADSSOForest` de opdracht niet meer dan één keer uitvoert. Anders werkt de functie niet meer totdat de Kerberos-tickets van uw gebruikers verlopen en worden ze opnieuw uitgegeven door uw on-premises Active Directory.
+   >Zorg ervoor dat _don't_ u de `Update-AzureADSSOForest` opdracht niet meer dan één keer uitvoert. Anders werkt de functie niet meer wanneer de Kerberos-tickets van uw gebruikers verlopen en opnieuw worden uitgegeven door uw on-premises Active Directory.
 
-**V: Hoe kan ik Seamless SSO uitschakelen?**
+**V: hoe kan ik naadloze SSO uitschakelen?**
 
-   **Stap 1. De functie op uw tenant uitschakelen**
+   **Stap 1. De functie op uw Tenant uitschakelen**
 
-   **Optie A: Uitschakelen met Azure AD Connect**
+   **Optie A: uitschakelen met Azure AD Connect**
     
-   1. Voer Azure AD Connect uit, kies **Aanmeldingspagina voor gebruikers wijzigen** en klik op **Volgende**.
-   2. Schakel de optie **Eén teken inschakelen uit.** Ga verder door de wizard.
+   1. Voer Azure AD Connect uit, kies **pagina gebruikers aanmelding wijzigen** en klik op **volgende**.
+   2. Schakel de optie **eenmalige aanmelding inschakelen** uit. Ga door met de wizard.
 
-   Na het voltooien van de wizard wordt Seamless SSO uitgeschakeld op uw tenant. U ziet echter een bericht op het scherm dat als volgt luidt:
+   Na het volt ooien van de wizard wordt naadloze SSO uitgeschakeld voor uw Tenant. Er wordt echter een bericht weer gegeven op het scherm dat er als volgt uitziet:
 
-   "Single sign-on is nu uitgeschakeld, maar er zijn extra handmatige stappen uit te voeren om de opruiming te voltooien. Meer weten?
+   Eenmalige aanmelding is nu uitgeschakeld, maar er zijn aanvullende hand matige stappen die moeten worden uitgevoerd om de opschoon bewerking te volt ooien. Meer informatie '
 
-   Als u het opruimproces wilt voltooien, voert u de stappen 2 en 3 uit op de on-premises server waar u Azure AD Connect uitvoert.
+   Volg de stappen 2 en 3 op de on-premises server waarop u Azure AD Connect hebt om het opschonings proces te volt ooien.
 
-   **Optie B: PowerShell uitschakelen**
+   **Optie B: uitschakelen met behulp van Power shell**
 
-   Voer de volgende stappen uit op de on-premises server waar u Azure AD Connect uitvoert:
+   Voer de volgende stappen uit op de on-premises server waarop u Azure AD Connect uitvoert:
 
-   1. Download en installeer [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
    2. Navigeer naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
-   3. Importeer de Seamless SSO PowerShell-module met deze opdracht: `Import-Module .\AzureADSSO.psd1`.
-   4. Voer PowerShell uit als beheerder. Bel in `New-AzureADSSOAuthenticationContext`PowerShell. Met deze opdracht moet u een pop-up geven om de globale beheerdersreferenties van uw tenant in te voeren.
-   5. Bel `Enable-AzureADSSO -Enable $false`.
+   3. Importeer de naadloze SSO Power shell-module met de `Import-Module .\AzureADSSO.psd1`volgende opdracht:.
+   4. Voer Power shell uit als beheerder. Bel `New-AzureADSSOAuthenticationContext`in Power shell. Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.
+   5. Aanroep `Enable-AzureADSSO -Enable $false`.
 
    >[!IMPORTANT]
-   >Als u Naadloze SSO uitschakelt met PowerShell, wordt de status in Azure AD Connect niet gewijzigd. Naadloze SSO wordt weergegeven zoals ingeschakeld op de **aanmeldingspagina Gebruiker wijzigen.**
+   >Door naadloze SSO uit te scha kelen met behulp van Power shell, wordt de status in Azure AD Connect niet gewijzigd. Naadloze SSO wordt weer gegeven als ingeschakeld op de aanmeldings pagina van de **gebruiker wijzigen** .
 
-   **Stap 2. Bekijk een lijst met AD-forests waar Seamless SSO is ingeschakeld**
+   **Stap 2. Lijst met AD-forests ophalen waar naadloze SSO is ingeschakeld**
 
-   Volg de taken 1 tot en met 4 hieronder als u Seamless SSO hebt uitgeschakeld met Azure AD Connect. Als u Seamless SSO hebt uitgeschakeld met PowerShell in plaats daarvan, gaat u vooruit naar taak 5 hieronder.
+   Volg de onderstaande taken 1 tot en met 4 als u naadloze SSO hebt uitgeschakeld met Azure AD Connect. Als u naadloze SSO hebt uitgeschakeld met behulp van Power shell, gaat u verder met taak 5 hieronder.
 
-   1. Download en installeer [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+   1. Down load en installeer eerst [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
    2. Navigeer naar de map `%programfiles%\Microsoft Azure Active Directory Connect`.
-   3. Importeer de Seamless SSO PowerShell-module met deze opdracht: `Import-Module .\AzureADSSO.psd1`.
-   4. Voer PowerShell uit als beheerder. Bel in `New-AzureADSSOAuthenticationContext`PowerShell. Met deze opdracht moet u een pop-up geven om de globale beheerdersreferenties van uw tenant in te voeren.
-   5. Bel `Get-AzureADSSOStatus | ConvertFrom-Json`. Met deze opdracht vindt u de lijst met AD-forests (kijk naar de lijst Domeinen) waarop deze functie is ingeschakeld.
+   3. Importeer de naadloze SSO Power shell-module met de `Import-Module .\AzureADSSO.psd1`volgende opdracht:.
+   4. Voer Power shell uit als beheerder. Bel `New-AzureADSSOAuthenticationContext`in Power shell. Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.
+   5. Aanroep `Get-AzureADSSOStatus | ConvertFrom-Json`. Met deze opdracht geeft u de lijst met AD-forests weer (Bekijk de lijst ' domeinen ') waarop deze functie is ingeschakeld.
 
-   **Stap 3. Verwijder het `AZUREADSSOACCT` computeraccount handmatig uit elk AD-forest dat u ziet.**
+   **Stap 3. Verwijder het `AZUREADSSOACCT` computer account hand matig uit elk AD-forest dat wordt weer gegeven.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [**Snelstart**](how-to-connect-sso-quick-start.md) - Ga aan de slag met Azure AD Seamless SSO.
-- [**Technical Deep Dive**](how-to-connect-sso-how-it-works.md) - Begrijp hoe deze functie werkt.
-- [**Problemen oplossen**](tshoot-connect-sso.md) : meer informatie over het oplossen van veelvoorkomende problemen met de functie.
-- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - Voor het indienen van nieuwe functieaanvragen.
+- [**Quick**](how-to-connect-sso-quick-start.md) start: krijg Azure AD naadloze SSO.
+- [**Technisch diep gaande**](how-to-connect-sso-how-it-works.md) kennis van de werking van deze functie.
+- [**Problemen oplossen**](tshoot-connect-sso.md) : informatie over het oplossen van veelvoorkomende problemen met de functie.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -voor het indienen van nieuwe functie aanvragen.

@@ -1,6 +1,6 @@
 ---
-title: Recovery Manager om problemen met de shardkaart op te lossen
-description: De klasse RecoveryManager gebruiken om problemen met shardkaarten op te lossen
+title: Recovery Manager om problemen met Shard-kaarten op te lossen
+description: De klasse toewijzingen oplossen gebruiken om problemen met Shard-kaarten op te lossen
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,43 +12,43 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 6101e00ab98b0d8d901f2e42bf4083d40d0a3227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823870"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Problemen met shard-toewijzingen oplossen met de RecoveryManager-klasse
 
-De klasse [RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) biedt ADO.NET toepassingen de mogelijkheid om eventuele inconsistenties tussen de globale shardkaart (GSM) en de lokale shardkaart (LSM) in een verharde databaseomgeving eenvoudig te detecteren en te corrigeren.
+De [toewijzingen oplossen](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) -klasse biedt ADO.NET-toepassingen de mogelijkheid om op eenvoudige wijze eventuele inconsistenties tussen de wereld wijde Shard-kaart (GSM) en de lokale Shard-map (LSM) in een Shard-database omgeving te detecteren en te corrigeren.
 
-De GSM en LSM volgen de mapping van elke database in een geshard omgeving. Af en toe treedt er een breuk op tussen de GSM en de LSM. Gebruik in dat geval de klasse RecoveryManager om de breuk te detecteren en te herstellen.
+De GSM en LSM volgen de toewijzing van elke data base in een Shard-omgeving. Af en toe treedt er een breuk op tussen de GSM en de LSM. In dat geval gebruikt u de toewijzingen oplossen-klasse om de breek routine te detecteren en te herstellen.
 
-De klasse RecoveryManager maakt deel uit van de [clientbibliotheek Elastic Database](sql-database-elastic-database-client-library.md).
+De klasse toewijzingen oplossen maakt deel uit van de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md).
 
-![Shardkaart][1]
+![Shard-kaart][1]
 
-Zie [Woordenlijst voor elastic database-gereedschappen](sql-database-elastic-scale-glossary.md)voor termdefinities . Zie **Shard mapmanagement** voor meer informatie over het beheer van [Shard map management](sql-database-elastic-scale-shard-map-management.md)gegevens in een verharde oplossing.
+Zie [Elastic database extra woorden lijst](sql-database-elastic-scale-glossary.md)voor termen definities. Zie [Shard map Management](sql-database-elastic-scale-shard-map-management.md)voor informatie over hoe de **ShardMapManager** wordt gebruikt voor het beheren van gegevens in een Shard-oplossing.
 
-## <a name="why-use-the-recovery-manager"></a>Waarom de herstelmanager gebruiken
+## <a name="why-use-the-recovery-manager"></a>Waarom de Recovery Manager gebruiken?
 
-In een geshard databaseomgeving is er één tenant per database en veel databases per server. Er kunnen ook veel servers in de omgeving zijn. Elke database wordt toegewezen in de shardkaart, zodat oproepen kunnen worden doorgestuurd naar de juiste server en database. Databases worden bijgehouden op basis van een **shardingsleutel**en aan elke shard wordt een **reeks belangrijke waarden**toegewezen . Een shardingsleutel kan bijvoorbeeld de namen van de klant vertegenwoordigen van 'D' naar 'F'. Het in kaart brengen van alle scherven (ook bekend als databases) en hun kaartbereiken zijn opgenomen in de **global shard map (GSM).** Elke database bevat ook een kaart van de bereiken op de scherf die bekend staat als de **lokale shardkaart (LSM).** Wanneer een app verbinding maakt met een scherf, wordt de toewijzing in de cache opgeslagen met de app voor snel ophalen. De LSM wordt gebruikt om gegevens in de cache te valideren.
+In een Shard-database omgeving is er één Tenant per data base en veel data bases per server. Er kunnen ook veel servers in de omgeving zijn. Elke Data Base is toegewezen in de Shard-kaart, zodat aanroepen kunnen worden doorgestuurd naar de juiste server en data base. Data bases worden getraceerd op basis van een **sharding-sleutel**en elke Shard wordt toegewezen aan een **reeks sleutel waarden**. Een sharding-sleutel kan bijvoorbeeld de klant namen van D tot en met F vertegenwoordigen. De toewijzing van alle Shards (ook wel-data bases) en de bijbehorende toewijzings bereiken bevinden zich in de **globale Shard-map (GSM)**. Elke Data Base bevat ook een kaart van de bereiken die zich bevinden in de Shard die wordt aangeduid als de **lokale Shard-toewijzing (LSM)**. Wanneer een app verbinding maakt met een Shard, wordt de toewijzing in de cache opgeslagen met de app voor snel ophalen. De LSM wordt gebruikt om gegevens in de cache te valideren.
 
-De GSM en LSM kunnen om de volgende redenen niet meer synchroon lopen:
+De GSM-en LSM kunnen om de volgende redenen niet meer worden gesynchroniseerd:
 
-1. Het verwijderen van een scherf waarvan wordt aangenomen dat het bereik niet meer in gebruik is, of het hernoemen van een scherf. Het verwijderen van een scherf resulteert in een **verweesde scherf toewijzing**. Op dezelfde manier kan een hernoemde database leiden tot een verweesde shardtoewijzing. Afhankelijk van de bedoeling van de wijziging moet de scherf mogelijk worden verwijderd of moet de shardlocatie worden bijgewerkt. Zie Een verwijderde database [herstellen](sql-database-recovery-using-backups.md)als u een verwijderde database wilt herstellen.
-2. Er vindt een gebeurtenis voor geo-failover plaats. Om door te gaan, moet men de servernaam en de databasenaam van shardmapbeheer in de toepassing bijwerken en vervolgens de details van de shardtoewijzing voor alle scherven in een shardkaart bijwerken. Als er een geo-failover is, moet een dergelijke herstellogica worden geautomatiseerd binnen de failover-workflow. Het automatiseren van herstelacties maakt een wrijvingsloze beheerbaarheid mogelijk voor geo-enabled databases en voorkomt handmatige menselijke acties. Zie [Bedrijfscontinuïteit](sql-database-business-continuity.md) en [herstel na noodgevallen](sql-database-disaster-recovery.md)voor meer informatie over opties om een database te herstellen als er een datacenterstoring is.
-3. Een shard of de ShardMapManager-database wordt hersteld naar een eerdere inlooptijd. Zie Herstel met back-ups voor meer informatie over point-in-time recovery met [behulp van back-ups.](sql-database-recovery-using-backups.md)
+1. Het verwijderen van een Shard waarvan het bereik is aangenomen, is niet meer in gebruik of de naam van een Shard wordt gewijzigd. Het verwijderen van een Shard resulteert in een **zwevende Shard-toewijzing**. Op dezelfde manier kan een hernoemde Data Base een zwevende Shard-toewijzing veroorzaken. Afhankelijk van de bedoeling van de wijziging moet de Shard mogelijk worden verwijderd, of moet de Shard-locatie worden bijgewerkt. Zie [een verwijderde data base herstellen](sql-database-recovery-using-backups.md)als u een verwijderde data base wilt herstellen.
+2. Er treedt een geo-failover-gebeurtenis op. Als u wilt door gaan, moet de server naam en de database naam van Shard-toewijzings beheer in de toepassing worden bijgewerkt en vervolgens de Shard-toewijzings gegevens voor alle Shards in een Shard-toewijzing worden bijgewerkt. Als er sprake is van een geo-failover, moet deze herstel logica worden geautomatiseerd binnen de failover-werk stroom. Het automatiseren van herstel acties maakt het mogelijk dat er een wrijvings beheer kan worden uitgevoerd voor geo-compatibele data bases en dat hand matige acties worden voor komen. Zie [bedrijfs continuïteit](sql-database-business-continuity.md) en [herstel na nood gevallen](sql-database-disaster-recovery.md)voor meer informatie over de opties om een Data Base te herstellen als er sprake is van een storing in een Data Center.
+3. Een Shard of de ShardMapManager-data base wordt hersteld naar een eerder tijdstip. Zie [herstel met behulp van back-ups](sql-database-recovery-using-backups.md)voor meer informatie over herstel naar een bepaald tijdstip met behulp van back-ups.
 
-Zie het volgende voor meer informatie over azure SQL Database Elastic Database-hulpprogramma's voor elastic database, geo-replicatie en herstel:
+Zie het volgende voor meer informatie over Azure SQL Database Elastic Database-hulpprogram ma's, geo-replicatie en herstel:
 
-* [Overzicht: Cloud business continuity en database disaster recovery met SQL Database](sql-database-business-continuity.md)
-* [Aan de slag met elastische databasetools](sql-database-elastic-scale-get-started.md)  
-* [ShardMapbeheer](sql-database-elastic-scale-shard-map-management.md)
+* [Overzicht: bedrijfs continuïteit in de Cloud en herstel na een Data Base met SQL Database](sql-database-business-continuity.md)
+* [Aan de slag met hulpprogram ma's voor Elastic data base](sql-database-elastic-scale-get-started.md)  
+* [ShardMap-beheer](sql-database-elastic-scale-shard-map-management.md)
 
-## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>RecoveryManager ophalen uit een ShardMapManager
+## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Toewijzingen oplossen ophalen uit een ShardMapManager
 
-De eerste stap is het maken van een Instantie RecoveryManager. De [methode GetRecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) retourneert de herstelmanager voor het huidige [exemplaar ShardMapManager.](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) Als u eventuele inconsistenties in de shardkaart wilt aanpakken, moet u eerst de RecoveryManager ophalen voor de specifieke shardkaart.
+De eerste stap is het maken van een toewijzingen oplossen-exemplaar. De [methode GetRecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) retourneert de Recovery Manager voor het huidige [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) -exemplaar. Als u inconsistenties in de Shard-kaart wilt oplossen, moet u eerst de toewijzingen oplossen ophalen voor de desbetreffende Shard-toewijzing.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
@@ -56,65 +56,65 @@ De eerste stap is het maken van een Instantie RecoveryManager. De [methode GetRe
              RecoveryManager rm = smm.GetRecoveryManager();
    ```
 
-In dit voorbeeld wordt de RecoveryManager geïnitialiseerd vanuit de ShardMapManager. De ShardMapManager met een ShardMap is ook al geïnitialiseerd.
+In dit voor beeld wordt de toewijzingen oplossen geïnitialiseerd vanuit de ShardMapManager. De ShardMapManager met een ShardMap is ook al geïnitialiseerd.
 
-Aangezien deze toepassingscode de shardkaart zelf manipuleert, moeten de referenties die in de fabrieksmethode worden gebruikt (in het voorgaande voorbeeld smmConnectionString) referenties zijn met lees-schrijfmachtigingen op de GSM-database waarnaar wordt verwezen door de verbinding Tekenreeks. Deze referenties verschillen meestal van referenties die worden gebruikt om verbindingen te openen voor gegevensafhankelijke routering. Zie [Referenties gebruiken in de elastische databaseclient](sql-database-elastic-scale-manage-credentials.md)voor meer informatie.
+Omdat met deze toepassings code de Shard-kaart zelf wordt gemanipuleerd, moeten de referenties die worden gebruikt in de fabrieks methode (in het vorige voor beeld smmConnectionString) referenties zijn met de machtigingen lezen/schrijven voor de GSM-data base waarnaar wordt verwezen door de connection string. Deze referenties verschillen meestal van referenties die worden gebruikt om verbindingen te openen voor gegevens afhankelijke route ring. Zie [referenties gebruiken in de client voor Elastic data base](sql-database-elastic-scale-manage-credentials.md)voor meer informatie.
 
-## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Een scherf van de shardmap verwijderen nadat een scherf is verwijderd
+## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Een Shard verwijderen uit de ShardMap nadat een Shard is verwijderd
 
-De [methode Detachshard](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) ontkoppelt de gegeven scherf van de shardkaart en verwijdert toewijzingen die aan de shard zijn gekoppeld.  
+De [methode DetachShard](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) koppelt de gegeven Shard van de Shard-toewijzing en verwijdert toewijzingen die zijn gekoppeld aan de Shard.  
 
-* De locatieparameter is de shardlocatie, met name de naam van de server en de naam van de database, van de ontkoppeling van de shard.
-* De parameter shardMapName is de naam van de shardkaart. Dit is alleen vereist wanneer meerdere shardkaarten worden beheerd door dezelfde shardmapmanager. Optioneel.
+* De locatie parameter is de Shard locatie, de naam van de server en de data base, van de Shard die worden losgekoppeld.
+* De para meter shardMapName is de naam van de Shard-toewijzing. Dit is alleen vereist wanneer meerdere Shard-kaarten worden beheerd door hetzelfde Shard-toewijzings beheer. Optioneel.
 
 > [!IMPORTANT]
-> Gebruik deze techniek alleen als u zeker weet dat het bereik voor de bijgewerkte toewijzing leeg is. De bovenstaande methoden controleren geen gegevens voor het bereik dat wordt verplaatst, dus het is het beste om controles in uw code op te nemen.
+> Gebruik deze techniek alleen als u zeker weet dat het bereik voor de bijgewerkte toewijzing leeg is. In de bovenstaande methoden worden geen gegevens gecontroleerd voor het bereik dat wordt verplaatst, zodat u het beste controles in uw code kunt toevoegen.
 
-In dit voorbeeld worden scherven van de shardkaart verwijderd.
+In dit voor beeld wordt Shards verwijderd uit de Shard-toewijzing.
 
    ```java
    rm.DetachShard(s.Location, customerMap);
    ```
 
-De shardkaart geeft de shardlocatie in de GSM weer voordat de scherf wordt verwijderd. Omdat de scherf is verwijderd, wordt aangenomen dat dit opzettelijk was en het shardingssleutelbereik niet meer in gebruik is. Zo niet, dan u point-in time restore uitvoeren. om de scherf terug te krijgen van een eerdere point-in-time. (Controleer in dat geval de volgende sectie om shardinconsistenties op te sporen.) Zie Punt [in tijdherstel](sql-database-recovery-using-backups.md)om te herstellen.
+De Shard-kaart weerspiegelt de Shard-locatie in de GSM vóór het verwijderen van de Shard. Omdat de Shard is verwijderd, wordt ervan uitgegaan dat dit opzettelijk was en het sharding-sleutel bereik niet meer in gebruik is. Als dat niet het geval is, kunt u herstel op tijdstippen uitvoeren. de Shard vanaf een eerder tijdstip herstellen. (In dat geval raadpleegt u de volgende sectie voor het detecteren van inconsistenties in Shard.) Zie [herstel van punt in tijd](sql-database-recovery-using-backups.md)om te herstellen.
 
-Aangezien wordt aangenomen dat de verwijdering van de database opzettelijk was, is de uiteindelijke administratieve opruimactie het verwijderen van de vermelding van de shard in de shardmapbeheerder. Dit voorkomt dat de toepassing per ongeluk informatie schrijft naar een bereik dat niet wordt verwacht.
+Omdat ervan wordt uitgegaan dat het verwijderen van de data base opzettelijk was, is de definitieve opschoon actie van de beheerder om de vermelding te verwijderen in de Shard in Shard-toewijzings beheer. Hiermee wordt voor komen dat de toepassing per ongeluk informatie schrijft naar een bereik dat niet wordt verwacht.
 
-## <a name="to-detect-mapping-differences"></a>Kaartverschillen detecteren
+## <a name="to-detect-mapping-differences"></a>Toewijzings verschillen detecteren
 
-De [methode DetectMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) selecteert en retourneert een van de shardkaarten (lokaal of globaal) als de bron van de waarheid en brengt toewijzingen op beide shardkaarten (GSM en LSM) met elkaar in overeenstemming.
+De [methode DetectMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) selecteert en retourneert een van de Shard-kaarten (lokaal of globaal) als de bron van waarheid en vergelijkt toewijzingen op zowel Shard Maps (GSM en LSM).
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
    ```
 
-* De *locatie* geeft de naam van de server en de naam van de database op.
-* De parameter *shardMapName* is de naam van de shardkaart. Dit is alleen vereist als meerdere shardkaarten worden beheerd door dezelfde shardmapmanager. Optioneel.
+* De *locatie* geeft de naam van de server en de data base.
+* De para meter *shardMapName* is de naam van de Shard-toewijzing. Dit is alleen vereist als meerdere Shard-kaarten worden beheerd door hetzelfde Shard-toewijzings beheer. Optioneel.
 
-## <a name="to-resolve-mapping-differences"></a>Kaartverschillen oplossen
+## <a name="to-resolve-mapping-differences"></a>Toewijzings verschillen oplossen
 
-De [methode ResolveMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) selecteert een van de shardkaarten (lokaal of globaal) als de bron van de waarheid en brengt toewijzingen op beide shardkaarten (GSM en LSM) met elkaar in overeenstemming.
+De [methode ResolveMappingDifferences](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) selecteert een van de Shard-kaarten (lokaal of globaal) als de bron van de waarheid en vergelijkt toewijzingen op beide Shard Maps (GSM en LSM).
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
-* De parameter *RecoveryToken* somt de verschillen in de toewijzingen tussen de GSM en de LSM op voor de specifieke shard.
-* De [opgesomd mappingdifferenceresolution](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) wordt gebruikt om de methode aan te geven voor het oplossen van het verschil tussen de shardtoewijzingen.
-* **MappingDifferenceResolution.KeepShardMapping** wordt aanbevolen dat wanneer de LSM de nauwkeurige toewijzing bevat en daarom de toewijzing in de shard moet worden gebruikt. Dit is meestal het geval als er een failover is: de shard bevindt zich nu op een nieuwe server. Aangezien de scherf eerst van de GSM moet worden verwijderd (met behulp van de Methode RecoveryManager.DetachShard), bestaat er geen toewijzing meer op de GSM. Daarom moet de LSM worden gebruikt om de shardmapping opnieuw vast te stellen.
+* De *RecoveryToken* para meter geeft de verschillen in de toewijzingen tussen de GSM en het LSM voor de specifieke Shard.
+* De [opsomming MappingDifferenceResolution](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) wordt gebruikt om de methode aan te geven voor het oplossen van het verschil tussen de Shard-toewijzingen.
+* **MappingDifferenceResolution. KeepShardMapping** wordt aanbevolen dat wanneer de LSM de nauw keurige toewijzing bevat en daarom de toewijzing in de Shard moet worden gebruikt. Dit is meestal het geval als er een failover is: de Shard bevindt zich nu op een nieuwe server. Omdat de Shard eerst moet worden verwijderd uit de GSM (met behulp van de methode toewijzingen oplossen. DetachShard), bestaat er geen toewijzing meer op de GSM. Daarom moet de LSM worden gebruikt om de Shard-toewijzing opnieuw tot stand te brengen.
 
-## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Bevestig een scherf aan de ShardMap nadat een scherf is hersteld
+## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Een Shard koppelen aan de ShardMap nadat een Shard is hersteld
 
-De [AttachShard methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) hecht de gegeven scherf aan de shardkaart. Het detecteert vervolgens eventuele shard kaart inconsistenties en werkt de mappings aan de scherf op het punt van de scherf restauratie wedstrijd. Er wordt aangenomen dat de database ook wordt hernoemd naar de oorspronkelijke databasenaam (voordat de shard werd hersteld), omdat de point-in time restauratie standaard wordt toegevoegd aan een nieuwe database die is toegevoegd aan de tijdstempel.
+De [methode AttachShard](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) koppelt de opgegeven Shard aan de Shard-toewijzing. Vervolgens worden eventuele inconsistenties van de Shard-toewijzing gedetecteerd en worden de toewijzingen bijgewerkt zodat deze overeenkomen met de Shard op het moment dat het herstel van de Shard. Er wordt van uitgegaan dat de naam van de data base ook wordt gewijzigd in overeenstemming met de oorspronkelijke database naam (voordat de Shard is hersteld), omdat de standaard instellingen voor het herstellen van het tijdstip in een nieuwe Data Base worden toegevoegd met de tijds tempel.
 
    ```java
    rm.AttachShard(location, shardMapName)
    ```
 
-* De *locatieparameter* is de naam van de server en de naam van de database van de shard die wordt gekoppeld.
-* De parameter *shardMapName* is de naam van de shardkaart. Dit is alleen vereist wanneer meerdere shardkaarten worden beheerd door dezelfde shardmapmanager. Optioneel.
+* De *locatie* parameter is de naam van de server en de database naam van de Shard die wordt gekoppeld.
+* De para meter *shardMapName* is de naam van de Shard-toewijzing. Dit is alleen vereist wanneer meerdere Shard-kaarten worden beheerd door hetzelfde Shard-toewijzings beheer. Optioneel.
 
-In dit voorbeeld wordt een scherf toegevoegd aan de shardkaart die onlangs is hersteld vanaf een eerdere inlooptijd. Aangezien de scherf (namelijk de mapping voor de scherf in de LSM) is hersteld, is het mogelijk niet in overeenstemming met de shard vermelding in de GSM. Buiten deze voorbeeldcode werd de scherf hersteld en omgedoopt tot de oorspronkelijke naam van de database. Sinds het is hersteld, wordt aangenomen dat de toewijzing in de LSM de vertrouwde toewijzing is.
+In dit voor beeld wordt een Shard toegevoegd aan de Shard-toewijzing die onlangs is hersteld vanaf een eerdere punt-in-tijd. Omdat de Shard (dat wil zeggen de toewijzing voor de Shard in de LSM) is hersteld, is het mogelijk inconsistent met de Shard vermelding in de GSM. Buiten deze voorbeeld code is de Shard teruggezet en is de naam gewijzigd in de oorspronkelijke naam van de data base. Omdat deze is hersteld, wordt ervan uitgegaan dat de toewijzing in de LSM de vertrouwde toewijzing is.
 
    ```java
    rm.AttachShard(s.Location, customerMap);
@@ -125,26 +125,26 @@ In dit voorbeeld wordt een scherf toegevoegd aan de shardkaart die onlangs is he
        }
    ```
 
-## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Shardlocaties bijwerken na een geo-failover (restore) van de scherven
+## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Shard-locaties bijwerken na een geo-failover (herstellen) van de Shards
 
-Als er een geo-failover is, wordt de secundaire database toegankelijk gemaakt voor schrijven en wordt de nieuwe primaire database. De naam van de server en mogelijk de database (afhankelijk van uw configuratie) kunnen afwijken van de oorspronkelijke primaire. Daarom moeten de toewijzingsingangen voor de shard in GSM en LSM worden bevestigd. Als de database wordt hersteld naar een andere naam of locatie of naar een eerder tijdstip, kan dit inconsistenties veroorzaken in de shardkaarten. De Shard Map Manager verzorgt de distributie van open verbindingen naar de juiste database. De distributie is gebaseerd op de gegevens in de shardkaart en de waarde van de shardingsleutel die het doel is van de aanvraag voor toepassingen. Na een geo-failover moet deze informatie worden bijgewerkt met de nauwkeurige servernaam, databasenaam en shardtoewijzing van de herstelde database.
+Als er sprake is van een geo-failover, wordt de secundaire data base toegankelijk gemaakt en wordt de nieuwe primaire data base. De naam van de server en mogelijk de data base (afhankelijk van uw configuratie) kan afwijken van de oorspronkelijke primaire. Daarom moeten de toewijzings vermeldingen voor de Shard in de GSM-en LSM worden opgelost. En als de data base wordt hersteld naar een andere naam of locatie of naar een eerder tijdstip, kan dit leiden tot inconsistenties in de Shard Maps. Het Shard-toewijzings beheer verwerkt de distributie van open verbindingen met de juiste data base. Distributie is gebaseerd op de gegevens in de Shard-kaart en de waarde van de sharding-sleutel die het doel is van de aanvraag van de toepassing. Na een geo-failover moet deze informatie worden bijgewerkt met de juiste server naam, database naam en Shard toewijzing van de herstelde data base.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Geo-failover en herstel zijn bewerkingen die doorgaans worden beheerd door een cloudbeheerder van de toepassing die opzettelijk gebruik maakt van een van de bedrijfscontinuïteitsfuncties van Azure SQL-databases. Bedrijfscontinuïteitsplanning vereist processen, procedures en maatregelen om ervoor te zorgen dat de bedrijfsactiviteiten zonder onderbreking kunnen worden voortgezet. De methoden die beschikbaar zijn in het kader van de klasse RecoveryManager moeten binnen deze werkstroom worden gebruikt om ervoor te zorgen dat de GSM en LSM up-to-date worden gehouden op basis van de genomen herstelmaatregelen. Er zijn vijf basisstappen om ervoor te zorgen dat de GSM en LSM de juiste informatie weergeven na een failovergebeurtenis. De toepassingscode voor het uitvoeren van deze stappen kan worden geïntegreerd in bestaande hulpprogramma's en workflow.
+Geo-failover en herstel zijn bewerkingen die doorgaans worden beheerd door een Cloud beheerder van de toepassing die opzettelijk gebruikmaakt van een van de Azure SQL data bases-functies voor bedrijfs continuïteit. Voor de planning van bedrijfs continuïteit zijn processen, procedures en metingen vereist om ervoor te zorgen dat bedrijfs activiteiten zonder onderbreking kunnen worden voortgezet. De methoden die beschikbaar zijn als onderdeel van de klasse toewijzingen oplossen, moeten binnen deze werk stroom worden gebruikt om ervoor te zorgen dat de GSM-en LSM up-to-date blijven, op basis van de uitgevoerde herstel actie. Er zijn vijf basis stappen om ervoor te zorgen dat de GSM-en LSM de nauw keurige informatie na een failover-gebeurtenis weer spie gelen. De toepassings code voor het uitvoeren van deze stappen kan worden geïntegreerd in bestaande hulpprogram ma's en werk stroom.
 
-1. Haal de RecoveryManager op uit de ShardMapManager.
-2. Maak de oude scherf los van de shardkaart.
-3. Bevestig de nieuwe scherf aan de shardkaart, inclusief de nieuwe shardlocatie.
-4. Detecteer inconsistenties in de mapping tussen de GSM en LSM.
-5. Los verschillen op tussen de GSM en de LSM, vertrouwen op de LSM.
+1. Haal de toewijzingen oplossen op uit de ShardMapManager.
+2. Ontkoppel de oude Shard van de Shard-kaart.
+3. Koppel de nieuwe Shard aan de Shard-kaart, met inbegrip van de nieuwe Shard-locatie.
+4. Detecteer inconsistenties in de toewijzing tussen de GSM-en LSM.
+5. Los de verschillen tussen de GSM en de LSM op en vertrouwt de LSM.
 
-In dit voorbeeld worden de volgende stappen uitgevoerd:
+In dit voor beeld worden de volgende stappen uitgevoerd:
 
-1. Hiermee verwijdert u shards uit de shardkaart die shardlocaties weergeven vóór de failovergebeurtenis.
-2. Hiermee worden shards aan de shardkaart bevestigd die de nieuwe shardlocaties weergeeft (de parameter "Configuration.SecondaryServer" is de nieuwe servernaam, maar dezelfde databasenaam).
-3. Hiermee haalt u de hersteltokens op door kaartverschillen tussen de GSM en de LSM voor elke shard te detecteren.
-4. Hiermee worden de inconsistenties opgelost door de toewijzing van de LSM van elke shard te vertrouwen.
+1. Verwijdert Shards uit de Shard-toewijzing die de Shard locaties vóór de failover-gebeurtenis weer spie gelen.
+2. Koppelt Shards aan de Shard-toewijzing die de nieuwe Shard locaties weerspiegelt (de para meter ' configuratie. SecondaryServer ' is de nieuwe server naam, maar dezelfde database naam).
+3. Hiermee worden de herstel tokens opgehaald door toewijzings verschillen tussen de GSM en de LSM voor elke Shard te detecteren.
+4. Hiermee worden de inconsistenties opgelost door de toewijzing van de LSM van elke Shard te vertrouwen.
 
    ```java
    var shards = smm.GetShards();

@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b4c8e9b07905e954879e5b65adbaae765fc41c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176488"
 ---
 > [!NOTE]
-> Deze documentatie-inhoud gaat over de verouderde ontwikkelaarsportal. Raadpleeg de volgende artikelen voor inhoud over de nieuwe ontwikkelaarsportal:
+> Deze documentatie bevat informatie over de verouderde ontwikkelaars Portal. Raadpleeg de volgende artikelen voor meer informatie over de nieuwe ontwikkelaars portal:
 > 
-> - [Overzicht van azure API Management-ontwikkelaarsportal](..\articles\api-management\api-management-howto-developer-portal.md)
-> - [Toegang tot de beheerde ontwikkelaarsportal (zelfstudie) openen en aanpassen](..\articles\api-management\api-management-howto-developer-portal-customize.md)
+> - [Overzicht van Azure API Management-ontwikkelaars Portal](..\articles\api-management\api-management-howto-developer-portal.md)
+> - [De beheerde ontwikkelaars Portal openen en aanpassen (zelf studie)](..\articles\api-management\api-management-howto-developer-portal-customize.md)

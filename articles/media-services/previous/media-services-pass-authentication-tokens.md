@@ -1,8 +1,8 @@
 ---
-title: Verificatietokens doorgeven aan Azure Media Services | Microsoft Documenten
-description: Meer informatie over het verzenden van verificatietokens van de client naar de azure Media Services-service voor het leveren van sleutel
+title: Verificatie tokens door geven aan Azure Media Services | Microsoft Docs
+description: Meer informatie over het verzenden van verificatie tokens van de client naar de Azure Media Services key delivery service
 services: media-services
-keywords: inhoudsbescherming, DRM, tokenverificatie
+keywords: inhouds beveiliging, DRM, token verificatie
 documentationcenter: ''
 author: Juliako
 manager: femila
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73684938"
 ---
-# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Meer informatie over hoe clients tokens doorgeven aan de azure media services-service voor het leveren van sleutel
-Klanten vragen vaak hoe een speler tokens kan doorgeven aan de key delivery service van Azure Media Services voor verificatie, zodat de speler de sleutel kan verkrijgen. Media Services ondersteunt de eenvoudige webtoken -indelingen (SWT) en JSON Web Token (JWT). Tokenverificatie wordt toegepast op elk type sleutel, ongeacht of u algemene versleuteling of AES-envelopversleuteling (Advanced Encryption Standard) in het systeem gebruikt.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Meer informatie over hoe clients tokens door geven aan de Azure Media Services key delivery service
+Klanten vragen vaak hoe een speler tokens kan door geven aan de Azure Media Services key delivery service voor verificatie, zodat de speler de sleutel kan verkrijgen. Media Services ondersteunt de SWT-indelingen (Simple Web token) en JSON Web Token (JWT). Verificatie van tokens wordt toegepast op elk type sleutel, ongeacht of u gebruikmaakt van een common Encryption-of Advanced Encryption Standard (AES)-envelop versleuteling in het systeem.
 
- Afhankelijk van de speler en het platform dat je target, kun je het token op de volgende manieren doorgeven aan je speler:
+ Afhankelijk van de speler en het platform waarop u het doel hebt, kunt u het token door geven aan uw speler op de volgende manieren:
 
-- Via de header HTTP Authorization.
+- Via de HTTP-autorisatie-header.
     > [!NOTE]
-    > De "Drager" voorvoegsel wordt verwacht per de OAuth 2.0 specs. Een voorbeeldspeler met de tokenconfiguratie wordt gehost op de [demopagina](https://ampdemo.azureedge.net/)van Azure Media Player. Als u de videobron wilt instellen, kiest u **AES (JWT-token)** of **AES (SWT-token).** Het token wordt doorgegeven via de header Autorisatie.
+    > Het voor voegsel ' Bearer ' wordt verwacht volgens de OAuth 2,0-specificaties. Een voor beeld van een speler met de token configuratie wordt gehost op de pagina met de Azure Media Player- [demo](https://ampdemo.azureedge.net/). Als u de video bron wilt instellen, kiest u **AES (JWT-token)** of **AES (SWT-token)**. Het token wordt door gegeven via de autorisatie-header.
 
-- Via de toevoeging van een URL-queryparameter met 'token=tokenvalue'.  
+- Via de toevoeging van een URL-query parameter met "token = tokenvalue."  
     > [!NOTE]
-    > Het voorvoegsel "Drager" wordt niet verwacht. Omdat het token via een URL wordt verzonden, moet u de tokenstring armor. Hier is een C# voorbeeldcode die laat zien hoe dit te doen:
+    > Het voor voegsel ' Bearer ' wordt niet verwacht. Omdat het token via een URL wordt verzonden, moet u de token teken reeks beveiligen. Hier volgt een C#-voorbeeld code die laat zien hoe u dit doet:
 
     ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
@@ -42,7 +42,7 @@ Klanten vragen vaak hoe een speler tokens kan doorgeven aan de key delivery serv
     ```
 
 - Via het veld CustomData.
-Deze optie wordt alleen gebruikt voor playready-licentieverwerving via het customdata-veld van de PlayReady License Acquisition Challenge. In dit geval moet het token zich in het XML-document begeven, zoals hier beschreven:
+Deze optie wordt alleen gebruikt voor de aanschaf van PlayReady-licenties, via het veld CustomData van de de verwervings Challenge van PlayReady-licenties. In dit geval moet het token zich in het XML-document bevinden, zoals hier wordt beschreven:
 
     ```xml
     <?xml version="1.0"?>
@@ -50,9 +50,9 @@ Deze optie wordt alleen gebruikt voor playready-licentieverwerving via het custo
         <Token></Token> 
     </CustomData>
     ```
-    Plaats uw verificatietoken in het token-element.
+    Plaats uw verificatie token in het element token.
 
-- Via een alternatieve HTTP Live Streaming (HLS) afspeellijst. Als u tokenverificatie voor AES + HLS-weergave op iOS/Safari moet configureren, is er geen manier waarop u het token rechtstreeks verzenden. Zie dit [blogbericht](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)voor meer informatie over het afwisselen van de afspeellijst om dit scenario in te schakelen.
+- Via een alternatieve HTTP Live Streaming-afspeel lijst (HLS). Als u token verificatie wilt configureren voor AES en HLS afspelen op iOS/Safari, is er geen manier om rechtstreeks in het token te verzenden. Zie dit [blog bericht](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)voor meer informatie over het maken van een alternatieve afspeel lijst om dit scenario in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

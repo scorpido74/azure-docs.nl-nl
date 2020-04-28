@@ -1,7 +1,7 @@
 ---
 title: OCR cognitieve vaardigheid
 titleSuffix: Azure Cognitive Search
-description: Extraheren van tekst uit afbeeldingsbestanden met behulp van ocr (optical character recognition) in een verrijkingspijplijn in Azure Cognitive Search.
+description: Extraheer tekst uit afbeeldings bestanden met behulp van optische teken herkenning (OCR) in een verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,61 +9,61 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72791926"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR cognitieve vaardigheid
 
-De **ocr-vaardigheid (Optical character recognition)** herkent afgedrukte en handgeschreven tekst in afbeeldingsbestanden. Deze vaardigheid maakt gebruik van de machine learning modellen die door [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services. De **OCR-vaardigheid** wordt toegewezen aan de volgende functionaliteit:
+De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in cognitive Services. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
 
-+ De ["OCR"-API](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) wordt gebruikt voor andere talen dan het Engels. 
-+ Voor Het Engels wordt de nieuwe ["Lees"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API gebruikt.
++ De [' OCR '](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API wordt gebruikt voor andere talen dan Engels. 
++ Voor Engels wordt de nieuwe [Lees](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) -API gebruikt.
 
-Met **de OCR-vaardigheid** worden tekst uit afbeeldingsbestanden geëxtraheerd. Ondersteunde bestandsindelingen zijn:
+De **OCR** -vaardigheid extraheert tekst uit afbeeldings bestanden. Ondersteunde bestands indelingen zijn onder andere:
 
-+ . Jpeg
-+ . Jpg
-+ . Png
-+ . Bmp
-+ . Gif
-+ . Tiff
++ . INDELING
++ . JPG
++ . PNG
++ . BITMAP
++ . AFBEELDING
++ . RELEVANTE
 
 > [!NOTE]
-> Terwijl u het bereik uitbreidt door de frequentie van de verwerking te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureerbare bron voor cognitive services toevoegen.](cognitive-search-attach-cognitive-services.md) Er worden kosten in rekening gebracht bij het aanroepen van API's in Cognitive Services en voor het extraheren van afbeeldingen als onderdeel van de fase van het kraken van documenten in Azure Cognitive Search. Er zijn geen kosten voor tekstextractie uit documenten.
+> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> Uitvoering van ingebouwde vaardigheden wordt in rekening gebracht tegen de bestaande [Cognitive Services pay-as-you-go prijs.](https://azure.microsoft.com/pricing/details/cognitive-services/) De prijzen voor imageextractie worden beschreven op de [prijspagina azure cognitive search.](https://go.microsoft.com/fwlink/?linkid=2042400)
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
-## <a name="skill-parameters"></a>Vaardigheidsparameters
+## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| detecterenOriëntatie | Hiermee u de beeldoriëntatie automatisch detecteren. <br/> Geldige waarden: waar / onwaar.|
-|standaardLanguageCode | <p>  Taalcode van de invoertekst. Enkele ondersteunde talen: <br/> zh-Hans (ChineesVereenvoudigd) <br/> zh-Hant (ChineesTraditioneel) <br/>cs (Tsjechisch) <br/>da (Deens) <br/>nl <br/>nl (Engels) <br/>fi (Fins)  <br/>fr (Frans) <br/>  de (Duitse) <br/>el (Grieks) <br/> hu (Hongaars) <br/> het (Italiaans) <br/>  ja (Japans) <br/> ko (Koreaans) <br/> nb (Noors) <br/>   pl (Pools) <br/> pt (Portugees) <br/>  ru (Russisch) <br/>  es (Spaans) <br/>  sv (Zweeds) <br/>  tr (Turks) <br/> ar (Arabisch) <br/> ro (Roemeens) <br/> sr-Cyrl (ServischCyrillisch) <br/> sr-Latn (ServischLatijn) <br/>  sk (Slowaaks). <br/>  unk (Onbekend) <br/><br/> Als de taalcode niet is opgegeven of niet ig is, wordt de taal ingesteld op Engels. Als de taal expliciet is ingesteld op 'unk', wordt de taal automatisch gedetecteerd. </p> |
-|lineEnding | De waarde die moet worden gebruikt tussen elke gedetecteerde regel. Mogelijke waarden: 'Space','CarriageReturn','LineFeed'.  De standaardinstelling is 'Ruimte' |
+| detectOrientation | Hiermee wordt automatische detectie van de afbeeldings stand ingeschakeld. <br/> Geldige waarden: True/False.|
+|defaultLanguageCode | <p>  De taal code van de invoer tekst. Enkele ondersteunde talen: <br/> zh-Hans (ChineseSimplified) <br/> zh-hant (ChineseTraditional) <br/>CS (Tsjechisch) <br/>da (Deens) <br/>nl (Nederlands) <br/>nl (Engels) <br/>fi (Fins)  <br/>FR (Frans) <br/>  de (Duits) <br/>El (Grieks) <br/> hu (Hong aars) <br/> It (Italiaans) <br/>  Ja (Japans) <br/> ko (Koreaans) <br/> NB (Noors) <br/>   pl (Pools) <br/> PT (Portugees) <br/>  ru (Russisch) <br/>  ES (Spaans) <br/>  SV (Zweeds) <br/>  tr (Turks) <br/> AR (Arabisch) <br/> ro (Roemeens) <br/> SR-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (Slowaaks). <br/>  UNK (onbekend) <br/><br/> Als de taal code niet is opgegeven of null is, wordt de taal ingesteld op Engels. Als de taal expliciet is ingesteld op ' UNK ', wordt de taal automatisch gedetecteerd. </p> |
+|lineEnding | De waarde die moet worden gebruikt tussen elke gedetecteerde regel. Mogelijke waarden: ' spatie ', ' CarriageReturn ', ' regelinvoerteken '.  De standaard waarde is ' spatie ' |
 
-Voorheen was er een parameter genaamd "textExtractionAlgorithm" voor het opgeven of de vaardigheid "gedrukte" of "handgeschreven" tekst moet extraheren.  Deze parameter is afgeschaft en niet langer nodig omdat het nieuwste Read API-algoritme in staat is om beide typen tekst tegelijk te extraheren.  Als uw vaardigheidsdefinitie deze parameter al bevat, hoeft u deze niet te verwijderen, maar deze wordt niet meer gebruikt en worden beide typen tekst in de toekomst geëxtraheerd, ongeacht waardeze is ingesteld.
+Voorheen was er een para meter met de naam ' textExtractionAlgorithm ' om aan te geven of de vaardigheid "gedrukte" of "handgeschreven" tekst moet extra heren.  Deze para meter is afgeschaft en niet langer nodig als de meest recente Lees-API-algoritme kan beide typen tekst tegelijk ophalen.  Als uw vaardigheids definitie deze para meter al bevat, hoeft u deze niet te verwijderen, maar deze wordt niet meer gebruikt en beide typen tekst worden uitgepakt, ongeacht waar deze is ingesteld.
 
-## <a name="skill-inputs"></a>Vaardigheidsingangen
+## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoernaam      | Beschrijving                                          |
+| Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
-| installatiekopie         | Complex Type. Werkt momenteel alleen met het veld '/document/normalized_images', ```imageAction``` geproduceerd door de Azure ```none```Blob-indexer wanneer deze is ingesteld op een andere waarde dan . Zie het [voorbeeld](#sample-output) voor meer informatie.|
+| installatiekopie         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een ```none```andere waarde dan. Zie het voor [beeld](#sample-output) voor meer informatie.|
 
 
-## <a name="skill-outputs"></a>Vaardigheidsuitvoer
-| Uitvoernaam     | Beschrijving                   |
+## <a name="skill-outputs"></a>Vaardigheids uitvoer
+| Uitvoer naam     | Beschrijving                   |
 |---------------|-------------------------------|
-| tekst          | Platte tekst uit de afbeelding.   |
-| lay-outTekst    | Complex type dat de geëxtraheerde tekst beschrijft en de locatie waar de tekst is gevonden.|
+| tekst          | Tekst zonder opmaak opgehaald uit de afbeelding.   |
+| layoutText    | Complex type waarmee de geëxtraheerde tekst wordt beschreven en de locatie waar de tekst is gevonden.|
 
 
-## <a name="sample-definition"></a>Voorbeelddefinitie
+## <a name="sample-definition"></a>Voorbeeld definitie
 
 ```json
 {
@@ -96,7 +96,7 @@ Voorheen was er een parameter genaamd "textExtractionAlgorithm" voor het opgeven
 ```
 <a name="sample-output"></a>
 
-## <a name="sample-text-and-layouttext-output"></a>Voorbeeldtekst en indelingTekstuitvoer
+## <a name="sample-text-and-layouttext-output"></a>Voorbeeld tekst en layoutText uitvoer
 
 ```json
 {
@@ -134,11 +134,11 @@ Voorheen was er een parameter genaamd "textExtractionAlgorithm" voor het opgeven
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Voorbeeld: Tekst die uit ingesloten afbeeldingen wordt geëxtraheerd, samenvoegen met de inhoud van het document.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Voor beeld: tekst die is geëxtraheerd uit Inge sloten afbeeldingen samen voegen met de inhoud van het document.
 
-Een veelgebruikte use case voor Tekstfusie is de mogelijkheid om de tekstuele weergave van afbeeldingen (tekst uit een OCR-vaardigheid of het bijschrift van een afbeelding) samen te voegen in het inhoudsveld van een document.
+Een veelgebruikte use-case voor tekst fusie is de mogelijkheid om de tekstuele weer gave van afbeeldingen (tekst van een OCR-vaardigheid of het bijschrift van een afbeelding) samen te voegen in het veld inhoud van een document.
 
-Met de volgende voorbeeldvaardigheidsset wordt een *merged_text* veld. Dit veld bevat de tekstuele inhoud van uw document en de OCRed-tekst van elk van de afbeeldingen die in dat document zijn ingesloten.
+In het volgende voor beeld wordt een *merged_text* veld gemaakt. Dit veld bevat de tekstuele inhoud van uw document en de OCRed tekst van elk van de afbeeldingen die in dat document zijn Inge sloten.
 
 #### <a name="request-body-syntax"></a>Syntaxis aanvraagbody
 ```json
@@ -190,7 +190,7 @@ Met de volgende voorbeeldvaardigheidsset wordt een *merged_text* veld. Dit veld 
   ]
 }
 ```
-In het bovenstaande vaardigheidssetvoorbeeld wordt ervan uitgegaan dat er een normaal-afbeeldingsveld bestaat. Als u dit veld wilt genereren, stelt u de *imageAction-configuratie* in de definitie van de indexer in om *genormaliseerde afbeeldingen* te genereren zoals hieronder wordt weergegeven:
+In het bovenstaande voor beeld van de vaardig heden wordt ervan uitgegaan dat er een veld met genormaliseerde afbeeldingen bestaat. Als u dit veld wilt genereren, stelt u de *imageAction* -configuratie in de definitie van de Indexeer functie in op *generateNormalizedImages* zoals hieronder wordt weer gegeven:
 
 ```json
 {
@@ -206,6 +206,6 @@ In het bovenstaande vaardigheidssetvoorbeeld wordt ervan uitgegaan dat er een no
 
 ## <a name="see-also"></a>Zie ook
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
-+ [TextMerger vaardigheid](cognitive-search-skill-textmerger.md)
-+ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [TextMerger-vaardigheid](cognitive-search-skill-textmerger.md)
++ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Indexeerfunctie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

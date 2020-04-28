@@ -1,6 +1,6 @@
 ---
-title: Elastische databaseclientbibliotheek gebruiken met Dapper
-description: Met behulp van elastische database client bibliotheek met Dapper.
+title: Client bibliotheek voor Elastic Data Base gebruiken met dapper
+description: Client bibliotheek voor Elastic Data Base gebruiken met dapper.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,55 +12,55 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 83d24d45d7628a2e02068c8757fa6568d6d3fc37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823479"
 ---
-# <a name="using-elastic-database-client-library-with-dapper"></a>Elastische databaseclientbibliotheek gebruiken met Dapper
-Dit document is voor ontwikkelaars die afhankelijk zijn van Dapper om applicaties te bouwen, maar ook [elastische databasetooling](sql-database-elastic-scale-introduction.md) willen omarmen om toepassingen te maken die sharding implementeren om hun gegevenslaag uit te schalen.  Dit document illustreert de wijzigingen in dapper-gebaseerde toepassingen die nodig zijn om te integreren met elastische database tools. Onze focus ligt op het samenstellen van de elastic database shard management en data-dependent routing met Dapper. 
+# <a name="using-elastic-database-client-library-with-dapper"></a>Client bibliotheek voor Elastic Data Base gebruiken met dapper
+Dit document is bedoeld voor ontwikkel aars die gebruikmaken van dapper om toepassingen te bouwen, maar u wilt ook [Elastic data base-hulp middelen gebruiken](sql-database-elastic-scale-introduction.md) om toepassingen te maken die sharding implementeren om hun gegevenslaag te schalen.  Dit document illustreert de wijzigingen in dapper toepassingen die nodig zijn voor de integratie met Elastic data base-hulpprogram ma's. Onze nadruk ligt op het samen stellen van het Elastic data base Shard management en gegevens afhankelijke route ring met dapper. 
 
-**Voorbeeldcode:** [Elastic database-hulpprogramma's voor Azure SQL Database - Dapper-integratie](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Voorbeeld code**: [hulpprogram ma's voor Elastic data base voor Azure SQL database-dapper-integratie](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
-Het integreren van **Dapper** en **DapperExtensions** met de elastische databaseclientbibliotheek voor Azure SQL Database is eenvoudig. Uw toepassingen kunnen gegevensafhankelijke routering gebruiken door het maken en openen van nieuwe [SqlConnection-objecten](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) te wijzigen om de [OpenConnectionForKey-aanroep](https://msdn.microsoft.com/library/azure/dn807226.aspx) uit de [clientbibliotheek](https://msdn.microsoft.com/library/azure/dn765902.aspx)te gebruiken. Dit beperkt wijzigingen in uw toepassing tot alleen wanneer nieuwe verbindingen worden gemaakt en geopend. 
+Het integreren van **dapper** en **DapperExtensions** met de Elastic data base-client bibliotheek voor Azure SQL database is eenvoudig. Uw toepassingen kunnen gegevens afhankelijke route ring gebruiken door het maken en openen van nieuwe [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) -objecten te wijzigen om de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -aanroep van de [client bibliotheek](https://msdn.microsoft.com/library/azure/dn765902.aspx)te gebruiken. Hierdoor worden wijzigingen in uw toepassing beperkt tot alleen nieuwe verbindingen gemaakt en geopend. 
 
-## <a name="dapper-overview"></a>Overzicht van Dapper
-**Dapper** is een objectrelationele mapper. Het brengt .NET-objecten van uw toepassing in kaart met een relationele database (en vice versa). Het eerste deel van de voorbeeldcode illustreert hoe u de elastische databaseclientbibliotheek integreren met dapper-gebaseerde toepassingen. Het tweede deel van de voorbeeldcode illustreert hoe u integreren bij het gebruik van zowel Dapper als DapperExtensions.  
+## <a name="dapper-overview"></a>Overzicht van dapper
+**Dapper** is een object relationele Mapper. .NET-objecten van uw toepassing worden toegewezen aan een relationele data base (en omgekeerd). In het eerste deel van de voorbeeld code ziet u hoe u de client bibliotheek voor Elastic Data Base kunt integreren met dapper-toepassingen. Het tweede deel van de voorbeeld code illustreert hoe u kunt integreren wanneer zowel dapper als DapperExtensions worden gebruikt.  
 
-De mapper-functionaliteit in Dapper biedt extensiemethoden op databaseverbindingen die het indienen van T-SQL-instructies voor uitvoering of het opvragen van de database vereenvoudigen. Dapper maakt het bijvoorbeeld eenvoudig om tussen uw .NET-objecten en de parameters van SQL-instructies voor **Uitvoeren-oproepen** in kaart te brengen of de resultaten van uw SQL-query's te gebruiken in .NET-objecten met **queryoproepen** van Dapper. 
+De functionaliteit van de Mapper in dapper biedt uitbreidings methoden voor database verbindingen waarmee T-SQL-instructies worden verzonden voor uitvoering of het uitvoeren van query's in de data base. Dapper maakt het eenvoudig om te koppelen tussen uw .NET-objecten en de para meters van SQL-instructies voor het **uitvoeren** van aanroepen, of om de resultaten van uw SQL-query's te gebruiken in .net-objecten met behulp van **query** aanroepen vanuit dapper. 
 
-Wanneer u DapperExtensions gebruikt, hoeft u de SQL-instructies niet meer op te geven. Met extensiesmethoden zoals **GetList** of **Invoegen** via de databaseverbinding worden de SQL-instructies achter de schermen gemaakt.
+Wanneer u DapperExtensions gebruikt, hoeft u de SQL-instructies niet meer op te geven. Met uitbreidings methoden zoals **GetList** of **Insert** over de database verbinding maakt u de SQL-instructies achter de schermen.
 
-Een ander voordeel van Dapper en ook DapperExtensions is dat de toepassing de creatie van de databaseverbinding regelt. Dit helpt interactie met de elastische database client bibliotheek die makelaars database verbindingen op basis van het toewijzen van shardlets naar databases.
+Een ander voor deel van dapper en ook DapperExtensions is dat de toepassing het maken van de database verbinding beheert. Dit helpt bij het communiceren met de client bibliotheek voor Elastic data bases die is gekoppeld aan data base-verbindingen op basis van de toewijzing van shardlets aan data bases.
 
-Om de Dapper assemblages te krijgen, zie [Dapper dot net](https://www.nuget.org/packages/Dapper/). Zie DapperExtensions voor de [Dapper-extensies.](https://www.nuget.org/packages/DapperExtensions)
+Zie [dapper dot net](https://www.nuget.org/packages/Dapper/)om de dapper-assembly's op te halen. Zie [DapperExtensions](https://www.nuget.org/packages/DapperExtensions)voor de dapper-extensies.
 
-## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Een snelle blik op de elastische databaseclientbibliotheek
-Met de elastische databaseclientbibliotheek definieert u partities van uw toepassingsgegevens die *shardlets*worden genoemd, brengt u ze in kaart aan databases en identificeert u ze door *sleutels te sharden.* U zoveel databases hebben als u nodig hebt en uw shardlets over deze databases distribueren. Het in kaart brengen van de kernwaarden voor de databases wordt opgeslagen door een shardkaart die wordt geleverd door de API's van de bibliotheek. Deze mogelijkheid wordt **shard mapmanagement**genoemd. De shard kaart dient ook als de makelaar van database verbindingen voor verzoeken die een sharding sleutel dragen. Deze mogelijkheid wordt aangeduid als **gegevensafhankelijke routering**.
+## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Een beknopt overzicht van de client bibliotheek voor Elastic data base
+Met de client bibliotheek voor Elastic data base definieert u partities van uw toepassings gegevens met de naam *shardlets*, wijst u deze toe aan data bases en identificeert u deze met *sharding-sleutels*. U kunt zoveel data bases als u nodig hebt en uw shardlets distribueren over deze data bases. De toewijzing van sharding-sleutel waarden aan de data bases wordt opgeslagen door een Shard-kaart die wordt weer gegeven door de Api's van de bibliotheek. Deze mogelijkheid heet **Shard-toewijzings beheer**. De Shard-toewijzing fungeert ook als de Broker van database verbindingen voor aanvragen die een sharding-sleutel bevatten. Deze mogelijkheid wordt aangeduid als **gegevens afhankelijke route ring**.
 
-![Shardkaarten en gegevensafhankelijke routering][1]
+![Shard Maps en gegevens afhankelijke route ring][1]
 
-De shardmapmanager beschermt gebruikers tegen inconsistente weergaven in shardletgegevens die kunnen optreden wanneer gelijktijdige beheerbewerkingen voor shardlet in de databases plaatsvinden. Om dit te doen, de shard kaarten makelaar de database verbindingen voor een toepassing gebouwd met de bibliotheek. Wanneer shardbeheerbewerkingen van invloed kunnen zijn op de shardlet, kan de shardkaartfunctionaliteit automatisch een databaseverbinding verwijderen. 
+Shard-toewijzings beheer beveiligt gebruikers tegen inconsistente weer gaven in shardlet-gegevens die kunnen optreden wanneer er gelijktijdige shardlet-beheer bewerkingen op de data bases plaatsvinden. Hiertoe wijst de Shard Maps Broker de database verbindingen toe voor een toepassing die is gebouwd met de bibliotheek. Wanneer Shard-beheer bewerkingen van invloed kunnen zijn op de shardlet, kan de Shard-toewijzings functionaliteit automatisch een database verbinding afbreken. 
 
-In plaats van de traditionele manier te gebruiken om verbindingen voor Dapper te maken, moet u de [Methode OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn824099.aspx)gebruiken. Dit zorgt ervoor dat alle validatie plaatsvindt en verbindingen correct worden beheerd wanneer gegevens tussen shards worden verplaatst.
+In plaats van de traditionele manier om verbindingen voor dapper te maken, moet u de [methode OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn824099.aspx)gebruiken. Dit zorgt ervoor dat alle validaties worden uitgevoerd en de verbindingen correct worden beheerd wanneer er gegevens tussen Shards worden verplaatst.
 
-### <a name="requirements-for-dapper-integration"></a>Eisen voor Dapper integratie
-Wanneer u werkt met zowel de elastische databaseclientbibliotheek als de Dapper API's, wilt u de volgende eigenschappen behouden:
+### <a name="requirements-for-dapper-integration"></a>Vereisten voor dapper-integratie
+Wanneer u werkt met de client bibliotheek voor Elastic data base en de dapper-Api's, wilt u de volgende eigenschappen behouden:
 
-* **Uitschalen**: We willen databases toevoegen of verwijderen uit de gegevenslaag van de geshard toepassing als dat nodig is voor de capaciteitsvereisten van de toepassing. 
-* **Consistentie:** Aangezien de toepassing is uitgeschroefd met sharding, moet u gegevensafhankelijke routering uitvoeren. Hiervoor willen we gebruik maken van de gegevensafhankelijke routeringsmogelijkheden van de bibliotheek. In het bijzonder wilt u de validatie- en consistentiegaranties behouden die worden geboden door verbindingen die zijn bebrokereerd via de shardmapbeheerder om beschadiging of verkeerde queryresultaten te voorkomen. Dit zorgt ervoor dat verbindingen met een bepaalde shardlet worden geweigerd of gestopt als (bijvoorbeeld) de shardlet momenteel wordt verplaatst naar een andere shard met behulp van Split/Merge API's.
-* **Object mapping**: We willen het gemak van de mappings van Dapper behouden om te vertalen tussen klassen in de applicatie en de onderliggende databasestructuren. 
+* **Uitschalen**: we willen data bases toevoegen aan of verwijderen uit de gegevenslaag van de Shard-toepassing, indien nodig voor de capaciteits vereisten van de toepassing. 
+* **Consistentie**: omdat de toepassing is uitgeschaald met sharding, moet u gegevens afhankelijke route ring uitvoeren. We willen hiervoor de gegevensafhankelijke routerings mogelijkheden van de bibliotheek gebruiken. In het bijzonder wilt u de verificatie-en consistentie garanties behouden die worden geboden door verbindingen die zijn gebrokerd via de Shard-toewijzings beheer om beschadiging of onjuiste query resultaten te voor komen. Dit zorgt ervoor dat verbindingen met een gegeven shardlet worden geweigerd of worden gestopt als (bijvoorbeeld) de shardlet momenteel is verplaatst naar een andere Shard met behulp van Split/Merge-Api's.
+* **Object toewijzing**: we willen het gemak behouden van de toewijzingen die door dapper worden verschaft om te vertalen tussen klassen in de toepassing en de onderliggende database structuren. 
 
-De volgende sectie geeft richtlijnen voor deze vereisten voor toepassingen op basis **van Dapper** en **DapperExtensions**.
+De volgende sectie bevat richt lijnen voor deze vereisten voor toepassingen die zijn gebaseerd op **dapper** en **DapperExtensions**.
 
-## <a name="technical-guidance"></a>Technische richtlijnen
-### <a name="data-dependent-routing-with-dapper"></a>Gegevensafhankelijke routering met Dapper
-Met Dapper is de toepassing doorgaans verantwoordelijk voor het maken en openen van de verbindingen met de onderliggende database. Als dapper queryresultaten door een type T van de toepassing geeft, retourneert als .NET-verzamelingen van type T. Dapper voert de toewijzing uit van de Resultatenrijen van T-SQL naar de objecten van type T. Op dezelfde manier brengt Dapper .NET-objecten in SQL-waarden of -parameters voor DML-instructies (Data Manipulation Language). Dapper biedt deze functionaliteit via extensiemethoden op het reguliere [SqlConnection-object](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) van de ADO .NET SQL Client-bibliotheken. De SQL-verbinding die wordt geretourneerd door de Elastic Scale API's voor DDR zijn ook gewone [SqlConnection-objecten.](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) Dit stelt ons in staat om Dapper-extensies rechtstreeks te gebruiken over het type dat wordt geretourneerd door de DDR-API van de clientbibliotheek, omdat het ook een eenvoudige SQL-clientverbinding is.
+## <a name="technical-guidance"></a>Technische richt lijnen
+### <a name="data-dependent-routing-with-dapper"></a>Gegevens afhankelijke route ring met dapper
+Met dapper is de toepassing meestal verantwoordelijk voor het maken en openen van de verbindingen met de onderliggende data base. Op basis van een type T door de toepassing retourneert dapper query resultaten als .NET-verzamelingen van het type T. dapper voert de toewijzing uit van de T-SQL-resultaat rijen aan de objecten van het type T. Dapper wijst .NET-objecten ook toe aan SQL-waarden of para meters voor de DML-instructies (Data Manipulation Language). Dapper biedt deze functionaliteit via uitbreidings methoden in het gewone [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) -object van de ADO .NET SQL-Client bibliotheken. De SQL-verbinding die wordt geretourneerd door de Elastic Scale-Api's voor DDR, zijn ook normale [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) -objecten. Hierdoor kunnen we dapper-extensies rechtstreeks gebruiken voor het type dat wordt geretourneerd door de DDR-API van de client bibliotheek, omdat het ook een eenvoudige SQL-client verbinding is.
 
-Deze observaties maken het eenvoudig om verbindingen te gebruiken die door de elastische bibliotheek van de gegevensbestandcliënt voor Dapper worden bemiddeld.
+Deze opmerkingen maken het eenvoudig om verbindingen te gebruiken die worden brokert door de client bibliotheek voor Elastic Data Base voor dapper.
 
-Dit codevoorbeeld (uit het begeleidende voorbeeld) illustreert de aanpak waarbij de shardingssleutel door de toepassing aan de bibliotheek wordt geleverd om de verbinding met de juiste shard te bemiddelen.   
+Dit code voorbeeld (uit het begeleide voor beeld) illustreert de aanpak waarbij de sharding-sleutel door de toepassing wordt geleverd aan de bibliotheek om de verbinding met de juiste Shard te Broker.   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
@@ -75,15 +75,15 @@ Dit codevoorbeeld (uit het begeleidende voorbeeld) illustreert de aanpak waarbij
                         );
     }
 
-De aanroep naar de [OpenConnectionForKey-API](https://msdn.microsoft.com/library/azure/dn807226.aspx) vervangt de standaardcreatie en het openen van een SQL-clientverbinding. De [OpenConnectionForKey-aanroep](https://msdn.microsoft.com/library/azure/dn807226.aspx) voert de argumenten aan die nodig zijn voor gegevensafhankelijke routering: 
+De aanroep van de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -API vervangt het standaard maken en openen van een SQL-client verbinding. De [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -aanroep heeft de argumenten die vereist zijn voor gegevens afhankelijke route ring: 
 
-* De shardkaart voor toegang tot de gegevensafhankelijke routeringsinterfaces
-* De sharding sleutel om de shardlet te identificeren
-* De referenties (gebruikersnaam en wachtwoord) om verbinding te maken met de scherf
+* De Shard-kaart voor toegang tot de gegevens afhankelijke routerings interfaces
+* De sharding-sleutel voor het identificeren van de shardlet
+* De referenties (gebruikers naam en wacht woord) om verbinding te maken met de Shard
 
-Het shardmapobject maakt een verbinding met de scherf die de shardlet voor de opgegeven shardingssleutel vasthoudt. De elastische databaseclient API's taggen ook de verbinding om de consistentiegaranties te implementeren. Aangezien de aanroep naar [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) een normaal SQL Client-verbindingsobject retourneert, volgt de volgende aanroep naar de **extensiemethode Uitvoeren** van Dapper de standaard Dapper-praktijk.
+Het Shard map-object maakt een verbinding met de Shard die de shardlet voor de opgegeven sharding sleutel bevat. De client-Api's voor Elastic data base coderen ook de verbinding voor het implementeren van de consistentie garanties. Omdat het aanroepen van [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) een regulier SQL Client-verbindings object retourneert, wordt de volgende aanroep van de methode **Execute** extension van dapper gevolgd door de standaard dapper Practice.
 
-Query's werken op dezelfde manier - u opent eerst de verbinding met [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) vanuit de client-API. Vervolgens gebruikt u de reguliere Dapper-extensiemethoden om de resultaten van uw SQL-query in .NET-objecten in kaart te brengen:
+Query's werken op dezelfde manier als u de verbinding voor het eerst opent met [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) van de client-API. Vervolgens gebruikt u de reguliere dapper-extensie methoden om de resultaten van uw SQL-query toe te wijzen aan .NET-objecten:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
@@ -103,12 +103,12 @@ Query's werken op dezelfde manier - u opent eerst de verbinding met [OpenConnect
             }
     }
 
-Houd er rekening mee dat het **gebruiksblok** met de DDR-verbinding alle databasebewerkingen binnen het blok beperkt tot de ene shard waar tenantId1 wordt bewaard. De query retourneert alleen blogs die zijn opgeslagen op de huidige shard, maar niet de blogs die zijn opgeslagen op andere scherven. 
+Houd er rekening mee dat met **behulp** van blok keren met het DDR-verbindings bereik alle database bewerkingen binnen het blok worden uitgevoerd op het ene Shard waar tenantId1 wordt bewaard. De query retourneert alleen blogs die zijn opgeslagen op de huidige Shard, maar niet voor de query's die zijn opgeslagen op een andere Shards. 
 
-## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Gegevensafhankelijke routering met Dapper en DapperExtensions
-Dapper wordt geleverd met een ecosysteem van extra extensies die meer gemak en abstractie uit de database kunnen bieden bij het ontwikkelen van databasetoepassingen. DapperExtensions is een voorbeeld. 
+## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Gegevens afhankelijke route ring met dapper en DapperExtensions
+Dapper wordt geleverd met een ecosysteem van extra uitbrei dingen, waardoor de data base meer gemak en abstractie kan bieden bij het ontwikkelen van database toepassingen. DapperExtensions is een voor beeld. 
 
-Het gebruik van DapperExtensions in uw toepassing verandert niets aan de manier waarop databaseverbindingen worden gemaakt en beheerd. Het is nog steeds de verantwoordelijkheid van de toepassing om verbindingen te openen en regelmatige SQL Client-verbindingsobjecten worden verwacht door de extensiemethoden. We kunnen vertrouwen op de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) zoals hierboven beschreven. Zoals de volgende codevoorbeelden laten zien, is de enige wijziging dat u de T-SQL-instructies niet meer hoeft te schrijven:
+Het gebruik van DapperExtensions in uw toepassing heeft geen invloed op hoe database verbindingen worden gemaakt en beheerd. Het is nog steeds de verantwoordelijkheid van de toepassing om verbindingen te openen, en regel matige SQL-Client verbindings objecten worden verwacht door de extensie methoden. We kunnen afhankelijk zijn van de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) zoals hierboven wordt beschreven. Zoals in de volgende voorbeeld code wordt weer gegeven, is de enige wijziging die u niet meer hoeft te schrijven voor de T-SQL-instructies:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
@@ -119,7 +119,7 @@ Het gebruik van DapperExtensions in uw toepassing verandert niets aan de manier 
            sqlconn.Insert(blog);
     }
 
-En hier is de code voorbeeld voor de query: 
+En dit is het code voorbeeld voor de query: 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
@@ -136,9 +136,9 @@ En hier is de code voorbeeld voor de query:
     }
 
 ### <a name="handling-transient-faults"></a>Tijdelijke fouten verwerken
-Het team Microsoft Patterns & Practices heeft het [tijdelijke foutafhandelingstoepassingsblok](https://msdn.microsoft.com/library/hh680934.aspx) gepubliceerd om toepassingsontwikkelaars te helpen veelvoorkomende tijdelijke foutomstandigheden te beperken die zich voordoen bij het uitvoeren in de cloud. Zie [Volharding, Geheim van alle triomfen: Het tijdelijke storingsbehandelingstoepassingsblok gebruiken](https://msdn.microsoft.com/library/dn440719.aspx)voor meer informatie.
+Het micro soft-programma voor patronen & practices heeft het [toepassings blok voor de tijdelijke fout afhandeling](https://msdn.microsoft.com/library/hh680934.aspx) gepubliceerd om toepassings ontwikkelaars te helpen bij het afhandelen van veelvoorkomende problemen met de tijdelijke situatie tijdens het uitvoeren in de Cloud. Zie [Perseverance, geheim van alle Triumphs: het toepassings blok voor de tijdelijke fout afhandeling gebruiken](https://msdn.microsoft.com/library/dn440719.aspx)voor meer informatie.
 
-Het codevoorbeeld is gebaseerd op de tijdelijke foutbibliotheek om te beschermen tegen tijdelijke fouten. 
+Het code voorbeeld is afhankelijk van de tijdelijke fout bibliotheek om te beveiligen tegen tijdelijke fouten. 
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
@@ -150,16 +150,16 @@ Het codevoorbeeld is gebaseerd op de tijdelijke foutbibliotheek om te beschermen
           }
     });
 
-**SqlDatabaseUtils.SqlRetryPolicy** in de bovenstaande code wordt gedefinieerd als een **SqlDatabaseTransientErrorDetectionStrategy** met een hernieuwingsaantal van 10 en 5 seconden wachttijd tussen nieuwe pogingen. Als u transacties gebruikt, moet u ervoor zorgen dat uw nieuwe scope teruggaat tot het begin van de transactie in het geval van een tijdelijke fout.
+**SqlDatabaseUtils. SqlRetryPolicy** in de bovenstaande code wordt gedefinieerd als een **SqlDatabaseTransientErrorDetectionStrategy** met een aantal nieuwe pogingen van 10 en een wacht tijd van vijf seconden tussen nieuwe pogingen. Als u trans acties gebruikt, moet u ervoor zorgen dat uw bereik voor opnieuw proberen teruggaat naar het begin van de trans actie in het geval van een tijdelijke fout.
 
 ## <a name="limitations"></a>Beperkingen
-De in dit document beschreven benaderingen brengen een aantal beperkingen met zich mee:
+De benaderingen die in dit document worden beschreven, omvatten een aantal beperkingen:
 
-* De voorbeeldcode voor dit document laat niet zien hoe u het schema over shards beheren.
-* Gezien een verzoek, gaan we ervan uit dat al de database verwerking is opgenomen in een enkele scherf zoals geïdentificeerd door de sharding sleutel die door het verzoek. Deze veronderstelling houdt echter niet altijd stand, bijvoorbeeld wanneer het niet mogelijk is om een shardingsleutel beschikbaar te stellen. Om dit aan te pakken, bevat de elastische databaseclientbibliotheek de [klasse MultiShardQuery.](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx) De klasse implementeert een verbindingsabstractie voor query's over meerdere shards. Het gebruik van MultiShardQuery in combinatie met Dapper valt buiten het bereik van dit document.
+* De voorbeeld code voor dit document laat zien hoe u schema beheert over Shards.
+* Op basis van een aanvraag, wordt ervan uitgegaan dat alle database verwerking is opgenomen in één Shard die wordt geïdentificeerd door de sharding-sleutel die door de aanvraag wordt verstrekt. Deze veronderstelling houdt echter niet altijd vast, bijvoorbeeld wanneer het niet mogelijk is om een sharding-sleutel beschikbaar te maken. Om dit op te lossen, bevat de client bibliotheek voor Elastic data base de [MultiShardQuery-klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). De klasse implementeert een verbindings abstractie voor het uitvoeren van query's op verschillende Shards. Het gebruik van MultiShardQuery in combi natie met dapper valt buiten het bereik van dit document.
 
 ## <a name="conclusion"></a>Conclusie
-Toepassingen met Dapper en DapperExtensions kunnen eenvoudig profiteren van elastische databasehulpprogramma's voor Azure SQL Database. Via de stappen die in dit document worden beschreven, kunnen deze toepassingen de mogelijkheden van de tool gebruiken voor gegevensafhankelijke routering door het maken en openen van nieuwe [SqlConnection-objecten](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) te wijzigen om de [OpenConnectionForKey-aanroep](https://msdn.microsoft.com/library/azure/dn807226.aspx) van de elastische databaseclientbibliotheek te gebruiken. Dit beperkt de toepassingswijzigingen die nodig zijn voor de plaatsen waar nieuwe verbindingen worden gemaakt en geopend. 
+Toepassingen die gebruikmaken van dapper en DapperExtensions kunnen eenvoudig profiteren van de hulpprogram ma's voor elastische data bases voor Azure SQL Database. Via de stappen die in dit document worden beschreven, kunnen deze toepassingen de mogelijkheid van het hulp programma voor gegevens afhankelijke route ring gebruiken door het maken en openen van nieuwe [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) -objecten te wijzigen om de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -aanroep van de client bibliotheek voor Elastic data base te gebruiken. Hierdoor worden de toepassings wijzigingen beperkt die nodig zijn voor de locaties waar nieuwe verbindingen worden gemaakt en geopend. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

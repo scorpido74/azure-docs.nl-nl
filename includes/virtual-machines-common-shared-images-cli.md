@@ -9,40 +9,40 @@ ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66814849"
 ---
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u het voorbeeld in dit artikel wilt voltooien, moet u een bestaande beheerde afbeelding van een gegeneraliseerde vm hebben. Zie [Zelfstudie: Een aangepaste afbeelding van een Azure-vm maken met de Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)voor meer informatie. Als de beheerde afbeelding een gegevensschijf bevat, mag de grootte van de gegevensschijf niet meer dan 1 TB bedragen.
+Om het voor beeld in dit artikel te volt ooien, moet u een bestaande beheerde installatie kopie van een gegeneraliseerde virtuele machine hebben. Zie [zelf studie: een aangepaste installatie kopie maken van een Azure-VM met de Azure cli](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)voor meer informatie. Als de beheerde installatie kopie een gegevens schijf bevat, kan de grootte van de gegevens schijf niet groter zijn dan 1 TB.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/bash](https://shell.azure.com/bash)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/bash](https://shell.azure.com/bash)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-Zie [Azure CLI](/cli/azure/install-azure-cli)installeren als u de CLI liever lokaal installeert en gebruikt.
+Als u liever de CLI lokaal installeert en gebruikt, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli).
 
-## <a name="create-an-image-gallery"></a>Een afbeeldingsgalerie maken 
+## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken 
 
-Een afbeeldingsgalerie is de primaire bron die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor galerienaam zijn hoofdletters, cijfers, stippen en perioden. De naam van de galerie mag geen streepjes bevatten.   Galerijnamen moeten uniek zijn binnen uw abonnement. 
+Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten.   Galerie namen moeten uniek zijn binnen uw abonnement. 
 
-Maak een afbeeldingsgalerij met [az sig maken](/cli/azure/sig#az-sig-create). In het volgende voorbeeld wordt een galerie met de naam *myGallery* in *myGalleryRG gemaakt.*
+Maak een galerie met installatie kopieën met [AZ sig Create](/cli/azure/sig#az-sig-create). In het volgende voor beeld wordt een galerie met de naam *myGallery* in *myGalleryRG*gemaakt.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="create-an-image-definition"></a>Een afbeeldingsdefinitie maken
+## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken
 
-Afbeeldingsdefinities maken een logische groepering voor afbeeldingen. Ze worden gebruikt om informatie over de afbeeldingsversies die erin zijn gemaakt, te beheren. Afbeeldingsdefinitienamen kunnen bestaan uit hoofdletters of kleine letters, cijfers, stippen, streepjes en perioden. Zie [Afbeeldingsdefinities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u voor een afbeeldingsdefinitie opgeven.
+Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
 
-Maak een eerste afbeeldingsdefinitie in de galerij met behulp van [az sig image-definition maken](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Maak een eerste definitie van een installatie kopie in de galerie met behulp van [AZ sig image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -56,13 +56,13 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-an-image-version"></a>Een afbeeldingsversie maken 
+## <a name="create-an-image-version"></a>Een versie van een installatie kopie maken 
 
-Maak destijds versies van de afbeelding met [de create-image-versie van de AZ-afbeelding](/cli/azure/sig/image-version#az-sig-image-version-create). U moet de id van de beheerde afbeelding doorgeven om te gebruiken als basislijn voor het maken van de afbeeldingsversie. U [de az-afbeeldingslijst](/cli/azure/image?view#az-image-list) gebruiken om informatie te krijgen over afbeeldingen die zich in een brongroep bevinden. 
+Maak een versie van de installatie kopie die u nodig hebt met de [afbeeldings galerie maken-installatie kopie-versie](/cli/azure/sig/image-version#az-sig-image-version-create). U moet de ID van de beheerde installatie kopie door geven om te gebruiken als basis voor het maken van de installatie kopie versie. U kunt [AZ Image List](/cli/azure/image?view#az-image-list) gebruiken om informatie over installatie kopieën in een resource groep op te halen. 
 
-Toegestane tekens voor de afbeeldingsversie zijn getallen en perioden. Getallen moeten zich binnen het bereik van een 32-bits geheel getal bevinden. Formaat: *MajorVersion*. *MinorVersion*. *Patch*.
+Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
 
-In dit voorbeeld, de versie van onze afbeelding is *1.0.0* en we gaan 2 replica's te maken in de *Regio West Central US,* 1 replica in de *regio Zuid-Centraal-VS* en 1 replica in de *Regio Oost-VS 2* met behulp van zone-redundante opslag.
+In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan twee replica's maken in de regio *West-Centraal VS* , 1 replica in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost 2* met zone-redundante opslag.
 
 
 ```azurecli-interactive 
@@ -77,14 +77,14 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> U moet wachten tot de afbeeldingsversie volledig is voltooid en wordt gerepliceerd voordat u dezelfde beheerde afbeelding gebruiken om een andere afbeeldingsversie te maken.
+> U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatie kopie kunt gebruiken om een andere versie van de installatie kopie te maken.
 >
-> U ook al uw replica's van de `--storage-account-type standard_zrs` afbeeldingsversie opslaan in Zone Redundant [Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen wanneer u de afbeeldingsversie maakt.
+> U kunt ook al uw afbeeldings versie replica's opslaan in [zone redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe `--storage-account-type standard_zrs` te voegen wanneer u de versie van de installatie kopie maakt.
 >
 
 ## <a name="share-the-gallery"></a>De galerie delen
 
-We raden u aan om deze te delen met andere gebruikers op galerieniveau. Gebruik az sig show om de object-ID van uw galerie te [krijgen.](/cli/azure/sig#az-sig-show)
+We raden u aan om te delen met andere gebruikers op het niveau van de galerie. Gebruik [AZ sig show](/cli/azure/sig#az-sig-show)om de object-id van uw galerie op te halen.
 
 ```azurecli-interactive
 az sig show \
@@ -93,7 +93,7 @@ az sig show \
    --query id
 ```
 
-Gebruik de object-ID als bereik, samen met een e-mailadres en [az-roltoewijzing om](/cli/azure/role/assignment#az-role-assignment-create) een gebruiker toegang te geven tot de gedeelde afbeeldingsgalerie.
+Gebruik de object-ID als bereik, samen met een e-mail adres en [AZ-roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create) om een gebruiker toegang te geven tot de galerie met gedeelde afbeeldingen.
 
 ```azurecli-interactive
 az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>

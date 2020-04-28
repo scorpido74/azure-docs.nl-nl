@@ -1,6 +1,6 @@
 ---
-title: Gebruik een VM voor het oplossen van problemen met Linux met de Azure CLI | Microsoft Documenten
-description: Meer informatie over het oplossen van Linux VM-problemen door de OS-schijf te verbinden met een herstel-vm met de Azure CLI
+title: Een Linux-probleemoplossings-VM gebruiken met de Azure CLI | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met Linux-VM'S door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure CLI
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
@@ -14,54 +14,54 @@ ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
 ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73620564"
 ---
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Problemen met een Linux-vm oplossen door de OS-schijf aan een herstel-vm te koppelen aan de Azure CLI
-Als uw Virtuele Linux-machine (VM) een opstart- of schijffout tegenkomt, moet u mogelijk stappen voor het oplossen van problemen uitvoeren op de virtuele harde schijf zelf. Een veelvoorkomend voorbeeld is `/etc/fstab` een ongeldige vermelding die voorkomt dat de VM met succes kan opstarten. In dit artikel wordt beschreven hoe u de Azure CLI gebruiken om uw virtuele harde schijf aan te sluiten op een andere Linux-vm om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM opnieuw te maken. 
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI
+Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure CLI gebruikt om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken. 
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
 Het probleemoplossingsproces is als volgt:
 
-1. Stop de betreffende VM.
-1. Maak een momentopname van de OS-schijf van de VM.
-1. Maak een schijf op basis van de momentopname van de OS-schijf.
-1. Bevestig en monteer de nieuwe OS-schijf op een andere Linux-vm voor probleemoplossingsdoeleinden.
-1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogramma's uit om problemen op de nieuwe osschijf op te lossen.
-1. Maak de nieuwe OS-schijf los en los van de VM voor het oplossen van problemen.
-1. Wijzig de OS-schijf voor de betreffende vm.
+1. Stop de betrokken VM.
+1. Maak een moment opname van de besturingssysteem schijf van de virtuele machine.
+1. Maak een schijf van de moment opname van de besturingssysteem schijf.
+1. Koppel en koppel de nieuwe besturingssysteem schijf aan een andere virtuele Linux-machine voor het oplossen van problemen.
+1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de nieuwe besturingssysteem schijf op te lossen.
+1. Ontkoppel de nieuwe besturingssysteem schijf en ontkoppel deze van de virtuele machine voor probleem oplossing.
+1. Wijzig de besturingssysteem schijf voor de betrokken VM.
 
-Als u deze stappen voor het oplossen van problemen wilt uitvoeren, moet u de nieuwste [Azure CLI-installatie](/cli/azure/install-az-cli2) en aangemeld bij een Azure-account gebruiken met [az-aanmelding.](/cli/azure/reference-index)
+Als u deze probleemoplossings stappen wilt uitvoeren, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
 > [!Important]
-> De scripts in dit artikel zijn alleen van toepassing op de VM's die [Beheerde schijf](../linux/managed-disks-overview.md)gebruiken. 
+> De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [beheerde schijven](../linux/managed-disks-overview.md). 
 
-Vervang in de volgende voorbeelden parameternamen door uw `myResourceGroup` `myVM`eigen waarden, zoals en .
+Vervang in de volgende voor beelden parameter namen door uw eigen waarden, zoals `myResourceGroup` en. `myVM`
 
-## <a name="determine-boot-issues"></a>Opstartproblemen bepalen
-Controleer de seriële uitvoer om te bepalen waarom uw VM niet correct kan opstarten. Een veelvoorkomend voorbeeld is `/etc/fstab`een ongeldige vermelding in of de onderliggende virtuele harde schijf wordt verwijderd of verplaatst.
+## <a name="determine-boot-issues"></a>Opstart problemen vaststellen
+Controleer de seriële uitvoer om te bepalen waarom de virtuele machine niet correct kan worden opgestart. Een veelvoorkomend voor beeld is een ongeldige vermelding `/etc/fstab`in, of de onderliggende virtuele harde schijf die wordt verwijderd of verplaatst.
 
-Download de boot logs met [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics). In het volgende voorbeeld wordt de `myVM` seriële `myResourceGroup`uitvoer van de VM met de naam in de resourcegroep met de naam :
+De opstart logboeken ophalen met [AZ VM boot-Diagnostics Get-boot-log](/cli/azure/vm/boot-diagnostics). `myVM` In het volgende voor beeld wordt de seriële uitvoer opgehaald van de virtuele machine met de `myResourceGroup`naam in de resource groep met de naam:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```
 
-Controleer de seriële uitvoer om te bepalen waarom de VM niet wordt opgestart. Als de seriële uitvoer geen indicatie geeft, moet `/var/log` u mogelijk logbestanden controleren zodra u de virtuele harde schijf hebt aangesloten op een vm voor het oplossen van problemen.
+Bekijk de seriële uitvoer om te bepalen waarom de virtuele machine niet kan worden opgestart. Als de seriële uitvoer geen indicatie geeft, moet u mogelijk logboek bestanden weer geven `/var/log` zodra u de virtuele harde schijf hebt verbonden met een VM voor probleem oplossing.
 
 ## <a name="stop-the-vm"></a>De virtuele machine stoppen
 
-In het volgende voorbeeld `myVM` wordt de `myResourceGroup`vm met de naam van de resourcegroep met de naam :
+In het volgende voor beeld wordt de `myVM` VM gestopt met de naam `myResourceGroup`van de resource groep met de naam:
 
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
 ```
-## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>Maak een momentopname van de OS-schijf van de getroffen VM
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>Een moment opname maken van de besturingssysteem schijf van de betrokken VM
 
-Een momentopname is een volledige, alleen-lezen kopie van een VHD. Het kan niet worden gekoppeld aan een VM. In de volgende stap maken we een schijf van deze momentopname. In het volgende voorbeeld `mySnapshot` wordt een momentopname gemaakt met de naam van de OS-schijf van de VM met de naam 'myVM'. 
+Een moment opname is een volledige, alleen-lezen kopie van een VHD. Deze kan niet worden gekoppeld aan een virtuele machine. In de volgende stap maakt u een schijf van deze moment opname. In het volgende voor beeld wordt een moment `mySnapshot` opname gemaakt met de naam van de besturingssysteem schijf van de virtuele machine met de naam ' myVM '. 
 
 ```azurecli
 #Get the OS disk Id 
@@ -70,9 +70,9 @@ $osdiskid=(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.
 #creates a snapshot of the disk
 az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --name mySnapshot
 ```
-## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de momentopname
+## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de moment opname
 
-Met dit script wordt `myOSDisk` een beheerde `mySnapshot`schijf gemaakt met de naam van de momentopname met de naam .  
+Met dit script maakt u een beheerde schijf `myOSDisk` met een naam uit `mySnapshot`de moment opname met de naam.  
 
 ```azurecli
 #Provide the name of your resource group
@@ -105,14 +105,14 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 
 ```
 
-Als de resourcegroep en de bronmomentopname zich niet in hetzelfde gebied bevinden, ontvangt `az disk create`u de fout 'Bron wordt niet gevonden' wanneer u uitvoert . In dit geval moet `--location <region>` u opgeven om de schijf in hetzelfde gebied als de bronmomentopname te maken.
+Als de resource groep en de bron momentopname zich niet in dezelfde regio bevinden, ontvangt u de fout melding ' resource is niet gevonden ' wanneer u `az disk create`uitvoert. In dit geval moet u opgeven `--location <region>` dat de schijf wordt gemaakt in dezelfde regio als de moment opname van de bron.
 
-Nu heb je een kopie van de originele OS schijf. U deze nieuwe schijf op een andere Windows-vm monteren voor probleemoplossingsdoeleinden.
+U hebt nu een kopie van de oorspronkelijke besturingssysteem schijf. U kunt deze nieuwe schijf koppelen aan een andere Windows-VM voor het oplossen van problemen.
 
-## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>De nieuwe virtuele harde schijf koppelen aan een andere virtuele schijf
-Voor de volgende stappen gebruikt u een andere vm voor probleemoplossingsdoeleinden. U koppelt de schijf aan deze VM voor het oplossen van problemen om de inhoud van de schijf te bladeren en te bewerken. Met dit proces u eventuele configuratiefouten corrigeren of aanvullende toepassings- of systeemlogboekbestanden controleren.
+## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>De nieuwe virtuele harde schijf koppelen aan een andere VM
+Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. U koppelt de schijf aan deze virtuele machine voor probleem oplossing om de schijf inhoud te zoeken en te bewerken. Met dit proces kunt u eventuele configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden bekijken.
 
-Dit script koppelt `myNewOSDisk` de `MyTroubleshootVM`schijf aan de VM:
+Met dit script koppelt `myNewOSDisk` u de schijf `MyTroubleshootVM`aan de VM:
 
 ```azurecli
 # Get ID of the OS disk that you just created.
@@ -121,12 +121,12 @@ $myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storag
 # Attach the disk to the troubleshooting VM
 az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
 ```
-## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevensschijf monteren
+## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevens schijf koppelen
 
 > [!NOTE]
-> In de volgende voorbeelden worden de stappen beschreven die vereist zijn voor een Ubuntu-vm. Als u een andere Linux distro gebruikt, zoals Red Hat Enterprise Linux `mount` of SUSE, kunnen de logbestandslocaties en -opdrachten een beetje anders zijn. Raadpleeg de documentatie voor uw specifieke distro voor de juiste wijzigingen in opdrachten.
+> In de volgende voor beelden worden de stappen beschreven die nodig zijn voor een Ubuntu-VM. Als u een andere Linux-distributie gebruikt, zoals Red Hat Enterprise Linux of SUSE, zijn de locaties en `mount` opdrachten van het logboek bestand mogelijk iets anders. Raadpleeg de documentatie voor uw specifieke distributie voor de desbetreffende wijzigingen in de opdrachten.
 
-1. SSH aan uw vm voor het oplossen van problemen met behulp van de juiste referenties. Als deze schijf de eerste gegevensschijf is die is gekoppeld `/dev/sdc`aan de vm voor het oplossen van problemen, is de schijf waarschijnlijk verbonden met . Met `dmesg` gebruiken om gekoppelde schijven weer te geven:
+1. SSH naar uw virtuele machine voor probleem oplossing met de juiste referenties. Als deze schijf de eerste gegevens schijf is die aan uw virtuele machine voor probleem oplossing is gekoppeld, is `/dev/sdc`de schijf waarschijnlijk verbonden met. Gebruiken `dmesg` om gekoppelde schijven weer te geven:
 
     ```bash
     dmesg | grep SCSI
@@ -142,54 +142,54 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    In het voorgaande voorbeeld staat `/dev/sda` de OS-schijf op en `/dev/sdb`is de tijdelijke schijf voor elke vm op . Als u meerdere gegevensschijven had, `/dev/sdd` `/dev/sde`zouden zij bij, , enzovoort moeten zijn.
+    In het vorige voor beeld bevindt de besturingssysteem `/dev/sda` schijf zich op en de tijdelijke schijf die voor elke `/dev/sdb`VM is ingesteld, bevindt zich op. Als u meerdere gegevens schijven had, moeten ze zich op `/dev/sdd`, `/dev/sde`,,,, enzovoort.
 
-2. Maak een map om uw bestaande virtuele harde schijf te monteren. In het volgende voorbeeld `troubleshootingdisk`wordt een map gemaakt met de naam:
+2. Maak een directory voor het koppelen van uw bestaande virtuele harde schijf. In het volgende voor beeld wordt een `troubleshootingdisk`map gemaakt met de naam:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Als u meerdere partities op uw bestaande virtuele harde schijf hebt, monteert u de vereiste partitie. In het volgende voorbeeld wordt `/dev/sdc1`de eerste primaire partitie gemonteerd op :
+3. Als u meerdere partities op de bestaande virtuele harde schijf hebt, koppelt u de vereiste partitie. In het volgende voor beeld wordt de eerste primaire partitie `/dev/sdc1`gekoppeld aan:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Aanbevolen is het monteren van gegevensschijven op VM's in Azure met behulp van de universeel unieke id (UUID) van de virtuele harde schijf. Voor dit korte scenario voor het oplossen van problemen is het niet nodig om de virtuele harde schijf te monteren met behulp van de UUID. Bij normaal gebruik kan het `/etc/fstab` bewerken om virtuele harde schijven te monteren met de naam van het apparaat in plaats van UUID er echter toe leiden dat de VM niet wordt opgestart.
+    > Best Practice is het koppelen van gegevens schijven op virtuele machines in azure met behulp van de Universally Unique Identifier (UUID) van de virtuele harde schijf. Voor dit korte probleemoplossings scenario is het niet nodig om de virtuele harde schijf te koppelen met behulp van de UUID. Het bewerken `/etc/fstab` van virtuele harde schijven met de apparaatnaam in plaats van de UUID kan er echter toe leiden dat de VM niet kan worden opgestart onder normaal gebruik.
 
 
-## <a name="fix-issues-on-the-new-os-disk"></a>Problemen op de nieuwe osschijf oplossen
-Met de bestaande virtuele harde schijf gemonteerd, u nu alle onderhouds- en probleemoplossingsstappen uitvoeren als dat nodig is. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
+## <a name="fix-issues-on-the-new-os-disk"></a>Problemen op de nieuwe besturingssysteem schijf oplossen
+Als de bestaande virtuele harde schijf is gekoppeld, kunt u nu eventuele onderhouds-en probleemoplossings stappen uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
 
 
-## <a name="unmount-and-detach-the-new-os-disk"></a>De nieuwe OS-schijf loskoppelen en loskoppelen
-Zodra uw fouten zijn opgelost, verwijdert u de bestaande virtuele harde schijf en ontkoppelt u deze van uw VM voor het oplossen van problemen. U uw virtuele harde schijf niet gebruiken met een andere VM totdat de lease die de virtuele harde schijf aan de VM voor het oplossen van problemen koppelt, is vrijgegeven.
+## <a name="unmount-and-detach-the-new-os-disk"></a>De nieuwe besturingssysteem schijf ontkoppelen en loskoppelen
+Wanneer de fouten zijn opgelost, ontkoppelt u de bestaande virtuele harde schijf en koppelt u deze los van de VM voor probleem oplossing. U kunt de virtuele harde schijf niet met andere virtuele machines gebruiken totdat de lease die de virtuele harde schijf koppelt aan de VM voor probleem oplossing is vrijgegeven.
 
-1. Van de SSH-sessie tot de VM voor het oplossen van problemen, de bestaande virtuele harde schijf wordt losgekoppeld. Wijzig eerst de bovenliggende map voor uw bevestigingspunt:
+1. Ontkoppel de bestaande virtuele harde schijf van de SSH-sessie naar uw VM voor probleem oplossing. Wijzig eerst de bovenliggende map voor het koppel punt:
 
     ```bash
     cd /
     ```
 
-    Maak nu de bestaande virtuele harde schijf los. In het volgende voorbeeld wordt `/dev/sdc1`het apparaat ontkoppeld op :
+    Ontkoppel nu de bestaande virtuele harde schijf. In het volgende voor beeld wordt het apparaat ontkoppeld op `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. Maak nu de virtuele harde schijf los van de VM. Sluit de SSH-sessie af op uw VM voor het oplossen van problemen:
+2. Ontkoppel nu de virtuele harde schijf van de VM. Sluit de SSH-sessie af op uw virtuele machine voor probleem oplossing:
 
     ```azurecli
     az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
     ```
 
-## <a name="change-the-os-disk-for-the-affected-vm"></a>De osschijf voor de betreffende vm wijzigen
+## <a name="change-the-os-disk-for-the-affected-vm"></a>De besturingssysteem schijf voor de betrokken VM wijzigen
 
-U Azure CLI gebruiken om de OS-schijven te verwisselen. U hoeft de vm niet te verwijderen en opnieuw te maken.
+U kunt Azure CLI gebruiken om de besturingssysteem schijven te wisselen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken.
 
-In dit voorbeeld `myVM` wordt de met `myNewOSDisk` de naam VM gestopt en wordt de schijf met de naam de nieuwe osschijf toewijst.
+In dit voor beeld wordt de `myVM` virtuele machine met de naam gestopt en wordt de schijf toegewezen als de nieuwe besturingssysteem schijf. `myNewOSDisk`
 
 ```azurecli
 # Stop the affected VM
@@ -206,5 +206,5 @@ az vm start -n myVM -g myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [SSH-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md)als u problemen ondervindt bij het maken van verbinding met uw vm. Zie Problemen met de connectiviteit van [toepassingen op een Linux-vm oplossen voor](troubleshoot-app-connection.md)problemen met de toegang tot toepassingen op uw vm.
+Zie [problemen met ssh-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Linux-VM](troubleshoot-app-connection.md)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
 

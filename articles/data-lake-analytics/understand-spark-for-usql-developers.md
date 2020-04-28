@@ -1,6 +1,6 @@
 ---
-title: Maak gebruik van Apache Spark voor Azure Data Lake Analytics U-SQL-ontwikkelaars.
-description: In dit artikel worden Apache Spark-concepten beschreven om u te helpen verschillen tussen U-SQL-ontwikkelaars.
+title: Meer informatie over Apache Spark voor Azure Data Lake Analytics U-SQL-ontwikkel aars.
+description: In dit artikel worden Apache Spark concepten beschreven die u helpen bij het oplossen van verschillen tussen U-SQL-ontwikkel aars.
 author: guyhay
 ms.author: guyhay
 ms.reviewer: jasonh
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
 ms.openlocfilehash: 594e1055c4c063e4e151fefa3e183e6e799c90b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73648426"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>Inzicht in Apache Spark voor U-SQL-ontwikkelaars
 
-Microsoft ondersteunt verschillende Analytics-services, zoals [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) en [Azure HDInsight](../hdinsight/hdinsight-overview.md) en Azure Data Lake Analytics. We horen van ontwikkelaars dat ze een duidelijke voorkeur hebben voor open-source-oplossingen terwijl ze analytics-pijplijnen bouwen. Om U-SQL-ontwikkelaars inzicht te geven in Apache Spark en hoe u uw U-SQL-scripts transformeren naar Apache Spark, hebben we deze richtlijnen gemaakt.
+Micro soft ondersteunt diverse analyse Services, zoals [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) en [Azure HDInsight](../hdinsight/hdinsight-overview.md) , evenals Azure data Lake Analytics. We horen van ontwikkel aars dat ze een duidelijke voor keur hebben voor open-source-oplossingen als ze analytische pijp lijnen bouwen. Om U-SQL-ontwikkel aars te helpen begrijpen Apache Spark en hoe u uw U-SQL-scripts kunt transformeren naar Apache Spark, hebben we deze richt lijnen gemaakt.
 
-Het bevat een aantal stappen die u nemen, en verschillende alternatieven.
+Het bevat een aantal stappen die u kunt uitvoeren en verschillende alternatieven.
 
-## <a name="steps-to-transform-u-sql-to-apache-spark"></a>Stappen om U-SQL om te zetten in Apache Spark
+## <a name="steps-to-transform-u-sql-to-apache-spark"></a>Stappen om U-SQL te transformeren naar Apache Spark
 
-1. Transformeer uw taakorkestratiepijplijnen.
+1. Transformeer pijp lijnen van uw taak.
 
-   Als u [Azure Data Factory](../data-factory/introduction.md) gebruikt om uw Azure Data Lake Analytics-scripts te orkestreren, moet u deze aanpassen om de nieuwe Spark-programma's te orkestreren.
-2. Inzicht in de verschillen tussen hoe U-SQL en Spark gegevens beheren
+   Als u [Azure Data Factory](../data-factory/introduction.md) gebruikt om uw Azure data Lake Analytics-scripts te organiseren, moet u deze aanpassen om de nieuwe Spark-Program ma's te organiseren.
+2. Meer informatie over de verschillen tussen hoe U-SQL en Spark gegevens beheert
 
-   Als u uw gegevens wilt verplaatsen van [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) naar Azure Data Lake Storage [Gen2,](../storage/blobs/data-lake-storage-introduction.md)moet u zowel de bestandsgegevens als de bijgehouden catalogusgegevens kopiëren. Houd er rekening mee dat Azure Data Lake Analytics alleen Azure Data Lake Storage Gen1 ondersteunt. Zie [Spark-gegevensindelingen begrijpen](understand-spark-data-formats.md)
+   Als u uw gegevens van [Azure data Lake Storage gen1](../data-lake-store/data-lake-store-overview.md) naar [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)wilt verplaatsen, moet u zowel de bestands gegevens als de gegevens van de catalogus die worden bijgehouden kopiëren. Houd er rekening mee dat Azure Data Lake Analytics alleen Azure Data Lake Storage Gen1 ondersteunt. Zie [informatie over Spark-gegevens indelingen](understand-spark-data-formats.md)
 3. Uw U-SQL-scripts transformeren naar Spark
 
-   Voordat u uw U-SQL-scripts transformeert, moet u een analyseservice kiezen. Enkele van de beschikbare compute services die beschikbaar zijn, zijn:
-      - [Gegevensstroom van Azure Data Factory](../data-factory/concepts-data-flow-overview.md) Het toewijzen van gegevensstromen zijn visueel ontworpen gegevenstransformaties waarmee gegevenstechnici een grafische logica voor gegevenstransformatie kunnen ontwikkelen zonder code te schrijven. Hoewel ze niet geschikt zijn om complexe gebruikerscode uit te voeren, kunnen ze eenvoudig traditionele SQL-achtige gegevensstroomtransformaties weergeven
-      - [Azure HDInsight Hive](../hdinsight/hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md) Apache Hive op HDInsight is geschikt voor ETL-bewerkingen (Extract, Transform en Load). Dit betekent dat u uw U-SQL-scripts gaat vertalen naar Apache Hive.
-      - Apache Spark Engines zoals [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) of [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) Dit betekent dat u uw U-SQL-scripts gaat vertalen naar Spark. Zie [Spark-gegevensindelingen begrijpen voor](understand-spark-data-formats.md) meer informatie
+   Voordat u uw U-SQL-scripts transformeert, moet u een analyse service kiezen. Enkele van de beschik bare berekenings Services zijn:
+      - [Azure Data Factory gegevensstroom](../data-factory/concepts-data-flow-overview.md) Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties waarmee data Engineers een grafische logica voor gegevens transformatie kunnen ontwikkelen zonder code te hoeven schrijven. Hoewel ze niet geschikt zijn voor het uitvoeren van complexe gebruikers code, kunnen ze eenvoudig traditionele trans formaties van een SQL-achtige gegevensstroom weer geven
+      - [Azure HDInsight-Hive](../hdinsight/hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md) Apache Hive op HDInsight is geschikt voor het extra heren, transformeren en laden (ETL)-bewerkingen. Dit betekent dat u uw U-SQL-scripts gaat vertalen naar Apache Hive.
+      - Apache Spark engines als [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) of [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) dit betekent dat u uw U-SQL-scripts gaat vertalen naar Spark. Zie informatie over Spark- [gegevens indelingen begrijpen](understand-spark-data-formats.md) voor meer informatie.
 
 > [!CAUTION]
-> Zowel [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) als [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) zijn clusterservices en geen serverloze taken zoals Azure Data Lake Analytics. U moet overwegen hoe u de clusters inricht om de juiste kosten-prestatieverhouding te krijgen en hoe u hun levensduur beheren om uw kosten te minimaliseren. Deze services hebben verschillende prestatiekenmerken met gebruikerscode geschreven in .NET, dus u moet wikkels schrijven of uw code in een ondersteunde taal herschrijven. Zie [Spark-gegevensindelingen begrijpen](understand-spark-data-formats.md), [Apache Spark-codeconcepten voor U-SQL-ontwikkelaars](understand-spark-code-concepts.md), [.Net voor Apache Spark begrijpen voor](https://dotnet.microsoft.com/apps/data/spark) meer informatie
+> Zowel [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) als [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) zijn Cluster Services en geen serverloze taken zoals Azure data Lake Analytics. U moet rekening houden met het inrichten van de clusters om de juiste kosten/prestatie verhouding te verkrijgen en hun levens duur te beheren om uw kosten te beperken. Deze services hebben verschillende prestatie kenmerken met gebruikers code die is geschreven in .NET. Daarom moet u wrappers schrijven of uw code herschrijven in een ondersteunde taal. Zie informatie over Spark- [gegevens indelingen](understand-spark-data-formats.md)begrijpen [Apache Spark code concepten voor U-SQL-ontwikkel aars](understand-spark-code-concepts.md), [.net voor Apache Spark](https://dotnet.microsoft.com/apps/data/spark)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Spark-gegevensindelingen voor U-SQL-ontwikkelaars begrijpen](understand-spark-data-formats.md)
-- [Spark-codeconcepten voor U-SQL-ontwikkelaars begrijpen](understand-spark-code-concepts.md)
-- [Upgrade uw oplossingen voor big data-analyse van Azure Data Lake Storage Gen1 naar Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
+- [Informatie over Spark-gegevens indelingen voor U-SQL-ontwikkel aars](understand-spark-data-formats.md)
+- [Informatie over Spark-code concepten voor U-SQL-ontwikkel aars](understand-spark-code-concepts.md)
+- [Upgrade uw big data Analytics-oplossingen van Azure Data Lake Storage Gen1 naar Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
 - [.NET voor Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
-- [Gegevens transformeren met Hadoop Hive-activiteit in Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
-- [Gegevens transformeren met Spark-activiteit in Azure Data Factory](../data-factory/transform-data-using-spark.md)
+- [Gegevens transformeren met behulp van Hadoop Hive-activiteit in Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
+- [Gegevens transformeren met behulp van Spark-activiteit in Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Wat is Apache Spark in Azure HDInsight?](../hdinsight/spark/apache-spark-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure-beheerde identiteiten gebruiken om omgevingen te maken in DevTest Labs | Microsoft Documenten
-description: Meer informatie over het gebruik van beheerde identiteiten in Azure om omgevingen in een lab in Azure DevTest Labs te implementeren.
+title: Azure Managed Identities gebruiken om omgevingen te maken in DevTest Labs | Microsoft Docs
+description: Meer informatie over het gebruik van beheerde identiteiten in azure voor het implementeren van omgevingen in een lab in Azure DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,28 +12,28 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
 ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73931160"
 ---
-# <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Azure-beheerde identiteiten gebruiken om omgevingen in een lab te implementeren 
-Als eigenaar van een lab u een beheerde identiteit gebruiken om omgevingen in een lab te implementeren. Deze functie is handig in scenario's waarin de omgeving verwijzingen bevat of bevat naar Azure-bronnen, zoals sleutelkluizen, gedeelde afbeeldingsgalerieën en netwerken die zich buiten de brongroep van de omgeving bevinden. Hiermee u sandbox-omgevingen maken die niet beperkt zijn tot de resourcegroep van die omgeving.
+# <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Door Azure beheerde identiteiten gebruiken voor het implementeren van omgevingen in een Lab 
+Als eigenaar van een lab kunt u een beheerde identiteit gebruiken voor het implementeren van omgevingen in een lab. Deze functie is handig in scenario's waarin de omgeving bevat of verwijzingen naar Azure-resources, zoals sleutel kluizen, gemeen schappelijke afbeeldings galerieën en netwerken die zich buiten de resource groep van de omgeving bevinden. Het maakt het mogelijk sandbox-omgevingen te maken die niet beperkt zijn tot de resource groep van die omgeving.
 
 > [!NOTE]
-> Momenteel wordt één door de gebruiker toegewezen identiteit per lab ondersteund. 
+> Op dit moment wordt één door de gebruiker toegewezen identiteit ondersteund per Lab. 
 
 ## <a name="prerequisites"></a>Vereisten
-- [Een rol maken, aanbieden, verwijderen of toewijzen aan een door de gebruiker toegewezen beheerde identiteit met behulp van de Azure-portal.](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) 
+- [Een rol maken, weer geven, verwijderen of toewijzen aan een door de gebruiker toegewezen beheerde identiteit met behulp van de Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-In deze sectie gebruikt u als eigenaar van een lab de Azure-portal om een door de gebruiker beheerde identiteit aan het lab toe te voegen. 
+In deze sectie kunt u als eigenaar van het lab de Azure Portal gebruiken om een door de gebruiker beheerde identiteit toe te voegen aan het lab. 
 
-1. Selecteer op de labpagina **Configuratie en beleid**. 
-1. Selecteer **Identiteit** in de sectie **Instellingen.**
-1. Als u een door een gebruiker toegewezen identiteit wilt toevoegen, selecteert u **Toevoegen** op de werkbalk. 
-1. Selecteer een **identiteit** in een vooraf ingevulde vervolgkeuzelijst.
+1. Selecteer op de pagina Lab de optie **configuratie en beleid**. 
+1. Selecteer **identiteit** in het gedeelte **instellingen** .
+1. Als u een door de gebruiker toegewezen identiteit wilt toevoegen, selecteert u **toevoegen** op de werk balk. 
+1. Selecteer een **identiteit** in een vooraf gevulde vervolg keuzelijst.
 1. Selecteer **OK**.
 
     ![Door de gebruiker beheerde identiteit toevoegen](./media/use-managed-identities-environments/add-user-managed-identity.png)
@@ -41,20 +41,20 @@ In deze sectie gebruikt u als eigenaar van een lab de Azure-portal om een door d
 
     ![Door de gebruiker beheerde identiteit in de lijst](./media/use-managed-identities-environments/identity-in-list.png)
 
-Eenmaal opgeslagen, zal het lab deze identiteit gebruiken tijdens het implementeren van alle labomgevingen. U ook toegang krijgen tot de identiteitsbron in Azure door de identiteit in de lijst te selecteren. 
+Wanneer het lab is opgeslagen, gebruikt deze identiteit tijdens het implementeren van alle test omgevingen. U kunt ook toegang krijgen tot de identiteits bron in azure door de identiteit te selecteren in de lijst. 
 
-De eigenaar van het lab hoeft niets speciaals te doen tijdens het implementeren van een omgeving, zolang de identiteit die aan het lab is toegevoegd, machtigingen heeft voor de externe bronnen die de omgeving moet openen. 
+De eigenaar van het lab hoeft niets te doen bij het implementeren van een omgeving zolang de identiteit die aan het lab is toegevoegd, machtigingen heeft voor de externe bronnen waartoe de omgeving toegang moet hebben. 
 
-Als u de door de gebruiker beheerde identiteit wilt wijzigen die aan het lab is toegewezen, verwijdert u eerst de identiteit die aan het lab is gekoppeld en voegt u er vervolgens nog een toe aan het lab. Als u een identiteit wilt verwijderen die aan het lab is gekoppeld, selecteert u **... (ellips)** en klik op **Verwijderen**. 
+Als u de door de gebruiker beheerde identiteit die is toegewezen aan het lab, wilt wijzigen, moet u eerst de identiteit die aan het lab is gekoppeld, verwijderen en vervolgens een andere id toevoegen aan het lab. Als u een aan het lab gekoppelde identiteit wilt verwijderen, selecteert u **... (weglatings tekens)** en klik op **verwijderen**. 
 
 ![Door de gebruiker beheerde identiteit in de lijst](./media/use-managed-identities-environments/replace-identity.png)  
 
 ## <a name="use-api"></a>API gebruiken
 
-1. Noteer na het maken van een identiteit de bron-id van deze identiteit. Het moet er uitzien als de volgende steekproef: 
+1. Nadat u een identiteit hebt gemaakt, noteert u de resource-ID van deze identiteit. Deze moet eruitzien als in het volgende voor beeld: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. Voer een PUT Https-methode `ServiceRunner` uit om een nieuwe bron toe te voegen aan het lab, vergelijkbaar met het volgende voorbeeld. Service runner resource is een proxy resource voor het beheren en beheren van beheerde identiteiten in DevTest Labs. De naam van de serviceagent kan een geldige naam zijn, maar we raden u aan de naam van de beheerde identiteitsbron te gebruiken. 
+1. Voer een PUT https-methode uit om een `ServiceRunner` nieuwe resource toe te voegen aan het lab, vergelijkbaar met het volgende voor beeld. Resource voor het uitloper van Services is een proxy bron voor het beheer en beheer van beheerde identiteiten in DevTest Labs. De naam van het service loper kan een geldige naam zijn, maar we raden u aan de naam van de beheerde identiteits bron te gebruiken. 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
@@ -93,4 +93,4 @@ Als u de door de gebruiker beheerde identiteit wilt wijzigen die aan het lab is 
     }
     ```
  
-Zodra de door de gebruiker toegewezen identiteit aan het lab is toegevoegd, gebruikt de Azure DevTest Labs-service deze terwijl azure resource manager-omgevingen worden geïmplementeerd. Als u bijvoorbeeld de sjabloon Resourcemanager nodig hebt om toegang te krijgen tot een externe afbeelding van een gedeelde afbeelding, moet u ervoor zorgen dat de identiteit die u aan het lab hebt toegevoegd, minimaal vereiste machtigingen heeft voor de bron van de gedeelde afbeeldingsgalerie. 
+Zodra de door de gebruiker toegewezen identiteit aan het lab is toegevoegd, gebruikt de Azure DevTest Labs-service deze tijdens de implementatie van Azure Resource Manager omgevingen. Als u bijvoorbeeld uw Resource Manager-sjabloon nodig hebt om toegang te krijgen tot een installatie kopie van een externe gedeelde installatie kopie, moet u ervoor zorgen dat de identiteit die u aan de Lab hebt toegevoegd, mini maal vereiste machtigingen heeft voor de resource van de gedeelde installatie kopie galerie. 

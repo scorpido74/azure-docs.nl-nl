@@ -1,7 +1,7 @@
 ---
-title: Voorbeelden van gegevenswetenschap van anderen kopiëren
+title: Andere voor beelden van gegevens wetenschap kopiëren
 titleSuffix: ML Studio (classic) - Azure
-description: 'Handelsgeheim van data science: Laat anderen je werk voor je doen. Ontvang voorbeelden van machine learning uit de Azure AI-galerie.'
+description: 'Handels geheim van gegevens wetenschap: neem anderen uw werk voor u. Machine learning-voor beelden ophalen uit de Azure AI Gallery.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,85 +11,85 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 3a99ad12af7f6eecb74f6c0d52a269770fd5ed7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73837824"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Werk van anderen kopiëren om gegevenswetenschap uit te voeren
-## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Data Science voor beginners serie
-Een van de bedrijfsgeheimen van data science is het krijgen van andere mensen om je werk voor je te doen. Zoek een voorbeeld van een clusteralgoritme in Azure AI Gallery om te gebruiken voor uw eigen machine learning-experiment.
+## <a name="video-5-data-science-for-beginners-series"></a>Video 5: gegevens wetenschap voor beginners-serie
+Een van de handels geheimen van data wetenschappen is dat anderen uw werk voor u kunnen doen. Een voor beeld van een clustering-algoritme zoeken in Azure AI Gallery om te gebruiken voor uw eigen machine learning experiment.
 
 > [!IMPORTANT]
-> **Cortana Intelligence Gallery** is omgedoopt tot **Azure AI Gallery**. Als gevolg hiervan verschillen tekst en afbeeldingen in dit transcript enigszins van de video, die de oude naam gebruikt.
+> De naam van de **Cortana Intelligence Gallery** is gewijzigd **Azure AI Gallery**. Als gevolg hiervan kunnen tekst en afbeeldingen in deze transcripten enigszins verschillen van de video, waarbij de oude naam wordt gebruikt.
 >
 
-Om het meeste uit de serie te halen, bekijk ze allemaal. [Ga naar de lijst met video's](#other-videos-in-this-series)
+Bekijk alles om alles uit de serie te halen. [Ga naar de lijst met Video's](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Andere video's in deze serie
-*Data Science for Beginners* is een snelle introductie tot data science in vijf korte video's.
+## <a name="other-videos-in-this-series"></a>Andere Video's in deze serie
+*Data wetenschappen voor beginners* is een snelle inleiding tot data Science in vijf korte Video's.
 
-* Video 1: [De 5 vragen data science antwoorden](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sec)*
-* Video 2: [Zijn uw gegevens klaar voor data science?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sec)*
-* Video 3: [Stel een vraag die u beantwoorden met gegevens](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sec)*
-* Video 4: [Voorspel een antwoord met een eenvoudig model](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sec)*
-* Video 5: Kopieer het werk van anderen om data science te doen
+* Video 1: [de 5 vragen van data Science-antwoorden](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 minuten 14 seconden)*
+* Video 2: [zijn uw gegevens gereed voor gegevens wetenschap?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min. 56 sec.)*
+* Video 3: [Stel een vraag die u kunt beantwoorden met gegevens](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sec.)*
+* Video 4: [een antwoord voors pellen met een eenvoudig model](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 seconden)*
+* Video 5: werk van anderen naar gegevens wetenschap kopiëren
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Transcript: Kopieer het werk van anderen om data science te doen
-Welkom bij de vijfde video in de serie "Data Science for Beginners."
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Transcriptie: Kopieer het werk van anderen naar gegevens wetenschap
+Welkom bij de vijfde video in de reeks "data Science for beginners".
 
-In deze ontdekt u een plek om voorbeelden te vinden die u lenen als uitgangspunt voor uw eigen werk. Je haalt misschien het meeste uit deze video als je de eerdere video's in deze serie voor het eerst bekijkt.
+In dit voor beeld ontdekt u een plek waar u kunt zien wat er voor beelden zijn van uw eigen werk als uitgangs punt. U kunt optimaal profiteren van deze video als u eerst de eerdere Video's in deze serie bekijkt.
 
-Een van de bedrijfsgeheimen van data science is het krijgen van andere mensen om je werk voor je te doen.
+Een van de handels geheimen van data wetenschappen is dat anderen uw werk voor u kunnen doen.
 
-## <a name="find-examples-in-the-azure-ai-gallery"></a>Voorbeelden zoeken in de Azure AI-galerie
+## <a name="find-examples-in-the-azure-ai-gallery"></a>Voor beelden zoeken in de Azure AI Gallery
 
-Microsoft heeft een cloudservice genaamd [Azure Machine Learning Studio (klassiek).](https://azure.microsoft.com/services/machine-learning-studio/) Het biedt u een werkruimte waar u experimenteren met verschillende machine learning-algoritmen, en wanneer u uw oplossing hebt uitgewerkt, u deze als webservice starten.
+Micro soft heeft een Cloud service met de naam [Azure machine learning Studio (klassiek)](https://azure.microsoft.com/services/machine-learning-studio/). Het biedt u een werk ruimte waar u kunt experimenteren met verschillende machine learning-algoritmen, en wanneer u uw oplossing hebt uitgewerkt, kunt u deze als een webservice starten.
 
-Onderdeel van deze service is iets dat de **[Azure AI Gallery](https://gallery.azure.ai/)** wordt genoemd. Het bevat bronnen, waaronder een verzameling azure machine learning studio (klassieke) experimenten, of modellen, die mensen hebben gebouwd en bijgedragen voor anderen om te gebruiken. Deze experimenten zijn een geweldige manier om het denken en het harde werk van anderen te benutten om u op weg te helpen met uw eigen oplossingen. Iedereen is welkom om er doorheen te bladeren.
+Een deel van deze service is het **[Azure AI Gallery](https://gallery.azure.ai/)**. Het bevat resources, met inbegrip van een verzameling Azure Machine Learning Studio (klassiek) experimenten, of modellen, die mensen hebben gebouwd en bijgedragen voor anderen. Deze experimenten zijn een uitstekende manier om de gedachte en hard werk van anderen te benutten om aan de slag te gaan met uw eigen oplossingen. Iedereen is welkom bij de bladeren.
 
 ![Azure AI-galerie](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
-Als u bovenaan op **Experimenten** klikt, ziet u een aantal van de meest recente en populaire experimenten in de galerij. U de rest van de experimenten doorzoeken door boven aan het scherm op **Alles bladeren** te klikken en daar u zoektermen invoeren en zoekfilters kiezen.
+Als u bovenaan op **experimenten** klikt, ziet u een aantal van de meest recente en populaire experimenten in de galerie. U kunt de rest van experimenten doorzoeken door boven aan het scherm op **Bladeren** te klikken en u kunt zoek termen invoeren en zoek filters kiezen.
 
-## <a name="find-and-use-a-clustering-algorithm-example"></a>Voorbeeld van een clusteralgoritme zoeken en gebruiken
-Stel dat u bijvoorbeeld een voorbeeld wilt zien van hoe clustering werkt, zodat u zoekt naar **experimenten met clustering sweep.**
+## <a name="find-and-use-a-clustering-algorithm-example"></a>Een voor beeld van een clustering-algoritme zoeken en gebruiken
+Bijvoorbeeld: Stel dat u een voor beeld wilt zien van het werken met clusters, zodat u kunt zoeken naar **' clustering sweep '** experimenten.
 
-![Zoeken naar clusterexperimenten](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
+![Zoeken naar Clustering experimenten](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
-Hier is een interessante die iemand heeft bijgedragen aan de galerij.
+Dit is een interessante versie die iemand aan de galerie heeft bijgedragen.
 
-![Clusterexperiment](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment.png)
+![Clustering experiment](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment.png)
 
-Klik op dat experiment en je krijgt een webpagina die het werk beschrijft dat deze bijdrager deed, samen met een aantal van hun resultaten.
+Klik op het experiment en u krijgt een webpagina met een beschrijving van het werk dat door deze bijdrager is uitgevoerd, samen met een aantal resultaten.
 
-![Pagina clustering experimentbeschrijving](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
+![Beschrijvings pagina voor clustering-experimenten](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-Let op de link die **zegt Open in Studio (klassiek)**.
+U ziet de koppeling met de tekst **Open in Studio (klassiek)**.
 
-![Knop Openen in Studio (klassiek)](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
+![Knop openen in Studio (klassiek)](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-Ik kan erop klikken en het brengt me direct naar **Azure Machine Learning Studio (klassiek).** Het maakt een kopie van het experiment en zet het in mijn eigen werkruimte. Dit omvat de gegevensset van de bijdrager, alle verwerking en verwerking, alle algoritmen die ze hebben gebruikt en hoe ze de resultaten hebben opgeslagen.
+Ik kan op dat klikken en ik ben direct **Azure machine learning Studio (klassiek)**. Er wordt een kopie van het experiment gemaakt en geplaatst in mijn eigen werk ruimte. Dit omvat de gegevensset van de Inzender, alle bewerkingen die ze hebben uitgevoerd, alle algoritmen die ze hebben gebruikt en hoe ze de resultaten hebben opgeslagen.
 
-![Een galerijexperiment openen in Machine Learning Studio (klassiek) - voorbeeld van clusteralgoritme](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![Een galerie experiment openen in Machine Learning Studio (klassiek)-voor beeld van clustering-algoritme](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
-En nu heb ik een startpunt. Ik kan swap hun gegevens voor mijn eigen en doe mijn eigen tweaken van het model. Dit geeft me een lopende start, en het laat me voortbouwen op het werk van mensen die echt weten wat ze doen.
+En nu heb ik een begin punt. Ik kan hun eigen gegevens voor eigen gebruik en mijn eigen verfijnen van het model vervangen. Dit geeft aan dat er een start kan worden uitgevoerd en kan mij bouwen op het werk van mensen die echt weten wat ze doen.
 
-## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Zoek experimenten die machine learning-technieken demonstreren
-Er zijn andere experimenten in de [Azure AI Gallery](https://gallery.azure.ai) die specifiek zijn bijgedragen om voorbeelden te geven voor mensen die nieuw zijn in gegevenswetenschap. Er is bijvoorbeeld een experiment in de galerie dat laat zien hoe je met ontbrekende waarden omgaat[(Methoden voor het verwerken van ontbrekende waarden).](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1) Het leidt u door 15 verschillende manieren van vervanging van lege waarden, en praat over de voordelen van elke methode en wanneer het te gebruiken.
+## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Experimenteren met een demonstratie van machine learning technieken
+Er zijn andere experimenten in de [Azure AI Gallery](https://gallery.azure.ai) die specifiek zijn bijgedragen aan de hand van een aantal voor beelden voor mensen die nieuw zijn voor data technologie. Er is bijvoorbeeld een experiment in de galerie waarin wordt getoond hoe ontbrekende waarden worden verwerkt ([methoden voor het afhandelen van ontbrekende waarden](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)). U wordt begeleid bij vijf tien verschillende manieren om lege waarden te vervangen, en praat over de voor delen van elke methode en wanneer u deze gebruikt.
 
-![Gallery experimenten geopend in Machine Learning Studio (klassiek) - methoden voor ontbrekende waarden](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![Galerie experimenten open in Machine Learning Studio (klassieke)-methoden voor ontbrekende waarden](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Azure AI Gallery](https://gallery.azure.ai) is een plek om werkexperimenten te vinden die u gebruiken als uitgangspunt voor uw eigen oplossingen.
+[Azure AI Gallery](https://gallery.azure.ai) is een plek om werk experimenten te vinden die u kunt gebruiken als uitgangs punt voor uw eigen oplossingen.
 
-Bekijk de andere video's in "Data Science for Beginners" van Microsoft Azure Machine Learning Studio (klassiek).
+Bekijk de andere Video's in "data Science for beginners" van Microsoft Azure Machine Learning Studio (klassiek).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Probeer uw eerste data science-experiment met Azure Machine Learning Studio (klassiek)](create-experiment.md)
-* [Een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Probeer uw eerste proef versie van data Science met Azure Machine Learning Studio (klassiek)](create-experiment.md)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

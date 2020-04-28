@@ -1,6 +1,6 @@
 ---
-title: Query's rapporteren in meerdere databases
-description: Rapportage met meerdere tenant's met gedistribueerde query's.
+title: Rapportage van query's over meerdere data bases
+description: Meerdere Tenant rapporten met behulp van gedistribueerde query's.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,65 +12,65 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
 ms.openlocfilehash: c863946934df9990c14e49ef1a0a82bbc55b27c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822084"
 ---
-# <a name="cross-tenant-reporting-using-distributed-queries"></a>Rapportage met meerdere tenant's met gedistribueerde query's
+# <a name="cross-tenant-reporting-using-distributed-queries"></a>Rapportage over meerdere tenants met behulp van gedistribueerde query's
 
-In deze zelfstudie voert u gedistribueerde query's uit in de hele set tenantdatabases voor rapportage. Deze query's kunnen inzichten extraheren die zijn begraven in de dagelijkse operationele gegevens van de Wingtip Tickets SaaS-huurders. Hiervoor implementeert u een extra rapportagedatabase naar de catalogusserver en gebruikt u Elastic Query om gedistribueerde query's in te schakelen.
+In deze zelf studie voert u gedistribueerde query's uit op de hele set Tenant databases voor rapportage. Deze query's kunnen inzicht verkrijgen in de dagelijkse operationele gegevens van de Wingtip tickets SaaS-tenants. Om dit te doen, implementeert u een extra rapportage database op de catalogus server en gebruikt u elastische query's om gedistribueerde queries in te scha kelen.
 
 
 In deze zelfstudie komen deze onderwerpen aan bod:
 
 > [!div class="checklist"]
 > 
-> * Een rapportagedatabase implementeren
-> * Gedistribueerde query's uitvoeren in alle tenantdatabases
-> * Hoe globale weergaven in elke database efficiënt query's voor tenants mogelijk kunnen maken
+> * Een rapportage database implementeren
+> * Gedistribueerde query's uitvoeren in alle Tenant databases
+> * Hoe globale weer gaven in elke Data Base efficiënte query's mogelijk kunnen maken voor meerdere tenants
 
 
 U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt voldaan:
 
 
-* De Wingtip Tickets SaaS Database Per Tenant app wordt geïmplementeerd. Zie [De SaaS-database van Wingtip Tickets per tenant](saas-dbpertenant-get-started-deploy.md) implementeren en verkennen in minder dan vijf minuten.
+* De Wingtip tickets SaaS-data base per Tenant-app wordt geïmplementeerd. Zie [de SaaS-data base van Wingtip tickets implementeren en verkennen per Tenant toepassing](saas-dbpertenant-get-started-deploy.md) om in minder dan vijf minuten te implementeren
 * Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
-* SQL Server Management Studio (SSMS) is geïnstalleerd. Zie SQL Server Management [Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)downloaden en installeren om SSMS te downloaden en te installeren.
+* SQL Server Management Studio (SSMS) is geïnstalleerd. Zie [down load SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)als u SSMS wilt downloaden en installeren.
 
 
-## <a name="cross-tenant-reporting-pattern"></a>Rapportagepatroon voor meerdere huurders
+## <a name="cross-tenant-reporting-pattern"></a>Het rapport patroon voor meerdere tenants
 
-![gedistribueerd querypatroon voor meerdere tenant](media/saas-tenancy-cross-tenant-reporting/cross-tenant-distributed-query.png)
+![gedistribueerd query patroon voor meerdere tenants](media/saas-tenancy-cross-tenant-reporting/cross-tenant-distributed-query.png)
 
-Een van de mogelijkheden met SaaS-toepassingen is om de enorme hoeveelheid tenantgegevens die in de cloud zijn opgeslagen te gebruiken om inzicht te krijgen in de werking en het gebruik van uw toepassing. Deze inzichten kunnen de ontwikkeling van functies, bruikbaarheidsverbeteringen en andere investeringen in uw apps en services begeleiden.
+Een kans met SaaS-toepassingen is het gebruik van de enorme hoeveelheid Tenant gegevens die in de Cloud is opgeslagen om inzicht te krijgen in de werking en het gebruik van uw toepassing. Met deze inzichten kunt u de ontwikkeling van functies, verbetering van de bruikbaarheid en andere investeringen in uw apps en services begeleiden.
 
-U kunt gemakkelijk toegang tot deze gegevens krijgen in een database met meerdere tenants, maar dit is niet zo gemakkelijk als de gegevens op schaal zijn verdeeld over misschien wel duizenden databases. Een benadering is het gebruik [van Elastic Query](sql-database-elastic-query-overview.md), waarmee query's in een gedistribueerde set databases met gemeenschappelijk schema. Deze databases kunnen worden verdeeld over verschillende brongroepen en abonnementen, maar moeten een algemene aanmelding delen. Elastic Query maakt gebruik van een database met één *hoofd* waarin externe tabellen worden gedefinieerd die tabellen of weergaven in de gedistribueerde (tenant)databases spiegelen. Query's die naar deze hoofddatabase worden verzonden, worden gecompileerd tot een gedistribueerd queryplan, waarbij delen van de query, wanneer nodig, naar de onderliggende tenantdatabases worden gepusht. Elastic Query gebruikt de shardkaart in de catalogusdatabase om de locatie van alle tenantdatabases te bepalen. Het instellen en opvragen van de hoofddatabase is eenvoudig met behulp van standaard [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)en ondersteuning van query's vanuit hulpprogramma's zoals Power BI en Excel.
+U kunt gemakkelijk toegang tot deze gegevens krijgen in een database met meerdere tenants, maar dit is niet zo gemakkelijk als de gegevens op schaal zijn verdeeld over misschien wel duizenden databases. Een aanpak is het gebruik van [elastische query's](sql-database-elastic-query-overview.md), waarmee u query's kunt uitvoeren op een gedistribueerde set data bases met een gemeen schappelijk schema. Deze data bases kunnen worden gedistribueerd over verschillende resource groepen en-abonnementen, maar moeten een gemeen schappelijke aanmelding delen. Elastische Query's maken gebruik van één *Head* -Data Base waarin externe tabellen worden gedefinieerd die spie gelen tabellen of weer gaven in de gedistribueerde (Tenant) data bases. Query's die naar deze hoofddatabase worden verzonden, worden gecompileerd tot een gedistribueerd queryplan, waarbij delen van de query, wanneer nodig, naar de onderliggende tenantdatabases worden gepusht. Elastische Query's gebruiken de Shard-toewijzing in de catalogus database om de locatie van alle Tenant databases te bepalen. Het instellen en uitvoeren van een query voor de hoofd database is eenvoudig met behulp van standaard [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)en biedt ondersteuning voor het uitvoeren van query's via hulpprogram ma's als Power bi en Excel.
 
-Door query's te distribueren over de tenantdatabases, biedt Elastic Query direct inzicht in live productiegegevens. Aangezien Elastic Query gegevens uit mogelijk veel databases haalt, kan de querylatentie hoger zijn dan gelijkwaardige query's die zijn ingediend bij één database met meerdere tenants. Ontwerp query's om de gegevens die naar de hoofddatabase worden geretourneerd tot een minimum te beperken. Elastic Query is vaak het meest geschikt voor het opvragen van kleine hoeveelheden realtime gegevens, in tegenstelling tot het bouwen van veelgebruikte of complexe analysequery's of rapporten. Als query's niet goed presteren, bekijkt u het [uitvoeringsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) om te zien welk deel van de query naar de externe database wordt geduwd en hoeveel gegevens worden geretourneerd. Query's die complexe aggregatie of analytische verwerking vereisen, kunnen beter worden verwerkt door tenantgegevens te extraheren in een database of gegevensmagazijn die is geoptimaliseerd voor analysequery's. Dit patroon wordt uitgelegd in de [tenant analytics tutorial](saas-tenancy-tenant-analytics.md). 
+Door query's over de Tenant databases te distribueren, biedt elastische query's onmiddellijk inzicht in live productie gegevens. Als elastische query gegevens ophaalt uit mogelijk veel data bases, kan de query latentie hoger zijn dan gelijkwaardige query's die worden verzonden naar één multi tenant-data base. Ontwerp query's om de gegevens die worden geretourneerd naar de hoofd database te minimaliseren. Elastische Query's zijn vaak het meest geschikt voor het uitvoeren van query's in kleine hoeveel heden gegevens in realtime, in plaats van het maken van vaak gebruikte of complexe analyse query's of-rapporten. Als query's niet goed pres teren, bekijkt u het [uitvoerings plan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) om te zien welk gedeelte van de query naar de externe data base wordt gepusht en hoeveel gegevens er worden geretourneerd. Query's waarvoor complexe aggregatie of analytische verwerking vereist is, kunnen beter worden afgehandeld door Tenant gegevens te extra heren naar een Data Base of Data Warehouse dat is geoptimaliseerd voor analyse query's. Dit patroon wordt uitgelegd in de [zelf studie over Tenant analyse](saas-tenancy-tenant-analytics.md). 
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Download de Wingtip Tickets SaaS Database Per Tenant applicatie scripts
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>De Wingtip tickets SaaS-data base ophalen per Tenant toepassings scripts
 
-De Wingtip Tickets SaaS Multi-tenant Database scripts en applicatie broncode zijn beschikbaar in de [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub repo. Bekijk de [algemene richtlijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor stappen om de Wingtip Tickets SaaS-scripts te downloaden en te deblokkeren.
+De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code zijn beschikbaar in de [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) github opslag plaats. Bekijk de [algemene richt lijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor de stappen voor het downloaden en blok keren van de Wingtip tickets SaaS-scripts.
 
-## <a name="create-ticket-sales-data"></a>Gegevens over kaartverkoop maken
+## <a name="create-ticket-sales-data"></a>Verkoop gegevens van tickets maken
 
-Als u query's wilt uitvoeren tegen een interessantere gegevensset, maakt u gegevens over de kaartverkoop door de ticketgenerator uit te voeren.
+Als u query's wilt uitvoeren op een interessantere gegevensset, maakt u verkoop gegevens van tickets door de ticket Generator uit te voeren.
 
-1. In de *PowerShell ISE,* open de ... \\Learning\\Modules\\Operational Analytics\\Adhoc Reporting*Demo-AdhocReporting.ps1* script en stel de volgende waarde in:
-   * **$DemoScenario** = 1, **Koop tickets voor evenementen op alle locaties.**
-2. Druk op **F5** om het script uit te voeren en de kaartverkoop te genereren. Terwijl het script wordt uitgevoerd, gaat u verder met de stappen in deze zelfstudie. De ticketgegevens worden opgevraagd in de sectie *Ad hoc gedistribueerde query's uitvoeren,* dus wacht tot de ticketgenerator is voltooid.
+1. Open in de *Power shell-ISE*de... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReporting. ps1* script en stel de volgende waarde in:
+   * **$DemoScenario** = 1, **Koop tickets voor gebeurtenissen op alle locaties**.
+2. Druk op **F5** om het script uit te voeren en de verkoop van tickets te genereren. Wanneer het script wordt uitgevoerd, gaat u door met de stappen in deze zelf studie. De ticket gegevens worden in de sectie *ad hoc gedistribueerde Query's uitvoeren* opgevraagd en wachten op het volt ooien van de ticket generator.
 
-## <a name="explore-the-global-views"></a>Ontdek de wereldwijde opvattingen
+## <a name="explore-the-global-views"></a>De globale weer gaven verkennen
 
-In de Wingtip Tickets SaaS Database Per Tenant applicatie krijgt elke tenant een database. De gegevens in de databasetabellen worden dus beperkt tot het perspectief van één tenant. Wanneer u echter in alle databases wordt opgevraagd, is het belangrijk dat Elastic Query de gegevens kan behandelen alsof deze deel uitmaken van één logische database die wordt geshard door tenant. 
+In de Wingtip tickets SaaS-data base per Tenant toepassing krijgt elke Tenant een Data Base. De gegevens in de database tabellen zijn dus gericht op het perspectief van één Tenant. Bij het uitvoeren van query's voor alle data bases is het echter belang rijk dat elastische Query's de gegevens kunnen behandelen alsof deze deel uitmaken van één logische data base Shard per Tenant. 
 
-Om dit patroon te simuleren, wordt een set 'globale' weergaven toegevoegd aan de tenantdatabase die een tenant-id projecteert in elk van de tabellen die wereldwijd worden opgevraagd. In de weergave *VenueEvents* wordt bijvoorbeeld een berekende *VenueId* toegevoegd aan de kolommen die vanuit de tabel *Gebeurtenissen* worden geprojecteerd. Op dezelfde manier voegen de weergaven *VenueTicketAankopen* en *VenueTickets* een berekende *VenueId-kolom* toe die wordt geprojecteerd op basis van hun respectievelijke tabellen. Deze weergaven worden door Elastic Query gebruikt om query's te parallelliseren en naar de juiste externe tenantdatabase te duwen wanneer er een *VenueId-kolom* aanwezig is. Dit vermindert de hoeveelheid geretourneerde gegevens drastisch en resulteert in een aanzienlijke toename van de prestaties voor veel query's. Deze globale weergaven zijn vooraf gemaakt in alle tenantdatabases.
+Als u dit patroon wilt simuleren, wordt er een set globale weer gaven toegevoegd aan de Tenant database waarmee een Tenant-ID wordt gedefinieerd in elk van de tabellen die wereld wijd worden opgevraagd. In de weer gave *VenueEvents* wordt bijvoorbeeld een berekende *VenueId* toegevoegd aan de kolommen die in de tabel *gebeurtenissen* zijn geprojecteerd. Op dezelfde manier voegt de weer gaven *VenueTicketPurchases* en *VenueTickets* een berekende *VenueId* -kolom toe die is geprojecteerd uit de bijbehorende tabellen. Deze weer gaven worden door elastische query's gebruikt voor het parallelliseren van query's en worden naar de juiste externe Tenant database gepusht als er een *VenueId* -kolom aanwezig is. Dit reduceert de hoeveelheid gegevens die wordt geretourneerd aanzienlijk en resulteert in een aanzienlijke toename van de prestaties voor veel query's. Deze globale weer gaven zijn vooraf gemaakt in alle Tenant databases.
 
-1. Open SSMS en [maak verbinding&lt;&gt; met de tenants1- USER-server](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
-1. **Databases**uitvouwen, met de rechtermuisknop _op contosoconcerthall_klikken en **Nieuwe query selecteren**.
-1. Voer de volgende query's uit om het verschil tussen de tabellen met één tenant en de globale weergaven te verkennen:
+1. Open SSMS en [Maak verbinding met de tenants1&lt;-&gt; gebruikers server](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Vouw **data bases**uit, klik met de rechter muisknop op _Contosoconcerthall_en selecteer **nieuwe query**.
+1. Voer de volgende query's uit om het verschil tussen de tabellen met één Tenant en de globale weer gaven te verkennen:
 
    ```T-SQL
    -- The base Venue table, that has no VenueId associated.
@@ -86,91 +86,91 @@ Om dit patroon te simuleren, wordt een set 'globale' weergaven toegevoegd aan de
    SELECT * FROM VenueEvents
    ```
 
-In deze weergaven wordt de *VenueId* berekend als een hash van de naam Venue, maar elke benadering kan worden gebruikt om een unieke waarde te introduceren. Deze benadering is vergelijkbaar met de manier waarop de tenantsleutel wordt berekend voor gebruik in de catalogus.
+In deze weer gaven wordt de *VenueId* berekend als een hash van de naam van de locatie, maar elke benadering kan worden gebruikt om een unieke waarde in te voeren. Deze methode is vergelijkbaar met de manier waarop de Tenant sleutel wordt berekend voor gebruik in de catalogus.
 
-Ga als lid van het onderzoek naar de definitie van de weergave *Locaties:*
+De definitie van de weer gave *evenementen* bekijken:
 
-1. Vouw **in Object Explorer** **contosoconcerthall-weergaven** > **Views**uit:
+1. Vouw in **objectverkenner** **contosoconcerthall** > **weer gaven**uit:
 
    ![Weergaven](media/saas-tenancy-cross-tenant-reporting/views.png)
 
-2. Klik met de rechtermuisknop op **dbo. Locaties.**
-3. **Scriptweergave selecteren als** > **MAKEN naar** > **nieuw queryeditorvenster**
+2. Klik met de rechter muisknop op **dbo. Locaties**.
+3. Selecteer de **script weergave als** > **maken voor het** > **nieuwe query editor-venster**
 
-Script een van de andere *venue* weergaven om te zien hoe ze de *VenueId*toevoegen.
+Scripteer een van de andere *locaties* weergaven om te zien hoe ze de *VenueId*toevoegen.
 
-## <a name="deploy-the-database-used-for-distributed-queries"></a>De database implementeren die wordt gebruikt voor gedistribueerde query's
+## <a name="deploy-the-database-used-for-distributed-queries"></a>De data base implementeren die wordt gebruikt voor gedistribueerde query's
 
-Met deze oefening wordt de _adhocrapportagedatabase_ geïmplementeerd. Dit is de hoofddatabase die het schema bevat dat wordt gebruikt voor het opvragen in alle tenantdatabases. De database wordt geïmplementeerd op de bestaande catalogusserver, de server die wordt gebruikt voor alle beheergerelateerde databases in de voorbeeld-app.
+In deze oefening wordt de _adhocreporting_ -data base geïmplementeerd. Dit is de hoofd database die het schema bevat dat wordt gebruikt voor het uitvoeren van query's in alle Tenant databases. De data base wordt geïmplementeerd op de bestaande catalogus server. Dit is de server die wordt gebruikt voor alle aan beheer gerelateerde data bases in de voor beeld-app.
 
-1. in *PowerShell ISE*, open ... \\Learning\\Modules\\Operational Analytics\\Adhoc Reporting*Demo-AdhocReporting.ps1*. 
+1. Open in *Power shell ISE*... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReporting. ps1*. 
 
-1. Stel **$DemoScenario = 2**, Ad _hoc-rapportagedatabase implementeren_.
+1. Stel **$DemoScenario = 2**in, _Implementeer een ad-hoc rapportage database_.
 
-1. Druk op **F5** om het script uit te voeren en de *adhocrapportagedatabase* te maken.
+1. Druk op **F5** om het script uit te voeren en de *adhocreporting* -data base te maken.
 
-In de volgende sectie voegt u schema toe aan de database, zodat het kan worden gebruikt om gedistribueerde query's uit te voeren.
+In de volgende sectie voegt u een schema toe aan de data base zodat het kan worden gebruikt voor het uitvoeren van gedistribueerde query's.
 
-## <a name="configure-the-head-database-for-running-distributed-queries"></a>De 'hoofd'-database configureren voor het uitvoeren van gedistribueerde query's
+## <a name="configure-the-head-database-for-running-distributed-queries"></a>De Head-Data Base configureren voor het uitvoeren van gedistribueerde query's
 
-Met deze oefening wordt schema (de externe gegevensbron en externe tabeldefinities) toegevoegd aan de _adhocrapportagedatabase_ om query's in alle tenantdatabases mogelijk te maken.
+Deze oefening voegt schema (de externe gegevens bron en externe tabel definities) toe aan de _adhocreporting_ -data base om query's in te scha kelen voor alle Tenant databases.
 
-1. Open SQL Server Management Studio en maak verbinding met de Adhoc-rapportagedatabase die u in de vorige stap hebt gemaakt. De naam van de database is *adhocreporting*.
-2. Open ...\Learning Modules\Operational Analytics\Adhoc Reporting\ _Initialize-AdhocReportingDB.sql_ in SSMS.
-3. Controleer het SQL-script en opmerking:
+1. Open SQL Server Management Studio en maak verbinding met de ad hoc-rapportage database die u in de vorige stap hebt gemaakt. De naam van de data base is *adhocreporting*.
+2. Open. ..\Learning Modules\Operational Analytics\Adhoc Reporting \ _Initialize-AdhocReportingDB. SQL_ in SSMS.
+3. Bekijk het SQL-script en Let op:
 
-   Elastic Query gebruikt een database-scoped referentie om toegang te krijgen tot elk van de tenantdatabases. Deze referentie moet beschikbaar zijn in alle databases en moet normaal gesproken worden verleend aan de minimale rechten die nodig zijn om deze query's in te schakelen.
+   Elastische Query's gebruiken een Data Base-scoped referentie voor toegang tot elk van de Tenant databases. Deze referentie moet beschikbaar zijn in alle data bases en moet normaal gesp roken de minimale rechten worden verleend die nodig zijn om deze query's in te scha kelen.
 
     ![referentie maken](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
 
-   Met de catalogusdatabase als externe gegevensbron worden query's gedistribueerd naar alle databases die in de catalogus zijn geregistreerd op het moment dat de query wordt uitgevoerd. Aangezien servernamen voor elke implementatie verschillend zijn, krijgt dit script de@servernamelocatie van de catalogusdatabase van de huidige server (@) waar het script wordt uitgevoerd.
+   Met de catalogus database als externe gegevens bron worden query's gedistribueerd naar alle data bases die in de catalogus zijn geregistreerd op het moment dat de query wordt uitgevoerd. Als server namen verschillend zijn voor elke implementatie, wordt met dit script de locatie van de catalogus database opgehaald van de huidige server@servername(@) waar het script wordt uitgevoerd.
 
-    ![externe gegevensbron maken](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
+    ![externe gegevens bron maken](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   De externe tabellen die verwijzen naar de globale weergaven die in de vorige sectie zijn beschreven en gedefinieerd met **DISTRIBUTION = SHARDED(VenueId)**. Omdat elke *VenueId* naar een afzonderlijke database wordt toegewezen, verbetert dit de prestaties voor veel scenario's, zoals in de volgende sectie wordt weergegeven.
+   De externe tabellen die verwijzen naar de algemene weer gaven die in de vorige sectie zijn beschreven, en die zijn gedefinieerd met **Distribution = Shard (VenueId)**. Omdat elke *VenueId* wordt toegewezen aan een afzonderlijke Data Base, verbetert dit de prestaties voor veel scenario's, zoals wordt weer gegeven in de volgende sectie.
 
     ![externe tabellen maken](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
-   De lokale tabel _VenueTypes_ die is gemaakt en ingevuld. Deze tabel met verwijzingsgegevens is gebruikelijk in alle tenantdatabases, zodat deze hier kan worden weergegeven als een lokale tabel en kan worden gevuld met de algemene gegevens. Voor sommige query's kan het hebben van deze tabel die in de hoofddatabase is gedefinieerd, de hoeveelheid gegevens verminderen die naar de hoofddatabase moet worden verplaatst.
+   De lokale tabel _VenueTypes_ die is gemaakt en ingevuld. Deze referentie gegevens tabel is gebruikelijk in alle Tenant databases, zodat deze kan worden weer gegeven als een lokale tabel en gevuld met de algemene gegevens. Voor sommige query's kan de hoeveelheid gegevens die moet worden verplaatst naar de hoofd database worden verminderd als deze tabel is gedefinieerd in de hoofd database.
 
     ![tabel maken](media/saas-tenancy-cross-tenant-reporting/create-table.png)
 
-   Als u op deze manier referentietabellen opneemt, moet u het tabelschema en de gegevens bijwerken wanneer u de tenantdatabases bijwerkt.
+   Als u verwijzings tabellen op deze manier opneemt, moet u ervoor zorgen dat u het tabel schema en de gegevens bijwerkt wanneer u de Tenant databases bijwerkt.
 
-4. Druk op **F5** om het script uit te voeren en de *adhocrapportagedatabase te initialiseren.* 
+4. Druk op **F5** om het script uit te voeren en Initialiseer de *adhocreporting* -data base. 
 
-Nu u gedistribueerde query's uitvoeren en inzichten verzamelen over alle tenants!
+U kunt nu gedistribueerde query's uitvoeren en inzichten verzamelen over alle tenants.
 
 ## <a name="run-distributed-queries"></a>Gedistribueerde query's uitvoeren
 
-Nu de *adhocrapportagedatabase* is ingesteld, u een aantal gedistribueerde query's uitvoeren. Neem het uitvoeringsplan op voor een beter inzicht in waar de queryverwerking plaatsvindt. 
+Nu de *adhocreporting* -data base is ingesteld, gaat u naar een aantal gedistribueerde query's en voert u deze uit. Neem het uitvoerings plan op voor een beter begrip van waar de query verwerking plaatsvindt. 
 
-Wanneer u het uitvoeringsplan inspecteert, zweeft u over de planpictogrammen voor details. 
+Als u het uitvoerings plan wilt inspecteren, houdt u de muis aanwijzer boven de pictogrammen plannen voor meer informatie. 
 
-Belangrijk om op te merken, is dat het instellen **van DISTRIBUTIE = SHARDED (VenueId)** wanneer de externe gegevensbron is gedefinieerd verbetert de prestaties voor veel scenario's. Zoals elke *VenueId* kaarten naar een individuele database, filtering is gemakkelijk op afstand gedaan, het retourneren van alleen de benodigde gegevens.
+Belang rijk om te weten dat het instellen van **distributie = Shard (VenueId)** wanneer de externe gegevens bron is gedefinieerd, verbetert de prestaties voor veel scenario's. Wanneer elke *VenueId* wordt toegewezen aan een afzonderlijke Data Base, kan het filteren eenvoudig op afstand worden uitgevoerd, waarbij alleen de benodigde gegevens worden geretourneerd.
 
-1. Open... \\Learning\\Modules\\Operational Analytics\\Adhoc Reporting*Demo-AdhocReportingQueries.sql* in SSMS.
-2. Zorg ervoor dat u bent verbonden met de **adhocrapportagedatabase.**
-3. Selecteer het menu **Query** en klik op **Uitvoeringsplan werkelijke uitvoering opnemen**
-4. Markeer de *welke locaties momenteel zijn geregistreerd?* query, en druk op **F5**.
+1. Openen... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReportingQueries. SQL* in SSMS.
+2. Zorg ervoor dat u bent verbonden met de **adhocreporting** -data base.
+3. Selecteer het **query** menu en klik op **werkelijke uitvoerings plan toevoegen**
+4. Markeer de *locaties die momenteel zijn geregistreerd?* query en druk op **F5**.
 
-   De query retourneert de volledige locatielijst, die laat zien hoe snel en eenvoudig het is om alle tenants te bevragen en gegevens van elke tenant te retourneren.
+   De query retourneert de volledige lijst met locaties en illustreert hoe snel en eenvoudig het is om een query uit te geven voor alle tenants en om gegevens van elke Tenant te retour neren.
 
-   Controleer het plan en zie dat de volledige kosten in de externe query zijn. Elke tenantdatabase voert de query op afstand uit en retourneert de locatiegegevens naar de hoofddatabase.
+   Inspecteer het plan en controleer of de volledige kosten zich in de externe query bevinden. Elke Tenant database voert de query op afstand uit en retourneert de locatie-informatie naar de hoofd database.
 
-   ![SELECTEER * UIT dbo. Locaties](media/saas-tenancy-cross-tenant-reporting/query1-plan.png)
+   ![SELECT * FROM dbo. Venues](media/saas-tenancy-cross-tenant-reporting/query1-plan.png)
 
 5. Selecteer de volgende query en druk op **F5**.
 
-   Met deze query worden gegevens uit de tenantdatabases en de lokale *locatietypen-tabel* (lokaal, omdat het een tabel in de *adhocrapportagedatabase* is) samenvoegt.
+   Met deze query worden gegevens uit de Tenant databases en de lokale *VenueTypes* -tabel (Local, weer gegeven als een tabel in de *adhocreporting* -data base).
 
-   Controleer het plan en zie dat de meeste kosten de externe query zijn. Elke tenantdatabase retourneert de locatiegegevens en voert een lokale join uit met de lokale *VenueTypes-tabel* om de vriendelijke naam weer te geven.
+   Inspecteer het plan en controleer of het meren deel van de kosten de externe query is. Elke Tenant database retourneert de locatie gegevens en voert een lokale samen voeging uit met de lokale *VenueTypes* -tabel om de beschrijvende naam weer te geven.
 
-   ![Deelnemen aan externe en lokale gegevens](media/saas-tenancy-cross-tenant-reporting/query2-plan.png)
+   ![Verbinding maken met externe en lokale gegevens](media/saas-tenancy-cross-tenant-reporting/query2-plan.png)
 
-6. Selecteer nu de *op welke dag waren de meeste tickets verkocht?* query, en druk op **F5**.
+6. Selecteer nu de optie *op welke dag zijn de meeste tickets verkocht?* query en druk op **F5**.
 
-   Deze query doet een beetje meer complexe samenvoegen en aggregatie. Het grootste deel van de verwerking vindt op afstand plaats.  Alleen enkele rijen, met het dagelijkse aantal tickets per dag van elke locatie, worden teruggestuurd naar de hoofddatabase.
+   Deze query heeft een beetje complexere join en aggregatie. De meeste verwerking vindt op afstand plaats.  Alleen enkele rijen met het aantal dagelijkse ticket verkopen per dag worden geretourneerd naar de hoofd database.
 
    ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
@@ -182,12 +182,12 @@ In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > 
 > * Gedistribueerde query's uitvoeren voor alle databases van de tenant
-> * Implementeer een rapportagedatabase en definieer het schema dat nodig is om gedistribueerde query's uit te voeren.
+> * Implementeer een rapportage database en definieer het schema dat vereist is voor het uitvoeren van gedistribueerde query's.
 
 
-Probeer nu de [tenantanalytics-zelfstudie](saas-tenancy-tenant-analytics.md) om gegevens te extraheren naar een afzonderlijke analysedatabase voor complexere analyseverwerking.
+Probeer nu de [zelf studie voor Tenant analyse](saas-tenancy-tenant-analytics.md) om het extra heren van gegevens te verkennen naar een afzonderlijke Analytics-Data Base voor complexere analyse verwerking.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
-* Aanvullende [tutorials die voortbouwen op de Wingtip Tickets SaaS Database Per Tenant-toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Aanvullende [zelf studies die voortbouwen op de SaaS-data base van Wingtip tickets per Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische query](sql-database-elastic-query-overview.md)

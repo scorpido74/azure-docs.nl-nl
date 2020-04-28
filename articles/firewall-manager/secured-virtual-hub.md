@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: victorh
 ms.openlocfilehash: d93c3b47c518962bf45762b846eaf53e490ae8f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73518435"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>Wat is een beveiligde virtuele hub?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Een virtuele hub is een door Microsoft beheerd virtueel netwerk dat connectiviteit van andere bronnen mogelijk maakt. Wanneer een virtuele hub wordt gemaakt vanuit een virtueel WAN in de Azure-portal, worden een virtuele hub VNet en gateways (optioneel) gemaakt als componenten.
+Een virtuele hub is een virtueel netwerk dat door micro soft wordt beheerd en waarmee u verbinding kunt maken vanuit andere bronnen. Wanneer een virtuele hub wordt gemaakt op basis van een virtueel WAN in de Azure Portal, worden er een virtuele-hub VNet en gateways (optioneel) gemaakt als de bijbehorende onderdelen.
 
-Een *beveiligde* virtuele hub is een [Azure Virtual WAN Hub](../virtual-wan/virtual-wan-about.md#resources) met bijbehorend beveiligings- en routeringsbeleid dat is geconfigureerd door Azure Firewall Manager. Gebruik beveiligde virtuele hubs om eenvoudig hub-and-spoke en transitieve architecturen te maken met native beveiligingsservices voor verkeersgovernance en -bescherming. 
+Een *beveiligde* virtuele hub is een [virtuele WAN-hub van Azure](../virtual-wan/virtual-wan-about.md#resources) met bijbehorende beveiligings-en routerings beleidsregels die door Azure firewall Manager zijn geconfigureerd. Gebruik beveiligde virtuele hubs om eenvoudig hub-en-spoke en transitieve architecturen te maken met systeem eigen beveiligings Services voor verkeers beheer en-beveiliging. 
 
-U een beveiligde virtuele hub gebruiken als een beheerde centrale VNet zonder on-prem-connectiviteit. Het vervangt de centrale VNet die voorheen nodig was voor een Azure Firewall-implementatie. Aangezien de beveiligde virtuele hub geautomatiseerde routering biedt, is het niet nodig om uw eigen UDR's (door de gebruiker gedefinieerde routes) te configureren om verkeer door uw firewall te leiden.
+U kunt een beveiligde virtuele hub gebruiken als een beheerd centraal VNet zonder on-premises connectiviteit. Het vervangt het centrale VNet dat eerder is vereist voor een Azure Firewall-implementatie. Omdat de beveiligde virtuele hub geautomatiseerde route ring biedt, is het niet nodig om uw eigen Udr's (door de gebruiker gedefinieerde routes) te configureren om verkeer via uw firewall te routeren.
 
-Het is ook mogelijk om beveiligde virtuele hubs te gebruiken als onderdeel van een volledige Virtual WAN-architectuur. Deze architectuur biedt beveiligde, geoptimaliseerde en geautomatiseerde branch-connectiviteit naar en via Azure. U de services kiezen om uw netwerkverkeer te beschermen en te beheren, waaronder Azure Firewall en andere secaas-providers (Security as a Service) van derden.
+Het is ook mogelijk om beveiligde virtuele hubs te gebruiken als onderdeel van een volledige virtuele WAN-architectuur. Deze architectuur biedt beveiligde, geoptimaliseerde en geautomatiseerde filiaal connectiviteit met en via Azure. U kunt de Services kiezen om uw netwerk verkeer te beveiligen en te beheren, met inbegrip van Azure Firewall en andere SECaaS-providers (Security as a Service) van derden.
 
 ## <a name="create-a-secured-virtual-hub"></a>Een beveiligde virtuele hub maken
 
-Met Firewall Beheer in de Azure-portal u een nieuwe beveiligde virtuele hub maken of een bestaande virtuele hub converteren die u eerder hebt gemaakt met Azure Virtual WAN.
+Met firewall manager in de Azure Portal kunt u een nieuwe beveiligde virtuele hub maken of een bestaande virtuele hub die u eerder hebt gemaakt met behulp van Azure Virtual WAN converteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Zelfstudie: Beveilig uw cloudnetwerk met Azure Firewall Manager met Azure Firewall Manager met Azure Firewall Manager.](secure-cloud-network.md)
+Zie [zelf studie: uw Cloud netwerk beveiligen met Azure firewall Manager met behulp van de Azure Portal](secure-cloud-network.md)om een beveiligde virtuele hub te maken en deze te gebruiken om een hub-en spoke-netwerk te beveiligen en te beheren.

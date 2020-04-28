@@ -1,7 +1,7 @@
 ---
-title: Tekst gesplitst cognitieve vaardigheid
+title: Cognitieve vaardigheid van tekst splitsen
 titleSuffix: Azure Cognitive Search
-description: Breek tekst op in brokken of pagina's tekst op basis van lengte in een AI-verrijkingspijplijn in Azure Cognitive Search.
+description: Verbreek tekst in segmenten of tekst pagina's op basis van lengte in een AI-verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,48 +9,48 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73479653"
 ---
-# <a name="text-split-cognitive-skill"></a>Tekst gesplitst cognitieve vaardigheid
+# <a name="text-split-cognitive-skill"></a>Cognitieve vaardigheid van tekst splitsen
 
-De **vaardigheid Tekstgesplitst** breekt tekst in stukjes tekst. U opgeven of u de tekst wilt opsplitsen in zinnen of in pagina's van een bepaalde lengte. Deze vaardigheid is vooral handig als er maximale vereisten voor tekstlengte zijn in andere vaardigheden stroomafwaarts. 
+De **tekst gesplitste** vaardigheid verbreekt tekst in delen van tekst. U kunt opgeven of u de tekst wilt opsplitsen in zinnen of op pagina's met een bepaalde lengte. Deze vaardigheid is vooral nuttig als er Maxi maal vereisten voor de lengte van de tekst in andere vaardig heden downstream zijn. 
 
 > [!NOTE]
-> Deze vaardigheid is niet gebonden aan een API voor Cognitive Services en u wordt niet in rekening gebracht voor het gebruik ervan. U moet echter nog steeds [een resource voor Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md)om de optie **Gratis** resource te overschrijven die u beperkt tot een klein aantal dagelijkse verrijkingen per dag.
+> Deze vaardigheid is niet gebonden aan een Cognitive Services-API en er worden geen kosten in rekening gebracht voor het gebruik ervan. U moet nog steeds [een Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md)om de optie **gratis** resource te overschrijven, waardoor u een klein aantal dagelijkse verrijkingen per dag beperkt.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.SplitSkill 
+Micro soft. skills. Text. SplitSkill 
 
-## <a name="skill-parameters"></a>Vaardigheidsparameters
+## <a name="skill-parameters"></a>Vaardigheids parameters
 
 Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| textSplitMode      | "pagina's" of "zinnen" | 
-| maximale paginalengte | Als textSplitMode is ingesteld op 'pagina's', verwijst `String.Length`dit naar de maximale paginalengte zoals gemeten door . De minimumwaarde is 100.  Als de textSplitMode is ingesteld op "pagina's", zal het algoritme proberen om de tekst op te splitsen in brokken die hoogstens "maximumPageLength" in grootte zijn. In dit geval zal het algoritme zijn best doen om de zin op een zinsgrens te breken, zodat de grootte van de chunk iets kleiner kan zijn dan "maximumPageLength". | 
-| standaardLanguageCode   | (facultatief) Een van de volgende `da, de, en, es, fi, fr, it, ko, pt`taalcodes: . Standaard is Engels (nl). Weinig dingen om te overwegen:<ul><li>Als u een taalcode-landcode-indeling doorgeeft, wordt alleen het taalcodegedeelte van de indeling gebruikt.</li><li>Als de taal zich niet in de vorige lijst bevindt, doorbreekt de gesplitste vaardigheid de tekst bij tekengrenzen.</li><li>Het verstrekken van een taalcode is handig om te voorkomen dat een woord wordt gehalveerd voor niet-witruimtetalen zoals Chinees, Japans en Koreaans.</li><li>Als u de taal niet kent (d.w.z. u moet de tekst voor invoer splitsen in de [LanguageDetectionSkill),](cognitive-search-skill-language-detection.md)moet de standaardstandaard Engels (en) voldoende zijn. </li></ul>  |
+| textSplitMode      | ' Pagina's ' of ' zinnen ' | 
+| maximumPageLength | Als textSplitMode is ingesteld op ' pagina's ', verwijst dit naar de maximale pagina lengte, gemeten door `String.Length`. De minimum waarde is 100.  Als de textSplitMode is ingesteld op ' pagina's ', probeert het algoritme de tekst te splitsen in segmenten die de meeste grootte hebben ' maximumPageLength '. In dit geval is het algoritme het beste om de zin op een zin te verkorten, zodat de grootte van het segment iets kleiner is dan ' maximumPageLength '. | 
+| defaultLanguageCode   | Beschrijving Een van de volgende taal codes: `da, de, en, es, fi, fr, it, ko, pt`. De standaard waarde is Engels (en). Enkele dingen die u moet overwegen:<ul><li>Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.</li><li>Als de taal zich niet in de vorige lijst bevindt, wordt de tekst door de gesplitste vaardigheid op teken grenzen afgebroken.</li><li>Het opgeven van een taal code is handig om te voor komen dat een woord in de helft wordt geknipt voor niet-spatie talen, zoals Chinees, Japans en Koreaans.</li><li>Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), moet de standaard waarde voor Engels (en) voldoende zijn. </li></ul>  |
 
 
-## <a name="skill-inputs"></a>Vaardigheidsingangen
+## <a name="skill-inputs"></a>Vaardigheids invoer
 
 | Parameternaam       | Beschrijving      |
 |----------------------|------------------|
-| tekst  | De tekst die moet worden opgesplitst in subtekenreeks. |
-| languageCode  | (Optioneel) Taalcode voor het document. Als u de taal niet kent (d.w.z. u moet de tekst voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)splitsen), is het veilig om deze invoer te verwijderen.  |
+| tekst  | De tekst die moet worden gesplitst in subtekenreeks. |
+| languageCode  | Beschrijving De taal code voor het document. Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), is het veilig om deze invoer te verwijderen.  |
 
-## <a name="skill-outputs"></a>Vaardigheidsuitvoer 
+## <a name="skill-outputs"></a>Vaardigheids uitvoer 
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| tekstItems | Een array van substrings die werden geëxtraheerd. |
+| textItems | Een matrix met subtekenreeksen die zijn geëxtraheerd. |
 
 
-##  <a name="sample-definition"></a>Voorbeelddefinitie
+##  <a name="sample-definition"></a>Voorbeeld definitie
 
 ```json
 {
@@ -127,10 +127,10 @@ Parameters zijn hoofdlettergevoelig.
 }
 ```
 
-## <a name="error-cases"></a>Foutgevallen
-Als een taal niet wordt ondersteund, wordt een waarschuwing gegenereerd en wordt de tekst gesplitst op tekengrenzen.
+## <a name="error-cases"></a>Fout cases
+Als een taal niet wordt ondersteund, wordt er een waarschuwing gegenereerd en wordt de tekst op teken grenzen gesplitst.
 
 ## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
-+ [Een vaardighedenset definiëren](cognitive-search-defining-skillset.md)
++ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

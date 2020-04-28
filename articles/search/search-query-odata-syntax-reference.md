@@ -1,7 +1,7 @@
 ---
-title: Syntaxisverwijzing oData-expressie
+title: Verwijzing naar de syntaxis van de OData-expressie
 titleSuffix: Azure Cognitive Search
-description: Formele grammatica- en syntaxisspecificatie voor OData-expressies in Azure Cognitive Search-query's.
+description: Formele grammatica en syntaxis specificatie voor OData-expressies in azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,28 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793239"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Syntaxisverwijzing oData-expressie voor Azure Cognitive Search
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Naslag informatie voor de syntaxis van OData-expressies voor Azure Cognitive Search
 
-Azure Cognitive Search gebruikt [OData-expressies](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) als parameters in de API. Meestal worden OData-expressies `$orderby` gebruikt `$filter` voor de parameters en parameters. Deze expressies kunnen complex zijn en meerdere clausules, functies en operatoren bevatten. Zelfs eenvoudige OData-expressies zoals eigenschapspaden worden echter in veel delen van de Azure Cognitive Search REST API gebruikt. Padexpressies worden bijvoorbeeld gebruikt om te verwijzen naar subvelden van complexe velden overal in de API, zoals bij `$select` het weergeven van subvelden in een [suggestie,](index-add-suggesters.md)een [scoringsfunctie,](index-add-scoring-profiles.md)de parameter of zelfs [zoeken in Lucene-query's](query-lucene-syntax.md).
+Azure Cognitive Search gebruikt [OData-expressies](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) als para meters in de API. OData-expressies worden meestal gebruikt voor de `$orderby` para meters en. `$filter` Deze expressies kunnen complex zijn, met meerdere componenten, functies en Opera tors. Zelfs eenvoudige OData-expressies zoals eigenschaps paden worden gebruikt in veel onderdelen van de Azure Cognitive Search REST API. Paden worden bijvoorbeeld gebruikt om te verwijzen naar subvelden van complexe velden overal in de API, zoals bij het weer geven van subvelden in een [suggestie](index-add-suggesters.md), een [Score functie](index-add-scoring-profiles.md), de `$select` para meter of zelfs [geveldeerde zoek opdracht in lucene-query's](query-lucene-syntax.md).
 
-In dit artikel worden al deze vormen van OData-expressies beschreven met behulp van een formele grammatica. Er is ook een [interactief diagram](#syntax-diagram) om visueel te helpen de grammatica te verkennen.
+In dit artikel worden al deze vormen van OData-expressies met een formele grammatica beschreven. Er is ook een [interactief diagram](#syntax-diagram) waarmee u de grammatica visueel kunt verkennen.
 
 ## <a name="formal-grammar"></a>Formele grammatica
 
-We kunnen de subset van de OData-taal die wordt ondersteund door Azure Cognitive Search beschrijven met behulp van een EBNF -grammatica[(Extended Backus-Naur Form).](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form) Regels worden 'top-down' weergegeven, te beginnen met de meest complexe expressies, en ze op te splitsen in primitievere expressies. Bovenaan staan de grammaticaregels die overeenkomen met specifieke parameters van de Azure Cognitive Search REST API:
+We kunnen de subset van de OData-taal die wordt ondersteund door Azure Cognitive Search beschrijven met behulp van een EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form))-grammatica. De regels worden ' boven naar beneden ' weer gegeven, te beginnen met de meest complexe expressies en opsplitsen in meer primitieve expressies. Bovenaan ziet u de grammatica regels die overeenkomen met de specifieke para meters van de Azure Cognitive Search REST API:
 
-- [`$filter`](search-query-odata-filter.md), gedefinieerd door `filter_expression` de regel.
-- [`$orderby`](search-query-odata-orderby.md), gedefinieerd door `order_by_expression` de regel.
-- [`$select`](search-query-odata-select.md), gedefinieerd door `select_expression` de regel.
-- Veldpaden, gedefinieerd door `field_path` de regel. Veldpaden worden in de hele API gebruikt. Ze kunnen verwijzen naar velden op het hoogste niveau van een index of subvelden met een of meer [complexe veldvoorouders.](search-howto-complex-data-types.md)
+- [`$filter`](search-query-odata-filter.md), gedefinieerd door de `filter_expression` regel.
+- [`$orderby`](search-query-odata-orderby.md), gedefinieerd door de `order_by_expression` regel.
+- [`$select`](search-query-odata-select.md), gedefinieerd door de `select_expression` regel.
+- Veld paden, gedefinieerd door de `field_path` regel. Veld paden worden gebruikt in de API. Ze kunnen verwijzen naar de velden op het hoogste niveau van een index of subvelden met een of meer [complexe veld](search-howto-complex-data-types.md) voorgangers.
 
-Na de EBNF is een browsable [syntaxdiagram](https://en.wikipedia.org/wiki/Syntax_diagram) waarmee u interactief de grammatica en de relaties tussen de regels verkennen.
+Nadat de EBNF is een doorzoekbaar- [syntaxis diagram](https://en.wikipedia.org/wiki/Syntax_diagram) waarmee u de grammatica en de relaties tussen de regels interactief kunt verkennen.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>Syntaxisdiagram
+## <a name="syntax-diagram"></a>Syntaxis diagram
 
-Als u de OData-taalgrammatica die wordt ondersteund door Azure Cognitive Search visueel wilt verkennen, probeert u het interactieve syntaxisdiagram:
+Als u de grammatica van de OData-taal die wordt ondersteund door Azure Cognitive Search, visueel wilt verkennen, probeert u het interactieve syntaxis diagram:
 
 > [!div class="nextstepaction"]
-> [Syntaxisdiagram OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Syntaxis diagram van OData voor Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Zie ook  
 
-- [Filters in Azure Cognitive Search](search-filters.md)
-- [Zoekdocumenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-- [Syntaxis van Lucene query](query-lucene-syntax.md)
-- [Eenvoudige querysyntaxis in Azure Cognitive Search](query-simple-syntax.md)
+- [Filters in azure Cognitive Search](search-filters.md)
+- [Zoeken naar documenten &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Lucene-query syntaxis](query-lucene-syntax.md)
+- [Eenvoudige query syntaxis in azure Cognitive Search](query-simple-syntax.md)

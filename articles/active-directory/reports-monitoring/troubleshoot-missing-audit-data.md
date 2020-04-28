@@ -1,5 +1,5 @@
 ---
-title: Problemen met ontbrekende gegevens in activiteitenlogboeken oplossen | Microsoft Documenten
+title: Problemen met ontbrekende gegevens in activiteiten Logboeken oplossen | Microsoft Docs
 description: Hier vindt u informatie over een oplossing voor ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74014276"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problemen met ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory oplossen 
@@ -32,7 +32,7 @@ ms.locfileid: "74014276"
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Oorzaak
 
@@ -53,7 +53,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Oorzaak
 
@@ -74,7 +74,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Oorzaak
 
@@ -94,6 +94,6 @@ U hebt twee opties om de gegevens langer dan 30 dagen te bewaren. U kunt de [API
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Bewaarbeleid Azure Active Directory-rapporten](reference-reports-data-retention.md)
-* [Latenlaten van Azure Active Directory-rapportage](reference-reports-latencies.md).
-* [Veelgestelde vragen over azure Active Directory-rapportage](reports-faq.md).
+* [Azure Active Directory rapportage latenties](reference-reports-latencies.md).
+* [Veelgestelde vragen over Azure Active Directory rapportage](reports-faq.md).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Een mislukt circuit opnieuw instellen - ExpressRoute: PowerShell: Azure | Microsoft Documenten'
-description: Met dit artikel u een ExpressRoute-circuit opnieuw instellen dat in een mislukte staat verkeert.
+title: 'Een mislukt circuit opnieuw instellen-ExpressRoute: Power shell: Azure | Microsoft Docs'
+description: Dit artikel helpt u bij het opnieuw instellen van een ExpressRoute-circuit met de status mislukt.
 services: expressroute
 author: anzaman
 ms.service: expressroute
@@ -9,15 +9,15 @@ ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
 ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73748103"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Een ExpressRoute-circuit met fouten opnieuw instellen
 
-Wanneer een bewerking op een ExpressRoute-circuit niet succesvol is voltooid, kan het circuit in een 'mislukte' toestand gaan. Met dit artikel u een mislukt Azure ExpressRoute-circuit opnieuw instellen.
+Wanneer een bewerking in een ExpressRoute-circuit niet kan worden voltooid, kan het circuit de status mislukt hebben. Dit artikel helpt u bij het opnieuw instellen van een mislukt Azure ExpressRoute-circuit.
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -40,7 +40,7 @@ Wanneer een bewerking op een ExpressRoute-circuit niet succesvol is voltooid, ka
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-5. Voer de volgende opdrachten uit om een circuit dat in een mislukte staat is, opnieuw in te stellen:
+5. Voer de volgende opdrachten uit om een circuit met de status mislukt opnieuw in te stellen:
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -48,8 +48,8 @@ Wanneer een bewerking op een ExpressRoute-circuit niet succesvol is voltooid, ka
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-Het circuit moet nu gezond zijn. Open een ondersteuningsticket met [Microsoft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als het circuit nog steeds in een mislukte staat verkeert.
+Het circuit zou nu in orde moeten zijn. Open een ondersteunings ticket met [ondersteuning van micro soft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als het circuit nog steeds de status Mislukt heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Open een ondersteuningsticket met [Microsoft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u nog steeds problemen ondervindt.
+Open een ondersteunings ticket met [micro soft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u nog steeds problemen ondervindt.

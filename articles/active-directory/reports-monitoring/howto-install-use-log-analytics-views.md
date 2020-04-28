@@ -1,6 +1,6 @@
 ---
-title: De weergaven logboekanalyse installeren en gebruiken | Microsoft Documenten
-description: Meer informatie over het installeren en gebruiken van de logboekanalyseweergaven voor Azure Active Directory
+title: De weer gaven van log Analytics installeren en gebruiken | Microsoft Docs
+description: Meer informatie over het installeren en gebruiken van de log Analytics-weer gaven voor Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,60 +18,60 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74014423"
 ---
-# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>De weergave van logboekanalyses voor Azure Active Directory installeren en gebruiken
+# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken
 
-Met de overzichtsweergaven van Azure Active Directory-logboekanalyses u de AD-activiteitslogboeken van Azure in uw Azure AD-tenant analyseren en doorzoeken. Azure AD-activiteitslogboeken omvatten:
+Met de weer gaven van de Azure Active Directory log Analytics kunt u de Azure AD-activiteiten logboeken analyseren en doorzoeken in uw Azure AD-Tenant. Azure AD-activiteiten logboeken zijn onder andere:
 
-* Controlelogboeken: Het [activiteitenrapport met controlelogboeken](concept-audit-logs.md) geeft u toegang tot de geschiedenis van elke taak die in uw tenant wordt uitgevoerd.
-* Aanmeldingslogboeken: met het [aanmeldingsrapport](concept-sign-ins.md)u bepalen wie de taken heeft uitgevoerd die worden gerapporteerd in de controlelogboeken.
+* Audit logboeken: in het [activiteiten rapport van controle logboeken](concept-audit-logs.md) krijgt u toegang tot de geschiedenis van elke taak die wordt uitgevoerd in uw Tenant.
+* Aanmeld logboeken: met het [rapport aanmeldings activiteit](concept-sign-ins.md)kunt u bepalen wie de taken heeft uitgevoerd die worden gerapporteerd in de audit Logboeken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de weergaven logboekanalyse wilt gebruiken, moet u het andere doen:
+Als u de log Analytics-weer gaven wilt gebruiken, hebt u het volgende nodig:
 
-* Een Werkruimte logAnalytics in uw Azure-abonnement. Meer informatie over het [maken van een Log Analytics-werkruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
-* Voer eerst de stappen uit om [de Azure AD-activiteitslogboeken naar uw logboekanalysewerkruimte te routeren.](howto-integrate-activity-logs-with-log-analytics.md)
-* Download de weergaven van de [GitHub-opslagplaats](https://aka.ms/AADLogAnalyticsviews) naar uw lokale computer.
+* Een Log Analytics-werk ruimte in uw Azure-abonnement. Meer informatie over het [maken van een log Analytics-werk ruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Voer eerst de stappen uit om [de Azure AD-activiteiten logboeken te routeren naar uw log Analytics-werk ruimte](howto-integrate-activity-logs-with-log-analytics.md).
+* Down load de weer gaven van de [github-opslag plaats](https://aka.ms/AADLogAnalyticsviews) naar uw lokale computer.
 
-## <a name="install-the-log-analytics-views"></a>De weergaven van logboekanalyse installeren
+## <a name="install-the-log-analytics-views"></a>De log Analytics-weer gaven installeren
 
-1. Navigeer naar uw werkruimte Log Analytics. Ga hiervoor eerst naar de [Azure-portal](https://portal.azure.com) en selecteer **Alle services**. Typ **Log Analytics** in het tekstvak en selecteer Log **Analytics-werkruimten**. Selecteer de werkruimte waarnaar u de activiteitslogboeken hebt doorgestuurd, als onderdeel van de vereisten.
-2. Selecteer **Ontwerper weergeven,** selecteer **Importeren** en selecteer Vervolgens **Bestand kiezen** om de weergaven van uw lokale computer te importeren.
-3. Selecteer de weergaven die u hebt gedownload uit de vereisten en selecteer **Opslaan** om de import op te slaan. Doe dit voor de weergave **Azure AD-accountinrichtingsgebeurtenissen** en de weergave **Aanmeldingsgebeurtenissen.**
+1. Navigeer naar uw Log Analytics-werk ruimte. Als u dit wilt doen, gaat u eerst naar de [Azure Portal](https://portal.azure.com) en selecteert u **alle services**. Typ **log Analytics** in het tekstvak en selecteer log Analytics- **werk ruimten**. Selecteer de werk ruimte waarnaar u de activiteiten Logboeken hebt gerouteerd als onderdeel van de vereisten.
+2. Selecteer **Designer weer geven**, selecteer **importeren** en selecteer vervolgens **bestand kiezen** om de weer gaven van uw lokale computer te importeren.
+3. Selecteer de weer gaven die u hebt gedownload uit de vereisten en selecteer **Opslaan** om de import op te slaan. Doe dit voor de weer gave gebeurtenissen voor het **inrichten van Azure AD-accounts** en de weer gave van de **aanmeld gebeurtenissen** .
 
-## <a name="use-the-views"></a>De weergaven gebruiken
+## <a name="use-the-views"></a>De weer gaven gebruiken
 
-1. Navigeer naar uw werkruimte Log Analytics. Ga hiervoor eerst naar de [Azure-portal](https://portal.azure.com) en selecteer **Alle services**. Typ **Log Analytics** in het tekstvak en selecteer Log **Analytics-werkruimten**. Selecteer de werkruimte waarnaar u de activiteitslogboeken hebt doorgestuurd, als onderdeel van de vereisten.
+1. Navigeer naar uw Log Analytics-werk ruimte. Als u dit wilt doen, gaat u eerst naar de [Azure Portal](https://portal.azure.com) en selecteert u **alle services**. Typ **log Analytics** in het tekstvak en selecteer log Analytics- **werk ruimten**. Selecteer de werk ruimte waarnaar u de activiteiten Logboeken hebt gerouteerd als onderdeel van de vereisten.
 
-2. Zodra u zich in de werkruimte bevindt, selecteert u **Werkruimteoverzicht**. U ziet de volgende drie weergaven:
+2. Zodra u zich in de werk ruimte bevindt, selecteert u **werkruimte samenvatting**. De volgende drie weer gaven moeten worden weer gegeven:
 
-    * **Azure AD-accountinrichtingsgebeurtenissen:** in deze weergave worden rapporten weergegeven met betrekking tot de controlebepalingsactiviteit, zoals het aantal nieuwe gebruikers dat in- en inrichtingsfouten heeft ingericht en ingericht, het aantal gebruikers dat is bijgewerkt en updatefouten en het aantal gebruikers dat is ingericht en bijbehorende fouten.    
-    * **Aanmeldingsgebeurtenissen**: deze weergave toont de meest relevante rapporten met betrekking tot het bewaken van aanmeldingsactiviteiten, zoals aanmeldingen per toepassing, gebruiker, apparaat en een overzichtsweergave die het aantal aanmeldingen in de loop van de tijd bijhoudt.
+    * **Gebeurtenissen voor het inrichten van Azure AD-accounts**: deze weer gave bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en het inrichten van fouten, het aantal gebruikers dat is bijgewerkt en het bijwerken van fouten en het aantal gebruikers dat is ingericht en de bijbehorende fouten.    
+    * **Gebeurtenissen voor aanmeldingen**: deze weer gave bevat de meest relevante rapporten met betrekking tot het controleren van de aanmeldings activiteit, zoals aanmeldingen per toepassing, gebruiker, apparaat en een samen vatting van het aantal aanmeldingen in de loop van de tijd.
 
-3. Selecteer een van deze weergaven om in de afzonderlijke rapporten te springen. U ook waarschuwingen instellen voor een van de rapportparameters. Laten we bijvoorbeeld een waarschuwing instellen voor elke keer dat er een aanmeldingsfout optreedt. Selecteer hiervoor eerst de weergave **Aanmeldingsgebeurtenissen,** selecteer **Aanmeldingsfouten in de loop van de tijd** en selecteer vervolgens **Analytics** om de pagina details te openen, met de werkelijke query achter het rapport. 
+3. Selecteer een van deze weer gaven om naar de afzonderlijke rapporten te gaan. U kunt ook waarschuwingen instellen voor een van de rapport parameters. Laten we bijvoorbeeld een waarschuwing instellen voor elke keer dat er een fout is opgetreden bij het aanmelden. Als u dit wilt doen, selecteert u eerst de weer gave voor de **aanmeldings gebeurtenissen** , selecteert u **aanmeldings fouten in een tijd** rapport en selecteert u vervolgens **Analytics** om de pagina Details te openen, met de daad werkelijke query achter het rapport. 
 
     ![Details](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Selecteer **Waarschuwing instellen**en selecteer wanneer de aangepaste **logboekzoekopdracht logica is die niet is &lt;gedefinieerd&gt; ** onder de sectie **Waarschuwingscriteria.** Omdat we willen waarschuwen wanneer er een aanmeldingsfout optreedt, stelt u de **drempelwaarde** voor de standaardwaarschuwingslogica in op **1** en selecteert u **Gereed**. 
+4. Selecteer **waarschuwing instellen**en selecteer vervolgens **wanneer de aangepaste zoek opdracht voor logboeken logica niet &lt;gedefinieerd&gt; is** in het gedeelte **waarschuwings criteria** . Omdat we willen waarschuwen wanneer er zich een aanmeldings fout **voordoet**, stelt u de **drempel waarde** van de standaard waarschuwings logica in op **1** en selecteert u vervolgens gereed. 
 
     ![Signaallogica configureren](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 
-5. Voer een naam en beschrijving in voor de waarschuwing en stel de ernst in **op Waarschuwing.**
+5. Voer een naam en beschrijving voor de waarschuwing in en stel de ernst in op **waarschuwing**.
 
     ![Regel maken](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Selecteer de actiegroep die u wilt waarschuwen. In het algemeen kan dit een team zijn dat u via e-mail of sms wilt melden, of het kan een geautomatiseerde taak zijn met behulp van webhooks, runbooks, functies, logische apps of externe ITSM-oplossingen. Meer informatie over het [maken en beheren van actiegroepen in de Azure-portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
+6. Selecteer de actie groep waarvoor u een waarschuwing wilt ontvangen. In het algemeen kan dit een team zijn dat u per e-mail of SMS-bericht wilt laten weten, of het kan een geautomatiseerde taak zijn via webhooks, runbooks, functies, Logic apps of externe ITSM-oplossingen. Meer informatie over [het maken en beheren van actie groepen in de Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
 
-7. Selecteer **Waarschuwingsregel maken** om de waarschuwing te maken. Nu wordt u elke keer gewaarschuwd als er een aanmeldingsfout optreedt.
+7. Selecteer **waarschuwings regel maken** om de waarschuwing te maken. U wordt nu gewaarschuwd wanneer er een fout is opgetreden bij het aanmelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Activiteitslogboeken analyseren met Azure Monitor-logboeken](howto-analyze-activity-logs-log-analytics.md)
-* [Aan de slag met Azure Monitor-logboeken in de Azure-portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Activiteiten logboeken analyseren met Azure Monitor-logboeken](howto-analyze-activity-logs-log-analytics.md)
+* [Aan de slag met Azure Monitor-Logboeken in de Azure Portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

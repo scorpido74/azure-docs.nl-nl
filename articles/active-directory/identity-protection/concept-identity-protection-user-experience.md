@@ -1,6 +1,6 @@
 ---
-title: Gebruikerservaringen met Azure AD-identiteitsbeveiliging
-description: Gebruikerservaring van Azure AD-identiteitsbeveiliging
+title: Gebruikers ervaring met Azure AD Identity Protection
+description: Gebruikers ervaring van Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,76 +12,76 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc10fb4f9894a355c9eed024ae9f87747214999b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72886998"
 ---
-# <a name="user-experiences-with-azure-ad-identity-protection"></a>Gebruikerservaringen met Azure AD-identiteitsbeveiliging
+# <a name="user-experiences-with-azure-ad-identity-protection"></a>Gebruikers ervaring met Azure AD Identity Protection
 
-Met Azure Active Directory Identity Protection u het als nog niet doen:
+Met Azure Active Directory Identity Protection kunt u het volgende doen:
 
-* Gebruikers verplichten zich te registreren voor Azure Multi-Factor Authentication (MFA)
-* Herstel van risicovolle aanmeldingen en gecompromitteerde gebruikers automatiseren
+* Vereisen dat gebruikers zich registreren voor Azure Multi-Factor Authentication (MFA)
+* Automatisch herstel van Risk ante aanmeldingen en verkraakte gebruikers automatiseren
 
-Alle beleidsregels voor identiteitsbescherming hebben een impact op de aanmeldingservaring voor gebruikers. Door gebruikers toe te staan zich te registreren voor en hulpprogramma's zoals Azure MFA en selfservicewachtwoordreset te gebruiken, kan de impact worden verminderd. Deze tools samen met de juiste beleidskeuzes geven gebruikers een zelfhersteloptie wanneer ze die nodig hebben.
+Alle beleids regels voor identiteits beveiliging hebben gevolgen voor de aanmeldings ervaring voor gebruikers. Gebruikers toestaan zich te registreren voor en gebruik hulpprogram ma's zoals Azure MFA en self-service voor het opnieuw instellen van wacht woorden kan de impact beperken. Deze hulpprogram ma's en de juiste beleids opties bieden gebruikers een optie voor automatisch herstel wanneer ze deze nodig hebben.
 
-## <a name="multi-factor-authentication-registration"></a>Registratie van meervoudige verificatie
+## <a name="multi-factor-authentication-registration"></a>Multi-factor Authentication-registratie
 
-Als u het beleid voor identiteitsbescherming inschakelt waarbij registratie van meervoudige verificatie moet worden geregistreerd en al uw gebruikers zijn gericht, wordt ervoor gezorgd dat ze azure MFA in de toekomst zelf kunnen herstellen. Het configureren van dit beleid geeft uw gebruikers een periode van 14 dagen waarin ze kunnen kiezen om zich te registreren en aan het einde gedwongen worden zich te registreren. De ervaring voor gebruikers wordt hieronder beschreven. Meer informatie is te vinden in de documentatie van de eindgebruiker in het artikel, [Overzicht voor tweefactorverificatie en uw werk- of schoolaccount.](../user-help/user-help-two-step-verification-overview.md)
+Het inschakelen van het beleid voor identiteits beveiliging waarbij multi-factor Authentication-registratie vereist is en die gericht is op al uw gebruikers, zorgt ervoor dat ze Azure MFA in de toekomst kunnen gebruiken om zichzelf te herstellen. Door dit beleid te configureren, hebben uw gebruikers een periode van 14 dagen waarin ze zich kunnen registreren en aan het eind moeten registreren. De ervaring voor gebruikers wordt hieronder beschreven. Meer informatie vindt u in de documentatie voor eind gebruikers in het artikel [overzicht van twee ledige verificatie en uw werk-of school account](../user-help/user-help-two-step-verification-overview.md).
 
-### <a name="registration-interrupt"></a>Registratieonderbreking
+### <a name="registration-interrupt"></a>Registratie onderbreking
 
-1. Bij aanmelding bij een azure AD-geïntegreerde toepassing krijgt de gebruiker een melding over de vereiste om het account in te stellen voor multi-factor authenticatie. Dit beleid wordt ook geactiveerd in de Windows 10 Out of Box Experience voor nieuwe gebruikers met een nieuw apparaat.
+1. Bij het aanmelden bij een met Azure AD geïntegreerde toepassing krijgt de gebruiker een melding over de vereiste om het account in te stellen voor multi-factor Authentication. Dit beleid wordt ook geactiveerd in de Windows 10 out-box-ervaring voor nieuwe gebruikers met een nieuw apparaat.
    
     ![Meer informatie vereist](./media/concept-identity-protection-user-experience/identity-protection-experience-more-info-mfa.png)
 
-1. Voer de begeleide stappen uit om u te registreren voor Azure Multi-Factor Authentication en uw aanmelding te voltooien.
+1. Voltooi de begeleide stappen om u aan te melden voor Azure Multi-Factor Authentication en uw aanmelding te volt ooien.
 
-## <a name="risky-sign-in-remediation"></a>Risicovolle aanmeldingsherstel
+## <a name="risky-sign-in-remediation"></a>Risk ante aanmeldingen bij herstel
 
-Wanneer een beheerder een beleid voor aanmeldingsrisico's heeft geconfigureerd, worden de betrokken gebruikers op de hoogte gebracht wanneer ze zich proberen aan te melden en het beleidsrisiconiveau activeren. 
+Wanneer een beheerder een beleid heeft geconfigureerd voor aanmeldings Risico's, worden de betrokken gebruikers hiervan op de hoogte gesteld wanneer ze zich proberen aan te melden en het risico niveau van het beleid te activeren. 
 
-### <a name="risky-sign-in-self-remediation"></a>Riskante zelfherstel
+### <a name="risky-sign-in-self-remediation"></a>Risk ante aanmelding zelf herstel
 
-1. De gebruiker wordt geïnformeerd dat er iets ongewoons is gedetecteerd over zijn aanmelding, zoals het aanmelden vanaf een nieuwe locatie, apparaat of app.
+1. De gebruiker wordt op de hoogte gesteld dat er iets ongebruikelijk is gedetecteerd over hun aanmelding, zoals het aanmelden vanaf een nieuwe locatie, apparaat of app.
    
-    ![Iets ongewoons prompt](./media/concept-identity-protection-user-experience/120.png)
+    ![Een ongewone prompt](./media/concept-identity-protection-user-experience/120.png)
 
-1. De gebruiker is verplicht om zijn identiteit te bewijzen door Azure MFA in te vullen met een van hun eerder geregistreerde methoden. 
+1. De gebruiker is verplicht hun identiteit te bewijzen door Azure MFA met een van de eerder geregistreerde methoden te volt ooien. 
 
-### <a name="risky-sign-in-administrator-unblock"></a>Deblokkering van riskante aanmeldingsbeheerder deblokkering en blokkering
+### <a name="risky-sign-in-administrator-unblock"></a>Risk ante beheerder voor aanmeldings blokkering
 
-Beheerders kunnen ervoor kiezen om gebruikers te blokkeren bij het aanmelden, afhankelijk van hun risiconiveau. Om te worden gedeblokkeerd, moeten eindgebruikers contact opnemen met hun IT-personeel of ze kunnen proberen zich aan te melden vanaf een vertrouwde locatie of apparaat. Zelfherstel door het uitvoeren van multi-factor authenticatie is in dit geval geen optie.
+Beheerders kunnen kiezen om gebruikers te blok keren bij het aanmelden, afhankelijk van hun risico niveau. Als u de blok kering wilt opheffen, moeten eind gebruikers contact opnemen met hun IT-mede werkers of kunnen ze zich aanmelden vanaf een bekende locatie of apparaat. Automatisch door voeren door multi-factor Authentication uit te voeren is in dit geval geen optie.
 
-![Geblokkeerd door aanmeldingsrisicobeleid](./media/concept-identity-protection-user-experience/200.png)
+![Geblokkeerd door beleid voor aanmeldings Risico's](./media/concept-identity-protection-user-experience/200.png)
 
-IT-medewerkers kunnen de instructies in de sectie [Deblokkeren van gebruikers](howto-identity-protection-remediate-unblock.md#unblocking-based-on-sign-in-risk) opvolgen zodat gebruikers zich weer kunnen aanmelden.
+IT-mede werkers kunnen de instructies in de sectie de [blok kering van gebruikers opheffen](howto-identity-protection-remediate-unblock.md#unblocking-based-on-sign-in-risk) zodat gebruikers zich weer kunnen aanmelden.
 
-## <a name="risky-user-remediation"></a>Riskante gebruikersherstel
+## <a name="risky-user-remediation"></a>Risk ante gebruikers herstel
 
-Wanneer een gebruikersrisicobeleid is geconfigureerd, moeten gebruikers die voldoen aan de kans op een compromis van de gebruiker de herstelstroom van het gebruikerscompromis doorlopen voordat ze zich kunnen aanmelden. 
+Wanneer een gebruikers risico beleid is geconfigureerd, moeten gebruikers die voldoen aan de kans op risico niveau van inbreuk de gebruiker door de herstel stroom van het gebruikers recht door lopen voordat ze zich kunnen aanmelden. 
 
-### <a name="risky-user-self-remediation"></a>Riskante gebruiker zelfherstel
+### <a name="risky-user-self-remediation"></a>Door de gebruiker zelf herstelde gebruikers met een Risk ante oplossing
 
-1. De gebruiker wordt geïnformeerd dat hun accountbeveiliging in gevaar is als gevolg van verdachte activiteiten of gelekte referenties.
+1. De gebruiker wordt op de hoogte gesteld dat hun account beveiliging risico loopt vanwege verdachte activiteiten of gelekte referenties.
    
     ![Herstel](./media/concept-identity-protection-user-experience/101.png)
 
-1. De gebruiker is verplicht om zijn identiteit te bewijzen door Azure MFA in te vullen met een van hun eerder geregistreerde methoden. 
-1. Ten slotte wordt de gebruiker gedwongen om zijn wachtwoord te wijzigen met behulp van self-service wachtwoord resetten, omdat iemand anders kan hebben toegang gehad tot hun account.
+1. De gebruiker is verplicht hun identiteit te bewijzen door Azure MFA met een van de eerder geregistreerde methoden te volt ooien. 
+1. Ten slotte wordt de gebruiker gedwongen hun wacht woord te wijzigen met selfservice voor wachtwoord herstel, omdat iemand anders mogelijk toegang heeft gehad tot hun account.
 
-## <a name="risky-sign-in-administrator-unblock"></a>Deblokkering van riskante aanmeldingsbeheerder deblokkering en blokkering
+## <a name="risky-sign-in-administrator-unblock"></a>Risk ante beheerder voor aanmeldings blokkering
 
-Beheerders kunnen ervoor kiezen om gebruikers te blokkeren bij het aanmelden, afhankelijk van hun risiconiveau. Om te worden gedeblokkeerd, moeten eindgebruikers contact opnemen met hun IT-personeel. Zelfherstel door het uitvoeren van multi-factor authenticatie en self-service wachtwoord reset is geen optie in dit geval.
+Beheerders kunnen kiezen om gebruikers te blok keren bij het aanmelden, afhankelijk van hun risico niveau. Als u de blok kering wilt opheffen, moeten eind gebruikers contact opnemen met hun IT-mede werkers. Zelf herstel door multi-factor Authentication uit te voeren en self-service voor het opnieuw instellen van wacht woorden is in dit geval geen optie.
 
-![Geblokkeerd door gebruikersrisicobeleid](./media/concept-identity-protection-user-experience/104.png)
+![Geblokkeerd door beleid voor gebruikers Risico's](./media/concept-identity-protection-user-experience/104.png)
 
-IT-medewerkers kunnen de instructies in de sectie [Deblokkeren van gebruikers](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) opvolgen zodat gebruikers zich weer kunnen aanmelden.
+IT-mede werkers kunnen de instructies in de sectie de [blok kering van gebruikers opheffen](howto-identity-protection-remediate-unblock.md#unblocking-based-on-user-risk) zodat gebruikers zich weer kunnen aanmelden.
 
 ## <a name="see-also"></a>Zie ook
 
 - [Risico's herstellen en gebruikers deblokkeren](howto-identity-protection-remediate-unblock.md)
 
-- [Azure Active Directory-identiteitsbeveiliging](../active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 

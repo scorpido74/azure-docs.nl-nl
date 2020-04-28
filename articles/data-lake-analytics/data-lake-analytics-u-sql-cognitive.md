@@ -1,6 +1,6 @@
 ---
 title: U-SQL-cognitieve mogelijkheden in Azure Data Lake Analytics
-description: Meer informatie over het gebruik van de intelligentie van cognitieve mogelijkheden in U-SQL. Met deze codevoorbeelden u aan de slag.
+description: Meer informatie over het gebruik van de intelligentie van cognitieve mogelijkheden in U-SQL. Met deze code voorbeelden kunt u aan de slag.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,28 +10,28 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672709"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Aan de slag met de cognitieve mogelijkheden van U-SQL
 
 ## <a name="overview"></a>Overzicht
-Cognitieve mogelijkheden voor U-SQL stellen ontwikkelaars in staat om put intelligence te gebruiken in hun big data-programma's. 
+Met de cognitieve mogelijkheden van U-SQL kunnen ontwikkel aars put-intelligentie gebruiken in hun big data-Program ma's. 
 
-De volgende voorbeelden met cognitieve mogelijkheden zijn beschikbaar:
-* Beeldvorming: [gezichten detecteren](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Beeldvorming: [Detecteer emotie](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* Imaging: [objecten detecteren (taggen)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* Beeldvorming: [OCR (optische tekenherkenning)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Tekst: [Key Phrase Extraction & Sentiment Analysis](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
+De volgende voor beelden met behulp van cognitieve mogelijkheden zijn beschikbaar:
+* Imaging: [gezichten detecteren](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Imaging: [Emotion detecteren](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* Imaging: [objecten detecteren (Tags Toep assen)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* Imaging: [OCR (optische teken herkenning)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Tekst: [Sleuteltermextractie & sentimentanalyse](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
-## <a name="registering-cognitive-extensions-in-u-sql"></a>Cognitieve extensies registreren in U-SQL
-Volg voordat u begint de stappen in dit artikel om cognitieve extensies te registreren in U-SQL: [Cognitive Extensions registreren in U-SQL.](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)
+## <a name="registering-cognitive-extensions-in-u-sql"></a>Cognitieve extensies in U-SQL registreren
+Voordat u begint, volgt u de stappen in dit artikel om cognitieve extensies te registreren in U-SQL: [cognitieve extensies registreren in u-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [U-SQL/Cognitieve voorbeelden](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [Voor beelden van U-SQL/cognitieve](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [U-SQL-scripts ontwikkelen met Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [U-SQL-vensterfuncties gebruiken voor Azure Data Lake Analytics-taken](data-lake-analytics-use-window-functions.md)
+* [U-SQL-venster functies gebruiken voor Azure Data Lake Analytics taken](data-lake-analytics-use-window-functions.md)

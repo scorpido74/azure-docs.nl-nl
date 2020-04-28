@@ -5,47 +5,47 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175984"
 ---
-In deze stap maakt u handmatig de listener van de beschikbaarheidsgroep in Failover Cluster Manager en SQL Server Management Studio.
+In deze stap maakt u hand matig de beschikbaarheids groep-listener in Failoverclusterbeheer en SQL Server Management Studio.
 
-1. Open Failoverclusterbeheer vanaf het knooppunt dat de primaire replica host.
+1. Open Failoverclusterbeheer van het knoop punt dat als host fungeert voor de primaire replica.
 
-2. Selecteer het knooppunt **Netwerken** en noteer vervolgens de naam van het clusternetwerk. Deze naam wordt gebruikt in de $ClusterNetworkName variabele in het PowerShell-script.
+2. Selecteer het knoop punt **netwerken** en noteer de naam van het cluster netwerk. Deze naam wordt gebruikt in de variabele $ClusterNetworkName in het Power shell-script.
 
-3. Vouw de clusternaam uit en klik op **Rollen**.
+3. Vouw de cluster naam uit en klik vervolgens op **rollen**.
 
-4. Klik **in** het deelvenster Rollen met de rechtermuisknop op de naam van de beschikbaarheidsgroep en selecteer vervolgens Het toegangspunt **voor** > **resources**toevoegen .
+4. Klik in het deel venster **functies** met de rechter muisknop op de naam van de beschikbaarheids groep en selecteer vervolgens **bron** > **Client Access Point**toevoegen.
    
-    ![Clienttoegangspunt toevoegen voor beschikbaarheidsgroep](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
+    ![Client toegangs punt toevoegen voor beschikbaarheids groep](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
-5. Maak in het vak **Naam** een naam voor deze nieuwe listener, klik twee maal op **Volgende** en klik vervolgens op **Voltooien**.  
-    Breng de luisteraar of bron niet online op dit punt.
+5. Maak in het vak **naam** een naam voor deze nieuwe listener, klik twee keer op **volgende** en klik vervolgens op **volt ooien**.  
+    Zet de listener of bron op dit punt niet online.
 
-6. Klik op het tabblad **Resources** en vouw het clienttoegangspunt uit dat u zojuist hebt gemaakt. 
-    De IP-adresbron voor elk clusternetwerk in uw cluster wordt weergegeven. Als dit een azure-only oplossing is, wordt slechts één IP-adresbron weergegeven.
+6. Klik op het tabblad **resources** en vouw vervolgens het client toegangs punt uit dat u zojuist hebt gemaakt. 
+    De IP-adres bron voor elk cluster netwerk in uw cluster wordt weer gegeven. Als dit een alleen-Azure-oplossing is, wordt er slechts één IP-adres bron weer gegeven.
 
 7. Voer een van de volgende bewerkingen uit:
    
-   * Ga als lid van het nieuwe bedrijf naar een hybride oplossing:
+   * Een hybride oplossing configureren:
      
-        a. Klik met de rechtermuisknop op de IP-adresbron die overeenkomt met uw on-premises subnet en selecteer **Eigenschappen**. Let op de IP-adresnaam en de netwerknaam.
+        a. Klik met de rechter muisknop op de IP-adres bron die overeenkomt met uw on-premises subnet en selecteer vervolgens **Eigenschappen**. Noteer de IP-adres naam en de netwerk naam.
    
-        b. Selecteer **Statisch IP-adres,** wijs een ongebruikt IP-adres toe en klik op **OK**.
+        b. Selecteer **statisch IP-adres**, wijs een ongebruikt IP-adres toe en klik vervolgens op **OK**.
  
-   * Ga als u een oplossing alleen voor Azure configureren:
+   * Een alleen-Azure-oplossing configureren:
 
-        a. Klik met de rechtermuisknop op de IP-adresbron die overeenkomt met uw Azure-subnet en selecteer **Eigenschappen**.
+        a. Klik met de rechter muisknop op de IP-adres bron die overeenkomt met uw Azure-subnet en selecteer vervolgens **Eigenschappen**.
        
        > [!NOTE]
-       > Als de listener later niet online komt vanwege een conflicterend IP-adres dat door DHCP is geselecteerd, u een geldig statisch IP-adres configureren in dit eigenschappenvenster.
+       > Als de listener later niet online kan worden gebracht vanwege een conflicterende IP-adres dat is geselecteerd door DHCP, kunt u een geldig statisch IP-adres configureren in dit eigenschappen venster.
        > 
        > 
 
-       b. Wijzig in hetzelfde **venster IP-adreseigenschappen** de **IP-adresnaam**.  
-        Deze naam wordt gebruikt in de $IPResourceName variabele van het PowerShell-script. Als uw oplossing meerdere Virtuele Azure-netwerken omvat, herhaalt u deze stap voor elke IP-bron.
+       b. Wijzig de **IP-adres naam**in het venster Eigenschappen van **IP-adres** .  
+        Deze naam wordt gebruikt in de $IPResourceName variabele van het Power shell-script. Als uw oplossing meerdere virtuele netwerken van Azure omvat, herhaalt u deze stap voor elke IP-bron.
 

@@ -1,5 +1,5 @@
 ---
-title: Gegevens uit CSV-bestand in een database laden (bcp)
+title: Gegevens uit een CSV-bestand laden in een Data Base (BCP)
 description: Maak bij een kleine gegevensomvang gebruik van bcp om gegevens in de Azure SQL-database te importeren.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: b0df3d588f1d9b0a50c3ea7a583b0704e7e85c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73827491"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Gegevens vanuit een CSV-bestand laden in een Azure SQL-database (platte bestanden)
@@ -26,9 +26,9 @@ U kunt het opdrachtregelhulpprogramma bcp gebruiken om gegevens uit een csv-best
 
 ### <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel wilt uitvoeren, moet u het volgende doen:
+U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
-* Een Azure SQL Database-server en -database
+* Een Azure SQL Database-Server en-data base
 * Het opdrachtregelprogramma BCP (moet zijn geïnstalleerd)
 * Het opdrachtregelprogramma SQLCMD (moet zijn geïnstalleerd)
 
@@ -38,7 +38,7 @@ U kunt de opdrachtregelprogramma's BCP en SQLCMD downloaden van het [Microsoft D
 
 Als u deze zelfstudie wilt uitvoeren met uw eigen gegevens, moeten deze zijn gecodeerd in de ASCII- of UTF-16-indeling, omdat de indeling UTF-8 niet wordt ondersteund in BCP. 
 
-## <a name="1-create-a-destination-table"></a>1. Een doeltabel maken
+## <a name="1-create-a-destination-table"></a>1. Maak een doel tabel
 
 Definieer een tabel in SQL Database als de doeltabel. De kolommen in de tabel moeten overeenkomen met de gegevens in elke rij van het gegevensbestand.
 
@@ -57,7 +57,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>2. Een brongegevensbestand maken
+## <a name="2-create-a-source-data-file"></a>2. een brongegevens bestand maken
 
 Open Kladblok, kopieer de volgende regels met gegevens naar een nieuw tekstbestand en sla dit bestand op in de lokale tijdelijke map C:\Temp\DimDate2.txt. Dit zijn gegevens in ASCII-indeling.
 
@@ -82,7 +82,7 @@ Open Kladblok, kopieer de volgende regels met gegevens naar een nieuw tekstbesta
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-the-data"></a>3. De gegevens laden
+## <a name="3-load-the-data"></a>3. de gegevens laden
 
 Open een opdrachtprompt en voer de volgende opdracht uit om de gegevens te laden. Vervang de waarden voor ServerName, DatabaseName, Username en Password door uw eigen waarden.
 

@@ -1,43 +1,43 @@
 ---
-title: Gegevens modelleren in Azure Cosmos DB
+title: Model gegevens in Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
-description: Meer informatie over gegevensmodellering in NoSQL-databases, verschillen tussen modelleringsgegevens in een relationele database en een documentdatabase.
+description: Meer informatie over gegevens modellering in NoSQL-data bases, verschillen tussen het model leren van gegevens in een relationele data base en een document database.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72755021"
 ---
-# <a name="data-modeling-in-azure-cosmos-db"></a>Gegevensmodellering in Azure Cosmos DB
+# <a name="data-modeling-in-azure-cosmos-db"></a>Gegevens modellering in Azure Cosmos DB
 
-Hoewel schemavrije databases, zoals Azure Cosmos DB, het super eenvoudig maken om ongestructureerde en semi-gestructureerde gegevens op te slaan en op te vragen, moet u wat tijd besteden aan het nadenken over uw gegevensmodel om het meeste uit de service te halen op het gebied van prestaties en schaalbaarheid en de laagste Kosten.
+U kunt zonder schema-Free data bases, zoals Azure Cosmos DB, het eenvoudig maken om ongestructureerde en semi-gestructureerde gegevens op te slaan en op te vragen, maar u kunt het beste even best Eden aan het gebruik van uw gegevens model om optimaal te profiteren van de prestaties en schaal baarheid en de laagste kosten.
 
-Hoe worden gegevens opgeslagen? Hoe gaat uw toepassing gegevens ophalen en opvragen? Is uw toepassing lees-zwaar, of schrijf-zwaar?
+Hoe worden gegevens opgeslagen? Hoe gaat uw toepassing ophalen en query's uitvoeren? Is uw toepassing lezen/zwaar of schrijven-zwaar?
 
-Na het lezen van dit artikel u de volgende vragen beantwoorden:
+Na het lezen van dit artikel kunt u de volgende vragen beantwoorden:
 
-* Wat is data modellering en waarom zou ik zorg?
-* Hoe verschilt het modelleren van gegevens in Azure Cosmos DB van een relationele database?
-* Hoe druk ik gegevensrelaties uit in een niet-relationele database?
-* Wanneer sluit ik gegevens in en wanneer koppel ik aan gegevens?
+* Wat is gegevens modellering en waarom moet ik dit doen?
+* Hoe worden model gegevens in Azure Cosmos DB afwijkend van een relationele data base?
+* Hoe kan ik Express-gegevens relaties in een niet-relationele data base?
+* Wanneer kan ik gegevens insluiten en wanneer kan ik een koppeling maken naar gegevens?
 
 ## <a name="embedding-data"></a>Gegevens insluiten
 
-Wanneer u gegevens in Azure Cosmos DB gaat modelleren, probeert u uw entiteiten te behandelen als zelfstandige items die worden weergegeven als **JSON-documenten.**
+Wanneer u gegevens modelleert in Azure Cosmos DB probeert u uw entiteiten te behandelen als **zelfstandige items** die worden weer gegeven als JSON-documenten.
 
-Ter vergelijking, laten we eerst eens kijken hoe we gegevens kunnen modelleren in een relationele database. In het volgende voorbeeld ziet u hoe een persoon kan worden opgeslagen in een relationele database.
+Laten we eerst zien hoe we gegevens in een relationele data base kunnen model leren. In het volgende voor beeld ziet u hoe een persoon kan worden opgeslagen in een relationele data base.
 
-![Relationeel databasemodel](./media/sql-api-modeling-data/relational-data-model.png)
+![Relationeel database model](./media/sql-api-modeling-data/relational-data-model.png)
 
-Bij het werken met relationele databases, de strategie is om al uw gegevens te normaliseren. Het normaliseren van uw gegevens houdt meestal in dat u een entiteit, zoals een persoon, gebruikt en deze opsplitsen in afzonderlijke componenten. In het bovenstaande voorbeeld kan een persoon meerdere contactgegevensrecords hebben, evenals meerdere adresrecords. Contactgegevens kunnen verder worden uitgesplitst door algemene velden als een type verder te extraheren. Hetzelfde geldt voor adres, elke record kan van het type *Home* of *Business*zijn.
+Bij het werken met relationele data bases is de strategie het normaliseren van al uw gegevens. Het normaliseren van uw gegevens omvat meestal het nemen van een entiteit, zoals een persoon, en het opsplitsen daarvan in discrete onderdelen. In het bovenstaande voor beeld kan een persoon meerdere contact gegevens records hebben, evenals meerdere adres records. De contact gegevens kunnen verder worden opgesplitst door algemene velden, zoals een type, verder uit te pakken. Hetzelfde geldt voor het adres, elke record kan van het type *thuis* of *zakelijk*zijn.
 
-Het leidende uitgangspunt bij het normaliseren van gegevens is om te **voorkomen dat redundante gegevens** op elke record worden opgeslagen en eerder naar gegevens te verwijzen. In dit voorbeeld moet u JOINS gebruiken om uw gegevens tijdens het uitvoeren van de gegevens effectief terug te stellen (of te denormaliseren).
+De richt zich op de lokale locatie bij het normaliseren van gegevens is om te **voor komen dat er redundante gegevens worden opgeslagen** op elke record en om te verwijzen naar gegevens. In dit voor beeld, om een persoon te lezen met al hun contact gegevens en-adressen, moet u samen voegingen gebruiken om uw gegevens in runtime effectief te maken (of te denormaliseren).
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -45,9 +45,9 @@ Het leidende uitgangspunt bij het normaliseren van gegevens is om te **voorkomen
     JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
     JOIN Address a ON a.PersonId = p.Id
 
-Voor het bijwerken van één persoon met hun contactgegevens en adressen is schrijfbewerkingen in veel afzonderlijke tabellen vereist.
+Voor het bijwerken van één persoon met hun contact gegevens en-adressen is schrijf bewerkingen in veel afzonderlijke tabellen vereist.
 
-Laten we nu eens kijken hoe we dezelfde gegevens zouden modelleren als een zelfstandige entiteit in Azure Cosmos DB.
+Laten we nu eens kijken hoe we dezelfde gegevens als een op zichzelf staande entiteit in Azure Cosmos DB model leren.
 
     {
         "id": "1",
@@ -68,31 +68,31 @@ Laten we nu eens kijken hoe we dezelfde gegevens zouden modelleren als een zelfs
         ]
     }
 
-Met behulp van de bovenstaande aanpak hebben we de persoon record **gedenormaliseerd,** door **het inbedden van** alle informatie met betrekking tot deze persoon, zoals hun contactgegevens en adressen, in *een enkel JSON-document.*
-Bovendien, omdat we niet beperkt zijn tot een vast schema hebben we de flexibiliteit om dingen te doen, zoals het hebben van contactgegevens van verschillende vormen volledig.
+Met behulp van de bovenstaande benadering hebben we de persoons record **genormaliseerd** door alle informatie met betrekking tot deze persoon, zoals de contact gegevens en-adressen, in te **sluiten** in *één JSON* -document.
+Omdat we niet zijn beperkt tot een vast schema, hebben we de flexibiliteit om zaken te doen, zoals het volledig hebben van contact gegevens van verschillende vormen.
 
-Het ophalen van een volledige persoonsrecord uit de database is nu **één leesbewerking** tegen één container en voor één item. Het bijwerken van een persoonrecord, met hun contactgegevens en adressen, is ook een **enkele schrijfbewerking** tegen één item.
+Het ophalen van een volledige persoons record uit de data base is nu een **enkele Lees bewerking** voor één container en voor één item. Het bijwerken van een persoons record, met hun contact gegevens en-adressen, is ook een **enkele schrijf bewerking** voor één item.
 
-Als u gegevens denormaliseert, hoeft uw toepassing mogelijk minder query's en updates uit te geven om algemene bewerkingen te voltooien.
+Door gegevens te denormaliseren, moet uw toepassing mogelijk minder query's en updates uitvoeren om veelvoorkomende bewerkingen te volt ooien.
 
-### <a name="when-to-embed"></a>Wanneer moet u insluiten
+### <a name="when-to-embed"></a>Wanneer insluiten
 
-Gebruik in het algemeen ingesloten gegevensmodellen wanneer:
+In het algemeen gebruikt u Inge sloten gegevens modellen wanneer:
 
-* Er zijn **opgenomen** relaties tussen entiteiten.
-* Er zijn **een-op-weinig** relaties tussen entiteiten.
-* Er zijn ingesloten gegevens die **zelden veranderen.**
-* Er zijn ingesloten gegevens die niet zullen groeien **zonder gebonden**.
-* Er zijn ingesloten gegevens die **vaak samen worden opgevraagd.**
+* Er zijn **relaties** tussen entiteiten.
+* Er zijn **een-op-veel-** relaties tussen entiteiten.
+* Er zijn Inge sloten gegevens die niet **regel matig veranderen**.
+* Er zijn Inge sloten gegevens die niet worden uitgebreid **zonder gebonden**.
+* Er zijn Inge sloten gegevens die **vaak samen worden opgevraagd**.
 
 > [!NOTE]
-> Doorgaans gedenormaliseerde gegevensmodellen bieden betere **leesprestaties.**
+> Normaal gesp roken gegevens modellen bieden betere **Lees** prestaties.
 
-### <a name="when-not-to-embed"></a>Wanneer niet insluiten
+### <a name="when-not-to-embed"></a>Wanneer niet worden inge sloten
 
-Hoewel de vuistregel in Azure Cosmos DB is om alles te denormaliseren en alle gegevens in te sluiten in één item, kan dit leiden tot een aantal situaties die moeten worden vermeden.
+De regel van de vuist in Azure Cosmos DB is om alles te denormaliseren en alle gegevens in één item in te sluiten, maar dit kan leiden tot enkele situaties die moeten worden vermeden.
 
-Neem dit JSON fragment.
+Neem dit JSON-fragment op.
 
     {
         "id": "1",
@@ -110,11 +110,11 @@ Neem dit JSON fragment.
         ]
     }
 
-Dit kan zijn wat een post entiteit met ingesloten opmerkingen eruit zou zien als we modelleren van een typische blog, of CMS, systeem. Het probleem met dit voorbeeld is dat de opmerkingen array is **onbegrensd,** wat betekent dat er geen (praktische) limiet aan het aantal opmerkingen een enkel bericht kan hebben. Dit kan een probleem worden als de grootte van het item zou kunnen groeien oneindig groot.
+Dit kan zijn dat een post-entiteit met Inge sloten opmerkingen eruit zou zien als we een typische blog of CMS-systeem zouden model leren. Het probleem met dit voor beeld is dat de opmerkingen matrix niet is **gebonden**, wat inhoudt dat er geen (praktische) limiet is voor het aantal opmerkingen dat één post kan hebben. Dit kan een probleem zijn omdat de grootte van het item oneindig groot kan worden uitgebreid.
 
-Naarmate de grootte van het item groeit, wordt de mogelijkheid beïnvloed om de gegevens over de draad te verzenden en het item op schaal te lezen en bij te werken.
+Naarmate de grootte van het item groeit, is de mogelijkheid om gegevens over de kabel te verzenden en om het item op de juiste schaal te lezen en bij te werken, van invloed.
 
-In dit geval zou het beter zijn om het volgende gegevensmodel te overwegen.
+In dit geval is het beter om rekening te houden met het volgende gegevens model.
 
     Post item:
     {
@@ -147,11 +147,11 @@ In dit geval zou het beter zijn om het volgende gegevensmodel te overwegen.
         ]
     }
 
-Dit model heeft de drie meest recente opmerkingen ingebed in de postcontainer, dat is een array met een vaste set van kenmerken. De andere opmerkingen worden gegroepeerd in batches van 100 opmerkingen en opgeslagen als afzonderlijke items. De grootte van de partij werd gekozen als 100 omdat onze fictieve applicatie de gebruiker in staat stelt om 100 reacties tegelijk te laden.  
+Dit model bevat de drie meest recente opmerkingen die zijn Inge sloten in de post-container, een matrix met een vaste set kenmerken. De overige opmerkingen worden gegroepeerd in batches van 100 opmerkingen en opgeslagen als afzonderlijke items. De grootte van de batch is gekozen als 100 omdat de gebruiker met de fictieve toepassing 100 opmerkingen tegelijk kan laden.  
 
-Een ander geval waarin het insluiten van gegevens geen goed idee is, is wanneer de ingesloten gegevens vaak worden gebruikt voor items en vaak zullen veranderen.
+Een andere geval waarin het insluiten van gegevens geen goed idee is wanneer de Inge sloten gegevens vaak worden gebruikt in verschillende items en regel matig worden gewijzigd.
 
-Neem dit JSON fragment.
+Neem dit JSON-fragment op.
 
     {
         "id": "1",
@@ -169,17 +169,17 @@ Neem dit JSON fragment.
         ]
     }
 
-Dit kan de aandelenportefeuille van een persoon vertegenwoordigen. We hebben ervoor gekozen om de voorraadinformatie in te bedden in elk portfoliodocument. In een omgeving waar gerelateerde gegevens vaak veranderen, zoals een toepassing voor de handel in aandelen, zal het insluiten van gegevens die vaak worden gewijzigd, betekenen dat u elk portfoliodocument voortdurend bijwerkt elke keer dat een aandeel wordt verhandeld.
+Dit kan de aandelen portefeuille van een persoon vertegenwoordigen. We hebben ervoor gekozen de aandelen informatie in elk portfolio document in te sluiten. In een omgeving waarin gerelateerde gegevens regel matig worden gewijzigd, zoals een aandelen handels toepassing, wordt het insluiten van gegevens die regel matig worden gewijzigd, al dan niet telkens wanneer een aandeel wordt verhandeld, bijgewerkt.
 
-Voorraad *zaza* kan worden verhandeld vele honderden keren in een enkele dag en duizenden gebruikers kunnen *zaza* hebben op hun portefeuille. Met een gegevensmodel als het bovenstaande zouden we vele duizenden portfoliodocumenten vele malen per dag moeten bijwerken, wat leidt tot een systeem dat niet goed zal schalen.
+Voorraad *zazaen* kunnen veel honderden keer per dag worden verhandeld en duizenden gebruikers kunnen *Zaza* op hun portefeuille hebben. Met een gegevens model zoals hierboven zou het een groot aantal duizenden portefeuille documenten op elke dag moeten bijwerken, waardoor ze niet goed kunnen worden geschaald.
 
 ## <a name="referencing-data"></a>Verwijzen naar gegevens
 
-Het insluiten van gegevens werkt voor veel gevallen goed, maar er zijn scenario's waarin het denormaliseren van uw gegevens meer problemen zal veroorzaken dan het waard is. Wat doen we nu?
+Het insluiten van gegevens werkt goed voor veel gevallen, maar er zijn scenario's bij het denormaliseren van uw gegevens, waardoor er meer problemen zijn dan het waard is. Wat doen we nu?
 
-Relationele databases zijn niet de enige plaats waar u relaties tussen entiteiten maken. In een documentdatabase u informatie in één document hebben die betrekking heeft op gegevens in andere documenten. We raden het bouwen van systemen die beter geschikt zijn voor een relationele database in Azure Cosmos DB, of een andere documentdatabase, maar eenvoudige relaties zijn prima en nuttig.
+Relationele data bases zijn niet de enige plaats waar u relaties tussen entiteiten kunt maken. In een document database kunt u gegevens in één document hebben die betrekking hebben op gegevens in andere documenten. We raden u aan om geen systemen te bouwen die beter geschikt zijn voor een relationele data base in Azure Cosmos DB of een andere document database, maar eenvoudige relaties zijn prima en kunnen nuttig zijn.
 
-In de JSON hieronder hebben we ervoor gekozen om het voorbeeld van een aandelenportefeuille van vroeger te gebruiken, maar deze keer verwijzen we naar de voorraadpost op de portefeuille in plaats van het in te bedden. Op deze manier, wanneer de voorraad item verandert vaak gedurende de dag het enige document dat moet worden bijgewerkt is de single stock document.
+In de JSON hieronder hebben we gekozen om het voor beeld van een aandelen portefeuille van eerder te gebruiken, maar deze keer verwijzen we naar het voorraad item op de Port Folio in plaats van het in te sluiten. Op deze manier, wanneer de voorraad items regel matig worden gewijzigd, is het enige document dat moet worden bijgewerkt, het document met één aandeel.
 
     Person document:
     {
@@ -214,32 +214,32 @@ In de JSON hieronder hebben we ervoor gekozen om het voorbeeld van een aandelenp
         "pe": 75.82
     }
 
-Een onmiddellijk nadeel aan deze benadering is echter als uw toepassing is vereist om informatie over elke voorraad die wordt gehouden bij het weergeven van een persoon portefeuille weer te geven; in dit geval moet u meerdere reizen naar de database maken om de informatie voor elk voorraaddocument te laden. Hier hebben we een beslissing genomen om de efficiëntie van schrijfbewerkingen te verbeteren, die vaak gedurende de dag plaatsvinden, maar op hun beurt gecompromitteerd op de leesbewerkingen die mogelijk minder invloed hebben op de prestaties van dit specifieke systeem.
+Een onmiddellijke neerwaartse aanpak van deze benadering is dat als uw toepassing is vereist voor het weer geven van informatie over elk aandeel dat wordt bewaard bij het weer geven van de Port Folio van een persoon. in dit geval moet u meerdere trips naar de data base maken om de informatie voor elk voorraad document te laden. Hier hebben we een beslissing genomen voor het verbeteren van de efficiëntie van schrijf bewerkingen, die regel matig worden uitgevoerd, maar op de Lees bewerkingen die mogelijk minder invloed hebben op de prestaties van dit specifieke systeem.
 
 > [!NOTE]
-> Genormaliseerde gegevensmodellen **kunnen meer retourvluchten** naar de server vereisen.
+> Genormaliseerde gegevens modellen **kunnen meer retouren** naar de server vereisen.
 
-### <a name="what-about-foreign-keys"></a>Hoe zit het met buitenlandse sleutels?
+### <a name="what-about-foreign-keys"></a>Hoe zit het met refererende sleutels?
 
-Omdat er momenteel geen concept van een beperking, buitenlandse sleutel of anderszins, geen inter-document relaties die je hebt in documenten zijn effectief "zwakke links" en zal niet worden geverifieerd door de database zelf. Als u ervoor wilt zorgen dat de gegevens waarnaar een document verwijst, daadwerkelijk bestaan, moet u dit doen in uw toepassing of door het gebruik van servertriggers of opgeslagen procedures op Azure Cosmos DB.
+Omdat er momenteel geen concept van een beperking, refererende sleutel of anders is, zijn de relaties tussen documenten die u in documenten hebt, effectief "zwakke koppelingen" en worden niet door de data base zelf gecontroleerd. Als u er zeker van wilt zijn dat de gegevens waarnaar wordt verwezen in werkelijkheid bestaan, moet u dit doen in uw toepassing of via het gebruik van triggers aan de server zijde of opgeslagen procedures op Azure Cosmos DB.
 
-### <a name="when-to-reference"></a>Wanneer moet worden verwezen
+### <a name="when-to-reference"></a>Waarnaar moet worden verwezen
 
-Gebruik in het algemeen genormaliseerde gegevensmodellen wanneer:
+In het algemeen gebruikt u genormaliseerde gegevens modellen als:
 
-* **Een-op-veel** relaties vertegenwoordigen.
-* Die **veel-op-veel** relaties.
-* Gerelateerde gegevens **wijzigingen vaak**.
-* Gegevens waarnaar wordt verwezen, kunnen **onbegrensd**zijn .
+* **Een-op-veel-** relaties vertegenwoordigen.
+* **Veel-op-veel** -relaties vertegenwoordigen.
+* Vaak gerelateerde gegevens **wijzigingen**.
+* Gegevens waarnaar wordt verwezen, kunnen **onbegrensd**zijn.
 
 > [!NOTE]
-> Doorgaans biedt normaliseren betere **schrijfprestaties.**
+> Normaal gesp roken biedt doorgaans betere **Schrijf** prestaties.
 
-### <a name="where-do-i-put-the-relationship"></a>Waar moet ik de relatie neerzetten?
+### <a name="where-do-i-put-the-relationship"></a>Waar kan ik de relatie plaatsen?
 
-De groei van de relatie zal helpen bepalen in welk document de referentie op te slaan.
+De groei van de relatie helpt te bepalen in welk document de referentie moet worden opgeslagen.
 
-Als we kijken naar de JSON hieronder die modellen uitgevers en boeken.
+Als we de JSON hieronder bekijken, modellen uitgevers en boeken.
 
     Publisher document:
     {
@@ -257,9 +257,9 @@ Als we kijken naar de JSON hieronder die modellen uitgevers en boeken.
     ...
     {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
-Als het aantal boeken per uitgever klein is met een beperkte groei, kan het nuttig zijn om de boekverwijzing in het uitgeversdocument op te slaan. Als het aantal boeken per uitgever echter niet is begrensd, leidt dit gegevensmodel tot veranderlijke, groeiende arrays, zoals in het bovenstaande voorbeeld-uitgeversdocument.
+Als het aantal boeken per uitgever klein is met beperkte groei, kan het handig zijn om de boek verwijzing in het Publisher-document op te slaan. Als het aantal boeken per uitgever echter niet is gebonden, zou dit gegevens model kunnen leiden tot onveranderlijke en groeiende matrices, zoals in het voor beeld van een Publisher-document hierboven.
 
-Schakelen dingen rond een beetje zou resulteren in een model dat nog steeds dezelfde gegevens vertegenwoordigt, maar nu vermijdt deze grote veranderlijke collecties.
+Het omschakelen van dingen rond een beetje zou leiden tot een model dat nog steeds dezelfde gegevens bevat, maar deze grote, onveranderlijke verzamelingen vermijdt.
 
     Publisher document:
     {
@@ -276,15 +276,15 @@ Schakelen dingen rond een beetje zou resulteren in een model dat nog steeds deze
     ...
     {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
-In het bovenstaande voorbeeld hebben we de niet-begrensde verzameling op het uitgeversdocument laten vallen. In plaats daarvan hebben we alleen een verwijzing naar de uitgever op elk boekdocument.
+In het bovenstaande voor beeld hebben we de niet-gebonden verzameling verwijderd uit het Publisher-document. In plaats daarvan hebben we een verwijzing naar de uitgever in elk boek document.
 
-### <a name="how-do-i-model-manymany-relationships"></a>Hoe modelleer ik veel: veel relaties?
+### <a name="how-do-i-model-manymany-relationships"></a>Hoe kan ik model: veel relaties?
 
-In een relationele database *worden veel:veel* relaties vaak gemodelleerd met jointabellen, die alleen records uit andere tabellen samenvoegen.
+In een relationele data base zijn *veel* relaties vaak gemodelleerd met samenvoeg tabellen, die alleen worden gekoppeld aan records uit andere tabellen.
 
-![Deelnemen aan tabellen](./media/sql-api-modeling-data/join-table.png)
+![Tabellen koppelen](./media/sql-api-modeling-data/join-table.png)
 
-U in de verleiding komen om hetzelfde te repliceren met behulp van documenten en een gegevensmodel te produceren dat lijkt op het volgende.
+Misschien bent u geneigd om hetzelfde te repliceren met behulp van documenten en een gegevens model te produceren dat er ongeveer als volgt uitziet.
 
     Author documents:
     {"id": "a1", "name": "Thomas Andersen" }
@@ -303,10 +303,10 @@ U in de verleiding komen om hetzelfde te repliceren met behulp van documenten en
     {"authorId": "a1", "bookId": "b2" }
     {"authorId": "a1", "bookId": "b3" }
 
-Dit zou werken. Echter, het laden van een auteur met hun boeken, of het laden van een boek met de auteur, zou altijd ten minste twee extra query's tegen de database. Een query naar het verbindingsdocument en vervolgens een andere query om het werkelijke document te ophalen dat wordt samengevoegd.
+Dit zou werken. Het laden van een auteur met hun boeken of het laden van een boek met de auteur, vereist echter altijd ten minste twee extra query's voor de data base. Een query voor het lid van het document en vervolgens een andere query voor het ophalen van het werkelijke document dat wordt toegevoegd.
 
-Als al deze join tabel doet is lijmen samen twee stukken van de gegevens, waarom dan niet volledig laten vallen?
-Overweeg het volgende.
+Als al deze samenvoegings tabel wordt uitgevoerd, worden twee gegevens van elkaar gelijmd en moet u daarom niet volledig verwijderen?
+Houd rekening met het volgende.
 
     Author documents:
     {"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
@@ -318,17 +318,17 @@ Overweeg het volgende.
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
     {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
-Nu, als ik een auteur had, weet ik onmiddellijk welke boeken zij hebben geschreven, en omgekeerd als ik een geladen boekdocument had zou ik de IDs van de auteur(s) kennen. Dit bespaart die tussenquery tegen de join-tabel waardoor het aantal serverretouren dat uw toepassing moet maken, wordt verminderd.
+Nu als ik een auteur had, weet ik dan onmiddellijk welke boeken ze hebben geschreven en omgekeerd als ik een boek document had geladen ik weet wat de Id's van de auteur (s) zijn. Hiermee slaat u de tussenliggende query op voor de samenvoegings tabel om het aantal server retouren te verminderen dat uw toepassing moet maken.
 
-## <a name="hybrid-data-models"></a>Hybride gegevensmodellen
+## <a name="hybrid-data-models"></a>Hybride gegevens modellen
 
-We hebben nu gekeken inbedding (of denormaliseren) en verwijzen naar (of normaliseren) gegevens, elk hebben hun voordelen en elk hebben compromissen zoals we hebben gezien.
+We hebben nu het insluiten (of denormaliseren) doorstaan en er wordt verwezen naar (of genormaliseerd) gegevens, die elk hun eigen kant hebben en elke keer heeft geknoeid zoals we hebben gezien.
 
-Het hoeft niet altijd of, wees niet bang om dingen een beetje door elkaar te halen.
+Het hoeft niet altijd of te zijn, niet Scared om dingen een beetje te mengen.
 
-Op basis van de specifieke gebruikspatronen en workloads van uw toepassing kunnen er gevallen zijn waarin het mengen van ingesloten en naar de verwijzing genoemde gegevens zinvol is en kan leiden tot eenvoudigere toepassingslogica met minder serverretouren, terwijl ze toch een goed prestatieniveau behouden.
+Op basis van de specifieke gebruiks patronen en werk belastingen van uw toepassing zijn er situaties waarin het combi neren van Inge sloten en gerefereerde gegevens zinvol is en kan leiden tot een eenvoudigere toepassings logica met minder server retouren, terwijl er nog steeds een goed prestatie niveau wordt gehandhaafd.
 
-Overweeg de volgende JSON.
+Bekijk de volgende JSON.
 
     Author documents:
     {
@@ -371,19 +371,19 @@ Overweeg de volgende JSON.
         ]
     }
 
-Hier hebben we (meestal) het ingesloten model gevolgd, waarbij gegevens van andere entiteiten zijn ingesloten in het topdocument, maar naar andere gegevens wordt verwezen.
+Hier hebben we (voornamelijk) het Inge sloten model gevolgd, waar gegevens uit andere entiteiten zijn Inge sloten in het document op het hoogste niveau, maar er wordt naar andere gegevens verwezen.
 
-Als je kijkt naar het boek document, kunnen we een paar interessante velden te zien als we kijken naar de array van auteurs. Er is `id` een veld dat is het veld dat we gebruiken om terug te verwijzen naar `name` `thumbnailUrl`een auteur document, standaard praktijk in een genormaliseerd model, maar dan hebben we ook en . We hadden kunnen `id` blijven hangen met en liet de toepassing om eventuele aanvullende informatie die nodig is van de respectieve auteur document met behulp van de "link", maar omdat onze applicatie geeft de naam van de auteur en een miniatuur foto met elk boek weergegeven kunnen we een retournaar de server per boek in een lijst op te slaan door het denormaliseren van **een aantal** gegevens van de auteur.
+Als u het boek document bekijkt, kunnen we enkele interessante velden zien wanneer we de matrix van auteurs bekijken. Er is een `id` veld dat het veld wordt gebruikt om terug te verwijzen naar een auteur-document, de standaard procedure in een genormaliseerd model, maar we `name` hebben `thumbnailUrl`ook en. We hebben de toepassing kunnen `id` blijven gebruiken om aanvullende informatie te verkrijgen die hij nodig heeft uit het respectieve auteurs document met behulp van de "link", maar omdat in onze toepassing de naam van de auteur en een miniatuur afbeelding worden weer gegeven met elk boek dat wordt weer geven, kunnen we een retour naar de server per boek in een lijst opslaan door **bepaalde** gegevens van de auteur te denormaliseren.
 
-Tuurlijk, als de naam van de auteur veranderd of ze wilden hun foto te werken zouden we moeten gaan en update elk boek dat ze ooit gepubliceerd, maar voor onze aanvraag, op basis van de veronderstelling dat auteurs niet vaak veranderen hun namen, dit is een aanvaardbaar ontwerp beslissing.  
+Als de naam van de auteur is gewijzigd of als hij of zij de foto wil bijwerken, moeten we dan ook elk boek dat ze ooit hebben gepubliceerd, maar voor onze toepassing bijwerken, op basis van de veronderstelling dat auteurs hun namen niet vaak wijzigen, is dit een acceptabel ontwerp besluit.  
 
-In het voorbeeld zijn er **vooraf berekende aggregatenwaarden** om dure verwerking op een leesbewerking op te slaan. In het voorbeeld zijn sommige gegevens die in het auteursdocument zijn ingesloten, gegevens die op run-time worden berekend. Telkens wanneer een nieuw boek wordt gepubliceerd, wordt een boekdocument gemaakt **en** wordt het veld countOfBooks ingesteld op een berekende waarde op basis van het aantal boekdocumenten dat voor een bepaalde auteur bestaat. Deze optimalisatie zou goed zijn in het lezen van zware systemen waar we ons kunnen veroorloven om berekeningen te doen op schrijft om te optimaliseren leest.
+In het voor beeld zijn er **vooraf berekende aggregaties-** waarden voor het besparen van de dure verwerking van een lees bewerking. In het voor beeld zijn enkele van de Inge sloten gegevens in het auteurs document gegevens die tijdens runtime worden berekend. Telkens wanneer een nieuw boek wordt gepubliceerd, wordt een boek document gemaakt **en** wordt het veld countOfBooks ingesteld op een berekende waarde op basis van het aantal boek documenten dat voor een bepaalde auteur bestaat. Deze Optima Lise ring is goed in Lees bare systemen waar we berekeningen kunnen uitvoeren bij schrijf bewerkingen om Lees bewerkingen te optimaliseren.
 
-De mogelijkheid om een model met vooraf berekende velden te hebben, wordt mogelijk gemaakt omdat Azure Cosmos DB **transacties met meerdere documenten**ondersteunt. Veel NoSQL-winkels kunnen geen transacties uitvoeren in verschillende documenten en pleiten daarom voor ontwerpbeslissingen, zoals "altijd alles insluiten", vanwege deze beperking. Met Azure Cosmos DB u servertriggers of opgeslagen procedures gebruiken die boeken invoegen en auteurs bijwerken binnen een ACID-transactie. Nu hoeft u **niet** alles in één document in te sluiten om er zeker van te zijn dat uw gegevens consistent blijven.
+De mogelijkheid om een model met vooraf berekende velden te maken, wordt mogelijk gemaakt omdat Azure Cosmos DB **meerdere document transacties**ondersteunt. Veel NoSQL-archieven kunnen geen trans acties uitvoeren voor documenten en daarom moeten ontwerp beslissingen worden genomen, zoals ' altijd insluiten alles ', als gevolg van deze beperking. Met Azure Cosmos DB kunt u triggers aan de server zijde of opgeslagen procedures gebruiken die boeken invoegen en auteurs bijwerken in een zure trans actie. Nu **hoeft u niet alles** in één document in te sluiten om er zeker van te zijn dat uw gegevens consistent blijven.
 
-## <a name="distinguishing-between-different-document-types"></a>Onderscheid maken tussen verschillende documenttypen
+## <a name="distinguishing-between-different-document-types"></a>Onderscheiden van verschillende document typen
 
-In sommige scenario's u verschillende documenttypen in dezelfde verzameling mengen. dit is meestal het geval wanneer u meerdere gerelateerde documenten in dezelfde [partitie](partitioning-overview.md)wilt plaatsen. U bijvoorbeeld zowel boeken als boekrecensies in dezelfde `bookId`verzameling plaatsen en deze op de hoogte brengen door. In een dergelijke situatie wilt u meestal toevoegen aan uw documenten met een veld dat hun type identificeert om ze te onderscheiden.
+In sommige scenario's wilt u mogelijk verschillende document typen combi neren in dezelfde verzameling. Dit is meestal het geval wanneer u wilt dat er meerdere, gerelateerde documenten zich in dezelfde [partitie](partitioning-overview.md)bevinden. U kunt bijvoorbeeld zowel boeken als boek beoordelingen in dezelfde verzameling plaatsen en partitioneren door `bookId`. In dat geval wilt u meestal aan uw documenten toevoegen met een veld dat het type identificeert om ze te onderscheiden.
 
     Book documents:
     {
@@ -409,12 +409,12 @@ In sommige scenario's u verschillende documenttypen in dezelfde verzameling meng
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De grootste afhaalmaaltijden uit dit artikel zijn om te begrijpen dat data modellering in een schema-vrije wereld is net zo belangrijk als altijd.
+De grootste Takeaways van dit artikel is om te begrijpen dat gegevens modellering in een schema vrije wereld net zo belang rijk is als ooit.
 
-Net zoals er geen enkele manier is om een stukje gegevens op een scherm weer te geven, is er geen enkele manier om uw gegevens te modelleren. U moet uw toepassing begrijpen en hoe deze de gegevens zal produceren, consumeren en verwerken. Vervolgens u, door een aantal van de hier gepresenteerde richtlijnen toe te passen, een model maken dat voldoet aan de onmiddellijke behoeften van uw toepassing. Wanneer uw toepassingen moeten veranderen, u gebruikmaken van de flexibiliteit van een schemavrije database om die verandering te omarmen en uw gegevensmodel eenvoudig te ontwikkelen.
+Net zoals er geen enkele manier is om een stukje gegevens op een scherm weer te geven, is er geen enkele manier om uw gegevens te model leren. U moet inzicht hebben in uw toepassing en bepalen hoe de gegevens worden geproduceerd, gebruikt en verwerkt. Door enkele van de richt lijnen die hier worden gepresenteerd toe te passen, kunt u instellen dat u een model maakt dat de onmiddellijke behoeften van uw toepassing versnelt. Als uw toepassingen moeten worden gewijzigd, kunt u gebruikmaken van de flexibiliteit van een schema-gratis data base, zodat u deze wijziging gemakkelijk en uw gegevens model eenvoudig ontwikkelt.
 
-Raadpleeg de [documentatiepagina](https://azure.microsoft.com/documentation/services/cosmos-db/) van de service voor meer informatie over Azure Cosmos DB.
+Raadpleeg de [documentatie](https://azure.microsoft.com/documentation/services/cosmos-db/) pagina van de service voor meer informatie over Azure Cosmos db.
 
-Als u wilt weten hoe u uw gegevens over meerdere partities verharden, raadpleegt u [Partitioneringsgegevens in Azure Cosmos DB](sql-api-partition-data.md).
+Als u wilt weten hoe u uw gegevens op meerdere partities kunt Shard, raadpleegt u [gegevens partitioneren in azure Cosmos DB](sql-api-partition-data.md).
 
-Als u wilt weten hoe u gegevens op Azure Cosmos DB modelleren en beheren met behulp van een voorbeeld in de echte wereld, raadpleegt u [Gegevensmodellering en partitionering - een voorbeeld van real-world](how-to-model-partition-example.md).
+Raadpleeg voor meer informatie over het model leren en partitioneren van gegevens op Azure Cosmos DB met behulp van een echt voor beeld van [gegevens modellering en partitionering: een praktijk voorbeeld](how-to-model-partition-example.md).

@@ -1,6 +1,6 @@
 ---
-title: Opzoekadres gebruikersnaam tijdens aanmelding - Azure Active Directory | Microsoft Documenten
-description: Hoe berichten op het scherm het opzoeken van gebruikersnaam weergeven tijdens het aanmelden in Azure Active Directory
+title: Gebruikers naam opzoeken tijdens aanmelden Azure Active Directory | Microsoft Docs
+description: Hoe scherm berichten de gebruikers naam opzoeken weer gegeven tijdens het aanmelden in Azure Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74024253"
 ---
-# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Thuisrealmdetectie voor aanmeldingspagina's van Azure Active Directory
+# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Home realm-detectie voor Azure Active Directory aanmeldings pagina's
 
-We wijzigen ons azure active directory-aanmeldingsgedrag (Azure Active Directory) om ruimte te maken voor nieuwe verificatiemethoden en de bruikbaarheid te verbeteren. Tijdens het aanmelden bepaalt Azure AD waar een gebruiker moet verifiëren. Azure AD neemt intelligente beslissingen door organisatie- en gebruikersinstellingen te lezen voor de gebruikersnaam die is ingevoerd op de aanmeldingspagina. Dit is een stap in de richting van een wachtwoordvrije toekomst die aanvullende referenties zoals FIDO 2.0 mogelijk maakt.
+We wijzigen ons aanmeldings gedrag van Azure Active Directory (Azure AD) om ruimte te maken voor nieuwe verificatie methoden en om de bruikbaarheid te verbeteren. Tijdens het aanmelden bepaalt Azure AD waar een gebruiker moet worden geverifieerd. Azure AD maakt intelligente beslissingen door het lezen van de organisatie-en gebruikers instellingen voor de gebruikers naam die is ingevoerd op de aanmeldings pagina. Dit is een stap naar een toekomstig wacht woord dat aanvullende referenties mogelijk maakt, zoals FIDO 2,0.
 
-## <a name="home-realm-discovery-behavior"></a>Het ontdekkingsgedrag van het huiskoninkrijk
+## <a name="home-realm-discovery-behavior"></a>Gedrag van detectie van thuis realm
 
-Historisch gezien werd de detectie van het thuisrijk bepaald door het domein dat wordt geleverd bij aanmelding of door een Home Realm Discovery-beleid voor sommige oudere toepassingen. In ons detectiegedrag kan een Azure Active Directory-gebruiker bijvoorbeeld zijn gebruikersnaam verkeerd typen, maar toch op het scherm voor het verzamelen van referenties van zijn organisatie aankomen. Dit gebeurt wanneer de gebruiker de domeinnaam 'contoso.com' van de organisatie correct opgeeft. Met dit gedrag kan de granulariteit geen ervaringen voor een individuele gebruiker aanpassen.
+In het verleden is de detectie van de Home-realm onderhevig aan het domein dat wordt meegeleverd bij het aanmelden of door een beleid voor de introductie van realm-detectie voor sommige oudere toepassingen. Zo kan een Azure Active Directory gebruiker in ons detectie gedrag de gebruikers naam van een fout typen, maar wel op het scherm van de referentie verzameling van het bedrijf arriveren. Dit gebeurt wanneer de gebruiker de domein naam ' contoso.com ' van de organisatie correct levert. Dit gedrag staat de granulariteit niet toe om de ervaringen voor een afzonderlijke gebruiker aan te passen.
 
-Om een breder scala aan referenties te ondersteunen en de bruikbaarheid te vergroten, wordt het opzoekgedrag van de gebruikersnaam van Azure Active Directory tijdens het aanmeldingsproces nu bijgewerkt. Het nieuwe gedrag maakt intelligente beslissingen door tenant- en gebruikersniveauinstellingen te lezen op basis van de gebruikersnaam die is ingevoerd op de aanmeldingspagina. Om dit mogelijk te maken, controleert Azure Active Directory of de gebruikersnaam die is ingevoerd op de aanmeldingspagina in het opgegeven domein bestaat of wordt de gebruiker omgeleid om zijn of haar referenties op te geven.
+Als u een breder scala aan referenties wilt ondersteunen en de bruikbaarheid wilt verg Roten, wordt het gedrag van de gebruikers naam voor het zoeken van Azure Active Directory tijdens het aanmeldings proces nu bijgewerkt. Het nieuwe gedrag zorgt voor intelligente beslissingen door de instellingen voor tenants en gebruikers niveau te lezen op basis van de gebruikers naam die op de aanmeldings pagina is opgegeven. Om dit mogelijk te maken, controleert Azure Active Directory of de gebruikers naam die is ingevoerd op de aanmeldings pagina bestaat in het opgegeven domein of de gebruiker wordt omgeleid om zijn of haar referenties op te geven.
 
-Een bijkomend voordeel van dit werk is verbeterde foutmeldingen. Hier volgen enkele voorbeelden van de verbeterde foutmeldingen bij het aanmelden bij een toepassing die alleen Azure Active Directory-gebruikers ondersteunt.
+Een extra voor deel van dit werk is het verbeteren van de fout berichten. Hier volgen enkele voor beelden van de verbeterde fout berichten bij het aanmelden bij een toepassing die alleen Azure Active Directory gebruikers ondersteunt.
 
-- De gebruikersnaam is verkeerd getypt of de gebruikersnaam is nog niet gesynchroniseerd met Azure AD:
+- De gebruikers naam is onjuist getypt of de gebruikers naam is nog niet gesynchroniseerd met Azure AD:
   
-    ![de gebruikersnaam is verkeerd getypt of niet gevonden](./media/signin-realm-discovery/typo-username.png)
+    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/signin-realm-discovery/typo-username.png)
   
-- De domeinnaam wordt verkeerd getypt:
+- De domein naam is niet goed getypt:
   
-    ![de domeinnaam verkeerd is getypt of niet wordt gevonden](./media/signin-realm-discovery/typo-domain.png)
+    ![de domein naam is onjuist getypt of niet gevonden](./media/signin-realm-discovery/typo-domain.png)
   
-- Gebruiker probeert in te loggen met een bekend consumentendomein:
+- De gebruiker probeert zich aan te melden met een bekend consument domein:
   
-    ![aanmelden met een bekend consumentendomein](./media/signin-realm-discovery/consumer-domain.png)
+    ![aanmelden met een bekend consument domein](./media/signin-realm-discovery/consumer-domain.png)
   
-- Het wachtwoord is verkeerd getypt, maar de gebruikersnaam is juist:  
+- Het wacht woord is onjuist getypt, maar de gebruikers naam is nauw keurig:  
   
-    ![wachtwoord is verkeerd getypt met een goede gebruikersnaam](./media/signin-realm-discovery/incorrect-password.png)
+    ![het wacht woord is niet juist getypt met een goede gebruikers naam](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Deze functie kan een impact hebben op federatieve domeinen die afhankelijk zijn van de oude Home Realm Discovery op domeinniveau om federatie te forceren. Zie [Detectie van het thuisrijk tijdens de aanmelding voor Microsoft 365-services voor](https://azure.microsoft.com/updates/signin-hrd/)updates over wanneer federatieve domeinondersteuning wordt toegevoegd. In de tussentijd hebben sommige organisaties hun werknemers getraind om zich aan te melden met een gebruikersnaam die niet bestaat in Azure Active Directory, maar de juiste domeinnaam bevat, omdat de domeinnamen gebruikers die momenteel worden doorlijnen naar het domeineindpunt van hun organisatie. Het nieuwe aanmeldingsgedrag staat dit niet toe. De gebruiker wordt op de hoogte gesteld dat hij de gebruikersnaam corrigeert en mag zich niet aanmelden met een gebruikersnaam die niet bestaat in Azure Active Directory.
+> Deze functie kan van invloed zijn op federatieve domeinen die afhankelijk zijn van de oude basis realm-detectie op domein niveau om de Federatie af te dwingen. Raadpleeg [Home realm Discovery tijdens het aanmelden voor Microsoft 365 Services](https://azure.microsoft.com/updates/signin-hrd/)voor updates over het toevoegen van federatieve domein ondersteuning. Ondertussen hebben sommige organisaties hun werk nemers getraind om zich aan te melden met een gebruikers naam die niet bestaat in Azure Active Directory, maar bevat de juiste domein naam, omdat de domein namen gebruikers naar het domein eindpunt van de organisatie routeren. Het nieuwe aanmeldings gedrag staat dit niet toe. De gebruiker wordt op de hoogte gesteld om de gebruikers naam te corrigeren en ze zijn niet gemachtigd om zich aan te melden met een gebruikers naam die niet voor komt in Azure Active Directory.
 >
-> Als u of uw organisatie praktijken hebben die afhankelijk zijn van het oude gedrag, is het belangrijk dat organisatiebeheerders aanmeldings- en verificatiedocumentatie voor werknemers bijwerken en werknemers trainen om hun Azure Active Directory-gebruikersnaam te gebruiken om zich aan te melden.
+> Als u of uw organisatie procedures heeft die afhankelijk zijn van het oude gedrag, is het belang rijk dat beheerders zich aanmelden en verificatie documentatie bijwerken en werk nemers trainen om hun Azure Active Directory gebruikers naam te gebruiken om zich aan te melden.
   
-Als je je zorgen maakt over het nieuwe gedrag, laat je je opmerkingen achter in het gedeelte **Feedback** van dit artikel.  
+Als u problemen hebt met het nieuwe gedrag, laat u uw opmerkingen in het gedeelte **feedback** van dit artikel staan.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw aanmeldingsmerking aanpassen](../fundamentals/add-custom-domain.md)
+[Uw huis stijl voor aanmelden aanpassen](../fundamentals/add-custom-domain.md)

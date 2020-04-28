@@ -1,6 +1,6 @@
 ---
-title: Apache Spark machine learning pipeline maken - Azure HDInsight
-description: Gebruik de Apache Spark-machine learning-bibliotheek om gegevenspijplijnen te maken in Azure HDInsight.
+title: Apache Spark machine learning pijp lijn maken-Azure HDInsight
+description: Gebruik de Apache Spark machine learning bibliotheek om gegevens pijplijnen te maken in azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,34 +9,34 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494662"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Een machine learning-pijplijn in Apache Spark maken
 
-De schaalbare machine learning-bibliotheek (MLlib) van Apache Spark brengt modelleringsmogelijkheden naar een gedistribueerde omgeving. Het Spark-pakket [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) is een set API's op hoog niveau die zijn gebouwd op DataFrames. Deze API's helpen u bij het maken en afstemmen van praktische machine learning-pijplijnen.  *Spark machine learning* verwijst naar deze MLlib DataFrame-gebaseerde API, niet naar de oudere RDD-gebaseerde pipeline API.
+Met de schaal bare machine learning-bibliotheek van Apache Spark (MLlib) worden model functies naar een gedistribueerde omgeving gebracht. Het Spark- [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) pakket is een set api's op hoog niveau die is gebouwd op DataFrames. Met deze Api's kunt u praktische pijp lijnen voor machine learning maken en afstemmen.  *Spark machine learning* verwijst naar deze MLlib data frame-API, niet op de oudere rdd-API voor pijp lijnen.
 
-Een ml-pijplijn (machine learning) is een complete workflow die meerdere machine learning-algoritmen combineert. Er kunnen veel stappen nodig zijn om gegevens te verwerken en te leren, waarvoor een reeks algoritmen nodig is. Pijplijnen definiëren de fasen en het bestellen van een machine learning-proces. In MLlib worden fasen van een pijplijn weergegeven door een specifieke reeks PipelineStages, waarbij een transformator en een schatter elk taken uitvoeren.
+Een machine learning (ML) pijp lijn is een volledige werk stroom waarmee meerdere machine learning algoritmen samen worden gecombineerd. Er kunnen veel stappen worden uitgevoerd voor het verwerken en leren van gegevens, waardoor een reeks algoritmen vereist is. Met pijp lijnen worden de fasen en de volg orde van een machine learning proces gedefinieerd. In MLlib worden fasen van een pijp lijn vertegenwoordigd door een specifieke reeks PipelineStages, waarbij een transformator en een Estimator elke taak uitvoeren.
 
-Een transformator is een algoritme dat het ene `transform()` DataFrame naar het andere transformeert met behulp van de methode. Een functietransformator kan bijvoorbeeld een kolom van een DataFrame lezen, deze toewijzen aan een andere kolom en een nieuw Gegevensframe uitzetten met de toegewezen kolom eraan toegevoegd.
+Een transformator is een algoritme waarmee een data frame met behulp van de `transform()` -methode wordt omgezet in een andere. Een functie transformator kan bijvoorbeeld één kolom van een data frame lezen, deze toewijzen aan een andere kolom en een nieuwe data frame uitvoer met de toegewezen kolom eraan toe te voegen.
 
-Een Estimator is een abstractie van leeralgoritmen en is verantwoordelijk voor het aanbrengen of trainen op een dataset om een Transformer te produceren. Een schatter implementeert `fit()`een methode met de naam , die een DataFrame accepteert en een DataFrame produceert, dat een transformator is.
+Een Estimator is een abstractie van leer algoritmen en is verantwoordelijk voor het aanpassen of trainen van een gegevensset om een transformator te maken. Een Estimator implementeert een methode met `fit()`de naam, die een data frame accepteert en een data frame, een transformator, produceert.
 
-Elke stateloze instantie van een transformatieof een chatter heeft zijn eigen unieke id, die wordt gebruikt bij het opgeven van parameters. Beide gebruiken een uniforme API voor het opgeven van deze parameters.
+Elk stateless exemplaar van een transformator of een Estimator heeft een eigen unieke id, die wordt gebruikt bij het opgeven van para meters. Beide gebruiken een uniforme API voor het opgeven van deze para meters.
 
-## <a name="pipeline-example"></a>Voorbeeld van pijplijn
+## <a name="pipeline-example"></a>Voor beeld van pijp lijn
 
-Om een praktisch gebruik van een ML-pijplijn `HVAC.csv` aan te tonen, wordt in dit voorbeeld het voorbeeldgegevensbestand gebruikt dat vooraf is geladen op de standaardopslag voor uw HDInsight-cluster, azure storage of Data Lake Storage. Als u de inhoud van het `/HdiSamples/HdiSamples/SensorSampleData/hvac` bestand wilt weergeven, navigeert u naar de map. `HVAC.csv`bevat een aantal tijden met zowel doel- als werkelijke temperaturen voor HVAC *(verwarming, ventilatie en airconditioning)* systemen in verschillende gebouwen. Het doel is om het model te trainen op de gegevens, en produceren een voorspelde temperatuur voor een bepaald gebouw.
+Om een praktisch gebruik van een ML-pijp lijn te demonstreren, gebruikt dit `HVAC.csv` voor beeld het voorbeeld gegevensbestand dat vooraf is geladen in de standaard opslag voor uw HDInsight-cluster, hetzij Azure Storage als data Lake Storage. Als u de inhoud van het bestand wilt bekijken, gaat `/HdiSamples/HdiSamples/SensorSampleData/hvac` u naar de map. `HVAC.csv`bevat een set keer met zowel doel-als werkelijke Tempe raturen voor systemen voor airco (*Verwarming, ventilatie en airconditioning*) in verschillende gebouwen. Het doel is om het model op de gegevens te trainen en een prognose temperatuur te maken voor een bepaald gebouw.
 
 De volgende code:
 
-1. Hiermee `LabeledDocument`definieert u `BuildingID` `SystemInfo` een , die de , (de id en leeftijd van een systeem) en een `label` (1.0 als het gebouw te warm is, 0,0 anders) opslaat.
-2. Hiermee maakt u een `parseDocument` aangepaste parserfunctie die een lijn (rij) met gegevens neemt en bepaalt of het gebouw "heet" is door de doeltemperatuur te vergelijken met de werkelijke temperatuur.
-3. Hiermee past u de parser toe bij het extraheren van de brongegevens.
-4. Hiermee maakt u trainingsgegevens.
+1. Hiermee definieert `LabeledDocument`u een, waarin `BuildingID`de `SystemInfo` , (de id en leeftijd van het systeem) en `label` een (1,0 als het gebouw te warm is, 0,0 anders) wordt opgeslagen.
+2. Hiermee maakt u een aangepaste `parseDocument` parser-functie die een regel (rij) van gegevens neemt en bepaalt of het gebouw ' hot ' is door de doel temperatuur te vergelijken met de werkelijke Tempe ratuur.
+3. Past de parser toe bij het uitpakken van de bron gegevens.
+4. Maakt trainings gegevens.
 
 ```python
 from pyspark.ml import Pipeline
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Deze voorbeeldpijplijn heeft `Tokenizer` drie `HashingTF` fasen: en `Logistic Regression` (zowel Transformers) en (een Schatter).  De geëxtraheerde en ontleedde gegevens in het `training` DataFrame stromen door de pijplijn wanneer `pipeline.fit(training)` wordt aangeroepen.
+Deze voorbeeld pijplijn heeft drie fasen: `Tokenizer` en `HashingTF` (beide trans formats) en `Logistic Regression` (een Estimator).  De geëxtraheerde en geparseerde gegevens in `training` de data frame stromen via de pijp lijn `pipeline.fit(training)` wanneer deze wordt aangeroepen.
 
-1. De eerste `Tokenizer`fase splitst `SystemInfo` de invoerkolom (bestaande uit de systeem-id `words` en leeftijdswaarden) op in een uitvoerkolom. Deze `words` nieuwe kolom wordt toegevoegd aan het DataFrame. 
-2. De tweede `HashingTF`fase zet `words` de nieuwe kolom om in functievectoren. Deze `features` nieuwe kolom wordt toegevoegd aan het DataFrame. Deze eerste twee fasen zijn Transformers. 
-3. De derde `LogisticRegression`fase, , is een Schatter, `LogisticRegression.fit()` en dus `LogisticRegressionModel`de pijpleiding roept de methode om een te produceren . 
+1. De eerste fase, `Tokenizer`, splitst de `SystemInfo` invoer kolom (die bestaat uit de systeem-id en de leeftijds waarden) `words` in een uitvoer kolom. Deze nieuwe `words` kolom wordt toegevoegd aan de data frame. 
+2. De tweede fase, `HashingTF`, converteert de nieuwe `words` kolom naar functie vectoren. Deze nieuwe `features` kolom wordt toegevoegd aan de data frame. Deze eerste twee fasen zijn trans formats. 
+3. De derde fase, `LogisticRegression`, is een Estimator, en de pijp lijn roept de methode `LogisticRegression.fit()` voor het maken van `LogisticRegressionModel`een aan. 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Als u `words` de `features` nieuwe en `Tokenizer` `HashingTF` kolommen wilt zien die `LogisticRegression` door de `PipelineModel.transform()` transformatoren en een voorbeeld van de schatter zijn toegevoegd, voert u een methode uit op het oorspronkelijke Gegevensframe. In productiecode zou de volgende stap zijn om in een test DataFrame te slagen om de training te valideren.
+Als u de nieuwe `words` en `features` kolommen wilt zien die `Tokenizer` zijn `HashingTF` toegevoegd door de-en-trans formaties `LogisticRegression` en een voor beeld `PipelineModel.transform()` van de Estimator, voert u een methode uit op de oorspronkelijke data frame. In productie code moet de volgende stap worden door gegeven in een test data frame om de training te valideren.
 
 ```python
 peek = model.transform(training)
@@ -130,8 +130,8 @@ peek.show()
 only showing top 20 rows
 ```
 
-Het `model` object kan nu worden gebruikt om voorspellingen te doen. Zie [Apache Spark-machine learning-toepassingen bouwen op Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md)voor het volledige voorbeeld van deze machine learning-toepassing en stapsgewijze instructies voor het uitvoeren ervan.
+Het `model` object kan nu worden gebruikt voor het maken van voor spellingen. Zie voor het volledige voor beeld van deze machine learning-toepassing en stapsgewijze instructies voor het uitvoeren van het programma [Apache Spark machine learning-toepassingen in azure HDInsight bouwen](apache-spark-ipython-notebook-machine-learning.md).
 
 ## <a name="see-also"></a>Zie ook
 
-* [Data Science met Scala en Apache Spark op Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Data Science met scala en Apache Spark op Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

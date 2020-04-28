@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175986"
 ---
-1. Vouw in Failoverclusterbeheer **rollen**uit en markeer vervolgens uw beschikbaarheidsgroep.  
+1. In Failoverclusterbeheer vouwt u **rollen**uit en markeert u vervolgens uw beschikbaarheids groep.  
 
-2. Klik op het tabblad **Resources** met de rechtermuisknop op de naam van de listener en klik vervolgens op **Eigenschappen**.
+2. Klik op het tabblad **resources** met de rechter muisknop op de naam van de listener en klik vervolgens op **Eigenschappen**.
 
-3. Klik op het tabblad **Afhankelijkheden.** Als er meerdere bronnen worden vermeld, controleert u of de IP-adressen of, niet EN, afhankelijkheden hebben.  
+3. Klik op het tabblad **afhankelijkheden** . Als er meerdere bronnen worden weer gegeven, controleert u of de IP-adressen of, niet en, afhankelijkheden hebben.  
 
 4. Klik op **OK**.
 
-5. Klik met de rechtermuisknop op de naam van de listener en klik vervolgens op **Online brengen**.
+5. Klik met de rechter muisknop op de naam van de listener en klik vervolgens op **online brengen**.
 
-6. Nadat de listener online is, klikt u op het tabblad **Resources** met de rechtermuisknop op de beschikbaarheidsgroep en klikt u vervolgens op **Eigenschappen**.
+6. Nadat de listener online is, klikt u op het tabblad **resources** met de rechter muisknop op de beschikbaarheids groep en klikt u vervolgens op **Eigenschappen**.
    
-    ![De bron van de beschikbaarheidsgroep configureren](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
+    ![De resource voor de beschikbaarheids groep configureren](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
-7. Maak een afhankelijkheid van de listenernaambron (niet de naam van de IP-adresbron) en klik op **OK**.
+7. Maak een afhankelijkheid van de naam van de listener-resource (niet de naam van de IP-adres resources) en klik vervolgens op **OK**.
    
-    ![Afhankelijkheid van de naam van de listener toevoegen](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
+    ![Afhankelijkheid toevoegen aan de naam van de listener](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
 8. Start SQL Server Management Studio en maak vervolgens verbinding met de primaire replica.
 
-9. Ga naar**Beschikbaarheidsgroepen beschikbaarheidsgroepen** > **\<\>** > beschikbaarheid spaargroepen beschikbaarheid **alwayson beschikbaarheid** > **.**  
-    De listenernaam die u hebt gemaakt in Failoverclusterbeheer moet worden weergegeven.
+9. Ga naar **AlwaysOn** > **beschikbaarheids groepen** > **\<\>** met hoge Beschik baarheid AvailabilityGroupName > -**listeners**.  
+    De naam van de listener die u hebt gemaakt in Failoverclusterbeheer moet worden weer gegeven.
 
-10. Klik met de rechtermuisknop op de naam van de listener en klik vervolgens op **Eigenschappen**.
+10. Klik met de rechter muisknop op de naam van de listener en klik vervolgens op **Eigenschappen**.
 
-11. Geef **in** het vak Poort het poortnummer op voor de listener van de beschikbaarheidsgroep met behulp van de $EndpointPort die u eerder hebt gebruikt (in deze zelfstudie was 1433 de standaardinstelling) en klik vervolgens op **OK**.
+11. Geef in het vak **poort** het poort nummer voor de beschikbaarheids groep-listener op met behulp van de $EndpointPort die u eerder hebt gebruikt (in deze zelf studie is 1433 de standaard instelling) en klik vervolgens op **OK**.
 

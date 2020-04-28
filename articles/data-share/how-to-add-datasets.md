@@ -1,35 +1,35 @@
 ---
-title: Gegevenssets toevoegen aan een bestaand Azure-gegevensaandeel
-description: Meer informatie over het toevoegen van gegevenssets aan een bestaand gegevensaandeel in Azure-gegevensdelen en delen met dezelfde ontvangers.
+title: Gegevens sets toevoegen aan een bestaande Azure-gegevens share
+description: Meer informatie over het toevoegen van gegevens sets aan een bestaande gegevens share in azure data share en delen met dezelfde ontvangers.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73490550"
 ---
-# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Gegevenssets toevoegen aan een bestaand aandeel in Azure Data Share
+# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Gegevens sets toevoegen aan een bestaande share in een Azure-gegevens share
 
-In dit artikel wordt uitgelegd hoe u gegevenssets toevoegt aan een reeds bestaand gegevensaandeel met Azure Data Share. Hierdoor u meer gegevens delen met dezelfde ontvangers zonder dat u een nieuw aandeel hoeft te maken.
+In dit artikel wordt uitgelegd hoe u gegevens sets kunt toevoegen aan een bestaande gegevens share met behulp van Azure data share. Hierdoor kunt u meer gegevens delen met dezelfde ontvangers zonder dat u een nieuwe share hoeft te maken.
 
-Zie de zelfstudie [Gegevens delen](share-your-data.md) voor informatie over het toevoegen van gegevenssets bij het maken van een share.
+Voor informatie over het toevoegen van gegevens sets wanneer u een share maakt, raadpleegt u de zelf studie [Data delen](share-your-data.md) .
 
-## <a name="navigate-to-a-sent-data-share"></a>Navigeren naar een verzonden gegevensaandeel
+## <a name="navigate-to-a-sent-data-share"></a>Navigeer naar een verzonden gegevens share
 
-Navigeer in Azure Data Share naar uw verzonden aandeel en selecteer het tabblad **Gegevenssets.** Klik **op + Sets toevoegen** om meer gegevenssets toe te voegen.
+In azure data share gaat u naar de verzonden share en selecteert u het tabblad **gegevens sets** . Klik op de knop **gegevens sets toevoegen** om meer gegevens sets toe te voegen.
 
-![Gegevenssets toevoegen](./media/how-to/how-to-add-datasets/add-datasets.png)
+![Gegevens sets toevoegen](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-Selecteer in het deelvenster aan de rechterkant het gegevenssettype dat u wilt toevoegen en klik op **Volgende**. Selecteer het abonnement en de brongroep van de gegevens die u wilt toevoegen. Zoek met de vervolgkeuzepijlen en schakel vervolgens het selectievakje in naast de gegevens die u wilt toevoegen.
+Selecteer in het deel venster aan de rechter kant het type gegevensset dat u wilt toevoegen en klik vervolgens op **volgende**. Selecteer het abonnement en de resource groep van de gegevens die u wilt toevoegen. Zoek met de vervolg keuzelijst pijlen het selectie vakje naast de gegevens die u wilt toevoegen.
 
-![Gegevenssets toevoegen](./media/how-to/how-to-add-datasets/add-datasets-side.png)
+![Gegevens sets toevoegen](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
-Zodra u op **Gegevenssets toevoegen**klikt, worden de gegevenssets aan uw aandeel toegevoegd. Opmerking: een momentopname moet worden geactiveerd door uw consumenten om de nieuwe gegevenssets te kunnen zien. Als er momentopnameinstellingen zijn geconfigureerd, zien consumenten de nieuwe gegevenssets zodra de volgende geplande momentopname is voltooid. Zonder dat de momentopnameinstellingen zijn geconfigureerd, moet de consument handmatig een volledige of incrementele kopie van de gegevens activeren om de updates te ontvangen. Zie [Momentopnamen](terminology.md)voor meer informatie over momentopnamen.
+Nadat u op **gegevens sets toevoegen**hebt geklikt, worden de gegevens sets toegevoegd aan uw share. Opmerking: een moment opname moet worden geactiveerd door uw consumenten zodat ze de nieuwe gegevens sets kunnen zien. Als er moment opname-instellingen zijn geconfigureerd, zien consumenten de nieuwe gegevens sets zodra de volgende geplande moment opname is voltooid. Zonder dat de moment opname-instellingen zijn geconfigureerd, moet de gebruiker hand matig een volledige of incrementele kopie van de gegevens activeren om de updates te ontvangen. Zie [moment opnamen](terminology.md)voor meer informatie over moment opnamen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [toevoegen van geadresseerden aan een bestaande gegevensshare](how-to-add-recipients.md).
+Meer informatie over het [toevoegen van ontvangers aan een bestaande gegevens share](how-to-add-recipients.md).

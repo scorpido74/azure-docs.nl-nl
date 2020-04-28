@@ -1,6 +1,6 @@
 ---
-title: Azure Firewall implementeren en configureren met Azure CLI
-description: In dit artikel leert u hoe u Azure Firewall implementeert en configureert met de Azure CLI.
+title: Azure Firewall implementeren en configureren met behulp van Azure CLI
+description: In dit artikel vindt u informatie over het implementeren en configureren van Azure Firewall met behulp van de Azure CLI.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,24 +8,24 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73831972"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall implementeren en configureren met Azure CLI
+# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall implementeren en configureren met behulp van Azure CLI
 
-Het beheren van toegang tot uitgaande netwerken is een belangrijk onderdeel van een algemeen netwerkbeveiligingsabonnement. U bijvoorbeeld de toegang tot websites beperken. U ook de uitgaande IP-adressen en poorten beperken die toegankelijk zijn.
+Het beheren van toegang tot uitgaande netwerken is een belangrijk onderdeel van een algemeen netwerkbeveiligingsabonnement. U kunt bijvoorbeeld de toegang tot websites beperken. Het is ook mogelijk dat u de uitgaande IP-adressen en poorten wilt beperken waartoe toegang kan worden verkregen.
 
 Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren vanaf een Azure-subnet is met Azure Firewall. Met Azure Firewall kunt u het volgende configureren:
 
-* Toepassingsregels die volledig gekwalificeerde domeinnamen (FQDN's) definiëren waartoe toegang kan worden verkregen via een subnet. De FQDN kan ook [SQL-exemplaren bevatten.](sql-fqdn-filtering.md)
+* Toepassingsregels die volledig gekwalificeerde domeinnamen (FQDN's) definiëren waartoe toegang kan worden verkregen via een subnet. De FQDN kan ook [SQL-exemplaren bevatten](sql-fqdn-filtering.md).
 * Netwerkregels die een bronadres, protocol, doelpoort en doeladres definiëren.
 
 Netwerkverkeer is onderhevig aan de geconfigureerde firewallregels wanneer u het routeert naar de firewall als standaardgateway van het subnet.
 
-Voor dit artikel maakt u een vereenvoudigde enkele VNet met drie subnetten voor eenvoudige implementatie. Voor productie-implementaties wordt een [hub- en spaakmodel](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen. De firewall bevindt zich in zijn eigen VNet. De workloadservers bevinden zich in peered VNets in dezelfde regio met een of meer subnetten.
+Voor dit artikel maakt u een vereenvoudigd single VNet met drie subnetten voor een eenvoudige implementatie. Voor productie-implementaties wordt een [hub-en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen. De firewall bevindt zich in een eigen VNet. De werkbelasting servers bevinden zich in een gepeerd VNets in dezelfde regio met een of meer subnetten.
 
 * **AzureFirewallSubnet** – De firewall bevindt zich in dit subnet.
 * **Workload-SN** – De workloadserver bevindt zich in dit subnet. Het netwerkverkeer van dit subnet gaat via de firewall.
@@ -39,23 +39,23 @@ In dit artikel leert u het volgende:
 > * Een testnetwerkomgeving instellen
 > * Een firewall implementeren
 > * Een standaardroute maken
-> * Een toepassingsregel configureren om toegang te krijgen tot www.google.com
+> * Een toepassings regel configureren om toegang tot www.google.com toe te staan
 > * Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
 > * De firewall testen
 
-Als u dat liever hebt, u deze procedure voltooien met de [Azure-portal](tutorial-firewall-deploy-portal.md) of [Azure PowerShell.](deploy-ps.md)
+Als u wilt, kunt u deze procedure volt ooien met behulp van de [Azure Portal](tutorial-firewall-deploy-portal.md) of [Azure PowerShell](deploy-ps.md).
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0.4 of hoger nodig. Om de versie te vinden, voer **je az --versie**uit. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) voor meer informatie over installeren en upgraden.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0.4 of hoger nodig. Voer **AZ--version**uit om de versie te vinden. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) voor meer informatie over installeren en upgraden.
 
-Installeer de Azure Firewall-extensie:
+Installeer de Azure Firewall extensie:
 
 ```azurecli-interactive
 az extension add -n azure-firewall
@@ -68,7 +68,7 @@ Maak eerst een resourcegroep met de resources die nodig zijn om de firewall te i
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De resourcegroep bevat alle resources voor de implementatie.
+De resource groep bevat alle resources voor de implementatie.
 
 ```azurecli-interactive
 az group create --name Test-FW-RG --location eastus
@@ -79,7 +79,7 @@ az group create --name Test-FW-RG --location eastus
 Dit virtuele netwerk heeft drie subnetten.
 
 > [!NOTE]
-> De grootte van het subnet AzureFirewallSubnet is /26. Zie [Veelgestelde vragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)over azure firewall voor meer informatie over de subnetgrootte.
+> De grootte van het AzureFirewallSubnet-subnet is/26. Zie [Azure firewall FAQ (Engelstalig](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)) voor meer informatie over de grootte van het subnet.
 
 ```azurecli-interactive
 az network vnet create \
@@ -104,9 +104,9 @@ az network vnet subnet create \
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
 Maak nu de virtuele jump- en workloadmachines en plaats ze in de toepasselijke subnetten.
-Typ desgevraagd een wachtwoord voor de virtuele machine.
+Typ een wacht woord voor de virtuele machine wanneer u hierom wordt gevraagd.
 
-Maak de Virtuele Srv-Jump machine.
+Maak de SRV-Jump-virtuele machine.
 
 ```azurecli-interactive
 az vm create \
@@ -122,7 +122,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Maak een NIC voor Srv-Work met specifieke DNS-server IP-adressen en geen openbaar IP-adres om mee te testen.
+Maak een NIC voor SRV-werk met specifieke IP-adressen van de DNS-server en geen openbaar IP-adres om met te testen.
 
 ```azurecli-interactive
 az network nic create \
@@ -134,8 +134,8 @@ az network nic create \
    --dns-servers 209.244.0.3 209.244.0.4
 ```
 
-Maak nu de virtuele werkbelastingmachine.
-Typ desgevraagd een wachtwoord voor de virtuele machine.
+Maak nu de virtuele workload-machine.
+Typ een wacht woord voor de virtuele machine wanneer u hierom wordt gevraagd.
 
 ```azurecli-interactive
 az vm create \
@@ -181,7 +181,7 @@ Noteer het privé-IP-adres. U zult het later gebruiken wanneer u de standaardrou
 
 ## <a name="create-a-default-route"></a>Een standaardroute maken
 
-Een tabel maken, waarbij de bgp-routepropagatie is uitgeschakeld
+Een tabel maken waarbij BGP-route doorgifte is uitgeschakeld
 
 ```azurecli-interactive
 az network route-table create \
@@ -203,7 +203,7 @@ az network route-table route create \
   --next-hop-ip-address $fwprivaddr
 ```
 
-De routetabel koppelen aan het subnet
+De route tabel koppelen aan het subnet
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -216,7 +216,7 @@ az network vnet subnet update \
 
 ## <a name="configure-an-application-rule"></a>Een toepassingsregel configureren
 
-De toepassingsregel geeft uitgaande toegang tot www.google.com.
+De toepassings regel staat uitgaande toegang tot www.google.com toe.
 
 ```azurecli-interactive
 az network firewall application-rule create \
@@ -235,7 +235,7 @@ Azure Firewall bevat een ingebouwde regelverzameling voor infrastructuur-FQDN’
 
 ## <a name="configure-a-network-rule"></a>Een netwerkregel configureren
 
-De netwerkregel biedt uitgaande toegang tot twee IP-adressen in poort 53 (DNS).
+De netwerk regel staat uitgaande toegang tot twee IP-adressen op poort 53 (DNS) toe.
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -253,9 +253,9 @@ az network firewall network-rule create \
 
 ## <a name="test-the-firewall"></a>De firewall testen
 
-Test nu de firewall om te bevestigen dat het werkt zoals verwacht.
+Test nu de firewall om te controleren of deze werkt zoals verwacht.
 
-1. Let op het privé-IP-adres voor de **virtuele srv-work-machine:**
+1. Noteer het privé-IP-adres voor de virtuele machine **met SRV-werk** :
 
    ```azurecli-interactive
    az vm list-ip-addresses \
@@ -263,16 +263,16 @@ Test nu de firewall om te bevestigen dat het werkt zoals verwacht.
    -n Srv-Work
    ```
 
-1. Sluit een extern bureaublad aan op de virtuele machine **van Srv-Jump** en meld u aan. Open van daaruit een externe desktopverbinding met het **privé-IP-adres van Srv-Work** en meld u aan.
+1. Verbind een extern bureau blad met **SRV-Jump** virtuele machine en meld u aan. Open vanaf daar een verbinding met een extern bureau blad met het privé-IP-adres van **SRV-werk** en meld u aan.
 
-3. Open **op SRV-Work**een PowerShell-venster en voer de volgende opdrachten uit:
+3. Open op **SRV**een Power shell-venster en voer de volgende opdrachten uit:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Beide opdrachten moeten antwoorden retourneren, waaruit blijkt dat uw DNS-query's via de firewall komen.
+   Beide opdrachten moeten antwoorden retour neren, zodat u kunt zien dat uw DNS-query's via de firewall worden ontvangen.
 
 1. Voer de volgende opdrachten uit:
 
@@ -284,16 +284,16 @@ Test nu de firewall om te bevestigen dat het werkt zoals verwacht.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   De `www.google.com` aanvragen moeten slagen `www.microsoft.com` en de aanvragen moeten mislukken. Dit toont aan dat uw firewallregels werken zoals verwacht.
+   De `www.google.com` aanvragen moeten slagen en de `www.microsoft.com` aanvragen moeten mislukken. Dit laat zien dat uw firewall regels werken zoals verwacht.
 
-Dus nu heb je geverifieerd dat de firewall regels werken:
+Nu hebt u gecontroleerd of de firewall regels werken:
 
 * Kunt u DNS-namen omzetten met behulp van de geconfigureerde externe DNS-server.
 * Kunt u bladeren naar de enige toegestane FQDN, maar niet naar andere.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U uw firewallbronnen behouden voor de volgende zelfstudie of, indien dit niet meer nodig is, de brongroep **Test-FW-RG** verwijderen om alle firewallgerelateerde bronnen te verwijderen:
+U kunt uw firewall bronnen voor de volgende zelf studie houden, of als u deze niet meer nodig hebt, verwijdert u de resource groep **test-FW-RG** om alle firewall-gerelateerde resources te verwijderen:
 
 ```azurecli-interactive
 az group delete \

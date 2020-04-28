@@ -1,6 +1,6 @@
 ---
-title: Beheerde ingebouwde firewall ontdekken
-description: Meer informatie over het verifiëren van ingebouwde firewallbeveiliging in Azure SQL Database Managed Instance.
+title: Ingebouwde firewall voor beheerde instanties detecteren
+description: Meer informatie over het controleren van de ingebouwde firewall beveiliging in Azure SQL Database Managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,22 +12,22 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 555ef56aafa37a1e1d384f945b04f9237adc5f7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73821807"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Ingebouwde firewall van Managed Instance controleren
 
-De [verplichte inkomende beveiligingsregels](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules) voor beheerinstantie vereisen dat beheerpoorten 9000, 9003, 1438, 1440, 1452 worden geopend vanuit **Elke bron** op de Network Security Group (NSG) die het beheerde exemplaar beschermt. Hoewel deze poorten op NSG-niveau open zijn, worden ze op netwerkniveau beschermd door de ingebouwde firewall.
+Voor de [verplichte binnenkomende beveiligings regels](sql-database-managed-instance-connectivity-architecture.md#mandatory-inbound-security-rules) voor het beheerde exemplaar zijn beheer poorten 9000, 9003, 1438, 1440 en 1452 vereist die moeten worden geopend vanaf **een bron** in de netwerk beveiligings groep (NSG) die het beheerde exemplaar beveiligt. Hoewel deze poorten zijn geopend op het niveau van de NSG, worden ze op netwerk niveau beschermd door de ingebouwde firewall.
 
-## <a name="verify-firewall"></a>Firewall verifiëren
+## <a name="verify-firewall"></a>Firewall controleren
 
-Als u deze poorten wilt verifiëren, gebruikt u een beveiligingsscannertool om deze poorten te testen. De volgende screenshot laat zien hoe je een van deze tools te gebruiken.
+Als u deze poorten wilt controleren, gebruikt u een hulp programma voor beveiligings scanner om deze poorten te testen. In de volgende scherm afbeelding ziet u hoe u een van deze hulpprogram ma's gebruikt.
 
-![Ingebouwde firewall verifiëren](./media/sql-database-managed-instance-management-endpoint/03_verify_firewall.png)
+![De ingebouwde firewall controleren](./media/sql-database-managed-instance-management-endpoint/03_verify_firewall.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure SQL Database Managed Instance Connectivity Architecture](sql-database-managed-instance-connectivity-architecture.md)voor meer informatie over beheerde exemplaren en connectiviteit.
+Zie voor meer informatie over beheerde exemplaren en connectiviteit de [Azure SQL database Managed instance connectivity-architectuur](sql-database-managed-instance-connectivity-architecture.md).

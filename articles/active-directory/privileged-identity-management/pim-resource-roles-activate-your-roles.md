@@ -1,6 +1,6 @@
 ---
-title: Azure-bronrollen activeren in PIM - Azure AD | Microsoft Documenten
-description: Meer informatie over het activeren van uw Azure-bronrollen in Azure AD Privileged Identity Management (PIM).
+title: Azure-resource rollen activeren in PIM-Azure AD | Microsoft Docs
+description: Meer informatie over het activeren van uw Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,123 +16,123 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d35c81f7bb478d91bd207327ea37c80aa1778142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74023155"
 ---
-# <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Mijn Azure-bronrollen activeren in Privileged Identity Management
+# <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Mijn Azure-resource rollen in Privileged Identity Management activeren
 
-Gebruik Privileged Identity Management (PIM) om in aanmerking komende rolleden voor Azure-resources de activering voor een toekomstige datum en tijd te laten plannen. Ze kunnen ook een specifieke activeringsduur selecteren binnen het maximum (geconfigureerd door beheerders).
+Gebruik Privileged Identity Management (PIM) om in aanmerking komende leden voor Azure-resources in staat te stellen activeringen te plannen voor een toekomstige datum en tijd. Ze kunnen ook een specifieke activerings duur binnen het maximum (geconfigureerd door beheerders) selecteren.
 
-Dit artikel is bedoeld voor leden die hun Azure-bronrol moeten activeren in Privileged Identity Management.
+Dit artikel is voor leden die hun Azure-resource functie moeten activeren in Privileged Identity Management.
 
 ## <a name="activate-a-role"></a>Een rol activeren
 
-Wanneer u een Azure-bronrol moet overnemen, u activering aanvragen met de navigatieoptie **Mijn rollen** in Privileged Identity Management.
+Wanneer u een Azure-resource functie moet uitvoeren, kunt u de activering aanvragen met de navigatie optie **mijn rollen** in privileged Identity Management.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Azure **AD Privileged Identity Management openen**. Zie [Start met Privileged Identity Management](pim-getting-started.md)voor informatie over het toevoegen van de tegel Privileged Identity Management aan uw dashboard.
+1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 
-1. Selecteer **Mijn rollen**.
+1. Selecteer **mijn rollen**.
 
-    ![Op mijn rollenpagina met rollen die u activeren](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Pagina mijn rollen met rollen die u kunt activeren](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
-1. Selecteer **Azure-bronrollen** om een lijst met uw in aanmerking komende Azure-bronrollen te bekijken.
+1. Selecteer **Azure-resource rollen** om een lijst met uw in aanmerking komende Azure-resource rollen weer te geven.
 
-   ![Pagina Mijn rollen - Azure-resourcerollen](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![Mijn rollen-pagina Azure-resource rollen](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
-1. Zoek in de lijst **met Azure-bronrollen** de rol die u wilt activeren.
+1. Zoek in de lijst met **Azure-resource rollen** de rol die u wilt activeren.
 
-    ![Azure-bronrollen - Mijn lijst met in aanmerking komende rollen](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+    ![Azure-resource rollen: mijn in aanmerking komende rollen lijst](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. Selecteer **Activeren** om het deelvenster Activeren te openen.
+1. Selecteer **activeren** om het deel venster activeren te openen.
 
-1. Als uw rol meervoudige verificatie vereist, selecteert **u Uw identiteit verifiëren voordat u verdergaat.** U hoeft zich slechts één keer per sessie te verifiëren.
+1. Als voor uw rol multi-factor Authentication is vereist, selecteert u **uw identiteit verifiëren voordat u doorgaat**. U hoeft slechts één keer per sessie te authenticeren.
 
-    ![Mijn identiteit verifiëren met MFA voordat de rol wordt geactiveerd](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+    ![Mijn identiteit met MFA verifiëren voordat de functie wordt geactiveerd](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
-1. Selecteer **Mijn identiteit verifiëren** en volg de instructies om aanvullende beveiligingsverificatie te bieden.
+1. Selecteer **Mijn identiteit verifiëren** en volg de instructies voor aanvullende beveiligings verificatie.
 
-    ![Scherm om beveiligingsverificatie te bieden, zoals een pincode](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+    ![Scherm om beveiligings verificatie te bieden, zoals een pincode](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. Als u een beperkt bereik wilt opgeven, selecteert u **Bereik** om het deelvenster Resourcefilter te openen.
+1. Als u een kleiner bereik wilt opgeven, selecteert u **bereik** om het deel venster Resource filter te openen.
 
-    Het is een aanbevolen manier om alleen toegang te vragen tot de resources die u nodig hebt. In het filtervenster Resource u de brongroepen of resources opgeven waartoe u toegang nodig hebt.
+    Het is een best practice om alleen toegang te vragen voor de resources die u nodig hebt. In het deel venster Resource filter kunt u de resource groepen of bronnen opgeven waartoe u toegang nodig hebt.
 
-    ![Activeren - deelvenster Resourcefilter om bereik op te geven](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+    ![Activeren-resource filter venster om het bereik op te geven](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
 
-1. Geef indien nodig een aangepaste begintijd voor activering op. Het lid wordt na de geselecteerde tijd geactiveerd.
+1. Geef indien nodig een aangepaste begin tijd voor de activering op. Het lid wordt na de geselecteerde tijd geactiveerd.
 
-1. Voer in het vak **Reden** de reden voor de activeringsaanvraag in.
+1. Voer in het vak **reden** de reden voor de activerings aanvraag in.
 
-    ![Voltooid deelvenster Activeren met bereik, begintijd, duur en reden](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+    ![Deel venster activeren met bereik, start tijd, duur en reden is voltooid](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. Selecteer **Activeren**.
+1. Selecteer **activeren**.
 
-    Als de rol geen goedkeuring vereist, wordt deze geactiveerd en toegevoegd aan de lijst met actieve rollen. Als u de rol wilt gebruiken, volgt u de stappen in de volgende sectie.
+    Als voor de rol geen goed keuring is vereist, wordt deze geactiveerd en toegevoegd aan de lijst met actieve rollen. Als u de rol wilt gebruiken, volgt u de stappen in de volgende sectie.
 
-    Als de [rol goedkeuring vereist](pim-resource-roles-approval-workflow.md) om te activeren, verschijnt er een melding in de rechterbovenhoek van uw browser waarin u wordt geïnformeerd dat het verzoek in behandeling is.
+    Als voor de [rol goed keuring moet](pim-resource-roles-approval-workflow.md) worden geactiveerd, wordt in de rechter bovenhoek van uw browser gemeld dat de aanvraag goed keuring in behandeling is.
 
-    ![Activeringsaanvraag is in afwachting van goedkeuringskennisgeving](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+    ![Goedkeurings melding in afwachting van activerings aanvraag](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="use-a-role-immediately-after-activation"></a>Een rol direct na activering gebruiken
+## <a name="use-a-role-immediately-after-activation"></a>Een rol direct na de activering gebruiken
 
-In het geval van vertraging na activering, volgt u deze stappen nadat u hebt geactiveerd om uw Azure-bronrollen onmiddellijk te gebruiken.
+In het geval van een vertraging na de activering voert u de volgende stappen uit nadat u hebt geactiveerd om uw Azure-resource rollen direct te gebruiken.
 
 1. Open Azure AD Privileged Identity Management.
 
-1. Selecteer **Mijn rollen** om een lijst te zien met uw in aanmerking komende Azure AD-rollen en Azure-bronrollen.
+1. Selecteer **mijn rollen** om een lijst met uw in aanmerking komende Azure AD-rollen en Azure-resource rollen weer te geven.
 
-1. Selecteer **Azure-bronrollen**.
+1. Selecteer **Azure-resource rollen**.
 
-1. Selecteer het tabblad **Actieve rollen.**
+1. Selecteer het tabblad **actieve rollen** .
 
-1. Zodra de rol actief is, meld u zich af bij het portaal en meldt u zich weer aan.
+1. Zodra de rol actief is, meldt u zich af bij de portal en meldt u zich opnieuw aan.
 
     De rol moet nu beschikbaar zijn voor gebruik.
 
-## <a name="view-the-status-of-your-requests"></a>De status van uw aanvragen weergeven
+## <a name="view-the-status-of-your-requests"></a>De status van uw aanvragen weer geven
 
-U de status van uw in behandeling zijnde aanvragen bekijken om te activeren.
+U kunt de status van de in behandeling zijnde aanvragen weer geven om te activeren.
 
 1. Open Azure AD Privileged Identity Management.
 
-1. Selecteer **Mijn aanvragen** om een lijst met uw Azure AD-rol en Azure-bronrolaanvragen te bekijken.
+1. Selecteer **mijn aanvragen** om een lijst weer te geven met uw Azure AD-rol en aanvragen voor Azure-resource rollen.
 
-    ![Mijn aanvragen - Azure-bronpagina met uw aanvragen in behandeling](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Mijn aanvragen-Azure-resource pagina met uw aanvragen in behandeling](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
-1. Schuif naar rechts om de kolom **Status aanvragen** weer te geven.
+1. Schuif naar rechts om de kolom Status van de **aanvraag** weer te geven.
 
 ## <a name="cancel-a-pending-request"></a>Een aanvraag in behandeling annuleren
 
-Als u geen activering nodig hebt van een rol waarvoor goedkeuring vereist is, u een aanvraag in behandeling op elk gewenst moment annuleren.
+Als u geen activering van een rol vereist waarvoor goed keuring is vereist, kunt u een aanvraag in behandeling op elk gewenst moment annuleren.
 
 1. Open Azure AD Privileged Identity Management.
 
-1. Selecteer **Mijn aanvragen**.
+1. Selecteer **mijn aanvragen**.
 
-1. Selecteer de koppeling **Annuleren** voor de rol die u wilt annuleren.
+1. Selecteer de koppeling **Annuleren** voor de functie die u wilt annuleren.
 
-    Wanneer u Annuleren selecteert, wordt het verzoek geannuleerd. Om de rol opnieuw te activeren, moet u een nieuw verzoek tot activering indienen.
+    Wanneer u annuleren selecteert, wordt de aanvraag geannuleerd. Als u de functie opnieuw wilt activeren, moet u een nieuwe aanvraag indienen voor activering.
 
-   ![Mijn aanvraaglijst met actie Annuleren gemarkeerd](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![Mijn aanvraag lijst met de actie annuleren gemarkeerd](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Machtigingen worden niet toegekend na het activeren van een rol
 
-Wanneer u een rol activeert in Privileged Identity Management, wordt de activering mogelijk niet onmiddellijk doorgegeven aan alle portalen waarvoor de bevoorrechte rol vereist is. Zelfs als de wijziging is doorgevoerd, kan het soms gebeuren dat webcaching in een portal tot gevolg heeft dat de wijziging niet onmiddellijk van kracht gaat. Als uw activering is vertraagd, hier is wat je moet doen.
+Wanneer u een rol in Privileged Identity Management activeert, wordt de activering mogelijk niet onmiddellijk door gegeven aan alle portals waarvoor de rol met privileges is vereist. Zelfs als de wijziging is doorgevoerd, kan het soms gebeuren dat webcaching in een portal tot gevolg heeft dat de wijziging niet onmiddellijk van kracht gaat. Als de activering is vertraagd, is dit wat u moet doen.
 
 1. Meld u af bij de Azure-portal en meld u weer aan.
 
-    Wanneer u een Azure-bronrol activeert, ziet u de fasen van uw activering. Wanneer alle fasen zijn voltooid, ziet u de koppeling **Afmelden**. U deze link gebruiken om u af te melden. Dit lost de meeste gevallen voor activeringvertraging op.
+    Wanneer u een Azure-resource functie activeert, worden de fasen van uw activering weer geven. Wanneer alle fasen zijn voltooid, ziet u de koppeling **Afmelden**. U kunt deze koppeling gebruiken om u af te melden. Hiermee worden de meeste gevallen voor de activerings vertraging opgelost.
 
 1. Controleer in Privileged Identity Management of u wordt vermeld als lid van de rol.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-bronrollen uitbreiden of vernieuwen in Privileged Identity Management](pim-resource-roles-renew-extend.md)
-- [Mijn Azure AD-rollen activeren in Privileged Identity Management](pim-how-to-activate-role.md)
+- [Azure-resource rollen in Privileged Identity Management uitbreiden of vernieuwen](pim-resource-roles-renew-extend.md)
+- [Mijn Azure AD-rollen in Privileged Identity Management activeren](pim-how-to-activate-role.md)

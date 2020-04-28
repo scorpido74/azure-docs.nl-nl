@@ -1,35 +1,35 @@
 ---
-title: Geadresseerden toevoegen in Azure-gegevensshare
-description: Meer informatie over het toevoegen van geadresseerden aan een bestaand gegevensaandeel in Azure Data Share.
+title: Ontvangers toevoegen in azure data share
+description: Meer informatie over het toevoegen van geadresseerden aan een bestaande gegevens share in azure data share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 9f49ab3aed60bfbe04ad022070a931461e3f52f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73490523"
 ---
-# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Een geadresseerde toevoegen aan een bestaand gegevensaandeel in Azure Data Share
+# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Een ontvanger toevoegen aan een bestaande gegevens share in een Azure-gegevens share
 
-In dit artikel ziet u hoe u ontvangers toevoegt aan een reeds bestaand gegevensaandeel.
+In dit artikel wordt uitgelegd hoe u ontvangers kunt toevoegen aan een bestaande gegevens share.
 
-Zie de zelfstudie [Gegevens delen](share-your-data.md) voor informatie over het toevoegen van ontvangers bij het maken van een share.
+Zie de zelf studie [gegevens delen](share-your-data.md) voor informatie over het toevoegen van ontvangers wanneer u een share maakt.
 
-## <a name="navigate-to-a-sent-data-share"></a>Navigeren naar een verzonden gegevensaandeel
+## <a name="navigate-to-a-sent-data-share"></a>Navigeer naar een verzonden gegevens share
 
-Navigeer in Azure Data Share naar uw verzonden deel en selecteer het tabblad **Uitnodigingen.** Als u een nieuwe wilt toevoegen, klikt u op **Geadresseerde toevoegen**.
+In azure data share gaat u naar de verzonden share en selecteert u het tabblad **uitnodigingen** . hier worden alle ontvangers van uitnodigingen van deze gegevens share weer gegeven. Als u een nieuw item wilt toevoegen, klikt u op **ontvanger toevoegen**.
 
-![Geadresseerde toevoegen](./media/how-to/how-to-add-recipients/add-recipient.png)
+![Ontvanger toevoegen](./media/how-to/how-to-add-recipients/add-recipient.png)
 
-Aan de rechterkant van de pagina verschijnt een paneel. Klik **op Geadresseerde toevoegen** en vul de e-mail van de nieuwe ontvanger in op de lege regel. Voeg zoveel ontvangers toe als u wilt.
+Er wordt een paneel aan de rechter kant van de pagina weer gegeven. Klik op **ontvanger toevoegen** en vul vervolgens het e-mail adres van uw nieuwe ontvanger in op de lege regel. Voeg zoveel ontvangers toe als u wilt.
 
-![Geadresseerde toevoegen](./media/how-to/how-to-add-recipients/add-recipient-side.png)
+![Ontvanger toevoegen](./media/how-to/how-to-add-recipients/add-recipient-side.png)
 
-Klik **op Uitnodiging toevoegen en verzenden**. De nieuwe ontvanger(s) ontvangt uitnodigingse-mails naar dit gegevensaandeel.
+Klik op **toevoegen en uitnodiging verzenden**. E-mail berichten worden verzonden naar de nieuwe ontvanger (s) voor deze gegevens share.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [verwijderen van een uitnodiging voor een aandeel](how-to-delete-invitation.md).
+Meer informatie over het [verwijderen van een uitnodiging voor een share](how-to-delete-invitation.md).

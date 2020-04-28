@@ -1,7 +1,7 @@
 ---
-title: Api-sleutels voor beheerders en query's maken, beheren en beveiligen
+title: Beheer-en query-API-sleutels maken, beheren en beveiligen
 titleSuffix: Azure Cognitive Search
-description: Een api-key regelt de toegang tot het serviceeindpunt. Beheerderssleutels verlenen schrijftoegang. Querysleutels kunnen worden gemaakt voor alleen-lezen toegang.
+description: Een API-sleutel beheert de toegang tot het service-eind punt. Beheer sleutels verlenen schrijf toegang. Query sleutels kunnen worden gemaakt voor alleen-lezen toegang.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,92 +9,92 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72794376"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Api-sleutels maken en beheren voor een Azure Cognitive Search-service
+# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>API-sleutels voor een Azure Cognitive Search-service maken en beheren
 
-Alle aanvragen voor een zoekservice hebben een alleen-lezen api-sleutel nodig die speciaal voor uw service is gegenereerd. De api-key is het enige mechanisme voor het verifiëren van toegang tot uw zoekserviceeindpunt en moet op elk verzoek worden opgenomen. In [REST-oplossingen](search-get-started-postman.md)wordt de api-toets meestal opgegeven in een aanvraagkoptekst. In [.NET-oplossingen](search-howto-dotnet-sdk.md#core-scenarios)wordt een sleutel vaak opgegeven als configuratie-instelling en vervolgens doorgegeven als [Referenties](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (beheersleutel) of [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (querytoets) op [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
+Alle aanvragen voor een zoek service hebben een alleen-lezen API-sleutel nodig die specifiek voor uw service is gegenereerd. De API-sleutel is het enige mechanisme voor het verifiëren van toegang tot het eind punt van de zoek service en moet op elke aanvraag worden opgenomen. In [rest oplossingen](search-get-started-postman.md)wordt de API-sleutel doorgaans opgegeven in een aanvraag header. In [.net-oplossingen](search-howto-dotnet-sdk.md#core-scenarios)wordt een sleutel vaak opgegeven als een configuratie-instelling en vervolgens door gegeven als [referenties](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (beheer sleutel) of [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (query sleutel) op [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
 
-Sleutels worden gemaakt met uw zoekservice tijdens het inrichten van de service. U belangrijke waarden bekijken en verkrijgen in de [Azure-portal.](https://portal.azure.com)
+Sleutels worden tijdens het inrichten van de service gemaakt met uw zoek service. U kunt sleutel waarden weer geven en verkrijgen in de [Azure Portal](https://portal.azure.com).
 
-![Portalpagina, sectie Instellingen, Sleutels](media/search-manage/azure-search-view-keys.png)
+![Portal-pagina, instellingen, sectie sleutels](media/search-manage/azure-search-view-keys.png)
 
-## <a name="what-is-an-api-key"></a>Wat is een api-key
+## <a name="what-is-an-api-key"></a>Wat is een API-sleutel
 
-Een api-toets is een tekenreeks die bestaat uit willekeurig gegenereerde getallen en letters. Via [op rollen gebaseerde machtigingen](search-security-rbac.md)u de sleutels verwijderen of lezen, maar u een sleutel niet vervangen door een door de gebruiker gedefinieerd wachtwoord of Active Directory gebruiken als de primaire verificatiemethode voor toegang tot zoekbewerkingen. 
+Een API-sleutel is een teken reeks die bestaat uit wille keurig gegenereerde cijfers en letters. Via [op rollen gebaseerde machtigingen](search-security-rbac.md)kunt u de sleutels verwijderen of lezen, maar u kunt geen sleutel vervangen door een door de gebruiker gedefinieerd wacht woord of Active Directory gebruiken als de primaire verificatie methode voor het openen van zoek bewerkingen. 
 
-Er worden twee typen sleutels gebruikt om toegang te krijgen tot uw zoekservice: admin (read-write) en query (alleen-lezen).
+Er worden twee soorten sleutels gebruikt om toegang te krijgen tot uw zoek service: beheerder (lezen/schrijven) en query (alleen-lezen).
 
 |Sleutel|Beschrijving|Limieten|  
 |---------|-----------------|------------|  
-|Beheerder|Verleent volledige rechten voor alle bewerkingen, inclusief de mogelijkheid om de service te beheren, indexen, indexeerders en gegevensbronnen te maken en te verwijderen.<br /><br /> Twee beheerderssleutels, aangeduid als *primaire* en *secundaire* sleutels in de portal, worden gegenereerd wanneer de service wordt gemaakt en afzonderlijk op aanvraag kunnen worden geregenereerd. Met twee sleutels u één sleutel omrollen terwijl u de tweede sleutel gebruikt voor voortdurende toegang tot de service.<br /><br /> Beheerderssleutels worden alleen opgegeven in HTTP-aanvraagkoppen. U geen api-sleutel voor beheerders in een URL plaatsen.|Maximaal 2 per dienst|  
-|Query’s uitvoeren|Verleent alleen-lezen toegang tot indexen en documenten en wordt meestal gedistribueerd naar clienttoepassingen die zoekverzoeken uitgeven.<br /><br /> Querysleutels worden op aanvraag gemaakt. U ze handmatig maken in de portal of programmatisch via de [Management REST API.](https://docs.microsoft.com/rest/api/searchmanagement/)<br /><br /> Querytoetsen kunnen worden opgegeven in een HTTP-aanvraagkop voor zoeken, suggestie of opzoekbewerking. U ook een querysleutel als parameter doorgeven aan een URL. Afhankelijk van hoe uw clienttoepassing de aanvraag formuleert, is het misschien eenvoudiger om de sleutel als queryparameter door te geven:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 per dienst|  
+|Beheerder|Verleent volledige rechten voor alle bewerkingen, met inbegrip van de mogelijkheid om de service te beheren, indexen, Indexeer functies en gegevens bronnen te maken en te verwijderen.<br /><br /> Twee beheer sleutels, aangeduid als *primaire* en *secundaire* sleutels in de portal, worden gegenereerd wanneer de service wordt gemaakt en kunnen op aanvraag afzonderlijk opnieuw worden gegenereerd. Als u twee sleutels hebt, kunt u één sleutel gebruiken terwijl u de tweede toets gebruikt voor verdere toegang tot de service.<br /><br /> Beheerders sleutels worden alleen opgegeven in HTTP-aanvraag headers. U kunt geen beheerder-API-sleutel in een URL plaatsen.|Maximum van 2 per service|  
+|Query’s uitvoeren|Geeft alleen-lezen toegang tot indexen en documenten, en wordt doorgaans gedistribueerd naar client toepassingen die zoek aanvragen uitgeven.<br /><br /> Query sleutels worden op aanvraag gemaakt. U kunt ze hand matig maken in de portal of via een programma via de [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Query sleutels kunnen worden opgegeven in een header van een HTTP-aanvraag voor zoeken, suggestie of opzoek bewerking. U kunt ook een query sleutel als een para meter door geven op een URL. Afhankelijk van hoe uw client toepassing de aanvraag opvraagt, is het wellicht eenvoudiger om de sleutel als een query parameter door te geven:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 per service|  
 
- Visueel is er geen onderscheid tussen een beheersleutel of querysleutel. Beide toetsen zijn tekenreeksen die bestaan uit 32 willekeurig gegenereerde alfanumerieke tekens. Als u uit het oog verliest welk type sleutel in uw toepassing is opgegeven, u [de belangrijkste waarden in de portal controleren](https://portal.azure.com) of de [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) gebruiken om de waarde en het sleuteltype terug te geven.  
+ Er is visueel geen onderscheid tussen een beheer sleutel of query sleutel. Beide sleutels zijn teken reeksen die bestaan uit 32 wille keurig gegenereerde alfanumerieke tekens. Als u het bijhouden van welk type sleutel is opgegeven in uw toepassing kwijtraakt, kunt u [de sleutel waarden controleren in de portal](https://portal.azure.com) of de [rest API](https://docs.microsoft.com/rest/api/searchmanagement/) gebruiken om de waarde en het sleutel type te retour neren.  
 
 > [!NOTE]  
->  Het wordt beschouwd als een slechte beveiligingspraktijk `api-key` om gevoelige gegevens door te geven, zoals een in de aanvraag URI. Azure Cognitive Search accepteert daarom alleen een querysleutel als een `api-key` queryreeks en u moet dit voorkomen, tenzij de inhoud van uw index openbaar beschikbaar moet zijn. In het algemeen raden we `api-key` u aan uw als een aanvraagheader door te geven.  
+>  Het wordt gezien als een slechte beveiligings procedure om gevoelige gegevens op te geven `api-key` , zoals een in de aanvraag-URI. Daarom accepteert Azure Cognitive Search alleen een query sleutel als een `api-key` in de query teken reeks en moet u dit voor komen, tenzij de inhoud van uw index openbaar moet zijn. Als algemene regel wordt u aangeraden om uw `api-key` als aanvraag header door te geven.  
 
 ## <a name="find-existing-keys"></a>Bestaande sleutels zoeken
 
-U toegangssleutels verkrijgen in de portal of via de [Management REST API.](https://docs.microsoft.com/rest/api/searchmanagement/) Zie [Api-sleutels beheren en query's voor](search-security-api-keys.md)meer informatie.
+U kunt toegangs sleutels verkrijgen in de portal of via de [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/). Zie [beheer-en query-API-sleutels beheren](search-security-api-keys.md)voor meer informatie.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Vermeld de [zoekservices](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) voor uw abonnement.
-3. Selecteer de service en klik op de pagina Overzicht op >**Instellingentoetsen** om beheer- en querysleutels weer te geven. **Settings**
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Vermeld de [Zoek Services](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) voor uw abonnement.
+3. Selecteer de service en klik op de pagina overzicht op **instellingen** >**sleutels** om de beheer-en query sleutels weer te geven.
 
-   ![Portalpagina, sectie Instellingen, Sleutels](media/search-security-overview/settings-keys.png)
+   ![Portal-pagina, instellingen, sectie sleutels](media/search-security-overview/settings-keys.png)
 
-## <a name="create-query-keys"></a>Querytoetsen maken
+## <a name="create-query-keys"></a>Query sleutels maken
 
-Querysleutels worden gebruikt voor alleen-lezen toegang tot documenten in een index voor bewerkingen die gericht zijn op een verzameling van documenten. Zoek-, filter- en suggestiequery's zijn alle bewerkingen die een querysleutel uitvoeren. Voor elke alleen-lezenbewerking die systeemgegevens of objectdefinities retourneert, zoals een indexdefinitie of indexerstatus, is een beheersleutel vereist.
+Query sleutels worden gebruikt voor alleen-lezen toegang tot documenten in een index voor bewerkingen die zijn gericht op een verzameling documenten. Zoek-, filter-en suggesties query's zijn alle bewerkingen die een query sleutel uitvoeren. Een alleen-lezen bewerking die systeem gegevens of object definities retourneert, zoals een index definitie of Indexeer functie-status, vereist een beheerders sleutel.
 
-Het beperken van toegang en bewerkingen in client-apps is essentieel om de zoekmiddelen op uw service te beveiligen. Gebruik altijd een querysleutel in plaats van een beheersleutel voor elke query die afkomstig is van een client-app.
+Het beperken van toegang en bewerkingen in client-apps is essentieel voor het beveiligen van de zoek assets op uw service. Gebruik altijd een query sleutel in plaats van een beheerders sleutel voor query's die afkomstig zijn uit een client-app.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Vermeld de [zoekservices](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) voor uw abonnement.
-3. Selecteer de service en klik op de pagina Overzicht op >**Instellingentoetsen**. **Settings**
-4. Klik **op Querytoetsen beheren**.
-5. Gebruik de querysleutel die al voor uw service is gegenereerd of maak maximaal 50 nieuwe querysleutels. De standaardquerysleutel wordt niet benoemd, maar er kunnen extra querysleutels worden benoemd voor beheerbaarheid.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Vermeld de [Zoek Services](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) voor uw abonnement.
+3. Selecteer de service en klik op de pagina overzicht op **instellingen** >**sleutels**.
+4. Klik op **query sleutels beheren**.
+5. Gebruik de query sleutel die al is gegenereerd voor uw service of maak 50 nieuwe query sleutels. De standaard query sleutel heeft geen naam, maar aanvullende query sleutels kunnen worden benoemd voor beheer baarheid.
 
-   ![Een querysleutel maken of gebruiken](media/search-security-overview/create-query-key.png) 
+   ![Een query sleutel maken of gebruiken](media/search-security-overview/create-query-key.png) 
 
 > [!Note]
-> Een codevoorbeeld met querysleutelgebruik is te vinden in [Query een Azure Cognitive Search-index in C#](search-query-dotnet.md).
+> Een code voorbeeld waarin het gebruik van de query sleutel wordt weer gegeven, is te vinden in [de query een Azure Cognitive search-index in C#](search-query-dotnet.md).
 
 <a name="regenerate-admin-keys"></a>
 
-## <a name="regenerate-admin-keys"></a>Beheerderssleutels regenereren
+## <a name="regenerate-admin-keys"></a>Beheer sleutels opnieuw genereren
 
-Voor elke service worden twee beheerderssleutels gemaakt, zodat u een primaire sleutel roteren met behulp van de secundaire sleutel voor bedrijfscontinuïteit.
+Voor elke service worden twee beheer sleutels gemaakt, zodat u een primaire sleutel kunt draaien met behulp van de secundaire sleutel voor bedrijfs continuïteit.
 
-1. Kopieer de secundaire sleutel op de pagina >**Instellingentoetsen.** **Settings**
-2. Werk voor alle toepassingen de api-key-instellingen bij om de secundaire sleutel te gebruiken.
-3. Regenereren van de primaire sleutel.
+1. Op de pagina **instellingen** >**sleutels** kopieert u de secundaire sleutel.
+2. Voor alle toepassingen moet u de API-sleutel instellingen bijwerken voor gebruik van de secundaire sleutel.
+3. Genereer de primaire sleutel opnieuw.
 4. Werk alle toepassingen bij om de nieuwe primaire sleutel te gebruiken.
 
-Als u per ongeluk beide sleutels tegelijkertijd regenereert, mislukken alle clientaanvragen met deze sleutels met HTTP 403 Forbidden. Inhoud wordt echter niet verwijderd en u wordt niet permanent buitengesloten. 
+Als u per ongeluk beide sleutels tegelijk opnieuw genereert, mislukken alle client aanvragen die gebruikmaken van deze sleutels met HTTP 403 verboden. Inhoud wordt echter niet verwijderd en u bent niet permanent vergrendeld. 
 
-U hebt nog steeds toegang tot de service via de portal of de beheerlaag[(REST API,](https://docs.microsoft.com/rest/api/searchmanagement/) [PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell)of Azure Resource Manager). Beheerfuncties zijn operationeel via een abonnement-ID, geen service-api-key, en dus nog steeds beschikbaar, zelfs als uw api-sleutels dat niet zijn. 
+U kunt nog steeds toegang krijgen tot de service via de portal of de Management Layer ([rest API](https://docs.microsoft.com/rest/api/searchmanagement/), [power shell](https://docs.microsoft.com/azure/search/search-manage-powershell)of Azure Resource Manager). Beheer functies zijn van kracht via een abonnements-ID die geen service-API-sleutel is, en is dus nog steeds beschikbaar, zelfs als uw API-sleutels niet zijn. 
 
-Nadat u nieuwe sleutels hebt gemaakt via portal of beheerlaag, wordt de toegang hersteld tot uw inhoud (indexen, indexeerders, gegevensbronnen, synoniemkaarten) zodra u de nieuwe sleutels hebt en deze sleutels op verzoeken verstrekt.
+Nadat u nieuwe sleutels via de portal of de Management-laag hebt gemaakt, wordt de toegang tot uw inhoud (indexen, Indexeer functies, gegevens bronnen, synoniemen kaarten) hersteld zodra u de nieuwe sleutels hebt en deze sleutels op aanvragen hebt ingesteld.
 
-## <a name="secure-api-keys"></a>Beveiligde api-sleutels
-De beveiliging van de sleutel wordt gewaarborgd door de toegang via de portal- of Resource Manager-interfaces (PowerShell- of command-line-interface) te beperken. Zoals opgemerkt, kunnen abonnementsbeheerders alle api-sleutels bekijken en regenereren. Bekijk uit voorzorg roltoewijzingen om te begrijpen wie toegang heeft tot de beheerderssleutels.
+## <a name="secure-api-keys"></a>Beveiligde API-sleutels
+De belangrijkste beveiliging wordt gewaarborgd door de toegang te beperken via de portal of de Resource Manager-interfaces (Power shell of de opdracht regel Interface). Zoals aangegeven, kunnen abonnements beheerders alle API-sleutels weer geven en opnieuw genereren. Raadpleeg de roltoewijzingen voor meer informatie over wie toegang heeft tot de beheer sleutels.
 
-+ Klik in het servicedashboard op **Toegangsbeheer (IAM)** en vervolgens op het tabblad **Toewijzingen van rollen** om roltoewijzingen voor uw service weer te geven.
++ Klik in het service dashboard op **toegangs beheer (IAM)** en vervolgens op **het tabblad roltoewijzingen om** roltoewijzingen voor uw service weer te geven.
 
-Leden van de volgende rollen kunnen sleutels bekijken en regenereren: eigenaar, bijdrager, [bijdragers van de zoekservice](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
+Leden van de volgende rollen kunnen sleutels weer geven en opnieuw genereren: eigenaar, Inzender, [Search service inzenders](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
-> Voor toegang op basis van identiteit via zoekresultaten u beveiligingsfilters maken om resultaten bij te snijden op identiteit, waarbij documenten worden verwijderd waarvoor de aanvrager geen toegang zou moeten hebben. Zie [Beveiligingsfilters](search-security-trimming-for-azure-search.md) en [Beveiligen met Active Directory](search-security-trimming-for-azure-search-with-aad.md)voor meer informatie.
+> Voor toegang op basis van identiteiten via zoek resultaten kunt u beveiligings filters maken om de resultaten te beperken op basis van identiteit, en documenten te verwijderen waarvoor de aanvrager geen toegang moet hebben. Zie [beveiligings filters](search-security-trimming-for-azure-search.md) en [veilig met Active Directory](search-security-trimming-for-azure-search-with-aad.md)voor meer informatie.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Op rollen gebaseerdtoegangsbeheer in Azure Cognitive Search](search-security-rbac.md)
++ [Toegangs beheer op basis van rollen in azure Cognitive Search](search-security-rbac.md)
 + [Beheren met PowerShell](search-manage-powershell.md) 
 + [Artikel over prestaties en optimalisatie](search-performance-optimization.md)

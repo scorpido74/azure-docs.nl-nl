@@ -1,6 +1,6 @@
 ---
-title: De replicatie van schemawijzigingen in SQL Data Sync automatiseren
-description: Meer informatie over het automatiseren van de replicatie van schemawijzigingen in Azure SQL Data Sync.
+title: De replicatie van schema wijzigingen in SQL Data Sync automatiseren
+description: Meer informatie over het automatiseren van de replicatie van schema wijzigingen in Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,34 +12,34 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822433"
 ---
-# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren
+# <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 
-MET SQL Data Sync kunnen gebruikers gegevens tussen Azure SQL-databases en on-premises SQL Server in één richting of in beide richtingen synchroniseren. Een van de huidige beperkingen van SQL Data Sync is een gebrek aan ondersteuning voor de replicatie van schemawijzigingen. Elke keer dat u het tabelschema wijzigt, moet u de wijzigingen handmatig toepassen op alle eindpunten, inclusief de hub en alle leden, en vervolgens het synchronisatieschema bijwerken.
+Met SQL Data Sync kunnen gebruikers gegevens synchroniseren tussen Azure SQL-data bases en on-premises SQL Server in één richting of in beide richtingen. Een van de huidige beperkingen van SQL Data Sync is een gebrek aan ondersteuning voor de replicatie van schema wijzigingen. Telkens wanneer u het tabel schema wijzigt, moet u de wijzigingen hand matig Toep assen op alle eind punten, met inbegrip van de hub en alle leden, en vervolgens het synchronisatie schema bijwerken.
 
-In dit artikel wordt een oplossing geïntroduceerd om schemawijzigingen automatisch te repliceren naar alle SQL Data Sync-eindpunten.
-1. Deze oplossing maakt gebruik van een DDL-trigger om schemawijzigingen bij te houden.
-1. De trigger voegt de schemawijzigingsopdrachten in een trackingtabel in.
-1. Deze trackingtabel wordt gesynchroniseerd met alle eindpunten met behulp van de Data Sync-service.
-1. DML-triggers na het invoegen worden gebruikt om de schemawijzigingen op de andere eindpunten toe te passen.
+In dit artikel wordt een oplossing geïntroduceerd voor het automatisch repliceren van schema wijzigingen naar alle SQL Data Sync-eind punten.
+1. Deze oplossing maakt gebruik van een DDL-trigger om schema wijzigingen bij te houden.
+1. Met de trigger worden de opdrachten voor schema wijziging ingevoegd in een tracerings tabel.
+1. Deze tracerings tabel wordt met behulp van de Data Sync-Service gesynchroniseerd met alle eind punten.
+1. DML-triggers na het invoegen worden gebruikt om de schema wijzigingen toe te passen op de andere eind punten.
 
-In dit artikel wordt WIJZIGINGTABEL gebruikt als voorbeeld van een schemawijziging, maar deze oplossing werkt ook voor andere typen schemawijzigingen.
+In dit artikel wordt ALTER TABLE gebruikt als voor beeld van een schema wijziging, maar deze oplossing werkt ook voor andere typen schema wijzigingen.
 
 > [!IMPORTANT]
-> We raden u aan dit artikel zorgvuldig te lezen, met name de secties over [probleemoplossing](#troubleshoot) en [andere overwegingen,](#other)voordat u begint met het implementeren van geautomatiseerde replicatie van schemawijzigingen in uw synchronisatieomgeving. We raden u ook aan synchronisatiegegevens te lezen [in meerdere cloud- en on-premises databases met SQL Data Sync.](sql-database-sync-data.md) Sommige databasebewerkingen kunnen de in dit artikel beschreven oplossing doorbreken. Aanvullende domeinkennis van SQL Server en Transact-SQL kan nodig zijn om deze problemen op te lossen.
+> We raden u aan dit artikel zorgvuldig te lezen, met name de secties over het [oplossen van problemen](#troubleshoot) en [andere overwegingen](#other), voordat u begint met het implementeren van automatische schema wijzigings replicatie in uw synchronisatie omgeving. We raden u ook aan om [synchronisatie gegevens te lezen in meerdere Cloud-en on-premises data bases met SQL Data Sync](sql-database-sync-data.md). Sommige database bewerkingen kunnen de oplossing die in dit artikel wordt beschreven, verstoren. Aanvullende domein kennis van SQL Server en Transact-SQL zijn mogelijk vereist om deze problemen op te lossen.
 
-![De replicatie van schemawijzigingen automatiseren](media/sql-database-update-sync-schema/automate-schema-changes.png)
+![De replicatie van schema wijzigingen automatiseren](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
-## <a name="set-up-automated-schema-change-replication"></a>Geautomatiseerde replicatie van schemawijziging instellen
+## <a name="set-up-automated-schema-change-replication"></a>Automatische schema wijzigings replicatie instellen
 
-### <a name="create-a-table-to-track-schema-changes"></a>Een tabel maken om schemawijzigingen bij te houden
+### <a name="create-a-table-to-track-schema-changes"></a>Een tabel maken voor het bijhouden van schema wijzigingen
 
-Maak een tabel om schemawijzigingen bij te houden in alle databases in de synchronisatiegroep:
+Een tabel maken voor het bijhouden van schema wijzigingen in alle data bases in de synchronisatie groep:
 
 ```sql
 CREATE TABLE SchemaChanges (
@@ -49,11 +49,11 @@ SqlStmt nvarchar(max),
 )
 ```
 
-Deze tabel heeft een identiteitskolom om de volgorde van schemawijzigingen bij te houden. U indien nodig meer velden toevoegen om meer informatie te registreren.
+Deze tabel bevat een identiteits kolom voor het bijhouden van de volg orde van schema wijzigingen. U kunt meer velden toevoegen om zo nodig meer informatie te registreren.
 
-### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Een tabel maken om de geschiedenis van schemawijzigingen bij te houden
+### <a name="create-a-table-to-track-the-history-of-schema-changes"></a>Een tabel maken om de geschiedenis van schema wijzigingen bij te houden
 
-Maak op alle eindpunten een tabel om de id van de meest recent toegepaste opdracht voor schemawijziging bij te houden.
+Maak op alle eind punten een tabel om de ID van de laatst toegepaste schema wijzigings opdracht bij te houden.
 
 ```sql
 CREATE TABLE SchemaChangeHistory (
@@ -64,9 +64,9 @@ GO
 INSERT INTO SchemaChangeHistory VALUES (0)
 ```
 
-### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Een ALTER TABLE DDL-trigger maken in de database waar schemawijzigingen worden aangebracht
+### <a name="create-an-alter-table-ddl-trigger-in-the-database-where-schema-changes-are-made"></a>Een DDL-trigger voor ALTER TABLE maken in de Data Base waarin schema wijzigingen worden aangebracht
 
-Maak een DDL-trigger voor ALTER TABLE-bewerkingen. U hoeft deze trigger alleen te maken in de database waar schemawijzigingen worden aangebracht. Om conflicten te voorkomen, moet u alleen schemawijzigingen toestaan in één database in een synchronisatiegroep.
+Maak een DDL-trigger voor ALTER TABLE-bewerkingen. U hoeft deze trigger alleen in de data base te maken waarin schema wijzigingen worden aangebracht. Om conflicten te voor komen, mag u alleen schema wijzigingen in één data base in een synchronisatie groep toestaan.
 
 ```sql
 CREATE TRIGGER AlterTableDDLTrigger
@@ -82,13 +82,13 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-De trigger voegt een record in de schemawijzigingstrackingtabel in voor elke opdracht ALTER TABLE. In dit voorbeeld wordt een filter toegevoegd om te voorkomen dat schemawijzigingen worden gerepliceerd die zijn aangebracht onder schema **DataSync,** omdat deze waarschijnlijk zijn gemaakt door de gegevenssynchronisatieservice. Voeg meer filters toe als u alleen bepaalde typen schemawijzigingen wilt repliceren.
+De trigger voegt een record in de tabel schema wijzigingen bijhouden toe voor elke opdracht ALTER TABLE. In dit voor beeld wordt een filter toegevoegd om te voor komen dat wijzigingen in het schema worden gerepliceerd die zijn gemaakt onder schema **DataSync**, omdat dit het meest waarschijnlijk is gedaan door de Data Sync-Service. Voeg meer filters toe als u alleen bepaalde typen schema wijzigingen wilt repliceren.
 
-U ook meer triggers toevoegen om andere typen schemawijzigingen te repliceren. Maak bijvoorbeeld CREATE_PROCEDURE, ALTER_PROCEDURE en DROP_PROCEDURE activeert om wijzigingen in opgeslagen procedures te repliceren.
+U kunt ook meer triggers toevoegen om andere typen schema wijzigingen te repliceren. Maak bijvoorbeeld CREATE_PROCEDURE, ALTER_PROCEDURE en DROP_PROCEDURE triggers om wijzigingen in opgeslagen procedures te repliceren.
 
-### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Een trigger maken op andere eindpunten om schemawijzigingen toe te passen tijdens het invoegen
+### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Een trigger maken op andere eind punten om schema wijzigingen tijdens het invoegen toe te passen
 
-Met deze trigger wordt de opdracht schemawijziging uitgevoerd wanneer deze wordt gesynchroniseerd met andere eindpunten. U moet deze trigger maken op alle eindpunten, behalve die waarin schemawijzigingen worden aangebracht (dat wil zeggen in de database waar de DDL-trigger `AlterTableDDLTrigger` in de vorige stap is gemaakt).
+Deze trigger voert de schema wijzigings opdracht uit wanneer deze wordt gesynchroniseerd met andere eind punten. U moet deze trigger maken op alle eind punten, met uitzonde ring van het schema waarin wijzigingen worden aangebracht (dat wil zeggen, in de Data Base waarin `AlterTableDDLTrigger` de DDL-trigger in de vorige stap is gemaakt).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -119,103 +119,103 @@ BEGIN
 END
 ```
 
-Deze trigger wordt uitgevoerd na het invoegen en controleert of de huidige opdracht vervolgens moet worden uitgevoerd. De codelogica zorgt ervoor dat er geen schemawijzigingsinstructie wordt overgeslagen en dat alle wijzigingen worden toegepast, zelfs als de invoeging niet in orde is.
+Deze trigger wordt uitgevoerd na het invoegen en controleert of de huidige opdracht volgende moet worden uitgevoerd. De code logica zorgt ervoor dat er geen schema wijzigings instructie wordt overgeslagen en alle wijzigingen worden toegepast, zelfs als de invoeging niet in orde is.
 
-### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>De trackingtabel voor schemawijzigingen synchroniseren met alle eindpunten
+### <a name="sync-the-schema-change-tracking-table-to-all-endpoints"></a>De tabel voor het bijhouden van schema wijzigingen synchroniseren met alle eind punten
 
-U de schemawijzigingstrackingtabel synchroniseren met alle eindpunten met behulp van de bestaande synchronisatiegroep of een nieuwe synchronisatiegroep. Zorg ervoor dat de wijzigingen in de trackingtabel kunnen worden gesynchroniseerd met alle eindpunten, vooral wanneer u synchronisatie met één richting gebruikt.
+U kunt de tabel voor het bijhouden van schema wijzigingen synchroniseren met alle eind punten met behulp van de bestaande synchronisatie groep of een nieuwe synchronisatie groep. Zorg ervoor dat de wijzigingen in de tracerings tabel kunnen worden gesynchroniseerd met alle eind punten, met name wanneer u een synchronisatie met één richting gebruikt.
 
-Synchroniseer de geschiedenistabel voor schemawijziging niet, omdat die tabel een andere status op verschillende eindpunten behoudt.
+Synchroniseer de tabel schema wijzigings geschiedenis niet, omdat die tabel verschillende statussen voor verschillende eind punten bijhoudt.
 
-### <a name="apply-the-schema-changes-in-a-sync-group"></a>De schemawijzigingen toepassen in een synchronisatiegroep
+### <a name="apply-the-schema-changes-in-a-sync-group"></a>De schema wijzigingen Toep assen in een synchronisatie groep
 
-Alleen schemawijzigingen die zijn aangebracht in de database waar de DDL-trigger wordt gemaakt, worden gerepliceerd. Schemawijzigingen die in andere databases zijn aangebracht, worden niet gerepliceerd.
+Alleen schema wijzigingen die zijn aangebracht in de Data Base waarin de DDL-trigger wordt gemaakt, worden gerepliceerd. Schema wijzigingen die in andere data bases zijn aangebracht, worden niet gerepliceerd.
 
-Nadat de schemawijzigingen zijn gerepliceerd naar alle eindpunten, moet u ook extra stappen ondernemen om het synchronisatieschema bij te werken om de nieuwe kolommen te starten of te stoppen met synchroniseren.
+Nadat de schema wijzigingen zijn gerepliceerd naar alle eind punten, moet u ook extra stappen uitvoeren om het synchronisatie schema bij te werken om de synchronisatie van de nieuwe kolommen te starten of te stoppen.
 
 #### <a name="add-new-columns"></a>Nieuwe kolommen toevoegen
 
-1.  Breng het schema wijzigen.
+1.  Maak de schema wijziging.
 
-1.  Vermijd gegevenswijzigingen waarbij de nieuwe kolommen betrokken zijn totdat u de stap hebt voltooid waarmee de trigger wordt gemaakt.
+1.  Vermijd de wijziging van gegevens waarbij de nieuwe kolommen worden betrokken totdat u de stap hebt voltooid waarmee de trigger wordt gemaakt.
 
-1.  Wacht tot de schemawijzigingen op alle eindpunten worden toegepast.
+1.  Wacht tot de schema wijzigingen zijn toegepast op alle eind punten.
 
-1.  Vernieuw het databaseschema en voeg de nieuwe kolom toe aan het synchronisatieschema.
+1.  Vernieuw het database schema en voeg de nieuwe kolom toe aan het synchronisatie schema.
 
-1.  Gegevens in de nieuwe kolom worden gesynchroniseerd tijdens de volgende synchronisatiebewerking.
+1.  De gegevens in de nieuwe kolom worden gesynchroniseerd tijdens de volgende synchronisatie bewerking.
 
 #### <a name="remove-columns"></a>Kolommen verwijderen
 
-1.  Verwijder de kolommen uit het synchronisatieschema. Data Sync stopt met het synchroniseren van gegevens in deze kolommen.
+1.  Verwijder de kolommen uit het synchronisatie schema. Gegevens synchronisatie stopt met het synchroniseren van gegevens in deze kolommen.
 
-1.  Breng het schema wijzigen.
+1.  Maak de schema wijziging.
 
-1.  Het databaseschema vernieuwen.
+1.  Het database schema vernieuwen.
 
-#### <a name="update-data-types"></a>Gegevenstypen bijwerken
+#### <a name="update-data-types"></a>Gegevens typen bijwerken
 
-1.  Breng het schema wijzigen.
+1.  Maak de schema wijziging.
 
-1.  Wacht tot de schemawijzigingen op alle eindpunten worden toegepast.
+1.  Wacht tot de schema wijzigingen zijn toegepast op alle eind punten.
 
-1.  Het databaseschema vernieuwen.
+1.  Het database schema vernieuwen.
 
-1.  Als de nieuwe en oude gegevenstypen niet volledig compatibel `int` zijn `bigint` - bijvoorbeeld als u van naar - gaat, kan de synchronisatie mislukken voordat de stappen die de triggers maken zijn voltooid. Synchronisatie slaagt na een nieuwe poging.
+1.  Als de nieuwe en oude gegevens typen niet volledig compatibel zijn: als u bijvoorbeeld wijzigt van naar `int` `bigint` -Sync, kan dit mislukken voordat de stappen voor het maken van de triggers zijn voltooid. Synchronisatie slaagt na een nieuwe poging.
 
 #### <a name="rename-columns-or-tables"></a>De naam van kolommen of tabellen wijzigen
 
-Als u de naam van kolommen of tabellen wijzigen, werkt Data Sync niet meer. Maak een nieuwe tabel of kolom, vul de gegevens in en verwijder vervolgens de oude tabel of kolom in plaats van de naam te wijzigen.
+Het wijzigen van de naam van kolommen of tabellen zorgt ervoor dat de gegevens synchronisatie niet meer werkt. Maak een nieuwe tabel of kolom, backfill de gegevens in en verwijder vervolgens de oude tabel of kolom in plaats van de naam te wijzigen.
 
-#### <a name="other-types-of-schema-changes"></a>Andere typen schemawijzigingen
+#### <a name="other-types-of-schema-changes"></a>Andere typen schema wijzigingen
 
-Voor andere typen schemawijzigingen - bijvoorbeeld het maken van opgeslagen procedures of het laten vallen van een index - is het bijwerken van het synchronisatieschema niet vereist.
+Voor andere typen schema wijzigingen: het maken van opgeslagen procedures of het weghalen van een index voor het bijwerken van het synchronisatie schema is niet vereist.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Geautomatiseerde replicatie van schemawijzigingen oplossen
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Automatische replicatie van schema wijzigingen oplossen
 
-De replicatielogica die in dit artikel wordt beschreven, werkt niet meer in sommige situaties, bijvoorbeeld als u een schemawijziging hebt aangebracht in een on-premises database die niet wordt ondersteund in Azure SQL Database. In dat geval mislukt het synchroniseren van de schemawijzigingstrackingtabel. U moet dit probleem handmatig oplossen:
+De replicatie logica die in dit artikel wordt beschreven, werkt niet meer in bepaalde situaties, bijvoorbeeld als u een schema wijziging hebt aangebracht in een on-premises data base die niet wordt ondersteund in Azure SQL Database. In dat geval mislukt het synchroniseren van de schema-tabel voor het bijhouden van wijzigingen. U moet dit probleem hand matig oplossen:
 
-1.  Schakel de DDL-trigger uit en vermijd verdere schemawijzigingen totdat het probleem is opgelost.
+1.  Schakel de DDL-trigger uit en Voorkom verdere schema wijzigingen totdat het probleem is opgelost.
 
-1.  Schakel in de endpoint-database waar het probleem zich voordoet de trigger NA INVOEGEN uit op het eindpunt waar de schemawijziging niet kan worden aangebracht. Met deze actie kan de opdracht schemawijziging worden gesynchroniseerd.
+1.  In de eindpunt database waar het probleem zich voordoet, schakelt u de trigger na invoegen uit op het eind punt waar de schema wijziging niet kan worden doorgevoerd. Met deze actie kan de schema wijzigings opdracht worden gesynchroniseerd.
 
-1.  Trigger synchronisatie om de schemawijzigingstrackingtabel te synchroniseren.
+1.  Activeer de synchronisatie om de schema wijzigings tabel voor het bijhouden van wijzigingen te synchroniseren.
 
-1.  Queryer de tabel schemawijziging somin de id van de laatst toegepaste schemawijzigingsopdracht in de endpoint-database waar het probleem zich voordoet.
+1.  In de eindpunt database waar het probleem zich voordoet, voert u een query uit in de tabel schema wijzigings geschiedenis om de ID van de laatst toegepaste schema wijzigings opdracht op te halen.
 
-1.  Stel de trackingtabel voor schemawijzigingen op om alle opdrachten met een id op te sommen die groter zijn dan de id-waarde die u in de vorige stap hebt opgehaald.
+1.  Zoek in de tabel schema wijzigingen bijhouden een lijst met alle opdrachten met een ID die groter is dan de ID-waarde die u in de vorige stap hebt opgehaald.
 
-    a.  Negeer de opdrachten die niet kunnen worden uitgevoerd in de endpoint-database. Je moet omgaan met het schema inconsistentie. De oorspronkelijke schemawijzigingen terugdraaien als de inconsistentie van invloed is op uw toepassing.
+    a.  Negeer deze opdrachten die niet kunnen worden uitgevoerd in de eindpunt database. U moet de consistentie van het schema afhandelen. Wijzig de oorspronkelijke schema wijzigingen als de inconsistentie van invloed is op uw toepassing.
 
-    b.  Pas handmatig de opdrachten toe die moeten worden toegepast.
+    b.  Pas de opdrachten die moeten worden toegepast hand matig toe.
 
-1.  Werk de tabel schemawijzigingsgeschiedenis bij en stel de laatst toegepaste id in op de juiste waarde.
+1.  Werk de tabel schema wijzigings geschiedenis bij en stel de laatst toegepaste ID in op de juiste waarde.
 
-1.  Controleer nogmaals of het schema up-to-date is.
+1.  Controleer of het schema up-to-date is.
 
-1.  Schakel de trigger AFTER INSERT in de tweede stap opnieuw in.
+1.  Schakel de trigger na invoegen in de tweede stap opnieuw in.
 
-1.  Schakel de DDL-trigger in de eerste stap opnieuw in.
+1.  Schakel de DDL-trigger die in de eerste stap is uitgeschakeld opnieuw in.
 
-Als u de records in de tabel schemawijziging wilt opschonen, gebruikt u Verwijderen in plaats van TRUNCATE. Nooit de identiteitskolom opnieuw zaad in de trackingtabel voor schemawijzigingen met DBCC CHECKIDENT. U nieuwe schemawijzigingenbijhoudentabellen maken en de tabelnaam in de DDL-trigger bijwerken als opnieuw zaaien nodig is.
+Als u de records in de tabel schema wijzigingen bijhouden wilt opschonen, gebruikt u verwijderen in plaats van TRUNCATe. Verstrek nooit de kolom Identity in de tabel schema voor het bijhouden van wijzigingen door gebruik te maken van DBCC CHECKIDENT. U kunt nieuwe plannings tabellen voor het bijhouden van wijzigingen maken en de tabel naam in de DDL-trigger bijwerken als opnieuw seeden vereist is.
 
 ## <a name="other-considerations"></a><a name="other"></a>Andere overwegingen
 
--   Databasegebruikers die de hub- en liddatabases configureren, moeten voldoende toestemming hebben om de opdrachten voor schemawijzigingen uit te voeren.
+-   Database gebruikers die de hub-en leden databases configureren, moeten voldoende machtigingen hebben om de opdrachten voor schema wijziging uit te voeren.
 
--   U meer filters toevoegen aan de DDL-trigger om alleen schemawijzigingen in geselecteerde tabellen of bewerkingen te repliceren.
+-   U kunt meer filters toevoegen in de DDL-trigger om de schema wijziging alleen in de geselecteerde tabellen of bewerkingen te repliceren.
 
--   U alleen schemawijzigingen aanbrengen in de database waar de DDL-trigger wordt gemaakt.
+-   U kunt alleen schema wijzigingen aanbrengen in de Data Base waarin de DDL-trigger wordt gemaakt.
 
--   Als u een wijziging aanbrengt in een on-premises SQL Server-database, controleert u of de schemawijziging wordt ondersteund in Azure SQL Database.
+-   Als u een wijziging aanbrengt in een on-premises SQL Server Data Base, moet u ervoor zorgen dat de schema wijziging wordt ondersteund in Azure SQL Database.
 
--   Als er schemawijzigingen worden aangebracht in andere databases dan de database waar de DDL-trigger wordt gemaakt, worden de wijzigingen niet gerepliceerd. Om dit probleem te voorkomen, u DDL-triggers maken om wijzigingen op andere eindpunten te blokkeren.
+-   Als er schema wijzigingen worden aangebracht in andere data bases dan de Data Base waarin de DDL-trigger wordt gemaakt, worden de wijzigingen niet gerepliceerd. Om dit probleem te voor komen, kunt u DDL-triggers maken om wijzigingen op andere eind punten te blok keren.
 
--   Als u het schema van de trackingtabel voor schemawijzigingen wilt wijzigen, schakelt u de DDL-trigger uit voordat u de wijziging aanbrengt en past u de wijziging handmatig toe op alle eindpunten. Het bijwerken van het schema in een TRIGGER NA INVOEGEN in dezelfde tabel werkt niet.
+-   Als u het schema van de tabel voor het bijhouden van wijzigingen wilt wijzigen, moet u de DDL-trigger uitschakelen voordat u de wijziging aanbrengt en vervolgens hand matig de wijziging Toep assen op alle eind punten. Het is niet mogelijk om het schema bij te werken in een trigger na invoegen in dezelfde tabel.
 
--   Zaai de identiteitskolom niet opnieuw met DBCC CHECKIDENT.
+-   Verzaai de identiteits kolom niet opnieuw met behulp van DBCC CHECKIDENT.
 
--   Gebruik TRUNCATE niet om gegevens op te schonen in de tabel schemawijziging.
+-   Gebruik TRUNCATe niet om gegevens op te schonen in de tabel schema voor het bijhouden van wijzigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -229,7 +229,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
         -  [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-database-data-sync-agent.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
--   Monitor - [SQL-gegevenssynchronisatie met Azure Monitor-logboeken controleren](sql-database-sync-monitor-oms.md)
+-   SQL Data Sync controleren [met Azure monitor-logboeken](sql-database-sync-monitor-oms.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](sql-database-troubleshoot-data-sync.md)
 -   Het synchronisatieschema bijwerken
     -   Met PowerShell: [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/sql-database-sync-update-schema.md)

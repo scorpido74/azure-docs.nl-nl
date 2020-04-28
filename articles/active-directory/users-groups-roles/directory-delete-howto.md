@@ -1,6 +1,6 @@
 ---
-title: Een Azure AD-map verwijderen - Azure Active Directory | Microsoft Documenten
-description: In de uitleg hoe u een Azure AD-map voorbereidt voor verwijdering, inclusief selfservice-mappen
+title: Een Azure AD-adres lijst verwijderen-Azure Active Directory | Microsoft Docs
+description: Hierin wordt uitgelegd hoe u een Azure AD-Directory voorbereidt voor verwijdering, inclusief self-service directory's
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,132 +15,132 @@ ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73961818"
 ---
-# <a name="delete-a-directory-in-azure-active-directory"></a>Een map verwijderen in Azure Active Directory
+# <a name="delete-a-directory-in-azure-active-directory"></a>Een map in Azure Active Directory verwijderen
 
-Wanneer een Azure AD-map wordt verwijderd, worden ook alle bronnen in de map verwijderd. Bereid uw organisatie voor door de bijbehorende resources te minimaliseren voordat u deze verwijdert. Alleen een globale Azure Active Directory(Azure AD)-beheerder kan een Azure AD-map uit de portal verwijderen.
+Wanneer een Azure AD-Directory wordt verwijderd, worden ook alle resources verwijderd die in de map zijn opgenomen. Bereid uw organisatie voor door de bijbehorende resources te minimaliseren voordat u verwijdert. Alleen een globale beheerder van een Azure Active Directory (Azure AD) kan een Azure AD-Directory verwijderen uit de portal.
 
-## <a name="prepare-the-directory"></a>De map voorbereiden
+## <a name="prepare-the-directory"></a>De Directory voorbereiden
 
-U een map in Azure AD pas verwijderen als deze meerdere controles heeft doorstaan. Deze controles verminderen het risico dat het verwijderen van een Azure AD-map een negatieve invloed heeft op de toegang van gebruikers, zoals de mogelijkheid om u aan te melden bij Office 365 of toegang te krijgen tot bronnen in Azure. Als de map die aan een abonnement is gekoppeld bijvoorbeeld onbedoeld wordt verwijderd, hebben gebruikers geen toegang tot de Azure-bronnen voor dat abonnement. Er wordt gecontroleerd of aan de volgende voorwaarden is voldaan:
+U kunt een map in azure AD pas verwijderen als er verschillende controles worden door gegeven. Deze controles verminderen het risico dat het verwijderen van een Azure AD-Directory een negatieve invloed heeft op de gebruikers toegang, zoals de mogelijkheid om zich aan te melden bij Office 365 of om toegang te krijgen tot resources in Azure. Als de map die is gekoppeld aan een abonnement, bijvoorbeeld per ongeluk is verwijderd, hebben gebruikers geen toegang tot de Azure-resources voor dat abonnement. Er wordt gecontroleerd of aan de volgende voorwaarden is voldaan:
 
-* Er kunnen geen gebruikers in de map zijn, behalve één globale beheerder die de map moet verwijderen. Andere gebruikers moeten worden verwijderd voordat de directory kan worden verwijderd. Als gebruikers worden gesynchroniseerd vanuit on-premises, moet de synchronisatie eerst worden uitgeschakeld en moeten de gebruikers worden verwijderd in de cloudmap met behulp van de Azure-portal of Azure PowerShell-cmdlets.
+* Er kunnen zich geen gebruikers in de map bevinden, met uitzonde ring van één globale beheerder die de Directory verwijdert. Andere gebruikers moeten worden verwijderd voordat de directory kan worden verwijderd. Als gebruikers van on-premises worden gesynchroniseerd, moet de synchronisatie eerst worden uitgeschakeld en moeten de gebruikers worden verwijderd uit de Cloud Directory met behulp van de Azure Portal-of Azure PowerShell-cmdlets.
 * Er mogen in de directory geen toepassingen aanwezig zijn. Alle toepassingen moeten worden verwijderd voordat de map kan worden verwijderd.
-* Er kunnen geen multi-factor authenticatie providers gekoppeld aan de directory.
+* Er kunnen geen multi-factor Authentication-providers aan de Directory zijn gekoppeld.
 * Aan de directory mogen geen abonnementen op Microsoft Online Services zijn gekoppeld, zoals een abonnement op Microsoft Azure, Office 365 of Azure AD Premium. Als er bijvoorbeeld een standaarddirectory voor u is gemaakt in Azure, kunt u deze directory niet verwijderen als uw Azure-abonnement deze directory gebruikt voor verificatie. Het is evenmin mogelijk om een directory te verwijderen als een andere gebruiker er een abonnement aan heeft gekoppeld.
 
 ## <a name="delete-the-directory"></a>De map verwijderen
 
-1. Meld u aan bij het [Azure AD-beheercentrum](https://aad.portal.azure.com) met een account dat de globale beheerder voor uw organisatie is.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat de globale beheerder is voor uw organisatie.
 
 2. Selecteer **Azure Active Directory**.
 
-3. Schakel over naar de map die u wilt verwijderen.
+3. Ga naar de map die u wilt verwijderen.
   
-   ![Organisatie bevestigen voordat u de organisatie verwijderde](./media/directory-delete-howto/delete-directory-command.png)
+   ![Organisatie bevestigen vóór verwijderen](./media/directory-delete-howto/delete-directory-command.png)
 
-4. Selecteer **Map verwijderen**.
+4. Selecteer **map verwijderen**.
   
-   ![de opdracht selecteren om de organisatie te verwijderen](./media/directory-delete-howto/delete-directory-list.png)
+   ![Selecteer de opdracht voor het verwijderen van de organisatie](./media/directory-delete-howto/delete-directory-list.png)
 
-5. Als uw directory niet slaagt voor een of meer controles, krijgt u een link naar meer informatie over hoe u slagen. Nadat u alle controles hebt uitgevoerd, selecteert u **Verwijderen** om het proces te voltooien.
+5. Als uw Directory niet aan een of meer controles voldoet, krijgt u een koppeling naar meer informatie over hoe u kunt door geven. Nadat u alle controles hebt door lopen, selecteert u **verwijderen** om het proces te volt ooien.
 
-## <a name="if-you-cant-delete-the-directory"></a>Als u de map niet verwijderen
+## <a name="if-you-cant-delete-the-directory"></a>Als u de map niet kunt verwijderen
 
-Wanneer u uw Azure AD-map hebt geconfigureerd, hebt u mogelijk ook licentiegebaseerde abonnementen voor uw organisatie geactiveerd, zoals Azure AD Premium P2, Office 365 Business Premium of Enterprise Mobility + Security E5. Om onbedoeld gegevensverlies te voorkomen, u een map niet verwijderen totdat de abonnementen volledig zijn verwijderd. De abonnementen moeten in een **deprovisioned-status** staan om het verwijderen van directorytoerekeningsgegevens mogelijk te maken. Een **verlopen** of **geannuleerd** abonnement wordt verplaatst naar de **status Uitgeschakeld** en de laatste fase is de status **Deprovisioned.**
+Wanneer u uw Azure AD-adres lijst hebt geconfigureerd, hebt u mogelijk ook op licenties gebaseerde abonnementen geactiveerd voor uw organisatie, zoals Azure AD Premium P2, Office 365 Business Premium of Enterprise Mobility + Security E5. Om onbedoeld gegevens verlies te voor komen, kunt u een map pas verwijderen als de abonnementen volledig zijn verwijderd. De abonnementen moeten een niet- **ingerichte** status hebben om het verwijderen van de map toe te staan. Een **verlopen** of **geannuleerde** abonnement wordt verplaatst naar de **Uitgeschakelde** status en de laatste fase is de status provisioned. **Deprovisioned**
 
-Voor wat u verwachten wanneer een proefabonnement office 365-abonnement verloopt (exclusief betaalde partner/CSP- of ondernemingsovereenkomst of volumelicenties), raadpleegt u de volgende tabel. Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn abonnement op Office 365 voor Bedrijven afloopt voor](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)meer informatie over de levenscyclus van Office 365-gegevens en -abonnementen? . 
+Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen. 
 
-Abonnementsstatus | Gegevens | Toegang tot gegevens
+Abonnements status | Gegevens | Toegang tot gegevens
 ----- | ----- | -----
-Actief (30 dagen voor proefperiode) | Gegevens die toegankelijk zijn voor iedereen | Gebruikers hebben normale toegang tot Office 365-bestanden of apps<br>Beheerders hebben normale toegang tot microsoft 365-beheercentrum en bronnen 
-Verlopen (30 dagen) | Gegevens die toegankelijk zijn voor iedereen| Gebruikers hebben normale toegang tot Office 365-bestanden of apps<br>Beheerders hebben normale toegang tot microsoft 365-beheercentrum en bronnen
-Uitgeschakeld (30 dagen) | Alleen gegevens toegankelijk voor beheerders | Gebruikers hebben geen toegang tot Office 365-bestanden of -apps<br>Beheerders hebben toegang tot het Microsoft 365-beheercentrum, maar kunnen geen licenties toewijzen aan of gebruikers bijwerken
-Gedeprovisioneerd (30 dagen na uitgeschakeld) | Gegevens verwijderd (automatisch verwijderd als er geen andere services worden gebruikt) | Gebruikers hebben geen toegang tot Office 365-bestanden of -apps<br>Beheerders hebben toegang tot het Microsoft 365-beheercentrum om andere abonnementen te kopen en te beheren
+Actief (30 dagen voor proef versie) | Gegevens die toegankelijk zijn voor alle | Gebruikers hebben normale toegang tot Office 365-bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen 
+Verlopen (30 dagen) | Gegevens die toegankelijk zijn voor alle| Gebruikers hebben normale toegang tot Office 365-bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen
+Uitgeschakeld (30 dagen) | Gegevens die alleen toegankelijk zijn voor beheerders | Gebruikers hebben geen toegang tot Office 365-bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum, maar kunnen geen licenties toewijzen of gebruikers bijwerken
+Inrichting ongedaan gemaakt (30 dagen na uitgeschakeld) | Gegevens verwijderd (automatisch verwijderd als er geen andere services worden gebruikt) | Gebruikers hebben geen toegang tot Office 365-bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
 
 ## <a name="delete-a-subscription"></a>Een abonnement verwijderen
 
-U een abonnement in de **status Deprovisioned** plaatsen om binnen drie dagen te worden verwijderd met behulp van het Microsoft 365-beheercentrum.
+Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene** status laten verwijderen in drie dagen.
 
-1. Meld u aan bij het [Microsoft 365-beheercentrum](https://admin.microsoft.com) met een account dat een globale beheerder in uw organisatie is. Als u de map 'Contoso' met het oorspronkelijke standaarddomein contoso.onmicrosoft.com, meldt u admin@contoso.onmicrosoft.comzich aan bij een UPN zoals .
+1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account dat een globale beheerder is in uw organisatie. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
 
-2. Bekijk een voorbeeld van het nieuwe Microsoft 365-beheercentrum door ervoor te zorgen dat de schakelaar **Het nieuwe beheercentrum** uitproberen is ingeschakeld.
+2. Bekijk een voor beeld van het nieuwe Microsoft 365-beheer centrum door ervoor te zorgen dat de nieuwe schakel optie voor het **beheer centrum** is ingeschakeld.
 
-   ![Bekijk een voorbeeld van de nieuwe M365-beheercentrumervaring](./media/directory-delete-howto/preview-toggle.png)
+   ![Bekijk een voor beeld van de nieuwe M365-beheer centrum-ervaring](./media/directory-delete-howto/preview-toggle.png)
 
-3. Zodra het nieuwe beheercentrum is ingeschakeld, moet u een abonnement opzeggen voordat u het verwijderen. Selecteer **Facturering** en selecteer **Producten & services**en selecteer Vervolgens Abonnement **opzeggen** voor het abonnement dat u wilt opzeggen. U wordt naar een feedbackpagina gebracht.
+3. Zodra het nieuwe beheer centrum is ingeschakeld, moet u een abonnement annuleren voordat u het kunt verwijderen. Selecteer **facturering** en selecteer **producten & Services**en selecteer vervolgens **abonnement annuleren** voor het abonnement dat u wilt annuleren. U wordt naar een feedback pagina geleid.
 
-   ![Een abonnement kiezen om op te zeggen](./media/directory-delete-howto/cancel-choose-subscription.png)
+   ![Kies een abonnement dat u wilt annuleren](./media/directory-delete-howto/cancel-choose-subscription.png)
 
-4. Vul het feedbackformulier in en selecteer **Abonnement annuleren** om het abonnement op te zeggen.
+4. Vul het feedback formulier in en selecteer **abonnement annuleren** om het abonnement te annuleren.
 
-   ![Opdracht annuleren in de voorvertoning van het abonnement](./media/directory-delete-howto/cancel-command.png)
+   ![Opdracht annuleren in de preview van het abonnement](./media/directory-delete-howto/cancel-command.png)
 
-5. U het abonnement nu verwijderen. Selecteer **Verwijderen** voor het abonnement dat u wilt verwijderen. Als u het abonnement niet vinden op de pagina **Producten & services,** controleert u of u **de status Van Abonnement** hebt ingesteld op **Alles**.
+5. U kunt nu het abonnement verwijderen. Selecteer **verwijderen** voor het abonnement dat u wilt verwijderen. Als u het abonnement niet kunt vinden op de pagina **Products & Services** , controleert u of u de **abonnements status** hebt ingesteld op **alle**.
 
-   ![Koppeling verwijderen voor het verwijderen van een abonnement](./media/directory-delete-howto/delete-command.png)
+   ![Koppeling verwijderen voor het verwijderen van het abonnement](./media/directory-delete-howto/delete-command.png)
 
-6. Selecteer **Abonnement verwijderen** om het abonnement te verwijderen en de algemene voorwaarden te accepteren. Alle gegevens worden permanent binnen drie dagen verwijderd. U [het abonnement opnieuw activeren](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) gedurende de periode van drie dagen als u van gedachten verandert.
+6. Selecteer **abonnement verwijderen** om het abonnement te verwijderen en de voor waarden te accepteren. Alle gegevens worden binnen drie dagen definitief verwijderd. Als u van gedachten verandert, kunt u [het abonnement opnieuw activeren](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) tijdens de periode van drie dagen.
   
-   ![lees zorgvuldig de algemene voorwaarden](./media/directory-delete-howto/delete-terms.png)
+   ![voor waarden zorgvuldig lezen](./media/directory-delete-howto/delete-terms.png)
 
-7. Nu is de abonnementsstatus gewijzigd en is het abonnement gemarkeerd voor verwijdering. Het abonnement komt 72 uur later in de **deprovisioned** state.
+7. Nu is de status van het abonnement gewijzigd en is het abonnement gemarkeerd voor verwijdering. Het abonnement treedt de **status van** 72 uur later op.
 
-8. Zodra u een abonnement in uw directory hebt verwijderd en 72 uur zijn verstreken, u zich opnieuw aanmelden bij het Azure AD-beheercentrum en mogen er geen vereiste actie zijn en mogen er geen abonnementen zijn die uw directory-verwijdering blokkeren. U moet uw Azure AD-map kunnen verwijderen.
+8. Zodra u een abonnement in uw map hebt verwijderd en 72 uur is verstreken, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en mogen er geen abonnementen worden verwijderd. U moet uw Azure AD-map kunnen verwijderen.
   
-   ![pas abonnement te controleren op verwijdering scherm](./media/directory-delete-howto/delete-checks-passed.png)
+   ![controle van het abonnement door geven op het scherm van verwijderen](./media/directory-delete-howto/delete-checks-passed.png)
 
-## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ik heb een proefabonnement dat verwijdering blokkeert
+## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ik heb een proef abonnement dat verwijderen blokkeert
 
-Er zijn [selfservice-aanmeldingsproducten](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) zoals Microsoft Power BI, Rights Management Services, Microsoft Power Apps of Dynamics 365, individuele gebruikers kunnen zich aanmelden via Office 365, waardoor er ook een gastgebruiker wordt gemaakt voor verificatie in uw Azure AD-directory. Deze selfserviceproducten blokkeren het verwijderen van directory's totdat ze volledig uit de map zijn verwijderd, om gegevensverlies te voorkomen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of aan het product is toegewezen.
+Er zijn [self-service-aanmeldingen](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie wordt gemaakt in uw Azure AD-adres lijst. Met deze self-service producten worden verwijderde mappen geblokkeerd tot ze volledig zijn verwijderd uit de map, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
 
-Er zijn twee soorten self-service aanmeldingsproducten in de manier waarop ze worden toegewezen: 
+Er zijn twee soorten self-service registratie producten die worden toegewezen: 
 
-* Toewijzing op org-niveau: een Azure AD-beheerder wijst het product toe aan de hele organisatie en een gebruiker kan de service actief gebruiken met deze toewijzing op organisatieniveau, zelfs als deze niet afzonderlijk is gelicentieerd.
-* Toewijzing op gebruikersniveau: Een individuele gebruiker tijdens selfservice-aanmelding wijst het product in wezen aan zichzelf toe zonder beheerder. Zodra de organisatie wordt beheerd door een beheerder (zie [Administrator overname van een niet-beheerde directory](domains-admin-takeover.md), dan kan de beheerder het product rechtstreeks toewijzen aan gebruikers zonder self-service aanmelding.  
+* Toewijzing op organisatie niveau: een Azure AD-beheerder wijst het product toe aan de hele organisatie en een gebruiker kan actief gebruikmaken van de service met deze toewijzing op organisatie niveau, zelfs als ze niet afzonderlijk een licentie hebben.
+* Toewijzing op gebruikers niveau: een afzonderlijke gebruiker tijdens een self-service-aanmelding wijst het product zonder beheerder toe aan zichzelf. Zodra de organisatie wordt beheerd door een beheerder (Zie [beheerders overname van een onbeheerde map](domains-admin-takeover.md), kan de beheerder het product rechtstreeks aan gebruikers toewijzen zonder selfservice registratie.  
 
-Wanneer u begint met het verwijderen van het zelfserviceaanmeldingsproduct, verwijdert de actie de gegevens permanent en verwijdert u alle toegang van de gebruiker tot de service. Elke gebruiker die de aanbieding afzonderlijk of op organisatieniveau heeft toegewezen, wordt vervolgens geblokkeerd voor het aanmelden of toegang tot bestaande gegevens. Als u gegevensverlies wilt voorkomen met het selfservice-aanmeldingsproduct zoals [Microsoft Power BI-dashboards](https://docs.microsoft.com/power-bi/service-export-to-pbix) of [de beleidsconfiguratie van Rights Management Services,](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy)moet u ervoor zorgen dat er een back-up van de gegevens wordt genomen en elders wordt opgeslagen.
+Wanneer u het verwijderen van het self-service-aanmeldings product start, worden de gegevens door de actie permanent verwijderd en wordt alle gebruikers toegang tot de service verwijderd. Gebruikers aan wie de aanbieding afzonderlijk of op het niveau van de organisatie is toegewezen, kunnen zich niet aanmelden of toegang tot bestaande gegevens krijgen. Als u gegevens verlies wilt voor komen met het self-service registratie product zoals [micro soft power bi Dash boards](https://docs.microsoft.com/power-bi/service-export-to-pbix) of [Rights Management Services-beleids configuratie](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), moet u ervoor zorgen dat er een back-up van de gegevens wordt gemaakt en op een andere locatie worden opgeslagen.
 
-Zie [Beschikbare selfserviceprogramma's](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)voor meer informatie over de momenteel beschikbare selfservice-aanmeldingsproducten en -services.
+Zie [beschik bare selfservice Program ma's](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)voor meer informatie over momenteel beschik bare self-service voor het aanmelden van services.
 
-Voor wat u verwachten wanneer een proefabonnement office 365-abonnement verloopt (exclusief betaalde partner/CSP- of ondernemingsovereenkomst of volumelicenties), raadpleegt u de volgende tabel. Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn abonnement op Office 365 voor Bedrijven afloopt voor](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)meer informatie over de levenscyclus van Office 365-gegevens en -abonnementen? .
+Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen.
 
-Productstatus | Gegevens | Toegang tot gegevens
+Product status | Gegevens | Toegang tot gegevens
 ------------- | ---- | --------------
-Actief (30 dagen voor proefperiode) | Gegevens die toegankelijk zijn voor iedereen | Gebruikers hebben normale toegang tot zelfservice-aanmeldingsproduct, bestanden of apps<br>Beheerders hebben normale toegang tot microsoft 365-beheercentrum en bronnen
-Verwijderen | Gegevens verwijderd | Gebruikers hebben geen toegang tot het zelfservice-aanmeldingsproduct, bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheercentrum om andere abonnementen te kopen en te beheren
+Actief (30 dagen voor proef versie) | Gegevens die toegankelijk zijn voor alle | Gebruikers hebben normale toegang tot een self-service voor het registreren van een product, bestanden of apps<br>Beheerders hebben normale toegang tot Microsoft 365 beheer centrum en bronnen
+Verwijderen | Gegevens verwijderd | Gebruikers kunnen geen toegang krijgen tot een self-service voor het aanmelden, bestanden of apps<br>Beheerders hebben toegang tot het Microsoft 365-beheer centrum om andere abonnementen te kopen en te beheren
 
-## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Hoe kan ik een selfservice-aanmeldingsproduct verwijderen in de Azure-portal?
+## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Hoe kan ik een self-service-aanmeld product verwijderen in de Azure Portal?
 
-U een selfservice-aanmeldingsproduct zoals Microsoft Power BI of Azure Rights Management Services in een **delete-status** plaatsen die onmiddellijk in de Azure AD-portal moet worden verwijderd.
+U kunt een self-service registratie product, zoals micro soft Power BI of Azure Rights Management Services, in een **verwijderings** status plaatsen zodat ze onmiddellijk worden verwijderd in de Azure AD-Portal.
 
-1. Meld u aan bij het [Azure AD-beheercentrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat een globale beheerder in de organisatie is. Als u de map 'Contoso' met het oorspronkelijke standaarddomein contoso.onmicrosoft.com, meldt u admin@contoso.onmicrosoft.comzich aan bij een UPN zoals .
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat een globale beheerder in de organisatie is. Als u probeert de Directory contoso te verwijderen met de oorspronkelijke standaard domein contoso.onmicrosoft.com, meldt u zich aan met een UPN, zoals admin@contoso.onmicrosoft.com.
 
-2. Selecteer **Licenties**en selecteer **vervolgens zelfserviceaanmeldingsproducten**. U alle self-service aanmeldingsproducten apart van de abonnementen op de stoel bekijken. Kies het product dat u permanent wilt verwijderen. Hier is een voorbeeld in Microsoft Power BI:
+2. Selecteer **licenties**en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
 
-    ![de gebruikersnaam is verkeerd getypt of niet gevonden](./media/directory-delete-howto/licenses-page.png)
+    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/licenses-page.png)
 
-3. Selecteer **Verwijderen** om het product te verwijderen en accepteer de voorwaarden dat gegevens onmiddellijk en onherroepelijk worden verwijderd. Met deze verwijderactie worden alle gebruikers verwijderd en de toegang van organisaties tot het product verwijderd. Klik op Ja om verder te gaan met de verwijdering.  
+3. Selecteer **verwijderen** om het product te verwijderen en de voor waarden te accepteren waarmee gegevens onmiddellijk en onherroepelijk worden verwijderd. Met deze Verwijder actie worden alle gebruikers verwijderd en wordt de organisatie toegang tot het product verwijderd. Klik op Ja om door te gaan met de verwijdering.  
 
-    ![de gebruikersnaam is verkeerd getypt of niet gevonden](./media/directory-delete-howto/delete-product.png)
+    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/delete-product.png)
 
-4. Wanneer u **Ja**selecteert, wordt het verwijderen van het zelfbedieningsproduct gestart. Er is een melding die u zal vertellen van de verwijdering in uitvoering.  
+4. Wanneer u **Ja**selecteert, wordt de verwijdering van het self-service product gestart. Er is een melding waarin wordt aangegeven dat de verwijdering wordt uitgevoerd.  
 
-    ![de gebruikersnaam is verkeerd getypt of niet gevonden](./media/directory-delete-howto/progress-message.png)
+    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/progress-message.png)
 
-5. Nu is de productstatus voor selfservice-aanmelding gewijzigd in **Verwijderd**. Wanneer u de pagina vernieuwt, moet het product worden verwijderd van de pagina **Zelfserviceaanmeldingsproducten.**  
+5. Nu is de status van de self-service voor aanmelden gewijzigd in **verwijderd**. Wanneer u de pagina vernieuwt, moet het product worden verwijderd van de pagina met **self-service registratie producten** .  
 
-    ![de gebruikersnaam is verkeerd getypt of niet gevonden](./media/directory-delete-howto/product-deleted.png)
+    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/product-deleted.png)
 
-6. Zodra u alle producten hebt verwijderd, u zich opnieuw aanmelden bij het Azure AD-beheercentrum en moet er geen vereiste actie zijn en geen producten die uw directoryverwijderen blokkeren. U moet uw Azure AD-map kunnen verwijderen.
+6. Zodra u alle producten hebt verwijderd, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en hoeft u geen actie te ondernemen en kunnen er geen producten worden verwijderd. U moet uw Azure AD-map kunnen verwijderen.
 
-    ![de gebruikersnaam is verkeerd getypt of niet gevonden](./media/directory-delete-howto/delete-organization.png)
+    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/delete-organization.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Active Directory-documentatie](https://docs.microsoft.com/azure/active-directory/)
+[Documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)

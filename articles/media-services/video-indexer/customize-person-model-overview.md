@@ -1,7 +1,7 @@
 ---
-title: Een persoonsmodel aanpassen in Video-indexer - Azure
+title: Een persoonlijk model aanpassen in Video Indexer-Azure
 titleSuffix: Azure Media Services
-description: In dit artikel vindt u een overzicht van wat een persoonsmodel is in Video-indexer en hoe u dit aanpassen.
+description: Dit artikel geeft een overzicht van wat een persoons model is in Video Indexer en hoe het kan worden aangepast.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 3fabba98cb137975da749411ca9accb5a951742d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838302"
 ---
-# <a name="customize-a-person-model-in-video-indexer"></a>Een persoonsmodel aanpassen in videoindexer
+# <a name="customize-a-person-model-in-video-indexer"></a>Een persoonlijk model in Video Indexer aanpassen
 
-Video Indexer ondersteunt herkenning van beroemdheden in je video's. De functie voor herkenning van beroemdheden omvat ongeveer een miljoen gezichten op basis van veelgevraagde gegevensbronnen zoals IMDB, Wikipedia en top LinkedIn-beïnvloeders. Gezichten die niet worden herkend door Video Indexer worden nog steeds gedetecteerd, maar worden niet bij naam genoemd. Klanten kunnen aangepaste persoonsmodellen maken en Video-indexer inschakelen om gezichten te herkennen die standaard niet worden herkend. Klanten kunnen deze persoonsmodellen bouwen door de naam van een persoon te koppelen aan afbeeldingsbestanden van het gezicht van de persoon.  
+Video Indexer ondersteunt beroemdheden herkenning in uw Video's. De functie voor beroemdheden-herkenning gaat over ongeveer 1.000.000 gezichten op basis van een gevraagde gegevens bron, zoals IMDB, Wikipedia en belangrijkste LinkedIn-invloeds. Gezichten die niet worden herkend door Video Indexer, worden nog steeds gedetecteerd, maar blijven ongewijzigd. Klanten kunnen aangepaste persoons modellen bouwen en Video Indexer in staat stellen om gezichten te herkennen die niet standaard worden herkend. Klanten kunnen deze persoons modellen bouwen door de naam van een persoon te koppelen aan afbeeldings bestanden van het gezicht van de persoon.  
 
-Als uw account zich richt op verschillende use-cases, u profiteren van de mogelijkheid om meerdere persoonsmodellen per account te maken. Als de inhoud in je account bijvoorbeeld in verschillende kanalen moet worden gesorteerd, kun je voor elk kanaal een apart persoonsmodel maken. 
+Als uw account verantwoordelijk is voor verschillende gebruiks gevallen, kunt u profiteren van het maken van meerdere persoons modellen per account. Als de inhoud van uw account bijvoorbeeld in verschillende kanalen moet worden gesorteerd, wilt u mogelijk voor elk kanaal een afzonderlijk model maken. 
 
 > [!NOTE]
-> Elk persoonsmodel ondersteunt maximaal 1 miljoen mensen en elk account heeft een limiet van 50 persoonsmodellen. 
+> Elk persoons model ondersteunt Maxi maal 1.000.000 personen en elk account heeft een limiet van 50 persoons modellen. 
 
-Zodra een model is gemaakt, u het gebruiken door de model-ID van een specifiek persoonsmodel op te geven bij het uploaden/indexeren of opnieuw indexeren van een video. Als u een nieuw gezicht voor een video traint, wordt het specifieke aangepaste model bijgewerkt waarmee de video is gekoppeld. 
+Zodra een model is gemaakt, kunt u het gebruiken door de model-ID van een specifiek persoons model op te geven bij het uploaden/indexeren of indexeren van een video. Een nieuw gezicht voor een video trainen: Hiermee wordt het specifieke aangepaste model bijgewerkt waarmee de video is gekoppeld. 
 
-Als u de ondersteuning voor het model met meerdere personen niet nodig hebt, wijst u geen persoonsmodel-id toe aan uw video bij het uploaden/indexeren of opnieuw indexeren. In dit geval gebruikt Video Indexer het standaardpersoonsmodel in uw account. 
+Als u de ondersteuning voor meerdere persoons modellen niet nodig hebt, moet u geen persoons model-ID aan uw video toewijzen tijdens het uploaden/indexeren of opnieuw indexeren. In dit geval gebruikt Video Indexer het standaard persoons model in uw account. 
 
-U de website Video-indexer gebruiken om gezichten te bewerken die in een video zijn gedetecteerd en om meerdere aangepaste persoonsmodellen in uw account te beheren, zoals beschreven in het [model Een persoon aanpassen met behulp van een websiteonderwerp.](customize-person-model-with-website.md) U de API ook gebruiken, zoals beschreven in [Een persoonsmodel aanpassen met API's](customize-person-model-with-api.md).
+U kunt de Video Indexer website gebruiken om gezichten te bewerken die in een video zijn gedetecteerd en om meerdere aangepaste persoons modellen in uw account te beheren, zoals wordt beschreven in het onderwerp [een persoonlijk model aanpassen met behulp van een website](customize-person-model-with-website.md) . U kunt ook de API gebruiken, zoals beschreven in [een persoons model aanpassen met behulp van api's](customize-person-model-with-api.md).

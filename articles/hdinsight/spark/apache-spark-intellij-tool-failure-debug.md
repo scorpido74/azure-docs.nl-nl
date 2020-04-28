@@ -1,7 +1,7 @@
 ---
-title: Debug Spark-taak met IntelliJ Azure Toolkit (preview) - HDInsight
-description: Richtlijnen met HDInsight-hulpprogramma's in Azure Toolkit voor IntelliJ om toepassingen te debuggen
-keywords: debug op afstand intellij, remote debugging intellij, ssh, intellij, hdinsight, debug intellij, debugging
+title: Fout opsporing voor Spark-taken met IntelliJ Azure Toolkit (preview)-HDInsight
+description: Richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ voor fout opsporing in toepassingen
+keywords: fout opsporing op afstand IntelliJ, externe fout opsporing IntelliJ, SSH, IntelliJ, hdinsight, debug IntelliJ, fout opsporing
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,125 +10,125 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494605"
 ---
-# <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout mislukte foutopsporing van problemen met Azure Toolkit voor IntelliJ (voorbeeld)
+# <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie)
 
-In dit artikel vindt u stapsgewijze richtlijnen voor het gebruik van HDInsight-hulpprogramma's in [Azure Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) om **Spark Failure Debug-toepassingen** uit te voeren.
+In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in [Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) voor het uitvoeren van fout **opsporing in Spark** -toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). In deze zelfstudie wordt gebruikgemaakt van Java-versie 8.0.202.
   
-* IntelliJ IDEA. Dit artikel maakt gebruik van [IntelliJ IDEA Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
+* IntelliJ-idee. In dit artikel wordt gebruikgemaakt van [IntelliJ-idee Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
   
 * Azure-toolkit voor IntelliJ. Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (De Azure Toolkit voor IntelliJ installeren).
 
-* Maak verbinding met uw HDInsight-cluster. Zie [Verbinding maken met uw HDInsight-cluster](apache-spark-intellij-tool-plugin.md).
+* Verbinding maken met uw HDInsight-cluster. Zie [verbinding maken met uw HDInsight-cluster](apache-spark-intellij-tool-plugin.md).
 
 * Microsoft Azure Storage Explorer. Zie [Microsoft Azure Storage Explorer downloaden](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="create-a-project-with-debugging-template"></a>Een project maken met foutopsporingssjabloon
+## <a name="create-a-project-with-debugging-template"></a>Een project maken met een sjabloon voor fout opsporing
 
-Maak een spark2.3.2-project om foutopsporing voort te zetten, het foutopsporingsvoorbeeldbestand voor foutopsporing in dit document op te nemen.
+Een Spark 2.3.2-project maken om de fout opsporing voort te zetten, fout in het voorbeeld bestand voor fouten in dit document oplossen.
 
-1. Open IntelliJ IDEA. Open het venster **Nieuw project.**
+1. Open IntelliJ IDEA. Open het venster **Nieuw project** .
 
    a. Selecteer **Azure Spark/HDInsight** in het linkerdeelvenster.
 
-   b. Selecteer **Spark-project met voorbeeld van foutopsporing(voorbeeld(voorbeeld)(Scala)** in het hoofdvenster.
+   b. Selecteer **Spark-project met fout fout Opsporingsgegevens voor beeld (preview) (scala)** in het hoofd venster.
 
-     ![Intellij Maak een debugproject](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
+     ![IntelliJ een debug-project maken](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. Selecteer **Volgende**.
+   c. Selecteer **Next**.
 
-2. Ga in het venster **Nieuw project** de volgende stappen uit:
+2. Voer in het venster **New Project** de volgende stappen uit:
 
-   ![Intellij New Project selecteert Spark-versie](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   ![IntelliJ nieuw project Spark-versie selecteren](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
 
-   a. Voer een projectnaam en projectlocatie in.
+   a. Voer een project naam en Project locatie in.
 
-   b. Selecteer Java **1.8** voor het cluster **Project** **SDK.**
+   b. Selecteer in de vervolg keuzelijst **Project SDK** **Java 1,8** voor **Spark 2.3.2** -cluster.
 
-   c. Selecteer **spark 2.3.2 (Scala 2.11.8)** in de vervolgkeuzelijst **Spark-versie** .
+   c. Selecteer in de vervolg keuzelijst **Spark-versie** **Spark 2.3.2 (scala 2.11.8)**.
 
    d. Selecteer **Finish**.
 
-3. Selecteer **src** > **main** > **scala** om uw code in het project te openen. In dit voorbeeld wordt het **script AgeMean_Div()** gebruikt.
+3. Selecteer **src** > **Main** > **scala** om de code in het project te openen. In dit voor beeld wordt het script **AgeMean_Div ()** gebruikt.
 
-## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Een Spark Scala/Java-toepassing uitvoeren op een HDInsight-cluster
+## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Een Spark scala/Java-toepassing uitvoeren op een HDInsight-cluster
 
-Maak een spark Scala/Java-toepassing en voer de toepassing uit op een Spark-cluster door de volgende stappen uit te voeren:
+Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-cluster door de volgende stappen uit te voeren:
 
-1. Klik **op Configuratie toevoegen** om het venster Configuratie **uitvoeren/foutopsporing te** openen.
+1. Klik op **Configuratie toevoegen** om het venster **uitvoeren/configuraties voor fout opsporing** te openen.
 
-   ![HDI Intellij Voeg configuratie toe](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
+   ![HDI IntelliJ configuratie toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. Selecteer in het dialoogvenster **Configuraties uitvoeren/foutopsporing** het**+** plusteken ( ). Selecteer vervolgens de optie **Apache Spark op HDInsight.**
+2. Selecteer in het dialoog venster **configuraties voor uitvoeren/fout opsporing** het plus teken**+**(). Selecteer vervolgens de optie **Apache Spark op HDInsight** .
 
-   ![Intellij Nieuwe configuratie toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
+   ![Nieuwe configuratie IntelliJ toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Overschakelen naar Extern uitvoeren op het tabblad **Cluster.** Voer gegevens in voor **naam,** **sparkcluster**en **naam van de hoofdklasse**. Onze tools ondersteunen foutopsporing **met uitvoerders.** De **numExectors**, de standaardwaarde is 5 en u beter niet hoger dan 3 instellen. Om de looptijd te **verkorten,** u **spark.yarn.maxAppAttempts** toevoegen aan taakconfiguraties en de waarde instellen op 1. Klik op de knop **OK** om de configuratie op te slaan.
+3. Schakel over op **extern uitvoeren op** het tabblad cluster. Voer informatie in voor de **naam**, het **Spark-cluster**en de naam van de **hoofd klasse**. Onze hulp middelen ondersteunen debug met **uitvoerende**software. De **numExectors**, de standaard waarde is 5 en u kunt beter niet hoger dan 3 instellen. U kunt de uitvoerings tijd verminderen door **Spark. garens. maxAppAttempts** toe te voegen aan de **taak configuraties** en de waarde in te stellen op 1. Klik op de knop **OK** om de configuratie op te slaan.
 
-   ![Intellij Run debug configuraties nieuw](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   ![IntelliJ voor fout opsporing uitvoeren](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
-4. De configuratie wordt nu opgeslagen met de door u opgegeven naam. Als u de configuratiegegevens wilt weergeven, selecteert u de configuratienaam. Als u wijzigingen wilt aanbrengen, selecteert u **Configuraties bewerken**.
+4. De configuratie wordt nu opgeslagen met de naam die u hebt ingevoerd. Als u de configuratie gegevens wilt weer geven, selecteert u de naam van de configuratie. Als u wijzigingen wilt aanbrengen, selecteert u **configuraties bewerken**.
 
-5. Nadat u de configuratie-instellingen hebt voltooid, u het project uitvoeren op het externe cluster.
+5. Nadat u de configuratie-instellingen hebt voltooid, kunt u het project uitvoeren op het externe cluster.
 
-   ![Intellij Debug Remote Spark Job Remote run-knop](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   ![Knop voor externe uitvoering van IntelliJ fout opsporing voor externe Spark-taak](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
 
-6. U de toepassings-id controleren vanuit het uitvoervenster.
+6. U kunt de toepassings-ID controleren vanuit het venster uitvoer.
 
-   ![Intellij Debug Remote Spark Job Remote run resultaat](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   ![Resultaat van externe uitvoering van externe Spark-taak IntelliJ fout opsporing](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
 
-## <a name="download-failed-job-profile"></a>Mislukt taakprofiel downloaden
+## <a name="download-failed-job-profile"></a>Het taak profiel kan niet worden gedownload
 
-Als het indienen van de taak mislukt, u het mislukte taakprofiel downloaden naar de lokale machine voor verdere foutopsporing.
+Als het verzenden van de taak mislukt, kunt u het mislukte taak profiel downloaden naar de lokale computer voor verdere fout opsporing.
 
-1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak en download de mislukte taakbronnen vanaf de desbetreffende locatie: **\hdp\spark2-events\\.spark-failures\\\<application ID>** naar een lokale map. In het **venster Activiteiten** wordt de voortgang van het downloaden weergegeven.
+1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak, down load de mislukte taak resources van de overeenkomstige locatie: **\\\hdp\spark2-Events. Spark\\\<-failures Application id>** naar een lokale map. In het venster **activiteiten** wordt de voortgang van het downloaden weer gegeven.
 
-   ![Downloadfout in Azure Storage Explorer](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![Fout bij het downloaden van Azure Storage Explorer](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![Succes van Azure Storage Explorer downloaden](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
+   ![Azure Storage Explorer downloaden is voltooid](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
 
-## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Lokale foutopsporingsomgeving en foutopsporing configureren bij mislukte
+## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Lokale debugging omgeving configureren en fout opsporing bij fout
 
-1. Open het oorspronkelijke project of maak een nieuw project en koppel het aan de oorspronkelijke broncode. Alleen spark2.3.2 versie wordt ondersteund voor fout debugging op dit moment.
+1. Open het oorspronkelijke project of maak een nieuw project en koppel dit aan de oorspronkelijke bron code. Er wordt alleen een versie van Spark 2.3.2 ondersteund voor fout opsporing.
 
-1. In IntelliJ IDEA maakt u een foutbug-config-bestand **voor spark-fout,** selecteert u het FTD-bestand uit de eerder gedownloade mislukte taakbronnen voor het locatieveld Context **van de spark-taakfout.**
+1. In IntelliJ-idee maakt u een configuratie bestand voor fout **opsporing van Spark-fouten** , selecteert u het bestand FTD van de eerder gedownloade mislukte taak resources voor het veld Locatie van Spark- **taak fout context** .
 
-   ![configuratie van kretastoringen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![configuratie van Crete-fout](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
-1. Klik op de knop Lokale run op de werkbalk, de fout wordt weergegeven in het venster Uitvoeren.
+1. Klik op de knop lokaal uitvoeren op de werk balk, de fout wordt weer gegeven in het venster uitvoeren.
 
-   ![run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![Run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![Run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
-1. Stel het breekpunt in zoals het logboek aangeeft en klik vervolgens op lokale foutopsporingsknop om lokale debugging te doen, net zoals uw normale Scala/ Java-projecten in IntelliJ.
+1. Stel het afbreek punt in als het logboek aangeeft en klik vervolgens op lokale debug-knop om lokale fout opsporing uit te voeren, net als uw normale scala/Java-projecten in IntelliJ.
 
-1. Als het project na het debuggen is voltooid, u de mislukte taak opnieuw indienen bij uw spark op het HDInsight-cluster.
+1. Als het project is voltooid, kunt u de mislukte taak opnieuw verzenden naar uw Spark in HDInsight-cluster.
 
 ## <a name="next-steps"></a><a name="seealso"></a>Volgende stappen
 
-* [Overzicht: Apache Spark-toepassingen debuggen](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Overzicht: fouten opsporen Apache Spark toepassingen](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
 ### <a name="demo"></a>Demo
 
-* Scala-project maken (video): [Apache Spark Scala-toepassingen maken](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Externe foutopsporing (video): [Gebruik Azure Toolkit voor IntelliJ om Apache Spark-toepassingen op afstand te debuggen op een HDInsight-cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Scala-project maken (video): [Apache Spark scala-toepassingen maken](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* Externe fout opsporing (video): [Azure-Toolkit voor IntelliJ gebruiken om fouten op te sporen in Apache Spark toepassingen op afstand in een HDInsight-cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: doe interactieve data-analyse met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Gebruik Spark in HDInsight om de temperatuur van gebouwen te analyseren met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark met Machine Learning: Gebruik Spark in HDInsight om de resultaten van voedselinspectie te voorspellen](apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analyse met Apache Spark in HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark met BI: interactieve gegevens analyse met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
+* [Analyse van website logboeken met Apache Spark in HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
 
@@ -137,12 +137,12 @@ Als het indienen van de taak mislukt, u het mislukte taakprofiel downloaden naar
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
 
-* [Azure Toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen te maken voor een HDInsight-cluster](apache-spark-intellij-tool-plugin.md)
-* [Azure Toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen op afstand te debuggen via VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Gebruik HDInsight Tools voor IntelliJ met Hortonworks Sandbox](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [HdInsight-hulpprogramma's gebruiken in Azure Toolkit voor Eclipse om Apache Spark-toepassingen te maken](../hdinsight-apache-spark-eclipse-tool-plugin.md)
-* [Apache Zeppelin-laptops gebruiken met een Apache Spark-cluster op HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels beschikbaar voor Jupyter-laptop in het Apache Spark-cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken](apache-spark-intellij-tool-plugin.md)
+* [Azure-toolkit voor IntelliJ gebruiken om fouten op te lossen Apache Spark toepassingen op afstand via VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [HDInsight-Hulpprogram Ma's gebruiken voor IntelliJ met Hortonworks sandbox](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [Gebruik HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse om Apache Spark-toepassingen te maken](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
+* [Kernels die beschikbaar zijn voor Jupyter-notebook in het Apache Spark-cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Externe pakketten gebruiken met Jupyter-notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
 

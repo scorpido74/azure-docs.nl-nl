@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175983"
 ---
-Als er vervolgens servers op het cluster worden uitgevoerd met Windows Server 2008 R2 of Windows Server 2012, moet u controleren of de hotfix [KB2854082](https://support.microsoft.com/kb/2854082) is geïnstalleerd op elk van de on-premises servers of Azure VM's die deel uitmaken van het cluster. Elke server of VM die zich in het cluster bevindt, maar niet in de beschikbaarheidsgroep, moet deze hotfix ook hebben geïnstalleerd.
+Als op servers op het cluster Windows Server 2008 R2 of Windows Server 2012 wordt uitgevoerd, moet u controleren of de hotfix [KB2854082](https://support.microsoft.com/kb/2854082) is geïnstalleerd op elk van de on-premises servers of Azure-vm's die deel uitmaken van het cluster. Voor alle servers of VM'S die zich in het cluster bevinden, maar niet in de beschikbaarheids groep, moet deze hotfix ook zijn geïnstalleerd.
 
-Download [KB2854082](https://support.microsoft.com/kb/2854082) in de externe desktopsessie voor elk van de clusterknooppunten naar een lokale map. Installeer vervolgens de hotfix op elk clusterknooppunt opeenvolgend. Als de clusterservice momenteel op het clusterknooppunt wordt uitgevoerd, wordt de server opnieuw gestart aan het einde van de hotfix-installatie.
+Down load [KB2854082](https://support.microsoft.com/kb/2854082) in de extern bureau blad-sessie voor elk cluster knooppunt naar een lokale map. Installeer de hotfix vervolgens sequentieel op elk cluster knooppunt. Als de Cluster service momenteel op het cluster knooppunt wordt uitgevoerd, wordt de server opnieuw opgestart aan het einde van de installatie van de hotfix.
 
 > [!WARNING]
-> Het stoppen van de clusterservice of het opnieuw opstarten van de server heeft invloed op de quorumstatus van uw cluster en de beschikbaarheidsgroep en dit kan ertoe leiden dat uw cluster offline gaat. Als u de hoge beschikbaarheid van uw cluster tijdens de installatie wilt behouden, moet u ervoor zorgen dat:
+> Het stoppen van de Cluster service of het opnieuw opstarten van de server is van invloed op de quorum status van het cluster en de beschikbaarheids groep. het cluster kan hierdoor mogelijk offline gaan. Als u de maximale Beschik baarheid van uw cluster tijdens de installatie wilt behouden, moet u het volgende doen:
 > 
-> * Het cluster bevindt zich in een optimale quorumstatus. 
-> * Voordat u de hotfix op een knooppunt installeert, zijn alle clusterknooppunten online.
-> * Voordat u de hotfix op een ander knooppunt in het cluster installeert, moet u toestaan dat de hotfix-installatie op één knooppunt wordt voltooid, inclusief het opnieuw opstarten van de server.
+> * Het cluster bevindt zich in een optimale quorum status. 
+> * Voordat u de hotfix op een knoop punt installeert, zijn alle cluster knooppunten online.
+> * Voordat u de hotfix op een ander knoop punt in het cluster installeert, moet u ervoor zorgen dat de installatie van de hotfix op één knoop punt wordt uitgevoerd, inclusief het volledig opnieuw opstarten van de server.
 > 
 > 
 

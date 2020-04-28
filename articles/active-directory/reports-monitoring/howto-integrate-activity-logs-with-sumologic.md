@@ -1,6 +1,6 @@
 ---
-title: Logboeken streamen naar SumoLogic met Azure Monitor | Microsoft Documenten
-description: Meer informatie over het integreren van Azure Active Directory-logboeken met SumoLogic met Azure Monitor
+title: Stream-logboeken naar SumoLogic met behulp van Azure Monitor | Microsoft Docs
+description: Meer informatie over het integreren van Azure Active Directory-logboeken met SumoLogic met behulp van Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,32 +18,32 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cdfc4e393ca7bf4bcbd523b4fad72690d5f2744
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74014392"
 ---
-# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Active Directory-logboeken integreren met SumoLogic met Azure Monitor
+# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Active Directory-logboeken integreren met SumoLogic met behulp van Azure Monitor
 
-In dit artikel vindt u informatie over het integreren van Azure Active Directory -logboeken (Azure AD) met SumoLogic met Azure Monitor. U routeert de logboeken eerst naar een Azure-gebeurtenishub en vervolgens de gebeurtenishub met SumoLogic.
+In dit artikel leert u hoe u Azure Active Directory (Azure AD)-logboeken integreert met SumoLogic met behulp van Azure Monitor. U stuurt de logboeken eerst naar een Azure Event Hub en integreert de Event Hub vervolgens met SumoLogic.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om deze functie te gebruiken:
-* Een Azure-gebeurtenishub die Azure AD-activiteitslogboeken bevat. Meer informatie over het [streamen van uw activiteitslogboeken naar een gebeurtenishub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
-* Een SumoLogic-abonnement met één aanmelding.
+* Een Azure-Event Hub die Azure AD-activiteiten Logboeken bevat. Meer informatie over het [streamen van uw activiteiten logboeken naar een event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
+* Een SumoLogic-abonnement met eenmalige aanmelding.
 
-## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Stappen om Azure AD-logboeken te integreren met SumoLogic 
+## <a name="steps-to-integrate-azure-ad-logs-with-sumologic"></a>Stappen voor het integreren van Azure AD-logboeken met SumoLogic 
 
-1. Stream [eerst de Azure AD-logboeken naar een Azure-gebeurtenishub.](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-2. Configureer uw SumoLogic-exemplaar om [logboeken te verzamelen voor Azure Active Directory.](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)
-3. [Installeer de Azure AD SumoLogic-app](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) om de vooraf geconfigureerde dashboards te gebruiken die realtime analyse van uw omgeving bieden.
+1. Eerst [moet u de Azure AD-logboeken streamen naar een Azure-Event hub](quickstart-azure-monitor-stream-logs-to-event-hub.md).
+2. Configureer uw SumoLogic-exemplaar voor het [verzamelen van Logboeken voor Azure Active Directory](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory).
+3. [Installeer de Azure AD SumoLogic-app](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) voor het gebruik van de vooraf geconfigureerde Dash boards die een realtime-analyse van uw omgeving bieden.
 
    ![Dashboard](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Controlelogboekenschema interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Schema van audit logboeken interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Aanmeldingslogboekenschema interpreteren in Azure Monitor)
 * [Veelgestelde vragen en bekende problemen](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

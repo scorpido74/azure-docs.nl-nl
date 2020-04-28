@@ -1,6 +1,6 @@
 ---
 title: Geavanceerde aanvraagbeperking met Azure API Management
-description: Meer informatie over het maken en toepassen van flexibel quota- en tariefbeperkende beleidsregels met Azure API Management.
+description: Meer informatie over het maken en Toep assen van beleid voor flexibele quota en frequentie beperking met Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -15,27 +15,27 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71066757"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Geavanceerde aanvraagbeperking met Azure API Management
-Het kunnen beperken van binnenkomende aanvragen is een belangrijke rol van Azure API Management. Door de snelheid van aanvragen te controleren of door de totale overdracht van aanvragen/gegevens te controleren, stelt API Management API-providers in staat om hun API's te beschermen tegen misbruik en waarde te creëren voor verschillende API-productlagen.
+Het beperken van binnenkomende aanvragen is een belang rijke rol van Azure API Management. Door de frequentie van aanvragen of het totale aantal overgedragen aanvragen/gegevens te beheren, kunnen met API Management API-providers hun Api's tegen misbruik beveiligen en waarde maken voor verschillende API-product lagen.
 
-## <a name="product-based-throttling"></a>Productgebaseerde beperking
-Tot op heden zijn de beperkingsmogelijkheden beperkt tot een bepaald productabonnement, gedefinieerd in de Azure-portal. Dit is handig voor de API-provider om limieten toe te passen op de ontwikkelaars die zich hebben aangemeld om hun API te gebruiken, maar het helpt niet, bijvoorbeeld bij het beperken van individuele eindgebruikers van de API. Het is mogelijk dat voor een gebruiker van de toepassing van de ontwikkelaar om het volledige quotum te verbruiken en vervolgens te voorkomen dat andere klanten van de ontwikkelaar in staat zijn om de toepassing te gebruiken. Ook kunnen verschillende klanten die een groot aantal aanvragen genereren, de toegang beperken tot incidentele gebruikers.
+## <a name="product-based-throttling"></a>Op product gebaseerde beperking
+Tot nu toe zijn de snelheids beperkings mogelijkheden beperkt tot het bereik van een bepaald product abonnement dat is gedefinieerd in de Azure Portal. Dit is nuttig voor de API-provider om beperkingen toe te passen op de ontwikkel aars die zich hebben geregistreerd voor het gebruik van hun API. het is bijvoorbeeld niet mogelijk om afzonderlijke eind gebruikers van de API te beperken. Het is mogelijk dat voor één gebruiker van de ontwikkelaar van de toepassing het volledige quotum verbruikt en dat andere klanten van de ontwikkelaar de toepassing niet kunnen gebruiken. Daarnaast kunnen meerdere klanten die een groot aantal aanvragen kunnen genereren de toegang tot incidentele gebruikers beperken.
 
-## <a name="custom-key-based-throttling"></a>Op aangepaste sleutel gebaseerde beperking
+## <a name="custom-key-based-throttling"></a>Aangepaste beperking op basis van sleutels
 
 > [!NOTE]
-> De `rate-limit-by-key` `quota-by-key` beleidsregels en het beleid zijn niet beschikbaar in de verbruikslaag van Azure API Management. 
+> De `rate-limit-by-key` beleids `quota-by-key` regels en zijn niet beschikbaar in de laag verbruik van Azure API management. 
 
-Het nieuwe [beleid per sleutel voor tarieflimiet](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) en quota per [sleutel](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) biedt een flexibelere oplossing voor de verkeersleiding. Met dit nieuwe beleid u expressies definiëren om de sleutels te identificeren die worden gebruikt om het verkeersgebruik bij te houden. De manier waarop dit werkt is het gemakkelijkst geïllustreerd met een voorbeeld. 
+De nieuwe beleids regels voor de [frequentie limiet per sleutel](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) en [quotum per sleutel](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) bieden een flexibele oplossing voor verkeers beheer. Met deze nieuwe beleids regels kunt u expressies definiëren om de sleutels te identificeren die worden gebruikt voor het bijhouden van het gebruik van verkeer. De manier waarop dit werkt, is eenvoudig te demonstreren met een voor beeld. 
 
-## <a name="ip-address-throttling"></a>Beperking van IP-adres
-Het volgende beleid beperkt een IP-adres van één client tot slechts 10 oproepen per minuut, met een totaal van 1.000.000 oproepen en 10.000 kilobytes bandbreedte per maand. 
+## <a name="ip-address-throttling"></a>Beperking van IP-adressen
+De volgende beleids regels beperken één IP-adres van een client tot slechts 10 aanroepen per minuut, met een totaal van 1.000.000-aanroepen en 10.000 kilo byte band breedte van de maand. 
 
 ```xml
 <rate-limit-by-key  calls="10"
@@ -48,10 +48,10 @@ Het volgende beleid beperkt een IP-adres van één client tot slechts 10 oproepe
           counter-key="@(context.Request.IpAddress)" />
 ```
 
-Als alle clients op het internet een uniek IP-adres hebben gebruikt, kan dit een effectieve manier zijn om het gebruik per gebruiker te beperken. Het is echter waarschijnlijk dat meerdere gebruikers één openbaar IP-adres delen omdat ze via een NAT-apparaat toegang hebben tot internet. Ondanks dit, voor API's die `IpAddress` niet-geverifieerde toegang mogelijk maken, is dit misschien de beste optie.
+Als alle clients op internet een uniek IP-adres gebruiken, kan dit een efficiënte manier zijn om het gebruik door de gebruiker te beperken. Het is echter waarschijnlijk dat meerdere gebruikers een enkel openbaar IP-adres delen als gevolg van de toegang tot internet via een NAT-apparaat. Als dit niet mogelijk is, is de `IpAddress` beste optie voor api's die niet-geverifieerde toegang toestaan.
 
-## <a name="user-identity-throttling"></a>Beperking van de identiteit van de gebruiker
-Als een eindgebruiker is geverifieerd, kan een beperkingssleutel worden gegenereerd op basis van informatie die die gebruiker op unieke wijze identificeert.
+## <a name="user-identity-throttling"></a>Beperking van gebruikers identiteit
+Als een eind gebruiker is geverifieerd, kan een beperkings sleutel worden gegenereerd op basis van gegevens die een unieke identificatie van die gebruiker zijn.
 
 ```xml
 <rate-limit-by-key calls="10"
@@ -59,13 +59,13 @@ Als een eindgebruiker is geverifieerd, kan een beperkingssleutel worden gegenere
     counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
 ```
 
-In dit voorbeeld ziet u hoe u `JWT` de kopautorisatie extraheren, converteren naar een object en het onderwerp van het token gebruiken om de gebruiker te identificeren en dat als de snelheidsbeperkende sleutel gebruiken. Als de gebruikersidentiteit wordt `JWT` opgeslagen in de als een van de andere claims, dan is die waarde kan worden gebruikt in de plaats.
+In dit voor beeld ziet u hoe u de autorisatie-header uitpakt, converteert naar `JWT` een object en het onderwerp van het token gebruikt om de gebruiker te identificeren en die als de frequentie beperkings sleutel te gebruiken. Als de identiteit van de gebruiker wordt opgeslagen `JWT` in de als een van de andere claims, zou die waarde kunnen worden gebruikt in plaats daarvan.
 
 ## <a name="combined-policies"></a>Gecombineerd beleid
-Hoewel het nieuwe beperkingsbeleid meer controle biedt dan het bestaande beperkingsbeleid, is er nog steeds waarde die beide mogelijkheden combineert. Beperking op productabonnementssleutel[(Gesprekstarief beperken per abonnement](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) en [Gebruiksquotum instellen per abonnement)](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)is een geweldige manier om inkomsten te genereren met een API door kosten in rekening te brengen op basis van gebruiksniveaus. De fijnere korrelcontrole van het kunnen gaspedaal door gebruiker is complementair en verhindert het gedrag van één gebruiker van het degraderen van de ervaring van een andere. 
+Hoewel het nieuwe beperkings beleid meer controle biedt dan het bestaande beperkings beleid, is er nog steeds waarden die beide mogelijkheden combi neren. Beperking per product abonnements sleutel ([oproep snelheid per abonnement beperken](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) en [gebruiks quotum per abonnement instellen](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) is een uitstekende manier om inkomsten van een API in te stellen op basis van gebruiks niveaus. De nauw keurige controle over het beperken van de beperking door de gebruiker is complementair en voor komt dat het gedrag van een gebruiker de ervaring van een ander kan verlagen. 
 
-## <a name="client-driven-throttling"></a>Clientgestuurde beperking
-Wanneer de beperkingssleutel wordt gedefinieerd met behulp van een [beleidsexpressie,](/azure/api-management/api-management-policy-expressions)is het de API-provider die kiest hoe de beperking wordt gedefinieerd. Een ontwikkelaar kan echter bepalen hoe ze hun eigen klanten beperken. Dit kan worden ingeschakeld door de API-provider door de invoering van een aangepaste header om de clienttoepassing van de ontwikkelaar in staat te stellen de sleutel naar de API te communiceren.
+## <a name="client-driven-throttling"></a>Door client gestuurde beperking
+Wanneer de beperkings sleutel is gedefinieerd met behulp van een [beleids expressie](/azure/api-management/api-management-policy-expressions), is het de API-provider die het bereik van de beperking kan bepalen. Het is echter mogelijk dat een ontwikkelaar wil bepalen hoe ze hun eigen klanten beoordelen. Dit kan worden ingeschakeld door de API-provider door een aangepaste header te introduceren, zodat de client toepassing van de ontwikkelaar de sleutel kan communiceren naar de API.
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -73,11 +73,11 @@ Wanneer de beperkingssleutel wordt gedefinieerd met behulp van een [beleidsexpre
           counter-key="@(request.Headers.GetValueOrDefault("Rate-Key",""))"/>
 ```
 
-Hierdoor kan de clienttoepassing van de ontwikkelaar kiezen hoe ze de snelheidsbeperkende sleutel willen maken. De clientontwikkelaars kunnen hun eigen tarieflagen maken door sets sleutels toe te wijzen aan gebruikers en het sleutelgebruik te roteren.
+Hierdoor kan de client toepassing van de ontwikkelaar kiezen hoe ze de frequentie limiet sleutel willen maken. De client ontwikkelaars kunnen hun eigen tarieven lagen maken door sets sleutels aan gebruikers toe te wijzen en het sleutel gebruik te roteren.
 
 ## <a name="summary"></a>Samenvatting
-Azure API Management biedt tarief- en offertebeperking om zowel uw API-service te beschermen als waarde toe te voegen. Met het nieuwe beperkingsbeleid met aangepaste scopingregels u meer controle hebben over dit beleid, zodat uw klanten nog betere toepassingen kunnen bouwen. De voorbeelden in dit artikel tonen het gebruik van dit nieuwe beleid aan door sleutels te beperken met ip-adressen van klanten, gebruikersidentiteit en door de client gegenereerde waarden. Er zijn echter veel andere delen van het bericht die kunnen worden gebruikt, zoals user agent, URL-padfragmenten, berichtgrootte.
+Azure API Management voorziet in snelheids-en prijs limieten om te beveiligen en waarde toe te voegen aan uw API-service. Met het nieuwe beperkings beleid met aangepaste bereik regels kunt u een nauw keurigere controle over het beleid bieden zodat uw klanten zelfs betere toepassingen kunnen bouwen. In de voor beelden in dit artikel wordt het gebruik van deze nieuwe beleids regels gedemonstreerd door de productie frequentie beperkende sleutels met client-IP-adressen, gebruikers-id en door client gegenereerde waarden. Er zijn echter veel andere delen van het bericht die kunnen worden gebruikt, zoals gebruikers agent, URL-pad fragmenten, bericht grootte.
 
 ## <a name="next-steps"></a>Volgende stappen
-Geef ons uw feedback als een GitHub probleem voor dit onderwerp. Het zou geweldig zijn om te horen over andere potentiële kernwaarden die een logische keuze zijn geweest in uw scenario's.
+Geef ons uw feedback als een GitHub-probleem voor dit onderwerp. Het is handig om te horen over andere mogelijke sleutel waarden die een logische keuze zijn in uw scenario's.
 

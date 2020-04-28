@@ -1,7 +1,7 @@
 ---
-title: Upgraden naar Azure Search .NET SDK versie 3
+title: Een upgrade uitvoeren naar Azure Search .NET SDK versie 3
 titleSuffix: Azure Cognitive Search
-description: Migreer code naar de Azure Search .NET SDK versie 3 van oudere versies. Meer informatie over wat er nieuw is en welke codewijzigingen vereist zijn.
+description: Code migreren naar de Azure Search .NET SDK versie 3 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792987"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Upgraden naar Azure Search .NET SDK versie 3
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 3
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -25,53 +25,53 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Als u versie 2.0-preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u uw toepassing te upgraden naar versie 3.
+Als u versie 2,0-Preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 3.
 
-Zie [Azure Search gebruiken vanuit een .NET-toepassing](search-howto-dotnet-sdk.md)voor een meer algemene walkthrough van de SDK met voorbeelden.
+Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
 
-Versie 3 van de Azure Search .NET SDK bevat enkele wijzigingen ten opzichte van eerdere versies. Deze zijn meestal klein, dus het wijzigen van uw code moet slechts minimale inspanning vereisen. Zie [Stappen om te upgraden](#UpgradeSteps) voor instructies over het wijzigen van uw code om de nieuwe SDK-versie te gebruiken.
+Versie 3 van de Azure Search .NET SDK bevat een aantal wijzigingen ten opzichte van eerdere versies. Dit zijn voornamelijk minder jarigen, zodat het wijzigen van uw code slechts een minimale inspanning vereist. Zie de stappen voor het uitvoeren van een [upgrade](#UpgradeSteps) voor instructies over het wijzigen van de code voor het gebruik van de nieuwe SDK-versie.
 
 > [!NOTE]
-> Als u versie 1.0.2-preview of ouder gebruikt, moet u eerst upgraden naar versie 1.1 en vervolgens upgraden naar versie 3. Zie [Upgraden naar de Azure Search .NET SDK versie 1.1](search-dotnet-sdk-migration-version-1.md) voor instructies.
+> Als u versie 1.0.2-Preview of ouder gebruikt, moet u eerst een upgrade uitvoeren naar versie 1,1 en vervolgens een upgrade uitvoeren naar versie 3. Zie [upgraden naar de Azure Search .NET SDK versie 1,1](search-dotnet-sdk-migration-version-1.md) voor instructies.
 >
-> Uw Azure Search-serviceinstantie ondersteunt verschillende REST API-versies, waaronder de nieuwste. U een versie blijven gebruiken wanneer deze niet langer de laatste is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u de API-versie in elke aanvraag opgeven via de parameter api-versie. Bij gebruik van de .NET SDK bepaalt de versie van de SDK die u gebruikt de overeenkomstige versie van de REST API. Als u een oudere SDK gebruikt, u die code zonder wijzigingen blijven uitvoeren, zelfs als de service is geüpgraded om een nieuwere API-versie te ondersteunen.
+> Uw Azure Search service-exemplaar ondersteunt verschillende REST API versies, met inbegrip van de meest recente versie. U kunt een versie blijven gebruiken wanneer deze niet langer het meest recent is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u in elke aanvraag de API-versie opgeven via de para meter API-Version. Wanneer u de .NET SDK gebruikt, bepaalt de versie van de SDK die u gebruikt, de corresponderende versie van de REST API. Als u een oudere SDK gebruikt, kunt u deze code zonder wijzigingen blijven uitvoeren, zelfs niet als de service wordt bijgewerkt voor ondersteuning van een nieuwere API-versie.
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-3"></a>Nieuwe versie 3
-Versie 3 van de Azure Search .NET SDK is gericht op de nieuwste algemeen beschikbare versie van de Azure Search REST API, met name 2016-09-01. Dit maakt het mogelijk om veel nieuwe functies van Azure Search te gebruiken vanuit een .NET-toepassing, waaronder het volgende:
+## <a name="whats-new-in-version-3"></a>Wat is er nieuw in versie 3
+Versie 3 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API, met name 2016-09-01. Dit maakt het mogelijk om veel nieuwe functies van Azure Search van een .NET-toepassing te gebruiken, met inbegrip van het volgende:
 
 * [Analysevoorzieningen aanpassen](https://aka.ms/customanalyzers)
-* Ondersteuning voor [Azure Blob Storage-](search-howto-indexing-azure-blob-storage.md) en [Azure Table Storage-indexeerders](search-howto-indexing-azure-tables.md)
-* Indexeraanpassing via [veldtoewijzingen](search-indexer-field-mappings.md)
-* ETags-ondersteuning om een veilige gelijktijdige actualisering van indexdefinities, indexeerders en gegevensbronnen mogelijk te maken
-* Ondersteuning voor het bouwen van indexvelddefinities declaratief door `FieldBuilder` het verfraaien van uw modelklasse en het gebruik van de nieuwe klasse.
-* Ondersteuning voor .NET Core en .NET Portable Profile 111
+* Ondersteuning voor [azure Blob Storage](search-howto-indexing-azure-blob-storage.md) en [Azure Table Storage](search-howto-indexing-azure-tables.md) Indexer
+* Aanpassing van Indexeer functie via [veld Toewijzingen](search-indexer-field-mappings.md)
+* ETags-ondersteuning voor het inschakelen van veilig gelijktijdig bijwerken van index definities, Indexeer functies en gegevens bronnen
+* Ondersteuning voor het samen stellen van index veld definities declaratief door uw model klasse te verf raaien `FieldBuilder` en de nieuwe klasse te gebruiken.
+* Ondersteuning voor .NET core en .NET Portable profile 111
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Stappen om te upgraden
-Werk eerst uw NuGet-referentie bij voor `Microsoft.Azure.Search` het gebruik van de NuGet Package Manager Console of door met de rechtermuisknop op uw projectreferenties te klikken en "NuGet-pakketten beheren..." te selecteren. in Visual Studio.
+## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
+Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
 
-Zodra NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u uw project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat zo is, ben je klaar om te gaan!
+Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat het geval is, bent u klaar om aan de slag te gaan.
 
-Als uw build mislukt, ziet u een buildfout zoals:
+Als uw build mislukt, ziet u een build-fout als de volgende:
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-De volgende stap is het oplossen van deze buildfout. Zie [Wijzigingen in versie 3 verbreken](#ListOfChanges) voor meer informatie over de oorzaak van de fout en hoe u deze oplossen.
+De volgende stap is het oplossen van deze build-fout. Zie belang rijke [wijzigingen in versie 3](#ListOfChanges) voor meer informatie over de oorzaak van de fout en hoe u deze kunt oplossen.
 
-Mogelijk ziet u aanvullende buildwaarschuwingen met betrekking tot verouderde methoden of eigenschappen. De waarschuwingen bevatten instructies over wat te gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld `IndexingParameters.Base64EncodeKeys` de eigenschap gebruikt, moet u een waarschuwing krijgen die zegt`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de eigenschap `IndexingParameters.Base64EncodeKeys` , wordt er een waarschuwing weer gegeven met de tekst`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
-Zodra u buildfouten hebt opgelost, u wijzigingen aanbrengen in uw toepassing om te profiteren van nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 3](#WhatsNew).
+Wanneer u opgebouwde fouten hebt opgelost, kunt u wijzigingen aanbrengen in uw toepassing om te profiteren van de nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 3](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-3"></a>Wijzigingen in versie 3 verbreken
-Er is een klein aantal wijzigingen in versie 3 waarvoor mogelijk ook codewijzigingen nodig zijn naast het opnieuw opbouwen van uw toepassing.
+Er is een klein aantal belang rijke wijzigingen in versie 3 waarvoor code wijzigingen nodig zijn naast het opnieuw samen stellen van uw toepassing.
 
-### <a name="indexesgetclient-return-type"></a>Indexen.GetClient retourtype
-De `Indexes.GetClient` methode heeft een nieuw retourtype. Voorheen keerde `SearchIndexClient`het terug , `ISearchIndexClient` maar dit werd gewijzigd in versie 2.0-preview, en die wijziging gaat over naar versie 3. Dit is ter ondersteuning van `GetClient` klanten die willen de methode `ISearchIndexClient`voor unit tests bespotten door het retourneren van een mock implementatie van .
+### <a name="indexesgetclient-return-type"></a>Indexes. GetClient retour type
+De `Indexes.GetClient` methode heeft een nieuw retour type. Voorheen werd deze geretourneerd `SearchIndexClient`, maar dit is gewijzigd `ISearchIndexClient` in versie 2,0-Preview en deze wijziging gaat naar versie 3. Dit is ter ondersteuning van klanten die de `GetClient` methode voor eenheids testen willen intrekken door een model implementatie `ISearchIndexClient`van te retour neren.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -80,14 +80,14 @@ Als uw code er als volgt uitziet:
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-U het hierin wijzigen om eventuele buildfouten op te lossen:
+U kunt dit wijzigen in dit om eventuele build-fouten op te lossen:
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName, DataType en anderen zijn niet langer impliciet converteerbaar naar tekenreeksen
-Er zijn veel typen in de Azure `ExtensibleEnum`Search .NET SDK die afkomstig zijn van . Voorheen waren deze types allemaal `string`impliciet converteerbaar naar type . Er is echter een `Object.Equals` bug ontdekt in de implementatie voor deze klassen en de fout moet worden opgelost. Expliciete conversie `string` naar is nog steeds toegestaan.
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Analyzer, data type en andere zijn niet meer impliciet geconverteerd naar teken reeksen
+Er zijn veel typen in de Azure Search .NET SDK die zijn afgeleid van `ExtensibleEnum`. Voorheen werden deze typen allemaal impliciet geconverteerd naar type `string`. Er is echter een bug ontdekt in de `Object.Equals` implementatie voor deze klassen en het herstellen van de fout die vereist is om deze impliciete conversie uit te scha kelen. Expliciete omzetting `string` naar is nog steeds toegestaan.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -108,7 +108,7 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-U het hierin wijzigen om eventuele buildfouten op te lossen:
+U kunt dit wijzigen in dit om eventuele build-fouten op te lossen:
 
 ```csharp
 const string CustomTokenizerName = "my_tokenizer"; 
@@ -126,27 +126,27 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-### <a name="removed-obsolete-members"></a>Verouderde leden verwijderd
+### <a name="removed-obsolete-members"></a>Verouderde leden zijn verwijderd
 
-Mogelijk ziet u buildfouten met betrekking tot methoden of eigenschappen die in versie 2.0-preview als verouderd zijn gemarkeerd en vervolgens zijn verwijderd in versie 3. Als u dergelijke fouten tegenkomt, u deze als geen andere manier oplossen:
+Mogelijk worden er compilatie fouten weer gegeven met betrekking tot methoden of eigenschappen die als verouderd zijn gemarkeerd in versie 2,0-Preview en vervolgens worden verwijderd in versie 3. Als u dergelijke fouten tegen komt, kunt u deze als volgt oplossen:
 
-- Als u deze constructeur `ScoringParameter(string name, string value)`gebruikt: , gebruik deze in plaats daarvan:`ScoringParameter(string name, IEnumerable<string> values)`
-- Als u de `ScoringParameter.Value` eigenschap gebruikt, gebruikt u in plaats daarvan de `ScoringParameter.Values` eigenschap of de `ToString` methode.
-- Als u de `SearchRequestOptions.RequestId` eigenschap gebruikte, gebruikt u de `ClientRequestId` eigenschap in plaats daarvan.
+- Als u deze constructor gebruikt: `ScoringParameter(string name, string value)`, gebruikt u deze in plaats daarvan:`ScoringParameter(string name, IEnumerable<string> values)`
+- Als u de `ScoringParameter.Value` eigenschap gebruikt, gebruikt u in `ScoringParameter.Values` plaats daarvan de `ToString` eigenschap of de-methode.
+- Als u de `SearchRequestOptions.RequestId` eigenschap hebt gebruikt, gebruikt u `ClientRequestId` in plaats daarvan de eigenschap.
 
-### <a name="removed-preview-features"></a>Verwijderde voorbeeldfuncties
+### <a name="removed-preview-features"></a>De preview-functies zijn verwijderd
 
-Als u een upgrade uitvoert van versie 2.0-preview naar versie 3, moet u er rekening mee houden dat json- en CSV-parsing-ondersteuning voor Blob Indexers is verwijderd omdat deze functies nog steeds in de preview staan. In het bijzonder zijn `IndexingParametersExtensions` de volgende methoden van de klasse verwijderd:
+Als u een upgrade uitvoert van versie 2,0-Preview naar versie 3, moet u er rekening mee houden dat JSON-en CSV-parsering ondersteuning voor BLOB-Indexeer functies is verwijderd, omdat deze functies nog in Preview zijn. Met name de volgende methoden van de `IndexingParametersExtensions` klasse zijn verwijderd:
 
 - `ParseJson`
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Als uw toepassing een harde afhankelijkheid van deze functies heeft, u niet upgraden naar versie 3 van de Azure Search .NET SDK. U versie 2.0-preview blijven gebruiken. Houd er echter rekening mee dat **we het gebruik van preview-SDK's in productietoepassingen niet aanraden.** Preview-functies zijn alleen voor evaluatie en kunnen veranderen.
+Als uw toepassing een vaste afhankelijkheid van deze functies heeft, kunt u niet upgraden naar versie 3 van de Azure Search .NET SDK. U kunt versie 2,0-Preview blijven gebruiken. Bedenk echter dat het **gebruik van preview-sdk's in productie toepassingen niet wordt aangeraden**. Preview-functies zijn alleen voor evaluatie en kunnen worden gewijzigd.
 
 ## <a name="conclusion"></a>Conclusie
-Zie de [.NET How-to](search-howto-dotnet-sdk.md).
+Als u meer informatie wilt over het gebruik van de Azure Search .NET SDK, raadpleegt u de [.net How-to](search-howto-dotnet-sdk.md).
 
-Wij zijn blij met uw feedback op de SDK. Als u problemen ondervindt, u ons gerust om hulp vragen op [Stack Overflow.](https://stackoverflow.com/questions/tagged/azure-search) Als u een bug vindt, u een probleem indienen in de [Azure .NET SDK GitHub-repository.](https://github.com/Azure/azure-sdk-for-net/issues) Zorg ervoor dat u de uitgiftetitel vooraf opmaakt met '[Azure Search]'.
+We stellen uw feedback op de SDK. Als u problemen ondervindt, kunt u ons vragen om hulp over [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vindt, kunt u een probleem in de [Azure .NET SDK github-opslag plaats](https://github.com/Azure/azure-sdk-for-net/issues)opslaan. Zorg ervoor dat u de titel van het probleem voordoet met ' [Azure Search] '.
 
-Bedankt voor het gebruik van Azure Search!
+Hartelijk dank dat u Azure Search hebt gebruikt.

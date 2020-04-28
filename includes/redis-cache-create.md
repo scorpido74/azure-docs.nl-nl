@@ -9,35 +9,35 @@ ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 3c064aa8e57a77b96161da06847f543816be1217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73719112"
 ---
-1. Als u een cache wilt maken, meldt u zich aan bij de [Azure-portal](https://portal.azure.com) en selecteert u **Een resource maken.** 
+1. Als u een cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. 
    
-   ![Een resource maken selecteren](media/redis-cache-create/create-a-resource.png)
+   ![Selecteer een resource maken](media/redis-cache-create/create-a-resource.png)
    
-1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer Vervolgens Azure Cache **voor Redis**.
+1. Selecteer op de pagina **Nieuw** de optie **data bases** en selecteer vervolgens **Azure-cache voor redis**.
    
-   ![Azure-cache selecteren voor Redis](media/redis-cache-create/redis-cache-new-cache-menu.png)
+   ![Azure-cache selecteren voor redis](media/redis-cache-create/redis-cache-new-cache-menu.png)
    
-1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor uw nieuwe cache.
+1. Configureer op de pagina **nieuw redis cache** de instellingen voor de nieuwe cache.
    
    | Instelling      | Voorgestelde waarde  | Beschrijving |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS-naam** | Voer een wereldwijd unieke naam in. | De naam van de cache moet een tekenreeks tussen 1 en 63 tekens zijn die alleen cijfers, letters of koppeltekens bevat. De naam moet beginnen en eindigen met een getal of letter en mag geen opeenvolgende koppeltekens bevatten. De *hostnaam* van uw cache-instantie is * \<de DNS-naam>.redis.cache.windows.net*. | 
-   | **Abonnement** | Deplaats en selecteer uw abonnement. | Het abonnement waaronder deze nieuwe Azure-cache voor bijvoorbeeld Redis kan worden gemaakt. | 
-   | **Resourcegroep** | Val op en selecteer een resourcegroep of selecteer **Nieuw maken** en voer een nieuwe naam van de resourcegroep in. | Naam voor de resourcegroep waarin u uw cache en andere bronnen maken. Door al uw app-bronnen in één resourcegroep te plaatsen, u ze eenvoudig samen beheren of verwijderen. | 
-   | **Locatie** | Zet naar beneden en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die uw cache gebruiken. |
-   | **Prijslaag** | Vervolgkeuzelijst en selecteer een [prijslaag](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](../articles/azure-cache-for-redis/cache-overview.md) voor meer informatie. |
+   | **DNS-naam** | Voer een wereldwijd unieke naam in. | De cache naam moet een teken reeks zijn tussen 1 en 63 tekens die alleen cijfers, letters of afbreek streepjes bevat. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreek streepjes bevatten. De *hostnaam* van uw cache * \<-exemplaar is DNS-naam>. redis.cache.Windows.net*. | 
+   | **Abonnement** | Vervolg keuzelijst en selecteer uw abonnement. | Het abonnement waarmee deze nieuwe Azure-cache voor redis-exemplaar wordt gemaakt. | 
+   | **Resourcegroep** | Vervolg keuzelijst en selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resource groep waarin u uw cache en andere resources wilt maken. Door al uw app-resources in één resource groep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Locatie** | Vervolg keuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die uw cache gebruiken. |
+   | **Prijs categorie** | Vervolg keuzelijst en selecteer een [prijs categorie](https://azure.microsoft.com/pricing/details/cache/). |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](../articles/azure-cache-for-redis/cache-overview.md) voor meer informatie. |
    
 1. Selecteer **Maken**. 
    
    ![ Een Azure-cache voor Redis maken](media/redis-cache-create/redis-cache-cache-create.png) 
    
-   Het duurt een tijdje voor de cache te maken. U de voortgang controleren op de **pagina** Overzicht van Azure Cache for Redis. Wanneer **de status** wordt weergegeven als **Actief,** is de cache klaar voor gebruik.
+   Het duurt even voordat de cache is gemaakt. U kunt de voortgang controleren op de **overzichts** pagina van de Azure-cache voor redis. Wanneer de **status** wordt weer gegeven als **actief**, is de cache klaar voor gebruik.
    
-   ![Azure-cache voor Redis is gemaakt](media/redis-cache-create/redis-cache-cache-created.png)
+   ![Azure-cache voor redis gemaakt](media/redis-cache-create/redis-cache-cache-created.png)
 

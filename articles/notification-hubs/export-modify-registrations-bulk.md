@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs-registraties in bulk exporteren en importeren | Microsoft Documenten
-description: Meer informatie over het gebruik van bulkondersteuning voor Meldingenhubs om een groot aantal bewerkingen uit te voeren op een meldingshub of om alle registraties te exporteren.
+title: Azure-Notification Hubs registraties in bulk exporteren en importeren | Microsoft Docs
+description: Meer informatie over het gebruik van Notification Hubs bulksgewijze ondersteuning voor het uitvoeren van een groot aantal bewerkingen op een notification hub of voor het exporteren van alle registraties.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -15,31 +15,31 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71212396"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs-registraties in bulk exporteren en importeren
-Er zijn scenario's waarin het nodig is om grote aantallen registraties in een meldingshub te maken of te wijzigen. Sommige van deze scenario's zijn tagupdates na batchberekeningen of het migreren van een bestaande push-implementatie om Notification Hubs te gebruiken.
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs-registraties bulksgewijs exporteren en importeren
+Er zijn scenario's waarin het nodig is om grote aantallen registraties te maken of te wijzigen in een notification hub. Enkele van deze scenario's zijn het coderen van updates na batch-berekeningen of het migreren van een bestaande push implementatie om Notification Hubs te gebruiken.
 
-In dit artikel wordt uitgelegd hoe u een groot aantal bewerkingen uitvoert op een meldingshub of hoe u alle registraties in bulk exporteert.
+In dit artikel wordt uitgelegd hoe u een groot aantal bewerkingen op een notification hub uitvoert of alle registraties in bulk exporteert.
 
 ## <a name="high-level-flow"></a>Stroom op hoog niveau
-Batch-ondersteuning is ontworpen om langlopende taken te ondersteunen waarbij miljoenen registraties betrokken zijn. Om deze schaal te bereiken, gebruikt batchondersteuning Azure Storage om taakgegevens en uitvoer op te slaan. Voor bulkupdatebewerkingen moet de gebruiker een bestand maken in een blobcontainer, waarvan de inhoud de lijst is met registratieupdatebewerkingen. Bij het starten van de taak geeft de gebruiker een URL aan de invoerblob, samen met een URL naar een uitvoermap (ook in een blobcontainer). Nadat de taak is gestart, kan de gebruiker de status controleren door een URL-locatie op te vragen die is opgegeven bij het starten van de taak. Een specifieke taak kan alleen bewerkingen van een specifieke soort uitvoeren (maakt, wordt bijgewerkt of verwijderd). Exportbewerkingen worden analoog uitgevoerd.
+Batch ondersteuning is ontworpen ter ondersteuning van langlopende taken waarbij miljoenen registraties worden gebruikt. Om deze schaal te verzorgen, gebruikt batch ondersteuning Azure Storage om taak gegevens en uitvoer op te slaan. De gebruiker is verplicht om een bestand te maken in een BLOB-container, waarvan de inhoud de lijst met registratie-update bewerkingen is. Bij het starten van de taak levert de gebruiker een URL naar de invoer-blob, samen met een URL naar een uitvoermap (ook in een BLOB-container). Nadat de taak is gestart, kan de gebruiker de status controleren door een query uit te zoeken naar een URL-locatie die aan het begin van de taak is gegeven. Een specifieke taak kan alleen bewerkingen uitvoeren van een specifieke soort (maken, bijwerken of verwijderen). Export bewerkingen worden analoog uitgevoerd.
 
 ## <a name="import"></a>Importeren
 
 ### <a name="set-up"></a>Instellen
 In deze sectie wordt ervan uitgegaan dat u de volgende entiteiten hebt:
 
-- Een ingerichte meldingshub.
-- Een Blob-container voor Azure Storage.
-- Verwijzingen naar het [Azure Storage NuGet-pakket](https://www.nuget.org/packages/windowsazure.storage/) en [het NuGet-pakket voor meldingen](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+- Een ingerichte notification hub.
+- Een Azure Storage BLOB-container.
+- Verwijst naar het [Azure Storage NuGet-pakket](https://www.nuget.org/packages/windowsazure.storage/) en het [Notification hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>Invoerbestand maken en opslaan in een blob
-Een invoerbestand bevat een lijst met registraties die in XML zijn geserialiseerd, één per rij. Met de Azure SDK ziet u in het volgende codevoorbeeld hoe u de registraties serialiseren en uploadt naar blobcontainer.
+### <a name="create-input-file-and-store-it-in-a-blob"></a>Invoer bestand maken en opslaan in een BLOB
+Een invoer bestand bevat een lijst met registraties die zijn geserialiseerd in XML, één per rij. In het volgende code voorbeeld van de Azure SDK ziet u hoe u de registraties kunt serialiseren en uploaden naar de BLOB-container.
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -59,10 +59,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> De voorgaande code serialiseert de registraties in het geheugen en uploadt vervolgens de hele stream naar een blob. Als u een bestand van meer dan een paar megabytes hebt geüpload, raadpleegt u de richtlijnen voor Azure-blobs voor het uitvoeren van deze stappen. [blokblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)bijvoorbeeld .
+> Met de voor gaande code worden de registraties in het geheugen gedecodeerd en wordt vervolgens de volledige stream geüpload naar een blob. Als u een bestand van meer dan slechts een paar mega bytes hebt geüpload, raadpleegt u de Azure Blob Guidance voor informatie over het uitvoeren van deze stappen. bijvoorbeeld blok- [blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
 ### <a name="create-url-tokens"></a>URL-tokens maken
-Zodra uw invoerbestand is geüpload, genereert u de URL's die u aan uw meldingshub wilt verstrekken voor zowel het invoerbestand als de uitvoermap. U twee verschillende blobcontainers gebruiken voor invoer en uitvoer.
+Zodra uw invoer bestand is geüpload, genereert u de Url's om uw notification hub te voorzien van het invoer bestand en de uitvoermap. U kunt twee verschillende BLOB-containers gebruiken voor invoer en uitvoer.
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -90,7 +90,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>De taak verzenden
-Met de twee invoer- en uitvoer-URL's u nu de batchtaak starten.
+Met de twee invoer-en uitvoer-Url's kunt u de batch-taak nu starten.
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -115,23 +115,23 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-Naast de url's voor invoer en `NotificationHubJob` uitvoer maakt `JobType` dit voorbeeld een object dat een object bevat, dat een van de volgende typen kan zijn:
+Naast de invoer-en uitvoer-Url's maakt dit voor beeld een `NotificationHubJob` -object dat een `JobType` object bevat. Dit kan een van de volgende typen zijn:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-Zodra het gesprek is voltooid, wordt de taak voortgezet door de meldingshub en u de status ervan controleren met de oproep naar [GetNotificationHubJobAsync.](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet)
+Zodra de aanroep is voltooid, wordt de taak voortgezet door de notification hub en kunt u de status controleren met de aanroep van [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet).
 
-Bij het voltooien van de taak u de resultaten inspecteren door te kijken naar de volgende bestanden in uw uitvoermap:
+Wanneer de taak is voltooid, kunt u de resultaten controleren door de volgende bestanden in de map uitvoermap te bekijken:
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Deze bestanden bevatten de lijst met geslaagde en mislukte bewerkingen van uw batch. De bestandsindeling `.cvs`is , waarin elke rij het regelnummer van het oorspronkelijke invoerbestand heeft, en de uitvoer van de bewerking (meestal de gemaakte of bijgewerkte registratiebeschrijving).
+Deze bestanden bevatten de lijst met geslaagde en mislukte bewerkingen van de batch. De bestands indeling is `.cvs`, waarin elke rij het regel nummer van het oorspronkelijke invoer bestand bevat en de uitvoer van de bewerking (doorgaans de gemaakte of bijgewerkte registratie beschrijving).
 
-### <a name="full-sample-code"></a>Volledige voorbeeldcode
-In de volgende voorbeeldcode worden registraties geïmporteerd in een meldingshub.
+### <a name="full-sample-code"></a>Volledige voorbeeld code
+Met de volgende voorbeeld code worden registraties in een notification hub geïmporteerd.
 
 ```csharp
 using Microsoft.Azure.NotificationHubs;
@@ -262,13 +262,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Exporteren
-De exportregistratie is vergelijkbaar met de invoer, met de volgende verschillen:
+Het exporteren van de registratie is vergelijkbaar met de import, met de volgende verschillen:
 
 - U hebt alleen de uitvoer-URL nodig.
-- U maakt een NotificationHubJob van type ExportRegistrations.
+- U maakt een NotificationHubJob van het type ExportRegistrations.
 
-### <a name="sample-code-snippet"></a>Voorbeeld van voorbeeldcode
-Hier is een voorbeeld code fragment voor het exporteren van registraties in Java:
+### <a name="sample-code-snippet"></a>Voorbeeld code fragment
+Hier volgt een voor beeld van een code fragment voor het exporteren van registraties in Java:
 
 ```java
 // submit an export job
@@ -288,7 +288,7 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over registraties:
+Raadpleeg de volgende artikelen voor meer informatie over registraties:
 
 - [Registratiebeheer](notification-hubs-push-notification-registration-management.md)
 - [Labels voor registraties](notification-hubs-tags-segment-push-message.md)

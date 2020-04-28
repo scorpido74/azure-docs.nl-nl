@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center-incidenten - slimme correlaties van waarschuwingen
-description: In dit onderwerp wordt uitgelegd hoe fusion gebruik maakt van slimme waarschuwingscorrelatie in de cloud om beveiligingsincidenten te genereren in Azure Security Center.
+title: 'Azure Security Center incidenten: slimme correlaties van waarschuwingen'
+description: In dit onderwerp wordt uitgelegd hoe fusie gebruikmaakt van Smart alert-correlatie voor het genereren van beveiligings incidenten in Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,29 +14,29 @@ ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
 ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73686489"
 ---
-# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Correlatie met slimme waarschuwingen in de cloud in Azure Security Center (incidenten)
+# <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center voor de correlatie van de cloud in een andere (incidenten)
 
-Azure Security Center analyseert voortdurend hybride cloudworkloads met behulp van geavanceerde analyses en bedreigingsinformatie om u te waarschuwen voor schadelijke activiteiten.
+Azure Security Center analyseert voortdurend hybride Cloud werkbelastingen door gebruik te maken van geavanceerde analyses en bedreigings informatie om u te waarschuwen over schadelijke activiteiten.
 
-De breedte van de dreiging dekking groeit. De noodzaak om zelfs het geringste compromis te detecteren is belangrijk, en het kan een uitdaging zijn voor beveiligingsanalisten om de verschillende waarschuwingen te triageen en een daadwerkelijke aanval te identificeren. Security Center helpt analisten omgaan met deze alert vermoeidheid. Het helpt bij het diagnosticeren van aanvallen wanneer ze zich voordoen, door verschillende waarschuwingen en low fidelity signalen te correleren in beveiligingsincidenten.
+De omvang van de bedreigings dekking groeit. De nood zaak om te detecteren zelfs het zeer lichte risico is belang rijk en het kan lastig zijn voor beveiligings analisten om de verschillende waarschuwingen te sorteren en een echte aanval te identificeren. Security Center helpt analisten bij het bezorgen van deze waarschuwings vermoeidheid. Het helpt bij het vaststellen van aanvallen wanneer deze optreden, door verschillende waarschuwingen en signalen met lage betrouw baarheid in beveiligings incidenten te correleren.
 
-Fusion analytics is de technologie en analytische back-end die security center-incidenten aandrijft, waardoor het verschillende waarschuwingen en contextuele signalen samen kan correleren. Fusion kijkt naar de verschillende signalen gemeld op een abonnement over de middelen. Fusion vindt patronen die aanvalsprogressie of signalen onthullen met gedeelde contextuele informatie, wat aangeeft dat u een uniforme responsprocedure voor hen moet gebruiken.
+Fusion Analytics is de technologie en analytische back-end die Security Center incidenten overbrengt, waardoor het mogelijk is om verschillende waarschuwingen en contextuele signalen samen te correleren. Fusie bekijkt de verschillende signalen die zijn gerapporteerd voor een abonnement over de resources. Met Fusion vindt u patronen die de voortgang van aanvallen onthullen of signalen met gedeelde contextuele informatie, waarmee wordt aangegeven dat u een uniforme antwoord procedure moet gebruiken.
 
-Fusion analytics combineert kennis van beveiligingsdomeinen met AI om waarschuwingen te analyseren en nieuwe aanvalspatronen te ontdekken wanneer deze zich voordoen. 
+Fusion Analytics combineert de kennis van het beveiligings domein met AI om waarschuwingen te analyseren, waarbij nieuwe aanvals patronen worden gedetecteerd zodra deze optreden. 
 
-Security Center maakt gebruik van MITRE Attack Matrix om waarschuwingen te associëren met hun vermeende intentie, waardoor de kennis van beveiligingsdomeinwordt geformaliseren. Bovendien kan Security Center met behulp van de verzamelde informatie voor elke stap van een aanval activiteiten uitsluiten die stappen van een aanval lijken te zijn, maar dat is het eigenlijk niet.
+Security Center maakt gebruik van MITRE-aanvals matrix om waarschuwingen te koppelen aan hun waargenomen intentie, waardoor de kennis van de beveiliging van het domein wordt formaliseren. Daarnaast kunt u met behulp van de informatie die is verzameld voor elke stap van een aanval, Security Center activiteiten uitvoeren die de stappen van een aanval weer gegeven, maar eigenlijk niet.
 
-Omdat aanvallen vaak voorkomen bij verschillende tenants, kan Security Center AI-algoritmen combineren om aanvalssequenties te analyseren die op elk abonnement worden gerapporteerd. Deze techniek identificeert de aanvalssequenties als heersende waarschuwingspatronen, in plaats van alleen maar met elkaar geassocieerd te worden.
+Omdat aanvallen vaak voor verschillende tenants optreden, kan Security Center AI-algoritmen combi neren voor het analyseren van aanvals reeksen die op elk abonnement worden gerapporteerd. Deze techniek identificeert de aanvals reeksen als bekende waarschuwings patronen, in plaats van alleen incidenteel te koppelen aan elkaar.
 
-Tijdens een onderzoek naar een incident hebben analisten vaak extra context nodig om tot een oordeel te komen over de aard van de dreiging en hoe deze te beperken. Zelfs wanneer bijvoorbeeld een netwerkanomalie wordt gedetecteerd, zonder te begrijpen wat er nog meer gebeurt op het netwerk of met betrekking tot de beoogde bron, is het moeilijk te begrijpen welke acties u vervolgens moet uitvoeren. Om u te helpen, kan een beveiligingsincident artefacten, gerelateerde gebeurtenissen en informatie bevatten. De aanvullende informatie die beschikbaar is voor beveiligingsincidenten varieert, afhankelijk van het type bedreiging dat is gedetecteerd en de configuratie van uw omgeving. 
+Tijdens een onderzoek naar een incident hebben analisten vaak extra context nodig om een verdict te bereiken over de aard van de dreiging en hoe de oplossing kan worden verholpen. Als er bijvoorbeeld een afwijkend netwerk wordt gedetecteerd, zonder te begrijpen wat er gebeurt op het netwerk of met betrekking tot de doel resource, is het moeilijk te weten welke acties u vervolgens moet uitvoeren. Om u te helpen, kan een beveiligings incident artefacten, gerelateerde gebeurtenissen en informatie bevatten. De extra informatie die beschikbaar is voor beveiligings incidenten varieert, afhankelijk van het type bedreiging dat is gedetecteerd en de configuratie van uw omgeving. 
 
-![Schermafbeelding van het gedetecteerde rapport Beveiligingsincident](./media/security-center-alerts-cloud-smart/security-incident.png)
+![Scherm afbeelding van gedetecteerd rapport van beveiligings incident](./media/security-center-alerts-cloud-smart/security-incident.png)
 
-Zie Hoe om te gaan met beveiligingsincidenten in Azure Security Center om beter inzicht te krijgen [in beveiligingsincidenten.](https://docs.microsoft.com/azure/security-center/security-center-incident)
+Zie [beveiligings incidenten afhandelen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident)voor meer informatie over beveiligings incidenten.
 

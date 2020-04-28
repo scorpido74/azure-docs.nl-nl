@@ -1,6 +1,6 @@
 ---
-title: SAP HANA-beschikbaarheid op Azure VM's - Overzicht | Microsoft Documenten
-description: Beschrijft SAP HANA-bewerkingen op Azure native VM's.
+title: Beschik baarheid van SAP HANA op virtuele machines van Azure-overzicht | Microsoft Docs
+description: Hierin worden SAP HANA bewerkingen op Azure native Vm's beschreven.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,60 +16,60 @@ ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71266062"
 ---
-# <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA hoge beschikbaarheid voor Virtuele Azure-machines
+# <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA hoge Beschik baarheid voor virtuele machines van Azure
 
-U tal van Azure-mogelijkheden gebruiken om bedrijfskritieke databases zoals SAP HANA te implementeren op Azure VM's. In dit artikel vindt u richtlijnen voor het bereiken van beschikbaarheid voor SAP HANA-exemplaren die worden gehost in Azure VM's. In het artikel worden verschillende scenario's beschreven die u implementeren door de Azure-infrastructuur te gebruiken om de beschikbaarheid van SAP HANA in Azure te vergroten. 
+U kunt talloze Azure-mogelijkheden gebruiken om essentiële data bases te implementeren, zoals SAP HANA op virtuele machines van Azure. Dit artikel bevat richt lijnen voor het bezorgen van Beschik baarheid voor SAP HANA exemplaren die worden gehost in virtuele machines van Azure. In het artikel worden verschillende scenario's beschreven die u kunt implementeren met behulp van de Azure-infra structuur om de beschik baarheid van SAP HANA in azure te verg Roten. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met de basisbeginselen van Infrastructure as A Service (IaaS) in Azure, waaronder: 
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de basis principes van IaaS (Infrastructure as a Service) in azure, waaronder: 
 
-- Virtuele machines of virtuele netwerken implementeren via de Azure-portal of PowerShell.
-- Met behulp van de Azure cross-platform command-line interface (Azure CLI), inclusief de optie om Json-sjablonen (JavaScript Object Notation) te gebruiken.
+- Virtuele machines of virtuele netwerken implementeren via de Azure Portal of Power shell.
+- Met de Azure platformoverschrijdende opdracht regel interface (Azure CLI), met inbegrip van de optie voor het gebruik van JavaScript Object Notation (JSON)-Sjablonen.
 
-In dit artikel wordt ook ervan uitgegaan dat u bekend bent met het installeren van SAP HANA-exemplaren en met het beheren en beheren van SAP HANA-exemplaren. Het is vooral belangrijk om vertrouwd te zijn met de setup en bewerkingen van HANA-systeemreplicatie. Dit omvat taken zoals back-up en herstel voor SAP HANA-databases.
+In dit artikel wordt ervan uitgegaan dat u bekend bent met het installeren van SAP HANA-instanties en met beheer-en besturings-SAP HANA exemplaren. Het is vooral belang rijk dat u bekend bent met het instellen en uitvoeren van HANA-systeem replicatie. Dit omvat taken als back-up en herstel voor SAP HANA-data bases.
 
 Deze artikelen bieden een goed overzicht van het gebruik van SAP HANA in Azure:
 
-- [Handmatige installatie van SAP HANA met één instantie op Azure VM's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
-- [SAP HANA-systeemreplicatie instellen in Azure VM's](sap-hana-high-availability.md)
+- [Hand matige installatie van SAP HANA met één exemplaar op virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [SAP HANA systeem replicatie in virtuele Azure-machines instellen](sap-hana-high-availability.md)
 - [Back-ups maken van SAP HANA in virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
 
-Het is ook een goed idee om vertrouwd te zijn met deze artikelen over SAP HANA:
+Het is ook een goed idee om vertrouwd te raken met deze artikelen over SAP HANA:
 
-- [Hoge beschikbaarheid voor SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/6d252db7cdd044d19ad85b46e6c294a4.html)
-- [VEELGESTELDE VRAGEN: Hoge beschikbaarheid voor SAP HANA](https://archive.sap.com/documents/docs/DOC-66702)
-- [Systeemreplicatie uitvoeren voor SAP HANA](https://archive.sap.com/documents/docs/DOC-47702)
-- [SAP HANA 2.0 SPS 01 Nieuw: Hoge beschikbaarheid](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/)
-- [Netwerkaanbevelingen voor SAP HANA-systeemreplicatie](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html)
-- [SAP HANA-systeemreplicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
-- [SAP HANA-service automatisch opnieuw opstarten](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
-- [SAP HANA-systeemreplicatie configureren](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
+- [Hoge Beschik baarheid voor SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/6d252db7cdd044d19ad85b46e6c294a4.html)
+- [Veelgestelde vragen: hoge Beschik baarheid voor SAP HANA](https://archive.sap.com/documents/docs/DOC-66702)
+- [Systeem replicatie voor SAP HANA uitvoeren](https://archive.sap.com/documents/docs/DOC-47702)
+- [SAP HANA 2,0 SPS 01 wat is er nieuw: hoge Beschik baarheid](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/)
+- [Netwerk aanbevelingen voor SAP HANA systeem replicatie](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html)
+- [SAP HANA systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
+- [Automatisch opnieuw starten van SAP HANA-service](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
+- [SAP HANA systeem replicatie configureren](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Naast het feit dat u bekend bent met het implementeren van VM's in Azure, raden we u aan [de beschikbaarheid van virtuele Windows-machines in Azure te](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)beheren voordat u uw beschikbaarheidsarchitectuur definieert.
+Naast het implementeren van Vm's in azure, wordt u aangeraden [de beschik baarheid van virtuele Windows-machines in azure te beheren](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)voordat u uw beschikbaarheids architectuur in azure definieert.
 
-## <a name="service-level-agreements-for-azure-components"></a>Serviceniveauovereenkomsten voor Azure-componenten
+## <a name="service-level-agreements-for-azure-components"></a>Service overeenkomst voor Azure-onderdelen
 
-Azure heeft verschillende beschikbaarheidsSLA's voor verschillende componenten, zoals netwerken, opslag en VM's. Alle SLA's zijn gedocumenteerd. Zie [Microsoft Azure Service Level Agreements voor](https://azure.microsoft.com/support/legal/sla/)meer informatie. 
+Azure heeft verschillende beschik baarheids overeenkomsten voor verschillende onderdelen, zoals netwerken, opslag en virtuele machines. Alle service overeenkomsten worden gedocumenteerd. Zie [Microsoft Azure service overeenkomst](https://azure.microsoft.com/support/legal/sla/)voor meer informatie. 
 
-[SLA voor virtuele machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) beschrijft drie verschillende SLA's, voor drie verschillende configuraties:
+In de [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) worden drie verschillende sla's beschreven, voor drie verschillende configuraties:
 
-- Eén VM die [Azure premium SSD's](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) gebruikt voor de OS-schijf en alle gegevensschijven. Deze optie biedt een maandelijkse uptime van 99,9 procent.
-- Meerdere (ten minste twee) VM's die zijn georganiseerd in een [Azure-beschikbaarheidsset.](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) Deze optie biedt een maandelijkse uptime van 99,95 procent.
-- Meerdere (ten minste twee) VM's die zijn georganiseerd in een [Availablity Zone](https://docs.microsoft.com/azure/availability-zones/az-overview). Deze optie voorzag in een maandelijkse uptime van 99,99 procent.
+- Eén virtuele machine die gebruikmaakt van [Azure Premium ssd's](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) voor de besturingssysteem schijf en alle gegevens schijven. Deze optie biedt een maandelijkse uptime van 99,9 procent.
+- Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Deze optie biedt een maandelijkse uptime van 99,95 procent.
+- Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Beschik baarheid zone](https://docs.microsoft.com/azure/availability-zones/az-overview). Met deze optie wordt een maandelijkse uptime van 99,99 procent gegeven.
 
-Meet uw beschikbaarheidsvereiste aan de hand van de SLA's die Azure-componenten kunnen bieden. Kies vervolgens uw scenario's voor SAP HANA om uw vereiste beschikbaarheidsniveau te bereiken.
+Meet uw beschikbaarheids vereisten met betrekking tot de Sla's die Azure-onderdelen kunnen bieden. Kies vervolgens uw scenario's voor SAP HANA om het vereiste niveau van Beschik baarheid te bepalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [sap HANA-beschikbaarheid binnen één Azure-regio](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
-- Meer informatie over [de beschikbaarheid van SAP HANA in Azure-regio's.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
+- Meer informatie over de [Beschik baarheid van SAP Hana binnen een Azure-regio](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
+- Meer informatie over de [Beschik baarheid van SAP Hana in azure-regio's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 
 
 
 

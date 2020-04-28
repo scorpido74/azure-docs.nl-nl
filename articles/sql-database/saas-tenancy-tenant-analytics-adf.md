@@ -1,6 +1,6 @@
 ---
-title: Analysequery's uitvoeren op tenantdatabases
-description: Analysequery's met meerdere tenants met gegevens die zijn geëxtraheerd uit Azure SQL Database, SQL Data Warehouse, Azure Data Factory of Power BI.
+title: Analytics-query's uitvoeren op Tenant databases
+description: Cross-Tenant Analytics-query's met behulp van gegevens die zijn geëxtraheerd uit Azure SQL Database, SQL Data Warehouse, Azure Data Factory of Power BI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -12,253 +12,253 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73816770"
 ---
-# <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>SaaS-analyses verkennen met Azure SQL Database, SQL Data Warehouse, Data Factory en Power BI
+# <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Bekijk SaaS Analytics met Azure SQL Database, SQL Data Warehouse, Data Factory en Power BI
 
-In deze zelfstudie doorloopt u een end-to-end analysescenario. Het scenario laat zien hoe analytics over tenantgegevens softwareleveranciers in staat kan stellen om slimme beslissingen te nemen. Met behulp van gegevens uit elke tenantdatabase gebruikt u analyses om inzicht te krijgen in het gedrag van huurders, inclusief het gebruik van de voorbeeld-Wingtip Tickets SaaS-toepassing. Dit scenario omvat drie stappen: 
+In deze zelf studie gaat u een end-to-end-analyse scenario door lopen. In het scenario ziet u hoe analyse via Tenant gegevens software leveranciers kan stimuleren om slimme beslissingen te nemen. Met behulp van gegevens die zijn geëxtraheerd uit elke Tenant database, gebruikt u Analytics om inzicht te krijgen in het gedrag van de Tenant, inclusief het gebruik van de Wingtip tickets SaaS-toepassing. Dit scenario bestaat uit drie stappen: 
 
-1.  **Haal gegevens** uit elke tenantdatabase naar een analysearchief, in dit geval een SQL Data Warehouse.
-2.  **Optimaliseer de geëxtraheerde gegevens** voor analyseverwerking.
-3.  Gebruik **Business Intelligence-tools** om nuttige inzichten te verzamelen, die de besluitvorming kunnen sturen. 
+1.  Gegevens uit elke Tenant database **extra heren** in een analytische opslag, in dit geval een SQL Data Warehouse.
+2.  **Optimaliseer de geëxtraheerde gegevens** voor analyse verwerking.
+3.  Gebruik hulpprogram ma's voor **bedrijfs informatie** om nuttige inzichten uit te tekenen, waarmee u besluit vorming kunt doen. 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> - Maak de tenant analytics store voor laden.
-> - Gebruik Azure Data Factory (ADF) om gegevens uit elke tenantdatabase te extraheren naar het magazijn voor analysegegevens.
-> - Optimaliseer de geëxtraheerde gegevens (reorganiseren in een sterschema).
-> - Bevraag het magazijn voor analysegegevens.
-> - Gebruik Power BI voor gegevensvisualisatie om trends in tenantgegevens te markeren en aanbevelingte doen voor verbeteringen.
+> - Maak de Tenant-analyse opslag voor het laden van.
+> - Gebruik Azure Data Factory (ADF) om gegevens van elke Tenant database in het Analytics-Data Warehouse te extra heren.
+> - Optimaliseer de geëxtraheerde gegevens (Organiseer opnieuw in een ster schema).
+> - Query's uitvoeren op het Analytics-Data Warehouse.
+> - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te markeren en aanbevelingen te doen voor verbeteringen.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/adf_overview.png)
 
-## <a name="analytics-over-extracted-tenant-data"></a>Analytics over geëxtraheerde tenantgegevens
+## <a name="analytics-over-extracted-tenant-data"></a>Analytics over geëxtraheerde Tenant gegevens
 
-SaaS-toepassingen bevatten een potentieel enorme hoeveelheid tenantgegevens in de cloud. Deze gegevens kunnen een rijke bron van inzichten bieden over de werking en het gebruik van uw toepassing en het gedrag van uw huurders. Deze inzichten kunnen de ontwikkeling van functies, bruikbaarheidsverbeteringen en andere investeringen in de apps en het platform sturen.
+SaaS-toepassingen bevatten een mogelijk grote hoeveelheid Tenant gegevens in de Cloud. Deze gegevens kunnen een uitgebreide bron van inzichten bieden over de werking en het gebruik van uw toepassing, en het gedrag van uw tenants. Met deze inzichten kunt u de ontwikkeling van functies, verbetering van de bruikbaarheid en andere investeringen in de apps en het platform begeleiden.
 
-Toegang tot de gegevens voor alle tenants is eenvoudig wanneer alle gegevens zich in slechts één multi-tenantdatabase bevinden. Maar de toegang is complexer wanneer deze op schaal wordt verdeeld over duizenden databases. Een manier om de complexiteit te temmen is door de gegevens te extraheren naar een analysedatabase of een datawarehouse voor query's.
+Het is eenvoudig om toegang te krijgen tot de gegevens voor alle tenants wanneer alle gegevens zich in slechts één data base met meerdere tenants bevinden. Access is echter ingewik kelder wanneer ze worden gedistribueerd op schaal in duizenden data bases. Een manier om de complexiteit te beheersenen is het extra heren van de gegevens naar een Analytics-Data Base of een Data Warehouse voor query's.
 
-Deze zelfstudie bevat een end-to-end analysescenario voor de Wingtip Tickets-toepassing. Ten eerste wordt [Azure Data Factory (ADF)](../data-factory/introduction.md) gebruikt als orchestration-tool om de verkoop van tickets en gerelateerde gegevens uit elke tenantdatabase te halen. Deze gegevens worden geladen in faseringstabellen in een analysearchief. De analysewinkel kan een SQL-database of een SQL Data Warehouse zijn. Deze zelfstudie gebruikt [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) als analysearchief.
+Deze zelf studie bevat een end-to-end-analyse scenario voor de Wingtip tickets-toepassing. First, [Azure Data Factory (ADF)](../data-factory/introduction.md) wordt gebruikt als het Orchestration-hulp programma voor het uitpakken van kaarten verkoop en gerelateerde gegevens uit elke Tenant database. Deze gegevens worden in een analyse archief geladen in faserings tabellen. Het analyse archief kan een SQL Database of een SQL Data Warehouse zijn. In deze zelf studie wordt [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) gebruikt als het Analytics-archief.
 
-Vervolgens worden de geëxtraheerde gegevens omgezet en geladen in een reeks [sterschematabellen.](https://www.wikipedia.org/wiki/Star_schema) De tabellen bestaan uit een centrale feitentabel plus bijbehorende dimensietabellen:
+Vervolgens worden de geëxtraheerde gegevens getransformeerd en geladen in een set [ster-schema](https://www.wikipedia.org/wiki/Star_schema) tabellen. De tabellen bestaan uit een centrale feiten tabel plus gerelateerde dimensie tabellen:
 
-- De centrale feitentabel in het sterschema bevat ticketgegevens.
-- De dimensietabellen bevatten gegevens over locaties, evenementen, klanten en aankoopdatums.
+- De centrale feiten tabel in het ster schema bevat ticket gegevens.
+- De dimensie tabellen bevatten gegevens over locaties, gebeurtenissen, klanten en aankoop datums.
 
-Samen maken de centrale en dimensietabellen een efficiënte analytische verwerking mogelijk. Het sterschema dat in deze zelfstudie wordt gebruikt, wordt weergegeven in de volgende afbeelding:
+De centrale en dimensie tabellen kunnen samen een efficiënte analyse verwerking hebben. Het ster schema dat in deze zelf studie wordt gebruikt, wordt weer gegeven in de volgende afbeelding:
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/starschematables.JPG)
 
-Ten slotte worden de tabellen met het sterschema opgevraagd. Queryresultaten worden visueel weergegeven met Behulp van Power BI om inzicht in tenantgedrag en het gebruik van de toepassing te markeren. Met dit sterschema voert u query's uit die het als volgt laten zien:
+Ten slotte worden de tabellen van het ster schema opgevraagd. Query resultaten worden visueel weer gegeven met Power BI om inzicht te krijgen in het Tenant gedrag en het gebruik van de toepassing. Met dit ster schema voert u query's uit die beschikbaar zijn:
 
-- Wie koopt tickets en van welke locatie.
+- Wie is verantwoordelijk voor het kopen van tickets en van welke locaties.
 - Patronen en trends in de verkoop van tickets.
 - De relatieve populariteit van elke locatie.
 
-Deze zelfstudie bevat basisvoorbeelden van inzichten die kunnen worden verkregen uit de Gegevens van Wingtip Tickets. Als u begrijpt hoe elke locatie de service gebruikt, kan de wingtip-verkoper ervoor zorgen dat de verkoper van Wingtip Tickets bijvoorbeeld nadenkt over verschillende serviceplannen die zijn gericht op min of meer actieve locaties. 
+In deze zelf studie vindt u eenvoudige voor beelden van inzichten die kunnen worden afgelezen uit de Wingtip tickets-gegevens. Als u wilt weten hoe elke locatie de service gebruikt, kan de leverancier van de Wingtip tickets nadenken over verschillende service plannen die gericht zijn op meer of minder actieve locaties. 
 
 ## <a name="setup"></a>Instellen
 
 ### <a name="prerequisites"></a>Vereisten
 
 > [!NOTE]
-> In deze zelfstudie worden functies van de Azure Data Factory gebruikt die zich momenteel in een beperkte preview bevinden (parameterisatie van gekoppelde service). Als u deze zelfstudie wilt doen, geeft u hier uw abonnements-ID [op.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu) We sturen je een bevestiging zodra je abonnement is ingeschakeld.
+> In deze zelf studie wordt gebruikgemaakt van de functies van de Azure Data Factory die momenteel worden gebruikt in een beperkte preview-versie (gekoppelde service parameterisering). Als u deze zelf studie wilt uitvoeren, geeft u [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu)uw abonnements-id op. We sturen u een bevestiging zodra uw abonnement is ingeschakeld.
 
 Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende vereisten is voldaan:
-- De Wingtip Tickets SaaS Database Per Tenant applicatie wordt geïmplementeerd. Zie [De SaaS-toepassing Wingtip implementeren en verkennen](saas-dbpertenant-get-started-deploy.md)als u deze in minder dan vijf minuten wilt implementeren.
-- De Wingtip Tickets SaaS Database Per Tenant scripts en applicatie [broncode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) worden gedownload van GitHub. Zie downloadinstructies. Zorg ervoor dat *u het zip-bestand deblokkeert* voordat u de inhoud ervan extraheren.
-- Power BI Desktop is geïnstalleerd. [Power BI-bureaublad downloaden](https://powerbi.microsoft.com/downloads/).
-- De partij van extra tenants is ingericht, zie de [**Provision tenants tutorial**](saas-dbpertenant-provision-and-catalog.md).
+- De Wingtip tickets SaaS-data base per Tenant toepassing wordt geïmplementeerd. Zie [de Wingtip SaaS-toepassing implementeren en verkennen](saas-dbpertenant-get-started-deploy.md)om in minder dan vijf minuten te implementeren.
+- De Wingtip tickets SaaS-data base per Tenant scripts en toepassings [bron code](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) worden gedownload van github. Zie Download instructies. Zorg ervoor dat u *het zip-bestand deblokkeren* voordat u de inhoud uitpakt.
+- Power BI Desktop is geïnstalleerd. [Down load Power bi Desktop](https://powerbi.microsoft.com/downloads/).
+- De batch met aanvullende tenants is ingericht. Raadpleeg de [**zelf studie voor het inrichten van tenants**](saas-dbpertenant-provision-and-catalog.md).
 
 ### <a name="create-data-for-the-demo"></a>Gegevens maken voor de demo
 
-Deze zelfstudie onderzoekt analyses over de gegevens over de kaartverkoop. In deze stap genereert u ticketgegevens voor alle huurders. In een latere stap worden deze gegevens geëxtraheerd voor analyse. _Zorg ervoor dat u de batch van huurders_ (zoals eerder beschreven) hebt ingericht, zodat u over voldoende gegevens beschikt om een reeks verschillende aankooppatronen voor tickets bloot te leggen.
+In deze zelf studie worden de verkoop gegevens van Analytics over ticket verkend. In deze stap genereert u ticket gegevens voor alle tenants. In een latere stap worden deze gegevens geëxtraheerd voor analyse. _Zorg ervoor dat u de batch met tenants hebt ingericht_ (zoals eerder beschreven), zodat u over voldoende gegevens beschikt om een aantal verschillende inkopende patronen voor tickets beschikbaar te maken.
 
-1. Open in PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*en stel de volgende waarde in:
-    - **$DemoScenario** = **1** Koop tickets voor evenementen op alle locaties
-2. Druk op **F5** om het script uit te voeren en maak de aankoopgeschiedenis van tickets voor alle locaties. Met 20 huurders genereert het script tienduizenden tickets en kan het 10 minuten of langer duren.
+1. Open *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*in Power shell ISE en stel de volgende waarde in:
+    - **$DemoScenario** = **1** koop tickets voor gebeurtenissen op alle locaties
+2. Druk op **F5** om het script uit te voeren en een ticket-inkoop geschiedenis te maken voor alle locaties. Met 20 tenants genereert het script tien duizenden tickets en kan dit 10 minuten of langer duren.
 
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>SQL Data Warehouse, Data Factory en Blob Storage implementeren 
-In de Wingtip Tickets-app worden de transactionele gegevens van de tenants over veel databases verspreid. Azure Data Factory (ADF) wordt gebruikt om het extract, de belasting en de transformatie (ELT) van deze gegevens te orkestreren in het gegevensmagazijn. Als u gegevens zo efficiënt mogelijk wilt laden in SQL Data Warehouse, haalt ADF gegevens uit in tussenliggende blobbestanden en gebruikt het [polybase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) vervolgens om de gegevens in het gegevensmagazijn te laden.   
+In de Wingtip tickets-app worden de transactionele gegevens van de tenants gedistribueerd over veel data bases. Azure Data Factory (ADF) wordt gebruikt om de extract, Load en Transform (ELT) van deze gegevens in het Data Warehouse te organiseren. Voor het laden van gegevens naar SQL Data Warehouse meest efficiënte, laadt ADF gegevens naar tussenliggende BLOB-bestanden en gebruikt [poly base](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) om de gegevens in het Data Warehouse te laden.   
 
-In deze stap implementeert u de extra resources die worden gebruikt in de zelfstudie: een SQL Data Warehouse genaamd _tenantanalytics_, een Azure Data Factory genaamd _dbtodwload-gebruiker\<\>_ en een Azure-opslagaccount genaamd _wingtipstaging-gebruiker.\<\>_ Het opslagaccount wordt gebruikt om geëxtraheerde gegevensbestanden tijdelijk als blobs vast te houden voordat ze in het gegevensmagazijn worden geladen. Met deze stap wordt ook het schema voor gegevensmagazijnen geïmplementeerd en worden de ADF-pijplijnen gedefinieerd die het ELT-proces orkestreren.
-1. Open in PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* en stel in:
-    - **$DemoScenario** = **2** Tenant analytics data warehouse, blob storage en data factory implementeren 
-1. Druk op **F5** om het demoscript uit te voeren en implementeer de Azure-resources. 
+In deze stap implementeert u de extra resources die worden gebruikt in de zelf studie: een SQL data warehouse met de naam _tenantanalytics_, een Azure Data Factory met de naam _dbtodwload-\<\>gebruiker_en een Azure-opslag account met de naam _wingtipstaging\<gebruiker\>_. Het opslag account wordt gebruikt voor het tijdelijk vasthouden van geëxtraheerde gegevens bestanden als blobs voordat ze in het Data Warehouse worden geladen. Met deze stap wordt ook het Data Warehouse-schema geïmplementeerd en worden de ADF-pijp lijnen gedefinieerd waarmee het ELT-proces wordt georganiseerd.
+1. Open in Power shell ISE *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* en stel het volgende in:
+    - **$DemoScenario** = **2** Tenant Analytics-Data Warehouse, Blob-opslag en Data Factory implementeren 
+1. Druk op **F5** om het demo script uit te voeren en de Azure-resources te implementeren. 
 
 Bekijk nu de Azure-resources die u hebt geïmplementeerd:
-#### <a name="tenant-databases-and-analytics-store"></a>Tenantdatabases en analysewinkel
-Gebruik [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1-dpt-&lt;gebruikers-&gt; ** en **catalogus-dpt-gebruikersservers.&lt;&gt; ** Vervang &lt;&gt; de gebruiker door de waarde die wordt gebruikt toen u de app hebt geïmplementeerd. Login = *ontwikkelaar* en wachtwoord = *P\@zwaard1 gebruiken*. Zie de [inleidende zelfstudie](saas-dbpertenant-wingtip-app-overview.md) voor meer begeleiding.
+#### <a name="tenant-databases-and-analytics-store"></a>Tenant databases en analyse opslag
+Gebruik [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken met **tenants1-&lt;dpt&gt; -gebruikers** -en **catalogus&lt;-&gt; dpt-gebruikers** servers. Vervang &lt;de&gt; gebruiker door de waarde die wordt gebruikt bij het implementeren van de app. Gebruik aanmelden = *ontwikkel aars* en wacht woord = *P\@ssword1*. Raadpleeg de [inleidende zelf studie](saas-dbpertenant-wingtip-app-overview.md) voor meer informatie.
 
-![Verbinding maken met SQL Database-server vanuit SSMS](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
+![Verbinding maken met SQL Database Server vanuit SSMS](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
-In de Object Verkenner:
+In de Objectverkenner:
 
-1. Vouw de *server van&lt;tenants1-dpt- uit.&gt; *
-1. Vouw het knooppunt Databases uit en bekijk de lijst met tenantdatabases.
-1. Vouw de *server voor&lt;&gt; dpt-gebruikers uit.*
-1. Controleer of u het analysearchief ziet met de volgende objecten:
-    1. Tabellen **raw_Tickets,** **raw_Customers,** **raw_Events** en **raw_Venues** bevatten onbewerkte geëxtraheerde gegevens uit de tenantdatabases.
-    1. De tabellen van het sterschema worden **fact_Tickets,** **dim_Customers,** **dim_Venues,** **dim_Events**en **dim_Dates**.
-    1. De opgeslagen procedure, **sp_transformExtractedData** wordt gebruikt om de gegevens om te zetten en te laden in de ster-schema tabellen.
+1. Vouw de *tenants1-dpt-&lt;User&gt; * server uit.
+1. Vouw het knoop punt data bases uit en Bekijk de lijst met Tenant databases.
+1. Vouw de *catalogus-dpt-&lt;gebruikers&gt; * server uit.
+1. Controleer of u de Analytics Store ziet met de volgende objecten:
+    1. Tabellen **raw_Tickets**, **raw_Customers**, **raw_Events** en **raw_Venues** onbewerkte gegevens uit de Tenant databases bevatten.
+    1. De tabellen in het ster schema zijn **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
+    1. De opgeslagen procedure **sp_transformExtractedData** wordt gebruikt om de gegevens te transformeren en te laden in de ster-schema tabellen.
 
 ![DWtables](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob Storage
-1. Navigeer in de [Azure Portal](https://ms.portal.azure.com)naar de brongroep die u hebt gebruikt voor het implementeren van de toepassing. Controleer of een opslagaccount genaamd **wingtipstaging-gebruiker\<\> ** is toegevoegd.
+1. Ga in [Azure Portal](https://ms.portal.azure.com)naar de resource groep die u hebt gebruikt voor het implementeren van de toepassing. Controleer of er een opslag account met de naam **wingtipstaging\<gebruiker\> ** is toegevoegd.
 
    ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
-1. Klik op het account voor gebruikersopslag van **wingtipstaging\<\> ** om de aanwezige objecten te verkennen.
-1. Klik op de tegel **Klodders**
-1. Klik op de **containerconfigfile**
-1. Controleer of **configfile** een JSON-bestand bevat met de naam **TableConfig.json**. Dit bestand bevat de namen van de bron- en doeltabel, kolomnamen en de naam van de trackerkolom.
+1. Klik **op\<wingtipstaging\> gebruikers** opslag account om de aanwezige objecten te verkennen.
+1. Klik op de tegel **blobs**
+1. Klik op de container **configfile**
+1. Controleer of **configfile** een JSON-bestand met de naam **TableConfig. json**bevat. Dit bestand bevat de namen van de bron-en doel tabel, kolom namen en de naam van de tracker-kolom.
 
-#### <a name="azure-data-factory-adf"></a>Azure-gegevensfabriek (ADF)
-Controleer in de [Azure Portal](https://ms.portal.azure.com) in de brongroep of er een Azure Data Factory is toegevoegd die _\<dbtodwload-gebruiker\> _ wordt genoemd. 
+#### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
+Controleer in [Azure Portal](https://ms.portal.azure.com) in de resource groep of een Azure Data Factory met de naam _dbtodwload\<\> _ is toegevoegd. 
 
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
-In dit gedeelte wordt de gemaakte gegevensfabriek onderzocht. Volg de onderstaande stappen om de gegevensfabriek te starten:
-1. Klik in de portal op de gegevensfabriek genaamd **dbtodwload-user.\<\>**
-2. Klik **op & tegel Monitor maken** om de ontwerper van gegevensfabriek in een apart tabblad te starten. 
+In deze sectie worden de data factory gemaakt. Volg de onderstaande stappen om de data factory te starten:
+1. Klik in de portal op de data factory **met de naam\<dbtodwload\>-gebruiker**.
+2. Klik op de tegel **& monitor** om de Data Factory Designer op een afzonderlijk tabblad te openen. 
 
-## <a name="extract-load-and-transform-data"></a>Gegevens extraheren, laden en transformeren
-Azure Data Factory wordt gebruikt voor het orkestreren van extractie, laden en transformatie van gegevens. In deze zelfstudie haalt u gegevens uit vier verschillende SQL-weergaven uit elk van de tenantdatabases: **rawTickets,** **rawCustomers,** **rawEvents**en **rawVenues**. Deze weergaven omvatten locatie-id, zodat u gegevens van elke locatie in het gegevensmagazijn discrimineren. De gegevens worden geladen in overeenkomstige faseringstabellen in het gegevensmagazijn: **raw_Tickets**, **raw_customers**, **raw_Events** en **raw_Venue**. Een opgeslagen procedure transformeert vervolgens de ruwe gegevens en vult de tabellen voor het sterschema: **fact_Tickets**, **dim_Customers,** **dim_Venues**, **dim_Events**en **dim_Dates**.
+## <a name="extract-load-and-transform-data"></a>Gegevens uitpakken, laden en transformeren
+Azure Data Factory wordt gebruikt voor het organiseren van extractie, het laden en het transformeren van gegevens. In deze zelf studie haalt u gegevens op uit vier verschillende SQL-weer gaven van elk van de Tenant databases: **rawTickets**, **rawCustomers**, **rawEvents**en **rawVenues**. Deze weer gaven bevatten de locatie-id, zodat u gegevens kunt van elke locatie in het Data Warehouse. De gegevens worden geladen in de bijbehorende faserings tabellen in het Data Warehouse: **raw_Tickets**, **raw_customers**, **raw_Events** en **raw_Venue**. In een opgeslagen procedure worden de onbewerkte gegevens getransformeerd en worden de ster-schema tabellen ingevuld: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**en **dim_Dates**.
 
-In de vorige sectie hebt u de benodigde Azure-resources geïmplementeerd en geïnitialiseerd, inclusief de gegevensfabriek. De geïmplementeerde gegevensfabriek omvat de pijplijnen, gegevenssets, gekoppelde services, enz., die nodig zijn om de tenantgegevens te extraheren, te laden en te transformeren. Laten we deze objecten verder verkennen en vervolgens de pijplijn activeren om gegevens van tenantdatabases naar het gegevensmagazijn te verplaatsen.
+In de vorige sectie hebt u de benodigde Azure-resources geïmplementeerd en geïnitialiseerd, met inbegrip van de data factory. De geïmplementeerde data factory omvat de pijp lijnen, gegevens sets, gekoppelde services, enzovoort, die vereist zijn om de Tenant gegevens uit te pakken, te laden en te transformeren. Laten we deze objecten verder verkennen en vervolgens de pijp lijn activeren om gegevens van Tenant databases naar het Data Warehouse te verplaatsen.
 
-### <a name="data-factory-pipeline-overview"></a>Overzicht van gegevensfabriekspijplijn
-In dit gedeelte worden de objecten onderzocht die in de gegevensfabriek zijn gemaakt. In de volgende afbeelding wordt de algemene werkstroom van de ADF-pijplijn beschreven die in deze zelfstudie wordt gebruikt. Als u de pijplijn later wilt verkennen en eerst de resultaten wilt bekijken, gaat u naar de volgende sectie **Trigger the pipeline run**.
+### <a name="data-factory-pipeline-overview"></a>Overzicht van Data Factory-pijp lijn
+In deze sectie vindt u een onderzoek van de objecten die zijn gemaakt in de data factory. In de volgende afbeelding wordt de algehele werk stroom van de ADF-pijp lijn beschreven die in deze zelf studie wordt gebruikt. Als u de pijp lijn later wilt verkennen en de resultaten eerst wilt bekijken, gaat u naar de volgende sectie **activeren van de pijplijn uitvoering**.
 
 ![adf_overview](media/saas-tenancy-tenant-analytics/adf-data-factory.PNG)
 
-Ga op de [overzichtspagina](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) over naar het tabblad **Auteur** in het linkerdeelvenster en kijk dat er drie pijplijnen en drie [gegevenssets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) zijn gemaakt.
+Ga op de pagina overzicht naar het tabblad **Auteur** in het linkerdeel venster en kijk of er drie [pijp lijnen](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) en drie [gegevens sets](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) zijn gemaakt.
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-De drie geneste pijplijnen zijn: SQLDBToDW, DBCopy en TableCopy.
+De drie geneste pijp lijnen zijn: SQLDBToDW, DBCopy en TableCopy.
 
-**Pipeline 1 - SQLDBToDW** zoekt de namen op van de tenantdatabases die zijn opgeslagen in de catalogusdatabase (tabelnaam: [__ShardManagement].[ ShardsGlobal]) en voor elke tenantdatabase wordt de **DBCopy-pijplijn** uitgevoerd. Na voltooiing wordt het meegeleverde **sp_TransformExtractedData** opgeslagen procedureschema uitgevoerd. Met deze opgeslagen procedure worden de geladen gegevens in de faseringstabellen getransformeerd en worden de tabellen voor sterschema's gevuld.
+**Pijp lijn 1-SQLDBToDW** zoekt de namen van de Tenant databases op die zijn opgeslagen in de catalogus database (tabel naam: [__ShardManagement]. [ ShardsGlobal]) en voor elke Tenant database voert de **DBCopy** -pijp lijn uit. Wanneer het is voltooid, wordt het gegeven **sp_TransformExtractedData** opgeslagen procedure schema uitgevoerd. Met deze opgeslagen procedure worden de geladen gegevens in de faserings tabellen getransformeerd en worden de ster-schema tabellen ingevuld.
 
-**Pipeline 2 - DBCopy** zoekt de namen van de brontabellen en kolommen op uit een configuratiebestand dat is opgeslagen in blobopslag.  De **TableCopy-pijplijn** wordt vervolgens uitgevoerd voor elk van de vier tabellen: TicketFacts, CustomerFacts, EventFacts en VenueFacts. De **[Foreach-activiteit](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** wordt parallel uitgevoerd voor alle 20 databases. ADF maakt het mogelijk om maximaal 20 lusiteraties parallel uit te voeren. Overweeg meerdere pijplijnen te maken voor meer databases.    
+**Pijp lijn 2-DBCopy** zoekt de namen van de bron tabellen en kolommen op uit een configuratie bestand dat is opgeslagen in Blob Storage.  De **TableCopy** -pijp lijn wordt vervolgens uitgevoerd voor elk van de vier tabellen: TicketFacts, CustomerFacts, EventFacts en VenueFacts. De **[foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** -activiteit wordt parallel uitgevoerd voor alle 20 data bases. Bij ADF kunnen Maxi maal 20 loop-iteraties parallel worden uitgevoerd. Overweeg meerdere pijp lijnen te maken voor meer data bases.    
 
-**Pijplijn 3 - TableCopy** gebruikt rijversienummers in SQL Database _(rowversion)_ om rijen te identificeren die zijn gewijzigd of bijgewerkt. Met deze activiteit wordt de begin- en eindrijversie opgezocht voor het extraheren van rijen uit de brontabellen. De **CopyTracker-tabel** die in elke tenantdatabase is opgeslagen, houdt de laatste rij bij die uit elke brontabel in elke run is geëxtraheerd. Nieuwe of gewijzigde rijen worden gekopieerd naar de bijbehorende faseringstabellen in het gegevensmagazijn: **raw_Tickets,** **raw_Customers**, **raw_Venues**en **raw_Events**. Ten slotte wordt de laatste rijversie opgeslagen in de **CopyTracker-tabel** om te worden gebruikt als de eerste rijversie voor de volgende extractie. 
+**Pijp lijn 3-TableCopy** gebruikt rij-versie nummers in SQL database (_rowversion_) om rijen te identificeren die zijn gewijzigd of bijgewerkt. Deze activiteit zoekt naar de begin-en eind versie van de rij voor het extra heren van rijen uit de bron tabellen. De **CopyTracker** -tabel die is opgeslagen in elke Tenant database, houdt de laatste rij bij die is geëxtraheerd uit elke bron tabel in elke uitvoering. Nieuwe of gewijzigde rijen worden gekopieerd naar de bijbehorende faserings tabellen in het Data Warehouse: **raw_Tickets**, **raw_Customers**, **raw_Venues**en **raw_Events**. Ten slotte wordt de laatste rij-versie opgeslagen in de **CopyTracker** -tabel die moet worden gebruikt als de eerste rij-versie voor de volgende extractie. 
 
-Er zijn ook drie geparameteriseerde gekoppelde services die de gegevensfabriek koppelen aan de bron SQL-databases, het doelSQL-gegevensmagazijn en de tussentijdse Blob-opslag. Klik op het tabblad **Auteur** op **Verbindingen** om de gekoppelde services te verkennen, zoals in de volgende afbeelding wordt weergegeven:
+Er zijn ook drie para meters gekoppelde services die de data factory koppelen aan de SQL-bron database, het doel SQL Data Warehouse en de tussenliggende Blob-opslag. Klik op het tabblad **Auteur** op **verbindingen** om de gekoppelde services te verkennen, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![adf_linkedservices](media/saas-tenancy-tenant-analytics/linkedservices.JPG)
 
-Als aanvulling op de drie gekoppelde services, zijn er drie gegevenssets die verwijzen naar de gegevens die u in de pijplijnactiviteiten gebruikt als invoer of uitvoer. Bekijk elk van de gegevenssets om de gebruikte verbindingen en parameters te observeren. _AzureBlob_ wijst naar het configuratiebestand met bron- en doeltabellen en -kolommen, evenals naar de trackerkolom in elke bron.
+Met betrekking tot de drie gekoppelde services zijn er drie gegevens sets die verwijzen naar de gegevens die u in de pijplijn activiteiten gebruikt als invoer of uitvoer. Verken elk gegevens sets om verbindingen en gebruikte para meters te observeren. _AzureBlob_ verwijst naar het configuratie bestand dat de bron-en doel tabellen en kolommen bevat, evenals de kolom tracker in elke bron.
   
-### <a name="data-warehouse-pattern-overview"></a>Overzicht van gegevensmagazijnen
-SQL Data Warehouse wordt gebruikt als analysearchief om aggregatie uit te voeren op de tenantgegevens. In dit voorbeeld wordt PolyBase gebruikt om gegevens in het SQL Data-magazijn te laden. Ruwe gegevens worden geladen in faseringstabellen met een identiteitskolom om rijen bij te houden die zijn omgezet in de tabellen met sterschema's. De volgende afbeelding toont ![het laadpatroon: laadpatroon](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
+### <a name="data-warehouse-pattern-overview"></a>Overzicht van het Data Warehouse-patroon
+SQL Data Warehouse wordt gebruikt als de analytische opslag voor het uitvoeren van aggregatie op de gegevens van de Tenant. In dit voor beeld wordt poly base gebruikt voor het laden van gegevens in SQL Data Warehouse. Onbewerkte gegevens worden in faserings tabellen geladen die een identiteits kolom hebben voor het bijhouden van rijen die zijn getransformeerd naar de ster-schema tabellen. De volgende afbeelding toont het laad patroon: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-In dit voorbeeld worden scd-dimensietabellen (SCD) langzaam wijzigen gebruikt. Elke dimensie heeft een surrogaatsleutel gedefinieerd met behulp van een identiteitskolom. Als aanbevolen praktijk is de tabel datumdimensie vooraf ingevuld om tijd te besparen. Voor de andere dimensietabellen wordt een TABEL MAKEN ALS SELECTEREN... (CTAS) instructie wordt gebruikt om een tijdelijke tabel met de bestaande gewijzigde en niet-gewijzigde rijen, samen met de surrogaat sleutels. Dit gebeurt met IDENTITY_INSERT=ON. Nieuwe rijen worden vervolgens ingevoegd in de tabel met IDENTITY_INSERT=UIT. Voor eenvoudige terugdraaiing wordt de bestaande dimensietabel hernoemd en wordt de tijdelijke tabel omgedoopt tot de nieuwe dimensietabel. Voor elke run wordt de oude dimensietabel verwijderd.
+Langzaam veranderende dimensie (SCD) type 1 dimensie tabellen worden gebruikt in dit voor beeld. Elke dimensie heeft een surrogaat sleutel die is gedefinieerd met behulp van een identiteits kolom. Als best practice is de datum dimensie tabel vooraf ingevuld om tijd te besparen. Voor de andere dimensie tabellen, een CREATE TABLE als selecteren... (CTAS) wordt gebruikt voor het maken van een tijdelijke tabel die de bestaande gewijzigde en niet-gewijzigde rijen bevat, samen met de surrogaat sleutels. Dit wordt gedaan met IDENTITY_INSERT = op. Nieuwe rijen worden vervolgens ingevoegd in de tabel met IDENTITY_INSERT = uit. Voor een gemakkelijk terugdraaien wordt de naam van de bestaande dimensie tabel gewijzigd en wordt de naam van de tijdelijke tabel gewijzigd in de nieuwe dimensie tabel. Voor elke uitvoering wordt de oude dimensie tabel verwijderd.
 
-Dimensietabellen worden geladen vóór de feitentabel. Deze volgorde zorgt ervoor dat voor elk aankomend feit al alle genoemde dimensies bestaan. Als de feiten worden geladen, wordt de zakelijke sleutel voor elke overeenkomstige dimensie geëvenaard en worden de bijbehorende surrogaatsleutels aan elk feit toegevoegd.
+Dimensie tabellen worden vóór de feiten tabel geladen. Deze volg orde zorgt ervoor dat alle dimensies waarnaar wordt verwezen al bestaan voor elk nakomend feit. Wanneer de feiten worden geladen, wordt de bedrijfs sleutel voor elke overeenkomende dimensie vergeleken en worden de bijbehorende surrogaat sleutels aan elk feit toegevoegd.
 
-De laatste stap van de transformatie verwijdert de faseringsgegevens die klaar zijn voor de volgende uitvoering van de pijplijn.
+De laatste stap van de trans formatie verwijdert de faserings gegevens die gereed zijn voor de volgende uitvoering van de pijp lijn.
    
-### <a name="trigger-the-pipeline-run"></a>De pijplijnrun activeren
-Volg de onderstaande stappen om de volledige pijplijn voor het extraheren, laden en transformeren voor alle tenantdatabases uit te voeren:
-1. Selecteer **SQLDBToDW-pijplijn** in het linkerdeelvenster op het tabblad **Auteur van** de ADF-gebruikersinterface.
-1. Klik **op Trigger** en klik in het menu omlaag getrokken op Nu **activeren**. Met deze actie wordt de pijplijn onmiddellijk uitgevoerd. In een productiescenario definieert u een tijdschema voor het uitvoeren van de pijplijn om de gegevens op een planning te vernieuwen.
+### <a name="trigger-the-pipeline-run"></a>De pijplijn uitvoering activeren
+Volg de onderstaande stappen om de pijp lijn volledige uitpakken, laden en transformeren uit te voeren voor alle Tenant databases:
+1. Op het tabblad **Auteur** van de gebruikers interface van ADF selecteert u **SQLDBToDW** -pijp lijn in het linkerdeel venster.
+1. Klik op **trigger** en klik in het menu omlaag op **nu activeren**. Met deze actie wordt de pijp lijn onmiddellijk uitgevoerd. In een productie scenario definieert u een tijd schema voor het uitvoeren van de pijp lijn voor het vernieuwen van de gegevens op basis van een schema.
   ![adf_trigger](media/saas-tenancy-tenant-analytics/adf_trigger.JPG)
-1. Klik op de pagina **Pijplijnrun** op **Voltooien**.
+1. Klik op de pagina **pijplijn uitvoering** op **volt ooien**.
  
 ### <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
-1. Schakel in de ADF-gebruikersinterface over naar het tabblad **Monitor** in het menu aan de linkerkant.
-1. Klik **op Vernieuwen** totdat de status van SQLDBToDW-pijplijn is **geslaagd.**
+1. In de gebruikers interface van ADF gaat u naar het tabblad **monitor** in het menu aan de linkerkant.
+1. Klik op **vernieuwen** totdat de status van de SQLDBToDW-pijp lijn is **geslaagd**.
   ![adf_monitoring](media/saas-tenancy-tenant-analytics/adf_monitoring.JPG)
-1. Maak verbinding met het gegevensmagazijn met SSMS en query de sterschematabellen om te controleren of de gegevens in deze tabellen zijn geladen.
+1. Maak verbinding met het data warehouse met SSMS en zoek de tabellen in het ster schema om te controleren of de gegevens in deze tabellen zijn geladen.
 
-Zodra de pijplijn is voltooid, bevat de feitentabel ticketverkoopgegevens voor alle locaties en worden de dimensietabellen gevuld met de bijbehorende locaties, evenementen en klanten.
+Zodra de pijp lijn is voltooid, bevat de feiten tabel ticket verkoop gegevens voor alle locaties en worden de dimensie tabellen gevuld met de overeenkomstige locaties, gebeurtenissen en klanten.
 
-## <a name="data-exploration"></a>Gegevensverkenning
+## <a name="data-exploration"></a>Gegevens verkennen
 
-### <a name="visualize-tenant-data"></a>Tenantgegevens visualiseren
+### <a name="visualize-tenant-data"></a>Tenant gegevens visualiseren
 
-De gegevens in het sterschema bieden alle ticketverkoopgegevens die nodig zijn voor uw analyse. Door gegevens grafisch te visualiseren, u trends in grote gegevenssets gemakkelijker bekijken. In deze sectie gebruikt u **Power BI** om de tenantgegevens in het gegevensmagazijn te manipuleren en te visualiseren.
+De gegevens in het ster schema bevatten alle verkoop gegevens van tickets die nodig zijn voor uw analyse. Door gegevens grafisch te visualiseren, kunt u sneller trends in grote gegevens sets bekijken. In deze sectie gebruikt u **Power bi** om de Tenant gegevens in het Data Warehouse te bewerken en visualiseren.
 
-Gebruik de volgende stappen om verbinding te maken met Power BI en de weergaven te importeren die u eerder hebt gemaakt:
+Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer gaven te importeren die u eerder hebt gemaakt:
 
-1. Start Power BI-bureaublad.
-2. Selecteer op het lint Start de optie **Gegevens ophalen**en selecteer **Meer...** van het menu.
-3. Selecteer **Azure SQL Database**in het venster Gegevens **opdoen** .
-4. Voer in het aanmeldingsvenster van de database uw servernaam in **(catalogus-dpt-&lt;&gt;Gebruiker .database.windows.net**). Selecteer **Importeren** voor **de modus Gegevensconnectiviteit**en klik op **OK**. 
+1. Start Power BI bureau blad.
+2. Selecteer op het lint start de optie **gegevens ophalen**en selecteer **meer...** in het menu.
+3. Selecteer **Azure SQL database**in het venster **gegevens ophalen** .
+4. Voer in het venster Data Base-aanmeldingen de naam van uw server in (**Catalog-dpt-&lt;&gt;User. database.Windows.net**). Selecteer **importeren** voor de **gegevens connectiviteits modus**en klik vervolgens op **OK**. 
 
-    ![aan-in-naar-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
+    ![aanmelden bij Power bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Selecteer **Database** in het linkerdeelvenster en voer vervolgens de gebruikersnaam in = *ontwikkelaar*en voer wachtwoord in = *\@P zwaard1*. Klik op **Verbinden**.  
+5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord *=\@P ssword1*in. Klik op **Verbinden**.  
 
-    ![database-aanmelding](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![data base-aanmelden](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. Selecteer in het deelvenster **Navigator** onder de analysedatabase de tabellen met het sterschema: **fact_Tickets,** **dim_Events,** **dim_Venues,** **dim_Customers** en **dim_Dates**. Selecteer vervolgens **Laden**. 
+6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** en **dim_Dates**. Selecteer vervolgens **laden**. 
 
-Gefeliciteerd! U hebt de gegevens in Power BI geladen. Ontdek nu interessante visualisaties om inzicht te krijgen in uw huurders. Laten we eens kijken hoe analytics een aantal gegevensgestuurde aanbevelingen kan bieden aan het businessteam van Wingtip Tickets. De aanbevelingen kunnen helpen om het bedrijfsmodel en de klantervaring te optimaliseren.
+Gefeliciteerd! De gegevens zijn geladen in Power BI. Bekijk nu interessante visualisaties om inzicht te krijgen in uw tenants. Laten we eens kijken hoe analyses een aantal gegevensgestuurde aanbevelingen kan bieden aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
 
-Begin met het analyseren van ticketverkoopgegevens om de variatie in gebruik tussen de locaties te zien. Selecteer de opties in Power BI om een staafdiagram te plotten van het totale aantal tickets dat per locatie wordt verkocht. (Als gevolg van willekeurige variatie in de ticketgenerator kunnen uw resultaten anders zijn.)
+Begin met het analyseren van de verkoop gegevens van het ticket om de variatie in het gebruik over de locaties te bekijken. Selecteer de opties in Power BI om een staaf diagram af te zetten van het totale aantal tickets dat door elke locatie wordt verkocht. (Vanwege wille keurige variatie in de ticket generator, kunnen de resultaten afwijken.)
  
-![TotalTicketsByVenues TotalTicketsByVenues TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues-DW.PNG)
+![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues-DW.PNG)
 
-Het voorgaande plot bevestigt dat het aantal tickets dat per locatie wordt verkocht, varieert. Locaties die meer tickets verkopen, gebruiken uw service zwaarder dan locaties die minder tickets verkopen. Er kan hier een mogelijkheid zijn om de toewijzing van resources af te stemmen op basis van verschillende tenantbehoeften.
+In het voor gaande waarnemings punt wordt bevestigd dat het aantal tickets dat door elke locatie wordt verkocht, varieert. Locaties waarbij meer tickets worden verkocht, maken gebruik van uw service meer sterk dan locaties die minder tickets verkopen. Er is mogelijk een kans om de toewijzing van resources aan te passen op basis van de verschillende behoeften van de Tenant.
 
-U de gegevens verder analyseren om te zien hoe de kaartverkoop in de loop van de tijd varieert. Selecteer de opties in de volgende afbeelding in Power BI om het totale aantal verkochte tickets per dag voor een periode van 60 dagen in kaart te brengen.
+U kunt de gegevens verder analyseren om te zien hoe de ticket omzet gedurende een periode verschilt. Selecteer de opties die worden weer gegeven in de volgende afbeelding in Power BI om het totale aantal tickets te zetten dat elke dag gedurende een periode van 60 dagen is verkocht.
  
 ![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate-DW.PNG)
 
-De voorgaande grafiek laat zien dat de kaartverkoop piek voor sommige locaties. Deze pieken versterken het idee dat sommige locaties mogelijk onevenredig gebruik maken van systeembronnen. Tot nu toe is er geen duidelijk patroon in wanneer de spikes optreden.
+In het voor gaande diagram ziet u dat de verkoop piek van het ticket voor sommige locaties. Deze pieken versterken het idee dat sommige locaties mogelijk systeem bronnen onevenredig verbruiken. Tot nu toe is er geen duidelijk patroon in wanneer de pieken optreden.
 
-Laten we vervolgens de betekenis van deze piekverkoopdagen onderzoeken. Wanneer ontstaan deze pieken nadat tickets in de verkoop gaan? Als u tickets wilt plotten die per dag worden verkocht, selecteert u de opties in de volgende afbeelding in Power BI.
+Nu gaan we de significantie van deze piek verkoop dagen onderzoeken. Wanneer komen deze pieken voor nadat tickets aan de verkoop gaan? Als u kaarten wilt uitzetten die per dag worden verkocht, selecteert u de opties die worden weer gegeven in de volgende afbeelding in Power BI.
 
-![SaleDayDistributie](./media/saas-tenancy-tenant-analytics/SaleDistributionPerDay-DW.PNG)
+![SaleDayDistribution](./media/saas-tenancy-tenant-analytics/SaleDistributionPerDay-DW.PNG)
 
-Dit perceel toont aan dat sommige locaties verkopen grote aantallen tickets op de eerste dag van de verkoop. Zodra tickets gaan op de verkoop op deze locaties, lijkt er een gekke rush. Deze uitbarsting van activiteit door een paar locaties kan invloed hebben op de service voor andere huurders.
+In dit waarnemings punt ziet u dat sommige locaties een groot aantal tickets verkopen op de eerste dag van de verkoop. Zodra tickets op deze locaties aan de verkoop gaan, lijkt het alsof er sprake is van een Made spoed. Deze burst-activiteit door enkele locaties kan van invloed zijn op de service voor andere tenants.
 
-U opnieuw inzoomen op de gegevens om te zien of deze gekke rush geldt voor alle evenementen die worden gehost door deze locaties. In eerdere percelen zag je dat Contoso Concert Hall veel tickets verkoopt, en dat Contoso ook een piek heeft in de kaartverkoop op bepaalde dagen. Speel met Power BI-opties om de cumulatieve kaartverkoop voor Contoso Concert Hall te plotten, met de nadruk op verkooptrends voor elk van zijn evenementen. Volgen alle gebeurtenissen hetzelfde verkooppatroon? Probeer een plot te produceren zoals hieronder.
+U kunt opnieuw inzoomen op de gegevens om te zien of deze Mad spoed waar is voor alle gebeurtenissen die worden gehost door deze locaties. In de vorige waarnemings punten zag u dat contoso concert een groot aantal tickets verkoopt en dat contoso ook over bepaalde dagen een piek in de ticket verkopen heeft. U kunt met behulp van Power BI opties spelen om de cumulatieve ticket verkoop voor contoso-concert zaal uit te zetten, zodat u zich kunt concentreren op trends in de verkoop voor elk van de gebeurtenissen. Volgen alle gebeurtenissen hetzelfde verkoop patroon? Probeer een tekening te maken zoals hieronder.
 
 ![ContosoSales](media/saas-tenancy-tenant-analytics/EventSaleTrends.PNG)
 
-Dit perceel van cumulatieve kaartverkoop in de tijd voor Contoso Concert Hall voor elk evenement laat zien dat de gekke rush niet gebeurt voor alle evenementen. Speel met de filteropties om verkooptrends voor andere locaties te verkennen.
+In deze fase van de cumulatieve ticket verkoop gedurende de loop tijd voor elke gebeurtenis blijkt dat de Mad spoed niet voor alle gebeurtenissen plaatsvindt. U kunt met de filter opties spelen om de verkoop trends voor andere evenementen te verkennen.
 
-De inzichten in ticketverkooppatronen kunnen Wingtip Tickets ertoe brengen hun bedrijfsmodel te optimaliseren. In plaats van alle tenants gelijk te laden, moet Wingtip misschien servicelagen met verschillende rekengroottes introduceren. Grotere locaties die meer tickets per dag moeten verkopen, kunnen een hoger niveau worden aangeboden met een hogere servicelevelovereenkomst (SLA). Deze locaties kunnen hun databases in de pool plaatsen met hogere resourcelimieten per database. Elke servicelaag kan een verkooptoewijzing per uur hebben, waarbij extra kosten in rekening worden gebracht voor het overschrijden van de toewijzing. Grotere locaties met periodieke verkoopuitbarstingen zouden profiteren van de hogere lagen en Wingtip Tickets kunnen efficiënter inkomsten genereren met hun service.
+De inzichten in de verkoop patronen van het ticket kunnen leiden tot Wingtip tickets om hun bedrijfs model te optimaliseren. In plaats van alle tenants gelijkmatig te laden, kunnen Wingtip mogelijk service lagen introduceren met verschillende reken grootten. Grotere locaties die meer tickets per dag moeten verkopen, kunnen een hogere laag met een hoger service level agreement (SLA) worden aangeboden. Deze locaties kunnen hun data bases in een pool plaatsen met meer resource limieten per data base. Elke servicelaag kan een verkoop toewijzing per uur hebben, waarbij extra kosten in rekening worden gebracht voor het overschrijden van de toewijzing. Grotere locaties met periodieke pieken in de verkoop zouden profiteren van de hogere lagen en Wingtip tickets kunnen hun service efficiënter geld verdienen.
 
-Ondertussen klagen sommige Wingtip Tickets-klanten dat ze moeite hebben om genoeg tickets te verkopen om de servicekosten te rechtvaardigen. Misschien is er in deze inzichten een mogelijkheid om de kaartverkoop voor slecht presterende locaties te stimuleren. Hogere verkopen zouden de waargenomen waarde van de dienst verhogen. Klik met de rechtermuisknop op fact_Tickets en selecteer **Nieuwe meting**. Voer de volgende expressie in voor de nieuwe maatregel genaamd **AverageTicketsSold:**
+In de tussen tijd kunnen klanten met een Wingtip-tickets een klacht doen om voldoende tickets te verkopen om de service kosten te rechtvaardigen. Misschien is er in deze inzichten een kans om de verkoop van tickets te stimuleren voor het uitvoeren van locaties. Bij een hogere verkoop wordt de waargenomen waarde van de service verhoogd. Klik met de rechter muisknop op fact_Tickets en selecteer **nieuwe meting**. Voer de volgende expressie in voor de nieuwe meting met de naam **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 
-Selecteer de volgende visualisatieopties om het percentage tickets dat door elke locatie wordt verkocht, in kaart te brengen om hun relatieve succes te bepalen.
+Selecteer de volgende visualisatie opties om het percentage tickets af te zetten dat door elke locatie wordt verkocht om het relatieve succes te bepalen.
 
 ![AvgTicketsByVenues](media/saas-tenancy-tenant-analytics/AvgTicketsByVenues-DW.PNG)
 
-Het bovenstaande plot laat zien dat, hoewel de meeste locaties verkopen meer dan 80% van hun tickets, sommige worstelen om meer dan de helft van hun zetels te vullen. Speel met de Waarden Goed om maximaal of minimaal percentage verkochte tickets voor elke locatie te selecteren.
+In het bovenstaande diagram ziet u dat hoewel de meeste locaties meer dan 80% van hun tickets verkopen, sommige lastig meer dan de helft van hun stoelen vullen. Speel met de waarden goed om het maximum of minimum percentage van tickets te selecteren dat voor elke locatie wordt verkocht.
 
-## <a name="embedding-analytics-in-your-apps"></a>Analytics insluiten in uw apps 
-Deze zelfstudie is gericht op cross-tenant analyses die worden gebruikt om het begrip van de softwareleverancier van hun huurders te verbeteren. Analytics kan ook inzichten bieden aan de _huurders,_ om hen te helpen hun bedrijf zelf effectiever te beheren. 
+## <a name="embedding-analytics-in-your-apps"></a>Analyses in uw apps insluiten 
+Deze zelf studie is gericht op cross-Tenant analyse die wordt gebruikt om de inzichten van de software leverancier van hun tenants te verbeteren. Analytics kan ook inzicht geven in de _tenants_, om hen te helpen hun bedrijf effectiever te beheren. 
 
-In het voorbeeld van Wingtip Tickets ontdekte u eerder dat de kaartverkoop de neiging heeft om voorspelbare patronen te volgen. Dit inzicht kan worden gebruikt om slecht presterende locaties te helpen de kaartverkoop te stimuleren. Misschien is er een mogelijkheid om machine learning-technieken in te zetten om de kaartverkoop voor evenementen te voorspellen. De effecten van prijswijzigingen kunnen ook worden gemodelleerd, zodat de impact van het aanbieden van kortingen kan worden voorspeld. Power BI Embedded kan worden geïntegreerd in een toepassing voor eventmanagement om voorspelde verkopen te visualiseren, inclusief de impact van kortingen op het totale aantal verkochte stoelen en de inkomsten op laagverkopende evenementen. Met Power BI Embedded u zelfs de korting op de ticketprijzen daadwerkelijk integreren, direct in de visualisatie-ervaring.
+In het voor beeld van Wingtip-tickets hebt u eerder ontdekt dat de ticket verkoop vaak voorspel bare patronen volgt. Deze inzichten kunnen worden gebruikt om locaties te helpen bij het uitvoeren van een hogere ticket verkoop. Misschien kunt u machine learning technieken gebruiken om de verkoop van tickets voor gebeurtenissen te voors pellen. De gevolgen van prijs wijzigingen kunnen ook worden gemodelleerd, zodat de impact van het aanbieden van kortingen kan worden voor speld. Power BI Embedded kan worden geïntegreerd in een toepassing voor gebeurtenis beheer om voorspellende omzet te visualiseren, met inbegrip van de impact van kortingen op het totale aantal verkochte seats en omzet bij gebeurtenissen met een lage verkoop. Met Power BI Embedded kunt u zelfs de korting op de prijzen van het ticket, direct in de visualisatie-ervaring, integreren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Implementeer een SQL Data Warehouse gevuld met een sterschema voor tenantanalytics.
-> * Gebruik Azure Data Factory om gegevens uit elke tenantdatabase te extraheren naar het magazijn voor analysegegevens.
-> * Optimaliseer de geëxtraheerde gegevens (reorganiseren in een sterschema).
-> * Bevraag het magazijn voor analysegegevens. 
-> * Gebruik Power BI om trends in gegevens voor alle tenants te visualiseren.
+> * Implementeer een SQL Data Warehouse dat is gevuld met een ster schema voor Tenant analyses.
+> * Gebruik Azure Data Factory voor het extra heren van gegevens van elke Tenant database naar het Analytics-Data Warehouse.
+> * Optimaliseer de geëxtraheerde gegevens (Organiseer opnieuw in een ster schema).
+> * Query's uitvoeren op het Analytics-Data Warehouse. 
+> * Gebruik Power BI voor het visualiseren van trends in gegevens over alle tenants.
 
 Gefeliciteerd!
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
-- Extra [tutorials die voortbouwen op de Wingtip SaaS applicatie](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- Aanvullende [zelf studies die voortbouwen op de Wingtip SaaS-toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
