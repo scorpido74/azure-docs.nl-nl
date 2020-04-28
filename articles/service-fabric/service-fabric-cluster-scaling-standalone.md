@@ -1,50 +1,50 @@
 ---
-title: Zelfstandige clusterschaling van Azure Service Fabric
-description: Meer informatie over het schalen van zelfstandige clusters van Service Fabric in of uit en omhoog of omlaag.
+title: Schaal aanpassing van het zelfstandige Azure-Cluster Service Fabric
+description: Meer informatie over het schalen van Service Fabric zelfstandige clusters in of uit en omhoog of omlaag.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dekapur
 ms.openlocfilehash: 16ec0eb429ec6e8f6613490226b7cff01dff1b32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451917"
 ---
-# <a name="scaling-service-fabric-standalone-clusters"></a>Zelfstandige clusters van servicefabric schalen
-Een Service Fabric-cluster is een met het netwerk verbonden set virtuele of fysieke machines waarin uw microservices worden geïmplementeerd en beheerd. Een machine of VM die deel uitmaakt van een cluster wordt een knooppunt genoemd. Clusters kunnen mogelijk duizenden knooppunten bevatten. Nadat u een cluster servicestructuur hebt gemaakt, u het cluster horizontaal schalen (het aantal knooppunten wijzigen) of verticaal wijzigen (de bronnen van de knooppunten wijzigen).  U het cluster op elk gewenst moment schalen, zelfs wanneer workloads op het cluster worden uitgevoerd.  Naarmate het cluster schaalt, schalen uw toepassingen ook automatisch.
+# <a name="scaling-service-fabric-standalone-clusters"></a>Service Fabric van zelfstandige clusters schalen
+Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Clusters kunnen mogelijk duizenden knoop punten bevatten. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het cluster horizon taal schalen (Wijzig het aantal knoop punten) of verticaal (Wijzig de resources van de knoop punten).  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
 
-Waarom het cluster schalen? Toepassingseisen veranderen in de loop van de tijd.  Mogelijk moet u de clusterresources vergroten om te voldoen aan de toegenomen toepassingsworkload of het netwerkverkeer of clusterbronnen verlagen wanneer de vraag daalt.
+Waarom het cluster schalen? Toepassings vereisten veranderen in de loop van de tijd.  Mogelijk moet u cluster bronnen verg Roten om te voldoen aan de toegenomen werk belasting van de toepassing of het netwerk verkeer of cluster bronnen verlagen wanneer de vraag wordt neergezet.
 
-## <a name="scaling-in-and-out-or-horizontal-scaling"></a>In- en uitschalen of horizontaal schalen
-Hiermee wijzigt u het aantal knooppunten in het cluster.  Zodra de nieuwe knooppunten lid worden van het cluster, verplaatst [het Clusterresourcebeheer](service-fabric-cluster-resource-manager-introduction.md) services naar deze knooppunten, waardoor de belasting op de bestaande knooppunten wordt verminderd.  U ook het aantal knooppunten verminderen als de bronnen van het cluster niet efficiënt worden gebruikt.  Als knooppunten het cluster verlaten, gaan services van die knooppunten af en neemt de belasting op de resterende knooppunten toe.  Het verminderen van het aantal knooppunten in een cluster dat in Azure wordt uitgevoerd, kan u geld besparen, omdat u betaalt voor het aantal VM's dat u gebruikt en niet de werkbelasting op die VM's.  
+## <a name="scaling-in-and-out-or-horizontal-scaling"></a>In-en uitschalen of horizon taal schalen
+Hiermee wijzigt u het aantal knoop punten in het cluster.  Zodra de nieuwe knoop punten aan het cluster zijn toegevoegd, worden de services door de [cluster resource manager](service-fabric-cluster-resource-manager-introduction.md) verplaatst, waardoor de belasting van de bestaande knoop punten vermindert.  U kunt ook het aantal knoop punten verlagen als de resources van het cluster niet efficiënt worden gebruikt.  Als knoop punten het cluster verlaten, worden deze knoop punten door de services verplaatst en nemen de taken toe op de resterende knoop punten.  Het verminderen van het aantal knoop punten in een cluster dat in azure wordt uitgevoerd, bespaart u geld, omdat u betaalt voor het aantal Vm's dat u gebruikt en niet de werk belasting van deze Vm's.  
 
-- Voordelen: Oneindige schaal, in theorie.  Als uw toepassing is ontworpen voor schaalbaarheid, u onbeperkte groei mogelijk maken door meer knooppunten toe te voegen.  De tooling in cloudomgevingen maakt het eenvoudig om knooppunten toe te voegen of te verwijderen, zodat u eenvoudig de capaciteit aanpassen en u alleen betaalt voor de resources die u gebruikt.  
-- Nadelen: Toepassingen moeten worden [ontworpen voor schaalbaarheid.](service-fabric-concepts-scalability.md)  Toepassingsdatabases en persistentie kunnen ook extra architectonische werkzaamheden vereisen om te schalen.  [Betrouwbare collecties](service-fabric-reliable-services-reliable-collections.md) in servicefabric-stateful services maken het echter veel gemakkelijker om uw toepassingsgegevens te schalen.
+- Voor delen: oneindig schalen, in theorie.  Als uw toepassing is ontworpen voor schaal baarheid, kunt u onbeperkte groei inschakelen door meer knoop punten toe te voegen.  Met het hulp programma in Cloud omgevingen kunt u eenvoudig knoop punten toevoegen of verwijderen, zodat u de capaciteit eenvoudig kunt aanpassen en u alleen betaalt voor de resources die u gebruikt.  
+- Nadelen: toepassingen moeten zijn [ontworpen voor schaal baarheid](service-fabric-concepts-scalability.md).  Voor toepassings databases en-persistentie is het mogelijk dat extra architectuur werk ook kan worden geschaald.  [Betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md) in service Fabric stateful Services, maar maak het veel eenvoudiger om uw toepassings gegevens te schalen.
 
-Met zelfstandige clusters u servicestructuurcluster on-premises of in de cloudprovider van uw keuze implementeren.  Node-typen bestaan uit fysieke machines of virtuele machines, afhankelijk van uw implementatie. In vergelijking met clusters die in Azure worden uitgevoerd, is het proces van het schalen van een standalone cluster iets meer betrokken.  U moet handmatig het aantal knooppunten in het cluster wijzigen en vervolgens een upgrade van de clusterconfiguratie uitvoeren.
+Met zelfstandige clusters kunt u Service Fabric cluster on-premises of in de Cloud provider van uw keuze implementeren.  Knooppunt typen bestaan uit fysieke machines of virtuele machines, afhankelijk van uw implementatie. Vergeleken met clusters die worden uitgevoerd in azure, is het proces van het schalen van een zelfstandig cluster iets meer betrokken.  U moet het aantal knoop punten in het cluster hand matig wijzigen en vervolgens een upgrade van de cluster configuratie uitvoeren.
 
-Verwijdering van knooppunten kan meerdere upgrades initiëren. Sommige knooppunten zijn `IsSeedNode=”true”` gemarkeerd met tag en kunnen worden geïdentificeerd door het clustermanifest op te vragen met [Get-ServiceClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Het verwijderen van dergelijke knooppunten kan langer duren dan andere, omdat de zaadknooppunten in dergelijke scenario's moeten worden verplaatst. Het cluster moet minimaal drie primaire knooppuntknooppunten behouden.
+Het verwijderen van knoop punten kan meerdere upgrades initiëren. Sommige knoop punten zijn gemarkeerd `IsSeedNode=”true”` met tag en kunnen worden geïdentificeerd door het cluster manifest te doorzoeken met [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Het verwijderen van deze knoop punten kan langer duren dan andere omdat de Seed-knoop punten in dergelijke scenario's moeten worden verplaatst. Het cluster moet mini maal drie knoop punten van het primaire knooppunt type onderhouden.
 
 > [!WARNING]
-> We raden u aan het aantal knooppunten niet onder de [clustergrootte van de betrouwbaarheidslaag](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) voor het cluster te verlagen. Dit zal interfereren met het vermogen van de Service Fabric System Services te worden gerepliceerd over het cluster, en zal destabiliseren of eventueel vernietigen van het cluster.
+> We raden u aan het aantal knoop punten te verlagen onder de [cluster grootte van de betrouwbaarheids categorie](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) voor het cluster. Dit zorgt ervoor dat de Service Fabric systeem services niet via het cluster kunnen worden gerepliceerd en het cluster kan worden overschreven of vernietigd.
 >
 
-Houd bij het schalen van een zelfstandig cluster rekening met de volgende richtlijnen:
-- De vervanging van primaire knooppunten moet worden uitgevoerd een knooppunt na het andere, in plaats van het verwijderen en vervolgens toe te voegen in batches.
-- Controleer voordat u een knooppunttype verwijdert, of er knooppunten zijn die verwijzen naar het knooppunttype. Verwijder deze knooppunten voordat u het bijbehorende knooppunttype verwijdert. Zodra alle bijbehorende knooppunten zijn verwijderd, u het NodeType uit de clusterconfiguratie verwijderen en een configuratie-upgrade starten met [Start-ServiceFabricClusterConfigurationUpgrade.](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)
+Houd bij het schalen van een zelfstandig cluster de volgende richt lijnen in acht:
+- De vervanging van primaire knoop punten moet na een andere knoop punt worden uitgevoerd, in plaats van verwijderen en vervolgens in batches toe te voegen.
+- Controleer voordat u een knooppunt type verwijdert of er knoop punten zijn die verwijzen naar het knooppunt type. Verwijder deze knoop punten voordat u het bijbehorende knooppunt type verwijdert. Als alle bijbehorende knoop punten zijn verwijderd, kunt u het NodeType verwijderen uit de cluster configuratie en een configuratie-upgrade starten met [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade).
 
-Zie [Een zelfstandig cluster schalen](service-fabric-cluster-windows-server-add-remove-nodes.md)voor meer informatie.
+Zie [een zelfstandig cluster schalen](service-fabric-cluster-windows-server-add-remove-nodes.md)voor meer informatie.
 
-## <a name="scaling-up-and-down-or-vertical-scaling"></a>Op- en omlaag schalen of verticaal schalen 
-Hiermee wijzigt u de bronnen (CPU, geheugen of opslag) van knooppunten in het cluster.
-- Voordelen: Software- en applicatiearchitectuur blijft hetzelfde.
-- Nadelen: Eindige schaal, omdat er een limiet is aan hoeveel u resources op afzonderlijke knooppunten verhogen. Downtime, omdat u fysieke of virtuele machines offline moet halen om resources toe te voegen of te verwijderen.
+## <a name="scaling-up-and-down-or-vertical-scaling"></a>Omhoog en omlaag schalen of verticaal schalen 
+Hiermee wijzigt u de resources (CPU, geheugen of opslag) van knoop punten in het cluster.
+- Voor delen: de software-en toepassings architectuur blijft hetzelfde.
+- Nadelen: eindige schaal, omdat er een limiet is voor de hoeveelheid resources op afzonderlijke knoop punten. Uitval tijd, omdat u fysieke of virtuele machines offline moet halen om resources toe te voegen of te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [schaalbaarheid van toepassingen](service-fabric-concepts-scalability.md).
-* [Een Azure-cluster in- of uitchecken](service-fabric-tutorial-scale-cluster.md).
-* [Schaal een Azure-cluster programmatisch](service-fabric-cluster-programmatic-scaling.md) met de vloeiende Azure compute SDK.
-* [Een zelfstandig cluster in- of uitchecken](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* Meer informatie over [schaal baarheid van toepassingen](service-fabric-concepts-scalability.md).
+* [Een Azure-cluster in-of uitschalen](service-fabric-tutorial-scale-cluster.md).
+* [Schaal een Azure-cluster programmatisch](service-fabric-cluster-programmatic-scaling.md) met behulp van de Fluent Azure Compute SDK.
+* [Een zelfstandige cluster in-of uitschalen](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

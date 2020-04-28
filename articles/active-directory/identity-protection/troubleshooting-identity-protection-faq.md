@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over identiteitsbescherming in Azure Active Directory
+title: Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
 description: Veelgestelde vragen Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
@@ -12,90 +12,90 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443576"
 ---
-# <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen Identiteitsbescherming in Azure Active Directory
+# <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
 
-## <a name="dismiss-user-risk-known-issues"></a>Bekende problemen met gebruikersrisico's afwijzen
+## <a name="dismiss-user-risk-known-issues"></a>Bekende problemen met gebruikers risico negeren
 
-**Door gebruikersrisico's** te verwijderen in klassieke identiteitsbeveiliging wordt de actor in de risicogeschiedenis van de gebruiker in Identiteitsbeveiliging ingesteld op **Azure AD**.
+**Gebruikers risico** voor klassieke identiteits beveiliging sluiten Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op **Azure AD**.
 
-**Als u het gebruikersrisico** in Identiteitsbeveiliging plaatst, wordt de actor in de risicogeschiedenis van de gebruiker in identiteitsbeveiliging ingesteld ** \<op de naam\>van de beheerder met een hyperlink die naar het mes van de gebruiker wijst.**
+**Gebruikers risico** voor identiteits beveiliging negeren Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op ** \<de naam van de beheerder met\>een Hyper link die verwijst naar de Blade van de gebruiker**.
 
-Er is een huidig bekend probleem dat latentie veroorzaakt in de ontslagstroom van het gebruikersrisico. Als u een "Gebruikersrisicobeleid" hebt, wordt dit beleid binnen enkele minuten na het klikken op 'Gebruikersrisico' op ontslagen gebruikers niet meer toegepast. Er zijn echter bekende vertragingen met de UX verfrissende de "Risk state" van ontslagen gebruikers. Als tijdelijke oplossing vernieuwt u de pagina op browserniveau om de nieuwste gebruikersstatus "Risicostatus" te zien.
+Er is een huidige bekend probleem waardoor er een latentie in de stroom van de gebruikers risico is ontstaan. Als u een ' gebruikers risico beleid ' hebt, wordt dit beleid niet meer toegepast op genegeerde gebruikers binnen enkele minuten na het klikken op risico van gebruikers. Er zijn echter bekende vertragingen met de UX waarmee de ' risico status ' van genegeerde gebruikers wordt vernieuwd. Als tijdelijke oplossing kunt u de pagina op het niveau van de browser vernieuwen om de nieuwste gebruiker ' risico status ' te zien.
 
-## <a name="risky-users-report-known-issues"></a>Riskante gebruikers melden bekende problemen
+## <a name="risky-users-report-known-issues"></a>Risk ante gebruikers rapporteren bekende problemen
 
-Query's op het **gebruikersnaamveld** zijn hoofdlettergevoelig, terwijl query's in het veld **Naam** case-agnostisch zijn.
+Query's op het veld **username** zijn hoofdletter gevoelig, terwijl query's op het **naam** veld neutraal zijn.
 
-Toggling **Toon datums als** verbergt de **kolom LAATST BIJGEWERKT RISICO.** Als u de kolom wilt lezen, klikt u op **Kolommen** boven aan het blad Riskante gebruikers.
+**Als u datums weer geven** inschakelt, wordt de kolom **risico laatst bijgewerkt** verborgen. Als u de kolom wilt lezen, klikt u boven aan de Blade Risk ante gebruikers op **kolommen** .
 
-**Als u alle gebeurtenissen** in de klassieke identiteitsbeveiliging plaatst, stelt u de status van de risicodetecties **in op Gesloten (opgelost).**
+**Alle gebeurtenissen** in klassieke identiteits beveiliging sluiten Hiermee stelt u de status van de risico detecties in op **gesloten (opgelost)**.
 
-## <a name="risky-sign-ins-report-known-issues"></a>Risicovolle aanmeldingen melden bekende problemen
+## <a name="risky-sign-ins-report-known-issues"></a>Risk ante aanmeldingen melden bekende problemen
 
-**Resolve** on a risk detection stelt de status in **voor Gebruikers die MFA hebben doorgegeven op basis van risico's.**
+**Oplossen** met een risico detectie stelt de status in op **gebruikers die MFA door gegeven door beleid op basis van risico**.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="why-is-a-user-is-at-risk"></a>Waarom loopt een gebruiker risico?
+### <a name="why-is-a-user-is-at-risk"></a>Waarom is een gebruiker risico?
 
-Als u een Azure AD Identity Protection-klant bent, gaat u naar de [riskante gebruikersweergave](howto-identity-protection-investigate-risk.md#risky-users) en klikt u op een risicogebruiker. In de lade onderaan geeft het tabblad 'Risicogeschiedenis' alle gebeurtenissen weer die hebben geleid tot een wijziging van het gebruikersrisico. Als u alle riskante aanmeldingen voor de gebruiker wilt zien, klikt u op 'Risicovolle aanmeldingen van de gebruiker'. Klik op 'Gebruikersrisicodetecties' om alle risicodetecties voor deze gebruiker te bekijken.
+Als u een Azure AD Identity Protection klant bent, gaat u naar de weer gave [Risk ante gebruikers](howto-identity-protection-investigate-risk.md#risky-users) en klikt u op een gebruiker met een risico. In de lade aan de onderkant worden in het tabblad risico geschiedenis alle gebeurtenissen weer gegeven die hebben geleid tot een wijziging in de gebruikers risico. Als u alle Risk ante aanmeldingen voor de gebruiker wilt weer geven, klikt u op Risk ante aanmeldingen van gebruiker. Als u alle risico detecties voor deze gebruiker wilt weer geven, klikt u op risico detectie gebruiker.
 
-### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hoe kan ik een melding krijgen van detecties van een bepaald type?
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hoe kan ik een rapport met detecties van een specifiek type krijgen?
 
-Ga naar de weergave risicodetecties en filter op 'Detectietype'. U dit rapport vervolgens downloaden in. CSV of . JSON-indeling met de knop **Downloaden** bovenaan. Zie voor meer informatie het artikel [How To: Investigate risk](howto-identity-protection-investigate-risk.md#risk-detections).
+Ga naar de weer gave risico detecties en filter op detectie type. U kunt dit rapport vervolgens downloaden in. CSV of. JSON-indeling met behulp van de knop **downloaden** bovenaan. Zie voor meer informatie het artikel [How to: risico onderzoeken](howto-identity-protection-investigate-risk.md#risk-detections).
 
-### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Waarom kan ik mijn eigen risiconiveaus niet instellen voor elke risicodetectie?
+### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Waarom kan ik mijn eigen risico niveaus niet instellen voor elke risico detectie?
 
-Risiconiveaus in identiteitsbescherming zijn gebaseerd op de precisie van de detectie en worden aangedreven door onze onder toezicht staande machine learning. Als u wilt aanpassen welke ervaring gebruikers worden gepresenteerd, kan de beheerder bepaalde gebruikers/groepen opnemen/uitsluiten van het risicobeleid voor gebruikersrisico's en aanmeldingsrisico's.
+Risico niveaus in identiteits beveiliging zijn gebaseerd op de nauw keurigheid van de detectie en worden mogelijk gemaakt door onze gecontroleerde machine learning. Als u wilt aanpassen welke gebruikers ervaring worden gepresenteerd, kan de beheerder bepaalde gebruikers/groepen opnemen/uitsluiten van het risico beleid voor gebruikers Risico's en aanmeldings Risico's.
 
-### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Waarom komt de locatie van een aanmelding niet overeen met waar de gebruiker zich echt heeft aangemeld?
+### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>Waarom komt de locatie van een aanmelding niet overeen met waar de gebruiker zich daad werkelijk heeft aangemeld?
 
-IP geolocatie mapping is een branchebrede uitdaging. Als u van mening bent dat de locatie in het aanmeldingsrapport niet overeenkomt met de werkelijke locatie, neemt u contact op met Microsoft-ondersteuning. 
+Toewijzing van IP-geolocatie is een toonaangevende uitdaging. Als u denkt dat de locatie die wordt vermeld in het rapport aanmeldingen niet overeenkomt met de werkelijke locatie, neemt u contact op met micro soft ondersteuning. 
 
-### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Hoe kan ik specifieke risicodetecties sluiten zoals in de oude gebruikersinterface?
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>Hoe kan ik specifieke risico detecties sluiten, zoals ik heb in de oude gebruikers interface?
 
-U feedback geven over risicodetecties door de gekoppelde aanmelding als gecompromitteerd of veilig te bevestigen. De feedback op de aanmelding sijpelt door naar alle detecties die op die aanmelding zijn gedaan. Als u detecties wilt sluiten die niet zijn gekoppeld aan een aanmelding, u die feedback op gebruikersniveau geven. Zie voor meer informatie het artikel [Hoe: Risicofeedback geven in Azure AD-identiteitsbeveiliging](howto-identity-protection-risk-feedback.md).
+U kunt feedback geven over risico detectie door de gekoppelde aanmelding te bevestigen als aangetast of veilig. De feedback die is gegeven op het aanmeldings trickles naar alle detecties die zijn uitgevoerd op die aanmelding. Als u detecties wilt sluiten die niet aan een aanmelding zijn gekoppeld, kunt u de feedback op het gebruikers niveau opgeven. Zie voor meer informatie het artikel [How to: feedback geven over Risico's in azure AD Identity Protection](howto-identity-protection-risk-feedback.md).
 
-### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Hoe ver kan ik teruggaan in de tijd om te begrijpen wat er aan de hand is met mijn gebruiker?
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>Hoe ver kan ik teruggaan in de tijd om te begrijpen wat er gebeurt met mijn gebruiker?
 
-- De [riskante gebruikersweergave](howto-identity-protection-investigate-risk.md#risky-users) toont het risico dat een gebruiker heeft op basis van alle eerdere aanmeldingen. 
-- De [riskante aanmeldingsweergave](howto-identity-protection-investigate-risk.md#risky-sign-ins) toont risicoborden in de afgelopen 30 dagen. 
-- De [risicodetectiesweergave](howto-identity-protection-investigate-risk.md#risk-detections) toont risicodetecties die in de afgelopen 90 dagen zijn gemaakt.
+- In de weer gave [Risk ante gebruikers](howto-identity-protection-investigate-risk.md#risky-users) wordt het risico van een gebruiker weer gegeven op basis van alle eerdere aanmeldingen. 
+- In de weer gave [Risk ante aanmeldingen](howto-identity-protection-investigate-risk.md#risky-sign-ins) worden in de afgelopen 30 dagen een risico teken weer gegeven. 
+- De weer gave [risico detectie](howto-identity-protection-investigate-risk.md#risk-detections) toont de risico detecties die zijn gemaakt in de afgelopen 90 dagen.
 
-### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Hoe kan ik meer te weten komen over een specifieke detectie?
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>Hoe kan ik meer informatie vinden over een specifieke detectie?
 
-Alle risicodetecties zijn gedocumenteerd in het artikel [Wat is risico](concept-identity-protection-risks.md#risk-types-and-detection). U de boven de (i) symbool naast de detectie op de Azure-portal plaatsen voor meer informatie over een detectie.
+Alle risico detecties worden beschreven in het artikel [Wat is risico](concept-identity-protection-risks.md#risk-types-and-detection). U kunt de muis aanwijzer boven het symbool (i) naast de detectie op de Azure Portal voor meer informatie over een detectie.
 
-### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Hoe werken de feedbackmechanismen in Identiteitsbescherming?
+### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>Hoe werken de feedback mechanismen voor identiteits beveiliging?
 
-**Bevestig gecompromitteerd** (op een aanmelding) – Informeert Azure AD-identiteitsbeveiliging dat de aanmelding niet is uitgevoerd door de eigenaar van de identiteit en geeft een compromis aan.
+**Aangetaste bevestiging** (bij aanmelding): informeert Azure AD Identity Protection dat de aanmelding niet is uitgevoerd door de eigenaar van de identiteit en duidt op een inbreuk.
 
-- Na ontvangst van deze feedback verplaatsen we de aanmeldings- en gebruikersrisicostatus naar **Bevestigd gecompromitteerd** en risiconiveau naar **Hoog.**
+- Wanneer deze feedback wordt ontvangen, verplaatsen we de status van het aanmeld-en gebruikers risico naar een **hoge**mate van **aangetast** en risico niveau.
 
-- Daarnaast verstrekken we de informatie aan onze machine learning-systemen voor toekomstige verbeteringen in risicobeoordeling.
-
-    > [!NOTE]
-    > Als de gebruiker al is gesaneerd, klikt u niet op **Gecompromitteerd bevestigen** omdat de aanmelding en de gebruikersrisicostatus worden verplaatst naar **Bevestigd gecompromitteerd** en risiconiveau naar **Hoog**.
-
-**Veilig bevestigen** (op een aanmelding) – Informeert Azure AD-identiteitsbeveiliging dat de aanmelding is uitgevoerd door de eigenaar van de identiteit en geeft geen compromis aan.
-
-- Na ontvangst van deze feedback verplaatsen we de aanmeldingsstatus (niet de gebruiker) naar **Bevestigde kluis** en het risiconiveau naar **-**.
-
-- Daarnaast verstrekken we de informatie aan onze machine learning-systemen voor toekomstige verbeteringen in risicobeoordeling.
+- Daarnaast bieden we de informatie aan onze machine learning systemen voor toekomstige verbeteringen in de risico beoordeling.
 
     > [!NOTE]
-    > Als u van mening bent dat de gebruiker niet is gecompromitteerd, gebruikt u **Gebruikersrisico afwijzen** op gebruikersniveau in plaats van Bevestigde kluis op aanmeldingsniveau te gebruiken. **Confirmed safe** Een **gebruikersrisico van de gebruiker** op gebruikersniveau sluit het gebruikersrisico en alle eerdere riskante aanmeldingen en risicodetecties.
+    > Als de gebruiker al is doorgevoerd, klikt u niet op **geïnfecteerde bevestigen** omdat hiermee de aanmeld-en gebruikers risico status wordt verplaatst naar een **hoge**mate van **aangetast** en risico.
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Waarom zie ik een gebruiker met een lage (of hoger) risicoscore, zelfs als er geen risicovolle aanmeldingen of risicodetecties worden weergegeven in Identiteitsbescherming?
+**Bevestig veilig** (bij een aanmelding): informeert Azure AD Identity Protection dat de aanmelding is uitgevoerd door de eigenaar van de identiteit en geeft geen inbreuk op.
 
-Aangezien het gebruikersrisico cumulatief van aard is en niet verloopt, kan een gebruiker een gebruikersrisico van laag of hoger hebben, zelfs als er geen recente risicovolle aanmeldingen of risicodetecties worden weergegeven in Identiteitsbescherming. Deze situatie kan gebeuren als de enige kwaadaardige activiteit op een gebruiker plaatsvond na het tijdsbestek waarvoor we de details van risicovolle aanmeldingen en risicodetecties opslaan. We vervallen het gebruikersrisico niet omdat van slechte acteurs bekend is dat ze meer dan 140 dagen in de omgeving van klanten blijven achter een gecompromitteerde identiteit voordat ze hun aanval opvoeren. Klanten kunnen de risicotijdlijn van de gebruiker bekijken om te begrijpen waarom een gebruiker risico loopt door naar:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+- Wanneer deze feedback wordt ontvangen, verplaatsen we de risico status aanmelden (niet de gebruiker) om **veilig** en risico niveau te **-** bevestigen.
 
-### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Waarom heeft een aanmeldingsrisico (geaggregeerde)score van Hoog wanneer de detecties die ermee gepaard gaan een laag of gemiddeld risico hebben?
+- Daarnaast bieden we de informatie aan onze machine learning systemen voor toekomstige verbeteringen in de risico beoordeling.
 
-De hoge geaggregeerde risicoscore kan worden gebaseerd op andere kenmerken van de aanmelding, of het feit dat meer dan één detectie voor die aanmelding is geactiveerd. En omgekeerd kan een aanmeldingsrisico (aggregaat) van Medium hebben, zelfs als de detecties die verband houden met de aanmelding een hoog risico hebben. 
+    > [!NOTE]
+    > Als u denkt dat de gebruiker niet heeft geknoeid, gebruikt u **gebruikers risico sluiten** op gebruikers niveau in plaats van **bevestigd veilig** op aanmeldings niveau. Als u het risico van gebruikers **negeert** voor het gebruikers niveau, sluit u het gebruikers risico en alle achterstallige Risk ante aanmeldingen en risico detecties.
+
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Waarom kan ik een gebruiker met een laag (of hoger) risico Score zien, zelfs als er geen Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging?
+
+Omdat het gebruikers risico cumulatief is en niet verloopt, kan een gebruiker een risico van weinig of meer gebruikers hebben, zelfs als er geen recente Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging. Deze situatie kan zich voordoen als de enige schadelijke activiteit van een gebruiker voorbij het tijds bestek heeft geduurd waarvoor we de details van Risk ante aanmeldingen en risico detecties opslaan. Er wordt geen gebruikers risico verstrijkt omdat er sprake is van een bekend aantal actors in de 140 omgeving van de klant. Klanten kunnen de risico tijdlijn van de gebruiker bekijken om te begrijpen waarom een gebruiker risico loopt door te gaan naar:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+
+### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Waarom heeft een aanmelding een hoge score voor een ' Sign-in-risico (aggregatie) ' wanneer de detecties zijn van een laag of gemiddeld risico?
+
+De hoge cumulatieve risico Score kan worden gebaseerd op andere functies van de aanmelding of het feit dat er meer dan één detectie voor die aanmelding is geactiveerd. Het is ook mogelijk dat een aanmelding een normaal risico (aggregatie) van het medium heeft, zelfs als de detecties die zijn gekoppeld aan de aanmelding, een hoog risico opleveren. 

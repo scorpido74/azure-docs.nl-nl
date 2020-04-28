@@ -1,198 +1,198 @@
 ---
-title: Azure-activiteitslogboeken weergeven om resources te controleren
-description: Gebruik de activiteitslogboeken om acties en fouten van gebruikers te controleren. Toont Azure-portal PowerShell, Azure CLI en REST.
+title: Activiteiten logboeken van Azure weer geven voor het bewaken van resources
+description: Gebruik de activiteiten Logboeken om de gebruikers acties en-fouten te controleren. Toont Azure Portal Power shell, Azure CLI en REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75478134"
 ---
-# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteitslogboeken weergeven om acties op resources te controleren
+# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteiten logboeken weer geven om acties op resources te controleren
 
 Met activiteitenlogboeken kunt u het volgende bepalen:
 
 * welke bewerkingen zijn uitgevoerd op de resources in uw abonnement
-* wie de bewerking is gestart
-* wanneer de bewerking heeft plaatsgevonden
-* de status van de operatie
-* de waarden van andere eigenschappen die u kunnen helpen de bewerking te onderzoeken
+* wie de bewerking heeft gestart
+* Wanneer de bewerking is uitgevoerd
+* de status van de bewerking
+* de waarden van andere eigenschappen die u kunnen helpen bij het onderzoeken van de bewerking
 
-Het activiteitenlogboek bevat alle schrijfbewerkingen (PUT, POST, DELETE) voor uw resources. Het bevat geen leesbewerkingen (GET). Zie Azure Resource Manager [Resource Provider-bewerkingen](../../role-based-access-control/resource-provider-operations.md)voor een lijst met resourceacties . U kunt de activiteitenlogboeken gebruiken om fouten te vinden bij foutoplossing of om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd.
+Het activiteiten logboek bevat alle schrijf bewerkingen (PUT, POST, DELETE) voor uw resources. Het bevat geen leesbewerkingen (GET). Zie Azure Resource Manager-bewerkingen van de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor een lijst met resource acties. U kunt de activiteitenlogboeken gebruiken om fouten te vinden bij foutoplossing of om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd.
 
 Activiteitenlogboek worden gedurende negentig dagen bewaard. U kunt een query uitvoeren voor een willekeurig datumbereik, zolang de begindatum niet meer dan negentig dagen in het verleden ligt.
 
-U informatie uit de activiteitenlogboeken ophalen via de portal, PowerShell, Azure CLI, Insights REST API of [Insights .NET Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+U kunt informatie ophalen uit de activiteiten logboeken via de portal, Power shell, de Azure CLI, inzichten REST API of de [.net-bibliotheek van Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Voer de volgende stappen uit om de activiteitslogboeken via de portal te bekijken:
+Als u de activiteiten logboeken wilt weer geven via de portal, volgt u deze stappen:
 
-1. Selecteer in het menu van de Azure-portal de optie **Controleren**of zoeken naar en selecteer **Monitor** op een pagina.
+1. Selecteer in het menu Azure Portal de optie **monitor**of zoek en selecteer op een wille keurige pagina de optie **monitor** .
 
     ![Monitor selecteren](./media/view-activity-logs/select-monitor-from-menu.png)
 
-1. Selecteer **Activiteitenlogboek**.
+1. Selecteer **activiteiten logboek**.
 
-    ![Activiteitslogboek selecteren](./media/view-activity-logs/select-activity-log.png)
+    ![Activiteiten logboek selecteren](./media/view-activity-logs/select-activity-log.png)
 
-1. U ziet een overzicht van recente bewerkingen. Er wordt een standaardset filters toegepast op de bewerkingen. Let op de informatie op de samenvatting bevat wie de actie is gestart en wanneer deze is gebeurd.
+1. U ziet een samen vatting van recente bewerkingen. Er wordt een standaardset filters toegepast op de bewerkingen. U ziet dat de informatie in de samen vatting bevat die de actie heeft gestart en wanneer deze is opgetreden.
 
-    ![Overzicht van recente bewerkingen weergeven](./media/view-activity-logs/audit-summary.png)
+    ![Samen vatting van recente bewerkingen weer geven](./media/view-activity-logs/audit-summary.png)
 
-1. Als u snel een vooraf gedefinieerde set filters wilt uitvoeren, selecteert u **Quick Insights**.
+1. Als u snel een vooraf gedefinieerde set filters wilt uitvoeren, selecteert u **snelle inzichten**.
 
     ![Snelle inzichten selecteren](./media/view-activity-logs/select-quick-insights.png)
 
-1. Selecteer een van de opties. Selecteer bijvoorbeeld **Mislukte implementaties** om fouten van implementaties te zien.
+1. Selecteer een van de opties. Selecteer bijvoorbeeld **mislukte implementaties** om fouten van implementaties te bekijken.
 
-    ![Mislukte implementaties selecteren](./media/view-activity-logs/select-failed-deployments.png)
+    ![Selecteer mislukte implementaties](./media/view-activity-logs/select-failed-deployments.png)
 
-1. Let op: de filters zijn gewijzigd om zich te concentreren op implementatiefouten in de afgelopen 24 uur. Alleen bewerkingen die overeenkomen met de filters worden weergegeven.
+1. U ziet dat de filters zijn gewijzigd om te focussen op implementatie fouten in de afgelopen 24 uur. Alleen bewerkingen die overeenkomen met de filters worden weer gegeven.
 
     ![Weergavefilters](./media/view-activity-logs/view-filters.png)
 
-1. Als u zich wilt concentreren op specifieke bewerkingen, wijzigt u de filters of past u nieuwe toe. In de volgende afbeelding wordt bijvoorbeeld een nieuwe waarde weergegeven voor het **type Tijdspanne** en **Resource** is ingesteld op opslagaccounts.
+1. Wijzig de filters of pas nieuwe toe om te focussen op specifieke bewerkingen. De volgende afbeelding toont bijvoorbeeld een nieuwe waarde voor de **tijds duur** en het **resource type** is ingesteld op opslag accounts.
 
-    ![Filteropties instellen](./media/view-activity-logs/set-filter.png)
+    ![Filter opties instellen](./media/view-activity-logs/set-filter.png)
 
-1. Als u de query later opnieuw wilt uitvoeren, selecteert u **Huidige filters vastmaken**.
+1. Als u de query later opnieuw moet uitvoeren, selecteert u **huidige filters vastmaken**.
 
-    ![Filters vastmaken](./media/view-activity-logs/pin-filters.png)
+    ![Filter vastmaken](./media/view-activity-logs/pin-filters.png)
 
 1. Geef het filter een naam.
 
-    ![Naamfilters](./media/view-activity-logs/name-filters.png)
+    ![Naam filters](./media/view-activity-logs/name-filters.png)
 
-1. Het filter is beschikbaar in het dashboard. Selecteer **Dashboard** in het menu van Azure Portal.
+1. Het filter is beschikbaar in het dash board. Selecteer **Dashboard** in het menu van Azure Portal.
 
-    ![Filter weergeven op dashboard](./media/view-activity-logs/activity-log-on-dashboard.png)
+    ![Filter weer geven op het dash board](./media/view-activity-logs/activity-log-on-dashboard.png)
 
-1. Vanuit de portal u wijzigingen in een resource weergeven. Ga terug naar de standaardweergave in Monitor en selecteer een bewerking waarbij een resource moet worden gewijzigd.
+1. Vanuit de portal kunt u wijzigingen in een resource bekijken. Ga terug naar de standaard weergave in monitor en selecteer een bewerking die betrokken is bij het wijzigen van een resource.
 
     ![Bewerking selecteren](./media/view-activity-logs/select-operation.png)
 
-1. Selecteer **Geschiedenis wijzigen (Voorbeeld)** en kies een van de beschikbare bewerkingen.
+1. Selecteer **wijzigings geschiedenis (preview)** en kies een van de beschik bare bewerkingen.
 
-    ![Wijzigingsgeschiedenis selecteren](./media/view-activity-logs/select-change-history.png)
+    ![Wijzigings overzicht selecteren](./media/view-activity-logs/select-change-history.png)
 
-1. De wijzigingen in de resource worden weergegeven.
+1. De wijzigingen in de resource worden weer gegeven.
 
-    ![Wijzigingen weergeven](./media/view-activity-logs/show-changes.png)
+    ![Wijzigingen weer geven](./media/view-activity-logs/show-changes.png)
 
-Zie [Resourcewijzigingen opbrengen](../../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie over de geschiedenis van wijzigingen in de wijziging van resources .
+Zie [resource wijzigingen ophalen](../../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie over wijzigings geschiedenis.
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als u logboekvermeldingen wilt ophalen, voert u de opdracht **Get-AzLog uit.** U geeft extra parameters om de lijst met vermeldingen te filteren. Als u geen begin- en eindtijd opgeeft, worden de vermeldingen van de afgelopen zeven dagen geretourneerd.
+Als u logboek vermeldingen wilt ophalen, voert u de opdracht **Get-AzLog** uit. U geeft aanvullende para meters voor het filteren van de lijst met vermeldingen. Als u geen begin-en eind tijd opgeeft, worden de gegevens van de afgelopen zeven dagen geretourneerd.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup
 ```
 
-In het volgende voorbeeld ziet u hoe u het activiteitenlogboek gebruiken voor onderzoeksbewerkingen die gedurende een bepaalde tijd zijn uitgevoerd. De begin- en einddatumworden opgegeven in een datumnotatie.
+In het volgende voor beeld ziet u hoe u het activiteiten logboek gebruikt voor onderzoek bewerkingen die zijn uitgevoerd tijdens een opgegeven periode. De begin-en eind datum worden opgegeven in een datum notatie.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-05-05T06:00 -EndTime 2019-05-09T06:00
 ```
 
-U ook datumfuncties gebruiken om het datumbereik op te geven, zoals de afgelopen 14 dagen.
+U kunt ook datum functies gebruiken om het datum bereik op te geven, zoals de laatste 14 dagen.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 ```
 
-U de acties opzoeken die door een bepaalde gebruiker zijn uitgevoerd.
+U kunt de acties opzoeken die door een bepaalde gebruiker worden uitgevoerd.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 ```
 
-U filteren op mislukte bewerkingen.
+U kunt filteren op mislukte bewerkingen.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -Status Failed
 ```
 
-U zich op één fout concentreren door te kijken naar het statusbericht voor dat item.
+U kunt zich richten op één fout door te kijken naar het status bericht voor die vermelding.
 
 ```azurepowershell-interactive
 (Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties.Content.statusMessage | ConvertFrom-Json
 ```
 
-U specifieke waarden selecteren om de geretourneerde gegevens te beperken.
+U kunt specifieke waarden selecteren om de geretourneerde gegevens te beperken.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
 ```
 
-Afhankelijk van de begintijd die u opgeeft, kunnen de vorige opdrachten een lange lijst met bewerkingen voor de resourcegroep retourneren. U de resultaten filteren op wat u zoekt door zoekcriteria op te geven. U bijvoorbeeld filteren op het type bewerking.
+Afhankelijk van de start tijd die u opgeeft, kunnen de vorige opdrachten een lange lijst met bewerkingen voor de resource groep retour neren. U kunt de resultaten voor wat u zoekt filteren door zoek criteria op te geven. U kunt bijvoorbeeld filteren op het type bewerking.
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
 ```
 
-U ResourceGraph gebruiken om de wijzigingsgeschiedenis voor een resource weer te geven. Zie [Resourcewijzigingen opvragen voor](../../governance/resource-graph/how-to/get-resource-changes.md)meer informatie .
+U kunt resource grafiek gebruiken om de wijzigings geschiedenis voor een resource weer te geven. Zie [resource wijzigingen ophalen](../../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
-Als u logboekvermeldingen wilt ophalen, voert u de opdracht [activiteitslogboeklijst van AZ-monitor](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) uit met een verschuiving om de tijdspanne aan te geven.
+Als u logboek vermeldingen wilt ophalen, voert u de opdracht [AZ monitor Activity-Log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) uit met een offset om de tijds Panne aan te geven.
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
 ```
 
-In het volgende voorbeeld ziet u hoe u het activiteitenlogboek gebruiken voor onderzoeksbewerkingen die gedurende een bepaalde tijd zijn uitgevoerd. De begin- en einddatumworden opgegeven in een datumnotatie.
+In het volgende voor beeld ziet u hoe u het activiteiten logboek gebruikt voor onderzoek bewerkingen die zijn uitgevoerd tijdens een opgegeven periode. De begin-en eind datum worden opgegeven in een datum notatie.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --start-time 2019-05-01 --end-time 2019-05-15
 ```
 
-U de acties opzoeken die door een bepaalde gebruiker zijn uitgevoerd, zelfs voor een resourcegroep die niet meer bestaat.
+U kunt de acties zoeken die door een bepaalde gebruiker worden uitgevoerd, zelfs voor een resource groep die niet meer bestaat.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --caller someone@contoso.com --offset 5d
 ```
 
-U filteren op mislukte bewerkingen.
+U kunt filteren op mislukte bewerkingen.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d
 ```
 
-U zich op één fout concentreren door te kijken naar het statusbericht voor dat item.
+U kunt zich richten op één fout door te kijken naar het status bericht voor die vermelding.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --status Failed --offset 1d --query [].properties.statusMessage
 ```
 
-U specifieke waarden selecteren om de geretourneerde gegevens te beperken.
+U kunt specifieke waarden selecteren om de geretourneerde gegevens te beperken.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation: operationName.value, Status: status.value, SubStatus: subStatus.localizedValue}'
 ```
 
-Afhankelijk van de begintijd die u opgeeft, kunnen de vorige opdrachten een lange lijst met bewerkingen voor de resourcegroep retourneren. U de resultaten filteren op wat u zoekt door zoekcriteria op te geven. U bijvoorbeeld filteren op het type bewerking.
+Afhankelijk van de start tijd die u opgeeft, kunnen de vorige opdrachten een lange lijst met bewerkingen voor de resource groep retour neren. U kunt de resultaten voor wat u zoekt filteren door zoek criteria op te geven. U kunt bijvoorbeeld filteren op het type bewerking.
 
 ```azurecli-interactive
 az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
 ```
 
-U ResourceGraph gebruiken om de wijzigingsgeschiedenis voor een resource weer te geven. Zie [Resourcewijzigingen opvragen voor](../../governance/resource-graph/how-to/get-resource-changes.md)meer informatie .
+U kunt resource grafiek gebruiken om de wijzigings geschiedenis voor een resource weer te geven. Zie [resource wijzigingen ophalen](../../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
-De REST-bewerkingen voor het werken met het activiteitenlogboek maken deel uit van de [Insights REST API.](/rest/api/monitor/) Zie [De beheergebeurtenissen in een abonnement](/rest/api/monitor/activitylogs)weergeven om activiteitenlogboekgebeurtenissen op te halen.
+De REST-bewerkingen voor het werken met het activiteiten logboek maken deel uit van de [inzichten rest API](/rest/api/monitor/). Zie [de beheer gebeurtenissen in een abonnement](/rest/api/monitor/activitylogs)weer geven om activiteiten logboek gebeurtenissen op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Azure Activity-logboeken kunnen worden gebruikt met Power BI om meer inzicht te krijgen in de acties in uw abonnement. Zie [Azure Activity Logs weergeven en analyseren in Power BI en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Zie [Azure Role-based Access Control](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van beveiligingsbeleid.
-* Zie Analyse van [toepassingswijziging gebruiken in Azure Monitor](../../azure-monitor/app/change-analysis.md)voor meer informatie over de wijzigingen in uw toepassingen vanaf de infrastructuurlaag tot de implementatie van toepassingen.
-* Zie [Implementatiebewerkingen weergeven](../templates/deployment-history.md)voor meer informatie over de opdrachten voor het weergeven van implementatiebewerkingen.
-* Zie [Resources vergrendelen met Azure Resource Manager](lock-resources.md)voor meer informatie over het voorkomen van verwijderingen op een bron voor alle gebruikers.
-* Zie [Azure Resource Manager Resource Provider-bewerkingen](../../role-based-access-control/resource-provider-operations.md) voor elke Microsoft Azure Resource Manager-provider voor de lijst met bewerkingen die beschikbaar zijn voor elke Microsoft Azure Resource Manager-provider.
+* Azure-activiteiten logboeken kunnen worden gebruikt met Power BI om meer inzicht te krijgen in de acties in uw abonnement. Zie [Azure-activiteiten logboeken weer geven en analyseren in Power bi en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* Zie [Access Control op basis van rollen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van beveiligings beleid.
+* Zie [toepassings wijzigingen in azure monitor gebruiken](../../azure-monitor/app/change-analysis.md)voor meer informatie over de wijzigingen in uw toepassingen vanuit de laag van de infra structuur voor de implementatie van toepassingen.
+* Zie [implementatie bewerkingen weer geven](../templates/deployment-history.md)voor meer informatie over de opdrachten voor het weer geven van implementatie bewerkingen.
+* Zie [resources vergren delen met Azure Resource Manager](lock-resources.md)voor meer informatie over het voor komen van het verwijderen van een resource voor alle gebruikers.
+* Zie [Azure Resource Manager resource provider bewerkingen](../../role-based-access-control/resource-provider-operations.md) voor een overzicht van de beschik bare bewerkingen voor elke Microsoft Azure Resource Manager-provider.

@@ -1,6 +1,6 @@
 ---
-title: Tabelkopieerbewerkingen op Azure Cosmos DB Cassandra API van Spark
-description: In dit artikel wordt beschreven hoe u gegevens kopiëren tussen tabellen in Azure Cosmos DB Cassandra API
+title: Tabel Kopieer bewerkingen op Azure Cosmos DB Cassandra-API vanuit Spark
+description: In dit artikel wordt beschreven hoe u gegevens kopieert tussen tabellen in Azure Cosmos DB Cassandra-API
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75445616"
 ---
-# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Tabelkopieerbewerkingen op Azure Cosmos DB Cassandra API van Spark
+# <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Tabel Kopieer bewerkingen op Azure Cosmos DB Cassandra-API vanuit Spark
 
-In dit artikel wordt beschreven hoe u gegevens kopiëren tussen tabellen in Azure Cosmos DB Cassandra API van Spark. De opdrachten die in dit artikel worden beschreven, kunnen ook worden gebruikt om gegevens van Apache Cassandra-tabellen te kopiëren naar Azure Cosmos DB Cassandra API-tabellen.
+In dit artikel wordt beschreven hoe u gegevens uit Spark kopieert tussen tabellen in Azure Cosmos DB Cassandra-API. De opdrachten die in dit artikel worden beschreven, kunnen ook worden gebruikt voor het kopiëren van gegevens uit Apache Cassandra-tabellen naar Azure Cosmos DB Cassandra-API tabellen.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API-configuratie
+## <a name="cassandra-api-configuration"></a>Cassandra-API configuratie
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="insert-sample-data"></a>Voorbeeldgegevens invoegen 
+## <a name="insert-sample-data"></a>Voorbeeld gegevens invoegen 
 ```scala
 val booksDF = Seq(
    ("b00001", "Arthur Conan Doyle", "A study in scarlet", 1887,11.33),
@@ -65,7 +65,7 @@ booksDF.write
 
 ## <a name="copy-data-between-tables"></a>Gegevens kopiëren tussen tabellen
 
-### <a name="copy-data-between-tables-destination-table-exists"></a>Gegevens kopiëren tussen tabellen (doeltabel bestaat)
+### <a name="copy-data-between-tables-destination-table-exists"></a>Gegevens kopiëren tussen tabellen (doel tabel bestaat)
 
 ```scala
 //1) Create destination table
@@ -93,7 +93,7 @@ sqlContext
   .show
 ```
 
-### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Gegevens kopiëren tussen tabellen (doeltabel bestaat niet)
+### <a name="copy-data-between-tables-destination-table-does-not-exist"></a>Gegevens kopiëren tussen tabellen (doel tabel bestaat niet)
 
 ```scala
 import com.datastax.spark.connector._
@@ -127,7 +127,7 @@ sqlContext
   .load
   .show
 ```
-De output-
+De uitvoer-
 ```
 +-------+------------------+--------------------+----------+-------------+
 |book_id|       book_author|           book_name|book_price|book_pub_year|
@@ -146,6 +146,6 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
 
 ## <a name="next-steps"></a>Volgende stappen
 
- * Ga aan de slag met [het maken van een Cassandra API-account, database en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
+ * Aan de slag met het [maken van een Cassandra-API-account,-data base en een tabel](create-cassandra-api-account-java.md) met behulp van een Java-toepassing.
  * [Laad voorbeeldgegevens in de Cassandra-API-tabel](cassandra-api-load-data.md) met behulp van een Java-toepassing.
  * [Zoek in gegevens in de Cassandra-API-account](cassandra-api-query-data.md) met behulp van een Java-toepassing.

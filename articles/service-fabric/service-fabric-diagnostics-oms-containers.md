@@ -1,52 +1,52 @@
 ---
-title: Containers met Azure Monitor-logboeken controleren
-description: Azure Monitor-logboeken gebruiken voor het bewaken van containers die worden uitgevoerd op Azure Service Fabric-clusters.
+title: Containers controleren met Azure Monitor-logboeken
+description: Gebruik Azure Monitor logboeken voor het controleren van containers die worden uitgevoerd op Azure Service Fabric-clusters.
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614431"
 ---
-# <a name="monitor-containers-with-azure-monitor-logs"></a>Containers met Azure Monitor-logboeken controleren
+# <a name="monitor-containers-with-azure-monitor-logs"></a>Containers controleren met Azure Monitor-logboeken
  
-In dit artikel worden de stappen beschreven die nodig zijn om de oplossing voor containerbewaking van Azure Monitor in te stellen om containergebeurtenissen weer te geven. Als u uw cluster wilt instellen om containergebeurtenissen te verzamelen, raadpleegt u deze [stapsgewijze zelfstudie](service-fabric-tutorial-monitoring-wincontainers.md). 
+In dit artikel worden de stappen beschreven die nodig zijn voor het instellen van de Azure Monitor logboeken container bewakings oplossing om container gebeurtenissen weer te geven. Zie deze [Stapsgewijze zelf studie](service-fabric-tutorial-monitoring-wincontainers.md)om uw cluster in te stellen voor het verzamelen van container gebeurtenissen. 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="set-up-the-container-monitoring-solution"></a>De oplossing voor containerbewaking instellen
+## <a name="set-up-the-container-monitoring-solution"></a>De container monitoring-oplossing instellen
 
 > [!NOTE]
-> U moet Azure Monitor-logboeken hebben ingesteld voor uw cluster en de log-analyse-agent op uw knooppunten laten implementeren. Als u dit niet doet, volgt u eerst de stappen in [Azure Monitor-logboeken instellen](service-fabric-diagnostics-oms-setup.md) en voegt u de agent Log Analytics eerst [toe aan een cluster.](service-fabric-diagnostics-oms-agent.md)
+> U moet Azure Monitor-logboeken hebben ingesteld voor uw cluster en de Log Analytics-agent op uw knoop punten hebben geïmplementeerd. Als dat niet het geval is, volgt u de stappen in [Azure monitor logboeken instellen](service-fabric-diagnostics-oms-setup.md) en [de log Analytics agent eerst aan een cluster toevoegen](service-fabric-diagnostics-oms-agent.md) .
 
-1. Zodra uw cluster is ingesteld met Azure Monitor-logboeken en de agent Log Analytics, implementeert u uw containers. Wacht tot uw containers zijn geïmplementeerd voordat u naar de volgende stap gaat.
+1. Als uw cluster is ingesteld met Azure Monitor-logboeken en de Log Analytics agent, implementeert u de containers. Wacht totdat de containers zijn geïmplementeerd voordat u verdergaat met de volgende stap.
 
-2. Zoek in Azure Marketplace naar *containermonitoringoplossing* en klik op de **containerbewakingsoplossingsbron** die wordt weergegeven onder de categorie Bewaken + beheer.
+2. Zoek in azure Marketplace naar de *oplossing voor container bewaking* en klik op de resource van de **container bewakings oplossing** die wordt weer gegeven onder de categorie controle en beheer.
 
     ![Containers-oplossing toevoegen](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Maak de oplossing in dezelfde werkruimte die al is gemaakt voor het cluster. Deze wijziging activeert automatisch de agent om te beginnen met het verzamelen van dockergegevens op de containers. In ongeveer 15 minuten of zo, moet u zien de oplossing oplichten met inkomende logs en statistieken, zoals weergegeven in de afbeelding hieronder.
+3. Maak de oplossing binnen dezelfde werk ruimte die al is gemaakt voor het cluster. Met deze wijziging wordt de agent automatisch geactiveerd om docker-gegevens op de containers te verzamelen. In ongeveer 15 minuten moet u het oplossings licht weer geven met behulp van binnenkomende logboeken en statistieken, zoals wordt weer gegeven in de onderstaande afbeelding.
 
-    ![Basic Log Analytics-dashboard](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Basis Log Analytics-dash board](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-De agent maakt het mogelijk om verschillende containerspecifieke logboeken te verzamelen die kunnen worden opgevraagd in Azure Monitor-logboeken of die kunnen worden gebruikt om prestatie-indicatoren te visualiseren. De logboektypen die worden verzameld zijn:
+Met de agent kunt u een verzameling van verschillende container-specifieke logboeken maken die kunnen worden opgevraagd in Azure Monitor-Logboeken of worden gebruikt om prestatie-indica toren te visualiseren. De volgende logboek typen worden verzameld:
 
-* ContainerInventory: toont informatie over containerlocatie, naam en afbeeldingen
-* ContainerImageInventory: informatie over geïmplementeerde afbeeldingen, inclusief i-adressen of -formaten
-* ContainerLog: specifieke foutlogboeken, dockerlogboeken (stdout, enz.) en andere vermeldingen
-* ContainerServiceLog: docker daemon opdrachten die zijn uitgevoerd
-* Perf: prestatiemeteritems, waaronder containercpu, geheugen, netwerkverkeer, schijf-i/o en aangepaste statistieken van de hostmachines
+* ContainerInventory: bevat informatie over de locatie, naam en installatie kopieën van de container
+* ContainerImageInventory: informatie over geïmplementeerde installatie kopieën, inclusief Id's of groottes
+* ContainerLog: specifieke fout logboeken, docker-Logboeken (stdout, enzovoort) en andere vermeldingen
+* ContainerServiceLog: docker daemon-opdrachten die zijn uitgevoerd
+* Prestatie meter items, inclusief container CPU, geheugen, netwerk verkeer, schijf-i/o en aangepaste metrische gegevens van de hostcomputers.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [Azure Monitor logs Containers-oplossing](../azure-monitor/insights/containers.md).
-* Lees meer over containerorchestration op Service Fabric - [Service Fabric en containers](service-fabric-containers-overview.md)
-* Maak kennis met de [functies voor zoeken en query's voor logboeken](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure Monitor-logboeken
-* Azure Monitor-logboeken configureren om [geautomatiseerde waarschuwingsregels](../log-analytics/log-analytics-alerts.md) in te stellen om te helpen bij het detecteren en diagnosticeren
+* Meer informatie over de oplossing voor de [Azure monitor-logboeken](../azure-monitor/insights/containers.md).
+* Meer informatie over container indeling op Service Fabric- [service Fabric en containers](service-fabric-containers-overview.md)
+* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor logboeken
+* Azure Monitor logboeken configureren voor het instellen van [automatische waarschuwings](../log-analytics/log-analytics-alerts.md) regels om te helpen bij het detecteren en diagnosticeren

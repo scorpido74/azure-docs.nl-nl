@@ -1,6 +1,6 @@
 ---
-title: Aanbevelingen voor & opslag - Azure Security Center
-description: Dit document richt aanbevelingen in Azure Security Center waarmee u uw gegevens en Azure SQL-service beschermen en in overeenstemming blijft met het beveiligingsbeleid.
+title: Aanbevelingen voor gegevens & opslag-Azure Security Center
+description: Dit document bevat aanbevelingen in Azure Security Center waarmee u uw gegevens en Azure SQL-service kunt beveiligen en in overeenstemming bent met het beveiligings beleid.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,60 +14,60 @@ ms.workload: na
 ms.date: 12/19/2019
 ms.author: memildin
 ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552862"
 ---
-# <a name="protect-azure-data-and-storage-services"></a>Azure-gegevens- en opslagservices beveiligen
-Wanneer Azure Security Center potentiële beveiligingsproblemen identificeert, worden er aanbevelingen gemaakt die u begeleiden bij het configureren van de benodigde besturingselementen om uw resources te verharden en te beschermen.
+# <a name="protect-azure-data-and-storage-services"></a>Azure-gegevens-en opslag Services beveiligen
+Wanneer Azure Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
 
-In dit artikel wordt de **pagina Gegevensbeveiliging** van het gedeelte resourcebeveiliging van Security Center uitgelegd.
+In dit artikel wordt de **pagina gegevens beveiliging** van de sectie resource beveiliging van Security Center beschreven.
 
-Zie [Aanbevelingen voor gegevens en opslag](recommendations-reference.md#recs-datastorage)voor een volledige lijst met aanbevelingen die u op deze pagina zien.
+Zie [aanbevelingen voor gegevens en opslag](recommendations-reference.md#recs-datastorage)voor een volledige lijst met aanbevelingen die u op deze pagina kunt zien.
 
 
-## <a name="view-your-data-security-information"></a>Uw gegevensbeveiligingsgegevens weergeven
+## <a name="view-your-data-security-information"></a>Uw gegevens beveiligings gegevens weer geven
 
-1. Klik in de sectie **Resourcebeveiligingshygiëne** op **Gegevens en opslagbronnen**.
+1. Klik in de sectie **beveiligings hygiëne voor bronnen** op **gegevens-en opslag resources**.
 
-    ![Gegevens & opslagbronnen](./media/security-center-monitoring/click-data.png)
+    ![Gegevens & storage-resources](./media/security-center-monitoring/click-data.png)
 
-    De pagina **Gegevensbeveiliging** wordt geopend met aanbevelingen voor gegevensbronnen.
+    De pagina **gegevens beveiliging** wordt geopend met aanbevelingen voor gegevens bronnen.
 
     [![Gegevensbronnen](./media/security-center-monitoring/sql-overview.png)](./media/security-center-monitoring/sql-overview.png#lightbox)
 
     Vanaf deze pagina kunt u het volgende doen:
 
-    * Klik op het tabblad **Overzicht** met alle aanbevelingen voor gegevensbronnen die moeten worden gesaneerd. 
-    * Klik op elk tabblad en bekijk de aanbevelingen op resourcetype.
+    * Klik op het tabblad **overzicht** om alle aanbevelingen voor de gegevens bronnen weer te geven die u wilt herstellen. 
+    * Klik op elk tabblad en Bekijk de aanbevelingen per resource type.
 
     > [!NOTE]
-    > Zie [Azure Storage-versleuteling voor gegevens in rust](../storage/common/storage-service-encryption.md)voor meer informatie over opslagversleuteling.
+    > Zie [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie over opslag versleuteling.
 
 
-## <a name="remediate-a-recommendation-on-a-data-resource"></a>Een aanbeveling voor een gegevensbron herstellen
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>Een aanbeveling voor een gegevens bron herstellen
 
-1. Klik op een van de tabbladen resource op een resource. De informatiepagina wordt geopend met de aanbevelingen die moeten worden gesaneerd.
+1. Klik op een resource in een van de resource tabbladen. De pagina informatie wordt geopend met een lijst met de aanbevelingen die moeten worden hersteld.
 
-    ![Brongegevens](./media/security-center-monitoring/sql-recommendations.png)
+    ![Resource gegevens](./media/security-center-monitoring/sql-recommendations.png)
 
-2. Klik op een aanbeveling. De pagina Aanbeveling wordt geopend en geeft de **herstelstappen weer** om de aanbeveling uit te voeren.
+2. Klik op een aanbeveling. De pagina aanbeveling wordt geopend en toont de herstels **tappen** voor het implementeren van de aanbeveling.
 
-   ![Herstelstappen](./media/security-center-monitoring/remediate1.png)
+   ![Herstels tappen](./media/security-center-monitoring/remediate1.png)
 
-3. Klik **op Actie uitvoeren**. De pagina resourceinstellingen wordt weergegeven.
+3. Klik op **actie ondernemen**. De pagina Resource-instellingen wordt weer gegeven.
 
     ![Aanbeveling inschakelen](./media/security-center-monitoring/remediate2.png)
 
-4. Volg de **stappen Voor herstel** en klik op **Opslaan**.
+4. Volg de herstels **tappen** en klik op **Opslaan**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende onderwerpen voor meer informatie over aanbevelingen die van toepassing zijn op andere Azure-brontypen:
+Zie de volgende onderwerpen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
-* [Volledige referentielijst met beveiligingsaanbevelingen van Azure Security Center](recommendations-reference.md)
+* [Volledige referentie lijst met aanbevelingen voor de beveiliging van Azure Security Center](recommendations-reference.md)
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 * [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)

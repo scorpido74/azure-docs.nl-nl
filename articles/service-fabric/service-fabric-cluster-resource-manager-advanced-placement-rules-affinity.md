@@ -1,6 +1,6 @@
 ---
-title: Service Fabric Cluster Resource Manager - Affiniteit
-description: Overzicht van serviceaffiniteit voor Azure Service Fabric-services en richtlijnen voor de configuratie van serviceaffiniteiten.
+title: Cluster resource Manager Service Fabric-affiniteit
+description: Overzicht van service affiniteit voor Azure Service Fabric Services en richt lijnen voor configuratie van service affiniteit.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7bfd261802fbf891b8f45079255783cb1e8ac7d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551740"
 ---
-# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Serviceaffiniteit configureren en gebruiken in Service Fabric
-Affinity is een controle die vooral wordt geleverd om de overgang van grotere monolithische applicaties naar de cloud- en microserviceswereld te vergemakkelijken. Het wordt ook gebruikt als een optimalisatie voor het verbeteren van de prestaties van diensten, hoewel dit kan bijwerkingen hebben.
+# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Service affiniteit in Service Fabric configureren en gebruiken
+Affiniteit is een besturings element dat voornamelijk wordt verschaft om de overgang van grotere monolithische-toepassingen naar de Cloud en micro Services-wereld te vergemakkelijken. Het wordt ook gebruikt als een Optima Lise ring voor het verbeteren van de prestaties van services, hoewel dit wel neven effecten kan hebben.
 
-Stel dat u een grotere app, of een app die gewoon niet is ontworpen met microservices in het achterhoofd, naar Service Fabric (of een gedistribueerde omgeving) brengt. Dit type overgang komt vaak voor. U begint met het tillen van de hele app in het milieu, verpakking, en ervoor te zorgen dat het soepel loopt. Dan begin je het op te splitsen in verschillende kleinere diensten die allemaal met elkaar praten.
+Stel dat u een grotere app brengt of een die zojuist niet is ontworpen met micro Services in het geService Fabric (of een gedistribueerde omgeving). Dit type overgang is gebruikelijk. U begint met het opheffen van de volledige app in de omgeving, verpakt deze en zorgt ervoor dat deze probleemloos wordt uitgevoerd. Vervolgens begint u met het opsplitsen van het bestand in verschillende kleinere services die allemaal met elkaar communiceren.
 
-Uiteindelijk u vinden dat de toepassing sommige kwesties ondervindt. De problemen vallen meestal in een van deze categorieën:
+Uiteindelijk kunt u zien dat er problemen zijn met de toepassing. De problemen vallen doorgaans in een van deze categorieën:
 
-1. Sommige component X in de monolithische app had een ongedocumenteerde afhankelijkheid van component Y, en je hebt die componenten net omgezet in afzonderlijke services. Aangezien deze services nu worden uitgevoerd op verschillende knooppunten in het cluster, zijn ze verbroken.
-2. Deze componenten communiceren via (lokale naam pijpen | gedeeld geheugen | bestanden op schijf) en ze moeten echt in staat zijn om te schrijven naar een gedeelde lokale bron om prestatieredenen nu. Die harde afhankelijkheid wordt later verwijderd, misschien.
-3. Alles is prima, maar het blijkt dat deze twee componenten zijn eigenlijk spraakzaam / prestatiegevoelig. Toen ze verhuisden ze naar afzonderlijke diensten algemene applicatie prestaties getankt of latentie verhoogd. Als gevolg hiervan voldoet de algehele toepassing niet aan de verwachtingen.
+1. Sommige onderdeel X in de monolithische-app heeft een niet-gedocumenteerde afhankelijkheid van Component Y en u hebt deze onderdelen zojuist in afzonderlijke services ingeschakeld. Omdat deze services nu worden uitgevoerd op verschillende knoop punten in het cluster, zijn ze verbroken.
+2. Deze onderdelen communiceren via (lokale named pipes | gedeeld geheugen | bestanden op schijf) en ze moeten echt kunnen schrijven naar een gedeelde lokale bron om prestatie redenen. De harde afhankelijkheid wordt later verwijderd.
+3. Alles is goed, maar het is belang rijk dat deze twee onderdelen werkelijk intensieve/prestatie gevoelig zijn. Wanneer ze ze naar afzonderlijke services hebben verplaatst, wordt de totale toepassings prestatie getankd of de latentie verhoogd. Als gevolg hiervan is de algehele toepassing niet aan verwachtingen voldoen.
 
-In deze gevallen willen we ons refactoringwerk niet verliezen en willen we niet terug naar de monoliet. De laatste voorwaarde kan zelfs wenselijk zijn als een eenvoudige optimalisatie. Echter, totdat we kunnen herontwerpen van de componenten om natuurlijk te werken als diensten (of totdat we de prestaties verwachtingen op een andere manier op te lossen) we gaan een gevoel van plaats nodig hebben.
+In deze gevallen is het niet mogelijk om de herstructureel werk te verliezen en wilt u niet teruggaan naar het op. De laatste voor waarde kan zelfs gewenst zijn als een gewone optimalisatie. Echter, totdat we de onderdelen zo kunnen ontwerpen dat ze op natuurlijke wijze werken als Services (of totdat we de prestatie verwachtingen op een andere manier kunnen oplossen), hebben we een deel van de lokale locatie nodig.
 
-Wat u moet doen? Je proberen affiniteit aan te zetten.
+Wat u moet doen? Het is ook mogelijk om de affiniteit in te scha kelen.
 
 ## <a name="how-to-configure-affinity"></a>Affiniteit configureren
-Als u affiniteit wilt instellen, definieert u een affiniteitsrelatie tussen twee verschillende services. U affiniteit als wijzen een dienst naar een andere en zeggen: Deze service kan alleen worden uitgevoerd waar die service wordt uitgevoerd. Soms verwijzen we naar affiniteit als een ouder/kind relatie (waarbij je het kind naar de ouder richt). Affiniteit zorgt ervoor dat de replica's of exemplaren van één service op dezelfde knooppunten worden geplaatst als die van een andere service.
+Als u affiniteit wilt instellen, definieert u een affiniteits relatie tussen twee verschillende services. U kunt de affiniteit beschouwen als ' wijzend ' één service op een andere en zegt ' deze service kan alleen worden uitgevoerd wanneer de service wordt uitgevoerd '. Soms verwijzen we naar affiniteit als een bovenliggende/onderliggende relatie (waarbij u het onderliggende item op het bovenliggende item plaatst). Affiniteit zorgt ervoor dat de replica's of exemplaren van één service worden geplaatst op dezelfde knoop punten als die van een andere service.
 
 ```csharp
 ServiceCorrelationDescription affinityDescription = new ServiceCorrelationDescription();
@@ -41,41 +41,41 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
 > [!NOTE]
-> Een kinddienst kan slechts deelnemen aan één affiniteitsrelatie. Als u wilde dat het kind te worden geinitiseerd om twee ouder diensten in een keer heb je een paar opties:
-> - De relaties omkeren (bovenliggendeService1- en bovenliggendeService2-punt hebben bij de huidige onderliggende service), of
-> - Wijs een van de ouders aan als hub bij overeenkomst en laat alle diensten op die service wijzen. 
+> Een onderliggende service kan alleen deel uitmaken van één affiniteits relatie. Als u wilt dat de onderliggende stelt teamlid aan twee bovenliggende services tegelijk wordt uitgevoerd, hebt u de volgende opties:
+> - De relaties omkeren (hebben parentService1-en parentService2-punt op de huidige onderliggende service) of
+> - Wijs een van de bovenliggende items aan als hub per Conventie en laat alle services-punten voor die service. 
 >
-> Het resulterende plaatsingsgedrag in het cluster moet hetzelfde zijn.
+> Het resulterende plaatsings gedrag in het cluster moet hetzelfde zijn.
 >
 
-## <a name="different-affinity-options"></a>Verschillende affiniteitsopties
-Affiniteit wordt weergegeven via een van de verschillende correlatieschema's, en heeft twee verschillende modi. De meest voorkomende manier van affiniteit is wat we NonAlignedAffinity noemen. In NonAlignedAffinity worden de replica's of exemplaren van de verschillende services op dezelfde knooppunten geplaatst. De andere modus is AlignedAffinity. Aligned Affinity is alleen nuttig met stateful services. Het configureren van twee stateful services om affiniteit op één lijn te hebben, zorgt ervoor dat de voorverkiezingen van deze services op dezelfde knooppunten als elkaar worden geplaatst. Het zorgt er ook voor dat elk paar secondaries voor deze diensten worden geplaatst op dezelfde knooppunten. Het is ook mogelijk (hoewel minder vaak) om NonAlignedAffinity te configureren voor stateful services. Voor NonAlignedAffinity worden de verschillende replica's van de twee stateful services uitgevoerd op dezelfde knooppunten, maar hun voorverkiezingen kunnen op verschillende knooppunten terechtkomen.
+## <a name="different-affinity-options"></a>Verschillende opties voor affiniteit
+Affiniteit wordt vertegenwoordigd via een van de verschillende correlatie schema's en heeft twee verschillende modi. De meest voorkomende affiniteits modus is wat we NonAlignedAffinity aanroepen. In NonAlignedAffinity worden de replica's of exemplaren van de verschillende services op dezelfde knoop punten geplaatst. De andere modus is AlignedAffinity. Uitgelijnde affiniteit is alleen nuttig met stateful Services. Als u twee stateful Services configureert om een uitgelijnde affiniteit te hebben, zorgt u ervoor dat de Primaries van die services op dezelfde knoop punten als elkaar worden geplaatst. Het zorgt er ook voor dat elk paar secundaire zones voor die services op dezelfde knoop punten worden geplaatst. Het is ook mogelijk (maar minder algemeen) om NonAlignedAffinity te configureren voor stateful Services. De verschillende replica's van de twee stateful services worden voor NonAlignedAffinity uitgevoerd op dezelfde knoop punten, maar hun Primaries kan uiteindelijk op verschillende knoop punten worden gestopt.
 
 <center>
 
-![Affiniteitsmodi en hun effecten][Image1]
+![Affiniteits modi en hun effecten][Image1]
 </center>
 
-### <a name="best-effort-desired-state"></a>Beste inspanning gewenste staat
-Een affiniteitrelatie is de beste inspanning. Het biedt niet dezelfde garanties voor collocatie of betrouwbaarheid als in hetzelfde uitvoerbare proces. De services in een affiniteitsrelatie zijn fundamenteel verschillende entiteiten die kunnen falen en onafhankelijk kunnen worden verplaatst. Een affiniteitsrelatie kan ook breken, hoewel deze onderbrekingen tijdelijk zijn. Capaciteitsbeperkingen kunnen bijvoorbeeld betekenen dat slechts enkele serviceobjecten in de affiniteitsrelatie op een bepaald knooppunt passen. In deze gevallen, ook al is er een affiniteitsrelatie, deze kan niet worden afgedwongen vanwege de andere beperkingen. Als dit mogelijk is, wordt de overtreding later automatisch gecorrigeerd.
+### <a name="best-effort-desired-state"></a>Gewenste status Best effort
+Een affiniteits relatie is het beste. Het biedt niet dezelfde garanties als plaatsing of betrouw baarheid die in hetzelfde uitvoer bare proces worden uitgevoerd. De services in een affiniteits relatie zijn fundamenteel verschillende entiteiten die kunnen mislukken en onafhankelijk worden verplaatst. Een affiniteits relatie kan ook worden verbroken, hoewel deze onderbrekingen tijdelijk zijn. Zo kunnen capaciteits beperkingen betekenen dat slechts enkele van de service objecten in de affiniteits relatie op een bepaald knoop punt passen. In deze gevallen, zelfs als er sprake is van een affiniteits relatie, kan deze niet worden afgedwongen als gevolg van de andere beperkingen. Als dit mogelijk is, wordt de schending automatisch later gecorrigeerd.
 
-### <a name="chains-vs-stars"></a>Kettingen versus sterren
-Vandaag de dag is de Cluster Resource Manager niet in staat om ketens van affiniteitsrelaties te modelleren. Wat dit betekent is dat een service die een kind is in een affiniteitsrelatie geen ouder kan zijn in een andere affiniteitsrelatie. Als u dit type relatie wilt modelleren, moet u het in feite modelleren als een ster, in plaats van als een keten. Om van een ketting naar een ster te gaan, wordt het onderste kind in plaats daarvan naar de ouder van het eerste kind gebracht. Afhankelijk van de opstelling van uw diensten, moet u dit mogelijk meerdere keren doen. Als er geen natuurlijke bovenliggende service is, moet u er mogelijk een maken die als tijdelijke aanduiding fungeert. Afhankelijk van uw vereisten u ook [toepassingsgroepen](service-fabric-cluster-resource-manager-application-groups.md)bekijken.
+### <a name="chains-vs-stars"></a>Ketens versus sterren
+De huidige cluster resource manager kan geen ketens van affiniteits relaties model leren. Dit betekent dat een service die een onderliggend item is in één affiniteits relatie geen bovenliggend item kan zijn in een andere affiniteits relatie. Als u dit type relatie wilt model leren, moet u het effectief model leren als een ster in plaats van een keten. Als u wilt overstappen van een keten naar een ster, zou het onderste onderliggende item in plaats daarvan worden geparent naar het bovenliggende Parent van het eerste onderliggende item. Afhankelijk van de rang schikking van uw services moet u dit mogelijk meerdere keren doen. Als er geen natuurlijke bovenliggende service is, moet u er mogelijk een maken die fungeert als tijdelijke aanduiding. Afhankelijk van uw vereisten kunt u ook zoeken in [toepassings groepen](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
 
-![Ketens versus sterren in de context van affiniteitsrelaties][Image2]
+![Ketens vergeleken met sterren in de context van Affiniteits relaties][Image2]
 </center>
 
-Een ander ding om op te merken over affiniteit relaties vandaag is dat ze directioneel standaard. Dit betekent dat de affiniteitsregel alleen afdwingt dat het kind bij de ouder wordt geplaatst. Het zorgt er niet voor dat de ouder zich bij het kind bevindt. Daarom, als er een schending van de affiniteit is en om de schending om de een of andere reden te corrigeren, is het niet haalbaar om het kind naar het knooppunt van de ouder te verplaatsen, dan - zelfs als het verplaatsen van de ouder naar het knooppunt van het kind de schending zou hebben gecorrigeerd - wordt de ouder niet verplaatst naar de kinderknooppunt. Als u de config [MoveParentToFixViolation](service-fabric-cluster-fabric-settings.md) instelt op true, wordt de directionaliteit verwijderd. Het is ook belangrijk op te merken dat de affiniteitsrelatie niet perfect of direct kan worden afgedwongen, omdat verschillende services verschillende levenscycli hebben en onafhankelijk kunnen mislukken en kunnen bewegen. Stel dat de ouder plotseling niet naar een ander knooppunt gaat omdat deze is gecrasht. De Cluster Resource Manager en Failover Manager behandelen de failover eerst, omdat het houden van de services up, consistent en beschikbaar is de prioriteit. Zodra de failover is voltooid, wordt de affiniteitsrelatie verbroken, maar de Cluster Resource Manager denkt dat alles in orde is totdat het merkt dat het kind zich niet bij de bovenliggende bevindt. Dit soort controles worden periodiek uitgevoerd. Meer informatie over hoe de Cluster Resource Manager beperkingen evalueert is beschikbaar in [dit artikel,](service-fabric-cluster-resource-manager-management-integration.md#constraint-types)en [deze](service-fabric-cluster-resource-manager-balancing.md) vertelt meer over hoe de cadans waarop deze beperkingen worden geëvalueerd configureren.   
+Een andere manier om te noteren over affiniteits relaties, is dat ze standaard worden genoteerd. Dit betekent dat de affiniteits regel alleen afdwingt dat het onderliggende element met het bovenliggende item is geplaatst. Er wordt niet gegarandeerd dat het bovenliggende item zich bevindt bij de onderliggende. Als er een affiniteits fout is opgetreden en de schending om een bepaalde reden niet haalbaar is, is het niet mogelijk om het onderliggende knoop punt te verplaatsen naar het knooppunt van het bovenliggende item, zelfs als het verplaatsen van het bovenliggende item naar het knoop punt van het kind de schending heeft gecorrigeerd. het bovenliggende item wordt niet verplaatst naar het knoop punt van de onderliggende. Als u de configuratie [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) instelt op True, wordt de directionality verwijderd. Het is ook belang rijk te weten dat de affiniteits relatie niet perfect of onmiddellijk kan worden afgedwongen omdat verschillende services met verschillende levens cycli hebben en kunnen mislukken en onafhankelijk worden verplaatst. Stel bijvoorbeeld dat het bovenliggende object plotseling een failover voor een ander knoop punt heeft uitgevoerd, omdat het is vastgelopen. De cluster resource manager en Failover Manager verwerken de failover eerst, omdat het actief, consistent en beschikbaar houden van de services de prioriteit is. Zodra de failover is voltooid, wordt de affiniteits relatie verbroken, maar de cluster resource manager denkt dat alles goed is totdat het onderliggende item zich niet bij het bovenliggende item bevindt. Deze sorteringen worden periodiek uitgevoerd. Meer informatie over de wijze waarop de cluster resource manager beperkingen evalueert, is beschikbaar in [dit artikel](service-fabric-cluster-resource-manager-management-integration.md#constraint-types), en dit wordt uitgelegd in [een](service-fabric-cluster-resource-manager-balancing.md) beschrijving van het configureren van de uitgebracht waarvoor deze beperkingen worden geëvalueerd.   
 
 
 ### <a name="partitioning-support"></a>Ondersteuning voor partitionering
-Het laatste wat opvalt aan affiniteit is dat affiniteitsrelaties niet worden ondersteund waar de bovenliggende wordt verdeeld. Verdeelde bovenliggende services kunnen uiteindelijk worden ondersteund, maar vandaag is het niet toegestaan.
+Het laatste wat u moet weten over affiniteit is dat affiniteits relaties niet worden ondersteund wanneer de bovenliggende partitie is gepartitioneerd. Gepartitioneerde bovenliggende Services kunnen uiteindelijk worden ondersteund, maar dit is niet toegestaan.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het configureren van services, [meer informatie over het configureren van Services](service-fabric-cluster-resource-manager-configure-services.md)
-- Als u services wilt beperken tot een kleine set machines of de lading services wilt aggregeren, gebruikt u [Toepassingsgroepen](service-fabric-cluster-resource-manager-application-groups.md)
+- Meer informatie over het configureren van Services vindt u op het [configureren van services](service-fabric-cluster-resource-manager-configure-services.md)
+- Voor het beperken van services naar een kleine set machines of het samen voegen van de belasting van services, gebruikt u [toepassings groepen](service-fabric-cluster-resource-manager-application-groups.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png

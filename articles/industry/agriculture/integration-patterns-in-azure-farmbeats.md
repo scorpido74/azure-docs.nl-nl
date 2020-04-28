@@ -6,30 +6,30 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482372"
 ---
 # <a name="integration-patterns"></a>Integratiepatronen
 
-Azure FarmBeats is een business-to-business-aanbod dat beschikbaar is in Azure Marketplace. FarmBeats maakt aggregatie van landbouwdatasets tussen providers mogelijk en het genereren van bruikbare inzichten door Kunstmatige Intelligentie (AI) of Machine Learning (ML) modellen te bouwen door de gegevenssets te smelten.
+Azure FarmBeats is een Business-to-Business-aanbieding die beschikbaar is in azure Marketplace. FarmBeats maakt aggregatie van agrarische gegevens sets tussen providers mogelijk en genereert detectie van actie bare inzichten door middel van het samen stellen van kunst matige intelligentie (AI) of Machine Learning (ML) modellen door de gegevens sets te weigeren.
 
-![Project Farm Beats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Maten van project-Farm](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
-In de volgende secties wordt het integratiepatroon voor Azure FarmBeats beschreven.
+In de volgende secties wordt het integratie patroon voor Azure FarmBeats beschreven.
 
-## <a name="why-integrate-with-azure-farmbeats"></a>Waarom integreren met Azure FarmBeats?
+## <a name="why-integrate-with-azure-farmbeats"></a>Waarom integreert u met Azure FarmBeats?
 
-Deze sectie is gericht op partners die hun datasystemen (zoals sensoren, drones, weerstations) willen integreren in Azure FarmBeats.
+Deze sectie is gericht op partners die hun gegevens systemen (zoals Sens oren, drones, weer stations) willen integreren in azure FarmBeats.
 
-Azure FarmBeats is een uitbreidbaar aanbod, waarmee agrarische bedrijven hun verschillende historische en realtime landbouwdatasets in één platform kunnen toevoegen. Azure FarmBeats helpt een agrarisch bedrijf bij het normaliseren, contextualiseren en samenvoegen van zijn gegevens in de context van een farm.
+Azure FarmBeats is een uitbreidbaar aanbod, waarmee landbouw bedrijven hun verschillende historische en realtime agrarische gegevens sets kunnen toevoegen aan één platform. Azure FarmBeats helpt een agrarisch bedrijf om de gegevens in de context van een farm te normaliseren, waarmee en samen te voegen.
 
-Door gegevenspartner te worden van Azure FarmBeats, u uw systemen openstellen voor bredere adoptie en meer klanten bereiken met uw gegevensaanbod. Azure FarmBeats biedt een uitbreidbare API-laag genaamd de Datahub, waarmee u gegevens van uw apparaten systematisch en in een gestandaardiseerd schema opnemen.
+Door een gegevens partner te worden met Azure FarmBeats, kunt u uw systemen openen om een bredere goed keuring te bieden en om meer klanten te bereiken met uw gegevens aanbiedingen. Azure FarmBeats biedt een uitbreid bare API-laag met de naam Datahub, waarmee u gegevens van uw apparaten systematisch en in een gestandaardiseerd schema kunt opnemen.
 
-Zodra de gegevens beschikbaar zijn in het Azure FarmBeats-exemplaar van uw klanten, kunnen uw klanten rijkere analyses en hulpprogramma's bovenop uw gegevens bouwen.
+Zodra de gegevens beschikbaar zijn in het Azure FarmBeats-exemplaar van uw klanten, kunnen uw klanten uitgebreidere analyses en hulpprogram ma's op uw gegevens bouwen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de integratie van sensorgegevens de integratie van [sensorgegevens](sensor-partner-integration-in-azure-farmbeats.md) en voor integratie van beeldende partners, integratie [van afbeeldingen.](imagery-partner-integration-in-azure-farmbeats.md)
+Zie voor meer informatie over sensor gegevens integratie [sensor gegevens integratie](sensor-partner-integration-in-azure-farmbeats.md) en voor het integreren van de installatie kopie van de partner [imagey-partner-integratie](imagery-partner-integration-in-azure-farmbeats.md).

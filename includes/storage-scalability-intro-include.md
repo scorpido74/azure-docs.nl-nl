@@ -9,14 +9,14 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c5c0c8f649e7cbab2c16688717de1aaabfb93c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75477146"
 ---
-Deze verwijzing bevat schaalbaarheid en prestatiedoelen voor Azure Storage. De schaalbaarheid s- en prestatiedoelen die hier worden genoemd, zijn high-end doelen, maar zijn haalbaar. In alle gevallen zijn de aanvraagsnelheid en bandbreedte die door uw opslagaccount worden bereikt, afhankelijk van de grootte van de opgeslagen objecten, de gebruikte toegangspatronen en het type werkbelasting dat uw toepassing uitvoert.
+Deze referentie bevat schaal baarheid en prestatie doelen voor Azure Storage. De schaal baarheid en prestatie doelen die hier worden weer gegeven, zijn hoogwaardige doelen, maar kunnen worden behaald. In alle gevallen is de aanvraag snelheid en band breedte die door uw opslag account wordt behaald, afhankelijk van de grootte van de opgeslagen objecten, de toegangs patronen die worden gebruikt en het type werk belasting dat door uw toepassing wordt uitgevoerd.
 
-Zorg ervoor dat u uw service test om te bepalen of de prestaties aan uw vereisten voldoen. Vermijd indien mogelijk plotselinge pieken in het verkeerstempo en zorg ervoor dat het verkeer goed verdeeld is over partities.
+Test uw service om te bepalen of de prestaties voldoen aan uw vereisten. Vermijd zo mogelijk plotselinge pieken in de frequentie van verkeer en zorg ervoor dat het verkeer goed wordt gedistribueerd over partities.
 
-Wanneer uw toepassing de limiet bereikt van wat een partitie voor uw werkbelasting kan verwerken, begint Azure Storage foutcode 503 (Server bezet) of foutcode 500 (Operation Timeout)-antwoorden te retourneren. Als er 503 fouten optreden, u overwegen uw toepassing te wijzigen om een exponentieel back-offbeleid te gebruiken voor nieuwe pogingen. De exponentiële backoff maakt het mogelijk de belasting op de partitie te verminderen, en te verlichten pieken in het verkeer naar die partitie.
+Wanneer uw toepassing de limiet bereikt van wat een partitie voor uw workload kan verwerken, begint Azure Storage met het retour neren van fout code 503 (server bezet) of fout code 500 (time-out van bewerking). Als er 503 fouten optreden, kunt u de toepassing aanpassen om een exponentieel uitstel-beleid te gebruiken voor nieuwe pogingen. Met de exponentiële uitstel kan de belasting van de partitie worden verkleind en kunnen pieken in het verkeer naar die partitie worden vergemakkelijkt.

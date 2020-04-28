@@ -1,7 +1,7 @@
 ---
-title: PowerShell gebruiken om een RBAC-rol toe te wijzen voor gegevenstoegang
+title: Power shell gebruiken om een RBAC-rol toe te wijzen voor gegevens toegang
 titleSuffix: Azure Storage
-description: Meer informatie over het gebruik van PowerShell om machtigingen toe te wijzen aan een Azure Active Directory-beveiligingsprincipal met rbac (role-based access control). Azure Storage ondersteunt ingebouwde en aangepaste RBAC-rollen voor verificatie via Azure AD.
+description: Meer informatie over het gebruik van Power shell om machtigingen toe te wijzen aan een Azure Active Directory beveiligingsprincipal met op rollen gebaseerd toegangs beheer (RBAC). Azure Storage ondersteunt ingebouwde en aangepaste RBAC-rollen voor verificatie via Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,39 +11,39 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 1413035c879198cf333aeeb5d8fe993162939172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75460580"
 ---
-# <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>PowerShell gebruiken om een RBAC-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens
+# <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Power shell gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
-Azure Active Directory (Azure AD) geeft toegangsrechten voor beveiligde bronnen door middel [van rbac (role-based access control).](../../role-based-access-control/overview.md) Azure Storage definieert een set ingebouwde RBAC-rollen die veelvoorkomende sets machtigingen omvatten die worden gebruikt om toegang te krijgen tot containers of wachtrijen.
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md). Azure Storage definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot containers of wacht rijen.
 
-Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligingsprincipal, verleent Azure toegang tot deze bronnen voor die beveiligingsprincipal. Toegang kan worden beperkt tot het niveau van het abonnement, de resourcegroep, het opslagaccount of een afzonderlijke container of wachtrij. Een Azure AD-beveiligingsprincipal kan een gebruiker, een groep, een hoofd van de toepassingsservice of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
+Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u Azure PowerShell gebruiken om ingebouwde RBAC-rollen weer te geven en aan gebruikers toe te wijzen. Zie Overzicht van Azure PowerShell voor meer informatie over het gebruik van Azure [PowerShell.](https://docs.microsoft.com/powershell/azure/overview)
+In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om ingebouwde RBAC-rollen weer te geven en toe te wijzen aan gebruikers. Zie [overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)voor meer informatie over het gebruik van Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-rollen voor blobs en wachtrijen
+## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-rollen voor blobs en wacht rijen
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Resourcebereik bepalen
+## <a name="determine-resource-scope"></a>Resource bereik bepalen
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>Beschikbare RBAC-rollen weergeven
+## <a name="list-available-rbac-roles"></a>Beschik bare RBAC-rollen weer geven
 
-Als u beschikbare ingebouwde RBAC-rollen wilt weergeven met Azure PowerShell, gebruikt u de opdracht [Get-AzRoleDefinition:](/powershell/module/az.resources/get-azroledefinition)
+Als u beschik bare ingebouwde RBAC-rollen met Azure PowerShell wilt weer geven, gebruikt u de opdracht [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) :
 
 ```powershell
 Get-AzRoleDefinition | FT Name, Description
 ```
 
-U ziet de ingebouwde Azure Storage-gegevensrollen die worden weergegeven, samen met andere ingebouwde rollen voor Azure:
+De ingebouwde Azure Storage gegevens rollen worden weer gegeven, samen met andere ingebouwde rollen voor Azure:
 
 ```Example
 Storage Blob Data Contributor             Allows for read, write and delete access to Azure Storage blob containers and data
@@ -57,17 +57,17 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-rbac-role-to-a-security-principal"></a>Een RBAC-rol toewijzen aan een beveiligingsprincipal
 
-Als u een RBAC-rol wilt toewijzen aan een beveiligingsprincipal, gebruikt u de opdracht [Nieuw-AzRoleAssignment.](/powershell/module/az.resources/new-azroleassignment) De indeling van de opdracht kan verschillen op basis van het bereik van de toewijzing. Als u de opdracht wilt uitvoeren, moet u de rol Eigenaar of inzender toegewezen hebben op het bijbehorende bereik. In de volgende voorbeelden ziet u hoe u een rol aan een gebruiker op verschillende scopes toewijst, maar u dezelfde opdracht gebruiken om een rol toe te wijzen aan een beveiligingsprincipal.
+Gebruik de opdracht [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) om een RBAC-rol toe te wijzen aan een beveiligingsprincipal. De indeling van de opdracht kan verschillen op basis van het bereik van de toewijzing. Als u de opdracht wilt uitvoeren, moet u de rol eigenaar of Inzender hebben toegewezen aan het overeenkomstige bereik. In de volgende voor beelden ziet u hoe u een rol toewijst aan een gebruiker in verschillende bereiken, maar u kunt dezelfde opdracht gebruiken om een rol toe te wijzen aan een beveiligings-principal.
 
-### <a name="container-scope"></a>Containerbereik
+### <a name="container-scope"></a>Container bereik
 
-Als u een rol wilt toewijzen die aan een container is `--scope` toegewezen, geeft u een tekenreeks op die het bereik van de container voor de parameter bevat. De ruimte voor een container is in de vorm:
+Als u een Role bereik wilt toewijzen aan een container, geeft u een teken reeks op met het bereik van `--scope` de container voor de para meter. Het bereik voor een container bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-In het volgende voorbeeld wordt de rol **opslagblobgegevensbijdrager** toewijst aan een gebruiker die wordt uitgevoerd aan een container met de naam *sample-container*. Zorg ervoor dat u de voorbeeldwaarden en de tijdelijke aanduidingswaarden tussen haakjes vervangt door uw eigen waarden: 
+In het volgende voor beeld wordt de rol **Storage BLOB data Inzender** toegewezen aan een gebruiker, met een container met de naam *sample-container*. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -75,15 +75,15 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
 ```
 
-### <a name="queue-scope"></a>Wachtrijbereik
+### <a name="queue-scope"></a>Wachtrij bereik
 
-Als u een rol wilt toewijzen die aan een wachtrij is `--scope` toegewezen, geeft u een tekenreeks op met de bereik van de wachtrij voor de parameter. De ruimte voor een wachtrij is in het formulier:
+Als u een Role bereik aan een wachtrij wilt toewijzen, geeft u een teken reeks met het bereik van de `--scope` wachtrij voor de para meter op. Het bereik voor een wachtrij bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-In het volgende voorbeeld wordt de rol van de **bijdrage voor opslagwachtrijgegevens aan** een gebruiker toegesteld aan een wachtrij met de naam *sample-queue*. Zorg ervoor dat u de voorbeeldwaarden en de tijdelijke aanduidingswaarden tussen haakjes vervangt door uw eigen waarden: 
+In het volgende voor beeld wordt de rol Inzender voor gegevens van de **opslag wachtrij** toegewezen aan een gebruiker, met het bereik van een wachtrij met de naam *voorbeeld wachtrij*. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -91,15 +91,15 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/sample-queue"
 ```
 
-### <a name="storage-account-scope"></a>Bereik van opslagaccount
+### <a name="storage-account-scope"></a>Bereik van opslag account
 
-Als u een rol wilt toewijzen die aan het opslagaccount `--scope` is toegewezen, geeft u het bereik van de bron van het opslagaccount voor de parameter op. De ruimte voor een opslagaccount is in het formulier:
+Als u een rollen bereik wilt toewijzen aan het opslag account, geeft u het bereik van de bron van het `--scope` opslag account op voor de para meter. Het bereik van een opslag account bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-In het volgende voorbeeld ziet u hoe u de rol **Storage Blob Data Reader** bereiken op een gebruiker op het niveau van het opslagaccount. Zorg ervoor dat u de voorbeeldwaarden vervangt door uw eigen waarden: 
+In het volgende voor beeld ziet u hoe u de rol van **Blob Storage-gegevens lezer** kunt bereiken voor een gebruiker op het niveau van het opslag account. Zorg ervoor dat u de voorbeeld waarden vervangt door uw eigen waarden: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -107,9 +107,9 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-### <a name="resource-group-scope"></a>Bereik van resourcegroepen
+### <a name="resource-group-scope"></a>Bereik van de resource groep
 
-Als u een rol wilt toewijzen die aan de resourcegroep `--resource-group` is toegewezen, geeft u de naam of id van de resourcegroep voor de parameter op. In het volgende voorbeeld wordt de rol Van de **gegevenslezer van** de opslagwachtrij aan een gebruiker op het niveau van de resourcegroep toegerichtingd. Zorg ervoor dat u de voorbeeldwaarden en tijdelijke aanduidingswaarden tussen haakjes vervangt door uw eigen waarden: 
+Als u een rollen bereik wilt toewijzen aan de resource groep, geeft u de naam van de resource groep `--resource-group` of id voor de para meter op. In het volgende voor beeld wordt de rol van **gegevens lezer van de opslag wachtrij** toegewezen aan een gebruiker op het niveau van de resource groep. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -117,15 +117,15 @@ New-AzRoleAssignment -SignInName <email> `
     -ResourceGroupName "sample-resource-group"
 ```
 
-### <a name="subscription-scope"></a>Abonnementsbereik
+### <a name="subscription-scope"></a>Abonnements bereik
 
-Als u een rol wilt toewijzen die aan het `--scope` abonnement is toegewezen, geeft u de ruimte voor het abonnement voor de parameter op. De ruimte voor een abonnement is in het formulier:
+Als u een rollen bereik wilt toewijzen aan het abonnement, geeft u het bereik op voor het `--scope` abonnement voor de para meter. Het bereik voor een abonnement bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>
 ```
 
-In het volgende voorbeeld ziet u hoe u de rol **Storage Blob Data Reader** toewijst aan een gebruiker op het niveau van het opslagaccount. Zorg ervoor dat u de voorbeeldwaarden vervangt door uw eigen waarden: 
+In het volgende voor beeld ziet u hoe u de rol **Storage BLOB data Reader** toewijst aan een gebruiker op het niveau van het opslag account. Zorg ervoor dat u de voorbeeld waarden vervangt door uw eigen waarden: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

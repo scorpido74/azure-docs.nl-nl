@@ -1,6 +1,6 @@
 ---
-title: Failback oplossen in VMware VM-noodherstel met Azure Site Recovery
-description: In dit artikel worden manieren beschreven om failback- en herbeveiligingsproblemen op te lossen tijdens VMware VM-noodherstel naar Azure met Azure Site Recovery.
+title: Problemen met failback in VMware VM-nood herstel oplossen met Azure Site Recovery
+description: In dit artikel worden manieren beschreven voor het oplossen van problemen met failback en opnieuw beveiligen tijdens de nood herstel van een VMware-VM naar Azure met Azure Site Recovery.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -8,94 +8,94 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498100"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Problemen met failback naar on-premises vanuit Azure oplossen
 
-In dit artikel wordt beschreven hoe u problemen oplossen wanneer u Azure VM's niet terughaalt naar uw on-premises VMware-infrastructuur, nadat u azure hebt overgelaten met [Azure Site Recovery](site-recovery-overview.md).
+In dit artikel wordt beschreven hoe u problemen oplost die kunnen optreden wanneer u back-ups van virtuele Azure-machines naar uw on-premises VMware-infra structuur uitvoert, nadat u de failover naar Azure hebt uitgevoerd met behulp van [Azure site Recovery](site-recovery-overview.md).
 
-Failback omvat in wezen twee belangrijke stappen. Voor de eerste stap, na failover, moet u Azure VM's opnieuw beveiligen naar on-premises, zodat ze beginnen te repliceren. De tweede stap is het uitvoeren van een failover van Azure om terug te mislukken naar uw on-premises site.
+Voor failback zijn in feite twee belang rijke stappen vereist. Voor de eerste stap moet u na een failover de Azure-Vm's opnieuw beveiligen naar on-premises zodat ze worden gerepliceerd. De tweede stap bestaat uit het uitvoeren van een failover vanuit Azure om een failback uit te voeren naar uw on-premises site.
 
 ## <a name="common-issues"></a>Algemene problemen
 
-- Als u een alleen-lezen vCenter-detectie van gebruikers uitvoert en virtuele machines beschermt, slaagt beveiliging en werkt failover. Tijdens de herbescherming mislukt failover omdat de datastores niet kunnen worden gedetecteerd. Een symptoom is dat de datastores niet worden vermeld tijdens herbescherming. Als u dit probleem wilt oplossen, u de vCenter-referenties bijwerken met een geschikt account met machtigingen en de taak vervolgens opnieuw proberen.
-- Wanneer u een virtuele Linux-machine niet teruglaat en deze on-premises uitvoert, u zien dat het Network Manager-pakket van de machine is verwijderd. Deze verwijdering vindt plaats omdat het pakket Netwerkbeheer wordt verwijderd wanneer de virtuele machine wordt hersteld in Azure.
-- Wanneer een virtuele Linux-machine is geconfigureerd met een statisch IP-adres en niet is overgegaan naar Azure, wordt het IP-adres overgenomen van DHCP. Wanneer u niet overgaat naar on-premises, blijft de virtuele machine DHCP gebruiken om het IP-adres te verwerven. Meld u handmatig aan bij de machine en stel het IP-adres indien nodig in op een statisch adres. Een virtuele Windows-machine kan zijn statische IP-adres opnieuw verkrijgen.
-- Als u de ESXi 5.5 gratis editie of de vSphere 6 Hypervisor gratis editie gebruikt, slaagt failover, maar failback slaagt niet. Als u failback wilt inschakelen, u upgraden naar de evaluatielicentie van een van beide programma's.
-- Als u de configuratieserver niet vanaf de processerver bereiken, gebruikt u Telnet om de verbinding met de configuratieserver op poort 443 te controleren. U ook proberen de configuratieserver vanaf de processerver te pingen. Een processerver moet ook een hartslag hebben wanneer deze is verbonden met de configuratieserver.
-- Een Windows Server 2008 R2 SP1-server die is beveiligd als een fysieke on-premises server, kan niet worden teruggezet van Azure naar een on-premises site.
-- U niet in de volgende omstandigheden falen:
-    - U hebt machines gemigreerd naar Azure. [Meer informatie](migrate-overview.md#what-do-we-mean-by-migration).
-    - U hebt een vm verplaatst naar een andere resourcegroep.
-    - U hebt de Azure VM verwijderd.
-    - U hebt de beveiliging van de VM uitgeschakeld.
-    - U hebt de VM handmatig gemaakt in Azure. De machine had in eerste instantie on-premises moeten zijn beveiligd en moet niet worden overgedragen aan Azure voordat deze opnieuw werd beveiligd.
-    - U alleen falen bij een ESXi-host. U VMware VM's of fysieke servers niet terugsturen naar Hyper-V-hosts, fysieke machines of VMware-werkstations.
+- Als u een alleen-lezen gebruikers-vCenter-detectie uitvoert en virtuele machines beveiligt, is de beveiliging geslaagd en werkt failover. Tijdens het opnieuw beveiligen mislukt de failover omdat de gegevens opslag niet kan worden gedetecteerd. Een symptoom is dat de gegevens opslag niet wordt weer gegeven tijdens het opnieuw beveiligen. U kunt dit probleem oplossen door de vCenter-referenties bij te werken met een geschikt account dat machtigingen heeft en de taak vervolgens opnieuw uit te voeren.
+- Wanneer u een back-up van een virtuele Linux-machine maakt en deze on-premises uitvoert, kunt u zien dat het pakket met de netwerk beheerder is verwijderd van de computer. Dit wordt veroorzaakt doordat het pakket voor netwerk beheer wordt verwijderd wanneer de virtuele machine wordt hersteld in Azure.
+- Wanneer een virtuele Linux-machine is geconfigureerd met een statisch IP-adres en failover naar Azure wordt uitgevoerd, wordt het IP-adres verkregen van DHCP. Wanneer u een failover naar on-premises doorvoert, blijft de virtuele machine DHCP gebruiken voor het verkrijgen van het IP-adres. Meld u hand matig aan bij de computer en stel het IP-adres vervolgens weer in op een statisch adres, indien nodig. Een virtuele Windows-machine kan het vaste IP-adres opnieuw verkrijgen.
+- Als u de ESXi 5,5 Free Edition of de gratis versie van vSphere 6 Hyper Visor gebruikt, mislukt de failover, maar failback mislukt. Als u failback wilt inschakelen, moet u een upgrade uitvoeren naar de evaluatie licentie van het programma.
+- Als u de configuratie server niet kunt bereiken vanaf de proces server, gebruikt u Telnet om de verbinding met de configuratie server op poort 443 te controleren. U kunt ook proberen de configuratie server te pingen vanaf de proces server. Een proces server moet ook een heartbeat hebben als deze is verbonden met de configuratie server.
+- Een Windows Server 2008 R2 SP1-server die wordt beveiligd als een fysieke on-premises server kan niet worden teruggezet van Azure naar een on-premises site.
+- U kunt geen failback uitvoeren in de volgende situaties:
+    - U hebt computers gemigreerd naar Azure. [Meer informatie](migrate-overview.md#what-do-we-mean-by-migration).
+    - U hebt een virtuele machine naar een andere resource groep verplaatst.
+    - U hebt de Azure-VM verwijderd.
+    - U hebt de beveiliging van de virtuele machine uitgeschakeld.
+    - U hebt de virtuele machine hand matig in azure gemaakt. De machine moet eerst on-premises en failover naar Azure worden uitgevoerd voordat de beveiliging opnieuw wordt beschermd.
+    - U kunt alleen een failover uitvoeren naar een ESXi-host. U kunt geen failback uitvoeren voor virtuele VMware-machines of fysieke servers naar Hyper-V-hosts, fysieke machines of VMware-werk stations.
 
 
-## <a name="troubleshoot-reprotection-errors"></a>Fouten in herbeveiliging oplossen
+## <a name="troubleshoot-reprotection-errors"></a>Fouten bij het opnieuw beveiligen oplossen
 
-In dit gedeelte worden veelvoorkomende herbeschermingsfouten beschreven en hoe u deze corrigeren.
+In deze sectie vindt u informatie over veelvoorkomende problemen met opnieuw beveiligen en hoe u deze kunt corrigeren.
 
-### <a name="error-code-95226"></a>Foutcode 95226
+### <a name="error-code-95226"></a>Fout code 95226
 
-**Reprotect is mislukt omdat de virtuele Azure-machine de on-premises configuratieserver niet kon bereiken.**
+**Het opnieuw beveiligen is mislukt omdat de virtuele Azure-machine de on-premises configuratie server niet kan bereiken.**
 
 Deze fout treedt op wanneer:
 
-* De Azure VM kan de on-premises configuratieserver niet bereiken. De VM kan niet worden gedetecteerd en geregistreerd op de configuratieserver.
-* De InMage Scout-toepassingsservice wordt niet uitgevoerd op de Azure VM na failover. De service is nodig voor communicatie met de on-premises configuratieserver.
+* De Azure-VM kan de on-premises configuratie server niet bereiken. De virtuele machine kan niet worden gedetecteerd en geregistreerd op de configuratie server.
+* De inmage Scout-toepassings service wordt niet uitgevoerd op de virtuele Azure-machine na een failover. De service is vereist voor communicatie met de on-premises configuratie server.
 
 Los dit probleem als volgt op:
 
-* Controleer of de Azure VM met het Azure VM kan communiceren met de on-premises configuratieserver. U een site-to-site VPN instellen voor uw on-premises datacenter of een Azure ExpressRoute-verbinding configureren met private peering op het virtuele netwerk van de Azure VM.
-* Als de VM kan communiceren met de on-premises configuratieserver, meldt u zich aan bij de VM. Controleer vervolgens de InMage Scout applicatie service. Als u ziet dat deze niet wordt uitgevoerd, start u de service handmatig. Controleer of het begintype van de service is ingesteld op **Automatisch**.
+* Controleer of het VM-netwerk van Azure toestaat dat de Azure VM communiceert met de on-premises configuratie server. U kunt een site-naar-site-VPN instellen voor uw on-premises Data Center of een Azure ExpressRoute-verbinding configureren met privé-peering op het virtuele netwerk van de Azure VM.
+* Als de virtuele machine kan communiceren met de on-premises configuratie server, meldt u zich aan bij de virtuele machine. Controleer vervolgens de toepassings service inmage Scout. Als u ziet dat deze niet wordt uitgevoerd, start u de service hand matig. Controleer of het start type van de service is ingesteld op **automatisch**.
 
-### <a name="error-code-78052"></a>Foutcode 78052
+### <a name="error-code-78052"></a>Fout code 78052
 
-**Bescherming kon niet worden voltooid voor de virtuele machine.**
+**De beveiliging kan niet worden voltooid voor de virtuele machine.**
 
-Dit probleem kan optreden als er al een VM met dezelfde naam op de hoofddoelserver staat waarop u niet terugwerkt.
-
-Los dit probleem als volgt op:
-
-* Selecteer een andere hoofddoelserver op een andere host, zodat herbescherming de machine op een andere host maakt, waarbij de namen niet botsen.
-* U vMotion ook gebruiken om het hoofddoel naar een andere host te verplaatsen waar de naambotsing niet zal plaatsvinden. Als de bestaande VM een verdwaalde machine is, wijzigt u de naam zodat de nieuwe VM op dezelfde ESXi-host kan worden gemaakt.
-
-
-### <a name="error-code-78093"></a>Foutcode 78093
-
-**De VM wordt niet uitgevoerd, in een hangende staat, of niet toegankelijk.**
+Dit probleem kan zich voordoen als er al een virtuele machine met dezelfde naam op de hoofddoel server is die u niet meer gebruikt.
 
 Los dit probleem als volgt op:
 
-Als u een mislukte VM opnieuw wilt beveiligen, moet de Azure VM worden uitgevoerd, zodat Mobility Service zich registreert bij de on-premises configuratieserver en kan beginnen met repliceren door te communiceren met de processerver. Als de machine zich op een onjuist netwerk bevindt of niet wordt uitgevoerd (reageert of niet wordt afgesloten), kan de configuratieserver de Mobiliteitsservice op de VM niet bereiken om opnieuw te worden beschermd.
+* Selecteer een andere Master doel server op een andere host zodat de computer op een andere host wordt gemaakt, waarbij de namen niet conflicteren.
+* U kunt vMotion ook gebruiken om het hoofd doel te verplaatsen naar een andere host waar de naam conflicten niet optreden. Als de bestaande VM een losse machine is, wijzigt u de naam zodat de nieuwe VM op dezelfde ESXi-host kan worden gemaakt.
 
-* Start de VM opnieuw op, zodat deze on-premises kan communiceren.
-* Start de taak opnieuw beveiligen nadat u de virtuele Azure-machine hebt gestart.
 
-### <a name="error-code-8061"></a>Foutcode 8061
+### <a name="error-code-78093"></a>Fout code 78093
 
-**De datastore is niet toegankelijk via ESXi host.**
+**De VM wordt niet uitgevoerd, is vastgelopen of is niet toegankelijk.**
 
-Controleer de [vereisten voor hoofddoelvereisten en ondersteunde gegevensopslag](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) voor failback.
+Los dit probleem als volgt op:
+
+Als u een failover-VM opnieuw wilt beveiligen, moet de virtuele machine van Azure worden uitgevoerd zodat de Mobility-service wordt geregistreerd bij de on-premises configuratie server en kan worden gerepliceerd door te communiceren met de proces server. Als de computer zich op een onjuist netwerk bevindt of niet wordt uitgevoerd (niet reageert of wordt afgesloten), kan de configuratie server de Mobility-service niet bereiken op de VM om de herbeveiliging te starten.
+
+* Start de VM opnieuw op zodat deze on-premises kan communiceren.
+* Start de taak opnieuw beveiligen opnieuw nadat u de virtuele machine van Azure hebt gestart.
+
+### <a name="error-code-8061"></a>Fout code 8061
+
+**De gegevens opslag is niet toegankelijk vanaf de ESXi-host.**
+
+Controleer de [vereisten voor het hoofd doel en ondersteunde gegevens archieven](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) voor failback.
 
 
 ## <a name="troubleshoot-failback-errors"></a>Failback-fouten oplossen
 
-In deze sectie worden veelvoorkomende fouten beschreven die u tijdens failback tegenkomen.
+In deze sectie worden veelvoorkomende fouten beschreven die kunnen optreden tijdens het failback.
 
-### <a name="error-code-8038"></a>Foutcode 8038
+### <a name="error-code-8038"></a>Fout code 8038
 
-**Kan de on-premises virtuele machine niet ter sprake brengen vanwege de fout.**
+**Het online zetten van de on-premises virtuele machine is mislukt vanwege de fout.**
 
-Dit probleem treedt op wanneer de on-premises VM wordt weergegeven op een host die niet genoeg geheugen heeft ingericht. 
+Dit probleem treedt op wanneer de on-premises VM wordt geactiveerd op een host waarvoor onvoldoende geheugen is ingericht. 
 
 Los dit probleem als volgt op:
 
-* Inrichten meer geheugen op de ESXi-host.
-* Bovendien u vMotion gebruiken om de VM naar een andere ESXi-host te verplaatsen die voldoende geheugen heeft om de VM op te starten.
+* Richt meer geheugen in op de ESXi-host.
+* Daarnaast kunt u met vMotion de virtuele machine verplaatsen naar een andere ESXi-host die voldoende geheugen heeft om de virtuele machine op te starten.

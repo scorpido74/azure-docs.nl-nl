@@ -1,23 +1,23 @@
 ---
-title: Veilige WCF-gebaseerde servicecommunicatie
-description: Meer informatie over het beveiligen van wcf-gebaseerde communicatie voor betrouwbare services die worden uitgevoerd in een Azure Service Fabric-cluster.
+title: Beveiligde service communicatie op basis van WCF
+description: Meer informatie over het beveiligen van op WCF gebaseerde communicatie voor betrouw bare services die worden uitgevoerd in een Azure Service Fabric-cluster.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614159"
 ---
-# <a name="secure-wcf-based-communications-for-a-service"></a>Beveiligde WCF-communicatie voor een service
-Veiligheid is een van de belangrijkste aspecten van communicatie. Het application framework Reliable Services biedt een aantal vooraf gebouwde communicatiestacks en -tools die u gebruiken om de beveiliging te verbeteren. In dit artikel wordt uitgelegd hoe u de beveiliging verbeteren wanneer u serviceremoting gebruikt.
+# <a name="secure-wcf-based-communications-for-a-service"></a>Beveiligde communicatie op basis van WCF voor een service
+Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. In dit artikel wordt uitgelegd hoe u de beveiliging kunt verbeteren wanneer u service remoting gebruikt.
 
-We gebruiken een bestaand [voorbeeld](service-fabric-reliable-services-communication-wcf.md) waarin wordt uitgelegd hoe u een WCF-gebaseerde communicatiestack voor betrouwbare services opzetten. Voer de volgende stappen uit om een service te beveiligen wanneer u een op WCF gebaseerde communicatiestack gebruikt:
+We gebruiken een bestaand [voor beeld](service-fabric-reliable-services-communication-wcf.md) waarin wordt uitgelegd hoe u een op WCF gebaseerde communicatie stack instelt voor betrouw bare Services. Voer de volgende stappen uit om een service te helpen beveiligen wanneer u een op WCF gebaseerde communicatie stack gebruikt:
 
-1. Voor de service moet u de WCF-communicatieluisteraar ()`WcfCommunicationListener`die u maakt, beveiligen. Wijzig hiervoor de `CreateServiceReplicaListeners` methode.
+1. Voor de service moet u helpen de WCF Communication listener (`WcfCommunicationListener`) te beveiligen die u maakt. U doet dit door de `CreateServiceReplicaListeners` methode te wijzigen.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -54,7 +54,7 @@ We gebruiken een bestaand [voorbeeld](service-fabric-reliable-services-communica
         return b;
     }
     ```
-2. In de client `WcfCommunicationClient` blijft de klasse die in het vorige [voorbeeld](service-fabric-reliable-services-communication-wcf.md) is gemaakt, ongewijzigd. Maar je moet `CreateClientAsync` de `WcfCommunicationClientFactory`methode van overschrijven:
+2. In de-client blijft `WcfCommunicationClient` de klasse die in het vorige [voor beeld](service-fabric-reliable-services-communication-wcf.md) is gemaakt, ongewijzigd. Maar u moet de `CreateClientAsync` `WcfCommunicationClientFactory`volgende methode onderdrukken:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -104,7 +104,7 @@ We gebruiken een bestaand [voorbeeld](service-fabric-reliable-services-communica
     }
     ```
 
-    Gebruik `SecureWcfCommunicationClientFactory` om een WCF-communicatieclient te maken (`WcfCommunicationClient`). Gebruik de client om servicemethoden aan te roepen.
+    Gebruiken `SecureWcfCommunicationClientFactory` om een WCF-communicatie client (`WcfCommunicationClient`) te maken. Gebruik de-client om service methoden aan te roepen.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();
@@ -120,4 +120,4 @@ We gebruiken een bestaand [voorbeeld](service-fabric-reliable-services-communica
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-Lees als volgende stap [Web API met OWIN in Reliable Services.](service-fabric-reliable-services-communication-webapi.md)
+Als volgende stap leest u [Web API with OWIN in reliable Services](service-fabric-reliable-services-communication-webapi.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect-transformaties voor cloudinrichting
-description: In dit artikel wordt beschreven hoe u transformaties gebruikt om de standaardtoewijzingen voor kenmerken te wijzigen.
+title: Azure AD Connect Cloud Provisioning-trans formaties
+description: In dit artikel wordt beschreven hoe u trans formaties gebruikt om de standaard kenmerk toewijzingen te wijzigen.
 author: billmath
 ms.author: billmath
 manager: davba
@@ -9,32 +9,32 @@ ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75549292"
 ---
 # <a name="transformations"></a>Transformaties
 
-Met een transformatie u het standaardgedrag wijzigen van de manier waarop een kenmerk wordt gesynchroniseerd met Azure Active Directory (Azure AD) met behulp van cloudprovisioning.
+Met een trans formatie kunt u het standaard gedrag wijzigen van de manier waarop een kenmerk wordt gesynchroniseerd met Azure Active Directory (Azure AD) door gebruik te maken van Cloud provisioning.
 
-Om deze taak uit te voeren, moet u het schema bewerken en vervolgens opnieuw indienen via een webaanvraag.
+Als u deze taak wilt uitvoeren, moet u het schema bewerken en vervolgens opnieuw verzenden via een webaanvraag.
 
-Zie Het [Azure AD-schema begrijpen](concept-attributes.md)voor meer informatie over cloudprovisioning-kenmerken.
+Zie [informatie over het Azure AD-schema](concept-attributes.md)voor meer informatie over de inrichtings kenmerken in de Cloud.
 
 
 ## <a name="retrieve-the-schema"></a>Het schema ophalen
-Als u het schema wilt ophalen, voert u de stappen in [Weergave van het schema](concept-attributes.md#view-the-schema)uit. 
+Volg de stappen in [het schema weer geven](concept-attributes.md#view-the-schema)om het schema op te halen. 
 
-## <a name="custom-attribute-mapping"></a>Aangepaste toewijzing van kenmerken
-Als u een aangepaste kenmerktoewijzing wilt toevoegen, voert u deze stappen uit.
+## <a name="custom-attribute-mapping"></a>Toewijzing van aangepast kenmerk
+Voer de volgende stappen uit om een toewijzing van een aangepast kenmerk toe te voegen.
 
-1. Kopieer het schema naar een tekst- of codeeditor, zoals [Visual Studio Code](https://code.visualstudio.com/).
+1. Kopieer het schema naar een tekst-of code-editor, zoals [Visual Studio code](https://code.visualstudio.com/).
 1. Zoek het object dat u wilt bijwerken in het schema.
 
    ![Object in het schema](media/how-to-transformation/transform1.png)</br>
-1. Zoek de `ExtensionAttribute3` code voor onder het gebruikersobject.
+1. Zoek de code voor `ExtensionAttribute3` onder het gebruikers object.
 
     ```
                             {
@@ -62,7 +62,7 @@ Als u een aangepaste kenmerktoewijzing wilt toevoegen, voert u deze stappen uit.
                                 }
                             },
     ```
-1. Bewerk de code zodat het bedrijfskenmerk `ExtensionAttribute3`is toegewezen aan .
+1. Bewerk de code zodat het bedrijfs kenmerk wordt toegewezen aan `ExtensionAttribute3`.
 
    ```
                                     {
@@ -90,25 +90,25 @@ Als u een aangepaste kenmerktoewijzing wilt toevoegen, voert u deze stappen uit.
                                         }
                                     },
    ```
- 1. Kopieer het schema terug naar Grafiekverkenner, wijzig het **aanvraagtype** in **PUT**en selecteer **Query uitvoeren**.
+ 1. Kopieer het schema terug naar Graph Explorer, wijzig het **aanvraag type** in **put**en selecteer **query uitvoeren**.
 
     ![Query uitvoeren](media/how-to-transformation/transform2.png)
 
- 1. Ga nu in de Azure-portal naar de configuratie voor cloudinrichting en selecteer **Inrichting opnieuw starten.**
+ 1. Ga nu in het Azure Portal naar de inrichtings configuratie voor de Cloud en selecteer **inrichting opnieuw starten**.
 
-    ![Inrichting opnieuw opstarten](media/how-to-transformation/transform3.png)
+    ![Inrichting opnieuw starten](media/how-to-transformation/transform3.png)
 
- 1. Controleer na verloop van tijd of de kenmerken worden ingevuld door `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`de volgende query uit te voeren in Grafiek Verkenner: .
- 1. Je zou nu de waarde moeten zien.
+ 1. Na een tijdje kunt u controleren of de kenmerken worden ingevuld door de volgende query uit te voeren in Graph Explorer `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`:.
+ 1. Nu ziet u de waarde.
 
-    ![De waarde wordt weergegeven](media/how-to-transformation/transform4.png)
+    ![De waarde wordt weer gegeven](media/how-to-transformation/transform4.png)
 
-## <a name="custom-attribute-mapping-with-function"></a>Aangepaste kenmerktoewijzing met functie
-Voor meer geavanceerde toewijzing u functies gebruiken waarmee u de gegevens manipuleren en waarden maken voor kenmerken die aan de behoeften van uw organisatie voldoen.
+## <a name="custom-attribute-mapping-with-function"></a>Toewijzing van aangepast kenmerk met functie
+Voor een geavanceerdere toewijzing kunt u functies gebruiken waarmee u de gegevens bewerkt en waarden kunt maken voor kenmerken die voldoen aan de behoeften van uw organisatie.
 
-Als u deze taak wilt uitvoeren, volgt u de vorige stappen en bewerkt u de functie die wordt gebruikt om de uiteindelijke waarde te construeren.
+Volg de vorige stappen om deze taak uit te voeren en bewerk vervolgens de functie die wordt gebruikt om de uiteindelijke waarde te maken.
 
-Zie [Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory voor](reference-expressions.md)informatie over de syntaxis en voorbeelden van expressies.
+Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](reference-expressions.md)voor meer informatie over de syntaxis en voor beelden van expressies.
 
 
 ## <a name="next-steps"></a>Volgende stappen 

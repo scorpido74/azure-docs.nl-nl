@@ -1,40 +1,40 @@
 ---
-title: Herstel na noodgevallen voor Azure-gegevensshare
-description: Herstel na noodgevallen voor Azure-gegevensshare
+title: Herstel na nood geval voor Azure-gegevens share
+description: Herstel na nood geval voor Azure-gegevens share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: a736e3ddfcf785f9ce27140eed58374a0732c1f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483178"
 ---
-# <a name="disaster-recovery-for-azure-data-share"></a>Herstel na noodgevallen voor Azure-gegevensshare
+# <a name="disaster-recovery-for-azure-data-share"></a>Herstel na nood geval voor Azure-gegevens share
 
-In dit artikel bekijken we hoe u een noodherstelomgeving voor Azure Data Share configureren. Azure-datacenteronderbrekingen zijn zeldzaam, maar kunnen een paar minuten tot uren duren. Uitval van datacenters kan leiden tot verstoring van omgevingen die afhankelijk zijn van gegevens die worden gedeeld door de gegevensprovider. Door de stappen in dit artikel te volgen, kunnen gegevensproviders gegevens blijven delen met hun gegevensconsumenten in het geval van een datacenterstoring voor de primaire regio die uw gegevensaandeel host. 
+In dit artikel wordt uitgelegd hoe u een nood herstel omgeving kunt configureren voor Azure-gegevens share. Storingen in azure Data Center zijn zeldzaam, maar kunnen een paar minuten tot uur duren. Data Center storingen kunnen leiden tot onderbrekingen in omgevingen die afhankelijk zijn van gegevens die worden gedeeld door de gegevens provider. Door de stappen te volgen die in dit artikel worden beschreven, kunnen gegevens providers gegevens blijven delen met hun eigen gegevens, in het geval van een storing in een Data Center voor de primaire regio die als host fungeert voor uw gegevens share. 
 
-## <a name="achieving-business-continuity-for-azure-data-share"></a>Bedrijfscontinuïteit voor Azure Data Share bereiken
+## <a name="achieving-business-continuity-for-azure-data-share"></a>Bedrijfs continuïteit voor Azure-gegevens delen bereiken
 
-Om voorbereid te zijn op een uitval van datacenters, kan de gegevensprovider een omgeving voor gegevensshare laten inrichten in een secundaire regio. Er zijn maatregelen die kunnen worden genomen die een soepele failover zal zorgen in het geval dat een datacenter storing optreedt. 
+Voor de voor bereiding op een Data Center-storing kan de gegevens provider een gegevens share omgeving hebben die is ingericht in een secundaire regio. Er zijn metingen die kunnen worden uitgevoerd om te zorgen voor een soepele failover in het geval dat er een storing optreedt in een Data Center. 
 
-Gegevensproviders kunnen secundaire Azure Data Share-bronnen in een extra regio inrichten. Deze bronnen voor gegevensshare kunnen worden geconfigureerd om gegevenssets op te nemen die bestaan in de primaire omgeving voor gegevensshare. Gegevensconsumenten kunnen worden toegevoegd aan het gegevensaandeel bij het configureren van de DR-omgeving, of op een later tijdstip worden toegevoegd (d.w.z. als onderdeel van handmatige failoverstappen).
+Gegevens providers kunnen secundaire Azure-gegevens share resources inrichten in een extra regio. Deze gegevens share bronnen kunnen worden geconfigureerd om gegevens sets te bevatten die voor komen in de primaire gegevens share omgeving. Data-consumers kunnen worden toegevoegd aan de gegevens share bij het configureren van de DR-omgeving of worden toegevoegd op een later tijdstip (dat wil zeggen Als onderdeel van hand matige stappen voor failover).
 
-Als de gegevensconsumenten een actief aandelenabonnement hebben in een secundaire omgeving die is ingericht voor DR-doeleinden, kunnen ze het momentopnameschema inschakelen als onderdeel van een failover. Als de gegevens consumenten niet willen abonneren op een secundaire regio voor DR-doeleinden, kunnen ze worden uitgenodigd in de secundaire gegevens te delen op een later tijdstip. 
+Als de gegevens gebruikers een actief share-abonnement hebben in een secundaire omgeving die is ingericht voor DR-doel einden, kunnen ze het momentopname schema inschakelen als onderdeel van een failover. Als de gegevens gebruikers zich niet willen abonneren op een secundaire regio voor DR-doel einden, kunnen ze op een later tijdstip worden uitgenodigd voor de secundaire gegevens share. 
 
-Gegevensconsumenten kunnen een actief aandelenabonnement hebben dat niet is inactief voor DR-doeleinden, of gegevensproviders kunnen ze op een later tijdstip toevoegen als onderdeel van handmatige failoverprocedures. 
+Gegevens gebruikers kunnen een actief share-abonnement hebben dat is inactief voor DR-doel einden, of gegevens providers kunnen ze op een later tijdstip toevoegen als onderdeel van hand matige procedures voor failover. 
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-- [Bedrijfscontinuïteit en disaster recovery](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
+- [Bedrijfs continuïteit en herstel na nood gevallen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
 - [Hoge beschikbaarheid in uw BCDR-strategie bouwen](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door met het [delen van uw gegevenszelfstudie](share-your-data.md) om te leren hoe u gegevens delen.
+Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
 
 
 

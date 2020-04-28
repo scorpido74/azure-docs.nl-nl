@@ -1,6 +1,6 @@
 ---
-title: Exportbeleid configureren voor NFS-volume - Azure NetApp-bestanden
-description: Beschrijft hoe u exportbeleid configureert om de toegang tot een NFS-volume te beheren met Azure NetApp-bestanden
+title: Export beleid configureren voor NFS-volume-Azure NetApp Files
+description: Hierin wordt beschreven hoe u het beleid voor exporteren configureert om de toegang tot een NFS-volume te beheren met behulp van Azure NetApp Files
 services: azure-netapp-files
 author: b-juche
 ms.author: b-juche
@@ -9,26 +9,26 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551555"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportbeleid voor een NFS-volume configureren
 
-U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp Files-volume te beheren. Het exportbeleid voor Azure NetApp-bestanden ondersteunt alleen NFS-volumes.  Zowel NFSv3 als NFSv4 worden ondersteund. 
+U kunt desgewenst exportbeleid configureren om de toegang tot een Azure NetApp Files-volume te beheren. Azure NetApp Files export beleid ondersteunt alleen NFS-volumes.  Zowel NFSv3 als NFSv4 worden ondersteund. 
 
 ## <a name="steps"></a>Stappen 
 
-1.  Klik **op Beleid exporteren** in het navigatiedeelvenster van Azure NetApp-bestanden. 
+1.  Klik op **beleid exporteren** in het navigatie deel venster Azure NetApp files. 
 
 2.  Geef voor de volgende velden informatie op om een exportbeleidsregel te maken:   
-    *  **Index**   
+    *  **TabIndex**   
         Geef het indexnummer voor de regel op.  
         Een exportbeleid kan uit maximaal vijf regels bestaan. Regels worden geëvalueerd volgens hun volgorde in de lijst met indexnummers. Regels met lagere indexnummers worden als eerste geëvalueerd. De regel met indexnummer 1 wordt bijvoorbeeld geëvalueerd vóór de regel met indexnummer 2. 
 
-    * **Toegestane klanten**   
+    * **Toegestane clients**   
         Geef de waarde in een van de volgende indelingen op:  
         * IPv4-adres, bijvoorbeeld `10.1.12.24` 
         * IPv4-adres met een subnetmasker dat wordt uitgedrukt als een aantal bits, bijvoorbeeld `10.1.12.10/4`

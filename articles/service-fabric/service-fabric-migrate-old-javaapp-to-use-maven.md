@@ -1,15 +1,15 @@
 ---
-title: Migreren van Java SDK naar Maven
+title: Migreren van Java SDK naar maven
 description: U moet de oudere Java-toepassingen die de Service Fabric Java SDK gebruikten, bijwerken om Service Fabric Java-afhankelijkheden op te halen van Maven. Als u de stappen in dit artikel hebt uitgevoerd, moeten de oudere Java-toepassingen zonder problemen kunnen worden gebouwd.
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609805"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Bestaande Java Service Fabric-toepassingen bijwerken voor het ophalen van Java-bibliotheken van Maven

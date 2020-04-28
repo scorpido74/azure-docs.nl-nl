@@ -1,6 +1,6 @@
 ---
-title: Windows reboot loop op een Azure VM | Microsoft Documenten
-description: Meer informatie over het oplossen van problemen met windows reboot loop | Microsoft Documenten
+title: Windows-lus voor opnieuw opstarten op een Azure-VM | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met het opnieuw opstarten van Windows | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,105 +13,105 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443583"
 ---
-# <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows reboot loop op een Azure VM
-In dit artikel wordt de rebootlus beschreven die u ervaren op een Windows Virtual Machine (VM) in Microsoft Azure.
+# <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-lus voor opnieuw opstarten op een virtuele machine van Azure
+In dit artikel wordt de herstart-lus beschreven die kan optreden op een virtuele Windows-machine (VM) in Microsoft Azure.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Opstartdiagnostiek](./boot-diagnostics.md) gebruikt om de schermafbeeldingen van een VM te krijgen, merkt u dat de virtuele machine wordt opgestart, maar het opstartproces wordt onderbroken en het proces opnieuw begint.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opnamen van een virtuele machine op te halen, vindt u de virtuele machines opstarten, maar wordt het opstart proces onderbroken en wordt het proces opnieuw gestart.
 
-![Startscherm 1](./media/troubleshoot-reboot-loop/start-screen-1.png)
+![Start scherm 1](./media/troubleshoot-reboot-loop/start-screen-1.png)
 
 ## <a name="cause"></a>Oorzaak
 
-De rebootlus treedt op vanwege de volgende oorzaken:
+De herstart-lus treedt op als gevolg van de volgende oorzaken:
 
 ### <a name="cause-1"></a>Oorzaak 1
 
-Er is een service van derden die als kritiek wordt gemarkeerd en deze niet kan worden gestart. Hierdoor wordt het besturingssysteem opnieuw opgestart.
+Er is een service van derden die als kritiek is gemarkeerd en niet kan worden gestart. Dit zorgt ervoor dat het besturings systeem opnieuw wordt opgestart.
 
 ### <a name="cause-2"></a>Oorzaak 2
 
-Er zijn enkele wijzigingen aangebracht in het besturingssysteem. Meestal zijn deze gerelateerd aan een update-installatie, installatie van toepassingen of een nieuw beleid. Mogelijk moet u de volgende logboeken controleren voor meer informatie:
+Er zijn enkele wijzigingen aangebracht in het besturings systeem. Deze zijn doorgaans gerelateerd aan een update-installatie, een installatie van een toepassing of een nieuw beleid. Mogelijk moet u de volgende logboeken controleren voor aanvullende informatie:
 
 - Gebeurtenislogboeken
-- CBS.logWindows
-- Update.log
+- CBS. logWindows
+- Update. log
 
 ### <a name="cause-3"></a>Oorzaak 3
 
-Beschadiging van het bestandssysteem kan dit veroorzaken. Het is echter moeilijk om de verandering te diagnosticeren en te identificeren die de corruptie van het besturingssysteem veroorzaakt.
+Beschadiging van het bestands systeem kan dit tot gevolg hebben. Het is echter moeilijk om een diagnose uit te stellen en de wijziging te identificeren die de beschadiging van het besturings systeem veroorzaakt.
 
 ## <a name="solution"></a>Oplossing
 
-Als u dit probleem wilt oplossen, [maakt u een back-up van de osschijf](../windows/snapshot-copy-managed-disk.md)en [koppelt u de schijf van het besturingssysteem aan een reddings-vm](../windows/troubleshoot-recovery-disks-portal.md)en volgt u de oplossingsopties dienovereenkomstig of probeert u de oplossingen één voor één.
+Om dit probleem op te lossen, maakt u een [back-up van de besturingssysteem schijf](../windows/snapshot-copy-managed-disk.md)en [koppelt u de besturingssysteem schijf aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md)en volgt u de oplossings opties dienovereenkomstig of probeert u de oplossingen één voor één.
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
-1. Zodra de schijf van het besturingssysteem is gekoppeld aan een werkende vm, moet u ervoor zorgen dat de schijf is gemarkeerd als **online** in de schijfbeheerconsole en de stationsletter van de partitie met de **map \Windows** noteren.
+1. Zodra de besturingssysteem schijf is gekoppeld aan een werkende VM, moet u ervoor zorgen dat de schijf is gemarkeerd als **online** in de schijf beheer-console en noteer de stationsletter van de partitie die de map **\Windows** bevat.
 
-2. Als de schijf is ingesteld op **Offline,** stelt u deze in op **Online**.
+2. Als de schijf is ingesteld op **offline**, stelt u deze in op **online**.
 
-3. Maak een kopie van de map **\Windows\System32\config** voor het geval een terugdraaiing op de wijzigingen nodig is.
+3. Maak een kopie van de map **\Windows\System32\Config** als u de wijzigingen ongedaan wilt maken.
 
-4. Open op de reddings-VM de Windows Registry Editor (regedit).
+4. Open de Windows REGI ster-editor (regedit) op de virtuele machine voor herstel.
 
-5. Selecteer de **HKEY_LOCAL_MACHINE-toets** en selecteer **Vervolgens Bijenkorf** > **bestand** in het menu.
+5. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens component **bestand** > **laden** in het menu.
 
-6. Blader naar het systeembestand in de map **\Windows\System32\config.**
+6. Blader naar het systeem bestand in de map **\Windows\System32\Config** .
 
-7. Selecteer **Open,** typ **BROKENSYSTEM** voor de naam, vouw de **HKEY_LOCAL_MACHINE** sleutel uit en dan ziet u een extra sleutel genaamd **BROKENSYSTEM**.
+7. Selecteer **openen**, typ **BROKENSYSTEM** voor de naam, vouw de **HKEY_LOCAL_MACHINE** sleutel uit en raadpleeg vervolgens een extra sleutel met de naam **BROKENSYSTEM**.
 
-8. Controleer vanuit welke ControlSet de computer wordt opgestart. U ziet het sleutelnummer in de volgende registersleutel.
+8. Controleer op welke Beheerset de computer wordt opgestart. Het sleutel nummer wordt weer geven in de volgende register sleutel.
 
     `HKEY_LOCAL_MACHINE\BROKENSYSTEM\Select\Current`
 
-9. Controleer welke de kritiek van de VM-agentservice is via de volgende registersleutel.
+9. Controleer wat de ernst is van de VM-Agent service via de volgende register sleutel.
 
     `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\RDAgent\ErrorControl`
 
-10. Als de waarde van de registersleutel niet is ingesteld op **2,** gaat u naar de volgende beperking.
+10. Als de waarde van de register sleutel niet is ingesteld op **2**, gaat u naar de volgende oplossing.
 
-11. Als de waarde van de registersleutel is ingesteld op **2**, wijzigt u de waarde van **2** naar **1**.
+11. Als de waarde van de register sleutel is ingesteld op **2**, wijzigt u de waarde van **2** in **1**.
 
-12. Als een van de volgende toetsen bestaat en ze hebben waarde **2** of **3,** en verander deze waarden dan in **1** dienovereenkomstig:
+12. Als een van de volgende sleutels bestaat en de waarde **2** of **3**is, en wijzig deze waarden in **1** dienovereenkomstig:
 
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupCoordinatorSvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Selecteer de **BROKENSYSTEM-toets** en **selecteer** > **Hive bestand uitladen** in het menu.
+13. Selecteer de sleutel **BROKENSYSTEM** en selecteer vervolgens component **bestand** > **verwijderen** in het menu.
 
-14. Maak de OS-schijf los van de VM voor het oplossen van problemen.
+14. Ontkoppel de besturingssysteem schijf van de virtuele machine voor probleem oplossing.
 
-15. Verwijder de schijf van de vm voor het oplossen van problemen en wacht ongeveer 2 minuten tot Azure deze schijf vrijgeeft.
+15. Verwijder de schijf uit de virtuele machine voor probleem oplossing en wacht ongeveer 2 minuten tot Azure deze schijf heeft vrijgegeven.
 
-16. [Maak een nieuwe virtuele machine vanaf de osschijf](../windows/create-vm-specialized.md).
+16. [Maak een nieuwe virtuele machine op basis van de besturingssysteem schijf](../windows/create-vm-specialized.md).
 
-17. Als het probleem is opgelost, moet u mogelijk de [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe) opnieuw installeren.
+17. Als het probleem is opgelost, moet u de [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent. exe) mogelijk opnieuw installeren.
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-De VM terugzetten naar de laatst bekende goede configuratie, volgt de stappen in [Azure Windows VM starten met laatst bekende goede configuratie.](https://support.microsoft.com/help/4016731/)
+Herstel de virtuele machine naar de laatste bekende juiste configuratie. Volg de stappen in [Azure Windows VM starten met de laatste bekende juiste configuratie](https://support.microsoft.com/help/4016731/).
 
 ### <a name="solution-for-cause-3"></a>Oplossing voor oorzaak 3
 >[!NOTE]
->De volgende procedure mag alleen als laatste resource worden gebruikt. Hoewel het herstellen van regback de toegang tot de machine kan herstellen, wordt het besturingssysteem niet als stabiel beschouwd omdat er gegevens verloren gaan in het register tussen de tijdstempel van de korf en de huidige dag. U moet een nieuwe virtuele machine bouwen en plannen maken om gegevens te migreren.
+>De volgende procedure mag alleen worden gebruikt als laatste resource. Tijdens het herstellen van regback kunnen de toegang tot de machine worden hersteld, wordt het besturings systeem niet als stabiel beschouwd, omdat er gegevens verloren zijn gegaan in het REGI ster tussen de tijds tempel van de Hive en de huidige dag. U moet een nieuwe VM bouwen en plannen maken om gegevens te migreren.
 
-1. Zodra de schijf is gekoppeld aan een VM voor het oplossen van problemen, moet u ervoor zorgen dat de schijf is gemarkeerd als **Online** in de schijfbeheerconsole.
+1. Zodra de schijf is gekoppeld aan een virtuele machine voor probleem oplossing, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console.
 
-2. Maak een kopie van de map **\Windows\System32\config** voor het geval een terugdraaiing op de wijzigingen nodig is.
+2. Maak een kopie van de map **\Windows\System32\Config** als u de wijzigingen ongedaan wilt maken.
 
-3. Kopieer de bestanden in de map **\Windows\System32\config\regback** en vervang de bestanden in de map **\Windows\System32\config.**
+3. Kopieer de bestanden in de map **\Windows\System32\config\regback** en vervang de bestanden in de map **\Windows\System32\Config** .
 
-4. Verwijder de schijf van de vm voor het oplossen van problemen en wacht ongeveer 2 minuten tot Azure deze schijf vrijgeeft.
+4. Verwijder de schijf uit de virtuele machine voor probleem oplossing en wacht ongeveer 2 minuten tot Azure deze schijf heeft vrijgegeven.
 
-5. [Maak een nieuwe virtuele machine vanaf de osschijf](../windows/create-vm-specialized.md).
+5. [Maak een nieuwe virtuele machine op basis van de besturingssysteem schijf](../windows/create-vm-specialized.md).
 
 

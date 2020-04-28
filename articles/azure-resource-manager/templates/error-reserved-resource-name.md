@@ -1,22 +1,22 @@
 ---
-title: Fouten in gereserveerde resourcenamen
-description: Beschrijft hoe u fouten oplossen bij het opgeven van een resourcenaam die een gereserveerd woord bevat.
+title: Gereserveerde resource naam fouten
+description: Hierin wordt beschreven hoe u fouten oplost bij het opgeven van een resource naam die een gereserveerd woord bevat.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75477627"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Fouten in de naam van gereserveerde resources oplossen
+# <a name="resolve-reserved-resource-name-errors"></a>Problemen met gereserveerde resource namen oplossen
 
-In dit artikel wordt de fout beschreven die u ondervindt bij het implementeren van een resource die een gereserveerd woord in de naam bevat.
+In dit artikel wordt de fout beschreven die u tegen komt bij het implementeren van een resource die een gereserveerd woord bevat in de naam.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u een resource implementeert die beschikbaar is via een openbaar eindpunt, ontvangt u mogelijk de volgende fout:
+Bij het implementeren van een resource die beschikbaar is via een openbaar eind punt, wordt mogelijk de volgende fout weer gegeven:
 
 ```
 Code=ReservedResourceName;
@@ -25,47 +25,47 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Oorzaak
 
-Resources met een openbaar eindpunt kunnen geen gereserveerde woorden of handelsmerken in de naam gebruiken.
+Resources met een openbaar eind punt kunnen geen gereserveerde woorden of handels merken gebruiken in de naam.
 
-De volgende woorden zijn voorbehouden:
+De volgende woorden zijn gereserveerd:
 
 * TOEGANG
-* Azure
-* Bing
-* Bizspark
-* Biztalk
-* CORTANA CORTANA
-* Directx
-* Dotnet
-* Dynamics
+* AZURE
+* Zoek
+* BIZSPARK
+* BIZTALK
+* CORTANA
+* DIRECTX
+* DOTNET
+* DYNAMICS
 * EXCEL
-* Exchange
-* Voorhoede
-* Groove
-* HOLOLENS (HOLOLENS)
-* HYPERV (HYPERV)
+* EXCHANGE
+* FOREFRONT
+* STIFT
+* HOLOLENS
+* V
 * KINECT
 * LYNC
 * MSDN
 * O365
-* Office
+* OFFICE
 * OFFICE365
-* ONEDRIVE (ONEDRIVE)
-* Onenote
-* Outlook
-* Powerpoint
-* Sharepoint
-* Skype
-* Visio
-* VISUALSTUDIO VISUALSTUDIO
+* ONEDRIVE
+* KOPIËREN
+* ER
+* Power
+* Point
+* SKYPE
+* VISIO
+* Visual Studio
 
-De volgende woorden kunnen niet worden gebruikt als een geheel woord of als substring in de naam:
+De volgende woorden mogen niet worden gebruikt als een geheel woord of een subtekenreeks in de naam:
 
-* Login
-* Microsoft
-* Windows
-* Xbox
+* NAMEN
+* MICRO soft
+* WINDOWS
+* XBOX
 
 ## <a name="solution"></a>Oplossing
 
-Geef een naam op die een van de gereserveerde woorden niet gebruikt.
+Geef een naam op die geen gebruik maakt van een van de gereserveerde woorden.

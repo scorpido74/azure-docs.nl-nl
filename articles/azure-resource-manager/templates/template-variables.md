@@ -1,24 +1,24 @@
 ---
 title: Variabelen in sjablonen
-description: Beschrijft hoe u variabelen definieert in een Azure Resource Manager-sjabloon.
+description: Hierin wordt beschreven hoe u variabelen definieert in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483815"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Variabelen in azure resource manager-sjabloon
+# <a name="variables-in-azure-resource-manager-template"></a>Variabelen in Azure Resource Manager sjabloon
 
-In dit artikel wordt beschreven hoe u variabelen in uw Azure Resource Manager-sjabloon definiëren en gebruiken. U gebruikt variabelen om uw sjabloon te vereenvoudigen. In plaats van ingewikkelde expressies in uw sjabloon te herhalen, definieert u een variabele die de ingewikkelde expressie bevat. Vervolgens verwijst u naar die variabele als dat nodig is in uw sjabloon.
+In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon variabelen definieert en gebruikt. U kunt variabelen gebruiken om uw sjabloon te vereenvoudigen. In plaats van ingewikkelde expressies in uw sjabloon te herhalen, definieert u een variabele die de gecompliceerde expressie bevat. Vervolgens verwijst u naar die variabele die u nodig hebt in uw sjabloon.
 
-Resourcemanager lost variabelen op voordat de implementatiebewerkingen worden gestart. Waar de variabele in de sjabloon wordt gebruikt, vervangt Resource Manager deze door de opgeloste waarde.
+Met Resource Manager worden variabelen omgezet voordat de implementatie bewerkingen worden gestart. Wanneer de variabele wordt gebruikt in de sjabloon, wordt deze vervangen door de omgezette waarde.
 
 ## <a name="define-variable"></a>Variabele definiëren
 
-In het volgende voorbeeld ziet u een variabele definitie. Hiermee wordt een tekenreekswaarde gemaakt voor een naam van een opslagaccount. Het maakt gebruik van verschillende sjabloonfuncties om een parameterwaarde te krijgen en voegt deze toe aan een unieke tekenreeks.
+In het volgende voor beeld ziet u een definitie van een variabele. Er wordt een teken reeks waarde voor de naam van een opslag account gemaakt. Er worden verschillende sjabloon functies gebruikt om een parameter waarde op te halen en deze aan een unieke teken reeks toe te voegen.
 
 ```json
 "variables": {
@@ -26,11 +26,11 @@ In het volgende voorbeeld ziet u een variabele definitie. Hiermee wordt een teke
 },
 ```
 
-U de [referentiefunctie](template-functions-resource.md#reference) of een van de [lijstfuncties](template-functions-resource.md#list) in de sectie variabelen niet gebruiken. Deze functies krijgen de runtime-status van een resource en kunnen niet worden uitgevoerd voordat de implementatie wordt uitgevoerd wanneer variabelen zijn opgelost.
+U kunt de functie [Reference](template-functions-resource.md#reference) of een van [de functies in de sectie](template-functions-resource.md#list) Varia BLES niet gebruiken. Met deze functies wordt de runtime status van een resource opgehaald en kunnen niet worden uitgevoerd voordat de implementatie van variabelen wordt opgelost.
 
 ## <a name="use-variable"></a>Variabele gebruiken
 
-In de sjabloon verwijst u naar de waarde voor de parameter met behulp van de functie [Variabelen.](template-functions-deployment.md#variables) In het volgende voorbeeld ziet u hoe u de variabele voor een resourceeigenschap gebruikt.
+In de sjabloon verwijst u naar de waarde voor de para meter met behulp van de functie [Varia bles](template-functions-deployment.md#variables) . In het volgende voor beeld ziet u hoe u de variabele voor een resource-eigenschap gebruikt.
 
 ```json
 "resources": [
@@ -42,9 +42,9 @@ In de sjabloon verwijst u naar de waarde voor de parameter met behulp van de fun
 ]
 ```
 
-## <a name="configuration-variables"></a>Configuratievariabelen
+## <a name="configuration-variables"></a>Configuratie variabelen
 
-U variabelen definiëren met gerelateerde waarden voor het configureren van een omgeving. U definieert de variabele als een object met de waarden. In het volgende voorbeeld wordt een object weergegeven dat waarden bevat voor twee omgevingen - **test** en **prik .**
+U kunt variabelen definiëren die gerelateerde waarden bevatten voor het configureren van een omgeving. U definieert de variabele als een object met de waarden. In het volgende voor beeld ziet u een object dat waarden voor twee omgevingen bevat: **test** en **Prod**.
 
 ```json
 "variables": {
@@ -61,7 +61,7 @@ U variabelen definiëren met gerelateerde waarden voor het configureren van een 
 },
 ```
 
-In parameters maakt u een waarde die aangeeft welke configuratiewaarden u wilt gebruiken.
+In para meters maakt u een waarde die aangeeft welke configuratie waarden moeten worden gebruikt.
 
 ```json
 "parameters": {
@@ -75,23 +75,23 @@ In parameters maakt u een waarde die aangeeft welke configuratiewaarden u wilt g
 },
 ```
 
-Als u instellingen voor de opgegeven omgeving wilt ophalen, gebruikt u de variabele en de parameter samen.
+Als u instellingen voor de opgegeven omgeving wilt ophalen, gebruikt u de variabele en de para meter samen.
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-## <a name="example-templates"></a>Voorbeeldsjablonen
+## <a name="example-templates"></a>Voorbeeld sjablonen
 
-In de volgende voorbeelden worden scenario's gedemonstreerd voor het gebruik van variabelen.
+In de volgende voor beelden ziet u scenario's voor het gebruik van variabelen.
 
 |Template  |Beschrijving  |
 |---------|---------|
-| [variabele definities](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Toont de verschillende soorten variabelen. De sjabloon implementeert geen resources. Het construeert variabele waarden en retourneert deze waarden. |
-| [configuratievariabele](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Hiermee wordt het gebruik van een variabele aangetoond die configuratiewaarden definieert. De sjabloon implementeert geen resources. Het construeert variabele waarden en retourneert deze waarden. |
-| [netwerkbeveiligingsregels](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) en [parameterbestand](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Hiermee wordt een array in de juiste indeling gebouwd voor het toewijzen van beveiligingsregels aan een netwerkbeveiligingsgroep. |
+| [variabele definities](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Toont de verschillende typen variabelen. De sjabloon implementeert geen resources. Er worden variabele waarden gemaakt en deze waarden worden geretourneerd. |
+| [configuratie variabele](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Toont het gebruik van een variabele die configuratie waarden definieert. De sjabloon implementeert geen resources. Er worden variabele waarden gemaakt en deze waarden worden geretourneerd. |
+| [netwerk beveiligings regels](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) en [parameter bestand](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Hiermee wordt een matrix gemaakt met de juiste indeling voor het toewijzen van beveiligings regels aan een netwerk beveiligings groep. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [De structuur en syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)voor meer informatie over de beschikbare eigenschappen voor variabelen.
-* Zie Aanbevolen procedures - [variabelen](template-best-practices.md#variables)voor aanbevelingen over het maken van variabelen.
+* Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](template-syntax.md)voor meer informatie over de beschik bare eigenschappen voor variabelen.
+* Zie [Best practices-Varia bles](template-best-practices.md#variables)(Engelstalig) voor aanbevelingen voor het maken van variabelen.

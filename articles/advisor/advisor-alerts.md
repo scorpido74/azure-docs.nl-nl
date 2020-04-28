@@ -1,74 +1,74 @@
 ---
-title: Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen
-description: Azure Advisor-waarschuwingen maken voor nieuwe aanbeveling
+title: Azure Advisor waarschuwingen maken voor nieuwe aanbevelingen
+description: Azure Advisor waarschuwingen voor nieuwe aanbeveling maken
 ms.topic: article
 ms.date: 09/09/2019
 ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443157"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen 
 
-In dit artikel ziet u hoe u een waarschuwing instelt voor nieuwe aanbevelingen van Azure Advisor met behulp van de Azure-portal- en Azure Resource Manager-sjablonen. 
+In dit artikel wordt beschreven hoe u een waarschuwing instelt voor nieuwe aanbevelingen van Azure Advisor met behulp van de Azure Portal en Azure Resource Manager sjablonen. 
 
-Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteert, wordt een gebeurtenis opgeslagen in [het Azure Activity-logboek.](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) U waarschuwingen voor deze gebeurtenissen instellen vanuit Azure Advisor met behulp van een ervaring voor het maken van aanbevelingsspecifieke waarschuwingen. U een abonnement selecteren en optioneel een resourcegroep om de bronnen op te geven waarop u waarschuwingen wilt ontvangen. 
+Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteert, wordt een gebeurtenis opgeslagen in het [activiteiten logboek van Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview). U kunt waarschuwingen instellen voor deze gebeurtenissen van Azure Advisor met behulp van een aanbevelings gerichte waarschuwing voor het maken van waarschuwingen. U kunt een abonnement en optioneel een resource groep selecteren om de resources op te geven waarvoor u waarschuwingen wilt ontvangen. 
 
-U ook de typen aanbevelingen bepalen met behulp van de volgende eigenschappen:
+U kunt ook de typen aanbevelingen vaststellen met behulp van de volgende eigenschappen:
 
 * Categorie
-* Impactniveau
+* Impact niveau
 * Type aanbeveling
 
-U ook de actie configureren die plaatsvindt wanneer een waarschuwing wordt geactiveerd door:  
+U kunt ook de actie configureren die wordt uitgevoerd wanneer een waarschuwing wordt geactiveerd door:  
 
-* Een bestaande actiegroep selecteren
-* Een nieuwe actiegroep maken
+* Een bestaande actie groep selecteren
+* Een nieuwe actie groep maken
 
-Zie Actiegroepen maken en beheren voor meer informatie over [actiegroepen.](../azure-monitor/platform/action-groups.md)
+Zie [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)voor meer informatie over actie groepen.
 
 > [!NOTE] 
-> Advisor-waarschuwingen zijn momenteel alleen beschikbaar voor aanbevelingen voor hoge beschikbaarheid, prestaties en kosten. Beveiligingsaanbevelingen worden niet ondersteund. 
+> Advisor-waarschuwingen zijn momenteel alleen beschikbaar voor aanbevelingen voor hoge Beschik baarheid, prestaties en kosten. Beveiligings aanbevelingen worden niet ondersteund. 
 
 ## <a name="in-the-azure-portal"></a>In de Azure Portal
-1. Selecteer **Azure Advisor**in de **portal**.
+1. Selecteer in de **portal** **Azure Advisor**.
 
-    ![Azure Advisor in portal](./media/advisor-alerts/create1.png)
+    ![Azure Advisor in Portal](./media/advisor-alerts/create1.png)
 
-2. Selecteer **In** de sectie Controle van het linkermenu de optie **Waarschuwingen**. 
+2. Selecteer in de sectie **bewaking** van het linkermenu **waarschuwingen**. 
 
-    ![Waarschuwingen in Adviseur](./media/advisor-alerts/create2.png)
+    ![Waarschuwingen in Advisor](./media/advisor-alerts/create2.png)
 
-3. Selecteer **Nieuwe Adviseur-waarschuwing**.
+3. Selecteer **nieuwe Advisor-waarschuwing**.
 
-    ![Nieuwe Adviseur alert](./media/advisor-alerts/create3.png)
+    ![Nieuwe Advisor-waarschuwing](./media/advisor-alerts/create3.png)
 
-4. Selecteer **in** de sectie Bereik het abonnement en eventueel de resourcegroep waarop u wilt worden gewaarschuwd. 
+4. Selecteer in de sectie **bereik** het abonnement en optioneel de resource groep waarop u wilt worden gewaarschuwd. 
 
-    ![Waarschuwingsbereik van adviseur](./media/advisor-alerts/create4.png)
+    ![Advisor-waarschuwings bereik](./media/advisor-alerts/create4.png)
 
-5. Selecteer **in de** sectie Voorwaarde de methode die u wilt gebruiken voor het configureren van uw waarschuwing. Als u wilt waarschuwen voor alle aanbevelingen voor een bepaalde categorie en/of impactniveau, selecteert u **Categorie en impactniveau**. Als u wilt waarschuwen voor alle aanbevelingen van een bepaald type, selecteert u **Aanbevelingstype**.
+5. Selecteer in de sectie **voor waarde** de methode die u wilt gebruiken voor het configureren van de waarschuwing. Als u een waarschuwing wilt ontvangen voor alle aanbevelingen voor een bepaalde categorie en/of een impact niveau, selecteert u **categorie en impact niveau**. Als u een waarschuwing wilt ontvangen voor alle aanbevelingen van een bepaald type, selecteert u **aanbevelings type**.
 
-    ![Azure Advisor-waarschuwingsvoorwaarde](./media/advisor-alerts/create5.png)
+    ![Azure Advisor waarschuwings voorwaarde](./media/advisor-alerts/create5.png)
 
-6. Afhankelijk van de optie Configureren op optie die u selecteert, u de criteria opgeven. Als u alle aanbevelingen wilt, laat u de resterende velden leeg. 
+6. Afhankelijk van de optie configureren op die u selecteert, kunt u de criteria opgeven. Als u alle aanbevelingen wilt, laat u de resterende velden leeg. 
 
-    ![Advisor alert actiegroep](./media/advisor-alerts/create6.png)
+    ![Actie groep voor Advisor-waarschuwingen](./media/advisor-alerts/create6.png)
 
-7. Selecteer in de sectie **Actiegroepen** de optie **Bestaand toevoegen** om een actiegroep te gebruiken die u al hebt gemaakt of selecteer **Nieuw maken** om een nieuwe [actiegroep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)in te stellen. 
+7. Selecteer in de sectie **actie groepen** de optie **bestaande toevoegen** om een actie groep te gebruiken die u al hebt gemaakt of selecteer **nieuwe maken** om een nieuwe [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)in te stellen. 
 
-    ![Advisor-waarschuwing voeg bestaande](./media/advisor-alerts/create7.png)
+    ![Advisor-waarschuwing bestaande toevoegen](./media/advisor-alerts/create7.png)
 
-8. Geef uw waarschuwing in de sectie Waarschuwingsgegevens een naam en een korte beschrijving. Als u wilt dat uw waarschuwing is ingeschakeld, laat **u de regel Inschakelen staan bij het maken** van selectie ingesteld op **Ja**. Selecteer vervolgens de resourcegroep om uw waarschuwing op te slaan. Dit heeft geen invloed op de targeting van de aanbeveling. 
+8. Geef in de sectie waarschuwings Details een naam en een korte beschrijving voor de waarschuwing op. Als u wilt dat uw waarschuwing wordt ingeschakeld, verlaat u **regel inschakelen bij** selectie instellen op **Ja**. Selecteer vervolgens de resource groep waarin u de waarschuwing wilt opslaan. Dit heeft geen invloed op het doel bereik van de aanbeveling. 
 
-    ![Azure Advisor-banner](./media/advisor-alerts/create8.png)
+    ![Azure Advisor banner](./media/advisor-alerts/create8.png)
 
 
-## <a name="with-an-azure-resource-manager-template"></a>Met een Azure Resource Manager-sjabloon
+## <a name="with-an-azure-resource-manager-template"></a>Met een Azure Resource Manager sjabloon
 
-Met deze sjabloon Resourcemanager wordt een aanbevelingswaarschuwing en een nieuwe actiegroep gemaakt.
+Met deze resource manager-sjabloon maakt u een aanbevelings waarschuwing en een nieuwe actie groep.
 
 ```json
 {
@@ -165,16 +165,16 @@ Met deze sjabloon Resourcemanager wordt een aanbevelingswaarschuwing en een nieu
 }
   ```
 
-## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Aanbevelingswaarschuwingen configureren om een webhook te gebruiken
-In deze sectie ziet u hoe u Azure Advisor-waarschuwingen configureert om aanbevelingsgegevens via webhooks naar uw bestaande systemen te verzenden. 
+## <a name="configure-recommendation-alerts-to-use-a-webhook"></a>Aanbevelings waarschuwingen configureren voor het gebruik van een webhook
+In deze sectie wordt beschreven hoe u Azure Advisor waarschuwingen configureert om aanbevelings gegevens via webhooks naar uw bestaande systemen te verzenden. 
 
-U waarschuwingen instellen om op de hoogte te worden gesteld wanneer u een nieuwe aanbeveling van een adviseur hebt over een van uw bronnen. Deze waarschuwingen kunnen u via e-mail of sms op de hoogte brengen, maar ze kunnen ook worden gebruikt om via een webhook met uw bestaande systemen te integreren. 
+U kunt waarschuwingen instellen om een melding te ontvangen wanneer u een nieuwe adviseur-aanbeveling hebt voor een van uw resources. Deze waarschuwingen kunnen u verwittigen via e-mail of SMS, maar ze kunnen ook worden gebruikt om te integreren met uw bestaande systemen via een webhook. 
 
 
-### <a name="using-the-advisor-recommendation-alert-payload"></a>Het gebruik van de Advisor aanbeveling som payload
-Als u Advisor-waarschuwingen met behulp van een webhook in uw eigen systemen wilt integreren, moet u de JSON-payload die vanuit de melding wordt verzonden, ontleden. 
+### <a name="using-the-advisor-recommendation-alert-payload"></a>De nettolading aanbeveling van Advisor-waarschuwing gebruiken
+Als u Advisor-waarschuwingen wilt integreren in uw eigen systemen met een webhook, moet u de JSON-nettolading parseren die vanuit de melding wordt verzonden. 
 
-Wanneer u uw actiegroep instelt voor deze waarschuwing, selecteert u of u het algemene waarschuwingsschema wilt gebruiken. Als u het algemene waarschuwingsschema selecteert, ziet uw laadvermogen eruit als volgt: 
+Wanneer u uw actie groep voor deze waarschuwing instelt, selecteert u of u het algemene waarschuwings schema wilt gebruiken. Als u het algemene schema voor waarschuwingen selecteert, ziet uw nettolading er als volgt uit: 
 
 ```json
 {  
@@ -223,7 +223,7 @@ Wanneer u uw actiegroep instelt voor deze waarschuwing, selecteert u of u het al
 }
   ```
 
-Als u het algemene schema niet gebruikt, ziet uw laadvermogen er als volgt uit: 
+Als u het algemene schema niet gebruikt, ziet uw nettolading er als volgt uit: 
 
 ```json
 {  
@@ -268,32 +268,32 @@ Als u het algemene schema niet gebruikt, ziet uw laadvermogen er als volgt uit:
 }
 ```
 
-In beide schema's u aanbevelingsgebeurtenissen `Recommendation` van Advisor identificeren door te zoeken naar **gebeurtenisBron** is en **operationName** is `Microsoft.Advisor/recommendations/available/action`.
+In een van beide schema's kunt u aanbevelingen voor Advisor identificeren door te kijken naar `Recommendation` **Event source** is en `Microsoft.Advisor/recommendations/available/action` **operationname** .
 
-Enkele andere belangrijke velden die u wilt gebruiken zijn: 
+Enkele van de andere belang rijke velden die u wilt gebruiken, zijn: 
 
-* *alertTargetIDs* (in het algemene schema) of *resourceId* (legacy-schema)
-* *aanbevelingType*
-* *aanbevelingNaam*
-* *AanbevelingCategorie*
-* *aanbevelingImpact*
-* *aanbevelingResourceLink*
+* *alertTargetIDs* (in het algemene schema) of *resourceId* (verouderd schema)
+* *recommendationType*
+* *aanbeveling*
+* *recommendationCategory*
+* *recommendationImpact*
+* *recommendationResourceLink*
 
 
 ## <a name="manage-your-alerts"></a>De waarschuwingen beheren 
 
-Vanuit Azure Advisor u waarschuwingen voor aanbevelingen bewerken, verwijderen of uitschakelen en inschakelen. 
+Vanuit Azure Advisor kunt u waarschuwingen voor uw aanbevelingen bewerken, verwijderen of uitschakelen en inschakelen. 
 
-1. Selecteer **Azure Advisor**in de **portal**.
+1. Selecteer in de **portal** **Azure Advisor**.
 
-    ![Azure Advisor-banner](./media/advisor-alerts/create1.png)
+    ![Azure Advisor banner](./media/advisor-alerts/create1.png)
 
-2. Selecteer **In** de sectie Controle van het linkermenu de optie **Waarschuwingen**.
+2. Selecteer in de sectie **bewaking** van het linkermenu **waarschuwingen**.
 
-    ![Azure Advisor-banner](./media/advisor-alerts/create2.png)
+    ![Azure Advisor banner](./media/advisor-alerts/create2.png)
 
-3. Als u een waarschuwing wilt bewerken, klikt u op de naam Waarschuwing om de waarschuwing te openen en de velden te bewerken die u wilt bewerken.
+3. Als u een waarschuwing wilt bewerken, klikt u op de naam van de waarschuwing om de waarschuwing te openen en bewerkt u de velden die u wilt bewerken.
 
-4. Als u een waarschuwing wilt verwijderen, inschakelen of uitschakelen, klikt u op de ellips aan het einde van de rij en selecteert u de actie die u wilt uitvoeren.
+4. Als u een waarschuwing wilt verwijderen, inschakelen of uitschakelen, klikt u op de ovaal aan het einde van de rij en selecteert u vervolgens de actie die u wilt uitvoeren.
  
 

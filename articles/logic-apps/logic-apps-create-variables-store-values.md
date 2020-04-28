@@ -1,84 +1,84 @@
 ---
-title: Variabelen maken en beheren voor het opslaan en doorgeven van waarden
-description: Meer informatie over het opslaan, beheren, gebruiken en doorgeven van waarden met behulp van variabelen in uw geautomatiseerde taken en werkstroom die u maakt met Azure Logic Apps
+title: Variabelen voor het opslaan en door geven van waarden maken en beheren
+description: Meer informatie over het opslaan, beheren, gebruiken en door geven van waarden met behulp van variabelen in uw geautomatiseerde taken en werk stroom die u maakt met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75456695"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Waarden opslaan en beheren met behulp van variabelen in Azure Logic Apps
 
-In dit artikel ziet u hoe u variabelen maakt en werkt die u gebruikt om waarden op te slaan in uw logische app. Variabelen kunnen u bijvoorbeeld helpen bij het bijhouden van het aantal keren dat een lus wordt uitgevoerd. Als u over een array wilt herhalen of een array wilt controleren op een specifiek item, u een variabele gebruiken om naar het indexnummer voor elk arrayitem te verwijzen.
+In dit artikel wordt beschreven hoe u variabelen maakt en gebruikt die u kunt gebruiken om waarden op te slaan in uw logische app. Variabelen kunnen bijvoorbeeld helpen bij het volgen van het aantal keren dat een lus wordt uitgevoerd. Als u een matrix wilt herhalen of een matrix voor een specifiek item wilt controleren, kunt u een variabele gebruiken om te verwijzen naar het index nummer voor elk matrix item.
 
-U variabelen maken voor gegevenstypen zoals geheel getal, zweven, booleaan, tekenreeks, array en object. Nadat u een variabele hebt gemaakt, u andere taken uitvoeren, bijvoorbeeld:
+U kunt variabelen maken voor gegevens typen, zoals een geheel getal, een float, een Booleaanse waarde, een teken reeks, een matrix en een object. Nadat u een variabele hebt gemaakt, kunt u andere taken uitvoeren, bijvoorbeeld:
 
-* De waarde van de variabele inpakken of verwijzen.
-* Verhoog of verlaag de variabele met een constante waarde, ook wel *increment* en *decrement genoemd*.
+* De waarde van de variabele ophalen of ernaar verwijzen.
+* Verhoog of verlaag de variabele met een constante waarde, ook wel *verhoogd* en *verlagen*.
 * Wijs een andere waarde toe aan de variabele.
-* De waarde van de variabele invoegen of *toevoegen* als de laatste keer in een tekenreeks of array.
+* De waarde van de variabele invoegen of *toevoegen* als laatste keer in een teken reeks of matrix.
 
-Er bestaan variabelen en zijn alleen globaal binnen de logische app-instantie waarmee ze worden gemaakt. Ook blijven ze bestaan in alle lusiteraties in een logische app-instantie. Wanneer u naar een variabele verwijst, gebruikt u de naam van de variabele als token, niet de naam van de actie, wat de gebruikelijke manier is om naar de uitvoer van een actie te verwijzen.
+Variabelen bestaan en alleen globaal in het logische app-exemplaar dat ze maakt. Ze blijven ook behouden in alle lus-iteraties binnen een logische app-instantie. Wanneer u verwijst naar een variabele, gebruikt u de naam van de variabele als het token, niet de naam van de actie. Dit is de gebruikelijke manier om te verwijzen naar de uitvoer van een actie.
 
 > [!IMPORTANT]
-> Standaard worden cycli in een lus 'Voor elke' parallel uitgevoerd. Wanneer u variabelen in lussen gebruikt, voert u de lus [achtereenvolgens uit,](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) zodat variabelen voorspelbare resultaten opleveren.
+> Standaard worden cycli parallel uitgevoerd in een lus ' voor elke '. Wanneer u variabelen in lussen gebruikt, voert u de lus [sequentieel](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) uit zodat variabelen voorspel bare resultaten retour neren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement hebt, [meldt u zich aan voor een gratis Azure-account.](https://azure.microsoft.com/free/)
+* Een Azure-abonnement. Als u geen abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 * De logische app waar u de variabele wilt maken
 
-  Als u nieuw bent in logische apps, controleert u [Wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md) en [Quickstart: Uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) als eerste stap in uw logische app
+* Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) als de eerste stap in uw logische app
 
-  Voordat u acties voor het maken en werken met variabelen toevoegen, moet uw logische app beginnen met een trigger.
+  Voordat u acties kunt toevoegen voor het maken en werken met variabelen, moet uw logische app beginnen met een trigger.
 
 <a name="create-variable"></a>
 
 ## <a name="initialize-variable"></a>Variabele initialiseren
 
-U een variabele maken en het gegevenstype en de oorspronkelijke waarde declareren - allemaal binnen één actie in uw logische app. U alleen variabelen op mondiaal niveau declareren, niet binnen scopes, voorwaarden en lussen.
+U kunt een variabele maken en het gegevens type en de oorspronkelijke waarde declareren, allemaal binnen één actie in uw logische app. U kunt alleen variabelen declareren op het globale niveau, niet binnen bereiken, voor waarden en lussen.
 
-1. Open uw logische app in de Logische App Designer in de [Azure-portal](https://portal.azure.com) of Visual Studio.
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps.
 
-   In dit voorbeeld wordt de Azure-portal en een logische app met een bestaande trigger gebruikt.
+   In dit voor beeld worden de Azure Portal en een logische app met een bestaande trigger gebruikt.
 
-1. Volg in uw logica-app onder de stap waarin u een variabele wilt toevoegen een van de volgende stappen: 
+1. Voer een van de volgende stappen uit in uw logische app, onder de stap waarin u een variabele wilt toevoegen: 
 
-   * Als u een actie onder de laatste stap wilt toevoegen, selecteert u **Nieuwe stap**.
+   * Selecteer **nieuwe stap**om een actie toe te voegen onder de laatste stap.
 
      ![Actie toevoegen](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * Als u een actie tussen de stappen wilt toevoegen, verplaatst**+** u de muis over de verbindingspijl, zodat het plusteken ( ) wordt weergegeven. Selecteer het plusteken en selecteer **Een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl om verbinding te**+** maken zodat het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer **onder Een actie kiezen**in `variables` het zoekvak in als filter. Selecteer In de lijst met acties de optie **Initialiserenvariabele**.
+1. Voer `variables` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de optie **variabele initialiseren**.
 
    ![Actie selecteren](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
-1. Geef deze informatie over uw variabele zoals hieronder beschreven:
+1. Geef deze informatie over uw variabele zoals hieronder wordt beschreven:
 
    | Eigenschap | Vereist | Waarde |  Beschrijving |
    |----------|----------|-------|--------------|
-   | **Naam** | Ja | <*variabele naam*> | De naam voor de variabele te verhogen |
-   | **Type** | Ja | <*variabel type*> | Het gegevenstype voor de variabele |
-   | **Waarde** | Nee | <*beginwaarde*> | De beginwaarde van uw variabele <p><p>**Tip:** Hoewel optioneel, stelt u deze waarde in als best practice, zodat u altijd de beginwaarde voor uw variabele weet. |
+   | **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden verhoogd |
+   | **Type** | Ja | <*variabele-type*> | Het gegevens type voor de variabele |
+   | **Waarde** | Nee | <*begin waarde*> | De beginwaarde van uw variabele <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd de begin waarde voor de variabele kent. |
    |||||
 
    Bijvoorbeeld:
 
    ![Variabele initialiseren](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-1. Ga nu verder met het toevoegen van de gewenste acties. Wanneer u klaar bent, selecteert u op de werkbalk van de ontwerper de optie **Opslaan**.
+1. Ga nu verder met het toevoegen van de gewenste acties. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
-Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabele actie **Initialize** weergegeven in de definitie van uw logische app, die in de JSON-indeling (JavaScript Object Notation) is:
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele initialiseren** wordt weer gegeven in de definitie van de logische app, in JavaScript object NOTATION (JSON)-indeling:
 
 ```json
 "actions": {
@@ -97,11 +97,11 @@ Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabe
 ```
 
 > [!NOTE]
-> Hoewel de variabele actie **Initialiseren** een `variables` sectie heeft die is gestructureerd als een array, kan de actie slechts één variabele tegelijk maken. Elke nieuwe variabele vereist een individuele **Initialize variabele** actie.
+> Hoewel de actie **variabele initialiseren** een `variables` sectie heeft die is gestructureerd als een matrix, kan de actie slechts één variabele tegelijk maken. Elke nieuwe variabele vereist een afzonderlijke actie voor **het initialiseren van een variabele** .
 
-Hier volgen voorbeelden voor enkele andere variabele typen:
+Hier volgen enkele voor beelden van andere typen variabelen:
 
-*Tekenreeksvariabele*
+*Teken reeks variabele*
 
 ```json
 "actions": {
@@ -155,7 +155,7 @@ Hier volgen voorbeelden voor enkele andere variabele typen:
 },
 ```
 
-*Array met tekenreeksen*
+*Matrix met teken reeksen*
 
 ```json
 "actions": {
@@ -175,11 +175,11 @@ Hier volgen voorbeelden voor enkele andere variabele typen:
 
 <a name="get-value"></a>
 
-## <a name="get-the-variables-value"></a>De waarde van de variabele krijgen
+## <a name="get-the-variables-value"></a>De waarde van de variabele ophalen
 
-Als u de inhoud van een variabele wilt ophalen of verwijzen, u ook de [functie variables()](../logic-apps/workflow-definition-language-functions-reference.md#variables) gebruiken in de Logic App Designer en de codevieweditor. Wanneer u naar een variabele verwijst, gebruikt u de naam van de variabele als token, niet de naam van de actie, wat de gebruikelijke manier is om naar de uitvoer van een actie te verwijzen.
+Als u de inhoud van een variabele wilt ophalen of ernaar wilt verwijzen, kunt u ook de [functie Varia BLES ()](../logic-apps/workflow-definition-language-functions-reference.md#variables) in de Logic app Designer en de code weergave-editor gebruiken. Bij het verwijzen naar een variabele gebruikt u de naam van de variabele als het token, niet de naam van de actie. Dit is de gebruikelijke manier om te verwijzen naar de uitvoer van een actie.
 
-Met deze expressie worden bijvoorbeeld de items uit de matrixvariabele [die eerder in dit artikel is gemaakt,](#append-value) opgehaald met behulp van de `variables()` functie. De `string()` functie retourneert de inhoud van de variabele in tekenreeksindeling:`"1, 2, 3, red"`
+Met deze expressie worden bijvoorbeeld de items opgehaald uit de matrix variabele die [eerder in dit artikel is gemaakt](#append-value) met `variables()` behulp van de functie. De `string()` functie retourneert de inhoud van de variabele in teken reeks notatie:`"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -187,37 +187,37 @@ Met deze expressie worden bijvoorbeeld de items uit de matrixvariabele [die eerd
 
 <a name="increment-value"></a>
 
-## <a name="increment-variable"></a>Incrementvariabele 
+## <a name="increment-variable"></a>Toename variabele 
 
-Als u een variabele wilt verhogen of *verhogen met* een constante waarde, voegt u de variabele actie **Bijvoeren** toe aan uw logische app. Deze actie werkt alleen met gehele en zwevende variabelen.
+Als u een variabele wilt verg Roten *of verhogen met een constante* waarde, voegt u de actie voor het **verhogen van variabele** toe aan uw logische app. Deze actie werkt alleen met de variabelen integer en float.
 
-1. Selecteer in de Logic App Designer onder de stap waarin u een bestaande variabele wilt vergroten, de optie **Nieuwe stap**. 
+1. Selecteer in de ontwerp functie voor logische apps, onder de stap waarin u een bestaande variabele wilt verg Roten, de optie **nieuwe stap**. 
 
-   Deze logische app heeft bijvoorbeeld al een trigger en een actie die een variabele heeft gemaakt. Voeg dus een nieuwe actie toe onder de volgende stappen:
+   Deze logische app heeft bijvoorbeeld al een trigger en een actie die een variabele heeft gemaakt. Voeg dus onder deze stappen een nieuwe actie toe:
 
    ![Actie toevoegen](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
-   Als u een actie tussen bestaande stappen wilt toevoegen, verplaatst u de muis over de verbindingspijl, zodat het plusteken (+) wordt weergegeven. Selecteer het plusteken en selecteer **Een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de pijl om verbinding te maken zodat het plus teken (+) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak 'incrementvariable' in als filter. Selecteer In de lijst met acties de optie **Increment-variabele**.
+1. Voer in het zoekvak ' increment variable ' in als uw filter. Selecteer in de lijst acties de optie **variabele verhogen**.
 
-   ![De actie 'Variabele toename' selecteren](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
+   ![Selecteer de actie variabele door lopen](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 
-1. Geef deze informatie op voor het verhogen van uw variabele:
+1. Geef deze informatie op voor het verhogen van de variabele:
 
    | Eigenschap | Vereist | Waarde |  Beschrijving |
    |----------|----------|-------|--------------|
-   | **Naam** | Ja | <*variabele naam*> | De naam voor de variabele te verhogen |
-   | **Waarde** | Nee | <*increment-waarde*> | De waarde die wordt gebruikt voor het verhogen van de variabele. De standaardwaarde is één. <p><p>**Tip:** Hoewel u optioneel bent, stelt u deze waarde in als een aanbevolen praktijk, zodat u altijd de specifieke waarde voor het verhogen van uw variabele weet. |
+   | **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden verhoogd |
+   | **Waarde** | Nee | <*Increment-waarde*> | De waarde die wordt gebruikt voor het verhogen van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd weet wat de specifieke waarde is voor het verhogen van de variabele. |
    ||||
 
    Bijvoorbeeld:
 
-   ![Voorbeeld van de waarde van de verhoging](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
+   ![Voor beeld van een incrementele waarde](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
-1. Wanneer u klaar bent, selecteert u op de werkbalk van de ontwerper de optie **Opslaan**.
+1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
-Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabele actie **Increment** weergegeven in de definitie van uw logische app, die in JSON-indeling is:
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie voor het **verhogen van variabelen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling:
 
 ```json
 "actions": {
@@ -232,69 +232,69 @@ Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabe
 },
 ```
 
-## <a name="example-create-loop-counter"></a>Voorbeeld: Lusteller maken
+## <a name="example-create-loop-counter"></a>Voor beeld: loop-teller maken
 
-Variabelen worden vaak gebruikt voor het tellen van het aantal keren dat een lus wordt uitgevoerd. In dit voorbeeld ziet u hoe u variabelen voor deze taak maakt en gebruikt door een lus te maken die de bijlagen in een e-mail telt.
+Variabelen worden vaak gebruikt voor het tellen van het aantal keren dat een lus wordt uitgevoerd. In dit voor beeld ziet u hoe u variabelen voor deze taak maakt en gebruikt door een lus te maken waarmee de bijlagen in een e-mail bericht worden geteld.
 
-1. Maak in de Azure-portal een lege logische app. Voeg een trigger toe die controleert op nieuwe e-mail en eventuele bijlagen.
+1. Maak in de Azure Portal een lege logische app. Voeg een trigger toe waarmee wordt gecontroleerd op nieuwe e-mail en eventuele bijlagen.
 
-   In dit voorbeeld wordt de Office 365 Outlook-trigger gebruikt voor **wanneer een nieuwe e-mail wordt binnenkomt.** U deze trigger alleen instellen om te vuren wanneer de e-mail bijlagen bevat. U echter elke connector gebruiken die controleert op nieuwe e-mails met bijlagen, zoals de Outlook.com-connector.
+   In dit voor beeld wordt de Office 365 Outlook-trigger gebruikt voor **wanneer er een nieuwe e-mail binnenkomt**. U kunt deze trigger zo instellen dat deze alleen wordt geactiveerd wanneer het e-mail bericht bijlagen bevat. U kunt echter elke connector gebruiken waarmee wordt gecontroleerd op nieuwe e-mail berichten met bijlagen, zoals de Outlook.com-connector.
 
-1. Selecteer In de trigger om te controleren op bijlagen en deze bijlagen door te geven aan de werkstroom van uw logische app, de optie **Ja** voor deze eigenschappen:
+1. Selecteer **Ja** bij de volgende eigenschappen in de trigger om te controleren op bijlagen en de bijlagen door te geven aan de werk stroom van de logische app:
 
    * **Heeft bijlage**
    * **Bijlagen opnemen**
 
-   ![Bijlagen controleren en opnemen](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
+   ![Controleren op bijlagen en deze toevoegen](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Voeg de variabele actie [ **Initialiseren** toe](#create-variable). Maak een variabele `Count` integer met de naam met een nulstartwaarde.
+1. Voeg de [actie **variabele initialiseren** ](#create-variable)toe. Maak een variabele met een `Count` geheel getal met de naam die een begin waarde van nul heeft.
 
-   ![Actie toevoegen voor 'Variabele initialiseren'](./media/logic-apps-create-variables-store-values/initialize-variable.png)
+   ![Actie toevoegen voor ' variabele initialiseren '](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-1. Als u door elke bijlage wilt fietsen, voegt u een *voor elke* lus toe.
+1. Als u elke bijlage wilt door lopen, voegt u een *voor elke* lus toe.
 
-   1. Selecteer onder de variabele actie **Initialiseren** de optie **Nieuwe stap**.
+   1. Selecteer **nieuwe stap**onder de actie **variabele initialiseren** .
 
-   1. Selecteer **Ingebouwde**actie onder **Een actie kiezen**. Voer in het `for each` zoekvak in als zoekfilter en selecteer **Voor elk**.
+   1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer `for each` in het zoekvak in als uw zoek filter en selecteer **voor elk**.
 
-      ![Een lus 'voor elke' toevoegen](./media/logic-apps-create-variables-store-values/add-loop.png)
+      ![Een lus voor elke toevoegen](./media/logic-apps-create-variables-store-values/add-loop.png)
 
-1. Klik in de lus in het vak **Een uitvoer uit vorige stappen selecteren.** Wanneer de lijst met dynamische inhoud wordt weergegeven, selecteert u **Bijlagen**.
+1. Klik in de lus in het vak **een uitvoer van de vorige stappen selecteren** . Wanneer de lijst met dynamische inhoud wordt weer gegeven, selecteert u **bijlagen**.
 
    ![Selecteer 'Bijlagen'](./media/logic-apps-create-variables-store-values/select-attachments.png)
 
-   De eigenschap **Bijlagen** passeert een array, die de e-mailbijlagen van de uitvoer van de trigger heeft, in uw lus.
+   De eigenschap **bijlagen** geeft een matrix aan, die de e-mail bijlagen van de uitvoer van de trigger in uw lus bevat.
 
-1. Selecteer **in de lus Voor elke** lus de optie Een actie **toevoegen**.
+1. Selecteer **een actie toevoegen**in de lus **voor elke** .
 
-   ![Selecteer 'Een actie toevoegen'](./media/logic-apps-create-variables-store-values/add-action-2.png)
+   ![Selecteer een actie toevoegen](./media/logic-apps-create-variables-store-values/add-action-2.png)
 
-1. Voer in het zoekvak 'incrementvariable' in als filter. Selecteer In de lijst met acties de optie **Variabele Verhogen**.
+1. Voer in het zoekvak ' increment variable ' in als uw filter. Selecteer in de lijst acties de optie **variabele verhogen**.
 
    > [!NOTE]
-   > Zorg ervoor dat de variabele actie **Toename** in de lus wordt weergegeven. Als de actie buiten de lus wordt weergegeven, sleept u de actie naar de lus.
+   > Zorg ervoor dat de actie **variabele stapsgewijs** wordt weer gegeven in de lus. Als de actie buiten de lus wordt weer gegeven, sleept u de actie naar de lus.
 
-1. Selecteer in de **variabele actie Toename** in de lijst **Naam** de variabele **Aantal.**
+1. Selecteer in de actie **variabele verhogen** in de lijst **naam** de variabele **aantal** .
 
-   ![Selecteer de variabele 'Tellen'](./media/logic-apps-create-variables-store-values/add-increment-variable-example.png)
+   ![Selecteer de variabele Count](./media/logic-apps-create-variables-store-values/add-increment-variable-example.png)
 
-1. Voeg onder de lus elke actie toe die u het aantal bijlagen stuurt. Neem in uw actie de waarde op van de variabele **Aantal,** bijvoorbeeld:
+1. Voeg onder de lus elke actie toe waarmee u het aantal bijlagen verzendt. Neem in uw actie de waarde van de variabele **Count** op, bijvoorbeeld:
 
    ![Een actie toevoegen die resultaten verzendt](./media/logic-apps-create-variables-store-values/send-email-results.png)
 
-1. Sla uw logische app op. Selecteer op de werkbalk van de ontwerper de optie **Opslaan**.
+1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
-1. Als uw logische app niet is ingeschakeld, selecteert u **overzicht**in het menu van de logische app . Selecteer op de werkbalk **Inschakelen**.
+1. Als uw logische app niet is ingeschakeld, selecteert u **overzicht**in het menu van de logische app. Selecteer **inschakelen**op de werk balk.
 
-1. Selecteer Op de werkbalk Logic App Designer de optie **Uitvoeren**. Met deze stap wordt uw logica-app handmatig gestart.
+1. Selecteer **uitvoeren**op de werk balk van de Logic app-ontwerp functie. Met deze stap wordt de logische app hand matig gestart.
 
-1. Stuur een e-mail met een of meer bijlagen naar het e-mailaccount dat u in dit voorbeeld hebt gebruikt.
+1. Een e-mail met een of meer bijlagen verzenden naar het e-mail account dat u in dit voor beeld hebt gebruikt.
 
-   Met deze stap wordt de trigger van de logische app geactiveerd, waardoor een instantie voor de werkstroom van uw logische app wordt gemaakt en uitgevoerd. Als gevolg hiervan stuurt de logische app u een bericht of e-mail met het aantal bijlagen in de e-mail die u hebt verzonden.
+   Met deze stap wordt de trigger van de logische app geactiveerd, waarmee een exemplaar wordt gemaakt en uitgevoerd voor de werk stroom van uw logische app. Als gevolg hiervan verzendt de logische app u een bericht of een e-mail met het aantal bijlagen in de e-mail die u hebt verzonden.
 
-Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt hier de manier weergegeven waarop de variabele actie **Voor** **elke** lus wordt weergegeven in uw logische app-definitie, die in JSON-indeling is.
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de **voor elke** lus wordt weer gegeven samen met de actie voor het verhogen van de **variabele** in de definitie van de logische app, in JSON-indeling.
 
 ```json
 "actions": {
@@ -320,19 +320,19 @@ Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt hier de ma
 
 <a name="decrement-value"></a>
 
-## <a name="decrement-variable"></a>Decrement variabele
+## <a name="decrement-variable"></a>Variabele verlagen
 
-Als u een variabele wilt verlagen of *verlagen* met een constante waarde, volgt u de stappen voor [het verhogen van een variabele,](#increment-value) behalve dat u de variabele actie **Decrement** in plaats daarvan vindt en selecteert. Deze actie werkt alleen met gehele en zwevende variabelen.
+Als u een variabele wilt verkleinen of *verlagen* met een constante waarde, volgt u de stappen voor het [verg Roten van een variabele](#increment-value) , behalve dat u zoekt en selecteert u in plaats daarvan de actie **variabele verlagen** . Deze actie werkt alleen met de variabelen integer en float.
 
-Hier zijn de eigenschappen voor de variabele actie **Decrement:**
+Dit zijn de eigenschappen voor de actie **variabele verlagen** :
 
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele naam*> | De naam voor de variabele tot decrement | 
-| **Waarde** | Nee | <*increment-waarde*> | De waarde voor het aflaten van de variabele. De standaardwaarde is één. <p><p>**Tip:** Hoewel optioneel, stelt u deze waarde in als een best practice, zodat u altijd de specifieke waarde weet voor het afzetten van uw variabele. |
+| **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden verminderd | 
+| **Waarde** | Nee | <*Increment-waarde*> | De waarde voor decrementing van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in als een Best Practice, zodat u altijd weet wat de specifieke waarde voor decrementing uw variabele is. |
 ||||| 
 
-Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt hier de manier weergegeven waarop de variabele actie **Decrement** wordt weergegeven in uw logische app-definitie, die in JSON-indeling is.
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele verlagen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling.
 
 ```json
 "actions": {
@@ -351,30 +351,30 @@ Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt hier de ma
 
 ## <a name="set-variable"></a>Variabele instellen
 
-Als u een andere waarde wilt toewijzen aan een bestaande variabele, voert u de stappen uit voor [het verhogen van een variabele,](#increment-value) behalve dat u:
+Als u een andere waarde aan een bestaande variabele wilt toewijzen, volgt u de stappen voor het [verg Roten van een variabele](#increment-value) , behalve dat u:
 
-1. Zoek en selecteer in plaats daarvan de variabele actie **Instellen.**
+1. Zoek en selecteer in plaats daarvan de actie **variabele instellen** .
 
-1. Geef de variabele naam en waarde op die u wilt toewijzen. Zowel de nieuwe waarde als de variabele moeten hetzelfde gegevenstype hebben. De waarde is vereist omdat deze actie geen standaardwaarde heeft.
+1. Geef de naam en waarde van de variabele op die u wilt toewijzen. Zowel de nieuwe waarde als de variabele moeten hetzelfde gegevens type hebben. De waarde is vereist omdat deze actie geen standaard waarde heeft.
 
-Dit zijn de eigenschappen voor de variabele actie **Instellen:**
+Dit zijn de eigenschappen voor de actie **variabele instellen** :
 
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele naam*> | De naam voor de variabele om te wijzigen |
-| **Waarde** | Ja | <*nieuwe waarde*> | De waarde die u de variabele wilt toewijzen. Beide moeten hetzelfde gegevenstype hebben. |
+| **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
+| **Waarde** | Ja | <*nieuwe waarde*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
 ||||| 
 
 > [!NOTE]
-> Tenzij u variabelen verhoogt of decreeert, *kan* het wijzigen van variabelen binnen lussen onverwachte resultaten opleveren omdat lussen standaard of gelijktijdig parallel worden uitgevoerd. Probeer voor deze gevallen de lus in te stellen om opeenvolgend uit te voeren. Als u bijvoorbeeld wilt verwijzen naar de variabele waarde in de lus en dezelfde waarde verwacht aan het begin en einde van die lusinstantie, voert u de volgende stappen uit om de manier waarop de lus wordt uitgevoerd te wijzigen: 
+> Tenzij u de variabelen verdeelt of decrementing, worden door het wijzigen van variabelen in lussen *mogelijk* onverwachte resultaten gemaakt omdat lussen standaard parallel of gelijktijdig worden uitgevoerd. Voor deze gevallen kunt u de lus zo instellen dat deze achter elkaar wordt uitgevoerd. Als u bijvoorbeeld wilt verwijzen naar de waarde van de variabele in de lus en dezelfde waarde aan het begin en einde van die lusinstructie wilt verwachten, volgt u deze stappen om de uitvoering van de lus te wijzigen: 
 >
-> 1. Selecteer in de rechterbovenhoek van uw lus de knop alipsis (**... )** en selecteer **Vervolgens Instellingen**.
+> 1. Selecteer in de rechter bovenhoek van de lus de knop met het weglatings teken (**...**) en selecteer vervolgens **instellingen**.
 > 
-> 2. Wijzig **onder Gelijktijdigheidsbesturingselement**de **instelling Standaard overschrijven** in **Aan**.
+> 2. Wijzig de standaard instelling voor **overschrijven** onder **Gelijktijdigheids beheer**in **op aan**.
 >
-> 3. Sleep de schuifregelaar **Mate van Parallelisme** naar **1**.
+> 3. Sleep de schuif regelaar **van de parallelle graad** naar **1**.
 
-Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabele actie **instellen** in de definitie van uw logische app weergegeven, die in JSON-indeling is. In dit `Count` voorbeeld wordt de huidige waarde van de variabele gewijzigd in een andere waarde.
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele instellen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling. In dit voor beeld `Count` wordt de huidige waarde van de variabele gewijzigd in een andere waarde.
 
 ```json
 "actions": {
@@ -406,24 +406,24 @@ Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabe
 
 ## <a name="append-to-variable"></a>Toevoegen aan variabele
 
-Voor variabelen die tekenreeksen of arrays opslaan, u de waarde van een variabele invoegen of *toevoegen* als het laatste item in die tekenreeksen of arrays. U de stappen volgen voor [het verhogen van een variabele,](#increment-value) behalve dat u in plaats daarvan de volgende stappen volgt: 
+Voor variabelen waarin teken reeksen of matrices worden opgeslagen, kunt u de waarde van een variabele als laatste item in die teken reeksen of matrices invoegen of *toevoegen* . U kunt de stappen voor het [verg Roten van een variabele](#increment-value) volgen, behalve dat u deze stappen in plaats daarvan uitvoert: 
 
-1. Zoek en selecteer een van deze acties op basis van of uw variabele een tekenreeks of een array is: 
+1. Zoek en selecteer een van deze acties op basis van het feit of uw variabele een teken reeks of een matrix is: 
 
-   * **Toevoegen aan tekenreeksvariabele**
-   * **Toevoegen aan arrayvariabele** 
+   * **Toevoegen aan teken reeks variabele**
+   * **Toevoegen aan matrix variabele** 
 
-1. Geef de waarde op die moet worden toegevoegd als het laatste item in de tekenreeks of array. Deze waarde is verplicht.
+1. Geef de waarde op die moet worden toegevoegd als het laatste item in de teken reeks of matrix. Deze waarde is verplicht.
 
-Hier zijn de eigenschappen voor de **acties Toevoegen aan...**
+Dit zijn de eigenschappen voor de acties **toevoegen aan..** .:
 
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele naam*> | De naam voor de variabele om te wijzigen |
-| **Waarde** | Ja | <*toevoegen-waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
+| **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
+| **Waarde** | Ja | <*toegevoegde waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
 |||||
 
-Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabele actie **Toevoegen aan array** weergegeven in de definitie van uw logische app, die in JSON-indeling is. In dit voorbeeld wordt een matrixvariabele maakt en wordt een andere waarde toegevoegd als het laatste item in de array. Uw resultaat is een bijgewerkte variabele die deze array bevat:`[1,2,3,"red"]`
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **toevoegen aan matrix variabele** wordt weer gegeven in de definitie van de logische app, in JSON-indeling. In dit voor beeld wordt een matrix variabele gemaakt en wordt een andere waarde toegevoegd als het laatste item in de matrix. Het resultaat is een bijgewerkte variabele die deze matrix bevat:`[1,2,3,"red"]`
 
 ```json
 "actions": {
@@ -453,4 +453,4 @@ Als u overschakelt van de ontwerper naar de codeweergaveeditor, wordt de variabe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over [Logic apps connectors](../connectors/apis-list.md)

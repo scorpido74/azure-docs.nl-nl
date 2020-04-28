@@ -1,84 +1,84 @@
 ---
-title: Prestatiebewaking azure-servicefabric
-description: Meer informatie over prestatiemeteritems voor het bewaken en diagnosticeren van Azure Service Fabric-clusters.
+title: Prestatie bewaking van Azure Service Fabric
+description: Meer informatie over prestatie meter items voor bewaking en diagnose van Azure Service Fabric-clusters.
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464697"
 ---
 # <a name="performance-metrics"></a>Metrische gegevens voor prestaties
 
-Statistieken moeten worden verzameld om inzicht te krijgen in de prestaties van uw cluster en de toepassingen die erin worden uitgevoerd. Voor servicefabricclusters raden we aan de volgende prestatiemeteritems te verzamelen.
+Metrische gegevens moeten worden verzameld om inzicht te krijgen in de prestaties van uw cluster en de toepassingen die erop worden uitgevoerd. Voor Service Fabric clusters kunt u het beste de volgende prestatie meter items verzamelen.
 
 ## <a name="nodes"></a>Knooppunten
 
-Voor de machines in uw cluster u de volgende prestatiemeteritems verzamelen om de belasting van elke machine beter te begrijpen en de juiste beslissingen over clusterschaling te nemen.
+Voor de computers in uw cluster kunt u de volgende prestatie meter items verzamelen om beter inzicht te krijgen in de belasting van elke machine en de juiste beslissingen voor cluster schaling te maken.
 
-| Tellercategorie | Tellernaam |
+| Categorie teller | Tellernaam |
 | --- | --- |
-| Logische schijf | Logische schijfvrije ruimte |
-| PhysicalDisk(per schijf) | De wachtrijlengte van de schijfleeswachtrij |
-| PhysicalDisk(per schijf) | Avg. Wachtrijlengte voor schrijfschijven |
-| PhysicalDisk(per schijf) | Avg. Schijf sec/read |
-| PhysicalDisk(per schijf) | Avg. Schijf sec/write |
-| PhysicalDisk(per schijf) | Schijfleest/sec |
-| PhysicalDisk(per schijf) | Bytes voor schijflezen per seconde |
-| PhysicalDisk(per schijf) | Schijfschrijft/sec |
-| PhysicalDisk(per schijf) | Bytes voor schijfschrijfschrijfberichten per seconde |
-| Geheugen | Beschikbare mbytes |
-| PagingFile | % Gebruik |
-| Processor(Totaal) | Percentage processortijd |
+| Logische schijf | Beschik bare ruimte op logische schijf |
+| Fysieke schijf (per schijf) | Gemiddelde wachtrij lengte voor lezen van schijf |
+| Fysieke schijf (per schijf) | Gem. wachtrij lengte schrijf bewerkingen schijf |
+| Fysieke schijf (per schijf) | Gemiddelde Lees tijd schijf |
+| Fysieke schijf (per schijf) | Gemiddelde schrijf tijd schijf |
+| Fysieke schijf (per schijf) | Lees bewerkingen per seconde |
+| Fysieke schijf (per schijf) | Gelezen bytes per seconde |
+| Fysieke schijf (per schijf) | Schrijf bewerkingen per seconde |
+| Fysieke schijf (per schijf) | Geschreven bytes per seconde |
+| Geheugen | Beschik bare Mbytes |
+| PagingFile | Percentage gebruik |
+| Processor (totaal) | Percentage processortijd |
 | Proces (per service) | Percentage processortijd |
-| Proces (per service) | ID-proces |
-| Proces (per service) | Privébytes |
-| Proces (per service) | Aantal draad |
+| Proces (per service) | Proces-ID |
+| Proces (per service) | Privé-bytes |
+| Proces (per service) | Aantal threads |
 | Proces (per service) | Virtuele bytes |
 | Proces (per service) | Werkset |
-| Proces (per service) | Werkset - Privé |
-| Netwerkinterface(alle exemplaren) | Bytes recd |
-| Netwerkinterface(alle exemplaren) | Verzonden bytes |
-| Netwerkinterface(alle exemplaren) | Totaal aantal bytes |
-| Netwerkinterface(alle exemplaren) | Uitvoerwachtrijlengte |
-| Netwerkinterface(alle exemplaren) | Pakketten uitgaand weggegooid |
-| Netwerkinterface(alle exemplaren) | Ontvangen pakketten verwijderd |
-| Netwerkinterface(alle exemplaren) | Pakketten Uitgaande fouten |
-| Netwerkinterface(alle exemplaren) | Fouten ontvangen pakketten |
+| Proces (per service) | Werkset-privé |
+| Netwerk interface (alle exemplaren) | Recd bytes |
+| Netwerk interface (alle exemplaren) | Verzonden bytes |
+| Netwerk interface (alle exemplaren) | Totaal aantal bytes |
+| Netwerk interface (alle exemplaren) | Lengte van uitvoer wachtrij |
+| Netwerk interface (alle exemplaren) | Genegeerde uitgaande pakketten |
+| Netwerk interface (alle exemplaren) | Genegeerde ontvangen pakketten |
+| Netwerk interface (alle exemplaren) | Uitgaande pakketten met fouten |
+| Netwerk interface (alle exemplaren) | Ontvangen pakketten met fouten |
 
-## <a name="net-applications-and-services"></a>.NET-toepassingen en -diensten
+## <a name="net-applications-and-services"></a>.NET-toepassingen en-services
 
-Verzamel de volgende tellers als u .NET-services implementeert in uw cluster. 
+Verzamel de volgende prestatie meter items als u .NET-Services implementeert in uw cluster. 
 
-| Tellercategorie | Tellernaam |
+| Categorie teller | Tellernaam |
 | --- | --- |
 | .NET CLR-geheugen (per service) | Proces-id |
-| .NET CLR-geheugen (per service) | # Totaal vastgelegde bytes |
-| .NET CLR-geheugen (per service) | Aantal aantal gereserveerde bytes |
-| .NET CLR-geheugen (per service) | # Bytes in alle heaps |
-| .NET CLR-geheugen (per service) | Grote grootte van de objectheap |
-| .NET CLR-geheugen (per service) | # GC Handgrepen |
-| .NET CLR-geheugen (per service) | # Gen 0 Collecties |
-| .NET CLR-geheugen (per service) | # Gen 1 Collecties |
-| .NET CLR-geheugen (per service) | # Gen 2 Collecties |
+| .NET CLR-geheugen (per service) | Aantal in totaal toegewezen bytes |
+| .NET CLR-geheugen (per service) | Totaal aantal gereserveerde bytes |
+| .NET CLR-geheugen (per service) | Aantal bytes in alle heaps |
+| .NET CLR-geheugen (per service) | Grootte van Large Object heap |
+| .NET CLR-geheugen (per service) | Aantal GC-ingangen |
+| .NET CLR-geheugen (per service) | Aantal verzamelingen van generatie 0 |
+| .NET CLR-geheugen (per service) | Aantal verzamelingen van generatie 1 |
+| .NET CLR-geheugen (per service) | Aantal verzamelingen van generatie 2 |
 | .NET CLR-geheugen (per service) | % Tijd in GC |
 
-### <a name="service-fabrics-custom-performance-counters"></a>De aangepaste prestatiemeteritems van Service Fabric
+### <a name="service-fabrics-custom-performance-counters"></a>Aangepaste prestatie meter items van Service Fabric
 
-Service Fabric genereert een aanzienlijke hoeveelheid aangepaste prestatiemeteritems. Als u de SDK hebt geïnstalleerd, ziet u de uitgebreide lijst op uw Windows-machine in uw prestatiemonitor (Start > Prestatiemonitor). 
+Service Fabric genereert een aanzienlijke hoeveelheid aangepaste prestatie meter items. Als u de SDK hebt geïnstalleerd, kunt u de uitgebreide lijst op uw Windows-computer in uw toepassing prestatie meter weer geven (start > prestatie meter). 
 
-In de toepassingen die u implementeert in uw cluster, als `Service Fabric Actor` `Service Fabric Actor Method` u betrouwbare actoren gebruikt, voeg tellers toe en categorieën (zie [Service Fabric Reliable Actors Diagnostics).](service-fabric-reliable-actors-diagnostics.md)
+In de toepassingen die u in uw cluster implementeert, kunt u, als u Reliable Actors gebruikt, `Service Fabric Actor` items `Service Fabric Actor Method` toevoegen uit en categorieën (Zie [service Fabric reliable actors Diagnostics](service-fabric-reliable-actors-diagnostics.md)).
 
-Als u betrouwbare services of serviceremoting `Service Fabric Service` gebruikt, hebben en `Service Fabric Service Method` tellercategorieën waarvan u tellers moet verzamelen, zie [bewaking met serviceremoting](service-fabric-reliable-serviceremoting-diagnostics.md) en betrouwbare [serviceprestatiemeter .](service-fabric-reliable-services-diagnostics.md#performance-counters) 
+Als u gebruikmaakt van Reliable Services of service voor externe communicatie, hebben `Service Fabric Service` we `Service Fabric Service Method` ook en tellers categorieën waaruit u items moet verzamelen, Zie [bewaking met Service Remoting](service-fabric-reliable-serviceremoting-diagnostics.md) en [betrouw bare Services prestatie meter items](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
-Als u betrouwbare verzamelingen gebruikt, raden we u aan de `Avg. Transaction ms/Commit` gemiddelde commitlatentie per transactiestatistiek `Service Fabric Transactional Replicator` toe te voegen.
+Als u gebruikmaakt van betrouw bare verzamelingen, raden `Avg. Transaction ms/Commit` we u `Service Fabric Transactional Replicator` aan de van de toe te voegen om de gemiddelde doorvoer latentie per trans actie te verzamelen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [het genereren van evenementen op platformniveau](service-fabric-diagnostics-event-generation-infra.md) in Service Fabric
-* Prestatiestatistieken verzamelen via [de Log Analytics-agent](service-fabric-diagnostics-oms-agent.md)
+* Meer informatie over [het genereren van gebeurtenissen op platform niveau](service-fabric-diagnostics-event-generation-infra.md) in service Fabric
+* Metrische gegevens over prestaties verzamelen via [log Analytics-agent](service-fabric-diagnostics-oms-agent.md)

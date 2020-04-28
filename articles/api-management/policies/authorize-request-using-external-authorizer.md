@@ -1,7 +1,7 @@
 ---
-title: Voorbeeld-API-beheerbeleid - Aanvraag autoriseren met externe geautoriseerder
+title: Voor beeld van API management-beleid-aanvraag toestaan met externe goed keurder
 titleSuffix: Azure API Management
-description: 'Voorbeeld van azure API-beheerbeleid : toont aan hoe u aanvragen autorisert met behulp van externe geautoriseerder die een aangepaste of verouderde verificatie/autorisatielogica inkapselt.'
+description: 'Voor beeld van Azure API management-beleid: demonstreert hoe aanvragen worden geautoriseerd met een externe autorisatie die een aangepaste of verouderde logica voor verificatie/autorisatie inkapselt.'
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
 ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442502"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>Aanvragen via externe authorizer autoriseren
 
-In dit artikel wordt een voorbeeld van een Azure API-beheerbeleid weergegeven waarin wordt uitgelegd hoe api-toegang kan worden beveiligd met behulp van een externe geautoriseerder die aangepaste verificatie-/autorisatielogica inkapselt. Als u een beleidscode wilt instellen of bewerken, volgt u de stappen die zijn beschreven in [Een beleid instellen of bewerken](../set-edit-policies.md). Zie [Beleidsvoorbeelden](../policy-samples.md)voor andere voorbeelden .
+In dit artikel wordt een voor beeld gegeven van een Azure API management-beleid dat laat zien hoe u de toegang tot de API kunt beveiligen met behulp van een externe autoriseer die aangepaste verificatie/autorisatie logica inkapselt. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
 
 ## <a name="policy"></a>Beleid
 
@@ -34,5 +34,5 @@ Plak de code in het **binnenkomende** blok.
 
 Meer informatie over APIM-beleid:
 
-+ [Beleid voor toegangsbeperkingen](../api-management-access-restriction-policies.md)
-+ [Beleidsvoorbeelden](../policy-samples.md)
++ [Beleid voor toegangs beperkingen](../api-management-access-restriction-policies.md)
++ [Voor beelden van beleid](../policy-samples.md)

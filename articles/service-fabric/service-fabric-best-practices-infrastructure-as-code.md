@@ -1,26 +1,26 @@
 ---
-title: Azure Service Fabric-infrastructuur als aanbevolen procedures voor code
-description: Aanbevolen procedures en ontwerpoverwegingen voor het beheren van Azure Service Fabric als infrastructuur als code.
+title: Azure Service Fabric-infra structuur als best practices voor code
+description: Best practices en ontwerp overwegingen voor het beheren van Azure Service Fabric als infra structuur als code.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551808"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure als code
 
-Maak in een productiescenario Azure Service Fabric-clusters met resourcebeheersjablonen. Resourcebeheersjablonen bieden meer controle over resourceeigenschappen en zorgen ervoor dat u een consistent resourcemodel hebt.
+Maak in een productie scenario Azure Service Fabric-clusters met behulp van Resource Manager-sjablonen. Resource Manager-sjablonen bieden meer controle over de bron eigenschappen en zorgen ervoor dat u een consistent resource model hebt.
 
-Voorbeeldvan Resource Manager-sjablonen zijn beschikbaar voor Windows en Linux in de [Azure-voorbeelden op GitHub.](https://github.com/Azure-Samples/service-fabric-cluster-templates) Deze sjablonen kunnen worden gebruikt als uitgangspunt voor uw clustersjabloon. Download `azuredeploy.json` `azuredeploy.parameters.json` en bewerk ze om aan uw aangepaste vereisten te voldoen.
+Voorbeeld sjablonen voor Resource Manager zijn beschikbaar voor Windows en Linux in de [Azure-voor beelden op github](https://github.com/Azure-Samples/service-fabric-cluster-templates). Deze sjablonen kunnen worden gebruikt als uitgangs punt voor uw cluster sjabloon. Down `azuredeploy.json` load `azuredeploy.parameters.json` en bewerk ze om te voldoen aan uw aangepaste vereisten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u `azuredeploy.json` `azuredeploy.parameters.json` de bovenstaande en sjablonen wilt implementeren, gebruikt u de volgende Azure CLI-opdrachten:
+Gebruik de volgende `azuredeploy.json` Azure `azuredeploy.parameters.json` cli-opdrachten om de en sjablonen te implementeren die u hierboven hebt gedownload:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"
@@ -30,7 +30,7 @@ az group create --name $ResourceGroupName --location $Location
 az group deployment create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
 ```
 
-Een resource maken met Powershell
+Een resource maken met behulp van Power shell
 
 ```powershell
 $ResourceGroupName="sfclustergroup"
@@ -42,9 +42,9 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
-## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-bronnen
+## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-resources
 
-U toepassingen en services implementeren in uw Service Fabric-cluster via Azure Resource Manager. Zie [Toepassingen en services beheren als Azure Resource Manager-bronnen](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) voor meer informatie. De volgende zijn de toepassing seinen van best practices Service Fabric die u wilt opnemen in de sjabloonbronnen van Resource Manager.
+U kunt toepassingen en services implementeren op uw Service Fabric-cluster via Azure Resource Manager. Zie [toepassingen en services beheren als Azure Resource Manager resources](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) voor meer informatie. Hieronder vindt u best practice Service Fabric toepassingsspecifieke resources die moeten worden meegenomen in de resources van de Resource Manager-sjabloon.
 
 ```json
 {
@@ -73,7 +73,7 @@ U toepassingen en services implementeren in uw Service Fabric-cluster via Azure 
 }
 ```
 
-Als u uw toepassing wilt implementeren met Azure Resource Manager, moet u eerst [een sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) Service Fabric-toepassingspakket maken. Het volgende python-script is een voorbeeld van het maken van een sfpkg:
+Als u uw toepassing wilt implementeren met behulp van Azure Resource Manager, moet u eerst [een sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) service Fabric toepassings pakket maken. Het volgende python-script is een voor beeld van het maken van een sfpkg:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -90,8 +90,8 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
 microservices_sfpkg.close()
 ```
 
-## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Automatische upgradeconfiguratie van het Besturingssysteem Azure Virtual Machine 
-Upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerking en het wordt aanbevolen dat u [de upgrade van het automatische besturingssysteem](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) voor Azure Service Fabric-clusters voor azure servicefabric-clusters gebruikt. Patch Orchestration Application is een alternatieve oplossing die is bedoeld voor wanneer gehost buiten Azure, hoewel POA kan worden gebruikt in Azure, met overhead van hosting POA in Azure is een veel voorkomende reden om Virtual Machine Operating System Automatic Upgrade verkiezen boven POA. Hieronder volgen de eigenschappen van de sjabloon Resourcebeheer van de virtuele machineset van de berekening om de upgrade van Auto OS in te schakelen:
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Automatische upgrade configuratie van het besturings systeem van de virtuele machine van Azure 
+Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerking. het wordt aanbevolen dat u de Schaalset voor de virtuele machine gebruikt voor het [automatisch bijwerken van het besturings systeem](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) voor Azure service Fabric clusters host patch management; Patch Orchestration Application is een alternatieve oplossing die is bedoeld voor wanneer deze buiten Azure wordt gehost, maar POA kan worden gebruikt in azure, waarbij de overhead van het hosten van POA in azure een gemeen schappelijke reden is om de voor keur te geven aan een automatische upgrade van het besturings systeem van de virtuele machine over POA. Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor de berekening van de virtuele machine Scale set om automatische upgrades van besturings systemen in te scha kelen:
 
 ```json
 "upgradePolicy": {
@@ -102,11 +102,11 @@ Upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerki
     }
 },
 ```
-Wanneer u automatische os-upgrades met servicestructuur gebruikt, wordt de nieuwe OS-afbeelding één updatedomein tegelijk uitgerold om de hoge beschikbaarheid van de services die in Service Fabric worden uitgevoerd, te behouden. Als u automatische os-upgrades in servicestructuur wilt gebruiken, moet uw cluster zijn geconfigureerd om de Silver Sustainability Tier of hoger te gebruiken.
+Wanneer u automatische OS-upgrades gebruikt met Service Fabric, wordt de nieuwe installatie kopie van het besturings systeem samen met één update domein per keer uitgedraaid om hoge Beschik baarheid van de services die in Service Fabric worden uitgevoerd, te onderhouden. Als u automatische besturingssysteem upgrades wilt gebruiken in Service Fabric moet uw cluster zijn geconfigureerd voor het gebruik van de Silver duurzaamheid-laag of hoger.
 
-Controleer of de volgende registersleutel is ingesteld op false om te voorkomen dat uw windows host-machines ongecoördineerde updates initieert: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Zorg ervoor dat de volgende register sleutel is ingesteld op false om te voor komen dat uw Windows-hostcomputers niet-gecoördineerde updates initiëren: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
-De volgende zijn de eigenschappen van de Sjabloon Resourcebeheer van de virtuele machine berekenen om de windowsUpdate-registersleutel op false in te stellen:
+Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor het berekenen van de naam van de compute virtual machine set om de register sleutel WindowsUpdate in te stellen op False
 ```json
 "osProfile": {
         "computerNamePrefix": "{vmss-name}",
@@ -119,12 +119,12 @@ De volgende zijn de eigenschappen van de Sjabloon Resourcebeheer van de virtuele
       },
 ```
 
-## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Configuratie van Azure Service Fabric-clusterupgrade
-Het volgende is de eigenschap Resourcemanager van het cluster Resource beheer van servicefabric om automatische upgrade in te schakelen:
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Upgrade configuratie van Azure Service Fabric cluster
+Hier volgt de Service Fabric eigenschap cluster resource manager-sjabloon voor het inschakelen van automatische upgrade:
 ```json
 "upgradeMode": "Automatic",
 ```
-Als u uw cluster handmatig wilt upgraden, downloadt u de cabine/deb-distributie naar een virtuele clustermachine en roept u vervolgens de volgende PowerShell op:
+Als u het cluster hand matig wilt upgraden, downloadt u de cab/deb-distributie naar een virtuele cluster machine en roept u de volgende Power shell aan:
 ```powershell
 Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
 Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
@@ -133,6 +133,6 @@ Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een cluster maken op VM's of computers met Windows Server: [clustercreatie van servicefabric voor Windows Server](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* Een cluster maken op VM's of computers met Linux: [een Linux-cluster maken](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+* Een cluster maken op Vm's of computers met Windows Server: [service Fabric cluster maken voor Windows Server](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* Een cluster maken op Vm's of computers met Linux: [een Linux-cluster maken](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md)

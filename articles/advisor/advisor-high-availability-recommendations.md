@@ -1,109 +1,109 @@
 ---
-title: De beschikbaarheid van uw toepassing verbeteren met Azure Advisor
-description: Gebruik Azure Advisor om de hoge beschikbaarheid van uw Azure-implementaties te verbeteren.
+title: Verbeter de beschik baarheid van uw toepassing met Azure Advisor
+description: Gebruik Azure Advisor om de maximale Beschik baarheid van uw Azure-implementaties te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443114"
 ---
-# <a name="improve-availability-of-your-application-with-azure-advisor"></a>De beschikbaarheid van uw toepassing verbeteren met Azure Advisor
+# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbeter de beschik baarheid van uw toepassing met Azure Advisor
 
-Azure Advisor helpt u de continuïteit van uw bedrijfskritieke toepassingen te waarborgen en te verbeteren. U aanbevelingen met hoge beschikbaarheid krijgen van Advisor via het tabblad **Hoge beschikbaarheid** van het Dashboard Adviseur.
+Azure Advisor helpt u de continuïteit van uw bedrijfs kritieke toepassingen te garanderen en te verbeteren. U kunt aanbevelingen voor hoge Beschik baarheid van Advisor ontvangen via het tabblad **maximale Beschik baarheid** van het Advisor-dash board.
 
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Zorg voor fouttolerantie voor virtuele machines
+## <a name="ensure-virtual-machine-fault-tolerance"></a>Fout tolerantie voor virtuele machines garanderen
 
-U wordt aangeraden om twee of meer virtuele machines in een beschikbaarheidsset te groeperen, om uw toepassing van redundantie te voorzien. Advisor identificeert virtuele machines die geen deel uitmaken van een beschikbaarheidsset en raadt aan deze te verplaatsen naar een beschikbaarheidsset. Deze configuratie zorgt ervoor dat tijdens een geplande of ongeplande onderhoudsgebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de Azure-virtuele machine. U ervoor kiezen om een beschikbaarheidsset voor de virtuele machine te maken of om de virtuele machine toe te voegen aan een bestaande beschikbaarheidsset.
+U wordt aangeraden om twee of meer virtuele machines in een beschikbaarheidsset te groeperen, om uw toepassing van redundantie te voorzien. Advisor identificeert virtuele machines die geen deel uitmaken van een beschikbaarheidsset en raadt u aan om ze te verplaatsen naar een beschikbaarheidsset. Deze configuratie zorgt ervoor dat tijdens een geplande of niet-geplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de virtuele Azure-machine. U kunt ervoor kiezen een beschikbaarheidsset voor de virtuele machine te maken of de virtuele machine toe te voegen aan een bestaande beschikbaarheidsset.
 
 > [!NOTE]
-> Als u ervoor kiest een beschikbaarheidsset te maken, moet u er nog minstens één virtuele machine aan toevoegen. We raden u aan twee of meer virtuele machines te groeperen in een beschikbaarheidsset om ervoor te zorgen dat ten minste één machine beschikbaar is tijdens een storing.
+> Als u een beschikbaarheidsset maakt, moet u er ten minste één virtuele machine aan toevoegen. We raden u aan twee of meer virtuele machines in een beschikbaarheidsset te groeperen om ervoor te zorgen dat er ten minste één computer beschikbaar is tijdens een storing.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Zorg voor fouttolerantie voor beschikbaarheidsset
+## <a name="ensure-availability-set-fault-tolerance"></a>Fout tolerantie voor beschikbaarheidsset garanderen
 
-U wordt aangeraden om twee of meer virtuele machines in een beschikbaarheidsset te groeperen, om uw toepassing van redundantie te voorzien. Advisor identificeert beschikbaarheidssets die één virtuele machine bevatten en raadt aan er een of meer virtuele machines aan toe te voegen.Deze configuratie zorgt ervoor dat tijdens een geplande of ongeplande onderhoudsgebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de Azure-virtuele machine.U ervoor kiezen om een virtuele machine te maken of om een bestaande virtuele machine toe te voegen aan de beschikbaarheidsset.  
+U wordt aangeraden om twee of meer virtuele machines in een beschikbaarheidsset te groeperen, om uw toepassing van redundantie te voorzien. Advisor identificeert beschikbaarheids sets die één virtuele machine bevatten en raadt u aan om een of meer virtuele machines toe te voegen.Deze configuratie zorgt ervoor dat tijdens een geplande of niet-geplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de virtuele Azure-machine.U kunt ervoor kiezen om een virtuele machine te maken of een bestaande virtuele machine toe te voegen aan de beschikbaarheidsset.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Managed Disks gebruiken voor verbeterde betrouwbaarheid van gegevens
 
-Virtuele machines die zich in een beschikbaarheidsset bevinden met schijven die opslagaccounts of opslagschaaleenheden delen, zijn niet bestand tegen storingen in één opslagschaaltijdens uitval. Advisor identificeert deze beschikbaarheidssets en raadt u aan te migreren naar Azure Managed Disks. Dit zal ervoor zorgen dat de schijven van de verschillende virtuele machines in de beschikbaarheidset voldoende geïsoleerd zijn om een enkel storingspunt te voorkomen. 
+Virtuele machines die deel uitmaken van een beschikbaarheidsset met schijven die opslag accounts of opslag schaal eenheden delen, zijn niet flexibel voor opslag met een enkele storing in de geheugen grootte tijdens uitval. Advisor identificeert deze beschikbaarheids sets en raadt u aan om te migreren naar Azure Managed Disks. Dit zorgt ervoor dat de schijven van de verschillende virtuele machines in de beschikbaarheidsset voldoende geïsoleerd zijn om een Single Point of Failure te voor komen. 
 
-## <a name="ensure-application-gateway-fault-tolerance"></a>Fouttolerantie voor toepassingsgateways garanderen
+## <a name="ensure-application-gateway-fault-tolerance"></a>Fout tolerantie van Application Gateway garanderen
 
-Deze aanbeveling garandeert de bedrijfscontinuïteit van bedrijfskritieke toepassingen die worden aangedreven door toepassingsgateways. Advisor identificeert toepassingsgateway-exemplaren die niet zijn geconfigureerd voor fouttolerantie en stelt voor dat u herstelacties uitvoeren. Advisor identificeert middelgrote of grote toepassingsgateways met één instantie en raadt aan om ten minste één exemplaar toe te voegen. Het identificeert ook single- of multi-instance small application gateways en raadt het migreren naar middelgrote of grote SKU's aan. Advisor raadt deze acties aan om ervoor te zorgen dat uw toepassingsgateway-exemplaren zijn geconfigureerd om te voldoen aan de huidige SLA-vereisten voor deze resources.
+Deze aanbeveling garandeert de bedrijfs continuïteit van essentiële toepassingen die worden aangedreven door toepassings gateways. Advisor identificeert Application Gateway-exemplaren die niet zijn geconfigureerd voor fout tolerantie en suggesties voor herstel acties die u kunt uitvoeren. Advisor identificeert gemiddeld of grote toepassings gateways voor één exemplaar en raadt aan om ten minste één instantie toe te voegen. Het identificeert ook kleine toepassings gateways met één of meerdere exemplaren en raadt u aan om te migreren naar normale of grote Sku's. Advisor raadt deze acties aan om ervoor te zorgen dat uw Application Gateway-exemplaren zijn geconfigureerd om te voldoen aan de huidige SLA-vereisten voor deze resources.
 
-## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Bescherm uw virtuele machinegegevens tegen onbedoelde verwijdering
+## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Beveilig de gegevens van uw virtuele machine tegen onbedoeld verwijderen
 
-Het instellen van een back-up van virtuele machines zorgt voor de beschikbaarheid van uw bedrijfskritieke gegevens en biedt bescherming tegen onbedoelde verwijdering of beschadiging. Advisor identificeert virtuele machines waar back-up niet is ingeschakeld en raadt aan back-up in te schakelen. 
+Bij het instellen van de back-up van de virtuele machine wordt de beschik baarheid van uw bedrijfs kritieke gegevens gegarandeerd en wordt bescherming geboden tegen onbedoeld verwijderen of beschadigd. Advisor identificeert virtuele machines waarop back-up niet is ingeschakeld en raadt aan om back-ups in te scha kelen. 
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Zorg ervoor dat u toegang hebt tot Azure-cloudexperts wanneer u dat nodig hebt
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Zorg ervoor dat u toegang hebt tot Azure-Cloud experts wanneer u deze nodig hebt
 
-Bij het uitvoeren van een bedrijfskritieke workload is het belangrijk om toegang te hebben tot technische ondersteuning wanneer dat nodig is. Advisor identificeert potentiële bedrijfskritieke abonnementen die geen technische ondersteuning in hun ondersteuningsplan bevatten en beveelt een upgrade aan naar een optie die technische ondersteuning bevat.
+Wanneer u een kritieke werk belasting uitvoert, is het belang rijk dat u toegang hebt tot technische ondersteuning wanneer dat nodig is. Advisor identificeert potentiële bedrijfs kritieke abonnementen die geen technische ondersteuning hebben die zijn opgenomen in hun ondersteunings plan en waarmee wordt geadviseerd om een upgrade uit te voeren naar een optie met technische ondersteuning.
 
-## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Azure Service Health-waarschuwingen maken om te worden gewaarschuwd wanneer Azure-problemen u beïnvloeden
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Azure Service Health waarschuwingen maken om een melding te ontvangen wanneer Azure-problemen van invloed zijn op u
 
-We raden u aan Azure Service Health-waarschuwingen in te stellen om op de hoogte te worden gesteld wanneer azure-serviceproblemen van invloed zijn op u. [Azure Service Health](https://azure.microsoft.com/features/service-health/) is een gratis service die persoonlijke richtlijnen en ondersteuning biedt wanneer u wordt beïnvloed door een Azure-serviceprobleem. Advisor identificeert abonnementen die geen waarschuwingen hebben geconfigureerd en raadt aan er een te maken.
+We raden u aan Azure Service Health waarschuwingen in te stellen om te worden gewaarschuwd wanneer de Azure-Service problemen van invloed zijn op u. [Azure service Health](https://azure.microsoft.com/features/service-health/) is een gratis service die persoonlijke begeleiding en ondersteuning biedt wanneer u een Azure-service probleem ondervindt. Advisor identificeert abonnementen waarvoor geen waarschuwingen zijn geconfigureerd en raadt u aan om er een te maken.
 
-## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Eindpunten voor traffic manager configureren voor tolerantie
+## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Traffic Manager-eind punten voor tolerantie configureren
 
-Traffic Manager-profielen met meer dan één eindpunt ervaren een hogere beschikbaarheid als een bepaald eindpunt mislukt. Het plaatsen van eindpunten in verschillende regio's verbetert de betrouwbaarheid van de service verder. Advisor identificeert Traffic Manger profielen waar er slechts één eindpunt is en raadt aan om ten minste één eindpunt in een andere regio toe te voegen.
+Traffic Manager profielen met meer dan één eindpunt ervaring hogere Beschik baarheid als een bepaald eind punt mislukt. Het plaatsen van eind punten in verschillende regio's verbetert de betrouw baarheid van de service. Advisor identificeert Traffic Manager-profielen waarbij er slechts één eind punt is en raadt aan ten minste één eind punt toe te voegen in een andere regio.
 
-Als alle eindpunten in een Traffic Manager-profiel dat is geconfigureerd voor nabijheidsroutering zich in dezelfde regio bevinden, kunnen gebruikers uit andere regio's verbindingsvertragingen ondervinden. Als u een eindpunt toevoegt of verplaatst naar een andere regio, worden de algehele prestaties verbeterd en wordt de beschikbaarheid verbeterd als alle eindpunten in één regio mislukken. Advisor identificeert Traffic Manager-profielen die zijn geconfigureerd voor nabijheidsroutering waarbij alle eindpunten zich in dezelfde regio bevinden. Het beveelt aan om een eindpunt toe te voegen of te verplaatsen naar een andere Azure-regio.
+Als alle eind punten in een Traffic Manager profiel dat is geconfigureerd voor proximity-route ring zich in dezelfde regio bevinden, kunnen gebruikers uit andere regio's verbindings vertragingen ondervinden. Als u een eind punt toevoegt of verplaatst naar een andere regio, worden de algehele prestaties verbeterd en wordt er een betere Beschik baarheid geboden als alle eind punten in één regio mislukken. Advisor identificeert Traffic Manager profielen die zijn geconfigureerd voor proximity route ring waarbij alle eind punten zich in dezelfde regio bevinden. Het wordt aanbevolen een eind punt toe te voegen aan of te verplaatsen naar een andere Azure-regio.
 
-Als een Traffic Manager-profiel is geconfigureerd voor geografische routering, wordt het verkeer doorgestuurd naar eindpunten op basis van gedefinieerde regio's. Als een regio faalt, is er geen vooraf gedefinieerde failover. Als u een eindpunt hebt waarbij de regionale groepering is geconfigureerd voor 'Alle (wereld)' wordt voorkomen dat het verkeer wordt verwijderd en de beschikbaarheid van de service wordt verbeterd. Advisor identificeert Traffic Manager-profielen die zijn geconfigureerd voor geografische routering wanneer er geen eindpunt is geconfigureerd om de regionale groepering te hebben als "Alle (wereld)". Het beveelt aan de configuratie te wijzigen om een eindpunt "All (World) te maken.
+Als een Traffic Manager profiel is geconfigureerd voor geografische route ring, wordt verkeer doorgestuurd naar eind punten op basis van gedefinieerde regio's. Als er een fout optreedt in een regio, is er geen vooraf gedefinieerde failover. Als u een eind punt hebt waarbij de regionale groepering is geconfigureerd op ' alle (wereld) ', voor komt u dat verkeer wordt verwijderd en de beschik baarheid van de service wordt verbeterd. Advisor identificeert Traffic Manager profielen die zijn geconfigureerd voor geografische route ring, waarbij er geen eind punt is geconfigureerd voor de regionale groepering als ' alle (wereld) '. Het wordt aanbevolen de configuratie te wijzigen om een eind punt ' alle (wereld) te maken.
 
-## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Gebruik soft delete op uw Azure Storage Account om gegevens op te slaan en te herstellen na onbedoeld overschrijven of verwijderen
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Gebruik zacht verwijderen in uw Azure Storage-account om gegevens op te slaan en te herstellen na onbedoeld overschrijven of verwijderen
 
-Schakel [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in uw opslagaccount in, zodat verwijderde blobs overgaan naar een zachte verwijderde status in plaats van permanent te worden verwijderd. Als gegevens worden overschreven, wordt er een voorlopig verwijderde momentopname gegenereerd waarin de status van de overschreven gegevens wordt opgeslagen. Met behulp van soft delete u herstellen als er per ongeluk verwijderingen of overschrijft. Advisor identificeert Azure Storage-accounts die geen soft delete hebben ingeschakeld en stelt voor dat u deze inschakelt.
+Schakel de optie [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in uw opslag account in, zodat verwijderde blobs overstappen naar een voorlopig verwijderde status in plaats van permanent worden verwijderd. Als gegevens worden overschreven, wordt er een voorlopig verwijderde momentopname gegenereerd waarin de status van de overschreven gegevens wordt opgeslagen. Met de functie voor het gebruik van zacht verwijderen kunt u herstellen als er per ongeluk verwijderingen of overschrijvingen zijn. Advisor identificeert Azure Storage accounts waarvoor geen tijdelijke verwijdering is ingeschakeld en stelt u in staat om deze in te scha kelen.
 
-## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Uw VPN-gateway configureren naar actief-actief voor verbindingstolerantie
+## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Configureer uw VPN-gateway naar actief-actief voor verbindings tolerantie
 
-In actieve configuratie zullen beide exemplaren van een VPN-gateway S2S VPN-tunnels instellen naar uw on-premises VPN-apparaat. Wanneer een geplande onderhoudsgebeurtenis of ongeplande gebeurtenis gebeurt met een gateway-instantie, wordt het verkeer automatisch overgeschakeld naar de andere actieve IPsec-tunnel. Azure Advisor identificeert VPN-gateways die niet zijn geconfigureerd als actief actief en stelt voor dat u ze configureert voor hoge beschikbaarheid.
+In de configuratie actief-actief maken beide exemplaren van een VPN-gateway S2S VPN-tunnels naar uw on-premises VPN-apparaat. Wanneer een geplande onderhouds gebeurtenis of een niet-geplande gebeurtenis plaatsvindt in één gateway-exemplaar, wordt het verkeer automatisch overgeschakeld naar de andere actieve IPsec-tunnel. Azure Advisor worden VPN-gateways geïdentificeerd die niet zijn geconfigureerd als actief-actief en suggesties stellen dat u ze configureert voor hoge Beschik baarheid.
 
-## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Gebruik vpn-gateways voor productie om uw productieworkloads uit te voeren
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Productie-VPN-gateways gebruiken voor het uitvoeren van uw productie-workloads
 
-Azure Advisor controleert op VPN-gateways die een Basic SKU zijn en raadt u aan in plaats daarvan een productie-SKU te gebruiken. De Basic SKU is ontworpen voor ontwikkelings- en testdoeleinden. Productie SKU's bieden een hoger aantal tunnels, BGP-ondersteuning, actieve configuratieopties, aangepast Ipsec/IKE-beleid en een hogere stabiliteit en beschikbaarheid.
+Azure Advisor controleert op alle VPN-gateways die een basis-SKU zijn en raadt u aan om in plaats daarvan een productie-SKU te gebruiken. De basis-SKU is ontworpen voor ontwikkelings-en test doeleinden. Productie-Sku's bieden een hoger aantal tunnels, BGP-ondersteuning, actieve configuratie opties, aangepast IPSec/IKE-beleid, en hogere stabiliteit en beschik baarheid.
 
-## <a name="repair-invalid-log-alert-rules"></a>Ongeldige logboekwaarschuwingsregels herstellen
+## <a name="repair-invalid-log-alert-rules"></a>Ongeldige regels voor logboek waarschuwingen herstellen
 
-Azure Advisor detecteert waarschuwingsregels met ongeldige query's die zijn opgegeven in de sectie voorwaarde. De logboekwaarschuwingsregels worden gemaakt in Azure Monitor en worden gebruikt om analytische query's met bepaalde intervallen uit te voeren. De resultaten van de query bepalen of er een waarschuwing moet worden gegeven. Analytics-query’s kunnen ongeldig worden als gevolg van wijzigingen in bronnen, tabellen of opdrachten waarnaar wordt verwezen. Advisor raadt u aan de query in de waarschuwingsregel te corrigeren om te voorkomen dat deze automatisch wordt uitgeschakeld en ervoor te zorgen dat de dekking van uw resources in Azure wordt bewaakt. [Meer informatie over het oplossen van probleemoplossingsregels](https://aka.ms/aa_logalerts_queryrepair)
+Met Azure Advisor worden waarschuwings regels gedetecteerd waarvoor ongeldige query's zijn opgegeven in de voor waarde-sectie. De logboekwaarschuwingsregels worden gemaakt in Azure Monitor en worden gebruikt om analytische query's met bepaalde intervallen uit te voeren. De resultaten van de query bepalen of er een waarschuwing moet worden gegeven. Analytics-query’s kunnen ongeldig worden als gevolg van wijzigingen in bronnen, tabellen of opdrachten waarnaar wordt verwezen. Advisor wordt aangeraden de query in de waarschuwings regel te corrigeren om te voor komen dat deze automatisch wordt uitgeschakeld en de bewakings dekking van uw resources in azure te controleren. [Meer informatie over het oplossen van waarschuwings regels](https://aka.ms/aa_logalerts_queryrepair)
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Consistente indexeringsmodus configureren in uw Cosmos DB-verzameling
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Consistente indexerings modus configureren voor uw Cosmos DB verzameling
 
-Azure Cosmos DB-containers die zijn geconfigureerd met de lazy-indexeringsmodus, kunnen van invloed zijn op de versheid van queryresultaten. Advisor detecteert containers die op deze manier zijn geconfigureerd en raadt aan om over te schakelen naar de consistente modus. [Meer informatie over indexeringsbeleid in Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Azure Cosmos DB containers die zijn geconfigureerd met de vertraagde indexerings modus kunnen van invloed zijn op de versheid van query resultaten. Advisor detecteert containers die op deze manier zijn geconfigureerd en raden u aan om over te scha kelen naar de consistente modus. [Meer informatie over het indexeren van beleid in Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Uw Azure Cosmos DB-containers met een partitiesleutel configureren
 
-Azure Advisor identificeert azure cosmos DB-niet-partitieverzamelingen die hun ingerichte opslagquotum naderen. Het zal aanbevelen om deze verzamelingen te migreren naar nieuwe verzamelingen met een definitie van partitiesleutel, zodat ze automatisch door de service kunnen worden uitgeschaald. [Meer informatie over het kiezen van een partitiesleutel](https://aka.ms/cosmosdb/choose-partitionkey)
+Met Azure Advisor worden Azure Cosmos DB niet-gepartitioneerde verzamelingen geïdentificeerd die de ingerichte opslag quota nader benaderen. U wordt aangeraden deze verzamelingen te migreren naar nieuwe verzamelingen met een partitie sleutel definitie, zodat deze automatisch kan worden uitgebreid door de service. [Meer informatie over het kiezen van een partitie sleutel](https://aka.ms/cosmosdb/choose-partitionkey)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Uw Azure Cosmos DB .NET SDK bijwerken naar de nieuwste versie van Nuget
 
-Azure Advisor identificeert Azure Cosmos DB-accounts die oude versies van de .NET SDK gebruiken en raadt aan om te upgraden naar de nieuwste versie van Nuget voor de nieuwste oplossingen, prestatieverbeteringen en nieuwe functiemogelijkheden. [Meer informatie over Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Met Azure Advisor worden Azure Cosmos DB-accounts geïdentificeerd die gebruikmaken van oude versies van de .NET SDK en wordt aanbevolen een upgrade uit te voeren naar de meest recente versie van Nuget voor de nieuwste oplossingen, prestatie verbeteringen en nieuwe functies. [Meer informatie over Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uw Azure Cosmos DB Java SDK bijwerken naar de nieuwste versie van Maven
 
-Azure Advisor identificeert Azure Cosmos DB-accounts die oude versies van de Java SDK gebruiken en raadt aan om te upgraden naar de nieuwste versie van Maven voor de nieuwste oplossingen, prestatieverbeteringen en nieuwe functiemogelijkheden. [Meer informatie over Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Java-SDK en raadt u aan om een upgrade uit te voeren naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en nieuwe functies. [Meer informatie over Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Uw Azure Cosmos DB Spark-connector bijwerken naar de nieuwste versie van Maven
 
-Azure Advisor identificeert Azure Cosmos DB-accounts die oude versies van de Cosmos DB Spark-connector gebruiken en raadt aan om te upgraden naar de nieuwste versie van Maven voor de nieuwste oplossingen, prestatieverbeteringen en nieuwe functiemogelijkheden. [Meer informatie over cosmos DB Spark-connector](https://aka.ms/cosmosdb/spark-connector)
+Met Azure Advisor worden Azure Cosmos DB accounts geïdentificeerd die gebruikmaken van oude versies van de Cosmos DB Spark-connector en wordt aanbevolen om een upgrade uit te voeren naar de nieuwste versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en nieuwe functies. [Meer informatie over Cosmos DB Spark-connector](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="enable-virtual-machine-replication"></a>Replicatie van virtuele machines inschakelen
-Virtuele machines die geen replicatie hebben ingeschakeld voor een andere regio, zijn niet bestand tegen regionale uitval. Het repliceren van virtuele machines vermindert de nadelige gevolgen voor het bedrijf tijdens de periode van een uitval van de Azure-regio. Advisor detecteert VM's die geen replicatie hebben ingeschakeld en raadt aan replicatie in te schakelen, zodat u in het geval van een storing uw virtuele machines snel weergeven in een extern Azure-gebied. [Meer informatie over replicatie van virtuele machines](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio, zijn niet flexibel voor regionale storingen. Het repliceren van virtuele machines vermindert de impact van het bedrijf tijdens de tijd van een onderbreking van de Azure-regio. Advisor detecteert Vm's waarvoor geen replicatie is ingeschakeld en raadt u aan om replicatie in te scha kelen, zodat u in het geval van een storing snel uw virtuele machines in een externe Azure-regio kunt weer geven. [Meer informatie over replicatie van virtuele machines](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
-## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Toegang tot aanbevelingen voor hoge beschikbaarheid in Adviseur
+## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Toegang tot aanbevelingen voor hoge Beschik baarheid in Advisor
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en open [Vervolgens Advisor](https://aka.ms/azureadvisordashboard).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open vervolgens [Advisor](https://aka.ms/azureadvisordashboard).
 
-2.  Klik op het dashboard Van Advisor op het tabblad **Hoge beschikbaarheid.**
+2.  Klik op het Advisor-dash board op het tabblad **maximale Beschik baarheid** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over aanbevelingen van Advisor:
+Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Azure Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor kosten van adviseur](advisor-cost-recommendations.md)
-* [Aanbevelingen voor prestaties van adviseur](advisor-performance-recommendations.md)
-* [Aanbevelingen voor beveiliging van adviseur](advisor-security-recommendations.md)
-* [Aanbevelingen adviseur Operational Excellence](advisor-operational-excellence-recommendations.md)
+* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
+* [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
+* [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)

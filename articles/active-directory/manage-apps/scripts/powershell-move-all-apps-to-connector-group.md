@@ -1,6 +1,6 @@
 ---
-title: PowerShell-voorbeeld - App-proxy-apps verplaatsen naar een andere groep
-description: Azure Active Directory (Azure AD) Toepassingsproxy PowerShell-voorbeeld wordt gebruikt om alle toepassingen die momenteel aan een verbindingsgroep zijn toegewezen, naar een andere verbindingsgroep te verplaatsen.
+title: 'Power shell-voor beeld: toepassings proxy-apps verplaatsen naar een andere groep'
+description: Azure Active Directory (Azure AD) Power shell-voor beeld van Application proxy gebruikt om alle toepassingen te verplaatsen die momenteel aan een connector groep zijn toegewezen, naar een andere connector groep.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6dccdaa96dadb061b168bbdf6148ed4d759776c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75481982"
 ---
-# <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>Alle apps die zijn toegewezen aan een verbindingsgroep naar een andere verbindingsgroep verplaatsen
+# <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>Alle apps die zijn toegewezen aan een connector groep verplaatsen naar een andere connector groep
 
-In dit PowerShell-scriptvoorbeeld worden alle Azure Active Directory-toepassingsproxytoepassingen (Azure AD) verplaatst die momenteel aan een verbindingsgroep zijn toegewezen, naar een andere verbindingsgroep.
+In dit voor beeld van een Power shell-script worden alle Azure Active Directory-toepassings proxy toepassingen (Azure AD) die momenteel aan een connector groep zijn toegewezen, verplaatst naar een andere connector groep.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ In dit PowerShell-scriptvoorbeeld worden alle Azure Active Directory-toepassings
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Voor dit voorbeeld is de [AzureAD V2 PowerShell for Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [AzureAD V2 PowerShell voor graph-modulepreviewversie](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
+Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [Preview-versie van de AzureAD v2 Power shell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -39,13 +39,13 @@ Voor dit voorbeeld is de [AzureAD V2 PowerShell for Graph-module](https://docs.m
 
 | Opdracht | Opmerkingen |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Krijgt een service principal. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hier krijgt u een Azure AD-toepassing. |
-| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Hiermee haalt u een lijst op met alle verbindingsgroepen of, indien opgegeven, details van de opgegeven verbindingsgroep. |
-| [Set-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplicationproxyapplicationconnectorgroup?view=azureadps-2.0) | Wijst de opgegeven verbindingsgroep toe aan een bepaalde toepassing.|
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een Service-Principal opgehaald. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hiermee haalt u een Azure AD-toepassing op. |
+| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Hiermee wordt een lijst opgehaald met alle connector groepen, of indien opgegeven, Details van de opgegeven connector groep. |
+| [Set-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplicationproxyapplicationconnectorgroup?view=azureadps-2.0) | Hiermee wijst u de gegeven connector groep toe aan een opgegeven toepassing.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie azure [AD PowerShell-moduleoverzicht](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD PowerShell-module.
+Zie [overzicht van Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD Power shell-module.
 
-Zie [Azure AD PowerShell-voorbeelden voor](../application-proxy-powershell-samples.md)andere PowerShell-voorbeelden voor andere PowerShell-toepassingen.
+Raadpleeg voor andere Power shell-voor beelden voor toepassings proxy [Azure AD Power shell-voor beelden voor azure AD-toepassingsproxy](../application-proxy-powershell-samples.md).

@@ -1,6 +1,6 @@
 ---
-title: Uw grafiekgegevens visualiseren in Azure Cosmos DB Gremlin API
-description: Meer informatie over het integreren van Azure Cosmos DB-grafiekgegevens met visualisatieoplossingen (Linkurious Enterprise, Cambridge Intelligence).
+title: Uw grafiek gegevens visualiseren in Azure Cosmos DB Gremlin-API
+description: Meer informatie over het integreren van Azure Cosmos DB Graph-gegevens met visualisatie oplossingen (Linkurious Enter prise, Cambridge Intelligence).
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -8,46 +8,46 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75500017"
 ---
-# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Grafiekgegevens visualiseren die zijn opgeslagen in Azure Cosmos DB Gremlin API met oplossingen voor gegevensvisualisatie
+# <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Grafiek gegevens visualiseren die zijn opgeslagen in Azure Cosmos DB Gremlin API met oplossingen voor gegevens visualisatie
 
-U gegevens die zijn opgeslagen in Azure Cosmos DB Gremlin API visualiseren met behulp van verschillende oplossingen voor gegevensvisualisatie. De volgende oplossingen worden aanbevolen door de [Apache Tinkerpop-community](https://tinkerpop.apache.org/#poweredby) voor grafische gegevensvisualisatie.
+U kunt gegevens die zijn opgeslagen in Azure Cosmos DB Gremlin-API visualiseren door verschillende gegevens visualisatie oplossingen te gebruiken. De volgende oplossingen worden aanbevolen door de [Apache Tinkerpop-Community](https://tinkerpop.apache.org/#poweredby) voor grafiek gegevens visualisatie.
 
-## <a name="linkurious-enterprise"></a>Linkurious Enterprise
+## <a name="linkurious-enterprise"></a>Linkurious Enter prise
 
 ![Linkurious-logo](./media/graph-visualization/linkurious-logo.jpg)
 
-[Linkurious Enterprise](https://linkurio.us/product/) maakt gebruik van grafiektechnologie en datavisualisatie om complexe gegevenssets om te zetten in interactieve visuele netwerken. Het platform maakt verbinding met uw gegevensbronnen en stelt onderzoekers in staat om naadloos te navigeren in miljarden entiteiten en relaties. Het resultaat is een nieuwe mogelijkheid om verdachte relaties te detecteren zonder te jongleren met query's of tabellen.
+[Linkurious Enter prise](https://linkurio.us/product/) maakt gebruik van grafiek technologie en gegevens visualisatie om complexe gegevens sets in interactieve Visual-netwerken te zetten. Het platform maakt verbinding met uw gegevens bronnen en stelt onderzoekers in staat om naadloos te navigeren in miljarden entiteiten en relaties. Het resultaat is een nieuwe mogelijkheid om verdachte relaties te detecteren zonder Juggling met query's of tabellen.
 
-De interactieve interface van Linkurious Enterprise biedt een eenvoudige manier om complexe gegevens te onderzoeken. U zoeken naar specifieke entiteiten, verbindingen uitbreiden om verborgen relaties bloot te leggen en lay-outs van uw keuze toepassen om complexe netwerken te ontwarren. Linkurious Enterprise is nu compatibel met Azure Cosmos DB Gremlin API. Het is geschikt voor end-to-end grafiekvisualisatiescenario's en ondersteunt lees- en schrijfmogelijkheden vanuit de gebruikersinterface. U een [demo van Linkurious](https://linkurio.us/contact/) aanvragen met Azure Cosmos DB
+De interactieve interface van Linkurious Enter prise biedt een eenvoudige manier om complexe gegevens te onderzoeken. U kunt zoeken naar specifieke entiteiten, verbindingen uitbreiden om verborgen relaties op te slaan en indelingen van uw keuze Toep assen op Untangle complexe netwerken. Linkurious Enter prise is nu compatibel met Azure Cosmos DB Gremlin-API. Het is geschikt voor end-to-end grafiek visualisatie scenario's en ondersteunt Lees-en schrijf mogelijkheden van de gebruikers interface. U kunt een [demo van Linkurious aanvragen met Azure Cosmos DB](https://linkurio.us/contact/)
 
-![Linkurious Demo](./media/graph-visualization/linkurious-demo.gif)
+![Linkurious-demo](./media/graph-visualization/linkurious-demo.gif)
 
-## <a name="cambridge-intelligence"></a>Cambridge Intelligentie
+## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
 ![Cambridge Intelligence-logo](./media/graph-visualization/ci-logo.png)
 
-[De](https://cambridge-intelligence.com/products/) grafiekvisualisatietoolkits van Cambridge Intelligence ondersteunen nu Azure Cosmos DB. De volgende twee visualisatietoolkits worden ondersteund door Azure Cosmos DB:
+[De Cambridge](https://cambridge-intelligence.com/products/) -werkset voor Graph-visualisaties ondersteunen nu Azure Cosmos db. De volgende twee visualisatie toolers worden ondersteund door Azure Cosmos DB:
 
-- [KeyLines voor JavaScript-ontwikkelaars](https://cambridge-intelligence.com/keylines/)
+- [-Regels voor Java script-ontwikkel aars](https://cambridge-intelligence.com/keylines/)
 
-- [Re-Graph voor React-ontwikkelaars](https://cambridge-intelligence.com/regraph/)
+- [Opnieuw Grapheren voor het reageren van ontwikkel aars](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge Intelligence Demo](./media/graph-visualization/ci-demo-2.gif)
+![Cambridge Intelligence-demo](./media/graph-visualization/ci-demo-2.gif)
 
-Met deze toolkits u krachtige grafiekvisualisatie- en analysetoepassingen voor uw use case ontwerpen. Ze maken gebruik van krachtige Web Graphics Library (WebGL) rendering en zorgvuldig vervaardigde code om gebruikers een snelle en inzichtelijke visualisatie-ervaring te bieden. Deze tools zijn compatibel met elke browser, apparaat, server of database en worden geleverd met stapsgewijze zelfstudies, volledig gedocumenteerde API's en interactieve demo's.
+Met deze Toolkit kunt u grafische visualisatie-en analyse toepassingen met hoge prestaties ontwerpen voor uw gebruik. Ze bieden een krachtige WebGL-rendering (Web graphics library) en zorgvuldig ontwikkelde code om gebruikers een snelle en indrukwekkende visualisatie ervaring te geven. Deze hulpprogram ma's zijn compatibel met elke browser, apparaat, server of Data Base, en worden geleverd met stapsgewijze zelf studies, volledig gedocumenteerde Api's en interactieve demo's.
 
-![Cambridge Intelligence Demo](./media/graph-visualization/ci-demo-1.gif)
+![Cambridge Intelligence-demo](./media/graph-visualization/ci-demo-1.gif)
 
 
 ## <a name="next-steps"></a>Volgende stappen
  
-- [Probeer de toolkits](https://cambridge-intelligence.com/try/)
-- [Overzicht van KeyLines-technologie](https://cambridge-intelligence.com/keylines/technology/)
-- [Overzicht van re-graph-technologie](https://cambridge-intelligence.com/regraph/technology/)
-- [Gebruiksvoorbeelden voor grafiekvisualisatie](https://cambridge-intelligence.com/use-cases/)
+- [De tool kits uitproberen](https://cambridge-intelligence.com/try/)
+- [Overzicht van de technologie van de online](https://cambridge-intelligence.com/keylines/technology/)
+- [Overzicht van nieuwe grafiek technologie](https://cambridge-intelligence.com/regraph/technology/)
+- [Use cases voor Graph visualisatie](https://cambridge-intelligence.com/use-cases/)

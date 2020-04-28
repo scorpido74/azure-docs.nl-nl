@@ -1,47 +1,47 @@
 ---
-title: Azure Stream Analytics-taken verkennen in Visual Studio-code
-description: In dit artikel ziet u hoe u een Azure Stream Analytics-taak exporteert naar een lokaal project, taken weergeven en taakentiteiten weergeven.
+title: Azure Stream Analytics-taken in Visual Studio code verkennen
+description: In dit artikel wordt beschreven hoe u een Azure Stream Analytics-taak exporteert naar een lokaal project, taken lijst en taak entiteiten weer geven.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75479239"
 ---
-# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Azure Stream Analytics verkennen met Visual Studio Code (Preview)
+# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Azure Stream Analytics verkennen met Visual Studio code (preview)
 
-De Azure Stream Analytics for Visual Studio Code-extensie biedt ontwikkelaars een lichte ervaring voor het beheren van hun Stream Analytics-taken. Het kan worden gebruikt op Windows, Mac en Linux. Met de Azure Stream Analytics-extensie u het als nog niet doen:
+De Azure Stream Analytics voor Visual Studio code-extensie biedt ontwikkel aars een licht gewicht ervaring voor het beheren van hun Stream Analytics taken. Het kan worden gebruikt in Windows, Mac en Linux. Met de Azure Stream Analytics extensie kunt u het volgende doen:
 
-- [Taken maken,](quick-create-vs-code.md)starten en stoppen
+- Taken [maken](quick-create-vs-code.md), starten en stoppen
 - Bestaande taken exporteren naar een lokaal project
-- Taken weergeven en taakentiteiten weergeven
+- Taken weer geven en taak entiteiten bekijken
 
 ## <a name="export-a-job-to-a-local-project"></a>Een taak exporteren naar een lokaal project
 
-Als u een taak wilt exporteren naar een lokaal project, zoekt u de taak die u wilt exporteren in de **Stream Analytics Explorer** in Visual Studio Code. Selecteer vervolgens een map voor uw project. Het project wordt geëxporteerd naar de map die u selecteert en u de taak blijven beheren vanuit Visual Studio Code. Zie de Visual Studio Code [snel aan](quick-create-vs-code.md)de slag voor meer informatie over het gebruik van Visual Studio Code voor het beheren van Stream Analytics-taken.
+Als u een taak wilt exporteren naar een lokaal project, zoekt u de taak die u wilt exporteren in de **Stream Analytics Explorer** in Visual Studio code. Selecteer vervolgens een map voor uw project. Het project wordt geëxporteerd naar de map die u selecteert, en u kunt de taak blijven beheren vanuit Visual Studio code. Zie Visual Studio code [Quick](quick-create-vs-code.md)start (Engelstalig) voor meer informatie over het gebruik van Visual Studio code voor het beheren van stream Analytics taken.
 
-![ASA-taak exporteren in Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
+![De taak ASA exporteren in Visual Studio code](./media/vscode-explore-jobs/export-job.png)
 
-## <a name="list-job-and-view-job-entities"></a>Taaktaak lijst en taakentiteiten weergeven
+## <a name="list-job-and-view-job-entities"></a>Taak weer geven en taak entiteiten bekijken
 
-U de taakweergave gebruiken om te communiceren met Azure Stream Analytics-taken vanuit Visual Studio.
+U kunt de taak weergave gebruiken om te communiceren met Azure Stream Analytics taken van Visual Studio.
 
 
-1. Klik op het **Azure-pictogram** op de activiteitsbalk van visual studiocode en vouw vervolgens **het knooppunt Stream Analytics**uit. Uw vacatures moeten onder uw abonnementen worden weergegeven.
+1. Klik op het pictogram van **Azure** op de activiteiten balk van Visual Studio en vouw vervolgens **Stream Analytics knoop punt**uit. Uw taken moeten worden weer gegeven onder uw abonnementen.
 
-   ![Open Stream Analytics Explorer](./media/vscode-explore-jobs/open-explorer.png)
+   ![Stream Analytics Explorer openen](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Vouw uw taakknooppunt uit, u de taakquery, configuratie, invoer, uitvoer en functies openen en bekijken. 
+2. Uw taak knooppunt uitvouwen. u kunt de taak query, configuratie, invoer, uitvoer en functies openen en weer geven. 
 
-3. Klik met de rechtermuisknop op uw taakknooppunt en kies het knooppunt **Taak openen in het** knooppunt Portal om de taakweergave in de Azure-portal te openen.
+3. Klik met de rechter muisknop op uw taak knooppunt en kies de **taak weergave openen in het portal** -knoop punt om de taak weergave te openen in de Azure Portal.
 
-   ![Vacatureweergave openen in portal](./media/vscode-explore-jobs/open-job-view.png)
+   ![Taak weergave openen in de portal](./media/vscode-explore-jobs/open-job-view.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Azure Stream Analytics-cloudtaak maken in Visual Studio Code (Preview)](quick-create-vs-code.md)
+* [Een Azure Stream Analytics Cloud taak maken in Visual Studio code (preview)](quick-create-vs-code.md)

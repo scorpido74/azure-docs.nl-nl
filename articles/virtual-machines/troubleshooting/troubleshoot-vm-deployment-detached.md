@@ -1,6 +1,6 @@
 ---
-title: Problemen met de implementatie van virtuele machines oplossen als gevolg van losstaande schijven | Microsoft Documenten
-description: Problemen met de implementatie van virtuele machines oplossen vanwege losstaande schijven
+title: Problemen met de implementatie van virtuele machines oplossen vanwege losgekoppelde schijven | Microsoft Docs
+description: Problemen met de implementatie van virtuele machines oplossen vanwege losgekoppelde schijven
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75486818"
 ---
-# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Problemen met de implementatie van virtuele machines oplossen vanwege losstaande schijven
+# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Problemen met de implementatie van virtuele machines oplossen vanwege losgekoppelde schijven
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u een virtuele machine probeert bij te werken waarvan de vorige gegevensschijf is mislukt, u deze foutcode tegenkomen.
+Wanneer u een virtuele machine probeert bij te werken waarvoor het loskoppelen van de vorige gegevens schijf is mislukt, kunt u deze fout code tegen komen.
 
 ```
 Code=\"AttachDiskWhileBeingDetached\" 
@@ -32,11 +32,11 @@ Message=\"Cannot attach data disk '{disk ID}' to virtual machine '{vmName}' beca
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout treedt op wanneer u een gegevensschijf opnieuw probeert te koppelen waarvan de laatste losmakende bewerking is mislukt. De beste manier om eruit te komen van deze staat is om de falende schijf los te maken.
+Deze fout treedt op wanneer u een gegevens schijf opnieuw koppelt waarvan de laatste Ontkoppel bewerking is mislukt. De beste manier om deze status te halen is het loskoppelen van de niet-werkende schijf.
 
-## <a name="solution-1-powershell"></a>Oplossing 1: Powershell
+## <a name="solution-1-powershell"></a>Oplossing 1: Power shell
 
-### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>Stap 1: De details van de virtuele machine en schijf
+### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>Stap 1: de gegevens van de virtuele machine en de schijf ophalen
 
 ```azurepowershell-interactive
 PS D:> $vm = Get-AzureRmVM -ResourceGroupName "Example Resource Group" -Name "ERGVM999999" 
@@ -51,41 +51,41 @@ diskSizeGB   : 8
 toBeDetached : False 
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Stap 2: Stel de vlag in voor het niet 'waar' van schijven.
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Stap 2: Stel de vlag voor het mislukken van schijven in op ' True '.
 
-Haal de arrayindex van de falende schijf en stel de **toBeDetached-vlag** in voor de falende schijf (waarvoor **attachdiskwhile-ontregelde** fout is opgetreden) op "true". Deze instelling houdt in dat de schijf wordt losgekoppeld van de virtuele machine. De foute schijfnaam is te vinden in de **errorMessage**.
+Haal de matrix index van de niet-werkende schijf op en stel de vlag **toBeDetached** in voor de niet-werkende schijf (waarvoor **AttachDiskWhileBeingDetached** -fout is opgetreden) op ' True '. Deze instelling impliceert dat de schijf wordt losgekoppeld van de virtuele machine. De naam van de mislukte schijf kan in de **errorMessage**worden gevonden.
 
-> ! Opmerking: De API-versie die is opgegeven voor Aan- en Aanroepen voor worden gebeld, moet 2019-03-01 of hoger zijn.
+> ! Opmerking: de API-versie die is opgegeven voor Get-en put-aanroepen moet 2019-03-01 of hoger zijn.
 
 ```azurepowershell-interactive
 PS D:> $vm.StorageProfile.DataDisks[0].ToBeDetached = $true 
 ```
 
-U deze schijf ook loskoppelen via de onderstaande opdracht, wat handig is voor gebruikers die API-versies vóór 01 maart 2019 gebruiken.
+U kunt deze schijf ook loskoppelen met behulp van de onderstaande opdracht. Dit is handig voor gebruikers die API-versies vóór 01 maart 2019.
 
 ```azurepowershell-interactive
 PS D:> Remove-AzureRmVMDataDisk -VM $vm -Name "<disk ID>" 
 ```
 
-### <a name="step-3-update-the-virtual-machine"></a>Stap 3: Update de virtuele machine
+### <a name="step-3-update-the-virtual-machine"></a>Stap 3: de virtuele machine bijwerken
 
 ```azurepowershell-interactive
 PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm 
 ```
 
-## <a name="solution-2-rest"></a>Oplossing 2: RUST
+## <a name="solution-2-rest"></a>Oplossing 2: REST
 
-### <a name="step-1-get-the-virtual-machine-payload"></a>Stap 1: Krijg de virtuele machine payload.
+### <a name="step-1-get-the-virtual-machine-payload"></a>Stap 1: de nettolading van de virtuele machine ophalen.
 
 ```azurepowershell-interactive
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?$expand=instanceView&api-version=2019-03-01
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Stap 2: Stel de vlag in voor het niet 'waar' van schijven.
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Stap 2: Stel de vlag voor het mislukken van schijven in op ' True '.
 
-Stel de **toBeDetached-vlag** in voor het niet waar maken van de schijf in de payload die in stap 1 is geretourneerd. Let op: de API-versie die is `2019-03-01` opgegeven voor Get and Put-aanroepen moet groter zijn of groter zijn.
+Stel de vlag **toBeDetached** voor het mislukken van de schijf in op True in de payload die is geretourneerd in stap 1. Opmerking: de API-versie die is opgegeven voor Get-en put- `2019-03-01` aanroepen moet of hoger zijn.
 
-**Voorbeeldaanvraaginstantie**
+**Voorbeeld aanvraag tekst**
 
 ```azurepowershell-interactive
 {
@@ -143,17 +143,17 @@ Stel de **toBeDetached-vlag** in voor het niet waar maken van de schijf in de pa
 }
 ```
 
-Afwisselend u ook de falende gegevensschijf uit de bovenstaande payload verwijderen, wat handig is voor gebruikers die API-versies gebruiken vóór 01 maart 2019.
+U kunt ook de niet-werkende gegevens schijf uit de bovenstaande Payload verwijderen, wat handig is voor gebruikers die API-versies vóór 01 maart 2019.
 
-### <a name="step-3-update-the-virtual-machine"></a>Stap 3: Update de virtuele machine
+### <a name="step-3-update-the-virtual-machine"></a>Stap 3: de virtuele machine bijwerken
 
-Gebruik de payload van de aanvraaginstantie in stap 2 en werk de virtuele machine als volgt bij:
+Gebruik de nettolading van de aanvraag tekst die u in stap 2 hebt ingesteld en werk de virtuele machine als volgt bij:
 
 ```azurepowershell-interactive
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2019-03-01
 ```
 
-**Voorbeeldreactie:**
+**Voorbeeld antwoord:**
 
 ```azurepowershell-interactive
 {
@@ -232,6 +232,6 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Problemen [met RDP-verbindingen met een Azure VM](troubleshoot-rdp-connection.md)als u problemen ondervindt bij het maken van verbinding met uw VM.
+Zie [problemen met RDP-verbindingen met een Azure VM oplossen](troubleshoot-rdp-connection.md)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine.
 
-Zie Problemen met de connectiviteit van [toepassingen op een Windows-vm oplossen voor](troubleshoot-app-connection.md)problemen met de toegang tot toepassingen op uw vm.
+Zie problemen met [toepassings connectiviteit oplossen op een Windows-VM](troubleshoot-app-connection.md)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.

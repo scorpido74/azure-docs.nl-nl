@@ -1,66 +1,66 @@
 ---
-title: Monitoring en diagnostiek in Azure Service Fabric Mesh-apps
-description: Meer informatie over het bewaken en diagnosticeren van toepassingen in Service Fabric Mesh op Azure.
+title: Bewaking en diagnose in azure Service Fabric mesh-apps
+description: Meer informatie over het bewaken en diagnosticeren van toepassingen in Service Fabric net op Azure.
 author: srrengar
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498141"
 ---
 # <a name="monitoring-and-diagnostics"></a>Controle en diagnose
-Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. Monitoring en diagnostiek voor Service Fabric Mesh is onderverdeeld in drie hoofdtypen diagnostische gegevens:
+Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. Bewaking en diagnose van Service Fabric net zijn onderverdeeld in drie hoofd typen diagnostische gegevens:
 
-- Toepassingslogboeken - deze worden gedefinieerd als de logboeken van uw gecontaineriseerde toepassingen, op basis van hoe u uw toepassing hebt geinstrumenteerd (bijv. dockerlogs)
-- Platformgebeurtenissen - gebeurtenissen van het Mesh-platform die relevant zijn voor uw containeractiviteiten, momenteel inclusief containeractivering, deactivering en beëindiging.
-- Containerstatistieken - resourcegebruik en prestatiestatistieken voor uw containers (dockerstatistieken)
+- Toepassings logboeken: deze worden gedefinieerd als de logboeken van uw toepassingen met containers, op basis van hoe u uw toepassing hebt geinstrumenteerd (bijvoorbeeld docker-Logboeken)
+- Platform gebeurtenissen: gebeurtenissen van het net platform die relevant zijn voor uw container bewerking, met inbegrip van het activeren, deactiveren en beëindigen van de container.
+- Metrische gegevens van containers-metrische gegevens over bron gebruik en prestaties voor uw containers (docker-statistieken)
 
-In dit artikel worden de opties voor monitoring en diagnostiek voor de nieuwste preview-versie besproken.
+In dit artikel worden de bewakings-en diagnostische opties voor de nieuwste preview-versie beschreven.
 
-## <a name="application-logs"></a>Toepassingslogboeken
+## <a name="application-logs"></a>Toepassings logboeken
 
-U uw dockerlogs bekijken vanaf uw geïmplementeerde containers, per container. In het servicefabric mesh-toepassingsmodel is elke container een codepakket in uw toepassing. Als u de gekoppelde logboeken met een codepakket wilt bekijken, gebruikt u de volgende opdracht:
+U kunt uw docker-logboeken vanuit uw geïmplementeerde containers weer geven op basis van per container. In het Service Fabric-net-toepassings model is elke container een code pakket in uw toepassing. Als u de bijbehorende logboeken wilt weer geven met een code pakket, gebruikt u de volgende opdracht:
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
 > [!NOTE]
-> U de opdracht 'az mesh-service-replica' gebruiken om de replicanaam te krijgen. Replicanamen verhogen gehele getallen van 0.
+> U kunt de opdracht AZ mesh service-replica gebruiken om de replica naam op te halen. De namen van replica's verhogen de gehele getallen van 0.
 
-Hier is hoe dit eruit ziet voor het zien van de logs van de VotingWeb.Code container van de stemapplicatie:
+Hier ziet u de logboeken van de VotingWeb. code-container van de stem toepassing:
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
-## <a name="container-metrics"></a>Containerstatistieken 
+## <a name="container-metrics"></a>Metrische container gegevens 
 
-De Mesh-omgeving onthult een handvol statistieken die aangeven hoe uw containers presteren. De volgende statistieken zijn beschikbaar via de Azure-portal en Azure-monitor CLI:
+In de mesh-omgeving wordt een aantal metrische gegevens weer gegeven die aangeven hoe uw containers worden uitgevoerd. De volgende metrische gegevens zijn beschikbaar via de Azure Portal en Azure monitor CLI:
 
 | Gegevens | Beschrijving | Eenheden|
 |----|----|----|
-| Cpu-gebruik | ActualCpu/Toegewezen Cpu als percentage | % |
-| Geheugengebruik | ActualMem/ToegewezenMem als percentage | % |
-| ToegewezenCpu | Cpu toegewezen volgens Azure Resource Manager-sjabloon | Millicores |
-| ToegewezenGeheugen | Geheugen toegewezen volgens azure resource manager-sjabloon | MB |
-| Werkelijke Cpu | CPU-gebruik | Millicores |
-| Werkelijkememory | Geheugengebruik | MB |
-| ContainerStatus | 0 - Ongeldig: de containerstatus is onbekend <br> 1 - In behandeling: De container is gepland om te starten <br> 2 - Start: De container is in het proces van het starten <br> 3 - Gestart: De container is succesvol gestart <br> 4 - Stoppen: De container wordt gestopt <br> 5 - Gestopt: de container is gestopt | N.v.t. |
-| ApplicationStatus | 0 - Onbekend: de status is niet opvraagbaar <br> 1 - Gereed: de toepassing wordt uitgevoerd <br> 2 - Upgraden: Er is een upgrade aan de gang <br> 3 - Maken: De toepassing wordt gemaakt <br> 4 - Verwijderen: De toepassing wordt verwijderd <br> 5 - Mislukt: de toepassing kan niet worden geïmplementeerd | N.v.t. |
-| ServiceStatus | 0 - Ongeldig: de service heeft momenteel geen status <br> 1 - Ok: De service is gezond  <br> 2 - Waarschuwing: Er kan iets mis zijn dat onderzoek vereist <br> 3 - Fout: Er is iets mis dat onderzoek nodig heeft <br> 4 - Onbekend: De status is niet opvraagbaar | N.v.t. |
-| ServiceReplicaStatus | 0 - Ongeldig: de replica heeft momenteel geen status <br> 1 - Ok: De service is gezond  <br> 2 - Waarschuwing: Er kan iets mis zijn dat onderzoek vereist <br> 3 - Fout: Er is iets mis dat onderzoek nodig heeft <br> 4 - Onbekend: De status is niet opvraagbaar | N.v.t. | 
-| Aantal opnieuw starten | Aantal containeropnieuw opstarten | N.v.t. |
+| CpuUtilization | ActualCpu/AllocatedCpu als percentage | % |
+| MemoryUtilization | ActualMem/AllocatedMem als percentage | % |
+| AllocatedCpu | CPU toegewezen als per Azure Resource Manager sjabloon | Millicores |
+| AllocatedMemory | Geheugen toegewezen volgens Azure Resource Manager sjabloon | MB |
+| ActualCpu | CPU-gebruik | Millicores |
+| ActualMemory | Geheugengebruik | MB |
+| Container status | 0-ongeldig: de container status is onbekend <br> 1-in behandeling: de container is gepland om te starten <br> 2-starten: de container wordt gestart <br> 3-gestart: de container is gestart <br> 4-stoppen: de container wordt gestopt <br> 5-gestopt: de container is gestopt | N.v.t. |
+| ApplicationStatus | 0-onbekend: de status kan niet worden opgehaald <br> 1-gereed: de toepassing wordt uitgevoerd <br> 2-bijwerken: er wordt een upgrade uitgevoerd <br> 3-maken: de toepassing wordt gemaakt <br> 4-verwijderen: de toepassing wordt verwijderd <br> 5-mislukt: de toepassing is niet geïmplementeerd | N.v.t. |
+| ServiceStatus | 0-ongeldig: de service heeft momenteel geen integriteits status <br> 1-OK: de service is in orde  <br> 2-waarschuwing: er is mogelijk iets verkeerd vereist onderzoek <br> 3-fout: er is iets verkeerd gegaan dat moet worden onderzocht <br> 4-onbekend: de status kan niet worden opgehaald | N.v.t. |
+| ServiceReplicaStatus | 0-ongeldig: de replica heeft momenteel geen integriteits status <br> 1-OK: de service is in orde  <br> 2-waarschuwing: er is mogelijk iets verkeerd vereist onderzoek <br> 3-fout: er is iets verkeerd gegaan dat moet worden onderzocht <br> 4-onbekend: de status kan niet worden opgehaald | N.v.t. | 
+| RestartCount | Aantal herstarts van de container | N.v.t. |
 
 > [!NOTE]
-> De waarden ServiceStatus en ServiceReplicaStatus zijn dezelfde als de [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) in Service Fabric. 
+> De waarden ServiceStatus en ServiceReplicaStatus zijn hetzelfde als die van de [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) in service Fabric. 
 
-Elke statistiek is beschikbaar op verschillende dimensies, zodat u aggregaten op verschillende niveaus zien. De huidige lijst met dimensies is als volgt:
+Elke metriek is beschikbaar op verschillende dimensies, zodat u aggregaties op verschillende niveaus kunt zien. De huidige lijst met dimensies is als volgt:
 
 * ApplicationName
 * ServiceName
@@ -68,15 +68,15 @@ Elke statistiek is beschikbaar op verschillende dimensies, zodat u aggregaten op
 * CodePackageName
 
 > [!NOTE]
-> De codepackagename-dimensie is niet beschikbaar voor Linux-toepassingen. 
+> De dimensie CodePackageName is niet beschikbaar voor Linux-toepassingen. 
 
-Elke dimensie komt overeen met verschillende componenten van het [Service Fabric Application-model](service-fabric-mesh-service-fabric-resources.md#applications-and-services)
+Elke dimensie komt overeen met verschillende onderdelen van het [service Fabric-toepassings model](service-fabric-mesh-service-fabric-resources.md#applications-and-services)
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-Een volledige lijst met opdrachten is beschikbaar in de [Azure Monitor CLI-documenten,](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) maar we hebben hieronder een paar handige voorbeelden toegevoegd 
+Er is een volledige lijst met opdrachten beschikbaar in de [Azure monitor cli-documenten](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , maar we hebben een paar handige voor beelden opgenomen 
 
-In elk voorbeeld volgt de Resource-ID dit patroon
+In elk voor beeld volgt de resource-ID dit patroon
 
 `"/subscriptions/<your sub ID>/resourcegroups/<your RG>/providers/Microsoft.ServiceFabricMesh/applications/<your App name>"`
 
@@ -86,24 +86,24 @@ In elk voorbeeld volgt de Resource-ID dit patroon
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
-* Geheugengebruik voor elke servicereplica
+* Geheugen gebruik voor elke service replica
 ```cli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
-* Opnieuw start voor elke container in een venster van 1 uur 
+* Wordt opnieuw gestart voor elke container in een venster van één uur 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
-* Gemiddeld CPU-gebruik voor services met de naam "VotingWeb" in een venster van 1 uur
+* Gemiddeld CPU-gebruik voor alle services met de naam ' VotingWeb ' in een venster van één uur
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
-### <a name="metrics-explorer"></a>Statistieken explorer
+### <a name="metrics-explorer"></a>Metrics Explorer
 
-Metrics explorer is een blade in de portal waarin je alle statistieken voor je Mesh-toepassing visualiseren. Dit blad is toegankelijk op de pagina van de toepassing in de portal en het Azure-monitorblad, waarvan u het laatste gebruiken om statistieken weer te geven voor al uw Azure-resources die Azure Monitor ondersteunen. 
+Metrics Explorer is een Blade in de portal waarin u alle metrische gegevens voor uw net-toepassing kunt visualiseren. Deze Blade is toegankelijk op de pagina van de toepassing in de portal en de Blade Azure monitor, waarmee u de metrische gegevens voor al uw Azure-resources kunt weer geven die Azure Monitor ondersteunen. 
 
 ![Metrics Explorer](./media/service-fabric-mesh-monitoring-diagnostics/metricsexplorer.png)
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Volgende stappen
 * Lees [Wat is Service Fabric Mesh?](service-fabric-mesh-overview.md) voor meer informatie over Service Fabric Mesh.
-* Ga voor meer informatie over de opdrachten voor Azure Monitor-metrische gegevens naar de [CLI-documenten van Azure Monitor](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).
+* Raadpleeg de [Azure monitor cli-documenten](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)voor meer informatie over de Azure monitor metrische opdrachten.

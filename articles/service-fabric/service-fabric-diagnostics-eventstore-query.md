@@ -1,64 +1,64 @@
 ---
-title: Query voor clustergebeurtenissen met de GebeurtenisStore-API's
-description: Meer informatie over het gebruik van de Azure Service Fabric EventStore API's om te zoeken naar platformgebeurtenissen
+title: Query's uitvoeren voor cluster gebeurtenissen met behulp van de Event Store-Api's
+description: Meer informatie over het gebruik van de Azure Service Fabric Event Store-Api's voor het opvragen van platform gebeurtenissen
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614397"
 ---
-# <a name="query-eventstore-apis-for-cluster-events"></a>Query EventStore API's voor clustergebeurtenissen
+# <a name="query-eventstore-apis-for-cluster-events"></a>Query's uitvoeren op Event Store-Api's voor cluster gebeurtenissen
 
-In dit artikel wordt ingaan op het opvragen van de EventStore-API's die beschikbaar zijn in Service Fabric-versie 6.2 en hoger - als u meer wilt weten over de EventStore-service, raadpleegt u het [EventStore-serviceoverzicht](service-fabric-diagnostics-eventstore.md). Momenteel heeft de EventStore-service alleen toegang tot gegevens van de afgelopen 7 dagen (dit is gebaseerd op het beleid voor het bewaren van diagnostische gegevens van uw cluster).
-
->[!NOTE]
->De EventStore-API's zijn GA vanaf Service Fabric-versie 6.4 voor alleen Windows-clusters die op Azure worden uitgevoerd.
-
-De EventStore API's zijn rechtstreeks toegankelijk via een REST-eindpunt, of programmatisch. Afhankelijk van de query zijn er verschillende parameters nodig om de juiste gegevens te verzamelen. Deze parameters omvatten doorgaans:
-* `api-version`: de versie van de EventStore API's die u gebruikt
-* `StartTimeUtc`: definieert het begin van de periode waar u naar wilt kijken
-* `EndTimeUtc`: einde van de periode
-
-Naast deze parameters zijn er ook optionele parameters beschikbaar, zoals:
-* `timeout`: de standaardtime-out van 60 seconden voor het uitvoeren van de aanvraagbewerking overschrijven
-* `eventstypesfilter`: dit geeft u de mogelijkheid om te filteren op specifieke gebeurtenistypen
-* `ExcludeAnalysisEvents`: niet terug 'Analyse' gebeurtenissen. Standaard worden EventStore-query's waar mogelijk weergegeven met "analysegebeurtenissen". Analysegebeurtenissen zijn rijkere operationele kanaalgebeurtenissen die extra context of informatie bevatten buiten een reguliere Service Fabric-gebeurtenis en meer diepte bieden.
-* `SkipCorrelationLookup`: zoek niet naar potentiële gecorreleerde gebeurtenissen in het cluster. Standaard probeert de EventStore gebeurtenissen in een cluster te correleren en uw gebeurtenissen waar mogelijk aan elkaar te koppelen. 
-
-Elke entiteit in een cluster kan query's zijn voor gebeurtenissen. U ook vragen naar gebeurtenissen voor alle entiteiten van het type. U bijvoorbeeld query's uitvoeren voor gebeurtenissen voor een specifiek knooppunt of voor alle knooppunten in uw cluster. De huidige set entiteiten waarvoor u vragen voor gebeurtenissen is (met de manier waarop de query zou worden gestructureerd):
-* Cluster:`/EventsStore/Cluster/Events`
-* Knooppunten:`/EventsStore/Nodes/Events`
-* Knooppunt:`/EventsStore/Nodes/<NodeName>/$/Events`
-* Toepassingen:`/EventsStore/Applications/Events`
-* Toepassing:`/EventsStore/Applications/<AppName>/$/Events`
-* Diensten:`/EventsStore/Services/Events`
-* Service:`/EventsStore/Services/<ServiceName>/$/Events`
-* Partities:`/EventsStore/Partitions/Events`
-* Partitie:`/EventsStore/Partitions/<PartitionID>/$/Events`
-* Replica 's:`/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* Replica:`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+In dit artikel wordt beschreven hoe u een query kunt uitvoeren op de Event Store-Api's die beschikbaar zijn in Service Fabric versie 6,2 en hoger. Als u meer wilt weten over de Event Store-service, raadpleegt u het [overzicht van Event Store-Services](service-fabric-diagnostics-eventstore.md). De Event Store-service heeft momenteel alleen toegang tot gegevens voor de afgelopen zeven dagen (dit is gebaseerd op het Bewaar beleid voor diagnostische gegevens van uw cluster).
 
 >[!NOTE]
->Wanneer u naar een toepassing of servicenaam verwijst, hoeft de query de 'stof:/' niet op te nemen Voorvoegsel. Als uw toepassing of servicenamen een "/" in zich hebben, schakelt u deze bovendien over naar een "~" om de query werkend te houden. Als uw toepassing bijvoorbeeld wordt weergegeven als 'fabric:/App1/FrontendApp', worden `/EventsStore/Applications/App1~FrontendApp/$/Events`uw app-specifieke query's gestructureerd als .
->Bovendien worden statusrapporten voor services vandaag weergegeven onder de bijbehorende toepassing, zodat u vragen naar gebeurtenissen voor `DeployedServiceHealthReportCreated` de juiste toepassingsentiteit. 
+>De Event Store-Api's zijn GA vanaf Service Fabric versie 6,4 voor alleen Windows-clusters die worden uitgevoerd op Azure.
 
-## <a name="query-the-eventstore-via-rest-api-endpoints"></a>De EventStore opvragen via REST API-eindpunten
+De Event Store-Api's kunnen rechtstreeks worden geopend via een REST-eind punt of via een programma. Afhankelijk van de query, zijn er verschillende para meters die nodig zijn om de juiste gegevens te verzamelen. Deze para meters omvatten meestal:
+* `api-version`: de versie van de Event Store-Api's die u gebruikt
+* `StartTimeUtc`: Hiermee definieert u het begin van de periode die u wilt bekijken
+* `EndTimeUtc`: einde van de tijds periode
 
-U de EventStore rechtstreeks bevragen via `GET` een `<your cluster address>/EventsStore/<entity>/Events/`REST-eindpunt, door aanvragen te doen voor:.
+Naast deze para meters zijn er ook optionele para meters beschikbaar, zoals:
+* `timeout`: de standaard time-out voor 60 seconden overschrijven voor het uitvoeren van de aanvraag bewerking
+* `eventstypesfilter`: Hiermee krijgt u de mogelijkheid om te filteren op specifieke gebeurtenis typen
+* `ExcludeAnalysisEvents`: retourneert geen analyse gebeurtenissen. Standaard worden event Store-query's waar mogelijk geretourneerd met analyse gebeurtenissen. Analyse gebeurtenissen zijn rijkere operationele kanaal gebeurtenissen die aanvullende context of informatie bevatten dan een gewone Service Fabric gebeurtenis en meer diepte bieden.
+* `SkipCorrelationLookup`: Zoek niet naar mogelijke gecorreleerde gebeurtenissen in het cluster. Standaard zal de Event Store proberen gebeurtenissen in een cluster te correleren en zo mogelijk uw gebeurtenissen aan elkaar koppelen. 
 
-Bijvoorbeeld, om te vragen voor alle `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`clustergebeurtenissen tussen en , uw aanvraag eruit ziet als volgt:
+Elke entiteit in een cluster kan query's voor gebeurtenissen zijn. U kunt ook een query uitvoeren op gebeurtenissen voor alle entiteiten van het type. U kunt bijvoorbeeld een query uitvoeren op gebeurtenissen voor een specifiek knoop punt of voor alle knoop punten in uw cluster. De huidige set entiteiten waarvoor u een query kunt uitvoeren voor gebeurtenissen is (met de manier waarop de query wordt gestructureerd):
+* Cluster`/EventsStore/Cluster/Events`
+* Punt`/EventsStore/Nodes/Events`
+* Subknooppuntsleutels`/EventsStore/Nodes/<NodeName>/$/Events`
+* Toepassingen`/EventsStore/Applications/Events`
+* Modules`/EventsStore/Applications/<AppName>/$/Events`
+* Onderzoeksservices`/EventsStore/Services/Events`
+* Service`/EventsStore/Services/<ServiceName>/$/Events`
+* Partition`/EventsStore/Partitions/Events`
+* Partitie`/EventsStore/Partitions/<PartitionID>/$/Events`
+* Replica's`/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
+* Exacte`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+
+>[!NOTE]
+>Bij het verwijzen naar een naam van een toepassing of service hoeft de query niet de "Fabric:/" te bevatten. beleids. Als de namen van uw toepassingen of services een '/' bevatten, kunt u deze ook overschakelen op ' ~ ' om de query te laten werken. Als uw toepassing bijvoorbeeld wordt weer gegeven als ' Fabric:/App1/FrontendApp ', worden uw app-specifieke query's gestructureerd als `/EventsStore/Applications/App1~FrontendApp/$/Events`.
+>Daarnaast worden status rapporten voor services nu weer gegeven onder de bijbehorende toepassing, zodat u een query uitvoert `DeployedServiceHealthReportCreated` voor gebeurtenissen voor de juiste toepassings entiteit. 
+
+## <a name="query-the-eventstore-via-rest-api-endpoints"></a>Query's uitvoeren op de Event Store via REST API-eind punten
+
+U kunt de Event Store rechtstreeks via een REST-eind punt opvragen door `GET` aanvragen te doen `<your cluster address>/EventsStore/<entity>/Events/`:.
+
+Als u bijvoorbeeld een query wilt uitvoeren voor alle cluster gebeurtenissen tussen `2018-04-03T18:00:00Z` en `2018-04-04T18:00:00Z`, ziet uw aanvraag er als volgt uit:
 
 ```
 Method: GET 
 URL: http://mycluster:19080/EventsStore/Cluster/Events?api-version=6.4&StartTimeUtc=2018-04-03T18:00:00Z&EndTimeUtc=2018-04-04T18:00:00Z
 ```
 
-Dit kan geen gebeurtenissen retourneren of de lijst met gebeurtenissen die in json zijn geretourneerd:
+Dit kan resulteren in het retour neren van geen gebeurtenissen of de lijst met gebeurtenissen die zijn geretourneerd in JSON:
 
 ```json
 Response: 200
@@ -106,15 +106,15 @@ Body:
 ]
 ```
 
-Hier kunnen we `2018-04-03T18:00:00Z` zien `2018-04-04T18:00:00Z`dat tussen en , dit cluster met succes `"CurrentClusterVersion": "0.0.0.0:"` `"TargetClusterVersion": "6.2:1.0"`zijn `"OverallUpgradeElapsedTimeInMs": "120196.5212"`eerste upgrade voltooid toen het voor het eerst werd opgestaan, van naar , in .
+Hier kunnen we zien dat tussen `2018-04-03T18:00:00Z` en `2018-04-04T18:00:00Z`, de eerste upgrade van het cluster is voltooid toen het voor het eerst was, `"CurrentClusterVersion": "0.0.0.0:"` van `"TargetClusterVersion": "6.2:1.0"`tot, `"OverallUpgradeElapsedTimeInMs": "120196.5212"`in.
 
-## <a name="query-the-eventstore-programmatically"></a>De EventStore programmatisch opvragen
+## <a name="query-the-eventstore-programmatically"></a>Query's uitvoeren op de Event Store via een programma
 
-U de EventStore ook programmatisch opvragen via de [clientbibliotheek servicestof.](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)
+U kunt de Event Store ook programmatisch opvragen via de Service Fabric- [client bibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
 
-Zodra u uw Service Fabric-client hebt ingesteld, u vragen stellen naar gebeurtenissen door de EventStore als volgt te openen:`sfhttpClient.EventStore.<request>`
+Zodra u uw Service Fabric-client hebt ingesteld, kunt u een query uitvoeren op gebeurtenissen door de Event Store als volgt te openen:`sfhttpClient.EventStore.<request>`
 
-Hier is een voorbeeldaanvraag voor `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z`alle clustergebeurtenissen tussen en , via de `GetClusterEventListAsync` functie.
+Hier volgt een voor beeld van een aanvraag voor alle `2018-04-03T18:00:00Z` cluster `2018-04-04T18:00:00Z`gebeurtenissen tussen en `GetClusterEventListAsync` met behulp van de functie.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -127,7 +127,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Hier is nog een voorbeeld dat query's voor de clusterstatus en alle knooppuntgebeurtenissen in september 2018 en deze afdrukken.
+Hier volgt nog een voor beeld van query's voor de cluster status en alle knooppunt gebeurtenissen in september 2018 en worden afgedrukt.
 
 ```csharp
   const int timeoutSecs = 60;
@@ -165,39 +165,39 @@ Hier is nog een voorbeeld dat query's voor de clusterstatus en alle knooppuntgeb
   }
 ```
 
-## <a name="sample-scenarios-and-queries"></a>Voorbeeldscenario's en query's
+## <a name="sample-scenarios-and-queries"></a>Voorbeeld scenario's en query's
 
-Hier volgen enkele voorbeelden over hoe u de API's voor gebeurtenisopslagrest bellen om de status van uw cluster te begrijpen.
+Hier volgen enkele voor beelden van hoe u de Event Store-REST-Api's kunt aanroepen om de status van uw cluster te begrijpen.
 
-*Clusterupgrades:*
+*Cluster upgrades:*
 
-Als u wilt zien wanneer uw cluster vorige week voor het laatst is bijgewerkt of heeft geprobeerd te worden bijgewerkt, u de API's voor onlangs voltooide upgrades voor uw cluster opvragen door de gebeurtenissen 'ClusterUpgradeCompleted' in de EventStore op te vragen:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Als u wilt zien de laatste keer dat het cluster is geslaagd of de laatste week probeerde te upgraden, kunt u een query uitvoeren op de Api's voor recent voltooide upgrades naar uw cluster, door een query uit te voeren voor de gebeurtenissen "ClusterUpgradeCompleted" in de Event Store:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
-*Problemen met clusterupgrades:*
+*Problemen bij cluster upgrades:*
 
-Als er problemen zijn met een recente clusterupgrade, u ook vragen stellen voor alle gebeurtenissen voor de clusterentiteit. Je ziet verschillende gebeurtenissen, waaronder het starten van upgrades en elke UD waarvoor de upgrade succesvol is doorlopen. U ziet ook gebeurtenissen voor het punt waarop de rollback is gestart en bijbehorende gezondheidsgebeurtenissen. Hier is de query die u zou gebruiken voor deze:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Als er problemen zijn met een recente upgrade van het cluster, kunt u ook een query uitvoeren voor alle gebeurtenissen voor de cluster entiteit. U ziet verschillende gebeurtenissen, zoals het initiëren van upgrades en elk UD waarvoor de upgrade is doorgevoerd. Er worden ook gebeurtenissen weer geven voor het punt waarop de terugdraai actie is gestart en de bijbehorende status gebeurtenissen. Hier volgt de query die u zou gebruiken:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Wijzigingen in de status van knooppunt:*
+*Knooppunt status wijzigingen:*
 
-Als u de statuswijzigingen van uw knooppunt in de afgelopen dagen wilt zien - wanneer knooppunten omhoog of omlaag gingen of zijn geactiveerd of gedeactiveerd (door het platform, de chaosservice of door gebruikersinvoer) - gebruikt u de volgende query:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Gebruik de volgende query om de status wijzigingen van het knoop punt in de afgelopen dagen te bekijken: wanneer knoop punten naar boven of beneden zijn geactiveerd of worden gedeactiveerd (door het platform, de chaos-service of door gebruikers invoer).`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Toepassingsgebeurtenissen:*
+*Toepassings gebeurtenissen:*
 
-U ook uw recente implementaties en upgrades van toepassingen bijhouden. Gebruik de volgende query om alle toepassingsgebeurtenissen in uw cluster te bekijken:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+U kunt ook uw recente toepassings implementaties en-upgrades volgen. Gebruik de volgende query om alle toepassings gebeurtenissen in uw cluster weer te geven:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Historische gezondheid voor een toepassing:*
+*Historische status voor een toepassing:*
 
-Naast alleen het zien van gebeurtenissen in de levenscyclus van toepassingen, u ook historische gegevens over de status van een specifieke toepassing zien. U dit doen door de toepassingsnaam op te geven waarvoor u de gegevens wilt verzamelen. Gebruik deze query om alle statusgebeurtenissen van de toepassing te krijgen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Als u statusgebeurtenissen wilt opnemen die mogelijk zijn verlopen (voorbij de tijd `,ApplicationHealthReportExpired` om te leven (TTL)), voegt u aan het einde van de query toe om op twee soorten gebeurtenissen te filteren.
+Naast het weer geven van toepassings levenscyclus gebeurtenissen, wilt u mogelijk ook historische gegevens bekijken over de status van een bepaalde toepassing. U kunt dit doen door de naam van de toepassing op te geven waarvoor u de gegevens wilt verzamelen. Gebruik deze query om alle gebeurtenissen van de toepassings status op `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`te halen:. Als u status gebeurtenissen wilt toevoegen die mogelijk zijn verlopen (de TTL (time to Live) is voltooid, voegt `,ApplicationHealthReportExpired` u toe aan het einde van de query om twee typen gebeurtenissen te filteren.
 
-*Historische gezondheid voor alle diensten in "myApp":*
+*Historische status voor alle services in ' Mijntoep ':*
 
-Momenteel worden statusrapportgebeurtenissen voor `DeployedServicePackageNewHealthReport` services weergegeven als gebeurtenissen onder de bijbehorende toepassingsentiteit. Gebruik de volgende query om te zien hoe uw services het hebben gedaan voor 'App1':`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Status rapport gebeurtenissen voor services worden momenteel weer gegeven als `DeployedServicePackageNewHealthReport` gebeurtenissen onder de bijbehorende toepassings entiteit. Gebruik de volgende query om te zien hoe uw services zijn uitgevoerd voor ' App1 ':`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
-*Partitieherconfiguratie:*
+*Herconfiguratie van partitie:*
 
-Als u alle partitiebewegingen wilt zien die in `PartitionReconfigured` uw cluster zijn gebeurd, zoekt u de gebeurtenis op. Dit kan u helpen erachter te komen welke workloads op welk knooppunt op specifieke tijdstippen, bij het diagnosticeren van problemen in uw cluster, zijn uitgevoerd. Hier is een voorbeeldquery die dat doet:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Als u wilt zien welke partitie-verplaatsingen er in uw cluster zijn `PartitionReconfigured` opgetreden, moet u een query uitvoeren voor de gebeurtenis. Zo kunt u nagaan welke workloads op specifieke momenten op het knoop punt worden uitgevoerd, bij het vaststellen van problemen in uw cluster. Hier volgt een voor beeld van een query:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
-*Chaos service:*
+*Chaos-service:*
 
-Er is een gebeurtenis voor wanneer de Chaos-service wordt gestart of gestopt die wordt blootgesteld op clusterniveau. Als u uw recente gebruik van de chaosservice wilt bekijken, gebruikt u de volgende query:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+Er is een gebeurtenis voor wanneer de chaos-service wordt gestart of gestopt die op het cluster niveau wordt weer gegeven. Gebruik de volgende query om uw recente gebruik van de chaos-service te bekijken:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

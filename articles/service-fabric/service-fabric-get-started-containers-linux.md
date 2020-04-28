@@ -1,13 +1,13 @@
 ---
-title: Een Azure Service Fabric-containertoepassing maken op Linux
+title: Een Azure Service Fabric-container toepassing maken in Linux
 description: Maak uw eerste Linux-containertoepassing in Azure Service Fabric. Bouw een Docker-installatiekopie met uw toepassing, push de installatiekopie naar een containerregister, en bouw en implementeer een Service Fabric-containertoepassing.
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457969"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Uw eerste Service Fabric-containertoepassing maken in Linux
@@ -18,7 +18,7 @@ ms.locfileid: "75457969"
 Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in een Linux-container uit te voeren in een Service Fabric-cluster. Dit artikel helpt u bij het maken van een Docker-installatiekopie met een Python [Flask](http://flask.pocoo.org/)-webtoepassing en het implementeren ervan in een Service Fabric-cluster. U gaat uw containertoepassing ook delen via [Azure Container Registry](/azure/container-registry/). In dit artikel wordt ervan uitgegaan dat u de basisbeginselen kent van Docker. Meer informatie over Docker kunt u lezen in het [Docker-overzicht](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
-> Dit artikel is van toepassing op een Linux-ontwikkelomgeving.  De runtime van het cluster ServiceFabric en de runtime van Docker moeten op hetzelfde besturingssysteem worden uitgevoerd.  U geen Linux-containers uitvoeren op een Windows-cluster.
+> Dit artikel is van toepassing op een Linux-ontwikkel omgeving.  De runtime van Service Fabric cluster en de docker-runtime moeten op hetzelfde besturings systeem worden uitgevoerd.  U kunt geen Linux-containers uitvoeren op een Windows-cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 * Een ontwikkelcomputer waarop wordt uitgevoerd:
@@ -113,7 +113,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Bij *naam* kunt de actieve container een naam geven (in plaats van de container-id).
 
-Maak verbinding met de actieve container. Open een webbrowser die naar het IP-adres wijst dat is\/geretourneerd op poort 4000, bijvoorbeeld "http: /localhost:4000". Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld '\/http:/localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
 ![Hallo wereld!][hello-world]
 
@@ -132,9 +132,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>De installatiekopie naar het containerregister pushen
 Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd in Docker, pusht u de installatiekopie naar het register in Azure Container Registry.
 
-U `docker login` zich aanmelden bij uw containerregister met uw [registerreferenties.](../container-registry/container-registry-authentication.md)
+Voer `docker login` uit om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
 
-In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U zich ook aanmelden met uw registergebruikersnaam en wachtwoord.
+In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -159,22 +159,22 @@ Om een Service Fabric-containertoepassing te maken, opent u een terminalvenster 
 
 Geef uw toepassing een naam (bijvoorbeeld `mycontainer`) evenals de toepassingsservice (bijvoorbeeld `myservice`).
 
-Geef voor de afbeeldingsnaam de URL op voor de containerafbeelding in een containerregister (bijvoorbeeld 'myregistry.azurecr.io/samples/helloworldapp'). 
+Geef voor de naam van de installatie kopie de URL voor de container installatie kopie in een container register op (bijvoorbeeld ' myregistry.azurecr.io/samples/helloworldapp '). 
 
 Omdat voor deze installatiekopie een workloadinvoerpunt is gedefinieerd, hoeft u niet expliciet invoeropdrachten op te geven (opdrachten worden uitgevoerd in de container, zodat de container na het opstarten actief blijft). 
 
 Geef '1' exemplaar op.
 
-Geef de poorttoewijzing op in de juiste indeling. Voor dit artikel moet ```80:4000``` u de portmapping als poorttoewijzing gebruiken. Door dit te doen hebt u geconfigureerd dat alle binnenkomende aanvragen die naar poort 4000 op de hostmachine komen, worden doorgestuurd naar poort 80 op de container.
+Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u de poort toewijzing ```80:4000``` opgeven. Als u dit doet, worden alle binnenkomende aanvragen die afkomstig zijn van poort 4000 op de hostmachine omgeleid naar poort 80 van de container.
 
 ![Service Fabric Yeoman-generator voor containers][sf-yeoman]
 
-## <a name="configure-container-repository-authentication"></a>Verificatie van containeropslagplaatsen configureren
+## <a name="configure-container-repository-authentication"></a>Verificatie van container opslagplaats configureren
 
-Zie [Containerrepository-verificatie](configure-container-repository-credentials.md)voor meer informatie over het configureren van verschillende typen verificatie voor het downloaden van containerafbeeldingen.
+Bekijk [container opslagplaats verificatie](configure-container-repository-credentials.md)voor meer informatie over het configureren van verschillende verificatie typen voor het downloaden van container installatie kopieën.
 
 ## <a name="configure-isolation-mode"></a>Isolatiemodus configureren
-Met de 6.3 runtime release wordt VM isolatie ondersteund voor Linux containers, waardoor twee isolatiemodi voor containers worden ondersteund: proces en Hyper-V. Met de Hyper-V-isolatiemodus worden de kernels geïsoleerd tussen elke container en de containerhost. De Hyper-V isolatie wordt geïmplementeerd met behulp van [Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatiemodus is opgegeven voor `ServicePackageContainerPolicy` Linux-clusters in het element in het toepassingsmanifestbestand. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaardmodus is de procesisolatiemodus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
+Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en Hyper-V-ondersteuning. Met de isolatie modus voor Hyper-V worden de kernels geïsoleerd tussen elke container en de container-host. De Hyper-V-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in `ServicePackageContainerPolicy` het-element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
 
 ```xml
 <ServiceManifestImport>
@@ -208,9 +208,9 @@ Met de 6.3 runtime release wordt VM isolatie ondersteund voor Linux containers, 
 
 Vanaf versie 6.1 integreert Service Fabric automatisch [Docker-STATUSCONTROLE](https://docs.docker.com/engine/reference/builder/#healthcheck)-gebeurtenissen in het systeemstatusrapport. Dit betekent dat als voor uw container **STATUSCONTROLE** is ingeschakeld, Service Fabric de status van de container rapporteert wanneer Docker aangeeft dat deze is gewijzigd. In [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) wordt de status **OK** weergegeven wanneer *health_status**healthy* is en **WAARSCHUWING** wanneer *health_status**unhealthy* is. 
 
-Vanaf de nieuwste refresh release van v6.4, hebt u de optie om op te geven dat docker HEALTHCHECK evaluaties moeten worden gerapporteerd als een fout. Als deze optie is ingeschakeld, wordt een **OK-statusrapport** weergegeven wanneer *health_status* *in orde* is en **FOUT** wordt weergegeven wanneer *health_status* niet *in orde*is.
+Vanaf de laatste vernieuwing van v 6.4 hebt u de optie om op te geven dat de status controle-evaluaties van docker moeten worden gerapporteerd als een fout. Als deze optie is ingeschakeld, wordt het status rapport **OK** weer gegeven *health_status* wanneer health_status *in orde* is en de **fout** wordt weer gegeven wanneer *health_status* een *slechte status*heeft.
 
-De **HEALTHCHECK-instructie** die wijst op de feitelijke controle die wordt uitgevoerd voor de status van de containerbewaking, moet aanwezig zijn in het Dockerbestand dat wordt gebruikt terwijl de containerafbeelding wordt genereren.
+De **status controle** -instructie die verwijst naar de daad werkelijke controle die wordt uitgevoerd voor de controle van de container status, moet aanwezig zijn in de Dockerfile die wordt gebruikt tijdens het genereren van de container installatie kopie.
 
 ![HealthCheckHealthy][1]
 
@@ -232,11 +232,11 @@ U kunt het gedrag van de **STATUSCONTROLE** voor elke container configureren doo
     </Policies>
 </ServiceManifestImport>
 ```
-Standaard *is IncludeDockerHealthStatusInSystemHealthReport* ingesteld op **true,** *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **false**en *TreatContainerUnhealthyStatusAsError* is ingesteld op **false**. 
+*IncludeDockerHealthStatusInSystemHealthReport* is standaard ingesteld op **True**, *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **False**en *TreatContainerUnhealthyStatusAsError* is ingesteld op **False**. 
 
 Als *RestartContainerOnUnhealthyDockerHealthStatus* is ingesteld op **true**, wordt een herhaaldelijk niet goed werkende container opnieuw opgestart (mogelijk op andere knooppunten).
 
-Als *TreatContainerUnhealthyStatusAsError* is ingesteld op **true,** worden **foutstatusrapporten** weergegeven wanneer de *health_status* van de container niet *in orde*is.
+Als *TreatContainerUnhealthyStatusAsError* is ingesteld op **True**, worden **fouten** rapporten weer gegeven wanneer de *health_status* van de container *beschadigd*is.
 
 Als u de integratie van **STATUSCONTROLE** wilt uitschakelen voor de hele Service Fabric-cluster, moet u [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) instellen op **onwaar**.
 
@@ -249,16 +249,16 @@ Maak verbinding met het lokale cluster van Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Gebruik het installatiescript in https://github.com/Azure-Samples/service-fabric-containers/ de sjablonen om het toepassingspakket naar het afbeeldingsarchief van het cluster te kopiëren, het toepassingstype te registreren en een instantie van de toepassing te maken.
+Gebruik het installatie script https://github.com/Azure-Samples/service-fabric-containers/ dat is opgenomen in de sjablonen om het toepassings pakket te kopiëren naar de installatie kopie opslag van het cluster, het toepassings type te registreren en een exemplaar van de toepassing te maken.
 
 
 ```bash
 ./install.sh
 ```
 
-Open een browser en navigeer naar\/Service Fabric Explorer op http: /localhost:19080/Explorer (vervang localhost door het privé-IP van de VM als u Vagrant gebruikt op Mac OS X). Vouw het knooppunt Toepassingen uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
+Open een browser en ga naar Service Fabric Explorer op http:\//localhost: 19080/Explorer (Vervang localhost door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt). Vouw het knooppunt Toepassingen uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
-Maak verbinding met de actieve container. Open een webbrowser die naar het IP-adres wijst dat is\/geretourneerd op poort 4000, bijvoorbeeld "http: /localhost:4000". Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld '\/http:/localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
 ![Hallo wereld!][hello-world]
 

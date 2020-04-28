@@ -1,47 +1,47 @@
 ---
-title: Gebeurtenisaggregatie met Linux Azure Diagnostics
-description: Meer informatie over het aggregeren en verzamelen van gebeurtenissen met LAD voor monitoring en diagnostiek van Azure Service Fabric-clusters.
+title: Verzamelen van gebeurtenissen met Linux-Azure Diagnostics
+description: Meer informatie over het samen voegen en verzamelen van gebeurtenissen met LAD voor bewaking en diagnose van Azure Service Fabric-clusters.
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609958"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Aggregatie en verzameling van gebeurtenissen met Linux Azure Diagnostics
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met Linux Azure Diagnostics
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Wanneer u een Azure Service Fabric-cluster uitvoert, is het een goed idee om de logboeken van alle knooppunten op een centrale locatie te verzamelen. Als u de logboeken op een centrale locatie hebt, u problemen in uw cluster of problemen in de toepassingen en services die in dat cluster worden uitgevoerd, analyseren en oplossen.
+Wanneer u een Azure Service Fabric-cluster uitvoert, is het een goed idee om de logboeken te verzamelen van alle knoop punten op een centrale locatie. Met de logboeken op een centrale locatie kunt u problemen in uw cluster analyseren en oplossen, of problemen in de toepassingen en services die in dat cluster worden uitgevoerd.
 
-Een manier om logboeken te uploaden en te verzamelen, is door de LAD-extensie (Linux Azure Diagnostics) te gebruiken, die logboeken uploadt naar Azure Storage, en ook de mogelijkheid heeft om logboeken naar Azure Application Insights of Event Hubs te verzenden. U ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze in een analyseplatformproduct te plaatsen, zoals [Azure Monitor-logboeken](../log-analytics/log-analytics-service-fabric.md) of een andere log-parsing-oplossing.
+Een manier om logboeken te uploaden en te verzamelen, is door de Linux Azure Diagnostics-extensie (LAD) te gebruiken, waarmee logboeken naar Azure Storage worden geüpload en ook de optie is voor het verzenden van logboeken naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals [Azure monitor logboeken](../log-analytics/log-analytics-service-fabric.md) of een andere oplossing voor het parseren van Logboeken.
 
-## <a name="log-and-event-sources"></a>Log- en gebeurtenisbronnen
+## <a name="log-and-event-sources"></a>Logboek-en gebeurtenis bronnen
 
-### <a name="service-fabric-platform-events"></a>Service Fabric-platformevenementen
-Service Fabric zendt een paar out-of-the-box logs uit via [LTTng,](https://lttng.org)inclusief operationele gebeurtenissen of runtime-gebeurtenissen. Deze logboeken worden opgeslagen op de locatie die de resourcebeheersjabloon van het cluster opgeeft. Als u de opslagaccountgegevens wilt opvragen of instellen, zoekt u naar de tag **AzureTableWinFabETWQueryable** en zoekt u **StoreConnectionString**.
+### <a name="service-fabric-platform-events"></a>Service Fabric-platform gebeurtenissen
+Service Fabric verzendt enkele out-of-the-box-logboeken via [LTTng](https://lttng.org), met inbegrip van operationele gebeurtenissen of runtime-gebeurtenissen. Deze logboeken worden opgeslagen op de locatie die wordt opgegeven in de Resource Manager-sjabloon van het cluster. Om de details van het opslag account op te halen of in te stellen, zoekt u naar de tag **AzureTableWinFabETWQueryable** en zoekt u naar **StoreConnectionString**.
 
-### <a name="application-events"></a>Toepassingsgebeurtenissen
- Gebeurtenissen die worden uitgezonden uit de code van uw toepassingen en services zoals opgegeven door u bij het instrumenteren van uw software. U elke logboekoplossing gebruiken die tekstgebaseerde logboekbestanden schrijft, bijvoorbeeld LTTng. Zie voor meer informatie de LTTng-documentatie over het traceren van uw toepassing.
+### <a name="application-events"></a>Toepassings gebeurtenissen
+ Gebeurtenissen die worden verzonden vanuit de code van uw toepassingen en services zoals opgegeven door u bij het instrumenteren van uw software. U kunt elke registratie oplossing gebruiken waarmee logboek bestanden op basis van tekst worden geschreven, bijvoorbeeld LTTng. Zie de LTTng-documentatie over het traceren van uw toepassing voor meer informatie.
 
-[Services controleren en diagnosticeren in een lokale installatie voor machineontwikkeling.](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
+[Services in een installatie van een lokale machine controleren en diagnosticeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 
-## <a name="deploy-the-diagnostics-extension"></a>De extensie Diagnostische gegevens implementeren
-De eerste stap bij het verzamelen van logboeken is het implementeren van de extensie Diagnostische gegevens op elk van de VM's in het cluster ServiceFabric. De extensie Diagnostische gegevens verzamelt logboeken op elke virtuele machine en uploadt deze naar het opslagaccount dat u opgeeft. 
+## <a name="deploy-the-diagnostics-extension"></a>De diagnostische uitbrei ding implementeren
+De eerste stap bij het verzamelen van Logboeken is het implementeren van de diagnostische uitbrei ding op elke virtuele machine in het Service Fabric cluster. De diagnostische uitbrei ding verzamelt logboeken op elke virtuele machine en uploadt deze naar het opslag account dat u opgeeft. 
 
-Als u de extensie Diagnostische gegevens wilt implementeren in de VM's in het cluster als onderdeel van het maken van het cluster, stelt u **Diagnostics** in **op Aan**. Nadat u het cluster hebt gemaakt, u deze instelling niet wijzigen met behulp van de portal, dus u moet de juiste wijzigingen aanbrengen in de sjabloon Resourcemanager.
+Als u de diagnostische uitbrei ding voor de virtuele machines in het cluster wilt implementeren als onderdeel van het maken van een cluster, stelt u **Diagnostische gegevens** in **op aan**. Nadat u het cluster hebt gemaakt, kunt u deze instelling niet wijzigen met behulp van de portal, zodat u de gewenste wijzigingen moet aanbrengen in de Resource Manager-sjabloon.
 
-Hiermee configureert u de LAD-agent om opgegeven logboekbestanden te controleren. Wanneer een nieuwe regel aan het bestand wordt toegevoegd, wordt een syslog-vermelding gemaakt die wordt verzonden naar de opslag (tabel) die u hebt opgegeven.
+Hiermee configureert u de LAD-agent om de opgegeven logboek bestanden te bewaken. Wanneer een nieuwe regel aan het bestand wordt toegevoegd, wordt er een syslog-item gemaakt dat wordt verzonden naar de opslag (tabel) die u hebt opgegeven.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-1. Zie [LTTng-documentatie](https://lttng.org/docs) en [Lad gebruiken](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)om meer in detail te begrijpen welke gebeurtenissen u moet onderzoeken tijdens het oplossen van problemen.
-2. [Stel de loganalytics-agent in](service-fabric-diagnostics-event-analysis-oms.md) om statistieken te verzamelen, containers te controleren die op uw cluster zijn geïmplementeerd en uw logboeken te visualiseren 
+1. Zie [LTTng-documentatie](https://lttng.org/docs) en [Lad gebruiken](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)voor meer informatie over de gebeurtenissen die u moet onderzoeken tijdens het oplossen van problemen.
+2. [Stel de log Analytics agent](service-fabric-diagnostics-event-analysis-oms.md) in voor het verzamelen van metrische gegevens, het controleren van containers die zijn geïmplementeerd in uw cluster en het visualiseren van uw logboeken 

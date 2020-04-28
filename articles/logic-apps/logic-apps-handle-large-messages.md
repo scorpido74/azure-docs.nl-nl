@@ -1,6 +1,6 @@
 ---
-title: Grote berichten verwerken met chunking
-description: Meer informatie over het omgaan met grote berichtformaten door chunking te gebruiken in geautomatiseerde taken en werkstromen die u maakt met Azure Logic Apps
+title: Grote berichten afhandelen met behulp van Chunking
+description: Meer informatie over het verwerken van grote bericht grootten met behulp van chunks in geautomatiseerde taken en werk stromen die u maakt met Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: shae-hurst
@@ -8,84 +8,84 @@ ms.author: shhurst
 ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75456550"
 ---
-# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Grote berichten verwerken met chunking in Azure Logic Apps
+# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Grote berichten verwerken met Chunking in Azure Logic Apps
 
-Bij het verwerken van berichten beperkt Logic Apps de inhoud van berichten tot een maximale grootte. Deze limiet helpt overhead te verminderen die wordt gemaakt door grote berichten op te slaan en te verwerken. Als u berichten wilt verwerken die groter zijn dan deze limiet, *kan* Logic Apps een groot bericht in kleinere berichten splitsen. Op die manier u nog steeds grote bestanden overbrengen met Behulp van Logic Apps onder specifieke voorwaarden. Bij het communiceren met andere services via connectors of HTTP kunnen Logische apps grote berichten gebruiken, maar *alleen* in brokken. Deze voorwaarde betekent dat connectors ook chunking moeten ondersteunen, of de onderliggende HTTP-berichtenuitwisseling tussen Logic Apps en deze services moet chunking gebruiken.
+Bij het afhandelen van berichten, Logic Apps de bericht inhoud beperkt tot een maximum grootte. Deze limiet vermindert de overhead die is gemaakt door grote berichten op te slaan en te verwerken. Voor het afhandelen van berichten die groter zijn dan deze limiet *, kan Logic apps* een groot bericht in kleinere berichten afsplitsen. Op die manier kunt u nog steeds grote bestanden overdragen met behulp van Logic Apps onder specifieke voor waarden. Wanneer u communiceert met andere services via connectors of HTTP, kan Logic Apps grote berichten gebruiken, maar *alleen* in segmenten. Dit betekent dat connectors ook segmenting ondersteunen, of de onderliggende HTTP-bericht uitwisseling tussen Logic Apps en dat deze services segmenting moeten gebruiken.
 
-In dit artikel ziet u hoe u chunking instellen voor acties die berichten verwerken die groter zijn dan de limiet. Logic App-triggers ondersteunen geen chunking vanwege de toegenomen overhead van het uitwisselen van meerdere berichten. 
+In dit artikel wordt beschreven hoe u Chunking kunt instellen voor acties die groter zijn dan de limiet. Logic app-Triggers bieden geen ondersteuning voor het delen van segmenten omdat er meer berichten worden uitgewisseld. 
 
-## <a name="what-makes-messages-large"></a>Wat maakt berichten "groot"?
+## <a name="what-makes-messages-large"></a>Wat betekent ' grote ' berichten?
 
-Berichten zijn "groot" op basis van de service die deze berichten verwerkt. De exacte groottelimiet voor grote berichten verschilt per Logic Apps en connectoren. Zowel Logic Apps als connectors kunnen niet direct grote berichten verbruiken, die moeten worden vermorzegeld. Zie Limieten en configuratie van Logic Apps voor de limiet voor de berichtgrootte van Logic [Apps.](../logic-apps/logic-apps-limits-and-config.md)
-Zie voor de limiet van de berichtgrootte van elke connector de specifieke technische details van de [connector.](../connectors/apis-list.md)
+Berichten zijn ' groot ' op basis van de service die deze berichten verwerkt. De exacte maximum grootte voor grote berichten verschilt tussen Logic Apps en connectors. Zowel Logic Apps als Connectors kunnen niet rechtstreeks grote berichten gebruiken, die moeten worden gesegmenteerd. Zie [Logic apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor de limiet voor de grootte van het Logic apps bericht.
+Zie de [specifieke technische details](../connectors/apis-list.md)van de connector voor de maximale bericht grootte voor elke connector.
 
-### <a name="chunked-message-handling-for-logic-apps"></a>Chunked message handling for Logic Apps
+### <a name="chunked-message-handling-for-logic-apps"></a>Verwerking van gesegmenteerde berichten voor Logic Apps
 
-Logic Apps kunnen niet rechtstreeks uitvoer gebruiken van berichten die groter zijn dan de limiet voor de grootte van het bericht. Alleen acties die chunking ondersteunen, hebben toegang tot de inhoud van het bericht in deze uitvoer. Een actie die grote berichten verwerkt, moet dus *aan* deze criteria voldoen:
+Logic Apps kan geen uitvoer rechtstreeks gebruiken van gesegmenteerde berichten die groter zijn dan de maximale bericht grootte. Alleen acties die ondersteuning bieden voor Chunking hebben toegang tot de bericht inhoud in deze uitvoer. Een actie die grote berichten afhandelt, moet *dus voldoen aan de volgende* criteria:
 
-* Native ondersteuning chunking wanneer die actie behoort tot een connector. 
-* Ondersteuning voor chunking ingeschakeld in de runtime-configuratie van die actie. 
+* Het systeem eigen ondersteuning voor segmentering wanneer die actie tot een connector behoort. 
+* Ondersteuning van segmentering ingeschakeld in de runtime configuratie van die actie. 
 
-Anders krijgt u een runtime-fout wanneer u toegang probeert te krijgen tot de uitvoer van grote inhoud. Zie Ondersteuning voor [chunking instellen](#set-up-chunking)inschakelen.
+Anders krijgt u een runtime fout wanneer u toegang probeert te krijgen tot grote inhouds uitvoer. Zie voor het inschakelen van Chunking de [ondersteuning voor Chunking instellen](#set-up-chunking).
 
-### <a name="chunked-message-handling-for-connectors"></a>Chunked message handling voor connectors
+### <a name="chunked-message-handling-for-connectors"></a>Verwerking van gesegmenteerde berichten voor connectors
 
-Services die communiceren met Logic Apps kunnen hun eigen limieten voor de grootte van berichten hebben. Deze limieten zijn vaak kleiner dan de limiet voor Logische apps. Als u bijvoorbeeld aanneemt dat een connector chunking ondersteunt, kan een connector een bericht van 30 MB als groot beschouwen, terwijl Logic Apps dat niet doet. Om aan de limiet van deze connector te voldoen, splitst Logic Apps elk bericht groter dan 30 MB in kleinere segmenten.
+Services die communiceren met Logic Apps kunnen hun eigen bericht grootte limieten hebben. Deze limieten zijn vaak kleiner dan de Logic Apps limiet. Als er bijvoorbeeld wordt aangenomen dat een connector Chunking ondersteunt, kan een connector een bericht van 30 MB als groot beschouwen, terwijl Logic Apps dat niet doet. Om te voldoen aan de limiet van deze connector, Logic Apps een bericht dat groter is dan 30 MB in kleinere segmenten gesplitst.
 
-Voor connectors die chunking ondersteunen, is het onderliggende chunking-protocol onzichtbaar voor eindgebruikers. Niet alle connectors ondersteunen echter chunking, dus deze connectors genereren runtimefouten wanneer binnenkomende berichten de groottelimieten van de connectors overschrijden.
+Voor connectors die ondersteuning bieden voor Chunking, is het onderliggende Chunking-protocol onzichtbaar voor eind gebruikers. Niet alle connectors ondersteunen echter Chunking, dus genereren deze connectors fouten wanneer binnenkomende berichten de limieten voor de grootte van de connector overschrijden.
 
 > [!NOTE]
-> Voor acties die chunking gebruiken, u de triggerbody `@triggerBody()?['Content']` niet passeren of expressies gebruiken zoals in die acties. In plaats daarvan u voor tekst- of JSON-bestandsinhoud proberen de actie [ **Samenstellen** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) gebruiken of [een variabele maken](../logic-apps/logic-apps-create-variables-store-values.md) om die inhoud te verwerken. Als de triggerbody andere inhoudstypen bevat, zoals mediabestanden, moet u andere stappen uitvoeren om die inhoud te verwerken.
+> Voor acties die gebruikmaken van Chunking, kunt u de hoofd tekst `@triggerBody()?['Content']` van de trigger niet door geven of expressies gebruiken zoals in die acties. In plaats daarvan kunt u voor inhoud van tekst of JSON-bestand proberen de [actie **opstellen** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) te gebruiken of [een variabele te maken](../logic-apps/logic-apps-create-variables-store-values.md) om die inhoud af te handelen. Als de hoofd tekst van de trigger andere inhouds typen bevat, zoals media bestanden, moet u andere stappen uitvoeren om die inhoud af te handelen.
 
 <a name="set-up-chunking"></a>
 
-## <a name="set-up-chunking-over-http"></a>Chunking instellen via HTTP
+## <a name="set-up-chunking-over-http"></a>Segmentering via HTTP instellen
 
-In algemene HTTP-scenario's u grote inhoudsdownloads en -uploads via HTTP opsplitsen, zodat uw logische app en een eindpunt grote berichten kunnen uitwisselen. U moet echter berichten vastwisselen op de manier die Logic Apps verwacht. 
+In algemene HTTP-scenario's kunt u grote inhoud downloaden en uploads via HTTP opsplitsen, zodat uw logische app en een eind punt grote berichten kunnen uitwisselen. U moet echter berichten afsegmenten op de manier die Logic Apps verwacht. 
 
-Als een eindpunt chunking heeft ingeschakeld voor downloads of uploads, worden de HTTP-acties in uw logische app automatisch grote berichten vermorzen. Anders moet u ondersteuning voor chunking instellen op het eindpunt. Als u het eindpunt of de connector niet bezit of beheert, hebt u mogelijk niet de optie om chunking in te stellen.
+Als een eind punt Chunking heeft ingeschakeld voor down loads of uploads, worden met de HTTP-acties in uw logische app automatisch grote berichten gesegmenteerd. Anders moet u de ondersteuning voor segmentering instellen voor het eind punt. Als u het eind punt of de connector niet bezit of beheert, hebt u mogelijk niet de mogelijkheid om Chunking in te stellen.
 
-Als een HTTP-actie al geen chunking inschakelt, moet u ook chunking instellen in de eigenschap van `runTimeConfiguration` de actie. U deze eigenschap in de actie instellen, rechtstreeks in de codeweergaveeditor zoals later beschreven, of in de Logic Apps Designer zoals hier beschreven:
+Als een HTTP-actie nog niet is ingeschakeld, moet u ook Chunking instellen in de eigenschap van `runTimeConfiguration` de actie. U kunt deze eigenschap in de actie instellen, hetzij rechtstreeks in de code weergave-editor, zoals later beschreven, of in de Logic Apps Designer, zoals hier wordt beschreven:
 
-1. Kies in de rechterbovenhoek van de HTTP-actie de knop ellips (**... )** en kies **Vervolgens Instellingen**.
+1. Klik in de rechter bovenhoek van de http-actie op de knop met het weglatings teken (**...**) en kies vervolgens **instellingen**.
 
-   ![Open in de actie het instellingenmenu](./media/logic-apps-handle-large-messages/http-settings.png)
+   ![Open het menu instellingen op de actie](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. Stel **Chunking toestaan** onder **Inhoudsoverdracht**in op **.**
+2. Stel onder **inhouds overdracht** **toestaan dat Chunking** is **ingeschakeld in op**.
 
-   ![Chunking inschakelen](./media/logic-apps-handle-large-messages/set-up-chunking.png)
+   ![Segmentering inschakelen](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
-3. Ga door met de volgende secties om chunking voor downloads of uploads in te stellen.
+3. Ga door met de volgende secties als u wilt door gaan met het instellen van Chunking voor down loads of uploads.
 
 <a name="download-chunks"></a>
 
-## <a name="download-content-in-chunks"></a>Inhoud downloaden in brokken
+## <a name="download-content-in-chunks"></a>Inhoud in segmenten downloaden
 
-Veel eindpunten verzenden automatisch grote berichten in stukjes wanneer ze worden gedownload via een HTTP GET-verzoek. Als u chunked-berichten wilt downloaden vanaf een eindpunt via HTTP, moet het eindpunt gedeeltelijke inhoudsaanvragen of *geblokte downloads*ondersteunen. Wanneer uw logische app een HTTP GET-verzoek verzendt naar een eindpunt voor het downloaden van inhoud en het eindpunt reageert met een statuscode '206', bevat het antwoord een inhoud met een stuk voor stuk. Logic Apps kan niet bepalen of een eindpunt gedeeltelijke aanvragen ondersteunt. Wanneer uw logica-app echter de eerste "206"-reactie krijgt, verzendt uw logische app automatisch meerdere verzoeken om alle inhoud te downloaden.
+Veel eind punten verzenden automatisch grote berichten in segmenten wanneer ze worden gedownload via een HTTP GET-aanvraag. Als u gesegmenteerde berichten van een eind punt over HTTP wilt downloaden, moet het eind punt gedeeltelijke inhouds aanvragen ondersteunen of *gesegmenteerde down loads*. Wanneer uw logische app een HTTP GET-aanvraag naar een eind punt verzendt voor het downloaden van inhoud, en het eind punt reageert met de status code ' 206 ', bevat het antwoord gesegmenteerde inhoud. Logic Apps kan niet bepalen of een eind punt gedeeltelijke aanvragen ondersteunt. Als uw logische app echter het eerste ' 206 ' antwoord krijgt, verzendt uw logische app automatisch meerdere aanvragen om alle inhoud te downloaden.
 
-Als u wilt controleren of een eindpunt gedeeltelijke inhoud kan ondersteunen, stuurt u een HEAD-verzoek. Met deze aanvraag u `Accept-Ranges` bepalen of het antwoord de koptekst bevat. Op die manier u deze optie *voorstellen* door de `Range` koptekst in te stellen in uw HTTP GET-verzoek als het eindpunt een vast blok met de downloads ondersteunt, maar geen geblokte inhoud verzendt. 
+Als u wilt controleren of een eind punt gedeeltelijke inhoud kan ondersteunen, verzendt u een HEAD-aanvraag. Met deze aanvraag kunt u bepalen of het antwoord de `Accept-Ranges` header bevat. Op die manier kunt u deze optie *aanbevelen* door de `Range` header in uw HTTP GET-aanvraag in te stellen als het eind punt gesegmenteerde down loads ondersteunt, maar geen gesegmenteerde inhoud verzendt. 
 
-In deze stappen wordt het gedetailleerde proces beschreven dat Logic Apps gebruikt voor het downloaden van geblokte inhoud van een eindpunt naar uw logische app:
+In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt voor het downloaden van gesegmenteerde inhoud van een eind punt naar uw logische app:
 
-1. Uw logica-app stuurt een HTTP GET-verzoek naar het eindpunt.
+1. Uw logische app verzendt een HTTP GET-aanvraag naar het eind punt.
 
-   De aanvraagkoptekst kan `Range` optioneel een veld bevatten dat een bytebereik beschrijft voor het aanvragen van inhoudssegmenten.
+   De aanvraag header kan optioneel een `Range` veld bevatten waarin een byte bereik voor het aanvragen van inhouds segmenten wordt beschreven.
 
-2. Het eindpunt reageert met de statuscode "206" en een HTTP-berichttekst.
+2. Het eind punt reageert met de status code ' 206 ' en een HTTP-bericht tekst.
 
-    Details over de inhoud in dit segment `Content-Range` worden weergegeven in de koptekst van de reactie, inclusief informatie waarmee Logic Apps het begin en einde van de chunk kan bepalen, plus de totale grootte van de volledige inhoud voordat u chunking.
+    Details over de inhoud van dit segment worden weer gegeven in de `Content-Range` koptekst van het antwoord, met inbegrip van informatie die helpt Logic apps het begin en het einde van het segment te bepalen, plus de totale grootte van de volledige inhoud voordat deze wordt gesegmenteerd.
 
-3. Uw logica-app verzendt automatisch follow-up HTTP GET-verzoeken.
+3. Uw logische app verzendt automatisch opvolgings aanvragen voor HTTP GET.
 
-    Uw logische app verzendt follow-up GET-aanvragen totdat de volledige inhoud is opgehaald.
+    Uw logische app verzendt aanvragen voor opvolging totdat de volledige inhoud is opgehaald.
 
-Deze actiedefinitie toont bijvoorbeeld een HTTP GET-verzoek waarmee de `Range` koptekst wordt ingesteld. De *koptekst suggereert* dat het eindpunt moet reageren met geblokte inhoud:
+Deze actie definitie toont bijvoorbeeld een HTTP GET-aanvraag waarmee de `Range` header wordt ingesteld. De header *geeft* aan dat het eind punt moet reageren met gesegmenteerde inhoud:
 
 ```json
 "getAction": {
@@ -101,54 +101,54 @@ Deze actiedefinitie toont bijvoorbeeld een HTTP GET-verzoek waarmee de `Range` k
 }
 ```
 
-Met de GET-aanvraag wordt de koptekst 'Bereik' ingesteld op 'bytes=0-1023', het bereik van bytes. Als het eindpunt aanvragen voor gedeeltelijke inhoud ondersteunt, wordt het eindpunt gereageerd met een inhoudssegment uit het gevraagde bereik. Op basis van het eindpunt kan de exacte indeling voor het koptekstveld 'Bereik' verschillen.
+De GET-aanvraag stelt de ' Range '-header in op ' bytes = 0-1023 ', wat het bereik van bytes is. Als het eind punt aanvragen voor gedeeltelijke inhoud ondersteunt, reageert het eind punt met een inhouds segment van het aangevraagde bereik. Op basis van het eind punt kunnen de exacte notatie voor het koptekst veld bereik verschillen.
 
 <a name="upload-chunks"></a>
 
-## <a name="upload-content-in-chunks"></a>Inhoud uploaden in brokken
+## <a name="upload-content-in-chunks"></a>Inhoud uploaden in segmenten
 
-Als u chunked-inhoud wilt uploaden van een HTTP-actie, moet `runtimeConfiguration` de actie ondersteuning voor chunking hebben ingeschakeld via de eigenschap van de actie. Met deze instelling kan de actie het chunking-protocol starten. Uw logica-app kan vervolgens een eerste bericht of PUT-bericht naar het doeleindpunt verzenden. Nadat het eindpunt reageert met een voorgestelde chunk-grootte, wordt uw logische app opgevolgd door HTTP PATCH-verzoeken te verzenden die de inhoudssegmenten bevatten.
+Voor het uploaden van gesegmenteerde inhoud van een HTTP-actie moet de actie Chunking-ondersteuning hebben ingeschakeld `runtimeConfiguration` via de eigenschap van de actie. Met deze instelling kan de actie het Chunking-protocol starten. Uw logische app kan vervolgens een eerste POST of een bericht naar het doel eindpunt verzenden. Nadat het eind punt reageert met een voorgestelde segment grootte, wordt de logische app gevolgd door HTTP-PATCH aanvragen te verzenden die de inhouds segmenten bevatten.
 
-In deze stappen wordt het gedetailleerde proces beschreven dat Logic Apps gebruikt voor het uploaden van gesegmenteerde inhoud van uw logische app naar een eindpunt:
+In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt voor het uploaden van gesegmenteerde inhoud van uw logische app naar een eind punt:
 
-1. Uw logische app verzendt een eerste HTTP-BERICHT of PUT-verzoek met een lege berichttekst. De hoofdtekst van het verzoek bevat deze informatie over de inhoud die uw logica-app in brokken wil uploaden:
+1. Uw logische app verzendt een eerste HTTP POST-of PUT-aanvraag met een lege bericht tekst. De aanvraag header bevat de volgende informatie over de inhoud die uw logische app wil uploaden in segmenten:
 
-   | Koptekstveld Logic Apps-aanvragen | Waarde | Type | Beschrijving |
+   | Veld aanvraag header Logic Apps | Waarde | Type | Beschrijving |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-modus** | in stukken | Tekenreeks | Geeft aan dat de inhoud in brokken wordt geüpload |
-   | **x-ms-inhoudslengte** | <*inhoudslengte*> | Geheel getal | De volledige inhoudsgrootte in bytes voordat u chunking |
+   | **x-MS-overdracht-modus** | gesegmenteerde | Tekenreeks | Geeft aan dat de inhoud is geüpload in segmenten |
+   | **x-MS-content-length** | <*content-length*> | Geheel getal | De volledige inhouds grootte in bytes voordat deze wordt gesegmenteerd |
    ||||
 
-2. Het eindpunt reageert met "200" successtatuscode en deze optionele informatie:
+2. Het eind punt reageert met de status code ' 200 ' en de volgende optionele informatie:
 
-   | Koptekst veld eindpuntrespons | Type | Vereist | Beschrijving |
+   | Veld koptekst eindpunt reactie | Type | Vereist | Beschrijving |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-formaat** | Geheel getal | Nee | De voorgestelde chunk grootte in bytes |
-   | **Locatie** | Tekenreeks | Ja | De URL-locatie waar de HTTP PATCH-berichten moeten worden verzonden |
+   | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
+   | **Locatie** | Tekenreeks | Ja | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
    ||||
 
-3. Uw logische app maakt en verzendt follow-up HTTP PATCH-berichten - elk met deze informatie:
+3. In uw logische app worden opvolge HTTP-PATCH berichten gemaakt en verzonden, met de volgende gegevens:
 
-   * Een inhoudsbrok op basis **van x-ms-chunk-grootte** of een intern berekende grootte totdat alle inhoud van de **totale x-ms-content-lengte** opeenvolgend wordt geüpload
+   * Een inhouds segment op basis van **x-MS-chunk-grootte** of sommige intern berekende grootte totdat alle inhoud die de totale **x-MS-content-length** bevat, opeenvolgend is geüpload
 
-   * Deze koptekstdetails over de inhoudsbrok die in elk PATCH-bericht wordt verzonden:
+   * Deze header gegevens over het inhouds segment dat is verzonden in elk PATCH bericht:
 
-     | Koptekstveld Logic Apps-aanvragen | Waarde | Type | Beschrijving |
+     | Veld aanvraag header Logic Apps | Waarde | Type | Beschrijving |
      |---------------------------------|-------|------|-------------|
-     | **Inhoudsbereik** | <*Bereik*> | Tekenreeks | Het bytebereik voor de huidige inhoudsbrok, inclusief de beginwaarde, eindwaarde en de totale inhoudsgrootte, bijvoorbeeld: 'bytes=0-1023/10100' |
-     | **Content-Type** | <*inhoudstype*> | Tekenreeks | Het type afgetelde inhoud |
-     | **Inhoudslengte** | <*inhoudslengte*> | Tekenreeks | De lengte van de grootte in bytes van de huidige chunk |
+     | **Content-Range** | <*bereik*> | Tekenreeks | Het bereik van de byte voor het huidige inhouds segment, met inbegrip van de begin waarde, de eind waarde en de totale inhouds grootte, bijvoorbeeld: ' bytes = 0-1023/10100 ' |
+     | **Inhouds type** | <*inhouds type*> | Tekenreeks | Het type van de gesegmenteerde inhoud |
+     | **Content-length** | <*content-length*> | Tekenreeks | De lengte van de grootte in bytes van het huidige segment |
      |||||
 
-4. Na elk PATCH-verzoek bevestigt het eindpunt de ontvangst voor elk stuk door te reageren met de statuscode "200" en de volgende antwoordkoppen:
+4. Na elke PATCH-aanvraag bevestigt het eind punt de ontvangst voor elk segment door te reageren met de status code ' 200 ' en de volgende antwoord headers:
 
-   | Koptekst veld eindpuntrespons | Type | Vereist | Beschrijving |
+   | Veld koptekst eindpunt reactie | Type | Vereist | Beschrijving |
    |--------------------------------|------|----------|-------------|
-   | **Bereik** | Tekenreeks | Ja | Het bytebereik voor inhoud die is ontvangen door het eindpunt, bijvoorbeeld: "bytes=0-1023" |   
-   | **x-ms-chunk-formaat** | Geheel getal | Nee | De voorgestelde chunk grootte in bytes |
+   | **Bereik** | Tekenreeks | Ja | Het bereik van de bytes voor inhoud die door het eind punt is ontvangen, bijvoorbeeld: "bytes = 0-1023" |   
+   | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
    ||||
 
-Deze actiedefinitie toont bijvoorbeeld een HTTP POST-verzoek voor het uploaden van geblokte inhoud naar een eindpunt. In het pand `runTimeConfiguration` van `contentTransfer` de `transferMode` actie `chunked`stelt de accommodatie in op:
+Deze actie definitie toont bijvoorbeeld een HTTP POST-aanvraag voor het uploaden van gesegmenteerde inhoud naar een eind punt. In de eigenschap van `runTimeConfiguration` de actie wordt `contentTransfer` de eigenschap `transferMode` ingesteld `chunked`op:
 
 ```json
 "postAction": {

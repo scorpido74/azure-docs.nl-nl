@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75463612"
 ---
 Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 25.000 gratis maandelijkse e-mails krijgt u toegang tot geavanceerde rapportage en analyse en [alle api's][all APIs] (Web, SMTP, event, parse en meer). Voor informatie over extra diensten die door SendGrid worden aangeboden, gaat u naar de pagina met [SendGrid-oplossingen][SendGrid Solutions].

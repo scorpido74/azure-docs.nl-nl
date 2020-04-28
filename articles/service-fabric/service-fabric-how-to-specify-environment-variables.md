@@ -1,27 +1,27 @@
 ---
-title: Omgevingsvariabelen voor services opgeven
-description: Laat zien hoe u omgevingsvariabelen gebruiken voor toepassingen in Service Fabric
+title: Omgevings variabelen voor services opgeven
+description: Laat zien hoe u omgevings variabelen gebruikt voor toepassingen in Service Fabric
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614312"
 ---
-# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Omgevingsvariabelen voor services in Service Fabric opgeven
+# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Omgevings variabelen opgeven voor services in Service Fabric
 
-In dit artikel ziet u hoe u omgevingsvariabelen opgeeft voor een service of container in Service Fabric.
+In dit artikel leest u hoe u omgevings variabelen kunt opgeven voor een service of container in Service Fabric.
 
-## <a name="procedure-for-specifying-environment-variables-for-services"></a>Procedure voor het specificeren van omgevingsvariabelen voor diensten
+## <a name="procedure-for-specifying-environment-variables-for-services"></a>Procedure voor het opgeven van omgevings variabelen voor services
 
-In dit voorbeeld stelt u een omgevingsvariabele in voor een container. Het artikel gaat ervan uit dat u al een aanvraag- en servicemanifest hebt.
+In dit voor beeld stelt u een omgevings variabele in voor een container. In dit artikel wordt ervan uitgegaan dat u al een toepassings-en service manifest hebt.
 
-1. Open het bestand ServiceManifest.xml.
-2. Voeg `CodePackage` in het element `EnvironmentVariables` een `EnvironmentVariable` nieuw element en een element toe voor elke omgevingsvariabele.
+1. Open het bestand ServiceManifest. XML.
+2. Voeg in `CodePackage` het-element een nieuw `EnvironmentVariables` -element en `EnvironmentVariable` een-element toe voor elke omgevings variabele.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">
@@ -33,9 +33,9 @@ In dit voorbeeld stelt u een omgevingsvariabele in voor een container. Het artik
     </CodePackage>
     ```
 
-   Omgevingsvariabelen kunnen worden overschreven in het toepassingsmanifest.
+   Omgevings variabelen kunnen worden overschreven in het toepassings manifest.
 
-3. Als u de omgevingsvariabelen in het `EnvironmentOverrides` toepassingsmanifest wilt overschrijven, gebruikt u het element.
+3. Als u de omgevings variabelen in het manifest van de toepassing `EnvironmentOverrides` wilt overschrijven, gebruikt u het-element.
 
     ```xml
       <ServiceManifestImport>
@@ -46,9 +46,9 @@ In dit voorbeeld stelt u een omgevingsvariabele in voor een container. Het artik
       </ServiceManifestImport>
     ```
 
-## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>Omgevingsvariabelen dynamisch opgeven met Docker Compose
+## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>Omgevings variabelen dynamisch opgeven met docker opstellen
 
-Service Fabric ondersteunt de mogelijkheid om Docker Compose te [gebruiken voor implementatie.](service-fabric-docker-compose.md#supported-compose-directives) Bestanden opstellen kan omgevingsvariabelen uit de shell bron. Dit gedrag kan worden gebruikt om gewenste omgevingswaarden dynamisch te vervangen:
+Service Fabric ondersteunt de mogelijkheid om [docker samen te gebruiken voor implementatie](service-fabric-docker-compose.md#supported-compose-directives). Het opstellen van bestanden kan variabelen van de bron omgeving van de shell zijn. Dit gedrag kan worden gebruikt om de gewenste omgevings waarden dynamisch te vervangen:
 
 ```yml
 environment:
@@ -56,6 +56,6 @@ environment:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de [toepassingen beheren voor meerdere omgevingen voor](service-fabric-manage-multiple-environment-app-configuration.md)meer informatie over enkele van de kernconcepten die in dit artikel worden besproken.
+Zie de [artikelen toepassingen beheren voor meerdere omgevingen](service-fabric-manage-multiple-environment-app-configuration.md)voor meer informatie over een aantal van de belangrijkste concepten die in dit artikel worden besproken.
 
-Zie [Uw Service Fabric-toepassingen beheren in Visual Studio](service-fabric-manage-application-in-visual-studio.md)voor informatie over andere mogelijkheden voor app-beheer die beschikbaar zijn in Visual Studio.
+Zie [uw service Fabric-toepassingen beheren in Visual Studio](service-fabric-manage-application-in-visual-studio.md)voor informatie over andere mogelijkheden voor het beheren van apps die beschikbaar zijn in Visual Studio.

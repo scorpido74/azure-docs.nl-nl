@@ -1,35 +1,35 @@
 ---
-title: Azure-netwerkbronnen verplaatsen naar een nieuw abonnement of brongroep
-description: Gebruik Azure Resource Manager om virtuele netwerken en andere netwerkbronnen te verplaatsen naar een nieuwe brongroep of -abonnement.
+title: Azure-netwerk bronnen verplaatsen naar een nieuw abonnement of een nieuwe resource groep
+description: Gebruik Azure Resource Manager om virtuele netwerken en andere netwerk bronnen te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485232"
 ---
-# <a name="move-guidance-for-networking-resources"></a>Richtlijnen verplaatsen voor netwerkbronnen
+# <a name="move-guidance-for-networking-resources"></a>Richt lijnen voor netwerk bronnen verplaatsen
 
-In dit artikel wordt beschreven hoe u virtuele netwerken en andere netwerkbronnen verplaatst voor specifieke scenario's.
+In dit artikel wordt beschreven hoe u virtuele netwerken en andere netwerk bronnen verplaatst voor specifieke scenario's.
 
 ## <a name="dependent-resources"></a>Afhankelijke resources
 
-Wanneer u een virtueel netwerk verplaatst, moet u ook de afhankelijke bronnen verplaatsen. Voor VPN-gateways moet u IP-adressen, virtuele netwerkgateways en alle bijbehorende verbindingsbronnen verplaatsen. Lokale netwerkgateways kunnen zich in een andere brongroep bevinden.
+Wanneer u een virtueel netwerk verplaatst, moet u ook de afhankelijke resources verplaatsen. Voor VPN-gateways moet u IP-adressen, virtuele netwerk gateways en alle gekoppelde verbindings bronnen verplaatsen. Lokale netwerk gateways kunnen zich in een andere resource groep bevindt.
 
-Als u een virtuele machine met een netwerkinterfacekaart wilt verplaatsen naar een nieuw abonnement, moet u alle afhankelijke resources verplaatsen. Verplaats het virtuele netwerk voor de netwerkinterfacekaart, alle andere netwerkinterfacekaarten voor het virtuele netwerk en de VPN-gateways.
+Als u een virtuele machine met een netwerk interface kaart wilt verplaatsen naar een nieuw abonnement, moet u alle afhankelijke resources verplaatsen. Verplaats het virtuele netwerk voor de netwerk interface kaart, alle andere netwerk interface kaarten voor het virtuele netwerk en de VPN-gateways.
 
-Zie [Scenario voor het verplaatsen van abonnementen voor](../move-resource-group-and-subscription.md#scenario-for-move-across-subscriptions)meer informatie .
+Zie [scenario voor verplaatsen tussen abonnementen](../move-resource-group-and-subscription.md#scenario-for-move-across-subscriptions)voor meer informatie.
 
-## <a name="peered-virtual-network"></a>Peered virtueel netwerk
+## <a name="peered-virtual-network"></a>Gekoppeld virtueel netwerk
 
-Als u een virtueel netwerk met peered wilt verplaatsen, moet u eerst het virtuele netwerkpeeren uitschakelen. Eenmaal uitgeschakeld, u het virtuele netwerk verplaatsen. Na de verhuizing u het virtuele netwerkpeeren opnieuw inschakelen.
+Als u een gekoppeld virtueel netwerk wilt verplaatsen, moet u eerst de peering van het virtuele netwerk uitschakelen. Als deze is uitgeschakeld, kunt u het virtuele netwerk verplaatsen. Schakel na het verplaatsen de peering van het virtuele netwerk opnieuw in.
 
-## <a name="subnet-links"></a>Subnetkoppelingen
+## <a name="subnet-links"></a>Subnet koppelingen
 
-U een virtueel netwerk niet verplaatsen naar een ander abonnement als het virtuele netwerk een subnet met resourcenavigatiekoppelingen bevat. Als een Azure-cache voor Redis-bron bijvoorbeeld wordt geïmplementeerd in een subnet, heeft dat subnet een koppeling met resourcenavigatie.
+U kunt een virtueel netwerk niet verplaatsen naar een ander abonnement als het virtuele netwerk een subnet met resource navigatie koppelingen bevat. Als er bijvoorbeeld een Azure cache voor de redis-resource wordt geïmplementeerd in een subnet, heeft dat subnet een koppeling naar een resource navigatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Resources verplaatsen naar [een nieuwe resourcegroep of -abonnement](../move-resource-group-and-subscription.md)voor opdrachten om resources te verplaatsen.
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../move-resource-group-and-subscription.md)voor opdrachten voor het verplaatsen van resources.
