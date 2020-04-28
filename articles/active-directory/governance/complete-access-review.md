@@ -1,6 +1,6 @@
 ---
-title: Een toegangsbeoordeling van groepen &-toepassingen voltooien - Azure AD
-description: Meer informatie over het voltooien van een toegangscontrole van groepsleden of toepassingstoegang in Azure Active Directory-toegangsbeoordelingen.
+title: Een toegangs beoordeling van groepen & toepassingen volt ooien-Azure AD
+description: Meer informatie over het volt ooien van een toegangs beoordeling van groeps leden of toegang tot toepassingen in Azure Active Directory toegangs Beoordelingen.
 services: active-directory
 documentationcenter: ''
 author: msaburnley
@@ -17,78 +17,78 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75932547"
 ---
-# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangscontrole van groepen en toepassingen in Azure AD-toegangsbeoordelingen voltooien
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling van groepen en toepassingen in azure AD-toegangs beoordelingen volt ooien
 
-Als beheerder maakt u [een toegangscontrole van groepen of toepassingen](create-access-review.md) en revisoren voeren de toegangscontrole [uit.](perform-access-review.md) In dit artikel wordt beschreven hoe u de resultaten van de toegangscontrole bekijken en de resultaten toepassen.
+Als beheerder [maakt u een toegangs beoordeling van groepen of toepassingen](create-access-review.md) en revisoren die [de toegangs beoordeling uitvoeren](perform-access-review.md). In dit artikel wordt beschreven hoe u de resultaten van de toegangs beoordeling kunt bekijken en de resultaten kunt Toep assen.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure AD Premium P2
-- Globale beheerder, gebruikersbeheerder, beveiligingsbeheerder of beveiligingslezer
+- Globale beheerder, gebruikers beheerder, beveiligings beheerder of beveiligings lezer
 
-Zie [Licentievereisten voor](access-reviews-overview.md#license-requirements)meer informatie.
+Zie [licentie vereisten](access-reviews-overview.md#license-requirements)voor meer informatie.
 
-## <a name="view-an-access-review"></a>Een toegangscontrole weergeven
+## <a name="view-an-access-review"></a>Een toegangs beoordeling weer geven
 
-U de voortgang bijhouden terwijl de revisoren hun beoordelingen voltooien.
+U kunt de voortgang volgen wanneer de revisoren hun beoordelingen hebben voltooid.
 
-1. Meld u aan bij de Azure-portal en open de [pagina Identiteitsbeheer](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Meld u aan bij de Azure Portal en open de [pagina voor identiteits](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)beheer.
 
-1. Klik in het linkermenu op **Toegangsrecensies**.
+1. Klik in het menu links op **toegangs beoordelingen**.
 
-1. Klik in de lijst op een toegangscontrole.
+1. Klik in de lijst op een toegangs beoordeling.
 
-    Als u een reeks toegangsbeoordelingen wilt bekijken, navigeert u naar de toegangscontrole en vindt u aankomende gebeurtenissen in Geplande beoordelingen.
+    Als u een reeks toegangs beoordelingen wilt weer geven, gaat u naar de toegangs beoordeling en vindt u in geplande beoordelingen een aantal toekomstige instanties.
 
-    Op de **overzichtspagina** u de voortgang zien. Er worden geen toegangsrechten gewijzigd in de map totdat de beoordeling is voltooid.
+    Op de pagina **overzicht** ziet u de voortgang. Er worden geen toegangs rechten gewijzigd in de map totdat de controle is voltooid.
 
-    ![Voortgang van access-beoordelingen](./media/complete-access-review/overview-progress.png)
+    ![Voortgang van toegangs beoordeling](./media/complete-access-review/overview-progress.png)
 
-1. Als u een toegangscontrole wilt stoppen voordat deze de geplande einddatum heeft bereikt, klikt u op de knop **Stoppen.**
+1. Als u een toegangs beoordeling wilt stoppen voordat de geplande eind datum is bereikt, klikt u op de knop **stoppen** .
 
-    Wanneer revisoren een beoordeling stoppen, kunnen ze geen antwoorden meer geven. U een beoordeling niet opnieuw starten nadat deze is gestopt.
+    Als u een beoordeling stopt, kunnen revisoren geen reacties meer geven. U kunt een controle niet opnieuw starten nadat deze is gestopt.
 
-1. Als u niet langer geïnteresseerd bent in de toegangscontrole, u deze verwijderen door op **Verwijderen** te klikken.
+1. Als u niet langer geïnteresseerd bent in de toegangs beoordeling, kunt u deze verwijderen door te klikken op de knop **verwijderen** .
 
-## <a name="apply-the-changes"></a>De wijzigingen toepassen
+## <a name="apply-the-changes"></a>De wijzigingen Toep assen
 
-Als **Automatisch toepassen van resultaten** op resource is ingeschakeld en op basis van uw selecties in Instellingen na **voltooiing,** wordt automatisch toepassen uitgevoerd na de einddatum van de beoordeling of wanneer u de controle handmatig stopt.
+Als **automatisch Toep assen van resultaten op resource** is ingeschakeld en op basis van uw selecties tijdens de **voltooiings instellingen**, wordt automatisch Toep assen na de eind datum van de beoordeling of wanneer u de controle hand matig stopt.
 
-Als **De resultaten automatisch toepassen op resource** niet is ingeschakeld voor de controle, klikt u op **Toepassen** om de wijzigingen handmatig toe te passen. Als de toegang van een gebruiker in de beoordeling is geweigerd, verwijdert Azure AD bij **het**toepassen van de toegang van een gebruiker zijn lidmaatschap of toepassingstoewijzing.
+Als **automatisch Toep assen van resultaten op resource** niet is ingeschakeld voor de beoordeling, klikt u op **Toep assen** om de wijzigingen hand matig toe te passen. Als de toegang van een gebruiker bij de controle is geweigerd, worden de lidmaatschaps-of toepassings toewijzing van Azure AD verwijderd als u op **Toep assen**klikt.
 
-![Wijzigingen in toegangscontrole toepassen](./media/complete-access-review/apply-changes.png)
+![Wijzigingen in toegangs beoordeling Toep assen](./media/complete-access-review/apply-changes.png)
 
-De status van de beoordeling verandert van **Voltooid** via tussenliggende staten zoals **Toepassen** en ten slotte naar **status Resultaat toegepast**. U mag verwachten dat geweigerde gebruikers binnen enkele minuten worden verwijderd uit het groepslidmaatschap of de toewijzing van toepassingen.
+De status van de beoordeling wordt gewijzigd van **voltooid** met behulp van tussenliggende statussen, zoals **Toep assen** en tot slot op status **toegepast resultaat**. U wordt gewend om geweigerde gebruikers te zien, indien aanwezig, die in een paar minuten worden verwijderd uit het groepslid maatschap of de toepassings toewijzing.
 
-Een geconfigureerde automatische toepassing sherziet er in of het selecteren **van Toepassen** heeft geen effect op een groep die afkomstig is uit een on-premises directory of een dynamische groep. Als u een groep wilt wijzigen die on-premises is ontstaan, downloadt u de resultaten en past u deze wijzigingen toe op de weergave van de groep in die map.
+Een geconfigureerde automatische beoordeling of het selecteren van **Apply** heeft geen invloed op een groep die afkomstig is uit een on-premises Directory of een dynamische groep. Als u een groep wilt wijzigen die on-premises is, downloadt u de resultaten en past u deze wijzigingen toe op de weer gave van de groep in die map.
 
 ## <a name="retrieve-the-results"></a>De resultaten ophalen
 
-Als u de resultaten voor een eenmalige toegangscontrole wilt bekijken, klikt u op de pagina **Resultaten.** Als u alleen de toegang van een gebruiker wilt weergeven, typt u in het vak Zoeken de weergavenaam of gebruikersnaam van een gebruiker wiens toegang is beoordeeld.
+Als u de resultaten voor een eenmalige toegangs beoordeling wilt weer geven, klikt u op de pagina **resultaten** . Als u alleen de toegang van een gebruiker wilt weer geven, typt u in het zoekvak de weergave naam of user principal name van een gebruiker van wie de toegang is gecontroleerd.
 
-![Resultaten ophalen voor een toegangscontrole](./media/complete-access-review/retrieve-results.png)
+![Resultaten ophalen voor een toegangs beoordeling](./media/complete-access-review/retrieve-results.png)
 
-Als u de voortgang wilt weergeven van een actieve toegangscontrole die wordt herhaald, klikt u op de pagina **Resultaten.**
+Als u de voortgang van een terugkerende actieve toegangs beoordeling wilt weer geven, klikt u op de pagina **resultaten** .
 
-Als u de resultaten wilt weergeven van een voltooide instantie van een terugkerende toegangscontrole, klikt u op **Geschiedenis controleren**en selecteert u de specifieke instantie in de lijst met voltooide toegangsrevisie-instanties, op basis van de begin- en einddatum van de instantie. De resultaten van deze instantie zijn te verkrijgen op de pagina **Resultaten.**
+Als u de resultaten wilt weer geven van een voltooid exemplaar van een terugkerende toegangs beoordeling, klikt u op **controle geschiedenis**en selecteert u vervolgens de specifieke instantie in de lijst met voltooide instanties voor toegangs controle, op basis van de begin-en eind datum van het exemplaar. U kunt de resultaten van deze instantie verkrijgen op de pagina met **resultaten** .
 
-Als u alle resultaten van een toegangscontrole wilt ophalen, klikt u op de knop **Downloaden.** Het resulterende CSV-bestand kan worden weergegeven in Excel of in andere programma's die utf-8 gecodeerde CSV-bestanden openen.
+Als u alle resultaten van een toegangs beoordeling wilt ophalen, klikt u op de knop **downloaden** . Het resulterende CSV-bestand kan worden weer gegeven in Excel of in andere Program ma's waarmee CSV-bestanden met UTF-8-code ring worden geopend.
 
-## <a name="remove-users-from-an-access-review"></a>Gebruikers verwijderen uit een toegangscontrole
+## <a name="remove-users-from-an-access-review"></a>Gebruikers verwijderen uit een toegangs beoordeling
 
- Standaard geldt dat een verwijderde gebruiker gedurende dertig dagen in Azure AD aanwezig blijft met de status Verwijderd. In deze periode kan de gebruiker eventueel door een beheerder worden teruggezet.  Na dertig dagen wordt die gebruiker definitief verwijderd.  Bovendien kan een globale beheerder met behulp van de Azure Active Directory-portal [een onlangs verwijderde gebruiker](../fundamentals/active-directory-users-restore.md) expliciet permanent verwijderen voordat die periode is bereikt.  Als een gebruiker definitief is verwijderd, worden gegevens over die gebruiker vervolgens uit actieve toegangsbeoordelingen verwijderd.  Controle-informatie over verwijderde gebruikers blijft in het auditlogboek aanwezig.
+ Standaard geldt dat een verwijderde gebruiker gedurende dertig dagen in Azure AD aanwezig blijft met de status Verwijderd. In deze periode kan de gebruiker eventueel door een beheerder worden teruggezet.  Na dertig dagen wordt die gebruiker definitief verwijderd.  Daarnaast kan een globale beheerder met behulp van de Azure Active Directory-Portal expliciet [een onlangs verwijderde gebruiker permanent verwijderen](../fundamentals/active-directory-users-restore.md) voordat die periode wordt bereikt.  Als een gebruiker definitief is verwijderd, worden gegevens over die gebruiker vervolgens uit actieve toegangsbeoordelingen verwijderd.  Controle-informatie over verwijderde gebruikers blijft in het auditlogboek aanwezig.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruikerstoegang beheren met Azure AD-toegangsbeoordelingen](manage-user-access-with-access-reviews.md)
 - [Gasttoegang beheren met Azure AD-toegangsbeoordelingen](manage-guest-access-with-access-reviews.md)
-- [Een toegangsbeoordeling van groepen of toepassingen maken](create-access-review.md)
+- [Een toegangs beoordeling van groepen of toepassingen maken](create-access-review.md)
 - [Een toegangsbeoordeling maken van gebruikers met een Azure AD-beheerderrol](../privileged-identity-management/pim-how-to-start-security-review.md)

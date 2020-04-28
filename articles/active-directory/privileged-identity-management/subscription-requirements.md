@@ -1,6 +1,6 @@
 ---
-title: Licentievereisten voor het gebruik van privileged identity management - Azure Active Directory | Microsoft Documenten
-description: Beschrijft de licentievereisten voor het gebruik van Azure AD Privileged Identity Management (PIM).
+title: Licentie vereisten voor het gebruik van Privileged Identity Management-Azure Active Directory | Microsoft Docs
+description: Beschrijft de licentie vereisten voor het gebruik van Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -18,15 +18,15 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75932326"
 ---
-# <a name="license-requirements-to-use-privileged-identity-management"></a>Licentievereisten voor het gebruik van Privileged Identity Management
+# <a name="license-requirements-to-use-privileged-identity-management"></a>Licentie vereisten voor het gebruik van Privileged Identity Management
 
-Als u Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wilt gebruiken, moet een map een geldige licentie hebben. Bovendien moeten licenties worden toegewezen aan de beheerders en relevante gebruikers. In dit artikel worden de licentievereisten beschreven voor het gebruik van Privileged Identity Management.
+Als u Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wilt gebruiken, moet een directory een geldige licentie hebben. Daarnaast moeten de licenties aan de beheerders en relevante gebruikers worden toegewezen. In dit artikel worden de licentie vereisten beschreven voor het gebruik van Privileged Identity Management.
 
 ## <a name="valid-licenses"></a>Geldige licenties
 
@@ -34,42 +34,42 @@ Als u Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wil
 
 ## <a name="how-many-licenses-must-you-have"></a>Hoeveel licenties moet u hebben?
 
-Controleer of uw directory minstens evenveel Azure AD Premium P2-licenties heeft als werknemers die de volgende taken uitvoeren:
+Zorg ervoor dat uw directory ten minste evenveel Azure AD Premium P2-licenties heeft wanneer u werk nemers hebt die de volgende taken uitvoeren:
 
 - Gebruikers die in aanmerking komen voor Azure AD-rollen die worden beheerd met PIM
-- Gebruikers kunnen activeringsaanvragen goedkeuren of weigeren in PIM
-- Gebruikers die zijn toegewezen aan een Azure-bronrol met just-in-time of directe (op tijd gebaseerde) toewijzingen  
-- Gebruikers die zijn toegewezen aan een toegangscontrole
-- Gebruikers die toegangsbeoordelingen uitvoeren
+- Gebruikers kunnen activerings aanvragen goed keuren of afwijzen in PIM
+- Gebruikers die zijn toegewezen aan een Azure-resource functie met Just-in-time-of directe (op tijd gebaseerde) toewijzingen  
+- Gebruikers die zijn toegewezen aan een toegangs beoordeling
+- Gebruikers die toegangs beoordelingen uitvoeren
 
-Azure AD Premium **P2-licenties** zijn niet vereist voor de volgende taken:
+Azure AD Premium P2-licenties zijn **niet** vereist voor de volgende taken:
 
-- Er zijn geen licenties vereist voor gebruikers met de rollen Globale beheerder of bevoorrechte rolbeheerder die PIM instellen, beleid configureren, waarschuwingen ontvangen en toegangsbeoordelingen instellen.
+- Er zijn geen licenties vereist voor gebruikers met de beheerders rollen globale beheerder of bevoorrechte rol die PIM instellen, beleids regels configureren, waarschuwingen ontvangen en toegangs beoordelingen instellen.
 
-Zie [Licenties toewijzen of verwijderen met de Azure Active Directory-portal](../fundamentals/license-users-groups.md)voor meer informatie over licenties.
+Zie [licenties toewijzen of verwijderen met de Azure Active Directory-Portal](../fundamentals/license-users-groups.md)voor meer informatie over licenties.
 
-## <a name="example-license-scenarios"></a>Voorbeeldlicentiescenario's
+## <a name="example-license-scenarios"></a>Voor beeld van licentie scenario's
 
-Hier volgen enkele voorbeeldlicentiescenario's waarmee u bepalen hoeveel licenties u moet hebben.
+Hier volgen enkele voor beelden van licentie scenario's die u helpen bij het bepalen van het aantal licenties dat u nodig hebt.
 
 | Scenario | Berekening | Aantal licenties |
 | --- | --- | --- |
-| Woodgrove Bank heeft 10 beheerders voor verschillende afdelingen en 2 Globale Beheerders die PIM configureren en beheren. Ze maken vijf beheerders in aanmerking. | Vijf licenties voor de beheerders die in aanmerking komen | 5 |
-| Graphic Design Institute heeft 25 beheerders waarvan er 14 worden beheerd via PIM. Rolactivering vereist goedkeuring en er zijn drie verschillende gebruikers in de organisatie die activeringen kunnen goedkeuren. | 14 licenties voor de in aanmerking komende rollen + drie fiatteurs | 17 |
-| Contoso heeft 50 beheerders waarvan er 42 via PIM worden beheerd. Rolactivering vereist goedkeuring en er zijn vijf verschillende gebruikers in de organisatie die activeringen kunnen goedkeuren. Contoso doet ook maandelijkse beoordelingen van gebruikers die zijn toegewezen aan beheerdersrollen en revisoren zijn de beheerders van de gebruikers waarvan er zes niet in beheerdersrollen zijn die door PIM worden beheerd. | 42 licenties voor de in aanmerking komende rollen + vijf fiatteurs + zes revisoren | 53 |
+| Woodgrove Bank heeft 10 beheerders voor verschillende afdelingen en twee globale beheerders die PIM configureren en beheren. Ze maken vijf beheerders in aanmerking. | Vijf licenties voor de beheerders die in aanmerking komen | 5 |
+| Grafisch ontwerp Institute heeft 25 beheerders waarvan 14 wordt beheerd via PIM. Activering van rol vereist goed keuring en er zijn drie verschillende gebruikers in de organisatie die activeringen kunnen goed keuren. | 14 licenties voor de in aanmerking komende rollen + drie goed keurders | 17 |
+| Contoso heeft 50 beheerders van welke 42 via PIM worden beheerd. Activering van rol vereist goed keuring en er zijn vijf verschillende gebruikers in de organisatie die activeringen kunnen goed keuren. Contoso houdt ook maandelijkse beoordelingen bij van gebruikers die zijn toegewezen aan beheerders rollen en controleurs zijn de managers van de gebruikers waarvan zes geen beheerder rollen hebben die worden beheerd door PIM. | 42 licenties voor de in aanmerking komende rollen + vijf goed keurders + zes revisoren | 53 |
 
-## <a name="what-happens-when-a-license-expires"></a>Wat gebeurt er als een licentie verloopt?
+## <a name="what-happens-when-a-license-expires"></a>Wat gebeurt er wanneer een licentie verloopt?
 
-Als een Azure AD Premium P2- of EMS E5- of proeflicentie verloopt, zijn privileged Identity Management-functies niet langer beschikbaar in uw directory:
+Als een Azure AD Premium P2, EMS E5 of een proef licentie verloopt, zijn Privileged Identity Management-functies niet meer beschikbaar in uw Directory:
 
-- Permanente roltoewijzingen voor Azure AD-rollen worden niet beïnvloed.
-- De privileged identity management-service in de Azure-portal en de Graph API-cmdlets en PowerShell-interfaces van Privileged Identity Management zijn niet langer beschikbaar voor gebruikers om bevoorrechte rollen te activeren, bevoorrechte toegang te beheren of uit te voeren toegang tot beoordelingen van bevoorrechte rollen.
-- In aanmerking komende roltoewijzingen van Azure AD-rollen worden verwijderd, omdat gebruikers geen bevoorrechte rollen meer kunnen activeren.
-- Alle doorlopende toegangsbeoordelingen van Azure AD-rollen worden beëindigd en de configuratie-instellingen voor privileged identity management worden verwijderd.
-- Privileged Identity Management stuurt geen e-mails meer over wijzigingen in roltoewijzingen.
+- Permanente roltoewijzingen aan Azure AD-rollen worden niet beïnvloed.
+- De Privileged Identity Management-service in de Azure Portal en de Graph API-cmdlets en Power shell-interfaces van Privileged Identity Management zijn niet langer beschikbaar voor gebruikers om geprivilegieerde rollen te activeren, bevoorrechte toegang te beheren of toegangs beoordelingen van geprivilegieerde rollen uit te voeren.
+- De in aanmerking komende roltoewijzingen van Azure AD-rollen worden verwijderd omdat gebruikers geen bevoegde rollen meer kunnen activeren.
+- Alle doorlopende toegangs beoordelingen van Azure AD-rollen worden beëindigd en Privileged Identity Management configuratie-instellingen worden verwijderd.
+- Privileged Identity Management verzendt geen e-mail berichten meer over roltoewijzings wijzigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Privileged Identity Management implementeren](pim-deployment-plan.md)
 - [Aan de slag met Privileged Identity Management](pim-getting-started.md)
-- [Rollen die u niet beheren in Privileged Identity Management](pim-roles.md)
+- [Rollen die u niet kunt beheren in Privileged Identity Management](pim-roles.md)

@@ -1,6 +1,6 @@
 ---
-title: VM-problemen opnieuw opstarten of opnieuw wijzigen in Azure | Microsoft Documenten
-description: Problemen met de implementatie van Resource Manager oplossen bij het opnieuw opstarten of opnieuw wijzigen van een bestaande virtuele machine in Azure
+title: VM wordt opnieuw gestart of het formaat van problemen in azure wordt gewijzigd | Microsoft Docs
+description: Problemen met de implementatie van Resource Manager oplossen met het opnieuw opstarten of wijzigen van het formaat van een bestaande virtuele machine in azure
 services: virtual-machines
 documentationcenter: ''
 author: Deland-Han
@@ -14,53 +14,53 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75965609"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Probleemoplossing voor implementatieproblemen bij het opnieuw opstarten van een bestaande virtuele Windows-machine in Azure of bij het wijzigen van het formaat van die VM
-Wanneer u een gestopte Azure Virtual Machine (VM) probeert te starten of het formaat van een bestaande Azure-vm wilt wijzigen, is de algemene fout die u tegenkomt een toewijzingsfout. Deze fout ontstaat wanneer het cluster of de regio geen resources beschikbaar heeft of de gevraagde VM-grootte niet kan ondersteunen.
+Wanneer u probeert een gestopt Azure virtual machine (VM) te starten of de grootte van een bestaande Azure-VM te wijzigen, treedt er een toewijzings fout op. Deze fout treedt op wanneer het cluster of de regio geen resources beschikbaar heeft of de aangevraagde VM-grootte niet kan ondersteunen.
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="collect-activity-logs"></a>Activiteitslogboeken verzamelen
-Als u problemen met oplossen wilt oplossen, verzamelt u de activiteitslogboeken om de fout te identificeren die aan het probleem is gekoppeld. De volgende links bevatten gedetailleerde informatie over het proces:
+## <a name="collect-activity-logs"></a>Activiteiten logboeken verzamelen
+Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logboeken om de fout te identificeren die aan het probleem is gekoppeld. De volgende koppelingen bevatten gedetailleerde informatie over het proces:
 
 [Implementatiebewerkingen bekijken](../../azure-resource-manager/templates/deployment-history.md)
 
-[Activiteitslogboeken weergeven om Azure-resources te beheren](../../resource-group-audit.md)
+[Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Probleem: Er is een fout opgetreden bij het opstarten van een gestopte VM
-U probeert een gestopte VM te starten, maar krijgt een toewijzingsfout.
+U probeert een gestopt VM te starten, maar een toewijzings fout op te halen.
 
 ### <a name="cause"></a>Oorzaak
-Het verzoek om de gestopte VM te starten, moet worden geprobeerd bij het oorspronkelijke cluster dat de cloudservice host. Het cluster heeft echter geen vrije ruimte om aan de aanvraag te voldoen.
+De aanvraag voor het starten van de gestopte VM moet worden geprobeerd op het oorspronkelijke cluster waarop de Cloud service wordt gehost. Het cluster beschikt echter niet over beschik bare ruimte voor het uitvoeren van de aanvraag.
 
 ### <a name="resolution"></a>Oplossing
-* Stop alle VM's in de beschikbaarheidsset en start elke vm opnieuw.
+* Stop alle virtuele machines in de beschikbaarheidsset en start elke VM opnieuw op.
   
-  1. Klik **op Resourcegroepen** > *uw resourcegroep* > **Resources** > *uw beschikbaarheidsset* > **Virtuele machines** > *uw virtuele machine* > **Stop**.
-  2. Nadat alle VM's zijn gestopt, selecteert u elk van de gestopte VM's en klikt u op Start.
-* Probeer de aanvraag voor opnieuw starten op een later tijdstip opnieuw.
+  1. Klik op **resource groepen** > *uw resource groep* > **resources** > *uw beschikbaarheidsset* > **virtual machines** > *de virtuele machine* > wordt**gestopt**.
+  2. Nadat alle virtuele machines zijn gestopt, selecteert u elk van de gestopte Vm's en klikt u op starten.
+* Probeer de aanvraag op een later tijdstip opnieuw te starten.
 
 ## <a name="issue-error-when-resizing-an-existing-vm"></a>Probleem: Er is een fout opgetreden bij het wijzigen van het formaat van een bestaande VM
-U probeert het formaat van een bestaande virtuele machine te wijzigen, maar krijgt een toewijzingsfout.
+U probeert het formaat van een bestaande virtuele machine te wijzigen, maar een toewijzings fout op te halen.
 
 ### <a name="cause"></a>Oorzaak
-Het verzoek om het formaat van de VM te wijzigen, moet worden geprobeerd bij het oorspronkelijke cluster dat de cloudservice host. Het cluster ondersteunt echter niet de gevraagde VM-grootte.
+De aanvraag voor het wijzigen van de grootte van de virtuele machine moet worden geprobeerd op het oorspronkelijke cluster dat als host fungeert voor de Cloud service. Het cluster biedt echter geen ondersteuning voor de aangevraagde VM-grootte.
 
 ### <a name="resolution"></a>Oplossing
-* Probeer de aanvraag opnieuw met een kleiner VM-formaat.
-* Als de grootte van de gevraagde vm niet kan worden gewijzigd:
+* Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
+* Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
   
-  1. Stop alle VM's in de beschikbaarheidsset.
+  1. Stop alle virtuele machines in de beschikbaarheidsset.
      
-     * Klik **op Resourcegroepen** > *uw resourcegroep* > **Resources** > *uw beschikbaarheidsset* > **Virtuele machines** > *uw virtuele machine* > **Stop**.
-  2. Nadat alle VM's stoppen, wijzigt u het formaat van de gewenste VM naar een groter formaat.
-  3. Selecteer de grootte van de virtuele machine en klik op **Start**en start vervolgens elk van de gestopte VM's.
+     * Klik op **resource groepen** > *uw resource groep* > **resources** > *uw beschikbaarheidsset* > **virtual machines** > *de virtuele machine* > wordt**gestopt**.
+  2. Nadat alle virtuele machines zijn gestopt, wijzigt u het formaat van de gewenste VM in een grotere grootte.
+  3. Selecteer de virtuele machine waarvan het formaat is gewijzigd en klik op **Start**en start vervolgens elk van de gestopte vm's.
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u problemen ondervindt bij het maken van een nieuwe Windows-vm in Azure, raadpleegt u [Problemen met implementatie oplossen bij het maken van een nieuwe virtuele Windows-machine in Azure.](../windows/troubleshoot-deployment-new-vm.md)
+Als u problemen ondervindt bij het maken van een nieuwe Windows-VM in azure, raadpleegt u [implementatie problemen oplossen met het maken van een nieuwe virtuele Windows-machine in azure](../windows/troubleshoot-deployment-new-vm.md).
 

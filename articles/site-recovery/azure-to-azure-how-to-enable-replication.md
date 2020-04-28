@@ -1,60 +1,60 @@
 ---
-title: Replicatie configureren voor Azure VM's in Azure Site Recovery
-description: Meer informatie over het configureren van replicatie naar een ander gebied voor Azure VM's met Siteherstel.
+title: Replicatie configureren voor virtuele Azure-machines in Azure Site Recovery
+description: Meer informatie over het configureren van replicatie naar een andere regio voor Azure-Vm's met behulp van Site Recovery.
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
 ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973693"
 ---
-# <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM's repliceren naar een andere Azure-regio
+# <a name="replicate-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines repliceren naar een andere Azure-regio
 
 
-In dit artikel wordt beschreven hoe u replicatie van Azure VM's inschakelen, van de ene Azure-regio naar de andere.
+In dit artikel wordt beschreven hoe u de replicatie van virtuele Azure-machines van de ene Azure-regio naar de andere kunt inschakelen.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u hebt voorbereid op de implementatie van siteherstel, zoals beschreven in de [zelfstudie Azure naar Azure voor noodherstel.](azure-to-azure-tutorial-enable-replication.md)
+In dit artikel wordt ervan uitgegaan dat u de implementatie van Site Recovery hebt voor bereid, zoals beschreven in de [zelf studie Azure voor nood herstel](azure-to-azure-tutorial-enable-replication.md)voor Azure.
 
-Er moeten voorwaarden zijn en u moet een kluis van Recovery Services hebben gemaakt.
+Vereisten moeten aanwezig zijn en u moet een Recovery Services kluis hebben gemaakt.
 
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
-Schakel replicatie in. Deze procedure gaat ervan uit dat de primaire Azure-regio Oost-Azië is en de secundaire regio Zuidoost-Azië.
+Schakel replicatie in. Bij deze procedure wordt ervan uitgegaan dat de primaire Azure-regio is Azië-oost en dat de secundaire regio Zuid Azië-oost is.
 
-1. Klik in de kluis op **+Repliceren**.
-2. Let op de volgende velden:
-   - **Bron:** Het punt van oorsprong van de VM's, dat in dit geval **Azure**is.
-   - **Bronlocatie:** het Azure-gebied van waaruit u uw VM's wilt beschermen. Ter illustratie is de bronlocatie 'Oost-Azië'
-   - **Implementatiemodel:** Azure-implementatiemodel van de bronmachines.
-   - **Bronabonnement**: Het abonnement waartoe uw bron-VM's behoren. Dit kan elk abonnement zijn binnen dezelfde Azure Active Directory-tenant waar uw Recovery Services-kluis zich bevindt.
-   - **Resourcegroep:** de resourcegroep waartoe uw bronvirtuele machines behoren. Alle VM's onder de geselecteerde resourcegroep worden in de volgende stap voor bescherming weergegeven.
+1. Klik in de kluis op **+ repliceren**.
+2. Houd rekening met de volgende velden:
+   - **Bron**: het herkomst punt van de virtuele machines, in dit geval **Azure**.
+   - **Bron locatie**: de Azure-regio van waaruit u uw vm's wilt beveiligen. Voor deze afbeelding is de bron locatie Azië-oost
+   - **Implementatie model**: Azure-implementatie model van de bron machines.
+   - **Bron abonnement**: het abonnement waartoe de bron-vm's behoren. Dit kan elk abonnement zijn binnen dezelfde Azure Active Directory-tenant waar uw Recovery Services-kluis zich bevindt.
+   - **Resource groep**: de resource groep waartoe de virtuele bron machine behoort. Alle virtuele machines onder de geselecteerde resource groep worden in de volgende stap weer gegeven voor beveiliging.
 
      ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-3. Klik in **Virtuele machines > Virtuele machines**selecteren, klik en selecteer elke vm die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Klik vervolgens op **OK**.
+3. Klik in **Virtual Machines > virtuele machines selecteren**op elke virtuele machine die u wilt repliceren en selecteer deze. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Klik vervolgens op **OK**.
     ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
-4. In **Instellingen**u optioneel doelsite-instellingen configureren:
+4. In **instellingen**kunt u de instellingen van de doel site eventueel configureren:
 
-   - **Doellocatie:** de locatie waar uw brongegevens van virtuele machine worden gerepliceerd. Afhankelijk van de locatie van uw geselecteerde machines biedt Site Recovery u de lijst met geschikte doelregio's. We raden u aan de doellocatie hetzelfde te houden als de kluislocatie van Recovery Services.
+   - **Doel locatie**: de locatie waar de gegevens van de virtuele bron machine worden gerepliceerd. Afhankelijk van de locatie van de geselecteerde machines, geeft Site Recovery u de lijst met geschikte doel regio's. U wordt aangeraden de doel locatie hetzelfde te laten als de locatie van de Recovery Services kluis.
    - **Doelabonnement**: het doelabonnement dat wordt gebruikt voor herstel na noodgevallen. Standaard is het doelabonnement niet hetzelfde als het bronabonnement.
-   - **Doelgroepgroep**: de resourcegroep waartoe al uw gerepliceerde virtuele machines behoren.
-       - Siteherstel maakt standaard een nieuwe resourcegroep in het doelgebied met een 'asr'-achtervoegsel in de naam.
-       - Als de resourcegroep die door Siteherstel is gemaakt, al bestaat, wordt deze opnieuw gebruikt.
-       - U de instellingen van de brongroep aanpassen.
-       - De locatie van de doelgroepkan elke Azure-regio zijn, behalve het gebied waarin de bron-VM's worden gehost.
-   - **Virtueel netwerk target:** Siterecovery maakt standaard een nieuw virtueel netwerk in het doelgebied met een 'asr'-achtervoegsel in de naam. Dit wordt toegewezen aan uw bronnetwerk en wordt gebruikt voor toekomstige bescherming. [Meer informatie](site-recovery-network-mapping-azure-to-azure.md) over netwerktoewijzing.
-   - **Doelopslagaccounts (bron-VM maakt geen beheerde schijven)**: Site recovery maakt standaard een nieuw doelopslagaccount dat uw bron-VM-opslagconfiguratie nabootst. In het geval dat het opslagaccount al bestaat, wordt het opnieuw gebruikt.
-   - **Replicabeheerde schijven (bron-VM maakt gebruik van beheerde schijven)**: Site Recovery maakt nieuwe replicabeheerde schijven in het doelgebied om de beheerde schijven van de bron-VM te spiegelen met hetzelfde opslagtype (Standaard of premium) als de beheerde schijf van de bron-VM.
-   - **Cacheopslagaccounts:** Siteherstel vereist extra opslagaccount genaamd cacheopslag in het brongebied. Alle wijzigingen die op de bron-VM's plaatsvinden, worden bijgehouden en naar het opslagaccount in de cache verzonden voordat deze worden gerepliceerd naar de doellocatie. Dit opslagaccount moet standaard zijn.
-   - **Doelbeschikbaarheidssets:** Siteherstel maakt standaard een nieuwe beschikbaarheiddie is ingesteld in het doelgebied met het 'asr'-achtervoegsel in de naam, voor VM's die deel uitmaken van een beschikbaarheidsset in het brongebied. Als de beschikbaarheidsset die door Site Recovery is gemaakt, al bestaat, wordt deze opnieuw gebruikt.
+   - **Doel resource groep**: de resource groep waarvan al uw gerepliceerde virtuele machines deel uitmaken.
+       - Standaard Site Recovery maakt een nieuwe resource groep in de doel regio met het achtervoegsel ' ASR ' in de naam.
+       - Als de resource groep die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
+       - U kunt de instellingen voor de resource groep aanpassen.
+       - De locatie van de doel resource groep kan een wille keurige Azure-regio zijn, met uitzonde ring van de regio waarin de bron-Vm's worden gehost.
+   - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio met het achtervoegsel ' ASR ' in de naam. Deze is toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](site-recovery-network-mapping-azure-to-azure.md) over netwerk toewijzing.
+   - **Doel opslag accounts (bron-VM gebruikt geen beheerde schijven)**: standaard maakt site Recovery een nieuw doel-opslag account mimicking de opslag configuratie van de bron-VM. Als het opslag account al bestaat, wordt dit opnieuw gebruikt.
+   - **Replica-Managed disks (bron-VM maakt gebruik van beheerde schijven)**: site Recovery maakt nieuwe replica-beheerde schijven in de doel regio om de beheerde schijven van de bron-VM te spie gelen met hetzelfde opslag type (Standard of Premium) als de beheerde schijf van de bron-VM.
+   - **Cache opslag accounts**: site Recovery hebt extra opslag account met de naam cache opslag in de bron regio nodig. Alle wijzigingen die zich voordoen op de bron-Vm's, worden bijgehouden en verzonden naar het cache-opslag account voordat deze naar de doel locatie worden gerepliceerd. Dit opslag account moet standaard zijn.
+   - **Doel beschikbaarheids sets**: standaard maakt site Recovery een nieuwe beschikbaarheidsset in de doel regio met het achtervoegsel ' ASR ' in de naam, voor virtuele machines die deel uitmaken van een beschikbaarheidsset in de bron regio. Als de beschikbaarheidsset die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
    - **Doelbeschikbaarheidszones**: in Site Recovery wordt standaard hetzelfde zonenummer toegewezen als de bronregio in de doelregio, als de doelregio ondersteuning biedt voor beschikbaarheidszones.
 
      Als de doelregio geen ondersteuning biedt voor beschikbaarheidszones, worden de doel-VM's standaard geconfigureerd als enkele exemplaren. Indien vereist, kunt u dergelijke VM's configureren als onderdeel van beschikbaarheidssets in de doelregio door op Aanpassen te klikken.
@@ -63,61 +63,61 @@ Schakel replicatie in. Deze procedure gaat ervan uit dat de primaire Azure-regio
      >Nadat u replicatie hebt ingeschakeld, kunt u het type beschikbaarheid - enkel exemplaar, beschikbaarheidsset of beschikbaarheidszone - niet meer wijzigen. Als u het type beschikbaarheid wilt wijzigen, moet u replicatie uitschakelen en opnieuw inschakelen.
      >
 
-   - **Replicatiebeleid:** hiermee worden de instellingen gedefinieerd voor de bewaargeschiedenis van herstelpunten en de consistente momentopnamefrequentie voor apps. Azure Site Recovery maakt standaard een nieuw replicatiebeleid met standaardinstellingen van '24 uur' voor herstelpuntbehoud en '4 uur' voor de consistente momentopnamefrequentie van apps.
+   - **Replicatie beleid**: Hiermee worden de instellingen voor de Bewaar geschiedenis voor herstel punten en de frequentie van consistente moment opnamen voor apps gedefinieerd. Azure Site Recovery maakt standaard een nieuw replicatie beleid met de standaard instellingen van 24 uur voor retentie van herstel punten en 4 uur voor de frequentie van de consistente moment opname van de app.
 
      ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ### <a name="enable-replication-for-added-disks"></a>Replicatie inschakelen voor toegevoegde schijven
 
-Als u schijven toevoegt aan een Azure VM waarvoor replicatie is ingeschakeld, gebeurt het volgende:
--   Replicatiestatus voor de VM toont een waarschuwing en een notitie geeft aan dat een of meer schijven beschikbaar zijn voor bescherming.
--   Als u de beveiliging van de toegevoegde schijven inschakelt, verdwijnt de waarschuwing na de eerste replicatie van de schijf.
--   Als u ervoor kiest om replicatie voor de schijf niet in te schakelen, u ervoor kiezen de waarschuwing te verwijderen.
+Als u schijven toevoegt aan een virtuele machine van Azure waarvoor replicatie is ingeschakeld, gebeurt het volgende:
+-   Bij de replicatie status voor de VM wordt een waarschuwing weer gegeven en een opmerking met de melding dat er een of meer schijven beschikbaar zijn voor beveiliging.
+-   Als u beveiliging inschakelt voor de toegevoegde schijven, verdwijnt de waarschuwing na de initiële replicatie van de schijf.
+-   Als u ervoor kiest geen replicatie voor de schijf in te scha kelen, kunt u de waarschuwing negeren.
 
 
     ![Nieuwe schijf toegevoegd](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
-Ga als volgt te werk om replicatie voor een toegevoegde schijf in te schakelen:
+Ga als volgt te werk om replicatie in te scha kelen voor een toegevoegde schijf:
 
-1.  Klik in de kluis > **gerepliceerde items**op de vm waaraan u de schijf hebt toegevoegd.
-2.  Klik op **Schijven**en selecteer vervolgens de gegevensschijf waarvoor u replicatie wilt inschakelen (deze schijven hebben een **niet-beveiligde** status).
-3.  Klik **in Schijfgegevens**op **Replicatie inschakelen**.
+1.  Klik in de kluis > **gerepliceerde items**op de virtuele machine waaraan u de schijf hebt toegevoegd.
+2.  Klik op **schijven**en selecteer vervolgens de gegevens schijf waarvoor u replicatie wilt inschakelen (deze schijven hebben een niet- **beveiligde** status).
+3.  Klik in **schijf Details**op **replicatie inschakelen**.
 
     ![Replicatie inschakelen voor toegevoegde schijf](./media/azure-to-azure-how-to-enable-replication/enabled-added.png)
 
-Nadat de replicatietaak inschakelen is uitgevoerd en de eerste replicatie is voltooid, wordt de waarschuwing voor de replicatiestatus voor het schijfprobleem verwijderd.
+Nadat de taak voor het inschakelen van de replicatie is uitgevoerd en de initiële replicatie is voltooid, wordt de replicatie status waarschuwing voor het probleem van de schijf verwijderd.
 
 
 
-## <a name="customize-target-resources"></a>Doelbronnen aanpassen
+## <a name="customize-target-resources"></a>Doel resources aanpassen
 
-U de standaarddoelinstellingen wijzigen die door Site Recovery worden gebruikt.
+U kunt de standaard doel instellingen wijzigen die door Site Recovery worden gebruikt.
 
-1. Klik **op Aanpassen:** naast 'Doelabonnement' om het standaarddoelabonnement te wijzigen. Selecteer het abonnement in de lijst met alle abonnementen die beschikbaar zijn in dezelfde Azure Active Directory -tenant (AAD).
+1. Klik op **aanpassen:** naast het doel abonnement om het standaard doel abonnement te wijzigen. Selecteer het abonnement in de lijst met alle abonnementen die beschikbaar zijn in dezelfde Azure Active Directory (AAD)-Tenant.
 
-2. Klik **op Aanpassen:** om de standaardinstellingen te wijzigen:
-    - Selecteer **in doelgroepgroep Target**de resourcegroep in de lijst met alle resourcegroepen op de doellocatie van het abonnement.
-    - Selecteer **in het virtuele netwerk Target**het netwerk uit een lijst met alle virtuele netwerken op de doellocatie.
-    - In **beschikbaarheidsset**u beschikbaarheidssetinstellingen toevoegen aan de vm als deze deel uitmaken van een beschikbaarheidsset in het brongebied.
-    - Selecteer **in Doelopslagaccounts**het account dat u wilt gebruiken.
+2. Klik op **aanpassen:** als u de standaard instellingen wilt wijzigen:
+    - Selecteer de resource groep in de **doel resource groep**in de lijst met alle resource groepen op de doel locatie van het abonnement.
+    - Selecteer in **doel-virtueel netwerk**het netwerk uit een lijst met alle virtuele netwerken op de doel locatie.
+    - In de **beschikbaarheidsset**kunt u instellingen voor beschikbaarheids sets toevoegen aan de VM als deze deel uitmaken van een beschikbaarheidsset in de bron regio.
+    - Selecteer in **doel opslag accounts**het account dat u wilt gebruiken.
 
         ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
-3. Klik **op Aanpassen:** om replicatie-instellingen te wijzigen.
-4. Selecteer in **multi-VM-consistentie**de VM's die u samen wilt repliceren.
+3. Klik op **aanpassen:** als u de replicatie-instellingen wilt wijzigen.
+4. In **multi-VM-consistentie**selecteert u de virtuele machines die u samen wilt repliceren.
     - Alle machines in een replicatiegroep hebben gedeelde crash-consistente en app-consistente herstelpunten bij een failover.
-    - Het inschakelen van multi-VM-consistentie kan de prestaties van de werkbelasting beïnvloeden (omdat het CPU-intensief is). Het moet alleen worden ingeschakeld als machines dezelfde werkbelasting uitvoeren en u consistentie nodig hebt voor meerdere machines.
-    - Als een toepassing bijvoorbeeld twee virtuele SQL Server-machines en twee webservers heeft, moet u alleen de SQL Server-VM's aan een replicatiegroep toevoegen.
-    - U ervoor kiezen om maximaal 16 VM's in een replicatiegroep te hebben.
+    - Het inschakelen van multi-VM-consistentie kan de prestaties van de werk belasting beïnvloeden (omdat dit CPU-intensief is). De service mag alleen worden ingeschakeld als op computers dezelfde werk belasting wordt uitgevoerd en u consistentie op meerdere computers nodig hebt.
+    - Als een toepassing bijvoorbeeld 2 SQL Server virtuele machines en twee webservers bevat, moet u alleen de SQL Server virtuele machines toevoegen aan een replicatie groep.
+    - U kunt Maxi maal 16 Vm's in een replicatie groep kiezen.
     - Als u multi-VM-consistentie inschakelt, communiceren machines in de replicatiegroep met elkaar via poort 20004.
-    - Zorg ervoor dat er geen firewalltoestel is dat de interne communicatie tussen de VM's over poort 20004 blokkeert.
-    - Als u wilt dat Linux VM's deel uitmaken van een replicatiegroep, moet u ervoor zorgen dat het uitgaande verkeer op poort 20004 handmatig wordt geopend volgens richtlijnen voor de specifieke Linux-versie.
+    - Zorg ervoor dat er geen firewall apparaat is die de interne communicatie tussen de Vm's via poort 20004 blokkeert.
+    - Als u wilt dat Linux-Vm's deel uitmaken van een replicatie groep, zorgt u ervoor dat het uitgaande verkeer op poort 20004 hand matig wordt geopend volgens de richt lijnen voor de specifieke Linux-versie.
 ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. Klik **op Doelbron** > **maken Replicatie inschakelen**.
-6. Nadat de VM's zijn ingeschakeld voor replicatie, u de status van de VM-status controleren onder **Gerepliceerde items**
+5. Klik op **doel resource** > maken**replicatie inschakelen**.
+6. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de VM controleren onder **gerepliceerde items**
 
 >[!NOTE]
->Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder dat er vooruitgang is. Klik **op** de knop Vernieuwen om de laatste status te krijgen.
+>Tijdens de eerste replicatie kan het enige tijd duren voordat de status wordt vernieuwd, zonder dat er een voortgang wordt gemaakt. Klik op de knop **vernieuwen** om de meest recente status op te halen.
 >
 
 ## <a name="next-steps"></a>Volgende stappen
