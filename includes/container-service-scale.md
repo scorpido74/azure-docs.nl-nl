@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66814794"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 Nadat u [een Azure Container Service-cluster hebt geïmplementeerd](../articles/container-service/dcos-swarm/container-service-deployment.md), moet u mogelijk het aantal agentknooppunten wijzigen. U hebt mogelijk meer agents nodig zodat u meer containertoepassingen of -exemplaren kunt uitvoeren. 
 
-U het aantal agentknooppunten in een DC/OS- of Docker Swarm- of Kubernetes-cluster wijzigen met behulp van de Azure-portal of de Azure CLI. 
+U kunt het aantal agent knooppunten in een DC/OS-, docker Swarm-of Kubernetes-cluster wijzigen met behulp van de Azure Portal of de Azure CLI. 
 
 ## <a name="scale-with-the-azure-portal"></a>Schalen met Azure Portal
 
@@ -27,9 +27,9 @@ U het aantal agentknooppunten in een DC/OS- of Docker Swarm- of Kubernetes-clust
 
 4. Klik op **Opslaan** om de configuratie op te slaan.
 
-## <a name="scale-with-the-azure-cli"></a>Schalen met de Azure CLI
+## <a name="scale-with-the-azure-cli"></a>Schalen met Azure CLI
 
-[Installeer de Azure CLI](/cli/azure/install-azure-cli) en meld `az login`u aan bij een Azure-account met .
+[Installeer de Azure cli](/cli/azure/install-azure-cli) en meld u aan bij een Azure- `az login`account met.
 
 ### <a name="see-the-current-agent-count"></a>Bekijk het huidige aantal agents
 Voer de `az acs show` opdracht uit om te zien hoeveel agents zich momenteel in het cluster bevinden. Deze geeft de clusterconfiguratie weer. De volgende opdracht toont bijvoorbeeld de configuratie van de containerservice met de naam `containerservice-myACSName` in de resourcegroep `myResourceGroup`:
@@ -49,7 +49,7 @@ Voer bijvoorbeeld de volgende opdracht in als u het aantal agents in het voorgaa
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-De Azure CLI retourneert een JSON-tekenreeks die de nieuwe configuratie van de containerservice vertegenwoordigt, inclusief het aantal nieuwe agenten.
+De Azure CLI retourneert een JSON-teken reeks die de nieuwe configuratie van de container service vertegenwoordigt, met inbegrip van het nieuwe aantal agents.
 
 Voer `az acs scale --help` uit voor meer opdrachtopties.
 
@@ -65,6 +65,6 @@ Voer `az acs scale --help` uit voor meer opdrachtopties.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Bekijk [meer voorbeelden](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) van het gebruik van Azure CLI-opdrachten met Azure Container Service.
+* Bekijk [meer voor beelden](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) van het gebruik van Azure cli-opdrachten met Azure container service.
 * Meer informatie over [DC/OS-agentpools](../articles/container-service/dcos-swarm/container-service-dcos-agents.md) in Azure Container Service.
 

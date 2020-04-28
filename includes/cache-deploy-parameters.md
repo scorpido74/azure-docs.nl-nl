@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67175844"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
 
-De prijscategorie van de nieuwe Azure-cache voor Redis.
+De prijs categorie van de nieuwe Azure-cache voor redis.
 
 ```json
     "cacheSKUName": {
@@ -30,11 +30,11 @@ De prijscategorie van de nieuwe Azure-cache voor Redis.
     },
 ```
 
-De sjabloon definieert de waarden die zijn toegestaan voor deze parameter (Basic, Standard of Premium) en wijst een standaardwaarde (Basic) toe als er geen waarde is opgegeven. Basic biedt één knooppunt met meerdere formaten tot 53 GB. Standard biedt primaire/replica met twee nodes met meerdere formaten die beschikbaar zijn tot 53 GB en 99,9% SLA.
+De sjabloon definieert de waarden die zijn toegestaan voor deze para meter (Basic, Standard of Premium) en wijst een standaard waarde (Basic) toe als er geen waarde is opgegeven. Basic biedt één knoop punt met meerdere grootten beschikbaar tot 53 GB. Standard voorziet in twee knoop punten: primair/replica met meerdere grootten beschikbaar tot 53 GB en 99,9% SLA.
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
 
-De familie voor de sku.
+De familie voor de SKU.
 
 ```json
     "cacheSKUFamily": {
@@ -52,9 +52,9 @@ De familie voor de sku.
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
 
-De grootte van de nieuwe Azure-cache voor bijvoorbeeld Redis.
+De grootte van de nieuwe Azure-cache voor redis-instantie.
 
-Voor de Basic en Standard families:
+Voor de Basic-en Standard-families:
 
 ```json
     "cacheSKUCapacity": {
@@ -75,13 +75,13 @@ Voor de Basic en Standard families:
     }
 ```
 
-De capaciteit van de Premium-waardecache wordt hetzelfde gedefinieerd, met uitzondering van de toegestane waarden die van 1 tot 5 lopen in plaats van van 0 tot 6.
+De Premium-waarde cache capaciteit wordt hetzelfde gedefinieerd, behalve de toegestane waarden worden uitgevoerd van 1 tot 5 in plaats van tussen 0 en 6.
 
-De sjabloon definieert de gehele waarden die zijn toegestaan voor deze parameter (0 tot en met 6 voor de basis- en standaardfamilies; 1 tot en met 5 voor de Premium-familie). Als er geen waarde is opgegeven, kent de sjabloon een standaardwaarde van 0 toe voor Basic en Standard, 1 voor Premium.
+De sjabloon definieert de gehele waarden die zijn toegestaan voor deze para meter (0 tot en met 6 voor de Basic-en Standard-families, 1 t/m 5 voor de Premium-serie). Als er geen waarde is opgegeven, wijst de sjabloon een standaard waarde van 0 toe voor Basic en Standard, 1 voor Premium.
 
-De waarden komen overeen met de volgende cacheformaten:
+De waarden komen overeen met de volgende cache grootten:
 
-| Waarde | Basis en Standaard<br>cachegrootte | Premium<br>cachegrootte |
+| Waarde | Basis en standaard<br>cache grootte | Premium<br>cache grootte |
 | :---: | :------------------------------: | :-------------------: |
 | 0     | 250 MB (standaard)                 | N.v.t.                   |
 | 1     | 1 GB                             | 6 GB (standaard)        |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67565728"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Toegangssleutel voor Azure SignalR Service roteren
@@ -23,7 +23,7 @@ Uit veiligheidsoverwegingen en nalevingsvereisten moet u uw toegangssleutels reg
 
 ## <a name="regenerate-access-keys"></a>Toegangssleutels regenereren
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/)en meld u aan met uw referenties.
+1. Ga naar de [Azure Portal](https://portal.azure.com/)en meld u aan met uw referenties.
 
 1. Zoek de sectie **Sleutels** in het Azure SignalR Service-exemplaar met de sleutels die u opnieuw wilt genereren.
 
@@ -56,7 +56,7 @@ Het regelmatig roteren van toegangssleutels is een goede beveiligingstoepassing.
 In deze gids hebt u geleerd hoe u toegangssleutels opnieuw kunt genereren. Ga door met de volgende zelfstudies over verificatie met OAuth of met Azure Functions.
 
 > [!div class="nextstepaction"]
-> [Integreren met ASP.NET kernidentiteit](./signalr-concept-authenticate-oauth.md)
+> [Integreren met ASP.NET core-identiteit](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
-> [Een serverloze real-time app bouwen met verificatie](./signalr-tutorial-authenticate-azure-functions.md)
+> [Bouw een serverloze realtime-app met verificatie](./signalr-tutorial-authenticate-azure-functions.md)

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 8c87e14071b3bb40421ab655c172df739570e295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176490"
 ---
-Volgende kanttekeningen zijn van toepassing op gegevens die worden verplaatst naar Azure.
+De volgende voor behoud zijn van toepassing op gegevens die worden verplaatst naar Azure.
 
-- We raden aan dat meer dan één apparaat niet naar dezelfde container moet schrijven.
-- Als u een bestaand Azure-object (zoals een blob of een bestand) in de cloud hebt met dezelfde naam als het object dat wordt gekopieerd, overschrijft het apparaat het bestand in de cloud.
-- Een lege maphiërarchie (zonder bestanden) die onder sharemappen is gemaakt, wordt niet geüpload naar de blobcontainers.
-- U de gegevens kopiëren met slepen en neerzetten met Verkenner of via de opdrachtregel. Als de totale grootte van bestanden die worden gekopieerd groter is dan 10 GB, raden we u aan een bulkkopieerprogramma te gebruiken, zoals Robocopy of rsync. De bulkkopieergereedschappen proberen de kopieerbewerking opnieuw uit op intermitterende fouten en bieden extra tolerantie.
-- Als het aandeel dat is gekoppeld aan de Azure-opslagcontainer blobs uploadt die niet overeenkomen met het type blobs dat is gedefinieerd voor het aandeel op het moment van maken, worden dergelijke blobs niet bijgewerkt. U maakt bijvoorbeeld een blokblobaandeel op het apparaat. Koppel het aandeel aan een bestaande cloudcontainer met paginablobs. Vernieuw dat aandeel om de bestanden te downloaden. Wijzig enkele van de vernieuwde bestanden die al zijn opgeslagen als paginablobs in de cloud. U ziet uploadfouten.
+- We raden aan dat er niet meer dan één apparaat naar dezelfde container moet schrijven.
+- Als u een bestaand Azure-object (zoals een BLOB of een bestand) in de Cloud hebt met dezelfde naam als het object dat wordt gekopieerd, overschrijft het apparaat het bestand in de Cloud.
+- Een lege Directory-hiërarchie (zonder bestanden) die is gemaakt onder share mappen wordt niet geüpload naar de BLOB-containers.
+- U kunt de gegevens kopiëren met behulp van slepen en neerzetten met de Verkenner of via de opdracht regel. Als de totale grootte van gekopieerde bestanden groter is dan 10 GB, raden we u aan een programma voor bulksgewijs kopiëren te gebruiken, zoals Robocopy of rsync. De hulpprogram ma's voor bulksgewijs kopiëren proberen de Kopieer bewerking opnieuw uit te voeren op onregelmatige fouten en bieden extra tolerantie.
+- Als de share die is gekoppeld aan de Azure storage-container blobs uploadt die niet overeenkomen met het type blobs dat is gedefinieerd voor de share op het moment dat deze wordt gemaakt, worden dergelijke blobs niet bijgewerkt. U kunt bijvoorbeeld een blok-BLOB share op het apparaat maken. Koppel de share aan een bestaande Cloud container die pagina-blobs bevat. Vernieuw die share om de bestanden te downloaden. Wijzig enkele van de vernieuwde bestanden die al zijn opgeslagen als pagina-blobs in de Cloud. Upload fouten worden weer geven.

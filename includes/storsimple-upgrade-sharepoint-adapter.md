@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176078"
 ---
-### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>SharePoint 2010 upgraden naar SharePoint 2013 en installeer vervolgens de StorSomple-adapter voor SharePoint
+### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Upgrade share point 2010 naar share point 2013 en installeer vervolgens de StorSomple-adapter voor share point
 > [!IMPORTANT]
-> Bestanden die eerder via RBS naar externe opslag zijn verplaatst, zijn pas beschikbaar nadat de upgrade is voltooid en de RBS-functie opnieuw is ingeschakeld. Als u de impact van de gebruiker wilt beperken, voert u een upgrade of herinstallatie uit tijdens een gepland onderhoudsvenster.
+> Bestanden die eerder zijn verplaatst naar externe opslag via de resource structuur, zijn pas beschikbaar als de upgrade is voltooid en de resource structuur functie opnieuw is ingeschakeld. Als u de gevolgen van de gebruiker wilt beperken, voert u een upgrade of herinstallatie uit tijdens een gepland onderhouds venster.
 > 
 > 
 
-#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>SharePoint 2010 upgraden naar SharePoint 2013 en vervolgens de adapter installeren
-1. Noteer in de SharePoint 2010-farm het BLOB-winkelpad voor de externe BLOB's en de inhoudsdatabases waarvoor RBS is ingeschakeld. 
-2. Installeer en configureer de nieuwe SharePoint 2013-farm. 
-3. Databases, toepassingen en siteverzamelingen verplaatsen van het SharePoint 2010-farm naar het nieuwe SharePoint 2013-farm. Ga voor instructies naar [Overzicht van het upgradeproces naar SharePoint 2013](https://technet.microsoft.com/library/cc262483.aspx).
-4. Installeer de StorSimple-adapter voor SharePoint op de nieuwe farm. Ga naar [De StorSimple-adapter voor SharePoint](#install-the-storsimple-adapter-for-sharepoint) installeren voor procedures.
-5. Met behulp van de informatie die u in stap 1 hebt opgemerkt, schakelt u RBS in voor dezelfde set inhoudsdatabases en biedt u hetzelfde BLOB-winkelpad dat is gebruikt in de SharePoint 2010-installatie. Ga naar [RBS configureren](#configure-rbs) voor procedures. Nadat u deze stap hebt voltooid, moeten eerder geexternaliseerde bestanden toegankelijk zijn vanaf de nieuwe farm. 
+#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>Share point 2010 bijwerken naar share point 2013 en vervolgens de adapter installeren
+1. In de share point 2010-Farm noteert u het pad van de BLOB-opslag voor de externe BLOBs en de inhouds databases waarvoor de resource structuur is ingeschakeld. 
+2. De nieuwe share point 2013-Farm installeren en configureren. 
+3. Data bases, toepassingen en site verzamelingen verplaatsen van de share point 2010-Farm naar de nieuwe share point 2013-farm. Ga voor instructies naar [overzicht van het upgrade proces naar share point 2013](https://technet.microsoft.com/library/cc262483.aspx).
+4. Installeer de StorSimple-adapter voor share point op de nieuwe farm. Ga naar [de StorSimple-adapter voor share point installeren](#install-the-storsimple-adapter-for-sharepoint) voor procedures.
+5. Met behulp van de informatie die u in stap 1 hebt genoteerd, schakelt u de resource structuur in voor dezelfde set inhouds databases en geeft u het pad op naar de BLOB-opslag die is gebruikt in de share point 2010-installatie. Ga naar [resource structuur configureren](#configure-rbs) voor procedures. Nadat u deze stap hebt voltooid, moeten eerder externe bestanden toegankelijk zijn vanuit de nieuwe farm. 
 
-### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor SharePoint upgraden
+### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor share point bijwerken
 > [!IMPORTANT]
-> U moet deze upgrade plannen tijdens een gepland onderhoudsvenster om de volgende redenen:
+> U moet deze upgrade plannen om te worden uitgevoerd tijdens een gepland onderhouds venster om de volgende redenen:
 > 
-> * Eerder geexternaliseerde inhoud is pas beschikbaar als de adapter opnieuw is geïnstalleerd.
-> * Alle inhoud die naar de site is geüpload nadat u de vorige versie van de StorSimple-adapter voor SharePoint hebt verwijderd, maar voordat u de nieuwe versie installeert, wordt opgeslagen in de inhoudsdatabase. U moet die inhoud naar het StorSimple-apparaat verplaatsen nadat u de nieuwe adapter hebt geïnstalleerd. U de `RBS Migrate()` Microsoft PowerShell-cmdlet die bij SharePoint is meegeleverd, gebruiken om de inhoud te migreren. Zie [Inhoud migreren naar of uit RBS voor](https://technet.microsoft.com/library/ff628255.aspx)meer informatie. 
+> * Voorheen externe inhoud is pas beschikbaar als de adapter opnieuw wordt geïnstalleerd.
+> * Alle inhoud die naar de site is geüpload nadat u de vorige versie van de StorSimple-adapter voor share point hebt verwijderd, maar voordat u de nieuwe versie installeert, wordt opgeslagen in de inhouds database. Nadat u de nieuwe adapter hebt geïnstalleerd, moet u deze inhoud verplaatsen naar het StorSimple-apparaat. U kunt de micro soft `RBS Migrate()` Power shell-cmdlet opgenomen in share point gebruiken om de inhoud te migreren. Zie [inhoud migreren naar of uit een resource structuur](https://technet.microsoft.com/library/ff628255.aspx)voor meer informatie. 
 > 
 > 
 
-#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor SharePoint upgraden
-1. Verwijder de vorige versie van StorSimple Adapter voor SharePoint.
+#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor share point bijwerken
+1. Verwijder de vorige versie van de StorSimple-adapter voor share point.
    
    > [!NOTE]
-   > Hierdoor wordt RBS automatisch uitgeschakeld in de inhoudsdatabases. Bestaande BLOB's blijven echter op het StorSimple-apparaat staan. Omdat RBS is uitgeschakeld en de BLOB's niet zijn gemigreerd naar de inhouddatabases, zullen alle aanvragen voor die BLOB's mislukken. 
+   > Hiermee wordt de resource structuur voor de inhouds databases automatisch uitgeschakeld. Bestaande BLOBs blijven echter op het StorSimple-apparaat. Omdat de resource structuur is uitgeschakeld en de BLOBs niet zijn gemigreerd naar de inhouds databases, zullen aanvragen voor deze BLOBs mislukken. 
    > 
    > 
-2. Installeer de nieuwe StorSimple-adapter voor SharePoint. De nieuwe adapter herkent automatisch de inhoudsdatabases die eerder voor RBS waren ingeschakeld of uitgeschakeld en gebruikt de vorige instellingen.
+2. Installeer de nieuwe StorSimple-adapter voor share point. De nieuwe adapter herkent automatisch de inhouds databases die eerder zijn in-of uitgeschakeld voor de resource structuur en zullen de vorige instellingen gebruiken.
 

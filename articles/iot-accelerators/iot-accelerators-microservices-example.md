@@ -1,6 +1,6 @@
 ---
-title: Een microservice wijzigen en opnieuw implementeren - Azure | Microsoft Documenten
-description: In deze zelfstudie ziet u hoe u een microservice wijzigen en opnieuw implementeren in Externe bewaking
+title: Een micro service wijzigen en opnieuw implementeren-Azure | Microsoft Docs
+description: Deze zelf studie laat zien hoe u een micro service kunt wijzigen en opnieuw kunt implementeren in externe bewaking
 author: dominicbetts
 ms.author: dobett
 ms.service: iot-accelerators
@@ -8,194 +8,194 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61447621"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Een microservice aanpassen en opnieuw implementeren
 
-In deze zelfstudie ziet u hoe u een van de [microservices](https://azure.com/microservices) in de oplossing voor externe bewaking bewerkt, een afbeelding van uw microservice maken, de afbeelding implementeren in uw dockerhub en deze vervolgens gebruiken in de oplossing voor externe bewaking. Om dit concept te introduceren, gebruikt de zelfstudie een basisscenario waarbij u een microservice-API aanroept en het statusbericht wijzigt van "Levend en wel" in "Nieuwe bewerkingen hier gemaakt!"
+In deze zelf studie leert u hoe u een van de micro [Services](https://azure.com/microservices) in de oplossing voor externe controle kunt bewerken, een installatie kopie van uw micro service kunt bouwen, de installatie kopie naar uw docker-hub kunt implementeren en deze vervolgens kunt gebruiken in de oplossing voor externe controle. Ter introductie van dit concept maakt de zelf studie gebruik van een basis scenario waarin u een micro Service-API aanroept en het status bericht wijzigt van ' Alive ' en ' goed ' op nieuwe bewerkingen die hier worden aangebracht.
 
-Remote Monitoring-oplossing maakt gebruik van microservices die zijn gebouwd met behulp van docker-afbeeldingen die uit een dockerhub worden getrokken. 
+De oplossing voor externe controle maakt gebruik van micro services die zijn gebouwd met behulp van docker-installatie kopieën die worden opgehaald uit een docker-hub. 
 
 In deze zelfstudie leert u het volgende:
 
 >[!div class="checklist"]
-> * Een microservice bewerken en bouwen in de oplossing voor externe bewaking
-> * Een dockerafbeelding maken
-> * Een dockerafbeelding naar uw dockerhub duwen
-> * Trek de nieuwe dockerafbeelding
-> * Visualiseer de wijzigingen 
+> * Bewerk en bouw een micro service in de oplossing voor bewaking op afstand
+> * Een docker-installatie kopie bouwen
+> * Een docker-installatie kopie naar uw docker hub pushen
+> * De nieuwe docker-installatie kopie ophalen
+> * De wijzigingen visualiseren 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze zelfstudie te volgen, moet je het volgende volgen:
+Als u deze zelf studie wilt volgen, hebt u het volgende nodig:
 
 >[!div class="checklist"]
-> * [De remote monitoring oplossingsversneller lokaal implementeren](iot-accelerators-remote-monitoring-deploy-local.md)
-> * [Een Docker-account](https://hub.docker.com/)
-> * [Postbode](https://www.getpostman.com/) - Nodig om de API-respons te bekijken
+> * [De oplossings versneller voor externe controle lokaal implementeren](iot-accelerators-remote-monitoring-deploy-local.md)
+> * [Een docker-account](https://hub.docker.com/)
+> * [Postman](https://www.getpostman.com/) -vereist om het API-antwoord weer te geven
 
-## <a name="call-the-api-and-view-response-status"></a>De API aanroepen en de status van het antwoord weergeven
+## <a name="call-the-api-and-view-response-status"></a>De API aanroepen en de antwoord status weer geven
 
-In dit deel noemt u de standaard IoT hub manager microservice API. De API retourneert een statusbericht dat u later wijzigt door de microservice aan te werken.
+In dit gedeelte roept u de standaard IoT hub Manager micro Service API aan. De API retourneert een status bericht dat u later wijzigt door de micro service aan te passen.
 
-1. Zorg ervoor dat de oplossing voor externe bewaking lokaal op uw machine wordt uitgevoerd.
-2. Zoek waar je Postman hebt gedownload en open hem.
-3. Voer in Postman het volgende `http://localhost:8080/iothubmanager/v1/status`in de GET: .
-4. Bekijk de terugkeer en je moet zien, "Status": "OK: Levend en wel".
+1. Zorg ervoor dat de externe bewakings oplossing lokaal op uw computer wordt uitgevoerd.
+2. Ga naar de locatie waar u postman hebt gedownload en open deze.
+3. Voer in postman het volgende in het bericht GET: `http://localhost:8080/iothubmanager/v1/status`.
+4. Bekijk het resultaat en u ziet dat "status": "OK: Alive en goed" wordt weer gegeven.
 
-    ![Alive and Well Postman Bericht](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+    ![Alive en goed postman-bericht](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
-## <a name="change-the-status-and-build-the-image"></a>De status wijzigen en de afbeelding maken
+## <a name="change-the-status-and-build-the-image"></a>De status wijzigen en de installatie kopie bouwen
 
-Wijzig nu het statusbericht van de microservice iot Hub Manager in 'Nieuwe bewerkingen hier gemaakt!' en vervolgens de docker afbeelding opnieuw met deze nieuwe status. Als u hier problemen ondervindt, raadpleegt u de sectie [Probleemoplossing.](#Troubleshoot)
+Wijzig nu het status bericht van de micro service IOT hub manager in ' nieuwe bewerkingen die hier worden gemaakt '. en bouw de docker-installatie kopie vervolgens opnieuw op met deze nieuwe status. Als u hier problemen ondervindt, raadpleegt u de sectie [probleem oplossing](#Troubleshoot) .
 
-1. Zorg ervoor dat uw terminal open is en wijzig de map waar u de oplossing voor externe bewaking hebt gekloond. 
-1. Wijzig uw directory in "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services".
-1. Open StatusService.cs in een teksteditor of IDE die u leuk vindt. 
+1. Zorg ervoor dat de Terminal is geopend en ga naar de map waarin u de oplossing voor controle op afstand hebt gekloond. 
+1. Wijzig uw directory in ' Azure-IOT-PCs-Remote-Monitoring-DotNet/Services/iothub-Manager/Services '.
+1. Open StatusService.cs in een wille keurige tekst editor of IDE. 
 1. Zoek de volgende code:
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
-    en verander het in de onderstaande code en sla deze op.
+    en wijzig deze in de onderstaande code en sla deze op.
 
     ```csharp
     var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
-5. Ga terug naar uw terminal, maar verander nu naar de volgende directory: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
-6. Als u uw nieuwe dockerafbeelding wilt maken, typt u
+5. Ga terug naar de Terminal, maar Wijzig nu in de volgende map: ' Azure-IOT-PCs-Remote-Monitoring-DotNet/Services/iothub-Manager/scripts/docker '.
+6. Als u uw nieuwe docker-installatie kopie wilt maken, typt u
 
     ```sh
     sh build
     ```
     
-    of op Windows:
+    of in Windows:
     
     ```cmd
     ./build.cmd
     ```
 
-7. Als u wilt controleren of uw nieuwe afbeelding is gemaakt, typt u
+7. Als u wilt controleren of de nieuwe installatie kopie is gemaakt, typt u
 
     ```cmd/sh
     docker images 
     ```
 
-De repository moet "azureiotpcs/iothub-manager-dotnet" zijn.
+De opslag plaats moet ' azureiotpcs/iothub-Manager-DotNet ' zijn.
 
-![Succesvolle dockerafbeelding](./media/iot-accelerators-microservices-example/successful-docker-image.png)
+![Voltooide docker-installatie kopie](./media/iot-accelerators-microservices-example/successful-docker-image.png)
 
 ## <a name="tag-and-push-the-image"></a>De installatiekopie taggen en pushen
-Voordat u uw nieuwe dockerafbeelding naar een dockerhub pushen, verwacht Docker dat uw afbeeldingen worden getagd. Als u hier problemen ondervindt, raadpleegt u de sectie [Probleemoplossing.](#Troubleshoot)
+Voordat u uw nieuwe docker-installatie kopie naar een docker-hub kunt pushen, verwacht docker dat uw installatie kopieën worden gelabeld. Als u hier problemen ondervindt, raadpleegt u de sectie [probleem oplossing](#Troubleshoot) .
 
-1. Zoek de image-id van de dockerafbeelding die u hebt gemaakt door te typen:
+1. Zoek de afbeeldings-ID van de docker-installatie kopie die u hebt gemaakt door het volgende te typen:
 
     ```cmd/sh
     docker images
     ```
 
-2. Uw afbeelding taggen met het type 'testen'
+2. Uw afbeelding labelen met het type testen
 
     ```cmd/sh
     docker tag [Image ID] [docker ID]/iothub-manager-dotnet:testing 
     ```
 
-3. Als u uw nieuw gelabelde afbeelding naar uw dockerhub wilt pushen, typt u
+3. Als u de zojuist gelabelde installatie kopie naar uw docker-hub wilt pushen, typt u
 
     ```cmd/sh
     docker push [docker ID]/iothub-manager-dotnet:testing
     ```
 
-4. Open uw internetbrowser en ga naar uw [dockerhub](https://hub.docker.com/) en meld u aan.
-5. U ziet nu uw nieuwe dockerafbeelding op uw dockerhub.
-![Dockerafbeelding in dockerhub](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
+4. Open uw Internet browser en ga naar uw [docker-hub](https://hub.docker.com/) en meld u aan.
+5. U ziet nu de zojuist gepushte docker-installatie kopie op uw docker-hub.
+![Docker-installatie kopie in docker hub](./media/iot-accelerators-microservices-example/docker-image-in-docker-hub.png)
 
-## <a name="update-your-remote-monitoring-solution"></a>Uw oplossing voor externe bewaking bijwerken
-U moet nu uw lokale docker-compose.yml bijwerken om uw nieuwe dockerafbeelding van uw dockerhub te halen. Als u hier problemen ondervindt, raadpleegt u de sectie [Probleemoplossing.](#Troubleshoot)
+## <a name="update-your-remote-monitoring-solution"></a>Uw oplossing voor externe controle bijwerken
+U moet nu uw lokale docker-Compose. yml bijwerken om uw nieuwe docker-installatie kopie van uw docker-hub te halen. Als u hier problemen ondervindt, raadpleegt u de sectie [probleem oplossing](#Troubleshoot) .
 
-1. Ga terug naar de terminal en verander naar de volgende directory: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
-2. Open docker-compose.yml in elke teksteditor of IDE die je leuk vindt.
+1. Ga terug naar de Terminal en wijzig de volgende map: ' Azure-IOT-pc's-Remote-Monitoring-DotNet/Services/scripts/local '.
+2. Open docker-Compose. yml in een wille keurige tekst editor of IDE.
 3. Zoek de volgende code:
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
-    en verander het om te lijken op de afbeelding hieronder en op te slaan.
+    en wijzig deze zodat deze eruitziet als de onderstaande afbeelding en sla het op.
 
     ```yml
     image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
-## <a name="view-the-new-response-status"></a>De nieuwe reactiestatus weergeven
-Werk af door een lokaal exemplaar van de oplossing voor externe bewaking opnieuw in te zetten en de nieuwe statusrespons in Postman te bekijken.
+## <a name="view-the-new-response-status"></a>De nieuwe reactie status weer geven
+Voltooi de installatie van een lokaal exemplaar van de oplossing voor externe controle en Bekijk het nieuwe status antwoord in postman.
 
-1. Ga terug naar uw terminal en verander naar de volgende directory: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
-2. Start uw lokale instantie van de oplossing Voor externe bewaking door de volgende opdracht in de terminal te typen:
+1. Ga terug naar de Terminal en wijzig de volgende map: ' Azure-IOT-PCs-extern-bewaking-DotNet/scripts/local '.
+2. Start uw lokale exemplaar van de oplossing voor externe controle door de volgende opdracht in te voeren in de terminal:
 
     ```cmd/sh
     docker-compose up
     ```
 
-3. Zoek waar je Postman hebt gedownload en open hem.
-4. Voer in Postman het volgende verzoek `http://localhost:8080/iothubmanager/v1/status`in de GET in: . U moet nu zien, "Status": "OK: Nieuwe bewerkingen hier gemaakt!".
+3. Ga naar de locatie waar u postman hebt gedownload en open deze.
+4. Voer in postman de volgende aanvraag in het bericht GET: `http://localhost:8080/iothubmanager/v1/status`. U ziet nu ' status ': ' OK: nieuwe wijzigingen die hier worden aangebracht! '.
 
-![Nieuwe bewerkingen Made Here postbode bericht](./media/iot-accelerators-microservices-example/new-postman-message.png)
+![Nieuwe wijzigingen die hier worden aangebracht, plaatst u bericht](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="troubleshoot"></a><a name="Troubleshoot"></a>Oplossen
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>Problemen oplossen
 
-Als u problemen ondervindt, probeert u de afbeeldingen en containers van de docker op de lokale machine te verwijderen.
+Als u problemen ondervindt, kunt u de docker-installatie kopieën en-containers verwijderen op de lokale computer.
 
-1. Als u alle containers wilt verwijderen, moet u eerst alle lopende containers stoppen. Open uw terminal en typ
+1. Als u alle containers wilt verwijderen, moet u eerst alle actieve containers stoppen. Open de Terminal en typ
 
     ```cmd/sh
     docker stop $(docker ps -aq)
     docker rm $(docker ps -aq)
     ```
     
-2. Als u alle afbeeldingen wilt verwijderen, opent u uw terminal en typt u 
+2. Als u alle installatie kopieën wilt verwijderen, opent u de Terminal en typt u 
 
     ```cmd/sh
     docker rmi $(docker images -q)
     ```
 
-3. U controleren of er containers op de machine staan door
+3. U kunt controleren of er containers aanwezig zijn op de computer door het volgende te typen
 
     ```cmd/sh
     docker ps -aq 
     ```
 
-    Als u alle containers met succes hebt verwijderd, mag er niets verschijnen.
+    Als u alle containers hebt verwijderd, moet er niets worden weer gegeven.
 
-4. U controleren of er afbeeldingen op de machine staan door
+4. U kunt controleren of er installatie kopieën op de computer zijn door het volgende te typen
 
     ```cmd/sh
     docker images
     ```
 
-    Als u alle containers met succes hebt verwijderd, mag er niets verschijnen.
+    Als u alle containers hebt verwijderd, moet er niets worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie zag je hoe je:
+In deze zelf studie hebt u gezien hoe u het volgende kunt doen:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Een microservice bewerken en bouwen in de oplossing voor externe bewaking
-> * Een dockerafbeelding maken
-> * Een dockerafbeelding naar uw dockerhub duwen
-> * Trek de nieuwe dockerafbeelding
-> * Visualiseer de wijzigingen 
+> * Bewerk en bouw een micro service in de oplossing voor bewaking op afstand
+> * Een docker-installatie kopie bouwen
+> * Een docker-installatie kopie naar uw docker hub pushen
+> * De nieuwe docker-installatie kopie ophalen
+> * De wijzigingen visualiseren 
 
-Het volgende ding om te proberen is [het aanpassen van het apparaat simulator microservice in de Remote Monitoring oplossing](iot-accelerators-microservices-example.md)
+Het volgende voor het [aanpassen van de micro service Device Simulator in de oplossing voor controle op afstand](iot-accelerators-microservices-example.md)
 
-Zie voor meer informatie van ontwikkelaars over de oplossing voor externe monitoring:
+Voor meer informatie over ontwikkel aars over de oplossing voor controle op afstand raadpleegt u:
 
 * [Snelzoekgids voor ontwikkelaars](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 <!-- Next tutorials in the sequence -->

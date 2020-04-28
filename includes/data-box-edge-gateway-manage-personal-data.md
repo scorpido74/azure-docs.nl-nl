@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176676"
 ---
-- **Bestelgegevens**. Wanneer een bestelling wordt gemaakt, worden het verzendadres, het e-mailadres en de contactgegevens van de gebruiker opgeslagen in de Azure-portal. De opgeslagen informatie omvat:
+- **Details**van de order. Wanneer een order wordt gemaakt, worden het verzend adres, het e-mail adres en de contact gegevens van de gebruiker opgeslagen in de Azure Portal. De opgeslagen informatie omvat:
   - Naam van contactpersoon
   - Telefoonnummer
   - E-mailadres
   - Adres
   - Plaats
-  - Postcode/postcode
+  - Post code
   - Status
   - Land/provincie/regio
   - Volgnummer van verzending
 
-    Bestelgegevens worden versleuteld en opgeslagen in de service. De service behoudt de informatie totdat u de bron of order expliciet verwijdert. Het verwijderen van de resource en de bijbehorende order wordt geblokkeerd vanaf het moment dat het apparaat wordt verzonden totdat het apparaat terugkeert naar Microsoft.
+    Bestellingsgegevens worden versleuteld en opgeslagen in de service. De service behoudt de informatie totdat u de resource of order expliciet verwijdert. Het verwijderen van de resource en de bijbehorende volg orde worden geblokkeerd vanaf het moment dat het apparaat wordt verzonden totdat het apparaat naar micro soft wordt geretourneerd.
 
-- **Verzendadres**. Nadat een bestelling is geplaatst, biedt De Data Box-service het verzendadres aan externe vervoerders zoals UPS.
+- **Verzend adres**. Nadat een bestelling is geplaatst, levert Data Box Service het verzend adres aan externe vervoerders als UPS.
 
-- **Gebruikers delen**. Gebruikers op uw apparaat hebben ook toegang tot de gegevens op de shares. Een lijst met gebruikers die toegang hebben tot de share-gegevens kan worden bekeken. Wanneer de aandelen worden verwijderd, wordt deze lijst ook verwijderd.
+- **Gebruikers delen**. Gebruikers op uw apparaat hebben ook toegang tot de gegevens die zich op de shares bevinden. Een lijst met gebruikers die toegang hebben tot de share gegevens kunnen worden weer gegeven. Wanneer de shares worden verwijderd, wordt deze lijst ook verwijderd.

@@ -1,6 +1,6 @@
 ---
-title: 'Verificatie van eindgebruikers: .NET SDK met Azure Data Lake Storage Gen1 met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het bereiken van verificatie door eindgebruikers met Azure Data Lake Storage Gen1 met Azure Active Directory met .NET SDK
+title: 'Verificatie van de eind gebruiker: .NET SDK met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met .NET SDK
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66243714"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Verificatie van eindgebruikers met Azure Data Lake Storage Gen1 met .NET SDK
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van .NET SDK
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK gebruiken](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,34 +27,34 @@ ms.locfileid: "66243714"
 > 
 >  
 
-In dit artikel vindt u meer informatie over het gebruik van de .NET SDK om verificatie van eindgebruikers uit te brengen met Azure Data Lake Storage Gen1. Zie [Service-to-service-verificatie met Data Lake Storage Gen1](data-lake-store-service-to-service-authenticate-net-sdk.md)met .NET SDK met .NET SDK met .NET SDK .
+In dit artikel leert u hoe u de .NET SDK kunt gebruiken om verificatie door eind gebruikers uit te voeren met Azure Data Lake Storage Gen1. Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)voor service-naar-service verificatie met data Lake Storage gen1 met behulp van .NET SDK.
 
 ## <a name="prerequisites"></a>Vereisten
-* **Visual Studio 2013 of hoger**. De onderstaande instructies maken gebruik van Visual Studio 2019.
+* **Visual Studio 2013 of hoger**. In de onderstaande instructies wordt gebruikgemaakt van Visual Studio 2019.
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Maak een Azure Active Directory 'Native'-toepassing.** U moet de stappen in [verificatie van eindgebruikers met Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md)hebben voltooid met Azure Active Directory .
+* **Maak een Azure Active Directory systeem eigen toepassing**. U moet de stappen in de [verificatie van eind gebruikers hebben voltooid met data Lake Storage gen1 met behulp van Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Een .NET-toepassing maken
-1. Selecteer in Visual Studio het menu **Bestand,** **Nieuw**en vervolgens **Project**.
-2. Kies **Console-app (.NET Framework)** en selecteer **Volgende**.
-3. Voer in **Projectnaam**enter `CreateADLApplication`en selecteer **Vervolgens Maken**.
+1. Selecteer in Visual Studio het menu **bestand** , **Nieuw**en vervolgens **project**.
+2. Kies **console-app (.NET Framework)** en selecteer **volgende**.
+3. Voer in **project naam**, `CreateADLApplication`ENTER en selecteer vervolgens **maken**.
 
 4. Voeg de NuGet-pakketten toe aan het project.
 
    1. Klik in Solution Explorer met de rechtermuisknop op de projectnaam en klik op **Manage NuGet Packages**.
-   2. Controleer op het tabblad **NuGet Package Manager** of **pakketbron** is ingesteld op **nuget.org** en dat het selectievakje **Prerelease opnemen** is ingeschakeld.
+   2. Controleer op het tabblad **NuGet package manager** of **pakket bron** is ingesteld op **nuget.org** en of het selectie vakje **include Prerelease** is ingeschakeld.
    3. Zoek en installeer de volgende NuGet-pakketten:
 
       * `Microsoft.Azure.Management.DataLake.Store`: in deze zelfstudie wordt gebruikgemaakt van v2.1.3-preview.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication`: in deze zelfstudie wordt gebruikgemaakt van v2.2.12.
 
         ![Een NuGet-bron toevoegen](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Een nieuw Azure Data Lake-account maken")
-   4. Sluit de **NuGet Package Manager**.
+   4. Sluit **NuGet package manager**.
 
-5. Open **Program.cs**
-6. Vervang de instructies voor gebruik door de volgende regels:
+5. **Program.cs** openen
+6. Vervang de instructies using door de volgende regels:
 
     ```csharp
     using System;
@@ -72,11 +72,11 @@ In dit artikel vindt u meer informatie over het gebruik van de .NET SDK om verif
     ```     
 
 ## <a name="end-user-authentication"></a>Verificatie van de eindgebruiker
-Voeg dit fragment toe aan uw .NET-clienttoepassing. Vervang de tijdelijke aanduidingswaarden door de waarden die zijn opgehaald uit een native Azure AD-toepassing (weergegeven als voorwaarde). Met dit fragment u uw toepassing **interactief** verifiëren met Data Lake Storage Gen1, wat betekent dat u wordt gevraagd uw Azure-referenties in te voeren.
+Voeg dit fragment toe aan uw .NET-client toepassing. Vervang de waarden van de tijdelijke aanduiding door de waarden die zijn opgehaald uit een systeem eigen Azure AD-toepassing (vermeld als vereiste). Met dit code fragment kunt u uw toepassing **interactief** verifiëren met data Lake Storage gen1, wat betekent dat u wordt gevraagd uw Azure-referenties in te voeren.
 
-Voor gebruiksgemak gebruikt het volgende fragment standaardwaarden voor client-id en wordt URI omgeleid die geldig zijn voor elk Azure-abonnement. In het volgende fragment hoeft u alleen de waarde voor uw tenant-id op te geven. U de tenant-id ophalen met behulp van de instructies die worden gegeven bij [Ophalen van de tenant-id.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
+Voor gebruiks gemak gebruikt het volgende fragment standaard waarden voor client-ID en omleidings-URI die geldig zijn voor een Azure-abonnement. In het volgende code fragment hoeft u alleen de waarde voor uw Tenant-ID op te geven. U kunt de Tenant-ID ophalen met behulp van de instructies in [de Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
     
-- Vervang de functie Main() door de volgende code:
+- Vervang de functie main () door de volgende code:
 
     ```csharp
     private static void Main(string[] args)
@@ -94,16 +94,16 @@ Voor gebruiksgemak gebruikt het volgende fragment standaardwaarden voor client-i
     }
     ```
 
-Een paar dingen die u moet weten over het vorige fragment:
+Een aantal dingen die u moet weten over het voor gaande fragment:
 
-* Het vorige fragment maakt gebruik `GetTokenCache` `GetCreds_User_Popup`van een helperfuncties en . De code voor deze helperfuncties is hier beschikbaar [op GitHub.](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)
-* Om u te helpen de zelfstudie sneller te voltooien, wordt in het fragment een native toepassingsclient-id gebruikt die standaard beschikbaar is voor alle Azure-abonnementen. U kunt **dit fragment dus in zijn huidige vorm in uw toepassing gebruiken**.
-* Als u echter uw eigen Azure AD-domein- en toepassingsclient-id wilt gebruiken, moet u een systeemeigen Azure AD-toepassing maken en vervolgens het Azure AD-tenant-ID, de client-ID en omleidings-URI gebruiken voor de toepassing die u hebt gemaakt. Zie [Een Active Directory-toepassing maken voor verificatie van eindgebruikers met Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md) voor instructies.
+* Het voor gaande fragment maakt gebruik van `GetTokenCache` een `GetCreds_User_Popup`hulp functie en. De code voor deze Help-functies is [hier beschikbaar op github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* Om u te helpen de zelf studie sneller te volt ooien, gebruikt het fragment een systeem eigen toepassings-client-ID die standaard beschikbaar is voor alle Azure-abonnementen. U kunt **dit fragment dus in zijn huidige vorm in uw toepassing gebruiken**.
+* Als u echter uw eigen Azure AD-domein- en toepassingsclient-id wilt gebruiken, moet u een systeemeigen Azure AD-toepassing maken en vervolgens het Azure AD-tenant-ID, de client-ID en omleidings-URI gebruiken voor de toepassing die u hebt gemaakt. Zie [een Active Directory-toepassing maken voor verificatie door eind gebruikers met data Lake Storage gen1](data-lake-store-end-user-authenticate-using-active-directory.md) voor instructies.
 
   
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u verificatie van eindgebruikers gebruiken om te verifiëren met Azure Data Lake Storage Gen1 met behulp van .NET SDK. U nu de volgende artikelen bekijken waarin wordt gesproken over het gebruik van de .NET SDK om te werken met Azure Data Lake Storage Gen1.
+In dit artikel hebt u geleerd hoe u verificatie van eind gebruikers kunt gebruiken om te verifiëren met Azure Data Lake Storage Gen1 met behulp van .NET SDK. U kunt nu de volgende artikelen bekijken over het gebruik van de .NET SDK om met Azure Data Lake Storage Gen1 te werken.
 
-* [Accountbeheerbewerkingen op Data Lake Storage Gen1 met .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Gegevensbewerkingen op Data Lake Storage Gen1 met .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Gegevens bewerkingen op Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-data-operations-net-sdk.md)
 

@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 563849d3875ed0156d81770f58340633d90d515b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176488"
 ---
-Dit zijn de afmetingen van de Azure-objecten die kunnen worden geschreven. Zorg ervoor dat alle bestanden die zijn geüpload aan deze limieten voldoen.
+Dit zijn de groottes van de Azure-objecten die kunnen worden geschreven. Zorg ervoor dat alle bestanden die worden geüpload voldoen aan deze limieten.
 
-| Azure-objecttype | Uploadlimiet                                             |
+| Azure-object type | Upload limiet                                             |
 |-------------------|-----------------------------------------------------------|
-| Blob blokkeren        | ~ 4,75 TB                                                 |
-| Paginablob         | 1 TB <br> Elk bestand dat in de Pagina Blob-indeling wordt geüpload, moet 512 bytes zijn uitgelijnd (een integraal veelvoud), anders mislukt de upload. <br> De VHD en VHDX zijn 512 bytes uitgelijnd. |
-| Azure Files         | 1 TB <br> Elk bestand dat in de Pagina Blob-indeling wordt geüpload, moet 512 bytes zijn uitgelijnd (een integraal veelvoud), anders mislukt de upload. <br> De VHD en VHDX zijn 512 bytes uitgelijnd. |
+| Blok-BLOB        | ~ 4,75 TB                                                 |
+| Pagina-BLOB         | 1 TB <br> Elk bestand dat is geüpload in de pagina-BLOB-indeling moet 512 bytes uitgelijnd (een integraal veelvoud), anders mislukt het uploaden. <br> De VHD en VHDX zijn 512 bytes uitgelijnd. |
+| Azure Files         | 1 TB <br> Elk bestand dat is geüpload in de pagina-BLOB-indeling moet 512 bytes uitgelijnd (een integraal veelvoud), anders mislukt het uploaden. <br> De VHD en VHDX zijn 512 bytes uitgelijnd. |
 
 > [!IMPORTANT]
-> Het maken van bestanden (ongeacht het opslagtype) is toegestaan tot 5 TB. Als u echter een bestand maakt waarvan de grootte groter is dan de uploadlimiet die in de vorige tabel is gedefinieerd, wordt het bestand niet geüpload. U moet het bestand handmatig verwijderen om de ruimte terug te winnen.
+> Het maken van bestanden (ongeacht het opslag type) is Maxi maal 5 TB toegestaan. Als u echter een bestand maakt waarvan de grootte groter is dan de upload limiet die in de voor gaande tabel is gedefinieerd, wordt het bestand niet geüpload. U moet het bestand hand matig verwijderen om de ruimte vrij te maken.

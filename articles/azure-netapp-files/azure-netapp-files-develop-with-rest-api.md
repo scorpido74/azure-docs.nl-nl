@@ -1,6 +1,6 @@
 ---
-title: Ontwikkelen voor Azure NetApp-bestanden met REST-API | Microsoft Documenten
-description: Beschrijft hoe u aan de slag met de AZURE NetApp Files REST API.
+title: Ontwikkel voor Azure NetApp Files met REST API | Microsoft Docs
+description: Hierin wordt beschreven hoe u kunt beginnen met het gebruik van de Azure NetApp Files REST API.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,34 +15,34 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: b-juche
 ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65957034"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Ontwikkelen voor Azure NetApp-bestanden met REST-API 
+# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Ontwikkel voor Azure NetApp Files met REST API 
 
-De REST-API voor de Azure NetApp Files-service definieert HTTP-bewerkingen op resources zoals het NetApp-account, de capaciteitsgroep, de volumes en momentopnamen. Met dit artikel u aan de slag met het gebruik van de Azure NetApp Files REST API.
+De REST API voor de Azure NetApp Files-service definieert HTTP-bewerkingen op basis van resources, zoals het NetApp-account, de capaciteits pool, de volumes en moment opnamen. Dit artikel helpt u aan de slag te gaan met het gebruik van de Azure NetApp Files REST API.
 
-## <a name="azure-netapp-files-rest-api-specification"></a>API-specificatie azure NetApp-bestanden
+## <a name="azure-netapp-files-rest-api-specification"></a>Specificatie van Azure NetApp Files REST API
 
-De REST API-specificatie voor Azure NetApp-bestanden wordt gepubliceerd via [GitHub:](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)
+De REST API-specificatie voor Azure NetApp Files wordt gepubliceerd via [github](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
 
-## <a name="access-the-azure-netapp-files-rest-api"></a>Toegang tot de API voor de REST van Azure NetApp Files  
+## <a name="access-the-azure-netapp-files-rest-api"></a>Toegang tot de Azure NetApp Files REST API  
 
-1. [Installeer de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u dit nog niet hebt gedaan.
-2. Een serviceprincipal maken in uw Azure Active Directory (Azure AD):
-   1. Controleer of u [over voldoende machtigingen beschikt.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)
+1. [Installeer de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u dit nog niet hebt gedaan.
+2. Een service-principal maken in uw Azure Active Directory (Azure AD):
+   1. Controleer of u [voldoende machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)hebt.
 
    1. Voer de volgende opdracht in Azure CLI in:  
 
            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
-      De opdrachtuitvoer is vergelijkbaar met het volgende voorbeeld:  
+      De uitvoer van de opdracht is vergelijkbaar met het volgende voor beeld:  
 
            { 
                "appId": "appIDgoeshere", 
@@ -52,38 +52,38 @@ De REST API-specificatie voor Azure NetApp-bestanden wordt gepubliceerd via [Git
                "tenant": "tenantIDgoeshere" 
            } 
 
-      Houd de opdrachtuitvoer.  Je hebt `appId`de `password`, `tenant` , en waarden. 
+      Behoud de uitvoer van de opdracht.  U hebt de `appId`waarden, `password`en `tenant` nodig. 
 
-3. Vraag een OAuth-toegangstoken aan:
+3. Een OAuth-toegangs token aanvragen:
 
-    De voorbeelden in dit artikel gebruiken cURL.  U ook gebruik maken van verschillende API-tools zoals [Postman,](https://www.getpostman.com/) [Insomnia](https://insomnia.rest/), en [Paw](https://paw.cloud/).  
+    De voor beelden in dit artikel gebruiken krul.  U kunt ook verschillende API-hulpprogram ma's gebruiken, zoals [postman](https://www.getpostman.com/), [slapeloosheid](https://insomnia.rest/)en [paw](https://paw.cloud/).  
 
-    Vervang de variabelen in het volgende voorbeeld door de opdrachtuitvoer uit stap 2 hierboven. 
+    Vervang de variabelen in het volgende voor beeld door de opdracht uitvoer van stap 2 hierboven. 
 
         curl -X POST -d 'grant_type=client_credentials&client_id=[APP_ID]&client_secret=[PASSWORD]&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/[TENANT_ID]/oauth2/token
 
-    De uitvoer biedt een toegangstoken dat vergelijkbaar is met het volgende voorbeeld:
+    De uitvoer biedt een toegangs token dat lijkt op het volgende voor beeld:
 
         eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
 
-    Het weergegeven token is 3600 seconden geldig. Daarna moet je een nieuw token aanvragen. 
-    Sla het token op in een teksteditor.  Je hebt het nodig voor de volgende stap.
+    Het weer gegeven token is 3600 seconden geldig. Daarna moet u een nieuw token aanvragen. 
+    Sla het token op in een tekst editor.  U hebt deze nodig voor de volgende stap.
 
-4. Stuur een testoproep en voeg het token toe om uw toegang tot de REST API te valideren:
+4. Een test oproep verzenden en het token opnemen om uw toegang tot de REST API te valideren:
 
         curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2016-08-01
 
-## <a name="examples-using-the-api"></a>Voorbeelden met behulp van de API  
+## <a name="examples-using-the-api"></a>Voor beelden met behulp van de API  
 
-In dit artikel wordt de volgende URL gebruikt voor de basislijn van aanvragen. Deze URL verwijst naar de hoofdmap van de naamruimte azure NetApp-bestanden. 
+In dit artikel wordt de volgende URL gebruikt voor de basis lijn van aanvragen. Deze URL verwijst naar de hoofdmap van de naam ruimte Azure NetApp Files. 
 
 `https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15`
 
-U moet `subID` de `resourceGroups` en waarden in de volgende voorbeelden vervangen door uw eigen waarden. 
+Vervang de `subID` waarden en `resourceGroups` in de volgende voor beelden door uw eigen waarden. 
 
-### <a name="get-request-examples"></a>Voorbeelden van GET-aanvragen
+### <a name="get-request-examples"></a>Voor beelden van aanvragen ophalen
 
-U gebruikt een GET-verzoek om objecten van Azure NetApp-bestanden in een abonnement op te vragen, zoals in de volgende voorbeelden wordt weergegeven: 
+U gebruikt een GET-aanvraag voor het opvragen van objecten van Azure NetApp Files in een abonnement, zoals in de volgende voor beelden wordt weer gegeven: 
 
         #get NetApp accounts 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15
@@ -97,9 +97,9 @@ U gebruikt een GET-verzoek om objecten van Azure NetApp-bestanden in een abonnem
         #get snapshots for a volume 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2017-08-15
 
-### <a name="put-request-examples"></a>VOORBEELDEN van PUT-aanvragen
+### <a name="put-request-examples"></a>Voor beelden van PUT-aanvraag
 
-U gebruikt een PUT-verzoek om nieuwe objecten te maken in Azure NetApp-bestanden, zoals de volgende voorbeelden laten zien. De hoofdtekst van de PUT-aanvraag kan de JSON-opgemaakte gegevens voor de wijzigingen bevatten of het kan een bestand opgeven om uit te lezen. 
+U gebruikt een PUT-aanvraag om nieuwe objecten te maken in Azure NetApp Files, zoals in de volgende voor beelden wordt weer gegeven. De hoofd tekst van de PUT-aanvraag kan de met JSON opgemaakte gegevens voor de wijzigingen bevatten of kan een bestand opgeven waaruit moet worden gelezen. 
 
         #create a NetApp account  
         curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2017-08-15
@@ -113,9 +113,9 @@ U gebruikt een PUT-verzoek om nieuwe objecten te maken in Azure NetApp-bestanden
         #create a volume snapshot  
         curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2017-08-15
 
-### <a name="json-examples"></a>VOORBEELDEN VAN JSON
+### <a name="json-examples"></a>JSON-voor beelden
 
-In het volgende voorbeeld ziet u hoe u een NetApp-account maakt:
+In het volgende voor beeld ziet u hoe u een NetApp-account maakt:
 
     { 
         "name": "MYNETAPPACCOUNT", 
@@ -126,7 +126,7 @@ In het volgende voorbeeld ziet u hoe u een NetApp-account maakt:
         }
     } 
 
-In het volgende voorbeeld ziet u hoe u een capaciteitsgroep maakt: 
+In het volgende voor beeld ziet u hoe u een capaciteits groep maakt: 
 
     {
         "name": "MYNETAPPACCOUNT/POOLNAME",
@@ -139,7 +139,7 @@ In het volgende voorbeeld ziet u hoe u een capaciteitsgroep maakt:
         }
     }
 
-In het volgende voorbeeld ziet u hoe u een nieuw volume maakt: 
+In het volgende voor beeld ziet u hoe u een nieuw volume maakt: 
 
     {
         "name": "MYNEWVOLUME",
@@ -154,7 +154,7 @@ In het volgende voorbeeld ziet u hoe u een nieuw volume maakt:
             }
     }
 
-In het volgende voorbeeld ziet u hoe u een momentopname van een volume maakt: 
+In het volgende voor beeld ziet u hoe u een moment opname maakt van een volume: 
 
     {
         "name": "apitest2/apiPool01/apiVol01/snap02",
@@ -167,8 +167,8 @@ In het volgende voorbeeld ziet u hoe u een momentopname van een volume maakt:
     }
 
 > [!NOTE] 
-> U moet `fileSystemId` opgeven voor het maken van een momentopname.  U `fileSystemId` de waarde verkrijgen met een GET-aanvraag voor een volume. 
+> U moet opgeven `fileSystemId` voor het maken van een moment opname.  U kunt de `fileSystemId` waarde ophalen met een GET-aanvraag naar een volume. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zie de API-verwijzing naar Azure NetApp Files REST](https://docs.microsoft.com/rest/api/netapp/)
+[Zie de naslag informatie voor Azure NetApp Files REST API](https://docs.microsoft.com/rest/api/netapp/)

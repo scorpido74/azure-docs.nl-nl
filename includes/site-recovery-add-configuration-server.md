@@ -10,14 +10,14 @@ ms.date: 02/28/2019
 ms.author: mayg
 ms.custom: include file
 ms.openlocfilehash: 7c682105113dac7c1d457489cf926210ead77993
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175749"
 ---
 1. Voer het installatiebestand voor de geïntegreerde Setup uit.
-2. Selecteer **de configuratieserver en processerver installeren** **in Voordat u begint.**
+2. In **voordat u begint**, selecteert u **de configuratie server en proces server installeren**.
 
     ![Voordat u begint](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 
@@ -27,11 +27,11 @@ ms.locfileid: "67175749"
 4. Selecteer bij **Registratie** de registratiesleutel die u hebt gedownload uit de kluis.
 
     ![Registratie](./media/site-recovery-add-configuration-server/combined-wiz3.png)
-5. Geef bij **Internetinstellingen** op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding moet maken met Azure Site Recovery. Zorg ervoor dat u de vereiste URL's hebt toegestaan.
+5. Geef bij **Internetinstellingen** op hoe de provider die op de configuratieserver wordt uitgevoerd, via internet verbinding moet maken met Azure Site Recovery. Zorg ervoor dat u de vereiste Url's hebt toegestaan.
 
-    - Als u verbinding wilt maken met de proxy die momenteel op de machine is ingesteld, selecteert u **Verbinding maken met Azure Site Recovery met een proxyserver.**
-    - Als u wilt dat de provider rechtstreeks verbinding maakt, selecteert u **Rechtstreeks verbinding maken met Azure Site Recovery zonder proxyserver.**
-    - Als de bestaande proxy verificatie vereist of als u een aangepaste proxy voor de Provider-verbinding wilt gebruiken, selecteert u **Verbinding maken met aangepaste proxy-instellingen**en geeft u het adres, de poort en de referenties op.
+    - Als u verbinding wilt maken met de proxy die momenteel op de computer is ingesteld, selecteert u **verbinding maken met Azure site Recovery met behulp van een proxy server**.
+    - Als u wilt dat de provider rechtstreeks verbinding maakt, selecteert u **rechtstreeks verbinding maken met Azure site Recovery zonder proxy server**.
+    - Als voor de bestaande proxy verificatie is vereist of als u een aangepaste proxy voor de provider verbinding wilt gebruiken, selecteert u **verbinding maken met aangepaste proxy instellingen**en geeft u het adres, de poort en de referenties op.
      ![Firewall](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. Tijdens Setup wordt in **Controle op vereisten** gecontroleerd of de installatie kan worden uitgevoerd. Als er een waarschuwing wordt weergegeven over **Synchronisatiecontrole voor algemene tijd**, moet u controleren of de tijd op de systeemklok (instellingen voor **datum en tijd**) overeenkomt met de tijdzone.
 
@@ -39,11 +39,11 @@ ms.locfileid: "67175749"
 7. Maak bij **MySQL-configuratie** referenties voor aanmelden bij de MySQL-serverinstantie die is geïnstalleerd.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. Selecteer Nee als u Azure Stack VM's of fysieke servers nabouwt in **Omgevingsdetails.** 
+8. Selecteer in **omgevings Details**Nee als u Azure stack vm's of fysieke servers wilt repliceren. 
 9. Selecteer bij **Installatielocatie** waar u de binaire bestanden wilt installeren en de cache wilt opslaan. Het station dat u selecteert, moet ten minste 5 GB vrije schijfruimte bevatten, maar wij raden u aan een cachestation te gebruiken met minstens 600 GB vrije ruimte.
 
     ![Installatielocatie](./media/site-recovery-add-configuration-server/combined-wiz8.png)
-10. Selecteer **in Netwerkselectie**eerst de NIC die de ingebouwde processerver gebruikt voor detectie en pushinstallatie van mobiliteitsservice op bronmachines en selecteer vervolgens de NIC die configuratieserver gebruikt voor connectiviteit met Azure. Poort 9443 is de standaardpoort voor het verzenden en ontvangen van replicatieverkeer, maar u kunt dit poortnummer aanpassen aan de vereisten van de omgeving. Naast poort 9443 wordt ook poort 443 geopend. Deze wordt door een webserver gebruikt om replicatiebewerkingen in te delen. Gebruik poort 443 niet voor het verzenden of ontvangen van replicatieverkeer.
+10. Selecteer in **netwerk selectie**eerst de NIC die de ingebouwde proces server gebruikt voor detectie en push-installatie van Mobility service op bron machines, en selecteer vervolgens de NIC die door de configuratie server wordt gebruikt voor de connectiviteit met Azure. Poort 9443 is de standaardpoort voor het verzenden en ontvangen van replicatieverkeer, maar u kunt dit poortnummer aanpassen aan de vereisten van de omgeving. Naast poort 9443 wordt ook poort 443 geopend. Deze wordt door een webserver gebruikt om replicatiebewerkingen in te delen. Gebruik poort 443 niet voor het verzenden of ontvangen van replicatie verkeer.
 
     ![Netwerk selecteren](./media/site-recovery-add-configuration-server/combined-wiz9.png)
 
@@ -52,4 +52,4 @@ ms.locfileid: "67175749"
 
     ![Samenvatting](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-Nadat de registratie is voltooid, wordt de server weergegeven op het blade **Van de instellingenservers** > **Servers** in de kluis.
+Nadat de registratie is voltooid, wordt de server weer gegeven op de Blade **instellingen** > **servers** in de kluis.

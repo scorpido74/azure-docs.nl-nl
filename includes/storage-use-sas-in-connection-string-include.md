@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176253"
 ---
-Als u beschikt over een URL (Shared Access Signature) die u toegang geeft tot bronnen in een opslagaccount, u de SAS gebruiken in een verbindingstekenreeks. Omdat de SAS de informatie bevat die nodig is om de aanvraag te verifiëren, biedt een verbindingstekenreeks met een SAS het protocol, het serviceeindpunt en de benodigde referenties om toegang te krijgen tot de bron.
+Als u beschikt over een SAS-URL (Shared Access Signature) waarmee u toegang krijgt tot resources in een opslag account, kunt u de SAS gebruiken in een connection string. Omdat de SAS de informatie bevat die nodig is om de aanvraag te verifiëren, levert een connection string met een SAS het Protocol, het service-eind punt en de benodigde referenties voor toegang tot de bron.
 
-Als u een verbindingstekenreeks wilt maken met een handtekening voor gedeelde toegang, geeft u de tekenreeks op in de volgende indeling:
+Als u een connection string wilt maken dat een Shared Access Signature bevat, geeft u de teken reeks op in de volgende indeling:
 
 ```
 BlobEndpoint=myBlobEndpoint;
@@ -23,32 +23,32 @@ FileEndpoint=myFileEndpoint;
 SharedAccessSignature=sasToken
 ```
 
-Elk serviceeindpunt is optioneel, hoewel de verbindingstekenreeks er ten minste één moet bevatten.
+Elk service-eind punt is optioneel, hoewel het connection string ten minste één moet bevatten.
 
 > [!NOTE]
-> Het gebruik van HTTPS met een SAS wordt aanbevolen als een aanbevolen praktijk.
+> Het gebruik van HTTPS met een SAS wordt aanbevolen als best practice.
 >
-> Als u een SAS opgeeft in een verbindingstekenreeks in een configuratiebestand, moet u mogelijk speciale tekens in de URL coderen.
+> Als u een SAS opgeeft in een connection string in een configuratie bestand, moet u mogelijk speciale tekens in de URL coderen.
 >
 >
 
-### <a name="service-sas-example"></a>Voorbeeld van Service SAS
-Hier vindt u een voorbeeld van een verbindingstekenreeks met een service-SAS voor Blob-opslag:
+### <a name="service-sas-example"></a>Voor beeld van service-SAS
+Hier volgt een voor beeld van een connection string die een service-SAS voor Blob Storage bevat:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-En hier is een voorbeeld van dezelfde verbindingstekenreeks met het coderen van speciale tekens:
+En hier volgt een voor beeld van hetzelfde connection string met code ring van speciale tekens:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
 SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 ```
 
-### <a name="account-sas-example"></a>Voorbeeld van Account SAS
-Hier is een voorbeeld van een verbindingstekenreeks met een accountSAS voor Blob- en bestandsopslag. Houd er rekening mee dat eindpunten voor beide services zijn opgegeven:
+### <a name="account-sas-example"></a>Voor beeld van SAS-account
+Hier volgt een voor beeld van een connection string die een account-SAS bevat voor Blob en file storage. Houd er rekening mee dat eind punten voor beide services worden opgegeven:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;
@@ -56,7 +56,7 @@ FileEndpoint=https://storagesample.file.core.windows.net;
 SharedAccessSignature=sv=2015-07-08&sig=iCvQmdZngZNW%2F4vw43j6%2BVz6fndHF5LI639QJba4r8o%3D&spr=https&st=2016-04-12T03%3A24%3A31Z&se=2016-04-13T03%3A29%3A31Z&srt=s&ss=bf&sp=rwl
 ```
 
-En hier is een voorbeeld van dezelfde verbindingstekenreeks met URL-codering:
+En hier volgt een voor beeld van hetzelfde connection string met URL-code ring:
 
 ```
 BlobEndpoint=https://storagesample.blob.core.windows.net;

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
 ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68639121"
 ---
-De eenvoudigste manier om bindende extensies te installeren is om [uitbreidingsbundels](../articles/azure-functions/functions-bindings-register.md#extension-bundles)in te schakelen. Wanneer u bundels inschakelt, wordt automatisch een vooraf gedefinieerde set uitbreidingspakketten geïnstalleerd.
+De eenvoudigste manier om bindings uitbreidingen te installeren is door [uitbreidings bundels](../articles/azure-functions/functions-bindings-register.md#extension-bundles)in te scha kelen. Wanneer u bundels inschakelt, wordt automatisch een vooraf gedefinieerde set uitbreidings pakketten geïnstalleerd.
 
-Als u extensiebundels wilt inschakelen, opent u het bestand host.json en werkt u de inhoud ervan bij aan de volgende code:
+Als u uitbreidings bundels wilt inschakelen, opent u het bestand host. json en werkt u de inhoud bij zodat deze overeenkomt met de volgende code:
 
 ```json
 {

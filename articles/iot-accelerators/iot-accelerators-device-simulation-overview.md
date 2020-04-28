@@ -1,6 +1,6 @@
 ---
-title: Overzicht van apparaatsimulatie - Azure | Microsoft Documenten
-description: Een beschrijving van de device simulation oplossingsversneller en de mogelijkheden ervan.
+title: Overzicht van Device simulatie-Azure | Microsoft Docs
+description: Een beschrijving van de apparaat simulatie oplossings versneller en de mogelijkheden ervan.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -10,57 +10,57 @@ ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
 ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65464868"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Overzicht van de oplossingsversneller voor apparaatsimulatie
 
-In een Cloud-gebaseerde IoT-oplossing maken uw apparaten verbinding met een eindpunt in de cloud om telemetrie te verzenden, zoals temperatuur, locatie en status. Uw oplossing verbruikt deze telemetrie, zodat u acties ondernemen of er inzichten uit halen.
+In een op de cloud gebaseerde IoT-oplossing maken uw apparaten verbinding met een Cloud-eind punt voor het verzenden van telemetrie, zoals de Tempe ratuur, locatie en status. Uw oplossing verbruikt deze telemetrie, zodat u acties kunt ondernemen of inzichten kunt afleiden.
 
-Wanneer u een IoT-oplossing ontwikkelt, zijn experimenteren en testen essentiële onderdelen van dat proces. Simulatie is een belangrijk hulpmiddel tijdens dit proces. Met apparaatsimulatie u:
+Wanneer u een IoT-oplossing ontwikkelt, zijn experimenten en testen essentiële onderdelen van dat proces. Simulatie is een belang rijk hulp middel tijdens dit proces. Met Device simulatie kunt u het volgende doen:
 
-* Snel een prototype aan de praat krijgen en vervolgens herhalen door gesimuleerd apparaatgedrag on the fly aan te passen. Met dit proces u het idee bewijzen voordat u investeert in dure hardware. U aangepaste apparaten maken via de webgebruikersinterface om binnen enkele seconden een prototype-apparaat te genereren.
-* Validerde de oplossing zoals verwacht van apparaat tot oplossing door het simuleren van real-world apparaatgedrag. U complexe apparaatgedragingen scripten met JavaScript om realistische gesimuleerde telemetrie te genereren.
-* Schaal test uw oplossing door normale, piek- en buitenpiekbelastingsomstandigheden te simuleren. Schaaltests helpen u ook om de Azure-resources die nodig zijn om uw oplossing uit te voeren, op de juiste grootte te krijgen.
+* U kunt snel een prototype maken en uitvoeren en vervolgens herhalen door het gedrag van het gesimuleerde apparaat te wijzigen. Met dit proces kunt u het idee aantonen voordat u een dure hardware hebt. U kunt aangepaste apparaten maken via de Web-UI om in een paar seconden een prototype apparaat te genereren.
+* Valideer of de oplossing op basis van het apparaat naar de oplossing verwacht werkt door het gedrag van het apparaat in de praktijk te simuleren. U kunt een script maken voor complex gedrag van apparaten met behulp van Java script om realistische gesimuleerde telemetrie te genereren.
+* Schaal test uw oplossing door normale, pieken en meer belasting voorwaarden te simuleren. Schaal tests helpen u ook om de juiste grootte te geven aan de Azure-resources die nodig zijn om uw oplossing uit te voeren.
 
-![Voorbeeld drone simulatie](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
+![Voor beeld van drone simulatie](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Met Apparaatsimulatie u apparaatmodellen definiëren om uw echte apparaten te simuleren. Dit model bevat berichtindelingen, dubbele eigenschappen en methoden. U ook complexe apparaatgedragen simuleren met JavaScript.
+Met Device simulatie kunt u apparaat modellen definiëren om uw echte apparaten te simuleren. Dit model bevat bericht indelingen, dubbele eigenschappen en methoden. U kunt ook het gedrag van complexe apparaten simuleren met Java script.
 
-U simulaties uitvoeren voor één tot duizenden apparaten die verbinding maken met een IoT-hub. Om u te helpen bij het testen, u optioneel een IoT-hub implementeren, samen met apparaatsimulatie voor een zelfstandige omgeving.
+U kunt simulaties uitvoeren voor één tot duizenden apparaten die verbinding maken met een IoT-hub. Voor hulp bij het testen kunt u optioneel een IoT-hub en Device simulatie implementeren voor een zelfstandige omgeving.
 
-Apparaatsimulatie is gratis. Apparaatsimulatie wordt echter geïmplementeerd in uw Azure-abonnement in de cloud en verbruikt azure-resources. Als apparaatsimulatie niet aan uw vereisten voldoet, is de [broncode ook beschikbaar op GitHub](https://github.com/Azure/device-simulation-dotnet) om te kopiëren en te wijzigen.
+Simulatie van apparaten is gratis. Device simulatie wordt echter geïmplementeerd in uw Azure-abonnement in de Cloud en verbruikt Azure-resources. Als Device simulatie niet aan uw vereisten voldoet, [is de bron code ook beschikbaar op github](https://github.com/Azure/device-simulation-dotnet) om deze te kopiëren en te wijzigen.
 
-## <a name="sample-simulations"></a>Voorbeeldsimulaties
+## <a name="sample-simulations"></a>Voorbeeld simulaties
 
-Wanneer u apparaatsimulatie implementeert, krijgt u enkele voorbeeldsimulaties en voorbeeldapparaten. U deze voorbeelden gebruiken om te leren hoe u apparaatsimulatie gebruiken. Voer om te beginnen een voorbeeldsimulatie uit [die 10 vrachtwagens simuleert.](quickstart-device-simulation-deploy.md) U ook [uw eigen simulatie maken met behulp van een van de vele voorbeeldapparaten die worden geleverd.](iot-accelerators-device-simulation-create-simulation.md)
+Wanneer u Device simulatie implementeert, krijgt u enkele voor beelden van simulaties en voorbeeld apparaten. U kunt deze voor beelden gebruiken voor meer informatie over het gebruik van simulatie van apparaten. Als u aan de slag wilt gaan, voert u een [voorbeeld simulatie uit die 10 vracht wagens simuleert](quickstart-device-simulation-deploy.md). U kunt ook [uw eigen simulatie maken met behulp van een van de beschik bare voorbeeld apparaten](iot-accelerators-device-simulation-create-simulation.md).
 
 ![Simulatieconfiguratie](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>Aangepaste gesimuleerde apparaten
 
-U de apparaatsimulatie gebruiken om [aangepaste apparaatmodellen](iot-accelerators-device-simulation-create-custom-device.md) te maken die u in uw simulaties gebruiken. U bijvoorbeeld een nieuw koelkastapparaatmodel definiëren dat telemetrie over temperatuur en vochtigheid verzendt. Aangepaste gesimuleerde apparaten zijn ideaal voor eenvoudig apparaatgedrag met willekeurige, toenemende of afzwaaiende telemetriewaarden.
+U kunt de simulatie van het apparaat gebruiken om [aangepaste modellen te maken](iot-accelerators-device-simulation-create-custom-device.md) voor gebruik in uw simulaties. U kunt bijvoorbeeld een nieuw model voor koel apparaten definiëren dat telemetrie van de Tempe ratuur en de vochtigheid verzendt. Aangepaste gesimuleerde apparaten zijn ideaal voor eenvoudig gedrag van apparaten met een wille keurige, incrementele of decrementing-telemetrie.
 
 ![Apparaatmodel maken](media/iot-accelerators-device-simulation-overview/adddevicemodel.png)
 
-## <a name="advanced-simulated-devices"></a>Geavanceerde gesimuleerde apparaten
+## <a name="advanced-simulated-devices"></a>Geavanceerd gesimuleerde apparaten
 
-Wanneer u meer controle nodig hebt over de telemetriewaarden die een apparaat verzendt, u een geavanceerd apparaatmodel gebruiken. Geavanceerde apparaatmodellen maken JavaScript-ondersteuning mogelijk om de verzonden telemetriewaarden te manipuleren. U bijvoorbeeld de binnentemperatuur van een geparkeerde auto simuleren op een warme zonnige dag - naarmate de buitentemperatuur stijgt, neemt de binnentemperatuur exponentieel toe.
+Als u meer controle nodig hebt over de telemetrie-waarden die een apparaat verzendt, kunt u een geavanceerd model voor apparaten gebruiken. Geavanceerde apparaten bieden ondersteuning voor Java script om de verzonden telemetriegegevens te bewerken. U kunt bijvoorbeeld de inwendige Tempe ratuur van een geparkde auto simuleren op een warme, zonnige dag, als de buiten temperatuur stijging, de inwendige Tempe ratuur exponentieel toeneemt.
 
-Met geavanceerde apparaatmodellen u [uw eigen apparaatmodellen maken en uploaden](iot-accelerators-device-simulation-advanced-device.md) die bestaan uit een JSON-apparaatdefinitiebestand en bijbehorende JavaScript-bestanden.
+Met geavanceerde apparaten kunt u [uw eigen modellen maken en uploaden](iot-accelerators-device-simulation-advanced-device.md) die bestaan uit een definitie bestand van een JSON-apparaat en de bijbehorende java script-bestanden.
 
-Met geavanceerde apparaatmodellen u:
+Met geavanceerde Device-modellen kunt u:
 
-* Geef de berichtindeling op die vanaf het apparaat wordt verzonden, samen met de telemetrietypen.
-* Gebruik aangepaste scripting om telemetriewaarden te genereren die de status van het apparaat in de loop van de tijd behouden.
+* Geef de bericht indeling op die van het apparaat wordt verzonden, samen met de typen telemetrie.
+* Aangepaste scripting gebruiken om telemetrie-waarden te genereren waarmee de status van het apparaat in de loop van de tijd wordt gehandhaafd.
 * Gebruik aangepaste scripting om op te geven hoe het gesimuleerde apparaat reageert op methoden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leerde u over de apparaatsimulatieoplossingsversneller en de mogelijkheden ervan. Ga aan de slag met de oplossingsversneller:
+In dit artikel hebt u geleerd over de apparaat simulatie oplossings versneller en de mogelijkheden ervan. Ga verder met de Snelstartgids om aan de slag te gaan met de oplossings versneller:
 
 > [!div class="nextstepaction"]
 > [een IoT-apparaatsimulatie in Azure implementeren en uitvoeren](quickstart-device-simulation-deploy.md)

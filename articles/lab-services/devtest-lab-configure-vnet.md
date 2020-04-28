@@ -1,6 +1,6 @@
 ---
-title: Een virtueel netwerk configureren in Azure DevTest Labs | Microsoft Documenten
-description: Meer informatie over het configureren van een bestaand virtueel netwerk en subnet en gebruiken in een VM met Azure DevTest Labs
+title: Een virtueel netwerk configureren in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het configureren van een bestaand virtueel netwerk en subnet, en het gebruik ervan in een VM met Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70390031"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Een virtueel netwerk configureren in Azure DevTest Labs
-Zoals uitgelegd in het artikel [Een VM toevoegen aan een lab,](devtest-lab-add-vm.md)u bij het maken van een vm in een lab een geconfigureerd virtueel netwerk opgeven. Het kan bijvoorbeeld nodig zijn om toegang te krijgen tot uw corpnet-bronnen van uw VM's via het virtuele netwerk dat is geconfigureerd met ExpressRoute of site-to-site VPN.
+Zoals beschreven in het artikel [een VM toevoegen aan een Lab](devtest-lab-add-vm.md)wanneer u een virtuele machine in een Lab maakt, kunt u een geconfigureerd virtueel netwerk opgeven. U moet bijvoorbeeld toegang hebben tot uw Corpnet-resources van uw virtuele machines met behulp van het virtuele netwerk dat is geconfigureerd met ExpressRoute of site-naar-site-VPN.
 
-In dit artikel wordt uitgelegd hoe u uw bestaande virtuele netwerk toevoegt aan de instellingen voor virtueel netwerk van een lab, zodat het beschikbaar is om te kiezen bij het maken van VM's.
+In dit artikel wordt uitgelegd hoe u uw bestaande virtuele netwerk kunt toevoegen aan de Virtual Network-instellingen van een lab, zodat deze beschikbaar is om te kiezen bij het maken van Vm's.
 
 > [!NOTE]
-> Zie [Prijzen voor Azure Virtual Network](../virtual-network/virtual-networks-overview.md#pricing)voor meer informatie over de kosten die zijn gekoppeld aan de Azure Virtual Network-service.
+> Zie [prijzen voor azure Virtual Network](../virtual-network/virtual-networks-overview.md#pricing)als u meer wilt weten over de kosten die zijn gekoppeld aan de Azure Virtual Network-Service.
 
-## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Een virtueel netwerk configureren voor een lab met behulp van de Azure-portal
-De volgende stappen lopen u door het toevoegen van een bestaand virtueel netwerk (en subnet) aan een lab, zodat het kan worden gebruikt bij het maken van een VM in hetzelfde lab. 
+## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Een virtueel netwerk voor een lab configureren met behulp van de Azure Portal
+De volgende stappen helpen u bij het toevoegen van een bestaand virtueel netwerk (en subnet) aan een Lab zodat het kan worden gebruikt bij het maken van een virtuele machine in hetzelfde lab. 
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
-1. Selecteer in de lijst met laboratoria het gewenste lab. 
-1. Selecteer **Configuratie en beleid**in het hoofdvenster van het lab.
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
+1. Selecteer in de lijst met Labs het gewenste Lab. 
+1. Selecteer **configuratie en beleid**in het hoofd venster van het lab.
 
-    ![Toegang tot de configuratie en het beleid van het lab](./media/devtest-lab-configure-vnet/policies-menu.png)
-1. Selecteer **virtuele netwerken**in de sectie **EXTERNE RESOURCES** . Er wordt een lijst met virtuele netwerken weergegeven die zijn geconfigureerd voor het huidige lab en het standaard virtuele netwerk dat voor uw lab is gemaakt. 
+    ![De configuratie en het beleid van het lab openen](./media/devtest-lab-configure-vnet/policies-menu.png)
+1. Selecteer in de sectie **externe resources** **virtuele netwerken**. Er wordt een lijst weer gegeven met virtuele netwerken die zijn geconfigureerd voor het huidige Lab en het virtuele standaard netwerk dat voor uw Lab is gemaakt. 
 1. Selecteer **+ Toevoegen**.
    
-    ![Een bestaand virtueel netwerk toevoegen aan uw lab](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-1. Selecteer in het **deelvenster Virtueel netwerk** de optie **[Virtueel netwerk selecteren]**.
+    ![Een bestaand virtueel netwerk aan uw Lab toevoegen](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
+1. Selecteer in het deel venster **virtueel netwerk** de optie **[virtueel netwerk selecteren]**.
    
-    ![Een bestaand virtueel netwerk selecteren](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-1. Selecteer **in** het deelvenster Virtueel netwerk kiezen het gewenste virtuele netwerk. Er wordt een lijst weergegeven met alle virtuele netwerken die zich in het abonnement onder dezelfde regio bevinden als het lab.
-1. Nadat u een virtueel netwerk hebt geselecteerd, wordt u teruggestuurd naar het **virtuele netwerkvenster.** Selecteer het subnet in de lijst onderaan.
+    ![Selecteer een bestaand virtueel netwerk](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
+1. Selecteer in het deel venster **virtueel netwerk kiezen** het gewenste virtuele netwerk. Er wordt een lijst weer gegeven met alle virtuele netwerken die zich in dezelfde regio in het abonnement bevinden als het lab.
+1. Nadat u een virtueel netwerk hebt geselecteerd, keert u terug naar het deel venster **virtueel netwerk** . Selecteer in de lijst onderaan het subnet.
 
-    ![Subnetlijst](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
+    ![Lijst met subnetten](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
-    Het deelvenster Subnet van het Lab wordt weergegeven.
+    Het deel venster Lab-subnet wordt weer gegeven.
 
-    ![Subnetvenster Lab](./media/devtest-lab-configure-vnet/lab-subnet.png)
+    ![Deel venster Lab-subnet](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
-   - Geef een **subnetnaam lab op**.
-   - Als u wilt toestaan dat een subnet wordt gebruikt in het maken van lab-vm's, selecteert u **Gebruik in het maken van virtuele machines**.
-   - Als u een [gedeeld openbaar IP-adres](devtest-lab-shared-ip.md)wilt inschakelen, selecteert u **Gedeeld openbaar IP inschakelen**.
-   - Als u openbare IP-adressen in een subnet wilt toestaan, selecteert **u Openbare IP-creatie toestaan**.
-   - Geef in het veld **Maximaal virtuele machines per gebruiker** de maximale VM's per gebruiker op voor elk subnet. Als u een onbeperkt aantal VM's wilt, laat u dit veld leeg.
-1. Selecteer **OK** om het deelvenster Subnet van het lab te sluiten.
-1. Selecteer **Opslaan** om het virtuele netwerkvenster te sluiten.
+   - Geef een **naam**op voor het subnet van het lab.
+   - Selecteer gebruiken bij het maken van een **virtuele machine**om toe te staan dat een subnet kan worden gebruikt bij het maken van een Lab VM.
+   - Als u een [gedeeld openbaar IP-adres](devtest-lab-shared-ip.md)wilt inschakelen, selecteert u **gedeelde open bare IP inschakelen**.
+   - Als u open bare IP-adressen in een subnet wilt toestaan, selecteert u **openbaar IP-adres maken toestaan**.
+   - Geef in het veld **maximum aantal virtuele machines per gebruiker** het maximum aantal vm's per gebruiker op voor elk subnet. Als u een onbeperkt aantal Vm's wilt, laat u dit veld leeg.
+1. Selecteer **OK** om het deel venster Lab-subnet te sluiten.
+1. Selecteer **Opslaan** om het deel venster virtueel netwerk te sluiten.
 
-Nu het virtuele netwerk is geconfigureerd, kan het worden geselecteerd bij het maken van een VM. Als u wilt zien hoe u een virtuele virtuele netwerk maakt en een virtueel netwerk opgeeft, raadpleegt u het [artikel, Een vm toevoegen aan een lab](devtest-lab-add-vm.md). 
+Nu het virtuele netwerk is geconfigureerd, kan het worden geselecteerd bij het maken van een virtuele machine. Als u wilt zien hoe u een virtuele machine maakt en een virtueel netwerk opgeeft, raadpleegt u het artikel [een VM toevoegen aan een Lab](devtest-lab-add-vm.md). 
 
-De [virtual network documentation](https://docs.microsoft.com/azure/virtual-network) van Azure biedt meer informatie over het gebruik van VNets, inclusief het instellen en beheren van een VNet en het verbinden met uw on-premises netwerk.
+De [Virtual Network documentatie](https://docs.microsoft.com/azure/virtual-network) van Azure biedt meer informatie over het gebruik van VNets, met inbegrip van het instellen en beheren van een VNet en verbinding maken met uw on-premises netwerk.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zodra u het gewenste virtuele netwerk aan uw lab hebt toegevoegd, is de volgende stap het [toevoegen van een VM aan uw lab.](devtest-lab-add-vm.md)
+Zodra u het gewenste virtuele netwerk aan uw Lab hebt toegevoegd, is de volgende stap het [toevoegen van een virtuele machine aan uw Lab](devtest-lab-add-vm.md).
 

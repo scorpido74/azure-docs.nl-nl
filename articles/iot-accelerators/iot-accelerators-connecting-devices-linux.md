@@ -1,6 +1,6 @@
 ---
-title: Linux-apparaten inrichten op bewaking op afstand in C - Azure | Microsoft Documenten
-description: Beschrijft hoe u een apparaat aansluit op de accelerator voor externe bewaking-oplossingen met behulp van een toepassing die is geschreven in C die op Linux wordt uitgevoerd.
+title: Linux-apparaten inrichten voor externe bewaking in C-Azure | Microsoft Docs
+description: Hierin wordt beschreven hoe u een apparaat verbindt met de oplossings versneller voor externe bewaking met behulp van een toepassing die is geschreven in C onder Linux.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
 ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61454488"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Sluit uw apparaat aan op de Remote Monitoring solution accelerator (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Uw apparaat verbinden met de externe controle oplossings versneller (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In deze zelfstudie ziet u hoe u een echt apparaat aansluiten op de versneller van de oplossing op afstand.
+In deze zelf studie leert u hoe u een echt apparaat verbindt met de oplossings versneller voor externe controle.
 
-Net als bij de meeste ingesloten toepassingen die op beperkte apparaten worden uitgevoerd, wordt de clientcode voor de apparaattoepassing in C geschreven. In deze zelfstudie bouw je de applicatie op een machine met Ubuntu (Linux).
+Net als bij de meeste Inge sloten toepassingen die op beperkte apparaten worden uitgevoerd, wordt de client code voor de apparaat-app geschreven in C. In deze zelf studie bouwt u de toepassing op een computer met Ubuntu (Linux).
 
-Zie Een nieuw gesimuleerd apparaat maken en testen als u een apparaat liever [simuleert.](iot-accelerators-remote-monitoring-create-simulated-device.md)
+Als u liever een apparaat simuleert, raadpleegt u [een nieuw gesimuleerd apparaat maken en testen](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om de stappen in deze handleiding te voltooien, hebt u een apparaat nodig waarop Ubuntu-versie 15.04 of hoger wordt uitgevoerd. Voordat u verdergaat, [stelt u uw Linux-ontwikkelomgeving in.](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)
+Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een apparaat met Ubuntu versie 15,04 of hoger nodig. Voordat u doorgaat, [moet u uw Linux-ontwikkel omgeving instellen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux).
 
-## <a name="view-the-code"></a>De code weergeven
+## <a name="view-the-code"></a>De code weer geven
 
-De [voorbeeldcode](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) die in deze handleiding wordt gebruikt, is beschikbaar in de GitHub-repository van Azure IoT C SDKs.
+De [voorbeeld code](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) die in deze hand leiding wordt gebruikt, is beschikbaar in de Azure IOT C sdk's github-opslag plaats.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>Download de broncode en bereid het project voor
+### <a name="download-the-source-code-and-prepare-the-project"></a>De bron code downloaden en het project voorbereiden
 
-Als u het project wilt voorbereiden, kloont of downloadt u de [Azure IoT C SDKs-repository](https://github.com/Azure/azure-iot-sdk-c) van GitHub.
+Om het project voor te bereiden, moet u de [Azure IOT C-opslag plaats](https://github.com/Azure/azure-iot-sdk-c) van github klonen of downloaden.
 
-Het voorbeeld bevindt zich in de map **samples/solutions/remote_monitoring_client.**
+Het voor beeld bevindt zich in de map **samples/Solutions/remote_monitoring_client** .
 
-Open het **remote_monitoring.c-bestand** in de map **samples/solutions/remote_monitoring_client** in een teksteditor.
+Open het bestand **remote_monitoring. c** in de map **samples/Solutions/remote_monitoring_client** in een tekst editor.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-In de volgende stappen wordt beschreven hoe *u CMake kunt* gebruiken om de clienttoepassing te bouwen. De clienttoepassing voor externe bewaking is gebouwd als onderdeel van het buildproces voor de SDK.
+In de volgende stappen wordt beschreven hoe u *cmake* kunt gebruiken om de client toepassing te bouwen. De client toepassing voor externe controle is gebouwd als onderdeel van het bouw proces voor de SDK.
 
-1. Bewerk het **remote_monitoring.c-bestand** dat u wilt vervangen `<connectionstring>` door de verbindingstekenreeks van het apparaat die u aan het begin van deze handleiding hebt opgemerkt wanneer u een apparaat aan de oplossingsversneller hebt toegevoegd.
+1. Bewerk het **remote_monitoring. c** -bestand dat `<connectionstring>` u wilt vervangen door het apparaat Connection String u hebt genoteerd aan het begin van deze hand leiding wanneer u een apparaat aan de oplossings versneller hebt toegevoegd.
 
-1. Navigeer naar de hoofdmap van uw gekloonde kopie van de [Azure IoT C SDKs-repository](https://github.com/Azure/azure-iot-sdk-c) en voer de volgende opdrachten uit om de clienttoepassing te bouwen:
+1. Ga naar de hoofdmap van de gekloonde kopie van de [Azure IOT C-opslagplaats](https://github.com/Azure/azure-iot-sdk-c) opslagplaats en voer de volgende opdrachten uit om de client toepassing te bouwen:
 
     ```sh
     mkdir cmake
@@ -58,15 +58,15 @@ In de volgende stappen wordt beschreven hoe *u CMake kunt* gebruiken om de clien
     make
     ```
 
-1. Voer de clienttoepassing uit en stuur telemetrie naar IoT Hub:
+1. Voer de client toepassing uit en verzend telemetrie naar IoT Hub:
 
     ```sh
     ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
-    Op de console worden berichten weergegeven als:
+    De console geeft berichten weer als:
 
-    - De toepassing stuurt voorbeeldtelemetrie naar de oplossingsversneller.
-    - Reageert op methoden die worden aangeroepen vanuit het oplossingsdashboard.
+    - De toepassing verzendt voor beeld-telemetrie naar de oplossings versneller.
+    - Reageert op methoden die zijn aangeroepen vanuit het dash board van de oplossing.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

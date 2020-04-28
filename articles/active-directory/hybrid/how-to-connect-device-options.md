@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: apparaatopties | Microsoft Documenten'
-description: In dit document worden de apparaatopties beschreven die beschikbaar zijn in Azure AD Connect
+title: 'Azure AD Connect: opties voor apparaten | Microsoft Docs'
+description: Dit document bevat informatie over de apparaten die beschikbaar zijn in Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,34 +17,34 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109530"
 ---
-# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: apparaatopties
+# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: opties voor apparaten
 
-In de volgende documentatie vindt u informatie over de verschillende apparaatopties die beschikbaar zijn in Azure AD Connect. U Azure AD Connect gebruiken om de volgende twee bewerkingen te configureren: 
-* **Hybride Azure AD join:** Als uw omgeving een on-premises AD-voetafdruk heeft en u de voordelen van Azure AD wilt, u hybride Azure AD-apparaten implementeren. Deze apparaten worden samengevoegd met zowel uw on-premises Active Directory als uw Azure Active Directory.
-* **Apparaatterugschrijven**: Apparaatterugschrijven wordt gebruikt om voorwaardelijke toegang in te schakelen op basis van apparaten met beveiligde APPARATEN (2012 R2 of hoger)
+De volgende documentatie bevat informatie over de verschillende beschik bare opties voor apparaten in Azure AD Connect. U kunt Azure AD Connect gebruiken om de volgende twee bewerkingen te configureren: 
+* **Hybride Azure AD join**: als uw omgeving een on-premises AD-footprint heeft en u de voor delen van Azure ad wilt bieden, kunt u aan hybride Azure AD gekoppelde apparaten implementeren. Deze apparaten zijn gekoppeld aan uw on-premises Active Directory en uw Azure Active Directory.
+* **Write-back van apparaat**: apparaat write-back wordt gebruikt voor het inschakelen van voorwaardelijke toegang op basis van apparaten die zijn AD FS (2012 R2 of hoger) beveiligde apparaten
 
-## <a name="configure-device-options-in-azure-ad-connect"></a>Apparaatopties configureren in Azure AD Connect
+## <a name="configure-device-options-in-azure-ad-connect"></a>Opties voor apparaten configureren in Azure AD Connect
 
-1.  Azure AD Connect uitvoeren. Selecteer **apparaatopties configureren**op de pagina **Extra taken** .  Klik op **Volgende**.
-    ![Apparaatopties configureren](./media/how-to-connect-device-options/deviceoptions.png) 
+1.  Voer Azure AD Connect uit. Selecteer op de pagina **extra taken** de optie **device-opties configureren**.  Klik op **Volgende**.
+    ![Opties voor apparaten configureren](./media/how-to-connect-device-options/deviceoptions.png) 
 
-    Op de pagina **Overzicht** worden de details weergegeven.
+    Op de pagina **overzicht** worden de details weer gegeven.
     ![Overzicht](./media/how-to-connect-device-options/deviceoverview.png)
 
     >[!NOTE]
-    > De nieuwe apparaatopties configureren zijn alleen beschikbaar in versie 1.1.819.0 en nieuwer.
+    > De nieuwe opties voor het configureren van apparaten zijn alleen beschikbaar in versie 1.1.819.0 en nieuwer.
 
-2.  Nadat u de referenties voor Azure AD hebt verstrekt, u de bewerking kiezen die moet worden uitgevoerd op de pagina Apparaatopties.
-    ![Apparaatbewerkingen](./media/how-to-connect-device-options/deviceoptionsselection.png)
+2.  Nadat u de referenties voor Azure AD hebt opgegeven, kunt u de bewerking die moet worden uitgevoerd op de pagina opties voor het apparaat kiezen.
+    ![Bewerkingen voor apparaten](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Hybride Azure AD-lid configureren](../device-management-hybrid-azuread-joined-devices-setup.md)
-* [Terugschrijven van apparaten configureren / uitschakelen](how-to-connect-device-writeback.md)
+* [Hybride Azure AD-deelname configureren](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Write-back van apparaat configureren/uitschakelen](how-to-connect-device-writeback.md)
 

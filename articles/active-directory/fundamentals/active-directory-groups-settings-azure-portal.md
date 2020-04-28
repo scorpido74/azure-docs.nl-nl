@@ -1,6 +1,6 @@
 ---
-title: Uw groepsgegevens bewerken - Azure Active Directory | Microsoft Documenten
-description: Instructies voor het bewerken van de gegevens van uw groep met Azure Active Directory.
+title: Uw groeps gegevens bewerken-Azure Active Directory | Microsoft Docs
+description: Instructies voor het bewerken van de gegevens van uw groep met behulp van Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,46 +14,46 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561872"
 ---
-# <a name="edit-your-group-information-using-azure-active-directory"></a>Uw groepsgegevens bewerken met Azure Active Directory
+# <a name="edit-your-group-information-using-azure-active-directory"></a>Uw groeps gegevens bewerken met behulp van Azure Active Directory
 
-Met Azure Ad (Azure AD) u de instellingen van een groep bewerken, inclusief het bijwerken van de naam, beschrijving of het lidmaatschapstype.
+Met Azure Active Directory (Azure AD) kunt u de instellingen van een groep bewerken, waaronder het bijwerken van de naam, beschrijving of type lidmaatschap.
 
-## <a name="to-edit-your-group-settings"></a>Uw groepsinstellingen bewerken
+## <a name="to-edit-your-group-settings"></a>De groeps instellingen bewerken
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met het account van een globale administrator voor de map.
 
-2. Selecteer **Azure Active Directory**en selecteer **Groepen**.
+2. Selecteer **Azure Active Directory**en selecteer vervolgens **groepen**.
 
-    De pagina **Groepen - Alle groepen** wordt weergegeven met al uw actieve groepen.
+    De pagina **groepen-alle groepen** wordt weer gegeven, met al uw actieve groepen.
 
-3. Typ in de pagina **Groepen - Alle groepen** zoveel mogelijk van de groepsnaam in het vak **Zoeken.** Voor de toepassing van dit artikel, zijn we op zoek naar de **MDM beleid - West** groep.
+3. Op de pagina **groepen-alle groepen** typt u zoveel van de groeps naam zoals u kunt vinden in het **zoekvak** . Voor de doel einden van dit artikel wordt gezocht naar het **MDM-beleid-westelijke** groep.
 
-    De zoekresultaten worden weergegeven onder het vak **Zoeken** en worden bijgewerkt terwijl u meer tekens typt.
+    De zoek resultaten worden weer gegeven onder het **zoekvak** en worden bijgewerkt terwijl u meer tekens typt.
 
-    ![Pagina Alle groepen, met zoektekst in het vak Zoeken](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
+    ![Pagina alle groepen, met Zoek tekst in het zoekvak](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. Selecteer het **MDM-beleid van**de groep - West en selecteer **eigenschappen** in het gebied **Beheren.**
+4. Selecteer de groep **MDM-beleid-West**en selecteer vervolgens **Eigenschappen** in het gebied **beheren** .
 
-    ![Pagina Groepsoverzicht, met de optie Lid en informatie gemarkeerd](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![De pagina overzicht van groepen, met de optie en de gemarkeerde informatie](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
-5. Werk de algemene **instellingen** gegevens zo nodig bij, waaronder:
+5. Werk de informatie over de **algemene instellingen** naar behoefte bij, waaronder:
 
-    ![Eigenschappeninstellingen voor een groep](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
+    ![Eigenschappen instellingen voor een groep](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
 
-    - **Groepsnaam.** Bewerk de bestaande groepsnaam.
+    - **Groeps naam.** Bewerk de bestaande groeps naam.
     
-    - **Groepsbeschrijving.** Bewerk de bestaande groepsbeschrijving.
+    - **Groepsbeschrijving.** Bewerk de beschrijving van de bestaande groep.
 
-    - **Groepstype.** U het type groep niet wijzigen nadat deze is gemaakt. Als u het **groepstype**wilt wijzigen, moet u de groep verwijderen en een nieuwe groep maken.
+    - **Groeps type.** U kunt het type van de groep niet wijzigen nadat deze is gemaakt. Als u het **groeps type**wilt wijzigen, moet u de groep verwijderen en een nieuwe maken.
     
-    - **Type lidmaatschap.** Wijzig het lidmaatschapstype. Zie [Een basisgroep maken en leden toevoegen met de Azure Active Directory-portal](active-directory-groups-create-azure-portal.md)voor meer informatie over de verschillende beschikbare lidmaatschapstypen.
+    - **Type lidmaatschap.** Wijzig het lidmaatschaps type. Zie [procedure: een basis groep maken en leden toevoegen met behulp van de Azure Active Directory Portal](active-directory-groups-create-azure-portal.md)voor meer informatie over de verschillende beschik bare typen lidmaatschappen.
     
-    - **Object-ID.** U de object-id niet wijzigen, maar u deze wel kopiëren om te gebruiken in uw PowerShell-opdrachten voor de groep. Zie [Azure Active Directory-cmdlets voor](../users-groups-roles/groups-settings-v2-cmdlets.md)meer informatie over het gebruik van PowerShell-cmdlets voor het configureren van groepsinstellingen.
+    - **Object-ID.** De object-ID kan niet worden gewijzigd, maar u kunt deze kopiëren voor gebruik in uw Power shell-opdrachten voor de groep. Zie [Azure Active Directory-cmdlets voor het configureren van groeps instellingen](../users-groups-roles/groups-settings-v2-cmdlets.md)voor meer informatie over het gebruik van Power shell-cmdlets.
 
 ## <a name="next-steps"></a>Volgende stappen
 Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
@@ -62,7 +62,7 @@ Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
 
 - [Een basisgroep maken en leden toevoegen](active-directory-groups-create-azure-portal.md)
 
-- [Leden toevoegen of verwijderen uit een groep](active-directory-groups-members-azure-portal.md)
+- [Leden toevoegen aan of verwijderen uit een groep](active-directory-groups-members-azure-portal.md)
 
 - [Dynamische regels voor gebruikers in een groep beheren](../users-groups-roles/groups-create-rule.md)
 

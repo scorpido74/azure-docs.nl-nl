@@ -1,6 +1,6 @@
 ---
-title: Informatie over de berichtindeling van Azure IoT Hub | Microsoft Documenten
-description: Ontwikkelaarshandleiding - beschrijft de indeling en verwachte inhoud van IoT Hub-berichten.
+title: Informatie over de Azure IoT Hub-bericht indeling | Microsoft Docs
+description: 'Ontwikkelaars handleiding: beschrijft de indeling en de verwachte inhoud van IoT Hub berichten.'
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -9,89 +9,89 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
 ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69872490"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-berichten maken en lezen
 
-Om naadloze interoperabiliteit tussen protocollen te ondersteunen, definieert IoT Hub een gemeenschappelijke berichtindeling voor alle apparaatgerichte protocollen. Deze berichtindeling wordt gebruikt voor zowel [device-to-cloud routing](iot-hub-devguide-messages-d2c.md) als [cloud-to-device](iot-hub-devguide-messages-c2d.md) berichten. 
+IoT Hub definieert een gemeen schappelijke bericht indeling voor alle protocollen op het apparaat om een naadloze samen werking tussen protocollen te ondersteunen. Deze bericht indeling wordt gebruikt voor zowel [apparaat-naar-Cloud routering](iot-hub-devguide-messages-d2c.md) als [Cloud-naar-apparaat](iot-hub-devguide-messages-c2d.md) -berichten. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub implementeert device-to-cloud messaging met behulp van een streaming messaging patroon. De device-to-cloud-berichten van IoT Hub lijken meer op [gebeurtenissen in event hubs](/azure/event-hubs/) *dan* op Service [Service Bus](/azure/service-bus-messaging/) *Bus-berichten,* omdat er een groot aantal gebeurtenissen door de service gaat die door meerdere lezers kunnen worden gelezen.
+IoT Hub implementeert apparaat-naar-Cloud-berichten met behulp van een streaming-berichten patroon. IoT Hub apparaat-naar-Cloud-berichten zijn meer soort gelijke [Event hubs](/azure/event-hubs/) *gebeurtenissen* dan [Service Bus](/azure/service-bus-messaging/) *berichten* dat er een groot aantal gebeurtenissen door de service wordt door gegeven die door meerdere lezers kunnen worden gelezen.
 
-Een IoT Hub-bericht bestaat uit:
+Een IoT Hub bericht bestaat uit:
 
-* Een vooraf bepaalde set *systeemeigenschappen* zoals hieronder vermeld.
+* Een vooraf vastgestelde set *systeem eigenschappen* , zoals hieronder wordt weer gegeven.
 
-* Een set *toepassingseigenschappen*. Een woordenboek met tekenreekseigenschappen die de toepassing kan definiëren en openen, zonder dat de berichttekst hoeft te worden gedeserialiseren. IoT Hub wijzigt deze eigenschappen nooit.
+* Een set eigenschappen van de *toepassing*. Een woorden lijst met teken reeks eigenschappen die de toepassing kan definiëren en openen, zonder dat de hoofd tekst van het bericht hoeft te worden gedeserialiseerd. Met IoT Hub worden deze eigenschappen nooit gewijzigd.
 
-* Een ondoorzichtig binair lichaam.
+* Een ondoorzichtige binaire hoofd tekst.
 
-Eigenschapnamen en waarden kunnen alleen Alfanumerieke tekens ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` van ASCII bevatten, plus wanneer u apparaat-naar-cloudberichten verzendt met behulp van het HTTPS-protocol of berichten van cloud naar apparaat verzendt.
+Eigenschaps namen en-waarden mogen alleen ASCII-alfanumerieke ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` tekens bevatten, plus wanneer u apparaat-naar-Cloud-berichten verzendt met het HTTPS-protocol of Cloud-naar-apparaat-berichten verzendt.
 
-Device-to-cloud messaging met IoT Hub heeft de volgende kenmerken:
+Het verzenden van apparaat-naar-Cloud-berichten met IoT Hub heeft de volgende kenmerken:
 
-* Device-to-cloud berichten zijn duurzaam en bewaard in het standaard eindpunt van een IoT-hub voor **berichten/gebeurtenissen** gedurende maximaal zeven dagen.
+* Apparaat-naar-Cloud-berichten zijn duurzaam en blijven bewaard in het standaard eindpunt voor **berichten/gebeurtenissen** van een IOT-hub tot zeven dagen.
 
-* Device-to-cloud berichten kunnen maximaal 256 KB zijn en kunnen in batches worden gegroepeerd om verzendingen te optimaliseren. Batches kunnen hoogstens 256 KB zijn.
+* Apparaat-naar-Cloud-berichten kunnen Maxi maal 256 KB groot zijn en kunnen worden gegroepeerd in batches om het verzenden te optimaliseren. Batches kunnen Maxi maal 256 KB groot zijn.
 
-* IoT Hub staat geen willekeurige partitionering toe. Device-to-cloud berichten worden verdeeld op basis van hun oorspronkelijke **deviceId**.
+* Voor IoT Hub is geen wille keurige partitionering toegestaan. Apparaat-naar-Cloud-berichten worden gepartitioneerd op basis van hun oorspronkelijke **deviceId**.
 
-* Zoals uitgelegd in [Control access to IoT Hub,](iot-hub-devguide-security.md)maakt IoT Hub verificatie per apparaat en toegangscontrole mogelijk.
+* Zoals wordt beschreven in [toegang tot IOT hub beheren](iot-hub-devguide-security.md), wordt met behulp van IOT hub verificatie per apparaat en toegangs beheer ingeschakeld.
 
-* U berichten stempelen met informatie die in de toepassingseigenschappen gaat. Zie voor meer informatie [de verrijkingen van berichten](iot-hub-message-enrichments-overview.md).
+* U kunt berichten stem pelen met informatie die in de toepassings eigenschappen gaat. Zie voor meer informatie [bericht verrijkingen](iot-hub-message-enrichments-overview.md).
 
-Zie [Azure IoT SDKs](iot-hub-devguide-sdks.md)voor meer informatie over het coderen en decoderen van berichten die met verschillende protocollen worden verzonden.
+Zie [Azure IOT sdk's](iot-hub-devguide-sdks.md)(Engelstalig) voor meer informatie over het coderen en decoderen van berichten die zijn verzonden met behulp van verschillende protocollen.
 
-## <a name="system-properties-of-d2c-iot-hub-messages"></a>Systeemeigenschappen van **D2C** IoT Hub-berichten
+## <a name="system-properties-of-d2c-iot-hub-messages"></a>Systeem eigenschappen van **D2C** IOT hub berichten
 
-| Eigenschap | Beschrijving  |User Settable?|Trefwoord voor </br>routeringsquery|
+| Eigenschap | Beschrijving  |Gebruiker instelbaar?|Tref woord voor </br>routerings query|
 | --- | --- | --- | --- |
-| bericht-id |Een door de gebruiker ingestelde id voor het bericht dat wordt gebruikt voor antwoordpatronen. Indeling: een hoofdlettergevoelige tekenreeks (tot 128 tekens lang) met alfanumerieke `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`tekens van ASCII 7 - + .  | Ja | messageId |
-| iothub-enqueuedtime |Datum en tijd het [Device-to-Cloud-bericht](iot-hub-devguide-d2c-guidance.md) is ontvangen door IoT Hub. | Nee | wachtrijtijd |
-| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten worden gegenereerd door IoT Hub, is deze ingesteld op `{iot hub name}`. | Ja | userId |
-| iothub-verbinding-apparaat-id |Een ID die door IoT Hub is ingesteld op device-to-cloud-berichten. Het bevat de **deviceId** van het apparaat dat het bericht heeft verzonden. | Nee | verbindingDeviceId |
-| iothub-connection-module-id |Een ID die door IoT Hub is ingesteld op device-to-cloud-berichten. Het bevat de **moduleId** van het apparaat dat het bericht verzonden. | Nee | connectionModuleId |
-| iothub-connection-auth-generation-id |Een ID die door IoT Hub is ingesteld op device-to-cloud-berichten. Het bevat de **verbindingDeviceGenerationId** (volgens [de identiteit van het apparaat)](iot-hub-devguide-identity-registry.md#device-identity-properties)van het apparaat dat het bericht heeft verzonden. | Nee |verbindingDeviceGenerationId |
-| iothub-connection-auth-methode |Een verificatiemethode die door IoT Hub is ingesteld op device-to-cloud-berichten. Deze eigenschap bevat informatie over de verificatiemethode die wordt gebruikt om het apparaat te verifiëren dat het bericht verzendt.| Nee | verbindingAuthMethod |
+| bericht-id |Een door de gebruiker instel bare id voor het bericht dat wordt gebruikt voor de aanvraag/antwoord patronen. Indeling: een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`+.  | Ja | messageId |
+| iothub-enqueuedtime |De datum en tijd waarop het [apparaat-naar-Cloud-](iot-hub-devguide-d2c-guidance.md) bericht is ontvangen door IOT hub. | Nee | enqueuedTime |
+| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten door IoT Hub worden gegenereerd, wordt deze ingesteld op `{iot hub name}`. | Ja | userId |
+| iothub-verbinding-apparaat-id |Een ID die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Deze bevat de **deviceId** van het apparaat dat het bericht heeft verzonden. | Nee | connectionDeviceId |
+| iothub-verbinding-module-id |Een ID die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Het bevat de **moduleId** van het apparaat dat het bericht heeft verzonden. | Nee | connectionModuleId |
+| iothub-verbinding-generatie-id |Een ID die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Het bevat de **connectionDeviceGenerationId** (per [apparaat-id-eigenschappen](iot-hub-devguide-identity-registry.md#device-identity-properties)) van het apparaat dat het bericht heeft verzonden. | Nee |connectionDeviceGenerationId |
+| iothub-Connection-auth-methode |Een verificatie methode die is ingesteld door IoT Hub op apparaat-naar-Cloud-berichten. Deze eigenschap bevat informatie over de verificatie methode die wordt gebruikt om het apparaat te verifiëren dat het bericht verzendt.| Nee | connectionAuthMethod |
 
-## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systeemeigenschappen van **C2D** IoT Hub-berichten
+## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systeem eigenschappen van **C2D** IOT hub berichten
 
-| Eigenschap | Beschrijving  |User Settable?|
+| Eigenschap | Beschrijving  |Gebruiker instelbaar?|
 | --- | --- | --- |
-| bericht-id |Een door de gebruiker ingestelde id voor het bericht dat wordt gebruikt voor antwoordpatronen. Indeling: een hoofdlettergevoelige tekenreeks (tot 128 tekens lang) met alfanumerieke `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`tekens van ASCII 7 - + .  |Ja|
-| volgnummer |Een nummer (uniek per apparaatwachtrij) dat door IoT Hub is toegewezen aan elk cloud-to-device-bericht. |Nee|
-| tot |Een bestemming die is opgegeven in [berichten van cloud naar apparaat.](iot-hub-devguide-c2d-guidance.md) |Nee|
-| absolute-expiry-time |Datum en tijd van het verstrijken van het bericht. |Nee|   |
-| correlation-id |Een tekenreekseigenschap in een antwoordbericht dat doorgaans de MessageId van de aanvraag bevat, in antwoordpatronen. |Ja|
-| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten worden gegenereerd door IoT Hub, is deze ingesteld op `{iot hub name}`. |Ja|
-| iothub-ack |Een feedback bericht generator. Deze eigenschap wordt gebruikt in berichten van cloud tot apparaat om IoT Hub te vragen om feedbackberichten te genereren als gevolg van het verbruik van het bericht door het apparaat. Mogelijke waarden: **geen** (standaard): er wordt geen feedbackbericht gegenereerd, **positief:** ontvang een feedbackbericht als het bericht is voltooid, **negatief:** ontvang een feedbackbericht als het bericht is verlopen (of het maximale aantal levering is bereikt) zonder dat het apparaat is voltooid, of **volledig:** zowel positief als negatief. |Ja|
+| bericht-id |Een door de gebruiker instel bare id voor het bericht dat wordt gebruikt voor de aanvraag/antwoord patronen. Indeling: een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`+.  |Ja|
+| Volg nummer |Een getal (uniek per apparaat wachtrij) toegewezen door IoT Hub aan elk bericht van de Cloud naar het apparaat. |Nee|
+| tot |Een doel dat is opgegeven in [Cloud-naar-apparaat-](iot-hub-devguide-c2d-guidance.md) berichten. |Nee|
+| absoluut-verloop tijd |De datum en tijd waarop het bericht is verlopen. |Nee|   |
+| correlation-id |Een teken reeks eigenschap in een antwoord bericht dat normaal gesp roken de MessageId van de aanvraag bevat, in antwoord patronen voor aanvragen. |Ja|
+| user-id |Een ID die wordt gebruikt om de oorsprong van berichten op te geven. Wanneer berichten door IoT Hub worden gegenereerd, wordt deze ingesteld op `{iot hub name}`. |Ja|
+| iothub-ACK |Een feedback bericht generator. Deze eigenschap wordt gebruikt in Cloud-naar-apparaat-berichten om IoT Hub te vragen om feedback berichten te genereren als gevolg van het verbruik van het bericht door het apparaat. Mogelijke waarden: **geen** (standaard): er wordt geen feedback bericht gegenereerd, **positief**: er wordt een feedback bericht ontvangen als het bericht is voltooid, **negatief**: Ontvang een feedback bericht als het bericht is verlopen (of het maximum aantal leveringen is bereikt) zonder dat het apparaat is voltooid, of **volledig**: zowel positief als negatief. |Ja|
 
 ## <a name="message-size"></a>Berichtgrootte
 
-IoT Hub meet de grootte van berichten op een protocol-agnostische manier, rekening houdend met alleen de werkelijke payload. De grootte in bytes wordt berekend als de som van de volgende waarden:
+IoT Hub de grootte van het bericht in een protocol-neutraal manier meet, waarbij alleen de daad werkelijke lading wordt overwogen. De grootte in bytes wordt berekend als de som van de volgende waarden:
 
-* De lichaamsgrootte in bytes.
-* De grootte in bytes van alle waarden van de eigenschappen van het berichtensysteem.
-* De grootte in bytes van alle namen en waarden van gebruikerseigenschap.
+* De grootte van de hoofd tekst in bytes.
+* De grootte in bytes van alle waarden van de eigenschappen van het bericht systeem.
+* De grootte in bytes van alle namen en waarden van gebruikers eigenschappen.
 
-Eigenschapnamen en waarden zijn beperkt tot ASCII-tekens, zodat de lengte van de tekenreeksen gelijk is aan de grootte in bytes.
+Eigenschaps namen en-waarden zijn beperkt tot ASCII-tekens, waardoor de lengte van de teken reeksen gelijk is aan de grootte in bytes.
 
 ## <a name="anti-spoofing-properties"></a>Anti-spoofing-eigenschappen
 
-Om apparaatspoofing in device-to-cloud-berichten te voorkomen, stempelt IoT Hub alle berichten met de volgende eigenschappen:
+Als u wilt voor komen dat apparaat-to-Cloud-berichten worden vervalst, IoT Hub stemt u alle berichten af met de volgende eigenschappen:
 
 * **iothub-verbinding-apparaat-id**
-* **iothub-connection-auth-generation-id**
-* **iothub-connection-auth-methode**
+* **iothub-verbinding-generatie-id**
+* **iothub-Connection-auth-methode**
 
-De eerste twee bevatten de **deviceId** en **generationId** van het oorspronkelijke apparaat, volgens [de identiteitvan het apparaat eigenschappen](iot-hub-devguide-identity-registry.md#device-identity-properties).
+De eerste twee bevatten de **deviceId** en **generationId** van het oorspronkelijke apparaat, zoals de eigenschappen van de [apparaat-id](iot-hub-devguide-identity-registry.md#device-identity-properties).
 
-De eigenschap **iothub-connection-auth-method** bevat een JSON-geserialiseerd object met de volgende eigenschappen:
+De eigenschap **iothub-Connection-Authentication-Method** bevat een JSON-geserialiseerd object met de volgende eigenschappen:
 
 ```json
 {
@@ -103,6 +103,6 @@ De eigenschap **iothub-connection-auth-method** bevat een JSON-geserialiseerd ob
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [IoT Hub-quota en beperking voor](iot-hub-devguide-quotas-throttling.md)informatie over de groottelimieten van berichten in IoT Hub.
+* [IOT hub Zie quota's en beperken](iot-hub-devguide-quotas-throttling.md)voor meer informatie over de limieten voor de bericht grootte in IOT hub.
 
-* Zie De [Quickstarts](quickstart-send-telemetry-node.md)voor meer informatie over het maken en lezen van IoT Hub-berichten in verschillende programmeertalen.
+* Meer informatie over het maken en lezen van IoT Hub berichten in verschillende programmeer talen vindt u in de [Quick](quickstart-send-telemetry-node.md)starts.

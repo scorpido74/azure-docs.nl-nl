@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect installeren met SQL-machtigingen voor gedelegeerde beheerders | Microsoft Documenten
-description: In dit onderwerp wordt een update voor Azure AD Connect beschreven waarmee u worden geïnstalleerd met een account dat alleen SQL dbo-machtigingen heeft.
+title: Azure AD Connect installeren met behulp van SQL delegated Administrator Permissions | Microsoft Docs
+description: In dit onderwerp wordt een update voor Azure AD Connect beschreven die kan worden geïnstalleerd met behulp van een account dat alleen SQL dbo-machtigingen heeft.
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,51 +17,51 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60243521"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen
-Voorafgaand aan de nieuwste Azure AD Connect-build werd de administratieve delegatie bij het implementeren van configuraties die SQL vereist, niet ondersteund.  Gebruikers die Azure AD Connect wilden installeren, moesten serverbeheerders (SA)-machtigingen op de SQL-server hebben.
+Voorafgaand aan de nieuwste Azure AD Connect-build, werd beheer overdracht bij het implementeren van configuraties die vereist voor SQL, niet ondersteund.  Gebruikers die Azure AD Connect nodig hadden voor het installeren van de machtigingen van de server beheerder (SA) op de SQL-Server.
 
-Met de nieuwste versie van Azure AD Connect kan het inrichten van de database nu buiten de band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de Azure AD Connect-beheerder met database-eigenaarrechten.
+Met de meest recente versie van Azure AD Connect kan de inrichting van de data base nu buiten-band worden uitgevoerd door de SQL-beheerder en vervolgens door de Azure AD Connect beheerder worden geïnstalleerd met de rechten van de data base-eigenaar.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Als u deze functie wilt gebruiken, moet u zich realiseren dat er verschillende bewegende onderdelen zijn en dat elk van deze onderdelen een andere beheerder in uw organisatie kan betrekken.  In de volgende tabel worden de afzonderlijke rollen en hun respectieve taken bij het implementeren van Azure AD Connect met deze functie samengevat.
+Als u deze functie wilt gebruiken, moet u er rekening mee houden dat er verschillende bewegende onderdelen zijn en dat er voor elk item een andere beheerder in uw organisatie kan worden betrokken.  De volgende tabel bevat een overzicht van de afzonderlijke rollen en hun respectieve taken bij het implementeren van Azure AD Connect met deze functie.
 
 |Rol|Beschrijving|
 |-----|-----|
-|Ad-beheerder domein of forest|Hiermee maakt u het serviceaccount op domeinniveau dat door Azure AD Connect wordt gebruikt om de synchronisatieservice uit te voeren.  Zie [Accounts en machtigingen](reference-connect-accounts-permissions.md)voor meer informatie over serviceaccounts.
-|SQL-beheerder|Hiermee maakt u de ADSync-database en verleent u aanmelding + dbo-toegang tot de Azure AD Connect-beheerder en het serviceaccount dat is gemaakt door de domein-/forestbeheerder.|
-Azure AD Connect-beheerder|Installeert Azure AD Connect en geeft het serviceaccount op tijdens de aangepaste installatie.
+|Domein-of forest AD-beheerder|Hiermee maakt u het domein niveau service account dat wordt gebruikt door Azure AD Connect om de synchronisatie service uit te voeren.  Zie [accounts and permissions](reference-connect-accounts-permissions.md)voor meer informatie over service accounts.
+|SQL-beheerder|Hiermee maakt u de ADSync-data base en verleent u aanmelding en toegang tot de Azure AD Connect beheerder en het service account dat is gemaakt door de domein-of forest-beheerder.|
+Azure AD Connect beheerder|Installeert Azure AD Connect en geeft het service account op tijdens een aangepaste installatie.
 
-## <a name="steps-for-installing-azure-ad-connect-using-sql-delegated-permissions"></a>Stappen voor het installeren van Azure AD Connect met SQL-gedelegeerde machtigingen
-Als u de database uit de band wilt inrichten en Azure AD Connect wilt installeren met machtigingen voor database-eigenaren, gebruikt u de volgende stappen.
+## <a name="steps-for-installing-azure-ad-connect-using-sql-delegated-permissions"></a>Stappen voor het installeren van Azure AD Connect met behulp van SQL-gedelegeerde machtigingen
+Als u de data base buiten-band wilt inrichten en Azure AD Connect wilt installeren met machtigingen voor de eigenaar van de data base, gebruikt u de volgende stappen.
 
 >[!NOTE]
->Hoewel het niet nodig is, wordt het **ten zeerste aanbevolen** dat de Latin1_General_CI_AS collatie wordt geselecteerd bij het maken van de database.
+>Hoewel het niet vereist is, wordt het **ten zeerste aangeraden** om de Latin1_General_CI_AS collatie te selecteren bij het maken van de data base.
 
 
-1. Laat de SQL Administrator de ADSync-database maken met een hoofdletter ongevoelige collatiereeks **(Latin1_General_CI_AS).**  De database moet **ADSync**heten.  Het herstelmodel, het compatibiliteitsniveau en het type containment worden bijgewerkt naar de juiste waarden wanneer Azure AD Connect is geïnstalleerd.  De collatiereeks moet echter correct worden ingesteld door de SQL-beheerder, anders blokkeert Azure AD Connect de installatie.  Als u de SA wilt herstellen, moet de database worden verwijderd en opnieuw worden gemaakt.
+1. Laat de SQL-beheerder de ADSync-data base maken met een niet-hoofdletter gevoelige sorterings reeks **(Latin1_General_CI_AS)**.  De data base moet de naam **ADSync**.  Het herstel model, het compatibiliteits niveau en het insluitings type worden bijgewerkt naar de juiste waarden wanneer Azure AD Connect is geïnstalleerd.  De sorteer volgorde moet echter wel correct worden ingesteld door de SQL-beheerder, anders Azure AD Connect de installatie wordt geblokkeerd.  Als u de SA wilt herstellen, moet u de data base verwijderen en opnieuw maken.
  
    ![Sortering](./media/how-to-connect-install-sql-delegation/sql4.png)
-2. Geef de Azure AD Connect-beheerder en het domeinserviceaccount de volgende machtigingen:
+2. Ken de volgende machtigingen toe aan de Azure AD Connect Administrator en het domein service account:
    - SQL-aanmelding 
-   - **database eigenaar (dbo)** rechten.
+   - de rechten van de **Data Base-eigenaar (dbo)** .
  
    ![Machtigingen](./media/how-to-connect-install-sql-delegation/sql3a.png)
 
    >[!NOTE]
-   >Azure AD Connect biedt geen ondersteuning voor aanmeldingen met een genest lidmaatschap.  Dit betekent dat uw Azure AD Connect-beheerdersaccount en domeinserviceaccount moeten worden gekoppeld aan een aanmelding waaraan dbo-rechten zijn verleend.  Het kan niet zomaar het lid zijn van een groep die is toegewezen aan een login met dbo-rechten.
+   >Azure AD Connect biedt geen ondersteuning voor aanmeldingen met een genest lidmaatschap.  Dit betekent dat uw Azure AD Connect beheerders account en domein service account moeten worden gekoppeld aan een aanmelding waaraan dbo-rechten worden verleend.  Het kan niet gewoon het lid zijn van een groep die is toegewezen aan een aanmelding met dbo-rechten.
 
-3. Stuur een e-mail naar de Azure AD Connect-beheerder met vermelding van de SQL-server en de instantienaam die moeten worden gebruikt bij het installeren van Azure AD Connect.
+3. Stuur een e-mail naar de beheerder van de Azure AD Connect om de SQL-Server en de exemplaar naam op te geven die moeten worden gebruikt bij het installeren van Azure AD Connect.
 
 ## <a name="additional-information"></a>Aanvullende informatie
-Zodra de database is ingericht, kan de Azure AD Connect-beheerder on-premises synchronisatie installeren en configureren wanneer deze voor hun gemak beschikbaar is.
+Zodra de data base is ingericht, kan de beheerder van de Azure AD Connect on-premises synchronisatie op hun gemak installeren en configureren.
 
-Als de SQL-beheerder de ADSync-database heeft hersteld van een eerdere Azure AD Connect-back-up, moet u de nieuwe Azure AD Connect-server installeren met behulp van een bestaande database. Zie Azure AD Connect installeren met een bestaande ADSync-database voor meer informatie over het installeren van Azure AD Connect met een bestaande [ADSync-database.](how-to-connect-install-existing-database.md)
+Als de SQL-beheerder ADSync-data base van een vorige Azure AD Connect back-up heeft teruggezet, moet u de nieuwe Azure AD Connect-server installeren met behulp van een bestaande data base. Zie [Azure AD Connect met een bestaande ADSync-data base installeren](how-to-connect-install-existing-database.md)voor meer informatie over het installeren van Azure AD Connect met een bestaande data base.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Aan de slag met Azure AD Connect met expresinstellingen](how-to-connect-install-express.md)

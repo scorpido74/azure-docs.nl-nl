@@ -1,51 +1,51 @@
 ---
-title: Voorbeelden van ontwikkelaars van Azure Data Catalog
-description: In dit artikel vindt u een overzicht van de beschikbare ontwikkelaarsvoorbeelden voor de API VOOR gegevenscatalogusREST.
+title: Voor beelden van Azure Data Catalog-ontwikkel aars
+description: Dit artikel bevat een overzicht van de beschik bare voor beelden voor ontwikkel aars voor de Data Catalog REST API.
 ms.service: data-catalog
 author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68950160"
 ---
-# <a name="azure-data-catalog-developer-samples"></a>Voorbeelden van ontwikkelaars van Azure Data Catalog
+# <a name="azure-data-catalog-developer-samples"></a>Voor beelden van Azure Data Catalog-ontwikkel aars
 
-Ga aan de slag met het ontwikkelen van Azure Data Catalog-apps met behulp van de API VOOR restgegevenscatalogus. De API Voor gegevenscatalogus REST is een API op basis van rest die programmatische toegang biedt tot gegevenscatalogusbronnen om programmatisch gegevenselementen te registreren, te annoteren en te zoeken.
+Ga aan de slag met het ontwikkelen van Azure Data Catalog-apps met behulp van de Data Catalog REST API. De Data Catalog REST API is een op REST gebaseerde API die programmatische toegang biedt tot Data Catalog bronnen om gegevensassets programmatisch te registreren, aantekeningen te maken en te doorzoeken.
 
-## <a name="samples-available-on-githubcom"></a>Monsters beschikbaar op GitHub.com
+## <a name="samples-available-on-githubcom"></a>Voor beelden die beschikbaar zijn op GitHub.com
 
 * [Aan de slag met Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   
-   In het voorbeeld aan de slag ziet u hoe u met Azure AD verifiëren om een gegevenselement te registreren, te zoeken en te verwijderen met behulp van de API Voor gegevenscatalogusREST.
+   In het voor beeld aan de slag ziet u hoe u kunt verifiëren met Azure AD om een gegevensasset te registreren, te zoeken en te verwijderen met behulp van de Data Catalog REST API.
    
-* [Aan de slag met Azure Data Catalog met Service Principal](https://github.com/Azure-Samples/data-catalog-dotnet-service-principal-get-started/)
+* [Aan de slag met Azure Data Catalog met behulp van de Service-Principal](https://github.com/Azure-Samples/data-catalog-dotnet-service-principal-get-started/)
 
-   In dit voorbeeld ziet u hoe u een gegevenselement registreert, zoekt en verwijdert met behulp van de API GegevenscatalogusREST. In dit voorbeeld wordt de serviceprincipal-verificatie gebruikt.
+   In dit voor beeld ziet u hoe u een gegevensasset kunt registreren, zoeken en verwijderen met behulp van de Data Catalog REST API. In dit voor beeld wordt de Service-Principal-verificatie gebruikt.
 
-* [Gereedschap Importeren/exporteren voor Azure-gegevenscatalogus](https://github.com/Azure-Samples/data-catalog-dotnet-import-export/)
+* [Hulp programma voor importeren/exporteren voor Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-import-export/)
 
-   In dit voorbeeld ziet u hoe u de API Voor de rest van de gegevenscatalogus gebruiken om elementen uit de Azure-gegevenscatalogus op te halen en deze te serialiseren in een bestand. Het laat ook zien hoe je een set van activa serialized als JSON en duw ze in de catalogus. Het ondersteunt het exporteren van een subset van de catalogus met behulp van een zoekopdracht.
+   Dit voor beeld laat zien hoe u de Data Catalog REST API kunt gebruiken om assets van de Azure Data Catalog op te halen en deze in een bestand te serialiseren. Er wordt ook gedemonstreerd hoe u een set activa kunt serialiseren als JSON en deze naar de catalogus kunt pushen. Het ondersteunt het exporteren van een subset van de catalogus met behulp van een zoek query.
 
-* [Bulkregister en annoteren in Azure-gegevenscatalogus](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets/)
+* [Bulksgewijs registreren en aantekeningen maken in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets/)
   
-   In dit voorbeeld ziet u hoe u gegevenselementen uit een Excel-werkmap registreren met behulp van de API VOOR gegevenscatalogusREST en Open XML.
+   Dit voor beeld laat zien hoe u gegevensassets bulksgewijs kunt registreren vanuit een Excel-werkmap met behulp van Data Catalog REST API en open XML.
   
-* [Woordenlijsttermen voor bulkimporteren in Azure-gegevenscatalogus](https://github.com/Azure-Samples/data-catalog-bulk-import-glossary/)
+* [Termen in de woorden lijst bulksgewijs importeren in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-bulk-import-glossary/)
 
-   In dit voorbeeld ziet u hoe u woordenlijsttermen uit CSV-bestanden importeert in ADC-woordenlijst.
+   In dit voor beeld ziet u hoe u de termen van een woorden lijst uit CSV-bestanden importeert in ADC-woorden lijst.
 
-* [Bulkimportrelaties in Azure-gegevenscatalogus](https://github.com/Azure-Samples/data-catalog-bulk-import-relationship/)
+* [Relaties bulksgewijs importeren in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-bulk-import-relationship/)
 
-   In dit voorbeeld ziet u hoe u relatiegegevens uit een CSV-bestand programmatisch importeert in een gegevenscatalogus.
+   In dit voor beeld ziet u hoe u via programma code relatie gegevens vanuit een CSV-bestand kunt importeren in een gegevens catalogus.
 
-* [Relaties publiceren in Azure-gegevenscatalogus](https://github.com/Azure-Samples/data-catalog-dotnet-publish-relationships/)
+* [Relaties publiceren in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-publish-relationships/)
 
-   In dit voorbeeld ziet u hoe u relatiegegevens programmatisch publiceren naar een gegevenscatalogus.
+   Dit voor beeld laat zien hoe u via programma code relatie gegevens kunt publiceren naar een gegevens catalogus.
    
 ## <a name="next-steps"></a>Volgende stappen
-[API-verwijzing naar API-rest van Azure-gegevenscatalogus](/rest/api/datacatalog/)
+[Naslag informatie over Azure Data Catalog REST API](/rest/api/datacatalog/)

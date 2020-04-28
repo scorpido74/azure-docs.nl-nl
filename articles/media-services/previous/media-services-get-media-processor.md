@@ -1,6 +1,6 @@
 ---
-title: Een mediaprocessor maken met de Azure Media Services SDK voor .NET| Microsoft Documenten
-description: Meer informatie over het maken van een mediaprocessorcomponent om media-inhoud voor Azure Media Services te coderen, te converteren, te versleutelen of te decoderen. Codevoorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
+title: Een media processor maken met behulp van de Azure Media Services SDK voor .NET | Microsoft Docs
+description: Meer informatie over het maken van een media processor onderdeel voor het coderen, converteren van de indeling, het versleutelen of ontsleutelen van media-inhoud voor Azure Media Services. Code voorbeelden zijn geschreven in C# en gebruiken de Media Services SDK voor .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463829"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>How to: Een mediaprocessor-exemplaar krijgen
+# <a name="how-to-get-a-media-processor-instance"></a>Procedure: een media processor-exemplaar ophalen
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [Rest](media-services-rest-get-media-processor.md)
+> * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
 ## <a name="overview"></a>Overzicht
-In Media Services is een mediaprocessor een onderdeel dat een specifieke verwerkingstaak verwerkt, zoals het coderen, converteren van formaten, versleutelen of decoderen van media-inhoud. U maakt meestal een mediaprocessor wanneer u een taak maakt om de indeling van media-inhoud te coderen, te versleutelen of te converteren.
+In Media Services een media processor een onderdeel dat een specifieke verwerkings taak verwerkt, zoals code ring, indelings conversie, versleuteling of ontsleuteling van media-inhoud. Doorgaans maakt u een media processor wanneer u een taak maakt voor het coderen, versleutelen of converteren van de indeling van media-inhoud.
 
-## <a name="azure-media-processors"></a>Azure-mediaprocessors 
+## <a name="azure-media-processors"></a>Azure media-processors 
 
-In het volgende onderwerp worden lijsten met mediaprocessors weergegeven:
+Het volgende onderwerp bevat een lijst met media processors:
 
 * [Mediaprocessors coderen](scenarios-and-availability.md#encoding-media-processors)
 * [Mediaprocessors voor analyse](scenarios-and-availability.md#analytics-media-processors)
 
-## <a name="get-media-processor"></a>Mediaprocessor krijgen
+## <a name="get-media-processor"></a>Media processor ophalen
 
-De volgende methode laat zien hoe u een mediaprocessorexemplaar krijgt. In het codevoorbeeld wordt uitgegaan van het gebruik van een variabele op moduleniveau met de naam **_context** om te verwijzen naar de servercontext zoals beschreven in de sectie [Hoe: Maak programmatisch verbinding met MediaServices](media-services-use-aad-auth-to-access-ams-api.md).
+De volgende methode laat zien hoe u een exemplaar van een media processor kunt ophalen. In het voorbeeld code wordt ervan uitgegaan dat het gebruik van een variabele op module niveau met de naam **_context** wordt gebruikt om te verwijzen naar de server context, zoals beschreven in de sectie [: verbinding maken met Media Services via een programma](media-services-use-aad-auth-to-access-ams-api.md).
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -61,5 +61,5 @@ De volgende methode laat zien hoe u een mediaprocessorexemplaar krijgt. In het c
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u weet hoe u een mediaprocessorexemplaar krijgen, gaat u naar het onderwerp [Hoe u een asset-onderwerp](media-services-dotnet-encode-with-media-encoder-standard.md) coderen, waarmee u laten zien hoe u de Media Encoder-standaard gebruiken om een actief te coderen.
+Nu u weet hoe u een exemplaar van een media processor krijgt, gaat u naar het onderwerp [een Asset coderen](media-services-dotnet-encode-with-media-encoder-standard.md) . hier wordt uitgelegd hoe u de Media Encoder Standard kunt gebruiken om een Asset te coderen.
 

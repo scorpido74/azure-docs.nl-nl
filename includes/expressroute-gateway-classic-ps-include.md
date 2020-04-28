@@ -9,24 +9,24 @@ ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175769"
 ---
 > [!NOTE]
-> Deze voorbeelden zijn niet van toepassing op s2S/ExpressRoute naast elkaar bestaanconfiguraties.
-> Zie Naast elkaar bestaande verbindingen configureren voor meer informatie over het werken met gateways in een naast elkaar bestaande [configuratie.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
+> Deze voor beelden zijn niet van toepassing op configuraties met S2S/ExpressRoute naast elkaar.
+> Zie voor meer informatie over het werken met gateways in een naast elkaar [bestaande verbindingen configureren.](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>Een gateway toevoegen
 
-Wanneer u een gateway toevoegt aan een virtueel netwerk met behulp van het klassieke resourcemodel, wijzigt u het netwerkconfiguratiebestand rechtstreeks voordat u de gateway maakt. De waarden in de onderstaande voorbeelden moeten aanwezig zijn in het bestand om een gateway te maken. Als er voorheen een gateway aan uw virtuele netwerk was gekoppeld, zijn sommige van deze waarden al aanwezig. Wijzig het bestand om de onderstaande waarden weer te geven.
+Wanneer u een gateway aan een virtueel netwerk toevoegt met behulp van het klassieke resource model, wijzigt u het netwerk configuratie bestand direct voordat u de gateway maakt. De waarden in de onderstaande voor beelden moeten aanwezig zijn in het bestand om een gateway te kunnen maken. Als er eerder een gateway aan het virtuele netwerk is gekoppeld, zijn sommige van deze waarden al aanwezig. Wijzig het bestand om de onderstaande waarden weer te geven.
 
-### <a name="download-the-network-configuration-file"></a>Het netwerkconfiguratiebestand downloaden
+### <a name="download-the-network-configuration-file"></a>Het netwerk configuratie bestand downloaden
 
-1. Download het netwerkconfiguratiebestand met de stappen in het artikel [over netwerkconfiguratiebestanden.](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) Open het bestand met een teksteditor.
-2. Voeg een lokale netwerksite toe aan het bestand. U elk geldig adresvoorvoegsel gebruiken. U elk geldig IP-adres voor de VPN-gateway toevoegen. De adreswaarden in deze sectie worden niet gebruikt voor ExpressRoute-bewerkingen, maar zijn vereist voor bestandsvalidatie. In het voorbeeld is 'branch1' de naam van de site. U een andere naam gebruiken, maar zorg ervoor dat u dezelfde waarde gebruikt in het gatewaygedeelte van het bestand.
+1. Down load het netwerk configuratie bestand met behulp van de stappen in het artikel [netwerk configuratie bestand](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) . Open het bestand met een tekst editor.
+2. Voeg een lokale netwerk site toe aan het bestand. U kunt elk geldig adres voorvoegsel gebruiken. U kunt elk geldig IP-adres voor de VPN-gateway toevoegen. De adres waarden in deze sectie worden niet gebruikt voor ExpressRoute-bewerkingen, maar zijn vereist voor bestands validatie. In het voor beeld is ' branch1 ' de naam van de site. U kunt een andere naam gebruiken, maar u moet dezelfde waarde gebruiken in het gedeelte gateway van het bestand.
 
    ```
    <VirtualNetworkConfiguration>
@@ -39,11 +39,11 @@ Wanneer u een gateway toevoegt aan een virtueel netwerk met behulp van het klass
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
    ```
-3. Navigeer naar de VirtualNetworkSites en wijzig de velden.
+3. Ga naar de VirtualNetworkSites en wijzig de velden.
 
-   * Controleer of het gatewaysubnet bestaat voor uw virtuele netwerk. Als dit niet het zo is, u er op dit moment een toevoegen. De naam moet "GatewaySubnet" zijn.
-   * Controleer of het gedeelte Gateway van het bestand bestaat. Als dat niet zo is, voeg het dan toe. Dit is nodig om het virtuele netwerk te koppelen aan de lokale netwerksite (die het netwerk vertegenwoordigt waarmee u verbinding maakt).
-   * Controleer of het verbindingstype = Dedicated. Dit is vereist voor ExpressRoute-verbindingen.
+   * Controleer of het gateway-subnet bestaat voor het virtuele netwerk. Als dat niet het geval is, kunt u er op dit moment een toevoegen. De naam moet ' GatewaySubnet ' zijn.
+   * Controleer of het gedeelte gateway van het bestand bestaat. Als dat niet het geval is, voegt u deze toe. Dit is vereist om het virtuele netwerk te koppelen aan de lokale netwerk site (dat staat voor het netwerk waarmee u verbinding maakt).
+   * Controleer of het verbindings type = dedicated. Dit is vereist voor ExpressRoute-verbindingen.
 
    ```
    </LocalNetworkSites>
@@ -76,15 +76,15 @@ Wanneer u een gateway toevoegt aan een virtueel netwerk met behulp van het klass
 
 ### <a name="create-the-gateway"></a>De gateway maken
 
-Gebruik de onderstaande opdracht om een gateway te maken. Vervang alle waarden voor je eigen waarden.
+Gebruik de onderstaande opdracht om een gateway te maken. Vervang elke waarde door uw eigen waarden.
 
 ```powershell
 New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -GatewaySKU  Standard
 ```
 
-## <a name="verify-the-gateway-was-created"></a>Controleer of de gateway is gemaakt
+## <a name="verify-the-gateway-was-created"></a>Controleren of de gateway is gemaakt
 
-Gebruik de onderstaande opdracht om te controleren of de gateway is gemaakt. Met deze opdracht wordt ook de gateway-id opgehaald, die u nodig hebt voor andere bewerkingen.
+Gebruik de onderstaande opdracht om te controleren of de gateway is gemaakt. Met deze opdracht wordt ook de Gateway-ID opgehaald die u nodig hebt voor andere bewerkingen.
 
 ```powershell
 Get-AzureVNetGateway
@@ -92,10 +92,10 @@ Get-AzureVNetGateway
 
 ## <a name="resize-a-gateway"></a>Het formaat van een gateway wijzigen
 
-Er zijn een aantal [Gateway SKU's.](../articles/expressroute/expressroute-about-virtual-network-gateways.md) U de volgende opdracht gebruiken om de Gateway SKU op elk gewenst moment te wijzigen.
+Er zijn een aantal [Gateway-sku's](../articles/expressroute/expressroute-about-virtual-network-gateways.md). U kunt de volgende opdracht gebruiken om de gateway-SKU op elk gewenst moment te wijzigen.
 
 > [!IMPORTANT]
-> Deze opdracht werkt niet voor UltraPerformance-gateway. Als u uw gateway wilt wijzigen naar een UltraPerformance-gateway, verwijdert u eerst de bestaande ExpressRoute-gateway en maakt u vervolgens een nieuwe UltraPerformance-gateway. Als u uw gateway wilt downgraden van een UltraPerformance-gateway, verwijdert u eerst de UltraPerformance-gateway en maakt u vervolgens een nieuwe gateway.
+> Deze opdracht werkt niet voor de Ultra Performance-gateway. Als u uw gateway wilt wijzigen in een Ultra Performance-gateway, verwijdert u eerst de bestaande ExpressRoute-gateway en maakt u vervolgens een nieuwe Ultra Performance-gateway. Als u uw gateway wilt downgradeen van een Ultra Performance-gateway, verwijdert u eerst de Ultra Performance-gateway en maakt u vervolgens een nieuwe gateway.
 >
 >
 
@@ -105,7 +105,7 @@ Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
 ## <a name="remove-a-gateway"></a>Een gateway verwijderen
 
-De onderstaande opdracht gebruiken om een gateway te verwijderen
+Gebruik de onderstaande opdracht om een gateway te verwijderen
 
 ```powershell
 Remove-AzureVnetGateway -GatewayId <Gateway ID>

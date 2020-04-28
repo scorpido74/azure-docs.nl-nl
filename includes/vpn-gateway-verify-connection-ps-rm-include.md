@@ -9,13 +9,13 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175863"
 ---
-U controleren of uw verbinding is geslaagd met de cmdlet 'Get-AzVirtualNetworkConnection', met of zonder '-Foutopsporing'. 
+U kunt controleren of uw verbinding is geslaagd met behulp van de cmdlet ' Get-AzVirtualNetworkGatewayConnection ', met of zonder '-debug '. 
 
 1. Gebruik het volgende cmdlet-voorbeeld om de waarden aan te passen aan uw eigen waarden. Selecteer A als dit wordt gevraagd om alles uit te voeren. In het voorbeeld verwijst "-Name" naar de naam van de verbinding die u wilt testen.
 

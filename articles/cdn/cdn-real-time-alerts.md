@@ -1,6 +1,6 @@
 ---
-title: Azure CDN realtime waarschuwingen | Microsoft Documenten
-description: Realtime waarschuwingen in Microsoft Azure CDN. Realtime waarschuwingen geven meldingen over de prestaties van de eindpunten in uw CDN-profiel.
+title: Waarschuwingen in realtime Azure CDN | Microsoft Docs
+description: Real-time waarschuwingen in Microsoft Azure CDN. Realtime waarschuwingen bieden meldingen over de prestaties van de eind punten in uw CDN-profiel.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593481"
 ---
-# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Realtime waarschuwingen in Microsoft Azure CDN
+# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Real-time waarschuwingen in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Overzicht
-In dit document worden realtime waarschuwingen in Microsoft Azure CDN uitgelegd. Deze functionaliteit biedt realtime meldingen over de prestaties van de eindpunten in uw CDN-profiel.  U e-mail- of HTTP-waarschuwingen instellen op basis van:
+In dit document worden real-time waarschuwingen in Microsoft Azure CDN uitgelegd. Deze functionaliteit biedt realtime meldingen over de prestaties van de eind punten in uw CDN-profiel.  U kunt e-mail-of HTTP-waarschuwingen instellen op basis van:
 
 * Bandbreedte
 * Statuscodes
-* Cachestatussen
+* Cache statussen
 * Verbindingen
 
-## <a name="creating-a-real-time-alert"></a>Een realtime waarschuwing maken
-1. Blader in de [Azure-portal](https://portal.azure.com)naar uw CDN-profiel.
+## <a name="creating-a-real-time-alert"></a>Een real-time waarschuwing maken
+1. Blader in het [Azure Portal](https://portal.azure.com)naar uw CDN-profiel.
    
     ![CDN-profiel](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-1. Klik in het CDN-profielblad op de knop **Beheren.**
+1. Klik op de Blade CDN-profiel op de knop **beheren** .
    
-    ![Knop CDN-profielbeheer](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![Beheer knop voor CDN-profiel](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
-    Het CDN-beheerportaal wordt geopend.
-3. Plaats de plaats op het tabblad **Analytics** en plaats de plaats vervolgens boven de **flyout voor realtime statistieken.**  Klik op **realtime waarschuwingen**.
+    De CDN-beheer portal wordt geopend.
+3. Beweeg de muis aanwijzer over het tabblad **Analytics** en Beweeg vervolgens de muis aanwijzer over de **Realtime statistieken-** flyout.  Klik op **real-time waarschuwingen**.
    
-    ![CDN-beheerportal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
+    ![CDN-beheer Portal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
    
-    De lijst met bestaande waarschuwingsconfiguraties (indien aanwezig) wordt weergegeven.
-4. Klik op de knop **Waarschuwing toevoegen.**
+    De lijst met bestaande waarschuwings configuraties (indien van toepassing) wordt weer gegeven.
+4. Klik op de knop **waarschuwing toevoegen** .
    
-    ![Knop Waarschuwing toevoegen](./media/cdn-real-time-alerts/cdn-add-alert.png)
+    ![Knop voor waarschuwing toevoegen](./media/cdn-real-time-alerts/cdn-add-alert.png)
    
-    Er wordt een formulier weergegeven voor het maken van een nieuwe waarschuwing.
+    Er wordt een formulier voor het maken van een nieuwe waarschuwing weer gegeven.
    
-    ![Nieuw waarschuwingsformulier](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. Als u wilt dat deze waarschuwing actief is wanneer u op **Opslaan**klikt, schakelt u het selectievakje **Waarschuwing ingeschakeld** in.
-6. Voer een beschrijvende naam in voor uw waarschuwing in het veld **Naam.**
-7. Selecteer in de vervolgkeuzelijst **Mediatype** de optie **HTTP Groot object**.
+    ![Nieuw waarschuwings formulier](./media/cdn-real-time-alerts/cdn-new-alert.png)
+5. Als u wilt dat deze waarschuwing actief is wanneer u op **Opslaan**klikt, schakelt u het selectie vakje **waarschuwing ingeschakeld** in.
+6. Voer in het veld **naam** een beschrijvende naam in voor de waarschuwing.
+7. Selecteer in de vervolg keuzelijst **media type** de optie **http-large object**.
    
-    ![Mediatype met HTTP-groot object geselecteerd](./media/cdn-real-time-alerts/cdn-http-large.png)
+    ![Media type waarvoor HTTP-Large Object geselecteerd](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > U moet **HTTP Large Object** selecteren als **mediatype**.  De andere keuzes worden niet gebruikt door **Azure CDN van Verizon**.  Als u HTTP Large Object niet **selecteert,** wordt uw waarschuwing nooit geactiveerd.
+   > U moet **http-large object** als het **media type**selecteren.  De andere opties worden niet gebruikt door **Azure CDN van Verizon**.  Als u **http-large object** niet selecteert, wordt uw waarschuwing nooit geactiveerd.
    > 
    > 
-8. Maak een **expressie** die u wilt bewaken door een **waarde met riek,** **operator**en **trigger te**selecteren .
+8. Maak een **expressie** om te bewaken door een **metriek**, **operator**en **trigger waarde**te selecteren.
    
-   * Selecteer **bij Metric**het type voorwaarde dat u wilt controleren.  **Bandbreedte Mbps** is de hoeveelheid bandbreedte gebruik in megabits per seconde.  **Total Connections** is het aantal gelijktijdige HTTP-verbindingen met onze edge-servers.  Zie [Azure CDN-cachestatuscodes](/previous-versions/azure/mt759237(v=azure.100)) en [Azure CDN HTTP-statuscodes](/previous-versions/azure/mt759238(v=azure.100)) voor definities van de verschillende cachestatussen en statuscodes van De Cache
-   * **Operator** is de wiskundige operator die de relatie tussen de metrische en de triggerwaarde vaststelt.
-   * **Triggerwaarde** is de drempelwaarde waaraan moet worden voldaan voordat een melding wordt verzonden.
+   * Selecteer bij **metriek**het type voor waarde dat u wilt controleren.  **Bandbreedte Mbps** is de hoeveelheid bandbreedte gebruik in megabits per seconde.  **Totale verbindingen** is het aantal gelijktijdige http-verbindingen met onze edge-servers.  Zie [Azure CDN cache status codes](/previous-versions/azure/mt759237(v=azure.100)) en [Azure CDN HTTP-status](/previous-versions/azure/mt759238(v=azure.100)) codes voor definities van de verschillende cache statussen en status codes.
+   * **Operator** is de reken kundige operator die de relatie tussen de metriek en de trigger waarde tot stand brengt.
+   * **Trigger waarde** is de drempel waarde waaraan moet worden voldaan voordat een melding wordt verzonden.
      
-     In het volgende voorbeeld geeft de gemaakte expressie aan dat een melding wordt verzonden wanneer het aantal 404-statuscodes groter is dan 25.
+     In het volgende voor beeld geeft de gemaakte expressie aan dat er een melding wordt verzonden wanneer het aantal status codes van 404 groter is dan 25.
      
-     ![Voorbeeldexpressie voor realtime waarschuwingen](./media/cdn-real-time-alerts/cdn-expression.png)
-9. Voer bij **Interval**in hoe vaak u de expressie wilt evalueren.
-10. Selecteer **in de vervolgkeuzelijst Melden** op wanneer u een melding wilt ontvangen wanneer de expressie waar is.
+     ![Voorbeeld expressie in realtime-waarschuwing](./media/cdn-real-time-alerts/cdn-expression.png)
+9. Geef bij **interval**op hoe vaak u wilt dat de expressie wordt geëvalueerd.
+10. Selecteer in de vervolg keuzelijst **aanmelden op** wanneer u een melding wilt ontvangen wanneer de expressie waar is.
     
-    * **Voorwaarde Start** geeft aan dat er een melding wordt verzonden wanneer de opgegeven voorwaarde voor het eerst wordt gedetecteerd.
-    * **Voorwaarde Einde** geeft aan dat er een melding wordt verzonden wanneer de opgegeven voorwaarde niet meer wordt gedetecteerd. Deze melding kan alleen worden geactiveerd nadat ons netwerkbewakingssysteem heeft gedetecteerd dat de opgegeven voorwaarde is opgetreden.
-    * **Continu** geeft aan dat er elke keer een melding wordt verzonden dat het netwerkbewakingssysteem de opgegeven toestand detecteert. Houd er rekening mee dat het netwerkbewakingssysteem slechts één keer per interval controleert op de opgegeven voorwaarde.
-    * **Voorwaarde Start en Einde** geeft aan dat een melding wordt verzonden de eerste keer dat de opgegeven voorwaarde wordt gedetecteerd en nogmaals wanneer de voorwaarde niet meer wordt gedetecteerd.
-1. Als u meldingen per e-mail wilt ontvangen, schakelt u het selectievakje **Melden per e-mail** in.  
+    * **Begin van voor waarde** geeft aan dat er een melding wordt verzonden wanneer de opgegeven voor waarde voor het eerst wordt gedetecteerd.
+    * **Voor waarde-einde** geeft aan dat er een melding wordt verzonden wanneer de opgegeven voor waarde niet meer wordt gedetecteerd. Deze melding kan alleen worden geactiveerd nadat het netwerk bewakings systeem heeft gedetecteerd dat de opgegeven voor waarde is opgetreden.
+    * **Doorlopend** geeft aan dat er telkens een melding wordt verzonden wanneer het netwerk bewakings systeem de opgegeven voor waarde detecteert. Houd er wel voor dat het netwerk bewakings systeem slechts eenmaal per interval controleert voor de opgegeven voor waarde.
+    * **Begin en einde van de voor waarde** geeft aan dat er een melding wordt verzonden wanneer de opgegeven voor waarde voor het eerst wordt gedetecteerd en eenmaal wanneer de voor waarde niet meer wordt gedetecteerd.
+1. Als u meldingen per e-mail wilt ontvangen, schakelt u het selectie vakje **bericht per e-mail** in.  
     
-    ![Melding per e-mailformulier](./media/cdn-real-time-alerts/cdn-notify-email.png)
+    ![E-mail formulier per E-mail verzenden](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    Voer in het veld **Aan** het e-mailadres in waar u meldingen wilt verzenden. Voor **Onderwerp** en **hoofdtekst**u de standaardinstelling verlaten of u het bericht aanpassen met de lijst **Beschikbare zoekwoorden** om waarschuwingsgegevens dynamisch in te voegen wanneer het bericht wordt verzonden.
+    Voer in het veld **aan** het e-mail adres in waar u de meldingen wilt verzenden. Voor het **onderwerp** en de **hoofd tekst**kunt u de standaard instelling verlaten of u kunt het bericht aanpassen met behulp van de lijst met **beschik bare tref woorden** om waarschuwings gegevens dynamisch in te voegen wanneer het bericht wordt verzonden.
     
     > [!NOTE]
-    > U de e-mailmelding testen door op de knop **Melding testen** te klikken, maar alleen nadat de waarschuwingsconfiguratie is opgeslagen.
+    > U kunt de e-mail melding testen door te klikken op de knop **melding testen** , maar pas nadat de configuratie van de waarschuwing is opgeslagen.
     > 
     > 
-12. Als u wilt dat meldingen op een webserver worden geplaatst, schakelt u het selectievakje **Melden per HTTP-bericht in.**
+12. Als u wilt dat meldingen worden geplaatst op een webserver, schakelt u het selectie vakje **bericht over http post in** .
     
-    ![Melden via http-postformulier](./media/cdn-real-time-alerts/cdn-notify-http.png)
+    ![Melding via HTTP post-formulier](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    Voer **in** het veld Url de URL in waar u het HTTP-bericht wilt plaatsen. Voer in het tekstvak **Kopteksten** de HTTP-headers in die in de aanvraag moeten worden verzonden.  Voor **Body**u het bericht aanpassen met behulp van de lijst **Beschikbare zoekwoorden** om waarschuwingsgegevens dynamisch in te voegen wanneer het bericht wordt verzonden.  **Kop-** en **hoofdtekst** standaard voor een XML-payload die vergelijkbaar is met het volgende voorbeeld:
+    Voer in het veld **URL** de URL in van de locatie waar het HTTP-bericht moet worden geplaatst. Voer in het tekstvak **headers** de HTTP-headers in die moeten worden verzonden in de aanvraag.  Voor de **hoofd tekst**kunt u het bericht aanpassen met behulp van de lijst met **beschik bare tref woorden** om waarschuwings gegevens dynamisch in te voegen wanneer het bericht wordt verzonden.  **Kopteksten** en **hoofd tekst** worden standaard ingesteld op een XML-nettolading zoals in het volgende voor beeld:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -102,13 +102,13 @@ In dit document worden realtime waarschuwingen in Microsoft Azure CDN uitgelegd.
     ```
     
     > [!NOTE]
-    > U de http-berichtmelding testen door op de knop **Melding testen** te klikken, maar alleen nadat de waarschuwingsconfiguratie is opgeslagen.
+    > U kunt de HTTP Post-melding testen door te klikken op de knop **melding testen** , maar pas nadat de configuratie van de waarschuwing is opgeslagen.
     > 
     > 
-13. Klik **op** de knop Opslaan om de waarschuwingsconfiguratie op te slaan.  Als u **Alert ingeschakeld** in stap 5 hebt aangevinkt, is uw waarschuwing nu actief.
+13. Klik op de knop **Opslaan** om uw waarschuwings configuratie op te slaan.  Als u in stap 5 de **waarschuwing hebt ingeschakeld** , is uw waarschuwing nu actief.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Realtime statistieken analyseren in Azure CDN](cdn-real-time-stats.md)
-* Graaf dieper met [geavanceerde HTTP-rapporten](cdn-advanced-http-reports.md)
-* [Gebruikspatronen analyseren](cdn-analyze-usage-patterns.md)
+* [Real-time statistieken in azure CDN](cdn-real-time-stats.md) analyseren
+* Dieper met [geavanceerde HTTP-rapporten](cdn-advanced-http-reports.md)
+* [Gebruiks patronen](cdn-analyze-usage-patterns.md) analyseren
 

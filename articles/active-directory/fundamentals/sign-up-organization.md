@@ -1,6 +1,6 @@
 ---
-title: Uw organisatie aanmelden - Azure Active Directory | Microsoft Documenten
-description: Instructies voor het aanmelden van uw organisatie om Azure en Azure Active Directory te gebruiken.
+title: Uw organisatie registreren-Azure Active Directory | Microsoft Docs
+description: Instructies over het registreren van uw organisatie voor het gebruik van Azure en Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,21 +14,21 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561616"
 ---
-# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Uw organisatie aanmelden om Azure Active Directory te gebruiken
-Meld u aan voor Azure Active Directory (Azure AD) of een nieuw Microsoft Azure-abonnement:
+# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Meld u aan voor uw organisatie om Azure Active Directory te gebruiken
+Meld u aan voor Azure Active Directory (Azure AD) of een nieuw Microsoft Azure-abonnement met behulp van:
 
-- **Microsoft-account.** Gebruik uw persoonlijke Microsoft-account om toegang te krijgen tot Azure en alle op consumenten gerichte Microsoft-producten en cloudservices, zoals Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE of Office 365. Als u zich aanmeldt voor een Outlook.com-postvak wordt automatisch een Microsoft-account gemaakt. Zie Overzicht [van Microsoft-account](https://account.microsoft.com/account)voor meer informatie.
+- **Microsoft-account.** Gebruik uw persoonlijke Microsoft-account om toegang te krijgen tot Azure en alle consumenten gerichte micro soft-producten en-Cloud Services, zoals Outlook (Hotmail), Mess enger, OneDrive, MSN, Xbox LIVE of Office 365. Als u zich aanmeldt voor een Outlook.com-postvak, wordt er automatisch een Microsoft-account gemaakt. Zie [Microsoft-account overview](https://account.microsoft.com/account)voor meer informatie.
 
-- **Werk- of schoolaccount.** Gebruik uw werk- of schoolaccount om toegang te krijgen tot alle kleine, middelgrote en zakelijke cloudservices van Microsoft, zoals Azure, Microsoft Intune of Office 365. Nadat u zich als organisatie hebt aangemeld voor een van deze services, voorziet Azure AD automatisch in een cloudmap die uw organisatie vertegenwoordigt. Zie [Uw Azure AD-map beheren](active-directory-administer.md)voor meer informatie.
+- **Werk- of schoolaccount.** Gebruik uw werk-of school account om toegang te krijgen tot alle kleine, middel grote en zakelijke Cloud Services van micro soft, zoals Azure, Microsoft Intune of Office 365. Nadat u zich hebt aangemeld voor een van deze services, wordt door Azure AD automatisch een Cloud Directory gemaakt die uw organisatie vertegenwoordigt. Zie [uw Azure AD-Directory beheren](active-directory-administer.md)voor meer informatie.
 
   > [!Note]
-  >   We raden u aan uw werk- of schoolaccount te gebruiken als u al toegang hebt tot Azure AD. U moet echter het type account gebruiken dat aan uw Azure-abonnement is gekoppeld.
+  >   U wordt aangeraden uw werk-of school account te gebruiken als u al toegang hebt tot Azure AD. U moet echter een ander type account gebruiken dat is gekoppeld aan uw Azure-abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -38,7 +38,7 @@ Meld u aan voor Azure Active Directory (Azure AD) of een nieuw Microsoft Azure-a
 
 - [Meer informatie over Azure AD](active-directory-whatis.md)
 
-- [Gebruik uw on-premises identiteitsinfrastructuur in de cloud](../connect/active-directory-aadconnect.md)
+- [Gebruik uw on-premises infra structuur voor identiteiten in de Cloud](../connect/active-directory-aadconnect.md)
 
-- [Ga naar het Microsoft Azure-blog](https://azure.microsoft.com/blog/)
+- [Ga naar het Microsoft Azure blog](https://azure.microsoft.com/blog/)
 

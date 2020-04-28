@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen ontvangen van Azure Event Grid naar een HTTP-eindpunt
-description: Beschrijft hoe u een HTTP-eindpunt valideren en gebeurtenissen vervolgens ontvangen en deserialiseren vanuit Azure Event Grid
+title: Gebeurtenissen ontvangen van Azure Event Grid naar een HTTP-eind punt
+description: Hierin wordt beschreven hoe u een HTTP-eind punt valideert en vervolgens gebeurtenissen van Azure Event Grid ontvangt en deserialiseren
 services: event-grid
 author: banisadr
 manager: darosa
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60803811"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Gebeurtenissen op een HTTP-eindpunt ontvangen
 
-In dit artikel wordt beschreven hoe [u een HTTP-eindpunt valideren](security-authentication.md#webhook-event-delivery) om gebeurtenissen van een gebeurtenisabonnement te ontvangen en vervolgens gebeurtenissen te ontvangen en te deserialiseren. In dit artikel wordt een Azure-functie gebruikt voor demonstratiedoeleinden, maar dezelfde concepten zijn van toepassing, ongeacht waar de toepassing wordt gehost.
+In dit artikel wordt beschreven hoe u [een HTTP-eind punt kunt valideren](security-authentication.md#webhook-event-delivery) om gebeurtenissen van een gebeurtenis abonnement te ontvangen en vervolgens gebeurtenissen te ontvangen en te deserialiseren. In dit artikel wordt een Azure-functie gebruikt voor demonstratie doeleinden, maar dezelfde concepten zijn echter van toepassing, ongeacht waar de toepassing wordt gehost.
 
 > [!NOTE]
-> Het wordt **ten zeerste** aanbevolen dat u een [Gebeurtenisrastertrigger](../azure-functions/functions-bindings-event-grid.md) gebruikt bij het activeren van een Azure-functie met gebeurtenisraster. Het gebruik van een generieke WebHook trigger hier is demonstratief.
+> Het wordt **ten zeerste** aanbevolen om een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) te gebruiken bij het activeren van een Azure-functie met Event grid. Het gebruik van een generieke webhook-trigger is hier aangetoond.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een functie-app nodig met een HTTP-geactiveerde functie.
+U hebt een functie-app met een door HTTP geactiveerde functie nodig.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-Als u zich ontwikkelt in .NET, voegt u `Microsoft.Azure.EventGrid` een afhankelijkheid [toe](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) aan uw functie voor het [Nuget-pakket.](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) De voorbeelden in dit artikel vereisen versie 1.4.0 of hoger.
+Als u in .net ontwikkelt, [voegt u een afhankelijkheid](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) toe aan uw functie `Microsoft.Azure.EventGrid` voor het [Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Voor de voor beelden in dit artikel is versie 1.4.0 of hoger vereist.
 
-SDK's voor andere talen zijn beschikbaar via de [referentie Voor Het publiceren van SDKs.](./sdk-overview.md#data-plane-sdks) Deze pakketten hebben de modellen voor `EventGridEvent` `StorageBlobCreatedEventData`native `EventHubCaptureFileCreatedEventData`event types zoals , en .
+Sdk's voor andere talen zijn beschikbaar via de naslag informatie over het [publiceren van sdk's](./sdk-overview.md#data-plane-sdks) . Deze pakketten hebben de modellen voor systeem eigen gebeurtenis typen zoals `EventGridEvent`, `StorageBlobCreatedEventData`en `EventHubCaptureFileCreatedEventData`.
 
-Klik op de koppeling Bestanden weergeven in uw Azure-functie (het meeste deelvenster in de Azure-functiesportal) en maak een bestand genaamd project.json. Voeg de volgende `project.json` inhoud toe aan het bestand en sla deze op:
+Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel venster van de portal van Azure functions) en maak een bestand met de naam project. json. Voeg de volgende inhoud toe aan `project.json` het bestand en sla het op:
 
  ```json
 {
@@ -48,13 +48,13 @@ Klik op de koppeling Bestanden weergeven in uw Azure-functie (het meeste deelven
 
 ![NuGet-pakket toegevoegd](./media/receive-events/add-dependencies.png)
 
-## <a name="endpoint-validation"></a>Validatie van eindpunten
+## <a name="endpoint-validation"></a>Eindpunt validatie
 
-Het eerste wat je wilt `Microsoft.EventGrid.SubscriptionValidationEvent` doen is omgaan met gebeurtenissen. Elke keer dat iemand zich abonneert op een gebeurtenis, stuurt `validationCode` Event Grid een validatiegebeurtenis naar het eindpunt met een in de gegevenspayload. Het eindpunt is vereist om dit terug te echoën in de reactie-instantie om te [bewijzen dat het eindpunt geldig is en eigendom is van u.](security-authentication.md#webhook-event-delivery) Als u een [gebeurtenisrastertrigger](../azure-functions/functions-bindings-event-grid.md) gebruikt in plaats van een WebHook-geactiveerde functie, wordt de validatie van eindpunten voor u uitgevoerd. Als u een API-service van derden gebruikt (zoals [Zapier](https://zapier.com) of [IFTTT),](https://ifttt.com/)u de validatiecode mogelijk niet programmatisch herhalen. Voor deze services u het abonnement handmatig valideren met behulp van een validatie-URL die wordt verzonden in de gebeurtenis voor abonnementsvalidatie. Kopieer die URL `validationUrl` in de eigenschap en stuur een GET-aanvraag via een REST-client of uw webbrowser.
+Het eerste wat u wilt doen, is het `Microsoft.EventGrid.SubscriptionValidationEvent` verwerken van gebeurtenissen. Telkens wanneer iemand zich abonneert op een gebeurtenis, stuurt Event Grid een validatie gebeurtenis naar het eind punt `validationCode` met een in de gegevens lading. Het eind punt is vereist om dit terug te echo's in de antwoord tekst, om aan te [tonen dat het eind punt geldig is en het eigendom van u is](security-authentication.md#webhook-event-delivery). Als u een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) gebruikt in plaats van een door een webhook geactiveerde functie, wordt de eindpunt validatie voor u afgehandeld. Als u een API-service van derden gebruikt (zoals [Zapier](https://zapier.com) of [IFTTT](https://ifttt.com/)), is het mogelijk dat u de validatie code niet programmatisch kunt echo. Voor die services kunt u het abonnement hand matig valideren met behulp van een validatie-URL die wordt verzonden in de validatie gebeurtenis van het abonnement. Kopieer de URL in de `validationUrl` eigenschap en verzend een GET-aanvraag via een rest-client of uw webbrowser.
 
-In C#, `DeserializeEventGridEvents()` deserialiseert de functie de gebeurtenissen van het gebeurtenisraster. De gebeurtenisgegevens worden gedeserialiseert naar het juiste type, zoals StorageBlobCreatedEventData. Gebruik `Microsoft.Azure.EventGrid.EventTypes` de klasse om ondersteunde gebeurtenistypen en namen te krijgen.
+In C# deserialiseren de `DeserializeEventGridEvents()` functie de Event grid-gebeurtenissen. Het deserialiseren van de gebeurtenis gegevens in het juiste type, zoals StorageBlobCreatedEventData. Gebruik de `Microsoft.Azure.EventGrid.EventTypes` -klasse om ondersteunde gebeurtenis typen en-namen op te halen.
 
-Als u de validatiecode programmatisch wilt herhalen, gebruikt u de volgende code. U gerelateerde voorbeelden vinden bij [event grid consumer voorbeeld](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer).
+Gebruik de volgende code om de validatie code programmatisch te echo's. U kunt verwante voor beelden vinden op [Event grid voor beeld](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)van de consument.
 
 ```csharp
 using System.Net;
@@ -115,9 +115,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-validation-response"></a>Reactie van testvalidatie
+### <a name="test-validation-response"></a>Validatie antwoord testen
 
-Test de functie validatierespons door de voorbeeldgebeurtenis in het testveld voor de functie te plakken:
+Test de validatie antwoord functie door de voorbeeld gebeurtenis te plakken in het veld test voor de functie:
 
 ```json
 [{
@@ -134,13 +134,13 @@ Test de functie validatierespons door de voorbeeldgebeurtenis in het testveld vo
 }]
 ```
 
-Wanneer u op Uitvoeren klikt, moet de `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` uitvoer 200 OK en in de hoofdtekst zijn:
+Wanneer u op uitvoeren klikt, moet de uitvoer 200 OK en `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` in de hoofd tekst zijn:
 
-![validatierespons](./media/receive-events/validation-response.png)
+![validatie antwoord](./media/receive-events/validation-response.png)
 
-## <a name="handle-blob-storage-events"></a>Blob-opslaggebeurtenissen verwerken
+## <a name="handle-blob-storage-events"></a>Blob Storage-gebeurtenissen afhandelen
 
-Laten we nu de functie `Microsoft.Storage.BlobCreated`uitbreiden om te verwerken:
+Nu gaan we de functie uitbreiden om te verwerken `Microsoft.Storage.BlobCreated`:
 
 ```cs
 using System.Net;
@@ -213,9 +213,9 @@ module.exports = function (context, req) {
 
 ```
 
-### <a name="test-blob-created-event-handling"></a>Gebeurtenisafhandeling van Blob gemaakt testen
+### <a name="test-blob-created-event-handling"></a>Door BLOB gemaakte gebeurtenis verwerking testen
 
-Test de nieuwe functionaliteit van de functie door een [Blob-opslaggebeurtenis](./event-schema-blob-storage.md#example-event) in het testveld te plaatsen en uit te voeren:
+Test de nieuwe functionaliteit van de functie door een [Blob Storage-gebeurtenis](./event-schema-blob-storage.md#example-event) in het veld test te plaatsen en uit te voeren:
 
 ```json
 [{
@@ -243,21 +243,21 @@ Test de nieuwe functionaliteit van de functie door een [Blob-opslaggebeurtenis](
 }]
 ```
 
-U ziet de URL-uitvoer van blobs in het functielogboek:
+U ziet de uitvoer van de BLOB-URL in het functie logboek:
 
-![Uitvoerlogboek](./media/receive-events/blob-event-response.png)
+![Uitvoer logboek](./media/receive-events/blob-event-response.png)
 
-U ook testen door een Klodder-opslagaccount of GPv2-opslagaccount (General Purpose V2) te maken, [een abonnement op toevoegen en gebeurtenissen in](../storage/blobs/storage-blob-event-quickstart.md)te stellen en het eindpunt in te stellen op de functie-URL:
+U kunt ook testen door een Blob Storage-account of Algemeen v2-opslag account (GPv2) te maken, een [gebeurtenis abonnement toe te voegen en](../storage/blobs/storage-blob-event-quickstart.md)het eind punt in te stellen op de functie-URL:
 
 ![Functie-URL](./media/receive-events/function-url.png)
 
-## <a name="handle-custom-events"></a>Aangepaste gebeurtenissen afhandelen
+## <a name="handle-custom-events"></a>Aangepaste gebeurtenissen verwerken
 
-Tot slot, laat de functie nogmaals uitbreiden, zodat het ook aangepaste gebeurtenissen kan verwerken. 
+Tot slot kunt u de functie nog één keer uitbreiden zodat deze ook aangepaste gebeurtenissen kan verwerken. 
 
-In C#ondersteunt de SDK het toewijzen van een gebeurtenistypenaam aan het gebeurtenisgegevenstype. Gebruik `AddOrUpdateCustomEventMapping()` de functie om de aangepaste gebeurtenis in kaart te brengen.
+In C# ondersteunt de SDK de toewijzing van een gebeurtenis type naam aan het gegevens type gebeurtenis. Gebruik de `AddOrUpdateCustomEventMapping()` functie om de aangepaste gebeurtenis toe te wijzen.
 
-Voeg een cheque `Contoso.Items.ItemReceived`voor uw evenement toe. Uw uiteindelijke code moet eruit zien als:
+Voeg een controle toe voor uw `Contoso.Items.ItemReceived`gebeurtenis. De uiteindelijke code moet er als volgt uitzien:
 
 ```cs
 using System.Net;
@@ -346,9 +346,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-custom-event-handling"></a>Aangepaste gebeurtenisafhandeling testen
+### <a name="test-custom-event-handling"></a>Verwerking van aangepaste gebeurtenis testen
 
-Test ten slotte of uw functie nu uw aangepaste gebeurtenistype kan verwerken:
+Controleer ten slotte of uw functie uw aangepaste gebeurtenis type nu kan verwerken:
 
 ```json
 [{
@@ -364,10 +364,10 @@ Test ten slotte of uw functie nu uw aangepaste gebeurtenistype kan verwerken:
 }]
 ```
 
-U deze functionaliteit ook live testen door [een aangepaste gebeurtenis met CURL vanuit de Portal](./custom-event-quickstart-portal.md) te verzenden of door een aangepast onderwerp te [posten](./post-to-custom-topic.md) met behulp van een service of toepassing die kan posten naar een eindpunt zoals [Postman.](https://www.getpostman.com/) Maak een aangepast onderwerp en een gebeurtenisabonnement met het eindpunt als de functie-URL.
+U kunt deze functionaliteit ook testen door [een aangepaste gebeurtenis te verzenden met een krul vanuit de portal](./custom-event-quickstart-portal.md) of door [te boeken naar een aangepast onderwerp](./post-to-custom-topic.md) met behulp van een service of toepassing die kan worden gepost naar een eind punt, zoals een [postman](https://www.getpostman.com/). Maak een aangepast onderwerp en een gebeurtenis abonnement met het eind punt dat is ingesteld als de functie-URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de [Azure Event Grid Management en Publiceer SDKs](./sdk-overview.md)
-* Meer informatie over het [plaatsen van een aangepast onderwerp](./post-to-custom-topic.md)
-* Probeer een van de diepgaande gebeurtenisrasters en functies, zoals [het formaat van afbeeldingen wijzigen die zijn geüpload naar blob-opslag](resize-images-on-storage-blob-upload-event.md)
+* Verken het [Azure Event grid-beheer en publiceer sdk's](./sdk-overview.md)
+* Meer informatie over het [plaatsen van berichten naar een aangepast onderwerp](./post-to-custom-topic.md)
+* Probeer een van de diep gaande Event Grid en functions zelf studies, zoals het wijzigen van de grootte van afbeeldingen die zijn [geüpload naar de Blob-opslag](resize-images-on-storage-blob-upload-event.md)

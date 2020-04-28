@@ -1,6 +1,6 @@
 ---
-title: Kernrapporten van Verizon | Microsoft Documenten
-description: 'U gebruikspatronen voor uw CDN bekijken aan de hand van de volgende rapporten: Bandbreedte, Overgedragen gegevens, treffers, cachestatussen, cachehitratio, IPV4/IPV6-gegevens overgedragen.'
+title: Kern rapporten van Verizon | Microsoft Docs
+description: 'U kunt gebruiks patronen voor uw CDN weer geven met behulp van de volgende rapporten: band breedte, verzonden gegevens, treffers, cache status, verhouding van cache treffers, IPV4/IPV6-gegevens overgedragen.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,122 +15,122 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594165"
 ---
-# <a name="core-reports-from-verizon"></a>Core Rapporten van Verizon
+# <a name="core-reports-from-verizon"></a>Kern rapporten van Verizon
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Door Verizon Core Reports te gebruiken via de Portal voor Verizon-profielen beheren, u gebruikspatronen voor uw CDN bekijken met de volgende rapporten:
+Door gebruik te maken van Verizon-kern rapporten via de profielen portal voor Verizon beheren kunt u gebruiks patronen voor uw CDN weer geven met de volgende rapporten:
 
 * Bandbreedte
 * Overgedragen gegevens
 * Treffers
-* Cachestatussen
-* Cache hitratio
-* IPV4/IPV6-gegevens overgedragen
+* Cache statussen
+* Percentage treffers in cache
+* Overdracht van IPV4/IPV6-gegevens
 
-## <a name="accessing-verizon-core-reports"></a>Toegang tot Verizon Core Reports
-1. Klik in het CDN-profielblad op de knop **Beheren.**
+## <a name="accessing-verizon-core-reports"></a>Toegang tot Verizon-kern rapporten
+1. Klik op de Blade CDN-profiel op de knop **beheren** .
    
-    ![Knop CDN-profiel beheren](./media/cdn-reports/cdn-manage-btn.png)
+    ![Beheer knop voor CDN-profiel](./media/cdn-reports/cdn-manage-btn.png)
    
-    Het CDN-beheerportaal wordt geopend.
-2. Plaats de plaats op het tabblad **Analytics** en plaats de plaats boven de flyout **Core Reports.** Klik op een rapport in het menu.
+    De CDN-beheer portal wordt geopend.
+2. Beweeg de muis aanwijzer over het tabblad **Analytics** en Beweeg vervolgens de muis aanwijzer over de **kern rapporten** -flyout. Klik op een rapport in het menu.
    
-    ![CDN-beheerportal - menu Kernrapporten](./media/cdn-reports/cdn-core-reports.png)
+    ![Menu CDN-beheer Portal-kern rapporten](./media/cdn-reports/cdn-core-reports.png)
 
-3. Selecteer voor elk rapport een datumbereik in de lijst **Datumbereik.** U een vooraf gedefinieerd datumbereik selecteren, zoals **Vandaag** of **Deze week,** of u **Aangepast** selecteren en handmatig een datumbereik invoeren door op de agendapictogrammen te klikken. 
+3. Selecteer voor elk rapport een datum bereik in de lijst **datum bereik** . U kunt een vooraf gedefinieerd datum bereik selecteren, zoals **vandaag** of **deze week**, of u kunt **aangepast** selecteren en hand matig een datum bereik invoeren door te klikken op de kalender pictogrammen. 
 
-4. Nadat u een datumbereik hebt geselecteerd, klikt u op **Gaan** om het rapport te genereren. 
+4. Nadat u een datum bereik hebt geselecteerd, klikt u op **Ga** om het rapport te genereren. 
 
-4. Als u de gegevens in Excel-indeling wilt exporteren, klikt u op het Excel-pictogram boven de knop **Start.**
+4. Als u de gegevens in Excel-indeling wilt exporteren, klikt u op het pictogram Excel boven de knop **Ga naar** .
 
 ## <a name="bandwidth"></a>Bandbreedte
-Het bandbreedterapport bestaat uit een grafiek en gegevenstabel die het CDN-bandbreedtegebruik voor HTTP en HTTPS over een bepaalde periode in Mbps aangeeft. U het bandbreedtegebruik bekijken voor alle POP's of voor een bepaalde POP. Met dit rapport u de verkeerspieken en -distributie voor POP's bekijken.
+Het bandbreedte rapport bestaat uit een grafiek en gegevens tabel die het gebruik van de CDN-band breedte voor HTTP en HTTPS gedurende een bepaalde periode in Mbps aangeeft. U kunt het bandbreedte gebruik weer geven in alle Pop's of voor een bepaalde POP. Met dit rapport kunt u de verkeers pieken en de distributie van Pop's weer geven.
 
-Selecteer in de lijst **Randknooppunten** **alle randknooppunten** om verkeer van alle knooppunten te bekijken of een specifiek gebied te selecteren.
+Selecteer in de lijst **rand knooppunten** **Alle knoop punten** van de rand om verkeer van alle knoop punten weer te geven of selecteer een specifieke regio.
 
 Het rapport wordt elke vijf minuten bijgewerkt.
 
-![Bandbreedterapport](./media/cdn-reports/cdn-bandwidth.png)
+![Bandbreedte rapport](./media/cdn-reports/cdn-bandwidth.png)
 
 ## <a name="data-transferred"></a>Overgedragen gegevens
-Dit rapport bestaat uit een grafiek en gegevenstabel die het CDN-verkeersgebruik voor HTTP en HTTPS over een bepaalde periode, in GB aangeeft. U het verkeersgebruik bekijken voor alle POP's of voor een bepaalde POP. Met dit rapport u de verkeerspieken en -verdeling over POP's bekijken.
+Dit rapport bestaat uit een grafiek en gegevens tabel die het gebruik van het CDN-verkeer voor HTTP en HTTPS gedurende een bepaalde periode in GB aangeeft. U kunt het gebruik van het verkeer weer geven voor alle Pop's of voor een bepaalde POP. Met dit rapport kunt u de verkeers pieken en distributie over Pop's weer geven.
 
-Selecteer in de lijst **Randknooppunten** **alle randknooppunten** om verkeer van alle knooppunten te bekijken of een specifiek gebied te selecteren.
+Selecteer in de lijst **rand knooppunten** **Alle knoop punten** van de rand om verkeer van alle knoop punten weer te geven of selecteer een specifieke regio.
 
 Het rapport wordt elke vijf minuten bijgewerkt.
 
-![Rapport over overgedragen gegevens](./media/cdn-reports/cdn-data-transferred.png)
+![Rapport verzonden gegevens](./media/cdn-reports/cdn-data-transferred.png)
 
-## <a name="hits-status-codes"></a>Hits (statuscodes)
-In dit rapport wordt de verdeling van de statuscodes voor aanvragen voor uw inhoud beschreven. Elke aanvraag voor inhoud genereert een HTTP-statuscode. De statuscode beschrijft hoe edge-POP's de aanvraag hebben afgehandeld. Een statuscode van 2xx geeft bijvoorbeeld aan dat de aanvraag met succes is weergegeven aan een client, terwijl een statuscode van 4xx aangeeft dat er een fout is opgetreden. Zie [Lijst met HTTP-statuscodes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)voor meer informatie over HTTP-statuscodes .
+## <a name="hits-status-codes"></a>Treffers (status codes)
+In dit rapport wordt de distributie van aanvraag status codes voor uw inhoud beschreven. Elke aanvraag voor inhoud genereert een HTTP-status code. De status code beschrijft hoe rand Pop's de aanvraag heeft afgehandeld. Een 2xx-status code geeft bijvoorbeeld aan dat de aanvraag is verzonden naar een client, terwijl een 4xx-status code aangeeft dat er een fout is opgetreden. Zie de [lijst met HTTP-status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)voor meer informatie over HTTP-status codes.
 
-![Rapport Hits](./media/cdn-reports/cdn-hits.png)
+![Rapport over hits](./media/cdn-reports/cdn-hits.png)
 
-## <a name="cache-statuses"></a>Cachestatussen
-In dit rapport wordt de verdeling van cachehits en cache-missers voor clientaanvragen beschreven. Omdat de snelste prestaties resulteren in cachehits, u de leveringssnelheden van gegevens optimaliseren door cachefouten en verlopen cachehits te minimaliseren. 
+## <a name="cache-statuses"></a>Cache statussen
+In dit rapport wordt de distributie van cache treffers en cache missers voor client aanvragen beschreven. Omdat de snelste prestaties resultaten van cache treffers zijn, kunt u de snelheid van de gegevens levering optimaliseren door cache missers en verlopen cache treffers te minimaliseren. 
 
-Als u cachefouten wilt verminderen, configureert u uw origin-server om het gebruik van het volgende te minimaliseren: 
- * `no-cache`antwoordkoppen
- * Query-string caching, tenzij strikt nodig  
- * Niet-cachebare antwoordcodes
+Als u de cache missers wilt verkleinen, configureert u de bron server zo dat het gebruik van het volgende wordt geminimaliseerd: 
+ * `no-cache`antwoord headers
+ * Query-teken reeks cache, tenzij strikt nood zakelijk  
+ * Niet-cachebaar antwoord codes
 
-Als u verlopen cachehits wilt verminderen, stelt u een asset in `max-age` op een lange periode om het aantal aanvragen voor de oorspronkelijke server te minimaliseren.
+Als u verlopen cache treffers wilt verkleinen, stelt `max-age` u een activum in op een lange periode om het aantal aanvragen naar de oorspronkelijke server te minimaliseren.
 
-![Rapport Cachestatussen](./media/cdn-reports/cdn-cache-statuses.png)
+![Status rapport van cache](./media/cdn-reports/cdn-cache-statuses.png)
 
-### <a name="main-cache-statuses-include"></a>Hoofdcachestatussen zijn:
-* TCP_HIT: Geserveerd vanaf edge server. Het object bevond zich in de cache en heeft de maximumleeftijd niet overschreden.
-* TCP_MISS: Geserveerd vanaf origin server. Het object bevond zich niet in de cache en het antwoord was terug naar de oorsprong.
-* TCP_EXPIRED _MISS: Vanaf oorsprong server geserveerd na revalidatie met oorsprong. Het object bevond zich in de cache, maar had zijn maximale leeftijd overschreden. Een revalidatie met oorsprong heeft ertoe geleid dat het cacheobject werd vervangen door een nieuw antwoord van oorsprong.
-* TCP_EXPIRED _HIT: Geserveerd van Edge na revalidatie met oorsprong. Het object bevond zich in de cache, maar had zijn maximumleeftijd overschreden. Een validatie met de oorsprongsserver heeft ertoe geleid dat het cacheobject niet is gewijzigd.
+### <a name="main-cache-statuses-include"></a>Statussen van hoofd cache zijn onder andere:
+* TCP_HIT: bediend van de Edge-server. Het object bevindt zich in de cache en heeft de maximale leeftijd niet overschreden.
+* TCP_MISS: geleverd vanaf de oorspronkelijke server. Het object bevindt zich niet in de cache en het antwoord was terug naar de oorspronkelijke bron.
+* TCP_EXPIRED _MISS: geleverd vanaf de oorspronkelijke server na de hervalidatie met de oorsprong. Het object bevindt zich in de cache, maar heeft de maximale leeftijd overschreden. Een hervalidatie met oorsprong resulteerde in het cache object dat wordt vervangen door een nieuwe reactie van de oorsprong.
+* TCP_EXPIRED _HIT: wordt vanaf de rand gehandeld na hervalidatie met de oorspronkelijke oorsprong. Het object bevindt zich in de cache, maar heeft de maximale leeftijd overschreden. Een hervalidatie met de oorspronkelijke server heeft geresulteerd in het cache object dat ongewijzigd wordt.
 
-### <a name="full-list-of-cache-statuses"></a>Volledige lijst met cachestatussen
-* TCP_HIT - Deze status wordt gerapporteerd wanneer een aanvraag rechtstreeks van de POP aan de client wordt betekend. Een asset wordt onmiddellijk geserveerd vanaf een POP wanneer het in de cache wordt opgeslagen op de POP die het dichtst bij de client staat en een geldige time-to-live (TTL) heeft. TTL wordt bepaald door de volgende antwoordkoppen:
+### <a name="full-list-of-cache-statuses"></a>Volledige lijst met cache statussen
+* TCP_HIT: deze status wordt gerapporteerd wanneer een aanvraag rechtstreeks vanuit de POP naar de client wordt verzonden. Een Asset wordt direct vanuit een POP bediend wanneer deze wordt opgeslagen in de cache op het POP-upvenster dat zich het dichtst bij de client bevindt en een geldige TTL (time-to-Live) heeft. TTL wordt bepaald door de volgende antwoord headers:
   
-  * Cache-Control: s-maxage
-  * Cache-Control: max-leeftijd
+  * Cache-Control: s-maxAge
+  * Cache-Control: Max-Age
   * Verloopt
-* TCP_MISS: Deze status geeft aan dat er geen in de cache opgeslagen versie van het gevraagde element is gevonden op de POP die het dichtst bij de client staat. Het item wordt aangevraagd bij een origin-server of een origin shield-server. Als de origin-server of de origin shield-server een asset retourneert, wordt deze weergegeven aan de client en in de cache opgeslagen op zowel de client als de edge-server. Anders wordt een niet-200-statuscode (bijvoorbeeld 403 Verboden of 404 niet gevonden) geretourneerd.
-* TCP_EXPIRED_HIT: Deze status wordt gerapporteerd wanneer een verzoek dat zich richt op een actief met een verlopen TTL rechtstreeks van de POP aan de client is aangeboden. Bijvoorbeeld wanneer de maximumleeftijd van het actief is verstreken. 
+* TCP_MISS: deze status geeft aan dat een in de cache opgeslagen versie van het aangevraagde activum niet is gevonden op de POP die het dichtst bij de client ligt. De Asset wordt aangevraagd vanuit een originele server of een originele afschermings server. Als de bron server of de oorspronkelijke schild server een Asset retourneert, wordt deze aan de client geleverd en in de cache geplaatst op de client en de Edge-server. Anders wordt een niet-200-status code (bijvoorbeeld 403 verboden of 404 niet gevonden) geretourneerd.
+* TCP_EXPIRED_HIT: deze status wordt gerapporteerd wanneer een aanvraag die gericht is op een Asset met een verlopen TTL, rechtstreeks vanuit de POP naar de client wordt verzonden. Bijvoorbeeld wanneer de maximale leeftijd van het activum is verlopen. 
   
-   Een verlopen aanvraag resulteert meestal in een validatieverzoek naar de oorspronkelijke server. Als er een TCP_EXPIRED_HIT status optreedt, moet de oorsprongsserver aangeven dat er geen nieuwere versie van het item bestaat. Deze situatie resulteert meestal in een update van de headers Cache-Control en Expires van het asset.
-* TCP_EXPIRED_MISS: Deze status wordt gerapporteerd wanneer een nieuwere versie van een verlopen item in de cache van de POP aan de client wordt geserveerd. Deze status treedt op wanneer de TTL voor een in de cache opgeslagen asset is verlopen (bijvoorbeeld verlopen max-age) en de oorsprongsserver een nieuwere versie van dat item retourneert. Deze nieuwe versie van het item wordt geserveerd aan de client in plaats van de versie in de cache. Bovendien wordt het in de cache opgeslagen op de edge-server en de client.
-* CONFIG_NOCACHE: Deze status geeft aan dat een klantspecifieke configuratie, waardoor de edge POP heeft voorkomen dat het element in de cache werd opgeslagen.
-* NONE - Deze status geeft aan dat er geen versheidscontrole voor cache-inhoud is uitgevoerd.
-* TCP_CLIENT_REFRESH_MISS: Deze status wordt gerapporteerd wanneer een HTTP-client, zoals een browser, een edge POP dwingt om een nieuwe versie van een verouderd item op te halen van de oorsprongsserver. Standaard voorkomen de servers dat een HTTP-client de edge-servers dwingt om een nieuwe versie van het item op te halen van de origin-server.
-* TCP_PARTIAL_HIT: Deze status wordt gerapporteerd wanneer een aanvraag voor bytebereik resulteert in een treffer voor een item in de cache. Het gevraagde byte-assortiment wordt onmiddellijk van de POP aan de klant aangeboden.
-* UNCACHEABLE: Deze status wordt gerapporteerd `Cache-Control` wanneer `Expires` de kopteksten en kopteksten van een asset aangeven dat het niet in de cache mag worden opgeslagen op een POP of door de HTTP-client. Dit soort aanvragen worden bediend vanaf de oorsprongsserver.
+   Een verlopen aanvraag resulteert doorgaans in een aanvraag voor een hervalidatie naar de oorspronkelijke server. De oorspronkelijke server moet aangeven dat er geen nieuwere versie van de Asset bestaat om een TCP_EXPIRED_HIT status te vinden. Deze situatie resulteert doorgaans in een update van de header Cache-Control en Expires van het Asset.
+* TCP_EXPIRED_MISS: deze status wordt gerapporteerd wanneer een nieuwere versie van een verlopen asset in de cache wordt aangeboden vanuit de POP naar de client. Deze status treedt op wanneer de TTL voor een activum in de cache is verlopen (bijvoorbeeld verlopen Max-Age) en de oorspronkelijke server een nieuwere versie van die Asset retourneert. Deze nieuwe versie van de Asset wordt aan de client geleverd in plaats van de versie in de cache. Daarnaast wordt deze in de cache op de Edge-Server en de-client opgeslagen.
+* CONFIG_NOCACHE: deze status geeft aan dat de klantspecifieke configuratie heeft voor komen dat het activum in de cache wordt opgeslagen.
+* GEEN: deze status geeft aan dat er geen cache voor de vernieuwing van inhoud is uitgevoerd.
+* TCP_CLIENT_REFRESH_MISS: deze status wordt gerapporteerd wanneer een HTTP-client, zoals een browser, een rand POP afdwingt om een nieuwe versie van een verouderd activum van de oorspronkelijke server op te halen. Standaard voor komt u dat een HTTP-client de rand servers afdwingt om een nieuwe versie van de Asset op te halen van de oorspronkelijke server.
+* TCP_PARTIAL_HIT: deze status wordt gerapporteerd wanneer een byte bereik aanvraag resulteert in een treffer voor een gedeeltelijk in cache opgeslagen Asset. Het aangevraagde byte bereik wordt onmiddellijk vanuit de POP naar de client bediend.
+* Niet-CACHEbaar: deze status wordt gerapporteerd wanneer een activum `Cache-Control` en `Expires` kopteksten aangeven dat deze niet in de cache moeten worden opgeslagen in een pop of de HTTP-client. Deze typen aanvragen worden geleverd vanaf de oorspronkelijke server.
 
-## <a name="cache-hit-ratio"></a>Cache hitratio
-Dit rapport geeft het percentage aanvragen in de cache aan dat rechtstreeks vanuit de cache is weergegeven.
+## <a name="cache-hit-ratio"></a>Percentage treffers in cache
+Dit rapport geeft het percentage van in de cache opgeslagen aanvragen aan dat rechtstreeks vanuit de cache is bediend.
 
 Het rapport bevat de volgende details:
 
-* De gevraagde inhoud is opgeslagen op de POP die het dichtst bij de aanvrager staat.
-* Het verzoek werd direct vanaf de rand van ons netwerk ingediend.
-* Het verzoek vereist geen validatie met de origin-server.
+* De aangevraagde inhoud is opgeslagen in de cache op de POP die het dichtst bij de aanvrager bevindt.
+* De aanvraag is rechtstreeks vanaf de rand van ons netwerk bediend.
+* Voor de aanvraag is geen hervalidatie vereist met de oorspronkelijke server.
 
-Het rapport bevat niet:
+Het rapport bevat geen:
 
-* Aanvragen die worden geweigerd vanwege filteropties voor land/regio.
-* Aanvragen voor activa waarvan de headers aangeven dat ze niet in de cache mogen worden opgeslagen. Bijvoorbeeld, `Cache-Control: private`of `Cache-Control: no-cache` `Pragma: no-cache` headers voorkomen dat een asset in de cache wordt opgeslagen.
-* Aanvragen voor bytebereik voor gedeeltelijk gecachede inhoud.
+* Aanvragen die worden geweigerd vanwege de opties voor het filteren van landen/regio's.
+* Aanvragen voor activa waarvan de headers aangeven dat ze niet in de cache moeten worden opgeslagen. Zo `Cache-Control: private` `Cache-Control: no-cache`voor komt u dat een asset in de cache wordt opgeslagen. `Pragma: no-cache`
+* Aanvragen voor byte bereik voor gedeeltelijk opgeslagen cache-inhoud.
 
-De formule is: (TCP_ HIT/(TCP_ HIT+TCP_MISS)*100
+De formule is: (TCP_ TREFFER/(TCP_ HIT + TCP_MISS)) * 100
 
-![Rapport met de cachehitratio](./media/cdn-reports/cdn-cache-hit-ratio.png)
+![Rapport van treffers in cache](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
-## <a name="ipv4ipv6-data-transferred"></a>IPV4/IPV6 Gegevens overgedragen
-Dit rapport toont de verdeling van het verkeersgebruik in IPV4 vs IPV6.
+## <a name="ipv4ipv6-data-transferred"></a>Overdracht van IPV4/IPV6-gegevens
+In dit rapport wordt de distributie van verkeer gebruik in IPV4 vergeleken met IPV6 weer gegeven.
 
-![IPV4/IPV6 Gegevens overgedragen](./media/cdn-reports/cdn-ipv4-ipv6.png)
+![Overdracht van IPV4/IPV6-gegevens](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
 ## <a name="considerations"></a>Overwegingen
 Rapporten kunnen alleen worden gegenereerd in de afgelopen 18 maanden.

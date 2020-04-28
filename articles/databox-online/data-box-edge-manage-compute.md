@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge compute management | Microsoft Documenten
-description: Beschrijft hoe u de randcompute-instellingen beheert, zoals trigger, modules, compute-configuratie bekijken en configuratie verwijderen via de Azure-portal op uw Azure Data Box Edge.
+title: Azure Data Box Edge Compute Management | Microsoft Docs
+description: Hierin wordt beschreven hoe u de instellingen voor Edge-berekening beheert, zoals trigger, modules, compute-configuratie weer geven, configuratie verwijderen via de Azure Portal op uw Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,126 +9,126 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65953118"
 ---
-# <a name="manage-compute-on-your-azure-data-box-edge"></a>Compute beheren op uw Azure Data Box Edge
+# <a name="manage-compute-on-your-azure-data-box-edge"></a>Reken processen beheren op uw Azure Data Box Edge
 
-In dit artikel wordt beschreven hoe u rekenkracht beheert op uw Azure Data Box Edge. U de compute beheren via de Azure-portal of via de lokale web-gebruikersinterface. Gebruik de Azure-portal om modules, triggers en compute-configuratie te beheren en de lokale web-gebruikersinterface om rekeninstellingen te beheren.
+In dit artikel wordt beschreven hoe u Compute beheert op uw Azure Data Box Edge. U kunt de compute beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om modules, triggers en Compute-configuratie te beheren, en de lokale webinterface voor het beheren van de reken instellingen.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Triggers beheren
-> * Compute-configuratie beheren
+> * Reken configuratie beheren
 
 
 ## <a name="manage-triggers"></a>Triggers beheren
 
-Gebeurtenissen zijn dingen die gebeuren binnen uw cloudomgeving of op uw apparaat waarop u mogelijk actie wilt ondernemen. Wanneer een bestand bijvoorbeeld in een share wordt gemaakt, is het een gebeurtenis. Triggers verhogen de gebeurtenissen. Voor uw Data Box Edge kunnen triggers reageren op bestandsgebeurtenissen of een planning.
+Gebeurtenissen zijn wat er gebeurt in uw cloud omgeving of op uw apparaat waarop u mogelijk actie wilt ondernemen. Wanneer bijvoorbeeld een bestand wordt gemaakt in een share, is dit een gebeurtenis. Triggers veroorzaken de gebeurtenissen. Voor uw Data Box Edge kunnen triggers worden in reactie op bestands gebeurtenissen of een schema.
 
-- **Bestand:** deze triggers zijn een reactie op bestandsgebeurtenissen zoals het maken van een bestand, wijziging van een bestand.
-- **Gepland:** deze triggers zijn in reactie op een schema dat u definiëren met een begindatum, begintijd en het herhalingsinterval.
+- **Bestand**: deze triggers zijn in antwoord op bestands gebeurtenissen, zoals het maken van een bestand, het wijzigen van een bestand.
+- **Gepland**: deze triggers bevinden zich in antwoord op een schema dat u kunt definiëren met een begin datum, begin tijd en het herhalings interval.
 
 
 ### <a name="add-a-trigger"></a>Een trigger toevoegen
 
-Neem de volgende stappen in de Azure-portal om een trigger te maken.
+Voer de volgende stappen uit in de Azure Portal om een trigger te maken.
 
-1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Edge compute > Trigger.** Selecteer **+ Trigger toevoegen** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Edge compute > trigger**. Selecteer **+ trigger toevoegen** op de opdracht balk.
 
     ![Trigger toevoegen selecteren](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. Geef in Trigger blade **toevoegen** een unieke naam voor uw trigger.
+2. Geef in de Blade **trigger toevoegen** een unieke naam op voor de trigger.
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. Selecteer een **type** voor de trigger. Kies **Bestand** wanneer de trigger een reactie heeft op een bestandsgebeurtenis. Selecteer **Gepland** wanneer u wilt dat de trigger op een bepaalde tijd begint en met een opgegeven herhalingsinterval wordt uitgevoerd. Afhankelijk van uw selectie wordt een andere set opties gepresenteerd.
+3. Selecteer een **type** voor de trigger. Kies **bestand** wanneer de trigger zich in reactie op een bestands gebeurtenis bevindt. Selecteer **gepland** wanneer u wilt dat de trigger op een bepaald tijdstip start en voer uit met een opgegeven herhalings interval. Afhankelijk van uw selectie wordt een andere set opties weer gegeven.
 
-    - **Bestandstrigger** - Kies uit de vervolgkeuzelijst een gemonteerd aandeel. Wanneer een bestandsgebeurtenis in dit aandeel wordt geactiveerd, wordt een Azure-functie aanroepen.
+    - **Bestands trigger** : Kies een gekoppelde share in de vervolg keuzelijst. Wanneer een bestands gebeurtenis in deze share wordt geactiveerd, wordt er een Azure-functie aangeroepen door de trigger.
 
         ![SMB-share toevoegen](media/data-box-edge-manage-compute/add-file-trigger.png)
 
-    - **Geplande trigger** : geef de begindatum/-tijd en het herhalingsinterval op in uren, minuten of seconden. Voer ook de naam voor een onderwerp in. Een onderwerp geeft u de flexibiliteit om de trigger door te sturen naar een module die op het apparaat wordt geïmplementeerd.
+    - **Geplande trigger** : Geef de begin datum/-tijd en het herhalings interval in uren, minuten of seconden op. Voer ook de naam in voor een onderwerp. Een onderwerp biedt u de flexibiliteit om de trigger te routeren naar een module die op het apparaat is geïmplementeerd.
 
-        Een voorbeeld van `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`routetekenreeks is: .
+        Een voor beeld van een route `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`teken reeks is:.
 
         ![NFS-share toevoegen](media/data-box-edge-manage-compute/add-scheduled-trigger.png)
 
-4. Selecteer **Toevoegen** om de trigger te maken. Een melding laat zien dat de triggercreatie aan de gang is. Nadat de trigger is gemaakt, wordt het blad bijgewerkt om de nieuwe trigger weer te geven.
+4. Selecteer **toevoegen** om de trigger te maken. Er wordt een melding weer gegeven dat het maken van de trigger wordt uitgevoerd. Nadat de trigger is gemaakt, wordt de Blade bijgewerkt om de nieuwe trigger weer te geven.
  
-    ![Bijgewerkte triggerlijst](media/data-box-edge-manage-compute/add-trigger-2.png)
+    ![Bijgewerkte trigger lijst](media/data-box-edge-manage-compute/add-trigger-2.png)
 
 ### <a name="delete-a-trigger"></a>Een trigger verwijderen
 
-Neem de volgende stappen in de Azure-portal om een trigger te verwijderen.
+Voer de volgende stappen uit in de Azure Portal om een trigger te verwijderen.
 
-1. Selecteer in de lijst met triggers de trigger die u wilt verwijderen.
+1. Selecteer de trigger die u wilt verwijderen in de lijst met triggers.
 
     ![Trigger selecteren](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. Klik met de rechtermuisknop en selecteer **Verwijderen**.
+2. Klik met de rechter muisknop en selecteer **verwijderen**.
 
-    ![Verwijderen selecteren](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Selecteer verwijderen](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 3. Klik op **Ja** als u om bevestiging wordt gevraagd.
 
     ![De verwijdering bevestigen](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-De lijst met triggers wordt bijgewerkt om de verwijdering weer te geven.
+De lijst met triggers-updates om de verwijdering weer te geven.
 
-## <a name="manage-compute-configuration"></a>Compute-configuratie beheren
+## <a name="manage-compute-configuration"></a>Reken configuratie beheren
 
-Gebruik de Azure-portal om de compute-configuratie weer te geven, een bestaande compute-configuratie te verwijderen of om de compute-configuratie te vernieuwen om toegangssleutels voor het IoT-apparaat en het IoT Edge-apparaat voor uw Data Box Edge te synchroniseren.
+Gebruik de Azure Portal om de compute-configuratie weer te geven, een bestaande Compute-configuratie te verwijderen of de compute-configuratie te vernieuwen om toegangs sleutels voor het IoT-apparaat en IoT Edge apparaat voor uw Data Box Edge te synchroniseren.
 
-### <a name="view-compute-configuration"></a>Compute-configuratie weergeven
+### <a name="view-compute-configuration"></a>Compute-configuratie weer geven
 
-Neem de volgende stappen in de Azure-portal om de compute-configuratie voor uw apparaat weer te geven.
+Voer de volgende stappen uit in de Azure Portal om de reken configuratie voor uw apparaat weer te geven.
 
-1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Edge compute > Modules**. Selecteer **Gegevens weergeven** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Edge compute > modules**. Selecteer **Compute weer geven** op de opdracht balk.
 
-    ![Compute weergeven selecteren](media/data-box-edge-manage-compute/view-compute-1.png)
+    ![Reken proces weer geven selecteren](media/data-box-edge-manage-compute/view-compute-1.png)
 
-2. Noteer de compute-configuratie op uw apparaat. Wanneer u compute hebt geconfigureerd, hebt u een IoT Hub-bron gemaakt. Onder die IoT Hub-bron zijn een IoT-apparaat en een IoT Edge-apparaat geconfigureerd. Alleen de Linux-modules worden ondersteund om op het IoT Edge-apparaat te draaien.
+2. Noteer de compute-configuratie op het apparaat. Wanneer u Compute hebt geconfigureerd, hebt u een IoT Hub resource gemaakt. Onder die IoT Hub resource worden een IoT-apparaat en een IoT Edge-apparaat geconfigureerd. Alleen de linux-modules worden ondersteund voor uitvoering op het IoT Edge-apparaat.
 
-    ![Configuratie weergeven](media/data-box-edge-manage-compute/view-compute-2.png)
+    ![Configuratie weer geven](media/data-box-edge-manage-compute/view-compute-2.png)
 
 
-### <a name="remove-compute-configuration"></a>Compute-configuratie verwijderen
+### <a name="remove-compute-configuration"></a>Reken configuratie verwijderen
 
-Neem de volgende stappen in de Azure-portal om de bestaande Edge-compute-configuratie voor uw apparaat te verwijderen.
+Voer de volgende stappen uit in de Azure Portal om de bestaande Edge Compute-configuratie voor uw apparaat te verwijderen.
 
-1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Edge compute > Aan de slag.** Selecteer **Compute verwijderen** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Edge compute > aan de slag**te gaan. Selecteer **reken proces verwijderen** op de opdracht balk.
 
-    ![Compute verwijderen selecteren](media/data-box-edge-manage-compute/remove-compute-1.png)
+    ![Selecteer reken proces verwijderen](media/data-box-edge-manage-compute/remove-compute-1.png)
 
-2. Als u de compute-configuratie verwijdert, moet u uw apparaat opnieuw configureren voor het geval u compute opnieuw moet gebruiken. Wanneer u om bevestiging wordt gevraagd, selecteert u **Ja**.
+2. Als u de compute-configuratie verwijdert, moet u uw apparaat opnieuw configureren voor het geval dat u de berekening opnieuw moet gebruiken. Selecteer **Ja**als u om bevestiging wordt gevraagd.
 
-    ![Compute verwijderen selecteren](media/data-box-edge-manage-compute/remove-compute-2.png)
+    ![Selecteer reken proces verwijderen](media/data-box-edge-manage-compute/remove-compute-2.png)
 
-### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-apparaat- en IoT Edge-apparaattoegangstoetsen synchroniseren
+### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT-apparaat en toegangs sleutels voor IoT Edge apparaten synchroniseren
 
-Wanneer u compute configureert op uw Data Box Edge, worden een IoT-apparaat en een IoT Edge-apparaat gemaakt. Deze apparaten krijgen automatisch symmetrische toegangssleutels toegewezen. Als best practice voor beveiliging worden deze toetsen regelmatig gedraaid via de IoT Hub-service.
+Wanneer u Compute op uw Data Box Edge configureert, worden er een IoT-apparaat en een IoT Edge apparaat gemaakt. Aan deze apparaten worden automatisch symmetrische toegangs sleutels toegewezen. Als beveiligings best practice worden deze sleutels regel matig gedraaid via de IoT Hub-service.
 
-Als u deze toetsen wilt roteren, u naar de IoT Hub-service gaan die u hebt gemaakt en het IoT-apparaat of het IoT Edge-apparaat selecteren. Elk apparaat heeft een primaire toegangssleutel en een secundaire toegangssleutels. Wijs de primaire toegangssleutel toe aan de secundaire toegangssleutel en regenereerde vervolgens de primaire toegangssleutel.
+Als u deze sleutels wilt draaien, gaat u naar de IoT Hub-service die u hebt gemaakt en selecteert u het IoT-apparaat of het IoT Edge-apparaat. Elk apparaat heeft een primaire toegangs sleutel en secundaire toegangs sleutels. Wijs de primaire toegangs sleutel toe aan de secundaire toegangs sleutel en Genereer de primaire toegangs sleutel opnieuw.
 
-Als uw IoT-apparaat en IoT Edge-apparaatsleutels zijn gedraaid, moet u de configuratie op uw Data Box Edge vernieuwen om de nieuwste toegangssleutels te krijgen. De synchronisatie helpt het apparaat de nieuwste toetsen te krijgen voor uw IoT-apparaat en IoT Edge-apparaat. Data Box Edge gebruikt alleen de primaire toegangssleutels.
+Als uw IoT-apparaat en IoT Edge-apparaatklassen zijn geroteerd, moet u de configuratie op uw Data Box Edge vernieuwen om de nieuwste toegangs sleutels te verkrijgen. De synchronisatie helpt het apparaat de meest recente sleutels te verkrijgen voor uw IoT-apparaat en IoT Edge apparaat. Data Box Edge gebruikt alleen de primaire toegangs sleutels.
 
-Volg de volgende stappen in de Azure-portal om de toegangssleutels voor uw apparaat te synchroniseren.
+Voer de volgende stappen uit in de Azure Portal om de toegangs sleutels voor uw apparaat te synchroniseren.
 
-1. Ga in de Azure-portal naar uw Data Box Edge-bron en ga vervolgens naar **Edge compute > Aan de slag.** Selecteer **Configuratie vernieuwen** op de opdrachtbalk.
+1. Ga in het Azure Portal naar uw Data Box Edge resource en ga vervolgens naar **Edge compute > aan de slag**te gaan. Selecteer **configuratie vernieuwen** op de opdracht balk.
 
-    ![Selecteer Configuratie vernieuwen](media/data-box-edge-manage-compute/refresh-configuration-1.png)
+    ![Selecteer configuratie vernieuwen](media/data-box-edge-manage-compute/refresh-configuration-1.png)
 
-2. Selecteer **Ja** wanneer u om bevestiging wordt gevraagd.
+2. Selecteer **Ja** als u om bevestiging wordt gevraagd.
 
-     ![Ja selecteren wanneer u daarom wordt gevraagd](media/data-box-edge-manage-compute/refresh-configuration-2.png)
+     ![Selecteer Ja wanneer u hierom wordt gevraagd](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. Sluit het dialoogvenster wanneer de synchronisatie is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [beheren van edge-compute-netwerk via Azure-portal.](data-box-edge-extend-compute-access-modules.md)
+- Meer informatie over het [beheren van Edge Compute Network via Azure Portal](data-box-edge-extend-compute-access-modules.md).

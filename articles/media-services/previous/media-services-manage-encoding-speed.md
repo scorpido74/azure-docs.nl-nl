@@ -1,6 +1,6 @@
 ---
-title: Snelheid en gelijktijdigheid van uw codering beheren met Azure Media Services | Microsoft Documenten
-description: In dit artikel vindt u een kort overzicht van hoe u de snelheid en gelijktijdigheid van uw coderingstaken/taken beheren met Azure Media Services.
+title: Snelheid en gelijktijdigheid van uw code ring beheren met Azure Media Services | Microsoft Docs
+description: Dit artikel bevat een kort overzicht van hoe u de snelheid en gelijktijdigheid van uw coderings taken/taken kunt beheren met Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463749"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>De snelheid en gelijktijdigheid van uw codering beheren  
 
-Dit artikel geeft een kort overzicht van hoe u de snelheid en gelijktijdigheid van uw coderingstaken/taken beheren.
+Dit artikel bevat een kort overzicht van hoe u de snelheid en gelijktijdigheid van uw coderings taken/taken kunt beheren.
 
 ## <a name="overview"></a>Overzicht
 
-In Media Services bepaalt een **type gereserveerde eenheid** de snelheid waarmee uw mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**). In het onderwerp [coderingseenheden schalen](media-services-scale-media-processing-overview.md) wordt een tabel weergegeven waarmee u een beslissing nemen bij het kiezen tussen verschillende coderingssnelheden.
+In Media Services bepaalt een **gereserveerd eenheids type** de snelheid waarmee uw media verwerkings taken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**). Het onderwerp voor het [schalen van coderings eenheden](media-services-scale-media-processing-overview.md) bevat een tabel waarmee u beslissingen kunt nemen bij het kiezen tussen verschillende coderings snelheden.
 
-Naast het opgeven van het type gereserveerde eenheid, u opgeven om uw account in te richten bij **gereserveerde eenheden.** Op basis van het aantal ingerichte, gereserveerde eenheden wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account. Als uw account bijvoorbeeld vijf gereserveerde eenheden heeft, worden vijf mediataken gelijktijdig uitgevoerd zolang er taken zijn die moeten worden verwerkt. De overige taken wachten in de wachtrij en worden opgehaald voor het opeenvolgend verwerken wanneer een lopende taak is voltooid. Als een account geen gereserveerde eenheden heeft ingericht, worden taken achtereenvolgens opgehaald. In dit geval is de wachttijd tussen de afwerking van de ene taak en de volgende taak die wordt gestart, afhankelijk van de beschikbaarheid van resources in het systeem.
+Naast het opgeven van het type gereserveerde eenheid kunt u opgeven om uw account in te richten met **gereserveerde eenheden**. Op basis van het aantal ingerichte, gereserveerde eenheden wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account. Als uw account bijvoorbeeld vijf gereserveerde eenheden heeft, zullen vijf media taken gelijktijdig worden uitgevoerd, zolang er taken moeten worden verwerkt. De resterende taken wachten in de wachtrij en worden opgehaald voor verwerking opeenvolgend wanneer een actieve taak wordt voltooid. Als er voor een account geen gereserveerde eenheden zijn ingericht, worden de taken sequentieel opgehaald. In dit geval is de wacht tijd tussen het volt ooien van een taak en de volgende begint afhankelijk van de beschik baarheid van resources in het systeem.
 
-Zie [dit](media-services-scale-media-processing-overview.md) onderwerp voor gedetailleerde informatie en voorbeelden die laten zien hoe u coderingseenheden schalen.
+Zie [Dit](media-services-scale-media-processing-overview.md) onderwerp voor gedetailleerde informatie en voor beelden die laten zien hoe u coderings eenheden kunt schalen.
 
 ## <a name="next-step"></a>Volgende stap
 
-[Coderingseenheden schalen](media-services-scale-media-processing-overview.md)
+[Schaal coderings eenheden](media-services-scale-media-processing-overview.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

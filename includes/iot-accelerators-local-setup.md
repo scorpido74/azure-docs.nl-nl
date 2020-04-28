@@ -9,19 +9,19 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176468"
 ---
-## <a name="download-the-source-code"></a>De broncode downloaden
+## <a name="download-the-source-code"></a>De bron code downloaden
 
-De broncoderepositories voor externe bewaking bevatten de broncode en de Docker-configuratiebestanden die u nodig hebt om de Docker-afbeeldingen van microservices uit te voeren.
+De opslag plaatsen voor de bron code voor externe controle zijn de bron code en de docker-configuratie bestanden die u nodig hebt om de micro Services docker-installatie kopieën uit te voeren.
 
-Als u een lokale versie van de opslagplaats wilt klonen en maken, gebruikt u uw opdrachtregelomgeving om naar een geschikte map op uw lokale machine te navigeren. Voer vervolgens een van de volgende sets opdrachten uit om de .NET-opslagplaats te klonen:
+Als u een lokale versie van de opslag plaats wilt klonen en maken, gebruikt u de opdracht regel omgeving om naar een geschikte map op uw lokale computer te gaan. Voer vervolgens een van de volgende sets opdrachten uit om de .NET-opslag plaats te klonen:
 
-Voer het als nodig op om de nieuwste versie van de .NET-microservice-implementaties te downloaden:
+Als u de nieuwste versie van de .NET Micro service-implementaties wilt downloaden, voert u de volgende handelingen uit:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -33,47 +33,47 @@ git submodule foreach git pull origin master
 ```
 
 > [!NOTE]
-> Deze opdrachten downloaden de broncode voor alle microservices naast de scripts die u gebruikt om de microservices lokaal uit te voeren. Hoewel u de broncode niet nodig hebt om de microservices in Docker uit te voeren, is de broncode handig als u later van plan bent de oplossingsversneller aan te passen en uw wijzigingen lokaal te testen.
+> Met deze opdrachten wordt de bron code voor alle micro Services gedownload naast de scripts die u gebruikt om de micro services lokaal uit te voeren. Hoewel u de bron code niet nodig hebt om de micro services uit te voeren in docker, is de bron code nuttig als u later de oplossings versneller wilt wijzigen en uw wijzigingen lokaal wilt testen.
 
-## <a name="deploy-the-azure-services"></a>De Azure-services implementeren
+## <a name="deploy-the-azure-services"></a>De Azure-Services implementeren
 
-Hoewel in dit artikel wordt uitgelegd hoe u de microservices lokaal uitvoeren, zijn deze afhankelijk van Azure-services die in de cloud worden uitgevoerd. Gebruik het volgende script om de Azure-services te implementeren. In de volgende scriptvoorbeelden wordt ervan uitgegaan dat u de .NET-repository op een Windows-machine gebruikt. Als u in een andere omgeving werkt, past u de paden, bestandsextensies en padscheidingen op de juiste manier aan.
+Hoewel in dit artikel wordt uitgelegd hoe u de micro services lokaal kunt uitvoeren, zijn ze afhankelijk van Azure-Services die in de cloud worden uitgevoerd. Gebruik het volgende script om de Azure-Services te implementeren. In de volgende script voorbeelden wordt ervan uitgegaan dat u de .NET-opslag plaats op een Windows-computer gebruikt. Als u in een andere omgeving werkt, past u de paden, bestands extensies en pad scheidings tekens op de juiste wijze aan.
 
-### <a name="create-new-azure-resources"></a>Nieuwe Azure-bronnen maken
+### <a name="create-new-azure-resources"></a>Nieuwe Azure-resources maken
 
-Als u nog niet de vereiste Azure-bronnen hebt gemaakt, voert u de volgende stappen uit:
+Als u de vereiste Azure-resources nog niet hebt gemaakt, voert u de volgende stappen uit:
 
-1. Navigeer in uw opdrachtregelomgeving naar de **map \services\scripts\local\launch** in uw gekloonde kopie van de opslagplaats.
+1. In uw opdracht regel omgeving gaat u naar de map **\services\scripts\local\launch** in de gekloonde kopie van de opslag plaats.
 
-1. Voer de volgende opdrachten uit om het **CLI-hulpprogramma voor pc's** te installeren en u aan te melden bij uw Azure-account:
+1. Voer de volgende opdrachten uit om het hulp programma **pc's** CLI te installeren en u aan te melden bij uw Azure-account:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Voer het **start.cmd** script uit. Het script vraagt u om de volgende informatie:
-   * Een oplossingsnaam.
+1. Voer het script **Start. cmd** uit. Het script vraagt u om de volgende informatie:
+   * De naam van een oplossing.
    * Het te gebruiken Azure-abonnement.
-   * De locatie van het Te gebruiken Azure-datacenter.
+   * De locatie van het Azure-Data Center dat moet worden gebruikt.
 
-     Het script maakt resourcegroep in Azure met de naam van uw oplossing. Deze brongroep bevat de Azure-resources die de oplossingsversneller gebruikt. U deze brongroep verwijderen zodra u de bijbehorende resources niet meer nodig hebt.
+     Met het script wordt een resource groep in azure gemaakt met de naam van uw oplossing. Deze resource groep bevat de Azure-resources die door de oplossings versneller worden gebruikt. U kunt deze resource groep verwijderen als u de bijbehorende resources niet meer nodig hebt.
 
-     Het script voegt ook een set omgevingsvariabelen met een voorvoegsel **PCS** toe aan uw lokale machine. Deze omgevingsvariabelen bieden de details voor externe bewaking om te kunnen lezen vanuit een Azure Key Vault-bron. Deze Key Vault-bron is de plaats waar op afstand de configuratiewaarden worden gelezen.
+     Het script voegt ook een set omgevings variabelen met een voor voegsel- **pc's** toe aan uw lokale computer. Deze omgevings variabelen bieden de Details voor externe controle om te kunnen lezen van een Azure Key Vault bron. Deze Key Vault resource is waar de configuratie waarden van de externe controle van worden gelezen.
 
      > [!TIP]
-     > Wanneer het script is voltooid, worden de omgevingsvariabelen ook opgeslagen in een bestand dat ** \<\>\\de naam\\\<\>van de thuismap .pcs-oplossing .env wordt**genoemd. U ze gebruiken voor toekomstige implementaties van oplossingsversnellers. Houd er rekening mee dat alle omgevingsvariabelen die zijn ingesteld op uw lokale machine, waarden overschrijven in het **\\\\\\lokale .env-bestand van services** wanneer u **docker-compose uitvoert.**
+     > Wanneer het script is voltooid, worden de omgevings variabelen ook opgeslagen in een bestand ** \<dat uw basismap\>\\heet.\\\<PC-\>oplossing naam. env**. U kunt deze gebruiken voor toekomstige oplossings versnelle implementaties. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van de Services-scripts\\** worden overschreven wanneer u **docker-opstellen**uitvoert.
 
-1. Verlaat uw opdrachtlijnomgeving.
+1. Sluit af vanaf uw opdracht regel omgeving.
 
-### <a name="use-existing-azure-resources"></a>Bestaande Azure-bronnen gebruiken
+### <a name="use-existing-azure-resources"></a>Bestaande Azure-resources gebruiken
 
-Als u al de vereiste Azure-resources hebt gemaakt, maakt u de bijbehorende omgevingsvariabelen op uw lokale machine.
-Stel de omgevingsvariabelen in voor het volgende:
-* **PCS_KEYVAULT_NAME** - Naam van de Azure Key Vault-bron
-* **PCS_AAD_APPID** - De AAD-applicatie-id
-* **PCS_AAD_APPSECRET** - Het AAD-applicatiegeheim
+Als u de vereiste Azure-resources al hebt gemaakt, maakt u de bijbehorende omgevings variabelen op uw lokale machine.
+Stel de omgevings variabelen voor het volgende in:
+* **PCS_KEYVAULT_NAME** -naam van de Azure Key Vault resource
+* **PCS_AAD_APPID** -de Aad-toepassings-id
+* **PCS_AAD_APPSECRET** -het Aad-toepassings geheim
 
-Configuratiewaarden worden gelezen uit deze Azure Key Vault-bron. Deze omgevingsvariabelen kunnen worden opgeslagen in de ** \<naam van de (pc's)-oplossingsnaam .env\>\\\\\<\>** van de implementatie in de naam van de thuismap .pcs-oplossing. Houd er rekening mee dat omgevingsvariabelen die zijn ingesteld op uw lokale machine, waarden overschrijven in het **\\\\\\lokale .env-bestand van services** wanneer u **docker-compose uitvoert.**
+Configuratie waarden worden gelezen uit deze Azure Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het ** \<bestand uw\>\\basismap.\\\<PC Solution\>naam. env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van Services-scripts\\** worden vervangen wanneer u **docker-opstellen**uitvoert.
 
-Een deel van de configuratie die nodig is voor de microservice, wordt opgeslagen in een exemplaar van **Key Vault** dat is gemaakt bij de eerste implementatie. De bijbehorende variabelen in keyvault moeten zo nodig worden gewijzigd.
+Een deel van de configuratie die nodig is voor de micro service, wordt opgeslagen in een exemplaar van **Key Vault** dat is gemaakt tijdens de eerste implementatie. De bijbehorende variabelen in de sleutel kluis moeten zo nodig worden gewijzigd.

@@ -1,64 +1,64 @@
 ---
-title: Gegevensbronnen annoteren in Azure-gegevenscatalogus
-description: In het artikel waarin wordt uitgelegd hoe gegevenselementen in Azure Data Catalog kunnen worden annoteren, inclusief vriendelijke namen, tags, beschrijvingen en experts.
+title: Aantekeningen toevoegen aan gegevens bronnen in Azure Data Catalog
+description: Een artikel met instructies voor het markeren van aantekeningen aan gegevensassets in Azure Data Catalog, inclusief beschrijvende namen, tags, beschrijvingen en experts.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68950264"
 ---
-# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Gegevensbronnen annoteren in Azure-gegevenscatalogus
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Aantekeningen toevoegen aan gegevens bronnen in Azure Data Catalog
 
 ## <a name="introduction"></a>Inleiding
 
-**Microsoft Azure Data Catalog** is een volledig beheerde cloudservice die dient als een systeem van registratie en detectiesysteem voor bedrijfsgegevensbronnen. Met andere woorden, Data Catalog is alles over het helpen van mensen ontdekken, begrijpen en gebruiken van gegevensbronnen, en het helpen van organisaties om meer waarde te halen uit hun bestaande gegevens. Wanneer een gegevensbron is geregistreerd bij Gegevenscatalogus, worden de metagegevens gekopieerd en geïndexeerd door de service, maar het verhaal eindigt daar niet. Data Catalog stelt gebruikers in staat om hun eigen beschrijvende metadata te verstrekken - zoals beschrijvingen en tags - om de metadata uit de gegevensbron aan te vullen en om de gegevensbron begrijpelijker te maken voor meer mensen.
+**Microsoft Azure Data Catalog** is een volledig beheerde Cloud service die fungeert als registratie systeem en detectie systeem voor zakelijke gegevens bronnen. Met andere woorden, het Data Catalog is alles wat helpt mensen bij het detecteren, begrijpen en gebruiken van gegevens bronnen, en helpt organisaties bij het verkrijgen van meer waarde dan hun bestaande gegevens. Wanneer een gegevens bron wordt geregistreerd bij Data Catalog, worden de meta gegevens gekopieerd en geïndexeerd door de service, maar het artikel eindigt daar niet. Met Data Catalog kunnen gebruikers hun eigen beschrijvende meta gegevens, zoals beschrijvingen en tags, opgeven om de meta gegevens die zijn geëxtraheerd uit de gegevens bron op te vullen en de gegevens bron beter te begrijpen voor meer mensen.
 
-## <a name="annotation-and-crowdsourcing"></a>Annotatie en crowdsourcing
-Iedereen heeft een mening. En dit is een goede zaak.
-Data Catalog erkent dat verschillende gebruikers verschillende perspectieven hebben op bedrijfsgegevensbronnen en dat elk van deze perspectieven waardevol kan zijn. Denkt u zich het volgende scenario eens in:
+## <a name="annotation-and-crowdsourcing"></a>Aantekening en crowdsourcing
+Iedereen heeft een mening. En dit is goed.
+Data Catalog erkent dat verschillende gebruikers verschillende perspectieven hebben voor gegevens bronnen in de onderneming en dat elk van deze perspectieven waardevol kan zijn. Denkt u zich het volgende scenario eens in:
 
-* De systeembeheerder kent de servicelevelovereenkomst voor de servers of services die de gegevensbron hosten.
-* De databasebeheerder kent het back-upschema voor elke database en de toegestane ETL-verwerkingsvensters.
-* De eigenaar van het systeem kent het proces voor gebruikers om toegang te vragen tot de gegevensbron.
-* De gegevensbeheerder weet hoe de activa en kenmerken in de gegevensbronmap aan het bedrijfsgegevensmodel worden toegevoegd.
-* De analist weet hoe de data wordt gebruikt in de context van de bedrijfsprocessen die zij ondersteunen.
+* De systeem beheerder kent de service level agreement voor de servers of services die de gegevens bron hosten.
+* De database beheerder kent het back-upschema voor elke Data Base en de toegestane vensters van de ETL-verwerking.
+* De systeem eigenaar weet het proces voor gebruikers om toegang tot de gegevens bron aan te vragen.
+* De data steward weet hoe de assets en kenmerken in de gegevens bron worden toegewezen aan het ondernemings gegevens model.
+* De analist weet hoe de gegevens worden gebruikt in de context van de bedrijfs processen die ze ondersteunen.
 
-Elk van deze perspectieven is waardevol, en Data Catalog maakt gebruik van een crowdsourcing benadering van metadata waarmee elk kan worden vastgelegd en gebruikt om een compleet beeld van geregistreerde gegevensbronnen te bieden. Met behulp van de portal Gegevenscatalogus kan elke gebruiker zijn eigen annotaties toevoegen en bewerken, terwijl hij aantekeningen van andere gebruikers kan bekijken.
+Elk van deze perspectieven is waardevol en Data Catalog maakt gebruik van een crowdsourcing-benadering van meta gegevens waarmee elk van deze mogelijkheden kan worden vastgelegd en wordt gebruikt om een volledige afbeelding van geregistreerde gegevens bronnen te leveren. Met behulp van de Data Catalog Portal kan elke gebruiker hun eigen aantekeningen toevoegen en bewerken, terwijl de aantekeningen van andere gebruikers kunnen worden weer gegeven.
 
-## <a name="different-types-of-annotations"></a>Verschillende soorten annotaties
-Gegevenscatalogus ondersteunt de volgende typen annotaties:
+## <a name="different-types-of-annotations"></a>Verschillende typen aantekeningen
+Data Catalog ondersteunt de volgende typen aantekeningen:
 
 | Aantekening | Opmerkingen |
 | --- | --- |
-| Beschrijvende naam |Vriendelijke namen kunnen worden geleverd op het niveau van gegevensactiva, om de gegevensactiva gemakkelijker te begrijpen. Vriendelijke namen zijn het meest nuttig wanneer de onderliggende objectnaam cryptisch, afgekort of anderszins niet zinvol is voor gebruikers. |
-| Beschrijving |Beschrijvingen kunnen worden geleverd op de gegevens asset en attribuut / kolom niveaus. Beschrijvingen zijn korte tekstannotaties in vrije tekst die het perspectief van de gebruiker op het gegevensitem of het gebruik ervan beschrijven. |
-| Tags (gebruikerstags) |Tags kunnen worden geleverd op de gegevens asset en attribuut / kolom niveaus. Gebruikerstags zijn door de gebruiker gedefinieerde labels die kunnen worden gebruikt om gegevenselementen of -kenmerken te categoriseren. |
-| Tags (woordenlijsttags) |Tags kunnen worden geleverd op de gegevens asset en attribuut / kolom niveaus. Woordenlijsttags zijn centraal gedefinieerde woordenlijsten die kunnen worden gebruikt om gegevenselementen of -kenmerken te categoriseren met behulp van een gemeenschappelijke bedrijfstaxonomie. Zie voor meer informatie [De zakelijke woordenlijst instellen voor Governed Tagging](data-catalog-how-to-business-glossary.md) |
-| Deskundigen |Experts kunnen worden geleverd op het niveau van de gegevensactiva. Experts identificeren gebruikers of groepen met deskundige perspectieven op de gegevens en kunnen dienen als aanspreekpunt voor gebruikers die de geregistreerde gegevensbronnen ontdekken en vragen hebben die niet worden beantwoord door de bestaande annotaties. |
-| Toegang aanvragen |Toegangsgegevens voor aanvragen kunnen worden verstrekt op het niveau van de gegevensactiva. Deze informatie is voor gebruikers die een gegevensbron ontdekken waarvan ze nog geen toegangsrechten hebben. Gebruikers kunnen het e-mailadres invoeren van de gebruiker of groep die toegang verleent, de URL van het proces of hulpprogramma dat gebruikers nodig hebben om toegang te krijgen, of het proces zelf als tekst kunnen invoeren. |
-| Documentatie |Documentatie kan worden verstrekt op het niveau van de gegevensactiva. Asset documentatie is rich text informatie die links en afbeeldingen kan bevatten, en die alle informatie kan bieden die niet wordt overgebracht door middel van beschrijvingen en tags. |
+| Beschrijvende naam |Er kunnen beschrijvende namen worden opgegeven op het niveau van de gegevens Asset, zodat de gegevens activa eenvoudiger kunnen worden begrepen. Beschrijvende namen zijn het handigst wanneer de onderliggende object naam cryptisch, afgekort of anderszins niet relevant is voor gebruikers. |
+| Beschrijving |Beschrijvingen kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Beschrijvingen zijn vrije tekst aantekeningen met een korte vorm die het perspectief van de gebruiker voor de gegevens Asset of het gebruik beschrijven. |
+| Tags (gebruikers codes) |Labels kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Gebruikers codes zijn door de gebruiker gedefinieerde labels die kunnen worden gebruikt om gegevensassets of kenmerken te categoriseren. |
+| Tags (woordenlijst Tags) |Labels kunnen worden opgegeven op het niveau van de gegevens Asset en het kenmerk/kolom. Woordenlijst Tags zijn centraal gedefinieerde woorden lijst termen die kunnen worden gebruikt om gegevensassets of kenmerken te categoriseren met behulp van een algemene bedrijfs taxonomie. Zie voor meer informatie [De zakelijke woordenlijst instellen voor Governed Tagging](data-catalog-how-to-business-glossary.md) |
+| Degenen |Experts kunnen worden verstrekt op het niveau van de gegevens Asset. Experts identificeren gebruikers of groepen met deskundig perspectieven voor de gegevens en kunnen dienen als contact punten voor gebruikers die de geregistreerde gegevens bronnen detecteren en vragen hebben die niet door de bestaande aantekeningen worden beantwoord. |
+| Toegang aanvragen |Informatie over de aanvraag toegang kan worden opgegeven op het niveau van de gegevens Asset. Deze informatie is voor gebruikers die een gegevens bron detecteren waarvoor ze nog geen toegangs rechten hebben. Gebruikers kunnen het e-mail adres invoeren van de gebruiker of groep die toegang verleent, de URL van het proces of hulp programma die gebruikers nodig hebben om toegang te krijgen of het proces zelf als tekst in te voeren. |
+| Documentatie |Documentatie kan worden verstrekt op het niveau van de gegevens Asset. Asset-documentatie is informatie over RTF-tekst die koppelingen en installatie kopieën kan bevatten en die informatie kan geven die niet wordt overgebracht via beschrijvingen en tags. |
 
-## <a name="annotating-multiple-assets"></a>Meerdere activa annoteren
-Wanneer u meerdere gegevenselementen selecteert in de portal Gegevenscatalogus, kunnen gebruikers alle geselecteerde elementen in één bewerking annoteren. Annotaties zijn van toepassing op alle geselecteerde assets, waardoor het eenvoudig is om een consistente beschrijving en reekstags en experts voor gerelateerde gegevenselementen te selecteren en te bieden.
+## <a name="annotating-multiple-assets"></a>Aantekeningen maken op meerdere assets
+Wanneer u meerdere gegevensassets in de Data Catalog Portal selecteert, kunnen gebruikers in één bewerking aantekeningen toevoegen aan alle geselecteerde assets. Aantekeningen zijn van toepassing op alle geselecteerde assets, waardoor het eenvoudig is om een consistente beschrijving en sets van tags en experts voor gerelateerde gegevensassets te selecteren en op te geven.
 
 > [!NOTE]
-> Tags en experts kunnen ook worden verstrekt bij het registreren van gegevensactiva met behulp van de datacatalogus gegevensbronregistratietool.
+> Tags en experts kunnen ook worden gegeven bij het registreren van gegevensassets met behulp van het registratie hulpprogramma voor Data Catalog gegevens bron.
 >
 >
 
-Bij het selecteren van meerdere tabellen en weergaven worden alleen kolommen weergegeven die alle geselecteerde gegevenselementen gemeen hebben, in de portal gegevenscatalogus. Hierdoor kunnen gebruikers tags en beschrijvingen opgeven voor alle kolommen met dezelfde naam voor alle geselecteerde elementen.
+Wanneer u meerdere tabellen en weer gaven selecteert, worden alleen de kolommen die alle geselecteerde gegevensassets gemeen hebben, weer gegeven in de Data Catalog Portal. Hiermee kunnen gebruikers Tags en beschrijvingen opgeven voor alle kolommen met dezelfde naam voor alle geselecteerde assets.
 
-## <a name="annotations-and-discovery"></a>Annotaties en ontdekking
-Net zoals de metagegevens die tijdens de registratie uit de gegevensbron worden gehaald, worden toegevoegd aan de zoekindex van de gegevenscatalogus, maar ook door de gebruiker geleverde metagegevens geïndexeerd. Dit betekent dat niet alleen annotaties het gemakkelijker maken voor gebruikers om de gegevens te begrijpen die ze ontdekken, maar ook het gemakkelijker maken voor gebruikers om de geannoteerde gegevenselementen te ontdekken door te zoeken met behulp van de termen die voor hen zinvol zijn.
+## <a name="annotations-and-discovery"></a>Aantekeningen en detectie
+Net zoals de meta gegevens die zijn geëxtraheerd uit de gegevens bron tijdens de registratie, worden toegevoegd aan de Data Catalog zoek index, worden door de gebruiker opgegeven meta gegevens ook geïndexeerd. Dit betekent dat gebruikers niet alleen aantekeningen kunnen maken op de gegevens die ze hebben gedetecteerd, maar maakt het gemakkelijker voor gebruikers om de geannoteerde gegevensgestuurde gegevensassets te detecteren door te zoeken met de termen die voor hen van belang zijn.
 
 ## <a name="summary"></a>Samenvatting
-Als u een gegevensbron registreert met Gegevenscatalogus, kunnen gegevens worden ontdekt door structurele en beschrijvende metagegevens van de gegevensbron naar de catalogusservice te kopiëren. Zodra een gegevensbron is geregistreerd, kunnen gebruikers aantekeningen maken om het gemakkelijker te maken om te ontdekken en te begrijpen vanuit de datacatalogusportal.
+Als u een gegevens bron registreert met Data Catalog, kunnen de gegevens worden gedetecteerd door structurele en beschrijvende meta gegevens te kopiëren van de gegevens bron naar de catalogus service. Nadat een gegevens bron is geregistreerd, kunnen gebruikers aantekeningen opgeven zodat ze gemakkelijker te ontdekken en inzicht hebben in de Data Catalog Portal.
 
 ## <a name="see-also"></a>Zie ook
-* Ga aan de slag met de zelfstudie [van azure-gegevenscatalogus](data-catalog-get-started.md) voor stapsgewijze details over het annoteren van gegevensbronnen.
+* [Aan de slag met Azure Data Catalog](data-catalog-get-started.md) -zelf studie voor stapsgewijze Details over het aantekeningen maken van gegevens bronnen.

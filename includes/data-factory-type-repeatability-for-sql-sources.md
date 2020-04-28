@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176502"
 ---
-## <a name="repeatability-during-copy"></a>Herhaalbaarheid tijdens kopiëren
-Bij het kopiëren van gegevens naar Azure SQL/SQL Server vanuit andere gegevensarchieven moet men rekening houden met herhaalbaarheid om onbedoelde resultaten te voorkomen. 
+## <a name="repeatability-during-copy"></a>Herhaal baarheid tijdens kopiëren
+Bij het kopiëren van gegevens naar Azure SQL/SQL Server van andere gegevens archieven, moeten er een herhaling worden gehouden om onbedoelde resultaten te voor komen. 
 
-Wanneer u gegevens kopieert naar Azure SQL/SQL Server Database, wordt de gegevensset standaard standaard toegevoegd aan de sinktabel. Wanneer u bijvoorbeeld gegevens kopieert van een CSV-bestandsbron (comma separate values data) met twee records naar Azure SQL/SQL Server Database, ziet de tabel er zo uit:
+Bij het kopiëren van gegevens naar Azure SQL/SQL Server Data Base, wordt standaard de gegevensset automatisch aan de Sink-tabel toegevoegd. Als u bijvoorbeeld gegevens kopieert uit een CSV-bestand (Comma Separated Values) met twee records naar Azure SQL/SQL Server Data Base, ziet de tabel er als volgt uit:
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -23,7 +23,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Stel dat u fouten in het bronbestand hebt gevonden en de hoeveelheid Down Tube hebt bijgewerkt van 2 naar 4 in het bronbestand. Als u het gegevenssegment voor die periode opnieuw uitvoert, vindt u twee nieuwe records die zijn toegevoegd aan Azure SQL/SQL Server Database. In de onderstaande gaat ervan uitgegaan dat geen van de kolommen in de tabel de primaire sleutelbeperking heeft.
+Stel dat u fouten hebt gevonden in het bron bestand en de hoeveelheid omlaag-buis hebt bijgewerkt van 2 naar 4 in het bron bestand. Als u het gegevens segment voor die periode opnieuw uitvoert, vindt u twee nieuwe records die zijn toegevoegd aan Azure SQL/SQL Server Data Base. In de onderstaande stappen wordt ervan uitgegaan dat geen van de kolommen in de tabel de beperking Primary Key heeft.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -34,7 +34,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Om dit te voorkomen, moet u upsert semantiek opgeven door gebruik te maken van een van de onderstaande 2 mechanismen hieronder vermeld.
+Om dit te voor komen, moet u UPSERT-semantiek opgeven door gebruik te maken van een van de hieronder vermelde twee mechanismen.
 
 > [!NOTE]
 > Een segment kan automatisch opnieuw worden uitgevoerd in Azure Data Factory volgens het opgegeven beleid voor opnieuw proberen.
@@ -42,7 +42,7 @@ Om dit te voorkomen, moet u upsert semantiek opgeven door gebruik te maken van e
 > 
 
 ### <a name="mechanism-1"></a>Mechanisme 1
-U **sqlWriterCleanupScript-eigenschap** gebruiken om eerst opschoningsactie uit te voeren wanneer een segment wordt uitgevoerd. 
+U kunt gebruikmaken van de **sqlWriterCleanupScript** -eigenschap om eerst opschoon acties uit te voeren wanneer een segment wordt uitgevoerd. 
 
 ```json
 "sink":  
@@ -52,9 +52,9 @@ U **sqlWriterCleanupScript-eigenschap** gebruiken om eerst opschoningsactie uit 
 }
 ```
 
-Het opschoningsscript wordt eerst uitgevoerd tijdens het kopiëren voor een bepaald segment dat de gegevens uit de SQL-tabel zou verwijderen die overeenkomt met dat segment. De activiteit voegt de gegevens vervolgens in de SQL-tabel. 
+Het opschoon script wordt eerst uitgevoerd tijdens het kopiëren van een opgegeven segment, waardoor de gegevens uit de SQL-tabel die overeenkomt met dat segment worden verwijderd. Met de activiteit worden de gegevens vervolgens in de SQL-tabel ingevoegd. 
 
-Als het segment nu opnieuw wordt uitgevoerd, dan zult u merken dat de hoeveelheid naar wens wordt bijgewerkt.
+Als het segment nu opnieuw wordt uitgevoerd, wordt het aantal naar wens bijgewerkt.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -63,25 +63,25 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Stel dat de record Flat Washer wordt verwijderd uit de oorspronkelijke csv. Als u het segment vervolgens opnieuw uitvoert, wordt het volgende resultaat opgeleverd: 
+Stel dat de record voor een vlakke ring is verwijderd uit de oorspronkelijke CSV. Vervolgens wordt het volgende resultaat door het segment opnieuw uitgevoerd: 
 
 ```
 ID    Product        Quantity    ModifiedDate
 ...    ...            ...            ...
 7     Down Tube    4            2015-05-01 00:00:00
 ```
-Er hoefde niets nieuws gedaan te worden. Met de kopieeractiviteit is het opschoningsscript uitgevoerd om de bijbehorende gegevens voor dat segment te verwijderen. Vervolgens las het de input van de csv (die vervolgens bevatte slechts 1 record) en ingevoegd in de tabel. 
+Er is niets nieuw. De Kopieer activiteit heeft het opschoon script uitgevoerd om de bijbehorende gegevens voor dat segment te verwijderen. Vervolgens wordt de invoer gelezen van het CSV (dat vervolgens slechts 1 record bevat) en ingevoegd in de tabel. 
 
 ### <a name="mechanism-2"></a>Mechanisme 2
 > [!IMPORTANT]
 > sliceIdentifierColumnName wordt op dit moment niet ondersteund voor Azure SQL Data Warehouse. 
 
-Een ander mechanisme om herhaalbaarheid te bereiken is door een speciale kolom **(sliceIdentifierColumnName)** in de doeltabel te hebben. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en bestemming gesynchroniseerd blijven. Deze aanpak werkt wanneer er flexibiliteit is bij het wijzigen of definiëren van het sql-tabelschema voor doel. 
+Een ander mechanisme om Herhaal baarheid te bereiken, is door een toegewezen kolom (**sliceIdentifierColumnName**) te hebben in de doel tabel. Deze kolom wordt gebruikt door Azure Data Factory om ervoor te zorgen dat de bron en het doel gesynchroniseerd blijven. Deze aanpak werkt als er flexibiliteit is bij het wijzigen of definiëren van het doel-SQL-tabel schema. 
 
-Deze kolom wordt door Azure Data Factory gebruikt voor herhaalbaarheidsdoeleinden en in het proces zal Azure Data Factory geen schemawijzigingen aanbrengen in de tabel. Manier om deze aanpak te gebruiken:
+Deze kolom wordt gebruikt door Azure Data Factory voor Herhaal bare doel einden en in het proces Azure Data Factory worden geen schema wijzigingen in de tabel aangebracht. Manier om deze aanpak te gebruiken:
 
-1. Definieer een kolom met binaire tekst (32) in de SQL-tabel van de bestemming. Er mogen geen beperkingen zijn voor deze kolom. Laten we deze kolom voor dit voorbeeld 'ColumnForADFuseOnly' noemen.
-2. Gebruik het in de kopieeractiviteit als volgt:
+1. Een kolom van het type binary (32) in de doel-SQL-tabel definiëren. Er mogen zich geen beperkingen voor deze kolom voordoen. We noemen deze kolom als ' ColumnForADFuseOnly ' voor dit voor beeld.
+2. Gebruik het in de Kopieer activiteit als volgt:
    
     ```json
     "sink":  
@@ -92,7 +92,7 @@ Deze kolom wordt door Azure Data Factory gebruikt voor herhaalbaarheidsdoeleinde
     }
     ```
 
-Azure Data Factory vult deze kolom in als deze nodig is om ervoor te zorgen dat de bron en bestemming gesynchroniseerd blijven. De waarden van deze kolom mogen niet buiten deze context door de gebruiker worden gebruikt. 
+Azure Data Factory vult deze kolom in aan de hand van de nood zaak om ervoor te zorgen dat de bron en de bestemming synchroon blijven. De waarden van deze kolom mogen niet buiten deze context worden gebruikt door de gebruiker. 
 
-Net als bij mechanisme 1 zal Kopieeractiviteit automatisch eerst de gegevens voor het opgegeven segment opschonen vanuit de SQL-tabel van bestemming en vervolgens de kopieeractiviteit normaal uitvoeren om de gegevens van bron naar bestemming voor dat segment in te voegen. 
+Net als bij mechanisme 1 worden met de Kopieer activiteit automatisch de gegevens voor het opgegeven segment opgeschoond vanuit de doel-SQL-tabel en wordt vervolgens de Kopieer activiteit normaal uitgevoerd om de gegevens van de bron naar het doel voor dat segment in te voegen. 
 

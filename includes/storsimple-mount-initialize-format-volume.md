@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 592131bf6cca4c4c3c827de23742e8d52bcb4d1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176090"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Een volume koppelen, initialiseren en formatteren
@@ -30,7 +30,7 @@ ms.locfileid: "67176090"
     3. Geef een clustergrootte van 64 kB op. Deze clustergrootte werkt goed samen met de ontdubbelingsalgoritmen die worden gebruikt in de StorSimple-oplossing.
     4. Voer een snelle formattering uit.
 
-![Video](./media/storsimple-mount-initialize-format-volume/Video_icon.png) beschikbaar **Video beschikbaar**
+![](./media/storsimple-mount-initialize-format-volume/Video_icon.png) Video beschikbaar video **beschikbaar**
 
 Als u een video wilt bekijken over het koppelen, initialiseren en formatteren van een StorSimple-oplossing, klikt u [hier](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect installeren met behulp van een bestaande ADSync-database | Microsoft Documenten
-description: In dit onderwerp wordt beschreven hoe u een bestaande ADSync-database gebruiken.
+title: Azure AD Connect installeren met behulp van een bestaande ADSync-data base | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u een bestaande ADSync-data base gebruikt.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,51 +18,51 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245128"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect installeren met behulp van een bestaande ADSync-database
-Azure AD Connect vereist een SQL Server-database om gegevens op te slaan. U de standaard SQL Server 2012 Express LocalDB gebruiken die is geïnstalleerd met Azure AD Connect of uw eigen volledige versie van SQL gebruiken. Voorheen werd bij het installeren van Azure AD Connect altijd een nieuwe database met de naam ADSync gemaakt. Met Azure AD Connect-versie 1.1.613.0 (of daarna) hebt u de optie om Azure AD Connect te installeren door deze aan te wijzen naar een bestaande ADSync-database.
+Azure AD Connect vereist een SQL Server-Data Base om gegevens op te slaan. U kunt de standaard SQL Server 2012 Express LocalDB gebruiken dat is geïnstalleerd met Azure AD Connect of uw eigen volledige versie van SQL gebruiken. Toen u Azure AD Connect hebt geïnstalleerd, werd er altijd een nieuwe data base gemaakt met de naam ADSync. Met Azure AD Connect versie 1.1.613.0 (of later) hebt u de mogelijkheid om Azure AD Connect te installeren door het te wijzen naar een bestaande ADSync-data base.
 
-## <a name="benefits-of-using-an-existing-adsync-database"></a>Voordelen van het gebruik van een bestaande ADSync-database
-Door te wijzen op een bestaande ADSync-database:
+## <a name="benefits-of-using-an-existing-adsync-database"></a>Voor delen van het gebruik van een bestaande ADSync-data base
+Door naar een bestaande ADSync-data base te verwijzen:
 
-- Behalve voor referentiesinformatie wordt de synchronisatieconfiguratie die is opgeslagen in de ADSync-database (inclusief aangepaste synchronisatieregels, connectors, filtering en optionele functiesconfiguratie) automatisch hersteld en gebruikt tijdens de installatie . Referenties die door Azure AD Connect worden gebruikt om wijzigingen te synchroniseren met on-premises AD en Azure AD, zijn versleuteld en kunnen alleen worden geopend door de vorige Azure AD Connect-server.
-- Alle identiteitsgegevens (gekoppeld aan verbindingsruimten en metaverse) en synchronisatiecookies die zijn opgeslagen in de ADSync-database, worden ook hersteld. De nieuw geïnstalleerde Azure AD Connect-server kan blijven synchroniseren vanaf de plek waar de vorige Azure AD Connect-server is gebleven, in plaats van dat de noodzaak is om een volledige synchronisatie uit te voeren.
+- Behalve voor referentie gegevens, wordt de synchronisatie configuratie die is opgeslagen in de ADSync-data base (met inbegrip van aangepaste synchronisatie regels, connectors, filters en optionele onderdelen configuratie) automatisch hersteld en gebruikt tijdens de installatie. Referenties die worden gebruikt door Azure AD Connect om wijzigingen te synchroniseren met on-premises AD en Azure AD, worden versleuteld en kunnen alleen worden geopend door de vorige Azure AD Connect-server.
+- Alle identiteits gegevens (gekoppeld aan connector ruimten en omgekeerd) en synchronisatie cookies die zijn opgeslagen in de ADSync-data base, worden ook hersteld. De zojuist geïnstalleerde Azure AD Connect server kan worden gesynchroniseerd vanaf het punt waar de vorige Azure AD Connect-server is gebleven, in plaats van dat u een volledige synchronisatie hoeft uit te voeren.
 
-## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Scenario's waarbij het gebruik van een bestaande ADSync-database gunstig is
-Deze voordelen zijn nuttig in de volgende scenario's:
+## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Scenario's waarbij het gebruik van een bestaande ADSync-Data Base handig is
+Deze voor delen zijn nuttig in de volgende scenario's:
 
 
-- U hebt een bestaande Azure AD Connect-implementatie. Uw bestaande Azure AD Connect-server werkt niet meer, maar de SQL-server met de ADSync-database werkt nog steeds. U een nieuwe Azure AD Connect-server installeren en deze naar de bestaande ADSync-database wijzen. 
-- U hebt een bestaande Azure AD Connect-implementatie. Uw SQL-server met de ADSync-database werkt niet meer. U hebt echter een recente back-up van de database. U de ADSync-database eerst herstellen naar een nieuwe SQL-server. Daarna u een nieuwe Azure AD Connect-server installeren en deze naar de herstelde ADSync-database wijzen.
-- U hebt een bestaande Azure AD Connect-implementatie die LocalDB gebruikt. Vanwege de limiet van 10 GB die door LocalDB is opgelegd, wilt u migreren naar volledige SQL. U een back-up maken van de ADSync-database van LocalDB en deze herstellen naar een SQL-server. Daarna u een nieuwe Azure AD Connect-server opnieuw installeren en deze naar de herstelde ADSync-database wijzen.
-- U probeert een stagingserver in te stellen en wilt ervoor zorgen dat de configuratie overeenkomt met die van de huidige actieve server. U een back-up maken van de ADSync-database en deze herstellen naar een andere SQL-server. Daarna u een nieuwe Azure AD Connect-server opnieuw installeren en deze naar de herstelde ADSync-database wijzen.
+- U hebt een bestaande Azure AD Connect-implementatie. Uw bestaande Azure AD Connect-server werkt niet meer, maar de SQL-Server met de ADSync-data base werkt nog steeds. U kunt een nieuwe Azure AD Connect-server installeren en deze naar de bestaande ADSync-data base laten wijzen. 
+- U hebt een bestaande Azure AD Connect-implementatie. Uw SQL-Server met de ADSync-data base werkt niet meer. U hebt echter een recente back-up van de data base. U kunt de ADSync-data base eerst herstellen naar een nieuwe SQL-Server. Daarna kunt u een nieuwe Azure AD Connect-server installeren en deze naar de herstelde ADSync-data base laten wijzen.
+- U hebt een bestaande Azure AD Connect-implementatie die gebruikmaakt van LocalDB. Als gevolg van de limiet van 10 GB die is opgelegd door LocalDB, wilt u migreren naar volledige SQL. U kunt een back-up maken van de ADSync-data base van LocalDB en deze herstellen op een SQL-Server. Daarna kunt u een nieuwe Azure AD Connect-server opnieuw installeren en deze naar de herstelde ADSync-data base laten wijzen.
+- U probeert een staging-server in te stellen en wil er zeker van zijn dat de configuratie overeenkomt met die van de huidige actieve server. U kunt een back-up maken van de ADSync-data base en deze herstellen naar een andere SQL-Server. Daarna kunt u een nieuwe Azure AD Connect-server opnieuw installeren en deze naar de herstelde ADSync-data base laten wijzen.
 
 ## <a name="prerequisite-information"></a>Vereiste informatie
 
-Belangrijke notities om er rekening mee te houden voordat u verder gaat:
+Belang rijke opmerkingen voordat u doorgaat:
 
-- Controleer de vereisten voor het installeren van Azure AD Connect op hardware en vereisten en account- en machtigingen die nodig zijn voor het installeren van Azure AD Connect. De machtigingen die nodig zijn voor het installeren van Azure AD Connect met de modus 'Bestaande database gebruiken' zijn hetzelfde als 'aangepaste' installatie.
-- Het implementeren van Azure AD Connect tegen een bestaande ADSync-database wordt alleen ondersteund met volledige SQL. Het wordt niet ondersteund met SQL Express LocalDB. Als u een bestaande ADSync-database in LocalDB hebt die u wilt gebruiken, moet u eerst een back-up maken van de ADSync-database (LocalDB) en deze herstellen naar volledige SQL. Vervolgens u Azure AD Connect met deze methode implementeren tegen de herstelde database.
-- De versie van de Azure AD Connect die voor de installatie wordt gebruikt, moet aan de volgende criteria voldoen:
-    - 1.1.613.0 of hoger, AND
-    - Hetzelfde of hoger als de versie van de Azure AD Connect die voor het laatst is gebruikt met de ADSync-database. Als de Azure AD Connect-versie die voor de installatie wordt gebruikt hoger is dan de versie die voor het laatst wordt gebruikt met de ADSync-database, is een volledige synchronisatie vereist.  Volledige synchronisatie is vereist als er schema- of synchronisatieregelwijzigingen zijn tussen de twee versies. 
-- De gebruikte ADSync-database moet een synchronisatiestatus bevatten die relatief recent is. De laatste synchronisatieactiviteit met de bestaande ADSync-database moet in de afgelopen drie weken plaatsvinden.
-- Wanneer u Azure AD Connect installeert met de methode 'Bestaande database gebruiken' blijft de aanmeldingsmethode die is geconfigureerd op de vorige Azure AD Connect-server, niet behouden. Verder u de aanmeldingsmethode niet configureren tijdens de installatie. U de aanmeldingsmethode alleen configureren nadat de installatie is voltooid.
-- U niet meerdere Azure AD Connect-servers dezelfde ADSync-database laten delen. Met de methode 'bestaande database gebruiken' u een bestaande ADSync-database opnieuw gebruiken met een nieuwe Azure AD Connect-server. Het ondersteunt delen niet.
+- Controleer de vereisten voor het installeren van Azure AD Connect op hardware en vereisten, en account en machtigingen die vereist zijn voor het installeren van Azure AD Connect. De vereiste machtigingen voor het installeren van Azure AD Connect met behulp van de modus ' bestaande Data Base gebruiken ' is hetzelfde als ' aangepaste ' installatie.
+- Het implementeren van Azure AD Connect op basis van een bestaande ADSync-data base wordt alleen ondersteund met volledige SQL. Het wordt niet ondersteund met SQL Express LocalDB. Als u een bestaande ADSync-Data Base hebt in LocalDB die u wilt gebruiken, moet u eerst een back-up maken van de ADSync-data base (LocalDB) en deze herstellen naar volledige SQL. Daarna kunt u met deze methode Azure AD Connect implementeren op basis van de herstelde data base.
+- De versie van de Azure AD Connect die wordt gebruikt voor de installatie moet voldoen aan de volgende criteria:
+    - 1.1.613.0 of hoger en
+    - Gelijk of hoger dan de versie van de Azure AD Connect laatst gebruikt in combi natie met de ADSync-data base. Als de Azure AD Connect versie die wordt gebruikt voor de installatie hoger is dan de versie die het laatst is gebruikt in combi natie met de ADSync-data base, is het mogelijk dat er een volledige synchronisatie is vereist.  Volledige synchronisatie is vereist als er wijzigingen zijn in schema-of synchronisatie regels tussen de twee versies. 
+- De ADSync-data base die wordt gebruikt, moet een synchronisatie status bevatten die relatief recent is. De laatste synchronisatie activiteit met de bestaande ADSync-data base moet in de laatste drie weken vallen.
+- Wanneer u Azure AD Connect installeert met behulp van de methode ' bestaande Data Base gebruiken ', blijft de aanmeldings methode die is geconfigureerd op de vorige Azure AD Connect-server niet behouden. Verder kunt u de aanmeldings methode niet configureren tijdens de installatie. U kunt de aanmeldings methode alleen configureren nadat de installatie is voltooid.
+- U kunt niet meerdere Azure AD Connect servers dezelfde ADSync-data base delen. Met de methode ' bestaande Data Base gebruiken ' kunt u een bestaande ADSync-data base opnieuw gebruiken met een nieuwe Azure AD Connect-server. Het delen wordt niet ondersteund.
 
-## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Stappen voor het installeren van Azure AD Connect met de modus Bestaande database gebruiken
-1.  Download Azure AD Connect-installatieprogramma (AzureADConnect.MSI) naar de Windows-server. Dubbelklik op het azure AD Connect-installatieprogramma om Azure AD Connect te installeren.
+## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Stappen voor het installeren van Azure AD Connect met de modus ' bestaande Data Base gebruiken '
+1.  Down load Azure AD Connect-installatie programma (AzureADConnect. MSI) naar de Windows-Server. Dubbel klik op het installatie programma van Azure AD Connect om te beginnen met de installatie van Azure AD Connect.
 2.  Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
 ![Welkom](./media/how-to-connect-install-existing-database/db1.png)
-3.  Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar map "C:\Program Files\Microsoft Azure Active Directory Connect". Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
+3.  Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar de map C:\Program Files\Microsoft Azure Active Directory Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
 
 > [!NOTE]
-> Gebruik de switch **/UseExistingDatabase** alleen wanneer de database al gegevens bevat van een eerdere Azure AD Connect-installatie. Wanneer u bijvoorbeeld van een lokale database naar een volledige SQL Server-database gaat of wanneer de Azure AD Connect-server opnieuw is opgebouwd en u een SQL-back-up van de ADSync-database hebt hersteld vanuit een eerdere installatie van Azure AD Connect. Als de database leeg is, dat wil zeggen dat deze geen gegevens bevat van een eerdere Azure AD Connect-installatie, slaat u deze stap over.
+> Gebruik de switch **/UseExistingDatabase** alleen als de data base al gegevens bevat uit een eerdere Azure AD Connect-installatie. Bijvoorbeeld wanneer u overstapt van een lokale Data Base naar een volledige SQL Server-Data Base of wanneer de Azure AD Connect-server opnieuw is opgebouwd en u een SQL-back-up van de ADSync-Data Base hebt hersteld vanuit een eerdere installatie van Azure AD Connect. Als de data base leeg is, bevat deze geen gegevens uit een eerdere Azure AD Connect-installatie. Sla deze stap over.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. U wordt verwelkomd met het scherm Welkom bij Azure AD Connect. Nadat u akkoord bent gegaan met de licentievoorwaarden en privacyverklaring, klikt u op **Doorgaan**.
@@ -85,23 +85,23 @@ Belangrijke notities om er rekening mee te houden voordat u verder gaat:
    ![Welkom](./media/how-to-connect-install-existing-database/db8.png)
  
  
-1. Klik op het scherm **Klaar om te configureren** op **Installeren**.
+1. Klik in het scherm **gereed voor configuratie** op **installeren**.
    ![Welkom](./media/how-to-connect-install-existing-database/db9.png)
  
  
 1. Zodra de installatie is voltooid, wordt de Azure AD Connect-server automatisch ingeschakeld voor de faseringsmodus. U wordt aangeraden om de serverconfiguratie en exports die in behandeling zijn, te controleren op onverwachte wijzigingen, voordat u de faseringsmodus uitschakelt. 
 
 ## <a name="post-installation-tasks"></a>Taken na de installatie
-Wanneer u een databaseback-up herstelt die is gemaakt door een versie van Azure AD Connect vóór 1.2.65.0, selecteert de staging-server automatisch een aanmeldingsmethode van **Niet configureren**. Terwijl uw wachtwoordhashsynchronisatie en wachtwoordschrijfvoorkeuren worden hersteld, moet u vervolgens de aanmeldingsmethode wijzigen om aan te sluiten bij het andere beleid dat van kracht is voor uw actieve synchronisatieserver.  Als u deze stappen niet voltooit, kunnen gebruikers zich niet aanmelden als deze server actief wordt.  
+Bij het herstellen van een database back-up die is gemaakt met een versie van Azure AD Connect vóór 1.2.65.0, selecteert de staging-server automatisch een aanmeldings methode van **niet configureren**. Terwijl uw wacht woord-hash-synchronisatie en voor keuren voor het terugschrijven van wacht woorden worden hersteld, moet u de aanmeldings methode vervolgens wijzigen zodat deze overeenkomt met de andere beleids regels die gelden voor uw actieve synchronisatie server.  Als u deze stappen niet voltooit, kunnen gebruikers zich niet aanmelden als deze server actief wordt.  
 
-Gebruik de onderstaande tabel om eventuele extra stappen te verifiëren die nodig zijn.
+Gebruik de onderstaande tabel om eventuele extra stappen te controleren die vereist zijn.
 
 |Functie|Stappen|
 |-----|-----|
-|Synchronisatie van wachtwoordhash| de instellingen voor wachtwoordhashsynchronisatie en wachtwoordterugschrijfinstellingen zijn volledig hersteld voor versies van Azure AD Connect vanaf 1.2.65.0.  Als u herstelt met een oudere versie van Azure AD Connect, controleert u de instellingen voor synchronisatieopties voor deze functies om te controleren of deze overeenkomen met uw actieve synchronisatieserver.  Er zijn geen andere configuratiestappen nodig.|
-|Federatie met AD FS|Azure-verificaties blijven het AD FS-beleid gebruiken dat is geconfigureerd voor uw actieve synchronisatieserver.  Als u Azure AD Connect gebruikt om uw AD FS-farm te beheren, u de aanmeldingsmethode optioneel wijzigen in AD FS-federatie ter voorbereiding van het feit dat uw stand-byserver de actieve synchronisatie-instantie wordt.   Als apparaatopties zijn ingeschakeld op de actieve synchronisatieserver, configureert u deze opties op deze server door de taak Apparaatopties configureren uit te voeren.|
-|Doorreisverificatie en één aanmelding voor desktops|Werk de aanmeldingsmethode bij om de configuratie op uw actieve synchronisatieserver te matchen.  Als dit niet wordt gevolgd voordat de server wordt gepromoot naar primaire, wordt pass-through-verificatie samen met Seamless Single Sign-aan uitgeschakeld en wordt uw tenant mogelijk buitengesloten als u geen wachtwoordhashsynchronisatie hebt als aanmeldingsoptie voor back-up. Houd er ook rekening mee dat wanneer u pass-through-verificatie in de faseringsmodus inschakelt, een nieuwe verificatieagent wordt geïnstalleerd, geregistreerd en wordt uitgevoerd als een agent met hoge beschikbaarheid die aanmeldingsverzoeken accepteert.|
-|Federatie met PingFederate|Azure-verificaties blijven het pingfederate-beleid gebruiken dat is geconfigureerd voor uw actieve synchronisatieserver.  U optioneel de aanmeldingsmethode wijzigen in PingFederate ter voorbereiding van uw stand-byserver die de actieve synchronisatie-instantie wordt.  Deze stap kan worden uitgesteld totdat u extra domeinen moet federatemet PingFederate.|
+|Wachtwoord hash-synchronisatie| de instellingen voor wachtwoord hash synchronisatie en wacht woord terugschrijven worden volledig hersteld voor versies van Azure AD Connect die beginnen met 1.2.65.0.  Als u een oudere versie van Azure AD Connect herstelt, controleert u de instellingen voor synchronisatie opties voor deze functies om te controleren of ze overeenkomen met uw actieve synchronisatie server.  Er hoeven geen andere configuratie stappen te worden uitgevoerd.|
+|Federatie met AD FS|Azure-authenticaties blijven het AD FS beleid gebruiken dat is geconfigureerd voor de actieve synchronisatie server.  Als u Azure AD Connect gebruikt voor het beheren van uw AD FS-Farm, kunt u eventueel de aanmeldings methode wijzigen in AD FS federatie in voor bereiding voor de stand-by-server die het actieve synchronisatie-exemplaar wordt.   Als de opties voor het apparaat zijn ingeschakeld op de actieve synchronisatie server, configureert u deze opties op deze server door de taak ' Device-opties configureren ' uit te voeren.|
+|Pass-Through-verificatie en eenmalige aanmelding op het bureau blad|Werk de aanmeldings methode bij om overeen te komen met de configuratie op uw actieve synchronisatie server.  Als dit niet wordt gevolgd voordat de server wordt bevorderd tot de primaire, Pass-Through-verificatie en naadloze eenmalige aanmelding, worden uitgeschakeld en kan uw Tenant worden vergrendeld als u geen wacht woord-hash synchroniseert als back-upaanmeld optie. Houd er ook rekening mee dat als u Pass-Through-verificatie inschakelt in de faserings modus, een nieuwe verificatie agent wordt geïnstalleerd, wordt geregistreerd en wordt uitgevoerd als een agent met hoge Beschik baarheid waarmee aanmeldings aanvragen worden geaccepteerd.|
+|Federatie met PingFederate|Azure-verificaties blijven gebruikmaken van het PingFederate-beleid dat is geconfigureerd voor de actieve synchronisatie server.  U kunt desgewenst de aanmeldings methode wijzigen in PingFederate ter voor bereiding op de stand-by-server die het actieve synchronisatie-exemplaar wordt.  Deze stap kan worden uitgesteld totdat u extra domeinen moet door lopen met PingFederate.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Een ADCD (Application Developers Controlled Distribution) instellen in IBM zD&T v1 | Microsoft Documenten
-description: Voer een IBM Z Development and Test Environment (zD&T)-omgeving uit op Azure Virtual Machines (VM's).
+title: Een app voor toepassings ontwikkelaars (ADCD) instellen in IBM zD&T v1 | Microsoft Docs
+description: Voer een zD&T-omgeving (IBM Z Development and Test Environment) uit op Azure Virtual Machines (Vm's).
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
 documentationcenter: ''
@@ -13,185 +13,185 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68841386"
 ---
-# <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Een ADCD (Application Developers Controlled Distribution) instellen in IBM zD&T v1
+# <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Een toepassings ontwikkelaars ADCD (Controlled Distribution) instellen in IBM zD&T v1
 
-U een IBM Z Development and Test Environment (zD&T)-omgeving uitvoeren op Azure Virtual Machines (VM's). Deze omgeving emuleert de IBM Z-serie architectuur. Het kan een verscheidenheid van Z-serie besturingssystemen of installaties hosten (ook wel Z Instances of Pakketten genoemd), die beschikbaar worden gesteld via aangepaste bundels genaamd de IBM Application Developers Controlled Distributions (ADCDs).
+U kunt een zD&T-omgeving (IBM Z Development and Test Environment) uitvoeren op Azure Virtual Machines (Vm's). In deze omgeving wordt de architectuur van de IBM Z-serie geëmuleerd. Het kan een groot aantal besturings systemen van de Z-serie of-installaties (ook wel Z-instanties of pakketten genoemd) hosten, die beschikbaar worden gesteld via aangepaste bundels, de beheerde distributies van IBM-toepassings ontwikkelaars (ADCDs).
 
-In dit artikel ziet u hoe u een ADCD-exemplaar instelt in een zD-&T-omgeving op Azure. ADCDs maken complete Z-serie implementaties van besturingssysteemen voor ontwikkel- en testomgevingen die draaien in zD&T.
+In dit artikel wordt beschreven hoe u een ADCD-exemplaar instelt in een zD&T-omgeving in Azure. ADCDs maken volledige Z-reeks implementaties van het besturings systeem voor ontwikkel-en test omgevingen die worden uitgevoerd in zD&T.
 
-Net als zD&T zijn ADCDs alleen beschikbaar voor IBM-klanten en -partners en zijn ze uitsluitend voor ontwikkelings- en testdoeleinden. Ze mogen niet worden gebruikt voor productieomgevingen. Tal van IBM-installatiepakketten zijn te downloaden via [Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) of [IBM PartnerWorld.](https://www.ibm.com/partnerworld/public)
+Net zoals zD&T, zijn ADCDs alleen beschikbaar voor klanten en partners van IBM en zijn uitsluitend bedoeld voor ontwikkelings-en test doeleinden. Ze hoeven niet te worden gebruikt voor productie omgevingen. Talloze IBM-installatie pakketten kunnen worden gedownload via [Pass Port Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) of [IBM PartnerWorld](https://www.ibm.com/partnerworld/public).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als je nog geen account hebt, maak je een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat je begint.
+- Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-- De [zD-&T-omgeving][ibm-install-z] die eerder is ingesteld op Azure. In dit artikel wordt ervan uitgegaan dat u dezelfde Ubuntu 16.04 VM-afbeelding gebruikt die eerder is gemaakt.
+- De [zD&T-omgeving][ibm-install-z] is eerder ingesteld op Azure. In dit artikel wordt ervan uitgegaan dat u dezelfde Ubuntu 16,04 VM-installatie kopie gebruikt die u eerder hebt gemaakt.
 
-- Toegang tot de ADCD-media via IBM PartnerWorld of Passport Advantage.
+- Toegang tot de ADCD-media via IBM PartnerWorld of pass Port Advantage.
 
-- Een [licentieserver.](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html) Dit is nodig om IBM zD&T uit te voeren. De manier waarop u deze maakt, hangt af van de manier waarop u de software van IBM in licentie licentie draagt:
+- Een [licentie server](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Dit is vereist om IBM zD&T uit te voeren. De manier waarop u deze maakt, is afhankelijk van hoe u een licentie voor de software van IBM hebt:
 
-  - **Hardwaregebaseerde licentieserver** vereist een USB-hardwareapparaat dat de Rationele tokens bevat die nodig zijn om toegang te krijgen tot alle delen van de software. U moet dit verkrijgen van IBM.
+  - Op **hardware gebaseerde licentie server** vereist een USB-apparaat met de rationele tokens die nodig zijn voor toegang tot alle delen van de software. U moet dit verkrijgen van IBM.
 
-  - **Softwaregebaseerde licentieserver** vereist dat u een gecentraliseerde server instelt voor het beheer van de licentiesleutels. Deze methode heeft de voorkeur en vereist dat u de sleutels die u ontvangt van IBM in de beheerserver in te stellen.
+  - **Licentie server op basis van software** vereist dat u een gecentraliseerde server instelt voor het beheer van de licentie sleutels. Deze methode verdient de voor keur en hiervoor moet u de sleutels instellen die u van IBM wilt ontvangen op de-beheer server.
 
-## <a name="download-the-installation-packages-from-passport-advantage"></a>Download de installatiepakketten van Passport Advantage
+## <a name="download-the-installation-packages-from-passport-advantage"></a>De installatie pakketten downloaden van het Pass Port-voor deel
 
-Toegang tot de ADCD-media is vereist. In de onderstaande stappen wordt ervan uitgegaan dat u een IBM-klant bent en passport advantage gebruiken. IBM-partners kunnen [IBM PartnerWorld](https://www.ibm.com/partnerworld/public)gebruiken.
+Toegang tot de ADCD-media is vereist. In de onderstaande stappen wordt ervan uitgegaan dat u IBM-klanten bent en gebruik kunt maken van Pass Port. IBM-partners kunnen [IBM PartnerWorld](https://www.ibm.com/partnerworld/public)gebruiken.
 
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat een Windows-pc wordt gebruikt om toegang te krijgen tot azure-portal en om de IBM-media te downloaden. Als u een Mac- of Ubuntu-desktop gebruikt, kunnen de opdrachten en het proces voor het verkrijgen van de IBM-media enigszins verschillen.
+> In dit artikel wordt ervan uitgegaan dat een Windows-PC wordt gebruikt voor toegang tot Azure Portal en om de IBM-media te downloaden. Als u een Mac-of Ubuntu-Desktop gebruikt, kunnen de opdrachten en het proces voor het verkrijgen van de IBM-media enigszins verschillen.
 
-1. Log in op [Passport Advantage](https://www.ibm.com/software/howtobuy/passportadvantage/paocustomer).
+1. Meld u aan bij [Pass Port-voor delen](https://www.ibm.com/software/howtobuy/passportadvantage/paocustomer).
 
-2. Selecteer **Softwaredownloads** en **mediatoegang**.
+2. Selecteer **software downloads** en **media toegang**.
 
-3. Selecteer **Programmaaanbieding en overeenkomstnummer**en klik op **Doorgaan**.
+3. Selecteer **programma aanbieding en overeenkomst nummer**en klik op **door gaan**.
 
-4. Voer de onderdeelbeschrijving of het onderdeelnummer in en klik op **Finder**.
+4. Voer de beschrijving van het onderdeel of het onderdeel nummer in en klik op **Finder**.
 
-5. Klik destijds op de lijst met alfabetische volgorde om het product op naam weer te geven en weer te geven.
+5. Klik desgewenst op de alfabetische volg orde van de lijst om theproduct op naam weer te geven en weer te geven.
 
-6. Selecteer **Alle besturingssystemen** in het **veld Besturingssysteem**en **Alle talen** in het **veld Talen**. Klik vervolgens op **Ga.**
+6. Selecteer **alle besturings systemen** in het **veld besturings systeem**en **alle talen** in het **veld talen**. Klik vervolgens op **Go**.
 
-7. Klik **op Afzonderlijke bestanden selecteren** om de lijst uit te vouwen en de afzonderlijke media weer te geven die u wilt downloaden.
+7. Klik op **afzonderlijke bestanden selecteren** om de lijst uit te vouwen en de afzonderlijke media weer te geven die u wilt downloaden.
 
-8. Controleer het pakket(en) dat u wilt downloaden, selecteer **Downloaden**en download de bestanden naar de gewenste map.
+8. Controleer de pakket (en) die u wilt downloaden, selecteer **downloaden**en down load de bestanden naar de gewenste map.
 
-## <a name="upload-the-adcd-packages"></a>Het ADCD-pakket(en) uploaden
+## <a name="upload-the-adcd-packages"></a>De ADCD-pakket (en) uploaden
 
-Nu u de pakketten(en) hebt, moet u ze uploaden naar uw VM op Azure.
+Nu u de pakket (en) hebt, moet u deze uploaden naar uw VM in Azure.
 
-1. Start in de Azure-portal een **ssh-sessie** met de Ubuntu VM die u hebt gemaakt. Ga naar uw vm, selecteer het **blad Overzicht** en selecteer **Verbinding maken**.
+1. In de Azure Portal initieert u een **SSH** -sessie met de Ubuntu-VM die u hebt gemaakt. Ga naar uw virtuele machine, selecteer de Blade **overzicht** en selecteer vervolgens **verbinding maken**.
 
-2. Selecteer het tabblad **SSH** en kopieer de ssh-opdracht naar het klembord.
+2. Selecteer het tabblad **SSH** en kopieer de SSH-opdracht naar het klem bord.
 
-3. Meld u aan bij uw VM met uw referenties en de [SSH-client](/azure/virtual-machines/linux/use-remote-desktop) naar keuze. Deze demo maakt gebruik van de Linux-extensies voor Windows 10, die een bash shell toevoegt aan de Windows-opdrachtprompt. PuTTY werkt net zo goed.
+3. Meld u aan bij uw virtuele machine met uw referenties en de gewenste [SSH-client](/azure/virtual-machines/linux/use-remote-desktop) . Deze demo maakt gebruik van de Linux-uitbrei dingen voor Windows 10, waarmee een bash-shell wordt toegevoegd aan de Windows-opdracht prompt. PuTTy werkt net zo goed.
 
-4. Maak bij het inloggen een directory om de IBM-pakketten te uploaden. Houd in gedachten Linux is geval gevoelig. In deze demo wordt bijvoorbeeld ervan uitgegaan dat de pakketten worden geüpload naar:
+4. Wanneer u bent aangemeld, maakt u een map voor het uploaden van de IBM-pakketten. Houd er rekening mee dat Linux hoofdletter gevoelig is. Deze demo gaat er bijvoorbeeld van uit dat de pakketten worden geüpload naar:
 
         /home/MyUserID/ZDT/adcd/nov2017/volumes
 
-5. Upload de bestanden met behulp van een SSH-client zoals[WinSCP](https://winscp.net/eng/index.php). Aangezien SCP deel uitmaakt van SSH, maakt het gebruik van poort 22, wat SSH gebruikt. Als uw lokale computer geen Windows is, u de [scp-opdracht](http://man7.org/linux/man-pages/man1/scp.1.html) typen in uw SSH-sessie.
+5. Upload de bestanden met behulp van een SSH-client, zoals[WinSCP](https://winscp.net/eng/index.php). Aangezien SCP deel uitmaakt van SSH, wordt poort 22 gebruikt. Dit is wat SSH gebruikt. Als uw lokale computer niet Windows is, typt u de [SCP-opdracht](http://man7.org/linux/man-pages/man1/scp.1.html) in uw SSH-sessie.
 
-6. Start de upload naar de Azure VM-map die u hebt gemaakt, wat de afbeeldingsopslag wordt voor zD&T.
+6. Start de upload naar de Azure VM-map die u hebt gemaakt, die de installatie kopie voor zD&T wordt.
 
     > [!NOTE]
-    > Zorg ervoor dat **ADCDTOOLS. XML** is opgenomen in de map **home/MyUserID/ZDT/adcd/nov2017.** U hebt dit later nodig.
+    > Zorg ervoor dat **ADCDTOOLS. XML** is opgenomen in de upload naar de map **Home/MYUSERID/ZDT/adcd/nov2017** . U hebt dit later nodig.
 
-7. Wacht tot de bestanden zijn geüpload, wat enige tijd kan duren, afhankelijk van uw verbinding met Azure.
+7. Wacht tot de bestanden zijn geüpload. Dit kan enige tijd duren, afhankelijk van uw verbinding met Azure.
 
-8. Wanneer de uploads zijn voltooid, navigeert u naar de map volumes en decomprimeert u alle **gz-volumes:**
+8. Wanneer de uploads zijn voltooid, gaat u naar de map volumes en decomprimeert u alle **gz** -volumes:
 
     ```
         gunzip \*.gz
     ```
     
-![Verkenner met gedecomprimeerde gz-volumes](media/01-gunzip.png)
+![Bestanden Verkenner met gedecomprimeerde gz-volumes](media/01-gunzip.png)
 
-## <a name="configure-the-image-storage"></a>De afbeeldingsopslag configureren
+## <a name="configure-the-image-storage"></a>De installatie kopie opslag configureren
 
-De volgende stap is het configureren van zD&T om het geüploade pakket(en) te gebruiken. Met het beeldopslagproces binnen zD&T u de afbeeldingen monteren en gebruiken. Het kan SSH of FTP gebruiken.
+De volgende stap is het configureren van zD&T voor het gebruik van de geüploade pakket (en). Met het proces voor het opslaan van installatie kopieën in zD&T kunt u de installatie kopieën koppelen en gebruiken. U kunt SSH of FTP gebruiken.
 
-1. Start de **zDTServer**. Om dit te doen, moet je op het wortelniveau zijn. Voer de volgende twee opdrachten in volgorde in:
+1. Start de **zDTServer**. Hiervoor moet u zich op het hoofd niveau bevindt. Voer de volgende twee opdrachten in de aangegeven volg orde in:
     ```
         sudo su -
         /opt/ibm/zDT/bin/startServer
     ```
-2. Let op de URL-uitvoer door de opdracht en gebruik deze URL om toegang te krijgen tot de webserver. Het lijkt op:
-     > https://(uw VM-naam of IP-adres): 9443/ZDTMC/index.html
+2. Noteer de URL-uitvoer van de opdracht en gebruik deze URL voor toegang tot de webserver. Dit ziet er ongeveer als volgt uit:
+     > https://(uw VM-naam of IP-adres): 9443/ZDTMC/index. html
      >
-     > Vergeet niet dat uw webtoegang poort 9443 gebruikt. Gebruik dit om in te loggen op de webserver. De gebruikersnaam voor ZD&T is **zdtadmin** en het wachtwoord is **wachtwoord.**
+     > Vergeet niet dat uw webtoegang gebruikmaakt van poort 9443. Gebruik deze om u aan te melden bij de webserver. De gebruikers-ID voor ZD&T is **zdtadmin** en het wacht woord is **wacht woord**.
 
-    ![IBM zD&T Enterprise Edition Welkomstscherm](media/02-welcome.png)
+    ![Welkomst scherm voor IBM zD&T Enter prise Edition](media/02-welcome.png)
 
-3. Selecteer op de pagina **Snel aan de slag** onder **Afbeeldingsopslag** **configureren**.
+3. Selecteer op de pagina **Quick Start** , onder **configureren**, **installatie kopie opslag**.
 
-     ![IBM zD&T Enterprise Edition Snel startscherm](media/03-quickstart.png)
+     ![ZD Quick Start scherm IBM-&T Enter prise Edition](media/03-quickstart.png)
 
-4. Selecteer op de pagina **Afbeeldingsopslag configureren** de optie **SSH File Transfer Protocol**.
+4. Selecteer op de pagina **installatie kopie opslag configureren** de optie **SSH-File Transfer Protocol**.
 
-5. Typ **Localhost** voor **Hostnaam**en voer het mappad in voor waar u de afbeeldingen hebt geüpload. Bijvoorbeeld /home/MyUserID/ZDT/adcd/nov2017/volumes.
+5. Voor **hostnaam**typt u **localhost** en voert u het mappad in voor de locatie waar u de installatie kopieën hebt geüpload. Bijvoorbeeld/home/MyUserID/ZDT/adcd/nov2017/volumes.
 
-6. Voer de **gebruikersnaam** en **het wachtwoord** voor de vm in. Gebruik de ZD-&T-gebruikersnaam en -wachtwoord niet.
+6. Voer de **gebruikers-id** en het **wacht woord** voor de virtuele machine in. Gebruik niet de ZD&T-gebruikers-ID en wacht woord.
 
-7. Test de verbinding om te controleren of u toegang hebt en selecteer **Opslaan** om de configuratie op te slaan.
+7. Test de verbinding om er zeker van te zijn dat u toegang hebt en selecteer vervolgens **Opslaan** om de configuratie op te slaan.
 
-## <a name="configure-the-target-environments"></a>De doelomgevingen configureren
+## <a name="configure-the-target-environments"></a>De doel omgevingen configureren
 
-De volgende stap is het configureren van de zD&T-doelomgeving. Deze geëmuleerde gehoste omgeving is waar uw afbeeldingen worden uitgevoerd.
+De volgende stap is het configureren van de zD&T-doel omgeving. Deze geëmuleerde gehoste omgeving is waar uw installatie kopieën worden uitgevoerd.
 
-1. Selecteer op de pagina **Snel aan de slag** onder **Doelomgevingen** **configureren**.
+1. Selecteer op de pagina **Quick Start** onder **configureren**de optie **doel omgevingen**.
 
-2. Selecteer **Doel toevoegen**op de pagina **Doelomgevingen configureren** .
+2. Selecteer op de pagina **doel omgevingen configureren** de optie **doel toevoegen**.
 
-3. Selecteer **Linux**. IBM ondersteunt twee soorten omgevingen, Linux en Cloud(OpenStack), maar deze demo draait op Linux.
+3. Selecteer **Linux**. IBM ondersteunt twee typen omgevingen: Linux en Cloud (Open stack), maar deze demo wordt uitgevoerd op Linux.
 
-4. Voer op de pagina **Doelomgeving toevoegen** voor **Hostnaam** **localhost**in . Houd **de SSH-poort** ingesteld op **22**.
+4. Voer op de pagina **doel omgeving toevoegen** voor **hostnaam de waarde** **localhost**in. Blijf **SSH-poort** ingesteld op **22**.
 
-5. Voer in het **labelvak Doelomgeving** een label in zoals **MyCICS.**
+5. Voer in het vak **Label doel omgeving** een label in, zoals **MyCICS.**
 
-     ![Scherm doelomgeving toevoegen](media/04-add-target.png)
+     ![Scherm doel omgeving toevoegen](media/04-add-target.png)
 
 ## <a name="configure-adcd-and-deploy"></a>ADCD configureren en implementeren
 
-Nadat u de vorige configuratiestappen hebt voltooid, moet u zD-&T configureren om de pakket-en doelomgeving te gebruiken. Nogmaals, u gebruikt het beeldopslagproces in zD&T, waarmee u de afbeeldingen monteren en gebruiken. Het kan SSH of FTP gebruiken.
+Nadat u de vorige configuratie stappen hebt voltooid, moet u zD&T configureren voor het gebruik van de pakket (en) en de doel omgeving. Opnieuw gebruikt u het proces voor installatie kopie opslag in zD&T, waarmee u de installatie kopieën kunt koppelen en gebruiken. U kunt SSH of FTP gebruiken.
 
-1. Selecteer **ADCD** **op**de pagina **Snel aande a.s.** Er verschijnt een reeks instructies waarin u de stappen wordt verteld die moeten worden voltooid voordat een ADCD-pakket kan worden gemonteerd. Dit verklaart waarom we de doelmap zo noemden als vroeger.
+1. Selecteer op de pagina **Quick Start** onder **configureren**de optie **ADCD**. Er wordt een set instructies weer gegeven met de stappen die moeten worden voltooid voordat een ADCD-pakket kan worden gekoppeld. In dit onderwerp wordt uitgelegd waarom we de doel directory op de eerder genoemde manier hebben genoemd.
 
-2. Ervan uitgaande dat alle afbeeldingen zijn geüpload naar de juiste mappen, klik op de **afbeelding van ADCD** link weergegeven in de rechterbenedenzijde (weergegeven in stap 7 in de volgende screenshot).
+2. Ervan uitgaande dat alle afbeeldingen zijn geüpload naar de juiste directory's, klikt u op de koppeling **afbeelding van ADCD** in de rechter benedenhoek (weer gegeven in stap 7 van de volgende scherm afbeelding).
 
-     ![IBM zD&T Enterprise Edition - ADCD-scherm configureren](media/05-adcd.png)
+     ![IBM zD&T Enter prise Edition: ADCD-scherm configureren](media/05-adcd.png)
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Wanneer de vorige configuratiestap is voltooid, wordt de pagina **Een afbeelding maken met ADCD-componenten** weergegeven.
+Wanneer de vorige configuratie stap is voltooid, wordt de pagina **een installatie kopie maken met behulp van ADCD-onderdelen** weer gegeven.
 
-1. Selecteer het volume (in dit geval november 2017) om de verschillende pakketten in dat volume weer te geven.
+1. Selecteer in dit geval het volume (nov 2017) om de verschillende pakketten in dat volume weer te geven.
 
-2. Selecteer voor deze demo **Customer Information Control System (CICS) - 5.3**.
+2. Voor deze demo selecteert u **Customer Information Control System (CICS)-5,3**.
 
-3. Typ in het vak **Afbeeldingsnaam** een naam voor de afbeelding, zoals **MyCICS Image**.
+3. Typ in het vak **afbeeldings naam** een naam voor de afbeelding, zoals **MyCICS-afbeelding**.
 
-4. Selecteer de knop **Afbeelding maken** rechtsonder.
+4. Selecteer de knop **afbeelding maken** in de rechter benedenhoek.
 
-     ![IBM zD&T Enterprise Edition - Een afbeelding maken met het scherm ADCD Components](media/06-adcd.png)
+     ![IBM zD&T Enter prise Edition: een installatie kopie maken met behulp van ADCD-onderdelen scherm](media/06-adcd.png)
 
-5. Kies **Afbeeldingen implementeren**in het venster dat wordt weergegeven en u vertellen dat de afbeelding is geïmplementeerd.
+5. In het venster dat wordt weer gegeven, met de melding dat de installatie kopie is geïmplementeerd, kiest u **installatie kopieën implementeren**.
 
-6. Selecteer op de pagina **Een afbeelding implementeren naar een doelomgeving** de afbeelding die u op de vorige pagina hebt gemaakt **(MyCICS Image)** en de doelomgeving die eerder is gemaakt **(MyCICS).**
+6. Selecteer op de pagina **een installatie kopie implementeren op een doel omgeving** de installatie kopie die u hebt gemaakt op de vorige pagina (**MyCICS-installatie kopie**) en de doel omgeving die u eerder hebt gemaakt (**MyCICS**).
 
-7. Geef op het volgende scherm uw referenties voor de VM op (dat wil zeggen niet de ztadmin-referentie).
+7. Geef in het volgende scherm uw referenties op voor de virtuele machine (dat wil zeggen, niet de ztadmin-referentie).
 
-8. Voer in het deelvenster Eigenschappen het aantal **centrale processors (C's)** in, de hoeveelheid **systeemgeheugen (GB)** en de **implementatiemap** voor de lopende afbeelding in. Aangezien dit een demo is, houd het klein.
+8. Voer in het deel venster Eigenschappen het aantal **centrale processors (CPS)**, de hoeveelheid **systeem geheugen (GB)** en de **implementatie Directory** voor de actieve installatie kopie in. Aangezien dit een demo is, moet u deze klein blijven.
 
-9. Controleer of het vak is geselecteerd voor **Het automatisch uitgeven van de opdracht IPL aan z/OS na het implementeren**.
+9. Zorg ervoor dat het selectie vakje is ingeschakeld voor **IPL-opdracht automatisch verlenen aan z/o's na de implementatie**.
 
      ![Scherm Eigenschappen](media/07-properties.png)
 
-10. Selecteer **Voltooien**.
+10. Selecteer **volt ooien**.
 
-11. Selecteer **Afbeelding implementeren** van de pagina Een afbeelding implementeren naar een **doelomgeving.**
+11. Selecteer **installatie kopie implementeren** vanaf de pagina **een installatie kopie implementeren op een doel omgeving** .
 
-Uw afbeelding kan nu worden geïmplementeerd en is klaar om te worden gemonteerd door een 3270 terminal emulator.
+Uw installatie kopie kan nu worden geïmplementeerd en kan worden gekoppeld door een 3270-terminal emulator.
 
 > [!NOTE]
-> Als u een foutmelding ontvangt waarin staat dat u niet genoeg schijfruimte hebt, moet u er rekening mee houden dat de regio 151 Gb vereist.
+> Als er een fout bericht wordt weer gegeven met de melding dat er onvoldoende schijf ruimte is, moet u er rekening mee houden dat de regio 151 GB vereist.
 
-Gefeliciteerd! U hebt nu een IBM mainframe-omgeving op Azure.
+Gefeliciteerd! U voert nu een IBM mainframe-omgeving uit op Azure.
 
 ## <a name="learn-more"></a>Meer informatie
 
 - [Mainframe migratie: mythen en feiten](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [Probleemoplossing](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Demystifying mainframe to Azure migration Demyststifying mainframe to Azure migration Demyststifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+- [Problemen oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

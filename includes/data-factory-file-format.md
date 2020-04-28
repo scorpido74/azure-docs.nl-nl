@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70166699"
 ---
 ## <a name="specifying-formats"></a>Indelingen opgeven
@@ -69,7 +69,7 @@ Gebruik een `escapeChar` in plaats van `quoteChar`, vervang de regel door `quote
 * U wilt kopiëren uit een tekstbestand en wilt een paar regels aan het begin overslaan die geen gegevens of headerinformatie bevatten. Geef `skipLineCount` op om aan te geven hoeveel regels er moeten worden overgeslagen. Als de rest van het bestand een headerregel bevat, kunt u ook `firstRowAsHeader` opgeven. Als zowel `skipLineCount` als `firstRowAsHeader` is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand
 
 ### <a name="specifying-jsonformat"></a>JsonFormat opgeven
-Zie [Json-documenten importeren/exporteren](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) in de Azure Cosmos DB met details voor **het importeren/exporteren van JSON-bestanden as-is in/van Azure Cosmos DB.**
+Als u **json-bestanden wilt importeren/exporteren naar/van Azure Cosmos DB**, raadpleegt u de sectie [JSON-documenten importeren/exporteren](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) in de Azure Cosmos DB-connector met details.
 
 Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schrijven, stelt u de eigenschap `format` `type` in op **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
 
@@ -78,7 +78,7 @@ Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schri
 | filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
 | jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren van gegevens uit JSON-bestanden. | Nee |
 | jsonPathDefinition | Hiermee geeft u de JSON-padexpressie aan voor elke kolomtoewijzing met een aangepaste kolomnaam (begin met een kleine letter). Deze eigenschap wordt alleen ondersteund bij het kopiëren van gegevens uit JSON-bestanden. U kunt gegevens ophalen uit het object of een matrix. <br/><br/> Voor velden onder het hoofdobject begint u met root $; voor velden binnen de matrix die is gekozen door de eigenschap `jsonNodeReference`, begint u vanaf het element van de matrix. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies. | Nee |
-| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](/dotnet/api/system.text.encoding). Bijvoorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is: **UTF-8**. |Nee |
+| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](/dotnet/api/system.text.encoding). Bijvoorbeeld: windows 1250 of shift_jis. De **standaard** waarde is: **UTF-8**. |Nee |
 | nestingSeparator |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. De standaardwaarde is '.' (punt). |Nee |
 
 #### <a name="json-file-patterns"></a>JSON-bestandpatronen
@@ -214,7 +214,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door ge
 De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie het gedeelte Een structuurdefinitie opgeven voor rechthoekige gegevenssets voor meer informatie.
-- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens uit array wilt kopiëren, u **array[x].eigenschap** gebruiken om de waarde van de gegeven eigenschap uit het xth-object te extraheren, of u **array[*]. eigenschap** gebruiken om de waarde te vinden van een object dat een dergelijke eigenschap bevat.
+- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens wilt kopiëren uit een matrix, kunt u **matrix [x]. Property** gebruiken om de waarde van de gegeven eigenschap uit het Xth-object op te halen, of u kunt **matrix [*]. Property** gebruiken om de waarde te vinden van een object dat dergelijke eigenschap bevat.
 
 ```json
 "properties": {

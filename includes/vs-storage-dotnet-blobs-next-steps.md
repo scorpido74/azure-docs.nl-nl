@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tamram
 ms.openlocfilehash: ede5e2587f1f4d99193e621965b68f75fbad27f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175933"
 ---
-Nu u de basisbeginselen van Azure Blob-opslag hebt geleerd, volgt u deze koppelingen om meer te weten te komen over complexere opslagtaken.
+Nu u de basis principes van Azure Blob-opslag hebt geleerd, volgt u deze koppelingen voor meer informatie over complexere opslag taken.
 
-* Bekijk de referentiedocumentatie van de Blob-service in de [Azure Storage Client Library voor .NET-referentie](https://go.microsoft.com/fwlink/?LinkID=390731) voor volledige details over beschikbare API's.
-* Ga naar [Wat is de Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) voor meer informatie over het vereenvoudigen van de code die u schrijft om met Azure Storage te werken
+* Bekijk de Blob service referentie documentatie in de [Azure Storage-client bibliotheek voor .net](https://go.microsoft.com/fwlink/?LinkID=390731) -referentie voor volledige informatie over beschik bare api's.
+* Als u wilt weten hoe u de code die u schrijft om te werken met Azure Storage, kunt u het beste controleren [Wat is de Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)
 * Bekijk meer functiehandleidingen voor informatie over aanvullende mogelijkheden voor het opslaan van gegevens in Azure.
-  * Zie Aan de slag [met Azure Table-opslag met .NET](../articles/cosmos-db/table-storage-how-to-use-dotnet.md).
-  * Als u wilt werken met Azure Storage Queues, [gaat u aan de slag met Azure Queue-opslag met .NET](../articles/storage/queues/storage-dotnet-how-to-use-queues.md).
-  * Zie [Verbinding maken met SQL Database met .NET (C#)](../articles/sql-database/sql-database-develop-dotnet-simple.md)als u relationele gegevens wilt opslaan.
+  * Zie aan de [slag met Azure Table Storage met .net](../articles/cosmos-db/table-storage-how-to-use-dotnet.md)voor informatie over het werken met Azure Storage tabellen.
+  * Ga aan de [slag met Azure Queue Storage met .net](../articles/storage/queues/storage-dotnet-how-to-use-queues.md)om met Azure Storage wacht rijen te werken.
+  * Zie [verbinding maken met SQL database met behulp van .net (C#)](../articles/sql-database/sql-database-develop-dotnet-simple.md)voor informatie over het opslaan van relationele gegevens.
 

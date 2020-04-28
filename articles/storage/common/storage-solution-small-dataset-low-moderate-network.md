@@ -1,6 +1,6 @@
 ---
-title: Azure-opties voor gegevensoverdracht voor kleine gegevenssets met een lage tot matige netwerkbandbreedte| Microsoft Documenten
-description: Lees hoe u een Azure-oplossing voor gegevensoverdracht kiest wanneer u een lage tot matige netwerkbandbreedte in uw omgeving hebt en u van plan bent kleine gegevenssets over te zetten.
+title: Opties voor Azure-gegevens overdracht voor kleine gegevens sets met lage tot gemiddeld netwerk bandbreedte | Microsoft Docs
+description: Meer informatie over het kiezen van een Azure-oplossing voor gegevens overdracht wanneer u weinig netwerk bandbreedte in uw omgeving hebt en u van plan bent om kleine gegevens sets over te brengen.
 services: storage
 author: alkohli
 ms.service: storage
@@ -9,60 +9,60 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60397274"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Gegevensoverdracht voor kleine gegevenssets met weinig tot gemiddelde netwerkbandbreedte
  
-Dit artikel geeft een overzicht van de oplossingen voor gegevensoverdracht wanneer u een lage tot matige netwerkbandbreedte in uw omgeving hebt en u van plan bent kleine gegevenssets over te zetten. Het artikel beschrijft ook de aanbevolen opties voor gegevensoverdracht en de respectievelijke sleutelcapaciteitsmatrix voor dit scenario.
+Dit artikel bevat een overzicht van de oplossingen voor gegevens overdracht wanneer u weinig netwerk bandbreedte in uw omgeving hebt en u van plan bent om kleine gegevens sets over te brengen. In het artikel worden ook de aanbevolen opties voor gegevens overdracht en de bijbehorende matrix voor de belangrijkste functionaliteit voor dit scenario beschreven.
 
-Als u een overzicht wilt begrijpen van alle beschikbare opties voor gegevensoverdracht, gaat u naar [Een Azure-oplossing voor gegevensoverdracht kiezen.](storage-choose-data-transfer-solution.md)
+Voor een overzicht van alle beschik bare opties voor gegevens overdracht gaat u naar [een Azure-oplossing voor gegevens overdracht kiezen](storage-choose-data-transfer-solution.md).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-Kleine datasets verwijzen naar gegevensformaten in de volgorde van GB's naar een paar tbs's. Lage tot matige netwerkbandbreedte impliceert 45 Mbps (T3-verbinding in datacenter) tot 1 Gbps.
+Kleine gegevens sets verwijzen naar de grootte van het GB naar een paar TBs. Laag tot gemiddeld netwerk bandbreedte impliceert 45 Mbps (T3-verbinding in Data Center) tot 1 Gbps.
 
-- Als u slechts een handvol bestanden overdraagt en u hoeft de gegevensoverdracht niet te automatiseren, u de tools met een grafische interface overwegen.
-- Als u vertrouwd bent met systeembeheer, overweeg dan opdrachtregel of programmatische/ scriptingtools.
+- Als u slechts een aantal bestanden overbrengt en u de gegevens overdracht niet meer nodig hebt, kunt u de hulpprogram ma's overwegen met een grafische interface.
+- Als u vertrouwd bent met systeem beheer, overweeg dan opdracht regel-of programmeer-en script hulpprogramma's.
 
 ## <a name="recommended-options"></a>Aanbevolen opties
 
-De opties die in dit scenario worden aanbevolen zijn:
+De opties die worden aanbevolen in dit scenario zijn:
 
-- **Grafische interfacetools** zoals Azure Storage Explorer en Azure Storage in Azure-portal. Deze bieden een eenvoudige manier om uw gegevens te bekijken en snel een paar bestanden over te dragen.
+- **Grafische interface-hulpprogram ma's** zoals Azure Storage Explorer en Azure Storage in azure Portal. Deze bieden een eenvoudige manier om uw gegevens weer te geven en snel een paar bestanden over te dragen.
 
-    - **Azure Storage Explorer** - Met dit hulpprogramma voor meerdere platforms u de inhoud van uw Azure-opslagaccounts beheren. Hiermee u blobs, bestanden, wachtrijen, tabellen en Azure Cosmos DB-entiteiten uploaden, downloaden en beheren. Gebruik het met Blob-opslag om blobs en mappen te beheren, evenals blobs uploaden en downloaden tussen uw lokale bestandssysteem en Blob-opslag, of tussen opslagaccounts.
-    - **Azure portal** - Azure Storage in Azure portal biedt een webinterface om bestanden te verkennen en nieuwe bestanden één voor één te uploaden. Dit is een goede optie als u geen tools wilt installeren of opdrachten wilt geven om uw bestanden snel te verkennen, of om gewoon een handvol nieuwe te uploaden.
+    - **Azure Storage Explorer** -dit hulp programma voor meerdere platformen biedt u de mogelijkheid om de inhoud van uw Azure-opslag accounts te beheren. Hiermee kunt u blobs, bestanden, wacht rijen, tabellen en Azure Cosmos DB entiteiten uploaden, downloaden en beheren. Gebruik het met Blob Storage voor het beheren van blobs en mappen, en voor het uploaden en downloaden van blobs tussen uw lokale bestands systeem en Blob-opslag of tussen opslag accounts.
+    - **Azure Portal** -Azure Storage in azure Portal biedt een webinterface om bestanden te verkennen en nieuwe bestanden een voor een te uploaden. Dit is een goede optie als u geen hulp middelen wilt installeren of opdrachten uit te voeren om uw bestanden snel te kunnen verkennen of als u gewoon een aantal nieuwe berichten wilt uploaden.
 
-- **Scripting/programmatische hulpprogramma's** zoals AzCopy/PowerShell/Azure CLI en Azure Storage REST API's.
+- **Scripting/programmatische hulpprogram ma's** zoals AzCopy/Power shell/Azure CLI en Azure Storage rest api's.
 
-    - **AzCopy** - Gebruik dit opdrachtregelgereedschap om eenvoudig gegevens van en naar Azure Blobs-, Bestanden- en Tabelopslag te kopiëren met optimale prestaties. AzCopy ondersteunt gelijktijdigheid en parallellisme en de mogelijkheid om kopieerbewerkingen te hervatten wanneer deze worden onderbroken.
-    - **Azure PowerShell** - Voor gebruikers die vertrouwd zijn met systeembeheer, gebruikt u de Azure Storage-module in Azure PowerShell om gegevens over te dragen.
-    - **Azure CLI** - Gebruik deze tool voor meerdere platforms om Azure-services te beheren en gegevens te uploaden naar Azure Storage.
-    - **Azure Storage REST API's/SDKs** – Bij het bouwen van een toepassing u de toepassing ontwikkelen tegen Azure Storage REST API's/SDKs en de Azure-clientbibliotheken gebruiken die in meerdere talen worden aangeboden.
+    - **AzCopy** : gebruik dit opdracht regel programma om eenvoudig gegevens te kopiëren van en naar Azure-blobs,-bestanden en-tabel opslag met optimale prestaties. AzCopy ondersteunt gelijktijdigheid en parallellisme, en de mogelijkheid om Kopieer bewerkingen te hervatten wanneer deze worden onderbroken.
+    - **Azure PowerShell** -voor gebruikers die vertrouwd zijn met systeem beheer, gebruikt u de module Azure Storage in azure PowerShell om gegevens over te dragen.
+    - **Azure cli** : gebruik dit platformoverschrijdende hulp programma voor het beheren van Azure-Services en het uploaden van gegevens naar Azure Storage.
+    - **Azure Storage rest api's/sdk's** : wanneer u een toepassing bouwt, kunt u de toepassing ontwikkelen op Azure Storage rest Api's/sdk's en de Azure-client bibliotheken gebruiken die in meerdere talen worden aangeboden.
 
 
 ## <a name="comparison-of-key-capabilities"></a>Vergelijking van de belangrijkste mogelijkheden
 
-In de volgende tabel worden de verschillen in sleutelmogelijkheden samengevat.
+De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mogelijkheden.
 
-| Functie | Azure Opslagverkenner | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure-CLI | Azure Storage REST API's of SDKs |
+| Functie | Azure Opslagverkenner | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST Api's of Sdk's |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
-| Beschikbaarheid | Downloaden en installeren <br>Zelfstandig gereedschap | Webgebaseerde verkenningshulpprogramma's in Azure-portal | Opdrachtregelgereedschap |Programmeerbare interfaces in .NET, Java, Python, JavaScript, C++, Go, Ruby en PHP |
+| Beschikbaarheid | Downloaden en installeren <br>Zelfstandig hulp programma | Webgebaseerde hulpprogram ma's voor onderzoek in Azure Portal | Opdracht regel programma |Programmeer bare interfaces in .NET, Java, Python, java script, C++, go, Ruby en PHP |
 | Grafische interface | Ja | Ja | Nee | Nee |
-| Ondersteunde platforms | Windows, Mac, Linux | Web-based |Windows, Mac, Linux |Alle platforms |
-| Toegestane Blob-opslagbewerkingen<br>voor blobs en mappen | Uploaden<br>Download<br>Beheren | Uploaden<br>Download<br>Beheren |Uploaden<br>Download<br>Beheren | Ja, aanpasbaar |
-| Toegestane Data Lake Gen1-opslag<br>bewerkingen voor bestanden en mappen | Uploaden<br>Download<br>Beheren | Nee |Uploaden<br>Download<br>Beheren                   | Nee |
-| Toegestane bestandsopslagbewerkingen<br>voor dossiers en mappen | Uploaden<br>Download<br>Beheren | Uploaden<br>Download<br>Beheren   |Uploaden<br>Download<br>Beheren | Ja, aanpasbaar |
-| Toegestane tabelopslagbewerkingen<br>voor tabellen |Beheren | Nee |Tabelondersteuning in AzCopy v7 |Ja, aanpasbaar|
-| Toegestane wachtrijopslag | Beheren | Nee  |Nee | Ja, is aanpasbaar|
+| Ondersteunde platforms | Windows, Mac, Linux | Op internet gebaseerde |Windows, Mac, Linux |Alle platforms |
+| Toegestane bewerkingen voor Blob-opslag<br>voor blobs en mappen | Uploaden<br>Download<br>Beheren | Uploaden<br>Download<br>Beheren |Uploaden<br>Download<br>Beheren | Ja, aanpasbaar |
+| Data Lake gen1-opslag toegestaan<br>bewerkingen voor bestanden en mappen | Uploaden<br>Download<br>Beheren | Nee |Uploaden<br>Download<br>Beheren                   | Nee |
+| Toegestane bewerkingen voor bestands opslag<br>voor bestanden en mappen | Uploaden<br>Download<br>Beheren | Uploaden<br>Download<br>Beheren   |Uploaden<br>Download<br>Beheren | Ja, aanpasbaar |
+| Toegestane bewerkingen voor tabel opslag<br>voor tabellen |Beheren | Nee |Tabel ondersteuning in AzCopy V7 |Ja, aanpasbaar|
+| Toegestane wachtrij opslag | Beheren | Nee  |Nee | Ja, is aanpasbaar|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [overbrengen van gegevens met Azure Storage Explorer](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
+- Meer informatie over het [overdragen van gegevens met Azure Storage Explorer](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
 - [Gegevens overdragen met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 

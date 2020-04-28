@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: sstein
 ms.openlocfilehash: f11fbaccd38e8d6fed956c5cf476ed5a3732a68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176112"
 ---
 ## <a name="additional-resources"></a>Aanvullende bronnen
-Gebruik je nog geen elastic database tools? Bekijk onze [Getting Started Guide.](../articles/sql-database/sql-database-elastic-scale-get-started.md)  Voor vragen u contact met ons opnemen op het [SQL Database-forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) en voor functieverzoeken u deze toevoegen aan het [SQL Database-feedbackforum.](https://feedback.azure.com/forums/217321-sql-database/)
+Gebruikt u de hulpprogram ma's voor Elastic data base nog niet? Bekijk onze aan de slag- [hand leiding](../articles/sql-database/sql-database-elastic-scale-get-started.md).  Voor vragen kunt u contact opnemen met ons op het [SQL database-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) en voor functie aanvragen, voeg ze toe aan het [forum van SQL database feedback](https://feedback.azure.com/forums/217321-sql-database/).

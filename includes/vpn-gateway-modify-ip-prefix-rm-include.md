@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175872"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>IP-adresvoorvoegsels wijzigen voor de gateway van een lokaal netwerk - geen gatewayverbinding
@@ -33,14 +33,14 @@ Ga als volgt te werk om aanvullende voorvoegsels toe te voegen:
 
 Ga als volgt te werk om adresvoorvoegsels te verwijderen:
 
-  Laat de voorvoegsels weg die u niet langer nodig hebt. In dit voorbeeld hebben we geen voorvoegsel 10.101.2.0/24 (uit het vorige voorbeeld) meer nodig, zodat we de lokale netwerkgateway bijwerken, met uitzondering van dat voorvoegsel.
+  Laat de voorvoegsels weg die u niet langer nodig hebt. In dit voor beeld hebben we voor voegsel 10.101.2.0/24 (uit het vorige voor beeld) niet langer nodig, dus werken we de lokale netwerk gateway bij, met uitzonde ring van het voor voegsel.
 
 1. Stel de variabele in voor LocalNetworkGateway.
 
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. Stel de gateway in met de bijgewerkte voorvoegsels.
+2. Stel de gateway in met de bijgewerkte voor voegsels.
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
@@ -56,7 +56,7 @@ Als u een gatewayverbinding hebt en u IP-adresvoorvoegsels wilt toevoegen aan of
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
-2. Stel de lokale netwerkgateway in met de gewijzigde adresvoorvoegsels.
+2. Stel de lokale netwerk gateway in met de gewijzigde adres voorvoegsels.
    
    Stel de variabele in voor LocalNetworkGateway.
 

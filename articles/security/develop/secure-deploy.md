@@ -1,6 +1,6 @@
 ---
 title: Veilige toepassingen implementeren op Microsoft Azure
-description: In dit artikel worden aanbevolen procedures besproken om rekening mee te houden tijdens de release- en reactiefasen van uw webtoepassingsproject.
+description: In dit artikel worden aanbevolen procedures besproken die u moet overwegen tijdens de release-en respons fasen van uw webtoepassingen project.
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68934876"
 ---
-# <a name="deploy-secure-applications-on-azure"></a>Veilige toepassingen implementeren op Azure
-In dit artikel presenteren we beveiligingsactiviteiten en besturingselementen om rekening mee te houden wanneer u toepassingen voor de cloud implementeert. Beveiligingsvragen en concepten die moeten worden overwogen tijdens de release- en antwoordfasen van de Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) komen aan bod. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-services die u gebruiken om een veiligere toepassing te implementeren.
+# <a name="deploy-secure-applications-on-azure"></a>Beveiligde toepassingen implementeren in azure
+In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden wanneer u toepassingen voor de Cloud implementeert. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de release-en respons fasen van micro soft [Security Development Lifecycle (SDL),](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) worden gedekt. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te implementeren.
 
-De volgende SDL-fasen komen aan bod in dit artikel:
+In dit artikel komen de volgende SDL-fasen aan bod:
 
 - Release
 - Antwoord
 
 ## <a name="release"></a>Release
-De focus van de release fase is het voorbereiden van een project voor publieke release.
-Dit omvat het plannen van manieren om onderhoudstaken na de release effectief uit te voeren en beveiligingsproblemen aan te pakken die later kunnen optreden.
+De focus van de release fase is het voorbereiden van een project voor de open bare versie.
+Dit omvat plannings manieren om taken die na de release worden uitgevoerd effectief uit te voeren en beveiligings problemen op te lossen die later kunnen optreden.
 
 ### <a name="check-your-applications-performance-before-you-launch"></a>Controleer de prestaties van uw toepassing voordat u start
 
-Controleer de prestaties van uw toepassing voordat u deze start of implementeer updates voor de productie. Voer cloudgebaseerde [belastingstests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) uit met Visual Studio om prestatieproblemen in uw toepassing te vinden, de implementatiekwaliteit te verbeteren, ervoor te zorgen dat uw toepassing altijd up- of beschikbaar is en dat uw toepassing verkeer voor uw lancering kan verwerken.
+Controleer de prestaties van uw toepassing voordat u deze start of installeer updates voor de productie. Voer in de cloud gebaseerde [belasting tests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing) uit met behulp van Visual Studio om prestatie problemen in uw toepassing op te sporen, de implementatie kwaliteit te verbeteren, ervoor te zorgen dat uw toepassing altijd up-to-available is en dat uw toepassing verkeer voor uw Lance ring kan verwerken.
 
-### <a name="install-a-web-application-firewall"></a>Een firewall voor webtoepassingen installeren
+### <a name="install-a-web-application-firewall"></a>Een Web Application Firewall installeren
 
-Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Veel voorkomende onder deze exploits zijn SQL-injectie-aanvallen en cross-site scripting-aanvallen. Het voorkomen van deze aanvallen in toepassingscode kan een uitdaging zijn. Het kan rigoureus onderhoud, patchen en bewaking vereisen op vele lagen van de toepassingstopologie. Een gecentraliseerde WAF helpt het beveiligingsbeheer eenvoudiger te maken. Een WAF-oplossing kan ook reageren op een beveiligingsbedreiging door een bekend beveiligingslek op een centrale locatie te patchen versus elke afzonderlijke webapplicatie te beveiligen.
+Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Deze cracks zijn gebruikelijk voor SQL-injectie aanvallen en scripts voor cross-site scripting. Het voor komen van deze aanvallen in toepassings code kan lastig zijn. Mogelijk zijn er in veel lagen van de toepassings topologie strikte onderhoud, patching en controle vereist. Een gecentraliseerde WAF helpt beveiligings beheer eenvoudiger te maken. Een WAF-oplossing kan ook reageren op een beveiligings risico door een bekend beveiligings probleem op een centrale locatie op te lossen en elke afzonderlijke webtoepassing te beveiligen.
 
-De [WAF van Azure Application Gateway](../../application-gateway/waf-overview.md) biedt gecentraliseerde bescherming van uw webtoepassingen tegen veelvoorkomende exploits en kwetsbaarheden. De WAF is gebaseerd op regels uit de [OWASP-kernregelsets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 of 2.2.9.
+De [Azure-toepassing gateway WAF](../../application-gateway/waf-overview.md) biedt gecentraliseerde beveiliging van uw webtoepassingen van veelvoorkomende aanvallen en beveiligings problemen. De WAF is gebaseerd op regels van de [OWASP core Rule sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,0 of 2.2.9.
 
 ### <a name="create-an-incident-response-plan"></a>Een reactieplan voor incidenten maken
 
-Het opstellen van een incident response plan is van cruciaal belang om u te helpen nieuwe bedreigingen die kunnen ontstaan in de tijd aan te pakken. Het opstellen van een incidentresponseplan omvat het identificeren van geschikte beveiligingscontactpersonen voor noodgevallen en het opstellen van beveiligingsonderhoudsplannen voor code die is overgenomen van andere groepen in de organisatie en voor gelicentieerde code van derden.
+Het voorbereiden van een reactie plan voor incidenten is van cruciaal belang om nieuwe bedreigingen te verhelpen die na verloop van tijd kunnen optreden. Het voorbereiden van een reactie plan voor incidenten omvat het identificeren van de juiste contacten voor beveiligings nood gevallen en het opstellen van beveiligings onderhouds plannen voor code die wordt overgenomen van andere groepen in de organisatie en voor code van een derde partij.
 
-### <a name="conduct-a-final-security-review"></a>Een laatste beveiligingsbeoordeling uitvoeren
+### <a name="conduct-a-final-security-review"></a>Een definitieve beveiligings beoordeling uitvoeren
 
-Door alle beveiligingsactiviteiten die zijn uitgevoerd, bewust te controleren, u ervoor zorgen dat uw softwarerelease of -toepassing gereed is voor de release of toepassing van uw software. De uiteindelijke security review (FSR) omvat meestal het onderzoeken van bedreigingsmodellen, tools uitgangen, en prestaties tegen de kwaliteit poorten en bug bars die werden gedefinieerd in de vereisten fase.
+Het controleren van alle beveiligings activiteiten die zijn uitgevoerd, zorgt voor een geslaagde voor bereiding op uw software versie of toepassing. De laatste beveiligings beoordeling (FSR) omvat doorgaans het onderzoeken van de bedreigings modellen, hulpprogram ma's en prestaties tegen de kwaliteits poorten en fout balken die zijn gedefinieerd in de fase vereisten.
 
-### <a name="certify-release-and-archive"></a>Release en archiveren certificeren
+### <a name="certify-release-and-archive"></a>Release en archief certificeren
 
-Het certificeren van software voordat een release wordt uitgebracht, zorgt ervoor dat aan de beveiligings- en privacyvereisten wordt voldaan. Het archiveren van alle relevante gegevens is essentieel voor het uitvoeren van servicetaken na de release. Archivering helpt ook de langetermijnkosten in verband met duurzame softwareengineering te verlagen.
+Het certificeren van software voordat een release helpt ervoor te zorgen dat aan de vereisten voor beveiliging en privacy wordt voldaan. Het archiveren van alle relevante gegevens is essentieel voor het uitvoeren van onderhouds taken na de release. Archivering helpt ook de langlopende kosten te verlagen die zijn gekoppeld aan de aanhoudende software techniek.
 
 ## <a name="response"></a>Antwoord
-De reactie fase post-release centra op het ontwikkelingsteam in staat en beschikbaar om adequaat te reageren op eventuele meldingen van opkomende software bedreigingen en kwetsbaarheden.
+De responsief post-release-fase van het ontwikkelings team en kan op de juiste wijze reageren op alle rapporten van opkomende software dreigingen en beveiligings problemen.
 
-### <a name="execute-the-incident-response-plan"></a>Het incidentresponsplan uitvoeren
+### <a name="execute-the-incident-response-plan"></a>Het antwoord plan voor incidenten uitvoeren
 
-In staat zijn om het incident response plan ingesteld in de release fase te implementeren is essentieel om klanten te helpen beschermen tegen software beveiliging of privacy kwetsbaarheden die ontstaan.
+Het is essentieel dat u het antwoord plan voor incidenten in de release fase kunt implementeren om klanten te beschermen tegen beveiligings problemen van software of privacy die zich voordoen.
 
 ### <a name="monitor-application-performance"></a>Prestaties van toepassingen controleren
 
-Doorlopende monitoring van uw toepassing nadat deze is geïmplementeerd, helpt u mogelijk om prestatieproblemen en beveiligingsproblemen op te sporen.
-Azure-services die helpen bij het bewaken van toepassingen zijn:
+Voortdurende bewaking van uw toepassing na de implementatie ervan helpt u bij het detecteren van prestatie problemen en beveiligings problemen.
+Azure-Services die u helpen bij het bewaken van toepassingen zijn:
 
   - Azure Application Insights
   - Azure Security Center
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) is een uitbreidbare Application Performance Management (APM) service voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Application Insights detecteert automatisch prestatieafwijkingen. Het bevat krachtige analysetools om u te helpen problemen te diagnosticeren en te begrijpen wat gebruikers daadwerkelijk met uw app doen. Het is bedoeld om u te helpen de prestaties en bruikbaarheid continu te verbeteren.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) is een UITBREID bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Application Insights detecteert automatisch prestatie afwijkingen. Het bevat krachtige analyse hulpprogramma's die u helpen bij het vaststellen van problemen en inzicht te krijgen in wat gebruikers daad werkelijk doen met uw app. Het is bedoeld om u te helpen de prestaties en bruikbaarheid continu te verbeteren.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../../security-center/security-center-intro.md) helpt u bedreigingen te voorkomen, detecteren en erop te reageren met meer inzicht in (en controle over) de beveiliging van uw Azure-resources, waaronder webtoepassingen. Azure Security Center helpt bij het detecteren van bedreigingen die anders onopgemerkt zouden kunnen blijven. Het werkt met verschillende beveiligingsoplossingen.
+[Azure Security Center](../../security-center/security-center-intro.md) helpt u bedreigingen te voor komen, te detecteren en erop te reageren met verbeterde zicht baarheid van de beveiliging van uw Azure-resources, inclusief webtoepassingen. Azure Security Center helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt. Het werkt met verschillende beveiligings oplossingen.
 
-De gratis laag van security center biedt beperkte beveiliging voor alleen uw Azure-bronnen. De [standaardlaag van het Beveiligingscentrum](../../security-center/security-center-onboarding.md) breidt deze mogelijkheden uit naar on-premises resources en andere clouds.
-Security Center Standard helpt u:
+De gratis laag van Security Center biedt beperkte beveiliging alleen voor uw Azure-resources. De [laag Security Center Standard](../../security-center/security-center-onboarding.md) breidt deze mogelijkheden uit naar on-premises resources en andere Clouds.
+Security Center Standard helpt u bij het volgende:
 
-  - Beveiligingsproblemen zoeken en oplossen.
-  - Pas toegangs- en toepassingsbesturingselementen toe om schadelijke activiteiten te blokkeren.
-  - Detecteer bedreigingen met behulp van analytics en intelligentie.
-  - Reageer snel wanneer u wordt aangevallen.
+  - Beveiligings problemen detecteren en oplossen.
+  - Pas toegangs-en toepassings besturings elementen toe om schadelijke activiteiten te blok keren.
+  - Detectie van bedreigingen met behulp van Analytics en intelligence.
+  - Reageer snel op wanneer u een aanval onderneemt.
 
 ## <a name="next-steps"></a>Volgende stappen
-In de volgende artikelen raden we beveiligingscontroles en -activiteiten aan die u kunnen helpen bij het ontwerpen en ontwikkelen van veilige toepassingen.
+In de volgende artikelen raden wij aan beveiligings maatregelen en activiteiten te gebruiken die u kunnen helpen bij het ontwerpen en ontwikkelen van beveiligde toepassingen.
 
 - [Veilige toepassingen ontwerpen](secure-design.md)
 - [Veilige toepassingen ontwikkelen](secure-develop.md)

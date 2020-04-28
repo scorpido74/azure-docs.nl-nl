@@ -1,6 +1,6 @@
 ---
 title: Azure AD-federation compatibiliteitslijst
-description: Deze pagina heeft niet-Microsoft-identiteitsproviders die kunnen worden gebruikt om eenmalige aanmelding te implementeren.
+description: Deze pagina heeft id-providers die niet van micro soft zijn en die kunnen worden gebruikt voor het implementeren van eenmalige aanmelding.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,22 +17,22 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5090101c486562e33de56402db348c6038c8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60244764"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD-federation compatibiliteitslijst
-Azure Active Directory biedt beveiliging voor toegang met één aanmelding en verbeterde toepassingstoegang voor Office 365 en andere Microsoft Online-services voor hybride en cloud-only implementaties zonder dat er een oplossing van derden nodig is. Office 365 is, net als de meeste onlineservices van Microsoft, geïntegreerd met Azure Active Directory voor directoryservices, verificatie en autorisatie. Azure Active Directory biedt ook eenmalige aanmelding voor duizenden SaaS-toepassingen en on-premises webtoepassingen. Zie de Azure Active [Directory-toepassingsgalerie](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) voor ondersteunde SaaS-toepassingen. 
+Azure Active Directory biedt een eenmalige aanmelding en verbeterde beveiliging van toepassings toegang voor Office 365 en andere online services van micro soft voor hybride en Cloud implementaties zonder enige oplossing van derden. Office 365, zoals het meren deel van de online services van micro soft, is geïntegreerd met Azure Active Directory voor adreslijst Services, verificatie en autorisatie. Azure Active Directory biedt ook eenmalige aanmelding bij duizenden SaaS-toepassingen en on-premises webtoepassingen. Zie de Azure Active Directory- [toepassings galerie](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) voor ondersteunde SaaS-toepassingen. 
 
-## <a name="idp-validation"></a>IDP-validatie
-Als uw organisatie een federatieoplossing van derden gebruikt, u eenmalige aanmelding configureren voor uw on-premises Active Directory-gebruikers met Microsoft Online-services, zoals Office 365, mits de federatieoplossing van derden compatibel is met Azure Active Directory.  Neem voor vragen over compatibiliteit contact op met uw identiteitsprovider.  Als u een lijst met identiteitsproviders wilt zien die eerder zijn getest op compatibiliteit met Azure AD door Microsoft, klik [dan hier](https://www.microsoft.com/download/details.aspx?id=56843). 
+## <a name="idp-validation"></a>IDP validatie
+Als uw organisatie gebruikmaakt van een Federatie oplossing van derden, kunt u eenmalige aanmelding configureren voor uw on-premises Active Directory gebruikers met micro soft Online Services, zoals Office 365, mits de Federatie oplossing van derden compatibel is met Azure Active Directory.  Neem contact op met uw ID-provider voor vragen met betrekking tot compatibiliteit.  Als u een lijst wilt weer geven met id-providers die eerder zijn getest op compatibiliteit met Azure AD, klikt u op [hier](https://www.microsoft.com/download/details.aspx?id=56843). 
 
 >[!NOTE]
->Microsoft biedt niet langer validatietests aan onafhankelijke identiteitsproviders voor compatibiliteit met Azure Active Directory. Als u uw product wilt testen op interoperabiliteit, raadpleeg dan deze [richtlijnen.](https://www.microsoft.com/download/details.aspx?id=56843) 
+>Micro soft biedt geen validatie tests meer voor onafhankelijke ID-providers voor compatibiliteit met Azure Active Directory. Als u uw product wilt testen op interoperabiliteit, raadpleegt u deze [richt lijnen](https://www.microsoft.com/download/details.aspx?id=56843). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw on-premises directory's integreren met Azure Active Directory](whatis-hybrid-identity.md)
-- [Azure AD Connect en federatie](how-to-connect-fed-whatis.md)
+- [Azure AD Connect en Federatie](how-to-connect-fed-whatis.md)
