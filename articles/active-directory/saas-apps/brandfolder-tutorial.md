@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Brandfolder | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Brandfolder | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Brandfolder.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fec9ac9e2a8dbe27516f3050f41a82d15c268c37
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158751"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>Zelfstudie: Azure Active Directory-integratie met Brandfolder
+# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>Zelf studie: integratie Azure Active Directory met Brandfolder
 
 In deze zelfstudie leert u hoe u Brandfolder kunt integreren met Azure Active Directory (Azure AD).
 Als u Brandfolder integreert met Azure AD krijgt u de volgende voordelen:
@@ -33,7 +33,7 @@ Als u Brandfolder integreert met Azure AD krijgt u de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -108,7 +108,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Brandfolder, moet u 
 
     ![Informatie over eenmalige aanmelding van het Brandfolder-domein en de -URL's](common/idp-intiated.png)
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://brandfolder.com/organizations/<ORG_SLUG>/saml/metadata`
+    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://brandfolder.com/organizations/<ORG_SLUG>/saml/metadata`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://brandfolder.com/organizations/<ORG_SLUG>/saml`
 
@@ -131,7 +131,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -139,14 +139,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer In het veld **Naam** **BrittaSimon**in .
+    a. Voer **BrittaSimon**in het veld **naam** in.
   
-    b. Typ in het veld **Gebruikersnaam** **de tekst brittasimon\@yourcompanydomain.extension**  
+    b. Typ **\@brittasimon yourcompanydomain. extension** in het veld **gebruikers naam** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -168,11 +168,11 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
-7. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+7. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
 ### <a name="create-brandfolder-test-user"></a>Brandfolder-testgebruiker maken
 
@@ -188,7 +188,7 @@ Wanneer u in het toegangsvenster op de tegel van Brandfolder klikt, zou u automa
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

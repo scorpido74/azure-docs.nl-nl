@@ -1,6 +1,6 @@
 ---
-title: Beleid voor toegangsbeperking azure API Management | Microsoft Documenten
-description: Meer informatie over het toegangsbeperkingsbeleid dat beschikbaar is voor gebruik in Azure API Management.
+title: Restrictie beleid voor Azure API Management-toegang | Microsoft Docs
+description: Meer informatie over het toegangs beperkings beleid dat beschikbaar is voor gebruik in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,34 +14,34 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266115"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management access restriction policies (Beleid voor toegangsbeperking API Management)
 
-In dit onderwerp wordt een verwijzing naar het volgende API-beheerbeleid bevat. Zie [Beleid in API-beheer](https://go.microsoft.com/fwlink/?LinkID=398186)voor informatie over het toevoegen en configureren van beleidsregels.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
 
-## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>Beleid voor toegangsbeperkingen
+## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>Toegangs restrictie beleid
 
--   [Http-header controleren](api-management-access-restriction-policies.md#CheckHTTPHeader) - Hiermee wordt het bestaan en/of de waarde van een HTTP-koptekst afgedwongen.
--   [Belsnelheid per abonnement beperken](api-management-access-restriction-policies.md#LimitCallRate) - Voorkomt pieken in API-gebruik door de gesprekssnelheid per abonnement te beperken.
--   [Beperk de aanroepsnelheid per sleutel](#LimitCallRateByKey) - Voorkomt pieken in API-gebruik door de gesprekssnelheid per sleutel te beperken.
--   [Beller-IP's beperken](api-management-access-restriction-policies.md#RestrictCallerIPs) - Filters (staat/weigert) oproepen van specifieke IP-adressen en/of adresbereiken.
--   [Gebruiksquotum instellen op abonnementsbasis](api-management-access-restriction-policies.md#SetUsageQuota) - Hiermee u een contractvolume voor hernieuwbare of levenslange oproepen en/of bandbreedtequota per abonnement afdwingen.
--   [Gebruiksquotum instellen op sleutel](#SetUsageQuotaByKey) - Hiermee u een contractvolume voor hernieuwbare of levenslange oproepen en/of bandbreedtequota per sleutel afdwingen.
--   [JWT valideren](api-management-access-restriction-policies.md#ValidateJWT) - Dwingt het bestaan en de geldigheid van een JWT af die is geëxtraheerd uit een opgegeven HTTP-koptekst of een opgegeven queryparameter.
+-   [Controleer de http-header](api-management-access-restriction-policies.md#CheckHTTPHeader) : Hiermee wordt het bestaan en/of de waarde van een http-header afgedwongen.
+-   De [aanroepen per abonnement beperken](api-management-access-restriction-policies.md#LimitCallRate) : hiermee voor komt u dat het API-gebruik piekt door de oproep frequentie te beperken, op basis van een abonnement.
+-   [Beperk de aanroepen per sleutel](#LimitCallRateByKey) : Hiermee wordt voor komen dat het API-gebruik pieken oploopt door de oproep frequentie per sleutel te beperken.
+-   [Aanroeper Ip's beperken](api-management-access-restriction-policies.md#RestrictCallerIPs) : filters (toestaan/weigeren) aanroepen van specifieke IP-adressen en/of adresbereiken.
+-   [Gebruiks quotum per abonnement instellen](api-management-access-restriction-policies.md#SetUsageQuota) : Hiermee kunt u een Verleng bare of levensduur oproep volume en/of bandbreedte quota afdwingen op basis van elk abonnement.
+-   [Gebruiks quotum instellen op sleutel](#SetUsageQuotaByKey) : Hiermee kunt u een Verleng bare of levensduur oproep volume en/of bandbreedte quotum per sleutel afdwingen.
+-   [Valideer JWT](api-management-access-restriction-policies.md#ValidateJWT) : afdwingt aanwezigheid en geldigheid van een JWT die is geëxtraheerd uit een opgegeven HTTP-header of een opgegeven query parameter.
 
 > [!TIP]
-> U toegangsrestrictiebeleid in verschillende scopes gebruiken voor verschillende doeleinden. U bijvoorbeeld de hele API beveiligen met `validate-jwt` AAD-verificatie door het beleid op API-niveau toe `claims` te passen of u deze toepassen op het niveau van de API-bewerking en gebruiken voor meer gedetailleerde besturing.
+> U kunt toegangs restrictie beleid in verschillende bereiken gebruiken voor verschillende doel einden. U kunt bijvoorbeeld de volledige API met AAD-verificatie beveiligen door het `validate-jwt` beleid toe te passen op het API-niveau, maar u kunt het ook Toep assen op het `claims` API-bewerkings niveau en gebruiken voor gedetailleerdere controle.
 
 ## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a>HTTP-header controleren
 
-Gebruik `check-header` het beleid om af te dwingen dat een aanvraag een opgegeven HTTP-header heeft. U optioneel controleren of de koptekst een specifieke waarde heeft of controleren op een reeks toegestane waarden. Als de controle mislukt, wordt de verwerking van aanvragen beëindigd en wordt de HTTP-statuscode en het foutbericht geretourneerd dat door het beleid is opgegeven.
+Gebruik het `check-header` beleid om af te dwingen dat een aanvraag een opgegeven HTTP-header heeft. U kunt eventueel controleren of de header een specifieke waarde heeft of een bereik van toegestane waarden controleren. Als de controle mislukt, wordt de verwerking van aanvragen door het beleid beëindigd en worden de HTTP-status code en het fout bericht geretourneerd dat door het beleid is opgegeven.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <check-header name="header name" failed-check-httpcode="code" failed-check-error-message="message" ignore-case="true">
@@ -60,41 +60,41 @@ Gebruik `check-header` het beleid om af te dwingen dat een aanvraag een opgegeve
 
 ### <a name="elements"></a>Elementen
 
-| Name         | Beschrijving                                                                                                                                   | Vereist |
+| Naam         | Beschrijving                                                                                                                                   | Vereist |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| check-header | Hoofdelement.                                                                                                                                 | Ja      |
-| waarde        | Toegestane HTTP-headerwaarde. Wanneer meerdere waardeelementen zijn opgegeven, wordt de controle als een succes beschouwd als een van de waarden een overeenkomst is. | Nee       |
+| check-header | Hoofd element.                                                                                                                                 | Ja      |
+| waarde        | Toegestane waarde voor de HTTP-header. Als er meerdere waarde-elementen zijn opgegeven, wordt de controle als geslaagd beschouwd als een van de waarden een overeenkomst is. | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name                       | Beschrijving                                                                                                                                                            | Vereist | Standaard |
+| Naam                       | Beschrijving                                                                                                                                                            | Vereist | Standaard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| foutbericht mislukt-check-fout | Foutbericht om terug te keren in de HTTP-antwoordtekst als de koptekst niet bestaat of een ongeldige waarde heeft. Dit bericht moet een speciale tekens goed ontsnapt. | Ja      | N.v.t.     |
-| httpcode mislukt      | HTTP-statuscode om terug te keren als de koptekst niet bestaat of een ongeldige waarde heeft.                                                                                        | Ja      | N.v.t.     |
-| koptekstnaam                | De naam van de HTTP-koptekst die u wilt controleren.                                                                                                                                  | Ja      | N.v.t.     |
-| negeren-case                | Kan worden ingesteld op Waar of Onwaar. Als ingesteld op True-aanvraag wordt genegeerd wanneer de kopwaarde wordt vergeleken met de set acceptabele waarden.                                    | Ja      | N.v.t.     |
+| mislukt-controle-fout-bericht | Fout bericht dat moet worden geretourneerd in de tekst van het HTTP-antwoord als de header niet bestaat of een ongeldige waarde heeft. Dit bericht moet speciale tekens op de juiste manier hebben geescapet. | Ja      | N.v.t.     |
+| mislukt-controle-httpcode      | HTTP-status code die moet worden geretourneerd als de koptekst niet bestaat of een ongeldige waarde heeft.                                                                                        | Ja      | N.v.t.     |
+| header-naam                | De naam van de HTTP-header die moet worden gecontroleerd.                                                                                                                                  | Ja      | N.v.t.     |
+| negeren-Case                | Kan worden ingesteld op True of false. Als deze eigenschap is ingesteld op True, wordt genegeerd wanneer de waarde van de header wordt vergeleken met de set acceptabele waarden.                                    | Ja      | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend, uitgaand
+-   **Beleids secties:** inkomend, uitgaand
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>Gesprekstarief beperken per abonnement
+## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>Oproep frequentie per abonnement beperken
 
-Het `rate-limit` beleid voorkomt dat API-gebruikspieken per abonnementsbasis voorkomen door het aanroeppercentage te beperken tot een opgegeven nummer per een bepaalde periode. Wanneer dit beleid wordt geactiveerd, ontvangt de beller een `429 Too Many Requests` statuscode voor het antwoord.
+Het `rate-limit` beleid voor komt dat het API-gebruik piekt per abonnement door de oproep frequentie te beperken tot een opgegeven aantal per opgegeven periode. Wanneer dit beleid wordt geactiveerd, ontvangt de aanroeper een `429 Too Many Requests` status code voor de reactie.
 
 > [!IMPORTANT]
-> Dit beleid kan slechts één keer per beleidsdocument worden gebruikt.
+> Dit beleid kan slechts eenmaal per beleids document worden gebruikt.
 >
-> [Beleidsuitingen](api-management-policy-expressions.md) kunnen niet worden gebruikt in een van de beleidskenmerken voor dit beleid.
+> [Beleids expressies](api-management-policy-expressions.md) kunnen niet worden gebruikt in een van de beleids kenmerken voor dit beleid.
 
 > [!CAUTION]
-> Vanwege de gedistribueerde aard van throttling architectuur, tarief beperking is nooit volledig nauwkeurig. Het verschil tussen geconfigureerde en het werkelijke aantal toegestane aanvragen is afhankelijk van het aanvraagvolume en de snelheid, de latentie van backend en andere factoren.
+> Vanwege de gedistribueerde aard van beperkings architectuur is de frequentie beperking nooit volledig nauw keurig. Het verschil tussen de geconfigureerde en het werkelijke aantal toegestane aanvragen varieert op basis van het volume en de frequentie van de back-end, de backend-latentie en andere factoren.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -120,41 +120,41 @@ Het `rate-limit` beleid voorkomt dat API-gebruikspieken per abonnementsbasis voo
 
 ### <a name="elements"></a>Elementen
 
-| Name       | Beschrijving                                                                                                                                                                                                                                                                                              | Vereist |
+| Naam       | Beschrijving                                                                                                                                                                                                                                                                                              | Vereist |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| tarieflimiet | Hoofdelement.                                                                                                                                                                                                                                                                                            | Ja      |
-| api        | Voeg een of meer van deze elementen toe om een gesprekstarieflimiet op te leggen aan API's in het product. Product- en API-oproepsnelheidlimieten worden onafhankelijk van elkaar toegepast. API kan worden verwezen `name` `id`via of . Als beide kenmerken zijn `id` verstrekt, `name` zal worden gebruikt en zal worden genegeerd.                    | Nee       |
-| Bewerking  | Voeg een of meer van deze elementen toe om een gesprekstarieflimiet op te leggen voor bewerkingen binnen een API. Product-, API- en bewerkingsgespreksfrequentielimieten worden onafhankelijk toegepast. De werking kan worden `name` `id`verwezen via of . Als beide kenmerken zijn `id` verstrekt, `name` zal worden gebruikt en zal worden genegeerd. | Nee       |
+| frequentie limiet | Hoofd element.                                                                                                                                                                                                                                                                                            | Ja      |
+| api        | Voeg een of meer van deze elementen toe om een aanroep frequentie limiet te leggen voor Api's binnen het product. De limieten voor product-en API-aanroepen worden onafhankelijk toegepast. Naar de API kan worden verwezen via `name` of `id`. Als beide kenmerken worden gegeven, `id` wordt gebruikt en `name` wordt deze genegeerd.                    | Nee       |
+| schijf  | Voeg een of meer van deze elementen toe om een aanroep frequentie limiet in te stellen voor bewerkingen binnen een API. Product-, API-en bewerkings frequentie limieten worden onafhankelijk toegepast. U kunt naar de bewerking verwijzen via `name` of `id`. Als beide kenmerken worden gegeven, `id` wordt gebruikt en `name` wordt deze genegeerd. | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name           | Beschrijving                                                                                           | Vereist | Standaard |
+| Naam           | Beschrijving                                                                                           | Vereist | Standaard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | De naam van de API waarvoor de tarieflimiet moet worden toegepast.                                                | Ja      | N.v.t.     |
-| Oproepen          | Het maximum aantal oproepen dat is toegestaan tijdens `renewal-period`het tijdsinterval dat is opgegeven in de . | Ja      | N.v.t.     |
-| verlengingsperiode | De periode in seconden waarna het quotum wordt gereset.                                              | Ja      | N.v.t.     |
+| name           | De naam van de API waarvoor de frequentie limiet moet worden toegepast.                                                | Ja      | N.v.t.     |
+| rpc's          | Het maximale aantal aanroepen dat is toegestaan tijdens het tijds interval dat is `renewal-period`opgegeven in de. | Ja      | N.v.t.     |
+| verlenging-periode | De tijds periode in seconden waarna het quotum opnieuw wordt ingesteld.                                              | Ja      | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
+-   **Beleids secties:** binnenkomend
 
--   **Beleidsscopes:** product, api, bewerking
+-   **Beleids bereiken:** product, API, bewerking
 
-## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>Gesprekssnelheid per sleutel beperken
+## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>De aanroep frequentie beperken op basis van de sleutel
 
 > [!IMPORTANT]
-> Deze functie is niet beschikbaar in de **verbruikslaag** van API-beheer.
+> Deze functie is niet beschikbaar in de laag **verbruik** van API management.
 
-Het `rate-limit-by-key` beleid voorkomt dat API-gebruikspieken per sleutel worden door de aanroepsnelheid te beperken tot een opgegeven getal per een bepaalde periode. De sleutel kan een willekeurige tekenreekswaarde hebben en wordt meestal geleverd met behulp van een beleidsexpressie. Optionele incrementvoorwaarde kan worden toegevoegd om aan te geven welke aanvragen moeten worden meegeteld voor de limiet. Wanneer dit beleid wordt geactiveerd, ontvangt de beller een `429 Too Many Requests` statuscode voor het antwoord.
+Het `rate-limit-by-key` beleid voor komt dat het API-gebruik pieken per sleutel oploopt door de oproep frequentie te beperken tot een opgegeven getal per een opgegeven periode. De sleutel kan een wille keurige teken reeks waarde hebben en wordt doorgaans verschaft met een beleids expressie. Optionele increment condition kan worden toegevoegd om aan te geven welke aanvragen bij de limiet moeten worden geteld. Wanneer dit beleid wordt geactiveerd, ontvangt de aanroeper een `429 Too Many Requests` status code voor de reactie.
 
-Zie [Geavanceerde aanvraagbeperking met Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)voor meer informatie en voorbeelden van dit beleid.
+Zie [Geavanceerde aanvraag beperking met Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)voor meer informatie en voor beelden van dit beleid.
 
 > [!CAUTION]
-> Vanwege de gedistribueerde aard van throttling architectuur, tarief beperking is nooit volledig nauwkeurig. Het verschil tussen geconfigureerde en het werkelijke aantal toegestane aanvragen is afhankelijk van het aanvraagvolume en de snelheid, de latentie van backend en andere factoren.
+> Vanwege de gedistribueerde aard van beperkings architectuur is de frequentie beperking nooit volledig nauw keurig. Het verschil tussen de geconfigureerde en het werkelijke aantal toegestane aanvragen varieert op basis van het volume en de frequentie van de back-end, de backend-latentie en andere factoren.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <rate-limit-by-key calls="number"
@@ -166,7 +166,7 @@ Zie [Geavanceerde aanvraagbeperking met Azure API Management](https://azure.micr
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld wordt de tarieflimiet ingetoetst door het IP-adres van de beller.
+In het volgende voor beeld wordt de frequentie limiet ingesteld op basis van het IP-adres van de beller.
 
 ```xml
 <policies>
@@ -185,32 +185,32 @@ In het volgende voorbeeld wordt de tarieflimiet ingetoetst door het IP-adres van
 
 ### <a name="elements"></a>Elementen
 
-| Name              | Beschrijving   | Vereist |
+| Naam              | Beschrijving   | Vereist |
 | ----------------- | ------------- | -------- |
-| rate-limit-by-key | Hoofdelement. | Ja      |
+| frequentie per sleutel | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name                | Beschrijving                                                                                           | Vereist | Standaard |
+| Naam                | Beschrijving                                                                                           | Vereist | Standaard |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| Oproepen               | Het maximum aantal oproepen dat is toegestaan tijdens `renewal-period`het tijdsinterval dat is opgegeven in de . | Ja      | N.v.t.     |
-| tegentoets         | De sleutel om te gebruiken voor het tarieflimietbeleid.                                                             | Ja      | N.v.t.     |
-| increment-voorwaarde | De booleaanse expressie die aangeeft of de`true`aanvraag moet worden meegeteld voor het quotum ( ).        | Nee       | N.v.t.     |
-| verlengingsperiode      | De periode in seconden waarna het quotum wordt gereset.                                              | Ja      | N.v.t.     |
+| rpc's               | Het maximale aantal aanroepen dat is toegestaan tijdens het tijds interval dat is `renewal-period`opgegeven in de. | Ja      | N.v.t.     |
+| teller-sleutel         | De sleutel die moet worden gebruikt voor het beleid voor frequentie limieten.                                                             | Ja      | N.v.t.     |
+| Increment-condition | De booleaanse expressie waarmee wordt aangegeven of de aanvraag moet worden geteld bij de quota`true`().        | Nee       | N.v.t.     |
+| verlenging-periode      | De tijds periode in seconden waarna het quotum opnieuw wordt ingesteld.                                              | Ja      | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
+-   **Beleids secties:** binnenkomend
 
--   **Beleidsscopes:** alle scopes
+-   **Beleids bereik:** alle bereiken
 
-## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a>Beller-IP's beperken
+## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a>IP-adressen van beller beperken
 
-De `ip-filter` beleidsfilters (staat/weigert) oproepen van specifieke IP-adressen en/of adresbereiken.
+De `ip-filter` beleids filters (toestaan/weigeren) aanroepen van specifieke IP-adressen en/of adresbereiken.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -221,7 +221,7 @@ De `ip-filter` beleidsfilters (staat/weigert) oproepen van specifieke IP-adresse
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld staat het beleid alleen aanvragen toe die afkomstig zijn van het enkele IP-adres of het bereik van ip-adressen dat is opgegeven
+In het volgende voor beeld staat het beleid alleen toe dat aanvragen afkomstig zijn van het opgegeven IP-adres of IP-bereik.
 
 ```xml
 <ip-filter action="allow">
@@ -232,36 +232,36 @@ In het volgende voorbeeld staat het beleid alleen aanvragen toe die afkomstig zi
 
 ### <a name="elements"></a>Elementen
 
-| Name                                      | Beschrijving                                         | Vereist                                                       |
+| Naam                                      | Beschrijving                                         | Vereist                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
-| ip-filter                                 | Hoofdelement.                                       | Ja                                                            |
-| adres                                   | Hiermee geeft u één IP-adres op waarop u moet filteren.   | Ten minste `address` `address-range` één element of element is vereist. |
-| adresbereik van="adres" tot="adres" | Hiermee geeft u een bereik van IP-adres op waarop moet worden gefilterd. | Ten minste `address` `address-range` één element of element is vereist. |
+| IP-filter                                 | Hoofd element.                                       | Ja                                                            |
+| adres                                   | Hiermee geeft u één IP-adres op waarop moet worden gefilterd.   | Er is ten `address` minste `address-range` één element vereist. |
+| adres bereik van = "adres" naar = "adres" | Hiermee geeft u een bereik van IP-adres op waarop moet worden gefilterd. | Er is ten `address` minste `address-range` één element vereist. |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name                                      | Beschrijving                                                                                 | Vereist                                           | Standaard |
+| Naam                                      | Beschrijving                                                                                 | Vereist                                           | Standaard |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| adresbereik van="adres" tot="adres" | Een reeks IP-adressen om toegang toe te staan of te weigeren.                                        | Vereist wanneer `address-range` het element wordt gebruikt. | N.v.t.     |
-| ip-filter actie ="toestaan &#124; verbieden"    | Hiermee geeft u op of aanroepen al dan niet moeten worden toegestaan voor de opgegeven IP-adressen en -bereiken. | Ja                                                | N.v.t.     |
+| adres bereik van = "adres" naar = "adres" | Een bereik van IP-adressen voor het toestaan of weigeren van toegang voor.                                        | Vereist wanneer het `address-range` element wordt gebruikt. | N.v.t.     |
+| IP-filter actie = "toestaan &#124; verbieden"    | Hiermee geeft u op of aanroepen moeten worden toegestaan of niet voor de opgegeven IP-adressen en-bereiken. | Ja                                                | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** binnenkomend
+-   **Beleids bereik:** alle bereiken
 
-## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a>Gebruiksquotum instellen op abonnement
+## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a>Gebruiks quotum per abonnement instellen
 
-Het `quota` beleid dwingt een contractvolume voor hernieuwbare of levenslange oproepen en/of bandbreedtequota af, per abonnementsbasis.
+Met `quota` het beleid wordt een Verleng volume en/of een levens duur van het gesprek en/of het quotum voor de band breedte afgedwongen op basis van elk abonnement.
 
 > [!IMPORTANT]
-> Dit beleid kan slechts één keer per beleidsdocument worden gebruikt.
+> Dit beleid kan slechts eenmaal per beleids document worden gebruikt.
 >
-> [Beleidsuitingen](api-management-policy-expressions.md) kunnen niet worden gebruikt in een van de beleidskenmerken voor dit beleid.
+> [Beleids expressies](api-management-policy-expressions.md) kunnen niet worden gebruikt in een van de beleids kenmerken voor dit beleid.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -287,38 +287,38 @@ Het `quota` beleid dwingt een contractvolume voor hernieuwbare of levenslange op
 
 ### <a name="elements"></a>Elementen
 
-| Name      | Beschrijving                                                                                                                                                                                                                                                                                  | Vereist |
+| Naam      | Beschrijving                                                                                                                                                                                                                                                                                  | Vereist |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| quota     | Hoofdelement.                                                                                                                                                                                                                                                                                | Ja      |
-| api       | Voeg een of meer van deze elementen toe om oproepquota op te leggen aan API's binnen het product. Product- en API-aanroepquota worden onafhankelijk toegepast. API kan worden verwezen `name` `id`via of . Als beide kenmerken zijn `id` verstrekt, `name` zal worden gebruikt en zal worden genegeerd.                    | Nee       |
-| Bewerking | Voeg een of meer van deze elementen toe om oproepquota op te leggen aan bewerkingen binnen een API. Product-, API- en bewerkingsoproepquota worden onafhankelijk toegepast. De werking kan worden `name` `id`verwezen via of . Als beide kenmerken zijn `id` verstrekt, `name` zal worden gebruikt en zal worden genegeerd. | Nee       |
+| quota     | Hoofd element.                                                                                                                                                                                                                                                                                | Ja      |
+| api       | Voeg een of meer van deze elementen toe om het gespreks quotum voor Api's binnen het product in te stellen. Product-en API-oproep quota worden onafhankelijk toegepast. Naar de API kan worden verwezen via `name` of `id`. Als beide kenmerken worden gegeven, `id` wordt gebruikt en `name` wordt deze genegeerd.                    | Nee       |
+| schijf | Voeg een of meer van deze elementen toe om het aanroepen van quota voor bewerkingen in een API in te stellen. Product-, API-en bewerkings oproep quota worden onafhankelijk toegepast. U kunt naar de bewerking verwijzen via `name` of `id`. Als beide kenmerken worden gegeven, `id` wordt gebruikt en `name` wordt deze genegeerd. | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name           | Beschrijving                                                                                               | Vereist                                                         | Standaard |
+| Naam           | Beschrijving                                                                                               | Vereist                                                         | Standaard |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | De naam van de API of bewerking waarvoor het quotum van toepassing is.                                             | Ja                                                              | N.v.t.     |
-| Bandbreedte      | Het maximum aantal kilobytes dat is toegestaan tijdens `renewal-period`het tijdsinterval dat is opgegeven in de . | Ofwel `calls` `bandwidth`, of beide samen moeten worden opgegeven. | N.v.t.     |
-| Oproepen          | Het maximum aantal oproepen dat is toegestaan tijdens `renewal-period`het tijdsinterval dat is opgegeven in de .     | Ofwel `calls` `bandwidth`, of beide samen moeten worden opgegeven. | N.v.t.     |
-| verlengingsperiode | De periode in seconden waarna het quotum wordt gereset.                                                  | Ja                                                              | N.v.t.     |
+| name           | De naam van de API of bewerking waarvoor het quotum geldt.                                             | Ja                                                              | N.v.t.     |
+| BAP      | Het Maxi maal toegestane aantal kilo bytes tijdens het tijds interval dat is opgegeven in `renewal-period`de. | Ofwel `calls`, `bandwidth`of beide moeten worden opgegeven. | N.v.t.     |
+| rpc's          | Het maximale aantal aanroepen dat is toegestaan tijdens het tijds interval dat is `renewal-period`opgegeven in de.     | Ofwel `calls`, `bandwidth`of beide moeten worden opgegeven. | N.v.t.     |
+| verlenging-periode | De tijds periode in seconden waarna het quotum opnieuw wordt ingesteld.                                                  | Ja                                                              | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
--   **Beleidsscopes:** product
+-   **Beleids secties:** binnenkomend
+-   **Beleids bereiken:** product
 
-## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a>Gebruiksquotum instellen op sleutel
+## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a>Gebruiks quotum instellen op sleutel
 
 > [!IMPORTANT]
-> Deze functie is niet beschikbaar in de **verbruikslaag** van API-beheer.
+> Deze functie is niet beschikbaar in de laag **verbruik** van API management.
 
-Het `quota-by-key` beleid dwingt een hernieuwbaar of levenslange gespreksvolume en/of bandbreedtequotum af, per sleutel. De sleutel kan een willekeurige tekenreekswaarde hebben en wordt meestal geleverd met behulp van een beleidsexpressie. Optionele incrementvoorwaarde kan worden toegevoegd om aan te geven welke aanvragen moeten worden meegeteld voor het quotum. Als meerdere beleidsregels dezelfde sleutelwaarde zouden verhogen, wordt deze slechts één keer per aanvraag verhoogd. Wanneer de gesprekslimiet is bereikt, ontvangt de beller een `403 Forbidden` statuscode voor het antwoord.
+Met `quota-by-key` het beleid wordt een Verleng volume en/of een levens duur van het gesprek en/of het quotum voor de band breedte afgedwongen op basis van per sleutel. De sleutel kan een wille keurige teken reeks waarde hebben en wordt doorgaans verschaft met een beleids expressie. Optionele increment condition kan worden toegevoegd om aan te geven welke aanvragen bij het quotum moeten worden geteld. Als meerdere beleids regels dezelfde sleutel waarde zouden verhogen, wordt deze slechts eenmaal per aanvraag verhoogd. Wanneer de oproep limiet wordt bereikt, ontvangt de aanroeper een `403 Forbidden` status code voor de reactie.
 
-Zie [Geavanceerde aanvraagbeperking met Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)voor meer informatie en voorbeelden van dit beleid.
+Zie [Geavanceerde aanvraag beperking met Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)voor meer informatie en voor beelden van dit beleid.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <quota-by-key calls="number"
@@ -331,7 +331,7 @@ Zie [Geavanceerde aanvraagbeperking met Azure API Management](https://azure.micr
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld wordt het quotum ingetoetst door het IP-adres van de beller.
+In het volgende voor beeld wordt het quotum door het IP-adres van de beller gesleuteld.
 
 ```xml
 <policies>
@@ -349,37 +349,37 @@ In het volgende voorbeeld wordt het quotum ingetoetst door het IP-adres van de b
 
 ### <a name="elements"></a>Elementen
 
-| Name  | Beschrijving   | Vereist |
+| Naam  | Beschrijving   | Vereist |
 | ----- | ------------- | -------- |
-| quota | Hoofdelement. | Ja      |
+| quota | Hoofd element. | Ja      |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name                | Beschrijving                                                                                               | Vereist                                                         | Standaard |
+| Naam                | Beschrijving                                                                                               | Vereist                                                         | Standaard |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| Bandbreedte           | Het maximum aantal kilobytes dat is toegestaan tijdens `renewal-period`het tijdsinterval dat is opgegeven in de . | Ofwel `calls` `bandwidth`, of beide samen moeten worden opgegeven. | N.v.t.     |
-| Oproepen               | Het maximum aantal oproepen dat is toegestaan tijdens `renewal-period`het tijdsinterval dat is opgegeven in de .     | Ofwel `calls` `bandwidth`, of beide samen moeten worden opgegeven. | N.v.t.     |
-| tegentoets         | De sleutel om te gebruiken voor het quotabeleid.                                                                      | Ja                                                              | N.v.t.     |
-| increment-voorwaarde | De booleaanse expressie die aangeeft of de`true`aanvraag moet worden meegeteld voor het quotum ( )             | Nee                                                               | N.v.t.     |
-| verlengingsperiode      | De periode in seconden waarna het quotum wordt gereset.                                                  | Ja                                                              | N.v.t.     |
+| BAP           | Het Maxi maal toegestane aantal kilo bytes tijdens het tijds interval dat is opgegeven in `renewal-period`de. | Ofwel `calls`, `bandwidth`of beide moeten worden opgegeven. | N.v.t.     |
+| rpc's               | Het maximale aantal aanroepen dat is toegestaan tijdens het tijds interval dat is `renewal-period`opgegeven in de.     | Ofwel `calls`, `bandwidth`of beide moeten worden opgegeven. | N.v.t.     |
+| teller-sleutel         | De sleutel die moet worden gebruikt voor het quotum beleid.                                                                      | Ja                                                              | N.v.t.     |
+| Increment-condition | De booleaanse expressie waarmee wordt aangegeven of de aanvraag moet worden geteld bij het quotum`true`()             | Nee                                                               | N.v.t.     |
+| verlenging-periode      | De tijds periode in seconden waarna het quotum opnieuw wordt ingesteld.                                                  | Ja                                                              | N.v.t.     |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** binnenkomend
+-   **Beleids bereik:** alle bereiken
 
 ## <a name="validate-jwt"></a><a name="ValidateJWT"></a>JWT valideren
 
-Het `validate-jwt` beleid dwingt het bestaan en de geldigheid af van een JWT die is geëxtraheerd uit een opgegeven HTTP-koptekst of een opgegeven queryparameter.
+Het `validate-jwt` beleid afdwingt het bestaan en de geldigheid van een JWT die is geëxtraheerd uit een opgegeven HTTP-header of een opgegeven query parameter.
 
 > [!IMPORTANT]
-> Het `validate-jwt` beleid vereist `exp` dat de geregistreerde claim is opgenomen `require-expiration-time` in het JWT-token, tenzij het kenmerk is opgegeven en is ingesteld op `false`.
-> Het `validate-jwt` beleid ondersteunt HS256 en RS256 ondertekening algoritmen. Voor HS256 moet de sleutel inline worden verstrekt binnen het beleid in het basis64 gecodeerde formulier. Voor RS256 moet de sleutel worden verstrekt via een Open ID configuratie eindpunt.
-> Het `validate-jwt` beleid ondersteunt tokens versleuteld met symmetrische sleutels met behulp van de volgende encryptie-algoritmen A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
+> Het `validate-jwt` beleid vereist dat de `exp` geregistreerde claim is opgenomen in het JWT-token, `require-expiration-time` tenzij het kenmerk is opgegeven en `false`is ingesteld op.
+> Het `validate-jwt` beleid ondersteunt HS256-en RS256-handtekening algoritmen. Voor HS256 moet de sleutel in de base64-gecodeerd formulier worden aangelegd in het beleid. Voor RS256 moet de sleutel worden verstrekt via een open ID-configuratie-eind punt.
+> Het `validate-jwt` beleid ondersteunt tokens die zijn versleuteld met symmetrische sleutels met behulp van de volgende versleutelings algoritmen A128CBC-HS256, A192CBC-HS384, A256CBC-HS512.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <validate-jwt
@@ -422,7 +422,7 @@ Het `validate-jwt` beleid dwingt het bestaan en de geldigheid af van een JWT die
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="simple-token-validation"></a>Eenvoudige tokenvalidatie
+#### <a name="simple-token-validation"></a>Eenvoudige token validatie
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer">
@@ -438,7 +438,7 @@ Het `validate-jwt` beleid dwingt het bestaan en de geldigheid af van een JWT die
 </validate-jwt>
 ```
 
-#### <a name="azure-active-directory-token-validation"></a>Azure Active Directory-tokenvalidatie
+#### <a name="azure-active-directory-token-validation"></a>Validatie van Azure Active Directory-token
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -454,7 +454,7 @@ Het `validate-jwt` beleid dwingt het bestaan en de geldigheid af van een JWT die
 </validate-jwt>
 ```
 
-#### <a name="azure-active-directory-b2c-token-validation"></a>Azure Active Directory B2C-tokenvalidatie
+#### <a name="azure-active-directory-b2c-token-validation"></a>Validatie van Azure Active Directory B2C-token
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -470,9 +470,9 @@ Het `validate-jwt` beleid dwingt het bestaan en de geldigheid af van een JWT die
 </validate-jwt>
 ```
 
-#### <a name="authorize-access-to-operations-based-on-token-claims"></a>Toegang tot bewerkingen autoriseren op basis van tokenclaims
+#### <a name="authorize-access-to-operations-based-on-token-claims"></a>Toegang tot bewerkingen op basis van token claims autoriseren
 
-In dit voorbeeld ziet u hoe u het [JWT-beleid valideren](api-management-access-restriction-policies.md#ValidateJWT) gebruiken om toegang tot bewerkingen te autoriseren op basis van de waarde van tokenclaims.
+In dit voor beeld ziet u hoe u het JWT-beleid [valideren](api-management-access-restriction-policies.md#ValidateJWT) gebruikt om toegang te verlenen tot bewerkingen op basis van een token claim waarde.
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
@@ -505,45 +505,45 @@ In dit voorbeeld ziet u hoe u het [JWT-beleid valideren](api-management-access-r
 
 | Element             | Beschrijving                                                                                                                                                                                                                                                                                                                                           | Vereist |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| validate-jwt        | Hoofdelement.                                                                                                                                                                                                                                                                                                                                         | Ja      |
-| Publiek           | Bevat een lijst met acceptabele doelgroepclaims die op het token aanwezig kunnen zijn. Als er meerdere doelgroepwaarden aanwezig zijn, wordt elke waarde geprobeerd totdat ze allemaal zijn uitgeput (in welk geval validatie mislukt) of totdat een waarde slaagt. Er moet ten minste één doelgroep worden opgegeven.                                                                     | Nee       |
-| issuer-signing-keys | Een lijst met base64-gecodeerde beveiligingssleutels die worden gebruikt om ondertekende tokens te valideren. Als er meerdere beveiligingssleutels aanwezig zijn, wordt elke sleutel geprobeerd totdat ze allemaal zijn uitgeput (in welk geval validatie mislukt) of totdat een validatie slaagt (handig voor tokenrollover). Belangrijke elementen hebben `id` een optioneel `kid` kenmerk dat wordt gebruikt om aan te passen aan claim.               | Nee       |
-| decryptiesleutels     | Een lijst met Base64-gecodeerde sleutels die worden gebruikt om de tokens te decoderen. Als er meerdere beveiligingssleutels aanwezig zijn, wordt elke sleutel geprobeerd totdat alle sleutels zijn uitgeput (in welk geval validatie mislukt) of totdat een sleutel slaagt. Belangrijke elementen hebben `id` een optioneel `kid` kenmerk dat wordt gebruikt om aan te passen aan claim.                                                 | Nee       |
-| Emittenten             | Een lijst met acceptabele opdrachtgevers die het token hebben uitgegeven. Als er meerdere emittentwaarden aanwezig zijn, wordt elke waarde geprobeerd totdat ze allemaal zijn uitgeput (in welk geval validatie mislukt) of totdat een waarde slaagt.                                                                                                                                         | Nee       |
-| openid-config       | Het element dat wordt gebruikt voor het opgeven van een compatibel eindpunt van de Open ID-configuratie waaruit ondertekeningssleutels en uitgever kunnen worden verkregen.                                                                                                                                                                                                                        | Nee       |
-| vereiste claims     | Bevat een lijst met claims die naar verwachting aanwezig zullen zijn op het token om deze als geldig te beschouwen. Wanneer `match` het kenmerk `all` is ingesteld op elke claimwaarde in het beleid, moet deze aanwezig zijn in het token om validatie te laten slagen. Wanneer `match` het kenmerk `any` is ingesteld op ten minste één claim, moet deze aanwezig zijn in het token om validatie te laten slagen. | Nee       |
+| validate-JWT        | Hoofd element.                                                                                                                                                                                                                                                                                                                                         | Ja      |
+| doel groepen           | Bevat een lijst met acceptabele claim claims die aanwezig kunnen zijn op het token. Als er meerdere Audience-waarden aanwezig zijn, wordt elke waarde geprobeerd totdat alle gegevens zijn uitgeput (in welk geval de validatie mislukt) of totdat er een slaagt. Er moet ten minste één doel groep worden opgegeven.                                                                     | Nee       |
+| verlener-handtekening sleutels | Een lijst met met base64 gecodeerde beveiligings sleutels die worden gebruikt voor het valideren van ondertekende tokens. Als er meerdere beveiligings sleutels aanwezig zijn, wordt elke sleutel geprobeerd totdat alle sleutels zijn uitgeput (in welk geval de validatie is mislukt) of totdat er een slaagt (handig voor token-rollover). Sleutel elementen hebben een optioneel `id` kenmerk dat wordt gebruikt om `kid` te matchen op claim.               | Nee       |
+| ontsleuteling-sleutels     | Een lijst met met base64 gecodeerde sleutels die worden gebruikt om de tokens te ontsleutelen. Als er meerdere beveiligings sleutels aanwezig zijn, wordt elke sleutel geprobeerd totdat alle sleutels zijn uitgeput (in welk geval de validatie mislukt) of totdat een sleutel slaagt. Sleutel elementen hebben een optioneel `id` kenmerk dat wordt gebruikt om `kid` te matchen op claim.                                                 | Nee       |
+| verleners             | Een lijst met acceptabele principals die het token hebben uitgegeven. Als er meerdere Issuer-waarden aanwezig zijn, wordt elke waarde geprobeerd totdat alle gegevens zijn uitgeput (in het geval dat de validatie mislukt) of totdat er een slaagt.                                                                                                                                         | Nee       |
+| OpenID Connect-config       | Het element dat wordt gebruikt voor het opgeven van een compatibel Open ID-configuratie-eind punt waarvan de handtekening sleutels en de certificaat verlener kunnen worden verkregen.                                                                                                                                                                                                                        | Nee       |
+| vereist: claims     | Bevat een lijst met claims die naar verwachting aanwezig zijn op het token om als geldig te worden beschouwd. Wanneer het `match` kenmerk is ingesteld op `all` elke claim waarde in het beleid, moet aanwezig zijn in het token om de validatie te volt ooien. Wanneer het `match` kenmerk is ingesteld op `any` ten minste één claim moet aanwezig zijn in het token om de validatie te volt ooien. | Nee       |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name                            | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                                                            | Vereist                                                                         | Standaard                                                                           |
+| Naam                            | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                                                            | Vereist                                                                         | Standaard                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| klokscheeftrekken                      | Tijdspanne. Hiermee u het maximale verwachte tijdsverschil opgeven tussen de systeemklokken van de tokenuitgever en de instantie API-beheer.                                                                                                                                                                                                                                                                                                               | Nee                                                                               | 0 seconden                                                                         |
-| foutbericht mislukt-validatie-fout | Foutbericht om terug te keren in de HTTP-antwoordtekst als de JWT de validatie niet doorstaat. Dit bericht moet een speciale tekens goed ontsnapt.                                                                                                                                                                                                                                                                                                 | Nee                                                                               | Standaard foutmelding is afhankelijk van validatie probleem, bijvoorbeeld "JWT niet aanwezig." |
-| httpcode mislukt-validatie      | HTTP-statuscode om terug te keren als de JWT niet door validatie voldoet.                                                                                                                                                                                                                                                                                                                                                                                         | Nee                                                                               | 401                                                                               |
-| koptekstnaam                     | De naam van de HTTP-header die het token vasthoudt.                                                                                                                                                                                                                                                                                                                                                                                                         | Een `header-name`van `query-parameter-name` `token-value` , of moet worden gespecificeerd. | N.v.t.                                                                               |
-| queryparameter-naam            | De naam van de queryparameter die het token vasthoudt.                                                                                                                                                                                                                                                                                                                                                                                                     | Een `header-name`van `query-parameter-name` `token-value` , of moet worden gespecificeerd. | N.v.t.                                                                               |
-| tokenwaarde                     | Expressie die een tekenreeks met JWT-token retourt                                                                                                                                                                                                                                                                                                                                                                                                     | Een `header-name`van `query-parameter-name` `token-value` , of moet worden gespecificeerd. | N.v.t.                                                                               |
-| id                              | Met `id` het `key` kenmerk op het element u de `kid` tekenreeks opgeven die wordt gekoppeld aan de claim in het token (indien aanwezig) om de juiste sleutel te vinden die u moet gebruiken voor handtekeningvalidatie.                                                                                                                                                                                                                                           | Nee                                                                               | N.v.t.                                                                               |
-| Overeenkomen met                           | Het `match` kenmerk `claim` op het element geeft aan of elke claimwaarde in het beleid aanwezig moet zijn in het token om validatie te laten slagen. Mogelijke waarden zijn:<br /><br /> - `all`- elke claimwaarde in het beleid moet aanwezig zijn in het token voor validatie om te slagen.<br /><br /> - `any`- ten minste één claimwaarde moet aanwezig zijn in het token om validatie te laten slagen.                                                       | Nee                                                                               | all                                                                               |
-| vereisen-vervaldatum         | Booleaanse. Hiermee geeft u op of een vervaldatumclaim vereist is in het token.                                                                                                                                                                                                                                                                                                                                                                               | Nee                                                                               | waar                                                                              |
-| vereisen                  | De naam van het tokenschema, bijvoorbeeld "Drager". Wanneer dit kenmerk is ingesteld, zorgt het beleid ervoor dat de opgegeven regeling aanwezig is in de kopwaarde Autorisatie.                                                                                                                                                                                                                                                                                    | Nee                                                                               | N.v.t.                                                                               |
-| vereisen-ondertekend-tokens           | Booleaanse. Hiermee geeft u op of een token moet worden ondertekend.                                                                                                                                                                                                                                                                                                                                                                                           | Nee                                                                               | waar                                                                              |
-| Scheidingsteken                       | Tekenreeks. Hiermee geeft u een scheidingsteken op (bijvoorbeeld "") die moet worden gebruikt voor het extraheren van een set waarden uit een claim met meerdere waarden.                                                                                                                                                                                                                                                                                                                                          | Nee                                                                               | N.v.t.                                                                               |
-| url                             | Open ID-configuratieeindpunt-URL van waaruit open id-configuratiemetagegevens kunnen worden verkregen. Het antwoord moet worden volgens specs zoals`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`gedefinieerd op URL: . Gebruik voor Azure Active Directory `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` de volgende URL: vervang de `contoso.onmicrosoft.com`naam van uw directorytenant, bijvoorbeeld . | Ja                                                                              | N.v.t.                                                                               |
-| naam uitvoer-token-variabele      | Tekenreeks. Naam van contextvariabele die tokenwaarde ontvangt [`Jwt`](api-management-policy-expressions.md) als object van type bij succesvolle tokenvalidatie                                                                                                                                                                                                                                                                                     | Nee                                                                               | N.v.t.                                                                               |
+| klok scheef trekken                      | Duur. Gebruik dit om het maximale verwachte tijd verschil tussen de systeem klokken van de token Uitgever en het API Management-exemplaar op te geven.                                                                                                                                                                                                                                                                                                               | Nee                                                                               | 0 seconden                                                                         |
+| mislukt-validatie-fout-bericht | Fout bericht dat moet worden geretourneerd in de hoofd tekst van het HTTP-antwoord als de JWT geen validatie doorgeeft. Dit bericht moet speciale tekens op de juiste manier hebben geescapet.                                                                                                                                                                                                                                                                                                 | Nee                                                                               | Het standaard fout bericht is afhankelijk van het validatie probleem, bijvoorbeeld ' JWT niet aanwezig '. |
+| mislukt: validatie-httpcode      | HTTP-status code die moet worden geretourneerd als de JWT-validatie niet is geslaagd.                                                                                                                                                                                                                                                                                                                                                                                         | Nee                                                                               | 401                                                                               |
+| header-naam                     | De naam van de HTTP-header die het token heeft.                                                                                                                                                                                                                                                                                                                                                                                                         | Een van `header-name` `query-parameter-name` of `token-value` moet worden opgegeven. | N.v.t.                                                                               |
+| query-para meter-naam            | De naam van de query parameter die het token bewaart.                                                                                                                                                                                                                                                                                                                                                                                                     | Een van `header-name` `query-parameter-name` of `token-value` moet worden opgegeven. | N.v.t.                                                                               |
+| token-waarde                     | Expressie die een teken reeks met een JWT-token retourneert                                                                                                                                                                                                                                                                                                                                                                                                     | Een van `header-name` `query-parameter-name` of `token-value` moet worden opgegeven. | N.v.t.                                                                               |
+| id                              | Met `id` het kenmerk van `key` het element kunt u de teken reeks opgeven die overeenkomt met de `kid` claim in het token (indien aanwezig) om de juiste sleutel te vinden die moet worden gebruikt voor handtekening validatie.                                                                                                                                                                                                                                           | Nee                                                                               | N.v.t.                                                                               |
+| overeen met                           | Het `match` kenmerk van het `claim` element geeft aan of elke claim waarde in het beleid aanwezig moet zijn in het token om de validatie te kunnen volt ooien. Mogelijke waarden zijn:<br /><br /> - `all`-elke claim waarde in het beleid moet aanwezig zijn in het token om de validatie te volt ooien.<br /><br /> - `any`-Er moet ten minste één claim waarde aanwezig zijn in het token om de validatie te volt ooien.                                                       | Nee                                                                               | all                                                                               |
+| vereisen-verval tijd         | True. Hiermee geeft u op of er een verval claim vereist is in het token.                                                                                                                                                                                                                                                                                                                                                                               | Nee                                                                               | waar                                                                              |
+| vereisen-schema                  | De naam van het token schema, bijvoorbeeld ' Bearer '. Als dit kenmerk is ingesteld, zorgt het beleid ervoor dat het opgegeven schema aanwezig is in de waarde van de autorisatie-header.                                                                                                                                                                                                                                                                                    | Nee                                                                               | N.v.t.                                                                               |
+| vereisen: ondertekende tokens           | True. Hiermee geeft u op of een token moet worden ondertekend.                                                                                                                                                                                                                                                                                                                                                                                           | Nee                                                                               | waar                                                                              |
+| scheiding                       | Tekenreeks. Hiermee geeft u een scheidings teken (bijvoorbeeld ",") op dat moet worden gebruikt voor het extra heren van een set waarden uit een claim met meerdere waarden.                                                                                                                                                                                                                                                                                                                                          | Nee                                                                               | N.v.t.                                                                               |
+| url                             | Open ID configuratie eind punt URL van waar de meta gegevens van de configuratie van de Open-ID kunnen worden verkregen. Het antwoord moet overeenkomen met de specificaties zoals gedefinieerd op URL`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`:. Voor Azure Active Directory gebruikt u de volgende URL `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` : de naam van uw adreslijst Tenant vervangen, `contoso.onmicrosoft.com`bijvoorbeeld. | Ja                                                                              | N.v.t.                                                                               |
+| uitvoer-token-variabele-naam      | Tekenreeks. De naam van de context variabele waarmee de token waarde wordt ontvangen als een [`Jwt`](api-management-policy-expressions.md) object van het type bij een geslaagde token validatie                                                                                                                                                                                                                                                                                     | Nee                                                                               | N.v.t.                                                                               |
 
 ### <a name="usage"></a>Gebruik
 
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
--   **Beleidsonderdelen:** binnenkomend
--   **Beleidsscopes:** alle scopes
+-   **Beleids secties:** binnenkomend
+-   **Beleids bereik:** alle bereiken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over beleid:
+Zie voor meer informatie over het gebruik van beleid:
 
--   [Beleid in API-beheer](api-management-howto-policies.md)
--   [API's transformeren](transform-api.md)
--   [Beleidsreferentie](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen
--   [Beleidsvoorbeelden](policy-samples.md)
+-   [Beleid in API Management](api-management-howto-policies.md)
+-   [Api's transformeren](transform-api.md)
+-   [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
+-   [Voor beelden van beleid](policy-samples.md)

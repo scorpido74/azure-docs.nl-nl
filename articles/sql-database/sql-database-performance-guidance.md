@@ -1,6 +1,6 @@
 ---
-title: Richtlijnen voor prestatieafstemming voor toepassingen en databases
-description: Meer informatie over het afstemmen van databasetoepassingen en databases voor prestaties in Azure SQL Database.
+title: Richt lijnen voor het afstemmen van prestaties voor toepassingen en data bases
+description: Meer informatie over het afstemmen van database toepassingen en data bases voor prestaties in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,54 +12,54 @@ ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255949"
 ---
-# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Toepassingen en databases afstemmen op prestaties in Azure SQL Database
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Toepassingen en data bases afstemmen voor prestaties in Azure SQL Database
 
-Zodra u een prestatieprobleem hebt geïdentificeerd waarmee u te maken hebt met SQL Database, is dit artikel ontworpen om u te helpen:
+Wanneer u een prestatie probleem hebt geïdentificeerd dat u hebt gezien SQL Database, is dit artikel ontworpen om u te helpen bij het volgende:
 
-- Stem uw toepassing af en pas enkele aanbevolen procedures toe die de prestaties kunnen verbeteren.
-- Stem de database af door indexen en query's te wijzigen om efficiënter met gegevens te werken.
+- Stel uw toepassing af en pas aanbevolen procedures toe waarmee de prestaties kunnen worden verbeterd.
+- Stem de data base af door indexen en query's te wijzigen om efficiënter met gegevens te werken.
 
-In dit artikel wordt ervan uitgegaan dat u de aanbevelingen azure SQL [Database-databaseadvisor](sql-database-advisor.md) en de [aanbevelingen voor automatische afstemming van](sql-database-automatic-tuning.md)Azure SQL Database al hebt doorlopen. Het gaat er ook van uit dat u [een overzicht van monitoring en tuning en](sql-database-monitor-tune-overview.md) de bijbehorende artikelen met betrekking tot het oplossen van prestatieproblemen hebt beoordeeld. Bovendien wordt in dit artikel ervan uitgegaan dat u geen CPU-resources hebt, waardoor het prestatieprobleem wordt uitgevoerd dat kan worden opgelost door de rekengrootte of servicelaag te verhogen om meer resources aan uw database te bieden.
+In dit artikel wordt ervan uitgegaan dat u de aanbevelingen van Azure SQL Database [Data Base Advisor](sql-database-advisor.md) en de aanbevelingen voor het Azure SQL database [automatisch afstemmen](sql-database-automatic-tuning.md)hebt bewerkt. Ook wordt ervan uitgegaan dat u [een overzicht van het controleren en afstemmen](sql-database-monitor-tune-overview.md) en de bijbehorende artikelen hebt bekeken met betrekking tot het oplossen van prestatie problemen. Daarnaast wordt er in dit artikel van uitgegaan dat u geen CPU-resources hebt, een probleem met betrekking tot prestaties dat kan worden opgelost door de berekenings grootte of de servicelaag te verhogen om meer resources aan uw data base toe te voegen.
 
 ## <a name="tune-your-application"></a>Uw toepassing afstemmen
 
-In traditionele on-premises SQL Server wordt het proces van initiële capaciteitsplanning vaak gescheiden van het proces van het uitvoeren van een toepassing in productie. Hardware- en productlicenties worden eerst aangeschaft en prestatieafstemming wordt daarna uitgevoerd. Wanneer u Azure SQL Database gebruikt, is het een goed idee om het proces van het uitvoeren van een toepassing te verweven en deze af te stemmen. Met het model van het betalen voor capaciteit op aanvraag, u uw toepassing afstemmen om de minimale resources te gebruiken die nu nodig zijn, in plaats van over-provisioning op hardware op basis van gissingen van toekomstige groeiplannen voor een toepassing, die vaak onjuist zijn. Sommige klanten kunnen ervoor kiezen om een toepassing niet af te stemmen en in plaats daarvan ervoor kiezen om hardwarebronnen te overprovisioneren. Deze aanpak is misschien een goed idee als u een belangrijke toepassing niet wilt wijzigen tijdens een drukke periode. Het afstemmen van een toepassing kan echter de resourcevereisten minimaliseren en de maandelijkse facturen verlagen wanneer u de servicelagen in Azure SQL Database gebruikt.
+Bij traditionele on-premises SQL Server is het proces van het plannen van de eerste capaciteit vaak gescheiden van het proces van het uitvoeren van een toepassing in de productie omgeving. Hardware-en product licenties worden eerst aangeschaft en het afstemmen van de prestaties wordt later gedaan. Wanneer u Azure SQL Database gebruikt, is het een goed idee om het proces van het uitvoeren van een toepassing en het afstemmen ervan te verfijnen. Met het model van de betaling voor capaciteit op aanvraag kunt u uw toepassing afstemmen op het gebruik van de mini maal benodigde resources, in plaats van de inrichting op hardware op basis van schattingen van toekomstige groei plannen voor een toepassing, die vaak onjuist zijn. Sommige klanten kunnen ervoor kiezen om een toepassing niet af te stemmen en in plaats daarvan te kiezen voor het inrichten van hardwarebronnen. Deze aanpak kan een goed idee zijn als u een belang rijke toepassing niet wilt wijzigen tijdens een drukke periode. Maar het afstemmen van een toepassing kan de resource vereisten minimaliseren en de maandelijkse facturen verlagen wanneer u de service lagen in Azure SQL Database gebruikt.
 
-### <a name="application-characteristics"></a>Toepassingskenmerken
+### <a name="application-characteristics"></a>Toepassings kenmerken
 
-Hoewel Azure SQL Database-servicelagen zijn ontworpen om de stabiliteit en voorspelbaarheid van de prestaties voor een toepassing te verbeteren, kunnen sommige aanbevolen procedures u helpen uw toepassing af te stemmen om beter te profiteren van de resources op een rekengrootte. Hoewel veel toepassingen aanzienlijke prestatieverbeteringen hebben door simpelweg over te schakelen naar een hogere rekengrootte of servicelaag, hebben sommige toepassingen extra afstemming nodig om te profiteren van een hoger serviceniveau. Voor betere prestaties u rekening houden met aanvullende toepassingsafstemming voor toepassingen met deze kenmerken:
+Hoewel Azure SQL Database Service lagen zijn ontworpen om de stabiliteit van de prestaties en voorspel baarheid van een toepassing te verbeteren, kunnen sommige aanbevolen procedures u helpen om uw toepassing af te stemmen om beter te kunnen profiteren van de resources met een berekenings grootte. Hoewel veel toepassingen aanzienlijke prestatie verbeteringen hebben door te scha kelen naar een hogere reken grootte of servicelaag, hebben sommige toepassingen extra afstemming nodig om te profiteren van een hoger service niveau. Voor betere prestaties moet u extra fijnafstelling van toepassingen overwegen voor toepassingen met de volgende kenmerken:
 
-- **Toepassingen die trage prestaties hebben als gevolg van "spraakzaam" gedrag**
+- **Toepassingen met trage prestaties vanwege het gedrag van ' intensieve '**
 
-  Chatty-toepassingen maken overmatige gegevenstoegangsbewerkingen die gevoelig zijn voor netwerklatentie. Mogelijk moet u dit soort toepassingen wijzigen om het aantal gegevenstoegangsbewerkingen naar de SQL-database te verminderen. U bijvoorbeeld de prestaties van toepassingen verbeteren door technieken zoals ad-hocquery's batching of het verplaatsen van de query's naar opgeslagen procedures. Zie [Batchquery's voor](#batch-queries)meer informatie.
+  Intensieve-toepassingen maken buitensporige Data Access-bewerkingen die gevoelig zijn voor netwerk latentie. Mogelijk moet u dit soort toepassingen wijzigen om het aantal bewerkingen voor gegevens toegang tot de SQL database te verminderen. U kunt bijvoorbeeld de prestaties van toepassingen verbeteren door gebruik te maken van technieken als batch-hoc query's of het verplaatsen van query's naar opgeslagen procedures. Zie [batch-query's](#batch-queries)voor meer informatie.
 
-- **Databases met een intensieve werklast die niet door één machine kunnen worden ondersteund**
+- **Data bases met een intensieve werk belasting die niet kan worden ondersteund door een hele enkele computer**
 
-   Databases die de resources van de hoogste Premium-rekengrootte overschrijden, kunnen baat hebben bij het uitschalen van de werkbelasting. Zie [Cross-database sharding](#cross-database-sharding) en [Functionele partitionering](#functional-partitioning)voor meer informatie.
+   Data bases die de grootste Premium-reken grootte overschrijden, kunnen voor deel zijn van het schalen van de werk belasting. Zie sharding en [functionele partitionering](#functional-partitioning)voor [meerdere data bases](#cross-database-sharding) voor meer informatie.
 
-- **Toepassingen met suboptimale query's**
+- **Toepassingen met sub-optimale query's**
 
-  Toepassingen, vooral die in de laag gegevenstoegang, die slecht afgestemde query's hebben, profiteren mogelijk niet van een hogere rekengrootte. Dit geldt ook voor query's die geen WHERE-clausule hebben, ontbrekende indexen hebben of verouderde statistieken hebben. Deze toepassingen profiteren van standaard query performance-tuning technieken. Zie [Ontbrekende indexen](#identifying-and-adding-missing-indexes) en [Queryafstemming en hinten](#query-tuning-and-hinting)voor meer informatie.
+  Toepassingen, met name de Data Access-laag, die slecht afgestemde query's hebben, zijn mogelijk niet in aanmerking voor een hogere reken grootte. Dit omvat query's die geen WHERE-component bevatten, geen indexen hebben of verouderde statistieken hebben. Deze toepassingen profiteren van standaard technieken voor het afstemmen van query's. Zie [ontbrekende indices](#identifying-and-adding-missing-indexes) en [query tuning and Hinting](#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
 
-- **Toepassingen met een suboptimaal ontwerp voor gegevenstoegang**
+- **Toepassingen met een suboptimaal ontwerp voor gegevens toegang**
 
-   Toepassingen met inherente gegevenstoegang tot gelijktijdigheidsproblemen, bijvoorbeeld impasse, profiteren mogelijk niet van een hogere rekengrootte. Overweeg om retourritten te verminderen ten opzichte van de Azure SQL Database door gegevens aan de clientzijde te plaatsen met de Azure Caching-service of een andere caching-technologie. Zie [Caching van toepassingslagen](#application-tier-caching).
+   Toepassingen met inherente problemen met Data Access-gelijktijdigheid, zoals deadlock, kunnen mogelijk niet profiteren van een hogere reken grootte. Overweeg het verminderen van de afrondingen van de Azure SQL Database door gegevens op de client aan te brengen in de cache van de Azure-cache service of een andere cache technologie. Zie [caching in de toepassings laag](#application-tier-caching).
 
-## <a name="tune-your-database"></a>Uw database afstemmen
+## <a name="tune-your-database"></a>Uw data base afstemmen
 
-In deze sectie bekijken we enkele technieken die u gebruiken om Azure SQL Database af te stemmen om de beste prestaties voor uw toepassing te krijgen en deze uit te voeren op de laagst mogelijke rekengrootte. Sommige van deze technieken komen overeen met traditionele SQL Server-aanbevolen procedures voor het afstemmen van de functie, maar andere zijn specifiek voor Azure SQL Database. In sommige gevallen u de verbruikte resources voor een database onderzoeken om gebieden te vinden om traditionele SQL Server-technieken verder af te stemmen en uit te breiden om te werken in Azure SQL Database.
+In deze sectie kijken we naar enkele technieken die u kunt gebruiken voor het afstemmen van Azure SQL Database om de beste prestaties voor uw toepassing te krijgen en deze op de laagst mogelijke reken grootte uit te voeren. Sommige van deze technieken komen overeen met de gebruikelijke procedures voor het afstemmen van SQL Server, maar andere zijn specifiek voor Azure SQL Database. In sommige gevallen kunt u de verbruikte resources voor een Data Base onderzoeken om te zoeken naar gebieden die u verder wilt afstemmen en de traditionele SQL Server technieken uit te breiden om te werken in Azure SQL Database.
 
 ### <a name="identifying-and-adding-missing-indexes"></a>Ontbrekende indexen identificeren en toevoegen
 
-Een veelvoorkomend probleem in de prestaties van de OLTP-database heeft betrekking op het ontwerp van de fysieke database. Vaak worden databaseschema's ontworpen en verzonden zonder op schaal te testen (in belasting of in gegevensvolume). Helaas kunnen de prestaties van een queryplan op kleine schaal aanvaardbaar zijn, maar aanzienlijk verslechteren onder gegevensvolumes op productieniveau. De meest voorkomende bron van dit probleem is het ontbreken van geschikte indexen om te voldoen aan filters of andere beperkingen in een query. Vaak manifesteert ontbrekende indexen zich als een tabelscan wanneer een indexzoeken voldoende zou kunnen zijn.
+Een veelvoorkomend probleem in de OLTP-database prestaties is gekoppeld aan het ontwerp van de fysieke data base. Database schema's zijn vaak ontworpen en verzonden zonder dat ze op schaal worden getest (in de belasting of in het gegevens volume). Helaas is het mogelijk dat de prestaties van een query plan acceptabel zijn op een kleine schaal, maar aanzienlijk lager zijn dan gegevens volumes op productie niveau. De meest voorkomende bron van dit probleem is het ontbreken van geschikte indexen om te voldoen aan filters of andere beperkingen in een query. Vaak ontbreken indexen van indexen als tabel scan wanneer een zoek opdracht in de index toereikend zou zijn.
 
-In dit voorbeeld wordt in het geselecteerde queryplan een scan gebruikt wanneer een zoekopdracht voldoende is:
+In dit voor beeld gebruikt het geselecteerde query plan een scan wanneer een zoek actie voldoende is:
 
 ```sql
 DROP TABLE dbo.missingindex;
@@ -79,11 +79,11 @@ SELECT m1.col1
     WHERE m1.col2 = 4;
 ```
 
-![Een queryplan met ontbrekende indexen](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
+![Een query plan met ontbrekende indexen](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
 
-Azure SQL Database kan u helpen bij het vinden en oplossen van veelvoorkomende ontbrekende indexvoorwaarden. DMVs die zijn ingebouwd in Azure SQL Database kijken naar querycompilaties waarin een index de geschatte kosten voor het uitvoeren van een query aanzienlijk zou verlagen. Tijdens query-uitvoering houdt SQL Database bij hoe vaak elk queryplan wordt uitgevoerd en houdt de geschatte kloof bij tussen het uitvoerende queryplan en het ingebeelde plan waar die index bestond. U deze DM's gebruiken om snel te raden welke wijzigingen in uw fysieke databaseontwerp de totale werkbelastingkosten voor een database en de werkelijke werkbelasting kunnen verbeteren.
+Azure SQL Database kunt u algemene ontbrekende index voorwaarden vinden en corrigeren. Dmv's die zijn ingebouwd in Azure SQL Database kijken naar compilaties van query's waarbij een index de geschatte kosten aanzienlijk reduceert voor het uitvoeren van een query. Tijdens het uitvoeren van query's wordt SQL Database bijgehouden hoe vaak elk query plan wordt uitgevoerd, en wordt de geschatte tussen ruimte bijgehouden tussen het uitvoeren van het query plan en de Voorst Ellen dat er een index aanwezig is. U kunt deze Dmv's gebruiken om snel te raden welke wijzigingen in het ontwerp van uw fysieke data base de totale werk belasting voor een Data Base en de werkelijke werk belasting kunnen verbeteren.
 
-U deze query gebruiken om potentiële ontbrekende indexen te evalueren:
+U kunt deze query gebruiken om mogelijke ontbrekende indexen te evalueren:
 
 ```sql
 SELECT
@@ -110,25 +110,25 @@ FROM sys.dm_db_missing_index_groups AS mig
  ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
 ```
 
-In dit voorbeeld heeft de query geresulteerd in deze suggestie:
+In dit voor beeld heeft de query de volgende suggestie:
 
 ```sql
 CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
 ```
 
-Nadat deze is gemaakt, kiest diezelfde SELECT-instructie een ander plan, waarbij een zoeken in plaats van een scan wordt gebruikt en wordt het plan efficiënter uitgevoerd:
+Nadat de SELECT-instructie is gemaakt, wordt er een ander plan gekozen, waarbij een zoek opdracht wordt gebruikt in plaats van een scan, waarna het plan efficiënter wordt uitgevoerd:
 
-![Een queryplan met gecorrigeerde indexen](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
+![Een query plan met gecorrigeerde indexen](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Het belangrijkste inzicht is dat de IO-capaciteit van een gedeeld, commodity-systeem beperkter is dan die van een dedicated servermachine. Er is een premie voor het minimaliseren van onnodige IO om maximaal te profiteren van het systeem in de DTU van elke rekengrootte van de Azure SQL Database-servicelagen. Geschikte fysieke databaseontwerpkeuzes kunnen de latentie voor afzonderlijke query's aanzienlijk verbeteren, de doorvoer van gelijktijdige aanvragen per schaaleenheid verbeteren en de kosten minimaliseren die nodig zijn om aan de query te voldoen. Zie [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)voor meer informatie over de ontbrekende index-DMVs.
+Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de DTU van elke reken grootte van de Azure SQL Database Service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Voor meer informatie over de ontbrekende index Dmv's raadpleegt u [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
-### <a name="query-tuning-and-hinting"></a>Queryafstemming en -hint
+### <a name="query-tuning-and-hinting"></a>Verfijning van query's en hints
 
-De queryoptimizer in Azure SQL Database is vergelijkbaar met de traditionele SQL Server-queryoptimizer. De meeste aanbevolen procedures voor het afstemmen van query's en het begrijpen van de beperkingen van het redeneermodel voor de queryoptimizer zijn ook van toepassing op Azure SQL Database. Als u query's afstemt in Azure SQL Database, u het extra voordeel krijgen van het verminderen van de totale resourcevereisten. Uw toepassing kan mogelijk worden uitgevoerd tegen lagere kosten dan een niet-afgestemd equivalent, omdat deze kan worden uitgevoerd op een lagere rekengrootte.
+De query Optimizer in Azure SQL Database is vergelijkbaar met de traditionele SQL Server query optimalisatie. De meeste best practices voor het afstemmen van query's en het leren van de beperkingen van het model voor de query Optimizer gelden ook voor Azure SQL Database. Als u query's in Azure SQL Database afstemt, krijgt u mogelijk een extra voor deel van het verminderen van geaggregeerde resource vereisten. Uw toepassing kan mogelijk tegen lagere kosten worden uitgevoerd dan een niet-afgestemd equivalent omdat het kan worden uitgevoerd op een lagere reken grootte.
 
-Een voorbeeld dat gebruikelijk is in SQL Server en dat ook van toepassing is op Azure SQL Database, is hoe de queryoptimizer parameters "snuift". Tijdens het samenstellen evalueert de queryoptimizer de huidige waarde van een parameter om te bepalen of deze een optimaaler queryplan kan genereren. Hoewel deze strategie vaak kan leiden tot een queryplan dat aanzienlijk sneller is dan een plan dat is samengesteld zonder bekende parameterwaarden, werkt het momenteel onvolmaakt, zowel in SQL Server als in Azure SQL Database. Soms wordt de parameter niet gesnoven en soms wordt de parameter gesnoven, maar is het gegenereerde plan suboptimaal voor de volledige set parameterwaarden in een werkbelasting. Microsoft bevat queryhints (richtlijnen) zodat u opzettelijke intentie opgeven en het standaardgedrag van parametersnuiven overschrijven. Vaak u, als u hints gebruikt, aanvragen oplossen waarin het standaard SQL Server- of Azure SQL-database-gedrag onvolmaakt is voor een specifieke klantworkload.
+Een voor beeld dat gebruikelijk is in SQL Server en die ook van toepassing is op Azure SQL Database is hoe de para meters van de query Optimizer "sniffes" zijn. Tijdens de compilatie evalueert de query Optimizer de huidige waarde van een para meter om te bepalen of het een optimaal query plan kan genereren. Hoewel deze strategie vaak kan leiden tot een query plan dat aanzienlijk sneller is dan een plan dat is gecompileerd zonder bekende parameter waarden, werkt momenteel niet perfect in SQL Server en in Azure SQL Database. Soms wordt de para meter niet gesniffd en soms wordt de para meter gesniffd, maar wordt het gegenereerde plan suboptimaal voor de volledige set parameter waarden in een werk belasting. Micro soft bevat query hints (instructies), zodat u een doel bewuster opzet kunt opgeven en het standaard gedrag van parameter-sniffing wilt overschrijven. Als u bijvoorbeeld hints gebruikt, kunt u aanvragen oplossen waarin de standaard SQL Server of Azure SQL Database gedrag niet perfect is voor een specifieke klant workload.
 
-In het volgende voorbeeld wordt uitgelegd hoe de queryprocessor een plan kan genereren dat suboptimaal is, zowel voor prestaties als resourcevereisten. In dit voorbeeld wordt ook weergegeven dat als u een queryhint gebruikt, u de queryruntijd en resourcevereisten voor uw SQL-database verminderen:
+In het volgende voor beeld ziet u hoe de query processor een plan kan genereren dat zowel voor prestatie-als resource vereisten een subsysteem is. In dit voor beeld ziet u ook dat als u een query Hint gebruikt, u de uitvoerings tijd van de query en de resource vereisten voor uw SQL database kunt beperken:
 
 ```sql
 DROP TABLE psptest1;
@@ -168,7 +168,7 @@ CREATE TABLE t1 (col1 int primary key, col2 int, col3 binary(200));
 GO
 ```
 
-De installatiecode maakt een tabel met een scheefstaande gegevensdistributie. Het optimale queryplan verschilt op basis van welke parameter is geselecteerd. Helaas compileert het gedrag van de plancache niet altijd de query opnieuw op basis van de meest voorkomende parameterwaarde. Het is dus mogelijk dat een suboptimaal plan in de cache wordt opgeslagen en voor veel waarden wordt gebruikt, zelfs wanneer een ander plan gemiddeld een betere plankeuze kan zijn. Vervolgens maakt het queryplan twee opgeslagen procedures die identiek zijn, behalve dat er een speciale queryhint heeft.
+Met de installatie code wordt een tabel gemaakt die gescheefe gegevens distributie heeft. Het optimale query plan wijkt af van de para meter die is geselecteerd. Helaas wordt de query niet altijd opnieuw gecompileerd op basis van de meest voorkomende parameter waarde. Het is dus mogelijk dat een suboptimaal plan in de cache wordt opgeslagen en wordt gebruikt voor veel waarden, zelfs wanneer een ander abonnement een beter plan is dat het beste kan worden gekozen. Vervolgens worden in het query plan twee opgeslagen procedures gemaakt die identiek zijn, behalve dat er een speciale query Hint is.
 
 ```sql
 -- Prime Procedure Cache with scan plan
@@ -185,7 +185,7 @@ WHILE @i < 1000
     END
 ```
 
-We raden u aan minstens 10 minuten te wachten voordat u aan deel 2 van het voorbeeld begint, zodat de resultaten duidelijk zijn in de resulterende telemetriegegevens.
+We raden u aan om ten minste tien minuten te wachten voordat u begint deel 2 van het voor beeld, zodat de resultaten in de gegevens van de telemetrie verschillen.
 
 ```sql
 EXEC psp2 @param2=1;
@@ -200,21 +200,21 @@ DECLARE @i int = 0;
     END
 ```
 
-Elk deel van dit voorbeeld probeert 1000 keer een parameterinstructie uit te voeren (om een voldoende belasting te genereren om als testgegevensset te gebruiken). Wanneer de queryprocessor opgeslagen procedures uitvoert, onderzoekt hij de parameterwaarde die tijdens de eerste compilatie aan de procedure wordt doorgegeven (parameter 'sniffing'). De processor caches het resulterende plan en gebruikt het voor latere aanroepen, zelfs als de parameterwaarde anders is. Het optimale plan wordt mogelijk niet in alle gevallen gebruikt. Soms moet u de optimizer begeleiden om een plan te kiezen dat beter is voor de gemiddelde aanvraag in plaats van het specifieke geval van het moment waarop de query voor het eerst werd gecompileerd. In dit voorbeeld genereert het oorspronkelijke plan een 'scanplan' dat alle rijen leest om elke waarde te vinden die overeenkomt met de parameter:
+Elk deel van dit voor beeld probeert een geparametriseerde INSERT-instructie van 1.000 keer uit te voeren (om een voldoende belasting te genereren om te gebruiken als test gegevensset). Wanneer er opgeslagen procedures worden uitgevoerd, onderzoekt de query processor de parameter waarde die wordt door gegeven aan de procedure tijdens de eerste compilatie (para meter "sniffing"). De processor slaat het resulterende plan op en gebruikt dit voor latere aanroepen, zelfs als de waarde van de para meter niet overeenkomt. Het optimale plan wordt mogelijk niet in alle gevallen gebruikt. Soms moet u het optimalisatie programma gebruiken om een plan te kiezen dat beter is voor het gemiddelde hoofdletter gebruik in plaats van het specifieke geval van de eerste compilatie van de query. In dit voor beeld wordt het eerste plan een ' scan-plan ' gegenereerd dat alle rijen leest om elke waarde te vinden die overeenkomt met de para meter:
 
-![Queryafstemming met behulp van een scanplan](./media/sql-database-performance-guidance/query_tuning_1.png)
+![Afstemmen van query's met behulp van een scan plan](./media/sql-database-performance-guidance/query_tuning_1.png)
 
-Omdat we de procedure hebben uitgevoerd met behulp van de waarde 1, was het resulterende plan optimaal voor de waarde 1, maar was suboptimaal voor alle andere waarden in de tabel. Het resultaat is waarschijnlijk niet wat je zou willen als je elk plan willekeurig zou kiezen, omdat het plan langzamer presteert en meer resources gebruikt.
+Omdat we de procedure met behulp van de waarde 1 hebben uitgevoerd, is het resulterende plan voor de waarde 1 optimaal, maar is het voor alle andere waarden in de tabel het meest optimaal. Het resultaat is waarschijnlijk niet wat u zou doen als u elk plan wille keurig wilt kiezen, omdat het plan langzamer wordt uitgevoerd en meer bronnen gebruikt.
 
-Als u de `SET STATISTICS IO` test `ON`uitvoert met ingesteld op , wordt het logische scanwerk in dit voorbeeld achter de schermen uitgevoerd. U zien dat er 1.148 reads gedaan door het plan (dat is inefficiënt, als de gemiddelde zaak is om slechts een rij terug):
+Als u de test uitvoert met `SET STATISTICS IO` ingesteld op `ON`, wordt de logische scan in dit voor beeld uitgevoerd achter de schermen. U kunt zien dat er 1.148-Lees bewerkingen worden uitgevoerd door het plan (dat is inefficiënt als het gemiddelde hoofdletter gebruik slechts één rij retourneert):
 
-![Queryafstemming met behulp van een logische scan](./media/sql-database-performance-guidance/query_tuning_2.png)
+![Afstemmen van query's met behulp van een logische scan](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-In het tweede deel van het voorbeeld wordt een queryhint gebruikt om de optimizer te vertellen een specifieke waarde te gebruiken tijdens het compilatieproces. In dit geval dwingt het de queryprocessor om de waarde die `UNKNOWN`als parameter wordt doorgegeven te negeren en in plaats daarvan aan te nemen . Dit verwijst naar een waarde met de gemiddelde frequentie in de tabel (het negeren van scheeftrekken). Het resulterende plan is een op zoek gebaseerd plan dat sneller is en gemiddeld minder resources gebruikt dan het plan in deel 1 van dit voorbeeld:
+In het tweede gedeelte van het voor beeld wordt een query Hint gebruikt om te geven dat de Optimizer een specifieke waarde tijdens het compilatie proces gebruikt. In dit geval wordt de query processor geforceerd de waarde die wordt door gegeven als de para meter, genegeerd en wordt er in `UNKNOWN`plaats daarvan aangenomen. Dit verwijst naar een waarde die de gemiddelde frequentie in de tabel bevat (scheef trekken wordt genegeerd). Het resulterende plan is een op een zoek gebaseerd plan dat sneller is en gebruikmaakt van minder resources, gemiddeld dan het plan in deel 1 van dit voor beeld:
 
-![Queryafstemming met behulp van een queryhint](./media/sql-database-performance-guidance/query_tuning_3.png)
+![Afstemmen van query's met behulp van een query Hint](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-U het effect zien in de **tabel sys.resource_stats** (er is een vertraging vanaf het moment dat u de test uitvoert en wanneer de gegevens de tabel vullen). In dit voorbeeld wordt deel 1 uitgevoerd tijdens het tijdvenster 22:25:00 en deel 2 uitgevoerd om 22:35:00. Het eerdere tijdvenster gebruikte meer resources in dat tijdvenster dan het latere venster (vanwege verbeteringen in de planefficiëntie).
+U kunt het effect in de tabel **sys. resource_stats** zien (er is een vertraging van de tijd dat u de test uitvoert en wanneer de gegevens in de tabel worden ingevuld). Voor dit voor beeld wordt deel 1 uitgevoerd tijdens het 22:25:00-tijd venster en deel 2 uitgevoerd om 22:35:00. In het vorige tijd venster werden meer resources in dat tijd venster gebruikt dan in een later stadium (vanwege verbeteringen in de plan efficiëntie).
 
 ```sql
 SELECT TOP 1000 *
@@ -223,49 +223,49 @@ WHERE database_name = 'resource1'
 ORDER BY start_time DESC
 ```
 
-![Voorbeeldresultaten van queryafstemming](./media/sql-database-performance-guidance/query_tuning_4.png)
+![Voorbeeld resultaten voor het afstemmen van query's](./media/sql-database-performance-guidance/query_tuning_4.png)
 
 > [!NOTE]
-> Hoewel het volume in dit voorbeeld opzettelijk klein is, kan het effect van suboptimale parameters aanzienlijk zijn, vooral op grotere databases. Het verschil, in extreme gevallen, kan tussen seconden voor snelle gevallen en uren voor langzame gevallen zijn.
+> Hoewel het volume in dit voor beeld opzettelijk klein is, kan het effect van suboptimale para meters aanzienlijk zijn, met name voor grotere data bases. Het verschil kan in uitzonderlijke gevallen tussen seconden liggen voor snelle gevallen en uren voor trage gevallen.
 
-U **sys.resource_stats** onderzoeken om te bepalen of de resource voor een test meer of minder resources gebruikt dan een andere test. Wanneer u gegevens vergelijkt, scheidt u de timing van tests, zodat ze zich niet in hetzelfde venster van 5 minuten bevinden in de **sys.resource_stats-weergave.** Het doel van de oefening is om de totale hoeveelheid gebruikte resources te minimaliseren en niet om de piekresources te minimaliseren. Over het algemeen vermindert het optimaliseren van een stukje code voor latentie ook het verbruik van resources. Zorg ervoor dat de wijzigingen die u in een toepassing aanbrengt noodzakelijk zijn en dat de wijzigingen geen negatieve invloed hebben op de klantervaring voor iemand die mogelijk queryhints in de toepassing gebruikt.
+U kunt **sys. resource_stats** onderzoeken om te bepalen of de resource voor een test meer of minder resources gebruikt dan een andere test. Wanneer u gegevens vergelijkt, moet u de timing van tests scheiden, zodat ze zich niet in hetzelfde venster van vijf minuten bevinden in de weer gave **sys. resource_stats** . Het doel van de oefening is het minimaliseren van de totale hoeveelheid gebruikte resources en niet om de piek bronnen te minimaliseren. Over het algemeen is het optimaliseren van een stukje code voor latentie het verbruik van resources verminderd. Zorg ervoor dat de wijzigingen die u aanbrengt in een toepassing nood zakelijk zijn en dat de wijzigingen geen negatieve invloed hebben op de klant ervaring voor iemand die mogelijk query hints in de toepassing gebruikt.
 
-Als een werkbelasting een set herhalende query's heeft, is het vaak zinvol om de optimaliteit van uw plankeuzes vast te leggen en te valideren, omdat hiermee de minimale resourcegrootte-eenheid wordt aangegaan die nodig is om de database te hosten. Nadat u het hebt gevalideerd, moet u af en toe de plannen opnieuw bekijken om ervoor te zorgen dat ze niet zijn afgebroken. Meer informatie over [queryhints (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)vindt u.
+Als een werk belasting een set herhalende query's heeft, is het vaak zinvol om de optimale plannings opties vast te leggen en te valideren, omdat deze de minimale resource grootte-eenheid die is vereist voor het hosten van de data base. Nadat u het hebt gevalideerd, kunt u de plannen opnieuw onderzoeken om u ervan te verzekeren dat ze niet zijn gedegradeerd. U kunt meer te weten komen over [query hints (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
-### <a name="very-large-database-architectures"></a>Zeer grote databasearchitecturen
+### <a name="very-large-database-architectures"></a>Zeer grote database architecturen
 
-Vóór de release van [Hyperscale-servicelaag](sql-database-service-tier-hyperscale.md) voor afzonderlijke databases in Azure SQL Database, hebben klanten capaciteitslimieten voor afzonderlijke databases bereikt. Deze capaciteitslimieten bestaan nog steeds voor gepoolde databases in elastische pools en instantiedatabase in beheerde exemplaren. In de volgende twee secties worden twee opties besproken voor het oplossen van problemen met zeer grote databases in Azure SQL Database wanneer u de hyperscale-servicelaag niet gebruiken.
+Vóór de release van de [grootschalige](sql-database-service-tier-hyperscale.md) -service tier voor afzonderlijke data bases in Azure SQL database, hebben klanten de capaciteits limieten voor individuele data bases bereikt. Deze capaciteits limieten bestaan nog voor gegroepeerde Data bases in elastische Pools en data base-instanties in beheerde exemplaren. In de volgende twee secties worden twee opties besproken voor het oplossen van problemen met zeer grote data bases in Azure SQL Database wanneer u de grootschalige-servicelaag niet kunt gebruiken.
 
-### <a name="cross-database-sharding"></a>Cross-database sharding
+### <a name="cross-database-sharding"></a>Sharding voor meerdere data bases
 
-Omdat Azure SQL Database draait op commodity-hardware, zijn de capaciteitslimieten voor een afzonderlijke database lager dan voor een traditionele on-premises SQL Server-installatie. Sommige klanten gebruiken shardingtechnieken om databasebewerkingen over meerdere databases te verspreiden wanneer de bewerkingen niet binnen de grenzen van een afzonderlijke database in Azure SQL Database passen. De meeste klanten die shardingtechnieken gebruiken in Azure SQL Database splitsen hun gegevens in één dimensie over meerdere databases. Voor deze benadering moet u begrijpen dat OLTP-toepassingen vaak transacties uitvoeren die van toepassing zijn op slechts één rij of op een kleine groep rijen in het schema.
+Omdat Azure SQL Database worden uitgevoerd op grondstoffen producten, zijn de capaciteits limieten voor een afzonderlijke data base lager dan voor een traditionele on-premises SQL Server installatie. Sommige klanten gebruiken sharding-technieken om database bewerkingen te spreiden over meerdere data bases wanneer de bewerkingen niet passen binnen de limieten van een afzonderlijke data base in Azure SQL Database. De meeste klanten die sharding-technieken gebruiken in Azure SQL Database hun gegevens te splitsen op één dimensie over meerdere data bases. Voor deze aanpak moet u weten dat OLTP-toepassingen vaak trans acties uitvoeren die van toepassing zijn op één rij of op een kleine groep rijen in het schema.
 
 > [!NOTE]
-> SQL Database biedt nu een bibliotheek om te helpen bij het hardmaken. Zie [Overzicht van de elastic database-clientbibliotheek](sql-database-elastic-database-client-library.md)voor meer informatie.
+> SQL Database biedt nu een bibliotheek om u te helpen bij sharding. Zie Elastic Database Overzicht van de [client bibliotheek](sql-database-elastic-database-client-library.md)voor meer informatie.
 
-Als een database bijvoorbeeld klantnaam-, order- en ordergegevens bevat (zoals het traditionele voorbeeld Northwind-database die wordt verzonden met SQL Server), u deze gegevens splitsen in meerdere databases door een klant te groeperen met de bijbehorende order- en orderdetails Informatie. U garanderen dat de gegevens van de klant in een individuele database blijven. De toepassing zou verschillende klanten over databases splitsen, effectief verspreiden van de belasting over meerdere databases. Met sharding kunnen klanten niet alleen de maximale limiet voor databasegrootte vermijden, maar azure SQL Database kan ook workloads verwerken die aanzienlijk groter zijn dan de limieten van de verschillende rekengroottes, zolang elke afzonderlijke database in zijn DTU past.
+Als een Data Base bijvoorbeeld de naam van de klant, de order en de order gegevens bevat (zoals de traditionele voorbeeld database noorden wind die bij SQL Server is geleverd), kunt u deze gegevens in meerdere data bases splitsen door een klant te groeperen met de gerelateerde order-en order detail informatie. U kunt garanderen dat de gegevens van de klant in een afzonderlijke data base blijven. De toepassing zou verschillende klanten in data bases splitsen, waardoor de belasting in meerdere data bases effectief kan worden verdeeld. Met sharding kunnen klanten niet alleen de maximale grootte van de data base vermijden, maar Azure SQL Database ook werk belastingen kunnen verwerken die aanzienlijk groter zijn dan de limieten van de verschillende reken grootten, zolang elke afzonderlijke data base in het DTU-gebied past.
 
-Hoewel databasesharding de totale resourcecapaciteit voor een oplossing niet vermindert, is het zeer effectief in het ondersteunen van zeer grote oplossingen die over meerdere databases zijn verspreid. Elke database kan worden uitgevoerd op een andere rekengrootte ter ondersteuning van zeer grote, "effectieve" databases met hoge resourcevereisten.
+Hoewel de sharding van de data base de totale resource capaciteit voor een oplossing niet reduceert, is deze zeer effectief bij het ondersteunen van zeer grote oplossingen die over meerdere data bases zijn verdeeld. Elke Data Base kan worden uitgevoerd met een andere reken grootte ter ondersteuning van zeer grote, ' effectief ' data bases met hoge resource vereisten.
 
 #### <a name="functional-partitioning"></a>Functionele partitionering
 
-SQL Server-gebruikers combineren vaak veel functies in een afzonderlijke database. Als een toepassing bijvoorbeeld logica heeft om voorraad voor een winkel te beheren, kan die database logica hebben die is gekoppeld aan voorraad, het bijhouden van inkooporders, opgeslagen procedures en geïndexeerde of gematerialiseerde weergaven die rapportage aan het einde van de maand beheren. Deze techniek maakt het eenvoudiger om de database te beheren voor bewerkingen zoals back-up, maar het vereist ook dat u de grootte van de hardware om de piekbelasting over alle functies van een toepassing te behandelen.
+SQL Server gebruikers combi neren vaak veel functies in een afzonderlijke data base. Als een toepassing bijvoorbeeld logica heeft voor het beheren van de inventarisatie voor een archief, heeft die data base mogelijk logica die is gekoppeld aan de inventarisatie, het bijhouden van inkoop orders, opgeslagen procedures en geïndexeerde of gerealiseerde weer gaven waarmee de rapportage van eind maanden wordt beheerd. Deze techniek maakt het gemakkelijker om de data base te beheren voor bewerkingen als back-up, maar u moet er ook voor zorgen dat u de grootte van de hardware verwerkt om de piek belasting over alle functies van een toepassing af te handelen.
 
-Als u een scale-outarchitectuur gebruikt in Azure SQL Database, is het een goed idee om verschillende functies van een toepassing op te splitsen in verschillende databases. Door deze techniek te gebruiken, schaalt elke toepassing onafhankelijk. Naarmate een toepassing drukker wordt (en de belasting van de database toeneemt), kan de beheerder onafhankelijke rekengroottes kiezen voor elke functie in de toepassing. Aan de limiet, met deze architectuur, kan een toepassing groter zijn dan een enkele commodity-machine aankan omdat de belasting over meerdere machines is verdeeld.
+Als u een scale-out-architectuur in Azure SQL Database gebruikt, is het een goed idee om verschillende functies van een toepassing te splitsen in verschillende data bases. Met deze techniek schaalt elke toepassing onafhankelijk van elkaar. Als een toepassing wordt busier (en de belasting van de data base neemt toe), kan de beheerder onafhankelijke reken grootten kiezen voor elke functie in de toepassing. Met deze architectuur kan een toepassing groter zijn dan één computer met een groot aantal dat kan worden verwerkt, omdat de belasting over meerdere machines kan worden verdeeld.
 
-### <a name="batch-queries"></a>Batchquery's
+### <a name="batch-queries"></a>Batch-query's
 
-Voor toepassingen die toegang hebben tot gegevens met behulp van grote, frequente ad-hocquery's, wordt een aanzienlijke hoeveelheid reactietijd besteed aan netwerkcommunicatie tussen de toepassingslaag en de azure SQL-databaselaag. Zelfs wanneer zowel de toepassing als Azure SQL Database zich in hetzelfde datacenter bevinden, kan de netwerklatentie tussen de twee worden vergroot door een groot aantal gegevenstoegangsbewerkingen. Als u de retourritten van het netwerk voor de gegevenstoegangsbewerkingen wilt verminderen, u de optie gebruiken om de ad-hocquery's te batcheren of deze samen te stellen als opgeslagen procedures. Als u de ad-hocquery's batcheert, u meerdere query's verzenden als één grote batch in één reis naar Azure SQL Database. Als u ad-hocquery's samenstelt in een opgeslagen procedure, u hetzelfde resultaat bereiken als wanneer u ze batcht. Het gebruik van een opgeslagen procedure geeft u ook het voordeel dat u de kans vergroot dat de queryplannen in Azure SQL Database worden caching, zodat u de opgeslagen procedure opnieuw gebruiken.
+Voor toepassingen die toegang hebben tot gegevens met behulp van hoog volume, frequente ad hoc query's, wordt een aanzienlijke hoeveelheid reactie tijd besteed aan netwerk communicatie tussen de toepassingslaag en de laag Azure SQL Database. Zelfs wanneer zowel de toepassing als de Azure SQL Database zich in hetzelfde Data Center bevinden, kan de netwerk latentie tussen de twee worden verg root door een groot aantal bewerkingen voor gegevens toegang. Als u de netwerk round trips voor de gegevens toegangs bewerkingen wilt reduceren, kunt u de optie gebruiken om de ad-hoc-query's te batch of te compileren als opgeslagen procedures. Als u de ad-hoc query's batcheert, kunt u meerdere query's verzenden als één grote batch in één reis naar Azure SQL Database. Als u ad-hoc query's in een opgeslagen procedure compileert, kunt u hetzelfde resultaat opleveren als bij de batch-subquery's. Het gebruik van een opgeslagen procedure biedt u het voor deel van het verg Roten van de kans op het in de cache plaatsen van de query plannen in Azure SQL Database zodat u de opgeslagen procedure opnieuw kunt gebruiken.
 
-Sommige toepassingen zijn schrijfintensief. Soms u de totale IO-belasting op een database verminderen door na te denken over het samen batchschrijven. Vaak is dit net zo eenvoudig als het gebruik van expliciete transacties in plaats van automatisch vastleggen transacties in opgeslagen procedures en ad hoc batches. Zie [Batching-technieken voor SQL Database-toepassingen in Azure voor](sql-database-use-batching-to-improve-performance.md)een evaluatie van verschillende technieken die u gebruiken. Experimenteer met uw eigen werkbelasting om het juiste model voor batching te vinden. Zorg ervoor dat u begrijpt dat een model mogelijk iets andere transactionele consistentiegaranties heeft. Het vinden van de juiste werkbelasting die het gebruik van resources minimaliseert, vereist het vinden van de juiste combinatie van consistentie en trade-offs voor prestaties.
+Sommige toepassingen zijn write-intensief. Soms kunt u de totale i/o-belasting voor een Data Base verminderen door te overwegen hoe u batches tegelijk schrijft. Vaak is dit net zo eenvoudig als het gebruik van expliciete trans acties in plaats van trans acties met automatische door Voer in opgeslagen procedures en ad hoc batches. Zie [batch-technieken voor SQL database-toepassingen in azure](sql-database-use-batching-to-improve-performance.md)voor een evaluatie van de verschillende technieken die u kunt gebruiken. Experimenteer met uw eigen werk belasting om het juiste model voor batch verwerking te vinden. Houd er rekening mee dat een model weinig verschillende garanties voor transactionele consistentie kan hebben. Het vinden van de juiste werk belasting voor het minimaliseren van het resource gebruik vereist het vinden van de juiste combi natie van consistentie en prestatie verhouding.
 
-### <a name="application-tier-caching"></a>Caching op toepassingsniveau
+### <a name="application-tier-caching"></a>Caching op toepassings niveau
 
-Sommige databasetoepassingen hebben leeszware workloads. Caching-lagen kunnen de belasting van de database verminderen en kunnen mogelijk de rekengrootte verminderen die nodig is om een database te ondersteunen met Azure SQL Database. Met [Azure Cache voor Redis](https://azure.microsoft.com/services/cache/)u, als u een leeszware werkbelasting hebt, de gegevens één keer lezen (of misschien één keer per machine op toepassingsniveau, afhankelijk van hoe deze is geconfigureerd) en die gegevens vervolgens buiten uw SQL-database opslaan. Dit is een manier om de belasting van de database (CPU en lees IO) te verminderen, maar er is een effect op de consistentie van de transacties, omdat de gegevens die uit de cache worden gelezen mogelijk niet synchroon lopen met de gegevens in de database. Hoewel in veel toepassingen een bepaald niveau van inconsistentie aanvaardbaar is, geldt dat niet voor alle workloads. U moet alle toepassingsvereisten volledig begrijpen voordat u een cachingstrategie op toepassingsniveau implementeert.
+Sommige database toepassingen hebben lees-zware werk belastingen. Cache lagen kunnen de belasting van de data base verminderen en mogelijk de berekenings grootte verminderen die nodig is om een Data Base te ondersteunen met behulp van Azure SQL Database. Als u [Azure cache voor redis](https://azure.microsoft.com/services/cache/)hebt, kunt u, als u een lees bare hoeveelheid werk belasting hebt, de gegevens eenmaal lezen (of misschien eenmaal per toepassingslaag, afhankelijk van de configuratie van de computer) en vervolgens die gegevens buiten uw SQL database opslaan. Dit is een manier om de belasting van de data base te reduceren (CPU en lees-IO), maar er is een effect op transactionele consistentie, omdat de gegevens die vanuit de cache worden gelezen, mogelijk niet synchroon zijn met de gegevens in de data base. Hoewel er in veel toepassingen een inconsistentie niveau is toegestaan, is dat niet waar voor alle werk belastingen. U moet volledige inzicht krijgen in alle toepassings vereisten voordat u een cache strategie op het niveau van de toepassingslaag implementeert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [DTU-gebaseerd inkoopmodel](sql-database-service-tiers-dtu.md)voor meer informatie over op DTU gebaseerde servicelagen.
-- Zie [vCore-gebaseerd inkoopmodel voor](sql-database-service-tiers-vcore.md)meer informatie over vCore-gebaseerde servicelagen.
-- Zie Wat is een [Azure-elastische pool voor](sql-database-elastic-pool.md) meer informatie over elastische pools?
-- Zie [Wanneer u een elastische pool moet overwegen](sql-database-elastic-pool-guidance.md) voor informatie over prestaties en elastische pools
+- Zie voor meer informatie over op DTU gebaseerde service lagen [het op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md).
+- Zie voor meer informatie over vCore-gebaseerde service lagen [op vCore gebaseerd aankoop model](sql-database-service-tiers-vcore.md).
+- Zie [Wat is een elastische Azure-pool?](sql-database-elastic-pool.md) voor meer informatie over elastische Pools.
+- Voor informatie over prestaties en elastische Pools raadpleegt u [Wanneer u een elastische pool overweegt](sql-database-elastic-pool-guidance.md)

@@ -1,39 +1,39 @@
 ---
-title: Statusopslagopties op Azure Service Fabric-mesh
-description: Meer informatie over het betrouwbaar opslaan van status in Service Fabric Mesh-toepassingen die worden uitgevoerd op Azure Service Fabric Mesh.
+title: Opties voor status opslag op Azure Service Fabric mesh
+description: Meer informatie over de status van een betrouw bare opslag in Service Fabric mesh-toepassingen die worden uitgevoerd op Azure Service Fabric net.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259095"
 ---
-# <a name="state-management-with-service-fabric"></a>Staatsbeheer met Service Fabric
+# <a name="state-management-with-service-fabric"></a>Status beheer met Service Fabric
 
-Service Fabric ondersteunt veel verschillende opties voor statusopslag. Zie [Service Fabric Concepts: State](/azure/service-fabric/service-fabric-concepts-state)voor een conceptueel overzicht van de state management patronen en Service Fabric. Al deze zelfde concepten zijn van toepassing of uw diensten binnen of buiten Service Fabric Mesh worden uitgevoerd. 
+Service Fabric ondersteunt veel verschillende opties voor status opslag. Zie [service Fabric concepten: State](/azure/service-fabric/service-fabric-concepts-state)(Engelstalig) voor een conceptueel overzicht van de patronen voor status beheer en service Fabric. Al deze concepten zijn van toepassing, ongeacht of uw services binnen of buiten Service Fabric net worden uitgevoerd. 
 
-Met Service Fabric Mesh u eenvoudig een nieuwe toepassing implementeren en deze verbinden met een bestaand gegevensarchief dat in Azure wordt gehost. Naast het gebruik van een externe database, zijn er verschillende opties voor het opslaan van gegevens, afhankelijk van of de service lokale of externe opslag wenst. 
+Met Service Fabric net kunt u eenvoudig een nieuwe toepassing implementeren en deze verbinden met een bestaande gegevens opslag die wordt gehost in Azure. Naast het gebruik van een externe data base, zijn er verschillende opties voor het opslaan van gegevens, afhankelijk van of de service lokale of externe opslag wenst. 
 
 ## <a name="volumes"></a>Volumes
 
-Containers maken vaak gebruik van tijdelijke schijven. Tijdelijke schijven zijn vluchtig, echter, dus je krijgt een nieuwe tijdelijke schijf en verliest de informatie wanneer een container crasht. Het is ook moeilijk om informatie over tijdelijke schijven te delen met andere containers. Volumes zijn mappen die in uw containerexemplaren worden gemonteerd die u gebruiken om de status aan te houden. Volumes geven u bestandsopslag voor algemene doeleinden en stellen u in staat om bestanden te lezen/schrijven met behulp van normale I/O-bestands-API's op schijf. De bron Volume beschrijft hoe u een map monteren en welke back-upopslag u wilt gebruiken. U Azure File storage of Service Fabric Volume disk kiezen om gegevens op te slaan.
+Containers maken vaak gebruik van tijdelijke schijven. Tijdelijke schijven zijn echter tijdelijk een nieuwe tijdelijke schijf en verliezen de informatie wanneer een container vastloopt. Het is ook lastig om informatie over tijdelijke schijven met andere containers te delen. Volumes zijn mappen die in de container instanties worden gekoppeld die u kunt gebruiken om de status te behouden. Volumes bieden u bestands opslag voor algemeen gebruik en bieden de mogelijkheid om bestanden te lezen/schrijven met behulp van normale I/O-bestand-Api's van de schijf. De volume resource beschrijft hoe een directory moet worden gekoppeld en welke back-ups van opslag moet worden gebruikt. U kunt kiezen voor Azure file storage of Service Fabric volume schijf om gegevens op te slaan.
 
 ![Volumes][image3]
 
-### <a name="service-fabric-reliable-volume"></a>Betrouwbaar volume van de servicestof
+### <a name="service-fabric-reliable-volume"></a>Betrouw bare volume Service Fabric
 
-Service Fabric Reliable Volume is een Docker volume driver die wordt gebruikt om een lokaal volume aan een container te monteren. Lezen en schrijven zijn lokale operaties en snel. Gegevens worden gerepliceerd naar secundaire knooppunten, waardoor ze zeer beschikbaar zijn. Failover is ook snel. Wanneer een container vastloopt, mislukt deze naar een knooppunt dat al een kopie van uw gegevens heeft. Zie bijvoorbeeld [Hoe u een app implementeert met betrouwbaar volume van Service Fabric](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
+Service Fabric betrouw bare volume is een docker-volume stuur programma dat wordt gebruikt om een lokaal volume te koppelen aan een container. Lees-en schrijf bewerkingen zijn lokale bewerkingen en snelle. Gegevens worden naar secundaire knoop punten gerepliceerd, waardoor deze Maxi maal beschikbaar is. Failover is ook snel. Wanneer een container vastloopt, wordt een failover uitgevoerd naar een knoop punt dat al een kopie van uw gegevens heeft. Zie [een app implementeren met Service Fabric betrouw bare volume](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)voor een voor beeld.
 
-### <a name="azure-files-volume"></a>Azure-bestandenvolume
+### <a name="azure-files-volume"></a>Azure Files volume
 
-Azure Files Volume is een Docker-volumestuurprogramma dat wordt gebruikt om een Azure Files-share aan een container te koppelen. Azure Files-opslag maakt gebruik van netwerkopslag, dus lezen en schrijven vinden plaats via het netwerk. In vergelijking met servicefabric betrouwbaar volume is Azure Files-opslag minder performant, maar biedt het een goedkopere en volledig betrouwbare gegevensoptie. Zie bijvoorbeeld [Hoe u een app implementeert met Azure Files Volume](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
+Azure Files volume is een docker-volume stuur programma dat wordt gebruikt om een Azure Files share te koppelen aan een container. Azure Files opslag gebruikt netwerk opslag, zodat Lees-en schrijf bewerkingen via het netwerk plaatsvinden. Vergeleken met Service Fabric betrouw bare volume, is Azure Files opslag minder goed, maar biedt een optie voor ingeschikte en volledig betrouw bare gegevens. Zie [een app implementeren met Azure files volume](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)voor een voor beeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Bronnen voor [servicefabric](service-fabric-mesh-service-fabric-resources.md)
+Zie [service Fabric resources](service-fabric-mesh-service-fabric-resources.md) voor meer informatie over het toepassings model.
 
 [image3]: ./media/service-fabric-mesh-storing-state/volumes.png

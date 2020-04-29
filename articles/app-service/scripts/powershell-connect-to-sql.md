@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: verbinding maken met SQL-database'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een app koppelt aan een SQL-database.
+title: 'Power shell: verbinding maken met SQL Database'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app verbindt met een SQL Database.
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74685386"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>Een App Service-app verbinden met een SQL-database

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267987"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Een StorSimple-cloudapparaat implementeren en beheren in Azure (Update 3 en hoger)
@@ -52,7 +52,7 @@ Het StorSimple-cloudapparaat is beschikbaar in twee modellen: de Standard 8010 (
 
 <sup>1</sup> *Voorheen bekend als de 1100*.
 
-<sup>2</sup> *Zowel de 8010 als de 8020 maken gebruik van Azure Standard Storage voor de cloudlaag. Het verschil bestaat alleen in de lokale laag binnen het apparaat.*
+<sup>2</sup> *zowel de 8010 als de 8020 gebruiken de Azure Standard-opslag voor de Cloud-laag. Het verschil bestaat alleen in de lokale laag in het apparaat*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Hoe het cloudapparaat verschilt van het fysieke apparaat
 
@@ -66,7 +66,7 @@ In de volgende tabel ziet u enkele belangrijke verschillen tussen het StorSimple
 | --- | --- | --- |
 | **Locatie** |Bevindt zich in het datacenter. |Wordt uitgevoerd in Azure. |
 | **Netwerkinterfaces** |Heeft zes netwerkinterfaces: DATA 0 t/m DATA 5. |Heeft slechts één netwerkinterface: DATA 0 |
-| **Registratie** |Geregistreerd tijdens de initiële configuratiestap. |Registratie is een afzonderlijke taak. |
+| **Inschrijving** |Geregistreerd tijdens de initiële configuratiestap. |Registratie is een afzonderlijke taak. |
 | **Gegevensversleutelingssleutel van service** |Genereer de sleutel opnieuw op het fysieke apparaat en werk het cloudapparaat daarna bij met de nieuwe sleutel. |Het is niet mogelijk om sleutels opnieuw te genereren op het cloudapparaat. |
 | **Ondersteunde volumetypen** |Ondersteunt zowel lokaal vastgemaakte als gelaagde volumes. |Ondersteunt alleen gelaagde volumes. |
 

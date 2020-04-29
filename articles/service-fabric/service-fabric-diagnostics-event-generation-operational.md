@@ -1,280 +1,280 @@
 ---
-title: Lijst met gebeurtenislijst azure-servicefabric
-description: Uitgebreide lijst met gebeurtenissen die door Azure Service Fabric worden geleverd om clusters te controleren.
+title: Lijst met Azure Service Fabric-gebeurtenissen
+description: Uitgebreide lijst met gebeurtenissen die door Azure Service Fabric worden verschaft om clusters te bewaken.
 author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258536"
 ---
-# <a name="list-of-service-fabric-events"></a>Lijst met servicefabric-gebeurtenissen 
+# <a name="list-of-service-fabric-events"></a>Lijst met Service Fabric gebeurtenissen 
 
-Service Fabric onthult een primaire set clustergebeurtenissen om u te informeren over de status van uw cluster als [Service Fabric-gebeurtenissen.](service-fabric-diagnostics-events.md) Deze zijn gebaseerd op acties die door Service Fabric op uw knooppunten worden uitgevoerd en uw cluster- of beheerbeslissingen die zijn genomen door een clustereigenaar/operator. Deze gebeurtenissen kunnen worden geopend door op een aantal manieren te configureren, waaronder het configureren van [Azure Monitor-logboeken met uw cluster](service-fabric-diagnostics-oms-setup.md)of het opvragen van de [EventStore.](service-fabric-diagnostics-eventstore.md) Op Windows-machines worden deze gebeurtenissen in de EventLog ingevoerd, zodat u Service Fabric-gebeurtenissen in logboeken zien. 
+Service Fabric maakt een primaire set cluster gebeurtenissen beschikbaar om u te informeren over de status van uw cluster als [service Fabric-gebeurtenissen](service-fabric-diagnostics-events.md). Deze zijn gebaseerd op acties die worden uitgevoerd door Service Fabric op uw knoop punten en de cluster-of beheer beslissingen van een cluster eigenaar/-operator. Deze gebeurtenissen zijn toegankelijk via het configureren van een aantal manieren, waaronder het configureren van [Azure monitor logboeken met uw cluster](service-fabric-diagnostics-oms-setup.md)of het uitvoeren van query's op de [Event Store](service-fabric-diagnostics-eventstore.md). Op Windows-computers worden deze gebeurtenissen ingevoerd in het gebeurtenis logboek, zodat u Service Fabric gebeurtenissen in Logboeken kunt zien. 
 
-Hier zijn enkele kenmerken van deze gebeurtenissen
-* Elke gebeurtenis is gekoppeld aan een specifieke entiteit in het cluster, bijvoorbeeld Toepassing, Service, Knooppunt, Replica.
-* Elke gebeurtenis bevat een set algemene velden: EventInstanceId, EventName en Categorie.
-* Elke gebeurtenis bevat velden die de gebeurtenis koppelen aan de entiteit waaraan de gebeurtenis is gekoppeld. De gebeurtenis ApplicationCreated heeft bijvoorbeeld velden die de naam van de aangemaakte toepassing identificeren.
-* Gebeurtenissen zijn zo gestructureerd dat ze kunnen worden geconsumeerd in een verscheidenheid van tools om verdere analyse te doen. Bovendien worden relevante details voor een gebeurtenis gedefinieerd als afzonderlijke eigenschappen in tegenstelling tot een lange tekenreeks. 
-* Gebeurtenissen worden geschreven door verschillende subsystemen in Service Fabric worden hieronder geïdentificeerd door Source(Task). Meer informatie is beschikbaar over deze subsystemen in [Service Fabric Architecture](service-fabric-architecture.md) and Service Fabric Technical [Overview.](service-fabric-technical-overview.md)
+Hier volgen enkele kenmerken van deze gebeurtenissen
+* Elke gebeurtenis is gekoppeld aan een specifieke entiteit in het cluster, bijvoorbeeld toepassing, service, knoop punt, replica.
+* Elke gebeurtenis bevat een aantal algemene velden: EventInstanceId, eventname en categorie.
+* Elke gebeurtenis bevat velden die de gebeurtenis weer koppelen aan de entiteit waaraan deze is gekoppeld. De gebeurtenis ApplicationCreated heeft bijvoorbeeld velden die de naam van de gemaakte toepassing identificeren.
+* Gebeurtenissen zijn zodanig gestructureerd dat ze kunnen worden gebruikt in een groot aantal hulpprogram ma's om verdere analyses uit te voeren. Daarnaast worden relevante gegevens voor een gebeurtenis gedefinieerd als afzonderlijke eigenschappen in plaats van een lange teken reeks. 
+* Gebeurtenissen worden geschreven door verschillende subsystemen in Service Fabric worden aangeduid met de bron (taak) hieronder. Meer informatie is beschikbaar op deze subsystemen in [service Fabric architectuur](service-fabric-architecture.md) en [service Fabric technisch overzicht](service-fabric-technical-overview.md).
 
-Hier is een lijst van deze Service Fabric-evenementen georganiseerd door entiteit.
+Hier volgt een lijst met deze Service Fabric gebeurtenissen ingedeeld op entiteit.
 
 ## <a name="cluster-events"></a>Clustergebeurtenissen
 
-**Clusterupgradegebeurtenissen**
+**Upgrade gebeurtenissen voor cluster**
 
-Meer details over cluster upgrades vindt u [hier.](service-fabric-cluster-upgrade-windows-server.md)
+Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgrade-windows-server.md).
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | --- | --- | --- | --- | 
-| 29627 | ClusterUpgradegestart | Upgraden | Er is een clusterupgrade gestart | CM | Informatief |
-| 29628 | ClusterUpgradevoltooid | Upgraden | Een clusterupgrade is voltooid | CM | Informatief | 
-| 29629 | ClusterUpgradeRollbackStarted | Upgraden | Er is een clusterupgrade gestart om terug te draaien  | CM | Waarschuwing | 
-| 29630 | ClusterUpgradeRollbackVoltooid | Upgraden | Een clusterupgrade is voltooid | CM | Waarschuwing | 
-| 29631 | ClusterUpgradeDomainCompleted | Upgraden | Een upgradedomein is klaar met upgraden tijdens een clusterupgrade | CM | Informatief | 
+| 29627 | ClusterUpgradeStarted | Upgraden | Een upgrade van een cluster is gestart | CM | Informatief |
+| 29628 | ClusterUpgradeCompleted | Upgraden | Een cluster upgrade is voltooid | CM | Informatief | 
+| 29629 | ClusterUpgradeRollbackStarted | Upgraden | Een upgrade van een cluster is gestart om terug te draaien  | CM | Waarschuwing | 
+| 29630 | ClusterUpgradeRollbackCompleted | Upgraden | Het terugdraaien van een cluster upgrade is voltooid | CM | Waarschuwing | 
+| 29631 | ClusterUpgradeDomainCompleted | Upgraden | Een upgrade domein is bijgewerkt tijdens een cluster upgrade | CM | Informatief | 
 
-## <a name="node-events"></a>Knooppuntgebeurtenissen
+## <a name="node-events"></a>Knooppunt gebeurtenissen
 
-**Gebeurtenissen in de levenscyclus van knooppunten** 
+**Levenscyclus gebeurtenissen van knoop punt** 
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau |
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau |
 | --- | --- | ---| --- | --- | --- | 
-| 18602 | NodeDeactivateVoltooid | StatusOvergang | Deactivering van een knooppunt is voltooid | FM | Informatief | 
-| 18603 | Knooppunt Up | StatusOvergang | Het cluster heeft gedetecteerd dat er een knooppunt is opgestart | FM | Informatief | 
-| 18604 | Knooppunt Down | StatusOvergang | Het cluster heeft gedetecteerd dat er een knooppunt is afgesloten. Tijdens een knooppuntopnieuw opstarten ziet u een NodeDown-gebeurtenis gevolgd door een NodeUp-gebeurtenis |  FM | Fout | 
-| 18605 | NodeAddedToCluster | StatusOvergang |  Er is een nieuw knooppunt toegevoegd aan het cluster en Service Fabric kan toepassingen implementeren op dit knooppunt | FM | Informatief | 
-| 18606 | NodeRemovedFromCluster | StatusOvergang |  Er is een knooppunt uit het cluster verwijderd. Service Fabric implementeert geen toepassingen meer op dit knooppunt | FM | Informatief | 
-| 18607 | NodeDeactivateStarted | StatusOvergang |  Deactivering van een knooppunt is begonnen | FM | Informatief | 
-| 25621 | NodeOpenGeslaagd | StatusOvergang |  Een knooppunt is succesvol gestart | FabricNode | Informatief | 
-| 25622 | NodeOpenMislukt | StatusOvergang |  Een knooppunt kan de ring niet starten en lid worden | FabricNode | Fout | 
-| 25624 | Knooppunt Gesloten | StatusOvergang |  Een knooppunt dat is afgesloten | FabricNode | Informatief | 
-| 25626 | Knooppunt Afgebroken | StatusOvergang |  Een knooppunt is op onsierlijke wijze afgesloten | FabricNode | Fout | 
+| 18602 | NodeDeactivateCompleted | StateTransition | Het deactiveren van een knoop punt is voltooid | FM | Informatief | 
+| 18603 | NodeUp | StateTransition | Het cluster heeft gedetecteerd dat een knoop punt is gestart | FM | Informatief | 
+| 18604 | NodeDown | StateTransition | Het cluster heeft gedetecteerd dat een knoop punt is afgesloten. Wanneer een knoop punt opnieuw wordt opgestart, ziet u een NodeDown-gebeurtenis gevolgd door een NodeUp-gebeurtenis |  FM | Fout | 
+| 18605 | NodeAddedToCluster | StateTransition |  Er is een nieuw knoop punt aan het cluster toegevoegd en Service Fabric kan toepassingen implementeren op dit knoop punt | FM | Informatief | 
+| 18606 | NodeRemovedFromCluster | StateTransition |  Er is een knoop punt uit het cluster verwijderd. Service Fabric worden toepassingen niet meer geïmplementeerd op dit knoop punt | FM | Informatief | 
+| 18607 | NodeDeactivateStarted | StateTransition |  Het deactiveren van een knoop punt is gestart | FM | Informatief | 
+| 25621 | NodeOpenSucceeded | StateTransition |  Een knoop punt is gestart | FabricNode | Informatief | 
+| 25622 | NodeOpenFailed | StateTransition |  Een knoop punt kan niet worden gestart en kan niet worden toegevoegd aan de ring | FabricNode | Fout | 
+| 25624 | NodeClosed | StateTransition |  Een knoop punt is afgesloten | FabricNode | Informatief | 
+| 25626 | NodeAborted | StateTransition |  Een knoop punt is niet probleemloos afgesloten | FabricNode | Fout | 
 
-## <a name="application-events"></a>Toepassingsgebeurtenissen
+## <a name="application-events"></a>Toepassings gebeurtenissen
 
-**Gebeurtenissen in de levenscyclus van toepassingen**
+**Toepassings levenscyclus gebeurtenissen**
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | --- | --- | --- | --- | 
-| 29620 | Toepassinggemaakt | Levenscyclus | Er is een nieuwe toepassing gemaakt | CM | Informatief | 
-| 29625 | Toepassing Verwijderd | Levenscyclus | Een bestaande toepassing is verwijderd | CM | Informatief | 
-| 23083 | ToepassingsprocesUitgesloten | Levenscyclus | Een proces binnen een toepassing is afgesloten | Hosting | Informatief | 
+| 29620 | ApplicationCreated | Duur | Er is een nieuwe toepassing gemaakt | CM | Informatief | 
+| 29625 | ApplicationDeleted | Duur | Een bestaande toepassing is verwijderd | CM | Informatief | 
+| 23083 | ApplicationProcessExited | Duur | Een proces binnen een toepassing is afgesloten | Hosting | Informatief | 
 
-**Toepassingsupgradegebeurtenissen**
+**Toepassings upgrade gebeurtenissen**
 
-Meer details over applicatie-upgrades vindt u [hier.](service-fabric-application-upgrade.md)
+Meer informatie over toepassings upgrades vindt u [hier](service-fabric-application-upgrade.md).
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- | 
-| 29621 | ApplicationUpgradeStarted | Upgraden | Er is een upgrade gestart voor een toepassing | CM | Informatief | 
-| 29622 | Toepassingsupgradevoltooid | Upgraden | Een upgrade van een toepassing is voltooid | CM | Informatief | 
-| 29623 | ApplicationUpgradeRollbackStarted | Upgraden | Een upgrade van een toepassing is begonnen met terugdraaien |CM | Waarschuwing | 
-| 29624 | ToepassingsUpgradeRollbackVoltooid | Upgraden | Een upgrade van een toepassing is voltooid | CM | Waarschuwing | 
-| 29626 | ApplicationUpgradeDomainCompleted | Upgraden | Een upgradedomein is klaar met upgraden tijdens een toepassingsupgrade | CM | Informatief | 
+| 29621 | ApplicationUpgradeStarted | Upgraden | Een toepassings upgrade is gestart | CM | Informatief | 
+| 29622 | ApplicationUpgradeCompleted | Upgraden | Een toepassings upgrade is voltooid | CM | Informatief | 
+| 29623 | ApplicationUpgradeRollbackStarted | Upgraden | Het terugdraaien van een toepassings upgrade is gestart |CM | Waarschuwing | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Upgraden | Het terugdraaien van een toepassings upgrade is voltooid | CM | Waarschuwing | 
+| 29626 | ApplicationUpgradeDomainCompleted | Upgraden | Een upgrade domein is bijgewerkt tijdens een toepassings upgrade | CM | Informatief | 
 
-## <a name="service-events"></a>Servicegebeurtenissen
+## <a name="service-events"></a>Service gebeurtenissen
 
-**Gebeurtenissen in de levenscyclus van services**
+**Service levenscyclus gebeurtenissen**
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | Servicegemaakt | Levenscyclus | Er is een nieuwe service gemaakt | FM | Informatief | 
-| 18658 | ServiceVerwijderd | Levenscyclus | Een bestaande service is verwijderd | FM | Informatief | 
+| 18657 | ServiceCreated | Duur | Er is een nieuwe service gemaakt | FM | Informatief | 
+| 18658 | ServiceDeleted | Duur | Er is een bestaande service verwijderd | FM | Informatief | 
 
-## <a name="partition-events"></a>Partitiegebeurtenissen
+## <a name="partition-events"></a>Partitie gebeurtenissen
 
-**Gebeurtenissen voor het verplaatsen van partities**
+**Partities verplaatsen**
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Levenscyclus | Een partitieherconfiguratie is voltooid | RA | Informatief | 
+| 18940 | PartitionReconfigured | Duur | De herconfiguratie van een partitie is voltooid | RA | Informatief | 
 
-## <a name="replica-events"></a>Replicagebeurtenissen
+## <a name="replica-events"></a>Replica gebeurtenissen
 
-**Gebeurtenissen over de levenscyclus van replica's**
+**Gebeurtenissen voor de levens cyclus van replica's**
 
-| EventId (EventId) | Name | Categorie | Beschrijving |Bron (taak) | Niveau |
+| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau |
 | --- | --- | ---| --- | --- | --- |
-| 61701 | ReliableDictionaryOpened ReliableDictionaryOpened ReliableDictionaryOpened ReliableDictionary | Levenscyclus | Betrouwbaar woordenboek is geopend | GedistribueerdWoordenboek | Informatief |
-| 61702 | ReliableDictionaryClosed ReliableDictionaryClosed ReliableDictionaryClosed ReliableDictionary | Levenscyclus | Betrouwbaar woordenboek is gesloten | GedistribueerdWoordenboek | Informatief |
-| 61703 | ReliableDictionaryCheckpointRecovered ReliableDictionaryCheckpointRecovered ReliableDictionaryCheckpointRecovered ReliableDictionary | Levenscyclus | Betrouwbaar woordenboek heeft zijn controlepunt hersteld | GedistribueerdWoordenboek | Informatief |
-| 61704 | ReliableDictionaryCheckpointFilesSent ReliableDictionaryCheckpoint | Levenscyclus | Replica heeft betrouwbare woordenboek checkpoint bestanden verzonden | GedistribueerdWoordenboek | Informatief |
-| 61705 | ReliableDictionaryCheckpointFilesOntvangen ReliableDictionary | Levenscyclus | Replica heeft betrouwbare woordenboek checkpoint bestanden ontvangen | GedistribueerdWoordenboek | Informatief |
-| 61963 | ReliableQueueGeopend | Levenscyclus | Betrouwbare wachtrij is geopend | Gedistribueerde wachtrij | Informatief |
-| 61964 | ReliableQueueGesloten | Levenscyclus | Betrouwbare wachtrij is gesloten | Gedistribueerde wachtrij | Informatief |
-| 61965 | ReliableQueueCheckpointRecovered ReliableQueueCheckpointRecovered ReliableQueueCheckpointRecovered ReliableQueue | Levenscyclus | Betrouwbare wachtrij heeft zijn controlepunt hersteld | Gedistribueerde wachtrij | Informatief |
-| 61966 | ReliableQueueCheckpointFilesSent ReliableQueueCheckpointFilesSent ReliableQueueCheckpointFilesSent ReliableQueue | Levenscyclus | Replica heeft betrouwbare controlepuntenbestanden van wachtrijen verzonden | Gedistribueerde wachtrij | Informatief |
-| 63647 | ReliableQueueCheckpointFilesOntvangen | Levenscyclus | Replica heeft betrouwbare controlepuntenbestanden van wachtrijen ontvangen | Gedistribueerde wachtrij | Informatief |
-| 63648 | ReliableConcurrentQueuegeopend | Levenscyclus | Betrouwbare gelijktijdige wachtrij is geopend | ReliableConcurrentQueue ReliableConcurrentQueue ReliableConcurrentQueue ReliableConcurrent | Informatief |
-| 63649 | ReliableConcurrentQueuegesloten | Levenscyclus | Betrouwbare gelijktijdige wachtrij is gesloten | ReliableConcurrentQueue ReliableConcurrentQueue ReliableConcurrentQueue ReliableConcurrent | Informatief |
-| 63650 | ReliableConcurrentQueueCheckpointrecovered ReliableConcurrentQueueCheckpointRecovered ReliableConcurrentQueueCheckpointRecovered ReliableConcurrent | Levenscyclus | Betrouwbare gelijktijdige wachtrij heeft zijn controlepunt hersteld | ReliableConcurrentQueue ReliableConcurrentQueue ReliableConcurrentQueue ReliableConcurrent | Informatief |
-| 61687 | TStoreFout | Fout | Betrouwbare verzameling heeft een onverwachte fout ontvangen | TStore (TStore) | Fout |
-| 63831 | PrimairFullCopy-geïnitieerd | Levenscyclus | Primaire replica heeft een volledige kopie gestart | TReplicator TReplicator | Informatief |
-| 63832 | Primaire Partiële Kopiegeïnitieerd | Levenscyclus | Primaire replica heeft een gedeeltelijke kopie gestart | TReplicator TReplicator | Informatief |
-| 16831 | BuildIdleReplicaStarted | Levenscyclus | Primaire replica is begonnen met het bouwen van niet-actieve replica | Replicatie | Informatief |
-| 16832 | BuildIdleReplicaVoltooid | Levenscyclus | Primaire replica heeft voltooide gebouw niet-actieve replica | Replicatie | Informatief |
-| 16833 | BuildIdleReplica mislukt | Levenscyclus | Primaire replica is mislukt gebouw niet-actieve replica | Replicatie | Waarschuwing |
-| 16834 | PrimaryReplicatiewachtrijvolledig | Status | De replicatiewachtrij van de primaire replica is vol | Replicatie | Waarschuwing |
-| 16835 | PrimaireReplicatiewachtrijwaarschuwing | Status | De replicatiewachtrij van primaire replica is bijna vol | Replicatie | Waarschuwing |
-| 16836 | PrimaireReplicatieWachtrijWaarschuwingbeperkt | Status | De replicatiewachtrij van primaire replica is in orde | Replicatie | Informatief |
-| 16837 | SecondaryReplicationQueueFull | Status | De replicatiewachtrij van secundaire replica is vol | Replicatie | Waarschuwing |
-| 16838 | Secundairreplicatiewachtrijwaarschuwing | Status | De replicatiewachtrij van secundaire replica is bijna vol | Replicatie | Waarschuwing |
-| 16839 | SecundairreplicatiewachtrijWaarschuwingbeperkt | Status | De replicatiewachtrij van secundaire replica is in orde | Replicatie | Informatief |
-| 16840 | PrimaryFaultedSlowSecondary | Status | Primaire replica heeft een langzame secundaire replica verweten | Replicatie | Waarschuwing |
-| 16841 | ReplicatorFaulted | Status | Replica heeft fouten gemaakt | Replicatie | Waarschuwing |
+| 61701 | ReliableDictionaryOpened | Duur | Betrouw bare woorden lijst is geopend | DistributedDictionary | Informatief |
+| 61702 | ReliableDictionaryClosed | Duur | Betrouw bare woorden lijst is gesloten | DistributedDictionary | Informatief |
+| 61703 | ReliableDictionaryCheckpointRecovered | Duur | De betrouw bare woorden lijst heeft het controle punt hersteld | DistributedDictionary | Informatief |
+| 61704 | ReliableDictionaryCheckpointFilesSent | Duur | Replica heeft controlepunt bestanden van een betrouw bare woorden lijst verzonden | DistributedDictionary | Informatief |
+| 61705 | ReliableDictionaryCheckpointFilesReceived | Duur | Replica heeft controlepunt bestanden van een betrouw bare woorden lijst ontvangen | DistributedDictionary | Informatief |
+| 61963 | ReliableQueueOpened | Duur | De betrouw bare wachtrij is geopend | DistributedQueue | Informatief |
+| 61964 | ReliableQueueClosed | Duur | Betrouw bare wachtrij is gesloten | DistributedQueue | Informatief |
+| 61965 | ReliableQueueCheckpointRecovered | Duur | Het controle punt is hersteld door de betrouw bare wachtrij | DistributedQueue | Informatief |
+| 61966 | ReliableQueueCheckpointFilesSent | Duur | Replica heeft controlepunt bestanden van een betrouw bare wachtrij verzonden | DistributedQueue | Informatief |
+| 63647 | ReliableQueueCheckpointFilesReceived | Duur | Replica heeft controlepunt bestanden van een betrouw bare wachtrij ontvangen | DistributedQueue | Informatief |
+| 63648 | ReliableConcurrentQueueOpened | Duur | Betrouw bare gelijktijdige wachtrij is geopend | ReliableConcurrentQueue | Informatief |
+| 63649 | ReliableConcurrentQueueClosed | Duur | Betrouw bare gelijktijdige wachtrij is gesloten | ReliableConcurrentQueue | Informatief |
+| 63650 | ReliableConcurrentQueueCheckpointRecovered | Duur | Het controle punt is hersteld door de betrouw bare gelijktijdige wachtrij | ReliableConcurrentQueue | Informatief |
+| 61687 | TStoreError | Fout | De betrouw bare verzameling heeft een onverwachte fout ontvangen | TStore | Fout |
+| 63831 | PrimaryFullCopyInitiated | Duur | Primaire replica heeft een volledige kopie geïnitieerd | TReplicator | Informatief |
+| 63832 | PrimaryPartialCopyInitiated | Duur | Primaire replica heeft een gedeeltelijke kopie gestart | TReplicator | Informatief |
+| 16831 | BuildIdleReplicaStarted | Duur | Primaire replica is begonnen met het bouwen van een inactieve replica | Replicatie | Informatief |
+| 16832 | BuildIdleReplicaCompleted | Duur | Primaire replica heeft het opbouwen van een inactieve replica voltooid | Replicatie | Informatief |
+| 16833 | BuildIdleReplicaFailed | Duur | Primaire replica kan geen inactieve replica opbouwen | Replicatie | Waarschuwing |
+| 16834 | PrimaryReplicationQueueFull | Status | De replicatie wachtrij van de primaire replica is vol | Replicatie | Waarschuwing |
+| 16835 | PrimaryReplicationQueueWarning | Status | De replicatie wachtrij van de primaire replica is bijna vol | Replicatie | Waarschuwing |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Status | De replicatie wachtrij van de primaire replica is OK | Replicatie | Informatief |
+| 16837 | SecondaryReplicationQueueFull | Status | De replicatie wachtrij van de secundaire replica is vol | Replicatie | Waarschuwing |
+| 16838 | SecondaryReplicationQueueWarning | Status | De replicatie wachtrij van de secundaire replica is bijna vol | Replicatie | Waarschuwing |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Status | De replicatie wachtrij van de secundaire replica is OK | Replicatie | Informatief |
+| 16840 | PrimaryFaultedSlowSecondary | Status | De primaire replica heeft een fout met een langzame secundaire replica veroorzaakt | Replicatie | Waarschuwing |
+| 16841 | ReplicatorFaulted | Status | Replica is mislukt | Replicatie | Waarschuwing |
 
-## <a name="container-events"></a>Containergebeurtenissen
+## <a name="container-events"></a>Container gebeurtenissen
 
-**Gebeurtenissen over de levenscyclus van containers** 
+**Levenscyclus gebeurtenissen van container** 
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerGeactiveerd | Er is een container gestart | Hosting | Informatief | 1 |
-| 23075 | ContainerGedeactiveerd | Een container is gestopt | Hosting | Informatief | 1 |
-| 23082 | ContainerExited | Een container is afgesloten - Controleer de vlag UnexpectedTermination | Hosting | Informatief | 1 |
+| 23074 | ContainerActivated | Er is een container gestart | Hosting | Informatief | 1 |
+| 23075 | ContainerDeactivated | Een container is gestopt | Hosting | Informatief | 1 |
+| 23082 | ContainerExited | Een container is afgesloten: Controleer de vlag UnexpectedTermination | Hosting | Informatief | 1 |
 
-## <a name="health-reports"></a>Gezondheidsrapporten
+## <a name="health-reports"></a>Status rapporten
 
-Het [Service Fabric Health Model](service-fabric-health-introduction.md) biedt een rijke, flexibele en uitbreidbare gezondheidsevaluatie en rapportage. Vanaf Service Fabric versie 6.2, gezondheidsgegevens is geschreven als Platform gebeurtenissen om historische records van de gezondheid te bieden. Om het aantal gezondheidsgebeurtenissen laag te houden, schrijven we alleen het volgende als Service Fabric-gebeurtenissen:
+Het [service Fabric status model](service-fabric-health-introduction.md) biedt een uitgebreide, flexibele en uitbreid bare status evaluatie en rapportage. Als u Service Fabric versie 6,2, worden status gegevens geschreven als platform gebeurtenissen om historische gegevens over de status te bieden. Om het volume van de status gebeurtenissen laag te blijven, schrijven we alleen het volgende als Service Fabric gebeurtenissen:
 
-* Alle `Error` `Warning` of gezondheidsrapporten
-* `Ok`gezondheidsrapporten tijdens overgangen
-* Wanneer `Error` een `Warning` of gezondheidsgebeurtenis verloopt. Dit kan worden gebruikt om te bepalen hoe lang een entiteit ongezond is
+* Alle `Error` of `Warning` status rapporten
+* `Ok`status rapporten tijdens overgangen
+* Wanneer een `Error` of `Warning` Health-gebeurtenis verloopt. Dit kan worden gebruikt om te bepalen hoe lang een entiteit is beschadigd
 
-**Clusterstatusrapportgebeurtenissen**
+**Gebeurtenissen van het cluster status rapport**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | --- | --- | --- | --- |
-| 54428 | ClusterNewHealthReport | Er is een nieuw clusterstatusrapport beschikbaar | Hm | Informatief | 1 |
-| 54437 | ClusterHealthReportVerlopen | Een bestaand clusterstatusrapport is verlopen | Hm | Informatief | 1 |
+| 54428 | ClusterNewHealthReport | Er is een nieuw cluster status rapport beschikbaar | HM | Informatief | 1 |
+| 54437 | ClusterHealthReportExpired | Een bestaand cluster status rapport is verlopen | HM | Informatief | 1 |
 
-**Gebeurtenissen in het knooppuntgezondheidsrapport**
+**Gebeurtenissen van knooppunt status rapport**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 54423 | NodeNewHealthReport | Er is een nieuw knooppuntgezondheidsrapport beschikbaar | Hm | Informatief | 1 |
-| 54432 | NodeHealthReportVerlopen | Een bestaand knooppuntstatusrapport is verlopen | Hm | Informatief | 1 |
+| 54423 | NodeNewHealthReport | Er is een nieuw knooppunt status rapport beschikbaar | HM | Informatief | 1 |
+| 54432 | NodeHealthReportExpired | Een bestaand status rapport van het knoop punt is verlopen | HM | Informatief | 1 |
 
-**Gebeurtenissen in het rapport Toepassingsstatus**
+**Gebeurtenissen van het status rapport van de toepassing**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 54425 | ApplicationNewHealthReport | Er is een nieuw rapport over toepassingsstatus gemaakt. Dit is voor niet-geïmplementeerde toepassingen. | Hm | Informatief | 1 |
-| 54426 | GeïmplementeerdApplicationNewHealthReport | Er is een nieuw geïmplementeerd toepassingsstatusrapport gemaakt | Hm | Informatief | 1 |
-| 54427 | GeïmplementeerdServicePakketNewHealthReport | Er is een nieuw geïmplementeerd servicestatusrapport gemaakt | Hm | Informatief | 1 |
-| 54434 | ApplicationHealthReportVerlopen | Een bestaand toepassingsstatusrapport is verlopen | Hm | Informatief | 1 |
-| 54435 | GeïmplementeerdApplicationHealthReportVerlopen | Een bestaand geïmplementeerd toepassingsstatusrapport is verlopen | Hm | Informatief | 1 |
-| 54436 | GeïmplementeerdServicePackageHealthReportVerlopen | Een bestaand geïmplementeerd servicestatusrapport is verlopen | Hm | Informatief | 1 |
+| 54425 | ApplicationNewHealthReport | Er is een nieuw status rapport voor de toepassing gemaakt. Dit geldt voor niet-geïmplementeerde toepassingen. | HM | Informatief | 1 |
+| 54426 | DeployedApplicationNewHealthReport | Er is een nieuw geïmplementeerd toepassings status rapport gemaakt | HM | Informatief | 1 |
+| 54427 | DeployedServicePackageNewHealthReport | Er is een nieuw geïmplementeerd service status rapport gemaakt | HM | Informatief | 1 |
+| 54434 | ApplicationHealthReportExpired | Een bestaand toepassings status rapport is verlopen | HM | Informatief | 1 |
+| 54435 | DeployedApplicationHealthReportExpired | Een bestaand status rapport voor geïmplementeerde toepassingen is verlopen | HM | Informatief | 1 |
+| 54436 | DeployedServicePackageHealthReportExpired | Een bestaand geïmplementeerd service status rapport is verlopen | HM | Informatief | 1 |
 
-**Gebeurtenissen in de status van service**
+**Gebeurtenissen van service status rapport**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 54424 | ServiceNewHealthReport | Er is een nieuw servicestatusrapport gemaakt | Hm | Informatief | 1 |
-| 54433 | ServiceHealthReportVerlopen | Een bestaand servicestatusrapport is verlopen | Hm | Informatief | 1 |
+| 54424 | ServiceNewHealthReport | Er is een nieuw service status rapport gemaakt | HM | Informatief | 1 |
+| 54433 | ServiceHealthReportExpired | Een bestaand service status rapport is verlopen | HM | Informatief | 1 |
 
-**Statusrapportgebeurtenissen voor partitiestatus**
+**Status rapport gebeurtenissen partitioneren**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 54422 | PartitionNewHealthReport | Er is een nieuw rapport over partitiestatus gemaakt | Hm | Informatief | 1 |
-| 54431 | PartitionHealthReportVerlopen | Een bestaand partitiestatusrapport is verlopen | Hm | Informatief | 1 |
+| 54422 | PartitionNewHealthReport | Er is een nieuw partitie status rapport gemaakt | HM | Informatief | 1 |
+| 54431 | PartitionHealthReportExpired | Een bestaand partitie status rapport is verlopen | HM | Informatief | 1 |
 
-**Gebeurtenissen in het rapport Replica**
+**Gebeurtenissen van het status rapport van de replica**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 54429 | StatefulReplicaNewHealthReport | Er is een stateful replica-statusrapport gemaakt | Hm | Informatief | 1 |
-| 54430 | StatelessInstanceNewHealthReport | Er is een nieuw statusloos instantierapport gemaakt | Hm | Informatief | 1 |
-| 54438 | StatefulReplicaHealthReportVerlopen | Een bestaand stateful replica-statusrapport is verlopen | Hm | Informatief | 1 |
-| 54439 | StatelessInstanceHealthReportVerlopen | Een bestaand statusloos instantiestatusrapport is verlopen | Hm | Informatief | 1 |
+| 54429 | StatefulReplicaNewHealthReport | Er is een stateful replica status rapport gemaakt | HM | Informatief | 1 |
+| 54430 | StatelessInstanceNewHealthReport | Er is een nieuw status rapport voor stateless instanties gemaakt | HM | Informatief | 1 |
+| 54438 | StatefulReplicaHealthReportExpired | Een bestaand status rapport met stateful replicatie is verlopen | HM | Informatief | 1 |
+| 54439 | StatelessInstanceHealthReportExpired | Een bestaand status rapport voor stateless instanties is verlopen | HM | Informatief | 1 |
 
-## <a name="chaos-testing-events"></a>Chaos testen gebeurtenissen 
+## <a name="chaos-testing-events"></a>Chaos-test gebeurtenissen 
 
-**Chaos sessie gebeurtenissen**
+**Chaos-sessie gebeurtenissen**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 50021 | ChaosGestart | Er is een chaostestsessie gestart | Testabiliteit | Informatief | 1 |
-| 50023 | ChaosGestopt | Een Chaos-testsessie is gestopt | Testabiliteit | Informatief | 1 |
+| 50021 | ChaosStarted | Er is een chaos-test sessie gestart | Test baarheid | Informatief | 1 |
+| 50023 | ChaosStopped | Een chaos-test sessie is gestopt | Test baarheid | Informatief | 1 |
 
-**Chaos knooppunt gebeurtenissen**
+**Chaos**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 50033 | ChaosNodeRestartScheduled | Een knooppunt is gepland om opnieuw te starten als onderdeel van een Chaos-testsessie | Testabiliteit | Informatief | 1 |
-| 50087 | ChaosNodeRestartCompleted | Een knooppunt is klaar met opnieuw opstarten als onderdeel van een Chaos-testsessie | Testabiliteit | Informatief | 1 |
+| 50033 | ChaosNodeRestartScheduled | Een knoop punt is gepland om opnieuw te worden opgestart als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
+| 50087 | ChaosNodeRestartCompleted | Het opnieuw opstarten van een knoop punt is voltooid als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
 
-**Gebeurtenissen voor chaostoepassingen**
+**Chaos toepassings gebeurtenissen**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 50053 | ChaosCodePackageOpnieuw gepland | Een codepakket opnieuw opstarten is gepland tijdens een Chaos-testsessie | Testabiliteit | Informatief | 1 |
-| 50101 | ChaosCodePackageOpnieuw voltooid | Een codepakket opnieuw opstarten is voltooid tijdens een Chaos-testsessie | Testabiliteit | Informatief | 1 |
+| 50053 | ChaosCodePackageRestartScheduled | Een code pakket opnieuw opstarten is gepland tijdens een chaos-test sessie | Test baarheid | Informatief | 1 |
+| 50101 | ChaosCodePackageRestartCompleted | Het opnieuw opstarten van het code pakket is voltooid tijdens een chaos-test sessie | Test baarheid | Informatief | 1 |
 
-**Chaospartitiegebeurtenissen**
+**Chaos-partitie gebeurtenissen**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 50069 | ChaosPartitionPrimaryMoveGepland | Een primaire partitie is gepland om te worden verplaatst als onderdeel van een chaostestsessie | Testabiliteit | Informatief | 1 |
-| 50077 | ChaosPartitionSecondaryMoveGepland | Een secundaire partitie is gepland om te worden verplaatst als onderdeel van een Chaos-testsessie | Testabiliteit | Informatief | 1 |
-| 65003 | PartitionPrimaryMoveAnalysis | De diepere analyse van de primaire partitiebeweging is beschikbaar | Testabiliteit | Informatief | 1 |
+| 50069 | ChaosPartitionPrimaryMoveScheduled | Een primaire partitie is ingepland om te worden verplaatst als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
+| 50077 | ChaosPartitionSecondaryMoveScheduled | Een secundaire partitie is ingepland om te worden verplaatst als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
+| 65003 | PartitionPrimaryMoveAnalysis | De diep gaande analyse van de primaire partitie is beschikbaar | Test baarheid | Informatief | 1 |
 
-**Chaos replica gebeurtenissen**
+**Chaos-replica gebeurtenissen**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 50047 | ChaosReplicaRestartScheduled | Een replica herstart is gepland als onderdeel van een Chaos testsessie | Testabiliteit | Informatief | 1 |
-| 50051 | ChaosReplicaRemovalScheduled | Een replica verwijdering is gepland als onderdeel van een Chaos testsessie | Testabiliteit | Informatief | 1 |
-| 50093 | ChaosReplicaRemovalVoltooid | Een replica verwijdering is voltooid als onderdeel van een Chaos testsessie | Testabiliteit | Informatief | 1 |
+| 50047 | ChaosReplicaRestartScheduled | Het opnieuw opstarten van een replica is gepland als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
+| 50051 | ChaosReplicaRemovalScheduled | Het verwijderen van een replica is gepland als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
+| 50093 | ChaosReplicaRemovalCompleted | Het verwijderen van een replica is voltooid als onderdeel van een chaos-test sessie | Test baarheid | Informatief | 1 |
 
-## <a name="other-events"></a>Andere evenementen
+## <a name="other-events"></a>Andere gebeurtenissen
 
-**Correlatiegebeurtenissen**
+**Correlatie gebeurtenissen**
 
-| EventId (EventId) | Name | Beschrijving |Bron (taak) | Niveau | Versie |
+| Gebeurtenis | Naam | Beschrijving |Bron (taak) | Niveau | Versie |
 | --- | --- | ---| --- | --- | --- |
-| 65011 | CorrelatieOperationeel | Er is een correlatie gedetecteerd | Testabiliteit | Informatief | 1 |
+| 65011 | CorrelationOperational | Er is een correlatie gedetecteerd | Test baarheid | Informatief | 1 |
 
-## <a name="events-prior-to-version-62"></a>Gebeurtenissen voorafgaand aan versie 6.2
+## <a name="events-prior-to-version-62"></a>Gebeurtenissen vóór versie 6,2
 
-Hier is een uitgebreide lijst van gebeurtenissen die door Service Fabric voorafgaand aan versie 6.2.
+Hier volgt een uitgebreide lijst met gebeurtenissen van Service Fabric vóór versie 6,2.
 
-| EventId (EventId) | Name | Bron (taak) | Niveau |
+| Gebeurtenis | Naam | Bron (taak) | Niveau |
 | --- | --- | --- | --- |
-| 25620 | KnooppuntOpening | FabricNode | Informatief |
-| 25621 | NodeOpenedSucces | FabricNode | Informatief |
-| 25622 | Knooppunt geopend mislukt | FabricNode | Informatief |
-| 25623 | Knooppunt sluiten | FabricNode | Informatief |
-| 25624 | Knooppunt Gesloten | FabricNode | Informatief |
-| 25625 | Knooppunt Afbreken | FabricNode | Informatief |
-| 25626 | Knooppunt Afgebroken | FabricNode | Informatief |
+| 25620 | NodeOpening | FabricNode | Informatief |
+| 25621 | NodeOpenedSuccess | FabricNode | Informatief |
+| 25622 | NodeOpenedFailed | FabricNode | Informatief |
+| 25623 | NodeClosing | FabricNode | Informatief |
+| 25624 | NodeClosed | FabricNode | Informatief |
+| 25625 | NodeAborting | FabricNode | Informatief |
+| 25626 | NodeAborted | FabricNode | Informatief |
 | 29627 | ClusterUpgradeStart | CM | Informatief |
-| 29628 | ClusterUpgradeCompleet | CM | Informatief |
+| 29628 | ClusterUpgradeComplete | CM | Informatief |
 | 29629 | ClusterUpgradeRollback | CM | Informatief |
-| 29630 | ClusterUpgradeRollbackVolledig | CM | Informatief |
-| 29631 | ClusterUpgradeDomeinVolledig | CM | Informatief |
-| 23074 | ContainerGeactiveerd | Hosting | Informatief |
-| 23075 | ContainerGedeactiveerd | Hosting | Informatief |
-| 29620 | Toepassinggemaakt | CM | Informatief |
+| 29630 | ClusterUpgradeRollbackComplete | CM | Informatief |
+| 29631 | ClusterUpgradeDomainComplete | CM | Informatief |
+| 23074 | ContainerActivated | Hosting | Informatief |
+| 23075 | ContainerDeactivated | Hosting | Informatief |
+| 29620 | ApplicationCreated | CM | Informatief |
 | 29621 | ApplicationUpgradeStart | CM | Informatief |
-| 29622 | ToepassingsUpgradeVolledig | CM | Informatief |
+| 29622 | ApplicationUpgradeComplete | CM | Informatief |
 | 29623 | ApplicationUpgradeRollback | CM | Informatief |
-| 29624 | ToepassingsUpgradeRollbackVolledig | CM | Informatief |
-| 29625 | Toepassing Verwijderd | CM | Informatief |
+| 29624 | ApplicationUpgradeRollbackComplete | CM | Informatief |
+| 29625 | ApplicationDeleted | CM | Informatief |
 | 29626 | ApplicationUpgradeDomainComplete | CM | Informatief |
-| 18566 | Servicegemaakt | FM | Informatief |
-| 18567 | ServiceVerwijderd | FM | Informatief |
+| 18566 | ServiceCreated | FM | Informatief |
+| 18567 | ServiceDeleted | FM | Informatief |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Krijg een overzicht van [diagnostiek in Service Fabric](service-fabric-diagnostics-overview.md)
-* Meer informatie over het [EventStore-overzicht](service-fabric-diagnostics-eventstore.md) van De Eventstore van Service Fabric
-* Uw [Azure Diagnostics-configuratie](service-fabric-diagnostics-event-aggregation-wad.md) wijzigen om meer logboeken te verzamelen
-* [Toepassingsinzichten instellen](service-fabric-diagnostics-event-analysis-appinsights.md) om uw operationele kanaallogboeken te bekijken
+* Bekijk een overzicht van de [Diagnostische gegevens in service Fabric](service-fabric-diagnostics-overview.md)
+* Meer informatie over de Event Store in [service Fabric Event Store-overzicht](service-fabric-diagnostics-eventstore.md)
+* Uw [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) configuratie wijzigen om meer logboeken te verzamelen
+* [Application Insights instellen](service-fabric-diagnostics-event-analysis-appinsights.md) om uw operationele kanaal logboeken weer te geven

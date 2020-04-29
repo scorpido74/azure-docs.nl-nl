@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: Implementeren vanuit lokale Git repo'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u code implementeert uit een lokale Git-opslagplaats.
+title: 'Power shell: implementeren vanuit lokale Git-opslag plaats'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u code kunt implementeren vanuit een lokale Git-opslag plaats.
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74684844"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Een web-app maken en code implementeren vanuit een lokale Git-opslagplaats

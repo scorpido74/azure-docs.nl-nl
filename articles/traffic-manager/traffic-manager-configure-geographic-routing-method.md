@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Routering van geografisch verkeer configureren met Azure Traffic Manager
-description: In deze zelfstudie wordt uitgelegd hoe u de methode voor het routeren van geografisch verkeer configureert met Azure Traffic Manager
+title: 'Zelf studie: geografische verkeers routering configureren met Azure Traffic Manager'
+description: In deze zelf studie wordt uitgelegd hoe u de methode voor geografische verkeers routering configureert met Azure Traffic Manager
 services: traffic-manager
 author: rohinkoul
 manager: kumudD
@@ -12,52 +12,52 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76938794"
 ---
-# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Zelfstudie: De routeringsmethode voor geografisch verkeer configureren met Traffic Manager
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Zelf studie: de geografische verkeers routerings methode configureren met behulp van Traffic Manager
 
-Met de methode voor het routeren van geografisch verkeer u verkeer naar specifieke eindpunten leiden op basis van de geografische locatie waar de aanvragen vandaan komen. In deze zelfstudie ziet u hoe u een Traffic Manager-profiel maakt met deze routeringsmethode en de eindpunten configureert om verkeer uit specifieke regio's te ontvangen.
+Met de geografische verkeers routerings methode kunt u verkeer omleiden naar specifieke eind punten op basis van de geografische locatie waar de aanvragen vandaan komen. In deze zelf studie wordt uitgelegd hoe u een Traffic Manager profiel maakt met deze routerings methode en hoe u de eind punten zo configureert dat verkeer van specifieke geografi wordt ontvangen.
 
-## <a name="create-a-traffic-manager-profile"></a>Een profiel van verkeersbeheer maken
+## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager profiel maken
 
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich registreren voor een [gratis proefversie van één maand](https://azure.microsoft.com/free/).
-2. Klik op Een**netwerkbeheerprofiel** > maken voor een > **resourcenetwerkbeheer** > **maken**. **Create a resource**
-4. Maak in **het profiel Verkeersbeheer maken:**
-    1. Geef een naam op voor je profiel. Deze naam moet uniek zijn binnen de trafficmanager.net zone. Als u toegang wilt krijgen tot `<profilename>.trafficmanager.net`uw Traffic Manager-profiel, gebruikt u de DNS-naam .
-    2. Selecteer de **methode voor geografische** routering.
-    3. Selecteer hieronder het abonnement dat u wilt maken.
-    4. Gebruik een bestaande resourcegroep of maak een nieuwe resourcegroep om dit profiel onder te plaatsen. Als u ervoor kiest een nieuwe resourcegroep te maken, gebruikt u de **vervolgkeuzelijst Resourcegroep om** de locatie van de resourcegroep op te geven. Deze instelling verwijst naar de locatie van de resourcegroep en heeft geen invloed op het traffic manager-profiel dat wereldwijd wordt geïmplementeerd.
-    5. Nadat u op **Maken**hebt geklikt, wordt uw Traffic Manager-profiel wereldwijd gemaakt en geïmplementeerd.
+2. Klik op **een resource** > maken**netwerk** > **Traffic Manager profiel** > **maken**.
+4. In het **profiel Traffic Manager maken**:
+    1. Geef een naam op voor uw profiel. Deze naam moet uniek zijn binnen de zone trafficmanager.net. Als u toegang wilt krijgen tot uw Traffic Manager-profiel, `<profilename>.trafficmanager.net`gebruikt u de DNS-naam.
+    2. Selecteer de **geografische** routerings methode.
+    3. Selecteer het abonnement waarvoor u dit profiel wilt maken.
+    4. Gebruik een bestaande resource groep of maak een nieuwe resource groep om dit profiel in te plaatsen. Als u ervoor kiest om een nieuwe resource groep te maken, gebruikt u de vervolg keuzelijst **locatie van resource groep** om de locatie van de resource groep op te geven. Deze instelling verwijst naar de locatie van de resource groep en heeft geen invloed op het Traffic Manager profiel dat wereld wijd wordt geïmplementeerd.
+    5. Nadat u op **maken**hebt geklikt, wordt uw Traffic Manager profiel wereld wijd gemaakt en geïmplementeerd.
 
 ![Een Traffic Manager-profiel maken](./media/traffic-manager-geographic-routing-method/create-traffic-manager-profile.png)
 
-## <a name="add-endpoints"></a>Eindpunten toevoegen
+## <a name="add-endpoints"></a>Eind punten toevoegen
 
-1. Zoek naar de profielnaam van Traffic Manager die u hebt gemaakt in de zoekbalk van de portal en klik op het resultaat wanneer deze wordt weergegeven.
-2. Navigeer naar**Eindpunten** **instellingen** -> in Traffic Manager.
-3. Klik **op Toevoegen** om het eindpunt **toevoegen**weer te geven .
-3. Klik **op Toevoegen** en in het weergegeven eindpunt **Toevoegen** als volgt:
-4. Selecteer **Tekst,** afhankelijk van het type eindpunt dat u toevoegt. Voor geografische routeringsprofielen die in de productie worden gebruikt, raden we ten zeerste aan geneste eindpunttypen te gebruiken die een onderliggend profiel bevatten met meer dan één eindpunt. Zie [veelgestelde vragen over methoden voor het routeren van geografisch verkeer](traffic-manager-FAQs.md)voor meer informatie.
+1. Zoek de naam van het Traffic Manager profiel dat u hebt gemaakt in de zoek balk van de portal en klik op het resultaat wanneer het wordt weer gegeven.
+2. Navigeer naar **instellingen** -> **eind punten** in Traffic Manager.
+3. Klik op **toevoegen** om het **eind punt toevoegen**weer te geven.
+3. Klik op **toevoegen** en voer in het **eind punt toevoegen** dat wordt weer gegeven, als volgt in:
+4. Selecteer **type** , afhankelijk van het type eind punt dat u wilt toevoegen. Voor geografische routerings profielen die worden gebruikt in productie, raden we u ten zeerste aan gebruik te maken van geneste eindpunt typen die een onderliggend profiel met meer dan één eind punt Zie [Veelgestelde vragen over geografische verkeers routerings methoden](traffic-manager-FAQs.md)voor meer informatie.
 5. Geef een **Naam** op waarmee u dit eindpunt kunt herkennen.
-6. Bepaalde velden op deze pagina zijn afhankelijk van het type eindpunt dat u toevoegt:
-    1. Als u een Azure-eindpunt toevoegt, selecteert u het **doelbrontype** en het **doel** op basis van de bron waarnaar u verkeer wilt leiden
-    2. Als u een **extern** eindpunt toevoegt, geeft u de **volledig gekwalificeerde domeinnaam (FQDN)** op voor uw eindpunt.
-    3. Als u een **genest eindpunt**toevoegt, selecteert u de **doelbron** die overeenkomt met het onderliggende profiel dat u wilt gebruiken en geeft u het **aantal minimumaantal onderliggende eindpunten op.**
-7. Gebruik in de sectie Geo-toewijzing de vervolgkeuzelijst om de regio's toe te voegen van waaruit u wilt dat verkeer naar dit eindpunt wordt verzonden. U moet ten minste één regio toevoegen en u meerdere regio's in kaart brengen.
-8. Herhaal dit voor alle eindpunten die u onder dit profiel wilt toevoegen
+6. Bepaalde velden op deze pagina zijn afhankelijk van het type eind punt dat u toevoegt:
+    1. Als u een Azure-eind punt toevoegt, selecteert u het **doel resource type** en het **doel** op basis van de resource waarnaar u verkeer wilt omleiden
+    2. Als u een **extern** eind punt toevoegt, geeft u de FQDN- **naam (Fully Qualified Domain Name)** voor uw eind punt op.
+    3. Als u een **genest eind punt**toevoegt, selecteert u de **doel resource** die overeenkomt met het onderliggende profiel dat u wilt gebruiken en geeft u het **minimum aantal van het onderliggende eind punt**op.
+7. Gebruik in de sectie Geo-mapping de vervolg keuzelijst om de regio's toe te voegen van waaruit u wilt dat verkeer naar dit eind punt wordt verzonden. U moet ten minste één regio toevoegen en u kunt meerdere regio's toewijzen.
+8. Herhaal dit voor alle eind punten die u wilt toevoegen onder dit profiel
 
 ![Traffic Manager-eindpunt toevoegen](./media/traffic-manager-geographic-routing-method/add-traffic-manager-endpoint.png)
 
-## <a name="use-the-traffic-manager-profile"></a>Het profiel Verkeersbeheer gebruiken
-1.  Zoek in de zoekbalk van de portal naar de **profielnaam Van Verkeersbeheer** die u in de vorige sectie hebt gemaakt en klik op het profiel van de verkeersbeheerder in de resultaten die de weergegeven resultaten hebben weergegeven.
+## <a name="use-the-traffic-manager-profile"></a>Het Traffic Manager profiel gebruiken
+1.  Zoek in de zoek balk van de portal naar de naam van het **Traffic Manager profiel** dat u in de voor gaande sectie hebt gemaakt en klik op het Traffic Manager-profiel in de resultaten die worden weer gegeven.
 2. Klik op **Overzicht**.
-3. Het **Traffic Manager-profiel** geeft de DNS-naam weer van het Traffic Manager-profiel dat u zojuist hebt gemaakt. Dit kan door alle clients worden gebruikt (bijvoorbeeld door er met een webbrowser naar toe te navigeren) om naar het juiste eindpunt te worden geleid, zoals bepaald door het routeringstype.  In het geval van geografische routering kijkt Traffic Manager naar het bron-IP van de binnenkomende aanvraag en bepaalt het gebied waaruit deze afkomstig is. Als dat gebied is toegewezen aan een eindpunt, wordt het verkeer daar naartoe gerouteerd. Als dit gebied niet is toegewezen aan een eindpunt, retourneert Traffic Manager een NODATA-queryantwoord.
+3. Het **Traffic Manager-profiel** geeft de DNS-naam weer van het Traffic Manager-profiel dat u zojuist hebt gemaakt. Dit kan worden gebruikt door clients (bijvoorbeeld door ernaar te navigeren met een webbrowser) om naar het juiste eind punt te gaan, zoals bepaald door het routerings type.  In het geval van geografische route ring zoekt Traffic Manager naar het bron-IP-adres van de binnenkomende aanvraag en bepaalt u de regio van waaruit deze afkomstig is. Als die regio is toegewezen aan een eind punt, wordt er verkeer naar de betreffende Als deze regio niet aan een eind punt is toegewezen, retourneert Traffic Manager een query reactie zonder gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [de methode voor het routeren van geografisch verkeer](traffic-manager-routing-methods.md#geographic).
-- Meer informatie over het testen van [traffic manager-instellingen](traffic-manager-testing-settings.md).
+- Meer informatie over de [methode voor geografische verkeers routering](traffic-manager-routing-methods.md#geographic).
+- Meer informatie over het [testen van Traffic Manager instellingen](traffic-manager-testing-settings.md).

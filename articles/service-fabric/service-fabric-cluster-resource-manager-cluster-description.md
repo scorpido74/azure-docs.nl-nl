@@ -1,253 +1,253 @@
 ---
-title: Een cluster beschrijven met Clusterresourcebeheer
-description: Beschrijf een cluster servicestructuur door foutdomeinen, upgradedomeinen, knooppunteigenschappen en knooppuntcapaciteit voor Clusterresourcebeheer op te geven.
+title: Een cluster beschrijven met cluster resource manager
+description: Beschrijf een Service Fabric cluster door fout domeinen, upgrade domeinen, knooppunt eigenschappen en knooppunt capaciteit voor cluster resource manager op te geven.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258770"
 ---
-# <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een cluster van servicefabric beschrijven met Clusterresourcebeheer
-De functie Clusterresourcebeheer van Azure Service Fabric biedt verschillende mechanismen voor het beschrijven van een cluster:
+# <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
+De functie cluster resource manager van Azure Service Fabric biedt verschillende methoden voor het beschrijven van een cluster:
 
 * Foutdomeinen
-* Domeinen upgraden
+* Upgrade domeinen
 * Knooppunteigenschappen
-* Knooppuntcapaciteiten
+* Knooppunt capaciteit
 
-Tijdens runtime gebruikt Cluster Resource Manager deze informatie om een hoge beschikbaarheid van de services in het cluster te garanderen. Terwijl het handhaven van deze belangrijke regels, het probeert ook om het verbruik van resources binnen het cluster te optimaliseren.
+Tijdens runtime gebruikt cluster resource manager deze informatie om te zorgen voor een hoge Beschik baarheid van de services die in het cluster worden uitgevoerd. Bij het afdwingen van deze belang rijke regels wordt er ook geprobeerd het Resource verbruik in het cluster te optimaliseren.
 
 ## <a name="fault-domains"></a>Foutdomeinen
-Een foutdomein is elk gebied van gecoördineerde storing. Eén machine is een foutdomein. Het kan mislukken op zijn eigen om verschillende redenen, van stroomuitval tot storingen rijden tot slechte NIC firmware. 
+Een fout domein is een deel van de gecoördineerde fout. Een enkele computer is een fout domein. De IT-omgeving kan om verschillende redenen mislukken, van fouten in de stroom voorziening om storingen te vertonen in beschadigde NIC-firmware. 
 
-Machines die op dezelfde Ethernet-switch zijn aangesloten, bevinden zich in hetzelfde storingsdomein. Net als machines die één energiebron delen of op één locatie. 
+Computers die zijn verbonden met dezelfde Ethernet-switch, bevinden zich in hetzelfde fout domein. Dit zijn computers die één bron van kracht of op één locatie delen. 
 
-Omdat het normaal is dat hardwarefouten elkaar overlappen, zijn foutdomeinen inherent hiërarchisch. Ze worden weergegeven als URI's in Service Fabric.
+Omdat het natuurlijk is voor hardwarefouten die elkaar overlappen, zijn fout domeinen inherent hiërarchisch. Ze worden weer gegeven als Uri's in Service Fabric.
 
-Het is belangrijk dat foutdomeinen correct zijn ingesteld, omdat Service Fabric deze informatie gebruikt om services veilig te plaatsen. Service Fabric wil geen services zodanig plaatsen dat het verlies van een foutdomein (veroorzaakt door het uitvallen van een onderdeel) ervoor zorgt dat een service naar beneden gaat. 
+Het is belang rijk dat fout domeinen correct zijn ingesteld, omdat Service Fabric deze informatie gebruikt om services veilig te plaatsen. Service Fabric geen services wilt plaatsen zodanig dat het verlies van een fout domein (veroorzaakt door uitval van bepaalde onderdelen) ertoe leidt dat een service uitvalt. 
 
-In de Azure-omgeving gebruikt Service Fabric de foutdomeingegevens die door de omgeving worden verstrekt om de knooppunten in het cluster namens u correct te configureren. Voor zelfstandige exemplaren van Service Fabric worden foutdomeinen gedefinieerd op het moment dat het cluster is ingesteld. 
+In de Azure-omgeving gebruikt Service Fabric de fout domein gegevens die door de omgeving worden verstrekt om namens u de knoop punten in het cluster correct te configureren. Voor zelfstandige exemplaren van Service Fabric worden fout domeinen gedefinieerd op het moment dat het cluster is ingesteld. 
 
 > [!WARNING]
-> Het is belangrijk dat de informatie over het foutdomein die aan Service Fabric wordt verstrekt, juist is. Stel dat de knooppunten van uw Service Fabric-cluster worden uitgevoerd in 10 virtuele machines, die worden uitgevoerd op 5 fysieke hosts. In dit geval, ook al zijn er 10 virtuele machines, zijn er slechts 5 verschillende (top level) foutdomeinen. Het delen van dezelfde fysieke host zorgt ervoor dat VM's hetzelfde hoofdfoutdomein delen, omdat de VM's een gecoördineerde fout ervaren als hun fysieke host mislukt.  
+> Het is belang rijk dat de fout domein gegevens die aan Service Fabric worden verstrekt nauw keurig zijn. Stel bijvoorbeeld dat de knoop punten van uw Service Fabric-cluster worden uitgevoerd binnen 10 virtuele machines, die worden uitgevoerd op 5 fysieke hosts. In dit geval, zelfs als er tien virtuele machines zijn, zijn er slechts 5 verschillende fout domeinen (op het hoogste niveau). Het delen van dezelfde fysieke host zorgt ervoor dat Vm's hetzelfde hoofd fout domein delen, omdat de Vm's zich in een gecoördineerde storing voordoen als de fysieke host mislukt.  
 >
-> Service Fabric verwacht dat het foutdomein van een knooppunt niet verandert. Andere mechanismen om een hoge beschikbaarheid van de VM's te garanderen, zoals [HA-VM's,](https://technet.microsoft.com/library/cc967323.aspx)kunnen conflicten veroorzaken met Service Fabric. Deze mechanismen maken gebruik van transparante migratie van VM's van de ene host naar de andere. Ze configureren of melden de loopcode in de VM niet opnieuw. Als zodanig worden ze *niet ondersteund* als omgevingen voor het uitvoeren van Service Fabric-clusters. 
+> Service Fabric verwacht dat het fout domein van een knoop punt niet kan worden gewijzigd. Andere mechanismen voor het garanderen van een hoge Beschik baarheid van de virtuele machines, zoals [ha-vm's](https://technet.microsoft.com/library/cc967323.aspx), kunnen leiden tot conflicten met Service Fabric. Deze mechanismen maken gebruik van transparante migratie van Vm's van de ene host naar een andere. Ze configureren of melden de actieve code niet opnieuw in de virtuele machine. Daarom worden ze *niet ondersteund* als omgevingen voor het uitvoeren van service Fabric clusters. 
 >
-> Service Fabric moet de enige technologie met hoge beschikbaarheid zijn die wordt gebruikt. Mechanismen zoals live VM-migratie en SAN's zijn niet nodig. Als deze mechanismen worden gebruikt in combinatie met Service Fabric, verminderen ze _de_ beschikbaarheid en betrouwbaarheid van toepassingen. De reden hiervoor is dat ze extra complexiteit introduceren, gecentraliseerde bronnen van falen toevoegen en betrouwbaarheids- en beschikbaarheidsstrategieën gebruiken die in strijd zijn met die in Service Fabric. 
+> Service Fabric moet de enige technologie zijn die als hoge Beschik baarheid wordt gebruikt. Mechanismen als Livemigratie en San's van de VM zijn niet nodig. Als deze mechanismen worden gebruikt in combi natie met Service Fabric, _beperken_ ze de beschik baarheid en betrouw baarheid van de toepassing. De reden hiervoor is dat ze extra complexiteit introduceren, gecentraliseerde bronnen van fouten toevoegen en Betrouwbaarheids-en beschikbaarheids strategieën gebruiken die in Service Fabric conflicteren. 
 >
 >
 
-In de volgende afbeelding kleuren we alle entiteiten die bijdragen aan foutdomeinen en vermelden we alle verschillende foutdomeinen die resulteren. In dit voorbeeld hebben we datacenters ('DC'), racks ('R') en blades ('B'). Als elk blad meer dan één virtuele machine bevat, kan er een andere laag in de hiërarchie van het foutdomein zijn.
+In de volgende afbeelding kleuren we alle entiteiten die bijdragen aan fout domeinen en een lijst van alle verschillende fout domeinen die het resultaat zijn. In dit voor beeld hebben we data centers (' DC '), racks (' R ') en Blades (' B '). Als elke blade meer dan één virtuele machine bevat, is er mogelijk nog een laag in de fout domein hiërarchie.
 
 <center>
 
-![Knooppunten georganiseerd via foutdomeinen][Image1]
+![Knoop punten ingedeeld via fout domeinen][Image1]
 </center>
 
-Tijdens runtime houdt Service Fabric Cluster Resource Manager rekening met de foutdomeinen in het cluster en plannen indelingen. De stateful replica's of stateless exemplaren voor een service worden gedistribueerd, zodat ze zich in afzonderlijke foutdomeinen bevinden. Het distribueren van de service over foutdomeinen zorgt ervoor dat de beschikbaarheid van de service niet in het gedrang komt wanneer een foutdomein op elk niveau van de hiërarchie uitvalt.
+Tijdens runtime beschouwt Service Fabric cluster resource manager de fout domeinen in het cluster en de indelingen van plannen. De stateful replica's of stateless instanties voor een service worden gedistribueerd zodat ze zich in afzonderlijke fout domeinen bevinden. Wanneer de service wordt gedistribueerd over fout domeinen, zorgt u ervoor dat de beschik baarheid van de service niet wordt aangetast wanneer een fout domein op een niveau van de hiërarchie mislukt.
 
-Het maakt clusterresourcebeheer niet uit hoeveel lagen er in de hiërarchie van het foutdomein zijn. Het probeert ervoor te zorgen dat het verlies van een deel van de hiërarchie geen invloed heeft op services die erin worden uitgevoerd. 
+Cluster resource manager bezorgt niet hoeveel lagen er in de fout domein hiërarchie aanwezig zijn. Er wordt geprobeerd om ervoor te zorgen dat het verlies van een deel van de hiërarchie geen invloed heeft op de services die erop worden uitgevoerd. 
 
-Het is het beste als hetzelfde aantal knooppunten zich op elk diepteniveau in de hiërarchie van het foutdomein bevindt. Als de 'structuur' van foutdomeinen niet in balans is in uw cluster, is het moeilijker voor Cluster Resource Manager om de beste toewijzing van services te achterhalen. Onevenwichtige foutdomeinlay-outs betekenen dat het verlies van sommige domeinen de beschikbaarheid van services meer beïnvloedt dan andere domeinen. Als gevolg hiervan wordt Cluster Resource Manager verscheurd tussen twee doelen: 
+Het is het beste als hetzelfde aantal knoop punten zich op elk niveau van diepte in de fout domein hiërarchie bevindt. Als de boom structuur van fout domeinen niet in balans is in uw cluster, is het moeilijker voor cluster bron beheer om de beste toewijzing van services te bepalen. Niet-sluitende fout domein indelingen betekenen dat het verlies van sommige domeinen van invloed is op de beschik baarheid van services die meer dan andere domeinen zijn. Als gevolg hiervan is cluster resource manager gescheurd tussen twee doel einden: 
 
-* Het wil de machines te gebruiken in dat "zware" domein door het plaatsen van diensten op hen. 
-* Het wil services in andere domeinen plaatsen, zodat het verlies van een domein geen problemen veroorzaakt. 
+* Dit wil zeggen dat de computers in dat ' zware ' domein worden gebruikt door services op deze servers te plaatsen. 
+* Er moeten services in andere domeinen worden geplaatst, zodat het verlies van een domein geen problemen veroorzaakt. 
 
-Hoe zien onevenwichtige domeinen eruit? In het volgende diagram ziet u twee verschillende clusterindelingen. In het eerste voorbeeld worden de knooppunten gelijkmatig verdeeld over de foutdomeinen. In het tweede voorbeeld heeft één foutdomein veel meer knooppunten dan de andere foutdomeinen. 
+Hoe zien onevenwichtige domeinen eruit? In het volgende diagram ziet u twee verschillende cluster indelingen. In het eerste voor beeld worden de knoop punten gelijkmatig verdeeld over de fout domeinen. In het tweede voor beeld heeft één fout domein veel meer knoop punten dan de andere fout domeinen. 
 
 <center>
 
-![Twee verschillende clusterindelingen][Image2]
+![Twee verschillende cluster indelingen][Image2]
 </center>
 
-In Azure wordt de keuze van welk foutdomein een knooppunt bevat, voor u beheerd. Maar afhankelijk van het aantal knooppunten dat u indient, u nog steeds eindigen met foutdomeinen die meer knooppunten bevatten dan in andere. 
+In azure wordt de keuze van het fout domein dat een knoop punt bevat, voor u beheerd. Maar afhankelijk van het aantal knoop punten dat u inricht, kunt u nog steeds eindigen met fout domeinen die meer knoop punten bevatten dan in andere. 
 
-Stel dat u vijf foutdomeinen in het cluster hebt, maar zeven knooppunten indient voor een knooppunttype **(NodeType).** In dit geval eindigen de eerste twee foutdomeinen met meer knooppunten. Als u meer **NodeType-exemplaren** blijft implementeren met slechts een paar exemplaren, wordt het probleem nog groter. Daarom raden we aan dat het aantal knooppunten in elk knooppunttype een veelvoud is van het aantal foutdomeinen.
+Stel dat u vijf fout domeinen in het cluster hebt, maar zeven knoop punten inricht voor een knooppunt type (**NodeType**). In dit geval eindigen de eerste twee fout domeinen uiteindelijk met meer knoop punten. Als u meer **NodeType** -exemplaren met slechts een paar exemplaren wilt implementeren, wordt het probleem erger. Daarom raden we aan dat het aantal knoop punten in elk knooppunt type een veelvoud is van het aantal fout domeinen.
 
-## <a name="upgrade-domains"></a>Domeinen upgraden
-Upgradedomeinen zijn een andere functie waarmee Service Fabric Cluster Resource Manager inzicht krijgt in de lay-out van het cluster. Upgradedomeinen definiëren sets knooppunten die tegelijkertijd worden geüpgraded. Upgradedomeinen helpen Cluster Resource Manager beheerbewerkingen zoals upgrades te begrijpen en te orkestreren.
+## <a name="upgrade-domains"></a>Upgrade domeinen
+Upgrade domeinen zijn een andere functie waarmee Service Fabric cluster resource manager de indeling van het cluster begrijpt. Upgrade domeinen definiëren sets van knoop punten die op hetzelfde moment worden bijgewerkt. Upgrade domeinen helpen cluster resource Manager beheer bewerkingen zoals upgrades te begrijpen en te organiseren.
 
-Upgrade domeinen zijn een partij als fout domeinen, maar met een paar belangrijke verschillen. Ten eerste definiëren gebieden met gecoördineerde hardwarefouten foutdomeinen. Upgradedomeinen daarentegen worden gedefinieerd door beleid. U krijgt om te beslissen hoeveel je wilt, in plaats van te laten de omgeving dicteren het nummer. U evenveel upgradedomeinen hebben als knooppunten. Een ander verschil tussen foutdomeinen en upgradedomeinen is dat upgradedomeinen niet hiërarchisch zijn. In plaats daarvan zijn ze meer als een eenvoudige tag. 
+Upgrade domeinen zijn veel zoals fout domeinen, maar met een aantal belang rijke verschillen. Ten eerste bepalen gebieden met gecoördineerde hardwarefouten fout domeinen. Upgrade domeinen worden daarentegen door beleid gedefinieerd. U kunt bepalen hoeveel u wilt, in plaats van dat de omgeving het nummer zelf bepaalt. U kunt net zoveel upgrade domeinen als knoop punten hebben. Een ander verschil tussen fout domeinen en upgrade domeinen is dat upgrade domeinen niet hiërarchisch zijn. In plaats daarvan zijn ze meer hetzelfde als een eenvoudige tag. 
 
-In het volgende diagram ziet u drie upgradedomeinen die zijn gestreept over drie foutdomeinen. Het toont ook een mogelijke plaatsing voor drie verschillende replica's van een stateful service, waar elk eindigt in verschillende fout en upgrade domeinen. Deze plaatsing maakt het verlies van een fout domein, terwijl in het midden van een service-upgrade en nog steeds een kopie van de code en gegevens.  
+In het volgende diagram ziet u drie upgrade domeinen die zijn gesegmenteerd over drie fout domeinen. Er wordt ook een mogelijke plaatsing weer gegeven voor drie verschillende replica's van een stateful service, waarbij elke oploopt in verschillende fout-en upgrade domeinen. Deze plaatsing maakt het mogelijk dat er een fout domein verloren gaat in het midden van een service-upgrade en nog steeds één exemplaar van de code en gegevens.  
 
 <center>
 
-![Plaatsing met fout- en upgradedomeinen][Image3]
+![Plaatsing met fout-en upgrade domeinen][Image3]
 </center>
 
-Er zijn voors en tegens aan het hebben van grote aantallen verbeteringsdomeinen. Meer upgradedomeinen betekenen dat elke stap van de upgrade gedetailleerder is en van invloed is op een kleiner aantal knooppunten of services. Minder diensten hoeven te bewegen op een moment, de invoering van minder churn in het systeem. Dit heeft de neiging om de betrouwbaarheid te verbeteren, omdat minder van de service wordt beïnvloed door een probleem geïntroduceerd tijdens de upgrade. Meer upgradedomeinen betekenen ook dat u minder beschikbare buffer op andere knooppunten nodig hebt om de impact van de upgrade te verwerken. 
+Er zijn voor-en nadelen voor een groot aantal upgrade domeinen. Meer upgrade domeinen betekenen dat elke stap van de upgrade nauw keuriger is en invloed heeft op een kleiner aantal knoop punten of services. Er moeten minder services tegelijk worden verplaatst, zodat er minder verloop in het systeem wordt geïntroduceerd. Dit is doorgaans de betrouw baarheid verbeterd, omdat het minder van de service wordt beïnvloed door een probleem dat tijdens de upgrade wordt geïntroduceerd. Meer upgrade domeinen betekenen ook dat u minder beschik bare buffer op andere knoop punten nodig hebt om de impact van de upgrade te kunnen afhandelen. 
 
-Als u bijvoorbeeld vijf upgradedomeinen hebt, verwerken de knooppunten in elk van deze knooppunten ongeveer 20 procent van uw verkeer. Als u dat upgradedomein moet uitschakelen voor een upgrade, moet die belasting meestal ergens heen. Omdat u nog vier upgradedomeinen hebt, moet elk ruimte hebben voor ongeveer 5 procent van het totale verkeer. Meer upgradedomeinen betekenen dat u minder buffer nodig hebt op de knooppunten in het cluster. 
+Als u bijvoorbeeld vijf upgrade domeinen hebt, worden de knoop punten in elk ongeveer 20 procent van uw verkeer verwerkt. Als u het upgrade domein wilt uitvoeren voor een upgrade, moet die belasting meestal ergens anders gaan. Omdat u vier resterende upgrade domeinen hebt, moet er voldoende ruimte zijn voor ongeveer 5 procent van het totale verkeer. Meer upgrade domeinen betekenen dat u minder buffers nodig hebt voor de knoop punten in het cluster. 
 
-Overweeg of u in plaats daarvan 10 upgradedomeinen had. In dat geval zou elk upgradedomein slechts ongeveer 10 procent van het totale verkeer verwerken. Wanneer een upgrade door het cluster wordt uitgevoerd, moet elk domein ruimte hebben voor slechts ongeveer 1,1 procent van het totale verkeer. Met meer upgradedomeinen u uw knooppunten over het algemeen bij een hoger gebruik uitvoeren, omdat u minder gereserveerde capaciteit nodig hebt. Hetzelfde geldt voor foutdomeinen.  
+Houd rekening met het gebruik van 10 upgrade domeinen. In dat geval verwerkt elk upgrade domein slechts 10 procent van het totale verkeer. Wanneer een upgrade stappen door het cluster worden uitgevoerd, moet elk domein voldoende ruimte hebben voor slechts ongeveer 1,1 procent van het totale verkeer. Meer upgrade domeinen maken het meestal mogelijk om uw knoop punten uit te voeren op een hoger gebruik, omdat u minder gereserveerde capaciteit nodig hebt. Dit geldt ook voor fout domeinen.  
 
-Het nadeel van het hebben van veel upgrade domeinen is dat upgrades hebben de neiging om langer te duren. Service Fabric wacht een korte periode nadat een upgradedomein is voltooid en voert controles uit voordat u begint met het upgraden van het volgende domein. Deze vertragingen maken het mogelijk om problemen op te sporen die door de upgrade zijn geïntroduceerd voordat de upgrade wordt uitgevoerd. De afweging is aanvaardbaar omdat het voorkomt dat slechte veranderingen te veel van de service tegelijk beïnvloeden.
+Het nadeel van veel upgrade domeinen is dat upgrades meer tijd in beslag nemen. Service Fabric wacht een korte periode nadat een upgrade domein is voltooid en voert controles uit voordat u begint met het upgraden van de volgende. Deze vertragingen zorgen ervoor dat detectie problemen die door de upgrade worden geïntroduceerd, worden gedetecteerd voordat de upgrade wordt uitgevoerd. De balans is acceptabel omdat het voor komt dat onjuiste wijzigingen van invloed zijn op een groot deel van de service.
 
-De aanwezigheid van te weinig upgrade domeinen heeft veel negatieve bijwerkingen. Hoewel elk upgradedomein is uitgeschakeld en wordt bijgewerkt, is een groot deel van uw totale capaciteit niet beschikbaar. Als u bijvoorbeeld slechts drie upgradedomeinen hebt, haalt u ongeveer een derde van uw totale service- of clustercapaciteit tegelijk weg. Het is niet wenselijk om zoveel van uw service in één keer te laten werken, omdat u voldoende capaciteit in de rest van uw cluster nodig hebt om de werkbelasting te verwerken. Het handhaven van die buffer betekent dat tijdens de normale werking, die knooppunten zijn minder geladen dan ze anders zou zijn. Dit verhoogt de kosten van het uitvoeren van uw service.
+De aanwezigheid van te weinig upgrade domeinen heeft veel negatieve neven effecten. Hoewel elk upgrade domein niet actief is en wordt bijgewerkt, is een groot deel van de totale capaciteit niet beschikbaar. Als u bijvoorbeeld slechts drie upgrade domeinen hebt, neemt u ongeveer één derde van uw totale service-of cluster capaciteit tegelijk in beslag. Een groot deel van uw service is in één keer niet gewenst omdat u voldoende capaciteit in de rest van uw cluster nodig hebt om de werk belasting te kunnen afhandelen. Als u die buffer beheert, zijn deze knoop punten niet meer geladen dan ze anders zouden zijn. Dit verhoogt de kosten voor het uitvoeren van uw service.
 
-Er is geen echte limiet aan het totale aantal fout- of upgradedomeinen in een omgeving of beperkingen voor de manier waarop ze elkaar overlappen. Maar er zijn gemeenschappelijke patronen:
+Er is geen echte limiet voor het totale aantal fout-of upgrade domeinen in een omgeving, of beperkingen voor de overlap ping. Maar er zijn algemene patronen:
 
-- Foutdomeinen en upgradedomeinen toegewezen 1:1
-- Eén upgradedomein per knooppunt (fysieke of virtuele os-instantie)
-- Een "gestreept" of "matrix" model waarbij de foutdomeinen en upgradedomeinen een matrix vormen met machines die meestal de diagonalen afwerken
+- Fout domeinen en upgrade domeinen toegewezen 1:1
+- Eén upgrade domein per knoop punt (fysiek of virtueel OS-exemplaar)
+- Een ' striped ' of ' matrix ' model waarbij de fout domeinen en upgrade domeinen een matrix vormen met computers die meestal diagonaal omlaag worden uitgevoerd
 
 <center>
 
-![Indelingen van fout- en upgradedomeinen][Image4]
+![Indelingen van fout-en upgrade domeinen][Image4]
 </center>
 
-Er is geen beste antwoord voor welke lay-out te kiezen. Elk heeft voor- en nadelen. Het 1FD:1UD-model is bijvoorbeeld eenvoudig in te stellen. Het model van één upgradedomein per knooppuntmodel lijkt het meest op wat mensen gewend zijn. Tijdens upgrades wordt elk knooppunt onafhankelijk bijgewerkt. Dit is vergelijkbaar met hoe kleine sets van machines handmatig werden opgewaardeerd in het verleden.
+Er is geen beste antwoord voor de indeling die u moet kiezen. Elk heeft voor-en nadelen. Het model 1FD: 1UD is bijvoorbeeld eenvoudig in te stellen. Het model van één upgrade domein per knooppunt model is het meest geschikt voor de doel nemers. Tijdens upgrades wordt elk knoop punt onafhankelijk bijgewerkt. Dit is vergelijkbaar met de manier waarop kleine sets van machines hand matig in het verleden zijn bijgewerkt.
 
-Het meest voorkomende model is de FD/UD-matrix, waarbij de foutdomeinen en upgradedomeinen een tabel vormen en knooppunten worden geplaatst vanaf de diagonaal. Dit is het model dat standaard wordt gebruikt in clusters van servicefabric in Azure. Voor clusters met veel knooppunten, alles eindigt op zoek als een dichte matrix patroon.
+Het meest voorkomende model is de FD/UD matrix, waarbij de fout domeinen en upgrade domeinen vormen een tabel en knoop punten die op de diagonaal worden geplaatst. Dit is het model dat standaard wordt gebruikt in Service Fabric clusters in Azure. Voor clusters met veel knoop punten is alles wat lijkt op een dikke matrix patroon.
 
 > [!NOTE]
-> Servicefabricclusters die in Azure worden gehost, ondersteunen het wijzigen van de standaardstrategie niet. Alleen standalone clusters bieden die aanpassing.
+> Service Fabric clusters die worden gehost in azure, bieden geen ondersteuning voor het wijzigen van de standaard strategie. Alleen zelfstandige clusters bieden de aanpassing.
 >
 
-## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Beperkingen van het domein en upgrades en het resulterende gedrag
-### <a name="default-approach"></a>Standaardbenadering
-Cluster Resource Manager houdt services standaard in balans tussen fout- en upgradedomeinen. Dit is gemodelleerd als een [beperking](service-fabric-cluster-resource-manager-management-integration.md). De beperking voor fout- en upgradedomeinen luidt: "Voor een bepaalde servicepartitie mag er nooit een groter verschil zijn dan één verschil in het aantal serviceobjecten (stateless service-exemplaren of stateful servicereplica's) tussen twee domeinen op dezelfde het niveau van de hiërarchie."
+## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Fout-en upgrade van domein beperkingen en resulterende gedrag
+### <a name="default-approach"></a>Standaard benadering
+Cluster resource manager houdt standaard services in balans tussen fout-en upgrade domeinen. Dit wordt als een [beperking](service-fabric-cluster-resource-manager-management-integration.md)gemodelleerd. De beperking voor de status van fout-en upgrade domeinen: voor een bepaalde service partitie moet er nooit een verschil zijn dat groter is dan één in het aantal service objecten (stateless service exemplaren of stateful service replica's) tussen twee domeinen op hetzelfde niveau van de hiërarchie.
 
-Laten we zeggen dat deze beperking een "maximaal verschil" garantie biedt. De beperking voor fout- en upgradedomeinen voorkomt bepaalde verplaatsingen of afspraken die in strijd zijn met de regel.
+Stel dat deze beperking een ' Maxi maal verschil ' garantie biedt. De beperking voor fout-en upgrade domeinen voor komt bepaalde verplaatsingen of voorzieningen die de regel schenden.
 
-Stel dat we een cluster hebben met zes knooppunten, geconfigureerd met vijf foutdomeinen en vijf upgradedomeinen.
+Stel bijvoorbeeld dat we een cluster hebben met zes knoop punten, geconfigureerd met vijf fout domeinen en vijf upgrade domeinen.
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N1 | | | | |
+| **UD0** |Categorieën | | | | |
 | **UD1** |N6 |N2 | | | |
 | **UD2** | | |N3 | | |
 | **UD3** | | | |N4 | |
-| **Ud4** | | | | |N5 |
+| **UD4** | | | | |N5 |
 
-Laten we nu zeggen dat we een service maken met een **TargetReplicaSetSize** -waarde (of, voor een stateless service, **InstanceCount),** van vijf. De replica's landen op n1-N5. In feite wordt N6 nooit gebruikt, ongeacht hoeveel diensten als deze u maakt. Maar waarom? Laten we eens kijken naar het verschil tussen de huidige lay-out en wat er zou gebeuren als N6 wordt gekozen.
+Stel nu dat we een service maken met een **TargetReplicaSetSize** (of, voor een stateless service, **InstanceCount**)-waarde van vijf. Het land van de replica's op N1-N5. In feite wordt N6 nooit gebruikt, ongeacht het aantal services dat u hier maakt. Maar waarom? Laten we eens kijken naar het verschil tussen de huidige indeling en wat er zou gebeuren als N6 is gekozen.
 
-Hier is de lay-out die we hebben en het totale aantal replica's per fout en upgrade domein:
+Dit is de indeling die we hebben ontvangen en het totaal aantal replica's per fout-en upgrade domein:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotaal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** | |R2 | | | |1 |
 | **UD2** | | |R3 | | |1 |
 | **UD3** | | | |R4 | |1 |
-| **Ud4** | | | | |R5 |1 |
-| **FDTotaal** |1 |1 |1 |1 |1 |- |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
-Deze lay-out is gebalanceerd in termen van knooppunten per foutdomein en upgradedomein. Het is ook evenwichtig in termen van het aantal replica's per fout en upgrade domein. Elk domein heeft hetzelfde aantal knooppunten en hetzelfde aantal replica's.
+Deze indeling is evenwichtig in het kader van knoop punten per fout domein en upgrade domein. Het is ook afgewogen in termen van het aantal replica's per fout-en upgrade domein. Elk domein heeft hetzelfde aantal knoop punten en hetzelfde aantal replica's.
 
-Laten we eens kijken wat er zou gebeuren als we N6 hadden gebruikt in plaats van N2. Hoe zouden de replica's dan worden verspreid?
+Nu gaan we kijken wat er gebeurt als we N6 gebruiken in plaats van N2. Hoe worden de replica's gedistribueerd?
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotaal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R5 | | | | |1 |
 | **UD2** | | |R2 | | |1 |
 | **UD3** | | | |R3 | |1 |
-| **Ud4** | | | | |R4 |1 |
-| **FDTotaal** |2 |0 |1 |1 |1 |- |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |2 |0 |1 |1 |1 |- |
 
-Deze lay-out is in strijd met onze definitie van de "maximale verschil" garantie voor de beperking van het foutdomein. FD0 heeft twee replica's, terwijl FD1 nul heeft. Het verschil tussen FD0 en FD1 is een totaal van twee, wat groter is dan het maximale verschil van één. Omdat de beperking wordt geschonden, staat Cluster Resource Manager deze indeling niet toe. Op dezelfde manier, als we kozen N2 en N6 (in plaats van N1 en N2), zouden we krijgen:
+Deze indeling schendt de definitie van de garantie ' Maxi maal verschil ' voor de beperking van het fout domein. FD0 heeft twee replica's, terwijl FD1 nul heeft. Het verschil tussen FD0 en FD1 is een totaal van twee, wat groter is dan het maximum verschil van één. Omdat de beperking wordt geschonden, staat cluster resource manager deze rang schikking niet toe. En als we N2 en N6 (in plaats van N1 en N2) hebben gepickt, krijgen we het volgende:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotaal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
 | **UD2** | | |R2 | | |1 |
 | **UD3** | | | |R3 | |1 |
-| **Ud4** | | | | |R4 |1 |
-| **FDTotaal** |1 |1 |1 |1 |1 |- |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
-Deze lay-out is evenwichtig in termen van foutdomeinen. Maar nu is het in strijd met de upgrade domein beperking, omdat UD0 heeft nul replica's en UD1 heeft twee. Deze indeling is ook ongeldig en wordt niet gekozen door Cluster Resource Manager.
+Deze indeling is evenwichtig in termen van fout domeinen. Maar nu wordt de beperking van het upgrade domein geschonden, omdat UD0 null-replica's heeft en UD1 twee heeft. Deze indeling is ook ongeldig en wordt niet gekozen door cluster resource manager.
 
-Deze benadering van de verdeling van stateful replica's of stateless exemplaren biedt de best mogelijke fouttolerantie. Als één domein uitvalt, gaat het minimale aantal replica's/exemplaren verloren. 
+Deze methode voor het distribueren van stateful replica's of stateless instanties biedt de best mogelijke fout tolerantie. Als één domein uitvalt, is het minimale aantal replica's/instanties verloren gegaan. 
 
-Aan de andere kant kan deze aanpak te streng zijn en het cluster niet toestaan om alle resources te gebruiken. Voor bepaalde clusterconfiguraties kunnen bepaalde knooppunten niet worden gebruikt. Hierdoor kan Service Fabric uw services niet plaatsen, wat resulteert in waarschuwingsberichten. In het vorige voorbeeld kunnen sommige clusterknooppunten niet worden gebruikt (N6 in het voorbeeld). Zelfs als u knooppunten aan dat cluster (N7-N10) hebt toegevoegd, worden replica's/instanties alleen op N1-N5 geplaatst vanwege beperkingen op fout- en upgradedomeinen. 
+Aan de andere kant kan deze aanpak te strikt zijn en mag het cluster niet alle resources gebruiken. Voor bepaalde cluster configuraties kunnen bepaalde knoop punten niet worden gebruikt. Dit kan ertoe leiden dat Service Fabric uw services niet plaatst, wat resulteert in waarschuwings berichten. In het vorige voor beeld kunnen sommige cluster knooppunten niet worden gebruikt (N6 in het voor beeld). Zelfs als u knoop punten aan dat cluster hebt toegevoegd (N7-N10), worden replica's/instanties alleen op N1-N5 geplaatst vanwege beperkingen op fout-en upgrade domeinen. 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N1 | | | |N10 |
+| **UD0** |Categorieën | | | |N10 |
 | **UD1** |N6 |N2 | | | |
 | **UD2** | |N7 |N3 | | |
 | **UD3** | | |N8 |N4 | |
-| **Ud4** | | | |N9 |N5 |
+| **UD4** | | | |N9 |N5 |
 
 
 
 ### <a name="alternative-approach"></a>Alternatieve aanpak
 
-Clusterresourcebeheer ondersteunt een andere versie van de beperking voor fout- en upgradedomeinen. Het maakt plaatsing mogelijk en garandeert toch een minimumniveau van veiligheid. De alternatieve beperking kan als volgt worden vermeld: "Voor een bepaalde servicepartitie moet replicadistributie over domeinen ervoor zorgen dat de partitie geen quorumverlies lijdt." Stel dat deze beperking een "quorumveilige" garantie biedt. 
+Cluster resource manager ondersteunt een andere versie van de beperking voor fout-en upgrade domeinen. Het maakt plaatsing mogelijk en garandeert nog steeds een minimum niveau van veiligheid. De alternatieve beperking kan als volgt worden aangegeven: "voor een bepaalde service partitie, replica distributie over domeinen moet ervoor zorgen dat de partitie geen quorum verlies ondervindt." Stel dat deze beperking een ' quorum veilige ' garantie biedt. 
 
 > [!NOTE]
-> Voor een stateful service definiëren we *quorumverlies* in een situatie waarin een meerderheid van de partitiereplica's tegelijkertijd is uitgeschakeld. Als **TargetReplicaSetSize** bijvoorbeeld vijf is, vertegenwoordigt een set van drie replica's quorum. Als **TargetReplicaSetSize** zes is, zijn er vier replica's nodig voor het quorum. In beide gevallen kunnen niet meer dan twee replica's tegelijkertijd worden afgebroken als de partitie normaal wil blijven functioneren. 
+> Voor een stateful service definiëren we *quorum verlies* in een situatie waarin een meerderheid van de partitie replica's tegelijk actief is. Als **TargetReplicaSetSize** bijvoorbeeld vijf is, vertegenwoordigt een set van elke drie replica's het quorum. En als **TargetReplicaSetSize** zes zijn, zijn er vier replica's nodig voor quorum. In beide gevallen kunnen niet meer dan twee replica's tegelijkertijd worden uitgevoerd als de partitie normaal gesp roken gewoon werkt. 
 >
-> Voor een staatloze dienst bestaat er niet zoiets als *quorumverlies.* Staatloze diensten blijven normaal functioneren, zelfs als de meeste exemplaren tegelijkertijd naar beneden gaan. Dus, we zullen ons richten op stateful diensten in de rest van dit artikel.
+> Voor een stateless service is er geen *quorum verlies*. Stateless services blijven normaal functioneren, zelfs als een meerderheid van de exemplaren tegelijkertijd actief is. Daarom zullen we zich richten op stateful Services in de rest van dit artikel.
 >
 
-Laten we teruggaan naar het vorige voorbeeld. Met de "quorumveilige" versie van de beperking zijn alle drie de lay-outs geldig. Zelfs als FD0 is mislukt in de tweede lay-out of UD1 is mislukt in de derde lay-out, heeft de partitie nog steeds quorum. (Een meerderheid van de replica's zou nog steeds up.) Met deze versie van de beperking, N6 kan bijna altijd worden gebruikt.
+We gaan terug naar het vorige voor beeld. Met de ' quorum veilige ' versie van de beperking zijn alle drie de indelingen geldig. Zelfs als FD0 is mislukt in de tweede indeling of als UD1 in de derde indeling mislukt, zou de partitie nog steeds quorum hebben. (Een meerderheid van de replica's zou nog steeds actief zijn.) Met deze versie van de beperking kan N6 bijna altijd worden gebruikt.
 
-De "quorumveilige" benadering biedt meer flexibiliteit dan de "maximale verschil"-benadering. De reden is dat het gemakkelijker is om replica-distributies te vinden die geldig zijn in bijna elke clustertopologie. Deze aanpak kan echter niet garanderen dat de beste fouttolerantie kenmerken, omdat sommige mislukkingen zijn erger dan anderen. 
+De benadering ' quorum veilig ' biedt meer flexibiliteit dan de benadering ' Maxi maal verschil '. De reden hiervoor is dat het gemakkelijker is om replica distributies te vinden die geldig zijn in vrijwel elke cluster topologie. Deze aanpak kan echter niet voldoen aan de kenmerken van de beste fout tolerantie omdat sommige fouten erger zijn dan andere. 
 
-In het ergste geval kan een meerderheid van de replica's verloren gaan met het mislukken van één domein en een extra replica. In plaats van dat er bijvoorbeeld drie fouten nodig zijn om het quorum met vijf replica's of instanties te verliezen, u nu een meerderheid verliezen met slechts twee fouten. 
+In het ergste geval kan een meerderheid van de replica's verloren gaan met het mislukken van één domein en één extra replica. In plaats van drie storingen die zijn vereist om het quorum te verliezen met vijf replica's of exemplaren, kunt u nu een meerderheid met twee storingen verliezen. 
 
-### <a name="adaptive-approach"></a>Adaptieve aanpak
-Omdat beide benaderingen sterke en zwakke punten hebben, hebben we een adaptieve aanpak geïntroduceerd die deze twee strategieën combineert.
+### <a name="adaptive-approach"></a>Adaptieve benadering
+Omdat beide benaderingen sterke en zwakke plekken hebben, hebben we een adaptieve benadering geïntroduceerd waarin deze twee strategieën worden gecombineerd.
 
 > [!NOTE]
-> Dit is het standaardgedrag dat begint met Service Fabric-versie 6.2. 
+> Dit is het standaard gedrag dat begint bij Service Fabric versie 6,2. 
 > 
-> De adaptieve benadering gebruikt standaard de logica "maximaal verschil" en schakelt alleen over naar de "quorumveilige" logica wanneer dat nodig is. Cluster Resource Manager zoekt automatisch uit welke strategie nodig is door te kijken naar hoe het cluster en de services worden geconfigureerd.
+> De adaptieve benadering maakt standaard gebruik van de logica ' Maximum verschil ' en schakelt alleen de logica ' quorum veilig ' in als dat nodig is. Cluster resource manager heeft automatisch de benodigde strategie door te kijken naar de configuratie van het cluster en de services.
 > 
-> Clusterresourcebeheer moet de logica 'op quorum gebaseerd' gebruiken voor een service die beide voorwaarden waar hebben:
+> Cluster resource manager moet de logica ' op basis van quorum ' voor een service gebruiken beide voor waarden waar zijn:
 >
-> * **TargetReplicaSetSize** voor de service is gelijkmatig deelbaar door het aantal foutdomeinen en het aantal upgradedomeinen.
-> * Het aantal knooppunten is kleiner dan of gelijk aan het aantal foutdomeinen vermenigvuldigd met het aantal upgradedomeinen.
+> * **TargetReplicaSetSize** voor de service is gelijkmatig deelbaar door het aantal fout domeinen en het aantal upgrade domeinen.
+> * Het aantal knoop punten is kleiner dan of gelijk aan het aantal fout domeinen vermenigvuldigd met het aantal upgrade domeinen.
 >
-> Houd er rekening mee dat Cluster Resource Manager deze aanpak zal gebruiken voor zowel stateloze als stateful services, ook al is quorumverlies niet relevant voor stateless services.
+> Houd er rekening mee dat cluster resource manager deze methode gebruikt voor stateless en stateful Services, zelfs als quorum verlies niet relevant is voor stateless Services.
 
-Laten we teruggaan naar het vorige voorbeeld en aannemen dat een cluster nu acht knooppunten heeft. Het cluster is nog steeds geconfigureerd met vijf foutdomeinen en vijf upgradedomeinen en de **TargetReplicaSetSize-waarde** van een service die op dat cluster wordt gehost, blijft vijf. 
+We gaan terug naar het vorige voor beeld en gaan ervan uit dat een cluster nu acht knoop punten heeft. Het cluster is nog steeds geconfigureerd met vijf fout domeinen en vijf upgrade domeinen en de **TargetReplicaSetSize** -waarde van een service die op dat cluster wordt gehost, blijft vijf. 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N1 | | | | |
+| **UD0** |Categorieën | | | | |
 | **UD1** |N6 |N2 | | | |
 | **UD2** | |N7 |N3 | | |
 | **UD3** | | |N8 |N4 | |
-| **Ud4** | | | | |N5 |
+| **UD4** | | | | |N5 |
 
-Omdat aan alle vereiste voorwaarden is voldaan, gebruikt Cluster Resource Manager de logica 'quorumgebaseerd' bij het distribueren van de service. Dit maakt het gebruik van N6-N8 mogelijk. Een mogelijke servicedistributie in dit geval ziet er als volgt uit:
+Omdat aan alle benodigde voor waarden wordt voldaan, gebruikt cluster resource manager de logica ' quorum gebaseerd ' bij het distribueren van de service. Hiermee wordt het gebruik van N6-N8 ingeschakeld. Een mogelijke service distributie in dit geval kan er als volgt uitzien:
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotaal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
-| **Ud4** | | | | |R5 |1 |
-| **FDTotaal** |2 |1 |1 |0 |1 |- |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |2 |1 |1 |0 |1 |- |
 
-Als de **targetreplicasetgroottewaarde** van uw service is teruggebracht tot vier (bijvoorbeeld), merkt Cluster Resource Manager die wijziging. Het wordt hervat met behulp van de logica "maximaal verschil", omdat **TargetReplicaSetSize** niet meer te delen is door het aantal foutdomeinen en upgradedomeinen. Als gevolg hiervan zullen bepaalde replicabewegingen optreden om de resterende vier replica's op knooppunten N1-N5 te distribueren. Op die manier wordt de "maximale verschil" versie van het foutdomein en de domeinlogica van het upgradedomein niet geschonden. 
+Als de **TargetReplicaSetSize** -waarde van uw service wordt beperkt tot vier (bijvoorbeeld), ziet u in cluster resource manager dat er wijzigingen zijn. Het wordt hervat met behulp van de logica ' Maximum verschil ', omdat **TargetReplicaSetSize** niet meer kan worden gedeeld door het aantal fout domeinen en upgrade domeinen. Als gevolg hiervan worden bepaalde replica verplaatsingen uitgevoerd om de resterende vier replica's te verdelen op knoop punten N1-N5. Op die manier wordt de versie ' Maximum verschil ' van het fout domein en de upgrade van domein logica niet geschonden. 
 
-Als de waarde **TargetReplicaSetSize** in de vorige lay-out vijf is en N1 uit het cluster wordt verwijderd, wordt het aantal upgradedomeinen gelijk aan vier. Nogmaals, Cluster Resource Manager begint met het gebruik van "maximale verschil" logica, omdat het aantal upgrade domeinen niet gelijkmatig verdelen van de service **TargetReplicaSetSize** waarde meer. Als gevolg hiervan moet replica R1, wanneer het opnieuw wordt gebouwd, op N4 landen, zodat de beperking voor het fout- en upgradedomein niet wordt geschonden.
+Als in de vorige indeling de **TargetReplicaSetSize** -waarde vijf en N1 uit het cluster is verwijderd, wordt het aantal upgrade domeinen gelijk aan vier. Daarnaast begint cluster resource manager met behulp van de logica ' Maximum verschil ', omdat het aantal upgrade domeinen de **TargetReplicaSetSize** -waarde van de service evenredig niet meer opsplitst. Als gevolg hiervan heeft replica R1, wanneer deze opnieuw wordt gebouwd, op N4, zodat de beperking voor het probleem en het upgrade domein niet wordt geschonden.
 
-|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotaal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N.v.t. |N.v.t. |N.v.t. |N.v.t. |N.v.t. |N.v.t. |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
-| **Ud4** | | | | |R5 |1 |
-| **FDTotaal** |1 |1 |1 |1 |1 |- |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
-## <a name="configuring-fault-and-upgrade-domains"></a>Fout- en upgradedomeinen configureren
-In Azure-gehoste Service Fabric-implementaties worden foutdomeinen en upgradedomeinen automatisch gedefinieerd. Service Fabric pikt en gebruikt de omgevingsinformatie van Azure.
+## <a name="configuring-fault-and-upgrade-domains"></a>Fout-en upgrade domeinen configureren
+In door Azure gehoste Service Fabric-implementaties worden fout domeinen en upgrade domeinen automatisch gedefinieerd. Service Fabric de omgevings gegevens van Azure ophaalt en gebruikt.
 
-Als u uw eigen cluster maakt (of een bepaalde topologie in ontwikkeling wilt uitvoeren), u het foutdomein zelf verstrekken en domeininformatie upgraden. In dit voorbeeld definiëren we een lokaal ontwikkelingscluster met negen nodes dat drie datacenters omvat (elk met drie racks). Dit cluster heeft ook drie upgradedomeinen die zijn verwijderd in deze drie datacenters. Hier is een voorbeeld van de configuratie in ClusterManifest.xml:
+Als u uw eigen cluster maakt (of als u een bepaalde topologie in ontwikkeling wilt uitvoeren), kunt u het fout domein zelf opgeven en zelf de domein gegevens upgraden. In dit voor beeld definiëren we een lokaal ontwikkelings cluster met negen knoop punten dat drie data centers omvat (elk met drie racks). Dit cluster heeft ook drie upgrade domeinen die zijn gesegmenteerd over deze drie data centers. Hier volgt een voor beeld van de configuratie in ClusterManifest. XML:
 
 ```xml
   <Infrastructure>
@@ -268,7 +268,7 @@ Als u uw eigen cluster maakt (of een bepaalde topologie in ontwikkeling wilt uit
   </Infrastructure>
 ```
 
-In dit voorbeeld wordt ClusterConfig.json gebruikt voor zelfstandige implementaties:
+In dit voor beeld wordt ClusterConfig. json gebruikt voor zelfstandige implementaties:
 
 ```json
 "nodes": [
@@ -339,69 +339,69 @@ In dit voorbeeld wordt ClusterConfig.json gebruikt voor zelfstandige implementat
 ```
 
 > [!NOTE]
-> Wanneer u clusters definieert via Azure Resource Manager, wijst Azure foutdomeinen toe en upgradedomeinen. De definitie van uw knooppunttypen en virtuele machineschaalsets in uw Azure Resource Manager-sjabloon bevat dus geen informatie over het foutdomein of het upgradedomein.
+> Wanneer u clusters definieert via Azure Resource Manager, worden fout domeinen en upgrade domeinen door Azure toegewezen. De definitie van uw knooppunt typen en schaal sets voor virtuele machines in uw Azure Resource Manager sjabloon bevat dus geen informatie over het fout domein of het upgrade domein.
 >
 
-## <a name="node-properties-and-placement-constraints"></a>Eigenschappen en plaatsingsbeperkingen voor knooppunten
-Soms (in feite, de meeste van de tijd) wilt u ervoor zorgen dat bepaalde workloads alleen worden uitgevoerd op bepaalde soorten knooppunten in het cluster. Voor sommige workloads zijn bijvoorbeeld GPU's of SSD's nodig en andere niet. 
+## <a name="node-properties-and-placement-constraints"></a>Knooppunt eigenschappen en plaatsings beperkingen
+Soms wilt u er ook voor zorgen dat bepaalde werk belastingen alleen worden uitgevoerd op bepaalde typen knoop punten in het cluster. Sommige werk belastingen vereisen bijvoorbeeld Gpu's of Ssd's, en andere kunnen niet. 
 
-Een goed voorbeeld van het targeten van hardware op bepaalde workloads is bijna elke n-tier architectuur. Bepaalde machines dienen als front-end of API-serving kant van de toepassing en worden blootgesteld aan de clients of het internet. Verschillende machines, vaak met verschillende hardwarebronnen, verwerken het werk van de reken- of opslaglagen. Deze zijn meestal _niet_ direct blootgesteld aan klanten of het internet. 
+Een goed voor beeld van het doel van hardware voor bepaalde werk belastingen is bijna elke n-tier-architectuur. Bepaalde machines fungeren als front-end-of API-client voor de toepassing en worden blootgesteld aan de clients of het internet. Verschillende machines, vaak met verschillende hardwarebronnen, verwerken het werk van de reken-of opslag lagen. Deze worden meestal _niet_ rechtstreeks blootgesteld aan clients of Internet. 
 
-Service Fabric verwacht dat in sommige gevallen bepaalde workloads op bepaalde hardwareconfiguraties moeten worden uitgevoerd. Bijvoorbeeld:
+Service Fabric verwacht dat in sommige gevallen bepaalde werk belastingen mogelijk moeten worden uitgevoerd op bepaalde hardwareconfiguraties. Bijvoorbeeld:
 
-* Een bestaande n-tier applicatie is "opgeheven en verschoven" naar een Service Fabric omgeving.
-* Een werkbelasting moet worden uitgevoerd op specifieke hardware om redenen van prestaties, schaal of beveiligingsisolatie.
-* Een werkbelasting moet worden geïsoleerd van andere workloads om redenen van beleid of resourceverbruik.
+* Een bestaande toepassing met n-Tiers is in een Service Fabric omgeving getil en geschoven.
+* Een werk belasting moet op specifieke hardware worden uitgevoerd om redenen voor prestaties, schalen of beveiligings isolatie.
+* Een werk belasting moet worden geïsoleerd van andere werk belastingen om redenen van beleid of bronnen verbruik.
 
-Om dit soort configuraties te ondersteunen, bevat Service Fabric tags die u toepassen op knooppunten. Deze tags worden *knooppunteigenschappen*genoemd. *Plaatsingsbeperkingen* zijn de instructies die zijn gekoppeld aan afzonderlijke services die u selecteert voor een of meer knooppunteigenschappen. Plaatsingsbeperkingen bepalen waar services moeten worden uitgevoerd. De reeks beperkingen is uitbreidbaar. Elk sleutel/waardepaar kan werken. 
-
-<center>
-
-![Verschillende workloads voor een clusterindeling][Image5]
-</center>
-
-### <a name="built-in-node-properties"></a>Ingebouwde knooppunteigenschappen
-Service Fabric definieert een aantal standaardknooppunteigenschappen die automatisch kunnen worden gebruikt, zodat u ze niet hoeft te definiëren. De standaardeigenschappen die bij elk knooppunt zijn gedefinieerd, zijn **NodeType** en **NodeName**. 
-
-U bijvoorbeeld een plaatsingsbeperking schrijven als `"(NodeType == NodeType03)"`. **NodeType** is een veelgebruikte eigenschap. Het is handig omdat het overeenkomt met 1:1 met een type van een machine. Elk type machine komt overeen met een type werkbelasting in een traditionele n-tier toepassing.
+Service Fabric bevat Tags die u kunt Toep assen op knoop punten voor ondersteuning bij het gebruik van deze configuraties. Deze tags worden *knooppunt eigenschappen*genoemd. *Plaatsings beperkingen* zijn de instructies die zijn gekoppeld aan afzonderlijke services die u voor een of meer knooppunt eigenschappen selecteert. Plaatsings beperkingen bepalen waar services moeten worden uitgevoerd. De set met beperkingen is uitbreidbaar. Een combi natie van sleutel/waarde kan werken. 
 
 <center>
 
-![Plaatsingsbeperkingen en knooppunteigenschappen][Image6]
+![Verschillende werk belastingen voor een cluster indeling][Image5]
 </center>
 
-## <a name="placement-constraints-and-node-property-syntax"></a>Plaatsingsbeperkingen en syntaxis van de eigenschap knooppunt 
-De waarde die is opgegeven in de eigenschap knooppunt kan een tekenreeks, Booleaan of lang ondertekend zijn. De instructie bij de service wordt een *plaatsingsbeperking* genoemd omdat deze beperkt waar de service in het cluster kan worden uitgevoerd. De beperking kan elke Booleaanse instructie zijn die werkt op de knooppunteigenschappen in het cluster. De geldige selectors in deze Booleaanse uitspraken zijn:
+### <a name="built-in-node-properties"></a>Ingebouwde knooppunt eigenschappen
+Service Fabric definieert een aantal standaard knooppunt eigenschappen die automatisch kunnen worden gebruikt, zodat u ze niet hoeft te definiëren. De standaard eigenschappen die op elk knoop punt worden gedefinieerd, zijn **NodeType** en **knooppuntnaam**. 
 
-* Voorwaardelijke controles voor het maken van bepaalde verklaringen:
+U kunt bijvoorbeeld een plaatsings beperking schrijven als `"(NodeType == NodeType03)"`. **NodeType** is een veelgebruikte eigenschap. Het is nuttig omdat deze 1:1 overeenkomt met een type machine. Elk type computer komt overeen met een type werk belasting in een traditionele toepassing met n-tier.
 
-  | Verklaring | Syntaxis |
+<center>
+
+![Plaatsings beperkingen en knooppunt eigenschappen][Image6]
+</center>
+
+## <a name="placement-constraints-and-node-property-syntax"></a>Plaatsings beperkingen en syntaxis van knooppunt eigenschappen 
+De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een Boolean of een lange integer zijn. De instructie bij de service wordt een plaatsings *beperking* genoemd, omdat deze beperkt waar de service kan worden uitgevoerd in het cluster. De beperking kan elke Booleaanse instructie zijn die wordt toegepast op de knooppunt eigenschappen in het cluster. De geldige selecters in deze Boole-instructies zijn:
+
+* Voorwaardelijke controles voor het maken van specifieke instructies:
+
+  | Rekeningen | Syntaxis |
   | --- |:---:|
-  | "Gelijk aan" | "==" |
-  | "Niet gelijk aan" | "!=" |
-  | "groter dan" | ">" |
-  | "groter dan of gelijk aan" | ">=" |
-  | "minder dan" | "<" |
-  | "minder dan of gelijk aan" | "<=" |
+  | "gelijk aan" | "==" |
+  | is niet gelijk aan | "!=" |
+  | ' groter dan ' | ">" |
+  | ' groter dan of gelijk aan ' | ">=" |
+  | kleiner dan | "<" |
+  | kleiner dan of gelijk aan | "<=" |
 
 * Booleaanse instructies voor groepering en logische bewerkingen:
 
-  | Verklaring | Syntaxis |
+  | Rekeningen | Syntaxis |
   | --- |:---:|
-  | "en" | "&&" |
-  | "of" | "&#124;&#124;" |
-  | "Niet" | "!" |
-  | "groep als enkele verklaring" | "()" |
+  | maar | "&&" |
+  | of | "&#124;&#124;" |
+  | ten | "!" |
+  | "groeperen als één instructie" | "()" |
 
-Hier volgen enkele voorbeelden van basisdrukverklaringen:
+Hier volgen enkele voor beelden van elementaire beperkings instructies:
 
   * `"Value >= 5"`
   * `"NodeColor != green"`
   * `"((OneProperty < 100) || ((AnotherProperty == false) && (OneProperty >= 100)))"`
 
-Alleen knooppunten waarvan de algemene plaatsingsbeperkingsinstructie wordt geëvalueerd op 'True' kunnen de service erop plaatsen. Knooppunten die geen eigenschap hebben gedefinieerd, komen niet overeen met een plaatsingsbeperking die de eigenschap bevat.
+Alleen knoop punten waarbij de instructie van de algemene plaatsings beperking resulteert in ' True ', kan de service op de node hebben geplaatst. Knoop punten waarvoor geen eigenschap is gedefinieerd, komen niet overeen met een plaatsings beperking die de eigenschap bevat.
 
-Stel dat de volgende knooppunteigenschappen zijn gedefinieerd voor een knooppunttype in ClusterManifest.xml:
+Stel dat de volgende knooppunt eigenschappen zijn gedefinieerd voor een knooppunt type in ClusterManifest. XML:
 
 ```xml
     <NodeType Name="NodeType01">
@@ -413,10 +413,10 @@ Stel dat de volgende knooppunteigenschappen zijn gedefinieerd voor een knooppunt
     </NodeType>
 ```
 
-In het volgende voorbeeld worden knooppunteigenschappen weergegeven die zijn gedefinieerd via ClusterConfig.json voor zelfstandige implementaties of Template.json voor azure-gehoste clusters. 
+In het volgende voor beeld worden eigenschappen van knoop punten weer gegeven die zijn gedefinieerd via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters. 
 
 > [!NOTE]
-> In de sjabloon Azure Resource Manager wordt het knooppunttype meestal geparameteriseerd. Het zou `"[parameters('vmNodeType1Name')]"` eruit zien in plaats van NodeType01.
+> In uw Azure Resource Manager-sjabloon is het knooppunt type meestal para meters. Dit ziet eruit als `"[parameters('vmNodeType1Name')]"` in plaats van NodeType01.
 >
 
 ```json
@@ -432,7 +432,7 @@ In het volgende voorbeeld worden knooppunteigenschappen weergegeven die zijn ged
 ],
 ```
 
-U *serviceplaatsingsbeperkingen* voor een service als volgt maken:
+U kunt als volgt service plaatsings *beperkingen* voor een service maken:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -447,9 +447,9 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Als alle knooppunten van NodeType01 geldig zijn, u `"(NodeType == NodeType01)"`ook dat knooppunttype selecteren met de beperking.
+Als alle knoop punten van NodeType01 geldig zijn, kunt u het knooppunt type ook selecteren met de `"(NodeType == NodeType01)"`beperking.
 
-De plaatsingsbeperkingen van een service kunnen dynamisch worden bijgewerkt tijdens runtime. Als dat nodig is, u een service verplaatsen in het cluster, vereisten toevoegen en verwijderen, enzovoort. Service Fabric zorgt ervoor dat de service up- en beschikbaar blijft, zelfs wanneer dit soort wijzigingen worden aangebracht.
+De plaatsings beperkingen van een service kunnen dynamisch worden bijgewerkt tijdens runtime. Indien nodig kunt u een service in het cluster verplaatsen, vereisten toevoegen en verwijderen, enzovoort. Service Fabric zorgt ervoor dat de service actief blijft, zelfs wanneer deze typen wijzigingen worden aangebracht.
 
 ```csharp
 StatefulServiceUpdateDescription updateDescription = new StatefulServiceUpdateDescription();
@@ -461,33 +461,33 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/servic
 Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstraints "NodeType == NodeType01"
 ```
 
-Plaatsingsbeperkingen worden opgegeven voor elke benoemde serviceinstantie. Updates nemen altijd de plaats in van (overschrijven) wat eerder was opgegeven.
+Plaatsings beperkingen zijn opgegeven voor elk benoemd service-exemplaar. Updates nemen altijd de plaats van (overschrijven) wat eerder is opgegeven.
 
-De clusterdefinitie definieert de eigenschappen op een knooppunt. Als u de eigenschappen van een knooppunt wijzigt, moet u de clusterconfiguratie bijwerken. Voor het upgraden van de eigenschappen van een knooppunt moet elk getroffen knooppunt opnieuw worden gestart om de nieuwe eigenschappen te rapporteren. Service Fabric beheert deze rolling upgrades.
+De cluster definitie definieert de eigenschappen van een knoop punt. Als u de eigenschappen van een knoop punt wilt wijzigen, moet u een upgrade uitvoeren naar de cluster configuratie. Als u de eigenschappen van een knoop punt wilt bijwerken, moet elk betrokken knoop punt opnieuw worden gestart om de nieuwe eigenschappen te melden. Service Fabric beheert deze roulerende upgrades.
 
-## <a name="describing-and-managing-cluster-resources"></a>Clusterbronnen beschrijven en beheren
-Een van de belangrijkste taken van een orchestrator is het beheren van het verbruik van resources in het cluster. Het beheren van clusterbronnen kan een paar verschillende dingen betekenen. 
+## <a name="describing-and-managing-cluster-resources"></a>Cluster bronnen beschrijven en beheren
+Een van de belangrijkste taken van een Orchestrator is om het resource gebruik in het cluster te beheren. Het beheren van cluster bronnen kan een aantal verschillende dingen betekenen. 
 
-Ten eerste is er ervoor te zorgen dat machines niet overbelast zijn. Dit betekent ervoor zorgen dat machines niet meer services uitvoeren dan ze aankunnen. 
+De eerste keer dat de computers niet overbelast zijn. Dit betekent dat machines niet meer services uitvoeren dan ze kunnen verwerken. 
 
-Ten tweede is er balanceren en optimaliseren, die essentieel zijn voor het efficiënt uitvoeren van services. Kosteneffectieve of prestatiegevoelige serviceaanbiedingen kunnen sommige knooppunten niet toestaan om warm te zijn, terwijl andere het koud hebben. Hot nodes leiden tot resource twist en slechte prestaties. Koude knooppunten vertegenwoordigen verspilde resources en hogere kosten. 
+Ten tweede is er sprake van Balancing en optimalisatie, wat van essentieel belang is voor het efficiënt uitvoeren van services. Met rendabele of prestatie gevoelige service aanbiedingen kunnen bepaalde knoop punten niet worden warme wanneer anderen koud zijn. Hot knoop punten leiden tot bron conflicten en slechte prestaties. Koude knoop punten vertegenwoordigen verspilde resources en verhoogde kosten. 
 
-Service Fabric vertegenwoordigt resources als *metrics*. Statistieken zijn een logische of fysieke bron die u wilt beschrijven aan Service Fabric. Voorbeelden van statistieken zijn 'WorkQueueDepth' of 'MemoryInMb'. Zie [Resourcegovernance](service-fabric-resource-governance.md)voor informatie over de fysieke resources die Service Fabric op knooppunten kan beheren. Zie [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor informatie over de standaardstatistieken die door clusterbronbeheer worden gebruikt en hoe aangepaste statistieken kunnen worden geconfigureerd.
+Service Fabric geeft resources als *metrische gegevens*. Metrische gegevens zijn een logische of fysieke resource die u wilt beschrijven Service Fabric. Voor beelden van metrische gegevens zijn ' WorkQueueDepth ' of ' MemoryInMb '. Zie [resource governance](service-fabric-resource-governance.md)voor informatie over de fysieke resources die service Fabric kunnen bepalen op knoop punten. Zie [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over de standaard waarden die worden gebruikt door cluster resource manager en het configureren van aangepaste metrische gegevens.
 
-Statistieken verschillen van plaatsingsbeperkingen en knooppunteigenschappen. Knooppunteigenschappen zijn statische beschrijvingen van de knooppunten zelf. Statistieken beschrijven resources die knooppunten hebben en die services verbruiken wanneer ze op een knooppunt worden uitgevoerd. Een knooppunt eigenschap kan **worden HasSSD** en kan worden ingesteld op waar of onwaar. De hoeveelheid ruimte die beschikbaar is op die SSD en hoeveel wordt verbruikt door diensten zou een metrische zoals "DriveSpaceInMb." 
+Metrische gegevens verschillen van plaatsings beperkingen en eigenschappen van knoop punten. Knooppunt eigenschappen zijn statische descriptoren van de knoop punten zelf. Metrische gegevens beschrijven resources die knoop punten hebben en die services verbruiken wanneer ze op een knoop punt worden uitgevoerd. Een eigenschap van een knoop punt kan **HasSSD** zijn en kan worden ingesteld op True of false. De hoeveelheid beschik bare ruimte op die SSD en hoeveel er door Services wordt verbruikt, is een metrische waarde zoals ' DriveSpaceInMb '. 
 
-Net als bij plaatsingsbeperkingen en knooppunteigenschappen, begrijpt Service Fabric Cluster Resource Manager niet wat de namen van de statistieken betekenen. Metrische namen zijn slechts tekenreeksen. Het is een goede gewoonte om eenheden te declareren als onderdeel van de metrische namen die u maakt wanneer ze dubbelzinnig kunnen zijn.
+Net als bij plaatsings beperkingen en knooppunt eigenschappen Service Fabric cluster resource manager niet begrijpen wat de namen van de metrische gegevens betekenen. Metrische namen zijn alleen teken reeksen. Het is een goed idee om eenheden te declareren als onderdeel van de metrische namen die u maakt wanneer ze mogelijk dubbel zinnig zijn.
 
 ## <a name="capacity"></a>Capaciteit
-Als u alle *resourcebalancing*hebt uitgeschakeld, zorgt Service Fabric Cluster Resource Manager er nog steeds voor dat knooppunt over de capaciteit gaat. Het beheren van capaciteitsoverschrijdingen is mogelijk, tenzij het cluster te vol is of de werkbelasting groter is dan een knooppunt. Capaciteit is een andere *beperking* die Cluster Resource Manager gebruikt om te begrijpen hoeveel van een resource een knooppunt heeft. De resterende capaciteit wordt ook bijgehouden voor het cluster als geheel. 
+Als u alle resources hebt *uitgebalanceerd*, wordt service Fabric cluster resource manager er nog steeds voor zorgen dat er geen knoop punten meer zijn dan de capaciteit. Het beheer van capaciteits overschrijdingen is mogelijk tenzij het cluster te vol is of omdat de werk belasting groter is dan een wille keurig knoop punt. De capaciteit is een andere *beperking* die door cluster resource manager wordt gebruikt om te begrijpen welk deel van een resource een knoop punt heeft. De resterende capaciteit wordt ook bijgehouden voor het cluster als geheel. 
 
-Zowel de capaciteit als het verbruik op serviceniveau worden uitgedrukt in metrics. De statistiek kan bijvoorbeeld 'ClientConnections' zijn en een knooppunt kan een capaciteit hebben voor 'ClientConnections' van 32.768. Andere knooppunten kunnen andere limieten hebben. Een service die op dat knooppunt wordt uitgevoerd, kan zeggen dat deze momenteel 32.256 van de metrische 'ClientConnections' verbruikt.
+Zowel de capaciteit als het verbruik op service niveau worden uitgedrukt in metrieke waarden. De metriek kan bijvoorbeeld ' ClientConnections ' zijn en een knoop punt heeft mogelijk een capaciteit voor ' ClientConnections ' van 32.768. Andere knoop punten kunnen andere limieten hebben. Een service die op dat knoop punt wordt uitgevoerd, kan zeggen dat er op dit moment 32.256 van de metrische waarde ' ClientConnections ' wordt gebruikt.
 
-Tijdens runtime houdt Cluster Resource Manager de resterende capaciteit in het cluster en op knooppunten bij. Als u de capaciteit wilt bijhouden, trekt Cluster Resource Manager het gebruik van elke service af van de capaciteit van een knooppunt waar de service wordt uitgevoerd. Met deze informatie kan Cluster Resource Manager achterhalen waar replica's moeten worden plaatst of verplaatst, zodat knooppunten niet over de capaciteit gaan.
+Tijdens runtime houdt cluster resource manager de resterende capaciteit in het cluster en op knoop punten bij. Voor het bijhouden van de capaciteit trekt cluster resource manager elk gebruik van de service af van de capaciteit van een knoop punt waar de service wordt uitgevoerd. Met deze informatie kan cluster bron beheer bepalen waar replica's moeten worden geplaatst of verplaatst, zodat de knoop punten de capaciteit niet overschrijden.
 
 <center>
 
-![Clusterknooppunten en -capaciteit][Image7]
+![Cluster knooppunten en-capaciteit][Image7]
 </center>
 
 ```csharp
@@ -505,7 +505,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-U capaciteiten zien die zijn gedefinieerd in het clustermanifest. Hier is een voorbeeld voor ClusterManifest.xml:
+U kunt de capaciteit zien die in het cluster manifest is gedefinieerd. Hier volgt een voor beeld van ClusterManifest. XML:
 
 ```xml
     <NodeType Name="NodeType03">
@@ -515,7 +515,7 @@ U capaciteiten zien die zijn gedefinieerd in het clustermanifest. Hier is een vo
     </NodeType>
 ```
 
-Hier vindt u een voorbeeld van capaciteiten die zijn gedefinieerd via ClusterConfig.json voor zelfstandige implementaties of Template.json voor azure-gehoste clusters: 
+Hier volgt een voor beeld van capaciteit gedefinieerd via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters: 
 
 ```json
 "nodeTypes": [
@@ -528,27 +528,27 @@ Hier vindt u een voorbeeld van capaciteiten die zijn gedefinieerd via ClusterCon
 ],
 ```
 
-De belasting van een service verandert vaak dynamisch. Stel dat de belasting van een replica van 'ClientConnections' is gewijzigd van 1.024 naar 2048. Het knooppunt waarop het liep, had toen een capaciteit van slechts 512 resterende voor die statistiek. Nu is de plaatsing van replica's of instantie ongeldig, omdat er niet genoeg ruimte is op dat knooppunt. Clusterresourcebeheer moet het knooppunt weer onder de capaciteit krijgen. Het vermindert de belasting op het knooppunt dat over capaciteit is door een of meer van de replica's of exemplaren van dat knooppunt naar andere knooppunten te verplaatsen. 
+Het laden van een service wordt vaak dynamisch gewijzigd. Stel dat de belasting van een replica van ClientConnections is gewijzigd van 1.024 naar 2.048. Op het knoop punt waarop het werd uitgevoerd, was er slechts een capaciteit van 512 voor die metriek. Nu de plaatsing van de replica of het exemplaar ongeldig is, omdat er onvoldoende ruimte is op het knoop punt. Cluster resource manager moet het knoop punt onder de capaciteit ophalen. Het verkleint de belasting van het knoop punt dat de capaciteit overschrijdt door een of meer van de replica's of exemplaren van dat knoop punt te verplaatsen naar andere knoop punten. 
 
-Clusterresourcebeheer probeert de kosten van het verplaatsen van replica's te minimaliseren. U meer te weten komen over [bewegingskosten](service-fabric-cluster-resource-manager-movement-cost.md) en over [het opnieuw in evenwicht brengen van strategieën en regels.](service-fabric-cluster-resource-manager-metrics.md)
+Cluster resource manager probeert de kosten voor het verplaatsen van replica's te minimaliseren. U vindt meer informatie over de [verplaatsings kosten](service-fabric-cluster-resource-manager-movement-cost.md) en over het [herverdelen van strategieën en regels](service-fabric-cluster-resource-manager-metrics.md).
 
-## <a name="cluster-capacity"></a>Clustercapaciteit
-Hoe voorkomt de clusterbronbeheer van servicestructuur dat het totale cluster te vol is? Met dynamische belasting, er is niet veel dat het kan doen. Services kunnen hun belastingspiek hebben onafhankelijk van acties die Cluster Resource Manager onderneemt. Als gevolg daarvan, uw cluster met veel hoofdruimte vandaag misschien onderpowered als er een piek morgen. 
+## <a name="cluster-capacity"></a>Cluster capaciteit
+Hoe houdt het Service Fabric cluster resource manager het hele cluster niet meer te vol? Met dynamische belasting is er geen partij die het kan doen. Services kunnen de belasting piek onafhankelijk van de acties die cluster resource manager onderneemt. Als gevolg hiervan kan uw cluster met veel ruimte vandaag worden onderstroomd als er morgen een Prikker is. 
 
-Besturingselementen in Clusterresourcebeheer helpen problemen te voorkomen. Het eerste wat u doen is voorkomen dat het maken van nieuwe workloads die ervoor zorgen dat het cluster vol raakt.
+Besturings elementen in cluster resource manager helpen bij het voor komen van problemen. Het eerste wat u kunt doen, voor komt dat er nieuwe werk belastingen worden gemaakt waardoor het cluster vol raakt.
 
-Stel dat u een stateless service maakt en er een bepaalde belasting aan heeft. De service geeft om de statistiek "DiskSpaceInMb". De service verbruikt vijf eenheden van "DiskSpaceInMb" voor elk exemplaar van de service. U wilt drie exemplaren van de service maken. Dat betekent dat u 15 eenheden van DiskSpaceInMb nodig hebt om aanwezig te zijn in het cluster zodat u zelfs deze service-exemplaren maken.
+Stel dat u een stateless service maakt en dat er een andere belasting is gekoppeld. De service zorgt voor de metrische gegevens van de DiskSpaceInMb. De service gebruikt vijf eenheden van ' DiskSpaceInMb ' voor elk exemplaar van de service. U wilt drie instanties van de service maken. Dit betekent dat u 15 eenheden van ' DiskSpaceInMb ' nodig hebt om deze service-exemplaren zelfs te maken in het cluster.
 
-Clusterresourcebeheer berekent voortdurend de capaciteit en het verbruik van elke statistiek, zodat deze de resterende capaciteit in het cluster kan bepalen. Als er niet genoeg ruimte is, weigert Cluster Resource Manager de aanroep om een service te maken.
+Cluster resource manager berekent voortdurend de capaciteit en het verbruik van elke metriek zodat de resterende capaciteit in het cluster kan worden bepaald. Als er onvoldoende ruimte is, weigert cluster resource manager de aanroep om een service te maken.
 
-Omdat de vereiste is dat er slechts 15 eenheden beschikbaar zijn, u deze ruimte op veel verschillende manieren toewijzen. Er kan bijvoorbeeld één resterende capaciteitseenheid zijn op 15 verschillende knooppunten of drie resterende capaciteitseenheden op vijf verschillende knooppunten. Als Clusterresourcebeheer de zaken kan herschikken zodat er vijf eenheden beschikbaar zijn op drie knooppunten, wordt de service verplaatst. Het herschikken van het cluster is meestal mogelijk, tenzij het cluster bijna vol is of de bestaande services om de een of andere reden niet kunnen worden geconsolideerd.
+Omdat de vereiste is dat er 15 eenheden beschikbaar zijn, kunt u deze ruimte op tal van verschillende manieren toewijzen. Er kan bijvoorbeeld één resterende capaciteits eenheid zijn op 15 verschillende knoop punten, of drie resterende capaciteits eenheden op vijf verschillende knoop punten. Als cluster resource manager items kan herschikken zodat er vijf eenheden beschikbaar zijn op drie knoop punten, wordt de service geplaatst. Het cluster kan meestal niet opnieuw worden ingedeeld, tenzij het cluster bijna vol is of als de bestaande services om een of andere reden niet kunnen worden geconsolideerd.
 
 ## <a name="buffered-capacity"></a>Gebufferde capaciteit
-Gebufferde capaciteit is een andere functie van Cluster Resource Manager. Het maakt reservering van een deel van de totale knooppuntcapaciteit mogelijk. Deze capaciteitsbuffer wordt alleen gebruikt om services te plaatsen tijdens upgrades en knooppuntfouten. 
+Gebufferde capaciteit is een andere functie van cluster resource manager. Hiermee kan een deel van de totale capaciteit van het knoop punt worden gereserveerd. Deze capaciteits buffer wordt alleen gebruikt om services te plaatsen tijdens upgrades en knooppunt fouten. 
 
-Buffercapaciteit wordt globaal per metric opgegeven voor alle knooppunten. De waarde die u kiest voor de gereserveerde capaciteit is een functie van het aantal fout- en upgradedomeinen dat u in het cluster hebt. Meer fout- en upgradedomeinen betekenen dat u een lager getal kiezen voor uw gebufferde capaciteit. Als u meer domeinen hebt, u verwachten dat kleinere hoeveelheden van uw cluster niet beschikbaar zijn tijdens upgrades en fouten. Het opgeven van gebufferde capaciteit heeft alleen zin als u ook de knooppuntcapaciteit voor een statistiek hebt opgegeven.
+Gebufferde capaciteit wordt globaal opgegeven per metrische waarde voor alle knoop punten. De waarde die u kiest voor de gereserveerde capaciteit is een functie van het aantal fout-en upgrade domeinen dat u in het cluster hebt. Meer fout-en upgrade domeinen betekenen dat u een lager getal kunt kiezen voor de buffer capaciteit. Als u meer domeinen hebt, kunt u verwachten dat kleinere hoeveel heden van uw cluster niet beschikbaar zijn tijdens upgrades en fouten. Het opgeven van de capaciteit van de buffer is alleen zinvol als u ook de capaciteit van het knoop punt voor een metriek hebt opgegeven.
 
-Hier volgt een voorbeeld van het opgeven van gebufferde capaciteit in ClusterManifest.xml:
+Hier volgt een voor beeld van het opgeven van gebufferde capaciteit in ClusterManifest. XML:
 
 ```xml
         <Section Name="NodeBufferPercentage">
@@ -557,7 +557,7 @@ Hier volgt een voorbeeld van het opgeven van gebufferde capaciteit in ClusterMan
         </Section>
 ```
 
-Hier volgt een voorbeeld van het opgeven van gebufferde capaciteit via ClusterConfig.json voor zelfstandige implementaties of Template.json voor azure-gehoste clusters:
+Hier volgt een voor beeld van het opgeven van gebufferde capaciteit via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -577,17 +577,17 @@ Hier volgt een voorbeeld van het opgeven van gebufferde capaciteit via ClusterCo
 ]
 ```
 
-Het maken van nieuwe services mislukt wanneer het cluster geen gebufferde capaciteit meer heeft voor een statistiek. Het voorkomen van het maken van nieuwe services om de buffer te behouden, zorgt ervoor dat upgrades en fouten er niet toe leiden dat knooppunten over capaciteit gaan. Gebufferde capaciteit is optioneel, maar we raden deze aan in elk cluster dat een capaciteit voor een statistiek definieert.
+Het maken van nieuwe services mislukt als het cluster niet is gebufferd voor een metrieke capaciteit. Voor komen dat er nieuwe services worden gemaakt om de buffer te behouden, zorgt u ervoor dat upgrades en fouten geen knoop punten over capaciteit kunnen gaan. De gebufferde capaciteit is optioneel, maar het wordt aangeraden in een cluster dat een capaciteit voor een metriek definieert.
 
-Clusterresourcebeheer legt deze belastingsinformatie bloot. Voor elke statistiek omvat deze informatie: 
-- De gebufferde capaciteitsinstellingen.
+Cluster resource manager geeft deze laad informatie weer. Voor elke metriek omvat deze informatie: 
+- De instellingen voor de gebufferde capaciteit.
 - De totale capaciteit.
 - Het huidige verbruik.
-- Of elke statistiek als evenwichtig wordt beschouwd of niet.
-- Statistieken over de standaarddeviatie.
-- De knooppunten met de meeste en minste belasting.  
+- Hiermee wordt aangegeven of elke waarde evenwichtig of niet wordt beschouwd.
+- Statistieken over de standaard afwijking.
+- De knoop punten met de meeste en de minimale belasting.  
   
-In de volgende code ziet u een voorbeeld van die uitvoer:
+De volgende code toont een voor beeld van die uitvoer:
 
 ```PowerShell
 PS C:\Users\user> Get-ServiceFabricClusterLoadInformation
@@ -616,10 +616,10 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Cluster Resource Manager-architectuuroverzicht](service-fabric-cluster-resource-manager-architecture.md)voor informatie over de architectuur en informatiestroom binnen Cluster Resource Manager.
-* Het definiëren van defragmentatiestatistieken is een manier om de belasting op knooppunten te consolideren in plaats van deze uit te spreiden. Zie [Defragmentatie van statistieken en belasting in Service Fabric voor](service-fabric-cluster-resource-manager-defragmentation-metrics.md)meer informatie over het configureren van defragmentatie.
-* Begin vanaf het begin en [krijg een inleiding tot Service Fabric Cluster Resource Manager.](service-fabric-cluster-resource-manager-introduction.md)
-* Zie Het cluster [Servicefabric](service-fabric-cluster-resource-manager-balancing.md)in evenwicht brengen voor meer informatie over hoe clusterresourcebeheer de belasting in het cluster beheert en in evenwicht brengt.
+* Zie [overzicht van cluster resource manager-architectuur](service-fabric-cluster-resource-manager-architecture.md)voor meer informatie over de architectuur en informatie stroom in cluster resource manager.
+* Het definiëren van metrische gegevens over defragmentatie is een manier om de belasting op knoop punten te consolideren in plaats van deze te spreiden. Zie [defragmentatie van metrische gegevens en laden in service Fabric](service-fabric-cluster-resource-manager-defragmentation-metrics.md)voor meer informatie over het configureren van defragmentatie.
+* Begin vanaf het begin en [krijg een inleiding tot service Fabric cluster resource manager](service-fabric-cluster-resource-manager-introduction.md).
+* Zie [Balancing your service Fabric cluster](service-fabric-cluster-resource-manager-balancing.md)(Engelstalig) voor meer informatie over het beheren en verdelen van de belasting van cluster resource manager in het cluster.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
 [Image2]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png

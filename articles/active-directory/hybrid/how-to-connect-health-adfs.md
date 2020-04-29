@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261565"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS bewaken met Azure AD Connect Health
-De volgende documentatie is specifiek voor het bewaken van uw Azure AD FS-infrastructuur met Azure AD Connect Health. Zie [Azure AD Connect Health gebruiken voor synchronisatie](how-to-connect-health-sync.md)voor informatie over het bewaken van Azure AD Connect (Sync) met Azure AD Connect Health. Zie Azure [AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)voor informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
+De volgende documentatie is specifiek voor het bewaken van uw Azure AD FS-infrastructuur met Azure AD Connect Health. Zie voor meer informatie over het controleren van Azure AD Connect (Sync) met Azure AD Connect Health, [Azure AD Connect Health gebruiken voor synchronisatie](how-to-connect-health-sync.md). Zie [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)voor meer informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
 
 ## <a name="alerts-for-ad-fs"></a>Waarschuwingen voor AD FS
 In de sectie Waarschuwingen van Azure AD Connect Health vindt u een lijst met actieve waarschuwingen. Elke waarschuwing omvat relevante informatie, stappen voor het oplossen van het probleem en koppelingen naar gerelateerde documentatie.
@@ -121,5 +121,5 @@ Dit rapport bevat de volgende informatie:
 ## <a name="related-links"></a>Verwante koppelingen
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
 * [De Azure AD Connect Health-agent installeren](how-to-connect-health-agent-install.md)
-* [Riskant IP-rapport](how-to-connect-health-adfs-risky-ip.md)
+* [Rapport Risk ante IP](how-to-connect-health-adfs-risky-ip.md)
 

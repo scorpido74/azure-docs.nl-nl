@@ -1,26 +1,26 @@
 ---
-title: 'PowerShell: continu implementeren vanuit GitHub'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een app maakt met CI/CD van GitHub.
+title: 'Power shell: doorlopend implementeren vanuit GitHub'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app met CI/CD maakt vanuit GitHub.
 tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: eee6ac9f9c469f9e1a9344ab4a30626c219d7836
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74685157"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Een web-app maken met continue implementatie vanuit GitHub
 
-Met dit voorbeeldscript wordt een web-app in App-service gemaakt met de bijbehorende bronnen en wordt [de continue implementatie](../deploy-continuous-deployment.md) vanuit een GitHub-opslagplaats ingesteld. Zie [Een web-app maken en code implementeren vanuit GitHub](powershell-deploy-github.md) voor de implementatie van GitHub zonder continue implementatie.
+Met dit voorbeeld script maakt u een web-app in App Service met de bijbehorende resources en wordt vervolgens [continue implementatie](../deploy-continuous-deployment.md) vanuit een github-opslag plaats ingesteld. Zie [Een web-app maken en code implementeren vanuit GitHub](powershell-deploy-github.md) voor de implementatie van GitHub zonder continue implementatie.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/overview) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure. Controleer ook of:
 
-- De code van de toepassing zich bevindt in een openbare of particuliere GitHub-opslagplaats waarvan u eigenaar bent. Om automatische builds te krijgen, structureerjet u uw repository volgens de [tabel Uw repository voorbereiden.](../deploy-continuous-deployment.md#prepare-your-repository)
-- Je hebt [een persoonlijk toegangstoken gemaakt in je GitHub-account.](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
+- De code van de toepassing zich bevindt in een openbare of particuliere GitHub-opslagplaats waarvan u eigenaar bent. Structureer uw opslag plaats op basis van de voor [bereiding van uw opslag plaats](../deploy-continuous-deployment.md#prepare-your-repository) om automatisch builds te krijgen.
+- U hebt [een persoonlijk toegangs token gemaakt in uw github-account](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

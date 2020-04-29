@@ -1,6 +1,6 @@
 ---
-title: Fouten op blauw scherm bij het opstarten van een Azure VM| Microsoft Documenten
-description: Meer informatie over het oplossen van het probleem dat de blauwe schermfout wordt ontvangen bij het opstarten| Microsoft Documenten
+title: Blauwe scherm fouten bij het opstarten van een Azure-VM | Microsoft Docs
+description: Informatie over het oplossen van het probleem dat de fout met het blauwe scherm wordt ontvangen bij het opstarten | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,58 +13,58 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
 ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266934"
 ---
-# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows toont blauwe schermfout bij het opstarten van een Azure VM
-In dit artikel worden fouten op blauw scherm beschreven die u tegenkomen wanneer u een Virtuele Machine (VM) van Windows opstart in Microsoft Azure. Het biedt stappen om u te helpen gegevens te verzamelen voor een ondersteuningsticket. 
+# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows toont een blauw scherm bij het opstarten van een Azure VM
+In dit artikel worden blauwe scherm fouten beschreven die kunnen optreden wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure. Het bevat stappen om u te helpen bij het verzamelen van gegevens voor een ondersteunings ticket. 
 
 
 ## <a name="symptom"></a>Symptoom 
 
-Een Windows-vm wordt niet gestart. Wanneer u de opstartschermafbeeldingen in [Opstartdiagnose](./boot-diagnostics.md)controleert, ziet u een van de volgende foutmeldingen in een blauw scherm:
+Een Windows-VM start niet. Wanneer u de opstart scherm afbeeldingen in [Diagnostische gegevens over opstarten](./boot-diagnostics.md)controleert, wordt een van de volgende fout berichten weer gegeven in een blauw scherm:
 
-- onze pc liep in een probleem en moet opnieuw opstarten. We verzamelen alleen wat foutinfo en dan kun je opnieuw starten.
-- Uw pc liep in een probleem en moet opnieuw opstarten.
+- Er is een probleem opgetreden in onze PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens kunt u de computer opnieuw opstarten.
+- Er is een probleem opgetreden op de PC en opnieuw moet worden opgestart.
 
-In deze sectie worden de veelvoorkomende foutmeldingen weergegeven die u tegenkomen bij het beheren van VM's:
+In deze sectie vindt u de algemene fout berichten die u kunt tegen komen bij het beheren van virtuele machines:
 
 ## <a name="cause"></a>Oorzaak
 
-Er kunnen meerdere redenen zijn waarom je een stopfout zou krijgen. De meest voorkomende oorzaken zijn:
+Er kunnen verschillende redenen zijn waarom u een Stop-fout ontvangt. De meest voorkomende oorzaken zijn:
 
-- Probleem met een bestuurder
-- Beschadigd systeembestand of geheugen
-- Een applicatie toegang tot een verboden sector van het geheugen
+- Probleem met een stuur programma
+- Beschadigd systeem bestand of geheugen
+- Een toepassing heeft toegang tot een niet-toegestane sector van het geheugen
 
-## <a name="collect-memory-dump-file"></a>Geheugendumpbestand verzamelen
+## <a name="collect-memory-dump-file"></a>Geheugen dump bestand verzamelen
 
-Om dit probleem op te lossen, moet u eerst dumpbestand verzamelen voor de crash en contact opnemen met ondersteuning met het dumpbestand. Voer de volgende stappen uit om het bestand Dump te verzamelen:
+Als u dit probleem wilt oplossen, moet u eerst het dump bestand voor de crash verzamelen en contact opnemen met de ondersteuning bij het dump bestand. Voer de volgende stappen uit om het dump bestand te verzamelen:
 
-### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De OS-schijf koppelen aan een herstel-vm
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteem schijf koppelen aan een herstel-VM
 
-1. Maak een momentopname van de OS-schijf van de getroffen VM als back-up. Zie [Momentopname een schijf voor](../windows/snapshot-copy-managed-disk.md)meer informatie .
-2. [Koppel de OS-schijf aan een herstelvm](../windows/troubleshoot-recovery-disks-portal.md). 
-3. Extern bureaublad naar de herstel-VM.
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md). 
+3. Extern bureau blad naar de herstel-VM.
 
-### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Dumpbestand zoeken en een ondersteuningsticket indienen
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Dump bestand zoeken en een ondersteunings ticket verzenden
 
-1. Ga op de herstel-vm naar de Windows-map in de bijgevoegde osschijf. Als de stuurprogrammaletter die is toegewezen aan de gekoppelde osschijf F is, moet u naar F:\Windows gaan.
-2. Zoek het memory.dmp-bestand en [dien vervolgens een ondersteuningsticket in](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bij het dumpbestand. 
+1. Ga op de herstel-VM naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf F is, moet u naar F:\Windows.
+2. Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het dump bestand. 
 
-Als u het dumpbestand niet vinden, verplaatst u de volgende stap om dumplogboek en seriële console in te schakelen.
+Als u het dump bestand niet kunt vinden, gaat u naar de volgende stap om dump logboek en seriële console in te scha kelen.
 
-### <a name="enable-dump-log-and-serial-console"></a>Dumplog en Seriële console inschakelen
+### <a name="enable-dump-log-and-serial-console"></a>Dump logboek en seriële console inschakelen
 
-Voer het volgende script uit om dumplog en Seriële console in te schakelen.
+Voer het volgende script uit om dump logboek en seriële console in te scha kelen.
 
-1. Open de sessie Prompt met verhoogde opdracht (Uitvoeren als beheerder).
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 2. Voer het volgende script uit:
 
-    In dit script gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde OS-schijf F is.  Vervang deze door de juiste waarde in uw VM.
+    In dit script gaan we ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf F is.  Vervang deze door de juiste waarde in uw VM.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -88,8 +88,8 @@ Voer het volgende script uit om dumplog en Seriële console in te schakelen.
     reg unload HKLM\BROKENSYSTEM
     ```
 
-    1. Zorg ervoor dat er voldoende ruimte op de schijf is om evenveel geheugen toe te wijzen als het RAM-geheugen, dat afhankelijk is van de grootte die u voor deze virtuele machine selecteert.
-    2. Als er niet genoeg ruimte is of als dit een VM(G-, GS- of E-reeks) is, u de locatie wijzigen waar dit bestand wordt gemaakt en dat doorverwijzen naar een andere gegevensschijf die aan de VM is gekoppeld. Hiervoor moet u de volgende toets wijzigen:
+    1. Zorg ervoor dat er voldoende ruimte op de schijf is om zoveel geheugen toe te wijzen als het RAM-geheugen, afhankelijk van de grootte die u voor deze VM selecteert.
+    2. Als er onvoldoende ruimte is of als dit een virtuele machine met een grote grootte is (G, GS of E-serie), kunt u vervolgens de locatie wijzigen waar dit bestand wordt gemaakt en naar elke andere gegevens schijf die is gekoppeld aan de virtuele machine. Hiervoor moet u de volgende sleutel wijzigen:
 
             reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -98,9 +98,9 @@ Voer het volgende script uit om dumplog en Seriële console in te schakelen.
 
             reg unload HKLM\BROKENSYSTEM
 
-3. [Maak de osschijf los en koppel de osschijf opnieuw aan de betreffende VM](../windows/troubleshoot-recovery-disks-portal.md).
-4. Start de VM om het probleem te reproduceren, waarna een dumpbestand wordt gegenereerd.
-5. Koppel de OS-schijf aan een herstel-vm, verzamel dumpbestand en verzend vervolgens [een ondersteuningsticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bij het dumpbestand.
+3. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](../windows/troubleshoot-recovery-disks-portal.md).
+4. Start de virtuele machine om het probleem te reproduceren. vervolgens wordt er een dump bestand gegenereerd.
+5. Koppel de besturingssysteem schijf aan een herstel-VM, verzamel het dump bestand en [verzend vervolgens een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het dump bestand.
 
 
 

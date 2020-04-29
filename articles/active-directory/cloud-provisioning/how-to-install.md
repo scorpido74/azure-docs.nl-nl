@@ -1,6 +1,6 @@
 ---
 title: De agent voor Azure AD Connect-cloudinrichting installeren
-description: In dit artikel wordt beschreven hoe u de Azure AD Connect-cloudinrichtingsagent installeert.
+description: In dit artikel wordt beschreven hoe u de Azure AD Connect Cloud-inrichtings Agent installeert.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,91 +12,91 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263346"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>De agent voor Azure AD Connect-cloudinrichting installeren
-Met dit document u het installatieproces voor de Azure Active Directory (Azure AD) Connect-inrichtingsagent doorlopen en hoe u deze in eerste instantie configureren in de Azure-portal.
+Dit document helpt u bij het installatie proces voor de Azure Active Directory (Azure AD) Connect inrichtings agent en hoe u deze in eerste instantie kunt configureren in de Azure Portal.
 
 >[!IMPORTANT]
->De volgende installatie-instructies gaan ervan uit dat aan alle [voorwaarden is](how-to-prerequisites.md) voldaan.
+>In de volgende installatie-instructies wordt ervan uitgegaan dat aan alle [vereisten](how-to-prerequisites.md) is voldaan.
 
-Het installeren en configureren van Azure AD Connect-inrichting wordt uitgevoerd in de volgende stappen:
+Het installeren en configureren van Azure AD Connect inrichting wordt uitgevoerd in de volgende stappen:
     
 - [De agent installeren](#install-the-agent)
-- [Agentinstallatie verifiëren](#verify-agent-installation)
+- [Agent installatie verifiëren](#verify-agent-installation)
 
 
 ## <a name="install-the-agent"></a>De agent installeren
 Voer de volgende stappen uit om de agent te installeren.
 
-1. Meld u aan bij de server die u gebruikt met machtigingen voor bedrijfsbeheerders.
-1. Ga naar Azure Portal. Selecteer Azure **Active Directory**aan de linkerkant .
-1. Selecteer **Inrichting beheren (voorbeeld)** > **Alle agents controleren**.
-1. Download de Azure AD Connect-inrichtingsagent van de Azure-portal.
+1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.
+1. Ga naar Azure Portal. Selecteer aan de linkerkant **Azure Active Directory**.
+1. Selecteer **inrichting beheren (preview)** > **Alle agents controleren**.
+1. Down load de Azure AD Connect-inrichtings agent vanuit de Azure Portal.
 
    ![On-premises agent downloaden](media/how-to-install/install9.png)</br>
-1. Voer het azure AD Connect-installatieprogramma (AADConnectProvisioningAgent.Installer) uit.
-1. Accepteer de licentievoorwaarden en selecteer **Installeren**in het scherm **Microsoft Azure AD Connect Provisioning Agent Package.**
+1. Voer het Azure AD Connect Provisioning Installer (AADConnectProvisioningAgent. installer) uit.
+1. Accepteer de licentie voorwaarden op het scherm Microsoft Azure AD het pakket voor het maken van een **inrichtings agent** en selecteer **installeren**.
 
-   ![Scherm Microsoft Azure AD Connect Provisioning Agent-pakket](media/how-to-install/install1.png)</br>
+   ![Microsoft Azure AD scherm voor het inrichtings agent-pakket koppelen](media/how-to-install/install1.png)</br>
 
-1. Nadat deze bewerking is voltooid, wordt de wizard configuratie gestart. Meld u aan met uw azure AD-globale beheerdersaccount.
-1. Selecteer **Directory toevoegen**in het scherm Active **Directory verbinden** . Meld u vervolgens aan met uw Active Directory-beheerdersaccount. Deze bewerking voegt uw on-premises directory toe. Selecteer **Volgende**.
+1. Nadat deze bewerking is voltooid, wordt de configuratie wizard gestart. Meld u aan met uw Azure AD Global Administrator-account.
+1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Next**.
 
-   ![Active Directory-scherm verbinden](media/how-to-install/install3.png)</br>
+   ![Active Directory scherm verbinden](media/how-to-install/install3.png)</br>
 
-1. Selecteer **op het scherm Configuratie voltooid** de optie **Bevestigen**. Deze bewerking registreert en herstart de agent.
+1. Selecteer **bevestigen**in het scherm **configuratie voltooid** . Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.
 
-   ![Scherm volledig configureren](media/how-to-install/install4.png)</br>
+   ![Scherm configuratie voltooid](media/how-to-install/install4.png)</br>
 
-1. Nadat deze bewerking is voltooid, ziet u de melding **uw agentconfiguratie is geverifieerd.** Selecteer **Afsluiten**.
+1. Nadat deze bewerking is voltooid, ziet u de melding dat **de agent configuratie is geverifieerd.** Selecteer **Afsluiten**.
 
    ![Knop Afsluiten](media/how-to-install/install5.png)</br>
-1. Als u nog steeds het eerste scherm **van Microsoft Azure AD Connect Provisioning Agent Package** ziet, selecteert u **Sluiten**.
+1. Als u nog steeds het scherm eerste **Microsoft Azure AD Connect inrichtings agent-pakket** ziet, selecteert u **sluiten**.
 
-## <a name="verify-agent-installation"></a>Agentinstallatie verifiëren
-Agentverificatie vindt plaats in de Azure-portal en op de lokale server waarop de agent wordt uitgevoerd.
+## <a name="verify-agent-installation"></a>Agent installatie verifiëren
+Verificatie van de agent vindt plaats in de Azure Portal en op de lokale server waarop de agent wordt uitgevoerd.
 
-### <a name="azure-portal-agent-verification"></a>Azure-portalagentverificatie
+### <a name="azure-portal-agent-verification"></a>Verificatie van Azure Portal-agent
 Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azure.
 
 1. Meld u aan bij Azure Portal.
-1. Selecteer aan de linkerkant **Azure Active Directory** > **Azure AD Connect**. Selecteer in het midden **De optie Inrichting beheren (voorbeeld)**.
+1. Selecteer aan de linkerkant **Azure Active Directory** > **Azure AD CONNECT**. Selecteer in het midden de optie **inrichting beheren (preview)**.
 
    ![Azure Portal](media/how-to-install/install6.png)</br>
 
-1.  Selecteer alle **agents**controleren in het scherm **Azure AD Provisioning (preview).**
+1.  Selecteer **Alle agents controleren**op het scherm **Azure AD Provisioning (preview)** .
 
-    ![Alle agents-optie bekijken](media/how-to-install/install7.png)</br>
+    ![Optie Alle agents controleren](media/how-to-install/install7.png)</br>
  
-1. Op het scherm **On-premises inrichtingsagenten** ziet u de agents die u hebt geïnstalleerd. Controleer of de agent in kwestie aanwezig is en *actief*is gemarkeerd .
+1. Op het scherm **on-premises Provisioning agents** ziet u de agents die u hebt geïnstalleerd. Controleer of de agent in kwestie is en is gemarkeerd als *actief*.
 
-   ![Scherm van on-premises inrichtingsagenten](media/how-to-install/verify1.png)</br>
+   ![Scherm on-premises ingerichte agents](media/how-to-install/verify1.png)</br>
 
-### <a name="verify-the-port"></a>De poort verifiëren
-Volg de volgende stappen om te controleren of Azure luistert op poort 443 en of uw agent ermee kan communiceren.
+### <a name="verify-the-port"></a>De poort controleren
+Voer de volgende stappen uit om te controleren of Azure luistert op poort 443 en of uw agent ermee kan communiceren.
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-Deze test controleert of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL vanaf de server waar de agent is geïnstalleerd.
+Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL van de server waarop de agent is geïnstalleerd.
 
-![Verificatie van de bereikbaarheid van de poort](media/how-to-install/verify2.png)
+![Verificatie van de bereik baarheid van de poort](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Op de lokale server
-Voer deze stappen uit om te controleren of de agent wordt uitgevoerd.
+Voer de volgende stappen uit om te controleren of de agent wordt uitgevoerd.
 
-1.  Meld u aan bij de server met een beheerdersaccount.
-1.  Open **Services** door ernaar te navigeren of door naar **Run** > **Services.msc****Run** > te gaan.
-1.  Controleer **onder Services**of Microsoft Azure AD Connect Agent **Updater** en Microsoft Azure AD Connect **Provisioning Agent** aanwezig zijn en dat hun status wordt *uitgevoerd.*
+1.  Meld u met een beheerders account aan bij de server.
+1.  Open **Services** **door te navigeren** > naar de service of door te gaan met het**uitvoeren** > van**Services. msc**.
+1.  Zorg er bij **Services**voor dat **Microsoft Azure AD connect agent updater** en **Microsoft Azure AD Connect inrichtings agent** zijn, en de status wordt *uitgevoerd*.
 
-    ![Servicesscherm](media/how-to-troubleshoot/troubleshoot1.png)
+    ![Scherm Services](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->De agent is geïnstalleerd, maar moet worden geconfigureerd en ingeschakeld voordat het gebruikers gaat synchroniseren. Zie [Een nieuwe configuratie maken voor Azure AD Connect-cloudgebaseerde inrichting](how-to-configure.md)voor het configureren van een nieuwe agent.
+>De agent is geïnstalleerd, maar moet worden geconfigureerd en ingeschakeld voordat de synchronisatie van gebruikers wordt gestart. Als u een nieuwe agent wilt configureren, raadpleegt u [een nieuwe configuratie maken voor Azure AD Connect inrichting op basis van de Cloud](how-to-configure.md).
 
 
 

@@ -1,21 +1,21 @@
 ---
-title: Inleiding tot Azure Service Fabric Resource Model
-description: Meer informatie over het Service Fabric Resource Model, een vereenvoudigde benadering voor het definiëren van Service Fabric Mesh-toepassingen.
+title: Inleiding tot Azure Service Fabric resource model
+description: Meer informatie over het Service Fabric resource model, een vereenvoudigde benadering voor het definiëren van Service Fabric mesh-toepassingen.
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259134"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Inleiding tot het Service Fabric-resourcemodel
 
-Het Service Fabric Resource Model beschrijft een eenvoudige aanpak om resources te definiëren die bestaan uit een Service Fabric Mesh-toepassing. Individuele resources kunnen worden geïmplementeerd in elke Service Fabric-omgeving.  Het Service Fabric Resource Model is ook compatibel met het Azure Resource Manager-model. De volgende typen resources worden momenteel ondersteund in dit model:
+Het Service Fabric resource model beschrijft een eenvoudige benadering voor het definiëren van resources waaruit een Service Fabric mesh-toepassing bestaat. Afzonderlijke bronnen kunnen worden geïmplementeerd in elke Service Fabric omgeving.  Het Service Fabric resource model is ook compatibel met het Azure Resource Manager model. De volgende typen resources worden momenteel ondersteund in dit model:
 
 - Toepassingen en services
 - Netwerken
@@ -23,59 +23,59 @@ Het Service Fabric Resource Model beschrijft een eenvoudige aanpak om resources 
 - Geheimen en geheimen/waarden
 - Volumes
 
-Elke resource wordt declaratief beschreven in een bronbestand, een eenvoudig YAML- of JSON-document dat de mesh-toepassing beschrijft en wordt ingericht door het Service Fabric-platform.
+Elke resource wordt declaratief beschreven in een resource bestand. Dit is een eenvoudig YAML of JSON-document waarin de mesh-toepassing wordt beschreven en wordt ingericht door het Service Fabric-platform.
 
-## <a name="applications-and-services"></a>Toepassingen en diensten
+## <a name="applications-and-services"></a>Toepassingen en services
 
-Een toepassingsbron is de eenheid van implementatie, versiebeheer en levensduur van een Mesh-toepassing. Het bestaat uit een of meer servicebronnen die een microservice vertegenwoordigen. Elke servicebron bestaat op zijn beurt uit een of meer codepakketten waarin alles wordt beschreven wat nodig is om de containerafbeelding uit te voeren die is gekoppeld aan het codepakket.
+Een toepassings bron is de implementatie-eenheid, versie beheer en levens duur van een mesh-toepassing. Het bestaat uit een of meer service resources die een micro service vertegenwoordigen. Elke service bron is op zijn beurt samengesteld uit een of meer code pakketten die alles beschrijven wat nodig is voor het uitvoeren van de container installatie kopie die is gekoppeld aan het code pakket.
 
 ![Apps en services][Image1]
 
-Een servicebron verklaart het volgende:
+Een service resource declareert het volgende:
 
-- Containernaam, versie en register
-- CPU- en geheugenbronnen die nodig zijn voor elke container
-- Netwerkeindpunten
-- Verwijzingen naar andere bronnen, zoals netwerken, volumes en geheimen 
+- Container naam, versie en REGI ster
+- Benodigde CPU-en geheugen resources voor elke container
+- Netwerk eindpunten
+- Verwijzingen naar andere resources, zoals netwerken, volumes en geheimen 
 
-Alle codepakketten die zijn gedefinieerd als onderdeel van een Service-bron, worden samen geïmplementeerd en geactiveerd als een groep. De servicebron beschrijft ook hoeveel exemplaren van de service moet worden uitgevoerd en verwijst ook naar andere bronnen (bijvoorbeeld netwerkbron) waarvan deze afhankelijk is.
+Alle code pakketten die als onderdeel van een service resource zijn gedefinieerd, worden als een groep geïmplementeerd en geactiveerd. De service resource beschrijft ook het aantal exemplaren van de service dat moet worden uitgevoerd en ook verwijst naar andere bronnen (bijvoorbeeld netwerk bronnen) waarvan het afhankelijk is.
 
-Als een Mesh-toepassing uit meer dan één service bestaat, wordt deze niet gegarandeerd samen uitgevoerd op hetzelfde knooppunt. Tijdens een upgrade van de toepassing leidt het niet upgraden van een enkele service ertoe dat alle Services worden teruggedraaid naar hun vorige versie.
+Als een mesh-toepassing bestaat uit meer dan één service, worden ze niet gegarandeerd samen op hetzelfde knoop punt uitgevoerd. Als er tijdens een upgrade van de toepassing een fout optreedt bij het upgraden van een service, zullen alle services worden teruggezet naar de vorige versie.
 
-Zoals eerder al is gezinspeeld, kan de levenscyclus van elke toepassingsinstantie onafhankelijk worden beheerd. De ene toepassingsinstantie kan bijvoorbeeld onafhankelijk van de andere toepassingsinstanties worden geüpgraded. Meestal houdt u het aantal services in een toepassing vrij klein, omdat hoe meer services u in een toepassing plaatst, hoe moeilijker het wordt om elke service onafhankelijk te beheren.
+Net als alluded eerder kan de levens cyclus van elk toepassings exemplaar onafhankelijk worden beheerd. Zo kan één toepassings exemplaar onafhankelijk van de andere exemplaren van de toepassing worden bijgewerkt. Normaal gesp roken houdt u het aantal services in een toepassing vrij klein, naarmate meer services die u in een toepassing plaatst, het moeilijker wordt om elke service afzonderlijk te beheren.
 
 ## <a name="networks"></a>Netwerken
 
-Netwerkbron is individueel geïmplementeerde bron, onafhankelijk van een toepassing of servicebron die deze als hun afhankelijkheid kan verwijzen. Het wordt gebruikt om een netwerk voor uw toepassingen te creëren. Meerdere services van verschillende toepassingen kunnen deel uitmaken van hetzelfde netwerk.  Lees voor meer informatie over [netwerken in Service Fabric Mesh-toepassingen.](service-fabric-mesh-networks-and-gateways.md)
+De netwerk resource is een afzonderlijk Implementeer bare resource, onafhankelijk van een toepassings-of service resource die als afhankelijkheid ervan kan verwijzen. Het wordt gebruikt voor het maken van een netwerk voor uw toepassingen. Meerdere services van verschillende toepassingen kunnen deel uitmaken van hetzelfde netwerk.  Meer informatie over netwerken vindt u [in service Fabric-mesh toepassingen](service-fabric-mesh-networks-and-gateways.md).
 
 > [!NOTE]
-> De huidige preview ondersteunt slechts één op één toewijzing tussen toepassingen en netwerken
+> De huidige preview ondersteunt alleen een toewijzing tussen toepassingen en netwerken
 
 ![Netwerk en gateway][Image2]
 
 ## <a name="gateways"></a>Gateways
-Een Gateway-bron verbindt twee netwerken en leidt verkeer.  Een gateway stelt uw services in staat om te communiceren met externe klanten en biedt een binnendringen in uw service(en).  Een gateway kan ook worden gebruikt om uw Mesh-toepassing te verbinden met uw eigen, bestaande virtuele netwerk. Lees voor meer informatie over [netwerken in Service Fabric Mesh-toepassingen.](service-fabric-mesh-networks-and-gateways.md)
+Een gateway bron verbindt twee netwerken en routeert verkeer.  Met een gateway kunnen uw services communiceren met externe clients en wordt er een ingang naar uw service (s) geboden.  Een gateway kan ook worden gebruikt voor het verbinden van uw nettoepassing met uw eigen bestaande virtuele netwerk. Meer informatie over netwerken vindt u [in service Fabric-mesh toepassingen](service-fabric-mesh-networks-and-gateways.md).
 
 ![Netwerk en gateway][Image2]
 
 ## <a name="secrets"></a>Geheimen
 
-Geheimenbronnen kunnen worden geïmplementeerd onafhankelijk van een toepassing of servicebron die deze mogelijk hun afhankelijkheid kan noemen. Het wordt gebruikt om veilig geheimen te leveren aan uw toepassingen. Meerdere services van verschillende toepassingen kunnen verwijzen naar waarden van hetzelfde geheim.
+Geheimen bronnen kunnen worden geïmplementeerd onafhankelijk van een toepassings-of service resource die als afhankelijkheid ervan worden gebruikt. Dit wordt gebruikt om geheimen veilig te bezorgen voor uw toepassingen. Meerdere services van verschillende toepassingen kunnen verwijzen naar waarden van hetzelfde geheim.
 
 ## <a name="volumes"></a>Volumes
 
-Containers maken vaak tijdelijke schijven beschikbaar. Tijdelijke schijven zijn vluchtig, echter, dus je krijgt een nieuwe tijdelijke schijf en verliest de informatie wanneer een container crasht. Het is ook moeilijk om informatie over tijdelijke schijven te delen met andere containers. Volumes zijn mappen die in uw containerexemplaren worden gemonteerd die u gebruiken om de status aan te houden. Volumes geven u bestandsopslag voor algemene doeleinden en stellen u in staat om bestanden te lezen/schrijven met behulp van normale I/O-bestands-API's op schijf. De bron Volume is een declaratieve manier om te beschrijven hoe een map is gemonteerd en de back-up hiervoor (Azure Files Volume of Service Fabric Reliable Volume).  Lees voor meer informatie [de status opslaan](service-fabric-mesh-storing-state.md#volumes).
+Containers maken vaak tijdelijke schijven beschikbaar. Tijdelijke schijven zijn echter tijdelijk een nieuwe tijdelijke schijf en verliezen de informatie wanneer een container vastloopt. Het is ook lastig om informatie over tijdelijke schijven met andere containers te delen. Volumes zijn mappen die in de container instanties worden gekoppeld die u kunt gebruiken om de status te behouden. Volumes bieden u bestands opslag voor algemeen gebruik en bieden de mogelijkheid om bestanden te lezen/schrijven met behulp van normale I/O-bestand-Api's van de schijf. De volume resource is een declaratieve manier om te beschrijven hoe een map is gekoppeld en de back-up van de opslag ruimte (Azure Files volume of Service Fabric betrouw bare volume).  Lees de [opslag status](service-fabric-mesh-storing-state.md#volumes)voor meer informatie.
 
 ![Volumes][Image3]
 
-## <a name="programming-models"></a>Programmeermodellen
-Servicebron vereist alleen een containerafbeelding die moet worden uitgevoerd, waarnaar wordt verwezen in het codepakket(en) dat aan de resource is gekoppeld. U elke code, geschreven in elke taal, met behulp van elk framework in de container zonder te weten, of gebruik, Service Fabric Mesh specifieke API's. 
+## <a name="programming-models"></a>Programmeer modellen
+Voor service resource moet alleen een container installatie kopie worden uitgevoerd, waarnaar wordt verwezen in de code pakketten die zijn gekoppeld aan de resource. U kunt elke wille keurige code uitvoeren, geschreven in elke taal, met behulp van een wille keurig Framework in de container zonder dat hiervoor Service Fabric mesh-specifieke Api's moeten worden gebruikt. 
 
-Uw toepassingscode blijft draagbaar, zelfs buiten Service Fabric Mesh en uw toepassingsimplementaties blijven consistent, ongeacht de taal of het framework dat wordt gebruikt om uw services te implementeren. Of uw toepassing nu ASP.NET Core, Go of slechts een set processen en scripts is, het implementatiemodel van de Service Fabric Mesh Resource blijft hetzelfde. 
+Uw toepassings code blijft draagbaar, zelfs buiten Service Fabric net, en uw toepassings implementaties blijven consistent, ongeacht de taal of het Framework dat wordt gebruikt voor het implementeren van uw services. Of uw toepassing ASP.NET Core, een go of een set processen en scripts is, het implementatie model voor Service Fabric mesh-resources blijft hetzelfde. 
 
 ## <a name="packaging-and-deployment"></a>Verpakking en implementatie
 
-Service Fabric Mesh-toepassingen op basis van het resourcemodel worden verpakt als Docker-containers.  Service Fabric Mesh is een gedeelde omgeving met meerdere huurders en containers geven u een hoge isolatie.  Deze toepassingen worden beschreven met behulp van een JSON-indeling of een YAML-indeling (die vervolgens wordt geconverteerd naar JSON). Bij het implementeren van een Mesh-toepassing in Azure Service Fabric Mesh is de JSON die wordt gebruikt om de toepassing te beschrijven een Azure Resource Manager-sjabloon. Resources worden toegewezen aan Azure-resources.  Wanneer u een Mesh-toepassing implementeert in een cluster van Servicefabric (standalone of Azure-gehost), is de JSON die wordt gebruikt om de toepassing te beschrijven een indeling die vergelijkbaar is met een Azure Resource Manager-sjabloon.  Eenmaal geïmplementeerd kunnen Mesh-toepassingen worden beheerd via HTTP-interfaces of de Azure CLI. 
+Service Fabric nettoepassingen op basis van het resource model worden verpakt als docker-containers.  Service Fabric Mesh is een gedeelde omgeving met meerdere tenants en containers biedt u een hoog isolatie niveau.  Deze toepassingen worden beschreven met behulp van een JSON-indeling of een YAML-indeling (die vervolgens wordt geconverteerd naar JSON). Wanneer u een mesh-toepassing implementeert in azure Service Fabric mesh, is de JSON die wordt gebruikt om de toepassing te beschrijven een Azure Resource Manager sjabloon. Resources worden toegewezen aan Azure-resources.  Wanneer u een mesh-toepassing implementeert in een Service Fabric-cluster (Zelfstandige of Azure-host), is de JSON die wordt gebruikt om de toepassing te beschrijven een indeling die vergelijkbaar is met een Azure Resource Manager sjabloon.  Zodra de implementatie is geïmplementeerd, kunnen nettoepassingen worden beheerd via HTTP-interfaces of de Azure CLI. 
 
 
 ## <a name="next-steps"></a>Volgende stappen 

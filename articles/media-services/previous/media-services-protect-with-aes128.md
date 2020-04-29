@@ -1,6 +1,6 @@
 ---
-title: Gebruik AES-128 dynamische versleuteling en de key delivery service | Microsoft Documenten
-description: In dit onderwerp ziet u hoe u dynamisch versleutelen met AES-128 en de belangrijke leveringsservice gebruiken.
+title: Gebruik AES-128 Dynamic Encryption en de key delivery service | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u dynamisch versleutelen met AES-128 en de key delivery-service gebruikt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,95 +15,95 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269729"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamische AES-128-versleuteling en de sleutelleveringsservice gebruiken
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-aes128.md)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
+> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-U Media Services gebruiken om HTTP Live Streaming (HLS) en Smooth Streaming versleuteld met de AES te leveren met behulp van 128-bits encryptiesleutels. Media Services biedt ook de belangrijke leveringsservice die versleutelingssleutels levert aan geautoriseerde gebruikers. Als u wilt dat Media Services een asset versleutelt, koppelt u een versleutelingssleutel aan het item en configureert u ook autorisatiebeleid voor de sleutel. Wanneer een stream door een speler wordt aangevraagd, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met behulp van AES-versleuteling. Voor het ontsleutelen van de stream, wordt door de speler de sleutel van de sleutelleveringsservice aangevraagd. Als u wilt bepalen of de gebruiker gemachtigd is om de sleutel te krijgen, evalueert de service het autorisatiebeleid dat u voor de sleutel hebt opgegeven.
+U kunt Media Services gebruiken om HTTP Live Streaming (HLS) te leveren en Smooth Streaming versleuteld met de AES door gebruik te maken van 128-bits coderings sleutels. Media Services biedt ook de key delivery service die versleutelings sleutels levert aan geautoriseerde gebruikers. Als u wilt dat Media Services een Asset versleutelt, koppelt u een versleutelings sleutel aan de Asset en configureert u ook autorisatie beleid voor de sleutel. Wanneer een stroom wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met behulp van AES-versleuteling. Voor het ontsleutelen van de stream, wordt door de speler de sleutel van de sleutelleveringsservice aangevraagd. Om te bepalen of de gebruiker gemachtigd is om de sleutel op te halen, evalueert de service het autorisatie beleid dat u hebt opgegeven voor de sleutel.
 
 Media Services ondersteunt meerdere manieren om gebruikers te verifiëren die sleutels aanvragen. Het autorisatiebeleid voor inhoudssleutels kan een of meer autorisatiebeperkingen hebben: beperking voor openen of tokenbeperkingen. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services ondersteunt tokens in de indelingen [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) en [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT). Zie [Het autorisatiebeleid voor inhoudssleutels configureren](media-services-protect-with-aes128.md#configure_key_auth_policy) voor meer informatie.
 
-Als u dynamische versleuteling wilt gebruiken, moet u een asset hebben die een set multi-bitrate MP4-bestanden of multi-bitrate Smooth Streaming-bronbestanden bevat. U moet ook het leveringsbeleid voor het item configureren (later in dit artikel beschreven). Vervolgens zorgt de server voor streaming on demand er op basis van de indeling die is opgegeven in de streaming-URL voor dat de stream wordt geleverd in het protocol dat u hebt geselecteerd. Als gevolg hiervan hoeft u alleen de bestanden op te slaan en te betalen in één opslagformaat. Media Services bouwt en verwerkt het juiste antwoord op basis van aanvragen van een client.
+Als u dynamische versleuteling wilt gebruiken, moet u een asset hebben die een set multi-bitrate MP4-bestanden of multi-bitrate Smooth Streaming-bronbestanden bevat. U moet ook het leverings beleid voor de Asset configureren (verderop in dit artikel wordt beschreven). Vervolgens zorgt de server voor streaming on demand er op basis van de indeling die is opgegeven in de streaming-URL voor dat de stream wordt geleverd in het protocol dat u hebt geselecteerd. Als gevolg hiervan moet u alleen voor de bestanden in één opslag indeling opslaan en betalen. Media Services bouwt en verwerkt het juiste antwoord op basis van aanvragen van een client.
 
-Dit artikel is handig voor ontwikkelaars die werken aan toepassingen die beveiligde media leveren. In het artikel ziet u hoe u de service voor het leveren van sleutels configureren met autorisatiebeleid, zodat alleen geautoriseerde clients versleutelingssleutels kunnen ontvangen. Het laat ook zien hoe dynamische encryptie te gebruiken.
+Dit artikel is nuttig voor ontwikkel aars die werken aan toepassingen die beveiligde media leveren. In dit artikel leest u hoe u de service voor sleutel levering configureert met autorisatie beleid zodat alleen geautoriseerde clients versleutelings sleutels kunnen ontvangen. Ook wordt uitgelegd hoe u dynamische versleuteling kunt gebruiken.
 
-Zie [dit blogbericht](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)voor informatie over het versleutelen van inhoud met de Advanced Encryption Standard (AES) voor levering aan Safari op macOS.
-Zie [deze video](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)voor een overzicht van hoe u uw media-inhoud beschermen met AES-versleuteling.
+Zie [dit blog bericht](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)voor meer informatie over het versleutelen van inhoud met de Advanced Encryption Standard (AES) voor levering aan Safari op macOS.
+Zie [deze video](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)voor een overzicht van het beveiligen van uw media-inhoud met AES-versleuteling.
 
 
-## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128 dynamische versleuteling en key delivery service workflow
+## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128-werk stroom voor dynamische versleuteling en key delivery service
 
-Voer de volgende algemene stappen uit wanneer u uw assets versleutelt met AES met behulp van de service voor het leveren van de sleutel van Media Services en ook met behulp van dynamische versleuteling:
+Voer de volgende algemene stappen uit wanneer u uw assets versleutelt met AES door gebruik te maken van de Media Services key delivery service en ook met behulp van dynamische versleuteling:
 
-1. [Maak een asset en upload bestanden naar het item.](media-services-protect-with-aes128.md#create_asset)
+1. [Maak een Asset en upload bestanden in de Asset](media-services-protect-with-aes128.md#create_asset).
 
-2. [Codeer het element dat het bestand bevat op de adaptieve bitrate MP4-set](media-services-protect-with-aes128.md#encode_asset).
+2. [Codeer de Asset die het bestand bevat naar de Adaptive bitrate MP4-set](media-services-protect-with-aes128.md#encode_asset).
 
-3. [Maak een inhoudssleutel en koppel deze aan het gecodeerde element](media-services-protect-with-aes128.md#create_contentkey). De inhoudssleutel bevat in Media Services de versleutelingssleutel van de asset.
+3. [Maak een inhouds sleutel en koppel deze aan de gecodeerde Asset](media-services-protect-with-aes128.md#create_contentkey). De inhoudssleutel bevat in Media Services de versleutelingssleutel van de asset.
 
-4. [Het autorisatiebeleid van de inhoudssleutel configureren](media-services-protect-with-aes128.md#configure_key_auth_policy). U moet het autorisatiebeleid voor de inhoudssleutel configureren. De client moet voldoen aan het beleid voordat de inhoudssleutel aan de client wordt geleverd.
+4. [Configureer het autorisatie beleid voor de inhouds sleutel](media-services-protect-with-aes128.md#configure_key_auth_policy). U moet het autorisatiebeleid voor de inhoudssleutel configureren. De client moet voldoen aan het beleid voordat de inhoudssleutel aan de client wordt geleverd.
 
-5. [Configureer het leveringsbeleid voor een actief](media-services-protect-with-aes128.md#configure_asset_delivery_policy). De configuratie van het leveringsbeleid omvat de URL voor het verkrijgen van sleutels en een initialisatievector (IV). (AES-128 vereist dezelfde IV voor encryptie en decryptie.) De configuratie omvat ook het leveringsprotocol (bijvoorbeeld MPEG-DASH, HLS, Smooth Streaming of alles) en het type dynamische versleuteling (bijvoorbeeld envelop of geen dynamische versleuteling).
+5. [Configureer het leverings beleid voor een Asset](media-services-protect-with-aes128.md#configure_asset_delivery_policy). De configuratie van het leverings beleid bevat de URL voor sleutel aanschaf en een initialisatie vector (IV). (AES-128 vereist dezelfde IV voor versleuteling en ontsleuteling.) De configuratie omvat ook het leverings Protocol (bijvoorbeeld MPEG-DASH, HLS, Smooth Streaming of alle) en het type dynamische versleuteling (bijvoorbeeld een envelop of geen dynamische versleuteling).
 
-    U kunt voor dezelfde asset een ander beleid voor elk protocol toepassen. U kunt bijvoorbeeld PlayReady-versleuteling toepassen op Smooth/DASH en een AES Envelope op HLS. Protocollen die niet zijn gedefinieerd in een leveringsbeleid, worden geblokkeerd voor streaming. (Een voorbeeld hiervan is als u één beleid toevoegt dat alleen HLS als protocol opgeeft.) De uitzondering is als u helemaal geen beleid voor de levering van activa hebt gedefinieerd. In dat geval is streaming voor alle protocollen toegestaan.
+    U kunt voor dezelfde asset een ander beleid voor elk protocol toepassen. U kunt bijvoorbeeld PlayReady-versleuteling toepassen op Smooth/DASH en een AES Envelope op HLS. Alle protocollen die niet zijn gedefinieerd in een leverings beleid, worden geblokkeerd voor het streamen van gegevens. (Een voor beeld hiervan is als u één beleid toevoegt waarmee alleen HLS als protocol worden opgegeven.) De uitzonde ring hierop is als u geen leverings beleid voor assets hebt gedefinieerd. In dat geval is streaming voor alle protocollen toegestaan.
 
-6. [Maak een OnDemand locator](media-services-protect-with-aes128.md#create_locator) om een streaming URL te krijgen.
+6. [Maak een OnDemand-Locator](media-services-protect-with-aes128.md#create_locator) om een streaming-URL op te halen.
 
-Het artikel laat ook zien [hoe een clienttoepassing een sleutel kan aanvragen bij de key delivery service.](media-services-protect-with-aes128.md#client_request)
+In dit artikel wordt ook [beschreven hoe een client toepassing een sleutel kan aanvragen van de key delivery service](media-services-protect-with-aes128.md#client_request).
 
-U vindt een compleet [.NET-voorbeeld](media-services-protect-with-aes128.md#example) aan het einde van het artikel.
+Aan het einde van het artikel vindt u een volledig [.net-voor beeld](media-services-protect-with-aes128.md#example) .
 
 De volgende afbeelding geeft een illustratie van de eerder beschreven werkstroom. Hier wordt de token voor verificatie gebruikt.
 
-![Bescherm met AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![Beveiligen met AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
-De rest van dit artikel bevat uitleg, codevoorbeelden en koppelingen naar onderwerpen die u laten zien hoe u de eerder beschreven taken uitvoeren.
+De rest van dit artikel bevat uitleg, code voorbeelden en koppelingen naar onderwerpen waarin wordt uitgelegd hoe u de eerder beschreven taken kunt uitvoeren.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 Als u het leveringsbeleid voor uw asset toevoegt of bijwerkt, moet u een eventuele locator verwijderen en een nieuwe locator maken.
 
-## <a name="create-an-asset-and-upload-files-into-the-asset"></a><a id="create_asset"></a>Een asset maken en bestanden uploaden naar het item
+## <a name="create-an-asset-and-upload-files-into-the-asset"></a><a id="create_asset"></a>Een Asset maken en bestanden uploaden naar de Asset
 Als u uw video's wilt beheren, coderen en streamen, moet u eerst uw inhoud uploaden naar Media Services. Wanneer uw inhoud is geüpload, wordt deze veilig opgeslagen in de cloud voor verdere verwerking en streaming. 
 
 Zie [Upload Files into a Media Services account](media-services-dotnet-upload-files.md) (Bestanden uploaden naar een Media Services-account) voor gedetailleerde informatie.
 
 ## <a name="encode-the-asset-that-contains-the-file-to-the-adaptive-bitrate-mp4-set"></a><a id="encode_asset"></a>De asset die het bestand bevat coderen naar de Adaptive Bitrate MP4-set
-Bij dynamische versleuteling maakt u een asset die een set multi-bitrate MP4-bestanden of multi-bitrate Smooth Streaming-bronbestanden bevat. Vervolgens zorgt de on-demand streamingserver, op basis van de opgegeven indeling in het manifest- of fragmentverzoek, ervoor dat u de stream ontvangt in het door u geselecteerde protocol. Vervolgens hoeft u de bestanden alleen op te slaan en te betalen in één opslagformaat. Media Services bouwt en verwerkt het juiste antwoord op basis van aanvragen van een client. Zie [Dynamic packaging overview](media-services-dynamic-packaging-overview.md) (Overzicht van dynamische pakketten).
+Bij dynamische versleuteling maakt u een asset die een set multi-bitrate MP4-bestanden of multi-bitrate Smooth Streaming-bronbestanden bevat. Op basis van de opgegeven indeling in het manifest of de fragment aanvraag zorgt de server voor streaming op aanvraag ervoor dat u de stream ontvangt in het protocol dat u hebt geselecteerd. Vervolgens hoeft u de bestanden niet in één opslag indeling op te slaan en te betalen. Media Services bouwt en verwerkt het juiste antwoord op basis van aanvragen van een client. Zie [Dynamic packaging overview](media-services-dynamic-packaging-overview.md) (Overzicht van dynamische pakketten).
 
 >[!NOTE]
 >Wanneer uw Media Services-account is gemaakt, wordt er een standaard streaming-eindpunt met de status Gestopt aan uw account toegevoegd. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status Wordt uitgevoerd hebben. 
 >
->Om dynamische verpakkingen en dynamische versleuteling te gebruiken, moet uw asset ook een set adaptieve bitrate MP4's of adaptieve bitrate Smooth Streaming-bestanden bevatten.
+>Als u dynamische pakketten en dynamische versleuteling wilt gebruiken, moet uw asset bovendien een set adaptieve bitsnelheid Mp4's of een adaptieve bitrate Smooth Streaming-bestanden bevatten.
 
 Zie [Encode an asset by using Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) (Een asset coderen met Media Encoder Standard) voor instructies voor het coderen.
 
-## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Een inhoudssleutel maken en koppelen aan het gecodeerde item
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Een inhouds sleutel maken en deze koppelen aan de gecodeerde Asset
 In Media Services bevat de inhoudssleutel de sleutel waarmee u een asset wilt coderen.
 
 Zie [Create content key](media-services-dotnet-create-contentkey.md) (Inhoudssleutels maken) voor meer informatie.
 
-## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>Het autorisatiebeleid van de inhoudssleutel configureren
-Media Services ondersteunt meerdere manieren om gebruikers te verifiëren die sleutels aanvragen. U moet het autorisatiebeleid voor de inhoudssleutel configureren. De klant (speler) moet aan het beleid voldoen voordat de sleutel aan de klant kan worden geleverd. Het autorisatiebeleid voor inhoudssleutel kan een of meer autorisatiebeperkingen hebben, open, tokenbeperking of IP-beperking.
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>Het autorisatie beleid voor de inhouds sleutel configureren
+Media Services ondersteunt meerdere manieren om gebruikers te verifiëren die sleutels aanvragen. U moet het autorisatiebeleid voor de inhoudssleutel configureren. De-client (Player) moet voldoen aan het beleid voordat de sleutel aan de client kan worden geleverd. Het autorisatie beleid voor inhouds sleutels kan een of meer autorisatie beperkingen hebben: open, token beperking of IP-beperking.
 
 Zie [Een autorisatiebeleid voor inhoudssleutels configureren](media-services-dotnet-configure-content-key-auth-policy.md) voor meer informatie.
 
 ## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>Een leveringsbeleid voor assets configureren
 Configureer het leveringsbeleid voor uw asset. De configuratie van het leveringsbeleid voor assets omvat onder andere het volgende:
 
-* De belangrijkste acquisitie-URL. 
-* De initialisatievector (IV) die u moet gebruiken voor de envelopversleuteling. AES-128 vereist dezelfde IV voor encryptie en decryptie. 
+* De URL van de sleutel aanschaft. 
+* De initialisatie vector (IV) die moet worden gebruikt voor de versleuteling van enveloppen. Voor AES-128 is dezelfde IV vereist voor versleuteling en ontsleuteling. 
 * Het protocol voor het leveren van assets (bijvoorbeeld MPEG-DASH, HLS, Smooth Streaming of alle).
 * Het type dynamische versleuteling (bijvoorbeeld AES-envelop) of geen dynamische versleuteling. 
 
@@ -137,11 +137,11 @@ Haal op basis van de tokenbeperking een test-token op die is gebruikt voor het s
 
 U kunt de [Azure Media Services Player](https://aka.ms/azuremediaplayer) gebruiken om uw stream te testen.
 
-## <a name="how-can-your-client-request-a-key-from-the-key-delivery-service"></a><a id="client_request"></a>Hoe kan uw klant een sleutel aanvragen bij de key delivery service?
-In de vorige stap hebt u de URL gemaakt die naar een manifestbestand verwijst. Uw klant moet de benodigde informatie uit de streaming manifestbestanden halen om een verzoek te doen aan de key delivery service.
+## <a name="how-can-your-client-request-a-key-from-the-key-delivery-service"></a><a id="client_request"></a>Hoe kan uw client een sleutel aanvragen bij de key delivery service?
+In de vorige stap hebt u de URL die naar een manifest bestand verwijst, samengesteld. Uw client moet de benodigde gegevens uit de streaming-manifest bestanden ophalen om een aanvraag voor de key delivery-service te maken.
 
-### <a name="manifest-files"></a>Manifestbestanden
-De client moet de URL (die ook inhoudssleutel-ID [kid]) waarde bevat uit het manifestbestand extraheren. De client probeert vervolgens de encryptiesleutel van de key delivery service te krijgen. De client moet ook de IV-waarde extraheren en gebruiken om de stream te decoderen. In het volgende `<Protection>` fragment wordt het element van het manifest Vloeiend streamen weergegeven:
+### <a name="manifest-files"></a>Manifest bestanden
+De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest bestand extra heren. De client probeert vervolgens de versleutelings sleutel op te halen van de key delivery service. De client moet ook de waarde voor de IV extra heren en gebruiken om de stroom te ontsleutelen. Het volgende code fragment toont `<Protection>` het element van het Smooth streaming-manifest:
 
 ```xml
     <Protection>
@@ -157,9 +157,9 @@ De client moet de URL (die ook inhoudssleutel-ID [kid]) waarde bevat uit het man
     </Protection>
 ```
 
-In het geval van HLS wordt het hoofdmanifest opgesplitst in segmentbestanden. 
+In het geval van HLS wordt het basis manifest onderverdeeld in segment bestanden. 
 
-Het wortelmanifest is bijvoorbeeld:\/http: /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl). Het bevat een lijst met segmentbestandsnamen.
+Het basis manifest is bijvoorbeeld: http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Het bevat een lijst met de bestands namen van het segment.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Het wortelmanifest is bijvoorbeeld:\/http: /test001.origin.mediaservices.windows
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Als u een van de segmentbestanden opent in een\/teksteditor (bijvoorbeeld http: /test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-apla), het bevat #EXT-X-KEY, wat aangeeft dat het bestand versleuteld is.
+Als u een van de segment bestanden in een tekst editor opent (bijvoorbeeld http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), bevat deze een #EXT-X-sleutel. Dit geeft aan dat het bestand is versleuteld.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -185,11 +185,11 @@ Als u een van de segmentbestanden opent in een\/teksteditor (bijvoorbeeld http: 
     #EXT-X-ENDLIST
 
 >[!NOTE] 
->Als u van plan bent om een AES-versleutelde HLS in Safari te spelen, zie [deze blog](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+>Als u van plan bent een AES-versleutelde HLS te spelen in Safari, raadpleegt u [deze blog](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
-### <a name="request-the-key-from-the-key-delivery-service"></a>Vraag de sleutel aan bij de belangrijke bezorgservice
+### <a name="request-the-key-from-the-key-delivery-service"></a>De sleutel van de key delivery-service aanvragen
 
-In de volgende code ziet u hoe u een aanvraag verzendt naar de klantenservice voor de belangrijkste bezorging van Media Services met behulp van een sleutellevering Uri (die uit het manifest is gehaald) en een token. (Dit artikel legt niet uit hoe je SWTs te krijgen van een STS.)
+De volgende code laat zien hoe u een aanvraag verzendt naar de Media Services key delivery service met behulp van een key delivery-URI (die is geëxtraheerd uit het manifest) en een token. (In dit artikel wordt niet uitgelegd hoe u SWTs van een STS kunt ophalen.)
 
 ```csharp
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
@@ -239,7 +239,7 @@ In de volgende code ziet u hoe u een aanvraag verzendt naar de klantenservice vo
 
 1. Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md).
 
-2. Voeg de volgende elementen toe aan appInstellingen, zoals gedefinieerd in uw app.config-bestand:
+2. Voeg de volgende elementen toe aan appSettings, zoals gedefinieerd in het bestand app. config:
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>
@@ -251,7 +251,7 @@ In de volgende code ziet u hoe u een aanvraag verzendt naar de klantenservice vo
 Overschrijf de code in uw Program.cs-bestand met de code die wordt weergegeven in deze sectie.
  
 >[!NOTE]
->Er is een limiet van 1.000.000 beleidsregels voor verschillende Media Services-beleidsregels (bijvoorbeeld voor locatorbeleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-id als u altijd dezelfde dagen/toegangsmachtigingen gebruikt. Een voorbeeld is een beleid voor locators die zijn bedoeld om aanwezig te blijven gedurende een lange periode (niet-uploadbeleidsregels). Zie de sectie Toegangsbeleid beperken in [Activa en gerelateerde entiteiten beheren met de Media Services .NET SDK](media-services-dotnet-manage-entities.md#limit-access-policies)voor meer informatie.
+>Er geldt een limiet van 1.000.000 beleids regels voor verschillende Media Services-beleids regels (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen/toegangs machtigingen gebruikt. Een voorbeeld is een beleid voor locators die zijn bedoeld om aanwezig te blijven gedurende een lange periode (niet-uploadbeleidsregels). Zie de sectie toegangs beleid beperken in [assets en gerelateerde entiteiten beheren met de Media Services .NET SDK](media-services-dotnet-manage-entities.md#limit-access-policies)voor meer informatie.
 
 Zorg ervoor dat variabelen zo worden bijgewerkt dat ze verwijzen naar de mappen waar uw invoerbestanden zich bevinden.
 

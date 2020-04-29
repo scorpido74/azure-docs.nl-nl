@@ -1,6 +1,6 @@
 ---
 title: Aankoopmodellen
-description: Meer informatie over de inkoopmodellen die beschikbaar zijn voor Azure SQL Database.
+description: Meer informatie over de inkoop modellen die beschikbaar zijn voor Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,167 +12,167 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/09/2020
 ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255988"
 ---
-# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kies tussen de vCore en de DTU inkoopmodellen
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
-Met Azure SQL Database u eenvoudig een volledig beheerde PaaS-databaseengine (Service As AS) aanschaffen die voldoet aan uw prestatie- en kostenbehoeften. Afhankelijk van het implementatiemodel dat u hebt gekozen voor Azure SQL Database, u het inkoopmodel selecteren dat voor u werkt:
+Met Azure SQL Database kunt u eenvoudig een volledig beheerd platform as a service-data base-engine (PaaS) aanschaffen die aan uw prestatie-en kosten behoeften voldoet. Afhankelijk van het implementatie model dat u hebt gekozen voor Azure SQL Database, kunt u het inkoop model selecteren dat voor u geschikt is:
 
-- [Virtual core (vCore)-gebaseerd inkoopmodel](sql-database-service-tiers-vcore.md) (aanbevolen). Dit inkoopmodel biedt de keuze tussen een ingerichte compute-laag en een serverloze compute-laag. Met de ingerichte compute-laag kiest u de exacte hoeveelheid rekenresources die altijd zijn ingericht voor uw werkbelasting. Met de serverloze compute-laag geeft u de automatische schaling van de compute resources op over een configureerbaar besturingssysteem. Met deze rekenlaag u de database ook automatisch onderbreken en hervatten op basis van werkbelastingactiviteit. De vCore-eenheidsprijs per tijdseenheid is lager in de ingerichte compute-laag dan in de serverloze compute-laag.
-- [Op databasetransactie-eenheid (DTU)gebaseerd inkoopmodel](sql-database-service-tiers-dtu.md). Dit inkoopmodel biedt gebundelde reken- en opslagpakketten die in evenwicht zijn voor veelvoorkomende workloads.
+- [Op virtuele kern (vCore) gebaseerd inkoop model](sql-database-service-tiers-vcore.md) (aanbevolen). Dit aankoop model biedt een keuze tussen een ingerichte Compute-laag en een serverloze Compute-laag. Met de ingerichte Compute-laag kiest u de exacte hoeveelheid reken resources die altijd worden ingericht voor uw werk belasting. Met de compute-laag zonder server geeft u het automatisch schalen van de reken resources over een configureerbaar reken bereik op. Met deze Compute-laag kunt u de data base ook automatisch onderbreken en hervatten op basis van de activiteit van de werk belasting. De vCore eenheids prijs per tijds eenheid is lager in de ingerichte Compute-laag dan in de serverloze Compute-laag.
+- [Op DTU (data base Trans Action Unit) gebaseerd aankoop model](sql-database-service-tiers-dtu.md). Dit aankoop model bevat gebundelde reken-en opslag pakketten die zijn afgebalanceerd voor algemene werk belastingen.
 
-Er zijn verschillende inkoopmodellen beschikbaar voor verschillende Azure SQL Database-implementatiemodellen:
+Er zijn verschillende aankoop modellen beschikbaar voor verschillende Azure SQL Database-implementatie modellen:
 
-- De [opties voor één database](sql-database-single-databases-manage.md) en [elastische poolimplementatie](sql-database-elastic-pool.md) in [Azure SQL Database](sql-database-technical-overview.md) bieden zowel het op [DTU gebaseerde inkoopmodel](sql-database-service-tiers-dtu.md) als het [op vCore gebaseerde inkoopmodel.](sql-database-service-tiers-vcore.md)
-- De [optie beheerde instantieimplementatie](sql-database-managed-instance.md) in Azure SQL Database biedt alleen het [op vCore gebaseerde inkoopmodel](sql-database-service-tiers-vcore.md).
-- De [hyperscale-servicelaag](sql-database-service-tier-hyperscale.md) is beschikbaar voor afzonderlijke databases die het [op vCore gebaseerde inkoopmodel](sql-database-service-tiers-vcore.md)gebruiken.
+- De implementatie opties voor [één data base](sql-database-single-databases-manage.md) en [elastische pool](sql-database-elastic-pool.md) in [Azure SQL database](sql-database-technical-overview.md) bieden het [op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md) en het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
+- De implementatie optie [Managed instance](sql-database-managed-instance.md) in Azure SQL database biedt alleen het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
+- De [grootschalige](sql-database-service-tier-hyperscale.md) is beschikbaar voor afzonderlijke data bases die gebruikmaken van het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
 
-De volgende tabel en grafiek vergelijken en contrasteren de vCore-gebaseerde en de Op DTU gebaseerde inkoopmodellen:
+In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop modellen vergeleken en tegengesteld:
 
-|**Inkoopmodel**|**Beschrijving**|**Het beste voor**|
+|**Aankoop model**|**Beschrijving**|**Geschikt voor**|
 |---|---|---|
-|Model op basis van DTU|Dit model is gebaseerd op een gebundelde meting van compute-, opslag- en I/O-resources. Rekengroottes worden uitgedrukt in DTU's voor afzonderlijke databases en in elastische databasetransactie-eenheden (eDTU's) voor elastische pools. Zie [Wat zijn DTU's en eDTU's voor meer informatie over DTU's en eDTU's?](sql-database-purchase-models.md#dtu-based-purchasing-model)|Het beste voor klanten die eenvoudige, vooraf geconfigureerde resourceopties willen.|
-|Model op basis van vCore|Met dit model u onafhankelijk berekenende en opslagbronnen kiezen. Met het op vCore gebaseerde inkoopmodel u azure [hybrid benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) ook gebruiken om kostenbesparingen te behalen.|Het beste voor klanten die waarde hechten aan flexibiliteit, controle en transparantie.|
+|Model op basis van DTU|Dit model is gebaseerd op een gebundelde meting van compute-, opslag-en I/O-resources. Reken grootten worden uitgedrukt in Dtu's voor afzonderlijke data bases en in Elastic data base Trans Action units (Edtu's) voor elastische Pools. Zie [Wat zijn dtu's en edtu's?](sql-database-purchase-models.md#dtu-based-purchasing-model)voor meer informatie over Dtu's en edtu's.|Het beste voor klanten die eenvoudige, vooraf geconfigureerde resource opties willen.|
+|Model op basis van vCore|Met dit model kunt u afzonderlijke reken-en opslag Resources kiezen. Met het op vCore gebaseerde aankoop model kunt u ook Azure Hybrid Benefit gebruiken om [SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) kosten besparingen te verkrijgen.|Het beste voor klanten die flexibiliteit, controle en transparantie hebben.|
 ||||  
 
-![prijsmodelvergelijking](./media/sql-database-service-tiers/pricing-model.png)
+![prijs model vergelijking](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="compute-costs"></a>Rekenkosten
+## <a name="compute-costs"></a>Reken kosten
 
-### <a name="provisioned-compute-costs"></a>Ingerichte rekenkosten
+### <a name="provisioned-compute-costs"></a>Ingerichte reken kosten
 
-In de ingerichte compute-laag weerspiegelen de rekenkosten de totale rekencapaciteit die voor de toepassing is ingericht.
+In de ingerichte Compute-laag weerspiegelt de reken kosten de totale reken capaciteit die is ingericht voor de toepassing.
 
-In de servicelaag Bedrijfskritiek wijzen we automatisch ten minste 3 replica's toe. Om deze extra toewijzing van rekenresources weer te geven, is de prijs in het op vCore gebaseerde inkoopmodel ongeveer 2,7 x hoger in de servicelaag Bedrijfskritieke service dan in de servicelaag voor algemeen gebruik. Ook de hogere opslagprijs per GB in de business critical servicelaag weerspiegelt de hogere IO-limieten en de lagere latentie van de SSD-opslag.
+In de servicelaag Bedrijfskritiek worden automatisch ten minste drie replica's toegewezen. Om deze extra toewijzing van reken bronnen weer te geven, is de prijs in het op vCore gebaseerde aankoop model ongeveer 2,7 x hoger in het Bedrijfskritiek servicetier dan het deel uitmaakt van de Algemeen servicelaag. De hogere opslag prijs per GB in de Bedrijfskritiek servicelaag weerspiegelt ook de hogere i/o-limieten en de lagere latentie van de SSD-opslag.
 
-De kosten van back-upopslag zijn hetzelfde voor de servicelaag Bedrijfskritieke service en de servicelaag voor algemeen gebruik, omdat beide lagen standaardopslag gebruiken voor back-ups.
+De kosten voor back-upopslag zijn hetzelfde voor de Bedrijfskritiek servicelaag en de Algemeen servicelaag omdat beide lagen standaard opslag gebruiken voor back-ups.
 
-### <a name="serverless-compute-costs"></a>Serverloze rekenkosten
+### <a name="serverless-compute-costs"></a>Reken kosten zonder server
 
-Zie [SQL Database serverless](sql-database-serverless.md)voor een beschrijving van de manier waarop rekencapaciteit wordt gedefinieerd en kosten worden berekend voor de serverloze compute-laag.
+Zie [SQL database serverloos](sql-database-serverless.md)voor een beschrijving van de manier waarop reken capaciteit is gedefinieerd en de kosten worden berekend voor de serverloze Compute-laag.
 
 ## <a name="storage-costs"></a>Opslagkosten
 
-Verschillende soorten opslag worden anders gefactureerd. Voor gegevensopslag worden kosten in rekening gebracht voor de ingerichte opslag op basis van de maximale database- of poolgrootte die u selecteert. De kosten veranderen niet, tenzij u dat maximum verlaagt of verhoogt. Back-upopslag is gekoppeld aan geautomatiseerde back-ups van uw instantie en wordt dynamisch toegewezen. Als u uw back-upbewaarperiode verhoogt, wordt de back-upopslag verhoogd die door uw instantie wordt verbruikt.
+Verschillende soorten opslag worden anders gefactureerd. Voor gegevens opslag worden er kosten in rekening gebracht voor de ingerichte opslag op basis van de maximale grootte van de data base of groep die u selecteert. De kosten worden niet gewijzigd tenzij u het maximum vermindert of als u dit verhoogt. Back-upopslag is gekoppeld aan automatische back-ups van uw exemplaar en wordt dynamisch toegewezen. Als u uw back-upperiode verhoogt, wordt de back-upopslag die door uw exemplaar wordt gebruikt, verhoogd.
 
-Standaard worden 7 dagen geautomatiseerde back-ups van uw databases gekopieerd naar een ra-grs-standaard Blob-opslagaccount (read-access geo-redundantstorage). Deze opslag wordt gebruikt door wekelijkse volledige back-ups, dagelijkse differentiële back-ups en transactielogboekback-ups, die elke 5 minuten worden gekopieerd. De grootte van de transactielogboeken is afhankelijk van de wijzigingssnelheid van de database. Een minimale opslag hoeveelheid gelijk aan 100 procent van de database grootte wordt verstrekt zonder extra kosten. Extra verbruik van back-upopslag wordt in GB per maand in rekening gebracht.
+Standaard worden zeven dagen automatische back-ups van uw data bases gekopieerd naar een standaard Blob Storage-account met geografisch redundante opslag met lees toegang (RA-GRS). Deze opslag wordt gebruikt door wekelijkse volledige back-ups, dagelijkse differentiële back-ups en back-ups van transactie logboeken, die elke vijf minuten worden gekopieerd. De grootte van de transactie Logboeken is afhankelijk van de frequentie waarmee de data base wordt gewijzigd. Er wordt geen extra kosten in rekening gebracht voor een minimale opslag hoeveelheid die gelijk is aan 100 procent van de grootte van de data base. Extra verbruik van back-upopslag wordt in GB per maand in rekening gebracht.
 
-Zie de [prijspagina](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over opslagprijzen.
+Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over opslag prijzen.
 
 ## <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
-Een virtuele kern (vCore) vertegenwoordigt een logische CPU en biedt u de mogelijkheid om te kiezen tussen generaties hardware en de fysieke kenmerken van de hardware (bijvoorbeeld het aantal cores, het geheugen en de opslaggrootte). Het op vCore gebaseerde inkoopmodel biedt u flexibiliteit, controle, transparantie van het individuele resourceverbruik en een eenvoudige manier om on-premises workloadvereisten naar de cloud te vertalen. Met dit model u reken-, geheugen- en opslagbronnen kiezen op basis van uw werkbelastingbehoeften.
+Een virtuele kern (vCore) vertegenwoordigt een logische CPU en biedt u de mogelijkheid om te kiezen tussen generaties van hardware en fysieke kenmerken van de hardware (bijvoorbeeld het aantal kernen, het geheugen en de opslag grootte). Het vCore-inkoop model biedt u flexibiliteit, controle, transparantie van het gebruik van afzonderlijke bronnen en een eenvoudige manier om on-premises werkbelasting vereisten te vertalen naar de Cloud. Met dit model kunt u reken-, geheugen-en opslag Resources kiezen op basis van de behoeften van uw werk belasting.
 
-In het op vCore gebaseerde inkoopmodel u kiezen tussen de servicelagen [Algemeen doel](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) en [Bedrijfskritieke](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) voor [afzonderlijke databases,](sql-database-single-database-scale.md) [elastische pools](sql-database-elastic-pool.md)en [beheerde exemplaren](sql-database-managed-instance.md). Voor afzonderlijke databases u ook de [hyperscale-servicelaag](sql-database-service-tier-hyperscale.md)kiezen.
+In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [Algemeen](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) -en [bedrijfskritiek](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) -service lagen voor [afzonderlijke data bases](sql-database-single-database-scale.md), [elastische groepen](sql-database-elastic-pool.md)en [beheerde exemplaren](sql-database-managed-instance.md). Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](sql-database-service-tier-hyperscale.md)kiezen.
 
-Met het op vCore gebaseerde inkoopmodel u onafhankelijk berekenenen en opslagbronnen kiezen, on-premises prestaties afstemmen en de prijs optimaliseren. In het vCore-gebaseerde inkoopmodel betaalt u voor:
+Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag Resources kiezen, de on-premises prestaties afstemmen en de prijs optimaliseren. In het op vCore gebaseerde aankoop model betaalt u voor:
 
-- Compute resources (de servicelaag + het aantal vCores en de hoeveelheid geheugen + het genereren van hardware).
-- Het type en de hoeveelheid gegevens en logboekopslag.
+- Reken bronnen (de servicelaag + het aantal vCores en de hoeveelheid geheugen + de generatie van de hardware).
+- Het type en de hoeveelheid gegevens-en logboek opslag.
 - Back-upopslag (RA-GRS).
 
 > [!IMPORTANT]
-> Rekenbronnen, I/O en gegevens- en logboekopslag worden in rekening gebracht per database of elastische groep. Per database wordt back-upopslag in rekening gebracht. Zie [beheerde exemplaren](sql-database-managed-instance.md)voor meer informatie over beheerde instantiekosten .
-> **Regiobeperkingen:** Zie producten die beschikbaar zijn [per regio voor](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)de huidige lijst met ondersteunde regio's. Als u een beheerde instantie wilt maken in een regio die momenteel niet wordt ondersteund, [verzendt u een ondersteuningsaanvraag via de Azure-portal.](quota-increase-request.md)
+> Reken resources, I/O en gegevens-en logboek opslag worden in rekening gebracht per data base of elastische pool. Back-upopslag wordt per data base in rekening gebracht. Zie [Managed](sql-database-managed-instance.md)instances (Engelstalig) voor meer informatie over beheerde exemplaar kosten.
+> **Beperkingen van de regio:** Zie voor de huidige lijst met ondersteunde regio's [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, [verzendt u een ondersteunings aanvraag via de Azure Portal](quota-increase-request.md).
 
-Als uw enkele database of elastische groep meer dan 300 DTU's verbruikt, kan het converteren naar het vCore-gebaseerde inkoopmodel uw kosten verlagen. U converteren met behulp van uw API naar keuze of met behulp van de Azure-portal, zonder downtime. Conversie is echter niet vereist en wordt niet automatisch uitgevoerd. Als het Op DTU gebaseerde inkoopmodel voldoet aan uw prestatie- en bedrijfsvereisten, moet u het blijven gebruiken.
+Als uw afzonderlijke data base of elastische pool meer dan 300 Dtu's verbruikt, kan het converteren naar het op vCore gebaseerde aankoop model uw kosten verlagen. U kunt converteren met behulp van de API van Choice of met behulp van de Azure Portal, zonder uitval tijd. Conversie is echter niet vereist en wordt niet automatisch uitgevoerd. Als het op DTU gebaseerde aankoop model voldoet aan uw prestatie-en bedrijfs vereisten, moet u het blijven gebruiken.
 
-Als u wilt converteren van het op DTU gebaseerde inkoopmodel naar het op vCore gebaseerde inkoopmodel, selecteert u de rekengrootte met behulp van de volgende vuistregels:
+Als u wilt omzetten van het op DTU gebaseerde aankoop model naar het op vCore gebaseerde aankoop model, selecteert u de reken grootte met behulp van de volgende vuist regels:
 
-- Elke 100 DTU's in de standaardlaag vereisen ten minste 1 vCore in de servicelaag voor algemeen gebruik.
-- Elke 125 DTU's in de premiumlaag vereisen ten minste 1 vCore in de business critical servicelaag.
+- Voor elke 100 Dtu's in de laag standaard is ten minste één vCore in de servicelaag Algemeen vereist.
+- Voor elke 125 Dtu's in de Premium-laag is ten minste één vCore in de servicelaag Bedrijfskritiek vereist.
 
 > [!NOTE]
-> De richtlijnen voor de dtu-vCore-dimensionering zijn bij benadering en worden verstrekt om te helpen bij de eerste schatting van de doelstelling van de doeldatabaseservice. De optimale configuratie van de doeldatabase is workload-afhankelijk. 
+> De richt lijnen voor de DTU naar vCore-grootte zijn ongeveer en zijn voorzien van de eerste schatting van de service doelstelling van de doel database. De optimale configuratie van de doel database is afhankelijk van de werk belasting. 
 > 
-> Om de optimale prijs-prestatieverhouding te bereiken, kan het nodig zijn gebruik te maken van de flexibiliteit van het vCore-model om het aantal vCores, de [hardwaregeneratie,](sql-database-service-tiers-vcore.md#hardware-generations)de [service-](sql-database-service-tiers-vcore.md#service-tiers) en [rekenniveaus](sql-database-service-tiers-vcore.md#compute-tiers) aan te passen, evenals het afstemmen van andere databaseconfiguratieparameters, zoals [maximale mate van parallellisme.](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)
+> Voor het bereiken van de optimale prijs-prestatie verhouding moet u mogelijk gebruikmaken van de flexibiliteit van het vCore-model voor het aanpassen van het aantal vCores, de generatie van de [Hardware](sql-database-service-tiers-vcore.md#hardware-generations), de [service](sql-database-service-tiers-vcore.md#service-tiers) en de [reken](sql-database-service-tiers-vcore.md#compute-tiers) lagen, en het afstemmen van andere database configuratie parameters, zoals de [maximale mate van parallelle](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)uitvoering.
 
-## <a name="dtu-based-purchasing-model"></a>DTU-gebaseerd inkoopmodel
+## <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
-Een database transactie-eenheid (DTU) vertegenwoordigt een gemengde maat van CPU, geheugen, leest en schrijft. Het Op DTU gebaseerde inkoopmodel biedt een reeks vooraf geconfigureerde bundels rekenbronnen en inclusief opslag om verschillende niveaus van toepassingsprestaties te stimuleren. Als u elke maand de voorkeur geeft aan de eenvoud van een vooraf geconfigureerde bundel en vaste betalingen, is het DTU-model mogelijk beter geschikt voor uw behoeften.
+Een Data Base Trans Action Unit (DTU) vertegenwoordigt een overvloei meting van CPU, geheugen, lees bewerkingen en schrijf bewerkingen. Het op DTU gebaseerde aankoop model biedt een aantal vooraf geconfigureerde bundels van reken bronnen en opgenomen opslag om verschillende niveaus van toepassings prestaties te kunnen best Ellen. Als u de voor keur geeft aan de eenvoud van een vooraf geconfigureerde bundel en vaste betalingen per maand, is het op DTU gebaseerde model mogelijk beter geschikt voor uw behoeften.
 
-In het op DTU gebaseerde inkoopmodel u kiezen tussen de basis-, standaard- en premiumservicelagen voor zowel [afzonderlijke databases](sql-database-single-database-scale.md) als [elastische pools.](sql-database-elastic-pool.md) Het op DTU gebaseerde inkoopmodel is niet beschikbaar voor [beheerde exemplaren.](sql-database-managed-instance.md)
+In het op DTU gebaseerde aankoop model kunt u kiezen tussen de basis-, standaard-en Premium-Service lagen voor zowel de [afzonderlijke data bases](sql-database-single-database-scale.md) als [elastische Pools](sql-database-elastic-pool.md). Het op DTU gebaseerde aankoop model is niet beschikbaar voor [beheerde exemplaren](sql-database-managed-instance.md).
 
-### <a name="database-transaction-units-dtus"></a>Databasetransactie-eenheden (DTU's)
+### <a name="database-transaction-units-dtus"></a>Data base Trans Action units (Dtu's)
 
-Voor één database op een specifieke rekengrootte binnen een [servicelaag](sql-database-single-database-scale.md)garandeert Microsoft een bepaald niveau van resources voor die database (onafhankelijk van elke andere database in de Azure-cloud). Deze garantie zorgt voor een voorspelbaar prestatieniveau. De hoeveelheid resources die voor een database is toegewezen, wordt berekend als een aantal DTU's en is een gebundelde meting van compute-, opslag- en I/O-resources.
+Voor één data base met een specifieke reken grootte binnen een [servicelaag, garandeert](sql-database-single-database-scale.md)micro soft een bepaald niveau van resources voor die data base (onafhankelijk van andere data bases in de Azure-Cloud). Deze garantie biedt een voorspelbaar prestatie niveau. De hoeveelheid resources die voor een Data Base wordt toegewezen, wordt berekend als een aantal Dtu's en is een gebundelde meting van compute, Storage en I/O-resources.
 
-De verhouding tussen deze resources wordt oorspronkelijk bepaald door een [oltp-benchmarkworkload (Online Transaction Processing)](sql-database-benchmark-overview.md) die is ontworpen om typisch te zijn voor real-world OLTP-workloads. Wanneer uw werklast de hoeveelheid van een van deze resources overschrijdt, wordt de doorvoer beperkt, wat resulteert in tragere prestaties en time-outs.
+De verhouding tussen deze resources wordt oorspronkelijk bepaald door een [OLTP-werk belasting (online Trans Action processing)](sql-database-benchmark-overview.md) die is ontworpen om typische fysieke OLTP-workloads te zijn. Wanneer uw werk belasting de hoeveelheid van een van deze resources overschrijdt, wordt uw door Voer beperkt, wat resulteert in tragere prestaties en time-outs.
 
-De resources die door uw werkbelasting worden gebruikt, hebben geen invloed op de resources die beschikbaar zijn voor andere SQL-databases in de Azure-cloud. Ook de resources die door andere workloads worden gebruikt, hebben geen invloed op de resources die beschikbaar zijn voor uw SQL-database.
+De resources die door uw werk belasting worden gebruikt, hebben geen invloed op de resources die beschikbaar zijn voor andere SQL-data bases in de Azure-Cloud. De resources die worden gebruikt door andere workloads, hebben ook geen invloed op de resources die beschikbaar zijn voor uw SQL database.
 
-![Selectiekader](./media/sql-database-what-is-a-dtu/bounding-box.png)
+![selectie kader](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DT's zijn het handigst voor het begrijpen van de relatieve resources die zijn toegewezen voor Azure SQL-databases op verschillende rekengroottes en servicelagen. Bijvoorbeeld:
+Dtu's zijn het handigst om te weten wat de relatieve resources zijn die zijn toegewezen voor Azure SQL-data bases tegen verschillende reken grootten en service lagen. Bijvoorbeeld:
 
-- Een verdubbeling van de DTU's door de rekengrootte van een database te vergroten, komt overeen met een verdubbeling van de set resources die beschikbaar zijn voor die database.
-- Een premium service tier P11 database met 1750 DTU's biedt 350x meer DTU rekenkracht dan een basisservice tier database met 5 DTU's.  
+- Door de Dtu's te verdubbelen door de reken grootte van een Data Base te verg Roten, wordt de set beschik bare bronnen voor die data base verdubbeld.
+- Een Premium service tier P11-data base met 1750 Dtu's biedt 350x meer DTU-reken kracht dan een eenvoudige data base van de servicelaag met 5 Dtu's.  
 
-Als u meer inzicht wilt krijgen in het resourceverbruik van uw werkbelasting (DTU), gebruikt u inzichten in [queryprestaties](sql-database-query-performance.md) om:
+Als u meer inzicht wilt krijgen in het gebruik van uw workload door de resource (DTU), gebruikt u [query-prestatie inzichten](sql-database-query-performance.md) om:
 
-- Identificeer de belangrijkste query's op CPU/duur/uitvoering telling die mogelijk kunnen worden afgestemd op verbeterde prestaties. Een I/O-intensieve query kan bijvoorbeeld profiteren van [optimalisatietechnieken in het geheugen](sql-database-in-memory.md) om beter gebruik te maken van het beschikbare geheugen op een bepaalde servicelaag en rekengrootte.
-- Inzoomen op de details van een query om de tekst en de geschiedenis van het gebruik van resources weer te geven.
-- Toegang tot prestatieafstemmingsaanbevelingen die acties van [SQL Database Advisor](sql-database-advisor.md)weergeven.
+- Identificeer de meest voorkomende query's op basis van het aantal CPU/duur/uitvoeringen dat mogelijk kan worden afgestemd op betere prestaties. Een I/O-intensieve query kan bijvoorbeeld profiteren van [optimalisatie technieken in het geheugen](sql-database-in-memory.md) om beter gebruik te maken van het beschik bare geheugen in een bepaalde servicelaag en de berekenings grootte.
+- Zoom in op de details van een query om de tekst en de geschiedenis van het resource gebruik weer te geven.
+- Aanbevelingen voor het afstemmen van prestaties voor het weer geven van acties die door [SQL database Advisor](sql-database-advisor.md)worden uitgevoerd.
 
-### <a name="elastic-database-transaction-units-edtus"></a>Elastische databasetransactie-eenheden (eDTU's)
+### <a name="elastic-database-transaction-units-edtus"></a>Elastic data base Trans Action units (Edtu's)
 
-Voor SQL-databases die altijd beschikbaar zijn, in plaats van een speciale set resources (DTU's) te bieden die mogelijk niet altijd nodig zijn, u deze databases in een [elastische groep plaatsen.](sql-database-elastic-pool.md) De databases in een elastische groep bevinden zich op één Azure SQL Database-server en delen een groep resources.
+Voor SQL-data bases die altijd beschikbaar zijn, in plaats van een speciale set resources (Dtu's) te bieden die niet altijd nodig zijn, kunt u deze data bases in een [elastische pool](sql-database-elastic-pool.md)plaatsen. De data bases in een elastische pool bevinden zich op één Azure SQL Database Server en delen een groep resources.
 
-De gedeelde resources in een elastische groep worden gemeten door elastische databasetransactie-eenheden (eDTU's). Elastische pools bieden een eenvoudige, kosteneffectieve oplossing voor het beheren van prestatiedoelen voor meerdere databases met sterk uiteenlopende en onvoorspelbare gebruikspatronen. Een elastische groep garandeert dat niet alle resources door één database in de groep kunnen worden verbruikt, terwijl elke database in de groep altijd een minimum aan benodigde resources beschikbaar heeft.
+De gedeelde resources in een elastische pool worden gemeten door Elastic data base Trans Action units (Edtu's). Elastische Pools bieden een eenvoudige en kosteneffectieve oplossing voor het beheer van de prestatie doelen voor meerdere data bases met veel verschillende en onvoorspelbare gebruiks patronen. Een elastische groep garandeert dat alle resources niet kunnen worden gebruikt door één data base in de pool, terwijl ervoor wordt gezorgd dat elke data base in de groep altijd een minimale hoeveelheid beschik bare bronnen heeft.
 
-Een pool krijgt een vast aantal eDTU's voor een vaste prijs. In de elastische groep kunnen afzonderlijke databases automatisch schalen binnen de geconfigureerde grenzen. Een database onder een zwaardere belasting verbruikt meer eDTU's om aan de vraag te voldoen. Databases onder lichtere belastingen verbruiken minder eDTU's. Databases zonder belasting verbruiken geen eDTU's. Omdat resources zijn ingericht voor de hele groep, in plaats van per database, vereenvoudigen elastische pools uw beheertaken en bieden u een voorspelbaar budget voor de groep.
+Een pool krijgt een ingesteld aantal Edtu's voor een ingestelde prijs. In de elastische pool kunnen afzonderlijke data bases automatisch worden geschaald binnen de geconfigureerde grenzen. Een Data Base onder een zwaarere belasting neemt meer Edtu's in beslag om aan de vraag te voldoen. Data bases met een lichtere belasting nemen minder Edtu's in beslag. Data bases zonder belasting nemen geen Edtu's in beslag. Omdat resources zijn ingericht voor de hele pool in plaats van per data base, vereenvoudigen elastische Pools uw beheer taken en bieden ze een voorspelbaar budget voor de pool.
 
-U extra eDTU's toevoegen aan een bestaande groep zonder databasedowntime en zonder gevolgen voor de databases in de groep. Als u geen extra eDTU's meer nodig hebt, verwijdert u deze op elk gewenst moment uit een bestaande groep. U ook op elk gewenst moment databases toevoegen aan of aftrekken uit een groep. Als u eDTU's wilt reserveren voor andere databases, beperkt u het aantal eDTU's dat een database onder een zware belasting kan gebruiken. Als een database consistent resources ondergebruikt, verplaatst u deze uit de groep en configureert u deze als één database met een voorspelbare hoeveelheid vereiste resources.
+U kunt extra Edtu's toevoegen aan een bestaande pool zonder uitval tijd van de data base en zonder dat dit van invloed is op de data bases in de pool. Als u extra Edtu's niet meer nodig hebt, kunt u deze op elk gewenst moment verwijderen uit een bestaande groep. U kunt ook data bases toevoegen aan of verwijderen uit een pool op elk gewenst moment. Als u Edtu's voor andere data bases wilt reserveren, beperkt u het aantal Edtu's dat door een Data Base kan worden gebruikt onder een zware belasting. Als een Data Base consequent bronnen gebruikt, verplaatst u deze uit de pool en configureert u deze als één data base met een voorspel bare hoeveelheid vereiste resources.
 
-### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Het aantal DTO's bepalen dat nodig is voor een werkbelasting
+### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Het aantal Dtu's bepalen dat nodig is voor een workload
 
-Als u een bestaande on-premises of SQL Server virtual machine workload wilt migreren naar Azure SQL Database, gebruikt u de [DTU-calculator](https://dtucalculator.azurewebsites.net/) om het aantal benodigde DTU's te benaderen. Voor een bestaande Azure SQL [Database-workload](sql-database-query-performance.md) gebruikt u inzichten in queryprestaties om inzicht te krijgen in uw databaseresourceverbruik (DTU's) en diepere inzichten te verkrijgen voor het optimaliseren van uw werkbelasting. Met [de sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamic management view (DMV) u het resourceverbruik van het laatste uur bekijken. De [catalogusweergave sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) geeft het resourceverbruik van de afgelopen 14 dagen weer, maar met een lagere getrouwheid van gemiddelden van vijf minuten.
+Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar Azure SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande Azure SQL Database workload [query-prestatie inzichten](sql-database-query-performance.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de weer gave [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
 
 ### <a name="determine-dtu-utilization"></a>DTU-gebruik bepalen
 
-Als u het gemiddelde percentage DTU/eDTU-gebruik wilt bepalen ten opzichte van de DTU/eDTU-limiet van een database of een elastische groep, gebruikt u de volgende formule:
+Gebruik de volgende formule om het gemiddelde percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool:
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-De invoerwaarden voor deze formule zijn verkrijgbaar bij [sys.dm_db_resource_stats,](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs. Met andere woorden, als u het percentage DTU/eDTU-gebruik wilt bepalen in de richting van de DTU/eDTU-limiet van een database of een elastische groep, kiest u de grootste procentuele waarde uit het volgende: `avg_cpu_percent`, `avg_data_io_percent`en `avg_log_write_percent` op een bepaald tijdstip.
+De invoer waarden voor deze formule kunnen worden verkregen uit [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv's. Met andere woorden, om het percentage van DTU/edtu-gebruik te bepalen ten opzichte van de DTU/edtu-limiet van een Data Base of een elastische pool, kiest `avg_cpu_percent`u `avg_data_io_percent`de hoogste `avg_log_write_percent` percentage waarde uit de volgende opties:, en op een bepaald moment.
 
 > [!NOTE]
-> De DTU-limiet van een database wordt bepaald door CPU, leest, schrijft en geheugen beschikbaar is voor de database. Omdat de SQL Server-databaseengine echter doorgaans al het beschikbare geheugen `avg_memory_usage_percent` voor de gegevenscache gebruikt om de prestaties te verbeteren, is de waarde meestal bijna 100% ongeacht de huidige databasebelasting. Daarom, hoewel het geheugen indirect invloed heeft op de DTU-limiet, wordt het niet gebruikt in de DTU-gebruiksformule.
+> De DTU-limiet van een Data Base wordt bepaald door CPU, lees bewerkingen, schrijf bewerkingen en geheugen dat beschikbaar is voor de data base. Maar omdat de SQL Server data base-engine doorgaans alle beschik bare geheugen gebruikt voor de gegevens cache om de `avg_memory_usage_percent` prestaties te verbeteren, wordt de waarde doorgaans bijna 100%, ongeacht de huidige laad capaciteit van de data base. Daarom wordt het niet gebruikt in de formule voor het DTU-gebruik, zelfs als het geheugen indirect van invloed is op de DTU-limiet.
 >
 
-### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads die profiteren van een elastische pool van resources
+### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads die profiteren van een elastische groep resources
 
-Pools zijn zeer geschikt voor databases met een laag resourcegebruikgemiddelde en relatief zelden gebruikspieken. Zie [Wanneer moet u een sql-database-elastische pool overwegen voor](sql-database-elastic-pool.md)meer informatie?
+Pools zijn zeer geschikt voor data bases met een gemiddelde en relatief onregelmatige piek gebruik. Zie [Wanneer moet u rekening houden met een SQL database elastische pool?](sql-database-elastic-pool.md)voor meer informatie.
 
-### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Hardwaregeneraties in het DTU-gebaseerde inkoopmodel
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Hardware gegenereerd in het op DTU gebaseerde aankoop model
 
-In het op DTU gebaseerde inkoopmodel kunnen klanten niet kiezen voor de hardwaregeneratie die voor hun databases wordt gebruikt. Hoewel een bepaalde database meestal lang op een specifieke hardwaregeneratie blijft staan (vaak meerdere maanden), zijn er bepaalde gebeurtenissen die ervoor kunnen zorgen dat een database wordt verplaatst naar een andere hardwaregeneratie.
+In het op DTU gebaseerde aankoop model kunnen klanten de hardware-generatie kiezen die wordt gebruikt voor de data bases. Hoewel een bepaalde data base doorgaans gedurende lange tijd op een specifieke generatie van de hardware blijft, zijn er bepaalde gebeurtenissen die ertoe kunnen leiden dat een Data Base wordt verplaatst naar een andere generatie van hardware.
 
-Een database kan bijvoorbeeld worden verplaatst naar een andere hardwaregeneratie als deze wordt opgeschaald of omlaag wordt geschaald naar een andere servicedoelstelling, of als de huidige infrastructuur in een datacenter de capaciteitslimieten nadert, of als de momenteel gebruikte hardware wordt buiten bedrijf gesteld vanwege het einde van het leven.
+U kunt bijvoorbeeld een Data Base verplaatsen naar een andere hardware-generatie als deze omhoog of omlaag wordt geschaald naar een andere service doelstelling, of als de huidige infra structuur in een Data Center de capaciteits limieten nadert of als de momenteel gebruikte hardware buiten gebruik wordt gesteld vanwege het einde van de levens duur.
 
-Als een database wordt verplaatst naar verschillende hardware, kunnen de prestaties van de werkbelasting veranderen. Het DTU-model garandeert dat de doorvoer- en responstijd van de [DTU-benchmarkworkload](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) nagenoeg identiek zal blijven als de database overgaat op een andere hardwaregeneratie, zolang de servicedoelstelling (het aantal DTU's) gelijk blijft. 
+Als een Data Base wordt verplaatst naar andere hardware, kunnen de prestaties van de werk belasting veranderen. Het DTU-model garandeert dat de door Voer en respons tijd van de werk belasting van de [DTU-benchmark](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) periode aanzienlijk hetzelfde blijft als de data base wordt verplaatst naar een andere generatie hardware, mits de service doelstelling (het aantal dtu's) hetzelfde blijft. 
 
-Over het brede spectrum van klantworkloads die in Azure SQL Database worden uitgevoerd, kan de impact van het gebruik van verschillende hardware voor dezelfde servicedoelstelling echter groter zijn. Verschillende workloads profiteren van verschillende hardwareconfiguratie en functies. Daarom is het voor andere workloads dan de DTU-benchmark mogelijk om prestatieverschillen te zien als de database van de ene hardwaregeneratie naar de andere gaat.
+In het brede spectrum van klant werkbelastingen die worden uitgevoerd in Azure SQL Database, kan de impact van het gebruik van verschillende hardware voor dezelfde service doelstelling echter meer worden uitgesp roken. Verschillende werk belastingen profiteren van verschillende hardwareconfiguraties en functies. Daarom is het mogelijk om voor andere workloads dan de DTU-Bench Mark prestatie verschillen te zien als de data base van de ene hardware-generatie naar de andere wordt verplaatst.
 
-Een toepassing die gevoelig is voor netwerklatentie kan bijvoorbeeld betere prestaties zien op Gen5-hardware vs. Gen4 als gevolg van het gebruik van Accelerated Networking in Gen5, maar een toepassing met intensief leesIO kan betere prestaties zien op Gen4-hardware vs. Gen5 als gevolg van hogere geheugen-per-core ratio op Gen4.
+Een toepassing die bijvoorbeeld gevoelig is voor netwerk latentie, kan betere prestaties zien op GEN5-hardware ten opzichte van Gen4 vanwege het gebruik van versneld netwerken in GEN5, maar een toepassing die intensieve Lees-IO gebruikt, kan betere prestaties zien op Gen4-hardware versus GEN5 vanwege een groter geheugen per core-verhouding van Gen4.
 
-Klanten met workloads die gevoelig zijn voor hardwarewijzigingen of klanten die de keuze van de hardwaregeneratie voor hun database willen beheren, kunnen het [vCore-model](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) gebruiken om hun favoriete hardwaregeneratie te kiezen tijdens het maken en schalen van de database. In het vCore-model worden resourcelimieten van elke servicedoelstelling voor elke hardwaregeneratie gedocumenteerd, voor zowel [afzonderlijke databases](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) als [elastische pools.](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools) Zie [Hardwaregeneraties](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)voor meer informatie over hardwaregeneraties in het vCore-model.
+Klanten met werk belastingen die gevoelig zijn voor wijzigingen in de hardware of klanten die de keuze van de hardware-generatie voor hun data base willen beheren, kunnen het [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) -model gebruiken om hun voorkeurs generatie van hardware te kiezen tijdens het maken en schalen van de data base. In het vCore-model worden resource limieten van elke service doelstelling op elke hardware-generatie gedocumenteerd voor zowel [afzonderlijke data bases](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) als [elastische Pools](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools). Zie [Hardware-generaties](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)voor meer informatie over hardware-generaties in het vCore-model.
 
-## <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (veelgestelde vragen)
+## <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
-### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Moet ik mijn toepassing offline halen om te converteren van een Servicetier op Basis van DTU naar een vCore-gebaseerde servicelaag?
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Moet ik mijn toepassing offline zetten om een service tier op basis van DTU te converteren naar een vCore-service tier?
 
-Nee. U hoeft de toepassing niet offline te halen. De nieuwe servicelagen bieden een eenvoudige onlineconversiemethode die vergelijkbaar is met het bestaande proces van het upgraden van databases van de standaard naar de premium servicelaag en andersom. U deze conversie starten met de Azure-portal, PowerShell, Azure CLI, T-SQL of de REST API. Zie [Afzonderlijke databases beheren](sql-database-single-database-scale.md) en [Elastische pools beheren](sql-database-elastic-pool.md).
+Nee. U hoeft de toepassing niet offline te zetten. De nieuwe service lagen bieden een eenvoudige online conversie methode die vergelijkbaar is met het bestaande proces van het bijwerken van data bases van de standaard naar de Premium-servicelaag en de andere manier. U kunt deze conversie starten met behulp van de Azure Portal, Power shell, de Azure CLI, T-SQL of de REST API. Zie voor het [beheren van afzonderlijke data bases](sql-database-single-database-scale.md) en het [beheren van elastische Pools](sql-database-elastic-pool.md).
 
-### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Kan ik een database converteren van een servicelaag in het vCore-gebaseerde inkoopmodel naar een servicelaag in het op DTU gebaseerde inkoopmodel?
+### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Kan ik een Data Base van een servicelaag in het op vCore gebaseerde aankoop model converteren naar een servicelaag in het op DTU gebaseerde aankoop model?
 
-Ja, u uw database eenvoudig converteren naar een ondersteunde prestatiedoelstelling met behulp van de Azure-portal, PowerShell, de Azure CLI, T-SQL of de REST API. Zie [Afzonderlijke databases beheren](sql-database-single-database-scale.md) en [Elastische pools beheren](sql-database-elastic-pool.md).
+Ja, u kunt uw data base eenvoudig converteren naar een ondersteunde prestatie doelstelling door gebruik te maken van de Azure Portal, Power shell, de Azure CLI, T-SQL of de REST API. Zie voor het [beheren van afzonderlijke data bases](sql-database-single-database-scale.md) en het [beheren van elastische Pools](sql-database-elastic-pool.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het op vCore gebaseerde inkoopmodel [het op vCore gebaseerde inkoopmodel.](sql-database-service-tiers-vcore.md)
-- Zie [DTU-gebaseerd inkoopmodel](sql-database-service-tiers-dtu.md)voor meer informatie over het op DTU gebaseerde inkoopmodel.
+- Zie [op vCore gebaseerd inkoop model](sql-database-service-tiers-vcore.md)voor meer informatie over het op vCore gebaseerde aankoop model.
+- Zie het [op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md)voor meer informatie over het op DTU gebaseerde aankoop model.

@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: verbinding maken met een opslagaccount'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een app koppelt aan een opslagaccount.
+title: 'Power shell: verbinding maken met een opslag account'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app verbindt met een opslag account.
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74685337"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>Een App Service-app verbinden met een opslagaccount

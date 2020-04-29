@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: code implementeren naar faseringssleuf'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u code implementeert naar een faseringsomgeving.
+title: 'Power shell: code implementeren naar faserings sleuf'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u code kunt implementeren in een faserings omgeving.
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74684777"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Een web-app maken en code implementeren in een faseringsomgeving

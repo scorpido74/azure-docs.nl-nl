@@ -1,6 +1,6 @@
 ---
-title: VMware-virtuele machines migreren naar Azure met server-side encryption(SSE) en door de klant beheerde sleutels (CMK) met Azure Migrate Server Migration
-description: Meer informatie over het migreren van VMware VM's naar Azure met server-side encryption(SSE) en door de klant beheerde sleutels (CMK) met Azure Migrate Server Migration
+title: Virtuele VMware-machines migreren naar Azure met behulp van SSE (server-side Encryption) en door de klant beheerde sleutels (CMK) met Azure Migrate server migratie
+description: Meer informatie over het migreren van virtuele VMware-machines naar Azure met behulp van SSE (server-side Encryption) en door de klant beheerde sleutels (CMK) met Azure Migrate server migratie
 author: bsiva
 ms.service: azure-migrate
 ms.manager: carmonm
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269482"
 ---
-# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM's migreren naar Azure VM's ingeschakeld met server-side encryptie en door de klant beheerde sleutels
+# <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Virtuele VMware-machines migreren naar Azure-Vm's die zijn ingeschakeld met versleuteling aan de server zijde en door de klant beheerde sleutels
 
-In dit artikel wordt beschreven hoe u VMware VM's migreert naar virtuele Azure-machines met schijven die zijn versleuteld met server-side encryption (SSE) met door de klant beheerde sleutels (CMK), met azure migrate server migratie (agentless replicatie).
+In dit artikel wordt beschreven hoe u virtuele machines van VMware naar Azure migreert met schijven die zijn versleuteld met behulp van SSE (server-side Encryption) met door de klant beheerde sleutels (CMK) met behulp van Azure Migrate server migratie (replicatie zonder agent).
 
-Met de migratieportal-ervaring azure migreren server- poortervaring u [VMware VM's migreren naar Azure met agentless replicatie.](tutorial-migrate-vmware.md) De portalervaring biedt momenteel niet de mogelijkheid om SSE met CMK in te schakelen voor uw gerepliceerde schijven in Azure. De mogelijkheid om SSE met CMK in te schakelen voor de gerepliceerde schijven is momenteel alleen beschikbaar via REST API. In dit artikel ziet u hoe u een [Azure Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) maakt en implementeert om een Vm van VMware te repliceren en de gerepliceerde schijven in Azure te configureren om SSE met CMK te gebruiken.
+Met de Azure Migrate Server Migration Portal-ervaring kunt u [virtuele VMware-machines migreren naar Azure met replicatie zonder agent.](tutorial-migrate-vmware.md) De portal-ervaring biedt momenteel niet de mogelijkheid om SSE in te scha kelen met CMK voor uw gerepliceerde schijven in Azure. De mogelijkheid om SSE in te scha kelen met CMK voor de gerepliceerde schijven is momenteel alleen beschikbaar via REST API. In dit artikel ziet u hoe u een [Azure Resource Manager sjabloon](../azure-resource-manager/templates/overview.md) maakt en implementeert om een virtuele VMWare-machine te repliceren en de gerepliceerde schijven in azure te configureren om SSE te gebruiken met CMK.
 
-De voorbeelden in dit artikel gebruiken [Azure PowerShell](/powershell/azure/new-azureps-module-az) om de taken uit te voeren die nodig zijn om de resourcemanagersjabloon te maken en te implementeren.
+In de voor beelden in dit artikel wordt gebruikgemaakt van [Azure PowerShell](/powershell/azure/new-azureps-module-az) om de taken uit te voeren die nodig zijn voor het maken en implementeren van de Resource Manager-sjabloon.
 
-[Meer informatie](../virtual-machines/windows/disk-encryption.md) over server-side encryptie (SSE) met door de klant beheerde sleutels (CMK) voor beheerde schijven.
+Meer [informatie](../virtual-machines/windows/disk-encryption.md) over server side Encryption (SSE) met door de klant beheerde sleutels (CMK) voor beheerde schijven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Bekijk de zelfstudie](tutorial-migrate-vmware.md) over migratie van VMware VM's naar Azure met agentless replicatie om inzicht te krijgen in de vereisten voor hulpprogramma's.
-- [Volg deze instructies](how-to-add-tool-first-time.md) om een Azure Migrate-project te maken en voeg het hulpprogramma **Azure Migreren: Servermigratie** toe aan het project.
-- [Volg deze instructies](how-to-set-up-appliance-vmware.md) om het Azure Migrate-toestel voor VMware in uw on-premises omgeving en volledige detectie in te stellen.
+- [Bekijk de zelf studie over de](tutorial-migrate-vmware.md) migratie van virtuele VMware-machines naar Azure met agentloze replicatie om inzicht te krijgen in de vereisten van het hulp programma.
+- [Volg deze instructies](how-to-add-tool-first-time.md) om een Azure migrate project te maken en het **Azure migrate:** hulp programma voor server migratie toe te voegen aan het project.
+- [Volg deze instructies](how-to-set-up-appliance-vmware.md) om het Azure migrate apparaat in te stellen voor VMware in uw on-premises omgeving en om de detectie te volt ooien.
 
-## <a name="prepare-for-replication"></a>Voorbereiden op replicatie
+## <a name="prepare-for-replication"></a>Replicatie voorbereiden
 
-Zodra vm-detectie is voltooid, wordt in de regel Gedetecteerde servers op de tegel Servermigratie een aantal VMware VM's weergegeven die door het toestel zijn gedetecteerd.
+Zodra de VM-detectie is voltooid, wordt op de regel gedetecteerde servers op de tegel server migratie een aantal virtuele VMware-machines weer gegeven die zijn gedetecteerd door het apparaat.
 
-Voordat u vm's repliceren, moet de replicatie-infrastructuur worden voorbereid.
+Voordat u Vm's kunt gaan repliceren, moet de replicatie-infra structuur worden voor bereid.
 
-1. Een instantie ServiceBus maken in het doelgebied. De servicebus wordt gebruikt door het on-premises Azure Migrate-toestel om te communiceren met de servermigratieservice om replicatie en migratie te coördineren.
-2. Maak een opslagaccount voor de overdracht van bewerkingslogboeken van replicatie.
-3. Maak een opslagaccount waarnaar het Azure Migrate-toestel replicatiegegevens uploadt.
-4. Maak een Key Vault en configureer de Key Vault om handtekeningtokens voor gedeelde toegang te beheren voor blobtoegang op de opslagaccounts die in stap 3 en 4 zijn gemaakt.
-5. Genereer een handtekeningtoken voor gedeelde toegang voor de servicebus die in stap 1 is gemaakt en maak een geheim voor het token in de Sleutelkluis die in de vorige stap is gemaakt.
-6. Maak een key vault-toegangsbeleid om het on-premises Azure Migrate-toestel (met behulp van de toestelAAD-app) en de Server Migration Service toegang te geven tot de Key Vault.
-7. Maak een replicatiebeleid en configureer de servermigratieservice met details over de replicatie-infrastructuur die in de vorige stap is gemaakt.
+1. Maak een Service Bus-exemplaar in de doel regio. De Service Bus wordt door het on-premises Azure Migrate-apparaat gebruikt om te communiceren met de server migratie service om de replicatie en migratie te coördineren.
+2. Maak een opslag account voor de overdracht van bewerkings logboeken van replicatie.
+3. Maak een opslag account dat door het Azure Migrate apparaat wordt geüpload naar de replicatie gegevens.
+4. Maak een Key Vault en configureer de Key Vault om de handtekening tokens voor gedeelde toegang te beheren voor BLOB-toegang op de opslag accounts die zijn gemaakt in stap 3 en 4.
+5. Genereer een token voor een Shared Access-hand tekening voor de service bus die u in stap 1 hebt gemaakt en maak een geheim voor het token in het Key Vault dat u in de vorige stap hebt gemaakt.
+6. Maak een Key Vault toegangs beleid om het on-premises Azure Migrate apparaat (met behulp van de AAD-app van het apparaat) en de server migratie service toegang tot de Key Vault te geven.
+7. Maak een replicatie beleid en configureer de server migratie service met details van de replicatie-infra structuur die in de vorige stap is gemaakt.
 
-De replicatie-infrastructuur moet worden gemaakt in het doelazure-gebied voor de migratie en in het doelAzure-abonnement waarnaar de VM's worden gemigreerd.
+De replicatie-infra structuur moet worden gemaakt in de Azure-doel regio voor de migratie en in het doel-Azure-abonnement waarnaar de Vm's worden gemigreerd.
 
-De portalervaring Servermigratie vereenvoudigt de voorbereiding van de replicatie-infrastructuur door dit automatisch voor u te doen wanneer u een vm voor de eerste keer in een project repliceert. In dit artikel gaan we ervan uit dat u al een of meer VM's hebt gerepliceerd met behulp van de portalervaring en dat de replicatie-infrastructuur al is gemaakt. We bekijken hoe we details van de bestaande replicatie-infrastructuur kunnen ontdekken en hoe u deze gegevens gebruiken als invoer voor de resourcemanagersjabloon die wordt gebruikt om replicatie met CMK in te stellen.
+De portal voor server migratie vereenvoudigt de voor bereiding van de replicatie infrastructuur door dit automatisch te doen wanneer u een virtuele machine voor de eerste keer in een project repliceert. In dit artikel wordt ervan uitgegaan dat u al een of meer Vm's hebt gerepliceerd met behulp van de portal-ervaring en dat de replicatie infrastructuur al is gemaakt. We kijken hoe u de details van de bestaande replicatie-infra structuur kunt detecteren en hoe u deze details als invoer kunt gebruiken voor de Resource Manager-sjabloon die wordt gebruikt om replicatie met CMK in te stellen.
 
-### <a name="identifying-replication-infrastructure-components"></a>Onderdelen van replicatie-infrastructuur identificeren
+### <a name="identifying-replication-infrastructure-components"></a>Onderdelen van de replicatie infrastructuur identificeren
 
-1. Ga op de Azure-portal naar de pagina resourcegroepen en selecteer de resourcegroep waarin het Azure Migrate-project is gemaakt.
-2. Selecteer **Implementaties** in het linkermenu en zoek naar een implementatienaam die begint met de tekenreeks *'Microsoft.MigrateV2.VMwareV2EnableMigrate'.* U ziet een lijst met Resource Manager-sjablonen die zijn gemaakt door de portalervaring om replicatie voor VM's in dit project in te stellen. We downloaden zo'n sjabloon en gebruiken dat als basis om de sjabloon voor te bereiden op replicatie met CMK.
-3. Als u de sjabloon wilt downloaden, selecteert u een implementatie die overeenkomt met het tekenreekspatroon in de vorige stap > **Selecteer Sjabloon** in het linkermenu > Klik **op Downloaden** in het bovenste menu. Sla het bestand template.json lokaal op. U bewerkt dit sjabloonbestand in de laatste stap.
+1. Ga op het Azure Portal naar de pagina Resource groepen en selecteer de resource groep waarin het Azure Migrate project is gemaakt.
+2. Selecteer **implementaties** in het menu links en zoek naar een implementatie naam die begint met de teken reeks *' micro soft. MigrateV2. VMwareV2EnableMigrate '*. U ziet een lijst met Resource Manager-sjablonen die zijn gemaakt door de portal-ervaring voor het instellen van replicatie voor virtuele machines in dit project. Er wordt één sjabloon gedownload en deze wordt gebruikt als basis voor het voorbereiden van de sjabloon voor replicatie met CMK.
+3. Als u de sjabloon wilt downloaden, selecteert u een implementatie die overeenkomt met het teken reeks patroon in de vorige stap > selecteert u in het menu links de optie **sjabloon** selecteren > klikt u op **downloaden** in het bovenste menu. Sla het bestand template. json lokaal op. U gaat dit sjabloon bestand in de laatste stap bewerken.
 
-## <a name="create-a-disk-encryption-set"></a>Een schijfversleutelingsset maken
+## <a name="create-a-disk-encryption-set"></a>Een schijf versleutelings set maken
 
-Een schijfversleutelingssetsetobject brengt beheerde schijven in een sleutelkluis met de CMK die voor SSE moet worden gebruikt. Als u VM's wilt repliceren met CMK, maakt u een schijfversleutelingsset en geeft u deze door als invoer voor de replicatiebewerking.
+Een schijf Encryption set-object wijst Managed Disks toe aan een Key Vault die de CMK bevat die voor SSE moet worden gebruikt. Als u Vm's wilt repliceren met CMK, maakt u een set voor schijf versleuteling en geeft u deze door als invoer voor de replicatie bewerking.
 
-Volg [hier](../virtual-machines/windows/disk-encryption.md#powershell) het voorbeeld om een schijfversleutelingsset te maken met Azure PowerShell. Controleer of de schijfversleutelingsset is gemaakt in het doelabonnement waarnaar VM's worden gemigreerd en in het doelazure-gebied voor de migratie.
+Volg het voor beeld [hier](../virtual-machines/windows/disk-encryption.md#powershell) om een schijf Encryption set te maken met behulp van Azure PowerShell. Zorg ervoor dat de schijf versleuteling is ingesteld in het doel abonnement waarnaar Vm's worden gemigreerd, en in de Azure-doel regio voor de migratie.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 
@@ -81,12 +81,12 @@ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId $des.Identity.Prin
 New-AzRoleAssignment -ResourceName $KeyVaultName -ResourceGroupName $TargetResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader"
 ```
 
-## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Informatie over de VMware VM om te migreren
+## <a name="get-details-of-the-vmware-vm-to-migrate"></a>Details ophalen van de virtuele VMware-machine die u wilt migreren
 
-In deze stap gebruikt u Azure PowerShell om de details van de VM te krijgen die moet worden gemigreerd. Deze gegevens worden gebruikt om de resourcemanagersjabloon voor replicatie te maken. Concreet zijn de twee eigenschappen van belang:
+In deze stap gebruikt u Azure PowerShell om de details op te halen van de virtuele machine die moet worden gemigreerd. Deze gegevens worden gebruikt om de Resource Manager-sjabloon voor replicatie te maken. Met name de twee eigenschappen van belang zijn:
 
-- De machine Resource ID voor de ontdekte VM's.
-- De lijst met schijven voor de VM en hun schijf-id's.
+- De machine Resource-ID voor de gedetecteerde Vm's.
+- De lijst met schijven voor de virtuele machine en de bijbehorende schijf-id's.
 
 ```azurepowershell
 
@@ -105,7 +105,7 @@ ApplianceName  SiteId
 VMwareApplianc /subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite
 ```
 
-Kopieer de waarde van de SiteId-tekenreeks die overeenkomt met het Azure Migrate-toestel dat de VM wordt gedetecteerd. In het bovenstaande voorbeeld is de SiteId *"/abonnementen/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVCMMwareK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite"*
+Kopieer de waarde van de site-exemplaar-String die overeenkomt met het Azure Migrate apparaat waarop de virtuele machine wordt gedetecteerd. In het bovenstaande voor beeld is de site- */Subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/ContosoVMwareCMK/providers/Microsoft.OffAzure/VMwareSites/VMwareApplianca8basite* het volgende:
 
 ```azurepowershell
 
@@ -120,7 +120,7 @@ PS /home/bharathram> $machine = $Discoveredmachines | where {$_.Properties.displ
 PS /home/bharathram> $machine.count   #Validate that only 1 VM was found matching this name.
 ```
 
-Kopieer de resourceid-, naam- en schijfwaardewaarden voor de te migreren machine.
+Kopieer de ResourceId-, naam-en schijf-uuid waarden voor de machine die moeten worden gemigreerd.
 ```Output
 PS > $machine.Name
 10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_50098f99-f949-22ca-642b-724ec6595210
@@ -137,12 +137,12 @@ uuid                                 label       name    maxSizeInBytes
 
 ```
 
-## <a name="create-resource-manager-template-for-replication"></a>Sjabloon Resourcemanager maken voor replicatie
+## <a name="create-resource-manager-template-for-replication"></a>Resource Manager-sjabloon voor replicatie maken
 
-- Open het sjabloonbestand Resourcebeheer dat u hebt gedownload in de stap **Replicatie-infrastructuuronderdelen identificeren** in een editor naar keuze.
-- Verwijder alle brondefinities uit de sjabloon, behalve bronnen die van het type *"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems"* zijn
-- Als er meerdere resourcedefinities van het bovenstaande type zijn, verwijdert u alles behalve één. Verwijder eventuele **afhankelijke eigenschappenOp eigenschapsdefinities** uit de resourcedefinitie.
-- Aan het einde van deze stap moet u een bestand hebben dat lijkt op het onderstaande voorbeeld en dezelfde set eigenschappen heeft.
+- Open het Resource Manager-sjabloon bestand dat u hebt gedownload in de stap **replicatie infrastructuur onderdelen identificeren** in een editor van uw keuze.
+- Verwijder alle resource definities uit de sjabloon, behalve voor bronnen van het type *' micro soft. Recovery Services/kluizen/replicationFabrics/replicationProtectionContainers/replicationMigrationItems '*
+- Als er meerdere resource definities van het bovenstaande type zijn, verwijdert u alle, maar één. Verwijder alle **dependsOn** -eigenschaps definities uit de resource definitie.
+- Aan het einde van deze stap moet u een bestand hebben dat lijkt op het onderstaande voor beeld en dezelfde set eigenschappen heeft.
 
 ```
 {
@@ -182,14 +182,14 @@ uuid                                 label       name    maxSizeInBytes
 }
 ```
 
-- Bewerk de **eigenschap naam** in de resourcedefinitie. Vervang de tekenreeks die de laatste "/" in de eigenschap naam volgt door de waarde van *$machine. Naam*(van de vorige stap).
-- Wijzig de waarde van de eigenschap **properties.providerSpecificDetails.vmwareMachineId** met een waarde van *$machine. ResourceId*(uit de vorige stap).
-- Stel de waarden voor **targetResourceGroupId**, **targetNetworkId**, **targetSubnetName** in op respectievelijk de doelgroep-ID, doelgroep-id voor virtuele netwerkbronnen en subnetnaam target.
-- Stel de waarde van **licentieType** in op 'WindowsServer' om Azure Hybrid Benefit toe te passen voor deze vm. Als deze VM niet in aanmerking komt voor Azure Hybrid Benefit, stelt u de waarde van **licenseType** in op NoLicenseType.
-- Wijzig de waarde van de eigenschap **targetVmName** in de gewenste Azure-naam voor virtuele machines voor de gemigreerde vm.
-- Voeg eventueel een eigenschap met de naam **targetVmSize** toe onder de eigenschap **targetVmName.** Stel de waarde van de eigenschap **targetVmSize** in op de gewenste Azure virtuele machinegrootte voor de gemigreerde VM.
-- De eigenschap **disksToInclude** is een lijst met schijfinvoervoor replicatie met elk lijstitem dat één on-premises schijf vertegenwoordigt. Maak evenveel lijstitems als het aantal schijven op de on-premises VM. Vervang de eigenschap **diskId** in het lijstitem door de uuid van de schijven die in de vorige stap zijn geïdentificeerd. Stel de **isOSDisk-waarde** in op 'true' voor de OS-schijf van de VM en 'false' voor alle andere schijven. Laat de **logStorageAccountId** en de **logStorageAccountSasSecretName-eigenschappen** ongewijzigd. Stel de **diskType-waarde** in op het type Azure Managed Disk (*Standard_LRS, Premium_LRS, StandardSSD_LRS*) dat voor de schijf moet worden gebruikt. Voor de schijven die moeten worden versleuteld met CMK, voegt u een eigenschap met de naam **diskEncryptionSetId** toe en stelt u de waarde in op de bron-ID van de schijfversleutelingsset die is gemaakt(**$des. Id**) in de stap *Een schijfversleutelingsset maken*
-- Sla het bewerkte sjabloonbestand op. In het bovenstaande voorbeeld ziet het bewerkte sjabloonbestand er als volgt uit:
+- Bewerk de eigenschap **name** in de resource definitie. Vervang de teken reeks die volgt op de laatste '/' in de eigenschap name met de waarde van *$machine. Naam*(uit de vorige stap).
+- Wijzig de waarde van de eigenschap **Properties. providerSpecificDetails. vmwareMachineId** met de waarde *$machine. ResourceId*(uit de vorige stap).
+- Stel de waarden voor **targetResourceGroupId**, **targetNetworkId**, **targetSubnetName** in op de doel resource groep-ID, de bron-id van het virtuele netwerk van het doel en de naam van het doel-subnet.
+- Stel de waarde van **License type** in op ' Windowsserver ' om Azure Hybrid Benefit voor deze VM toe te passen. Als deze VM niet in aanmerking komt voor Azure Hybrid Benefit, stelt u de waarde van **License type** in op NoLicenseType.
+- Wijzig de waarde van de eigenschap **targetVmName** in de gewenste naam van de virtuele machine van Azure voor de gemigreerde VM.
+- Voeg eventueel een eigenschap met de naam **targetVmSize** onder de eigenschap **targetVmName** toe. Stel de waarde van de eigenschap **targetVmSize** in op de gewenste grootte van de virtuele Azure-machine voor de gemigreerde VM.
+- De eigenschap **disksToInclude** is een lijst van schijf invoer voor replicatie met elk lijst item dat één on-premises schijf voor stelt. Maak zoveel lijst items als het aantal schijven op de on-premises VM. Vervang de eigenschap **diskId** in het lijst item naar de UUID van de schijven die in de vorige stap zijn geïdentificeerd. Stel de waarde **isOSDisk** in op ' True ' voor de besturingssysteem schijf van de virtuele machine en ' false ' voor alle andere schijven. Laat de eigenschappen **logStorageAccountId** en **logStorageAccountSasSecretName** ongewijzigd. Stel de waarde **diskType** in op het type Azure Managed Disk (*Standard_LRS, Premium_LRS, StandardSSD_LRS*) dat voor de schijf moet worden gebruikt. Voor de schijven die moeten worden versleuteld met CMK, voegt u een eigenschap met de naam **diskEncryptionSetId** toe en stelt u de waarde in op de resource-id van de ingestelde schijf versleuteling (**$des. -Id**) in de stap *een versleutelings voor schijven maken*
+- Sla het bewerkte sjabloon bestand op. In het bovenstaande voor beeld ziet het bewerkte sjabloon bestand er als volgt uit:
 
 ```
 {
@@ -249,7 +249,7 @@ uuid                                 label       name    maxSizeInBytes
 
 ## <a name="set-up-replication"></a>Replicatie instellen
 
-U nu de sjabloon bewerkt ResourceManager implementeren in de projectbrongroep om replicatie voor de VM in te stellen. Meer informatie over het [implementeren van resources met Azure Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+U kunt nu de bewerkte Resource Manager-sjabloon implementeren in de project resource groep om de replicatie voor de virtuele machine in te stellen. Meer informatie over het [implementeren van resources met Azure Resource Manager sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $ProjectResourceGroup -TemplateFile "C:\Users\Administrator\Downloads\template.json"
@@ -270,4 +270,4 @@ DeploymentDebugLogLevel :
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Monitor de replicatiestatus](tutorial-migrate-vmware.md#track-and-monitor) via de portalervaring en voer Testmigraties en migratie uit.
+[Controleer de replicatie](tutorial-migrate-vmware.md#track-and-monitor) status via de portal-ervaring en voer test migraties en migratie uit.

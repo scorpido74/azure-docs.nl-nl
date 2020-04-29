@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een notitieblok maken in Azure Cosmos DB om de gegevens te analyseren en te visualiseren'
-description: 'Zelfstudie: Meer informatie over het gebruik van ingebouwde Jupyter-notitieblokken om gegevens te importeren naar Azure Cosmos DB, de gegevens te analyseren en de uitvoer te visualiseren.'
+title: 'Zelf studie: een notitie blok maken in Azure Cosmos DB voor het analyseren en visualiseren van de gegevens'
+description: 'Zelf studie: meer informatie over het gebruik van ingebouwde Jupyter-notebooks voor het importeren van gegevens in Azure Cosmos DB, het analyseren van de gegevens en het visualiseren van de uitvoer.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
@@ -8,33 +8,33 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720921"
 ---
-# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Zelfstudie: Een notitieblok maken in Azure Cosmos DB om de gegevens te analyseren en te visualiseren
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Zelf studie: een notitie blok maken in Azure Cosmos DB voor het analyseren en visualiseren van de gegevens
 
-In dit artikel wordt beschreven hoe u ingebouwde Jupyter-notitieblokken gebruiken om voorbeeldgegevens van detailhandelsgegevens te importeren in Azure Cosmos DB. U ziet hoe u de sql- en Azure Cosmos DB-magische opdrachten gebruiken om query's uit te voeren, de gegevens te analyseren en de resultaten te visualiseren.
+In dit artikel wordt beschreven hoe u ingebouwde Jupyter-notebooks gebruikt voor het importeren van voor beelden van Retail-gegevens naar Azure Cosmos DB. U ziet hoe u de opdrachten SQL en Azure Cosmos DB Magic gebruikt om query's uit te voeren, de gegevens te analyseren en de resultaten te visualiseren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Ondersteuning voor notitieblokken inschakelen tijdens het maken van het Azure Cosmos-account](enable-notebooks.md)
+* [Ondersteuning van notebooks inschakelen tijdens het maken van het Azure Cosmos-account](enable-notebooks.md)
 
-## <a name="create-the-resources-and-import-data"></a>De resources en importgegevens maken
+## <a name="create-the-resources-and-import-data"></a>De resources maken en gegevens importeren
  
-In deze sectie maakt u de Azure Cosmos-database, de container en de invoer van de detailhandelsgegevens naar de container.
+In deze sectie maakt u de Azure Cosmos-data base, container en importeert u de detail gegevens in de container.
 
 1. Navigeer naar uw Azure Cosmos-account en open de **Data Explorer.**
 
-1. Ga naar het tabblad `…` **Notitieblokken,** selecteer naast **Mijn notitieblokken** en maak een **nieuw notitieblok**. Selecteer **Python 3** als standaardkernel.
+1. Ga naar het tabblad **notebooks** , `…` Selecteer naast **mijn notitie blokken** en maak een **Nieuw notitie blok**. Selecteer **python 3** als standaard-kernel.
 
    ![Een nieuwe notebook maken](./media/create-notebook-visualize-data/create-new-notebook.png)
 
-1. Nadat een nieuw notitieblok is gemaakt, u deze hernoemen naar iets als **VisualizeRetailData.ipynb.**
+1. Nadat u een nieuw notitie blok hebt gemaakt, kunt u de naam wijzigen in iets zoals **VisualizeRetailData. ipynb.**
 
-1. Vervolgens maakt u een database met de naam "RetailDemo" en een container met de naam "WebsiteData" om de retailgegevens op te slaan. U /CardID als partitiesleutel gebruiken. Kopieer en plak de volgende code naar een nieuwe cel in uw notitieblok en voer deze uit:
+1. Vervolgens maakt u een Data Base met de naam ' RetailDemo ' en een container met de naam ' WebsiteData ' om de Retail gegevens op te slaan. U kunt/CardID gebruiken als de partitie sleutel. Kopieer en plak de volgende code in een nieuwe cel in uw notitie blok en voer deze uit:
 
    ```python
    import azure.cosmos
@@ -47,22 +47,22 @@ In deze sectie maakt u de Azure Cosmos-database, de container en de invoer van d
    print('Container WebsiteData created')
    ```
 
-   Als u een `Shift + Enter` cel wilt uitvoeren, selecteert u de cel of selecteert u de optie **Actieve cel uitvoeren** op de navigatiebalk van de gegevensverkenner.
+   Als u een cel wilt uitvoeren `Shift + Enter` , selecteert of selecteert u de cel en kiest u de optie **actieve cel uitvoeren** op de navigatie balk van Data Explorer.
 
    ![De actieve cel uitvoeren](./media/create-notebook-visualize-data/run-active-cell.png)
 
-   De database en container worden gemaakt in uw huidige Azure Cosmos-account. De container is voorzien van 400 RU/s. U ziet de volgende uitvoer nadat de database en container is gemaakt. 
+   De data base en de container worden gemaakt in uw huidige Azure Cosmos-account. De container is ingericht met 400 RU/s. Nadat de data base en de container is gemaakt, wordt de volgende uitvoer weer geven. 
 
    ```console
     Database RetailDemo created
     Container WebsiteData created
    ```
 
-   U ook het tabblad **Gegevens** vernieuwen en de nieuw gemaakte bronnen bekijken:
+   U kunt ook het tabblad **gegevens** vernieuwen en de zojuist gemaakte resources bekijken:
 
-   ![Het tabblad Gegevens vernieuwen om de nieuwe container te bekijken](media/create-notebook-visualize-data/refresh-data-tab.png)
+   ![Vernieuw het tabblad gegevens om de nieuwe container weer te geven](media/create-notebook-visualize-data/refresh-data-tab.png)
 
-1. Vervolgens importeert u de voorbeeldgegevens voor detailhandelsgegevens in de Azure Cosmos-container. Hier is het formaat van een item uit de retail gegevens:
+1. Vervolgens importeert u de voor beeld-Retail gegevens in de Azure Cosmos-container. Dit is de indeling van een item uit de Retail gegevens:
 
    ```json
     {
@@ -80,7 +80,7 @@ In deze sectie maakt u de Azure Cosmos-database, de container en de invoer van d
     }
    ```
 
-   Voor het zelfstudiedoel worden de voorbeeldgegevens van de detailhandel opgeslagen in de Azure blob-opslag. U deze importeren in de Azure Cosmos-container door de volgende code in een nieuwe cel te plakken. U bevestigen dat de gegevens zijn geïmporteerd door een query uit te voeren om het aantal items te selecteren.
+   Voor het doel van de zelf studie worden de Retail gegevens van het voor beeld opgeslagen in de Azure Blob-opslag. U kunt het importeren in de Azure Cosmos-container door de volgende code in een nieuwe cel te plakken. U kunt controleren of de gegevens zijn geïmporteerd door een query uit te voeren om het aantal items te selecteren.
 
    ```python
     # Read data from storage
@@ -112,45 +112,45 @@ In deze sectie maakt u de Azure Cosmos-database, de container en de invoer van d
    Container with id 'WebsiteData' contains '2654' items
    ```
 
-## <a name="get-your-data-into-a-dataframe"></a>Uw gegevens in een DataFrame krijgen
+## <a name="get-your-data-into-a-dataframe"></a>Uw gegevens in een Data Frame ophalen
 
-Voordat u query's uitvoert om de gegevens te analyseren, u de gegevens van container tot een [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) lezen voor analyse. Gebruik de volgende sql-magische opdracht om de gegevens in een DataFrame te lezen:
+Voordat u query's uitvoert om de gegevens te analyseren, kunt u de gegevens uit de container lezen in een [Panda data frame](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) voor analyse. Gebruik de volgende SQL Magic-opdracht om de gegevens in een data frame te lezen:
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output outputDataframeVar 
 {Query text}
 ```
 
-Zie de [ingebouwde laptopopdrachten en -functies in](use-notebook-features-and-commands.md) het artikel Azure Cosmos DB voor meer informatie. U voert de `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`query uit. De resultaten worden opgeslagen in een Pandas DataFrame met de naam df_cosmos. Plak de volgende opdracht in een nieuwe notitieblokcel en voer deze uit:
+Zie voor meer informatie de [ingebouwde opdrachten en functies voor notebooks in azure Cosmos DB](use-notebook-features-and-commands.md) artikel. U voert de query- `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. De resultaten worden opgeslagen in een Panda data frame met de naam df_cosmos. Plak de volgende opdracht in een nieuwe notebook-cel en voer deze uit:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
 
-Voer in een nieuwe notitieblokcel de volgende code uit om de eerste 10 items uit de uitvoer te lezen:
+Voer in een nieuwe notebook-cel de volgende code uit om de eerste tien items van de uitvoer te lezen:
 
 ```python
 # See a sample of the result
 df_cosmos.head(10)
 ```
 
-![Query uitvoeren om top 10-items te krijgen](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+![Query uitvoeren om top 10-items op te halen](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
 
 ## <a name="run-queries-and-analyze-your-data"></a>Query's uitvoeren en uw gegevens analyseren
 
-In deze sectie voert u enkele query's uit op de opgehaalde gegevens.
+In deze sectie voert u enkele query's uit op de gegevens die worden opgehaald.
 
-* **Query1:** Voer een groep op query uit op het DataFrame om de som van de totale omzet voor elk land op te halen en 5 items uit de resultaten weer te geven. Voer in een nieuwe notitieblokcel de volgende code uit:
+* **Query1:** Voer een Group by-query uit op de data frame om de som van de totale verkoop opbrengst voor elk land op te halen en vijf items van de resultaten weer te geven. Voer de volgende code uit in een nieuwe notebook-cel:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
    display(df_revenue.head(5))
    ```
 
-   ![Totale omzetopbrengst](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   ![Totale uitvoer opbrengst omzet](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
 
-* **Query2:** Als u een lijst met vijf gekochte items wilt krijgen, opent u een nieuwe notitieblokcel en voert u de volgende code uit:
+* **Query2:** Als u een lijst met vijf aangeschafte items wilt ophalen, opent u een nieuwe notebook-cel en voert u de volgende code uit:
 
    ```python
    import pandas as pd
@@ -159,18 +159,18 @@ In deze sectie voert u enkele query's uit op de opgehaalde gegevens.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Top vijf gekochte artikelen](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   ![Top vijf aangeschafte items](./media/create-notebook-visualize-data/top5-purchased-items.png)
 
 ## <a name="visualize-your-data"></a>Uw gegevens visualiseren  
 
-1. Nu we onze gegevens over de inkomsten uit de Azure Cosmos-container hebben, u uw gegevens visualiseren met een visualisatiebibliotheek naar keuze. In deze tutorial gebruiken we de Bokeh-bibliotheek. Open een nieuwe notebookcel en voer de volgende code uit om de Bokeh-bibliotheek te installeren. Nadat aan alle eisen is voldaan, wordt de bibliotheek geïnstalleerd.
+1. Nu we onze gegevens over de omzet van de Azure Cosmos-container hebben, kunt u uw gegevens visualiseren met een visualisatie bibliotheek van uw keuze. In deze zelf studie wordt gebruikgemaakt van de bokeh-bibliotheek. Open een nieuwe cel notebook en voer de volgende code uit om de bokeh-bibliotheek te installeren. Nadat aan alle vereisten is voldaan, wordt de bibliotheek geïnstalleerd.
 
    ```python
    import sys
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Vervolgens voor te bereiden op de gegevens plot op een kaart. Sluit u aan bij de gegevens in Azure Cosmos DB met landgegevens in Azure Blob-opslag en converteer het resultaat naar de GeoJSON-indeling. Kopieer de volgende code naar een nieuwe notitieblokcel en voer deze uit.
+1. Volgende voor bereiding voor het uitzetten van de gegevens op een kaart. Neem lid van de gegevens in Azure Cosmos DB met de land informatie in Azure Blob-opslag en converteer het resultaat naar geojson-indeling. Kopieer de volgende code naar een nieuwe notebook-cel en voer deze uit.
 
    ```python
    import urllib.request, json
@@ -187,7 +187,7 @@ In deze sectie voert u enkele query's uit op de opgehaalde gegevens.
    json_data = json.dumps(merged_json)
    ```
 
-1. Visualiseer de verkoopopbrengsten van verschillende landen op een wereldkaart door de volgende code in een nieuwe notitieblokcel uit te voeren:
+1. Visualiseer de verkoop opbrengst van verschillende landen op een wereld kaart door de volgende code uit te voeren in een nieuwe notebook-cel:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,11 +233,11 @@ In deze sectie voert u enkele query's uit op de opgehaalde gegevens.
    show(p)
    ```
 
-   De uitvoer toont de wereldkaart met verschillende kleuren. De kleuren donkerder tot lichter vertegenwoordigen de landen met de hoogste omzet tot de laagste omzet.
+   In de uitvoer wordt de wereld kaart met verschillende kleuren weer gegeven. De kleuren donkerder tot lichter weer spie gelen de landen met de hoogste omzet tot de laagste omzet.
 
-   ![Visualisatie van landen-inkomstenkaart](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Visualisatie van de kaart omzet](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
-1. Laten we eens kijken naar een ander geval van gegevensvisualisatie. De WebsiteData-container bevat gegevens van gebruikers die een item hebben bekeken, aan hun winkelwagentje hebben toegevoegd en het item hebben gekocht. Laten we de conversieratio van gekochte artikelen uitzetten. Voer de volgende code uit in een nieuwe cel om de conversieratio voor elk item te visualiseren:
+1. Laten we eens kijken naar een ander geval van gegevens visualisatie. De WebsiteData-container bevat een record met gebruikers die een item hebben bekeken, toegevoegd aan hun mandje en het item hebben gekocht. Laten we de conversie frequentie van de gekochte items in het diagram zetten. Voer de volgende code in een nieuwe cel uit om de conversie frequentie voor elk item te visualiseren:
 
    ```python
    from bokeh.io import show, output_notebook
@@ -286,8 +286,8 @@ In deze sectie voert u enkele query's uit op de opgehaalde gegevens.
    show(p)
    ```
 
-   ![Aankoopconversieratio visualiseren](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   ![Aankoop conversie frequentie visualiseren](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie in het artikel van [Azure Cosmos DB](use-notebook-features-and-commands.md) voor meer informatie over laptopopdrachten.
+* Zie voor meer informatie over notebook-opdrachten [ingebouwde notebook opdrachten en-functies gebruiken in azure Cosmos DB](use-notebook-features-and-commands.md) artikel.

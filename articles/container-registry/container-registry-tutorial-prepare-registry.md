@@ -1,14 +1,14 @@
 ---
-title: Zelfstudie - Geo-gerepliceerd register maken
+title: Zelf studie-het geo-gerepliceerde REGI ster maken
 description: Een Azure-containerregister maken, geo-replicatie configureren, een Docker-installatiekopie voorbereiden en implementeren in het register. Deel één van een serie van drie.
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238522"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: een Azure-containerregister met geo-replicatie voorbereiden
@@ -37,25 +37,25 @@ Azure Cloud Shell bevat niet de vereiste Docker-onderdelen die nodig zijn om elk
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-Selecteer Een Azure Container Registry voor**resourcecontainers** >  **Create a resource** > **maken**.
+Selecteer **een resource** > **containers** > maken**Azure container Registry**.
 
 ![Een containerregister maken met Azure Portal][tut-portal-01]
 
 Configureer uw nieuwe register met de volgende instellingen:
 
 * **Registernaam**: maak een registernaam die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
-* **Resourcegroep:** **nieuwe maken** > `myResourceGroup`
+* **Resource groep**: **nieuwe maken** > `myResourceGroup`
 * **Locatie**:`West US`
-* **Beheerdersgebruiker** `Enable` : (vereist dat Web App voor containers afbeeldingen kan opvragen)
-* **SKU** `Premium` : (vereist voor geo-replicatie)
+* **Gebruiker**met beheerders `Enable` rechten: (vereist voor Web App for containers voor het ophalen van installatie kopieën)
+* **SKU**: `Premium` (vereist voor geo-replicatie)
 
 Selecteer **Maken** om de ACR-instantie te implementeren.
 
 ![Een containerregister maken met Azure Portal][tut-portal-02]
 
-Gedurende de rest van deze `<acrName>` zelfstudie gebruiken we als tijdelijke aanduiding voor de **naam van het containerregister** dat u hebt gekozen.
+In de rest van deze zelf studie gebruiken `<acrName>` we als tijdelijke aanduiding voor de container **register naam** die u hebt gekozen.
 
 > [!TIP]
 > Omdat Azure-containerregisters doorgaans lang meegaande resources zijn die op meerdere hosts van de container worden gebruikt, wordt u aangeraden het register in een eigen resourcegroep te maken. Als u registers met geo-replicatie en webhooks configureert, worden deze extra resources in dezelfde resourcegroep geplaatst.

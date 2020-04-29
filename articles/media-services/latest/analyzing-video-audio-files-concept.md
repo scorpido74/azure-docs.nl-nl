@@ -1,7 +1,7 @@
 ---
-title: Video- en audiobestanden analyseren
+title: Video-en audio bestanden analyseren
 titleSuffix: Azure Media Services
-description: Meer informatie over het analyseren van audio- en video-inhoud met AudioAnalyzerPreset en VideoAnalyzerPreset in Azure Media Services.
+description: Meer informatie over het analyseren van audio-en video-inhoud met behulp van AudioAnalyzerPreset en VideoAnalyzerPreset in Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,66 +13,66 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269885"
 ---
-# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video- en audiobestanden analyseren met Azure Media Services
+# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video-en audio bestanden analyseren met Azure Media Services
 
-Met Azure Media Services v3 u met Video Indexer inzichten uit uw video- en audiobestanden halen. In dit artikel worden de v3-voorinstellingen van Media Services beschreven die worden gebruikt om deze inzichten te extraheren. Als u meer gedetailleerde inzichten wilt, gebruikt u Video Indexer rechtstreeks. Als u wilt weten wanneer u voorinstellingen voor video-indexer versus mediaservices-analyzer moet gebruiken, raadpleegt u het [vergelijkingsdocument](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Met Azure Media Services v3 kunt u inzichten uit uw video-en audio bestanden ophalen met Video Indexer. In dit artikel worden de Media Services v3 Analyzer-voor waarden beschreven die worden gebruikt om deze inzichten te extra heren. Als u meer gedetailleerde inzichten wilt, gebruikt u Video Indexer rechtstreeks. Bekijk het [vergelijkings document](../video-indexer/compare-video-indexer-with-media-services-presets.md)als u wilt weten wanneer de voor instellingen van Video Indexer versus Media Services Analyzer moeten worden gebruikt.
 
-Als u uw inhoud wilt analyseren met Media Services v3-voorinstellingen, maakt u een **transformatie** en verzendt u een **taak** die een van deze voorinstellingen gebruikt: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) of **AudioAnalyzerPreset**. Zie [Video's](analyze-videos-tutorial-with-api.md)analyseren met Azure Media Services voor een zelfstudie waarin wordt uitgelegd hoe **videoanalyzerpreset**kan worden gebruikt.
+Als u uw inhoud wilt analyseren met Media Services v3-voor instellingen, maakt u een **trans formatie** en verzendt u een **taak** die gebruikmaakt van een van deze voor instellingen: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) of **AudioAnalyzerPreset**. Zie [Video's analyseren met Azure Media Services](analyze-videos-tutorial-with-api.md)voor een zelf studie waarin wordt uitgelegd hoe u **VideoAnalyzerPreset**kunt gebruiken.
 
 > [!NOTE]
 > Wanneer u voorinstellingen voor een Video of Audio Analyzer gebruikt, moet u de Azure-portal gebruiken om uw account in te stellen op 10 S3 Door media gereserveerde eenheden. Zie [Mediaverwerking schalen](media-reserved-units-cli-how-to.md) voor meer informatie.
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
 
-Als een belangrijke herinnering moet u voldoen aan alle toepasselijke wetten bij uw gebruik van Video Indexer en mag u Video Indexer of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk kan zijn voor anderen. Voordat u video's, inclusief biometrische gegevens, uploadt naar de Video Indexer-service voor verwerking en opslag, moet u over alle juiste rechten beschikken, inclusief alle juiste toestemmingen, van de persoon(en) in de video. Voor meer informatie over compliance, privacy en beveiliging in Video Indexer, de Voorwaarden van Microsoft [Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Voor de privacyverplichtingen van Microsoft en de verwerking van uw gegevens raadpleegt u de [privacyverklaring](https://privacy.microsoft.com/PrivacyStatement)van Microsoft, de [voorwaarden voor onlineservices](https://www.microsoft.com/licensing/product-licensing/products) (OST) en [het addendum voor gegevensverwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA"). Aanvullende privacy-informatie, waaronder over het bewaren van gegevens, verwijdering / vernietiging, is beschikbaar in de OST en [hier](../video-indexer/faq.md). Door Video Indexer te gebruiken, stemt u ermee in gebonden te zijn aan de Voorwaarden voor cognitieve services, de OST, DPA en de privacyverklaring.
+Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Video Indexer en mag u Video Indexer of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk voor anderen is. Voordat u Video's, met inbegrip van biometrische gegevens, naar de Video Indexer-service voor de verwerking en opslag uploadt, moet u over alle juiste rechten beschikken, met inbegrip van alle toepasselijke toestemmingen, van de afzonderlijke (en) in de video. Voor meer informatie over naleving, privacy en beveiliging in Video Indexer, de micro soft [Cognitive Services-voor waarden](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Raadpleeg [de privacyverklaring van](https://privacy.microsoft.com/PrivacyStatement)micro soft voor de privacy van micro soft en de verwerking van uw gegevens, de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") en de [addendum op gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Aanvullende privacy-informatie, inclusief gegevens retentie, verwijdering/vernietiging, is beschikbaar in de OST en [hier](../video-indexer/faq.md). Door Video Indexer te gebruiken, gaat u akkoord met de Cognitive Services voor waarden, de OST, DPA en de privacyverklaring.
 
-## <a name="built-in-presets"></a>Ingebouwde voorinstellingen
+## <a name="built-in-presets"></a>Ingebouwde voor instellingen
 
-Media Services ondersteunt momenteel de volgende ingebouwde analyzer-voorinstellingen:  
+Media Services ondersteunt momenteel de volgende ingebouwde Analyzer-voor waarden:  
 
-|**Vooraf ingestelde naam**|**Scenario**|**Details**|
+|**Naam van voor instelling**|**Scenario**|**Nadere**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analyseren|De voorinstelling past een vooraf gedefinieerde set ai-gebaseerde analysebewerkingen toe, waaronder spraaktranscriptie. Momenteel ondersteunt de voorinstelling het verwerken van inhoud met één audiotrack die spraak in één taal bevat. U de taal voor de audiopayload in de invoer opgeven met behulp van de BCP-47-indeling van 'language tag-region'. Ondersteunde talen zijn Engels ('en-US'), Portugees ('pt-BR'), Spaans ('es-ES' en 'es-MX'), Frans ('fr-FR'), Italiaans ('it-IT'), Japans ('ja-JP'), Portugees ('pt-BR'), Chinees ('zh-CN'), Duits ('de-DE'), Arabisch ('ar-EG' en 'ar-SY'), Russisch ('ru-RU'), Russisch ('ru-RU'), Hindi ('hi-IN') en Koreaans ('ko-KR').<br/><br/> Als de taal niet is opgegeven of ingesteld op null, kiest automatische taaldetectie de eerste taal gedetecteerd en gaat verder met de geselecteerde taal voor de duur van het bestand. De automatische taaldetectiefunctie ondersteunt momenteel Engels, Chinees, Frans, Duits, Italiaans, Japans, Spaans, Russisch en Portugees. Het ondersteunt geen dynamisch schakelen tussen talen nadat de eerste taal is gedetecteerd. De automatische taaldetectiefunctie werkt het beste met audio-opnamen met duidelijk waarneembare spraak. Als automatische taaldetectie de taal niet vindt, valt de transcriptie terug naar het Engels.|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio en video analyseren|Haalt inzichten (uitgebreide metagegevens) uit zowel audio als video en levert een JSON-indelingsbestand op. U opgeven of u alleen audio-inzichten wilt extraheren bij het verwerken van een videobestand. Zie [Video analyseren voor](analyze-videos-tutorial-with-api.md)meer informatie.|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Gezichten detecteren die aanwezig zijn in video|Beschrijft de instellingen die moeten worden gebruikt bij het analyseren van een video om alle aanwezige gezichten te detecteren.|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analyseren|De voor instelling past een vooraf gedefinieerde set op AI-gebaseerde analyse bewerkingen toe, waaronder spraak transcriptie. Op dit moment ondersteunt de vooraf ingestelde verwerking van inhoud met één audio track die spraak in één taal bevat. U kunt de taal voor de audio lading in de invoer opgeven met de BCP-47-indeling van de taal code-regio. Ondersteunde talen zijn Engels (' en-US ' en ' en ' en ' en '), Spaans (' es-ES ' en ' es-MX '), Frans (' fr-FR '), Italiaans (' it-IT '), Japans (' ja-JP '), Portugees (' pt-BR '), Chinees (' zh-CN '), Duits (' de '), Arabisch (' ar-EG ' en ' ar-SY '), Russisch (' ru-RU '), Hindi (' Hi-IN ') en Koreaans (' ko-KR ').<br/><br/> Als de taal niet is opgegeven of is ingesteld op NULL, kiest automatische taal detectie de eerst gedetecteerde taal en wordt de geselecteerde taal voor de duur van het bestand voortgezet. De functie voor automatische taal detectie ondersteunt momenteel Engels, Chinees, Frans, Duits, Italiaans, Japans, Spaans, Russisch en Portugees. Het is niet mogelijk om dynamische switches te scha kelen tussen talen nadat de eerste taal is gedetecteerd. De functie voor automatische taal detectie werkt het beste met geluids opnamen met duidelijk waarneembaar spraak. Als de taal niet kan worden gevonden met de automatische taal detectie, valt de transcriptie terug naar Engels.|
+|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio en video analyseren|Extraheert inzichten (Rich meta data) van audio en video en voert een JSON-indelings bestand uit. U kunt opgeven of u alleen geluids inzichten wilt extra heren tijdens het verwerken van een video bestand. Zie [video analyseren](analyze-videos-tutorial-with-api.md)voor meer informatie.|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|In video aanwezige gezichten detecteren|Hierin worden de instellingen beschreven die moeten worden gebruikt bij het analyseren van een video om alle gezichten te detecteren die aanwezig zijn.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
-Met de voorinstelling u meerdere audio-inzichten uit een audio- of videobestand halen. De uitvoer bevat een JSON-bestand (met alle inzichten) en VTT-bestand voor het audiotranscript. Deze voorinstelling accepteert een eigenschap die de taal van het invoerbestand opgeeft in de vorm van een [BCP47-tekenreeks.](https://tools.ietf.org/html/bcp47) De audio-inzichten omvatten:
+Met de voor instelling kunt u meerdere geluids inzichten uit een audio-of video bestand ophalen. De uitvoer bevat een JSON-bestand (met alle inzichten) en het VTT-bestand voor de transcriptie van audio. Deze standaard instelling accepteert een eigenschap die de taal van het invoer bestand opgeeft in de vorm van een [BCP47](https://tools.ietf.org/html/bcp47) teken reeks. De geluids inzichten zijn onder andere:
 
-* **Audiotranscriptie**: Een transcriptie van de gesproken woorden met tijdstempels. Meerdere talen worden ondersteund.
-* **Luidsprekerindexering**: Een mapping van de sprekers en de bijbehorende gesproken woorden.
-* **Spraaksentimentanalyse**: De output van sentimentanalyse uitgevoerd op de audiotranscriptie.
-* **Trefwoorden:** Trefwoorden die uit de audiotranscriptie worden gehaald.
+* **Audio-transcriptie**: een transcriptie van de gesp roken woorden met tijds tempels. Meerdere talen worden ondersteund.
+* **Sprekers indexering**: een toewijzing van de luid sprekers en de bijbehorende gesp roken woorden.
+* **Speech sentiment Analysis**: de uitvoer van sentiment-analyse die wordt uitgevoerd op de audio transcriptie.
+* **Tref woorden**: tref woorden die worden geëxtraheerd uit de audio-transcriptie.
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-Met de voorinstelling u meerdere audio- en video-inzichten uit een videobestand extraheren. De uitvoer bevat een JSON-bestand (met alle inzichten), een VTT-bestand voor het videotranscript en een verzameling miniaturen. Deze voorinstelling accepteert ook een [BCP47-tekenreeks](https://tools.ietf.org/html/bcp47) (die de taal van de video vertegenwoordigt) als eigenschap. De video-inzichten bevatten alle hierboven genoemde audio-inzichten en de volgende extra items:
+Met de voor instelling kunt u meerdere audio-en video inzichten uit een video bestand ophalen. De uitvoer bevat een JSON-bestand (met alle inzichten), een VTT-bestand voor de getranscripteerde video en een verzameling miniaturen. Deze vooraf ingestelde accepteert ook een [BCP47](https://tools.ietf.org/html/bcp47) teken reeks (die de taal van de video vertegenwoordigt) als een eigenschap. De video inzichten bevatten alle hierboven genoemde audio inzichten en de volgende bijkomende items:
 
-* **Face tracking**: De tijd waarin gezichten aanwezig zijn in de video. Elk gezicht heeft een face ID en een bijbehorende verzameling miniaturen.
-* **Visuele tekst**: De tekst die wordt gedetecteerd via optische tekenherkenning. De tekst is tijd gestempeld en ook gebruikt om zoekwoorden te extraheren (in aanvulling op de audio-transcript).
-* **Hoofdframes:** een verzameling hoofdframes uit de video.
-* **Visuele inhoudmatiging**: Het gedeelte van de video's gemarkeerd als volwassen of racy in de natuur.
-* **Annotatie**: Een resultaat van het annoteren van de video's op basis van een vooraf gedefinieerd objectmodel
+* **Gezichts tracking**: de tijd gedurende welke gezichten aanwezig zijn in de video. Elk gezicht heeft een face-ID en een bijbehorende verzameling miniaturen.
+* **Visuele tekst**: de tekst die wordt gedetecteerd via optische teken herkenning. De tekst is een tijds tempel en wordt ook gebruikt voor het extra heren van tref woorden (naast de transcripten van audio).
+* **Keyframes**: een verzameling keyframes die uit de video is geëxtraheerd.
+* **Visuele toezicht op inhoud**: het gedeelte van de Video's dat is gemarkeerd als volwassene of ongepaste.
+* **Aantekening**: een resultaat van het aantekenen van de Video's op basis van een vooraf gedefinieerd object model
 
-## <a name="insightsjson-elements"></a>insights.json-elementen
+## <a name="insightsjson-elements"></a>inzichten. json-elementen
 
-De uitvoer bevat een JSON-bestand (insights.json) met alle inzichten in de video of audio. Het JSON kan de volgende elementen bevatten:
+De uitvoer bevat een JSON-bestand (Insights. json) met alle inzichten die in de video of audio zijn gevonden. De JSON kan de volgende elementen bevatten:
 
-### <a name="transcript"></a>Afschrift
+### <a name="transcript"></a>verslag
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|id|De lijn-ID.|
-|tekst|Het transcript zelf.|
-|language|De transcriptietaal. Bedoeld om transcript te ondersteunen waar elke regel een andere taal kan hebben.|
-|Exemplaren|Een lijst met tijdsbereiken waar deze regel is weergegeven. Als de instantie transcript is, heeft deze slechts 1 exemplaar.|
+|id|De regel-ID.|
+|tekst|De transcriptie zelf.|
+|language|De transcript taal. Bedoeld ter ondersteuning van transcripten waarbij elke regel een andere taal kan hebben.|
+|vaak|Een lijst met peri Oden waarin deze regel wordt weer gegeven. Als de instantie een transcript heeft, heeft deze slechts één exemplaar.|
 
 Voorbeeld:
 
@@ -103,15 +103,15 @@ Voorbeeld:
 ] 
 ```
 
-### <a name="ocr"></a>Ocr
+### <a name="ocr"></a>optische
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|id|De OCR-lijn-ID.|
+|id|De OCR-regel-ID.|
 |tekst|De OCR-tekst.|
-|betrouwbaarheid|Het erkenningsvertrouwen.|
+|betrouwbaarheid|Het vertrouwens niveau van de herkenning.|
 |language|De OCR-taal.|
-|Exemplaren|Een lijst met tijdbereiken waar deze OCR is weergegeven (dezelfde OCR kan meerdere keren worden weergegeven).|
+|vaak|Een lijst met peri Oden waarin deze OCR is verschenen (dezelfde OCR kan meerdere keren voor komen).|
 
 ```json
 "ocr": [
@@ -146,21 +146,21 @@ Voorbeeld:
   ],
 ```
 
-### <a name="faces"></a>Gezichten
+### <a name="faces"></a>aanhoudende
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|id|De gezichts-ID.|
-|name|De gezichtsherkenning. Het kan 'Unknown #0', een geïdentificeerde beroemdheid of een klant opgeleid persoon.|
-|betrouwbaarheid|Het gezichtsidentificatievertrouwen.|
-|description|Een beschrijving van de beroemdheid. |
-|thumbnailId|De ID van de miniatuur van dat gezicht.|
-|knownPersonId|De interne ID (als het een bekende persoon).|
-|referenceId|De Bing ID (als het een Bing beroemdheid).|
-|referenceType|Momenteel alleen Bing.|
-|titel|De titel (als het een beroemdheid is, bijvoorbeeld 'Microsoft's CEO').|
-|imageUrl|De afbeelding URL, als het een beroemdheid.|
-|Exemplaren|Gevallen waarin het gezicht in het opgegeven tijdsbereik verscheen. Elke instantie heeft ook een thumbnailsId. |
+|id|De face-ID.|
+|name|De naam van het gezicht. Dit kan ' onbekend #0 ', een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
+|betrouwbaarheid|De gezichts-id-betrouw baarheid.|
+|description|Een beschrijving van de beroemdheden. |
+|thumbnailId|De ID van de miniatuur van het gezicht.|
+|knownPersonId|De interne ID (als deze een bekende persoon is).|
+|referenceId|De Bing-ID (als het een Bing-beroemdheden is).|
+|Type|Momenteel alleen Bing.|
+|titel|De titel (als het een beroemdheden is, bijvoorbeeld ' micro soft ' CEO ').|
+|imageUrl|De afbeeldings-URL, als het een beroemdheden is.|
+|vaak|Exemplaren waarvan het gezicht in het opgegeven tijds bereik is verschenen. Elk exemplaar heeft ook een thumbnailsId. |
 
 ```json
 "faces": [{
@@ -191,13 +191,13 @@ Voorbeeld:
 }]
 ```
 
-### <a name="shots"></a>Shots
+### <a name="shots"></a>afzonderlijke
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|id|De shot ID.|
-|Hoofdframes|Een lijst met hoofdframes in de opname (elk heeft een ID en een lijst met tijdsbereiken van instanties). Belangrijke frames-exemplaren hebben een miniatuurId-veld met de miniatuur-id van het hoofdframe.|
-|Exemplaren|Een lijst van tijdbereiken van dit schot (schoten hebben slechts 1 exemplaar).|
+|id|De opname-ID.|
+|Keyframes|Een lijst met keyframes in de foto (elk heeft een ID en een lijst met tijds bereik exemplaren). Key frames-instanties hebben een thumbnailId-veld met de miniatuur-ID van het keyframe.|
+|vaak|Een lijst met tijds bereiken van deze opname (afbeeldingen hebben slechts één exemplaar).|
 
 ```json
 "Shots": [
@@ -250,25 +250,25 @@ Voorbeeld:
 
 ### <a name="statistics"></a>statistieken
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|CorrespondentieTelling|Aantal correspondenties in de video.|
-|WordAantal|Het aantal woorden per spreker.|
-|SpeakernumberofFragments|De hoeveelheid fragmenten die de spreker in een video heeft.|
-|SpeakerLongestMonolog|De langste monlog van de spreker. Als de luidspreker stiltes in de monologen heeft, is deze inbegrepen. Stilte aan het begin en het einde van de monologen wordt verwijderd.|
-|SpeakerTalkToListenRatio|De berekening is gebaseerd op de tijd die wordt besteed aan de monolog van de spreker (zonder de stilte ertussen) gedeeld door de totale tijd van de video. De tijd wordt afgerond op het derde decimaal punt.|
+|CorrespondenceCount|Aantal correspondentie in de video.|
+|WordCount|Het aantal woorden per spreker.|
+|SpeakerNumberOfFragments|De hoeveelheid fragmenten die de spreker in een video heeft.|
+|SpeakerLongestMonolog|De langste monolog van de spreker. Als de spreker stiltes bevat in de monolog, wordt deze opgenomen. Stilte aan het begin en het einde van de monolog wordt verwijderd.|
+|SpeakerTalkToListenRatio|De berekening is gebaseerd op de tijd die is besteed aan de monolog van de spreker (zonder de stilte in tussen) gedeeld door de totale tijd van de video. De tijd wordt afgerond op het derde decimale punt.|
 
 
-### <a name="sentiments"></a>Gevoelens
+### <a name="sentiments"></a>gevoel
 
-Sentimenten worden geaggregeerd door hun sentimentType veld (Positief/Neutraal/Negatief). Bijvoorbeeld 0-0,1, 0,1-0,2.
+Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatief). Bijvoorbeeld: 0-0,1, 0,1-0,2.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De sentiment-ID.|
-|gemiddeldScore |Het gemiddelde van alle scores van alle gevallen van dat sentimenttype - Positief/Neutraal/Negatief|
-|Exemplaren|Een lijst van tijdsbereiken waar dit gevoel verscheen.|
-|sentimentType |Het type kan 'Positief', 'Neutraal' of 'Negatief' zijn.|
+|averageScore |Het gemiddelde van alle scores van alle exemplaren van dat sentiment type-positief/neutraal/negatief|
+|vaak|Een lijst met tijds bereikn waar deze sentiment verscheen.|
+|sentimentType |Het type kan ' positief ', ' neutraal ' of ' negatief ' zijn.|
 
 ```json
 "sentiments": [
@@ -296,14 +296,14 @@ Sentimenten worden geaggregeerd door hun sentimentType veld (Positief/Neutraal/N
 ]
 ```
 
-### <a name="labels"></a>labels
+### <a name="labels"></a>Labels
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
 |id|De label-ID.|
-|name|De labelnaam (bijvoorbeeld 'Computer', 'TV').|
-|language|De naamtaal van het label (indien vertaald). BCP-47|
-|Exemplaren|Een lijst met tijdsbereiken waar dit label is verschenen (een label kan meerdere keren worden weergegeven). Elke instantie heeft een vertrouwensveld. |
+|name|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
+|language|De naam taal van het label (bij omzetting). BCP-47|
+|vaak|Een lijst met tijds bereiken waar dit label wordt weer gegeven (een label kan meerdere keren voor komen). Elk exemplaar heeft een veld betrouw baarheid. |
 
 ```json
 "labels": [
@@ -356,13 +356,13 @@ Sentimenten worden geaggregeerd door hun sentimentType veld (Positief/Neutraal/N
 
 ### <a name="keywords"></a>trefwoorden
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|id|Het trefwoord-ID.|
-|tekst|De trefwoordtekst.|
-|betrouwbaarheid|Het erkenningsvertrouwen van het zoekwoord.|
-|language|De trefwoordtaal (indien vertaald).|
-|Exemplaren|Een lijst met tijdsbereiken waar dit zoekwoord is weergegeven (een zoekwoord kan meerdere keren worden weergegeven).|
+|id|De ID van het sleutel woord.|
+|tekst|De tekst van het sleutel woord.|
+|betrouwbaarheid|Het vertrouwens niveau van het tref woord.|
+|language|De taal van het tref woord (tijdens het vertalen).|
+|vaak|Een lijst met tijds bereiken waar dit tref woord is opgetreden (een tref woord kan meerdere keren voor komen).|
 
 ```json
 "keywords": [
@@ -403,16 +403,16 @@ Sentimenten worden geaggregeerd door hun sentimentType veld (Positief/Neutraal/N
 
 #### <a name="visualcontentmoderation"></a>visualContentModeration
 
-Het visualContentModeration-blok bevat tijdsbereiken waarvan Video Indexer heeft vastgesteld dat deze mogelijk inhoud voor volwassenen heeft. Als visualContentModeration leeg is, is er geen inhoud voor volwassenen geïdentificeerd.
+Het visualContentModeration-blok bevat Peri Oden die Video Indexer mogelijk inhoud voor volwassenen hebben gevonden. Als visualContentModeration leeg is, is er geen inhoud voor volwassenen gevonden.
 
-Video's waarvan wordt vastgesteld dat ze inhoud voor volwassenen of racy bevatten, zijn mogelijk alleen beschikbaar voor privéweergave. Gebruikers kunnen een verzoek indienen voor een menselijke beoordeling `IsAdult` van de inhoud, in welk geval het kenmerk het resultaat van de menselijke beoordeling zal bevatten.
+Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alleen beschikbaar voor de persoonlijke weer gave. Gebruikers kunnen een aanvraag indienen voor een menselijke beoordeling van de inhoud. in dat geval bevat `IsAdult` het kenmerk het resultaat van de menselijke beoordeling.
 
-|Name|Beschrijving|
+|Naam|Beschrijving|
 |---|---|
-|id|De visuele inhoudsmoderatie-ID.|
-|adultScore (adultScore)|De score voor volwassenen (van inhoudsmoderator).|
-|racyScore racyScore|De racy score (van inhoudmatiging).|
-|Exemplaren|Een lijst met tijdsbereiken waar deze visuele inhoudsmoderatie is weergegeven.|
+|id|De controle-ID van de visuele inhoud.|
+|adultScore|De volwassen Score (van content moderator).|
+|racyScore|De ongepaste-Score (van inhouds toezicht).|
+|vaak|Een lijst met peri Oden waarin deze visuele elementen worden gevisualiseerd.|
 
 ```json
 "VisualContentModeration": [

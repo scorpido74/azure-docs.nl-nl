@@ -1,6 +1,6 @@
 ---
-title: Bedrijfskritieke servicelaag
-description: Meer informatie over de azure SQL Database Business Critical-laag
+title: Bedrijfskritiek servicelaag
+description: Meer informatie over de Azure SQL Database Bedrijfskritiek-laag
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,54 +12,54 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268676"
 ---
-# <a name="business-critical-tier---azure-sql-database"></a>Business Critical-laag - Azure SQL-database
+# <a name="business-critical-tier---azure-sql-database"></a>Bedrijfskritiek laag-Azure SQL Database
 
 > [!NOTE]
-> Business Critical tier heet Premium in DTU inkoopmodel. Zie [Azure SQL Database-inkoopmodellen en -bronnen](sql-database-purchase-models.md)voor een vergelijking van het op vCore gebaseerde inkoopmodel met het op DTU gebaseerde inkoopmodel.
+> Bedrijfskritiek laag wordt Premium genoemd in het DTU-aankoop model. Zie [Azure SQL database-inkoop modellen en-resources](sql-database-purchase-models.md)voor een vergelijking van het op vCore gebaseerde aankoop model met het DTU-gebaseerde aankoop model.
 
-Azure SQL Database is gebaseerd op SQL Server Database Engine-architectuur die is aangepast voor de cloudomgeving om 99,99% beschikbaarheid te garanderen, zelfs in het geval van infrastructuurfouten. Er zijn drie architectuurmodellen die worden gebruikt in Azure SQL Database:
-- Algemeen doel/standaard 
-- Bedrijfskritisch/Premium
+Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99% Beschik baarheid te garanderen, zelfs in het geval van infrastructuur fouten. Er zijn drie architectuur modellen die worden gebruikt in Azure SQL Database:
+- Algemeen/standaard 
+- Bedrijfskritiek/Premium
 - Hyperscale
 
-Het Premium/Business Critical service tier-model is gebaseerd op een cluster van databaseengineprocessen. Dit architecturale model is gebaseerd op het feit dat er altijd een quorum van beschikbare database engine nodes en heeft minimale impact op de prestaties van uw werklast, zelfs tijdens onderhoudsactiviteiten.
+Premium/Bedrijfskritiek service tier model is gebaseerd op een cluster met data base-engine processen. Dit architectuur model is afhankelijk van een feit dat er altijd een quorum van de beschik bare data base-engine knooppunten is en een minimale invloed heeft op de prestaties van uw werk belasting, zelfs tijdens onderhouds activiteiten.
 
-Azure-upgrades en patches onderliggend besturingssysteem, stuurprogramma's en SQL Server Database Engine transparant met de minimale down-time voor eindgebruikers. 
+Azure upgradet en patches onderliggend besturings systeem, stuur Programma's en SQL Server data base-engine transparant met de minimale verwerkings tijd voor eind gebruikers. 
 
-Premium beschikbaarheid is ingeschakeld in Premium en Business Critical service lagen van Azure SQL Database en het is ontworpen voor intensieve workloads die geen impact op de prestaties kunnen verdragen als gevolg van de lopende onderhoudsbewerkingen.
+Premium-Beschik baarheid is ingeschakeld in Premium-en Bedrijfskritiek-service lagen van Azure SQL Database en is ontworpen voor intensieve werk belastingen die geen invloed kunnen hebben op de prestaties vanwege de continue onderhouds werkzaamheden.
 
-In het premiummodel integreert Azure SQL-database rekenkracht en opslag op het ene knooppunt. Hoge beschikbaarheid in dit architecturale model wordt bereikt door replicatie van compute (SQL Server Database Engine-proces) en opslag (lokaal gekoppelde SSD) geïmplementeerd in vier node cluster, met behulp van technologie vergelijkbaar met SQL Server [Always On Availability Groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+In het Premium-model integreert Azure SQL database Compute en opslag op het ene knoop punt. Hoge Beschik baarheid in dit architectuur model wordt bereikt door de replicatie van Compute (SQL Server data base engine process) en opslag (lokaal gekoppelde SSD) die is geïmplementeerd in een cluster met vier knoop punten en gebruikmaakt van technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
-![Cluster van database-engineknooppunten](media/sql-database-managed-instance/business-critical-service-tier.png)
+![Cluster van data base-engine knooppunten](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Zowel het SQL-databaseengineproces als de onderliggende mdf/ldf-bestanden worden op hetzelfde knooppunt geplaatst met lokaal gekoppelde SSD-opslag die een lage latentie biedt aan uw werkbelasting. Hoge beschikbaarheid wordt geïmplementeerd met behulp van technologie die vergelijkbaar is met SQL Server [Always On Availability Groups.](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) Elke database is een cluster van databaseknooppunten met één primaire database die toegankelijk is voor de werkbelasting van klanten en een drie secundaire processen met kopieën van gegevens. Het primaire knooppunt duwt voortdurend de wijzigingen in secundaire knooppunten om ervoor te zorgen dat de gegevens beschikbaar zijn op secundaire replica's als het primaire knooppunt om welke reden dan ook vastloopt. Failover wordt afgehandeld door de SQL Server Database Engine : één secundaire replica wordt het primaire knooppunt en er wordt een nieuwe secundaire replica gemaakt om voldoende knooppunten in het cluster te garanderen. De werkbelasting wordt automatisch doorgestuurd naar het nieuwe primaire knooppunt.
+Zowel het proces van de SQL database-engine als de onderliggende MDF/LDF-bestanden worden geplaatst op hetzelfde knoop punt met lokaal gekoppelde SSD-opslag met een lage latentie voor uw werk belasting. Hoge Beschik baarheid wordt geïmplementeerd met technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Elke Data Base is een cluster met database knooppunten met één primaire data base die toegankelijk is voor de werk belasting van de klant en een drie secundaire processen met kopieën van gegevens. Het primaire knoop punt pusht voortdurend de wijzigingen naar secundaire knoop punten om ervoor te zorgen dat de gegevens beschikbaar zijn op secundaire replica's als het primaire knoop punt om een of andere reden vastloopt. Failover wordt verwerkt door de SQL Server data base-engine – één secundaire replica wordt het primaire knoop punt en er wordt een nieuwe secundaire replica gemaakt om ervoor te zorgen dat er voldoende knoop punten in het cluster zijn. De werk belasting wordt automatisch omgeleid naar het nieuwe primaire knoop punt.
 
-Bovendien heeft het Business Critical-cluster een ingebouwde [Leesschaal-out-mogelijkheid](sql-database-read-scale-out.md) die gratis ingebouwde lees-only-node biedt die kan worden gebruikt om alleen-lezen query's uit te voeren (bijvoorbeeld rapporten) die geen invloed mogen hebben op de prestaties van uw primaire werkbelasting.
+Daarnaast heeft Bedrijfskritiek cluster ingebouwde [Read-out](sql-database-read-scale-out.md) voor uitgebreide Lees bewerkingen, waarmee een alleen-lezen knoop punt met een vaste hoeveelheid kosten kan worden gebruikt om alleen-lezen query's uit te voeren (bijvoorbeeld rapporten) die de prestaties van uw primaire werk belasting niet mogen beïnvloeden.
 
-## <a name="when-to-choose-this-service-tier"></a>Wanneer kies je deze servicelaag?
+## <a name="when-to-choose-this-service-tier"></a>Wanneer moet deze servicelaag worden gekozen?
 
-Business Critical-servicelaag is ontworpen voor de toepassingen waarvoor antwoorden met lage latentie van de onderliggende SSD-opslag nodig zijn (gemiddeld 1-2 ms), snel herstel als de onderliggende infrastructuur uitvalt of rapporten, analyses en alleen-lezen moeten worden verwijderd query's naar de gratis leesbare secundaire replica van de primaire database.
+Bedrijfskritiek servicelaag is ontworpen voor de toepassingen die antwoorden met een lage latentie vereisen van de onderliggende SSD-opslag (gemiddeld 1-2 MS), snel herstel als de onderliggende infra structuur mislukt of als u rapporten, analyses en alleen-lezen query's moet laden naar de gratis, lees bare secundaire replica van de primaire data base.
 
-De belangrijkste redenen waarom u de servicelaag Voor Bedrijfskritieke service moet kiezen in plaats van de laag Algemeen Doel, zijn:
--   Vereisten voor lage IO-latentie – workload die de snelle respons van de opslaglaag (gemiddeld 1-2 milliseconden) nodig heeft, moet de business critical-laag gebruiken. 
--   Frequente communicatie tussen applicatie en database. Toepassing die geen gebruik kan maken van toepassingslaagcaches of [batching](sql-database-use-batching-to-improve-performance.md) aanvragen en veel SQL-query's moet verzenden die snel moeten worden verwerkt, zijn goede kandidaten voor de laag Bedrijfskritiek.
--   Groot aantal updates : bewerkingen invoegen, bijwerken en verwijderen, wijzigen de gegevenspagina's `CHECKPOINT` in het geheugen (vuile pagina) die moeten worden opgeslagen in gegevensbestanden met bewerking. Potentiële database engine proces crash of een failover van de database met een groot aantal vuile pagina's kan verhogen hersteltijd in General Purpose tier. Gebruik de laag Bedrijfskritiek als u een werkbelasting hebt die veel geheugenwijzigingen veroorzaakt. 
--   Langlopende transacties die gegevens wijzigen. Transacties die langer worden geopend, voorkomen dat logboekbestanden worden afgekapt waardoor de logboekgrootte en het aantal [virtuele logboekbestanden (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)kunnen toenemen. Een hoog aantal VLF kan het herstel van de database vertragen na een failover.
--   Werkbelasting met rapportage- en analytische query's die kunnen worden doorgestuurd naar de gratis secundaire rep-only replica.
-- Hogere tolerantie en sneller herstel van de storingen. In een geval van systeemfout wordt de database op primaire instantie uitgeschakeld en wordt een van de secundaire replica's onmiddellijk nieuwe lees-schrijf primaire database die klaar is om de query's te verwerken. Database engine hoeft geen transacties uit het logboekbestand te analyseren en opnieuw uit te voeren en alle gegevens in de geheugenbuffer te laden.
-- Geavanceerde bescherming voor gegevenscorruptie - Business Critical tier maakt gebruik van databasereplica's achter de schermen voor bedrijfscontinuïteitsdoeleinden, en dus maakt de service ook gebruik van automatische paginareparatie, dezelfde technologie die wordt gebruikt voor SQL [Server-databasemirroring- en beschikbaarheidsgroepen.](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) In het geval dat een replica een pagina niet kan lezen vanwege een probleem met de gegevensintegriteit, wordt een nieuwe kopie van de pagina opgehaald uit een andere replica, ter vervanging van de onleesbare pagina zonder gegevensverlies of uitvaltijd van de klant. Deze functionaliteit is van toepassing in de laag Algemeen doel als de database geo-secundaire replica heeft.
-- Hogere beschikbaarheid - Business Critical-niveau in multi-AZ-configuratie garandeert 99,995% beschikbaarheid, vergeleken met 99,99% van de categorie Algemeen Doel.
-- Snel geoherstel - Business Critical-laag geconfigureerd met geo-replicatie heeft een gegarandeerde Recovery Point-doelstelling (RPO) van 5 sec en Hersteltijddoelstelling (RTO) van 30 sec voor 100% van de geïmplementeerde uren.
+De belangrijkste redenen waarom u Bedrijfskritiek servicelaag moet kiezen in plaats van Algemeen laag zijn:
+-   Minimale IO-latentie vereisten: werk belasting waarvoor het snelle antwoord van de opslaglaag nodig is (1-2 milliseconden in gemiddeld) moet Bedrijfskritiek-laag gebruiken. 
+-   Veelvuldige communicatie tussen toepassing en data base. Toepassing die geen gebruik kan maken van de caching van de toepassings laag of het [aanvragen van batches](sql-database-use-batching-to-improve-performance.md) en moet veel SQL-query's verzenden die snel moeten worden verwerkt zijn goede kandidaten voor bedrijfskritiek-laag.
+-   Groot aantal updates: insert-, update-en delete-bewerkingen wijzigen de gegevens pagina's in het geheugen (Dirty pagina) die moeten worden opgeslagen in gegevens `CHECKPOINT` bestanden met een bewerking. Mogelijk is het proces van een data base-engine vastgelopen of kan een failover van de data base met een groot aantal vuile pagina's de herstel tijd in Algemeen laag verg Roten. Gebruik Bedrijfskritiek laag als u een werk belasting hebt die veel in-Memory wijzigingen veroorzaakt. 
+-   Langlopende trans acties waarmee gegevens worden gewijzigd. Trans acties die gedurende een langere periode worden geopend, verhinderen het afkappen van het logboek bestand dat de logboek grootte en het aantal [virtuele logboek bestanden (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)kan verg Roten. Een groot aantal VLF kan het herstel van de data base na een failover vertragen.
+-   Workload met rapportage-en analyse query's die kunnen worden omgeleid naar de gratis secundaire alleen-lezen replica.
+- Hogere tolerantie en sneller herstel van de fouten. In het geval van een systeem fout wordt de Data Base op het primaire exemplaar uitgeschakeld en wordt een van de secundaire replica's onmiddellijk een nieuwe lezen-schrijven primaire data base gemaakt die gereed is voor het verwerken van de query's. Data base-engine hoeft geen trans acties uit het logboek bestand te analyseren en opnieuw in te dienen en alle gegevens in de geheugen buffer te laden.
+- Geavanceerde beveiliging tegen beschadiging van gegevens-Bedrijfskritiek-laag maakt gebruik van database replica's achter-de schermen voor bedrijfs continuïteit. de service maakt dus ook gebruik van automatische pagina reparatie. Dit is dezelfde technologie die wordt gebruikt voor SQL Server database [spiegeling en beschikbaarheids groepen](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). In het geval dat een replica een pagina kan lezen vanwege een probleem met de gegevens integriteit, wordt een nieuwe kopie van de pagina opgehaald uit een andere replica, waardoor de onleesbare pagina wordt vervangen zonder gegevens verlies of uitval tijd van de klant. Deze functionaliteit is van toepassing op Algemeen laag als de data base geo-secundaire replica heeft.
+- Hogere Beschik baarheid-Bedrijfskritiek laag in configuratie met meerdere AZ-configuraties garandeert 99,995% Beschik baarheid, vergeleken met 99,99% van de Algemeen-laag.
+- Snelle geo-Recovery-Bedrijfskritiek laag die is geconfigureerd met geo-replicatie, heeft een gegarandeerd herstel punt (RPO) van 5 sec en de beoogde herstel tijd (RTO) van 30 sec voor 100% van de geïmplementeerde uren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zoek resourcekenmerken (aantal cores, IO, geheugen) van business kritieke laag in [Beheerde instantie,](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)Enkele database in [vCore-model](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) of [DTU-model](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)of Elastic pool in [vCore-model](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) en [DTU-model](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
-- Meer informatie over de lagen [Algemeen Doel](sql-database-service-tier-general-purpose.md) en [Hyperscale.](sql-database-service-tier-hyperscale.md)
-- Meer informatie over [Service Fabric](../service-fabric/service-fabric-overview.md).
-- Zie [Business Continuity](sql-database-business-continuity.md)voor meer opties voor hoge beschikbaarheid en disaster recovery.
+- Zoek bron kenmerken (aantal kernen, i/o, geheugen) van Bedrijfskritiek-laag in [beheerde instantie](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), afzonderlijke data base in [VCore model](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) of [DTU-model](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), of elastische pool in [vCore model](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) en [DTU-model](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Meer informatie over [Algemeen](sql-database-service-tier-general-purpose.md) -en [grootschalige](sql-database-service-tier-hyperscale.md) -lagen.
+- Meer informatie over [service Fabric](../service-fabric/service-fabric-overview.md).
+- Zie [bedrijfs continuïteit](sql-database-business-continuity.md)voor meer opties voor hoge Beschik baarheid en herstel na nood gevallen.

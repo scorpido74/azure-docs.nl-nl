@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Media Services v3 API - .NET
-description: In dit artikel wordt uitgelegd hoe u verbinding maken met Media Services v3 API met .NET.
+title: Verbinding maken met Azure Media Services v3 API-.NET
+description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,63 +14,63 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269807"
 ---
-# <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API - .NET
+# <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
 
-In dit artikel ziet u hoe u verbinding maken met de Azure Media Services v3 .NET SDK met behulp van de serviceprincipal-inlogmethode.
+In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 .NET SDK met behulp van de Service-Principal-aanmeldings methode.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de brongroep en de naam van het Media Services-account onthoudt
-- Installeer een tool die u wilt gebruiken voor .NET-ontwikkeling. De stappen in dit artikel laten zien hoe je [Visual Studio 2019 Community Edition kunt](https://www.visualstudio.com/downloads/)gebruiken. U Visual Studio Code gebruiken, zie [Werken met C#](https://code.visualstudio.com/docs/languages/csharp). U ook een andere codeeditor gebruiken.
+- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet
+- Installeer een hulp programma dat u wilt gebruiken voor .NET-ontwikkeling. In de stappen in dit artikel ziet u hoe u [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)gebruikt. U kunt Visual Studio code gebruiken. Zie [werken met C#](https://code.visualstudio.com/docs/languages/csharp). U kunt ook een andere code-editor gebruiken.
 
 > [!IMPORTANT]
-> [Naamgevingsconventies bekijken](media-services-apis-overview.md#naming-conventions).
+> Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-console-application"></a>Een consoletoepassing maken
 
 1. Start Visual Studio. 
-1. Klik **in** het menu Bestand op **Nieuw** > **project**. 
-1. Maak een **.NET Core-consoletoepassing.**
+1. Klik in het menu **bestand** op **Nieuw** > **project**. 
+1. Maak een **.net core** -console toepassing.
 
-De voorbeeld-app in `netcoreapp2.0`dit onderwerp, doelen . De code maakt gebruik van 'async main', die beschikbaar is vanaf C# 7.1. Zie deze [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer details.
+De voor beeld-app in dit onderwerp `netcoreapp2.0`streeft naar doelen. De code maakt gebruik van ' async Main ', dat beschikbaar is vanaf C# 7,1. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
 
-## <a name="add-required-nuget-packages"></a>Benodigde NuGet-pakketten toevoegen
+## <a name="add-required-nuget-packages"></a>Vereiste NuGet-pakketten toevoegen
 
-1. Selecteer in Visual Studio de optie **Tools** > **NuGet Package Manager** > **NuGet Manager Console**.
-2. Gebruik **Package Manager Console** de opdracht om `Install-Package` in het venster Package Manager Console de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
+1. Selecteer in Visual Studio **extra** > **NuGet package manager** > **NuGet Manager-console**.
+2. In het venster **Package Manager-console** gebruikt `Install-Package` u de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
 |Pakket|Beschrijving|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Ga naar [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)om ervoor te zorgen dat u het nieuwste Azure Media Services-pakket gebruikt.|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatiebibliotheek voor Azure SDK voor NET|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Configuratiewaarden lezen uit omgevingsvariabelen en lokale JSON-bestanden|
-|`Microsoft.Extensions.Configuration.Json`|Configuratiewaarden lezen uit omgevingsvariabelen en lokale JSON-bestanden
-|`WindowsAzure.Storage`|Opslag SDK|
+|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [micro soft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
+|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatie bibliotheek voor Azure SDK voor NET|
+|`Microsoft.Extensions.Configuration.EnvironmentVariables`|Configuratie waarden lezen van omgevings variabelen en lokale JSON-bestanden|
+|`Microsoft.Extensions.Configuration.Json`|Configuratie waarden lezen van omgevings variabelen en lokale JSON-bestanden
+|`WindowsAzure.Storage`|Opslag-SDK|
 
-## <a name="create-and-configure-the-app-settings-file"></a>Het app-instellingenbestand maken en configureren
+## <a name="create-and-configure-the-app-settings-file"></a>Het app-instellingen bestand maken en configureren
 
-### <a name="create-appsettingsjson"></a>Appsettings.json maken
+### <a name="create-appsettingsjson"></a>AppSettings. json maken
 
-1. Ga naar **algemeen** > **tekstbestand**.
-1. Noem het "appsettings.json".
-1. Stel de eigenschap 'Kopiëren naar uitvoermap' van het .json-bestand in op 'Kopiëren als nieuwer' (zodat de toepassing er toegang toe heeft wanneer deze wordt gepubliceerd).
+1. Go-bestand voor **algemene** > **tekst**.
+1. Noem het bestand appSettings. json.
+1. Stel de eigenschap kopiëren naar uitvoermap van het JSON-bestand in op ' kopiëren indien nieuwer ' (zodat de toepassing toegang kan krijgen tot de map wanneer deze wordt gepubliceerd).
 
-### <a name="set-values-in-appsettingsjson"></a>Waarden instellen in appsettings.json
+### <a name="set-values-in-appsettingsjson"></a>Waarden instellen in appSettings. json
 
-Voer `az ams account sp create` de opdracht uit zoals beschreven in [toegangs-API's](access-api-cli-how-to.md). De opdracht retourneert json die u moet kopiëren naar uw "appsettings.json".
+Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api's](access-api-cli-how-to.md). De opdracht retourneert een JSON-bestand dat u moet kopiëren naar het bestand appSettings. json.
  
 ## <a name="add-configuration-file"></a>Een configuratiebestand toevoegen
 
-Voeg voor het gemak een configuratiebestand toe dat verantwoordelijk is voor het lezen van waarden van "appsettings.json".
+Voeg voor het gemak een configuratie bestand toe dat verantwoordelijk is voor het lezen van waarden van appSettings. json.
 
-1. Voeg een nieuwe .cs-klasse toe aan uw project. Noem deze `ConfigWrapper`. 
-1. Plak de volgende code in dit bestand (in dit `ConsoleApp1`voorbeeld wordt ervan uitgegaan dat u de naamruimte hebt).
+1. Voeg een nieuwe. cs-klasse toe aan uw project. Noem deze `ConfigWrapper`. 
+1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat `ConsoleApp1`u de naam ruimte hebt).
 
 ```csharp
 using System;
@@ -143,7 +143,7 @@ namespace ConsoleApp1
 
 ## <a name="connect-to-the-net-client"></a>Verbinding maken met de .NET-client
 
-Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaServicesClient**-object maken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de onderstaande code maakt de functie GetCredentialsAsync het object ServiceClientCredentials op basis van de referenties die zijn opgegeven in het lokale configuratiebestand.
+Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaServicesClient**-object maken. Als u het object wilt maken, moet u referenties opgeven die de client nodig heeft om verbinding te maken met Azure met behulp van Microsoft Azure Active Directory. In de onderstaande code maakt de functie GetCredentialsAsync het ServiceClientCredentials-object op basis van de referenties die zijn opgegeven in het lokale configuratie bestand.
 
 1. Open `Program.cs`.
 1. Plak de volgende code:
@@ -228,9 +228,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Video's uploaden, coderen en streamen - .NET](stream-files-tutorial-with-api.md) 
-- [Zelfstudie: Live streamen met Media Services v3 - .NET](stream-live-tutorial-with-api.md)
-- [Zelfstudie: Video's analyseren met Media Services v3 - .NET](analyze-videos-tutorial-with-api.md)
+- [Zelf studie: Video's uploaden, coderen en streamen-.NET](stream-files-tutorial-with-api.md) 
+- [Zelf studie: Stream Live met Media Services v3-.NET](stream-live-tutorial-with-api.md)
+- [Zelf studie: Video's analyseren met Media Services v3-.NET](analyze-videos-tutorial-with-api.md)
 - [Een taakinvoer maken vanuit een lokaal bestand - .NET](job-input-from-local-file-how-to.md)
 - [Een taakinvoer maken vanuit een HTTPS-URL - .NET](job-input-from-http-how-to.md)
 - [Coderen met een aangepaste transformatie - .NET](customize-encoder-presets-how-to.md)
@@ -243,4 +243,4 @@ namespace ConsoleApp1
 ## <a name="see-also"></a>Zie ook
 
 * [Naslaginformatie over .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
-* Zie de repo [.NET SDK-voorbeelden](https://github.com/Azure-Samples/media-services-v3-dotnet) voor meer codevoorbeelden.
+* Zie de [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) -voor beelden opslag plaats voor meer code voorbeelden.

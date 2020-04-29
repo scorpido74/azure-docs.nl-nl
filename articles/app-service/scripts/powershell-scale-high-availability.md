@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: Schalen met Traffic Manager'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een app wereldwijd schalen met Traffic Manager.
+title: 'Power shell: schalen met Traffic Manager'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app wereld wijd kunt schalen met Traffic Manager.
 tags: azure-service-management
 ms.assetid: 470f0129-1efe-462c-a029-5c66e04158a8
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 6ffcf22b640d6393ed48d803f6f52bac5334d4b7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74684329"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Een web-app wereldwijd schalen met een architectuur voor hoge beschikbaarheid

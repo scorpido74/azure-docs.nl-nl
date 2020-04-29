@@ -1,15 +1,15 @@
 ---
-title: Een functie-app maken in een App Service-abonnement - Azure CLI
+title: Een functie-app in een App Service-abonnement maken-Azure CLI
 description: Azure CLI-voorbeeldscript - Een functie-app maken in een App Service-abonnement
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
 ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74532847"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Een functie-app maken in een App Service-abonnement
@@ -38,7 +38,7 @@ Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de op
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Hiermee wordt een Azure Storage-account gemaakt. |
-| [az functionapp plan maken](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Hiermee maakt u een Premium-abonnement. |
+| [AZ functionapp plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Hiermee maakt u een Premium-abonnement. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het App Service-abonnement. |
 
 ## <a name="next-steps"></a>Volgende stappen

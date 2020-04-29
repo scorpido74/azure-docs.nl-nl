@@ -1,16 +1,16 @@
 ---
-title: 'PowerShell: code implementeren van GitHub'
-description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u code van GitHub implementeert.
+title: 'Power shell: code implementeren vanuit GitHub'
+description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u code kunt implementeren vanuit GitHub.
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: 22b6a50b76c7d2e29f4705823db904e2c35f2717
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74684853"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Een web-app maken en code implementeren vanuit GitHub

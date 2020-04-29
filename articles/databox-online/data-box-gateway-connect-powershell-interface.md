@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260213"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Een Azure Data Box Gateway-apparaat beheren via Windows Power shell

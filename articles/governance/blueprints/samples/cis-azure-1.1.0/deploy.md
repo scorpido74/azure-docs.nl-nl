@@ -1,113 +1,113 @@
 ---
-title: CIS Microsoft Azure Foundations Benchmark-blauwdrukvoorbeeld implementeren
-description: Stappen implementeren voor het blauwdrukvoorbeeld van de CIS Microsoft Azure Foundations Benchmark-blauwdruk, inclusief details van de parameterparameters voor blauwdrukken.
+title: Het voor beeld van CIS Microsoft Azure Stichtings-benchmark installatie implementeren
+description: Implementeer stappen voor het voor beeld van de CIS Microsoft Azure Stichtings-Bench Mark, inclusief blauw drukken-artefact parameter Details.
 ms.date: 10/14/2019
 ms.topic: sample
 ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74544528"
 ---
-# <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Het blauwdrukvoorbeeld van CIS Microsoft Azure Foundations Benchmark implementeren
+# <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Het voor beeld van het CIS Microsoft Azure Stichtings-Bench Mark implementeren
 
-Als u het blueprintsample Azure Blueprints CIS Microsoft Azure Foundations Benchmark wilt implementeren, moeten de volgende stappen worden genomen:
+De volgende stappen moeten worden uitgevoerd voor het implementeren van de Azure-blauw drukken CIS Microsoft Azure Stichting voor beeld van basis benchmarks.
 
 > [!div class="checklist"]
-> - Een nieuwe blauwdruk maken uit het voorbeeld
-> - Uw exemplaar van het voorbeeld markeren als **Gepubliceerd**
-> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
+> - Een nieuwe blauw druk maken op basis van het voor beeld
+> - Uw kopie van het voor beeld markeren als **gepubliceerd**
+> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-blueprint-from-sample"></a>Blauwdruk maken uit voorbeeld
+## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
 
-Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgeving te maken met behulp van het voorbeeld als starter.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Selecteer op de pagina **Aan de** slag aan de linkerkant de knop **Maken** onder Een _blauwdruk maken_.
-
-1. Zoek het **blauwdrukvoorbeeld van CIS Microsoft Azure Foundations Benchmark v1.1.0** onder _Andere voorbeelden_ en selecteer **Dit voorbeeld gebruiken**.
-
-1. Voer de _basisbeginselen_ van het blauwdrukvoorbeeld in:
-
-   - **Blauwdruknaam:** geef een naam op voor uw exemplaar van het blauwdrukvoorbeeld van cis Microsoft Azure Foundations Benchmark.
-   - **Definitielocatie:** gebruik de ellips en selecteer de beheergroep om uw exemplaar van het voorbeeld op te slaan.
-
-1. Selecteer het tabblad _Artefacten_ boven aan de pagina of **Volgende: Artefacten** onder aan de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het blauwdrukvoorbeeld. Veel artefacten hebben parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het bekijken van het blauwdrukvoorbeeld.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
-
-Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. Het is gemaakt in **de conceptmodus** en moet worden **gepubliceerd** voordat het kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar die wijziging kan deze verplaatsen van de aanpassing aan de aanbevelingen van CIS Microsoft Azure Foundations Benchmark.
+Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw exemplaar van het blauwdrukvoorbeeld te vinden en selecteer deze vervolgens.
+1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
 
-1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Geef op de nieuwe pagina aan de rechterkant een **versie** voor uw exemplaar van het blauwdrukvoorbeeld. Deze eigenschap is handig voor als u later een wijziging aanbrengt. **Geef wijzigingsnotities** op, zoals 'Eerste versie gepubliceerd uit het blauwdrukvoorbeeld van de CIS Microsoft Azure Foundations Benchmark'. Selecteer vervolgens **Publiceren** onder aan de pagina.
+1. Zoek het CIS-voor beeld van het **DIS-Microsoft Azure basis Bench Mark v 1.1.0** onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
 
-Zodra de kopie van het blauwdrukvoorbeeld is **gepubliceerd,** kan deze worden toegewezen aan een abonnement binnen de beheergroep waaraan het is opgeslagen. Deze stap is waar parameters worden verstrekt om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+   - **Blauw druk-naam**: Geef een naam op voor uw kopie van het voor beeld van het CIS Microsoft Azure stichtings basis.
+   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
+
+1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
+
+1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
+
+Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van uitlijning met CIS Microsoft Azure Stichtings aanbevelingen.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw exemplaar van het blauwdrukvoorbeeld te vinden en selecteer deze vervolgens.
+1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
 
-1. Selecteer **Blauwdruk toewijzen** boven aan de pagina met blauwdrukdefinitie.
+1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op, zoals ' eerste versie gepubliceerd vanuit het CIS-voor beeld van het dis-Microsoft Azure basis Bench Mark. ' Selecteer vervolgens **publiceren** onder aan de pagina.
 
-1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
+## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+
+Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+
+1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+
+1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
 
    - Basisbeginselen
 
-     - **Abonnementen:** selecteer een of meer abonnementen in de beheergroep waarop u uw exemplaar van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt voor elk van de parameters een toewijzing gemaakt met behulp van de ingevoerde parameters.
-     - **Toewijzingsnaam:** de naam is vooraf ingevuld op basis van de naam van de blauwdruk.
-       Verander indien nodig of laat zoals het is.
-     - **Locatie:** selecteer een gebied waarin de beheerde identiteit moet worden gemaakt. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources voor](../../../../active-directory/managed-identities-azure-resources/overview.md)meer informatie.
-     - **Versie van de blauwdrukdefinitie**: Kies een **gepubliceerde** versie van uw exemplaar van het blauwdrukvoorbeeld.
+     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
+     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
+       Wijzig indien nodig of sluit af.
+     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
+     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
 
-   - Vergrendelingstoewijzing
+   - Toewijzing vergren delen
 
-     Selecteer de instelling voor blauwdrukvergrendeling voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Laat de _standaardsysteemtoegewezen beheerde_ identiteitoptie.
+     Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
 
-   - Artefact-parameters
+   - Artefact parameters
 
-     De parameters die in deze sectie zijn gedefinieerd, zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze parameters zijn [dynamische parameters](../../concepts/parameters.md#dynamic-parameters) omdat ze worden gedefinieerd tijdens de toewijzing van de blauwdruk. Zie [Artefact-parameterstabel](#artifact-parameters-table)voor een volledige lijst of artefactparameters en hun beschrijvingen.
+     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
 
-1. Zodra alle parameters zijn ingevoerd, selecteert **u Toewijzen** onder aan de pagina. De blauwdruktoewijzing wordt gemaakt en de implementatie van artefacten begint. Implementatie duurt ongeveer een uur. Als u de status van implementatie wilt controleren, opent u de blauwdruktoewijzing.
+1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer een uur. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
 
 > [!WARNING]
-> De Azure Blueprints-service en de ingebouwde blauwdrukvoorbeelden zijn **gratis.** Azure-bronnen worden [geprijsd per product.](https://azure.microsoft.com/pricing/) Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten van het uitvoeren van resources die door dit blauwdrukvoorbeeld worden geïmplementeerd, te schatten.
+> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
 
-## <a name="artifact-parameters-table"></a>Tabel Artefactparameters
+## <a name="artifact-parameters-table"></a>Tabel artefact parameters
 
-In de volgende tabel vindt u een lijst met de parameters van het blauwdrukartefact:
+De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
-|Artefact-naam|Artefacttype|Parameternaam|Beschrijving|
+|Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\]: Audit CIS Microsoft Azure Foundations Benchmark 1.1.0-aanbevelingen en implementeren van specifieke ondersteunende VM-extensies|Beleidstoewijzing|Lijst van regio's waar Network Watcher moet worden ingeschakeld|Een puntkomma-gescheiden lijst van regio's. Als u een volledige lijst met regio's wilt bekijken, gebruikt u Get-AzLocation. Ex: eastus; eastus2|
-|\[Preview\]: Audit CIS Microsoft Azure Foundations Benchmark 1.1.0-aanbevelingen en implementeren van specifieke ondersteunende VM-extensies|Beleidstoewijzing|Lijst met virtuele machine-extensies die zijn goedgekeurd voor gebruik|Een puntkomma-gescheiden lijst van extensies . Als u een volledige lijst met virtuele machine-extensies wilt bekijken, gebruikt u Get-AzVMExtensionImage. Ex: AzureDiskEncryption; IaaSAntimalware|
+|\[Voor\]beeld: controle CIS Microsoft Azure Stichting 1.1.0 aanbevelingen en implementeer specifieke ondersteunende VM-extensies|Beleidstoewijzing|Lijst met regio's waar Network Watcher moet worden ingeschakeld|Een door punt komma's gescheiden lijst met regio's. Gebruik Get-AzLocation om een volledige lijst met regio's weer te geven. Bijvoorbeeld: oostus; eastus2|
+|\[Voor\]beeld: controle CIS Microsoft Azure Stichting 1.1.0 aanbevelingen en implementeer specifieke ondersteunende VM-extensies|Beleidstoewijzing|Lijst met uitbrei dingen voor virtuele machines die zijn goedgekeurd voor gebruik|Een door punt komma's gescheiden lijst met uitbrei dingen. Gebruik Get-AzVMExtensionImage om een volledige lijst met extensies voor virtuele machines weer te geven. Bijvoorbeeld: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de stappen hebt bekeken om het blauwdrukvoorbeeld van De Microsoft Azure Foundations Benchmark van CIS te implementeren, gaat u naar de volgende artikelen voor meer informatie over de blauwdruk- en beheertoewijzing:
+Nu u de stappen hebt bekeken voor het implementeren van het voor beeld van het CIS Microsoft Azure Stichtings-Bench Mark, gaat u naar de volgende artikelen voor meer informatie over de blauw druk en de beheer toewijzing:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure Foundations Benchmark blauwdruk - Overzicht](./index.md)
-> [CIS Microsoft Azure Foundations Benchmark blauwdruk - Beheer toewijzing](./control-mapping.md)
+> [CIS Microsoft Azure stichtings-benchmark blauw drukken-overzicht](./index.md)
+> van[CIS Microsoft Azure stichtings-benchmark test blauw druk-besturings element toewijzing](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levenscyclus van de blauwdruk](../../concepts/lifecycle.md).
-- Begrijpen hoe [statische en dynamische parameters](../../concepts/parameters.md)te gebruiken.
-- Leer de volgorde van de [blauwdrukvolgorde](../../concepts/sequencing-order.md)aan te passen.
-- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](../../concepts/resource-locking.md)
+- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
+- Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
+- Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../../how-to/update-existing-assignments.md).

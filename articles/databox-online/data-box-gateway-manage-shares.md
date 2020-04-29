@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265439"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om shares te beheren in uw Azure Data Box Gateway 
@@ -50,7 +50,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 5. Kies de **Opslagservice** vanuit blok-blob, pagina-blob of bestanden. Het type service dat u kiest, is afhankelijk van de indeling waarin u de gegevens in Azure wilt opslaan. In dit geval kiezen we ervoor de gegevens als blok-blobs in Azure op te slaan, dus we selecteren **Blok-blob**. Als u **Pagina-blob** kiest, moet u ervoor zorgen dat uw gegevens op 512 bytes zijn uitgelijnd. VHDX is bijvoorbeeld altijd op 512 bytes uitgelijnd.
 
    > [!IMPORTANT]
-   > Zorg ervoor dat het Azure Storage-account dat u gebruikt geen onveranderlijkbeleid heeft ingesteld als u het gebruikt met een Azure Stack Edge- of Data Box Gateway-apparaat. Zie [Onveranderlijk beleid voor blobopslag instellen en beheren voor](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)meer informatie.
+   > Zorg ervoor dat voor het Azure Storage account dat u gebruikt geen Onveranderbaarheid-beleid is ingesteld als u dit gebruikt met een Azure Stack Edge-of Data Box Gateway-apparaat. Zie [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)voor meer informatie.
 
 6. Deze stap hangt af van of u een SMB- of een NFS-share gaat maken.
     - **Als u een SMB-share maakt**: maak in het veld **All privilege local user** (Lokale gebruiker met alle bevoegdheden) een keuze uit **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, geeft u de **gebruikersnaam** en het **wachtwoord** op en bevestigt u het wachtwoord. Hiermee worden de bevoegdheden aan de lokale gebruiker toegewezen. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
@@ -72,7 +72,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te verwijderen.
 
     ![Share selecteren](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. Klik **op Verwijderen**. 
+2. Klik op **verwijderen**. 
 
     ![Op Verwijderen klikken](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -88,7 +88,7 @@ De lijst met shares wordt bijgewerkt en de verwijderde share wordt niet meer wee
 Met de functie Vernieuwen kunt u de inhoud van een on-premises share vernieuwen. Wanneer u een share vernieuwt, wordt er een zoekopdracht gestart om de Azure-objecten te zoeken, inclusief blobs en bestanden die aan de cloud zijn toegevoegd na de laatste vernieuwing. Deze aanvullende bestanden worden vervolgens gebruikt om de inhoud te vernieuwen van de on-premises share op het apparaat. 
 
 > [!NOTE]
-> Machtigingen en toegangscontrolelijsten (ACL's) blijven niet behouden voor een vernieuwingsbewerking. 
+> Machtigingen en toegangs beheer lijsten (Acl's) blijven niet behouden in een vernieuwings bewerking. 
 
 Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
@@ -113,7 +113,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 Als er een fout optreedt, wordt er een waarschuwing gegenereerd. De waarschuwing bevat meer informatie over de oorzaak en een aanbeveling om het probleem te verhelpen. De waarschuwing bevat ook een koppeling naar een bestand dat een volledig overzicht bevat van de fouten en van de bestanden die niet zijn bijgewerkt of verwijderd.
 
 >[!IMPORTANT]
-> In deze release moet u niet meer dan één aandeel tegelijk vernieuwen.
+> In deze versie kunt u niet meer dan één share tegelijk vernieuwen.
 
 ## <a name="sync-storage-keys"></a>Opslagsleutels synchroniseren
 
@@ -122,7 +122,7 @@ Als de sleutels van uw opslagaccount zijn geroteerd, moet u de toegangssleutels 
 Voer in de Azure Portal de volgende stappen uit om uw toegangssleutel voor opslag te synchroniseren.
 
 1. Ga in uw resource naar **Overzicht**. 
-2. Kies en klik in de lijst met aandelen op een aandeel dat is gekoppeld aan het opslagaccount dat u moet synchroniseren. Klik **op Opslagsleutel synchroniseren**. 
+2. Klik in de lijst met shares op een share die is gekoppeld aan het opslag account dat u wilt synchroniseren. Klik op **opslag sleutel synchroniseren**. 
 
      ![Opslagsleutel synchroniseren 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

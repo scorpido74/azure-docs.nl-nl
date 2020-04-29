@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259966"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>De Azure-portal gebruiken om uw Data Box te beheren
@@ -51,11 +51,11 @@ Voer de volgende stappen uit om een order te klonen.
 
     ![Order klonen 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik **op Maken**.    
+2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **maken**.    
 
 De kloon wordt binnen enkele minuten gemaakt en de portal wordt bijgewerkt met de nieuwe order.
 
-[![Kloon bestelling 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Kloon volgorde 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>Order verwijderen
 
@@ -71,7 +71,7 @@ U kunt alleen orders verwijderen die zijn voltooid of geannuleerd. Voer de volge
 
     ![Data Box Disk-order verwijderen 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Voer de naam van de order in wanneer u wordt gevraagd de orderverwijdering te bevestigen. Klik **op Verwijderen**.
+3. Voer de naam van de order in wanneer u wordt gevraagd de orderverwijdering te bevestigen. Klik op **verwijderen**.
 
      ![Data Box Disk-order verwijderen 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om de order te bewerken.
 
 ## <a name="edit-notification-details"></a>Meldingsdetails bewerken
 
-U moet wellicht wijzigen welke gebruikers de e-mails met de orderstatus ontvangen. Een voorbeeld: Een bepaalde gebruiker moet worden geïnformeerd wanneer de schijf wordt afgeleverd of opgehaald. Een andere gebruiker moet mogelijk worden geïnformeerd wanneer de gegevenskopie is voltooid, zodat hij of zij kan controleren of de gegevens zich in het Azure-opslagaccount bevinden voordat deze van de bron wordt verwijderd. In deze gevallen kunt u de meldingsdetails bewerken.
+U moet wellicht wijzigen welke gebruikers de e-mails met de orderstatus ontvangen. Een voorbeeld: Een bepaalde gebruiker moet worden geïnformeerd wanneer de schijf wordt afgeleverd of opgehaald. Een andere gebruiker moet mogelijk een melding ontvangen wanneer het kopiëren van de gegevens is voltooid, zodat de gegevens in het Azure Storage-account kunnen worden gecontroleerd voordat deze uit de bron worden verwijderd. In deze gevallen kunt u de meldingsdetails bewerken.
 
 Voer de volgende stappen uit om meldingsdetails te bewerken.
 
@@ -129,7 +129,7 @@ Voer de volgende stappen uit om meldingsdetails te bewerken.
 |Ontvangen     | Uw schijven zijn ontvangen door het Azure-datacenter. Het kopiëren van gegevens zal binnenkort starten.        |
 |Gegevens gekopieerd     |Het kopiëren van gegevens is in voortgang.<br> Wacht totdat het kopiëren van gegevens is voltooid.         |
 |Voltooid       |De order is voltooid.<br> Verifieer dat uw gegevens zich in Azure bevinden voordat u de on-premises gegevens van servers verwijdert.         |
-|Voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten ontvangen. <br> Bekijk de foutlogboeken voor upload en het pad in het **overzicht**. Ga voor meer informatie naar [Foutlogboeken voor uploaden downloaden.](data-box-disk-troubleshoot-upload.md#download-logs)   |
+|Voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten ontvangen. <br> Controleer de fouten logboeken voor uploaden met behulp van het pad dat wordt vermeld in het **overzicht**. Ga naar [down load Upload-fout logboeken](data-box-disk-troubleshoot-upload.md#download-logs)voor meer informatie.   |
 |Geannuleerd            |De order is geannuleerd. <br> U hebt de order zelf geannuleerd, of er is een fout opgetreden waardoor de service de order heeft geannuleerd.     |
 
 
