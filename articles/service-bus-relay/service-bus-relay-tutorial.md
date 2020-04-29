@@ -1,6 +1,6 @@
 ---
-title: Een on-prem WCF REST-service blootstellen aan clients die Azure Relay gebruiken
-description: In deze zelfstudie wordt beschreven hoe u een on-premises WCF REST-service aan een externe client blootstellen met Azure WCF Relay.
+title: Een on-premises WCF REST-service beschikbaar stellen aan clients met Azure Relay
+description: In deze zelf studie wordt beschreven hoe u een on-premises WCF REST-service beschikbaar maakt voor een externe client met behulp van Azure WCF Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,30 +15,30 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76513079"
 ---
-# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Zelfstudie: Een on-premises WCF REST-service blootstellen aan externe client met Azure WCF Relay
+# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Zelf studie: een on-premises WCF REST-service beschikbaar maken voor externe clients met behulp van Azure WCF Relay
 
-In deze zelfstudie wordt beschreven hoe u een WCF Relay-clienttoepassing en -service maken met Azure Relay. Zie [Aan de slag gaan met wachtrijen voor servicebus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)voor een vergelijkbare zelfstudie die [servicebusberichten](../service-bus-messaging/service-bus-messaging-overview.md)gebruikt.
+In deze zelf studie wordt beschreven hoe u een WCF Relay-client toepassing en-service maakt met behulp van Azure Relay. Zie [aan de slag met Service Bus wachtrijen](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)voor een vergelijk bare zelf studie die gebruikmaakt van [Service Bus berichten](../service-bus-messaging/service-bus-messaging-overview.md).
 
-Door deze zelfstudie te werken, krijgt u inzicht in de stappen om een WCF Relay-client- en servicetoepassing te maken. Net als hun oorspronkelijke WCF-tegenhangers is een service een constructie die een of meer eindpunten blootlegt. Elk eindpunt legt een of meer servicebewerkingen bloot. Het eindpunt van een service bevat het adres van de service, een binding met de informatie die een client moet doorgeven aan de service en een contract waarin staat welke functionaliteit de service biedt aan de clients. Het belangrijkste verschil tussen WCF en WCF Relay is dat het eindpunt wordt blootgesteld in de cloud in plaats van lokaal op uw computer.
+Door deze zelf studie te gebruiken, krijgt u een goed beeld van de stappen voor het maken van een WCF Relay client en service toepassing. Net als bij hun oorspronkelijke WCF-equivalenten is een service een construct waarmee een of meer eind punten worden weer gegeven. Elk eind punt stelt een of meer service bewerkingen beschikbaar. Het eindpunt van een service bevat het adres van de service, een binding met de informatie die een client moet doorgeven aan de service en een contract waarin staat welke functionaliteit de service biedt aan de clients. Het belangrijkste verschil tussen WCF en WCF Relay is dat het eind punt in de Cloud wordt weer gegeven in plaats van lokaal op uw computer.
 
-Nadat u de volgorde van secties in deze zelfstudie hebt doorlopen, hebt u een lopende service. U hebt ook een client die de werking van de service kan aanroepen. 
+Nadat u de volg orde van de secties in deze zelf studie hebt door lopen, hebt u een actieve service. U hebt ook een-client die de bewerkingen van de service kan aanroepen. 
 
-U doet de volgende taken in deze zelfstudie:
+In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
 >
-> * Installeer vereisten voor deze zelfstudie.
-> * Maak een naamruimte voor relais.
-> * Maak een WCF-servicecontract.
-> * Uitvoering van het WCF-contract.
-> * Host en voer de WCF-service uit om je te registreren bij de Relay-service.
-> * Maak een WCF-client voor het servicecontract.
+> * Installeer de vereisten voor deze zelf studie.
+> * Een relay-naam ruimte maken.
+> * Een WCF-service contract maken.
+> * Implementeer het WCF-contract.
+> * Host en voer de WCF-service uit om u te registreren bij de Relay-service.
+> * Maak een WCF-client voor het service contract.
 > * Configureer de WCF-client.
 > * Implementeer de WCF-client.
 > * Voer de toepassingen uit.
@@ -48,35 +48,35 @@ U doet de volgende taken in deze zelfstudie:
 Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* [Visual Studio 2015 of hoger](https://www.visualstudio.com). De voorbeelden in deze tutorial gebruiken Visual Studio 2019.
+* [Visual Studio 2015 of hoger](https://www.visualstudio.com). In de voor beelden in deze zelf studie wordt gebruikgemaakt van Visual Studio 2019.
 * Azure-SDK voor .NET. Installeer de SDK via de [SDK-downloadpagina](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-relay-namespace"></a>Een naamruimte voor relais maken
+## <a name="create-a-relay-namespace"></a>Een relay-naam ruimte maken
 
-De eerste stap is het maken van een naamruimte en ophalen van een SAS-sleutel ([Shared Access Signature](../service-bus-messaging/service-bus-sas.md)). Een naamruimte biedt een toepassingsbegrenzing voor elke toepassing die toegankelijk is via de relayservice. Een SAS-sleutel wordt automatisch gegenereerd door het systeem wanneer een servicenaamruimte wordt gemaakt. De combinatie van servicenaamruimte en SAS-sleutel biedt Service Bus de benodigde referenties voor het verifiëren van toegang tot een toepassing.
+De eerste stap is het maken van een naamruimte en ophalen van een SAS-sleutel ([Shared Access Signature](../service-bus-messaging/service-bus-sas.md)). Een naamruimte biedt een toepassingsbegrenzing voor elke toepassing die toegankelijk is via de relayservice. Een SAS-sleutel wordt automatisch door het systeem gegenereerd wanneer een service naam ruimte wordt gemaakt. De combinatie van servicenaamruimte en SAS-sleutel biedt Service Bus de benodigde referenties voor het verifiëren van toegang tot een toepassing.
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="define-a-wcf-service-contract"></a>Een WCF-servicecontract definiëren
+## <a name="define-a-wcf-service-contract"></a>Een WCF-service contract definiëren
 
-Het servicecontract geeft aan welke bewerkingen de service ondersteunt. Bewerkingen zijn webservicemethoden of -functies. Contracten worden gemaakt door een C++-, C#- of Visual Basic-interface te definiëren. Elke methode in de interface komt overeen met een specifieke servicebewerking. Op elke interface moet het kenmerk [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) worden toegepast en op elke bewerking moet het kenmerk [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) worden toegepast. Als een methode in een interface met het kenmerk [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) niet het kenmerk [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) heeft, wordt die methode niet weergegeven. In het voorbeeld na de procedure wordt de code voor deze taken weergegeven. Zie [Services ontwerpen en implementeren](/dotnet/framework/wcf/designing-and-implementing-services)voor een grotere discussie over contracten en diensten.
+In het service contract wordt aangegeven welke bewerkingen door de service worden ondersteund. Bewerkingen zijn webservice-methoden of-functies. Contracten worden gemaakt door een C++-, C#- of Visual Basic-interface te definiëren. Elke methode in de interface komt overeen met een specifieke servicebewerking. Op elke interface moet het kenmerk [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) worden toegepast en op elke bewerking moet het kenmerk [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) worden toegepast. Als een methode in een interface met het kenmerk [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) niet beschikt over het kenmerk [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) , wordt die methode niet weer gegeven. In het voorbeeld na de procedure wordt de code voor deze taken weergegeven. Zie [Services ontwerpen en implementeren](/dotnet/framework/wcf/designing-and-implementing-services)voor een grotere bespreking van contracten en services.
 
-### <a name="create-a-relay-contract-with-an-interface"></a>Een relaycontract maken met een interface
+### <a name="create-a-relay-contract-with-an-interface"></a>Een relay-contract met een interface maken
 
-1. Start Microsoft Visual Studio als beheerder. Klik hiervoor met de rechtermuisknop op het programmapictogram van Visual Studio en selecteer **Uitvoeren als beheerder**.
-1. Selecteer in Visual Studio De optie **Een nieuw project maken**.
-1. Kies in **Een nieuw project maken**de optie Console App **(.NET Framework)** voor C# en selecteer **Volgende**.
-1. Geef het project *EchoService* een naam en selecteer **Maken**.
+1. Start micro soft Visual Studio als beheerder. Als u dit wilt doen, klikt u met de rechter muisknop op het pictogram van het Visual Studio-programma en selecteert u **als administrator uitvoeren**.
+1. Selecteer in Visual Studio **een nieuw project maken**.
+1. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** voor C# en selecteer **volgende**.
+1. Geef het project de naam *echo service* en selecteer **maken**.
 
    ![Een console-app maken][2]
 
-1. Klik in **Solution Explorer**met de rechtermuisknop op het project en selecteer **NuGet-pakketten beheren.** **Selecteer**bladeren en kies **WindowsAzure.ServiceBus**in **NuGet Package Manager**. Selecteer **Installeren**en accepteer de gebruiksvoorwaarden.
+1. Klik in **Solution Explorer**met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Selecteer in de **NuGet-pakket manager** **Bladeren**, zoek naar en kies **WindowsAzure. ServiceBus**. Selecteer **installeren**en ga akkoord met de gebruiks voorwaarden.
 
-    ![ServiceBuspakket][3]
+    ![Service Bus-pakket][3]
 
-   Dit pakket voegt automatisch verwijzingen toe naar de Service `System.ServiceModel`Bus-bibliotheken en de WCF. [System.ServiceModel](/dotnet/api/system.servicemodel) is de naamruimte die programmatisch toegang biedt tot de basisfuncties van WCF. Service Bus maakt gebruik van veel van de objecten en kenmerken van WCF om servicecontracten te definiëren.
+   Met dit pakket worden automatisch verwijzingen naar de Service Bus-bibliotheken en `System.ServiceModel`de WCF toegevoegd. [System.ServiceModel](/dotnet/api/system.servicemodel) is de naamruimte die programmatisch toegang biedt tot de basisfuncties van WCF. Service Bus maakt gebruik van veel van de objecten en kenmerken van WCF om servicecontracten te definiëren.
 
-1. Voeg de `using` volgende instructies toe aan de bovenkant van *Program.cs:*
+1. Voeg de volgende `using` instructies toe boven aan *Program.cs*:
 
     ```csharp
     using System.ServiceModel;
@@ -86,10 +86,10 @@ Het servicecontract geeft aan welke bewerkingen de service ondersteunt. Bewerkin
 1. Verander de standaardnaam `EchoService` van de naamruimte in `Microsoft.ServiceBus.Samples`.
 
    > [!IMPORTANT]
-   > In deze zelfstudie wordt `Microsoft.ServiceBus.Samples` de naamruimte C# gebruikt, de naamruimte van het beheerde type contract dat wordt gebruikt in het configuratiebestand in de sectie [WcF-client configureren.](#configure-the-wcf-client) U elke gewenste naamruimte opgeven wanneer u dit voorbeeld maakt. De zelfstudie werkt echter niet, tenzij u vervolgens de naamruimten van het contract en de service dienovereenkomstig wijzigt in het configuratiebestand van de toepassing. De naamruimte die is opgegeven in het *bestand App.config* moet dezelfde zijn als de naamruimte die is opgegeven in uw C#-bestanden.
+   > In deze zelf studie wordt de `Microsoft.ServiceBus.Samples` C#-naam ruimte gebruikt. Dit is de naam ruimte van het op contracten gebaseerd beheerde type dat wordt gebruikt in het configuratie bestand in het gedeelte [de WCF-client configureren](#configure-the-wcf-client) . U kunt elke gewenste naam ruimte opgeven wanneer u dit voor beeld bouwt. De zelf studie werkt echter alleen als u de naam ruimten van het contract en de service dienovereenkomstig wijzigt in het configuratie bestand van de toepassing. De naam ruimte die is opgegeven in het bestand *app. config* moet hetzelfde zijn als de naam ruimte die is opgegeven in uw C#-bestanden.
    >
 
-1. Definieer direct `Microsoft.ServiceBus.Samples` na de naamruimtedeclaratie, maar binnen `IEchoContract` de `ServiceContractAttribute` naamruimte, een nieuwe interface `https://samples.microsoft.com/ServiceModel/Relay/`met de naam en pas het kenmerk toe op de interface met een naamruimtewaarde van . Plak de volgende code na de naamruimte-vermelding:
+1. Direct na de `Microsoft.ServiceBus.Samples` naam ruimte declaratie, maar binnen de naam ruimte, definieert u een `IEchoContract` nieuwe interface met `ServiceContractAttribute` de naam en past u het kenmerk toe op `https://samples.microsoft.com/ServiceModel/Relay/`de interface met een naam ruimte waarde van. Plak de volgende code achter de naam ruimte declaratie:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -101,10 +101,10 @@ Het servicecontract geeft aan welke bewerkingen de service ondersteunt. Bewerkin
     De naamruimtewaarde verschilt van de naamruimte die u in uw code gebruikt. In plaats daarvan wordt de naamruimtewaarde gebruikt als een unieke id voor dit contract. Door de naamruimte expliciet op te geven, wordt voorkomen dat de standaardnaamruimtewaarde wordt toegevoegd aan de naam van het contract.
 
    > [!NOTE]
-   > De naamruimte van het servicecontract bevat meestal een schematische naam die ook versie-informatie bevat. Als u versie-informatie in de naamruimte van het servicecontract gebruikt, kunnen services grote wijzigingen isoleren door een nieuw servicecontract te definiëren met een nieuwe naamruimte en het beschikbaar te maken op een nieuw eindpunt. Op deze manier kunnen klanten het oude servicecontract blijven gebruiken zonder dat ze hoeven te worden bijgewerkt. De versie-informatie kan bestaan uit een datum of een buildnummer. Zie [Serviceversiebeheer](/dotnet/framework/wcf/service-versioning) voor meer informatie. Voor deze zelfstudie bevat het naamgevingsschema van de naamruimte voor servicecontracten geen versie-informatie.
+   > De naamruimte van het servicecontract bevat meestal een schematische naam die ook versie-informatie bevat. Als u versie-informatie in de naamruimte van het servicecontract gebruikt, kunnen services grote wijzigingen isoleren door een nieuw servicecontract te definiëren met een nieuwe naamruimte en het beschikbaar te maken op een nieuw eindpunt. Op deze manier kunnen clients het oude service contract blijven gebruiken zonder dat ze moeten worden bijgewerkt. De versie-informatie kan bestaan uit een datum of een buildnummer. Zie [Serviceversiebeheer](/dotnet/framework/wcf/service-versioning) voor meer informatie. Voor deze zelf studie bevat het naamgevings schema van de naam ruimte van het service contract geen versie-informatie.
    >
 
-1. Declareer `IEchoContract` binnen de interface een methode `IEchoContract` voor de enkele bewerking `OperationContractAttribute` die het contract in de interface blootlegt en pas het kenmerk toe op de methode die u als onderdeel van het openbare WCF Relay-contract wilt blootstellen, als volgt:
+1. In de `IEchoContract` interface declareert u een methode voor de enkelvoudige `IEchoContract` bewerking die het contract in de interface weergeeft en `OperationContractAttribute` past u het kenmerk toe op de methode die u als onderdeel van het open bare WCF relay contract wilt weer geven. dit doet u als volgt:
 
     ```csharp
     [OperationContract]
@@ -117,13 +117,13 @@ Het servicecontract geeft aan welke bewerkingen de service ondersteunt. Bewerkin
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
-    Een kanaal is het WCF-object waarmee de host en de client informatie aan elkaar doorgeven. Later schrijf je code tegen het kanaal om informatie tussen de twee toepassingen te herhalen.
+    Een kanaal is het WCF-object waarmee de host en de client informatie aan elkaar doorgeven. Later schrijft u code voor het kanaal om informatie over de twee toepassingen te echo.
 
-1. Selecteer**Build-oplossing** **bouwen** > of selecteer Ctrl+Shift+B om de nauwkeurigheid van uw werk tot nu toe te bevestigen.
+1. Selecteer Build**Build Solution** of selecteer CTRL + SHIFT + B om de nauw keurigheid van uw werk tot nu toe te bevestigen. **Build** > 
 
-### <a name="example-of-a-wcf-contract"></a>Voorbeeld van een WCF-contract
+### <a name="example-of-a-wcf-contract"></a>Voor beeld van een WCF-contract
 
-De volgende code toont een basisinterface die een WCF Relay-contract definieert.
+De volgende code toont een basis interface die een WCF Relay contract definieert.
 
 ```csharp
 using System;
@@ -151,9 +151,9 @@ namespace Microsoft.ServiceBus.Samples
 
 Nu de interface is gemaakt, kunt u de interface implementeren.
 
-## <a name="implement-the-wcf-contract"></a>Uitvoering van het WCF-contract
+## <a name="implement-the-wcf-contract"></a>Het WCF-contract implementeren
 
-Als u een Azure-relay maakt, moet u het contract eerst maken met behulp van een interface. Zie de vorige sectie voor meer informatie over het maken van de interface. De volgende procedure implementeert de interface. Deze taak omvat het `EchoService` maken van een klasse `IEchoContract` met de naam die de door de gebruiker gedefinieerde interface implementeert. Nadat u de interface hebt geïmplementeerd, configureert u de interface met behulp van een *App.config-configuratiebestand.* Het configuratiebestand bevat de nodige informatie voor de toepassing. Deze informatie omvat de naam van de service, de naam van het contract en het type protocol dat wordt gebruikt om te communiceren met de relayservice. De code die voor deze taken wordt gebruikt, wordt geleverd in het voorbeeld dat de procedure volgt. Zie [Servicecontracten](/dotnet/framework/wcf/implementing-service-contracts)implementeren voor een meer algemene discussie over het implementeren van een servicecontract.
+Als u een Azure relay wilt maken, moet u eerst het contract maken met behulp van een interface. Zie de vorige sectie voor meer informatie over het maken van de interface. In de volgende procedure wordt de interface geïmplementeerd. Deze taak omvat het maken van een `EchoService` klasse met de naam die de door `IEchoContract` de gebruiker gedefinieerde interface implementeert. Nadat u de interface hebt geïmplementeerd, configureert u de interface met behulp van een *app. config* -configuratie bestand. Het configuratie bestand bevat de benodigde informatie voor de toepassing. Deze informatie bevat de naam van de service, de naam van het contract en het type protocol dat wordt gebruikt om te communiceren met de Relay-service. De code die wordt gebruikt voor deze taken vindt u in het voor beeld dat volgt op de procedure. Zie [service contracten implementeren](/dotnet/framework/wcf/implementing-service-contracts)voor een meer algemene discussie over het implementeren van een service contract.
 
 1. Maak een nieuwe klasse met de naam `EchoService` direct nadat de `IEchoContract`-interface is gedefinieerd. Met de klasse `EchoService` wordt de `IEchoContract`-interface geïmplementeerd.
 
@@ -184,15 +184,15 @@ Als u een Azure-relay maakt, moet u het contract eerst maken met behulp van een 
     }
     ```
 
-1. Selecteer**Build-oplossing** **bouwen** > of selecteer Ctrl+Shift+B.
+1.  > Selecteer **Build****Build Solution** of selecteer CTRL + SHIFT + B.
 
 ### <a name="define-the-configuration-for-the-service-host"></a>De configuratie voor de servicehost definiëren
 
-Het configuratiebestand is vergelijkbaar met een WCF-configuratiebestand. Het bevat de servicenaam, het eindpunt en de binding. Het eindpunt is de locatie die Azure Relay blootlegt voor clients en hosts om met elkaar te communiceren. De binding is het type protocol dat wordt gebruikt om te communiceren. Het belangrijkste verschil is dat dit geconfigureerde serviceeindpunt verwijst naar een [NetTcpRelayBinding-binding,](/dotnet/api/microsoft.servicebus.nettcprelaybinding) die geen deel uitmaakt van het .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) is een van de bindingen die door de service zijn gedefinieerd.
+Het configuratie bestand is vergelijkbaar met een WCF-configuratie bestand. Het bevat de service naam, het eind punt en de binding. Het eind punt is de locatie Azure Relay wordt weer gegeven voor clients en hosts om met elkaar te communiceren. De binding is het type protocol dat wordt gebruikt om te communiceren. Het belangrijkste verschil is dat dit geconfigureerde service-eind punt verwijst naar een [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) -binding die geen deel uitmaakt van de .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) is een van de bindingen die zijn gedefinieerd door de service.
 
-1. Dubbelklik in **Solution Explorer**op **App.config** om het bestand in de Visual Studio-editor te openen.
+1. Dubbel klik in **Solution Explorer**op **app. config** om het bestand te openen in de Visual Studio-editor.
 1. Vervang in het element `<appSettings>` de tijdelijke aanduidingen door de naam van uw servicenaamruimte en de SAS-sleutel die u in een eerdere stap hebt gekopieerd.
-1. In de `<system.serviceModel>`-tags voegt u een `<services>`-element toe. U meerdere relaytoepassingen definiëren in één configuratiebestand. In deze zelfstudie wordt er echter maar één gedefinieerd.
+1. In de `<system.serviceModel>`-tags voegt u een `<services>`-element toe. U kunt meerdere relay-toepassingen definiëren in een enkel configuratie bestand. In deze zelfstudie wordt er echter maar één gedefinieerd.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -218,11 +218,11 @@ Het configuratiebestand is vergelijkbaar met een WCF-configuratiebestand. Het be
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    Het eindpunt definieert waar de client zoekt naar de hosttoepassing. Later gebruikt de zelfstudie deze stap om een URI te maken die de host volledig blootlegt via Azure Relay. De binding verklaart dat we TCP gebruiken als protocol om te communiceren met de relayservice.
+    Het eindpunt definieert waar de client zoekt naar de hosttoepassing. Later gebruikt de zelf studie deze stap om een URI te maken waarmee de host volledig wordt weer gegeven via Azure Relay. De binding declareert dat we TCP als protocol gebruiken om te communiceren met de Relay-service.
 
-1. Selecteer**Build-oplossing** **bouwen** > of selecteer Ctrl+Shift+B om de nauwkeurigheid van uw werk tot nu toe te bevestigen.
+1. Selecteer Build**Build Solution** of selecteer CTRL + SHIFT + B om de nauw keurigheid van uw werk tot nu toe te bevestigen. **Build** > 
 
-### <a name="example-of-implementation-of-a-service-contract"></a>Voorbeeld van de uitvoering van een servicecontract
+### <a name="example-of-implementation-of-a-service-contract"></a>Voor beeld van implementatie van een service contract
 
 In de volgende code staat de implementatie van het servicecontract.
 
@@ -239,7 +239,7 @@ In de volgende code staat de implementatie van het servicecontract.
     }
 ```
 
-De volgende code toont de basisindeling van het *app.config-bestand* dat is gekoppeld aan de servicehost.
+De volgende code toont de basis indeling van het bestand *app. config* dat is gekoppeld aan de servicehost.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -260,11 +260,11 @@ De volgende code toont de basisindeling van het *app.config-bestand* dat is geko
 </configuration>
 ```
 
-## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Host en voer de WCF-service uit om zich te registreren bij de relayservice
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Host en voer de WCF-service uit om u te registreren bij de Relay-service
 
 In deze stap wordt beschreven hoe u een Azure Relay-service uitvoert.
 
-### <a name="create-the-relay-credentials"></a>De relayreferenties maken
+### <a name="create-the-relay-credentials"></a>De relay-referenties maken
 
 1. Maak in `Main()` twee variabelen waarin de naamruimte en de SAS-sleutel uit het consolevenster worden opgeslagen.
 
@@ -275,36 +275,36 @@ In deze stap wordt beschreven hoe u een Azure Relay-service uitvoert.
     string sasKey = Console.ReadLine();
     ```
 
-    De SAS-sleutel wordt later gebruikt om toegang te krijgen tot uw project. De naamruimte wordt als parameter doorgegeven aan `CreateServiceUri` voor het maken van een service-URI.
+    De SAS-sleutel wordt later gebruikt voor toegang tot uw project. De naamruimte wordt als parameter doorgegeven aan `CreateServiceUri` voor het maken van een service-URI.
 
-1. Als u een object [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) gebruikt, verklaart u dat u een SAS-sleutel gebruikt als referentietype. Voeg de volgende code toe direct na de code die u in de vorige stap hebt toegevoegd.
+1. Als u een [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) -object gebruikt, declareert u dat u een SAS-sleutel gebruikt als het referentie type. Voeg de volgende code toe direct na de code die u in de vorige stap hebt toegevoegd.
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-### <a name="create-a-base-address-for-the-service"></a>Een basisadres voor de service maken
+### <a name="create-a-base-address-for-the-service"></a>Een basis adres voor de service maken
 
-Nadat de code die u in `Uri` de vorige sectie hebt toegevoegd, maakt u een instantie voor het basisadres van de service. Deze URI bevat het Service Bus-schema, de naamruimte en het pad naar de service-interface.
+Na de code die u in de vorige sectie hebt toegevoegd, `Uri` maakt u een exemplaar voor het basis adres van de service. Deze URI bevat het Service Bus-schema, de naamruimte en het pad naar de service-interface.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
 ```
 
-De waarde "sb" is een afkorting voor de Service Bus regeling. Het geeft aan dat we TCP als protocol gebruiken. Dit schema werd ook eerder aangegeven in het configuratiebestand, toen [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) als de binding werd opgegeven.
+De waarde ' SB ' is een afkorting voor het Service Bus schema. Dit geeft aan dat TCP als protocol wordt gebruikt. Dit schema is ook eerder in het configuratie bestand aangegeven toen [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) werd opgegeven als de binding.
 
 De URI voor deze zelfstudie is `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
 ### <a name="create-and-configure-the-service-host"></a>De servicehost maken en configureren
 
-1. Nog steeds `Main()`bezig in, stel `AutoDetect`de connectiviteit modus op .
+1. Als u nog `Main()`steeds aan de slag wilt, `AutoDetect`stelt u de connectiviteits modus in op.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    De connectiviteitsmodus beschrijft het protocol dat de service gebruikt om met de relayservice te communiceren. http of TCP. Met de `AutoDetect`standaardinstelling probeert de service verbinding te maken met Azure Relay via TCP als deze beschikbaar is en HTTP als TCP niet beschikbaar is. Dit resultaat verschilt van het protocol dat de service opgeeft voor clientcommunicatie. Dat protocol wordt bepaald op basis van de gebruikte binding. Een service kan bijvoorbeeld de [binding BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) gebruiken, die aangeeft dat het eindpunt communiceert met clients via HTTP. Dezelfde service kan `ConnectivityMode.AutoDetect` opgeven zodat de service communiceert met Azure Relay via TCP.
+    De connectiviteits modus beschrijft het protocol dat door de service wordt gebruikt om te communiceren met de Relay-service. HTTP of TCP. Met de standaard instelling `AutoDetect`probeert de service verbinding te maken met Azure relay via TCP als deze beschikbaar is, en http als TCP niet beschikbaar is. Dit resultaat wijkt af van het protocol dat door de service is opgegeven voor client communicatie. Dat protocol wordt bepaald op basis van de gebruikte binding. Een service kan bijvoorbeeld de [BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) -binding gebruiken, waarmee wordt aangegeven dat het eind punt communiceert met clients via http. Deze service zou kunnen opgeven `ConnectivityMode.AutoDetect` , zodat de service communiceert met Azure relay over TCP.
 
 1. Maak de servicehost met de URI die u eerder in dit gedeelte hebt gemaakt.
 
@@ -312,9 +312,9 @@ De URI voor deze zelfstudie is `sb://putServiceNamespaceHere.windows.net/EchoSer
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    De servicehost is het WCF-object dat de service start. Hier geeft u het type service door dat `EchoService` u wilt maken, een type en ook aan het adres waarop u de service wilt blootleggen.
+    De servicehost is het WCF-object dat de service start. Hier geeft u het type service dat u wilt maken, een `EchoService` type en ook aan het adres waarop u de service beschikbaar wilt stellen.
 
-1. Voeg boven aan het *Program.cs-bestand* verwijzingen toe naar [System.ServiceModel.Description](/dotnet/api/system.servicemodel.description) en [Microsoft.ServiceBus.Description](/dotnet/api/microsoft.servicebus.description).
+1. Voeg boven aan het *Program.cs* -bestand verwijzingen toe aan [System. service model. Description](/dotnet/api/system.servicemodel.description) en [micro soft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description).
 
     ```csharp
     using System.ServiceModel.Description;
@@ -327,9 +327,9 @@ De URI voor deze zelfstudie is `sb://putServiceNamespaceHere.windows.net/EchoSer
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Deze stap informeert de relayservice dat uw aanvraag openbaar kan worden gevonden door de Atom-feed voor uw project te onderzoeken. Als u `DiscoveryType` `private`ingesteld op , een client kan nog steeds toegang tot de service. De service wordt echter niet weergegeven wanneer `Relay` deze de naamruimte doorzoekt. In plaats daarvan moet de client op voorhand al op de hoogte zijn van het eindpuntpad.
+    Met deze stap wordt de Relay-service geïnformeerd dat uw toepassing openbaar kan worden gevonden door de Atom-feed voor uw project te controleren. Als u deze `DiscoveryType` instelt `private`op, kan de client nog steeds toegang krijgen tot de service. De service wordt echter niet weer gegeven wanneer de `Relay` naam ruimte wordt doorzocht. In plaats daarvan moet de client op voorhand al op de hoogte zijn van het eindpuntpad.
 
-1. Pas de servicereferenties toe op de serviceeindpunten die zijn gedefinieerd in het bestand *App.config:*
+1. Pas de service referenties toe op de service-eind punten die zijn gedefinieerd in het bestand *app. config* :
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -339,11 +339,11 @@ De URI voor deze zelfstudie is `sb://putServiceNamespaceHere.windows.net/EchoSer
     }
     ```
 
-    Zoals eerder vermeld, u meerdere services en eindpunten in het configuratiebestand hebben gedeclareerd. Als dit het geval is, is met de code het hele configuratiebestand doorzocht naar eindpunten waarop uw referenties kunnen worden toegepast. Voor deze zelfstudie heeft het configuratiebestand slechts één eindpunt.
+    Zoals eerder is aangegeven, kon u meerdere services en eind punten hebben gedeclareerd in het configuratie bestand. Als dit het geval is, is met de code het hele configuratiebestand doorzocht naar eindpunten waarop uw referenties kunnen worden toegepast. Voor deze zelf studie heeft het configuratie bestand slechts één eind punt.
 
-### <a name="open-the-service-host"></a>De servicehost openen
+### <a name="open-the-service-host"></a>Open de servicehost
 
-1. Voeg `Main()`nog steeds in , voeg de volgende regel toe om de service te openen.
+1. `Main()`Voeg nog steeds de volgende regel toe om de service te openen.
 
     ```csharp
     host.Open();
@@ -363,11 +363,11 @@ De URI voor deze zelfstudie is `sb://putServiceNamespaceHere.windows.net/EchoSer
     host.Close();
     ```
 
-1. Selecteer Ctrl+Shift+B om het project te bouwen.
+1. Selecteer CTRL + SHIFT + B om het project te bouwen.
 
-### <a name="example-that-hosts-a-service-in-a-console-application"></a>Voorbeeld dat een service host in een consoletoepassing
+### <a name="example-that-hosts-a-service-in-a-console-application"></a>Voor beeld dat een service in een console toepassing host
 
-Uw ingevulde servicecode moet als volgt worden weergegeven. De code bevat het servicecontract en de implementatie van eerdere stappen in de zelfstudie en host de service in een consoletoepassing.
+Uw voltooide service code moet er als volgt uitzien. De code bevat het service contract en de implementatie uit de vorige stappen in de zelf studie en fungeert als host voor de service in een console toepassing.
 
 ```csharp
 using System;
@@ -445,30 +445,30 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>Een WCF-client maken voor het servicecontract
 
-De volgende taak is het maken van een clienttoepassing en het definiëren van het servicecontract dat u later zult implementeren. Deze stappen lijken op de stappen die worden gebruikt om een service te maken: een contract definiëren, een *App.config-bestand* bewerken, referenties gebruiken om verbinding te maken met de relayservice, enzovoort. In het voorbeeld na de procedure wordt de code weergegeven die voor deze taken wordt gebruikt.
+De volgende taak is het maken van een client toepassing en het definiëren van het service contract dat u later implementeert. Deze stappen lijken op de stappen voor het maken van een service: het definiëren van een contract, het bewerken van een *app. config* -bestand, het gebruiken van referenties om verbinding te maken met de Relay-service, enzovoort. In het voorbeeld na de procedure wordt de code weergegeven die voor deze taken wordt gebruikt.
 
-1. Maak een nieuw project in de huidige Visual Studio-oplossing voor de klant:
+1. Een nieuw project maken in de huidige Visual Studio-oplossing voor de client:
 
-   1. Klik in **Solution Explorer**met de rechtermuisknop op de huidige oplossing (niet op het project) en selecteer Nieuw**project** **toevoegen** > .
-   1. Selecteer **console-app (.NET Framework)** voor C#en selecteer **Volgende**in **Een nieuw project toevoegen**.
-   1. Naam project *EchoClient* en selecteer **Maken**.
+   1. Klik in **Solution Explorer**met de rechter muisknop op de huidige oplossing (niet op het project) en selecteer**Nieuw project** **toevoegen** > .
+   1. In **een nieuw project toevoegen**selecteert u **console-app (.NET Framework)** voor C# en selecteert u **volgende**.
+   1. Name project *EchoClient* en selecteer **Create**.
 
-1. Dubbelklik in **Solution Explorer**in het **EchoClient-project** op **Program.cs** om het bestand in de editor te openen als het nog niet is geopend.
+1. Dubbel klik in **Solution Explorer**in het project **EchoClient** op **Program.cs** om het bestand in de editor te openen, als dit nog niet is geopend.
 1. Verander de standaardnaam `EchoClient` van de naamruimte in `Microsoft.ServiceBus.Samples`.
-1. Installeer het [Service Bus NuGet-pakket:](https://www.nuget.org/packages/WindowsAzure.ServiceBus)
+1. Installeer het [Service Bus NuGet-pakket](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
-   1. Klik in **Solution Explorer**met de rechtermuisknop op **EchoClient** en selecteer **NuGet-pakketten beheren**.
-   1. Selecteer **Bladeren**en zoek naar en selecteer **WindowsAzure.ServiceBus**. Selecteer **Installeren**en accepteer de gebruiksvoorwaarden.
+   1. Klik in **Solution Explorer**met de rechter muisknop op **EchoClient** en selecteer vervolgens **NuGet-pakketten beheren**.
+   1. Selecteer **Bladeren**, zoek naar en selecteer **WindowsAzure. ServiceBus**. Selecteer **installeren**en ga akkoord met de gebruiks voorwaarden.
 
-      ![Servicebuspakket installeren][4]
+      ![Service Bus-pakket installeren][4]
 
-1. Voeg `using` een instructie toe voor de naamruimte [van System.ServiceModel](/dotnet/api/system.servicemodel) in het *Program.cs* bestand.
+1. Voeg een `using` instructie voor [System. service model](/dotnet/api/system.servicemodel) naam ruimte toe aan het *Program.cs* -bestand.
 
     ```csharp
     using System.ServiceModel;
     ```
 
-1. Voeg de definitie van het servicecontract toe aan de naamruimte, zoals wordt weergegeven in het volgende voorbeeld. Deze definitie is identiek aan de definitie die in het **Service-project** wordt gebruikt. Voeg deze code toe `Microsoft.ServiceBus.Samples` boven aan de naamruimte.
+1. Voeg de definitie van het servicecontract toe aan de naamruimte, zoals wordt weergegeven in het volgende voorbeeld. Deze definitie is identiek aan de definitie die in het **service** project wordt gebruikt. Voeg deze code toe boven aan de `Microsoft.ServiceBus.Samples` naam ruimte.
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -481,11 +481,11 @@ De volgende taak is het maken van een clienttoepassing en het definiëren van he
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
-1. Selecteer Ctrl+Shift+B om de client te bouwen.
+1. Selecteer CTRL + SHIFT + B om de client te bouwen.
 
-### <a name="example-of-the-echoclient-project"></a>Voorbeeld van het EchoClient-project
+### <a name="example-of-the-echoclient-project"></a>Voor beeld van het project EchoClient
 
-De volgende code toont de huidige status van het *Program.cs* bestand in het **EchoClient-project.**
+De volgende code toont de huidige status van het *Program.cs* -bestand in het **EchoClient** -project.
 
 ```csharp
 using System;
@@ -516,11 +516,11 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="configure-the-wcf-client"></a>De WCF-client configureren
 
-In deze stap maakt u een *App.config-bestand* voor een basisclienttoepassing die toegang heeft tot de service die eerder in deze zelfstudie is gemaakt. Dit *app.config-bestand* definieert het contract, de binding en de naam van het eindpunt. In het voorbeeld na de procedure wordt de code weergegeven die voor deze taken wordt gebruikt.
+In deze stap maakt u een *app. config* -bestand voor een eenvoudige client toepassing die toegang heeft tot de service die eerder in deze zelf studie is gemaakt. Dit *app. config* -bestand definieert het contract, de binding en de naam van het eind punt. In het voorbeeld na de procedure wordt de code weergegeven die voor deze taken wordt gebruikt.
 
-1. Dubbelklik in **Solution Explorer**in het **EchoClient-project** op **App.config** om het bestand in de Visual Studio-editor te openen.
+1. In **Solution Explorer**, in het project **EchoClient** dubbelklikt u op **app. config** om het bestand te openen in de Visual Studio-editor.
 1. Vervang in het element `<appSettings>` de tijdelijke aanduidingen door de naam van uw servicenaamruimte en de SAS-sleutel die u in een eerdere stap hebt gekopieerd.
-1. Voeg `system.serviceModel` binnen het `<client>` element een element toe.
+1. In het `system.serviceModel` element voegt u een `<client>` -element toe.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -532,7 +532,7 @@ In deze stap maakt u een *App.config-bestand* voor een basisclienttoepassing die
     </configuration>
     ```
 
-    Deze code verklaart dat u een clienttoepassing in WCF-stijl definieert.
+    Deze code declareert dat u een client toepassing in WCF-stijl definieert.
 
 1. Geef in het `client`-element de naam, het contract en het type binding op voor het eindpunt.
 
@@ -542,13 +542,13 @@ In deze stap maakt u een *App.config-bestand* voor een basisclienttoepassing die
                     binding="netTcpRelayBinding"/>
     ```
 
-    Deze code definieert de naam van het eindpunt. Het definieert ook het contract dat in de service is gedefinieerd en het feit dat de clienttoepassing TCP gebruikt om te communiceren met Azure Relay. De naam van het eindpunt wordt in de volgende stap gebruikt om deze eindpuntconfiguratie te koppelen aan de service-URI.
+    Deze code definieert de naam van het eind punt. Het definieert ook het contract dat is gedefinieerd in de service en het feit dat de client toepassing TCP gebruikt om te communiceren met Azure Relay. De naam van het eindpunt wordt in de volgende stap gebruikt om deze eindpuntconfiguratie te koppelen aan de service-URI.
 
-1. Selecteer**Alles opslaan van** **bestand** > .
+1. Selecteer **bestand** > **Alles opslaan**.
 
-### <a name="example-of-the-appconfig-file"></a>Voorbeeld van het bestand App.config
+### <a name="example-of-the-appconfig-file"></a>Voor beeld van het bestand app. config
 
-De volgende code toont het *app.config-bestand* voor de Echo-client.
+Met de volgende code wordt het bestand *app. config* voor de echo-client weer gegeven.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -571,7 +571,7 @@ De volgende code toont het *app.config-bestand* voor de Echo-client.
 
 ## <a name="implement-the-wcf-client"></a>De WCF-client implementeren
 
-In deze sectie implementeert u een basisclienttoepassing die toegang heeft tot de service die u eerder in deze zelfstudie hebt gemaakt. Net als bij de service doet de client veel van dezelfde bewerkingen om toegang te krijgen tot Azure Relay:
+In deze sectie implementeert u een eenvoudige client toepassing die toegang heeft tot de service die u eerder in deze zelf studie hebt gemaakt. Net als bij de service heeft de client veel van dezelfde bewerkingen voor toegang tot Azure Relay:
 
 * De connectiviteitsmodus wordt ingesteld.
 * De URI wordt gemaakt waarmee de hostservice wordt gezocht.
@@ -581,9 +581,9 @@ In deze sectie implementeert u een basisclienttoepassing die toegang heeft tot d
 * De toepassingsspecifieke taken worden uitgevoerd.
 * De verbinding wordt gesloten.
 
-Een van de belangrijkste verschillen is echter dat de clienttoepassing een kanaal gebruikt om verbinding te maken met de relayservice. De service maakt gebruik van een oproep naar **ServiceHost.** In het voorbeeld na de procedure wordt de code weergegeven die voor deze taken wordt gebruikt.
+Een van de belangrijkste verschillen is echter dat de client toepassing een kanaal gebruikt om verbinding te maken met de Relay-service. De service maakt gebruik van een aanroep van **ServiceHost**. In het voorbeeld na de procedure wordt de code weergegeven die voor deze taken wordt gebruikt.
 
-### <a name="implement-a-client-application"></a>Een clienttoepassing implementeren
+### <a name="implement-a-client-application"></a>Een client toepassing implementeren
 
 1. Stel de connectiviteitsmodus in op `AutoDetect`. Voeg de volgende code toe in de `Main()`-methode van de **EchoClient**-toepassing.
 
@@ -600,7 +600,7 @@ Een van de belangrijkste verschillen is echter dat de clienttoepassing een kanaa
     string sasKey = Console.ReadLine();
     ```
 
-1. Maak de URI die de locatie van de host in uw relayproject definieert.
+1. Maak de URI die de locatie van de host in uw relay-project definieert.
 
     ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -613,7 +613,7 @@ Een van de belangrijkste verschillen is echter dat de clienttoepassing een kanaa
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-1. Maak de kanaalfabriek die de configuratie laadt die is beschreven in het *bestand App.config.*
+1. Maak de kanaalfactory die de configuratie laadt die wordt beschreven in het bestand *app. config* .
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));
@@ -621,7 +621,7 @@ Een van de belangrijkste verschillen is echter dat de clienttoepassing een kanaa
 
     Een kanaalfactory is een WCF-object dat een kanaal maakt waardoor de service- en clienttoepassingen communiceren.
 
-1. Pas de referenties toe.
+1. De referenties Toep assen.
 
     ```csharp
     channelFactory.Endpoint.Behaviors.Add(sasCredential);
@@ -653,7 +653,7 @@ Een van de belangrijkste verschillen is echter dat de clienttoepassing een kanaa
     }
     ```
 
-    De code gebruikt de instantie van het kanaalobject als proxy voor de service.
+    De code gebruikt het exemplaar van het kanaal object als een proxy voor de service.
 
 1. Sluit het kanaal en sluit de factory.
 
@@ -662,9 +662,9 @@ Een van de belangrijkste verschillen is echter dat de clienttoepassing een kanaa
     channelFactory.Close();
     ```
 
-### <a name="example-code-for-this-tutorial"></a>Voorbeeldcode voor deze zelfstudie
+### <a name="example-code-for-this-tutorial"></a>Voorbeeld code voor deze zelf studie
 
-Uw voltooide code moet als volgt worden weergegeven. Deze code laat zien hoe u een clienttoepassing maakt, hoe u de bewerkingen van de service aanroepen en hoe u de client sluiten nadat de bewerkingsoproep is voltooid.
+De voltooide code moet er als volgt uitzien. Deze code laat zien hoe u een client toepassing maakt, hoe u de bewerkingen van de service aanroept en hoe u de client sluit nadat de bewerkings aanroep is voltooid.
 
 ```csharp
 using System;
@@ -733,23 +733,23 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="run-the-applications"></a>De toepassingen uitvoeren
 
-1. Selecteer Ctrl+Shift+B om de oplossing te bouwen. Met deze actie wordt zowel het clientproject als het serviceproject gebouwd dat u in de vorige stappen hebt gemaakt.
-1. Voordat u de clienttoepassing uitvoert, moet u ervoor zorgen dat de servicetoepassing wordt uitgevoerd. Klik in **Solution Explorer**met de rechtermuisknop op de **EchoService-oplossing** en selecteer **Eigenschappen**.
-1. Kies **in Eigenschappagina's** **, Common Properties** > **Startup Project**en kies Meerdere **opstartprojecten**. Controleer of **EchoService** bovenaan staat in de lijst.
+1. Selecteer CTRL + SHIFT + B om de oplossing te bouwen. Deze actie bouwt zowel het client project als het service project dat u in de vorige stappen hebt gemaakt.
+1. Voordat u de clienttoepassing uitvoert, moet u ervoor zorgen dat de servicetoepassing wordt uitgevoerd. Klik in **Solution Explorer**met de rechter muisknop op de oplossing **echo service** en selecteer vervolgens **Eigenschappen**.
+1. Kies in **Eigenschappen pagina's**het**opstart project** **algemene eigenschappen** > en vervolgens **meerdere opstart projecten**. Controleer of **EchoService** bovenaan staat in de lijst.
 1. Stel het vak **Actie** van de projecten **EchoService** en **EchoClient** in op **Start**.
 
-    ![Eigenschappenpagina's van project][5]
+    ![Eigenschappen pagina's van project][5]
 
-1. Selecteer **Projectafhankelijkheden**. Selecteer **EchoClient**in **Projecten**. Controleer **bij Depends**of **EchoService** is geselecteerd.
+1. Selecteer **Project afhankelijkheden**. Selecteer in **projecten** **EchoClient**. Voor **is afhankelijk van**, moet u ervoor zorgen dat **echo service** is geselecteerd.
 
     ![Projectafhankelijkheden][6]
 
-1. Selecteer **OK** om **Eigenschappagina's**te sluiten .
+1. Selecteer **OK** om **Eigenschappen Vensters**te sluiten.
 1. Selecteer F5 om beide projecten uit te voeren.
-1. Beide consolevensters worden geopend en u wordt gevraagd de naam van de naamruimte op te geven. De service moet eerst worden uitgevoerd, dus voer in het **EchoService-consolevenster** de naamruimte in en selecteer Enter.
-1. Vervolgens vraagt de console u om uw SAS-sleutel. Voer de SAS-toets in en selecteer Enter.
+1. Beide consolevensters worden geopend en u wordt gevraagd de naam van de naamruimte op te geven. De service moet eerst worden uitgevoerd, dus voer in het venster **echo service** -console de naam ruimte in en selecteer vervolgens ENTER.
+1. Vervolgens wordt u gevraagd om uw SAS-sleutel. Voer de SAS-sleutel in en selecteer ENTER.
 
-    Hier volgt een voorbeeld van de uitvoer van het consolevenster. De waarden hier zijn slechts voorbeelden.
+    Hier volgt een voorbeeld van de uitvoer van het consolevenster. Deze waarden zijn slechts voor beelden.
 
     `Your Service Namespace: myNamespace`
 
@@ -761,20 +761,20 @@ namespace Microsoft.ServiceBus.Samples
 
     `Press [Enter] to exit`
 
-1. Voer in het consolevenster **EchoClient** dezelfde gegevens in als de gegevens die u eerder al hebt ingevoerd voor de servicetoepassing. Voer dezelfde servicenaamruimte en SAS-sleutelwaarden in voor de clienttoepassing.
+1. Voer in het consolevenster **EchoClient** dezelfde gegevens in als de gegevens die u eerder al hebt ingevoerd voor de servicetoepassing. Voer dezelfde service naam ruimte en SAS-sleutel waarden in voor de client toepassing.
 1. Wanneer u deze waarden hebt ingevoerd, opent de client een kanaal naar de service en wordt u gevraagd om tekst in te voeren, zoals te zien is in het volgende console-uitvoervoorbeeld.
 
     `Enter text to echo (or [Enter] to exit):`
 
-    Voer tekst in die u naar de servicetoepassing wilt verzenden en selecteer Enter. Deze tekst wordt naar de service verzonden via een Echo-servicebewerking en wordt in het serviceconsolevenster weergegeven, zoals in de volgende voorbeelduitvoer te zien is.
+    Voer tekst in om naar de service toepassing te verzenden en selecteer ENTER. Deze tekst wordt naar de service verzonden via een Echo-servicebewerking en wordt in het serviceconsolevenster weergegeven, zoals in de volgende voorbeelduitvoer te zien is.
 
     `Echoing: My sample text`
 
-    De clienttoepassing ontvangt de geretourneerde waarde van de `Echo`-bewerking: de oorspronkelijke tekst. Deze wordt vervolgens weergegeven in het consolevenster. De volgende tekst is voorbeelduitvoer vanuit het venster van de clientconsole.
+    De clienttoepassing ontvangt de geretourneerde waarde van de `Echo`-bewerking: de oorspronkelijke tekst. Deze wordt vervolgens weergegeven in het consolevenster. De volgende tekst is een voor beeld van een uitvoer van het client console venster.
 
     `Server echoed: My sample text`
 
-1. U kunt op deze manier doorgaan met het verzenden van berichten van de client naar de service. Wanneer u klaar bent, selecteert u Enter in de vensters van de client- en serviceconsole om beide toepassingen te beëindigen.
+1. U kunt op deze manier doorgaan met het verzenden van berichten van de client naar de service. Wanneer u klaar bent, selecteert u Enter in de console van de client en service om beide toepassingen te beëindigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

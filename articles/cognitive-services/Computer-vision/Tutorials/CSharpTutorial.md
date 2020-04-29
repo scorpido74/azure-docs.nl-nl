@@ -1,7 +1,7 @@
 ---
-title: 'Voorbeeld: een app voor afbeeldingsverwerking verkennen in C #'
+title: 'Voor beeld: een app voor het verwerken van afbeeldingen in C verkennen #'
 titleSuffix: Azure Cognitive Services
-description: Ontdek een eenvoudige Windows-app die de Computer Vision API gebruikt in Azure Cognitive Services. Voer OCR uit, maak miniaturen en werk met visuele kenmerken in een afbeelding.
+description: Verken een eenvoudige Windows-app die gebruikmaakt van de Computer Vision-API in azure Cognitive Services. Voer OCR uit, maak miniaturen en werk met visuele kenmerken in een afbeelding.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
@@ -12,13 +12,13 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76168869"
 ---
-# <a name="sample-explore-an-image-processing-app-with-c"></a>Voorbeeld: een app voor afbeeldingsverwerking verkennen met C #
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Voor beeld: een app voor het verwerken van installatie kopieën verkennen met C #
 
 Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren, slim bijgesneden miniaturen maken, plus visuele kenmerken, inclusief gezichten, in een afbeelding detecteren, categoriseren, taggen en beschrijven. Met het onderstaande voorbeeld kunt u een afbeeldings-URL of een lokaal opgeslagen bestand verzenden voor analyse. U kunt dit open-sourcevoorbeeld gebruiken als een sjabloon voor het bouwen van uw eigen app voor Windows met behulp van de Computer Vision-API en Windows Presentation Foundation (WPF), een onderdeel van .NET Framework.
 
@@ -33,7 +33,7 @@ Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om opti
 Voordat u met de voorbeeld-app gaat werken, moet zijn voldaan aan de volgende vereisten:
 
 * U hebt [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) of hoger nodig.
-* U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Let ook op de URL van het eindpunt van de service.
+* U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Noteer ook de URL van het service-eind punt.
 
 ## <a name="get-the-sample-app"></a>De voorbeeld-app downloaden
 
@@ -79,8 +79,8 @@ U kunt de voorbeeld-app uitvoeren om te zien hoe deze samenwerkt met u en de Com
 1. Wanneer de voorbeeld-app wordt weergegeven, kiest u **Subscription Key Management** in het navigatiedeelvenster om de pagina voor het beheren van abonnementssleutels weer te geven.
    ![Pagina Subscription Key Management](../Images/Vision_UI_Subscription.PNG)  
 1. Geef uw abonnementssleutel op in **Subscription Key**.
-1. Voer de URL van eindpunt in **Eindpunt in**.  
-   Als u bijvoorbeeld de abonnementssleutel gebruikt in de gratis proefversie van Computer Vision, voert u de volgende URL voor eindpunt in:`https://westcentralus.api.cognitive.microsoft.com`  
+1. Voer de eind punt-URL in het **eind punt**in.  
+   Als u bijvoorbeeld de abonnements sleutel gebruikt uit de gratis proef versie van Computer Vision, voert u de volgende eind punt-URL in:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Als u uw abonnementssleutel en eindpunt-URL niet opnieuw wilt invoeren wanneer u de voorbeeld-app later nogmaals uitvoert, kiest u **Save Setting** om de abonnementssleutel en de eindpunt-URL op te slaan op uw computer. Als u de eerder opgeslagen abonnementssleutel en eindpunt-URL wilt verwijderen, kiest u **Delete Setting**.
 
@@ -311,4 +311,4 @@ Wanneer u deze resources niet meer nodig hebt, verwijdert u de map waarin u de o
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aan de slag met Face-service](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Aan de slag met face service](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76310115"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met Azure Portal en onderwerpen/abonnementen
@@ -32,7 +32,7 @@ Een voorbeeld van dit scenario is het bijwerken van het voorraadassortiment voor
 
 ![onderwerp](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
-Als u geen Azure-abonnement hebt, u een [gratis account][] maken voordat u begint.
+Als u geen Azure-abonnement hebt, kunt u een [gratis account][] maken voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -395,7 +395,7 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

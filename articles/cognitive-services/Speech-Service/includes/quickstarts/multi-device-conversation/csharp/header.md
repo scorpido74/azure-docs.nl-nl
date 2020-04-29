@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 11ee22be1de22bfc4206aeb7f4a27449bd70c2bb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264541"
 ---
-Als u liever meteen in springt, alle [SpraakSDK C#-voorbeelden](https://aka.ms/speech/github-csharp) op GitHub bekijkt of downloadt. Anders, laten we beginnen.
+Als u liever direct aan de slag gaat, kunt u alle [Speech SDK C#](https://aka.ms/speech/github-csharp) -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.
 

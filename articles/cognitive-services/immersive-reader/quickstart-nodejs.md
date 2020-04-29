@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: maak een web-app die de meeslepende lezer met Node.js lanceert'
+title: 'Snelstartgids: een web-app maken waarmee de insluitende lezer wordt gestart met node. js'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart bouwt u vanaf nul een web-app en voegt u de Immersive Reader API-functionaliteit toe.
+description: In deze Quick Start bouwt u een volledig nieuwe web-app en voegt u de functionaliteit van de insluitende Reader API toe.
 author: pasta
 manager: nitinme
 ms.service: cognitive-services
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: 749e75fed409632c613713a49154e4cd8dc265b3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75946325"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Snelstart: maak een web-app die de Immersive Reader (Node.js) lanceert
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>Snelstartgids: een web-app maken die de insluitende lezer (node. js) start
 
-De [Immersive Reader](https://www.onenote.com/learningtools) is een inclusief ontworpen tool die beproefde technieken implementeert om het begrijpen van lezen te verbeteren.
+De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulp programma waarmee bewezen technieken worden geïmplementeerd om de Lees vaardigheid te verbeteren.
 
-In deze quickstart bouw je een web-app vanaf nul en integreer je de Immersive Reader met behulp van de Immersive Reader SDK. Een volledig werkend voorbeeld van deze quickstart is [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)beschikbaar.
+In deze Snelstartgids bouwt u een volledig nieuwe web-app en integreert u de insluitende lezer met behulp van de insluitende lezer-SDK. [Hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)vindt u een volledig werkend voor beeld van deze Quick Start.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Immersive Reader-bron die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](./how-to-create-immersive-reader.md) om je op te stellen. U hebt een aantal waarden nodig die hier zijn gemaakt bij het configureren van de omgevingseigenschappen. Sla de uitvoer van uw sessie op in een tekstbestand voor toekomstige verwijzingen.
-* [Node.js](https://nodejs.org/) en [garen](https://yarnpkg.com)
-* Een IDE zoals [Visual Studio Code](https://code.visualstudio.com/)
+* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](./how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
+* [Node. js](https://nodejs.org/) en [garens](https://yarnpkg.com)
+* Een IDE zoals [Visual Studio code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Een Node.js-web-app maken met Express
+## <a name="create-a-nodejs-web-app-with-express"></a>Een node. js-web-app maken met Express
 
-Maak een Web-app Node.js met de `express-generator` tool.
+Maak een node. js-web-app `express-generator` met het hulp programma.
 
 ```bash
 npm install express-generator -g
@@ -40,7 +40,7 @@ express --view=pug quickstart-nodejs
 cd quickstart-nodejs
 ```
 
-Installeer garen afhankelijkheden, en `request` `dotenv`voeg afhankelijkheden en , die later zal worden gebruikt in de quickstart.
+Installeer garen afhankelijkheden en voeg `request` afhankelijkheden `dotenv`toe en, die later worden gebruikt in de Quick Start.
 
 ```bash
 yarn
@@ -50,10 +50,10 @@ yarn add dotenv
 
 ## <a name="set-up-authentication"></a>Verificatie instellen
 
-### <a name="configure-authentication-values"></a>Verificatiewaarden configureren
+### <a name="configure-authentication-values"></a>Verificatie waarden configureren
 
-Maak een nieuw bestand genaamd _.env_ in de hoofdmap van uw project. Plak de volgende code erin en geef de waarden die zijn opgegeven toen u uw Immersive Reader-bron maakte.
-Voeg geen aanhalingstekens of de tekens {" en "}" toe.
+Maak een nieuw bestand met de naam _. env_ in de hoofdmap van uw project. Plak de volgende code in het bestand en geef de waarden op die zijn opgegeven bij het maken van uw insluitende lezer-resource.
+Neem geen aanhalings tekens of de {en} op.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -62,18 +62,18 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Zorg ervoor dat u dit bestand niet in bronbeheer verbindt, omdat het geheimen bevat die niet openbaar mogen worden gemaakt.
+Zorg ervoor dat dit bestand niet wordt door gegeven aan broncode beheer, omdat het geheimen bevat dat niet openbaar mag worden gemaakt.
 
-Open vervolgens _app.js_ en voeg het volgende toe aan de bovenkant van het bestand. Hiermee worden de eigenschappen die in het .env-bestand zijn gedefinieerd, als omgevingsvariabelen in Knooppunt geladen.
+Open vervolgens _app. js_ en voeg het volgende toe boven aan het bestand. Hiermee worden de eigenschappen die in het. env-bestand zijn gedefinieerd, geladen als omgevings variabelen in een knoop punt.
 
 ```javascript
 require('dotenv').config();
 ```
 
 ### <a name="update-the-router-to-acquire-the-token"></a>De router bijwerken om het token te verkrijgen
-Open het bestand _routes\index.js_ en vervang de automatisch gegenereerde code door de volgende code.
+Open het _routes\index.js_ -bestand en vervang de automatisch gegenereerde code door de volgende code.
 
-Met deze code wordt een API-eindpunt gemaakt dat een Azure AD-verificatietoken verwerft met behulp van het hoofdwachtwoord van de service. Het haalt ook het subdomein op. Vervolgens wordt een object geretourneerd dat het token en subdomein bevat.
+Met deze code wordt een API-eind punt gemaakt waarmee een Azure AD-verificatie token wordt verkregen met behulp van het wacht woord voor de Service-Principal. Ook wordt het subdomein opgehaald. Vervolgens wordt een object geretourneerd dat het token en subdomein bevat.
 
 ```javascript
 var express = require('express');
@@ -125,11 +125,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-Het **GetTokenAndSubdomain** API-eindpunt moet worden beveiligd achter een of andere vorm van authenticatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voorkomen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken tegen uw Immersive Reader-service en facturering; dat werk buiten het bereik van deze quickstart valt.
+Het **GetTokenAndSubdomain** -API-eind punt moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voor komen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken voor uw insluitende lezer-service en facturering; Dit werk valt buiten het bereik van deze Quick Start.
 
-## <a name="add-sample-content"></a>Voorbeeldinhoud toevoegen
+## <a name="add-sample-content"></a>Voorbeeld inhoud toevoegen
 
-Nu voegen we voorbeeldinhoud toe aan deze web-app. Open _weergaven\index.pug_ en vervang de automatisch gegenereerde code door dit voorbeeld:
+Nu gaan we voorbeeld inhoud toevoegen aan deze web-app. Open _views\index.Pug_ en vervang de automatisch gegenereerde code door dit voor beeld:
 
 ```pug
 doctype html
@@ -235,26 +235,26 @@ script(type="text/javascript").
 ```
 
 
-Merk op dat alle tekst een **lang** attribuut heeft, dat de talen van de tekst beschrijft. Met dit kenmerk biedt de immersive reader relevante taal- en grammaticafuncties.
+U ziet dat alle tekst een kenmerk **lang** heeft, waarin de talen van de tekst worden beschreven. Dit kenmerk helpt de insluitende lezer de relevante taal-en grammatica functies te bieden.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Onze web-app is nu klaar. Start de app door het uitvoeren van:
+Onze web-app is nu klaar. Start de app door uit te voeren:
 
 ```bash
 npm start
 ```
 
-Open uw browser _http://localhost:3000_en navigeer naar . U ziet nu het volgende:
+Open uw browser en ga naar _http://localhost:3000_. U ziet nu het volgende:
 
 ![Voorbeeldapp](./media/quickstart-nodejs/1-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Start de meeslepende lezer
+## <a name="launch-the-immersive-reader"></a>De insluitende lezer starten
 
-Wanneer u op de knop 'Meeslepende lezer' klikt, ziet u de meeslepende lezer die is gestart met de inhoud op de pagina.
+Wanneer u op de knop ' insluitende lezer ' klikt, ziet u dat de insluitende lezer wordt gestart met de inhoud op de pagina.
 
 ![Insluitende lezer](./media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ontdek de [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) en de [Immersive Reader SDK Reference](./reference.md)
+* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)

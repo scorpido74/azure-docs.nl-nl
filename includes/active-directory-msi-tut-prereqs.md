@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
 ms.openlocfilehash: ea3e135849e07685f81b1cb9a1a63721942d2cb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971849"
 ---
 - Als u niet bekend bent met de functie voor beheerde identiteiten voor Azure-resources, raadpleegt u dit [overzicht](../articles/active-directory/msi-overview.md). Als u geen Azure-account hebt, [registreert u zich voor een gratis account](https://azure.microsoft.com/free/) voordat u verder gaat.

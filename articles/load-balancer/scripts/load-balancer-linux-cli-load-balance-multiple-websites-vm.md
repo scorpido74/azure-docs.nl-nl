@@ -1,5 +1,5 @@
 ---
-title: Load balance meerdere websites - Azure CLI - Azure Load Balancer
+title: Taak verdeling meerdere websites-Azure CLI-Azure Load Balancer
 description: In dit Azure CLI-voorbeeldscript ziet u hoe u taken van meerdere websites kunt verdelen naar dezelfde virtuele machine
 documentationcenter: load-balancer
 author: asudbring
@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.openlocfilehash: 80ec18ca722b9833307fc270c710abd93c6fb6f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76274624"
 ---
 # <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI-scriptvoorbeeld: Taakverdelingen maken voor meerdere websites

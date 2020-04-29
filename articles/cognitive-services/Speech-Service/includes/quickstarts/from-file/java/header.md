@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Spraak herkennen uit een audiobestand, Java - Spraakservice'
+title: 'Quick Start: spraak herkennen vanuit een audio bestand, Java-spraak service'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
 ms.openlocfilehash: 69f4d71bccb791d80f70d3150988868e56b96670
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75927938"
 ---
-Als u liever meteen in springt, alle <a href="https://aka.ms/speech/github-java">Speech SDK Java Samples</a> op GitHub bekijkt of downloadt. Anders, laten we beginnen.
+Als u liever meteen naar rechts gaat, kunt u alle <a href="https://aka.ms/speech/github-java">Speech SDK Java</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.

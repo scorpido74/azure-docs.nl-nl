@@ -11,16 +11,16 @@ ms.custom: include file
 ms.date: 01/15/2020
 ms.author: diberry
 ms.openlocfilehash: 7ef219e6b5f7547029612ec3898efec51abd4712
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122892"
 ---
-## <a name="change-the-model-update-frequency"></a>De frequentie van de modelupdate wijzigen
+## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
-Wijzig de updatefrequentie van het model in de **Azure-portal** in de pagina Personalizer op de pagina **Configuratie** in 10 seconden. Deze korte duur zal de service snel trainen, zodat u zien hoe de hoogste actie voor elke iteratie verandert.
+Wijzig in de Azure Portal in de resource personaliseren op de pagina **configuratie** de **verwerkings frequentie** van het model in 10 seconden. Met deze korte duur wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
 
-![Frequentie van modelupdate wijzigen](../media/settings/configure-model-update-frequency-settings.png)
+![Update frequentie van het model wijzigen](../media/settings/configure-model-update-frequency-settings.png)
 
-Wanneer een Personalizer-lus eerst wordt geinstantieerd, is er geen model omdat er geen Reward API-aanroepen zijn om van te trainen. Rangcalls geven voor elk item dezelfde waarschijnlijkheid terug. Uw toepassing moet nog steeds altijd de inhoud rangschikken met behulp van de uitvoer van RewardActionId.
+Wanneer een aangepaste lus voor het eerst wordt geïnstantieerd, is er geen model, omdat er geen belonings-API-aanroepen zijn voor de trein van. Rang gesprekken retour neren een gelijke kansen voor elk item. Uw toepassing moet toch altijd inhoud plaatsen met de uitvoer van RewardActionId.

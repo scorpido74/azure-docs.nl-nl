@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een zoekopdracht op het web uitvoeren met C# - Bing Web Search REST API'
+title: 'Quick Start: een webzoekopdracht uitvoeren met C#-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76167672"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Snelstart: zoeken op het web met behulp van de Bing Web Search REST API en C #
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en C #
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Deze C#-toepassing stuurt een zoekverzoek naar de API en geeft het antwoord weer. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze C#-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan.  `uriBase`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron. Controleer of de `uriBase` geldig is en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen. Vergeet niet om deze `Program` code toe te voegen aan de klasse zoals hierboven vermeld.
+Er moet een aantal variabelen worden ingesteld voordat we verder kunnen gaan.  `uriBase`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of de `uriBase` geldig is en vervang de waarde `accessKey` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen. Vergeet niet om deze code toe te `Program` voegen aan de klasse zoals hierboven wordt vermeld.
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>De methode Main declareren
 
-De `Main()` methode is vereist en het is de eerste methode aangeroepen wanneer het programma wordt gestart. In deze toepassing valideert de methode Man de `accessKey`, doet een aanvraag en drukt het antwoord af.
+De `Main()` methode is vereist en is de eerste methode die wordt aangeroepen wanneer het programma wordt gestart. In deze toepassing valideert de methode Man de `accessKey`, doet een aanvraag en drukt het antwoord af.
 
 Houd er rekening mee dat `main()` afhankelijk is van methoden die in de volgende secties worden gemaakt.
 
@@ -109,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Een struct voor zoekresultaten maken
 
-Deze struct retourneert zoekresultaten met relevante headers. Het wordt aangeroepen bij het indienen van een verzoek aan de Bing Web Search API om een resultaatobject te maken.
+Deze struct retourneert zoekresultaten met relevante headers. Het wordt aangeroepen bij het maken van een aanvraag voor de Bing Webzoekopdrachten-API om een resultaat object te creëren.
 
 ```csharp
 // Returns search results with headers.
