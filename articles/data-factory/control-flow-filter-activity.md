@@ -1,6 +1,6 @@
 ---
-title: Filteractiviteit in Azure Data Factory
-description: De activiteit Filter filtert de ingangen.
+title: Activiteit in Azure Data Factory filteren
+description: Met de filter activiteit worden de invoer filters gefilterd.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417209"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Filteractiviteit in Azure Data Factory
-U een filteractiviteit in een pijplijn gebruiken om een filterexpressie toe te passen op een invoerarray. 
+# <a name="filter-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory filteren
+U kunt een filter activiteit in een pijp lijn gebruiken om een filter expressie toe te passen op een invoer matrix. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>Syntaxis
@@ -35,18 +35,18 @@ U een filteractiviteit in een pijplijn gebruiken om een filterexpressie toe te p
 }
 ```
 
-## <a name="type-properties"></a>Eigenschappen typen
+## <a name="type-properties"></a>Type-eigenschappen
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van `Filter` de activiteit. | Tekenreeks | Ja
+name | De naam van `Filter` de activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op **filter**. | Tekenreeks | Ja
-Voorwaarde | Voorwaarde die moet worden gebruikt voor het filteren van de invoer. | Expressie | Ja
-Items | Invoerarray waarop het filter moet worden toegepast. | Expressie | Ja
+regeling | De voor waarde die moet worden gebruikt voor het filteren van de invoer. | Expressie | Ja
+vermeldingen | Invoer matrix waarop het filter moet worden toegepast. | Expressie | Ja
 
 ## <a name="example"></a>Voorbeeld
 
-In dit voorbeeld heeft de pijplijn twee activiteiten: **Filter** en **ForEach**. De filteractiviteit is geconfigureerd om de invoerarray te filteren voor items met een waarde groter dan 3. De Activiteit ForEach wordt vervolgens over de gefilterde waarden heen getint en stelt de variabele **test in** op de huidige waarde.
+In dit voor beeld heeft de pijp lijn twee activiteiten: **filter** en **foreach**. De filter activiteit is zo geconfigureerd dat de invoer matrix wordt gefilterd op items met een waarde die groter is dan 3. De ForEach-activiteit doorloopt vervolgens de gefilterde waarden en stelt de variabele **test** in op de huidige waarde.
 
 ```json
 {
@@ -113,7 +113,7 @@ In dit voorbeeld heeft de pijplijn twee activiteiten: **Filter** en **ForEach**.
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)

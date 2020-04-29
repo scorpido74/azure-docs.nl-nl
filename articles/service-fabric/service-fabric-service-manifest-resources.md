@@ -1,30 +1,30 @@
 ---
-title: Eindpunten van servicefabric-service opgeven
-description: Eindpuntbronnen beschrijven in een servicemanifest, inclusief het instellen van HTTPS-eindpunten
+title: Service Fabric service-eind punten opgeven
+description: Eindpunt resources beschrijven in een service manifest, inclusief het instellen van HTTPS-eind punten
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417595"
 ---
-# <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een servicemanifest
+# <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
-Met het servicemanifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpuntresources voor de service. De toegang tot de resources die zijn opgegeven in het servicemanifest kan worden beheerd via de SecurityGroup in het toepassingsmanifest. Met de verklaring van resources kunnen deze resources worden gewijzigd tijdens de implementatie, wat betekent dat de service geen nieuw configuratiemechanisme hoeft in te voeren. De schemadefinitie voor het bestand ServiceManifest.xml is geïnstalleerd met de Service Fabric SDK en de hulpprogramma's voor *C:\Program Files\Microsoft SDKs\Service Fabric\schema's\ServiceFabricServiceModel.xsd*.
+Met het service manifest kunnen resources die door de service worden gebruikt, worden gedeclareerd of gewijzigd, zonder de gecompileerde code te wijzigen. Service Fabric ondersteunt de configuratie van eindpunt resources voor de service. De toegang tot de resources die zijn opgegeven in het service manifest kan worden beheerd via de beveiligings groep in het manifest van de toepassing. Met de declaratie van resources kunnen deze resources tijdens de implementatie worden gewijzigd, wat betekent dat de service geen nieuw configuratie mechanisme hoeft te introduceren. De schema definitie voor het bestand ServiceManifest. XML wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
 
 ## <a name="endpoints"></a>Eindpunten
-Wanneer een eindpuntbron is gedefinieerd in het servicemanifest, wijst Service Fabric poorten toe uit het gereserveerde toepassingspoortbereik wanneer een poort niet expliciet is opgegeven. Kijk bijvoorbeeld naar het eindpunt *ServiceEndpoint1* dat is opgegeven in het manifestfragment dat na deze alinea wordt verstrekt. Bovendien kunnen services ook een specifieke poort in een resource aanvragen. Servicereplica's die op verschillende clusterknooppunten worden uitgevoerd, kunnen verschillende poortnummers toegewezen krijgen, terwijl replica's van een service die op hetzelfde knooppunt wordt uitgevoerd, de poort delen. De servicereplica's kunnen deze poorten vervolgens gebruiken als dat nodig is voor replicatie en het luisteren naar clientaanvragen.
+Wanneer een eindpunt resource is gedefinieerd in het service manifest, Service Fabric wijst poorten toe uit het gereserveerde poort bereik van de toepassing wanneer een poort niet expliciet is opgegeven. Bekijk bijvoorbeeld het eind punt *ServiceEndpoint1* dat is opgegeven in het manifest fragment dat wordt gegeven na deze alinea. Daarnaast kunnen services ook een specifieke poort aanvragen in een bron. Er kunnen verschillende poort nummers worden toegewezen aan service replica's die worden uitgevoerd op verschillende cluster knooppunten, terwijl replica's van een service die op hetzelfde knoop punt wordt uitgevoerd, de poort delen. De service replica's kunnen deze poorten vervolgens gebruiken als nodig voor replicatie en Luis teren naar client aanvragen.
 
-Bij het activeren van een service die een https-eindpunt opgeeft, stelt Service Fabric de toegangscontrole invoer voor de poort in, bindt het opgegeven servercertificaat aan de poort en verleent het ook de identiteit die de service uitvoert als machtigingen voor de privésleutel van het certificaat. De activeringsstroom wordt aangeroepen telkens wanneer Service Fabric wordt gestart of wanneer de certificaatverklaring van de toepassing wordt gewijzigd via een upgrade. Het eindpuntcertificaat wordt ook gecontroleerd op wijzigingen/verlengingen en machtigingen worden indien nodig periodiek opnieuw toegepast.
+Bij het activeren van een service die een HTTPS-eind punt opgeeft, stelt Service Fabric de vermelding van het toegangs beheer voor de poort in, koppelt u het opgegeven server certificaat aan de poort en verleent u ook de identiteit dat de service wordt uitgevoerd als machtigingen voor de persoonlijke sleutel van het certificaat. De activerings stroom wordt elke keer aangeroepen Service Fabric wordt gestart, of wanneer de certificaat declaratie van de toepassing wordt gewijzigd via een upgrade. Het eindpunt certificaat wordt ook gecontroleerd op wijzigingen/vernieuwingen en de machtigingen worden periodiek opnieuw toegepast wanneer dat nodig is.
 
-Na beëindiging van de service zal Service Fabric de toegangscontrole-vermelding voor eindpunten opschonen en de certificaatbinding verwijderen. Alle machtigingen die worden toegepast op de privésleutel van het certificaat worden echter niet opgeschoond.
+Wanneer de service wordt beëindigd, wordt de toegangs beheer vermelding van het endpoint door Service Fabric opgeschoond en wordt de certificaat binding verwijderd. Machtigingen die zijn toegepast op de persoonlijke sleutel van het certificaat, worden echter niet opgeschoond.
 
 > [!WARNING] 
-> Statische poorten mogen volgens het ontwerp niet overlappen met het bereik van de toepassingspoort dat is opgegeven in het clustermanifest. Als u een statische poort opgeeft, wijst u deze toe buiten het bereik van de toepassingspoort, anders leidt dit tot poortconflicten. Met release 6.5CU2 geven we een **gezondheidswaarschuwing** wanneer we een dergelijk conflict detecteren, maar laten we de implementatie synchroon laten doorgaan met het verzonden 6.5-gedrag. We kunnen echter voorkomen dat de implementatie van de toepassing wordt verwijderd van de volgende grote releases.
+> Door statische poorten voor het ontwerp mogen niet overlappen met het toepassings poort bereik dat is opgegeven in de ClusterManifest. Als u een statische poort opgeeft, dient u deze buiten het toepassings poort bereik toe te wijzen, anders leidt dit tot poort conflicten. Met release 6.5 CU2 zullen we een **status waarschuwing** uitgeven wanneer een dergelijk conflict wordt gedetecteerd, maar de implementatie met het gedistribueerde 6,5-gedrag kan worden voortgezet. We kunnen er echter voor zorgen dat de implementatie van de toepassing van de volgende grote releases wordt voor komen.
 >
-> Met release 7.0 geven we een **gezondheidswaarschuwing** wanneer we het gebruik van het toepassingspoortbereik detecteren dat verder gaat dan HostingConfig::ApplicationPortExhaustThresholdPercentage (standaard 80%).
+> In release 7,0 wordt een **status waarschuwing** gegeven wanneer het gebruik van het toepassings poort bereik wordt gedetecteerd. dit wordt veroorzaakt door meer dan HostingConfig:: ApplicationPortExhaustThresholdPercentage (standaard 80%).
 >
 
 ```xml
@@ -37,7 +37,7 @@ Na beëindiging van de service zal Service Fabric de toegangscontrole-vermelding
 </Resources>
 ```
 
-Als er meerdere codepakketten in één servicepakket zijn, moet er ook naar het codepakket worden verwezen in de sectie **Eindpunten.**  Als **ServiceEndpoint2a** en **ServiceEndpoint2b** bijvoorbeeld eindpunten zijn van hetzelfde servicepakket dat verwijst naar verschillende codepakketten, wordt het codepakket dat overeenkomt met elk eindpunt als volgt verduidelijkt:
+Als er meerdere code pakketten aanwezig zijn in één service pakket, moet er ook naar het code pakket worden verwezen in de sectie met **eind punten** .  Als bijvoorbeeld **ServiceEndpoint2a** en **ServiceEndpoint2b** eind punten zijn van hetzelfde service pakket dat verwijst naar verschillende code pakketten, wordt het code pakket dat overeenkomt met elk eind punt als volgt verduidelijkt:
 
 ```xml
 <Resources>
@@ -48,12 +48,12 @@ Als er meerdere codepakketten in één servicepakket zijn, moet er ook naar het 
 </Resources>
 ```
 
-Raadpleeg [Stateful Reliable Services configureren](service-fabric-reliable-services-configuration.md) om meer te lezen over het verwijzen naar eindpunten uit het bestand met config-pakketinstellingen (settings.xml).
+Raadpleeg [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) voor meer informatie over het verwijzen naar eind punten uit het bestand config package Settings (Settings. XML).
 
-## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Voorbeeld: een HTTP-eindpunt voor uw service opgeven
-In het volgende servicemanifest wordt één TCP-eindpuntbron &lt;en&gt; twee HTTP-eindpuntresources gedefinieerd in het element Resources.
+## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Voor beeld: een HTTP-eind punt opgeven voor uw service
+Het volgende service manifest definieert één TCP-eindpunt resource en twee HTTP-eindpunt resources &lt;in&gt; het element resources.
 
-HTTP-eindpunten worden automatisch ACL'd van Service Fabric.
+HTTP-eind punten worden automatisch door Service Fabric door de toegangs beheer lijst.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,18 +100,18 @@ HTTP-eindpunten worden automatisch ACL'd van Service Fabric.
 </ServiceManifest>
 ```
 
-## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Voorbeeld: een HTTPS-eindpunt voor uw service opgeven
-Het HTTPS-protocol biedt serververificatie en wordt ook gebruikt voor het versleutelen van client-servercommunicatie. Als u HTTPS wilt inschakelen op uw Service Fabric-service, geeft u het protocol op in het gedeelte *Resources -> Eindpunten -> eindpunt* van het servicemanifest, zoals eerder wordt weergegeven voor het eindpunt *ServiceEndpoint3*.
+## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Voor beeld: een HTTPS-eind punt opgeven voor uw service
+Het HTTPS-protocol biedt Server verificatie en wordt ook gebruikt voor het versleutelen van client-server communicatie. Als u HTTPS wilt inschakelen op uw Service Fabric-service, geeft u het protocol op in de sectie *resources-> eind punten-> eindpunt* van het service manifest, zoals eerder is weer gegeven voor het eind punt *ServiceEndpoint3*.
 
 > [!NOTE]
-> Het protocol van een service kan niet worden gewijzigd tijdens de upgrade van de toepassing. Als het tijdens de upgrade wordt gewijzigd, is het een baanbrekende wijziging.
+> Het Protocol van een service kan niet worden gewijzigd tijdens het bijwerken van de toepassing. Als deze tijdens de upgrade wordt gewijzigd, is dit een belang rijke wijziging.
 > 
 
 > [!WARNING] 
-> Gebruik bij het gebruik van HTTPS niet dezelfde poort en hetzelfde certificaat voor verschillende service-exemplaren (onafhankelijk van de toepassing) die naar hetzelfde knooppunt worden geïmplementeerd. Als u twee verschillende services met dezelfde poort in verschillende toepassingsinstanties upgradet, wordt een upgradefout uitgevoerd. Zie [Meerdere toepassingen upgraden met HTTPS-eindpunten ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)voor meer informatie.
+> Wanneer u HTTPS gebruikt, moet u niet dezelfde poort en hetzelfde certificaat gebruiken voor verschillende service-exemplaren (onafhankelijk van de toepassing) die op hetzelfde knoop punt zijn geïmplementeerd. Wanneer u twee verschillende services met dezelfde poort in verschillende toepassings exemplaren bijwerkt, resulteert dit in een upgrade fout. Zie [upgrades uitvoeren voor meerdere toepassingen met https-eind punten ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)voor meer informatie.
 >
 
-Hier is een voorbeeld ApplicationManifest dat de configuratie aantoont die nodig is voor een HTTPS-eindpunt. Het server/eindpuntcertificaat kan worden aangegeven met duimafdruk of algemene naam en er moet een waarde worden opgegeven. De EndpointRef is een verwijzing naar EndpointResource in ServiceManifest en waarvan het protocol moet zijn ingesteld op het 'https'-protocol. U meer dan één EndpointCertificate toevoegen.  
+Hier volgt een voor beeld van een ApplicationManifest die de configuratie demonstreert die vereist is voor een HTTPS-eind punt. Het server/eindpunt certificaat kan worden gedeclareerd door de vinger afdruk of de algemene naam van het onderwerp en er moet een waarde worden opgegeven. De EndpointRef is een verwijzing naar EndpointResource in ServiceManifest en waarvan het protocol moet zijn ingesteld op het HTTPS-protocol. U kunt meer dan één EndpointCertificate toevoegen.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -155,16 +155,16 @@ Hier is een voorbeeld ApplicationManifest dat de configuratie aantoont die nodig
 </ApplicationManifest>
 ```
 
-Voor Linux-clusters wordt de **MY-winkel** standaard ingesteld op de map **/var/lib/sfcerts.**
+Voor Linux-clusters wordt **mijn** winkel standaard ingesteld op de map **/var/lib/sfcerts**.
 
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>Overschrijding van eindpunten in ServiceManifest.xml
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>Eind punten in ServiceManifest. XML overschrijven
 
-Voeg in het ApplicationManifest een sectie ResourceOverrides toe, die een broer of zus is van de sectie ConfigOverrides. In deze sectie u de override voor de sectie Eindpunten opgeven in de sectie resources die is opgegeven in het servicemanifest. Overheersende eindpunten worden ondersteund in runtime 5.7.217/SDK 2.7.217 en hoger.
+In de ApplicationManifest voegt u een ResourceOverrides-sectie toe, die deel uitmaakt van de sectie op hetzelfde niveau als ConfigOverrides. In deze sectie kunt u de overschrijving opgeven voor de sectie endpoints in het gedeelte resources dat is opgegeven in het service manifest. Het overschrijven van eind punten wordt ondersteund in runtime 5.7.217/SDK 2.7.217 en hoger.
 
-Als u EndPoint in ServiceManifest wilt overschrijven met ApplicationParameters, wijzigt u het ApplicationManifest als volgt:
+Om het eind punt in ServiceManifest te overschrijven met behulp van Application parameters wijzigt u de ApplicationManifest als volgt:
 
-Voeg in de sectie ServiceManifestImport een nieuwe sectie 'ResourceOverrides' toe.
+Voeg in de sectie ServiceManifestImport een nieuwe sectie ' ResourceOverrides ' toe.
 
 ```xml
 <ServiceManifestImport>
@@ -182,7 +182,7 @@ Voeg in de sectie ServiceManifestImport een nieuwe sectie 'ResourceOverrides' to
   </ServiceManifestImport>
 ```
 
-Voeg in de onderstaande parameters toe:
+In de onderstaande para meters toevoegen:
 
 ```xml
   <Parameters>
@@ -194,17 +194,17 @@ Voeg in de onderstaande parameters toe:
   </Parameters>
 ```
 
-Tijdens het implementeren van de toepassing u deze waarden doorgeven als ApplicationParameters.  Bijvoorbeeld:
+Tijdens het implementeren van de toepassing kunt u deze waarden als Application parameters door geven.  Bijvoorbeeld:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Opmerking: Als de waarden voor de toepassingsparameters leeg zijn, gaan we terug naar de standaardwaarde in het ServiceManifest voor het bijbehorende EndPointName.
+Opmerking: als de waarden voor Application parameters leeg zijn, gaan we terug naar de standaard waarde die is opgegeven in het ServiceManifest voor de bijbehorende eind punt.
 
 Bijvoorbeeld:
 
-Als u in het ServiceManifest hebt opgegeven
+Als in de ServiceManifest die u hebt opgegeven
 
 ```xml
   <Resources>
@@ -214,6 +214,6 @@ Als u in het ServiceManifest hebt opgegeven
   </Resources>
 ```
 
-En de waarde Port1 en Protocol1 voor toepassingsparameters is nietig of leeg. De haven wordt nog steeds bepaald door ServiceFabric. En het protocol zal tcp.
+En de Port1-en Protocol1-waarde voor toepassings parameters is null of leeg. De poort wordt nog steeds bepaald door ServiceFabric. En het protocol TCP.
 
-Stel dat u een verkeerde waarde opgeeft. Net als bij Port hebt u een tekenreekswaarde 'Foo' opgegeven in plaats van een int.  Opdracht Nieuw-ServiceFabricApplication mislukt met een fout: de parameter overschrijven met de naam 'ServiceEndpoint1' kenmerk 'Port1' in sectie 'ResourceOverrides' is ongeldig. De opgegeven waarde is 'Foo' en vereist is 'int'.
+Stel dat u een verkeerde waarde opgeeft. Net als voor de poort hebt u een teken reeks waarde ' foo ' opgegeven in plaats van een int.  De opdracht New-ServiceFabricApplication mislukt met een fout: de onderdrukkings parameter met de naam ' ServiceEndpoint1 ' kenmerk ' Port1 ' in de sectie ' ResourceOverrides ' is ongeldig. De opgegeven waarde is ' foo ' en is vereist ' int '.

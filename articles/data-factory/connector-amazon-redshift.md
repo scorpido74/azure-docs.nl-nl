@@ -1,6 +1,6 @@
 ---
-title: Gegevens van Amazon Redshift kopiëren
-description: Meer informatie over het kopiëren van gegevens van Amazon Redshift naar ondersteunde sink data stores met Behulp van Azure Data Factory.
+title: Gegevens kopiëren van Amazon RedShift
+description: Meer informatie over het kopiëren van gegevens van Amazon Redshift naar ondersteunde Sink-gegevens archieven met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -12,62 +12,62 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418249"
 ---
-# <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens van Amazon Redshift kopiëren met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens kopiëren van Amazon Redshift met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Huidige versie](connector-amazon-redshift.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van een Amazon Redshift te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een Amazon Redshift te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Amazon Redshift-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van Amazon Redshift kopiëren naar elk ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van Amazon Redshift kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Met name deze Amazon Redshift-connector ondersteunt het ophalen van gegevens van Redshift met behulp van query of ingebouwde Redshift UNLOAD-ondersteuning.
+Met name deze Amazon Redshift-connector biedt ondersteuning voor het ophalen van gegevens van RedShift met behulp van query of ingebouwde Redshift Unload-ondersteuning.
 
 > [!TIP]
-> Om de beste prestaties te bereiken bij het kopiëren van grote hoeveelheden gegevens van Redshift, u overwegen de ingebouwde Redshift UNLOAD via Amazon S3 te gebruiken. Zie UNLOAD gebruiken om gegevens van de sectie [Amazon Redshift te kopiëren](#use-unload-to-copy-data-from-amazon-redshift) voor meer informatie.
+> Voor de beste prestaties bij het kopiëren van grote hoeveel heden gegevens uit Redshift, kunt u overwegen de ingebouwde Redshift te verwijderen via Amazon S3. Zie [Unload gebruiken om gegevens te kopiëren uit het gedeelte Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u gegevens kopieert naar een on-premises gegevensarchief met [Self-hosted Integration Runtime,](create-self-hosted-integration-runtime.md)verleent u Integration Runtime (gebruik IP-adres van de machine) de toegang tot het Amazon Redshift-cluster. Zie [Toegang tot het cluster autoriseren](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) voor instructies.
-* Zie [Azure Data Center IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653) voor het IP-adres compute en SQL-bereiken die door de Azure-datacenters worden gebruikt als u gegevens kopieert naar een Azure-gegevensarchief.
+* Als u gegevens kopieert naar een on-premises gegevens opslag met behulp van [zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md), verleent u Integration runtime (gebruik IP-adres van de machine) de toegang tot het Amazon Redshift-cluster. Zie [toegang tot het cluster machtigen](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) voor instructies.
+* Als u gegevens naar een Azure-gegevens archief kopieert, raadpleegt u [Azure Data Center IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653) voor het IP-adres van de berekening en SQL-bereiken die worden gebruikt door de Azure-data centers.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor amazon Redshift-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Amazon Redshift-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor Amazon Redshift gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amazon redshift:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AmazonRedshift** | Ja |
-| server |IP-adres of hostnaam van de Amazon Redshift-server. |Ja |
-| poort |Het nummer van de TCP-poort dat de Amazon Redshift-server gebruikt om naar clientverbindingen te luisteren. |Nee, standaard is 5439 |
-| database |Naam van de Amazon Redshift database. |Ja |
-| gebruikersnaam |Naam van de gebruiker die toegang heeft tot de database. |Ja |
-| wachtwoord |Wachtwoord voor het gebruikersaccount. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) |Ja |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. U Azure Integration Runtime of Self-hosted Integration Runtime gebruiken (als uw gegevensarchief zich in een privénetwerk bevindt). Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
+| server |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Ja |
+| poort |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee, standaard waarde is 5439 |
+| database |De naam van de Amazon Redshift-data base. |Ja |
+| gebruikersnaam |De naam van de gebruiker die toegang heeft tot de data base. |Ja |
+| wachtwoord |Het wacht woord voor het gebruikers account. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -95,16 +95,16 @@ De volgende eigenschappen worden ondersteund voor Amazon Redshift gekoppelde ser
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-gegevensset.
 
-Als u gegevens van Amazon Redshift wilt kopiëren, worden de volgende eigenschappen ondersteund:
+De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit Amazon redshift:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **AmazonRedshiftTable** | Ja |
-| schema | Naam van het schema. |Nee (als 'query' in activiteitsbron is opgegeven)  |
-| tabel | Naam van de tabel. |Nee (als 'query' in activiteitsbron is opgegeven)  |
-| tableName | Naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` `table` en voor nieuwe werkbelasting. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| schema | De naam van het schema. |Nee (als "query" in activiteit bron is opgegeven)  |
+| tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
+| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -124,25 +124,25 @@ Als u gegevens van Amazon Redshift wilt kopiëren, worden de volgende eigenschap
 }
 ```
 
-Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds ondersteund als deze is, terwijl u wordt voorgesteld om de nieuwe in de toekomst te gebruiken.
+Als u getypte gegevensset gebruikt `RelationalTable` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door amazon Redshift-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Amazon Redshift-bron.
 
 ### <a name="amazon-redshift-as-source"></a>Amazon Redshift als bron
 
-Als u gegevens van Amazon Redshift wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **AmazonRedshiftSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Amazon Redshift, stelt u het bron type in de Kopieer activiteit in op **AmazonRedshiftSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op: **AmazonRedshiftSource** | Ja |
-| query |Gebruik de aangepaste query om gegevens te lezen. Selecteer bijvoorbeeld * in MyTable. |Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
-| instellingen voor roodschakelen | Eigenschappengroep bij het gebruik van Amazon Redshift UNLOAD. | Nee |
-| s3LinkedServiceName | Verwijst naar een Amazon S3 te gebruiken als een tussentijdse winkel door het opgeven van een gekoppelde servicenaam van "AmazonS3" type. | Ja als u UNLOAD gebruikt |
-| bucketName | Geef de S3-bucket aan om de tussentijdse gegevens op te slaan. Als deze niet wordt geleverd, genereert de Data Factory-service deze automatisch.  | Ja als u UNLOAD gebruikt |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AmazonRedshiftSource** | Ja |
+| query |Gebruik de aangepaste query om gegevens te lezen. Bijvoorbeeld: Select * from MyTable. |Nee (als ' Tablename ' in gegevensset is opgegeven) |
+| redshiftUnloadSettings | Eigenschaps groep bij het gebruik van Amazon Redshift Unload. | Nee |
+| s3LinkedServiceName | Verwijst naar een Amazon S3 dat wordt gebruikt als een tijdelijke opslag door een gekoppelde service naam van het type ' AmazonS3 ' op te geven. | Ja bij gebruik van Unload |
+| Bucket | Geef de S3-Bucket op om de tussenliggende gegevens op te slaan. Als u dit niet opgeeft, wordt het automatisch door Data Factory Service gegenereerd.  | Ja bij gebruik van Unload |
 
-**Voorbeeld: Amazon Redshift bron in kopieeractiviteit met UNLOAD**
+**Voor beeld: Amazon Redshift source in copy-activiteit met Unload**
 
 ```json
 "source": {
@@ -158,17 +158,17 @@ Als u gegevens van Amazon Redshift wilt kopiëren, stelt u het brontype in de ko
 }
 ```
 
-Meer informatie over het efficiënt kopiëren van gegevens van Amazon Redshift uit de volgende sectie.
+Meer informatie over het gebruik van Unload om gegevens te kopiëren van Amazon Redshift efficiënt vanuit de volgende sectie.
 
-## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>UNLOAD gebruiken om gegevens van Amazon Redshift te kopiëren
+## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>VERWIJDEREN gebruiken om gegevens van Amazon Redshift te kopiëren
 
-[UNLOAD](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) is een mechanisme van Amazon Redshift, dat de resultaten van een query kan uitladen naar een of meer bestanden op Amazon Simple Storage Service (Amazon S3). Het is de manier die door Amazon voor het kopiëren van grote gegevensreeks van Redshift wordt geadviseerd.
+[Unload](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) is een mechanisme dat door Amazon Redshift wordt geleverd, waarmee de resultaten van een query kunnen worden verwijderd naar een of meer bestanden in de Amazon Simple Storage-service (Amazon S3). Het is de manier die door Amazon wordt aanbevolen voor het kopiëren van een grote gegevensset vanuit Redshift.
 
-**Voorbeeld: kopieer gegevens van Amazon Redshift naar Azure SQL Data Warehouse met UNLOAD, gefaseerde kopie en PolyBase**
+**Voor beeld: gegevens kopiëren van Amazon Redshift naar Azure SQL Data Warehouse met behulp van verwijderen, gefaseerde kopie en poly base**
 
-Voor deze voorbeeldgebruikscase worden gegevens van Amazon Redshift naar Amazon S3 gelost zoals geconfigureerd in 'redshiftUnloadSettings' en worden gegevens van Amazon S3 naar Azure Blob gekopieerd, zoals gespecificeerd in 'stagingSettings', ten slotte gebruikt u PolyBase om gegevens in SQL Data Warehouse te laden. Alle tussentijdse nota wordt behandeld door kopie activiteit goed.
+Voor deze voorbeeld use-case verwijdert u met de Kopieer activiteit gegevens uit Amazon Redshift naar Amazon S3, zoals geconfigureerd in "redshiftUnloadSettings", en kopieert u vervolgens gegevens van Amazon S3 naar Azure Blob zoals opgegeven in "stagingSettings", ten slotte poly Base voor het laden van gegevens in SQL Data Warehouse. Alle tussenliggende indeling wordt verwerkt door de Kopieer activiteit op de juiste manier.
 
-![Werktu shift naar SQL DW-kopieerwerk](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
+![Redshift naar SQL DW Copy-werk stroom](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[
@@ -214,28 +214,28 @@ Voor deze voorbeeldgebruikscase worden gegevens van Amazon Redshift naar Amazon 
 ]
 ```
 
-## <a name="data-type-mapping-for-amazon-redshift"></a>Gegevenstypetoewijzing voor Amazon Redshift
+## <a name="data-type-mapping-for-amazon-redshift"></a>Toewijzing van gegevens type voor Amazon RedShift
 
-Bij het kopiëren van gegevens van Amazon Redshift worden de volgende toewijzingen gebruikt van Amazon Redshift-gegevenstypen naar tijdelijke gegevenstypen van Azure Data Factory. Zie [Schema- en gegevenstypetoewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieeractiviteit het bronschema en het gegevenstype naar de gootsteen brengt.
+Bij het kopiëren van gegevens uit Amazon Redshift worden de volgende toewijzingen gebruikt vanuit gegevens typen van Amazon Redshift om Azure Data Factory tussenliggende gegevens typen. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
-| Amazon Redshift-gegevenstype | Tussentijds gegevenstype gegevensfabriek |
+| Amazon Redshift-gegevens type | Data Factory-gegevens type interim |
 |:--- |:--- |
-| Bigint |Int64 |
-| Booleaanse |Tekenreeks |
-| Char |Tekenreeks |
+| BIGINT |Int64 |
+| True |Tekenreeks |
+| CHAR |Tekenreeks |
 | DATE |DateTime |
-| Decimaal |Decimal |
+| KOMMA |Decimal |
 | DUBBELE PRECISIE |Double |
 | INTEGER |Int32 |
 | REAL |Enkel |
-| Smallint |Int16 |
+| SMALLINT |Int16 |
 | TEXT |Tekenreeks |
-| Tijdstempel |DateTime |
-| Varchar |Tekenreeks |
+| Neem |DateTime |
+| VARCHAR |Tekenreeks |
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

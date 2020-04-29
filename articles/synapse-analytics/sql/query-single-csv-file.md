@@ -1,6 +1,6 @@
 ---
-title: QUERY CSV-bestanden met SQL on-demand (voorbeeld)
-description: In dit artikel leert u hoe u afzonderlijke CSV-bestanden met verschillende bestandsindelingen opvragen met SQL on-demand (preview).
+title: Een query uitvoeren op CSV-bestanden met behulp van SQL op aanvraag (preview)
+description: In dit artikel leert u hoe u met behulp van SQL on-demand (preview) een query kunt uitvoeren op enkelvoudige CSV-bestanden met verschillende bestands indelingen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,37 +10,37 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431590"
 ---
-# <a name="query-csv-files"></a>CSV-bestanden van query's
+# <a name="query-csv-files"></a>CSV-bestanden opvragen
 
-In dit artikel leert u hoe u één CSV-bestand opvraagt met SQL on-demand (preview) in Azure Synapse Analytics. CSV-bestanden kunnen verschillende indelingen hebben: 
+In dit artikel leert u hoe u een query kunt uitvoeren op één CSV-bestand met behulp van SQL on-demand (preview) in azure Synapse Analytics. CSV-bestanden hebben mogelijk verschillende indelingen: 
 
-- Met en zonder koptekstrij
-- Komma- en tabgedefinieerde waarden
-- Line-eindes in Windows- en Unix-stijl
-- Niet-geciteerde en geciteerde waarden en ontsnappende tekens
+- Met en zonder een veldnamenrij
+- Door komma's en tabs gescheiden waarden
+- Windows-en UNIX-stijl regel eindigt
+- Niet-geciteerde en niet-geciteerde waarden en Escape tekens
 
-Alle bovenstaande variaties worden hieronder behandeld.
+Alle bovenstaande variaties worden hieronder besproken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de rest van dit artikel leest, leest u de volgende artikelen:
+Lees de volgende artikelen voordat u de rest van dit artikel leest:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
-## <a name="windows-style-new-line"></a>Windows-stijl nieuwe lijn
+## <a name="windows-style-new-line"></a>Windows-stijl nieuwe regel
 
-In de volgende query ziet u hoe u een CSV-bestand leest zonder koptekstrij, met een nieuwe regel in Windows-stijl en kolommen met komma's.
+De volgende query laat zien hoe u een CSV-bestand zonder een koprij, met een nieuwe Windows-stijl en door komma's gescheiden kolommen kunt lezen.
 
-Voorbeeld van bestand:
+Bestands voorbeeld:
 
-![Eerste 10 rijen van het CSV-bestand zonder koptekst, Windows-stijl nieuwe lijn.](./media/query-single-csv-file/population.png)
+![Eerste tien rijen van het CSV-bestand zonder kop, Windows-stijl nieuwe regel.](./media/query-single-csv-file/population.png)
 
 ```sql
 SELECT *
@@ -61,13 +61,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix-stijl nieuwe lijn
+## <a name="unix-style-new-line"></a>UNIX-stijl nieuwe regel
 
-In de volgende query ziet u hoe u een bestand lezen zonder koptekstrij, met een nieuwe regel in Unix-stijl en kolommen met komma's. Let op de verschillende locatie van het bestand in vergelijking met de andere voorbeelden.
+De volgende query laat zien hoe u een bestand zonder koprij, met een nieuwe UNIX-stijl en door komma's gescheiden kolommen kunt lezen. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
-Voorbeeld van bestand:
+Bestands voorbeeld:
 
-![Eerste 10 rijen van het CSV-bestand zonder koptekstrij en met nieuwe regel Unix-Stijl.](./media/query-single-csv-file/population-unix.png)
+![Eerste tien rijen van het CSV-bestand zonder veldnamenrij en met de nieuwe regel UNIX-style.](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -90,11 +90,11 @@ WHERE
 
 ## <a name="header-row"></a>Veldnamenrij
 
-In de volgende query ziet u hoe u een leesbestand met een koptekstrij, met een nieuwe regel in Unix-stijl en kolommen met komma's. Let op de verschillende locatie van het bestand in vergelijking met de andere voorbeelden.
+De volgende query laat zien hoe een bestand wordt gelezen met een veldnamenrij, met een nieuwe regel in UNIX-stijl en door komma's gescheiden kolommen. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
-Voorbeeld van bestand:
+Bestands voorbeeld:
 
-![Eerste 10 rijen van het CSV-bestand met koptekstrij en met nieuwe regel Unix-Stijl.](./media/query-single-csv-file/population-unix-hdr.png)
+![Eerste tien rijen van het CSV-bestand met veldnamenrij en met de nieuwe regel UNIX-style.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -115,13 +115,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="custom-quote-character"></a>Aangepast aanhalingsteken
+## <a name="custom-quote-character"></a>Aangepast aanhalings teken
 
-In de volgende query ziet u hoe u een bestand met een koptekstrij leest, met een nieuwe regel in Unix-stijl, kolommen met komma's en geciteerde waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voorbeelden.
+De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen met een nieuwe UNIX-stijl, door komma's gescheiden kolommen en geciteerde waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
-Voorbeeld van bestand:
+Bestands voorbeeld:
 
-![Eerste 10 rijen van het CSV-bestand met koptekstrij en met nieuwe regel- en geciteerde waarden in Unix-stijl.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![De eerste tien rijen van het CSV-bestand met de koprij en de nieuwe regel voor de UNIX-stijl en de geciteerde waarden.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -145,15 +145,15 @@ WHERE
 ```
 
 > [!NOTE]
-> Deze query zou dezelfde resultaten opleveren als u de parameter FIELDQUOTE hebt weggelaten, omdat de standaardwaarde voor FIELDQUOTE een dubbele aanhalingslijst is.
+> Deze query retourneert dezelfde resultaten als u de para meter FIELDQUOTE hebt wegge laten, omdat de standaard waarde voor FIELDQUOTE een dubbele aanhalings tekens is.
 
-## <a name="escaping-characters"></a>Ontsnappende personages
+## <a name="escaping-characters"></a>Escape tekens
 
-In de volgende query ziet u hoe u een bestand met een koptekstrij lezen, met een nieuwe regel in Unix-stijl, kolommen met komma's en een escape char die wordt gebruikt voor de veldafbakening (komma) binnen waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voorbeelden.
+De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen met een nieuwe UNIX-stijl, door komma's gescheiden kolommen en een escape teken dat wordt gebruikt voor het veld scheidings teken (komma) in waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
-Voorbeeld van bestand:
+Bestands voorbeeld:
 
-![Eerste 10 rijen van het CSV-bestand met koptekstrij en met Unix-Style nieuwe lijn en escape char gebruikt voor veldafbakening.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![De eerste tien rijen van het CSV-bestand met veldnamenrij en met een nieuwe regel en escape-teken voor de UNIX-stijl die wordt gebruikt voor veld scheiding.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -176,15 +176,15 @@ WHERE
 ```
 
 > [!NOTE]
-> Deze query zou mislukken als ESCAPECHAR niet is opgegeven, omdat de komma in "Slov,enia" zou worden behandeld als veldscheidingsteken in plaats van een deel van de landnaam. "Slov, enia" zou worden behandeld als twee kolommen. Daarom zou de specifieke rij een kolom meer hebben dan de andere rijen en één kolom meer dan u hebt gedefinieerd in de MET-component.
+> Deze query mislukt als ESCAPECHAR niet is opgegeven omdat de komma in "slov, enia" als veld scheidings teken wordt beschouwd in plaats van een deel van de land naam. "Slov, enia" worden beschouwd als twee kolommen. Daarom zou de betreffende rij een kolom meer hebben dan de andere rijen en één kolom meer dan u hebt gedefinieerd in de WITH-component.
 
-## <a name="tab-delimited-files"></a>Met tabbladen afgebakende bestanden
+## <a name="tab-delimited-files"></a>Door tabs gescheiden bestanden
 
-In de volgende query ziet u hoe u een bestand met een koptekstrij leest, met een nieuwe regel in Unix-stijl en kolommen met tabbladen. Let op de verschillende locatie van het bestand in vergelijking met de andere voorbeelden.
+De volgende query laat zien hoe u een bestand met een veldnamenrij, met een nieuwe regel in UNIX-stijl en door tabs gescheiden kolommen kunt lezen. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
 
-Voorbeeld van bestand:
+Bestands voorbeeld:
 
-![Eerste 10 rijen van het CSV-bestand met koptekstrij en met nieuwe regel- en tabscheidingsteken in Unix-stijl.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![Eerste tien rijen van het CSV-bestand met veldnamenrij en met de UNIX-stijl nieuwe regel en het scheidings teken.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
@@ -206,14 +206,14 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Subset van kolommen retourneren
+## <a name="returning-subset-of-columns"></a>Subset van kolommen wordt geretourneerd
 
-Tot nu toe hebt u het CSV-bestandsschema opgegeven met behulp van MET en alle kolommen vermeld. U alleen kolommen opgeven die u daadwerkelijk nodig hebt in uw query met behulp van een ordinaal nummer voor elke kolom die nodig is. U zult ook kolommen van geen belang weglaten.
+Tot nu toe hebt u het CSV-bestands schema opgegeven met behulp van en een lijst met alle kolommen. U kunt alleen kolommen opgeven die u daad werkelijk nodig hebt in uw query door gebruik te maken van een rang nummer voor elke gewenste kolom. U kunt ook kolommen zonder interesse weglaten.
 
-Met de volgende query wordt het aantal verschillende landnamen in een bestand geretourneerd en wordt alleen de kolommen opgegeven die nodig zijn:
+Met de volgende query wordt het aantal verschillende land namen in een bestand geretourneerd, waarbij alleen de benodigde kolommen worden opgegeven:
 
 > [!NOTE]
-> Neem een kijkje op de MET-clausule in de query hieronder en merk op dat er "2" (zonder aanhalingstekens) aan het einde van de rij waar u de *[country_name]* kolom te definiëren. Dit betekent dat de *kolom [country_name]* de tweede kolom in het bestand is. De query negeert alle kolommen in het bestand, behalve de tweede.
+> Bekijk de WITH-component in de query hieronder en houd er rekening mee dat er ' 2 ' (zonder aanhalings tekens) aan het einde van de rij is waar u de kolom *[country_name]* definieert. Dit betekent dat de kolom *[country_name]* de tweede kolom in het bestand is. Met de query worden alle kolommen in het bestand genegeerd, met uitzonde ring van de tweede.
 
 ```sql
 SELECT
@@ -234,7 +234,7 @@ WITH (
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende artikelen laten zien hoe je:
+In de volgende artikelen ziet u hoe u:
 
-- [Parketbestanden opvragen](query-parquet-files.md)
-- [Mappen en meerdere bestanden opvragen](query-folders-multiple-csv-files.md)
+- [Query's uitvoeren op Parquet-bestanden](query-parquet-files.md)
+- [Query's uitvoeren op mappen en meerdere bestanden](query-folders-multiple-csv-files.md)

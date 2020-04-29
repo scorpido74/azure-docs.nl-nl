@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Key Vault-certificaten
-description: In de volgende scenario's worden een aantal van de primaire gebruikstoepassingen van de certificaatbeheerservice van Key Vault beschreven, inclusief de extra stappen die nodig zijn voor het maken van uw eerste certificaat in uw sleutelkluis.
+title: Aan de slag gaan met Key Vault-certificaten
+description: De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,116 +11,116 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431941"
 ---
-# <a name="get-started-with-key-vault-certificates"></a>Aan de slag met Key Vault-certificaten
-In de volgende scenario's worden een aantal van de primaire gebruikstoepassingen van de certificaatbeheerservice van Key Vault beschreven, inclusief de extra stappen die nodig zijn voor het maken van uw eerste certificaat in uw sleutelkluis.
+# <a name="get-started-with-key-vault-certificates"></a>Aan de slag gaan met Key Vault-certificaten
+De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
 
-Hierna wordt het volgende beschreven:
-- Uw eerste Key Vault-certificaat maken
-- Een certificaat maken met een certificeringsinstantie die samenwerkt met Key Vault
-- Een certificaat maken met een certificeringsinstantie die niet samenwerkt met Key Vault
-- Een certificaat importeren
+Hieronder vindt u een overzicht:
+- Uw eerste Key Vault certificaat maken
+- Een certificaat maken met een certificerings instantie die is gekoppeld aan Key Vault
+- Een certificaat maken met een certificerings instantie die niet is gekoppeld aan Key Vault
+- Certificaat importeren
 
 ## <a name="certificates-are-complex-objects"></a>Certificaten zijn complexe objecten
-Certificaten bestaan uit drie onderling verbonden bronnen die als Key Vault-certificaat zijn gekoppeld; certificaatmetagegevens, een sleutel en een geheim.
+Certificaten bestaan uit drie gerelateerde resources die aan elkaar zijn gekoppeld als een Key Vault certificaat; meta gegevens van het certificaat, een sleutel en een geheim.
 
 
 ![Certificaten zijn complex](../media/azure-key-vault.png)
 
 
-## <a name="creating-your-first-key-vault-certificate"></a>Uw eerste Key Vault-certificaat maken  
- Voordat een certificaat kan worden gemaakt in een Key Vault (KV), moeten de vereiste stappen 1 en 2 met succes worden uitgevoerd en moet er een sleutelkluis bestaan voor deze gebruiker/organisatie.  
+## <a name="creating-your-first-key-vault-certificate"></a>Uw eerste Key Vault certificaat maken  
+ Voordat een certificaat kan worden gemaakt in een Key Vault (KV), moeten de vereiste stappen 1 en 2 worden uitgevoerd en moet er een sleutel kluis bestaan voor deze gebruiker/organisatie.  
 
-**Stap 1** - Certificaatautoriteit (CA) Providers  
--   On-boarding als de IT-beheerder, PKI-beheerder of iedereen die accounts beheert met CA's, voor een bepaald bedrijf (bijv. Contoso) is een voorwaarde voor het gebruik van Key Vault-certificaten.  
-    De volgende CV's zijn de huidige partnerproviders met Key Vault:  
-    -   DigiCert - Key Vault biedt OV TLS/SSL-certificaten met DigiCert.  
-    -   GlobalSign - Key Vault biedt OV TLS/SSL-certificaten met GlobalSign.  
+**Stap 1** -providers van certificerings instanties  
+-   Als IT-beheerder, PKI-beheerder of iedereen die accounts beheert met Ca's, voor een bepaald bedrijf (bijvoorbeeld Contoso) is een vereiste voor het gebruik van Key Vault-certificaten.  
+    De volgende certificerings instanties zijn de huidige partner providers met Key Vault:  
+    -   DigiCert-Key Vault biedt OV TLS/SSL-certificaten met DigiCert.  
+    -   GlobalSign-Key Vault biedt OV TLS/SSL-certificaten met GlobalSign.  
 
-**Stap 2** - Een accountbeheerder voor een CA-provider maakt referenties die door Key Vault kunnen worden gebruikt om TLS/SSL-certificaten in te schrijven, te vernieuwen en te gebruiken via Key Vault.
+**Stap 2** : een account beheerder voor een CA-provider maakt referenties die moeten worden gebruikt door Key Vault om TLS/SSL-certificaten via Key Vault in te schrijven, te verlengen en te gebruiken.
 
-**Stap 3** - Een Contoso-beheerder kan, samen met een Medewerker van Contoso (Key Vault-gebruiker) die eigenaar is van certificaten, afhankelijk van de CA, een certificaat van de beheerder of rechtstreeks van het account met de CA krijgen.  
+**Stap 3** : een Contoso-beheerder, samen met een contoso-werk nemer (Key Vault gebruiker) die eigenaar is van certificaten, kan, afhankelijk van de CA, een certificaat van de beheerder verkrijgen of rechtstreeks vanuit het account bij de ca.  
 
-- Begin een bewerking van een referentie toevoegen aan een sleutelkluis door [een bron van certificaatuitgever in](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) te stellen. Een certificaatuitgever is een entiteit die in Azure Key Vault (KV) wordt vertegenwoordigd als een Bron van CertificateIssuer. Het wordt gebruikt om informatie te verstrekken over de bron van een KV-certificaat; naam van de uitgever, provider, referenties en andere administratieve details.
+- Begin met het toevoegen van een referentie bewerking aan een sleutel kluis door een bron van [een certificaat verlener](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) in te stellen. Een certificaat Uitgever is een entiteit die wordt weer gegeven in Azure Key Vault (KV) als een CertificateIssuer-resource. Het wordt gebruikt om informatie op te geven over de bron van een KV-certificaat; naam van de verlener, provider, referenties en andere administratieve gegevens.
   - Bijvoorbeeld MyDigiCertIssuer  
     -   Provider  
-    -   Referenties – CA-accountreferenties. Elke CA heeft zijn eigen specifieke gegevens.  
+    -   Referenties: referenties van het CA-account. Elke CA heeft zijn eigen specifieke gegevens.  
 
-    Zie het gerelateerde bericht op het [Key Vault-blog](https://aka.ms/kvcertsblog)voor meer informatie over het maken van accounts met CA-providers.  
+    Zie voor meer informatie over het maken van accounts met CA-providers het gerelateerde bericht op het [Key Vault blog](https://aka.ms/kvcertsblog).  
 
-**Stap 3.1** - [Certificaatcontactpersonen](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) instellen voor meldingen. Dit is de contactpersoon voor de Key Vault-gebruiker. Key Vault handhaaft deze stap niet.  
+**Stap 3,1** : Stel [certificaat contactpersonen](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) in voor meldingen. Dit is de contact persoon voor de Key Vault gebruiker. Key Vault dwingt deze stap niet af.  
 
-Opmerking - Dit proces, door middel van stap 3.1, is een eenmalige bewerking.  
+Opmerking: dit proces, tot en met stap 3,1, is een eenmalige-bewerking.  
 
-## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>Een certificaat maken met een CA die samenwerkt met Key Vault
+## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>Een certificaat maken met een certificerings instantie die is gekoppeld aan Key Vault
 
-![Een certificaat maken met een key vault-partnercertificaatautoriteit](../media/certificate-authority-2.png)
+![Een certificaat maken met een certificerings instantie voor een Key Vault partner](../media/certificate-authority-2.png)
 
-**Stap 4** - De volgende beschrijvingen komen overeen met de groene genummerde stappen in het voorgaande diagram.  
-  (1) - In het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutelkluis.  
-  (2) - Key Vault stuurt een TLS/SSL-certificaataanvraag naar de CA.  
-  (3) - Uw aanvraag polls, in een lus en wacht proces, voor uw Key Vault voor het certificaat voltooiing. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificeringsinstantie met x509-certificaat ontvangt.  
-  (4) - De CA reageert op de TLS/SSL-certificaataanvraag van Key Vault met een X509 TLS/SSL-certificaat.  
-  (5) - Uw nieuwe certificaat creatie wordt voltooid met de fusie van de X509 Certificaat voor de CA.  
+**Stap 4** : de volgende beschrijvingen komen overeen met de stappen voor groen genummerd in het voor gaande diagram.  
+  (1): in het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint door een sleutel te maken in uw sleutel kluis.  
+  (2)-Key Vault een TLS/SSL-certificaat aanvraag naar de CA verzendt.  
+  (3): uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificeringsinstantie met x509-certificaat ontvangt.  
+  (4): de CA reageert op de TLS/SSL-certificaat aanvraag van Key Vault met een x509 TLS/SSL-certificaat.  
+  (5): het maken van het nieuwe certificaat is voltooid met de fusie van het x509-certificaat voor de CA.  
 
-  Key Vault-gebruiker – maakt een certificaat door een beleid op te geven
+  Key Vault gebruiker: maakt een certificaat door een beleid op te geven
 
-  -   Herhaal zo nodig  
-  -   Beleidsbeperkingen  
+  -   Herhaal indien nodig  
+  -   Beleids beperkingen  
       -   X509-eigenschappen  
       -   Belangrijkste eigenschappen  
-      -   Provider referentie - > ex. MyDigiCertIssure  
-      -   Vernieuwingsinformatie - > ex. 90 dagen voor het verstrijken  
+      -   Referentie van de provider-> ex. MyDigiCertIssure  
+      -   Informatie over verlenging-> ex. 90 dagen voor de verval datum  
 
-  - Een proces voor het maken van certificaten is meestal een asynchrone proces en omvat het peilen van uw sleutelkluis voor de status van de bewerking van het certificaat maken.  
-[Certificaatbewerking ontvangen](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
-      -   Status: voltooid, mislukt met foutgegevens of geannuleerd  
-      -   Vanwege de vertraging die moet worden gemaakt, kan een annuleringsbewerking worden gestart. Het annuleren kan wel of niet effectief zijn.  
+  - Een proces voor het maken van een certificaat is doorgaans een asynchroon proces en omvat het pollen van uw sleutel kluis voor de status van de bewerking voor het maken van een certificaat.  
+[Certificaat bewerking ophalen](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
+      -   Status: voltooid, mislukt met fout informatie of geannuleerd  
+      -   Als gevolg van de vertraging om te maken, kan een annulerings bewerking worden gestart. Het annuleren kan al dan niet effectief zijn.  
 
-## <a name="import-a-certificate"></a>Een certificaat importeren  
- Als alternatief – een cert kan worden geïmporteerd in Key Vault – PFX of PEM.  
+## <a name="import-a-certificate"></a>Certificaat importeren  
+ Als alternatief: een certificaat kan worden geïmporteerd in Key Vault-PFX of PEM.  
 
- Importcertificaat – vereist dat een PEM of PFX op schijf staat en een privésleutel heeft. 
--   U moet opgeven: kluisnaam en certificaatnaam (beleid is optioneel)
+ Certificaat importeren: vereist dat een PEM of PFX op schijf is en een persoonlijke sleutel heeft. 
+-   U moet het volgende opgeven: kluis naam en certificaat naam (beleid is optioneel)
 
--   PEM/ PFX-bestanden bevatten kenmerken die KV kan ontleden en gebruiken om het certificaatbeleid te vullen. Als er al een certificaatbeleid is opgegeven, probeert KV gegevens uit PFX/ PEM-bestand te matchen.  
+-   PEM/PFX-bestanden bevatten kenmerken die KV kan parseren en gebruiken om het certificaat beleid in te vullen. Als er al een certificaat beleid is opgegeven, probeert KV gegevens uit PFX/PEM-bestand te vergelijken.  
 
--   Zodra de import definitief is, worden de volgende bewerkingen gebruikt het nieuwe beleid (nieuwe versies).  
+-   Zodra het importeren is voltooid, wordt het nieuwe beleid (nieuwe versies) gebruikt voor volgende bewerkingen.  
 
--   Als er geen verdere bewerkingen zijn, is het eerste wat de Key Vault doet een vervaldatum sturen. 
+-   Als er geen verdere bewerkingen zijn, wordt het eerste wat de Key Vault doet, een verloop bericht verzonden. 
 
--   Ook kan de gebruiker het beleid bewerken, dat functioneel is op het moment van importeren, maar standaardinstellingen bevat waar geen informatie is opgegeven bij import. Bijvoorbeeld geen informatie over de uitgever  
+-   De gebruiker kan ook het beleid bewerken, wat functioneel is op het moment van importeren, maar bevat standaard instellingen waar geen informatie is opgegeven bij het importeren. Bijvoorbeeld geen uitgevers gegevens  
 
-### <a name="formats-of-import-we-support"></a>Indelingen van Import die we ondersteunen
-We ondersteunen het volgende type import voor PEM-bestandsindeling. Een enkel PEM gecodeerd certificaat samen met een PKCS # 8 gecodeerde, ongecodeerde sleutel die de volgende heeft
+### <a name="formats-of-import-we-support"></a>Indelingen van het importeren die we ondersteunen
+Het volgende type import voor de PEM-bestands indeling wordt ondersteund. Eén PEM-gecodeerd certificaat, samen met een PKCS # 8-gecodeerde, niet-versleutelde sleutel met de volgende
 
------BEGINCERTIFICAAT----- -----ENDCERTIFICAAT-----
+-----BEGIN CERTIFICAAT----------EIND CERTIFICAAT-----
 
------BEGIN PRIVÉSLEUTEL----- -----END-privésleutel-----
+-----BEGIN PERSOONLIJKE SLEUTEL----------LAATSTE PERSOONLIJKE SLEUTEL-----
 
-Bij certificaatsamenvoeging ondersteunen we 2 PEM-gebaseerde formaten. U één PKCS#8 gecodeerd certificaat of een base64 gecodeerd P7B-bestand samenvoegen. -----BEGINCERTIFICAAT----- -----ENDCERTIFICAAT-----
+Bij het samen voegen van certificaten ondersteunen we 2 PEM-gebaseerde notaties. U kunt één PKCS # 8-gecodeerd certificaat of een Base64 Encoded P7B-bestand samen voegen. -----BEGIN CERTIFICAAT----------EIND CERTIFICAAT-----
 
-We ondersteunen momenteel geen EG-sleutels in PEM-formaat.
+We ondersteunen momenteel geen EC-sleutels in de PEM-indeling.
 
-## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Een certificaat maken met een CA die niet samenwerkt met Key Vault  
- Deze methode maakt het mogelijk om te werken met andere CA's dan de partnerproviders van Key Vault, wat betekent dat uw organisatie kan werken met een CA naar keuze.  
+## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Maken van een certificaat met een certificerings instantie die niet is gekoppeld aan Key Vault  
+ Met deze methode kunt u werken met andere certificerings instanties dan partners van de partner van Key Vault, wat betekent dat uw organisatie kan werken met een CA van de keuze.  
 
-![Een certificaat maken met uw eigen certificaatautoriteit](../media/certificate-authority-1.png)  
+![Een certificaat maken met uw eigen certificerings instantie](../media/certificate-authority-1.png)  
 
- De volgende stapbeschrijvingen komen overeen met de groene letters in het voorgaande diagram.  
+ De volgende stap beschrijvingen komen overeen met de groene letterlijke stappen in het voor gaande diagram.  
 
-  (1) - In het bovenstaande diagram maakt uw toepassing een certificaat, dat intern begint met het maken van een sleutel in uw sleutelkluis.  
+  (1): in het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutel kluis.  
 
-  (2) - Key Vault retourneert een Certificaatondertekeningsaanvraag (CSR) naar uw aanvraag.  
+  (2)-Key Vault keert terug naar uw toepassing een aanvraag voor certificaat ondertekening (CSR).  
 
-  (3) - Uw aanvraag geeft de CSR door aan de door u gekozen CA.  
+  (3): uw toepassing stuurt de CSR door naar de gekozen certificerings instantie.  
 
-  (4) - Uw gekozen CA reageert met een X509-certificaat.  
+  (4): de gekozen certificerings instantie reageert met een x509-certificaat.  
 
-  (5) - Uw aanvraag voltooit het nieuwe certificaat creatie met een fusie van het X509 Certificaat van uw CA.
+  (5): uw toepassing heeft het maken van het nieuwe certificaat voltooid met een fusie van het x509-certificaat van uw certificerings instantie.
 

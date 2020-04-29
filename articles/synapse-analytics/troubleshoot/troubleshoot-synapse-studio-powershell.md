@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure Synapse Studio (preview) connectiviteit PowerShell oplossen
-description: Problemen met Azure Synapse Studio-connectiviteit oplossen met PowerShell
+title: Problemen met de connectiviteits Power shell van Azure Synapse Studio (preview) oplossen
+description: Problemen met Azure Synapse Studio-connectiviteit oplossen met Power shell
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,54 +8,54 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431473"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Problemen met Azure Synapse Studio (preview) met PowerShell-script diagnosticeren
+# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Problemen met de connectiviteit van Azure Synapse Studio (preview) vaststellen met Power shell-script
 
-Azure Synapse Studio (preview) is afhankelijk van een set Web API-eindpunten om goed te werken. Met deze handleiding u de oorzaken van verbindingsproblemen identificeren wanneer u:
-- het configureren van uw lokale netwerk (zoals netwerk achter een bedrijfsfirewall) voor toegang tot Azure Synapse Studio.
-- verbindingsproblemen met Azure Synapse Studio.
+Azure Synapse Studio (preview) is afhankelijk van een aantal web-API-eind punten om goed te werken. Deze hand leiding helpt u bij het identificeren van de oorzaken van verbindings problemen wanneer u het volgende bent:
+- het configureren van uw lokale netwerk (zoals netwerk achter een bedrijfs firewall) voor toegang tot Azure Synapse Studio.
+- Er zijn verbindings problemen met Azure Synapse Studio.
 
 ## <a name="prerequisite"></a>Vereiste
 
-* PowerShell 5.0 of hoger versie op Windows, of
-* PowerShell Core 6.0 of hoger versie op Windows of Linux.
+* Power shell 5,0 of hoger in Windows, of
+* Power shell Core 6,0 of hoger in Windows of Linux.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
-Klik met de rechtermuisknop op de volgende link en klik op 'Doel opslaan als':
+Klik met de rechter muisknop op de volgende koppeling en klik op "doel opslaan als":
 
-- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse. ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
-U de koppeling ook rechtstreeks openen en het geopende scriptbestand opslaan. Sla het adres van de bovenstaande link niet op, omdat deze in de toekomst kan veranderen.
+U kunt de koppeling ook rechtstreeks openen en het geopende script bestand opslaan. Sla het adres van de bovenstaande koppeling niet op, omdat deze in de toekomst kan worden gewijzigd.
 
-Klik in verkenner met de rechtermuisknop op het gedownloade scriptbestand en klik op 'Uitvoeren met PowerShell'.
+Klik in Verkenner met de rechter muisknop op het gedownloade script bestand en op uitvoeren met Power shell.
 
-![Gedownload scriptbestand uitvoeren met PowerShell](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
+![Gedownload script bestand uitvoeren met Power shell](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
-Wanneer u daarom wordt gevraagd, voert u de naam azure Synapse-werkruimte in die momenteel een probleem ondervindt of die u wilt testen op connectiviteit en drukt u op Enter.
+Wanneer u hierom wordt gevraagd, voert u de naam van de Azure Synapse-werk ruimte in die momenteel een probleem ondervindt of die u wilt testen voor de connectiviteit. Druk op ENTER.
 
-![Werkruimtenaam invoeren](media/troubleshooting-synapse-studio-powershell/enter-workspace-name.png)
+![Naam van de werk ruimte invoeren](media/troubleshooting-synapse-studio-powershell/enter-workspace-name.png)
 
-De diagnostische sessie wordt gestart. Wacht tot het klaar is.
+De diagnostische sessie wordt gestart. Wacht totdat de bewerking is voltooid.
 
-![Wacht tot de diagnose is voltooid](media/troubleshooting-synapse-studio-powershell/wait-for-diagnosis.png)
+![Wachten tot de diagnose is voltooid](media/troubleshooting-synapse-studio-powershell/wait-for-diagnosis.png)
 
-Uiteindelijk wordt een diagnosesamenvatting getoond. Als uw pc geen verbinding kan maken met een of meer eindpunten, worden enkele suggesties weergegeven in de sectie Samenvatting.
+In het eind wordt een samen vatting van de diagnose weer gegeven. Als uw PC geen verbinding kan maken met een of meer van de eind punten, worden enkele suggesties weer gegeven in de sectie samen vatting.
 
-![Diagnostische samenvatting bekijken](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
+![Diagnostische samen vatting controleren](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-Bovendien wordt een diagnostisch logboekbestand voor deze sessie gegenereerd in dezelfde map als het probleemoplossingsscript. De locatie wordt weergegeven in "Algemene tips" sectie (`D:\TestAzureSynapse_2020....log`). U dit bestand indien nodig naar de technische ondersteuning sturen.
+Daarnaast wordt een diagnostisch logboek bestand voor deze sessie gegenereerd in dezelfde map als het script voor het oplossen van problemen. De locatie wordt weer gegeven in de sectie ' algemene tips`D:\TestAzureSynapse_2020....log`' (). U kunt dit bestand zo nodig naar technische ondersteuning verzenden.
 
-Als u een netwerkbeheerder bent en uw firewallconfiguratie voor Azure Synapse Studio afstemt, kunnen de technische details boven de sectie Samenvatting helpen.
+Als u een netwerk beheerder bent en uw firewall configuratie afstemt voor Azure Synapse Studio, kunnen de technische details die worden weer gegeven boven de sectie samen vatting mogelijk helpen.
 
-* Alle testitems (aanvragen) die zijn gemarkeerd met 'Geslaagd' betekenen dat ze connectiviteitstests hebben doorstaan, ongeacht de HTTP-statuscode.
- Voor de mislukte aanvragen wordt de reden `NamedResolutionFailure` geel `ConnectFailure`weergegeven, zoals of . Met deze redenen u achterhalen of er verkeerde configuraties zijn met uw netwerkomgeving.
+* Alle test items (aanvragen) die zijn gemarkeerd met ' door gegeven ' hebben een geslaagde connectiviteits test, ongeacht de HTTP-status code.
+ De reden voor de mislukte aanvragen wordt weer gegeven in het geel, zoals `NamedResolutionFailure` of `ConnectFailure`. Deze redenen kunnen u helpen bij het bepalen of er fouten zijn met uw netwerk omgeving.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als de vorige stappen niet helpen om het probleem op te lossen [Maak een ondersteuningsticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Als de vorige stappen niet helpen bij het oplossen van het probleem, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

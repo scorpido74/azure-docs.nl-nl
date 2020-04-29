@@ -1,119 +1,119 @@
 ---
-title: Voerontwerppatronen wijzigen in Azure Cosmos DB
-description: Overzicht van algemene wijzigingsvoerontwerppatronen
+title: Ontwerp patronen voor feeds wijzigen in Azure Cosmos DB
+description: Overzicht van algemene ontwerp patronen voor wijzigingen in feeds
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450348"
 ---
-# <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Voerontwerppatronen wijzigen in Azure Cosmos DB
+# <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Ontwerp patronen voor feeds wijzigen in Azure Cosmos DB
 
-De Azure Cosmos DB-wijzigingsfeed maakt een efficiënte verwerking van grote gegevenssets met een hoog volume aan schrijfbewerkingen mogelijk. Change feed biedt ook een alternatief voor het opvragen van een volledige gegevensset om te bepalen wat er is veranderd. Dit document richt zich op veelvoorkomende wijzigingsvoerontwerppatronen, ontwerpafwegingen en wijzigingsfeedbeperkingen.
+De Azure Cosmos DB Change feed maakt efficiënte verwerking van grote gegevens sets mogelijk met een groot aantal schrijf bewerkingen. Change feed biedt ook een alternatief voor het uitvoeren van een query op een hele gegevensset om te bepalen wat er is gewijzigd. Dit document richt zich op veelvoorkomende ontwerp patronen voor veranderingen in de feed, ontwerp-en wijzigings beperkingen.
 
-Azure Cosmos DB is zeer geschikt voor IoT-, gaming-, retail- en operationele registratietoepassingen. Een gemeenschappelijk ontwerppatroon in deze toepassingen is het gebruik van wijzigingen in de gegevens om extra acties te activeren. Voorbeelden van aanvullende acties zijn:
+Azure Cosmos DB is goed geschikt voor IoT-, gaming-, retail-en operationele logboek toepassingen. Een gemeen schappelijk ontwerp patroon in deze toepassingen is het gebruik van wijzigingen in de gegevens om aanvullende acties te activeren. Voor beelden van aanvullende acties zijn:
 
-* Een melding of een aanroep naar een API activeren wanneer een item wordt ingevoegd of bijgewerkt.
-* Real-time stream processing voor IoT of real-time analytics processing op operationele data.
-* Gegevensverplaatsing, zoals synchroniseren met een cache, een zoekmachine, een gegevensmagazijn of koude opslag.
+* Het activeren van een melding of een aanroep van een API wanneer een item wordt ingevoegd of bijgewerkt.
+* Realtime-verwerking van streams voor IoT of realtime analyse verwerking op operationele gegevens.
+* Gegevens verplaatsing zoals synchronisatie met een cache, een zoek machine, een Data Warehouse of koude opslag.
 
-Met de wijzigingsfeed in Azure Cosmos DB u voor elk van deze patronen efficiënte en schaalbare oplossingen bouwen, zoals in de volgende afbeelding wordt weergegeven:
+Met de wijzigings feed in Azure Cosmos DB kunt u efficiënte en schaal bare oplossingen voor elk van deze patronen bouwen, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Azure Cosmos DB-wijzigingsfeed gebruiken om realtime analyse- en gebeurtenisgestuurde computerscenario's van stroom te bieden](./media/change-feed/changefeedoverview.png)
+![Azure Cosmos DB Change feed gebruiken om realtime analyse en op gebeurtenissen gebaseerde computer scenario's uit te voeren](./media/change-feed/changefeedoverview.png)
 
-## <a name="event-computing-and-notifications"></a>Event computing en meldingen
+## <a name="event-computing-and-notifications"></a>Gebeurtenis computing en meldingen
 
-De Azure Cosmos DB-wijzigingsfeed kan scenario's vereenvoudigen die een melding of een aanroep naar een API moeten activeren op basis van een bepaalde gebeurtenis. U de [bibliotheek Feedproces wijzigen](change-feed-processor.md) gebruiken om uw container automatisch te peilen op wijzigingen en elke keer dat er een schrijf- of update is, een externe API aan te roepen.
+De Azure Cosmos DB Change feed kan scenario's vereenvoudigen die een melding of een aanroep naar een API moeten activeren op basis van een bepaalde gebeurtenis. U kunt de bibliotheek voor het wijzigen van het [feedproces](change-feed-processor.md) gebruiken om automatisch uw container te controleren op wijzigingen en een externe API aan te roepen wanneer er een schrijf-of update procedure is.
 
-U ook selectief een melding activeren of een oproep naar een API verzenden op basis van specifieke criteria. Als u bijvoorbeeld uit de wijzigingsfeed leest met [Azure-functies,](change-feed-functions.md)u logica in de functie plaatsen om alleen een melding te verzenden als aan een specifieke criteria is voldaan. Hoewel de Azure-functiecode tijdens elke schrijf- en update zou worden uitgevoerd, wordt de melding alleen verzonden als aan specifieke criteria was voldaan.
+U kunt ook selectief een melding activeren of een aanroep naar een API verzenden op basis van specifieke criteria. Als u bijvoorbeeld van de wijzigings feed met behulp van [Azure functions](change-feed-functions.md)leest, kunt u logica in de functie plaatsen om alleen een melding te verzenden als aan een bepaald criterium is voldaan. Hoewel de functie code van Azure tijdens elke schrijf bewerking zou worden uitgevoerd, wordt de melding alleen verzonden als aan specifieke criteria is voldaan.
 
-## <a name="real-time-stream-processing"></a>Real-time streamverwerking
+## <a name="real-time-stream-processing"></a>Realtime-verwerking van streams
 
-De Azure Cosmos DB-wijzigingsfeed kan worden gebruikt voor realtime streamverwerking voor IoT- of realtime analyseverwerking op operationele gegevens.
-U bijvoorbeeld gebeurtenisgegevens van apparaten, sensoren, infrastructuur en toepassingen ontvangen en opslaan en deze gebeurtenissen in realtime verwerken met [Spark.](../hdinsight/spark/apache-spark-overview.md) In de volgende afbeelding ziet u hoe u een lambda-architectuur implementeren met behulp van de Azure Cosmos DB via de change feed:
+De Azure Cosmos DB wijzigings feed kan worden gebruikt voor realtime-stroom verwerking voor IoT of realtime analyse verwerking op operationele gegevens.
+U kunt bijvoorbeeld gebeurtenis gegevens van apparaten, Sens oren, infra structuur en toepassingen ontvangen en opslaan en deze gebeurtenissen in realtime verwerken met [Spark](../hdinsight/spark/apache-spark-overview.md). De volgende afbeelding laat zien hoe u een lambda-architectuur kunt implementeren met behulp van de Azure Cosmos DB via een wijzigings feed:
 
-![Azure Cosmos DB-gebaseerde lambda-pijplijn voor inname en query](./media/change-feed/lambda.png)
+![Lambda-pijp lijn op basis van Azure Cosmos DB voor opname en query](./media/change-feed/lambda.png)
 
-In veel gevallen ontvangen implementaties voor streamverwerking eerst een groot aantal binnenkomende gegevens in een tijdelijke berichtenwachtrij, zoals Azure Event Hub of Apache Kafka. De wijzigingsfeed is een geweldig alternatief vanwege het vermogen van Azure Cosmos DB om een aanhoudende hoge mate van gegevensopname te ondersteunen met gegarandeerde lage lees- en schrijflatentie. De voordelen van de Azure Cosmos DB-wijzigingsfeed ten opzichte van een berichtenwachtrij zijn:
+In veel gevallen ontvangen implementaties voor stroom verwerking eerst een groot aantal inkomende gegevens in een tijdelijke berichten wachtrij, zoals Azure Event hub of Apache Kafka. De wijzigings feed is een uitstekend alternatief als gevolg van de mogelijkheden van Azure Cosmos DB om een aanhoudende hoge frequentie van gegevens opname te ondersteunen met gegarandeerde lage lees-en schrijf latentie. De voor delen van de Azure Cosmos DB wijzigings feed voor een berichten wachtrij zijn onder andere:
 
-### <a name="data-persistence"></a>Gegevenspersistentie
+### <a name="data-persistence"></a>Gegevens persistentie
 
-Gegevens die naar Azure Cosmos DB zijn geschreven, worden weergegeven in de wijzigingsfeed en worden bewaard totdat ze zijn verwijderd. Berichtenwachtrijen hebben doorgaans een maximale bewaartermijn. [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) biedt bijvoorbeeld een maximale gegevensbewaring van 90 dagen.
+Gegevens die naar Azure Cosmos DB zijn geschreven, worden weer gegeven in de wijzigings feed en blijven bewaard totdat ze worden verwijderd. Berichten wachtrijen hebben doorgaans een maximale Bewaar periode. [Azure Event hub](https://azure.microsoft.com/services/event-hubs/) biedt bijvoorbeeld een maximale gegevens retentie van 90 dagen.
 
-### <a name="querying-ability"></a>Querycapaciteit
+### <a name="querying-ability"></a>Query mogelijkheid
 
-Naast het lezen van de wijzigingsfeed van een Cosmos-container, u ook SQL-query's uitvoeren op de gegevens die zijn opgeslagen in Azure Cosmos DB. De wijziging feed is niet een verdubbeling van de gegevens al in de container, maar gewoon een ander mechanisme van het lezen van de gegevens. Als u gegevens uit de wijzigingsfeed leest, is deze dus altijd consistent met query's van dezelfde Azure Cosmos DB-container.
+Naast het lezen van de wijzigings feed van een Cosmos-container, kunt u ook SQL-query's uitvoeren op de gegevens die zijn opgeslagen in Azure Cosmos DB. De wijzigings feed is geen duplicatie van de gegevens die zich al in de container bevinden, maar in plaats daarvan alleen een ander mechanisme voor het lezen van de gegevens. Als u dus gegevens van de wijzigings feed leest, is deze altijd consistent met query's van dezelfde Azure Cosmos DB-container.
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
 
-Azure Cosmos DB biedt tot 99,999% lees- en schrijfbeschikbaarheid. In tegenstelling tot veel berichtenwachtrijen kunnen Azure Cosmos DB-gegevens eenvoudig wereldwijd worden gedistribueerd en geconfigureerd met een [RTO -doelstelling (Hersteltijddoelstelling)](consistency-levels-tradeoffs.md#rto) van nul.
+Azure Cosmos DB biedt Maxi maal 99,999% Beschik baarheid voor lezen en schrijven. In tegens telling tot veel bericht wachtrijen kunnen Azure Cosmos DB gegevens gemakkelijk wereld wijd worden gedistribueerd en geconfigureerd met een [RTO (Recovery Time doelstelling)](consistency-levels-tradeoffs.md#rto) van nul.
 
-Nadat u items in de wijzigingsfeed hebt verwerkt, u een gematerialiseerde weergave en geaggregeerde waarden weer in Azure Cosmos DB behouden. Als u Azure Cosmos DB gebruikt om een game te bouwen, u bijvoorbeeld wijzigingsfeed gebruiken om realtime leaderboards te implementeren op basis van scores uit voltooide games.
+Na het verwerken van items in de wijzigings feed kunt u een gerealiseerde weer gave maken en de geaggregeerde waarden weer in Azure Cosmos DB. Als u Azure Cosmos DB gebruikt voor het bouwen van een spelletje, kunt u bijvoorbeeld Change feed gebruiken om realtime klassementen te implementeren op basis van scores van voltooide games.
 
 ## <a name="data-movement"></a>Gegevensverplaatsing
 
-U ook lezen uit de change feed voor real-time data beweging.
+U kunt ook lezen uit de wijzigings feed voor realtime gegevens verplaatsing.
 
-Met de wijzigingsfeed u bijvoorbeeld de volgende taken efficiënt uitvoeren:
+De wijzigings feed helpt u bijvoorbeeld bij het efficiënt uitvoeren van de volgende taken:
 
-* Werk een cache-, zoekindex- of gegevensmagazijn bij met gegevens die zijn opgeslagen in Azure Cosmos DB.
+* Een cache, zoek index of Data Warehouse bijwerken met gegevens die zijn opgeslagen in Azure Cosmos DB.
 
-* Voer nul downtime-migraties uit naar een ander Azure Cosmos-account of een andere Azure Cosmos-container met een andere logische partitiesleutel.
+* U kunt niet meer dan nul migraties uitvoeren naar een ander Azure Cosmos-account of een andere Azure Cosmos-container met een andere logische partitie sleutel.
 
-* Implementeer een gegevensgelaagdheid op toepassingsniveau en archivering. U bijvoorbeeld 'hot data' opslaan in Azure Cosmos DB en 'koude gegevens' verouderen naar andere opslagsystemen zoals [Azure Blob Storage.](../storage/common/storage-introduction.md)
+* Implementeer een gegevenslaagder en-archivering op toepassings niveau. U kunt bijvoorbeeld ' dynamische gegevens ' opslaan in Azure Cosmos DB en ' koude gegevens ' naar andere opslag systemen zoals [Azure Blob Storage](../storage/common/storage-introduction.md).
 
-Wanneer u gegevens moet [denormaliseren tussen partities en containers,](how-to-model-partition-example.md#v2-introducing-denormalization-to-optimize-read-queries
-)u uit de wijzigingsfeed van uw container lezen als bron voor deze gegevensreplicatie. Real-time gegevensreplicatie met de wijzigingsfeed kan alleen een uiteindelijke consistentie garanderen. U [controleren hoe ver de Change Feed Processor achterblijft](how-to-use-change-feed-estimator.md) bij het verwerken van wijzigingen in uw Cosmos-container.
+Wanneer u [gegevens in partities en containers moet denormaliseren](how-to-model-partition-example.md#v2-introducing-denormalization-to-optimize-read-queries
+), kunt u de wijziging van de invoer van de container als bron voor deze gegevens replicatie lezen. Realtime gegevens replicatie met de wijzigings feed kan de uiteindelijke consistentie alleen garanderen. U kunt [bewaken hoe ver de lags van de wijzigings verwerker achter bij het](how-to-use-change-feed-estimator.md) verwerken van wijzigingen in de Cosmos-container.
 
-## <a name="event-sourcing"></a>Event sourcing
+## <a name="event-sourcing"></a>Gebeurtenis bronnen
 
-Het [patroon voor het zoeken naar gebeurtenissen](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) omvat het gebruik van een append-only winkel om de volledige reeks acties op die gegevens vast te leggen. De wijzigingsfeed van Azure Cosmos DB is een goede keuze als een centraal gegevensarchief in architectuur voor het vinden van gebeurtenissen waarbij alle gegevensopname wordt gemodelleerd als schrijft (geen updates of verwijderingen). In dit geval is elke schrijven naar Azure Cosmos DB een 'gebeurtenis' en hebt u een volledige registratie van gebeurtenissen uit het verleden in de wijzigingsfeed. Typische toepassingen van de gebeurtenissen die door de centrale gebeurtenisopslag worden gepubliceerd zijn voor het handhaven van gematerialiseerde meningen of voor integratie met externe systemen. Omdat er geen tijdslimiet is voor retentie in de wijzigingsfeed, u alle gebeurtenissen uit het verleden opnieuw afspelen door vanaf het begin van de wijzigingsfeed van uw Cosmos-container te lezen.
+Het [gebeurtenis bronnen patroon](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) omvat het gebruik van een archief alleen toevoegen voor het vastleggen van de volledige reeks acties voor die gegevens. De wijzigings feed van Azure Cosmos DB is een uitstekende keuze als een centrale gegevens opslag in Event sourcing-architecturen waarbij alle gegevens opname wordt gemodelleerd als schrijf bewerkingen (geen updates of verwijderingen). In dit geval is elke schrijf bewerking naar Azure Cosmos DB een ' gebeurtenis '. u hebt dan een volledige record van achterstallige gebeurtenissen in de wijzigings feed. Typisch gebruik van de gebeurtenissen die door het centrale gebeurtenis archief worden gepubliceerd, zijn voor het onderhouden van gerealiseerde weer gaven of voor de integratie met externe systemen. Omdat er geen tijds limiet is voor het bewaren van de wijzigings feed, kunt u alle gebeurtenissen in het verleden herhalen door te lezen vanaf het begin van de wijzigings feed van uw Cosmos-container.
 
-U ervoor hebben dat [consumenten met meerdere wijzigingen zich abonneren op de wijzigingsfeed van dezelfde container.](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers) Afgezien van de ingerichte doorvoer van de [leasecontainer,](change-feed-processor.md#components-of-the-change-feed-processor) zijn er geen kosten verbonden aan het gebruik van de wijzigingsfeed. De wijzigingfeed is beschikbaar in elke container, ongeacht of deze wordt gebruikt.
+U kunt [meerdere changes-gebruikers abonneren op de wijzigings feed van dezelfde container](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers). Afgezien van de ingerichte door Voer van de [lease container](change-feed-processor.md#components-of-the-change-feed-processor) zijn er geen kosten voor het gebruik van de wijzigings feed. De wijzigings feed is beschikbaar in elke container, ongeacht of deze wordt gebruikt.
 
-Azure Cosmos DB is een groot centraal permanente gegevensarchief in het gebeurtenissourcingpatroon vanwege de sterke punten in horizontale schaalbaarheid en hoge beschikbaarheid. Bovendien biedt de bibliotheek voor wijzigingsfeedprocessor een ["ten minste eenmaal"](change-feed-processor.md#error-handling) garantie, zodat u de verwerking van gebeurtenissen niet mist.
+Azure Cosmos DB is een fantastische, alleen permanente alleen-lezen gegevens opslag in het gebeurtenis bronnen patroon vanwege de sterke punten in horizontale schaal baarheid en hoge Beschik baarheid. Daarnaast biedt de processor bibliotheek voor wijzigings invoer een garantie [van ten minste eenmaal](change-feed-processor.md#error-handling) , zodat u geen gebeurtenissen meer kunt verwerken.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-De wijzigingsfeed heeft belangrijke beperkingen die u moet begrijpen. Hoewel items in een Cosmos-container altijd in de wijzigingsfeed blijven, is de wijzigingsfeed geen volledig bewerkingslogboek. Er zijn belangrijke gebieden om te overwegen bij het ontwerpen van een toepassing die de wijzigingsfeed gebruikt.
+De wijzigings feed heeft belang rijke beperkingen die u moet begrijpen. Terwijl items in een Cosmos-container altijd in de wijzigings feed blijven, is de wijzigings feed geen volledig bewerkings logboek. Er zijn belang rijke gebieden waarmee u rekening moet houden bij het ontwerpen van een toepassing die gebruikmaakt van de wijzigings feed.
 
-### <a name="intermediate-updates"></a>Tussentijdse updates
+### <a name="intermediate-updates"></a>Tussenliggende updates
 
-Alleen de meest recente wijziging voor een bepaald item is opgenomen in de wijzigingsfeed. Wanneer wijzigingen worden verwerkt, leest u de laatst beschikbare artikelversie. Als er meerdere updates voor hetzelfde item in een korte periode van tijd, is het mogelijk om te missen verwerking tussentijdse updates. Als u updates wilt bijhouden en eerdere updates voor een item wilt afspelen, raden we u aan deze updates te modelleren als een reeks schrijfbewerkingen.
+Alleen de meest recente wijziging voor een bepaald item is opgenomen in de wijzigings feed. Wanneer de wijzigingen worden verwerkt, leest u de meest recente versie van het item. Als er in korte tijd meerdere updates voor hetzelfde item zijn, is het mogelijk om de verwerking van tussenliggende updates te missen. Als u updates wilt bijhouden en eerdere updates voor een item opnieuw wilt kunnen afspelen, raden we u aan om deze updates te model leren als een reeks schrijf bewerkingen.
 
-### <a name="deletes"></a>Verwijderd
+### <a name="deletes"></a>Delete
 
-De wijzigingsfeed legt geen deletes vast. Als u een item uit uw container verwijdert, wordt het ook uit de wijzigingsfeed verwijderd. De meest voorkomende methode om dit te verwerken is het toevoegen van een zachte markering op de items die worden verwijderd. U een eigenschap met de naam 'verwijderd' toevoegen en deze instellen op 'true' op het moment van verwijdering. Deze documentupdate wordt weergegeven in de wijzigingsfeed. U een TTL instellen op dit item, zodat het later automatisch kan worden verwijderd.
+De wijzigings feed legt geen verwijderingen vast. Als u een item uit uw container verwijdert, wordt het ook uit de wijzigings feed verwijderd. De meest voorkomende methode voor het verwerken hiervan is het toevoegen van een zachte markering voor de items die worden verwijderd. U kunt een eigenschap met de naam ' verwijderd ' toevoegen en deze instellen op ' True ' op het moment van verwijdering. Deze document update wordt weer gegeven in de wijzigings feed. U kunt een TTL instellen voor dit item zodat het later automatisch kan worden verwijderd.
 
-### <a name="guaranteed-order"></a>Gegarandeerde bestelling
+### <a name="guaranteed-order"></a>Gegarandeerde volg orde
 
-Er is een gegarandeerde volgorde in de wijzigingsfeed binnen een partitiesleutelwaarde, maar niet over partitiesleutelwaarden. U moet een partitiesleutel selecteren die u een zinvolle ordergarantie geeft.
+Er is een gegarandeerde volg orde in de wijzigings feed binnen een partitie sleutel waarde, maar niet op de partitie sleutel waarden. U moet een partitie sleutel selecteren die u een zinvolle order garantie geeft.
 
-Overweeg bijvoorbeeld een retailtoepassing met behulp van het ontwerppatroon voor het zoeken naar evenementen. In deze toepassing zijn verschillende gebruikersacties elke 'gebeurtenissen' die zijn gemodelleerd naar Azure Cosmos DB. Stel je voor dat er enkele voorbeeldgebeurtenissen in de volgende reeks hebben plaatsgevonden:
+Denk bijvoorbeeld aan een retail-toepassing met behulp van het ontwerp patroon Event sourcing. In deze toepassing zijn verschillende gebruikers acties elk "gebeurtenissen" die als schrijf bewerkingen naar Azure Cosmos DB worden gemodelleerd. Stel dat er een aantal voor beelden is opgetreden in de volgende volg orde:
 
-1. Klant voegt punt A toe aan winkelwagentje
-2. Klant voegt punt B toe aan winkelwagentje
-3. Klant verwijdert punt A uit winkelwagentje
-4. Klant checkt uit en de inhoud van winkelwagentjes wordt verzonden
+1. Klant voegt item A toe aan hun winkel wagentje
+2. Klant voegt item B toe aan hun winkel wagentje
+3. Klant verwijdert item A uit hun winkel wagen
+4. De uitchecken van de klant en de inhoud van de winkel wagen worden verzonden
 
-Voor elke klant wordt een gematerialiseerde weergave van de huidige inhoud van winkelwagentjes behouden. Deze toepassing moet ervoor zorgen dat deze gebeurtenissen worden verwerkt in de volgorde waarin ze zich voordoen. Als bijvoorbeeld de kassawagen voor de verwijdering van artikel A zou worden verwerkt, is het waarschijnlijk dat de klant artikel A zou hebben laten verzenden, in tegenstelling tot het gewenste artikel B. Om te garanderen dat deze vier gebeurtenissen worden verwerkt in volgorde van hun voorkomen, moeten ze binnen dezelfde waarde van de partitiesleutel vallen. Als u **gebruikersnaam** (elke klant heeft een unieke gebruikersnaam) als partitiesleutel selecteert, u garanderen dat deze gebeurtenissen worden weergegeven in de wijzigingsfeed in dezelfde volgorde waarin ze zijn geschreven naar Azure Cosmos DB.
+Er wordt voor elke klant een gerealiseerde weer gave van de huidige inhoud van de winkel wagen onderhouden. Deze toepassing moet ervoor zorgen dat deze gebeurtenissen worden verwerkt in de volg orde waarin ze plaatsvinden. Als bijvoorbeeld de kassa van de winkel wagen moet worden verwerkt voordat item A wordt verwijderd, zou de klant waarschijnlijk een item hebben verzonden, in plaats van het gewenste item B. Om ervoor te zorgen dat deze vier gebeurtenissen worden verwerkt in volg orde van het voorval, moeten ze binnen dezelfde partitie sleutel waarde vallen. Als u **gebruikers naam** selecteert (elke klant heeft een unieke gebruikers naam) als de partitie sleutel, kunt u garanderen dat deze gebeurtenissen in de wijzigings feed worden weer gegeven in dezelfde volg orde als waarin ze naar Azure Cosmos DB zijn geschreven.
 
 ## <a name="examples"></a>Voorbeelden
 
-Hier volgen enkele voorbeelden van echte wijzigingen feedcode die verder reiken dan het bereik van de voorbeelden in Microsoft-documenten:
+Hier volgen enkele voor beelden van de invoer code van een andere wereld, die buiten het bereik van de voor beelden in micro soft docs valt:
 
-- [Inleiding tot de wijzigingsfeed](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html)
-- [IoT-gebruikscase gecentreerd rond de wijzigingsfeed](https://github.com/AzureCosmosDB/scenario-based-labs)
-- [Retail use case gecentreerd rond de change feed](https://github.com/AzureCosmosDB/scenario-based-labs)
+- [Inleiding tot de wijzigings feed](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html)
+- [IoT use-case gecentreerd rond de wijzigings feed](https://github.com/AzureCosmosDB/scenario-based-labs)
+- [Use-case voor detail handel gecentreerd rond de wijzigings feed](https://github.com/AzureCosmosDB/scenario-based-labs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht wijzigingenfeed](change-feed.md)
-* [Opties voor het lezen van wijzigingsfeed](read-change-feed.md)
-* [Wijzigingsfeed gebruiken met Azure-functies](change-feed-functions.md)
+* [Opties voor het lezen van een wijzigings feed](read-change-feed.md)
+* [Change feed gebruiken met Azure Functions](change-feed-functions.md)

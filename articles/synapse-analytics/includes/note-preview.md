@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.openlocfilehash: 33d18173601e7b08e08bfb5d427126aac933ead3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423626"
 ---
 > [!IMPORTANT]
-> Azure Synapse Analytics (werkruimten) is momenteel in preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Azure Synapse Analytics (werk ruimten) is momenteel beschikbaar als preview-versie.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Als u toegang wilt krijgen tot de preview-functies van Azure Synapse, vraagt u [hier](https://aka.ms/synapsepreview)toegang aan. Microsoft zal alle verzoeken triage en zo snel mogelijk reageren.
+> Om toegang te krijgen tot de preview-functies van Azure Synapse, kunt u [hier](https://aka.ms/synapsepreview)toegang aanvragen. Micro soft zal alle aanvragen sorteren en zo snel mogelijk reageren.

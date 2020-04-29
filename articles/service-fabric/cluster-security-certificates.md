@@ -1,70 +1,70 @@
 ---
-title: Verificatie op basis van x.509-certificaten in een cluster van servicestructuur
-description: Meer informatie over verificatie op basis van certificaten in servicefabricclusters en hoe u certificaatgerelateerde problemen detecteren, beperken en oplossen.
+title: X. 509 authenticatie op basis van certificaten in een Service Fabric cluster
+description: Meer informatie over verificatie op basis van certificaten in Service Fabric clusters en het detecteren, beperken en oplossen van aan certificaten gerelateerde problemen.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429666"
 ---
-# <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X.509 Verificatie op basis van certificaten in servicefabricclusters
+# <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 authenticatie op basis van certificaten in Service Fabric clusters
 
-Dit artikel is een aanvulling op de inleiding tot [servicestructuurclusterbeveiliging](service-fabric-cluster-security.md)en gaat in op de details van op certificaten gebaseerde verificatie in servicefabricclusters. We gaan ervan uit dat de lezer bekend is met fundamentele beveiligingsconcepten, en ook met de besturingselementen die Service Fabric blootstelt om de beveiliging van een cluster te controleren.  
+Dit artikel vormt een aanvulling op de inleiding tot [service Fabric cluster beveiliging](service-fabric-cluster-security.md)en gaat in de details van verificatie op basis van certificaten in service Fabric clusters. We gaan ervan uit dat de lezer bekend is met fundamentele beveiligings concepten en ook met de besturings elementen die Service Fabric beschrijft om de beveiliging van een cluster te beheren.  
 
-Onderwerpen die onder deze titel:
+Onderwerpen die onder deze titel vallen:
 
-* Basisbeginselen voor verificatie op basis van certificaten
+* Basis beginselen van verificatie op basis van certificaten
 * Identiteiten en hun respectieve rollen
-* Certificaatconfiguratieregels
-* Probleemoplossing en veelgestelde vragen
+* Certificaat configuratie regels
+* Problemen oplossen en veelgestelde vragen
 
-## <a name="certificate-based-authentication-basics"></a>Basisbeginselen voor verificatie op basis van certificaten
-Als een korte opfriscursus, in veiligheid, een certificaat is een instrument bedoeld om informatie over een entiteit (het onderwerp) te binden aan hun bezit van een paar asymmetrische cryptografische sleutels, en dus vormt een kernconstructie van public key cryptografie. De sleutels die door een certificaat worden vertegenwoordigd, kunnen worden gebruikt voor de bescherming van gegevens of voor het aantonen van de identiteit van sleutelhouders; wanneer een certificaat wordt gebruikt in combinatie met een PKI-systeem (Public Key Infrastructure), kan een certificaat aanvullende kenmerken van het onderwerp vertegenwoordigen, zoals de eigendom van een internetdomein of bepaalde bevoegdheden die de uitgever van het certificaat (bekend als certificeringsinstantie of CA) aan het certificaat heeft verleend. Een veelgebruikte toepassing van certificaten ondersteunt het TLS-protocol (Transport Layer Security), waardoor veilige communicatie via een computernetwerk mogelijk is. Specifiek, de client en server gebruiken certificaten om de privacy en integriteit van hun communicatie te waarborgen, en ook om wederzijdse authenticatie uit te voeren.
+## <a name="certificate-based-authentication-basics"></a>Basis beginselen van verificatie op basis van certificaten
+In het geval van een korte refresher is een certificaat een instrument dat is bedoeld om informatie te binden over een entiteit (het onderwerp) aan het bezit van een paar asymmetrische cryptografische sleutels, en dus een kern constructie van open bare-sleutel cryptografie. De sleutels die door een certificaat worden vertegenwoordigd, kunnen worden gebruikt voor het beveiligen van gegevens, of voor het bewijzen van de identiteit van belang rijke houders; bij gebruik in combi natie met een PKI-systeem (open bare-sleutel infrastructuur) kan een certificaat extra eigenschappen van het onderwerp vertegenwoordigen, zoals het eigendom van een Internet domein, of bepaalde bevoegdheden die eraan worden verleend door de verlener van het certificaat (ook wel certificerings instantie of CA genoemd). Een gemeen schappelijke toepassing van certificaten biedt ondersteuning voor het cryptografische Transport Layer Security (TLS)-protocol, waardoor beveiligde communicatie mogelijk is via een computernet netwerk. Met name de client en server gebruiken certificaten om de privacy en integriteit van hun communicatie te waarborgen, en ook om wederzijdse verificatie uit te voeren.
 
-In Service Fabric bouwt de fundamentele laag van een cluster (Federation) ook voort op TLS (onder andere protocollen) om een betrouwbaar, veilig netwerk van deelnemende knooppunten te bereiken. Verbindingen in het cluster via Service Fabric Client API's gebruiken TLS ook om het verkeer te beschermen, en ook om de identiteit van de partijen vast te stellen. Wanneer een certificaat wordt gebruikt voor verificatie in Service Fabric, kan een certificaat worden gebruikt om de volgende beweringen te bewijzen: a) de presentator van de certificaatreferentie in het bezit is van de privésleutel van het certificaat b) de SHA-1-hash van het certificaat ('duimafdruk') komt overeen met een verklaring die is opgenomen in de clusterdefinitie, of c) de voorname algemene naam van het certificaat komt overeen met een verklaring die is opgenomen in de clusterdefinitie , en de uitgever van het certificaat is bekend of vertrouwd.
+In Service Fabric is de fundamentele laag van een cluster (Federatie) ook gebaseerd op TLS (onder andere protocollen) om een betrouwbaar, veilig netwerk van deelnemende knoop punten te bezorgen. Verbindingen met het cluster via Service Fabric-client-Api's gebruiken ook TLS om verkeer te beveiligen en ook om de identiteit van de partijen tot stand te brengen. In het bijzonder, wanneer dit wordt gebruikt voor verificatie in Service Fabric, kan een certificaat worden gebruikt om de volgende claims te bewijzen: a) de presentator van de certificaat referentie heeft de persoonlijke sleutel b van het certificaat, de SHA-1-hash (vinger afdruk) van het certificaat komt overeen met een declaratie die is opgenomen in de cluster definitie. en de uitgever van het certificaat bekend of vertrouwd is.
 
-In de bovenstaande lijst wordt "b" in de volksmond 'duimafdrukpinning' genoemd; in dit geval verwijst de verklaring naar een specifiek certificaat en berust de sterkte van het authenticatieschema op de veronderstelling dat het computationeel onhaalbaar is om een certificaat te vervalsen dat dezelfde hashwaarde produceert als een ander certificaat, terwijl het in alle andere opzichten nog steeds een geldig, goed gevormd object is. Punt "c" is een alternatieve vorm van het verklaren van een certificaat, waarbij de sterkte van de regeling berust op de combinatie van het voorwerp van het certificaat en de instantie van afgifte. In dit geval verwijst de verklaring naar een klasse van certificaten - twee certificaten met dezelfde kenmerken worden als volledig gelijkwaardig beschouwd. 
+In de bovenstaande lijst wordt ' b ' colloquially ' vinger vastmaken ' genoemd. in dit geval verwijst de verklaring naar een specifiek certificaat en de sterkte van het verificatie schema berust op de voor waarde dat het niet haalbaar is om een certificaat te vervalsen dat dezelfde hashwaarde produceert als een andere, en nog steeds een geldig, goed gevormd object in alle andere opzichten. Item c vertegenwoordigt een alternatieve vorm van het declareren van een certificaat, waarbij de sterkte van het schema wordt gerust op de combi natie van het onderwerp van het certificaat en de uitgevende instantie. In dit geval verwijst de verklaring naar een klasse certificaten: twee certificaten met dezelfde kenmerken worden als volledig gelijkwaardig beschouwd. 
 
-In de volgende secties wordt uitgebreid uitgelegd hoe de runtime van de Service Fabric certificaten gebruikt en valideert om de clusterbeveiliging te garanderen.
+In de volgende secties wordt uitgelegd hoe de Service Fabric runtime certificaten gebruikt en valideert om te zorgen voor de beveiliging van het cluster.
 
 ## <a name="identities-and-their-respective-roles"></a>Identiteiten en hun respectieve rollen
-Voordat u indedetails van authenticatie of het beveiligen van communicatiekanalen, is het belangrijk om de deelnemende actoren en de bijbehorende rollen die zij spelen in een cluster op te sommen:
-- de runtime van de Service Fabric, aangeduid als 'systeem': de reeks services die de abstracties en functionaliteit bieden die het cluster vertegenwoordigen. Wanneer we verwijzen naar in-clustercommunicatie tussen systeeminstanties, gebruiken we de term 'clusteridentiteit'; Wanneer we verwijzen naar het cluster als de ontvanger/het doel van verkeer van buiten het cluster, gebruiken we de term 'serveridentiteit'.
-- gehoste toepassingen, aangeduid als 'toepassingen': code die wordt verstrekt door de eigenaar van het cluster, die wordt georkestreerd en uitgevoerd in het cluster
-- clients: entiteiten die verbinding kunnen maken met en functionaliteit in een cluster kunnen uitvoeren, afhankelijk van de clusterconfiguratie. We maken onderscheid tussen twee niveaus van privileges - 'gebruiker' en 'admin', respectievelijk. Een 'gebruikersclient' is voornamelijk beperkt tot alleen-lezen bewerkingen (maar niet alle alleen-lezen functionaliteit), terwijl een 'admin'-client onbeperkte toegang heeft tot de functionaliteit van het cluster. (Raadpleeg [beveiligingsrollen in een cluster servicestructuur](service-fabric-cluster-security-roles.md)voor meer informatie.)
-- (Azure-only) de Service Fabric-services die besturingselementen orkestreren en blootleggen voor de werking en het beheer van Service Fabric-clusters, simpelweg 'service' genoemd. Afhankelijk van de omgeving kan de 'service' verwijzen naar de Azure Service Fabric Resource Provider of andere Resource Providers die eigendom zijn van en worden beheerd door het Service Fabric-team.
+Voordat u de details van verificatie of communicatie kanalen kunt beveiligen, is het belang rijk dat u de deelnemende actors en de bijbehorende rollen die ze in een cluster spelen, vermeldt:
+- de Service Fabric runtime, aangeduid als ' System ': de set services die de abstractie en functionaliteit van het cluster bieden. Als er wordt verwezen naar de communicatie in het cluster tussen systeem instanties, gebruiken we de term ' cluster identiteit '; Wanneer u verwijst naar het cluster als ontvanger/doel verkeer van buiten het cluster, gebruiken we de term ' server identiteit '.
+- gehoste toepassingen, aangeduid als ' toepassingen ': code die wordt aangeboden door de eigenaar van het cluster. dit wordt in het cluster ingedeeld en uitgevoerd
+- clients: entiteiten die verbinding mogen maken met en de functionaliteit uitvoeren in een cluster, volgens de cluster configuratie. Er wordt respectievelijk onderscheid gemaakt tussen twee machtigings niveaus: User en admin. Een ' gebruiker '-client is voornamelijk beperkt tot alleen-lezen bewerkingen (maar niet alle alleen-lezen functionaliteit), terwijl een admin-client onbeperkte toegang tot de functionaliteit van het cluster heeft. (Zie [beveiligings rollen in een service Fabric cluster](service-fabric-cluster-security-roles.md)voor meer informatie.)
+- (Alleen voor Azure) de Service Fabric services die controles voor de exploitatie en het beheer van Service Fabric-clusters, aangeduid als gewoon ' service ', indelen en beschikbaar stellen. Afhankelijk van de omgeving kan de ' service ' verwijzen naar de resource provider van Azure Service Fabric of andere resource providers die eigendom zijn van en worden beheerd door het Service Fabric team.
 
-In een beveiligd cluster kan elk van deze rollen worden geconfigureerd met hun eigen, afzonderlijke identiteit, gedeclareerd als het koppelen van een vooraf gedefinieerde rolnaam en de bijbehorende referentie. Service Fabric ondersteunt het declareren van referenties als certificaten of domeingebaseerde serviceprincipal. (Op Windows/Kerberos gebaseerde identiteiten worden ook ondersteund, maar vallen buiten het bereik van dit artikel; raadpleeg [windows-gebaseerde beveiliging in servicefabricclusters](service-fabric-windows-cluster-windows-security.md).) In Azure-clusters kunnen clientrollen ook worden gedeclareerd als [azure Active Directory-gebaseerde identiteiten](service-fabric-cluster-creation-setup-aad.md).
+In een beveiligd cluster kan elk van deze rollen worden geconfigureerd met hun eigen unieke identiteit, gedeclareerd als het koppelen van een vooraf gedefinieerde rolnaam en de bijbehorende referentie. Service Fabric ondersteunt het declareren van referenties als certificaten of Service-Principal op basis van een domein. (Windows-/Kerberos-based-identiteiten worden ook ondersteund, maar vallen buiten het bereik van dit artikel; Raadpleeg op [Windows gebaseerde beveiliging in service Fabric clusters](service-fabric-windows-cluster-windows-security.md).) In azure-clusters kunnen client rollen ook worden gedeclareerd als [identiteiten op basis van Azure Active Directory](service-fabric-cluster-creation-setup-aad.md).
 
-Zoals hierboven wordt gezinspeeld, definieert de runtime van Service Fabric twee niveaus van bevoegdheden in een cluster: 'admin' en 'user'. Een beheerdersclient en een 'systeemcomponent' werken beide met 'beheerdersrechten' en zijn dus niet van elkaar te onderscheiden. Bij het tot stand brengen van een verbinding in/met het cluster, wordt een geverifieerde beller verleend door de Runtime van de Service Fabric als basis voor de volgende autorisatie. We onderzoeken de verificatie in de volgende secties.
+Zoals alluded hierboven, definieert de Service Fabric runtime twee bevoegdheids niveaus in een cluster: ' admin ' en ' gebruiker '. Een beheerder-client en een systeem onderdeel kunnen beide worden gebruikt met ' admin-bevoegdheden, en zijn dus niet van elkaar te onderscheiden. Bij het tot stand brengen van een verbinding in/met het cluster wordt een geauthenticeerde aanroeper verleend door de Service Fabric runtime een van de twee rollen als de basis voor de volgende autorisatie. In de volgende secties wordt de verificatie uitgebreid besproken.
 
-## <a name="certificate-configuration-rules"></a>Certificaatconfiguratieregels
-### <a name="validation-rules"></a>Validatieregels
-De beveiligingsinstellingen van een Service Fabric-cluster beschrijven in principe de volgende aspecten:
-- het verificatietype; dit is een creatietijd, onveranderlijk kenmerk van het cluster. Voorbeelden van dergelijke instellingen zijn 'ClusterCredentialType', 'ServerCredentialType' en toegestane waarden zijn 'none', 'x509' of 'windows'. Dit artikel richt zich op de x509-type authenticatie.
-- de validatieregels (authenticatie); deze instellingen worden ingesteld door de clustereigenaar en beschrijven welke referenties voor een bepaalde rol worden geaccepteerd. Voorbeelden zullen direct hieronder grondig worden onderzocht.
-- instellingen die worden gebruikt om het resultaat van verificatie te tweaken of subtiel te wijzigen; voorbeelden hier zijn vlaggen (de-)beperken de handhaving van certificaat intrekking lijsten etc.
+## <a name="certificate-configuration-rules"></a>Certificaat configuratie regels
+### <a name="validation-rules"></a>Validatie regels
+De beveiligings instellingen van een Service Fabric cluster beschrijven in principe de volgende aspecten:
+- het verificatie type; Dit is een onveranderbaar kenmerk van het cluster. Voor beelden van dergelijke instellingen zijn ' ClusterCredentialType ', ' ServerCredentialType ' en de toegestane waarden zijn ' none ', ' x509 ' of ' Windows '. Dit artikel is gericht op de x509-type verificatie.
+- de validatie regels (verificatie); deze instellingen worden ingesteld door de cluster eigenaar en beschrijven welke referenties moeten worden geaccepteerd voor een bepaalde rol. Voor beelden worden onmiddellijk hieronder weer gegeven.
+- instellingen die worden gebruikt om het resultaat van de verificatie te verfijnen of subtiel te wijzigen; Hier vindt u enkele voor beelden van vlaggen (de-) om het afdwingen van certificaatintrekkingslijsten te beperken, enzovoort.
 
 > [!NOTE]
-> Voorbeelden van clusterconfiguratie hieronder zijn fragmenten uit het clustermanifest in XML-indeling, als de meest verteerbare indeling die direct de servicestructuurfunctionaliteit ondersteunt die in dit artikel wordt beschreven. Dezelfde instellingen kunnen rechtstreeks worden uitgedrukt in de JSON-weergaven van een clusterdefinitie, of het nu gaat om een zelfstandig json-clustermanifest of een Azure Resource Mangement-sjabloon.
+> Voor beelden van cluster configuratie die hieronder worden geboden, zijn fragmenten uit het cluster manifest in XML-indeling, zoals de meeste samen vatting. dit ondersteunt direct de Service Fabric functionaliteit die in dit artikel wordt beschreven. Dezelfde instellingen kunnen rechtstreeks worden weer gegeven in de JSON-representaties van een cluster definitie, ongeacht of er een zelfstandig JSON-cluster manifest of een Azure resource beheer-sjabloon is.
 
-Een validatieregel voor certificaten bevat de volgende elementen:
-- de bijbehorende rol: client, admin client (privileged role)
-- de voor de rol geaccepteerde referentie, aangegeven door duimafdruk of algemene naam
+Een regel voor certificaat validatie bestaat uit de volgende elementen:
+- de bijbehorende rol: Client, admin-client (geprivilegieerde rol)
+- de referentie die is geaccepteerd voor de rol, aangegeven door de vinger afdruk of de algemene onderwerpnaam
 
-#### <a name="thumbprint-based-certificate-validation-declarations"></a>Op duimafdruk gebaseerde certificaatvalidatiedeclaratie
-In het geval van validatieregels op basis van duimafdruk worden de referenties die worden gepresenteerd door een beller die een verbinding in/met het cluster aanvraagt, als volgt gevalideerd:
-  - de referentie is een geldig, goed gevormd certificaat: de keten kan worden gebouwd, handtekeningen overeenkomen
-  - het certificaat is tijd geldig (NotBefore <= nu < NotAfter)
-  - de SHA-1-hash van het certificaat komt overeen met de verklaring, als een hoofdletter-ongevoelige tekenreeksvergelijking met uitzondering van alle witruimten
+#### <a name="thumbprint-based-certificate-validation-declarations"></a>Declaraties voor certificaat validatie op basis van vinger afdruk
+In het geval van op vinger afdruk gebaseerde validatie regels worden de referenties die zijn opgegeven door een beller die een verbinding in/naar het cluster aanvraagt als volgt gevalideerd:
+  - de referentie is een geldig, goed gevormd certificaat: de bijbehorende keten kan worden gebouwd, de hand tekeningen komen overeen
+  - Er is een tijd geldig voor het certificaat (NotBefore <= nu < NotAfter)
+  - de SHA-1-hash van het certificaat komt overeen met de declaratie, omdat niet-hoofdletter gevoelige teken reeks vergelijking alle spaties uitsluiten
 
-Vertrouwensfouten die zich voordoen tijdens het bouwen of valideren van kettingen, worden onderdrukt voor op duimdruk gebaseerde declaratie, met uitzondering van verlopen certificaten - hoewel er ook voor die aanvraag bepalingen bestaan. In het bijzonder worden fouten die verband houden met: intrekkingsstatus die onbekend of offline zijn, niet-vertrouwde root, ongeldig sleutelgebruik, gedeeltelijke keten worden beschouwd als niet-fatale fouten; het uitgangspunt, in dit geval, is dat het certificaat is slechts een envelop voor een sleutelpaar - de veiligheid ligt in het feit dat de cluster eigenaar heeft ingesteld op plaatsen maatregel om de prive-sleutel te beschermen.
+Eventuele vertrouwens fouten die zijn opgetreden tijdens het maken van een keten of validatie, worden onderdrukt voor declaraties op basis van een vinger afdruk, met uitzonde ring van verlopen certificaten-hoewel er ook voor dat geval voorzieningen bestaan. Met name de volgende fouten zijn opgetreden: de intrekkings status is onbekend of offline, niet-vertrouwde basis, ongeldig sleutel gebruik, worden beschouwd als niet-fatale fouten; de locatie is in dit geval dat het certificaat slechts een envelop voor een sleutel paar is: de beveiliging ligt in het feit dat de cluster eigenaar is ingesteld op posities meting om de persoonlijke sleutel te beveiligen.
 
-Het volgende fragment uit een clustermanifest is een voorbeeld van een dergelijke set op duimdruk gebaseerde validatieregels:
+Het volgende fragment van een cluster manifest exemplifies een set met validatie regels op basis van de vinger afdruk:
 
 ```xml
 <Section Name="Security">
@@ -77,25 +77,25 @@ Het volgende fragment uit een clustermanifest is een voorbeeld van een dergelijk
 </Section>
 ```
 
-Elk van de bovenstaande vermeldingen verwijzen naar een specifieke identiteit zoals eerder beschreven; elk item maakt het ook mogelijk om meerdere waarden op te geven, als door komma's gescheiden lijst met tekenreeksen. In dit voorbeeld, bij het succesvol valideren van de inkomende referenties, de presentator van een certificaat met de SHA-1 duimafdruk 'd5ec... 4264' krijgt de rol van "admin"; omgekeerd, een beller authenticeren met certificaat '7c8f ... 01b0' krijgt een 'gebruikersrol' die beperkt is tot voornamelijk alleen-lezen bewerkingen. Een inkomende beller die een certificaat presenteert waarvan de duimafdruk is ofwel 'abcd ... 1234' of 'ef01... 5678' wordt geaccepteerd als een peer node in het cluster. Ten slotte verwacht een client die verbinding maakt met een beheereindpunt van het cluster dat de duimafdruk van het servercertificaat 'ef01... 5678'. 
+Elk van de bovenstaande vermeldingen verwijzen naar een specifieke identiteit zoals eerder beschreven. elke vermelding biedt ook de mogelijkheid om meerdere waarden op te geven als een door komma's gescheiden lijst met teken reeksen. In dit voor beeld, bij het valideren van de binnenkomende referenties, de presentator van een certificaat met de SHA-1-vinger afdruk 5ec... voor 4264 wordt de rol Admin verleend. daarentegen wordt een aanroeper geverifieerd met het certificaat 7c8f... 01b0 ' wordt een rol ' gebruiker ' toegekend, beperkt tot voornamelijk alleen-lezen bewerkingen. Een binnenkomende beller die een certificaat presenteert waarvan de vinger afdruk ' abcd... is. 1234 ' of ' ef01... 5678 ' wordt geaccepteerd als een knoop punt op hetzelfde niveau in het cluster. Ten slotte zal een client die verbinding maakt met een beheer eindpunt van het cluster, de vinger afdruk van het server certificaat op ' ef01... 5678 '. 
 
-Zoals eerder vermeld, stelt Service Fabric wel bepalingen voor het accepteren van verlopen certificaten; de reden hiervoor is dat certificaten een beperkte levensduur hebben en, wanneer aangegeven door duimafdruk (die verwijst naar een specifieke certificaatinstantie), waardoor een certificaat verloopt, zal resulteren in ofwel het niet verbinden met het cluster, of een regelrechte ineenstorting van het cluster. Het is maar al te gemakkelijk om te vergeten of te verwaarlozen het draaien van een duimafdruk-vastgemaakt certificaat, en helaas het herstel van een dergelijke situatie is moeilijk.
+Zoals eerder vermeld, maakt Service Fabric bepalingen voor het accepteren van verlopen certificaten; de reden hiervoor is dat certificaten een beperkte levens duur hebben en, wanneer wordt aangegeven door een vinger afdruk (die verwijst naar een specifiek certificaat exemplaar), waardoor een certificaat verloopt als gevolg van het mislukken van de verbinding met het cluster of het samen vouwen van het cluster. Het is allemaal te gemakkelijk om te verg eten of Verwaarloos een door een vingerafdruk vastgemaakt certificaat en helaas is het herstel van een dergelijke situatie lastig.
 
-Daartoe kan de clustereigenaar uitdrukkelijk aangeven dat zelfondertekende certificaten die door duimafdruk zijn aangegeven, als volgt als geldig worden beschouwd:
+Daartoe kan de eigenaar van het cluster expliciet aangeven dat zelfondertekende certificaten die zijn gedeclareerd door de vinger afdruk, als volgt worden beschouwd:
 
 ```xml
   <Section Name="Security">
     <Parameter Name="AcceptExpiredPinnedClusterCertificate" Value="true" />
   </Section>
 ```
-Dit gedrag strekt zich niet uit tot door CA uitgegeven certificaten; als dat het geval zou zijn, zou een ingetrokken, tot nu toe ingetrokken verlopen certificaat 'geldig' kunnen worden zodra het niet meer in de certificaatintrekkingslijst van de CA zou staan en dus een beveiligingsrisico zou opleveren. Met zelfondertekende certificaten wordt de clustereigenaar beschouwd als de enige partij die verantwoordelijk is voor het beveiligen van de privésleutel van het certificaat, wat niet het geval is met door CA uitgegeven certificaten - de clustereigenaar is zich mogelijk niet bewust van hoe of wanneer zijn certificaat is gedeclareerd.
+Dit gedrag wordt niet uitgebreid naar certificaten die zijn uitgegeven door de certificerings instantie. Als dat het geval was, zou het verlopen, een bekend, gemanipuleerd verouderd certificaat zouden kunnen worden ' geldig ' zodra het niet meer zou worden afgehandeld in de certificaatintrekkingslijst van de certificerings instantie en zo een beveiligings risico vormen. Met zelfondertekende certificaten wordt de cluster eigenaar beschouwd als de enige partij die verantwoordelijk is voor de beveiliging van de persoonlijke sleutel van het certificaat. Dit is niet het geval met certificaten die door de certificerings instantie zijn uitgegeven. de cluster eigenaar kan niet weten hoe of wanneer het certificaat is gedeclareerd.
 
-#### <a name="common-name-based-certificate-validation-declarations"></a>Gemeenschappelijke certificaatvalidatiedeclaratie op basis van naam
-Gemeenschappelijke naamgebonden verklaringen nemen een van de volgende formulieren aan:
-- algemene naam onderwerp (alleen)
-- gemeenschappelijke naam met uitgevende instelling vastmaken
+#### <a name="common-name-based-certificate-validation-declarations"></a>Algemene declaraties voor certificaat validaties op basis van naam
+Algemene declaraties op basis van namen hebben een van de volgende vormen:
+- algemene naam van onderwerp (alleen)
+- algemene naam onderwerp met verlener vastmaken
 
-Laten we eerst een fragment uit een clustermanifest overwegen dat beide declaratiestijlen illustreren:
+Laten we eerst een fragment overwegen van een cluster manifest exemplifying beide declaratie stijlen:
 ```xml
     <Section Name="Security/ServerX509Names">
       <Parameter Name="server.demo.system.servicefabric.azure-int" Value="" />
@@ -104,18 +104,18 @@ Laten we eerst een fragment uit een clustermanifest overwegen dat beide declarat
       <Parameter Name="cluster.demo.system.servicefabric.azure-int" Value="1b45...844d,d7fe...26c8,3ac7...6960,96ea...fb5e" />
     </Section>
 ```
-De verklaringen verwijzen naar respectievelijk de server- en clusteridentiteiten; merk op dat de cn-gebaseerde verklaringen hun eigen secties in het clustermanifest hebben, los van de standaard 'Beveiliging'. In beide aangiften vertegenwoordigt de 'Naam' de gemeenschappelijke naam van het certificaat en vertegenwoordigt het veld 'Waarde' de verwachte emittent als volgt:
+De declaraties verwijzen respectievelijk naar de id's van de server en het cluster. Houd er rekening mee dat de op CN gebaseerde declaraties hun eigen secties hebben in het cluster manifest, gescheiden van de standaard beveiliging. In beide declaraties staat de ' naam ' voor de algemene onderwerpnaam van het certificaat en het veld ' waarde ' staat voor de verwachte uitgever, als volgt:
 
-- in het eerste geval wordt in de verklaring gesteld dat het gemeenschappelijke naamelement van het gedistingeerde onderwerp van het servercertificaat naar verwachting overeenkomt met de tekenreeks "server.demo.system.servicefabric.azure-int"; het lege veld 'Waarde' geeft de verwachting aan dat de hoofdmap van de certificaatketen wordt vertrouwd op het knooppunt/de machine waar het servercertificaat wordt gevalideerd; op Windows betekent dit dat het certificaat kan worden geketend tot een van de certificaten die zijn geïnstalleerd in het 'Trusted Root CA'-archief;
-- in het tweede geval wordt in de verklaring vermeld dat de presentator van een certificaat wordt geaccepteerd als een peer-node in het cluster als de algemene naam van het certificaat overeenkomt met de tekenreeks "cluster.demo.system.servicefabric.azure-int", *en* de duimafdruk van de directe uitgever van het certificaat overeenkomt met een van de door komma's gescheiden vermeldingen in het veld 'Waarde'. (Dit regeltype wordt in de volksmond 'gemeenschappelijke naam met emittentpinning' genoemd.)
+- in het eerste geval wordt met de verklaring aangegeven dat het algemene naam element van het DN-onderwerp van het server certificaat naar verwachting overeenkomt met de teken reeks ' server. demo. System. servicefabric. Azure-int '; het lege veld ' waarde ' geeft aan dat de basis van de certificaat keten wordt vertrouwd op het knoop punt/de computer waarop het server certificaat wordt gevalideerd; in Windows betekent dit dat het certificaat kan worden gekoppeld aan een van de certificaten die zijn geïnstalleerd in het archief van de vertrouwde basis certificerings instantie.
+- in het tweede geval geeft de verklaring aan dat de presentator van een certificaat als knoop punt van een peer in het cluster wordt geaccepteerd als de algemene naam van het certificaat overeenkomt met de teken reeks "cluster. demo. System. servicefabric. Azure-int" *en* de vinger afdruk van de directe verlener van het certificaat overeenkomt met een van de door komma's gescheiden vermeldingen in het veld waarde. (Dit regel type is colloquially bekend als ' algemene naam bij het vastmaken van de verlener '.)
 
-In beide gevallen wordt de keten van het certificaat gebouwd en zal naar verwachting foutloos zijn; dat wil zeggen dat intrekkingsfouten, gedeeltelijke keten- of tijdongeldig vertrouwensfouten als fataal worden beschouwd en de certificaatvalidatie mislukt. Het vastzetten van de emittenten zal resulteren in het beschouwen van de 'niet-vertrouwde root'-status als een niet-fatale fout; ondanks de schijn is dit een striktere vorm van validatie, omdat de clustereigenaar hierdoor de set geautoriseerde/geaccepteerde emittenten kan beperken tot hun eigen PKI.
+In beide gevallen wordt de keten van het certificaat gebouwd en wordt naar verwachting een fout vrij. dat wil zeggen, intrekkings fouten, gedeeltelijke keten of tijd-ongeldige vertrouwens fouten worden als onherstelbaar beschouwd en de certificaat validatie mislukt. Het vastmaken van de uitgevers leidt ertoe dat de status niet-vertrouwd root wordt beschouwd als een niet-fatale fout. Ondanks het uiterlijk is dit een striktere vorm van validatie, omdat de cluster eigenaar het mogelijk maakt om de set geautoriseerde/geaccepteerde verleners te beperken tot hun eigen PKI.
 
-Nadat de certificaatketen is gebouwd, wordt deze gevalideerd op basis van een standaard TLS/SSL-beleid met het gedeclareerde onderwerp als de externe naam; een certificaat wordt als een overeenkomst beschouwd als de gemeenschappelijke naam van het onderwerp of een van de alternatieve namen van het onderwerp overeenkomt met de GN-verklaring uit het clustermanifest. Jokertekens worden in dit geval ondersteund en de tekenreeksmatching is hoofdletters ongevoelig.
+Nadat de certificaat keten is gebouwd, wordt deze gevalideerd op basis van een standaard TLS/SSL-beleid met het gedeclareerde onderwerp als de externe naam; een certificaat wordt beschouwd als een overeenkomst als de algemene naam van het onderwerp of een van de alternatieve namen van het onderwerp overeenkomt met de CN-verklaring van het cluster manifest. Joker tekens worden in dit geval ondersteund en de teken reeks komt niet overeen met hoofdletter gevoelig.
 
-(We moeten verduidelijken dat de bovenstaande volgorde kan worden uitgevoerd voor elk type sleutelgebruik dat door het certificaat wordt gedeclareerd; als het certificaat het gebruik van de clientverificatiesleutel opgeeft, wordt de keten eerst gebouwd en geëvalueerd voor een clientrol. In geval van succes is de evaluatie voltooid en is de validatie succesvol. Als het certificaat niet het gebruik van clientverificatie heeft of als de validatie is mislukt, wordt de runtime van Service Fabric gebouwd en geëvalueerd voor serververificatie.)
+(We moeten verduidelijken dat de hierboven beschreven volg orde kan worden uitgevoerd voor elk type sleutel gebruik dat wordt gedeclareerd door het certificaat. als het certificaat het gebruik van de client verificatie sleutel opgeeft, wordt de keten eerst gebouwd en geëvalueerd voor een client functie. In het geval van geslaagd, is de evaluatie voltooid en is de validatie geslaagd. Als het certificaat niet het gebruik van client verificatie heeft, of als de validatie is mislukt, wordt door de Service Fabric runtime de keten voor Server verificatie gemaakt en geëvalueerd.)
 
-Als u het voorbeeld wilt voltooien, wordt in het volgende fragment de verklaring van clientcertificaten met algemene naam geïllustreerd:
+Voor het volt ooien van het voor beeld illustreert het volgende fragment het declareren van client certificaten op basis van de algemene naam:
 ```xml
     <Section Name="Security/AdminClientX509Names">
       <Parameter Name="admin.demo.client.servicefabric.azure-int" Value="1b45...844d,d7fe...26c8,3ac7...6960,96ea...fb5e" />
@@ -125,26 +125,26 @@ Als u het voorbeeld wilt voltooien, wordt in het volgende fragment de verklaring
     </Section>
 ```
 
-De bovenstaande verklaringen komen overeen met respectievelijk de beheerders- en gebruikersidentiteiten; validatie van certificaten die op deze manier zijn gedeclareerd, is precies zoals beschreven in de vorige voorbeelden van cluster- en servercertificaten.
+De bovenstaande declaraties komen respectievelijk overeen met de id's van de beheerder en gebruiker; validatie van de op deze manier gedeclareerde certificaten is precies zoals beschreven in de voor gaande voor beelden, van cluster-en server certificaten.
 
 > [!NOTE]
-> Gemeenschappelijke naamgebaseerde declaraties zijn bedoeld om de rotatie te vereenvoudigen en in het algemeen het beheer van clustercertificaten. Het wordt echter aanbevolen om de volgende aanbevelingen na te leven om de voortdurende beschikbaarheid en beveiliging van het cluster te garanderen:
-  * liever uitgevende instellingen vastpinnen boven vertrouwen op vertrouwde wortels
-  * vermijd het mengen van emittenten van verschillende PK's
-  * ervoor te zorgen dat alle verwachte emittenten op de certificaatverklaring worden vermeld; een niet-overeenkomende emittent zal resulteren in een mislukte validatie
-  * ervoor te zorgen dat de eindpunten van het certificaatbeleid van de PKI vindbaar, beschikbaar en toegankelijk zijn - dit betekent dat de AIA-, CRL- of OCSP-eindpunten op het bladcertificaat worden gedeclareerd en dat ze toegankelijk zijn zodat het gebouw van de certificaatketen kan worden voltooid.
+> Algemene op naam gebaseerde declaraties zijn bedoeld om de draaiing en het beheer van cluster certificaten in het algemeen te vereenvoudigen. Het wordt echter aangeraden om te voldoen aan de volgende aanbevelingen om te zorgen voor de voortdurende Beschik baarheid en beveiliging van het cluster:
+  * de voor keur voor het vastmaken van vertrouwens relatie voor vertrouwde hoofd mappen
+  * Vermijd het combi neren van verleners van verschillende Pki's
+  * Zorg ervoor dat alle verwachte verleners worden vermeld op de certificaat verklaring. een uitgever die niet overeenkomt, resulteert in een mislukte validatie
+  * Zorg ervoor dat de eind punten van het certificaat beleid van de PKI detecteerbaar, beschikbaar en toegankelijk zijn. Dit betekent dat de AIA, CRL of OCSP-eind punten zijn gedeclareerd op het blad certificaat en dat ze toegankelijk zijn, zodat het maken van de certificaat keten kan worden voltooid.
 
-Als u alles bij elkaar houdt, gebruikt de Runtime van de Service Fabric de beveiligingsinstellingen van het cluster om de referenties van de externe partij zoals hierboven beschreven te valideren wanneer u het geheel bij elkaar houdt. als dit lukt, wordt de beller/externe partij als geverifieerd beschouwd. Als de referentie overeenkomt met meerdere validatieregels, geeft de runtime de beller de hoogst bevoorrechte rol van een van de overeenkomende regels. 
+Als u een aanvraag voor een verbinding ontvangt in een cluster dat is beveiligd met X. 509-certificaten, moet de Service Fabric runtime de beveiligings instellingen van het cluster gebruiken om de referenties van de externe partij zoals hierboven beschreven, te valideren. Als dit lukt, wordt de aanroeper/externe partij beschouwd als geverifieerd. Als de referentie overeenkomt met meerdere validatie regels, zal de runtime de aanroeper de rol met de hoogste privileges van een van de overeenkomende regels verlenen. 
 
-### <a name="presentation-rules"></a>Presentatieregels
-In de vorige sectie werd beschreven hoe verificatie werkt in een cluster met certificaatbeheer. in deze sectie wordt uitgelegd hoe de runtime van de Service Fabric zelf de certificaten detecteert en laadt die het gebruikt voor in-clustercommunicatie; we noemen dit de "presentatie" regels.
+### <a name="presentation-rules"></a>Presentatie regels
+In de vorige sectie wordt beschreven hoe verificatie werkt in een cluster met certificaat beveiliging. in deze sectie wordt uitgelegd hoe de Service Fabric runtime zelf de certificaten detecteert en laadt die worden gebruikt voor de communicatie in het cluster. deze regels voor presentaties worden aangeroepen.
 
-Net als bij de validatieregels geven de presentatieregels een rol en de bijbehorende referentieverklaring op, uitgedrukt door duimafdruk of gemeenschappelijke naam. In tegenstelling tot de validatieregels hebben gemeenschappelijke op naam gebaseerde verklaringen geen voorzieningen voor het vastmaken van uitgevende instellingen; dit zorgt voor meer flexibiliteit en betere prestaties. De presentatieregels worden aangegeven in de sectie 'NodeType' van het clustermanifest, voor elk afzonderlijk knooppunttype; de instellingen worden gesplitst van de beveiligingssecties van het cluster, zodat elk knooppunttype zijn volledige configuratie in één sectie kan hebben. In azure servicefabric-clusters worden de certificaatdeclaratie van het knooppunttype standaard weergegeven in de bijbehorende instellingen in de sectie Beveiliging van de definitie van het cluster.
+Net als bij de validatie regels worden met de presentatie regels een rol en de bijbehorende referentie declaratie opgegeven, uitgedrukt in een vinger afdruk of algemene naam. In tegens telling tot de validatie regels hebben algemene op naam gebaseerde declaraties geen voorzieningen voor het vastmaken van een uitgever. Dit biedt meer flexibiliteit en verbeterde prestaties. De presentatie regels worden in de sectie (n) van het cluster manifest gedefinieerd voor elk type knoop punt. de instellingen worden gesplitst uit de beveiligings secties van het cluster, zodat elk knooppunt type de volledige configuratie in één sectie kan hebben. In azure Service Fabric clusters wordt het knooppunt type certificaat declaraties standaard ingesteld op de bijbehorende instellingen in de sectie beveiliging van de definitie van het cluster.
 
-#### <a name="thumbprint-based-certificate-presentation-declarations"></a>Verklaringen voor certificaatpresentatie op basis van duimafdruk
-Zoals eerder beschreven, maakt de runtime van de servicestructuur onderscheid tussen de rol als peer van andere knooppunten in het cluster en als de server voor clusterbeheerbewerkingen. In principe kunnen deze instellingen duidelijk worden geconfigureerd, maar in de praktijk hebben ze de neiging om uit te lijnen. Voor de rest van dit artikel gaan we ervan uit dat de instellingen overeenkomen met eenvoud.
+#### <a name="thumbprint-based-certificate-presentation-declarations"></a>Declaraties voor certificaat presentaties op basis van vinger afdruk
+Zoals eerder beschreven, maakt de Service Fabric runtime onderscheid tussen de bijbehorende functies als de peer van andere knoop punten in het cluster en als de server voor cluster beheer bewerkingen. In principe kunnen deze instellingen afzonderlijk worden geconfigureerd, maar in de praktijk worden ze meestal uitgelijnd. Voor de rest van dit artikel gaan we ervan uit dat de instellingen overeenkomen voor eenvoud.
 
-Laten we eens kijken naar het volgende fragment uit een clustermanifest:
+Laten we het volgende fragment van een cluster manifest overwegen:
 ```xml
   <NodeTypes>
     <NodeType Name="nt1vm">
@@ -156,10 +156,10 @@ Laten we eens kijken naar het volgende fragment uit een clustermanifest:
     </NodeType>
   </NodeTypes>
 ```
-Het element 'Clustercertificaat' toont het volledige schema, inclusief optionele parameters ('X509FindValueSecondary') of parameters met de juiste standaardwaarden ('X509StoreName'). de andere aangiften een verkorte vorm vertonen. In de bovenstaande clustercertificaatverklaring staat dat de beveiligingsinstellingen van knooppunten van het type 'nt1vm' zijn geïnitialiseerd met certificaat 'cc71.. 1984' als de primaire, en de '49e2.. 19d6' certificaat als secundair; beide certificaten worden verwacht te vinden\'in de LocalMachine My' certificaat op te slaan (of de Linux equivalent pad, *var / lib / sfcerts*).
+Het element ' ClusterCertificate ' illustreert het volledige schema, inclusief optionele para meters (' X509FindValueSecondary ') of gebruikers met de juiste standaard waarden (' X509StoreName '). de andere declaraties tonen een afgekort formulier. In de declaratie van het cluster certificaat hierboven wordt aangegeven dat de beveiligings instellingen van knoop punten van het type ' nt1vm ' zijn geïnitialiseerd met het certificaat cc71.. 1984 ' als de primaire en ' 49e2.. 19d6 ' certificaat als secundaire; beide certificaten worden naar verwachting gevonden in het LocalMachine\'mijn certificaat archief (of het bijbehorende Linux-pad, *var/lib/sfcerts*).
 
-#### <a name="common-name-based-certificate-presentation-declarations"></a>Gemeenschappelijke certificaatpresentatieverklaringen op basis van naam
-De certificaten van het knooppunttype kunnen ook worden aangegeven op gemeenschappelijke onderwerpnaam, zoals hieronder wordt geïllustreerd:
+#### <a name="common-name-based-certificate-presentation-declarations"></a>Algemene presentatie declaraties op basis van naam certificaten
+Het knooppunt type certificaten kunnen ook worden gedeclareerd door de algemene naam van het onderwerp, zoals hieronder geïllustreerd:
 
 ```xml
   <NodeTypes>
@@ -171,134 +171,134 @@ De certificaten van het knooppunttype kunnen ook worden aangegeven op gemeenscha
   </NodeTypes>
 ```
 
-Voor beide typen declaratie leest een servicefabricknooppunt de configuratie bij het opstarten, lokaliseren en laden van de opgegeven certificaten en sorteert deze in aflopende volgorde van het kenmerk NotAfter; verlopen certificaten worden genegeerd en het eerste element van de lijst wordt geselecteerd als de clientreferentie voor een Service Fabric-verbinding die door dit knooppunt wordt geprobeerd. (In feite is Service Fabric voorstander van het verst verlopende certificaat.)
+Voor beide typen declaraties leest een Service Fabric knoop punt de configuratie bij het opstarten, zoekt en laadt de opgegeven certificaten en sorteert deze in aflopende volg orde van hun NotAfter-kenmerk. verlopen certificaten worden genegeerd en het eerste element van de lijst is geselecteerd als de client referentie voor een Service Fabric verbindings poging door dit knoop punt. (In feite Service Fabric voor keur voor het meest verlopende certificaat.)
 
-Houd er rekening mee dat een certificaat voor presentatieverklaringen met een gemeenschappelijke naam wordt beschouwd als een overeenkomst als de algemene naam van het onderwerp gelijk is aan het veld X509FindValue (of X509FindValueSecondary) van de aangifte als een hoofdlettergevoelige, exacte tekenreeksvergelijking. Dit in tegenstelling tot de validatieregels, die wildcardmatching ondersteunen, evenals case-ongevoelige tekenreeksvergelijkingen.  
+Houd er rekening mee dat voor op de algemene naam gebaseerde presentatie declaraties een certificaat als een overeenkomst wordt beschouwd als de algemene naam van het onderwerp gelijk is aan het X509FindValue-veld (of X509FindValueSecondary) van de declaratie als een hoofdletter gevoelige, exacte vergelijking van teken reeksen. Dit is in tegens telling tot de validatie regels, die ondersteuning bieden voor joker tekens, evenals niet-hoofdletter gevoelige teken reeks vergelijkingen.  
 
-### <a name="miscellaneous-certificate-configuration-settings"></a>Diverse certificeringsconfiguratie-instellingen
-Eerder werd al gezegd dat de beveiligingsinstellingen van een Service Fabric-cluster het ook mogelijk maken om het gedrag van de verificatiecode subtiel te wijzigen. Hoewel het artikel over [de clusterinstellingen](service-fabric-cluster-fabric-settings.md) van Service Fabric de uitgebreide en meest up-to-date lijst met instellingen vertegenwoordigt, zullen we de betekenis van een select aantal van de beveiligingsinstellingen hier uitbreiden om de volledige weergave van verificatie op basis van certificaten te voltooien. Voor elke instelling leggen we de intentie, standaardwaarde/gedrag uit, hoe deze van invloed is op verificatie en welke waarden acceptabel zijn.
+### <a name="miscellaneous-certificate-configuration-settings"></a>Configuratie-instellingen voor diverse certificaten
+Voorheen werd vermeld dat de beveiligings instellingen van een Service Fabric cluster ook het gedrag van de verificatie code in de tussenwaarde kunnen veranderen. Hoewel het artikel on [service Fabric cluster instellingen](service-fabric-cluster-fabric-settings.md) de uitgebreide en meest recente lijst met instellingen vertegenwoordigt, zullen we uitzoomen op de betekenis van een aantal van de beveiligings instellingen die hier worden weer gegeven om de volledige weer gave van op certificaten gebaseerde verificatie uit te voeren. Voor elke instelling wordt de bedoeling, de standaard waarde/het gedrag, de manier waarop deze van invloed is op verificatie en welke waarden acceptabel zijn, uitgelegd.
 
-Zoals gezegd impliceert certificaatvalidatie altijd het bouwen en evalueren van de keten van het certificaat. Voor door CA uitgegeven certificaten brengt deze ogenschijnlijk eenvoudige OS API-aanroep meestal meerdere uitgaande oproepen met zich mee naar verschillende eindpunten van de uitgevende PKI, het incacheen van reacties enzovoort. Gezien de prevalentie van certificaatvalidatieoproepen in een Service Fabric-cluster, kunnen eventuele problemen in de eindpunten van de PKI resulteren in een verminderde beschikbaarheid van het cluster of een regelrechte uitsplitsing. Hoewel de uitgaande oproepen niet kunnen worden onderdrukt (zie hieronder in de faq-sectie voor meer informatie over dit), kunnen de volgende instellingen worden gebruikt om validatiefouten te maskeren die worden veroorzaakt door falende CRL-oproepen.
+Zoals vermeld, houdt certificaat validatie altijd in voor het bouwen en evalueren van de keten van het certificaat. Voor certificaten die door de certificerings instantie worden verleend, worden meestal enkele uitgaande aanroepen naar verschillende eind punten van de uitgevende PKI, het opslaan van antwoorden in de cache, uitgevoerd. Gezien de prevalentie van certificaat validatie aanroepen in een Service Fabric-cluster, kunnen eventuele problemen in de eind punten van de PKI leiden tot een lagere Beschik baarheid van het cluster of uitsplitsing. De uitgaande aanroepen kunnen niet worden onderdrukt (zie hieronder in het gedeelte met veelgestelde vragen voor meer informatie): de volgende instellingen kunnen worden gebruikt om validatie fouten te maskeren die worden veroorzaakt door mislukte CRL-aanroepen.
 
-  * CrlCheckingFlag - onder de sectie 'Beveiliging' wordt tekenreeks omgezet naar UINT. De waarde van deze instelling wordt door Service Fabric gebruikt om statusfouten in de certificaatketen te maskeren door het gedrag van ketengebouw te wijzigen; het wordt doorgegeven aan de Win32 CryptoAPI [CertGetCertificateChain-aanroep](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) als de parameter 'dwFlags' en kan worden ingesteld op elke geldige combinatie van vlaggen die door de functie worden geaccepteerd. Een waarde van 0 dwingt de Runtime van de Service Fabric om fouten in de vertrouwensstatus te negeren - dit wordt niet aanbevolen, omdat het gebruik ervan een aanzienlijke beveiligingsblootstelling zou vormen. De standaardwaarde is 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag: de teken reeks die is geconverteerd naar UINT in het gedeelte Security. De waarde van deze instelling wordt door Service Fabric gebruikt om status fouten in de certificaat keten te maskeren door het gedrag van het bouwen van de keten te wijzigen. het wordt door gegeven aan de Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) -aanroep als de para meter dwFlags en kan worden ingesteld op een geldige combi natie van vlaggen die worden geaccepteerd door de functie. Met de waarde 0 wordt de Service Fabric runtime gedwongen om status fouten van vertrouwens relaties te negeren. dit wordt niet aanbevolen, omdat het gebruik hiervan een belang rijke beveiligings risico vormt. De standaard waarde is 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
-  Wanneer te gebruiken: voor lokale tests, met zelfondertekende certificaten of ontwikkelaarscertificaten die niet volledig zijn gevormd/ niet over een goede infrastructuur voor openbare sleutels beschikken om de certificaten te ondersteunen. Kan ook worden gebruikt als mitigatie in lucht-gapped omgevingen tijdens de overgang tussen PKI's.
+  Wanneer gebruikt u: voor lokale tests met zelfondertekende certificaten of ontwikkelaars certificaten die niet volledig zijn opgemaakt/geen juiste open bare-sleutel infrastructuur hebben ter ondersteuning van de certificaten. Kan ook worden gebruikt als oplossing in gapped omgevingen tijdens de overgang tussen Pki's.
 
-  Hoe te gebruiken: we nemen een voorbeeld dat intrekkingscontrole dwingt om alleen toegang te krijgen tot url's in de cache. Ervan uitgaande dat:
+  Gebruik: we nemen een voor beeld waarbij intrekkings controle wordt afgedwongen voor toegang tot alleen in de cache opgeslagen Url's. Veronderstelling
   ```C++
   #define CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY         0x80000000
   ```
-  dan wordt de aangifte in het clustermanifest:
+  de declaratie in het cluster manifest wordt dan als volgt:
   ```xml
     <Section Name="Security">
       <Parameter Name="CrlCheckingFlag" Value="0x80000000" />
     </Section>
   ```
 
-  * IgnoreCrlOfflineError - onder de sectie 'Beveiliging' booleaan met een standaardwaarde van 'false'. Vertegenwoordigt een snelkoppeling voor het onderdrukken van de foutstatus 'intrekking offline' van de keten (of een foutstatus van een volgende ketenbeleidsvalidatie).
+  * IgnoreCrlOfflineError: Klik onder de sectie Security op Boolean met de standaard waarde false. Hiermee wordt een snelkoppeling aangeduid voor het onderdrukken van een status van het samen stellen van een intrekkings fout in de keten (of een volgende validatie fout status van het keten beleid).
 
-  Wanneer te gebruiken: lokale tests, of met ontwikkelaarscertificaten die niet worden ondersteund door een goede PKI. Gebruik als mitigatie in lucht-gapped omgevingen of wanneer bekend is dat de PKI ontoegankelijk is.
+  Gebruik: lokaal testen of met niet-ondersteunde ontwikkelaars certificaten van een juiste PKI. Gebruik als oplossing in gapped omgevingen of wanneer de PKI niet toegankelijk is.
 
-  Hoe te gebruiken:
+  Gebruik:
   ```xml
     <Section Name="Security">
       <Parameter Name="IgnoreCrlOfflineError" Value="true" />
     </Section>
   ```
 
-  Andere opmerkelijke instellingen (allemaal onder de sectie 'Beveiliging'):
-  * AcceptExpiredPinnedClusterCertificate - besproken in de sectie gewijd aan op duimdruk gebaseerde certificaatvalidatie; hiermee kan verlopen zelfondertekende clustercertificaten worden geaccepteerd. 
-  * CertificateExpirySafetyMargin - interval, uitgedrukt in minuten voorafgaand aan de NotAfter-tijdstempel van het certificaat en gedurende welke het certificaat wordt beschouwd als risico voor vervaldatum. Service Fabric controleert clustercertificaten(en) en geeft periodiek gezondheidsrapporten over de resterende beschikbaarheid. Binnen het interval 'veiligheid' worden deze gezondheidsrapporten verhoogd tot de status 'waarschuwing'. De standaardinstelling is 30 dagen.
-  * CertificateHealthReportingInterval - regelt de frequentie van statusrapporten met betrekking tot de resterende tijdgeldigheid van clustercertificaten. Rapporten worden slechts één keer per dit interval uitgestraald. De waarde wordt uitgedrukt in seconden, met een standaard van 8 uur.
-  * EnforcePrevalidationOnSecurityChanges - booleaan, regelt het gedrag van de clusterupgrade bij het detecteren van wijzigingen in beveiligingsinstellingen. Als de clusterupgrade is ingesteld op 'true', wordt geprobeerd ervoor te zorgen dat ten minste één van de certificaten die overeenkomen met een van de presentatieregels, een overeenkomstige validatieregel kan passeren. De prevalidatie wordt uitgevoerd voordat de nieuwe instellingen worden toegepast op een knooppunt, maar wordt alleen uitgevoerd op het knooppunt dat de primaire replica van de clusterbeheerservice host op het moment dat de upgrade wordt gestart. Met betrekking tot dit schrijven, de instelling heeft een standaard van 'false', en zal worden ingesteld op 'true' voor nieuwe Azure Service Fabric clusters met een runtime versie te beginnen met 7.1.
+  Andere belang rijke instellingen (allemaal onder het gedeelte Security):
+  * AcceptExpiredPinnedClusterCertificate: besproken in de sectie die is gericht op certificaat validatie op basis van een vinger afdruk. Hiermee kunt u verlopen zelfondertekende cluster certificaten accepteren. 
+  * CertificateExpirySafetyMargin-interval, uitgedrukt in minuten voorafgaand aan het NotAfter-tijds tempel van het certificaat, en gedurende welke het certificaat wordt beschouwd als risico voor de verval datum. Service Fabric bewaakt cluster certificaten en verzendt periodiek status rapporten over hun resterende Beschik baarheid. Binnen het veiligheids interval worden deze status rapporten verhoogd naar de status ' warning '. De standaard waarde is 30 dagen.
+  * CertificateHealthReportingInterval: Hiermee bepaalt u de frequentie van status rapporten met betrekking tot de resterende geldigheids duur van cluster certificaten. Rapporten worden slechts één keer per dit interval verzonden. De waarde wordt uitgedrukt in seconden, met een standaard instelling van 8 uur.
+  * EnforcePrevalidationOnSecurityChanges-Boolean, bepaalt het gedrag van cluster upgrades bij het detecteren van wijzigingen in de beveiligings instellingen. Als deze eigenschap is ingesteld op ' True ', probeert de upgrade van het cluster ervoor te zorgen dat ten minste één van de certificaten die overeenkomen met een van de presentatie regels, een bijbehorende validatie regel kan door geven. De validatie wordt uitgevoerd voordat de nieuwe instellingen worden toegepast op een wille keurig knoop punt, maar wordt alleen uitgevoerd op het knoop punt dat als host fungeert voor de primaire replica van de Cluster beheer-service op het moment dat de upgrade wordt gestart. Vanaf dit punt heeft de instelling de standaard waarde ' false ' en wordt ingesteld op ' True ' voor nieuwe Azure-Service Fabric clusters met een runtime versie die begint met 7,1.
  
-### <a name="end-to-end-scenario-examples"></a>End-to-end scenario (voorbeelden)
-We hebben gekeken naar presentatieregels, validatieregels en tweaken de vlaggen, maar hoe werkt dit allemaal samen? In deze sectie werken we door middel van twee end-to-end voorbeelden die laten zien hoe de beveiligingsinstellingen kunnen worden gebruikt voor veilige clusterupgrades. Merk op dat dit niet bedoeld is als een uitgebreid proefschrift over goed certificaatbeheer in Service Fabric, zoek naar een begeleidend artikel over dat onderwerp.
+### <a name="end-to-end-scenario-examples"></a>End-to-end-scenario (voor beelden)
+We hebben de presentatie regels, validatie regels en tweak markeringen bekeken, maar hoe werkt dit allemaal samen? In deze sectie wordt gebruikgemaakt van twee end-to-end-voor beelden die laten zien hoe de beveiligings instellingen kunnen worden gebruikt voor veilige cluster upgrades. Let op: dit is niet bedoeld als een uitgebreide Dissertation op het juiste certificaat beheer in Service Fabric, zoek naar een onderliggend artikel over dat onderwerp.
 
-De scheiding van presentatie- en validatieregels stelt de voor de hand liggende vraag (of bezorgdheid) van de vraag of ze kunnen uiteenlopen, en wat de gevolgen zouden zijn. Het is inderdaad mogelijk dat de selectie van een verificatiecertificaat door een knooppunt niet door de validatieregels van een ander knooppunt gaat. In feite is deze discrepantie de belangrijkste oorzaak van authenticatie-gerelateerde incidenten. Tegelijkertijd zorgt de scheiding van deze regels ervoor dat een cluster kan blijven werken tijdens een upgrade die de beveiligingsinstellingen van het cluster wijzigt. Bedenk dat, door eerst de validatieregels als eerste stap uit te breiden, alle knooppunten van het cluster zullen convergeren op de nieuwe instellingen terwijl ze nog steeds de huidige referenties gebruiken. 
+De schei ding van de presentatie-en validatie regels vormt de duidelijke vraag (of bezorgdheid) van of ze afwijkend kunnen zijn, en wat de gevolgen hiervan zouden zijn. Het is dus mogelijk dat de validatie regels van een ander knoop punt niet door de selectie van een verificatie certificaat worden door gegeven. Dit verschil is in feite de primaire oorzaak van incidenten met betrekking tot authenticatie. Op hetzelfde moment kan de schei ding van deze regels voor een cluster blijven werken tijdens een upgrade waarbij de beveiligings instellingen van het cluster worden gewijzigd. Houd er rekening mee dat door eerst de validatie regels als een eerste stap uit te breiden, alle knoop punten van het cluster convergeren op de nieuwe instellingen en nog steeds de huidige referenties gebruiken. 
 
-Bedenk dat in een cluster van ServiceFabric een upgrade wordt uitgevoerd via (maximaal 5) 'upgradedomeinen' of UD's. Alleen knooppunten in de huidige UD worden op een bepaald moment geüpgraded/gewijzigd en de upgrade gaat alleen door naar de volgende UD als de beschikbaarheid van het cluster dit toelaat. (Raadpleeg [clusterupgrades van Service Fabric](service-fabric-cluster-upgrade.md) en andere artikelen over hetzelfde onderwerp voor meer informatie.) Certificaat-/beveiligingswijzigingen zijn bijzonder riskant, omdat ze knooppunten uit het cluster kunnen isoleren of het cluster aan de rand van quorumverlies kunnen verlaten.
+Als er een upgrade wordt uitgevoerd, wordt er in een Service Fabric cluster gevoortgangt (Maxi maal 5) ' upgrade domeinen ' of een UDs. Alleen knoop punten in de huidige UD worden op een bepaald moment bijgewerkt/gewijzigd, en de upgrade gaat door naar de volgende UD alleen als de beschik baarheid van het cluster dit toestaat. (Raadpleeg [service Fabric cluster upgrades](service-fabric-cluster-upgrade.md) en andere artikelen in hetzelfde onderwerp voor meer informatie.) Wijzigingen in de certificaat/beveiliging zijn bijzonder riskant, omdat ze knoop punten uit het cluster kunnen isoleren of het cluster aan de rand van quorum verlies mogen verlaten.
 
-We gebruiken de volgende aantekening om de beveiligingsinstellingen van een knooppunt te beschrijven:
+De volgende notatie wordt gebruikt om de beveiligings instellingen van een knoop punt te beschrijven:
 
-Nk: {P:{TP=A}, V:{TP=A}}, waar:
-  - 'Nk' vertegenwoordigt een knooppunt in upgradedomein *k*
-  - 'P' vertegenwoordigt de huidige presentatieregels van het knooppunt (ervan uitgaande dat we alleen naar clustercertificaten verwijzen); 
-  - 'V' vertegenwoordigt de huidige validatieregels van het knooppunt (alleen clustercertificaat)
-  - 'TP=A' staat voor een op duimdruk gebaseerde declaratie (TP), waarbij 'A' een certificaat duimafdruk is
-  - "CN=B" vertegenwoordigt een gemeenschappelijke op naam gebaseerde verklaring (GN), waarbij "B" de gemeenschappelijke naam van het certificaat is 
+Lege: {P:{TP = A}, V:{TP = A}}, waarbij:
+  - ' Lege ' staat voor een knoop punt in het upgrade domein *k*
+  - ' P ' staat voor de huidige presentatie regels van het knoop punt (ervan uitgaande dat er alleen naar cluster certificaten wordt verwezen). 
+  - ' V ' staat voor de huidige validatie regels van het knoop punt (alleen cluster certificaat)
+  - ' TP = A ' vertegenwoordigt een op vinger afdruk gebaseerde declaratie (TP), waarbij ' A ' een vinger afdruk van een certificaat is
+  - ' CN = B ' vertegenwoordigt een algemene op naam gebaseerde declaratie (CN), waarbij ' B ' de algemene naam van het certificaat is 
 
-#### <a name="rotating-a-cluster-certificate-declared-by-thumbprint"></a>Een clustercertificaat roteren dat is opgegeven met duimafdruk
-In de volgende reeks wordt beschreven hoe een upgrade in 2 fasen kan worden gebruikt om veilig een secundair clustercertificaat te introduceren, gedeclareerd door duimafdruk; de eerste fase introduceert de nieuwe certificaatverklaring in de validatieregels en de tweede fase introduceert deze in de presentatieregels:
-  - beginstatus: N0 = {P:{TP=A}, V:{TP=A}}, ... Nk = {P:{TP=A}, V:{TP=A}} - het cluster is in rust, alle knooppunten delen een gemeenschappelijke configuratie
-  - bij het voltooien van upgradedomein 0: N0 = {P:{TP=A}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A}, V:{TP=A}} - knooppunten in UD0 presenteren certificaat A en accepteren certificaten A of B; alle andere knooppunten aanwezig en accepteren certificaat A alleen
-  - bij het voltooien van het laatste upgradedomein: N0 = {P:{TP=A}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A}, V:{TP=A, TP=B}} - alle knooppunten presenteren certificaat A, alle knooppunten accepteren certificaat A of B
+#### <a name="rotating-a-cluster-certificate-declared-by-thumbprint"></a>Een cluster certificaat draaien dat is gedeclareerd door de vinger afdruk
+In de volgende reeks wordt beschreven hoe een upgrade van twee fasen kan worden gebruikt om veilig een secundair cluster certificaat te introduceren, dat door de vinger afdruk is gedefinieerd. in de eerste fase wordt de nieuwe certificaat declaratie in de validatie regels geïntroduceerd en in de tweede fase wordt deze in de presentatie regels geïntroduceerd:
+  - begin status: N0 = {P:{TP = A}, V:{TP = A}},... Lege = {P:{TP = A}, V:{TP = A}}-het cluster is in rust, alle knoop punten delen een gemeen schappelijke configuratie
+  - bij het volt ooien van het upgrade domein 0: N0 = {P:{TP = A}, V:{TP = A, TP = B}},... Lege = {P:{TP = A}, V:{TP = A}}-knoop punten in UD0 geven certificaat A op en accepteren certificaten A of B; alle andere knoop punten aanwezig zijn en alleen certificaat accepteren
+  - bij het volt ooien van het laatste upgrade domein: N0 = {P:{TP = A}, V:{TP = A, TP = B}},... Lege = {P:{TP = A}, V:{TP = A, TP = B}}-alle knoop punten aanwezig certificaat A, alle knoop punten accepteren certificaat A of B
       
-Op dit punt is het cluster weer in evenwicht en kan de tweede fase van de upgrade/veranderende beveiligingsinstellingen beginnen:
-  - bij het voltooien van upgradedomein 0: N0 = {P:{TP=A, TP=B}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A}, V:{TP=A, TP=B}} - knooppunten in UD0 beginnen met het presenteren van B, die wordt geaccepteerd door een ander knooppunt in het cluster.
-  - bij het voltooien van het laatste upgradedomein: N0 = {P:{TP=A, TP=B}, V:{TP=A, TP=B}}, ... Nk = {P:{TP=A, TP=B}, V:{TP=A, TP=B}} - alle knooppunten zijn overgestapt op het presenteren van certificaat B. Certificaat A kan nu worden teruggetrokken/verwijderd uit de clusterdefinitie met een volgende set upgrades.
+Op dit moment is het cluster opnieuw in evenwicht en de tweede fase van de beveiligings instellingen voor bijwerken en wijzigen kan beginnen:
+  - bij het volt ooien van het upgrade domein 0: N0 = {P:{TP = A, TP = B}, V:{TP = A, TP = B}},... Lege = {P:{TP = A}, V:{TP = A, TP = B}}-knoop punten in UD0 beginnen met het presen teren van B, dat wordt geaccepteerd door een ander knoop punt in het cluster.
+  - bij het volt ooien van het laatste upgrade domein: N0 = {P:{TP = A, TP = B}, V:{TP = A, TP = B}},... Lege = {P:{TP = A, TP = B}, V:{TP = A, TP = B}}-alle knoop punten zijn overgeschakeld op certificaat B. certificaat A kan nu buiten gebruik worden gesteld/verwijderd uit de cluster definitie met een volgende set upgrades.
 
-#### <a name="converting-a-cluster-from-thumbprint--to-common-name-based-certificate-declarations"></a>Een cluster converteren van duimafdruk naar certificaatdeclaratie met algemene naam
-Op dezelfde manier volgt het wijzigen van het type certificaatdeclaratie (van duimafdruk naar algemene naam) hetzelfde patroon als hierboven. Houd er rekening mee dat validatieregels het mogelijk maken om de certificaten van een bepaalde rol aan te geven door zowel duimafdruk als gemeenschappelijke naam in dezelfde clusterdefinitie. De presentatieregels staan daarentegen slechts één vorm van aangifte toe. Overigens is de veilige benadering van het converteren van een clustercertificaat van duimafdruk naar gemeenschappelijke naam om het beoogde doelcertificaat eerst door duimafdruk te introduceren en die verklaring vervolgens te wijzigen in een gemeenschappelijke naamgebaseerde certificaat. In het volgende voorbeeld gaan we ervan uit dat duimafdruk 'A' en de gemeenschappelijke naam 'B' naar hetzelfde certificaat verwijzen. 
+#### <a name="converting-a-cluster-from-thumbprint--to-common-name-based-certificate-declarations"></a>Een cluster converteren van een vinger afdruk naar op algemene naam gebaseerde certificaat declaraties
+Op dezelfde manier wordt het type certificaat declaratie (van vinger afdruk naar algemene naam) gevolgd door hetzelfde patroon als hierboven. Houd er rekening mee dat validatie regels toestaan dat de certificaten van een bepaalde rol worden gedeclareerd door zowel de vinger afdruk als de algemene naam in dezelfde cluster definitie. Daarentegen is in de presentatie regels slechts één vorm van declaratie toegestaan. Incidenteel, de veilige benadering van het converteren van een cluster certificaat van een vinger afdruk naar een algemene naam is om het beoogde doel certificaat eerst op de vinger afdruk door te voeren en deze declaratie vervolgens te wijzigen in een algemene naam. In het volgende voor beeld wordt ervan uitgegaan dat de vinger afdruk ' A ' en de algemene naam ' B ' verwijzen naar hetzelfde certificaat. 
 
-  - beginstatus: N0 = {P:{TP=A}, V:{TP=A}}, ... Nk = {P:{TP=A}, V:{TP=A}} - het cluster is in rust, alle knooppunten delen een gemeenschappelijke configuratie, waarbij A de primaire duimafdruk van het certificaat is
-  - bij het voltooien van upgradedomein 0: N0 = {P:{TP=A}, V:{TP=A, CN=B}}, ... Nk = {P:{TP=A}, V:{TP=A}} - knooppunten in UD0 presenteren certificaat A en accepteren certificaten met duimafdruk A of gemeenschappelijke naam B; alle andere knooppunten aanwezig en accepteren certificaat A alleen
-  - bij het voltooien van het laatste upgradedomein: N0 = {P:{TP=A}, V:{TP=A, CN=B}}, ... Nk = {P:{TP=A}, V:{TP=A, CN=B}} - alle knooppunten presenteren certificaat A, alle knooppunten accepteren certificaat A (TP) of B (CN)
+  - begin status: N0 = {P:{TP = A}, V:{TP = A}},... Lege = {P:{TP = A}, V:{TP = A}}-het cluster is in rust, alle knoop punten delen een gemeen schappelijke configuratie, met een primaire certificaat vingerafdruk
+  - bij het volt ooien van het upgrade domein 0: N0 = {P:{TP = A}, V:{TP = A, CN = B}},... Lege = {P:{TP = A}, V:{TP = A}}-knoop punten in UD0 geven certificaat A op en accepteren certificaten met een vinger afdruk A of algemene naam B; alle andere knoop punten aanwezig zijn en alleen certificaat accepteren
+  - bij het volt ooien van het laatste upgrade domein: N0 = {P:{TP = A}, V:{TP = A, CN = B}},... Lege = {P:{TP = A}, V:{TP = A, CN = B}}-alle knoop punten aanwezig certificaat A, alle knoop punten accepteren certificaat A (TP) of B (CN)
 
-Op dit punt kunnen we doorgaan met het wijzigen van de presentatieregels met een volgende upgrade:
-  - bij het voltooien van upgradedomein 0: N0 = {P:{CN=B}, V:{TP=A, CN=B}}, ... Nk = {P:{TP=A}, V:{TP=A, CN=B}} - knooppunten in UD0 presenteren certificaat B gevonden door CN en accepteren certificaten met duimafdruk A of gemeenschappelijke naam B; alle andere knooppunten aanwezig en accepteren certificaat A alleen, geselecteerd door duimafdruk
-  - bij het voltooien van het laatste upgradedomein: N0 = {P:{CN=B}, V:{TP=A, CN=B}}, ... Nk = {P:{CN=B}, V:{TP=A, CN=B}} - alle knooppunten presenteren certificaat B gevonden door CN, alle knooppunten accepteren certificaat A (TP) of B (CN)
+Op dit moment kunnen we door gaan met het wijzigen van de presentatie regels met een volgende upgrade:
+  - bij het volt ooien van het upgrade domein 0: N0 = {P:{CN = B}, V:{TP = A, CN = B}},... Lege = {P:{TP = A}, V:{TP = A, CN = B}}-knoop punten in UD0 geven certificaat B op dat door CN wordt gevonden en accepteert certificaten met de vinger afdruk A of algemene naam B; alle andere knoop punten zijn aanwezig en accepteren alleen certificaat A, geselecteerd door de vinger afdruk
+  - bij het volt ooien van het laatste upgrade domein: N0 = {P:{CN = B}, V:{TP = A, CN = B}},... Lege = {P:{CN = B}, V:{TP = A, CN = B}}-alle knoop punten die door CN worden gevonden, worden door alle knoop punten certificaat A (TP) of B (CN) geaccepteerd
     
-Voltooiing van fase 2 markeert ook de conversie van het cluster naar gemeenschappelijke op naam gebaseerde certificaten; de validatiedeclaratie op basis van duimafdruk kan worden verwijderd in een volgende clusterupgrade.
+Als fase 2 is voltooid, wordt ook de conversie van het cluster naar algemene op naam gebaseerde certificaten gemarkeerd. de validatie declaraties op basis van de vinger afdruk kunnen worden verwijderd bij een volgende cluster upgrade.
 
 > [!NOTE]
-> In azure servicefabricclusters worden de bovenstaande werkstromen georkestreerd door de Service Fabric Resource Provider. de clustereigenaar is nog steeds verantwoordelijk voor het inrichten van certificaten in het cluster volgens de aangegeven regels (presentatie of validatie) en wordt aangemoedigd om wijzigingen in meerdere stappen uit te voeren.
+> In azure Service Fabric clusters worden de hierboven weer gegeven werk stromen georganiseerd door de resource provider van Service Fabric. de cluster eigenaar is nog steeds verantwoordelijk voor het inrichten van certificaten in het cluster volgens de aangegeven regels (presentatie of validatie) en wordt aangemoedigd om wijzigingen in meerdere stappen uit te voeren.
 
-In een apart artikel gaan we in op het onderwerp van het beheren en inrichten van certificaten in een Service Fabric-cluster.
+In een afzonderlijk artikel gaan we het onderwerp over het beheren en inrichten van certificaten in een Service Fabric-cluster.
 
-## <a name="troubleshooting-and-frequently-asked-questions"></a>Probleemoplossing en veelgestelde vragen
-Hoewel het debuggen van verificatiegerelateerde problemen in Service Fabric-clusters niet eenvoudig is, zijn we hoopvol over de volgende tips en tips die kunnen helpen. De eenvoudigste manier om onderzoeken te starten is om de gebeurtenislogboeken van De Structuur van de Service op de knooppunten van het cluster te onderzoeken - niet noodzakelijkerwijs alleen die met symptomen, maar ook knooppunten die omhoog zijn, maar niet in staat zijn om verbinding te maken met een van hun buren. Op Windows worden gebeurtenissen van betekenis meestal geregistreerd onder respectievelijk de kanalen 'Applications and Services Logs\Microsoft-ServiceFabric\Admin' of 'Operational'. Soms kan het nuttig zijn om [CAPI2 logging in te schakelen,](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)om meer details over de certificaatvalidatie vast te leggen, ophalen van CRL / CTL etc. (Vergeet niet om het uit te schakelen na het voltooien van de repro, kan het heel verbose.)
+## <a name="troubleshooting-and-frequently-asked-questions"></a>Problemen oplossen en veelgestelde vragen
+Bij het opsporen van problemen met betrekking tot de verificatie in Service Fabric clusters is het niet eenvoudig om de volgende hints te hopeful en tips kunnen helpen. De eenvoudigste manier om te beginnen met onderzoeken is het controleren van de Service Fabric gebeurtenis logboeken op de knoop punten van het cluster, niet noodzakelijkerwijs alleen die symptomen, maar ook knoop punten die wel of geen verbinding kunnen maken met een van hun neighbors. In Windows worden gebeurtenissen die van belang zijn, meestal vastgelegd in respectievelijk de kanalen ' toepassingen en services Logs\Microsoft-ServiceFabric\Admin ' of ' operationeel '. Soms kan het nuttig zijn om [Diagnostische CAPI2-logboek registratie in te scha kelen](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)om meer informatie vast te leggen over de validatie van het certificaat, het ophalen van CRL'S/CTL, enzovoort. (Vergeet niet om het uit te scha kelen na het volt ooien van de reproduceren.)
 
-Typische symptomen die zich manifesteren in een cluster met verificatieproblemen zijn: 
-  - knooppunten zijn down/cycling 
-  - verbindingspogingen worden afgewezen
-  - verbindingspogingen zijn timing uit
+Voor beelden van problemen die zich voordoen in een cluster met verificatie, zijn: 
+  - knoop punten zijn omlaag/scha kelen 
+  - Verbindings pogingen worden geweigerd
+  - time-out bij Verbindings pogingen
 
-Elk van de symptomen kan worden veroorzaakt door verschillende problemen, en dezelfde oorzaak kan verschillende manifestaties vertonen; als zodanig, we zullen gewoon een lijst van een kleine steekproef van typische problemen, met aanbevelingen voor de vaststelling van hen. 
+Elk van de symptomen kan worden veroorzaakt door verschillende problemen en dezelfde hoofd oorzaak kan verschillende manifesten weer geven. Daarom wordt er een klein voor beeld van gang bare problemen vermeld, met aanbevelingen voor het oplossen ervan. 
 
-* Knooppunten kunnen berichten uitwisselen, maar kunnen geen verbinding maken. Een mogelijke oorzaak voor verbindingspogingen om te worden beëindigd is de fout 'certificaat dat niet overeenkomt' - een van de partijen in een Service Fabric-to-Service Fabric-verbindingen presenteert een certificaat dat niet voldoet aan de validatieregels van de ontvanger. Kan vergezeld gaan van een van de volgende fouten: 
+* Knoop punten kunnen berichten uitwisselen, maar kunnen geen verbinding maken. Een mogelijke oorzaak voor het beëindigen van verbindings pogingen is de fout ' certificaat komt niet overeen ', een van de partijen in een Service Fabric-to-Service Fabric-verbindingen presenteert een certificaat dat de validatie regels van de ontvanger niet kan verwerken. Kan worden gecombineerd met een van de volgende fouten: 
   ```C++
   0x80071c44    -2147017660 FABRIC_E_SERVER_AUTHENTICATION_FAILED
   ```
-  Om verder te diagnosticeren/ te onderzoeken: op elk van de knooppunten die de verbinding proberen, bepaalt u welk certificaat wordt gepresenteerd; het certificaat te onderzoeken en de validatieregels te emuleren (controleer op duimafdruk of algemene naamgelijkheid, controleer de duimafdrukken van de uitgever indien opgegeven).
+  Ga als volgt te voor diagnose/onderzoek: op elk knoop punt dat verbinding probeert te voeren, bepaalt u welk certificaat wordt weer gegeven. Controleer het certificaat en gebruik en Simuleer de validatie regels (Controleer of de vinger afdruk of de algemene naam gelijkheid is opgegeven).
 
-  Een andere veel voorkomende begeleidende foutcode kan zijn:
+  Een andere veelvoorkomende fout code is:
   ```C++
   0x800b0109    -2146762487 CERT_E_UNTRUSTEDROOT
   ```
-  In dit geval wordt het certificaat met gemeenschappelijke naam aangegeven en is een van de volgende vermeldingen van toepassing:
-    - de emittenten niet zijn vastgemaakt en het basiscertificaat wordt niet vertrouwd, of
-    - de emittenten zijn vastgepind, maar de verklaring bevat niet de duimafdruk van de directe emittent van dit certificaat
+  In dit geval wordt het certificaat gedeclareerd met een algemene naam en is een van de volgende van toepassing:
+    - de verleners worden niet vastgemaakt en het basis certificaat wordt niet vertrouwd of
+    - de verleners zijn vastgemaakt, maar de verklaring bevat niet de vinger afdruk van de directe verlener van dit certificaat
 
-* Een knooppunt is omhoog, maar kan geen verbinding maken met andere knooppunten; andere knooppunten ontvangen geen binnenkomend verkeer van het falende knooppunt. In dit geval is het mogelijk dat het laden van het certificaat mislukt op het lokale knooppunt. Zoek naar de volgende fouten:
-  - certificaat niet gevonden - zorg ervoor dat de certificaten die zijn aangegeven in de presentatieregels kunnen worden opgelost door de inhoud van het localmachine\Mijn (of zoals opgegeven) certificaatarchief. 
-    Mogelijke oorzaken voor het falen kunnen zijn: 
-      - ongeldige tekens in de verklaring duimafdruk
+* Een knoop punt is actief, maar kan geen verbinding maken met andere knoop punten. andere knoop punten ontvangen geen binnenkomend verkeer van het knoop punt dat niet werkt. In dit geval is het mogelijk dat het laden van het certificaat mislukt op het lokale knoop punt. Zoek naar de volgende fouten:
+  - het certificaat is niet gevonden. Controleer of de certificaten die zijn gedeclareerd in de presentatie regels, kunnen worden omgezet door de inhoud van het LocalMachine\My (of het opgegeven certificaat archief). 
+    Mogelijke oorzaken voor fouten zijn: 
+      - ongeldige tekens in de vingerafdruk declaratie
       - het certificaat is niet geïnstalleerd
       - het certificaat is verlopen
-      - de gemeenschappelijke naamverklaring bevat het voorvoegsel "CN="
-      - de verklaring geeft een wildcard op en er bestaat geen exacte overeenkomst in de cert-winkel (declaratie: CN=*.mydomain.com, daadwerkelijk certificaat: CN=server.mydomain.com)
+      - de declaratie common-name bevat het voor voegsel CN =
+      - de declaratie bevat een Joker teken en er is geen exacte overeenkomst aanwezig in het certificaat archief (declaratie: CN = *. mijn domein. com, werkelijk certificaat: CN = server. mijn domein. com)
 
-  - onbekende referenties - geeft een ontbrekende privésleutel aan die overeenkomt met het certificaat, meestal vergezeld van foutcode: 
+  - onbekende referenties: geeft een ontbrekende persoonlijke sleutel aan die overeenkomt met het certificaat, meestal vergezeld van fout code: 
     ```C++ 
     0x8009030d  -2146893043 SEC_E_UNKNOWN_CREDENTIALS
     0x8009030e  -2146893042 SEC_E_NO_CREDENTIALS
     ```
-    Om te verhelpen, controleer het bestaan van de private key; controleren of SFAdmins toegang krijgt tot de privésleutel.verify SFAdmins is granted 'read|execute' access to the private key.
+    Controleer of de persoonlijke sleutel bestaat, om dit te verhelpen. Controleer of SFAdmins de toegang ' lezen | uitvoeren ' heeft gekregen voor de persoonlijke sleutel.
 
-  - slechte provider type - geeft een Crypto New Generation (CNG) certificaat ("Microsoft Software Key Storage Provider"); Op dit moment ondersteunt Service Fabric alleen CAPI1-certificaten. Meestal vergezeld van foutcode:
+  - onjuist provider type: geeft een CNG-certificaat (crypto grafie voor nieuwe generatie) aan ("micro soft-software sleutel opslag provider"); op dit moment biedt Service Fabric alleen ondersteuning voor CAPI1-certificaten. Meestal vergezeld van fout code:
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    Om het clustercertificaat opnieuw te maken met behulp van een CAPI1-provider (bijvoorbeeld "Microsoft Enhanced RSA en AES Cryptographic Provider") provider. Voor meer informatie over cryptoproviders, [raadpleegt u Cryptografische providers begrijpen](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)
+    U kunt dit oplossen door het cluster certificaat opnieuw te maken met behulp van een CAPI1 (bijvoorbeeld ' micro soft Enhanced RSA en AES Cryptographic Provider '). Raadpleeg voor meer informatie over crypto grafie de [informatie over cryptografische providers](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)
 

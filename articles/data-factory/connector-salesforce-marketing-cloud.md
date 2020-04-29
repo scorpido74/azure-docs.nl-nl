@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van Salesforce Marketing Cloud
-description: Meer informatie over het kopiëren van gegevens uit Salesforce Marketing Cloud naar ondersteunde sink data stores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren uit Sales Force marketing Cloud
+description: Meer informatie over het kopiëren van gegevens uit Sales Force marketing Cloud naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,52 +13,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416650"
 ---
-# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Gegevens uit Salesforce Marketing Cloud kopiëren met Azure Data Factory
+# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Gegevens kopiëren uit Sales Force marketing Cloud met behulp van Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit Salesforce Marketing Cloud te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Sales Force marketing Cloud te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Deze Salesforce Marketing Cloud-connector wordt ondersteund voor de volgende activiteiten:
+Deze Sales Force marketing-Cloud connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van Salesforce Marketing Cloud kopiëren naar elk ondersteund sink-gegevensarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens uit Sales Force marketing-Cloud kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-De Salesforce Marketing Cloud-connector ondersteunt OAuth 2-verificatie. Het is gebouwd op de top van de [Salesforce Marketing Cloud REST API.](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)
+De Sales Force marketing Cloud connector ondersteunt OAuth 2-verificatie. Het is gebouwd op basis van de [Sales Force marketing Cloud rest API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
->Deze connector biedt geen ondersteuning voor het ophalen van aangepaste objecten of aangepaste gegevensextensies.
+>Deze connector biedt geen ondersteuning voor het ophalen van aangepaste objecten of aangepaste gegevens extensies.
 
 ## <a name="getting-started"></a>Aan de slag
 
-U een pijplijn maken met kopieeractiviteit met behulp van .NET SDK, Python SDK, Azure PowerShell, REST API of Azure Resource Manager-sjabloon. Zie [Zelfstudie voor activiteit kopiëren](quickstart-create-data-factory-dot-net.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken.
+U kunt een pijp lijn maken met de Kopieer activiteit met behulp van .NET SDK, python SDK, Azure PowerShell, REST API of Azure Resource Manager sjabloon. Zie [zelf studie Kopieer activiteit](quickstart-create-data-factory-dot-net.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Salesforce Marketing Cloud-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Sales Force marketing Cloud connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor salesforce marketing cloud gekoppelde service:
+De volgende eigenschappen worden ondersteund voor aan Sales Force marketing Cloud gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **SalesforceMarketingCloud** | Ja |
-| clientId | De client-id die is gekoppeld aan de Salesforce Marketing Cloud-toepassing.  | Ja |
-| clientGeheim | Het klantgeheim dat is gekoppeld aan de Salesforce Marketing Cloud-toepassing. U ervoor kiezen om dit veld te markeren als een SecureString om het veilig op te slaan in ADF, of wachtwoord op te slaan in Azure Key Vault en ADF activiteit van daaruit te laten kopiëren bij het uitvoeren van gegevenskopie - meer informatie over [storereferenties in Key Vault](store-credentials-in-key-vault.md). | Ja |
-| gebruikVersleutelde eindpunten | Hiermee geeft u op of de eindpunten van de gegevensbron zijn versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
-| usePeerVerification | Hiermee geeft u op of u de identiteit van de server moet verifiëren wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
+| type | De eigenschap type moet worden ingesteld op: **SalesforceMarketingCloud** | Ja |
+| clientId | De client-ID die is gekoppeld aan de Sales Force marketing Cloud-toepassing.  | Ja |
+| clientSecret | Het client geheim dat is gekoppeld aan de Sales Force marketing Cloud-toepassing. U kunt dit veld markeren als SecureString om het veilig op te slaan in ADF, of het wacht woord op te slaan in Azure Key Vault en de ADF-Kopieer activiteit uit te voeren tijdens het uitvoeren van de gegevens kopie: meer informatie over [referenties voor opslaan in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
+| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
+| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -82,14 +82,14 @@ De volgende eigenschappen worden ondersteund voor salesforce marketing cloud gek
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Salesforce Marketing Cloud-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Sales Force marketing Cloud DataSet.
 
-Als u gegevens uit Salesforce Marketing Cloud wilt kopiëren, stelt u de eigenschap typeeigenschap van de gegevensset in op **SalesforceMarketingCloud.** De volgende eigenschappen worden ondersteund:
+Als u gegevens wilt kopiëren uit Sales Force marketing Cloud, stelt u de eigenschap type van de gegevensset in op **SalesforceMarketingCloudObject**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **SalesforceMarketingCloudObject** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -110,18 +110,18 @@ Als u gegevens uit Salesforce Marketing Cloud wilt kopiëren, stelt u de eigensc
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Salesforce Marketing Cloud-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Sales Force marketing Cloud-bron.
 
-### <a name="salesforce-marketing-cloud-as-source"></a>Salesforce Marketing Cloud als bron
+### <a name="salesforce-marketing-cloud-as-source"></a>Sales Force marketing Cloud als bron
 
-Als u gegevens uit Salesforce Marketing Cloud wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **SalesforceMarketingCloud.** De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Sales Force marketing Cloud, stelt u het bron type in de Kopieer activiteit in op **SalesforceMarketingCloudSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron voor kopieeractiviteit moet zijn ingesteld op: **SalesforceMarketingCloudSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SalesforceMarketingCloudSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -153,9 +153,9 @@ Als u gegevens uit Salesforce Marketing Cloud wilt kopiëren, stelt u het bronty
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

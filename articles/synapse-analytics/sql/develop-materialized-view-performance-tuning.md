@@ -1,6 +1,6 @@
 ---
 title: Prestaties afstemmen met gerealiseerde weergaven
-description: Aanbevelingen en overwegingen die u moet weten terwijl u gematerialiseerde weergaven gebruikt om uw queryprestaties te verbeteren.
+description: Aanbevelingen en overwegingen die u moet kennen wanneer u gerealiseerde weer gaven gebruikt om de query prestaties te verbeteren.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,99 +11,99 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429978"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
-In synapse SQL-pool bieden de gematerialiseerde weergaven een onderhoudsarme methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat query's worden gewijzigd. Dit artikel bespreekt de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven.
+In de Synapse-SQL-pool bieden de gerealiseerde weer gaven een lage onderhouds methode voor complexe analytische query's om snelle prestaties te krijgen zonder dat een query wordt gewijzigd. In dit artikel vindt u de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven.
 
-## <a name="materialized-views-vs-standard-views"></a>Gematerialiseerde weergaven versus standaardweergaven
+## <a name="materialized-views-vs-standard-views"></a>Gerealiseerde weer gaven versus standaard weergaven
 
-SQL-pool ondersteunt zowel standaard- als gematerialiseerde weergaven.  Beide zijn virtuele tabellen gemaakt met SELECT-expressies en gepresenteerd aan query's als logische tabellen.  Weergaven onthullen de complexiteit van algemene gegevensberekening en voegen een abstractielaag toe aan berekeningswijzigingen, zodat query's niet hoeven te worden herschreven.  
+SQL-pool ondersteunt zowel standaard als gerealiseerde weer gaven.  Beide zijn virtuele tabellen die zijn gemaakt met SELECT-expressies en worden weer gegeven als logische tabellen.  In weer gaven wordt de complexiteit van de algemene gegevens berekening onthuld en wordt een abstractie laag aan de berekenings wijzigingen toegevoegd, zodat u geen query's hoeft te herschrijven.  
 
-Een standaardweergave berekent de gegevens telkens wanneer de weergave wordt gebruikt.  Er zijn geen gegevens opgeslagen op schijf. Mensen gebruiken standaardweergaven meestal als een hulpmiddel waarmee de logische objecten en query's in een database kunnen worden georganiseerd.  Als u een standaardweergave wilt gebruiken, moet een query er rechtstreeks naar verwijzen.
+Een standaard weergave berekent de gegevens telkens wanneer de weer gave wordt gebruikt.  Er zijn geen gegevens opgeslagen op schijf. Personen gebruiken meestal standaard weergaven als een hulp middel waarmee u de logische objecten en query's in een Data Base kunt ordenen.  Als u een standaard weergave wilt gebruiken, moet er direct naar een query worden verwezen.
 
-Een gematerialiseerde weergave berekent, slaat en onderhoudt de gegevens in SQL-groep, net als een tabel.  Herberekening is niet nodig elke keer dat een gematerialiseerde weergave wordt gebruikt.  Daarom kunnen query's die alle of een subset van de gegevens in gematerialiseerde weergaven gebruiken, sneller presteren.  Nog beter, query's kunnen een gematerialiseerde weergave gebruiken zonder er direct naar te verwijzen, dus het is niet nodig om toepassingscode te wijzigen.  
+Met een gerealiseerde weer gave worden de gegevens in de SQL-groep, net als in een tabel, opgeslagen en bewaard.  Herberekening is niet nodig wanneer een gerealiseerde weer gave wordt gebruikt.  Daarom kunnen query's die gebruikmaken van alle of een subset van de gegevens in gerealiseerde weer gaven, betere prestaties krijgen.  Daarnaast kunt u met query's gebruikmaken van een gerealiseerde weer gave zonder dat hiervoor direct een verwijzing wordt gemaakt. u hoeft geen toepassings code te wijzigen.  
 
-De meeste standaardweergavevereisten zijn nog steeds van toepassing op een gematerialiseerde weergave. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over de gematerialiseerde weergavesyntaxis en andere vereisten .
+De meeste standaard weergave vereisten zijn nog steeds van toepassing op een gerealiseerde weer gave. Zie [gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over de syntaxis van gerealiseerde weer gaven en andere vereisten.
 
 | Vergelijking                     | Weergave                                         | Gerealiseerde weergave
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
-|Definitie weergeven                 | Opgeslagen in azure-gegevensmagazijn.              | Opgeslagen in azure-gegevensmagazijn.
-|Inhoud weergeven                    | Elke keer gegenereerd wanneer de weergave wordt gebruikt.   | Voorverwerkt en opgeslagen in Azure-gegevensmagazijn tijdens het maken van de weergave. Bijgewerkt als gegevens worden toegevoegd aan de onderliggende tabellen.
+|Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.
+|Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
 |Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
-|Snelheid om weergavegegevens uit complexe query's op te halen     | Langzaam                                         | Snel  
-|Extra opslag                   | Nee                                           | Ja
-|Syntaxis                          | WEERGAVE MAKEN                                  | GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECTEREN
+|Snelheid om weergave gegevens op te halen uit complexe query's     | Trage                                         | Hoog  
+|Extra opslag ruimte                   | Nee                                           | Ja
+|Syntaxis                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
 
-## <a name="benefits-of-using-materialized-views"></a>Voordelen van het gebruik van gematerialiseerde weergaven
+## <a name="benefits-of-using-materialized-views"></a>Voor delen van het gebruik van gerealiseerde weer gaven
 
-Een goed ontworpen gematerialiseerde weergave biedt de volgende voordelen:
+Een goed ontworpen gerealiseerde weer gave biedt de volgende voor delen:
 
-- Minder uitvoeringstijd voor complexe query's met JOIN's en geaggregeerde functies. Hoe complexer de query, hoe groter het potentieel voor uitvoeringstijdbesparing. Het meeste voordeel wordt behaald wanneer de berekeningskosten van een query hoog zijn en de resulterende gegevensset klein is.  
+- Beperkte uitvoerings tijd voor complexe query's met samen voegingen en statistische functies. Hoe complexer de query, des te hoger de mogelijkheden voor het besparen van de uitvoering. Het meest voor deel is opgedaan wanneer de kosten van een query hoog zijn en de resulterende gegevensset klein is.  
 
-- De optimizer in SQL-groep kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de uitvoeringsplannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere queryprestaties leveren en vereist geen query's om direct te verwijzen naar de gematerialiseerde weergaven.
+- De Optimizer in de SQL-groep kan automatisch geïmplementeerde gerealiseerde weer gaven gebruiken om de uitvoerings plannen voor query's te verbeteren.  Dit proces is transparant voor gebruikers die snellere query prestaties bieden en er hoeven geen query's te worden uitgevoerd om direct naar de gerealiseerde weer gaven te verwijzen.
 
-- Vereist weinig onderhoud op de uitzichten.  Een gematerialiseerde weergave slaat gegevens op twee plaatsen op, een geclusterde kolomarchiefindex voor de oorspronkelijke gegevens op de weergavetijd en een deltaarchief voor de incrementele gegevenswijzigingen.  Alle gegevenswijzigingen uit de basistabellen worden op een synchrone manier aan het deltaarchief toegevoegd.  Een achtergrondproces (tuple mover) verplaatst de gegevens periodiek van het deltaarchief naar de kolomarchiefindex van de weergave.  Met dit ontwerp kunnen gematerialiseerde weergaven dezelfde gegevens retourneren als het rechtstreeks opvragen van de basistabellen.
-- De gegevens in een gematerialiseerde weergave kunnen anders worden verdeeld dan de basistabellen.  
-- Gegevens in gematerialiseerde weergaven krijgen dezelfde voordelen voor hoge beschikbaarheid en tolerantie als gegevens in reguliere tabellen.  
+- Vereist weinig onderhoud voor de weer gaven.  In een gerealiseerde weer gave worden gegevens op twee plaatsen opgeslagen, een geclusterde column store-index voor de eerste gegevens op de weer gave en een Delta-Archief voor de incrementele gegevens wijzigingen.  Alle gegevens wijzigingen van de basis tabellen worden op synchrone wijze automatisch toegevoegd aan de Delta opslag.  Een achtergrond proces (tuple-overschakeling) verplaatst de gegevens van het Delta archief periodiek naar de column store-index van de weer gave.  Met dit ontwerp kunt u query's uitvoeren op gerealiseerde weer gaven om dezelfde gegevens te retour neren als het rechtstreeks uitvoeren van query's op de basis tabellen.
+- De gegevens in een gerealiseerde weer gave kunnen anders worden gedistribueerd vanuit de basis tabellen.  
+- Gegevens in gerealiseerde weer gaven hebben dezelfde hoge Beschik baarheid en tolerantie voor delen als gegevens in reguliere tabellen.  
 
-In vergelijking met andere leveranciers van gegevensmagazijnen bieden de gematerialiseerde weergaven die zijn geïmplementeerd in SQL-pool ook de volgende extra voordelen:
+In vergelijking met andere data warehouse-providers bieden de gerealiseerde weer gaven die in de SQL-groep zijn geïmplementeerd ook de volgende extra voor delen:
 
-- Automatische en synchrone gegevens vernieuwen met gegevenswijzigingen in basistabellen. Er is geen actie van de gebruiker vereist.
-- Brede geaggregeerde functieondersteuning. Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- De ondersteuning voor queryspecifieke gematerialiseerde weergaveaanbeveling.  Zie [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Automatische en synchrone gegevens vernieuwing met gegevens wijzigingen in basis tabellen. Er is geen gebruikers actie vereist.
+- Ondersteuning voor uitgebreide statistische functies. Zie [gerealiseerde weer gave maken als Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- De ondersteuning voor query-specifieke gerealiseerde weergave aanbeveling.  Zie [uitleggen (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Algemene scenario's  
 
-Gematerialiseerde weergaven worden meestal gebruikt in volgende scenario's:
+Gerealiseerde weer gaven worden doorgaans gebruikt in de volgende scenario's:
 
-**Noodzaak om de prestaties van complexe analytische query's te verbeteren tegen grote gegevens in omvang**
+**De prestaties van complexe analytische query's voor grote gegevens in omvang moeten worden verbeterd**
 
-Complexe analytische query's gebruiken doorgaans meer aggregatiefuncties en tabeljoins, waardoor meer rekenzware bewerkingen worden veroorzaakt, zoals shuffles en voegt ze samen in queryuitvoering.  Daarom duurt het langer voordat deze query's zijn voltooid, vooral op grote tabellen.  
+Complexe analytische query's gebruiken meestal meer aggregatie functies en tabel samenvoegingen, waardoor er meer compute-bewerkingen worden uitgevoerd, zoals wille keurige Volg ordes en samen voegingen bij het uitvoeren van query's.  Daarom duurt het langer voordat deze query's zijn voltooid, met name voor grote tabellen.  
 
-Gebruikers kunnen gematerialiseerde weergaven maken voor de gegevens die worden geretourneerd uit de algemene berekeningen van query's, zodat er geen herberekening vereist is wanneer deze gegevens nodig zijn door query's, waardoor lagere rekenkosten en een snellere queryrespons mogelijk zijn.
+Gebruikers kunnen gerealiseerde weer gaven maken voor de gegevens die worden geretourneerd door de algemene berekeningen van query's. Daarom is er geen herberekening vereist wanneer deze gegevens door query's nodig zijn, waardoor lagere reken kosten en een snellere query respons worden toegestaan.
 
-**Snellere prestaties nodig zonder of minimale querywijzigingen**
+**Behoefte aan snellere prestaties zonder of minimale query wijzigingen**
 
-Schema- en querywijzigingen in gegevensmagazijnen worden doorgaans tot een minimum beperkt om reguliere ETL-bewerkingen en rapportages te ondersteunen.  Mensen kunnen gematerialiseerde weergaven gebruiken voor het afstemmen van queryprestaties als de kosten die de weergaven maken, kunnen worden gecompenseerd door de winst in queryprestaties.
+Wijzigingen in schema's en query's in data warehouses worden doorgaans beperkt tot een minimum voor de ondersteuning van normale ETL-bewerkingen en rapportage.  Personen kunnen gerealiseerde weer gaven gebruiken voor het afstemmen van de query prestaties als de kosten die worden gemaakt door de weer gaven, kunnen worden gecompenseerd door de toename van de query prestaties.
 
-In vergelijking met andere tuningopties, zoals schaal- en statistiekbeheer, is het een veel minder impactvolle productiewijziging om een gematerialiseerde weergave te creëren en te behouden en de potentiële prestatiewinst is ook hoger.
+In vergelijking met andere afstemmings opties, zoals schalen en statistieken, is het een veel minder belang rijke productie wijziging om een gerealiseerde weer gave te maken en te onderhouden, en is de potentiële prestatie verbetering ook hoger.
 
-- Het maken of onderhouden van gematerialiseerde weergaven heeft geen invloed op de query's die worden uitgevoerd ten opzichte van de basistabellen.
-- De queryoptimizer kan de geïmplementeerde gematerialiseerde weergaven automatisch gebruiken zonder directe weergaveverwijzing in een query. Deze mogelijkheid vermindert de behoefte aan queryverandering in prestatieafstemming.
+- Het maken of onderhouden van gerealiseerde weer gaven heeft geen invloed op de query's die worden uitgevoerd op de basis tabellen.
+- De query optimalisatie kan automatisch gebruikmaken van de geïmplementeerde gerealiseerde weer gaven zonder directe weergave verwijzing in een query. Deze functie vermindert de nood zaak voor het afstemmen van de prestaties van de query.
 
-**Verschillende datadistributiestrategie nodig voor snellere queryprestaties**
+**U hebt verschillende strategieën voor het distribueren van gegevens nodig voor snellere query prestaties**
 
-Azure data warehouse is een gedistribueerd en massaal parallel processing (MPP) systeem.   Gegevens in een gegevensmagazijntabel worden verdeeld over 60 knooppunten met behulp van een van de drie [distributiestrategieën](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).  
+Azure data warehouse is een gedistribueerd en een systeem met een enorme parallelle verwerking (MPP).   Gegevens in een Data Warehouse-tabel worden verdeeld over 60-knoop punten met behulp van een van de drie [distributie strategieën](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin of gerepliceerd).  
 
-De gegevensverdeling wordt opgegeven op de tijd voor het maken van de tabel en blijft ongewijzigd totdat de tabel is verwijderd. Gematerialiseerde weergave wordt een virtuele tabel op schijf ondersteunt hash en round_robin gegevensdistributies.  Gebruikers kunnen een gegevensdistributie kiezen die verschilt van de basistabellen, maar die optimaal is voor de prestaties van query's die vaak de weergaven gebruiken.  
+De gegevens distributie wordt opgegeven tijdens het maken van de tabel en blijft ongewijzigd totdat de tabel wordt verwijderd. Gerealiseerde weer gave van een virtuele tabel op schijf ondersteunt hash-en round_robin gegevens distributies.  Gebruikers kunnen een gegevens distributie kiezen die afwijkt van de basis tabellen, maar wel optimaal is voor de prestaties van query's die regel matig gebruikmaken van de weer gaven.  
 
-## <a name="design-guidance"></a>Ontwerprichtlijnen
+## <a name="design-guidance"></a>Ontwerp richtlijnen
 
-Hier vindt u de algemene richtlijnen voor het gebruik van gematerialiseerde weergaven om de queryprestaties te verbeteren:
+Hier volgt de algemene richt lijnen voor het gebruik van gerealiseerde weer gaven om de query prestaties te verbeteren:
 
-**Ontwerp voor uw werklast**
+**Ontwerpen voor uw workload**
 
-Voordat u gematerialiseerde weergaven gaat maken, is het belangrijk om een diepgaand inzicht te hebben in uw werkbelasting in termen van querypatronen, belang, frequentie en de grootte van de resulterende gegevens.  
+Voordat u begint met het maken van gerealiseerde weer gaven, is het belang rijk dat u een grondige uitleg krijgt van uw werk belasting in termen van query patronen, urgentie, frequentie en de grootte van de resulterende gegevens.  
 
-Gebruikers kunnen EXPLAIN WITH_RECOMMENDATIONS <SQL_statement> uitvoeren voor de gematerialiseerde weergaven die door de queryoptimizer worden aanbevolen.  Aangezien deze aanbevelingen queryspecifiek zijn, is een gematerialiseerde weergave die ten goede komt aan één query mogelijk niet optimaal voor andere query's in dezelfde werkbelasting.  
+Gebruikers kunnen uitleg WITH_RECOMMENDATIONS <SQL_statement> uitvoeren voor de gerealiseerde weer gaven die worden aanbevolen door de query Optimizer.  Omdat deze aanbevelingen specifiek zijn voor query's, is het mogelijk dat een gerealiseerde weer gave die één query voordoet, niet optimaal is voor andere query's in dezelfde werk belasting.  
 
-Evalueer deze aanbevelingen met uw werkbelastingbehoeften in gedachten.  De ideale gematerialiseerde weergaven zijn die welke de prestaties van de werkbelasting ten goede komen.  
+Bekijk deze aanbevelingen met betrekking tot uw workload behoeften.  De ideale gerealiseerde weer gaven zijn die voor de prestaties van de werk belasting.  
 
-**Wees je bewust van de afweging tussen snellere query's en de kosten**
+**Houd rekening met de verhouding tussen snellere query's en de kosten**
 
-Voor elke gematerialiseerde weergave zijn er kosten voor gegevensopslag en kosten voor het onderhouden van de weergave.  Naarmate gegevens in de basistabellen veranderen, neemt de grootte van de gematerialiseerde weergave toe en verandert ook de fysieke structuur.  
+Voor elke gerealiseerde weer gave zijn er kosten voor de gegevens opslag en de kosten voor het onderhouden van de weer gave.  Naarmate er gegevens worden gewijzigd in de basis tabellen, neemt de grootte van de gerealiseerde weer gave toe en wordt de fysieke structuur ook gewijzigd.  
 
-Om degradatie van queryprestaties te voorkomen, wordt elke gematerialiseerde weergave afzonderlijk onderhouden door de datawarehouse-engine, inclusief het verplaatsen van rijen van deltastore naar de indexsegmenten van het kolomarchief en het consolideren van gegevenswijzigingen.  
+Om te voor komen dat de prestaties van query's worden vertraagd, wordt elke gerealiseerde weer gave afzonderlijk beheerd door de Data Warehouse-engine, inclusief het verplaatsen van rijen uit het Delta archief naar de column store-index segmenten en het consolideren van gegevens wijzigingen.  
 
-De onderhoudswerklast stijgt hoger wanneer het aantal gematerialiseerde weergaven en wijzigingen in de basistabel toeneemt.   Gebruikers moeten controleren of de kosten van alle gematerialiseerde weergaven kunnen worden gecompenseerd door de prestatiewinst van query's.  
+De werk belasting van het onderhoud stijgt hoger wanneer het aantal gerealiseerde weer gaven en basis tabel wijzigingen toeneemt.   Gebruikers moeten controleren of de kosten die zijn gemaakt voor alle gerealiseerde weer gaven, kunnen worden gecompenseerd door de prestatie verbetering van de query.  
 
-U deze query uitvoeren voor de lijst met gematerialiseerde weergave in een database:
+U kunt deze query uitvoeren voor de lijst met gerealiseerde weer gaven in een Data Base:
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -111,13 +111,13 @@ FROM sys.views V
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
 ```
 
-Opties om het aantal gematerialiseerde weergaven te verminderen:
+Opties om het aantal gerealiseerde weer gaven te verminderen:
 
-- Identificeer veelvoorkomende gegevenssets die vaak worden gebruikt door de complexe query's in uw werkbelasting.  Maak gematerialiseerde weergaven om deze gegevenssets op te slaan, zodat de optimizer ze kan gebruiken als bouwstenen bij het maken van uitvoeringsplannen.  
+- Identificeer veelgebruikte gegevens sets die vaak worden gebruikt door de complexe query's in uw werk belasting.  Maak gerealiseerde weer gaven om deze gegevens sets op te slaan, zodat de Optimizer ze kan gebruiken als bouw stenen bij het maken van uitvoerings plannen.  
 
-- Laat de gematerialiseerde weergaven vallen die weinig of niet meer nodig zijn.  Een uitgeschakelde gematerialiseerde weergave wordt niet onderhouden, maar brengt nog steeds opslagkosten met zich mee.  
+- De gerealiseerde weer gaven met weinig gebruik verwijderen of niet meer nodig zijn.  Een uitgeschakelde gerealiseerde weer gave wordt niet behouden, maar de opslag kosten worden nog steeds tegengesteld.  
 
-- Combineer gematerialiseerde weergaven die zijn gemaakt op dezelfde of vergelijkbare basistabellen, zelfs als hun gegevens elkaar niet overlappen.  Het combineren van gematerialiseerde weergaven kan resulteren in een grotere weergave in grootte dan de som van de afzonderlijke weergaven, maar de onderhoudskosten van de weergave moeten worden verminderd.  Bijvoorbeeld:
+- Combi neer gerealiseerde weer gaven die zijn gemaakt in dezelfde of vergelijk bare basis tabellen, zelfs als de gegevens elkaar niet overlappen.  Het combi neren van gerealiseerde weer gaven kan ertoe leiden dat een grotere weer gave groter is dan de som van de afzonderlijke weer gaven, maar de kosten voor de onderhouds beurt moeten worden verminderd.  Bijvoorbeeld:
 
 ```sql
 -- Query 1 would benefit from having a materialized view created with this SELECT statement
@@ -137,23 +137,23 @@ GROUP BY A, C
 
 ```
 
-**Niet alle prestatieafstemming vereist querywijziging**
+**Niet alle prestatie afstemming vereist een query wijziging**
 
-De optimizer van het gegevensmagazijn kan geïmplementeerde gematerialiseerde weergaven automatisch gebruiken om de queryprestaties te verbeteren.  Deze ondersteuning wordt transparant toegepast op query's die niet verwijzen naar de weergaven en op query's die niet-ondersteunde aggregaten gebruiken bij het maken van gematerialiseerde weergaven.  Er is geen querywijziging nodig. U het geschatte uitvoeringsplan van een query controleren om te bevestigen of een gematerialiseerde weergave wordt gebruikt.  
+De optimalisatie van het Data Warehouse kan automatisch geïmplementeerde gerealiseerde weer gaven gebruiken om de query prestaties te verbeteren.  Deze ondersteuning wordt op transparante wijze toegepast op query's die niet verwijzen naar de weer gaven en naar query's waarbij aggregaties worden gebruikt die niet worden ondersteund in gerealiseerde weer gaven maken.  Er is geen query wijziging nodig. U kunt het geschatte uitvoerings plan van een query controleren om te bevestigen of een gerealiseerde weer gave wordt gebruikt.  
 
-**Gematerialiseerde weergaven controleren**
+**Gerealiseerde weer gaven bewaken**
 
-Een gematerialiseerde weergave wordt opgeslagen in het gegevensmagazijn, net als een tabel met geclusterde kolomarchiefindex (CCI).  Het lezen van gegevens uit een gematerialiseerde weergave omvat het scannen van de index en het toepassen van wijzigingen vanuit het deltaarchief.  Wanneer het aantal rijen in het deltaarchief te hoog is, kan het oplossen van een query vanuit een gematerialiseerde weergave langer duren dan het rechtstreeks opvragen van de basistabellen.  Om degradatie van queryprestaties te voorkomen, is het een goede gewoonte om [DBCC-PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) uit te voeren om de overhead_ratio van de weergave (total_rows / base_view_row) te controleren.  Als de overhead_ratio te hoog is, u overwegen de gematerialiseerde weergave opnieuw te herstellen, zodat alle rijen in het deltaarchief worden verplaatst naar de kolomarchiefindex.  
+Een gerealiseerde weer gave wordt in het Data Warehouse opgeslagen net als een tabel met geclusterde column store-index (CCI).  Het lezen van gegevens vanuit een gerealiseerde weer gave omvat het scannen van de index en het Toep assen van wijzigingen in het Delta-archief.  Wanneer het aantal rijen in de Delta opslag te hoog is, kan het oplossen van een query vanuit een gerealiseerde weer gave langer duren dan het rechtstreeks opvragen van query's in de basis tabellen.  Om te voor komen dat de prestaties van query's worden vertraagd, is het een goed idee om [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) uit te voeren om de overhead_ratio van de weer gave te bewaken (total_rows/base_view_row).  Als de overhead_ratio te hoog is, kunt u de gerealiseerde weer gave opnieuw samen stellen, zodat alle rijen in het Delta archief worden verplaatst naar de column store-index.  
 
-**Gematerialiseerde weergave en resultaatset caching**
+**Gerealiseerde weer gave en caching van resultaten sets**
 
-Deze twee functies worden geïntroduceerd in SQL-pool rond dezelfde tijd voor queryprestaties afstemmen. Resultaatset caching wordt gebruikt voor het bereiken van hoge gelijktijdigheid en snelle responstijden van repetitieve query's tegen statische gegevens.  
+Deze twee functies worden rond dezelfde tijd geïntroduceerd in de SQL-groep voor het afstemmen van de query prestaties. Het opslaan in de cache voor de resultatenset wordt gebruikt voor het bereiken van hoge gelijktijdigheid en snelle respons tijden van herhaalde query's tegen statische gegevens.  
 
-Als u het resultaat in de cache wilt gebruiken, moet de vorm van de query voor cacheaanvragen overeenkomen met de query die de cache heeft geproduceerd.  Bovendien moet het in de cache opgeslagen resultaat van toepassing zijn op de hele query.  Met gematerialiseerde weergaven kunnen gegevenswijzigingen in de basistabellen worden aangebracht.  Gegevens in gematerialiseerde weergaven kunnen worden toegepast op een stuk van een query.  Met deze ondersteuning kunnen dezelfde gematerialiseerde weergaven worden gebruikt door verschillende query's die een bepaalde berekening delen voor snellere prestaties.
+Om het resultaat in de cache te kunnen gebruiken, moet de vorm van de cache die query vraagt overeenkomen met de query die de cache heeft geproduceerd.  Daarnaast moet het resultaat in de cache op de hele query worden toegepast.  Met gerealiseerde weer gaven kunnen gegevens wijzigingen in de basis tabellen worden aangebracht.  Gegevens in gerealiseerde weer gaven kunnen worden toegepast op een stukje van een query.  Met deze ondersteuning kunnen dezelfde gerealiseerde weer gaven worden gebruikt door verschillende query's die een bepaalde berekening delen voor betere prestaties.
 
 ## <a name="example"></a>Voorbeeld
 
-In dit voorbeeld wordt een TPCDS-achtige query gebruikt waarin klanten worden gevonden die meer geld uitgeven via de catalogus dan in winkels. Het identificeert ook de voorkeursklanten en hun land van herkomst.   De query omvat het selecteren van TOP 100-records uit de UNIE van drie sub-SELECT-instructies met som() en GROEP DOOR.
+In dit voor beeld wordt een TPCDS-achtige query gebruikt waarmee klanten die meer geld uitgeven via catalog dan in winkels. Het identificeert ook de voorkeurs klanten en hun land van oorsprong.   De query moet het selecteren van TOP 100-records uit de samen VOEGing van drie subselect-instructies waarbij SUM () en GROUP BY worden geselecteerd.
 
 ```sql
 WITH year_total AS (
@@ -271,7 +271,7 @@ ORDER BY t_s_secyear.customer_id
 OPTION ( LABEL = 'Query04-af359846-253-3');
 ```
 
-Controleer het geschatte uitvoeringsplan van de query.  Er zijn 18 shuffles en 17 joins operaties, die meer tijd in beslag nemen om uit te voeren. Laten we nu één gematerialiseerde weergave maken voor elk van de drie sub-SELECT-instructies.
+Controleer het geschatte uitvoerings plan van de query.  Er zijn 18 actie-en 17-koppelings bewerkingen, waardoor meer tijd nodig is om uit te voeren. We gaan nu één gerealiseerde weer gave maken voor elk van de drie subselect-instructies.
 
 ```sql
 CREATE materialized view nbViewSS WITH (DISTRIBUTION=HASH(customer_id)) AS
@@ -352,13 +352,13 @@ GROUP BY c_customer_id
 
 ```
 
-Controleer het uitvoeringsplan van de oorspronkelijke query opnieuw.  Nu verandert het aantal joins van 17 naar 5 en is er geen shuffle meer.  Klik op het pictogram Filterbewerking in het plan. De uitvoerlijst geeft aan dat de gegevens worden gelezen uit de gematerialiseerde weergaven in plaats van basistabellen.  
+Controleer het uitvoerings plan van de oorspronkelijke query opnieuw.  Nu wordt het aantal aansluitingen gewijzigd van 17 in 5 en is er geen wille keurige volg orde.  Klik op het pictogram voor de filter bewerking in het plan. In de uitvoer lijst ziet u dat de gegevens worden gelezen uit de gerealiseerde weer gaven in plaats van met basis tabellen.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 
-Bij gematerialiseerde weergaven wordt dezelfde query veel sneller uitgevoerd zonder dat de code wordt gewijzigd.  
+Met gerealiseerde weer gaven wordt dezelfde query veel sneller uitgevoerd zonder dat de code wordt gewijzigd.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Synapse SQL-ontwikkelingsoverzicht](develop-overview.md)voor meer ontwikkelingstips.
+Zie [Synapse SQL Development Overview](develop-overview.md)(Engelstalig) voor meer tips voor ontwikkel aars.
  

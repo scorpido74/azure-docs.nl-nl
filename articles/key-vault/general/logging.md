@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault-logboekregistratie | Microsoft Documenten
+title: Logboek registratie voor Azure Key Vault | Microsoft Docs
 description: Deze zelfstudie helpt u op weg met de logboekregistratie van Azure Sleutelkluis.
 services: key-vault
 author: msmbaldwin
@@ -11,85 +11,85 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422590"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u waarschijnlijk controleren hoe en wanneer uw sleutelkluizen worden geopend en door wie. U dit doen door logboekregistratie in te schakelen voor Azure Key Vault, waarmee informatie wordt opgeslagen in een Azure-opslagaccount dat u opgeeft. Er wordt automatisch een nieuwe container met de naam **insights-logs-auditevent** gemaakt voor uw opgegeven opslagaccount. U dit zelfde opslagaccount gebruiken voor het verzamelen van logboeken voor meerdere sleutelkluizen.
+Nadat u een of meer sleutel kluizen hebt gemaakt, wilt u waarschijnlijk controleren hoe en wanneer uw sleutel kluizen toegankelijk zijn, en door wie. U kunt dit doen door logboek registratie in te scha kelen voor Azure Key Vault, waarmee gegevens worden opgeslagen in een Azure Storage-account dat u opgeeft. Er wordt automatisch een nieuwe container met de naam **Insights-logs-audit event** gemaakt voor het opgegeven opslag account. U kunt dit opslag account gebruiken voor het verzamelen van Logboeken voor meerdere sleutel kluizen.
 
-U heeft 10 minuten na de sleutelkluisbewerking toegang tot uw logboekgegevens. In de meeste gevallen gaat het echter veel sneller.  Het is aan u om uw logboeken in uw opslagaccount te beheren:
+U kunt de logboek gegevens 10 minuten (Maxi maal) openen na de sleutel kluis bewerking. In de meeste gevallen gaat het echter veel sneller.  Het is aan u om uw logboeken in uw opslagaccount te beheren:
 
 * Gebruik standaardmethoden van Azure voor toegangsbeheer om uw logboeken te beveiligen door het aantal gebruikers te beperken dat toegang heeft tot de logboeken.
 * Verwijder de logboeken die u niet meer in uw opslagaccount wilt bewaren.
 
-Deze zelfstudie helpt u op weg met de logboekregistratie van Azure Sleutelkluis. U maakt een opslagaccount aan, schakelt logboekregistratie in en interpreteert de verzamelde logboekgegevens.  
+Deze zelfstudie helpt u op weg met de logboekregistratie van Azure Sleutelkluis. U maakt een opslag account, schakelt logboek registratie in en interpreteert de verzamelde logboek gegevens.  
 
 > [!NOTE]
-> Deze zelfstudie bevat geen instructies voor het maken van sleutelkluizen, sleutels of geheimen. Zie Wat is Azure Key Vault voor deze [informatie?](overview.md)). Of zie [deze gelijkwaardige zelfstudie](manage-with-cli2.md)voor azure cli-instructies voor meerdere platforms).
+> Deze zelfstudie bevat geen instructies voor het maken van sleutelkluizen, sleutels of geheimen. Zie [Wat is Azure Key Vault?](overview.md)) voor deze informatie. Of Zie [Deze equivalente zelf studie](manage-with-cli2.md)voor meer informatie over de verschillende platformen van Azure cli.
 >
-> In dit artikel worden Azure PowerShell-instructies gegeven voor het bijwerken van diagnostische logboekregistratie. U diagnostische logboekregistratie ook bijwerken met Azure Monitor in de sectie **Diagnostische logboeken** van de Azure-portal. 
+> Dit artikel bevat Azure PowerShell instructies voor het bijwerken van de diagnostische logboek registratie. U kunt Diagnostische logboek registratie ook bijwerken met behulp van Azure Monitor in de sectie **Diagnostische logboeken** van de Azure Portal. 
 >
 
-Zie Wat is Azure [Key Vault voor](overview.md)overzichtsinformatie over Key Vault? ). Zie de [prijspagina](https://azure.microsoft.com/pricing/details/key-vault/)voor informatie over waar Key Vault beschikbaar is.
+Zie [Wat is Azure Key Vault?](overview.md)) voor overzichts informatie over Key Vault. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie over waar Key Vault beschikbaar is.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Een bestaande sleutelkluis die u hebt gebruikt.  
-* Azure PowerShell, minimale versie van 1.0.0. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren en te koppelen aan uw Azure-abonnement. Als u Azure PowerShell al hebt geïnstalleerd en de versie niet kent, voert u vanaf de Azure PowerShell-console . `$PSVersionTable.PSVersion`  
+* Azure PowerShell, minimale versie van 1.0.0. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren en te koppelen aan uw Azure-abonnement. Als u Azure PowerShell al hebt geïnstalleerd en de versie niet kent, voert `$PSVersionTable.PSVersion`u in de Azure PowerShell-console in.  
 * Voldoende opslagruimte op Azure voor uw Sleutelkluis-logboeken.
 
-## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Verbinding maken met uw key vault-abonnement
+## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Verbinding maken met uw sleutel kluis-abonnement
 
-De eerste stap bij het instellen van key logging is om Azure PowerShell te richten op de sleutelkluis die u wilt registreren.
+De eerste stap bij het instellen van sleutel registratie is het verwijzen van Azure PowerShell naar de sleutel kluis die u wilt registreren.
 
-Start een Azure PowerShell-sessie en meld u aan bij uw Azure-account met de volgende opdracht:  
+Start een Azure PowerShell-sessie en meld u aan bij uw Azure-account met behulp van de volgende opdracht:  
 
 ```powershell
 Connect-AzAccount
 ```
 
-Voer in het pop-upvenster in de browser uw gebruikersnaam en wachtwoord voor uw Azure-account in. Azure PowerShell krijgt alle abonnementen die aan dit account zijn gekoppeld. PowerShell gebruikt standaard de eerste.
+Voer in het pop-upvenster in de browser uw gebruikersnaam en wachtwoord voor uw Azure-account in. Azure PowerShell worden alle abonnementen opgehaald die aan dit account zijn gekoppeld. Power Shell maakt standaard gebruik van de eerste.
 
-Mogelijk moet u het abonnement opgeven dat u hebt gebruikt om uw sleutelkluis te maken. Voer de volgende opdracht in om de abonnementen voor uw account te bekijken:
+Mogelijk moet u het abonnement opgeven dat u hebt gebruikt om de sleutel kluis te maken. Voer de volgende opdracht in om de abonnementen voor uw account weer te geven:
 
 ```powershell
 Get-AzSubscription
 ```
 
-Voer vervolgens het volgende in om het abonnement op te geven dat is gekoppeld aan de sleutelkluis die u registreert:
+Voer vervolgens het volgende in om het abonnement op te geven dat is gekoppeld aan de sleutel kluis:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-PowerShell naar het juiste abonnement wijzen is een belangrijke stap, vooral als u meerdere abonnementen aan uw account hebt gekoppeld. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie over het configureren van Azure PowerShell.
+Power shell is een belang rijke stap, met name als er meerdere abonnementen aan uw account zijn gekoppeld. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie over het configureren van Azure PowerShell.
 
-## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Een opslagaccount voor uw logboeken maken
+## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Een opslag account maken voor uw logboeken
 
-Hoewel u een bestaand opslagaccount voor uw logboeken gebruiken, maken we een opslagaccount dat is toegewezen aan Key Vault-logboeken. Voor het gemak voor wanneer we dit later moeten specificeren, slaan we de details op in een variabele met de naam **sa**.
+Hoewel u een bestaand opslag account voor uw logboeken kunt gebruiken, maakt u een opslag account dat is toegewezen aan Key Vault Logboeken. Voor het gemak dat we later moeten opgeven, slaan we de details op in een variabele met de naam **sa**.
 
-Voor extra beheergemak gebruiken we ook dezelfde resourcegroep als de groep die de sleutelkluis bevat. Vanuit de [zelfstudie aan](../secrets/quick-create-cli.md)de slag, deze resourcegroep heet **ContosoResourceGroup**en we blijven de locatie Oost-Azië gebruiken. Vervang deze waarden door uw eigen, indien van toepassing:
+Voor een extra beheer gemak gebruiken we ook dezelfde resource groep als die waarin de sleutel kluis is opgenomen. Vanuit de [aan de slag-zelf studie](../secrets/quick-create-cli.md)heeft deze resource groep de naam **ContosoResourceGroup**en gaan we de Azië-Oost locatie blijven gebruiken. Vervang deze waarden door uw eigen waarde, zoals van toepassing:
 
 ```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
 > [!NOTE]
-> Als u besluit een bestaand opslagaccount te gebruiken, moet het hetzelfde abonnement gebruiken als uw sleutelkluis. En het moet het Azure Resource Manager-implementatiemodel gebruiken, in plaats van het klassieke implementatiemodel.
+> Als u besluit om een bestaand opslag account te gebruiken, moet het hetzelfde abonnement gebruiken als uw sleutel kluis. En het moet het Azure Resource Manager-implementatie model gebruiken, in plaats van het klassieke implementatie model.
 >
 >
 
 ## <a name="identify-the-key-vault-for-your-logs"></a><a id="identify"></a>De sleutelkluis voor uw logboeken identificeren
 
-In de [get-started tutorial](../secrets/quick-create-cli.md), de belangrijkste kluis naam was **ContosoKeyVault**. We blijven die naam gebruiken en slaan de gegevens op in een variabele met de naam **kv:**
+In de [zelf studie aan](../secrets/quick-create-cli.md)de slag is de naam van de sleutel kluis **ContosoKeyVault**. We blijven die naam gebruiken en slaan de details op in een variabele met de naam **KV**:
 
 ```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
@@ -97,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging"></a><a id="enable"></a>Logboekregistratie inschakelen
 
-Om logboekregistratie voor Key Vault mogelijk te maken, gebruiken we de cmdlet **Set-AzDiagnosticSetting,** samen met de variabelen die we hebben gemaakt voor het nieuwe opslagaccount en de sleutelkluis. We stellen ook de **vlag ingeschakeld in op** **$true** en stellen de categorie in op **AuditEvent** (de enige categorie voor key vault logging):
+Voor het inschakelen van logboek registratie voor Key Vault gebruiken we de cmdlet **set-AzDiagnosticSetting** , samen met de variabelen die we hebben gemaakt voor het nieuwe opslag account en de sleutel kluis. U kunt de vlag **-enabled** ook instellen op **$True** en de categorie instellen op **audit event** (de enige categorie voor Key Vault logboek registratie):
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -115,9 +115,9 @@ De uitvoer ziet er als volgt uit:
         Enabled : False
         Days    : 0
 
-Deze uitvoer bevestigt dat logboekregistratie nu is ingeschakeld voor uw sleutelkluis en dat informatie wordt opgeslagen in uw opslagaccount.
+Met deze uitvoer wordt bevestigd dat logboek registratie nu is ingeschakeld voor uw sleutel kluis en dat er gegevens worden opgeslagen in uw opslag account.
 
-Optioneel u een bewaarbeleid voor uw logboeken zo instellen dat oudere logboeken automatisch worden verwijderd. Stel bijvoorbeeld het bewaarbeleid in door de vlag **-RetentionEnabled** in te stellen op **$true**en stel de parameter **-RetentionInDays** in op **90,** zodat logboeken ouder dan 90 dagen automatisch worden verwijderd.
+U kunt desgewenst een Bewaar beleid instellen voor uw logboeken, zodat oudere logboeken automatisch worden verwijderd. Stel bijvoorbeeld het Bewaar beleid in door de **-RetentionEnabled-** vlag in te stellen op **$True**en stel de para meter **-RetentionInDays** in op **90** zodat logboeken ouder zijn dan 90 dagen automatisch worden verwijderd.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -125,24 +125,24 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 Wat wordt in het logboek vastgelegd?
 
-* Alle geverifieerde REST API-aanvragen, inclusief mislukte aanvragen als gevolg van toegangsmachtigingen, systeemfouten of slechte aanvragen.
-* Bewerkingen op de sleutelkluis zelf, inclusief maken, verwijderen, toegangsbeleid voor sleutelkluizen instellen en belangrijke vault-kenmerken zoals tags bijwerken.
-* Bewerkingen op sleutels en geheimen in de sleutelkluis, waaronder:
+* Alle geverifieerde REST API aanvragen, met inbegrip van mislukte aanvragen als gevolg van toegangs machtigingen, systeem fouten of ongeldige aanvragen.
+* Bewerkingen op de sleutel kluis zelf, waaronder het maken, verwijderen, instellen van het toegangs beleid voor sleutel kluizen en het bijwerken van sleutel kluis kenmerken, zoals Tags.
+* Bewerkingen voor sleutels en geheimen in de sleutel kluis, waaronder:
   * Deze sleutels of geheimen maken, wijzigen of verwijderen.
-  * Tekenen, verifiëren, versleutelen, ontsleutelen, inpakken en uitpakken van sleutels, geheimen ophalen en sleutels en geheimen (en hun versies) vermelden.
-* Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voorbeelden zijn aanvragen die geen token aan toonder hebben, die misvormd zijn of verlopen of die een ongeldig token hebben.  
+  * Ondertekenen, controleren, versleutelen, ontsleutelen, decoderen en inpakken van sleutels, geheimen ophalen en sleutels en geheimen weer geven (en hun versie).
+* Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voor beelden zijn aanvragen die geen Bearer-token hebben, die ongeldig of verlopen zijn of die een ongeldig token hebben.  
 
 ## <a name="access-your-logs"></a><a id="access"></a>Toegang tot uw logboeken
 
-Key Vault-logboeken worden opgeslagen in de container **insights-logs-auditevent** in het opslagaccount dat u hebt opgegeven. Om de logboeken te bekijken, moet je blobs downloaden.
+Key Vault-logboeken worden opgeslagen in de container **Insights-logs-audit event** in het opslag account dat u hebt ingevoerd. Als u de logboeken wilt weer geven, moet u blobs downloaden.
 
-Maak eerst een variabele voor de containernaam. Je gebruikt deze variabele gedurende de rest van de walkthrough.
+Maak eerst een variabele voor de containernaam. U gebruikt deze variabele in de rest van de procedure.
 
 ```powershell
 $container = 'insights-logs-auditevent'
 ```
 
-Voer het als volgt op:
+Als u alle blobs in deze container wilt weer geven, voert u het volgende in:
 
 ```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
@@ -163,11 +163,11 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Zoals u zien in deze uitvoer, volgen de blobs een naamgevingsconventie:`resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Zoals u in deze uitvoer kunt zien, hebben de blobs de volgende naamgevings regels:`resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 De datum- en tijdwaarden maken gebruik van UTC.
 
-Omdat u hetzelfde opslagaccount gebruiken om logboeken voor meerdere bronnen te verzamelen, is de volledige bron-id in de blobnaam handig om alleen de blobs die u nodig hebt te openen of te downloaden. Maar eerst laten we zien hoe u alle blobs kunt downloaden.
+Omdat u hetzelfde opslag account kunt gebruiken voor het verzamelen van Logboeken voor meerdere resources, is de volledige Resource-ID in de BLOB-naam handig voor het openen of downloaden van alleen de blobs die u nodig hebt. Maar eerst laten we zien hoe u alle blobs kunt downloaden.
 
 Maak een map om de blobs te downloaden. Bijvoorbeeld:
 
@@ -187,7 +187,7 @@ Pipe deze lijst via **Get-AzStorageBlobContent** om de blobs te downloaden naar 
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Wanneer u deze tweede **/** opdracht uitvoert, maakt de scheidingsteken in de blobnamen een volledige mapstructuur onder de doelmap. U gebruikt deze structuur om de blobs te downloaden en op te slaan als bestanden.
+Wanneer u deze tweede opdracht uitvoert, maakt **/** het scheidings teken in de naam van de BLOB een volledige mapstructuur onder de doelmap. U gebruikt deze structuur om de blobs te downloaden en op te slaan als bestanden.
 
 Als u alleen specifieke blobs wilt downloaden, moet u jokertekens gebruiken. Bijvoorbeeld:
 
@@ -203,26 +203,26 @@ Als u alleen specifieke blobs wilt downloaden, moet u jokertekens gebruiken. Bij
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Als u alle logboeken voor de maand januari 2019 wilt downloaden, gebruikt u: `-Blob '*/year=2019/m=01/*'`
+* Als u alle logboeken voor de maand januari 2019 wilt downloaden, gebruikt `-Blob '*/year=2019/m=01/*'`u:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
-We gaan zo kijken wat er precies in de logboeken staat. Maar voordat we verder gaan met dat, moet je nog twee commando's weten:
+We gaan zo kijken wat er precies in de logboeken staat. Maar voordat we verdergaan, moet u nog twee opdrachten kennen:
 
 * De status van diagnostische instellingen voor uw sleutelkluisresource opvragen: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Logboekregistratie voor uw sleutelkluisresource uitschakelen: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>De Key Vault-logboeken interpreteren
 
-Afzonderlijke blobs worden opgeslagen als tekst, die is opgemaakt als een JSON-blob. Laten we eens kijken naar een voorbeeld log entry. Voer deze opdracht uit:
+Afzonderlijke blobs worden opgeslagen als tekst, die is opgemaakt als een JSON-blob. We bekijken een voor beeld van een logboek vermelding. Voer deze opdracht uit:
 
 ```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 
-Het retourneert een log vermelding vergelijkbaar met deze:
+Er wordt een logboek vermelding geretourneerd die er ongeveer als volgt uitziet:
 
 ```json
     {
@@ -247,35 +247,35 @@ Het retourneert een log vermelding vergelijkbaar met deze:
     }
 ```
 
-In de volgende tabel worden de veldnamen en -beschrijvingen weergegeven:
+De volgende tabel bevat de veld namen en beschrijvingen:
 
 | Veldnaam | Beschrijving |
 | --- | --- |
-| **Tijd** |Datum en tijd in UTC. |
-| **Resourceid** |Azure Resource Manager-bron-id. Voor Key Vault-logboeken is dit altijd de Key Vault-bron-id. |
+| **tegelijk** |De datum en tijd in UTC. |
+| **resourceId** |Azure Resource Manager Resource-ID. Voor Key Vault-Logboeken is dit altijd de Key Vault Resource-ID. |
 | **operationName** |Naam van de bewerking, zoals beschreven in de volgende tabel. |
-| **operationVersion** |REST API-versie gevraagd door de client. |
-| **Categorie** |Type resultaat. Voor Key Vault-logboeken is **AuditEvent** de enige beschikbare waarde. |
-| **resultType** |Resultaat van de REST API-aanvraag. |
+| **operationVersion** |REST API versie die door de client is aangevraagd. |
+| **rubriek** |Type resultaat. Voor Key Vault-Logboeken is **audit event** de enige beschik bare waarde. |
+| **resultType** |Resultaat van de REST API aanvraag. |
 | **resultSignature** |HTTP-status. |
 | **resultDescription** |Extra beschrijving van het resultaat, indien beschikbaar. |
 | **durationMs** |De tijd die nodig was om de REST-API-aanvraag af te handelen in milliseconden. Hierbij wordt geen rekening gehouden met de netwerklatentie, zodat de tijd die u aan de clientzijde meet mogelijk niet overeenkomt met de tijd die hier wordt weergegeven. |
-| **callerIpAddress** |IP-adres van de klant die het verzoek heeft ingediend. |
+| **callerIpAddress** |Het IP-adres van de client die de aanvraag heeft ingediend. |
 | **correlationId** |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
-| **Identiteit** |Identiteit van het token dat is gepresenteerd in de REST API-aanvraag. Dit is meestal een 'gebruiker', een 'serviceprincipal' of de combinatie 'user+appId', zoals in het geval van een verzoek dat voortvloeit uit een Azure PowerShell-cmdlet. |
-| **Eigenschappen** |Informatie die varieert op basis van de bewerking **(operationName).** In de meeste gevallen bevat dit veld clientgegevens (de tekenreeks van de gebruikersagent die door de client is doorgegeven), de exacte REST API-aanvraag URI en de HTTP-statuscode. Bovendien, wanneer een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **KeyCreate** of **VaultGet),** bevat het ook de sleutel URI (als "id"), vault URI of secret URI. |
+| **persoon** |Identiteit van het token dat is aangeboden in de REST API aanvraag. Dit is meestal een ' gebruiker ', een ' Service-Principal ' of de combi natie ' gebruiker + appId ', zoals in het geval van een aanvraag die resulteert van een Azure PowerShell-cmdlet. |
+| **eigenschappen** |Informatie die varieert op basis van de bewerking (**operationname**). In de meeste gevallen bevat dit veld client informatie (de teken reeks van de gebruikers agent die is door gegeven door de client), de exacte REST API aanvraag-URI en de HTTP-status code. Als er een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **VaultGet** **of een** service), bevat het ook de sleutel-URI (als id), kluis-URI of geheime URI. |
 
-De veldwaarden **van operationName** zijn in *objectverb-indeling.* Bijvoorbeeld:
+De waarde van het veld **operationname** bevindt zich in de *ObjectVerb* -indeling. Bijvoorbeeld:
 
-* Alle belangrijke kluisbewerkingen hebben de `Vault<action>` indeling, zoals `VaultGet` en `VaultCreate`.
-* Alle belangrijke bewerkingen hebben het `Key<action>` formaat, zoals `KeySign` en `KeyList`.
-* Alle geheime bewerkingen hebben het `Secret<action>` formaat, zoals `SecretGet` en `SecretListVersions`.
+* Alle sleutel kluis bewerkingen hebben de `Vault<action>` indeling, zoals `VaultGet` en `VaultCreate`.
+* Alle sleutel bewerkingen hebben de `Key<action>` indeling, zoals `KeySign` en `KeyList`.
+* Alle geheime bewerkingen hebben de `Secret<action>` indeling, zoals `SecretGet` en `SecretListVersions`.
 
-In de volgende tabel worden de **bewerkingswaarden** en de bijbehorende REST API-opdrachten weergegeven:
+De volgende tabel geeft een lijst van de **operationname** waarden en de bijbehorende rest API opdrachten:
 
-| operationName | REST API, opdracht |
+| operationName | REST API opdracht |
 | --- | --- |
-| **Verificatie** |Verifiëren via Azure Active Directory-eindpunt |
+| **Verificatie** |Verifiëren via Azure Active Directory-eind punt |
 | **VaultGet** |[Informatie over een sleutelkluis ophalen](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Een sleutelkluis maken of bijwerken](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Een sleutelkluis verwijderen](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
@@ -284,7 +284,7 @@ In de volgende tabel worden de **bewerkingswaarden** en de bijbehorende REST API
 | **KeyCreate** |[Een sleutel maken](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
 | **KeyGet** |[Informatie over een sleutel ophalen](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
 | **KeyImport** |[Een sleutel in een kluis importeren](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[Een back-up maken van een sleutel](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
+| **KeyBackup** |[Een back-up van een sleutel maken](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
 | **KeyDelete** |[Een sleutel verwijderen](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
 | **KeyRestore** |[Een sleutel herstellen](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
 | **KeySign** |[Aanmelden met een sleutel](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
@@ -297,7 +297,7 @@ In de volgende tabel worden de **bewerkingswaarden** en de bijbehorende REST API
 | **KeyList** |[De sleutels in een kluis weergeven](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
 | **KeyListVersions** |[De versies van een sleutel weergeven](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
 | **SecretSet** |[Een geheim maken](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[Krijg een geheim](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| **SecretGet** |[Een geheim ophalen](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
 | **SecretUpdate** |[Een geheim bijwerken](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
 | **SecretDelete** |[Een geheim verwijderen](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Geheimen in een kluis weergeven](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
@@ -305,16 +305,16 @@ In de volgende tabel worden de **bewerkingswaarden** en de bijbehorende REST API
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor-logboeken gebruiken
 
-U de Key Vault-oplossing in Azure Monitor-logboeken gebruiken om key vault **auditevent-logboeken** te bekijken. In Azure Monitor-logboeken gebruikt u logboekquery's om gegevens te analyseren en de informatie te krijgen die u nodig hebt. 
+U kunt de Key Vault oplossing in Azure Monitor Logboeken gebruiken om Key Vault **audit event** -logboeken te controleren. In Azure Monitor-Logboeken kunt u logboek query's gebruiken om gegevens te analyseren en de benodigde informatie op te halen. 
 
-Zie [Azure Key Vault-oplossing in Azure Monitor-logboeken](../../azure-monitor/insights/azure-key-vault.md)voor meer informatie, waaronder het instellen van dit. Dit artikel bevat ook instructies als u moet migreren van de oude Key Vault-oplossing die is aangeboden tijdens de preview van Azure Monitor-logboeken, waarbij u uw logboeken eerst hebt doorgestuurd naar een Azure-opslagaccount en azure-monitorlogboeken hebt geconfigureerd om van daaruit te lezen.
+Zie [Azure Key Vault-oplossing in azure monitor-logboeken](../../azure-monitor/insights/azure-key-vault.md)voor meer informatie over hoe u dit kunt instellen. Dit artikel bevat ook instructies voor het migreren van de oude Key Vault-oplossing die werd aangeboden tijdens de preview-versie van Azure Monitor logboeken, waar u uw logboeken voor het eerst naar een Azure-opslag account hebt gerouteerd en Azure Monitor Logboeken hebt geconfigureerd om daar te lezen.
 
 ## <a name="next-steps"></a><a id="next"></a>Volgende stappen
 
-Zie [Azure Key Vault gebruiken vanuit een webtoepassing](tutorial-net-create-vault-azure-web-app.md)voor een zelfstudie die Azure Key Vault in een .NET-webtoepassing gebruikt.
+Zie [Azure Key Vault gebruiken in een webtoepassing](tutorial-net-create-vault-azure-web-app.md)voor een zelf studie over het gebruik van Azure Key Vault in een .NET-webtoepassing.
 
 Zie de [Ontwikkelaarshandleiding voor Azure Key Vault](developers-guide.md) voor het programmeren van verwijzingen.
 
-Zie [Azure Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)voor een lijst met Azure PowerShell 1.0-cmdlets voor Azure Key Vault.
+Zie [Azure Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)voor een lijst met Azure PowerShell 1,0-cmdlets voor Azure Key Vault.
 
-Zie [Key Vault instellen met end-to-end sleutelrotatie en -controle](../secrets/key-rotation-log-monitoring.md)voor een zelfstudie over sleutelrotatie en logboekcontrole met Azure Key Vault.
+Zie [Key Vault met end-to-end-draaiing en controle instellen](../secrets/key-rotation-log-monitoring.md)voor een zelf studie over de belangrijkste draaiing en logboek controle met Azure Key Vault.

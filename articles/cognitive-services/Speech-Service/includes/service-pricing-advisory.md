@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: trbye
 ms.openlocfilehash: 5d1ec3fcc817431622c4f50a49afe8d61797c690
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422163"
 ---
 > [!NOTE]
-> Bij het testen voert het systeem een transcriptie uit. Dit is belangrijk om in gedachten te houden, omdat de prijzen per serviceaanbod en abonnementsniveau variëren. Altijd verwijzen naar de officiële Azure Cognitive Services-prijzen - Spraakservice voor [de laatste details.](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services)
+> Bij het testen van het systeem wordt een transcriptie uitgevoerd. Het is belang rijk dat u rekening houdt met de prijs per service aanbieding en abonnements niveau. Raadpleeg altijd de officiële Azure Cognitive Services Prijs informatie-spraak service voor [de meest recente gegevens](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services).

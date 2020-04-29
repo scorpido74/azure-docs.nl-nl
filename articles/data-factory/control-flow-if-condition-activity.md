@@ -1,6 +1,6 @@
 ---
-title: Als activiteit Voorwaarde in Azure Data Factory
-description: Met de activiteit Als voorwaarde u de verwerkingsstroom beheren op basis van een voorwaarde.
+title: Als conditie activiteit in Azure Data Factory
+description: Met de activiteit if-voor waarde kunt u de verwerkings stroom beheren op basis van een voor waarde.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417170"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Als activiteit Voorwaarde in Azure Data Factory
+# <a name="if-condition-activity-in-azure-data-factory"></a>Als conditie activiteit in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in een programmeertaal. Er wordt een reeks activiteiten mee geëvalueerd als de voorwaarde resulteert in `true` en een andere reeks activiteiten als de voorwaarde resulteert in `false`. 
@@ -63,23 +63,23 @@ De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in
 }
 ```
 
-## <a name="type-properties"></a>Eigenschappen typen
+## <a name="type-properties"></a>Type-eigenschappen
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de activiteit als voorwaarde. | Tekenreeks | Ja
+name | De naam van de activiteit voor de if-voor waarde. | Tekenreeks | Ja
 type | Moet worden ingesteld op **IfCondition** | Tekenreeks | Ja
-expressie | Expressie die moet worden geëvalueerd op waar of onwaar | Expressie met resultaattype booleaan | Ja
-ifTrueActivities ifTrueActivities | Set activiteiten die worden uitgevoerd wanneer de `true`expressie evalueert tot . | Matrix | Ja
-ifFalseActivities ifFalseActivities ifFalseActivities ifFalse | Set activiteiten die worden uitgevoerd wanneer de `false`expressie evalueert tot . | Matrix | Ja
+expressie | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie met Booleaanse waarde voor resultaat type | Ja
+ifTrueActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd `true`. | Matrix | Ja
+ifFalseActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd `false`. | Matrix | Ja
 
 ## <a name="example"></a>Voorbeeld
-De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een uitvoermap. De uitvoermap wordt bepaald door de waarde van de parameter pipeline: routeSelectie. Als de waarde van routeSelectie waar is, worden de gegevens gekopieerd naar outputPath1. En als de waarde van routeSelectie onjuist is, worden de gegevens gekopieerd naar outputPath2. 
+Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een uitvoermap gekopieerd. De uitvoermap wordt bepaald door de waarde van de pijplijn parameter: routeSelection. Als de waarde van routeSelection is ingesteld op True, worden de gegevens gekopieerd naar outputPath1. Als de waarde van routeSelection False is, worden de gegevens gekopieerd naar outputPath2. 
 
 > [!NOTE]
-> In deze sectie worden JSON-definities en voorbeeld-PowerShell-opdrachten voor het uitvoeren van de pijplijn opgenomen. Zie [zelfstudie: maak een gegevensfabriek met Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een stapsgewijze handleiding voor het maken van een Data Factory-pijplijn met azure PowerShell- en JSON-definities.
+> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Pijplijn met als-voorwaardeactiviteit (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met activiteit als voor waarde (Adfv2QuickStartPipeline. json)
 
 ```json
 {
@@ -180,7 +180,7 @@ De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een uitvoe
 }
 ```
 
-Een ander voorbeeld voor expressie is: 
+Een ander voor beeld van een expressie is: 
 
 ```json
 "expression":  {
@@ -190,7 +190,7 @@ Een ander voorbeeld voor expressie is:
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Gekoppelde Azure Storage-service (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService. json)
 
 ```json
 {
@@ -204,8 +204,8 @@ Een ander voorbeeld voor expressie is:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparameteriseerde Azure Blob-gegevensset (BlobDataset.json)
-De pijplijn stelt de **mapPath** in op de waarde van de parameter **outputPath1** of **outputPath2** van de pijplijn. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset met para meters (BlobDataset. json)
+De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputPath1** of **outputPath2** van de pijp lijn. 
 
 ```json
 {
@@ -231,7 +231,7 @@ De pijplijn stelt de **mapPath** in op de waarde van de parameter **outputPath1*
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Pipeline parameter JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters. json)
 
 ```json
 {
@@ -246,7 +246,7 @@ De pijplijn stelt de **mapPath** in op de waarde van de parameter **outputPath1*
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Deze opdrachten gaan ervan uit dat u de JSON-bestanden in de map hebt opgeslagen: C:\ADF. 
+Bij deze opdrachten wordt ervan uitgegaan dat u de JSON-bestanden hebt opgeslagen in de map: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -288,7 +288,7 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
 
 - [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)
 - [Voor elke activiteit](control-flow-for-each-activity.md)

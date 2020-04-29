@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsbesturingselementen voor Azure Key Vault
-description: Een checklist met beveiligingscontroles voor de evaluatie van Azure Key Vault
+title: Beveiligings controles voor Azure Key Vault
+description: Een controle lijst met beveiligings controles voor het evalueren van Azure Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,59 +9,59 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429861"
 ---
-# <a name="security-controls-for-azure-key-vault"></a>Beveiligingsbesturingselementen voor Azure Key Vault
+# <a name="security-controls-for-azure-key-vault"></a>Beveiligings controles voor Azure Key Vault
 
-In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in Azure Key Vault, document. 
+In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Azure Key Vault. 
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen |
+| Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Ondersteuning voor serviceeindpunten| Ja | VNet-serviceeindpunten (Virtual Network) gebruiken. |
+| Ondersteuning voor service-eind punten| Ja | Het gebruik van de service-eind punten van Virtual Network (VNet). |
 | Ondersteuning voor VNet-injectie| Nee |  |
-| Ondersteuning voor netwerkisolatie en firewalling| Ja | Met behulp van VNet firewall regels. |
-| Ondersteuning voor gedwongen tunneling| Nee |  |
+| Ondersteuning voor netwerk isolatie en firewalling| Ja | Met VNet-firewall regels. |
+| Ondersteuning voor geforceerde tunneling| Nee |  |
 
-## <a name="monitoring--logging"></a>Controle & logboekregistratie
+## <a name="monitoring--logging"></a>& logboek registratie controleren
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Azure-bewakingsondersteuning (logboekanalyses, app-inzichten, enz.)| Ja | Met behulp van Log Analytics. |
-| Logboekregistratie en audit van controle-/beheervlak| Ja | Met behulp van Log Analytics. |
-| Logboekregistratie en -audit van gegevensvliegtuigen| Ja | Met behulp van Log Analytics. |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Log Analytics gebruiken. |
+| Logboek registratie en controle van beheer/beheer vlak| Ja | Log Analytics gebruiken. |
+| Logboek registratie en controle van het gegevens vlak| Ja | Log Analytics gebruiken. |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Verificatie| Ja | Verificatie gebeurt via Azure Active Directory. |
-| Autorisatie| Ja | Met behulp van Key Vault Access Policy. |
+| Verificatie| Ja | Verificatie is via Azure Active Directory. |
+| Autorisatie| Ja | Key Vault toegangs beleid gebruiken. |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen |
+| Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Alle objecten zijn versleuteld. |
-| Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Ja | De klant controleert alle sleutels in zijn Key Vault. Wanneer back-sleutels (HSM) van de hardwarebeveiliging zijn opgegeven, beschermt een FIPS Level 2 HSM de sleutel, het certificaat of het geheim. |
-| Versleuteling op kolomniveau (Azure Data Services)| N.v.t. |  |
-| Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Ja | Alle communicatie gaat via versleutelde API-aanroepen |
-| API-aanroepen versleuteld| Ja | HTTPS gebruiken. |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Alle objecten zijn versleuteld. |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | De klant beheert alle sleutels in hun Key Vault. Wanneer er ondersteunde sleutels voor de Hardware Security module (HSM) worden opgegeven, wordt de sleutel, het certificaat of het geheim beschermd door een HSM met FIPS Level 2. |
+| Versleuteling op kolom niveau (Azure Data Services)| N.v.t. |  |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Alle communicatie via versleutelde API-aanroepen |
+| Versleutelde API-aanroepen| Ja | HTTPS gebruiken. |
 
 ## <a name="access-controls"></a>Besturingselementen voor toegang
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Toegangsbesturingselementen voor besturing/beheer | Ja | Toegangsbeheer op basis van rollen (RBAC) in Azure Resource Manager |
-| Toegangsbesturingselementen voor gegevensvlakken (op elk serviceniveau) | Ja | Key Vault Access Policy |
+| Toegangs beheer voor het besturings element/beheer vlak | Ja | Toegangsbeheer op basis van rollen (RBAC) in Azure Resource Manager |
+| Toegangs beheer voor gegevens vlak (op elk service niveau) | Ja | Toegangs beleid Key Vault |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../../security/fundamentals/security-controls.md).

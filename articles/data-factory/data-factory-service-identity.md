@@ -11,53 +11,53 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
 ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416581"
 ---
 # <a name="managed-identity-for-data-factory"></a>Beheerde identiteit voor Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Dit artikel helpt u te begrijpen wat wordt beheerd identiteit voor Data Factory (voorheen bekend als Managed Service Identity / MSI) en hoe het werkt.
+Dit artikel helpt u te begrijpen wat de beheerde identiteit is voor Data Factory (voorheen bekend als Managed Service Identity/MSI) en hoe deze werkt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Overzicht
 
-Bij het maken van een gegevensfabriek kan een beheerde identiteit worden gecreëerd, samen met het maken van fabrieken. De beheerde identiteit is een beheerde toepassing die is geregistreerd bij Azure Active Directory en vertegenwoordigt deze specifieke gegevensfabriek.
+Bij het maken van een data factory kan een beheerde identiteit worden gemaakt, samen met het maken van de fabriek. De beheerde identiteit is een beheerde toepassing die is geregistreerd bij Azure Active Directory, en vertegenwoordigt deze specifieke data factory.
 
-Beheerde identiteit voor Data Factory komt ten goede aan de volgende functies:
+Beheerde identiteit voor Data Factory voor delen de volgende functies:
 
-- [Bewaar referenties in Azure Key Vault,](store-credentials-in-key-vault.md)in welk geval de beheerde identiteit van de gegevensfabriek wordt gebruikt voor Azure Key Vault-verificatie.
-- Connectors zoals [Azure Blob-opslag,](connector-azure-blob-storage.md) [Azure Data Lake Storage Gen1,](connector-azure-data-lake-store.md) [Azure Data Lake Storage Gen2,](connector-azure-data-lake-storage.md) [Azure SQL Database](connector-azure-sql-database.md)en Azure SQL [Data Warehouse](connector-azure-sql-data-warehouse.md).
+- [Sla referentie op in azure Key Vault](store-credentials-in-key-vault.md). in dat geval wordt Data Factory beheerde identiteit gebruikt voor Azure Key Vault verificatie.
+- Connectors, waaronder [Azure Blob Storage](connector-azure-blob-storage.md), [Azure data Lake Storage gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL database](connector-azure-sql-database.md)en [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
 - [Webactiviteit](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Beheerde identiteit genereren
 
-Beheerde identiteit voor Data Factory wordt als volgt gegenereerd:
+De beheerde identiteit voor Data Factory wordt als volgt gegenereerd:
 
-- Bij het maken van gegevensfabriek via **Azure portal of PowerShell**wordt beheerde identiteit altijd automatisch gemaakt.
-- Bij het maken van gegevensfabriek via **SDK**wordt de beheerde identiteit alleen gemaakt als u 'Identiteit = nieuwe FactoryIdentity()' opgeeft in het fabrieksobject voor creatie. Zie voorbeeld in [.NET quickstart - gegevensfabriek maken](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Bij het maken van gegevensfabriek via **REST API**wordt de beheerde identiteit alleen gemaakt als u de sectie 'identiteit' opgeeft in de aanvraaginstantie. Zie voorbeeld in [REST quickstart - datafactory maken](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Wanneer u data factory via **Azure portal of Power shell**maakt, wordt er altijd automatisch een beheerde identiteit gemaakt.
+- Wanneer u data factory via **SDK**maakt, wordt er alleen een beheerde identiteit gemaakt als u ' identiteit = New FactoryIdentity () ' opgeeft in het fabrieks object dat u wilt maken. Zie voor beeld in [.net quick start-Data Factory maken](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Wanneer u data factory via **rest API**maakt, wordt er alleen een beheerde identiteit gemaakt als u de sectie ' identiteit ' opgeeft in de hoofd tekst van de aanvraag. Bekijk het voor beeld in [rest Quick Start: create Data Factory](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
-Als u merkt dat uw gegevensfabriek geen beheerde identiteit heeft die is gekoppeld aan de [instructies voor beheerde identiteits ophalen,](#retrieve-managed-identity) u er expliciet een genereren door de gegevensfabriek programmatisch bij te werken met de initiator van de identiteit:
+Als uw data factory geen beheerde identiteit heeft die is gekoppeld aan de instructies [Managed Identity ophalen](#retrieve-managed-identity) , kunt u er expliciet een genereren door de Data Factory met de id-initiator programmatisch bij te werken:
 
-- [Beheerde identiteit genereren met PowerShell](#generate-managed-identity-using-powershell)
-- [Beheerde identiteit genereren met REST API](#generate-managed-identity-using-rest-api)
-- [Beheerde identiteit genereren met een Azure Resource Manager-sjabloon](#generate-managed-identity-using-an-azure-resource-manager-template)
-- [Beheerde identiteit genereren met SDK](#generate-managed-identity-using-sdk)
+- [Beheerde identiteit genereren met behulp van Power shell](#generate-managed-identity-using-powershell)
+- [Beheerde identiteit genereren met behulp van REST API](#generate-managed-identity-using-rest-api)
+- [Beheerde identiteit genereren met behulp van een Azure Resource Manager sjabloon](#generate-managed-identity-using-an-azure-resource-manager-template)
+- [Beheerde identiteit genereren met behulp van SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
->- Beheerde identiteit kan niet worden gewijzigd. Het bijwerken van een gegevensfabriek die al een beheerde identiteit heeft, heeft geen impact, de beheerde identiteit blijft ongewijzigd.
->- Als u een gegevensfabriek bijwerkt die al een beheerde identiteit heeft zonder de parameter "identiteit" op te geven in het fabrieksobject of zonder de sectie 'identiteit' op te geven in de aanvraaginstantie REST, krijgt u een foutmelding.
->- Wanneer u een gegevensfabriek verwijdert, wordt de bijbehorende beheerde identiteit verwijderd.
+>- De beheerde identiteit kan niet worden gewijzigd. Het bijwerken van een data factory die al een beheerde identiteit heeft, heeft geen invloed op de beheerde identiteit.
+>- Als u een data factory hebt bijgewerkt die al een beheerde identiteit heeft zonder de para meter Identity op te geven in het object Factory of als u de sectie ' identiteit ' niet opgeeft in de hoofd tekst van de REST-aanvraag, krijgt u een fout melding.
+>- Wanneer u een data factory verwijdert, wordt de bijbehorende beheerde identiteit tegelijk verwijderd.
 
-### <a name="generate-managed-identity-using-powershell"></a>Beheerde identiteit genereren met PowerShell
+### <a name="generate-managed-identity-using-powershell"></a>Beheerde identiteit genereren met behulp van Power shell
 
-Call **Set-AzDataFactoryV2** opdracht opnieuw, dan zie je "Identiteit" velden worden nieuw gegenereerd:
+Roep **set-AzDataFactoryV2** opdracht opnieuw uit. vervolgens ziet u dat er nieuwe identiteits velden worden gegenereerd:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -71,15 +71,15 @@ Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentit
 ProvisioningState : Succeeded
 ```
 
-### <a name="generate-managed-identity-using-rest-api"></a>Beheerde identiteit genereren met REST API
+### <a name="generate-managed-identity-using-rest-api"></a>Beheerde identiteit genereren met behulp van REST API
 
-Call below API with "identity" sectie in de aanvraaginstantie:
+Aanroep onder ' identiteit ' in de hoofd tekst van de aanvraag:
 
 ```
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Aanvraag:** voeg "identiteit" toe: { "type": "SystemAssigned" }.
+**Hoofd tekst van aanvraag**: add "identiteit": {"type": "SystemAssigned"}.
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Antwoord**: beheerde identiteit wordt automatisch gemaakt en de sectie 'identiteit' wordt dienovereenkomstig ingevuld.
+**Antwoord**: de beheerde identiteit wordt automatisch gemaakt en de sectie ' identiteit ' is dienovereenkomstig ingevuld.
 
 ```json
 {
@@ -115,9 +115,9 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Beheerde identiteit genereren met een Azure Resource Manager-sjabloon
+### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Beheerde identiteit genereren met behulp van een Azure Resource Manager sjabloon
 
-**Sjabloon**: voeg "identiteit" toe: { "type": "SystemAssigned" }.
+**Sjabloon**: Voeg "identiteit": {"type": "SystemAssigned"} toe.
 
 ```json
 {
@@ -135,9 +135,9 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-sdk"></a>Beheerde identiteit genereren met SDK
+### <a name="generate-managed-identity-using-sdk"></a>Beheerde identiteit genereren met behulp van SDK
 
-Bel de gegevensfabriek create_or_update functie met Identity=new FactoryIdentity(). Voorbeeldcode met .NET:
+Roep de data factory-create_or_update functie aan met identiteit = New FactoryIdentity (). Voorbeeld code met behulp van .NET:
 
 ```csharp
 Factory dataFactory = new Factory
@@ -150,26 +150,26 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ## <a name="retrieve-managed-identity"></a>Beheerde identiteit ophalen
 
-U de beheerde identiteit ophalen uit azure portal of programmatisch. De volgende secties tonen enkele voorbeelden.
+U kunt de beheerde identiteit ophalen van Azure Portal of via een programma. In de volgende secties ziet u enkele voor beelden.
 
 >[!TIP]
-> Als u de beheerde identiteit niet ziet, [genereert u beheerde identiteit](#generate-managed-identity) door uw fabriek bij te werken.
+> Als u de beheerde identiteit niet ziet, moet u [beheerde identiteit genereren](#generate-managed-identity) door uw fabriek bij te werken.
 
-### <a name="retrieve-managed-identity-using-azure-portal"></a>Beheerde identiteit ophalen met Azure-portal
+### <a name="retrieve-managed-identity-using-azure-portal"></a>Beheerde identiteit ophalen met behulp van Azure Portal
 
-U de beheerde identiteitsgegevens vinden van Azure portal -> uw gegevensfabriek -> Eigenschappen.
+U kunt de informatie over beheerde identiteiten vinden in Azure Portal-> uw data factory-> eigenschappen.
 
-- Beheerde identiteitsobject-id
-- Beheerde identiteittenant
-- Beheerde identiteittoepassings-id
+- ID van beheerd identiteits object
+- Beheerde identiteits Tenant
+- Toepassings-ID van beheerde identiteit
 
-De beheerde identiteitsgegevens worden ook weergegeven wanneer u gekoppelde service maakt die beheerde identiteitsverificatie ondersteunt, zoals Azure Blob, Azure Data Lake Storage, Azure Key Vault, enz.
+De beheerde identiteits gegevens worden ook weer gegeven wanneer u een gekoppelde service maakt die beheerde identiteits verificatie ondersteunt, zoals Azure Blob, Azure Data Lake Storage, Azure Key Vault, enzovoort.
 
-Wanneer u toestemming verleent, gebruikt u object-id of de naam van de gegevensfabriek (als beheerde identiteitsnaam) om deze identiteit te vinden.
+Gebruik bij het verlenen van machtigingen de object-ID of data factory naam (als naam van de beheerde identiteit) om deze identiteit te vinden.
 
-### <a name="retrieve-managed-identity-using-powershell"></a>Beheerde identiteit ophalen met PowerShell
+### <a name="retrieve-managed-identity-using-powershell"></a>Beheerde identiteit ophalen met behulp van Power shell
 
-De beheerde identiteits-id en tenant-id worden als volgt geretourneerd wanneer u een specifieke gegevensfabriek ontvangt. Gebruik de **PrincipalId** om toegang te verlenen:
+De ID van de beheerde ID en Tenant-ID wordt als volgt weer gegeven wanneer u een specifieke data factory ontvangt. Gebruik de **PrincipalId** om toegang te verlenen:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -179,7 +179,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-U de toepassings-id verkrijgen door bovenstaande hoofd-id te kopiëren en vervolgens onder de opdracht Azure Active Directory met hoofd-id als parameter uit te voeren.
+U kunt de toepassings-ID ophalen door boven de principal-ID te kopiëren en vervolgens onder Azure Active Directory opdracht met de principal-ID als para meter.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -192,9 +192,9 @@ Type                  : ServicePrincipal
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de volgende onderwerpen die introduceren wanneer en hoe de beheerde identiteit van de datafabriek te gebruiken:
+Zie de volgende onderwerpen voor meer informatie over het gebruik van data factory beheerde identiteit:
 
 - [Referenties opslaan in Azure Key Vault](store-credentials-in-key-vault.md)
-- [Gegevens kopiëren van/naar Azure Data Lake Store met beheerde identiteiten voor Azure-bronverificatie](connector-azure-data-lake-store.md)
+- [Gegevens kopiëren van/naar Azure Data Lake Store met behulp van beheerde identiteiten voor Azure-bronnen verificatie](connector-azure-data-lake-store.md)
 
-Zie [Overzicht beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/overview) voor meer achtergrondinformatie over beheerde identiteiten voor Azure-resources, waarop de beheerde identiteit van de gegevensfabriek is gebaseerd. 
+Zie [beheerde identiteiten voor Azure-bronnen overzicht](/azure/active-directory/managed-identities-azure-resources/overview) voor meer achtergrond informatie over beheerde identiteiten voor Azure-resources, waarop Data Factory beheerde identiteit is gebaseerd. 

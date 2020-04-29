@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie - Azure Synapse Analytics: Spark-taakdefinitie voor Synapse'
-description: Zelfstudie - Gebruik de Azure Synapse Analytics om Spark-taakdefinities te maken en deze in te dienen bij een Synapse Spark-groep.
+title: 'Zelf studie-Azure Synapse Analytics: Spark-taak definitie voor Synapse'
+description: 'Zelf studie: gebruik de Azure Synapse Analytics om Spark-taak definities te maken en verzend deze naar een Synapse Spark-pool.'
 author: hrasheed-msft
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -9,169 +9,169 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.openlocfilehash: d5443a2db6f4fecbd84ef51166f44c3a6e920aee
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422968"
 ---
-# <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Zelfstudie: Azure Synapse Analytics gebruiken om Apache Spark-taakdefinities voor Synapse Spark-pools te maken
+# <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Zelf studie: Azure Synapse Analytics gebruiken om Apache Spark taak definities te maken voor Synapse Spark-Pools
 
-In deze zelfstudie wordt uitgelegd hoe u de Azure Synapse Analytics gebruiken om Spark-taakdefinities te maken en deze vervolgens in te dienen bij een Synapse Spark-groep. U de plug-in op een aantal manieren gebruiken:
+In deze zelf studie ziet u hoe u de Azure Synapse Analytics kunt gebruiken om Spark-taak definities te maken en deze vervolgens naar een Synapse Spark-pool te verzenden. U kunt de invoeg toepassing op een paar manieren gebruiken:
 
-* Ontwikkel en dien een Spark-taakdefinitie in op een Synapse Spark-pool.
-* Bekijk de functiegegevens na indiening.
+* Een Spark-taak definitie ontwikkelen en verzenden in een Synapse Spark-pool.
+* Taak details weer geven na verzen ding.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Ontwikkel en dien een Spark-taakdefinitie in op een Synapse Spark-pool.
-> * Bekijk de functiegegevens na indiening.
+> * Een Spark-taak definitie ontwikkelen en verzenden in een Synapse Spark-pool.
+> * Taak details weer geven na verzen ding.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure Synapse Analytics-werkruimte. Zie Een [Azure Synapse Analytics-werkruimte maken](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace)voor instructies.
+* Een Azure Synapse Analytics-werk ruimte. Zie [een Azure Synapse Analytics-werk ruimte maken](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace)voor instructies.
 
 ## <a name="get-started"></a>Aan de slag
 
-Voordat u een Spark-taakdefinitie indient, moet u de eigenaar zijn van storage blob-gegevens van het ADLS Gen2-bestandssysteem waarmee u wilt werken. Als u dat niet bent, moet u de toestemming handmatig toevoegen.
+Voordat u een Spark-taak definitie verzendt, moet u de gegevens eigenaar van de opslag-blob van het ADLS Gen2 bestands systeem waarmee u wilt werken. Als dat niet het geval is, moet u de machtiging hand matig toevoegen.
 
-### <a name="scenario-1-add-permission"></a>Scenario 1: Toestemming toevoegen
+### <a name="scenario-1-add-permission"></a>Scenario 1: machtiging toevoegen
 
-1. Open [Microsoft Azure](https://ms.portal.azure.com)en open vervolgens opslagaccount.
+1. Open [Microsoft Azure](https://ms.portal.azure.com)en open vervolgens het opslag account.
 
-2. Klik **op Containers**en maak vervolgens een **bestandssysteem**. In deze zelfstudie wordt `sparkjob` gebruikt.
+2. Klik op **containers**en vervolgens op een **Bestands systeem**maken. In deze zelfstudie wordt `sparkjob` gebruikt.
 
-    ![Klik op verzenden om de definitie van spark-taak in te dienen](./media/apache-spark-job-definitions/open-azure-container.png)
+    ![Klik op de knop verzenden om een Spark-taak definitie in te dienen](./media/apache-spark-job-definitions/open-azure-container.png)
 
-    ![Het dialoogvenster Spark-indiening](./media/apache-spark-job-definitions/create-new-filesystem.png)
+    ![Het dialoog venster voor de verzen ding van Spark](./media/apache-spark-job-definitions/create-new-filesystem.png)
 
-3. Open `sparkjob`, klik op **Toegangsbeheer (IAM)** en klik vervolgens op **Toevoegen** en selecteer **Roltoewijzing toevoegen**.
+3. Open `sparkjob`, klik op **Access Control (IAM)**, klik op **toevoegen** en selecteer **functie toewijzing toevoegen**.
 
-    ![Klik op verzenden om de definitie van spark-taak in te dienen](./media/apache-spark-job-definitions/add-role-assignment-01.png)
+    ![Klik op de knop verzenden om een Spark-taak definitie in te dienen](./media/apache-spark-job-definitions/add-role-assignment-01.png)
 
-    ![Klik op verzenden om de definitie van spark-taak in te dienen](./media/apache-spark-job-definitions/add-role-assignment-02.png)
+    ![Klik op de knop verzenden om een Spark-taak definitie in te dienen](./media/apache-spark-job-definitions/add-role-assignment-02.png)
 
-4. Klik **op Toewijzingen van rollen**, voer de gebruikersnaam in en controleer vervolgens de gebruikersrol.
+4. Klik **op roltoewijzingen,** invoer gebruikers naam en controleer vervolgens de gebruikersrol.
 
-    ![Klik op verzenden om de definitie van spark-taak in te dienen](./media/apache-spark-job-definitions/verify-user-role.png)
+    ![Klik op de knop verzenden om een Spark-taak definitie in te dienen](./media/apache-spark-job-definitions/verify-user-role.png)
 
-### <a name="scenario-2-prepare-folder-structure"></a>Scenario 2: Mapstructuur voorbereiden
+### <a name="scenario-2-prepare-folder-structure"></a>Scenario 2: mapstructuur voorbereiden
 
-Voordat u een Spark-taakdefinitie indient, moet u bestanden uploaden naar ADLS Gen2 en daar mapstructuur voorbereiden. We gebruiken Storage node in Synapse Studio om bestanden op te slaan.
+Voordat u een Spark-taak definitie indient, moet u een taak uploaden naar ADLS Gen2 en mappen structuur voorbereiden. We gebruiken opslag knooppunt in Synapse Studio om bestanden op te slaan.
 
 1. Open [Azure Synapse Analytics](https://web.azuresynapse.net/).
 
-2. Klik **op Gegevens,** selecteer **Opslagaccounts**en upload de relevante bestanden naar uw ADLS Gen2-bestandssysteem. Wij ondersteunen Scala, Java, .NET en Python. Deze zelfstudie gebruikt het voorbeeld in de figuur als een demonstratie, u de projectstructuur naar wens wijzigen.
+2. Klik op **gegevens**, selecteer **opslag accounts**en upload de relevante bestanden naar uw ADLS Gen2 bestands systeem. Scala, Java, .NET en python worden ondersteund. In deze zelf studie wordt het voor beeld in de afbeelding als demonstratie gebruikt. u kunt de project structuur naar wens wijzigen.
 
-    ![De waarde van de vacatureSpark instellen](./media/apache-spark-job-definitions/prepare-project-structure.png)
+    ![De waarde van de Spark-taak definitie instellen](./media/apache-spark-job-definitions/prepare-project-structure.png)
 
-## <a name="create-a-spark-job-definition"></a>Een Spark-taakdefinitie maken
+## <a name="create-a-spark-job-definition"></a>Een Spark-taak definitie maken
 
-1. Open [Azure Synapse Analytics](https://web.azuresynapse.net/)en selecteer **Ontwikkelen**.
+1. Open [Azure Synapse Analytics](https://web.azuresynapse.net/)en selecteer **ontwikkeling**.
 
-2. Selecteer **Vacatures van Spark** in het linkerdeelvenster.
+2. Selecteer **Spark-taak definities** in het linkerdeel venster.
 
-3. Klik op het knooppunt **Acties** aan de rechterkant van de 'Spark-taakdefinities'.
+3. Klik op het knoop punt **acties** rechts van de "Spark-taak definities".
 
-     ![Nieuwe definitie van spark-taak maken](./media/apache-spark-job-definitions/create-new-definition-01.png)
+     ![Nieuwe Spark-taak definitie maken](./media/apache-spark-job-definitions/create-new-definition-01.png)
 
-4. Selecteer de optie **Nieuwe spark-taakdefinitie** in de vervolgkeuzelijst **Acties**
+4. Selecteer in de vervolg keuzelijst **acties** de optie **nieuwe Spark-taak definitie**
 
-     ![Nieuwe definitie van spark-taak maken](./media/apache-spark-job-definitions/create-new-definition-02.png)
+     ![Nieuwe Spark-taak definitie maken](./media/apache-spark-job-definitions/create-new-definition-02.png)
 
-5. Selecteer taal in het venster Nieuwe Spark-taakdefinitie en geef vervolgens de volgende informatie op:  
+5. In het venster nieuwe Spark-taak definitie selecteert u taal en geeft u de volgende informatie op:  
 
-   * Selecteer **Taal** als **Spark(Scala).**
-
-    |  Eigenschap   | Beschrijving   |  
-    | ----- | ----- |  
-    |Naam van taakdefinitie| Voer een naam in voor de definitie van uw Spark-taak.  In deze zelfstudie wordt `job definition sample` gebruikt. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd.|  
-    |Hoofddefinitiebestand| Het hoofdbestand dat voor de taak wordt gebruikt. Selecteer een JAR-bestand uit uw opslag. U **Bestand uploaden** selecteren om het bestand naar een opslagaccount te uploaden. |
-    |Naam van de hoofdklasse| De volledig gekwalificeerde id of de hoofdklasse die zich in het hoofddefinitiebestand bevindt.|
-    |Opdrachtregelargumenten| Optionele argumenten voor de taak.|
-    |Referentiebestanden| Aanvullende bestanden die worden gebruikt voor verwijzing in het hoofddefinitiebestand. U **Bestand uploaden** selecteren om het bestand naar een opslagaccount te uploaden.|
-    |Spark-pool| De taak wordt ingediend bij de geselecteerde Spark-pool.|
-    |Spark-versie| Versie van Spark die het Spark-zwembad draait.|
-    |Executeurs| Aantal uitvoerders dat moet worden opgegeven in de opgegeven Spark-pool voor de taak.|
-    |Executorgrootte| Aantal kernen en geheugen dat moet worden gebruikt voor uitvoerders die in de opgegeven Spark-pool voor de taak worden opgegeven.|  
-    |Grootte van de bestuurder| Aantal cores en geheugen dat moet worden gebruikt voor stuurprogramma's die in de opgegeven Spark-pool voor de taak worden gegeven.|
-
-    ![De waarde van de vacatureSpark instellen](./media/apache-spark-job-definitions/create-scala-definition.png)
-
-   * Selecteer **Taal** als **PySpark(Python)**.
+   * Selecteer **taal** als **Spark (scala)**.
 
     |  Eigenschap   | Beschrijving   |  
     | ----- | ----- |  
-    |Naam van taakdefinitie| Voer een naam in voor de definitie van uw Spark-taak.  In deze zelfstudie wordt `job definition sample` gebruikt. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd.|  
-    |Hoofddefinitiebestand| Het hoofdbestand dat voor de taak wordt gebruikt. Selecteer een PY-bestand uit uw opslag. U **Bestand uploaden** selecteren om het bestand naar een opslagaccount te uploaden.|
-    |Opdrachtregelargumenten| Optionele argumenten voor de taak.|
-    |Referentiebestanden| Aanvullende bestanden die worden gebruikt voor verwijzing in het hoofddefinitiebestand. U **Bestand uploaden** selecteren om het bestand naar een opslagaccount te uploaden.|
-    |Spark-pool| De taak wordt ingediend bij de geselecteerde Spark-pool.|
-    |Spark-versie| Versie van Spark die het Spark-zwembad draait.|
-    |Executeurs| Aantal uitvoerders dat moet worden opgegeven in de opgegeven Spark-pool voor de taak.|
-    |Executorgrootte| Aantal kernen en geheugen dat moet worden gebruikt voor uitvoerders die in de opgegeven Spark-pool voor de taak worden opgegeven.|  
-    |Grootte van de bestuurder| Aantal cores en geheugen dat moet worden gebruikt voor stuurprogramma's die in de opgegeven Spark-pool voor de taak worden gegeven.|
+    |Naam van taak definitie| Voer een naam in voor de Spark-taak definitie.  In deze zelfstudie wordt `job definition sample` gebruikt. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd.|  
+    |Hoofd definitie bestand| Het hoofd bestand dat wordt gebruikt voor de taak. Selecteer een JAR-bestand uit uw opslag. U kunt **bestand uploaden** selecteren om het bestand te uploaden naar een opslag account. |
+    |Naam van hoofd klasse| De volledig gekwalificeerde id of de hoofd klasse die zich in het hoofd definitie bestand bevindt.|
+    |Opdracht regel argumenten| Optionele argumenten voor de taak.|
+    |Referentie bestanden| Aanvullende bestanden die worden gebruikt voor de verwijzing in het hoofd definitie bestand. U kunt **bestand uploaden** selecteren om het bestand te uploaden naar een opslag account.|
+    |Spark-pool| De taak wordt verzonden naar de geselecteerde Spark-groep.|
+    |Spark-versie| Versie van Spark waarin de Spark-pool wordt uitgevoerd.|
+    |Executor| Aantal uitvoerende uitvoerders dat moet worden gegeven in de opgegeven Spark-groep voor de taak.|
+    |Grootte van uitvoerder| Het aantal kernen en het geheugen dat moet worden gebruikt voor de uitvoerders die zijn opgegeven in de opgegeven Spark-groep voor de taak.|  
+    |Stuur programma-grootte| Het aantal kernen en het geheugen dat moet worden gebruikt voor het stuur programma dat is opgegeven in de opgegeven Spark-groep voor de taak.|
 
-    ![De waarde van de vacatureSpark instellen](./media/apache-spark-job-definitions/create-py-definition.png)
+    ![De waarde van de Spark-taak definitie instellen](./media/apache-spark-job-definitions/create-scala-definition.png)
 
-   * Selecteer **Taal** als **.NET Spark(C#/F#)**.
+   * Selecteer **taal** als **PySpark (python)**.
 
     |  Eigenschap   | Beschrijving   |  
     | ----- | ----- |  
-    |Naam van taakdefinitie| Voer een naam in voor de definitie van uw Spark-taak.  In deze zelfstudie wordt `job definition sample` gebruikt. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd.|  
-    |Hoofddefinitiebestand| Het hoofdbestand dat voor de taak wordt gebruikt. Selecteer een ZIP-bestand met de .NET voor Spark-toepassing (dat wil zeggen het belangrijkste uitvoerbare bestand, DLL's met door de gebruiker gedefinieerde functies en andere vereiste bestanden) uit uw opslag. U **Bestand uploaden** selecteren om het bestand naar een opslagaccount te uploaden.|
-    |Hoofduitvoerbaar bestand| Het belangrijkste uitvoerbare bestand in het ZIP-bestand met hoofddefinitie.|
-    |Opdrachtregelargumenten| Optionele argumenten voor de taak.|
-    |Referentiebestanden| Extra bestanden die nodig zijn voor de worker nodes voor het uitvoeren van de .NET for Spark-toepassing die niet is opgenomen in het ZIP-bestand met hoofddefinitie (dat wil zeggen afhankelijke potten, extra door de gebruiker gedefinieerde functie DLL's en andere config-bestanden). U **Bestand uploaden** selecteren om het bestand naar een opslagaccount te uploaden.|
-    |Spark-pool| De taak wordt ingediend bij de geselecteerde Spark-pool.|
-    |Spark-versie| Versie van Spark die het Spark-zwembad draait.|
-    |Executeurs| Aantal uitvoerders dat moet worden opgegeven in de opgegeven Spark-pool voor de taak.|
-    |Executorgrootte| Aantal kernen en geheugen dat moet worden gebruikt voor uitvoerders die in de opgegeven Spark-pool voor de taak worden opgegeven.|  
-    |Grootte van de bestuurder| Aantal cores en geheugen dat moet worden gebruikt voor stuurprogramma's die in de opgegeven Spark-pool voor de taak worden gegeven.|
+    |Naam van taak definitie| Voer een naam in voor de Spark-taak definitie.  In deze zelfstudie wordt `job definition sample` gebruikt. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd.|  
+    |Hoofd definitie bestand| Het hoofd bestand dat wordt gebruikt voor de taak. Selecteer een PY-bestand in uw opslag. U kunt **bestand uploaden** selecteren om het bestand te uploaden naar een opslag account.|
+    |Opdracht regel argumenten| Optionele argumenten voor de taak.|
+    |Referentie bestanden| Aanvullende bestanden die worden gebruikt voor de verwijzing in het hoofd definitie bestand. U kunt **bestand uploaden** selecteren om het bestand te uploaden naar een opslag account.|
+    |Spark-pool| De taak wordt verzonden naar de geselecteerde Spark-groep.|
+    |Spark-versie| Versie van Spark waarin de Spark-pool wordt uitgevoerd.|
+    |Executor| Aantal uitvoerende uitvoerders dat moet worden gegeven in de opgegeven Spark-groep voor de taak.|
+    |Grootte van uitvoerder| Het aantal kernen en het geheugen dat moet worden gebruikt voor de uitvoerders die zijn opgegeven in de opgegeven Spark-groep voor de taak.|  
+    |Stuur programma-grootte| Het aantal kernen en het geheugen dat moet worden gebruikt voor het stuur programma dat is opgegeven in de opgegeven Spark-groep voor de taak.|
 
-    ![De waarde van de vacatureSpark instellen](./media/apache-spark-job-definitions/create-net-definition.png)
+    ![De waarde van de Spark-taak definitie instellen](./media/apache-spark-job-definitions/create-py-definition.png)
 
-6. Selecteer **Publiceren** om de vacaturedefinitie van Spark op te slaan.
+   * Selecteer **taal** als **.net Spark (C#/f #)**.
 
-    ![Spark-taakdefinitie publiceren](./media/apache-spark-job-definitions/publish-net-definition.png)
+    |  Eigenschap   | Beschrijving   |  
+    | ----- | ----- |  
+    |Naam van taak definitie| Voer een naam in voor de Spark-taak definitie.  In deze zelfstudie wordt `job definition sample` gebruikt. Deze naam kan op elk gewenst moment worden bijgewerkt totdat deze wordt gepubliceerd.|  
+    |Hoofd definitie bestand| Het hoofd bestand dat wordt gebruikt voor de taak. Selecteer een ZIP-bestand dat uw .NET voor Spark-toepassing bevat (dat wil zeggen, het belangrijkste uitvoer bare bestand, Dll's met door de gebruiker gedefinieerde functies en andere vereiste bestanden) van uw opslag. U kunt **bestand uploaden** selecteren om het bestand te uploaden naar een opslag account.|
+    |Belang rijke uitvoer bare bestand| Het belangrijkste uitvoer bare bestand in het primaire definitie ZIP-bestand.|
+    |Opdracht regel argumenten| Optionele argumenten voor de taak.|
+    |Referentie bestanden| Aanvullende bestanden die nodig zijn voor de worker-knoop punten voor het uitvoeren van de .NET voor Spark-toepassing die niet is opgenomen in het bestand met de hoofd definitie (dat wil zeggen, afhankelijke potten, aanvullende door de gebruiker gedefinieerde functie-Dll's en andere configuratie bestanden). U kunt **bestand uploaden** selecteren om het bestand te uploaden naar een opslag account.|
+    |Spark-pool| De taak wordt verzonden naar de geselecteerde Spark-groep.|
+    |Spark-versie| Versie van Spark waarin de Spark-pool wordt uitgevoerd.|
+    |Executor| Aantal uitvoerende uitvoerders dat moet worden gegeven in de opgegeven Spark-groep voor de taak.|
+    |Grootte van uitvoerder| Het aantal kernen en het geheugen dat moet worden gebruikt voor de uitvoerders die zijn opgegeven in de opgegeven Spark-groep voor de taak.|  
+    |Stuur programma-grootte| Het aantal kernen en het geheugen dat moet worden gebruikt voor het stuur programma dat is opgegeven in de opgegeven Spark-groep voor de taak.|
 
-## <a name="submit-a-spark-job-definition"></a>Een Spark-taakdefinitie indienen
+    ![De waarde van de Spark-taak definitie instellen](./media/apache-spark-job-definitions/create-net-definition.png)
 
-Nadat u een Spark-taakdefinitie hebt gedefinieerd, u deze indienen bij een Synapse Spark-groep. Zorg ervoor dat je stappen hebt doorlopen in **Aan de slag** voordat je voorbeelden in dit deel probeert.
+6. Selecteer **publiceren** om de Spark-taak definitie op te slaan.
 
-### <a name="scenario-1-submit-spark-job-definition"></a>Scenario 1: Spark-taakdefinitie indienen
+    ![Spark-taak definitie publiceren](./media/apache-spark-job-definitions/publish-net-definition.png)
 
-1. Open een definitievenster voor vonktaak door erop te klikken.
+## <a name="submit-a-spark-job-definition"></a>Een Spark-taak definitie verzenden
 
-      ![Definitie van open vonktaak in te dienen ](./media/apache-spark-job-definitions/open-spark-definition.png)
+Nadat u een Spark-taak definitie hebt gemaakt, kunt u deze verzenden naar een Synapse Spark-pool. Zorg ervoor dat u de stappen in **aan** de slag hebt door lopen voordat u voor beelden in dit gedeelte probeert.
 
-2. Klik **op pictogram Verzenden** om uw project in te dienen bij de geselecteerde Spark Pool. U op het **tabblad URL van vonkbewaking** klikken om de LogQuery van de Spark-toepassing weer te geven.
+### <a name="scenario-1-submit-spark-job-definition"></a>Scenario 1: Spark-taak definitie verzenden
 
-    ![Klik op verzenden om de definitie van spark-taak in te dienen](./media/apache-spark-job-definitions/submit-spark-definition.png)
+1. Open een Spark-taak definitie venster door erop te klikken.
 
-    ![Het dialoogvenster Spark-indiening](./media/apache-spark-job-definitions/submit-definition-result.png)
+      ![De Spark-taak definitie openen om in te dienen ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
-### <a name="scenario-2-view-spark-job-running-progress"></a>Scenario 2: Voortgang spark-taak weergeven
+2. Klik op **Verzend** pictogram om uw project in te dienen bij de geselecteerde Spark-groep. U kunt op het tabblad **URL voor Spark-bewaking** klikken om de LogQuery van de Spark-toepassing weer te geven.
 
-1. Klik **op Monitor**en selecteer de optie **Spark-toepassingen.** U de ingediende Spark-aanvraag vinden.
+    ![Klik op de knop verzenden om een Spark-taak definitie in te dienen](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
-    ![Spark-toepassing weergeven](./media/apache-spark-job-definitions/view-spark-application.png)
+    ![Het dialoog venster voor de verzen ding van Spark](./media/apache-spark-job-definitions/submit-definition-result.png)
 
-2. Klik vervolgens op de Spark-toepassing, het venster **LogQuery** wordt weergegeven. U de voortgang van de uitvoering van taken bekijken vanuit **LogQuery**.
+### <a name="scenario-2-view-spark-job-running-progress"></a>Scenario 2: de voortgang van de uitvoering van Spark-taken weer geven
 
-    ![Spark-toepassing LogQuery weergeven](./media/apache-spark-job-definitions/view-job-log-query.png)
+1. Klik op **bewaken**en selecteer vervolgens de optie **Spark-toepassingen** . U kunt de ingediende Spark-toepassing vinden.
 
-### <a name="scenario-3-check-output-file"></a>Scenario 3: Uitvoerbestand controleren
+    ![Spark-toepassing weer geven](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 1. Klik **op Gegevens**en selecteer Vervolgens **Opslagaccounts**. Na een succesvolle run u naar de ADLS Gen2-opslag gaan en de uitvoer controleren die wordt gegenereerd.
+2. Klik vervolgens op de Spark-toepassing, **LogQuery** venster wordt weer gegeven. U kunt de voortgang van de taak uitvoering bekijken vanuit **LogQuery**.
 
-    ![Uitvoerbestand weergeven](./media/apache-spark-job-definitions/view-output-file.png)
+    ![LogQuery van Spark-toepassing weer geven](./media/apache-spark-job-definitions/view-job-log-query.png)
+
+### <a name="scenario-3-check-output-file"></a>Scenario 3: het uitvoer bestand controleren
+
+ 1. Klik op **gegevens**en selecteer vervolgens **opslag accounts**. Nadat de uitvoering is voltooid, kunt u naar de ADLS Gen2 opslag gaan en controleren of de uitvoer is gegenereerd.
+
+    ![Uitvoer bestand weer geven](./media/apache-spark-job-definitions/view-output-file.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie wordt uitgelegd hoe u de Azure Synapse Analytics gebruiken om Spark-taakdefinities te maken en deze vervolgens in te dienen bij een Synapse Spark-groep. Vervolgens u Azure Synapse Analytics gebruiken om Power BI-gegevenssets te maken en Power BI-gegevens te beheren. 
+In deze zelf studie wordt gedemonstreerd hoe u de Azure Synapse Analytics gebruikt om Spark-taak definities te maken en deze vervolgens te verzenden naar een Synapse Spark-pool. Vervolgens kunt u Azure Synapse Analytics gebruiken om Power BI gegevens sets te maken en Power BI gegevens te beheren. 
 
 - [Verbinding maken met gegevens in Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
 - [Visualiseren met Power BI](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

@@ -1,6 +1,6 @@
 ---
-title: Gegevens van Sybase kopiëren met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens van Sybase naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens van Sybase kopiëren met behulp van Azure Data Factory
+description: Informatie over het kopiëren van gegevens van Sybase naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,62 +12,62 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416620"
 ---
-# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase kopiëren met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase kopiëren met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-onprem-sybase-connector.md)
 > * [Huidige versie](connector-sybase.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een Sybase-database te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een Sybase-data base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Sybase-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens uit de Sybase-database kopiëren naar een ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van Sybase-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Met name deze Sybase-connector ondersteunt:
+Deze Sybase-connector ondersteunt met name:
 
 - SAP Sybase SQL Anywhere (ASA) **versie 16 en hoger**; IQ en ASE worden niet ondersteund.
-- Gegevens kopiëren met **basis-** of **Windows-verificatie.**
+- Kopiëren van gegevens met behulp van **basis** -of **Windows** -verificatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze Sybase-connector wilt gebruiken, moet u het:
+Als u deze Sybase-connector wilt gebruiken, moet u het volgende doen:
 
-- Stel een Self-hosted Integration Runtime in. Zie [artikel Self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) voor meer informatie.
-- Installeer de [gegevensprovider voor Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 of hoger op de Integration Runtime-machine.
+- Stel een zelf-hostende Integration Runtime in. Zie [zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
+- Installeer de [gegevens provider voor Sybase iAnywhere. data. SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 of hoger op de Integration runtime machine.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Sybase-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Sybase-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor gekoppelde Service van Sybase:
+De volgende eigenschappen worden ondersteund voor Sybase-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Sybase** | Ja |
-| server | Naam van de Sybase-server. |Ja |
-| database | Naam van de Sybase-database. |Ja |
-| authenticationType | Type verificatie wordt gebruikt om verbinding te maken met de Sybase-database.<br/>Toegestane waarden zijn: **Basic**en **Windows**. |Ja |
-| gebruikersnaam | Geef de gebruikersnaam op om verbinding te maken met de Sybase-database. |Ja |
-| wachtwoord | Geef een wachtwoord op voor het gebruikersaccount dat u hebt opgegeven voor de gebruikersnaam. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) |Ja |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Een Self-hosted Integration Runtime is vereist zoals vermeld in [Voorwaarden](#prerequisites). |Ja |
+| server | De naam van de Sybase-server. |Ja |
+| database | De naam van de Sybase-data base. |Ja |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de Sybase-data base.<br/>Toegestane waarden zijn: **Basic**en **Windows**. |Ja |
+| gebruikersnaam | Geef de gebruikers naam op om verbinding te maken met de Sybase-data base. |Ja |
+| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -94,14 +94,14 @@ De volgende eigenschappen worden ondersteund voor gekoppelde Service van Sybase:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Sybase-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door Sybase DataSet worden ondersteund.
 
-Als u gegevens van Sybase wilt kopiëren, worden de volgende eigenschappen ondersteund:
+Als u gegevens wilt kopiëren vanuit Sybase, worden de volgende eigenschappen ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **SybaseTable** | Ja |
-| tableName | Naam van de tabel in de Sybase-database. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| tableName | De naam van de tabel in de Sybase-data base. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -120,22 +120,22 @@ Als u gegevens van Sybase wilt kopiëren, worden de volgende eigenschappen onder
 }
 ```
 
-Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds ondersteund als deze is, terwijl u wordt voorgesteld om de nieuwe in de toekomst te gebruiken.
+Als u getypte gegevensset gebruikt `RelationalTable` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Sybase-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Sybase-bron worden ondersteund.
 
 ### <a name="sybase-as-source"></a>Sybase als bron
 
-Als u gegevens van Sybase wilt kopiëren, worden de volgende eigenschappen ondersteund in de **sectie** bron van kopieeractiviteit:
+Als u gegevens wilt kopiëren van Sybase, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van kopieeractiviteit moet zijn ingesteld op: **SybaseSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SybaseSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -167,19 +167,19 @@ Als u gegevens van Sybase wilt kopiëren, worden de volgende eigenschappen onder
 ]
 ```
 
-Als u `RelationalSource` getypte bron gebruikt, wordt deze nog steeds ondersteund als is, terwijl u wordt voorgesteld om de nieuwe in de toekomst te gebruiken.
+Als u getypte bron gebruikt `RelationalSource` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
-## <a name="data-type-mapping-for-sybase"></a>Gegevenstypetoewijzing voor Sybase
+## <a name="data-type-mapping-for-sybase"></a>Toewijzing van gegevens type voor Sybase
 
-Bij het kopiëren van gegevens van Sybase worden de volgende toewijzingen gebruikt van Sybase-gegevenstypen naar tijdelijke gegevenstypen van Azure Data Factory. Zie [Schema- en gegevenstypetoewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieeractiviteit het bronschema en het gegevenstype naar de gootsteen brengt.
+Bij het kopiëren van gegevens uit Sybase worden de volgende toewijzingen gebruikt van Sybase-gegevens typen voor het Azure Data Factory van tussenliggende gegevens typen. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
-Sybase ondersteunt T-SQL-typen. Zie Azure SQL Database Connector - sectie toewijzing van [gegevenstype](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) voor een toewijzingstabel van SQL-typen tot tijdelijke gegevenstypen van Azure Data Factory tot tijdelijke gegevenstypen van Azure Data Factory.
+Sybase ondersteunt T-SQL-typen. Zie [Azure SQL database-connector-gegevens type toewijzing](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) voor een toewijzings tabel van SQL-typen om tussenliggende gegevens typen te Azure Data Factory.
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

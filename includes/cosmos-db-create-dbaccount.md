@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 04/10/2020
 ms.custom: include file
 ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422088"
 ---
 1. Ga naar de [Azure Portal](https://portal.azure.com/) om een Azure Cosmos DB-account te maken. Kies op uw start pagina **een resource maken** in het deel venster **Azure-Services** .

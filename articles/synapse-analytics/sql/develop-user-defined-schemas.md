@@ -1,6 +1,6 @@
 ---
-title: Door de gebruiker gedefinieerde schema's binnen Synapse SQL
-description: In de onderstaande secties vindt u verschillende tips voor het gebruik van door De Gebruiker van T-SQL gedefinieerde schema's om oplossingen te ontwikkelen met de Synapse SQL-mogelijkheid van Azure Synapse Analytics.
+title: Door de gebruiker gedefinieerde schema's in Synapse SQL
+description: In de onderstaande secties vindt u verschillende tips voor het gebruik van door de gebruiker gedefinieerde en met de p-SQL-schema's om oplossingen te ontwikkelen met de Synapse SQL-mogelijkheid van Azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,49 +10,49 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428704"
 ---
-# <a name="user-defined-schemas-within-synapse-sql"></a>Door de gebruiker gedefinieerde schema's binnen Synapse SQL
+# <a name="user-defined-schemas-within-synapse-sql"></a>Door de gebruiker gedefinieerde schema's in Synapse SQL
 
-In de onderstaande secties vindt u verschillende tips voor het gebruik van Door De Gebruiker van T-SQL gedefinieerde schema's om oplossingen binnen Synapse SQL te ontwikkelen.
+In de onderstaande secties vindt u verschillende tips voor het gebruik van door de gebruiker gedefinieerde T-SQL-schema's voor het ontwikkelen van oplossingen in Synapse SQL.
 
-## <a name="schemas-for-application-boundaries"></a>Schema's voor toepassingsgrenzen
+## <a name="schemas-for-application-boundaries"></a>Schema's voor toepassings grenzen
 
-Traditionele analysearchitectuur maakt vaak gebruik van afzonderlijke databases om toepassingsgrenzen te creëren op basis van werkbelasting, domein of beveiliging. Een traditionele SQL Server-analyse-infrastructuur kan bijvoorbeeld een faseringsdatabase, een analysedatabase en gegevensmart-databases bevatten. In deze topologie werkt elke database als een werkbelasting en beveiligingsgrens in de architectuur.
+Traditionele analyse architectuur maakt vaak gebruik van afzonderlijke data bases om toepassings grenzen te maken op basis van werk belasting, domein of beveiliging. Een traditionele SQL Server analyse-infra structuur kan bijvoorbeeld bestaan uit een faserings database, een Analytics-Data Base en datamart-data bases. In deze topologie fungeert elke Data Base als een werk belasting en beveiligings grens in de architectuur.
 
-In plaats daarvan voert Synapse SQL de volledige analytics-workload uit binnen één database. Cross database joins zijn niet toegestaan. Synapse SQL verwacht dat alle tabellen die door het magazijn worden gebruikt, in één database worden opgeslagen.
+In plaats daarvan voert Synapse SQL de volledige analyse werk belasting binnen één Data Base uit. Cross-data base-samen voegingen zijn niet toegestaan. Synapse SQL verwacht dat alle tabellen die door het magazijn worden gebruikt, worden opgeslagen in de ene data base.
 
 > [!NOTE]
-> SQL-groepen bieden geen ondersteuning voor cross database query's van welke aard dan ook. Daarom moeten analyse-implementaties die dit patroon gebruiken, worden herzien. SQL on-demand (preview) ondersteunt cross database queries.
+> SQL-groepen bieden geen ondersteuning voor query's voor meerdere data bases van welke aard dan ook. Daarom moeten analyse-implementaties die gebruikmaken van dit patroon, worden gereviseerd. SQL on-demand (preview) ondersteunt query's tussen data bases.
 
-## <a name="user-defined-schema-recommendations"></a>Door de gebruiker gedefinieerde schemaaanbevelingen
+## <a name="user-defined-schema-recommendations"></a>Door de gebruiker gedefinieerde schema aanbevelingen
 
-Hieronder zijn aanbevelingen voor het consolideren van workloads, beveiliging, domein en functionele grenzen met behulp van door de gebruiker gedefinieerde schema's:
+Inbegrepen zijn aanbevelingen voor het samen voegen van werk belastingen, beveiliging, domein en functionele grenzen door gebruik te maken van door de gebruiker gedefinieerde schema's:
 
-- Gebruik één database om uw volledige analytics-workload uit te voeren.
-- Consolideer uw bestaande analyseomgeving om één database te gebruiken.
-- Maak gebruik van **door de gebruiker gedefinieerde schema's** om de eerder geïmplementeerde grens met behulp van databases te bieden.
+- Gebruik één Data Base om uw gehele analytische werk belasting uit te voeren.
+- Consolideer uw bestaande analyse omgeving om één Data Base te gebruiken.
+- Gebruik door de **gebruiker gedefinieerde schema's** om de grens te leveren die eerder is geïmplementeerd met behulp van data bases.
 
-Als door de gebruiker gedefinieerde schema's niet eerder zijn gebruikt, hebt u een schone lei. Gebruik de oude databasenaam als basis voor uw door de gebruiker gedefinieerde schema's in de Synapse SQL-database.
+Als door de gebruiker gedefinieerde schema's niet eerder zijn gebruikt, hebt u een schone pastel. Gebruik de oude database naam als basis voor uw door de gebruiker gedefinieerde schema's in de Synapse-SQL database.
 
 Als er al schema's zijn gebruikt, hebt u een aantal opties:
 
-- De oude schemanamen verwijderen en opnieuw beginnen
-- De namen van het verouderde schema behouden door de oude schemanaam vooraf in behandeling te nemen bij de tabelnaam
-- Bewaar de oudere schemanamen door weergaven over de tabel te implementeren in een extra schema, waarmee de oude schemastructuur opnieuw wordt gemaakt.
+- Verwijder de oude schema namen en begin vers
+- Behoud de oude schema namen door de oude schema naam vooraf in behandeling te laten nemen aan de naam van de tabel
+- Behoud de oude schema namen door weer gaven te implementeren via de tabel in een extra schema, waardoor de oude schema structuur opnieuw wordt gemaakt.
 
 > [!NOTE]
-> Bij de eerste inspectie lijkt optie 3 misschien wel de meest aansprekende keuze. Weergaven worden alleen gelezen in Synapse SQL. Alle gegevens of tabelwijzigingen moeten worden uitgevoerd tegen de basistabel. Optie 3 introduceert ook een laag weergaven in uw systeem. Misschien wilt u hier nog wat extra aandacht aan geven als u al weergaven in uw architectuur gebruikt.
+> Op de eerste inspectie lijkt optie 3 mogelijk als de meest aantrekkelijke keuze. Weer gaven zijn alleen-lezen in Synapse SQL. Eventuele gegevens of tabel wijzigingen moeten worden uitgevoerd voor de basis tabel. Met optie 3 wordt ook een laag van weer gaven in uw systeem geïntroduceerd. U kunt hiervan een extra idee geven als u al gebruikmaakt van weer gaven in uw architectuur.
 > 
 > 
 
 ### <a name="examples"></a>Voorbeelden
 
-Implementeer door de gebruiker gedefinieerde schema's op basis van databasenamen.
+Door de gebruiker gedefinieerde schema's implementeren op basis van database namen.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create analytics tables in the edw schema
 );
 ```
 
-Houd de namen van het oude schema door ze vooraf in behandeling te nemen bij de tabelnaam. Gebruik schema's voor de werkbelastinggrens.
+Behoud de oude schema namen door deze vooraf in te wachten op de tabel naam. Schema's gebruiken voor de grens van de werk belasting.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Bewaar de oude schemanamen met weergaven.
+Behoud de oude schema namen met behulp van weer gaven.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Elke wijziging in de schemastrategie vereist een herziening van het beveiligingsmodel voor de database. In veel gevallen u het beveiligingsmodel vereenvoudigen door machtigingen toe te wijsop schemaniveau.
+> Voor elke wijziging in de schema strategie moet het beveiligings model voor de Data Base worden gecontroleerd. In veel gevallen kunt u het beveiligings model vereenvoudigen door machtigingen toe te wijzen op schema niveau.
 
-Als er meer gedetailleerde machtigingen nodig zijn, u databaserollen gebruiken. Zie het artikel [Databaserollen en gebruikers beheren](../../analysis-services/analysis-services-database-users.md) voor meer informatie over databaserollen.
+Als u meer gedetailleerde machtigingen nodig hebt, kunt u database rollen gebruiken. Zie het artikel [database rollen en-gebruikers beheren](../../analysis-services/analysis-services-database-users.md) voor meer informatie over database rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Synapse SQL-ontwikkelingsoverzicht](develop-overview.md)voor meer ontwikkelingstips.
+Zie [Synapse SQL Development Overview](develop-overview.md)(Engelstalig) voor meer tips voor ontwikkel aars.

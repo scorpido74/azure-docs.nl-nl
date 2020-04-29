@@ -1,6 +1,6 @@
 ---
-title: Querylabels gebruiken in Synapse SQL
-description: In dit artikel zijn essentiële tips voor het gebruik van querylabels in Synapse SQL.
+title: Labels van query's gebruiken in Synapse SQL
+description: In dit artikel vindt u essentiële tips voor het gebruik van query-labels in Synapse SQL.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,20 +12,20 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430030"
 ---
-# <a name="use-query-labels-in-synapse-sql"></a>Querylabels gebruiken in Synapse SQL
-In dit artikel zijn essentiële tips voor het gebruik van querylabels in Synapse SQL.
+# <a name="use-query-labels-in-synapse-sql"></a>Labels van query's gebruiken in Synapse SQL
+In dit artikel vindt u essentiële tips voor het gebruik van query-labels in Synapse SQL.
 
 > [!NOTE]
-> SQL on-demand (preview) biedt geen ondersteuning voor etiketteringsquery's.
+> SQL on-demand (preview) biedt geen ondersteuning voor het uitvoeren van query's.
 
-## <a name="what-are-query-labels"></a>Wat zijn querylabels
-SQL-groep ondersteunt een concept dat querylabels wordt genoemd. Voordat we in gaan op een diepte, laten we eens kijken naar een voorbeeld:
+## <a name="what-are-query-labels"></a>Wat zijn query labels?
+SQL-pool ondersteunt een concept met de naam query labels. We kijken naar een voor beeld voordat u naar een andere diepte gaat:
 
 ```sql
 SELECT *
@@ -34,11 +34,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-De laatste regel tagt de tekenreeks 'Mijn querylabel' aan de query. Deze tag is vooral handig omdat het label query-staat is via de DMVs. Zoeken naar labels biedt een mechanisme voor het lokaliseren van probleemquery's en helpt om de voortgang te identificeren via een ELT-run.
+Met de laatste regel wordt de teken reeks ' mijn query label ' gelabeld in de query. Deze tag is vooral nuttig omdat het label query's kan uitvoeren via de Dmv's. Het uitvoeren van query's voor labels biedt een mechanisme voor het vinden van probleem query's en helpt bij het identificeren van de voortgang van een ELT-uitvoering.
 
-Goede naamgeving conventie zijn zeer behulpzaam. Als u het label bijvoorbeeld start met PROJECT, PROCEDURE, STATEMENT of COMMENT, wordt de query op unieke wijze geïdentificeerd tussen alle code in bronbeheer.
+Goede naam conventies zijn het handigst. Als u bijvoorbeeld het label met PROJECT, PROCEDURE, instructie of opmerking start, wordt de query op unieke wijze geïdentificeerd voor alle code in broncode beheer.
 
-In de volgende query wordt een dynamische beheerweergave gebruikt om op label te zoeken:
+De volgende query gebruikt een dynamische beheer weergave om te zoeken op label:
 
 ```sql
 SELECT  *
@@ -48,11 +48,11 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Het is essentieel om vierkante haakjes of dubbele aanhalingstekens rond het woordetiket te zetten wanneer het vragen. Label is een gereserveerd woord en veroorzaakt een fout wanneer het niet wordt afgebakend. 
+> Het is essentieel om rechte haken of dubbele aanhalings tekens rond het woord label te plaatsen tijdens het uitvoeren van query's. Label is een gereserveerd woord dat een fout veroorzaakt wanneer het niet wordt gescheiden. 
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](develop-overview.md)
+Zie [ontwikkelings overzicht](develop-overview.md)voor meer tips voor ontwikkel aars.
 
 

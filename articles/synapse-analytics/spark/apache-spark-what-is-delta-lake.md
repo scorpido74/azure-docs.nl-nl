@@ -10,36 +10,36 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429198"
 ---
 # <a name="what-is-delta-lake"></a>Wat is Delta Lake?
 
-Azure Synapse Analytics is compatibel met Linux Foundation Delta Lake. Delta Lake is een open-source opslaglaag die ACID-transacties (atomiciteit, consistentie, isolatie en duurzaamheid) naar Apache Spark en big data-workloads brengt.
+Azure Synapse Analytics is compatibel met Linux Foundation Delta Lake. Delta Lake is een open-source opslagbus die trans acties voor zuren (atomiciteit, consistentie, isolatie en duurzaamheid) tot Apache Spark en big data werk belastingen brengt.
 
 ## <a name="key-features"></a>Belangrijke functies
 
 | Functie | Beschrijving |
 | --- | --- |
-| **ZUURtransacties** | Gegevensmeren worden meestal bevolkt via meerdere processen en pijplijnen, waarvan sommige gelijktijdig gegevens schrijven met reads. Voorafgaand aan Delta Lake en de toevoeging van transacties, moesten data engineers een handmatig foutgevoelig proces doorlopen om de integriteit van gegevens te waarborgen. Delta Lake brengt bekende ACID-transacties naar datalakes. Het biedt serializability, het sterkste niveau van isolatie niveau. Meer informatie bij [Diving into Delta Lake: Unpacking the Transaction Log](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
-| **Schaalbare verwerking met metagegevens** | In big data kunnen zelfs de metadata zelf "big data" zijn. Delta Lake behandelt metadata net als gegevens en maakt gebruik van de gedistribueerde verwerkingskracht van Spark om al zijn metadata te verwerken. Als gevolg hiervan kan Delta Lake op hun gemak tafels op petabyte-schaal verwerken met miljarden partities en bestanden. |
-| **Tijdreizen (versiebeheer van gegevens)** | De mogelijkheid om een wijziging ongedaan te maken of terug te gaan naar een vorige versie is een van de belangrijkste kenmerken van transacties. Delta Lake biedt momentopnamen van gegevens waarmee u terugkeren naar eerdere versies van gegevens voor audits, terugdraaiingen of om experimenten te reproduceren. Meer informatie [over de introductie van Delta Lake Time Travel voor grootschalige datalakes.](https://databricks.com/blog/2019/02/04/introducing-delta-time-travel-for-large-scale-data-lakes.html) |
-| **Open indeling** | Apache Parquet is de basislijnindeling voor Delta Lake, zodat u gebruik maken van de efficiënte compressie- en coderingsschema's die inheems zijn in het formaat. |
-| **Unified Batch en Streaming Bron en Sink** | Een tabel in Delta Lake is zowel een batchtabel, als een streamingbron en gootsteen. Streaming gegevens inslikken, batch historische backfill, en interactieve query's allemaal gewoon werken uit de doos. |
-| **Schemahandhaving** | Schemahandhaving helpt ervoor te zorgen dat de gegevenstypen correct zijn en dat vereiste kolommen aanwezig zijn, waardoor slechte gegevens geen gegevensinconsistentie kunnen veroorzaken. Zie [Duiken in Delta Lake: Schema Enforcement & Evolution](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) voor meer informatie |
-| **Schema-evolutie** | Met Delta Lake u wijzigingen aanbrengen in een tabelschema dat automatisch kan worden toegepast, zonder dat u migratie DDL hoeft te schrijven. Zie [Duiken in Delta Lake: Schema Enforcement & Evolution](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) voor meer informatie |
-| **Controlegeschiedenis** | Delta Lake transactielogboek registreert details over elke wijziging in gegevens die een volledig controlespoor van de wijzigingen bieden. |
-| **Updates en verwijderingen** | Delta Lake ondersteunt Scala / Java / Python en SQL API's voor een verscheidenheid aan functionaliteit. Ondersteuning voor bewerkingen voor samenvoegen, bijwerken en verwijderen helpt u om aan de nalevingsvereisten te voldoen. Zie [De Delta Lake 0.4.0-release aankondigen](https://delta.io/news/delta-lake-0-4-0-released/) en [Eenvoudige, betrouwbare upserts en deletes op Delta Lake-tabellen met Python API's](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html), die codefragmenten bevatten voor het samenvoegen, bijwerken en verwijderen van DML-opdrachten. |
-| **100% compatibel met Apache Spark API** | Ontwikkelaars kunnen Delta Lake gebruiken met hun bestaande gegevenspijplijnen met minimale wijzigingen omdat het volledig compatibel is met bestaande Spark-implementaties. |
+| **ZURE trans acties** | Data-meren worden meestal gevuld via meerdere processen en pijp lijnen, waarvan sommige gegevens gelijktijdig met lees bewerkingen worden geschreven. Vóór Delta Lake en het toevoegen van trans acties moesten gegevens technici een hand matig fout gevoelig proces door lopen om de gegevens integriteit te garanderen. Delta Lake brengt bekende ACID-trans acties naar Data meren. Het biedt serialiseerbaar, het krach tigste niveau van het isolatie niveau. Meer informatie over [Delta Lake: het uitpakken van het transactie logboek](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
+| **Schaal bare afhandeling van meta gegevens** | In big data kan zelfs de meta gegevens zelf ' big data ' zijn. Delta Lake behandelt meta gegevens zoals gegevens en maakt gebruik van de gedistribueerde verwerkings kracht van Spark om alle meta gegevens te verwerken. Als gevolg hiervan kan Delta Lake PETA byte tabellen met miljarden partities en bestanden op een gemakkelijke manier verwerken. |
+| **Tijdige reis (versie beheer van gegevens)** | De mogelijkheid om een wijziging ongedaan te maken of terug te gaan naar een eerdere versie is een van de belangrijkste functies van trans acties. Delta Lake biedt moment opnamen van gegevens waarmee u kunt terugkeren naar eerdere versies van gegevens voor audits, terugdraai acties of het reproduceren van experimenten. Meer informatie over het [introduceren van Delta Lake time reis voor grootschalige data meren](https://databricks.com/blog/2019/02/04/introducing-delta-time-travel-for-large-scale-data-lakes.html). |
+| **Indeling openen** | Apache Parquet is de basislijn notatie voor Delta Lake, zodat u de efficiënte compressie-en coderings schema's kunt gebruiken die standaard worden gebruikt voor de indeling. |
+| **Unified batch-en streaming-bron en Sink** | Een tabel in Delta Lake is zowel een batch tabel als een streaming-bron en Sink. Gegevens opname, batch historische backfill en interactieve query's worden allemaal alleen uit het vak opgenomen. |
+| **Schema afdwingen** | Bij het afdwingen van het schema kunt u ervoor zorgen dat de gegevens typen juist zijn en dat de vereiste kolommen aanwezig zijn, waardoor het voor komen dat beschadigde gegevens geen gegevens consistentie veroorzaken. Zie voor meer informatie gaat u [naar Delta Lake: schema Afdwinging & evolutie](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
+| **Schema ontwikkeling** | Met Delta Lake kunt u wijzigingen aanbrengen in een tabel schema dat automatisch kan worden toegepast, zonder dat u migratie-DDL hoeft te schrijven. Zie voor meer informatie gaat u [naar Delta Lake: schema Afdwinging & evolutie](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
+| **Controle geschiedenis** | In het transactie logboek van Delta Lake worden gegevens over elke wijziging aangebracht in gegevens die een volledige controle spoor van de wijzigingen leveren. |
+| **Updates en verwijderingen** | Delta Lake ondersteunt scala/Java/python-en SQL-Api's voor verschillende functies. Ondersteuning voor samen Voeg-, update-en verwijderings bewerkingen helpt u te voldoen aan de nalevings vereisten. Zie voor meer informatie [aankondigen van de 0.4.0-release van Delta Lake](https://delta.io/news/delta-lake-0-4-0-released/) en [eenvoudige, betrouw bare upsert en verwijderingen op Delta Lake-tabellen met behulp van python-api's](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html), die code fragmenten bevatten voor het samen voegen, bijwerken en verwijderen van DML-opdrachten. |
+| **100% compatibel met Apache Spark-API** | Ontwikkel aars kunnen Delta Lake met hun bestaande gegevens pijplijnen gebruiken met minimale wijziging omdat het volledig compatibel is met bestaande Spark-implementaties. |
 
-Zie de [documentatiepagina van Delta Lake](https://docs.delta.io/latest/delta-intro.html) voor volledige documentatie
+Zie de [pagina Delta Lake documentation](https://docs.delta.io/latest/delta-intro.html) voor volledige documentatie
 
-Zie [Delta Lake Project](https://lfprojects.org)voor meer informatie.
+Zie voor meer informatie het [Delta Lake-project](https://lfprojects.org).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [.NET voor Apache Spark-documentatie](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

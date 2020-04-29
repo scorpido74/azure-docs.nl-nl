@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: b565bf3bae61cf92133b957bb75fdae9545c030e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81421861"
 ---
-Als u wilt streamen in een gecomprimeerde `PullAudioInputStream` `PushAudioInputStream`audio-indeling naar de spraakservice, maakt of maakt u. Maak vervolgens `AudioConfig` een exemplaar van uw streamklasse en geeft de compressieindeling van de stream op.
+Als u een gecomprimeerde audio-indeling naar de speech-service wilt `PullAudioInputStream` streamen, maakt of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een exemplaar van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
 
-Laten we aannemen dat u een `pushStream` invoerstreamklasse hebt genaamd en OPUS/OGG gebruikt. Uw code kan er als volgt uitzien:
+We gaan ervan uit dat u een invoer stroom klasse hebt `pushStream` aangeroepen en gebruikmaakt van Opus/OGG. Uw code kan er als volgt uitzien:
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech;

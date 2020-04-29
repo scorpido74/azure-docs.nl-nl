@@ -1,6 +1,6 @@
 ---
-title: Gegevens van HBase kopiëren met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens van HBase naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van HBase met behulp van Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit HBase naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417257"
 ---
-# <a name="copy-data-from-hbase-using-azure-data-factory"></a>Gegevens van HBase kopiëren met Azure Data Factory 
+# <a name="copy-data-from-hbase-using-azure-data-factory"></a>Gegevens kopiëren van HBase met behulp van Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van HBase te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit HBase te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze HBase-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van HBase kopiëren naar elk ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van HBase kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
+Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,31 +42,31 @@ Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor de HBase-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor HBase-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor hbase gekoppelde service:
+De volgende eigenschappen worden ondersteund voor HBase gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **HBase** | Ja |
-| host | Het IP-adres of de hostnaam van de HBase-server. (d.w.z.  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Ja |
-| poort | De TCP-poort die de HBase-instantie gebruikt om naar clientverbindingen te luisteren. De standaardwaarde is 9090. Als u verbinding maakt met Azure HDInsights, geeft u de poort op als 443. | Nee |
-| httpPath httpPath | De gedeeltelijke URL die overeenkomt met de `/hbaserest0` HBase-server, bijvoorbeeld bij het gebruik van het HDInsights-cluster. | Nee |
-| authenticationType | Het verificatiemechanisme dat moet worden gebruikt om verbinding te maken met de HBase-server. <br/>Toegestane waarden zijn: **Anoniem,** **Basic** | Ja |
-| gebruikersnaam | De gebruikersnaam die wordt gebruikt om verbinding te maken met de HBase-instantie.  | Nee |
-| wachtwoord | Het wachtwoord dat overeenkomt met de gebruikersnaam. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
-| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met TLS. De standaardwaarde is false.  | Nee |
-| trustedCertPath | Het volledige pad van het .pem-bestand met vertrouwde CA-certificaten voor het verifiëren van de server bij het maken via TLS. Deze eigenschap kan alleen worden ingesteld wanneer tls wordt gebruikt op zelf gehoste IR. De standaardwaarde is het cacerts.pem-bestand dat bij de IR is geïnstalleerd.  | Nee |
-| allowHostNameCNMismatch | Hiermee geeft u op of een door CA uitgegeven TLS/SSL-certificaatnaam moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via TLS. De standaardwaarde is false.  | Nee |
-| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server moeten worden toegestaan. De standaardwaarde is false.  | Nee |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
+| host | Het IP-adres of de hostnaam van de HBase-server. dat wil zeggen.  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Ja |
+| poort | De TCP-poort die door het HBase-exemplaar wordt gebruikt om te Luis teren naar client verbindingen. De standaard waarde is 9090. Als u verbinding maakt met Azure HDInsights, geeft u poort op als 443. | Nee |
+| httpPath | De gedeeltelijke URL die overeenkomt met de HBase-server `/hbaserest0` , bijvoorbeeld wanneer HDInsights-cluster wordt gebruikt. | Nee |
+| authenticationType | Het verificatie mechanisme dat moet worden gebruikt om verbinding te maken met de HBase-server. <br/>Toegestane waarden zijn: **anoniem**, **basis** | Ja |
+| gebruikersnaam | De gebruikers naam die wordt gebruikt om verbinding te maken met het HBase-exemplaar.  | Nee |
+| wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
+| enableSsl | Hiermee geeft u op of de verbindingen met de server met behulp van TLS worden versleuteld. De standaardwaarde is false.  | Nee |
+| trustedCertPath | Het volledige pad van het. pem-bestand met vertrouwde CA-certificaten voor het verifiëren van de server bij het maken van verbinding via TLS. Deze eigenschap kan alleen worden ingesteld wanneer TLS op zelf-hostende IR wordt gebruikt. De standaard waarde is het cacerts. pem-bestand dat met de IR is geïnstalleerd.  | Nee |
+| allowHostNameCNMismatch | Hiermee geeft u op of een door de certificerings instantie uitgegeven TLS/SSL-certificaat naam moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is false.  | Nee |
+| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server mogen worden toegestaan. De standaardwaarde is false.  | Nee |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 >[!NOTE]
->Als uw cluster geen ondersteuning biedt voor plaksessie, bijvoorbeeld HDInsight, voegt u expliciet knooppuntindex toe aan `/hbaserest0` het `/hbaserest`einde van de http-padinstelling, bijvoorbeeld opgeven in plaats van .
+>Als uw cluster geen plak sessie ondersteunt, bijvoorbeeld HDInsight, voegt u de knooppunt index expliciet toe aan het einde van de instelling van het http `/hbaserest0` -pad `/hbaserest`, bijvoorbeeld in plaats van.
 
-**Voorbeeld voor HDInsights HBase:**
+**Voor beeld voor HDInsights HBase:**
 
 ```json
 {
@@ -93,7 +93,7 @@ De volgende eigenschappen worden ondersteund voor hbase gekoppelde service:
 }
 ```
 
-**Voorbeeld voor generieke HBase:**
+**Voor beeld voor algemene HBase:**
 
 ```json
 {
@@ -125,14 +125,14 @@ De volgende eigenschappen worden ondersteund voor hbase gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de HBase-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de HBase-gegevensset.
 
 Als u gegevens van HBase wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **HBaseObject**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **HBaseObject** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -153,18 +153,18 @@ Als u gegevens van HBase wilt kopiëren, stelt u de eigenschap type van de gegev
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door HBase-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door HBase-bron worden ondersteund.
 
 ### <a name="hbasesource-as-source"></a>HBaseSource als bron
 
-Als u gegevens van HBase wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **HBaseSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit HBase, stelt u het bron type in de Kopieer activiteit in op **HBaseSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van kopieeractiviteit moet zijn ingesteld op: **HBaseSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **HBaseSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -197,9 +197,9 @@ Als u gegevens van HBase wilt kopiëren, stelt u het brontype in de kopieeractiv
 ```
 
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

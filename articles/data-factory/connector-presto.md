@@ -1,6 +1,6 @@
 ---
-title: Gegevens van Presto kopiëren met Azure Data Factory (Voorbeeld)
-description: Meer informatie over het kopiëren van gegevens van Presto naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van Presto met behulp van Azure Data Factory (preview-versie)
+description: Meer informatie over het kopiëren van gegevens uit Presto naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 261bdedee56bb4de2dfbbef27358fae5ae8fdc3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416745"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Gegevens van Presto kopiëren met Azure Data Factory (Voorbeeld)
+# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Gegevens kopiëren van Presto met behulp van Azure Data Factory (preview-versie)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van Presto te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Presto te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 > [!IMPORTANT]
-> Deze connector is momenteel in preview. Je het uitproberen en ons feedback geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.
+> Deze connector is momenteel beschikbaar als preview-versie. U kunt het uitproberen en ons feedback geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Presto-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van Presto kopiëren naar een ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van Presto kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
+Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Presto-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor Presto-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor presto gekoppelde service:
+De volgende eigenschappen worden ondersteund voor Presto gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **Presto** | Ja |
-| host | Het IP-adres of de hostnaam van de Presto-server. (d.w.z. 192.168.222.160)  | Ja |
-| serverVersie | De versie van de Presto-server. (d.w.z. 0.148-t)  | Ja |
-| Catalogus | De cataloguscontext voor alle aanvragen tegen de server.  | Ja |
-| poort | De TCP-poort die de Presto-server gebruikt om naar clientverbindingen te luisteren. De standaardwaarde is 8080.  | Nee |
-| authenticationType | Het verificatiemechanisme dat wordt gebruikt om verbinding te maken met de Presto-server. <br/>Toegestane waarden zijn: **Anoniem,** **LDAP** | Ja |
-| gebruikersnaam | De gebruikersnaam die wordt gebruikt om verbinding te maken met de Presto-server.  | Nee |
-| wachtwoord | Het wachtwoord dat overeenkomt met de gebruikersnaam. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
-| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met TLS. De standaardwaarde is false.  | Nee |
-| trustedCertPath | Het volledige pad van het .pem-bestand met vertrouwde CA-certificaten voor het verifiëren van de server bij het maken via TLS. Deze eigenschap kan alleen worden ingesteld wanneer tls wordt gebruikt op zelf gehoste IR. De standaardwaarde is het cacerts.pem-bestand dat bij de IR is geïnstalleerd.  | Nee |
-| gebruik vanSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken in het systeemvertrouwensarchief of uit een opgegeven PEM-bestand. De standaardwaarde is false.  | Nee |
-| allowHostNameCNMismatch | Hiermee geeft u op of een door CA uitgegeven TLS/SSL-certificaatnaam moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via TLS. De standaardwaarde is false.  | Nee |
-| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server moeten worden toegestaan. De standaardwaarde is false.  | Nee |
-| timeZoneID | De lokale tijdzone die door de verbinding wordt gebruikt. Geldige waarden voor deze optie worden opgegeven in de IANA Time Zone Database. De standaardwaarde is de systeemtijdzone.  | Nee |
+| type | De eigenschap type moet worden ingesteld op: **Presto** | Ja |
+| host | Het IP-adres of de hostnaam van de Presto-server. (bijvoorbeeld 192.168.222.160)  | Ja |
+| serverVersion | De versie van de Presto-server. (bijvoorbeeld 0,148-t)  | Ja |
+| catalogus | De context van de catalogus voor alle aanvragen bij de server.  | Ja |
+| poort | De TCP-poort die de Presto-server gebruikt om te Luis teren naar client verbindingen. De standaard waarde is 8080.  | Nee |
+| authenticationType | Het verificatie mechanisme dat wordt gebruikt om verbinding te maken met de Presto-server. <br/>Toegestane waarden zijn: **anoniem**, **LDAP** | Ja |
+| gebruikersnaam | De gebruikers naam die wordt gebruikt om verbinding te maken met de Presto-server.  | Nee |
+| wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
+| enableSsl | Hiermee geeft u op of de verbindingen met de server met behulp van TLS worden versleuteld. De standaardwaarde is false.  | Nee |
+| trustedCertPath | Het volledige pad van het. pem-bestand met vertrouwde CA-certificaten voor het verifiëren van de server bij het maken van verbinding via TLS. Deze eigenschap kan alleen worden ingesteld wanneer TLS op zelf-hostende IR wordt gebruikt. De standaard waarde is het cacerts. pem-bestand dat met de IR is geïnstalleerd.  | Nee |
+| useSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken uit de systeem vertrouwens archief of vanuit een opgegeven PEM-bestand. De standaardwaarde is false.  | Nee |
+| allowHostNameCNMismatch | Hiermee geeft u op of een door de certificerings instantie uitgegeven TLS/SSL-certificaat naam moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is false.  | Nee |
+| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server mogen worden toegestaan. De standaardwaarde is false.  | Nee |
+| timeZoneID | De lokale tijd zone die wordt gebruikt door de verbinding. Geldige waarden voor deze optie zijn opgegeven in de data base van de IANA-tijd zone. De standaard waarde is de systeem tijd zone.  | Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -90,16 +90,16 @@ De volgende eigenschappen worden ondersteund voor presto gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de presto-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Presto-gegevensset.
 
-Als u gegevens uit Presto wilt kopiëren, stelt u de eigenschap type van de gegevensset in **op PrestoObject**. De volgende eigenschappen worden ondersteund:
+Als u gegevens van Presto wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **PrestoObject**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet zijn ingesteld op: **PrestoObject** | Ja |
-| schema | Naam van het schema. |Nee (als 'query' in activiteitsbron is opgegeven)  |
-| tabel | Naam van de tabel. |Nee (als 'query' in activiteitsbron is opgegeven)  |
-| tableName | Naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` `table` en voor nieuwe werkbelasting. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **PrestoObject** | Ja |
+| schema | De naam van het schema. |Nee (als "query" in activiteit bron is opgegeven)  |
+| tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
+| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -120,18 +120,18 @@ Als u gegevens uit Presto wilt kopiëren, stelt u de eigenschap type van de gege
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Presto-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Presto-bron worden ondersteund.
 
 ### <a name="presto-as-source"></a>Presto als bron
 
-Als u gegevens uit Presto wilt kopiëren, stelt u het brontype in de kopieeractiviteit in **op PrestoSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Presto, stelt u het bron type in de Kopieer activiteit in op **PrestoSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de kopieeractiviteit moet zijn ingesteld op: **PrestoSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **PrestoSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -163,10 +163,10 @@ Als u gegevens uit Presto wilt kopiëren, stelt u het brontype in de kopieeracti
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

@@ -1,6 +1,6 @@
 ---
-title: Apache Spark-toepassingen controleren
-description: Gebruik de Azure Synapse Studio om uw Apache Spark-toepassingen te controleren.
+title: Apache Spark toepassingen bewaken
+description: Gebruik Azure Synapse Studio om uw Apache Spark-toepassingen te bewaken.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -10,29 +10,29 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: f231693fdcf3519e29eed38e47db52d92acc00fa
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430745"
 ---
-# <a name="use-the-azure-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>De Azure Synapse Studio (preview) gebruiken om uw Apache Spark-toepassingen te controleren
+# <a name="use-the-azure-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Azure Synapse Studio (preview) gebruiken om uw Apache Spark-toepassingen te bewaken
 
-Met Azure Synapse Analytics u Spark gebruiken om notitieblokken, taken en andere soorten toepassingen uit te voeren op uw Spark-pools in uw werkruimte.
+Met Azure Synapse Analytics kunt u Spark gebruiken om notitie blokken, taken en andere soorten toepassingen uit te voeren in uw Spark-Pools in uw werk ruimte.
 
-In dit artikel wordt uitgelegd hoe u uw Spark-toepassingen controleren, zodat u de laatste status, problemen en voortgang in de gaten houden.
+In dit artikel wordt uitgelegd hoe u uw Spark-toepassingen kunt bewaken, zodat u op de hoogte kunt blijven van de meest recente status, problemen en voortgang.
 
 ## <a name="accessing-the-list-of-spark-applications"></a>Toegang tot de lijst met Spark-toepassingen
 
-Als u de lijst met Spark-toepassingen in uw werkruimte wilt bekijken, opent u eerst [de Azure Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werkruimte.
+Als u de lijst met Spark-toepassingen in uw werk ruimte wilt zien, opent u eerst [Azure Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werk ruimte.
 
   > [!div class="mx-imgBorder"]
-  > ![Inloggen bij werkruimte](./media/common/login-workspace.png)
+  > ![Aanmelden bij werk ruimte](./media/common/login-workspace.png)
 
-Nadat u uw werkruimte hebt geopend, selecteert u de sectie **Monitor** aan de linkerkant.
+Wanneer u uw werk ruimte hebt geopend, selecteert u de sectie **monitor** aan de linkerkant.
 
   > [!div class="mx-imgBorder"]
-  > ![Monitorhub selecteren](./media/common/left-nav.png)
+  > ![Hub bewaken selecteren](./media/common/left-nav.png)
 
 Selecteer **Spark-toepassingen** om de lijst met Spark-toepassingen weer te geven.
 
@@ -41,20 +41,20 @@ Selecteer **Spark-toepassingen** om de lijst met Spark-toepassingen weer te geve
 
 ## <a name="filtering-your-spark-applications"></a>Uw Spark-toepassingen filteren
 
-U de lijst met Spark-toepassingen filteren op de toepassingen waarin u geïnteresseerd bent. Met de filters boven aan het scherm u een veld opgeven waarop u wilt filteren.
+U kunt de lijst met Spark-toepassingen filteren op de items waarin u bent geïnteresseerd. Met de filters boven aan het scherm kunt u een veld opgeven waarop u wilt filteren.
 
-U bijvoorbeeld de weergave filteren om alleen de Spark-toepassingen te zien die de naam 'verkoop' bevatten:
-
-  > [!div class="mx-imgBorder"]
-  > ![Knop Filter](./media/common/filter-button.png)
+U kunt bijvoorbeeld de weer gave filteren om alleen de Spark-toepassingen weer te geven die de naam ' Sales ' bevatten:
 
   > [!div class="mx-imgBorder"]
-  > ![Voorbeeldfilter](./media/how-to-monitor-spark-applications/filter-example.png)
+  > ![Knop filteren](./media/common/filter-button.png)
 
-## <a name="viewing-details-about-a-specific-spark-application"></a>Details weergeven over een specifieke Spark-toepassing
+  > [!div class="mx-imgBorder"]
+  > ![Voorbeeld filter](./media/how-to-monitor-spark-applications/filter-example.png)
 
-Als u de details van een van uw Spark-toepassingen wilt bekijken, selecteert u de Spark-toepassing en bekijkt u de details. Als de Spark-toepassing nog steeds actief is, u de voortgang controleren.
+## <a name="viewing-details-about-a-specific-spark-application"></a>Details over een specifieke Spark-toepassing weer geven
+
+Als u de details van een van uw Spark-toepassingen wilt weer geven, selecteert u de Spark-toepassing en bekijkt u de details. Als de Spark-toepassing nog steeds wordt uitgevoerd, kunt u de voortgang bewaken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel Monitor pipeline [runs Azure Synapse Studio](how-to-monitor-pipeline-runs.md) voor meer informatie over het bewaken van pijplijnuitvoeringen.  
+Zie het artikel [Azure Synapse Studio](how-to-monitor-pipeline-runs.md) voor meer informatie over het bewaken van pijplijn uitvoeringen.  

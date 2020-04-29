@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren vanuit Couchbase met Azure Data Factory (Voorbeeld)
-description: Meer informatie over het kopiëren van gegevens van Couchbase naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van Couch Base met behulp van Azure Data Factory (preview-versie)
+description: Meer informatie over het kopiëren van gegevens uit Couch Base naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,29 +12,29 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417444"
 ---
-# <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Gegevens kopiëren vanuit Couchbase met Azure Data Factory (Voorbeeld)
+# <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Gegevens kopiëren van Couch Base met behulp van Azure Data Factory (preview-versie)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van Couchbase te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Couch Base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 > [!IMPORTANT]
-> Deze connector is momenteel in preview. Je het uitproberen en ons feedback geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.
+> Deze connector is momenteel beschikbaar als preview-versie. U kunt het uitproberen en ons feedback geven. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/) als u een afhankelijkheid van preview-connectors wilt opnemen in uw oplossing.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Deze Couchbase-connector wordt ondersteund voor de volgende activiteiten:
+Deze Couch base-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van Couchbase kopiëren naar elk ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van Couch base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
+Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,19 +44,19 @@ Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor couchbase-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor Couch base-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor Couchbase linked service:
+De volgende eigenschappen worden ondersteund voor Couch base gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Couchbase** | Ja |
-| Connectionstring | Een ODBC-verbindingstekenreeks om verbinding te maken met Couchbase. <br/>U ook de referentietekenreeks in `credString` Azure Key Vault plaatsen en de configuratie uit de verbindingstekenreeks halen. Raadpleeg de volgende voorbeelden en [store-referenties in het Azure Key Vault-artikel](store-credentials-in-key-vault.md) met meer details. | Ja |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
+| type | De eigenschap type moet worden ingesteld op: **Couch base** | Ja |
+| Verbindings | Een ODBC-connection string om verbinding te maken met Couch base. <br/>U kunt ook de referentie teken reeks in Azure Key Vault plaatsen en `credString` de configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -74,7 +74,7 @@ De volgende eigenschappen worden ondersteund voor Couchbase linked service:
 }
 ```
 
-**Voorbeeld: tekenreekstekenreeks opslaan in Azure Key Vault**
+**Voor beeld: referentie teken reeks opslaan in Azure Key Vault**
 
 ```json
 {
@@ -102,14 +102,14 @@ De volgende eigenschappen worden ondersteund voor Couchbase linked service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Couchbase-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Couch base-gegevensset.
 
-Als u gegevens uit Couchbase wilt kopiëren, stelt u de eigenschap type van de gegevensset in **op CouchbaseTable**. De volgende eigenschappen worden ondersteund:
+Als u gegevens van Couch Base wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **CouchbaseTable**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **CouchbaseTable** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 
 **Voorbeeld**
@@ -131,18 +131,18 @@ Als u gegevens uit Couchbase wilt kopiëren, stelt u de eigenschap type van de g
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Couchbase-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Couch base-bron worden ondersteund.
 
 ### <a name="couchbasesource-as-source"></a>CouchbaseSource als bron
 
-Als u gegevens uit Couchbase wilt kopiëren, stelt u het brontype in de kopieeractiviteit in **op CouchbaseSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Couch Base, stelt u het bron type in de Kopieer activiteit in op **CouchbaseSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de kopieeractiviteit moet zijn ingesteld op: **CouchbaseSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **CouchbaseSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -174,9 +174,9 @@ Als u gegevens uit Couchbase wilt kopiëren, stelt u het brontype in de kopieera
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418754"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
@@ -44,7 +44,7 @@ In dit scenario hebben we een aantal tabellen in Azure SQL Database die we wille
 * De eerste pijplijn zoekt de lijst op met tabellen die moeten worden gekopieerd naar de sinkgegevensopslag.  U kunt ook een metagegevenstabel bijhouden waarin alle tabellen worden vermeld die moeten worden gekopieerd naar de sinkgegevensopslag. De pijplijn activeert vervolgens een andere pijplijn, die elke tabel in de database langsloopt en de bewerking uitvoert waarmee de gegevens worden gekopieerd.
 * De tweede pijplijn voert de daadwerkelijke kopieerbewerking uit. De lijst met tabellen wordt gebruikt als parameter. Kopieer voor elke tabel in de lijst de specifieke tabel in Azure SQL Database naar de bijbehorende tabel in SQL Data Warehouse met behulp van [gefaseerd kopiëren via Blob storage en PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) (Engelstalig artikel) voor de beste prestaties. In dit voorbeeld wordt de lijst met tabellen in de eerste pijplijn doorgegeven als een waarde voor de parameter. 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -52,7 +52,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.c
 
 * **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren).
 * **Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
-* **Azure SQL-database**. Deze database bevat de brongegevens. 
+* **Azure SQL database**. Deze database bevat de brongegevens. 
 * **Azure SQL Data Warehouse**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
 
 ### <a name="prepare-sql-database-and-sql-data-warehouse"></a>SQL Database en SQL Data Warehouse voorbereiden
@@ -77,7 +77,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. PowerShell **starten**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
+1. Start **Power shell**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -89,12 +89,12 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
     ```powershell
     Get-AzSubscription
     ```
-    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
+    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Voer de **set-AzDataFactoryV2-cmdlet** uit om een gegevensfabriek te maken. Vervang voordat u de opdracht uitvoert de tijdelijke aanduidingen door uw eigen waarden. 
+2. Voer de cmdlet **set-AzDataFactoryV2** uit om een Data Factory te maken. Vervang voordat u de opdracht uitvoert de tijdelijke aanduidingen door uw eigen waarden. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -138,7 +138,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
 
 2. Schakel in **Azure PowerShell** over naar de map **ADFv2TutorialBulkCopy**.
 
-3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
+3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -172,7 +172,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
     }
     ```
 
-2. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDWLinkedService.**
+2. Als u de gekoppelde service wilt maken: **AzureSqlDWLinkedService**, voert u de cmdlet **set-AzDataFactoryV2LinkedService** uit.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -208,7 +208,7 @@ In deze zelfstudie gebruikt u Azure Blob-opslag als een tussentijds faseringsgeb
     }
     ```
 
-2. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureStorageLinkedService.**
+2. Als u de gekoppelde service wilt maken: **AzureStorageLinkedService**, voert u de cmdlet **set-AzDataFactoryV2LinkedService** uit.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -247,7 +247,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     }
     ```
 
-2. Als u de gegevensset wilt maken: **AzureSqlDatabaseDataset**, voert u de cmdlet **Set-AzDataFactoryV2Dataset** uit.
+2. Als u de gegevensset wilt maken: **AzureSqlDatabaseDataset**, voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -291,7 +291,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     }
     ```
 
-2. Voer de cmdlet **Set-AzDataFactoryV2Dataset** uit om de gegevensset: **AzureSqlDWDataset**te maken.
+2. Als u de gegevensset wilt maken: **AzureSqlDWDataset**, voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -383,7 +383,7 @@ In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke 
     }
     ```
 
-2. De pijplijn maken: **IterateAndCopySQLTables**, Voert de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
+2. Als u de pijp lijn wilt maken: **IterateAndCopySQLTables**, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -459,7 +459,7 @@ Deze pijplijn voert twee stappen uit:
     }
     ```
 
-2. De pijplijn maken: **GetTableListAndTriggerCopyData**, voert de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
+2. Als u de pijp lijn wilt maken: **GetTableListAndTriggerCopyData**, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

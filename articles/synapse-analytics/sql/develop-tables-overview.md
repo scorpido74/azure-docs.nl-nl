@@ -1,5 +1,5 @@
 ---
-title: Tabellen ontwerpen met Synapse SQL
+title: Tabellen ontwerpen met behulp van Synapse SQL
 description: Inleiding tot het ontwerpen van tabellen in Synapse SQL.
 services: synapse-analytics
 author: filippopovic
@@ -11,80 +11,80 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431876"
 ---
-# <a name="design-tables-using-synapse-sql"></a>Tabellen ontwerpen met Synapse SQL
+# <a name="design-tables-using-synapse-sql"></a>Tabellen ontwerpen met behulp van Synapse SQL
 
-Dit document bevat belangrijke concepten voor het ontwerpen van tabellen met SQL-pool en SQL on-demand (preview).  
+Dit document bevat belang rijke concepten voor het ontwerpen van tabellen met SQL-groep en SQL-op-aanvraag (preview).  
 
-[SQL on-demand (preview)](on-demand-workspace-overview.md) is een queryservice over de gegevens in uw gegevensmeer. Het heeft geen lokale opslag voor het innemen van gegevens. [SQL-pool](best-practices-sql-pool.md) vertegenwoordigt een verzameling analytische bronnen die worden ingericht bij het gebruik van Synapse SQL. De grootte van sql-pool wordt bepaald door Data Warehousing Units (DWU).
+[SQL on-demand (preview)](on-demand-workspace-overview.md) is een query service over de gegevens in uw data Lake. Het bevat geen lokale opslag voor gegevens opname. [SQL-pool](best-practices-sql-pool.md) vertegenwoordigt een verzameling analytische resources die worden ingericht wanneer Synapse SQL wordt gebruikt. De grootte van de SQL-groep wordt bepaald door DWU (data warehousing units).
 
-In de volgende tabel worden de onderwerpen weergegeven die relevant zijn voor SQL-pool vs. SQL on-demand:
+De volgende tabel bevat de onderwerpen die relevant zijn voor SQL-groep versus SQL op aanvraag:
 
 | Onderwerp                                                        | SQL-pool | SQL on-demand |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Tabelcategorie bepalen](#determine-table-category)        | Ja                | Nee                      |
-| [Schemanamen](#schema-names)                                | Ja                | Ja                     |
-| [Tabelnamen](#table-names)                                  | Ja                | Nee                      |
-| [Tafelpersistentie](#table-persistence)                      | Ja                | Nee                      |
-| [Gewone tabel](#regular-table)                              | Ja                | Nee                      |
+| [Tabel categorie bepalen](#determine-table-category)        | Ja                | Nee                      |
+| [Schema namen](#schema-names)                                | Ja                | Ja                     |
+| [Tabel namen](#table-names)                                  | Ja                | Nee                      |
+| [Tabel persistentie](#table-persistence)                      | Ja                | Nee                      |
+| [Reguliere tabel](#regular-table)                              | Ja                | Nee                      |
 | [Tijdelijke tabel](#temporary-table)                          | Ja                | Ja                     |
 | [Externe tabel](#external-table)                            | Ja                | Ja                     |
-| [Gegevenstypen](#data-types)                                    | Ja                | Ja                     |
+| [Gegevens typen](#data-types)                                    | Ja                | Ja                     |
 | [Gedistribueerde tabellen](#distributed-tables)                    | Ja                | Nee                      |
 | [Met hash gedistribueerde tabellen](#hash-distributed-tables)          | Ja                | Nee                      |
 | [Gerepliceerde tabellen](#replicated-tables)                      | Ja                | Nee                      |
-| [Round-robin tafels](#round-robin-tables)                    | Ja                | Nee                      |
-| [Algemene distributiemethoden voor tabellen](#common-distribution-methods-for-tables) | Ja                | Nee                      |
+| [Round-Robin tabellen](#round-robin-tables)                    | Ja                | Nee                      |
+| [Algemene distributie methoden voor tabellen](#common-distribution-methods-for-tables) | Ja                | Nee                      |
 | [Partities](#partitions)                                    | Ja                | Ja                     |
 | [Columnstore-indexen](#columnstore-indexes)                  | Ja                | Nee                      |
 | [statistieken](#statistics)                                    | Ja                | Ja                     |
 | [Primaire sleutel en unieke sleutel](#primary-key-and-unique-key)    | Ja                | Nee                      |
 | [Opdrachten voor het maken van tabellen](#commands-for-creating-tables) | Ja                | Nee                      |
-| [Brongegevens afstemmen op het gegevensmagazijn](#aligning-source-data-with-the-data-warehouse) | Ja                | Nee                      |
-| [Niet-ondersteunde tabelfuncties](#unsupported-table-features)    | Ja                | Nee                      |
-| [Query's met tabelgrootte](#table-size-queries)                    | Ja                | Nee                      |
+| [Bron gegevens uitlijnen met het Data Warehouse](#aligning-source-data-with-the-data-warehouse) | Ja                | Nee                      |
+| [Niet-ondersteunde tabel functies](#unsupported-table-features)    | Ja                | Nee                      |
+| [Tabel grootte query's](#table-size-queries)                    | Ja                | Nee                      |
 
-## <a name="determine-table-category"></a>Tabelcategorie bepalen
+## <a name="determine-table-category"></a>Tabel categorie bepalen
 
-Een [sterschema](https://en.wikipedia.org/wiki/Star_schema) organiseert gegevens in feiten- en dimensietabellen. Sommige tabellen worden gebruikt voor integratie- of faseringsgegevens voordat u naar een feiten- of dimensietabel gaat. Bepaal bij het ontwerpen van een tabel of de tabelgegevens in een feiten-, dimensie- of integratietabel thuishoren. Dit besluit informeert de juiste tabelstructuur en -verdeling.
+Met een [ster schema](https://en.wikipedia.org/wiki/Star_schema) worden gegevens ingedeeld in feiten-en dimensie tabellen. Sommige tabellen worden gebruikt voor integratie-of faserings gegevens voordat ze naar een feiten-of dimensie tabel worden verplaatst. Bepaal tijdens het ontwerpen van een tabel of de tabel gegevens in een feiten-, dimensie-of integratie tabel horen. Met deze beslissing wordt de juiste tabel structuur en distributie informeerd.
 
-- **Feitentabellen** bevatten kwantitatieve gegevens die vaak worden gegenereerd in een transactioneel systeem en vervolgens worden geladen in het gegevensmagazijn. Een retailbedrijf genereert bijvoorbeeld elke dag verkooptransacties en laadt de gegevens vervolgens in een feitentabel voor gegevensmagazijnen voor analyse.
+- **Feiten tabellen** bevatten kwantitatieve gegevens die vaak worden gegenereerd in een transactioneel systeem en vervolgens in het Data Warehouse worden geladen. Een retail bedrijf genereert bijvoorbeeld elke dag verkoop transacties en laadt vervolgens de gegevens in een feiten tabel van een Data Warehouse voor analyse.
 
-- **Dimensietabellen** bevatten kenmerkgegevens die kunnen veranderen, maar meestal zelden worden gewijzigd. De naam en het adres van een klant worden bijvoorbeeld opgeslagen in een dimensietabel en alleen bijgewerkt wanneer het profiel van de klant verandert. Om de grootte van een grote feitentabel te minimaliseren, hoeven de naam en het adres van de klant niet in elke rij van een feitentabel te staan. In plaats daarvan kunnen de feitentabel en de dimensietabel een klant-id delen. Een query kan deelnemen aan de twee tabellen om het profiel en de transacties van een klant te koppelen.
+- **Dimensie tabellen** bevatten kenmerk gegevens die mogelijk worden gewijzigd, maar die meestal ongewijzigd zijn. Bijvoorbeeld, de naam en het adres van een klant worden opgeslagen in een dimensie tabel en alleen bijgewerkt wanneer het profiel van de klant wordt gewijzigd. Als u de grootte van een grote feiten tabel wilt minimaliseren, hoeven de naam en het adres van de klant niet in elke rij van een feiten tabel te staan. In plaats daarvan kan de feiten tabel en de dimensie tabel een klant-ID delen. Een query kan worden toegevoegd aan de twee tabellen om het profiel en de trans acties van een klant te koppelen.
 
-- **Integratietabellen** bieden een plaats voor het integreren of fasen van gegevens. U een integratietabel maken als een gewone tabel, een externe tabel of een tijdelijke tabel. U bijvoorbeeld gegevens laden naar een faseringstabel, transformaties uitvoeren op de gegevens in fasering en de gegevens vervolgens invoegen in een productietabel.
+- **Integratie tabellen** bieden een plaats voor het integreren of klaarzetten van gegevens. U kunt een integratie tabel maken als een normale tabel, een externe tabel of een tijdelijke tabel. U kunt bijvoorbeeld gegevens laden naar een faserings tabel, trans formaties uitvoeren op de gegevens in staging en vervolgens de gegevens in een productie tabel invoegen.
 
-## <a name="schema-names"></a>Schemanamen
+## <a name="schema-names"></a>Schema namen
 
-Schema's zijn een goede manier om objecten die op een vergelijkbare manier worden gebruikt, samen te groeperen. Met de volgende code wordt een [door de gebruiker gedefinieerd schema](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) met de naam wwi.
+Schema's zijn een goede manier om objecten die op een vergelijk bare wijze worden gebruikt, te groeperen. Met de volgende code wordt een door de [gebruiker gedefinieerd schema gemaakt met](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) de naam WWI.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-## <a name="table-names"></a>Tabelnamen
+## <a name="table-names"></a>Tabel namen
 
-Als u meerdere databases migreert van een on-prem-oplossing naar SQL-groep, u het beste zijn om alle feiten-, dimensie- en integratietabellen te migreren naar één SQL-poolschema. U bijvoorbeeld alle tabellen opslaan in het voorbeeldgegevensmagazijn [WideWorldImportersDW](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) binnen één schema met de naam wwi.
+Als u meerdere data bases migreert van een on-premises oplossing naar een SQL-groep, is het best practice alle feiten, dimensies en integratie tabellen naar één SQL-groeps schema te migreren. U kunt bijvoorbeeld alle tabellen in het [WideWorldImportersDW](/sql/samples/wide-world-importers-dw-database-catalog?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -voorbeeld data warehouse opslaan binnen één schema met de naam WWI.
 
-Als u de organisatie van de tabellen in SQL-groep wilt weergeven, u feiten, dimmen en int gebruiken als voorvoegsels voor de tabelnamen. De onderstaande tabel toont een aantal van de schema-en tabelnamen voor WideWorldImportersDW.  
+Als u de organisatie van de tabellen in de SQL-groep wilt weer geven, kunt u fact, Dim en int gebruiken als voor voegsels voor de tabel namen. In de volgende tabel ziet u enkele schema-en tabel namen voor WideWorldImportersDW.  
 
-| WideWorldImportersDW tabel  | Tabeltype | SQL-pool |
+| WideWorldImportersDW-tabel  | Tabel type | SQL-pool |
 |:-----|:-----|:------|:-----|
-| Plaats | Dimensie | wwi. DimCity (DimCity) |
-| Bestellen | Fact | wwi. FactOrder (FactOrder) |
+| Plaats | Dimensie | WWI. DimCity |
+| Bestellen | Fact | WWI. FactOrder |
 
-## <a name="table-persistence"></a>Tafelpersistentie
+## <a name="table-persistence"></a>Tabel persistentie
 
-Tabellen slaan gegevens permanent op in Azure Storage, tijdelijk in Azure Storage of in een gegevensarchief buiten het gegevensmagazijn.
+Tabellen slaan gegevens permanent op in Azure Storage, tijdelijk in Azure Storage, of in een gegevens archief buiten het Data Warehouse.
 
-### <a name="regular-table"></a>Gewone tabel
+### <a name="regular-table"></a>Reguliere tabel
 
-Een gewone tabel slaat gegevens op in Azure Storage als onderdeel van het gegevensmagazijn. De tabel en de gegevens blijven bestaan of een sessie al dan niet is geopend.  In het onderstaande voorbeeld wordt een gewone tabel met twee kolommen gemaakt.
+In een normale tabel worden gegevens in Azure Storage opgeslagen als onderdeel van het Data Warehouse. De tabel en de gegevens blijven bestaan, ongeacht of er al dan niet een sessie is geopend.  In het onderstaande voor beeld maakt u een reguliere tabel met twee kolommen.
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -92,27 +92,27 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="temporary-table"></a>Tijdelijke tabel
 
-Een tijdelijke tabel bestaat alleen voor de duur van de sessie. U een tijdelijke tabel gebruiken om te voorkomen dat andere gebruikers tijdelijke resultaten zien. Het gebruik van tijdelijke tabellen vermindert ook de noodzaak van opruiming.  Tijdelijke tabellen maken gebruik van lokale opslag en kunnen in SQL-pool snellere prestaties bieden.  
+Er bestaat alleen een tijdelijke tabel voor de duur van de sessie. U kunt een tijdelijke tabel gebruiken om te voor komen dat andere gebruikers tijdelijke resultaten bekijken. Het gebruik van tijdelijke tabellen vermindert ook de nood zaak van opschonen.  Tijdelijke tabellen gebruiken lokale opslag en, in SQL-groep, kunnen betere prestaties bieden.  
 
-SQL on-demand ondersteunt tijdelijke tabellen. Het gebruik ervan is echter beperkt omdat u kiezen uit een tijdelijke tabel, maar deze niet gebruiken met bestanden in opslag.
+SQL on demand ondersteunt tijdelijke tabellen. Maar het gebruik ervan is beperkt omdat u kunt kiezen uit een tijdelijke tabel, maar niet kan worden gekoppeld aan bestanden in de opslag.
 
-Zie [Tijdelijke tabellen voor](develop-tables-temporary.md)meer informatie.
+Zie voor meer informatie [tijdelijke tabellen](develop-tables-temporary.md).
 
 ### <a name="external-table"></a>Externe tabel
 
-[Externe tabellen](develop-tables-external-tables.md) wijzen op gegevens in Azure Storage blob of Azure Data Lake Storage.
+[Externe tabellen](develop-tables-external-tables.md) verwijzen naar gegevens die zich bevinden in azure Storage blob of Azure data Lake Storage.
 
-Importeer gegevens uit externe tabellen in SQL-groep met de instructie [TABEL MAKEN ALS SELECT.](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Zie [PolyBase gebruiken om gegevens uit Azure blob-opslag te laden](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een zelfstudie voor het laden.
+Importeer gegevens uit externe tabellen in een SQL-pool met behulp van de instructie [Create Table als Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Zie [poly Base gebruiken voor het laden van gegevens uit Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor het laden van een zelf studie.
 
-Voor SQL on-demand u [CETAS](develop-tables-cetas.md) gebruiken om het queryresultaat op te slaan in een externe tabel in Azure Storage.
+Voor SQL on-Demand kunt u [CETAS](develop-tables-cetas.md) gebruiken om het query resultaat op te slaan in een externe tabel in azure Storage.
 
 ## <a name="data-types"></a>Gegevenstypen
 
-SQL-groep ondersteunt de meest gebruikte gegevenstypen. Zie [gegevenstypen in Tabelverwijzing MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) in de instructie TABEL MAKEN voor een lijst met ondersteunde gegevenstypen. Zie [Gegevenstypen](../sql/develop-tables-data-types.md)voor meer informatie over het gebruik van gegevenstypen .
+De SQL-groep ondersteunt het meest gebruikte gegevens type. Zie [gegevens typen in Create Table verwijzing](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) in de CREATE TABLE-instructie voor een lijst met ondersteunde gegevens typen. Zie [gegevens typen](../sql/develop-tables-data-types.md)voor meer informatie over het gebruik van gegevens typen.
 
 ## <a name="distributed-tables"></a>Gedistribueerde tabellen
 
-Een fundamenteel kenmerk van SQL-pool is de manier waarop het tabellen kan opslaan en bedienen in [verschillende distributies.](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions)  SQL-groep ondersteunt drie methoden voor het distribueren van gegevens:
+Een fundamenteel onderdeel van de SQL-groep is de manier waarop het kan worden opgeslagen en toegepast op tabellen in [distributies](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions).  SQL-pool ondersteunt drie methoden voor het distribueren van gegevens:
 
 - Round robin (standaard)
 - Hash
@@ -120,48 +120,48 @@ Een fundamenteel kenmerk van SQL-pool is de manier waarop het tabellen kan opsla
 
 ### <a name="hash-distributed-tables"></a>Met hash gedistribueerde tabellen
 
-Een hash gedistribueerde tabel verdeelt rijen op basis van de waarde in de distributiekolom. Een hash distributed table is ontworpen om hoge prestaties te bereiken voor query's op grote tabellen. Er zijn verschillende factoren waarmee rekening moet worden gehouden bij het kiezen van een distributiekolom.
+Een gedistribueerde hash-tabel distribueert rijen op basis van de waarde in de kolom distributie. Een gedistribueerde hash-tabel is ontworpen om hoge prestaties te leveren voor query's op grote tabellen. Er zijn verschillende factoren waarmee u rekening moet houden bij het kiezen van een distributie kolom.
 
-Zie [Ontwerprichtlijnen voor gedistribueerde tabellen voor](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie .
+Zie [ontwerp richtlijnen voor gedistribueerde tabellen](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie.
 
 ### <a name="replicated-tables"></a>Gerepliceerde tabellen
 
-Een gerepliceerde tabel bevat een volledige kopie van de tabel die beschikbaar is op elk Compute-knooppunt. Query's worden snel uitgevoerd op gerepliceerde tabellen omdat joins op gerepliceerde tabellen geen gegevensverplaatsing vereisen. Replicatie vereist echter extra opslagruimte en is niet praktisch voor grote tabellen.
+Een gerepliceerde tabel bevat een volledige kopie van de tabel die beschikbaar is op elk reken knooppunt. Query's worden snel uitgevoerd op gerepliceerde tabellen, omdat voor deelname aan gerepliceerde tabellen geen gegevens verplaatsing nodig is. Replicatie vereist extra opslag, maar is niet praktisch voor grote tabellen.
 
-Zie [Ontwerprichtlijnen voor gerepliceerde tabellen voor](../sql-data-warehouse/design-guidance-for-replicated-tables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie .
+Zie [ontwerp richtlijnen voor gerepliceerde tabellen](../sql-data-warehouse/design-guidance-for-replicated-tables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie.
 
-### <a name="round-robin-tables"></a>Round-robin tafels
+### <a name="round-robin-tables"></a>Round-Robin tabellen
 
-Een ronde-robin tafel verdeelt tafelrijen gelijkmatig over alle distributies. De rijen worden willekeurig verdeeld. Het laden van gegevens in een round-robin tabel is snel.  Query's kunnen echter meer gegevensverplaatsing vereisen dan de andere distributiemethoden.
+Een Round Robin-tabel verdeelt tabel rijen gelijkmatig over alle distributies. De rijen worden wille keurig gedistribueerd. Het laden van gegevens in een Round-Robin tabel is snel.  Query's kunnen echter meer gegevens verplaatsing vereisen dan de andere distributie methoden.
 
-Zie [Ontwerprichtlijnen voor gedistribueerde tabellen voor](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie .
+Zie [ontwerp richtlijnen voor gedistribueerde tabellen](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie.
 
-### <a name="common-distribution-methods-for-tables"></a>Algemene distributiemethoden voor tabellen
+### <a name="common-distribution-methods-for-tables"></a>Algemene distributie methoden voor tabellen
 
-De tabelcategorie bepaalt vaak de optimale optie voor tabelverdeling.
+De tabel categorie bepaalt vaak de optimale optie voor tabel distributie.
 
-| Tabelcategorie | Aanbevolen distributieoptie |
+| Tabel categorie | Aanbevolen distributie optie |
 |:---------------|:--------------------|
-| Fact           | Gebruik hash-distributie met geclusterde kolomarchiefindex. De prestaties verbeteren wanneer twee hashtabellen worden samengevoegd in dezelfde distributiekolom. |
-| Dimensie      | Gebruik gerepliceerd voor kleinere tabellen. Als tabellen te groot zijn om op elk Compute-knooppunt op te slaan, gebruikt u hash-distributed. |
-| Faseren        | Gebruik round-robin voor de staging tafel. De belasting met CTAS is snel. Zodra de gegevens zich in de faseringstabel bevindt, gebruikt u INSERT... SELECTEER om de gegevens naar productietabellen te verplaatsen. |
+| Fact           | Hash-distributie met geclusterde column store-index gebruiken. De prestaties zijn verbeterd wanneer twee hash-tabellen worden gekoppeld aan dezelfde distributie kolom. |
+| Dimensie      | Gebruik gerepliceerde voor kleinere tabellen. Als tabellen te groot zijn om op elk reken knooppunt te worden opgeslagen, gebruikt u hash-gedistribueerd. |
+| Faseren        | Gebruik Round-Robin voor de faserings tabel. De belasting met CTAS is snel. Wanneer de gegevens zich in de faserings tabel bevindt, gebruikt u invoegen... Selecteer deze optie om de gegevens naar productie tabellen te verplaatsen. |
 
 ## <a name="partitions"></a>Partities
 
-In SQL-groep slaat een partitietabel bewerkingen op de tabelrijen op volgens gegevensbereiken. Een tabel kan bijvoorbeeld worden verdeeld per dag, maand of jaar. U de queryprestaties verbeteren door partitieverwijdering, waardoor een queryscan beperkt tot gegevens binnen een partitie.
+In de SQL-groep worden in een gepartitioneerde tabel bewerkingen op de tabel rijen opgeslagen en uitgevoerd op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden gepartitioneerd op dag, maand of jaar. U kunt de query prestaties verbeteren via partitie-eliminatie, waardoor een query scan wordt beperkt tot gegevens in een partitie.
 
-U de gegevens ook onderhouden door te schakelen met partitie. Aangezien de gegevens in SQL-groep al zijn gedistribueerd, kunnen te veel partities de queryprestaties vertragen. Zie [Richtlijnen voor het verdelen voor](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie .  
+U kunt de gegevens ook onderhouden via partitie wisseling. Omdat de gegevens in de SQL-pool al zijn gedistribueerd, kunnen er te veel partities de query prestaties vertragen. Zie [richt lijnen voor partitioneren](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie.  
 
 > [!TIP]
-> Wanneer partitie overschakelt naar tabelpartities die niet leeg zijn, u overwegen de TRUNCATE_TARGET optie in de [wijzigingstabelinstructie](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) te gebruiken als de bestaande gegevens moeten worden afgekapt.
+> Als de partitie wordt overgeschakeld naar tabel partities die niet leeg zijn, kunt u de optie TRUNCATE_TARGET gebruiken in de instructie [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) als de bestaande gegevens moeten worden afgekapt.
 
-De onderstaande code schakelt de getransformeerde dagelijkse gegevens om in een SalesFact-partitie en overschrijft alle bestaande gegevens.
+Met de volgende code worden de getransformeerde dagelijkse gegevens omgezet in een SalesFact-partitie en worden eventuele bestaande gegevens overschreven.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
-In SQL on-demand u de bestanden/mappen (partities) beperken die door uw query worden gelezen. Partitioneren per pad wordt ondersteund met behulp van de bestandspad- en bestandsinfofuncties die worden beschreven in [het opvragen van opslagbestanden.](develop-storage-files-overview.md) In het volgende voorbeeld wordt een map met gegevens voor het jaar 2017 gelezen:
+In SQL on-Demand kunt u de bestanden/mappen (partities) beperken die door uw query worden gelezen. Partitioneren op pad wordt ondersteund met behulp van de functies filepath en file info die worden beschreven in het [uitvoeren van query's op opslag bestanden](develop-storage-files-overview.md). In het volgende voor beeld wordt een map met gegevens voor jaar 2017 gelezen:
 
 ```sql
 SELECT
@@ -185,68 +185,68 @@ ORDER BY
 
 ## <a name="columnstore-indexes"></a>Columnstore-indexen
 
-Sql-groep slaat een tabel standaard op als een geclusterde kolomarchiefindex. Deze vorm van gegevensopslag bereikt hoge gegevenscompressie- en queryprestaties op grote tabellen.  De geclusterde kolomarchiefindex is meestal de beste keuze, maar in sommige gevallen is een geclusterde index of een heap de juiste opslagstructuur.  
+Standaard slaat SQL-groep een tabel op als een geclusterde column store-index. Deze vorm van gegevens opslag behaalt hoge gegevens compressie en query prestaties op grote tabellen.  De geclusterde column store-index is doorgaans de beste keuze, maar in sommige gevallen is een geclusterde index of een heap de juiste opslag structuur.  
 
 > [!TIP]
-> Een heaptabel kan vooral handig zijn voor het laden van tijdelijke gegevens, zoals een faseringstabel, die wordt omgezet in een laatste tabel.
+> Een heap-tabel kan vooral handig zijn voor het laden van tijdelijke gegevens, zoals een faserings tabel, die wordt omgezet in een eind tabel.
 
-Zie [Nieuw voor kolomarchiefindexen voor](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)een lijst met functies voor kolomarchief . Zie De kwaliteit van [de rijgroep maximaliseren voor kolomarchiefindexen](../sql/data-load-columnstore-compression.md)als u de indexprestaties van de kolomopslag wilt verbeteren.
+Zie [Wat is er nieuw voor column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor een overzicht van Column Store-functies. Zie [maximale Rijg roep-kwaliteit voor column Store-indexen](../sql/data-load-columnstore-compression.md)voor het verbeteren van Column store-index prestaties.
 
 ## <a name="statistics"></a>statistieken
 
 
-De queryoptimizer gebruikt statistieken op kolomniveau wanneer het plan voor het uitvoeren van een query wordt gemaakt. Om de queryprestaties te verbeteren, is het belangrijk om statistieken over afzonderlijke kolommen te hebben, met name kolommen die worden gebruikt in queryjoins. Synapse SQL ondersteunt het automatisch maken van statistieken. 
+De query optimalisatie maakt gebruik van statistieken op kolom niveau wanneer het plan voor het uitvoeren van een query wordt gemaakt. Om de query prestaties te verbeteren, is het belang rijk om statistieken te hebben over afzonderlijke kolommen, met name kolommen die worden gebruikt in query-samen voegingen. Synapse SQL ondersteunt het automatisch maken van statistieken. 
 
-Statistische updates gebeurt niet automatisch. Statistieken bijwerken nadat een aanzienlijk aantal rijen zijn toegevoegd of gewijzigd. Werk bijvoorbeeld statistieken na een belasting bij. Aanvullende informatie wordt verstrekt in het [adviesartikel Statistieken.](develop-tables-statistics.md)
+Statistische updates worden niet automatisch uitgevoerd. Statistieken bijwerken nadat een groot aantal rijen zijn toegevoegd of gewijzigd. U kunt bijvoorbeeld statistieken bijwerken na een belasting. Meer informatie vindt u in het artikel [Statistieken richtlijnen](develop-tables-statistics.md) .
 
 ## <a name="primary-key-and-unique-key"></a>Primaire sleutel en unieke sleutel
 
-PRIMAIRE SLEUTEL wordt alleen ondersteund wanneer NIET-GECLUSTERD en NIET AFGEDWONGEN worden beide gebruikt.  Unieke beperking wordt alleen ondersteund wanneer NIET AFGEDWONGEN wordt gebruikt.  Zie het artikel [Beperkingen voor SQL-pooltabelbeperkingen](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
+De primaire sleutel wordt alleen ondersteund als niet-geclusterd en niet afgedwongen worden gebruikt.  UNIQUE-beperking wordt alleen ondersteund wanneer niet afgedwongen wordt gebruikt.  Zie het artikel [beperkingen van SQL-groeps tabellen](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
 ## <a name="commands-for-creating-tables"></a>Opdrachten voor het maken van tabellen
 
-U een tabel maken als een nieuwe lege tabel. U ook een tabel maken en vullen met de resultaten van een selecte instructie. Hieronder volgen de T-SQL-opdrachten voor het maken van een tabel.
+U kunt een tabel maken als een nieuwe, lege tabel. U kunt ook een tabel maken en vullen met de resultaten van een SELECT-instructie. Hieronder vindt u de T-SQL-opdrachten voor het maken van een tabel.
 
 | T-SQL-instructie | Beschrijving |
 |:----------------|:------------|
-| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een lege tabel door alle tabelkolommen en -opties te definiëren. |
-| [EXTERNE TABEL MAKEN](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een externe tabel. De definitie van de tabel wordt opgeslagen in SQL-groep. De tabelgegevens worden opgeslagen in Azure Blob-opslag of Azure Data Lake Storage. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee wordt een nieuwe tabel gevuld met de resultaten van een selecte instructie. De tabelkolommen en gegevenstypen zijn gebaseerd op de resultaten van de selecte instructie. Als u gegevens wilt importeren, kan deze instructie kiezen uit een externe tabel. |
-| [EXTERNE TABEL MAKEN ALS SELECTEREN](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een nieuwe externe tabel door de resultaten van een geselecteerde instructie naar een externe locatie te exporteren.  De locatie is Azure Blob-opslag of Azure Data Lake Storage. |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een lege tabel door alle tabel kolommen en opties te definiëren. |
+| [EXTERNE TABEL MAKEN](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een externe tabel. De definitie van de tabel wordt opgeslagen in de SQL-groep. De tabel gegevens worden opgeslagen in Azure Blob Storage of Azure Data Lake Storage. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Vult een nieuwe tabel met de resultaten van een SELECT-instructie. De tabel kolommen en gegevens typen zijn gebaseerd op de resultaten van de SELECT-instructie. Voor het importeren van gegevens kan deze instructie een selectie uit een externe tabel selecteren. |
+| [EXTERNE TABEL MAKEN ALS SELECTEREN](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een nieuwe externe tabel door de resultaten van een SELECT-instructie te exporteren naar een externe locatie.  De locatie is Azure Blob-opslag of Azure Data Lake Storage. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Brongegevens afstemmen op het gegevensmagazijn
+## <a name="aligning-source-data-with-the-data-warehouse"></a>Bron gegevens uitlijnen met het Data Warehouse
 
-Gegevensmagazijntabellen worden gevuld door gegevens uit een andere gegevensbron te laden. Om een succesvolle belasting te bereiken, moeten het aantal en de gegevenstypen van de kolommen in de brongegevens worden afgestemd op de tabeldefinitie in het gegevensmagazijn.
+Data Warehouse-tabellen worden ingevuld door gegevens uit een andere gegevens bron te laden. Om een succes volle belasting te krijgen, moeten het aantal en de gegevens typen van de kolommen in de bron gegevens worden uitgelijnd met de tabel definitie in het Data Warehouse.
 
 > [!NOTE]
-> Het mogelijk is dat de gegevens worden uitgelijnd, het moeilijkste deel van het ontwerpen van uw tabellen.
+> Het ophalen van de gegevens die moeten worden uitgelijnd, is mogelijk het lastigste deel van het ontwerpen van uw tabellen.
 
-Als gegevens afkomstig zijn van meerdere gegevensarchieven, u de gegevens naar het gegevensmagazijn porten en opslaan in een integratietabel. Zodra gegevens zich in de integratietabel bevinden, u de kracht van SQL-groep gebruiken om transformatiebewerkingen te implementeren. Zodra de gegevens zijn voorbereid, u deze in productietabellen invoegen.
+Als er gegevens uit meerdere gegevens archieven afkomstig zijn, kunt u de gegevens in het Data Warehouse overbrengen en in een integratie tabel opslaan. Zodra de gegevens zijn geïntegreerd in de integratie tabel, kunt u de kracht van de SQL-groep gebruiken om transformatie bewerkingen te implementeren. Zodra de gegevens zijn voor bereid, kunt u deze invoegen in productie tabellen.
 
-## <a name="unsupported-table-features"></a>Niet-ondersteunde tabelfuncties
+## <a name="unsupported-table-features"></a>Niet-ondersteunde tabel functies
 
-SQL-pool ondersteunt veel, maar niet alle, van de tabelfuncties die worden aangeboden door andere databases.  In de volgende lijst worden enkele tabelfuncties weergegeven die niet worden ondersteund in SQL-groep.
+De SQL-pool ondersteunt veel, maar niet alle, van de tabel functies die worden aangeboden door andere data bases.  De volgende lijst bevat enkele van de tabel functies die niet worden ondersteund in de SQL-groep.
 
-- Buitenlandse sleutel, controleer [Tabelbeperkingen](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- Refererende sleutel, [tabel beperkingen](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) controleren
 - [Berekende kolommen](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Geïndexeerde weergaven](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Geïndexeerde weer gaven](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Reeks](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Schaarse kolommen](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- Surrogaatsleutels, implementeren met [identiteit](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Sparse kolommen](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- Surrogaat sleutels, implementeren met [identiteit](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Synoniemen](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Triggers](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Unieke indexen](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Door de gebruiker gedefinieerde typen](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="table-size-queries"></a>Query's met tabelgrootte
+## <a name="table-size-queries"></a>Tabel grootte query's
 
-Een eenvoudige manier om ruimte en rijen verbruikt door een tabel in elk van de 60 distributies te identificeren is het gebruik van [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Een eenvoudige manier om ruimte en rijen te identificeren die door een tabel in elk van de 60-distributies worden verbruikt, is door [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)te gebruiken.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Houd er rekening mee dat het gebruik van DBCC-opdrachten behoorlijk beperkend kan zijn.  Dynamische beheerweergaven (DMVs) tonen meer details dan DBCC-opdrachten. Begin met het maken van de onderstaande weergave.
+Houd er rekening mee dat het gebruik van DBCC-opdrachten erg kan worden beperkt.  Dynamische beheer weergaven (Dmv's) tonen meer details dan DBCC-opdrachten. Begin met het maken van de weer gave hieronder.
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -361,9 +361,9 @@ FROM size
 ;
 ```
 
-### <a name="table-space-summary"></a>Overzicht van tabelruimte
+### <a name="table-space-summary"></a>Overzicht van tabel ruimte
 
-Met deze query worden de rijen en ruimte voor tabel geretourneerd.  Met het overzicht van de tabelruimte u zien welke tabellen uw grootste tabellen zijn. Je ziet ook of ze round-robin, gerepliceerd of hash-distributed zijn.  Voor door hash gedistribueerde tabellen wordt in de query de distributiekolom weergegeven.  
+Deze query retourneert de rijen en de ruimte op tabel.  In de tabel ruimte-samen vatting kunt u zien welke tabellen uw grootste tabellen zijn. U ziet ook of ze Round-Robin, gerepliceerd of hash-Distributed zijn.  Voor door hash-gedistribueerde tabellen wordt in de query de kolom distributie weer gegeven.  
 
 ```sql
 SELECT
@@ -393,7 +393,7 @@ ORDER BY
 ;
 ```
 
-### <a name="table-space-by-distribution-type"></a>Tabelruimte op distributietype
+### <a name="table-space-by-distribution-type"></a>Tabel ruimte op distributie type
 
 ```sql
 SELECT
@@ -408,7 +408,7 @@ GROUP BY distribution_policy_name
 ;
 ```
 
-### <a name="table-space-by-index-type"></a>Tabelruimte op indextype
+### <a name="table-space-by-index-type"></a>Tabel ruimte op index type
 
 ```sql
 SELECT
@@ -423,7 +423,7 @@ GROUP BY index_type_desc
 ;
 ```
 
-### <a name="distribution-space-summary"></a>Overzicht van distributieruimte
+### <a name="distribution-space-summary"></a>Samen vatting van distributie ruimte
 
 ```sql
 SELECT
@@ -441,4 +441,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de tabellen voor uw gegevensmagazijn hebt maken, is de volgende stap het laden van gegevens in de tabel.  Zie Gegevens laden [in SQL-groep](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool)voor een zelfstudie voor het laden.
+Nadat u de tabellen voor uw data warehouse hebt gemaakt, is de volgende stap het laden van gegevens in de tabel.  Zie [gegevens laden in SQL-groep](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool)voor een zelf studie voor het laden.

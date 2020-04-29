@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL verbinden met en query's maken met Visual Studio en SSDT
-description: Gebruik Visual Studio om SQL-groep op te vragen met Azure Synapse Analytics.
+title: Verbinding maken met en een query uitvoeren op Synapse SQL met Visual Studio en SSDT
+description: Gebruik Visual Studio voor het opvragen van een SQL-pool met behulp van Azure Synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428561"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Verbinding maken met Synapse SQL met Visual Studio en SSDT
@@ -21,27 +21,27 @@ ms.locfileid: "81428561"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](get-started-visual-studio.md)
-> * [sqlcmd sqlcmd](get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](get-started-connect-sqlcmd.md) 
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
-Gebruik Visual Studio om SQL-groep op te vragen met Azure Synapse Analytics. Deze methode maakt gebruik van de SQL Server Data Tools (SSDT) extensie in Visual Studio 2019. 
+Gebruik Visual Studio voor het opvragen van een SQL-pool met behulp van Azure Synapse Analytics. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogramma's voor SQL on-demand (voorbeeld)
+### <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogram ma's voor SQL on-demand (preview)
 
-Visual studio wordt momenteel niet ondersteund voor SQL on-demand (preview). Azure Data Studi (preview)o is echter een volledig ondersteund hulpmiddel. SQL Server Management Studio wordt gedeeltelijk ondersteund vanaf versie 18.4 en heeft beperkte functies zoals verbinden en query's.
+Visual Studio wordt momenteel niet ondersteund voor SQL on-demand (preview). Azure data Studi (preview) o is echter een volledig ondersteund hulp programma. SQL Server Management Studio wordt gedeeltelijk ondersteund vanuit versie 18,4 en heeft beperkte functies, zoals verbinding maken en query's uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u deze zelfstudie wilt gebruiken, moet u de volgende onderdelen hebben:
+Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderdelen:
 
-* Een bestaande SQL-pool. Zie [Een SQL-groep maken](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om deze vereiste te voltooien als u er geen hebt.
-* SSDT voor Visual Studio. Als je Visual Studio hebt, heb je dit onderdeel waarschijnlijk al. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met SQL-pool om](connect-overview.md)dit te vinden.
+* Een bestaande SQL-groep. Als u er nog geen hebt, raadpleegt u [een SQL-groep maken](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om dit vereiste te volt ooien.
+* SSDT voor Visual Studio. Als u Visual Studio hebt, beschikt u waarschijnlijk al over dit onderdeel. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](connect-overview.md)om dit te vinden.
 
-## <a name="1-connect-to-sql-pool"></a>1. Verbinding maken met SQL-pool
+## <a name="1-connect-to-sql-pool"></a>1. Maak verbinding met de SQL-groep
 1. Open Visual Studio 2019.
-2. Open de SQL Server Object Explorer. Selecteer hiervoor**SQL Server Object Explorer** **weergeven** > .
+2. Open de SQL Server-objectverkenner. Als u dit wilt doen, selecteert u**SQL Server-objectverkenner** **weer geven** > .
    
     ![SQL Server-objectverkenner](./media/get-started-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.
@@ -51,22 +51,22 @@ Als u deze zelfstudie wilt gebruiken, moet u de volgende onderdelen hebben:
    
     ![Verbinding maken met server](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Servernaam:** voer de eerder geïdentificeerde **servernaam** in.
-   * **Verificatie:** selecteer **SQL Server-verificatie** of **geïntegreerde active directory-verificatie:**
-   * **Gebruikersnaam** en **wachtwoord:** voer uw gebruikersnaam en wachtwoord in als sql server-verificatie hierboven is geselecteerd.
+   * **Server naam**: Voer de eerder geïdentificeerde **Server naam** in.
+   * **Verificatie**: Selecteer **SQL Server verificatie** of **Active Directory geïntegreerde verificatie**:
+   * **Gebruikers naam** en **wacht woord**: Voer uw gebruikers naam en wacht woord in als SQL Server verificatie hierboven is geselecteerd.
    * Klik op **Verbinden**.
 5. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw AdventureWorksDW uit als u de tabellen in de voorbeelddatabase wilt zien.
    
     ![AdventureWorksDW verkennen](./media/get-started-visual-studio/explore-sample.png)
 
-## <a name="2-run-a-sample-query"></a>2. Een voorbeeldquery uitvoeren
-Nu er een verbinding met uw database is gemaakt, schrijft u een query.
+## <a name="2-run-a-sample-query"></a>2. Voer een voorbeeld query uit
+Nu er een verbinding tot stand is gebracht met uw data base, schrijft u een query.
 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
     ![Nieuwe query](./media/get-started-visual-studio/new-query2.png)
-3. Kopieer de volgende T-SQL-query naar het queryvenster:
+3. Kopieer de volgende T-SQL-query naar het query venster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
@@ -79,6 +79,6 @@ Nu er een verbinding met uw database is gemaakt, schrijft u een query.
     ![Queryresultaten](./media/get-started-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u verbinding maken en query's [uitvoeren,](get-started-power-bi-professional.md)probeert u de gegevens te visualiseren met Power BI.
-Zie [Verifiëren naar SQL-groep](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)als u uw omgeving wilt configureren voor Azure Active Directory-verificatie.
+Nu u verbinding maakt en query's uitvoert, kunt u proberen [de gegevens te visualiseren met Power bi](get-started-power-bi-professional.md).
+Zie [verifiëren bij SQL-groep](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om uw omgeving te configureren voor Azure Active Directory-verificatie.
  

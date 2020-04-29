@@ -1,5 +1,5 @@
 ---
-title: Vertakking en ketenen in een pijplijn met Azure-portal
+title: Activiteiten in een pijp lijn vertakkingen en koppelen met behulp van Azure Portal
 description: Leer de stroom van gegevens in Azure Data Factory beheren door activiteiten te vertakken en te koppelen.
 services: data-factory
 author: djpmsft
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: ff9e5ff099bba7af9cac9862103ef63aa0169545
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418743"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
@@ -42,9 +42,9 @@ In deze zelfstudie wordt Azure Portal gebruikt. U kunt andere methoden gebruiken
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**. Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
-* **Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Zie het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) voor stappen om er een te maken als u geen Azure-opslagaccount hebt.
-* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
+* **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+* **Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [een opslag account maken](../storage/common/storage-account-create.md) voor de stappen om er een te maken.
+* **Azure SQL database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
 
 ### <a name="create-blob-table"></a>Blobtabel maken
 
@@ -129,7 +129,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-1. Selecteer links in het menu **Een brongegevens** > **maken + Analytics** > **Data Factory:**
+1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**:
 
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -137,21 +137,21 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
      ![Pagina Nieuwe gegevensfactory](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
-   De naam van de Azure-gegevensfabriek moet **wereldwijd uniek**zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialDataFactory) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-data factory moet **wereld wijd uniek**zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialDataFactory) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken.
 4. Voer een van de volgende stappen uit voor de **Resourcegroep**:
 
-      - Selecteer **Bestaande gebruiken**en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
-      - Selecteer **Nieuw maken**en voer de naam van een resourcegroep in.   
+      - Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst.
+      - Selecteer **nieuwe maken**en voer de naam van een resource groep in.   
          
         Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 4. Selecteer **V2** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 6. Selecteer **Vastmaken aan dashboard**.     
-7. Klik **op Maken**.      
-8. Op het dashboard ziet u de volgende tegel met status: **Gegevensfabriek implementeren**.
+7. Klik op **maken**.      
+8. Op het dash board ziet u de volgende tegel met de status: **Data Factory implementeren**.
 
     ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Wanneer het maken is voltooid, ziet u de pagina **Data Factory** zoals in de afbeelding wordt weergegeven.
@@ -175,7 +175,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 
     - **sourceBlobContainer** - parameter in de pijplijn die wordt gebruikt voor de bron-blob-gegevensset.
     - **sinkBlobContainer** - parameter in de pijplijn die wordt gebruikt voor de sink-blob-gegevensset
-    - **ontvanger** – deze parameter wordt gebruikt door de twee webactiviteiten in de pijplijn die geslaagde of mislukte e-mails verzenden naar de ontvanger waarvan het e-mailadres door deze parameter is opgegeven.
+    - **ontvanger** : deze para meter wordt gebruikt door de twee webactiviteiten in de pijp lijn die e-mail berichten over geslaagde of mislukte verzen ding naar de ontvanger hebben waarvan het e-mail adres is opgegeven met deze para meter.
 
    ![Menu Nieuwe pijplijn](./media/tutorial-control-flow-portal/pipeline-parameters.png)
 4. Vouw in de **Activiteiten**-werkset de optie **Gegevensstroom** uit. Gebruik vervolgens slepen-en-neerzetten om de **kopieeractiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen.

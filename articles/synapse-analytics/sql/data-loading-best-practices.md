@@ -1,6 +1,6 @@
 ---
 title: Best practices voor laden van gegevens
-description: Aanbevelingen en prestatieoptimalisaties voor het laden van gegevens in Synapse SQL
+description: Aanbevelingen en prestatie optimalisaties voor het laden van gegevens in Synapse SQL
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431044"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Aanbevolen procedures voor het laden van gegevens voor gegevensopslag
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Aanbevolen procedures voor het laden van gegevens voor gegevens opslag
 
-Aanbevelingen en prestatieoptimalisaties voor het laden van gegevens
+Aanbevelingen en prestatie optimalisaties voor het laden van gegevens
 
 ## <a name="preparing-data-in-azure-storage"></a>Gegevens voorbereiden in Azure Storage
 
@@ -36,9 +36,9 @@ Splits grote gecomprimeerde bestanden in kleinere gecomprimeerde bestanden.
 
 ## <a name="running-loads-with-enough-compute"></a>Laadtaken uitvoeren met voldoende rekenkracht
 
-Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laadtaak verwacht, u overwegen uw SQL-groep vóór de belasting op te schalen.
+Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laad taak verwacht, kunt u de SQL-groep vóór de belasting verg Roten of verkleinen.
 
-Als u loads wilt uitvoeren met geschikte rekenresources, maakt u gebruikers voor het laadproces die zijn aangewezen voor het uitvoeren van loads. Wijs elke ladende gebruiker toe aan een specifieke resourceklasse of werkbelastinggroep. Als u een belasting wilt uitvoeren, meldt u zich aan als een van de laadgebruikers en voert u de lading uit. De load wordt uitgevoerd met de resourceklasse van de gebruiker.  Deze methode is eenvoudiger dan de resourceklasse van een gebruiker aanpassen om te voldoen aan de huidige benodigde resourceklasse.
+Als u loads wilt uitvoeren met geschikte rekenresources, maakt u gebruikers voor het laadproces die zijn aangewezen voor het uitvoeren van loads. Wijs elke laad gebruiker toe aan een specifieke resource klasse of werkbelasting groep. Als u een belasting wilt uitvoeren, meldt u zich aan als een van de laad gebruikers en voert u de belasting uit. De load wordt uitgevoerd met de resourceklasse van de gebruiker.  Deze methode is eenvoudiger dan de resourceklasse van een gebruiker aanpassen om te voldoen aan de huidige benodigde resourceklasse.
 
 ### <a name="example-of-creating-a-loading-user"></a>Voorbeeld van het maken van een gebruiker voor het laadproces
 
@@ -58,13 +58,13 @@ Maak verbinding met het datawarehouse en maak een gebruiker. In de volgende code
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-Als u een belasting met resources wilt uitvoeren voor de statische RC20-resourceklassen, meldt u zich aan als LoaderRC20 en voert u de belasting uit.
+Als u een belasting wilt uitvoeren met resources voor de resource klassen staticRC20, meldt u zich aan als LoaderRC20 en voert u de belasting uit.
 
-Voer loads bij voorkeur uit onder statische en niet onder dynamische resourceklassen. Het gebruik van de statische resourceklassen garandeert dezelfde resources, ongeacht uw [gegevensmagazijneenheden.](resource-consumption-models.md) Als u een dynamische resourceklasse gebruikt, variëren de resources afhankelijk van uw serviceniveau. Voor dynamische klassen betekent een lager serviceniveau dat u waarschijnlijk een grotere resourceklasse moet gebruiken voor uw gebruiker van het laadproces.
+Voer loads bij voorkeur uit onder statische en niet onder dynamische resourceklassen. Het gebruik van de statische resource klassen garandeert dezelfde bronnen, ongeacht uw [Data Warehouse-eenheden](resource-consumption-models.md). Als u een dynamische resourceklasse gebruikt, variëren de resources afhankelijk van uw serviceniveau. Voor dynamische klassen betekent een lager serviceniveau dat u waarschijnlijk een grotere resourceklasse moet gebruiken voor uw gebruiker van het laadproces.
 
 ## <a name="allowing-multiple-users-to-load"></a>Meerdere gebruikers toestaan te laden
 
-Vaak is het nodig dat meerdere gebruikers gegevens kunnen laden in een datawarehouse. Voor laden met de [TABEL MAKEN ALS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zijn controlmachtigingen van de database vereist.  De CONTROL-machtiging biedt beheertoegang tot alle schema's. Mogelijk wilt u niet alle gebruikers die laadtaken uitvoeren, beheertoegang tot alle schema's verlenen. Als u machtigingen wilt beperken, kunt u de instructie DENY CONTROL gebruiken.
+Vaak is het nodig dat meerdere gebruikers gegevens kunnen laden in een datawarehouse. Bij het laden met de [Create Table als Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zijn machtigingen vereist van de data base.  De CONTROL-machtiging biedt beheertoegang tot alle schema's. Mogelijk wilt u niet alle gebruikers die laadtaken uitvoeren, beheertoegang tot alle schema's verlenen. Als u machtigingen wilt beperken, kunt u de instructie DENY CONTROL gebruiken.
 
 Denk bijvoorbeeld aan databaseschema's, schema_A voor afdeling A, en schema_B voor afdeling B. Laat databasegebruikers gebruiker_A en gebruiker_B gebruikers zijn voor PolyBase die respectievelijk laden in afdeling A en B. Beide zijn voorzien van databasemachtigingen voor CONTROL. De makers van schema A en B vergrendelen nu hun schema's met DENY:
 
@@ -73,7 +73,7 @@ Denk bijvoorbeeld aan databaseschema's, schema_A voor afdeling A, en schema_B vo
    DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
-User_A en user_B zijn nu buitengesloten van het schema van de andere dept.
+User_A en user_B zijn nu uitgesloten van het schema van de andere afdeling.
 
 ## <a name="loading-to-a-staging-table"></a>Laden naar een faseringstabel
 
@@ -88,9 +88,9 @@ Columnstore-indexen vereisen grote hoeveelheden geheugen voor het comprimeren va
 - Zorg dat de gebruiker van het laadproces voldoende geheugen heeft om maximale compressiesnelheden te bereiken. Gebruik hiervoor gebruikers voor het laadproces die lid zijn van een middelgrote of grote resourceklasse.
 - Laad genoeg rijen om nieuwe rijgroepen volledig te vullen. Tijdens een bulksgewijze laadtaak worden elke 1.048.576 rijen rechtstreeks in de columnstore gecomprimeerd als een volledige rijgroep. Laadtaken met minder dan 102.400 rijen verzenden de rijen naar de deltastore waarin rijen zijn ondergebracht in een b-tree-index. Als u te weinig rijen laadt, gaan deze mogelijk allemaal naar de deltastore en worden ze niet direct naar columnstore-indeling gecomprimeerd.
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Batchgrootte vergroten bij gebruik van SQLBulkCopy API of BCP
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Batch grootte verg Roten bij gebruik van SQLBulkCopy-API of BCP
 
-Zoals eerder vermeld, zal laden met PolyBase de hoogste doorvoer bieden met Synapse SQL-pool. Als u PolyBase niet gebruiken om de SQLBulkCopy API (of BCP) te laden en moet gebruiken, moet u overwegen de batchgrootte te vergroten voor een betere doorvoer - een goede vuistregel is een batchgrootte tussen 100K en 1M-rijen.
+Zoals eerder is vermeld, biedt het laden met poly base de hoogste door Voer met Synapse SQL-pool. Als u geen poly Base kunt gebruiken om te laden en u de SQLBulkCopy-API (of BCP) moet gebruiken, kunt u overwegen om de Batch grootte te verg Roten voor een betere door voer. een goede vuist regel is een batch grootte tussen 100.000 en 1M rijen.
 
 ## <a name="handling-loading-failures"></a>Afhandeling van fouten bij het laden
 
@@ -106,9 +106,9 @@ Als u de hele dag door duizenden of meerdere enkele gegevens wilt invoeren, voeg
 
 ## <a name="creating-statistics-after-the-load"></a>Statistieken maken na het laden
 
-Voor optimale resultaten van uw query's is het belangrijk dat u statistieken maakt voor alle kolommen van alle tabellen nadat de gegevens voor het eerst zijn geladen of wanneer de gegevens substantieel zijn gewijzigd.  Dit kan handmatig worden gedaan of u [automatisch statistieken maken](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)inschakelen.
+Voor optimale resultaten van uw query's is het belangrijk dat u statistieken maakt voor alle kolommen van alle tabellen nadat de gegevens voor het eerst zijn geladen of wanneer de gegevens substantieel zijn gewijzigd.  Dit kan hand matig worden gedaan of u kunt [automatisch gemaakte statistieken](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)inschakelen.
 
-Zie [statistieken](develop-tables-statistics.md) voor gedetailleerde uitleg van statistieken. In het volgende voorbeeld ziet u hoe u handmatig statistieken maakt over vijf kolommen van de tabel Customer_Speed.
+Zie [statistieken](develop-tables-statistics.md) voor gedetailleerde uitleg van statistieken. In het volgende voor beeld ziet u hoe u hand matig statistieken maakt voor vijf kolommen van de tabel Customer_Speed.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudieladen gegevens van Azure Data Lake Storage
-description: Gebruik externe tabellen van PolyBase om gegevens uit Azure Data Lake Storage voor Synapse SQL te laden.
+title: Zelf studie gegevens laden van Azure Data Lake Storage
+description: Gebruik poly base externe tabellen om gegevens van Azure Data Lake Storage voor Synapse SQL te laden.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,45 +12,45 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 9713d73ee132f743ceea98cbaca6a83f36fd3a45
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416117"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden vanuit Azure Data Lake Storage voor SQL Analytics
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden uit Azure Data Lake Storage voor SQL Analytics
 
-In deze handleiding wordt beschreven hoe u externe tabellen van PolyBase gebruiken om gegevens uit Azure Data Lake Storage te laden. Hoewel u adhocquery's uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, raden we u aan de gegevens te importeren voor de beste prestaties.
+In deze hand leiding wordt beschreven hoe u met poly base externe tabellen gegevens laadt van Azure Data Lake Storage. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, raden we u aan om de gegevens te importeren voor de beste prestaties.
 
 > [!NOTE]  
-> Een alternatief voor laden is de [copy-instructie](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) die momenteel in openbare preview staat.  De COPY-instructie biedt de meeste flexibiliteit. Als u feedback wilt geven over de kopie-instructie, stuurt u een e-mail naar de volgende distributielijst: sqldwcopypreview@service.microsoft.com.
+> Een alternatief voor het laden is de [instructie Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) die momenteel beschikbaar is als open bare preview.  De instructie COPY biedt de meeste flexibiliteit. Als u feedback wilt geven over de instructie COPY, stuurt u een e-mail naar de volgende sqldwcopypreview@service.microsoft.comdistributie lijst:.
 >
 > [!div class="checklist"]
 >
-> * Maak databaseobjecten die nodig zijn om te laden vanuit Data Lake Storage.
-> * Maak verbinding met een gegevensmap voor gegevensopslag.
-> * Gegevens laden in het datawarehouse.
+> * Maak database objecten die vereist zijn om te laden uit Data Lake Storage.
+> * Verbinding maken met een Data Lake Storage Directory.
+> * Gegevens laden in het Data Warehouse.
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Download en installeer voordat u met deze zelfstudie begint de nieuwste versie van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio).
 
-Als u deze zelfstudie wilt uitvoeren, moet u het sein
+Als u deze zelf studie wilt uitvoeren, hebt u het volgende nodig:
 
-* Een SQL-pool. Zie [Een SQL-groep en querygegevens maken](create-data-warehouse-portal.md).
-* Een Data Lake Storage-account. Zie [Aan de slag met Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Voor dit opslagaccount moet u een van de volgende referenties configureren of opgeven om te laden: een opslagaccountsleutel, een Azure Directory-toepassingsgebruiker of een AAD-gebruiker die de juiste RBAC-rol heeft voor het opslagaccount.
+* Een SQL-groep. Zie [een SQL-groep en query gegevens maken](create-data-warehouse-portal.md).
+* Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Voor dit opslag account moet u een van de volgende referenties configureren of opgeven om te laden: een sleutel voor een opslag account, een Azure Directory-toepassings gebruiker of een AAD-gebruiker die de juiste RBAC-rol heeft voor het opslag account.
 
 ## <a name="create-a-credential"></a>Een referentie maken
 
-U deze sectie overslaan en overgaan tot De externe gegevensbron maken wanneer u de AAD-doorgeefinformatie gebruikt. Een databasemet scoped referentie is niet vereist om te worden gemaakt of opgegeven bij het gebruik van AAD-doorgeefservice, maar zorg ervoor dat uw AAD-gebruiker de juiste RBAC-rol (Storage Blob Data Reader, Contributor of Owner Role) heeft voor het opslagaccount. Meer details worden [hier](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)beschreven.
+U kunt deze sectie overs Laan en door gaan met het maken van de externe gegevens bron bij het verifiëren met behulp van AAD Pass-through. Een Data Base-bereik referentie hoeft niet te worden gemaakt of opgegeven wanneer AAD Pass-Through wordt gebruikt, maar zorg ervoor dat uw AAD-gebruiker over de juiste RBAC-rol (Storage BLOB data Reader, Inzender of eigenaar) beschikt voor het opslag account. Meer informatie vindt u [hier](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260).
 
-Als u toegang wilt krijgen tot uw Data Lake Storage-account, moet u een Database Master-sleutel maken om uw referentiesgeheim te versleutelen. Vervolgens maakt u een databasescopedreferentie om uw geheim op te slaan. Wanneer u de serviceprincipals (Azure Directory Application-gebruiker) authenticeert, worden de serviceprincipal-referenties van de service opgeslagen in AAD. U de databasescopedreferentie ook gebruiken om de opslagaccountsleutel voor Gen2 op te slaan.
+Als u toegang wilt krijgen tot uw Data Lake Storage-account, moet u een database hoofd sleutel maken om uw referentie geheim te versleutelen. Vervolgens maakt u een referentie data base-scope om uw geheim op te slaan. Bij verificatie met Service-principals (Azure Directory-toepassings gebruiker) worden de referenties van de data base-Scope opgeslagen die zijn ingesteld in AAD. U kunt ook de data base-scoped referentie gebruiken om de sleutel van het opslag account op te slaan voor Gen2.
 
-Als u verbinding wilt maken met Data Lake Storage met serviceprincipals, moet u **eerst** een Azure Active Directory-toepassing maken, een toegangssleutel maken en de toepassing toegang verlenen tot het Data Lake Storage-account. Zie [Authenticeren naar Azure Data Lake-opslag met Active Directory](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor instructies.
+Als u verbinding wilt maken met Data Lake Storage met Service-principals, moet u **eerst** een Azure Active Directory toepassing maken, een toegangs sleutel maken en de toepassing toegang verlenen tot het data Lake Storage-account. Zie [verifiëren voor Azure data Lake Storage met behulp van Active Directory](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor instructies.
 
-Meld u aan bij uw SQL-groep met machtigingen voor besturingselementen met CONTROL-niveau en voer de volgende SQL-instructies uit tegen uw database:
+Meld u aan bij de SQL-groep met een gebruiker met machtigingen op het niveau van het besturings element en voer de volgende SQL-instructies uit voor uw Data Base:
 
 ```sql
 -- A: Create a Database Master Key.
@@ -91,9 +91,9 @@ WITH
 ;
 ```
 
-## <a name="create-the-external-data-source"></a>De externe gegevensbron maken
+## <a name="create-the-external-data-source"></a>De externe gegevens bron maken
 
-Gebruik deze opdracht [EXTERNE GEGEVENSBRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de locatie van de gegevens op te slaan. Als u authenticeren met AAD-doorwerking, is de parameter CREDENTIAL niet vereist. Als u Managed Identity voor serviceeindpunten authenticert, volgt u deze [documentatie](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-sql-data-warehouse-polybase) om de externe gegevensbron in te stellen.
+Gebruik deze opdracht voor het maken van een [externe gegevens bron](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de locatie van de gegevens op te slaan. Als u verificatie uitvoert met AAD Pass-Through, is de para meter CREDENTIAL niet vereist. Als u verifieert met beheerde identiteit voor service-eind punten, volgt u deze [documentatie](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-sql-data-warehouse-polybase) voor het instellen van de externe gegevens bron.
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -121,10 +121,10 @@ WITH (
 );
 ```
 
-## <a name="configure-data-format"></a>Gegevensindeling configureren
+## <a name="configure-data-format"></a>Gegevens indeling configureren
 
-Als u de gegevens uit Data Lake Storage wilt importeren, moet u de externe bestandsindeling opgeven. Met dit object wordt gedefinieerd hoe de bestanden worden geschreven in Data Lake Storage.
-Bekijk voor de volledige lijst onze T-SQL-documentatie [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Als u de gegevens uit Data Lake Storage wilt importeren, moet u de externe bestands indeling opgeven. Dit object bepaalt hoe de bestanden worden geschreven in Data Lake Storage.
+Bekijk voor de volledige lijst onze T-SQL-documentatie [externe BESTANDS indeling maken](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- D: Create an external file format
@@ -146,7 +146,7 @@ WITH
 
 ## <a name="create-the-external-tables"></a>De externe tabellen maken
 
-Nu u de gegevensbron en bestandsindeling hebt opgegeven, bent u klaar om de externe tabellen te maken. Externe tabellen zijn de manier waarop u met externe gegevens omgaat. De locatieparameter kan een bestand of een map opgeven. Als er een map wordt opgegeven, worden alle bestanden in de map geladen.
+Nu u de gegevens bron en bestands indeling hebt opgegeven, bent u klaar om de externe tabellen te maken. Externe tabellen zijn de manier waarop u met externe gegevens communiceert. Met de locatie parameter kunt u een bestand of een map opgeven. Als u een map opgeeft, worden alle bestanden in de map geladen.
 
 ```sql
 -- D: Create an External Table
@@ -174,24 +174,24 @@ WITH
 
 ```
 
-## <a name="external-table-considerations"></a>Externe tabeloverwegingen
+## <a name="external-table-considerations"></a>Overwegingen voor externe tabellen
 
-Het maken van een externe tabel is eenvoudig, maar er zijn enkele nuances die moeten worden besproken.
+Het is eenvoudig om een externe tabel te maken, maar er zijn enkele nuances die moeten worden besproken.
 
-Externe tabellen zijn sterk getypt. Dit betekent dat elke rij van de gegevens die worden ingenomen, moet voldoen aan de definitie van het tabelschema.
-Als een rij niet overeenkomt met de schemadefinitie, wordt de rij van de belasting afgewezen.
+Externe tabellen zijn sterk getypeerd. Dit betekent dat elke rij van de gegevens die worden opgenomen, moet voldoen aan de definitie van het tabel schema.
+Als een rij niet overeenkomt met de schema definitie, wordt de rij van de belasting geweigerd.
 
-Met de opties REJECT_TYPE en REJECT_VALUE u bepalen hoeveel rijen of welk percentage van de gegevens in de laatste tabel aanwezig moet zijn. Tijdens de belasting, als de afwijswaarde wordt bereikt, mislukt de belasting. De meest voorkomende oorzaak van afgewezen rijen is een mismatch bij de schemadefinitie. Als een kolom bijvoorbeeld ten onrechte het schema van int krijgt wanneer de gegevens in het bestand een tekenreeks zijn, wordt elke rij niet geladen.
+Met de opties REJECT_TYPE en REJECT_VALUE kunt u definiëren hoeveel rijen of welk percentage van de gegevens in de uiteindelijke tabel aanwezig moeten zijn. Als de afwijzings waarde is bereikt tijdens het laden, mislukt de belasting. De meest voorkomende oorzaak van geweigerde rijen is een niet-overeenkomende schema definitie. Als een kolom bijvoorbeeld foutief het schema van int krijgt wanneer de gegevens in het bestand een teken reeks zijn, kan elke rij niet worden geladen.
 
-Data Lake Storage Gen1 gebruikt RBAC (Role Based Access Control) om de toegang tot de gegevens te beheren. Dit betekent dat de Service Principal leesmachtigingen moet hebben voor de mappen die zijn gedefinieerd in de locatieparameter en aan de kinderen van de uiteindelijke map en bestanden. Hierdoor kan PolyBase die gegevens verifiëren en laden.
+Data Lake Storage Gen1 gebruikt op rollen gebaseerd Access Control (RBAC) om de toegang tot de gegevens te beheren. Dit betekent dat de Service-Principal Lees machtigingen moet hebben voor de mappen die zijn gedefinieerd in de para meter locatie en naar de onderliggende map en bestanden. Dit maakt poly base mogelijk voor het verifiëren en laden van die gegevens.
 
 ## <a name="load-the-data"></a>De gegevens laden
 
-Als u gegevens uit Data Lake Storage wilt laden, gebruikt u de instructie [CREATE TABLE AS SELECT (Transact-SQL).](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Als u gegevens uit Data Lake Storage wilt laden, gebruikt u de instructie [Create Table als Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
-CTAS maakt een nieuwe tabel en vult deze met de resultaten van een selecte instructie. CTAS definieert de nieuwe tabel met dezelfde kolommen en gegevenstypen als de resultaten van de select-instructie. Als u alle kolommen uit een externe tabel selecteert, is de nieuwe tabel een replica van de kolommen en gegevenstypen in de externe tabel.
+CTAS maakt een nieuwe tabel en vult deze met de resultaten van een SELECT-instructie. CTAS definieert de nieuwe tabel om dezelfde kolommen en gegevens typen te hebben als de resultaten van de SELECT-instructie. Als u alle kolommen uit een externe tabel selecteert, is de nieuwe tabel een replica van de kolommen en gegevens typen in de externe tabel.
 
-In dit voorbeeld maken we een hash distributed table genaamd DimProduct uit onze externe tabel DimProduct_external.
+In dit voor beeld maken we een gedistribueerde hash-tabel met de naam DimProduct vanuit onze externe tabel DimProduct_external.
 
 ```sql
 
@@ -202,11 +202,11 @@ SELECT * FROM [dbo].[DimProduct_external]
 OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 ```
 
-## <a name="optimize-columnstore-compression"></a>Compressie van kolomarchief optimaliseren
+## <a name="optimize-columnstore-compression"></a>Column Store-compressie optimaliseren
 
-Tabellen worden standaard gedefinieerd als een geclusterde kolomarchiefindex. Nadat een belasting is voltooid, worden sommige gegevensrijen mogelijk niet gecomprimeerd in het kolomarchief.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [kolomarchiefindexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie .
+Tabellen worden standaard gedefinieerd als een geclusterde column store-index. Nadat het laden is voltooid, zijn sommige gegevens rijen mogelijk niet gecomprimeerd naar de column Store.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [Column Store-indexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie.
 
-Als u de queryprestaties en compressie van het kolomarchief na een belasting wilt optimaliseren, bouwt u de tabel opnieuw om de kolomarchiefindex te dwingen alle rijen te comprimeren.
+Als u de query prestaties en column Store-compressie wilt optimaliseren na een laad opdracht, bouwt u de tabel opnieuw op om ervoor te zorgen dat de column store-index alle rijen kan comprimeren.
 
 ```sql
 
@@ -216,29 +216,29 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ## <a name="optimize-statistics"></a>Statistieken optimaliseren
 
-Het is het beste om statistieken met één kolom direct na een belasting te maken. Er zijn een aantal keuzes voor statistieken. Als u bijvoorbeeld statistieken met één kolom maakt voor elke kolom, kan het lang duren voordat alle statistieken opnieuw zijn opgebouwd. Als u weet dat bepaalde kolommen niet in querypredicaten staan, u het maken van statistieken over die kolommen overslaan.
+Het is aan te raden om statistieken voor één kolom direct na een belasting te maken. Er zijn enkele keuzes voor statistieken. Als u bijvoorbeeld statistieken voor één kolom maakt voor elke kolom, kan het lang duren om alle statistieken opnieuw samen te stellen. Als u weet dat bepaalde kolommen zich niet in query predikaten bevinden, kunt u het maken van statistieken voor die kolommen overs Laan.
 
-Als u besluit om statistieken met één kolom te maken voor elke `prc_sqldw_create_stats` kolom van elke tabel, u het voorbeeld van de opgeslagen procedurecode gebruiken in het [statistiekartikel.](sql-data-warehouse-tables-statistics.md)
+Als u besluit om met één kolom statistieken te maken voor elke kolom van elke tabel, kunt u het voor beeld `prc_sqldw_create_stats` van de opgeslagen procedure code in het [statistiek](sql-data-warehouse-tables-statistics.md) artikel gebruiken.
 
-Het volgende voorbeeld is een goed uitgangspunt voor het maken van statistieken. Er worden statistieken met één kolom voor elke kolom in de dimensietabel en op elke verbindingskolom in de feitentabellen. U later altijd statistieken met één of meerdere kolommen toevoegen aan andere kolommen met feitentabel.
+Het volgende voor beeld is een goed uitgangs punt voor het maken van statistieken. Er worden statistieken voor één kolom gemaakt voor elke kolom in de dimensie tabel en voor elke join-kolom in de feiten tabellen. U kunt later altijd statistieken met één of meerdere kolommen toevoegen aan andere feiten tabel kolommen.
 
-## <a name="achievement-unlocked"></a>Prestatie ontgrendeld!
+## <a name="achievement-unlocked"></a>Prestaties vergren delen.
 
-U hebt gegevens met succes in uw datawarehouse geladen. Geweldig werk!
+U hebt gegevens geladen in uw data warehouse. Fantastische taak!
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u externe tabellen gemaakt om de structuur te definiëren voor gegevens die zijn opgeslagen in Data Lake Storage Gen1 en vervolgens de tabel PolyBase CREATE ALS SELECT-instructie gebruikt om gegevens in uw gegevensmagazijn te laden.
+In deze zelf studie hebt u externe tabellen gemaakt om de structuur te definiëren voor gegevens die zijn opgeslagen in Data Lake Storage Gen1. vervolgens gebruikt u de poly base-CREATE TABLE als SELECT-instructie voor het laden van gegevens in uw data warehouse.
 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
 >
-> * Gemaakt databaseobjecten die moeten worden geladen vanuit Data Lake Storage.
-> * Verbonden met een gegevensmap voor gegevensopslag.
-> * Geladen gegevens in het datawarehouse.
+> * Er zijn data base-objecten gemaakt die nodig zijn om te laden uit Data Lake Storage.
+> * Verbonden met een Data Lake Storage Directory.
+> * De gegevens zijn geladen in het Data Warehouse.
 >
 
-Het laden van gegevens is de eerste stap naar het ontwikkelen van een datawarehouse-oplossing met Azure Synapse Analytics. Bekijk onze ontwikkelingsbronnen.
+Het laden van gegevens is de eerste stap bij het ontwikkelen van een Data Warehouse-oplossing met behulp van Azure Synapse Analytics. Bekijk onze ontwikkelings bronnen.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het ontwikkelen van tabellen voor gegevensopslag](sql-data-warehouse-tables-overview.md)
+> [Meer informatie over het ontwikkelen van tabellen voor gegevens opslag](sql-data-warehouse-tables-overview.md)

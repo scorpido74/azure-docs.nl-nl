@@ -1,6 +1,6 @@
 ---
 title: Gegevens migreren van Amazon S3 naar Azure Storage
-description: Gebruik Azure Data Factory om gegevens van Amazon S3 naar Azure Storage te migreren.
+description: Gebruik Azure Data Factory om gegevens te migreren van Amazon S3 naar Azure Storage.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -12,148 +12,148 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416420"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens van Amazon S3 naar Azure Storage te migreren 
+# <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory biedt een performant, robuust en kosteneffectief mechanisme om gegevens op schaal te migreren van Amazon S3 naar Azure Blob Storage of Azure Data Lake Storage Gen2.  In dit artikel vindt u de volgende informatie voor gegevenstechnici en ontwikkelaars: 
+Azure Data Factory biedt een krachtig, robuust en rendabel mechanisme voor het migreren van gegevens op schaal van Amazon S3 naar Azure Blob Storage of Azure Data Lake Storage Gen2.  In dit artikel vindt u de volgende informatie voor gegevens technici en ontwikkel aars: 
 
 > [!div class="checklist"]
 > * Prestaties 
-> * Veerkracht kopiëren
+> * Tolerantie kopiëren
 > * Netwerkbeveiliging
-> * Oplossingsarchitectuur op hoog niveau 
-> * Best Practices voor de implementatie  
+> * Architectuur van oplossing op hoog niveau 
+> * Aanbevolen procedures voor implementatie  
 
 ## <a name="performance"></a>Prestaties
 
-ADF biedt een serverloze architectuur die parallellisme op verschillende niveaus mogelijk maakt, waardoor ontwikkelaars pijplijnen kunnen bouwen om uw netwerkbandbreedte volledig te benutten, evenals opslag-IOPS en bandbreedte om de doorvoer van gegevensverkeer voor uw omgeving te maximaliseren. 
+ADF biedt een serverloze architectuur die parallellisme op verschillende niveaus mogelijk maakt, zodat ontwikkel aars pijp lijnen kunnen bouwen om uw netwerk bandbreedte en opslag-IOPS en band breedte optimaal te benutten voor de door Voer van gegevens verplaatsing voor uw omgeving. 
 
-Klanten hebben met succes petabytes aan gegevens gemigreerd, bestaande uit honderden miljoenen bestanden van Amazon S3 naar Azure Blob Storage, met een aanhoudende doorvoer van 2 GBps en hoger. 
+Klanten hebben PETA bytes van gegevens gemigreerd die bestaan uit honderden miljoenen bestanden van Amazon S3 naar Azure Blob Storage, met een aanhoudende door Voer van 2 GBps en hoger. 
 
 ![prestaties](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
-De afbeelding hierboven illustreert hoe u grote databewegingssnelheden bereiken door verschillende niveaus van parallellisme:
+In de bovenstaande afbeelding ziet u hoe u met behulp van verschillende niveaus van parallellisme uitstekende gegevens verplaatsings snelheden kunt realiseren:
  
-- Eén kopieeractiviteit kan profiteren van schaalbare rekenbronnen: wanneer u Azure Integration Runtime gebruikt, u [maximaal 256 DIU's](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) voor elke kopieeractiviteit op een serverloze manier opgeven; wanneer u zelf gehoste Implementatieruntime gebruikt, u de machine handmatig opschalen of uitschalen naar meerdere machines[(maximaal 4 knooppunten)](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)en wordt de bestandsset met één kopieactiviteit verdeeld over alle knooppunten. 
-- Een enkele kopie activiteit leest van en schrijft naar het gegevensarchief met behulp van meerdere threads. 
-- ADF-besturingsstroom kan meerdere kopieeractiviteiten parallel starten, bijvoorbeeld met [Voor Elke lus](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Eén Kopieer activiteit kan profiteren van schaal bare reken bronnen: wanneer u Azure Integration Runtime gebruikt, kunt u [Maxi maal 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) voor elke Kopieer activiteit op serverloze wijze opgeven. Wanneer u zelf-hostende Integration Runtime gebruikt, kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal 4 knoop punten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), en met één Kopieer activiteit wordt de bestands set gepartitioneerd op alle knoop punten. 
+- Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads. 
+- De controle stroom van ADF kan meerdere Kopieer activiteiten parallel starten, bijvoorbeeld [voor elke lus](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
-## <a name="resilience"></a>Veerkracht
+## <a name="resilience"></a>Tolerantie
 
-Binnen één exemplaaractiviteitsrun heeft ADF een ingebouwd mechanisme voor nieuwe apparaten, zodat het een bepaald niveau van tijdelijke fouten in de gegevensarchieven of in het onderliggende netwerk kan verwerken. 
+Binnen één exemplaar van de Kopieer activiteit heeft ADF een ingebouwd mechanisme voor opnieuw proberen, zodat het een bepaald niveau van tijdelijke fouten in de gegevens archieven of in het onderliggende netwerk kan verwerken. 
 
-Bij het kopiëren van binaire teksten van S3 naar Blob en van S3 naar ADLS Gen2 voert ADF automatisch controlepunten uit.  Als een kopieeractiviteit is mislukt of een time-out heeft opgetreden, wordt de kopie bij een volgende poging hervat vanaf het laatste foutpunt in plaats van vanaf het begin te beginnen. 
+Bij het binaire kopiëren van S3 naar Blob en van S3 naar ADLS Gen2, voert ADF automatisch controle punten uit.  Als het uitvoeren van een Kopieer activiteit is mislukt of er een time-out is opgetreden, wordt de kopie hervat vanaf het laatste fout punt in plaats van vanaf het begin. 
 
 ## <a name="network-security"></a>Netwerkbeveiliging 
 
-ADF draagt standaard gegevens over van Amazon S3 naar Azure Blob Storage of Azure Data Lake Storage Gen2 via een versleutelde verbinding via het HTTPS-protocol.  HTTPS biedt data-encryptie tijdens het transport en voorkomt afluisteren en man-in-the-middle-aanvallen. 
+Standaard brengt ADF gegevens van Amazon S3 over naar Azure Blob Storage of Azure Data Lake Storage Gen2 met behulp van een versleutelde verbinding via het HTTPS-protocol.  HTTPS biedt gegevens versleuteling tijdens de overdracht en voor komt het afluis teren en man-in-the-middle-aanvallen. 
 
-Als u niet wilt dat gegevens via openbaar internet worden overgedragen, u ook een hogere beveiliging bereiken door gegevens over te dragen via een privé-peeringkoppeling tussen AWS Direct Connect en Azure Express Route.  Raadpleeg hieronder de oplossingsarchitectuur over hoe dit kan worden bereikt. 
+Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kunt u de beveiliging verbeteren door gegevens over een persoonlijke peering-koppeling tussen AWS Direct Connect en Azure Express route over te brengen.  Raadpleeg de onderstaande oplossings architectuur voor meer informatie over hoe dit kan worden bereikt. 
 
 ## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
-Gegevens migreren via openbaar internet:
+Gegevens migreren via het open bare Internet:
 
-![solution-architecture-public-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+![oplossing-architectuur-openbaar-netwerk](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
 
-- In deze architectuur worden gegevens veilig overgedragen via HTTPS via openbaar internet. 
-- Zowel de bron Amazon S3 als de bestemming Azure Blob Storage of Azure Data Lake Storage Gen2 zijn geconfigureerd om verkeer toe te staan vanaf alle NETWERK-IP-adressen.  Raadpleeg de tweede architectuur hieronder over hoe u de toegang tot het netwerk beperken tot een specifiek IP-bereik. 
-- U eenvoudig de hoeveelheid pk's op serverloze manier opschalen om uw netwerk- en opslagbandbreedte volledig te benutten, zodat u de beste doorvoer voor uw omgeving krijgen. 
-- Zowel de eerste momentopnamemigratie als deltagegevensmigratie kunnen met deze architectuur worden bereikt. 
+- In deze architectuur worden gegevens veilig overgedragen met behulp van HTTPS via open bare Internet. 
+- Zowel de bron Amazon S3 als de doel-Azure-Blob Storage of Azure Data Lake Storage Gen2 zijn zodanig geconfigureerd dat verkeer van alle IP-adressen van het netwerk wordt toegestaan.  Raadpleeg de tweede architectuur hieronder voor informatie over hoe u de netwerk toegang tot een specifiek IP-bereik kunt beperken. 
+- U kunt eenvoudig de hoeveelheid brand kracht op serverloze wijze schalen om uw netwerk-en opslag bandbreedte volledig te benutten zodat u de beste door Voer voor uw omgeving kunt krijgen. 
+- U kunt zowel de initiële migratie van moment opnamen als de migratie van Delta gegevens bereiken met behulp van deze architectuur. 
 
-Gegevens migreren via een privékoppeling: 
+Gegevens migreren via een persoonlijke koppeling: 
 
-![solution-architecture-private-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+![oplossing-architectuur-privé-netwerk](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
-- In deze architectuur wordt gegevensmigratie uitgevoerd via een privé-peeringkoppeling tussen AWS Direct Connect en Azure Express Route, zodat gegevens nooit via openbaar internet worden doorkruisen.  Het vereist het gebruik van AWS VPC en Azure Virtual netwerk. 
-- U moet adf zelf gehoste integratieruntime installeren op een Windows VM binnen uw Virtuele Azure-netwerk om deze architectuur te bereiken.  U uw zelf gehoste IR-VM's handmatig opschalen of uitschalen naar meerdere VM's (maximaal 4 knooppunten) om uw netwerk- en opslag-IOPS/-bandbreedte volledig te gebruiken. 
-- Als het aanvaardbaar is om gegevens over HTTPS over te dragen, maar u wilt netwerktoegang tot bron S3 vergrendelen naar een specifiek IP-bereik, u een variatie van deze architectuur aannemen door AWS VPC te verwijderen en privékoppeling te vervangen door HTTPS.  U wilt Azure Virtual en zelfgehoste IR op Azure VM houden, zodat u een statisch openbaar routeerbaar IP hebben voor whitelistingdoeleinden. 
-- Zowel de eerste momentopnamegegevensmigratie als deltagegevensmigratie kunnen met deze architectuur worden bereikt. 
+- In deze architectuur wordt de gegevens migratie uitgevoerd via een koppeling voor een privé-peering tussen AWS Direct Connect en Azure Express route zodat de gegevens nooit via het open bare Internet worden gepasseerd.  Hiervoor is het gebruik van AWS VPC en een virtueel Azure-netwerk vereist. 
+- U moet de zelf-hostende Integration runtime van ADF installeren op een Windows-VM in uw virtuele Azure-netwerk om deze architectuur te verzorgen.  U kunt uw zelf-hostende IR-Vm's hand matig schalen of uitschalen naar meerdere Vm's (Maxi maal 4 knoop punten) om uw netwerk en opslag-IOPS/band breedte volledig te benutten. 
+- Als het acceptabel is om gegevens over te dragen, maar u de netwerk toegang tot de bron-S3 wilt vergren delen voor een specifiek IP-bereik, kunt u een variatie van deze architectuur aannemen door AWS VPC te verwijderen en de persoonlijke koppeling te vervangen door HTTPS.  U wilt Azure Virtual en zelf-hostende IR op Azure VM blijven gebruiken, zodat u een statisch, openbaar routeerbaar IP-adres kunt hebben voor het white list-doel. 
+- U kunt zowel de initiële momentopname gegevens migratie als de migratie van de Delta gegevens bereiken met behulp van deze architectuur. 
 
-## <a name="implementation-best-practices"></a>Best Practices voor de implementatie 
+## <a name="implementation-best-practices"></a>Aanbevolen procedures voor implementatie 
 
-### <a name="authentication-and-credential-management"></a>Verificatie- en referentiebeheer 
+### <a name="authentication-and-credential-management"></a>Verificatie en referentie beheer 
 
-- Als u wilt verifiëren voor amazon S3-account, moet u [de toegangssleutel voor het IAM-account](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)gebruiken. 
-- Meerdere verificatietypen worden ondersteund om verbinding te maken met Azure Blob Storage.  Het gebruik van [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) wordt ten zeerste aanbevolen: bovenop een automatisch beheerde ADF-identificatie in Azure AD, u pijplijnen configureren zonder referenties te leveren in de definitie van Linked Service.  U ook verifiëren naar Azure Blob Storage met [serviceprincipal,](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication) [handtekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of [opslagaccountsleutel](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
-- Er worden ook meerdere verificatietypen ondersteund om verbinding te maken met Azure Data Lake Storage Gen2.  Het gebruik van [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) wordt ten zeerste aanbevolen, hoewel [serviceprincipal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of [opslagaccountsleutel](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) ook kan worden gebruikt. 
-- Wanneer u beheerde identiteiten niet gebruikt voor Azure-resources, wordt [het opslaan van de referenties in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) ten zeerste aanbevolen om het eenvoudiger te maken om sleutels centraal te beheren en te roteren zonder adf-gekoppelde services te wijzigen.  Dit is ook een van de [best practices voor CI / CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Als u zich wilt verifiëren bij het Amazon S3-account, moet u de [toegangs sleutel voor het IAM-account](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)gebruiken. 
+- Meerdere verificatie typen worden ondersteund om verbinding te maken met Azure Blob Storage.  Het gebruik van [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) wordt ten zeerste aanbevolen: gebouwd op basis van een automatisch beheerde ADF-zoek opdracht in azure AD, kunt u pijp lijnen configureren zonder dat er referenties worden opgegeven in de definitie van de gekoppelde service.  U kunt ook verifiëren bij Azure Blob Storage met behulp van de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), de [hand tekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of de sleutel van het [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
+- Meerdere verificatie typen worden ook ondersteund om verbinding te maken met Azure Data Lake Storage Gen2.  Het gebruik van [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) wordt sterk aanbevolen, hoewel de sleutel van de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of het [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) ook kan worden gebruikt. 
+- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, wordt [het opslaan van de referenties in azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) ten zeerste aanbevolen, zodat het eenvoudiger is om sleutels te beheren en te draaien zonder de gekoppelde services van ADF aan te passen.  Dit is ook een van de [Aanbevolen procedures voor CI/cd](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
 
-### <a name="initial-snapshot-data-migration"></a>Migratie van eerste momentopnamegegevens 
+### <a name="initial-snapshot-data-migration"></a>Initiële momentopname gegevens migratie 
 
-Gegevenspartitie wordt aanbevolen, vooral bij het migreren van meer dan 100 TB aan gegevens.  Als u de gegevens wilt verdelen, maakt u gebruik van de instelling 'voorvoegsel' om de mappen en bestanden in Amazon S3 op naam te filteren en kan elke ADF-kopieertaak één partitie tegelijk kopiëren.  U meerdere ADF-kopieertaken tegelijk uitvoeren voor een betere doorvoer. 
+Gegevens partities worden vooral aanbevolen bij het migreren van meer dan 100 TB aan gegevens.  Als u de gegevens wilt partitioneren, maakt u gebruik van de instelling voor voegsel om de mappen en bestanden in Amazon S3 op naam te filteren, waarna elke taak voor het kopiëren van de ADF één partitie per keer kan kopiëren.  U kunt gelijktijdig meerdere ADF-Kopieer taken uitvoeren voor een betere door voer. 
 
-Als een van de kopieertaken mislukt als gevolg van een tijdelijk probleem in het netwerk- of gegevensarchief, u de mislukte kopieertaak opnieuw uitvoeren om die specifieke partitie opnieuw te laden vanuit AWS S3.  Alle andere kopieertaken die andere partities laden, worden niet beïnvloed. 
+Als een van de Kopieer taken mislukt als gevolg van een probleem met de tijdelijke netwerk-of gegevens opslag, kunt u de mislukte Kopieer taak opnieuw uitvoeren om deze specifieke partitie opnieuw te laden vanuit AWS S3.  Alle andere Kopieer taken voor het laden van andere partities worden niet beïnvloed. 
 
-### <a name="delta-data-migration"></a>Delta-gegevensmigratie 
+### <a name="delta-data-migration"></a>Delta gegevens migratie 
 
-De meest performante manier om nieuwe of gewijzigde bestanden van AWS S3 te identificeren, is door gebruik te maken van de tijdsverdelingsconventie - wanneer uw gegevens in AWS S3 tijd zijn verdeeld met tijdsegmentinformatie in het bestand of de naam van de map (bijvoorbeeld /yyyy/mm/dd/file.csv), kan uw pijplijn eenvoudig identificeren welke bestanden/mappen stapsgewijs moeten worden gekopieerd. 
+De meest krachtige manier om nieuwe of gewijzigde bestanden van AWS S3 te identificeren, is door gebruik te maken van tijdgebonden naamgevings conventies: wanneer uw gegevens in AWS S3 zijn gepartitioneerd met tijds segment informatie in het bestand of de mapnaam (bijvoorbeeld/yyyy/mm/dd/file.CSV), kan uw pijp lijn gemakkelijk bepalen welke bestanden/mappen incrementeel moeten worden gekopieerd. 
 
-Als uw gegevens in AWS S3 geen tijd salmals zijn verdeeld, kan ADF nieuwe of gewijzigde bestanden identificeren aan de basis van de LastModifiedDate.   De manier waarop het werkt is dat ADF alle bestanden van AWS S3 scant en alleen het nieuwe en bijgewerkte bestand kopieert waarvan de laatste gewijzigde tijdstempel groter is dan een bepaalde waarde.  Houd er rekening mee dat als u een groot aantal bestanden in S3 hebt, het scannen van bestanden lang kan duren, ongeacht het aantal bestanden dat overeenkomt met de filterconditie.  In dit geval wordt u aangeraden om de gegevens eerst te verdelen, met dezelfde 'voorvoegsel'-instelling voor de eerste momentopnamemigratie, zodat het scannen van bestanden parallel kan plaatsvinden.  
+Als uw gegevens in AWS S3 niet gepartitioneerd zijn, kan ADF nieuwe of gewijzigde bestanden identificeren met hun LastModifiedDate.   Zoals u ziet, scant de ADF alle bestanden van AWS S3 en kopieert alleen het nieuwe en bijgewerkte bestand waarvan het tijdstip waarop de laatste wijziging is aangebracht, groter is dan een bepaalde waarde.  Houd er rekening mee dat als u een groot aantal bestanden in S3 hebt, de eerste scan van het bestand veel tijd kan duren, ongeacht het aantal bestanden dat overeenkomt met de filter voorwaarde.  In dit geval wordt u geadviseerd om eerst de gegevens te partitioneren met dezelfde prefix instelling voor de eerste migratie van moment opnamen, zodat het scannen van bestanden parallel kan plaatsvinden.  
 
-### <a name="for-scenarios-that-require-self-hosted-integration-runtime-on-azure-vm"></a>Voor scenario's waarvoor zelfgehoste integratie-runtime op Azure VM vereist is 
+### <a name="for-scenarios-that-require-self-hosted-integration-runtime-on-azure-vm"></a>Voor scenario's waarvoor een zelf-hostende Integration runtime op de Azure-VM is vereist 
 
-Of u nu gegevens migreert via een privékoppeling of een specifiek IP-bereik op de Amazon S3-firewall wilt toestaan, u moet zelf gehoste runtime voor integratie installeren op Azure Windows VM. 
+Of u nu gegevens migreert via een privé koppeling of een specifiek IP-adres bereik wilt toestaan op de Amazon S3-firewall, moet u zelf-hostende Integration runtime installeren op Azure Windows VM. 
 
-- De aanbevolen configuratie om mee te beginnen voor elke Azure VM is Standard_D32s_v3 met 32 vCPU en 128 GB geheugen.  U het CPU- en geheugengebruik van de IR-VM tijdens de gegevensmigratie blijven controleren om te zien of u de VM verder moet opschalen voor betere prestaties of de VM moet verkleinen om kosten te besparen. 
-- U ook uitschalen door maximaal 4 VM-knooppunten te koppelen aan één zelf gehoste IR.  Een enkele kopieertaak die wordt uitgevoerd tegen een zelf gehoste IR, partitiet automatisch de bestandsset en maakt gebruik van alle VM-knooppunten om de bestanden parallel te kopiëren.  Voor hoge beschikbaarheid wordt u aangeraden om te beginnen met 2 VM-knooppunten om één storingspunt tijdens de gegevensmigratie te voorkomen. 
+- De aanbevolen configuratie voor elke virtuele machine van Azure is Standard_D32s_v3 met 32 vCPU en 128 GB geheugen.  U kunt het CPU-en geheugen gebruik van de IR-VM tijdens de gegevens migratie blijven bewaken om te zien of u de virtuele machine verder moet opschalen voor betere prestaties of de virtuele machine kunt verlagen om kosten te besparen. 
+- U kunt ook uitschalen door Maxi maal 4 VM-knoop punten te koppelen aan één zelf-hostende IR.  Een enkele Kopieer taak die wordt uitgevoerd op een zelf-hostende IR, partitioneert automatisch de set bestanden en maakt gebruik van alle VM-knoop punten om de bestanden parallel te kopiëren.  Voor maximale Beschik baarheid kunt u het beste beginnen met 2 VM-knoop punten om Single Point of Failure te voor komen tijdens de gegevens migratie. 
 
 ### <a name="rate-limiting"></a>Snelheidsbeperking 
 
-Voer als best practice een performance POC uit met een representatieve voorbeeldgegevensset, zodat u een geschikte partitiegrootte bepalen. 
+Als best practice, voert u een prestatie test uit met een representatieve voor beeld-gegevensset, zodat u de juiste partitie grootte kunt bepalen. 
 
-Begin met één partitie en één kopieeractiviteit met de standaard DIU-instelling.  Verhoog geleidelijk de DIU-instelling totdat u de bandbreedtelimiet van uw netwerk of IOPS/bandbreedtelimiet van de gegevensopslag hebt bereikt, of u hebt de maximaal toegestane 256 DIU bereikt voor één exemplaaractiviteit. 
+Begin met één partitie en één Kopieer activiteit met de standaard instelling voor DIU.  Verhoog de DIU-instelling geleidelijk totdat u de bandbreedte limiet bereikt van uw netwerk of IOPS/bandbreedte limiet van de gegevens archieven, of u hebt het maximale aantal van 256 DIU bereikt dat is toegestaan voor één Kopieer activiteit. 
 
-Verhoog vervolgens geleidelijk het aantal gelijktijdige kopieeractiviteiten totdat u limieten van uw omgeving bereikt. 
+Verhoog vervolgens geleidelijk het aantal gelijktijdige Kopieer activiteiten tot u de limieten van uw omgeving bereikt. 
 
-Wanneer u throttling-fouten tegenkomt die worden gerapporteerd door ADF-kopieeractiviteit, vermindert u de gelijktijdigheid of diu-instelling in ADF of overweegt u de bandbreedte/IOPS-limieten van de netwerk- en gegevensopslag te verhogen.  
+Wanneer u vertragings fouten ondervindt die worden gerapporteerd door de ADF-Kopieer activiteit, verlaagt u de gelijktijdigheids-of DIU instelling in ADF of neemt u de limieten voor band breedte/IOPS van het netwerk en de gegevens opslag op.  
 
 ### <a name="estimating-price"></a>Prijs schatten 
 
 > [!NOTE]
-> Dit is een hypothetisch prijsvoorbeeld.  Uw werkelijke prijs hangt af van de werkelijke doorvoer in uw omgeving.
+> Dit is een voor beeld van een hypothetische prijs.  Uw werkelijke prijs is afhankelijk van de werkelijke door Voer in uw omgeving.
 
-Overweeg de volgende pijplijn die is gemaakt voor het migreren van gegevens van S3 naar Azure Blob Storage: 
+Bekijk de volgende pijp lijn die is gebouwd voor het migreren van gegevens van S3 naar Azure Blob Storage: 
 
-![pricing-pipeline](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+![prijs informatie-pijp lijn](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
 
-Laten we uitgaan van het volgende: 
+We nemen het volgende uit: 
 
-- Het totale gegevensvolume is 2 PB 
-- Gegevens migreren via HTTPS met behulp van de eerste oplossingsarchitectuur 
-- 2 PB is verdeeld in 1 K partities en elke kopie verplaatst een partitie 
-- Elk exemplaar is geconfigureerd met DIU=256 en bereikt 1 GBps-doorvoer 
-- ForEach gelijktijdigheid is ingesteld op 2 en de totale doorvoer is 2 GBps 
-- In totaal duurt het 292 uur om de migratie te voltooien 
+- Het totale gegevens volume is 2 PB 
+- Gegevens migreren via HTTPS met de eerste architectuur van de oplossing 
+- 2 PB is onderverdeeld in 1 K-partities en elke kopie verplaatst één partitie 
+- Elk exemplaar is geconfigureerd met DIU = 256 en een maximale door Voer van 1 GBps 
+- Gelijktijdigheid van ForEach is ingesteld op 2 en een geaggregeerde door Voer is 2 GBps 
+- In totaal duurt het 292 uur om de migratie te volt ooien 
 
-Hier is de geschatte prijs op basis van de bovenstaande veronderstellingen: 
+Dit is de geschatte prijs op basis van de bovenstaande hypo Thesen: 
 
-![prijstabel](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+![prijs informatie: tabel](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Aanvullende naslaginformatie 
-- [Amazon Simple Storage Service-connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob-opslagconnector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Amazon Simple Storage-service connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
+- [Azure Blob Storage-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Tuning-handleiding voor activiteitsprestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Runtime voor zelfgehoste integratie maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Self-hosted integration runtime HA en schaalbaarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Gids voor het afstemmen van de activiteit prestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [Zelf-hostende Integration Runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [Zelf-hostende runtime HA en schaal baarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Beveiligingsoverwegingen bij het verplaatsen van gegevens](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [Referenties opslaan in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Bestand stapsgewijs kopiëren op basis van tijdpartitiebestandsnaam](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
+- [Bestand incrementeel kopiëren op basis van een gepartitioneerde bestands naam](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [Nieuwe en gewijzigde bestanden kopiëren op basis van LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
-- [ADF-prijspagina](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+- [Pagina met prijzen voor ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>Template
 
-Hier is de [sjabloon](solution-template-migration-s3-azure.md) om mee te beginnen met het migreren van petabytes aan gegevens bestaande uit honderden miljoenen bestanden van Amazon S3 naar Azure Data Lake Storage Gen2.
+Dit is de [sjabloon](solution-template-migration-s3-azure.md) waarmee u begint met het migreren van PETA bytes aan gegevens van honderden miljoenen bestanden van Amazon S3 naar Azure data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bestanden uit meerdere containers kopiëren met Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Bestanden van meerdere containers met Azure Data Factory kopiëren](solution-template-copy-files-multiple-containers.md)

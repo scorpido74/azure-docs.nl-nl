@@ -1,6 +1,6 @@
 ---
-title: Beheerbaarheid en bewaking - queryactiviteit, resourcegebruik
-description: Ontdek welke mogelijkheden beschikbaar zijn voor het beheren en bewaken van Azure Synapse Analytics. Gebruik de Azure-portal en Dynamic Management Views (DMVs) om inzicht te krijgen in de queryactiviteit en het gebruik van resources in uw gegevensmagazijn.
+title: Beheer baarheid en controle-query activiteit, resource gebruik
+description: Meer informatie over de mogelijkheden die beschikbaar zijn voor het beheren en bewaken van Azure Synapse Analytics. Gebruik de Azure Portal en dynamische beheer weergaven (Dmv's) om inzicht te krijgen in de query-activiteiten en het resource gebruik van uw data warehouse.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -12,58 +12,58 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416221"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Beheer van resource- en queryactiviteit in Azure Synapse Analytics controleren
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Resource gebruik en query activiteit bewaken in azure Synapse Analytics
 
-Azure Synapse Analytics biedt een uitgebreide monitoringervaring binnen de Azure-portal om inzicht te geven in de werkbelasting van uw gegevensmagazijn. De Azure-portal is het aanbevolen hulpmiddel bij het bewaken van uw gegevensmagazijn, omdat het configureerbare bewaarperioden, waarschuwingen, aanbevelingen en aanpasbare grafieken en dashboards voor statistieken en logboeken biedt. De portal stelt u ook in staat om te integreren met andere Azure-bewakingsservices, zoals Azure Monitor (logboeken) met Logboekanalyses, zodat u niet alleen uw gegevensmagazijn, maar ook uw hele Azure-analyseplatform een geïntegreerde monitoringervaring biedt. In deze documentatie wordt beschreven welke bewakingsmogelijkheden beschikbaar zijn om uw analyseplatform te optimaliseren en te beheren met SQL Analytics.
+Azure Synapse Analytics biedt een uitgebreide bewakings ervaring in het Azure Portal op oppervlakte inzichten met betrekking tot de werk belasting van uw data warehouse. De Azure Portal is het aanbevolen hulp programma voor het bewaken van uw data warehouse, zoals het biedt Configureer bare Bewaar perioden, waarschuwingen, aanbevelingen en aanpas bare grafieken en dash boards voor metrische gegevens en Logboeken. De portal biedt u ook de mogelijkheid om te integreren met andere Azure-bewakings Services, zoals Azure Monitor (Logboeken) met log Analytics om een holistische bewakings ervaring te bieden voor niet alleen uw data warehouse, maar ook uw volledige Azure Analytics-platform voor een geïntegreerde bewakings ervaring. In deze documentatie wordt beschreven welke bewakings mogelijkheden beschikbaar zijn voor het optimaliseren en beheren van uw analyse platform met SQL Analytics.
 
 ## <a name="resource-utilization"></a>Resourcegebruik
 
-De volgende statistieken zijn beschikbaar in de Azure-portal voor SQL Analytics. Deze statistieken worden weergegeven via [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
+De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor SQL Analytics. Deze metrische gegevens worden geoppereerd via [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
 | Metrische naam             | Beschrijving                                                  | Aggregatietype |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
-| CPU-percentage          | CPU-gebruik voor alle knooppunten voor het gegevensmagazijn      | Avg, Min, Max    |
-| Gegevens-I/O-percentage      | IO-gebruik voor alle knooppunten voor het gegevensmagazijn       | Avg, Min, Max    |
-| Geheugenpercentage       | Geheugengebruik (SQL Server) voor alle knooppunten voor het gegevensmagazijn | Avg, Min, Max   |
-| Actieve query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Sum              |
-| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te beginnen met uitvoeren          | Sum              |
-| Succesvolle verbindingen  | Aantal succesvolle verbindingen (aanmeldingen) ten opzichte van de database | Som, Aantal       |
-| Mislukte verbindingen      | Aantal mislukte verbindingen (aanmeldingen) ten opzichte van de database | Som, Aantal       |
-| Geblokkeerd door firewall     | Aantal aanmeldingen in het datawarehouse dat is geblokkeerd     | Som, Aantal       |
-| DWU-limiet               | Doelstelling op serviceniveau van het datawarehouse                | Avg, Min, Max    |
-| DWU-percentage          | Maximum tussen CPU-percentage en Data IO-percentage        | Avg, Min, Max    |
-| Gebruikte DWU                | DWU-limiet * DWU-percentage                                   | Avg, Min, Max    |
-| Percentage cachehit    | (cache hits / cache miss) * 100 waar cache hits is de som van alle columnstore segmenten hits in de lokale SSD cache en cache missen is de columnstore segmenten mist in de lokale SSD cache samengevat over alle knooppunten | Avg, Min, Max    |
-| Door cache gebruikt percentage   | (gebruikte cache / cachecapaciteit) * 100 waar cache wordt gebruikt is de som van alle bytes in de lokale SSD-cache op alle knooppunten en cachecapaciteit is de som van de opslagcapaciteit van de lokale SSD-cache op alle knooppunten | Avg, Min, Max    |
-| Lokaal tempdb percentage | Lokaal tempdb-gebruik voor alle compute nodes - waarden worden elke vijf minuten uitgestoten | Avg, Min, Max    |
-| Grootte van de gegevensopslag (GB) | Totale grootte van de database. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de database om query- en laadprestaties te optimaliseren. | Sum |
-| Grootte van noodherstel (GB) | Totale grootte van de geo-back-up genomen om de 24 uur | Sum |
-| Grootte van momentopnameopslag (GB) | Totale grootte van momentopnamen die zijn gemaakt om databaseherstelpunten te bieden. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde momentopnamen. | Sum |
+| CPU-percentage          | CPU-gebruik in alle knoop punten voor het Data Warehouse      | Gem, min, Max    |
+| Gegevens-I/O-percentage      | IO-gebruik over alle knoop punten voor het Data Warehouse       | Gem, min, Max    |
+| Geheugen percentage       | Geheugen gebruik (SQL Server) op alle knoop punten voor het Data Warehouse | Gem, min, Max   |
+| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Sum              |
+| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Sum              |
+| Geslaagde verbindingen  | Aantal geslaagde verbindingen (aanmeldingen) voor de data base | Som, aantal       |
+| Mislukte verbindingen      | Aantal mislukte verbindingen (aanmeldingen) voor de data base | Som, aantal       |
+| Geblokkeerd door de firewall     | Aantal aanmeldingen bij het data warehouse dat is geblokkeerd     | Som, aantal       |
+| Limiet voor DWU               | Serviceniveau doelstelling van het Data Warehouse                | Gem, min, Max    |
+| Percentage DWU          | Maximum tussen CPU-percentage en gegevens-i/o-percentage        | Gem, min, Max    |
+| DWU gebruikt                | Limiet voor DWU * DWU percentage                                   | Gem, min, Max    |
+| Percentage cache treffers    | (cache treffers/cache-missers) * 100 waarbij treffers in cache de som zijn van alle treffers in de lokale SSD-cache en de cache-Misser is de column Store-segmenten in de lokale SSD-cache die is opgeteld voor alle knoop punten | Gem, min, Max    |
+| Percentage gebruikt cache   | (cache capaciteit gebruikt/cache) * 100 waarbij gebruikte cache de som is van alle bytes in de lokale SSD-cache op alle knoop punten en de cache capaciteit is de som van de opslag capaciteit van de lokale SSD-cache op alle knoop punten | Gem, min, Max    |
+| Lokaal TempDB-percentage | Lokaal TempDB-gebruik voor alle reken knooppunten: de waarden worden elke vijf minuten verzonden | Gem, min, Max    |
+| Grootte van gegevens opslag (GB) | De totale grootte van de data base. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de data base om de prestaties van query's en laden te optimaliseren. | Sum |
+| Grootte van nood herstel (GB) | Totale grootte van de geo-back-up die elke 24 uur wordt gemaakt | Sum |
+| Grootte van de opslag voor moment opnamen (GB) | Totale grootte van moment opnamen die zijn gemaakt om database herstel punten op te geven. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde moment opnamen. | Sum |
 
-Dingen om rekening mee te houden bij het bekijken van statistieken en het instellen van waarschuwingen:
+Aandachtspunten bij het weer geven van metrische gegevens en het instellen van waarschuwingen:
 
-- Gebruikte DWU vertegenwoordigt slechts een weergave op hoog niveau van het gebruik in de **SQL-groep** en is niet bedoeld als een uitgebreide indicator van het gebruik. Om te bepalen of u wilt opschalen of omlaag wilt, moet u rekening houden met alle factoren die door DWU kunnen worden beïnvloed, zoals gelijktijdigheid, geheugen, tempdb en adaptieve cachecapaciteit. We raden u aan uw werklast uit te [voeren op verschillende DWU-instellingen](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) om te bepalen wat het beste werkt om aan uw bedrijfsdoelstellingen te voldoen.
-- Mislukte en succesvolle verbindingen worden gerapporteerd voor een bepaald gegevensmagazijn - niet voor de logische server
-- Het geheugenpercentage weerspiegelt het gebruik, zelfs als het gegevensmagazijn niet actief is, maar weerspiegelt geen actief geheugenverbruik. Gebruik en houd deze statistiek samen met anderen (tempdb, gen2-cache) bij om een holistische beslissing te nemen over het niveau van schalen voor extra cachecapaciteit zal de prestaties van de werkbelasting verhogen om aan uw vereisten te voldoen.
+- DWU die wordt gebruikt, duidt alleen op een **hoog niveau van gebruik** in de SQL-groep en is niet bedoeld als een uitgebreide indicatie van het gebruik. Als u wilt bepalen of u omhoog of omlaag wilt schalen, moet u rekening houden met alle factoren die van invloed kunnen zijn op DWU zoals gelijktijdigheid, geheugen, tempdb en adaptieve cache capaciteit. We raden u [aan om uw werk belasting uit te voeren op verschillende DWU-instellingen](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) om te bepalen wat het beste werkt om te voldoen aan uw bedrijfs doelstellingen.
+- Er zijn mislukte en geslaagde verbindingen gerapporteerd voor een bepaald data warehouse, niet voor de logische server
+- Het geheugen percentage weerspiegelt het gebruik, zelfs als het Data Warehouse zich in niet-actieve status bevindt, het actieve verbruik van het workload-geheugen niet weer spie gelen. Gebruik en volg deze metrische gegevens samen met anderen (TempDB, Gen2 cache) om een holistische beslissing te nemen over als het schalen voor extra cache capaciteit de prestaties van de werk belasting verg root om te voldoen aan uw vereisten.
 
-## <a name="query-activity"></a>Queryactiviteit
+## <a name="query-activity"></a>Query activiteit
 
-Voor een programmatische ervaring bij het monitoren van SQL Analytics via T-SQL, biedt de service een set Dynamic Management Views (DMVs). Deze weergaven zijn handig bij het actief oplossen van problemen en het identificeren van prestatieknelpunten met uw werkbelasting.
+Voor een programmatische ervaring bij het bewaken van SQL Analytics via T-SQL, biedt de service een set dynamische beheer weergaven (Dmv's). Deze weer gaven zijn handig bij het oplossen van problemen met de prestaties en het identificeren van prestatie knelpunten met uw werk belasting.
 
-Als u de lijst met DMVs wilt bekijken die van toepassing zijn op Synapse SQL, raadpleegt u deze [documentatie.](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs) 
+Raadpleeg deze [documentatie](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)om de lijst met dmv's die van toepassing zijn op Synapse SQL te bekijken. 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken 
 
-Zowel statistieken als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de azure [monitor-logboekencomponent](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en kunnen programmatisch worden geopend via [logboekquery's.](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De loglatentie voor SQL Analytics is ongeveer 10-15 minuten. Ga voor meer informatie over de factoren die van invloed zijn op de latentie naar de volgende documentatie.
+Zowel metrische gegevens als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de [Azure monitor-logboeken](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) component en via een programma kunnen worden geopend via [logboek query's](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). De logboek latentie voor SQL Analytics is ongeveer 10-15 minuten. Raadpleeg de volgende documentatie voor meer informatie over de factoren die van invloed zijn op de latentie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende handleiding worden veelvoorkomende scenario's en use cases beschreven bij het bewaken en beheren van uw gegevensmagazijn:
+In de volgende hand leiding worden algemene scenario's en gebruiks voorbeelden beschreven voor het bewaken en beheren van uw data warehouse:
 
-- [Uw werkbelasting voor gegevensmagazijnen bewaken met DMVs](sql-data-warehouse-manage-monitor.md)
+- [Uw data warehouse-workload bewaken met Dmv's](sql-data-warehouse-manage-monitor.md)

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie gegevensanalist - SQL on-demand (voorbeeld) gebruiken om Azure Open Datasets in Azure Synapse Studio te analyseren (voorbeeld)
-description: In deze zelfstudie leert u hoe u eenvoudig verkennende gegevensanalyse uitvoeren waarbij verschillende Azure Open Datasets worden gecombineerd met SQL on-demand (preview) en de resultaten in Azure Synapse Studio kunnen visualiseren.
+title: 'Zelf studie voor data analisten: SQL on-demand gebruiken (preview) voor het analyseren van Azure open gegevens sets in azure Synapse Studio (preview)'
+description: In deze zelf studie leert u hoe u eenvoudig experimentele gegevens analyse kunt uitvoeren met behulp van SQL op aanvraag (preview) en visualiseren van de resultaten in azure Synapse Studio.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 1080001cb222f91503080914d7fb253e5ee82626
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423227"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>SQL on-demand (preview) gebruiken om Azure Open Datasets te analyseren en de resultaten in Azure Synapse Studio te visualiseren (preview)
+# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>SQL op aanvraag (preview) gebruiken voor het analyseren van Azure open gegevens sets en het visualiseren van de resultaten in azure Synapse Studio (preview)
 
-In deze zelfstudie leert u hoe u verkennende gegevensanalyse uitvoert door verschillende Azure Open Datasets te combineren met SQL on-demand en vervolgens de resultaten in Azure Synapse Studio te visualiseren.
+In deze zelf studie leert u hoe u experimentele gegevens analyse kunt uitvoeren door verschillende Azure open gegevens sets te combi neren met SQL op aanvraag en vervolgens de resultaten te visualiseren in azure Synapse Studio.
 
-In het bijzonder analyseert u de [taxigegevensset Van New York City (NYC)](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) die ophaal- en inleverdatums/-tijden, ophaal- en afleverlocaties, reisafstanden, gespecificeerde tarieven, tarieftypen, betalingstypen en door de chauffeur gerapporteerde passagierstellingen omvat.
+In het bijzonder kunt u de [NYC-gegevensset (New York City)](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) analyseren, met inbegrip van de ophaal-en verwijderings datums/-tijden, de ophaal-en uitval locaties, de bevestigingen, de gespecificeerde tarieven, de betalings typen en de door het stuur programma gemelde passagiers aantallen.
 
-De focus van de analyse is het vinden van trends in veranderingen in het aantal taxiritten in de tijd. U analyseert twee andere Azure Open Datasets[(feestdagen](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) en [weergegevens)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)om inzicht te krijgen in de uitschieters in het aantal taxiritten.
+De focus van de analyse is het vinden van trends in wijzigingen van het aantal taxi-overschrijvingen in de loop van de tijd. U kunt twee andere Azure open gegevens sets ([open bare feest dagen](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) en [weers gegevens](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)) analyseren om inzicht te krijgen in de uitschieters van het aantal taxi-onderdrukkingen.
 
 ## <a name="create-credentials"></a>Referenties maken
 
@@ -44,11 +44,11 @@ SECRET = ''
 GO
 ```
 
-## <a name="automatic-schema-inference"></a>Automatische schema-gevolgtrekking
+## <a name="automatic-schema-inference"></a>Automatische schema-deinterferentie
 
-Aangezien gegevens worden opgeslagen in de indeling van het parketbestand, is automatische schema-inference beschikbaar, zodat men de gegevens gemakkelijk kan opvragen zonder dat u de gegevenstypen van alle kolommen in de bestanden hoeft op te sommen. Bovendien kan men gebruik maken van virtuele kolom mechanisme en filepath functie te filteren uit een bepaalde subset van bestanden.
+Omdat de gegevens zijn opgeslagen in de Parquet-bestands indeling, is automatische schema-interferentie beschikbaar, zodat de gegevens eenvoudig kunnen worden opgevraagd door de gegevens typen van alle kolommen in de bestanden. Daarnaast kunt u met een virtueel kolom mechanisme en de functie filepath een bepaalde subset van bestanden filteren.
 
-Laten we eerst vertrouwd raken met de NYC Taxi-gegevens door de volgende query uit te voeren:
+Laten we eerst de NYC-gegevens over de taxi bekijken door de volgende query uit te voeren:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -58,11 +58,11 @@ SELECT TOP 100 * FROM
     ) AS [nyc]
 ```
 
-Het volgende toont het resultaatfragment voor de NYC Taxi-gegevens:
+Hieronder ziet u het resultaat fragment voor de NYC taxi-gegevens:
 
-![resultaatfragment](./media/tutorial-data-analyst/1.png)
+![resultaat fragment](./media/tutorial-data-analyst/1.png)
 
-Op dezelfde manier kunnen we de gegevensset feestdagen opvragen met de volgende query:
+Op dezelfde manier kunnen we een query uitvoeren op de gegevensset van de open bare feest dagen met de volgende query:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -72,11 +72,11 @@ SELECT TOP 100 * FROM
     ) AS [holidays]
 ```
 
-Het volgende toont het resultaatfragment voor de gegevensset feestdagen:
+Hieronder ziet u het resultaat fragment voor de gegevensset van de open bare feest dagen:
 
-![resultaatfragment 2](./media/tutorial-data-analyst/2.png)
+![resultaat fragment 2](./media/tutorial-data-analyst/2.png)
 
-Tot slot kunnen we ook de weersset opvragen met de volgende query:
+Ten slotte kunnen we ook een query uitvoeren op de weer gegevensset met behulp van de volgende query:
 
 ```sql
 SELECT
@@ -88,15 +88,15 @@ FROM
     ) AS [weather]
 ```
 
-Het volgende toont het resultaatfragment voor de weergegevensset:
+Hieronder ziet u het resultaat fragment voor de weer gegevensset:
 
-![resultaatfragment 3](./media/tutorial-data-analyst/3.png)
+![resultaat fragment 3](./media/tutorial-data-analyst/3.png)
 
-U meer informatie over de betekenis van de afzonderlijke kolommen in de beschrijvingen van de [NYC Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/), [Feestdagen](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/), en [Weergegevens](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) datasets.
+Meer informatie over de betekenis van de afzonderlijke kolommen vindt u in de beschrijvingen van de [NYC-taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/), [open bare feest dagen](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)en [weer gegevens](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) sets.
 
-## <a name="time-series-seasonality-and-outlier-analysis"></a>Tijdreeksen, seizoensinvloeden en uitschietersanalyse
+## <a name="time-series-seasonality-and-outlier-analysis"></a>Tijd reeks, seizoensgebondenheid en uitschieter analyse
 
-U eenvoudig een overzicht geven van het jaarlijkse aantal taxiritten met behulp van de volgende query:
+Met de volgende query kunt u heel eenvoudig een samen vatting van elk jaarlijks aantal Taxis maken:
 
 ```sql
 SELECT
@@ -112,20 +112,20 @@ GROUP BY YEAR(tpepPickupDateTime)
 ORDER BY 1 ASC
 ```
 
-Het volgende toont het resultaatfragment voor het jaarlijkse aantal taxiritten:
+Hieronder ziet u het resultaat fragment voor het jaarlijkse aantal taxi-onderdrukkingen:
 
-![resultaatfragment 4](./media/tutorial-data-analyst/4.png)
+![resultaat fragment 4](./media/tutorial-data-analyst/4.png)
 
-De gegevens kunnen worden gevisualiseerd in Synapse Studio door over te schakelen van tabel naar grafiekweergave. U kiezen uit verschillende grafiektypen (gebied, balk, kolom, lijn, cirkel en spreiding). Laten we in dit geval het kolomdiagram uitzetten met kolom Categorie ingesteld op 'current_year':
+De gegevens kunnen worden gevisualiseerd in Synapse Studio door over te scha kelen van de tabel naar de grafiek weergave. U kunt kiezen uit verschillende grafiek typen (vlak, staaf, kolom, lijn, cirkel en sprei ding). In dit geval wordt de kolom diagram met de categorie kolom ingesteld op ' current_year ':
 
-![resultaatvisualisatie 5](./media/tutorial-data-analyst/5.png)
+![resultaat visualisatie 5](./media/tutorial-data-analyst/5.png)
 
-Uit deze visualisatie, een trend van een dalend aantal ritten over jaren kan duidelijk worden gezien, vermoedelijk te wijten aan een recente toegenomen populariteit van ride sharing bedrijven.
+Vanuit deze visualisatie kan een trend van een afnemend aantal onderdrukkingen in jaren duidelijk worden gezien als gevolg van een recente verhoogde populariteit van het delen van bedrijven.
 
 > [!NOTE]
-> Op het moment van schrijven van deze tutorial zijn de gegevens voor 2019 onvolledig, dus er is een enorme daling in een aantal ritten voor dat jaar.
+> Op het moment van het schrijven van deze zelf studie zijn de gegevens voor 2019 onvolledig, waardoor er een groot aantal onderdrukkingen is voor dat jaar.
 
-Laten we onze analyse vervolgens richten op één jaar, bijvoorbeeld 2016. Met de volgende query wordt het dagelijkse aantal ritten in dat jaar geretourneerd:
+We gaan nu onze analyse over één jaar richten, bijvoorbeeld 2016. De volgende query retourneert een dagelijks aantal onderdrukkingen gedurende dat jaar:
 
 ```sql
 SELECT
@@ -141,17 +141,17 @@ GROUP BY CAST([tpepPickupDateTime] AS DATE)
 ORDER BY 1 ASC
 ```
 
-Het volgende toont het resultaatfragment voor deze query:
+Hieronder ziet u het resultaat fragment voor deze query:
 
-![resultaatfragment 6](./media/tutorial-data-analyst/6.png)
+![resultaat fragment 6](./media/tutorial-data-analyst/6.png)
 
-Nogmaals, we kunnen eenvoudig gegevens visualiseren door kolomdiagram in kaart te brengen met kolom categorie "current_day" en Legenda (serie) kolom "rides_per_day".
+Ook hier kunnen we eenvoudig gegevens visualiseren door kolom diagram te tekenen met categorie kolom "current_day" en legenda (reeks) kolom "rides_per_day".
 
-![resultaatvisualisatie 7](./media/tutorial-data-analyst/7.png)
+![resultaat visualisatie 7](./media/tutorial-data-analyst/7.png)
 
-Uit de plot, kan worden waargenomen dat er een wekelijks patroon, met de piek van de zaterdag. Tijdens de zomermaanden zijn er minder taxiritten vanwege de vakantieperiode. Er zijn echter ook enkele significante dalingen in het aantal taxiritten zonder een duidelijk patroon wanneer en waarom ze zich voordoen.
+Vanuit het waarnemings punt kan worden geobserveerd dat er een wekelijks patroon is, met de piek van zaterdag. Tijdens de zomer maanden zijn er minder Taxis die worden gezien door de vakantie periode. Er zijn echter ook aanzienlijke dalingen in het aantal taxi-overschrijvingen zonder duidelijke patroon wanneer en waarom ze optreden.
 
-Vervolgens, laten we eens kijken of deze druppels zijn potentieel gecorreleerd met feestdagen door toetreding NYC taxiritten met de feestdagen dataset:
+Laten we eens kijken of die drup pels mogelijk met open bare feest dagen kunnen worden gecorreleerd door NYCe taxi-onderdrukkingen samen te voegen met de gegevensset van de open bare feest dagen:
 
 ```sql
 WITH taxi_rides AS
@@ -186,13 +186,13 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![resultaatvisualisatie 8](./media/tutorial-data-analyst/8.png)
+![resultaat visualisatie 8](./media/tutorial-data-analyst/8.png)
 
-Deze keer willen we het aantal taxiritten tijdens feestdagen benadrukken. Daarvoor kiezen we 'geen' voor categoriekolom en 'rides_per_day' en 'vakantie' als kolommen legenda (serie).
+Deze keer willen we het aantal taxi-overschrijvingen markeren tijdens open bare feest dagen. Hiervoor kiezen we "geen" voor categorie kolom en "rides_per_day" en "vakantie" als legenda kolommen (reeks).
 
-![resultaatvisualisatie 9](./media/tutorial-data-analyst/9.png)
+![resultaat visualisatie 9](./media/tutorial-data-analyst/9.png)
 
-Uit het perceel blijkt duidelijk dat tijdens feestdagen een aantal taxiritten lager is. Echter, er is nog steeds een onverklaarbare enorme daling op 23 januari. Laten we het weer in NYC op die dag controleren door de weergegevensset op te vragen:
+Vanuit het waarnemings punt kan het duidelijk worden gezien dat er tijdens open bare feest dagen een aantal van de verschillende Taxis wordt verlaagd. Er is echter nog steeds een onduidelijke, enorme daling op 23 januari. Laten we het weer in NYC op die dag controleren door de weers gegevensset te doorzoeken:
 
 ```sql
 SELECT
@@ -219,17 +219,17 @@ FROM
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![resultaatvisualisatie 10](./media/tutorial-data-analyst/10.png)
+![resultaat visualisatie 10](./media/tutorial-data-analyst/10.png)
 
-De resultaten van de query geven aan dat de daling van een aantal taxiritten te wijten was aan de:
+De resultaten van de query geven aan dat de verwijdering van een aantal taxi-overschrijvingen als gevolg van de volgende:
 
-- sneeuwstorm op die dag in NYC, want er was zware sneeuw (~ 30 cm)
-- het was koud (temperatuur onder nul graden Celsius)
-- en winderig (~ 10m/s)
+- Blizzard op die dag in NYC, omdat er sprake is van zware sneeuw (ongeveer 30 cm)
+- het was koud (de Tempe ratuur onder nul graden Celsius)
+- en wikkeling (~ 10 miljoen/s)
 
-Deze zelfstudie laat zien hoe gegevensanalist snel verkennende gegevensanalyse kan uitvoeren, eenvoudig verschillende gegevenssets kan combineren met SQL on-demand en de resultaten kan visualiseren met Azure Synapse Studio.
+In deze zelf studie hebt u geleerd hoe gegevens analist snel experimentele gegevens analyse kan uitvoeren, en kunt u eenvoudig verschillende gegevens sets combi neren met behulp van SQL op aanvraag en de resultaten visualiseren met behulp van Azure Synapse Studio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [On-demand Connect NAAR Power BI Desktop & rapportartikel maken](tutorial-connect-power-bi-desktop.md) om te leren hoe u SQL on-demand verbinden met Power BI Desktop en rapporten maken.
+Bekijk de [BIND SQL on-demand to Power BI Desktop & rapport artikel maken](tutorial-connect-power-bi-desktop.md) voor meer informatie over het verbinden van SQL op aanvraag met Power bi Desktop en het maken van rapporten.
  

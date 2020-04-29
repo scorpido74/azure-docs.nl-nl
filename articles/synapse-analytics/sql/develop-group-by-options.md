@@ -1,6 +1,6 @@
 ---
-title: Opties VOOR GROEP BY gebruiken in Synapse SQL
-description: Synapse SQL maakt het mogelijk om oplossingen te ontwikkelen door verschillende GROUP BY-opties te implementeren.
+title: GROUP BY-opties in Synapse SQL gebruiken
+description: Met Synapse SQL kunt u oplossingen ontwikkelen door verschillende opties voor groeperen op te implementeren.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429042"
 ---
-# <a name="group-by-options-in-synapse-sql"></a>GROEP BY-opties in Synapse SQL
-Synapse SQL maakt het mogelijk om oplossingen te ontwikkelen door verschillende GROUP BY-opties te implementeren. 
+# <a name="group-by-options-in-synapse-sql"></a>GROEPEREN op Opties in Synapse SQL
+Met Synapse SQL kunt u oplossingen ontwikkelen door verschillende opties voor groeperen op te implementeren. 
 
 ## <a name="what-does-group-by-do"></a>Wat doet GROUP BY
 
-De [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-component verzamelt gegevens tot een overzichtsset van rijen.
+Met de component [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL worden gegevens geaggregeerd naar een samen vatting van rijen.
 
-SQL on-demand ondersteunt het hele scala aan GROUP BY-opties. SQL-groep ondersteunt een beperkt aantal GROUP BY-opties.
+SQL on-demand ondersteunt het hele bereik met opties voor groeperen op. De SQL-pool ondersteunt een beperkt aantal opties voor groeperen op.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>GROEP BY-opties ondersteund in SQL-groep
+## <a name="group-by-options-supported-in-sql-pool"></a>Opties voor groeperen op die worden ondersteund in de SQL-groep
 
-GROUP BY heeft een aantal opties die SQL Pool niet ondersteunt. Deze opties hebben tijdelijke oplossingen, die als volgt zijn:
+GROEPEREN op heeft een aantal opties die niet worden ondersteund door SQL-groep. Deze opties hebben de volgende tijdelijke oplossingen:
 
-* GROEPEREN OP met ROLLUP
-* GROEPERINGSSETS
-* GROEP DOOR met KUBUS
+* GROEPEREN op met ROLLUP
+* GROEPEER SETS
+* GROEPEREN op met kubus
 
-### <a name="rollup-and-grouping-sets-options"></a>Opties voor rollup- en groeperingssets
+### <a name="rollup-and-grouping-sets-options"></a>Opties voor samen vouwen en groeperen van sets
 
-De eenvoudigste optie hier is om UNION ALL te gebruiken om de rollup uit te voeren in plaats van te vertrouwen op de expliciete syntaxis. Het resultaat is precies hetzelfde
+De eenvoudigste optie is om UNION ALL te gebruiken om de rollup uit te voeren in plaats van te vertrouwen op de expliciete syntaxis. Het resultaat is precies hetzelfde
 
-In het volgende voorbeeld wordt de instructie GROEP PER met de optie ROLLUP gebruikt:
+In het volgende voor beeld wordt de instructie GROUP BY gebruikt met de optie ROLLUP:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -54,13 +54,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Met behulp van ROLLUP worden in het voorgaande voorbeeld de volgende aggregaties gevraagd:
+Als u ROLLUP gebruikt, vraagt het vorige voor beeld de volgende aggregaties aan:
 
 * Land en regio
 * Land
 * Eindtotaal
 
-Als u ROLLUP wilt vervangen en dezelfde resultaten wilt retourneren, u UNION ALL gebruiken en de vereiste aggregaties expliciet opgeven:
+Als u het pakket wilt vervangen en dezelfde resultaten wilt retour neren, kunt u alle gebruiken en expliciet de vereiste aggregaties opgeven:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -87,13 +87,13 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Om GROUPING SETS te vervangen, is het voorbeeldprincipe van toepassing. U hoeft alleen ALLE SECTIES UNION te maken voor de aggregatieniveaus die u wilt zien.
+Als u GROEPERINGs SETS wilt vervangen, is het voorbeeld principe van toepassing. U hoeft alleen UNION alle secties te maken voor de aggregatie niveaus die u wilt zien.
 
-### <a name="cube-options"></a>Kubusopties
+### <a name="cube-options"></a>Kubus opties
 
-Het is mogelijk om een GROEP BY WITH CUBE te maken met behulp van de UNION ALL aanpak. Het probleem is dat de code snel omslachtig en onhandig kan worden. Om dit probleem te verhelpen, u deze meer geavanceerde aanpak gebruiken.
+Het is mogelijk om een GROUP BY WITH CUBE te maken met behulp van de methode UNION ALL. Het probleem is dat de code snel en lastig kan worden. Als u dit probleem wilt verhelpen, kunt u gebruikmaken van deze geavanceerdere benadering.
 
-De eerste stap is het definiëren van de 'kubus' die alle aggregatieniveaus definieert die we willen maken. Let op de CROSS JOIN van de twee afgeleide tabellen als het genereert alle niveaus. De rest van de code is er voor opmaak.
+De eerste stap is het definiëren van de ' kubus ' waarmee alle aggregatie niveaus worden gedefinieerd die u wilt maken. Let op de CROSS-koppeling van de twee afgeleide tabellen, aangezien alle niveaus worden gegenereerd. De rest van de code is daar voor de opmaak.
 
 ```sql
 CREATE TABLE #Cube
@@ -124,11 +124,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-In de volgende afbeelding worden de resultaten van [DE TABEL MAKEN ALS SELECT weergegeven:](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+In de volgende afbeelding ziet u de resultaten van [Create Table als selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest):
 
 ![Groeperen op kubus](./media/develop-group-by-options/develop-group-by-cube.png)
 
-De tweede stap is het opgeven van een doeltabel voor het opslaan van tussentijdse resultaten:
+De tweede stap is het opgeven van een doel tabel voor het opslaan van tussentijdse resultaten:
 
 ```sql
 DECLARE
@@ -151,7 +151,7 @@ WITH
 ;
 ```
 
-De derde stap is om lus over de kubus van kolommen het uitvoeren van de aggregatie. De query wordt één keer uitgevoerd voor elke rij in de #Cube tijdelijke tabel. De resultaten worden opgeslagen in de #Results temp tabel:
+De derde stap is door loop de kubus van kolommen die de aggregatie uitvoeren. De query wordt één keer uitgevoerd voor elke rij in de tijdelijke tabel van #Cube. De resultaten worden opgeslagen in de tijdelijke tabel #Results:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -175,7 +175,7 @@ BEGIN
 END
 ```
 
-Ten slotte u de resultaten retourneren door uit de #Results tijdelijke tabel te lezen:
+Ten slotte kunt u de resultaten retour neren door te lezen uit de tijdelijke tabel #Results:
 
 ```sql
 SELECT *
@@ -184,8 +184,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Door de code op te splitsen in secties en een lusconstructie te genereren, wordt de code beter beheersbaar en onderhoudbaar.
+Door de code in secties te splitsen en een lus-construct te genereren, wordt de code beter beheerbaar en onderhouden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](develop-overview.md)
+Zie [ontwikkelings overzicht](develop-overview.md)voor meer tips voor ontwikkel aars.

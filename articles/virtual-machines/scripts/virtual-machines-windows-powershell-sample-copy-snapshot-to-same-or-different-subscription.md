@@ -1,5 +1,5 @@
 ---
-title: Momentopname van een beheerde schijf kopiëren naar een abonnement - PowerShell-voorbeeld
+title: Een moment opname van een beheerde schijf kopiëren naar een abonnement-Power shell-voor beeld
 description: 'Azure PowerShell-voorbeeldscript: een momentopname van een beheerde schijf kopiëren (verplaatsen) naar hetzelfde of een ander abonnement'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,19 +14,19 @@ ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
 ms.openlocfilehash: d5f110d8cf3324fa02a5b2e2500f743c57b1d229
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452278"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Met PowerShell een momentopname van een beheerde schijf kopiëren naar hetzelfde of een ander abonnement
 
 Met dit script wordt een momentopname van een beheerde schijf gekopieerd naar hetzelfde of een ander abonnement. Gebruik dit script voor de volgende scenario's:
 
-1. Migreer een momentopname in Premium-opslag (Premium_LRS) naar Standaardopslag (Standard_LRS of Standard_ZRS) om uw kosten te verlagen.
-1. Migreer een momentopname van lokaal redundante opslag (Premium_LRS, Standard_LRS) naar zoneredundante opslag (Standard_ZRS) om te profiteren van de hogere betrouwbaarheid van ZRS-opslag.
-1. Een momentopname verplaatsen naar een ander abonnement in dezelfde regio voor een langere retentie.
+1. Migreer een moment opname in Premium Storage (Premium_LRS) naar de standaard opslag (Standard_LRS of Standard_ZRS) om uw kosten te verlagen.
+1. Migreer een moment opname van lokaal redundante opslag (Premium_LRS, Standard_LRS) naar zone redundante opslag (Standard_ZRS) om te profiteren van de hogere betrouw baarheid van ZRS-opslag.
+1. Een moment opname verplaatsen naar een ander abonnement in dezelfde regio voor een langere Bewaar periode.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 

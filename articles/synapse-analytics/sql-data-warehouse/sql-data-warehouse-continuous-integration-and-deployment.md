@@ -1,6 +1,6 @@
 ---
 title: Continue integratie en implementatie
-description: Database DevOps op enterprise-klasse ervaring voor gegevensopslag met ingebouwde ondersteuning voor continue integratie en implementatie met Azure Pipelines.
+description: Data Warehouse DevOps-ervaring op ondernemings niveau voor gegevens opslag met ingebouwde ondersteuning voor continue integratie en implementatie met behulp van Azure-pijp lijnen.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,55 +12,55 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416231"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continue integratie en implementatie voor data warehousing
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continue integratie en implementatie voor gegevens opslag
 
-Deze eenvoudige zelfstudie beschrijft hoe u uw SQL Server Data Tools (SSDT)-databaseproject integreren met Azure DevOps en Azure Pipelines gebruiken om continue integratie en implementatie in te stellen. Deze zelfstudie is de tweede stap in het bouwen van uw continue integratie- en implementatiepijplijn voor gegevensopslag.
+In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project (SQL Server Data Tools) integreert met Azure DevOps en Azure-pijp lijnen kunt gebruiken om doorlopende integratie en implementatie in te stellen. Deze zelf studie is de tweede stap bij het bouwen van uw continue integratie-en implementatie pijplijn voor gegevens opslag.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-- Ga door de [zelfstudie voor integratie van bronbeheer](sql-data-warehouse-source-control-integration.md)
+- Door loop de [zelf studie over de integratie van bron beheer](sql-data-warehouse-source-control-integration.md)
 
-- Azure DevOps instellen en verbinding maken met Azure DevOps
+- Azure DevOps instellen en er verbinding mee maken
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Continue integratie met Visual Studio build
 
-1. Navigeer naar Azure Pipelines en maak een nieuwe buildpijplijn.
+1. Navigeer naar Azure-pijp lijnen en maak een nieuwe build-pijp lijn.
 
-      ![Nieuwe pijplijn](./media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Nieuwe pijplijn")
+      ![Nieuwe pijp lijn](./media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Nieuwe pijplijn")
 
-2. Selecteer uw broncoderepository (Azure Repos Git) en selecteer de sjabloon .NET Desktop-app.
+2. Selecteer uw bron code opslagplaats (Azure opslag plaatsen Git) en selecteer de sjabloon .NET desktop-app.
 
-      ![Pijplijninstellingen](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Pijplijninstellingen")
+      ![Pijplijn instellen](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Pijplijn instellen")
 
-3. Bewerk uw YAML-bestand om de juiste pool van uw agent te gebruiken. Uw YAML-bestand moet er ongeveer zo uitzien:
+3. Bewerk uw YAML-bestand om de juiste pool van uw agent te gebruiken. Uw YAML-bestand moet er ongeveer als volgt uitzien:
 
       ![YAML](./media/sql-data-warehouse-continuous-integration-and-deployment/3-yaml-file.png "YAML")
 
-Op dit punt hebt u een eenvoudige omgeving waar elke check-in bij uw source control repository master branch automatisch een succesvolle Visual Studio build van uw databaseproject moet activeren. Valideren van de automatisering werkt end-to-end door een wijziging aan te brengen in uw lokale databaseproject en die wijziging in te checken in uw masterbranch.
+Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd vertakking van de opslag plaats van de bron beheer automatisch een succes volle Visual Studio-build van uw database project moet activeren. Controleer of de automatisering aan het einde van het project wordt uitgevoerd door een wijziging aan te brengen in uw lokale data base en de wijzigingen in uw hoofd vertakking in te scha kelen.
 
-## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Continue implementatie met de implementatietaak Azure SQL Data Warehouse (of Database)
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Doorlopende implementatie met de implementatie taak van Azure SQL Data Warehouse (of data base)
 
-1. Voeg een nieuwe taak toe met de [azure SQL Database-implementatietaak](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en vul de vereiste velden in om verbinding te maken met uw doelgegevensmagazijn. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd uit het vorige buildproces geïmplementeerd in het doelgegevensmagazijn. U ook de [implementatietaak azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)gebruiken.
+1. Voeg een nieuwe taak toe met behulp van de [implementatie taak Azure SQL database](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en vul de vereiste velden in om verbinding te maken met uw doel-Data Warehouse. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd op basis van het vorige bouw proces, geïmplementeerd naar het doel Data Warehouse. U kunt ook de [Azure SQL Data Warehouse implementatie taak](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)gebruiken.
 
-      ![Implementatietaak](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Implementatietaak")
+      ![Implementatie taak](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Implementatie taak")
 
-2. Als u een zelfgehoste agent gebruikt, moet u ervoor zorgen dat u uw omgevingsvariabele instelt om de juiste SqlPackage.exe voor SQL Data Warehouse te gebruiken. Het pad moet er ongeveer zo uitzien:
+2. Als u een zelf-hostende agent gebruikt, moet u ervoor zorgen dat u de omgevings variabele hebt ingesteld om de juiste SqlPackage. exe te gebruiken voor SQL Data Warehouse. Het pad moet er ongeveer als volgt uitzien:
 
-      ![Omgevingsvariabele](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Omgevingsvariabele")
+      ![Omgevings variabele](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Omgevings variabele")
 
-   C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150  
+   C:\Program Files (x86) \Microsoft Visual Studio\2019\Preview\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150  
 
-   Voer uw pijplijn uit en valideer deze. U lokaal wijzigingen aanbrengen en wijzigingen in uw bronbeheer inchecken die een automatische build en implementatie moeten genereren.
+   Voer de pijp lijn uit en valideer deze. U kunt lokaal wijzigingen aanbrengen en wijzigingen in uw broncode beheer inchecken, waardoor een automatische build en implementatie moet worden gegenereerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontdek de Synapse SQL-pool MPP-architectuur](massively-parallel-processing-mpp-architecture.md)
+- [Synapse SQL pool MPP-architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
 - Snel [een SQL-groep maken](create-data-warehouse-portal.md)
-- [Voorbeeldgegevens laden](load-data-from-azure-blob-storage-using-polybase.md)
-- [Video's verkennen](sql-data-warehouse-videos.md)
+- [Voorbeeld gegevens laden](load-data-from-azure-blob-storage-using-polybase.md)
+- [Video's](sql-data-warehouse-videos.md) verkennen

@@ -1,6 +1,6 @@
 ---
 title: Beveiligingsoverwegingen
-description: Beschrijft de basisbeveiligingsinfrastructuur die gegevensverplaatsingsservices in Azure Data Factory gebruiken om uw gegevens te beveiligen.
+description: Hierin wordt de basis beveiligings infrastructuur beschreven die services voor gegevens verplaatsing in Azure Data Factory gebruiken om uw gegevens te beveiligen.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -12,31 +12,31 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416474"
 ---
-#  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Beveiligingsoverwegingen voor gegevensverkeer in Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+#  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Beveiligings overwegingen voor het verplaatsen van gegevens in Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 >
 > * [Versie 1](v1/data-factory-data-movement-security-considerations.md)
 > * [Huidige versie](data-movement-security-considerations.md)
 
  [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In dit artikel wordt beschreven dat gegevensverkeerservices in Azure Data Factory gebruiken om uw gegevens te beveiligen. Data Factory-beheerbronnen zijn gebaseerd op azure-beveiligingsinfrastructuur en maken gebruik van alle mogelijke beveiligingsmaatregelen die Azure biedt.
+In dit artikel wordt een basis beveiligings infrastructuur beschreven die services voor gegevens verplaatsing in Azure Data Factory gebruiken om uw gegevens te beveiligen. Data Factory beheer bronnen zijn gebaseerd op de Azure-beveiligings infrastructuur en gebruiken alle mogelijke beveiligings maatregelen die door Azure worden geboden.
 
-In een Data Factory-oplossing maakt u een of meer gegevens[pijplijnen](concepts-pipelines-activities.md). Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. Deze pijplijnen bevinden zich in de regio waar de gegevensfabriek is gemaakt. 
+In een Data Factory-oplossing maakt u een of meer gegevens[pijplijnen](concepts-pipelines-activities.md). Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. Deze pijp lijnen bevinden zich in de regio waar de data factory is gemaakt. 
 
-Hoewel Data Factory slechts in weinig regio's beschikbaar is, is de service voor gegevensverkeer [wereldwijd beschikbaar](concepts-integration-runtime.md#integration-runtime-location) om naleving van gegevens, efficiëntie en lagere netwerkkosten te garanderen. 
+Hoewel Data Factory in slechts enkele regio's beschikbaar is, is de service voor gegevens verplaatsing [wereld wijd beschikbaar](concepts-integration-runtime.md#integration-runtime-location) om te zorgen voor de naleving van de gegevens, de efficiëntie en de verminderde kosten voor het netwerk verkeer. 
 
-Azure Data Factory slaat geen gegevens op, behalve gekoppelde servicereferenties voor cloudgegevensarchieven, die worden versleuteld met behulp van certificaten. Met Data Factory maakt u gegevensgestuurde werkstromen om gegevensverkeer tussen [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)en verwerking van gegevens te orkestreren met behulp van [compute services](compute-linked-services.md) in andere regio's of in een on-premises omgeving. U ook werkstromen bewaken en beheren met behulp van SDK's en Azure Monitor.
+Azure Data Factory slaat geen gegevens op, behalve voor gekoppelde service referenties voor gegevens archieven in de Cloud, die zijn versleuteld met behulp van certificaten. Met Data Factory kunt u gegevensgestuurde werk stromen maken om de verplaatsing van gegevens te organiseren tussen [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)en gegevens verwerking met behulp van [Compute Services](compute-linked-services.md) in andere regio's of in een on-premises omgeving. U kunt werk stromen ook controleren en beheren met behulp van Sdk's en Azure Monitor.
 
 Data Factory is gecertificeerd voor:
 
-| **[CSA STAR-certificering](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
+| **[CSA ster certificering](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
 | **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
@@ -47,81 +47,81 @@ Data Factory is gecertificeerd voor:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Als u geïnteresseerd bent in Azure-naleving en hoe Azure de eigen infrastructuur beveiligt, gaat u naar het [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Voor de laatste lijst met alle https://aka.ms/AzureComplianceAzure Compliance-aanbiedingen check - .
+Ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/en-us/trustcenter/default.aspx)als u geïnteresseerd bent in de naleving van Azure en hoe Azure een eigen infra structuur beveiligt. Voor de meest recente lijst met alle Azure compliance- https://aka.ms/AzureComplianceaanbiedingen controleren.
 
-In dit artikel bekijken we beveiligingsoverwegingen in de volgende twee scenario's voor gegevensverplaatsing: 
+In dit artikel worden beveiligings overwegingen in de volgende twee scenario's voor het verplaatsen van gegevens besproken: 
 
-- **Cloudscenario:** In dit scenario zijn zowel uw bron als uw bestemming openbaar toegankelijk via internet. Deze omvatten beheerde cloudopslagservices zoals Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Salesforce en webprotocollen zoals FTP en OData. Zoek een volledige lijst met ondersteunde gegevensbronnen in [ondersteunde gegevensarchieven en -indelingen.](copy-activity-overview.md#supported-data-stores-and-formats)
-- **Hybride scenario:** In dit scenario bevindt uw bron of uw bestemming zich achter een firewall of in een on-premises bedrijfsnetwerk. Of het gegevensarchief bevindt zich in een privénetwerk of virtueel netwerk (meestal de bron) en is niet openbaar toegankelijk. Databaseservers die op virtuele machines worden gehost, vallen ook onder dit scenario.
+- **Cloud scenario**: in dit scenario zijn zowel uw bron als uw bestemming openbaar toegankelijk via internet. Dit zijn onder andere beheerde services voor Cloud opslag, zoals Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-services zoals Sales Force, en webprotocols zoals FTP en OData. Een volledige lijst met ondersteunde gegevens bronnen vindt u in [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Hybride scenario**: in dit scenario bevindt uw bron of uw bestemming zich achter een firewall of binnen een on-premises bedrijfs netwerk. Of het gegevens archief bevindt zich in een particulier netwerk of virtueel netwerk (meestal de bron) en is niet openbaar toegankelijk. Database servers die worden gehost op virtuele machines vallen ook onder dit scenario.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="cloud-scenarios"></a>Cloudscenario's
+## <a name="cloud-scenarios"></a>Cloud scenario's
 
-### <a name="securing-data-store-credentials"></a>Referenties voor gegevensopslag beveiligen
+### <a name="securing-data-store-credentials"></a>Referenties voor gegevens opslag beveiligen
 
-- **Versleutelde referenties opslaan in een beheerde azure datafactory.** Data Factory helpt bij het beschermen van uw gegevensarchiefreferenties door ze te versleutelen met certificaten die door Microsoft worden beheerd. Deze certificaten worden om de twee jaar geroteerd (inclusief certificaatverlenging en de migratie van referenties). Zie [Azure Storage-beveiligingsoverzicht](../security/fundamentals/storage-overview.md)voor meer informatie over azure storage-beveiliging.
-- **Referenties opslaan in Azure Key Vault**. U de referenties van het gegevensarchief ook opslaan in [Azure Key Vault.](https://azure.microsoft.com/services/key-vault/) Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [Store-referenties in Azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
+- **Versleutelde referenties opslaan in een door Azure Data Factory beheerde opslag**. Data Factory helpt u bij het beveiligen van uw referenties voor gegevens archieven door ze te versleutelen met certificaten die worden beheerd door micro soft. Deze certificaten worden elke twee jaar geroteerd (inclusief het vernieuwen van certificaten en de migratie van referenties). Zie [Azure Storage Security Overview](../security/fundamentals/storage-overview.md)(Engelstalig) voor meer informatie over Azure Storage beveiliging.
+- **Referenties opslaan in azure Key Vault**. U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
 
-### <a name="data-encryption-in-transit"></a>Gegevensversleuteling tijdens het transport
-Als de clouddatastore HTTPS of TLS ondersteunt, zijn alle gegevensoverdrachten tussen gegevensverplaatsingsservices in Data Factory en een clouddatawinkel via veilig kanaal HTTPS of TLS.
-
-> [!NOTE]
-> Alle verbindingen met Azure SQL Database en Azure SQL Data Warehouse vereisen versleuteling (SSL/TLS) terwijl gegevens onderweg zijn van en naar de database. Wanneer u een pijplijn maakt met JSON, voegt u de eigenschap versleuteling toe en stelt u deze in op **true** in de verbindingstekenreeks. Voor Azure Storage u **HTTPS** gebruiken in de verbindingstekenreeks.
+### <a name="data-encryption-in-transit"></a>Gegevens versleuteling tijdens overdracht
+Als de gegevens opslag in de Cloud HTTPS of TLS ondersteunt, worden alle gegevens overdrachten tussen services voor gegevens verplaatsing in Data Factory en een gegevens archief in de Cloud via Secure Channel HTTPS of TLS.
 
 > [!NOTE]
-> Als u versleuteling tijdens het transport wilt inschakelen terwijl gegevens van Oracle worden verplaatst, volgt u een van de onderstaande opties:
-> 1. Ga in oracle-server naar Oracle Advanced Security (OAS) en configureer de versleutelingsinstellingen, die Triple-DES Encryption (3DES) en Advanced Encryption Standard (AES) ondersteunen, raadpleeg [hier](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) voor meer informatie. ADF onderhandelt automatisch over de versleutelingsmethode om de codering smeu te gebruiken die u in OAS configureert bij het tot stand brengen van een verbinding met Oracle.
-> 2. In ADF u EncryptionMethod=1 toevoegen aan de verbindingstekenreeks (in de gekoppelde service). Dit gebruikt SSL/TLS als versleutelingsmethode. Om dit te gebruiken, moet u niet-SSL-versleutelingsinstellingen uitschakelen in OAS aan de kant van de Oracle-server om versleutelingsconflicten te voorkomen.
+> Alle verbindingen met Azure SQL Database en Azure SQL Data Warehouse vereisen versleuteling (SSL/TLS) terwijl gegevens onderweg naar en van de Data Base worden verzonden. Wanneer u een pijp lijn ontwerpt met behulp van JSON, voegt u de eigenschap Encryption toe en stelt u deze in op **True** in de Connection String. Voor Azure Storage kunt u **https** gebruiken in de Connection String.
 
 > [!NOTE]
-> TLS-versie gebruikt is 1.2.
+> Volg een van de onderstaande opties om versleuteling in transit in te scha kelen terwijl u gegevens van Oracle verplaatst:
+> 1. In Oracle server gaat u naar Oracle Advanced Security (OAS) en configureert u de versleutelings instellingen, die ondersteuning biedt voor Triple-DES Encryption (3DES) en Advanced Encryption Standard (AES). Raadpleeg [hier](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) voor meer informatie. ADF onderhandelt automatisch over de versleutelings methode voor het gebruik van het account dat u configureert in OAS bij het tot stand brengen van de verbinding met Oracle.
+> 2. In ADF kunt u EncryptionMethod = 1 toevoegen in de connection string (in de gekoppelde service). Dit maakt gebruik van SSL/TLS als versleutelings methode. Als u dit wilt gebruiken, moet u niet-SSL-versleutelings instellingen uitschakelen in OAS op de Oracle-server zijde om te voor komen dat er versleuteling wordt veroorzaakt.
+
+> [!NOTE]
+> Gebruikte TLS-versie is 1,2.
 
 ### <a name="data-encryption-at-rest"></a>Versleuteling van inactieve gegevens
-Sommige gegevensopslag ondersteunen versleuteling van gegevens in rust. We raden u aan het gegevensversleutelingsmechanisme voor die gegevensopslag in te schakelen. 
+Sommige gegevens archieven ondersteunen de versleuteling van gegevens in rust. Het is raadzaam om het mechanisme voor gegevens versleuteling in te scha kelen voor deze gegevens archieven. 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparent Data Encryption (TDE) in Azure SQL Data Warehouse helpt beschermen tegen de dreiging van schadelijke activiteiten door het uitvoeren van real-time encryptie en decryptie van uw gegevens in rust. Dit gedrag is transparant voor de klant. Zie [Een database beveiligen in SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
+Met Transparent Data Encryption (TDE) in Azure SQL Data Warehouse kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van uw gegevens in rust uit te voeren. Dit gedrag is transparant voor de client. Zie [een Data Base beveiligen in SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)voor meer informatie.
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL Database ondersteunt ook transparante gegevensversleuteling (TDE), die helpt beschermen tegen de dreiging van schadelijke activiteiten door het uitvoeren van real-time encryptie en decryptie van de gegevens, zonder dat wijzigingen in de toepassing. Dit gedrag is transparant voor de klant. Zie [Transparante gegevensversleuteling voor SQL Database en Data Warehouse voor](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)meer informatie.
+Azure SQL Database biedt ook ondersteuning voor transparent Data Encryption (TDE), dat bescherming biedt tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van de gegevens uit te voeren, zonder dat de toepassing hoeft te worden gewijzigd. Dit gedrag is transparant voor de client. Zie [transparent Data Encryption for SQL database en Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie.
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Azure Data Lake Store biedt ook versleuteling voor gegevens die in het account zijn opgeslagen. Wanneer gegevens lake store is ingeschakeld, versleutelt het automatisch gegevens voordat ze blijven bestaan en worden gedecodeerd voordat deze worden opgehaald, waardoor deze transparant zijn voor de client die toegang heeft tot de gegevens. Zie [Beveiliging in Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md)voor meer informatie. 
+Azure Data Lake Store biedt ook versleuteling voor gegevens die zijn opgeslagen in het account. Als deze functie Data Lake Store is ingeschakeld, worden gegevens automatisch versleuteld voordat ze worden opgehaald en ontsleuteld voordat ze worden opgezocht, waardoor deze transparant worden voor de client die toegang heeft tot de gegevens. Zie [beveiliging in azure data Lake Store](../data-lake-store/data-lake-store-security-overview.md)voor meer informatie. 
 
-#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob-opslag en Azure Table-opslag
-Azure Blob-opslag en Azure Table Storage Storage Service Encryption (SSE), die uw gegevens automatisch versleutelt voordat deze worden opgeslagen en gedecodeerd voordat u deze ophaalt. Zie [Azure Storage Service Encryption for Data at Rest voor](../storage/common/storage-service-encryption.md)meer informatie.
+#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob-opslag en Azure-tabel opslag
+Azure Blob-opslag en Azure Table Storage ondersteunen Storage Service Encryption (SSE), waarmee uw gegevens automatisch worden versleuteld voordat ze worden opgeslagen en ontsleuteld voordat ze worden opgehaald. Zie [Azure Storage-service versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie.
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 ondersteunt zowel client- als serverversleuteling van gegevens in rust. Zie [Gegevens beveiligen met versleuteling voor](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)meer informatie.
+Amazon S3 ondersteunt zowel client-als server versleuteling van gegevens in rust. Zie [gegevens beveiligen met versleuteling](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)voor meer informatie.
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift ondersteunt clusterversleuteling voor gegevens in rust. Zie [Amazon Redshift Database Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)voor meer informatie . 
+Amazon Redshift ondersteunt cluster versleuteling voor Data-at-rest. Zie [Amazon Redshift data base Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)(Engelstalig) voor meer informatie. 
 
 #### <a name="salesforce"></a>SalesForce
-Salesforce ondersteunt Shield Platform Encryption waarmee versleuteling van alle bestanden, bijlagen en aangepaste velden mogelijk is. Zie [De Verificatiestroom van de webserver oauth begrijpen](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)voor meer informatie.  
+Sales Force ondersteunt afschermings platform versleuteling waarmee alle bestanden, bijlagen en aangepaste velden kunnen worden versleuteld. Zie [Wat is de web server OAuth-verificatie stroom](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)? voor meer informatie.  
 
 ## <a name="hybrid-scenarios"></a>Hybride scenario's
-Hybride scenario's vereisen dat zelf gehoste runtime voor integratie wordt geïnstalleerd in een on-premises netwerk, in een virtueel netwerk (Azure) of in een virtuele privécloud (Amazon). De self-hosted integratie runtime moet toegang hebben tot de lokale datastores. Zie [Runtime voor zelfgehoste](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)integratie maken en configureren voor meer informatie over runtime voor zelfgehoste integratie. 
+Hybride scenario's vereisen een zelf-hostende Integration runtime voor installatie in een on-premises netwerk, binnen een virtueel netwerk (Azure) of binnen een virtuele privécloud (Amazon). De zelf-hostende Integration runtime moet toegang hebben tot de lokale gegevens archieven. Zie [zelf-hostende Integration runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)voor meer informatie over zelf-hostende Integration runtime. 
 
-![self-hosted integration runtime-kanalen](media/data-movement-security-considerations/data-management-gateway-channels.png)
+![zelf-hostende Integration runtime-kanalen](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
-Het commandokanaal maakt communicatie mogelijk tussen databewegingsservices in Data Factory en zelfgehoste inloop van integratie. De mededeling bevat informatie met betrekking tot de activiteit. Het datakanaal wordt gebruikt voor het overbrengen van gegevens tussen on-premises datastores en clouddatastores.    
+Het opdracht kanaal staat communicatie toe tussen services voor gegevens verplaatsing in Data Factory en zelf-hostende Integration runtime. De communicatie bevat informatie met betrekking tot de activiteit. Het gegevens kanaal wordt gebruikt voor het overbrengen van gegevens tussen on-premises gegevens archieven en gegevens archieven in de Cloud.    
 
-### <a name="on-premises-data-store-credentials"></a>On-premises gegevensarchiefreferenties
-De referenties kunnen worden opgeslagen in de gegevensfabriek of worden [verwezen door gegevensfabriek](store-credentials-in-key-vault.md) tijdens de runtime van Azure Key Vault. Als referenties worden opgeslagen in de gegevensfabriek, wordt deze altijd versleuteld opgeslagen op de zelfgehoste runtime voor integratie. 
+### <a name="on-premises-data-store-credentials"></a>Referenties voor het on-premises gegevens archief
+De referenties kunnen worden opgeslagen in data factory of worden [verwezen door Data Factory](store-credentials-in-key-vault.md) tijdens de runtime van Azure Key Vault. Als referenties worden opgeslagen in data factory, wordt deze altijd versleuteld opgeslagen op de zelf-hostende Integration runtime. 
  
-- **Referenties lokaal opslaan**. Als u de **cmdlet Set-AzDataFactoryV2LinkedService** met de verbindingstekenreeksen en referenties inline in de JSON direct gebruikt, wordt de gekoppelde service versleuteld en opgeslagen op zelfgehoste runtime voor integratie.  In dit geval stromen de referenties door azure backend service, die uiterst veilig is, naar de zelf gehoste integratiemachine waar deze uiteindelijk wordt versleuteld en opgeslagen. De self-hosted integratieruntime maakt gebruik van Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentiegegevens te versleutelen.
+- **Referenties lokaal opslaan**. Als u de cmdlet **set-AzDataFactoryV2LinkedService** rechtstreeks gebruikt met de verbindings reeksen en de inline referenties in de JSON, wordt de gekoppelde service versleuteld en opgeslagen in de zelf-hostende Integration runtime.  In dit geval worden de referenties via de Azure-back-end-service, die zeer veilig is, verzonden naar de zelf-hostende integratie computer waar deze uiteindelijk wordt versleuteld en opgeslagen. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen.
 
-- **Referenties opslaan in Azure Key Vault**. U de referenties van het gegevensarchief ook opslaan in [Azure Key Vault.](https://azure.microsoft.com/services/key-vault/) Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [Store-referenties in Azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
+- **Referenties opslaan in azure Key Vault**. U kunt de referentie van het gegevens archief ook opslaan in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory haalt de referentie op tijdens het uitvoeren van een activiteit. Zie [referentie opslaan in azure Key Vault](store-credentials-in-key-vault.md)voor meer informatie.
 
-- **Sla referenties lokaal op zonder de referenties via Azure backend te laten stromen naar de zelf gehoste runtime voor integratie.** Als u referenties lokaal wilt versleutelen en opslaan op de runtime voor zelfgehoste integratie zonder dat u de referenties door de backend van de gegevensfabriek hoeft te leiden, volgt u de stappen in [Referenties versleutelen voor on-premises gegevensopslag in Azure Data Factory.](encrypt-credentials-self-hosted-integration-runtime.md) Alle connectors ondersteunen deze optie. De self-hosted integratieruntime maakt gebruik van Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentiegegevens te versleutelen. 
+- **Sla lokaal referenties op zonder de referenties via de Azure-back-end over te brengen naar de zelf-hostende Integration runtime**. Als u lokaal referenties wilt versleutelen en opslaan op de zelf-hostende Integration runtime zonder de referenties via data factory back-end te hoeven door lopen, volgt u de stappen in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Alle connectors ondersteunen deze optie. De zelf-hostende Integration runtime gebruikt Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) om de gevoelige gegevens en referentie gegevens te versleutelen. 
 
-   Gebruik de cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** om gekoppelde servicereferenties en gevoelige gegevens in de gekoppelde service te versleutelen. U vervolgens de JSON-geretourneerde gegevens gebruiken (met het element **EncryptedCredential** in de verbindingstekenreeks) om een gekoppelde service te maken met behulp van de cmdlet **Set-AzDataFactoryV2LinkedService.**  
+   Gebruik de cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** om de gekoppelde service referenties en gevoelige gegevens in de gekoppelde service te versleutelen. U kunt vervolgens de JSON die wordt geretourneerd (met het element **EncryptedCredential** in de Connection String) gebruiken om een gekoppelde service te maken met behulp van de cmdlet **set-AzDataFactoryV2LinkedService** .  
 
 
-#### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Poorten die worden gebruikt bij het versleutelen van gekoppelde service op zelf gehoste runtime voor integratie
-PowerShell gebruikt standaard poort 8060 op de machine met zelf gehoste runtime voor integratie voor veilige communicatie. Indien nodig kan deze poort worden gewijzigd.  
+#### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Poorten die worden gebruikt bij het versleutelen van de gekoppelde service op zelf-hostende Integration runtime
+Power Shell maakt standaard gebruik van poort 8060 op de computer met zelf-hostende Integration runtime voor beveiligde communicatie. Deze poort kan, indien nodig, worden gewijzigd.  
 
 ![HTTPS-poort voor de gateway](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -129,21 +129,21 @@ PowerShell gebruikt standaard poort 8060 op de machine met zelf gehoste runtime 
 
 
 ### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
-Alle gegevensoverdrachten zijn via secure channel HTTPS en TLS via TCP om man-in-the-middle-aanvallen te voorkomen tijdens de communicatie met Azure-services.
+Alle gegevens overdrachten zijn via Secure Channel HTTPS en TLS via TCP om te voor komen dat man-in-the-middle-aanvallen optreden tijdens de communicatie met Azure-Services.
 
-U [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Azure ExpressRoute](../expressroute/expressroute-introduction.md) ook gebruiken om het communicatiekanaal tussen uw on-premises netwerk en Azure verder te beveiligen.
+U kunt ook [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Azure ExpressRoute](../expressroute/expressroute-introduction.md) gebruiken om het communicatie kanaal te beveiligen tussen uw on-premises netwerk en Azure.
 
-Azure Virtual Network is een logische weergave van uw netwerk in de cloud. U een on-premises netwerk verbinden met uw virtuele netwerk door IPSec VPN (site-to-site) of ExpressRoute (private peering) in te stellen.    
+Azure Virtual Network is een logische weer gave van uw netwerk in de Cloud. U kunt een on-premises netwerk verbinden met uw virtuele netwerk door IPSec VPN (site-naar-site) of ExpressRoute (privé-peering) in te stellen.    
 
-In de volgende tabel worden de aanbevelingen voor runtime-configuratie van netwerk en zelf gehoste integratie samengevat op basis van verschillende combinaties van bron- en bestemmingslocaties voor hybride gegevensverkeer.
+De volgende tabel bevat een overzicht van de aanbevelingen voor het netwerk en zelf-hostende Integration runtime-configuratie op basis van verschillende combi Naties van bron-en doel locaties voor het verplaatsen van hybride gegevens.
 
 | Bron      | Doel                              | Netwerkconfiguratie                    | Installatie van integratieruntime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| On-premises | Virtuele machines en cloudservices geïmplementeerd in virtuele netwerken | IPSec VPN (point-to-site of site-to-site) | De self-hosted integration runtime moet worden geïnstalleerd op een virtuele Azure-machine in het virtuele netwerk.  |
-| On-premises | Virtuele machines en cloudservices geïmplementeerd in virtuele netwerken | ExpressRoute (privé-peering)           | De self-hosted integration runtime moet worden geïnstalleerd op een virtuele Azure-machine in het virtuele netwerk.  |
-| On-premises | Azure-services met een openbaar eindpunt | ExpressRoute (Microsoft-peering)            | De self-hosted integration runtime kan on-premises of op een Virtuele Azure-machine worden geïnstalleerd. |
+| On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | IPSec VPN (punt-naar-site of site-naar-site) | De zelf-hostende Integration runtime moet worden geïnstalleerd op een virtuele machine van Azure in het virtuele netwerk.  |
+| On-premises | Virtuele machines en Cloud Services die zijn geïmplementeerd in virtuele netwerken | ExpressRoute (persoonlijke peering)           | De zelf-hostende Integration runtime moet worden geïnstalleerd op een virtuele machine van Azure in het virtuele netwerk.  |
+| On-premises | Services op basis van Azure met een openbaar eind punt | ExpressRoute (micro soft-peering)            | De zelf-hostende Integration runtime kan on-premises of op een virtuele machine van Azure worden geïnstalleerd. |
 
-De volgende afbeeldingen tonen het gebruik van zelf gehoste invoerruntime voor het verplaatsen van gegevens tussen een on-premises database en Azure-services met behulp van ExpressRoute en IPSec VPN (met Azure Virtual Network):
+De volgende installatie kopieën tonen het gebruik van zelf-hostende Integration runtime voor het verplaatsen van gegevens tussen een on-premises data base en Azure-Services met behulp van ExpressRoute en IPSec VPN (met Azure Virtual Network):
 
 **ExpressRoute**
 
@@ -153,49 +153,49 @@ De volgende afbeeldingen tonen het gebruik van zelf gehoste invoerruntime voor h
 
 ![IPSec VPN met gateway](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Firewallconfiguraties en het instellen van lijstvoor IP-adressen toestaan
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Firewall configuraties en lijst met toegestane instellingen voor IP-adressen
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallvereisten voor on-premises/privénetwerk    
-In een onderneming draait een bedrijfsfirewall op de centrale router van de organisatie. Windows Firewall draait als een daemon op de lokale machine waarin de zelf gehoste integratie runtime is geïnstalleerd. 
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewall vereisten voor on-premises/particulier netwerk    
+In een onderneming wordt een bedrijfs firewall uitgevoerd op de centrale router van de organisatie. Windows Firewall wordt uitgevoerd als een daemon op de lokale computer waarop de zelf-hostende Integration runtime is geïnstalleerd. 
 
-In de volgende tabel vindt u uitgaande poort- en domeinvereisten voor bedrijfsfirewalls:
+De volgende tabel bevat uitgaande poort-en domein vereisten voor zakelijke firewalls:
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Mogelijk moet u poorten beheren of lijst toestaan instellen voor domeinen op bedrijfsfirewallniveau, zoals vereist door de desbetreffende gegevensbronnen. In deze tabel worden alleen Azure SQL Database, Azure SQL Data Warehouse en Azure Data Lake Store als voorbeelden gebruikt.   
+> Mogelijk moet u poorten beheren of lijst met toegestane apps instellen voor domeinen op het niveau van de bedrijfs firewall, zoals vereist is door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure SQL Data Warehouse en Azure Data Lake Store als voor beeld gebruikt.   
 
-In de volgende tabel worden inkomende poortvereisten voor Windows Firewall aangemaakt:
+De volgende tabel bevat de binnenkomende poort vereisten voor Windows Firewall:
 
 | Poorten voor inkomend verkeer | Beschrijving                              |
 | ------------- | ---------------------------------------- |
-| 8060 (TCP)    | Vereist door de PowerShell-versleutelingscmdlet zoals beschreven in [Versleutelingsreferenties voor on-premises gegevensopslag in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)en door de toepassing credential manager om veilig referenties in te stellen voor on-premises gegevensopslag op de zelf gehoste runtime voor integratie. |
+| 8060 (TCP)    | Vereist door de Power shell-versleutelings-cmdlet, zoals beschreven in [referenties versleutelen voor on-premises gegevens archieven in azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md), en door de toepassing voor referentie beheer om veilig referenties in te stellen voor on-premises gegevens archieven op de zelf-hostende Integration runtime. |
 
-![Vereisten voor gatewaypoorten](media/data-movement-security-considerations/gateway-port-requirements.png) 
+![Gateway poort vereisten](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>IP-configuraties en lijst instellen in gegevensarchieven toestaan
-Sommige gegevensopslag in de cloud vereisen ook dat u het IP-adres van de machine toegang tot de winkel toestaat. Zorg ervoor dat het IP-adres van de zelf gehoste runtime-machine voor integratie op de juiste manier is toegestaan of geconfigureerd in de firewall.
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>IP-configuraties en lijst met toegestane instellingen in gegevens archieven
+Voor sommige gegevens archieven in de Cloud moet u ook het IP-adres van de computer toestaan die toegang heeft tot de Store. Zorg ervoor dat het IP-adres van de zelf-hostende Integration runtime-machine op de juiste wijze is toegestaan of geconfigureerd in de firewall.
 
-De volgende cloudgegevensarchieven vereisen dat u het IP-adres van de zelf gehoste runtime-machine voor integratie toestaat. Voor sommige van deze gegevensarchieven is standaard geen lijst met toegestane gegevens vereist. 
+Voor de volgende gegevens archieven in de Cloud moet u het IP-adres van de zelf-hostende Integration runtime-computer toestaan. Sommige van deze gegevens archieven hebben standaard mogelijk geen Allow-lijst. 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
-- [Azure SQL-gegevensmagazijn](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**Kan de self-hosted integratieruntime worden gedeeld in verschillende datafabrieken?**
+**Kan de zelf-hostende Integration runtime worden gedeeld tussen verschillende gegevens fabrieken?**
 
 Ja. [Hier](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/) vindt u meer informatie.
 
-**Wat zijn de poortvereisten voor de zelfgehoste runtime voor integratie om te werken?**
+**Wat zijn de poort vereisten voor de zelf-hostende Integration runtime om te werken?**
 
-De self-hosted integratie runtime maakt HTTP-gebaseerde verbindingen om toegang te krijgen tot het internet. De uitgaande poorten 443 moeten worden geopend voor de zelf gehoste runtime voor integratie om deze verbinding te maken. Open binnenkomende poort 8060 alleen op machineniveau (niet op bedrijfsfirewallniveau) voor de toepassing van credential manager. Als Azure SQL Database of Azure SQL Data Warehouse wordt gebruikt als bron of bestemming, moet u poort 1433 ook openen. Zie voor meer informatie de [firewallconfiguraties en sta lijstinstellingen voor ip-adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) toe. 
+De zelf-hostende Integration runtime maakt op HTTP gebaseerde verbindingen voor toegang tot het internet. De uitgaande poorten 443 moeten worden geopend voor de zelf-hostende Integration runtime om deze verbinding te maken. Open de binnenkomende poort 8060 alleen op computer niveau (niet het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure SQL Data Warehouse als de bron of de bestemming wordt gebruikt, moet u ook poort 1433 openen. Zie de sectie [firewall configuraties en het instellen van de lijst met toegestane IP-adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) voor meer informatie. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Prestatie- en stemhandleiding voor activiteit kopiëren](copy-activity-performance.md)kopiëren voor informatie over de prestaties van Azure Data Factory Copy Activity.
+Zie voor meer informatie over het Azure Data Factory de prestaties van de Kopieer activiteit [Kopieer activiteit prestaties en afstemmings handleiding](copy-activity-performance.md).
 
  

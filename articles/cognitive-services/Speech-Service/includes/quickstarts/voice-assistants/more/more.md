@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: b84db9eee473b14f2ba078ed1be77f6165a5f3b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81421856"
 ---
-## <a name="additional-language-and-platform-support"></a>Aanvullende taal- en platformondersteuning
+## <a name="additional-language-and-platform-support"></a>Aanvullende taal-en platform ondersteuning
 
-Als u op dit tabblad hebt geklikt, hebt u waarschijnlijk geen snelle start in uw favoriete programmeertaal gezien. Maak je geen zorgen, we hebben extra quickstart materialen en code samples beschikbaar op GitHub. Gebruik de tabel om het juiste voorbeeld te vinden voor uw programmeertaal en platform/OS-combinatie.
+Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in uw favoriete programmeer taal. Geen zorgen: er zijn extra Quick Start-materialen en code voorbeelden beschikbaar op GitHub. Gebruik de tabel om het juiste voor beeld te vinden voor uw programmeer taal en combi natie van platform/OS.
 
 | Taal    | Codevoorbeelden                                                                                   |
 |-------------|------------------------------------------------------------------------------------------------|
-| C#          | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Eenheid][unity], [Xamarin][xamarin] |
+| C#          | [.NET Framework][dotnet], [.net core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++         | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac]                                   |
-| Java        | [Android][java-android], [JRE][java-jre]                                                       |
-| Javascript  | [Browser, Node.js][js-code]                                                                    |
-| Objective-C | [iOS][obj-iOS], [macOS][obj-macOS]                                                             |
+| Java        | [Android][java-android], [jre][java-jre]                                                       |
+| Javascript  | [Browser, node. js][js-code]                                                                    |
+| Objective-C | [IOS][obj-iOS], [macOS][obj-macOS]                                                             |
 | Python      | [Windows, Linux, macOS][python]                                                                |
-| Swift       | [iOS][swift-iOS], [macOS][swift-macOS]                                                         |
+| Swift       | [IOS][swift-iOS], [macOS][swift-macOS]                                                         |
 
 [dotnet]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet
 [netcore]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnetcore

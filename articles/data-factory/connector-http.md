@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit een HTTP-bron kopiëren met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens uit een cloud of on-premises HTTP-bron naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van een HTTP-bron met behulp van Azure Data Factory
+description: Informatie over het kopiëren van gegevens uit een Cloud of een on-premises HTTP-bron naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416946"
 ---
-# <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Gegevens uit een HTTP-eindpunt kopiëren met Azure Data Factory
+# <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een HTTP-eind punt met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-http-connector.md)
 > * [Huidige versie](connector-http.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van een HTTP-eindpunt te kopiëren. Het artikel bouwt voort op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), dat een algemeen overzicht van Kopieeractiviteit weergeeft.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een HTTP-eind punt te kopiëren. Het artikel bouwt voort op de [Kopieer activiteit in azure Data Factory](copy-activity-overview.md), waarin een algemeen overzicht van de Kopieer activiteit wordt weer gegeven.
 
-Het verschil tussen deze HTTP-connector, de [REST-connector](connector-rest.md) en de [webtafelconnector](connector-web-table.md) zijn:
+Het verschil tussen deze HTTP-connector, de [rest-connector](connector-rest.md) en de [Web Table-connector](connector-web-table.md) zijn:
 
-- **REST-connector** ondersteunt specifiek het kopiëren van gegevens van RESTful API's; 
-- **HTTP-connector** is algemeen om gegevens op te halen uit elk HTTP-eindpunt, bijvoorbeeld om bestand te downloaden. Voordat restconnector beschikbaar komt, u de HTTP-connector gebruiken om gegevens te kopiëren van DE RESTful API, die wordt ondersteund, maar minder functioneel in vergelijking met REST-connector.
-- **In de webtabelconnector** wordt tabelinhoud uit een HTML-webpagina geëxtraheerd.
+- **Rest-connector** biedt specifiek ondersteuning voor het kopiëren van gegevens uit rest-api's; 
+- **Http-connector** is algemeen om gegevens op te halen uit een http-eind punt, bijvoorbeeld om het bestand te downloaden. Voordat REST-connector beschikbaar wordt, kunt u de HTTP-connector gebruiken om gegevens te kopiëren van de REST-API, die wordt ondersteund, maar minder functioneel is vergeleken met de REST-connector.
+- Met **Web Table connector** wordt tabel inhoud geëxtraheerd van een HTML-webpagina.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze HTTP-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens uit een HTTP-bron kopiëren naar een ondersteund sinkdataarchief. Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die Activiteit kopiëren als bronnen en sinks ondersteunt.
+U kunt gegevens van een HTTP-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
-U deze HTTP-connector gebruiken om:
+U kunt deze HTTP-connector gebruiken voor het volgende:
 
-- Haal gegevens op uit een HTTP/S-eindpunt met behulp van de HTTP **GET-** of **POST-methoden.**
-- Gegevens ophalen met behulp van een van de volgende verificaties: **Anoniem,** **Basic**, **Digest,** **Windows**of **ClientCertificate**.
-- Kopieer het HTTP-antwoord as-is of ontleed het met behulp van [ondersteunde bestandsindelingen en compressiecodecs](supported-file-formats-and-compression-codecs.md).
+- Gegevens ophalen van een HTTP/S-eind punt met behulp van de HTTP **Get** -of **post** -methoden.
+- Gegevens ophalen met behulp van een van de volgende authenticaties: **Anonymous**, **Basic**, **Digest**, **Windows**of **ClientCertificate**.
+- Kopieer het HTTP-antwoord alsof het is of Parset het met behulp van [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md).
 
 > [!TIP]
-> Als u een HTTP-aanvraag voor het ophalen van gegevens wilt testen voordat u de HTTP-connector configureert in Gegevensfabriek, leest u meer over de API-specificatie voor kop- en hoofdvereisten. U tools zoals Postman of een webbrowser gebruiken om te valideren.
+> Als u een HTTP-aanvraag voor het ophalen van gegevens wilt testen voordat u de HTTP-connector in Data Factory configureert, kunt u meer informatie vinden over de API-specificatie voor vereisten voor koptekst en hoofd tekst. U kunt de hulpprogram ma's zoals postman of een webbrowser gebruiken om te valideren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -60,28 +60,28 @@ U deze HTTP-connector gebruiken om:
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die u gebruiken om entiteiten in gegevensfabrieken te definiëren die specifiek zijn voor de HTTP-connector.
+De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de HTTP-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor de http-gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de HTTP-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet zijn ingesteld op **HttpServer**. | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **HttpServer**. | Ja |
 | url | De basis-URL naar de webserver. | Ja |
-| enableServerCertificateValidation | Geef op of u serverTLS/SSL-certificaatvalidatie moet inschakelen wanneer u verbinding maakt met een HTTP-eindpunt. Als uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u deze eigenschap in op **false**. | Nee<br /> (de standaardinstelling is **waar)** |
-| authenticationType | Hiermee geeft u het verificatietype op. Toegestane waarden zijn **Anoniem,** **Basis,** **Samenvatting,** **Windows**en **ClientCertificate**. <br><br> Bekijk de secties die deze tabel volgen voor meer eigenschappen en JSON-voorbeelden voor deze verificatietypen. | Ja |
-| connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
+| enableServerCertificateValidation | Geef op of de TLS/SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u verbinding maakt met een HTTP-eind punt. Als uw HTTPS-server een zelfondertekend certificaat gebruikt, stelt u deze eigenschap in op **Onwaar**. | Nee<br /> (de standaard waarde is **True**) |
+| authenticationType | Hiermee geeft u het verificatie type op. Toegestane waarden zijn **anoniem**, **basis**, **Digest**, **Windows**en **ClientCertificate**. <br><br> Zie de secties die volgen op deze tabel voor meer eigenschappen en JSON-voor beelden voor deze verificatie typen. | Ja |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-### <a name="using-basic-digest-or-windows-authentication"></a>Basis-, Digest- of Windows-verificatie gebruiken
+### <a name="using-basic-digest-or-windows-authentication"></a>Basis verificatie, verificatie samenvatting of Windows-authenticatie gebruiken
 
-Stel de eigenschap **authenticationType** in op **Basic,** **Digest**of **Windows**. Geef naast de algemene eigenschappen die in de vorige sectie worden beschreven, de volgende eigenschappen op:
+Stel de eigenschap **authenticationType** in op **Basic**, **Digest**of **Windows**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| userName | De gebruikersnaam die u wilt gebruiken om toegang te krijgen tot het HTTP-eindpunt. | Ja |
-| wachtwoord | Het wachtwoord voor de gebruiker (de **waarde userName).** Markeer dit veld als een **SecureString-type** om het veilig op te slaan in Gegevensfabriek. U ook [verwijzen naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
+| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het HTTP-eind punt. | Ja |
+| wachtwoord | Het wacht woord voor de gebruiker (de waarde van de **gebruikers naam** ). Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
 **Voorbeeld**
 
@@ -107,24 +107,24 @@ Stel de eigenschap **authenticationType** in op **Basic,** **Digest**of **Window
 }
 ```
 
-### <a name="using-clientcertificate-authentication"></a>ClientCertificate-verificatie gebruiken
+### <a name="using-clientcertificate-authentication"></a>Gebruik van ClientCertificate-verificatie
 
-Als u ClientCertificate-verificatie wilt gebruiken, stelt u de eigenschap **authenticationType** in op **ClientCertificate**. Geef naast de algemene eigenschappen die in de vorige sectie worden beschreven, de volgende eigenschappen op:
+Als u ClientCertificate-verificatie wilt gebruiken, stelt u de eigenschap **authenticationType** in op **ClientCertificate**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| embeddedCertData | Base64-gecodeerde certificaatgegevens. | Geef **ingeslotenCertData** of **certThumbprint op.** |
-| certThumbprint | De duimafdruk van het certificaat dat is geïnstalleerd op de cert-winkel van uw zelf gehoste Integration Runtime-machine. Geldt alleen wanneer het zelf gehoste type Integratieruntime is opgegeven in de eigenschap **connectVia.** | Geef **ingeslotenCertData** of **certThumbprint op.** |
-| wachtwoord | Het wachtwoord dat aan het certificaat is gekoppeld. Markeer dit veld als een **SecureString-type** om het veilig op te slaan in Gegevensfabriek. U ook [verwijzen naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
+| embeddedCertData | Met base64 gecodeerde certificaat gegevens. | Geef **embeddedCertData** of **certThumbprint**op. |
+| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op uw zelf-hostende certificaat archief van Integration Runtime computer. Is alleen van toepassing wanneer het zelf-hostende type Integration Runtime is opgegeven in de eigenschap **connectVia** . | Geef **embeddedCertData** of **certThumbprint**op. |
+| wachtwoord | Het wacht woord dat is gekoppeld aan het certificaat. Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
 
-Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnstalleerd in de persoonlijke winkel van de lokale computer, verleent u leesmachtigingen aan de zelfgehoste Runtime integratie:
+Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, verleent u lees machtigingen voor de zelf-hostende Integration runtime:
 
-1. Open de Microsoft Management Console (MMC). Voeg de module **Certificaten** toe die is gericht op **lokale computer**.
-2. **Certificaten** > **persoonlijk**uitvouwen en selecteer **certificaten**.
-3. Klik met de rechtermuisknop op het certificaat in de persoonlijke winkel en selecteer **Alle taken** > **Privésleutels beheren**.
-3. Voeg op het tabblad **Beveiliging** het gebruikersaccount toe waaronder de Integration Runtime Host Service (DIAHostService) wordt uitgevoerd, met leestoegang tot het certificaat.
+1. Open de micro soft Management Console (MMC). Voeg de module **certificaten** toe die gericht is op de **lokale computer**.
+2. Vouw **certificaten** > **persoonlijk**uit en selecteer vervolgens **certificaten**.
+3. Klik met de rechter muisknop op het certificaat in het persoonlijke archief en selecteer vervolgens **alle taken** > **persoonlijke sleutels beheren**.
+3. Voeg op het tabblad **beveiliging** het gebruikers account toe waaronder de Integration runtime host-service (DIAHostService) wordt uitgevoerd, met lees toegang tot het certificaat.
 
-**Voorbeeld 1: CertThumbprint gebruiken**
+**Voor beeld 1: certThumbprint gebruiken**
 
 ```json
 {
@@ -144,7 +144,7 @@ Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnst
 }
 ```
 
-**Voorbeeld 2: EmbeddedCertData gebruiken**
+**Voor beeld 2: embeddedCertData gebruiken**
 
 ```json
 {
@@ -170,21 +170,21 @@ Als u **certThumbprint** gebruikt voor verificatie en het certificaat is geïnst
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [Gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. 
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden ondersteund `location` voor HTTP onder instellingen in op indeling gebaseerde gegevensset:
+De volgende eigenschappen worden ondersteund voor HTTP onder `location` instellingen in gegevensset op basis van indeling:
 
 | Eigenschap    | Beschrijving                                                  | Vereist |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | De eigenschap `location` type onder in de gegevensset moet worden ingesteld op **HttpServerLocatie**. | Ja      |
-| relativenurl | Een relatieve URL naar de bron die de gegevens bevat. De HTTP-connector kopieert gegevens `[URL specified in linked service][relative URL specified in dataset]`uit de gecombineerde URL: .   | Nee       |
+| type        | De eigenschap type onder `location` in DataSet moet worden ingesteld op **HttpServerLocation**. | Ja      |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. De HTTP-connector kopieert gegevens van de gecombineerde URL `[URL specified in linked service][relative URL specified in dataset]`:.   | Nee       |
 
 > [!NOTE]
-> De ondersteunde HTTP-aanvraag payload grootte is ongeveer 500 KB. Als de payload-grootte die u wilt doorgeven aan uw webeindpunt groter is dan 500 KB, u overwegen het laadvermogen in kleinere stukken te batcheren.
+> De ondersteunde Payload-grootte van de HTTP-aanvraag is ongeveer 500 KB. Als de payload-grootte die u wilt door geven aan uw web-eind punt groter is dan 500 KB, kunt u de payload in kleinere segmenten batcheren.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -210,28 +210,28 @@ De volgende eigenschappen worden ondersteund `location` voor HTTP onder instelli
 }
 ```
 
-## <a name="copy-activity-properties"></a>Activiteitseigenschappen kopiëren
+## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
 
-In deze sectie vindt u een lijst met eigenschappen die de HTTP-bron ondersteunt.
+In deze sectie vindt u een lijst met eigenschappen die door de HTTP-bron worden ondersteund.
 
-Zie [Pijplijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
+Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
 
 ### <a name="http-as-source"></a>HTTP als bron
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden voor `storeSettings` HTTP ondersteund onder instellingen in op indeling gebaseerde kopieerbron:
+De volgende eigenschappen worden ondersteund voor HTTP onder `storeSettings` instellingen in een op indeling gebaseerde kopie bron:
 
 | Eigenschap                 | Beschrijving                                                  | Vereist |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | De eigenschap `storeSettings` type onder moet zijn ingesteld op **HttpReadSettings**. | Ja      |
-| requestMethode            | De HTTP-methode. <br>Toegestane waarden zijn **Get** (default) en **Post**. | Nee       |
-| addtionalHeaders         | Aanvullende HTTP-aanvraagkoppen.                             | Nee       |
-| requestBody              | De instantie voor het HTTP-verzoek.                               | Nee       |
-| httpRequestTime-out           | De time-out (de **TimeSpan-waarde)** voor het HTTP-verzoek om een antwoord te krijgen. Deze waarde is de time-out om een antwoord te krijgen, niet de time-out om antwoordgegevens te lezen. De standaardwaarde is **00:01:40**. | Nee       |
-| maxConcurrentVerbindingen | Het aantal verbindingen dat tegelijkertijd verbinding moet maken met het opslagarchief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevensarchief wilt beperken. | Nee       |
+| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **HttpReadSettings**. | Ja      |
+| requestMethod            | De HTTP-methode. <br>Toegestane waarden zijn **Get** (standaard) en **post**. | Nee       |
+| addtionalHeaders         | Aanvullende HTTP-aanvraag headers.                             | Nee       |
+| requestBody              | De hoofd tekst van de HTTP-aanvraag.                               | Nee       |
+| httpRequestTimeout           | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**. | Nee       |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met opslag archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee       |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -272,31 +272,31 @@ De volgende eigenschappen worden voor `storeSettings` HTTP ondersteund onder ins
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="legacy-models"></a>Verouderde modellen
 
 >[!NOTE]
->De volgende modellen worden nog steeds ondersteund als-is voor achterwaartse compatibiliteit. U wordt voorgesteld om het nieuwe model te gebruiken dat in bovengenoemde secties wordt vermeld die vooruit gaan, en ADF authoring UI is op het produceren van het nieuwe model overgestapt.
+>De volgende modellen worden nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
 
-### <a name="legacy-dataset-model"></a>Verouderd gegevenssetmodel
+### <a name="legacy-dataset-model"></a>Verouderd gegevensset-model
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de gegevensset moet worden ingesteld op **HttpFile**. | Ja |
-| relativenurl | Een relatieve URL naar de bron die de gegevens bevat. Wanneer deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de gekoppelde servicedefinitie. | Nee |
-| requestMethode | De HTTP-methode. Toegestane waarden zijn **Get** (default) en **Post**. | Nee |
-| extra Kopteksten | Aanvullende HTTP-aanvraagkoppen. | Nee |
-| requestBody | De instantie voor het HTTP-verzoek. | Nee |
-| formaat | Als u gegevens wilt ophalen uit het HTTP-eindpunt as-is zonder deze te ontleden en de gegevens vervolgens wilt kopiëren naar een archief op basis van bestanden, slaat u de **indelingssectie** in zowel de definities van de invoer- als de uitvoergegevenslijst over.<br/><br/>Als u de HTTP-antwoordinhoud tijdens het kopiëren wilt ontleden, worden de volgende bestandsindelingstypen ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**en **ParquetFormat**. Stel **onder opmaak**de eigenschap **type** in op een van deze waarden. Zie [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Tekstformaat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro-formaat](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc-formaat](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en [Parketformaat](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)voor meer informatie . |Nee |
-| compressie | Geef het type en het compressieniveau voor de gegevens op. Zie [Ondersteunde bestandsindelingen en compressiecodecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/><br/>Ondersteunde typen: **GZip,** **Deflate,** **BZip2**en **ZipDeflate**.<br/>Ondersteunde niveaus: **optimaal** en **snelst.** |Nee |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **HttpFile**. | Ja |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. | Nee |
+| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
+| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
+| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
+| formaat | Als u gegevens wilt ophalen uit het HTTP-eind punt zonder te parseren, en vervolgens de gegevens naar een op bestanden gebaseerde opslag kopie wilt kopiëren, slaat u de sectie **opmaak** in zowel de definitie van de invoer-als uitvoer gegevensset over.<br/><br/>Als u de inhoud van het HTTP-antwoord tijdens het kopiëren wilt parseren, worden de volgende typen bestands indelingen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Stel onder **indeling**de eigenschap **type** in op een van deze waarden. Zie [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, Orc- [indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en Parquet- [indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)voor meer informatie. |Nee |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/><br/>Ondersteunde typen: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**.<br/>Ondersteunde niveaus: **optimaal** en **snelst**. |Nee |
 
 > [!NOTE]
-> De ondersteunde HTTP-aanvraag payload grootte is ongeveer 500 KB. Als de payload-grootte die u wilt doorgeven aan uw webeindpunt groter is dan 500 KB, u overwegen het laadvermogen in kleinere stukken te batcheren.
+> De ondersteunde Payload-grootte van de HTTP-aanvraag is ongeveer 500 KB. Als de payload-grootte die u wilt door geven aan uw web-eind punt groter is dan 500 KB, kunt u de payload in kleinere segmenten batcheren.
 
-**Voorbeeld 1: De methode Oppakken gebruiken (standaard)**
+**Voor beeld 1: de Get-methode gebruiken (standaard)**
 
 ```json
 {
@@ -315,7 +315,7 @@ Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-fl
 }
 ```
 
-**Voorbeeld 2: De methode Post gebruiken**
+**Voor beeld 2: de post-methode gebruiken**
 
 ```json
 {
@@ -335,12 +335,12 @@ Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-fl
 }
 ```
 
-### <a name="legacy-copy-activity-source-model"></a>Bronmodel voor verouderde kopieeractiviteit
+### <a name="legacy-copy-activity-source-model"></a>Bron model van verouderde Kopieer activiteit
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de bron van kopieeractiviteit moet zijn ingesteld op **HttpSource**. | Ja |
-| httpRequestTime-out | De time-out (de **TimeSpan-waarde)** voor het HTTP-verzoek om een antwoord te krijgen. Deze waarde is de time-out om een antwoord te krijgen, niet de time-out om antwoordgegevens te lezen. De standaardwaarde is **00:01:40**.  | Nee |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **http**. | Ja |
+| httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | Nee |
 
 **Voorbeeld**
 
@@ -376,4 +376,4 @@ Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-fl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die activiteit kopiëren als bronnen en sinks in Azure Data Factory ondersteunt.
+Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en sinks in azure Data Factory.

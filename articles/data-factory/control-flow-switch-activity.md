@@ -1,6 +1,6 @@
 ---
-title: Schakelactiviteit in Azure Data Factory
-description: Met de Switch-activiteit u de verwerkingsstroom beheren op basis van een voorwaarde.
+title: Activiteit in Azure Data Factory scha kelen
+description: Met de activiteit switch kunt u de verwerkings stroom beheren op basis van een voor waarde.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,17 +10,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418011"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Schakelactiviteit in Azure Data Factory
+# <a name="switch-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory scha kelen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-De Switch-activiteit biedt dezelfde functionaliteit als een switchinstructie in programmeertalen. Het evalueert een reeks activiteiten die overeenkomen met een zaak die overeenkomt met de conditie-evaluatie.
+De switch-activiteit biedt dezelfde functionaliteit als een switch-instructie in programmeer talen. Er wordt een reeks activiteiten geëvalueerd die overeenkomen met een aanvraag die overeenkomt met de evaluatie van de voor waarde.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -65,24 +65,24 @@ De Switch-activiteit biedt dezelfde functionaliteit als een switchinstructie in 
 }
 ```
 
-## <a name="type-properties"></a>Eigenschappen typen
+## <a name="type-properties"></a>Type-eigenschappen
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de switchactiviteit. | Tekenreeks | Ja
-type | Moet zijn ingesteld op *Switch** | Tekenreeks | Ja
-expressie | Expressie die moet worden geëvalueerd op tekenreekswaarde | Expressie met resultaatteksttekenreeks | Ja
-Gevallen | Set aanvragen die een waarde en een set activiteiten bevatten die moet worden uitgevoerd wanneer de waarde overeenkomt met de expressie-evaluatie. Moet ten minste één geval bieden. Er is een maximum van 25 zaken. | Array met caseobjecten | Ja
-standaardActiviteiten | Reeks activiteiten die worden uitgevoerd wanneer de expressie-evaluatie niet is voldaan. | Scala aan activiteiten | Ja
+name | De naam van de switch activiteit. | Tekenreeks | Ja
+type | Moet worden ingesteld op *Switch** | Tekenreeks | Ja
+expressie | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
+meldingen | Set cases die een waarde en een set activiteiten bevatten die moeten worden uitgevoerd wanneer de waarde overeenkomt met de evaluatie van de expressie. U moet ten minste één geval opgeven. Er is een maximum limiet van 25 gevallen. | Reeks Case-objecten | Ja
+defaultActivities | Een set activiteiten die worden uitgevoerd wanneer aan de evaluatie van de expressie niet wordt voldaan. | Matrix van activiteiten | Ja
 
 ## <a name="example"></a>Voorbeeld
 
-De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een uitvoermap. De uitvoermap wordt bepaald door de waarde van de parameter pipeline: routeSelectie.
+Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een uitvoermap gekopieerd. De uitvoermap wordt bepaald door de waarde van de pijplijn parameter: routeSelection.
 
 > [!NOTE]
-> In deze sectie worden JSON-definities en voorbeeld-PowerShell-opdrachten voor het uitvoeren van de pijplijn opgenomen. Zie [zelfstudie: maak een gegevensfabriek met Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een stapsgewijze handleiding voor het maken van een Data Factory-pijplijn met azure PowerShell- en JSON-definities.
+> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Pijplijn met Switch-activiteit (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met switch-activiteit (Adfv2QuickStartPipeline. json)
 
 ```json
 {
@@ -230,7 +230,7 @@ De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een uitvoe
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Gekoppelde Azure Storage-service (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService. json)
 
 ```json
 {
@@ -244,9 +244,9 @@ De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een uitvoe
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparameteriseerde Azure Blob-gegevensset (BlobDataset.json)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset met para meters (BlobDataset. json)
 
-De pijplijn stelt de **mapPath** in op de waarde van de parameter **outputPath1** of **outputPath2** van de pijplijn. 
+De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputPath1** of **outputPath2** van de pijp lijn. 
 
 ```json
 {
@@ -272,7 +272,7 @@ De pijplijn stelt de **mapPath** in op de waarde van de parameter **outputPath1*
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Pipeline parameter JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters. json)
 
 ```json
 {
@@ -288,7 +288,7 @@ De pijplijn stelt de **mapPath** in op de waarde van de parameter **outputPath1*
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Deze opdrachten gaan ervan uit dat u de JSON-bestanden in de map hebt opgeslagen: C:\ADF. 
+Bij deze opdrachten wordt ervan uitgegaan dat u de JSON-bestanden hebt opgeslagen in de map: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -331,7 +331,7 @@ $result.Error -join "`r`n"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk andere controlestroomactiviteiten die worden ondersteund door Data Factory: 
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Activiteit uitvoeren van pijplijn](control-flow-execute-pipeline-activity.md)

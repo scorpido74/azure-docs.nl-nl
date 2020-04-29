@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: b2a596b71ee7e5f58e01d5bc10b330f6f54a69d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428665"
 ---
 # <a name="assigning-variables-with-synapse-sql"></a>Variabelen toewijzen met Synapse SQL
 
 In dit artikel vindt u tips voor het toewijzen van T-SQL-variabelen met Synapse SQL.
 
-## <a name="setting-variables-with-declare"></a>Variabelen instellen met DECLARE
+## <a name="setting-variables-with-declare"></a>Variabelen instellen met DECLAReren
 
-Variabelen in Synapse SQL worden `DECLARE` ingesteld `SET` met behulp van de instructie of de instructie. Het initialiseren van variabelen met DECLARE is een van de meest flexibele manieren om een variabele waarde in Synapse SQL in te stellen.
+Variabelen in Synapse SQL worden ingesteld met behulp van `DECLARE` de `SET` instructie of de instructie. Initialisatie van variabelen met DECLAReren is een van de meest flexibele manieren om een variabele waarde in te stellen in Synapse SQL.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-U DECLARE ook gebruiken om meer dan één variabele tegelijk in te stellen. U SELECT of UPDATE niet gebruiken om het volgende te doen:
+U kunt DECLARe ook gebruiken om meer dan één variabele per keer in te stellen. U kunt niet selecteren of bijwerken gebruiken om het volgende te doen:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-U een variabele niet initialiseren en gebruiken in dezelfde DECLARE-instructie. Ter illustratie is het volgende voorbeeld *@p1* niet toegestaan, omdat het zowel geïnitialiseerd als gebruikt wordt in dezelfde DECLARE-instructie. In het volgende voorbeeld wordt een fout weergegeven.
+U kunt een variabele niet initialiseren en gebruiken in dezelfde DECLARe-instructie. Ter illustratie: het volgende voor beeld is niet toegestaan *@p1* omdat het is geïnitialiseerd en wordt gebruikt in dezelfde Declare-instructie. In het volgende voor beeld wordt een fout weer geven.
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 
 ## <a name="setting-values-with-set"></a>Waarden instellen met SET
 
-SET is een veelgebruikte methode voor het instellen van één variabele.
+SET is een gemeen schappelijke methode voor het instellen van één variabele.
 
 De volgende instructies zijn allemaal geldige manieren om een variabele in te stellen met SET:
 
@@ -58,12 +58,12 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-U slechts één variabele tegelijk instellen met SET. Samengestelde operatoren zijn echter toegestaan.
+U kunt slechts één variabele tegelijk instellen met SET. Samengestelde Opera tors zijn echter wel toegestaan.
 
 ## <a name="limitations"></a>Beperkingen
 
-U UPDATE niet gebruiken voor variabele toewijzing.
+U kunt bijwerken niet gebruiken voor het toewijzen van variabelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzichtsartikel voor de ontwikkeling van Synapse SQL voor](develop-overview.md) meer ontwikkelingstips.
+Zie het artikel [overzicht van Synapse SQL Development](develop-overview.md) voor meer tips voor ontwikkel aars.

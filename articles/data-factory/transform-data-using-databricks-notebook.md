@@ -1,5 +1,5 @@
 ---
-title: Een Databricks-notitieblok uitvoeren met de activiteit
+title: Een Databricks-notebook uitvoeren met de activiteit
 description: Meer informatie over hoe u de Databricks Notebook-activiteit in een Azure Data Factory kunt gebruiken voor het uitvoeren van een Databricks-notebook in het Databricks-takencluster.
 services: data-factory
 ms.service: data-factory
@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418980"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>De Databricks Notebook-activiteit uitvoeren in Azure Data Factory op een Databricks-notebook
@@ -34,7 +34,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
   - De pijplijnuitvoering controleert.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 Bekijk de volgende video voor een inleiding en demonstratie van deze functie van 11 minuten:
 
@@ -42,7 +42,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van deze functie van
 
 ## <a name="prerequisites"></a>Vereisten
 
-  - **Azure Databricks-werkruimte**. [Maak een Databricks-werkruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) of gebruik een bestaande werkruimte. U maakt een Python-notebook in uw Azure Databricks-werkruimte. Vervolgens voert u de notebook uit en geeft u er parameters aan door met behulp van Azure Data Factory.
+  - **Azure Databricks-werkruimte**. [Maak een Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) of gebruik een bestaande. U maakt een Python-notebook in uw Azure Databricks-werkruimte. Vervolgens voert u de notebook uit en geeft u er parameters aan door met behulp van Azure Data Factory.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
@@ -54,7 +54,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van deze functie van
 
 1.  Voer op de pagina **Nieuwe data factory****ADFTutorialDataFactory** in bij **Naam**.
 
-    De naam van de Azure-gegevensfabriek moet *wereldwijd uniek*zijn. Als u de volgende fout ziet, wijzigt u de naam van de gegevensfactory. (Gebruik bijvoorbeeld ** \<de\>naam ADFTutorialDataFactory**). Zie het artikel [Data factory - Naamgevingsregels](https://docs.microsoft.com/azure/data-factory/naming-rules) voor naamgevingsregels voor Data Factory-artefacten.
+    De naam van de Azure-data factory moet *wereld wijd uniek*zijn. Als u de volgende fout ziet, wijzigt u de naam van de gegevensfactory. (Gebruik ** \<bijvoorbeeld\>ADFTutorialDataFactory**). Zie het artikel [Data factory - Naamgevingsregels](https://docs.microsoft.com/azure/data-factory/naming-rules) voor naamgevingsregels voor Data Factory-artefacten.
 
     ![Een naam opgeven voor de nieuwe gegevensfactory](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -76,7 +76,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van deze functie van
 1.  Selecteer **Maken**.
 
 
-1.  Nadat de creatie is voltooid, ziet u de **fabriekspagina Gegevens.** Selecteer de tegel **Maken en controleren** om de gebruikersinterface van Data Factory te openen op een afzonderlijk tabblad.
+1.  Nadat het maken is voltooid, ziet u de pagina **Data Factory** . Selecteer de tegel **Maken en controleren** om de gebruikersinterface van Data Factory te openen op een afzonderlijk tabblad.
 
     ![De gebruikersinterface van Data Factory starten](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image4.png)
 
@@ -100,7 +100,7 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
 
 1.  Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
     
-    1.  Voer ***AzureDatabricks\_LinkedService*** in voor **Naam**
+    1.  Voer bij **naam** ***AzureDatabricks\_LinkedService*** in
     
     1.  Selecteer de juiste **Databricks-werkruimte** waarin u uw notebook wilt uitvoeren
 
@@ -116,13 +116,13 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
     
     1.  Voer bij **Werkrollen****2** in.
     
-    1.  Selecteer **Voltooien**
+    1.  Selecteer **volt ooien**
 
         ![Het maken van de gekoppelde service voltooien](media/transform-data-using-databricks-notebook/new-databricks-linkedservice.png)
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-1.  Selecteer **+** de knop (plus) en selecteer **Vervolgens Pijplijn** in het menu.
+1.  Selecteer de **+** knop (plus) en selecteer vervolgens **pijp lijn** in het menu.
 
     ![Knoppen voor het maken van een nieuwe pijplijn](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -152,7 +152,7 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
 
           ![Een nieuwe map maken](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Maak een nieuw notitieblok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), laten we het **mynotebook** noemen onder **adftutorial** Map, klik op **Maken.**
+       1. [Maak een nieuwe notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (python), noem deze **mynotebook** onder **Adftutorial** map en klik op **maken.**
 
           ![Een nieuwe notebook maken](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -179,9 +179,9 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
 
        ![Een parameter toevoegen](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Geef de parameter een naam als **invoer** en geef de waarde op als ** \@expressiepijplijn().parameters.name**.
+    b.  Noem de para meter als **invoer** en geef de waarde op als expressie ** \@pijplijn (). para meters. name**.
 
-1.  Selecteer op de werkbalk de knop **Valideren** om de pijplijn te valideren. Als u het validatievenster ** \> ** wilt sluiten, selecteert u de knop (pijl-rechts).
+1.  Selecteer op de werkbalk de knop **Valideren** om de pijplijn te valideren. Selecteer de ** \> ** (pijl-rechts) om het validatie venster te sluiten.
 
     ![De pijplijn valideren](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image18.png)
 
@@ -195,13 +195,13 @@ Selecteer op de werkbalk de optie **Activeren** en selecteer vervolgens **Nu act
 
 ![Opdracht Nu activeren selecteren](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
-Het dialoogvenster **Pijplijnuitvoering**vraagt naar de **naam**-parameter. Gebruik hier **/pad/bestandsnaam** als parameter. Klik **op Voltooien.**
+Het dialoogvenster **Pijplijnuitvoering**vraagt naar de **naam**-parameter. Gebruik hier **/pad/bestandsnaam** als parameter. Klik op **volt ooien.**
 
 ![Een waarde voor de naam-parameters opgeven](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image21.png)
 
 ## <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
-1.  Ga naar het tabblad **Monitor.** Controleer of er een pijplijn wordt uitgevoerd. Het duurt 5 tot 8 minuten om een Databricks-taakcluster te maken, waar de notebook wordt uitgevoerd.
+1.  Ga naar het tabblad **monitor** . Controleer of er een pijplijn uitvoering wordt weer geven. Het duurt 5 tot 8 minuten om een Databricks-taakcluster te maken, waar de notebook wordt uitgevoerd.
 
     ![De pijplijn bewaken](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 

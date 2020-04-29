@@ -1,6 +1,6 @@
 ---
 title: Key Vault bewaken met Azure Event Grid
-description: Azure Event Grid gebruiken om u te abonneren op Key Vault-gebeurtenissen
+description: Azure Event Grid gebruiken om u te abonneren op Key Vault gebeurtenissen
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,43 +10,43 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431902"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault bewaken met Azure Event Grid (voorbeeld)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault bewaken met Azure Event Grid (preview-versie)
 
-Key Vault-integratie met Event Grid is momenteel in preview. Hiermee kunnen gebruikers op de hoogte worden gesteld wanneer de status van een geheim dat is opgeslagen in de sleutelkluis is gewijzigd. Een statuswijziging wordt gedefinieerd als een geheim dat op het punt staat te verlopen (binnen 30 dagen na het verstrijken), een geheim dat is verlopen of een geheim met een nieuwe versie beschikbaar. Meldingen voor alle drie de geheime typen (sleutel, certificaat en geheim) worden ondersteund.
+Key Vault integratie met Event Grid is momenteel beschikbaar als preview-versie. Hiermee kunnen gebruikers worden gewaarschuwd wanneer de status van een geheim dat is opgeslagen in de sleutel kluis is gewijzigd. Een status wijziging wordt gedefinieerd als een geheim dat bijna verloopt (binnen 30 dagen van verloop tijd), een geheim dat is verlopen of een geheim met een nieuwe versie die beschikbaar is. Meldingen voor alle drie de geheime typen (sleutel, certificaat en geheim) worden ondersteund.
 
-Toepassingen kunnen reageren op deze gebeurtenissen met behulp van moderne serverloze architecturen, zonder de noodzaak van ingewikkelde code of dure en inefficiënte polling diensten. Gebeurtenissen worden via [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) naar gebeurtenishandlers zoals [Azure-functies,](https://azure.microsoft.com/services/functions/) [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen Webhook gepusht en u betaalt alleen voor wat u gebruikt. Zie Prijzen voor [gebeurtenisrasters](https://azure.microsoft.com/pricing/details/event-grid/)voor informatie over prijzen .
+Toepassingen kunnen reageren op deze gebeurtenissen met moderne serverloze architecturen, zonder complexe code of dure en inefficiënte polling Services. Gebeurtenissen worden gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar gebeurtenis afhandelingen zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen webhook, en u betaalt alleen voor wat u gebruikt. Zie [Event grid prijzen](https://azure.microsoft.com/pricing/details/event-grid/)voor meer informatie over prijzen.
 
-## <a name="key-vault-events-and-schemas"></a>Key Vault-gebeurtenissen en -schema's
+## <a name="key-vault-events-and-schemas"></a>Key Vault gebeurtenissen en schema's
 
-Gebeurtenisraster gebruikt [gebeurtenisabonnementen](../../event-grid/concepts.md#event-subscriptions) om gebeurtenisberichten door te sturen naar abonnees. Key Vault-gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U een Key Vault-gebeurtenis identificeren omdat de eigenschap eventType begint met 'Microsoft.KeyVault'.
+Event grid gebruikt [gebeurtenis abonnementen](../../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Key Vault gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U kunt een Key Vault gebeurtenis identificeren omdat de eigenschap Event type met ' micro soft.-sleutel kluis ' begint.
 
-Zie het [gebeurtenisschema Key Vault](../../event-grid/event-schema-key-vault.md)voor meer informatie .
+Zie het [Key Vault-gebeurtenis schema](../../event-grid/event-schema-key-vault.md)voor meer informatie.
 
 > [!WARNING]
-> Meldingsgebeurtenissen worden alleen geactiveerd op nieuwe versies van geheimen, sleutels en certificaten en u moet zich eerst abonneren op het evenement op uw sleutelkluis om deze meldingen te ontvangen.
+> Meldings gebeurtenissen worden alleen geactiveerd op nieuwe versies van geheimen, sleutels en certificaten. u moet zich eerst abonneren op de gebeurtenis in uw sleutel kluis om deze meldingen te ontvangen.
 > 
-> U ontvangt alleen meldingsgebeurtenissen op certificaten wanneer het certificaat automatisch wordt verlengd volgens het beleid dat u voor uw certificaat hebt opgegeven.
+> U ontvangt alleen meldings gebeurtenissen op certificaten wanneer het certificaat automatisch wordt vernieuwd op basis van het beleid dat u voor uw certificaat hebt opgegeven.
 
-## <a name="practices-for-consuming-events"></a>Praktijken voor het consumeren van gebeurtenissen
+## <a name="practices-for-consuming-events"></a>Procedures voor het gebruiken van gebeurtenissen
 
-Toepassingen die Key Vault-gebeurtenissen afhandelen, moeten een aantal aanbevolen procedures volgen:
+Toepassingen die Key Vault gebeurtenissen verwerken, moeten een aantal aanbevolen procedures volgen:
 
-* Meerdere abonnementen kunnen worden geconfigureerd om gebeurtenissen naar dezelfde gebeurtenishandler te leiden. Het is belangrijk om niet aan te nemen dat gebeurtenissen van een bepaalde bron zijn, maar om het onderwerp van het bericht te controleren om ervoor te zorgen dat het afkomstig is van de sleutelkluis die u verwacht.
-* Controleer ook of het eventType een gebeurtenis is die u bereid bent te verwerken en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de typen zijn die u verwacht.
-* Velden negeren die u niet begrijpt.  Deze praktijk zal u helpen om u bestand te houden tegen nieuwe functies die in de toekomst kunnen worden toegevoegd.
-* Gebruik het voorvoegsel en achtervoegsel van onderwerp om gebeurtenissen te beperken tot een bepaalde gebeurtenis.
+* Meerdere abonnementen kunnen worden geconfigureerd voor het door sturen van gebeurtenissen naar dezelfde gebeurtenis-handler. Het is belang rijk om te voor komen dat gebeurtenissen afkomstig zijn van een bepaalde bron, maar om het onderwerp van het bericht te controleren om ervoor te zorgen dat het afkomstig is van de sleutel kluis die u verwacht.
+* Controleer ook of de Event type is ingesteld als een voor bereiding op het proces en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de verwachte typen zijn.
+* Velden negeren die u niet begrijpt.  Met deze procedure kunt u de nieuwe functies die in de toekomst kunnen worden toegevoegd, flexibeler maken.
+* Gebruik het voor voegsel ' subject ' en achtervoegsel overeenkomsten om gebeurtenissen te beperken tot een bepaalde gebeurtenis.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Key Vault](overview.md))
+- [Azure Key Vault overzicht](overview.md))
 - [Overzicht van Azure Event Grid](../../event-grid/overview.md)
-- How to: [Key Vault-gebeurtenissen routeren naar automatiseringsrunbook (voorbeeld)](event-grid-tutorial.md).
-- How to: [E-mail ontvangen wanneer een sleutelkluis geheim verandert](event-grid-logicapps.md)
-- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault (voorbeeld)](../../event-grid/event-schema-key-vault.md)
+- Procedure: [Key Vault-gebeurtenissen naar Automation-Runbook routeren (preview)](event-grid-tutorial.md).
+- Procedure: [E-mail ontvangen wanneer een sleutel kluis geheim verandert](event-grid-logicapps.md)
+- [Azure Event Grid-gebeurtenis schema voor Azure Key Vault (preview-versie)](../../event-grid/event-schema-key-vault.md)
 - [Overzicht van Azure Automation](../../automation/index.yml)

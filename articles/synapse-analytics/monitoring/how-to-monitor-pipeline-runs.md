@@ -1,6 +1,6 @@
 ---
-title: Monitorpijplijn voert Azure Synapse Studio uit (voorbeeld)
-description: Gebruik de Azure Synapse Studio om de pijplijn van uw werkruimte te controleren.
+title: Pijp lijn bewaken voert Azure Synapse Studio uit (preview-versie)
+description: Gebruik Azure Synapse Studio om de pijplijn uitvoeringen van uw werk ruimte te bewaken.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,46 +9,46 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: 712dc62e29229f03dec12afdf18edbf55667dbdf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430784"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Azure Synapse Studio gebruiken om de pijplijn van werkruimtes te controleren
+# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Azure Synapse Studio gebruiken om de pipeline-uitvoeringen van uw werk ruimte te controleren
 
-Met Azure Synapse Analytics u complexe pijplijnen maken die uw gegevensverplaatsing, gegevenstransformatie en rekenactiviteiten binnen uw oplossing kunnen automatiseren en orkestreren. U deze pijplijnen maken en controleren met Azure Synapse Studio (voorbeeld).
+Met Azure Synapse Analytics kunt u complexe pijp lijnen maken waarmee u uw gegevens verplaatsing, gegevens transformatie en Compute-activiteiten binnen uw oplossing kunt automatiseren en organiseren. U kunt deze pijp lijnen ontwerpen en bewaken met behulp van Azure Synapse Studio (preview).
 
-In dit artikel wordt uitgelegd hoe u uw pijplijnuitvoeringen controleren, zodat u de laatste status, problemen en voortgang van uw pijplijnen in de gaten houden.
+In dit artikel wordt uitgelegd hoe u uw pijplijn uitvoeringen kunt bewaken, zodat u op de hoogte blijft van de meest recente status, problemen en voortgang van uw pijp lijnen.
 
-## <a name="access-the-list-of-pipeline-runs"></a>Toegang tot de lijst met pijplijnuitvoeringen
+## <a name="access-the-list-of-pipeline-runs"></a>De lijst met pijplijn uitvoeringen openen
 
-Als u de lijst met pijplijnuitvoeringen in uw werkruimte wilt bekijken, opent u eerst [de Azure Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werkruimte.
+Als u de lijst met pijplijn uitvoeringen in uw werk ruimte wilt zien, opent u eerst [Azure Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werk ruimte.
 
-![Inloggen bij werkruimte](./media/common/login-workspace.png)
+![Aanmelden bij werk ruimte](./media/common/login-workspace.png)
 
-Nadat u uw werkruimte hebt geopend, selecteert u de sectie **Monitor** aan de linkerkant.
+Wanneer u uw werk ruimte hebt geopend, selecteert u de sectie **monitor** aan de linkerkant.
 
-![Monitorhub selecteren](./media/common/left-nav.png)
+![Hub bewaken selecteren](./media/common/left-nav.png)
 
-Selecteer **Pijplijnuitvoeringen** om de lijst met pijplijnuitvoeringen weer te geven.
+Selecteer **pijplijn uitvoeringen** om de lijst met pijplijn uitvoeringen weer te geven.
 
-![Pijplijnuitvoeringen selecteren](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
+![Pijplijn uitvoeringen selecteren](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>Het filteren van uw pijplijnloopt
+## <a name="filtering-your-pipeline-runs"></a>De pijplijn uitvoeringen filteren
 
-U de lijst met pijplijnuitvoeringen filteren op de pijplijnuitvoeringen waarin u geïnteresseerd bent. Met de filters boven aan het scherm u een veld opgeven waarop u wilt filteren.
+U kunt de lijst met pijplijn uitvoeringen filteren op degene waarin u bent geïnteresseerd. Met de filters boven aan het scherm kunt u een veld opgeven waarop u wilt filteren.
 
-U bijvoorbeeld de weergave filteren om alleen de pijplijnuitvoeringen voor de pijplijn met de naam 'vakantie' te zien:
+U kunt bijvoorbeeld de weer gave filteren om alleen de pijplijn uitvoeringen weer te geven voor de pijp lijn met de naam ' vakantie ':
 
-![Knop Filter](./media/common/filter-button.png)
+![Knop filteren](./media/common/filter-button.png)
 
-![Voorbeeldfilter](./media/how-to-monitor-pipeline-runs/filter-example.png)
+![Voorbeeld filter](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>Details weergeven over een specifieke pijplijnrun
+## <a name="viewing-details-about-a-specific-pipeline-run"></a>Details over een specifieke pijplijn uitvoering weer geven
 
-Als u details over uw pijplijnrun wilt weergeven, selecteert u de pijplijnuitvoering. Bekijk vervolgens de activiteitsruns die zijn gekoppeld aan de pijplijnrun. Als de pijplijn nog steeds actief is, u de voortgang controleren. 
+Als u details over de pijplijn uitvoering wilt weer geven, selecteert u de pijplijn uitvoering. Bekijk vervolgens de uitvoeringen van de activiteit die zijn gekoppeld aan de pijplijn uitvoering. Als de pijp lijn nog steeds wordt uitgevoerd, kunt u de voortgang bewaken. 
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel Over het monitoren van toepassingen voor meer informatie over het monitoren van [toepassingen.](how-to-monitor-spark-applications.md) 
+Zie het artikel [Apache Spark toepassingen bewaken](how-to-monitor-spark-applications.md) voor meer informatie over het bewaken van toepassingen. 

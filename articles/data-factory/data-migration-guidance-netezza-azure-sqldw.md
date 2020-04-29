@@ -12,200 +12,200 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416445"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory biedt een performant, robuust en kosteneffectief mechanisme om gegevens op schaal te migreren van een on-premises Netezza-server naar uw Azure-opslagaccount of Azure SQL Data Warehouse-database. 
+Azure Data Factory biedt een krachtig, robuust en rendabel mechanisme voor het migreren van gegevens op schaal van een on-premises Netezza-server naar uw Azure Storage-account of Azure SQL Data Warehouse-data base. 
 
-In dit artikel vindt u de volgende informatie voor gegevenstechnici en ontwikkelaars:
+In dit artikel vindt u de volgende informatie voor gegevens technici en ontwikkel aars:
 
 > [!div class="checklist"]
 > * Prestaties 
-> * Veerkracht kopiëren
+> * Tolerantie kopiëren
 > * Netwerkbeveiliging
-> * Oplossingsarchitectuur op hoog niveau 
-> * Best Practices voor de implementatie  
+> * Architectuur van oplossing op hoog niveau 
+> * Aanbevolen procedures voor implementatie  
 
 ## <a name="performance"></a>Prestaties
 
-Azure Data Factory biedt een serverloze architectuur die parallellisme op verschillende niveaus mogelijk maakt. Als u een ontwikkelaar bent, betekent dit dat u pijplijnen bouwen om zowel netwerk- als databasebandbreedte volledig te gebruiken om de doorvoer van gegevensverplaatsingen voor uw omgeving te maximaliseren.
+Azure Data Factory biedt een serverloze architectuur die parallellisme op verschillende niveaus mogelijk maakt. Als u een ontwikkelaar bent, betekent dit dat u pijp lijnen kunt maken om zowel netwerk-als database bandbreedte volledig te gebruiken om de door Voer van gegevens verplaatsing voor uw omgeving te maximaliseren.
 
-![Prestatiediagram](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+![Prestatie diagram](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
 
-Het voorgaande diagram kan als volgt worden geïnterpreteerd:
+Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
-- Eén kopieeractiviteit kan profiteren van schaalbare rekenbronnen. Wanneer u Azure Integration Runtime gebruikt, u [maximaal 256 DIU's](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) voor elke kopieeractiviteit op een serverloze manier opgeven. Met een self-hosted integration runtime (self-hosted IR) u de machine handmatig opschalen of uitschalen naar meerdere machines[(maximaal vier knooppunten)](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)en één kopieeractiviteit verdeelt de partitie over alle knooppunten. 
+- Eén Kopieer activiteit kan profiteren van schaal bare reken resources. Wanneer u Azure Integration Runtime gebruikt, kunt u voor elke Kopieer activiteit op serverloze wijze [Maxi maal 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) opgeven. Met een zelf-hostende Integration runtime (zelf-hostende IR) kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal vier knoop punten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)), en met één Kopieer activiteit wordt de partitie over alle knoop punten gedistribueerd. 
 
-- Een enkele kopie activiteit leest van en schrijft naar het gegevensarchief met behulp van meerdere threads. 
+- Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads. 
 
-- De controlestroom van Azure Data Factory kan meerdere kopieeractiviteiten parallel starten. Het kan ze bijvoorbeeld starten met een [voor elke lus.](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity) 
+- Azure Data Factory controle stroom kan meerdere Kopieer activiteiten parallel starten. Het kan bijvoorbeeld worden gestart met behulp van een [voor elke lus](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
-Zie [Handleiding activiteitsprestaties en schaalbaarheid kopiëren voor](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)meer informatie.
+Zie voor meer informatie kopiëren van de [prestaties en schaal baarheid](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)van de activiteit.
 
-## <a name="resilience"></a>Veerkracht
+## <a name="resilience"></a>Tolerantie
 
-Binnen één exemplaaractiviteitsrun heeft Azure Data Factory een ingebouwd mechanisme voor nieuwe apparaten, waarmee het een bepaald niveau van tijdelijke fouten in de gegevensopslag of in het onderliggende netwerk kan verwerken.
+Binnen één exemplaar van de Kopieer activiteit heeft Azure Data Factory een ingebouwd mechanisme voor opnieuw proberen, waarmee het een bepaald niveau van tijdelijke fouten in de gegevens archieven of in het onderliggende netwerk kan verwerken.
 
-Wanneer u gegevens kopieert tussen bron- en sinkgegevensopslag, u met de kopieeractiviteit van Azure Data Factory op twee manieren in compatibele rijen omgaan. U de kopieeractiviteit afbreken en niet nalaten of de rest van de gegevens blijven kopiëren door de incompatibele gegevensrijen over te slaan. Als u de oorzaak van de fout wilt achterhalen, u bovendien de incompatibele rijen in Azure Blob-opslag of Azure Data Lake Store registreren, de gegevens op de gegevensbron herstellen en de kopieeractiviteit opnieuw proberen.
+Wanneer u gegevens kopieert tussen bron-en Sink-gegevens opslag, kunt u met Azure Data Factory Kopieer activiteit op twee manieren incompatibele rijen verwerken. U kunt de Kopieer activiteit afbreken en mislukken of de rest van de gegevens blijven kopiëren door de niet-compatibele gegevens rijen over te slaan. Daarnaast kunt u, om de oorzaak van de fout te achterhalen, de niet-compatibele rijen in Azure Blob-opslag of Azure Data Lake Store vastleggen, de gegevens op de gegevens bron herstellen en de Kopieer activiteit opnieuw proberen.
 
 ## <a name="network-security"></a>Netwerkbeveiliging 
 
-Azure Data Factory brengt gegevens standaard over van de on-premises Netezza-server naar een Azure-opslagaccount of Azure SQL Data Warehouse-database met behulp van een versleutelde verbinding via Hypertext Transfer Protocol Secure (HTTPS). HTTPS biedt data-encryptie tijdens het transport en voorkomt afluisteren en man-in-the-middle-aanvallen.
+Azure Data Factory brengt standaard gegevens over van de on-premises Netezza-server naar een Azure Storage-account of Azure SQL Data Warehouse-data base door gebruik te maken van een versleutelde verbinding via Hypertext Transfer Protocol Secure (HTTPS). HTTPS biedt gegevens versleuteling tijdens de overdracht en voor komt het afluis teren en man-in-the-middle-aanvallen.
 
-Als u niet wilt dat gegevens via het openbare internet worden overgedragen, u ook helpen bij het bereiken van een hogere beveiliging door gegevens over te dragen via een privé-peeringkoppeling via Azure Express Route. 
+Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kunt u een betere beveiliging bieden door gegevens over een koppeling met een privé-peering over te brengen via Azure Express route. 
 
-De volgende sectie bespreekt hoe u een hogere beveiliging bereiken.
+In de volgende sectie wordt beschreven hoe u betere beveiliging kunt krijgen.
 
 ## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
-In deze sectie worden twee manieren besproken om uw gegevens te migreren.
+In deze sectie worden twee manieren beschreven om uw gegevens te migreren.
 
-### <a name="migrate-data-over-the-public-internet"></a>Gegevens migreren via het openbare internet
+### <a name="migrate-data-over-the-public-internet"></a>Gegevens migreren via het open bare Internet
 
-![Gegevens migreren via het openbare internet](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+![Gegevens migreren via het open bare Internet](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
 
-Het voorgaande diagram kan als volgt worden geïnterpreteerd:
+Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
-- In deze architectuur draagt u gegevens veilig over door HTTPS via het openbare internet te gebruiken.
+- In deze architectuur kunt u gegevens veilig overdragen met behulp van HTTPS via het open bare Internet.
 
-- Om deze architectuur te bereiken, moet u de runtime van Azure Data Factory-integratie (zelf gehost) installeren op een Windows-machine achter een bedrijfsfirewall. Zorg ervoor dat deze integratieruntime rechtstreeks toegang heeft tot de Netezza-server. Als u uw netwerk- en gegevensopslagbandbreedte volledig wilt gebruiken om gegevens te kopiëren, u uw machine handmatig opschalen of opschalen naar meerdere machines.
+- Als u deze architectuur wilt realiseren, moet u de Azure Data Factory Integration runtime (zelf-hostend) installeren op een Windows-computer achter een bedrijfs firewall. Zorg ervoor dat deze Integration runtime rechtstreeks toegang krijgt tot de Netezza-server. Als u uw netwerk-en gegevens opslag bandbreedte volledig wilt gebruiken om gegevens te kopiëren, kunt u de machine hand matig schalen of uitschalen naar meerdere machines.
 
-- Met deze architectuur u zowel de eerste momentopnamegegevens als deltagegevens migreren.
+- Met deze architectuur kunt u zowel initiële momentopname gegevens als Delta gegevens migreren.
 
-### <a name="migrate-data-over-a-private-network"></a>Gegevens migreren via een privénetwerk 
+### <a name="migrate-data-over-a-private-network"></a>Gegevens migreren via een particulier netwerk 
 
-![Gegevens migreren via een privénetwerk](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+![Gegevens migreren via een particulier netwerk](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
 
-Het voorgaande diagram kan als volgt worden geïnterpreteerd:
+Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
-- In deze architectuur migreert u gegevens via een privé-peeringkoppeling via Azure Express Route en worden gegevens nooit via het openbare internet overgemaakt. 
+- In deze architectuur migreert u gegevens via een koppeling met een persoonlijke peering via Azure Express route en worden gegevens nooit via het open bare Internet gepasseerd. 
 
-- Om deze architectuur te bereiken, moet u de runtime van Azure Data Factory-integratie (zelf gehost) installeren op een Virtuele Windows-machine (VM) in uw virtuele Azure-netwerk. Als u uw netwerk- en gegevensopslagbandbreedte volledig wilt gebruiken om gegevens te kopiëren, u uw VM handmatig opschalen of uitschalen naar meerdere VM's.
+- Voor deze architectuur moet u de Azure Data Factory Integration runtime (zelf-hostend) installeren op een virtuele Windows-machine (VM) in uw virtuele Azure-netwerk. Als u uw netwerk-en gegevens opslag bandbreedte volledig wilt gebruiken om gegevens te kopiëren, kunt u de virtuele machine hand matig schalen of uitschalen naar meerdere Vm's.
 
-- Met deze architectuur u zowel de eerste momentopnamegegevens als deltagegevens migreren.
+- Met deze architectuur kunt u zowel initiële momentopname gegevens als Delta gegevens migreren.
 
 ## <a name="implement-best-practices"></a>Best practices implementeren 
 
 ### <a name="manage-authentication-and-credentials"></a>Verificatie en referenties beheren 
 
-- Als u wilt verifiëren bij Netezza, u [ODBC-verificatie gebruiken via verbindingstekenreeks.](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties) 
+- U kunt [ODBC-verificatie via Connection String](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)gebruiken om te verifiëren bij Netezza. 
 
-- Ga als een verifiëren in Azure Blob-opslag: 
+- Verificatie bij Azure Blob-opslag: 
 
-   - We raden ten zeerste aan [beheerde identiteiten te gebruiken voor Azure-bronnen.](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) Dankzij beheerde identiteiten u pijplijnen configureren zonder dat u referenties hoeft te leveren in de definitie van Linked Service.  
+   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity). Beheerde identiteiten zijn gebaseerd op een automatisch beheerde Azure Data Factory identiteit in Azure Active Directory (Azure AD), zodat u pijp lijnen kunt configureren zonder dat er referenties moeten worden opgegeven in de definitie van de gekoppelde service.  
 
-   - U ook verifiëren naar Azure Blob-opslag met behulp van [serviceprincipal,](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)een [handtekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of een [opslagaccountsleutel](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
+   - U kunt ook verifiëren voor Azure Blob Storage met behulp van de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), een [hand tekening voor gedeelde toegang](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)of een sleutel voor het [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
 
-- Ga als een verificatie naar Azure Data Lake Storage Gen2: 
+- Verifiëren bij Azure Data Lake Storage Gen2: 
 
-   - We raden ten zeerste aan [beheerde identiteiten te gebruiken voor Azure-bronnen.](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)
+   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity).
    
-   - U ook [serviceprincipal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of een [opslagaccountsleutel](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)gebruiken. 
+   - U kunt ook een sleutel voor de [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) of een [opslag account](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)gebruiken. 
 
-- Verificatie naar Azure SQL Data Warehouse:
+- Verifiëren bij Azure SQL Data Warehouse:
 
-   - We raden ten zeerste aan [beheerde identiteiten te gebruiken voor Azure-bronnen.](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)
+   - Het is raadzaam [beheerde identiteiten te gebruiken voor Azure-resources](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity).
    
-   - U ook [serviceprincipal-](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) of [SQL-verificatie](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)gebruiken.
+   - U kunt ook [Service-Principal](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) of [SQL-verificatie](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)gebruiken.
 
-- Wanneer u beheerde identiteiten niet gebruikt voor Azure-bronnen, raden we u ten zeerste aan [de referenties in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) op te slaan om het eenvoudiger te maken om sleutels centraal te beheren en te roteren zonder dat azure data factory-gekoppelde services hoeven te worden gewijzigd. Dit is ook een van de [best practices voor CI / CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- Wanneer u geen beheerde identiteiten voor Azure-resources gebruikt, raden we u ten zeerste aan [de referenties op te slaan in azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) om het eenvoudiger te maken om sleutels te beheren en te draaien zonder dat u Azure Data Factory gekoppelde services hoeft te wijzigen. Dit is ook een van de [Aanbevolen procedures voor CI/cd](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
 
-### <a name="migrate-initial-snapshot-data"></a>Eerste momentopnamegegevens migreren 
+### <a name="migrate-initial-snapshot-data"></a>Initiële momentopname gegevens migreren 
 
-Voor kleine tabellen (dat wil zeggen tabellen met een volume van minder dan 100 GB of die binnen twee uur naar Azure kunnen worden gemigreerd), u elke taaktaakbelastinggegevens per tabel laten kopiëren. Voor een grotere doorvoer u meerdere Azure Data Factory-kopieertaken uitvoeren om afzonderlijke tabellen tegelijkertijd te laden. 
+Voor kleine tabellen (dat wil zeggen: tabellen met een volume kleiner dan 100 GB of die binnen twee uur naar Azure kunnen worden gemigreerd), kunt u elke taak voor het laden van gegevens per tabel maken. Voor een hogere door Voer kunt u meerdere Azure Data Factory Kopieer taken uitvoeren om afzonderlijke tabellen gelijktijdig te laden. 
 
-Binnen elke kopieertaak u parallelle query's uitvoeren en gegevens kopiëren op partities, en u ook een bepaald niveau van parallellisme bereiken door de [ `parallelCopies` eigenschapsinstelling](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) te gebruiken met een van de volgende opties voor gegevenspartitie:
+U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de [ `parallelCopies` instelling](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) van de eigenschap met een van de volgende opties voor de gegevens partitie:
 
-- Om een grotere efficiëntie te bereiken, raden we u aan om vanuit een dataslice te gaan.  Zorg ervoor dat de `parallelCopies` waarde in de instelling lager is dan het totale aantal gegevenssegmentpartities in uw tabel op de Netezza-server.  
+- Voor een grotere efficiëntie kunt u het beste beginnen met een gegevens segment.  Zorg ervoor dat de waarde in de `parallelCopies` instelling lager is dan het totale aantal gegevens segment partities in de tabel op de Netezza-server.  
 
-- Als het volume van elke dataslicepartitie nog steeds groot is (bijvoorbeeld 10 GB of meer), raden we u aan om over te schakelen naar een partitie met dynamisch bereik. Deze optie geeft u meer flexibiliteit om het aantal partities en het volume van elke partitie te definiëren op partitiekolom, bovengrens en ondergrens.
+- Als het volume van elke gegevens segment partitie nog steeds groot is (bijvoorbeeld 10 GB of meer), raden we u aan om over te scha kelen naar een dynamische bereik partitie. Deze optie biedt meer flexibiliteit voor het definiëren van het aantal partities en het volume van elke partitie per partitie kolom, bovengrens en ondergrens.
 
-Voor grotere tabellen (dat wil zeggen tabellen met een volume van 100 GB of meer of die niet binnen twee uur naar Azure *kunnen* worden gemigreerd), raden we u aan de gegevens te partitioneren op basis van aangepaste query en vervolgens elke copy-job één partitie tegelijk te laten kopiëren. Voor een betere doorvoer u meerdere Azure Data Factory-kopieertaken tegelijk uitvoeren. Voor elk exemplaartaakdoel van het laden van één partitie op aangepaste query, u de doorvoer verhogen door parallellisme in te schakelen via gegevenssegment of dynamisch bereik. 
+Voor grotere tabellen (dat wil zeggen: tabellen met een volume van 100 GB of meer of die binnen twee uur niet naar Azure *kunnen* worden gemigreerd), raden we u aan om de gegevens te partitioneren op basis van een aangepaste query en vervolgens elke kopie-taak een partitie per keer te kopiëren. Voor een betere door Voer kunt u meerdere Azure Data Factory kopie taken gelijktijdig uitvoeren. Voor elk Kopieer taak doel van het laden van één partitie door een aangepaste query kunt u de door Voer verhogen door middel van parallellisme via gegevens segment of dynamisch bereik. 
 
-Als een kopieertaak mislukt vanwege een probleem met een tijdelijke netwerk- of gegevensarchief, u de mislukte kopieertaak opnieuw uitvoeren om die specifieke partitie uit de tabel opnieuw te laden. Andere kopieertaken die andere partities laden, worden niet beïnvloed.
+Als een Kopieer taak mislukt vanwege een tijdelijk probleem in het netwerk of het gegevens archief, kunt u de mislukte Kopieer taak opnieuw uitvoeren om deze specifieke partitie uit de tabel opnieuw te laden. Andere Kopieer taken die andere partities laden, worden niet beïnvloed.
 
-Wanneer u gegevens laadt in een Azure SQL Data Warehouse-database, raden we u aan PolyBase in te schakelen in de kopieertaak met Azure Blob-opslag als faseringsfase.
+Wanneer u gegevens laadt in een Azure SQL Data Warehouse-data base, wordt u aangeraden poly base in de Kopieer taak met Azure Blob Storage in te scha kelen als fase ring.
 
-### <a name="migrate-delta-data"></a>Deltagegevens migreren 
+### <a name="migrate-delta-data"></a>Delta gegevens migreren 
 
-Als u de nieuwe of bijgewerkte rijen uit uw tabel wilt identificeren, gebruikt u een tijdstempelkolom of een verhogingssleutel in het schema. U vervolgens de laatste waarde opslaan als een hoog watermerk in een externe tabel en deze vervolgens gebruiken om de deltagegevens te filteren wanneer u de volgende keer gegevens laadt. 
+Als u de nieuwe of bijgewerkte rijen in de tabel wilt identificeren, gebruikt u een time stamp-kolom of een incrementele sleutel in het schema. U kunt de nieuwste waarde vervolgens opslaan als een bovengrens in een externe tabel en deze vervolgens gebruiken om de Delta gegevens te filteren wanneer u gegevens de volgende keer laadt. 
 
-Elke tabel kan een andere watermerkkolom gebruiken om de nieuwe of bijgewerkte rijen te identificeren. We raden u aan een externe controletabel te maken. In de tabel vertegenwoordigt elke rij één tabel op de Netezza-server met de specifieke naam van de watermerkkolom en de hoge watermerkwaarde. 
+Elke tabel kan een andere watermerk kolom gebruiken om de nieuwe of bijgewerkte rijen te identificeren. We raden u aan om een tabel met externe controle te maken. In de tabel vertegenwoordigt elke rij één tabel op de Netezza-server met de specifieke naam van de watermerk kolom en de bovengrens waarde. 
 
-### <a name="configure-a-self-hosted-integration-runtime"></a>Een zelf gehoste runtime voor integratie configureren
+### <a name="configure-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration runtime configureren
 
-Als u gegevens migreert van de Netezza-server naar Azure, of de server nu on-premises achter uw bedrijfsfirewall of binnen een virtuele netwerkomgeving staat, moet u een zelf gehoste IR installeren op een Windows-machine of VM, de engine die wordt gebruikt om gegevens te verplaatsen. Terwijl u de zelfgehoste IR installeert, raden we u de volgende aanpak aan:
+Als u gegevens migreert van de Netezza-server naar Azure, of de server on-premises achter uw Corporation-firewall is of binnen een virtuele netwerk omgeving, moet u een zelf-hostende IR installeren op een Windows-computer of-VM. Dit is de engine die wordt gebruikt om gegevens te verplaatsen. Wanneer u de zelf-hostende IR installeert, raden we u aan de volgende aanpak te volgen:
 
-- Voor elke Windows-machine of -vm begint u met een configuratie van 32 vCPU- en 128 GB geheugen. U de CPU en het geheugengebruik van de IR-machine tijdens de gegevensmigratie blijven volgen om te zien of u de machine verder moet opschalen voor betere prestaties of de machine moet verkleinen om kosten te besparen.
+- Begin met een configuratie van 32 vCPU en 128-GB geheugen voor elke Windows-machine of-VM. U kunt het CPU-en geheugen gebruik van de IR-machine tijdens de gegevens migratie blijven bewaken om te zien of u de machine verder moet opschalen voor betere prestaties of de machine omlaag kunt schalen om kosten te besparen.
 
-- U ook uitschalen door maximaal vier knooppunten te koppelen aan één zelf gehoste IR. Een enkele kopieertaak die wordt uitgevoerd tegen een zelf gehoste IR, past automatisch alle VM-knooppunten toe om de gegevens parallel te kopiëren. Voor hoge beschikbaarheid begint u met vier VM-knooppunten om één storingspunt tijdens de gegevensmigratie te voorkomen.
+- U kunt ook uitschalen door Maxi maal vier knoop punten te koppelen aan één zelf-hostende IR. Voor één Kopieer taak die wordt uitgevoerd op een zelf-hostende IR, worden automatisch alle VM-knoop punten toegepast om de gegevens parallel te kopiëren. Voor maximale Beschik baarheid begint u met vier VM-knoop punten om te voor komen dat een Single Point of Failure tijdens de gegevens migratie.
 
 ### <a name="limit-your-partitions"></a>Uw partities beperken
 
-Voer als best practice een performance proof of concept (POC) uit met een representatieve voorbeeldgegevensset, zodat u voor elke kopieeractiviteit een geschikte partitiegrootte bepalen. We raden u aan elke partitie binnen twee uur op Azure te laden.  
+Als best practice moet u een test omgeving voor de prestaties uitvoeren met een representatieve voor beeld-gegevensset, zodat u de juiste partitie grootte kunt bepalen voor elke Kopieer activiteit. We raden u aan elke partitie binnen twee uur naar Azure te laden.  
 
-Als u een tabel wilt kopiëren, begint u met één exemplaaractiviteit met één, zelf gehoste IR-machine. Verhoog de `parallelCopies` instelling geleidelijk op basis van het aantal gegevenssegmentpartities in uw tabel. Bekijk of de hele tabel binnen twee uur op Azure kan worden geladen, afhankelijk van de doorvoer die voortvloeit uit de kopieertaak. 
+Als u een tabel wilt kopiëren, begint u met één Kopieer activiteit met één zelf-hostende IR-computer. Verhoog de `parallelCopies` instelling geleidelijk op basis van het aantal gegevens segment partities in de tabel. Bekijk of de volledige tabel binnen twee uur kan worden geladen in azure, afhankelijk van de door Voer die het resultaat is van de Kopieer taak. 
 
-Als het niet binnen twee uur op Azure kan worden geladen en de capaciteit van het zelf gehoste IR-knooppunt en het gegevensarchief niet volledig worden gebruikt, neemt u het aantal gelijktijdige kopieeractiviteiten geleidelijk toe totdat u de limiet van uw netwerk of de bandbreedtelimiet van de gegevensopslag hebt bereikt. 
+Als deze niet binnen twee uur kan worden geladen in azure, en de capaciteit van het zelf-hostende IR-knoop punt en het gegevens archief niet volledig worden gebruikt, verhoogt u het aantal gelijktijdige Kopieer activiteiten geleidelijk totdat u de limiet bereikt van het netwerk of de bandbreedte limiet van de gegevens archieven. 
 
-Houd het CPU- en geheugengebruik op de zelf gehoste IR-machine in de gaten en wees klaar om de machine op te schalen of uit te schalen naar meerdere machines wanneer u ziet dat de CPU en het geheugen volledig worden gebruikt. 
+Bewaak het CPU-en geheugen gebruik op de zelf-hostende IR-computer en bereid u voor om de machine te schalen of uit te breiden naar meerdere machines wanneer u ziet dat de CPU en het geheugen volledig worden gebruikt. 
 
-Wanneer u beperkingsfouten tegenkomt, zoals gerapporteerd door de kopieeractiviteit van `parallelCopies` Azure Data Factory, vermindert u de gelijktijdigheid of instelling in Azure Data Factory of overweegt u de bandbreedte- of I/O-bewerkingen per seconde (IOPS) van de netwerk- en gegevensopslag te verhogen. 
+Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u `parallelCopies` de gelijktijdigheid of instelling in azure Data Factory, of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk en de gegevens opslag te verg Roten. 
 
 
-### <a name="estimate-your-pricing"></a>Uw prijzen schatten 
+### <a name="estimate-your-pricing"></a>Uw prijzen ramen 
 
-Overweeg de volgende pijplijn, die is gemaakt om gegevens van de on-premises Netezza-server te migreren naar een Azure SQL Data Warehouse-database:
+Bekijk de volgende pijp lijn, die is gebouwd om gegevens te migreren van de on-premises Netezza-server naar een Azure SQL Data Warehouse-Data Base:
 
-![De prijspijplijn](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+![De prijs pijplijn](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
-Laten we aannemen dat de volgende uitspraken waar zijn: 
+We gaan ervan uit dat de volgende instructies waar zijn: 
 
-- Het totale datavolume is 50 terabyte (TB). 
+- Het totale gegevens volume is 50 terabytes (TB). 
 
-- We migreren gegevens met behulp van architectuur met de eerste oplossing (de Netezza-server is on-premises, achter de firewall).
+- Gegevens worden gemigreerd met behulp van de eerste oplossings architectuur (de Netezza-server is on-premises, achter de firewall).
 
-- Het 50-TB volume is verdeeld in 500 partities en elke kopieeractiviteit verplaatst één partitie.
+- Het volume van 50 TB is onderverdeeld in 500-partities en elke Kopieer activiteit verplaatst één partitie.
 
-- Elke kopieeractiviteit is geconfigureerd met één zelf gehoste IR tegen vier machines en bereikt een doorvoer van 20 megabyte per seconde (MBps). (Binnen kopieeractiviteit `parallelCopies` is ingesteld op 4 en elke thread om gegevens uit de tabel te laden, bereikt een doorvoervan 5 MBps.)
+- Elke Kopieer activiteit wordt geconfigureerd met één zelf-hostende IR op vier computers en een door Voer van 20 Mega bytes per seconde (MBps). (In de Kopieer activiteit `parallelCopies` is ingesteld op 4 en elke thread voor het laden van gegevens uit de tabel behaalt een door Voer van 5 Mbps.)
 
-- De ForEach-gelijktijdigheid is ingesteld op 3 en de totale doorvoer is 60 MBps.
+- De gelijktijdigheid van ForEach is ingesteld op 3 en de geaggregeerde door Voer is 60 MBps.
 
-- In totaal duurt het 243 uur om de migratie te voltooien.
+- In totaal duurt het 243 uur om de migratie te volt ooien.
 
-Op basis van de voorgaande veronderstellingen, hier is de geschatte prijs: 
+Op basis van de voor gaande hypo theses is dit de geschatte prijs: 
 
-![De prijstabel](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+![De tabel prijzen](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> De prijzen in de voorgaande tabel zijn hypothetisch. Uw werkelijke prijs hangt af van de werkelijke doorvoer in uw omgeving. De prijs voor de Windows-machine (met de zelf gehoste IR geïnstalleerd) is niet inbegrepen. 
+> De prijzen die in de voor gaande tabel worden weer gegeven, zijn hypothetisch. Uw werkelijke prijs is afhankelijk van de werkelijke door Voer in uw omgeving. De prijs voor de Windows-computer (met de zelf-hostende IR) is niet opgenomen. 
 
 ### <a name="additional-references"></a>Aanvullende naslaginformatie
 
-Zie de volgende artikelen en handleidingen voor meer informatie:
+Raadpleeg de volgende artikelen en hand leidingen voor meer informatie:
 
-- [Gegevens migreren van een on-premises relationele datawarehousedatabase naar Azure met Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
+- [Gegevens migreren van een on-premises relationele data warehouse-Data Base naar Azure met behulp van Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza-connector](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC-connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob-opslagconnector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Blob-opslag connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Azure SQL Data Warehouse-connector](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [Tuning-handleiding voor activiteitsprestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [Gids voor het afstemmen van de activiteit prestaties kopiëren](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Zelf-hostende Integration Runtime maken en configureren](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Self-hosted integration runtime HA en schaalbaarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Zelf-hostende runtime HA en schaal baarheid](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Beveiligingsoverwegingen bij het verplaatsen van gegevens](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [Referenties opslaan in Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Gegevens stapsgewijs uit één tabel kopiëren](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [Gegevens stapsgewijs kopiëren uit meerdere tabellen](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
-- [Prijspagina Azure Data Factory](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+- [Gegevens stapsgewijs uit een tabel kopiëren](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
+- [Gegevens stapsgewijs uit meerdere tabellen kopiëren](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Pagina met Azure Data Factory prijzen](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bestanden uit meerdere containers kopiëren met Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Bestanden van meerdere containers kopiëren met behulp van Azure Data Factory](solution-template-copy-files-multiple-containers.md)

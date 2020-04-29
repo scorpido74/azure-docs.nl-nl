@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met Databricks Notebook
-description: Meer informatie over het verwerken of transformeren van gegevens door een Databricks-notitieblok uit te voeren.
+title: Gegevens transformeren met Databricks notebook
+description: Meer informatie over het verwerken of transformeren van gegevens door een Databricks-notebook uit te voeren.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,20 +12,20 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419014"
 ---
-# <a name="transform-data-by-running-a-databricks-notebook"></a>Gegevens transformeren door een Databricks-notitieblok uit te voeren
+# <a name="transform-data-by-running-a-databricks-notebook"></a>Gegevens transformeren door een Databricks-notebook uit te voeren
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Met de Azure Databricks-notitieblokactiviteit in een [datafabriekpijplijn](concepts-pipelines-activities.md) wordt een Databricks-notitieblok uitgevoerd in uw Azure Databricks-werkruimte. Dit artikel bouwt voort op het artikel [over gegevenstransformatieactiviteiten,](transform-data.md) dat een algemeen overzicht geeft van gegevenstransformatie en de ondersteunde transformatieactiviteiten.Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
+Met de activiteit Azure Databricks notebook in een [Data Factory pijp lijn](concepts-pipelines-activities.md) wordt een Databricks-notebook in uw Azure Databricks-werk ruimte uitgevoerd. In dit artikel vindt u een overzicht van het artikel over de [activiteiten](transform-data.md) voor gegevens transformatie, dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
 
-## <a name="databricks-notebook-activity-definition"></a>Gegevensbricks-activiteitsdefinitie
+## <a name="databricks-notebook-activity-definition"></a>Definitie van Databricks-notebook-activiteit
 
-Hier is de voorbeeld-JSON-definitie van een Databricks-notitieblokactiviteit:
+Hier volgt een voor beeld van de JSON-definitie van een Databricks-notebook activiteit:
 
 ```json
 {
@@ -53,24 +53,24 @@ Hier is de voorbeeld-JSON-definitie van een Databricks-notitieblokactiviteit:
 }
 ```
 
-## <a name="databricks-notebook-activity-properties"></a>Activiteitseigenschappen Databricks Notebook
+## <a name="databricks-notebook-activity-properties"></a>Eigenschappen van Databricks notebook-activiteit
 
-In de volgende tabel worden de JSON-eigenschappen beschreven die worden gebruikt in de JSON-definitie:
+In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt:
 
 |Eigenschap|Beschrijving|Vereist|
 |---|---|---|
-|name|Naam van de activiteit in de pijplijn.|Ja|
-|description|Tekst waarin wordt beschreven wat de activiteit doet.|Nee|
-|type|Voor Gegevensbricks-notitieblokactiviteit is het activiteitstype DatabricksNotebook.|Ja|
-|linkedServiceName|Naam van de Databricks Linked Service waarop het Databricks-notitieblok wordt uitgevoerd. Zie Artikel [Gekoppelde services](compute-linked-services.md) berekenen voor meer informatie over deze gekoppelde service.|Ja|
-|notitieblokPad|Het absolute pad van het notitieblok dat moet worden uitgevoerd in de Databricks Workspace. Dit pad moet beginnen met een slash.|Ja|
-|basisparameters|Een array van sleutelwaardeparen. Basisparameters kunnen worden gebruikt voor elke activiteitsrun. Als het notitieblok een parameter neemt die niet is opgegeven, wordt de standaardwaarde van het notitieblok gebruikt. Meer informatie over parameters in [Databricks Notebooks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nee|
-|bibliotheken|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd en die de taak uitvoeren. Het kan een \<array van string, object>.|Nee|
+|name|De naam van de activiteit in de pijp lijn.|Ja|
+|description|Tekst die beschrijft wat de activiteit doet.|Nee|
+|type|Voor Databricks notebook-activiteit is het type activiteit DatabricksNotebook.|Ja|
+|linkedServiceName|De naam van de gekoppelde Databricks-service waarop de Databricks-notebook wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.|Ja|
+|notebookPath|Het absolute pad van de notebook dat moet worden uitgevoerd in de Databricks-werk ruimte. Dit pad moet beginnen met een slash.|Ja|
+|baseParameters|Een matrix met sleutel-waardeparen. Basis parameters kunnen worden gebruikt voor elke uitvoering van de activiteit. Als het notitie blok een para meter accepteert die niet is opgegeven, wordt de standaard waarde van het notitie blok gebruikt. Meer informatie over para meters in [Databricks-notebooks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nee|
+|bibliotheken|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix van \<teken reeks, object> zijn.|Nee|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Ondersteunde bibliotheken voor Databricks-activiteiten
 
-In de bovenstaande Databricks activiteitsdefinitie geeft u deze bibliotheektypen op: *pot,* *ei,* *whl,* *maven,* *pypi*, *cran*.
+In de bovenstaande definitie van de Databricks-activiteit geeft u deze typen tape wisselaars op: *jar*, *ei*, *WHL*, *maven*, *pypi*, *krans*.
 
 ```json
 {
@@ -110,31 +110,31 @@ In de bovenstaande Databricks activiteitsdefinitie geeft u deze bibliotheektypen
 
 ```
 
-Zie de documentatie [Databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) voor bibliotheektypen voor meer informatie.
+Zie de [Databricks-documentatie](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) voor bibliotheek typen voor meer informatie.
 
-## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Parameters doorgeven tussen notitieblokken en gegevensfabriek
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Para meters door geven tussen notitie blokken en Data Factory
 
-U parameters van de gegevensfabriek doorgeven aan notitieblokken met de eigenschap *baseParameters* in databricks-activiteit. 
+U kunt data factory-para meters door geven aan notebooks met behulp van de eigenschap *baseParameters* in databricks-activiteit. 
 
-In bepaalde gevallen moet u mogelijk bepaalde waarden van notebook terugnaar gegevensfabriek, die kunnen worden gebruikt voor controlestroom (voorwaardelijke controles) in de gegevensfabriek of worden verbruikt door downstream-activiteiten (groottelimiet is 2MB). 
+In bepaalde gevallen kan het nodig zijn om bepaalde waarden van het notitie blok terug te geven aan data factory, dat kan worden gebruikt voor controle stroom (voorwaardelijke controles) in data factory of worden verbruikt door downstream-activiteiten (grootte limiet is 2 MB). 
 
-1. In uw notitieblok u [dbutils.notebook.exit('returnValue')](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) bellen en wordt de bijbehorende 'returnValue' teruggestuurd naar de gegevensfabriek.
+1. In uw notitie blok kunt u [dbutils. notebook. Exit ("returnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) aanroepen en de bijbehorende ' returnValue ' wordt geretourneerd aan Data Factory.
 
-2. U de uitvoer in de gegevensfabriek gebruiken met expressie zoals `'@activity('databricks notebook activity name').output.runOutput'`. 
+2. U kunt de uitvoer in data factory gebruiken door gebruik te maken van `'@activity('databricks notebook activity name').output.runOutput'`een expressie zoals. 
 
    > [!IMPORTANT]
-   > Als u het JSON-object passeert, u waarden ophalen door eigenschapsnamen toe te schrijven. Voorbeeld: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > Als u een JSON-object doorgeeft, kunt u waarden ophalen door de namen van eigenschappen toe te voegen. Voorbeeld: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Een bibliotheek uploaden in Databricks
 
-#### <a name="using-databricks-workspace-ui"></a>[Gebruikersinterface van databricks-werkruimte gebruiken](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[De gebruikers interface van Databricks werk ruimte gebruiken](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Als u het dbfs-pad van de bibliotheek wilt verkrijgen dat is toegevoegd met behulp van ui, u de [Databricks CLI (installatie)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)gebruiken. 
+U kunt de [DATABRICKS cli (installatie)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)gebruiken om het dbfs-pad op te halen van de bibliotheek die wordt toegevoegd met behulp van de gebruikers interface. 
 
-Doorgaans worden de Jar-bibliotheken opgeslagen onder dbfs:/FileStore/jars tijdens het gebruik van de gebruikersinterface. U een lijst maken van alle via de CLI: *databricks fs ls dbfs:/FileStore/jars*.
+De jar-bibliotheken worden normaal gesp roken opgeslagen onder dbfs:/File Store/potten tijdens het gebruik van de gebruikers interface. U kunt alle weer geven via de CLI: *databricks FS ls dbfs:/File Store/potten*.
 
 
 
-#### <a name="copy-library-using-databricks-cli"></a>[Bibliotheek kopiëren met Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Bibliotheek kopiëren met behulp van Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-Voorbeeld: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*
+Voor beeld: *databricks FS CP sparkpi-assembly-0.1. jar dbfs:/File Store/potten*

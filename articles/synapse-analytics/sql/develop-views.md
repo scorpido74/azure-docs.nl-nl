@@ -1,6 +1,6 @@
 ---
-title: T-SQL-weergaven met Synapse SQL
-description: Tips voor het gebruik van T-SQL-weergaven en het ontwikkelen van oplossingen met Synapse SQL.
+title: T-SQL-weer gaven met Synapse SQL
+description: Tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met Synapse SQL.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,34 +10,34 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428652"
 ---
-# <a name="t-sql-views-using-synapse-sql"></a>T-SQL-weergaven met Synapse SQL
-In dit artikel vindt u tips voor het gebruik van T-SQL-weergaven en het ontwikkelen van oplossingen met Synapse SQL. 
+# <a name="t-sql-views-using-synapse-sql"></a>T-SQL-weer gaven met Synapse SQL
+In dit artikel vindt u tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen met Synapse SQL. 
 
-## <a name="why-use-views"></a>Waarom weergaven gebruiken?
+## <a name="why-use-views"></a>Waarom weer gaven gebruiken?
 
-Weergaven kunnen op verschillende manieren worden gebruikt om de kwaliteit van uw oplossing te verbeteren.  In dit artikel worden enkele voorbeelden belicht van hoe u uw oplossing verrijken met weergaven en worden de beperkingen beschreven die in overweging moeten worden genomen.
+Weer gaven kunnen op verschillende manieren worden gebruikt om de kwaliteit van uw oplossing te verbeteren.  In dit artikel worden enkele voor beelden gegeven van hoe u uw oplossing kunt verrijken met weer gaven en de beperkingen kunt opnemen die moeten worden overwogen.
 
-### <a name="sql-pool---create-view"></a>SQL-groep - weergave maken
-
-> [!NOTE]
-> **SQL-groep:** Syntaxis voor WEERGAVE MAKEN wordt niet besproken in dit artikel. Zie de documentatie [WEERGAVE MAKEN](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
-
-### <a name="sql-on-demand-preview---create-view"></a>SQL on-demand (preview) - weergave maken
+### <a name="sql-pool---create-view"></a>SQL-groep-weer gave maken
 
 > [!NOTE]
-> **SQL on-demand:** Syntaxis voor CREATE VIEW wordt niet besproken in dit artikel. Zie de documentatie [WEERGAVE MAKEN](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+> **SQL-groep**: de syntaxis voor de weer gave Create wordt niet in dit artikel besproken. Zie de documentatie voor het [maken van weer gaven](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
-## <a name="architectural-abstraction"></a>Architecturale abstractie
+### <a name="sql-on-demand-preview---create-view"></a>SQL on-demand (preview): weer gave maken
 
-Een gemeenschappelijk toepassingspatroon is het opnieuw maken van tabellen met [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS), waarna een objectdenaampatroon wordt gewijzigd tijdens het laden van gegevens.
+> [!NOTE]
+> **SQL on-demand**: de syntaxis voor de weer gave Create wordt niet beschreven in dit artikel. Zie de documentatie voor het [maken van weer gaven](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
-In het volgende voorbeeld worden nieuwe datumrecords toegevoegd aan een datumdimensie. Houd er rekening mee hoe een nieuwe tabel, DimDate_New, eerst wordt gemaakt en vervolgens wordt hernoemd om de oorspronkelijke versie van de tabel te vervangen.
+## <a name="architectural-abstraction"></a>Samen vatting van architectuur
+
+Een algemeen toepassings patroon is het opnieuw maken van tabellen met [Create Table als Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS), gevolgd door een patroon voor het wijzigen van de naam van een object tijdens het laden van gegevens.
+
+In het volgende voor beeld worden nieuwe datum records toegevoegd aan een datum dimensie. U ziet dat een nieuwe tabel, DimDate_New, eerst wordt gemaakt en de naam ervan wordt gewijzigd om de oorspronkelijke versie van de tabel te vervangen.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -57,29 +57,29 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Houd er rekening mee dat deze aanpak ertoe kan leiden dat tabellen worden weergegeven en verdwijnen uit de weergave van een gebruiker en dat er 'tabel bestaat niet' foutberichten worden gevraagd. Weergaven kunnen worden gebruikt om gebruikers een consistente presentatielaag te bieden terwijl de onderliggende objecten een andere naam krijgen.
+Houd er wel op dat deze benadering kan leiden tot tabellen die worden weer gegeven en weer gegeven in de weer gave van een gebruiker en prompts "tabel bestaat niet". Weer gaven kunnen worden gebruikt om gebruikers een consistente presentatielaag te geven terwijl de namen van de onderliggende objecten worden gewijzigd.
 
-Door toegang te bieden tot gegevens via weergaven, hebben gebruikers geen zichtbaarheid nodig voor de onderliggende tabellen. Naast een consistente gebruikerservaring zorgt deze laag ervoor dat analyseontwerpers het gegevensmodel kunnen ontwikkelen. De mogelijkheid om de onderliggende tabellen te ontwikkelen betekent dat ontwerpers CTAS kunnen gebruiken om de prestaties te maximaliseren tijdens het gegevenslaadproces.
+Door toegang te bieden tot gegevens via weer gaven, hebben gebruikers geen zicht baarheid van de onderliggende tabellen nodig. Naast een consistente gebruikers ervaring zorgt deze laag ervoor dat Analytics-ontwerpers het gegevens model kunnen ontwikkelen. De mogelijkheid om de onderliggende tabellen te ontwikkelen, betekent dat ontwerpers CTAS kunnen gebruiken om de prestaties tijdens het proces van het laden van gegevens te maximaliseren.
 
 ## <a name="performance-optimization"></a>Optimalisatie van prestaties
 
-Weergaven kunnen ook worden gebruikt om prestatiegeoptimaliseerde joins tussen tabellen af te dwingen. Een weergave kan bijvoorbeeld een redundante distributiesleutel bevatten als onderdeel van de verbindingscriteria om gegevensverplaatsing te minimaliseren.
+Weer gaven kunnen ook worden gebruikt voor het afdwingen van prestaties geoptimaliseerde samen voegingen tussen tabellen. Een weer gave kan bijvoorbeeld een redundante distributie sleutel bevatten als onderdeel van de samenvoegings criteria om de verplaatsing van gegevens te minimaliseren.
 
-Het forceren van een specifieke query of joinhint is een ander voordeel van het gebruik van T-SQL-weergaven. Als zodanig zorgt de weergavecapaciteit ervoor dat joins altijd optimaal worden uitgevoerd. U vermijdt de noodzaak voor gebruikers om de juiste constructie voor hun joins te onthouden.
+Het afdwingen van een specifieke query of samen voegen Hint is een ander voor deel van het gebruik van T-SQL-weer gaven. Als zodanig zorgt de weer gaven er voor dat samen voegingen altijd op een optimale manier worden uitgevoerd. U kunt voor komen dat gebruikers de juiste construct voor hun deelname onthouden.
 
 ## <a name="limitations"></a>Beperkingen
 
-Weergaven in Synapse SQL worden alleen opgeslagen als metagegevens. De volgende opties zijn dan ook niet beschikbaar:
+Weer gaven in Synapse SQL worden alleen als meta gegevens opgeslagen. De volgende opties zijn daarom niet beschikbaar:
 
-* Er is geen schemabindingsoptie
-* Basistabellen kunnen niet worden bijgewerkt via de weergave
-* Weergaven kunnen niet worden gemaakt via tijdelijke tabellen
-* Er is geen ondersteuning voor de EXPAND / NOEXPAND hints
-* Er zijn geen geïndexeerde weergaven in Synapse SQL
+* Er is geen optie voor schema bindingen
+* Basis tabellen kunnen niet worden bijgewerkt in de weer gave
+* Er kunnen geen weer gaven worden gemaakt over tijdelijke tabellen
+* Er is geen ondersteuning voor de Uitvouw-en deexpand-hints
+* Er zijn geen geïndexeerde weer gaven in Synapse SQL
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Synapse SQL-ontwikkelingsoverzicht](develop-overview.md)voor meer ontwikkelingstips.
+Zie [Synapse SQL Development Overview](develop-overview.md)(Engelstalig) voor meer tips voor ontwikkel aars.
 
 
 

@@ -1,28 +1,28 @@
 ---
-title: RunToCompletion-semantiek in servicestructuur
-description: Beschrijft RunToCompletion semantiek in Service Fabric.
+title: RunToCompletion-semantiek in Service Fabric
+description: Beschrijft RunToCompletion-semantiek in Service Fabric.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431291"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
-Service Fabric begint met versie 7.1 en ondersteunt **RunToCompletion-semantiek** voor containers en [uitvoerbare][guest-executables-introduction-link] toepassingen voor [gasten.][containers-introduction-link] Deze semantiek maakt toepassingen en services mogelijk die een taak voltooien en afsluiten, in tegenstelling tot, altijd toepassingen en services uitvoeren.
+Vanaf versie 7,1 biedt Service Fabric ondersteuning voor **RunToCompletion** -semantiek voor [containers][containers-introduction-link] en [uitvoer bare gast][guest-executables-introduction-link] toepassingen. Met deze semantiek kunnen toepassingen en services die een taak uitvoeren en worden afgesloten, in tegens telling tot, altijd uitgevoerde toepassingen en services.
 
-Voordat we verder gaan met dit artikel, raden we aan om vertrouwd te raken met het [Service Fabric-toepassingsmodel][application-model-link] en het [Service Fabric-hostingmodel.][hosting-model-link]
+Voordat u verder gaat met dit artikel, raden we u aan vertrouwd te raken met het [service Fabric-toepassings model][application-model-link] en het [service Fabric hosting model][hosting-model-link].
 
 > [!NOTE]
-> RunToCompletion semantiek worden momenteel niet ondersteund voor services die zijn geschreven met behulp van het [programmeermodel Betrouwbare services.][reliable-services-link]
+> RunToCompletion-semantiek wordt momenteel niet ondersteund voor services die zijn geschreven met behulp van het [reliable Services][reliable-services-link] -programmeer model.
  
-## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion semantiek en -specificatie
-RunToCompletion semantiek kan worden opgegeven als **uitvoeringsbeleid** bij [het importeren van het ServiceManifest][application-and-service-manifests-link]. Het opgegeven beleid wordt overgenomen door alle CodePackages die het ServiceManifest omvatten. Het volgende fragment ApplicationManifest.xml geeft een voorbeeld.
+## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion-semantiek en-specificatie
+RunToCompletion-semantiek kunnen worden opgegeven als een **ExecutionPolicy** bij [het importeren van de ServiceManifest][application-and-service-manifests-link]. Het opgegeven beleid wordt overgenomen door alle CodePackages die de ServiceManifest omvatten. Het volgende ApplicationManifest. XML-fragment bevat een voor beeld.
 
 ```xml
 <ServiceManifestImport>
@@ -32,22 +32,22 @@ RunToCompletion semantiek kan worden opgegeven als **uitvoeringsbeleid** bij [he
   </Policies>
 </ServiceManifestImport>
 ```
-**ExecutionPolicy** staat de volgende twee kenmerken toe:
+**ExecutionPolicy** maakt de volgende twee kenmerken mogelijk:
 * **Type:** **RunToCompletion** is momenteel de enige toegestane waarde voor dit kenmerk.
-* **Opnieuw opstarten:** Met dit kenmerk geeft u het herstartbeleid op dat wordt toegepast op CodePackages, bestaande uit het ServicePackage, op fout. Een CodePackage die afsluit met een **niet-nulexitcode** wordt beschouwd als mislukt. Toegestane waarden voor dit kenmerk zijn **OnFailure** en **Nooit** met **OnFailure** als standaard.
+* **Opnieuw opstarten:** Met dit kenmerk geeft u het beleid voor opnieuw opstarten op dat wordt toegepast op CodePackages die bestaan uit de ServicePackage, bij fout. Een code package die wordt afgesloten met een **afsluit code die niet gelijk** is aan nul, wordt gezien als mislukt. Toegestane waarden voor dit kenmerk zijn **OnFailure** en **nooit** met **OnFailure** de standaard instelling.
 
-Met het herstartbeleid ingesteld **op OnFailure**, als een CodePackage mislukt **(niet-nul exit code)**, wordt het opnieuw gestart, met back-offs tussen herhaalde fouten. Als het herstartbeleid is ingesteld op **Nooit**, als een CodePackage mislukt, wordt de implementatiestatus van het Geïmplementeerdservicepakket gemarkeerd als **Mislukt,** maar mogen andere CodePackages doorgaan met de uitvoering. Als alle CodePackages die de ServicePackage uitvoeren tot een succesvolle voltooiing **(exitcode 0)** worden uitgevoerd, wordt de implementatiestatus van het Geïmplementeerdservicepakket gemarkeerd als **RanToCompletion**. 
+Wanneer het beleid voor opnieuw opstarten is ingesteld op **OnFailure**, wordt het opnieuw gestart met een back-up tussen herhaalde fouten als een code package mislukt **(niet-nul afsluit code)**. Wanneer het beleid voor opnieuw opstarten niet is ingesteld op **nooit**, wordt de implementatie status van de DeployedServicePackage als **mislukt** gemarkeerd, maar andere CodePackages zijn toegestaan om door te gaan met de uitvoering. Als alle CodePackages waaruit de ServicePackage wordt uitgevoerd, zijn voltooid **(afsluit code 0)**, wordt de implementatie status van de DeployedServicePackage als **RanToCompletion**gemarkeerd. 
 
-## <a name="complete-example-using-runtocompletion-semantics"></a>Voorbeeld voltooien met RunToCompletion-semantiek
+## <a name="complete-example-using-runtocompletion-semantics"></a>Volledig voor beeld met behulp van RunToCompletion-semantiek
 
-Laten we eens kijken naar een compleet voorbeeld met behulp van RunToCompletion semantiek.
+Laten we eens kijken naar een volledig voor beeld met behulp van RunToCompletion-semantiek.
 
 > [!IMPORTANT]
-> In het volgende voorbeeld wordt ervan uitgegaan dat u vertrouwd bent met het maken van [Windows-containertoepassingen met Service Fabric en Docker.][containers-getting-started-link]
+> In het volgende voor beeld wordt ervan uitgegaan dat u bekend bent met het maken van [Windows-container toepassingen met Service Fabric en docker][containers-getting-started-link].
 >
-> In dit voorbeeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel voor alle versies van een hostbesturingssysteem. Zie [Compatibiliteit van windows containerversies voor](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)meer informatie.
+> In dit voor beeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel in alle versies van een host-besturings systeem. Zie compatibiliteit met Windows- [container versie](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
 
-Het volgende ServiceManifest.xml beschrijft een ServicePackage bestaande uit twee CodePackages, die containers vertegenwoordigen. *RunToCompletionCodePackage1* registreert alleen een bericht naar **stdout** en exits. *RunToCompletionCodePackage2* pingt het loopback-adres een tijdje en sluit vervolgens af met een exitcode van **0,** **1** of **2**.
+In het volgende ServiceManifest. XML wordt een ServicePackage beschreven dat bestaat uit twee CodePackages, die containers vertegenwoordigen. *RunToCompletionCodePackage1* meldt alleen een bericht aan **stdout** en wordt afgesloten. *RunToCompletionCodePackage2* pingt het loop back-adres voor een tijdje en sluit af met een afsluit code van **0**, **1** of **2**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Het volgende ServiceManifest.xml beschrijft een ServicePackage bestaande uit twe
 </ServiceManifest>
 ```
 
-De volgende ApplicationManifest.xml beschrijft een toepassing op basis van de hierboven besproken ServiceManifest.xml. Hiermee wordt **runtocompletion-uitvoeringsbeleid** **ExecutionPolicy** voor *WindowsRunToCompletionServicePackage* opgegeven met een herstartbeleid van **OnFailure**. Bij activering van *WindowsRunToCompletionServicePackage*wordt de samenstellende CodePackages gestart. *RunToCompletionCodePackage1* moet bij de eerste activering met succes worden afgesloten. *RunToCompletionCodePackage2* kan echter mislukken **(niet-nul exitcode)**, in welk geval het opnieuw wordt gestart omdat het herstartbeleid **OnFailure**is.
+In het volgende ApplicationManifest. XML-bestand wordt een toepassing beschreven op basis van de hierboven beschreven ServiceManifest. XML. Hiermee wordt **RunToCompletion** **ExecutionPolicy** voor *WindowsRunToCompletionServicePackage* opgegeven met het beleid voor opnieuw opstarten van **OnFailure**. Bij de activering van *WindowsRunToCompletionServicePackage*wordt het onderdeel CodePackages gestart. *RunToCompletionCodePackage1* moet bij de eerste activering worden afgesloten. *RunToCompletionCodePackage2* kan echter mislukken **(niet-nul afsluit code)**, in dat geval wordt de computer opnieuw opgestart nadat het beleid voor opnieuw opstarten is **OnFailure**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -102,22 +102,22 @@ De volgende ApplicationManifest.xml beschrijft een toepassing op basis van de hi
   </DefaultServices>
 </ApplicationManifest>
 ```
-## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>Implementatiestatus van een geïmplementeerdServicepakket opvragen
-Implementatiestatus van een GeïmplementeerdServicepakket kan worden opgevraagd vanuit PowerShell met [Get-ServiceFabricDeployedServicePackage][deployed-service-package-link] of van C# met [fabricclient-API][fabric-client-link] [GetDeployedServicePackageListAsync(String, Uri, String)][deployed-service-package-fabricclient-link]
+## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>De implementatie status van een DeployedServicePackage opvragen
+De implementatie status van een DeployedServicePackage kan worden opgevraagd vanuit Power shell met [Get-ServiceFabricDeployedServicePackage][deployed-service-package-link] of vanuit C# met behulp van [FabricClient][fabric-client-link] API [GetDeployedServicePackageListAsync (teken reeks, URI, teken reeks)][deployed-service-package-fabricclient-link]
 
-## <a name="considerations-when-using-runtocompletion-semantics"></a>Overwegingen bij het gebruik van RunToCompletion semantiek
+## <a name="considerations-when-using-runtocompletion-semantics"></a>Overwegingen bij het gebruik van RunToCompletion-semantiek
 
-De volgende punten moeten worden opgemerkt voor de huidige RunToCompletion-ondersteuning.
-* Deze semantiek wordt alleen ondersteund voor [containers][containers-introduction-link] en [gastuitvoerbare][guest-executables-introduction-link] toepassingen.
-* Upgradescenario's voor toepassingen met RunToCompletion-semantiek zijn niet toegestaan. Gebruikers moeten dergelijke toepassingen verwijderen en opnieuw maken, indien nodig.
-* Failovergebeurtenissen kunnen ervoor zorgen dat CodePackages opnieuw wordt uitgevoerd na succesvolle voltooiing, op hetzelfde knooppunt of op andere knooppunten van het cluster. Voorbeelden van failovergebeurtenissen zijn: knooppunt opnieuw wordt opgestart en servicefabric runtime-upgrades op een knooppunt.
+De volgende punten moeten worden genoteerd voor de huidige RunToCompletion-ondersteuning.
+* Deze semantiek worden alleen ondersteund voor [containers][containers-introduction-link] en [uitvoer bare gast][guest-executables-introduction-link] toepassingen.
+* Upgrade scenario's voor toepassingen met RunToCompletion-semantiek zijn niet toegestaan. Gebruikers moeten deze toepassingen, indien nodig, verwijderen en opnieuw maken.
+* Failover-gebeurtenissen kunnen ervoor zorgen dat CodePackages opnieuw wordt uitgevoerd nadat de voltooiing is voltooid, op hetzelfde knoop punt of op andere knoop punten van het cluster. Voor beelden van failover-gebeurtenissen zijn het opnieuw opstarten van knoop punten en het Service Fabric van runtime-upgrades op een knoop punt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor gerelateerde informatie.
+Raadpleeg de volgende artikelen voor gerelateerde informatie.
 
 * [Service Fabric en containers.][containers-introduction-link]
-* [Service Fabric en gast executables.][guest-executables-introduction-link]
+* [Uitvoer bare bestanden van Service Fabric en gast.][guest-executables-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

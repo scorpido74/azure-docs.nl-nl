@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Studio oplossen (voorbeeld)
+title: Problemen met Azure Synapse Studio oplossen (preview)
 description: Problemen met Azure Synapse Studio oplossen
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,95 +8,95 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431317"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (preview) probleemoplossing
+# <a name="azure-synapse-studio-preview-troubleshooting"></a>Problemen met Azure Synapse Studio (preview) oplossen
 
-Deze handleiding voor het oplossen van problemen geeft instructies over welke informatie u moet verstrekken bij het openen van een ondersteuningsticket voor problemen met de netwerkconnectiviteit. Met de juiste informatie kunnen we het probleem mogelijk sneller oplossen.
+Deze hand leiding voor het oplossen van problemen bevat instructies over welke informatie moet worden geboden bij het openen van een ondersteunings ticket voor problemen met de netwerk verbinding. Met de juiste informatie kunnen we het probleem mogelijk sneller oplossen.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL on-demand (preview) serviceconnectiviteitsprobleem
+## <a name="sql-on-demand-preview-service-connectivity-issue"></a>Verbindings probleem met de service on demand van SQL (preview)
 
 ### <a name="symptom-1"></a>Symptoom 1
 
-De optie 'SQL on-demand' wordt grijs weergegeven in de vervolgkeuzelijst 'Verbinden met'.
+De optie ' SQL op aanvraag ' is grijs weer gegeven in de vervolg keuzelijst verbinding maken met.
 
-![symptoom1](media/troubleshooting-synapse-studio/symptom1v2.png)
+![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>Symptoom 2
 
-Als u de query uitvoert met 'SQL on-demand', krijgt u het foutbericht 'Kan geen verbinding met de server tot stand worden gebracht'.
+Als u de query uitvoert met ' SQL on-demand ', wordt het fout bericht ' kan geen verbinding maken met server ' weer gegeven.
 
-![symptoom2](media/troubleshooting-synapse-studio/symptom2.png)
+![symptom2](media/troubleshooting-synapse-studio/symptom2.png)
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
 > [!NOTE] 
->    De volgende stappen voor probleemoplossing zijn voor Chromium Edge en Chrome. U andere browsers (zoals FireFox) gebruiken met dezelfde stappen voor het oplossen van problemen, maar het venster 'Hulpprogramma voor ontwikkelaars' kan een andere indeling hebben dan de schermafbeeldingen in deze TSG. Gebruik indien mogelijk geen klassieke Edge voor het oplossen van problemen, omdat het in bepaalde situaties onjuiste informatie kan weergeven.
+>    De volgende stappen voor probleem oplossing zijn van chroom rand en Chrome. U kunt andere browsers (zoals FireFox) gebruiken met dezelfde probleemoplossings stappen, maar het venster voor ontwikkel aars heeft mogelijk een andere indeling dan de scherm afbeeldingen in deze TSG. Gebruik zo mogelijk geen klassieke rand voor het oplossen van problemen, omdat deze mogelijk onnauwkeurige informatie in een bepaalde situatie weergeeft.
 
-Open het deelvenster Diagnostische gegevens en selecteer de knop Diagnostische gegevens downloaden. Bewaar de gedownloade informatie voor foutrapportage. U in plaats daarvan de Sessie-ID kopiëren en deze bij voegen bij het openen van het ondersteuningsticket.
+Open het deel venster diagnostische gegevens, selecteer de knop diagnose downloaden. De gedownloade informatie voor fout rapportage te hand haven. U kunt in plaats daarvan de sessie-ID kopiëren en deze koppelen wanneer het ondersteunings ticket wordt geopend.
 
-![diagnostische informatie](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
+![Diagnostische gegevens](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
 
-Als u problemen wilt oplossen, probeert u de bewerking die u hebt uitgevoerd in Azure Synapse Studio opnieuw.
+Voer de bewerking uit die u in azure Synapse Studio hebt uitgevoerd om te beginnen met het oplossen van problemen.
 
-- Selecteer voor symptoom 1 de knop Vernieuwen rechts van de vervolgkeuzelijst 'Database gebruiken' op het tabblad 'SQL-script' en controleer of u 'SQL on-demand' zien.
-- Probeer voor symptoom 2 de query opnieuw uit te voeren om te zien of deze met succes wordt uitgevoerd.
+- Selecteer voor symptoom 1 de knop Vernieuwen rechts van de vervolg keuzelijst ' Data Base gebruiken ' op het tabblad SQL-script en controleer of u ' SQL on-demand ' kunt zien.
+- Voor symptoom 2 voert u de query opnieuw uit om te zien of deze met succes wordt uitgevoerd.
 
-Als het probleem nog steeds bestaat, drukt u op F12 in uw browser om 'Extra ontwikkelaarstools' (DevTools) te openen.
+Als het probleem zich nog steeds voordoet, drukt u op F12 in uw browser om "Ontwikkelhulpprogramma's" (DevTools) te openen.
 
-Schakel in het venster 'Hulpmiddelen voor ontwikkelaars' over naar het deelvenster Netwerk. Selecteer indien nodig de knop 'Wissen' op de werkbalk in het deelvenster Netwerk.
-Controleer of 'Cache uitschakelen' in het deelvenster Netwerk is ingeschakeld.
+Ga in het venster Ontwikkelhulpprogramma's naar het deel venster "netwerk". Selecteer zo nodig de knop wissen op de werk balk in het deel venster netwerk.
+Controleer of "cache uitschakelen" in het paneel netwerk is ingeschakeld.
 
-Probeer de bewerking die u hebt uitgevoerd opnieuw in Azure Synapse Studio. Mogelijk worden er nieuwe items weergegeven in de lijst Netwerk in 'Hulpmiddelen voor ontwikkelaars'. Noteer uw huidige systeemtijd om te bieden in het ondersteuningsticket.
+Voer de bewerking opnieuw uit die u hebt uitgevoerd in azure Synapse Studio. U ziet mogelijk nieuwe items die worden weer gegeven in de lijst ' netwerk ' in Ontwikkelhulpprogramma's. Noteer uw huidige systeem tijd om in het ondersteunings ticket op te geven.
 
-![netwerkpaneel](media/troubleshooting-synapse-studio/network-panel.png)
+![netwerk paneel](media/troubleshooting-synapse-studio/network-panel.png)
 
-Zoek het item waarvan de url-kolom overeenkomt met het volgende patroon:
+Zoek het item waarvan de URL-kolom overeenkomt met het volgende patroon:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Waar [*A*] de naam van uw werkruimte is en "-ondemand" "sqlod" zou kunnen zijn en waar [*B*] een databasenaam moet zijn, zoals "master". Er moeten hoogstens twee items met dezelfde URL-waarde zijn, maar verschillende methodewaarden; OPTIES EN POST. Controleer of deze twee items "200" of "20x" hebben onder de statuskolom, waar "x" een enkel cijfer kan zijn.
+Waarbij [*A*] de naam van uw werk ruimte is en "-OnDemand" kan '-sqlod ' zijn en waarbij [*B*] een database naam moet zijn, zoals "Master". Er mogen Maxi maal twee items met dezelfde URL-waarde maar andere methode waarden zijn. OPTIES en POST. Controleer of deze twee items ' 200 ' of ' 20x ' bevatten in de kolom Status, waarbij ' x ' één cijfer kan zijn.
 
-Als een van hen heeft iets anders dan "20x" en:
+Als een van beide items een andere waarde heeft dan ' 20x ' en:
 
-- status begint met '(mislukt)",, verbreed de kolom Status of plaats de aanwijzer boven de statustekst om de volledige tekst weer te geven. Voeg de tekst en/of screenshot toe bij het openen van het ondersteuningsticket.
+- status begint met ' (mislukt) ', breid de kolom ' status ' uit of Beweeg de muis aanwijzer over de status tekst om de volledige tekst te zien. Neem de tekst en/of de scherm opname op wanneer u het ondersteunings ticket opent.
 
-    ![statustekst](media/troubleshooting-synapse-studio/status-text.png)
+    ![status-tekst](media/troubleshooting-synapse-studio/status-text.png)
 
-    - Als u ERR_NAME_NOT_RESOLVED ziet en u uw werkruimte binnen 10 minuten hebt gemaakt, wacht u 10 minuten en probeert u opnieuw te zien of het probleem nog bestaat.
-    - Als u ERR_INTERNET_DISCONNECTED of ERR_NETWORK_CHANGED ziet, kan dit erop wijzen dat uw pc-netwerkverbinding problemen ondervindt. Controleer uw netwerkverbinding en probeer de bewerking opnieuw uit.
-    - Als u ziet ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR of andere foutcodes met 'SSL', kan dit erop wijzen dat uw lokale SSL-configuratie problemen ondervindt of heeft uw netwerkbeheerder de toegang tot de SQL on-demandserver geblokkeerd. Open een ondersteuningsticket en voeg de foutcode toe aan de beschrijving.
-    - Als u ERR_NETWORK_ACCESS_DENIED ziet, moet u mogelijk contact opnemen met de beheerder of uw lokale firewallbeleid de toegang tot het domein *.database.windows.net of externe poort 1443 heeft geblokkeerd.
-    - Probeer eventueel onmiddellijk dezelfde bewerking op een andere machine en/of netwerkomgeving om een probleem met de netwerkconfiguratie op uw pc uit te sluiten.
+    - Als ERR_NAME_NOT_RESOLVED en u uw werk ruimte binnen 10 minuten hebt gemaakt, wacht u 10 minuten en probeert u opnieuw of het probleem zich nog steeds voordoet.
+    - Als ERR_INTERNET_DISCONNECTED of ERR_NETWORK_CHANGED wordt weer geven, is het mogelijk dat de netwerk verbinding van uw PC problemen ondervindt. Controleer uw netwerk verbinding en voer de bewerking opnieuw uit.
+    - Als ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR of andere fout codes met "SSL" worden weer geven, is het mogelijk dat uw lokale SSL-configuratie problemen ondervindt of dat uw netwerk beheerder de toegang tot de SQL Server op aanvraag heeft geblokkeerd. Open een ondersteunings ticket en koppel de fout code in de beschrijving.
+    - Als ERR_NETWORK_ACCESS_DENIED wordt weer geven, moet u mogelijk de beheerder vragen of uw lokale firewall beleid de toegang heeft geblokkeerd tot een database.windows.net-domein of externe poort 1443.
+    - Probeer eventueel dezelfde bewerking direct op een andere computer en/of netwerk omgeving om een probleem met de netwerk configuratie op uw PC uit te voeren.
 
-- status is "40x", "50x" of andere getallen, selecteer op het item(s) om de details te zien. U ziet de details van het item aan de rechterkant. Zoek de sectie 'Antwoordkoptekst'; controleer vervolgens of er een item met de naam "access-control-allow-origin" bestaat. Controleer zo ja, controleer of het een van de volgende waarden heeft:
+- de status is "40x", "50x" of andere nummers. Selecteer de items om de details weer te geven. U ziet nu de item gegevens aan de rechter kant. De sectie antwoord header zoeken; Controleer vervolgens of een item met de naam ' Access-Control-Allow-Origin ' bestaat. Als dit het geval is, controleert u of deze een van de volgende waarden heeft:
 
     - `*`(enkel sterretje)
-    - https://web.azuresynapse.net/(of een andere waarde waarmee de tekst in de adresbalk van uw browser begint)
+    - https://web.azuresynapse.net/(of een andere waarde die de tekst in de adres balk van de browser begint met)
 
-Als de antwoordkop een van de bovenstaande waarden bevat, betekent dit dat we de foutinformatie al hadden moeten verzamelen. U indien nodig een ondersteuningsticket openen en optioneel de schermafbeelding van de itemdetails toevoegen.
+Als de antwoord header een van de bovenstaande waarden bevat, betekent dit dat de informatie over de fout al is verzameld. U kunt indien nodig een ondersteunings ticket openen en desgewenst de scherm afbeelding van de item gegevens toevoegen.
 
-Als u de koptekst niet zien of als de koptekst geen van de hierboven vermelde waarden heeft, koppelt u een schermafbeelding van de itemdetails bij wanneer u het ticket opent.
+Als de koptekst niet kan worden weer gegeven of als de koptekst niet een van de bovenstaande waarden bevat, koppelt u een scherm opname van de item gegevens wanneer u het ticket opent.
 
-![objectdetails](media/troubleshooting-synapse-studio/item-details.png)
+![item-Details](media/troubleshooting-synapse-studio/item-details.png)
 
-Als de bovenstaande stappen uw probleem niet oplossen, moet u mogelijk een ondersteuningsticket openen. Vermeld bij het indienen van uw ondersteuningsticket de 'Sessie-ID' of 'Diagnostische informatie' die aan het begin van deze handleiding is gedownload.
+Als u met de bovenstaande stappen het probleem niet kunt oplossen, moet u mogelijk een ondersteunings ticket openen. Wanneer u uw ondersteunings ticket verzendt, neemt u de "sessie-ID" of "diagnostische gegevens" die aan het begin van deze hand leiding zijn gedownload.
 
-Wanneer u het probleem meldt, u optioneel een screenshot maken van het tabblad 'Console' in de 'Hulpmiddelen voor ontwikkelaars' en het koppelen aan het ondersteuningsticket. Scroll door de inhoud en maak indien nodig meer dan één screenshot om het hele bericht vast te leggen.
+Wanneer u het probleem meldt, kunt u eventueel een scherm opname maken van het tabblad ' console ' in het ' Ontwikkelhulpprogramma's ' en dit koppelen aan het ondersteunings ticket. De inhoud schuiven en meer dan één scherm opname maken, indien nodig, om het hele bericht vast te leggen.
 
-![developer-tool-console](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![hulp programma voor ontwikkel aars-console](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
-Als u screenshots koppelt, geeft u de tijd (of een geschat tijdsbereik) op van wanneer u de screenshots hebt gemaakt. Het zal ons helpen bij het onderzoeken van het probleem.
+Als u scherm afbeeldingen koppelt, geeft u de tijd (of een schatting van het tijds bereik) op van het moment waarop u de scherm opnamen hebt gemaakt. Het helpt ons bij het inkijken van het probleem.
 
-Bepaalde browsers ondersteunen het weergeven van tijdstempels op het tabblad Console. Open voor Chromium Edge/Chrome het dialoogvenster 'Instellingen' in 'Hulpmiddelen voor ontwikkelaars' en schakel op het tabblad 'Tijdstempels weergeven' in 'Voorkeuren'.
+Bepaalde browsers ondersteunen het weer geven van tijds tempels op het tabblad ' console '. Open voor chroom rand/Chrome het dialoog venster instellingen in Ontwikkelhulpprogramma's en schakel het selectie vakje tijds tempels weer geven in op het tabblad voor keuren.
 
-![instellingen voor ontwikkelaars-tool-console](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![Developer-Tool-console-Settings](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![show-time-stempel](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![tijds tempel weer geven](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Als de vorige stappen helpen om het probleem op te lossen [Een ondersteuningsticket maken](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Als de vorige stappen niet helpen bij het oplossen van het probleem, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

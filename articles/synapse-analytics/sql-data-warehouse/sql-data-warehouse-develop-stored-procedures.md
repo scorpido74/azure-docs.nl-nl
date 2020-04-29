@@ -1,6 +1,6 @@
 ---
-title: Met behulp van opgeslagen procedures
-description: Tips voor het ontwikkelen van oplossingen door het implementeren van opgeslagen procedures in Synapse SQL-pool.
+title: Opgeslagen procedures gebruiken
+description: Tips voor het ontwikkelen van oplossingen door opgeslagen procedures in de SQL-groep Synapse te implementeren.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,48 +11,48 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ffdf7a66c2562b43fc2ed02bb088ab1095118fb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416160"
 ---
 # <a name="using-stored-procedures-in-synapse-sql-pool"></a>Opgeslagen procedures gebruiken in Synapse SQL-pool
 
-Dit artikel bevat tips voor het ontwikkelen van SQL-pooloplossingen door het implementeren van opgeslagen procedures.
+In dit artikel vindt u tips voor het ontwikkelen van oplossingen voor SQL-groepen door het implementeren van opgeslagen procedures.
 
-## <a name="what-to-expect"></a>Wat te verwachten
+## <a name="what-to-expect"></a>Wat u kunt verwachten
 
-SQL-pool ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL Server. Wat nog belangrijker is, er zijn scale-out specifieke functies die u gebruiken om de prestaties van uw oplossing te maximaliseren.
+De SQL-groep ondersteunt veel van de T-SQL-functies die worden gebruikt in SQL Server. Belang rijker is dat er specifieke functies zijn die u kunt gebruiken om de prestaties van uw oplossing te optimaliseren.
 
-Om u te helpen de schaal en prestaties van SQL-pool te behouden, zijn er extra functies en functionaliteiten met gedragsverschillen.
+Om u te helpen de schaal en prestaties van de SQL-groep te behouden, zijn er aanvullende functies en functionaliteiten die gedrags verschillen hebben.
 
-## <a name="introducing-stored-procedures"></a>Invoering van opgeslagen procedures
+## <a name="introducing-stored-procedures"></a>Inleiding tot opgeslagen procedures
 
-Opgeslagen procedures zijn een geweldige manier om uw SQL-code in te kapselen, die dicht bij uw SQL-poolgegevens wordt opgeslagen. Opgeslagen procedures helpen ontwikkelaars ook hun oplossingen te modulariseren door de code in te kapselen in beheerbare eenheden, waardoor een grotere herbruikbaarheid van code wordt vergemakkelijkt. Elke opgeslagen procedure kan ook parameters accepteren om ze nog flexibeler te maken.
+Opgeslagen procedures zijn een uitstekende manier om uw SQL-code te integreren, die dicht bij de gegevens van uw SQL-groep wordt opgeslagen. Opgeslagen procedures helpen ontwikkel aars ook om hun oplossingen te modularize door de code in te delen in beheer bare eenheden, waardoor een grotere bruikbaarheid van code kan worden vergemakkelijkt. Elke opgeslagen procedure kan ook para meters accepteren om ze nog flexibeler te maken.
 
-SQL-pool biedt een vereenvoudigde en gestroomlijnde implementatie van opgeslagen procedures. Het grootste verschil met SQL Server is dat de opgeslagen procedure geen vooraf gecompileerde code is.
+SQL-groep biedt een vereenvoudigde en gestroomlijnde implementatie van opgeslagen procedures. Het grootste verschil ten opzichte van SQL Server is dat de opgeslagen procedure geen vooraf gecompileerde code is.
 
-Over het algemeen is de compilatietijd voor gegevensmagazijnen klein in vergelijking met de tijd die nodig is om query's uit te voeren tegen grote gegevensvolumes. Het is belangrijker om ervoor te zorgen dat de opgeslagen procedurecode correct is geoptimaliseerd voor grote query's.
+Over het algemeen geldt dat voor data warehouses de compilatie tijd klein is in vergelijking met de tijd die nodig is om query's uit te voeren op grote gegevens volumes. Het is belang rijker om ervoor te zorgen dat de opgeslagen procedure code correct is geoptimaliseerd voor grote query's.
 
 > [!TIP]
-> Het doel is om uren, minuten en seconden te besparen, niet milliseconden. Het is dus handig om opgeslagen procedures te zien als containers voor SQL-logica.
+> Het doel is om uren, minuten en seconden op te slaan, niet in milliseconden. Het is dus handig om opgeslagen procedures te beschouwen als containers voor SQL-logica.
 
-Wanneer SQL-pool uw opgeslagen procedure uitvoert, worden de SQL-instructies ontleed, vertaald en geoptimaliseerd tijdens uitvoering. Tijdens dit proces wordt elke instructie omgezet in gedistribueerde query's. De SQL-code die tegen de gegevens wordt uitgevoerd, is anders dan de query die is ingediend.
+Wanneer de SQL-groep uw opgeslagen procedure uitvoert, worden de SQL-instructies geparseerd, vertaald en geoptimaliseerd tijdens runtime. Tijdens dit proces wordt elke instructie geconverteerd naar gedistribueerde query's. De SQL-code die wordt uitgevoerd op basis van de gegevens, wijkt af van de query die is verzonden.
 
 ## <a name="nesting-stored-procedures"></a>Opgeslagen procedures nesten
 
-Wanneer opgeslagen procedures andere opgeslagen procedures oproepen of dynamische SQL uitvoeren, wordt gezegd dat de interne opgeslagen procedure of codeaanroep is genest.
+Wanneer opgeslagen procedures andere opgeslagen procedures aanroepen of dynamische SQL uitvoeren, wordt de interne opgeslagen procedure of het aanroepen van de code genest.
 
-SQL-pool ondersteunt maximaal acht nestniveaus. Het nestniveau in SQL Server is daarentegen 32.
+De SQL-pool ondersteunt Maxi maal acht geneste niveaus. Het nest niveau in SQL Server daarentegen is 32.
 
-De opgeslagen procedureaanroep op het hoogste niveau komt overeen met nestniveau 1.
+De op het hoogste niveau opgeslagen procedure aanroep is gelijk aan nest niveau 1.
 
 ```sql
 EXEC prc_nesting
 ```
 
-Als de opgeslagen procedure ook een andere EXEC-oproep doet, neemt het nestniveau toe tot twee.
+Als de opgeslagen procedure ook een andere EXEC-aanroep maakt, neemt het nest niveau toe tot twee.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -62,7 +62,7 @@ GO
 EXEC prc_nesting
 ```
 
-Als de tweede procedure vervolgens een dynamische SQL uitvoert, neemt het nestniveau toe tot drie.
+Als de tweede procedure vervolgens een aantal dynamische SQL-procedures uitvoert, neemt het nest niveau toe tot drie.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -72,28 +72,28 @@ GO
 EXEC prc_nesting
 ```
 
-SQL-groep ondersteunt momenteel geen [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Als zodanig moet je het nestniveau volgen. Het is onwaarschijnlijk dat u de limiet van acht nesten niveau overschrijdt. Maar als je dat doet, moet je je code aanpassen aan de nestniveaus binnen deze limiet.
+De SQL-pool ondersteunt momenteel geen [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Als zodanig moet u het nest niveau bijhouden. Het is niet waarschijnlijk dat u de limiet van acht geneste niveaus overschrijdt. Maar als u dat wel doet, moet u uw code opnieuw instellen zodat deze overeenkomt met de geneste niveaus binnen deze limiet.
 
-## <a name="insertexecute"></a>Invoegen.. Uitvoeren
+## <a name="insertexecute"></a>INVOEGEN.. AANVALLER
 
-Sql-groep staat u niet toe om de resultatenset van een opgeslagen procedure te gebruiken met een INSERT-instructie. Er is echter een alternatieve aanpak die u gebruiken. Zie bijvoorbeeld het artikel over [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md).
+De SQL-groep staat niet toe dat u de resultatenset van een opgeslagen procedure gebruikt met een instructie INSERT. Er is echter een andere methode die u kunt gebruiken. Zie het artikel over [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)voor een voor beeld.
 
 ## <a name="limitations"></a>Beperkingen
 
-Er zijn enkele aspecten van transact-SQL opgeslagen procedures die niet zijn geïmplementeerd in SQL-groep, die als volgt zijn:
+Er zijn een aantal aspecten van opgeslagen Transact-SQL-procedures die niet in SQL-groep zijn geïmplementeerd. Dit zijn de volgende:
 
-* tijdelijk opgeslagen procedures
+* tijdelijke opgeslagen procedures
 * genummerde opgeslagen procedures
 * uitgebreide opgeslagen procedures
-* CLR opgeslagen procedures
-* versleutelingsoptie
-* replicatieoptie
-* tabelwaardeparameters
-* alleen-lezen parameters
-* standaardparameters
-* uitvoeringscontexten
-* retouroverzicht
+* Opgeslagen CLR-procedures
+* versleutelings optie
+* replicatie optie
+* tabelwaardeparameter
+* alleen-lezen-para meters
+* standaard parameters
+* uitvoerings contexten
+* instructie return
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md)
+Zie [ontwikkelings overzicht](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars.

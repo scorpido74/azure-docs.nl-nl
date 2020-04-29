@@ -1,34 +1,34 @@
 ---
-title: Initializer CodePackages in Service Fabric
-description: Beschrijft Initializer CodePackages in Service Fabric.
+title: Initialisatie functie CodePackages in Service Fabric
+description: Beschrijft initialisatie functie-CodePackages in Service Fabric.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430628"
 ---
-# <a name="initializer-codepackages"></a>Initializer CodePackages
+# <a name="initializer-codepackages"></a>CodePackages voor initialisatiefunctie
 
-Service Fabric begint met versie 7.1 en ondersteunt **Initializer CodePackages** voor [containers][containers-introduction-link] en [gastuitvoerbare][guest-executables-introduction-link] toepassingen. Initializer CodePackages bieden de mogelijkheid om initialisaties uit te voeren op de ServicePackage-scope voordat andere CodePackages met de uitvoering beginnen. Hun relatie met een ServicePackage is analoog aan wat een [SetupEntryPoint][setup-entry-point-link] is voor een CodePackage.
+Vanaf versie 7,1 ondersteunt Service Fabric **initialisatie functie CodePackages** voor [containers][containers-introduction-link] en [uitvoer bare gast][guest-executables-introduction-link] toepassingen. Initialisatie functie CodePackages bieden de mogelijkheid om initialisaties uit te voeren in het ServicePackage-bereik voordat andere CodePackages worden gestart. Hun relatie met een ServicePackage is vergelijkbaar met wat een [SetupEntryPoint][setup-entry-point-link] voor een code package is.
 
-Voordat we verder gaan met dit artikel, raden we aan om vertrouwd te raken met het [Service Fabric-toepassingsmodel][application-model-link] en het [Service Fabric-hostingmodel.][hosting-model-link]
+Voordat u verder gaat met dit artikel, raden we u aan vertrouwd te raken met het [service Fabric-toepassings model][application-model-link] en het [service Fabric hosting model][hosting-model-link].
 
 > [!NOTE]
-> Initializer CodePackages worden momenteel niet ondersteund voor services die zijn geschreven met behulp van het [programmeermodel Betrouwbare Services.][reliable-services-link]
+> Initialisatie functie CodePackages worden momenteel niet ondersteund voor services die zijn geschreven met behulp van het [reliable Services][reliable-services-link] -programmeer model.
  
 ## <a name="semantics"></a>Semantiek
 
-Een Initializer CodePackage wordt verwacht dat deze tot **een succesvolle voltooiing wordt uitgevoerd (exitcode 0).** Een mislukte Initializer CodePackage wordt opnieuw gestart totdat het is voltooid. Meerdere Initializer CodePackages zijn toegestaan en worden uitgevoerd tot **succesvolle voltooiing**, **opeenvolgend**, **in een bepaalde volgorde** voordat andere CodePackages in het ServicePackage beginnen met de uitvoering.
+Er wordt verwacht dat een initialisatie functie-code package wordt uitgevoerd op **geslaagde voltooiing (afsluit code 0)**. Een mislukte initialisatie functie-code package wordt opnieuw gestart totdat deze is voltooid. Meerdere initialisatie-CodePackages zijn toegestaan en worden uitgevoerd tot een **geslaagde voltooiing**, **opeenvolgend** **in een opgegeven volg orde** voordat andere CodePackages in de ServicePackage worden gestart.
 
-## <a name="specifying-initializer-codepackages"></a>Initializer CodePackages opgeven
-U een CodePackage markeren als initialisator door het kenmerk **Initializer** in te stellen **op true** in het ServiceManifest. Wanneer er meerdere Initializer CodePackages zijn, kan de uitvoeringsvolgorde worden opgegeven via het kenmerk **ExecOrder.** **ExecOrder** moet een niet-negatief geheel getal zijn en is alleen geldig voor Initializer CodePackages. Initializer CodePackages met lagere waarden van **ExecOrder** worden als eerste uitgevoerd. Als **ExecOrder** niet is opgegeven voor een Initializer CodePackage, wordt een standaardwaarde van 0 aangenomen. De relatieve uitvoeringsvolgorde van Initializer CodePackages met dezelfde waarde van **ExecOrder** is niet gespecificeerd.
+## <a name="specifying-initializer-codepackages"></a>Initialisatie functie CodePackages opgeven
+U kunt een code package markeren als initializer door het **initialisatie** kenmerk in te stellen op **True** in de ServiceManifest. Wanneer er meerdere initialisatie-CodePackages zijn, kan de volg orde van uitvoering worden opgegeven via het kenmerk **ExecOrder** . **ExecOrder** moet een niet-negatief geheel getal zijn en is alleen geldig voor initializer CodePackages. Initialisatie functie CodePackages met lagere waarden van **ExecOrder** worden eerst uitgevoerd. Als **ExecOrder** niet is opgegeven voor een initialisatie functie code Package, wordt aangenomen dat de standaard waarde 0 is. De relatieve uitvoerings volgorde van de initialisatie functie-CodePackages met dezelfde waarde van **ExecOrder** is niet opgegeven.
 
-In het volgende fragment ServiceManifest worden drie CodePackages beschreven waarvan er twee zijn gemarkeerd als Initializers. Wanneer dit ServicePackage wordt geactiveerd, wordt *InitCodePackage0* eerst uitgevoerd omdat het de laagste waarde van **ExecOrder**heeft. Bij succesvolle voltooiing (exit code 0) van *InitCodePackage0*wordt *InitCodePackage1* uitgevoerd. Ten slotte wordt *workloadcodepakket* uitgevoerd na een succesvolle voltooiing van *InitCodePackage1.*
+Het volgende ServiceManifest-code fragment beschrijft drie CodePackages twee die zijn gemarkeerd als initialen. Als deze ServicePackage is geactiveerd, wordt *InitCodePackage0* eerst uitgevoerd, omdat deze de laagste waarde van **ExecOrder**heeft. Als de voltooiing is voltooid (afsluit code 0) van *InitCodePackage0*, wordt *InitCodePackage1* uitgevoerd. Ten slotte wordt *WorkloadCodePackage* uitgevoerd wanneer *InitCodePackage1*is voltooid.
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -43,16 +43,16 @@ In het volgende fragment ServiceManifest worden drie CodePackages beschreven waa
   ...
 </CodePackage>
 ```
-## <a name="complete-example-using-initializer-codepackages"></a>Voorbeeld voltooien met Initializer CodePackages
+## <a name="complete-example-using-initializer-codepackages"></a>Volledig voor beeld met behulp van initializer CodePackages
 
-Laten we eens kijken naar een compleet voorbeeld met Initializer CodePackages.
+We kijken naar een volledig voor beeld met behulp van initializer CodePackages.
 
 > [!IMPORTANT]
-> In het volgende voorbeeld wordt ervan uitgegaan dat u vertrouwd bent met het maken van [Windows-containertoepassingen met Service Fabric en Docker.][containers-getting-started-link]
+> In het volgende voor beeld wordt ervan uitgegaan dat u bekend bent met het maken van [Windows-container toepassingen met Service Fabric en docker][containers-getting-started-link].
 >
-> In dit voorbeeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel voor alle versies van een hostbesturingssysteem. Zie [Compatibiliteit van windows containerversies voor](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)meer informatie.
+> In dit voor beeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel in alle versies van een host-besturings systeem. Zie compatibiliteit met Windows- [container versie](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
 
-Het volgende ServiceManifest.xml bouwt voort op het eerder beschreven artikel ServiceManifest. *InitCodePackage0,* *InitCodePackage1* en *WorkloadCodePackage* zijn CodePackages die containers vertegenwoordigen. Bij activering wordt *InitCodePackage0* als eerste uitgevoerd. Het registreert een bericht naar een bestand en sluit af. Vervolgens wordt *InitCodePackage1* uitgevoerd, waarbij ook een bericht wordt opgeslagen in een bestand en wordt afgesloten. Ten slotte begint het *WorkloadCodePackage* met de uitvoering. Het registreert ook een bericht naar een bestand, deuitvoer van de inhoud van het bestand naar **stdout** en vervolgens pings voor altijd.
+De volgende ServiceManifest. XML bouwt voort op het ServiceManifest-fragment dat eerder is beschreven. *InitCodePackage0*, *InitCodePackage1* en *WorkloadCodePackage* zijn CodePackages die containers vertegenwoordigen. Na activering wordt *InitCodePackage0* eerst uitgevoerd. Er wordt een bericht in een bestand geregistreerd en afgesloten. Vervolgens wordt *InitCodePackage1* uitgevoerd, waarmee ook een bericht wordt geregistreerd bij een bestand en wordt afgesloten. Ten slotte wordt de *WorkloadCodePackage* uitgevoerd. Ook wordt er een bericht naar een bestand geregistreerd, wordt de inhoud van het bestand naar **stdout** uitgevoerd en wordt vervolgens de opdracht ' altijd '.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ Het volgende ServiceManifest.xml bouwt voort op het eerder beschreven artikel Se
 </ServiceManifest>
 ```
 
-De volgende ApplicationManifest.xml beschrijft een toepassing op basis van de hierboven besproken ServiceManifest.xml. Houd er rekening mee dat het dezelfde **volumehouder** voor alle containers aangeeft, d.w.z. **C:\WorkspaceOnHost** is gemonteerd op **C:\WorkspaceOnContainer** op alle drie de containers. Het netto-effect is dat alle containers naar hetzelfde logboekbestand schrijven in de volgorde waarin ze worden geactiveerd.
+In het volgende ApplicationManifest. XML-bestand wordt een toepassing beschreven op basis van de hierboven beschreven ServiceManifest. XML. Houd er rekening mee dat het dezelfde **volume** koppeling voor alle containers bevat, dat wil zeggen dat **C:\WorkspaceOnHost** wordt gekoppeld aan **C:\WorkspaceOnContainer** op alle drie de containers. Het net-effect is dat alle containers naar hetzelfde logboek bestand schrijven in de volg orde waarin ze zijn geactiveerd.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ De volgende ApplicationManifest.xml beschrijft een toepassing op basis van de hi
   </DefaultServices>
 </ApplicationManifest>
 ```
-Zodra het ServicePackage is geactiveerd, moet de inhoud van **C:\WorkspaceOnHost\log.txt** de volgende zijn.
+Zodra de ServicePackage is geactiveerd, moet de inhoud van **C:\WorkspaceOnHost\log.txt** het volgende zijn.
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt
@@ -138,10 +138,10 @@ Hi from WorkloadCodePackage.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor gerelateerde informatie.
+Raadpleeg de volgende artikelen voor gerelateerde informatie.
 
 * [Service Fabric en containers.][containers-introduction-link]
-* [Service Fabric en gast executables.][guest-executables-introduction-link]
+* [Uitvoer bare bestanden van Service Fabric en gast.][guest-executables-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

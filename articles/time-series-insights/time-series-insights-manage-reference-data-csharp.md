@@ -1,6 +1,6 @@
 ---
-title: Referentiegegevens beheren in GA-omgevingen met C# - Azure Time Series Insights | Microsoft Documenten
-description: Meer informatie over het beheren van referentiegegevens voor uw GA-omgeving door een aangepaste toepassing te maken die is geschreven in C#.
+title: Referentie gegevens beheren in GA omgevingen met C#-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het beheren van referentie gegevens voor uw GA-omgeving door het maken van een aangepaste toepassing die is geschreven in C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,68 +12,68 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416971"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>GA-referentiegegevens beheren voor een Azure Time Series Insights-omgeving met C #
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>GA referentie gegevens voor een Azure Time Series Insights omgeving beheren met C #
 
-In dit artikel wordt uitgelegd hoe u C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)en Azure Active Directory combineren om programmatische API-aanvragen in te dienen voor de AZURE Time Series Insights GA [Reference Data Management API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen naar de api van Azure Time Series Insights ga [Gegevensbeheer](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)te maken.
 
 > [!TIP]
-> Bekijk GA C# [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)code samples op .
+> GA C#-code voorbeelden weer [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)geven op.
 
 ## <a name="summary"></a>Samenvatting
 
-De onderstaande voorbeeldcode toont de volgende kenmerken:
+De voorbeeld code hieronder bevat de volgende functies:
 
-* Het verkrijgen van een access token met behulp van [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
-* Sequentiële bewerkingen voor het maken, lezen, bijwerken en verwijderen van bewerkingen met de GA [Reference Data Management API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
-* Veelvoorkomende antwoordcodes met [veelvoorkomende foutcodes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
+* Een toegangs Token ophalen met behulp van [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
+* Sequentiële CREATE-, READ-, UPDATE-en DELETE-bewerkingen voor de GA [Reference gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Algemene antwoord codes, inclusief [veelvoorkomende fout codes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
     
-    De Reference Data Management API verwerkt elk item afzonderlijk en een fout met één item voorkomt niet dat de anderen het voltooien ervan uitvoeren. Als uw aanvraag bijvoorbeeld 100 objecten bevat en één item een foutmelding heeft, worden 99 items geschreven en wordt er een afgewezen.
+    De referentie Gegevensbeheer-API verwerkt elk item afzonderlijk en een fout met één item verhindert niet dat de anderen kunnen volt ooien. Als uw aanvraag bijvoorbeeld 100 items heeft en er een fout optreedt in een item, worden er 99 items geschreven en wordt er een geweigerd.
 
-## <a name="prerequisites-and-setup"></a>Voorwaarden en installatie
+## <a name="prerequisites-and-setup"></a>Vereisten en installatie
 
-Voer de volgende stappen uit voordat u de voorbeeldcode compileert en uitvoert:
+Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
-1. [Inrichten van een GA Azure Time Series Insights-omgeving.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
-)
+1. [Richt een GA Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+) -omgeving in.
 
-1. [Maak een referentiegegevensset](time-series-insights-add-reference-data-set.md) in uw omgeving. Gebruik het volgende schema voor referentiegegevens:
+1. Maak in uw omgeving [een set met referentie gegevens](time-series-insights-add-reference-data-set.md) . Gebruik het volgende referentie gegevens schema:
 
    | Sleutelnaam | Type |
    | --- | --- |
    | uuid | Tekenreeks | 
 
-1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [Verificatie en autorisatie.](time-series-insights-authentication-and-authorization.md) Gebruik `http://localhost:8080/` als de **Redirect URI**.
+1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). Gebruiken `http://localhost:8080/` als de **omleidings-URI**.
 
-1. Installeer de vereiste projectafhankelijkheden.
+1. Installeer de vereiste project afhankelijkheden.
 
-1. Bewerk de onderstaande voorbeeldcode door elke **#PLACEHOLDER#** te vervangen door de juiste omgevings-id.
+1. Bewerk de voorbeeld code hieronder door elk **#PLACEHOLDER #** te vervangen door de juiste omgevings-id.
 
-1. Voer `dotnet run` uit binnen de hoofdmap van uw project. Gebruik uw gebruikersprofiel om u aan te melden bij Azure wanneer u daarom wordt gevraagd. 
+1. Voer `dotnet run` uit in de hoofdmap van uw project. Wanneer u hierom wordt gevraagd, gebruikt u uw gebruikers profiel om u aan te melden bij Azure. 
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
 
-Het wordt aanbevolen om de nieuwste versie van Visual Studio en **NETCore.app**te gebruiken:
+Het is raadzaam om de nieuwste versie van Visual Studio en **NetCore. app**te gebruiken:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Versie 16.4.2+
-* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) - Versie 2.2.8
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -versie 16.4.2 +
+* [NetCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -versie 2.2.8
 
-De voorbeeldcode heeft twee vereiste afhankelijkheden:
+De voorbeeld code bevat twee vereiste afhankelijkheden:
 
-* MSAL.NET [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) - 4.7.1-pakket.
-* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 12.0.3 pakket.
+* MSAL.NET [micro soft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -4.7.1-pakket.
+* [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3-pakket.
 
-Voeg de pakketten toe met [NuGet 2.12+](https://www.nuget.org/):
+De pakketten toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
 
 * `dotnet add package Newtonsoft.Json --version 12.0.3`
 * `dotnet add package Microsoft.Identity.Client --version 4.7.1`
 
-Of:
+Of
 
 1. Een `csharp-tsi-msal-ga-sample.csproj` bestand declareren:
 
@@ -94,7 +94,7 @@ Of:
     ```
 1. Voer vervolgens `dotnet restore` uit.
 
-## <a name="c-sample-code"></a>C#voorbeeldcode
+## <a name="c-sample-code"></a>C#-voorbeeld code
 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de referentiedocumentatie van de GA [Reference Data Management API.](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)
+- Lees de naslag documentatie over [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) voor Ga naar.

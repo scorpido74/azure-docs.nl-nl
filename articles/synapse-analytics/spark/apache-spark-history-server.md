@@ -1,6 +1,6 @@
 ---
-title: Gebruik de uitgebreide Spark-geschiedenisserver om apps te debuggen - Apache Spark in Azure Synapse
-description: Gebruik de uitgebreide Spark-geschiedenisserver om Spark-toepassingen in Azure Synapse Analytics te opsporen en te diagnosticeren.
+title: De uitgebreide Spark-geschiedenis server gebruiken om fouten op te sporen in apps-Apache Spark in azure Synapse
+description: Gebruik de uitgebreide Spark-geschiedenis server voor het opsporen en diagnosticeren van Spark-toepassingen in azure Synapse Analytics.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,234 +10,234 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429211"
 ---
-# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Gebruik uitgebreide Apache Spark-geschiedenisserver om Apache Spark-toepassingen te debuggen en te diagnosticeren
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
-In dit artikel vindt u richtlijnen voor het gebruik van de uitgebreide Apache Spark-geschiedenisserver om voltooide en voltooide en uitvoerende Spark-toepassingen te debuggen en te diagnosticeren.
+Dit artikel bevat richt lijnen voor het gebruik van de uitgebreide Apache Spark-geschiedenis server voor het opsporen en diagnosticeren van voltooide en actieve Spark-toepassingen.
 
-De extensie bevat een tabblad gegevens, het tabblad grafiek en het tabblad diagnose. Gebruik het tabblad **Gegevens** om de invoer- en uitvoergegevens van de taak Spark te controleren. Op het tabblad **Grafiek** ziet u de gegevensstroom en de herhaling van de taakgrafiek. Op **het** tabblad Diagnose ziet u **Gegevensscheefheid,** **Tijdscheefheid**en **Analyse van het gebruik van de executor**.
+De uitbrei ding bevat een tabblad gegevens, tabblad grafiek en diagnose. gebruik het tabblad **gegevens** om de invoer-en uitvoer gegevens van de Spark-taak te controleren. Op het tabblad **grafiek** ziet u de gegevens stroom en het opnieuw afspelen van de taak grafiek. Het tabblad **diagnose** toont u **gegevens scheefheid**, **tijds scheefheid**en **gebruiks analyse**.
 
-## <a name="access-the-apache-spark-history-server"></a>Toegang tot de Apache Spark-geschiedenisserver
+## <a name="access-the-apache-spark-history-server"></a>De Apache Spark-geschiedenis server openen
 
-Apache Spark-geschiedenisserver is de webgebruikersinterface voor voltooide en uitvoerende Spark-toepassingen. U de webinterface van de Apache Spark-geschiedenisserver openen vanuit de Azure Synapse Analytics.
+Apache Spark geschiedenis server is de webgebruikersinterface voor voltooide en actieve Spark-toepassingen. U kunt de Apache Spark geschiedenis server-webinterface openen vanuit de Azure Synapse Analytics.
 
-### <a name="open-the-spark-history-server-web-ui-from-apache-spark-applications-node"></a>Open de webgebruikersinterface van sparkhistoryserver vanuit knooppunt Apache spark-toepassingen
+### <a name="open-the-spark-history-server-web-ui-from-apache-spark-applications-node"></a>De Web-UI van de Spark-geschiedenis server openen vanuit het knoop punt Apache Spark-toepassingen
 
 1. Open [Azure Synapse Analytics](https://web.azuresynapse.net/).
 
-2. Klik **op Monitor**en selecteer Vervolgens Apache **Spark-toepassingen**.
+2. Klik op **bewaken**en selecteer vervolgens **Apache Spark toepassingen**.
 
-    ![Klik op monitor en selecteer spark-toepassing.](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![Klik op controle en selecteer vervolgens Spark-toepassing.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Selecteer een toepassing en open **vervolgens De query Logboek** en klik erop.
+3. Selecteer een toepassing en open vervolgens **logboek query** door erop te klikken.
 
-    ![Venster logboekquery openen.](./media/apache-spark-history-server/open-application-window.png)
+    ![Logboek query venster openen.](./media/apache-spark-history-server/open-application-window.png)
 
-4. Selecteer **Spark-geschiedenisserver**en de webgebruikersinterface van sparkgeschiedenisserver wordt weergegeven.
+4. Selecteer **Spark-geschiedenis server**, waarna de Web-UI van de Spark-geschiedenis server wordt weer gegeven.
 
-    ![Open spark history server.](./media/apache-spark-history-server/open-spark-history-server.png)
+    ![Open Spark-geschiedenis server.](./media/apache-spark-history-server/open-spark-history-server.png)
 
-### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>De webgebruikersinterface van sparkhistoryserver openen vanuit het gegevensknooppunt
+### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>De Web-UI van de Spark-geschiedenis server van het gegevens knooppunt openen
 
-1. Selecteer **spark-geschiedenisserver** in de cel voor taakuitvoering of in het statuspaneel onder aan het notitieblok van het notitieblok van het notitieblok. Selecteer **Sessiegegevens**.
+1. Selecteer vanuit uw Azure Synapse Studio-notebook **Spark-geschiedenis server** in de uitvoer-cel van de taak of in het deel venster status aan de onderkant van het notebook document. Selecteer **Sessiegegevens**.
 
-   ![Spark-geschiedenisserver starten](./media/apache-spark-history-server/launch-history-server2.png "Spark-geschiedenisserver starten")
+   ![Spark-geschiedenis server starten](./media/apache-spark-history-server/launch-history-server2.png "Spark-geschiedenis server starten")
 
-2. Selecteer **Spark-geschiedenisserver** in het deelvenster Uitschuifing.
+2. Selecteer **Spark-geschiedenis server** in het deel venster schuiven.
 
-   ![Spark-geschiedenisserver starten](./media/apache-spark-history-server/launch-history-server.png "Spark-geschiedenisserver starten")
+   ![Spark-geschiedenis server starten](./media/apache-spark-history-server/launch-history-server.png "Spark-geschiedenis server starten")
 
-## <a name="explore-the-data-tab-in-spark-history-server"></a>Het tabblad Gegevens in de Spark-geschiedenisserver verkennen
+## <a name="explore-the-data-tab-in-spark-history-server"></a>Het tabblad gegevens in de Spark-geschiedenis server verkennen
 
-Selecteer de taak-id voor de taak die u wilt weergeven. Selecteer vervolgens **Gegevens** in het gereedschapsmenu om de gegevensweergave te krijgen. In deze sectie ziet u hoe u verschillende taken uitvoert op het tabblad Gegevens.
+Selecteer de taak-ID voor de taak die u wilt weer geven. Selecteer vervolgens **gegevens** in het menu van het hulp programma om de gegevens weergave op te halen. In deze sectie wordt beschreven hoe u verschillende taken kunt uitvoeren op het tabblad gegevens.
 
-* Controleer de **invoer,** uitvoer **en** **tabelbewerkingen** door de tabbladen afzonderlijk te selecteren.
+* Controleer de **invoer**, **uitvoer**en **tabel bewerkingen** door de tabbladen afzonderlijk te selecteren.
 
-    ![Gegevens voor tabbladen van Spark-toepassingen](./media/apache-spark-history-server/apache-spark-data-tabs.png)
+    ![Gegevens voor de Spark-toepassings tabbladen](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
-* Alle rijen kopiëren door **Kopiëren te**selecteren.
+* Kopieer alle rijen door **kopiëren**te selecteren.
 
-    ![Gegevens voor de kopie van spark-toepassingen](./media/apache-spark-history-server/apache-spark-data-copy.png)
+    ![Gegevens voor het kopiëren van Spark-toepassingen](./media/apache-spark-history-server/apache-spark-data-copy.png)
 
-* Sla alle gegevens op als CSV-bestand door **csv**te selecteren .
+* Sla alle gegevens op als CSV-bestand door **CSV**te selecteren.
 
-    ![Gegevens voor spark-toepassing opslaan](./media/apache-spark-history-server/apache-spark-data-save.png)
+    ![Gegevens voor opslag van Spark-toepassing](./media/apache-spark-history-server/apache-spark-data-save.png)
 
-* Zoeken door trefwoorden in te voeren in veld **Zoeken**. De zoekresultaten worden onmiddellijk weergegeven.
+* Zoek door tref woorden in **zoeken**in velden in te voeren. De zoek resultaten worden onmiddellijk weer gegeven.
 
-    ![Gegevens voor zoeken naar spark-toepassingen](./media/apache-spark-history-server/apache-spark-data-search.png)
+    ![Gegevens voor zoeken in Spark-toepassingen](./media/apache-spark-history-server/apache-spark-data-search.png)
 
-* Selecteer de kolomkop om de tabel te sorteren, selecteer het plusteken om een rij uit te vouwen om meer details weer te geven of selecteer het minteken om een rij samen te vouwen.
+* Selecteer de kolomkop om de tabel te sorteren, selecteer het plus teken om een rij uit te breiden om meer details weer te geven of selecteer het minteken om een rij samen te vouwen.
 
-    ![Gegevens voor de spark-toepassingstabel](./media/apache-spark-history-server/apache-spark-data-table.png)
+    ![Gegevens voor de Spark-toepassings tabel](./media/apache-spark-history-server/apache-spark-data-table.png)
 
-* Download één bestand door **Gedeeltelijke download te**selecteren. Het geselecteerde bestand wordt gedownload naar lokaal. Als het bestand niet meer bestaat, verschijnt er een nieuw tabblad met een foutbericht.
+* Down load een enkel bestand door **gedeeltelijke down load**te selecteren. Het geselecteerde bestand is gedownload naar lokaal. Als het bestand niet meer bestaat, wordt er een nieuw tabblad weer gegeven met een fout bericht.
 
-    ![Rij Gegevens voor de downloadrij van Spark-toepassingen](./media/apache-spark-history-server/sparkui-data-download-row.png)
+    ![Gegevens voor down load rij van Spark-toepassing](./media/apache-spark-history-server/sparkui-data-download-row.png)
 
-* Als u een volledig pad of relatief pad wilt kopiëren, selecteert u de opties **Volledig pad kopiëren** of Relatief pad **kopiëren** dat wordt uitgebreid in het vervolgkeuzemenu. Voor Azure Data Lake Storage-bestanden start **Openen in Azure Storage Explorer** Azure Storage Explorer en zoekt u de map wanneer u bent aangemeld.
+* Als u een volledig pad of een relatief pad wilt kopiëren, selecteert u de opties **volledig kopiëren** of **relatief pad** kopiëren die uit de vervolg keuzelijst worden uitgebreid. Voor Azure Data Lake Storage bestanden **opent u in Azure Storage Explorer** Azure Storage Explorer start en zoekt u de map wanneer u bent aangemeld.
 
-    ![Gegevens voor het kopieerpad van Spark-toepassingen](./media/apache-spark-history-server/sparkui-data-copy-path.png)
+    ![Gegevens voor het pad voor het kopiëren van Spark-toepassingen](./media/apache-spark-history-server/sparkui-data-copy-path.png)
 
-* Selecteer paginanummers onder de tabel om door pagina's te navigeren wanneer er te veel rijen zijn om op één pagina weer te geven.
+* Selecteer pagina nummers onder de tabel om te navigeren in pagina's wanneer er te veel rijen op één pagina worden weer gegeven.
 
-    ![Pagina Gegevens voor spark-toepassing](./media/apache-spark-history-server/apache-spark-data-page.png)
+    ![Gegevens voor de Spark-toepassings pagina](./media/apache-spark-history-server/apache-spark-data-page.png)
 
-* Plaats de plaats op het vraagteken naast **Gegevens** om de knopinfo weer te geven of selecteer het vraagteken om meer informatie te krijgen.
+* Beweeg de muis aanwijzer op het vraag teken naast **gegevens** om de knop Info weer te geven of selecteer het vraag teken voor meer informatie.
 
-    ![Gegevens voor Spark-toepassing meer info](./media/apache-spark-history-server/sparkui-data-more-info.png)
+    ![Gegevens voor Spark-toepassing meer informatie](./media/apache-spark-history-server/sparkui-data-more-info.png)
 
-* Stuur feedback met problemen door **Ons feedback te geven.**
+* Stuur feedback met problemen door **feedback te geven**.
 
-    ![Spark grafiek geven ons feedback weer](./media/apache-spark-history-server/sparkui-graph-feedback.png)
+    ![Spark-grafiek Geef ons feedback](./media/apache-spark-history-server/sparkui-graph-feedback.png)
 
-## <a name="graph-tab-in-apache-spark-history-server"></a>Tabblad Grafiek in de geschiedenisserver apache spark
+## <a name="graph-tab-in-apache-spark-history-server"></a>Tabblad grafiek in Apache Spark geschiedenis server
 
-Selecteer de taak-id voor de taak die u wilt weergeven. Selecteer vervolgens **Grafiek** in het gereedschapsmenu om de weergave van de taakgrafiek te krijgen.
+Selecteer de taak-ID voor de taak die u wilt weer geven. Selecteer vervolgens **grafiek** in het menu van het hulp programma om de weer gave taak grafiek op te halen.
 
 ### <a name="overview"></a>Overzicht
 
-U een overzicht van uw taak zien in de gegenereerde taakgrafiek. Standaard toont de grafiek alle taken. U deze weergave filteren op **taak-id.**
+U ziet een overzicht van uw taak in het gegenereerde taak diagram. In de grafiek worden standaard alle taken weer gegeven. U kunt deze weer gave filteren op **taak-id**.
 
-![Functie-id spark-toepassing en taakgrafiek](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
+![Taak-ID van Spark-toepassing en taak grafiek](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
 ### <a name="display"></a>Weergave
 
-Standaard is het **weergavescherm Voortgang** geselecteerd. U de gegevensstroom controleren door **Lezen** of **Schrijven te** selecteren in de vervolgkeuzelijst **Weergave.**
+Standaard wordt de **voortgangs** weergave geselecteerd. U kunt de gegevens stroom controleren door **lezen** of **geschreven** te selecteren in de vervolg keuzelijst **weer geven** .
 
-![Spark-toepassing en weergave van taakgrafieken](./media/apache-spark-history-server/sparkui-graph-display.png)
+![Weer gave van Spark-toepassings-en taak grafiek](./media/apache-spark-history-server/sparkui-graph-display.png)
 
-Het grafiekknooppunt geeft de kleuren weer die worden weergegeven in de heatmap-legenda.
+Het grafiek knooppunt geeft de kleuren weer die in de heatmap-legenda worden weer gegeven.
 
-![Spark-toepassings- en taakgrafiekheatmap](./media/apache-spark-history-server/sparkui-graph-heatmap.png)
+![Spark-toepassing en taak grafiek heatmap](./media/apache-spark-history-server/sparkui-graph-heatmap.png)
 
 ### <a name="playback"></a>Afspelen
 
-Als u de taak wilt afspelen, selecteert u **Afspelen**. U op elk gewenst moment **Stoppen** selecteren om te stoppen. De taakkleuren geven verschillende statussen weer bij het afspelen:
+Selecteer **afspelen**om de taak af te spelen. U kunt op elk gewenst moment **stoppen** selecteren om te stoppen. De taak kleuren tonen verschillende statussen bij het afspelen van:
 
 |Kleur|Betekenis|
 |-|-|
-|Groen|Geslaagd: De taak is voltooid.|
-|Orange|Opnieuw geprobeerd: taken die zijn mislukt, maar geen invloed hebben op het eindresultaat van de taak. Deze taken hadden dubbele of opnieuw proberen exemplaren die later kunnen slagen.|
-|Blauw|Actief: de taak wordt uitgevoerd.|
-|Wit|Wachten of overgeslagen: de taak wacht om uit te voeren of het podium is overgeslagen.|
+|Groen|Geslaagd: de taak is voltooid.|
+|Orange|Opnieuw geprobeerd: exemplaren van taken die zijn mislukt, maar die geen invloed hebben op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.|
+|Blauw|Uitvoeren: de taak wordt uitgevoerd.|
+|Wit|Wachtend of overgeslagen: de taak wacht op het uitvoeren of het stadium is overgeslagen.|
 |Rood|Mislukt: de taak is mislukt.|
 
-In de volgende afbeelding ziet u de statuskleuren Groen, Oranje en Blauw.
+De volgende afbeelding toont de kleuren groen, oranje en blauw.
 
-![Voorbeeld van spark-toepassing en taakgrafiek, uitgevoerd](./media/apache-spark-history-server/sparkui-graph-color-running.png)
+![Kleur voorbeeld van Spark-toepassing en taak grafiek, uitvoeren](./media/apache-spark-history-server/sparkui-graph-color-running.png)
 
-In de volgende afbeelding worden de statuskleuren Groen en Wit weergegeven.
+In de volgende afbeelding ziet u de kleuren van de groene en witte status.
 
-![Voorbeeld van spark-toepassing en functiegrafiek, overslaan](./media/apache-spark-history-server/sparkui-graph-color-skip.png)
+![Kleur voorbeeld van Spark-toepassing en taak grafiek, overs Laan](./media/apache-spark-history-server/sparkui-graph-color-skip.png)
 
-In de volgende afbeelding ziet u rode en groene statuskleuren.
+In de volgende afbeelding ziet u de kleuren van de rode en groene status.
 
-![Voorbeeld van spark-toepassing en functiegrafiek, mislukt](./media/apache-spark-history-server/sparkui-graph-color-failed.png)
+![Kleur voorbeeld van Spark-toepassing en taak grafiek, mislukt](./media/apache-spark-history-server/sparkui-graph-color-failed.png)
 
 > [!NOTE]  
-> Afspelen voor elke taak is toegestaan. Voor onvolledige taken wordt afspelen niet ondersteund.
+> Het afspelen van elke taak is toegestaan. Voor niet-voltooide taken wordt afspelen niet ondersteund.
 
 ### <a name="zoom"></a>Zoom
 
-Gebruik de muisrol om in en uit te zoomen op de taakgrafiek of selecteer **Zoomen om** het op het scherm te laten passen.
+Gebruik de schuif balk van de muis om in en uit te zoomen op de taak grafiek, of selecteer **Inzoomen passend** maken om deze aan te passen aan het scherm.
 
-![Spark-toepassing en vacaturegrafiekzoom om te passen](./media/apache-spark-history-server/sparkui-graph-zoom2fit.png)
+![Inzoomen op een Spark-toepassing en-taak](./media/apache-spark-history-server/sparkui-graph-zoom2fit.png)
 
 ### <a name="tooltips"></a>Knopinfo
 
-Plaats de plaats in het grafiekknooppunt om de knopinfo te zien wanneer er mislukte taken zijn en selecteer een fase om de werkpagina te openen.
+Beweeg de muis aanwijzer op het grafiek knooppunt om de knop Info weer te geven wanneer er mislukte taken zijn en selecteer een fase om de pagina fase ervan te openen.
 
-![Knopinfo spark-toepassing en taakgrafiek](./media/apache-spark-history-server/sparkui-graph-tooltip.png)
+![Knop Info voor Spark-toepassing en taak grafiek](./media/apache-spark-history-server/sparkui-graph-tooltip.png)
 
-Op het tabblad taakgrafiek hebben fasen een knopinfo en een klein pictogram weergegeven als ze taken hebben die aan de volgende voorwaarden voldoen:
+Op het tabblad taak grafiek worden de knop Info en een klein pictogram weer gegeven als er taken zijn die voldoen aan de volgende voor waarden:
 
 |Voorwaarde|Beschrijving|
 |-|-|
-|Gegevensscheeftrekking|gegevensleesgrootte > gemiddelde leesgrootte van alle taken in deze fase * 2 en de grootte van het lezen van gegevens > 10 MB|
-|Tijdscheefheid|uitvoeringstijd > gemiddelde uitvoeringstijd van alle taken in deze fase * 2 en uitvoeringstijd > 2 minuten|
+|Gegevens scheef trekken|gegevens lezen grootte > gemiddelde grootte van het lezen van gegevens van alle taken in deze fase * 2 en grootte van gegevens lezen > 10 MB|
+|Tijd verschil|uitvoerings tijd > gemiddelde uitvoerings tijd van alle taken in deze fase * 2 en uitvoerings tijd > 2 minuten|
    
-![Pictogram Van toepassing en taakgrafiek scheeftrekken](./media/apache-spark-history-server/sparkui-graph-skew-icon.png)
+![Pictogram van Spark-toepassing en taak grafiek scheefheid](./media/apache-spark-history-server/sparkui-graph-skew-icon.png)
 
-### <a name="graph-node-description"></a>Beschrijving van het grafiekknooppunt
+### <a name="graph-node-description"></a>Beschrijving van grafiek knooppunt
 
-In het taakdiagramknooppunt worden de volgende gegevens van elke fase weergegeven:
+In het knoop punt taak grafiek worden de volgende gegevens van elke fase weer gegeven:
 
-  * Id.
+  * ID.
   * Naam of beschrijving.
-  * Totaal taaknummer.
-  * Gegevens lezen: de som van de input grootte en shuffle leesgrootte.
-  * Gegevens schrijven: de som van de uitvoer grootte en shuffle schrijft grootte.
-  * Uitvoeringstijd: de tijd tussen begintijd van de eerste poging en voltooiingstijd van de laatste poging.
-  * Aantal rij's: de som van invoerrecords, uitvoerrecords, leesrecords voor shuffle en shuffle-schrijfrecords.
-  * Vooruitgang.
+  * Totaal taak nummer.
+  * Gegevens lezen: de som van de invoer grootte en de grootte van de Lees bewerking in wille keurige volg orde.
+  * Gegevens schrijven: de som van de uitvoer grootte en de grootte van schrijf bewerkingen in wille keurige volg orde.
+  * Uitvoerings tijd: de tijd tussen de begin tijd van de eerste poging en voltooiings tijd van de laatste poging.
+  * Aantal rijen: de som van de invoer records, uitvoer records, in wille keurige volg orde records lezen en schrijf records in wille keurige volg orde opslaan.
+  * Gang.
 
     > [!NOTE]  
-    > Standaard geeft het taakdiagramknooppunt informatie weer van de laatste poging van elke fase (met uitzondering van de uitvoeringstijd van de fase). Tijdens het afspelen geeft het grafiekknooppunt echter informatie over elke poging weer.
+    > Het knoop punt taak grafiek geeft standaard informatie weer van de laatste poging van elke fase (met uitzonde ring van de uitvoerings tijd van de fase). Tijdens het afspelen toont het grafiek knooppunt echter informatie van elke poging.
     >  
-    > De gegevensgrootte van lezen en schrijven is 1MB = 1000 KB = 1000 * 1000 Bytes.
+    > De gegevens grootte van lezen en schrijven is 1 MB = 1000 KB = 1000 * 1000 bytes.
 
 ### <a name="provide-feedback"></a>Feedback geven
 
-Stuur feedback met problemen door **Ons feedback te geven.**
+Stuur feedback met problemen door **feedback te geven**.
 
-![Feedback over spark-toepassingen en taakgrafieken](./media/apache-spark-history-server/sparkui-graph-feedback.png)
+![Feedback over Spark-toepassingen en taak grafieken](./media/apache-spark-history-server/sparkui-graph-feedback.png)
 
-## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>Het tabblad Diagnose in de geschiedenisserver van Apache Spark verkennen
+## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>Het tabblad diagnose in Apache Spark geschiedenis server verkennen
 
-Als u het tabblad Diagnose wilt openen, selecteert u een taak-id. Selecteer vervolgens **Diagnosis** in het gereedschapsmenu om de weergave taakdiagnose te krijgen. Het tabblad diagnose bevat **Gegevensscheefheid,** **Tijdscheefheid**en **Analyse van het gebruik van de executor**.
+Selecteer een taak-ID om toegang te krijgen tot het tabblad diagnose. Selecteer vervolgens **diagnose** in het menu van het hulp programma om de taak diagnose weer te geven. Het tabblad diagnose bevat **gegevens scheefheid**, **tijds scheefheid**en **gebruiks analyse**.
 
-Controleer de **gegevensscheefheid,** **tijdscheefheid**en **analyse van het gebruik van de executor** door respectievelijk de tabbladen te selecteren.
+Controleer de **gebruiks analyse** van de **gegevens scheefheid**, het **tijds verschil**en de uitvoerder door de tabbladen respectievelijk te selecteren.
 
-![SparkUI diagnose gegevens scheeftrekken tabblad weer](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
+![SparkUI-tabblad voor diagnose gegevens](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
-### <a name="data-skew"></a>Gegevens scheeftrekken
+### <a name="data-skew"></a>Gegevens scheef trekken
 
-Wanneer u het tabblad **Gegevensscheefheid** selecteert, worden de bijbehorende scheve taken weergegeven op basis van de opgegeven parameters.
+Wanneer u het tabblad **gegevens scheefheid** selecteert, worden de bijbehorende gescheefe taken weer gegeven op basis van de opgegeven para meters.
 
-* **Parameters opgeven** - In de eerste sectie worden de parameters weergegeven die worden gebruikt om gegevensscheefheid te detecteren. De standaardregel is: Taakgegevens lezen is groter dan drie keer van de gemiddelde gelezen taakgegevens en de gelezen taakgegevens meer dan 10 MB. Als u uw eigen regel voor scheve taken wilt definiëren, u uw parameters kiezen, worden de secties **Scheefwerkgebied** en **Verdraaiingsmarge** dienovereenkomstig vernieuwd.
+* **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven, die worden gebruikt voor het detecteren van gegevens scheefheid. De standaard regel is: het lezen van de taak gegevens is groter dan drie keer van het gemiddelde van de taak gegevens gelezen en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen, de secties **scheefe fase** en **schuine tekens** worden dienovereenkomstig vernieuwd.
 
-* **Scheefwerk :** in het tweede deel worden fasen weergegeven die voldoen aan taken die voldoen aan de hierboven vermelde criteria. Als er meer dan één scheve taak in een fase is, wordt in de scheve fasetabel alleen de meest scheve taak weergegeven (bijvoorbeeld de grootste gegevens voor gegevensscheeftrekken).
+* Verdeelde **fase** : in het tweede gedeelte worden fasen weer gegeven, die gescheefe taken hebben die voldoen aan de bovenstaande criteria. Als er meer dan een scheefe taak in een fase is, wordt in de tabel verscheefde fase alleen de meest verlaagde taak weer gegeven (bijvoorbeeld de grootste gegevens voor het scheef trekken van gegevens).
 
-    ![tabblad sparkui-diagnosegegevens scheeftrekken](./media/apache-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+    ![tabblad sparkui-diagnose gegevens scheefheid](./media/apache-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
 
-* **Grafiek scheeftrekken** : wanneer een rij in de fasetabel scheeftrekken is geselecteerd, worden in de grafiek met scheeftrekken meer taakverdelingsdetails weergegeven op basis van de lees- en uitvoeringstijd van gegevens. De scheve taken zijn rood gemarkeerd en de normale taken zijn blauw gemarkeerd. De grafiek geeft maximaal 100 voorbeeldtaken weer en de taakdetails worden weergegeven in het rechter onderste deelvenster.
+* **Grafiek scheef trekken** : wanneer een rij in de tabel scheefe fase is geselecteerd, worden in het schuine diagram meer details over taak distributie weer gegeven op basis van de tijd waarop gegevens worden gelezen en uitgevoerd. De gescheefe taken worden rood gemarkeerd en de normale taken worden blauw gemarkeerd. In de grafiek worden een aantal voorbeeld taken van 100 weer gegeven en de taak Details worden weer gegeven in het rechter paneel.
 
-    ![sparkui scheeftrekkinggrafiek voor fase 10](./media/apache-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+    ![sparkui scheefe-grafiek voor fase 10](./media/apache-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
 
-### <a name="time-skew"></a>Tijd scheeftrekken
+### <a name="time-skew"></a>Tijd verschil
 
-Op het tabblad **Tijdsverschil** worden scheve taken weergegeven op basis van de uitvoeringstijd van de taak.
+Op het tabblad **tijd verschil** worden scheefe taken weer gegeven op basis van de uitvoerings tijd van de taak.
 
-* **Parameters opgeven** - In de eerste sectie worden de parameters weergegeven die worden gebruikt om Tijdscheefheid te detecteren. De standaardcriteria voor het detecteren van tijdsverschil zijn: de uitvoeringstijd van de taak is groter dan drie keer de gemiddelde uitvoeringstijd en de uitvoeringstijd van de taak is groter dan 30 seconden. U de parameters wijzigen op basis van uw behoeften. In **het overzichtswerkgebied scheef** en de grafiek **Schuintrekken** worden de bijbehorende fasen en takengegevens weergegeven, net als het tabblad **Gegevensscheefheid** hierboven.
+* **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven, die worden gebruikt voor het detecteren van tijd scheefheid. De standaard criteria voor het detecteren van tijd verschil is: de uitvoerings tijd van de taak is groter dan drie keer na de gemiddelde uitvoerings tijd en de uitvoerings tijd van de taak is langer dan 30 seconden. U kunt de para meters wijzigen op basis van uw behoeften. In de grafiek **scheefe fase** en **scheefheid** worden de bijbehorende fasen en taak gegevens weer gegeven, net als het tabblad **gegevens scheefheid** hierboven.
 
-* Selecteer **Tijdscheefheid**en het gefilterde resultaat wordt weergegeven in de sectie **Scheef werkgebied** volgens de parameters die zijn ingesteld in de sectie **Parameters opgeven**. Selecteer één item in de sectie **Scheefwerkgebied,** vervolgens wordt het bijbehorende diagram opgesteld in sectie3 en worden de taakdetails in het rechter onderste deelvenster weergegeven.
+* Selecteer **tijd scheefheid**en vervolgens gefilterd resultaat wordt weer gegeven in de sectie **scheefe fase** volgens de para meters die zijn ingesteld in **para meters opgeven**. Selecteer één item in de sectie **scheefend stadium** , vervolgens wordt de bijbehorende grafiek geschetst in section3 en worden de taak details weer gegeven in het rechter paneel.
 
-    ![sparkui diagnose tijd scheeftrekken sectie](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+    ![de sectie sparkui-diagnose tijd scheef trekken](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
-### <a name="executor-usage-analysis"></a>Analyse van het gebruik van de executeur
+### <a name="executor-usage-analysis"></a>Gebruiks analyse
 
-De executorgebruiksgrafiek visualiseert de toewijzings- en uitvoeringsstatus van de Spark-taakuitvoerder.  
+In de gebruiks grafiek van de uitvoerder wordt de toewijzings-en uitvoerings status van de Spark-taak uitwerkt.  
 
-1. Selecteer **Executor Usage Analysis**, vervolgens vier typen curven over executor gebruik worden opgesteld, met inbegrip van Toegewezen **executors**, **Lopende Executors**, **Idle Executors,** en **Max Executor Instances**. Met betrekking tot toegewezen uitvoerders, elke "Executor toegevoegd" of "Executor verwijderd" gebeurtenis verhoogt of verlaagt de toegewezen uitvoerders. U 'Tijdlijn van gebeurtenissen' controleren op het tabblad 'Vacatures' voor meer vergelijking.
+1. Selecteer **gebruiks analyse**uitvoeren en vervolgens vier typen curven over het gebruik van de uitvoerder, met inbegrip **van toegewezen uitvoerende**machines, het **uitvoeren van uitvoerende**machines, **niet-actieve uitvoerende**machines en **Maxi maal**bewerkings instanties. Met betrekking tot toegewezen uitvoerder neemt elke gebeurtenis ' uitvoerder toegevoegd ' of ' uitvoeringen verwijderd ' de toegewezen uitvoerder toe of af. U kunt ' gebeurtenis tijdlijn ' op het tabblad taken voor meer vergelijking controleren.
 
-   ![tabblad sparkui-diagnoseuitvoerders](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
+   ![tabblad sparkui diagnose-uitvoeringen](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 
-2. Selecteer het kleurenpictogram om de bijbehorende inhoud in alle concepten te selecteren of de selectie uit te doen.
+2. Selecteer het kleur pictogram om de bijbehorende inhoud in alle concepten te selecteren of de selectie ervan op te heffen.
 
-    ![sparkui diagnoses select chart](./media/apache-spark-history-server/sparkui-diagnosis-select-chart.png)
+    ![sparkui diagnosticeert diagram selecteren](./media/apache-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Invoer-/uitvoergegevens met Behulp van Robuuste gedistribueerde gegevenssets (RdD's) worden niet weergegeven op het tabblad Gegevens.
+Invoer-en uitvoer gegevens met behulp van robuuste gedistribueerde gegevens sets (Rdd's) worden niet weer gegeven op het tabblad gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [.NET voor Apache Spark-documentatie](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 

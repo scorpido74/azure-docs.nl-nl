@@ -1,6 +1,6 @@
 ---
-title: Gegevens van Cassandra kopiëren met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens van Cassandra naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van Cassandra met behulp van Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit Cassandra naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,68 +12,68 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417477"
 ---
-# <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Gegevens van Cassandra kopiëren met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Gegevens kopiëren van Cassandra met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [Huidige versie](connector-cassandra.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een Cassandra-database te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een Cassandra-data base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Cassandra-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens uit de Cassandra-database kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens uit de Cassandra-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Specifiek ondersteunt deze Cassandra connector:
+Deze Cassandra-connector ondersteunt met name:
 
-- Cassandra **versies 2.x en 3.x**.
-- Gegevens kopiëren met **basis-** of **anonieme** verificatie.
+- Cassandra **versie 2. x en 3. x**.
+- Kopiëren van gegevens met behulp van **eenvoudige** of **anonieme** verificatie.
 
 >[!NOTE]
->Voor activiteiten die worden uitgevoerd op Self-hosted Integration Runtime, wordt Cassandra 3.x ondersteund sinds IR-versie 3.7 en hoger.
+>Voor activiteiten die worden uitgevoerd op zelf-hostende Integration Runtime, wordt Cassandra 3. x ondersteund, aangezien IR-versie 3,7 en hoger.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-De Integration Runtime biedt een ingebouwde Cassandra driver, daarom hoeft u geen stuurprogramma handmatig te installeren bij het kopiëren van gegevens van/naar Cassandra.
+De Integration Runtime biedt een ingebouwd Cassandra-stuur programma, dus u hoeft niet hand matig een stuur programma te installeren bij het kopiëren van gegevens van/naar Cassandra.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor de Cassandra-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor Cassandra-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor Cassandra linked service:
+De volgende eigenschappen worden ondersteund voor Cassandra gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |Het type eigenschap moet worden ingesteld op: **Cassandra** |Ja |
-| host |Een of meer IP-adressen of hostnamen van Cassandra-servers.<br/>Geef een door komma's gescheiden lijst met IP-adressen of hostnamen op om tegelijkertijd verbinding te maken met alle servers. |Ja |
-| poort |De TCP-poort die de Cassandra-server gebruikt om naar clientverbindingen te luisteren. |Nee (standaard is 9042) |
-| authenticationType | Type verificatie wordt gebruikt om verbinding te maken met de Cassandra-database.<br/>Toegestane waarden zijn: **Basic**en **Anoniem**. |Ja |
-| gebruikersnaam |Geef de gebruikersnaam op voor het gebruikersaccount. |Ja, als authenticationType is ingesteld op Basic. |
-| wachtwoord |Geef het wachtwoord voor het gebruikersaccount op. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) |Ja, als authenticationType is ingesteld op Basic. |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
+| type |De eigenschap type moet worden ingesteld op: **Cassandra** |Ja |
+| host |Een of meer IP-adressen of hostnamen van Cassandra-servers.<br/>Geef een door komma's gescheiden lijst met IP-adressen of hostnamen op om gelijktijdig verbinding te maken met alle servers. |Ja |
+| poort |De TCP-poort die de Cassandra-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 9042) |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de Cassandra-data base.<br/>Toegestane waarden zijn: **Basic**en **Anonymous**. |Ja |
+| gebruikersnaam |Geef de gebruikers naam voor het gebruikers account op. |Ja, als authenticationType is ingesteld op Basic. |
+| wachtwoord |Geef het wacht woord voor het gebruikers account op. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja, als authenticationType is ingesteld op Basic. |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 >[!NOTE]
->Momenteel wordt de verbinding met Cassandra via TLS niet ondersteund.
+>Momenteel wordt geen verbinding met Cassandra met behulp van TLS ondersteund.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -99,17 +99,17 @@ De volgende eigenschappen worden ondersteund voor Cassandra linked service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de cassandra-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Cassandra-gegevensset.
 
 Als u gegevens van Cassandra wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **CassandraTable**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **CassandraTable** | Ja |
-| sleutelruimte |Naam van de keyspace of het schema in de Cassandra-database. |Nee (als 'query' voor 'CassandraSource' is opgegeven) |
-| tableName |Naam van de tabel in de Cassandra database. |Nee (als 'query' voor 'CassandraSource' is opgegeven) |
+| Keys Pace |De naam van de spatie of het schema in de Cassandra-data base. |Nee (als "query" voor "CassandraSource" is opgegeven) |
+| tableName |De naam van de tabel in de Cassandra-data base. |Nee (als "query" voor "CassandraSource" is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -132,19 +132,19 @@ Als u gegevens van Cassandra wilt kopiëren, stelt u de eigenschap type van de g
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Cassandra-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Cassandra-bron worden ondersteund.
 
 ### <a name="cassandra-as-source"></a>Cassandra als bron
 
-Als u gegevens van Cassandra wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **CassandraSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Cassandra, stelt u het bron type in de Kopieer activiteit in op **CassandraSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de kopieeractiviteit moet worden ingesteld op: **CassandraSource** | Ja |
-| query |Gebruik de aangepaste query om gegevens te lezen. SQL-92-query of CQL-query. Zie [CQL-verwijzing](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Wanneer u SQL-query gebruikt, geeft u **de naam keyspace name.table** op om de tabel weer te geven die u wilt opvragen. |Nee (als 'tableName' en 'keyspace' in de gegevensset zijn opgegeven). |
-| consistentieNiveau |Het consistentieniveau geeft aan hoeveel replica's op een leesaanvraag moeten reageren voordat gegevens naar de clienttoepassing worden teruggekeerd. Cassandra controleert het opgegeven aantal replica's op gegevens om aan het leesverzoek te voldoen. Zie [Gegevensconsistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie.<br/><br/>De toegestane waarden zijn: **ÉÉN**, **TWEE**, **DRIE**, **QUORUM**, **ALLE**, **LOCAL_QUORUM**, **EACH_QUORUM**en **LOCAL_ONE**. |Nee (standaard `ONE`is) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **CassandraSource** | Ja |
+| query |Gebruik de aangepaste query om gegevens te lezen. SQL-92-query of CQL-query. Zie [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(Engelstalig). <br/><br/>Wanneer u SQL query gebruikt, geeft u de naam van de **spatie op. tabel naam** voor de tabel die u wilt doorzoeken. |Nee (als "TableName" en "Keys" in de gegevensset zijn opgegeven). |
+| consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie.<br/><br/>Toegestane waarden zijn: **een**, **twee**, **drie**, **quorum**, **alle**, **LOCAL_QUORUM**, **EACH_QUORUM**en **LOCAL_ONE**. |Nee (standaard instelling `ONE`) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -176,66 +176,66 @@ Als u gegevens van Cassandra wilt kopiëren, stelt u het brontype in de kopieera
 ]
 ```
 
-## <a name="data-type-mapping-for-cassandra"></a>Gegevenstypetoewijzing voor Cassandra
+## <a name="data-type-mapping-for-cassandra"></a>Toewijzing van gegevens type voor Cassandra
 
-Bij het kopiëren van gegevens van Cassandra worden de volgende toewijzingen gebruikt van Cassandra-gegevenstypen naar tijdelijke gegevenstypen van Azure Data Factory. Zie [Schema- en gegevenstypetoewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieeractiviteit het bronschema en het gegevenstype naar de gootsteen brengt.
+Bij het kopiëren van gegevens uit Cassandra worden de volgende toewijzingen gebruikt van Cassandra-gegevens typen om tussenliggende gegevens typen te Azure Data Factory. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
-| Cassandra-gegevenstype | Tussentijds gegevenstype gegevensfabriek |
+| Cassandra-gegevens type | Data Factory-gegevens type interim |
 |:--- |:--- |
-| Ascii |Tekenreeks |
-| Bigint |Int64 |
-| Blob |Byte |
-| Booleaanse |Booleaans |
-| Decimaal |Decimal |
-| Dubbele |Double |
-| Float |Enkel |
-| Inet |Tekenreeks |
+| ASCII |Tekenreeks |
+| BIGINT |Int64 |
+| BLOBCACHE |Byte [] |
+| True |Booleaans |
+| KOMMA |Decimal |
+| DUBBELKLIK |Double |
+| FLOAT |Enkel |
+| INET |Tekenreeks |
 | INT |Int32 |
 | TEXT |Tekenreeks |
-| Tijdstempel |DateTime |
+| Neem |DateTime |
 | TIMEUUID |GUID |
-| Uuid |GUID |
-| Varchar |Tekenreeks |
-| VARINT (VARINT) |Decimal |
+| MEE |GUID |
+| VARCHAR |Tekenreeks |
+| VARINT |Decimal |
 
 > [!NOTE]
-> Voor verzamelingstypen (kaart, set, lijst, enz.) raadpleegt u [Verzamelingstypen werken met Cassandra met behulp van virtuele tabelsectie.](#work-with-collections-using-virtual-table)
+> Voor verzamelings typen (kaart, set, lijst, enzovoort) raadpleegt u [werken met Cassandra-verzamelings typen met behulp](#work-with-collections-using-virtual-table) van de sectie virtuele tabel.
 >
 > Door de gebruiker gedefinieerde typen worden niet ondersteund.
 >
-> De lengte van binaire kolom- en tekenreekskolomlengtes mag niet groter zijn dan 4000.
+> De lengte van de binaire kolom-en teken reeks kolom lengten kan niet groter zijn dan 4000.
 >
 
-## <a name="work-with-collections-using-virtual-table"></a>Werken met verzamelingen met behulp van virtuele tabel
+## <a name="work-with-collections-using-virtual-table"></a>Werken met verzamelingen met virtuele tabel
 
-Azure Data Factory gebruikt een ingebouwd ODBC-stuurprogramma om verbinding te maken met gegevens uit uw Cassandra-database en deze te kopiëren. Voor verzamelingstypen, waaronder kaart, set en lijst, normaliseert het stuurprogramma de gegevens opnieuw in overeenkomstige virtuele tabellen. Als een tabel verzamelingskolommen bevat, genereert het stuurprogramma de volgende virtuele tabellen:
+Azure Data Factory maakt gebruik van een ingebouwd ODBC-stuur programma om verbinding te maken met gegevens uit uw Cassandra-data base en deze te kopiëren. Voor verzamelings typen, waaronder kaart, set en lijst, worden de gegevens in de bijbehorende virtuele tabellen opnieuw genormaliseerd door het stuur programma. Met name als een tabel verzamelings kolommen bevat, worden de volgende virtuele tabellen door het stuur programma gegenereerd:
 
-* Een **basistabel**die dezelfde gegevens bevat als de echte tabel, behalve de verzamelingskolommen. De basistabel gebruikt dezelfde naam als de echte tabel die deze vertegenwoordigt.
-* Een **virtuele tabel** voor elke verzamelingskolom, die de geneste gegevens uitbreidt. De virtuele tabellen die verzamelingen vertegenwoordigen, worden benoemd met de naam van de echte tabel, een separator "*vt*" en de naam van de kolom.
+* Een **basis tabel**met dezelfde gegevens als de echte tabel, met uitzonde ring van de verzamelings kolommen. Voor de basis tabel wordt dezelfde naam gebruikt als voor de echte tabel die deze vertegenwoordigt.
+* Een **virtuele tabel** voor elke verzamelings kolom, waarmee de geneste gegevens worden uitgevouwen. De virtuele tabellen die verzamelingen vertegenwoordigen, krijgen een naam met de naam van de tabel Real, een scheidings teken '*VT*' en de naam van de kolom.
 
-Virtuele tabellen verwijzen naar de gegevens in de echte tabel, zodat de bestuurder toegang heeft tot de gedenormaliseerde gegevens. Zie voorbeeldsectie voor meer informatie. U hebt toegang tot de inhoud van Cassandra-collecties door de virtuele tabellen op te vragen en lid te worden.
+Virtuele tabellen verwijzen naar de gegevens in de tabel Real, waardoor het stuur programma toegang kan krijgen tot de Gedenormaliseerde gegevens. Zie de sectie voor beeld voor meer informatie. U hebt toegang tot de inhoud van Cassandra-verzamelingen door de virtuele tabellen te doorzoeken en aan elkaar te koppelen.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende 'ExampleTable' is bijvoorbeeld een Cassandra-databasetabel met een gehele primaire sleutelkolom met de naam 'pk_int', een tekstkolom met de naam waarde, een lijstkolom, een kolom en een setkolom (met de naam 'StringSet').
+Bijvoorbeeld: het volgende ' ExampleTable ' is een Cassandra-database tabel met een primaire-sleutel kolom met een geheel getal met de naam ' pk_int ', een tekst kolom met de naam value, een lijst kolom, een kolom met een kaart en een set-kolom (met de naam ' Stringset ').
 
-| pk_int | Waarde | Lijst | Kaart | StringSet (Tekenreeksset) |
+| pk_int | Waarde | Lijst | Kaart | Stringset |
 | --- | --- | --- | --- | --- |
-| 1 |"voorbeeldwaarde 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
-| 3 |"voorbeeldwaarde 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
+| 1 |' voorbeeld waarde 1 ' |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
+| 3 |"voorbeeld waarde 3" |[' 100 ', ' 101 ', ' 102 ', ' 105 '] |{"S1": "t"} |{"A", "E"} |
 
-Het stuurprogramma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De kolommen met de buitenlandse sleutel in de virtuele tabellen verwijzen naar de primaire sleutelkolommen in de echte tabel en geven aan met welke echte tabelrij de virtuele tabelrij overeenkomt.
+Het stuur programma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De refererende-sleutel kolommen in de virtuele tabellen verwijzen naar de primaire-sleutel kolommen in de tabel Real en geven aan in welke tabel de virtuele tabelrij overeenkomt met.
 
-De eerste virtuele tabel is de basistabel met de naam 'Voorbeeldtabel' wordt weergegeven in de volgende tabel: 
+De eerste virtuele tabel is de basis tabel met de naam ' ExampleTable ' wordt weer gegeven in de volgende tabel: 
 
 | pk_int | Waarde |
 | --- | --- |
-| 1 |"voorbeeldwaarde 1" |
-| 3 |"voorbeeldwaarde 3" |
+| 1 |' voorbeeld waarde 1 ' |
+| 3 |"voorbeeld waarde 3" |
 
-De basistabel bevat dezelfde gegevens als de oorspronkelijke databasetabel, behalve voor de verzamelingen, die uit deze tabel worden weggelaten en in andere virtuele tabellen worden uitgevouwen.
+De basis tabel bevat dezelfde gegevens als de oorspronkelijke database tabel, met uitzonde ring van de verzamelingen, die uit deze tabel worden wegge laten en worden uitgevouwen in andere virtuele tabellen.
 
-In de volgende tabellen worden de virtuele tabellen weergegeven die de gegevens uit de kolommen Lijst, Kaart en StringSet opnieuw normaliseren. De kolommen met namen die eindigen met "_index" of "_key" geven de positie van de gegevens binnen de oorspronkelijke lijst of kaart aan. De kolommen met namen die eindigen met '_value' bevatten de uitgebreide gegevens uit de verzameling.
+In de volgende tabellen ziet u de virtuele tabellen die de gegevens van de kolommen lijst, kaart en Reeksset opnieuw normaliseren. De kolommen met namen die eindigen op ' _index ' of ' _key ' geven de positie aan van de gegevens in de oorspronkelijke lijst of kaart. De kolommen met namen die eindigen op ' _value ' bevatten de uitgevouwen gegevens uit de verzameling.
 
 **Tabel "ExampleTable_vt_List":**
 
@@ -267,9 +267,9 @@ In de volgende tabellen worden de virtuele tabellen weergegeven die de gegevens 
 | 3 |A |
 | 3 |E |
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

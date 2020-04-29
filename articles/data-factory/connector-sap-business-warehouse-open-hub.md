@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit SAP Business Warehouse kopiëren via Open Hub
-description: Meer informatie over het kopiëren van gegevens uit SAP Business Warehouse (BW) via Open Hub naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van SAP Business Warehouse via open hub
+description: Informatie over het kopiëren van gegevens van SAP Business Warehouse (BW) via open hub naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418079"
 ---
-# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Gegevens uit SAP Business Warehouse kopiëren via Open Hub met Azure Data Factory
+# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Gegevens kopiëren van SAP Business Warehouse via open hub met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een SAP Business Warehouse (BW) te kopiëren via Open Hub. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een SAP Business Warehouse (BW) te kopiëren via open hub. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 >[!TIP]
->Zie [SAP-gegevensintegratie met azure data factory-whitepaper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) met gedetailleerde introductie, vergelijking en richtlijnen voor de algemene ondersteuning van ADF voor de algemene ondersteuning van sap-gegevensintegratie.
+>Zie [SAP Data Integration using Azure Data Factory White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) with introduction, comparsion en guidance (Engelstalig) voor meer informatie over de algemene ondersteuning van de ADF op SAP Data Integration scenario.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Dit SAP Business Warehouse via Open Hub connector wordt ondersteund voor de volgende activiteiten:
+Deze SAP Business Warehouse via open hub-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens uit SAP Business Warehouse kopiëren via Open Hub naar elk ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van SAP Business Warehouse kopiëren via open hub naar een ondersteunde Sink-gegevens opslag. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Met name deze SAP Business Warehouse Open Hub-connector ondersteunt:
+Met name de open hub-connector van SAP Business Warehouse ondersteunt:
 
-- SAP Business Warehouse **versie 7.01 of hoger (in een recente SAP Support Package Stack uitgebracht na het jaar 2015)**.
-- Het kopiëren van gegevens via de lokale tabel Open Hub Destination die hieronder dso, infocube, multiprovider, datasource, enz.
-- Gegevens kopiëren met basisverificatie.
-- Verbinding maken met application server.
+- SAP Business Warehouse **versie 7,01 of hoger (in een recente SAP-ondersteunings pakket stack uitgebracht na het jaar 2015)**.
+- Kopiëren van gegevens via de lokale open hub-doel tabel, die zich onder andere bevindt: DSO, InfoCube, multilevering, Data Source, enzovoort.
+- Kopiëren van gegevens met behulp van basis verificatie.
+- Verbinding maken met de toepassings server.
 
-## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub Integratie 
+## <a name="sap-bw-open-hub-integration"></a>SAP BW hub-integratie openen 
 
-[SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) is een efficiënte manier om gegevens uit SAP BW te halen. Het volgende diagram toont een van de typische stromen die klanten in hun SAP-systeem hebben, in welk geval gegevensstromen van SAP ECC-> PSA-> DSO-> Cube.
+[SAP BW open hub-service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) is een efficiënte manier om gegevens op te halen uit SAP BW. Het volgende diagram toont een van de typische stromen die klanten hebben in hun SAP-systeem, in welk geval gegevens stromen van SAP ECC-> PSA-> DSO-> kubus.
 
-SAP BW Open Hub Destination (OHD) definieert het doel waaraan de SAP-gegevens worden doorgegeven. Alle objecten die worden ondersteund door SAP Data Transfer Process (DTP) kunnen worden gebruikt als open hub-gegevensbronnen, bijvoorbeeld DSO, InfoCube, DataSource, enz. Het type Hub-doel openen - waarbij de doorgegeven gegevens worden opgeslagen - kunnen databasetabellen (lokaal of extern) en platte bestanden zijn. Deze SAP BW Open Hub-connector ondersteunt het kopiëren van gegevens van ohd-lokale tabel in BW. Als u andere typen gebruikt, u rechtstreeks verbinding maken met de database of het bestandssysteem via andere connectors.
+SAP BW open hub Destination (OHD) definieert het doel waarnaar de SAP-gegevens worden doorgestuurd. Objecten die worden ondersteund door SAP Gegevensoverdracht process (DTP) kunnen worden gebruikt als open hub-gegevens bronnen, bijvoorbeeld DSO, InfoCube, Data Source, enzovoort. Open hub-doel type: waar de door gegeven gegevens worden opgeslagen: kunnen database tabellen (lokaal of extern) en platte bestanden zijn. Deze SAP BW open hub-connector ondersteuning voor het kopiëren van gegevens uit een lokale OHD-tabel in BW. Als u andere typen gebruikt, kunt u rechtstreeks verbinding maken met de data base of het bestands systeem met behulp van andere connectors.
 
-![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+![SAP BW hub openen](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
-## <a name="delta-extraction-flow"></a>Delta-extractiestroom
+## <a name="delta-extraction-flow"></a>Delta-extractie stroom
 
-ADF SAP BW Open Hub Connector `excludeLastRequest` `baseRequestId` biedt twee optionele eigenschappen: en die kunnen worden gebruikt om deltabelasting vanuit Open Hub te verwerken. 
+ADF SAP BW open hub-connector biedt twee optionele eigenschappen `excludeLastRequest` : `baseRequestId` en die kunnen worden gebruikt voor het afhandelen van de Delta belasting van open hub. 
 
-- **excludeLastRequestId**: Of de records van de laatste aanvraag moeten worden uitgesloten. De standaardwaarde is waar. 
-- **baseRequestId**: De ID van aanvraag voor deltaladen. Zodra deze is ingesteld, worden alleen gegevens met requestId opgehaald die groter zijn dan de waarde van deze eigenschap. 
+- **excludeLastRequestId**: Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. De standaard waarde is True. 
+- **baseRequestId**: de id van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam groter dan die van deze eigenschap. 
 
-Over het algemeen bestaat de extractie van SAP InfoProviders naar Azure Data Factory (ADF) uit 2 stappen: 
+Over het algemeen bestaat de extractie van SAP InfoProviders naar Azure Data Factory (ADF) uit twee stappen: 
 
-1. **SAP BW Data Transfer Process (DTP)** Met deze stap worden de gegevens van een SAP BW InfoProvider gekopieerd naar een SAP BW Open Hub-tabel 
+1. **SAP BW gegevensoverdracht proces (DTP)** Met deze stap worden de gegevens van een SAP BW InfoProvider gekopieerd naar een SAP BW open hub-tabel 
 
-1. **ADF-gegevenskopie** In deze stap wordt de open hub-tabel gelezen door de ADF-connector 
+1. **ADF-gegevens kopie** In deze stap wordt de tabel open hub gelezen door de ADF-connector 
 
-![Delta-extractiestroom](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
+![Delta-extractie stroom](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
-In de eerste stap wordt een DTP uitgevoerd. Elke uitvoering maakt een nieuwe SAP-aanvraag-id. De aanvraag-id wordt opgeslagen in de open hub-tabel en wordt vervolgens gebruikt door de ADF-connector om de delta te identificeren. De twee stappen worden asynchroon uitgevoerd: de DTP wordt geactiveerd door SAP en de ADF-gegevenskopie wordt geactiveerd via ADF. 
+In de eerste stap wordt een DTP uitgevoerd. Bij elke uitvoering wordt een nieuwe SAP-aanvraag-ID gemaakt. De aanvraag-ID wordt opgeslagen in de open hub-tabel en wordt vervolgens gebruikt door de ADF-connector om de Delta te identificeren. De twee stappen worden asynchroon uitgevoerd: de DTP wordt geactiveerd door SAP en de ADF-gegevens kopie wordt geactiveerd via ADF. 
 
-AdF leest standaard niet de nieuwste delta uit de Open Hub-tabel (optie 'Laatste aanvraag uitsluiten' is waar). Hierdoor zijn de gegevens in ADF niet 100% up-to-date met de gegevens in de Open Hub-tabel (de laatste delta ontbreekt). In ruil daarvoor zorgt deze procedure ervoor dat er geen rijen verloren gaan als gevolg van de asynchrone extractie. Het werkt prima, zelfs wanneer ADF is het lezen van de Open Hub tafel, terwijl de DTP is nog steeds schrijven in dezelfde tabel. 
+Standaard wordt de laatste Delta van de open hub-tabel niet door ADF gelezen (de optie ' laatste aanvraag uitsluiten ' is ingesteld op ' True '). Dat wil zeggen dat de gegevens in ADF niet 100% up-to-date zijn met de gegevens in de open hub-tabel (de laatste Delta ontbreekt). Als resultaat wordt met deze procedure gegarandeerd dat er geen rijen verloren gaan die worden veroorzaakt door de asynchrone extractie. Het werkt ook prima wanneer ADF de open hub-tabel leest terwijl de DTP nog in dezelfde tabel wordt geschreven. 
 
-U slaat doorgaans de maximaal gekopieerde aanvraag-id op in de laatste run door ADF in een faseringsgegevensarchief (zoals Azure Blob in bovendiagram). Daarom wordt dezelfde aanvraag in de volgende run geen tweede keer door ADF gelezen. Houd er ondertussen rekening mee dat de gegevens niet automatisch worden verwijderd uit de open hub-tabel.
+Normaal gesp roken slaat u de Maxi maal gekopieerde aanvraag-ID in de laatste keer uitgevoerd door ADF in een faserings gegevensopslag (zoals Azure Blob in bovenstaand diagram). Daarom wordt dezelfde aanvraag niet een tweede keer door ADF gelezen tijdens de volgende uitvoering. De gegevens worden ondertussen niet automatisch verwijderd uit de tabel open hub.
 
-Voor een goede deltaafhandeling is het niet toegestaan om aanvraag-id's van verschillende DTP's in dezelfde Open Hub-tabel te hebben. Daarom mag u niet meer dan één DTP maken voor elke Open Hub-bestemming (OHD). Wanneer u Volledige en Delta-extractie van dezelfde InfoProvider nodig hebt, moet u twee OHD's maken voor dezelfde InfoProvider. 
+Voor een correcte Delta-verwerking is het niet toegestaan om aanvraag-Id's van verschillende DTPs in dezelfde open hub-tabel te hebben. Daarom moet u niet meer dan één DTP maken voor elke open hub-bestemming (OHD). Wanneer u de volledige en Delta-extractie van hetzelfde InfoProvider nodig hebt, moet u twee OHDs voor dezelfde InfoProvider maken. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze SAP Business Warehouse Open Hub-connector wilt gebruiken, moet u het:
+Als u deze SAP Business Warehouse open hub-connector wilt gebruiken, moet u het volgende doen:
 
-- Stel een Self-hosted Integration Runtime in met versie 3.13 of hoger. Zie [artikel Self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) voor meer informatie.
+- Stel een zelf-hostende Integration Runtime in met versie 3,13 of hoger. Zie [zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
 
-- Download de **64-bits [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html) ** van de website van SAP en installeer deze op de zelfgehoste IR-machine. Controleer bij het installeren in het venster optionele installatiestappen of u de optie **Assemblages installeren op GAC** selecteert, zoals in de volgende afbeelding wordt weergegeven. 
+- Down load de **64-bits [SAP .net connector 3,0](https://support.sap.com/en/product/connectors/msnet.html) ** van de SAP-website en installeer deze op de zelf-hostende IR-computer. Zorg er bij de installatie in het venster optionele installatie stappen voor dat u de optie **Assembly's installeren op GAC** selecteert, zoals wordt weer gegeven in de volgende afbeelding. 
 
     ![SAP .NET-connector installeren](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-- SAP-gebruiker die wordt gebruikt in de Bw-connector van de gegevensfabriek, moet de volgende machtigingen hebben: 
+- SAP-gebruiker die wordt gebruikt in de Data Factory BW connector moet de volgende machtigingen hebben: 
 
     - Autorisatie voor RFC en SAP BW. 
-    - Machtigingen voor de activiteit "Uitvoeren" van autorisatieobject "S_SDSAUTH".
+    - Machtigingen voor de activiteit ' uitvoeren ' van het autorisatie object ' S_SDSAUTH '.
 
-- Sap Open Hub-doeltype maken als **databasetabel** met de optie 'Technische sleutel'.  Het wordt ook aanbevolen om de deletinggegevens van tabel als ongecontroleerd achter te laten, hoewel dit niet vereist is. Maak gebruik van de DTP (direct uitvoeren of integreren in bestaande procesketen) om gegevens uit het bronobject (zoals kubus) te landen die u hebt gekozen voor de open hub-doeltabel.
+- Maak SAP open hub doel type als **database tabel** met de optie "technische sleutel" ingeschakeld.  Het is ook raadzaam om het verwijderen van gegevens uit de tabel als uitgeschakeld te laten, hoewel dit niet vereist is. Maak gebruik van de DTP (rechtstreeks uit te voeren of te integreren in bestaande proces keten) om gegevens van bron object (zoals kubus) te gebruiken die u hebt gekozen voor de open hub-doel tabel.
 
 ## <a name="getting-started"></a>Aan de slag
 
 > [!TIP]
 >
-> Zie [Gegevens laden van SAP Business Warehouse (BW) voor](load-sap-bw-data.md)een walkthrough van het gebruik van SAP BW Open Hub-connector.
+> Zie [gegevens laden van SAP Business Warehouse (BW) met behulp van Azure Data Factory](load-sap-bw-data.md)voor een overzicht van het gebruik van SAP BW open hub-connector.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor de SAP Business Warehouse Open Hub-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor SAP Business Warehouse open hub-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor sap business warehouse open hub gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de gekoppelde service van SAP Business Warehouse open hub:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **SapOpenHub** | Ja |
-| server | Naam van de server waarop de SAP BW-instantie zich bevindt. | Ja |
-| systeemAantal | Systeemnummer van het SAP BW-systeem.<br/>Toegestane waarde: tweecijferig decimaal getal weergegeven als een tekenreeks. | Ja |
-| clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: driecijferig decimaal getal weergegeven als een tekenreeks. | Ja |
-| language | Taal die het SAP-systeem gebruikt. | Nee (standaardwaarde is **NL)**|
-| userName | Naam van de gebruiker die toegang heeft tot de SAP-server. | Ja |
-| wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Een Self-hosted Integration Runtime is vereist zoals vermeld in [Voorwaarden](#prerequisites). |Ja |
+| type | De eigenschap type moet worden ingesteld op: **SapOpenHub** | Ja |
+| server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | Ja |
+| systemNumber | Systeem nummer van het SAP BW systeem.<br/>Toegestane waarde: decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja |
+| clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja |
+| language | De taal die door het SAP-systeem wordt gebruikt. | Nee (standaard waarde is **en**)|
+| userName | De naam van de gebruiker die toegang heeft tot de SAP-server. | Ja |
+| wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -143,18 +143,18 @@ De volgende eigenschappen worden ondersteund voor sap business warehouse open hu
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [Gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de SAP BW Open Hub-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de SAP BW open hub-gegevensset.
 
-Als u gegevens wilt kopiëren van en naar SAP BW Open Hub, stelt u de eigenschap type van de gegevensset in op **SapOpenHubTable**. De volgende eigenschappen worden ondersteund.
+Als u gegevens wilt kopiëren van en naar SAP BW geopende hub, stelt u de eigenschap type van de gegevensset in op **SapOpenHubTable**. De volgende eigenschappen worden ondersteund.
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op **SapOpenHubTable**.  | Ja |
-| openHubDestinationName | De naam van de Open Hub-bestemming om gegevens van te kopiëren. | Ja |
+| type | De eigenschap type moet worden ingesteld op **SapOpenHubTable**.  | Ja |
+| openHubDestinationName | De naam van het open hub-doel waaruit de gegevens moeten worden gekopieerd. | Ja |
 
-Als u `excludeLastRequest` instelling `baseRequestId` en in de gegevensset, het wordt nog steeds ondersteund as-is, terwijl u wordt voorgesteld om het nieuwe model te gebruiken in activiteit bron in de toekomst.
+Als u de instelling `excludeLastRequest` en `baseRequestId` in de gegevensset hebt ingesteld, wordt deze nog steeds ondersteund als-is. u wordt aangeraden het nieuwe model in de activiteit bron te gebruiken.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -175,24 +175,24 @@ Als u `excludeLastRequest` instelling `baseRequestId` en in de gegevensset, het 
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door SAP BW Open Hub-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door SAP BW open hub-bron.
 
-### <a name="sap-bw-open-hub-as-source"></a>SAP BW Open Hub als bron
+### <a name="sap-bw-open-hub-as-source"></a>SAP BW hub als bron openen
 
-Als u gegevens uit SAP BW Open Hub wilt kopiëren, worden de volgende eigenschappen ondersteund in de **sectie** bron van kopieeractiviteit:
+Als u gegevens wilt kopiëren van SAP BW geopende hub, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de bron van de kopieeractiviteit moet zijn ingesteld op **SapOpenHubSource**. | Ja |
-| excludeLastRequest | Of de records van het laatste verzoek uit te sluiten. | Nee (standaard is **waar)** |
-| baseRequestId | De ID van het verzoek voor delta laden. Zodra deze is ingesteld, worden alleen gegevens met requestId opgehaald die groter zijn **dan** de waarde van deze eigenschap.  | Nee |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SapOpenHubSource**. | Ja |
+| excludeLastRequest | Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. | Nee (standaard waarde is **waar**) |
+| baseRequestId | De ID van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam **groter dan** die van deze eigenschap.  | Nee |
 
 >[!TIP]
->Als uw open hub-tabel alleen de gegevens bevat die worden gegenereerd door single request ID, bijvoorbeeld, u altijd de volledige belasting uitvoert en de bestaande gegevens in de tabel overschrijft, of als u de DTP slechts één keer uitvoert voor de test, vergeet dan niet de optie 'excludeLastRequest' uit te vinken om de gegevens uit te kopiëren.
+>Als uw open hub-tabel alleen de gegevens bevat die zijn gegenereerd op basis van een enkele aanvraag-ID, kunt u bijvoorbeeld altijd volledige belasting doen en de bestaande gegevens in de tabel overschrijven, of u kunt de DTP slechts eenmaal uitvoeren voor de test, de optie ' excludeLastRequest ' uitschakelen om de gegevens uit te kunnen kopiëren.
 
-Als u het laden van [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) gegevens wilt versnellen, u de kopieeractiviteit instellen om gegevens van SAP BW Open Hub parallel te laden. Als u bijvoorbeeld `parallelCopies` op vier instelt, voert Data Factory tegelijkertijd vier RFC-aanroepen uit en haalt elke RFC-oproep een deel van de gegevens op uit uw SAP BW Open Hub-tabel die is verdeeld door de DTP-aanvraag-id en pakket-ID. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + `parallelCopies`pakket-ID groter is dan de waarde van . Bij het kopiëren van gegevens naar het gegevensarchief in bestanden, wordt het ook aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan het schrijven naar één bestand.
+Als u het laden van gegevens wilt versnellen, kunt [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) u de Kopieer activiteit zo instellen dat gegevens van SAP BW hub parallel worden geladen. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, Data Factory gelijktijdig vier rfc's-aanroepen uitvoeren en elke RFC-aanroep haalt een deel van de gegevens op uit uw SAP BW open hub Table gepartitioneerd door de DTP-aanvraag-id en de pakket-id. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + pakket-ID groter is dan de `parallelCopies`waarde van. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het ook opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval zijn de prestaties beter dan het schrijven naar één bestand.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -225,30 +225,30 @@ Als u het laden van [`parallelCopies`](copy-activity-performance-features.md#par
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Gegevenstypetoewijzing voor SAP BW Open Hub
+## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Toewijzing van gegevens type voor SAP BW open hub
 
-Bij het kopiëren van gegevens van SAP BW Open Hub worden de volgende toewijzingen gebruikt van SAP BW-gegevenstypen naar tijdelijke gegevenstypen van Azure Data Factory. Zie [Schema- en gegevenstypetoewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieeractiviteit het bronschema en het gegevenstype naar de gootsteen brengt.
+Bij het kopiëren van gegevens uit SAP BW geopende hub, worden de volgende toewijzingen gebruikt van SAP BW gegevens typen om tussenliggende gegevens typen te Azure Data Factory. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
-| SAP ABAP-type | Tussentijds gegevenstype gegevensfabriek |
+| SAP ABAP-type | Data Factory-gegevens type interim |
 |:--- |:--- |
-| C (tekenreeks) | Tekenreeks |
+| C (teken reeks) | Tekenreeks |
 | I (geheel getal) | Int32 |
-| F (VLotter) | Double |
+| F (float) | Double |
 | D (datum) | Tekenreeks |
-| T (Tijd) | Tekenreeks |
-| P (BCD Packed, Valuta, Decimal, Qty) | Decimal |
+| T (tijd) | Tekenreeks |
+| P (door BCD verpakt, valuta, decimaal, hoeveelheid) | Decimal |
 | N (Numc) | Tekenreeks |
-| X (binair en rauw) | Tekenreeks |
+| X (binair en onbewerkt) | Tekenreeks |
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-**Symptomen:** Als u SAP BW op HANA uitvoert en alleen subset van gegevens observeert die wordt gekopieerd met behulp van ADF-kopieeractiviteit (1 miljoen rijen), is de mogelijke oorzaak dat u de optie "SAP HANA-uitvoering" in schakelt in uw DTP, in welk geval ADF alleen de eerste batch gegevens kan ophalen.
+**Symptomen:** Als u SAP BW uitvoert in HANA en alleen een subset van gegevens kopieert met behulp van de ADF Copy-activiteit (1.000.000 rijen), is de mogelijke oorzaak dat u de optie ' SAP HANA Execution ' inschakelt in uw DTP, in welk geval ADF alleen de eerste batch met gegevens kan ophalen.
 
-**Oplossing:** Schakel de optie "SAP HANA Execution" in DTP uit, verwerk de gegevens opnieuw en probeer de kopieeractiviteit opnieuw uit te voeren.
+**Oplossing:** Schakel de optie voor het uitvoeren van SAP HANA uit in DTP, Verwerk de gegevens opnieuw en probeer de Kopieer activiteit opnieuw uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

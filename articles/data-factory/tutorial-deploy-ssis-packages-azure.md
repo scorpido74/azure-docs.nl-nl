@@ -1,5 +1,5 @@
 ---
-title: De runtime van Azure-SSIS-integratie inrichten
+title: De Azure SSIS Integration runtime inrichten
 description: Informatie over het inrichten van de Azure-SSIS-integratieruntime in Azure Data Factory, zodat u SSIS-pakketten in Azure kunt implementeren en uitvoeren.
 services: data-factory
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 91962b578f9620384af86d25a33ba35830abb285
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418623"
 ---
-# <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>De runtime voor Azure-SSIS-integratie inAzure Data Factory inrichten
+# <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>De Azure SSIS Integration runtime inrichten in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Deze zelfstudie bevat stappen voor het gebruik van de Azure-portal voor het inrichten van een SSIS-runtime (Azure-SQL Server Integration Services) (IR) in Azure Data Factory. Een Azure-SSIS IR ondersteunt:
+Deze zelf studie bevat stappen voor het gebruik van de Azure Portal om een Azure-SQL Server Integration Services (SSIS) Integration runtime (IR) in Azure Data Factory in te richten. Een Azure-SSIS IR ondersteunt:
 
-- Uitvoeren van pakketten die zijn geïmplementeerd in de SSIS-catalogus (SSISDB) die worden gehost door een Azure SQL Database-server of een beheerde instantie (Project Deployment Model).
-- Uitvoeren van pakketten die zijn geïmplementeerd in bestandssystemen, bestandsshares of Azure Files (Package Deployment Model). 
+- Het uitvoeren van pakketten die worden geïmplementeerd in de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL Database-Server of een beheerd exemplaar (project implementatie model).
+- Het uitvoeren van pakketten die zijn geïmplementeerd in bestands systemen, bestands shares of Azure Files (pakket implementatie model). 
 
-Nadat een Azure-SSIS IR is ingericht, u vertrouwde hulpprogramma's gebruiken om uw pakketten in Azure te implementeren en uit te voeren. Deze hulpprogramma's omvatten SQL Server Data Tools (SSDT), SQL Server `dtinstall`Management `dtutil`Studio `dtexec`(SSMS) en command-line tools zoals , en .
+Nadat een Azure-SSIS IR is ingericht, kunt u de vertrouwde hulpprogram ma's gebruiken om uw pakketten in azure te implementeren en uit te voeren. Tot deze hulpprogram ma's behoren SQL Server Data tools (SSDT), SQL Server Management Studio (SSMS) en opdracht regel Programma's, `dtinstall`zoals `dtutil`,, `dtexec`en.
 
 Zie [Overzicht van integratieruntime in Azure-SSIS](concepts-integration-runtime.md#azure-ssis-integration-runtime) voor algemene informatie over een Azure-SSIS IR.
 
@@ -44,34 +44,34 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-abonnement**. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-- **Azure SQL Database-server (optioneel).** Als u nog geen databaseserver hebt, maakt u die in Azure Portal voordat u begint. Data Factory maakt op zijn beurt een SSISDB-exemplaar op deze databaseserver. 
+- **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+- **Azure SQL database server (optioneel)**. Als u nog geen databaseserver hebt, maakt u die in Azure Portal voordat u begint. Met Data Factory wordt een SSISDB-exemplaar op deze database server gemaakt. 
 
-  Het wordt aangeraden om de databaseserver in dezelfde Azure-regio te maken als de Integration Runtime. Met deze configuratie kan de uitvoering van de integratieruntime worden opgeslagen in SSISDB zonder Azure-regio's te overschrijden.
+  Het wordt aangeraden om de databaseserver in dezelfde Azure-regio te maken als de Integration Runtime. Met deze configuratie kan de integratie-runtime uitvoer logboeken schrijven naar SSISDB zonder overschrijding van Azure-regio's.
 
-  Houd rekening met deze punten:
+  Houd u aan de volgende punten:
 
-  - Op basis van de geselecteerde databaseserver kan de SSISDB-instantie namens u worden gemaakt als één database, als onderdeel van een elastische groep of in een beheerde instantie. Het kan toegankelijk zijn in een openbaar netwerk of door lid te worden van een virtueel netwerk. Zie [Een azure SQL Database-database, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)voor richtlijnen voor het kiezen van het type databaseserver om SSISDB te hosten. 
+  - Op basis van de geselecteerde database server kan het SSISDB-exemplaar namens u worden gemaakt als één data base, als onderdeel van een elastische pool of in een beheerd exemplaar. Het kan toegankelijk zijn in een openbaar netwerk of door lid te worden van een virtueel netwerk. Zie [een Azure SQL database afzonderlijke Data Base, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)voor hulp bij het kiezen van het type database server voor het hosten van SSISDB. 
   
-    Als u een Azure SQL Database-server met IP-firewallregels/eindpunten voor virtuele netwerkservices of een beheerde instantie met privéeindpunt gebruikt om SSISDB te hosten, of als u toegang nodig hebt tot on-premises gegevens zonder een zelf gehoste IR te configureren, moet u uw Azure-SSIS IR aansluiten bij een virtueel netwerk. Zie [Een Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
+    Als u een Azure SQL Database Server met IP-firewall regels/virtuele netwerk service-eind punten of een beheerd exemplaar met een persoonlijk eind punt gebruikt om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf-hostende IR te configureren, moet u uw Azure-SSIS IR toevoegen aan een virtueel netwerk. Zie [een Azure-SSIS IR in een virtueel netwerk maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
 
-  - Controleer of de instelling **Toegang tot Azure-services toestaan** is ingeschakeld voor de databaseserver. Deze instelling is niet van toepassing wanneer u een Azure SQL Database-server gebruikt met IP-firewallregels/eindpunten voor virtuele netwerkservices of een beheerde instantie met privéeindpunt om SSISDB te hosten. Zie [Secure your Azure SQL database](../sql-database/sql-database-security-tutorial.md#create-firewall-rules) (Azure SQL-database beveiligen) voor meer informatie. Zie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)om deze instelling in te schakelen met PowerShell.
+  - Controleer of de instelling **Toegang tot Azure-services toestaan** is ingeschakeld voor de databaseserver. Deze instelling is niet van toepassing wanneer u een Azure SQL Database Server met IP-firewall regels/virtuele netwerk service-eind punten of een beheerd exemplaar met een persoonlijk eind punt gebruikt om SSISDB te hosten. Zie [Secure your Azure SQL database](../sql-database/sql-database-security-tutorial.md#create-firewall-rules) (Azure SQL-database beveiligen) voor meer informatie. Zie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)om deze instelling in te scha kelen met behulp van Power shell.
 
-  - Voeg het IP-adres van de clientmachine of een reeks IP-adressen die het IP-adres van de clientmachine bevat, toe aan de lijst met client-IP-adres in de firewall-instellingen voor de databaseserver. Zie [Overzicht van firewallregels op Azure SQL Database-serverniveau en -databaseniveau](../sql-database/sql-database-firewall-configure.md) voor meer informatie.
+  - Voeg het IP-adres van de client computer of een bereik van IP-adressen met het IP-adres van de client computer toe aan de lijst met client-IP-adressen in de firewall instellingen voor de database server. Zie [Overzicht van firewallregels op Azure SQL Database-serverniveau en -databaseniveau](../sql-database/sql-database-firewall-configure.md) voor meer informatie.
 
-  - U verbinding maken met de databaseserver door SQL-verificatie te gebruiken met uw serverbeheerdersreferenties of door Azure AD-verificatie te gebruiken met de beheerde identiteit voor uw gegevensfabriek. Voor dit laatste moet u de beheerde identiteit van uw gegevensfabriek toevoegen aan een Azure AD-groep met toegangsmachtigingen voor de databaseserver. Zie [Een Azure-SSIS IR maken met Azure AD-verificatie](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
+  - U kunt verbinding maken met de database server door SQL-verificatie te gebruiken met de referenties van uw server beheerder of door Azure AD-verificatie te gebruiken met de beheerde identiteit voor uw data factory. Voor de laatste moet u de beheerde identiteit voor uw data factory toevoegen aan een Azure AD-groep met toegangs machtigingen voor de database server. Zie [een Azure-SSIS IR maken met Azure AD-verificatie](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
 
-  - Controleer of uw databaseserver nog geen SSISDB-exemplaar heeft. De inrichting van een Azure-SSIS IR biedt geen ondersteuning voor het gebruik van een bestaand SSISDB-exemplaar.
+  - Controleer of de database server al een SSISDB-exemplaar heeft. Het inrichten van een Azure-SSIS IR biedt geen ondersteuning voor het gebruik van een bestaand SSISDB-exemplaar.
 
 
 > [!NOTE]
-> Zie [Gegevensfabriek en SSIS IR beschikbaarheid per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)voor een lijst met Azure-regio's en een Azure-SSIS IR. 
+> Zie [Data Factory en SSIS IR-Beschik baarheid per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)voor een lijst met Azure-regio's waarin Data Factory en een Azure-SSIS IR op dit moment beschikbaar zijn. 
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-Als u uw gegevensfabriek wilt maken via de Azure-portal, volgt u de stapsgewijze instructies in [Een gegevensfabriek maken via de gebruikersinterface.](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory) Selecteer **Vastmaken aan** het dashboard terwijl u dit doet, zodat u snel toegang krijgen na het maken ervan. 
+Als u uw data factory via de Azure Portal wilt maken, volgt u de stapsgewijze instructies in [een Data Factory maken via de gebruikers interface](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory). Selecteer **in dat geval vastmaken aan dash board** om snelle toegang toe te staan nadat het is gemaakt. 
 
-Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-portal. Selecteer de tegel **Auteur & monitor** om de pagina Laten **beginnen** op een apart tabblad te openen. Daar u uw Azure-SSIS IR blijven maken.
+Nadat uw data factory is gemaakt, opent u de pagina overzicht in de Azure Portal. Selecteer de tegel **Author & monitor** om de pagina aan de **slag** te openen op een afzonderlijk tabblad. Daar kunt u door gaan met het maken van uw Azure-SSIS IR.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Een Azure SSIS Integration Runtime maken
 
@@ -83,9 +83,9 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
 1. Zie de sectie [Een Azure-SSIS-integratieruntime inrichten](#provision-an-azure-ssis-integration-runtime) voor de resterende stappen voor het instellen van een Azure-SSIS-IR. 
 
-### <a name="from-the-authoring-ui"></a>Van de gebruikersinterface voor het schrijven
+### <a name="from-the-authoring-ui"></a>Vanuit de gebruikers interface voor ontwerpen
 
-1. Schakel in de gebruikersinterface van Azure Data Factory over naar het tabblad **Bewerken** en selecteer **Verbindingen**. Ga vervolgens over naar het tabblad **Programma's voor integratie** om bestaande werktijden voor integratie in uw gegevensfabriek weer te geven. 
+1. Ga in de Azure Data Factory gebruikers interface naar het tabblad **bewerken** en selecteer **verbindingen**. Schakel vervolgens over naar het tabblad **Integration Runtimes** om bestaande integratie-Runtimes in uw Data Factory weer te geven. 
 
    ![Selecties voor het weergeven van bestaande IR’s](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -93,7 +93,7 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
    ![Integratieruntime via menu](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. Selecteer **in** het deelvenster Instellingen voor uitvoering van de integratie de **bestaande SSIS-pakketten optillen en verschuiven om uit te voeren in Azure-tegel** en selecteer **Volgende**. 
+1. Selecteer in het configuratie scherm van **Integration runtime** de **lift-en Shift-bestaande SSIS-pakketten die moeten worden uitgevoerd in de Azure-** tegel en selecteer **volgende**. 
 
    ![Geef het type integratieruntime op](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
@@ -101,7 +101,7 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
 ## <a name="provision-an-azure-ssis-integration-runtime"></a>Een Azure-SSIS-integratieruntime inrichten
 
-1. Voer in het gedeelte **Algemene instellingen** van het deelvenster Instellingen voor **integratie runtime-instellingen** de volgende stappen uit. 
+1. Voer de volgende stappen uit in het gedeelte **algemene instellingen** van **Integration runtime** configuratie venster. 
 
    ![Algemene instellingen](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
 
@@ -111,23 +111,23 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
    1. Selecteer bij **Locatie** de locatie voor de integratieruntime. Alleen ondersteunde locaties worden weergegeven. We raden u aan dezelfde locatie van uw databaseserver te selecteren voor het hosten van SSISDB. 
 
-   1. Selecteer bij **Knooppuntgrootte** de grootte van knooppunt in het integratieruntimecluster. Alleen ondersteunde knooppuntgrootten worden weergegeven. Selecteer een grote knooppuntgrootte (opschalen) als u veel rekenintensieve of geheugenintensieve pakketten wilt uitvoeren. 
+   1. Selecteer bij **Knooppuntgrootte** de grootte van knooppunt in het integratieruntimecluster. Alleen ondersteunde knooppuntgrootten worden weergegeven. Selecteer de grootte van een groot knoop punt (omhoog schalen) als u veel reken intensief of geheugenintensieve pakketten wilt uitvoeren. 
 
-   1. Selecteer bij **Aantal knooppunten** het aantal knooppunten in het integratieruntimecluster. Alleen ondersteunde knooppuntaantallen worden weergegeven. Selecteer een groot cluster met veel knooppunten (uitschalen) als u veel pakketten parallel wilt uitvoeren. 
+   1. Selecteer bij **Aantal knooppunten** het aantal knooppunten in het integratieruntimecluster. Alleen ondersteunde knooppuntaantallen worden weergegeven. Selecteer een groot cluster met veel knoop punten (uitschalen) als u veel pakketten parallel wilt uitvoeren. 
 
-   1. Selecteer voor **Edition/License**de SQL Server-editie voor uw inburgeringsruntime: Standard of Enterprise. Selecteer Enterprise als u geavanceerde functies wilt gebruiken in uw inburgeringsruntime. 
+   1. Voor **editie/licentie**selecteert u de SQL Server Edition voor uw Integration runtime: Standard of ENTER prise. Selecteer onderneming als u geavanceerde functies wilt gebruiken in uw Integration runtime. 
 
-   1. Selecteer voor **geld besparen**de azure hybrid benefit-optie voor uw ingebruiksruntime voor integratie: **ja** of **nee.** Selecteer **Ja** als u uw eigen SQL Server-licentie met Software Assurance wilt meenemen om te profiteren van kostenbesparingen bij hybride gebruik. 
+   1. Selecteer voor **Bespaar geld**de Azure Hybrid Benefit optie voor de Integration runtime: **Ja** of **Nee**. Selecteer **Ja** als u uw eigen SQL Server licentie met Software Assurance wilt gebruiken om kosten besparingen met hybride gebruik te voor komen. 
 
    1. Selecteer **Next**. 
 
-1. Voer in de sectie **SQL-instellingen** de volgende stappen uit. 
+1. Voer de volgende stappen uit in de sectie **SQL-instellingen** . 
 
    ![SQL-instellingen](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
-   1. Schakel het selectievakje **SSIS-catalogus (SSISDB) maken dat wordt gehost door Azure SQL Database server/Managed Instance in om het selectievakje Projecten/pakketten/omgevingen/uitvoeringslogboeken op te slaan** om het implementatiemodel te kiezen voor pakketten die op uw Azure-SSIS IR moeten worden uitgevoerd. U kiest het ProjectDeployment-model waarbij pakketten worden geïmplementeerd in SSISDB dat wordt gehost door uw databaseserver, of het pakketimplementatiemodel waarbij pakketten worden geïmplementeerd in bestandssystemen, bestandsshares of Azure-bestanden.
+   1. Schakel het selectie vakje **SSIS-catalogus maken (SSISDB) die wordt gehost door Azure SQL database server/beheerd exemplaar om uw projecten/pakketten/omgevingen/uitvoerings logboeken** op te slaan in en kies het implementatie model voor pakketten die moeten worden uitgevoerd op uw Azure-SSIS IR. U kiest ofwel het project implementatie model waarin pakketten worden geïmplementeerd in SSISDB die worden gehost door uw database server, of het implementatie model van het pakket waarbij pakketten worden geïmplementeerd in bestands systemen, bestands shares of Azure Files.
    
-      Als u het selectievakje inschakelt, moet u uw eigen databaseserver meenemen om SSISDB te hosten die we namens u zullen maken en beheren.
+      Als u het selectie vakje inschakelt, moet u uw eigen database server om SSISDB te hosten die u namens u kunt maken en beheren.
    
       1. Selecteer bij **Abonnement** het Azure-abonnement dat uw databaseserver heeft voor het hosten van SSISDB. 
 
@@ -135,46 +135,46 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
       1. Selecteer bij het **Eindpunt voor de Catalog-databaseserver** het eindpunt van uw databaseserver voor het hosten van SSISDB. 
    
-         Op basis van de geselecteerde databaseserver kan de SSISDB-instantie namens u worden gemaakt als één database, als onderdeel van een elastische groep of in een beheerde instantie. Het kan toegankelijk zijn in een openbaar netwerk of door lid te worden van een virtueel netwerk. Zie [Een azure SQL Database-database, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)voor richtlijnen voor het kiezen van het type databaseserver om SSISDB te hosten.   
+         Op basis van de geselecteerde database server kan het SSISDB-exemplaar namens u worden gemaakt als één data base, als onderdeel van een elastische pool of in een beheerd exemplaar. Het kan toegankelijk zijn in een openbaar netwerk of door lid te worden van een virtueel netwerk. Zie [een Azure SQL database afzonderlijke Data Base, elastische pool en beheerde instantie vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)voor hulp bij het kiezen van het type database server voor het hosten van SSISDB.   
 
-         Als u een Azure SQL Database-server selecteert met IP-firewallregels/eindpunten voor virtuele netwerkservices of een beheerde instantie met een privéeindpunt om SSISDB te hosten, of als u toegang nodig hebt tot on-premises gegevens zonder een zelf gehoste IR te configureren, moet u uw Azure-SSIS IR aansluiten bij een virtueel netwerk. Zie [Een Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
+         Als u een Azure SQL Database Server met IP-firewall regels/virtuele netwerk service-eind punten of een beheerd exemplaar met een persoonlijk eind punt selecteert om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf-hostende IR te configureren, moet u uw Azure-SSIS IR toevoegen aan een virtueel netwerk. Zie [een Azure-SSIS IR in een virtueel netwerk maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
 
-      1. Schakel het selectievakje **AAD-verificatie gebruiken met de beheerde identiteit voor uw ADF** in om de verificatiemethode voor uw databaseserver te kiezen om SSISDB te hosten. U kiest SQL-verificatie of Azure AD-verificatie met de beheerde identiteit voor uw gegevensfabriek.
+      1. Schakel het selectie vakje **Aad-verificatie gebruiken met de beheerde identiteit voor uw ADF** in om de verificatie methode voor uw database server te kiezen voor het hosten van SSISDB. U kiest SQL-verificatie of Azure AD-verificatie met de beheerde identiteit voor uw data factory.
 
-         Als u het selectievakje inschakelt, moet u de beheerde identiteit van uw gegevensfabriek toevoegen aan een Azure AD-groep met toegangsmachtigingen aan uw databaseserver. Zie [Een Azure-SSIS IR maken met Azure AD-verificatie](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
+         Als u het selectie vakje inschakelt, moet u de beheerde identiteit voor uw data factory toevoegen aan een Azure AD-groep met toegangs machtigingen voor uw database server. Zie [een Azure-SSIS IR maken met Azure AD-verificatie](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie.
    
-      1. Voer voor **gebruikersnaam voor beheerders**de SQL-verificatiegebruikersnaam in voor uw databaseserver om SSISDB te hosten. 
+      1. Voor **beheerders naam**voert u de gebruikers naam van de SQL-verificatie voor uw database server in om SSISDB te hosten. 
 
-      1. Voer voor **beheerderswachtwoord**het SQL-verificatiewachtwoord in voor uw databaseserver om SSISDB te hosten. 
+      1. Voor **beheerders wachtwoord**voert u het wacht woord voor SQL-verificatie voor uw database server in om SSISDB te hosten. 
 
-      1. Selecteer **voor Catalog Database Service Tier**de servicelaag voor uw databaseserver om SSISDB te hosten. Selecteer de laag Basic, Standard of Premium of selecteer een elastische poolnaam.
+      1. Selecteer voor de Servicelaag van de **catalogus database**de servicelaag voor de database server om SSISDB te hosten. Selecteer de laag Basic, Standard of Premium of selecteer de naam van een elastische groep.
 
-      1. Selecteer **Testverbinding**. Als de test is geslaagd, selecteert u **Volgende**. 
+      1. Selecteer **verbinding testen**. Als de test is geslaagd, selecteert u **volgende**. 
 
-1. Voer in de sectie **Geavanceerde instellingen** de volgende stappen uit. 
+1. Voer de volgende stappen uit in de sectie **Geavanceerde instellingen** . 
 
    ![Geavanceerde instellingen](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-   1. Selecteer **voor maximale parallelle uitvoeringen per knooppunt**het maximum aantal pakketten dat gelijktijdig per knooppunt in uw runtimecluster voor integratie moet worden uitgevoerd. Alleen ondersteunde pakketaantallen worden weergegeven. Selecteer een laag getal als u meer dan één kern wilt gebruiken om één groot pakket uit te voeren dat reken- of geheugenintensief is. Selecteer een hoog getal als u een of meer kleine pakketten in één kern wilt uitvoeren. 
+   1. Voor **maximale parallelle uitvoeringen per knoop punt**selecteert u het maximum aantal pakketten dat gelijktijdig per knoop punt in uw Integration runtime-cluster moet worden uitgevoerd. Alleen ondersteunde pakketaantallen worden weergegeven. Selecteer een laag aantal als u meer dan één kern wilt gebruiken voor het uitvoeren van één groot pakket dat wordt berekend of geheugenintensieve. Selecteer een hoog nummer als u een of meer kleine pakketten wilt uitvoeren in één kern. 
 
-   1. Schakel het selectievakje **Runtime voor Azure-SSIS-integratie aanpassen met extra systeemconfiguraties/componentinstallaties** in om te kiezen of u aangepaste standaard-/expres-instellingen wilt toevoegen aan uw Azure-SSIS IR. Zie [Aangepaste installatie voor een Azure-SSIS IR voor](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)meer informatie.
+   1. Schakel het selectie vakje **uw Azure-SSIS Integration runtime aanpassen met aanvullende systeem configuraties/onderdeel installaties** in om te kiezen of u standaard instellingen voor aangepaste/snelle installatie wilt toevoegen aan uw Azure-SSIS IR. Zie [aangepaste installatie voor een Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)voor meer informatie.
    
-   1. Schakel **het selectievakje Een VNet selecteren in voor uw Azure-SSIS-integratieruntime om lid te worden, ADF in staat te stellen bepaalde netwerkbronnen te maken en optioneel uw eigen statische openbare IP-adressen mee** te nemen om te kiezen of u uw Azure-SSIS IR wilt aansluiten bij een virtueel netwerk.
+   1. Selecteer **een VNet selecteren voor uw Azure-SSIS Integration runtime om lid te worden van, ADF toestaan om bepaalde netwerk resources te maken en Schakel eventueel uw eigen statische open bare IP-adressen** in om te kiezen of u wilt samen voegen met uw Azure-SSIS IR aan een virtueel netwerk.
 
-      Selecteer deze als u een Azure SQL Database-server gebruikt met IP-firewallregels/eindpunten voor virtuele netwerkservices of een beheerde instantie met privéeindpunt om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf gehoste IR te configureren. Zie [Een Azure-SSIS IR maken in een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie. 
+      Selecteer deze optie als u een Azure SQL Database Server met IP-firewall regels/virtuele netwerk service-eind punten of een beheerd exemplaar met een persoonlijk eind punt gebruikt om SSISDB te hosten, of als u toegang tot on-premises gegevens nodig hebt zonder een zelf-hostende IR te configureren. Zie [een Azure-SSIS IR in een virtueel netwerk maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie. 
    
-   1. Schakel het selectievakje **Runtime voor zelfgehoste integratie instellen als proxy voor uw Azure-SSIS-integratieruntime** in om te kiezen of u een zelf gehoste IR wilt configureren als proxy voor uw Azure-SSIS IR. Zie [Een zelfgehoste IR instellen als proxy voor](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)meer informatie.   
+   1. Selecteer het selectie vakje **zelf-hostende Integration runtime als proxy voor uw Azure-SSIS Integration runtime instellen** om te kiezen of u een zelf-hostende IR wilt configureren als proxy voor uw Azure-SSIS IR. Zie [een zelf-hostende IR instellen als proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)voor meer informatie.   
 
    1. Selecteer **Doorgaan**. 
 
-1. Bekijk **in** de sectie Overzicht alle inrichtingsinstellingen, bookmark de aanbevolen documentatiekoppelingen en selecteer **Voltooien** om de aanmaak van uw inburgeringsruntime te starten. 
+1. Controleer in de sectie **samen vatting** alle inrichtings instellingen, blad wijzer de aanbevolen documentatie koppelingen en selecteer **volt ooien** om het maken van de Integration runtime te starten. 
 
    > [!NOTE]
-   > Zonder aangepaste insteltijd moet dit proces binnen 5 minuten zijn voltooid.
+   > Als u een aangepaste instel tijd wilt uitsluiten, moet dit proces binnen vijf minuten worden voltooid.
    >
-   > Als u SSISDB gebruikt, maakt de Data Factory-service verbinding met uw databaseserver om SSISDB voor te bereiden. 
+   > Als u SSISDB gebruikt, maakt de Data Factory-service verbinding met uw database server om SSISDB voor te bereiden. 
    > 
-   > Wanneer u een Azure-SSIS IR indient, worden ook Access Redistributable en Azure Feature Pack voor SSIS geïnstalleerd. Deze componenten bieden connectiviteit met Excel-bestanden, Access-bestanden en verschillende Azure-gegevensbronnen, naast de gegevensbronnen die ingebouwde componenten al ondersteunen. Zie [Aangepaste installatie voor een Azure-SSIS IR voor](how-to-configure-azure-ssis-ir-custom-setup.md)informatie over andere onderdelen die u installeren.
+   > Wanneer u een Azure-SSIS IR inricht, worden er ook Access Redistributable en Azure Feature Pack voor SSIS geïnstalleerd. Deze onderdelen bieden connectiviteit voor Excel-bestanden, Access-bestanden en verschillende Azure-gegevens bronnen, naast de gegevens bronnen die in de ingebouwde onderdelen al worden ondersteund. Zie [aangepaste installatie voor een Azure-SSIS IR](how-to-configure-azure-ssis-ir-custom-setup.md)voor informatie over andere onderdelen die u kunt installeren.
 
 1. Ga op het tabblad **Verbindingen** indien nodig naar **Integratieruntimes**. Selecteer **Vernieuwen** om de status te vernieuwen. 
 
@@ -186,21 +186,21 @@ Nadat uw gegevensfabriek is gemaakt, opent u de overzichtspagina in de Azure-por
 
 ## <a name="deploy-ssis-packages"></a>SSIS-pakketten implementeren
 
-Als u SSISDB gebruikt, u uw pakketten erin implementeren en deze uitvoeren op de Azure-SSIS IR met SQL Server Data Tools (SSDT) of SQL Server Management Studio (SSMS)-hulpprogramma's. Deze hulpprogramma's maken verbinding met uw databaseserver via het servereindpunt: 
+Als u SSISDB gebruikt, kunt u uw pakketten erin implementeren en deze uitvoeren op de Azure-SSIS IR met behulp van SQL Server Data Tools (SSDT) of SQL Server Management Studio (SSMS)-hulpprogram ma's. Deze hulpprogram ma's maken verbinding met uw database server via het server-eind punt: 
 
-- Voor een Azure SQL Database-server is `<server name>.database.windows.net`de servereindpuntindeling .
-- Voor een beheerde instantie met privéeindpunt is `<server name>.<dns prefix>.database.windows.net`de servereindpuntindeling .
-- Voor een beheerde instantie met openbaar eindpunt `<server name>.public.<dns prefix>.database.windows.net,3342`is de servereindpuntindeling . 
+- Voor een Azure SQL Database-Server is `<server name>.database.windows.net`de eindpunt indeling van de server.
+- Voor een beheerd exemplaar met een persoonlijk eind punt is `<server name>.<dns prefix>.database.windows.net`de indeling van het server eindpunt.
+- Voor een beheerd exemplaar met een openbaar eind punt is `<server name>.public.<dns prefix>.database.windows.net,3342`de indeling van het server eindpunt. 
 
-Als u SSISDB niet gebruikt, u uw pakketten implementeren in bestandssystemen, bestandsshares of Azure-bestanden en `dtinstall` `dtutil`ze `dtexec` uitvoeren op azure-SSIS IR met behulp van de hulpprogramma's en opdrachtregelgereedschappen. Zie [SSIS-pakketten implementeren](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)voor meer informatie. 
+Als u SSISDB niet gebruikt, kunt u uw pakketten implementeren in bestands systemen, bestands shares of Azure files en deze uitvoeren op de Azure-SSIS IR met behulp `dtinstall`van `dtutil`de- `dtexec` ,-en-opdracht regel Programma's. Zie [SSIS-pakketten implementeren](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)voor meer informatie. 
 
-In beide gevallen u uw geïmplementeerde pakketten ook uitvoeren op Azure-SSIS IR met behulp van de activiteit SSIS-pakket uitvoeren in Data Factory-pijplijnen. Zie [SSIS-pakketuitvoering inroepen als een eersteklas datafabriekactiviteit](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie.
+In beide gevallen kunt u uw geïmplementeerde pakketten ook uitvoeren op Azure-SSIS IR met behulp van de activiteit voor het uitvoeren van SSIS-pakketten in Data Factory-pijp lijnen. Zie [de uitvoering van SSIS-pakketten aanroepen als een eerste klasse Data Factory-activiteit](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)voor meer informatie.
 
 Zie ook de volgende SSIS-documentatie: 
 
-- [SSIS-pakketten implementeren, uitvoeren en bewaken in Azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial) 
-- [Verbinding maken met SSISDB in Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database) 
-- [Pakketuitvoeringen plannen in Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages) 
+- [SSIS-pakketten implementeren, uitvoeren en bewaken in azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial) 
+- [Verbinding maken met SSISDB in azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database) 
+- [Pakket uitvoeringen plannen in azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages) 
 - [Connect to on-premises data sources with Windows authentication](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) (Verbinding maken met on-premises gegevensbronnen met Windows-verificatie) 
 
 ## <a name="next-steps"></a>Volgende stappen

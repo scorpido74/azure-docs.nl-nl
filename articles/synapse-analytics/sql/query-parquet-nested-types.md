@@ -1,6 +1,6 @@
 ---
-title: Geneste querytypen met SQL on-demand (voorbeeld)
-description: In dit artikel leert u hoe u parketgenesetypen opvragen.
+title: Parquet geneste typen doorzoeken met behulp van SQL op aanvraag (preview)
+description: In dit artikel leert u hoe u een query kunt uitvoeren op Parquet-geneste typen.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: a1e3d3c7494aa75b3f6d481d12135316791772d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431655"
 ---
-# <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Geneste querytypen met SQL on-demand (preview) in Azure Synapse Analytics
+# <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Parquet geneste typen doorzoeken met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met SQL on-demand (preview) in Azure Synapse Analytics.  In deze query worden parketgenesetypen gelezen.
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics.  Met deze query worden geneste Parquet-typen gelezen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de rest van dit artikel leest, leest u de volgende artikelen:
+Lees de volgende artikelen voordat u de rest van dit artikel leest:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
-## <a name="project-nested-or-repeated-data"></a>Projectgenese of herhaalde gegevens
+## <a name="project-nested-or-repeated-data"></a>Geneste of herhaalde gegevens projecteren
 
-In de volgende query wordt het *parketbestand justSimpleArray.parquet* gelezen. Het projecteert alle kolommen uit het parketbestand, inclusief geneste of herhaalde gegevens.
+Met de volgende query wordt het bestand *justSimpleArray. Parquet* gelezen. Hiermee worden alle kolommen uit het Parquet-bestand, inclusief geneste of herhaalde gegevens, geprojecteerd.
 
 ```sql
 SELECT
@@ -41,9 +41,9 @@ FROM
     ) AS [r];
 ```
 
-## <a name="access-elements-from-nested-columns"></a>Toegang tot elementen uit geneste kolommen
+## <a name="access-elements-from-nested-columns"></a>Toegang tot elementen vanuit geneste kolommen
 
-In de volgende query wordt het bestand *structExample.parquet* gelezen en wordt weergegeven hoe elementen van een geneste kolom kunnen worden weergegeven:
+Met de volgende query wordt het bestand *structExample. Parquet* gelezen en wordt getoond hoe u elementen van een geneste kolom laat zien:
 
 ```sql
 SELECT
@@ -68,9 +68,9 @@ FROM
     ) AS [r];
 ```
 
-## <a name="access-elements-from-repeated-columns"></a>Toegang tot elementen uit herhaalde kolommen
+## <a name="access-elements-from-repeated-columns"></a>Toegang tot elementen van herhaalde kolommen
 
-In de volgende query wordt het *parketbestand justSimpleArray.parquet* gelezen en wordt [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om een **scalaire** element op te halen vanuit een herhaalde kolom, zoals een array of kaart:
+De volgende query leest het bestand *justSimpleArray. Parquet* en gebruikt [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om een **scalair** element op te halen in een herhaalde kolom, zoals een matrix of kaart:
 
 ```sql
 SELECT
@@ -85,7 +85,7 @@ FROM
     ) AS [r];
 ```
 
-De volgende query leest het *mapExample.parketbestand* en gebruikt [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om een **niet-scalair** element op te halen vanuit een herhaalde kolom, zoals een array of kaart:
+Met de volgende query wordt het bestand *mapExample. Parquet* gelezen en wordt [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om een **niet-scalair** element op te halen uit een herhaalde kolom, zoals een matrix of kaart:
 
 ```sql
 SELECT
@@ -100,4 +100,4 @@ FROM
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In het volgende artikel ziet u hoe u [JSON-bestanden opvragen.](query-json-files.md)
+In het volgende artikel ziet u hoe u een [query uitvoert voor json-bestanden](query-json-files.md).

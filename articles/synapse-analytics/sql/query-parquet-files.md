@@ -1,6 +1,6 @@
 ---
-title: Query-parketbestanden met SQL on-demand (voorbeeld)
-description: In dit artikel leert u hoe u parketbestanden opvragen met SQL on-demand (voorbeeld).
+title: Een query uitvoeren op Parquet-bestanden met behulp van SQL op aanvraag (preview)
+description: In dit artikel leert u hoe u een query kunt uitvoeren op Parquet-bestanden met behulp van SQL op aanvraag (preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,50 +10,50 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 0b272a8c8ce81fc40585014e5930f5d7b1b5f2c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431694"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Query Parquet-bestanden met SQL on-demand (preview) in Azure Synapse Analytics
+# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op Parquet-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijven met SQL on-demand (preview) waarin parketbestanden worden gelezen.
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) waarmee Parquet-bestanden worden gelezen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de rest van dit artikel leest, leest u de volgende artikelen:
+Lees de volgende artikelen voordat u de rest van dit artikel leest:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
 ## <a name="dataset"></a>Gegevensset
 
-U parketbestanden op dezelfde manier opvragen als CSV-bestanden. Het enige verschil is dat de parameter FILEFORMAT moet worden ingesteld op PARQUET. Voorbeelden in dit artikel tonen de specifieke kenmerken van het lezen van Parketbestanden.
+U kunt een query uitvoeren op Parquet-bestanden op dezelfde manier als bij het lezen van CSV-bestanden. Het enige verschil is dat de File Format-para meter moet worden ingesteld op PARQUET. In de voor beelden in dit artikel ziet u de specifieke informatie over het lezen van Parquet-bestanden.
 
 > [!NOTE]
-> U hoeft geen kolommen op te geven in de OPENROWSET MET-clausule bij het lezen van parketbestanden. SQL on-demand maakt gebruik van metadata in het parketbestand en bindt kolommen bij naam.
+> U hoeft geen kolommen op te geven in de component OPENROWSET WITH bij het lezen van Parquet-bestanden. SQL on demand maakt gebruik van meta gegevens in het Parquet-bestand en verbindt kolommen op naam.
 
-U gebruikt het *parket/de taxi* van de map voor de voorbeeldquery's. Het bevat NYC Taxi - Yellow Taxi Trip Records gegevens van juli 2016. tot juni 2018.
+U gebruikt de map *Parquet/taxi* voor de voorbeeld query's. Het bevat NYC-gele taxi-excursie records van 2016 juli. tot juni 2018.
 
-Gegevens worden per jaar en maand verdeeld en de mapstructuur is als volgt:
+De gegevens worden gepartitioneerd per jaar en maand en de mapstructuur is als volgt:
 
-- jaar=2016
-  - maand=6
+- Year = 2016
+  - maand = 6
   - ...
-  - maand=12
-- jaar=2017
-  - maand=1
+  - maand = 12
+- Year = 2017
+  - maand = 1
   - ...
-  - maand=12
-- jaar=2018
-  - maand=1
+  - maand = 12
+- Year = 2018
+  - maand = 1
   - ...
-  - maand=6
+  - maand = 6
 
-## <a name="query-set-of-parquet-files"></a>Queryset van parketbestanden
+## <a name="query-set-of-parquet-files"></a>Query set van Parquet-bestanden
 
-U alleen de kolommen opgeven die interessant zijn wanneer u parketbestanden opvraagt.
+U kunt alleen de interessante kolommen opgeven wanneer u Parquet-bestanden opvraagt.
 
 ```sql
 SELECT
@@ -76,14 +76,14 @@ ORDER BY
     passenger_count;
 ```
 
-## <a name="automatic-schema-inference"></a>Automatische schema-gevolgtrekking
+## <a name="automatic-schema-inference"></a>Automatische schema-deinterferentie
 
-U hoeft de OPENROWSET WITH-clausule niet te gebruiken bij het lezen van parketbestanden. Kolomnamen en gegevenstypen worden automatisch gelezen uit parketbestanden.
+U hoeft de component OPENROWSET WITH niet te gebruiken bij het lezen van Parquet-bestanden. Kolom namen en gegevens typen worden automatisch uit Parquet-bestanden gelezen.
 
-In het onderstaande voorbeeld worden de automatische schema-inferencemogelijkheden voor parketbestanden weergegeven. Het geeft het aantal rijen in september 2017 terug zonder een schema op te geven.
+In het onderstaande voor beeld ziet u de mogelijkheden voor het automatisch afnemen van schema's voor Parquet-bestanden. Het retourneert het aantal rijen in september 2017 zonder een schema op te geven.
 
 > [!NOTE]
-> U hoeft geen kolommen op te geven in de openrowset met-clausule bij het lezen van Parketbestanden. In dat geval maakt sql on-demand queryservice gebruik van metagegevens in het parketbestand en bindt kolommen op naam.
+> U hoeft geen kolommen op te geven in de component OPENROWSET WITH bij het lezen van Parquet-bestanden. In dat geval worden meta gegevens in de SQL-query service op aanvraag gebruikt in het Parquet-bestand en worden kolommen op naam gebonden.
 
 ```sql
 SELECT
@@ -95,12 +95,12 @@ FROM
     ) AS nyc;
 ```
 
-### <a name="query-partitioned-data"></a>Gegevens met partitie van query's
+### <a name="query-partitioned-data"></a>Gepartitioneerde gegevens opvragen
 
-De gegevensset in dit voorbeeld is verdeeld (verdeeld) in afzonderlijke submappen. U specifieke partities targeten met de bestandspadfunctie. In dit voorbeeld worden tariefbedragen per jaar, maand en payment_type weergegeven voor de eerste drie maanden van 2017.
+De gegevensset die in dit voor beeld wordt gegeven, wordt in afzonderlijke submappen verdeeld (gepartitioneerd). U kunt met behulp van de functie filepath specifieke partities richten. In dit voor beeld worden de ritbedrag bedragen per jaar, maand en payment_type voor de eerste drie maanden van 2017 weer gegeven.
 
 > [!NOTE]
-> De SQL on-demand Query is compatibel met Hive/Hadoop partitionering scheme.
+> De SQL op aanvraag-query is compatibel met hive/Hadoop-partitie schema.
 
 ```sql
 SELECT
@@ -127,46 +127,46 @@ ORDER BY
     payment_type;
 ```
 
-## <a name="type-mapping"></a>Typetoewijzing
+## <a name="type-mapping"></a>Type toewijzing
 
-Parketbestanden bevatten typebeschrijvingen voor elke kolom. In de volgende tabel wordt beschreven hoe parkettypen worden toegewezen aan SQL-native typen.
+Parquet-bestanden bevatten type beschrijvingen voor elke kolom. In de volgende tabel wordt beschreven hoe Parquet types worden toegewezen aan systeem eigen SQL-typen.
 
-| Parkettype | Parket logisch type (annotatie) | SQL-gegevenstype |
+| Type Parquet | Parquet logische type (annotatie) | SQL-gegevens type |
 | --- | --- | --- |
-| Booleaanse | | bit |
-| BINAIR / BYTE_ARRAY | | varbinary varbinary |
-| Dubbele | | float |
-| Float | | real |
+| True | | bit |
+| BINARY/BYTE_ARRAY | | varbinary |
+| DUBBELKLIK | | float |
+| FLOAT | | werkelijk |
 | INT32 | | int |
 | INT64 | | bigint |
 | INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |binair |
-| Binaire |UTF8 |varchar \*(UTF8 collation) |
-| Binaire |Tekenreeks |varchar \*(UTF8 collation) |
-| Binaire |Enum|varchar \*(UTF8 collation) |
-| Binaire |Uuid |uniqueidentifier |
-| Binaire |Decimaal |decimal |
-| Binaire |JSON |varchar(max) \*(UTF8 collation) |
-| Binaire |BSON BSON |varbinary(max) |
-| FIXED_LEN_BYTE_ARRAY |Decimaal |decimal |
-| BYTE_ARRAY |Interval |varchar(max), geserialiseerd in gestandaardiseerd formaat |
-| INT32 |INT(8, waar) |smallint |
-| INT32 |INT(16, waar) |smallint |
-| INT32 |INT(32, waar) |int |
-| INT32 |INT(8, false) |tinyint |
-| INT32 |INT(16, false) |int |
-| INT32 |INT(32, false) |bigint |
+| WAARDE |UTF8 |varchar \*(UTF8-sortering) |
+| WAARDE |TEKENREEKSEXPRESSIE |varchar \*(UTF8-sortering) |
+| WAARDE |VASTE|varchar \*(UTF8-sortering) |
+| WAARDE |MEE |uniqueidentifier |
+| WAARDE |KOMMA |decimal |
+| WAARDE |JSON |varchar (max) \*(UTF8-sortering) |
+| WAARDE |BSON |varbinary (max) |
+| FIXED_LEN_BYTE_ARRAY |KOMMA |decimal |
+| BYTE_ARRAY |BEREIK |varchar (max), geserialiseerd in gestandaardiseerde indeling |
+| INT32 |INT (8, True) |smallint |
+| INT32 |INT (16, True) |smallint |
+| INT32 |INT (32, True) |int |
+| INT32 |INT (8, false) |tinyint |
+| INT32 |INT (16, false) |int |
+| INT32 |INT (32, false) |bigint |
 | INT32 |DATE |date |
-| INT32 |Decimaal |decimal |
-| INT32 |TIJD (MILLIS )|tijd |
-| INT64 |INT(64, waar) |bigint |
-| INT64 |INT(64, false ) |decimaal(20,0) |
-| INT64 |Decimaal |decimal |
-| INT64 |TIJD (MICROS / NANOS) |tijd |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[Complex type](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |Lijst |varchar(max), geserialiseerd tot JSON |
-|[Complex type](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Kaart|varchar(max), geserialiseerd tot JSON |
+| INT32 |KOMMA |decimal |
+| INT32 |TIJD (MILLIS)|tijd |
+| INT64 |INT (64, True) |bigint |
+| INT64 |INT (64, false) |decimaal (20, 0) |
+| INT64 |KOMMA |decimal |
+| INT64 |TIJD (MICRON/NANOS) |tijd |
+|INT64 |TIJDS TEMPEL (MILLIS/MICRON/NANOS) |datetime2 |
+|[Complex type](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |ORDERVERZAMELLIJST |varchar (max), geserialiseerd in JSON |
+|[Complex type](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|DIAGRAM|varchar (max), geserialiseerd in JSON |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga verder naar het volgende artikel om te leren hoe [je parketgenesetypen opvragen.](query-parquet-nested-types.md)
+Ga naar het volgende artikel voor meer informatie over het [opvragen van Parquet-geneste typen](query-parquet-nested-types.md).

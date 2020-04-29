@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: stel & een geheim op te halen uit Key Vault met PowerShell'
-description: In deze quickstart leert u hoe u geheimen uit een Azure Key Vault maakt, ophaalt en verwijdert met Azure PowerShell.
+title: 'Quick Start: Stel & een geheim op te halen uit Key Vault met behulp van Power shell'
+description: In deze Quick Start leert u hoe u met behulp van Azure PowerShell geheimen kunt maken, ophalen en verwijderen uit een Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -12,19 +12,19 @@ ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 3bac3cc2a5cedbd4b963a0759e6c8b940d2ca924
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81424984"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Snelstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Voor meer informatie over Key Vault u het [overzicht](../general/overview.md)bekijken. In deze snelstart gebruikt u PowerShell om een sleutelkluis te maken. Vervolgens slaat u een geheim op in de zojuist gemaakte kluis.
+Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Zie het [overzicht](../general/overview.md)voor meer informatie over Key Vault. In deze snelstart gebruikt u PowerShell om een sleutelkluis te maken. Vervolgens slaat u een geheim op in de zojuist gemaakte kluis.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -46,11 +46,11 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 Vervolgens maakt u een sleutelkluis. Om deze stap te kunnen uitvoeren, hebt u enkele gegevens nodig:
 
-Hoewel we "Contoso KeyVault2" gebruiken als de naam voor onze Key Vault tijdens deze quickstart, moet je een unieke naam gebruiken.
+Hoewel we ' contoso KeyVault2 ' gebruiken als naam voor onze Key Vault in deze Snelstartgids, moet u een unieke naam gebruiken.
 
 - **Kluisnaam** Contoso-Vault2.
 - **Naam van resourcegroep** ContosoResourceGroup.
-- **Locatie** Oost-VS.
+- **Locatie** VS-Oost.
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
@@ -101,8 +101,8 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart heb je een Key Vault gemaakt en er een geheim in opgeslagen. Ga verder naar de onderstaande artikelen voor meer informatie over Key Vault en hoe u deze integreren met uw toepassingen.
+In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
 
-- Lees een [overzicht van Azure Key Vault](../general/overview.md)
-- Zie de referentie voor de [azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
-- Aanbevolen [procedures voor Azure Key Vault bekijken](../general/best-practices.md)
+- Een [overzicht van Azure Key Vault](../general/overview.md) lezen
+- Zie de naslag informatie voor de [Azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- [Azure Key Vault aanbevolen procedures](../general/best-practices.md) controleren

@@ -1,5 +1,5 @@
 ---
-title: Stapsgewijs meerdere tabellen kopiëren met Azure-portal
+title: Incrementeel meerdere tabellen kopiëren met behulp van Azure Portal
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een lokale Microsoft SQL Server worden gekopieerd naar een Azure SQL-database.
 services: data-factory
 ms.author: yexu
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
 ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419252"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
@@ -50,7 +50,7 @@ Dit zijn de belangrijke stappen voor het maken van deze oplossing:
     
     In deze zelfstudie slaat u de grenswaarde op in een SQL-database.
 
-1. **Maak een pijplijn met de volgende activiteiten:** 
+1. **Maak een pijp lijn met de volgende activiteiten**: 
     
     a. Maak een ForEach-activiteit die door een lijst met namen van gegevensbrontabellen loopt, die als parameter is doorgegeven aan de pijplijn. Voor elke brontabel roept deze de volgende activiteiten voor het laden van de deltagegevens voor deze tabel op.
 
@@ -65,17 +65,17 @@ Dit zijn de belangrijke stappen voor het maken van deze oplossing:
     ![Stapsgewijs gegevens laden](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 * **SQL Server**. In deze zelfstudie gebruikt u een on-premises SQL Server-database als een brongegevensopslag. 
-* **Azure SQL-database**. U gebruikt een SQL database als de sink-gegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken. 
+* **Azure SQL database**. U gebruikt een SQL database als de sink-gegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Brontabellen maken in uw SQL Server-database
 
 1. Start SQL Server Management Studio en maak verbinding met uw on-premises SQL-database.
 
-1. Klik in **Server Explorer**met de rechtermuisknop op de database en kies **Nieuwe query**.
+1. Klik in **Server Explorer**met de rechter muisknop op de data base en kies **nieuwe query**.
 
 1. Voer de volgende SQL-opdracht uit op uw database om tabellen te maken met de naam `customer_table` en `project_table`:
 
@@ -114,9 +114,9 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.c
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Doeltabellen in uw Azure SQL-database maken
 1. Open SQL Server Management Studio en maak verbinding met uw Azure SQL-database.
 
-1. Klik in **Server Explorer**met de rechtermuisknop op de database en kies **Nieuwe query**.
+1. Klik in **Server Explorer**met de rechter muisknop op de data base en kies **nieuwe query**.
 
-1. Voer de volgende SQL-opdracht uit tegen `customer_table` uw `project_table`Azure SQL-database om tabellen met de naam te maken en:  
+1. Voer de volgende SQL-opdracht uit op uw Azure-SQL database om `customer_table` tabellen `project_table`te maken met de naam en:  
     
     ```sql
     create table customer_table
@@ -135,7 +135,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.c
     ```
 
 ### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Nog een tabel in de Azure SQL-database maken om de bovengrenswaarde op te slaan
-1. Voer de volgende SQL-opdracht uit tegen uw `watermarktable` Azure SQL-database om een tabel te maken met de naam om de watermerkwaarde op te slaan: 
+1. Voer de volgende SQL-opdracht uit op uw Azure-SQL database om een `watermarktable` tabel te maken met de naam om de watermerk waarde op te slaan: 
     
     ```sql
     create table watermarktable
@@ -175,11 +175,11 @@ END
 ```
 
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Gegevenstypen en aanvullende opgeslagen procedures maken in de Azure SQL-database
-Voer de volgende query uit om twee opgeslagen procedures en twee gegevenstypen in uw Azure SQL-database te maken. Deze worden gebruikt voor het samenvoegen van de gegevens uit de brontabellen in doeltabellen.
+Voer de volgende query uit om twee opgeslagen procedures en twee gegevens typen te maken in uw Azure-SQL database. Deze worden gebruikt voor het samenvoegen van de gegevens uit de brontabellen in doeltabellen.
 
-Om de reis gemakkelijk te maken om mee te beginnen, gebruiken we deze opgeslagen procedures die de deltagegevens doorgeven via een tabelvariabele en voegen deze vervolgens samen in het bestemmingsarchief. Wees voorzichtig dat het niet verwacht dat een "groot" aantal deltarijen (meer dan 100) wordt opgeslagen in de tabelvariabele.  
+Om het traject eenvoudig te laten beginnen, gebruiken we rechtstreeks deze opgeslagen procedures waarmee de Delta gegevens worden door gegeven via een tabel variabele en deze vervolgens samen voegen in het doel archief. Wees voorzichtig dat een ' grote ' aantal Delta rijen (meer dan 100) niet wordt verwacht om te worden opgeslagen in de tabel variabele.  
 
-Als u een groot aantal deltarijen moet samenvoegen in het doelarchief, raden we u aan om kopieeractiviteit te gebruiken om alle deltagegevens eerst te kopiëren naar een tijdelijke 'staging'-tabel in het doelarchief en vervolgens uw eigen opgeslagen procedure te bouwen zonder tabelvariabele te gebruiken om ze samen te voegen van de tabel 'staging' naar de tabel 'definitief'. 
+Als u een groot aantal Delta rijen in het doel archief moet samen voegen, kunt u het beste de Kopieer activiteit gebruiken om alle Delta gegevens te kopiëren naar een tijdelijke tabel ' staging ' in het doel archief. vervolgens moet u uw eigen opgeslagen procedure maken zonder tabel variabele te gebruiken om ze te kunnen samen voegen van de tabel "staging" in de tabel "Final". 
 
 
 ```sql
@@ -233,25 +233,25 @@ END
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-2. Selecteer links in het menu Een resource > **Analytics** > **Data Factory maken:** **Create a resource** 
+2. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. Voer op de pagina **Nieuwe gegevensfactory****ADFTutorialBulkCopyDF** in als de **naam**. 
  
-   De naam van de Azure-gegevensfabriek moet **wereldwijd uniek**zijn. Als u een rood uitroepteken ziet met het volgende foutbericht, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFIncCopyTutorialDF) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-data factory moet **wereld wijd uniek**zijn. Als u een rood uitroepteken ziet met het volgende foutbericht, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFIncCopyTutorialDF) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
 4. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken. 
 5. Voer een van de volgende stappen uit voor de **Resourcegroep**:
      
-    - Selecteer **Bestaande gebruiken**en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
-    - Selecteer **Nieuw maken**en voer de naam van een resourcegroep in.   
+    - Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst. 
+    - Selecteer **nieuwe maken**en voer de naam van een resource groep in.   
     Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 6. Selecteer **V2** als de **versie**.
 7. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
-8. Klik **op Maken**.      
+8. Klik op **maken**.      
 9. Wanneer het maken is voltooid, ziet u de pagina **Data Factory** zoals in de afbeelding wordt weergegeven.
    
    ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
@@ -264,10 +264,10 @@ Als u gegevens uit een gegevensopslag in een particulier netwerk (on-premises) n
 
 1. In het tabblad **Integratieruntimes** klikt u op **+ Nieuw**. 
 
-1. Selecteer **in** het venster Instellingen voor verloop van de integratie de optie **Gegevensverplaatsing uitvoeren en activiteiten verzenden naar externe gegevensberekening**en klik op **Doorgaan**. 
+1. Selecteer in het venster **Integration runtime instellen** de optie **gegevens verplaatsing en verzend activiteiten uitvoeren naar externe berekeningen**en klik op **door gaan**. 
 
-1. Selecteer **Zelf gehost**en klik op **Doorgaan**. 
-1. Voer **MySelfHostedIR** voor **naam**in en klik op **Maken**. 
+1. Selecteer **zelf gehost**en klik op **door gaan**. 
+1. Voer **myselfhostedir bij** in als **naam**en klik op **maken**. 
 
 1. Klik in de sectie **Optie 1: snelle installatie** op **Klik hier om de snelle installatie voor deze computer te starten**. 
 
@@ -293,14 +293,14 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
 1. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
     1. Voer **SqlServerLinkedService** in als **Naam**. 
-    1. Selecteer **MySelfHostedIR** bij **Connect via integration runtime**. Dit is een **belangrijke** stap. De standaard integratieruntime kan geen verbinding maken met een on-premises-gegevensarchief. Gebruik de zelf-hostende integratieruntime die u eerder hebt gemaakt. 
+    1. Selecteer **MySelfHostedIR** bij **Connect via integration runtime**. Dit is een **belang rijke** stap. De standaard integratieruntime kan geen verbinding maken met een on-premises-gegevensarchief. Gebruik de zelf-hostende integratieruntime die u eerder hebt gemaakt. 
     1. Bij **Servernaam** voert u de naam in van de computer die de SQL Server-database bevat.
     1. Bij **Naam database** voert u de naam in van de database in uw Microsoft SQL Server met de brongegevens. U hebt een tabel gemaakt en gegevens in deze database ingevoegd als onderdeel van de vereisten. 
     1. Bij **Verificatietype** selecteert u het **type van de verificatie** dat u wilt gebruiken voor verbinding met de database. 
     1. Bij **Gebruikersnaam** voert u de naam in van de gebruiker met toegang tot de SQL Server-database. Als u een slash wilt gebruiken (`\`) in de naam van uw gebruikersaccount of server, moet u het escapeteken (`\`) gebruiken. Een voorbeeld is `mydomain\\myuser`.
-    1. Voer **voor Wachtwoord**het **wachtwoord** voor de gebruiker in. 
+    1. Voer bij **wacht woord**het **wacht woord** voor de gebruiker in. 
     1. Als u wilt testen of de Data Factory verbinding kan maken met uw SQL Server-database, klikt u op **Verbinding testen**. Los alle fouten op totdat de verbinding is geslaagd. 
-    1. Als u de gekoppelde service wilt opslaan, klikt u op **Voltooien**.
+    1. Klik op **volt ooien**om de gekoppelde service op te slaan.
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>De gekoppelde Azure SQL Database-service maken
 In de laatste stap maakt u een gekoppelde service om uw Microsoft SQL Server-brondatabase aan de gegevensfactory te koppelen. In deze stap koppelt u uw doel/sink-Azure SQL-database aan uw data factory. 
@@ -313,9 +313,9 @@ In de laatste stap maakt u een gekoppelde service om uw Microsoft SQL Server-bro
     1. Bij de **Servernaam** selecteert u de naam van uw Azure SQL-server in de vervolgkeuzelijst. 
     1. Bij de **Databasenaam** selecteert u de Azure SQL-database waarin u customer_table en project_table als onderdeel van de vereisten heeft gemaakt. 
     1. Bij **Gebruikersnaam** voert u de naam in van de gebruiker met toegang tot de Azure SQL-database. 
-    1. Voer **voor Wachtwoord**het **wachtwoord** voor de gebruiker in. 
+    1. Voer bij **wacht woord**het **wacht woord** voor de gebruiker in. 
     1. Als u wilt testen of de Data Factory verbinding kan maken met uw SQL Server-database, klikt u op **Verbinding testen**. Los alle fouten op totdat de verbinding is geslaagd. 
-    1. Als u de gekoppelde service wilt opslaan, klikt u op **Voltooien**.
+    1. Klik op **volt ooien**om de gekoppelde service op te slaan.
 
 1. Controleer of u twee gekoppelde services in de lijst kunt zien. 
    
@@ -328,9 +328,9 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 
 1. Klik op **+ (plus)** in het linkervenster en klik op **Gegevensset**.
 
-1. Selecteer **SQL Server**in het venster **Nieuwe gegevensset** en klik op **Doorgaan**. 
+1. Selecteer in het venster **nieuwe gegevensset** de optie **SQL Server**en klik op **door gaan**. 
 
-1. Uit ziet een nieuw tabblad dat geopend wordt in de webbrowser voor het configureren van de gegevensset. U ziet ook een gegevensset in de structuurweergave. Voer in het tabblad **Algemeen** in het venster Eigenschappen onderaan **SourceDataset** in als **Naam**. 
+1. Uit ziet een nieuw tabblad dat geopend wordt in de webbrowser voor het configureren van de gegevensset. U ziet ook een gegevensset in de structuur weergave. Voer in het tabblad **Algemeen** in het venster Eigenschappen onderaan **SourceDataset** in als **Naam**. 
 
 1. Ga in het venster Eigenschappen naar het tabblad **Verbindingen** en klik op **SqlServerLinkedService** voor **Gekoppelde service**. U selecteert hier geen tabel. De kopieeractiviteit in de pijplijn gebruikt een SQL-query voor het laden van de gegevens in plaats van de hele tabel te laden.
 
@@ -340,9 +340,9 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 ### <a name="create-a-sink-dataset"></a>Een sinkgegevensset maken
 1. Klik op **+ (plus)** in het linkervenster en klik op **Gegevensset**.
 
-1. Selecteer Azure **SQL Database**in het venster **Nieuwe gegevensset** en klik op **Doorgaan**. 
+1. Selecteer in het venster **nieuwe gegevensset** de optie **Azure SQL database**en klik op **door gaan**. 
 
-1. Uit ziet een nieuw tabblad dat geopend wordt in de webbrowser voor het configureren van de gegevensset. U ziet ook een gegevensset in de structuurweergave. Voer in het tabblad **Algemeen** in het venster Eigenschappen onderaan **SinkDataset** in als **Naam**.
+1. Uit ziet een nieuw tabblad dat geopend wordt in de webbrowser voor het configureren van de gegevensset. U ziet ook een gegevensset in de structuur weergave. Voer in het tabblad **Algemeen** in het venster Eigenschappen onderaan **SinkDataset** in als **Naam**.
 
 1. Ga naar het tabblad **Parameters** in het venster Eigenschappen en voer de volgende stappen uit: 
 
@@ -350,11 +350,11 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
     1. Voer **SinkTableName** in bij de **naam** en **Tekenreeks** voor het **type**. Deze gegevensset gebruikt **SinkTableName** als parameter. De parameter SinkTableName wordt in runtime dynamisch ingesteld door de pijplijn. De ForEach-activiteit in de pijplijn doorloopt een lijst met namen van tabellen en geeft de tabelnaam door aan deze gegevensset in elke iteratie.
    
     ![Sink gegevensset - eigenschappen](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-1. Ga naar het tabblad **Verbinding** in het venster Eigenschappen en selecteer **AzureSqlDatabaseLinkedService** voor **gekoppelde service**. Klik voor de eigenschap **Tabel** op **Dynamische inhoud toevoegen**.   
+1. Ga naar het tabblad **verbinding** in de venster Eigenschappen en selecteer **AzureSqlDatabaseLinkedService** voor de **gekoppelde service**. Klik voor de eigenschap **Tabel** op **Dynamische inhoud toevoegen**.   
     
-1. Selecteer **SinkTableName** in het venster **Dynamische inhoud toevoegen** in de sectie **Parameters.** 
+1. Selecteer in het venster **dynamische inhoud toevoegen** de optie **SinkTableName** in het gedeelte **para meters** . 
  
-1. Na het **Finish**klikken op@datasetVoltooien , zie je " (). SinkTableName" als tabelnaam.
+1. Nadat u op **volt ooien**hebt geklikt, ziet u "@dataset(). SinkTableName ' als de tabel naam.
 
    ![Sink-gegevensset - verbinding](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -363,7 +363,7 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
 
 1. Klik op **+ (plus)** in het linkervenster en klik op **Gegevensset**.
 
-1. Selecteer Azure **SQL Database**in het venster **Nieuwe gegevensset** en klik op **Doorgaan**. 
+1. Selecteer in het venster **nieuwe gegevensset** de optie **Azure SQL database**en klik op **door gaan**. 
 
 1. Voer in het tabblad **Algemeen** in het venster Eigenschappen onderaan **WatermarkDataset** in als **Naam**.
 1. Ga naar het tabblad **Verbinding** en voer de volgende stappen uit: 
@@ -388,13 +388,13 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
 
 1. Klik op **+ (plus)** in het linkervenster en klik op **Pipeline**.
 
-1. Typ op het tabblad **Algemeen** **Incrementele KopiePijplijn** voor **naam**. 
+1. Voer op het tabblad **Algemeen** **IncrementalCopyPipeline** in als **naam**. 
 
-1. Ga op het tabblad **Parameters** de volgende stappen uit: 
+1. Voer de volgende stappen uit op het tabblad **para meters** : 
 
     1. Klik op **+ New**. 
     1. Voer **tableList** in als **Name**-parameter. 
-    1. Selecteer **Array** voor het **parametertype**.
+    1. Selecteer een **matrix** voor het parameter **type**.
 
 1. Vouw in de werkset **Activiteiten** de optie **Iteratie en voorwaarden** uit en sleep de **ForEach**-activiteit naar het ontwerpoppervlak voor pijplijnen. Voer in het tabblad **Algemeen** van het venster **Eigenschappen****IterateSQLTables** in. 
 
@@ -419,7 +419,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
         ![Eerste opzoekactiviteit - instellingen](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
 1. Sleep de activiteit **Opzoeken** uit de **Activiteiten**-werkset en voer **LookupNewWaterMarkActivity** in als **Naam**.
         
-1. Ga naar het tabblad **Instellingen.**
+1. Ga naar het tabblad **instellingen** .
 
     1. Selecteer **SourceDataset** in het veld **Source Dataset**. 
     1. Selecteer **Query** bij **Use Query**.
@@ -448,19 +448,19 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
         ![Kopieeractiviteit - broninstellingen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Open het tabblad **Sink** en selecteer **SinkDataset** in het veld **Sink Dataset**. 
         
-1. Ga als volgt te werk:
+1. Voer de volgende stappen uit:
 
-    1. Voer in de eigenschappen van de `@{item().TABLE_NAME}` **gegevensset**voor de parameter **SinkTableName** de parameter Enter .
-    1. Voer voor de eigenschap `@{item().StoredProcedureNameForMergeOperation}` **Opgeslagen procedurenaam** .
-    1. Voer voor eigenschap `@{item().TableType}` **Tabeltype** de invul .
-    1. Voer voor **de parameternaam Tabeltype**. `@{item().TABLE_NAME}`
+    1. Voer `@{item().TABLE_NAME}`in de eigenschappen van de **gegevensset**voor de para meter **SinkTableName** in.
+    1. Voer `@{item().StoredProcedureNameForMergeOperation}`voor de eigenschap **opgeslagen procedure naam** in.
+    1. Voer `@{item().TableType}`bij eigenschap van het **type tabel** in.
+    1. Voer `@{item().TABLE_NAME}`in voor de **parameter naam van het tabel type**.
 
     ![Kopieeractiviteit - parameters](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Sleep de **Stored Procedure**-activiteit vanuit de werkset **Activities** naar het ontwerpoppervlak voor pijplijnen. Verbind de **Kopieer**-activiteit met de **Opgeslagen procedure**-activiteit. 
 
 1. Selecteer de **Opgeslagen procedure**-activiteit in de pijplijn en voer **StoredProceduretoWriteWatermarkActivity** in als **Naam** in het tabblad **Algemeen** van het venster **Eigenschappen**. 
 
-1. Ga naar het tabblad **SQL-account** en selecteer **AzureSqlDatabaseLinkedService** voor **gekoppelde service.**
+1. Ga naar het tabblad **SQL-account** en selecteer **AzureSqlDatabaseLinkedService** voor **gekoppelde service**.
 
     ![Opgeslagen-procedureactiviteit - SQL-account](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Open het tabblad **Stored Procedure** en voer de volgende stappen uit:
@@ -475,14 +475,14 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
         | TableName | Tekenreeks | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
-1. Selecteer **Alles publiceren** om de entiteiten die u hebt gemaakt te publiceren in de service Data Factory. 
+1. Selecteer **Alles publiceren** om de entiteiten die u hebt gemaakt naar de Data Factory-service te publiceren. 
 
 1. Wacht tot u het bericht **Publiceren gelukt** ziet. Om de meldingen te zien, klikt u op de link **Meldingen weergeven**. Sluit het meldingenvenster door op **X** te klikken.
 
  
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-1. Klik op de werkbalk voor de pijplijn op **Trigger toevoegen**en klik op **Nu activeren**.     
+1. Klik in de werk balk voor de pijp lijn op **trigger toevoegen**en klik op **nu activeren**.     
 
 1. Voer in het venster **Pijplijn uitvoeren** de volgende waarde in voor de parameter **tableList** en klik op **Voltooien**. 
 
@@ -583,7 +583,7 @@ VALUES
 
 ## <a name="rerun-the-pipeline"></a>Voer de pijplijn uit
 1. Schakel in het browservenster over naar het tabblad **Bewerken** aan de linkerkant. 
-1. Klik op de werkbalk voor de pijplijn op **Trigger toevoegen**en klik op **Nu activeren**.   
+1. Klik in de werk balk voor de pijp lijn op **trigger toevoegen**en klik op **nu activeren**.   
 1. Voer in het venster **Pijplijn uitvoeren** de volgende waarde in voor de parameter **tableList** en klik op **Voltooien**. 
 
     ```
@@ -610,7 +610,7 @@ VALUES
 1. Klik op de koppeling **Uitvoeringen van activiteiten weergeven** in de kolom **Acties**. U ziet de uitvoering van alle activiteiten die zijn gekoppeld aan de pijplijnuitvoering. 
 
 ## <a name="review-the-final-results"></a>De eindresultaten bekijken
-Voer in SQL Server Management Studio de volgende query's uit tegen de doelSQL-database om te controleren of de bijgewerkte/nieuwe gegevens zijn gekopieerd van brontabellen naar doeltabellen. 
+Voer in SQL Server Management Studio de volgende query's uit op de doel SQL database om te controleren of de bijgewerkte/nieuwe gegevens uit de bron tabellen naar de doel tabellen zijn gekopieerd. 
 
 **Query’s uitvoeren** 
 ```sql
