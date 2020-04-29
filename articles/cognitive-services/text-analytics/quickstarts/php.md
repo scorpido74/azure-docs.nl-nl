@@ -1,7 +1,7 @@
 ---
 title: 'Quickstart: PHP gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart u informatie en codevoorbeelden opvragen om u snel aan de slag te helpen met de Text Analytics API in Azure Cognitive Services.
+description: Deze Quick Start laat zien hoe u informatie en code voorbeelden kunt ophalen om snel aan de slag te gaan met behulp van de Text Analytics-API in azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378582"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Quickstart: PHP gebruiken om de Text Analytics Cognitive Service aan te roepen
@@ -36,7 +36,7 @@ Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd m
 
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
 1. Voer het programma uit.
 
 ```php
@@ -144,7 +144,7 @@ Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp
 
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
 1. Voer het programma uit.
 
 ```php
@@ -229,7 +229,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
 1. Voer het programma uit.
 
 ```php
@@ -329,7 +329,7 @@ De Entities-API identificeert bekende entiteiten in een tekstdocument, met behul
 
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code. 
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
 1. Voer het programma uit.
 
 ```php
@@ -431,9 +431,9 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Tekstanalyse met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Text Analytics met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Zie ook 
 
  [Overzicht van Text Analytics](../overview.md)  
- [Veelgestelde vragen (FAQ)](../text-analytics-resource-faq.md)
+ [Veelgestelde vragen](../text-analytics-resource-faq.md)

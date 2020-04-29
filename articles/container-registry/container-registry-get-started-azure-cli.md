@@ -1,17 +1,17 @@
 ---
-title: Snelstart - Register maken - Azure CLI
+title: Quick Start-REGI ster maken-Azure CLI
 description: Leer snel hoe u een persoonlijk Docker-containerregister maakt met behulp van Azure CLI.
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455170"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snelstart: een privécontainerregister maken met de Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snelstartgids: een persoonlijk container register maken met behulp van Azure CLI
 
 Azure Container Registry is een beheerde service voor Docker-containerregisters die wordt gebruikt voor het opslaan van installatiekopieën van persoonlijke Docker-containers. In deze handleiding vindt u instructies voor het maken van een Azure Container Registry-exemplaar met behulp van Azure CLI. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
@@ -94,7 +94,7 @@ Result
 hello-world
 ```
 
-In het volgende voorbeeld worden de tags op de **hello-world** repository weergegeven.
+In het volgende voor beeld worden de tags in de opslag plaats **Hello-wereld** weer gegeven.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table

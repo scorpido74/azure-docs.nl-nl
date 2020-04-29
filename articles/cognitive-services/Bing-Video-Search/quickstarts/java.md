@@ -1,5 +1,5 @@
 ---
-title: "Snelstart: zoek naar video's met de REST API en Java - Bing Video Search"
+title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en Java-Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden via Java.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382647"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Snelstart: zoek naar video's met de Bing Video Search REST API en Java
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en Java
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) met extra foutafhandeling, functies en codeaantekeningen.
 
@@ -59,7 +59,7 @@ Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roep
     }
     ```
 
-3. Maak een nieuwe methode met de naam `SearchVideos()` met variabelen voor de API-eindpunt-host en het -pad, uw abonnementssleutel en een zoekterm. Er wordt een `SearchResults`-object geretourneerd. `host`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+3. Maak een nieuwe methode met de naam `SearchVideos()` met variabelen voor de API-eindpunt-host en het -pad, uw abonnementssleutel en een zoekterm. Er wordt een `SearchResults`-object geretourneerd. `host`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -246,7 +246,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md).
+> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Zie ook 
 

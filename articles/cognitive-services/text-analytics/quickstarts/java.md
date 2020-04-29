@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Gebruik Java om de Text Analytics REST API aan te roepen'
+title: 'Snelstartgids: Java gebruiken om de Text Analytics aan te roepen REST API'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart u informatie en codevoorbeelden opvragen om u snel aan de slag te helpen met de Text Analytics API in Azure Cognitive Services.
+description: Deze Quick Start laat zien hoe u informatie en code voorbeelden kunt ophalen om snel aan de slag te gaan met behulp van de Text Analytics-API in azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
 ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446314"
 ---
-# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Snelstart: Java gebruiken om de Azure Text Analytics Cognitive Service te bellen
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Snelstartgids: Java gebruiken om de service Azure Text Analytics cognitieve aan te roepen
 <a name="HOLTop"></a>
 
 In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Java kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
@@ -37,11 +37,11 @@ U moet ook de [eindpunt- en toegangssleutel](../../cognitive-services-apis-creat
 
 Met de Taaldetectie-API wordt de taal van een tekstdocument gedetecteerd met behulp van de  [methode Taal detecteren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of nieuwe map op uw bureaublad). Een klasse `DetectLanguage.java`maken met de naam .
-1. Voeg de onderstaande code toe aan je klas.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code. 
-1. Zorg ervoor dat u de [Gson-bibliotheek](https://github.com/google/gson) hebt geïnstalleerd.
-1. Voer het programma uit in uw IDE of gebruik de opdrachtregel om uit te voeren (instructies in de codeopmerkingen).
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met `DetectLanguage.java`de naam.
+1. Voeg de hieronder vermelde code toe aan uw klasse.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
+1. Voer het programma uit in uw IDE of gebruik de opdracht regel om uit te voeren (instructies in de opmerkingen bij code).
 
 ```java
 import java.io.*;
@@ -206,11 +206,11 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp van de [methode Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). In het volgende voorbeeld worden twee documenten beoordeeld, één in het Engels en één in het Spaans.
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of nieuwe map op uw bureaublad). Een klasse maken `GetSentiment.java`met de naam .
-1. Voeg de onderstaande code toe aan je klas.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code.
-1. Zorg ervoor dat u de [Gson-bibliotheek](https://github.com/google/gson) hebt geïnstalleerd.
-1. Voer het programma uit in uw IDE of gebruik de opdrachtregel om uit te voeren (instructies in de codeopmerkingen).
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetSentiment.java`.
+1. Voeg de hieronder vermelde code toe aan uw klasse.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
+1. Voer het programma uit in uw IDE of gebruik de opdracht regel om uit te voeren (instructies in de opmerkingen bij code).
 
 ```java
 import java.io.*;
@@ -327,7 +327,7 @@ public class GetSentiment {
 
 ### <a name="sentiment-analysis-response"></a>Antwoord bij sentimentanalyse
 
-Het resultaat wordt als positief gemeten als het dichter bij 1.0 en negatief wordt gescoord als het dichter bij 0.0 wordt gescoord.
+Het resultaat wordt gemeten als positief als het dichter bij 1,0 en negatief is als de Score dichter bij 0,0 ligt.
 Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien in het volgende voorbeeld:
 
 ```json
@@ -352,11 +352,11 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of nieuwe map op uw bureaublad). Een klasse maken `GetKeyPhrases.java`met de naam .
-1. Voeg de onderstaande code toe aan je klas.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code. 
-1. Zorg ervoor dat u de [Gson-bibliotheek](https://github.com/google/gson) hebt geïnstalleerd.
-1. Voer het programma uit in uw IDE of gebruik de opdrachtregel om uit te voeren (instructies in de codeopmerkingen).
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse in de naam `GetKeyPhrases.java`.
+1. Voeg de hieronder vermelde code toe aan uw klasse.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
+1. Voer het programma uit in uw IDE of gebruik de opdracht regel om uit te voeren (instructies in de opmerkingen bij code).
 
 ```java
 import java.io.*;
@@ -515,13 +515,13 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden uit tekst, zoals 'Verenigde Staten', en geven u vervolgens het type en/of wikipedia-koppeling voor dit woord(en). Het type voor "Verenigde `location`Staten" is , `https://en.wikipedia.org/wiki/United_States`terwijl de link naar Wikipedia is .  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor ' Verenigde Staten ' is `location`, terwijl de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
-1. Maak een nieuw Java-project in uw favoriete IDE (of nieuwe map op uw bureaublad). Een klasse maken `GetEntities.java`met de naam .
-1. Voeg de onderstaande code toe aan je klas.
-1. Kopieer uw Text Analytics-sleutel en eindpunt naar de code. 
-1. Zorg ervoor dat u de [Gson-bibliotheek](https://github.com/google/gson) hebt geïnstalleerd.
-1. Voer het programma uit in uw IDE of gebruik de opdrachtregel om uit te voeren (instructies in de codeopmerkingen).
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetEntities.java`.
+1. Voeg de hieronder vermelde code toe aan uw klasse.
+1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
+1. Voer het programma uit in uw IDE of gebruik de opdracht regel om uit te voeren (instructies in de opmerkingen bij code).
 
 ```java
 import java.io.*;
@@ -687,9 +687,9 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Tekstanalyse met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Text Analytics met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Zie ook
 
  [Overzicht van Text Analytics](../overview.md)  
- [Veelgestelde vragen (FAQ)](../text-analytics-resource-faq.md)
+ [Veelgestelde vragen](../text-analytics-resource-faq.md)

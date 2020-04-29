@@ -12,23 +12,23 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74976363"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Snelstartgids: Python gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Deze Python-toepassing stuurt een zoekverzoek naar de API en toont het antwoord. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze python-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https://mybinder.org). Selecteer de map met startmappen:
+Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https://mybinder.org). Selecteer de badge met het starten van de binder:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 2.x of 3.x](https://www.python.org/)
+* [Python 2. x of 3. x](https://www.python.org/)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -41,7 +41,7 @@ subscription_key = "YOUR_ACCESS_KEY"
 assert subscription_key
 ```
 
-Declareer het eindpunt voor de Bing Webzoekopdrachten-API. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+Declareer het eindpunt voor de Bing Webzoekopdrachten-API. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
@@ -69,7 +69,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>Het antwoord opmaken en weergeven
 
-Het `search_results` object bevat de zoekresultaten en metagegevens zoals gerelateerde query's en pagina's. Deze code maakt gebruikt van de `IPython.display`-bibliotheek om het antwoord in uw browser op te maken en weer te geven.
+Het `search_results` object bevat de zoek resultaten en meta gegevens, zoals gerelateerde query's en pagina's. Deze code maakt gebruikt van de `IPython.display`-bibliotheek om het antwoord in uw browser op te maken en weer te geven.
 
 ```python
 from IPython.display import HTML

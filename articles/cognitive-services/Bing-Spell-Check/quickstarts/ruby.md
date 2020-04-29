@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Spelling controleren met de REST API en Ruby - Bing Spell Check'
+title: 'Snelstartgids: spelling controleren met de REST API en Ruby-Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Bing Spell Check REST API om spelling en grammatica te controleren met deze quickstart.
+description: Ga aan de slag met de Bing Spellingcontrole REST API om de spelling en grammatica te controleren met deze Snelstartgids.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448419"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Snelstart: spelling controleren met de Bing Spell Check REST API en Ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en ruby
 
 Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST API te maken met behulp van Ruby. Deze eenvoudige toepassing verzendt een aanvraag naar de API en retourneert een lijst met woorden die niet werden herkend, gevolgd door voorgestelde correcties. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) of hoger.
+* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) of hoger.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
@@ -38,7 +38,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST 
     require 'json'
     ```
 
-2. Maak variabelen voor uw abonnementssleutel, eindpunt-URI en pad. Maak uw aanvraagparameters door de parameter `mkt=` toe te voegen aan uw markt en `&mode` aan de `proof`-controlemodus. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak variabelen voor uw abonnementssleutel, eindpunt-URI en pad. Maak uw aanvraagparameters door de parameter `mkt=` toe te voegen aan uw markt en `&mode` aan de `proof`-controlemodus. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -49,7 +49,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST 
 
 ## <a name="send-a-spell-check-request"></a>Een spellingcontroleaanvraag verzenden
 
-1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Stel de query in op de tekst die u wilt spellen.
+1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Stel de query in op de tekst waarvoor u de spelling controle wilt uitvoeren.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -84,9 +84,9 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST 
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Bouw en voer uw project uit.
+Uw project bouwen en uitvoeren.
 
-Als u de opdrachtregel gebruikt, gebruikt u de volgende opdracht om de toepassing uit te voeren.
+Als u de opdracht regel gebruikt, gebruikt u de volgende opdracht om de toepassing uit te voeren.
 
 ```bash
 ruby <FILE_NAME>.rb

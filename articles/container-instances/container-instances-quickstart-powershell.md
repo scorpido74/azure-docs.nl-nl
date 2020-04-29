@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Dockercontainer implementeren in containerinstantie - PowerShell
-description: In deze quickstart gebruikt u Azure PowerShell om snel een gecontaineriseerde webapp te implementeren die wordt uitgevoerd in een geïsoleerde Azure-containerinstantie
+title: Snelstartgids-docker-container implementeren naar container exemplaar-Power shell
+description: In deze Quick Start gebruikt u Azure PowerShell om snel een in een container geplaatste web-app te implementeren die wordt uitgevoerd in een geïsoleerd Azure-container exemplaar
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,21 +9,21 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533611"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Snelstart: een containerinstantie implementeren in Azure met Azure PowerShell
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Snelstartgids: een container exemplaar in azure implementeren met behulp van Azure PowerShell
 
-Gebruik Azure Container Instances om serverloze Docker-containers in Azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een containerexemplaar on-demand wanneer u geen volledig containerorchestration-platform zoals Azure Kubernetes Service nodig hebt.
+Gebruik Azure Container Instances om serverloze docker-containers in azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een container exemplaar op aanvraag wanneer u geen volledig container Orchestration-platform zoals Azure Kubernetes service nodig hebt.
 
-In deze quickstart gebruikt u Azure PowerShell om een geïsoleerde Windows-container te implementeren en de toepassing ervan beschikbaar te maken met een volledig gekwalificeerde domeinnaam (FQDN). Enkele seconden nadat u één implementatieopdracht hebt uitgevoerd, u naar de toepassing bladeren die in de container wordt uitgevoerd:
+In deze Quick Start gebruikt u Azure PowerShell om een geïsoleerde Windows-container te implementeren en de toepassing beschikbaar te maken met een Fully Qualified Domain Name (FQDN). Een paar seconden nadat u één implementatie opdracht hebt uitgevoerd, kunt u bladeren naar de toepassing die in de container wordt uitgevoerd:
 
 ![App die is geïmplementeerd in Azure Container Instances, weergegeven in de browser][qs-powershell-01]
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -43,11 +43,11 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Een container maken
 
-Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een containerinstantie wilt maken met Azure PowerShell, geeft u de naam van een resourcegroep, de naam van een containerinstantie en een Docker-containerinstallatiekopie op voor de cmdlet [New-AzContainerGroup][New-AzContainerGroup]. In deze quickstart gebruikt `mcr.microsoft.com/windows/servercore/iis:nanoserver` u de openbare afbeelding. Met deze afbeelding wordt Microsoft Internet Information Services (IIS) geleverd om in Nano Server uit te voeren.
+Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een containerinstantie wilt maken met Azure PowerShell, geeft u de naam van een resourcegroep, de naam van een containerinstantie en een Docker-containerinstallatiekopie op voor de cmdlet [New-AzContainerGroup][New-AzContainerGroup]. In deze Quick Start gebruikt u de open `mcr.microsoft.com/windows/servercore/iis:nanoserver` bare installatie kopie. Deze installatie kopie verpakt micro soft Internet Information Services (IIS) voor uitvoering in nano server.
 
 Als u uw containers beschikbaar wilt maken op internet, moet u een of meer poorten om te openen of een DNS-naamlabel opgeven, of beide. In deze quickstart implementeert u een container met een DNS-naamlabel zodat IIS openbaar bereikbaar is.
 
-Voer een opdracht uit die vergelijkbaar is met de volgende opdracht om een containerinstantie te starten. Stel `-DnsNameLabel` een waarde in die uniek is binnen het Azure-gebied waar u de instantie maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
+Voer een opdracht uit die vergelijkbaar is met de volgende om een container exemplaar te starten. Stel een `-DnsNameLabel` waarde in die uniek is binnen de Azure-regio waar u het exemplaar maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

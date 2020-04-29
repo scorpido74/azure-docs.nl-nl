@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Assortiment winkelvoorraad bijwerken met behulp van kanalen voor publiceren/abonneren en onderwerpfilters met Azure CLI'
-description: 'Zelfstudie: In deze zelfstudie leert u hoe u berichten van een onderwerp en abonnement verzendt en ontvangt en hoe u filterregels toevoegt en gebruikt met Azure CLI'
+title: 'Zelf studie: Retail voorraad assortiment bijwerken met behulp van de kanalen voor publiceren/abonneren en de onderwerps filters met Azure CLI'
+description: 'Zelf studie: in deze zelf studie leert u hoe u berichten kunt verzenden en ontvangen van een onderwerp en een abonnement en hoe u filter regels kunt toevoegen en gebruiken met behulp van Azure CLI'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718925"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met behulp van CLI en onderwerpen/abonnementen
@@ -32,7 +32,7 @@ Een voorbeeld van dit scenario is het bijwerken van het voorraadassortiment voor
 
 ![onderwerp](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
 
-Als u geen Azure-abonnement hebt, u een [gratis account][] maken voordat u begint.
+Als u geen Azure-abonnement hebt, kunt u een [gratis account][] maken voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ Als u een Service Bus-app wilt ontwikkelen met behulp van Java, moet het volgend
 
 - [Java Development Kit](https://aka.ms/azure-jdks), de nieuwste versie.
 - [Azure-CLI](https://docs.microsoft.com/cli/azure)
-- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
+- [Apache Maven](https://maven.apache.org), versie 3,0 of hoger.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -326,7 +326,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

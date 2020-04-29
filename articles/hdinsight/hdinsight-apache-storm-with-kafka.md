@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Apache Storm met Apache Kafka - Azure HDInsight'
+title: 'Zelf studie: Apache Storm met Apache Kafka-Azure HDInsight'
 description: Lees hoe u in HDInsight een streaming-pijplijn maakt met Apache Storm en Apache Kafka. In deze zelfstudie gebruikt u de componenten KafkaBolt en KafkaSpout om gegevens te streamen vanuit Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494362"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Zelfstudie: Apache Storm gebruiken met Apache Kafka in HDInsight
@@ -58,7 +58,7 @@ U kunt de volgende omgevingsvariabelen instellen wanneer u Java en de JDK instal
 > 
 > Voor uw gemak is dit document gekoppeld aan een sjabloon waarmee u alle vereiste Azure-resources kunt maken. 
 >
-> Zie het document Plan a virtual network [for HDInsight voor](hdinsight-plan-virtual-network-deployment.md) meer informatie over het gebruik van HDInsight in een virtueel netwerk.
+> Zie het document [een virtueel netwerk plannen voor hdinsight](hdinsight-plan-virtual-network-deployment.md) voor meer informatie over het gebruik van HDInsight in een virtueel netwerk.
 
 ## <a name="storm-and-kafka"></a>Storm en Kafka
 
@@ -79,7 +79,7 @@ Apache Storm biedt de verschillende onderdelen voor het werken met Apache Kafka.
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: hiermee worden gegevens vanuit de tuple-structuur binnen de Storm-topologie toegewezen aan velden die zijn opgeslagen in Kafka.
 
 Deze onderdelen zijn beschikbaar in het pakket `org.apache.storm : storm-kafka`. Gebruik de pakketversie die overeenkomt met de Storm-versie. Voor HDInsight 3.6 is dit Storm versie 1.1.0.
-U hebt ook het pakket `org.apache.kafka : kafka_2.10` nodig, met daarin aanvullende Kafka-onderdelen. Gebruik de pakketversie die overeenkomt met de Kafka-versie. Voor HDInsight 3.6 is de Kafka-versie 1.1.1.
+U hebt ook het pakket `org.apache.kafka : kafka_2.10` nodig, met daarin aanvullende Kafka-onderdelen. Gebruik de pakketversie die overeenkomt met de Kafka-versie. Voor HDInsight 3,6 is de Kafka-versie 1.1.1.
 
 De volgende XML vormt de afhankelijksdeclaratie in de `pom.xml` voor een [Apache Maven](https://maven.apache.org/)-project:
 
@@ -115,7 +115,7 @@ De volgende XML vormt de afhankelijksdeclaratie in de `pom.xml` voor een [Apache
 
 ## <a name="understanding-the-code"></a>De code begrijpen
 
-De code die in dit [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)document wordt gebruikt, is beschikbaar op .
+De code die in dit document wordt gebruikt, [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)is beschikbaar op.
 
 Er worden twee topologieën meegeleverd in deze zelfstudie:
 
@@ -128,7 +128,7 @@ Er worden twee topologieën meegeleverd in deze zelfstudie:
     >
     > Als u de sjabloon in dit document niet gebruikt om het Storm-cluster te maken, moet u de scriptactie handmatig toepassen op het cluster.
     >
-    > De scriptactie bevindt zich op en wordt toegepast op [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) de supervisor- en nimbus-knooppunten van het cluster Storm. Zie het document [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van scriptacties](hdinsight-hadoop-customize-cluster-linux.md) voor meer informatie over het gebruik van scriptacties.
+    > De script actie bevindt [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) zich op en wordt toegepast op de Super Visor en Nimbus-knoop punten van het Storm-cluster. Zie het document [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van scriptacties](hdinsight-hadoop-customize-cluster-linux.md) voor meer informatie over het gebruik van scriptacties.
 
 De topologieën worden gedefinieerd met [Flux](https://storm.apache.org/releases/current/flux.html). Flux werd geïntroduceerd in Storm 0.10.x en stelt u in staat om de topologieconfiguratie te scheiden van de code. In het geval van topologieën die gebruikmaken van het Flux-framework, wordt de topologie gedefinieerd in een YAML-bestand. Het YAML-bestand kan worden opgenomen als onderdeel van de topologie. Het kan ook een zelfstandig bestand zijn dat wordt gebruikt wanneer u de topologie indient. Flux ondersteunt ook het vervangen van variabelen tijdens runtime, wat we in dit voorbeeld doen.
 
@@ -144,7 +144,7 @@ De volgende parameters worden tijdens runtime ingesteld voor deze topologieën:
 
 * `${hdfs.write.dir}`: de map waarnaar gegevens worden geschreven.
 
-Zie voor meer informatie over [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)Flux-topologieën.
+Zie [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)voor meer informatie over stroom-topologieën.
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -391,7 +391,7 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    De sjabloon Azure Resource **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**Manager bevindt zich op . Met deze sjabloon maakt u de volgende resources:
+    De Azure Resource Manager-sjabloon bevindt zich op **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**. Met deze sjabloon maakt u de volgende resources:
 
     * Azure-resourcegroep
     * Azure Virtual Network
@@ -429,7 +429,7 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
 ## <a name="build-the-topology"></a>De topologie samenstellen
 
-1. Download het project in uw [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)ontwikkelomgeving van , open een opdrachtregel en wijzigmappen naar de locatie waar u het project hebt gedownload.
+1. Down load het project van in uw ontwikkel omgeving [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)vanuit, open een opdracht regel en wijzig de mappen in de locatie waar u het project hebt gedownload.
 
 2. Gebruik in de map **hdinsight-storm-java-kafka** de volgende opdracht om het project te compileren en een pakket voor implementatie te maken:
 

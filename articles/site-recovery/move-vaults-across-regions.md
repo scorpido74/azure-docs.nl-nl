@@ -1,6 +1,6 @@
 ---
-title: Een azure-siteherstelkluis verplaatsen naar een andere regio
-description: Beschrijft hoe u een vault voor Herstelservices (Azure Site Recovery) verplaatst naar een andere Azure-regio
+title: Een Azure Site Recovery kluis verplaatsen naar een andere regio
+description: Hierin wordt beschreven hoe u een Recovery Services kluis (Azure Site Recovery) verplaatst naar een andere Azure-regio
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -9,72 +9,72 @@ ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74090297"
 ---
-# <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Een vault voor Herstelservices en Azure Site Recovery-configuratie verplaatsen naar een andere Azure-regio
+# <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Een Recovery Services kluis en Azure Site Recovery configuratie verplaatsen naar een andere Azure-regio
 
-Er zijn verschillende scenario's waarin u uw bestaande Azure-resources mogelijk van de ene regio naar de andere wilt verplaatsen. Voorbeelden zijn om beheersbaarheid, governance redenen, of als gevolg van bedrijfsfusies en overnames. Een van de gerelateerde resources die u mogelijk wilt verplaatsen wanneer u uw Azure VM's verplaatst, is de configuratie van het noodherstel. 
+Er zijn verschillende scenario's waarin u mogelijk uw bestaande Azure-resources van de ene regio naar de andere wilt verplaatsen. Voor beelden zijn voor beheer baarheid, governance-redenen of vanwege bedrijfs samenvoegers en-acquisities. Een van de gerelateerde resources die u mogelijk wilt verplaatsen wanneer u uw Azure-Vm's verplaatst, is de configuratie voor herstel na nood gevallen. 
 
-Er is geen eersteklas manier om een bestaande configuratie voor noodherstel van de ene regio naar de andere te verplaatsen. Dit komt omdat u uw doelregio hebt geconfigureerd op basis van uw bron-VM-regio. Wanneer u besluit het brongebied te wijzigen, kunnen de eerder bestaande configuraties van het doelgebied niet opnieuw worden gebruikt en moeten ze opnieuw worden ingesteld. In dit artikel wordt het stapsgewijze proces gedefinieerd om de instelling voor noodherstel opnieuw te configureren en naar een andere regio te verplaatsen.
+Er is geen eersteklas manier om een bestaande configuratie voor herstel na nood gevallen van de ene regio naar de andere te verplaatsen. Dit komt doordat u uw doel regio hebt geconfigureerd op basis van de regio van de bron-VM. Wanneer u besluit om de bron regio te wijzigen, kunnen de bestaande configuraties van de doel regio niet opnieuw worden gebruikt en moet deze opnieuw worden ingesteld. In dit artikel wordt het stapsgewijze proces beschreven voor het opnieuw configureren van de installatie van nood herstel en het verplaatsen naar een andere regio.
 
-In dit document ziet u het als volgt te zien:
+In dit document gaat u als volgt te werkt:
 
 > [!div class="checklist"]
-> * Controleer de vereisten voor de verhuizing.
-> * Identificeer de bronnen die zijn gebruikt door Azure Site Recovery.
-> * Replicatie uitschakelen.
-> * Verwijder de bronnen.
-> * Siteherstel instellen op basis van het nieuwe brongebied voor de VM's.
+> * Controleer de vereisten voor de verplaatsing.
+> * De resources identificeren die door Azure Site Recovery zijn gebruikt.
+> * Schakel replicatie uit.
+> * Verwijder de resources.
+> * Site Recovery instellen op basis van de nieuwe bron regio voor de Vm's.
 
 > [!IMPORTANT]
-> Momenteel is er geen eersteklas manier om een Vault recovery services en de configuratie voor noodherstel te verplaatsen, net als naar een andere regio. In dit artikel wordt u door het proces van replicatie heen geloodst en in het nieuwe gebied ingesteld.
+> Er is momenteel geen manier om een Recovery Services kluis te verplaatsen en de configuratie voor herstel na nood gevallen naar een andere regio. Dit artikel begeleidt u bij het uitschakelen van de replicatie en het instellen ervan in de nieuwe regio.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat u de configuratie voor noodherstel verwijdert en verwijdert voordat u de Azure VM's naar een andere regio probeert te verplaatsen. 
+- Zorg ervoor dat u de configuratie voor herstel na nood gevallen verwijdert en verwijdert voordat u probeert de virtuele machines van Azure naar een andere regio te verplaatsen. 
 
   > [!NOTE]
-  > Als uw nieuwe doelregio voor de Azure VM hetzelfde is als het doelgebied voor noodherstel, u uw bestaande replicatieconfiguratie gebruiken en verplaatsen. Volg de stappen in [Move Azure IaaS VM's naar een andere Azure-regio.](azure-to-azure-tutorial-migrate.md)
+  > Als uw nieuwe doel regio voor de virtuele Azure-machine hetzelfde is als de doel regio voor herstel na nood gevallen, kunt u de bestaande replicatie Configuratie gebruiken en deze verplaatsen. Volg de stappen in [Azure IaaS vm's naar een andere Azure-regio verplaatsen](azure-to-azure-tutorial-migrate.md).
 
-- Zorg ervoor dat u een weloverwogen beslissing neemt en dat belanghebbenden worden geïnformeerd. Uw vm wordt pas beschermd tegen rampen als de verplaatsing van de vm is voltooid.
+- Zorg ervoor dat u een weloverwogen beslissing neemt en dat belanghebbenden hiervan op de hoogte zijn. Uw virtuele machine wordt niet beschermd tegen nood gevallen tot het verplaatsen van de virtuele machine is voltooid.
 
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>De resources identificeren die zijn gebruikt door Azure Site Recovery
-We raden u aan deze stap te doen voordat u doorgaat naar de volgende stap. Het is gemakkelijker om de relevante bronnen te identificeren terwijl de VM's worden gerepliceerd.
+U wordt aangeraden deze stap uit te voeren voordat u verdergaat met de volgende. Het is eenvoudiger om de relevante resources te identificeren terwijl de Vm's worden gerepliceerd.
 
-Ga voor elke Azure VM die wordt gerepliceerd naar**eigenschappen** **voor gerepliceerde items** > met **beveiligde items** > en identificeert u de volgende bronnen:
+Voor elke virtuele machine van Azure die wordt gerepliceerd, gaat u naar **beveiligde items** > **Eigenschappen** van**gerepliceerde items** > en identificeert u de volgende bronnen:
 
-- Doelgroepgroep
-- Cacheopslagaccount
-- Doelopslagaccount (in het geval van een niet-beheerde Azure VM op schijf) 
-- Doelnetwerk
+- Doel resource groep
+- Cache-opslag account
+- Doel opslag account (in het geval van een niet-beheerde op schijven gebaseerde Azure-VM) 
+- Doelnet netwerk
 
 
-## <a name="disable-the-existing-disaster-recovery-configuration"></a>De bestaande configuratie van noodherstel uitschakelen
+## <a name="disable-the-existing-disaster-recovery-configuration"></a>De bestaande configuratie voor herstel na nood gevallen uitschakelen
 
-1. Ga naar de kluis van de Herstelservices.
-2. Klik in**gerepliceerde items**met **beveiligde items** > met de rechtermuisknop op de machine en selecteer **Replicatie uitschakelen**.
-3. Herhaal deze stap voor alle VM's die u wilt verplaatsen.
+1. Ga naar de Recovery Services kluis.
+2. Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de computer en selecteer **replicatie uitschakelen**.
+3. Herhaal deze stap voor alle virtuele machines die u wilt verplaatsen.
 
 > [!NOTE]
-> De mobiliteitsservice wordt niet verwijderd van de beveiligde servers. U moet het handmatig verwijderen. Als u van plan bent de server opnieuw te beschermen, u het verwijderen van de mobiliteitsservice overslaan.
+> De Mobility-service wordt niet van de beveiligde servers verwijderd. U moet deze hand matig verwijderen. Als u van plan bent om de server opnieuw te beveiligen, kunt u het verwijderen van de Mobility-service overs Laan.
 
-## <a name="delete-the-resources"></a>De bronnen verwijderen
+## <a name="delete-the-resources"></a>De resources verwijderen
 
-1. Ga naar de kluis van de Herstelservices.
-2. Selecteer **Verwijderen**.
-3. Verwijder alle andere bronnen die u [eerder hebt geïdentificeerd.](#identify-the-resources-that-were-used-by-azure-site-recovery)
+1. Ga naar de Recovery Services kluis.
+2. Selecteer **verwijderen**.
+3. Verwijder alle andere resources die u [eerder hebt geïdentificeerd](#identify-the-resources-that-were-used-by-azure-site-recovery).
  
-## <a name="move-azure-vms-to-the-new-target-region"></a>Azure VM's naar het nieuwe doelgebied verplaatsen
+## <a name="move-azure-vms-to-the-new-target-region"></a>Virtuele Azure-machines verplaatsen naar de nieuwe doel regio
 
-Volg de stappen in deze artikelen op basis van uw vereiste om Azure VM's naar het doelgebied te verplaatsen:
+Volg de stappen in deze artikelen op basis van uw vereiste om virtuele Azure-machines te verplaatsen naar de doel regio:
 
 - [Virtuele Azure-machines verplaatsen naar een andere regio](azure-to-azure-tutorial-migrate.md)
 - [Virtuele Azure-machines verplaatsen naar beschikbaarheidszones](move-azure-VMs-AVset-Azone.md)
 
-## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>Siteherstel instellen op basis van het nieuwe brongebied voor de VM's
+## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>Site Recovery instellen op basis van de nieuwe bron regio voor de Vm's
 
-Configureer disaster recovery voor de Azure VM's die naar het nieuwe gebied zijn verplaatst door de stappen te volgen in [Noodherstel instellen voor Azure VM's.](azure-to-azure-tutorial-enable-replication.md)
+Configureer herstel na nood gevallen voor de virtuele Azure-machines die zijn verplaatst naar de nieuwe regio door de stappen te volgen in [herstel na nood geval instellen voor Azure vm's](azure-to-azure-tutorial-enable-replication.md).

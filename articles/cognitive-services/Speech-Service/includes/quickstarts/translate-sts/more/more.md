@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Spraak-naar-spraak vertalen - Spraakservice'
+title: 'Snelstartgids: Vertaal spraak-naar-spraak-spraak service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: d0eb2f12f42a810ca8c3e383f4b26717306cf4d2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75469317"
 ---
-## <a name="additional-language-and-platform-support"></a>Aanvullende taal- en platformondersteuning
+## <a name="additional-language-and-platform-support"></a>Aanvullende taal-en platform ondersteuning
 
-Als u op dit tabblad hebt geklikt, hebt u waarschijnlijk geen snelle start in uw favoriete programmeertaal gezien. Maak je geen zorgen, we hebben extra quickstart materialen en code samples beschikbaar op GitHub. Gebruik de tabel om het juiste voorbeeld te vinden voor uw programmeertaal en platform/OS-combinatie.
+Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in uw favoriete programmeer taal. Geen zorgen: er zijn extra Quick Start-materialen en code voorbeelden beschikbaar op GitHub. Gebruik de tabel om het juiste voor beeld te vinden voor uw programmeer taal en combi natie van platform/OS.
 
 | Taal | Codevoorbeelden |
 |----------|--------------|
-| C++ |[Snelstart](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp), [Monsters](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/linux)|
-| C# |[.NET Framework](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet), [.NET Core](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnetcore), [UWP](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp), [Eenheid](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/unity), [Xamarin](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin) |
-| Java |[Android](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android), [JRE](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre) |
+| C++ |[Quick](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)starts, voor [beelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/linux)|
+| C# |[.NET Framework](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet), [.net core](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnetcore), [UWP](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp), [Unity](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/unity), [Xamarin](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin) |
+| Java |[Android](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android), [jre](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre) |
 | Javascript |[Browser](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) |
 | Node.js |[Windows, Linux, macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) |
-| Objective-C |[iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios), [macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos) |
+| Objective-C |[IOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios), [macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos) |
 | Python |[Windows, Linux, macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) |
-| Swift | [iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios), [macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos) |
+| Swift | [IOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios), [macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos) |

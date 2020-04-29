@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 16647b6a13e64073ab570d36a8a380d0e36bd855
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73799776"
 ---
 - Kopieer bestanden niet rechtstreeks naar een van de voorgemaakte shares. U moet een map maken onder de share en vervolgens bestanden naar die map kopiëren.

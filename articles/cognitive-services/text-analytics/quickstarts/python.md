@@ -1,7 +1,7 @@
 ---
 title: 'Snelstart: Python gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart u informatie en codevoorbeelden opvragen om u snel aan de slag te helpen met de Text Analytics API in Azure Cognitive Services.
+description: Deze Quick Start laat zien hoe u informatie en code voorbeelden kunt ophalen om snel aan de slag te gaan met behulp van de Text Analytics-API in azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 7f2a4ff98345aa43dd6a99eafd60ff2d05ee1bee
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378548"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Snelstart: de Python REST API gebruiken om de Text Analytics Cognitive Service aan te roepen 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Quick Start: de python-REST API gebruiken om de Text Analytics cognitieve service aan te roepen 
 <a name="HOLTop"></a>
 
-Gebruik deze snelstart om taal te analyseren met de Text Analytics REST API en Python. In dit artikel ziet u hoe u [taal detecteren,](#Detect) [sentiment analyseren,](#SentimentAnalysis) [sleutelzinnen extraheren](#KeyPhraseExtraction)en [gekoppelde entiteiten identificeren](#Entities).
+Gebruik deze Quick Start om de taal te analyseren met de Text Analytics REST API en python. In dit artikel leest u hoe u [taal kunt detecteren](#Detect), sentiment kunt [analyseren](#SentimentAnalysis), [sleutel zinnen kunt extra heren](#KeyPhraseExtraction)en [gekoppelde entiteiten aanduidt](#Entities).
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 3.x](https://python.org)
+* [Python 3. x](https://python.org)
 
-* De Python vraagt bibliotheek aan
+* De bibliotheek met python-aanvragen
     
-    U de bibliotheek met deze opdracht installeren:
+    U kunt de bibliotheek met de volgende opdracht installeren:
 
     ```console
     pip install --upgrade requests
@@ -41,7 +41,7 @@ Gebruik deze snelstart om taal te analyseren met de Text Analytics REST API en P
 
 ## <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
-Maak een nieuwe Python-toepassing in uw favoriete editor of IDE. Voeg de volgende importtoe aan uw bestand.
+Maak een nieuwe python-toepassing in uw favoriete editor of IDE. Voeg de volgende import bewerkingen toe aan het bestand.
 
 ```python
 import requests
@@ -49,7 +49,7 @@ import requests
 from pprint import pprint
 ```
 
-Maak variabelen voor het Azure-eindpunt en de abonnementssleutel van uw bron.
+Maak variabelen voor het Azure-eind punt en de abonnements sleutel van uw resource.
     
 ```python
 import os
@@ -58,19 +58,19 @@ subscription_key = "<paste-your-text-analytics-key-here>"
 endpoint = "<paste-your-text-analytics-endpoint-here>"
 ```
 
-In de volgende secties wordt beschreven hoe u elk van de functies van de API aanroept.
+In de volgende secties wordt beschreven hoe u de functies van de API aanroept.
 
 <a name="Detect"></a>
 
 ## <a name="detect-languages"></a>Talen detecteren
 
-Voeg `/text/analytics/v2.1/languages` toe aan het basiseindpunt Text Analytics om de URL voor taaldetectie te vormen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
+Voeg `/text/analytics/v2.1/languages` toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
-De payload van de API `documents`bestaat uit een lijst van `id` , `text` die tuples met een en een attribuut. Het `text` kenmerk slaat de te analyseren `id` tekst op en deze kan elke waarde zijn. 
+De payload van de API bestaat uit een lijst met `documents`-Tuples die een `id` en een `text` -kenmerk bevatten. Het `text` kenmerk slaat de tekst die moet worden geanalyseerd en de `id` kan een wille keurige waarde zijn. 
 
 ```python
 documents = {"documents": [
@@ -80,7 +80,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek Aanvragen om de documenten naar de API te verzenden. Voeg uw abonnementssleutel `Ocp-Apim-Subscription-Key` toe aan de `requests.post()`koptekst en verzend de aanvraag met . 
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -133,13 +133,13 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Stemming analyseren
 
-Als u het gevoel (dat varieert tussen positief of negatief) van een set documenten wilt detecteren, wordt het `/text/analytics/v2.1/sentiment` basiseindpunt text Analytics toegevoegd aan de URL voor taaldetectie. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
+Als u de sentiment (tussen positieve of negatieve) van een set documenten wilt detecteren, voegt `/text/analytics/v2.1/sentiment` u toe aan het Text Analytics base-eind punt om de taal detectie-URL op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
-Net als bij het voorbeeld van `documents` taaldetectie maakt u een woordenboek met een sleutel die bestaat uit een lijst met documenten. Elk document is een tuple die bestaat uit de `id`, de te analyseren `text` en de `language` van de tekst. 
+Net als bij het voor beeld van de taal detectie maakt u `documents` een woorden lijst met een sleutel die bestaat uit een lijst met documenten. Elk document is een tuple die bestaat uit de `id`, de te analyseren `text` en de `language` van de tekst. 
 
 ```python
 documents = {"documents": [
@@ -154,7 +154,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek Aanvragen om de documenten naar de API te verzenden. Voeg uw abonnementssleutel `Ocp-Apim-Subscription-Key` toe aan de `requests.post()`koptekst en verzend de aanvraag met . 
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -165,7 +165,7 @@ pprint(sentiments)
 
 ### <a name="output"></a>Uitvoer
 
-De sentimentscore voor een document ligt tussen 0,0 en 1,0, met een hogere score die wijst op een positiever sentiment.
+De sentiment-score voor een document ligt tussen 0,0 en 1,0, met een hogere score die een positieve sentiment aangeeft.
 
 ```json
 {
@@ -195,13 +195,13 @@ De sentimentscore voor een document ligt tussen 0,0 en 1,0, met een hogere score
 
 ## <a name="extract-key-phrases"></a>Belangrijke woordgroepen herkennen
  
-Als u de belangrijkste zinnen uit een `/text/analytics/v2.1/keyPhrases` reeks documenten wilt extraheren, wordt u lid van het basiseindpunt Text Analytics om de URL voor taaldetectie te vormen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
+Als u de sleutel zinnen uit een reeks documenten wilt extra heren `/text/analytics/v2.1/keyPhrases` , voegt u toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```
 
-Deze verzameling documenten is hetzelfde gebruikt voor het sentiment analyse voorbeeld.
+Deze verzameling documenten is hetzelfde als die voor het analyse voorbeeld sentiment.
 
 ```python
 documents = {"documents": [
@@ -216,7 +216,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek Aanvragen om de documenten naar de API te verzenden. Voeg uw abonnementssleutel `Ocp-Apim-Subscription-Key` toe aan de `requests.post()`koptekst en verzend de aanvraag met . 
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`. 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -271,13 +271,13 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-Als u bekende entiteiten (personen, plaatsen en dingen) wilt `/text/analytics/v2.1/entities` identificeren in tekstdocumenten, wordt het basiseindpunt voor Text Analytics toegevoegd aan de URL voor taaldetectie. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+Als u bekende entiteiten (personen, plaatsen en dingen) in tekst documenten wilt identificeren, voegt `/text/analytics/v2.1/entities` u toe aan het Text Analytics base-eind punt om de URL voor de taal detectie te vormen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"
 ```
 
-Maak een verzameling documenten, zoals in de vorige voorbeelden. 
+Maak een verzameling documenten, zoals in de voor gaande voor beelden. 
 
 ```python
 documents = {"documents": [
@@ -285,7 +285,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek Aanvragen om de documenten naar de API te verzenden. Voeg uw abonnementssleutel `Ocp-Apim-Subscription-Key` toe aan de `requests.post()`koptekst en verzend de aanvraag met .
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`.
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -452,9 +452,9 @@ pprint(entities)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Tekstanalyse met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Text Analytics met Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Zie ook 
 
  [Overzicht van Text Analytics](../overview.md)  
- [Veelgestelde vragen (FAQ)](../text-analytics-resource-faq.md)
+ [Veelgestelde vragen](../text-analytics-resource-faq.md)

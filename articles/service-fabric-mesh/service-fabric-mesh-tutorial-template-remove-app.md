@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: een app verwijderen die wordt uitgevoerd in Azure Service Fabric-mesh'
+title: 'Zelf studie: een app die wordt uitgevoerd in azure Service Fabric net verwijderen'
 description: In deze zelfstudie leert u hoe u een toepassing kunt verwijderen die wordt uitgevoerd in Service Fabric Mesh en hoe u resources kunt verwijderen.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351800"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>Zelfstudie: Een toepassing en resources verwijderen

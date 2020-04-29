@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Spraak vertalen naar meerdere talen, Java (Windows, Linux) - Spraakservice'
+title: 'Quick Start: spraak vertalen naar meerdere talen, java (Windows, Linux)-spraak service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 2782a05342217ce62845b0520fa83b1eea336b9c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75467658"
 ---
 > [!div class="nextstepaction"]

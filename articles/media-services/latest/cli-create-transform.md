@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: c21a16d043f972042949d6340985774741b3df6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74888595"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI-voorbeeld: Een transformatie maken
@@ -32,9 +32,9 @@ In het Azure CLI-script in dit artikel ziet u hoe u een transformatie kunt maken
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
-> U alleen een pad opgeven naar een aangepast Json-voorinstellingsbestand voor standaardencoders voor [StandardEncoderPreset,](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)zie de [coderen met een aangepast transformatievoorbeeld.](custom-preset-cli-howto.md)
+> U kunt alleen een pad opgeven naar een aangepaste standaard Encoder voor een JSON-bestand voor [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Zie het voor beeld voor [coderen met een aangepaste transform](custom-preset-cli-howto.md) .
 >
-> U geen bestandsnaam doorgeven wanneer u [BuiltInStandardEncoderPreset gebruikt.](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)
+> U kunt geen bestands naam door geven wanneer u [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)gebruikt.
 
 ## <a name="example-script"></a>Voorbeeldscript
 
@@ -42,4 +42,4 @@ In het Azure CLI-script in dit artikel ziet u hoe u een transformatie kunt maken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[az ams transformeren (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)
+[AZ AMS Transform (CLI)](https://docs.microsoft.com/cli/azure/ams/transform?view=azure-cli-latest)

@@ -9,18 +9,18 @@ ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73522664"
 ---
-1. Selecteer in het menu [azure portal](https://portal.azure.com) de optie Een **resource maken**. 
+1. Selecteer in het menu [Azure Portal](https://portal.azure.com) de optie **een resource maken**. 
 
-   ![Een resource maken in de Azure-portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
-2. Typ lokaal **netwerkgateway**in het veld Zoeken in het veld Zoeken in de **marktplaats** en druk vervolgens op **Enter** om te zoeken. Er wordt dan een lijst met resultaten geretourneerd. Klik op **Lokale netwerkgateway** om de pagina te openen en klik op de knop **Maken** om de pagina **Lokale netwerkgateway maken** te openen.
+   ![Een resource maken in de Azure Portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. Typ in het veld **Marketplace doorzoeken de** tekst **lokale netwerk gateway**en druk vervolgens op **Enter** om te zoeken. Er wordt dan een lijst met resultaten geretourneerd. Klik op **Lokale netwerkgateway** om de pagina te openen en klik op de knop **Maken** om de pagina **Lokale netwerkgateway maken** te openen.
 
-   ![De lokale netwerkgateway maken](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "De lokale netwerkgateway maken")
+   ![De lokale netwerk gateway maken](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "De lokale netwerkgateway maken")
 
 3. Op de **pagina Lokale netwerkgateway maken** geeft u de waarden voor uw lokale netwerkgateway op.
 
@@ -30,6 +30,6 @@ ms.locfileid: "73522664"
    - **BGP-instellingen configureren:** gebruik deze alleen bij het configureren van BGP. Selecteer deze anders niet.
    - **Abonnement:** controleer of het juiste abonnement wordt weergegeven.
    - **Resourcegroep:** selecteer de resourcegroep die u wilt gebruiken. U kunt een nieuwe resourcegroep maken of een resourcegroep selecteren die u al hebt gemaakt.
-   - **Locatie:** De locatie is hetzelfde als **Regio** in andere instellingen. Selecteer de locatie waarin dit object wordt gemaakt. U kunt dezelfde locatie selecteren als die van uw VNet, maar dat is niet vereist.
+   - **Locatie:** De locatie is hetzelfde als de **regio** in andere instellingen. Selecteer de locatie waarin dit object wordt gemaakt. U kunt dezelfde locatie selecteren als die van uw VNet, maar dat is niet vereist.
 
 4. Wanneer u klaar bent met het opgeven van de waarden klikt u op **Maken** onderaan de pagina om de lokale netwerkgateway te maken.

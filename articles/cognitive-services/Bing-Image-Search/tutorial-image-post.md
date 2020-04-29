@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Afbeeldingsdetails extraheren met de REST API en C# - Bing Image Search'
+title: 'Zelf studie: afbeeldings gegevens extra heren met de REST API en C#-Bing Image Search'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze zelfstudie om een C#-toepassing te maken die afbeeldingsdetails extraheert met de Bing Image Search API.
+description: Gebruik deze zelf studie om een C#-toepassing te maken die afbeeldings Details extraheert met behulp van de Bing Afbeeldingen zoeken-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383872"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Zelfstudie: Afbeeldingsdetails extraheren met de Bing Afbeeldingen zoeken-API en C#
@@ -32,17 +32,17 @@ In deze zelfstudie wordt het volgende uitgelegd:
 > * De afbeeldingsgegevens uploaden en de `POST`-aanvraag verzenden
 > * De JSON-resultaten op de console afdrukken
 
-De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs)
+De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Elke editie van [Visual studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
+* Een versie van [Visual studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="construct-an-image-details-search-request"></a>Een zoekaanvraag voor afbeeldingsdetails opstellen
 
-Hieronder gaat het op het eindpunt `/details`, dat POST-aanvragen accepteert met afbeeldingsgegevens in de hoofdtekst van de aanvraag. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+Hieronder gaat het op het eindpunt `/details`, dat POST-aanvragen accepteert met afbeeldingsgegevens in de hoofdtekst van de aanvraag. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```

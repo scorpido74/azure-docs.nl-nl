@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Speech-to-speech vertalen, Java - Spraakservice'
+title: 'Snelstartgids: Vertaal spraak-naar-spraak, Java-spraak service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: ea782dc036518cbb28eca01436c186396c9f987f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466918"
 ---
-Als u liever meteen in springt, alle <a href="https://aka.ms/speech/github-java">Speech SDK Java Samples</a> op GitHub bekijkt of downloadt. Anders, laten we beginnen.
+Als u liever meteen naar rechts gaat, kunt u alle <a href="https://aka.ms/speech/github-java">Speech SDK Java</a> -voor beelden op github weer geven of downloaden. Zo niet, dan gaan we aan de slag.

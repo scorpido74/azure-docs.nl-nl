@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een app schalen die wordt uitgevoerd in Azure Service Fabric-mesh'
+title: 'Zelf studie: een app schalen die wordt uitgevoerd in azure Service Fabric net'
 description: In deze zelfstudie leert u hoe u de services kunt schalen in een toepassing die wordt uitgevoerd in Service Fabric Mesh.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351810"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Zelfstudie: Een toepassing schalen die wordt uitgevoerd in Service Fabric Mesh
@@ -42,7 +42,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Services handmatig in- en uitschalen
 
-Een van de belangrijkste voordelen van het implementeren van applicaties naar Service Fabric Mesh is de mogelijkheid voor u om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende hoeveelheden belasting op uw services of het verbeteren van de beschikbaarheid.
+Een van de belangrijkste voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende belasting hoeveelheden van uw services of het verbeteren van de beschik baarheid.
 
 In deze zelfstudie wordt het voorbeeld To Do List gebruikt als voorbeeld. Dit voorbeeld is [eerder geïmplementeerd](service-fabric-mesh-tutorial-template-deploy-app.md) en moet nu worden uitgevoerd. De toepassing heeft twee services: WebFrontEnd en ToDoService. Elke service is in eerste instantie geïmplementeerd met de waarde 1 voor het aantal replica's.  Als u het aantal actieve replica's voor de service WebFrontEnd wilt zien, voert u deze opdracht uit:
 

@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74846348"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelfstudie: Gebruik risicodetecties om multifactorauthenticatie en wachtwoordwijzigingen te activeren
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelf studie: risico detecties gebruiken om Multi-Factor Authentication en wachtwoord wijzigingen te activeren
 
 In deze zelfstudie gaat u functies van Azure Active Directory (Azure AD) Identity Protection inschakelen. Dit is een Azure AD Premium P2-functie en is meer dan alleen een controle- en rapportagehulpmiddel. Ter bescherming van identiteiten binnen uw organisatie, kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren die automatisch op risicovol gedrag reageren. Deze beleidsregels kunnen automatisch herstelstappen blokkeren of initiëren, zoals onder andere het verplicht wijzigen van wachtwoorden en het afdwingen van Multi-Factor Authentication.
 
-Azure AD Identity Protection-beleidsregels kunnen naast het bestaande beleid voor voorwaardelijke toegang worden gebruikt als een extra beveiligingslaag. Misschien dat het nooit voorkomt dat gebruikers risicovol gedrag activeren waarvoor een van deze beleidsregels is vereist, maar u als beheerder weet dat ze zijn beveiligd.
+Azure AD Identity Protection-beleid kan worden gebruikt naast bestaande beleids regels voor voorwaardelijke toegang als een extra beveiligingslaag. Misschien dat het nooit voorkomt dat gebruikers risicovol gedrag activeren waarvoor een van deze beleidsregels is vereist, maar u als beheerder weet dat ze zijn beveiligd.
 
-Sommige items die een risicodetectie kunnen activeren, zijn:
+Enkele items die mogelijk een risico detectie activeren, zijn onder andere:
 
 * Gebruikers van wie de referenties zijn gelekt
 * Aanmeldingen vanaf anonieme IP-adressen
@@ -54,14 +54,14 @@ Het inschakelen van het beleid op basis van risicogebeurtenissen is een eenvoudi
 
 Azure AD Identity Protection bevat een standaardbeleid dat u kan helpen bij het registreren van uw gebruikers voor Multi-Factor Authentication en om hun huidige registratiestatus vast te stellen. Door dit beleid in te schakelen, worden gebruikers niet meteen verplicht om Multi-Factor Authentication uit te voeren, maar wordt hen gevraagd zich vooraf te registreren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
 1. Klik op **Registratie bij MFA**.
 1. Stel Beleid afdwingen in op **Aan**.
    1. Door beleid in te stellen, moeten alle gebruikers methoden registreren ter voorbereiding van het gebruik van Multi-Factor Authentication.
 1. Klik op **Opslaan**.
 
-   ![Gebruikers verplichten zich te registreren voor MFA bij aanmelding](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![Vereisen dat gebruikers zich bij het aanmelden registreren voor MFA](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>Op risicogebeurtenissen gebaseerde wachtwoordwijzigingen inschakelen
 
@@ -73,7 +73,7 @@ Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiliging
 1. Bij **Toegang** kiest u **Toegang toestaan** en selecteert u vervolgens **Wachtwoordwijziging vereisen**.
 1. Klik op Selecteren.
 1. Stel Beleid afdwingen in op **Aan**.
-1. Klik **op Opslaan**
+1. Klik op **Opslaan**
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Op risicogebeurtenissen gebaseerde Multi-Factor Authentication inschakelen
 
@@ -85,7 +85,7 @@ De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer 
 1. Bij **Toegang** kiest u **Toegang toestaan** en selecteert u vervolgens **Multi-Factor Authentication vereisen**.
 1. Klik op Selecteren.
 1. Stel Beleid afdwingen in op **Aan**.
-1. Klik **op Opslaan**
+1. Klik op **Opslaan**
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

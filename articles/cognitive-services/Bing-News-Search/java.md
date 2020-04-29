@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een zoekopdracht op het web uitvoeren met Java - Bing Web Search REST API'
+title: 'Quick Start: een webzoekopdracht uitvoeren met Java-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Java en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383609"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Snelstart: Voer een nieuwszoekopdracht uit met Java en de Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Quick Start: een zoek opdracht voor nieuws uitvoeren met Java en het Bing News Search REST API
 
 Gebruik deze quickstart om voor het eerst de Bing Nieuws zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
 
@@ -50,7 +50,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     import com.google.gson.JsonParser;
     ```
 
-2. Maak een nieuwe klasse, met variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak een nieuwe klasse, met variabelen voor het API-eindpunt, uw abonnementssleutel en zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -225,4 +225,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](tutorial-bing-news-search-single-page-app.md)
+> [Een web-app met één pagina maken](tutorial-bing-news-search-single-page-app.md)

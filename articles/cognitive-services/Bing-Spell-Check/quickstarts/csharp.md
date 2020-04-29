@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: spelling controleren met de REST API en C# - Bing Spell Check'
+title: 'Snelstartgids: spelling controleren met de REST API en C#-Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
 description: Aan de slag met de Bing Spellingcontrole-REST-API om de spelling en grammatica te controleren.
 services: cognitive-services
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382945"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Snelstart: spelling controleren met de Bing Spell Check REST API en C #
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en C #
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige C#-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige C#-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Elke editie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* Installeren `Newtonsoft.Json` als NuGet-pakket in Visual studio:
-    1. Klik in **Solution Explorer**met de rechtermuisknop op het bestand Oplossing.
+* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+* Installeren `Newtonsoft.Json` als een NuGet-pakket in Visual Studio:
+    1. Klik in **Solution Explorer**met de rechter muisknop op het oplossings bestand.
     1. Selecteer **NuGet-pakketten beheren voor oplossing**.
-    1. Zoek `Newtonsoft.Json` naar en installeer het pakket.
+    1. Zoek `Newtonsoft.Json` en installeer het pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe `SpellCheckSample` consoleoplossing met de naam in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
+1. Maak een nieuwe console oplossing met `SpellCheckSample` de naam in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     using Newtonsoft.Json;
     ```
 
-2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en de tekst die moet worden gecontroleerd. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+2. Maak variabelen voor het API-eindpunt, uw abonnementssleutel en de tekst die moet worden gecontroleerd. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +62,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     }
     ```
 
-3. Doe hetzelfde voor uw zoekparameters. Uw marktcode toevoegen `mkt=`na . De marktcode is het land waar u het verzoek indient. Ook, toevoegen van uw spell-check mode na `&mode=`. Modus is `proof` ofwel (vangt de meeste `spell` spelling / grammatica fouten) of (vangt de meeste spelling, maar niet zo veel grammatica fouten).
+3. Doe hetzelfde voor uw zoekparameters. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=`. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -83,7 +83,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     }
     ```
 
-2. Maak de URI voor uw aanvraag door uw host, pad en parameters toe te passen.
+2. Maak de URI voor uw aanvraag door de host, het pad en de para meters toe te voegen.
     
     ```csharp
     string uri = host + path + params_;
@@ -139,7 +139,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Bouw en voer uw project uit. Als u Visual Studio gebruikt, drukt u op **F5** om het bestand te debuggen.
+Uw project bouwen en uitvoeren. Als u Visual Studio gebruikt, drukt u op **F5** om fouten in het bestand op te sporen.
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
@@ -186,7 +186,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](../tutorials/spellcheck.md)
+> [Een web-app met één pagina maken](../tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
 - [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

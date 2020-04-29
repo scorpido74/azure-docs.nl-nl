@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Voer een nieuwszoekopdracht uit met Node.js - Bing News Search REST API'
+title: 'Snelstartgids: een zoek opdracht voor nieuws met node. js-Bing News Search uitvoeren REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Node.js en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -12,19 +12,19 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383129"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Snelstart: een nieuwszoekopdracht uitvoeren met Node.js en de Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht uitvoeren met behulp van node. js en de Bing News Search REST API
 
 Gebruik deze snelstart om voor het eerst de Bing Afbeeldingen zoeken-API aan te roepen en een JSON-antwoord te ontvangen. Deze eenvoudige JavaScript-toepassing stuurt een zoekquery naar de API en toont de onbewerkte resultaten.
 
 Hoewel deze toepassing in JavaScript is geschreven en wordt uitgevoerd in Node.js, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js)
+De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Az
     let https = require('https');
     ```
 
-2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en zoekterm. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron. 
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de afbeeldings-API, uw abonnementssleutel en zoekterm. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -70,7 +70,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub.](https://github.com/Az
         });
         ```
 
-    3. Wanneer een **eindvlag** wordt gesignaleerd, kunnen de JSON en headers worden bekeken.
+    3. Wanneer een **End** -vlag is gesignaleerd, kunnen de JSON en kopteksten worden weer gegeven.
 
         ```javascript
         response.on('end', function () {
@@ -183,4 +183,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app voor één pagina maken](tutorial-bing-news-search-single-page-app.md)
+> [Een web-app met één pagina maken](tutorial-bing-news-search-single-page-app.md)

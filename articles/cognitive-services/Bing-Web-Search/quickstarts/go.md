@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een zoekopdracht op het web uitvoeren met Go - Bing Web Search REST API'
+title: 'Snelstartgids: een webzoekopdracht met Go-Bing Web Search uitvoeren REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Go en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -13,15 +13,15 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74978795"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Snelstart: zoeken op het web met behulp van de Bing Web Search REST API en Go
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Snelstartgids: zoeken op internet met behulp van de Bing Web Search REST API en go
 
-Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Deze Go-toepassing stuurt een zoekverzoek naar de API en toont het antwoord. Hoewel deze toepassing in Go is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze quickstart om voor het eerst de Bing Webzoekopdrachten-API aan te roepen en een JSON-antwoord te ontvangen. Met deze go-toepassing wordt een zoek opdracht naar de API verzonden en wordt het antwoord weer gegeven. Hoewel deze toepassing in Go is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u verdergaat met deze snelstart moet u beschikken over:
@@ -111,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>De hoofdfunctie declareren en variabelen definiëren  
 
-Met deze code wordt de hoofdfunctie gedeclareerd en worden de vereiste variabelen ingesteld. `endpoint`kan het algemene eindpunt hieronder zijn of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen.
+Met deze code wordt de hoofdfunctie gedeclareerd en worden de vereiste variabelen ingesteld. `endpoint`Dit kan het globale eind punt zijn of het eind punt van het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weer gegeven in de Azure portal voor uw resource. Controleer of het eindpunt juist is en vervang de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. U kunt de zoekquery gerust aanpassen door de waarde voor `searchTerm` te vervangen.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -307,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Voorbeeldantwoord  
 
-Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in de JSON-indeling. Deze voorbeeldrespons is opgemaakt `BingAnswer` met behulp van `result.Name` `result.URL`de struct en toont de en .
+Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in de JSON-indeling. Dit voorbeeld antwoord is opgemaakt met behulp `BingAnswer` van de struct en `result.Name` toont `result.URL`de and.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: spelling controleren met de REST API en Node.js - Bing Spell Check'
+title: 'Snelstartgids: Controleer de spelling met de REST API en node. js-Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Bing Spell Check REST API om spelling en grammatica te controleren met deze quickstart.
+description: Ga aan de slag met de Bing Spellingcontrole REST API om de spelling en grammatica te controleren met deze Snelstartgids.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382848"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Snelstart: spelling controleren met de Bing Spell Check REST API en Node.js
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en node. js
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige node-toepassing stuurt een aanvraag naar de API en retourneert een lijst met woorden die niet zijn herkend, gevolgd door voorgestelde correcties. Hoewel deze toepassing is geschreven in Node.js, is de API een RESTful Web-service die compatibel is met de meeste programmeertalen. De broncode voor deze toepassing is beschikbaar op [GitHub.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js)
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige knooppunt toepassing stuurt een aanvraag naar de API en retourneert een lijst met woorden die niet zijn herkend, gevolgd door voorgestelde correcties. Hoewel deze toepassing is geschreven in node. js, is de API een REST-webservice die compatibel is met de meeste programmeer talen. De bron code voor deze toepassing is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor. Stel de strengheid, `https`en vereisen . Maak vervolgens variabelen voor de host en het pad van het API-eindpunt en uw abonnementssleutel. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor. Stel de beperking in en vereist `https`. Maak vervolgens variabelen voor de host en het pad van het API-eindpunt en uw abonnementssleutel. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Maak variabelen voor uw zoekparameters en de tekst die u wilt controleren. Uw marktcode toevoegen `mkt=`na . De marktcode is het land waar u het verzoek indient. Ook, toevoegen van uw spell-check mode na `&mode=`. Modus is `proof` ofwel (vangt de meeste `spell` spelling / grammatica fouten) of (vangt de meeste spelling, maar niet zo veel grammatica fouten).
+2. Maak variabelen voor de zoek parameters en de tekst die u wilt controleren. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe `&mode=`. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
 
     ```javascript
     let mkt = "en-US";
@@ -100,9 +100,9 @@ req.end ();
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Bouw en voer uw project uit.
+Uw project bouwen en uitvoeren.
 
-Als u de opdrachtregel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren.
+Als u de opdracht regel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren.
 
 ```bash
 node <FILE_NAME>.js

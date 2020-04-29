@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74829172"
 ---
 |**VPN<br>-<br>gateway genereren** |**SKU**   | **S2S-/VNet-naar-VNet-<br>tunnels** | **P2S<br> SSTP-verbindingen** | **P2S<br> IKEv2/openvpn-verbindingen** | **Benchmark cumulatieve<br>doorvoer** | **BGP** | **Zone-redundant** |

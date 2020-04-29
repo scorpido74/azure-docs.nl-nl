@@ -1,5 +1,5 @@
 ---
-title: Windows Server 2008-servers migreren naar Azure met Azure-siteherstel
+title: Windows Server 2008-servers migreren naar Azure met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u on-premises Windows Server 2008-machines naar Azure migreert met behulp van Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73936143"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Servers waarop Windows Server 2008 wordt uitgevoerd, naar Azure migreren
@@ -30,7 +30,7 @@ In deze zelfstudie leert u hoe u on-premises servers waarop Windows Server 2008 
 In de sectie over beperkingen en bekende problemen worden enkele beperkingen en tijdelijke oplossingen vermeldt voor bekende problemen die u kunt tegenkomen tijdens de migratie van Windows Server 2008-machines naar Azure. 
 
 > [!NOTE]
-> U nu migreren van on-premises naar Azure met behulp van de Azure Migrate-service. [Meer informatie](../migrate/migrate-services-overview.md).
+> U kunt nu migreren van on-premises naar Azure met behulp van de Azure Migrate-service. [Meer informatie](../migrate/migrate-services-overview.md).
 
 
 ## <a name="supported-operating-systems-and-environments"></a>Ondersteunde besturingssystemen en omgevingen
@@ -54,7 +54,7 @@ Voor het migreren van virtuele Hyper-V-machines waarop Windows Server 2008 of Wi
 
 In het vervolg van deze zelfstudie kunt u zien hoe u on-premises virtuele VMware-machines en fysieke servers kunt migreren waarop Windows Server 2008 of 2008 R2 wordt uitgevoerd.
 > [!TIP]
-> Op zoek naar een agentloze manier om VMware VM's te migreren naar Azure? [Klik hier](https://aka.ms/migrateVMs-signup)
+> Bent u op zoek naar een agentloze manier om virtuele VMware-machines naar Azure te migreren? [Klik hier](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
@@ -92,11 +92,11 @@ Voer de volgende taken uit om het Azure-abonnement en de on-premises VMware-/fys
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-1. Meld u aan bij de [Azure portal](https://portal.azure.com) > **Recovery Services**.
-2. Klik op**Back-up- en siteherstel****van hulpprogramma's** > voor **bronnenbeheer** > maken .
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**Recovery Services**.
+2. Klik op **Maak een** > **back-up**van**hulp middelen** > voor resource beheer en site Recovery.
 3. Bij **Naam** geeft u de beschrijvende naam **W2K8-migration** op. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 4. Maak resourcegroep **w2k8migrate**.
-5. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [de prijsdetails van Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+5. Geef een Azure-regio op. Zie geografische Beschik baarheid in [Azure site Recovery prijs informatie](https://azure.microsoft.com/pricing/details/site-recovery/)om de ondersteunde regio's te controleren.
 6. Als u de kluis snel wilt kunnen openen via het dashboard, klikt u op **Vastmaken aan dashboard** en vervolgens op **Maken**.
 
    ![Nieuwe kluis](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
@@ -113,14 +113,14 @@ De nieuwe kluis wordt toegevoegd op het **Dashboard** onder **Alle resources** e
 
 Selecteer en controleer doelbronnen.
 
-1. Klik **op Infrastructuurdoel** > **Target**voorbereiden en selecteer het Azure-abonnement dat u wilt gebruiken.
+1. Klik op **infra structuur** > voorbereiden**doel**en selecteer het Azure-abonnement dat u wilt gebruiken.
 2. Geef het Resource Manager-implementatiemodel op.
 3. Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt.
 
 
 ## <a name="set-up-a-replication-policy"></a>Een replicatiebeleid instellen
 
-1. Als u een nieuw replicatiebeleid wilt maken, klikt u op**Replicatiebeleid** >  **voor siteherstelinfrastructuur** > **+Replicatiebeleid**.
+1. Als u een nieuw replicatie beleid wilt maken, klikt u op **site Recovery infrastructuur** > **Replication Policies** > beleid voor replicatie en**beleid**voor replicatie.
 2. Geef in **Replicatiebeleid maken** een beleidsnaam op.
 3. Geef in **RPO-drempelwaarde** de limiet van de Recovery Point Objective (RPO) op. Wanneer de replicatie-RPO deze limiet overschrijdt, wordt er een waarschuwing gegenereerd.
 4. Geef in **Bewaarperiode van het herstelpunt** op hoelang (in uren) de bewaarperiode voor elk herstelpunt is. Gerepliceerde servers kunnen worden hersteld naar een willekeurig punt in dit tijdvenster. Voor computers die worden gerepliceerd naar Premium Storage, wordt een bewaarperiode van maximaal 24 uur ondersteund, en 72 uur voor computers die naar Standard Storage worden gerepliceerd.
@@ -154,9 +154,9 @@ Voer een [testfailover](tutorial-dr-drill-azure.md) naar Azure uit om te control
 
 Een failover uitvoeren voor de machines die u wilt migreren.
 
-1. Klik in**Gerepliceerde items** **op** > de machine > **failover**.
+1. Klik in **instellingen** > **gerepliceerde items** op de machine > **failover**.
 2. Selecteer in **Failover** een **Herstelpunt** waarnaar u de failover wilt uitvoeren. Selecteer het meest recente herstelpunt.
-3. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Site Recovery tracht de virtuele bronmachine af te sluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet zelfs als het afsluiten is mislukt. U de failovervoortgang volgen op de pagina **Vacatures.**
+3. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Site Recovery tracht de virtuele bronmachine af te sluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet zelfs als het afsluiten is mislukt. U kunt de voortgang van de failover op de pagina **taken** volgen.
 4. Controleer of de virtuele Azure-machine in Azure wordt weergegeven zoals verwacht.
 5. Klik in **Gerepliceerde items** met de rechtermuisknop op de server > **Migratie voltooien**. Er gebeurt nu het volgende:
 
@@ -167,4 +167,4 @@ Een failover uitvoeren voor de machines die u wilt migreren.
 
 
 > [!WARNING]
-> **Annuleer een mislukte uitvoering niet:** Serverreplicatie wordt gestopt voordat failover wordt gestart. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar wordt de server niet meer gerepliceerd.
+> **Een failover wordt niet geannuleerd: de**Server replicatie wordt gestopt voordat de failover wordt gestart. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar wordt de server niet meer gerepliceerd.

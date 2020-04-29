@@ -1,17 +1,17 @@
 ---
-title: Snelstart - Register maken - Powershell
-description: Leer snel een privé Docker-register maken in Azure Container Registry met PowerShell
+title: Snelstartgids-REGI ster maken-Power shell
+description: Meer informatie over het maken van een persoonlijk docker-REGI ster in Azure Container Registry met Power shell
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456370"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snelstart: een privécontainerregister maken met Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snelstartgids: een persoonlijk container register maken met behulp van Azure PowerShell
 
 Azure Container Registry is een beheerde service voor Docker-containerregisters die wordt gebruikt voor het bouwen, opslaan en faciliteren van installatiekopieën van Docker-containers. In deze snelstart leert u hoe u een Azure Container Registry maakt met behulp van PowerShell. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
