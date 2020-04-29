@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Bing Autosuggest API
+title: Taal ondersteuning-Automatische suggestie-API voor Bing
 titleSuffix: Azure Cognitive Services
-description: Een lijst met ondersteunde talen en regio's voor de Bing Autosuggest API.
+description: Een lijst met ondersteunde talen en regio's voor de Automatische suggestie-API voor Bing.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60547333"
 ---
-# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Taal- en regioondersteuning voor de Bing Autosuggest-API
+# <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Ondersteuning van talen en regio's voor de Automatische suggestie-API voor Bing
 
-In de volgende lijsten worden de talen weergegeven die worden ondersteund door de Bing Autosuggest API.
+Hieronder vindt u een lijst met de talen die door Automatische suggestie-API voor Bing worden ondersteund.
 
 | Taal    | Taalcode |
 |:----------- |:-------------:|
 | Arabisch      | `ar`          |
-| Chinees (Volksrepubliek China)     | `zh-CN`          |
+| Chinees (volks Republiek China)     | `zh-CN`          |
 | Chinees (Hong Kong SAR)    | `zh-HK`          |
 | Chinees (Taiwan)     | `zh-TW`          |
 | Deens      | `da`          |
@@ -36,7 +36,7 @@ In de volgende lijsten worden de talen weergegeven die worden ondersteund door d
 | Engels (Indonesië)     | `en-ID`          |
 | Engels (Maleisië)     | `en-MY`          |
 | Engels (Nieuw-Zeeland)    | `en-NZ`          |
-| Engels (Filippijnen)     | `en-PH`          |
+| Engels (Filipijnen)     | `en-PH`          |
 | Engels (Zuid-Afrika)    | `en-ZA`          |
 | Engels (Verenigd Koninkrijk)    | `en-GB`          |
 | Engels (Verenigde Staten)    | `en-US`          |
@@ -66,5 +66,5 @@ In de volgende lijsten worden de talen weergegeven die worden ondersteund door d
 
 ## <a name="see-also"></a>Zie ook
 
-- [Pagina Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
-- [Productpagina Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
+- [Documentatie pagina voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Product pagina van Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

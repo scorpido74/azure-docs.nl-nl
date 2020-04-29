@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met UserEcho | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met UserEcho | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en UserEcho.
 services: active-directory
 documentationCenter: na
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 59d61eda7002fe46cf99fac63822b2333b2d64b5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67087772"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Zelfstudie: Azure Active Directory-integratie met UserEcho
+# <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Zelf studie: integratie Azure Active Directory met UserEcho
 
-In deze zelfstudie leert u hoe u UserEcho integreert met Azure Active Directory (Azure AD).
-Het integreren van UserEcho met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u UserEcho integreert met Azure Active Directory (Azure AD).
+Het integreren van UserEcho met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot UserEcho.
-* U uw gebruikers automatisch laten aanmelden bij UserEcho (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot UserEcho.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij UserEcho (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie met UserEcho wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met UserEcho wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Abonnement met één aanmelding voor UserEcho
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding UserEcho ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* UserEcho ondersteunt **door SP** geïnitieerde SSO
+* UserEcho ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-userecho-from-the-gallery"></a>UserEcho toevoegen vanuit de galerie
+## <a name="adding-userecho-from-the-gallery"></a>UserEcho toevoegen uit de galerie
 
-Als u de integratie van UserEcho in Azure AD wilt configureren, moet u UserEcho vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van UserEcho in azure AD wilt configureren, moet u UserEcho uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om UserEcho vanuit de galerie toe te voegen:**
+**Voer de volgende stappen uit om UserEcho toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van UserEcho in Azure AD wilt configureren, moet u UserEcho 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **UserEcho**in het zoekvak , selecteer **UserEcho** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **UserEcho**in het zoekvak, selecteer **UserEcho** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![UserEcho in de resultatenlijst](common/search-new-app.png)
+     ![UserEcho in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met UserEcho op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in UserEcho.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met UserEcho op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in UserEcho tot stand worden gebracht.
 
-Als u Azure AD Single Sign-on wilt configureren en testen met UserEcho, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met UserEcho, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[UserEcho Single Sign-On configureren](#configure-userecho-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[UserEcho eenmalige aanmelding configureren](#configure-userecho-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[UserEcho-testgebruiker maken](#create-userecho-test-user)** - om een tegenhanger van Britta Simon in UserEcho te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een UserEcho-test gebruiker](#create-userecho-test-user)** -om een equivalent van Julia Simon in UserEcho te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met UserEcho te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met UserEcho:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **UserEcho-toepassingsintegratie** de optie **Eén aanmelding .**
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **UserEcho** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![UserEcho-domein- en URL's met eenmalige aanmelding](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor UserEcho domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.userecho.com/`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.userecho.com/saml/metadata/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het ondersteuningsteam van UserEcho Client](https://feedback.userecho.com/) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van UserEcho-clients](https://feedback.userecho.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **UserEcho instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer op de sectie **UserEcho instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,33 +126,33 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-userecho-single-sign-on"></a>UserEcho Single Sign-On configureren
+### <a name="configure-userecho-single-sign-on"></a>Eenmalige aanmelding voor UserEcho configureren
 
-1. Meld u in een ander browservenster aan op uw UserEcho-bedrijfssite als beheerder.
+1. Meld u in een ander browser venster aan bij de UserEcho-bedrijfs site als beheerder.
 
-2. Klik op de werkbalk bovenaan op uw gebruikersnaam om het menu uit te vouwen en klik vervolgens op **Instellen**.
+2. Klik in de werk balk bovenaan op uw gebruikers naam om het menu uit te vouwen en klik vervolgens op **instellen**.
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_06.png) 
 
-3. Klik **op Integraties**.
+3. Klik op **integraties**.
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
-4. Klik op **Website**en klik vervolgens op **Eén aanmelding (SAML2).**
+4. Klik op **website**en klik vervolgens op **eenmalige aanmelding (SAML2)**.
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
-5. Voer op de **saml-pagina (Single sign-on)** de volgende stappen uit:
+5. Voer de volgende stappen uit op de pagina voor **eenmalige aanmelding (SAML)** :
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_09.png)
     
-    a. Selecteer **SAML-enabled** **Ja**.
+    a. Als **SAML ingeschakeld**, selecteert u **Ja**.
     
-    b. Url **van aanmelding**plakken , die u hebt gekopieerd van de Azure-portal naar het tekstvak **SAML SSO URL.**
+    b. Plak de **aanmeldings-URL**die u hebt gekopieerd van de Azure Portal naar het TEKSTVAK **SAML SSO URL** .
     
-    c. De **URL van afmelden**plakken , die u hebt gekopieerd van de Azure-portal naar het tekstvak voor de **URL van de externe afmelding.**
+    c. Plak de **Afmeldings-URL**die u hebt gekopieerd van de Azure Portal naar het tekstvak **externe afmeldings-URL** .
     
-    d. Open uw gedownloade certificaat in Kladblok, kopieer de inhoud en plak het vervolgens in het tekstvak **X.509 Certificate.**
+    d. Open het gedownloade certificaat in Klad blok, kopieer de inhoud en plak deze in het tekstvak **X. 509-certificaat** .
     
     e. Klik op **Opslaan**.
 
@@ -164,7 +164,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -174,23 +174,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot UserEcho.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan UserEcho.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens UserEcho**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **UserEcho**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **UserEcho**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **UserEcho**.
 
-    ![De koppeling UserEcho in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling UserEcho in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -200,25 +200,25 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-userecho-test-user"></a>UserEcho-testgebruiker maken
+### <a name="create-userecho-test-user"></a>UserEcho-test gebruiker maken
 
-Het doel van deze sectie is het creëren van een gebruiker genaamd Britta Simon in UserEcho.
+Het doel van deze sectie is het maken van een gebruiker met de naam Julia Simon in UserEcho.
 
-**Voer de volgende stappen uit om een gebruiker genaamd Britta Simon in UserEcho te maken:**
+**Als u een gebruiker met de naam Julia Simon in UserEcho wilt maken, voert u de volgende stappen uit:**
 
-1. Meld u aan bij uw UserEcho-bedrijfssite als beheerder.
+1. Meld u aan bij de UserEcho-bedrijfs site als beheerder.
 
-2. Klik op de werkbalk bovenaan op uw gebruikersnaam om het menu uit te vouwen en klik vervolgens op **Instellen**.
+2. Klik in de werk balk bovenaan op uw gebruikers naam om het menu uit te vouwen en klik vervolgens op **instellen**.
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_06.png)
 
-3. Klik op **Gebruikers**om de sectie **Gebruikers** uit te vouwen.
+3. Klik op **gebruikers**om de sectie **gebruikers** uit te vouwen.
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_10.png)
 
@@ -226,15 +226,15 @@ Het doel van deze sectie is het creëren van een gebruiker genaamd Britta Simon 
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_11.png)
 
-5. Klik **op Een nieuwe gebruiker uitnodigen**.
+5. Klik op **een nieuwe gebruiker uitnodigen**.
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_12.png)
 
-6. Voer **in het** dialoogvenster Een nieuwe gebruiker uitnodigen de volgende stappen uit:
+6. Voer de volgende stappen uit in het dialoog venster **een nieuwe gebruiker uitnodigen** :
    
     ![Eenmalige aanmelding configureren](./media/userecho-tutorial/tutorial_userecho_13.png)
 
-    a. Typ in het tekstvak **Naam** de naam van de gebruiker zoals Britta Simon.
+    a. Typ in het tekstvak **naam** de naam van de gebruiker zoals Julia Simon.
     
     b.  Typ in het tekstvak **Email** het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
     
@@ -244,13 +244,13 @@ Het doel van deze sectie is het creëren van een gebruiker genaamd Britta Simon 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de userecho-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de UserEcho waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel UserEcho in het toegangs venster klikt, moet u automatisch worden aangemeld bij de UserEcho waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

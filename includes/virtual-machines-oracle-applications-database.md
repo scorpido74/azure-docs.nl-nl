@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68361529"
 ---
-### <a name="database-tier"></a>Databaselaag
+### <a name="database-tier"></a>Database laag
 
-De laag Database bevat de database-exemplaren voor de toepassing. De database kan een Oracle DB, Oracle RAC of Oracle Exadata Database-systeem zijn. 
+De data base-laag bevat de data base-exemplaren voor de toepassing. De data base kan een Oracle DB, Oracle RAC of Oracle Exadata data base system zijn. 
 
-Als de keuze is om Oracle DB te gebruiken, kan de database-instantie worden geïmplementeerd op Azure via de Oracle DB-afbeeldingen die beschikbaar zijn op de Azure Marketplace. U ook de interconnect tussen Azure en OCI gebruiken om de Oracle DB te implementeren in een PaaS-model op OCI.
+Als u Oracle DB wilt gebruiken, kan het data base-exemplaar op Azure worden geïmplementeerd via de Oracle DB installatie kopieën die beschikbaar zijn op de Azure Marketplace. U kunt ook de Interconnect tussen Azure en OCI gebruiken om de Oracle DB te implementeren in een PaaS-model op OCI.
 
-Voor Oracle RAC u Oracle RAC implementeren op Azure CloudSimple in iaas-model of in OCI in PaaS-model. Het wordt aanbevolen om een RAC-systeem met twee nodes te gebruiken. 
+Voor Oracle RAC kunt u Oracle RAC implementeren op Azure CloudSimple in IaaS-model of in OCI in het PaaS-model. Het is raadzaam om een RAC-systeem met twee knoop punten te gebruiken. 
 
-Ten slotte, voor Exadata-systemen, gebruik maken van de OCI interconnect en implementeren van de Exadata-systeem in OCI. Het bovenstaande bovenstaande architectuurdiagram toont een Exadata-systeem dat in OCI is geïmplementeerd in twee subnetten.
+Ten slotte gebruikt u voor Exadata-systemen de OCI Interconnect en implementeert u het Exadata-systeem in OCI. In het bovenstaande voor gaande architectuur diagram ziet u een Exadata-systeem dat is geïmplementeerd in OCI over twee subnetten.
 
-Implementeer voor productiescenario's meerdere exemplaren van de database in twee beschikbaarheidszones (als deze worden geïmplementeerd in Azure) of twee beschikbaarheidsdomeinen (in OCI). Gebruik Oracle Active Data Guard om de primaire en stand-by databases te synchroniseren.
+Voor productie scenario's implementeert u meerdere exemplaren van de Data Base over twee beschikbaarheids zones (bij implementatie in Azure) of twee beschik bare domeinen (in OCI). Oracle Active Data Guard gebruiken om de primaire en standby-data bases te synchroniseren.
 
-De databaselaag ontvangt alleen aanvragen van de middelste laag. Het wordt aanbevolen dat u een netwerkbeveiligingsgroep (beveiligingslijst als het implementeren van de database in OCI) instelt om alleen aanvragen toe te staan op poort 1521 vanaf de middelste laag en poort 22 van de bastionserver om administratieve redenen.
+De data base-laag ontvangt alleen aanvragen van de middelste laag. Het is raadzaam om een netwerk beveiligings groep in te stellen (beveiligings lijst als u de data base in OCI implementeert) zodat alleen aanvragen op poort 1521 van de middelste laag en poort 22 van de Bastion-server om administratieve redenen worden toegestaan.
 
-Voor databases die in OCI worden geïmplementeerd, moet een apart virtueel cloudnetwerk worden opgezet met een dynamische routeringgateway (DRG) die is verbonden met uw FastConnect-circuit.
+Voor data bases die zijn geïmplementeerd in OCI, moet een afzonderlijk virtueel Cloud netwerk worden ingesteld met een DRG (Dynamic Routing gateway) die is verbonden met uw FastConnect-circuit.

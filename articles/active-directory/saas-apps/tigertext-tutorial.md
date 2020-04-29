@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met TigerText Secure Messenger | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TigerText Secure Messenger.
+title: 'Zelf studie: integratie Azure Active Directory met TigerText Secure Messenger | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TigerText Secure Mess enger.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67088661"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Zelfstudie: Azure Active Directory-integratie met TigerText Secure Messenger
+# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Zelf studie: integratie Azure Active Directory met TigerText Secure Mess enger
 
-In deze zelfstudie leert u hoe u TigerText Secure Messenger integreert met Azure Active Directory (Azure AD).
+In deze zelf studie leert u hoe u TigerText Secure Mess enger integreert met Azure Active Directory (Azure AD).
 
-De integratie van TigerText Secure Messenger met Azure AD biedt u de volgende voordelen:
+Het integreren van TigerText Secure Mess enger met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot TigerText Secure Messenger.
-* U uw gebruikers automatisch laten inloggen op TigerText Secure Messenger (single sign-on) met hun Azure AD-accounts.
-* U uw accounts beheren op één centrale locatie: de Azure-portal.
+* U kunt beheren in azure AD die toegang heeft tot TigerText Secure Mess enger.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij TigerText Secure Mess enger (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt uw accounts op één centrale locatie beheren: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory voor](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)meer informatie over de integratie van de App Voor software as a service (SaaS) met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van een SaaS-app (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie wilt configureren met TigerText Secure Messenger, hebt u de volgende items nodig:
+Als u Azure AD-integratie met TigerText Secure Mess enger wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Een TigerText Secure Messenger-abonnement met eenmalige aanmelding ingeschakeld.
+* Een Azure AD-abonnement Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Een TigerText Secure Mess enger-abonnement waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureer en test u Azure AD single sign-on in een testomgeving en integreert u TigerText Secure Messenger met Azure AD.
+In deze zelf studie kunt u eenmalige aanmelding voor Azure AD configureren en testen in een test omgeving en TigerText Secure Mess enger integreren met Azure AD.
 
-TigerText Secure Messenger ondersteunt SP-geïnitieerde single sign-on (SSO).
+TigerText Secure Mess enger ondersteunt door SP geïnitieerde eenmalige aanmelding (SSO).
 
-## <a name="add-tigertext-secure-messenger-from-the-azure-marketplace"></a>TigerText Secure Messenger toevoegen vanuit azure marketplace
+## <a name="add-tigertext-secure-messenger-from-the-azure-marketplace"></a>TigerText Secure Mess enger toevoegen vanuit Azure Marketplace
 
-Als u de integratie van TigerText Secure Messenger in Azure AD wilt configureren, moet u TigerText Secure Messenger van de Azure Marketplace toevoegen aan uw lijst met beheerde SaaS-apps:
+Als u de integratie van TigerText Secure Mess enger wilt configureren in azure AD, moet u TigerText Secure Mess enger van Azure Marketplace toevoegen aan uw lijst met beheerde SaaS-apps:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com?azure-portal=true).
 1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
     ![De optie Azure Active Directory](common/select-azuread.png)
@@ -60,65 +60,65 @@ Als u de integratie van TigerText Secure Messenger in Azure AD wilt configureren
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **+ Nieuwe toepassing** boven aan het deelvenster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **+ nieuwe toepassing** boven aan het deel venster.
 
-    ![De optie Nieuwe toepassing](common/add-new-app.png)
+    ![De optie nieuwe toepassing](common/add-new-app.png)
 
-1. Voer **TigerText Secure Messenger**in in het zoekvak . Selecteer **TigerText Secure Messenger**in de zoekresultaten en selecteer **Toevoegen** om de toepassing toe te voegen.
+1. Voer **TigerText Secure Mess enger**in het zoekvak in. Selecteer in de zoek resultaten **TigerText Secure Mess enger**en selecteer **toevoegen** om de toepassing toe te voegen.
 
-    ![TigerText Secure Messenger in de resultatenlijst](common/search-new-app.png)
+    ![Beveiligde Mess enger TigerText in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met TigerText Secure Messenger op basis van een testgebruiker genaamd **Britta Simon**. Voor eenmalige aanmelding moet u een koppeling maken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in TigerText Secure Messenger.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met TigerText Secure Mess enger op basis van een test gebruiker met de naam **Julia Simon**. Als u eenmalige aanmelding wilt gebruiken, moet u een koppeling tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in TigerText Secure Mess enger.
 
-Als u Azure AD single sign-on met TigerText Secure Messenger wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met TigerText Secure Mess enger, moet u de volgende bouw stenen volt ooien:
 
-1. **[Configureer azure AD single sign-on](#configure-azure-ad-single-sign-on)** om uw gebruikers in staat te stellen deze functie te gebruiken.
-1. **[Configureer TigerText Secure Messenger single sign-on](#configure-tigertext-secure-messenger-single-sign-on)** om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-1. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om Azure AD-enkele aanmelding met Britta Simon te testen.
-1. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om Britta Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Maak een TigerText Secure Messenger-testgebruiker,](#create-a-tigertext-secure-messenger-test-user)** zodat er een gebruiker is die Britta Simon heet in TigerText Secure Messenger die is gekoppeld aan de Azure AD-gebruiker britta Simon.
+1. **[Eenmalige aanmelding voor Azure AD configureren](#configure-azure-ad-single-sign-on)** om uw gebruikers in staat te stellen deze functie te gebruiken.
+1. **[Configureer eenmalige aanmelding voor TigerText Secure Mess enger](#configure-tigertext-secure-messenger-single-sign-on)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding voor Azure ad te testen met Julia Simon.
+1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om Julia Simon in staat te stellen om eenmalige aanmelding van Azure ad te gebruiken.
+1. **[Maak een TigerText beveiligde Mess enger-test gebruiker](#create-a-tigertext-secure-messenger-test-user)** , zodat er een gebruiker met de naam Julia Simon in TigerText Secure Mess enger is gekoppeld aan de Azure AD-gebruiker met de naam Julia Simon.
 1. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Ga als volgt te werk om azure AD single sign-on te configureren met TigerText Secure Messenger:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met TigerText Secure Mess enger:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de integratiepagina **van TigerText Secure** **Messenger-toepassingen de**optie Eén aanmelding .
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **beveiligde Mess enger** -toepassings integratie TigerText de optie **eenmalige aanmelding**.
 
-    ![Optie eenmalig aanmelden configureren](common/select-sso.png)
+    ![Optie voor eenmalige aanmelding configureren](common/select-sso.png)
 
-1. Selecteer in het deelvenster **Eenmalige aanmeldingsmethode** de **SAML/WS-Fed-modus** om eenmalige aanmelding in te schakelen.
+1. Selecteer in het deel venster **eenmalige aanmelding selecteren** de optie **SAML/WS-** gegevensinvoermodus om eenmalige aanmelding in te scha kelen.
 
     ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
 
-1. **Selecteer** bewerken (het potloodpictogram) in het deelvenster Eén aanmelding instellen met SAML om het deelvenster **BasisSAML-configuratie** te openen. **Set up Single Sign-On with SAML**
+1. Selecteer in het deel venster **eenmalige aanmelding met SAML instellen** de optie **bewerken** (het potlood pictogram) om het deel venster **basis-SAML-configuratie** te openen.
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Neem in het deelvenster **BasisSAML-configuratie** de volgende stappen:
+1. Voer de volgende stappen uit in het deel venster **basis configuratie van SAML** :
 
-    ![TigerText Secure Messenger-domein en URL's met eenmalige aanmeldingsgegevens](common/sp-identifier.png)
+    ![Informatie over TigerText Secure Mess enger-domein en Url's voor eenmalige aanmelding](common/sp-identifier.png)
 
-    1. Voer in het vak **Aanmelding op URL** een URL in:
+    1. Voer in het vak **AANMELDINGS URL** een URL in:
 
        `https://home.tigertext.com`
 
-    1. Typ in het vak **Id (Entity ID)** een URL met het volgende patroon:
+    1. Typ in het vak **id (Entiteits-ID)** een URL met behulp van het volgende patroon:
 
        `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
 
     > [!NOTE]
-    > De waarde **van de id-id** is niet reëel. Werk deze waarde bij met de werkelijke id. Neem contact op met het [TigerText Secure Messenger-ondersteuningsteam](mailto:prosupport@tigertext.com)om de waarde te verkrijgen. U ook verwijzen naar de patronen die worden weergegeven in het deelvenster **BasisSAML-configuratie** in de Azure-portal.
+    > De **id-waarde (Entiteits-ID)** is niet echt. Werk deze waarde bij met de werkelijke id. Neem contact op met het [ondersteunings team van TigerText Secure Mess enger](mailto:prosupport@tigertext.com)om de waarde op te halen. U kunt ook verwijzen naar de patronen die worden weer gegeven in het deel venster **basis-SAML-configuratie** in de Azure Portal.
 
-1. Selecteer in het deelvenster **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Downloaden** om de **Federation Metadata XML** uit de opgegeven opties te downloaden en op te slaan op uw computer.
+1. Selecteer in het deel venster **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** de optie **downloaden** om de **federatieve meta gegevens-XML** te downloaden uit de opgegeven opties en op uw computer op te slaan.
 
-    ![De optie XML-download met federatiemetagegevens](common/metadataxml.png)
+    ![De optie voor XML-down load voor federatieve meta gegevens](common/metadataxml.png)
 
-1. Kopieer in de sectie **TigerText Secure Messenger** de URL of URL's die u nodig hebt:
+1. Kopieer de URL of Url's die u nodig hebt in de sectie **TigerText Secure Mess enger instellen** :
 
    * **Aanmeldings-URL**
    * **Azure AD-id**
@@ -126,74 +126,74 @@ Ga als volgt te werk om azure AD single sign-on te configureren met TigerText Se
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-tigertext-secure-messenger-single-sign-on"></a>TigerText Secure Messenger-aanmelding configureren
+### <a name="configure-tigertext-secure-messenger-single-sign-on"></a>Eenmalige aanmelding voor TigerText Secure Mess enger configureren
 
-Als u eenmalige aanmelding wilt configureren aan de TigerText Secure Messenger-kant, moet u de gedownloade Federation Metadata XML en de juiste gekopieerde URL's van de Azure-portal naar het [TigerText Secure Messenger-ondersteuningsteam](mailto:prosupport@tigertext.com)verzenden. Het TigerText Secure Messenger-team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden goed is ingesteld.
+Voor het configureren van eenmalige aanmelding op de TigerText beveiligde Mess enger-zijde moet u het gedownloade XML-bestand met federatieve meta gegevens en de juiste gekopieerde Url's van de Azure Portal naar het [TigerText Secure Mess enger ondersteunings team](mailto:prosupport@tigertext.com)verzenden. Het TigerText Secure Mess enger-team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden correct is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in de Azure-portal in het linkerdeelvenster de optie **Azure Active Directory**   > **Users** > **All users All users**.
+1. Selecteer **Azure Active Directory**   > **gebruikers** > in het linkerdeel venster van de Azure Portal**alle gebruikers**.
 
-    ![De opties Gebruikers en 'Alle gebruikers'](common/users.png)
+    ![De opties gebruikers en alle gebruikers](common/users.png)
 
-1. Selecteer boven aan het scherm **+ Nieuwe gebruiker**.
+1. Selecteer boven aan het scherm **+ nieuwe gebruiker**.
 
-    ![Nieuwe gebruikersoptie](common/new-user.png)
+    ![Optie nieuwe gebruiker](common/new-user.png)
 
-1. Ga **in** het deelvenster Gebruiker de volgende stappen uit:
+1. Voer de volgende stappen uit in het deel venster van de **gebruiker** :
 
-    ![Het deelvenster Gebruiker](common/user-properties.png)
+    ![Het deel venster gebruiker](common/user-properties.png)
 
     1. Voer in het vak **Naam****Britta Simon**in.
   
-    1. Voer **in** het vak Gebruikersnaam **De> van BrittaSimon\@\<\< yourcompanydomain in. uitbreiding>**. Bijvoorbeeld, **BrittaSimon\@contoso.com**.
+    1. Voer in het vak **gebruikers naam** **BrittaSimon\@\<yourcompanydomain> in.\< extensie>**. Bijvoorbeeld **BrittaSimon\@contoso.com**.
 
-    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+    1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
 
     1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door hen toegang te verlenen tot TigerText Secure Messenger.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door hen toegang te geven tot TigerText Secure Mess enger.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen** > **Alle toepassingen** > **TigerText Secure Messenger**.
+1. Selecteer in de Azure Portal **bedrijfs toepassingen** > **alle toepassingen** > **TigerText Secure Mess enger**.
 
-    ![Deelvenster Ondernemingstoepassingen](common/enterprise-applications.png)
+    ![Deel venster ondernemings toepassingen](common/enterprise-applications.png)
 
-1. Selecteer **TigerText Secure Messenger**in de lijst met toepassingen .
+1. Selecteer in de lijst toepassingen de optie **TigerText Secure Mess enger**.
 
-    ![TigerText Secure Messenger in de lijst met toepassingen](common/all-applications.png)
+    ![Beveiligde Mess enger TigerText in de lijst met toepassingen](common/all-applications.png)
 
-1. Selecteer in het linkerdeelvenster onder **BEHEREN**de optie **Gebruikers en groepen**.
+1. Selecteer in het linkerdeel venster onder **beheren**de optie **gebruikers en groepen**.
 
-    ![De optie 'Gebruikers en groepen'](common/users-groups-blade.png)
+    ![De optie gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **+ Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het deelvenster **Toewijzing toevoegen.**
+1. Selecteer **+ gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-1. Selecteer **In** het deelvenster Gebruikers en groepen de optie **Britta Simon** in de lijst **Gebruikers** en kies Selecteer Selecteer onder aan het deelvenster **Selecteren.**
+1. Selecteer in het deel venster **gebruikers en groepen** de optie **Julia Simon** in de lijst met **gebruikers** en kies vervolgens **selecteren** onder aan het deel venster.
 
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het deelvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies onder aan het deelvenster **selecteren**.
+1. Als u een waarde voor een rol in de SAML-bevestiging verwacht, selecteert u in het deel venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onder aan het deel venster op **selecteren**.
 
-1. Selecteer **Toewijzing toewijzen** in het deelvenster Toewijzing **toevoegen**.
+1. Selecteer in het deel venster **toewijzing toevoegen** de optie **toewijzen**.
 
-### <a name="create-a-tigertext-secure-messenger-test-user"></a>Een TigerText Secure Messenger-testgebruiker maken
+### <a name="create-a-tigertext-secure-messenger-test-user"></a>Een TigerText Secure Mess enger-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in TigerText Secure Messenger. Werk samen met het [TigerText Secure Messenger-ondersteuningsteam](mailto:prosupport@tigertext.com) om Britta Simon als gebruiker toe te voegen in TigerText Secure Messenger. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in TigerText Secure Mess enger. Werk met het [ondersteunings team van TigerText beveiligde Mess enger](mailto:prosupport@tigertext.com) om Julia Simon toe te voegen als gebruiker in TigerText Secure Mess enger. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie test u uw Azure AD-configuratie met eenmalige aanmelding met de portal Mijn apps.
+In deze sectie test u de configuratie van eenmalige aanmelding voor Azure AD met behulp van de portal mijn apps.
 
-Wanneer u **TigerText Secure Messenger** selecteert in de portal Mijn apps, moet u automatisch worden aangemeld bij het TigerText Secure Messenger-abonnement waarvoor u eenmalige aanmelding hebt ingesteld. Zie Apps openen en gebruiken [op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over de portal Mijn apps.
+Wanneer u **TigerText Secure Mess enger** selecteert in de portal mijn apps, moet u automatisch worden aangemeld bij het TigerText Secure Mess enger-abonnement waarvoor u eenmalige aanmelding hebt ingesteld. Zie [apps openen en gebruiken in de portal mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over de portal mijn apps.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Lijst met zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

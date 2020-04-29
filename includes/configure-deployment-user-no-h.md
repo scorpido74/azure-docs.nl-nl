@@ -9,10 +9,10 @@ ms.date: 06/14/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4e699707db02de07f3d1ebb7d1fa8d0575a10aa3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67836933"
 ---
 FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een *implementatie gebruiker*. Wanneer u de implementatie gebruiker hebt geconfigureerd, kunt u deze gebruiken voor al uw Azure-implementaties. De gebruikers naam en het wacht woord voor implementatie op account niveau verschillen van de referenties van uw Azure-abonnement. 

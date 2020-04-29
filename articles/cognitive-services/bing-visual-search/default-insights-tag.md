@@ -1,7 +1,7 @@
 ---
-title: Tag standaardinzichten - Bing Visual Search
+title: Standaard-Insights-tag-Bing Visual Search
 titleSuffix: Azure Cognitive Services
-description: Bevat informatie over de standaardinzichten die Bing Visual Search retourneert over een afbeelding.
+description: Bevat informatie over de standaard inzichten die Bing Visual Search over een installatie kopie wordt geretourneerd.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60510119"
 ---
-# <a name="default-insights-tag"></a>Standaardlabel voor inzichten
+# <a name="default-insights-tag"></a>Standaard-Insights-tag
 
-De standaardpaginatag is de `displayName` tag waarbij het veld is ingesteld op een lege tekenreeks. In het volgende voorbeeld wordt de mogelijke lijst met standaardinzichten (acties) weergegeven. De lijst met acties die het antwoord bevat, is afhankelijk van de afbeelding. En voor elke actie kan de lijst met eigenschappen per afbeelding verschillen, dus controleer of de eigenschap bestaat voordat u deze probeert te gebruiken.
+De standaard-Insights-tag is het label `displayName` waarbij het veld is ingesteld op een lege teken reeks. In het volgende voor beeld ziet u de mogelijke lijst met standaard inzichten (acties). De lijst met acties die het antwoord bevat, is afhankelijk van de afbeelding. Voor elke actie kan de lijst met eigenschappen per afbeelding verschillen, dus controleer of de eigenschap bestaat voordat u deze gebruikt.
 
 ```json
 {
@@ -98,9 +98,9 @@ De standaardpaginatag is de `displayName` tag waarbij het veld is ingesteld op e
 }
 ```
 
-## <a name="pagesincluding-insight"></a>Pagina'sInclusief inzicht
+## <a name="pagesincluding-insight"></a>PagesIncluding inzicht
 
-Het inzicht PagesIncluding bevat een lijst met webpagina's die deze afbeelding bevatten. Het is eigenlijk een `Image` lijst met `hostPageUrl` objecten en het veld bevat de URL naar de webpagina die de afbeelding bevat. Zie bijvoorbeeld het [voorbeeld van PagesIncluding insight](./bing-insights-usage.md#pagesincluding-insight-example).
+De PagesIncluding Insight bevat een lijst met webpagina's die deze installatie kopie bevatten. Het is in feite een lijst `Image` met objecten en het `hostPageUrl` veld bevat de URL naar de webpagina die de afbeelding bevat. Zie bijvoorbeeld [PagesIncluding Insight-voor beeld](./bing-insights-usage.md#pagesincluding-insight-example).
 
 ```json
       {
@@ -139,7 +139,7 @@ Het inzicht PagesIncluding bevat een lijst met webpagina's die deze afbeelding b
 
 ## <a name="shoppingsources-insight"></a>ShoppingSources inzicht
 
-Het ShoppingSources-inzicht biedt een lijst met websites waar de gebruiker het item in de afbeelding kan kopen. De lijst met aanbiedingen bevat de URL van de webpagina waar de gebruiker het object, de prijs van het object en beoordeling of beoordeling van details kan kopen. Zie bijvoorbeeld [ShoppingSources voorbeeld](./bing-insights-usage.md#shoppingsources-insight-example).
+De ShoppingSources Insight bevat een lijst met websites waar de gebruiker het item kan kopen dat in de afbeelding wordt weer gegeven. De lijst met aanbiedingen bevat de URL van de webpagina waar de gebruiker het item kan kopen, de prijs van het item, de beoordeling of de details van de beoordeling. Zie voor beeld van het gebruik van [ShoppingSources](./bing-insights-usage.md#shoppingsources-insight-example).
 
 ```json
       {
@@ -166,9 +166,9 @@ Het ShoppingSources-inzicht biedt een lijst met websites waar de gebruiker het i
       }
 ```
 
-## <a name="moresizes-insight"></a>MeerSizes inzicht
+## <a name="moresizes-insight"></a>MoreSizes inzicht
 
-Het MoreSizes-inzicht identificeert het aantal formaten (groter of kleiner) van de `availableSizesCount` afbeelding die Bing op internet heeft gevonden (zie het veld):
+In het MoreSizes Insight wordt het aantal grootten (groter of kleiner) van de installatie kopie aangegeven die Bing heeft gevonden op internet `availableSizesCount` (Zie het veld):
 
 ```json
       {
@@ -203,7 +203,7 @@ Het MoreSizes-inzicht identificeert het aantal formaten (groter of kleiner) van 
 
 ## <a name="visualsearch-insight"></a>VisualSearch inzicht
 
-Het VisualSearch-inzicht biedt een lijst met afbeeldingen die visueel vergelijkbaar zijn met de oorspronkelijke afbeelding (bevat inhoud die vergelijkbaar is met de inhoud die in de oorspronkelijke afbeelding wordt weergegeven). Zie bijvoorbeeld [VisualSearch insight voorbeeld.](./bing-insights-usage.md#visualsearch-insight-example)
+Het VisualSearch inzicht bevat een lijst met afbeeldingen die visueel lijken op de oorspronkelijke installatie kopie (bevat inhoud die vergelijkbaar is met de inhoud die wordt weer gegeven in de oorspronkelijke afbeelding). Zie bijvoorbeeld [VisualSearch Insight-voor beeld](./bing-insights-usage.md#visualsearch-insight-example).
 
 ```json
       {
@@ -243,7 +243,7 @@ Het VisualSearch-inzicht biedt een lijst met afbeeldingen die visueel vergelijkb
 
 ## <a name="recipes-insight"></a>Recepten inzicht
 
-Het inzicht Recepten biedt een lijst met webpagina's met een recept voor het maken van het voedsel dat in de afbeelding wordt weergegeven. Zie bijvoorbeeld het [voorbeeld van Recepteninzicht](./bing-insights-usage.md#recipes-insight-example).
+De recepten inzicht biedt een lijst met webpagina's die een recept bevatten voor het maken van de levens middelen die in de installatie kopie worden weer gegeven. Zie bijvoorbeeld [recepten Insight](./bing-insights-usage.md#recipes-insight-example)-voor beeld.
 
 ```json
       {
@@ -278,7 +278,7 @@ Het inzicht Recepten biedt een lijst met webpagina's met een recept voor het mak
 
 ## <a name="imagebyid-insight"></a>ImageById inzicht
 
-Het ImageById-inzicht `Image` biedt een object van de afbeelding waarvoor u om inzichten hebt gevraagd:
+De ImageById Insight biedt een `Image` object van de installatie kopie waarvoor u inzichten hebt aangevraagd:
 
 ```json
       {
@@ -313,7 +313,7 @@ Het ImageById-inzicht `Image` biedt een object van de afbeelding waarvoor u om i
 
 ## <a name="productvisualsearch-insight"></a>ProductVisualSearch inzicht
 
-Het ProductVisualSearch-inzicht biedt een lijst met afbeeldingen van producten die visueel lijken op producten die in de oorspronkelijke afbeelding worden weergegeven. Het `insightsMetadata` veld kan informatie bevatten over aanbiedingen waar u het product en de prijs van het product kopen.
+Het ProductVisualSearch inzicht bevat een lijst met beelden van producten die visueel lijken op de producten die in de oorspronkelijke afbeelding worden weer gegeven. Het `insightsMetadata` veld bevat mogelijk informatie over aanbiedingen waarin u het product en de prijs van het product kunt kopen.
 
 ```json
       {
@@ -375,9 +375,9 @@ Het ProductVisualSearch-inzicht biedt een lijst met afbeeldingen van producten d
       }
 ```
 
-## <a name="relatedsearches-insight"></a>Inzicht in gerelateerdezoekopdrachten
+## <a name="relatedsearches-insight"></a>RelatedSearches inzicht
 
-Het inzicht RelatedSearches biedt een lijst met gerelateerde zoekopdrachten die door anderen zijn gemaakt (op basis van de zoektermen van andere gebruikers). Zie bijvoorbeeld het [inzicht van RelatedSearches.](./bing-insights-usage.md#relatedsearches-insight-example)
+Het RelatedSearches inzicht bevat een lijst met verwante Zoek opdrachten die door anderen zijn gemaakt (op basis van zoek termen van andere gebruikers). Zie bijvoorbeeld [RelatedSearches Insight-voor beeld](./bing-insights-usage.md#relatedsearches-insight-example).
 
 ```json
       {
@@ -398,9 +398,9 @@ Het inzicht RelatedSearches biedt een lijst met gerelateerde zoekopdrachten die 
       }
 ```
 
-## <a name="documentlevelsuggestions-insight"></a>Inzicht in DocumentLevelSuggestions
+## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions inzicht
 
-Het documentlevelsuggesties-inzicht biedt een lijst met voorgestelde zoektermen op basis van de inhoud van de afbeelding:
+De DocumentLevelSuggestions Insight bevat een lijst met voorgestelde zoek termen op basis van de inhoud van de afbeelding:
 
 ```json
       {
@@ -423,6 +423,6 @@ Het documentlevelsuggesties-inzicht biedt een lijst met voorgestelde zoektermen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk [voorbeelden van het gebruik van Bing-inzichten](bing-insights-usage.md) om te zien hoe Bing de visuele inzichten kan weergeven.
+Bekijk [voor beelden van het gebruik van Bing Insights](bing-insights-usage.md) om te zien hoe Bing de visuele inzichten kan weer geven.
 
-Om snel aan de slag te gaan met je eerste aanvraag, zie de quickstarts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Als u snel aan de slag wilt met uw eerste aanvraag, raadpleegt u Quick starts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node. js](quickstarts/nodejs.md) | [python](quickstarts/python.md).

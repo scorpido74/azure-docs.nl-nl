@@ -9,14 +9,14 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68780206"
 ---
-1. Open de pagina voor uw virtuele netwerkgateway. Er zijn meerdere manieren om ernaar te navigeren. U naar de gateway navigeren door naar **Naam van uw VNet-> Overzicht -> Verbonden apparaten te gaan -> naam van uw gateway.**
-2. Klik op de pagina voor de gateway op **Verbindingen**. Klik bovenaan de pagina Verbindingen op **+ Toevoegen** om de pagina **Verbinding toevoegen** te openen.
+1. Open de pagina voor de gateway van uw virtuele netwerk. Er zijn meerdere manieren om ernaar te navigeren. U kunt naar de gateway gaan door te gaan naar de **naam van uw VNet-> overzicht: > verbonden apparaten: > naam van uw gateway**.
+2. Op de pagina voor de gateway klikt u op **verbindingen**. Klik bovenaan de pagina Verbindingen op **+ Toevoegen** om de pagina **Verbinding toevoegen** te openen.
 
    ![Site-naar-Site-verbinding maken](./media/vpn-gateway-add-site-to-site-connection-portal-include/configure-site-to-site-connection.png)
 3. Op de pagina **Verbinding toevoegen** configureert u de waarden die nodig zijn om verbinding te maken.

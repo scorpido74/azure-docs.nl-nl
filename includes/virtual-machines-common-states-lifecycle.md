@@ -9,22 +9,22 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175974"
 ---
-Azure Virtual Machines (VM's) gaan door verschillende statussen die kunnen worden gecategoriseerd in *inrichtings-* en energiestatussen. *power* Het doel van dit artikel is om deze toestanden te beschrijven en specifiek te benadrukken wanneer klanten worden gefactureerd bijvoorbeeld gebruik. 
+Azure Virtual Machines (Vm's) passeren verschillende statussen die kunnen worden ingedeeld in *inrichting* en *energie* status. Het doel van dit artikel is om deze statussen te beschrijven en te markeren wanneer klanten worden gefactureerd voor het gebruik van een exemplaar. 
 
 ## <a name="power-states"></a>Energiestatussen
 
-De energiestatus vertegenwoordigt de laatst bekende status van de VM.
+De energie status vertegenwoordigt de laatste bekende status van de virtuele machine.
 
-![VM-powerstatediagram](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
+![Energie status diagram van de VM](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
-In de volgende tabel vindt u een beschrijving van elke instantiestatus en wordt aangegeven of deze bijvoorbeeld wordt gefactureerd.
+De volgende tabel bevat een beschrijving van elke instantie status en geeft aan of deze in rekening wordt gebracht voor het gebruik van exemplaren of niet.
 
 <table>
 <tr>
@@ -35,15 +35,15 @@ Status
 Beschrijving
 </th>
 <th>
-Facturering van instantiegebruik
+Facturering van exemplaar gebruik
 </th>
 </tr>
 <tr>
 <td>
-<p><b>Beginnen</b></p>
+<p><b>Ingang</b></p>
 </td>
 <td>
-<p>VM wordt opgestart.</p>
+<p>De VM wordt opgestart.</p>
 <code>"statuses": [<br>
    {<br>
       "code": "PowerState/starting",<br>
@@ -61,7 +61,7 @@ Facturering van instantiegebruik
 <p><b>Wordt uitgevoerd</b></p>
 </td>
 <td>
-<p>Normale werkstatus voor een virtuele machine</p>
+<p>Normale werk status voor een virtuele machine</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/running",<br>
@@ -79,7 +79,7 @@ Facturering van instantiegebruik
 <p><b>Stoppen</b></p>
 </td>
 <td>
-<p>Dit is een overgangsstaat. Wanneer voltooid, wordt het weergegeven als **Gestopt**.</p>
+<p>Dit is een overgangs status. Als deze functie is voltooid, wordt deze weer gegeven als **gestopt**.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopping",<br>
@@ -97,8 +97,8 @@ Facturering van instantiegebruik
 <p><b>Gestopt</b></p>
 </td>
 <td>
-<p>De VM is uitgeschakeld vanuit het besturingssysteem van de gast of met behulp van de PowerOff API's.</p>
-<p>Hardware wordt nog steeds toegewezen aan de VM en het blijft op de host. </p>
+<p>De virtuele machine is afgesloten vanuit het gast besturingssysteem of met behulp van de uitgeschakeld-Api's.</p>
+<p>Er wordt nog steeds hardware toegewezen aan de virtuele machine en deze blijft op de host. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopped",<br>
@@ -116,7 +116,7 @@ Facturering van instantiegebruik
 <p><b>Vrijgeven</b></p>
 </td>
 <td>
-<p>Overgangsstaat. Wanneer de VM is voltooid, wordt deze weergegeven als **Deallocated**.</p>
+<p>Overgangs status. Als de VM is voltooid, wordt deze weer gegeven als **opgeheven**.</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocating",<br>
@@ -126,7 +126,7 @@ Facturering van instantiegebruik
  ]</code><br>
 </td>
 <td>
-<p><b>Niet gefactureerd&#42;</b></p>
+<p><b>Niet-gefactureerde&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -134,7 +134,7 @@ Facturering van instantiegebruik
 <p><b>Toewijzing ongedaan gemaakt</b></p>
 </td>
 <td>
-<p>De VM is gestopt en uit de host verwijderd. </p>
+<p>De virtuele machine is gestopt en verwijderd van de host. </p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocated",<br>
@@ -151,23 +151,23 @@ Facturering van instantiegebruik
 </table>
 
 
-&#42;Sommige Azure-bronnen, zoals schijven en netwerken, brengen kosten in rekening. Softwarelicenties op de instantie brengen geen kosten met zich mee.
+&#42;sommige Azure-resources, zoals schijven en netwerken, worden er kosten in rekening gebracht. Voor software licenties op het exemplaar worden geen kosten in rekening gebracht.
 
-## <a name="provisioning-states"></a>Voorzieningsstaten
+## <a name="provisioning-states"></a>Inrichtings status
 
-Een inrichtingsstatus is de status van een door de gebruiker geïnitieerde, besturingsvlakbewerking op de VM. Deze statussen staan los van de energiestatus van een vm.
+Een inrichtings status is de status van een door de gebruiker geïnitieerde, besturings vlak bewerking op de virtuele machine. Deze statussen zijn gescheiden van de energie status van een virtuele machine.
 
-- **Maken** – VM-creatie.
+- **Maken** : VM maken.
 
-- **Update** – werkt het model voor een bestaande VM bij. Sommige niet-modelwijzigingen in VM, zoals Start/Opnieuw starten, vallen ook onder de update.
+- **Update** : Hiermee wordt het model voor een bestaande virtuele machine bijgewerkt. Sommige niet-model wijzigingen voor de VM, zoals starten/opnieuw opstarten, vallen ook onder update.
 
-- **Verwijderen** – VM verwijderen.
+- **Verwijderen** : VM verwijderen.
 
-- **Deallocate** – is waar een VM wordt gestopt en verwijderd uit de host. Het deallocating van een VM wordt beschouwd als een update, dus het zal provisioning staten met betrekking tot bijwerken weer te geven.
+- **Toewijzing opheffen** : is de locatie waar een virtuele machine wordt gestopt en verwijderd van de host. Het ongedaan maken van de toewijzing van een virtuele machine wordt beschouwd als een update, zodat de inrichtings status van het bijwerken wordt weer gegeven.
 
 
 
-Hier volgen de overgangsbewerkingsstaten nadat het platform een door de gebruiker geïnitieerde actie heeft geaccepteerd:
+Dit zijn de overgangs statussen nadat het platform een door de gebruiker gestarte actie heeft geaccepteerd:
 
 <br>
 
@@ -210,7 +210,7 @@ Hier volgen de overgangsbewerkingsstaten nadat het platform een door de gebruike
 </tr>
 <tr>
 <td width="162">
-<p><b>Verwijderen</b></p>
+<p><b>Verwijder</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -224,11 +224,11 @@ Hier volgen de overgangsbewerkingsstaten nadat het platform een door de gebruike
 </tr>
 <tr>
 <td width="162">
-<p><b>OS-provisioningstaten</b></p>
+<p><b>Inrichtings status van besturings systeem</b></p>
 </td>
 <td width="366">
-<p>Als een VM is gemaakt met een OS-afbeelding en niet met een gespecialiseerde afbeelding, kunnen volgende substaten worden waargenomen:</p>
-<p>1. <b>OSProvisioningProgress</b> &ndash; De VM wordt uitgevoerd en de installatie van gast-OS is in volle gang. <p /> 
+<p>Als een virtuele machine wordt gemaakt met een installatie kopie van een besturings systeem en niet met een gespecialiseerde installatie kopie, kunnen de volgende Substatussen worden waargenomen:</p>
+<p>1. <b>OSProvisioningInprogress</b> &ndash; de virtuele machine wordt uitgevoerd en de installatie van het gast besturingssysteem wordt uitgevoerd. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Hier volgen de overgangsbewerkingsstaten nadat het platform een door de gebruike
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; Kortstondige staat. De VM schakelt snel over naar **Succes,** tenzij er extensies moeten worden geïnstalleerd. Het installeren van extensies kan tijd kosten. <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; korte status. De virtuele machine wordt snel overgezet naar **geslaagd** , tenzij er uitbrei dingen moeten worden geïnstalleerd. Het installeren van extensies kan enige tijd duren. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
@@ -244,15 +244,15 @@ Hier volgen de overgangsbewerkingsstaten nadat het platform een door de gebruike
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>Opmerking:</b>OS Provisioning kan **overgaan** naar Mislukt als er een OS-fout optreedt of als het besturingssysteem niet op tijd wordt geïnstalleerd. Klanten worden gefactureerd voor de geïmplementeerde VM op de infrastructuur.</p>
+<p><b>Opmerking</b>: het inrichten van het besturings systeem kan worden overgezet naar **mislukt** als er een fout in het besturings systeem optreedt of als het besturings systeem niet op tijd wordt geïnstalleerd. Klanten worden gefactureerd voor de geïmplementeerde virtuele machine op de infra structuur.</p>
 </td>
 </tr>
 </table>
 
 
-Zodra de bewerking is voltooid, wordt de VM overgezet naar een van de volgende statussen:
+Zodra de bewerking is voltooid, verandert de virtuele machine in een van de volgende statussen:
 
-- **Geslaagd** – de door de gebruiker geïnitieerde acties zijn voltooid.
+- **Geslaagd** : de door de gebruiker geïnitieerde acties zijn voltooid.
 
     ```
   "statuses": [ 
@@ -267,7 +267,7 @@ Zodra de bewerking is voltooid, wordt de VM overgezet naar een van de volgende s
 
  
 
-- **Mislukt** – vertegenwoordigt een mislukte bewerking. Raadpleeg de foutcodes voor meer informatie en mogelijke oplossingen.
+- **Mislukt** : geeft een mislukte bewerking aan. Raadpleeg de fout codes voor meer informatie en mogelijke oplossingen.
 
     ```
   "statuses": [
@@ -283,11 +283,11 @@ Zodra de bewerking is voltooid, wordt de VM overgezet naar een van de volgende s
 
 
 
-## <a name="vm-instance-view"></a>VM-instantieweergave
+## <a name="vm-instance-view"></a>Weer gave van VM-instantie
 
-De API voor instantieweergave biedt vm-statusgegevens. Zie de [API-documentatie voor virtuele machines - Instantieweergave](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) voor meer informatie.
+De instantie weergave-API biedt informatie over de status van de virtuele machine. Zie de documentatie over de [virtual machines-instantie weergave-](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) API voor meer informatie.
 
-Azure Resources explorer biedt een eenvoudige gebruikersinterface voor het weergeven van de vm-status: [Resource Explorer](https://resources.azure.com/).
+Azure resource Explorer biedt een eenvoudige gebruikers interface voor het weer geven van de actieve status van de VM: [resource Explorer](https://resources.azure.com/).
 
-Inprovisioning-statussen zijn zichtbaar op VM-eigenschappen en instantieweergave. Power states zijn beschikbaar in de voorbeeldweergave van VM. 
+De inrichtings statussen zijn zichtbaar in de VM-eigenschappen en de weer gave van exemplaren. Energie statussen zijn beschikbaar in de instantie weergave van de virtuele machine. 
 

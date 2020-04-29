@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 63c524880a47c6e519649bd871a6216d6faeefce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69907028"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
@@ -88,7 +88,7 @@ public class AltTranslation {
 }
 ```
 
-Voeg deze regels toe aan de klasse `AltTranslation`. Ten eerste worden de abonnementssleutel en het eindpunt afgelezen op basis van omgevingsvariabelen. Dan zult u merken dat `api-version`samen met de , twee `url`extra parameters zijn toegevoegd aan de . Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
+Voeg deze regels toe aan de klasse `AltTranslation`. Eerst worden de abonnements sleutel en het eind punt gelezen van omgevings variabelen. U ziet dat samen met de `api-version`nog twee aanvullende para meters zijn toegevoegd aan de. `url` Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,7 +96,7 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/dictionary/lookup?api-version=3.0&from=en&to=es";
 ```
 
-Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Een client maken en een aanvraag samenstellen
 
@@ -231,7 +231,7 @@ gradle run
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

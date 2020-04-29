@@ -9,32 +9,32 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67175998"
 ---
 ## <a name="update-resources"></a>Resources bijwerken
 
-Er zijn een aantal beperkingen op wat kan worden bijgewerkt. De volgende items kunnen worden bijgewerkt: 
+Er zijn enkele beperkingen ten aanzien van wat er kan worden bijgewerkt. De volgende items kunnen worden bijgewerkt: 
 
-Gedeelde afbeeldingsgalerie:
+Galerie met gedeelde afbeeldingen:
 - Beschrijving
 
-Afbeeldingsdefinitie:
-- Aanbevolen vCPU's
+Definitie van installatie kopie:
+- Aanbevolen Vcpu's
 - Aanbevolen geheugen
 - Beschrijving
-- Einddatum van het einde van de levensduur
+- Einde van de levens duur
 
-Afbeeldingsversie:
+Versie van installatie kopie:
 - Aantal regionale replica's
-- Doelregio's
-- Uitsluiting van de laatste
-- Einddatum van het einde van de levensduur
+- Doel regio's
+- Uitsluiting van laatste
+- Einde van de levens duur
 
-Als u replicagebieden wilt toevoegen, verwijdert u de door de bron beheerde afbeelding niet. De bronbeheerde afbeelding is nodig voor het repliceren van de afbeeldingsversie naar extra regio's. 
+Als u van plan bent om replica regio's toe te voegen, moet u de door de bron beheerde installatie kopie niet verwijderen. De door de bron beheerde installatie kopie is nodig voor het repliceren van de installatie kopie versie naar extra regio's. 
 
 Als u de beschrijving van een galerie wilt bijwerken, gebruikt u [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery).
 
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-In dit voorbeeld ziet u hoe [u Update-AzGalleryImageDefinition kunt](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) gebruiken om de einddatum voor onze afbeeldingsdefinitie bij te werken.
+In dit voor beeld ziet u hoe u [Update-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) gebruikt om de einddatum datum bij te werken voor de definitie van de installatie kopie.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-In dit voorbeeld ziet u hoe [u Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) gebruiken om uit te sluiten dat deze afbeeldingsversie als *de nieuwste* afbeelding wordt gebruikt.
+In dit voor beeld ziet u hoe u met [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) de versie van de installatie kopie kunt uitsluiten van gebruik als de *nieuwste* afbeelding.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -68,7 +68,7 @@ Update-AzGalleryImageVersion `
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u resources verwijderde, moet u beginnen met het laatste item in de geneste bronnen - de afbeeldingsversie. Zodra versies zijn verwijderd, u de afbeeldingsdefinitie verwijderen. U de galerie pas verwijderen als alle bronnen eronder zijn verwijderd.
+Bij het verwijderen van resources moet u beginnen met het laatste item in de geneste resources, de versie van de installatie kopie. Zodra de versies zijn verwijderd, kunt u de definitie van de installatie kopie verwijderen. U kunt de galerie pas verwijderen als alle onderliggende resources zijn verwijderd.
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"

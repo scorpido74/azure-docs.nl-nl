@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69907044"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -43,9 +43,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="get-subscription-information-from-environment-variables"></a>Abonnementsinformatie ophalen uit omgevingsvariabelen
+## <a name="get-subscription-information-from-environment-variables"></a>Abonnements gegevens ophalen van omgevings variabelen
 
-Voeg de volgende `Program` regels toe aan de klasse. Deze regels lezen uw abonnementssleutel en eindpunt uit omgevingsvariabelen en er wordt een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -82,9 +82,9 @@ static void AltTranslation()
 }
 ```
 
-## <a name="construct-the-uri"></a>De URI bouwen
+## <a name="construct-the-uri"></a>De URI maken
 
-Voeg deze regels toe aan de functie `AltTranslation`. U zult merken dat `api-version`samen met de , twee extra parameters zijn gedeclareerd. Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
+Voeg deze regels toe aan de functie `AltTranslation`. U ziet dat samen met de `api-version`nog twee aanvullende para meters zijn gedeclareerd. Deze parameters worden gebruikt om de vertaling van de invoer en uitvoer in te stellen. In dit voorbeeld zijn het Engels (`en`) en Spaans (`es`).
 
 ```csharp
 string route = "/dictionary/lookup?api-version=3.0";
@@ -146,7 +146,7 @@ Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
 
-Voeg `PrettyPrint` toe om opmaak toe te voegen aan uw JSON-antwoord:
+Toevoegen `PrettyPrint` om opmaak toe te voegen aan uw JSON-antwoord:
 ```csharp
 static string PrettyPrint(string s)
 {
@@ -154,7 +154,7 @@ static string PrettyPrint(string s)
 }
 ```
 
-Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
@@ -208,7 +208,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

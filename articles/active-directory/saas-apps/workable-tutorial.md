@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Werkbaar | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met behulp van pas | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Workable.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71091038"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workable"></a>Zelfstudie: Azure Active Directory-integratie met Werkbaar
+# <a name="tutorial-azure-active-directory-integration-with-workable"></a>Zelf studie: integratie Azure Active Directory met behulp van werkbaar
 
 In deze zelfstudie leert u Workable integreren met Azure Active Directory (Azure AD).
 De integratie van Workable met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van Workable met Azure AD heeft de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -103,17 +103,17 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Workabl
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
+4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
 
     ![Informatie over eenmalige aanmelding voor domeinen en URL's van Workable](common/both-replyurl.png)
 
-    Typ in het tekstvak **URL beantwoorden** een URL met het volgende patroon:`https://www.workable.com/auth/saml/<SUBDOMAIN>/callback`
+    Typ in het tekstvak **antwoord-URL** een URL met het volgende patroon:`https://www.workable.com/auth/saml/<SUBDOMAIN>/callback`
 
-5. Klik **op Extra URL's instellen** en voer de volgende stap uit als u de toepassing wilt configureren in de gestarte **SP-modus:**
+5. Klik op **aanvullende url's instellen** en voer de volgende stap uit als u de toepassing in de modus door **SP** gestart wilt configureren:
 
     ![Informatie over eenmalige aanmelding voor domeinen en URL's van Workable](common/both-signonurl.png)
 
-    Typ een URL in het tekstvak **AANmeldings-URL:**`https://www.workable.com/sso/signin`
+    Typ een URL in het tekstvak **URL voor aanmelding** :`https://www.workable.com/sso/signin`
 
     > [!NOTE]
     > De waarde van de antwoord-URL is niet de echte waarde. Werk de waarde van de antwoord-URL bij met de werkelijke antwoord-URL. Neem contact op met het [klantondersteuningsteam van Workable](mailto:support@workable.com) (Engelstalig) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -142,7 +142,7 @@ Als u eenmalige aanmelding voor Workable wilt inschakelen, neemt u contact op me
 
 3. Afmeldings-URL
 
-Zodra Single Sign On is ingeschakeld, laat uw werkbare accountmanager u dit weten en u [de SSO-pagina van Workable](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro) gebruiken om u aan te melden met uw subdomein Werkbare account.
+Als eenmalige aanmelding is ingeschakeld, laat uw beschik bare account beheerder u weten en kunt u [de SSO-pagina van de website](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro) gebruiken om u aan te melden met het subdomein van uw betredende account.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -152,7 +152,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -162,11 +162,11 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld `brittasimon\@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld BrittaSimon@contoso.com.
+    b. Typ `brittasimon\@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld BrittaSimon@contoso.com.
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -188,9 +188,9 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van eenmal
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -208,6 +208,6 @@ Wanneer u op de tegel Workable in het toegangsvenster klikt, zou u automatisch m
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

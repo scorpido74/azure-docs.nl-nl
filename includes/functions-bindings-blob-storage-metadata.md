@@ -10,22 +10,22 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69642134"
 ---
-De blobtrigger biedt verschillende metagegevenseigenschappen. Deze eigenschappen kunnen worden gebruikt als onderdeel van bindende expressies in andere bindingen of als parameters in uw code. Deze waarden hebben dezelfde semantiek als het [CloudBlob-type.](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet)
+De BLOB-trigger biedt verschillende eigenschappen van meta gegevens. Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Deze waarden hebben dezelfde semantiek als het type [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) .
 
 |Eigenschap  |Type  |Beschrijving  |
 |---------|---------|---------|
-|`BlobTrigger`|`string`|Het pad naar de activerende blob.|
-|`Uri`|`System.Uri`|De URI van de blob voor de primaire locatie.|
-|`Properties` |[BlobEigenschappen](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|De systeemeigenschappen van de blob. |
-|`Metadata` |`IDictionary<string,string>`|De door de gebruiker gedefinieerde metagegevens voor de blob.|
+|`BlobTrigger`|`string`|Het pad naar de activerings-blob.|
+|`Uri`|`System.Uri`|De URI van de BLOB voor de primaire locatie.|
+|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|De systeem eigenschappen van de blob. |
+|`Metadata` |`IDictionary<string,string>`|De door de gebruiker gedefinieerde meta gegevens voor de blob.|
 
-In de volgende C#-script- en JavaScript-voorbeelden wordt bijvoorbeeld het pad naar de triggerende blob bijlogboeken geplaatst, inclusief de container:
+In het volgende C#-script en Java script-voor beelden wordt bijvoorbeeld het pad naar de activerings-BLOB vastgelegd, met inbegrip van de container:
 
 ```csharp
 public static void Run(string myBlob, string blobTrigger, ILogger log)

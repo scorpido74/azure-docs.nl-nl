@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: ca2aed5689fe31f47166428503abb9483fc406b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176179"
 ---
-Gegevens die door deze bewakingsoplossing worden verzameld, zijn beschikbaar op de pagina Azure **Monitor-overzicht** in de Azure-portal. Open deze pagina in het menu **Azure Monitor** door te klikken op **Meer** onder de sectie **Inzichten.** Elke oplossing wordt vertegenwoordigd door een tegel. Klik op een tegel voor meer gedetailleerde gegevens verzameld door die oplossing.
+Gegevens die door deze bewakings oplossing worden verzameld, zijn beschikbaar op de pagina **overzicht** van Azure monitor in de Azure Portal. Open deze pagina in het menu **Azure monitor** door te klikken op **meer** onder het gedeelte **inzichten** . Elke oplossing wordt weer gegeven door een tegel. Klik op een tegel voor meer gedetailleerde gegevens die door deze oplossing zijn verzameld.

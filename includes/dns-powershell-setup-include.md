@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67133518"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Azure PowerShell voor Azure DNS instellen
@@ -38,7 +38,7 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-De uitvoer van de bovenstaande opdrachten moet aantonen dat de versie van AzureRM.Dns een 4.1.0- of hogere versie is en voor AzureRM.Network een 5.4.0- of hogere versie is.  
+In de uitvoer van de bovenstaande opdrachten moet worden aangegeven dat de versie van AzureRM. DNS 4.1.0 of hoger is en voor AzureRM. Network 5.4.0 of hoger.  
 
 Als uw systeem met een lagere versie werkt, kunt u de meest recente versie van Azure PowerShell installeren of bovenstaande modules downloaden en installeren uit de PowerShell Gallery. Gebruik daarvoor de koppelingen hierboven naast de moduleversies. U kunt deze vervolgens installeren met behulp van de onderstaande opdrachten. Beide modules zijn vereist en zijn volledig achterwaarts compatibel. 
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Aanmelden bij uw Azure-account
 
-Open de PowerShell-console en maak verbinding met uw account. Zie [Aanmelden bij AzureRM voor](/powershell/azure/azurerm/authenticate-azureps)meer informatie.
+Open de PowerShell-console en maak verbinding met uw account. Zie [Aanmelden met AzureRM](/powershell/azure/azurerm/authenticate-azureps)voor meer informatie.
 
 ```powershell
 Connect-AzureRmAccount

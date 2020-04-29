@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70393823"
 ---
 ## <a name="set-up"></a>Instellen
 
-### <a name="create-a-translator-text-resource"></a>Een bron voor vertalertekst maken
+### <a name="create-a-translator-text-resource"></a>Een Translator Text resource maken
 
-Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een bron voor vertalertekst met de [Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Translator Text met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
 
-* Ontvang een [proefsleutel](https://azure.microsoft.com/try/cognitive-services) die 7 dagen gratis geldig is. Na het aanmelden is het beschikbaar op de Azure-website.
-* Een bestaande bron weergeven in de [Azure-portal](https://portal.azure.com/).
+* Ontvang een [proef versie](https://azure.microsoft.com/try/cognitive-services) die 7 dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de Azure-website.
+* Bekijk een bestaande resource in de [Azure Portal](https://portal.azure.com/).
 
-Nadat u een sleutel van uw proefabonnement of resource hebt opgehaald, maakt u twee [omgevingsvariabelen:](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`- De abonnementssleutel voor uw translator text-bron.
-* `TRANSLATOR_TEXT_ENDPOINT`- Het wereldwijde eindpunt voor vertalertekst. Gebruik `https://api.cognitive.microsofttranslator.com/`.
+* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`-De abonnements sleutel voor uw Translator Text-resource.
+* `TRANSLATOR_TEXT_ENDPOINT`-Het globale eind punt voor Translator Text. Gebruik `https://api.cognitive.microsofttranslator.com/`.

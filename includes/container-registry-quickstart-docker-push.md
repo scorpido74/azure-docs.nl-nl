@@ -9,10 +9,10 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176591"
 ---
 ## <a name="push-image-to-registry"></a>Installatiekopie pushen naar register
@@ -23,7 +23,7 @@ Als u een installatiekopie naar een Azure Container Registry wilt pushen, moet u
 docker pull hello-world
 ```
 
-Voordat u een installatiekopie naar het register kunt pushen, moet u deze taggen met de volledige gekwalificeerde naam van de ACR-aanmeldingsserver. De naam van de inlogserver staat in de * \<opmaaknaam\>.azurecr.io* (alle kleine letters), bijvoorbeeld *mycontainerregistry007.azurecr.io*.
+Voordat u een installatiekopie naar het register kunt pushen, moet u deze taggen met de volledige gekwalificeerde naam van de ACR-aanmeldingsserver. De naam van de aanmeldings server bevindt zich in de indeling * \<REGI ster-name\>. azurecr.io* (alle kleine letters), bijvoorbeeld *mycontainerregistry007.azurecr.io*.
 
 Label de installatiekopie met de opdracht [docker tag][docker-tag]. Vervang `<acrLoginServer>` door de aanmeldingsnaam van het ACR-exemplaar.
 

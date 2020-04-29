@@ -8,10 +8,10 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61330684"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Gegevens automatisch laten verlopen met de Azure Cosmos DB-API voor MongoDB
@@ -74,7 +74,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 TTL per document kan worden geactiveerd met de Azure Cosmos DB-API voor MongoDB.
 
-![Schermafbeelding van de ttl-functieactivering per document in Portal](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+![Scherm afbeelding van de functie voor het activeren van TTL per document in de portal](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Gegevens in Azure Cosmos DB automatisch laten verlopen met TTL](../cosmos-db/time-to-live.md)

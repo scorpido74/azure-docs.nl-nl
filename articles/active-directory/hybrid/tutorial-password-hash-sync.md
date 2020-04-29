@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Één AD-forest integreren in Azure met BEHULP van PHS'
+title: 'Zelf studie: één AD-forest integreren in azure met behulp van PHS'
 description: In deze zelfstudie ziet u hoe u een omgeving met een hybride identiteit instelt met behulp van synchronisatie van wachtwoord-hashes.
 services: active-directory
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66474018"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Zelfstudie: Één AD-forest integreren met behulp van wachtwoordhashsynchronisatie (PHS)
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Zelf studie: een enkele AD-forest met wacht woord-hash synchroniseren integreren (PHS)
 
 ![Maken](media/tutorial-password-hash-sync/diagram.png)
 
-In de volgende zelfstudie u een hybride identiteitsomgeving maken met behulp van wachtwoordhashsynchronisatie.  Deze omgeving kan vervolgens worden gebruikt voor het testen of voor het meer vertrouwd raken met hoe een hybride identiteit werkt.
+De volgende zelf studie begeleidt u bij het maken van een hybride identiteits omgeving met wachtwoord hash-synchronisatie.  Deze omgeving kan vervolgens worden gebruikt om te testen of om vertrouwd te raken met de werking van een Hybrid Identity.
 
 ## <a name="prerequisites"></a>Vereisten
 Dit zijn de vereisten voor het voltooien van deze zelfstudie
@@ -82,8 +82,8 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
 7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
-8. **Selecteer Aangepast: Windows alleen installeren (geavanceerd)**
-9. Klik **op Volgende**
+8. Selecteer **aangepast: alleen Windows installeren (Geavanceerd)**
+9. Klik op **volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.
 
 ## <a name="install-active-directory-prerequisites"></a>Vereisten voor de installatie van Active Directory Domain Services
@@ -185,7 +185,7 @@ Nu moeten we een Azure Active Directory-tenant maken, zodat we onze gebruikers k
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
 ![Maken](media/tutorial-password-hash-sync/create1.png)</br>
-5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
+5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Een globale beheerder maken in Azure Active Directory
@@ -226,7 +226,7 @@ We gaan nu controleren of de gebruikers die aanwezig waren in onze on-premises a
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
 
-1. Blader naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Bladeren naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik het wachtwoord waarmee de gebruiker zich on-premises aanmeldt.</br>
    ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)</br>
 
@@ -237,4 +237,4 @@ U hebt nu een omgeving met een hybride identiteit ingesteld die u kunt gebruiken
 
 - [Hardware en vereisten](how-to-connect-install-prerequisites.md) 
 - [Snelle instellingen](how-to-connect-install-express.md)
-- [Synchronisatie van wachtwoordhash](how-to-connect-password-hash-synchronization.md)|
+- [Wachtwoord hash-synchronisatie](how-to-connect-password-hash-synchronization.md)|

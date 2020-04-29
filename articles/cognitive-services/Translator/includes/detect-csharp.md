@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 0c263ed1f18ceaa2db976632ea31b9fe1eb47a93
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69907183"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -32,11 +32,11 @@ Daarna moet u Json.Net installeren. Voer vanuit de map van het project het volge
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
-## <a name="select-the-c-language-version"></a>De C#-taalversie selecteren
+## <a name="select-the-c-language-version"></a>De versie van de C#-taal selecteren
 
-Deze quickstart vereist C# 7.1 of hoger. Er zijn een paar manieren om de C#-versie voor uw project te wijzigen. In deze handleiding laten we u zien `detect-sample.csproj` hoe u het bestand aanpassen. Zie [De C#-taalversie selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version)voor alle beschikbare opties, zoals het wijzigen van de taal in Visual Studio.
+Voor deze Quick start is C# 7,1 of hoger vereist. Er zijn een aantal manieren om de C#-versie voor uw project te wijzigen. In deze hand leiding wordt uitgelegd hoe u het `detect-sample.csproj` bestand kunt aanpassen. Voor alle beschik bare opties, zoals het wijzigen van de taal in Visual Studio, raadpleegt [u de taal versie van C# selecteren](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Open uw project `detect-sample.csproj`en open . Zorg ervoor `LangVersion` dat dit is ingesteld op 7.1 of hoger. Als er geen eigenschapsgroep voor de taalversie is, voegt u de volgende regels toe:
+Open het project en open `detect-sample.csproj`het. Zorg ervoor dat `LangVersion` is ingesteld op 7,1 of hoger. Als er geen eigenschaps groep voor de taal versie is, voegt u deze regels toe:
 
 ```xml
 <PropertyGroup>
@@ -57,9 +57,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 ```
 
-## <a name="create-classes-for-the-json-response"></a>Klassen maken voor de JSON-respons
+## <a name="create-classes-for-the-json-response"></a>Klassen maken voor het JSON-antwoord
 
-Vervolgens gaan we een klasse maken die wordt gebruikt bij het deserialiseren van de JSON-respons die wordt geretourneerd door de Translator Text API.
+We gaan nu een klasse maken die wordt gebruikt bij het deserialiseren van het JSON-antwoord dat door de Translator Text-API is geretourneerd.
 
 ```csharp
 /// <summary>
@@ -82,9 +82,9 @@ public class AltTranslations
 }
 ```
 
-## <a name="get-subscription-information-from-environment-variables"></a>Abonnementsinformatie ophalen uit omgevingsvariabelen
+## <a name="get-subscription-information-from-environment-variables"></a>Abonnements gegevens ophalen van omgevings variabelen
 
-Voeg de volgende `Program` regels toe aan de klasse. Deze regels lezen uw abonnementssleutel en eindpunt uit omgevingsvariabelen en er wordt een fout gegenereerd als u problemen ondervindt.
+Voeg de volgende regels toe aan `Program` de klasse. Met deze regels worden de abonnements sleutel en het eind punt van omgevings variabelen gelezen en wordt er een fout gegenereerd als u problemen ondervindt.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -109,7 +109,7 @@ static Program()
 
 ## <a name="create-a-function-to-detect-the-source-texts-language"></a>Een functie maken om de taal van de brontekst te detecteren
 
-Maak `Program` in de klasse `DetectTextRequest()`een functie met de naam . Deze klasse bevat de code die wordt gebruikt om de resource Detect aan te roepen en het resultaat weer te geven op de console.
+Maak in `Program` de-klasse een functie met `DetectTextRequest()`de naam. Deze klasse bevat de code die wordt gebruikt om de resource Detect aan te roepen en het resultaat weer te geven op de console.
 
 ```csharp
 static public async Task DetectTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
@@ -121,7 +121,7 @@ static public async Task DetectTextRequest(string subscriptionKey, string endpoi
 }
 ```
 
-## <a name="serialize-the-detect-request"></a>Serialiseer het detectieverzoek
+## <a name="serialize-the-detect-request"></a>De detectie aanvraag serialiseren
 
 Vervolgens moet u het JSON-object maken en serialiseren dat de tekst bevat waarop u taaldetectie wilt toepassen.
 
@@ -187,11 +187,11 @@ foreach (DetectResult o in deserializedOutput)
 }
 ```
 
-Als u een multiserviceabonnement voor Cognitive Services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` parameters voor uw aanvraag opnemen. [Meer informatie over authenticeren met het multiservice-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag parameters toevoegen. Meer [informatie over verificatie met het multi-service-abonnement](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-In de laatste stap roept u `DetectTextRequest()` aan in de functie `Main`. Zoek `static void Main(string[] args)` en vervang deze door deze code:
+In de laatste stap roept u `DetectTextRequest()` aan in de functie `Main`. Zoek `static void Main(string[] args)` en vervang deze door de volgende code:
 
 ```csharp
 static async Task Main(string[] args)
@@ -216,10 +216,10 @@ dotnet run
 
 ## <a name="sample-response"></a>Voorbeeldantwoord
 
-Nadat u het monster hebt uitgevoerd, ziet u het volgende afgedrukt op de terminal:
+Nadat u het voor beeld hebt uitgevoerd, ziet u het volgende afgedrukt op Terminal:
 
 > [!NOTE]
-> Zoek de land/regio afkorting in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+> Zoek de afkorting van het land/de regio in deze [lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```bash
 The detected language is 'en'. Confidence is: 1.
@@ -237,7 +237,7 @@ Translation supported: True.
 Transliteration supported: False.
 ```
 
-Dit bericht is opgebouwd uit de ruwe JSON, die er als volgt uit zal zien:
+Dit bericht is gebaseerd op de onbewerkte JSON, die er als volgt uitziet:
 
 ```json
 [  
@@ -270,7 +270,7 @@ Denk eraan dat u eventuele vertrouwelijke informatie, zoals abonnementssleutels,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing om alles te begrijpen wat u doen met de Translator Text API.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator Text-API kunt doen.
 
 > [!div class="nextstepaction"]
 > [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

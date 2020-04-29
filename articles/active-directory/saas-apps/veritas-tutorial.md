@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Veritas Enterprise Vault.cloud SSO | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Veritas Enterprise Vault.cloud SSO.
+title: 'Zelf studie: integratie Azure Active Directory met de Veritas Enter prise-kluis. Cloud-SSO | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de Veritas Enter prise-kluis. Cloud-SSO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 43094cabab3cfc93e0dffa59a15867d01b036d38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67087606"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Zelfstudie: Azure Active Directory-integratie met Veritas Enterprise Vault.cloud SSO
+# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Zelf studie: integratie Azure Active Directory met de Veritas Enter prise-kluis. Cloud-SSO
 
-In deze zelfstudie leert u hoe u Veritas Enterprise Vault.cloud SSO integreert met Azure Active Directory (Azure AD).
-De integratie van Veritas Enterprise Vault.cloud SSO met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u de Veritas Enter prise-kluis integreert. Cloud-SSO met Azure Active Directory (Azure AD).
+Het integreren van de Veritas Enter prise-kluis. Cloud-SSO met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Veritas Enterprise Vault.cloud SSO.
-* U uw gebruikers automatisch laten aanmelden bij Veritas Enterprise Vault.cloud SSO (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot de Veritas Enter prise-kluis. Cloud-SSO.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij de Veritas Enter prise-kluis. Cloud-SSO (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met Veritas Enterprise Vault.cloud SSO, hebt u de volgende items nodig:
+Als u Azure AD-integratie wilt configureren met de Veritas Enter prise-kluis. Cloud-SSO, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Veritas Enterprise Vault.cloud SSO-abonnement met één aanmelding
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Veritas Enter prise-kluis. Cloud SSO-abonnement voor eenmalige aanmelding ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Veritas Enterprise Vault.cloud SSO ondersteunt **DOOR SP** geïnitieerde SSO
+* Veritas Enter prise-kluis. Cloud-SSO ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>Veritas Enterprise Vault.cloud SSO toevoegen vanuit de galerie
+## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>De Veritas Enter prise-kluis toevoegen. Cloud-SSO vanuit de galerie
 
-Als u de integratie van Veritas Enterprise Vault.cloud SSO in Azure AD wilt configureren, moet u Veritas Enterprise Vault.cloud SSO vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de Veritas Enter prise-kluis wilt configureren. Cloud-SSO in azure AD, moet u de Veritas Enter prise-kluis. Cloud-SSO van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Veritas Enterprise Vault.cloud SSO vanuit de galerie toe te voegen:**
+**Voer de volgende stappen uit om Veritas Enter prise kluis. Cloud-SSO uit de galerie toe te voegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Veritas Enterprise Vault.cloud SSO in Azure AD wilt conf
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ Veritas Enterprise **Vault.cloud SSO**in het zoekvak , selecteer **Veritas Enterprise Vault.cloud SSO** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak de tekst **Veritas Enter prise kluis. Cloud-SSO**, selecteer **Veritas Enter prise kluis. Cloud-SSO** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Veritas Enterprise Vault.cloud SSO in de resultatenlijst](common/search-new-app.png)
+     ![Veritas Enter prise-kluis. Cloud-SSO in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Veritas Enterprise Vault.cloud SSO op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Veritas Enterprise Vault.cloud SSO.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met de Veritas Enter prise-kluis. Cloud-SSO op basis van een test gebruiker met de naam **Julia Simon**.
+Voor eenmalige aanmelding werkt een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de Veritas Enter prise-kluis. Cloud-SSO moet worden ingesteld.
 
-Als u Azure AD single sign-on wilt configureren en testen met Veritas Enterprise Vault.cloud SSO, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met de Veritas Enter prise-kluis. Cloud-SSO, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Veritas Enterprise Vault.cloud SSO Single Sign-On](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Configureer de Veritas Enter prise-kluis. eenmalige aanmelding voor Cloud-SSO](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak De Testgebruiker van Veritas Enterprise Vault.cloud SSO](#create-veritas-enterprise-vaultcloud-sso-test-user)** - om een tegenhanger van Britta Simon in Veritas Enterprise Vault.cloud SSO te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een Veritas Enter prise-kluis. Cloud-SSO testen gebruiker](#create-veritas-enterprise-vaultcloud-sso-test-user)** : voor een soort Julia Simon in de Veritas Enter prise-kluis. Cloud-SSO die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om azure AD single sign-on te configureren met Veritas Enterprise Vault.cloud SSO:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met de Veritas Enter prise-kluis. Cloud-SSO:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de integratiepagina **van Veritas Enterprise Vault.cloud SSO-toepassingen** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de **Veritas Enter prise-kluis** de pagina voor de integratie van de Cloud SSO **-** toepassing.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,11 +103,11 @@ Voer de volgende stappen uit om azure AD single sign-on te configureren met Veri
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over Veritas Enterprise Vault.cloud SSO-domein en URL's met één aanmelding](common/sp-identifier-reply.png)
+    ![Veritas Enter prise-kluis. Cloud-SSO-domein en Url's eenmalige aanmelding](common/sp-identifier-reply.png)
 
-    a. Typ in het tekstvak **AANmeldings-URL** een URL met het volgende patroon:`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
 
-    b. Gebruik in het vak **Id** de URL volgens het datacenter:
+    b. In het vak **id** gebruikt u de URL volgens het Data Center:
 
     | Datacenter| URL |
     |----------|----|
@@ -115,7 +115,7 @@ Voer de volgende stappen uit om azure AD single sign-on te configureren met Veri
     | Europa | `https://auth.ams.archivecloud.net` |
     | Azië en Stille Oceaan| `https://auth.syd.archivecloud.net`|
 
-    c. Gebruik in het tekstvak **URL beantwoorden** de URL volgens het datacenter:
+    c. Gebruik in het tekstvak **antwoord-URL** de URL volgens het Data Center:
 
     | Datacenter| URL |
     |----------|----|
@@ -124,13 +124,13 @@ Voer de volgende stappen uit om azure AD single sign-on te configureren met Veri
     | Azië en Stille Oceaan| `https://auth.syd.archivecloud.net`|
 
     > [!NOTE]
-    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [het Ondersteuningsteam van Veritas Enterprise Vault.cloud SSO Client](https://www.veritas.com/support/.html) om deze waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Neem contact op met de [Veritas Enter prise-kluis. Cloud SSO client support team](https://www.veritas.com/support/.html) om deze waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Veritas Enterprise Vault.cloud SSO** de juiste URL(s) naar uw behoefte.
+6. Op de **Veritas Enter prise-kluis instellen. Cloud-SSO** sectie Kopieer de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -140,9 +140,9 @@ Voer de volgende stappen uit om azure AD single sign-on te configureren met Veri
 
     c. Afmeldings-URL
 
-### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>Veritas Enterprise Vault.cloud SSO Single Sign-On configureren
+### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>De Veritas Enter prise-kluis configureren. eenmalige aanmelding voor Cloud SSO
 
-Als u eenmalige aanmelding wilt configureren aan de SSO-kant van **Veritas Enterprise Vault.cloud,** moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het Ondersteuningsteam van Veritas Enterprise Vault.cloud SSO](https://www.veritas.com/support/.html)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Voor het configureren van eenmalige aanmelding op een **Veritas Enter prise-kluis. Cloud-SSO** -zijde moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar de [Veritas Enter PRISE-kluis. Cloud SSO-ondersteunings team](https://www.veritas.com/support/.html). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -152,7 +152,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -162,23 +162,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Veritas Enterprise Vault.cloud SSO.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot de Veritas Enter prise-kluis. Cloud-SSO.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer vervolgens Veritas **Enterprise Vault.cloud SSO**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Veritas Enter PRISE kluis. Cloud-SSO**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer Veritas Enterprise **Vault.cloud SSO**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Veritas Enter prise kluis. Cloud-SSO**.
 
-    ![De Veritas Enterprise Vault.cloud SSO-koppeling in de lijst toepassingen](common/all-applications.png)
+    ![De Veritas Enter prise-kluis. Cloud-SSO-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -188,27 +188,27 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>Gebruikers van Veritas Enterprise Vault.cloud SSO-testgebruikers maken
+### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>Een Veritas Enter prise-kluis maken. Cloud-SSO test gebruiker
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Veritas Enterprise Vault.cloud SSO. Werk samen met [het Ondersteuningsteam van Veritas Enterprise Vault.cloud SSO](https://www.veritas.com/support/.html) om de gebruikers toe te voegen in het Veritas Enterprise Vault.cloud SSO-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in de Veritas Enter prise-kluis. Cloud-SSO. Werk met de [Veritas Enter prise-kluis. Cloud SSO-ondersteunings team](https://www.veritas.com/support/.html) om de gebruikers toe te voegen in de Veritas Enter prise-kluis. Cloud-SSO-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de SSO-tegel Veritas Enterprise Vault.cloud in het Access Panel klikt, moet u automatisch worden aangemeld bij de Veritas Enterprise Vault.cloud SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Veritas Enter prise-kluis klikt. Cloud SSO-tegel in het toegangs venster, moet u automatisch worden aangemeld bij de Veritas Enter prise-kluis. Cloud-SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

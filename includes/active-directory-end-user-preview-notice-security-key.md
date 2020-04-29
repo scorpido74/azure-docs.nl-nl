@@ -9,13 +9,13 @@ ms.date: 07/03/2019
 ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: 4e2fec5ab8ab8057fb6f6b4db06804664226041e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68386484"
 ---
 |  |
 |--|
-|Het gebruik van een beveiligingssleutel als wachtwoordloze verificatiemethode is momenteel openbaar. Als wat je op je scherm ziet niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat je beheerder deze functie nog niet heeft ingeschakeld. Totdat deze functie is ingeschakeld, moet u een andere verificatiemethode kiezen op de pagina [ **Beveiligingsgegevens** ](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview). Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.|
+|Het gebruik van een beveiligings sleutel als een verificatie methode met een wacht woord is momenteel beschikbaar als open bare preview. Als datgene wat u op uw scherm ziet, niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat uw beheerder nog geen functie heeft ingeschakeld. Totdat deze functie is ingeschakeld, moet u een andere verificatie methode kiezen op de [pagina **beveiligings gegevens** ](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview). Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
 |

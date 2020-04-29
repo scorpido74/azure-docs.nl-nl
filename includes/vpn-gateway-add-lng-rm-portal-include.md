@@ -9,16 +9,16 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9c18a2c74d03a636a0865f3008eb421ab8d7412d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68781442"
 ---
 1. Klik in de portal op **+Een resource maken**.
 2. In het zoekvak typt u **Lokale netwerkgateway**. Druk vervolgens op **Enter** om te zoeken. Er wordt dan een lijst met resultaten geretourneerd. Klik op **Lokale netwerkgateway** om de pagina te openen en klik op de knop **Maken** om de pagina **Lokale netwerkgateway maken** te openen.
 
-   ![De lokale netwerkgateway maken](./media/vpn-gateway-add-lng-rm-portal-include/local-network-gateway.png "De lokale netwerkgateway maken")
+   ![De lokale netwerk gateway maken](./media/vpn-gateway-add-lng-rm-portal-include/local-network-gateway.png "De lokale netwerkgateway maken")
 
 3. Op de **pagina Lokale netwerkgateway maken** geeft u de waarden voor uw lokale netwerkgateway op.
 
@@ -30,4 +30,4 @@ ms.locfileid: "68781442"
    - **Resourcegroep:** selecteer de resourcegroep die u wilt gebruiken. U kunt een nieuwe resourcegroep maken of een resourcegroep selecteren die u al hebt gemaakt.
    - **Locatie:** selecteer de locatie waarin dit object wordt gemaakt. U kunt dezelfde locatie selecteren als die van uw VNet, maar dat is niet vereist.
 
-4. Wanneer u klaar bent met het opgeven van de waarden, klikt u op de knop **Maken** om de gateway te maken.
+4. Wanneer u klaar bent met het opgeven van de waarden, klikt u op de knop **maken** om de gateway te maken.
