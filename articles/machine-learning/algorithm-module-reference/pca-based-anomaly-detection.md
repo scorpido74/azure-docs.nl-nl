@@ -1,7 +1,7 @@
 ---
-title: 'PCA-gebaseerde anomaliedetectie: naslaginformatie over modules'
+title: 'Anomalie detectie op basis van PCA: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de pca-gebaseerde anomaliedetectiemodule om een anomaliedetectiemodel te maken op basis van de Principal Component Analysis (PCA).
+description: Meer informatie over het gebruik van de op PCA gebaseerde anomalie detectie module voor het maken van een anomalie detectie model op basis van Principal component Analysis (PCA).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,86 +10,86 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 0672b9769feae65c73a6f752a268968a7bad9e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502982"
 ---
-# <a name="pca-based-anomaly-detection"></a>PcA-gebaseerde anomaliedetectie
+# <a name="pca-based-anomaly-detection"></a>Anomaliedetectie op basis van PCA
 
-In dit artikel wordt beschreven hoe u de **pca-gebaseerde anomaliedetectiemodule** gebruiken in Azure Machine Learning-ontwerper (preview), om een anomaliedetectiemodel te maken op basis van hoofdcomponentanalyse (PCA).
+In dit artikel wordt beschreven hoe u de module voor **anomalie detectie op basis van PCA** in azure machine learning Designer (preview) gebruikt om een anomalie detectie model te maken op basis van Principal component ANALYSIS (PCA).
 
-Deze module helpt u een model te bouwen in scenario's waarin het gemakkelijk is om trainingsgegevens van één klasse te verkrijgen, zoals geldige transacties, maar moeilijk om voldoende monsters van de beoogde afwijkingen te verkrijgen. 
+Deze module helpt u bij het bouwen van een model in scenario's waarin het eenvoudig is om trainings gegevens uit één klasse te verkrijgen, zoals geldige trans acties, maar moeilijk voldoende voor beelden van de doel afwijkingen te verkrijgen. 
 
-Bijvoorbeeld, om frauduleuze transacties op te sporen, heb je vaak niet genoeg voorbeelden van fraude om op te trainen, maar heb je veel voorbeelden van goede transacties. De **PCA-gebaseerde anomaliedetectiemodule** lost het probleem op door beschikbare functies te analyseren om te bepalen wat een "normale" klasse is en afstandsstatistieken toe te passen om gevallen te identificeren die afwijkingen vertegenwoordigen. Hiermee u een model trainen met behulp van bestaande onevenwichtige gegevens.
+Als u bijvoorbeeld frauduleuze trans acties wilt detecteren, hebt u vaak niet voldoende voor beelden van fraude voor het trainen op, maar u hebt veel voor beelden van goede trans acties. De module voor **anomalie detectie op basis van PCA** lost het probleem op door de beschik bare functies te analyseren om te bepalen wat een ' normale ' klasse vormt, en het Toep assen van afstands waarden om cases te identificeren die afwijkingen vertegenwoordigen. Zo kunt u een model trainen met bestaande, niet-sluitende gegevens.
 
-## <a name="more-about-principal-component-analysis"></a>Meer informatie over principal component analysis
+## <a name="more-about-principal-component-analysis"></a>Meer informatie over het analyseren van hoofd onderdelen
 
-*Principal Component Analysis*, die vaak wordt afgekort tot PCA, is een gevestigde techniek in machine learning. PCA wordt vaak gebruikt in verkennende gegevensanalyse omdat het de innerlijke structuur van de gegevens onthult en de variantie in de gegevens verklaart.
+*Analyse van Principal-onderdelen*, die regel matig wordt AFGEKORT tot PCA, is een gevestigde techniek in machine learning. PCA wordt vaak gebruikt in verkennende gegevens analyse, omdat het de interne structuur van de gegevens onthult en de variantie in de gegevens verklaart.
 
-PCA werkt door het analyseren van gegevens die meerdere variabelen bevatten. Het zoekt naar correlaties tussen de variabelen en bepaalt de combinatie van waarden die het beste verschillen in resultaten vastlegt. Deze gecombineerde functiewaarden worden gebruikt om een compactere functieruimte te creëren, de *belangrijkste componenten.*
+PCA werkt met het analyseren van gegevens die meerdere variabelen bevatten. Er wordt gezocht naar correlaties tussen de variabelen en bepaalt de combi natie van waarden die de beste verschillen in resultaten vastleggen. Deze gecombineerde functie waarden worden gebruikt voor het maken van een compactere functie ruimte die de *belangrijkste onderdelen*wordt genoemd.
 
-Voor anomaliedetectie wordt elke nieuwe invoer geanalyseerd en het anomaliedetectiealgoritme berekent de projectie op de eigenvectoren, samen met een genormaliseerde reconstructiefout. De genormaliseerde fout wordt gebruikt als de anomaliescore. Hoe hoger de fout, hoe afwijkender de instantie is.
+Voor afwijkings detectie wordt elke nieuwe invoer geanalyseerd en de afwijkings detectie algoritme berekent de projectie op de eigenvectors, samen met een genormaliseerde reconstructie fout. De genormaliseerde fout wordt gebruikt als afwijkings Score. Hoe hoger de fout, hoe meer afwijkend het exemplaar is.
 
-Zie deze documenten voor meer informatie over hoe PCA werkt en over de implementatie voor anomaliedetectie:
+Raadpleeg de volgende artikelen voor meer informatie over hoe PCA werkt en over de implementatie van anomalie detectie:
 
-- [Een gerandomiseerd algoritme voor hoofdcomponentanalyse.](https://arxiv.org/abs/0809.2274) Rokhlin, Szlan en Tygert
+- [Een wille keurig algoritme voor het analyseren van Principal-onderdelen](https://arxiv.org/abs/0809.2274). Rokhlin, Szlan en Tygert
 
-- [Het vinden van structuur met willekeur: Probabilistic Algoritmen voor het construeren van benaderende Matrix Decomposities](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF download). Halko, Martinsson en Tropp.
+- [Structuur zoeken met wille keurigheid: Probabilistic-algoritmen voor het samen stellen van geschatte matrix ontledingen](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF-down load). Halko, Martinsson en Tropp.
 
-## <a name="how-to-configure-pca-anomaly-detection"></a>PcA-anomaliedetectie configureren
+## <a name="how-to-configure-pca-anomaly-detection"></a>De anomalie detectie van de PCA configureren
 
-1. Voeg de **pca-gebaseerde anomaliedetectiemodule** toe aan uw pijplijn in de ontwerper. U vindt deze module in de categorie **Anomaliedetectie.**
+1. Voeg de module voor **afwijkings detectie op basis van PCA** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden in de categorie **anomalie detectie** .
 
-2. Klik in het rechterdeelvenster van de **pca-gebaseerde anomaliedetectiemodule** op de optie **Trainingsmodus** en geef aan of u het model wilt trainen met behulp van een specifieke set parameters of een parametersweep wilt gebruiken om de beste parameters te vinden.
+2. Klik in het rechterdeel venster van de module voor **anomalie detectie op basis van PCA** op de optie **trainings modus** en geef aan of u het model wilt trainen met een specifieke set para meters, of gebruik een parameter opruiming om de beste para meters te vinden.
 
-    - **Eén parameter:** selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden op als argumenten.
+    - **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden als argumenten op.
 
-3. **Aantal onderdelen dat u wilt gebruiken in PCA:** geef het aantal uitvoerfuncties of onderdelen op dat u wilt uitvoeren.
+3. **Aantal onderdelen dat moet worden gebruikt in PCA**: Geef het aantal uitvoer functies of onderdelen op dat u wilt uitvoeren.
 
-    De beslissing van hoeveel componenten op te nemen is een belangrijk onderdeel van het experiment ontwerp met behulp van PCA. Algemene richtlijnen zijn dat u niet hetzelfde aantal PCA-componenten moet opnemen als er variabelen zijn. In plaats daarvan moet u beginnen met een kleiner aantal componenten en deze verhogen totdat aan bepaalde criteria is voldaan.
+    Het besluit hoeveel onderdelen u moet opnemen is een belang rijk onderdeel van het ontwerp van het experiment met behulp van PCA. Algemene richt lijnen zijn dat u niet hetzelfde aantal PCA-onderdelen moet gebruiken als er variabelen zijn. In plaats daarvan moet u beginnen met een kleiner aantal onderdelen en deze verg Roten totdat aan sommige criteria wordt voldaan.
 
-    De beste resultaten worden verkregen wanneer het aantal uitvoercomponenten kleiner is **dan** het aantal functiekolommen dat beschikbaar is in de gegevensset.
+    De beste resultaten worden verkregen wanneer het aantal uitvoer onderdelen kleiner is **dan** het aantal functie kolommen dat beschikbaar is in de gegevensset.
 
-4. Geef de hoeveelheid oversampling op die moet worden uitgevoerd tijdens gerandomiseerde PCA-training. Bij anomaliedetectieproblemen maakt onevenwichtige gegevens het moeilijk om standaard PCA-technieken toe te passen. Door een bepaalde hoeveelheid oversampling op te geven, u het aantal doelinstanties verhogen.
+4. Geef op hoeveel oversteek proeven moeten worden uitgevoerd tijdens wille keurige PCA-trainingen. In het geval van anomalie detectie problemen is het moeilijk om standaard PCA-technieken toe te passen. Als u een aantal oversteek proeven opgeeft, kunt u het aantal doel instanties verhogen.
 
-    Als u er 1 opgeeft, wordt er geen oversampling uitgevoerd. Als u een waarde opgeeft die hoger is dan 1, worden extra voorbeelden gegenereerd om het model te trainen.
+    Als u 1 opgeeft, wordt er geen oversteek proef uitgevoerd. Als u een waarde opgeeft die hoger is dan 1, worden extra voor beelden gegenereerd voor het maken van het model.
 
-    Er zijn twee opties, afhankelijk van of u een parameter sweep gebruikt of niet:
+    Er zijn twee opties, afhankelijk van of u een para meter-sweep gebruikt of niet:
 
-    - **Oversamplingparameter voor gerandomiseerde PCA**: Typ één geheel getal dat de verhouding van oversampling van de minderheidsklasse ten opzichte van de normale klasse vertegenwoordigt. (Beschikbaar bij het gebruik van de **trainingsmethode voor één parameter.)**
+    - **Oversampling para meter voor wille keurige PCA**: Typ een enkel geheel getal dat de verhouding van de oversteek proef van de minderheids klasse op de normale klasse vertegenwoordigt. (Beschikbaar wanneer u de **Single para meter** -Trainings methode gebruikt.)
 
     > [!NOTE]
-    > U de oversamplede gegevensset niet weergeven. Zie [Technische notities voor](#technical-notes)meer informatie over hoe oversampling wordt gebruikt met PCA.
+    > U kunt de oversteeke gegevensset niet weer geven. Zie [technische opmerkingen](#technical-notes)voor meer informatie over het gebruik van oversteek proeven met PCA.
 
-5. **Invoerfunctie gemiddelde normalisatie inschakelen:** Selecteer deze optie om alle invoerfuncties te normaliseren tot een gemiddelde van nul. Normalisatie of schalen naar nul wordt over het algemeen aanbevolen voor PCA, omdat het doel van PCA is om de variantie tussen variabelen te maximaliseren.
+5. **Invoer functie gemiddelde normalisatie inschakelen**: Selecteer deze optie om alle invoer functies te normaliseren tot een gemiddelde van nul. Normalisatie of schalen naar nul wordt meestal aanbevolen voor PCA, omdat het doel van de PCA is om de variantie van variabelen te maximaliseren.
 
-     Deze optie is standaard ingeschakeld. Schakel deze optie uit als waarden al zijn genormaliseerd met een andere methode of schaal.
+     Deze optie is standaard ingeschakeld. Schakel deze optie uit als er al waarden zijn genormaliseerd met een andere methode of schaal.
 
-6. Verbind een gecodeerde trainingsgegevensset en een van de trainingsmodules:
+6. Verbind een gelabelde trainings gegevensset en een van de trainings modules:
 
-    - Als u de optie **De trainermodus maken** instelt op **Eén parameter,** gebruikt u de module [Treinanomaliedetectiemodel.](train-anomaly-detection-model.md)
+    - Als u de optie **trainers modus maken** instelt op **één para meter**, gebruikt u de module [anomalie detectie model](train-anomaly-detection-model.md) .
 
-7. Verzend de pijplijn.
+7. Verzend de pijp lijn.
 
 ## <a name="results"></a>Resultaten
 
-Wanneer de training is voltooid, u het getrainde model opslaan of koppelen aan de module [Scoremodel](score-model.md) om anomaliescores te voorspellen.
+Wanneer de training is voltooid, kunt u het getrainde model opslaan of verbinding maken met de module [score model](score-model.md) om afwijkende scores te voors pellen.
 
-Voor het evalueren van de resultaten van een anomaliedetectiemodel zijn enkele aanvullende stappen vereist:
+Voor het evalueren van de resultaten van een afwijkings detectie model zijn enkele extra stappen vereist:
 
-1. Ervoor zorgen dat er een scorekolom beschikbaar is in beide gegevenssets
+1. Zorg ervoor dat er een score kolom beschikbaar is in beide gegevens sets
 
-    Als u een anomaliedetectiemodel probeert te evalueren en de fout "Er is geen scorekolom in de scoregegevensset te vergelijken", betekent dit dat u een typische evaluatiegegevensset gebruikt die een labelkolom bevat, maar geen kansscores. U moet een gegevensset kiezen die overeenkomt met de schema-uitvoer voor anomaliedetectiemodellen, waaronder een kolom **Scored Labels** en **Scored Probabilities.**
+    Als u probeert een anomalie detectie model te evalueren en de fout op te halen, is er geen score kolom in de Score van de gescoorde gegevensset om te vergelijken. Dit betekent dat u een typische evaluatie gegevensset gebruikt die een kolom Label bevat, maar geen waarschijnlijkheids scores. U moet een gegevensset kiezen die overeenkomt met de schema-uitvoer voor afwijkings detectie modellen, waaronder een kolom met **gescoorde labels** en **gescoorde kansen** .
 
-2. Ervoor zorgen dat labelkolommen zijn gemarkeerd
+2. Zorg ervoor dat label kolommen zijn gemarkeerd
 
-    Soms worden de metagegevens die aan de labelkolom zijn gekoppeld, verwijderd in de pijplijngrafiek. Als dit gebeurt, wanneer u de module [Model evalueren](evaluate-model.md) gebruikt om de resultaten van twee anomaliedetectiemodellen te vergelijken, u de fout krijgen: Er is geen labelkolom in de gescoorde gegevensset of Er is geen labelkolom in de gescoorde gegevensset om te vergelijken.
+    Soms worden de meta gegevens die zijn gekoppeld aan de kolom Label, verwijderd in de pipeline-grafiek. Als dit het geval is, kunt u, wanneer u de module [model evalueren](evaluate-model.md) gebruikt om de resultaten van twee anomalie detectie modellen te vergelijken, de fout melding ' er is geen label kolom in de gescoorde gegevensset ', of ' er is geen label kolom in de Score van de gescoorde gegevensset om te vergelijken ' weer geven.
 
-    U deze fout voorkomen door de module [Metagegevens bewerken](edit-metadata.md) toe te voegen vóór de module [Model evalueren.](evaluate-model.md) Gebruik de kolomkiezer om de kolom te kiezen en selecteer in de vervolgkeuzelijst **Velden** **label**.
+    U kunt deze fout voor komen door de module [meta gegevens bewerken](edit-metadata.md) voor de module [Evaluate model](evaluate-model.md) toe te voegen. Gebruik de kolom kiezer om de kolom klasse te kiezen en selecteer in de vervolg keuzelijst **velden** de optie **Label**.
 
-3. Gebruik [Python Script uitvoeren](execute-python-script.md) om labelkolomcategorieën aan te passen als 1(positief, normaal) en 0 (negatief, abnormaal).
+3. Gebruik [python script uitvoeren](execute-python-script.md) om de categorieën van de label kolom als 1 (positief, normaal) en 0 (negatief, abnormaal) aan te passen.
 
     ````
     label_column_name = 'XXX'
@@ -98,13 +98,13 @@ Voor het evalueren van de resultaten van een anomaliedetectiemodel zijn enkele a
     ````
 
     
-## <a name="technical-notes"></a>Technische notities
+## <a name="technical-notes"></a>Technische opmerkingen
 
-Dit algoritme gebruikt PCA om de subruimte met de normale klasse te benaderen. De subruimte wordt overspannen door eigenvectoren die zijn gekoppeld aan de bovenste waardes van de gegevenscovariantiematrix. Voor elke nieuwe invoer berekent de anomaliedetector eerst de projectie op de eigenvectoren en berekent vervolgens de genormaliseerde reconstructiefout. Deze fout is de anomalie score. Hoe hoger de fout, hoe afwijkender de instantie. Zie Wikipedia: [Principal Component Analysis](https://wikipedia.org/wiki/Principal_component_analysis) voor meer informatie over de manier waarop de normale ruimte wordt berekend 
+Dit algoritme maakt gebruik van PCA om de subruimte met de normale klasse te benaderen. De subruimte wordt omspannen door eigenvectors die zijn gekoppeld aan de bovenste eigenvalues van de matrix voor gegevens COVARIANTIE. Voor elke nieuwe invoer berekent de afwijkende detector eerst de projectie op de eigenvectors en berekent de genormaliseerde reconstructie fout. Deze fout is de afwijkende Score. Hoe hoger de fout, hoe afwijkende het exemplaar. Zie voor meer informatie over hoe de normale ruimte wordt berekend Wikipedia: [Principal component Analysis](https://wikipedia.org/wiki/Principal_component_analysis) 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 
-Zie [Uitzonderingen en foutcodes voor de ontwerper (voorbeeld)](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerpmodules.''
+Zie [uitzonde ringen en fout codes voor de ontwerp functie (preview)](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerp modules.

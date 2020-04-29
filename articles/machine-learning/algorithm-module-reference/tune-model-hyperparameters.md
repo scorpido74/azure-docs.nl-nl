@@ -1,7 +1,7 @@
 ---
 title: Model Hyperparameters afstemmen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Hyperparameters van tunemodel in Azure Machine Learning om een parametersweep op een model uit te voeren om de optimale parameterinstellingen te bepalen.
+description: Meer informatie over het gebruik van de module model Hyper parameters afstemmen in Azure Machine Learning om een parameter opruiming op een model uit te voeren om de optimale parameter instellingen te bepalen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,144 +10,144 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064163"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
-In dit artikel wordt beschreven hoe u de module Hyperparameters van tunemodel gebruiken in Azure Machine Learning-ontwerper (voorbeeld). Het doel is om de optimale hyperparameters voor een machine learning model te bepalen. De module bouwt en test meerdere modellen met behulp van verschillende combinaties van instellingen. Het vergelijkt metrische gegevens over alle modellen om de combinaties van instellingen te krijgen. 
+In dit artikel wordt beschreven hoe u de module Tune model Hyper parameters gebruikt in Azure Machine Learning Designer (preview). Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
 
-De termen *parameter* en *hyperparameter* kunnen verwarrend zijn. De *parameters* van het model zijn wat u in het rechterdeelvenster van de module instelt. In principe voert deze module een *parametersweep* uit over de opgegeven parameterinstellingen. Het leert een optimale set _hyperparameters,_ die voor elke specifieke beslissingsstructuur, gegevensset of regressiemethode anders kunnen zijn. Het proces van het vinden van de optimale configuratie wordt ook wel *tuning*genoemd. 
+De termen *para meter* en *afstemming* kunnen verwarrend zijn. De *para meters* van het model zijn wat u in het rechterdeel venster van de module hebt ingesteld. In principe voert deze module een *opruiming* van de para meters uit op basis van de opgegeven parameter instellingen. Het leert een optimale set _Hyper parameters_, die mogelijk verschillend is voor elke specifieke beslissings structuur, gegevensset of regressie methode. Het proces van het vinden van de optimale configuratie wordt soms *afstemming*genoemd. 
 
-De module ondersteunt de volgende methode voor het vinden van de optimale instellingen voor een model: *geïntegreerde trein en tune.* Met deze methode configureert u een set parameters die u wilt gebruiken. Vervolgens laat u de module herhalen over meerdere combinaties. De module meet de nauwkeurigheid totdat hij een "beste" model vindt. Bij de meeste leerlingmodules u kiezen welke parameters tijdens het trainingsproces moeten worden gewijzigd en welke vast moeten blijven.
+De module ondersteunt de volgende methode voor het vinden van de optimale instellingen voor een model: *geïntegreerde trein en afstemming.* In deze methode configureert u een set para meters die moeten worden gebruikt. U kunt de module vervolgens op meerdere combi Naties laten lopen. De module meet de nauw keurigheid totdat er een ' beste ' model wordt gevonden. Met de meeste leer modules kunt u kiezen welke para meters tijdens het trainings proces moeten worden gewijzigd en wat vast moet blijven.
 
-Afhankelijk van hoe lang u het stemproces wilt uitvoeren, u besluiten om alle combinaties volledig te testen. Of u het proces verkorten door een raster van parametercombinaties vast te stellen en een gerandomiseerde subset van het parameterraster te testen.
+Afhankelijk van hoe lang het afstemmings proces moet worden uitgevoerd, kunt u besluiten om alle combi Naties uitvoerig te testen. Of u kunt het proces verkorten door een raster van parameter combinaties te maken en een wille keurige subset van het parameter raster te testen.
 
-Deze methode genereert een getraind model dat u opslaan voor hergebruik.  
+Met deze methode wordt een getraind model gegenereerd dat u kunt opslaan voor hergebruik.  
 
 > [!TIP] 
-> U een gerelateerde taak uitvoeren. Voordat u begint met stemmen, past u functieselectie toe om de kolommen of variabelen met de hoogste informatiewaarde te bepalen.
+> U kunt een gerelateerde taak uitvoeren. Voordat u begint met het afstemmen, moet u de functie selectie Toep assen om de kolommen of variabelen te bepalen die de hoogste gegevens waarde hebben.
 
-## <a name="how-to-configure-tune-model-hyperparameters"></a>Hyperparameters van Tune Model configureren  
+## <a name="how-to-configure-tune-model-hyperparameters"></a>Optimalisatie model Hyper parameters configureren  
 
-Het leren van de optimale hyperparameters voor een machine learning model vereist een aanzienlijk gebruik van pijpleidingen.
+Voor het leren van de optimale Hyper parameters voor een machine learning model is een aanzienlijk gebruik van pijp lijnen vereist.
 
-### <a name="train-a-model-by-using-a-parameter-sweep"></a>Een model trainen met behulp van een parametersweep  
+### <a name="train-a-model-by-using-a-parameter-sweep"></a>Een model trainen met behulp van een parameter sweep  
 
-In deze sectie wordt beschreven hoe u een basisparametersweep uitvoert, die een model traint met behulp van de module Tune Model Hyperparameters.
+In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, waarmee een model wordt getraind met behulp van de Hyper parameters-module model.
 
-1.  Voeg de module Hyperparameters van tunemodel toe aan uw pijplijn in de ontwerper.
+1.  Voeg de module model Hyper parameters afstemmen toe aan uw pijp lijn in de ontwerp functie.
 
-2.  Sluit een ongetraind model aan op de meest linkse invoer. 
+2.  Verbind een niet-traind model met de meest linkse invoer. 
 
 
 
-4.  Voeg de gegevensset toe die u wilt gebruiken voor training en sluit deze aan op de middelste invoer van Tune Model Hyperparameters.  
+4.  Voeg de gegevensset toe die u voor training wilt gebruiken en verbind deze met de middelste invoer van het model Hyper parameters voor het afstemmen.  
 
-    Als u een gelabelde gegevensset hebt, u deze optioneel koppelen aan de meest rechtse invoerpoort **(optionele validatiegegevensset).** Hiermee u nauwkeurigheid meten tijdens het trainen en afstemmen.
+    Als u een gecodeerde gegevensset hebt, kunt u deze koppelen aan de meest rechtse invoer poort (**optionele validatie gegevensset**). Zo kunt u de nauw keurigheid meten tijdens de training en het afstemmen.
 
-5.  Kies in het rechterdeelvenster van Tune Model Hyperparameters een waarde voor **parameterveegmodus**. Met deze optie bepaalt u hoe de parameters zijn geselecteerd.
+5.  Kies in het rechterdeel venster van model Hyper parameters een waarde voor de modus voor het afwijzen van de **para meter**. Met deze optie bepaalt u hoe de para meters worden geselecteerd.
 
-    - **Hele raster**: Wanneer u deze optie selecteert, loopt de module over een raster dat vooraf door het systeem is gedefinieerd, om verschillende combinaties uit te proberen en de beste leerling te identificeren. Deze optie is handig als u niet weet wat de beste parameterinstellingen kunnen zijn en alle mogelijke combinaties van waarden wilt proberen.
+    - **Volledig raster**: wanneer u deze optie selecteert, wordt de module herhaald volgens een raster dat vooraf is gedefinieerd door het systeem, om verschillende combi Naties te proberen en de beste kenniser te identificeren. Deze optie is handig wanneer u niet weet wat de beste parameter instellingen zijn en u alle mogelijke combi Naties van waarden wilt proberen.
 
-    - **Willekeurige sweep:** Wanneer u deze optie selecteert, selecteert de module willekeurig parameterwaarden boven een door het systeem gedefinieerd bereik. U moet het maximum aantal uitvoeringen opgeven dat de module moet uitvoeren. Deze optie is handig wanneer u de prestaties van het model wilt verhogen door gebruik te maken van de statistieken van uw keuze, maar toch computerbronnen wilt besparen.    
+    - **Wille keurige sweep**: wanneer u deze optie selecteert, selecteert de module wille keurig parameter waarden boven een door het systeem gedefinieerd bereik. U moet het maximum aantal runs opgeven dat door de module moet worden uitgevoerd. Deze optie is handig als u de prestaties van het model wilt verbeteren door de metrische gegevens van uw keuze te gebruiken, maar nog steeds computer bronnen te besparen.    
 
-6.  Open **bij de kolom Label**de kolomkiezer om één kolom met één label te kiezen.
+6.  Open de kolom kiezer voor de kolom **Label**en kies een kolom met één label.
 
-7.  Kies het aantal runs:
+7.  Kies het aantal uitvoeringen:
 
-    1. **Maximaal aantal runs op willekeurige sweep:** Als u kiest voor een willekeurige sweep, u opgeven hoe vaak het model moet worden getraind, met behulp van een willekeurige combinatie van parameterwaarden.
+    1. **Maximum aantal uitvoeringen op wille keurige sweep**: als u een wille keurige sweep kiest, kunt u opgeven hoe vaak het model moet worden getraind met behulp van een wille keurige combi natie van parameter waarden.
 
-8.  Kies bij **Ranking**één statistiek die u wilt gebruiken voor het rangschikken van de modellen.
+8.  Voor de **rang schikking**kiest u één metrische waarde voor het classificeren van de modellen.
 
-    Wanneer u een parametersweep uitvoert, berekent de module alle toepasselijke statistieken voor het modeltype en retourneert deze in het rapport **Sweep-resultaten.** De module maakt gebruik van afzonderlijke statistieken voor regressie- en classificatiemodellen.
+    Wanneer u een parameter sweep uitvoert, berekent de module alle toepasselijke metrische gegevens voor het model type en retourneert deze in het rapport met **resultaten van opruimen** . In de module worden afzonderlijke metrische gegevens gebruikt voor regressie-en classificatie modellen.
 
-    De statistiek die u kiest, bepaalt echter hoe de modellen worden gerangschikt. Alleen het topmodel, zoals gerangschikt op de gekozen statistiek, is uitvoer als een getraind model om te gebruiken voor het scoren.
+    De metriek die u kiest, bepaalt echter hoe de modellen worden gerangschikt. Alleen het bovenste model, zoals geclassificeerd door de gekozen metriek, wordt uitgevoerd als een getraind model om te gebruiken voor een score.
 
-9.  Voer **bij Willekeurig zaad**een getal in dat u wilt gebruiken voor het starten van de parametersweep. 
+9.  Voer voor **wille keurige Seed**een getal in dat moet worden gebruikt voor het starten van de parameter sweep. 
 
-10. Verzend de pijplijn.
+10. Verzend de pijp lijn.
 
-## <a name="results-of-hyperparameter-tuning"></a>Resultaten van hyperparameter tuning
+## <a name="results-of-hyperparameter-tuning"></a>Resultaten van afstemming tuning
 
 Wanneer de training is voltooid:
 
-+ Als u een set nauwkeurigheidsstatistieken voor het beste model wilt weergeven, klikt u met de rechtermuisknop op de module en selecteert u **Visual .**
++ Als u een set nauw keurige metrische gegevens voor het beste model wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u vervolgens **visualiseren**.
 
-    De uitvoer bevat alle nauwkeurigheidsstatistieken die van toepassing zijn op het modeltype, maar de statistiek die u hebt geselecteerd voor rangschikking bepaalt welk model als 'het beste' wordt beschouwd.
+    De uitvoer bevat alle nauwkeurigheids gegevens die van toepassing zijn op het model type, maar de metrische gegevens die u hebt geselecteerd voor de rang schikking bepalen welk model als ' Best ' wordt beschouwd.
 
-+ Als u een momentopname van het getrainde model wilt opslaan, selecteert u het tabblad **Uitvoer** in het rechterdeelvenster van de **module Treinmodel.** Selecteer het pictogram **Gegevensset registreren** om het model op te slaan als een herbruikbare module.
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
 
-## <a name="technical-notes"></a>Technische notities
+## <a name="technical-notes"></a>Technische opmerkingen
 
-Deze sectie bevat implementatiedetails en tips.
+Deze sectie bevat implementatie details en tips.
 
-### <a name="how-a-parameter-sweep-works"></a>Hoe een parametersweep werkt
+### <a name="how-a-parameter-sweep-works"></a>Hoe een para meter sweep werkt
 
-Wanneer u een parametersweep instelt, bepaalt u het bereik van uw zoekopdracht. De zoekopdracht kan een eindig aantal parameters gebruiken die willekeurig zijn geselecteerd. Of het kan een uitputtende zoekopdracht zijn over een parameterruimte die u definieert.
+Wanneer u een parameter sweep instelt, definieert u het bereik van uw zoek opdracht. De zoek opdracht kan een eindig aantal para meters gebruiken die wille keurig zijn geselecteerd. Het is ook mogelijk dat een volledige zoek opdracht wordt uitgevoerd op een parameter ruimte die u definieert.
 
-+ **Random sweep**: Deze optie traint een model met behulp van een vast aantal iteraties. 
++ **Wille keurige sweep**: met deze optie wordt een model getraind met behulp van een ingesteld aantal herhalingen. 
 
-  U geeft een bereik op van waarden om over te herhalen en de module gebruikt een willekeurig gekozen subset van die waarden. Waarden worden gekozen met vervanging, wat betekent dat nummers die eerder willekeurig zijn gekozen, niet worden verwijderd uit de pool van beschikbare getallen. Dus de kans dat een waarde wordt geselecteerd blijft hetzelfde over alle passen.  
+  U geeft een reeks waarden op die moeten worden herhaald en de module gebruikt een wille keurig gekozen subset van die waarden. Waarden worden gekozen met vervanging, wat betekent dat getallen die eerder zijn gekozen, niet worden verwijderd uit de groep beschik bare getallen. De kans dat een wille keurige waarde wordt geselecteerd, blijft in alle fasen hetzelfde.  
 
-+ **Volledig net**: De optie om het hele net te gebruiken betekent dat elke combinatie wordt getest. Deze optie is de meest grondige, maar het vergt de meeste tijd. 
++ **Volledig raster**: de optie voor het gebruik van het hele raster betekent dat elke combi natie wordt getest. Deze optie is het meest uitgebreid, maar de meeste tijd is vereist. 
 
-### <a name="controlling-the-length-and-complexity-of-training"></a>Controle van de lengte en complexiteit van de opleiding
+### <a name="controlling-the-length-and-complexity-of-training"></a>De lengte en complexiteit van training bepalen
 
-Het herhalen van veel combinaties van instellingen kan tijdrovend zijn, dus de module biedt verschillende manieren om het proces te beperken:
+Het uitvoeren van meerdere combi Naties van instellingen kan tijdrovend zijn, dus de module biedt verschillende manieren om het proces te beperken:
 
-+ Beperk het aantal iteraties dat wordt gebruikt om een model te testen.
-+ Beperk de parameterruimte.
-+ Beperk zowel het aantal iteraties als de parameterruimte.
++ Beperk het aantal iteraties dat wordt gebruikt voor het testen van een model.
++ Beperk de parameter ruimte.
++ Beperk het aantal iteraties en de parameter ruimte.
 
-We raden u aan de instellingen te gebruiken om de meest efficiënte trainingsmethode voor een bepaalde gegevensset en model te bepalen.
+We raden u aan om met de instellingen een pijp lijn te nemen om de meest efficiënte opleidings methode voor een bepaalde gegevensset en model te bepalen.
 
-### <a name="choosing-an-evaluation-metric"></a>Een evaluatiestatistiek kiezen
+### <a name="choosing-an-evaluation-metric"></a>Een evaluatie-metric kiezen
 
-Aan het einde van de tests presenteert het model een rapport met de nauwkeurigheid voor elk model, zodat u de metrische resultaten bekijken:
+Aan het einde van de test presenteert het model een rapport met de nauw keurigheid voor elk model, zodat u de metrische resultaten kunt bekijken:
 
-- Voor alle binaire classificatiemodellen wordt een uniforme set metrische gegevens gebruikt.
-- Nauwkeurigheid wordt gebruikt voor alle classificatiemodellen van meerdere klassen.
-- Een andere set statistieken wordt gebruikt voor regressiemodellen. 
+- Voor alle binaire classificatie modellen wordt een uniforme set metrische gegevens gebruikt.
+- Nauw keurigheid wordt gebruikt voor alle classificatie modellen met meerdere klassen.
+- Er wordt een andere set metrische gegevens gebruikt voor regressie modellen. 
 
-Tijdens de training moet u echter *één* statistiek kiezen die u wilt gebruiken bij het rangschikken van de modellen die tijdens het stemproces worden gegenereerd. Mogelijk vindt u dat de beste statistiek varieert, afhankelijk van uw bedrijfsprobleem en de kosten van false positives en false negatives.
+Tijdens de training moet u echter *één* metrische waarde kiezen om te gebruiken bij het rangschikken van de modellen die tijdens het afstemmings proces worden gegenereerd. Het kan zijn dat de beste meet waarde varieert, afhankelijk van het probleem van uw bedrijf en de kosten voor fout-positieven en onwaare negatieven.
 
-#### <a name="metrics-used-for-binary-classification"></a>Statistieken die worden gebruikt voor binaire classificatie
+#### <a name="metrics-used-for-binary-classification"></a>Metrische gegevens die worden gebruikt voor binaire classificatie
 
--   **Nauwkeurigheid** is het aandeel van de werkelijke resultaten aan de totale gevallen.  
+-   **Nauw keurigheid** is het aandeel van de werkelijke resultaten tot het totale aantal cases.  
 
--   **Precisie** is het aandeel van de werkelijke resultaten tot positieve resultaten.  
+-   **Nauw keurigheid** is het aandeel van de werkelijke resultaten tot positieve resultaten.  
 
--   **Recall** is de fractie van alle juiste resultaten over alle resultaten.  
+-   **Intrekken** is de Fractie van alle juiste resultaten ten opzichte van alle resultaten.  
 
--   **F-score** is een maat die precisie en terugroep balans.  
+-   **F-Score** is een meting die de nauw keurigheid van de precisie en intrekken vergelijkt.  
 
--   **AUC** is een waarde die het gebied onder de curve vertegenwoordigt wanneer valse positieven op de x-as worden uitgezet en echte positieven worden uitgezet op de y-as.  
+-   **AUC** is een waarde die het gebied onder de curve vertegenwoordigt wanneer fout-positieven worden getekend op de x-as en waar positieven worden getekend op de y-as.  
 
--   **Gemiddelde logverlies** is het verschil tussen twee waarschijnlijkheidsverdelingen: de ware en de verdeling in het model.  
+-   Het **gemiddelde logboek verlies** is het verschil tussen de twee waarschijnlijke verdelingen: de werkelijke waarde en de eerste in het model.  
 
-#### <a name="metrics-used-for-regression"></a>Statistieken die worden gebruikt voor regressie
+#### <a name="metrics-used-for-regression"></a>Metrische gegevens die worden gebruikt voor regressie
 
--   **Gemiddelde absolute fout** gemiddeldalle fouten in het model, waarbij *fout* betekent dat de afstand van de voorspelde waarde van de werkelijke waarde. Het is vaak afgekort als *MAE*.  
+-   **Gemiddelde absolute fout** berekent alle fouten in het model, waarbij *fout* de afstand aangeeft van de voorspelde waarde van de waarde True. Het is vaak afgekort tot *Mae*.  
 
--   **Root van gemiddelde kwadraatfout** meet het gemiddelde van de vierkanten van de fouten en neemt vervolgens de wortel van die waarde. Het is vaak afgekort als *RMSE*.  
+-   **Wortel van kwadraat fout** meet het gemiddelde van de kwadraten van de fouten en neemt vervolgens de hoofdmap van die waarde. Het is vaak afgekort tot *RMSE*.  
 
--   **Relatieve absolute fout** vertegenwoordigt de fout als een percentage van de werkelijke waarde.  
+-   **Relatieve absolute fout** vertegenwoordigt de fout als een percentage van de waarde True.  
 
--   **Relatieve kwadraatfout** normaliseert de totale kwadraatfout door te delen door de totale kwadraatfout van de voorspelde waarden.  
+-   **Bij relatieve kwadratische fout** wordt het totale aantal kwadraten genormaliseerd door te delen door het totale aantal gekwadrateerde fouten van de voorspelde waarden.  
 
--   **De bepalingscoëfficiënt** is één getal dat aangeeft hoe goed gegevens in een model passen. Een waarde van één betekent dat het model precies overeenkomt met de gegevens. Een waarde van nul betekent dat de gegevens willekeurig zijn of anderszins niet geschikt zijn voor het model. Het wordt vaak *r<sup>2,</sup>* *R<sup>2</sup>* of *r-kwadraat genoemd.*  
+-   De **determinatie coëfficiënt** is één getal dat aangeeft hoe goed de gegevens in een model passen. Een waarde van één betekent dat het model exact overeenkomt met de gegevens. De waarde 0 betekent dat de gegevens wille keurig of anderszins niet op het model passen. Dit wordt vaak *r<sup>2</sup>*, *r<sup>2</sup>* of *r-kwadraat*genoemd.  
 
-### <a name="modules-that-dont-support-a-parameter-sweep"></a>Modules die geen parametersweep ondersteunen
+### <a name="modules-that-dont-support-a-parameter-sweep"></a>Modules die geen para meter-sweep ondersteunen
 
-Bijna alle leerlingen in Azure Machine Learning ondersteunen cross-validatie met een geïntegreerde parametersweep, waarmee u de parameters kiezen waarmee u de pijplijnparameters maken. Als de leerling geen ondersteuning biedt voor het instellen van een reeks waarden, u deze nog steeds gebruiken in cross-validatie. In dit geval wordt een reeks toegestane waarden geselecteerd voor de sweep. 
+Bijna alle leer Azure Machine Learning ondersteunen Kruis validatie met een geïntegreerde para meter-sweep, waarmee u de para meters voor pijp lijn kunt kiezen. Als de cursist geen ondersteuning biedt voor het instellen van een reeks waarden, kunt u deze nog steeds gebruiken voor kruis validatie. In dit geval wordt een bereik van toegestane waarden geselecteerd voor de sweep. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 

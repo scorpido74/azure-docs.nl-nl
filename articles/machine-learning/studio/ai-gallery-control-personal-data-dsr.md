@@ -1,7 +1,7 @@
 ---
-title: Azure AI-galeriegegevens beheren
+title: Azure AI Gallery gegevens beheren
 titleSuffix: ML Studio (classic) - Azure
-description: U uw in-product gebruikersgegevens exporteren en verwijderen uit Azure AI Gallery met behulp van de interface of AI Gallery Catalog API. Dit artikel laat zien hoe.
+description: U kunt de gebruikers gegevens van uw product exporteren en verwijderen uit Azure AI Gallery met behulp van de interface of de AI Gallery Catalog-API. In dit artikel wordt beschreven hoe u dit kunt doen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -12,77 +12,77 @@ ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
 ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204542"
 ---
-# <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Gebruikersgegevens in het product weergeven en verwijderen uit Azure AI Gallery
+# <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Gebruikers gegevens in een product weer geven en verwijderen uit Azure AI Gallery
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-U uw in-product gebruikersgegevens uit Azure AI Gallery weergeven en verwijderen met behulp van de interface of AI Gallery Catalog API. Dit artikel vertelt je hoe.
+U kunt de gebruikers gegevens van uw product weer geven en verwijderen uit Azure AI Gallery met behulp van de interface of de AI Gallery Catalog-API. In dit artikel leest u hoe.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="view-your-data-in-ai-gallery-with-the-ui"></a>Uw gegevens weergeven in AI-galerie met de gebruikersinterface
+## <a name="view-your-data-in-ai-gallery-with-the-ui"></a>Uw gegevens in de AI-galerie weer geven met de gebruikers interface
 
-U items bekijken die u hebt gepubliceerd via de gebruikersinterface van de Azure AI Gallery-website. Gebruikers kunnen zowel openbare als niet-vermelde oplossingen, projecten, experimenten en andere gepubliceerde items bekijken:
+U kunt items weer geven die u hebt gepubliceerd via de gebruikers interface van de Azure AI Gallery-website. Gebruikers kunnen open bare en niet-vermelde oplossingen, projecten, experimenten en andere gepubliceerde items bekijken:
 
-1.    Meld u aan bij de [Azure AI-galerie](https://gallery.azure.ai/).
-2.    Klik op de profielfoto in de rechterbovenhoek en vervolgens op de accountnaam om uw profielpagina te laden.
-3.    Op de profielpagina worden alle items weergegeven die in de galerie zijn gepubliceerd, inclusief niet-vermelde vermeldingen.
+1.    Meld u aan bij de [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Klik op de profiel afbeelding in de rechter bovenhoek en vervolgens op de naam van het account om uw profiel pagina te laden.
+3.    Op de profiel pagina worden alle items weer gegeven die zijn gepubliceerd in de galerie, met inbegrip van niet-gevermeldde vermeldingen.
 
-## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>De API voor AI-galeriecatalogus gebruiken om uw gegevens weer te geven
+## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>De AI Gallery Catalog-API gebruiken om uw gegevens weer te geven
 
-U programmatisch gegevens bekijken die zijn verzameld via de https://catalog.cortanaanalytics.com/entitiesAPI voor AI-galerijcatalogus, die toegankelijk is op. Als u gegevens wilt weergeven, hebt u uw auteurs-id nodig. Als u niet-vermelde entiteiten wilt weergeven via de catalog-API, hebt u een toegangstoken nodig.
+U kunt de gegevens die zijn verzameld via de AI Gallery Catalog-API weer geven, die https://catalog.cortanaanalytics.com/entitiestoegankelijk zijn op. Als u gegevens wilt weer geven, hebt u de auteur-ID nodig. Als u niet-vermelde entiteiten wilt weer geven via de catalogus-API, hebt u een toegangs token nodig.
 
-Catalogusreacties worden geretourneerd in JSON-indeling.
+Catalogus reacties worden geretourneerd in JSON-indeling.
 
-### <a name="get-an-author-id"></a>Een auteurs-ID opschrijven
-De auteurs-id is gebaseerd op het e-mailadres dat wordt gebruikt bij het publiceren naar de Azure AI-galerie. Het verandert niet:
+### <a name="get-an-author-id"></a>Een auteur-ID ophalen
+De auteur-ID is gebaseerd op het e-mail adres dat wordt gebruikt bij het publiceren naar de Azure AI Gallery. Dit verandert niet:
 
 1.    Meld u aan bij [Azure AI Gallery](https://gallery.azure.ai/).
-2.    Klik op de profielfoto in de rechterbovenhoek en vervolgens op de accountnaam om uw profielpagina te laden.
-3.    Op de URL in de adresbalk `authorId=`wordt de alfanumerieke id weergegeven. Bijvoorbeeld voor de URL:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+2.    Klik op de profiel afbeelding in de rechter bovenhoek en vervolgens op de naam van het account om uw profiel pagina te laden.
+3.    De URL in de adres balk bevat de alfanumerieke ID `authorId=`die volgt. Bijvoorbeeld voor de URL:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
-    Auteur-id:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+    Auteur-ID:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
-### <a name="get-your-access-token"></a>Uw toegangstoken ophalen
+### <a name="get-your-access-token"></a>Uw toegangs Token ophalen
 
-U hebt een toegangstoken nodig om niet-vermelde entiteiten te bekijken via de catalog-API. Zonder Access Token kunnen gebruikers nog steeds openbare entiteiten en andere gebruikersinformatie bekijken.
+U hebt een toegangs token nodig om niet-vermelde entiteiten te bekijken via de catalogus-API. Zonder een toegangs token kunnen gebruikers nog steeds open bare entiteiten en andere gebruikers gegevens weer geven.
 
-Als u een toegangstoken wilt `DataLabAccessToken` krijgen, moet u de kop tekst van een HTTP-verzoek van de browser naar de catalogus-API inspecteren terwijl u bent ingelogd:
+Als u een toegangs token wilt ophalen, moet u de `DataLabAccessToken` header van een HTTP-aanvraag inspecteren die de browser maakt naar de catalogus-API terwijl u bent aangemeld:
 
-1.    Meld u aan bij de [Azure AI-galerie](https://gallery.azure.ai/).
-2.    Klik op de profielfoto in de rechterbovenhoek en vervolgens op de accountnaam om uw profielpagina te laden.
-3.    Open het deelvenster Hulpmiddelen voor browserontwikkelaars door op F12 te drukken, het tabblad Netwerk te selecteren en de pagina te vernieuwen. 
-4. Filter aanvragen in de *tekenreekscatalogus* door in het tekstvak Filter te typen.
-5.    Zoek in aanvragen `https://catalog.cortanaanalytics.com/entities`naar de URL een GET-aanvraag en selecteer het tabblad *Kopteksten.* Blader omlaag naar de sectie *Kopteksten aanvragen.*
-6.    Onder de `DataLabAccessToken` koptekst is het alfanumerieke token. Om uw gegevens veilig te houden, deelt u dit token niet.
+1.    Meld u aan bij de [Azure AI Gallery](https://gallery.azure.ai/).
+2.    Klik op de profiel afbeelding in de rechter bovenhoek en vervolgens op de naam van het account om uw profiel pagina te laden.
+3.    Open het deel venster browser Ontwikkelhulpprogramma's door op F12 te drukken, selecteer het tabblad netwerk en vernieuw de pagina. 
+4. Filter aanvragen op de teken reeks *catalogus* door te typen in het tekstvak filter.
+5.    Zoek in aanvragen naar de `https://catalog.cortanaanalytics.com/entities`URL een GET-aanvraag en selecteer het tabblad *headers* . Schuif omlaag naar de sectie *aanvraag headers* .
+6.    Onder de header `DataLabAccessToken` bevindt zich het alfanumerieke token. Om uw gegevens veilig te houden, deelt u dit token niet.
 
-### <a name="view-user-information"></a>Gebruikersinformatie weergeven
-Met de auteurs-id die u in de vorige stappen hebt `[AuthorId]` gekregen, u informatie in het profiel van een gebruiker weergeven door te worden vervangen in de volgende URL:
+### <a name="view-user-information"></a>Gebruikers gegevens weer geven
+Bekijk in de volgende URL de informatie in het profiel `[AuthorId]` van een gebruiker met behulp van de auteur-id die u in de vorige stappen hebt gekregen:
 
     https://catalog.cortanaanalytics.com/users/[AuthorID]
 
-Deze URL-aanvraag:
+Dit URL-verzoek is bijvoorbeeld:
     
     https://catalog.cortanaanalytics.com/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA
 
-Geeft als resultaat een antwoord zoals:
+Retourneert een antwoord zoals:
 
     {"entities_count":9,"contribution_score":86.351575190956922,"scored_at":"2018-05-07T14:30:25.9305671+00:00","contributed_at":"2018-05-07T14:26:55.0381756+00:00","created_at":"2017-12-15T00:49:15.6733094+00:00","updated_at":"2017-12-15T00:49:15.6733094+00:00","name":"First Last","slugs":["First-Last"],"tenant_id":"14b2744cf8d6418c87ffddc3f3127242","community_id":"9502630827244d60a1214f250e3bbca7","id":"99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA","_links":{"self":"https://catalog.azureml.net/tenants/14b2744cf8d6418c87ffddc3f3127242/communities/9502630827244d60a1214f250e3bbca7/users/99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA"},"etag":"\"2100d185-0000-0000-0000-5af063010000\""}
 
 
-### <a name="view-public-entities"></a>Openbare entiteiten weergeven
+### <a name="view-public-entities"></a>Open bare entiteiten weer geven
 
-De API voor catalogus slaat informatie over gepubliceerde entiteiten op in de Azure AI-galerie die u ook rechtstreeks op de [AI Gallery-website](https://gallery.azure.ai/)bekijken. 
+De catalogus-API slaat informatie over gepubliceerde entiteiten op in de Azure AI Gallery die u ook rechtstreeks kunt bekijken op de website van de [AI-galerie](https://gallery.azure.ai/). 
 
-Als u gepubliceerde entiteiten wilt bekijken, `[AuthorId]` gaat u naar de volgende URL, ter vervanging van de auteur-id die is verkregen in [Een auteurs-id](#get-an-author-id) ophalen hierboven.
+Als u gepubliceerde entiteiten wilt weer geven, gaat u naar `[AuthorId]` de volgende URL en vervangt u deze door de auteur-id die is verkregen in [een Auteur-id ophalen](#get-an-author-id) hierboven.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
@@ -90,13 +90,13 @@ Bijvoorbeeld:
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 
-### <a name="view-unlisted-and-public-entities"></a>Niet-beursgenoteerde en openbare entiteiten weergeven
+### <a name="view-unlisted-and-public-entities"></a>Onvermelde en open bare entiteiten weer geven
 
-In deze query worden alleen openbare entiteiten weergegeven. Als u al uw entiteiten wilt bekijken, inclusief niet-vermelde entiteiten, geeft u het toegangstoken op dat is verkregen uit de vorige sectie.
+Met deze query worden alleen open bare entiteiten weer gegeven. Als u al uw entiteiten, inclusief ongelijsteerde, wilt weer geven, geeft u het toegangs token op dat u hebt verkregen uit de vorige sectie.
 
-1.    Met een tool als [Postman](https://www.getpostman.com)maakt u een HTTP GET-verzoek naar de URL van de catalogus zoals beschreven in [Get your access token.](#get-your-access-token)
-2.    Maak een HTTP-aanvraagkopkop met `DataLabAccessToken`de waarde die is ingesteld op het toegangstoken.
-3.    Dien de HTTP-aanvraag in.
+1.    Maak met een hulp programma zoals [postman](https://www.getpostman.com)een HTTP GET-aanvraag naar de catalogus-URL, zoals wordt beschreven in [uw toegangs Token ophalen](#get-your-access-token).
+2.    Maak een HTTP-aanvraag header `DataLabAccessToken`met de naam, waarbij de waarde is ingesteld op het toegangs token.
+3.    Verzend de HTTP-aanvraag.
 
 > [!TIP]
-> Als niet-vermelde entiteiten niet worden weergegeven in reacties uit de catalogus-API, heeft de gebruiker mogelijk een ongeldig of verlopen toegangstoken. Meld u af bij de Azure AI-galerie en herhaal vervolgens de stappen in [Uw toegangstoken downloaden](#get-your-access-token) om het token te vernieuwen. 
+> Als niet-vermelde entiteiten niet worden weer gegeven in reacties van de catalogus-API, heeft de gebruiker mogelijk een ongeldig of verlopen toegangs token. Meld u af bij de Azure AI Gallery en herhaal de stappen in [uw toegangs Token ophalen](#get-your-access-token) om het token te vernieuwen. 

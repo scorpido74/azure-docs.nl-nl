@@ -1,7 +1,7 @@
 ---
-title: 'Trein anomalie detectiemodel: module referentie'
+title: 'Model voor afwijkings detectie trainen: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Treinanomaliedetectiemodel om een getraind anomaliedetectiemodel te maken.
+description: Meer informatie over het gebruik van de module voor het detecteren van detectie van Train-modellen voor het maken van een getraind anomalie detectie model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,50 +10,50 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 78ed2d85729cce94e8dfa579545f558d2cfe4651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502969"
 ---
-# <a name="train-anomaly-detection-model"></a>Trein anomalie detectiemodel
+# <a name="train-anomaly-detection-model"></a>Anomaliedetectiemodel trainen
 
-In dit artikel wordt beschreven hoe u de module **Treinanomaliedetectiemodel** gebruiken in Azure Machine Learning-ontwerper (preview) om een getraind anomaliedetectiemodel te maken.
+In dit artikel wordt beschreven hoe u met behulp van de module voor het detecteren van een **Train-detectie model** in azure machine learning Designer (preview) een getraind anomalie detectie model maakt.
 
-De module neemt als invoer een set modelparameters voor anomaliedetectiemodel en een niet-gelabelde gegevensset. Het retourneert een getraind anomaliedetectiemodel, samen met een set labels voor de trainingsgegevens.  
+De module gebruikt als invoer een set model parameters voor het model voor anomalie detectie en een niet-gelabelde gegevensset. Er wordt een getraind anomalie detectie model geretourneerd, samen met een set labels voor de trainings gegevens.  
 
-Zie de volgende onderwerpen voor meer informatie over de algoritmen voor anomaliedetectie in de ontwerper: 
+Zie de volgende onderwerpen voor meer informatie over de algoritmen voor anomalie detectie die zijn opgenomen in de Designer: 
 
-+ [PcA-gebaseerde anomaliedetectie](pca-based-anomaly-detection.md)  
++ [Anomaliedetectie op basis van PCA](pca-based-anomaly-detection.md)  
 
-## <a name="how-to-configure-train-anomaly-detection-model"></a>Treinanomaliedetectiemodel configureren 
+## <a name="how-to-configure-train-anomaly-detection-model"></a>Het detectie model voor het afwijkings proces van Train configureren 
 
-1.  Voeg de module **Train Anomaly Detection Model** toe aan uw pijplijn in de ontwerper. U vindt deze module in de categorie **Anomaliedetectie.**
+1.  Voeg de module **afwijkingen detectie model** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden in de categorie **anomalie detectie** .
 
-2. Sluit een van de modules aan die zijn ontworpen voor anomaliedetectie, zoals [PCA-gebaseerde anomaliedetectie](pca-based-anomaly-detection.md)
+2. Verbinding maken met een van de modules die zijn ontworpen voor anomalie detectie, zoals [op PCA gebaseerde anomalie detectie](pca-based-anomaly-detection.md)
 
-    Andere soorten modellen worden niet ondersteund; bij het uitvoeren van de pijplijn krijgt u de fout: Alle modellen moeten hetzelfde leerlingtype hebben.  
+    Andere typen modellen worden niet ondersteund. bij het uitvoeren van de pijp lijn wordt de volgende fout weer geven: alle modellen moeten hetzelfde type informatieer hebben.  
 
-3.  Configureer de module anomaliedetectie door de labelkolom te kiezen en andere parameters in te stellen die specifiek zijn voor het algoritme.  
+3.  Configureer de module anomalie detectie door de kolom label te kiezen en andere para meters in te stellen die specifiek zijn voor het algoritme.  
 
-4.  Bevestig een trainingsgegevensset aan de rechterinvoer van **Train Anomaly Detection Model.**  
+4.  Een trainings gegevensset koppelen aan de rechter invoer van het **model voor detectie van afwijkingen van Train**.  
 
-5.  Verzend de pijplijn.  
+5.  Verzend de pijp lijn.  
 
 ## <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ Als u de parameters van het model wilt weergeven, klikt u met de rechtermuisknop op de module en selecteert u **Visualiseren**. 
++ Als u de para meters van het model wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**. 
 
-+ Als u voorspellingen wilt maken, gebruikt u [Scoremodel](score-model.md) met nieuwe invoergegevens.
++ Als u voor spellingen wilt maken, gebruikt u het [score model](score-model.md) met nieuwe invoer gegevens.
 
-+ Als u een momentopname van het getrainde model wilt opslaan, selecteert u de module en klikt u op het pictogram **Gegevensset registreren** onder het tabblad **Uitvoer+logboeken** in het rechterdeelvenster.   
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u de module en klikt u op het pictogram **gegevensset registreren** onder uitvoer op het tabblad **Logboeken** in het rechterdeel venster.   
 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
 
-Zie [Uitzonderingen en foutcodes voor de ontwerper (voorbeeld)](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerpmodules.
+Zie [uitzonde ringen en fout codes voor de ontwerp functie (preview)](designer-error-codes.md) voor een lijst met fouten die specifiek zijn voor de ontwerp modules.
 '

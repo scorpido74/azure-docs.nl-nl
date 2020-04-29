@@ -1,7 +1,7 @@
 ---
 title: Python
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van Python in Azure Machine Learning designer om gegevens te transformeren.
+description: Meer informatie over het gebruik van python in Azure Machine Learning Designer voor het transformeren van gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,56 +10,56 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455788"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning-ontwerper
+# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-code uitvoeren in Azure Machine Learning Designer
 
-In dit artikel leert u hoe u de [Module Python Script uitvoeren](algorithm-module-reference/execute-python-script.md) gebruikt om aangepaste logica toe te voegen aan Azure Machine Learning-ontwerper. In de volgende how-to, gebruik je de Panda's bibliotheek om eenvoudige feature engineering te doen.
+In dit artikel leert u hoe u de script module voor het [uitvoeren van python](algorithm-module-reference/execute-python-script.md) kunt gebruiken om aangepaste logica aan Azure machine learning Designer toe te voegen. In de volgende procedures gebruikt u de bibliotheek van Pandas om eenvoudige functie techniek uit te voeren.
 
-U de ingebouwde codeeditor gebruiken om snel eenvoudige Python-logica toe te voegen. Als u complexere code wilt toevoegen of extra Python-bibliotheken wilt uploaden, moet u de zip-bestandsmethode gebruiken.
+U kunt de ingebouwde code-editor gebruiken om snel een eenvoudige python-logica toe te voegen. Als u complexere code wilt toevoegen of extra python-bibliotheken wilt uploaden, moet u de methode zip-bestand gebruiken.
 
-De standaarduitvoeringsomgeving maakt gebruik van de Anacondas-distributie van Python. Zie de [referentiepagina van](algorithm-module-reference/execute-python-script.md) python scriptmodule uitvoeren voor een volledige lijst met vooraf geïnstalleerde pakketten.
+De standaard uitvoerings omgeving maakt gebruik van de Anacondas-distributie van python. Voor een volledige lijst met vooraf geïnstalleerde pakketten gaat u naar de pagina overzicht van [python-script module uitvoeren](algorithm-module-reference/execute-python-script.md) .
 
-![Python-invoerkaart uitvoeren](media/how-to-designer-python/execute-python-map.png)
+![Python-invoer toewijzing uitvoeren](media/how-to-designer-python/execute-python-map.png)
 
-## <a name="execute-python-written-in-the-designer"></a>Python uitvoeren geschreven in de ontwerper
+## <a name="execute-python-written-in-the-designer"></a>Python die is geschreven in de ontwerp functie uitvoeren
 
-### <a name="add-the-execute-python-script-module"></a>De module Python Script uitvoeren toevoegen
+### <a name="add-the-execute-python-script-module"></a>De script module voor het uitvoeren van python toevoegen
 
-1. Zoek de **Module Python Script uitvoeren** in het ontwerppalet. Het is te vinden in de sectie **Python Language.**
+1. Zoek de **script module python uitvoeren** in het palet ontwerp. U kunt dit vinden in de sectie **python-taal** .
 
-1. Sleep en zet de module neer op het pijplijncanvas.
+1. Sleep de module en zet deze neer op het canvas op de pijp lijn.
 
-### <a name="connect-input-datasets"></a>Invoergegevenssets verbinden
+### <a name="connect-input-datasets"></a>Invoer gegevens sets verbinden
 
-In dit artikel wordt gebruik gemaakt van de voorbeeldgegevensset **Automobile price data (Raw).** 
+In dit artikel wordt gebruikgemaakt van de voor beeld-gegevensset, **Auto Mobile price data (RAW)**. 
 
-1. Sleep en zet uw gegevensset neer op het pijplijncanvas.
+1. Sleep uw gegevensset en zet deze neer op het pijp lijn papier.
 
-1. Sluit de uitvoerpoort van de gegevensset aan op de invoerpoort linksboven van de **Python Script-module uitvoeren.** De ontwerper stelt de invoer als parameter bloot aan het itemscript.
+1. Verbind de uitvoer poort van de gegevensset met de linksboven invoer poort van de script module voor het **uitvoeren van python** . De ontwerp functie biedt de invoer als een para meter voor het toegangs punt script.
     
-    De juiste invoerpoort is gereserveerd voor python-bibliotheken met rits.
+    De juiste invoer poort is gereserveerd voor gezipte python-bibliotheken.
 
-    ![Gegevenssets verbinden](media/how-to-designer-python/connect-dataset.png)
+    ![Gegevens sets verbinden](media/how-to-designer-python/connect-dataset.png)
         
 
-1. Let op welke invoerpoort u gebruikt. De ontwerper wijst de linkerinvoerpoort `dataset1` toe aan de `dataset2`variabele en de middelste invoerpoort aan . 
+1. Noteer de invoer poort die u gebruikt. De Designer wijst de linker invoer poort toe aan de variabele `dataset1` en de middelste invoer poort `dataset2`. 
 
-Invoermodules zijn optioneel omdat u rechtstreeks gegevens genereren of importeren in de **Module Python Script uitvoeren.**
+Invoer modules zijn optioneel, omdat u gegevens rechtstreeks kunt genereren of importeren in de **script module python uitvoeren** .
 
-### <a name="write-your-python-code"></a>Schrijf uw Python-code
+### <a name="write-your-python-code"></a>Uw Python-code schrijven
 
-De ontwerper biedt een eerste toegangspuntscript dat u bewerken en uw eigen Python-code invoeren. 
+De Designer biedt een eerste toegangs punt script waarmee u uw eigen python-code kunt bewerken en invoeren. 
 
-In dit voorbeeld gebruikt u Panda's om twee kolommen te combineren die in de autogegevensset, **Prijs** en **Pk worden**gevonden, om een nieuwe kolom te creëren, Dollars **per pk**. Deze kolom geeft aan hoeveel je betaalt voor elke pk, die een nuttige functie zou kunnen zijn om te beslissen of een auto is een goede deal voor het geld. 
+In dit voor beeld gebruikt u Pandas om twee kolommen te combi neren die worden gevonden in de automobiele gegevensset, de **prijs** en de **paarden kracht**, om een nieuwe kolom te maken, **dollars per paarden kracht**. Deze kolom geeft aan hoeveel u betaalt voor elk paarden kracht, wat nuttig kan zijn om te bepalen of een auto een goede deal is voor het geld. 
 
-1. Selecteer de module **Python Script uitvoeren.**
+1. Selecteer de **script** module voor het uitvoeren van python.
 
-1. Selecteer in het deelvenster rechts van het canvas het tekstvak **Python-script.**
+1. Selecteer in het deel venster dat rechts van het canvas wordt weer gegeven het **python script** -tekstvak.
 
 1. Kopieer en plak de volgende code in het tekstvak.
 
@@ -70,18 +70,18 @@ In dit voorbeeld gebruikt u Panda's om twee kolommen te combineren die in de aut
         dataframe1['Dollar/HP'] = dataframe1.price / dataframe1.horsepower
         return dataframe1
     ```
-    Uw pijplijn moet er op de volgende afbeelding uitzien:
+    De pijp lijn moet de volgende afbeelding bekijken:
     
-    ![Python-pijplijn uitvoeren](media/how-to-designer-python/execute-python-pipeline.png)
+    ![Python-pijp lijn uitvoeren](media/how-to-designer-python/execute-python-pipeline.png)
 
-    Het itemscript moet de `azureml_main`functie bevatten. Er zijn twee functieparameters die worden toegewezen aan de twee invoerpoorten voor de **Python Script-module uitvoeren.**
+    Het ingangs punt script moet de functie `azureml_main`bevatten. Er zijn twee functie parameters die worden toegewezen aan de twee invoer poorten voor de script module voor het **uitvoeren van python** .
 
-    De retourwaarde moet een Pandas Dataframe zijn. U maximaal twee gegevensframes retourneren als module-uitvoer.
+    De geretourneerde waarde moet een Panda data frame zijn. U kunt Maxi maal twee dataframes retour neren als module-uitvoer.
     
-1. Verzend de pijplijn.
+1. Verzend de pijp lijn.
 
-Nu heb je een dataset met de nieuwe functie **Dollars / HP**, die nuttig kan zijn bij het trainen van een auto recommender. Dit is een voorbeeld van functieextractie en dimensionaliteitsreductie. 
+Nu hebt u een gegevensset met de nieuwe functie **dollars/HP**, wat nuttig kan zijn bij het trainen van een auto aanbeveling. Dit is een voor beeld van het uitpakken en dalen van de functie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [importeren van uw eigen gegevens](how-to-designer-import-data.md) in Azure Machine Learning designer.
+Meer informatie over het [importeren van uw eigen gegevens](how-to-designer-import-data.md) in azure machine learning Designer.
