@@ -1,14 +1,14 @@
 ---
-title: Ongestructureerde gegevens opslaan met Azure Cosmos DB en -functies
+title: Ongestructureerde gegevens opslaan met behulp van Azure Cosmos DB en functies
 description: Ongestructureerde gegevens opslaan met behulp van Azure Functions en Cosmos DB
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: d11b7e7d55d0327bdec0a8bd6c73571cf846fd3c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756649"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ongestructureerde gegevens opslaan met behulp van Azure Functions en Azure Cosmos DB
@@ -53,8 +53,8 @@ U moet een Azure Cosmos DB-account hebben dat gebruikmaakt van de SQL-API voorda
     | Instelling      | Voorgestelde waarde  | Beschrijving                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Parameternaam van document** | taskDocument | Naam die in code verwijst naar het Cosmos DB-object. |
-    | **Databasenaam** | taskDatabase | Naam van database waarin documenten worden opgeslagen. |
-    | **Verzamelnaam** | TaskCollection | Naam van de databaseverzameling. |
+    | **Database naam** | taskDatabase | Naam van database waarin documenten worden opgeslagen. |
+    | **Naam van verzameling** | TaskCollection | Naam van de databaseverzameling. |
     | **Indien waar, worden de Cosmos-DB-database en -verzameling gemaakt** | Geselecteerd | De verzameling bestaat nog niet, dus moet u deze maken. |
     | **Verbinding met het Azure Cosmos DB-account** | Nieuwe instelling | Selecteer **Nieuw** en kies vervolgens uw **abonnement**, het **Database-account** dat u eerder hebt gemaakt, en **Selecteren**. Hiermee maakt u een toepassingsinstelling voor uw accountverbinding. Deze instelling wordt gebruikt door de binding om verbinding te maken met de database. |
     | **Doorvoer op niveau van verzameling** |400 RU| U kunt de doorvoer later opschalen als u de latentie wilt beperken. |

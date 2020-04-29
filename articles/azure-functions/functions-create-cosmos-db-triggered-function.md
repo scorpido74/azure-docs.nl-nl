@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 6045c61dc9837667bfaf01c685f687fcf5816e4c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754210"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Een door Azure Cosmos DB geactiveerde functie maken
@@ -22,7 +22,7 @@ Leer hoe u een functie maakt die wordt geactiveerd wanneer gegevens worden toege
 
 Vereisten om deze zelfstudie te voltooien:
 
-+ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
++ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
@@ -43,7 +43,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Een Azure Cosmos DB-trigger maken
 
-1. Vouw de functie-app **+** uit en klik op de knop naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
+1. Vouw de functie-app uit en **+** Klik op de knop naast **functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
 
    ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -53,7 +53,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Typ `cosmos` in het zoekveld en kies vervolgens de sjabloon **Azure Cosmos DB-trigger**.
 
-1. Selecteer deoptie **Installeren** om de Azure Cosmos DB-extensie in de functie-app te installeren als u daarom wordt gevraagd. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Als hierom wordt gevraagd, selecteert u **installeren** om de Azure Cosmos DB-extensie in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -65,9 +65,9 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
     | ------------ | ---------------- | ------------------------------------------ |
     | **Naam** | Standaard | Gebruik de standaardnaam voor de functie die wordt voorgesteld in de sjabloon.|
     | **Verbinding met het Azure Cosmos DB-account** | Nieuwe instelling | Selecteer **Nieuw** en kies vervolgens uw **abonnement**, het **Database-account** dat u eerder hebt gemaakt, en **Selecteren**. Hiermee maakt u een toepassingsinstelling voor uw accountverbinding. Deze instelling wordt gebruikt door de binding om verbinding te maken met de database. |
-    | **Containernaam** | Items | Naam van de container die moet worden gecontroleerd. |
-    | **Leasecontainer maken als deze niet bestaat** | Geselecteerd | De container bestaat nog niet, dus maak het. |
-    | **Databasenaam** | Taken | Naam van de database met de container die moet worden gecontroleerd. |
+    | **Container naam** | Items | De naam van de container die moet worden bewaakt. |
+    | **Een lease container maken als deze nog niet bestaat** | Geselecteerd | De container bestaat niet en maakt deze dus. |
+    | **Database naam** | Taken | De naam van de data base met de container die moet worden bewaakt. |
 
 1. Klik op **Maken** om de door Azure Cosmos DB geactiveerde functie te maken. Nadat de functie is gemaakt, wordt de functiecode op basis van een sjabloon weergegeven.  
 
@@ -75,9 +75,9 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
     Met deze functiesjabloon worden het aantal documenten en de eerste document-id naar de logboeken geschreven.
 
-Vervolgens maakt u verbinding met uw Azure `Items` Cosmos `Tasks` DB-account en maakt u de container in de database.
+Vervolgens gaat u verbinding maken met uw Azure Cosmos DB-account en `Items` maakt u de `Tasks` container in de-data base.
 
-## <a name="create-the-items-container"></a>De container Items maken
+## <a name="create-the-items-container"></a>De container items maken
 
 1. Open een tweede exemplaar van [Azure Portal](https://portal.azure.com) op een nieuw tabblad in de browser.
 
@@ -87,32 +87,32 @@ Vervolgens maakt u verbinding met uw Azure `Items` Cosmos `Tasks` DB-account en 
 
 1. Kies uw Azure Cosmos DB-account en selecteer vervolgens **Data Explorer**. 
 
-1. Kies **onder SQL API**de optie **Takendatabase** en selecteer **Nieuwe container**.
+1. Kies onder **SQL API**de optie **taken** data base en selecteer **nieuwe container**.
 
     ![Een container maken](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. Gebruik **in Container toevoegen**de instellingen in de tabel onder de afbeelding. 
+1. Gebruik in **container toevoegen**de instellingen die in de tabel onder de afbeelding worden weer gegeven. 
 
-    ![De container Taken definiëren](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
+    ![De taken container definiëren](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | Instelling|Voorgestelde waarde|Beschrijving |
     | ---|---|--- |
     | **Database-id** | Taken |De naam voor de nieuwe database. Dit moet overeenkomen met de naam die is gedefinieerd in de functiebinding. |
     | **Container-ID** | Items | De naam voor de nieuwe container. Dit moet overeenkomen met de naam die is gedefinieerd in de functiebinding.  |
-    | **[Partitiesleutel](../cosmos-db/partition-data.md)** | /category|Een partitiesleutel waarmee gegevens gelijkmatig worden gedistribueerd naar elke partitie. Het selecteren van de juiste partitiesleutel is belangrijk bij het maken van een performante container. | 
+    | **[Partitiesleutel](../cosmos-db/partition-data.md)** | /category|Een partitiesleutel waarmee gegevens gelijkmatig worden gedistribueerd naar elke partitie. Het is belang rijk dat u de juiste partitie sleutel selecteert bij het maken van een uitvoerende container. | 
     | **Doorvoer** |400 RU| Gebruik de standaardwaarde. U kunt de doorvoer later opschalen als u de latentie wilt beperken. |    
 
-1. Klik op **OK** om de container Items te maken. Het kan even duren voordat de container is gemaakt.
+1. Klik op **OK** om de container items te maken. Het kan even duren voordat de container is gemaakt.
 
-Nadat de container die is opgegeven in de functiebinding bestaat, u de functie testen door items toe te voegen aan deze nieuwe container.
+Nadat de container die in de functie binding is opgegeven, bestaat, kunt u de functie testen door items toe te voegen aan deze nieuwe container.
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Vouw de nieuwe container **Items** uit in Gegevensverkenner, kies **Items**en selecteer **Nieuw item**.
+1. Vouw de container nieuwe **items** in Data Explorer uit, kies **items**en selecteer vervolgens **Nieuw item**.
 
-    ![Een item maken in de container Items](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
+    ![Een item in de items container maken](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. Vervang de inhoud van het nieuwe item door de volgende inhoud en kies **Opslaan**.
+1. Vervang de inhoud van het nieuwe item door de volgende inhoud en kies vervolgens **Opslaan**.
 
         {
             "id": "task1",

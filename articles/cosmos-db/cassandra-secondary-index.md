@@ -1,6 +1,6 @@
 ---
-title: Indexering in Azure Cosmos DB Cassandra API-account
-description: Meer informatie over hoe secundaire indexering werkt in azure Azure Cosmos DB Cassandra API-account.
+title: Indexeren in Azure Cosmos DB Cassandra-API-account
+description: Meer informatie over het werken met secundaire indexen in azure Azure Cosmos DB Cassandra-API-account.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,37 +8,37 @@ ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
 ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80758025"
 ---
-# <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Secundaire indexering in Azure Cosmos DB Cassandra API
+# <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Secundaire indexering in Azure Cosmos DB Cassandra-API
 
-De Cassandra API in Azure Cosmos DB maakt gebruik van de onderliggende indexeringsinfrastructuur om de indexeringssterkte bloot te leggen die inherent is aan het platform. In tegenstelling tot de core SQL API indexeert Cassandra API in Azure Cosmos DB echter niet standaard alle kenmerken. In plaats daarvan ondersteunt het secundairindexeren om een index te maken voor bepaalde kenmerken, die zich op dezelfde manier gedraagt als Apache Cassandra.  
+De Cassandra-API in Azure Cosmos DB maakt gebruik van de onderliggende indexerings infrastructuur om de indexerings sterkte weer te geven die inherent is aan het platform. In tegens telling tot de core SQL-API, worden Cassandra-API in Azure Cosmos DB echter niet alle kenmerken standaard geïndexeerd. In plaats daarvan wordt secundaire indexering ondersteund om een index te maken voor bepaalde kenmerken, wat gedraagt zich op dezelfde manier als Apache Cassandra.  
 
-Over het algemeen wordt het afgeraden om filterquery's uit te voeren op de kolommen die niet zijn verdeeld. U moet de syntaxis VAN FILTERING TOESTAAN expliciet gebruiken, wat resulteert in een bewerking die mogelijk niet goed presteert. In Azure Cosmos DB u dergelijke query's uitvoeren op kenmerken met lage kardinaliteit, omdat ze uitwaaieren over partities om de resultaten op te halen.
+Over het algemeen is het niet raadzaam om filter query's uit te voeren op de kolommen die niet zijn gepartitioneerd. U moet expliciete filter syntaxis toestaan gebruiken, wat resulteert in een bewerking die mogelijk niet goed wordt uitgevoerd. In Azure Cosmos DB kunt u dergelijke query's uitvoeren op kenmerken met weinig kardinaliteit, omdat ze uitwaaieren over partities om de resultaten op te halen.
 
-Het wordt afgeraden om een index te maken op een veelgebruikte kolom. Het is verstandig om een index te maken wanneer u de tabel definieert. Dit zorgt ervoor dat gegevens en indexen consistent zijn. Als u momenteel een nieuwe index maakt voor de bestaande gegevens, u de wijziging van de indexvoortgang voor de tabel niet bijhouden. Als u de voortgang van deze bewerking moet bijhouden, moet u de voortgangswijziging aanvragen via een [ondersteuningsticket.]( https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
+Het is niet raadzaam om een index te maken op een regel matig bijgewerkte kolom. Het is verstandig om een index te maken wanneer u de tabel definieert. Dit zorgt ervoor dat gegevens en indexen zich in een consistente staat bevinden. Als u op dat moment een nieuwe index voor de bestaande gegevens maakt, kunt u de wijziging van de index voortgang voor de tabel niet bijhouden. Als u de voortgang van deze bewerking wilt volgen, moet u de voortgangs wijziging aanvragen via een [ondersteunings ticket]( https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 
 > [!NOTE]
-> Secundaire index wordt niet ondersteund op de volgende objecten:
-> - gegevenstypen zoals bevroren verzamelingstypen, decimale en varianttypen.
+> Secundaire index wordt niet ondersteund voor de volgende objecten:
+> - gegevens typen zoals bevroren verzamelings typen, decimalen en variant typen.
 > - Statische kolommen
-> - Clustertoetsen
+> - Cluster sleutels
 
-## <a name="indexing-example"></a>Voorbeeld van indexering
+## <a name="indexing-example"></a>Voor beeld van indexeren
 
-Maak eerst een voorbeeldsleutelruimte en -tabel door de volgende opdrachten uit te voeren op de CQL-shellprompt:
+Maak eerst een voor beeld van een kern ruimte en tabel door de volgende opdrachten uit te voeren op de CQL shell-prompt:
 
 ```shell
 CREATE KEYSPACE sampleks WITH REPLICATION = {'class' : 'SimpleStrategy'};
 CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=400;
 ``` 
 
-Voeg vervolgens voorbeeldgebruikersgegevens in met de volgende opdrachten:
+Voeg vervolgens voorbeeld gebruikers gegevens in met de volgende opdrachten:
 
 ```shell
 insert into sampleks.t1(user_id,lastname) values (1, 'nishu');
@@ -51,26 +51,26 @@ insert into sampleks.t1(user_id,lastname) values (8, 'Theo');
 insert into sampleks.t1(user_id,lastname) values (9, 'jagan');
 ```
 
-Als u probeert de volgende instructie uit te voeren, loopt `ALLOW FILTERING`u tegen een fout aan die u vraagt om : 
+Als u probeert de volgende-instructie uit te voeren, wordt er een fout melding weer met de vraag `ALLOW FILTERING`: 
 
 ```shell
 select user_id, lastname from sampleks.t1 where lastname='nishu';
 ``` 
 
-Hoewel de Cassandra API FILTERING ondersteunt, zoals in de vorige sectie werd vermeld, wordt dit niet aanbevolen. In plaats daarvan moet u een index maken in de zoals weergegeven in het volgende voorbeeld:
+Hoewel de Cassandra-API ondersteuning biedt voor het filteren van toestaan, wordt dit niet aanbevolen. In plaats daarvan moet u een index maken in de, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```shell
 CREATE INDEX ON sampleks.t1 (lastname);
 ```
-Nadat u een index hebt gemaakt op het veld Achternaam, u de vorige query nu met succes uitvoeren. Met De API van Cassandra in Azure Cosmos DB hoeft u geen indexnaam op te geven. Er wordt een `tablename_columnname_idx` standaardindex met indeling gebruikt. Is bijvoorbeeld ` t1_lastname_idx` de indexnaam voor de vorige tabel.
+Nadat u in het veld LastName een index hebt gemaakt, kunt u de vorige query nu uitvoeren. Met Cassandra-API in Azure Cosmos DB hoeft u geen index naam op te geven. Er wordt een standaard index `tablename_columnname_idx` met notatie gebruikt. Bijvoorbeeld, ` t1_lastname_idx` is de index naam voor de vorige tabel.
 
-## <a name="dropping-the-index"></a>De index laten vallen 
-U moet weten wat de indexnaam is om de index te laten vallen. Voer `desc schema` de opdracht uit om de beschrijving van uw tabel te krijgen. De uitvoer van deze opdracht bevat `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)`de indexnaam in de notatie . U vervolgens de indexnaam gebruiken om de index te laten vallen zoals in het volgende voorbeeld wordt weergegeven:
+## <a name="dropping-the-index"></a>De index verwijderen 
+U moet weten wat de index naam is om de index te verwijderen. Voer de `desc schema` opdracht uit om de beschrijving van de tabel op te halen. De uitvoer van deze opdracht bevat de index naam in de indeling `CREATE INDEX tablename_columnname_idx ON keyspacename.tablename(columnname)`. U kunt vervolgens de index naam gebruiken om de index te verwijderen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```shell
 drop index sampleks.t1_lastname_idx;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over hoe [automatisch indexeren](index-overview.md) werkt in Azure Cosmos DB
-* [Apache Cassandra-functies ondersteund door Azure Cosmos DB Cassandra API](cassandra-support.md)
+* Meer informatie over hoe [automatische indexering](index-overview.md) werkt in azure Cosmos db
+* [Apache Cassandra-functies die worden ondersteund door Azure Cosmos DB Cassandra-API](cassandra-support.md)

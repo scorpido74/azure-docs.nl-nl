@@ -1,39 +1,39 @@
 ---
-title: Het milieu en de materialen veranderen
-description: Zelfstudie die laat zien hoe u de hemelkaart en objectmaterialen in een Unity-scène wijzigen.
+title: De omgeving en het materiaal wijzigen
+description: Zelf studie waarin wordt uitgelegd hoe u het lucht schema en object materialen in een eenheids scène wijzigt.
 author: jakrams
 ms.author: jakras
 ms.date: 02/03/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1354ac3cf2c6fc716ac72ae339928fa49171893e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679616"
 ---
-# <a name="tutorial-changing-the-environment-and-materials"></a>Zelfstudie: De omgeving en materialen wijzigen
+# <a name="tutorial-changing-the-environment-and-materials"></a>Zelf studie: de omgeving en het materiaal wijzigen
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * De omgevingskaart van een scène wijzigen.
-> * Materiaalparameters wijzigen.
-> * Aangepaste texturen laden.
+> * Wijzig de omgevings kaart van een scène.
+> * Material-para meters wijzigen.
+> * Aangepaste bitmappatronen laden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelfstudie wordt ervan uitgegaan dat u bekend bent met [Zelfstudie: Werken met externe entiteiten in Unity.](working-with-remote-entities.md) U hebt echter alleen een Unity-project nodig waarmee u verbinding maken met sessies en een model laden, zoals wordt weergegeven in [Zelfstudie: Het opzetten van een Unity-project vanaf nul.](project-setup.md)
+In deze zelf studie wordt ervan uitgegaan dat u bekend bent met de [zelf studie: werken met externe entiteiten in eenheid](working-with-remote-entities.md). U hebt echter alleen een unit-project nodig waarmee u verbinding kunt maken met sessies en een model laden, zoals wordt weer gegeven in [zelf studie: een geheel nieuw eenheids project instellen](project-setup.md).
 
 > [!TIP]
-> De [ARR-samples repository](https://github.com/Azure/azure-remote-rendering) bevat voorbereide Unity-projecten voor alle tutorials in de *Unity-map,* die u als referentie gebruiken.
+> De [opslag plaats](https://github.com/Azure/azure-remote-rendering) voor de ARR-voor beelden bevat voor bereide eenheids projecten voor alle zelf studies in de map *Unity* , die u als referentie kunt gebruiken.
 
-## <a name="change-the-environment-map"></a>De omgevingskaart wijzigen
+## <a name="change-the-environment-map"></a>De omgevings kaart wijzigen
 
-Azure Remote Rendering ondersteunt het gebruik van [sky boxes](../../overview/features/sky.md) (ook wel 'omgevingskaarten' genoemd) om sfeerverlichting te simuleren. Dit is vooral handig wanneer uw objecten *[fysiek gebaseerde rendering](../../overview/features/pbr-materials.md)* gebruiken, zoals onze voorbeeldmodellen doen. ARR wordt ook geleverd met een verscheidenheid aan ingebouwde luchttexturen, die we in deze tutorial zullen gebruiken.
+De externe rendering van Azure biedt ondersteuning voor het gebruik van [lucht vakken](../../overview/features/sky.md) (ook wel ' environment Maps ' genoemd) om omgevings verlichting te simuleren. Dit is vooral handig wanneer uw objecten gebruikmaken *[van fysieke rendering](../../overview/features/pbr-materials.md)*, zoals in de voorbeeld modellen. ARR wordt ook geleverd met een groot aantal ingebouwde lucht patronen, die we in deze zelf studie zullen gebruiken.
 
-Maak een nieuw script genaamd **RemoteSky** en voeg het toe aan een nieuw GameObject. Open het scriptbestand en vervang het door de volgende code:
+Maak een nieuw script met de naam **RemoteSky** en voeg dit toe aan een nieuwe GameObject. Open het script bestand en vervang dit door de volgende code:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -95,15 +95,15 @@ public class RemoteSky : MonoBehaviour
 }
 ```
 
-Houd er `LoadTextureFromSASAsync` rekening mee dat de variant hierboven wordt gebruikt omdat ingebouwde texturen zijn geladen. In het geval van laden vanuit `LoadTextureAsync` [gekoppelde blob-opslag,](../../how-tos/create-an-account.md#link-storage-accounts)gebruikt u de variant. Een voorbeeld voor hoe dit werkt voor modellen is te vinden in [model laden sectie](../../concepts/models.md#loading-models).
+Houd er rekening `LoadTextureFromSASAsync` mee dat de variant hierboven wordt gebruikt omdat ingebouwde bitmappatronen worden geladen. Gebruik de variant in het `LoadTextureAsync` geval van het laden vanuit [gekoppelde Blob-opslag](../../how-tos/create-an-account.md#link-storage-accounts). Een voor beeld van hoe dit werkt voor modellen, vindt u in de [sectie Model laden](../../concepts/models.md#loading-models).
 
-Wanneer u de code uitvoert en door de hemelkaarten schakelt, zult u drastisch verschillende verlichting op uw model opmerken. De achtergrond blijft echter zwart en u de werkelijke luchttextuur niet zien. Dit is opzettelijk, omdat het renderen van een achtergrond storend zou zijn met een Augmented Reality-apparaat. In een goede toepassing, moet u gebruik maken van sky texturen die vergelijkbaar zijn met je echte wereld omgeving, want dit zal helpen om objecten lijken meer echte.
+Wanneer u de code uitvoert en de plattegronden in de lucht inschakelt, ziet u een aanzienlijk andere belichting in uw model. De achtergrond blijft echter zwart en u kunt het echte lucht patroon niet zien. Dit is opzettelijk, omdat het weer geven van een achtergrond zou leiden tot een uitbrei ding van een reality-apparaat. In de juiste toepassing moet u lucht patronen gebruiken die vergelijkbaar zijn met uw echte wereld omgeving, omdat dit ervoor zorgt dat objecten realistischer worden weer gegeven.
 
 ## <a name="modify-materials"></a>Materialen wijzigen
 
-In de vorige zelfstudie hebben we [onderdelen voor het overschrijven](../../overview/features/override-hierarchical-state.md) van de status gebruikt om de tintkleur van geselecteerde objecten te wijzigen. Nu willen we een vergelijkbaar effect bereiken, maar doen dit door het [materiaal](../../concepts/materials.md) van een object aan te passen.
+In de vorige zelf studie hebben we de [status override-onderdelen](../../overview/features/override-hierarchical-state.md) gebruikt om de tint kleur van geselecteerde objecten te wijzigen. Nu willen we een vergelijkbaar effect hebben, maar dat doen door het [materiaal](../../concepts/materials.md) van een object te wijzigen.
 
-Eerst hebben we een script nodig om objecten te kiezen, zoals we deden in [de tweede tutorial.](working-with-remote-entities.md) Als u nog geen **RemoteRaycaster-script** hebt, maakt u het nu. Vervang de inhoud ervan door de volgende code:
+Eerst hebt u een script nodig om objecten te selecteren, zoals in [de tweede zelf studie](working-with-remote-entities.md). Als u nog geen **RemoteRaycaster** -script hebt, moet u dit nu maken. Vervang de inhoud door de volgende code:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -220,9 +220,9 @@ public class RemoteRaycaster : MonoBehaviour
 }
 ```
 
-Voeg de component toe aan het *object RemoteRendering.* Het is verantwoordelijk voor het kiezen van objecten onder de muis en het toevoegen *van RemoteModelEntity* componenten aan de geplukte objecten. Die componentklasse is waar we de werkelijke material change functionaliteit implementeren.
+Voeg het onderdeel toe aan uw *RemoteRendering* Game-object. Het is verantwoordelijk voor het verzamelen van objecten onder de muis en het toevoegen van *RemoteModelEntity* -onderdelen aan de verzamelde objecten. Deze component klasse implementeert de werkelijke materiaal wijzigings functionaliteit.
 
-Als u nog geen **RemoteModelEntity-script** hebt, maakt u deze en vervangt u de inhoud ervan door deze code:
+Als u nog geen **RemoteModelEntity** -script hebt, moet u dit maken en de inhoud vervangen door deze code:
 
 ```csharp
 using UnityEngine;
@@ -314,21 +314,21 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 
-Wanneer u deze code uitvoert, worden objecten waarvan u met de muis zweeft gemarkeerd. Het effect is vergelijkbaar met wat we deden in tutorial 2, maar de manier waarop het wordt bereikt is anders. Hier krijgen we de lijst van materialen op het gekozen object en vervolgens wijzigen de eerste om een andere albedo kleur hebben.
+Wanneer u deze code uitvoert, krijgen de objecten waarop u de muis aanwijzer hebt gemarkeerd de markering. Het resultaat is vergelijkbaar met wat we in de zelf studie 2 hebben gedaan, maar de manier waarop deze wordt behaald, is anders. Hier ziet u de lijst met materialen op het gepickte object en wijzigt u vervolgens de eerste in een andere albedo kleur.
 
 > [!IMPORTANT]
-> Houd er rekening mee dat of deze methode de juiste onderdelen van een model markeert, afhankelijk is van hoe een model wordt geschreven. Het zal perfect werken, als elk object precies één materiaal gebruikt. Echter, als het model niet beschikt over een 1:1 relatie tussen onderdelen en materialen, de naïeve code hierboven zal niet het juiste doen.
+> Houd er rekening mee dat deze methode de juiste onderdelen van een model markeert, afhankelijk van de manier waarop een model is gemaakt. Het werkt perfect als elk object precies één materiaal gebruikt. Als het model echter geen 1:1-relatie heeft tussen onderdelen en materialen, zal de bovenstaande Naïve-code niet het juiste effect hebben.
 
-## <a name="use-a-different-texture"></a>Een andere structuur gebruiken
+## <a name="use-a-different-texture"></a>Een ander patroon gebruiken
 
-[Texturen](../../concepts/textures.md) maken doorgaans deel uit van een bronmodel. Tijdens [modelconversie](../../quickstarts/convert-model.md)worden alle texturen geconverteerd naar de benodigde runtime-indeling en verpakt in het uiteindelijke modelbestand. Als u een structuur wilt vervangen tijdens runtime, moet u deze opslaan in [de DDS-bestandsindeling](https://en.wikipedia.org/wiki/DirectDraw_Surface) en deze uploaden naar Azure blob-opslag. Raadpleeg [deze quickstart-handleiding](../../quickstarts/convert-model.md) voor het maken van een Azure blob-container. Zodra u een blobcontainer hebt, u deze openen in Azure Storage Explorer en uw bestand uploaden via slepen en neerzetten.
+[Bitmappatronen](../../concepts/textures.md) maken meestal deel uit van een bron model. Tijdens de [model conversie](../../quickstarts/convert-model.md)worden alle structuren geconverteerd naar de benodigde runtime-indeling en verpakt in het definitieve model bestand. Als u een structuur tijdens runtime wilt vervangen, moet u deze opslaan in de [DDS-bestands indeling](https://en.wikipedia.org/wiki/DirectDraw_Surface) en uploaden naar Azure Blob-opslag. Raadpleeg [deze Snelstartgids](../../quickstarts/convert-model.md) voor het maken van een Azure Blob-container. Zodra u een BLOB-container hebt, kunt u deze openen in Azure Storage Explorer en het bestand uploaden via slepen en neerzetten.
 
-Aan de runtime-kant u een structuuritem in blobopslag op twee verschillende manieren aanpakken:
+Aan de kant van de runtime kunt u op twee verschillende manieren een structuur element in Blob Storage adresseren:
 
-* Adrestextuur door de SAS URI. Klik daarvoor met de rechtermuisknop op het geüploade bestand en selecteer "**Gedeelde toegangshandtekening ophalen...**" in het contextmenu. Gebruik deze SAS `LoadTextureFromSASAsync` URI met de functievariant (zie voorbeeldcode hieronder).
-* Pak de structuur rechtstreeks aan op blobopslagparameters, voor het geval de [blobopslag is gekoppeld aan het account](../../how-tos/create-an-account.md#link-storage-accounts). Relevante laadfunctie in `LoadTextureAsync`dit geval is .
+* De structuur van het adres van de SAS-URI. Klik hiervoor met de rechter muisknop op het geüploade bestand en selecteer**ophalen Shared Access Signature...** in het context menu. Gebruik deze SAS-URI met `LoadTextureFromSASAsync` de functie variant (zie voorbeeld code hieronder).
+* Adresseer de textuur rechtstreeks aan de Blob Storage-para meters voor het geval de [Blob-opslag is gekoppeld aan het account](../../how-tos/create-an-account.md#link-storage-accounts). In dit geval moet `LoadTextureAsync`u een relevante laad functie gebruiken.
 
-Open nu het script **RemoteModelEntity,** voeg de volgende code toe en verwijder dubbele functies:
+Open nu het script **RemoteModelEntity** , voeg de volgende code toe en verwijder dubbele functies:
 
 ```csharp
     private string textureFile = ""; //<SAS URI for your texture>
@@ -385,11 +385,11 @@ Open nu het script **RemoteModelEntity,** voeg de volgende code toe en verwijder
     }
 ```
 
-Voer deze code uit en zweef over uw model. Als uw model de juiste UV-coördinaten heeft, moet u uw textuur zien verschijnen. Anders ziet u mogelijk alleen een kleurverandering.
+Voer deze code uit en beweeg de muis aanwijzer over uw model. Als uw model juiste UV-coördinaten heeft, ziet u dat uw structuur wordt weer gegeven. Anders is het mogelijk dat u alleen een kleur wijziging ziet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hiermee wordt onze introductiereeks over het gebruik van Azure Remote Rendering with Unity afgesloten. Als volgende stap moet je jezelf vertrouwd te maken een aantal fundamentele concepten van ARR, zoals [sessies,](../../concepts/sessions.md) [entiteiten,](../../concepts/entities.md)en [modellen](../../concepts/models.md) om een dieper begrip op te bouwen. Er zijn ook verschillende functies zoals [lichten,](../../overview/features/lights.md) [overzichtrendering,](../../overview/features/outlines.md) [hiërarchische statusoverschrijvingen](../../overview/features/override-hierarchical-state.md)en [materialen](../../concepts/materials.md) die u in meer detail moet verkennen.
+Op die manier wordt de inleidende serie beëindigd over het gebruik van de externe rendering van Azure met eenheid. Als volgende stap moet u een aantal basis concepten van ARR, zoals [sessies](../../concepts/sessions.md), [entiteiten](../../concepts/entities.md)en [modellen](../../concepts/models.md) , leren kennen om meer inzicht te krijgen. Er zijn ook verschillende functies, zoals [lampen](../../overview/features/lights.md), [overzichts rendering](../../overview/features/outlines.md), [hiërarchische status onderdrukkingen](../../overview/features/override-hierarchical-state.md)en [materialen](../../concepts/materials.md) die u uitvoeriger kunt verkennen.
 
 > [!div class="nextstepaction"]
-> [Unity game objecten en componenten](../../how-tos/unity/objects-components.md)
+> [Unit-Game objecten en-onderdelen](../../how-tos/unity/objects-components.md)

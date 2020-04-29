@@ -1,6 +1,6 @@
 ---
-title: Upgrade naar de nieuwste generatie
-description: Upgrade Azure Synapse Analytics SQL-pool naar de nieuwste generatie Azure-hardware- en opslagarchitectuur.
+title: Upgrade uitvoeren naar de nieuwste generatie
+description: Voer een upgrade uit van de Azure Synapse Analytics SQL-groep naar de nieuwste generatie van Azure hardware-en opslag architectuur.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,33 +12,33 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742750"
 ---
-# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Prestaties optimaliseren door Azure Synapse Analytics SQL-pool te upgraden
+# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Prestaties optimaliseren door de SQL-groep voor Azure Synapse Analytics te upgraden
 
-Upgrade SQL-pool naar de nieuwste generatie Azure-hardware- en opslagarchitectuur.
+Werk SQL-groep bij naar de nieuwste generatie van de Azure-hardware-en opslag architectuur.
 
-## <a name="why-upgrade"></a>Waarom upgraden?
+## <a name="why-upgrade"></a>Waarom bijwerken?
 
-U nu naadloos upgraden naar de SQL-groep Compute Optimized Gen2-laag in de Azure-portal voor [ondersteunde regio's.](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) Als uw regio geen zelfupgrade ondersteunt, u upgraden naar een ondersteunde regio of wachten tot de zelfupgrade beschikbaar is in uw regio. Upgrade nu om te profiteren van de nieuwste generatie Azure-hardware en verbeterde opslagarchitectuur, waaronder snellere prestaties, hogere schaalbaarheid en onbeperkte kolomopslag.
+U kunt nu probleemloos upgraden naar de Gen2-laag van de SQL-groep Compute Optimized in de Azure Portal voor [ondersteunde regio's](gen2-migration-schedule.md#automated-schedule-and-region-availability-table). Als uw regio zelf een upgrade niet ondersteunt, kunt u een upgrade uitvoeren naar een ondersteunde regio of wachten tot de Self-upgrade beschikbaar is in uw regio. Voer nu een upgrade uit om te profiteren van de nieuwste generatie van Azure-hardware en een verbeterde opslag architectuur, inclusief snellere prestaties, hogere schaal baarheid en onbeperkte kolom opslag.
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 > [!IMPORTANT]
-> Deze upgrade is van toepassing op Compute Optimized Gen1-tier SQL-groepen in [ondersteunde regio's.](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)
+> Deze upgrade is van toepassing op het berekenen van geoptimaliseerde SQL-groepen in de gen1-laag in [ondersteunde regio's](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-1. Controleer of uw [regio](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) wordt ondersteund voor GEN1- naar GEN2-migratie. Let op de automatische migratiedatums. Als u conflicten met het geautomatiseerde proces wilt voorkomen, plant u uw handmatige migratie vóór de begindatum van het geautomatiseerde proces.
-2. Als u zich in een regio bevindt die nog niet wordt ondersteund, blijft u controleren of uw regio wordt toegevoegd of [wordt deze bijgewerkt met herstel](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) naar een ondersteunde regio.
-3. Als uw regio wordt ondersteund, [kunt u upgraden via de Azure-portal](#upgrade-in-a-supported-region-using-the-azure-portal)
-4. **Selecteer het voorgestelde prestatieniveau** voor SQL-pool op basis van uw huidige prestatieniveau op de Compute Optimized Gen1-laag met de onderstaande toewijzing:
+1. Controleer of uw [regio](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) wordt ondersteund voor de migratie van GEN1 naar GEN2. Let op de automatische migratie datums. Om conflicten met het geautomatiseerde proces te voor komen, moet u uw hand matige migratie plannen vóór de begin datum van het geautomatiseerde proces.
+2. Als u zich in een regio bevindt die nog niet wordt ondersteund, gaat u door met het herstellen naar een ondersteunde regio om te controleren of de regio is toegevoegd of [bijgewerkt](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) .
+3. Als uw regio wordt ondersteund, moet u [een upgrade uitvoeren via de Azure Portal](#upgrade-in-a-supported-region-using-the-azure-portal)
+4. **Selecteer het voorgestelde prestatie niveau** voor de SQL-groep op basis van uw huidige prestatie niveau voor de gen1-laag voor Compute Optimizing met behulp van de onderstaande toewijzing:
 
-   | Geoptimaliseerde Gen1-laag berekenen | Geoptimaliseerde Gen2-laag berekenen |
+   | Gen1-laag met geoptimaliseerde reken kracht | Gen2-laag met geoptimaliseerde reken kracht |
    | :-------------------------: | :-------------------------: |
    |            DW100            |           DW100c            |
    |            DW200            |           DW200c            |
@@ -54,29 +54,29 @@ U nu naadloos upgraden naar de SQL-groep Compute Optimized Gen2-laag in de Azure
    |           DW6000            |           DW6000c           |
 
 > [!NOTE]
-> Voorgestelde prestatieniveaus zijn geen directe conversie. We raden u bijvoorbeeld aan om van DW600 naar DW500c te gaan.
+> Voorgestelde prestatie niveaus zijn geen directe conversie. U kunt bijvoorbeeld het beste van DW600 naar DW500c.
 
-## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Upgraden in een ondersteund gebied met de Azure-portal
+## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Een upgrade uitvoeren in een ondersteunde regio met behulp van de Azure Portal
 
-- Migratie van Gen1 naar Gen2 via de Azure-portal is permanent. Er is geen proces om terug te keren naar Gen1.
-- SQL-groep moet worden uitgevoerd om te migreren naar Gen2
+- Migratie van gen1 naar Gen2 via de Azure Portal is permanent. Er is geen proces voor het retour neren van gen1.
+- SQL-pool moet worden uitgevoerd om naar Gen2 te kunnen migreren
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Meld u aan bij [Azure Portal](https://portal.azure.com/).
-- Ervoor zorgen dat SQL-pool wordt uitgevoerd - het moet zijn om te migreren naar Gen2
+- Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+- Zorg ervoor dat de SQL-pool actief is. deze moet worden gemigreerd naar Gen2
 
-### <a name="powershell-upgrade-commands"></a>PowerShell-upgradeopdrachten
+### <a name="powershell-upgrade-commands"></a>Power shell-upgrade opdrachten
 
-1. Als de te upgraden SQL-groep met Compute Optimized Gen1-laag wordt onderbroken, [hervat u de SQL-pool](pause-and-resume-compute-portal.md).
+1. Als de met de upgrade geoptimalisatiede SQL-groep voor de gen1-laag wordt onderbroken, wordt de [SQL-groep hervat](pause-and-resume-compute-portal.md).
 
-2. Wees voorbereid op een paar minuten downtime.
+2. Voor bereidingen voor een paar minuten uitval tijd.
 
-3. Identificeer codeverwijzingen naar compute optimized Gen1-prestatieniveaus en wijzig deze naar hun gelijkwaardige Compute Optimized Gen2-prestatieniveau. Hieronder staan twee voorbeelden van waar u codereferenties moet bijwerken voordat u een upgrade uitvoert:
+3. Identificeer code verwijzingen voor het berekenen van geoptimaliseerde gen1-prestatie niveaus en wijzig ze in hun equivalente, geoptimaliseerde Gen2-prestatie niveau. Hieronder vindt u twee voor beelden van waar u code verwijzingen moet bijwerken voordat u een upgrade uitvoert:
 
-   Originele Gen1 PowerShell, opdracht:
+   Oorspronkelijke gen1 Power shell-opdracht:
 
    ```powershell
    Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
@@ -89,10 +89,10 @@ U nu naadloos upgraden naar de SQL-groep Compute Optimized Gen2-laag in de Azure
    ```
 
    > [!NOTE]
-   > -RequestedServiceObjectiveName "DW300" wordt gewijzigd in - RequestedServiceObjectiveName "DW300**c**"
+   > -RequestedServiceObjectiveName "DW300" is gewijzigd in-RequestedServiceObjectiveName "DW300**c**"
    >
 
-   Oorspronkelijke Gen1 T-SQL, opdracht:
+   Oorspronkelijke gen1 T-SQL-opdracht:
 
    ```SQL
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
@@ -105,35 +105,35 @@ U nu naadloos upgraden naar de SQL-groep Compute Optimized Gen2-laag in de Azure
    ```
 
    > [!NOTE]
-   > SERVICE_OBJECTIVE = 'DW300' wordt gewijzigd in SERVICE_OBJECTIVE = 'DW300**c**'
+   > SERVICE_OBJECTIVE = ' DW300 ' is gewijzigd in SERVICE_OBJECTIVE = ' DW300**c**'
 
 ## <a name="start-the-upgrade"></a>De upgrade starten
 
-1. Ga naar de Compute Optimized Gen1 SQL-groep in de Azure-portal. Als de te upgraden SQL-groep met Compute Optimized Gen1-laag wordt onderbroken, [hervat u de SQL-pool](pause-and-resume-compute-portal.md).
-2. Selecteer **Upgrade naar Gen2-kaart** ![onder het tabblad Taken: Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
+1. Ga naar de gen1-SQL-groep met berekenings optimalisatie in de Azure Portal. Als de met de upgrade geoptimalisatiede SQL-groep voor de gen1-laag wordt onderbroken, wordt de [SQL-groep hervat](pause-and-resume-compute-portal.md).
+2. Selecteer **upgrade naar Gen2** -kaart op het tabblad taken ![: Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
 
    > [!NOTE]
-   > Als u de **upgrade naar Gen2-kaart** niet onder het tabblad Taken ziet, is uw abonnementstype beperkt in het huidige gebied.
-   > [Stuur een ondersteuningsticket](sql-data-warehouse-get-started-create-support-ticket.md) in om je abonnement op de witte lijst te krijgen.
+   > Als u de kaart **upgrade naar Gen2** niet op het tabblad taken ziet, is uw abonnements type beperkt in de huidige regio.
+   > [Dien een ondersteunings ticket](sql-data-warehouse-get-started-create-support-ticket.md) in om uw abonnements white list te ontvangen.
 
-3. Zorg ervoor dat uw werkbelasting is voltooid en is verlopen voordat u een upgrade uitvoert. U zult downtime ervaren voor een paar minuten voordat uw SQL-pool weer online is als een Compute Optimized Gen2-tier SQL-pool. **Selecteer Upgrade:**
+3. Zorg ervoor dat uw werk belasting is voltooid en stilgelegd voordat u de upgrade uitvoert. U krijgt een paar minuten de tijd om uw SQL-groep weer online te zetten als een berekenings geoptimaliseerde SQL-groep Gen2 tier. **Selecteer een upgrade**:
 
    ![Upgrade_2](./media/upgrade-to-latest-generation/upgrade-to-gen2-2.png)
 
-4. **Controleer uw upgrade** door de status in de Azure-portal te controleren:
+4. **Controleer de upgrade** door de status te controleren in de Azure portal:
 
    ![Upgrade3](./media/upgrade-to-latest-generation/upgrade-to-gen2-3.png)
 
-   De eerste stap van het upgradeproces gaat door de schaalbewerking ("Upgraden - Offline") waarbij alle sessies worden gedood en verbindingen worden verwijderd.
+   De eerste stap van het upgrade proces loopt door de schaal bewerking (' upgrade-offline '), waarbij alle sessies worden afgebroken en verbindingen worden verwijderd.
 
-   De tweede stap van het upgradeproces is gegevensmigratie ("Upgraden - Online"). Datamigratie is een online trickle background proces. Dit proces verplaatst langzaam kolomgegevens van de oude opslagarchitectuur naar de nieuwe opslagarchitectuur met behulp van een lokale SSD-cache. Gedurende deze periode is uw SQL-pool online voor het opvragen en laden. Uw gegevens zijn beschikbaar voor query's, ongeacht of deze zijn gemigreerd of niet. De gegevensmigratie gebeurt in verschillende snelheden, afhankelijk van de grootte van uw gegevens, uw prestatieniveau en het aantal segmenten van uw kolomarchief.
+   De tweede stap van het upgrade proces is gegevens migratie ("upgrade-online"). Gegevens migratie is een online achtergrond proces voor trickle. Dit proces verplaatst gegevens in kolommen met een lokale SSD-cache langzaam van de oude opslag architectuur naar de nieuwe opslag architectuur. Gedurende deze periode is uw SQL-groep online voor het uitvoeren van query's en laden. Uw gegevens zijn beschikbaar voor query's, ongeacht of deze zijn gemigreerd of niet. De gegevens migratie gebeurt op verschillende tarieven, afhankelijk van de grootte van uw gegevens, het prestatie niveau en het aantal column Store-segmenten.
 
-5. **Optionele aanbeveling:** Zodra de schalingbewerking is voltooid, u het achtergrondproces voor gegevensmigratie versnellen. U gegevensverplaatsing forceren door [Opnieuw opalterindex uit](sql-data-warehouse-tables-index.md) te voeren in alle primaire kolomarchieftabellen die u zou opvragen bij een grotere SLO- en resourceklasse. Deze bewerking is **offline** in vergelijking met het trickle-achtergrondproces, dat uren kan duren, afhankelijk van het aantal en de grootte van uw tabellen. Echter, eenmaal voltooid, zal gegevensmigratie veel sneller zijn dankzij de nieuwe verbeterde opslagarchitectuur met hoogwaardige rijgroepen.
+5. **Optionele aanbeveling:** Zodra de schaal bewerking is voltooid, kunt u het achtergrond proces voor gegevens migratie versnellen. U kunt het verplaatsen van gegevens afdwingen door [ALTER index Rebuild](sql-data-warehouse-tables-index.md) uit te voeren op alle primaire column Store-tabellen die u wilt doorzoeken op een grotere SLO en resource klasse. Deze bewerking is **offline** vergeleken met het trickle-achtergrond proces. Dit kan uren duren, afhankelijk van het aantal en de grootte van uw tabellen. Zodra de gegevens zijn gemigreerd, is het echter veel sneller als gevolg van de nieuwe architectuur voor uitgebreide opslag met Rijg roepen van hoge kwaliteit.
 
 > [!NOTE]
-> Opnieuw herstellen van de index is een offlinebewerking en de tabellen zijn pas beschikbaar als de wederopbouw is voltooid.
+> Alter index Rebuild is een offline bewerking en de tabellen zijn pas beschikbaar als het opnieuw opbouwen is voltooid.
 
-Met de volgende query worden de vereiste opdrachten voor opnieuw opbouwen van de alter-index gegenereerd om de gegevensmigratie te versnellen:
+Met de volgende query worden de vereiste opdrachten Alter index Rebuild voor het versnellen van de gegevens migratie gegenereerd:
 
 ```sql
 SELECT 'ALTER INDEX [' + idx.NAME + '] ON ['
@@ -178,49 +178,49 @@ FROM   sys.indexes idx
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ```
 
-## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Upgraden vanuit een geografische Azure-regio met herstel via de Azure-portal
+## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Voer een upgrade uit van een geografische regio in azure met behulp van Restore via de Azure Portal
 
-## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Een door de gebruiker gedefinieerd herstelpunt maken met de Azure-portal
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Een door de gebruiker gedefinieerd herstel punt maken met behulp van de Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Navigeer naar de SQL-groep waarvoor u een herstelpunt wilt maken.
+2. Ga naar de SQL-groep waarvoor u een herstel punt wilt maken.
 
-3. Selecteer boven aan de sectie Overzicht de optie **+Nieuw herstelpunt .**
+3. Klik boven aan de sectie Overzicht en selecteer **+ Nieuw herstel punt**.
 
-    ![Nieuw herstelpunt](./media/upgrade-to-latest-generation/creating_restore_point_0.png)
+    ![Nieuw herstel punt](./media/upgrade-to-latest-generation/creating_restore_point_0.png)
 
-4. Geef een naam op voor uw herstelpunt.
+4. Geef een naam op voor het herstel punt.
 
-    ![Naam van herstelpunt](./media/upgrade-to-latest-generation/creating_restore_point_1.png)
+    ![Naam van herstel punt](./media/upgrade-to-latest-generation/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Een actieve of onderbroken database herstellen met de Azure-portal
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Een actieve of onderbroken data base herstellen met behulp van de Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Navigeer naar de SQL-groep waaruit u wilt herstellen.
-3. Selecteer boven aan de sectie Overzicht de optie **Herstellen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Ga naar de SQL-groep waarvan u wilt herstellen.
+3. Klik boven aan de sectie Overzicht op **herstellen**.
 
     ![ Overzicht van Herstellen](./media/upgrade-to-latest-generation/restoring_0.png)
 
-4. Selecteer **Automatische herstelpunten** of **door de gebruiker gedefinieerde herstelpunten**. Selecteer een door de **gebruiker gedefinieerd herstelpunt** of **Maak een nieuw door de gebruiker gedefinieerd herstelpunt voor**door de gebruiker gedefinieerde herstelpunten. Selecteer voor de server **Nieuw maken** en kies een server in een door Gen2 ondersteunde geografische regio.
+4. Selecteer **automatische herstel punten** of door de **gebruiker gedefinieerde herstel punten**. Selecteer voor door de gebruiker gedefinieerde herstel punten **een herstel punt dat door de gebruiker is gedefinieerd** of **Maak een nieuw, door de gebruiker gedefinieerd herstel punt**. Voor de-server selecteert u **nieuwe maken** en kiest u een server in een geografische regio met Gen2-ondersteuning.
 
     ![Automatische herstelpunten](./media/upgrade-to-latest-generation/restoring_1.png)
 
-## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Herstellen vanuit een Azure-geografisch gebied met PowerShell
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Herstellen vanuit een geografische regio in azure met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als u een database wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Als u een Data Base wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
 > [!NOTE]
-> U een geo-herstel uitvoeren naar Gen2! Geef hiervoor een Gen2 ServiceObjectiveName (bijvoorbeeld DW1000**c)** op als optionele parameter.
+> U kunt een geo-herstel bewerking uitvoeren op Gen2. Als u dit wilt doen, geeft u een Gen2 ServiceObjectiveName op (bijvoorbeeld DW1000**c**) als een optionele para meter.
 
 1. Open Windows PowerShell.
 2. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
-3. Selecteer het abonnement dat de database bevat die moet worden hersteld.
-4. Haal de database die u wilt herstellen.
-5. Maak de herstelaanvraag voor de database en geef een Gen2 ServiceObjectiveName op.
-6. Controleer de status van de geoherstelde database.
+3. Selecteer het abonnement dat de Data Base bevat die u wilt herstellen.
+4. Haal de Data Base op die u wilt herstellen.
+5. Maak de herstel aanvraag voor de data base, waarbij u een Gen2 ServiceObjectiveName opgeeft.
+6. Controleer de status van de geo-herstelde data base.
 
 ```Powershell
 Connect-AzAccount
@@ -238,12 +238,12 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> Zie [Uw database configureren na herstel](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)als u uw database wilt configureren nadat deze is voltooid.
+> Als u de Data Base wilt configureren nadat de herstel bewerking is voltooid, raadpleegt u [de data base configureren na herstel](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
-De herstelde database is tde-ingeschakeld als de brondatabase tde-ingeschakeld is.
+De herstelde data base wordt TDE ingeschakeld als de bron database TDE is ingeschakeld.
 
-Als u problemen ondervindt met uw SQL-groep, maakt u een [ondersteuningsaanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar 'Gen2-upgrade' als mogelijke oorzaak.
+Als u problemen ondervindt met de SQL-pool, maakt u een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw bijgewerkte SQL-pool is online. Zie [Resourceklassen voor Workload Management](resource-classes-for-workload-management.md)om te profiteren van de verbeterde architectuur.
+De bijgewerkte SQL-groep is online. Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md)om te profiteren van de verbeterde architectuur.

@@ -1,75 +1,75 @@
 ---
-title: Een kennisbank bewerken - QnA Maker
-description: Met QnA Maker u de inhoud van uw kennisbank beheren door een gebruiksvriendelijke bewerkingservaring te bieden.
+title: Een Knowledge Base bewerken-QnA Maker
+description: Met QnA Maker kunt u de inhoud van uw Knowledge Base beheren door een gebruiks vriendelijke ervaring te bieden.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 3cf5dcedd4d2cfa82fda002b71abca1e5bea4b18
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756741"
 ---
-# <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-paren bewerken in uw kennisbank
+# <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-paren in uw Knowledge Base bewerken
 
-Met QnA Maker u de inhoud van uw kennisbank beheren door een gebruiksvriendelijke bewerkingservaring te bieden.
+Met QnA Maker kunt u de inhoud van uw Knowledge Base beheren door een gebruiks vriendelijke ervaring te bieden.
 
-QnA-paren worden toegevoegd vanuit een gegevensbron, zoals een bestand of URL, of toegevoegd als redactionele bron. Een redactionele bron geeft aan dat het QnA-paar handmatig is toegevoegd aan de QnA-portal. Alle QnA-paren zijn beschikbaar voor bewerking.
+QnA-paren worden toegevoegd uit een gegevens bron, zoals een bestand of URL, of worden toegevoegd als een redactionele bron. Een redactionele bron geeft aan dat het QnA paar hand matig is toegevoegd in de QnA-Portal. Alle QnA-paren zijn beschikbaar om te bewerken.
 
-## <a name="add-an-editorial-qna-pair"></a>Een redactioneel QnA-paar toevoegen
-1. Meld u aan bij de [QnA-portal](https://www.qnamaker.ai/)en selecteer vervolgens de kennisbank om het QnA-paar aan toe te voegen.
-1. Selecteer op de **pagina EDIT** van de kennisbank **QnA-paar toevoegen** om een nieuw QnA-paar toe te voegen.
+## <a name="add-an-editorial-qna-pair"></a>Een redactionel QnA-paar toevoegen
+1. Meld u aan bij de [QnA-Portal](https://www.qnamaker.ai/)en selecteer vervolgens de Knowledge Base waaraan u het QnA-paar wilt toevoegen.
+1. Selecteer op de pagina **bewerken** van de Knowledge Base **QnA paar toevoegen** om een nieuw QnA-paar toe te voegen.
 
-1. Voeg in de nieuwe rij QnA-paar de vereiste **velden Vraag** en **Antwoord** toe. De andere velden zijn optioneel. Alle velden kunnen op elk gewenst moment worden gewijzigd.
+1. Voeg in de rij nieuw QnA paar de vereiste **vraag** -en **antwoord** velden toe. De andere velden zijn optioneel. Alle velden kunnen op elk gewenst moment worden gewijzigd.
 
-1. Voeg eventueel **alternatieve formuleringen**toe . Alternatieve formulering is elke vorm van de vraag die aanzienlijk verschilt van de oorspronkelijke vraag, maar moet hetzelfde antwoord bieden.
+1. Voeg eventueel **alternatieve formule ring**toe. Alternatieve formule ring is een vorm van de vraag die significant afwijkt van de oorspronkelijke vraag, maar moet hetzelfde antwoord geven.
 
-    Wanneer uw kennisbasis wordt gepubliceerd en u [actief leren](use-active-learning.md) hebt ingeschakeld, verzamelt QnA Maker alternatieve formuleringskeuzes die u accepteren. Deze keuzes worden geselecteerd om de nauwkeurigheid van de voorspelling te verhogen.
+    Wanneer uw Knowledge Base is gepubliceerd en u [actief leren](use-active-learning.md) hebt ingeschakeld, QnA maker u alternatieve opties voor formule ring verzamelen die u kunt accepteren. Deze opties worden geselecteerd om de nauw keurigheid van de voor spelling te verg Roten.
 
-1. Voeg eventueel **metagegevens**toe . Als u metagegevens wilt weergeven, selecteert u **Weergaveopties** in het contextmenu. Metagegevens bieden filters voor de antwoorden die de clienttoepassing, zoals een chatbot, biedt.
+1. Voeg eventueel **meta gegevens**toe. Selecteer **weergave opties** in het context menu om meta gegevens weer te geven. Meta gegevens bieden filters voor de antwoorden die de client toepassing, zoals een chat-bot, biedt.
 
-1. Voeg eventueel **vervolgprompts**toe. Vervolgprompts bieden extra gesprekspaden naar de clienttoepassing om aan de gebruiker te presenteren.
+1. U kunt eventueel **opvolgings aanwijzingen**toevoegen. Bij opvolgings prompts worden extra conversatie paden naar de client toepassing voor de gebruiker weer gegeven.
 
-1. Selecteer **Opslaan en trainen** om voorspellingen te zien, waaronder het nieuwe QnA-paar.
+1. Selecteer **opslaan en trainen** om voor spellingen te zien, met inbegrip van het nieuwe QnA-paar.
 
 ## <a name="edit-a-qna-pair"></a>Een QnA-paar bewerken
 
-Elk veld in een QnA-paar kan worden bewerkt, ongeacht de oorspronkelijke gegevensbron. Sommige velden zijn mogelijk niet zichtbaar vanwege de huidige instellingen **voor weergaveopties,** die te vinden zijn op de contextgereedschapsbalk.
+Elk veld in een QnA paar kan worden bewerkt, ongeacht de oorspronkelijke gegevens bron. Sommige velden zijn mogelijk niet zichtbaar vanwege de instellingen voor de huidige **weergave opties** , die u vindt in de context hulpprogramma balk.
 
 ## <a name="delete-a-qna-pair"></a>Een QnA-paar verwijderen
 
-Als u een QnA wilt verwijderen, klikt u op het **pictogram verwijderen** helemaal rechts van de qna-rij. Dit is een permanente operatie. Het kan niet ongedaan worden gemaakt. Overweeg uw KB te exporteren vanaf de **pagina Publiceren** voordat u sets verwijderde.
+Als u een QnA wilt verwijderen, klikt u op het pictogram **verwijderen** helemaal rechts van de rij QnA. Dit is een permanente bewerking. Deze kan niet ongedaan worden gemaakt. U kunt uw KB exporteren vanaf de pagina **publiceren** voordat u sets verwijdert.
 
-![QnA-paar verwijderen](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![QnA paar verwijderen](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="find-the-qna-pair-id"></a>Zoek de QnA-paar-id
+## <a name="find-the-qna-pair-id"></a>De QnA-paar-ID zoeken
 
-Als u de QnA-paar-id wilt vinden, u deze op twee plaatsen vinden:
+Als u de QnA-paar-ID moet vinden, kunt u deze op twee plaatsen vinden:
 
-* Plaats de plaats in het delete-pictogram op de qna-paarrij waarin u geïnteresseerd bent. De zwevende tekst bevat de QnA-paar-ID.
-* Exporteer de kennisbank. Elk QnA-paar in de kennisbank bevat de QnA-paar-ID.
+* Beweeg de muis aanwijzer over het pictogram verwijderen op de QnA die u interesseren. De aanwijs tekst bevat de QnA-paar-ID.
+* De Knowledge Base exporteren. Elk QnA-paar in de Knowledge Base bevat de QnA-paar ID.
 
 ## <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
 
-Voeg alternatieve vragen toe aan een bestaand QnA-paar om de kans op een overeenkomst met een gebruikersquery te verbeteren.
+Voeg alternatieve vragen toe aan een bestaand QnA-paar om de kans te verg Roten dat er een overeenkomst is met een gebruikers query.
 
 ![Alternatieve vragen toevoegen](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
 ## <a name="linking-qna-pairs"></a>QnA-paren koppelen
 
-Het koppelen van QnA-paren is voorzien van [follow-upprompts.](multiturn-conversation.md) Dit is een logische verbinding tussen QnA paren, beheerd op het niveau van de kennisbasis. U vervolgaanwijzingen bewerken in de QnA Maker-portal.
+Het koppelen van QnA-paren wordt bij [opvolgings aanwijzingen](multiturn-conversation.md)gegeven. Dit is een logische verbinding tussen QnA-paren die worden beheerd op het niveau van de kennis base. U kunt opvolgings prompts bewerken in de QnA Maker Portal.
 
-Je QnA-paren niet koppelen aan de metadata van het antwoord.
+U kunt geen QnA-paren koppelen in de meta gegevens van het antwoord.
 
-## <a name="add-metadata"></a>Metagegevens toevoegen
+## <a name="add-metadata"></a>Meta gegevens toevoegen
 
-Voeg metagegevenssets toe door eerst **Weergaveopties te**selecteren en vervolgens **metagegevens weergeven te**selecteren . Hiermee wordt de kolom metagegevens weergegeven. Selecteer vervolgens **+** het teken om een metagegevensset toe te voegen. Deze set bestaat uit één sleutel en één waarde.
+Voeg sets meta gegevens toe door eerst **weergave opties**te selecteren en vervolgens **meta gegevens weer geven**te selecteren. Hiermee wordt de kolom meta gegevens weer gegeven. Selecteer vervolgens het **+** teken om een set meta gegevens toe te voegen. Deze set bestaat uit één sleutel en één waarde.
 
-## <a name="save-changes-to-the-qna-pairs"></a>Wijzigingen opslaan in de QnA-paren
+## <a name="save-changes-to-the-qna-pairs"></a>Wijzigingen in de QnA-paren opslaan
 
-Selecteer periodiek **Opslaan en trainen** nadat u bewerkingen hebt aangebracht om te voorkomen dat wijzigingen verloren gaan.
+Selecteer regel matig **opslaan en trainen** na het maken van bewerkingen om te voor komen dat wijzigingen verloren gaan.
 
-![Metagegevens toevoegen](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+![Meta gegevens toevoegen](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

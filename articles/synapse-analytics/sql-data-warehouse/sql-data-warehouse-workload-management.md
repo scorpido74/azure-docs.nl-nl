@@ -1,6 +1,6 @@
 ---
 title: Werklastbeheer
-description: Richtlijnen voor het implementeren van workloadbeheer in Azure Synapse Analytics.
+description: Richt lijnen voor het implementeren van workload Management in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,47 +12,47 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744234"
 ---
-# <a name="what-is-workload-management"></a>Wat is workloadmanagement?
+# <a name="what-is-workload-management"></a>Wat is werkbelasting beheer?
 
-Het uitvoeren van gemengde workloads kan resourceuitdagingen opleveren op drukke systemen.  Solution Architects zoekt naar manieren om klassieke activiteiten voor gegevensopslag (zoals laden, transformeren en opvragen van gegevens) te scheiden om ervoor te zorgen dat er voldoende resources zijn om SLA's te raken.  
+Het uitvoeren van gemengde werk belastingen kan problemen met bronnen op drukke systemen opleveren.  Oplossingen voor de oplossing van de klassieke gegevensopslag activiteiten (zoals het laden, transformeren en doorzoeken van gegevens) kunnen worden gebruikt om ervoor te zorgen dat er voldoende resources zijn om te voldoen aan de Sla's.  
 
-Fysieke serverisolatie kan leiden tot zakken met infrastructuur die onderbenut, overboekt of in een staat verkeren waarin caches voortdurend worden voorbereid met hardware die start en stopt.  Een succesvol workloadmanagementschema beheert effectief resources, zorgt voor een zeer efficiënt gebruik van resources en maximaliseert het rendement op investeringen (ROI).
+Het isoleren van fysieke servers kan leiden tot een plek in de vorm van een infra structuur die te weinig wordt gebruikt, wordt overboekt of een status waarin caches worden uitgevoerd met hardware die wordt gestart en gestopt.  Een succesvol Management schema voor werk belasting beheert resources effectief, zorgt voor zeer efficiënt resource gebruik en maximaliseert het rendement op investeringen (ROI).
 
-Een werkbelasting voor een gegevensmagazijn verwijst naar alle bewerkingen die zich voordoen met betrekking tot een gegevensmagazijn. De diepte en breedte van deze componenten zijn afhankelijk van het volwassenheidsniveau van het datawarehouse.  De werkbelasting van het datawarehouse omvat:
+Een werk belasting van een Data Warehouse verwijst naar alle bewerkingen die in verband staan met een Data Warehouse. De diepte en breedte van deze onderdelen zijn afhankelijk van het niveau van de verval datum van het Data Warehouse.  De werk belasting van het Data Warehouse omvat:
 
 - Het hele proces van het laden van gegevens in het magazijn
-- Analyse en rapportage van datawarehouses uitvoeren
-- Gegevens beheren in het datawarehouse
-- Gegevens exporteren uit het datawarehouse
+- Data Warehouse-analyse en-rapportage uitvoeren
+- Gegevens in het Data Warehouse beheren
+- Gegevens exporteren uit het Data Warehouse
 
-De prestatiecapaciteit van een datawarehouse wordt bepaald door de [datawarehouse-eenheden.](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+De capaciteit van de prestaties van een Data Warehouse wordt bepaald door de [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md).
 
-- Zie [Geheugen- en gelijktijdigheidslimieten](memory-concurrency-limits.md)voor alle prestatieprofielen om de resources te bekijken die zijn toegewezen aan alle prestatieprofielen.
-- Als u de capaciteit wilt aanpassen, u [op- of omlaag schalen.](quickstart-scale-compute-portal.md)
+- Zie [geheugen en gelijktijdigheids limieten](memory-concurrency-limits.md)om de resources weer te geven die voor alle prestatie profielen zijn toegewezen.
+- Als u de capaciteit wilt aanpassen, kunt u [omhoog of omlaag schalen](quickstart-scale-compute-portal.md).
 
-## <a name="workload-management-concepts"></a>Concepten voor werkbelastingbeheer
+## <a name="workload-management-concepts"></a>Concepten van workload Management
 
-In het verleden hebt u voor SQL Analytics in Azure Synapse de queryprestaties beheerd via [resourceklassen.](resource-classes-for-workload-management.md)  Resourceklassen toegestaan voor het toewijzen van geheugen aan een query op basis van het lidmaatschap van een rol.  De primaire uitdaging met resources klassen is dat, eenmaal geconfigureerd, was er geen governance of de mogelijkheid om de werkbelasting te controleren.  
+In het verleden heeft u voor SQL Analytics in azure Synapse de query prestaties beheerd via [resource klassen](resource-classes-for-workload-management.md).  Resource klassen die zijn toegestaan om geheugen toe te wijzen aan een query op basis van het lidmaatschap van de rol.  De primaire uitdaging met resource klassen is dat na de configuratie geen governance of de mogelijkheid is om de werk belasting te beheren.  
 
-Door bijvoorbeeld een ad-hoc gebruikersrollidmaatschap toe te kennen aan smallrc, kon die gebruiker 100% van het geheugen op het systeem verbruiken.  Met resourceklassen is er geen manier om resources te reserveren en ervoor te zorgen dat resources beschikbaar zijn voor kritieke workloads.
+Als u bijvoorbeeld het lidmaatschap van een ad-hoc gebruikersrol wilt verlenen aan smallrc, mag die gebruiker 100% van het geheugen op het systeem gebruiken.  Met resource klassen is er geen manier om te reserveren en om ervoor te zorgen dat resources beschikbaar zijn voor kritieke werk belastingen.
 
-Synapse SQL-poolworkloadbeheer in Azure Synapse bestaat uit drie concepten op hoog niveau: [Workload Classification,](sql-data-warehouse-workload-classification.md) [Workload Importance](sql-data-warehouse-workload-importance.md) en Workload [Isolation](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden geven u meer controle over hoe uw werkbelasting gebruik maakt van systeembronnen.
+Synapse van het werk belasting van de SQL-pool in azure Synapse bestaat uit drie concepten op hoog niveau: [werk belasting classificatie](sql-data-warehouse-workload-classification.md), [urgentie van werk](sql-data-warehouse-workload-importance.md) belasting en [isolatie van werk belastingen](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden bieden u meer controle over de manier waarop uw werk belasting gebruikmaakt van systeem bronnen.
 
-Workloadclassificatie is het concept om een aanvraag toe te stellen aan een werkbelastinggroep en belangrijke niveaus in te stellen.  Historisch gezien werd deze opdracht gedaan via rollidmaatschap met behulp van [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Dit kan nu via de [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  De classificatiemogelijkheid biedt een uitgebreidere set opties, zoals label, sessie en tijd om aanvragen te classificeren.
+Classificatie van werk belasting is het concept van het toewijzen van een aanvraag aan een werkbelasting groep en het instellen van urgentie niveaus.  Deze toewijzing is historisch uitgevoerd via het lidmaatschap van de rol met behulp van [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Dit kan nu worden gedaan via de [werk belasting CLASSIFER maken](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  De classificatie mogelijkheid biedt een uitgebreidere set opties zoals label, sessie en tijd voor het classificeren van aanvragen.
 
-Het werkgebied beïnvloedt de volgorde waarin een aanvraag toegang krijgt tot resources.  Op een bezet systeem heeft een aanvraag met een groter belang eerst toegang tot bronnen.  Belang kan ook zorgen voor geordende toegang tot sloten.
+De werkbelasting urgentie is van invloed op de volg orde waarin een aanvraag toegang krijgt tot resources.  Een aanvraag met een hogere prioriteit heeft in een systeem voor het eerst toegang tot resources.  De urgentie kan ook de bestelde toegang tot vergren delingen garanderen.
 
-Workload isolation reserveert resources voor een workloadgroep.  Resources die zijn gereserveerd in een werkbelastinggroep, worden uitsluitend voor die werkbelastinggroep bewaard om de uitvoering te garanderen.  Met werkbelastinggroepen u ook de hoeveelheid resources definiëren die per aanvraag zijn toegewezen, net zoals resourceklassen dat doen.  Workloadgroepen geven u de mogelijkheid om de hoeveelheid resources te reserveren of te beperken die een set aanvragen kan verbruiken.  Ten slotte zijn werkbelastinggroepen een mechanisme om regels, zoals een time-out voor query's, toe te passen op aanvragen.  
+Met werkbelasting isolatie worden resources voor een werkbelasting groep gereserveerd.  Resources die in een werkbelasting groep zijn gereserveerd, worden uitsluitend voor die werkbelasting groep bewaard om te worden uitgevoerd.  Met werkbelasting groepen kunt u ook de hoeveelheid resources definiëren die per aanvraag worden toegewezen, net als bij resource klassen.  Werkbelasting groepen bieden u de mogelijkheid om de hoeveelheid resources die een set aanvragen kan verbruiken, te reserveren of in te stellen.  Tot slot zijn werkbelasting groepen een mechanisme voor het Toep assen van regels, zoals querytime-out, op aanvragen.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Workloadclassificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over workloadclassificatie.  
-- Zie [Werkbelastingisolatie](sql-data-warehouse-workload-isolation.md)voor meer informatie over werkbelastingisolatie.  
-- Zie [Werkbelastingbelang](sql-data-warehouse-workload-importance.md)voor meer informatie over het belang van de werkbelasting.  
-- Zie Workload Management Portal Monitoring voor meer informatie over [workloadmanagementmonitoring.](sql-data-warehouse-workload-management-portal-monitor.md)  
+- Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over de classificatie van werk belastingen.  
+- Zie [isolatie van werk belasting](sql-data-warehouse-workload-isolation.md)voor meer informatie over isolatie van werk belastingen.  
+- Zie urgentie van het [werk belasting](sql-data-warehouse-workload-importance.md)voor meer informatie over het belang van de werk belasting.  
+- Zie voor meer informatie over bewaking van workload Management [werk belasting Beheerportal bewaking](sql-data-warehouse-workload-management-portal-monitor.md).  

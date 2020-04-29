@@ -1,38 +1,38 @@
 ---
 title: Entiteiten
-description: Definitie van entiteiten in het bereik van de Azure Remote Rendering API
+description: Definitie van entiteiten in het bereik van de Azure remote rendering API
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681946"
 ---
 # <a name="entities"></a>Entiteiten
 
-Een *entiteit* vertegenwoordigt een roerend object in de ruimte en is de fundamentele bouwsteen van op afstand gerenderde inhoud.
+Een *entiteit* vertegenwoordigt een beweegbaar object in ruimte en is de fundamentele bouw steen van extern gerenderde inhoud.
 
-## <a name="entity-properties"></a>Entiteitseigenschappen
+## <a name="entity-properties"></a>Entiteits eigenschappen
 
-Entiteiten hebben een transformatie gedefinieerd door een positie, rotatie en schaal. Op zichzelf hebben entiteiten geen waarneembare functionaliteit. In plaats daarvan wordt gedrag toegevoegd via componenten, die zijn gekoppeld aan entiteiten. Als u bijvoorbeeld een [CutPlaneComponent](../overview/features/cut-planes.md) koppelt, wordt een cut-vlak gemaakt op de positie van de entiteit.
+Entiteiten hebben een trans formatie die is gedefinieerd door een positie, rotatie en schaal. Op zichzelf hebben entiteiten geen waarneem bare functionaliteit. In plaats daarvan wordt gedrag toegevoegd via onderdelen, die zijn gekoppeld aan entiteiten. Als u bijvoorbeeld een [CutPlaneComponent](../overview/features/cut-planes.md) koppelt, wordt er een knip vlak gemaakt op de positie van de entiteit.
 
-Het belangrijkste aspect van de entiteit zelf is de hiërarchie en de daaruit voortvloeiende hiërarchische transformatie. Wanneer bijvoorbeeld meerdere entiteiten als kinderen aan een gedeelde bovenliggende entiteit zijn gekoppeld, kunnen al deze entiteiten worden verplaatst, geroteerd en in samenschalen door de transformatie van de bovenliggende entiteit te wijzigen.
+Het belangrijkste aspect van de entiteit zelf is de hiërarchie en de resulterende hiërarchische trans formatie. Als er bijvoorbeeld meerdere entiteiten als onderliggende items zijn gekoppeld aan een gedeelde bovenliggende entiteit, kunnen al deze entiteiten worden verplaatst, geroteerd en geschaald in gelijktijdig door de trans formatie van de bovenliggende entiteit te wijzigen.
 
-Een entiteit is uniek eigendom van de bovenliggende, wat `Entity.Destroy()`betekent dat wanneer de ouder wordt vernietigd met , zo zijn de kinderen en alle verbonden [componenten](components.md). Zo wordt het verwijderen van een model `Destroy` van de scène bereikt door `AzureSession.Actions.LoadModelAsync()` een beroep te `AzureSession.Actions.LoadModelFromSASAsync()`doen op de root-node van een model, geretourneerd door of de SAS-variant .
+Een entiteit is een unieke eigenaar van het bovenliggende item, wat inhoudt dat wanneer het bovenliggende `Entity.Destroy()`item wordt vernietigd met, de onderliggende en alle verbonden [onderdelen](components.md)hiervan zijn. Het verwijderen van een model uit de scène wordt dus gerealiseerd door `Destroy` te bellen op het hoofd knooppunt van een model, `AzureSession.Actions.LoadModelAsync()` dat wordt geretourneerd door `AzureSession.Actions.LoadModelFromSASAsync()`of door de SAS-variant.
 
-Entiteiten worden gemaakt wanneer de server inhoud laadt of wanneer de gebruiker een object aan de scène wil toevoegen. Als een gebruiker bijvoorbeeld een cutplane wil toevoegen om het interieur van een net te visualiseren, kan de gebruiker een entiteit maken waar het vlak moet bestaan en er vervolgens de component cut-vlak aan toevoegen.
+Entiteiten worden gemaakt wanneer de server inhoud laadt of wanneer de gebruiker een object wil toevoegen aan de scène. Als een gebruiker bijvoorbeeld een knip vlak wil toevoegen om de binnenkant van een net te visualiseren, kan de gebruiker een entiteit maken waarbij het vlak moet bestaan en vervolgens de component knip vlak toevoegen.
 
-## <a name="query-functions"></a>Queryfuncties
+## <a name="query-functions"></a>Query functies
 
-Er zijn twee typen queryfuncties op entiteiten: synchrone en asynchrone aanroepen. Synchrone query's kunnen alleen worden gebruikt voor gegevens die aanwezig zijn op de client en niet veel berekeningen met zich meebrengen. Voorbeelden hiervan zijn query's voor componenten, relatieve objecttransformaties of bovenliggende/onderliggende relaties. Asynchrone query's worden gebruikt voor gegevens die zich alleen op de server bevinden of extra berekeningen met zich meebrengt die te duur zijn om op de client uit te voeren. Voorbeelden zijn ruimtelijke grenzen query's of meta gegevens query's.
+Er zijn twee soorten query functies voor entiteiten: synchrone en asynchrone aanroepen. Synchrone query's kunnen alleen worden gebruikt voor gegevens die aanwezig zijn op de client en heeft geen veel reken kracht. Voor beelden zijn query's voor onderdelen, relatieve object transformaties of bovenliggende/onderliggende relaties. Asynchrone query's worden gebruikt voor gegevens die zich alleen op de server bevinden of een extra berekening vergt die te duur is om te worden uitgevoerd op de client. Voor beelden zijn ruimtelijke grenzen query's of query's voor meta gegevens.
 
-### <a name="querying-components"></a>Onderdelen opvragen
+### <a name="querying-components"></a>Query's uitvoeren op onderdelen
 
-Als u een onderdeel van `FindComponentOfType`een bepaald type wilt vinden, gebruikt u :
+Als u een onderdeel van een specifiek type wilt zoeken `FindComponentOfType`, gebruikt u:
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
@@ -41,12 +41,12 @@ CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(Objec
 CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 ```
 
-### <a name="querying-transforms"></a>Transformaties opvragen
+### <a name="querying-transforms"></a>Query's uitvoeren op trans formaties
 
-Transformatiequery's zijn synchrone aanroepen op het object. Het is belangrijk op te merken dat transformaties die via de API worden opgevraagd, lokale ruimtetransformaties zijn ten opzichte van de bovenliggende objecten. Uitzonderingen zijn wortelobjecten, waarvoor de lokale ruimte en de wereldruimte identiek zijn.
+Transformatie query's zijn synchrone aanroepen voor het object. Het is belang rijk te weten dat trans formaties die via de API worden opgevraagd, lokale ruimte transformaties zijn ten opzichte van het bovenliggende object. Uitzonde ringen zijn hoofd objecten waarvoor lokale ruimte en wereld wijde ruimte identiek zijn.
 
 > [!NOTE]
-> Er is geen speciale API voor het opvragen van de wereldruimtetransformatie van willekeurige objecten.
+> Er is geen speciale API voor het opvragen van de wereld wijde trans formatie van wille keurige objecten.
 
 ```cs
 // local space transform of the entity
@@ -54,15 +54,15 @@ Double3 translation = entity.Position;
 Quaternion rotation = entity.Rotation;
 ```
 
-### <a name="querying-spatial-bounds"></a>Ruimtelijke grenzen opvragen
+### <a name="querying-spatial-bounds"></a>Ruimtelijke grenzen bevragen
 
-Grenzenquery's zijn asynchrone aanroepen die werken op een volledige objecthiërarchie, met één entiteit als hoofdmap. Zie het speciale hoofdstuk over [objectgrenzen.](object-bounds.md)
+Grenzen van query's zijn asynchrone aanroepen die op een volledige object hiërarchie worden uitgevoerd, met behulp van één entiteit als basis. Zie het speciale hoofd stuk over [object grenzen](object-bounds.md).
 
-### <a name="querying-metadata"></a>Metagegevens opvragen
+### <a name="querying-metadata"></a>Meta gegevens opvragen
 
-Metagegevens zijn aanvullende gegevens die zijn opgeslagen op objecten, die door de server worden genegeerd. Objectmetagegevens zijn in wezen een set (naam, waarde) paren, waarbij _waarde_ van numeriek, booleaan- of snaartype kan zijn. Metagegevens kunnen met het model worden geëxporteerd.
+Meta gegevens zijn extra gegevens opgeslagen in objecten die door de server worden genegeerd. Meta gegevens van objecten zijn in feite een set (naam, waarde) paren, waarbij de _waarde_ van het type Numeriek, Booleaans of teken reeks kan zijn. Meta gegevens kunnen met het model worden geëxporteerd.
 
-Metagegevensquery's zijn asynchrone aanroepen op een specifieke entiteit. De query retourneert alleen de metagegevens van één entiteit, niet de samengevoegde informatie van een subgrafiek.
+Meta gegevens query's zijn asynchrone aanroepen voor een specifieke entiteit. De query retourneert alleen de meta gegevens van één entiteit, niet de samengevoegde gegevens van een subgraph.
 
 ```cs
 MetadataQueryAsync metaDataQuery = entity.QueryMetaDataAsync();
@@ -79,7 +79,7 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
 };
 ```
 
-De query zal slagen, zelfs als het object geen metagegevens bevat.
+De query wordt uitgevoerd, zelfs als het object geen meta gegevens bevat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

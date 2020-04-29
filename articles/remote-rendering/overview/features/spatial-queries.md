@@ -1,36 +1,36 @@
 ---
 title: Ruimtelijke query's
-description: Ruimtelijke query's in een scène maken
+description: Ruimtelijke query's uitvoeren in een scène
 author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 9a981aeb08ec46900994fd599b592b9f16034f34
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680529"
 ---
 # <a name="spatial-queries"></a>Ruimtelijke query's
 
-Ruimtelijke query's zijn bewerkingen waarmee u de externe renderingservice vragen welke objecten zich in een gebied bevinden. Ruimtelijke query's worden vaak gebruikt om interacties te implementeren, zoals het uitzoeken naar welk object een gebruiker wijst.
+Ruimtelijke query's zijn bewerkingen waarmee u de externe rendering-service kunt vragen welke objecten zich in een gebied bevinden. Ruimtelijke query's worden vaak gebruikt voor het implementeren van interacties, zoals het bepalen van het object waarnaar een gebruiker verwijst.
 
-Alle ruimtelijke query's worden geëvalueerd op de server. Het zijn dus asynchrone bewerkingen en de resultaten komen met een vertraging die afhankelijk is van uw netwerklatentie. Aangezien elke ruimtelijke query netwerkverkeer genereert, moet u ervoor zorgen dat u er niet te veel tegelijk doet.
+Alle ruimtelijke query's worden geëvalueerd op de server. Daarom zijn deze asynchrone bewerkingen en worden de resultaten bereikt met een vertraging die afhankelijk is van de netwerk latentie. Omdat bij elke ruimtelijke query netwerk verkeer wordt gegenereerd, moet u er daarom voor zorgen dat er niet te veel in één keer een actie wordt uitgevoerd.
 
-## <a name="collision-meshes"></a>De mazen van de botsing
+## <a name="collision-meshes"></a>Botsingen netten
 
-Ruimtelijke query's worden aangedreven door de [Havok Physics-engine](https://www.havok.com/products/havok-physics) en vereisen een speciale botsing mesh aanwezig te zijn. Modelconversie [genereert](../../how-tos/conversion/model-conversion.md) standaard botsingsmazen. Als u geen ruimtelijke query's nodig hebt voor een complex model, u overwegen de generatie van botsingsgaas in de [conversieopties](../../how-tos/conversion/configure-model-conversion.md)uit te schakelen, omdat dit op meerdere manieren een impact heeft:
+Ruimtelijke query's worden aangedreven door de [Havok-fysieke](https://www.havok.com/products/havok-physics) engine en vereisen dat er een speciaal botsend net aanwezig is. [Model conversie](../../how-tos/conversion/model-conversion.md) genereert standaard botsingen. Als u geen ruimtelijke query's nodig hebt voor een complex model, kunt u de functie voor het genereren van botsingen uitschakelen in de [conversie opties](../../how-tos/conversion/configure-model-conversion.md), omdat deze op verschillende manieren invloed heeft:
 
-* [Modelconversie](../../how-tos/conversion/model-conversion.md) zal aanzienlijk langer duren.
-* Geconverteerde modelbestandsformaten zijn merkbaar groter, wat van invloed is op de downloadsnelheid.
-* De laadtijden zijn langer.
-* Runtime CPU-geheugen verbruik is hoger.
-* Er is een lichte runtime prestaties overhead voor elk model instantie.
+* De [model conversie](../../how-tos/conversion/model-conversion.md) duurt aanzienlijk langer.
+* De geconverteerde model bestands grootten zijn merkbaar groter, wat invloed heeft op de download snelheid.
+* Het laden van runtime-tijden is langer.
+* CPU-geheugen gebruik van runtime is hoger.
+* Er is een lichte runtime-prestatie overhead voor elk model exemplaar.
 
-## <a name="ray-casts"></a>Ray werpt
+## <a name="ray-casts"></a>Ray-casts
 
-Een *ray cast* is een ruimtelijke query waarbij de runtime controleert welke objecten worden doorsneden door een straal, te beginnen op een bepaalde positie en in een bepaalde richting te wijzen. Als optimalisatie wordt ook een maximale straalafstand gegeven, om niet te zoeken naar objecten die te ver weg zijn.
+Een *Ray-cast* is een ruimtelijke query waarbij de runtime controleert welke objecten door een Ray worden doorzocht, vanaf een bepaalde positie en naar een bepaalde richting wijzen. Als Optima Lise ring wordt er ook een maximum Ray-afstand gegeven om niet te zoeken naar objecten die te ver weg staan.
 
 ````c#
 async void CastRay(AzureSession session)
@@ -54,13 +54,13 @@ async void CastRay(AzureSession session)
 }
 ````
 
-Er zijn drie populaire verzamelingsmodi:
+Er zijn drie methoden voor het verzamelen van treffers:
 
-* **Dichtstbijzijnde:** In deze modus wordt alleen de dichtstbijzijnde treffer gerapporteerd.
-* **Alle:** Geef de voorkeur aan deze modus wanneer alles wat je wilt weten is *of* een straal iets zou raken, maar het kan me niet schelen wat er precies werd geraakt. Deze query kan aanzienlijk goedkoper zijn om te evalueren, maar heeft ook slechts enkele toepassingen.
-* **Alle:** In deze modus worden alle hits langs de straal gerapporteerd, gesorteerd op afstand. Gebruik deze modus niet, tenzij je echt meer nodig hebt dan de eerste hit. Beperk het aantal gerapporteerde hits met de `MaxHits` optie.
+* **Dichtstbijzijnde:** In deze modus wordt alleen de meest overeenkomende treffer gerapporteerd.
+* **Alle:** U kunt de voor keur geven aan deze modus wanneer u alleen wilt weten *of* een Ray iets zou kunnen raken, maar niet zeker weet wat er precies is bereikt. Deze query kan aanzienlijk goed koper zijn om te evalueren, maar heeft ook maar weinig toepassingen.
+* **Alle:** In deze modus worden alle treffers langs de Ray gerapporteerd, gesorteerd op afstand. Gebruik deze modus alleen als u meer nodig hebt dan de eerste treffer. Beperk het aantal gerapporteerde treffers met de `MaxHits` optie.
 
-Om uit te sluiten dat objecten selectief worden overwogen voor straalcasts, kan de component [HierarchicalStateOverrideComponent](override-hierarchical-state.md) worden gebruikt.
+Om te voor komen dat objecten selectief worden uitgesloten van Ray-casts, kan het onderdeel [HierarchicalStateOverrideComponent](override-hierarchical-state.md) worden gebruikt.
 
 <!--
 The CollisionMask allows the quey to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has  bit L set.
@@ -68,19 +68,19 @@ It is useful in case you want to ignore objects, for instance when setting an ob
 TODO : Add an API to make that possible.
 -->
 
-### <a name="hit-result"></a>Resultaat hit
+### <a name="hit-result"></a>Resultaat van treffer
 
-Het resultaat van een ray cast query is een array van hits. De array is leeg als er geen object is geraakt.
+Het resultaat van een Ray cast-query is een matrix met treffers. De matrix is leeg als er geen object is geraakt.
 
 Een treffer heeft de volgende eigenschappen:
 
-* **HitEntity:** Welke [entiteit](../../concepts/entities.md) werd geraakt.
-* **SubPartId:** Welke *submesh* is geraakt in een [MeshComponent.](../../concepts/meshes.md) Kan worden gebruikt `MeshComponent.UsedMaterials` om te indexeren in en opzoeken van het [materiaal](../../concepts/materials.md) op dat punt.
-* **HitPosition:** De wereldruimtepositie waar de straal het object kruiste.
-* **HitNormal:** Het wereldoppervlak normaal van het gaas op de positie van de kruising.
-* **Afstandtohit:** De afstand van de ray startpositie tot de treffer.
+* **HitEntity:** De [entiteit](../../concepts/entities.md) waarop is geklikt.
+* **Subpartid:** Welk *subnet* is bereikt in een [MeshComponent](../../concepts/meshes.md). Kan worden gebruikt voor het indexeren `MeshComponent.UsedMaterials` en opzoeken van het [materiaal](../../concepts/materials.md) op dat moment.
+* **HitPosition:** De positie waar de Ray het object kruist.
+* **HitNormal:** De wereld wijde ruimte van het net op de positie van het snij punt.
+* **DistanceToHit:** De afstand van de begin positie van de Ray naar de treffer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Objectgrenzen](../../concepts/object-bounds.md)
-* [Hiërarchische toestanden overschrijven](override-hierarchical-state.md)
+* [Hiërarchische provincies negeren](override-hierarchical-state.md)

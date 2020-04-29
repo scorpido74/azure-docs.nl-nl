@@ -1,5 +1,5 @@
 ---
-title: RHEL/CentOS 7 configureren - Spraakservice
+title: RHEL/CentOS 7-speech service configureren
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het configureren van RHEL/CentOS 7 zodat de Speech SDK kan worden gebruikt.
 services: cognitive-services
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80639161"
 ---
-# <a name="configure-rhelcentos-7-for-speech-sdk"></a>RHEL/CentOS 7 configureren voor Spraak-SDK
+# <a name="configure-rhelcentos-7-for-speech-sdk"></a>RHEL/CentOS 7 voor Speech SDK configureren
 
-Red Hat Enterprise Linux (RHEL) 8 x64 en CentOS 8 x64 worden officieel ondersteund door de Speech SDK versie 1.10.0 en hoger. Het is ook mogelijk om de Speech SDK te gebruiken op RHEL/CentOS 7 x64, maar hiervoor moet de C++ compiler (voor C++ ontwikkeling) en de gedeelde C++ runtime-bibliotheek op uw systeem worden bijgewerkt.
+Red Hat Enterprise Linux (RHEL) 8 x64 en CentOS 8 x64 worden officieel ondersteund door de Speech SDK-versie 1.10.0 en hoger. Het is ook mogelijk om de Speech SDK te gebruiken op RHEL/CentOS 7 x64, maar hiervoor moet de C++-compiler worden bijgewerkt (voor C++-ontwikkeling) en de gedeelde C++ runtime-bibliotheek op uw systeem.
 
-Voer het selectievakje uit om de c++ compilerversie te controleren:
+Als u de versie van C++ compiler wilt controleren, voert u de volgende handelingen uit:
 
 ```bash
 g++ --version
 ```
 
-Als de compiler is geïnstalleerd, moet de uitvoer er als volgt uitzien:
+Als de compiler is geïnstalleerd, ziet de uitvoer er als volgt uit:
 
 ```bash
 g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
 ```
 
-Dit bericht laat u weten dat GCC belangrijkste versie 4 is geïnstalleerd. Deze versie heeft geen volledige ondersteuning voor de C++ 11-standaard, die de Speech SDK gebruikt. Proberen om een C + + programma samen te stellen met deze GCC versie en de Speech SDK headers zal resulteren in compilatie fouten.
+Dit bericht laat u weten dat GCC primaire versie 4 is geïnstalleerd. Deze versie biedt geen volledige ondersteuning voor de C++ 11-standaard, die door de Speech SDK wordt gebruikt. Bij het compileren van een C++-programma met deze GCC-versie en de Speech SDK-headers zullen compilatie fouten optreden.
 
-Het is ook belangrijk om de versie van de gedeelde C++ runtime bibliotheek (libstdc++) te controleren. Het grootste deel van de Speech SDK is geïmplementeerd als native C++ bibliotheken, wat betekent dat het afhankelijk is van libstdc++ ongeacht de taal die u gebruikt om toepassingen te ontwikkelen.
+Het is ook belang rijk om de versie van de gedeelde C++ Runtime Library (libstdc + +) te controleren. De meeste spraak-SDK wordt geïmplementeerd als systeem eigen C++-bibliotheken, wat betekent dat dit afhankelijk is van libstdc + +, ongeacht de taal die u gebruikt om toepassingen te ontwikkelen.
 
-Voer het als nog op om de locatie van libstdc++ op uw systeem te vinden:
+Voer de volgende opdracht uit om de locatie van libstdc + + op uw systeem te vinden:
 
 ```bash
 ldconfig -p | grep libstdc++
 ```
 
-De output op vanille RHEL/CentOS 7 (x64) is:
+De uitvoer op vanille RHEL/CentOS 7 (x64) is:
 
 ```
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
-Op basis van dit bericht wilt u de versiedefinities met deze opdracht controleren:
+Op basis van dit bericht wilt u de versie definities controleren met deze opdracht:
 
 ```bash
 strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 ```
 
-De output moet zijn:
+De uitvoer moet:
 
 ```
 ...
@@ -65,14 +65,14 @@ CXXABI_1.3.7
 ...
 ```
 
-De SpraakSDK vereist **CXXABI_1.3.9** en **GLIBCXX_3.4.21**. U deze informatie `ldd libMicrosoft.CognitiveServices.Speech.core.so` vinden door te draaien op de Speech SDK-bibliotheken van het Linux-pakket.
+Voor de Speech SDK zijn **CXXABI_1.3.9** en **GLIBCXX_3.4.21**vereist. U kunt deze informatie vinden door uit `ldd libMicrosoft.CognitiveServices.Speech.core.so` te voeren op de Speech SDK-bibliotheken vanuit het Linux-pakket.
 
 > [!NOTE]
-> Het wordt aanbevolen dat de versie van GCC geïnstalleerd op het systeem is ten minste **5.4.0**, met bijpassende runtime bibliotheken.
+> Het is raadzaam de versie van GCC die op het systeem is geïnstalleerd, ten minste **5.4.0**te hebben, met overeenkomende runtime-bibliotheken.
 
 ## <a name="example"></a>Voorbeeld
 
-Dit is een voorbeeldopdracht die illustreert hoe u RHEL/CentOS 7 x64 configureert voor ontwikkeling (C++, C#, Java, Python) met de SpraakSDK 1.10.0 of hoger:
+Dit is een voorbeeld opdracht die illustreert hoe u RHEL/CentOS 7 x64 configureert voor ontwikkeling (C++, C#, Java, python) met de Speech SDK 1.10.0 of hoger:
 
 ```bash
 # Only run ONE of the following two commands

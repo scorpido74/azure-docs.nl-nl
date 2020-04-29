@@ -1,6 +1,6 @@
 ---
-title: Een cloudservice maken en implementeren | Microsoft Documenten
-description: Meer informatie over het maken en implementeren van een cloudservice met behulp van de Azure-portal.
+title: Een Cloud service maken en implementeren | Microsoft Docs
+description: Meer informatie over het maken en implementeren van een Cloud service met behulp van de Azure Portal.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -9,87 +9,87 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811336"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>Een cloudservice maken en implementeren
-De Azure-portal biedt u op twee manieren om een cloudservice te maken en te implementeren: *Snel maken* en *aanpassen maken.*
+# <a name="how-to-create-and-deploy-a-cloud-service"></a>Een Cloud service maken en implementeren
+De Azure Portal biedt twee manieren om een Cloud service te maken en te implementeren: *snel maken* en *aangepast maken*.
 
-In dit artikel wordt uitgelegd hoe u de methode Snel maken gebruiken om een nieuwe cloudservice te maken en vervolgens **Uploaden** te gebruiken om een cloudservicepakket in Azure te uploaden en te implementeren. Wanneer u deze methode gebruikt, stelt de Azure-portal handige koppelingen beschikbaar voor het voltooien van alle vereisten. Als u klaar bent om uw cloudservice te implementeren wanneer u deze maakt, u beide tegelijk doen met Aangepaste maken.
+In dit artikel wordt uitgelegd hoe u de methode voor snel maken gebruikt om een nieuwe Cloud service te maken en vervolgens **uploaden** kunt gebruiken om een Cloud service-pakket te uploaden en te implementeren in Azure. Wanneer u deze methode gebruikt, maakt de Azure Portal handige koppelingen beschikbaar voor het volt ooien van alle vereisten. Als u klaar bent voor het implementeren van uw Cloud service wanneer u deze maakt, kunt u beide op hetzelfde moment doen met behulp van aangepaste maken.
 
 > [!NOTE]
-> Als u van plan bent uw cloudservice te publiceren vanuit Azure DevOps, gebruikt u Snel maken en stelt u Azure DevOps-publicatie in vanuit azure Quickstart of het dashboard. Zie [Continue levering aan Azure met Azure DevOps][TFSTutorialForCloudService]of zie help voor de pagina Snel aan de **slag** voor meer informatie.
+> Als u van plan bent om uw Cloud service vanuit Azure DevOps te publiceren, gebruikt u snel maken en stelt u vervolgens Azure DevOps Publishing in vanuit de Snelstartgids of het dash board van Azure. Zie [continue levering naar Azure met behulp van Azure DevOps][TFSTutorialForCloudService]of Raadpleeg de Help voor de pagina **Quick Start** voor meer informatie.
 >
 >
 
 ## <a name="concepts"></a>Concepten
-Er zijn drie componenten nodig om een toepassing als cloudservice in Azure te implementeren:
+Er zijn drie onderdelen vereist voor het implementeren van een toepassing als een Cloud service in Azure:
 
-* **Servicedefinitie**  
-  Het definitiebestand voor cloudservices (.csdef) definieert het servicemodel, inclusief het aantal rollen.
-* **Serviceconfiguratie**  
-  Het configuratiebestand voor cloudservices (.cscfg) biedt configuratie-instellingen voor de cloudservice en afzonderlijke rollen, inclusief het aantal rolexemplaren.
-* **Servicepakket**  
-  Het servicepakket (.cspkg) bevat de toepassingscode en -configuraties en het servicedefinitiebestand.
+* **Service definitie**  
+  Het definitie bestand van de Cloud service (. csdef) definieert het service model, inclusief het aantal rollen.
+* **Service configuratie**  
+  Het configuratie bestand van de Cloud service (. cscfg) bevat configuratie-instellingen voor de Cloud service en afzonderlijke rollen, met inbegrip van het aantal rolinstanties.
+* **Service pakket**  
+  Het service pakket (. cspkg) bevat de toepassings code en configuraties en het service definitie bestand.
 
-U hier meer over weten en hoe u een pakket [kunt](cloud-services-model-and-package.md)maken.
+U vindt hier meer informatie over hoe u [hier](cloud-services-model-and-package.md)een pakket maakt.
 
 ## <a name="prepare-your-app"></a>Uw app voorbereiden
-Voordat u een cloudservice implementeren, moet u het cloudservicepakket (.cspkg) maken op basis van uw toepassingscode en een configuratiebestand voor cloudservices (cscfg). De Azure SDK biedt hulpprogramma's voor het voorbereiden van deze vereiste implementatiebestanden. U de SDK installeren vanaf de pagina [Azure Downloads,](https://azure.microsoft.com/downloads/) in de taal waarin u uw toepassingscode het liefst ontwikkelt.
+Voordat u een Cloud service kunt implementeren, moet u het Cloud service-pakket (. cspkg) maken op basis van uw toepassings code en een configuratie bestand (. cscfg) voor de Cloud service. De Azure SDK bevat hulpprogram ma's voor het voorbereiden van deze vereiste implementatie bestanden. U kunt de SDK installeren vanaf de pagina [Azure-down loads](https://azure.microsoft.com/downloads/) , in de taal waarin u de code van uw toepassing wilt ontwikkelen.
 
-Drie functies voor cloudservices vereisen speciale configuraties voordat u een servicepakket exporteert:
+Voor drie Cloud service functies zijn speciale configuraties vereist voordat u een service pakket exporteert:
 
-* Als u een cloudservice wilt implementeren die tls (Transport Layer Security), voorheen bekend als Secure Sockets Layer (SSL), gebruikt voor gegevensversleuteling, [configureert u uw toepassing](cloud-services-configure-ssl-certificate-portal.md#modify) voor TLS.
-* Als u Extern bureaublad-verbindingen wilt configureren voor rolinstanties, [configureert u de rollen](cloud-services-role-enable-remote-desktop-new-portal.md) voor Extern bureaublad.
-* Als u verbose-monitoring voor uw cloudservice wilt configureren, schakelt u Azure Diagnostics in voor de cloudservice. *Minimale bewaking* (het standaardbewakingsniveau) maakt gebruik van prestatiemeteritems die zijn verzameld van de hostbesturingssystemen voor rolexemplaren (virtuele machines). *Verbose monitoring* verzamelt aanvullende statistieken op basis van prestatiegegevens binnen de rolinstanties om een betere analyse van problemen die optreden tijdens de verwerking van toepassingen mogelijk te maken. Zie Diagnostische gegevens inschakelen in [Azure](cloud-services-dotnet-diagnostics.md)voor meer informatie over het inschakelen van Azure Diagnostics.
+* Als u een Cloud service wilt implementeren die gebruikmaakt van Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), voor gegevens versleuteling, moet u [uw toepassing configureren](cloud-services-configure-ssl-certificate-portal.md#modify) voor TLS.
+* Als u Extern bureaublad verbindingen met rolinstanties wilt configureren, configureert u [de functies](cloud-services-role-enable-remote-desktop-new-portal.md) voor extern bureaublad.
+* Als u uitgebreide bewaking voor uw Cloud service wilt configureren, schakelt u Azure Diagnostics in voor de Cloud service. *Minimale bewaking* (het standaard bewakings niveau) gebruikt prestatie meter items die worden verzameld van de besturings systemen van de host voor rolinstanties (virtuele machines). Met *uitgebreide bewaking* worden extra metrische gegevens verzameld op basis van de prestaties in de rolinstanties om een nauwere analyse van problemen mogelijk te maken die zich voordoen tijdens de verwerking van toepassingen. Zie voor meer informatie over het inschakelen van Azure Diagnostics [Diagnostische gegevens inschakelen in azure](cloud-services-dotnet-diagnostics.md).
 
-Als u een cloudservice wilt maken met implementaties van webrollen of werknemersrollen, moet u [het servicepakket maken.](cloud-services-model-and-package.md#servicepackagecspkg)
+Als u een Cloud service wilt maken met implementaties van webrollen of werk rollen, moet u [het service pakket maken](cloud-services-model-and-package.md#servicepackagecspkg).
 
 ## <a name="before-you-begin"></a>Voordat u begint
-* Als u de Azure SDK niet hebt geïnstalleerd, klikt u op **Azure SDK installeren** om de pagina Azure [Downloads](https://azure.microsoft.com/downloads/)te openen en downloadt u de SDK voor de taal waarin u uw code het liefst ontwikkelt. (Je hebt de kans om dit later te doen.)
-* Als een rolinstantie een certificaat vereist, maakt u de certificaten. Cloudservices vereisen een .pfx-bestand met een privésleutel. U de certificaten uploaden naar Azure terwijl u de cloudservice maakt en implementeert.
+* Als u de Azure SDK nog niet hebt geïnstalleerd, klikt u op **Azure SDK installeren** om de [pagina Azure-down loads](https://azure.microsoft.com/downloads/)te openen. down load vervolgens de SDK voor de taal waarin u uw code wilt ontwikkelen. (U kunt dit later doen.)
+* Als een van de rolinstanties een certificaat vereist, maakt u de certificaten. Cloud Services vereisen een. pfx-bestand met een persoonlijke sleutel. U kunt de certificaten uploaden naar Azure wanneer u de Cloud service maakt en implementeert.
 
 ## <a name="create-and-deploy"></a>Maken en implementeren
-1. Log in bij de [Azure-portal](https://portal.azure.com/).
-2. Klik **op Een bron maken > Compute**en blader omlaag en klik op **Cloudservice**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Klik op **een resource maken > Compute**en schuif omlaag naar en klik vervolgens op **Cloud service**.
 
-    ![Uw cloudservice publiceren](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Voer in het nieuwe deelvenster **Cloudservice** een waarde in voor de **DNS-naam.**
-4. Maak een nieuwe **resourcegroep** of selecteer een bestaande groep.
+    ![Uw Cloud service publiceren](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+3. Voer in het deel venster nieuwe **Cloud service** een waarde in voor de **DNS-naam**.
+4. Maak een nieuwe **resource groep** of selecteer een bestaande.
 5. Selecteer een **locatie**.
-6. Klik **op Pakket**. Hiermee wordt het **deelvenster Een pakket uploaden** geopend. Vul de vereiste velden in. Als een van uw rollen één instantie bevat, moet u ervoor zorgen **dat Implementeren zelfs als een of meer rollen één instantie bevatten,** is geselecteerd.
-7. Controleer of **De implementatie van start** is geselecteerd.
-8. Klik **op OK** en sluit het deelvenster Een pakket **uploaden.**
-9. Als u geen certificaten hebt om toe te voegen, klikt u op **Maken**.
+6. Klik op **pakket**. Hiermee opent u het deel venster **een pakket uploaden** . Vul de vereiste velden in. Als een van uw rollen één exemplaar bevat, moet u ervoor zorgen dat **ook wordt geïmplementeerd als een of meer rollen een enkel exemplaar bevatten** .
+7. Zorg ervoor dat **implementatie starten** is geselecteerd.
+8. Klik op **OK** om het deel venster **een pakket uploaden** te sluiten.
+9. Als er geen certificaten zijn om toe te voegen, klikt u op **maken**.
 
-    ![Uw cloudservice publiceren](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![Uw Cloud service publiceren](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Een certificaat uploaden
-Als uw implementatiepakket is [geconfigureerd om certificaten te gebruiken,](cloud-services-configure-ssl-certificate-portal.md#modify)u het certificaat nu uploaden.
+Als uw implementatie pakket is [geconfigureerd voor het gebruik van certificaten](cloud-services-configure-ssl-certificate-portal.md#modify), kunt u het certificaat nu uploaden.
 
-1. Selecteer **Certificaten**en selecteer in het deelvenster **Certificaten toevoegen** het TLS/SSL-certificaat .pfx-bestand en geef vervolgens het **wachtwoord** voor het certificaat op.
-2. Klik **op Certificaat bijvoegen**en klik vervolgens op **OK** in het deelvenster **Certificaten toevoegen.**
-3. Klik **op Maken** in het deelvenster **Cloudservice.** Wanneer de implementatie de status **Gereed** heeft bereikt, u doorgaan naar de volgende stappen.
+1. Selecteer **certificaten**en selecteer in het deel venster **certificaten toevoegen** het bestand TLS/SSL Certificate. pfx en geef het **wacht woord** voor het certificaat op.
+2. Klik op **certificaat koppelen**en klik vervolgens op **OK** in het deel venster **certificaten toevoegen** .
+3. Klik op **maken** in het deel venster **Cloud service** . Wanneer de implementatie de status **gereed** heeft bereikt, kunt u door gaan met de volgende stappen.
 
-    ![Uw cloudservice publiceren](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Uw Cloud service publiceren](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
-## <a name="verify-your-deployment-completed-successfully"></a>Controleer of uw implementatie is voltooid
-1. Klik op het exemplaar van de cloudservice.
+## <a name="verify-your-deployment-completed-successfully"></a>Controleren of uw implementatie is voltooid
+1. Klik op het Cloud service-exemplaar.
 
-    De status moet aantonen dat de service **actief**is.
-2. Klik **onder Essentials**op de **URL van** de site om uw cloudservice in een webbrowser te openen.
+    De status geeft aan dat de service wordt **uitgevoerd**.
+2. Onder **Essentials**klikt u op de **site-URL** om uw Cloud service in een webbrowser te openen.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
 [TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Algemene configuratie van uw cloudservice.](cloud-services-how-to-configure-portal.md)
-* Een [aangepaste domeinnaam configureren](cloud-services-custom-domain-name-portal.md).
-* [Beheer uw cloudservice.](cloud-services-how-to-manage-portal.md)
+* [Algemene configuratie van uw Cloud service](cloud-services-how-to-configure-portal.md).
+* Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
+* [Uw Cloud service beheren](cloud-services-how-to-manage-portal.md).
 * [TLS/SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
 
 

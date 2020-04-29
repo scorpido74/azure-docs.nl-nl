@@ -1,74 +1,74 @@
 ---
-title: 'Snelstart: een app implementeren met de LUIS-portal'
-description: Met deze snelle start ziet u hoe u een app implementeert door een voorspellingseindpuntbron te maken, de bron, de training en het publiceren van de app toe te wijzen.
+title: 'Snelstartgids: een app implementeren met behulp van de LUIS-Portal'
+description: In deze Quick start ziet u hoe u een app implementeert door een Voorspellings eindpunt resource te maken, de resource, training en publicatie van de app toe te wijzen.
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756302"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstart: een app implementeren in de LUIS-portal
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstartgids: een app implementeren in de LUIS-Portal
 
-Wanneer uw LUIS-app klaar is om utterancevoorspellingen terug te sturen naar een clienttoepassing (bijvoorbeeld een chatbot), moet u de app implementeren op het voorspellingseindpunt.
+Wanneer uw LUIS-app gereed is om utterance voor spellingen te retour neren naar een client toepassing (bijvoorbeeld een chat-bot), moet u de app implementeren in het Voorspellings eindpunt.
 
-In deze quickstart leert u een toepassing te implementeren. U maakt een eindpuntbron voor voorspellingen, wijst de bron toe aan de app, traint de app en publiceert de app.
+In deze Quick Start leert u hoe u een toepassing implementeert. U maakt een Voorspellings eindpunt resource, wijst de resource toe aan de app, Train de app en publiceert de app.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Ontvang een [Azure-abonnement.](https://azure.microsoft.com/free)
-* Voltooi de [vorige portal snelstart](get-started-portal-build-app.md) of [download en importeer de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
-* Als u apps hebt die vooraf zijn datum voor Azure-bronverificatie, [migreert u naar een Azure-bron.](luis-migration-authoring.md) Sommige portalpagina's zien er anders uit wanneer e-mailverificatie van kracht is.
+* Een [Azure-abonnement](https://azure.microsoft.com/free)ophalen.
+* Voltooi de [Snelstartgids van de vorige Portal](get-started-portal-build-app.md) of [down load en importeer de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Als u apps hebt die de pre-date verificatie van Azure-bronnen hebben, kunt u deze [migreren naar een Azure-resource](luis-migration-authoring.md). Sommige Portal pagina's zien er anders uit wanneer e-mail verificatie actief is.
 
 <a name="create-the-endpoint-resource"></a>
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>De resourcesleutel toewijzen aan de LUIS-app in de LUIS-portal
+## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Wijs de resource sleutel toe aan de LUIS-app in de LUIS-Portal
 
-Elke keer dat u een nieuwe bron voor het ontwerpen of voorspellen van query's voor LUIS maakt, moet u de bron toewijzen aan de LUIS-app. Nadat deze is toegewezen, hoeft u deze stap niet opnieuw te doen, tenzij u een nieuwe bron maakt. U een nieuwe bron maken om de regio's van uw app uit te breiden of om een hoger aantal voorspellingsquery's te ondersteunen.
+Telkens wanneer u een nieuwe ontwerp-of query Voorspellings bron voor LUIS maakt, moet u de resource toewijzen aan de LUIS-app. Nadat deze is toegewezen, hoeft u deze stap niet opnieuw uit te voeren tenzij u een nieuwe resource maakt. U kunt een nieuwe resource maken om de regio's van uw app uit te breiden of om een hoger aantal Voorspellings query's te ondersteunen.
 
-1. Meld u aan bij de [preview LUIS-portal](https://preview.luis.ai) en kies de **myEnglishApp-app** in de lijst met apps.
+1. Meld u aan bij de [Preview-Luis-Portal](https://preview.luis.ai) en kies de **myEnglishApp** -app in de lijst met apps.
 
-1. Selecteer **Beheren** in het menu rechtsboven en selecteer **Vervolgens Azure Resources**.
+1. Selecteer **beheren** in het menu in de rechter bovenhoek en selecteer vervolgens **Azure-resources**.
 
-1. Als u de LUIS wilt toevoegen, selecteert u **Voorspellingsbron toevoegen**.
+1. Als u de LUIS wilt toevoegen, selecteert u **Voorspellings bron toevoegen**.
 
-    ![Als u de LUIS-voorspellingsbron wilt toevoegen, selecteert u Voorspellingsbron toevoegen](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
+    ![Als u de LUIS-Voorspellings resource wilt toevoegen, selecteert u Voorspellings resource toevoegen](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Selecteer uw tenant, abonnement en resourcenaam. Selecteer **Resource toewijzen**.
+1. Selecteer uw Tenant, abonnement en resource naam. Selecteer **resource toewijzen**.
 
    ![Een resource toewijzen aan uw app](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Voer dezelfde stappen uit om de ontwerpsleutel aan uw app toe te voegen.
+1. Voer dezelfde stappen uit om de ontwerp sleutel toe te voegen aan uw app.
 
-1. Zoek de nieuwe rij in de tabel voor de nieuwe voorspellingsbron en kopieer de URL van het eindpunt. Het is correct geconstrueerd om `HTTP GET` een aanvraag te doen voor het LUIS API-eindpunt voor een voorspelling.
+1. Zoek de nieuwe rij in de tabel voor de nieuwe Voorspellings resource en kopieer de URL van het eind punt. Het is op de juiste wijze ingeconstrueerd voor het maken van een `HTTP GET` aanvraag naar het Luis API-eind punt voor een voor spelling.
 
 > [!TIP]
-> Als u Actief leren wilt gebruiken om uw LUIS-app te verbeteren, selecteert u **Queryparameters wijzigen** en selecteert **u Logboeken opslaan.** Met deze actie wordt de `log=true` voorbeeld-URL gewijzigd door de parameter querystring toe te voegen. Kopieer en gebruik de gewijzigde voorbeeldquery-URL bij het maken van voorspellingsquery's naar het eindpunt runtime.
+> Als u van plan bent om actief leren te gebruiken om uw LUIS-app te verbeteren, selecteert u **query parameters wijzigen** en selecteert u **logboeken opslaan**. Met deze actie wordt de voorbeeld-URL gewijzigd `log=true` door de query string-para meter toe te voegen. Kopieer en gebruik de gewijzigde voorbeeld query-URL bij het maken van voorspellings query's voor het runtime-eind punt.
 
 ## <a name="train-the-app"></a>De app trainen
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-the-prediction-endpoint"></a>De app publiceren naar het voorspellingseindpunt
+## <a name="publish-the-app-to-the-prediction-endpoint"></a>De app publiceren naar het Voorspellings eindpunt
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
 
-## <a name="prediction-endpoint-request"></a>Eindpuntaanvraag voor voorspelling
+## <a name="prediction-endpoint-request"></a>Voorspellings eindpunt aanvraag
 
-In de previewportal wordt `query=` aan het einde van de URL de utterance van de gebruiker toegevoegd aan het GET-verzoek. Voer `query=`na de : De volgende snelstart dezelfde gebruikersutterance in die aan het einde van de vorige quickstart wordt gebruikt:
+In de preview- `query=` Portal is aan het einde van de URL waar de utterance van de gebruiker wordt toegevoegd aan de GET-aanvraag. Na de `query=`voert u dezelfde gebruikers utterance in die aan het einde van de vorige Snelstartgids zijn gebruikt:
 
 ```Is there a form named hrf-234098```
 
-Controleer of de querytekenreeks de volgende paren bevat:
+Zorg ervoor dat de query reeks de volgende paren bevat:
 
 * `show-all-intents=true`
 * `verbose=true`
 
-De browser toont het antwoord:
+In de browser wordt het antwoord weer gegeven:
 
 ```JSON
 {
@@ -107,13 +107,13 @@ De browser toont het antwoord:
 }
 ```
 
-Als u ditzelfde niveau van informatie in het testvenster wilt zien, moet u de app publiceren. Nadat de app is gepubliceerd, selecteert u **Vergelijken met gepubliceerd** in het testvenster. Gebruik **Json-weergave weergeven** in het gepubliceerde testvenster om dezelfde JSON te zien als de vorige stap. Op deze manier u wijzigingen vergelijken met de huidige app waaraan u werkt met een app die wordt gepubliceerd naar het eindpunt.
+Als u hetzelfde niveau van informatie in het test venster wilt zien, moet u de app publiceren. Nadat de app is gepubliceerd, selecteert u **vergelijken met gepubliceerd** in het test venster. Gebruik **JSON-weer gave weer geven** in het gepubliceerde test venster om dezelfde JSON te zien als de vorige stap. Op deze manier kunt u wijzigingen vergelijken met de huidige app waaraan u werkt met een app die naar het eind punt wordt gepubliceerd.
 
-[![Momenteel bewerken vergelijken met gepubliceerde versie van de app](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Huidige bewerking vergelijken versus gepubliceerde versie van de app](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze quickstart, selecteert u **Mijn apps** in het bovenste navigatiemenu. Schakel het selectievakje van de app in de lijst in en selecteer **Verwijderen op** de contextwerkbalk boven de lijst.
+Wanneer u klaar bent met deze Snelstartgids, selecteert u **mijn apps** in het bovenste navigatie menu. Schakel het selectie vakje van de app in de lijst in en selecteer vervolgens **verwijderen** in de context werkbalk boven de lijst.
 
 ## <a name="next-steps"></a>Volgende stappen
 

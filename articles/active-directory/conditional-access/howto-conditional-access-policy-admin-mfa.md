@@ -1,6 +1,6 @@
 ---
-title: Voorwaardelijke toegang - MFA vereisen voor beheerders - Azure Active Directory
-description: Een aangepast beleid voor voorwaardelijke toegang maken om beheerders te verplichten multifactorauthenticatie uit te voeren
+title: 'Voorwaardelijke toegang: MFA vereisen voor beheerders-Azure Active Directory'
+description: Een aangepast beleid voor voorwaardelijke toegang maken zodat beheerders multi-factor Authentication kunnen uitvoeren
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,71 +12,71 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90e8a8b0926575b5a40a8c0ca7820e31827434ec
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755208"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Voorwaardelijke toegang: MFA vereisen voor beheerders
 
-Accounts die beheerdersrechten toegewezen hebben, zijn het doelwit van aanvallers. Het vereisen van multi-factor authenticatie (MFA) op deze accounts is een eenvoudige manier om het risico van deze accounts worden aangetast te verminderen.
+Accounts waaraan beheerders rechten zijn toegewezen, zijn gericht op aanvallers. Het vereisen van multi-factor Authentication (MFA) voor deze accounts is een eenvoudige manier om het risico te verkleinen dat deze accounts worden aangetast.
 
-Microsoft raadt u aan minimaal MFA voor de volgende rollen te vereisen:
+Micro soft raadt u aan MFA verplicht te stellen voor de volgende rollen ten minste:
 
 * Factureringsbeheerder
 * Beheerder van voorwaardelijke toegang
 * Exchange-beheerder
 * Globale beheerder
-* Helpdesk (Wachtwoord) beheerder
+* Help Desk (wacht woord) beheerder
 * Wachtwoordbeheerder
 * Beveiligingsbeheerder
 * SharePoint-beheerder
-* Gebruikersbeheerder
+* Gebruikers beheerder
 
-Organisaties kunnen ervoor kiezen om rollen op te nemen of uit te sluiten zoals ze dat nodig achten.
+Organisaties kunnen ervoor kiezen om rollen op te nemen of uit te sluiten zoals ze passen.
 
-## <a name="user-exclusions"></a>Gebruikersuitsluitingen
+## <a name="user-exclusions"></a>Gebruikers uitsluitingen
 
-Beleid voor voorwaardelijke toegang zijn krachtige tools, we raden u aan de volgende accounts uit uw beleid uit te sluiten:
+Beleids regels voor voorwaardelijke toegang zijn krachtige hulp middelen. u wordt aangeraden de volgende accounts uit te sluiten van het beleid:
 
-* **Noodtoegang** of **break-glass-accounts** om tenant-brede accountlock-out te voorkomen. In het onwaarschijnlijke scenario dat alle beheerders zijn uitgesloten van uw tenant, kan uw beheeraccount met noodtoegang worden gebruikt om zich aan te melden bij de tenant om de toegang te herstellen.
-   * Meer informatie vindt u in het artikel, [Accounts voor noodtoegang beheren in Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Serviceaccounts** en **serviceprincipals,** zoals het Azure AD Connect Sync-account. Serviceaccounts zijn niet-interactieve accounts die niet aan een bepaalde gebruiker zijn gekoppeld. Ze worden normaal gesproken gebruikt door back-endservices die programmatische toegang tot toepassingen mogelijk maken, maar worden ook gebruikt om in te loggen op systemen voor administratieve doeleinden. Serviceaccounts zoals deze moeten worden uitgesloten, omdat MFA niet programmatisch kan worden voltooid. Oproepen van serviceprincipals worden niet geblokkeerd door Voorwaardelijke toegang.
-   * Als uw organisatie deze accounts in scripts of code heeft gebruikt, u overwegen deze te vervangen door [beheerde identiteiten.](../managed-identities-azure-resources/overview.md) Als tijdelijke tijdelijke oplossing u deze specifieke accounts uitsluiten van het basislijnbeleid.
+* **Nood toegang** of **afbreek glazen** om te voor komen dat accounts voor tenants worden vergrendeld. In het onwaarschijnlijke scenario zijn alle beheerders vergrendeld van uw Tenant. u kunt uw beheer account voor nood toegang gebruiken om u aan te melden bij de Tenant stappen nemen om de toegang te herstellen.
+   * Meer informatie vindt u in het artikel [manage accounts voor nood toegang in azure AD](../users-groups-roles/directory-emergency-access.md).
+* **Service accounts** en **service-principals**, zoals het Azure AD Connect Sync-account. Service accounts zijn niet-interactieve accounts die niet zijn gekoppeld aan een bepaalde gebruiker. Ze worden normaal gesp roken gebruikt door back-end-services die programmatische toegang tot toepassingen toestaan, maar worden ook gebruikt om u aan te melden bij systemen voor administratieve doel einden. Service accounts zoals deze moeten worden uitgesloten omdat MFA niet programmatisch kan worden voltooid. Aanroepen van service-principals worden niet geblokkeerd door voorwaardelijke toegang.
+   * Als uw organisatie deze accounts in gebruik heeft in scripts of code, kunt u overwegen deze te vervangen door [beheerde identiteiten](../managed-identities-azure-resources/overview.md). Als tijdelijke oplossing kunt u deze specifieke accounts uitsluiten van het basislijn beleid.
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-Met de volgende stappen u een beleid voor voorwaardelijke toegang maken om de toegewezen beheerdersrollen te verplichten multifactorauthenticatie uit te voeren.
+De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke toegang om te vereisen dat aan deze toegewezen beheerders rollen multi-factor Authentication wordt uitgevoerd.
 
-1. Meld u aan bij de **Azure-portal** als globale beheerder, beveiligingsbeheerder of beheerder van voorwaardelijke toegang.
-1. Blader naar voorwaardelijke**toegang**voor Azure Active**Directory-beveiliging** >  **Azure Active Directory** > .
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
-1. Geef uw polis een naam. We raden organisaties aan een zinvolle standaard te maken voor de namen van hun beleid.
-1. Selecteer **Gebruikers en groepen** onder **Toewijzingen**
-   1. Selecteer **onder Opnemen** **directoryrollen (voorbeeld)** en kies minimaal de volgende rollen:
-      * Verificatiebeheerder
+1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
+1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
+   1. Onder **insluiten**selecteert u **Directory rollen (preview)** en kiest u ten minste de volgende rollen:
+      * Verificatie beheerder
       * Factureringsbeheerder
       * Beheerder van voorwaardelijke toegang
       * Exchange-beheerder
       * Globale beheerder
-      * Helpdeskbeheerder
+      * Helpdesk beheerder
       * Wachtwoordbeheerder
       * Beveiligingsbeheerder
       * SharePoint-beheerder
-      * Gebruikersbeheerder
-   1. Selecteer **onder Uitsluiten**de optie Gebruikers en **groepen** en kies de noodtoegangs- of breakglas-accounts van uw organisatie. 
+      * Gebruikers beheerder
+   1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.
-1. Selecteer Onder **Cloud-apps of -acties** > **Opnemen** **alle cloud-apps**en selecteer **Gereed**.
-1. Stel **Configureren** in op **Ja**en selecteer **Gereed**onder **Apps** > **voor client (voorbeeld)** instellen .
-1. Selecteer **onder Access-besturingselementen** > **Grant**de optie **Toegang verlenen**, Meervoudige verificatie **vereisen**en selecteer **Selecteren**.
-1. Bevestig uw instellingen en stel **Beleid inschakelen** in **op Aan**.
-1. Selecteer **Maken** om te maken om uw beleid in te schakelen.
+1. Onder **Cloud-apps of acties** > **, selecteert**u **alle Cloud-apps**en selecteert u **gereed**.
+1. Onder **voor waarden** > **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
+1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
+1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+1. Selecteer **maken** om uw beleid in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gemeenschappelijk beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+[Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
-[Impact bepalen met de modus Alleen voor rapportvoorwaardelijke toegang](howto-conditional-access-report-only.md)
+[Effect bepalen met de modus alleen rapport-alleen voor voorwaardelijke toegang](howto-conditional-access-report-only.md)
 
-[Aanmeldingsgedrag simuleren met het gereedschap Welke als voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
+[Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)

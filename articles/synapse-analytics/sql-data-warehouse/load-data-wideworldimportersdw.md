@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Gegevens laden met Azure-portal & SSMS'
-description: Zelfstudie maakt gebruik van Azure portal en SQL Server Management Studio om het WideWorldImportersDW-gegevensmagazijn te laden van een wereldwijde Azure-blob naar een Azure Synapse Analytics SQL-groep.
+title: 'Zelf studie: gegevens laden met behulp van Azure Portal & SSMS'
+description: In de zelf studie worden Azure Portal en SQL Server Management Studio gebruikt voor het laden van het WideWorldImportersDW-Data Warehouse vanuit een globale Azure-Blob naar een Azure Synapse Analytics SQL-groep.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 16263a23c978e3486ff7c5d9281117f850cb885c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744357"
 ---
-# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Zelfstudie: Gegevens laden naar Azure Synapse Analytics SQL-groep
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Zelf studie: gegevens laden naar Azure Synapse Analytics SQL-groep
 
-Deze zelfstudie gebruikt PolyBase om het wideworldimportersDW-gegevensmagazijn van Azure Blob-opslag te laden naar uw gegevensmagazijn in Azure Synapse Analytics SQL-groep. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
+In deze zelf studie wordt gebruikgemaakt van poly Base om het WideWorldImportersDW-Data Warehouse vanuit Azure Blob-opslag te laden in uw data warehouse in azure Synapse Analytics SQL-pool. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
 
 > [!div class="checklist"]
 >
-> * Een gegevensmagazijn maken met SQL-groep in de Azure-portal
+> * Een Data Warehouse maken met behulp van SQL-groep in de Azure Portal
 > * Een serverfirewallregel ingesteld in Azure Portal
-> * Verbinding maken met de SQL-pool met SSMS
+> * Verbinding maken met de SQL-groep met SSMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
 > * Externe tabellen maken die gebruikmaken van Azure-blob als de gegevensbron
 > * De instructie CTAS T-SQL gebruiken om gegevens in uw datawarehouse te laden
@@ -34,7 +34,7 @@ Deze zelfstudie gebruikt PolyBase om het wideworldimportersDW-gegevensmagazijn v
 > * Een jaar aan gegevens genereren in de datumdimensie- en verkoopfeitentabellen
 > * Statistieken maken voor de nieuw geladen gegevens
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -42,82 +42,82 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Een leeg gegevensmagazijn maken in SQL-groep
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Een leeg Data Warehouse maken in de SQL-groep
 
-Er wordt een SQL-groep gemaakt met een gedefinieerde set [compute resources.](memory-concurrency-limits.md) De SQL-groep wordt gemaakt binnen een [Azure-brongroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [Azure SQL-logische server.](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Een SQL-groep wordt gemaakt met een gedefinieerde set [reken resources](memory-concurrency-limits.md). De SQL-groep wordt gemaakt in een [Azure-resource groep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische Azure SQL-Server](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Volg deze stappen om een lege SQL-groep te maken.
 
-1. Selecteer **Een resource maken** in de Azure-portal.
+1. Selecteer **een resource maken** in de Azure Portal.
 
-1. Selecteer **Databases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw.**
+1. Selecteer **data bases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw** .
 
     ![SQL-groep maken](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-1. Vul de sectie **Projectdetails** in met de volgende informatie:
+1. Vul de sectie **Project Details** in met de volgende gegevens:
 
    | Instelling | Voorbeeld | Beschrijving |
    | ------- | --------------- | ----------- |
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
 
-1. Geef onder **SQL-pooldetails**een naam op voor uw SQL-groep. Selecteer vervolgens een bestaande server in de vervolgkeuzelijst of selecteer **Nieuw maken** onder de **serverinstellingen** om een nieuwe server te maken. Vul het formulier in met de volgende gegevens:
+1. Geef onder **Details van SQL-groep**een naam op voor de SQL-groep. Vervolgens selecteert u een bestaande server in de vervolg keuzelijst of selecteert u **nieuwe maken** onder de **Server** instellingen om een nieuwe server te maken. Vul het formulier in met de volgende gegevens:
 
     | Instelling | Voorgestelde waarde | Beschrijving |
     | ------- | --------------- | ----------- |
-    |**SQL-poolnaam**|SampleDW| Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)geldige databasenamen . |
-    | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
-    | **Inloggen voor serverbeheerder** | Een geldige naam | Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)geldige aanmeldingsnamen .|
+    |**Naam van SQL-groep**|SampleDW| Zie [Data Base-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor geldige database namen. |
+    | **Server naam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
+    | **Aanmelding bij de server beheerder** | Een geldige naam | Zie [Data Base-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor geldige aanmeldings namen.|
     | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit minstens acht tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
-    | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor informatie over regio's . |
+    | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor meer informatie over regio's. |
 
     ![databaseserver maken](./media/load-data-wideworldimportersdw/create-database-server.png)
 
-1. **Selecteer prestatieniveau**. De schuifregelaar is standaard ingesteld op **DW1000c**. Verplaats de schuifregelaar op en neer om de gewenste prestatieschaal te kiezen.
+1. **Selecteer prestatie niveau**. De schuif regelaar is standaard ingesteld op **DW1000c**. Verplaats de schuif regelaar omhoog en omlaag om de gewenste schaal van de prestaties te kiezen.
 
     ![databaseserver maken](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-1. Stel op de pagina **Extra instellingen** de bestaande **gegevens gebruiken** in op Geen en laat de **collatie** bij de standaardinstelling *SQL_Latin1_General_CP1_CI_AS*.
+1. Stel op de pagina **extra instellingen** de optie **bestaande gegevens gebruiken** in op geen en behoud de **sortering** op de standaard waarde van *SQL_Latin1_General_CP1_CI_AS*.
 
-1. Selecteer **Controleren + maken** om uw instellingen te controleren en selecteer Vervolgens **Maken** om uw gegevensmagazijn te maken. U uw voortgang controleren door de pagina **Implementatie in uitvoering te** openen in het menu **Meldingen.**
+1. Selecteer **controleren + maken** om uw instellingen te controleren en selecteer vervolgens **maken** om uw data warehouse te maken. U kunt uw voortgang controleren door de pagina **implementatie** wordt geopend vanuit het menu **meldingen** .
 
      ![melding](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
-De Azure Synapse Analytics-service maakt een firewall op serverniveau die voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
+De Azure Synapse Analytics-service maakt een firewall op server niveau die voor komt dat externe toepassingen en hulpprogram ma's verbinding maken met de server of data bases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
-> De SQL-pool azure Synapse Analytics communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
+> De Azure Synapse Analytics SQL-groep communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
 >
 
-1. Nadat de implementatie is voltooid, zoekt u naar uw poolnaam in het zoekvak in het navigatiemenu en selecteert u de SQL-poolbron. Selecteer de servernaam.
+1. Nadat de implementatie is voltooid, zoekt u de naam van de groep in het zoekvak in het navigatie menu en selecteert u de resource van de SQL-groep. Selecteer de servernaam.
 
-    ![ga naar uw bron](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
+    ![Ga naar uw resource](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
 
 1. Selecteer de servernaam.
     ![servernaam](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Selecteer **Firewall-instellingen weergeven**. De pagina **Firewall-instellingen** voor de SQL-poolserver wordt geopend.
+1. Selecteer **firewall instellingen weer geven**. De pagina **firewall-instellingen** voor de SQL-groeps server wordt geopend.
 
     ![serverinstellingen](./media/load-data-wideworldimportersdw/server-settings.png)
 
-1. Selecteer op de pagina **Firewalls en virtuele netwerken** de optie **Client-IP toevoegen** om uw huidige IP-adres toe te voegen aan een nieuwe firewallregel. Een firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
+1. Selecteer op de pagina **firewalls en virtuele netwerken** de optie **client-IP toevoegen** om uw huidige IP-adres toe te voegen aan een nieuwe firewall regel. Een firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
 
     ![serverfirewallregel](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
 1. Selecteer **Opslaan**. Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres waarbij poort 1433 op de logische server wordt geopend.
 
-U nu verbinding maken met de SQL-server met behulp van uw client IP-adres. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.  
+U kunt nu verbinding maken met de SQL-Server met behulp van uw client-IP-adres. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.  
 
 > [!IMPORTANT]
 > Voor alle Azure-services is toegang via de SQL Database-firewall standaard ingeschakeld. Klik op **UIT** op deze pagina en klik vervolgens op **Opslaan** om de firewall uit te schakelen voor alle Azure-services.
 
 ## <a name="get-the-fully-qualified-server-name"></a>De volledig gekwalificeerde servernaam ophalen
 
-De volledig gekwalificeerde servernaam is wat wordt gebruikt om verbinding te maken met de server. Ga naar uw SQL-poolbron in de Azure-portal en bekijk de volledig gekwalificeerde naam onder **Servernaam.**
+De volledig gekwalificeerde server naam is wat wordt gebruikt om verbinding te maken met de server. Ga naar de resource van uw SQL-groep in het Azure Portal en Bekijk de volledig gekwalificeerde naam onder **Server naam**.
 
 ![servernaam](././media/load-data-wideworldimportersdw/find-server-name.png)
 
@@ -132,7 +132,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | Instelling      | Voorgestelde waarde | Beschrijving |
     | ------------ | --------------- | ----------- |
     | Servertype | Database-engine | Deze waarde is verplicht |
-    | Servernaam | De volledig gekwalificeerde servernaam | **Sqlpoolservername.database.windows.net** is bijvoorbeeld een volledig gekwalificeerde servernaam. |
+    | Servernaam | De volledig gekwalificeerde servernaam | **Sqlpoolservername.database.Windows.net** is bijvoorbeeld een volledig gekwalificeerde server naam. |
     | Verificatie | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
     | Aanmelden | Het beheerdersaccount voor de server | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
@@ -141,13 +141,13 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
 3. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
-4. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **SampleDW** uit om de objecten in uw nieuwe database weer te geven.
+4. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **SampleDW** uit om de objecten in uw nieuwe Data Base weer te geven.
 
     ![databaseobjecten](./media/load-data-wideworldimportersdw/connected.png)
 
 ## <a name="create-a-user-for-loading-data"></a>Een gebruiker maken voor het laden van gegevens
 
-De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugenmaxima worden gedefinieerd op basis van de generatie van SQL-groep die u gebruikt, [gegevensmagazijneenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md)en [resourceklasse.](resource-classes-for-workload-management.md)
+De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugen limieten worden gedefinieerd op basis van de generatie van de SQL-groep die u gebruikt, [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md)en [resource klasse](resource-classes-for-workload-management.md).
 
 Het is raadzaam een aanmelding en gebruiker te maken die speciaal wordt toegewezen voor het laden van gegevens. Voeg vervolgens de ladende gebruiker toe aan een [bronklasse](resource-classes-for-workload-management.md). Hiermee wordt een maximale hoeveelheid geheugen ingesteld.
 
@@ -170,7 +170,7 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
 
     ![Nieuwe query op voorbeeld van datawarehouse](./media/load-data-wideworldimportersdw/create-loading-user.png)
 
-5. Voer de volgende T-SQL-opdrachten in om een databasegebruiker met de naam LoaderRC60 te maken voor de aanmelding LoaderRC60. De tweede regel verleent de nieuwe gebruiker beheermachtigingen voor het nieuwe datawarehouse.  Deze machtigingen zijn vergelijkbaar met de machtigingen als u de gebruiker de eigenaar van de database maakt. De derde regel voegt de nieuwe `staticrc60` gebruiker toe als lid van de [resourceklasse.](resource-classes-for-workload-management.md)
+5. Voer de volgende T-SQL-opdrachten in om een databasegebruiker met de naam LoaderRC60 te maken voor de aanmelding LoaderRC60. De tweede regel verleent de nieuwe gebruiker beheermachtigingen voor het nieuwe datawarehouse.  Deze machtigingen zijn vergelijkbaar met de machtigingen als u de gebruiker de eigenaar van de database maakt. De derde regel voegt de nieuwe gebruiker toe als lid van de `staticrc60` [resource klasse](resource-classes-for-workload-management.md).
 
     ```sql
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
@@ -198,9 +198,9 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC60
 
 ## <a name="create-external-tables-and-objects"></a>Externe tabellen en objecten maken
 
-U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. Zie het [laadoverzicht](design-elt-data-loading.md)voor toekomstige informatie over hoe u uw gegevens naar Azure Blob-opslag krijgen of rechtstreeks vanuit uw bron in sql-groep laden.
+U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. Zie het [overzicht van laden](design-elt-data-loading.md)voor meer informatie over het ophalen van uw gegevens naar Azure Blob-opslag of het rechtstreeks laden vanuit uw bron in een SQL-groep.
 
-Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens. De gegevens bevinden zich in een wereldwijde Azure Blob.
+Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens. De gegevens bevinden zich in een globale Azure-Blob.
 
 1. In de vorige sectie hebt u zich bij uw datawarehouse aangemeld als LoaderRC60. Klik in SQL Server Management Studio met de rechtermuisknop op **SampleDW** onder uw LoaderRC60-verbinding en selecteer **Nieuwe query**.  Er wordt een nieuw queryvenster geopend.
 
@@ -214,7 +214,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
     CREATE MASTER KEY;
     ```
 
-4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe wereldwijde importeurs gegevens.  Als u een opdracht die u hebt toegevoegd aan het queryvenster wilt uitvoeren, markeert u de opdrachten die u wilt uitvoeren en klikt u op **Execute**.
+4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe gegevens van de wereld wijde importeurs.  Als u een opdracht die u hebt toegevoegd aan het queryvenster wilt uitvoeren, markeert u de opdrachten die u wilt uitvoeren en klikt u op **Execute**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -248,7 +248,7 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
     CREATE SCHEMA wwi;
     ```
 
-7. Maak de externe tabellen. De tabeldefinities worden opgeslagen in de database, maar de referentiegegevens van tabellen die zijn opgeslagen in Azure blob-opslag. Voer de volgende T-SQL-opdrachten uit om verschillende externe tabellen te maken die allemaal verwijzen naar de Azure-blob die u eerder hebt gedefinieerd in de externe gegevensbron.
+7. Maak de externe tabellen. De tabel definities worden opgeslagen in de-data base, maar de tabellen verwijzen naar gegevens die zijn opgeslagen in Azure Blob Storage. Voer de volgende T-SQL-opdrachten uit om verschillende externe tabellen te maken die allemaal verwijzen naar de Azure-blob die u eerder hebt gedefinieerd in de externe gegevensbron.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -523,20 +523,20 @@ Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die 
     );
     ```
 
-8. Vouw in Object Explorer SampleDW uit om de lijst met externe tabellen die u hebt gemaakt weer te geven.
+8. Vouw in Objectverkenner SampleDW uit om de lijst met externe tabellen weer te geven die u hebt gemaakt.
 
     ![Externe tabellen weergeven](./media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-sql-pool"></a>De gegevens in SQL-groep laden
+## <a name="load-the-data-into-sql-pool"></a>De gegevens in de SQL-groep laden
 
-In deze sectie worden de externe tabellen die u hebt gedefinieerd gebruikt om de voorbeeldgegevens van Azure Blob naar SQL-groep te laden.  
+In deze sectie worden de externe tabellen gebruikt die u hebt gedefinieerd voor het laden van de voorbeeld gegevens van een Azure-Blob naar een SQL-groep.  
 
 > [!NOTE]
 > In deze zelfstudie worden de gegevens rechtstreeks in de definitieve tabel geladen. In een productieomgeving gebruikt u meestal CREATE TABLE AS SELECT om naar een faseringstabel te laden. U kunt alle benodigde transformaties uitvoeren wanneer de gegevens zich in de faseringstabel bevinden. Als u de gegevens in de faseringstabel wilt toevoegen aan een productietabel, kunt u de instructie INSERT... SELECT gebruiken. Zie [Gegevens in een productietabel invoegen](guidance-for-loading-data.md#inserting-data-into-a-production-table) voor meer informatie.
 
-Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de selecte instructie uit een externe tabel wordt geselecteerd, worden de gegevens geïmporteerd in een relationele tabel in het gegevensmagazijn.
+Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de SELECT-instructie uit een externe tabel selecteert, worden de gegevens in een relationele tabel in het Data Warehouse geïmporteerd.
 
-Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sale. Deze tabellen worden gegenereerd in een latere stap om de tabellen te maken die een aanzienlijk aantal rijen bevatten.
+Met dit script worden geen gegevens geladen in de tabellen WWI. dimension_Date en WWI. fact_Sale. Deze tabellen worden gegenereerd in een latere stap om de tabellen te maken die een aanzienlijk aantal rijen bevatten.
 
 1. Voer het volgende script uit om de gegevens in de nieuwe tabellen in uw datawarehouse te laden.
 
@@ -685,7 +685,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
     ;
     ```
 
-2. Bekijk uw gegevens tijdens het laden. U laadt verschillende GB's aan gegevens en comprimeert deze in sterk performante geclusterde kolomarchiefindexen. Open een nieuw queryvenster in SampleDW en voer de volgende query uit om de status van het laden weer te geven. Na het starten van de query, pak een kopje koffie en een snack, terwijl SQL zwembad doet wat zwaar tillen.
+2. Bekijk uw gegevens tijdens het laden. U laadt verschillende GB van gegevens en comprimeert deze in zeer krachtige, geclusterde column Store-indexen. Open een nieuw queryvenster in SampleDW en voer de volgende query uit om de status van het laden weer te geven. Nadat de query is gestart, neemt u een koffie en een koffie op terwijl de SQL-pool een zware belasting doet.
 
     ```sql
     SELECT
@@ -732,7 +732,7 @@ Dit script laadt geen gegevens in de tabellen wwi.dimension_Date en wwi.fact_Sal
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Tabellen en procedures maken voor het genereren van de datum- en verkooptabellen
 
-In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het creëert ook opgeslagen procedures die miljoenen rijen kunnen genereren in de wwi.dimension_Date en wwi.fact_Sale tabellen.
+In deze sectie worden de tabellen WWI. dimension_Date en WWI. fact_Sale gemaakt. Er worden ook opgeslagen procedures gemaakt waarmee miljoenen rijen kunnen worden gegenereerd in de tabellen WWI. dimension_Date en WWI. fact_Sale.
 
 1. Maak de tabellen dimension_Date en fact_Sale.  
 
@@ -876,7 +876,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
     END;
     ```
 
-4. Maak deze procedure die de tabellen wwi.dimension_Date en wwi.fact_Sale vult. Hiermee wordt [wwi].[PopulateDateDimensionForYear] aangeroepen om wwi.dimension_Date te vullen.
+4. Maak deze procedure waarmee de tabellen WWI. dimension_Date en WWI. fact_Sale worden gevuld. Hiermee wordt [wwi].[PopulateDateDimensionForYear] aangeroepen om wwi.dimension_Date te vullen.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale aan. Het c
 
 ## <a name="generate-millions-of-rows"></a>Miljoenen rijen genereren
 
-Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tabel wwi.fact_Sale en de bijbehorende gegevens in de tabel wwi.dimension_Date te genereren.
+Gebruik de opgeslagen procedures die u hebt gemaakt voor het genereren van miljoenen rijen in de tabel WWI. fact_Sale en de bijbehorende gegevens in de tabel WWI. dimension_Date.
 
 1. Voer deze procedure uit om [wwi].[seed_Sale] met meer rijen te seeden.
 
@@ -941,7 +941,7 @@ Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tab
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Voer deze procedure uit om wwi.fact_Sale met 100.000 rijen per dag voor elke dag in het jaar 2000 te vullen.
+2. Voer deze procedure uit om WWI. fact_Sale te vullen met 100.000 rijen per dag voor elke dag in het jaar 2000.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -961,7 +961,7 @@ Gebruik de opgeslagen procedures die u hebt gemaakt om miljoenen rijen in de tab
 
 ## <a name="populate-the-replicated-table-cache"></a>De gerepliceerde tabelcache vullen
 
-SQL-groep repliceert een tabel door de gegevens aan elk Compute-knooppunt te plaatsen. De cache wordt gevuld wanneer een query wordt uitgevoerd op de tabel. Daarom heeft de eerste query in een gerepliceerde tabel mogelijk extra tijd nodig om de cache te vullen. Nadat de cache is ingevuld, worden query's in gerepliceerde tabellen sneller uitgevoerd.
+De SQL-pool repliceert een tabel door de gegevens naar elk reken knooppunt in de cache te plaatsen. De cache wordt gevuld wanneer een query wordt uitgevoerd op de tabel. Daarom heeft de eerste query in een gerepliceerde tabel mogelijk extra tijd nodig om de cache te vullen. Nadat de cache is ingevuld, worden query's in gerepliceerde tabellen sneller uitgevoerd.
 
 Voer deze SQL-query's uit om de gerepliceerde tabelcache op de rekenknooppunten te vullen.
 
@@ -1083,7 +1083,7 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
     ![Resources opschonen](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Als u de gegevens in de opslag wilt houden, kunt u het berekenen onderbreken wanneer u het datawarehouse niet gebruikt. Door compute te pauzeren, worden alleen kosten in rekening gebracht voor gegevensopslag en u de gegevensweerwerken hervatten wanneer u klaar bent om met de gegevens te werken. Als u het berekenen wilt onderbreken, klikt u op de knop **Onderbreken**. Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Als u het berekenen wilt hervatten, klikt u op **Start**.
+2. Als u de gegevens in de opslag wilt houden, kunt u het berekenen onderbreken wanneer u het datawarehouse niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag en kunt u de berekening hervatten wanneer u klaar bent om met de gegevens te werken. Als u het berekenen wilt onderbreken, klikt u op de knop **Onderbreken**. Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Als u het berekenen wilt hervatten, klikt u op **Start**.
 
 3. Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen. Als u het datawarehouse wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, klikt u op **Verwijderen**.
 
@@ -1098,16 +1098,16 @@ In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
 >
-> * Een gegevensmagazijn maken met SQL-pool in de Azure-portal
+> * Een Data Warehouse gemaakt met behulp van SQL-groep in de Azure Portal
 > * Een serverfirewallregel ingesteld in Azure Portal
-> * Verbonden met de SQL-pool met SSMS
+> * Verbonden met de SQL-groep met SSMS
 > * Een gebruiker gemaakt die wordt aangewezen om gegevens te laden
 > * Externe tabellen gemaakt voor gegevens in Azure Storage Blob
 > * De instructie CTAS T-SQL gebruikt om gegevens in uw datawarehouse te laden
 > * De voortgang van de gegevens weergegeven terwijl deze werden geladen
 > * Statistieken gemaakt voor de nieuw geladen gegevens
 
-Ga verder naar het ontwikkelingsoverzicht voor meer informatie over het migreren van een bestaande database naar Azure Synapse SQL-groep.
+Ga naar het overzicht voor ontwikkel aars voor meer informatie over het migreren van een bestaande Data Base naar een Azure Synapse SQL-groep.
 
 > [!div class="nextstepaction"]
->[Ontwerpbeslissingen om een bestaande database te migreren naar SQL-groep](sql-data-warehouse-overview-develop.md)
+>[Ontwerp beslissingen voor het migreren van een bestaande Data Base naar een SQL-groep](sql-data-warehouse-overview-develop.md)

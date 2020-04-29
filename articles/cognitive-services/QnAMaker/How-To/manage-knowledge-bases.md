@@ -1,111 +1,111 @@
 ---
-title: Beheer kennisbanken - QnA Maker
-description: Met QnA Maker u uw kennisbanken beheren door toegang te bieden tot de instellingen en inhoud van de kennisbank.
+title: Knowledge bases beheren-QnA Maker
+description: Met QnA Maker kunt u uw kennis slagen beheren door toegang te bieden tot de instellingen en inhoud van de kennis basis.
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756798"
 ---
-# <a name="create-knowledge-base-and-manage-settings"></a>Kennisbank maken en instellingen beheren
+# <a name="create-knowledge-base-and-manage-settings"></a>Knowledge Base maken en instellingen beheren
 
-Met QnA Maker u uw kennisbanken beheren door toegang te bieden tot de kennisbankinstellingen en gegevensbronnen.
+Met QnA Maker kunt u uw kennis grondslagen beheren door toegang te bieden tot de kennis basis instellingen en gegevens bronnen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-> * Een [QnA Maker-bron](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die is gemaakt in de Azure-portal. Onthoud uw Azure Active Directory ID, Abonnement, QnA-bronnaam die u hebt geselecteerd toen u de bron maakte.
+> * Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+> * Een [QnA Maker resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die in de Azure Portal is gemaakt. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
 ## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
 
-1. Meld u aan bij de [QnAMaker.ai](https://QnAMaker.ai) portal met uw Azure-referenties.
+1. Meld u aan bij de [QnAMaker.ai](https://QnAMaker.ai) -Portal met uw Azure-referenties.
 
-1. Selecteer in de QnA Maker-portal de optie **Een kennisbank maken.**
+1. Selecteer in de portal QnA Maker **een Knowledge Base maken**.
 
-1. Sla **stap 1** op de pagina **Maken** over als u al uw QnA Maker-bron hebt.
+1. Sla **stap 1** over op de pagina **maken** als u uw QnA Maker-resource al hebt.
 
-    Als u de resource nog niet hebt gemaakt, selecteert u **Een QnA-service maken**. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Onthoud uw Azure Active Directory ID, Abonnement, QnA-bronnaam die u hebt geselecteerd toen u de bron maakte.
+    Als u de resource nog niet hebt gemaakt, selecteert u **een QnA-service maken**. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
-    Wanneer u klaar bent met het maken van de bron in de Azure-portal, keert u terug naar de QnA Maker-portal, vernieuwt u de browserpagina en gaat u verder naar **stap 2.**
+    Wanneer u klaar bent met het maken van de resource in de Azure Portal, keert u terug naar de QnA Maker Portal, vernieuwt u de browser pagina en gaat u verder met **stap 2**.
 
-1. Selecteer in **stap 3**uw Active directory, abonnement, service (resource) en de taal voor alle kennisbanken die in de service zijn gemaakt.
+1. Selecteer in **stap 3**uw Active Directory, abonnement, service (resource) en de taal voor alle Knowledge bases die in de service zijn gemaakt.
 
-   ![Schermafbeelding van het selecteren van een QnA Maker-servicekennisbank](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Scherm opname van het selecteren van een QnA Maker service Knowledge Base](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. In **stap 3,** noem `My Sample QnA KB`uw kennisbank .
+1. In **stap 3**moet u de naam van `My Sample QnA KB`uw kennis database noemen.
 
 1. Configureer in **stap 4**de instellingen met de volgende tabel:
 
     |Instelling|Waarde|
     |--|--|
-    |**Multi-turn extractie uit URL's, .pdf- of .docx-bestanden inschakelen.**|Geselecteerd|
-    |**Standaardantwoordtekst**| `Quickstart - default answer not found.`|
+    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Geselecteerd|
+    |**Standaard antwoord tekst**| `Quickstart - default answer not found.`|
     |**+ URL toevoegen**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-chat**|Selecteer **Professional**|
+    |**Chit-Chat**|**Professionele** selecteren|
 
-1. Selecteer uw **KB maken**in **stap 5.**
+1. Selecteer in **stap 5** **de optie uw KB maken**.
 
-    Het extractieproces duurt enkele ogenblikken om het document te lezen en vragen en antwoorden te identificeren.
+    Het uitpakken van het proces duurt een paar minuten om het document te lezen en vragen en antwoorden te identificeren.
 
-    Nadat QnA Maker met succes de kennisbank heeft gemaakt, wordt de **Knowledge base** pagina geopend. U de inhoud van de kennisbank op deze pagina bewerken.
+    Nadat QnA Maker de Knowledge Base hebt gemaakt, wordt de pagina **Knowledge Base** geopend. U kunt de inhoud van de Knowledge Base op deze pagina bewerken.
 
 ## <a name="edit-knowledge-base"></a>Knowledge base bewerken
 
-1.  Selecteer **Mijn kennisbases** in de bovenste navigatiebalk.
+1.  Selecteer **mijn Knowledge bases** in de bovenste navigatie balk.
 
-       U alle services die u hebt gemaakt of met u hebt gedeeld, gesorteerd in de aflopende volgorde van de **laatst gewijzigde** datum.
+       U kunt alle services zien die u hebt gemaakt of die met u zijn gedeeld, gesorteerd in aflopende volg orde van de **Laatst gewijzigd** op.
 
-       ![Mijn kennisbanken](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+       ![Mijn Knowledge bases](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Selecteer een bepaalde kennisbank om deze aan te bewerkingen.
+1. Selecteer een specifieke Knowledge Base om er wijzigingen aan te brengen.
 
-1.  Selecteer **Instellingen**. De volgende lijst bevat velden die u wijzigen.
+1.  **Instellingen**selecteren. De volgende lijst bevat velden die u kunt wijzigen.
 
-       |Doel|Actie|
+       |Doel|Bewerking|
        |--|--|
-       |URL toevoegen|U nieuwe URL's toevoegen om nieuwe FAQ-inhoud toe te voegen aan Knowledge Base door te klikken op **De koppeling Kennisbank beheren > '+ URL toevoegen'.**|
-       |URL verwijderen|U bestaande URL's verwijderen door het pictogram Verwijderen, de prullenbak, te selecteren.|
-       |Inhoud vernieuwen|Als u wilt dat uw kennisbank de nieuwste inhoud van bestaande URL's crawlt, schakelt u het selectievakje **Vernieuwen** in. Hiermee wordt de kennisbank één keer bijgewerkt met de nieuwste URL-inhoud. Dit is niet het instellen van een regelmatig schema van updates.|
-       |Bestand toevoegen|U een ondersteund bestandsdocument toevoegen om deel uit te maken van een kennisbank door **Kennisbank beheren**te selecteren en vervolgens **bestand + Bestand toevoegen te** selecteren|
-    |Importeren|U ook een bestaande kennisbank importeren door de knop **Kennisbasis importeren** te selecteren. |
-    |Update|Het bijwerken van de kennisbank is afhankelijk van **de prijscategorie voor beheer** die wordt gebruikt tijdens het maken van de QnA Maker-service die is gekoppeld aan uw kennisbank. U de beheerlaag ook bijwerken vanuit azure-portal indien nodig.
+       |URL toevoegen|U kunt nieuwe Url's toevoegen om nieuwe veelgestelde vragen over inhoud toe te voegen aan de Knowledge Base door te klikken op **Knowledge Base beheren-> koppeling + URL toevoegen** .|
+       |URL verwijderen|U kunt bestaande Url's verwijderen door het pictogram verwijderen te selecteren, de prullenbak kan.|
+       |Inhoud vernieuwen|Als u de meest recente inhoud van bestaande Url's door de Knowledge Base wilt laten verkennen, selecteert u het selectie vakje **vernieuwen** . Hiermee wordt de Knowledge Base één keer bijgewerkt met de nieuwste URL-inhoud. Dit is niet een regel matig schema van updates.|
+       |Bestand toevoegen|U kunt een ondersteund bestands document toevoegen om deel uit te maken van een Knowledge Base door **Knowledge Base beheren**te selecteren en vervolgens **+ bestand toevoegen** te selecteren|
+    |Importeren|U kunt ook een bestaande Knowledge Base importeren door de knop **kennis basis importeren** te selecteren. |
+    |Bijwerken|Het bijwerken van de kennis basis is afhankelijk van de **prijs categorie voor beheer** die wordt gebruikt bij het maken van QnA Maker-service die aan uw Knowledge Base is gekoppeld. U kunt de beheer laag ook bijwerken vanuit Azure Portal, indien nodig.
 
-  1. Zodra u klaar bent met het aanbrengen van wijzigingen in de kennisbank, selecteert u **Opslaan en trainen** in de rechterbovenhoek van de pagina om de wijzigingen voort te zetten.
+  1. Wanneer u klaar bent met het aanbrengen van wijzigingen in de Knowledge Base, selecteert u **opslaan en trainen** in de rechter bovenhoek van de pagina om de wijzigingen te behouden.
 
        ![Opslaan en trainen](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
-       >Als u de pagina verlaat voordat **u Opslaan en trainen selecteert,** gaan alle wijzigingen verloren.
+       >Als u de pagina verlaat voordat u **opslaan en trainen**selecteert, gaan alle wijzigingen verloren.
 
 
 
-## <a name="manage-large-knowledge-bases"></a>Grote kennisbanken beheren
+## <a name="manage-large-knowledge-bases"></a>Grote kennis grondslagen beheren
 
-* **Gegevensbrongroepen**: De QnA's worden gegroepeerd op de gegevensbron waaruit ze zijn geëxtraheerd. U de gegevensbron uitvouwen of samenvouwen.
+* **Gegevens bron groepen**: de QnAs worden gegroepeerd op de gegevens bron van waaruit ze zijn geëxtraheerd. U kunt de gegevens bron uitvouwen of samen vouwen.
 
-    ![Gebruik de gegevensbronbalk van QnA Maker om vragen en antwoorden van gegevensbronnen samen te vouwen en uit te vouwen](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Gebruik de QnA Maker gegevens bron balk om vragen en antwoorden over de gegevens bron samen te vouwen en uit te breiden](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Kennisbank zoeken**: U de kennisbank doorzoeken door het tekstvak bovenaan de Knowledge Base-tabel in te typen. Klik op Enter om te zoeken naar de inhoud van de vraag, het antwoord of de metagegevens. Klik op het X-pictogram om het zoekfilter te verwijderen.
+* **Zoek Knowledge Base**: u kunt de Knowledge Base doorzoeken door in het tekstvak boven aan de Knowledge Base-tabel te typen. Klik op ENTER om te zoeken naar de vraag, het antwoord of de inhoud van meta gegevens. Klik op het pictogram X om het zoek filter te verwijderen.
 
-    ![Gebruik het zoekvak QnA Maker boven de vragen en antwoorden om de weergave te reduceren tot alleen filterovereenkomende items](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Gebruik het zoekvak van QnA Maker boven de vragen en antwoorden om de weer gave te verkleinen zodat alleen items kunnen worden gefilterd](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Pagination**: Snel door databronnen gaan om grote kennisbanken te beheren
+* **Paginering**: snel door gegevens bronnen bladeren om grote kennis slagen te beheren
 
-    ![Gebruik de QnA Maker-paginatie-functies boven de vragen en antwoorden om pagina's met vragen en antwoorden te doorlopen](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Gebruik de QnA Maker paginerings functies boven de vragen en antwoorden om door pagina's van vragen en antwoorden te bladeren](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Kennisbanken verwijderen
+## <a name="delete-knowledge-bases"></a>Kennis grondslagen verwijderen
 
-Het verwijderen van een kennisbank (KB) is een permanente operatie. Het kan niet ongedaan worden gemaakt. Voordat u een kennisbank verwijderde, moet u de kennisbank exporteren via de pagina **Instellingen** van de QnA Maker-portal.
+Het verwijderen van een Knowledge Base (KB) is een permanente bewerking. Deze kan niet ongedaan worden gemaakt. Voordat u een Knowledge Base verwijdert, moet u de Knowledge Base exporteren via de pagina **instellingen** van de QnA Maker Portal.
 
-Als u uw kennisbank deelt met medewerkers,](collaborate-knowledge-base.md) en deze vervolgens verwijdert, verliest iedereen de toegang tot de KB.
+Als u uw Knowledge Base deelt met mede werkers,] (samen werken-kennis-base.md) vervolgens het item verwijdert, verliest iedereen de toegang tot de KB.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het beheren van [de taal](language-knowledge-base.md) van alle kennisbanken in een resource.
+Meer informatie over [het beheren van de taal](language-knowledge-base.md) van alle kennis grondslagen in een resource.
 
 * QnA-paren bewerken
 * Azure-resources beheren die worden gebruikt door QnA Maker

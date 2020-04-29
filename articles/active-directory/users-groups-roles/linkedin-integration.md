@@ -1,6 +1,6 @@
 ---
-title: Beheerderstoestemming voor LinkedIn-accountverbindingen - Azure AD | Microsoft Documenten
-description: Hier wordt uitgelegd hoe u LinkedIn-integratieaccountverbindingen in Microsoft-apps in Azure Active Directory in- of uitschakelt
+title: Beheerders toestemming voor LinkedIn-account verbindingen-Azure AD | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u verbindingen met LinkedIn-Integratie accounts in micro soft-apps in Azure Active Directory kunt in-of uitschakelen
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,64 +14,64 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755113"
 ---
-# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-accountverbindingen integreren in Azure Active Directory
+# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-account verbindingen integreren in Azure Active Directory
 
-U gebruikers in uw organisatie toegang geven tot hun LinkedIn-verbindingen in sommige Microsoft-apps. Er worden geen gegevens gedeeld totdat gebruikers toestemming geven om hun accounts met elkaar te verbinden. U uw organisatie integreren in het Azure Active [Directory-beheercentrum](https://aad.portal.azure.com)(Azure AD).
+U kunt gebruikers in uw organisatie in staat stellen om toegang te krijgen tot hun LinkedIn-verbindingen binnen sommige micro soft-apps. Er worden geen gegevens gedeeld wanneer gebruikers toestemming hebben om verbinding te maken met hun accounts. U kunt uw organisatie integreren in het Azure Active Directory- [beheer centrum](https://aad.portal.azure.com)(Azure AD).
 
 > [!IMPORTANT]
-> De instelling Voor LinkedIn-accountverbindingen wordt momenteel uitgerold naar Azure AD-organisaties. Wanneer deze wordt uitgerold naar uw organisatie, is deze standaard ingeschakeld.
+> De instelling verbindingen van het LinkedIn-account wordt momenteel geïmplementeerd in azure AD-organisaties. Wanneer de implementatie is uitgevoerd naar uw organisatie, is deze standaard ingeschakeld.
 >
-> Uitzonderingen:
+> Uitzonderingen
 >
-> * De instelling is niet beschikbaar voor klanten die Microsoft Cloud gebruiken voor de Amerikaanse overheid, Microsoft Cloud Germany of Azure en Office 365 die worden beheerd door 21Vianet in China.
-> * De instelling is standaard uitgeschakeld voor huurders die in Duitsland zijn ingericht. Houd er rekening mee dat de instelling niet beschikbaar is voor klanten die Microsoft Cloud Germany gebruiken.
-> * De instelling is standaard uitgeschakeld voor huurders die in Frankrijk zijn ingericht.
+> * De instelling is niet beschikbaar voor klanten die gebruikmaken van Microsoft Cloud voor Amerikaanse overheid, Microsoft Cloud Duitsland of Azure en Office 365 geëxploiteerd door 21Vianet in China.
+> * De instelling is standaard uitgeschakeld voor tenants die zijn ingericht in Duitsland. Houd er rekening mee dat de instelling niet beschikbaar is voor klanten die Microsoft Cloud Duitsland gebruiken.
+> * De instelling is standaard uitgeschakeld voor tenants die in Frank rijk zijn ingericht.
 >
-> Zodra LinkedIn-accountverbindingen zijn ingeschakeld voor uw organisatie, werken de accountverbindingen nadat gebruikers toestemming hebben gegeven voor apps die namens hen toegang hebben tot bedrijfsgegevens. Zie [De toegang van een gebruiker tot een toepassing verwijderen](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)voor informatie over de instelling voor gebruikerstoestemming.
+> Zodra de verbinding met het LinkedIn-account voor uw organisatie is ingeschakeld, werken de account verbindingen nadat gebruikers toestemming geven voor apps die namens hen toegang hebben tot Bedrijfs gegevens. Zie de [toegang van een gebruiker tot een toepassing verwijderen](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)voor meer informatie over de instelling van toestemming voor gebruikers.
 
-## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>LinkedIn-accountverbindingen inschakelen in de Azure-portal
+## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>LinkedIn-account verbindingen inschakelen in de Azure Portal
 
-U LinkedIn-accountverbindingen inschakelen voor alleen de gebruikers die u toegang wilt hebben, van uw hele organisatie tot alleen geselecteerde gebruikers in uw organisatie.
+U kunt LinkedIn-account verbindingen inschakelen voor alleen de gebruikers die u toegang wilt geven, vanuit uw hele organisatie tot alleen geselecteerde gebruikers in uw organisatie.
 
-1. Meld u aan bij het [Azure AD-beheercentrum](https://aad.portal.azure.com/) met een account dat een globale beheerder is voor de Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/) met een account dat een globale beheerder is voor de Azure AD-organisatie.
 1. Selecteer **Gebruikers**.
-1. Selecteer **op** de pagina Gebruikers de optie **Gebruikersinstellingen**.
-1. Laat gebruikers onder **LinkedIn-accountverbindingen**hun accounts verbinden om toegang te krijgen tot hun LinkedIn-verbindingen binnen sommige Microsoft-apps. Er worden geen gegevens gedeeld totdat gebruikers toestemming geven om hun accounts met elkaar te verbinden.
+1. Op de pagina **gebruikers** selecteert u **gebruikers instellingen**.
+1. Onder **LinkedIn-account verbindingen**kunnen gebruikers hun accounts verbinden voor toegang tot hun LinkedIn-verbindingen binnen sommige micro soft-apps. Er worden geen gegevens gedeeld wanneer gebruikers toestemming hebben om verbinding te maken met hun accounts.
 
-    * Selecteer **Ja** om de service in te schakelen voor alle gebruikers in uw organisatie
-    * Geselecteerde **groep selecteren** om de service in te schakelen voor slechts een groep geselecteerde gebruikers in uw organisatie
-    * Selecteer **Nee** om toestemming in te trekken van alle gebruikers in uw organisatie
+    * Selecteer **Ja** om de service in te scha kelen voor alle gebruikers in uw organisatie
+    * Selecteer **geselecteerde groep** om de service alleen in te scha kelen voor een groep geselecteerde gebruikers in uw organisatie
+    * Selecteer **Nee** om de toestemming van alle gebruikers in uw organisatie in te trekken
 
-    ![LinkedIn-accountverbindingen integreren in de organisatie](./media/linkedin-integration/linkedin-integration.png)
+    ![LinkedIn-account verbindingen integreren in de organisatie](./media/linkedin-integration/linkedin-integration.png)
 
 1. Wanneer u klaar bent, selecteert u **Opslaan** om uw instellingen op te slaan.
 
 > [!Important]
-> LinkedIn-integratie is niet volledig ingeschakeld voor uw gebruikers totdat ze toestemming geven om hun accounts te verbinden. Er worden geen gegevens gedeeld wanneer u accountverbindingen inschakelt voor uw gebruikers.
+> LinkedIn-integratie is niet volledig ingeschakeld voor uw gebruikers tot ze toestemming hebben om verbinding te maken met hun accounts. Er worden geen gegevens gedeeld wanneer u account verbindingen voor uw gebruikers inschakelt.
 
-### <a name="assign-selected-users-with-a-group"></a>Geselecteerde gebruikers toewijzen met een groep
+### <a name="assign-selected-users-with-a-group"></a>Geselecteerde gebruikers aan een groep toewijzen
 
-We hebben de optie 'Geselecteerd' vervangen die een lijst met gebruikers opgeeft met de optie om een groep gebruikers te selecteren, zodat u de mogelijkheid inschakelen om LinkedIn- en Microsoft-accounts voor één groep te verbinden in plaats van veel individuele gebruikers. Als u geen LinkedIn-accountverbindingen hebt ingeschakeld voor geselecteerde individuele gebruikers, hoeft u niets te doen. Als u eerder LinkedIn-accountverbindingen voor geselecteerde individuele gebruikers hebt ingeschakeld, moet u het als:
+We hebben de optie geselecteerd vervangen, waarmee een lijst met gebruikers wordt opgegeven met de optie om een groep gebruikers te selecteren, zodat u de mogelijkheid hebt om LinkedIn-en micro soft-accounts te verbinden voor één groep in plaats van veel afzonderlijke gebruikers. Als u geen LinkedIn-account verbindingen hebt ingeschakeld voor geselecteerde afzonderlijke gebruikers, hoeft u niets te doen. Als u eerder LinkedIn-account verbindingen hebt ingeschakeld voor geselecteerde afzonderlijke gebruikers, moet u het volgende doen:
 
-1. Download de huidige lijst met individuele gebruikers
+1. De huidige lijst met afzonderlijke gebruikers ophalen
 1. De momenteel ingeschakelde individuele gebruikers naar een groep verplaatsen
-1. Gebruik de groep van de vorige groep als de geselecteerde groep in de instelling LinkedIn-accountverbindingen in het Azure AD-beheercentrum.
+1. Gebruik de groep van de vorige als de geselecteerde groep in de instelling voor de verbinding met het LinkedIn-account in het Azure AD-beheer centrum.
 
 > [!NOTE]
-> Zelfs als u uw momenteel geselecteerde individuele gebruikers niet naar een groep verplaatst, kunnen ze nog steeds LinkedIn-gegevens in Microsoft-apps zien.
+> Zelfs als u de momenteel geselecteerde afzonderlijke gebruikers niet naar een groep verplaatst, kunnen ze nog steeds LinkedIn-informatie zien in micro soft-apps.
 
 ### <a name="move-currently-selected-users-to-a-group"></a>Momenteel geselecteerde gebruikers naar een groep verplaatsen
 
-1. Maak een CSV-bestand van de gebruikers die zijn geselecteerd voor LinkedIn-accountverbindingen.
-1. Meld u aan bij Microsoft 365 met uw beheerdersaccount.
+1. Maak een CSV-bestand van de gebruikers die zijn geselecteerd voor de verbindingen van het LinkedIn-account.
+1. Meld u aan bij Microsoft 365 met uw beheerders account.
 1. Start PowerShell.
-1. De Azure AD-module installeren door`Install-Module AzureAD`
+1. De Azure AD-module installeren door uit te voeren`Install-Module AzureAD`
 1. Voer het volgende script uit:
 
   ``` PowerShell
@@ -84,29 +84,29 @@ We hebben de optie 'Geselecteerd' vervangen die een lijst met gebruikers opgeeft
   foreach($user in $users} { Add-AzureADGroupMember -ObjectId $groupId -RefObjectId $user ; Write-Host $i Added $user ; $i++ ; Start-Sleep -Milliseconds 10 }
   ```
 
-Zie [LinkedIn-accountverbindingen inschakelen in de Azure-portal](#enable-linkedin-account-connections-in-the-azure-portal)als de geselecteerde groep in de instelling LinkedIn-accountverbindingen in het Azure AD-beheercentrum.
+Als u de groep uit stap 2 wilt gebruiken als de geselecteerde groep in de instelling verbindingen van het LinkedIn-account in het Azure AD-beheer centrum, raadpleegt u [LinkedIn-account verbindingen inschakelen in de Azure Portal](#enable-linkedin-account-connections-in-the-azure-portal).
 
-## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>Groepsbeleid gebruiken om LinkedIn-accountverbindingen in te schakelen
+## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>groepsbeleid gebruiken om LinkedIn-account verbindingen in te scha kelen
 
-1. De [beheersjabloonbestanden van Office 2016 downloaden (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-1. Haal de **ADMX-bestanden** eruit en kopieer ze naar uw centrale winkel.
+1. De [Office 2016-beheer sjabloon bestanden (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) downloaden
+1. Pak de **ADMX** -bestanden uit en kopieer deze naar uw centrale opslag.
 1. Open Groepsbeleidsbeheer.
-1. Maak een groepsbeleidsobject met de volgende instelling:**Beheersjablonen** >  **voor gebruikersconfiguratie** > **Microsoft Office 2016** > **Diverse** > **LinkedIn-functies weergeven in Office-toepassingen**.
-1. Selecteer **Ingeschakeld** of **uitgeschakeld**.
+1. Maak een Groepsbeleid-object met de volgende instelling: **gebruikers configuratie** > **Beheersjablonen** > **Microsoft Office 2016** > **diverse** > **LinkedIn-functies weer geven in Office-toepassingen**.
+1. Selecteer **ingeschakeld** of **uitgeschakeld**.
   
    Status | Effect
    ------ | ------
-   **Ingeschakeld** | De instelling **LinkedIn-functies weergeven in Office-toepassingen** in Office 2016-opties is ingeschakeld. Gebruikers in uw organisatie kunnen LinkedIn-functies gebruiken in hun Office 2016-toepassingen.
-   **Handicap** | De **instelling LinkedIn-functies weergeven in Office-toepassingen** in Office 2016-opties is uitgeschakeld en eindgebruikers kunnen deze instelling niet wijzigen. Gebruikers in uw organisatie kunnen LinkedIn-functies niet gebruiken in hun Office 2016-toepassingen.
+   **Ingeschakeld** | De instelling **LinkedIn-functies in Office-toepassingen weer geven** in Office 2016 opties is ingeschakeld. Gebruikers in uw organisatie kunnen LinkedIn-functies gebruiken in hun Office 2016-toepassingen.
+   **Geblokkeerd** | De instelling **LinkedIn-functies in Office-toepassingen weer geven** in Office 2016 opties is uitgeschakeld en eind gebruikers kunnen deze instelling niet wijzigen. Gebruikers in uw organisatie kunnen LinkedIn-functies niet gebruiken in hun Office 2016-toepassingen.
 
-Dit groepsbeleid is alleen van invloed op Office 2016-apps voor een lokale computer. Als gebruikers LinkedIn uitschakelen in hun Office 2016-apps, kunnen ze nog steeds LinkedIn-functies zien in Office 365.
+Dit groeps beleid is alleen van invloed op Office 2016-apps voor een lokale computer. Als gebruikers LinkedIn uitschakelen in hun Office 2016-apps, kunnen ze nog steeds LinkedIn-functies zien in Office 365.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Toestemming van gebruikers en het delen van gegevens voor LinkedIn](linkedin-user-consent.md)
+* [Gebruikers toestemming en delen van gegevens voor LinkedIn](linkedin-user-consent.md)
 
-* [LinkedIn-informatie en -functies in uw Microsoft-apps](https://go.microsoft.com/fwlink/?linkid=850740)
+* [LinkedIn-informatie en-functies in uw micro soft-apps](https://go.microsoft.com/fwlink/?linkid=850740)
 
-* [LinkedIn helpcentrum](https://www.linkedin.com/help/linkedin)
+* [LinkedIn Help Center](https://www.linkedin.com/help/linkedin)
 
-* [Uw huidige LinkedIn-integratieinstelling weergeven in de Azure-portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings)
+* [Bekijk uw huidige LinkedIn-Integratie-instelling in de Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings)

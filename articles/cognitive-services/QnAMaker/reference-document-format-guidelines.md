@@ -1,58 +1,58 @@
 ---
-title: Richtlijnen voor documentindeling importeren - QnA Maker
-description: Begrijpen hoe de typen URL's worden gebruikt om QnA-paren te importeren en te maken.
+title: Richt lijnen voor het importeren van document indelingen-QnA Maker
+description: Begrijpen hoe de typen Url's worden gebruikt voor het importeren en maken van QnA-paren.
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804330"
 ---
-# <a name="format-guidelines-for-imported-documents-and-urls"></a>Richtlijnen voor geïmporteerde documenten en URL's opmaken
+# <a name="format-guidelines-for-imported-documents-and-urls"></a>Richt lijnen voor het opmaken van geïmporteerde documenten en Url's
 
-Bekijk deze richtlijnen voor opmaak om de beste resultaten voor uw inhoud te krijgen.
+Bekijk deze opmaak richtlijnen om de beste resultaten voor uw inhoud te krijgen.
 
-## <a name="formatting-considerations"></a>Overwegingen voor opmaak
+## <a name="formatting-considerations"></a>Opmaak overwegingen
 
-Na het importeren van een bestand of URL converteert en slaat QnA Maker uw inhoud om in de [afwaarderingsindeling](https://en.wikipedia.org/wiki/Markdown). Het conversieproces voegt nieuwe regels toe `\n\n`in de tekst, zoals . Een kennis van de afwaarderingsvorm helpt u om de geconverteerde inhoud te begrijpen en uw knowledge base-inhoud te beheren.
+Nadat u een bestand of URL hebt geïmporteerd, worden QnA Maker geconverteerd en wordt de inhoud opgeslagen in de [indeling voor prijs verlaging](https://en.wikipedia.org/wiki/Markdown). Het conversie proces voegt nieuwe regels toe aan de tekst, zoals `\n\n`. Een kennis van de prijs verlaging helpt u bij het begrijpen van de geconverteerde inhoud en het beheren van uw Knowledge Base-inhoud.
 
-Als u uw inhoud rechtstreeks in uw kennisbank toevoegt of bewerkt, gebruikt u **opmaak opmaak** om inhoud met rijke tekst te maken of wijzigt u de markeringsindeling inhoud die al in het antwoord staat. QnA Maker ondersteunt een groot deel van de markdown-indeling om rijke tekstmogelijkheden aan uw inhoud te bieden. De clienttoepassing, zoals een chatbot, ondersteunt mogelijk echter niet dezelfde set markdown-indelingen. Het is belangrijk om de weergave van antwoorden van de clienttoepassing te testen.
+Als u inhoud rechtstreeks in uw Knowledge Base toevoegt of bewerkt, gebruikt u de indeling voor **prijs verlaging** om inhoud met opmaak te maken of de inhoud van de prijs verlaging te wijzigen die al in het antwoord voor komt. QnA Maker ondersteunt een groot deel van de prijs verlaging voor uw inhoud. De client toepassing, zoals een chat-bot, ondersteunt echter mogelijk niet dezelfde set prijs notaties. Het is belang rijk om de weer gave van antwoorden van de client toepassing te testen.
 
-Bekijk een volledige lijst met [inhoudstypen en voorbeelden.](./Concepts/content-types.md#file-and-url-data-types)
+Bekijk een volledige lijst met [inhouds typen en voor beelden](./Concepts/content-types.md#file-and-url-data-types).
 
-## <a name="basic-document-formatting"></a>Basisdocumentopmaak
+## <a name="basic-document-formatting"></a>Elementaire document opmaak
 
-QnA Maker identificeert secties en subsecties en relaties in het bestand op basis van visuele aanwijzingen zoals:
+QnA Maker herkent secties en subsecties en relaties in het bestand op basis van visuele aanwijzingen als:
 
 * tekengrootte
-* Tekenstijl
-* Nummering
+* lettertype stijl
+* nummeren
 * kleuren
 
-## <a name="product-manuals"></a>Producthandleidingen
+## <a name="product-manuals"></a>Product handleidingen
 
-Een handleiding is meestal geleidingsmateriaal dat een product begeleidt. Het helpt de gebruiker bij het instellen, gebruiken, onderhouden en oplossen van het product. Wanneer QnA Maker een handleiding verwerkt, worden de koppen en onderverdelingen als vragen en de daaropvolgende inhoud als antwoorden geëxtraheerd. Zie [hier](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)een voorbeeld.
+Een hand leiding is doorgaans richt lijnen die bij een product worden geleverd. Het helpt de gebruiker bij het instellen, gebruiken, onderhouden en probleem oplossing van het product. Als QnA Maker een hand matige processen verwerkt, worden de koppen en subkoppen als vragen en de volgende inhoud als antwoorden geëxtraheerd. Bekijk [hier](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)een voor beeld.
 
-Hieronder vindt u een voorbeeld van een handleiding met een indexpagina en hiërarchische inhoud
+Hieronder ziet u een voor beeld van een hand leiding met een index pagina en hiërarchische inhoud
 
- ![Producthandleiding voorbeeld voor een kennisbank](./media/qnamaker-concepts-datasources/product-manual.png)
+ ![Hand matig voor beeld van product voor een Knowledge Base](./media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
-> Extractie werkt het beste bij handleidingen met een inhoudsopgave en/of een indexpagina en een duidelijke structuur met hiërarchische koppen.
+> Extractie werkt het beste in hand boeken met een inhouds opgave en/of een index pagina en een duidelijke structuur met hiërarchische koppen.
 
-## <a name="brochures-guidelines-papers-and-other-files"></a>Brochures, richtlijnen, documenten en andere bestanden
+## <a name="brochures-guidelines-papers-and-other-files"></a>Brochures, richt lijnen, documenten en andere bestanden
 
-Veel andere soorten documenten kunnen ook worden verwerkt om QA-paren te genereren, op voorwaarde dat ze een duidelijke structuur en lay-out hebben. Deze omvatten: Brochures, richtlijnen, rapporten, white papers, wetenschappelijke artikelen, beleid, boeken, enz. Zie [hier](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)een voorbeeld.
+Veel andere typen documenten kunnen ook worden verwerkt voor het genereren van QA-paren, mits ze een duidelijke structuur en indeling hebben. Dit zijn onder andere: brochures, richt lijnen, rapporten, White papers, weten schappelijke documenten, beleids regels, boeken, enzovoort. Bekijk [hier](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)een voor beeld.
 
-Hieronder is een voorbeeld van een semi-gestructureerd document, zonder een index:
+Hieronder ziet u een voor beeld van een semi-Structured doc, zonder een index:
 
- ![Azure Blob-opslag semi-gestructureerd document](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+ ![Semi-Structured document voor Azure Blob Storage](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
 
-## <a name="structured-qna-document"></a>Gestructureerd QnA-document
+## <a name="structured-qna-document"></a>Structured QnA-document
 
-Het formaat voor gestructureerde vraag-antwoorden in DOC-bestanden, is in de vorm van afwisselend vragen en antwoorden per regel, een vraag per regel gevolgd door het antwoord in de volgende regel, zoals hieronder weergegeven:
+De indeling voor gestructureerde vraag-antwoorden in document bestanden, bevindt zich in de vorm van afwisselende vragen en antwoorden per regel, één vraag per regel gevolgd door het antwoord op de volgende regel, zoals hieronder wordt weer gegeven:
 
 ```text
 Question1
@@ -64,56 +64,56 @@ Question2
 Answer2
 ```
 
-Hieronder vindt u een voorbeeld van een gestructureerd QnA-worddocument:
+Hieronder ziet u een voor beeld van een gestructureerd QnA Word-document:
 
- ![Gestructureerd QnA-document voorbeeld voor een kennisbank](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
+ ![Voor beeld van een Structured QnA-document voor een kennis database](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
-## <a name="structured-txt-tsv-and-xls-files"></a>Gestructureerde *TXT-,* *TSV-* en *XLS-bestanden*
+## <a name="structured-txt-tsv-and-xls-files"></a>Gestructureerde *txt*-, *TSV* -en *xls* -bestanden
 
-QnA's in de vorm van gestructureerde *.txt,.tsv-* of *.xls-bestanden* kunnen ook worden geüpload naar QnA Maker om een kennisbank te creëren of uit te breiden. *.txt*  Dit kunnen platte tekst zijn, of inhoud hebben in RTF of HTML.
+QnAs in de vorm van gestructureerde *. txt*-, *TSV* -of *xls* -bestanden kunnen ook worden geüpload naar QnA Maker om een Knowledge Base te maken of uit te breiden.  Dit kan onbewerkte tekst zijn of kan inhoud bevatten in RTF of HTML.
 
-| Vraag  | Antwoord  | Metagegevens (1 toets: 1 waarde) |
+| Vraag  | Antwoord  | Meta gegevens (1 sleutel: 1 waarde) |
 |-----------|---------|-------------------------|
-| Vraag1 | Antwoord1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Vraag2 | Antwoord2 |      `Key:Value`           |
+| Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 |      `Key:Value`           |
 
-Eventuele extra kolommen in het bronbestand worden genegeerd.
+Eventuele aanvullende kolommen in het bron bestand worden genegeerd.
 
-### <a name="example-of-structured-excel-file"></a>Voorbeeld van gestructureerd Excel-bestand
+### <a name="example-of-structured-excel-file"></a>Voor beeld van een gestructureerd Excel-bestand
 
-Hieronder vindt u een voorbeeld van een gestructureerd QnA *.xls-bestand,* met HTML-inhoud:
+Hieronder ziet u een voor beeld van een gestructureerd QnA *. xls* -bestand met HTML-inhoud:
 
- ![Structured QnA excel voorbeeld voor een kennisbank](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Gestructureerd QnA Excel-voor beeld voor een Knowledge Base](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
-### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Voorbeeld van alternatieve vragen voor één antwoord in Excel-bestand
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Voor beeld van alternatieve vragen voor één antwoord in een Excel-bestand
 
-Hieronder vindt u een voorbeeld van een gestructureerd QnA *.xls-bestand,* met verschillende alternatieve vragen voor één antwoord:
+Hieronder ziet u een voor beeld van een gestructureerd QnA *. xls* -bestand, met verschillende alternatieve vragen voor één antwoord:
 
- ![Voorbeeld van alternatieve vragen voor één antwoord in Excel-bestand](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+ ![Voor beeld van alternatieve vragen voor één antwoord in een Excel-bestand](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
-Nadat het bestand is geïmporteerd, bevindt het vraag-en-antwoordpaar zich in de kennisbank zoals hieronder wordt weergegeven:
+Nadat het bestand is geïmporteerd, bevindt het vraag-en antwoord paar zich in de Knowledge Base, zoals hieronder wordt weer gegeven:
 
- ![Schermafbeelding van alternatieve vragen voor enkel antwoord geïmporteerd in kennisbank](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+ ![Scherm afbeelding van alternatieve vragen voor één antwoord dat in de Knowledge Base wordt geïmporteerd](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
-## <a name="structured-data-format-through-import"></a>Gestructureerde gegevensindeling via importeren
+## <a name="structured-data-format-through-import"></a>Gestructureerde gegevens indeling via importeren
 
-Het importeren van een kennisbank vervangt de inhoud van de bestaande kennisbank. Voor importeren is een gestructureerd .tsv-bestand vereist dat gegevensbrongegevens bevat. Met deze informatie kan QnA Maker de vraagbeantwoordingsparen groeperen en deze toeschrijven aan een bepaalde gegevensbron.
+Als u een Knowledge Base importeert, wordt de inhoud van de bestaande Knowledge Base vervangen. Voor het importeren is een Structured TSV-bestand met gegevens bron informatie vereist. Deze informatie helpt bij het QnA Maker groeperen van de vraag-antwoord paren en het kenmerk ervan aan een bepaalde gegevens bron.
 
-| Vraag  | Antwoord  | Bron| Metagegevens (1 toets: 1 waarde) |
+| Vraag  | Antwoord  | Bron| Meta gegevens (1 sleutel: 1 waarde) |
 |-----------|---------|----|---------------------|
-| Vraag1 | Antwoord1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Vraag2 | Antwoord2 | Redactionele|    `Key:Value`       |
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Redactionele|    `Key:Value`       |
 
 <a href="#formatting-considerations"></a>
 
-## <a name="multi-turn-document-formatting"></a>Documentopmaak met meerdere draaien
+## <a name="multi-turn-document-formatting"></a>Document opmaak met meerdere scha kelen
 
-* Gebruik koppen en subkoppen om hiërarchie aan te duiden. U bijvoorbeeld h1 om de bovenliggende QnA en h2 aan te duiden om de QnA aan te duiden die als prompt moet worden genomen. Gebruik kleine kopgrootte om de volgende hiërarchie aan te duiden. Gebruik geen stijl, kleur of een ander mechanisme om structuur in uw document te impliceren, QnA Maker haalt de multi-turn prompts niet uit.
-* Het eerste teken van de rubriek moet worden gekapitaliseerd.
-* Beëindig een kop niet met `?`een vraagteken.
+* Gebruik koppen en subkoppen om de hiërarchie aan te duiden. U kunt bijvoorbeeld H1 de bovenliggende QnA en H2 aanduiden om de QnA aan te duiden die als prompt moet worden beschouwd. Gebruik de kleine grootte van de kop om volgende hiërarchie aan te duiden. Gebruik geen stijl, kleur of een ander mechanisme om de structuur in uw document te impliceren, QnA Maker de prompts voor meerdere schakelingen niet uit te pakken.
+* Het eerste teken van de kop moet worden gekapitaliseerd.
+* Beëindig geen kop met een vraag teken, `?`.
 
-**Voorbeelddocumenten**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Voordelen (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso-voordelen (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
+**Voorbeeld documenten**:<br>[Surface Pro (DOCX)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso-voor delen (DOCX)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Voor delen van Contoso (PDF)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk een volledige lijst met [inhoudstypen en voorbeelden](./Concepts/content-types.md#file-and-url-data-types)
+Een volledige lijst met [inhouds typen en voor beelden](./Concepts/content-types.md#file-and-url-data-types) weer geven

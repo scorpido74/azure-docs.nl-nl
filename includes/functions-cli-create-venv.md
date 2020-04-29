@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: glenga
 ms.openlocfilehash: 44969063765099d350e21abfbd07792891443911
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673159"
 ---
 ::: zone pivot="programming-language-python"  
 ## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Een virtuele omgeving maken en activeren
 
-Voer in een geschikte map de volgende opdrachten uit `.venv`om een virtuele omgeving met de naam te maken en te activeren. Zorg ervoor dat u Python 3.8, 3.7 of 3.6 gebruikt, die worden ondersteund door Azure-functies.
+In een geschikte map voert u de volgende opdrachten uit om een virtuele omgeving met de naam `.venv`te maken en te activeren. Zorg ervoor dat u python 3,8, 3,7 of 3,6 gebruikt, die wordt ondersteund door Azure Functions.
 
-# <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -26,7 +26,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Als Python het venv-pakket niet op uw Linux-distributie heeft geïnstalleerd, voert u de volgende opdracht uit:
+Als python het venv-pakket niet heeft geïnstalleerd in uw Linux-distributie, voert u de volgende opdracht uit:
 
 ```bash
 sudo apt-get install python3-venv
@@ -54,5 +54,5 @@ py -m venv .venv
 
 ---
 
-U voert alle volgende opdrachten uit in deze geactiveerde virtuele omgeving. (Voer de virtuele omgeving `deactivate`uit om de virtuele omgeving af te sluiten.
+U voert alle volgende opdrachten uit in deze geactiveerde virtuele omgeving. (Als u de virtuele omgeving wilt afsluiten `deactivate`, voert u uit.)
 ::: zone-end

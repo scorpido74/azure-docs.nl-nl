@@ -1,21 +1,21 @@
 ---
-title: Een Azure-functie-app maken met Java en Eclipse
-description: How-to-guide voor het maken en publiceren van een eenvoudige HTTP-geactiveerde serverloze app met Java en Eclipse naar Azure-functies.
+title: Een Azure-functie-app maken met Java en een eclips
+description: Instructies voor het maken en publiceren van een eenvoudige, door HTTP getriggerde app zonder server met behulp van Java en een eclips naar Azure Functions.
 author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756479"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse"></a>Maak je eerste functie met Java en Eclipse 
+# <a name="create-your-first-function-with-java-and-eclipse"></a>Maak uw eerste functie met Java en eclips 
 
-In dit artikel ziet u hoe u een [serverloos](https://azure.microsoft.com/solutions/serverless/) functieproject maakt met de Eclipse IDE en Apache Maven, het test en debugt en vervolgens implementeert naar Azure Functions. 
+In dit artikel wordt beschreven hoe u een functie project zonder [Server](https://azure.microsoft.com/solutions/serverless/) maakt met de eclips IDE en Apache Maven, het testen en fouten opspoort en vervolgens implementeert op Azure functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 
@@ -23,62 +23,62 @@ In dit artikel ziet u hoe u een [serverloos](https://azure.microsoft.com/solutio
 
 ## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 
-Als u een functies-app met Java en Eclipse wilt ontwikkelen, moet u het volgende hebben geïnstalleerd:
+Als u een functions-app met Java en intereclips wilt ontwikkelen, moet u het volgende hebben geïnstalleerd:
 
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), versie 8.
--  [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
--  [Eclipse](https://www.eclipse.org/downloads/packages/), met Java en Maven ondersteuning.
+-  [Apache Maven](https://maven.apache.org), versie 3,0 of hoger.
+-  [Eclips](https://www.eclipse.org/downloads/packages/), met Java-en Maven-ondersteuning.
 -  [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > De omgevingsvariabele JAVA_HOME moet zijn ingesteld op de installatielocatie van de JDK om deze quickstart te kunnen voltooien.
 
-Het wordt ten zeerste aanbevolen om ook [Azure Functions Core Tools, versie 2,](functions-run-local.md#v2)te installeren, die een lokale omgeving bieden voor het uitvoeren en debuggen van Azure-functies. 
+Het is raadzaam om ook [Azure functions core tools, versie 2](functions-run-local.md#v2), te installeren die een lokale omgeving bieden voor het uitvoeren en opsporen van fouten in azure functions. 
 
-## <a name="create-a-functions-project"></a>Een project Functies maken
+## <a name="create-a-functions-project"></a>Een functions-project maken
 
-1. Selecteer in Eclipse het menu **Bestand** en selecteer **Vervolgens Nieuw -&gt; Maven Project**. 
-1. Accepteer de standaardinstellingen in de dialoog **met het Nieuwe Maven-project** en selecteer **Volgende**.
-1. Selecteer **Archetype toevoegen** en voeg de vermeldingen toe voor het [azure-functions-archetype.](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    - Archetype Group ID: com.microsoft.azure
-    - Archetype Artefact ID: azure-functions-archetype
-    - Versie: Check and use latest version from the central repository Eclipse Maven create Version: Check and use latest version from the central repository Eclipse Maven create Version: Check and use latest version from [the central repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Eclipse Maven create Version:](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klik **op OK** en klik vervolgens op **Volgende.**  Zorg ervoor dat u waarden invult `resourceGroup` `appName`voor `appRegion` alle velden, waaronder , en (gebruik een andere appNaam dan **fabrikam-function-20170920120101928**) en uiteindelijk **Voltooien**.
-    ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
+1. In eclips selecteert u het menu **bestand** en selecteert u vervolgens **New&gt; -Maven project**. 
+1. Accepteer de standaard instellingen in het dialoog venster **Nieuw Maven-project** en selecteer **volgende**.
+1. Selecteer **archetype toevoegen** en voeg de vermeldingen voor de [Azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)toe.
+    - Archetype-groeps-ID: com. micro soft. Azure
+    - Archetype artefact-ID: Azure-functions-archetype
+    - Versie: de meest recente versie controleren en gebruiken vanuit [de centrale opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![interMaven maken](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+1. Klik op **OK** en klik vervolgens op **volgende**.  Vul waarden in voor alle velden, inclusief `resourceGroup`, `appName`, en `appRegion` (gebruik een andere appName dan **fabrikam-function-20170920120101928**) en sluit uiteindelijk **af**.
+    ![Eclips maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_. De gegenereerde code in het project is een eenvoudige [HTTP-geactiveerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofdtekst van de triggering HTTP-aanvraag weerspiegelt.
+Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_. De gegenereerde code in het project is een eenvoudige, door [http getriggerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofd tekst van de TRIGGERENDE HTTP-aanvraag echot.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Functies lokaal uitvoeren in de IDE
 
 > [!NOTE]
-> [Azure Functions Core Tools, versie 2](functions-run-local.md#v2) moet worden geïnstalleerd om functies lokaal uit te voeren en te debuggen.
+> [Azure functions core tools versie 2](functions-run-local.md#v2) moet zijn geïnstalleerd om lokale functies uit te voeren en fouten op te sporen.
 
-1. Klik met de rechtermuisknop op het gegenereerde project en kies **Vervolgens Run As** en **Maven build**.
-1. Voer **Edit Configuration** in het dialoogvenster `package` Configuratie bewerken in de velden **Doelen** en **Naam** in en selecteer **Vervolgens Uitvoeren**. Hiermee wordt de functiecode gebouwd en verpakt.
-1. Zodra de build is voltooid, maakt u `azure-functions:run` een andere Run-configuratie zoals hierboven, met als doel en naam. Selecteer **Uitvoeren** om de functie uit te voeren in de IDE.
+1. Klik met de rechter muisknop op het gegenereerde project en kies vervolgens **uitvoeren als** en **maven build**.
+1. Voer `package` in het dialoog venster **configuratie bewerken** in de velden **doel stelling** en **naam** in en selecteer vervolgens **uitvoeren**. Hiermee wordt de functie code gemaakt en verpakt.
+1. Zodra de build is voltooid, maakt u een nieuwe uitvoerings configuratie zoals hierboven `azure-functions:run` , met als doel en naam. Selecteer **uitvoeren** om de functie in de IDE uit te voeren.
 
-Beëindig de looptijd in het consolevenster wanneer u klaar bent met het testen van uw functie. Er kan slechts één functiehost actief zijn en lokaal worden uitgevoerd.
+Beëindig de runtime in het console venster wanneer u klaar bent met het testen van de functie. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
 
-### <a name="debug-the-function-in-eclipse"></a>Debuggen van de functie in Eclipse
+### <a name="debug-the-function-in-eclipse"></a>Fout opsporing voor de functie in eclips
 
-Wijzig in de vorige stap **de** bijgewerkte `azure-functions:run` `azure-functions:run -DenableDebug` configuratie in en voer de bijgewerkte configuratie uit om de functie-app in de foutopsporingsmodus te starten.
+In de in de vorige stap ingestelde **Run as** -configuratie gaat `azure-functions:run` u `azure-functions:run -DenableDebug` naar en voert u de bijgewerkte configuratie uit om de functie-app in de foutopsporingsmodus te starten.
 
-Selecteer het menu **Uitvoeren** en open **Foutopsporingsconfiguraties**. Kies **Remote Java-toepassing** en maak een nieuwe. Geef uw configuratie een naam en vul de instellingen in. De poort moet consistent zijn met de foutopsporingspoort die `5005`wordt geopend door de functiehost, wat standaard is . Na de installatie `Debug` klikt u op om te beginnen met debuggen.
+Selecteer het menu **uitvoeren** en open **configuratie van fout opsporing**. Kies **externe Java-toepassing** en maak een nieuwe. Geef uw configuratie een naam en vul de instellingen in. De poort moet consistent zijn met de poort voor fout opsporing die is geopend door de functie host `5005`, die standaard is. Klik na de installatie op `Debug` aan om de fout opsporing te starten.
 
-![Foutopsporingsfuncties in Eclipse](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
+![Functies voor fout opsporing in eclips](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
-Stel breekpunten in en inspecteer objecten in uw functie met behulp van de IDE. Wanneer u klaar bent, stopt u de foutopsporing en de running function host. Er kan slechts één functiehost actief zijn en lokaal worden uitgevoerd.
+Stel onderbrekings punten in en Inspecteer objecten in uw functie met behulp van de IDE. Wanneer u klaar bent, stopt u het fout opsporingsprogramma en de actieve functie-host. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
 
 ## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 
-Bij het implementeren naar Azure Functions worden accountreferenties uit de Azure CLI gebruikt. [Meld u aan bij de Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u de opdrachtprompt van uw computer blijft gebruiken.
+Bij het implementeren naar Azure Functions worden accountreferenties uit de Azure CLI gebruikt. [Meld u aan met de Azure cli](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) voordat u doorgaat met de opdracht prompt van de computer.
 
 ```azurecli
 az login
 ```
 
-Implementeer uw code in een `azure-functions:deploy` nieuwe functie-app met het doel Maven in een nieuwe **Run As-configuratie.**
+Implementeer uw code in een nieuwe functie-app met `azure-functions:deploy` behulp van het doel maven in een nieuwe **Run as** -configuratie.
 
 Als het implementeren is voltooid, ziet u de URL die u kunt gebruiken voor toegang tot de Azure-functie-app:
 

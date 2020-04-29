@@ -1,24 +1,24 @@
 ---
-title: Externe rendering instellen voor eenheid
-description: Azure Remote Rendering initialiseren in een Unity-project
+title: Remote Rendering voor Unity instellen
+description: Externe rendering van Azure initialiseren in een Unity-project
 author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
 ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681140"
 ---
-# <a name="set-up-remote-rendering-for-unity"></a>Externe rendering instellen voor eenheid
+# <a name="set-up-remote-rendering-for-unity"></a>Remote Rendering voor Unity instellen
 
-Om Azure Remote Rendering (ARR) in Unity in te schakelen, bieden we speciale methoden die zorgen voor een aantal Unity-specifieke aspecten.
+Voor het inschakelen van de externe rendering van Azure (ARR) in eenheid, bieden we speciale methoden die de specifieke aspecten van de maat eenheid verzorgen.
 
 ## <a name="startup-and-shutdown"></a>Opstarten en afsluiten
 
-Als u Externe rendering `RemoteManagerUnity`wilt initialiseren, gebruikt u . Deze klasse roept `RemoteManager` de generieke, maar al implementeert Unity-specifieke details voor u. Unity maakt bijvoorbeeld gebruik van een specifiek coördinatensysteem. Bij `RemoteManagerUnity.Initialize`het bellen zal de juiste conventie worden opgezet. Het gesprek vereist ook dat u de Unity-camera levert die moet worden gebruikt voor het weergeven van de op afstand weergegeven inhoud.
+Gebruik `RemoteManagerUnity`om de externe rendering te initialiseren. Deze klasse maakt deel uit van `RemoteManager` het generieke, maar implementeert al unit-specifieke Details voor u. Unit maakt bijvoorbeeld gebruik van een specifiek coördinaten systeem. Wanneer u `RemoteManagerUnity.Initialize`aanroept, wordt de juiste Conventie ingesteld. Voor de aanroep moet u ook de eenheids camera opgeven die moet worden gebruikt voor het weer geven van de extern gerenderde inhoud.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,17 +27,17 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-Voor het afsluiten van `RemoteManagerStatic.ShutdownRemoteRendering()`Externe rendering, bel .
+Voor het afsluiten van externe rendering, roept `RemoteManagerStatic.ShutdownRemoteRendering()`u aan.
 
-Nadat `AzureSession` een is gemaakt en gekozen als de primaire `RemoteManagerUnity`rendering sessie, moet deze worden geregistreerd bij:
+Nadat een `AzureSession` is gemaakt en als primaire rendering-sessie is gekozen, moet deze zijn geregistreerd bij `RemoteManagerUnity`:
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
 ```
 
-### <a name="full-example-code"></a>Volledige voorbeeldcode
+### <a name="full-example-code"></a>Volledige voorbeeld code
 
-De onderstaande code toont alle stappen die nodig zijn om Azure Remote Rendering in Unity te initialiseren:
+In de volgende code ziet u alle stappen die nodig zijn voor het initialiseren van Azure remote rendering in Unity:
 
 ```cs
 // initialize Remote Rendering
@@ -62,21 +62,21 @@ session.ConnectToRuntime(new ConnectToRuntimeParams());
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-## <a name="convenience-functions"></a>Gemaksfuncties
+## <a name="convenience-functions"></a>Gebruiks gemak functies
 
-### <a name="session-state-events"></a>Sessiestatusgebeurtenissen
+### <a name="session-state-events"></a>Sessie status gebeurtenissen
 
-`RemoteManagerUnity.OnSessionUpdate`ziet u in gebeurtenissen voor wanneer de sessiestatus wordt gewijzigd, raadpleegt u de codedocumentatie voor meer informatie.
+`RemoteManagerUnity.OnSessionUpdate`Raadpleeg de code documentatie voor meer informatie over het meebrengen van gebeurtenissen voor de sessie status.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`is een optioneel onderdeel om het installatie- en sessiebeheer te stroomlijnen. Het bevat opties om de sessie automatisch te stoppen wanneer de toepassing wordt verlaten of de play-modus wordt afgesloten in de editor, evenals automatisch verlengen van de sessie lease wanneer dat nodig is. Het caches gegevens zoals de sessie-eigenschappen (zie de variabele) `LastProperties` en stelt gebeurtenissen bloot voor sessiestatuswijzigingen en sessiefouten.
+`ARRServiceUnity`is een optioneel onderdeel voor het stroom lijnen van het instellen en beheren van sessies. Het bevat opties voor het automatisch stoppen van de sessie wanneer de toepassing wordt afgesloten of de afspeel modus wordt afgesloten in de editor, en de sessie lease automatisch vernieuwen wanneer dat nodig is. De gegevens worden in de cache opgeslagen, zoals de sessie- `LastProperties` eigenschappen (Zie de variabele), en er worden gebeurtenissen weer gegeven voor sessie status wijzigingen en sessie fouten.
 
-Er kunnen niet meer dan `ARRServiceUnity` één exemplaar tegelijk zijn. Het is bedoeld om u sneller op weg te helpen door een aantal algemene functionaliteitte implementeren. Voor een grotere toepassing kan het beter zijn om die dingen zelf te doen, dat wel.
+Er mag niet meer dan één exemplaar van `ARRServiceUnity` tegelijkertijd zijn. Het is bedoeld om sneller aan de slag te gaan met het implementeren van enkele algemene functionaliteit. Voor een grotere toepassing is het mogelijk beter om deze dingen zelf te doen, maar ook.
 
-Zie `ARRServiceUnity` [Zelfstudie: Een Unity-project vanaf nul instellen](../../tutorials/unity/project-setup.md)en gebruiken voor een voorbeeld hoe u het instellen en gebruiken gebruikt.
+Zie `ARRServiceUnity` [zelf studie: een geheel nieuw eenheids project](../../tutorials/unity/project-setup.md)instellen voor een voor beeld van het instellen en gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Het remote rendering-pakket voor Unity installeren](install-remote-rendering-unity-package.md)
-* [Zelfstudie: Een Unity-project vanaf nul instellen](../../tutorials/unity/project-setup.md)
+* [Het Remote Rendering-pakket voor Unity installeren](install-remote-rendering-unity-package.md)
+* [Zelf studie: een geheel nieuw eenheids project instellen](../../tutorials/unity/project-setup.md)

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756641"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
@@ -34,9 +34,9 @@ In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Stor
 
 1. Selecteer de functie die u in deze eerdere snelstartgids hebt gemaakt.
 
-1. Selecteer **> Nieuwe uitvoer > Azure Queue Storage integreren**.
+1. Selecteer **> nieuwe uitvoer > Azure Queue Storage integreren**.
 
-1. Klik **op Selecteren**.
+1. Klik op **selecteren**.
 
     ![Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +66,7 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
 
 1. Werk de functiecode bij, afhankelijk van de functietaal:
 
-    # <a name="c"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[G\#](#tab/csharp)
 
     Voeg een parameter **outputQueueItem** toe aan de methodehandtekening zoals weergegeven in het volgende voorbeeld.
 

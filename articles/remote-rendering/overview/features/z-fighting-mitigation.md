@@ -1,30 +1,30 @@
 ---
-title: Z-gevechten mitigatie
-description: Beschrijft technieken om z-gevechten artefacten te beperken
+title: Beperking van Z-bestrijding
+description: Beschrijft technieken voor het oplossen van z-vecht artefacten
 author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: bc06deafe3f589fce9a9178fefdb22388254929d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680451"
 ---
-# <a name="z-fighting-mitigation"></a>Z-gevechten mitigatie
+# <a name="z-fighting-mitigation"></a>Beperking van Z-bestrijding
 
-Wanneer twee oppervlakken elkaar overlappen, is het niet duidelijk welke op de andere moet worden weergegeven. Het resultaat varieert zelfs per pixel, wat resulteert in beeldafhankelijke artefacten. Bijgevolg, wanneer de camera of het gaas beweegt, deze patronen flikkeren merkbaar. Dit artefact heet *z-gevechten.* Voor AR- en VR-toepassingen wordt het probleem versterkt omdat hoofdapparaten van nature altijd bewegen. Om ongemak van kijkers te voorkomen is z-fighting mitigatiefunctionaliteit beschikbaar in Azure Remote Rendering.
+Wanneer twee Opper vlakken elkaar overlappen, is het niet duidelijk dat deze boven op de andere moeten worden weer gegeven. Het resultaat is zelfs per pixel afhankelijk, wat resulteert in een weergave afhankelijke artefacten. Als de camera of het net wordt verplaatst, knipt u deze patronen daarom duidelijk. Dit artefact wordt *z-vechten*genoemd. Voor AR-en VR-toepassingen wordt het probleem geïntensiveerd omdat apparaten die zijn gekoppeld aan de vizier altijd worden verplaatst. Om te voor komen dat viewer met z-bestrij ding van de beperking van de beveiliging beschikbaar is in azure rendering op afstand.
 
-## <a name="z-fighting-mitigation-modes"></a>Z-fighting mitigatie modi
+## <a name="z-fighting-mitigation-modes"></a>Z-bestrij ding van risico modi
 
-|Situatie                        | Resultaat                               |
+|Hiervan                        | Resultaat                               |
 |---------------------------------|:-------------------------------------|
-|Regelmatige z-gevechten               |![Z-gevechten](./media/zfighting-0.png)|
-|Z-gevechten mitigatie ingeschakeld    |![Z-gevechten](./media/zfighting-1.png)|
-|Controlebordmarkering ingeschakeld|![Z-gevechten](./media/zfighting-2.png)|
+|Normaal z-vechten               |![Z-vechten](./media/zfighting-0.png)|
+|Z-bestrij ding van beperking ingeschakeld    |![Z-vechten](./media/zfighting-1.png)|
+|Markeren van dambord ingeschakeld|![Z-vechten](./media/zfighting-2.png)|
 
-De volgende code maakt z-fighting mitigatie mogelijk:
+Met de volgende code kunt u de z-bestrij ding beperken:
 
 ``` cs
 void EnableZFightingMitigation(AzureSession session, bool highlight)
@@ -40,29 +40,29 @@ void EnableZFightingMitigation(AzureSession session, bool highlight)
 ```
 
 > [!NOTE]
-> Z-fighting mitigatie is een wereldwijde instelling die alle weergegeven mazen beïnvloedt.
+> Z-bestrij ding van problemen is een algemene instelling die van invloed is op alle gerenderde netten.
 
-## <a name="reasons-for-z-fighting"></a>Redenen voor z-gevechten
+## <a name="reasons-for-z-fighting"></a>Redenen voor z-vechten
 
-Z-gevechten gebeurt vooral om twee redenen:
+Z-vechten gebeurt voornamelijk om twee redenen:
 
-1. wanneer oppervlakken zijn zeer ver weg van de camera, de precisie van hun diepte waarden degraderen en de waarden worden niet te onderscheiden
-1. wanneer oppervlakken in een mesh fysiek overlappen
+1. Wanneer de Opper vlakken ver weg van de camera zijn, is de nauw keurigheid van hun diepte waarden verslechterd en worden de waarden niet van elkaar onderscheiden
+1. Wanneer Opper vlakken in een net fysiek overlappen
 
-Het eerste probleem kan altijd gebeuren en is moeilijk te elimineren. Als dit gebeurt in uw toepassing, zorg ervoor dat de verhouding van de *nabije vlakafstand* tot de *verre vlakafstand* zo laag is als praktisch. Bijvoorbeeld, een bijna vliegtuig op afstand 0,01 en ver vliegtuig op afstand 1000 zal dit probleem veel eerder veroorzaken, dan met het nabije vliegtuig op 0,1 en het verre vlak op afstand 20.
+Het eerste probleem kan altijd optreden en is lastig te elimineren. Als dit gebeurt in uw toepassing, moet u ervoor zorgen dat de verhouding van de *bijna gelegen vlak* afstand tot de afstand tussen het *vlak* even laag is. Zo maakt een bijna-vlak op afstand van 0,01-en Far-1000 vlak het probleem veel eerder, dan met het vlak in de buurt van 0,1 en op afstand 20.
 
-Het tweede probleem is een indicator voor slecht geschreven inhoud. In de echte wereld kunnen twee objecten niet op dezelfde plaats tegelijk zijn. Afhankelijk van de toepassing willen gebruikers mogelijk weten of overlappende oppervlakken bestaan en waar ze zich bevinden. Bijvoorbeeld, een CAD-scène van een gebouw dat is de basis voor een echte wereld constructie, mag niet bevatten fysiek onmogelijke oppervlakte kruispunten. Om visuele inspectie mogelijk te maken, is de markeringsmodus beschikbaar, die potentiële z-gevechten weergeeft als een geanimeerd dambordpatroon.
+Het tweede probleem is een indicator voor onjuist geontwerpde inhoud. In de praktijk kunnen twee objecten op hetzelfde moment niet op dezelfde plaats staan. Afhankelijk van de toepassing willen gebruikers misschien weten of overlappende Opper vlakken bestaan en waar ze zich bevinden. Een voor beeld: een CAD-scène van een gebouw dat de basis vormt voor een echte wereld bouw, mag geen fysiek buitenste oppervlakte snij punten bevatten. Om visuele inspectie mogelijk te maken, is de markerings modus beschikbaar. deze geeft een mogelijke z-vechten weer als een animatie patroon.
 
 ## <a name="limitations"></a>Beperkingen
 
-De meegeleverde z-gevechten mitigatie is een beste inspanning. Er is geen garantie dat het alle z-gevechten verwijdert. Ook zal het automatisch de voorkeur aan een oppervlak boven het andere. Dus als je oppervlakken hebt die te dicht bij elkaar staan, kan het gebeuren dat het "verkeerde" oppervlak bovenaan terechtkomt. Een veelvoorkomend probleem geval is wanneer tekst en andere stickers worden toegepast op een oppervlak. Met z-vechten mitigatie ingeschakeld deze details kon gemakkelijk gewoon verdwijnen.
+De beschik bare oplossing voor z-bestrij ding is een beste poging. Er is geen garantie dat alle z-vechten worden verwijderd. Er wordt ook automatisch een Opper vlak van de andere weer gegeven. Als u dus Opper vlakken hebt die te dicht bij elkaar staan, kan het gebeuren dat het ' onjuiste ' Opper vlak bovenaan staat. Een veelvoorkomend probleem doet zich voor wanneer tekst en andere Decals worden toegepast op een Opper vlak. Als u een z-aanval hebt ingeschakeld, kunnen deze details eenvoudig worden verdwenen.
 
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 
-* Het inschakelen van z-gevechten mitigatie maakt weinig tot geen prestaties overhead.
-* Bovendien het inschakelen van de z-gevechten overlay maakt een niet-triviale prestaties overhead, maar het kan variëren afhankelijk van de scène.
+* Het inschakelen van z-bestrij ding van de beperking is niet alleen mogelijk als er geen prestatie overhead optreedt.
+* Het inschakelen van de z-bedekking zorgt er ook voor dat er een niet-triviale prestatie overhead ontstaat, maar kan variëren, afhankelijk van de scène.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Weergavemodi](../../concepts/rendering-modes.md)
-* [Late fase herprojectie](late-stage-reprojection.md)
+* [Weergavemodellen](../../concepts/rendering-modes.md)
+* [Vertraagde fase van het project](late-stage-reprojection.md)

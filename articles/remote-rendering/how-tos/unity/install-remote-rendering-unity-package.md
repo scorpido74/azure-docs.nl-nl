@@ -1,28 +1,28 @@
 ---
-title: Het remote rendering-pakket voor Unity installeren
-description: Legt uit hoe u de DLL's voor externe renderingclient voor Unity installeert
+title: Het Remote Rendering-pakket voor Unity installeren
+description: Uitleg over het installeren van de externe rendering client-Dll's voor Unity
 author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681179"
 ---
-# <a name="install-the-remote-rendering-package-for-unity"></a>Het remote rendering-pakket voor Unity installeren
+# <a name="install-the-remote-rendering-package-for-unity"></a>Het Remote Rendering-pakket voor Unity installeren
 
-Azure Remote Rendering maakt gebruik van een Unity-pakket om de integratie in Unity in te kapselen.
+Azure remote rendering maakt gebruik van een eenheids pakket om de integratie in Unit te integreren.
 
-## <a name="manage-the-remote-rendering-packages-in-unity"></a>De externe renderingpakketten beheren in Unity
+## <a name="manage-the-remote-rendering-packages-in-unity"></a>De externe rendering-pakketten in eenheid beheren
 
-Unity-pakketten zijn containers die kunnen worden beheerd via Unity's [Package Manager.](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)
-Dit pakket bevat de volledige C#API en alle plug-inbinaire bestanden die nodig zijn om Azure Remote Rendering with Unity te gebruiken.
-Na unity's naamgevingsschema voor pakketten, heet het pakket **com.microsoft.azure.remote-rendering**.
+Unity-pakketten zijn containers die kunnen worden beheerd via [Package Manager](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)van Unity.
+Dit pakket bevat de volledige C# API en alle binaire bestanden voor invoeg toepassingen die vereist zijn voor het gebruik van externe rendering van Azure met eenheid.
+Het naam schema van de volgende eenheid voor pakketten wordt het pakket **com. micro soft. Azure. remote-rendering**genoemd.
 
-Het pakket maakt geen deel uit van de [ARR-samplesrepository](https://github.com/Azure/azure-remote-rendering)en is niet beschikbaar in het interne pakketregister van Unity. Als u het aan een project wilt toevoegen, moet `manifest.md` u het bestand van het project handmatig bewerken om het volgende toe te voegen:
+Het pakket maakt geen deel uit van de [opslag plaats ARR](https://github.com/Azure/azure-remote-rendering)-voor beelden en is niet beschikbaar in het interne pakket register van de eenheid. Als u het aan een project wilt toevoegen, moet u het bestand van `manifest.md` het project hand matig bewerken om het volgende toe te voegen:
 ```json
 {
   "scopedRegistries": [
@@ -38,16 +38,16 @@ Het pakket maakt geen deel uit van de [ARR-samplesrepository](https://github.com
   }
 }
 ```
-Zodra dit is toegevoegd, u de Unity Package Manager gebruiken om ervoor te zorgen dat u de nieuwste versie hebt.
-Meer uitgebreide instructies worden gegeven in de [tutorial: Het opzetten van een Unity project vanaf nul](../../tutorials/unity/project-setup.md).
+Zodra dit is toegevoegd, kunt u unit package manager gebruiken om te controleren of u de meest recente versie hebt.
+Meer uitgebreide instructies vindt u in de [zelf studie: een geheel nieuw eenheids project instellen](../../tutorials/unity/project-setup.md).
 
-## <a name="unity-render-pipelines"></a>Unity renderpipelines
+## <a name="unity-render-pipelines"></a>Unit weergave-pijp lijnen
 
-Remote Rendering werkt met zowel de **Universele renderpijplijn** als de **standaardrenderpijplijn.** Om prestatieredenen wordt de universele renderpijplijn aanbevolen.
+Externe rendering werkt met zowel de **universele rendering-pijp lijn** als de **standaard weergave pijplijn**. Uit prestatie overwegingen wordt de universele rendering-pijp lijn aanbevolen.
 
-Om de **Universele renderpijplijn**te gebruiken, moet het pakket in Unity worden geïnstalleerd. Dit kan worden gedaan in Unity's **Package Manager** UI (pakketnaam **Universal RP**, versie `Packages/manifest.json` 7.2.1 of nieuwer), of via het bestand, zoals beschreven in de [Unity project setup tutorial](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
+Als u de **universele rendering-pijp lijn**wilt gebruiken, moet het bijbehorende pakket worden geïnstalleerd in Unity. Dit kan worden gedaan in de gebruikers interface van de **Package Manager** van Unit (pakket naam **Universal RP**, version 7.2.1 of hoger) of `Packages/manifest.json` via het bestand, zoals beschreven in de [zelf studie over unit project Setup](../../tutorials/unity/project-setup.md#configure-the-projects-manifest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Unity game objecten en componenten](objects-components.md)
-* [Zelfstudie: Een Unity-project vanaf nul instellen](../../tutorials/unity/project-setup.md)
+* [Unit-Game objecten en-onderdelen](objects-components.md)
+* [Zelf studie: een geheel nieuw eenheids project instellen](../../tutorials/unity/project-setup.md)

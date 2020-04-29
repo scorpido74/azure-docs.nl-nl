@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671286"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open **Program.cs**en vervang alle code daarin door de volgende code:
+1. Open **Program.cs**en vervang alle code hierin door de volgende code:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Voordat u aan de slag gaat, moet u:
     }
     ```
 
-1. Vervang in hetzelfde bestand `YourSubscriptionKey` de tekenreeks door uw abonnementssleutel voor cognitieve spraak.
+1. Vervang in hetzelfde bestand de teken reeks `YourSubscriptionKey` door de code van uw cognitieve spraak abonnement.
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Kies Alles**opslaan** **op** > de menubalk .
+1. Kies in de menu balk de optie **bestand** > **Opslaan**.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>De toepassing bouwen en uitvoeren om een nieuw gesprek te maken
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>De toepassing bouwen en uitvoeren om een nieuwe conversatie te maken
 
-1. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. **Selecteer** > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **Foutopsporing debuggen** > **(of** druk op **F5)** om de **helloworld-toepassing** te starten.
+1. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
 
-1. Zodra u `Started transcribing` het bericht ziet verschijnen, u beginnen met spreken. U ziet de transcripties verschijnen terwijl u spreekt.
-    - Als je de gesprekscode deelt met de anderen en ze deelnemen aan het gesprek, zie je ook hun transcripties.
+1. Zodra het `Started transcribing` bericht wordt weer gegeven, kunt u beginnen met spreken. U ziet dat de transcripties wordt weer gegeven terwijl u spreekt.
+    - Als u de conversatie code deelt met de andere en deze deel nemen aan het gesprek, ziet u ook hun transcripties.
 
-1. Zodra u klaar bent met spreken, drukt u op <kbd>Ctrl+C</kbd> om audio-opname te stoppen en beëindigt u het gesprek.
+1. Wanneer u klaar bent met spreken, drukt u op <kbd>CTRL + C</kbd> om audio-opname te stoppen en de conversatie te beëindigen.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>De toepassing bouwen en uitvoeren om deel te nemen aan een bestaand gesprek
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>De toepassing bouwen en uitvoeren om lid te worden van een bestaand gesprek
 
-1. Kopieer en plak de volgende functie in uw **Program.cs:**
+1. Kopieer en plak de volgende functie in uw **Program.cs**:
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Voordat u aan de slag gaat, moet u:
     }
     ```
 
-2. Vervang `CreateConversationAsync();` in `public static async Task Main(string[] args)` uw functie door:
+2. Vervang `CreateConversationAsync();` in uw `public static async Task Main(string[] args)` functie door:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Voordat u aan de slag gaat, moet u:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Ga terug naar Visual Studio `YourConversationId` en vervang de tekenreeks door de gespreks-ID die u in de vorige stap hebt gemaakt.
+4. Ga terug naar Visual Studio en vervang de teken `YourConversationId` reeks door de conversatie-id die u in de vorige stap hebt gemaakt.
 
-5. Selecteer op de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+5. **Selecteer** > in de menu balk build**Build Solution** om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-6. Kies **Foutopsporing debuggen** > **(of** druk op **F5)** om de **helloworld-toepassing** te starten.
+6. Kies **debug** > **Start Debugging** (of druk op **F5**) om de toepassing **HelloWorld** te starten.
 
-7. Zodra u `Started transcribing` het bericht ziet verschijnen, u beginnen met spreken. U ziet de transcripties verschijnen terwijl u spreekt.
-    - Als u terug gaat naar uw browser, moet u zien uw transcripties verschijnen er als je spreekt ook.
+7. Zodra het `Started transcribing` bericht wordt weer gegeven, kunt u beginnen met spreken. U ziet dat de transcripties wordt weer gegeven terwijl u spreekt.
+    - Als u teruggaat naar uw browser, ziet u dat uw transcripties eruitziet zoals u ook spreekt.
 
-8. Zodra u klaar bent met spreken, drukt u op <kbd>Ctrl+C</kbd> om audio-opname te stoppen en beëindigt u het gesprek.
+8. Wanneer u klaar bent met spreken, drukt u op <kbd>CTRL + C</kbd> om audio-opname te stoppen en de conversatie te beëindigen.
 
-9. Ga terug naar uw browser en sluit het gesprek af met de exit-knop in de rechterbovenhoek.
+9. Ga terug naar uw browser en sluit de conversatie af met de knop Afsluiten in de rechter bovenhoek.
 
 ## <a name="next-steps"></a>Volgende stappen
 

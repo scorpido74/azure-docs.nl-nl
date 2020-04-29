@@ -1,36 +1,36 @@
 ---
 title: Verificatie
-description: Legt uit hoe verificatie werkt
+description: Geeft uitleg over de werking van verificatie
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2019
 ms.topic: how-to
 ms.openlocfilehash: fbc27f2fa3b7517151c4bcdbec5b146e83dd868e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681634"
 ---
 # <a name="configure-authentication"></a>Verificatie configureren
 
-Azure Remote Rendering maakt gebruik van hetzelfde verificatiemechanisme als [Azure Spatial Anchors (ASA).](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp) Clients moeten *AccountKey,* *AuthenticationToken*of *AccessToken* instellen om de REST API's met succes te bellen. *AccountKey* kan worden verkregen op het tabblad Sleutels voor het account Extern renderen op de Azure-portal. *AuthenticationToken* is een Azure AD-token, dat kan worden verkregen met behulp van de [ADAL-bibliotheek.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) *AccessToken* is een MR-token, dat kan worden verkregen van Azure Mixed Reality Security Token Service (STS).
+Azure remote rendering maakt gebruik van hetzelfde authenticatie mechanisme als [Azure spatiale ankers (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp). Clients moeten *AccountKey*, *AuthenticationToken*of *AccessToken* instellen om de rest-api's te kunnen aanroepen. *AccountKey* kan worden verkregen op het tabblad sleutels voor het externe rendering-account op de Azure Portal. *AuthenticationToken* is een Azure AD-token, dat kan worden verkregen met behulp van de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries). *AccessToken* is een Mr-token dat kan worden verkregen door de Azure Mixed Reality-beveiligings token service (STS).
 
 ## <a name="authentication-for-deployed-applications"></a>Verificatie voor geïmplementeerde toepassingen
 
- Het gebruik van accountsleutels wordt aanbevolen voor snel instappen, maar alleen tijdens de ontwikkeling/prototyping. Het wordt ten zeerste aanbevolen om uw toepassing niet naar productie te verzenden met behulp van een ingesloten accountsleutel en in plaats daarvan de op gebruikers gebaseerde of servicegebaseerde Azure AD-verificatiebenaderingen te gebruiken.
+ Het gebruik van account sleutels wordt aanbevolen voor een snelle on-boarding, maar tijdens ontwikkeling/prototypen. Het wordt ten zeerste aanbevolen om uw toepassing niet naar productie te verzenden met behulp van een Inge sloten account sleutel. in plaats daarvan wordt gebruikgemaakt van de door de gebruiker of service gebaseerde Azure AD-verificatie methoden.
 
- Azure AD-verificatie wordt beschreven in de sectie [Azure AD-gebruikersverificatie](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) van de [ASA-service (Azure Spatial Anchors).](https://docs.microsoft.com/azure/spatial-anchors/)
+ Azure AD-verificatie wordt beschreven in het gedeelte [Azure AD-gebruikers verificatie](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) van de [Azure spatiale ankers (ASA)-](https://docs.microsoft.com/azure/spatial-anchors/) service.
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Om het toegangsniveau voor toepassingen, services of Azure AD-gebruikers van uw service te beheren, zijn de volgende rollen gemaakt die u zo nodig toewijzen aan uw Azure Remote Rendering-accounts:
+Om het niveau van toegang te beheren dat wordt verleend aan toepassingen, services of Azure AD-gebruikers van uw service, zijn de volgende rollen gemaakt zodat u deze indien nodig kunt toewijzen aan uw Azure-accounts voor externe Rendering:
 
-* **Extern renderingbeheerbeheer:** biedt gebruikers conversie-, sessie-, rendering- en diagnostische mogelijkheden voor Azure Remote Rendering.
-* **Externe renderingclient:** biedt gebruikers beheersessie-, rendering- en diagnostische mogelijkheden voor Azure Remote Rendering.
+* **Externe rendering-beheerder**: biedt gebruikers de mogelijkheid om de mogelijkheden voor het omzetten van sessies, rendering en diagnose te beheren voor externe rendering van Azure.
+* **Client voor externe rendering**: biedt gebruikers de mogelijkheid voor het beheren van sessies, rendering en diagnose voor de externe rendering van Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een account maken](create-an-account.md)
-* [De Azure Frontend API's gebruiken voor verificatie](frontend-apis.md)
-* [Voorbeeld PowerShell-scripts](../samples/powershell-example-scripts.md)
+* [De Azure frontend-Api's gebruiken voor verificatie](frontend-apis.md)
+* [PowerShell-voorbeeldscripts](../samples/powershell-example-scripts.md)

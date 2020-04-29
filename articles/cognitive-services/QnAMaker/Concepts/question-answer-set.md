@@ -1,49 +1,49 @@
 ---
-title: Ontwerp kennisbank - QnA Maker
-description: Een QnA Maker knowledge base bestaat uit een set vraag-en-antwoordsets (QnA) en optionele metadata die aan elk QnA-paar zijn gekoppeld.
+title: Ontwerp kennis basis-QnA Maker
+description: Een QnA Maker Knowledge Base bestaat uit een set vraag-en antwoord sets (QnA) en optionele meta gegevens die zijn gekoppeld aan elk QnA-paar.
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756783"
 ---
-# <a name="question-and-answer-set-concepts"></a>Concepten voor vraag- en antwoordreeksen
+# <a name="question-and-answer-set-concepts"></a>Concepten van vraag-en antwoord sets
 
-Een kennisbank bestaat uit vraag en antwoord (QnA) sets.  Elke set heeft één antwoord en een set bevat alle informatie die aan dat _antwoord_is gekoppeld. Een antwoord kan losjes lijken op een databaserij of een instantie van gegevensstructuur.
+Een Knowledge Base bestaat uit vraag-en antwoord sets (QnA).  Elke set heeft één antwoord en een set bevat alle informatie die aan het _antwoord_is gekoppeld. Een antwoord kan een Data Base-rij of een gegevens structuur-exemplaar in een keer lijken.
 
 ## <a name="question-and-answer-sets"></a>Vraag-en-antwoord-sets
 
-De **vereiste** instellingen in een vraag-en-antwoord (QnA) set zijn:
+De **vereiste** instellingen in een vraag-en-antwoord-set (QnA) zijn:
 
-* een **vraag** - tekst van de gebruiker query, gebruikt om Machine-learning QnA Maker's, om af te stemmen met de tekst van de vraag van de gebruiker met verschillende formulering, maar hetzelfde antwoord
-* het **antwoord** - het antwoord van de set is het antwoord dat wordt geretourneerd wanneer een gebruikersquery wordt gekoppeld aan de bijbehorende vraag
+* een **vraag** : tekst van de gebruikers query, die wordt gebruikt om de machine trainingen van de gebruiker uit te QnA Maker, om af te stemmen met de vraag van gebruikers met andere woorden, maar hetzelfde antwoord
+* het **antwoord: het antwoord van** de set is de reactie die wordt geretourneerd wanneer een gebruikers query overeenkomt met de bijbehorende vraag
 
-Elke set wordt vertegenwoordigd door een **ID**.
+Elke set wordt vertegenwoordigd door een **id**.
 
-De **optionele** instellingen voor een set zijn:
+De **optionele** instellingen voor een set zijn onder andere:
 
-* **Alternatieve vormen van de vraag** - dit helpt QnA Maker terug te keren het juiste antwoord voor een breder scala van vraag formuleringen
-* **Metagegevens:** Metagegevens zijn tags die zijn gekoppeld aan een QnA-paar en worden weergegeven als sleutelwaardeparen. Metagegevenstags worden gebruikt om QnA-paren te filteren en de set te beperken waarover querymatching wordt uitgevoerd.
-* **Multi-turn prompts**, gebruikt om een multi-turn gesprek voort te zetten
+* **Alternatieve vormen van de vraag** : dit helpt QnA Maker het juiste antwoord te retour neren voor een groter aantal vraag frasen
+* **Meta gegevens**: meta gegevens zijn tags die zijn gekoppeld aan een QnA paar en worden weer gegeven als sleutel-waardeparen. Tags voor meta gegevens worden gebruikt voor het filteren van QnA-paren en het beperken van de set waarover overeenkomende query's worden uitgevoerd.
+* **Vragen over meerdere schakelingen**, gebruikt om door te gaan met een gesprek op meerdere locaties
 
-![Kennisbanken van QnA Maker](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
+![Knowledge Base van QnA Maker](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
-## <a name="editorially-add-to-knowledge-base"></a>Redactioneel toe te voegen aan de kennisbank
+## <a name="editorially-add-to-knowledge-base"></a>Redactionel toevoegen aan de Knowledge Base
 
-Als u geen reeds bestaande inhoud hebt om de kennisbasis te vullen, u QnA-paren redactioneel toevoegen in de QnA Maker-portal. Hier leest u hoe u uw kennisbank [kunt bijwerken.](../How-To/edit-knowledge-base.md)
+Als u geen vooraf bestaande inhoud hebt om de Knowledge Base te vullen, kunt u QnA paren op de QnA Maker-portal toevoegen. Meer informatie over hoe u uw kennis [database kunt](../How-To/edit-knowledge-base.md)bijwerken.
 
-## <a name="editing-your-knowledge-base-locally"></a>Uw kennisbank lokaal bewerken
+## <a name="editing-your-knowledge-base-locally"></a>Uw kennis database lokaal bewerken
 
-Zodra een kennisbank is gemaakt, wordt aanbevolen dat u bewerkingen aanbrengt in de knowledge base-tekst in de [QnA Maker-portal,](https://qnamaker.ai)in plaats van lokale bestanden te exporteren en opnieuw te importeren. Er kunnen echter momenten zijn dat u een kennisbank lokaal moet bewerken.
+Zodra een Knowledge Base is gemaakt, wordt het aanbevolen dat u wijzigingen aanbrengt in de Knowledge Base-tekst in de [QnA Maker Portal](https://qnamaker.ai)in plaats van het exporteren en opnieuw importeren via lokale bestanden. Het is echter mogelijk dat u een kennis database lokaal moet bewerken.
 
-Exporteer de kennisbank vanaf de pagina **Instellingen en** bewerk de kennisbank met Microsoft Excel. Als u ervoor kiest een andere toepassing te gebruiken om uw geëxporteerde bestand te bewerken, kan de toepassing syntaxisfouten introduceren omdat deze niet volledig compatibel is met TSV. De TSV-bestanden van Microsoft Excel leiden over het algemeen niet tot opmaakfouten.
+Exporteer de Knowledge Base van de pagina **instellingen** en bewerk vervolgens de Knowledge Base met micro soft Excel. Als u ervoor kiest om een andere toepassing te gebruiken om het geëxporteerde bestand te bewerken, kan de toepassing syntaxis fouten veroorzaken omdat deze niet volledig TSV-compatibel is. De TSV-bestanden van micro soft Excel voeren doorgaans geen opmaak fouten uit.
 
-Zodra u klaar bent met uw bewerkingen, importeert u het TSV-bestand opnieuw van de pagina **Instellingen.** Dit zal de huidige kennisbank volledig vervangen door de geïmporteerde kennisbank.
+Wanneer u klaar bent met uw bewerkingen, importeert u het TSV-bestand opnieuw vanaf de pagina **instellingen** . Hiermee wordt de huidige Knowledge Base volledig vervangen door de geïmporteerde kennis database.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Knowledge base lifecycle in QnA Maker](./development-lifecycle-knowledge-base.md)
+> [Levens cyclus van de Knowledge Base in QnA Maker](./development-lifecycle-knowledge-base.md)

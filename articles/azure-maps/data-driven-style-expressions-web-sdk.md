@@ -1,6 +1,6 @@
 ---
-title: Expressies in gegevensgestuurde stijl in de Azure Maps Web SDK | Microsoft Azure Maps
-description: In dit artikel vindt u meer informatie over het gebruik van gegevensgestuurde stijlexpressies in de Microsoft Azure Maps Web SDK.
+title: Gegevensgestuurde stijl expressies in de Azure Maps Web-SDK | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u gegevensgestuurde stijl expressies kunt gebruiken in de Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -10,25 +10,25 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804721"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijlexpressies (Web SDK)
+# <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
-Met expressies u bedrijfslogica toepassen op stylingopties die de eigenschappen observeren die in elke vorm in een gegevensbron zijn gedefinieerd. Expressies kunnen gegevens filteren in een gegevensbron of een laag. Expressies kunnen bestaan uit voorwaardelijke logica, zoals if-statements. En ze kunnen worden gebruikt om gegevens te manipuleren met behulp van: snaaroperatoren, logische operatoren en wiskundige operatoren.
+Met expressies kunt u bedrijfs logica Toep assen op Opmaak opties die de eigenschappen zien die in elke vorm in een gegevens bron zijn gedefinieerd. Met expressies kunnen gegevens in een gegevens bron of laag worden gefilterd. Expressies kunnen bestaan uit voorwaardelijke logica, zoals if-instructies. En kunnen ze worden gebruikt voor het bewerken van gegevens met behulp van: teken reeks operators, logische Opera tors en wiskundige Opera tors.
 
-Gegevensgestuurde stijlen verminderen de hoeveelheid code die nodig is om bedrijfslogica rond styling te implementeren. Bij gebruik met lagen worden expressies geëvalueerd op rendertijd op een afzonderlijke thread. Deze functionaliteit biedt betere prestaties in vergelijking met het evalueren van bedrijfslogica op de ui-thread.
+Gegevensgestuurde stijlen verminderen de hoeveelheid code die nodig is voor het implementeren van bedrijfs logica rond stijlen. Bij gebruik in combi natie met lagen worden expressies geëvalueerd op het moment dat er een afzonderlijke thread wordt gegenereerd. Deze functionaliteit biedt betere prestaties vergeleken met het evalueren van bedrijfs logica op de UI-thread.
 
-Deze video biedt een overzicht van gegevensgestuurde styling in de Azure Maps Web SDK.
+Deze video biedt een overzicht van gegevensgestuurde stijlen in de Azure Maps Web-SDK.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-Expressies worden weergegeven als JSON-arrays. Het eerste element van een expressie in de array is een tekenreeks die de naam van de expressieoperator opgeeft. Bijvoorbeeld '+' of 'case'. De volgende elementen (indien aanwezig) zijn de argumenten voor de expressie. Elk argument is ofwel een letterlijke waarde (een `null`tekenreeks, getal, booleaan of ), of een andere expressiearray. De volgende pseudocode definieert de basisstructuur van een expressie. 
+Expressies worden weer gegeven als JSON-matrices. Het eerste element van een expressie in de matrix is een teken reeks die de naam van de expressie operator opgeeft. Bijvoorbeeld, "+" of "case". De volgende elementen (indien aanwezig) zijn de argumenten voor de expressie. Elk argument is een letterlijke waarde (een teken reeks, getal, Booleaans of `null`) of een andere expressie matrix. De volgende pseudocode definieert de basis structuur van een expressie. 
 
 ```javascript
 [ 
@@ -39,24 +39,24 @@ Expressies worden weergegeven als JSON-arrays. Het eerste element van een expres
 ] 
 ```
 
-De Azure Maps Web SDK ondersteunt vele soorten expressies. Expressies kunnen alleen of in combinatie met andere expressies worden gebruikt.
+De Azure Maps Web-SDK ondersteunt veel typen expressies. Expressies kunnen worden gebruikt in hun eigen of in combi natie met andere expressies.
 
 | Type expressies | Beschrijving |
 |---------------------|-------------|
-| [Geaggregeerde expressie](#aggregate-expression) | Een expressie die een berekening definieert die wordt verwerkt over `clusterProperties` een `DataSource`set gegevens en kan worden gebruikt met de optie een . |
-| [Booleaanse expressies](#boolean-expressions) | Booleaanse expressies bieden een reeks booleaanse operatoren expressies voor het evalueren van booleaanse vergelijkingen. |
-| [Kleurexpressies](#color-expressions) | Kleurexpressies maken het eenvoudiger om kleurwaarden te maken en te manipuleren. |
-| [Voorwaardelijke expressies](#conditional-expressions) | Voorwaardelijke expressies bieden logische bewerkingen die zijn als if-statements. |
-| [Gegevensexpressies](#data-expressions) | Biedt toegang tot de eigenschapsgegevens in een functie. |
-| [Interpolaat- en stapexpressies](#interpolate-and-step-expressions) | Interpolaat- en stapexpressies kunnen worden gebruikt om waarden te berekenen langs een geïnterpoleerde curve- of stapfunctie. |
-| [Specifieke expressies laag](#layer-specific-expressions) | Speciale expressies die alleen op één laag van toepassing zijn. |
-| [Wiskundige expressies](#math-expressions) | Biedt wiskundige operatoren om gegevensgestuurde berekeningen uit te voeren binnen het expressiekader. |
-| [Tekenreeksexpressies](#string-operator-expressions) | Tekenreeksexpressies voeren conversiebewerkingen uit op tekenreeksen, zoals het samenvoegen en converteren van de aanvraag. |
-| [Expressies typen](#type-expressions) | Tekstexpressies bieden hulpprogramma's voor het testen en converteren van verschillende gegevenstypen, zoals tekenreeksen, getallen en booleaanse waarden. |
-| [Variabele bindingsexpressies](#variable-binding-expressions) | Variabele bindingsexpressies slaan de resultaten van een berekening op in een variabele en elders in een expressie meerdere keren zonder de opgeslagen waarde opnieuw te hoeven berekenen. |
-| [Zoomexpressie](#zoom-expression) | Hiermee wordt het huidige zoomniveau van de kaart opgehaald op rendertijd. |
+| [Statistische expressie](#aggregate-expression) | Een expressie die een berekening definieert die wordt verwerkt via een set gegevens en kan worden gebruikt met de `clusterProperties` optie van een. `DataSource` |
+| [Booleaanse expressies](#boolean-expressions) | Boole-expressies bieden een set Booleaanse Opera tors voor het evalueren van Boole-vergelijkingen. |
+| [Kleur expressies](#color-expressions) | Kleur expressies maken het gemakkelijker om kleur waarden te maken en te bewerken. |
+| [Voorwaardelijke expressies](#conditional-expressions) | Voorwaardelijke expressies bieden logische bewerkingen, zoals if-instructies. |
+| [Gegevens expressies](#data-expressions) | Biedt toegang tot de eigenschaps gegevens in een functie. |
+| [Interpoleer-en Step-expressies](#interpolate-and-step-expressions) | Interpolatie-en stap expressies kunnen worden gebruikt voor het berekenen van waarden in een geïnterpoleerde curve of stap functie. |
+| [Laag-specifieke expressies](#layer-specific-expressions) | Speciale expressies die alleen van toepassing zijn op één laag. |
+| [Wiskundige expressies](#math-expressions) | Biedt wiskundige Opera tors voor het uitvoeren van gegevensgestuurde berekeningen in het Framework van de expressie. |
+| [Teken reeks operator expressies](#string-operator-expressions) | Teken reeks operator expressies voeren conversie bewerkingen uit op teken reeksen, zoals samen voegen en het converteren van de aanvraag. |
+| [Type-expressies](#type-expressions) | Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschillende gegevens typen, zoals teken reeksen, getallen en Booleaanse waarden. |
+| [Variabele bindings expressies](#variable-binding-expressions) | Met variabelen bindings expressies worden de resultaten van een berekening in een variabele opgeslagen en naar een andere locatie in een expressie verwezen, zonder dat de opgeslagen waarde opnieuw moet worden berekend. |
+| [Expressie voor in-/uitzoomen](#zoom-expression) | Hiermee wordt het huidige zoom niveau van de kaart op de weergave tijd opgehaald. |
 
-Alle voorbeelden in dit document gebruiken de volgende functie om verschillende manieren aan te tonen waarop de verschillende typen expressies kunnen worden gebruikt. 
+Alle voor beelden in dit document gebruiken de volgende functie om verschillende manieren te demonstreren waarin de verschillende typen expressies kunnen worden gebruikt. 
 
 ```javascript
 {
@@ -77,26 +77,26 @@ Alle voorbeelden in dit document gebruiken de volgende functie om verschillende 
 }
 ```
 
-## <a name="data-expressions"></a>Gegevensexpressies
+## <a name="data-expressions"></a>Gegevens expressies
 
-Gegevensexpressies bieden toegang tot de eigenschapsgegevens in een functie. 
+Gegevens expressies bieden toegang tot de eigenschaps gegevens in een functie. 
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
-| `['at', number, array]` | object | Hiermee haalt u een item op uit een array. |
-| `['geometry-type']` | tekenreeks | Hier wordt het geometrietype van de functie opgetjes: Punt, MultiPoint, LineString, MultiLineString, Polygoon, MultiPolygon. |
-| `['get', string]` | waarde | Haalt de waarde van de eigenschap uit de eigenschappen van de huidige functie. Retourneert null als de gevraagde eigenschap ontbreekt. |
-| `['get', string, object]` | waarde | Haalt de eigenschapswaarde uit de eigenschappen van het opgegeven object. Retourneert null als de gevraagde eigenschap ontbreekt. |
-| `['has', string]` | booleaans | Hiermee bepaalt u of de eigenschappen van een functie de opgegeven eigenschap hebben. |
-| `['has', string, object]` | booleaans | Hiermee bepaalt u of de eigenschappen van het object de opgegeven eigenschap hebben. |
-| `['id']` | waarde | Krijgt de functie-ID als deze er een heeft. |
-| `['length', string | array]` | getal | Hier wordt de lengte van een tekenreeks of een array. |
-| `['in', boolean | string | number, array]` | booleaans | Hiermee bepaalt u of er een item bestaat in een array |
-| `['in', substring, string]` | booleaans | Hiermee bepaalt u of er een subtekenreeks in een tekenreeks bestaat |
+| `['at', number, array]` | object | Hiermee wordt een item uit een matrix opgehaald. |
+| `['geometry-type']` | tekenreeks | Hiermee wordt het type geometrie van de functie opgehaald: Point, multi point, Lines Tring, multi line String, veelhoek, multiveelhoek. |
+| `['get', string]` | waarde | Hiermee wordt de eigenschaps waarde opgehaald uit de eigenschappen van de huidige functie. Retourneert null als de aangevraagde eigenschap ontbreekt. |
+| `['get', string, object]` | waarde | Hiermee wordt de eigenschaps waarde opgehaald uit de eigenschappen van het gegeven object. Retourneert null als de aangevraagde eigenschap ontbreekt. |
+| `['has', string]` | booleaans | Hiermee wordt bepaald of de eigenschappen van een functie de opgegeven eigenschap hebben. |
+| `['has', string, object]` | booleaans | Hiermee wordt bepaald of de eigenschappen van het object de opgegeven eigenschap hebben. |
+| `['id']` | waarde | Hiermee haalt u de ID van de functie op als deze een bevat. |
+| `['length', string | array]` | getal | Hiermee wordt de lengte van een teken reeks of een matrix opgehaald. |
+| `['in', boolean | string | number, array]` | booleaans | Hiermee wordt bepaald of een item in een matrix voor komt |
+| `['in', substring, string]` | booleaans | Hiermee wordt bepaald of een subtekenreeks voor komt in een teken reeks |
 
 **Voorbeelden**
 
-Eigenschappen van een functie kunnen rechtstreeks in een `get` expressie worden geopend met behulp van een expressie. In dit voorbeeld wordt de waarde 'zoneKleur' van de functie gebruikt om de eigenschap kleur van een bellenlaag op te geven. 
+Eigenschappen van een functie kunnen rechtstreeks in een expressie worden geopend met behulp `get` van een expressie. In dit voor beeld wordt de waarde ' zoneColor ' van de functie gebruikt om de eigenschap Color van een Bubble Layer op te geven. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -104,7 +104,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Het bovenstaande voorbeeld werkt prima, als alle `zoneColor` puntfuncties de eigenschap hebben. Als ze dat niet doen, zal de kleur waarschijnlijk terugvallen naar "zwart". Als u de terugvalkleur `case` wilt wijzigen, `has` gebruikt u een expressie in combinatie met de expressie om te controleren of de eigenschap bestaat. Als de eigenschap niet bestaat, geeft u een terugvalkleur terug.
+Het bovenstaande voor beeld werkt prima, als alle punt functies de `zoneColor` eigenschap hebben. Als dat niet het geval is, wordt de kleur waarschijnlijk teruggevallen op Black. Als u de terugval kleur wilt wijzigen, `case` gebruikt u een expressie in `has` combi natie met de expressie om te controleren of de eigenschap bestaat. Als de eigenschap niet bestaat, retourneert u een terugval kleur.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -119,7 +119,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Bellen- en symboollagen geven standaard de coördinaten van alle vormen in een gegevensbron weer. Dit gedrag kan de hoekpunten van een veelhoek of een regel markeren. De `filter` optie van de laag kan worden gebruikt om het geometrietype `['geometry-type']` van de functies die worden weergegeven te beperken door een expressie binnen een booleaanse expressie te gebruiken. In het volgende voorbeeld wordt `Point` een bellenlaag beperkt, zodat alleen functies worden weergegeven.
+Met bellen-en symbool lagen worden standaard de coördinaten van alle shapes in een gegevens bron weer gegeven. Dit gedrag kan de hoek punten van een veelhoek of een lijn markeren. De `filter` optie van de laag kan worden gebruikt om het type geometrie te beperken van de functies die worden weer gegeven, met `['geometry-type']` behulp van een expressie binnen een Boole-expressie. In het volgende voor beeld wordt een Bubble laag beperkt `Point` zodat alleen de functies worden weer gegeven.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -127,7 +127,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-In het volgende `Point` `MultiPoint` voorbeeld kunnen beide en functies worden weergegeven. 
+In het volgende voor beeld `Point` kunnen `MultiPoint` zowel als-functies worden weer gegeven. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -135,90 +135,90 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Op dezelfde manier wordt de omtrek van Polygonen weergegeven in lijnlagen. Als u dit gedrag in een lijnlaag `LineString` wilt `MultiLineString` uitschakelen, voegt u een filter toe dat alleen dit toestaat en functies toestaat.  
+Op dezelfde manier wordt het overzicht van veelhoeken in lijn lagen weer gegeven. Als u dit gedrag wilt uitschakelen in een line-laag, voegt u een `LineString` filter `MultiLineString` toe dat alleen toestaat en functies bevat.  
 
 ## <a name="math-expressions"></a>Wiskundige expressies
 
-Wiskundige expressies bieden wiskundige operatoren om gegevensgestuurde berekeningen uit te voeren binnen het expressiekader.
+Wiskundige expressies bieden wiskundige Opera tors voor het uitvoeren van gegevensgestuurde berekeningen in het Framework van de expressie.
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | getal | Berekent de som van de opgegeven getallen. |
-| `['-', number]` | getal | Trekt 0 af op het opgegeven getal. |
-| `['-', number, number]` | getal | Hiermee worden de eerste getallen afgetrokken op het tweede getal. |
-| `['*', number, number, …]` | getal | Hiermee worden de opgegeven getallen samenvermenigvuldigd. |
-| `['/', number, number]` | getal | Verdeelt het eerste getal door het tweede getal. |
-| `['%', number, number]` | getal | Berekent de rest bij het delen van het eerste getal door het tweede getal. |
-| `['^', number, number]` | getal | Berekent de waarde van de eerste waarde die is verhoogd tot de kracht van het tweede getal. |
-| `['abs', number]` | getal | Berekent de absolute waarde van het opgegeven getal. |
-| `['acos', number]` | getal | Berekent de arccosine van het opgegeven getal. |
-| `['asin', number]` | getal | Berekent de arcsine van het opgegeven getal. |
+| `['-', number]` | getal | Trekt 0 af op het opgegeven aantal. |
+| `['-', number, number]` | getal | De eerste getallen worden afgetrokken van het tweede getal. |
+| `['*', number, number, …]` | getal | Vermenigvuldigt de opgegeven getallen met elkaar. |
+| `['/', number, number]` | getal | Deelt het eerste getal door het tweede getal. |
+| `['%', number, number]` | getal | Berekent het resterende aantal bij het delen van het eerste getal door het tweede getal. |
+| `['^', number, number]` | getal | Berekent de waarde van de eerste waarde verheven tot de macht van het tweede getal. |
+| `['abs', number]` | getal | Hiermee wordt de absolute waarde van het opgegeven getal berekend. |
+| `['acos', number]` | getal | Berekent de arccosinus van het opgegeven getal. |
+| `['asin', number]` | getal | Berekent de boog sinus van het opgegeven getal. |
 | `['atan', number]` | getal | Berekent de arctangens van het opgegeven getal. |
-| `['ceil', number]` | getal | Rounds the number up to the next whole integer. |
-| `['cos', number]` | getal | Berekent de cos van het opgegeven getal. |
-| `['e']` | getal | Geeft als `e`resultaat de wiskundige constante . |
-| `['floor', number]` | getal | Rounds the number down to the previous whole integer. |
+| `['ceil', number]` | getal | Rondt het getal af naar het volgende geheel getal. |
+| `['cos', number]` | getal | Berekent de co's van het opgegeven getal. |
+| `['e']` | getal | Retourneert de wiskundige constante `e`. |
+| `['floor', number]` | getal | Rondt het getal af naar het vorige gehele gehele getal. |
 | `['ln', number]` | getal | Berekent de natuurlijke logaritme van het opgegeven getal. |
-| `['ln2']` | getal | Geeft als `ln(2)`resultaat de wiskundige constante . |
-| `['log10', number]` | getal | Berekent de base-tien logaritme van het opgegeven getal. |
-| `['log2', number]` | getal | Berekent de base-twee logaritme van het opgegeven getal. |
-| `['max', number, number, …]` | getal | Berekent het maximumaantal in de opgegeven set getallen. |
-| `['min', number, number, …]` | getal | Berekent het minimumaantal in de opgegeven set getallen. |
-| `['pi']` | getal | Geeft als `PI`resultaat de wiskundige constante . |
-| `['round', number]` | getal | Hiermee wordt het getal afgerond op het dichtstbijzijnde gehele getal. De halve waarden worden van nul afgemaakt. Evalueert `['round', -1.5]` bijvoorbeeld op -2. |
-| `['sin', number]` | getal | Berekent de sinin van het opgegeven getal. |
-| `['sqrt', number]` | getal | Berekent de vierkantswortel van het opgegeven getal. |
-| `['tan', number]` | getal | Berekent de raaklijn van het opgegeven getal. |
+| `['ln2']` | getal | Retourneert de wiskundige constante `ln(2)`. |
+| `['log10', number]` | getal | Berekent de logaritme met grondtal 10 van het opgegeven getal. |
+| `['log2', number]` | getal | Berekent de logaritme met grondtal 2 van het opgegeven getal. |
+| `['max', number, number, …]` | getal | Berekent het maximum aantal in de opgegeven reeks getallen. |
+| `['min', number, number, …]` | getal | Berekent het minimale getal in de opgegeven reeks getallen. |
+| `['pi']` | getal | Retourneert de wiskundige constante `PI`. |
+| `['round', number]` | getal | Rondt het getal af op het dichtstbijzijnde gehele getal. De helft waarden worden afgerond van nul. Bijvoorbeeld, `['round', -1.5]` evalueert naar-2. |
+| `['sin', number]` | getal | Berekent de sinus van het opgegeven getal. |
+| `['sqrt', number]` | getal | Hiermee wordt de vierkantswortel van het opgegeven getal berekend. |
+| `['tan', number]` | getal | Berekent de tangens van het opgegeven getal. |
 
-## <a name="aggregate-expression"></a>Geaggregeerde expressie
+## <a name="aggregate-expression"></a>Statistische expressie
 
-Een geaggregeerde expressie definieert een berekening die wordt verwerkt over `clusterProperties` een `DataSource`set gegevens en kan worden gebruikt met de optie een . De uitvoer van deze expressies moet een getal of een booleaan zijn. 
+Een statistische expressie definieert een berekening die wordt verwerkt via een set gegevens en kan worden gebruikt met de `clusterProperties` optie a. `DataSource` De uitvoer van deze expressies moet een getal of een Booleaanse waarde zijn. 
 
-Een geaggregeerde expressie bevat drie waarden: een operatorwaarde en de initiële waarde en een expressie om een eigenschap op te halen uit elke functie in een gegevens waarop de samengevoegde bewerking moet worden toegepast. Deze expressie heeft de volgende indeling:
+Een statistische expressie heeft drie waarden: een operator waarde, en begin waarde, en een expressie voor het ophalen van een eigenschap van elke functie in een gegevens om de cumulatieve bewerking op toe te passen. Deze expressie heeft de volgende indeling:
 
 ```javascript
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- operator: een expressiefunctie die vervolgens wordt toegepast op `mapExpression` alle waarden die zijn berekend door het voor elk punt in het cluster. Ondersteunde exploitanten: 
-    - Voor `+`getallen: `*` `max`, ,`min`
-    - Voor Booleans: `all`,`any`
-- initiële waarde: een initiële waarde waarin de eerste berekende waarde wordt samengevoegd ten opzichte van.
+- operator: een expressie functie die vervolgens wordt toegepast op alle waarden die worden berekend op `mapExpression` basis van de voor elk punt in het cluster. Ondersteunde Opera tors: 
+    - Voor getallen: `+`, `*`, `max`,`min`
+    - Voor Booleaanse waarden: `all`,`any`
+- initialValue: een initiële waarde waarin de eerste berekende waarde wordt geaggregeerd.
 - mapExpression: een expressie die wordt toegepast op elk punt in de gegevensset.
 
 **Voorbeelden**
 
-Als alle functies in een `revenue` gegevensset een eigenschap hebben, wat een getal is. Vervolgens kunnen de totale opbrengst van alle punten in een cluster, die zijn gemaakt op basis van de gegevensset, worden berekend. Deze berekening gebeurt met de volgende geaggregeerde expressie:`['+', 0, ['get', 'revenue']]`
+Als alle functies in een gegevensset een `revenue` eigenschap hebben die een getal is. Vervolgens kan de totale omzet van alle punten in een cluster, die zijn gemaakt op basis van de gegevensset, worden berekend. Deze berekening wordt uitgevoerd met behulp van de volgende statistische expressie:`['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Booleaanse expressies
 
-Booleaanse expressies bieden een reeks booleaanse operatoren expressies voor het evalueren van booleaanse vergelijkingen.
+Boole-expressies bieden een set Booleaanse Opera tors voor het evalueren van Boole-vergelijkingen.
 
-Bij het vergelijken van waarden wordt de vergelijking strikt getypt. Waarden van verschillende soorten worden altijd als ongelijk beschouwd. Gevallen waarin bekend is dat de typen verschillend zijn op parse-tijd worden als ongeldig beschouwd en een parse-fout veroorzaken. 
+Bij het vergelijken van waarden is de vergelijking strikt getypt. Waarden van verschillende typen worden altijd als ongelijk beschouwd. Gevallen waarin de typen bekend zijn om te worden geparseerd, worden beschouwd als ongeldig en er wordt een parseringsfout gegenereerd. 
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
-| `['! ', boolean]` | booleaans | Logische ontkenning. `true` Retourneert als `false`de `false` invoer is `true`, en als de invoer is . |
-| `['!= ', value, value]` | booleaans | Retourneert `true` als de invoerwaarden niet gelijk zijn, `false` anders. |
-| `['<', value, value]` | booleaans | Retourneert `true` als de eerste invoer `false` strikt lager is dan de tweede, anders. De argumenten moeten beide tekenreeksen of beide getallen zijn. |
-| `['<=', value, value]` | booleaans | Retourneert `true` als de eerste invoer lager `false` is dan of gelijk is aan de tweede, anders. De argumenten moeten beide tekenreeksen of beide getallen zijn. |
-| `['==', value, value]` | booleaans | Retourneert `true` als de `false` invoerwaarden gelijk zijn, anders. De argumenten moeten beide tekenreeksen of beide getallen zijn. |
-| `['>', value, value]` | booleaans | Retourneert `true` als de eerste invoer `false` strikt groter is dan de tweede, anders. De argumenten moeten beide tekenreeksen of beide getallen zijn. |
-| `['>=' value, value]` | booleaans | Retourneert `true` als de eerste invoer groter `false` is dan of gelijk is aan de tweede, anders. De argumenten moeten beide tekenreeksen of beide getallen zijn. |
-| `['all', boolean, boolean, …]` | booleaans | Retourneert `true` als `true`alle `false` ingangen, anders. |
-| `['any', boolean, boolean, …]` | booleaans | Retourneert `true` als een `true` `false` van de ingangen, anders. |
+| `['! ', boolean]` | booleaans | Logische negatie. Retourneert `true` of de invoer is `false`en `false` of de invoer is `true`. |
+| `['!= ', value, value]` | booleaans | Retourneert `true` of de invoer waarden niet gelijk zijn, `false` anders. |
+| `['<', value, value]` | booleaans | Retourneert `true` of de eerste invoer strikt kleiner is dan de seconde, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['<=', value, value]` | booleaans | Retourneert `true` of de eerste invoer kleiner dan of gelijk aan de tweede is, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['==', value, value]` | booleaans | Retourneert `true` of de invoer waarden gelijk zijn, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['>', value, value]` | booleaans | Retourneert `true` of de eerste invoer absoluut groter is dan de tweede, `false` anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['>=' value, value]` | booleaans | Retourneert `true` of de eerste invoer groter is dan of gelijk is aan de tweede `false` , anders. De argumenten moeten beide ofwel teken reeksen of beide getallen zijn. |
+| `['all', boolean, boolean, …]` | booleaans | Retourneert `true` of alle invoer waarden `true`, `false` anders. |
+| `['any', boolean, boolean, …]` | booleaans | Retourneert `true` of een van de invoer waarden `true` `false` is. |
 
 ## <a name="conditional-expressions"></a>Voorwaardelijke expressies
 
-Voorwaardelijke expressies bieden logische bewerkingen die zijn als if-statements.
+Voorwaardelijke expressies bieden logische bewerkingen, zoals if-instructies.
 
-Met de volgende expressies worden voorwaardelijke logische bewerkingen uitgevoerd op de invoergegevens. De `case` expressie biedt bijvoorbeeld logica 'als/dan/anders', terwijl de `match` expressie als een 'switch-statement' is. 
+Met de volgende expressies worden voorwaardelijke logica bewerkingen uitgevoerd op de invoer gegevens. De expressie biedt bijvoorbeeld `case` de logica ' If/then/else ' terwijl de `match` expressie lijkt op een ' switch-instructie '. 
 
-### <a name="case-expression"></a>Caseexpressie
+### <a name="case-expression"></a>Case-expressie
 
-Een `case` expressie is een type voorwaardelijke expressie dat de logica 'als/dan/anders' biedt. Dit type expressie doorloopt een lijst met booleaanse omstandigheden. Het retourneert de uitvoerwaarde van de eerste booleaanse voorwaarde om te evalueren naar true.
+Een `case` expressie is een type voorwaardelijke expressie waarmee de logica ' If/then/else ' wordt geboden. Dit type expressie wordt stapsgewijs door een lijst met Boole-voor waarden beschreven. Retourneert de uitvoer waarde van de eerste Booleaanse voor waarde om te evalueren naar waar.
 
-De volgende pseudocode definieert `case` de structuur van de expressie. 
+De volgende pseudocode definieert de structuur van de `case` expressie. 
 
 ```javascript
 [
@@ -234,7 +234,7 @@ De volgende pseudocode definieert `case` de structuur van de expressie.
 
 **Voorbeeld**
 
-In het volgende voorbeeld worden verschillende booleaanse omstandigheden `true`doorlopen totdat deze wordt gevonden en die de bijbehorende waarde retourneert. Als er geen booleaanse toestand evalueert tot `true`, wordt een terugvalwaarde geretourneerd. 
+In het volgende voor beeld worden de verschillende Booleaanse voor waarden door lopen totdat er een `true`wordt gevonden die hiermee wordt geëvalueerd. vervolgens wordt de bijbehorende waarde geretourneerd. Als er geen Booleaanse voor waarde wordt `true`geëvalueerd, wordt een terugval waarde geretourneerd. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -255,11 +255,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="match-expression"></a>Expressie overeenkomen
+### <a name="match-expression"></a>Overeenkomende expressie
 
-Een `match` expressie is een type voorwaardelijke expressie dat een switch-statement achtige logica biedt. De invoer kan elke `['get', 'entityType']` expressie zijn, zoals die een tekenreeks of een getal retourneert. Elk label moet één letterlijke waarde of een matrix van letterlijke waarden zijn, waarvan de waarden alle tekenreeksen of alle getallen moeten zijn. De invoer komt overeen als een van de waarden in de array overeenkomt. Elk label moet uniek zijn. Als het invoertype niet overeenkomt met het type labels, is het resultaat de terugvalwaarde.
+Een `match` expressie is een type voorwaardelijke expressie die een switch-instructie als logica biedt. De invoer kan een wille keurige `['get', 'entityType']` expressie zijn, zoals het retour neren van een teken reeks of een getal. Elk label moet één letterlijke waarde of een matrix van letterlijke waarden zijn, waarvan de waarden alle teken reeksen of alle getallen moeten zijn. De invoer komt overeen als een van de waarden in de matrix overeenkomt. Elk label moet uniek zijn. Als het invoer type niet overeenkomt met het type van de labels, wordt het resultaat de terugval waarde.
 
-De volgende pseudocode definieert `match` de structuur van de expressie. 
+De volgende pseudocode definieert de structuur van de `match` expressie. 
 
 ```javascript
 [
@@ -276,7 +276,7 @@ De volgende pseudocode definieert `match` de structuur van de expressie.
 
 **Voorbeelden**
 
-In het volgende `entityType` voorbeeld wordt gekeken naar de eigenschap van een functie Punt in een bellenlaag waarin wordt gezocht naar een overeenkomst. Als er een overeenkomst wordt gevonden, wordt die opgegeven waarde geretourneerd of wordt de terugvalwaarde geretourneerd.
+In het volgende voor beeld wordt `entityType` met de eigenschap van een punt functie in een Bubble Layer gezocht naar een overeenkomst. Als er een overeenkomst wordt gevonden, wordt deze opgegeven waarde geretourneerd of wordt de terugval waarde geretourneerd.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-In het volgende voorbeeld wordt een array gebruikt om een set labels weer te geven die allemaal dezelfde waarde moeten retourneren. Deze aanpak is veel efficiënter dan het individueel vermelden van elk label. In dit geval, `entityType` als de eigenschap is "restaurant" of "grocery_store", de kleur "rood" zal worden geretourneerd.
+In het volgende voor beeld wordt een matrix gebruikt om een set labels weer te geven die allemaal dezelfde waarde moeten retour neren. Deze methode is veel efficiënter dan elk label afzonderlijk te vermelden. Als in dit geval de `entityType` eigenschap "restaurant" of "grocery_store" is, wordt de kleur "Red" geretourneerd.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -317,7 +317,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-In het volgende voorbeeld wordt een overeenkomstexpressie gebruikt om een typefilter 'in array' of 'array bevat' uit te voeren. In dit geval filtert de expressie gegevens met een ID-waarde die in een lijst met toegestane id's staat. Bij het gebruik van expressies met filters moet het resultaat een Booleaanse waarde zijn.
+In het volgende voor beeld wordt een match-expressie gebruikt voor het uitvoeren van een ' in matrix ' of ' matrix bevat ' type filter. In dit geval filtert de expressie gegevens met een ID-waarde die zich in een lijst met toegestane Id's bevindt. Wanneer u expressies met filters gebruikt, moet het resultaat een Booleaanse waarde zijn.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -341,9 +341,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="coalesce-expression"></a>Coalesce-expressie
 
-Een `coalesce` expressie doorloopt een set expressies totdat de eerste niet-null-waarde is verkregen en retourneert die waarde. 
+Een `coalesce` expressie wordt stapsgewijs door een reeks expressies uitgevoerd, totdat de eerste niet-null-waarde wordt opgehaald en deze waarde wordt geretourneerd. 
 
-De volgende pseudocode definieert `coalesce` de structuur van de expressie. 
+De volgende pseudocode definieert de structuur van de `coalesce` expressie. 
 
 ```javascript
 [
@@ -356,7 +356,7 @@ De volgende pseudocode definieert `coalesce` de structuur van de expressie.
 
 **Voorbeeld**
 
-In het volgende `coalesce` voorbeeld wordt `textField` een expressie gebruikt om de optie van een symboollaag in te stellen. Als `title` de eigenschap ontbreekt in `null`de functie of ingesteld op `subtitle` , zal de `null`expressie dan proberen op zoek naar de eigenschap, als het ontbreekt of , het zal dan terug vallen naar een lege string. 
+In het volgende voor beeld `coalesce` wordt een expressie gebruikt `textField` om de optie van een symbool laag in te stellen. Als de `title` eigenschap ontbreekt in de-functie of is ingesteld `null`op, zoekt de expressie vervolgens naar de `subtitle` eigenschap, als deze ontbreekt of `null`, wordt deze terugvallen op een lege teken reeks. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -377,7 +377,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-In het volgende `coalesce` voorbeeld wordt een expressie gebruikt om het eerste beschikbare afbeeldingspictogram op te halen dat beschikbaar is in de kaartsprite uit een lijst met opgegeven afbeeldingsnamen.
+In het volgende voor beeld `coalesce` wordt met behulp van een expressie het pictogram voor de eerste beschik bare afbeelding opgehaald uit de map sprite in een lijst met opgegeven afbeeldings namen.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -395,22 +395,22 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ``` 
 
-## <a name="type-expressions"></a>Expressies typen
+## <a name="type-expressions"></a>Type-expressies
 
-Tekstexpressies bieden hulpprogramma's voor het testen en converteren van verschillende gegevenstypen, zoals tekenreeksen, getallen en booleaanse waarden.
+Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschillende gegevens typen, zoals teken reeksen, getallen en Booleaanse waarden.
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
-| `['literal', array]`<br/><br/>`['literal', object]` | arrayobject \| | Geeft als resultaat een letterlijke array- of objectwaarde. Gebruik deze expressie om te voorkomen dat een array of object als expressie wordt geëvalueerd. Dit is nodig wanneer een array of object moet worden geretourneerd door een expressie. |
-| `['image', string]` | tekenreeks | Hiermee wordt gecontroleerd of een opgegeven afbeeldings-id is geladen in de sprite van de kaartafbeelding. Als dit het geval is, wordt de ID geretourneerd, anders wordt null geretourneerd. |
-| `['to-boolean', value]` | booleaans | Hiermee converteert u de invoerwaarde naar een booleaan. Het resultaat `false` is wanneer de invoer `0` `false`een `null`lege `NaN`tekenreeks is, , , of ; anders `true`zijn . |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Hiermee converteert u de invoerwaarde naar een kleur. Als er meerdere waarden worden opgegeven, wordt elke waarde in volgorde geëvalueerd totdat de eerste succesvolle conversie is verkregen. Als geen van de ingangen kan worden geconverteerd, is de expressie een fout. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | getal | Hiermee converteert u de invoerwaarde naar een getal, indien mogelijk. Als de `null` invoer `false`is of , is het resultaat 0. Als de `true`invoer is, is het resultaat 1. Als de invoer een tekenreeks is, wordt deze geconverteerd naar een getal met de tekenreeks [ToNumber-functie](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) van de ECMAScript-taalspecificatie. Als er meerdere waarden worden opgegeven, wordt elke waarde in volgorde geëvalueerd totdat de eerste succesvolle conversie is verkregen. Als geen van de ingangen kan worden geconverteerd, is de expressie een fout. |
-| `['to-string', value]` | tekenreeks | Hiermee converteert u de invoerwaarde naar een tekenreeks. Als de `null`invoer is, `""`is het resultaat . Als de invoer een booleaan `"true"` `"false"`is, is het resultaat of . Als de invoer een getal is, wordt deze geconverteerd naar een tekenreeks met de functie [ToString-nummer](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) van de ECMAScript-taalspecificatie. Als de invoer een kleur is, wordt deze `"rgba(r,g,b,a)"`geconverteerd naar CSS RGBA-kleurtekenreeks . Anders wordt de invoer geconverteerd naar een tekenreeks met de [json.stringify-functie](https://tc39.github.io/ecma262/#sec-json.stringify) van de ECMAScript-taalspecificatie. |
-| `['typeof', value]` | tekenreeks | Geeft als resultaat een tekenreeks die het type van de opgegeven waarde beschrijft. |
+| `['literal', array]`<br/><br/>`['literal', object]` | matrix \| object | Retourneert een letterlijke matrix of object waarde. Gebruik deze expressie om te voor komen dat een matrix of object als een expressie wordt geëvalueerd. Dit is nodig wanneer een matrix of object moet worden geretourneerd door een expressie. |
+| `['image', string]` | tekenreeks | Hiermee wordt gecontroleerd of een opgegeven afbeeldings-ID is geladen in de Maps-installatie kopie sprite. Als dat het geval is, wordt de ID geretourneerd, anders wordt Null geretourneerd. |
+| `['to-boolean', value]` | booleaans | Hiermee wordt de invoer waarde geconverteerd naar een Boolean. Het resultaat is `false` wanneer de invoer een lege teken reeks, `0` `false` `null`,, of `NaN`is. anders is `true`dit. |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Converteert de invoer waarde naar een kleur. Als er meerdere waarden worden gegeven, wordt elke waarde in de aangegeven volg orde geëvalueerd totdat de eerste geslaagde conversie is verkregen. Als geen van de invoer kan worden geconverteerd, is de expressie een fout. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | getal | Converteert de invoer waarde indien mogelijk naar een getal. Als de invoer is `null` of `false`, is het resultaat 0. Als de invoer is `true`, is het resultaat 1. Als de invoer een teken reeks is, wordt deze geconverteerd naar een getal met behulp van de [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) -teken reeks functie van de ECMAScript Language Specification. Als er meerdere waarden worden gegeven, wordt elke waarde in de aangegeven volg orde geëvalueerd totdat de eerste geslaagde conversie is verkregen. Als geen van de invoer kan worden geconverteerd, is de expressie een fout. |
+| `['to-string', value]` | tekenreeks | Converteert de invoer waarde naar een teken reeks. Als de invoer is `null`, is `""`het resultaat. Als de invoer een Booleaanse waarde is, is `"true"` het resultaat `"false"`of. Als de invoer een getal is, wordt dit geconverteerd naar een teken reeks met behulp van de functie [toString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) -nummer van de ECMAScript Language Specification. Als de invoer een kleur is, wordt deze geconverteerd naar een CSS-kleur `"rgba(r,g,b,a)"`teken reeks. Anders wordt de invoer geconverteerd naar een teken reeks met behulp van de [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) -functie van de ECMAScript Language Specification. |
+| `['typeof', value]` | tekenreeks | Retourneert een teken reeks die het type van de opgegeven waarde beschrijft. |
 
 > [!TIP]
-> Als er een `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` foutbericht is dat vergelijkbaar is met die in de browserconsole, betekent dit dat er ergens in uw code een expressie is die een array heeft die geen tekenreeks heeft voor de eerste waarde. Als u wilt dat de expressie een array `literal` retourneert, wikkelt u de array met de expressie. In het volgende `offset` voorbeeld wordt de pictogramoptie van een symboollaag ingesteld, die `match` een array met twee getallen moet `entityType` zijn, door een expressie te gebruiken om te kiezen tussen twee verschuivingswaarden op basis van de waarde van de eigenschap van de puntfunctie.
+> Als er een fout bericht `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` wordt weer gegeven dat lijkt op de browser console, betekent dit dat er ergens in de code een expressie staat die een matrix heeft die geen teken reeks voor de eerste waarde heeft. Als u wilt dat de expressie een matrix retourneert, laat u de matrix teruglopen `literal` met de expressie. In het volgende voor beeld wordt `offset` de pictogram optie van een Symbol-laag ingesteld. deze moet een matrix zijn met twee cijfers, `match` door gebruik te maken van een expressie om te kiezen tussen twee verschuivings waarden op basis van de waarde van de `entityType` eigenschap van de functie Point.
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -431,19 +431,19 @@ Tekstexpressies bieden hulpprogramma's voor het testen en converteren van versch
 > });
 > ```
 
-## <a name="color-expressions"></a>Kleurexpressies
+## <a name="color-expressions"></a>Kleur expressies
 
-Kleurexpressies maken het eenvoudiger om kleurwaarden te maken en te manipuleren.
+Kleur expressies maken het gemakkelijker om kleur waarden te maken en te bewerken.
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Hiermee maakt u een kleurwaarde van *rode,* `0` *groene*en *blauwe* componenten die moeten variëren tussen en `255`, en een alfacomponent van `1`. Als een component buiten bereik is, is de expressie een fout. |
-| `['rgba', number, number, number, number]` | color | Hiermee maakt u een kleurwaarde van *rode,* `255` *groene,* *blauwe* componenten die moeten variëren tussen `0` en , en een alfacomponent binnen een bereik van `0` en `1`. Als een component buiten bereik is, is de expressie een fout. |
-| `['to-rgba']` | \[nummer, nummer, nummer, getal\] | Geeft als resultaat een array met vier elementen met *de rode,* *groene,* *blauwe*en *alfacomponenten* van de invoerkleur in die volgorde. |
+| `['rgb', number, number, number]` | color | Hiermee maakt u een kleur waarde van de onderdelen *rood*, *groen*en *blauw* die tussen `0` en `255`moeten variëren, en een alpha `1`-onderdeel van. Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
+| `['rgba', number, number, number, number]` | color | Hiermee maakt u een kleur waarde van *rode*, *groene*en *blauwe* onderdelen die tussen `0` en `255`moeten liggen en een alpha-component binnen een `0` bereik `1`van en. Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
+| `['to-rgba']` | \[getal, getal, getal, getal\] | Retourneert een matrix met vier elementen met de *rode*, *groene*, *blauwe*en *alpha* -onderdelen van de invoer kleur, in die volg orde. |
 
 **Voorbeeld**
 
-In het volgende voorbeeld wordt een RGB-kleurwaarde gemaakt met een *rode* waarde van `255`en `temperature` *groene* en *blauwe* waarden die worden berekend door te vermenigvuldigen `2.5` met de waarde van de eigenschap. Als de temperatuur verandert, zal de kleur veranderen in verschillende tinten *rood*.
+In het volgende voor beeld wordt een RGB-kleur waarde *red* gemaakt met een `255`rode waarde van en waarden voor *groen* en *blauw* die worden berekend `2.5` door te vermenigvuldigen met `temperature` de waarde van de eigenschap. Wanneer de Tempe ratuur wordt gewijzigd, verandert de kleur in verschillende tinten *rood*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -459,19 +459,19 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="string-operator-expressions"></a>Tekenreeksexpressies
+## <a name="string-operator-expressions"></a>Teken reeks operator expressies
 
-Tekenreeksexpressies voeren conversiebewerkingen uit op tekenreeksen, zoals het samenvoegen en converteren van de aanvraag. 
+Teken reeks operator expressies voeren conversie bewerkingen uit op teken reeksen, zoals samen voegen en het converteren van de aanvraag. 
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | tekenreeks | Concatenates meerdere snaren samen. Elke waarde moet een tekenreeks zijn. Gebruik `to-string` de tekstexpressie om indien nodig andere waardetypen om te zetten in tekenreeks. |
-| `['downcase', string]` | tekenreeks | Hiermee converteert u de opgegeven tekenreeks naar kleine letters. |
-| `['upcase', string]` | tekenreeks | Hiermee converteert u de opgegeven tekenreeks naar hoofdletters. |
+| `['concat', string, string, …]` | tekenreeks | Meerdere teken reeksen samen voegen. Elke waarde moet een teken reeks zijn. Gebruik de `to-string` type-expressie om andere waardetypen zo nodig te converteren naar een teken reeks. |
+| `['downcase', string]` | tekenreeks | Hiermee wordt de opgegeven teken reeks geconverteerd naar kleine letters. |
+| `['upcase', string]` | tekenreeks | Converteert de opgegeven teken reeks naar hoofd letters. |
 
 **Voorbeeld**
 
-In het volgende `temperature` voorbeeld wordt de eigenschap van de puntfunctie omgezet in een tekenreeks en wordt vervolgens "°F" tot het einde ervan samengevoegd.
+In het volgende voor beeld `temperature` wordt de eigenschap van de punt functie geconverteerd naar een teken reeks en wordt vervolgens ' °F ' aan het einde van het object aaneengeschakeld.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -486,33 +486,33 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-De bovenstaande uitdrukking geeft een pin op de kaart met de tekst "64 ° F" bedekt op de top van het zoals weergegeven in de afbeelding hieronder.
+De bovenstaande expressie geeft een pincode op de kaart weer met de tekst ' 64 °F ', zoals in de onderstaande afbeelding wordt weer gegeven.
 
 <center>
 
-![Voorbeeld van](media/how-to-expressions/string-operator-expression.png) tekenreeksoperatorexpressie</center>
+![Voor beeld van een](media/how-to-expressions/string-operator-expression.png) expressie voor een teken reeks operator</center>
 
-## <a name="interpolate-and-step-expressions"></a>Interpolaat- en stapexpressies
+## <a name="interpolate-and-step-expressions"></a>Interpoleer-en Step-expressies
 
-Interpolaat- en stapexpressies kunnen worden gebruikt om waarden te berekenen langs een geïnterpoleerde curve- of stapfunctie. Deze expressies krijgen bijvoorbeeld een expressie die een `['get',  'temperature']`numerieke waarde als invoer retourneert. De invoerwaarde wordt geëvalueerd aan de hand van paren van invoer- en uitvoerwaarden om de waarde te bepalen die het beste past bij de geïnterpoleerde curve- of stapfunctie. De uitvoerwaarden worden "stops" genoemd. De invoerwaarden voor elke stop moeten een getal zijn en in oplopende volgorde zijn. De uitvoerwaarden moeten een getal en een matrix van getallen of een kleur zijn.
+Interpolatie-en stap expressies kunnen worden gebruikt voor het berekenen van waarden in een geïnterpoleerde curve of stap functie. Deze expressies nemen in een expressie op die bijvoorbeeld `['get',  'temperature']`een numerieke waarde retourneert als invoer. De invoer waarde wordt geëvalueerd ten opzichte van paren van invoer-en uitvoer waarden om de waarde te bepalen die het beste past bij de geïnterpoleerde curve of stap functie. De uitvoer waarden worden ' stops ' genoemd. De invoer waarden voor elke Stop moeten een getal zijn en moeten in oplopende volg orde staan. De uitvoer waarden moeten een getal, een matrix van getallen of een kleur zijn.
 
-### <a name="interpolate-expression"></a>Interpolaatexpressie
+### <a name="interpolate-expression"></a>Interpole-expressie
 
-Een `interpolate` expressie kan worden gebruikt om een continue, vloeiende set waarden te berekenen door te interpoleren tussen stopwaarden. Een `interpolate` expressie die kleurwaarden retourneert, produceert een kleurverloop waaruit resultaatwaarden zijn geselecteerd.
+Een `interpolate` expressie kan worden gebruikt om een continue, soepele set waarden te berekenen door te interpolatie tussen de stop waarden. Een `interpolate` expressie die kleur waarden retourneert, produceert een kleur overgang waarbij resultaat waarden worden geselecteerd uit.
 
-Er zijn drie soorten interpolatiemethoden die in `interpolate` een expressie kunnen worden gebruikt:
+Er zijn drie typen interpolatie methoden die kunnen worden gebruikt in een `interpolate` expressie:
  
-* `['linear']`- Interpoleert lineair tussen het paar stops.
-* `['exponential', base]`- Interpoleert exponentieel tussen de haltes. De `base` waarde bepaalt de snelheid waarmee de uitvoer toeneemt. Hogere waarden zorgen ervoor dat de output meer naar de hoge kant van het bereik stijgt. Een `base` waarde dicht bij 1 produceert een uitvoer die lineairer toeneemt.
-* `['cubic-bezier', x1, y1, x2, y2]`- Interpolaten met behulp van een [kubieke Bezier-curve](https://developer.mozilla.org/docs/Web/CSS/timing-function) die wordt gedefinieerd door de gegeven controlepunten.
+* `['linear']`-Interpoleeert lineair tussen het paar stops.
+* `['exponential', base]`-Interpoleert exponentieel tussen de stops. De `base` waarde bepaalt de snelheid waarmee de uitvoer toeneemt. Hoe hoger de waarde, hoe groter de uitvoer meer naar het hoge einde van het bereik. Een `base` waarde dicht bij 1 resulteert in een uitvoer die meer lineair toeneemt.
+* `['cubic-bezier', x1, y1, x2, y2]`-Interpoles met behulp van een [kubieke Bézier-curve](https://developer.mozilla.org/docs/Web/CSS/timing-function) die is gedefinieerd door de gegeven besturings punten.
 
-Hier is een voorbeeld van hoe deze verschillende soorten interpolaties eruit zien. 
+Hier volgt een voor beeld van hoe de verschillende typen interpolatie eruitzien. 
 
-| Lineair  | Exponentieel | Kubieke Bezier |
+| Lineair  | Exponentieel | Kubieke Bézier |
 |---------|-------------|--------------|
-| ![Lineaire interpolatiegrafiek](media/how-to-expressions/linear-interpolation.png) | ![Exponentiële interpolatiegrafiek](media/how-to-expressions/exponential-interpolation.png) | ![Kubieke Bezier-interpolatiegrafiek](media/how-to-expressions/bezier-curve-interpolation.png) |
+| ![Grafiek met lineaire interpolatie](media/how-to-expressions/linear-interpolation.png) | ![Exponentiële interpolatie grafiek](media/how-to-expressions/exponential-interpolation.png) | ![Grafiek met kubieke Bezier-interpolatie](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-De volgende pseudocode definieert `interpolate` de structuur van de expressie. 
+De volgende pseudocode definieert de structuur van de `interpolate` expressie. 
 
 ```javascript
 [
@@ -529,7 +529,7 @@ De volgende pseudocode definieert `interpolate` de structuur van de expressie.
 
 **Voorbeeld**
 
-In het volgende `linear interpolate` voorbeeld wordt `color` een expressie gebruikt om `temperature` de eigenschap van een bellenlaag in te stellen op basis van de eigenschap van de puntfunctie. Als `temperature` de waarde lager is dan 60, wordt 'blauw' geretourneerd. Als het tussen de 60 en minder dan 70, geel zal worden geretourneerd. Als het tussen de 70 en minder dan 80, zal "oranje" worden geretourneerd. Als het 80 of hoger is, wordt 'rood' geretourneerd.
+In het volgende voor beeld `linear interpolate` wordt een expressie gebruikt `color` om de eigenschap van een tekenlaag in te `temperature` stellen op basis van de eigenschap van de functie Point. Als de `temperature` waarde lager is dan 60, wordt ' Blue ' geretourneerd. Als de waarde tussen 60 en minder is dan 70, wordt geel geretourneerd. Als de waarde tussen 70 en minder dan 80, wordt ' oranje ' geretourneerd. Als de waarde 80 of hoger is, wordt ' Red ' geretourneerd.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -549,17 +549,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-De volgende afbeelding laat zien hoe de kleuren worden gekozen voor de bovenstaande expressie.
+In de volgende afbeelding ziet u hoe de kleuren voor de bovenstaande expressie worden gekozen.
  
 <center>
 
-![Voorbeeld van interpolatieexpressie](media/how-to-expressions/interpolate-expression-example.png)</center>
+![Voor beeld](media/how-to-expressions/interpolate-expression-example.png) van interpolatie-expressie</center>
 
-### <a name="step-expression"></a>Stapexpressie
+### <a name="step-expression"></a>Expressie voor stap
 
-Een `step` expressie kan worden gebruikt om discrete, getrapte resultaatwaarden te berekenen door een [stuk-zijdelig-constante functie](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) te evalueren die door einden wordt bepaald. 
+Een `step` expressie kan worden gebruikt om discrete, getrapte resultaat waarden te berekenen door te evalueren van een [piecewise-constante functie](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) die door stops wordt gedefinieerd. 
 
-De volgende pseudocode definieert `step` de structuur van de expressie. 
+De volgende pseudocode definieert de structuur van de `step` expressie. 
 
 ```javascript
 [
@@ -574,11 +574,11 @@ De volgende pseudocode definieert `step` de structuur van de expressie.
 ]
 ```
 
-Stapexpressies geven de uitvoerwaarde van de stop net voor de invoerwaarde of de eerste invoerwaarde als de invoer minder is dan de eerste stop. 
+Met stap expressies wordt de uitvoer waarde van de stop net vóór de invoer waarde geretourneerd of de eerste invoer waarde als de invoer kleiner is dan de eerste stop. 
 
 **Voorbeeld**
 
-In het volgende `step` voorbeeld wordt `color` een expressie gebruikt om `temperature` de eigenschap van een bellenlaag in te stellen op basis van de eigenschap van de puntfunctie. Als `temperature` de waarde lager is dan 60, wordt 'blauw' geretourneerd. Als het tussen de 60 en minder dan 70, zal "geel" worden geretourneerd. Als het tussen de 70 en minder dan 80, zal "oranje" worden geretourneerd. Als het 80 of hoger is, wordt 'rood' geretourneerd.
+In het volgende voor beeld `step` wordt een expressie gebruikt `color` om de eigenschap van een tekenlaag in te `temperature` stellen op basis van de eigenschap van de functie Point. Als de `temperature` waarde lager is dan 60, wordt ' Blue ' geretourneerd. Als de waarde tussen 60 en minder dan 70, wordt ' Yellow ' geretourneerd. Als de waarde tussen 70 en minder dan 80, wordt ' oranje ' geretourneerd. Als de waarde 80 of hoger is, wordt ' Red ' geretourneerd.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -596,27 +596,27 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-De volgende afbeelding laat zien hoe de kleuren worden gekozen voor de bovenstaande expressie.
+In de volgende afbeelding ziet u hoe de kleuren voor de bovenstaande expressie worden gekozen.
  
 <center>
 
-![Voorbeeld van stapexpressie](media/how-to-expressions/step-expression-example.png)
+![Voor beeld van een stap-expressie](media/how-to-expressions/step-expression-example.png)
 </center>
 
-## <a name="layer-specific-expressions"></a>Laagspecifieke expressies
+## <a name="layer-specific-expressions"></a>Toepassingsspecifieke expressies
 
 Speciale expressies die alleen van toepassing zijn op specifieke lagen.
 
-### <a name="heat-map-density-expression"></a>De dichtheidsexpressie van de heatmap
+### <a name="heat-map-density-expression"></a>Dichtheids expressie voor heatmap
 
-Een heatmapdichtheidsexpressie haalt de dichtheidswaarde van de heatmap op voor `['heatmap-density']`elke pixel in een heatmaplaag en wordt gedefinieerd als . Deze waarde is `0` een `1`getal tussen en . Het wordt gebruikt in `interpolation` combinatie `step` met een of expressie om het kleurverloop te definiëren dat wordt gebruikt om de warmtekaart te kleuren. Deze expressie kan alleen worden gebruikt in de [kleuroptie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) van de heatmaplaag.
+Met een dichtheids expressie voor heatmap wordt de waarde van de heatmap voor de kaart voor elke pixel in een heatmap van een `['heatmap-density']`hitte opgehaald en gedefinieerd als. Deze waarde is een getal tussen `0` en `1`. Deze wordt gebruikt in combi natie met `interpolation` een `step` or-expressie om de kleur overgang te definiëren die wordt gebruikt voor het inkleuren van de heatmap. Deze expressie kan alleen worden gebruikt in de [kleur optie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) van de laag van de heatmap.
 
 > [!TIP]
-> De kleur bij index 0, in een interpolatie-expressie of de standaardkleur van een stapkleur, definieert de kleur van het gebied waar geen gegevens zijn. De kleur bij index 0 kan worden gebruikt om een achtergrondkleur te definiëren. Velen geven de voorkeur aan deze waarde in te stellen op transparant of een semi-transparante zwart.
+> De kleur bij index 0, in een interpolatie-expressie of de standaard kleur van een stap kleur, definieert de kleur van het gebied waar er geen gegevens zijn. De kleur bij index 0 kan worden gebruikt om een achtergrond kleur te definiëren. Veel gewenst om deze waarde in te stellen op transparant of semi-transparant zwart.
 
 **Voorbeeld**
 
-In dit voorbeeld wordt een lijninterpolatie-expressie gebruikt om een vloeiend kleurverloop te maken voor het renderen van de warmtekaart. 
+In dit voor beeld wordt een lijn-interpolatie-expressie gebruikt voor het maken van een vloeiend kleur verloop voor het renderen van de heatmap. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -632,7 +632,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-Naast het gebruik van een vloeiend verloop om een warmtekaart te kleuren, kunnen `step` kleuren binnen een reeks bereiken worden opgegeven met behulp van een expressie. Met `step` behulp van een expressie voor het inkleuren van de warmtekaart visueel breekt de dichtheid in bereiken die lijkt op een contour of radar stijl kaart.  
+Naast het gebruik van een glad verloop om een heatmap in te vullen, kunnen kleuren worden opgegeven in een set bereiken met behulp van `step` een expressie. Als u `step` een expressie gebruikt voor het inkleuren van de hitte kaart, wordt de densiteit in bereiken weer gegeven die lijken op een contour-of radar stijl kaart.  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -649,18 +649,18 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-Zie de documentatie [van de warmtekaartlaag toevoegen](map-add-heat-map-layer.md) voor meer informatie.
+Zie de documentatie [een hitte kaart toevoegen](map-add-heat-map-layer.md) voor meer informatie.
 
-### <a name="line-progress-expression"></a>Regelvoortgangsexpressie
+### <a name="line-progress-expression"></a>Expressie voor voortgangs lijn
 
-Een lijnvoortgangsexpressie haalt de voortgang op langs een verlooplijn `['line-progress']`in een lijnlaag en wordt gedefinieerd als . Deze waarde is een getal tussen 0 en 1. Het wordt gebruikt in `interpolation` combinatie `step` met een of expressie. Deze expressie kan alleen worden gebruikt met de [optie lijnverloop]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) van de lijnlaag. 
+Met een expressie voor de voortgangs lijn wordt de voortgang van een verloop lijn in een line-laag `['line-progress']`opgehaald en gedefinieerd als. Deze waarde is een getal tussen 0 en 1. Deze wordt gebruikt in combi natie met `interpolation` een `step` or-expressie. Deze expressie kan alleen worden gebruikt met de [optie strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) van de laag. 
 
 > [!NOTE]
-> De `strokeGradient` optie van de `lineMetrics` lijnlaag vereist de optie `true`van de gegevensbron die moet worden ingesteld op .
+> Voor `strokeGradient` de optie van de laag moet de `lineMetrics` optie van de gegevens bron worden ingesteld op `true`.
 
 **Voorbeeld**
 
-In dit `['line-progress']` voorbeeld wordt de expressie gebruikt om een kleurverloop toe te passen op de lijn van een lijn.
+In dit voor beeld `['line-progress']` wordt de expressie gebruikt om een kleur overgang toe te passen op de lijn van een regel.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -678,17 +678,17 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[Zie live voorbeeld](map-add-line-layer.md#line-stroke-gradient)
+[Zie Live voor beeld](map-add-line-layer.md#line-stroke-gradient)
 
-### <a name="text-field-format-expression"></a>Tekstveldopmaakexpressie
+### <a name="text-field-format-expression"></a>Expressie voor tekst veld notatie
 
-De expressie tekstveldopmaak kan `textField` worden gebruikt `textOptions` met de optie van de eigenschap symboollagen om gemengde tekstopmaak te bieden. Met deze expressie kan een set invoertekenreeksen en opmaakopties worden opgegeven. Voor elke invoertekenreeks in deze expressie kunnen de volgende opties worden opgegeven.
+De expressie voor de tekst veld notatie kan worden gebruikt `textField` met de optie van de `textOptions` eigenschap Symbol Layers om gemengde tekst opmaak te bieden. Met deze expressie kan een set invoer teken reeksen en opmaak opties worden opgegeven. De volgende opties kunnen worden opgegeven voor elke invoer reeks in deze expressie.
 
- * `'font-scale'`- Hiermee geeft u de schaalfactor voor de tekengrootte op. Indien opgegeven, overschrijft `size` deze waarde `textOptions` de eigenschap van de voor de afzonderlijke tekenreeks.
- * `'text-font'`- Hiermee geeft u een of meer lettertypefamilies op die voor deze tekenreeks moeten worden gebruikt. Indien opgegeven, overschrijft `font` deze waarde `textOptions` de eigenschap van de voor de afzonderlijke tekenreeks.
- * `'text-color'`- Hiermee geeft u een kleur op die u op een tekst moet toepassen bij het renderen. 
+ * `'font-scale'`-Hiermee geeft u de schaal factor voor de teken grootte op. Als deze waarde wordt opgegeven, wordt de `size` eigenschap van de `textOptions` afzonderlijke teken reeks overschreven.
+ * `'text-font'`-Hiermee geeft u een of meer lettertype families op die moeten worden gebruikt voor deze teken reeks. Als deze waarde wordt opgegeven, wordt de `font` eigenschap van de `textOptions` afzonderlijke teken reeks overschreven.
+ * `'text-color'`-Hiermee geeft u een kleur op die moet worden toegepast op een tekst tijdens het renderen. 
 
-Met de volgende pseudocode wordt de structuur van de expressie van het tekstveldopmaak gedefinieerd. 
+De volgende pseudocode definieert de structuur van de tekst veld indelings expressie. 
 
 ```javascript
 [
@@ -711,7 +711,7 @@ Met de volgende pseudocode wordt de structuur van de expressie van het tekstveld
 
 **Voorbeeld**
 
-In het volgende voorbeeld wordt het tekstveld opmaakt door `title` een vet lettertype toe te voegen en de tekengrootte van de eigenschap van de functie op te schalen. In dit voorbeeld `subtitle` wordt ook de eigenschap van de functie op een nieuwe regel toegevoegd, met een verkleinde tekengrootte en rood gekleurd.
+In het volgende voor beeld wordt het tekst veld opgemaakt door een vet letter type toe te voegen en de `title` teken grootte van de eigenschap van de functie omhoog te schalen. In dit voor beeld wordt `subtitle` ook de eigenschap van de functie op een nieuwe regel toegevoegd, met een geschaalde teken grootte en gekleurde rood.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -739,22 +739,22 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-Deze laag geeft de puntfunctie weer zoals in de afbeelding hieronder:
+Met deze laag wordt de punt functie weer gegeven zoals in de onderstaande afbeelding:
  
 <center>
 
-![Afbeelding van puntfunctie met](media/how-to-expressions/text-field-format-expression.png) opgemaakt tekstveld</center>
+![Afbeelding van punt functie met opgemaakte](media/how-to-expressions/text-field-format-expression.png) tekst veld</center>
 
-### <a name="number-format-expression"></a>Getalopmaakexpressie
+### <a name="number-format-expression"></a>De expressie getalnotatie
 
-De `number-format` expressie kan alleen `textField` worden gebruikt met de optie van een symboollaag. Met deze expressie wordt het opgegeven getal omgezet in een opgemaakte tekenreeks. Met deze expressie wordt de functie [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) van JavaScript omwikkeld en ondersteunt u de volgende set opties.
+De `number-format` expressie kan alleen worden gebruikt met de `textField` optie van een Symbol-laag. Met deze expressie wordt het gegeven getal geconverteerd naar een ingedeelde teken reeks. Met deze expressie wordt de functie [Number. toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) van Java script ingepakt en wordt de volgende set opties ondersteund.
 
- * `locale`- Geef deze optie op voor het converteren van getallen naar tekenreeksen op een manier die overeenkomt met de opgegeven taal. Geef een [BCP 47-taaltag door](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) aan deze optie.
- * `currency`- Het getal omzetten in een tekenreeks die een valuta vertegenwoordigt. Mogelijke waarden zijn de [ISO 4217 valutacodes](https://en.wikipedia.org/wiki/ISO_4217), zoals "USD" voor de Amerikaanse dollar, "EUR" voor de euro, of "CNY" voor de Chinese RMB.
- * `'min-fraction-digits'`- Hiermee geeft u het minimumaantal decimalen op dat moet worden opgenomen in de tekenreeksversie van het getal.
- * `'max-fraction-digits'`- Hiermee geeft u het maximumaantal decimalen op dat moet worden opgenomen in de tekenreeksversie van het getal.
+ * `locale`-Geef deze optie op voor het converteren van getallen naar teken reeksen op een manier die wordt uitgelijnd met de opgegeven taal. Geef een [BCP 47-taal label](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) door in deze optie.
+ * `currency`-Om het getal te converteren naar een teken reeks die een valuta vertegenwoordigt. Mogelijke waarden zijn de [ISO 4217-valuta codes](https://en.wikipedia.org/wiki/ISO_4217), zoals "USD" voor de Amerikaanse dollar, "EUR" voor de euro of "CNY" voor de Chinese RMB.
+ * `'min-fraction-digits'`-Geeft het minimale aantal decimalen aan dat moet worden meegenomen in de teken reeks versie van het getal.
+ * `'max-fraction-digits'`-Hiermee geeft u het maximum aantal decimalen op dat moet worden meegenomen in de teken reeks versie van het getal.
 
-Met de volgende pseudocode wordt de structuur van de expressie van het tekstveldopmaak gedefinieerd. 
+De volgende pseudocode definieert de structuur van de tekst veld indelings expressie. 
 
 ```javascript
 [
@@ -771,7 +771,7 @@ Met de volgende pseudocode wordt de structuur van de expressie van het tekstveld
 
 **Voorbeeld**
 
-In het volgende `number-format` voorbeeld wordt `revenue` een expressie gebruikt om te `textField` wijzigen hoe de eigenschap van de puntfunctie wordt weergegeven in de optie van een symboollaag, zodat deze een waarde in amerikaanse dollar wordt weergegeven.
+In het volgende voor beeld `number-format` wordt een expressie gebruikt om `revenue` te wijzigen hoe de eigenschap van de punt functie wordt `textField` weer gegeven in de optie van een Symbol-laag, zodat deze een Amerikaanse dollar waarde wordt weer gegeven.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -787,19 +787,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-Deze laag geeft de puntfunctie weer zoals in de afbeelding hieronder:
+Met deze laag wordt de punt functie weer gegeven zoals in de onderstaande afbeelding:
 
 <center>
 
-![Voorbeeld van](media/how-to-expressions/number-format-expression.png) getalopmaakexpressie</center>
+![Voor beeld van een](media/how-to-expressions/number-format-expression.png) expressie voor getalnotatie</center>
 
-### <a name="image-expression"></a>Afbeeldingsexpressie
+### <a name="image-expression"></a>Expressie voor afbeelding
 
-Een afbeeldingsexpressie kan `image` worden `textField` gebruikt met de opties `fillPattern` en opties van een symboollaag en de optie van de veelhoeklaag. Deze expressie controleert of de gevraagde afbeelding in de stijl bestaat `null`en retourneert de opgeloste afbeeldingsnaam of , afhankelijk van of de afbeelding zich momenteel in de stijl bevindt. Dit validatieproces is synchroon en vereist dat de afbeelding aan de stijl is toegevoegd voordat deze in het afbeeldingsargument wordt aangevraagd.
+Een afbeeldings expressie kan worden gebruikt met `image` de `textField` opties en van een Symbol-laag en `fillPattern` de optie van de polygoon laag. Met deze expressie wordt gecontroleerd of de aangevraagde afbeelding in de stijl bestaat en retourneert de naam van `null`de omgezette installatie kopie of, afhankelijk van het feit of de afbeelding zich op dat moment in de stijl bevindt. Dit validatie proces is synchroon en vereist dat de afbeelding is toegevoegd aan de stijl voordat deze wordt aangevraagd in het argument afbeelding.
 
 **Voorbeeld**
 
-In het volgende `image` voorbeeld wordt een expressie gebruikt om een pictogram inline met tekst in een symboollaag toe te voegen. 
+In het volgende voor beeld `image` wordt een expressie gebruikt om een pictogram inline met tekst in een symbool-laag toe te voegen. 
 
 ```javascript
  //Load the custom image icon into the map resources.
@@ -825,19 +825,19 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 });
 ```
 
-Met deze laag wordt het tekstveld in de symboollaag weergegeven, zoals in de afbeelding hieronder wordt weergegeven:
+Met deze laag wordt het tekst veld weer gegeven in de laag symbool, zoals wordt weer gegeven in de onderstaande afbeelding:
 
 <center>
 
-![Voorbeeld van](media/how-to-expressions/image-expression.png) afbeeldingsexpressie</center>
+![Voor beeld](media/how-to-expressions/image-expression.png) van een afbeeldings expressie</center>
 
-## <a name="zoom-expression"></a>Zoomexpressie
+## <a name="zoom-expression"></a>Expressie voor in-/uitzoomen
 
-Een `zoom` expressie wordt gebruikt om het huidige zoomniveau van de `['zoom']`kaart op rendertijd op te halen en wordt gedefinieerd als . Met deze expressie wordt een getal geretourneerd tussen het minimum- en maximale zoomniveaubereik van de kaart. De interactieve kaartbesturingselementen voor azure maps voor web- en Android-ondersteuning voor 25 zoomniveaus, genummerd van 0 tot en met 24. Met `zoom` behulp van de expressie kunnen stijlen dynamisch worden gewijzigd als het zoomniveau van de kaart wordt gewijzigd. De `zoom` expressie mag alleen `interpolate` `step` worden gebruikt met en uitdrukkingen.
+Een `zoom` expressie wordt gebruikt om het huidige zoom niveau van de kaart op te halen op weergave tijd en wordt `['zoom']`gedefinieerd als. Deze expressie retourneert een getal tussen het minimale en maximale zoom niveau bereik van de kaart. De besturings elementen voor de Azure Maps interactieve kaart voor web-en Android-ondersteuning 25 zoom niveaus, genummerd op 0 t/m 24. Als u `zoom` de expressie gebruikt, kunnen stijlen dynamisch worden gewijzigd wanneer het zoom niveau van de kaart wordt gewijzigd. De `zoom` expressie kan alleen worden gebruikt met `interpolate` and `step` -expressies.
 
 **Voorbeeld**
 
-Standaard hebben de stralen van gegevenspunten die in de heatmaplaag worden weergegeven, een vaste pixelstraal voor alle zoomniveaus. Als de kaart wordt ingezoomd, worden de gegevens samengevoegd en ziet de heatmaplaag er anders uit. Een `zoom` expressie kan worden gebruikt om de straal voor elk zoomniveau zodanig te schalen dat elk gegevenspunt hetzelfde fysieke gebied van de kaart bestrijkt. Het zal de warmtekaart laag kijken meer statisch en consistent. Elk zoomniveau van de kaart heeft twee keer zoveel pixels verticaal en horizontaal als het vorige zoomniveau. Als u de straal schaalt, zodat deze met elk zoomniveau wordt verdubbeld, wordt een heatmap gemaakt die er consistent uitziet op alle zoomniveaus. Het kan worden bereikt `zoom` met `base 2 exponential interpolation` behulp van de expressie met een expressie, met de pixelstraal ingesteld `2 * Math.pow(2, minZoom - maxZoom)` voor het minimale zoomniveau en een geschaalde straal voor het maximale zoomniveau berekend zoals hieronder weergegeven.
+De RADIUS van gegevens punten die worden weer gegeven in de laag van de heatmap hebben standaard een straal van vaste pixels voor alle zoom niveaus. Naarmate de kaart wordt ingezoomd, worden de gegevens samen en de heatmap van de kaart op verschillende manieren weer gegeven. Een `zoom` expressie kan worden gebruikt om de RADIUS voor elk zoom niveau zodanig te schalen dat elk gegevens punt overeenkomt met hetzelfde fysieke gebied van de kaart. De IT-laag maakt de heatmap statisch en consistent. Elk zoom niveau van de kaart heeft twee keer zoveel pixels verticaal en horizon taal als het vorige zoom niveau. Door de RADIUS te schalen, zodat deze wordt verdubbeld met elk zoom niveau, wordt een heatmap gemaakt die consistent is op alle zoom niveaus. U kunt dit doen met behulp van `zoom` de `base 2 exponential interpolation` expressie met een expressie, waarbij de pixel RADIUS is ingesteld voor het minimale zoom niveau en een geschaalde RADIUS voor het `2 * Math.pow(2, minZoom - maxZoom)` maximale zoom niveau dat wordt berekend, zoals hieronder wordt weer gegeven.
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -855,20 +855,20 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 };
 ```
 
-[Zie live voorbeeld](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
+[Zie Live voor beeld](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
 
-## <a name="variable-binding-expressions"></a>Variabele bindingsexpressies
+## <a name="variable-binding-expressions"></a>Variabele bindings expressies
 
-Variabele bindingsexpressies slaan de resultaten van een berekening op in een variabele. Dus, dat de berekening resultaten elders kunnen worden verwezen in een expressie meerdere keren. Het is een nuttige optimalisatie voor expressies die veel berekeningen met zich meebrengen.
+Met variabelen bindings expressies worden de resultaten van een berekening in een variabele opgeslagen. Dat wil zeggen dat er meerdere keren naar de resultaten van de berekening kan worden verwezen in een expressie. Het is een handige optimalisatie voor expressies waarbij veel berekeningen worden betrokken.
 
-| Expressie | Retourtype | Beschrijving |
+| Expressie | Retour type | Beschrijving |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'laten we',<br/>&nbsp;&nbsp;&nbsp;&nbsp;naam1: tekenreeks,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde1: elke,<br/>&nbsp;&nbsp;&nbsp;&nbsp;naam2: tekenreeks,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde2: elke,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;onderliggende expressie<br/>\] | | Hiermee slaat u een of meer `var` waarden op als variabelen voor gebruik door de expressie in de onderliggende expressie die het resultaat retourneert. |
-| `['var', name: string]` | elke | Verwijst naar een variabele die `let` is gemaakt met behulp van de expressie. |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;Let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;NAME1: teken reeks,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;naam2: teken reeks,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Slaat een of meer waarden op als variabelen voor gebruik door `var` de expressie in de onderliggende expressie waarmee het resultaat wordt geretourneerd. |
+| `['var', name: string]` | iedere | Verwijst naar een variabele die is gemaakt met `let` behulp van de expressie. |
 
 **Voorbeeld**
 
-In dit voorbeeld wordt een expressie gebruikt die de `case` opbrengst berekent ten opzichte van de temperatuurverhouding en vervolgens een expressie gebruikt om verschillende booleaanse bewerkingen op deze waarde te evalueren. De `let` expressie wordt gebruikt om de opbrengst ten opzichte van de temperatuurverhouding op te slaan, zodat deze slechts één keer hoeft te worden berekend. De `var` expressie verwijst naar deze variabele zo vaak als nodig is zonder deze opnieuw te hoeven berekenen.
+In dit voor beeld wordt een expressie gebruikt waarmee de opbrengst wordt berekend ten opzichte `case` van de Tempe ratuur en vervolgens een expressie wordt gebruikt om verschillende Boole-bewerkingen op deze waarde te evalueren. De `let` expressie wordt gebruikt voor het opslaan van de opbrengst ten opzichte van de temperatuur verhouding, zodat deze slechts eenmaal hoeft te worden berekend. De `var` expressie verwijst naar deze variabele zo vaak als nodig is zonder dat deze opnieuw moet worden berekend.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -896,7 +896,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer codevoorbeelden die expressies implementeren:
+Raadpleeg de volgende artikelen voor meer code voorbeelden voor het implementeren van expressies:
 
 > [!div class="nextstepaction"] 
 > [Een symboollaag toevoegen](map-add-pin.md)
@@ -913,19 +913,19 @@ Zie de volgende artikelen voor meer codevoorbeelden die expressies implementeren
 > [!div class="nextstepaction"] 
 > [Een heatmap-laag toevoegen](map-add-heat-map-layer.md)
 
-Meer informatie over de laagopties die expressies ondersteunen:
+Meer informatie over de laag opties die expressies ondersteunen:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOpties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOpties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOpties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [Polygoonopties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [SymbollayerOpties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 

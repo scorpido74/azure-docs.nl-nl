@@ -1,40 +1,40 @@
 ---
 title: Een Azure Remote Rendering-account maken
-description: Beschrijft de stappen om een account voor Azure Remote Rendering te maken
+description: Hierin worden de stappen beschreven voor het maken van een account voor externe rendering van Azure
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681296"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Een Azure Remote Rendering-account maken
 
-In dit hoofdstuk u de stappen doorlopen om een account voor de **Azure Remote Rendering-service te** maken. Een geldig account is verplicht voor het invullen van een van de quickstarts of tutorials.
+In dit hoofd stuk wordt u begeleid bij de stappen voor het maken van een account voor de **Azure remote rendering** -service. Een geldig account is verplicht voor het volt ooien van de Quick starts of zelf studies.
 
 ## <a name="create-an-account"></a>Een account maken
 
-De volgende stappen zijn nodig om een account voor de Azure Remote Rendering-service te maken:
+De volgende stappen zijn nodig om een account te maken voor de Azure remote rendering-service:
 
-1. Ga naar de [pagina Mixed Reality Preview](https://aka.ms/MixedRealityPrivatePreview)
-1. Klik op de knop 'Een resource maken'
-1. Typ in het zoekveld ('Zoek de marktplaats') in 'Externe rendering' en druk op 'enter'.
-1. Klik in de resultatenlijst op de tegel 'Extern renderen'
-1. Klik in het volgende scherm op de knop Maken. Er wordt een formulier geopend om een nieuw extern renderingaccount te maken:
-    1. 'Resourcenaam' instellen op de naam van het account
-    1. Update 'Abonnement' indien nodig
-    1. 'Resourcegroep' instellen op een resourcegroep naar keuze
-1. Zodra het account is gemaakt, navigeert u ernaar en:
-    1. Noteer op het tabblad *Overzicht* de 'Account-ID'
-    1. Noteer in het tabblad *Instellingen > Toegangssleutels* de 'primaire sleutel' - dit is de geheime accountsleutel van het account
+1. Ga naar de [voorbeeld pagina Mixed Reality](https://aka.ms/MixedRealityPrivatePreview)
+1. Klik op de knop een resource maken
+1. Typ in het zoek veld ("zoeken op Marketplace") de tekst "externe rendering" en druk op ENTER.
+1. Klik in de lijst met resultaten op de tegel externe Rendering
+1. Klik in het volgende scherm op de knop maken. Er wordt een formulier geopend voor het maken van een nieuw externe rendering-account:
+    1. ' Resource naam ' instellen op de naam van het account
+    1. Abonnement indien nodig bijwerken
+    1. De resource groep instellen op een resource groep van uw keuze
+1. Zodra het account is gemaakt, navigeert u naar dit en:
+    1. Bekijk op het tabblad *overzicht* de account-id
+    1. Bekijk op het tabblad *instellingen > Access Keys* de ' primaire sleutel ': dit is de geheime account sleutel van het account
 
-### <a name="retrieve-the-account-information"></a>De accountgegevens ophalen
+### <a name="retrieve-the-account-information"></a>De account gegevens ophalen
 
-De voorbeelden en tutorials vereisen dat u de account-ID en een sleutel. Bijvoorbeeld in het **arrconfig.json-bestand** dat wordt gebruikt voor de PowerShell-voorbeeldscripts:
+Voor de voor beelden en zelf studies moet u de account-ID en een sleutel opgeven. Bijvoorbeeld in het bestand **arrconfig. json** dat wordt gebruikt voor de Power shell-voorbeeld scripts:
 
 ```json
     "accountSettings": {
@@ -44,57 +44,57 @@ De voorbeelden en tutorials vereisen dat u de account-ID en een sleutel. Bijvoor
     },
 ```
 
-Bekijk de [lijst met beschikbare regio's](../reference/regions.md) voor het invullen van de *regiooptie.*
+Bekijk de [lijst met beschik bare regio's](../reference/regions.md) voor het invullen van de *regio* optie.
 
-De waarden **`arrAccountId`** **`arrAccountKey`** voor en zijn te vinden in de portal zoals beschreven in de volgende stappen:
+De waarden voor **`arrAccountId`** en **`arrAccountKey`** zijn te vinden in de portal, zoals beschreven in de volgende stappen:
 
 * Ga naar [Azure Portal](https://www.portal.azure.com)
-* Zoek uw **"Remote Rendering Account"** - het moet in de lijst **'Recente bronnen'** staan. U er ook naar zoeken in de zoekbalk bovenaan. Controleer in dat geval of het abonnement dat u wilt gebruiken is geselecteerd in het filter standaardabonnement (filterpictogram naast de zoekbalk):
+* Zoek uw **"externe rendering-account"** -deze moet zich in de lijst met **recente resources** bevinden. U kunt er ook naar zoeken in de zoek balk bovenin. In dat geval moet u ervoor zorgen dat het abonnement dat u wilt gebruiken, is geselecteerd in het standaard abonnements filter (filter pictogram naast zoek balk):
 
-![Abonnementsfilter](./media/azure-subscription-filter.png)
+![Abonnements filter](./media/azure-subscription-filter.png)
 
-Als u op uw account klikt, gaat u naar dit scherm, waarop meteen de **account-id** wordt weergegeven:
+Als u op uw account klikt, gaat u naar dit scherm, waarin de **account-id** direct wordt weer gegeven:
 
-![Azure-account-id](./media/azure-account-id.png)
+![Azure-account-ID](./media/azure-account-id.png)
 
-Selecteer **Access-toetsen** in het deelvenster aan de linkerkant voor de sleutel. Op de volgende pagina ziet u een primaire en een secundaire sleutel:
+Voor de sleutel selecteert u **toegangs sleutels** in het deel venster aan de linkerkant. Op de volgende pagina wordt een primaire en secundaire sleutel weer gegeven:
 
-![Azure-toegangssleutels](./media/azure-account-primary-key.png)
+![Azure-toegangs sleutels](./media/azure-account-primary-key.png)
 
-De waarde **`arrAccountKey`** voor kan primaire of secundaire sleutel zijn.
+De waarde voor **`arrAccountKey`** kan een primaire of secundaire sleutel zijn.
 
-## <a name="link-storage-accounts"></a>Opslagaccounts koppelen
+## <a name="link-storage-accounts"></a>Opslag accounts koppelen
 
-In deze paragraaf wordt uitgelegd hoe u opslagaccounts koppelt aan uw externe renderingaccount. Wanneer een opslagaccount is gekoppeld, is het niet nodig om een SAS URI te genereren wanneer u wilt communiceren met de gegevens in uw account, bijvoorbeeld bij het laden van een model. In plaats daarvan u de namen van het opslagaccount rechtstreeks gebruiken zoals beschreven in de [sectie het laden van een model.](../concepts/models.md#loading-models)
+In deze alinea wordt uitgelegd hoe u opslag accounts koppelt aan uw externe rendering-account. Wanneer een opslag account is gekoppeld, is het niet nodig om elke keer dat u wilt communiceren met de gegevens in uw account, een SAS-URI te genereren, bijvoorbeeld bij het laden van een model. In plaats daarvan kunt u de namen van opslag accounts rechtstreeks gebruiken zoals beschreven in de [sectie een model laden](../concepts/models.md#loading-models).
 
-De stappen in deze alinea moeten worden uitgevoerd voor elk opslagaccount dat deze alternatieve toegangsmethode moet gebruiken. Als u nog geen opslagaccounts hebt gemaakt, u de respectievelijke stap in het [model converteren voor het renderen van snelstart](../quickstarts/convert-model.md#storage-account-creation)doorlopen.
+De stappen in dit artikel moeten worden uitgevoerd voor elk opslag account dat deze alternatieve toegangs methode moet gebruiken. Als u nog geen opslag accounts hebt gemaakt, kunt u de respectieve stap door lopen in de [Snelstartgids een model converteren voor rendering](../quickstarts/convert-model.md#storage-account-creation).
 
-Nu wordt aangenomen dat u een opslagaccount hebt. Navigeer naar het opslagaccount in de portal en ga naar het tabblad **Toegangsbeheer (IAM)** voor dat opslagaccount:
+Hierbij wordt ervan uitgegaan dat u een opslag account hebt. Ga naar het opslag account in de portal en ga naar het tabblad **Access Control (IAM)** voor dat opslag account:
 
-![Opslagaccount IAM](./media/azure-storage-account.png)
+![IAM van opslag account](./media/azure-storage-account.png)
 
- Zorg ervoor dat u eigenaarmachtigingen hebt voor dit opslagaccount om ervoor te zorgen dat u roltoewijzingen toevoegen. Als u geen toegang hebt, wordt de optie **Een roltoewijzing toevoegen** uitgeschakeld.
+ Zorg ervoor dat u eigenaars machtigingen hebt voor dit opslag account om ervoor te zorgen dat u roltoewijzingen kunt toevoegen. Als u geen toegang hebt, wordt de optie **toewijzing van rol toevoegen** uitgeschakeld.
 
- U moet drie verschillende rollen toevoegen zoals beschreven in de volgende stappen. Als u niet alle drie de toegangsniveaus opgeeft, zijn er toestemmingsproblemen terwijl u toegang probeert te krijgen tot het opslagaccount.
+ U moet drie afzonderlijke rollen toevoegen, zoals wordt beschreven in de volgende stappen. Als u niet alle drie de toegangs niveaus opgeeft, zijn er machtigingen voor de toegang tot het opslag account.
 
- Klik op de knop **Toevoegen** in de tegel 'Een roltoewijzing toevoegen' om de eerste rol toe te voegen:
+ Klik op de knop **toevoegen** in de tegel toewijzing van een rol toevoegen om de eerste rol toe te voegen:
 
-![Opslagaccount IAM](./media/azure-add-role-assignment.png)
+![IAM van opslag account](./media/azure-add-role-assignment.png)
 
-* De eerste rol die u wilt toewijzen is **Eigenaar** zoals weergegeven in de bovenstaande schermafbeelding. 
-* Selecteer **Extern renderaccount** in de ***Toegang toewijzen tot** vervolgkeuzelijst.
-* Selecteer uw abonnement en Extern renderaccount in de laatste vervolgkeuzetijden.
+* De eerste rol die moet worden toegewezen, is **eigenaar** , zoals wordt weer gegeven in de bovenstaande scherm afbeelding. 
+* Selecteer **extern rendering-account** in de ***wijs toegang toe aan** de vervolg keuzelijst.
+* Selecteer uw abonnement en het account voor externe rendering in de laatste vervolg keuzelijst.
 
-Herhaal het toevoegen van nieuwe rollen nog twee keer voor de respectievelijke selecties in de **vervolgkeuzelijst Rol:**
+Herhaal nieuwe rollen nog twee keer voor de respectievelijke selecties in de vervolg keuzelijst **rol** :
 * **Inzender voor opslagaccounts**
-* **Opslagblob-gegevensbijdrager**
+* **Inzender voor Storage BLOB-gegevens**
 
-De andere vervolgkeuzeklassen worden geselecteerd zoals in de eerste stap.
+De andere vervolg keuzelijsten worden geselecteerd als in de eerste stap.
 
-Als u alle drie de rollen hebt toegevoegd, heeft uw Azure Remote Rendering-account toegang tot uw opslagaccount met behulp van systeemtoegewezen Managed Service Identities.
+Als u alle drie de rollen hebt toegevoegd, heeft uw Azure remote rendering-account toegang tot uw opslag account via door het systeem toegewezen beheerde service-identiteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Verificatie](authentication.md)
-* [De Azure Frontend API's gebruiken voor verificatie](frontend-apis.md)
-* [Voorbeeld PowerShell-scripts](../samples/powershell-example-scripts.md)
+* [De Azure frontend-Api's gebruiken voor verificatie](frontend-apis.md)
+* [PowerShell-voorbeeldscripts](../samples/powershell-example-scripts.md)

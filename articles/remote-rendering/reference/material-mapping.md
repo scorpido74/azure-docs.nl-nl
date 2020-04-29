@@ -1,130 +1,130 @@
 ---
 title: Materiaaltoewijzing voor modelindelingen
-description: Beschrijft de standaardconversie van modelbronindelingen naar PBR-materiaal
+description: Beschrijft de standaard conversie van model bron indelingen naar PBR-materiaal
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680386"
 ---
 # <a name="material-mapping-for-model-formats"></a>Materiaaltoewijzing voor modelindelingen
 
-Wanneer een bronasset als model wordt [geconverteerd,](../how-tos/conversion/model-conversion.md)maakt de converter [materialen](../concepts/materials.md) voor elk [net](../concepts/meshes.md). De manier waarop materialen worden gemaakt kan worden [overschreven.](../how-tos/conversion/override-materials.md) De conversie creëert echter standaard [PBR-materialen.](../overview/features/pbr-materials.md) Aangezien elke bronbestandsindeling, zoals FBX, zijn eigen conventies gebruikt om materialen te definiëren, moeten deze conventies worden toegewezen aan de PBR-materiaalparameters van Azure Remote Rendering. 
+Wanneer een bron activum [als een model wordt geconverteerd](../how-tos/conversion/model-conversion.md), maakt het conversie programma voor elk [net](../concepts/meshes.md) [materialen](../concepts/materials.md) . De manier waarop materialen worden gemaakt, kan worden [overschreven](../how-tos/conversion/override-materials.md). Standaard wordt in de conversie echter [PBR-materialen](../overview/features/pbr-materials.md)gemaakt. Omdat elke bron bestands indeling, zoals FBX, eigen conventies gebruikt voor het definiëren van materialen, moeten deze conventies worden toegewezen aan de PBR-material-para meters van Azure remote rendering. 
 
-In dit artikel worden de exacte toewijzingen weergegeven die worden gebruikt om materialen om te zetten van bronelementen naar runtime-materialen.
+In dit artikel vindt u de exacte toewijzingen die worden gebruikt voor het converteren van materialen van bron assets naar runtime-materialen.
 
-## <a name="gltf"></a>glTF glTF
+## <a name="gltf"></a>glTF
 
-Bijna alles van de glTF 2.0 spec wordt ondersteund in Azure Remote Rendering, behalve *EmissiveFactor* en *EmissiveTexture*.
+Bijna alles van de glTF 2,0 spec wordt ondersteund in azure remote rendering, met uitzonde ring van *EmissiveFactor* en *EmissiveTexture*.
 
-In de volgende tabel ziet u de toewijzing:
+De volgende tabel toont de toewijzing:
 
-| glTF glTF | Azure Remote Rendering |
+| glTF | Azure Remote Rendering |
 |:-------------------|:--------------------------|
-|   baseColorFactor (baseColorFactor)   |   albedoColor              |
-|   baseColorTexture (baseColorTexture)  |   albedoMap                |
-|   metallicFactor    |   metaalzijn                |
-|   metallicTextuur   |   metalnessMap             |
-|   ruwheidFactor   |   Ruwheid                |
-|   ruwheidTextuur  |   roughnessMap             |
-|   occlusionFactor   |   Occlusie                |
-|   occlusionTextuur  |   occlusionMap             |
-|   normalTexture normalTexture normalTexture normalTexture     |   Normalmap                |
-|   alfacutoff       |   alphaClipThreshold       |
-|   alfaMode.OPAQUE  |   alphaClipEnabled = false, isTransparent = false |
-|   alfaMode.MASK    |   alphaClipEnabled = true, isTransparent = false  |
-|   alphaMode.BLEND   |   isTransparant = waar     |
+|   baseColorFactor   |   albedoColor              |
+|   baseColorTexture  |   albedoMap                |
+|   metallicFactor    |   metaal                |
+|   metallicTexture   |   metalnessMap             |
+|   roughnessFactor   |   ruw                |
+|   roughnessTexture  |   roughnessMap             |
+|   occlusionFactor   |   bedekking                |
+|   occlusionTexture  |   occlusionMap             |
+|   normalTexture     |   normalMap                |
+|   alphaCutoff       |   alphaClipThreshold       |
+|   alphaMode. ondoorzichtig  |   alphaClipEnabled = False, isTransparent = False |
+|   alphaMode. MASK    |   alphaClipEnabled = True, isTransparent = False  |
+|   alphaMode. BLEND   |   isTransparent = True     |
 |   doubleSided       |   isDoubleSided            |
 |   emissiveFactor    |   -                        |
 |   emissiveTexture   |   -                        |
 
-Elke structuur in glTF `texCoord` kan een waarde hebben, die ook wordt ondersteund in de Azure Remote Rendering-materialen.
+Elk bitmappatroon in glTF kan een `texCoord` waarde hebben, die ook wordt ondersteund in de Azure remote rendering-materialen.
 
-### <a name="embedded-textures"></a>Ingesloten texturen
+### <a name="embedded-textures"></a>Inge sloten structuren
 
-Structuren die zijn ingesloten in * \*.bin-* of * \*.glb-bestanden* worden ondersteund.
+Structuren die zijn Inge sloten in * \*bin* -of * \*GLB* -bestanden worden ondersteund.
 
 ### <a name="supported-gltf-extension"></a>Ondersteunde glTF-extensie
 
-Azure Remote Rendering ondersteunt bovendien de volgende glTF-extensies voor de basisfunctieset:
+Naast de basis functieset, ondersteunt Azure remote rendering de volgende glTF-extensies:
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
 * [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
-* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): Komt overeen met [kleurmaterialen](../overview/features/color-materials.md). Voor *emissive* materialen is het raadzaam om deze extensie te gebruiken.
-* [KHR_materials_pbrSpecularGlossiness:](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md)In plaats van metallic-ruwheid texturen, u diffuus-spiegelende glans texturen. De azure remote rendering-implementatie volgt rechtstreeks de conversieformules van de extensie.
+* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): komt overeen met [kleur materialen](../overview/features/color-materials.md). Voor *emissive* -materialen is het raadzaam om deze uitbrei ding te gebruiken.
+* [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): in plaats van metallic textures kunt u glossiness-structuren (diffuus en onscherp) bieden. De implementatie van Azure remote rendering volgt direct de conversie formules van de uitbrei ding.
 
-## <a name="fbx"></a>Fbx
+## <a name="fbx"></a>FBX
 
-Het FBX-formaat is closed-source en FBX-materialen zijn niet compatibel met PBR-materialen in het algemeen. FBX maakt gebruik van een complexe beschrijving van oppervlakken met veel unieke parameters en eigenschappen en **niet alle worden gebruikt door de Azure Remote Rendering-pijplijn.**
+De FBX-indeling is gesloten-bron-en FBX-materialen zijn niet compatibel met PBR-materialen in het algemeen. FBX maakt gebruik van een complexe beschrijving van Opper vlakken met veel unieke para meters en eigenschappen, en **niet allemaal worden gebruikt door de Azure remote rendering-pijp lijn**.
 
 > [!IMPORTANT]
-> De Azure Remote Rendering-modelconversiepijplijn ondersteunt alleen **FBX 2011 en hoger.**
+> De pijp lijn conversie van de Azure remote rendering model ondersteunt alleen **FBX 2011 en hoger**.
 
-De FBX-formaat definieert een conservatieve benadering voor materialen, zijn er slechts twee soorten in de officiële FBX specificatie:
+De FBX-indeling definieert een conservatieve benadering voor materialen, maar er zijn slechts twee typen in de officiële FBX-specificatie:
 
-* *Lambert* - Niet vaak gebruikt voor geruime tijd al, maar het wordt nog steeds ondersteund door het omzetten naar Phong bij conversie tijd.
-* *Phong* - Bijna alle materialen en de meeste content tools gebruiken dit type.
+* *Lambert* : wordt niet vaak al enige tijd gebruikt, maar wordt wel ondersteund door tijdens de conversie naar Phong te converteren.
+* *Phong* -bijna alle materialen en de meeste hulpprogram ma's voor inhoud gebruiken dit type.
 
-Het Phong-model is nauwkeuriger en wordt gebruikt als het *enige* model voor FBX-materialen. Hieronder zal worden aangeduid als de *FBX Material*.
+Het Phong-model is nauw keuriger en wordt gebruikt als het *enige* model voor FBX-materialen. Hieronder wordt het *FBX-materiaal*genoemd.
 
-> Maya gebruikt twee aangepaste extensies voor FBX door aangepaste eigenschappen te definiëren voor PBR- en Stingray-typen van een materiaal. Deze details zijn niet opgenomen in de FBX-specificatie, dus het wordt momenteel niet ondersteund door Azure Remote Rendering.
+> Maya maakt gebruik van twee aangepaste extensies voor FBX door aangepaste eigenschappen te definiëren voor PBR-en Stingray-typen van een materiaal. Deze gegevens zijn niet opgenomen in de FBX-specificatie, waardoor deze niet wordt ondersteund door Azure remote rendering op dit moment.
 
-FBX-materialen gebruiken het diffuus-specular-SpecularLevel-concept, dus om van een diffuse textuur naar een albedo-kaart om te zetten, moeten we de andere parameters berekenen om ze van diffuus af te trekken.
+FBX-materialen gebruiken het ' diffuus en onscherpste SpecularLevel-concept, dus als u een diffuse structuur wilt omzetten in een albedo-kaart, moeten we de andere para meters berekenen om ze van diffuus af te trekken.
 
-> Alle kleuren en texturen in FBX bevinden zich in de sRGB-ruimte (ook wel Gamma-ruimte genoemd), maar Azure Remote Rendering werkt met lineaire ruimte tijdens visualisatie en aan het einde van het frame wordt alles teruggezet naar sRGB-ruimte. De Azure Remote Rendering asset pipeline converteert alles naar lineaire ruimte om deze als voorbereide gegevens naar de renderer te sturen.
+> Alle kleuren en bitmappatronen in FBX zijn in de sRGB-ruimte (ook wel gamma-ruimte genoemd), maar externe rendering van Azure werkt met lineaire ruimte tijdens de visualisatie en aan het einde van het frame worden alle gegevens naar sRGB-ruimte geconverteerd. Met de pijp lijn voor het inventariseren van Azure remote rendering worden alles geconverteerd naar lineaire ruimte om het te verzenden als voor bereide gegevens naar de renderer.
 
-In deze tabel ziet u hoe texturen worden toegewezen van FBX-materialen tot Azure Remote Rendering-materialen. Sommige ervan worden niet direct gebruikt, maar in combinatie met andere texturen die deelnemen aan de formules (bijvoorbeeld de diffuse textuur):
+In deze tabel ziet u hoe structuren worden toegewezen uit FBX-materialen aan Azure remote rendering-materialen. Sommige daarvan worden niet rechtstreeks gebruikt, maar in combi natie met andere bitmappatronen die deel nemen aan de formules (bijvoorbeeld het diffuse bitmappatroon):
 
-| Fbx | Azure Remote Rendering |
+| FBX | Azure Remote Rendering |
 |:-----|:----|
-| AmbientColor | Occlusiekaart   |
-| Diffuuskleur | *gebruikt voor Albedo, Metalness* |
-| TransparentColor (TransparentColor) | *gebruikt voor alfakanaal van Albedo* |
-| TransparantieFactor | *gebruikt voor alfakanaal van Albedo* |
-| Dekking | *gebruikt voor alfakanaal van Albedo* |
-| Spiegelkleur | *gebruikt voor Albedo, Metalness, Roughness* |
-| SpecularFactor| *gebruikt voor Albedo, Metalness, Roughness* |
-| ShininessExponent Shininess | *gebruikt voor Albedo, Metalness, Roughness* |
-| Normalmap | Normalmap |
-| Bump | *geconverteerd naar NormalMap* |
-| EmissiveKleur | - |
+| AmbientColor | Bedekking-kaart   |
+| DiffuseColor | *gebruikt voor albedo, Metaaling* |
+| TransparentColor | *gebruikt voor alfa kanaal van albedo* |
+| TransparencyFactor | *gebruikt voor alfa kanaal van albedo* |
+| Dekking | *gebruikt voor alfa kanaal van albedo* |
+| SpecularColor | *gebruikt voor albedo, metaal, grofheid* |
+| SpecularFactor| *gebruikt voor albedo, metaal, grofheid* |
+| ShininessExponent | *gebruikt voor albedo, metaal, grofheid* |
+| NormalMap | NormalMap |
+| Grijs | *geconverteerd naar NormalMap* |
+| EmissiveColor | - |
 | EmissiveFactor | - |
-| ReflectieKleur | - |
-| VerplaatsingKleur | - |
+| ReflectionColor | - |
+| DisplacementColor | - |
 
-De mapping hierboven is het meest complexe deel van de materiaalconversie, vanwege de vele aannames die moeten worden gemaakt. We bespreken deze veronderstellingen hieronder.
+De bovenstaande toewijzing is het meest complexe deel van de materiaal conversie, omdat er veel veronderstellingen zijn die moeten worden gemaakt. Deze hypo Thesen worden hieronder beschreven.
 
-Enkele definities die hieronder worden gebruikt:
+Hieronder worden enkele definities gebruikt:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Rood ∙ 0,2125 + `Specular`. Groen ∙ 0,7154 + `Specular`. Blauw ∙ 0,0721
-* `DiffuseBrightness`= 0,299 `Diffuse`* . Rood<sup>2</sup> + 0,587 * `Diffuse`. Groen<sup>2</sup> + 0,114 * `Diffuse`. Blauw<sup>2</sup>
-* `SpecularBrightness`= 0,299 `Specular`* . Rood<sup>2</sup> + 0,587 * `Specular`. Groen<sup>2</sup> + 0,114 * `Specular`. Blauw<sup>2</sup>
-* `SpecularStrength`= max.`Specular` Rood, `Specular`. Groen, `Specular`. Blauw)
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular`. Groen ∗ 0,7154 + `Specular`. Blue ∗ 0,0721
+* `DiffuseBrightness`= 0,299 * `Diffuse`. Red<sup>2</sup> + 0,587 * `Diffuse`. Groen<sup>2</sup> + 0,114 * `Diffuse`. Blauw<sup>2</sup>
+* `SpecularBrightness`= 0,299 * `Specular`. Red<sup>2</sup> + 0,587 * `Specular`. Groen<sup>2</sup> + 0,114 * `Specular`. Blauw<sup>2</sup>
+* `SpecularStrength`= Max (`Specular`. Rood, `Specular`. Groen, `Specular`. Meng
 
-De formule SpecularIntensity wordt [hier](https://en.wikipedia.org/wiki/Luma_(video))vandaan verkregen.
-De helderheidsformule wordt beschreven in deze [specificatie](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf).
+De formule SpecularIntensity wordt [hier](https://en.wikipedia.org/wiki/Luma_(video))opgehaald.
+De formule voor de helderheid wordt in deze [specificatie](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)beschreven.
 
-### <a name="roughness"></a>Ruwheid
+### <a name="roughness"></a>Ruw
 
-`Roughness`wordt berekend `Specular` `ShininessExponent` op basis van en met behulp van [deze formule](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf). De formule is een benadering van ruwheid van de Phong spiegelexponent:
+`Roughness`wordt berekend op `Specular` basis `ShininessExponent` van en [deze formule](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)wordt gebruikt. De formule is een benadering van de grove-exponent van de Phong:
 
 ```Cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
-### <a name="metalness"></a>Metaalheid
+### <a name="metalness"></a>Metaal
 
-`Metalness`wordt berekend `Diffuse` `Specular` op basis van en met behulp van deze [formule uit de glTF-specificatie](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
+`Metalness`wordt berekend op `Diffuse` basis `Specular` van en met behulp [van deze formule uit de glTF-specificatie](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
 
-Het idee hier is dat we de vergelijking oplossen: Ax<sup>2</sup> + Bx + C = 0.
-Kortom, diëlektrische oppervlakken reflecteren ongeveer 4% van het licht op een spiegelende manier, en de rest is diffuus. Metalen oppervlakken reflecteren geen licht op een diffuse manier, maar allemaal op een spiegelende manier.
-Deze formule heeft een paar nadelen, want er is geen manier om onderscheid te maken tussen glanzend plastic en glanzende metalen oppervlakken. We gaan ervan uit dat het oppervlak meestal metalen eigenschappen heeft, en daardoor zien glanzende plastic/rubberoppervlakken er misschien niet zoals verwacht uit.
+Het idee hier is dat we de vergelijking oplossen: AX<sup>2</sup> + BX + C = 0.
+In principe worden dielectric-Opper vlakken weer gegeven rond 4% licht op een reflecterend manier en is de rest diffuus. Metalen Opper vlakken geven geen licht op een diffuse manier, maar allemaal op een manier.
+Deze formule bevat enkele nadelen omdat er geen manier is om onderscheid te maken tussen glanzende plastic en glanzende metalen Opper vlakken. We gaan ervan uit dat het Opper vlak een metallische eigenschappen heeft en dat de glanzende plastic/rubber-Opper vlakken er mogelijk niet op de verwachte manier uitzien.
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -139,10 +139,10 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`wordt berekend `Diffuse`op `Specular`basis `Metalness`van , en .
+`Albedo`wordt berekend op basis `Diffuse`van `Specular`, en `Metalness`.
 
-Zoals beschreven in de sectie Metalness reflecteren diëlektrische oppervlakken ongeveer 4% van het licht.  
-Het idee hier is om lineair `Dielectric` `Metal` interpoleren tussen en kleuren met behulp van `Metalness` waarde als een factor. Als de `0.0`metaalheid is, dan afhankelijk van spiegelende zal het ofwel een donkere kleur (als spiegelende is hoog) of diffuus zal niet veranderen (als er geen spiegelbaar aanwezig is). Als metaalheid is een grote waarde, dan is de diffuse kleur zal verdwijnen in het voordeel van spiegelende kleur.
+Zoals beschreven in de sectie van de Metaaling, weer spie gelen dielectric Opper vlakken rond 4% licht.  
+Het idee hier is om lineair interpoleren tussen `Dielectric` en `Metal` kleuren met `Metalness` waarde als factor. Als de metaaling `0.0`is, is het afhankelijk van het moment dat deze een donkere kleur heeft (als reflecteel hoog is) of diffuus niet verandert (als er geen reflecterend is). Als de metaaling een grote waarde is, verdwijnt de diffuse kleur ten opzichte van de spiegel kleur.
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -154,26 +154,26 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`is berekend door de bovenstaande formule, maar het alfakanaal vereist extra berekeningen. Het FBX-formaat is vaag over transparantie en heeft vele manieren om het te definiëren. Verschillende inhoudstools gebruiken verschillende methoden. Het idee hier is om ze te verenigen in een formule. Het maakt sommige activa onjuist weergegeven als transparant, hoewel, als ze niet zijn gemaakt op een gemeenschappelijke manier.
+`AlbedoRGB`is berekend met de bovenstaande formule, maar het Alfa kanaal vereist extra berekeningen. De FBX-indeling is vague over transparantie en heeft verschillende manieren om deze te definiëren. Verschillende hulp middelen voor inhoud gebruiken verschillende methoden. Het is hier een idee om ze in één formule samen te voegen. Sommige assets worden onjuist weer gegeven als transparant, maar als ze niet op een gemeen schappelijke manier worden gemaakt.
 
-Dit wordt berekend `TransparentColor` `TransparencyFactor`aan `Opacity`de basis van :
+Dit wordt berekend op basis `TransparentColor`van `TransparencyFactor`, `Opacity`,:
 
-als `Opacity` wordt gedefinieerd, gebruik het `AlbedoAlpha`  =  `Opacity` dan direct: anders  
-als `TransparencyColor` wordt gedefinieerd, `AlbedoAlpha` dan = 1,0 - ((`TransparentColor`. Rood `TransparentColor`+ . Groen `TransparentColor`+ . Blauw) / 3.0) anders  
-als `TransparencyFactor`, `AlbedoAlpha` dan = 1,0 -`TransparencyFactor`
+Als `Opacity` is gedefinieerd, gebruikt u het vervolgens rechtstreeks `AlbedoAlpha`  =  `Opacity` : Else  
+Als `TransparencyColor` is gedefinieerd, dan `AlbedoAlpha` = 1,0-((`TransparentColor`). Rood + `TransparentColor`. Groen + `TransparentColor`. Blauw)/3,0) anders  
+If `TransparencyFactor`, then `AlbedoAlpha` = 1,0-`TransparencyFactor`
 
-De `Albedo` uiteindelijke kleur heeft vier `AlbedoRGB` kanalen, het combineren van de met de `AlbedoAlpha`.
+De uiteindelijke `Albedo` kleur heeft vier kanalen, waarbij de `AlbedoRGB` wordt gecombineerd `AlbedoAlpha`met.
 
 ### <a name="summary"></a>Samenvatting
 
-Om hier `Albedo` samen te vatten, `Diffuse`zal `Specular` zeer dicht bij het origineel, als is dicht bij nul. Anders zal het oppervlak eruit zien als een metalen oppervlak en verliest de diffuse kleur. Het oppervlak ziet er meer `ShininessExponent` gepolijst en `Specular` reflecterend als groot genoeg is en is helder. Anders zal het oppervlak er ruw uitzien en nauwelijks de omgeving weerspiegelen.
+Als `Albedo` `Specular` u hier wilt samenvatten, wordt de oorspronkelijke dichtheid in de buurt van het origineel `Diffuse`weer gegeven. Anders wordt het Opper vlak weer gegeven als een metallisch Opper vlak en verliest de diffuse kleur. Het Opper vlak ziet er mooi en reflectie uit als `ShininessExponent` het groot genoeg is en `Specular` helder is. Als dat niet het geval is, ziet u dat het Opper vlak er onveranderd en nauwelijks in de omgeving
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* De huidige formule werkt niet goed voor eenvoudige gekleurde geometrie. Als `Specular` is helder genoeg, dan zijn alle geometrieën worden reflecterende metalen oppervlakken zonder enige kleur. De tijdelijke oplossing hier `Specular` is om te verlagen tot 30% van het origineel of om de conversie-instelling [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)te gebruiken.
-* PBR-materialen zijn `Maya` onlangs `3DS Max` toegevoegd aan en content creatie tools. Ze maken gebruik van aangepaste door de gebruiker gedefinieerde black-box eigenschappen om het door te geven aan FBX. Azure Remote Rendering leest deze extra eigenschappen niet omdat ze niet zijn gedocumenteerd en de indeling closed-source is.
+* De huidige formule werkt niet goed voor een eenvoudige gekleurde geometrie. Als `Specular` dat helder genoeg is, worden alle geometrieën reflecterende metalen Opper vlakken zonder kleur. De tijdelijke oplossing is hier om `Specular` te verlagen tot 30% van de oorspronkelijke of om de conversie-instelling [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)te gebruiken.
+* PBR-materialen zijn onlangs toegevoegd `Maya` aan `3DS Max` en hulpprogram ma's voor het maken van inhoud. Ze gebruiken aangepaste, door de gebruiker gedefinieerde zwarte box-eigenschappen om deze door te geven aan FBX. Deze aanvullende eigenschappen worden niet door Azure rendering gelezen omdat deze niet zijn gedocumenteerd en de indeling is gesloten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Modelconversie](../how-tos/conversion/model-conversion.md)
-* [Overheersende materialen tijdens modelconversie](../how-tos/conversion/override-materials.md)
+* [Model conversie](../how-tos/conversion/model-conversion.md)
+* [Materialen overschrijven tijdens model conversie](../how-tos/conversion/override-materials.md)

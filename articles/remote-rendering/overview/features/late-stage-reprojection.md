@@ -1,57 +1,57 @@
 ---
-title: Late fase herprojectie
-description: Informatie over late stage reprojection en hoe deze te gebruiken.
+title: Vertraagde fase van het project
+description: Informatie over vertraagd stadium van het project en hoe u deze kunt gebruiken.
 author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680984"
 ---
-# <a name="late-stage-reprojection"></a>Late fase herprojectie
+# <a name="late-stage-reprojection"></a>Vertraagde fase van het project
 
-*Late Stage Reprojection* (LSR) is een hardwarefunctie die hologrammen helpt stabiliseren wanneer de gebruiker beweegt.
+*Reprojecteren op vertraagde fase* (lsr) is een hardware-functie waarmee u hologrammen kunt stabiliseren wanneer de gebruiker zich verplaatst.
 
-Statische modellen worden verwacht dat ze hun positie visueel behouden wanneer u zich eromheen beweegt. Als ze onstabiel lijken te zijn, kan dit gedrag wijzen op LSR-problemen. Houd er rekening mee dat extra dynamische transformaties, zoals animaties of explosieweergaven, dit gedrag kunnen maskeren.
+Statische modellen worden naar verwachting hun positie visueel behouden wanneer u deze omzeilt. Als ze Insta Biel lijken te zijn, kan dit gedrag leiden tot LSR problemen. Denk eraan dat extra dynamische trans formaties, zoals animaties of explosie weergaven, dit gedrag kunnen maskeren.
 
-U kiezen uit twee verschillende LSR-modi, namelijk **Planar LSR** of **Depth LSR.** Welke actief is, wordt bepaald door of de clientaanvraag een dieptebuffer indient.
+U kunt kiezen tussen twee verschillende LSR-modi, namelijk een **vlakke lsr** of een **diepte lsr**. Welke een actief is, wordt bepaald door de vraag of de client toepassing een diepte buffer verzendt.
 
-Beide LSR-modi verbeteren de stabiliteit van het hologram, hoewel ze hun verschillende beperkingen hebben. Begin met het proberen Diepte LSR, want het is aantoonbaar het geven van betere resultaten in de meeste gevallen.
+Beide LSR-modi verbeteren de hologram stabiliteit, maar ze hebben hun specifieke beperkingen. Begin met het proberen van diepte LSR, omdat deze weliswaar in de meeste gevallen betere resultaten oplevert.
 
-## <a name="choose-lsr-mode-in-unity"></a>Kies lsr-modus in Unity
+## <a name="choose-lsr-mode-in-unity"></a>Kies de LSR-modus in eenheid
 
-Ga in de Unity-editor naar *Bestand > Build-instellingen*. Selecteer *Player-instellingen* linksonder en controleer onder *Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality* of Depth Buffer Sharing **inschakelen** is ingeschakeld:
+In de Unity editor gaat u naar *bestand > instellingen bouwen*. Selecteer linksonder de instellingen van de *speler* en controleer vervolgens onder *Player > XR Settings > Virtual Reality Sdk's > Windows Mixed Reality* of het **delen van diepte buffer inschakelen** is ingeschakeld:
 
-![Markeren voor delen van diepte](./media/unity-depth-buffer-sharing-enabled.png)
+![Vlag voor diepte buffer delen ingeschakeld](./media/unity-depth-buffer-sharing-enabled.png)
 
-Als dit het geval is, gebruikt uw app Depth LSR, anders gebruikt het Planar LSR.
+Als dat het geval is, gebruikt uw app diepte LSR, anders wordt vlakke LSR gebruikt.
 
 ## <a name="depth-lsr"></a>Diepte LSR
 
-Als diepte LSR werkt, moet de clienttoepassing een geldige dieptebuffer leveren die alle relevante geometrie bevat waarmee u tijdens LSR rekening moet houden.
+Voor een uitgebreide LSR moet de client toepassing een geldige diepte buffer opgeven die alle relevante geometrie bevat die tijdens LSR moet worden gebruikt.
 
-Diepte LSR probeert het videoframe te stabiliseren op basis van de inhoud van de meegeleverde dieptebuffer. Als gevolg hiervan kan inhoud die er niet is weergegeven, zoals transparante objecten, niet worden aangepast door LSR en kan het instabiliteits- en herprojectieartefacten weergeven.
+Diepte LSR probeert het video frame te stabiliseren op basis van de inhoud van de opgegeven diepte buffer. Als gevolg hiervan kunnen inhoud die niet is gerenderd, zoals transparante objecten, niet worden aangepast met LSR en kunnen Instabiliteits-en reprojectie-artefacten worden weer gegeven.
 
 ## <a name="planar-lsr"></a>Vlakke LSR
 
-Planar LSR heeft geen diepte-informatie per pixel, zoals Depth LSR doet. In plaats daarvan herprojecteert het alle inhoud op basis van een vlak dat u elk frame moet opgeven.
+Vlakke LSR hebben geen diepte informatie per pixel, zoals diepte LSR wel. In plaats daarvan wordt alle inhoud opnieuw geprojecteerd op basis van een vlak dat u elk frame moet opgeven.
 
-Planar LSR herprojecteert die objecten het beste die dicht bij het geleverde vlak liggen. Hoe verder een object is, hoe instabieler het eruit ziet. Hoewel Depth LSR beter is in het opnieuw projecteren van objecten op verschillende diepten, kan Planar LSR beter werken voor inhoud die goed is uitgelijnd met een vlak.
+Bij vlakke LSR worden deze objecten het beste opnieuw geprojecteerd die dicht bij het opgegeven vlak liggen. Het verdere weggooien van een object is, hoe stabieler het wordt. Hoewel diepte LSR beter is bij het opnieuw projecteren van objecten met verschillende diepten, kan vlakke LSR beter werken voor inhoud die goed wordt uitgelijnd met een vlak.
 
-### <a name="configure-planar-lsr-in-unity"></a>Planar LSR in eenheid configureren
+### <a name="configure-planar-lsr-in-unity"></a>Vlakke LSR in unit configureren
 
-De vlakparameters zijn afgeleid van een zogenaamd *focuspunt,* waar `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`je elk frame doorheen moet geven. Zie de [Unity Focus Point API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) voor meer informatie. Als u geen focuspunt instelt, wordt er een terugval voor u gekozen. Maar die automatische terugval leidt vaak tot suboptimale resultaten.
+De para meters voor het vlak worden afgeleid van een zodanige *focus punt*, dat u elk frame `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`via moet opgeven. Zie de [API van het unit-focus punt](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) voor meer informatie. Als u geen focus punt instelt, wordt er een terugval gekozen. Automatische terugval leidt echter vaak tot het afleiden van de beste resultaten.
 
-U het focuspunt zelf berekenen, maar het kan zinvol zijn om het te baseren op het focuspunt dat is berekend door de extern renderende host. Bel `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` om dat te verkrijgen. U wordt gevraagd om een coördinaatkader te geven waarin u het focuspunt uitdrukken. In de meeste gevallen wilt u alleen `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` het resultaat van hier.
+U kunt het focus punt zelf berekenen, hoewel het zinvol is om het te baseren op het bedrag dat wordt berekend door de externe rendering-host. Aanroep `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` om die te verkrijgen. U wordt gevraagd een coördinaten frame op te geven waarin het focus punt wordt uitdrukt. In de meeste gevallen kunt u het beste het resultaat `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` hier opgeven.
 
-Meestal maken zowel de client als de host inhoud weer waarvan de andere kant zich niet bewust is, zoals UI-elementen op de client. Daarom is het zinvol om het externe focuspunt te combineren met een lokaal berekend punt.
+Normaal gesp roken geven zowel de client als de host inhoud weer waarvan de andere kant geen rekening houdt, zoals UI-elementen op de client. Daarom kan het zinvol zijn het externe focus punt te combi neren met een lokaal berekend item.
 
-De focuspunten berekend in twee opeenvolgende frames kunnen heel verschillend zijn. Gewoon met behulp van hen as-is kan leiden tot hologrammen lijken te springen rond. Om dit gedrag te voorkomen, interpoleren tussen de vorige en huidige focuspunten is raadzaam.
+De focus punten die in twee opeenvolgende frames worden berekend, kunnen heel verschillend zijn. Als u ze gewoon gebruikt, kan dit ertoe leiden dat er hologrammen worden weer gegeven. U kunt dit probleem voor komen door te interpoleren tussen de vorige en huidige focus punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Prestatiequery's aan de serverzijde](performance-queries.md)
+* [Prestatiequery's aan serverzijde](performance-queries.md)

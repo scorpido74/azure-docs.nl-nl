@@ -1,56 +1,56 @@
 ---
-title: Zelfstudie - uitvoer toevoegen aan sjabloon
-description: Voeg uitvoer toe aan uw Azure Resource Manager-sjabloon om de syntaxis te vereenvoudigen.
+title: Zelf studie-uitvoer toevoegen aan sjabloon
+description: Voeg uitvoer toe aan uw Azure Resource Manager sjabloon om de syntaxis te vereenvoudigen.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80743549"
 ---
-# <a name="tutorial-add-outputs-to-your-arm-template"></a>Zelfstudie: uitvoer toevoegen aan uw ARM-sjabloon
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>Zelf studie: uitvoer toevoegen aan uw ARM-sjabloon
 
-In deze zelfstudie leert u hoe u een waarde retourneert uit uw Azure Resource Manager-sjabloon (ARM). U gebruikt uitvoer wanneer u een waarde uit een geïmplementeerde resource nodig hebt. Deze tutorial duurt **7 minuten** om te voltooien.
+In deze zelf studie leert u hoe u een waarde uit uw Azure Resource Manager-sjabloon (ARM) kunt retour neren. U gebruikt uitvoer wanneer u een waarde van een geïmplementeerde resource nodig hebt. Het volt ooien van deze zelf studie duurt **zeven minuten** .
 
 ## <a name="prerequisites"></a>Vereisten
 
-We raden u aan de [zelfstudie over variabelen in](template-tutorial-add-variables.md)te vullen, maar dit is niet vereist.
+U wordt aangeraden de [zelf studie over variabelen](template-tutorial-add-variables.md)te volt ooien, maar dit is niet vereist.
 
-U moet beschikken over Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer en Azure PowerShell of Azure CLI. Zie [sjabloongereedschappen voor](template-tutorial-create-first-template.md#get-tools)meer informatie .
+U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-template"></a>Sjabloon bekijken
+## <a name="review-template"></a>Sjabloon controleren
 
-Aan het einde van de vorige zelfstudie had uw sjabloon de volgende JSON:
+Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
-Het implementeert een opslagaccount, maar het geeft geen informatie over het opslagaccount. Mogelijk moet u eigenschappen van een nieuwe bron vastleggen, zodat deze later beschikbaar zijn voor referentie.
+Er wordt een opslag account geïmplementeerd, maar er worden geen gegevens over het opslag account geretourneerd. Mogelijk moet u de eigenschappen van een nieuwe resource vastleggen zodat ze later beschikbaar zijn voor referentie.
 
 ## <a name="add-outputs"></a>Uitvoer toevoegen
 
-U uitvoer gebruiken om waarden uit de sjabloon terug te sturen. Het kan bijvoorbeeld handig zijn om de eindpunten voor uw nieuwe opslagaccount op te halen.
+U kunt uitvoer gebruiken om waarden te retour neren van de sjabloon. Het kan bijvoorbeeld nuttig zijn om de eind punten voor uw nieuwe opslag account op te halen.
 
-In het volgende voorbeeld wordt de wijziging in uw sjabloon benadrukt om een uitvoerwaarde toe te voegen. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
+In het volgende voor beeld wordt de wijziging in de sjabloon gemarkeerd om een uitvoer waarde toe te voegen. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
-Er zijn een aantal belangrijke items op te merken over de output waarde die u toegevoegd.
+Er zijn enkele belang rijke items die u kunt noteren over de uitvoer waarde die u hebt toegevoegd.
 
-Het type geretourneerde waarde is ingesteld op **object,** wat betekent dat een JSON-object wordt geretourneerd.
+Het type van de geretourneerde waarde wordt ingesteld op **object**, wat betekent dat er een JSON-object wordt geretourneerd.
 
-Het maakt gebruik van de [referentiefunctie](template-functions-resource.md#reference) om de runtime-status van het opslagaccount te krijgen. Als u de runtime-status van een resource wilt krijgen, geeft u de naam of id van een resource door. In dit geval gebruikt u dezelfde variabele die u hebt gebruikt om de naam van het opslagaccount te maken.
+De functie [Reference](template-functions-resource.md#reference) wordt gebruikt om de runtime status van het opslag account op te halen. Als u de runtime status van een resource wilt ophalen, geeft u de naam of ID van een resource door. In dit geval gebruikt u dezelfde variabele die u hebt gebruikt om de naam van het opslag account te maken.
 
-Ten slotte retourneert het de eigenschap **primaire eindpunten** van het opslagaccount
+Ten slotte wordt de eigenschap **primaire** van het opslag account geretourneerd
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
 U bent klaar om de sjabloon te implementeren en de geretourneerde waarde te bekijken.
 
-Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -65,7 +65,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
+Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
 
 ```azurecli
 az deployment group create \
@@ -77,7 +77,7 @@ az deployment group create \
 
 ---
 
-In de uitvoer voor de opdracht implementatie ziet u een object dat vergelijkbaar is met het volgende voorbeeld alleen als de uitvoer in JSON-indeling is:
+In de uitvoer voor de implementatie opdracht ziet u een object dat lijkt op het volgende voor beeld, alleen als de uitvoer de JSON-indeling heeft:
 
 ```json
 {
@@ -91,52 +91,52 @@ In de uitvoer voor de opdracht implementatie ziet u een object dat vergelijkbaar
 ```
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
+> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
 
-## <a name="review-your-work"></a>Bekijk uw werk
+## <a name="review-your-work"></a>Uw werk controleren
 
-Je hebt veel gedaan in de laatste zes tutorials. Laten we even de tijd nemen om te bekijken wat je hebt gedaan. U hebt een sjabloon gemaakt met parameters die eenvoudig te bieden zijn. De sjabloon is herbruikbaar in verschillende omgevingen omdat het aanpassingsmogelijkheden biedt en dynamisch de benodigde waarden creëert. Het retourneert ook informatie over het opslagaccount dat u in uw script gebruiken.
+U hebt in de laatste zes zelf studies een hoop gemaakt. Laten we even eens kijken wat u hebt gedaan. U hebt een sjabloon gemaakt met para meters die u gemakkelijk kunt opgeven. De sjabloon kan in verschillende omgevingen worden gebruikt, omdat deze kan worden aangepast en de benodigde waarden dynamisch kunnen worden gemaakt. Het retourneert ook informatie over het opslag account dat u in uw script kunt gebruiken.
 
-Laten we nu eens kijken naar de resourcegroep en de implementatiegeschiedenis.
+Nu gaan we kijken naar de resource groep en de implementatie geschiedenis.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **Resourcegroepen**in het linkermenu .
-1. Selecteer de resourcegroep die u hebt geïmplementeerd.
-1. Afhankelijk van de stappen die u hebt gezet, moet u ten minste één en misschien meerdere opslagaccounts in de resourcegroep hebben.
-1. U moet ook verschillende succesvolle implementaties in de geschiedenis hebben. Selecteer die koppeling.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **resource groepen**in het menu links.
+1. Selecteer de resource groep die u hebt geïmplementeerd.
+1. Afhankelijk van de stappen die u hebt uitgevoerd, moet u ten minste één en mogelijk meerdere opslag accounts in de resource groep hebben.
+1. U moet ook een aantal geslaagde implementaties hebben die worden weer gegeven in de geschiedenis. Selecteer deze koppeling.
 
    ![Implementaties selecteren](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Je ziet al je implementaties in de geschiedenis. Selecteer de implementatie met de naam **addoutputs**.
+1. U ziet al uw implementaties in de geschiedenis. Selecteer de implementatie met de naam **addoutputs**.
 
-   ![Implementatiegeschiedenis weergeven](./media/template-tutorial-add-outputs/show-history.png)
+   ![Implementatie geschiedenis weer geven](./media/template-tutorial-add-outputs/show-history.png)
 
-1. U de ingangen bekijken.
+1. U kunt de invoer controleren.
 
-   ![Ingangen weergeven](./media/template-tutorial-add-outputs/show-inputs.png)
+   ![Invoer weer geven](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. U de uitgangen bekijken.
+1. U kunt de uitvoer controleren.
 
-   ![Uitvoer weergeven](./media/template-tutorial-add-outputs/show-outputs.png)
+   ![Uitvoer weer geven](./media/template-tutorial-add-outputs/show-outputs.png)
 
-1. U de sjabloon bekijken.
+1. U kunt de sjabloon controleren.
 
-   ![Sjabloon weergeven](./media/template-tutorial-add-outputs/show-template.png)
+   ![Sjabloon weer geven](./media/template-tutorial-add-outputs/show-template.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-Als u nu stopt, u de resources die u hebt geïmplementeerd, opschonen door de resourcegroep te verwijderen.
+Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een retourwaarde aan de sjabloon toegevoegd. In de volgende zelfstudie leert u hoe u een sjabloon exporteert en delen van die geëxporteerde sjabloon in uw sjabloon gebruikt.
+In deze zelf studie hebt u een retour waarde aan de sjabloon toegevoegd. In de volgende zelf studie leert u hoe u een sjabloon kunt exporteren en gedeelten van de geëxporteerde sjabloon in uw sjabloon gebruikt.
 
 > [!div class="nextstepaction"]
 > [Geëxporteerde sjabloon gebruiken](template-tutorial-export-template.md)

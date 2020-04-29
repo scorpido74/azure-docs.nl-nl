@@ -1,6 +1,6 @@
 ---
 title: Workloadclassificatie
-description: Richtlijnen voor het gebruik van classificatie voor het beheren van gelijktijdigheid, belang en rekenresources voor query's in Azure Synapse Analytics.
+description: Richt lijnen voor het gebruik van classificatie voor het beheren van gelijktijdigheids-, urgentie-en reken bronnen voor query's in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,71 +12,71 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743651"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics-workloadclassificatie
+# <a name="azure-synapse-analytics-workload-classification"></a>Classificatie van Azure Synapse Analytics-workloads
 
-In dit artikel wordt het werkproces uitgelegd van het toewijzen van een workloadgroep en het belang voor binnenkomende aanvragen met Synapse SQL-groepen in Azure Synapse.
+In dit artikel wordt het classificatie proces voor de werk belasting uitgelegd van het toewijzen van een werkbelasting groep en urgentie aan inkomende aanvragen met Synapse SQL-groepen in azure Synapse.
 
 ## <a name="classification"></a>Classificatie
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
-Met workloadmanagementclassificatie kan workloadbeleid worden toegepast op aanvragen door resourceklassen en -belang toe te [wijsen.](resource-classes-for-workload-management.md#what-are-resource-classes) [importance](sql-data-warehouse-workload-importance.md)
+Met de classificatie van werkbelasting beheer kunnen werkbelasting beleid worden toegepast op aanvragen via het toewijzen van [resource klassen](resource-classes-for-workload-management.md#what-are-resource-classes) en het [belang](sql-data-warehouse-workload-importance.md).
 
-Hoewel er veel manieren zijn om workloads voor gegevensopslag te classificeren, is de eenvoudigste en meest voorkomende classificatie laden en query. U laadt gegevens met het invoegen, bijwerken en verwijderen van instructies.  U bevraagt de gegevens met behulp van selecties. Een oplossing voor gegevensopslag heeft vaak een werkbelastingsbeleid voor belastingsactiviteit, zoals het toewijzen van een hogere resourceklasse met meer resources. Er kan een ander werkbelastingbeleid worden toegepast op query's, zoals minder belang in vergelijking met laadactiviteiten.
+Hoewel er veel manieren zijn om werk belastingen voor gegevens opslag te classificeren, wordt de eenvoudigste en meest voorkomende classificatie geladen en query. U laadt gegevens met de instructies INSERT, update en DELETE.  U kunt een query uitvoeren op de gegevens met behulp van selecteren. Een oplossing voor gegevens opslag heeft vaak een werkbelasting beleid voor het laden van activiteiten, zoals het toewijzen van een hogere resource klasse met meer resources. Een ander werkbelasting beleid kan van toepassing zijn op query's, zoals lagere urgentie ten opzichte van laad activiteiten.
 
-U ook uw belastings- en queryworkloads onderclassificeren. Subclassificatie geeft u meer controle over uw workloads. Queryworkloads kunnen bijvoorbeeld bestaan uit kubusvernieuwingen, dashboardquery's of ad-hocquery's. U elk van deze queryworkloads classificeren met verschillende resourceklassen of belangrijkheidsinstellingen. Load kan ook profiteren van subclassificatie. Grote transformaties kunnen worden toegewezen aan grotere resourceklassen. Een groter belang kan worden gebruikt om ervoor te zorgen dat belangrijke verkoopgegevens worden opgeladen vóór weergegevens of een sociale gegevensfeed.
+U kunt ook de werk belasting voor laden en query's onderverdelen. Subclassificatie geeft u meer controle over uw workloads. Query werkbelastingen kunnen bijvoorbeeld bestaan uit kubus vernieuwingen, dashboard query's of ad-hoc query's. U kunt elk van deze query-workloads classificeren met verschillende bron klassen of belang rijke instellingen. Loading kan ook profiteren van subclassificatie. Grote trans formaties kunnen worden toegewezen aan grotere resource klassen. Een hogere urgentie kan worden gebruikt om ervoor te zorgen dat de gegevens van de belangrijkste omzet loader zijn vóór weer gegevens of een sociale gegevensfeed.
 
-Niet alle verklaringen zijn geclassificeerd omdat ze geen middelen vereisen of belang nodig hebben om de uitvoering te beïnvloeden.  DBCC-opdrachten, BEGIN-, COMMIT- en ROLLBACK-transactieoverzichten worden niet geclassificeerd.
+Niet alle instructies worden geclassificeerd omdat ze geen bronnen nodig hebben of belang rijk moeten zijn om de uitvoering te beïnvloeden.  DBCC-opdrachten, BEGIN-, doorvoer-en ROLLBACK-transactie overzichten worden niet geclassificeerd.
 
-## <a name="classification-process"></a>Classificatieproces
+## <a name="classification-process"></a>Classificatie proces
 
-Classificatie voor Synapse SQL-pool in Azure Synapse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waarvoor een overeenkomstige resourceklasse is toegewezen met behulp van [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). De mogelijkheid om aanvragen te karakteriseren buiten een login op een resourceklasse is beperkt met deze mogelijkheid. Er is nu een rijkere classificatiemethode beschikbaar met de syntaxis VAN DE [KLASSEKLASSE 'WERKBELASTING MAKEN'.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Met deze syntaxis kunnen gebruikers van de Synapse SQL-groep belang `workload_group` toewijzen en hoeveel systeembronnen via de parameter aan een aanvraag worden toegewezen.
+Classificatie voor Synapse SQL-groep in azure Synapse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waaraan een bijbehorende resource klasse is toegewezen met behulp van [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). De mogelijkheid om aanvragen te kenmerken buiten een aanmelding bij een resource klasse is beperkt met deze mogelijkheid. Een rijkere methode voor classificatie is nu beschikbaar met de [classificatie syntaxis CREATE WORKLOAD](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Met deze syntaxis kunnen gebruikers van Synapse SQL-groep prioriteit toewijzen en hoeveel systeem bronnen worden toegewezen aan een aanvraag via de `workload_group` para meter.
 
 > [!NOTE]
-> De classificatie wordt per aanvraag geëvalueerd. Meerdere aanvragen in één sessie kunnen anders worden geclassificeerd.
+> De classificatie wordt per aanvraag geëvalueerd. Meerdere aanvragen in één sessie kunnen op verschillende manieren worden geclassificeerd.
 
-## <a name="classification-weighting"></a>Indelingsweging
+## <a name="classification-weighting"></a>Classificatie weging
 
-Als onderdeel van het classificatieproces is de weging aanwezig om te bepalen welke werkbelastinggroep is toegewezen.  De weging gaat als volgt:
+Als onderdeel van het classificatie proces is weging van kracht om te bepalen welke werkbelasting groep is toegewezen.  De weging gaat als volgt:
 
-|Classifier Parameter |Gewicht   |
+|Classifier-para meter |Gewicht   |
 |---------------------|---------|
-|LIDNAAM:GEBRUIKER      |64       |
-|NAAM VAN HET LID:ROL      |32       |
+|LIDNAAM: GEBRUIKER      |64       |
+|LIDNAAM: ROL      |32       |
 |WLM_LABEL            |16       |
 |WLM_CONTEXT          |8        |
 |START_TIME/END_TIME  |4        |
 
-De `membername` parameter is verplicht.  Als de opgegeven lidnaam echter een databasegebruiker is in plaats van een databaserol, is de weging voor de gebruiker hoger en wordt die classificatie dus gekozen.
+De `membername` para meter is verplicht.  Als de opgegeven lidnaam echter een database gebruiker in plaats van een databaserol is, is het gewicht van de gebruiker hoger en dus de classificatie gekozen.
 
-Als een gebruiker lid is van meerdere rollen met verschillende resourceklassen die zijn toegewezen of gematcht in meerdere classificaties, krijgt de gebruiker de hoogste toewijzing van de resourceklasse.  Dit gedrag komt overeen met het bestaande toewijzingsgedrag van resourceklassen.
+Als een gebruiker lid is van meerdere rollen met verschillende resource klassen die zijn toegewezen aan of overeenkomen met meerdere classificaties, krijgt de gebruiker de hoogste toewijzing van resource klassen.  Dit gedrag is consistent met het bestaande gedrag van de toewijzing van resource klassen.
 
-## <a name="system-classifiers"></a>Systeemclassificaties
+## <a name="system-classifiers"></a>Systeem classificaties
 
-Workloadclassificatie heeft classificatie van systeemworkloadsclassificaties. De classificaties van de systeemclassificaties brengen bestaande lidmaatschappen van resourceklassen in kaart met resourceklassetoewijzingen met normaal belang. Systeemclassificaties kunnen niet worden afgezet. Als u systeemclassificaties wilt weergeven, u de onderstaande query uitvoeren:
+Classificatie van werk belasting heeft classificaties van systeemwerk belasting. De classificaties van het systeem wijzen bestaande lidmaatschappen van resource klassen toe aan resource toewijzingen van resource klassen met normale urgentie. Systeem classificaties kunnen niet worden verwijderd. Als u systeem classificaties wilt weer geven, kunt u de onderstaande query uitvoeren:
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <= 12
 ```
 
-## <a name="mixing-resource-class-assignments-with-classifiers"></a>Toewijzingen van resourceklassen mengen met classificaties
+## <a name="mixing-resource-class-assignments-with-classifiers"></a>Resource klassen toewijzingen combi neren met classificaties
 
-Systeemclassificaties die namens u zijn gemaakt, bieden een eenvoudig pad om te migreren naar workloadclassificatie. Als u toewijzingen van resourceklassen met classificatieprioriteit gebruikt, kan dit leiden tot een verkeerde classificatie wanneer u nieuwe classificaties met belang begint te maken.
+Systeem classificaties die namens u zijn gemaakt, bieden een eenvoudig pad om te migreren naar de classificatie van werk belastingen. Met de toewijzings prioriteit van resource klassen kunt u leiden tot een misclassificatie wanneer u begint met het maken van nieuwe classificaties die belang rijk zijn.
 
 Denkt u zich het volgende scenario eens in:
 
-- In een bestaand gegevensmagazijn is een DBAUser van de databasegebruiker toegewezen aan de rol van de grotere resourceklasse. De toewijzing van resourceklasse is gedaan met sp_addrolemember.
-- Het datawarehouse wordt nu bijgewerkt met workloadmanagement.
-- Om de nieuwe classificatiesyntaxis te testen, heeft de databaserol DBARole (waarvan DBAUser lid is), een classificatie gemaakt om ze in kaart te brengen naar mediumrc en hoog belang.
-- Wanneer DBAUser zich aanmeldt en een query uitvoert, wordt de query toegewezen aan biggerc. Omdat een gebruiker voorrang heeft op een rollidmaatschap.
+- Een bestaand Data Warehouse heeft een database gebruiker DBAUser toegewezen aan de resource klasse largerc. De toewijzing van de resource klasse is uitgevoerd met sp_addrolemember.
+- Het Data Warehouse wordt nu bijgewerkt met werkbelasting beheer.
+- Als u de nieuwe classificatie syntaxis wilt testen, heeft de databaserol DBARole (waarvan DBAUser lid is), een classificatie gemaakt waarmee ze worden toegewezen aan mediumrc en hoge urgentie.
+- Wanneer DBAUser zich aanmeldt en een query uitvoert, wordt de query toegewezen aan largerc. Omdat een gebruiker voor rang heeft op een rollidmaatschap.
 
-Om foutikale problemen te vereenvoudigen, raden we u aan toewijzingen voor resourceklassen te verwijderen terwijl u workloadclassificaties maakt.  De onderstaande code retourneert bestaande lidmaatschappen van resourceklassen.  Voer [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit voor elke lidnaam die is geretourneerd uit de bijbehorende resourceklasse.
+Om het oplossen van problemen met een fout te vereenvoudigen, raden we u aan om resource klasse-roltoewijzingen te verwijderen tijdens het maken van de werk belasting classificaties.  De onderstaande code retourneert bestaande lidmaatschappen van resource klassen.  Voer [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit voor elke lidnaam die wordt geretourneerd door de bijbehorende resource klasse.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -92,7 +92,7 @@ sp_droprolemember '[Resource Class]', membername
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [KLASSER (Transact-SQL) maken voor](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)meer informatie over het maken van een classificatie.  
-- Zie de Quickstart voor het maken van een classificatie voor werkbelasting [Maak een classificatie voor werkbelasting](quickstart-create-a-workload-classifier-tsql.md).
-- Bekijk de how-to-artikelen om [het belang van workloads](sql-data-warehouse-how-to-configure-workload-importance.md) te configureren en hoe [u Workload Management beheren en bewaken.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
-- Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en het toegewezen belang weer te geven.
+- Zie de [classificatie werk belasting maken (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over het maken van een classificatie.  
+- Zie de Snelstartgids voor het maken van een classificatie van werk belastingen [een classificatie van werk belasting maken](quickstart-create-a-workload-classifier-tsql.md).
+- Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en de prioriteit weer te geven.

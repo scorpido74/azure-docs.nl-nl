@@ -1,6 +1,6 @@
 ---
-title: Resourceklassen voor werkbelastingbeheer
-description: Richtlijnen voor het gebruik van resourceklassen voor het beheren van gelijktijdigheid en rekenresources voor query's in Azure Synapse Analytics.
+title: Resource klassen voor workload Management
+description: Richt lijnen voor het gebruik van resource klassen voor het beheren van gelijktijdigheids-en reken resources voor query's in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,125 +12,125 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743261"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Workloadbeheer met resourceklassen in Azure Synapse Analytics
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Werkbelasting beheer met resource klassen in azure Synapse Analytics
 
-Richtlijnen voor het gebruik van resourceklassen voor het beheren van geheugen en gelijktijdigheid voor Synapse SQL-poolquery's in Azure Synapse.  
+Richt lijnen voor het gebruik van resource klassen voor het beheren van geheugen en gelijktijdigheid voor Synapse SQL-pool query's in azure Synapse.  
 
-## <a name="what-are-resource-classes"></a>Wat zijn resourceklassen
+## <a name="what-are-resource-classes"></a>Wat zijn resource klassen
 
-De prestatiecapaciteit van een query wordt bepaald door de resourceklasse van de gebruiker.  Resourceklassen zijn vooraf bepaalde resourcelimieten in de Synapse SQL-groep die rekenresources en gelijktijdigheid voor query-uitvoering regelen. Resourceklassen kunnen u helpen resources voor uw query's te configureren door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de rekenbronnen die aan elke query zijn toegewezen.  Er is een afweging tussen geheugen en gelijktijdigheid.
+De prestatie capaciteit van een query wordt bepaald door de resource klasse van de gebruiker.  Resource klassen zijn vooraf gedefinieerde resource limieten in Synapse SQL-pool die de reken resources en gelijktijdigheid voor het uitvoeren van query's regelen. Resource klassen kunnen u helpen bij het configureren van resources voor uw query's door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de reken resources die zijn toegewezen aan elke query.  Er is sprake van een afweging tussen geheugen en gelijktijdigheid.
 
-- Kleinere resourceklassen verminderen het maximale geheugen per query, maar verhogen de gelijktijdigheid.
-- Grotere resourceklassen verhogen het maximale geheugen per query, maar verminderen de gelijktijdigheid.
+- Kleinere resource klassen verminderen het maximale geheugen per query, maar verhogen gelijktijdigheid.
+- Grotere bron klassen verhogen het maximale geheugen per query, maar verminderen gelijktijdig.
 
-Er zijn twee soorten resourceklassen:
+Er zijn twee typen resource klassen:
 
-- Statische resourcesklassen, die zeer geschikt zijn voor meer gelijktijdigheid op een vaste grootte van de gegevensset.
-- Dynamische resourceklassen, die zeer geschikt zijn voor gegevenssets die in omvang toenemen en betere prestaties nodig hebben naarmate het serviceniveau wordt opgeschaald.
+- Statische bronnen klassen, die goed zijn afgestemd op de gelijktijdige gelijktijdigheid van een gegevensverzamelings grootte die is opgelost.
+- Dynamische bron klassen, die goed zijn afgestemd op gegevens sets die groter worden en die de prestaties van het service niveau verhogen.
 
-Resourceklassen gebruiken gelijktijdige sleuven om het verbruik van resources te meten.  [Gelijktijdige slots](#concurrency-slots) worden later in dit artikel toegelicht.
+Resource klassen gebruiken gelijktijdigheids sleuven om het Resource verbruik te meten.  [Gelijktijdigheids sleuven](#concurrency-slots) worden verderop in dit artikel beschreven.
 
-- Zie [Geheugen- en gelijktijdigheidslimieten](memory-concurrency-limits.md)als u het resourcegebruik voor de resourceklassen wilt weergeven.
-- Als u de resourceklasse wilt aanpassen, u de query onder een andere gebruiker uitvoeren of het lidmaatschap [van de resourceklasse van de huidige gebruiker wijzigen.](#change-a-users-resource-class)
+- Zie [geheugen en gelijktijdigheids limieten](memory-concurrency-limits.md)voor het weer geven van het resource gebruik voor de resource klassen.
+- Als u de resource klasse wilt aanpassen, kunt u de query uitvoeren onder een andere gebruiker of [het lidmaatschap van de resource klasse van de huidige gebruiker wijzigen](#change-a-users-resource-class) .
 
-### <a name="static-resource-classes"></a>Statische resourceklassen
+### <a name="static-resource-classes"></a>Statische resource klassen
 
-Statische resourceklassen wijzen dezelfde hoeveelheid geheugen toe, ongeacht het huidige prestatieniveau, dat wordt gemeten in [gegevensmagazijneenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md). Aangezien query's dezelfde geheugentoewijzing krijgen, ongeacht [scaling out the data warehouse](quickstart-scale-compute-portal.md) het prestatieniveau, kunnen meer query's worden uitgevoerd binnen een resourceklasse.  Statische resourceklassen zijn ideaal als het gegevensvolume bekend en constant is.
+Statische resource klassen wijzen dezelfde hoeveelheid geheugen toe, ongeacht het huidige prestatie niveau, dat wordt gemeten in [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md). Aangezien query's dezelfde geheugen toewijzing krijgen, ongeacht het prestatie niveau, kunnen er met [het uitschalen van het Data Warehouse](quickstart-scale-compute-portal.md) meer query's worden uitgevoerd binnen een resource klasse.  Statische bron klassen zijn ideaal als het gegevens volume een bekende en constante is.
 
-De statische resourceklassen worden geïmplementeerd met deze vooraf gedefinieerde databaserollen:
+De statische resource klassen worden geïmplementeerd met de volgende vooraf gedefinieerde database rollen:
 
 - staticrc10
 - staticrc20
 - staticrc30
 - staticrc40
 - staticrc50
-- staticrc60
+- Bron staticrc60
 - staticrc70
 - staticrc80
 
-### <a name="dynamic-resource-classes"></a>Dynamische resourceklassen
+### <a name="dynamic-resource-classes"></a>Dynamische resource klassen
 
-Dynamische resourceklassen wijzen een variabele hoeveelheid geheugen toe, afhankelijk van het huidige serviceniveau. Hoewel statische resourceklassen gunstig zijn voor hogere gelijktijdigheid en statische gegevensvolumes, zijn dynamische resourceklassen beter geschikt voor een groeiende of variabele hoeveelheid gegevens.  Wanneer u opschaalt naar een groter serviceniveau, krijgen uw query's automatisch meer geheugen.  
+Dynamische resource klassen wijzen een variabele hoeveelheid geheugen toe, afhankelijk van het huidige service niveau. Statische bron klassen zijn nuttig voor een hogere gelijktijdigheid en statische gegevens volumes, maar dynamische resource klassen zijn beter geschikt voor een groeiende of variabele hoeveelheid gegevens.  Wanneer u omhoog schaalt naar een groter service niveau, krijgen uw query's automatisch meer geheugen.  
 
-De dynamische resourceklassen worden geïmplementeerd met deze vooraf gedefinieerde databaserollen:
+De dynamische resource klassen worden geïmplementeerd met de volgende vooraf gedefinieerde database rollen:
 
-- smallrc smallrc
-- mediumrc (mediumrc)
-- largerc biggerc biggerc biggerc
-- xlargerc xlargerc xlargerc
+- smallrc
+- mediumrc
+- largerc
+- xlargerc
 
-De geheugentoewijzing voor elke resourceklasse is als volgt.
+De geheugen toewijzing voor elke resource klasse is als volgt.
 
-| Serviceniveau  | smallrc smallrc           | mediumrc (mediumrc)               | largerc biggerc biggerc biggerc                | xlargerc xlargerc xlargerc               |
+| Service niveau  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
-| DW200c         | 12.5%             | 12.5%                  | 22%                    | 70%                    |
-| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
-| DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
-| DW500c         | 5%                | 10%                    | 22%                    | 70%                    |
-| DW1000c naar<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+| DW200c         | 12,5%             | 12,5%                  | 21                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 21                    | 70%                    |
+| DW400c         | 6,25%             | 10%                    | 21                    | 70%                    |
+| DW500c         | 5%                | 10%                    | 21                    | 70%                    |
+| DW1000c naar<br> DW30000c | 3%       | 10%                    | 21                    | 70%                    |
 
-### <a name="default-resource-class"></a>Standaardresourceklasse
+### <a name="default-resource-class"></a>Standaard resource klasse
 
-Standaard is elke gebruiker lid van de dynamische resourceklasse **smallrc**.
+Standaard is elke gebruiker lid van de dynamische resource klasse **smallrc**.
 
-De resourceklasse van de servicebeheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De servicebeheerder is de gebruiker die tijdens het inrichtingsproces is gemaakt.  De servicebeheerder in deze context is de login die is opgegeven voor de "Server admin login" bij het maken van een nieuwe Synapse SQL-pool met een nieuwe server.
+De resource klasse van de service beheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De service beheerder is de gebruiker die tijdens het inrichtings proces is gemaakt.  De service beheerder in deze context is de aanmeldings naam die is opgegeven voor de aanmelding van de server beheerder bij het maken van een nieuwe Synapse SQL-groep met een nieuwe server.
 
 > [!NOTE]
-> Gebruikers of groepen die zijn gedefinieerd als Active Directory-beheerder, zijn ook servicebeheerders.
+> Gebruikers of groepen die als Active Directory beheerder zijn gedefinieerd, zijn ook service beheerders.
 >
 >
 
-## <a name="resource-class-operations"></a>Resourceklassebewerkingen
+## <a name="resource-class-operations"></a>Bewerkingen voor de resource klasse
 
-Resourceklassen zijn ontworpen om de prestaties voor gegevensbeheer- en manipulatieactiviteiten te verbeteren. Complexe query's kunnen ook profiteren van het uitvoeren onder een grote resourceklasse. Queryprestaties voor grote joins en sorteert kunnen bijvoorbeeld verbeteren wanneer de resourceklasse groot genoeg is om de query in het geheugen uit te voeren.
+Resource klassen zijn ontworpen om de prestaties te verbeteren voor gegevens beheer en manipulatie activiteiten. Complexe query's kunnen ook profiteren van het uitvoeren van een grote resource klasse. Query prestaties voor grote samen voegingen en sorteringen kunnen bijvoorbeeld worden verbeterd wanneer de resource klasse groot genoeg is om de query uit te voeren in het geheugen.
 
-### <a name="operations-governed-by-resource-classes"></a>Bewerkingen die worden geregeld door resourceklassen
+### <a name="operations-governed-by-resource-classes"></a>Bewerkingen die zijn onderhevig aan resource klassen
 
-Deze bewerkingen worden geregeld door resourceklassen:
+Deze bewerkingen zijn onderworpen aan resource klassen:
 
 - INVOEGEN-SELECTEREN, BIJWERKEN, VERWIJDEREN
-- SELECT (bij het opvragen van gebruikerstabellen)
-- INDEX WIJZIGEN - HERBOUWEN OF REORGANISEREN
-- TABEL OPNIEUW WIJZIGEN
+- SELECTEREN (bij het opvragen van gebruikers tabellen)
+- ALTER INDEX-Rebuild of reorganiseren
+- ALTER TABLE REBUILD
 - CREATE INDEX
-- GECLUSTERDE COLUMNSTORE-INDEX MAKEN
-- TABEL MAKEN ALS SELECTEREN (CTAS)
+- EEN GECLUSTERDE COLUMN STORE-INDEX MAKEN
+- CREATE TABLE ALS SELECTEREN (CTAS)
 - Gegevens laden
-- Gegevensverplaatsingsoperaties uitgevoerd door de Data Movement Service (DMS)
+- Gegevens verplaatsings bewerkingen die worden uitgevoerd door de gegevens verplaatsings service (DMS)
 
 > [!NOTE]  
-> SELECT-instructies over dynamische beheerweergaven (DMVs) of andere systeemweergaven worden niet bepaald door een van de gelijktijdigheidslimieten. U het systeem controleren, ongeacht het aantal query's dat erop wordt uitgevoerd.
+> SELECT-instructies op dynamische beheer weergaven (Dmv's) of andere systeem weergaven vallen niet onder een van de gelijktijdigheids limieten. U kunt het systeem bewaken, ongeacht het aantal query's dat erop wordt uitgevoerd.
 >
 >
 
-### <a name="operations-not-governed-by-resource-classes"></a>Bewerkingen die niet worden geregeld door resourceklassen
+### <a name="operations-not-governed-by-resource-classes"></a>Bewerkingen die niet onder resource klassen vallen
 
-Sommige query's worden altijd uitgevoerd in de smallrc-resourceklasse, ook al is de gebruiker lid van een grotere resourceklasse. Deze vrijgestelde query's tellen niet mee voor de gelijktijdigheidslimiet. Als de gelijktijdigheidslimiet bijvoorbeeld 16 is, kunnen veel gebruikers uit systeemweergaven worden geselecteerd zonder dat dit gevolgen heeft voor de beschikbare gelijktijdigheidssleuven.
+Sommige query's worden altijd uitgevoerd in de smallrc-resource klasse, zelfs als de gebruiker lid is van een grotere resource klasse. Deze vrijgestelde query's tellen niet mee voor de limiet voor gelijktijdigheid. Als de limiet voor gelijktijdigheid 16 is, kunnen veel gebruikers bijvoorbeeld selecteren uit de systeem weergaven zonder dat dit van invloed is op de beschik bare gelijktijdigheids sleuven.
 
-De volgende instructies zijn vrijgesteld van resourceklassen en worden altijd uitgevoerd in smallrc:
+De volgende instructies zijn vrijgesteld van resource klassen en worden altijd uitgevoerd in smallrc:
 
-- TABEL MAKEN of NEERZETTEN
-- WIJZIGING TABEL ... PARTITIE OVERSCHAKELEN, SPLITSEN of SAMENVOEGEN
-- INDEX WIJZIGEN UITSCHAKELEN
+- TABEL maken of verwijderen
+- ALTER TABLE... PARTITIE SCHA KELEN, splitsen of samen VOEGen
+- ALTER INDEX DISABLE
 - DROP INDEX
-- STATISTIEKEN MAKEN, BIJWERKEN OF DROP
-- Tabel Afkappen
-- TOESTEMMING WIJZIGEN
+- STATISTIEKEN maken, bijwerken of verwijderen
+- TRUNCATE TABLE
+- AUTORISATIE WIJZIGEN
 - AANMELDING MAKEN
-- GEBRUIKER MAKEN, WIJZIGEN of NEERZETTEN
-- PROCEDURE MAKEN, WIJZIGEN of VALLEN
-- WEERGAVE MAKEN of NEERZETTEN
+- GEBRUIKER maken, wijzigen of verwijderen
+- PROCEDURE maken, wijzigen of verwijderen
+- WEER gave maken of verwijderen
 - WAARDEN INVOEGEN
-- SELECT uit systeemweergaven en DMVs
-- Uitleggen
-- Dbcc
+- SELECTEREN uit systeem weergaven en Dmv's
+- BESPREKEN
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW
@@ -139,18 +139,18 @@ Removed as these two are not confirmed / supported under SQL DW
 - REDISTRIBUTE
 -->
 
-## <a name="concurrency-slots"></a>Gelijktijdigheidsleuven
+## <a name="concurrency-slots"></a>Gelijktijdigheids sleuven
 
-Gelijktijdige sleuven zijn een handige manier om de beschikbare bronnen voor query-uitvoering bij te houden. Ze zijn als tickets die u zitplaatsen te reserveren bij een concert te reserveren kopen omdat zitplaatsen beperkt is. Het totale aantal gelijktijdige sleuven per datawarehouse wordt bepaald door het serviceniveau. Voordat een query kan worden uitgevoerd, moet deze voldoende gelijktijdigheidssleuven kunnen reserveren. Wanneer een query is voltooid, worden de gelijktijdige sleuven vrijgegeven.  
+Gelijktijdigheids sleuven zijn een handige manier om de resources bij te houden die beschikbaar zijn voor het uitvoeren van query's. Ze zijn vergelijkbaar met tickets die u koopt om stoelen op een concert te reserveren, omdat het aantal stoelen beperkt is. Het totale aantal gelijktijdigheids sleuven per Data Warehouse wordt bepaald door het service niveau. Voordat een query kan worden uitgevoerd, moet deze voldoende gelijktijdigheids sleuven kunnen reserveren. Wanneer een query is voltooid, worden de gelijktijdigheids sleuven vrijgegeven.  
 
-- Een query met 10 gelijktijdige sleuven heeft toegang tot 5 keer meer rekenresources dan een query die wordt uitgevoerd met 2 gelijktijdige sleuven.
-- Als voor elke query 10 gelijktijdige sleuven nodig zijn en er 40 gelijktijdige sleuven zijn, kunnen slechts 4 query's gelijktijdig worden uitgevoerd.
+- Een query die wordt uitgevoerd met 10 gelijktijdigheids sleuven, kan toegang krijgen tot vijf maal meer reken bronnen dan een query die wordt uitgevoerd met 2 gelijktijdigheids sleuven.
+- Als voor elke query 10 gelijktijdigheids sleuven zijn vereist en er 40 gelijktijdigheids sleuven zijn, kunnen er maar 4 query's gelijktijdig worden uitgevoerd.
 
-Alleen resourcebeheerquery's verbruiken gelijktijdige sleuven. Systeemquery's en sommige triviale query's verbruiken geen slots. Het exacte aantal verbruikte gelijktijdige sleuven wordt bepaald door de resourceklasse van de query.
+Alleen resource-beheerste query's gebruiken gelijktijdigheids sleuven. Systeem query's en sommige triviale query's gebruiken geen sleuven. Het exacte aantal verbruikte gelijktijdigheids sleuven wordt bepaald door de resource klasse van de query.
 
-## <a name="view-the-resource-classes"></a>De resourceklassen weergeven
+## <a name="view-the-resource-classes"></a>De resource klassen weer geven
 
-Resourceklassen worden geïmplementeerd als vooraf gedefinieerde databaserollen. Er zijn twee soorten resourceklassen: dynamisch en statisch. Als u een lijst met resourceklassen wilt weergeven, gebruikt u de volgende query:
+Resource klassen worden geïmplementeerd als vooraf gedefinieerde database rollen. Er zijn twee typen resource klassen: dynamisch en statisch. Als u een lijst met resource klassen wilt weer geven, gebruikt u de volgende query:
 
 ```sql
 SELECT name
@@ -158,96 +158,96 @@ FROM   sys.database_principals
 WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 ```
 
-## <a name="change-a-users-resource-class"></a>De resourceklasse van een gebruiker wijzigen
+## <a name="change-a-users-resource-class"></a>De resource klasse van een gebruiker wijzigen
 
-Resourceklassen worden geïmplementeerd door gebruikers toe te wijzen aan databaserollen. Wanneer een gebruiker een query uitvoert, wordt de query uitgevoerd met de resourceklasse van de gebruiker. Als een gebruiker bijvoorbeeld lid is van de statische rc10-databaserol, worden de query's uitgevoerd met kleine hoeveelheden geheugen. Als een databasegebruiker lid is van de xlargerc- of staticrc80-databaserollen, worden de query's uitgevoerd met grote hoeveelheden geheugen.
+Resource klassen worden geïmplementeerd door gebruikers toe te wijzen aan database rollen. Wanneer een gebruiker een query uitvoert, wordt de query uitgevoerd met de resource klasse van de gebruiker. Als een gebruiker bijvoorbeeld lid is van de databaserol staticrc10, worden de query's uitgevoerd met kleine hoeveel heden geheugen. Als een database gebruiker lid is van de xlargerc-of staticrc80-database rollen, worden de query's uitgevoerd met grote hoeveel heden geheugen.
 
-Als u de resourceklasse van een gebruiker wilt vergroten, gebruikt u [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gebruiker toe te voegen aan een databaserol van een grote resourceklasse.  De onderstaande code voegt een gebruiker toe aan de grotere databaserol.  Elke aanvraag krijgt 22% van het systeemgeheugen.
+Als u de resource klasse van een gebruiker wilt verhogen, gebruikt u [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gebruiker toe te voegen aan een databaserol van een grote resource klasse.  De onderstaande code voegt een gebruiker toe aan de databaserol largerc.  Elke aanvraag ontvangt 22% van het systeem geheugen.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Als u de resourceklasse wilt verlagen, gebruikt u [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Als 'loaduser' geen lid of andere resourceklassen is, gaan ze naar de standaardklasse smallrc resource met een geheugensubsidie van 3%.  
+Gebruik [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)om de resource klasse te verlagen.  Als ' loaduser ' geen lid of andere resource klassen is, gaan ze naar de standaard smallrc-resource klasse met een geheugen toekenning van 3%.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
 ```
 
-## <a name="resource-class-precedence"></a>Prioriteit resourceklasse
+## <a name="resource-class-precedence"></a>Prioriteit van resource klasse
 
-Gebruikers kunnen lid zijn van meerdere resourceklassen. Wanneer een gebruiker tot meer dan één resourceklasse behoort:
+Gebruikers kunnen lid zijn van meerdere resource klassen. Wanneer een gebruiker deel uitmaakt van meer dan één resource klasse:
 
-- Dynamische resourceklassen hebben voorrang op statische resourceklassen. Als een gebruiker bijvoorbeeld lid is van zowel mediumrc(dynamic) als staticrc80 (statisch), worden query's uitgevoerd met mediumrc.
-- Grotere resourceklassen hebben voorrang op kleinere resourceklassen. Als een gebruiker bijvoorbeeld lid is van mediumrc en biggerc, worden query's uitgevoerd met biggerc. Evenzo, als een gebruiker lid is van zowel staticrc20 als statirc80, worden query's uitgevoerd met statische resources allocatie rc80.
+- Dynamische resource klassen hebben voor rang op statische resource klassen. Als een gebruiker bijvoorbeeld lid is van zowel mediumrc (dynamisch) als staticrc80 (static), worden query's uitgevoerd met mediumrc.
+- Grotere bron klassen hebben voor rang op kleinere resource klassen. Als een gebruiker bijvoorbeeld lid is van mediumrc en largerc, worden query's uitgevoerd met largerc. Als een gebruiker lid is van zowel staticrc20 als statirc80, worden er ook query's uitgevoerd met staticrc80-resource toewijzingen.
 
 ## <a name="recommendations"></a>Aanbevelingen
 
 >[!NOTE]
->Overweeg gebruik te maken van workloadmanagementmogelijkheden[(workload isolation,](sql-data-warehouse-workload-isolation.md) [classificatie](sql-data-warehouse-workload-classification.md) en [belang)](sql-data-warehouse-workload-importance.md)voor meer controle over uw werkbelasting en voorspelbare prestaties.  
+>Overweeg het beheer van de werk belasting te benutten ([isolatie van werk belasting](sql-data-warehouse-workload-isolation.md), [classificatie](sql-data-warehouse-workload-classification.md) en [urgentie](sql-data-warehouse-workload-importance.md)) voor meer controle over uw werk belasting en voorspel bare prestaties.  
 >
 >
 
-We raden u aan een gebruiker te maken die is toegewijd aan het uitvoeren van een specifiek type query of laadbewerking. Geef die gebruiker een permanente resourceklasse in plaats van de resourceklasse regelmatig te wijzigen. Statische resourceklassen bieden een grotere algemene controle over de werkbelasting, dus we raden u aan statische resourceklassen te gebruiken voordat dynamische resourceklassen worden overwogen.
+We raden u aan een gebruiker te maken die is toegewezen voor het uitvoeren van een specifiek type query of het laden van een bewerking. Geef deze gebruiker een permanente resource klasse in plaats van de resource klasse regel matig te wijzigen. Statische resource klassen bieden meer algemene controle over de werk belasting, dus we raden aan gebruik te maken van statische resource klassen voordat u dynamische resource klassen overweegt.
 
-### <a name="resource-classes-for-load-users"></a>Resourceklassen voor gebruikers van laden
+### <a name="resource-classes-for-load-users"></a>Resource klassen voor het laden van gebruikers
 
-`CREATE TABLE`gebruikt standaard geclusterde kolomarchiefindexen. Het comprimeren van gegevens in een kolomarchiefindex is een geheugenintensieve bewerking en geheugendruk kan de indexkwaliteit verminderen. Geheugendruk kan leiden tot het nodig hebben van een hogere resourceklasse bij het laden van gegevens. Als u ervoor wilt zorgen dat ladingen voldoende geheugen hebben, u een gebruiker maken die is aangewezen voor het uitvoeren van ladingen en die gebruiker aan een hogere resourceklasse toewijzen.
+`CREATE TABLE`maakt standaard gebruik van geclusterde column Store-indexen. Het comprimeren van gegevens naar een column store-index is een geheugenintensieve bewerking en de geheugen druk kan de index kwaliteit verminderen. Geheugen druk kan ertoe leiden dat een hogere resource klasse nodig is voor het laden van gegevens. Om ervoor te zorgen dat er voldoende geheugen beschikbaar is, kunt u een gebruiker maken die is aangewezen voor het uitvoeren van belastingen en die gebruiker toewijzen aan een hogere resource klasse.
 
-Het geheugen dat nodig is om belastingen efficiënt te verwerken, is afhankelijk van de aard van de geladen tabel en de grootte van de gegevens. Zie De kwaliteit van [de rijgroep maximaliseren](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over geheugenvereisten.
+Het geheugen dat nodig is om de belasting efficiënt te verwerken, is afhankelijk van de aard van de geladen tabel en de grootte van de gegevens. Zie [maximale Rijg roep-kwaliteit](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over geheugen vereisten.
 
-Zodra u de geheugenvereiste hebt bepaald, kiest u of u de gebruiker van de belasting wilt toewijzen aan een statische of dynamische resourceklasse.
+Wanneer u de geheugen vereiste hebt bepaald, kiest u of u de gebruiker laden wilt toewijzen aan een statische of dynamische bron klasse.
 
-- Gebruik een statische resourceklasse wanneer de vereisten voor tabelgeheugen binnen een specifiek bereik vallen. Ladingen worden uitgevoerd met het juiste geheugen. Wanneer u het gegevensmagazijn schaalt, hebben de ladingen niet meer geheugen nodig. Door een statische resourceklasse te gebruiken, blijven de geheugentoewijzingen constant. Deze consistentie bespaart het geheugen en zorgt ervoor dat meer query's gelijktijdig kunnen worden uitgevoerd. We raden aan dat nieuwe oplossingen eerst de statische resourceklassen gebruiken, omdat deze meer controle bieden.
-- Gebruik een dynamische resourceklasse wanneer de vereisten voor tabelgeheugen sterk variëren. Voor belastingen is mogelijk meer geheugen nodig dan het huidige DWU- of cDWU-niveau biedt. Als u het gegevensmagazijn schaalt, wordt meer geheugen toegevoegd aan laadbewerkingen, waardoor ladingen sneller kunnen worden uitgevoerd.
+- Gebruik een statische resource klasse wanneer tabel geheugen vereisten binnen een specifiek bereik vallen. Hiermee wordt de belasting uitgevoerd met het juiste geheugen. Wanneer u het Data Warehouse schaalt, heeft de belasting geen meer geheugen nodig. Door gebruik te maken van een statische resource klasse blijven de geheugen toewijzingen constant. Met deze consistentie wordt geheugen bespaard en kunnen meer query's gelijktijdig worden uitgevoerd. We raden aan dat nieuwe oplossingen eerst gebruikmaken van de statische resource klassen, aangezien deze meer controle bieden.
+- Gebruik een dynamische resource klasse wanneer de geheugen vereisten van de tabel aanzienlijk verschillen. De belasting vergt mogelijk meer geheugen dan het huidige DWU-of cDWU-niveau biedt. Wanneer het Data Warehouse wordt geschaald, wordt er meer geheugen toegevoegd voor het laden van bewerkingen, waardoor de belasting sneller kan worden uitgevoerd.
 
-### <a name="resource-classes-for-queries"></a>Resourceklassen voor query's
+### <a name="resource-classes-for-queries"></a>Resource klassen voor query's
 
-Sommige query's zijn rekenintensief en andere niet.  
+Sommige query's zijn reken intensief en andere niet.  
 
-- Kies een dynamische resourceklasse wanneer query's complex zijn, maar geen hoge gelijktijdigheid nodig hebben.  Het genereren van dagelijkse of wekelijkse rapporten is bijvoorbeeld af en toe een behoefte aan resources. Als de rapporten grote hoeveelheden gegevens verwerken, biedt het schalen van het gegevensmagazijn meer geheugen naar de bestaande resourceklasse van de gebruiker.
-- Kies een statische resourceklasse wanneer de resourceverwachtingen gedurende de dag variëren. Een statische resourceklasse werkt bijvoorbeeld goed wanneer het gegevensmagazijn door veel mensen wordt opgevraagd. Bij het schalen van het gegevensmagazijn verandert de hoeveelheid geheugen die aan de gebruiker is toegewezen, niet. Hierdoor kunnen meer query's parallel op het systeem worden uitgevoerd.
+- Kies een dynamische resource klasse als query's complex zijn, maar geen hoge gelijktijdigheid nodig hebben.  Het genereren van dagelijkse of wekelijkse rapporten is bijvoorbeeld nood zakelijk voor resources. Als de rapporten grote hoeveel heden gegevens verwerken, biedt het schalen van het Data Warehouse meer geheugen voor de bestaande resource klasse van de gebruiker.
+- Kies een statische resource klasse wanneer de resource verwachtingen de hele dag variëren. Een statische resource klasse werkt bijvoorbeeld goed wanneer het Data Warehouse door veel mensen wordt doorzocht. Bij het schalen van het Data Warehouse wordt de hoeveelheid geheugen die aan de gebruiker is toegewezen, niet gewijzigd. Daarom kunnen meer query's parallel op het systeem worden uitgevoerd.
 
-De juiste geheugensubsidies zijn afhankelijk van vele factoren, zoals de hoeveelheid opgevraagde gegevens, de aard van de tabelschema's en verschillende joins-, select- en groepspredicaten. In het algemeen, toewijzing van meer geheugen kan query's sneller te voltooien, maar vermindert de totale gelijktijdigheid. Als gelijktijdigheid geen probleem is, schaadt overtoewijzing van geheugen de doorvoer niet.
+De juiste geheugen subsidies zijn afhankelijk van een groot aantal factoren, zoals de hoeveelheid gegevens die wordt opgevraagd, de aard van de tabel schema's en verschillende samen voegingen, Select en Group predikaten. Over het algemeen kunt u met het toewijzen van meer geheugen query's sneller uitvoeren, maar vermindert u de totale gelijktijdigheid. Als gelijktijdigheid geen probleem is, heeft het toewijzen van geheugen geen schade aan door voer.
 
-Als u de prestaties wilt afstemmen, gebruikt u verschillende resourceklassen. De volgende sectie geeft een opgeslagen procedure die u helpt bij het achterhalen van de beste resourceklasse.
+Gebruik verschillende resource klassen om prestaties af te stemmen. In de volgende sectie vindt u een opgeslagen procedure waarmee u de beste bron klasse kunt opwaarderen.
 
-## <a name="example-code-for-finding-the-best-resource-class"></a>Voorbeeldcode voor het vinden van de beste resourceklasse
+## <a name="example-code-for-finding-the-best-resource-class"></a>Voorbeeld code voor het zoeken naar de beste resource klasse
 
-U de volgende opgegeven opgeslagen procedure gebruiken om concurrency en geheugensubsidie per resourceklasse op een bepaalde SLO en de beste resourceklasse voor geheugenintensieve CCI-bewerkingen op niet-gepartitioneerde CCI-tabel in een bepaalde resourceklasse te achterhalen:
+U kunt de volgende opgeslagen procedure gebruiken voor het afrekenen van gelijktijdigheid en geheugen toekenning per resource klasse op een bepaalde SLO en de beste bron klasse voor CCI-bewerkingen op basis van een niet-gepartitioneerde CCI-tabel in een bepaalde resource klasse:
 
-Hier is het doel van deze opgeslagen procedure:
+Dit is het doel van deze opgeslagen procedure:
 
-1. De gelijktijdigheid en geheugensubsidie per resourceklasse op een bepaalde SLO bekijken. De gebruiker moet NULL opgeven voor zowel schema als tabelnaam zoals in dit voorbeeld wordt weergegeven.  
-2. De beste resourceklasse voor de geheugenintensieve CCI-bewerkingen (laden, kopieertabel, herbouwindex, enz.) op niet-gepartitioneerde CCI-tabel in een bepaalde resourceklasse weergeven. De opgeslagen proc maakt gebruik van tabelschema om de vereiste geheugensubsidie te achterhalen.
+1. Om de gelijktijdigheids-en geheugen toekenning per resource klasse op een bepaalde SLO te bekijken. De gebruiker moet NULL voor schema en TableName opgeven, zoals wordt weer gegeven in dit voor beeld.  
+2. Voor een overzicht van de beste resource klasse voor de geheugenintensieve bewerkingen (laden, tabel kopiëren, index opnieuw samen stellen, enzovoort) voor een niet-gepartitioneerde CCI-tabel in een bepaalde resource klasse. De opgeslagen procedure maakt gebruik van het tabel schema om de vereiste geheugen toekenning te bepalen.
 
-### <a name="dependencies--restrictions"></a>Afhankelijkheden & beperkingen
+### <a name="dependencies--restrictions"></a>Beperkingen voor het & van afhankelijkheden
 
-- Deze opgeslagen procedure is niet ontworpen om de geheugenvereiste voor een partitie-cci-tabel te berekenen.
-- Deze opgeslagen procedure houdt geen rekening met geheugenvereisten voor het SELECT-gedeelte van CTAS/INSERT-SELECT en gaat ervan uit dat het een SELECT is.
-- Deze opgeslagen procedure maakt gebruik van een tijdelijke tabel, die beschikbaar is in de sessie waar deze opgeslagen procedure is gemaakt.
-- Deze opgeslagen procedure is afhankelijk van het huidige aanbod (bijvoorbeeld hardwareconfiguratie, DMS config), en als een van die wijzigingen verandert, werkt deze opgeslagen proc niet goed.  
-- Deze opgeslagen procedure is afhankelijk van bestaande gelijktijdige limiet aanbiedingen en als deze veranderen dan is deze opgeslagen procedure niet correct zal werken.  
-- Deze opgeslagen procedure is afhankelijk van bestaande resourceklasseaanbiedingen en als deze worden gewijzigd, werkt deze opgeslagen procedure niet goed.  
+- Deze opgeslagen procedure is niet ontworpen voor het berekenen van de geheugen vereiste voor een gepartitioneerde CCI-tabel.
+- Voor deze opgeslagen procedure worden geen geheugen vereisten in rekening gebracht voor het SELECT-gedeelte van CTAS/INSERT-SELECT en wordt ervan uitgegaan dat het een SELECT is.
+- Deze opgeslagen procedure maakt gebruik van een tijdelijke tabel, die beschikbaar is in de sessie waarin deze opgeslagen procedure is gemaakt.
+- Deze opgeslagen procedure is afhankelijk van de huidige aanbiedingen (bijvoorbeeld hardwareconfiguratie, DMS-configuratie) en als een van die wijzigingen, werkt deze opgeslagen proc niet goed.  
+- Deze opgeslagen procedure is afhankelijk van bestaande gelijktijdigheids limieten. als deze wijziging wordt toegepast, werkt deze opgeslagen procedure niet goed.  
+- Deze opgeslagen procedure is afhankelijk van bestaande resource klasse-aanbiedingen en als deze wijziging wordt toegepast, werkt deze opgeslagen procedure niet goed.  
 
 >[!NOTE]  
->Als u geen uitvoer krijgt na het uitvoeren van opgeslagen procedure met verstrekte parameters, dan kunnen er twee gevallen zijn.
+>Als u geen uitvoer krijgt na het uitvoeren van een opgeslagen procedure met opgegeven para meters, kunnen er twee gevallen zijn.
 >
->1. Een DW-parameter bevat een ongeldige SLO-waarde
->2. Er is ook geen overeenkomende resourceklasse voor de CCI-bewerking op de tabel.
+>1. De para meter DW bevat een ongeldige SLO-waarde
+>2. Of er is geen overeenkomende resource klasse voor de bewerking CCI in de tabel.
 >
->Bij DW100c is bijvoorbeeld de hoogste geheugensubsidie beschikbaar 1 GB en als het tabelschema breed genoeg is om de vereiste van 1 GB te overschrijden.
+>Zo is bij DW100c de hoogste beschik bare geheugen toekenning 1 GB en als het tabel schema breed genoeg is voor het overschrijden van de vereiste van 1 GB.
 
-### <a name="usage-example"></a>Voorbeeld van gebruik
+### <a name="usage-example"></a>Voor beeld van gebruik
 
 Syntaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:Geef een NULL-parameter op om de huidige DWU uit de DW DB te halen of om ondersteunde DWU's te voorzien in de vorm van 'DW100c'
-2. @SCHEMA_NAME:Een schemanaam van de tabel opgeven
-3. @TABLE_NAME:Geef een tabelnaam van de interesse op
+1. @DWU:Geef een NULL-para meter op om de huidige DWU te extra heren uit de DW DB of geef een ondersteund DWU op in de vorm ' DW100c '
+2. @SCHEMA_NAME:Geef een schema naam van de tabel op
+3. @TABLE_NAME:Geef een tabel naam op voor de interesse
 
-Voorbeelden van het uitvoeren van deze opgeslagen proc:
+Voor beelden van deze opgeslagen procedure:
 
 ```sql
 EXEC dbo.prc_workload_management_by_DWU 'DW2000c', 'dbo', 'Table1';  
@@ -256,10 +256,10 @@ EXEC dbo.prc_workload_management_by_DWU 'DW6000c', NULL, NULL;
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
 
-Met de volgende instructie wordt tabel1 gemaakt die in de voorgaande voorbeelden wordt gebruikt.
+Met de volgende instructie maakt u Tabel1 die in de voor gaande voor beelden wordt gebruikt.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedures
+### <a name="stored-procedure-definition"></a>Definitie van opgeslagen procedure
 
 ```sql
 -------------------------------------------------------------------------------
@@ -592,4 +592,4 @@ GO
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een database beveiligen in SQL Analytics](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van databasegebruikers en beveiliging. Zie [Geheugenoptimalisaties voor compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)van kolomarchief voor meer informatie over hoe grotere resourceklassen de kwaliteit van de geclusterde kolomarchiefindex kunnen verbeteren.
+Zie [een data base in SQL Analytics beveiligen](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [geheugen optimalisaties voor column Store-compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.

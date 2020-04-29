@@ -1,19 +1,19 @@
 ---
-title: Referentie van import- en exportgegevens - QnA Maker
-description: Begrijpen hoe de typen URL's worden gebruikt om QnA-paren te importeren en te maken.
+title: Gegevens importeren en exporteren-QnA Maker
+description: Begrijpen hoe de typen Url's worden gebruikt voor het importeren en maken van QnA-paren.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804240"
 ---
-# <a name="import-and-export-data-reference"></a>Referentie van gegevens importeren en exporteren
+# <a name="import-and-export-data-reference"></a>Gegevens verwijzing importeren en exporteren
 
-Bekijk deze import- en exportreferentie om de beste resultaten te krijgen voor uw kennisbank back-up, opslag en vervanging.
+Bekijk deze import-en export verwijzing om de beste resultaten te krijgen voor uw back-up, opslag en vervanging van uw Knowledge Base.
 
-## <a name="import-and-export-knowledge-base"></a>Kennisbank importeren en exporteren
+## <a name="import-and-export-knowledge-base"></a>De Knowledge Base importeren en exporteren
 
-**TSV- en XLS-bestanden**, afkomstig van geëxporteerde kennisbases, kunnen alleen worden gebruikt door de bestanden te importeren vanaf de pagina **Instellingen** in de QnA Maker-portal. Ze kunnen niet worden gebruikt als gegevensbronnen tijdens het maken van kennisbasis of via de functie **+ Bestand toevoegen** of + URL **toevoegen** op de pagina **Instellingen.**
+**TSV-en xls-bestanden**, van geëxporteerde kennis grondslagen, kunnen alleen worden gebruikt door het importeren van de bestanden van de pagina **instellingen** in de QnA Maker Portal. Ze kunnen niet worden gebruikt als gegevens bronnen tijdens het maken van een Knowledge Base of vanuit het onderdeel **bestand toevoegen** of **+ URL** toevoegen op de pagina **instellingen** .

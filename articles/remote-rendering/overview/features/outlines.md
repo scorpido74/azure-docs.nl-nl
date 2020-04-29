@@ -1,38 +1,38 @@
 ---
-title: Overzichtsweergave
-description: Legt uit hoe u het renderen van selectiecontouren maken
+title: Contourweergave
+description: Uitleg over het weer geven van selectie overzichten
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 8b52dbe8cd12e51c42677ce37acbd57ad551ec50
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680828"
 ---
-# <a name="outline-rendering"></a>Overzichtsweergave
+# <a name="outline-rendering"></a>Contourweergave
 
-Geselecteerde objecten kunnen visueel worden gemarkeerd door overzichtsweergave toe te voegen via de [component Hiërarchische statusoverschrijving](../../overview/features/override-hierarchical-state.md). In dit hoofdstuk wordt uitgelegd hoe globale parameters voor overzichtsweergave worden gewijzigd via de client-API.
+Geselecteerde objecten kunnen visueel worden gemarkeerd door een overzichts weergave toe te voegen via het [onderdeel hiërarchische status onderdrukking](../../overview/features/override-hierarchical-state.md). In dit hoofd stuk wordt uitgelegd hoe globale para meters voor overzichts rendering worden gewijzigd via de client-API.
 
-Overzichtseigenschappen zijn een globale instelling. Alle objecten die overzichtsweergave gebruiken, gebruiken dezelfde instelling - het is niet mogelijk om een omtrekkleur per object te gebruiken.
+Overzichts eigenschappen zijn een globale instelling. Alle objecten die gebruikmaken van de overzichts weergave, gebruiken dezelfde instelling. het is niet mogelijk om een contour kleur per object te gebruiken.
 
-## <a name="parameters-for-outlinesettings"></a>Parameters voor`OutlineSettings`
+## <a name="parameters-for-outlinesettings"></a>Para meters voor`OutlineSettings`
 
-Klasse `OutlineSettings` bevat de instellingen met betrekking tot globale overzichtseigenschappen. Het stelt de volgende leden bloot:
+Class `OutlineSettings` bevat de instellingen met betrekking tot algemene overzichts eigenschappen. De volgende leden worden beschikbaar gemaakt:
 
 | Parameter      | Type    | Beschrijving                                             |
 |----------------|---------|---------------------------------------------------------|
-| `Color`          | Color4Ub (kleur4Ub) | De kleur die wordt gebruikt voor het tekenen van de omtrek. Het alfagedeelte wordt genegeerd.         |
-| `PulseRateHz`    | float   | De snelheid waarmee de omtrek per seconde oscilleert|
-| `PulseIntensity` | float   | De intensiteit van het pulseffect. Moet tussen 0,0 voor geen pulseren de 1.0 voor volledige pulseren. Intensiteit stelt impliciet de minimale dekking van `MinOpacity = 1.0 - PulseIntensity`de omtrek in als . |
+| `Color`          | Color4Ub | De kleur die wordt gebruikt voor het tekenen van het overzicht. Het gedeelte alpha wordt genegeerd.         |
+| `PulseRateHz`    | float   | De snelheid waarmee de overzichts trillingen per seconde|
+| `PulseIntensity` | float   | De intensiteit van het contour Pulse-effect. Moet tussen 0,0 en geen Pulse en 1,0 voor Full Pulse zijn. Met intensiteit wordt impliciet de minimale dekking van het overzicht ingesteld `MinOpacity = 1.0 - PulseIntensity`als. |
 
-![Overzichten](./media/outlines.png) Het effect `color` van het wijzigen van de parameter `pulseIntensity` van geel (links) naar magenta (midden) en van 0 naar 0,8 (rechts).
+![Geeft](./media/outlines.png) een overzicht van het effect van het `color` wijzigen van de para meter van geel (links) naar magenta `pulseIntensity` (midden) en van 0 tot 0,8 (rechts).
 
 ## <a name="example"></a>Voorbeeld
 
-De volgende code toont een voorbeeld voor het instellen van overzichtsparameters via de API:
+De volgende code toont een voor beeld van het instellen van overzichts parameters via de API:
 
 ``` cs
 void SetOutlineParameters(AzureSession session)
@@ -46,8 +46,8 @@ void SetOutlineParameters(AzureSession session)
 
 ## <a name="performance"></a>Prestaties
 
-Overzichtsweergave kan een aanzienlijke invloed hebben op de renderingprestaties. Deze impact varieert op basis van de ruimtelijke relatie tussen geselecteerde en niet-geselecteerde objecten voor een bepaald frame.
+Het weer geven van overzichten kan een grote invloed hebben op de weergave prestaties. Deze impact is afhankelijk van de ruimte-relatie tussen geselecteerde en niet-geselecteerde objecten voor een bepaald frame.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Component hiërarchische status overschrijven](../../overview/features/override-hierarchical-state.md)
+* [Overschrijvings onderdeel hiërarchische status](../../overview/features/override-hierarchical-state.md)

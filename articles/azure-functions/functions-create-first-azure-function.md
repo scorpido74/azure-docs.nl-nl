@@ -6,27 +6,27 @@ ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754859"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Uw eerste functie maken in Azure Portal
 
-Met Azure Functions u uw code uitvoeren in een serverloze omgeving zonder eerst een virtuele machine (VM) te hoeven maken of een webtoepassing te publiceren. In dit artikel leert u hoe u Azure-functies gebruikt om een HTTP-geactiveerde functie 'hallo wereld' te maken in de Azure-portal.
+Met Azure Functions kunt u uw code in een serverloze omgeving uitvoeren zonder dat u eerst een virtuele machine (VM) hoeft te maken of een webtoepassing moet publiceren. In dit artikel leert u hoe u Azure Functions kunt gebruiken om een ' Hello World ' HTTP-geactiveerde functie in de Azure Portal te maken.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Als je een C#-ontwikkelaar bent, kun je overwegen [om je eerste functie te maken in Visual Studio 2019 in](functions-create-your-first-function-visual-studio.md) plaats van in de portal. 
+Als u C#-ontwikkel aars bent, kunt u [uw eerste functie maken in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) in plaats van in de portal. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com) met uw Azure-account.
+Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app u functies groeperen als een logische eenheid voor eenvoudiger beheer, implementatie, schalen en delen van resources.
+U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -34,11 +34,11 @@ Maak vervolgens een functie in de nieuwe functie-app.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Een door HTTP geactiveerde functie maken
 
-1. Vouw de nieuwe functie-app uit, selecteer **+** de knop naast **Functies,** kies **In-portal**en selecteer **Doorgaan**.
+1. Vouw uw nieuwe functie-app uit, **+** Selecteer de knop naast **functies**, kies **in-portal**en selecteer vervolgens **door gaan**.
 
-    ![Functies snelstart voor het kiezen van een platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Functies Quick start voor het kiezen van een platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
-1. Kies **WebHook + API**en selecteer Vervolgens **Maken**.
+1. Kies **webhook + API**en selecteer vervolgens **maken**.
 
     ![De Quick Start van Azure Functions in Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
@@ -48,13 +48,13 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Selecteer in uw nieuwe functie **</> URL** van de functie ophalen rechtsboven. 
+1. Selecteer in de nieuwe functie in de rechter bovenhoek **</> functie-URL ophalen** . 
 
-1. Selecteer in het dialoogvenster **URL van** de functie ophalen de **standaardinstelling (functiesleutel)** in de vervolgkeuzelijst en selecteer **Kopiëren**. 
+1. In de **functie-URL ophalen** in het dialoog venster, selecteer **standaard (functie toets)** in de vervolg keuzelijst en selecteer vervolgens **kopiëren**. 
 
     ![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de waarde `&name=<your_name>` van de querytekenreeks toe aan het einde van deze URL en druk op Enter om de aanvraag uit te voeren. 
+1. Plak de URL van de functie in de adresbalk van uw browser. Voeg de query reeks waarde `&name=<your_name>` toe aan het einde van deze URL en druk op ENTER om de aanvraag uit te voeren. 
 
     Het volgende voorbeeld toont het antwoord in de browser:
 
@@ -62,7 +62,7 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
     De aanvraag-URL bevat een sleutel die standaard is vereist, en waarmee u via HTTP toegang hebt tot de functie.
 
-1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de traceringsuitvoer van de vorige uitvoering wilt zien, gaat u terug naar uw functie in de portal en selecteert u de pijl onder aan het scherm om de **logboeken**uit te vouwen.
+1. Wanneer uw functie wordt uitgevoerd, wordt traceringsinformatie naar de logboeken geschreven. Als u de tracerings uitvoer van de vorige uitvoering wilt zien, gaat u terug naar de functie in de portal en selecteert u de pijl aan de onderkant van het scherm om de **Logboeken**uit te vouwen.
 
    ![De viewer voor functielogboeken in Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
 

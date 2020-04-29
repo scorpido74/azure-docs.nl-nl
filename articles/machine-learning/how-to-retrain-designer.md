@@ -1,7 +1,7 @@
 ---
-title: Modellen opnieuw trainen met Azure Machine Learning-ontwerper (voorbeeld)
+title: Modellen opnieuw trainen met behulp van Azure Machine Learning Designer (preview)
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het omscholen van modellen met gepubliceerde pijplijnen in Azure Machine Learning designer (preview).
+description: Meer informatie over het opnieuw trainen van modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer (preview).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,120 +10,120 @@ ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
 ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80810391"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In dit artikel leert u hoe u Azure Machine Learning-ontwerper gebruiken om een machine learning-model om te scholen. U gebruikt gepubliceerde pijplijnen om uw workflow te automatiseren en parameters in te stellen om uw model te trainen op nieuwe gegevens. 
+In dit artikel leert u hoe u Azure Machine Learning Designer kunt gebruiken om een machine learning model opnieuw te trainen. U gebruikt gepubliceerde pijp lijnen om uw werk stroom te automatiseren en para meters in te stellen voor het trainen van uw model op nieuwe gegevens. 
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Train een machine learning model.
-> * Maak een parameter voor pijplijnen.
-> * Publiceer uw trainingspijplijn.
-> * Train uw model om met nieuwe parameters.
+> * Een pijplijn parameter maken.
+> * Publiceer uw trainings pijplijn.
+> * Train uw model opnieuw met nieuwe para meters.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure Machine Learning-werkruimte met de Enterprise SKU.
-* Een gegevensset die toegankelijk is voor de ontwerper. Dit kan een van de volgende:
-   * Een geregistreerde azure machine learning-gegevensset
+* Een Azure Machine Learning-werk ruimte met de Enter prise-SKU.
+* Een gegevensset die toegankelijk is voor de ontwerper. Dit kan een van de volgende zijn:
+   * Een Azure Machine Learning geregistreerde gegevensset
     
-     **-or-**
-   * Een gegevensbestand dat is opgeslagen in een Azure Machine Learning-gegevensarchief.
+     **of**
+   * Een gegevens bestand dat is opgeslagen in een Azure Machine Learning Data Store.
    
-Zie [Gegevens importeren in de ontwerper voor](how-to-designer-import-data.md)informatie over gegevenstoegang met behulp van de ontwerper.
+Zie [gegevens importeren in de ontwerp functie](how-to-designer-import-data.md)voor meer informatie over gegevens toegang met behulp van de ontwerp functie.
 
-Dit artikel gaat er ook van uit dat u basiskennis hebt van het bouwen van pijpleidingen in de ontwerper. Voor een begeleide inleiding, voltooi de [tutorial](tutorial-designer-automobile-price-train-score.md). 
+In dit artikel wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van pijp lijnen in de ontwerp functie. Voor een begeleide Inleiding voltooit u de [zelf studie](tutorial-designer-automobile-price-train-score.md). 
 
-### <a name="sample-pipeline"></a>Voorbeeldpijplijn
+### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 
-De pijplijn die in dit artikel wordt gebruikt, is een gewijzigde versie van [Voorbeeld 3: Inkomensvoorspelling](samples-designer.md#classification-samples). De pijplijn gebruikt de module [Gegevens importeren](algorithm-module-reference/import-data.md) in plaats van de voorbeeldgegevensset om u te laten zien hoe u modellen trainen met uw eigen gegevens.
+De pijp lijn die in dit artikel wordt gebruikt, is een gewijzigde versie van voor [Beeld 3: inkomen voor spelling](samples-designer.md#classification-samples). De pijp lijn gebruikt de module [gegevens importeren](algorithm-module-reference/import-data.md) in plaats van de voor beeld-gegevensset om te laten zien hoe u modellen traint met uw eigen gegevens.
 
-![Schermafbeelding van de gewijzigde voorbeeldpijplijn met een vak waarin de module Gegevens importeren wordt gemarkeerd](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![Scherm opname van de aangepaste voorbeeld pijplijn met een vak waarin de module import data is gemarkeerd](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
-## <a name="create-a-pipeline-parameter"></a>Een parameter voor pijplijnmaken
+## <a name="create-a-pipeline-parameter"></a>Een pijplijn parameter maken
 
-Maak pijplijnparameters om variabelen dynamisch in te stellen bij uitvoering. In dit voorbeeld wijzigt u het trainingsgegevenspad van een vaste waarde naar een parameter, zodat u uw model omscholen op verschillende gegevens.
+Maak pijplijn parameters om variabelen dynamisch in runtime in te stellen. Voor dit voor beeld wijzigt u het pad van de trainings gegevens van een vaste waarde naar een para meter, zodat u uw model op verschillende gegevens kunt trainen.
 
-1. Selecteer de module **Gegevens importeren.**
+1. Selecteer de module **gegevens importeren** .
 
     > [!NOTE]
-    > In dit voorbeeld wordt de module Gegevens importeren gebruikt om toegang te krijgen tot gegevens in een geregistreerd gegevensarchief. U echter vergelijkbare stappen volgen als u alternatieve gegevenstoegangspatronen gebruikt.
+    > In dit voor beeld wordt de module gegevens importeren gebruikt om toegang te krijgen tot gegevens in een geregistreerd Data Store. U kunt vergelijk bare stappen volgen als u alternatieve patronen voor gegevens toegang gebruikt.
 
-1. Selecteer in het detailvenster van de module rechts van het canvas de gegevensbron.
+1. Selecteer uw gegevens bron in het detail venster van de module, rechts van het canvas.
 
-1. Voer het pad naar uw gegevens in. U ook **Pad bladeren** selecteren om door de bestandsstructuur te bladeren. 
+1. Geef het pad op naar uw gegevens. U kunt ook **Bladeren naar pad** selecteren om door de bestands structuur te bladeren. 
 
-1. Muis over het veld **Pad** en selecteer de ellipsen boven het veld **Pad** die worden weergegeven.
+1. Mouseover het veld **pad** en selecteer het beletsel teken boven het veld met het **pad** dat wordt weer gegeven.
 
-    ![Schermafbeelding van het maken van een pijplijnparameter](media/how-to-retrain-designer/add-pipeline-parameter.png)
+    ![Scherm afbeelding die laat zien hoe u een pijplijn parameter maakt](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. Selecteer **Toevoegen aan pijplijnparameter**.
+1. Selecteer **toevoegen aan pijplijn parameter**.
 
-1. Geef een parameternaam en een standaardwaarde op.
+1. Geef een parameter naam en een standaard waarde op.
 
    > [!NOTE]
-   > U de pijplijnparameters inspecteren en bewerken door het tandwielpictogram **Instellingen** naast de titel van uw pijplijnconcept te selecteren. 
+   > U kunt de pijplijn parameters inspecteren en bewerken door het tandwiel pictogram **instellingen** naast de titel van uw pijp lijn concept te selecteren. 
 
 1. Selecteer **Opslaan**.
 
-1. Verzend de pijplijnrun.
+1. Verzend de pijplijn uitvoering.
 
 ## <a name="find-a-trained-model"></a>Een getraind model zoeken
 
-De ontwerper slaat alle pijplijnuitvoer, inclusief getrainde modellen, op in het standaardopslagaccount voor werkruimtes. U hebt ook rechtstreeks toegang tot getrainde modellen in de ontwerper:
+De ontwerp functie slaat alle pijplijn uitvoer, inclusief getrainde modellen, op in het standaard opslag account voor de werk ruimte. U kunt getrainde modellen ook rechtstreeks openen in de ontwerp functie:
 
-1. Wacht tot de pijplijn is voltooid.
+1. Wacht totdat de pijp lijn is uitgevoerd.
 1. Selecteer de module **Train Model**.
-1. Selecteer in het deelvenster moduledetails rechts van het canvas de optie **Uitvoer + logboeken**.
-1. U uw model vinden in **Andere uitgangen,** samen met logboeken uitvoeren.
-1. U ook het uitvoerpictogram **Weergeven** selecteren. Vanaf hier u de instructie in het dialoogvenster volgen om rechtstreeks naar uw gegevensarchief te navigeren. 
+1. Selecteer in het detail venster van de module, rechts van het canvas, **uitvoer en logboeken**.
+1. U kunt uw model vinden in **andere uitvoer** samen met uitvoerings Logboeken.
+1. U kunt ook het pictogram **uitvoer weer geven** selecteren. Hier kunt u de instructie in het dialoog venster volgen om rechtstreeks naar uw gegevens opslag te gaan. 
 
-![Schermafbeelding van het downloaden van het getrainde model](./media/how-to-retrain-designer/trained-model-view-output.png)
+![Scherm afbeelding die laat zien hoe het getrainde model kan worden gedownload](./media/how-to-retrain-designer/trained-model-view-output.png)
 
-## <a name="publish-a-training-pipeline"></a>Een trainingspijplijn publiceren
+## <a name="publish-a-training-pipeline"></a>Een trainings pijplijn publiceren
 
-Publiceer een pijplijn naar een pijplijneindpunt om uw pijplijnen in de toekomst eenvoudig opnieuw te gebruiken. Met een eindpunt voor pijplijnwordt een REST-eindpunt om in de toekomst een pijplijn aan te roepen. In dit voorbeeld u met uw pijplijneindpunt uw pijplijn opnieuw gebruiken om een model om te scholen op verschillende gegevens.
+Publiceer een pijp lijn naar een pijp lijn-eind punt om uw pijp lijnen in de toekomst eenvoudig te hergebruiken. Een pijplijn eindpunt maakt een REST-eind punt om in de toekomst pijp lijn aan te roepen. In dit voor beeld kunt u met het eind punt van de pijp lijn de pijp lijn opnieuw gebruiken om een model op verschillende gegevens te trainen.
 
-1. Selecteer **Publiceren** boven het ontwerpcanvas.
-1. Selecteer of maak een eindpunt van de pijplijn.
+1. Selecteer boven het Designing-canvas **publiceren** .
+1. Selecteer of maak een pijplijn eindpunt.
 
    > [!NOTE]
-   > U meerdere pijplijnen publiceren naar één eindpunt. Elke pijplijn in een bepaald eindpunt krijgt een versienummer, dat u opgeven wanneer u het eindpunt van de pijplijn aanroept.
+   > U kunt meerdere pijp lijnen publiceren naar een enkel eind punt. Elke pijp lijn in een bepaald eind punt krijgt een versie nummer, dat u kunt opgeven wanneer u het eind punt van de pijp lijn aanroept.
 
-1. Selecteer **Publiceren**.
+1. Selecteer **publiceren**.
 
-## <a name="retrain-your-model"></a>Uw model omscholen
+## <a name="retrain-your-model"></a>Uw model opnieuw trainen
 
-Nu u een gepubliceerde trainingspijplijn hebt, u deze gebruiken om uw model om te scholen op nieuwe gegevens. U runs indienen vanaf een pijplijneindpunt vanuit de werkruimte van de studio of programmatisch.
+Nu u een gepubliceerde trainings pijplijn hebt, kunt u deze gebruiken om uw model op nieuwe gegevens te trainen. U kunt vanuit de studio-werk ruimte of via een programma uitvoeringen vanuit een pijplijn eindpunt verzenden.
 
-### <a name="submit-runs-by-using-the-designer"></a>Runs verzenden met behulp van de ontwerper
+### <a name="submit-runs-by-using-the-designer"></a>Uitvoeringen verzenden met behulp van de ontwerp functie
 
-Voer de volgende stappen uit om een geparameteriseerd eindpunt van de pijplijn van de ontwerper in te dienen:
+Voer de volgende stappen uit om een uit te voeren hulp programma voor het uitvoeren van een verwerkings punt uit de ontwerp functie te verzenden:
 
-1. Ga naar de pagina **Eindpunten** in uw werkruimte in uw studio.
-1. Selecteer het tabblad **Eindpunten van pijplijn.** Selecteer vervolgens het eindpunt van de pijplijn.
-1. Selecteer het tabblad **Gepubliceerde pijplijnen.** Selecteer vervolgens de pijplijnversie die u wilt uitvoeren.
+1. Ga naar de pagina **eind punten** in uw studio-werk ruimte.
+1. Selecteer het tabblad **pijplijn eindpunten** . Selecteer vervolgens het eind punt van de pijp lijn.
+1. Selecteer het tabblad **gepubliceerde pijp lijnen** . Selecteer vervolgens de pijplijn versie die u wilt uitvoeren.
 1. Selecteer **Indienen**.
-1. In het dialoogvenster Instellen u de parameterswaarden voor de run opgeven. Werk in dit voorbeeld het gegevenspad bij om uw model te trainen met behulp van een niet-Amerikaanse gegevensset.
+1. In het dialoog venster Setup kunt u de parameter waarden voor de run opgeven. Voor dit voor beeld werkt u het gegevenspad bij om uw model te trainen met een niet-Amerikaanse gegevensset.
 
-![Schermafbeelding van het instellen van een parameterpijplijn in de ontwerper](./media/how-to-retrain-designer/published-pipeline-run.png)
+![Scherm afbeelding die laat zien hoe u een door para meters uitgestelde pijplijn uitvoering kunt instellen in de ontwerp functie](./media/how-to-retrain-designer/published-pipeline-run.png)
 
-### <a name="submit-runs-by-using-code"></a>Voert uitvoeringen verzenden met behulp van code
+### <a name="submit-runs-by-using-code"></a>Uitvoeringen verzenden met behulp van code
 
-U vindt het REST-eindpunt van een gepubliceerde pijplijn in het overzichtspaneel. Door het eindpunt aan te roepen, u de gepubliceerde pijplijn opnieuw trainen.
+U kunt het REST-eind punt van een gepubliceerde pijp lijn vinden in het deel venster Overzicht. Als u het eind punt aanroept, kunt u de gepubliceerde pijp lijn opnieuw trainen.
 
-Om een REST-gesprek te voeren, hebt u een OAuth 2.0-verificatiekop van het type OAuth 2.0 nodig. Zie [Een Azure Machine Learning-pijplijn maken voor batchscores voor](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)informatie over het instellen van verificatie op uw werkruimte en het maken van een parameterpunt rest.
+Als u een REST-aanroep wilt uitvoeren, hebt u een OAuth 2,0 Bearer-type verificatie-header nodig. Zie voor meer informatie over het instellen van verificatie voor uw werk ruimte en het maken van een geparametriseerde REST-aanroep een [Azure machine learning pijp lijn bouwen voor batch scores](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een parameterpunt voor trainingspijplijn maakt met behulp van de ontwerper.
+In dit artikel hebt u geleerd hoe u een gepara meter trainings pijplijn-eind punt maakt met behulp van de ontwerp functie.
 
-Voor een volledige walkthrough van hoe u een model implementeren om voorspellingen te doen, raadpleegt u de [ontwerp-zelfstudie](tutorial-designer-automobile-price-train-score.md) om een regressiemodel te trainen en te implementeren.
+Voor een volledig overzicht van hoe u een model kunt implementeren voor het maken van voor spellingen, raadpleegt u de [zelf studie over ontwerpen](tutorial-designer-automobile-price-train-score.md) voor het trainen en implementeren van een regressie model.

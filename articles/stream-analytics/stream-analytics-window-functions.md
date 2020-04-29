@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot azure stream analytics-vensterfuncties
-description: In dit artikel worden vier windowing-functies beschreven (tuimelen, springen, schuiven, sessie) die worden gebruikt in Azure Stream Analytics-taken.
+title: Inleiding tot Azure Stream Analytics-venster functies
+description: In dit artikel worden vier venster functies (tumblingvenstertriggers, verspringen, verschuiving, sessie) beschreven die worden gebruikt in Azure Stream Analytics taken.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,47 +8,47 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745556"
 ---
-# <a name="introduction-to-stream-analytics-windowing-functions"></a>Inleiding tot vensterfuncties Stream Analytics
+# <a name="introduction-to-stream-analytics-windowing-functions"></a>Inleiding tot Stream Analytics-venster functies
 
-In tijdstreamingscenario's is het uitvoeren van bewerkingen op de gegevens in tijdelijke vensters een veelvoorkomend patroon. Stream Analytics heeft native ondersteuning voor vensterfuncties, waardoor ontwikkelaars complexe streamverwerkingstaken met minimale inspanning kunnen maken.
+In time-streaming scenario's is het uitvoeren van bewerkingen op de gegevens in tijdelijke Vensters een gemeen schappelijk patroon. Stream Analytics heeft systeem eigen ondersteuning voor Windows-functies, waardoor ontwikkel aars complexe stroom verwerkings taken met minimale inspanning kunnen ontwerpen.
 
-Er zijn vier soorten tijdelijke ramen om uit te kiezen: [**Tumbling**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**Hoppen,**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics) [**Glijden**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)en [**Sessie**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) ramen.  U gebruikt de vensterfuncties in de [**component GROEP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) van de querysyntaxis in uw Stream Analytics-taken. U ook gebeurtenissen over meerdere vensters samenvoegen met de functie [ **Windows().** ](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)
+Er zijn vier soorten tijdelijke Vensters waaruit u kunt kiezen: [**tumblingvenstertriggers**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**verspringen**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**schuiven**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)en [**sessie**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) Vensters.  U gebruikt de venster functies in de [**Group by**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) -component van de query syntaxis in uw stream Analytics-taken. U kunt ook gebeurtenissen met meerdere vensters samen voegen met behulp van de [functie **Windows ()** ](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
 
-Alle resultaten van de uitvoer [van vensterbewerkingen](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) aan het einde van **het** venster. De uitvoer van het venster is één gebeurtenis op basis van de gebruikte aggregaatfunctie. De uitvoergebeurtenis heeft de tijdstempel van het einde van het venster en alle vensterfuncties worden gedefinieerd met een vaste lengte. 
+Alle uitvoer resultaten van de [venster](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) bewerkingen aan het **einde** van het venster. De uitvoer van het venster is één gebeurtenis op basis van de statistische functie die wordt gebruikt. De uitvoer gebeurtenis heeft het tijds tempel van het einde van het venster en alle venster functies worden gedefinieerd met een vaste lengte. 
 
-![Functieconcepten van het Venster Stream Analytics-venster](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
+![Concepten van Stream Analytics-venster functies](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
-## <a name="tumbling-window"></a>Tuimelvenster
-Tumbling-vensterfuncties worden gebruikt om een gegevensstroom te segmenteren in afzonderlijke tijdsegmenten en een functie tegen deze segmenten uit te voeren, zoals het onderstaande voorbeeld. De belangrijkste onderscheidende factoren van een TumblingWindow zijn dat ze herhalend zijn, niet overlappend, en dat een gebeurtenis maar tot één TumblingWindow kan behoren.
+## <a name="tumbling-window"></a>Venster tumblingvenstertriggers
+Functies van het tumblingvenstertriggers-venster worden gebruikt om een gegevens stroom te segmenteren in verschillende tijds segmenten en een functie uit te voeren, zoals in het onderstaande voor beeld. De belangrijkste onderscheidende factoren van een TumblingWindow zijn dat ze herhalend zijn, niet overlappend, en dat een gebeurtenis maar tot één TumblingWindow kan behoren.
 
-![Stream Analytics tumbling venster](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
+![Stream Analytics venster tumblingvenstertriggers](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
-## <a name="hopping-window"></a>Hopping-venster
-HoppingWindow-functies worden gebruikt om met een vaste tijdstuur vooruit te gaan in de tijd. HoppingWindows kunnen worden beschouwd als TumblingWindows die wel overlappen, wat betekent dat gebeurtenissen deel kunnen uitmaken van meer dan één resultatenset van een HoppingWindow. Als u een hopping-venster hetzelfde wilt maken als een tumbling-venster, geeft u de hopgrootte op die gelijk is aan de venstergrootte. 
+## <a name="hopping-window"></a>Venster verspringen
+HoppingWindow-functies worden gebruikt om met een vaste tijdstuur vooruit te gaan in de tijd. HoppingWindows kunnen worden beschouwd als TumblingWindows die wel overlappen, wat betekent dat gebeurtenissen deel kunnen uitmaken van meer dan één resultatenset van een HoppingWindow. Als u een verspringen-venster hetzelfde wilt maken als een Tumblingvenstertriggers-venster, geeft u de grootte van de hop op die hetzelfde is als de venster grootte. 
 
-![Stream Analytics-hopping-venster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
+![Stream Analytics venster verspringen](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
-## <a name="sliding-window"></a>Schuifvenster
-Schuifvensterfuncties produceren, in tegenstelling tot Tumbling- of Hopping-vensters, **alleen** een uitvoer wanneer een gebeurtenis optreedt. Elk venster heeft ten minste één gebeurtenis en het venster beweegt voortdurend naar voren door een ε (epsilon). Net als bij HoppingWindows kunnen gebeurtenissen deel uitmaken van meer dan één SlidingWindow.
+## <a name="sliding-window"></a>Schuif venster
+Schuivende venster functies, in tegens telling tot Tumblingvenstertriggers of verspringen Windows, produceren **alleen** uitvoer als er een gebeurtenis optreedt. Elk venster heeft ten minste één gebeurtenis en het venster wordt doorlopend verplaatst naar een ε (epsilon). Net als bij HoppingWindows kunnen gebeurtenissen deel uitmaken van meer dan één SlidingWindow.
 
-![Schuifvenster Stream Analytics](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
+![Stream Analytics sliding window](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
-## <a name="session-window"></a>Sessievenster
-Sessievensterfuncties groepsgebeurtenissen die op vergelijkbare tijdstippen aankomen, filteren perioden uit waarin er geen gegevens zijn. Dit trefwoord heeft drie belangrijke parameters: time-out, maximale duur en partitioneringssleutel (optioneel).
+## <a name="session-window"></a>Sessie venster
+Sessie venster functioneert groeps gebeurtenissen die op vergelijk bare tijden aankomen, waarna er tijd wordt gefilterd waarbij er geen gegevens zijn. Dit trefwoord heeft drie belangrijke parameters: time-out, maximale duur en partitioneringssleutel (optioneel).
 
-![Stream Analytics-sessievenster](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
+![Venster Stream Analytics sessie](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
 
-Een sessievenster begint wanneer de eerste gebeurtenis plaatsvindt. Als een andere gebeurtenis optreedt binnen de opgegeven time-out van de laatst ingenomen gebeurtenis, wordt het venster uitgebreid met de nieuwe gebeurtenis. Anders als er geen gebeurtenissen plaatsvinden binnen de time-out, wordt het venster gesloten bij de time-out.
+Er wordt een sessie venster gestart wanneer de eerste gebeurtenis plaatsvindt. Als er een andere gebeurtenis plaatsvindt binnen de opgegeven time-out van de laatste opgenomen gebeurtenis, wordt het venster uitgebreid om de nieuwe gebeurtenis op te nemen. Anders wordt het venster tijdens de time-out gesloten wanneer er geen gebeurtenissen binnen de time-out optreden.
 
-Als gebeurtenissen binnen de opgegeven time-out blijven plaatsvinden, blijft het sessievenster verlengen totdat de maximale duur is bereikt. De maximale duurcontroleintervallen zijn ingesteld op dezelfde grootte als de opgegeven maximumduur. Als de maximale duur bijvoorbeeld 10 is, wordt bij de controle of het venster de maximale duur overschrijdt, uitgevoerd op t = 0, 10, 20, 30, enz.
+Als er gebeurtenissen blijven optreden binnen de opgegeven time-out, blijft het sessie venster uitbrei ding totdat de maximale duur is bereikt. De maximum duur voor de controle intervallen is ingesteld op dezelfde grootte als de opgegeven maximale duur. Als de max-duur bijvoorbeeld 10 is, worden de controles op als het venster de maximum duur overschrijdt op t = 0, 10, 20, 30, enzovoort.
 
-Wanneer een partitiesleutel wordt geleverd, worden de gebeurtenissen gegroepeerd door de sleutel en wordt het sessievenster onafhankelijk van elkaar op elke groep toegepast. Deze partitionering is handig voor gevallen waarin u verschillende sessievensters nodig hebt voor verschillende gebruikers of apparaten.
+Wanneer een partitie sleutel wordt gegeven, worden de gebeurtenissen gegroepeerd op basis van het sleutel-en sessie venster, onafhankelijk van elkaar toegepast op elke groep. Deze partitionering is handig voor gevallen waarin u verschillende sessie Vensters nodig hebt voor verschillende gebruikers of apparaten.
 
 
 ## <a name="next-steps"></a>Volgende stappen

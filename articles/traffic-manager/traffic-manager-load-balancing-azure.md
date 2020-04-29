@@ -1,6 +1,6 @@
 ---
-title: Load-balancing services gebruiken in Azure | Microsoft Documenten
-description: 'In deze zelfstudie ziet u hoe u een scenario maakt met behulp van het Azure load-balancing portfolio: Traffic Manager, Application Gateway en Load Balancer.'
+title: Taakverdelings Services gebruiken in azure | Microsoft Docs
+description: 'Deze zelf studie laat zien hoe u een scenario maakt met behulp van de Azure Load Balancing Port Folio: Traffic Manager, Application Gateway en Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,199 +13,199 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
 ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80757204"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Taakverdelingsservices gebruiken in Azure
 
 ## <a name="introduction"></a>Inleiding
 
-Microsoft Azure biedt meerdere services voor het beheren van de manier waarop netwerkverkeer wordt gedistribueerd en in balans wordt gebracht. U deze diensten individueel gebruiken of hun methoden combineren, afhankelijk van uw behoeften, om de optimale oplossing te bouwen.
+Microsoft Azure biedt meerdere services voor het beheren van hoe netwerk verkeer wordt gedistribueerd en taak verdeling. U kunt deze services afzonderlijk gebruiken of hun methoden combi neren, afhankelijk van uw behoeften, om de optimale oplossing te bouwen.
 
-In deze zelfstudie definiëren we eerst een use case voor klanten en zien we hoe deze robuuster en performanter kan worden gemaakt met behulp van de volgende Azure load-balancing portfolio: Traffic Manager, Application Gateway en Load Balancer. Vervolgens geven we stapsgewijze instructies voor het maken van een implementatie die geografisch redundant is, verkeer naar VM's distribueert en u verschillende soorten aanvragen beheren.
+In deze zelf studie definieert u eerst een gebruiks voorbeeld van een klant en ziet u hoe deze kan worden verbeterd en kunnen worden uitgevoerd met behulp van de volgende Azure Load Balancing-Port Folio: Traffic Manager, Application Gateway en Load Balancer. We geven vervolgens stapsgewijze instructies voor het maken van een implementatie die geografisch redundant is, verkeer naar Vm's, en helpt u bij het beheren van verschillende typen aanvragen.
 
-Op conceptueel niveau speelt elk van deze services een duidelijke rol in de hiërarchie van de taakverdeling.
+Bij een conceptueel niveau speelt elk van deze services een afzonderlijke rol in de taakverdelings hiërarchie.
 
-* **Traffic Manager** biedt globale DNS-taakverdeling. Het kijkt naar inkomende DNS-verzoeken en reageert met een gezond eindpunt, in overeenstemming met het routeringsbeleid dat de klant heeft geselecteerd. Opties voor routeringsmethoden zijn:
-  * Prestatieroutering om de aanvrager naar het dichtstbijzijnde eindpunt te sturen in termen van latentie.
-  * Prioriteitsroutering om al het verkeer naar een eindpunt te leiden, met andere eindpunten als back-up.
-  * Gewogen round-robin routing, die verkeer verdeelt op basis van de weging die is toegewezen aan elk eindpunt.
-  * Routering op basis van geografie om het verkeer te distribueren naar de eindpunten van uw toepassing op basis van de geografische locatie van de gebruiker.
-  * Subnetgebaseerde routering om het verkeer te distribueren naar de eindpunten van uw toepassing op basis van het subnet (IP-adresbereik) van de gebruiker.
-  * Multi Value routing waarmee u IP-adressen van meer dan één toepassingseindpunt verzenden in één DNS-antwoord.
+* **Traffic Manager** voorziet in globale DNS-taak verdeling. Er wordt gekeken naar inkomende DNS-aanvragen en reageert met een gezonde eind punt, in overeenstemming met het routerings beleid dat de klant heeft geselecteerd. Opties voor routerings methoden zijn:
+  * Prestatie routering voor het verzenden van de aanvrager naar het dichtstbijzijnde eind punt in termen van latentie.
+  * Prioriteits routering om al het verkeer door te sturen naar een eind punt, met andere eind punten als back-up.
+  * Gewogen Round Robin-route ring, waarmee verkeer wordt gedistribueerd op basis van de weging die aan elk eind punt is toegewezen.
+  * Op geografische basis route ring om het verkeer naar uw toepassings eindpunten te distribueren op basis van de geografische locatie van de gebruiker.
+  * Route ring op basis van het subnet om het verkeer naar uw toepassings eindpunten te distribueren op basis van het subnet (IP-adres bereik) van de gebruiker.
+  * Route ring met meerdere waarden waarmee u IP-adressen van meer dan één toepassings eindpunten kunt verzenden in één DNS-antwoord.
 
-  De client maakt rechtstreeks verbinding met het eindpunt dat door Traffic Manager wordt geretourneerd. Azure Traffic Manager detecteert wanneer een eindpunt niet in orde is en leidt de clients vervolgens door naar een andere gezonde instantie. Raadpleeg [azure traffic manager-documentatie](traffic-manager-overview.md) voor meer informatie over de service.
-* **Application Gateway** biedt application delivery controller (ADC) als een service, met verschillende Layer 7 load-balancing mogelijkheden voor uw toepassing. Het stelt klanten in staat om de productiviteit van webfarmen te optimaliseren door CPU-intensieve TLS-beëindiging te ontladen naar de toepassingsgateway. Andere Routeringsmogelijkheden van Layer 7 zijn round-robin-distributie van binnenkomend verkeer, sessieaffiniteit op basis van cookies, URL-padgebaseerde routering en de mogelijkheid om meerdere websites achter één toepassingsgateway te hosten. Application Gateway kan worden geconfigureerd als een naar internet gerichte gateway, een interne gateway of een combinatie van beide. Application Gateway is volledig azure beheerd, schaalbaar en zeer beschikbaar. Het biedt een uitgebreide verzameling diagnostische gegevens en functies voor logboekregistratie voor betere beheersbaarheid.
-* **Load Balancer** is een integraal onderdeel van de Azure SDN-stack en biedt krachtige, low-latency Layer 4 load-balancing services voor alle UDP- en TCP-protocollen. Het beheert inkomende en uitgaande verbindingen. U kunt openbare en interne load-balancedeindpunten configureren en regels definiëren om binnenkomende verbindingen toe te wijzen aan back-end-poolbestemmingen met behulp van TCP- en HTTP-opties voor statustesten om de beschikbaarheid van de service te beheren.
+  De client maakt rechtstreeks verbinding met het eind punt dat wordt geretourneerd door Traffic Manager. Azure Traffic Manager detecteert wanneer een eind punt een slechte status heeft en stuurt de clients vervolgens om naar een ander ongezonde exemplaar. Raadpleeg de [documentatie van Azure Traffic Manager](traffic-manager-overview.md) voor meer informatie over de service.
+* **Application Gateway** biedt ADC (Application Delivery controller) als een service met verschillende mogelijkheden voor taak verdeling voor laag 7 voor uw toepassing. Hiermee kunnen klanten de productiviteit van webfarms optimaliseren door CPU-intensieve TLS-beëindiging naar de Application Gateway te offloaden. Andere routerings mogelijkheden voor laag 7 zijn onder andere round-robin distributie van inkomend verkeer, sessie affiniteit op basis van cookies, route ring op basis van URL-pad en de mogelijkheid om meerdere websites achter één toepassings gateway te hosten. Application Gateway kunnen worden geconfigureerd als een Internet gerichte gateway, een alleen-interne gateway of een combi natie van beide. Application Gateway is volledig beheerde, schaal bare en Maxi maal beschik bare Azure. Het biedt een uitgebreide verzameling diagnostische gegevens en functies voor logboekregistratie voor betere beheersbaarheid.
+* **Load Balancer** is een integraal onderdeel van de Azure Sdn-stack, met hoge prestaties en lage latentie Services voor taak verdeling voor alle UDP-en TCP-protocollen. Het beheert binnenkomende en uitgaande verbindingen. U kunt openbare en interne load-balancedeindpunten configureren en regels definiëren om binnenkomende verbindingen toe te wijzen aan back-end-poolbestemmingen met behulp van TCP- en HTTP-opties voor statustesten om de beschikbaarheid van de service te beheren.
 
 ## <a name="scenario"></a>Scenario
 
-In dit voorbeeldscenario gebruiken we een eenvoudige website die twee soorten inhoud bedient: afbeeldingen en dynamisch weergegeven webpagina's. De website moet geografisch overbodig zijn en moet zijn gebruikers van de dichtstbijzijnde (laagste latentie) locatie naar hen bedienen. De toepassingsontwikkelaar heeft besloten dat alle URL's die overeenkomen met het patroon /afbeeldingen/* worden geserveerd vanuit een speciale groep VM's die verschillen van de rest van de webfarm.
+In dit voorbeeld scenario gebruiken we een eenvoudige website die twee soorten inhoud bedient: afbeeldingen en dynamisch gerenderde webpagina's. De website moet geografisch redundant zijn, en deze moet de gebruikers van de dichtstbijzijnde (laagste latentie) locatie. De ontwikkelaar van de toepassing heeft besloten dat alle Url's die overeenkomen met het patroon/images/* worden geleverd vanuit een toegewezen groep Vm's die afwijken van de rest van de webfarm.
 
-Bovendien moet de standaard VM-groep met de dynamische inhoud praten met een back-enddatabase die wordt gehost op een cluster met hoge beschikbaarheid. De volledige implementatie wordt ingesteld via Azure Resource Manager.
+Daarnaast moet de standaard-VM-groep met de dynamische inhoud communiceren met een back-end-data base die wordt gehost op een cluster met hoge Beschik baarheid. De volledige implementatie wordt ingesteld via Azure Resource Manager.
 
-Met behulp van Traffic Manager, Application Gateway en Load Balancer kan deze website deze ontwerpdoelen bereiken:
+Met behulp van Traffic Manager, Application Gateway en Load Balancer kan deze website de volgende ontwerp doelstellingen bereiken:
 
-* **Multi-geo redundantie**: Als één regio uitvalt, leidt Traffic Manager het verkeer naadloos naar de dichtstbijzijnde regio zonder tussenkomst van de eigenaar van de toepassing.
-* **Verminderde latentie**: Omdat Traffic Manager de klant automatisch naar de dichtstbijzijnde regio leidt, ervaart de klant een lagere latentie bij het aanvragen van de inhoud van de webpagina.
-* **Onafhankelijke schaalbaarheid**: Omdat de werkbelasting van de webtoepassing wordt gescheiden door het type inhoud, kan de eigenaar van de toepassing de aanvraagworkloads onafhankelijk van elkaar schalen. Application Gateway zorgt ervoor dat het verkeer wordt doorgestuurd naar de juiste pools op basis van de opgegeven regels en de status van de toepassing.
-* **Interne taakverdeling:** Omdat Load Balancer zich voor het cluster met hoge beschikbaarheid bevindt, wordt alleen het actieve en gezonde eindpunt voor een database blootgesteld aan de toepassing. Bovendien kan een databasebeheerder de werkbelasting optimaliseren door actieve en passieve replica's over het cluster te distribueren, onafhankelijk van de front-endtoepassing. Load Balancer levert verbindingen met het cluster met hoge beschikbaarheid en zorgt ervoor dat alleen gezonde databases verbindingsaanvragen ontvangen.
+* **Multi-geo-redundantie**: als een regio uitvalt, Traffic Manager verkeer naadloos naar de dichtstbijzijnde regio gerouteerd zonder tussen komst van de eigenaar van de toepassing.
+* **Beperkte latentie**: omdat Traffic Manager de klant automatisch doorstuurt naar de dichtstbijzijnde regio, ondervindt de klant een lagere latentie bij het aanvragen van de inhoud van de webpagina.
+* **Onafhankelijke schaal baarheid**: omdat de werk belasting van de web-app wordt gescheiden door het type inhoud, kan de eigenaar van de toepassing de werk belasting van de aanvraag onafhankelijk van elkaar schalen. Application Gateway zorgt ervoor dat het verkeer wordt doorgestuurd naar de juiste Pools op basis van de opgegeven regels en de status van de toepassing.
+* **Interne taak verdeling**: omdat Load Balancer zich vóór het cluster met hoge Beschik baarheid bevindt, wordt alleen het actieve en gezonde eind punt voor een Data Base blootgesteld aan de toepassing. Daarnaast kan een database beheerder de werk belasting optimaliseren door actieve en passieve replica's in het cluster onafhankelijk van de front-end-toepassing te distribueren. Load Balancer levert verbindingen met het cluster met hoge Beschik baarheid en zorgt ervoor dat alleen in orde zijnde data bases verbindings aanvragen ontvangen.
 
 In het volgende diagram ziet u de architectuur van dit scenario:
 
-![Diagram van load-balancing architectuur](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
+![Diagram van de architectuur voor taak verdeling](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Dit voorbeeld is slechts een van de vele mogelijke configuraties van de load-balancing services die Azure biedt. Traffic Manager, Application Gateway en Load Balancer kunnen worden gemengd en afgestemd op uw behoeften op het gebied van taakverdeling. Als TLS-offload of Layer 7-verwerking bijvoorbeeld niet nodig is, kan Load Balancer worden gebruikt in plaats van Application Gateway.
+> Dit voor beeld is slechts een van de vele mogelijke configuraties van de taakverdelings services die Azure biedt. Traffic Manager, Application Gateway en Load Balancer kunnen worden gecombineerd en afgestemd op uw behoeften voor taak verdeling. Als bijvoorbeeld TLS-offload of Layer 7-verwerking niet nodig is, kan Load Balancer worden gebruikt in plaats van Application Gateway.
 
-## <a name="setting-up-the-load-balancing-stack"></a>De load-balancing stack instellen
+## <a name="setting-up-the-load-balancing-stack"></a>De taakverdelings stack instellen
 
-### <a name="step-1-create-a-traffic-manager-profile"></a>Stap 1: Een verkeersbeheerprofiel maken
+### <a name="step-1-create-a-traffic-manager-profile"></a>Stap 1: een Traffic Manager profiel maken
 
-1. Klik in de Azure-portal op **Een resource** > **Networking** > **Traffic Manager-profiel** > **maken**.
-2. Voer de volgende basisgegevens in:
+1. Klik in de Azure Portal op **een resource** > **netwerk** > **Traffic Manager profiel** > **maken**.
+2. Voer de volgende basis informatie in:
 
-   * **Naam:** Geef uw Traffic Manager-profiel een DNS-voorvoegselnaam.
-   * **Routeringsmethode:** selecteer het beleid voor de routeringsmethode voor verkeer. Zie [Over verkeersbeheermethoden](traffic-manager-routing-methods.md)voor meer informatie over de methoden .
+   * **Naam**: geef uw Traffic Manager een naam voor het DNS-voor voegsel.
+   * **Routerings methode**: Selecteer het beleid voor de routerings methode voor verkeer. Zie [over Traffic Manager verkeers routerings methoden](traffic-manager-routing-methods.md)voor meer informatie over de methoden.
    * **Abonnement**: Selecteer het abonnement dat het profiel bevat.
-   * **Resourcegroep:** selecteer de resourcegroep die het profiel bevat. Het kan een nieuwe of bestaande brongroep zijn.
-   * **Locatie resourcegroep**: Traffic Manager-service is globaal en niet gebonden aan een locatie. U moet echter wel een gebied opgeven voor de groep waar de metagegevens die zijn gekoppeld aan het Traffic Manager-profiel zich bevinden. Deze locatie heeft geen invloed op de beschikbaarheid van runtime van het profiel.
+   * **Resource groep**: Selecteer de resource groep die het profiel bevat. Dit kan een nieuwe of bestaande resource groep zijn.
+   * **Locatie van de resource groep**: de Traffic Manager service is globaal en niet gebonden aan een locatie. U moet echter een regio opgeven voor de groep waarin de meta gegevens van het Traffic Manager profiel zich bevinden. Deze locatie heeft geen invloed op de runtime-Beschik baarheid van het profiel.
 
-3. Klik **op Maken** om het profiel Verkeersbeheer te genereren.
+3. Klik op **maken** om het Traffic Manager profiel te genereren.
 
-   ![Blade 'Traffic Manager' maken](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   ![Blade Traffic Manager maken](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
-### <a name="step-2-create-the-application-gateways"></a>Stap 2: De toepassingsgateways maken
+### <a name="step-2-create-the-application-gateways"></a>Stap 2: de toepassings gateways maken
 
-1. Klik in de Azure-portal in het linkerdeelvenster op **Een gateway voor een bronnetwerktoepassing** > **Networking** > **maken**.
-2. Voer de volgende basisgegevens over de toepassingsgateway in:
+1. Klik in het linkerdeel venster van de Azure Portal op **een resource** > maken**netwerk** > **Application Gateway**.
+2. Voer de volgende basis informatie over de toepassings gateway in:
 
-   * **Naam:** De naam van de toepassingsgateway.
-   * **SKU-grootte**: de grootte van de toepassingsgateway, beschikbaar als klein, gemiddeld of groot.
-   * **Aantal instanties:** het aantal exemplaren, een waarde van 2 tot en met 10.
-   * **Resourcegroep:** de resourcegroep die de toepassingsgateway bevat. Het kan een bestaande resourcegroep of een nieuwe groep zijn.
-   * **Locatie:** het gebied voor de toepassingsgateway, dezelfde locatie als de resourcegroep. De locatie is belangrijk, omdat het virtuele netwerk en het openbare IP-adres zich op dezelfde locatie moeten bevinden als de gateway.
+   * **Naam**: de naam van de toepassings gateway.
+   * **SKU-grootte**: de grootte van de toepassings gateway, beschikbaar als klein, gemiddeld of groot.
+   * **Aantal**exemplaren: het aantal instanties, een waarde van 2 tot en met 10.
+   * **Resource groep**: de resource groep die de toepassings gateway bevat. Dit kan een bestaande resource groep of een nieuwe zijn.
+   * **Locatie**: de regio voor de toepassings gateway. Dit is dezelfde locatie als de resource groep. De locatie is belang rijk, omdat het virtuele netwerk en het open bare IP-adres zich op dezelfde locatie bevindt als de gateway.
 3. Klik op **OK**.
-4. Definieer de virtuele netwerk-, subnet-, front-end IP- en listenerconfiguraties voor de toepassingsgateway. In dit scenario is het front-end IP-adres **Openbaar,** waardoor het later als eindpunt kan worden toegevoegd aan het Traffic Manager-profiel.
+4. Definieer het virtuele netwerk, subnet, front-end IP en listener-configuraties voor de toepassings gateway. In dit scenario is het IP-adres van de front-end **openbaar**, zodat het kan worden toegevoegd als een eind punt aan het profiel van de Traffic Manager op een later tijdstip.
 5. Configureer de listener met een van de volgende opties:
-    * Als u HTTP gebruikt, is er niets om te configureren. Klik op **OK**.
-    * Als u HTTPS gebruikt, is verdere configuratie vereist. Raadpleeg [Een toepassingsgateway maken,](../application-gateway/application-gateway-create-gateway-portal.md)te beginnen bij stap 9. Klik op **OK**wanneer u de configuratie hebt voltooid.
+    * Als u HTTP gebruikt, hoeft u niets te configureren. Klik op **OK**.
+    * Als u HTTPS gebruikt, is verdere configuratie vereist. Raadpleeg voor [het maken van een toepassings gateway](../application-gateway/application-gateway-create-gateway-portal.md), beginnend bij stap 9. Wanneer u de configuratie hebt voltooid, klikt u op **OK**.
 
-#### <a name="configure-url-routing-for-application-gateways"></a>URL-routering configureren voor toepassingsgateways
+#### <a name="configure-url-routing-for-application-gateways"></a>URL-route ring configureren voor toepassings gateways
 
-Wanneer u een back-endpool kiest, neemt een toepassingsgateway die is geconfigureerd met een op paden gebaseerde regel een padpatroon van de aanvraag-URL naast de round-robin-verdeling. In dit scenario voegen we een op paden gebaseerde regel\*toe om elke URL met "/images/" naar de afbeeldingsservergroep te sturen. Raadpleeg [Een op pad gebaseerde regel voor een toepassingsgateway maken voor](../application-gateway/application-gateway-create-url-route-portal.md)meer informatie over het configureren van URL-padgebaseerde routering voor een toepassingsgateway.
+Wanneer u een back-end-pool kiest, neemt een toepassings gateway die is geconfigureerd met een regel op basis van een pad patroon van de aanvraag-URL naast round robin-distributie. In dit scenario voegen we een regel op basis van een pad toe om elke URL met '\*/images/' om te leiden naar de Server groep voor installatie kopieën. Voor meer informatie over het configureren van op URL-pad gebaseerde route ring voor een toepassings gateway, raadpleegt u [een op pad gebaseerde regel voor een toepassings gateway maken](../application-gateway/application-gateway-create-url-route-portal.md).
 
-![Webtierdiagram voor toepassingsgateway](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
+![Diagram van de weblaag Application Gateway](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
-1. Ga vanuit uw resourcegroep naar de instantie van de toepassingsgateway die u in de vorige sectie hebt gemaakt.
-2. Selecteer **onder Instellingen**de optie **Backend-groepen**en selecteer Vervolgens **Toevoegen** om de VM's toe te voegen die u wilt koppelen aan de back-endgroepen van de webrijlaag.
-3. Voer de naam in van de back-endpool en alle IP-adressen van de machines die zich in de groep bevinden. In dit scenario verbinden we twee back-endservergroepen van virtuele machines.
+1. Ga vanuit de resource groep naar het exemplaar van de toepassings gateway dat u in de voor gaande sectie hebt gemaakt.
+2. Selecteer **back-endservers**onder **instellingen**en selecteer **toevoegen** om de vm's toe te voegen die u wilt koppelen aan de back-endservers van de weblaag.
+3. Voer de naam van de back-end-pool en alle IP-adressen in van de computers die zich in de groep bevinden. In dit scenario verbinden we twee back-end-server groepen van virtuele machines.
 
-   ![Toepassingsgateway "Backend pool toevoegen"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![Application Gateway back-end-pool toevoegen](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
-4. Selecteer **onder Instellingen** van de toepassingsgateway **Regels**en klik vervolgens op de knop Pad **op basis** van de knop om een regel toe te voegen.
+4. Onder **instellingen** van de toepassings gateway selecteert u **regels**en klikt u vervolgens op de knop **op basis van het pad** om een regel toe te voegen.
 
-   ![Knop Toepassingsgatewayregels 'Pad gebaseerd'](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Knop voor Application Gateway regels op basis van pad](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. Configureer de regel door de volgende informatie op te geven.
 
-   Basisinstellingen:
+   Basis instellingen:
 
-   + **Naam**: De vriendelijke naam van de regel die toegankelijk is in het portaal.
-   + **Listener:** De listener die wordt gebruikt voor de regel.
-   + **Standaardbackendpool**: de back-endpool die moet worden gebruikt met de standaardregel.
-   + **StandaardHTTP-instellingen:** de HTTP-instellingen die moeten worden gebruikt met de standaardregel.
+   + **Naam**: de beschrijvende naam van de regel die toegankelijk is in de portal.
+   + **Listener**: de listener die wordt gebruikt voor de regel.
+   + **Standaard back-endserver**: de back-end-pool die moet worden gebruikt met de standaard regel.
+   + **Standaard HTTP-instellingen**: de HTTP-instellingen die moeten worden gebruikt met de standaard regel.
 
-   Op paden gebaseerde regels:
+   Op pad gebaseerde regels:
 
-   + **Naam:** De vriendelijke naam van de op paden gebaseerde regel.
-   + **Paden:** de padregel die wordt gebruikt voor het doorsturen van verkeer.
-   + **Backend Pool**: De back-end pool die met deze regel moet worden gebruikt.
-   + **HTTP-instelling:** de HTTP-instellingen die met deze regel moeten worden gebruikt.
+   + **Naam**: de beschrijvende naam van de regel op basis van het pad.
+   + **Paden**: de padregel die wordt gebruikt voor het door sturen van verkeer.
+   + **Back**-end-pool: de back-endgegevensbron die met deze regel moet worden gebruikt.
+   + **Http-instelling**: de HTTP-instellingen die met deze regel moeten worden gebruikt.
 
    > [!IMPORTANT]
-   > Paden: Geldige paden moeten beginnen met "/". De wildcard\*" " is alleen toegestaan aan het einde. Geldige voorbeelden zijn /xyz, /xyz\*of /xyz/\*.
+   > Paden: geldige paden moeten beginnen met "/". Het Joker teken\*is alleen toegestaan aan het einde. Geldige voor beelden zijn/XYZ,\*/XYZ of/xyz/\*.
 
-   ![Blade van het blad 'Op pad gebaseerde regel toevoegen'](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
+   ![Application Gateway Blade ' op pad gebaseerde regel toevoegen '](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
-### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Stap 3: Toepassingsgateways toevoegen aan de eindpunten van Traffic Manager
+### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Stap 3: toepassings gateways toevoegen aan de Traffic Manager-eind punten
 
-In dit scenario is Traffic Manager verbonden met toepassingsgateways (zoals geconfigureerd in de voorgaande stappen) die zich in verschillende regio's bevinden. Nu de toepassingsgateways zijn geconfigureerd, is de volgende stap om ze te verbinden met uw Traffic Manager-profiel.
+In dit scenario is Traffic Manager verbonden met toepassings gateways (zoals geconfigureerd in de voor gaande stappen) die zich in verschillende regio's bevinden. Nu de toepassings gateways zijn geconfigureerd, is de volgende stap om deze te verbinden met uw Traffic Manager-profiel.
 
-1. Open uw Traffic Manager-profiel. Zoek hiervoor in uw resourcegroep of zoek naar de naam van het profiel Traffic Manager van **Alle bronnen**.
-2. Selecteer **Eindpunten**in het linkerdeelvenster en klik op **Toevoegen** om een eindpunt toe te voegen.
+1. Open uw Traffic Manager-profiel. Als u dit wilt doen, kijkt u in uw resource groep of zoekt u naar de naam van het Traffic Manager profiel in **alle resources**.
+2. Selecteer **eind punten**in het linkerdeel venster en klik vervolgens op **toevoegen** om een eind punt toe te voegen.
 
-   ![Knop Eindpunten voor verkeersbeheer](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![Knop toevoegen Traffic Manager eind punten](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. Maak een eindpunt door de volgende gegevens in te voeren:
+3. Een eind punt maken door de volgende gegevens in te voeren:
 
-   * **Type:** Selecteer het type eindpunt dat moet worden geladen. Selecteer in dit scenario **Azure-eindpunt** omdat we het verbinden met de toepassingsgateway-exemplaren die eerder zijn geconfigureerd.
-   * **Naam:** Voer de naam van het eindpunt in.
-   * **Doelbrontype**: Selecteer **Openbaar IP-adres** en selecteer vervolgens onder **Doelbron**het openbare IP-adres van de eerder geconfigureerde toepassingsgateway.
+   * **Type**: Selecteer het type eind punt waarvoor u de taak verdeling wilt Toep assen. In dit scenario selecteert u **Azure-eind punt** omdat er verbinding wordt gemaakt met de instanties van de toepassings gateway die eerder zijn geconfigureerd.
+   * **Naam**: Voer de naam van het eind punt in.
+   * **Doel bron type**: Selecteer **openbaar IP-adres** en selecteer vervolgens onder **doel bron**de open bare IP-adressen van de toepassings gateway die eerder zijn geconfigureerd.
 
-   ![Traffic Manager "Eindpunt toevoegen"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   ![Traffic Manager "eind punt toevoegen"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
-4. Nu u uw setup testen door deze te openen met de DNS van uw Traffic Manager-profiel (in dit voorbeeld: TrafficManagerScenario.trafficmanager.net). U aanvragen opnieuw verzenden, VM's en webservers die in verschillende regio's zijn gemaakt, weer naar boven halen of neerhalen en de profielinstellingen van Traffic Manager wijzigen om uw installatie te testen.
+4. U kunt nu uw installatie testen door deze te openen met de DNS van uw Traffic Manager-profiel (in dit voor beeld: TrafficManagerScenario.trafficmanager.net). U kunt aanvragen opnieuw verzenden, Vm's en webservers weer geven die in verschillende regio's zijn gemaakt en de Traffic Manager profiel instellingen wijzigen om uw installatie te testen.
 
-### <a name="step-4-create-a-load-balancer"></a>Stap 4: Een load balancer maken
+### <a name="step-4-create-a-load-balancer"></a>Stap 4: een load balancer maken
 
-In dit scenario distribueert Load Balancer verbindingen van de weblaag naar de databases binnen een cluster met hoge beschikbaarheid.
+In dit scenario distribueert Load Balancer verbindingen van de weblaag naar de data bases binnen een cluster met hoge Beschik baarheid.
 
-Als uw databasecluster met hoge beschikbaarheid SQL Server AlwaysOn gebruikt, raadpleegt u [Een of meer Always On Availability Group Listeners configureren](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) voor stapsgewijze instructies.
+Als uw database cluster met hoge Beschik baarheid gebruikmaakt van SQL Server AlwaysOn, raadpleegt u [een of meer listeners voor Always on-beschikbaarheids groep configureren](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) voor stapsgewijze instructies.
 
-Zie [Een interne load balancer maken in de Azure-portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)voor meer informatie over het configureren van een interne load balancer.
+Zie [een interne Load Balancer in de Azure portal maken](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)voor meer informatie over het configureren van een interne Load Balancer.
 
-1. Klik in de Azure-portal in het linkerdeelvenster op **Een** > **resource Netwerklastsbalans****Networking** > maken .
-2. Kies een naam voor uw load balancer.
-3. Stel het **type** in **op Intern**en kies het juiste virtuele netwerk en subnet waar de load balancer zich in moet bevinden.
-4. Selecteer **onder IP-adrestoewijzing** **Dynamisch** of **Statisch**.
-5. Kies **onder Resourcegroep**de resourcegroep voor de load balancer.
-6. Kies **onder Locatie**de juiste regio voor de load balancer.
-7. Klik **op Maken** om de load balancer te genereren.
+1. Klik in het linkerdeel venster van de Azure Portal op **een resource** > **netwerk** > **taak verdeler**maken.
+2. Kies een naam voor de load balancer.
+3. Stel het **type** in op **intern**en kies het juiste virtuele netwerk en subnet voor de Load Balancer zich in bevindt.
+4. Onder **IP-adres toewijzing**selecteert u **dynamisch** of **statisch**.
+5. Kies onder **resource groep**de resource groep voor de Load Balancer.
+6. Kies onder **locatie**de juiste regio voor de Load Balancer.
+7. Klik op **maken** om de Load Balancer te genereren.
 
-#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Een back-enddatabaselaag verbinden met de load balancer
+#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Een back-end-database laag verbinden met de load balancer
 
-1. Zoek in de vorige stappen de load balancer die in de vorige stappen is gemaakt.
-2. Klik **onder Instellingen**op **Backend-groepen**en klik vervolgens op **Toevoegen** om een back-endpool toe te voegen.
+1. Zoek in de resource groep de load balancer die in de vorige stappen is gemaakt.
+2. Klik onder **instellingen**op **back-end-Pools**en klik vervolgens op **toevoegen** om een back-end-groep toe te voegen.
 
-   ![Load Balancer "Backend pool toevoegen"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![Load Balancer back-end-pool toevoegen](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
-3. Voer de naam van de back-endpool in.
-4. Voeg afzonderlijke machines of een beschikbaarheidsset toe aan de back-endpool.
+3. Voer de naam van de back-end-pool in.
+4. Voeg afzonderlijke machines of beschik bare sets toe aan de back-end-pool.
 
-#### <a name="configure-a-probe"></a>Een sonde configureren
+#### <a name="configure-a-probe"></a>Een test configureren
 
-1. Selecteer in uw load balancer onder **Instellingen**de optie **Sondes**en klik vervolgens op **Toevoegen** om een sonde toe te voegen.
+1. Selecteer in uw load balancer onder **instellingen**de optie **testes en klik**vervolgens op **toevoegen** om een test toe te voegen.
 
-   ![Load Balancer "Probe toevoegen"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![Load Balancer test toevoegen](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. Voer de naam voor de sonde in.
-3. Selecteer het **protocol** voor de sonde. Voor een database wilt u mogelijk een TCP-sonde in plaats van een HTTP-sonde. Zie [Sondes van load balancer](../load-balancer/load-balancer-custom-probe-overview.md)begrijpen voor meer informatie over sondes van load-balancer .
-4. Voer de **poort** van uw database in die moet worden gebruikt voor toegang tot de sonde.
-5. Geef **onder Interval**op hoe vaak de toepassing moet worden gesonde.
-6. Geef **onder Onineerdrempel**het aantal continue sondefouten op dat moet optreden om de back-end-vm als niet-inord te stellen.
-7. Klik op **OK** om de sonde te maken.
+2. Voer de naam in voor de test.
+3. Selecteer het **protocol** voor de test. Voor een Data Base wilt u mogelijk een TCP-test gebruiken in plaats van een HTTP-test. Raadpleeg voor meer informatie over de Load Balancer-tests [begrijpen Load Balancer probe](../load-balancer/load-balancer-custom-probe-overview.md).
+4. Voer de **poort** in van de data base die moet worden gebruikt voor toegang tot de test.
+5. Geef onder **interval**op hoe vaak u de toepassing wilt testen.
+6. Onder **onjuiste drempel waarde**, geeft u het aantal voortdurende test fouten op dat moet worden uitgevoerd voor de back-end-VM als een slechte status.
+7. Klik op **OK** om de test te maken.
 
-#### <a name="configure-the-load-balancing-rules"></a>De regels voor het balanceren van de lastenafweging configureren
+#### <a name="configure-the-load-balancing-rules"></a>De regels voor taak verdeling configureren
 
-1. Selecteer **onder Instellingen** van uw load balancer de optie **Taakverdelingsregels**en klik vervolgens op **Toevoegen** om een regel te maken.
-2. Voer de **naam** in voor de regel voor het balanceren van de lastenverdeling.
-3. Kies het **IP-adres frontend** van de load balancer, **Protocol**en **Port**.
-4. Geef **onder Backend-poort**de poort op die in de back-endpool moet worden gebruikt.
-5. Selecteer de **groep Backend** en de **sonde** die in de vorige stappen zijn gemaakt om de regel op toe te passen.
-6. Kies **onder Sessiepersistentie**hoe u de sessies wilt laten voortduren.
-7. Geef **onder Idle time-outs**het aantal minuten op voor een niet-actieve time-out.
-8. Selecteer **onder Zwevend IP**de optie **Uitgeschakeld** of **Ingeschakeld**.
+1. Selecteer onder **instellingen** van de Load Balancer **taakverdelings regels**en klik vervolgens op **toevoegen** om een regel te maken.
+2. Voer de **naam** in voor de taakverdelings regel.
+3. Kies het **frontend-IP-adres** van de Load Balancer, het **protocol**en de **poort**.
+4. Geef onder **backend-poort**de poort op die moet worden gebruikt in de back-end-pool.
+5. Selecteer de **back-end-pool** en de **test** die in de vorige stappen is gemaakt om de regel toe te passen op.
+6. Kies onder **sessie persistentie**hoe u de sessies wilt behouden.
+7. Onder **time-out voor inactiviteit**geeft u het aantal minuten op voor een time-out voor inactiviteit.
+8. Onder **zwevend IP**selecteert u **uitgeschakeld** of **ingeschakeld**.
 9. Klik op **OK** om de regel te maken.
 
-### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Stap 5: VM's met webniveau verbinden met de load balancer
+### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Stap 5: virtuele machines op de weblaag verbinden met de load balancer
 
-Nu configureren we het IP-adres en de front-endpoort van de load-balancer in de toepassingen die worden uitgevoerd op uw vm's op het webniveau voor alle databaseverbindingen. Deze configuratie is specifiek voor de toepassingen die op deze VM's worden uitgevoerd. Als u het ip-adres en de poort van de bestemming wilt configureren, raadpleegt u de toepassingsdocumentatie. Ga naar de front-end-ip-pool op de **instellingen voor load balancer**om het IP-adres van de front-end te vinden.
+Nu configureren we het IP-adres en de front-end-poort van de Load Balancer in de toepassingen die worden uitgevoerd op de virtuele machines op de weblaag voor alle database verbindingen. Deze configuratie is specifiek voor de toepassingen die op deze virtuele machines worden uitgevoerd. Raadpleeg de documentatie van de toepassing voor het configureren van het doel-IP-adres en de-poort. Als u het IP-adres van de front-end wilt vinden, gaat u in het Azure Portal naar de front-end-IP-groep op de **Load Balancer-instellingen**.
 
-![Navigatiedeelvenster 'Frontend IP-pool' van Load Balancer](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
+![Het navigatie deel venster voor de frontend-IP-groep Load Balancer](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

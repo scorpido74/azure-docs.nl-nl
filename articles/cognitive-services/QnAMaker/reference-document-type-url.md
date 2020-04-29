@@ -1,58 +1,58 @@
 ---
-title: URL's ondersteund voor import - QnA Maker
-description: Begrijpen hoe de typen URL's worden gebruikt om QnA-paren te importeren en te maken.
+title: Typen Url's die worden ondersteund voor import-QnA Maker
+description: Begrijpen hoe de typen Url's worden gebruikt voor het importeren en maken van QnA-paren.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804313"
 ---
-# <a name="urls-supported-for-importing-documents"></a>URL's die worden ondersteund voor het importeren van documenten
+# <a name="urls-supported-for-importing-documents"></a>Url's die worden ondersteund voor het importeren van documenten
 
-Begrijpen hoe de typen URL's worden gebruikt om QnA-paren te importeren en te maken.
+Begrijpen hoe de typen Url's worden gebruikt voor het importeren en maken van QnA-paren.
 
-## <a name="faq-urls"></a>Veelgestelde URL's
+## <a name="faq-urls"></a>Url's voor veelgestelde vragen
 
-QnA Maker kan FAQ-webpagina's in 3 verschillende vormen ondersteunen:
+QnA Maker kunnen webpagina's met veelgestelde vragen in drie verschillende vormen ondersteunen:
 
-* Veelgestelde vragen
-* Veelgestelde pagina's met koppelingen
-* Veelgestelde vragen met een homepage voor onderwerpen
+* Pagina's met veelgestelde vragen
+* Pagina met veelgestelde vragen met koppelingen
+* Pagina met veelgestelde vragen met een start pagina voor onderwerpen
 
-### <a name="plain-faq-pages"></a>Veelgestelde vragen
+### <a name="plain-faq-pages"></a>Pagina's met veelgestelde vragen
 
-Dit is het meest voorkomende type FAQ-pagina, waarbij de antwoorden onmiddellijk de vragen op dezelfde pagina volgen.
+Dit is het meest voorkomende type FAQ-pagina waarin de antwoorden direct op de vragen op dezelfde pagina volgen.
 
-Hieronder is een voorbeeld van een duidelijke FAQ pagina:
+Hieronder volgt een voor beeld van een pagina met veelgestelde vragen:
 
-![Voorbeeld van een gewone FAQ-pagina voor een kennisbank](./media/qnamaker-concepts-datasources/plain-faq.png)
-
-
-### <a name="faq-pages-with-links"></a>Veelgestelde pagina's met koppelingen
-
-In dit type FAQ-pagina worden vragen samengevoegd en gekoppeld aan antwoorden die zich in verschillende secties van dezelfde pagina of op verschillende pagina's bevinden.
-
-Hieronder vindt u een voorbeeld van een FAQ-pagina met koppelingen in secties die zich op dezelfde pagina bevinden:
-
- ![SectieKoppelingfaq-paginavoorbeeld voor een kennisbank](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
+![Voor beeld van een pagina met veelgestelde vragen voor een kennis database](./media/qnamaker-concepts-datasources/plain-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>Paginapagina Bovenliggende onderwerpen naar pagina's met onderliggende antwoorden
+### <a name="faq-pages-with-links"></a>Pagina met veelgestelde vragen met koppelingen
 
-Dit type FAQ heeft een pagina Onderwerpen waar elk onderwerp is gekoppeld aan een overeenkomstige set vragen en antwoorden op een andere pagina. QnA Maker crawlt alle gekoppelde pagina's om de bijbehorende vragen & antwoorden te extraheren.
+In dit type FAQ-pagina worden vragen samen geaggregeerd en worden ze gekoppeld aan antwoorden die zich in verschillende delen van dezelfde pagina of op verschillende pagina's bevinden.
 
-Hieronder vindt u een voorbeeld van een pagina Onderwerpen met koppelingen naar FAQ-secties op verschillende pagina's.
+Hieronder volgt een voor beeld van een pagina met veelgestelde vragen met koppelingen in secties die zich op dezelfde pagina bevinden:
 
- ![Deep link FAQ pagina voorbeeld voor een kennisbank](./media/qnamaker-concepts-datasources/topics-faq.png)
+ ![Pagina met veelgestelde vragen over sectie koppelingen voor een Knowledge Base](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
-## <a name="support-urls"></a>URL's ondersteunen
 
-QnA Maker kan semi-gestructureerde ondersteuningswebpagina's verwerken, zoals webartikelen waarin wordt beschreven hoe een bepaalde taak moet worden uitgevoerd, hoe u een bepaald probleem diagnosticeren en oplossen en wat de beste praktijken zijn voor een bepaald proces. Extractie werkt het beste op inhoud die een duidelijke structuur heeft met hiërarchische koppen.
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>Pagina bovenliggende onderwerpen koppelingen naar pagina's met onderliggende antwoorden
+
+Dit type Veelgestelde vragen bevat een pagina onderwerpen waarin elk onderwerp wordt gekoppeld aan een bijbehorende set vragen en antwoorden op een andere pagina. QnA Maker verkent alle gekoppelde pagina's om de bijbehorende vragen & antwoorden uit te pakken.
+
+Hieronder ziet u een voor beeld van een pagina met onderwerpen met koppelingen naar secties met veelgestelde vragen op verschillende pagina's.
+
+ ![Voor beeld van een diep gaande pagina Veelgestelde vragen voor een Knowledge Base](./media/qnamaker-concepts-datasources/topics-faq.png)
+
+## <a name="support-urls"></a>Url's voor ondersteuning
+
+QnA Maker kunt semi-gestructureerde ondersteunings webpagina's verwerken, zoals webartikelen waarin wordt beschreven hoe u een bepaalde taak uitvoert, hoe u een bepaald probleem opspoort en oplost en wat de aanbevolen procedures voor een bepaald proces zijn. Extractie werkt het beste voor inhoud die een duidelijke structuur met hiërarchische koppen heeft.
 
 > [!NOTE]
-> Extractie voor ondersteuningsartikelen is een nieuwe functie en bevindt zich in een vroeg stadium. Het werkt het beste voor eenvoudige pagina's, die goed gestructureerd zijn en geen complexe headers/footers bevatten.
+> Uitpakken voor ondersteunings artikelen is een nieuwe functie en is in vroege stadia. Het werkt het beste voor eenvoudige pagina's, die goed zijn gestructureerd en geen complexe kop-en voet teksten bevatten.
 
-![QnA Maker ondersteunt extractie van semi-gestructureerde webpagina's waar een duidelijke structuur wordt gepresenteerd met hiërarchische koppen](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![QnA Maker ondersteunt de extractie van semi-gestructureerde webpagina's waarbij een duidelijke structuur wordt weer gegeven met hiërarchische koppen](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)

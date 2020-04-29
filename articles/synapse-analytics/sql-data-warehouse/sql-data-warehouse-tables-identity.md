@@ -1,6 +1,6 @@
 ---
-title: Id gebruiken om surrogaatsleutels te maken
-description: Aanbevelingen en voorbeelden voor het gebruik van de eigenschap IDENTITY om surrogaatsleutels te maken op tabellen in synapse SQL-groep.
+title: IDENTITEIT gebruiken om surrogaat sleutels te maken
+description: Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742635"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>ID gebruiken om surrogaatsleutels te maken in de Synapse SQL-groep
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>IDENTITEIT gebruiken voor het maken van surrogaat sleutels in de SQL-groep Synapse
 
-Aanbevelingen en voorbeelden voor het gebruik van de eigenschap IDENTITY om surrogaatsleutels te maken op tabellen in synapse SQL-groep.
+Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Synapse SQL-pool.
 
-## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaatsleutel
+## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaat sleutel?
 
-Een surrogaatsleutel op een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd uit de tabelgegevens. Gegevensmodelers maken graag surrogaatsleutels op hun tabellen wanneer ze gegevensmagazijnmodellen ontwerpen. U de eigenschap IDENTITY gebruiken om dit doel eenvoudig en effectief te bereiken zonder de belastingsprestaties te beïnvloeden.  
+Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd op basis van de tabel gegevens. Gegevens modelers zoals het maken van surrogaat sleutels in hun tabellen wanneer ze data warehouse modellen ontwerpen. U kunt met behulp van de IDENTITEITs eigenschap dit doel eenvoudig en effectief belasten zonder de belasting prestaties te beïnvloeden.  
 
-## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een identiteitskolom
+## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een IDENTITEITs kolom
 
-De eigenschap IDENTITY is ontworpen om alle distributies in de Synapse SQL-groep uit te schalen zonder dat dit gevolgen heeft voor de laadprestaties. Daarom is de implementatie van IDENTITY gericht op het bereiken van deze doelen.
+De IDENTITEITs eigenschap is ontworpen om uit te schalen over alle distributies in de SQL-groep Synapse zonder de belasting prestaties te beïnvloeden. Daarom is de implementatie van de identiteit gericht op het bereiken van deze doel stellingen.
 
-U een tabel definiëren als de eigenschap IDENTITY wanneer u de tabel voor het eerst maakt met behulp van syntaxis die vergelijkbaar is met de volgende instructie:
+U kunt een tabel definiëren met de IDENTITEITs eigenschap wanneer u de tabel voor het eerst maakt met behulp van syntaxis die vergelijkbaar is met de volgende instructie:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -44,15 +44,15 @@ WITH
 ;
 ```
 
-U `INSERT..SELECT` vervolgens de tabel vullen.
+U kunt vervolgens gebruiken `INSERT..SELECT` om de tabel in te vullen.
 
-Deze rest van deze sectie belicht de nuances van de implementatie om u te helpen ze beter te begrijpen.  
+In dit rest gedeelte van deze sectie worden de nuances van de implementatie gemarkeerd, zodat u ze beter kunt begrijpen.  
 
 ### <a name="allocation-of-values"></a>Toewijzing van waarden
 
-De eigenschap IDENTITY garandeert niet de volgorde waarin de surrogaatwaarden worden toegewezen, wat het gedrag van SQL Server en Azure SQL Database weerspiegelt. In synapse SQL-pool is het ontbreken van een garantie echter meer uitgesproken.
+De IDENTITEITs eigenschap biedt geen garantie voor de volg orde waarin de surrogaat waarden worden toegewezen, die het gedrag van SQL Server en Azure SQL Database weer spie gelen. In de SQL-groep Synapse is het ontbreken van een garantie echter meer uitgesp roken.
 
-Het volgende voorbeeld is een illustratie:
+Het volgende voor beeld is een illustratie:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -77,34 +77,34 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-In het voorgaande voorbeeld zijn twee rijen geland in distributie 1. De eerste rij heeft de surrogaatwaarde van 1 in kolom, `C1`en de tweede rij heeft de surrogaatwaarde van 61. Beide waarden zijn gegenereerd door de eigenschap IDENTITY. De toewijzing van de waarden is echter niet aaneengesloten. Dit gedrag is standaard.
+In het voor gaande voor beeld zijn er twee rijen gespreid over distributie 1. De eerste rij heeft de vervangende waarde 1 in kolom `C1`en de tweede rij heeft de vervangende waarde van 61. Beide waarden zijn gegenereerd door de IDENTITEITs eigenschap. De toewijzing van de waarden is echter niet aaneengesloten. Dit gedrag is standaard.
 
-### <a name="skewed-data"></a>Scheve gegevens
+### <a name="skewed-data"></a>Scheefe gegevens
 
-Het bereik van de waarden voor het gegevenstype wordt gelijkmatig verdeeld over de distributies. Als een gedistribueerde tabel last heeft van scheve gegevens, kan het waardenbereik dat beschikbaar is voor het gegevenstype voortijdig worden uitgeput. Als bijvoorbeeld alle gegevens in één distributie terecht komen, heeft de tabel in feite toegang tot slechts één zestigste van de waarden van het gegevenstype. Om deze reden is de `INT` eigenschap `BIGINT` IDENTITY beperkt tot en alleen gegevenstypen.
+Het waarden bereik voor het gegevens type worden gelijkmatig verdeeld over de distributies. Als een gedistribueerde tabel ten koste gaat van scheefe gegevens, kan het bereik van de waarden die beschikbaar zijn voor het gegevens type, voor tijdig worden uitgeput. Als bijvoorbeeld alle gegevens in één distributie worden beëindigd, heeft de tabel in feite toegang tot slechts één Sixtieth van de waarden van het gegevens type. Daarom is de IDENTITEITs eigenschap beperkt tot `INT` en `BIGINT` alleen gegevens typen.
 
-### <a name="selectinto"></a>Selecteer.. In
+### <a name="selectinto"></a>SELECTEREN... SAMEN
 
-Wanneer een bestaande identiteitskolom in een nieuwe tabel wordt geselecteerd, neemt de nieuwe kolom de eigenschap IDENTITY over, tenzij een van de volgende voorwaarden waar is:
+Wanneer een bestaande IDENTITEITs kolom is geselecteerd in een nieuwe tabel, neemt de nieuwe kolom de IDENTITEITs eigenschap over, tenzij een van de volgende voor waarden waar is:
 
-- De instructie SELECT bevat een join.
-- Meerdere SELECT-verklaringen worden samengevoegd door UNION te gebruiken.
-- De kolom IDENTITEIT wordt meer dan één keer weergegeven in de select-lijst.
-- De kolom IDENTITEIT maakt deel uit van een expressie.
+- De instructie SELECT bevat een samen voeging.
+- Meerdere SELECT-instructies worden gekoppeld met behulp van UNION.
+- De kolom IDENTITY wordt meer dan één keer in de selectie lijst vermeld.
+- De IDENTITEITs kolom maakt deel uit van een expressie.
 
-Als een van deze voorwaarden waar is, wordt de kolom NIET NULL gemaakt in plaats van de eigenschap IDENTITY te erven.
+Als aan een van deze voor waarden wordt voldaan, wordt de kolom niet NULL gemaakt in plaats van de IDENTITEITs eigenschap over te nemen.
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server-gedrag dat is gedocumenteerd voor SELECT.. In. U echter geen eigenschap IDENTITEIT opgeven in `CREATE TABLE` de kolomdefinitie van het deel van de instructie. U de functie IDENTITEIT ook `SELECT` niet gebruiken in het deel van de CTAS. Als u een tabel wilt `CREATE TABLE` invullen, moet `INSERT..SELECT` u de tabel definiëren die wordt gevolgd door de tabel te vullen.
+CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumenteerd voor SELECT.. Samen. U kunt echter geen IDENTITEITs eigenschap opgeven in de kolom definitie van het `CREATE TABLE` onderdeel van de-instructie. U kunt de functie IDENTITY ook niet gebruiken in `SELECT` het deel van de CTAS. Als u een tabel wilt vullen, moet u `CREATE TABLE` gebruiken om de tabel te definiëren `INSERT..SELECT` , gevolgd door om deze te vullen.
 
-## <a name="explicitly-inserting-values-into-an-identity-column"></a>Waarden expliciet invoegen in een identiteitskolom
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>Expliciet waarden invoegen in een IDENTITEITs kolom
 
-Synapse SQL-groep ondersteunt `SET IDENTITY_INSERT <your table> ON|OFF` syntaxis. U deze syntaxis gebruiken om waarden expliciet in de kolom IDENTITEITS in te voegen.
+De SQL-groep `SET IDENTITY_INSERT <your table> ON|OFF` Synapse ondersteunt de syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
 
-Veel gegevensmodelers gebruiken graag vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun afmetingen. Een voorbeeld is de rij -1 of 'onbekend lid'.
+Veel gegevens modelers, zoals het gebruik van vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun dimensies. Een voor beeld is de rij-1 of het onbekende lid.
 
-In het volgende script ziet u hoe u deze rij expliciet toevoegen met setIDENTITY_INSERT:
+In het volgende script ziet u hoe u deze rij expliciet kunt toevoegen met behulp van SET IDENTITY_INSERT:
 
 ```sql
 SET IDENTITY_INSERT dbo.T1 ON;
@@ -125,11 +125,11 @@ FROM    dbo.T1
 
 ## <a name="loading-data"></a>Gegevens laden
 
-De aanwezigheid van de eigenschap IDENTITY heeft enkele implicaties voor uw code voor het laden van gegevens. In deze sectie worden enkele basispatronen voor het laden van gegevens in tabellen belicht met behulp van IDENTITEIT.
+De aanwezigheid van de IDENTITEITs eigenschap heeft enkele gevolgen voor de code voor het laden van gegevens. In deze sectie worden enkele eenvoudige patronen uitgelegd voor het laden van gegevens in tabellen met behulp van identiteit.
 
-Als u gegevens in een tabel wilt laden en een surrogaatsleutel wilt genereren met behulp van ID, maakt u de tabel en gebruikt u INSERT.. SELECT of INVOEGEN.. WAARDEN om de belasting uit te voeren.
+Als u gegevens wilt laden in een tabel en een surrogaat sleutel wilt genereren met behulp van identiteit, maakt u de tabel en gebruikt u vervolgens invoegen.. SELECTEREN of invoegen... WAARDEN om de belasting uit te voeren.
 
-In het volgende voorbeeld wordt het basispatroon benadrukt:
+In het volgende voor beeld wordt het basis patroon gemarkeerd:
 
 ```sql
 --CREATE TABLE with IDENTITY
@@ -158,16 +158,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Het is momenteel niet `CREATE TABLE AS SELECT` mogelijk om gegevens te gebruiken bij het laden van gegevens in een tabel met een identiteitskolom.
+> Het is niet mogelijk om momenteel `CREATE TABLE AS SELECT` te gebruiken bij het laden van gegevens in een tabel met een identiteits kolom.
 >
 
-Zie [Uitpakken, laden en transformeren (ELT) voor Synapse SQL-pool](design-elt-data-loading.md) en [Best practices laden](guidance-for-loading-data.md)voor meer informatie over het laden van gegevens.
+Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor Synapse SQL pool](design-elt-data-loading.md) en [Aanbevolen procedures laden](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systeemweergaven
 
-U de [catalogusweergave sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om een kolom met de eigenschap IDENTITY te identificeren.
+U kunt de catalogus weergave [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om een kolom te identificeren die de eigenschap Identity heeft.
 
-Om u te helpen het databaseschema beter te begrijpen, laat dit voorbeeld zien hoe u sys.identity_column' integreren met andere systeemcatalogusweergaven:
+Dit voor beeld laat zien hoe u sys. identity_column integreert met andere systeem catalogus weergaven, zodat u meer inzicht krijgt in het database schema:
 
 ```sql
 SELECT  sm.name
@@ -189,15 +189,15 @@ AND     tb.name = 'T1'
 
 ## <a name="limitations"></a>Beperkingen
 
-De eigenschap IDENTITY kan niet worden gebruikt:
+De IDENTITEITs eigenschap kan niet worden gebruikt:
 
-- Wanneer het kolomgegevenstype niet INT of BIGINT is
-- Wanneer de kolom ook de distributiesleutel is
+- Wanneer het kolom gegevens type niet INT of BIGINT is
+- Wanneer de kolom ook de distributie sleutel is
 - Wanneer de tabel een externe tabel is
 
 De volgende gerelateerde functies worden niet ondersteund in de Synapse SQL-groep:
 
-- [IDENTITEIT()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENTITEIT ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -206,22 +206,22 @@ De volgende gerelateerde functies worden niet ondersteund in de Synapse SQL-groe
 
 ## <a name="common-tasks"></a>Algemene taken
 
-In deze sectie vindt u een voorbeeldcode die u gebruiken om veelvoorkomende taken uit te voeren wanneer u met identiteitskolommen werkt.
+Deze sectie bevat een aantal voorbeeld code die u kunt gebruiken om algemene taken uit te voeren wanneer u werkt met IDENTITEITs kolommen.
 
-Kolom C1 is de identiteit in alle volgende taken.
+Kolom C1 is de identiteit in de volgende taken.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>De hoogste toegewezen waarde voor een tabel zoeken
 
-Gebruik `MAX()` de functie om de hoogste waarde te bepalen die is toegewezen voor een gedistribueerde tabel:
+Gebruik de `MAX()` functie om de hoogste toegewezen waarde voor een gedistribueerde tabel te bepalen:
 
 ```sql
 SELECT MAX(C1)
 FROM dbo.T1
 ```
 
-### <a name="find-the-seed-and-increment-for-the-identity-property"></a>Zoek het zaad en de verhoging voor de eigenschap IDENTITY
+### <a name="find-the-seed-and-increment-for-the-identity-property"></a>De seeding en toename voor de IDENTITEITs eigenschap zoeken
 
-U de catalogusweergaven gebruiken om de waarden voor identiteitstoename en startconfiguratie voor een tabel te ontdekken met behulp van de volgende query:
+U kunt de catalogus weergaven gebruiken om de identiteits toename en Seed-configuratie waarden voor een tabel te detecteren met behulp van de volgende query:
 
 ```sql
 SELECT  sm.name
@@ -241,6 +241,6 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Tabeloverzicht](sql-data-warehouse-tables-overview.md)
-- [IDENTITEIT VAN DE TABEL MAKEN (Transact-SQL) (Eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC-CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Tabel overzicht](sql-data-warehouse-tables-overview.md)
+- [CREATE TABLE (Transact-SQL) IDENTITY (eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

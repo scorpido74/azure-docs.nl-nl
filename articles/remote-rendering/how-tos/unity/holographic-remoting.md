@@ -1,27 +1,27 @@
 ---
-title: Holografische remoting en externe weergave in eenheid gebruiken
-description: Hoe Holographic Remoting preview kan worden gebruikt in combinatie met Azure Remote Rendering
+title: Holographic Remoting en Remote Rendering gebruiken in Unity
+description: Hoe Holographic Remoting preview kan worden gebruikt in combi natie met Azure remote rendering
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
 ms.openlocfilehash: ac47a2922e92233f0acabf75817a712671306bc1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681205"
 ---
-# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Holografische remoting en externe weergave in eenheid gebruiken
+# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Holographic Remoting en Remote Rendering gebruiken in Unity
 
-[Holografische Remoting](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) en Azure Remote Rendering sluiten elkaar uit binnen één toepassing. Als zodanig is [de Unity-speelmodus](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) ook niet beschikbaar.
+[Holographic Remoting](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) en de externe rendering van Azure sluiten elkaar wederzijds uit binnen één toepassing. Als zodanig is [Unit Play-modus](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) ook niet beschikbaar.
 
-Voor elke looppas van de redacteur van de Eenheid slechts kan één van twee worden gebruikt. Als u de andere wilt gebruiken, start u Unity eerst opnieuw op.
+Voor elke uitvoering van Unity editor kan slechts een van de twee worden gebruikt. Als u het andere item wilt gebruiken, moet u eerst de eenheid opnieuw opstarten.
 
-## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>De afspeelmodus van Unity gebruiken om een voorbeeld te geven van Hololens 2
+## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>Eenheids Play modus gebruiken om voor beeld op Hololens 2 te bekijken
 
- De eenheidsspelmodus kan nog steeds worden gebruikt, bijvoorbeeld om de gebruikersinterface van de toepassing te testen. Het is echter van vitaal belang dat ARR nooit wordt geïnitialiseerd. Anders zal het crashen.
+ Unit Play-modus kan nog steeds worden gebruikt, bijvoorbeeld om de gebruikers interface van de toepassing te testen. Het is echter essentieel dat ARR nooit wordt geïnitialiseerd. Anders wordt het vastlopen.
 
-## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>Een WMR VR-headset gebruiken om een voorbeeld te bekijken op het bureaublad
+## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>Een WMR VR-headset gebruiken om op bureau blad te bekijken
 
-Als er een Windows Mixed Reality VR-headset aanwezig is, kan deze worden gebruikt om een voorbeeld te bekijken in Unity. In dit geval is het prima om ARR te initialiseren, maar het zal niet mogelijk zijn om verbinding te maken met een sessie terwijl de WMR-headset wordt gebruikt.
+Als er een Windows Mixed Reality VR-headset aanwezig is, kan deze worden gebruikt om een voor beeld van de binnen eenheid te bekijken. In dit geval is het goed om ARR te initialiseren, maar het is niet mogelijk om verbinding te maken met een sessie terwijl de headset WMR wordt gebruikt.

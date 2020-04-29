@@ -1,6 +1,6 @@
 ---
-title: In plaats van ETL, ontwerp ELT
-description: Flexibele strategieën voor het laden van gegevens implementeren voor Synapse SQL-pool binnen Azure Synapse Analytics
+title: Ontwerp ELT in plaats van ETL
+description: Flexibele strategieën voor het laden van gegevens implementeren voor Synapse SQL-groep binnen Azure Synapse Analytics
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,83 +12,83 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744958"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor Synapse SQL-pool
+# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor de SQL-groep Synapse
 
-Traditionele SMP SQL-pools gebruiken een ETL-proces (Extract, Transform en Load) voor het laden van gegevens. Synapse SQL-pool, binnen Azure Synapse Analytics, heeft een enorm parallelle verwerkingsarchitectuur (MPP) die profiteert van de schaalbaarheid en flexibiliteit van reken- en opslagbronnen.
+Traditionele SMP-SQL-Pools gebruiken een proces voor het laden van de gegevens extractie, transformeren en laden (ETL). Synapse SQL-pool, in azure Synapse Analytics, heeft een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources.
 
-Met behulp van een EXTRACT, Load, and Transform (ELT) proces maakt gebruik van MPP en elimineert de middelen die nodig zijn voor gegevenstransformatie voorafgaand aan het laden.
+Het gebruik van een proces voor extractie, laden en transformeren (ELT) maakt gebruik van MPP en elimineert de resources die nodig zijn voor gegevens transformatie voordat ze worden geladen.
 
-Hoewel SQL-pool veel laadmethoden ondersteunt, waaronder populaire SQL Server-opties zoals [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en de [SqlBulkCopy API,](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)is de snelste en meest schaalbare manier om gegevens te laden via externe tabellen van PolyBase en de [COPY-instructie](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview).
+Hoewel de SQL-groep veel methoden voor het laden ondersteunt, waaronder populaire SQL Server opties zoals [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en de [SqlBulkCopy-API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), is de snelste en meest schaal bare manier om gegevens te laden via Poly base externe tabellen en de [instructie Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (preview).
 
-Met PolyBase en de instructie COPY hebt u toegang tot externe gegevens die zijn opgeslagen in Azure Blob-opslag of Azure Data Lake Store via de T-SQL-taal. Voor de meeste flexibiliteit bij het laden raden we u aan de copy-instructie te gebruiken.
+Met poly base en de instructie COPY kunt u toegang krijgen tot externe gegevens die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Store via de T-SQL-taal. Voor de meeste flexibiliteit bij het laden wordt u aangeraden de instructie COPY te gebruiken.
 
 > [!NOTE]  
-> De copy-instructie bevindt zich momenteel in een openbare preview. Als u feedback wilt geven, stuurt sqldwcopypreview@service.microsoft.comu e-mail naar de volgende distributielijst: .
+> De instructie COPY is momenteel beschikbaar als open bare preview. Als u feedback wilt geven, verzendt u een e-mail naar de sqldwcopypreview@service.microsoft.comvolgende distributie lijst:.
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>Wat is ELT?
 
-Extract, Load, and Transform (ELT) is een proces waarbij gegevens worden geëxtraheerd uit een bronsysteem, in een SQL-groep worden geladen en vervolgens worden getransformeerd.
+Extra heren, laden en transformeren (ELT) is een proces waarmee gegevens worden geëxtraheerd uit een bron systeem, in een SQL-groep worden geladen en vervolgens worden getransformeerd.
 
-De basisstappen voor de implementatie van ELT zijn:
+De basis stappen voor het implementeren van ELT zijn:
 
 1. Extraheer de brongegevens naar tekstbestanden.
-2. Land de gegevens in Azure Blob-opslag of Azure Data Lake Store.
-3. Bereid de gegevens voor op het laden.
-4. Laad de gegevens in faseringstabellen met PolyBase of de opdracht KOPIËREN.
+2. Voer de gegevens in op Azure Blob-opslag of Azure Data Lake Store.
+3. De gegevens voorbereiden voor het laden van.
+4. Laad de gegevens in faserings tabellen met poly base of de Kopieer opdracht.
 5. Transformeer de gegevens.
 6. Voeg de gegevens in productietabellen in.
 
-Zie [PolyBase gebruiken om gegevens uit Azure blob-opslag te laden](load-data-from-azure-blob-storage-using-polybase.md)voor een zelfstudie voor het laden van PolyBase.
+Zie poly [Base gebruiken voor het laden van gegevens uit Azure Blob Storage](load-data-from-azure-blob-storage-using-polybase.md)voor een zelf studie over het laden van poly bases.
 
-Zie [Patronen blog laden voor](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)meer informatie.
+Zie [blog voor het laden van patronen](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)voor meer informatie.
 
-## <a name="1-extract-the-source-data-into-text-files"></a>1. De brongegevens extraheren in tekstbestanden
+## <a name="1-extract-the-source-data-into-text-files"></a>1. Extraheer de bron gegevens in tekst bestanden
 
-Het verkrijgen van gegevens uit uw bronsysteem is afhankelijk van de opslaglocatie.  Het doel is om de gegevens te verplaatsen naar PolyBase en de COPY ondersteunde afgebakende tekst of CSV-bestanden.
+Het ophalen van gegevens uit uw bron systeem is afhankelijk van de opslag locatie.  Het doel is om de gegevens naar poly Base te verplaatsen en de kopie ondersteunt tekst of CSV-bestanden met scheidings tekens.
 
-### <a name="polybase-and-copy-external-file-formats"></a>Externe bestandsindelingen (PolyBase en COPY)
+### <a name="polybase-and-copy-external-file-formats"></a>Poly base en kopiëren van externe bestands indelingen
 
-Met PolyBase en de instructie COPY u gegevens laden van UTF-8- en UTF-16-gecodeerde gedefinieerde tekst- of CSV-bestanden. Naast de afgebakende tekst- of CSV-bestanden, worden deze ook geladen vanuit de Hadoop-bestandsindelingen zoals ORC en Parket. PolyBase en de COPY-instructie kunnen ook gegevens van Gzip- en Snappy-gecomprimeerde bestanden laden.
+Met poly base en de instructie COPY kunt u gegevens laden van UTF-8-en UTF-16-gecodeerde tekst of CSV-bestanden met scheidings tekens. Behalve tekst-of CSV-bestanden, worden ze geladen vanuit de Hadoop-bestands indelingen, zoals ORC en Parquet. Poly base en de instructie COPY kunnen ook gegevens laden uit gzip-en Snappy gecomprimeerde bestanden.
 
-Uitgebreide ASCII-indeling, indeling met vaste breedte en geneste indelingen zoals WinZip of XML worden niet ondersteund. Als u exporteert vanuit SQL Server, u het [bcp-opdrachtregelgereedschap](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens naar afgebakende tekstbestanden te exporteren.
+Uitgebreide ASCII-indeling met een vaste breedte en geneste indelingen, zoals WinZip of XML, worden niet ondersteund. Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens te exporteren naar tekst bestanden met scheidings tekens.
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. De gegevens in Azure Blob-opslag of Azure Data Lake Store verwerken
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Voer de gegevens over naar Azure Blob-opslag of Azure Data Lake Store
 
-Als u de gegevens wilt verwerken in Azure-opslag, u deze verplaatsen naar [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) of [Azure Data Lake Store Gen2.](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Op beide locaties moeten de gegevens worden opgeslagen in tekstbestanden. PolyBase en de COPY-instructie kunnen vanaf beide locaties worden geladen.
+Als u de gegevens in azure Storage wilt laten staan, kunt u deze verplaatsen naar [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) of [Azure data Lake Store Gen2](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). In beide locaties moeten de gegevens worden opgeslagen in tekst bestanden. Poly base en de instructie COPY kunnen worden geladen vanuit een van beide locaties.
 
-Hulpprogramma's en services die u gebruiken om gegevens naar Azure Storage te verplaatsen:
+Hulpprogram ma's en services die u kunt gebruiken om gegevens naar Azure Storage te verplaatsen:
 
-- [Azure ExpressRoute-service](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) verbetert de netwerkdoorvoer, -prestaties en -voorspelbaarheid. ExpressRoute is een service die uw gegevens via een speciale privéverbinding naar Azure leidt. ExpressRoute-verbindingen leiden gegevens niet via het openbare internet. De verbindingen bieden meer betrouwbaarheid, hogere snelheden, lagere latencies en hogere beveiliging dan typische verbindingen via het openbare internet.
-- [AZCopy-hulpprogramma](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) verplaatst gegevens naar Azure Storage via het openbare internet. Dit werkt als uw gegevensgrootte minder dan 10 TB beslaat. Om regelmatig ladingen uit te voeren met AZCopy, test je de netwerksnelheid om te zien of deze acceptabel is.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) heeft een gateway die u op uw lokale server installeren. Vervolgens u een pijplijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [Gegevens laden voor SQL Analytics](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor het gebruik van Data Factory met SQL Analytics.
+- De [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -service verbetert de netwerk doorvoer, prestaties en voorspel baarheid. ExpressRoute is een service waarmee uw gegevens worden gerouteerd via een speciale particuliere verbinding met Azure. ExpressRoute-verbindingen sturen geen gegevens via het open bare Internet. De verbindingen bieden meer betrouw baarheid, hogere snelheden, lagere wacht tijden en hogere beveiliging dan typische verbindingen via het open bare Internet.
+- Met het [hulp programma AZCopy](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kunt u gegevens verplaatsen naar Azure Storage via het open bare Internet. Dit werkt als uw gegevens grootten minder dan 10 TB zijn. Als u de belasting regel matig wilt uitvoeren met AZCopy, test u de netwerk snelheid om te controleren of deze acceptabel is.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) heeft een gateway die u op uw lokale server kunt installeren. Vervolgens kunt u een pijp lijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [gegevens laden voor SQL Analytics](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)om Data Factory met SQL Analytics te gebruiken.
 
-## <a name="3-prepare-the-data-for-loading"></a>3. De gegevens voorbereiden op het laden
+## <a name="3-prepare-the-data-for-loading"></a>3. de gegevens voorbereiden voor het laden
 
-Mogelijk moet u de gegevens in uw opslagaccount voorbereiden en schoonmaken voordat u ze laadt. Gegevensvoorbereiding kan worden uitgevoerd terwijl uw gegevens in de bron zijn, terwijl u de gegevens exporteert naar tekstbestanden of nadat de gegevens zich in Azure Storage bevinden.  Het is het gemakkelijkst om zo vroeg mogelijk met de gegevens te werken.  
+Mogelijk moet u de gegevens in uw opslag account voorbereiden en opschonen voordat u ze laadt. Gegevens voorbereiding kan worden uitgevoerd terwijl de gegevens zich in de bron bevinden, terwijl u de gegevens naar tekst bestanden exporteert of wanneer de gegevens zich in Azure Storage bevinden.  Het is eenvoudig om zo snel mogelijk in het proces te werken met de gegevens.  
 
 ### <a name="define-external-tables"></a>Externe tabellen definiëren
 
-Als u PolyBase gebruikt, moet u externe tabellen in uw SQL-groep definiëren voordat u deze laadt. Externe tabellen zijn niet vereist door de kopie-instructie. PolyBase gebruikt externe tabellen om de gegevens in Azure Storage te definiëren en te openen.
+Als u poly base gebruikt, moet u externe tabellen definiëren in uw SQL-groep voordat u ze laadt. Externe tabellen zijn niet vereist voor de instructie COPY. Poly base gebruikt externe tabellen voor het definiëren en openen van de gegevens in Azure Storage.
 
-Een externe tabel is vergelijkbaar met een databaseweergave. De externe tabel bevat het tabelschema en wijst naar gegevens die buiten de SQL-groep zijn opgeslagen.
+Een externe tabel is vergelijkbaar met een database weergave. De externe tabel bevat het tabel schema en verwijst naar gegevens die buiten de SQL-groep zijn opgeslagen.
 
-Het definiëren van externe tabellen omvat het opgeven van de gegevensbron, de indeling van de tekstbestanden en de tabeldefinities. T-SQL-syntaxisverwijzingsartikelen die u nodig hebt, zijn:
+Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de tekst bestanden en de tabel definities opgeven. Naslag informatie over T-SQL-syntaxis die u nodig hebt, zijn:
 
-- [EXTERNE GEGEVENSBRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [EXTERNE GEGEVENS BRON MAKEN](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [EXTERNE TABEL MAKEN](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Bij het laden van parket is de SQL-toewijzing van het gegevenstype:
+Bij het laden van Parquet is de toewijzing van het SQL-gegevens type:
 
-| **Gegevenstype parket** | **SQL-gegevenstype** |
+| **Parquet-gegevens type** | **SQL-gegevens type** |
 | :-------------------: | :---------------: |
 |        tinyint        |      tinyint      |
 |       smallint        |     smallint      |
@@ -96,69 +96,69 @@ Bij het laden van parket is de SQL-toewijzing van het gegevenstype:
 |        bigint         |      bigint       |
 |        booleaans        |        bit        |
 |        double         |       float       |
-|         float         |       real        |
-|        double         |       Geld       |
-|        double         |    kleingeld     |
-|        tekenreeks         |       Nchar       |
+|         float         |       werkelijk        |
+|        double         |       financieel       |
+|        double         |    smallmoney     |
+|        tekenreeks         |       nchar       |
 |        tekenreeks         |     nvarchar      |
-|        tekenreeks         |       Char        |
+|        tekenreeks         |       char        |
 |        tekenreeks         |      varchar      |
 |        binair         |      binair       |
-|        binair         |     varbinary varbinary     |
+|        binair         |     varbinary     |
 |       tijdstempel       |       date        |
-|       tijdstempel       |   smalldatetijd   |
+|       tijdstempel       |   smalldatetime   |
 |       tijdstempel       |     datetime2     |
 |       tijdstempel       |     datum/tijd      |
 |       tijdstempel       |       tijd        |
 |         date          |       date        |
 |        decimal        |      decimal      |
 
-Zie de stap Externe tabellen [maken](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) in de bewerkvoorbereidingshandleiding voor een voorbeeld van het maken van externe objecten.
+Voor een voor beeld van het maken van externe objecten raadpleegt u de stap [externe tabellen maken](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) in de zelf studie voor het laden van.
 
-### <a name="format-text-files"></a>Tekstbestanden opmaken
+### <a name="format-text-files"></a>Tekst bestanden opmaken
 
-Als u PolyBase gebruikt, moeten de gedefinieerde externe objecten de rijen van de tekstbestanden uitlijnen met de externe tabel en de definitie van bestandsindeling. De gegevens in elke rij van het tekstbestand moeten worden uitgelijnd met de tabeldefinitie.
-Ga als u de tekstbestanden opmaak:
+Als u poly base gebruikt, moeten de gedefinieerde externe objecten de rijen van de tekst bestanden uitlijnen met de definitie van de externe tabel en de bestands indeling. De gegevens in elke rij van het tekst bestand moeten worden uitgelijnd met de tabel definitie.
+De tekst bestanden opmaken:
 
-- Als uw gegevens afkomstig zijn van een niet-relationele bron, moet u deze omzetten in rijen en kolommen. Of de gegevens nu afkomstig zijn van een relationele of niet-relationele bron, de gegevens moeten worden getransformeerd om af te stemmen op de kolomdefinities voor de tabel waarin u van plan bent de gegevens te laden.
-- Gegevens in het tekstbestand opmaken om uit te lijnen met de kolommen en gegevenstypen in de doeltabel. Verkeerde uitlijning tussen gegevenstypen in de externe tekstbestanden en de SQL-pooltabel zorgt ervoor dat rijen tijdens de belasting worden afgewezen.
-- Afzonderlijke velden in het tekstbestand met een terminator.  Zorg ervoor dat u een teken of een tekenreeks gebruikt die niet in uw brongegevens wordt gevonden. Gebruik de terminator die u hebt opgegeven met [EXTERNE BESTANDSINDELING MAKEN](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Als uw gegevens afkomstig zijn uit een niet-relationele bron, moet u deze omzetten in rijen en kolommen. Of de gegevens afkomstig zijn uit een relationele of niet-relationele bron, dat de gegevens moeten worden getransformeerd om te worden uitgelijnd met de kolom definities voor de tabel waarin u de gegevens wilt laden.
+- Gegevens in het tekst bestand opmaken om uit te lijnen met de kolommen en gegevens typen in de doel tabel. Bij een onjuiste uitlijning tussen gegevens typen in de externe tekst bestanden en de tabel met SQL-groepen worden de rijen tijdens de belasting geweigerd.
+- Scheid velden in het tekst bestand met een terminator.  Zorg ervoor dat u een teken of een teken reeks gebruikt die niet in de bron gegevens voor komt. Gebruik de Terminator die u hebt opgegeven met [externe BESTANDS indeling maken](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. De gegevens laden met PolyBase of de instructie COPY
+## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. gegevens laden met poly base of de instructie COPY
 
-Het is de beste gewoonte om gegevens in een faseringstabel te laden. Met faseringstabellen u fouten afhandelen zonder de productietabellen te verstoren. Een faseringstabel biedt u ook de mogelijkheid om de SQL-pool MPP te gebruiken voor gegevenstransformaties voordat u de gegevens in productietabellen invoegt.
+Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om de SQL-pool-MPP te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
 
-De tabel moet vooraf worden gemaakt bij het laden in een faseringstabel met COPY.
+De tabel moet vooraf worden gemaakt wanneer deze in een faserings tabel met een kopie wordt geladen.
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>Opties voor laden met polybase- en COPY-instructie
+### <a name="options-for-loading-with-polybase-and-copy-statement"></a>Opties voor het laden met de instructie poly base en kopiëren
 
-Als u gegevens wilt laden met PolyBase, u een van de volgende laadopties gebruiken:
+Als u gegevens wilt laden met poly Base, kunt u een van de volgende laad opties gebruiken:
 
-- [PolyBase met T-SQL](load-data-from-azure-blob-storage-using-polybase.md) werkt goed wanneer uw gegevens zich in Azure Blob-opslag of Azure Data Lake Store bevinden. Het geeft u de meeste controle over het laadproces, maar vereist ook dat u externe gegevensobjecten definieert. De andere methoden definiëren deze objecten achter de schermen terwijl u brontabellen naar doeltabellen mapt.  Als u T-SQL-belastingen wilt orkestreren, u Azure Data Factory-, SSIS- of Azure-functies gebruiken.
-- [PolyBase met SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) werkt goed wanneer uw brongegevens zich in SQL Server bevinden, sql server on-premises of in de cloud. SSIS definieert de bron voor toewijzingen van doeltabeltoewijzingen en orkestreert ook de belasting. Als u al SSIS-pakketten hebt, u de pakketten aanpassen om te werken met de nieuwe bestemming voor gegevensmagazijnen.
-- [PolyBase- en COPY-instructie met Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) is een ander orchestration-hulpmiddel.  Het definieert een pijplijn en plant taken.
-- [PolyBase met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) brengt gegevens van een tabel over naar een Databricks-gegevensframe en/of schrijft gegevens van een Databricks-gegevensframe naar een tabel met PolyBase.
+- [Poly Base met T-SQL](load-data-from-azure-blob-storage-using-polybase.md) werkt goed als uw gegevens zich in Azure Blob storage of Azure data Lake Store bevinden. Het biedt u de meeste controle over het laad proces, maar u moet ook externe gegevens objecten definiëren. Met de andere methoden worden deze objecten achter de schermen gedefinieerd wanneer u bron tabellen aan doel tabellen toewijst.  U kunt met behulp van Azure Data Factory-, SSIS-of Azure-functies voor het organiseren van T-SQL-belasting.
+- [Poly Base met SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) werkt goed als uw bron gegevens zich in SQL Server bevinden, hetzij SQL Server on-premises of in de Cloud. SSIS definieert de bron-naar-doel tabel toewijzingen en organiseert ook de belasting. Als u al SSIS-pakketten hebt, kunt u de pakketten wijzigen om met de nieuwe Data Warehouse-bestemming te werken.
+- [Poly base-en copy-instructie met Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) is een andere Orchestration-tool.  Hierin worden een pijp lijn en plannings taken gedefinieerd.
+- [Poly Base met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) gegevens overdraagt van een tabel naar een Databricks data frame en/of schrijft gegevens van een Databricks data frame naar een tabel met poly base.
 
-### <a name="other-loading-options"></a>Andere laadopties
+### <a name="other-loading-options"></a>Andere opties voor laden
 
-Naast PolyBase en de COPY-instructie u [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) of de [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gebruiken. bcp wordt rechtstreeks naar de database geladen zonder azure blob-opslag te doorlopen en is alleen bedoeld voor kleine belastingen.
+Naast poly base en de instructie COPY kunt u gebruikmaken van [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) of de SQLBULKCOPY- [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). BCP wordt rechtstreeks naar de data base geladen zonder Azure Blob-opslag te passeren en is uitsluitend bedoeld voor kleine belastingen.
 
 > [!NOTE]
-> De laadprestaties van deze opties zijn trager dan PolyBase en de instructie COPY.
+> De belasting prestaties van deze opties zijn lager dan poly base en de instructie COPY.
 
-## <a name="5-transform-the-data"></a>5. De gegevens transformeren
+## <a name="5-transform-the-data"></a>5. de gegevens transformeren
 
-Terwijl gegevens zich in de faseringstabel bevinden, voert u transformaties uit die uw werkbelasting vereist. Verplaats de gegevens vervolgens naar een productietabel.
+Terwijl de gegevens zich in de faserings tabel bevindt, voert u trans formaties uit die nodig zijn voor uw werk belasting. Verplaats de gegevens vervolgens naar een productie tabel.
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. De gegevens in productietabellen invoegen
+## <a name="6-insert-the-data-into-production-tables"></a>6. Voeg de gegevens in productie tabellen in
 
-De INSERT IN ... Select-instructie verplaatst de gegevens van de faseringstabel naar de permanente tabel.
+INVOEGEN in... Met de instructie SELECT worden de gegevens van de faserings tabel naar de permanente tabel verplaatst.
 
-Terwijl u een ETL-proces ontwerpt, probeert u het proces uit te voeren op een klein testvoorbeeld. Probeer 1000 rijen uit de tabel naar een bestand te halen, verplaats het naar Azure en probeer het vervolgens in een faseringstabel te laden.
+Probeer tijdens het ontwerpen van een ETL-proces het proces uit te voeren op een kleine steek proef. Probeer 1000 rijen uit de tabel naar een bestand te halen, verplaats het naar Azure en probeer het te laden in een faserings tabel.
 
 ## <a name="partner-loading-solutions"></a>Oplossingen voor het laden van partners
 
-Veel van onze partners hebben laadoplossingen. Zie voor meer informatie een lijst van onze [oplossingspartners.](sql-data-warehouse-partner-business-intelligence.md)
+Veel van onze partners hebben het laden van oplossingen. Zie een lijst met onze [oplossings partners](sql-data-warehouse-partner-business-intelligence.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

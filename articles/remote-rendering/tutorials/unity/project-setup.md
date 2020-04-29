@@ -1,56 +1,56 @@
 ---
-title: Vanuit het niets een Unity-project opzetten
-description: Hier wordt uitgelegd hoe u een leeg Unity-project configureert voor het gebruik met Azure Remote Rendering.
+title: Een geheel nieuw Unity-project opstarten
+description: Hierin wordt uitgelegd hoe u een blanco eenheids project configureert voor gebruik met Azure remote rendering.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
 ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679595"
 ---
-# <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Zelfstudie: Een Unity-project vanaf nul instellen
+# <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Zelf studie: een geheel nieuw eenheids project instellen
 
 In deze zelfstudie leert u:
 
 > [!div class="checklist"]
 >
-> * Een kras-Unity-project configureren voor ARR.
-> * Renderingsessies maken en stoppen.
+> * Het configureren van een Scratch unit-project voor ARR.
+> * Rendering-sessies maken en stoppen.
 > * Bestaande sessies opnieuw gebruiken.
-> * Verbinding maken en loskoppelen van sessies.
-> * Modellen laden in een renderingsessie.
-> * Verbindingsstatistieken weergeven.
+> * Verbinding maken en verbreken van sessies.
+> * Modellen laden in een weergave sessie.
+> * Verbindings statistieken weer geven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze tutorial heb je nodig:
+Voor deze zelf studie hebt u het volgende nodig:
 
-* Uw accountgegevens (account-ID, accountsleutel, abonnements-ID). Als je geen account hebt, [maak je een account](../../how-tos/create-an-account.md)aan .
-* Windows SDK 10.0.18362.0 [(downloaden)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* De nieuwste versie van Visual Studio 2019 [(download)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(download)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(download)](https://unity3d.com/get-unity/download)
-  * Installeer deze modules in Unity:
-    * **UWP** - Ondersteuning voor universal Windows Platform Build
-    * **IL2CPP** - Windows Build Support (IL2CPP)
+* Uw account gegevens (account-ID, account sleutel, abonnements-ID). Als u geen account hebt, [maakt u een account](../../how-tos/create-an-account.md).
+* Windows SDK 10.0.18362.0 [(down load)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* De nieuwste versie van Visual Studio 2019 [(down load)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* GIT [(down load)](https://git-scm.com/downloads)
+* Unity 2019.3.1 [(down load)](https://unity3d.com/get-unity/download)
+  * Deze modules installeren in Unity:
+    * Ondersteuning voor **UWP** -universeel Windows-platform-build
+    * **IL2CPP** -ondersteuning voor Windows-Build (IL2CPP)
 
 > [!TIP]
-> De [ARR samples repository](https://github.com/Azure/azure-remote-rendering) bevat voorbereide Unity projecten voor alle tutorials. U deze projecten als referentie gebruiken.
+> De [opslag plaats](https://github.com/Azure/azure-remote-rendering) voor de ARR-voor beelden bevat voor bereide unit-projecten voor alle zelf studies. U kunt deze projecten als referentie gebruiken.
 
 ## <a name="create-a-new-unity-project"></a>Een nieuw Unity-project maken
 
-Maak vanuit de Unity Hub een nieuw project.
-In dit voorbeeld gaan we ervan uit dat het `RemoteRendering`project wordt gemaakt in een map met de naam .
+Maak een nieuw project op basis van de eenheids-hub.
+In dit voor beeld wordt ervan uitgegaan dat het project wordt gemaakt in een map `RemoteRendering`met de naam.
 
-![nieuw projectvenster](media/new-project.png)
+![nieuw project venster](media/new-project.png)
 
 ## <a name="configure-the-projects-manifest"></a>Het manifest van het project configureren
 
-U moet het `Packages/manifest.json` bestand wijzigen dat zich in uw eenheidsprojectmap bevindt. Open het bestand in een teksteditor en sluit de onderstaande regels toe:
+U moet het bestand `Packages/manifest.json` wijzigen dat zich bevindt in de projectmap van uw Unity-project. Open het bestand in een tekst editor en voeg de volgende regels toe:
 
 ```json
 {
@@ -69,81 +69,81 @@ U moet het `Packages/manifest.json` bestand wijzigen dat zich in uw eenheidsproj
 }
 ```
 
-Het pakket universal render pipeline is optioneel, maar wordt aanbevolen om prestatieredenen.
-Nadat u het manifest hebt gewijzigd en opgeslagen, wordt Unity automatisch vernieuwd. Controleer of de pakketten zijn geladen in het *venster Project:*
+Het pakket voor de universele rendering-pijp lijn is optioneel, maar wordt aanbevolen om prestatie redenen.
+Nadat u het manifest hebt gewijzigd en opgeslagen, wordt unit automatisch vernieuwd. Bevestig dat de pakketten zijn geladen in het *project* venster:
 
-![de invoer van het pakket bevestigen](media/confirm-packages.png)
+![invoer van pakketten bevestigen](media/confirm-packages.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Zorg ervoor dat u de nieuwste versie van het pakket hebt
 
-De volgende stappen zorgen ervoor dat uw project de nieuwste versie van het remote-rendering pakket gebruikt.
-1. Selecteer het pakket in het projectvenster en ![klik op het pakketpictogram: Het pakketpictogram selecteren](media/package-icons.png)
-1. Klik in de inspecteur op 'Weergave ![in pakketbeheer': pakketcontrole](media/package-properties.png)
-1. Kijk op de pagina package manager voor remote rendering package of de updateknop beschikbaar is. Als dit het is, dan te klikken op het ![zal het pakket bijwerken naar de laatst beschikbare versie: De ARR-pakket in de package manager](media/package-manager.png)
-1. Soms kan het bijwerken van het pakket leiden tot fouten in de console. Als dit gebeurt, probeert u het project te sluiten en opnieuw te openen.
+Volg de volgende stappen om ervoor te zorgen dat uw project de nieuwste versie van het pakket voor externe rendering gebruikt.
+1. Selecteer het pakket in het venster Project en klik op het pictogram package: ![het pictogram package selecteren](media/package-icons.png)
+1. Klik in de Inspector op ' weer geven in pakket beheer ' ![: pakket controle](media/package-properties.png)
+1. Op de pagina Package Manager voor het pakket voor externe rendering raadpleegt u of de knop bijwerken beschikbaar is. Als dit het geval is, wordt het pakket met beknopte bijgewerkt naar de meest ![recente beschik bare versie: het ARR-pakket in package manager](media/package-manager.png)
+1. Soms kan het bijwerken van het pakket leiden tot fouten in de console. Als dit het geval is, sluit u het project en opent u het opnieuw.
 
 ## <a name="configure-the-camera"></a>De camera configureren
 
-Selecteer het knooppunt **Hoofdcamera.**
+Selecteer het **hoofd** knooppunt van de camera.
 
-1. De *transformatie opnieuw instellen:*
+1. De *trans formatie*opnieuw instellen:
 
-    ![cameratransformatie opnieuw instellen](media/camera-reset-transform.png)
+    ![camera transformatie opnieuw instellen](media/camera-reset-transform.png)
 
-1. **Vlaggen wissen instellen** op Effen *kleur*
+1. **Markeringen wissen** instellen op *effen kleur*
 
-1. **Achtergrond instellen** op *Zwart*
+1. **Achtergrond** instellen op *zwart*
 
-1. Stel de **knipvlakken** in *op Dichtbij = 0,3* en *Ver = 20*. Dit betekent dat rendering geometrie knipt die dichter is dan 30 cm of verder dan 20 meter.
+1. Stel de **knip plannen** in op *bijna = 0,3* en *Far = 20*. Dit betekent dat de geometrie meer dan 30 cm of meer dan 20 meters kan worden gerenderd.
 
-    ![Eigenschappen van unity-camera](media/camera-properties.png)
+    ![Eigenschappen van Unity camera](media/camera-properties.png)
 
-## <a name="adjust-the-project-settings"></a>De projectinstellingen aanpassen
+## <a name="adjust-the-project-settings"></a>De project instellingen aanpassen
 
-1. Open *> Projectinstellingen bewerken...*
-1. Selecteer Kwaliteit in de lijst links.
-1. Het **standaardkwaliteitsniveau** wijzigen in *Laag*
+1. *> project instellingen bewerken...*
+1. Selecteer in de lijst aan de linkerkant de optie kwaliteit.
+1. Het **standaard kwaliteits niveau** wijzigen in *laag*
 
-    ![instellingen voor projectkwaliteit wijzigen](media/settings-quality.png)
+    ![instellingen voor project kwaliteit wijzigen](media/settings-quality.png)
 
-1. Selecteer **Afbeeldingen** aan de linkerkant.
-1. Wijzig de instelling **Scriptable Rendering Pipeline** in *HybridRenderingPipeline*. Sla deze stap over als de universele renderpijplijn niet wordt gebruikt.
+1. Selecteer **afbeeldingen** aan de linkerkant.
+1. Wijzig de **pipeline** -instelling voor het weer geven van een script in *HybridRenderingPipeline*. Sla deze stap over als de universele rendering-pijp lijn niet wordt gebruikt.
 
-    ![projectgrafische instellingen](media/settings-graphics-lwrp.png) wijzigen Soms vult de gebruikersinterface de lijst met beschikbare pijplijntypen uit de pakketten niet in, in ![welk geval het *hybridrenderingpipeline-element* handmatig naar het veld moet worden gesleept: de instellingen voor projectafbeeldingen wijzigen](media/hybrid-rendering-pipeline.png)
-1. Selecteer **Player** aan de linkerkant.
-1. Het tabblad **Instellingen voor universele Windows-platforms selecteren**
-1. De **XR-instellingen** wijzigen om ![Windows Mixed Reality te ondersteunen: spelersinstellingen](media/xr-player-settings.png)
-1. Selecteer de instellingen zoals in de screenshot hierboven:
-    1. **Virtual Reality-ondersteuning** inschakelen
-    1. **Diepte-indeling** instellen op *16-bits diepte*
-    1. **Dieptebufferdelen inschakelen**
-    1. **Stereorenderingmodus** instellen op *Single Pass Instanced*
+    ![het wijzigen van de](media/settings-graphics-lwrp.png) instellingen van een project-afbeelding in de gebruikers interface wordt de lijst met beschik bare pijplijn typen in de pakketten niet gevuld. in dat geval moet het *HybridRenderingPipeline* - ![activum hand matig naar het veld worden gesleept: instellingen van project graphics wijzigen](media/hybrid-rendering-pipeline.png)
+1. Selecteer **speler** aan de linkerkant.
+1. Het tabblad **universeel Windows-platform instellingen** selecteren
+1. Wijzig de **XR-instellingen** ter ondersteuning van Windows Mixed ![reality: instellingen voor speler](media/xr-player-settings.png)
+1. Selecteer de instellingen in de bovenstaande scherm afbeelding:
+    1. **Virtual Reality ondersteund** inschakelen
+    1. **Diepte notatie** instellen op *16-bits diepte*
+    1. **Diepte buffer delen** inschakelen
+    1. **Modus voor stereo rendering** instellen op *eenmalige instantie*
 
-1. In hetzelfde venster, boven *XR-instellingen,* **uitvouwen Publicatie-instellingen**
-1. Scroll naar beneden naar **Mogelijkheden** en selecteer:
+1. Vouw in hetzelfde venster, boven *XR-instellingen*, **publicatie-instellingen** uit
+1. Schuif omlaag naar **mogelijkheden** en selecteer:
     * **InternetClient**
     * **InternetClientServer**
-    * **Ruimtelijk Perceptie**
+    * **SpatialPerception**
     * Optioneel voor ontwikkeling: **PrivateNetworkClientServer**
 
-      Deze optie is nodig als u de Unity remote debugger op uw apparaat wilt aansluiten.
+      Deze optie is nodig als u de eenheid voor externe fout opsporing op uw apparaat wilt verbinden.
 
-1. In **ondersteunde apparaatfamilies**schakelt u **Holografisch** en **bureaublad in**
+1. Schakel in **ondersteunde Apparaatsets** **Holographic** en **Desktop** in
 
-1. Als u de Mixed Reality Toolkit wilt gebruiken, raadpleegt u de [MRTK-documentatie](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview)voor meer informatie over aanbevolen instellingen en mogelijkheden.
+1. Als u de Toolkit Mixed Reality wilt gebruiken, raadpleegt u de [MRTK-documentatie](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview)voor meer informatie over de aanbevolen instellingen en mogelijkheden.
 
-## <a name="validate-project-setup"></a>Projectsetup valideren
+## <a name="validate-project-setup"></a>Project instellingen valideren
 
-Voer de volgende stappen uit om te valideren dat de projectinstellingen correct zijn.
+Voer de volgende stappen uit om te controleren of de project instellingen juist zijn.
 
-1. Kies het item ValidateProject in het menu RemoteRendering op de werkbalk unity editor.
-1. Gebruik het venster ValidateProject om waar nodig te controleren op projectinstellingen en deze op te lossen.
+1. Kies de vermelding ValidateProject in het menu RemoteRendering van de werk balk Unity-editor.
+1. Gebruik het venster ValidateProject om de project instellingen waar nodig te controleren en te herstellen.
 
-    ![Validatie van unity editor-project](media/arr-unity-validation.png)
+    ![Eenheids editor project validatie](media/arr-unity-validation.png)
 
-## <a name="create-a-script-to-initialize-azure-remote-rendering"></a>Een script maken om Azure Remote Rendering te initialiseren
+## <a name="create-a-script-to-initialize-azure-remote-rendering"></a>Een script maken om de externe rendering van Azure te initialiseren
 
-Maak een [nieuw script](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) en geef het de naam **RemoteRendering**. Open het scriptbestand en vervang de volledige inhoud door de onderstaande code:
+Maak een [Nieuw script](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) en geef het de naam **RemoteRendering**. Open het script bestand en vervang de volledige inhoud door de onderstaande code:
 
 ```csharp
 using System.Collections;
@@ -290,39 +290,39 @@ public class RemoteRendering : MonoBehaviour
 }
 ```
 
-Dit script initialiseert Azure Remote Rendering, vertelt welk cameraobject moet worden gebruikt voor rendering en plaatst een knop **Sessie maken** in de viewport wanneer de *modus Afspelen* is geactiveerd.
+Met dit script wordt de externe rendering van Azure geïnitialiseerd, wordt aangegeven welk camera object moet worden gebruikt voor rendering en wordt een knop **sessie maken** in de View Port geplaatst wanneer de *afspeel modus* wordt geactiveerd.
 
 > [!CAUTION]
-> Het wijzigen van het script en het opslaan terwijl de afspeelmodus actief is in Unity kan resulteren in unity bevriezing en je wordt gedwongen om het af te sluiten via de taakmanager. Stop daarom altijd de afspeelmodus voordat u het *script RemoteRendering* bewerkt.
+> Als u het script wijzigt en opslaat terwijl de afspeel modus actief is in unit-eenheid, kan dit leiden tot het bevriezen van de eenheid en kunt u deze afsluiten in taak beheer. Stop de afspeel modus daarom altijd voordat u het script *RemoteRendering* bewerkt.
 
-## <a name="test-azure-remote-rendering-session-creation"></a>Het maken van Azure Remote Rendering-sessies testen
+## <a name="test-azure-remote-rendering-session-creation"></a>Het maken van een externe rendering-sessie door Azure testen
 
-Maak een nieuw GameObject in de scène en voeg de component *RemoteRendering* toe. Vul het juiste *accountdomein,* *account-id*en *accountsleutel* in voor uw externe renderingaccount:
+Maak een nieuwe GameObject in de scène en voeg de component *RemoteRendering* hieraan toe. Vul het juiste *account domein*, de *account-id*en de *account sleutel* voor uw externe rendering-account in:
 
-![Eigenschappen van externe renderingcomponent](media/remote-rendering-component.png)
+![Eigenschappen van onderdeel externe Rendering](media/remote-rendering-component.png)
 
-Start de toepassing in de editor **(druk op Afspelen** of Ctrl+P). U moet de knop **Sessie maken** in de viewport zien verschijnen. Klik erop om je eerste ARR-sessie te starten:
+Start de toepassing in de editor (**Druk op Play** of CTRL + P). De knop **sessie maken** wordt weer gegeven in de View Port. Klik hierop om uw eerste ARR-sessie te starten:
 
 ![Een eerste sessie maken](media/test-create.png)
 
-Als dit niet lukt, controleert u of u uw accountgegevens correct hebt ingevoerd in de eigenschappen van de component RemoteRendering. Anders verschijnt er een bericht in het consolevenster met de sessie-id die aan u is toegewezen en waarin staat dat de sessie momenteel de *status Start* heeft:
+Als dit mislukt, zorg er dan voor dat u uw account gegevens correct hebt ingevoerd in de eigenschappen van de RemoteRendering-component. Anders wordt een bericht weer gegeven in het console venster met de sessie-ID die aan u is toegewezen, en wordt aangegeven dat de sessie momenteel de status *begin* heeft:
 
-![Sessiestartuitvoer](media/create-session-output.png)
+![Uitvoer van sessie starten](media/create-session-output.png)
 
-Op dit moment is Azure het inrichten van een server voor u en het opstarten van een externe rendering virtuele machine. Dit duurt meestal **3 tot 5 minuten.** Wanneer de VM klaar is, `OnSessionStatusChanged` wordt de callback van ons Unity-script uitgevoerd en wordt de nieuwe sessiestatus afgedrukt:
+Op dit moment wordt een server door Azure ingericht en wordt er een externe rendering van een virtuele machine gestart. Dit **duurt doorgaans 3 tot 5 minuten**. Wanneer de VM gereed is, wordt de call back `OnSessionStatusChanged` van ons unit-script uitgevoerd en wordt de nieuwe sessie status afgedrukt:
 
-![Sessieklare uitvoer](media/create-session-output-2.png)
+![Uitvoer sessie gereed](media/create-session-output-2.png)
 
-Dit is het! Voorlopig gebeurt er niets meer. Om kosten te voorkomen, moet u altijd stoppen met sessies wanneer ze niet meer nodig zijn. In dit voorbeeld u dit doen door op de knop **Sessie stoppen** te klikken of door de Unity-simulatie te stoppen. Vanwege de eigenschap **Auto-Stop Session** op de *component ARRServiceUnity,* die standaard is ingeschakeld, wordt de sessie automatisch voor u gestopt. Als alles mislukt, als gevolg van crashes of verbindingsproblemen, kan uw sessie worden uitgevoerd zolang uw *MaxLeaseTime* voordat deze wordt afgesloten door de server.
+Dat is alles! Er gebeurt dus niets meer. Als u kosten wilt voor komen, moet u altijd sessies stopzetten wanneer ze niet meer nodig zijn. In dit voor beeld kunt u dit doen door te klikken op de knop **sessie stoppen** of door de eenheids simulatie te stoppen. Als gevolg van de eigenschap **autostop Session** van het onderdeel *ARRServiceUnity* , dat standaard is ingeschakeld, wordt de sessie automatisch voor u gestopt. Als alles mislukt, vanwege crashes of verbindings problemen, kan uw sessie worden uitgevoerd zolang uw *MaxLeaseTime* voordat deze wordt afgesloten door de-server.
 
 > [!NOTE]
-> Het stoppen van een sessie wordt onmiddellijk van kracht en kan niet ongedaan worden gemaakt. Eenmaal gestopt, moet je een nieuwe sessie maken, met dezelfde opstartoverhead.
+> Het stoppen van een sessie duurt direct en kan niet ongedaan worden gemaakt. Nadat de functie is gestopt, moet u een nieuwe sessie maken, met dezelfde opstart overhead.
 
 ## <a name="reusing-sessions"></a>Sessies opnieuw gebruiken
 
-Het maken van een nieuwe sessie is helaas een tijdrovende operatie. Daarom moet men proberen om sessies zelden te maken, en hergebruiken ze waar mogelijk.
+Het maken van een nieuwe sessie is helaas een tijdrovende bewerking. Daarom moet het proberen om sessies zelden te maken en deze waar mogelijk opnieuw te gebruiken.
 
-Voeg de volgende code in het script *RemoteRendering* in en verwijder de oude versies van de dubbele functies:
+Voeg de volgende code toe aan het *RemoteRendering* -script en verwijder de oude versies van de dubbele functies:
 
 ```csharp
     public string SessionId = null;
@@ -413,24 +413,24 @@ Voeg de volgende code in het script *RemoteRendering* in en verwijder de oude ve
 ```
 
 > [!CAUTION]
-> Voordat u deze code uitvoert, moet u de optie **Automatisch stoppen sessie** in de component RemoteRendering deactiveren. Anders wordt elke sessie die u maakt automatisch gestopt wanneer u de simulatie stopt en mislukt een poging om deze opnieuw te gebruiken.
+> Voordat u deze code uitvoert, moet u ervoor zorgen dat u de optie **automatische-stop sessie** deactiveert in het onderdeel RemoteRendering. Anders wordt elke sessie die u maakt automatisch gestopt wanneer u de simulatie stopt en kan deze niet opnieuw worden gebruikt.
 
-Wanneer u op *Afspelen*drukt, krijgt u nu drie knoppen in de viewport: **Sessie maken,** **Actieve sessies opvragen**en **Bestaande sessie gebruiken.** De eerste knop maakt altijd een nieuwe sessie. De tweede knop query's die *actieve* sessies bestaan. Als u niet handmatig een sessie-id hebt opgegeven om te proberen te gebruiken, selecteert deze actie automatisch de sessie-id voor toekomstig gebruik. De derde knop probeert verbinding te maken met een bestaande sessie. Ofwel een die u handmatig hebt opgegeven via de eigenschap *Sessie-id,* of een eigenschap die is gevonden door *Query Actieve sessies*.
+Wanneer u op *afspelen*klikt, krijgt u nu drie knoppen in de View Port: **sessie maken**, **actieve sessies opvragen**en **bestaande sessie gebruiken**. Met de eerste knop maakt u altijd een nieuwe sessie. Met de tweede knop wordt een query uitgevoerd waarmee *actieve* sessies bestaan. Als u niet hand matig een sessie-ID hebt opgegeven die u wilt gebruiken, dan selecteert deze actie de sessie-ID automatisch voor toekomstig gebruik. De derde knop probeert verbinding te maken met een bestaande sessie. Een van de eigenschappen die u hand matig hebt opgegeven met de eigenschap *sessie-id* onderdeel of een gevonden door *actieve sessies opvragen*.
 
-De **functie AutoStartSessionAsync** wordt gebruikt om de knopdrukken buiten de editor te simuleren.
+De functie **AutoStartSessionAsync** wordt gebruikt om de knop ingedrukt te simuleren buiten de editor.
 
 > [!TIP]
-> Het is mogelijk om sessies te openen die zijn gestopt, verlopen of in een foutstatus zijn. Hoewel ze niet meer kunnen worden gebruikt voor rendering, u hun gegevens opvragen zodra u een inactieve sessie hebt geopend. De bovenstaande code controleert de `ARRService_OnSessionStarted`status van een sessie in , om automatisch te stoppen wanneer de sessie onbruikbaar is geworden.
+> Het is mogelijk om sessies te openen die zijn gestopt, verlopen of een fout status hebben. Hoewel ze niet meer kunnen worden gebruikt om te worden weer gegeven, kunt u een query uitvoeren op de details van de gegevens, nadat u een inactieve sessie hebt geopend. De bovenstaande code controleert de status van een sessie `ARRService_OnSessionStarted`in en wordt automatisch gestopt wanneer de sessie onbruikbaar is geworden.
 
-Met deze functionaliteit u nu sessies maken en hergebruiken, die uw ontwikkelingsworkflow aanzienlijk moeten verbeteren.
+Met deze functionaliteit kunt u nu sessies maken en opnieuw gebruiken, waardoor uw ontwikkelings werk stroom aanzienlijk moet worden verbeterd.
 
-Het maken van een sessie wordt meestal geactiveerd buiten de clienttoepassing vanwege de tijd die nodig is om de server op te draaien.
+Normaal gesp roken wordt het maken van een sessie buiten de client toepassing geactiveerd vanwege de tijd die nodig is om de server op te zetten.
 
 ## <a name="connect-to-an-active-session"></a>Verbinding maken met een actieve sessie
 
-Tot nu toe hebben we sessies gemaakt of geopend. De volgende stap is om verbinding te *maken met* een sessie. Eenmaal aangesloten, zal de rendering server beelden produceren en een videostream naar onze applicatie sturen.
+Tot nu toe hebben we sessies gemaakt of geopend. De volgende stap is om *verbinding te maken* met een sessie. Nadat de verbinding tot stand is gebracht, produceert de rendering-server afbeeldingen en wordt een video stroom naar onze toepassing verzonden.
 
-Voeg de volgende code in het script *RemoteRendering* in en verwijder de oude versies van de dubbele functies:
+Voeg de volgende code toe aan het *RemoteRendering* -script en verwijder de oude versies van de dubbele functies:
 
 ```csharp
     private bool isConnected = false;
@@ -553,23 +553,23 @@ Voeg de volgende code in het script *RemoteRendering* in en verwijder de oude ve
 #endif
 ```
 
-Ga als volgt te werk om deze functionaliteit te testen:
+U kunt als volgt deze functionaliteit testen:
 
-1. Druk op **Afspelen** in eenheid.
-1. Open een sessie:
-    1. Als u al een sessie hebt, drukt u op **Actieve querysessies** en **gebruikt u bestaande sessie**.
-    1. Druk anders op **Sessie maken**.
-1. Druk op **Connect**.
-1. Na een paar seconden moet de console-uitvoer afdrukken dat u bent verbonden.
-1. Voor nu zou er niets anders moeten gebeuren.
-1. Druk **op Verbreken** of stop de afspeelmodus van Unity.
+1. Druk op **Play** in Unity.
+1. Een sessie openen:
+    1. Als u al een sessie hebt, drukt u op **actieve sessies opvragen** en vervolgens **bestaande sessie gebruiken**.
+    1. Klik anders op **sessie maken**.
+1. Druk op **verbinding maken**.
+1. Na een paar seconden moet de console-uitvoer worden afgedrukt die u hebt verbonden.
+1. Nu moet er niets anders gebeuren.
+1. Druk op **verbinding verbreken** of op de afspeel modus van de eenheid stoppen.
 
 >[!NOTE]
-> Meerdere gebruikers kunnen een sessie *openen* om de informatie op te vragen, maar slechts één gebruiker kan tegelijk aan een sessie worden *gekoppeld.* Als een andere gebruiker al is verbonden, mislukt de verbinding met een **handshakefout.**
+> Meerdere gebruikers kunnen een sessie *openen* om de gegevens op te vragen, maar slechts één gebruiker kan worden *verbonden* met een sessie tegelijk. Als een andere gebruiker al is verbonden, mislukt de verbinding met een **Handshake-fout**.
 
 ## <a name="load-a-model"></a>Een model laden
 
-Voeg de volgende code in het script *RemoteRendering* in en verwijder de oude versies van de dubbele functies:
+Voeg de volgende code toe aan het *RemoteRendering* -script en verwijder de oude versies van de dubbele functies:
 
 ```csharp
 
@@ -724,20 +724,20 @@ Voeg de volgende code in het script *RemoteRendering* in en verwijder de oude ve
 #endif
 ```
 
-Wanneer u nu op afspelen drukt, een sessie opent en verbinding maakt met de knop **Model laden,** wordt de knop Model laden weergegeven. Na het klikken, zal de console output tonen de voortgang van het laden en wanneer het bereikt 100% moet je het model van een motor verschijnen:
+Wanneer u nu op afspelen drukt, een sessie opent en er verbinding mee maakt, wordt de knop **Model laden** weer gegeven. Nadat u erop hebt geklikt, wordt de voortgang van het laden weer gegeven in de console-uitvoer 100 en wordt het volgende weer gegeven:
 
 ![Model geladen in de editor](media/model-loaded-replace-me.png)
 
-De [WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) is een belangrijk onderdeel dat wordt gebruikt voor [hologramstabiliteit.](https://docs.microsoft.com/windows/mixed-reality/hologram-stability) Het heeft echter alleen effect wanneer het wordt geïmplementeerd op een Mixed Reality-apparaat.
+De [WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) is een belang rijk onderdeel dat wordt gebruikt voor de stabiliteit van de [hologram](https://docs.microsoft.com/windows/mixed-reality/hologram-stability). Deze wordt echter alleen toegepast wanneer deze op een apparaat met een gemengde realiteit wordt geïmplementeerd.
 
 > [!TIP]
-> Als u de [Quickstart: Converteer een model voor rendering,](../../quickstarts/convert-model.md)weet u al hoe u uw eigen modellen converteren. Het enige wat u nu hoeft te doen om het weer te geven, is de URI naar een geconverteerd model te zetten in de eigenschap *Modelnaam.*
+> Als u de [Snelstartgids: een model converteren voor rendering](../../quickstarts/convert-model.md)hebt gevolgd, weet u al hoe u uw eigen modellen kunt converteren. Alles wat u nu moet doen, is door de URI naar een geconverteerd model in de eigenschap *model name* te zetten.
 
-## <a name="display-frame-statistics"></a>Framestatistieken weergeven
+## <a name="display-frame-statistics"></a>Frame statistieken weer geven
 
-Azure Remote Rendering houdt verschillende informatie bij over de kwaliteit van de verbinding. Ga als volgt te werk om deze informatie snel weer te geven:
+De externe rendering van Azure houdt diverse informatie bij over de kwaliteit van de verbinding. Ga als volgt te werk om deze informatie snel weer te geven:
 
-Maak een [nieuw script](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) en geef het de naam **RemoteFrameStats**. Open het scriptbestand en vervang de volledige inhoud door de onderstaande code:
+Maak een [Nieuw script](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) en geef het de naam **RemoteFrameStats**. Open het script bestand en vervang de volledige inhoud door de onderstaande code:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -778,29 +778,29 @@ public class RemoteFrameStats : MonoBehaviour
 }
 ```
 
-Maak een GameObject en noem het *FrameStats*. Bevestig het als een onderliggend knooppunt aan het *hoofdcameraobject* en stel de positie in op **x = 0, y = 0, z = 0,325**. Voeg de component **RemoteFrameStats** toe aan het object.
+Maak een GameObject en geef deze de naam *FrameStats*. Koppel deze als onderliggend knoop punt aan het *hoofd camera* object en stel de positie in op **x = 0, y = 0, z = 0,325**. Voeg het **RemoteFrameStats** -onderdeel toe aan het object.
 
-Voeg een **ui > canvas** onderliggend object toe aan het object *FrameStats* en stel de eigenschappen ervan als volgt in:
+Voeg een **gebruikers interface toe > canvas** een onderliggend object toe aan het object *FrameStats* en stel de eigenschappen als volgt in:
 
-![canvaseigenschappen](media/framestats-canvas.png)
+![eigenschappen van canvas](media/framestats-canvas.png)
 
-Voeg een **object UI > tekst** toe als onderliggend object van het canvas en stel de eigenschappen ervan als volgt in:
+Voeg een **UI > tekst** object toe als onderliggend element van het canvas en stel de eigenschappen als volgt in:
 
-![teksteigenschappen](media/framestats-text.png)
+![tekst eigenschappen](media/framestats-text.png)
 
-Selecteer het object *FrameStats* en vul het **veld FrameStats** in door op het cirkelpictogram te klikken en het object **Tekst** te selecteren:
+Selecteer het *FrameStats* -object en vul het **veld FrameStats** in door te klikken op het cirkel pictogram en het object **tekst** te selecteren:
 
-![tekst instellen, eigenschap](media/framestats-set-text.png)
+![eigenschap Text instellen](media/framestats-set-text.png)
 
-Wanneer de tekst nu is verbonden met de externe sessie, moet de streamingstatistieken worden weergegeven:
+Wanneer u nu verbinding met de externe sessie maakt, moet de tekst de streaming-statistieken weer geven:
 
-![frame statistieken output](media/framestats-output.png)
+![uitvoer van frame statistieken](media/framestats-output.png)
 
-De code schakelt de statistieken update buiten de editor als een hoofd-locked tekstvak zou storend zijn. Een meer geavanceerde implementatie is te vinden in het [Quickstart-project.](../../quickstarts/render-model.md)
+Met de code wordt de statistieken-update buiten de editor uitgeschakeld als een tekstvak met een hoofd vergrendeling wordt afgeleid. Een meer geavanceerde implementatie vindt u in het project [Snelstartgids](../../quickstarts/render-model.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u alle stappen geleerd die nodig zijn om een leeg Unity-project te maken en het te laten werken met Azure Remote Rendering. In de volgende zelfstudie zullen we nader bekijken hoe we met externe entiteiten kunnen werken.
+In deze zelf studie hebt u alle stappen geleerd die nodig zijn om een leeg unit-project uit te voeren en het te laten werken met de externe rendering van Azure. In de volgende zelf studie gaan we kijken hoe u met externe entiteiten werkt.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Werken met externe entiteiten in Unity](working-with-remote-entities.md)
+> [Zelf studie: werken met externe entiteiten in Unity](working-with-remote-entities.md)

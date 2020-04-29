@@ -1,29 +1,29 @@
 ---
-title: Een functie maken met Azure for Students Starter
-description: Meer informatie over het maken van een Azure-functie vanuit een Azure for Student Starter-abonnement
+title: Een functie maken met behulp van Azure for students starter
+description: Meer informatie over het maken van een Azure-functie vanuit een Azure for students starter-abonnement
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756474"
 ---
-# <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met Azure for Students Starter
+# <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
 
-In deze zelfstudie maken we een HTTP-functie 'hallo wereld' in een Azure for Students Starter-abonnement. We doorlopen ook wat er beschikbaar is in Azure-functies in dit abonnementstype.
+In deze zelf studie maakt u een ' Hallo wereld ' HTTP-functie in een Azure for students starter-abonnement. Er wordt ook uitgelegd wat er beschikbaar is in Azure Functions in dit type abonnement.
 
-Microsoft *Azure for Students Starter* brengt u op weg met de Azure-producten die u in de cloud moet ontwikkelen zonder kosten voor u. [Lees hier meer over deze aanbieding.](https://azure.microsoft.com/offers/ms-azr-0144p/)
+Met micro soft *Azure for students starter* kunt u aan de slag met de Azure-producten die u nodig hebt om gratis te ontwikkelen in de Cloud. [Meer informatie over deze aanbieding vindt u hier.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
-Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren. [Lees hier meer over functies.](./functions-overview.md)
+Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren. [Meer informatie over functies vindt u hier.](./functions-overview.md)
 
 ## <a name="create-a-function"></a>Een functie maken
 
- In dit onderwerp leert u hoe u Functies gebruikt om een HTTP-geactiveerde functie 'hallo wereld' te maken in de Azure-portal.
+ In dit onderwerp leert u hoe u functies kunt gebruiken om een HTTP-geactiveerde functie Hallo wereld te maken in de Azure Portal.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
@@ -33,9 +33,9 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com>.
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app u functies groeperen als een logische eenheid voor eenvoudiger beheer, implementatie, schalen en delen van resources.
+U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
-1. Selecteer de knop **Een resource maken** in de linkerbovenhoek van de Azure-portal. Selecteer vervolgens **Compute** > **Function App**.
+1. Selecteer de knop **een resource maken** in de linkerbovenhoek van de Azure Portal. Selecteer vervolgens **reken** > **functie-app**.
 
     ![Een functie-app maken in Azure Portal](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -47,16 +47,16 @@ U moet een functie-app hebben die als host fungeert voor de uitvoering van uw fu
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. | 
-    | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-   | **[App-serviceplan/locatie](./functions-scale.md)** | Nieuw | Het hostingplan dat bepaalt naar welke regio uw functie-app wordt geïmplementeerd en de dichtheid van uw resources. Meerdere functie-apps die naar hetzelfde abonnement worden geïmplementeerd, delen allemaal dezelfde gratis instantie. Dit is een beperking van het Student Starter plan. De volledige hostingopties [worden hier uitgelegd.](./functions-scale.md)|
+    | **[Resource groep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+   | **[Abonnement/locatie App Service](./functions-scale.md)** | Nieuw | Het hosting abonnement dat bepaalt in welke regio uw functie-app wordt geïmplementeerd en wat de densiteit van uw resources is. Meerdere functie-apps die zijn geïmplementeerd op hetzelfde abonnement, delen dezelfde afzonderlijke gratis instantie. Dit is een beperking van het Student Starter-abonnement. De volledige hosting opties worden [hier beschreven.](./functions-scale.md)|
     | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
-    |**[Application Insights](./functions-monitoring.md)**| Ingeschakeld | Application Insights wordt gebruikt om de logboeken van uw functie-app op te slaan en te analyseren. Het is standaard ingeschakeld als u een locatie kiest die Application Insights ondersteunt. Application Insights kan voor elke functie worden ingeschakeld door handmatig een regio in de buurt te kiezen om Application Insights te implementeren. Zonder Application Insights u alleen live streaming logs bekijken.
+    |**[Application Insights](./functions-monitoring.md)**| Ingeschakeld | Application Insights wordt gebruikt om de logboeken van uw functie-app op te slaan en te analyseren. Deze optie is standaard ingeschakeld als u een locatie kiest die Application Insights ondersteunt. Application Insights kunnen voor elke functie worden ingeschakeld door hand matig een regio in de buurt te kiezen die u wilt implementeren Application Insights. Zonder Application Insights, kunt u alleen live streaming-logboeken weer geven.
 
-3. Selecteer **App Service-abonnement/locatie** hierboven om een andere locatie te kiezen
+3. Selecteer hierboven **app service plan/locatie** om een andere locatie te kiezen
 
-4. Selecteer **Nieuw maken** en geef uw abonnement een unieke naam.
+4. Selecteer **nieuwe maken** en geef uw plan een unieke naam.
 
-5. Selecteer de locatie die het dichtst bij u in de buurt is. [Bekijk hier een volledige kaart van Azure-regio's.](https://azure.microsoft.com/global-infrastructure/regions/) 
+5. Selecteer de locatie die het dichtst bij u ligt. [Bekijk hier een volledig overzicht van Azure-regio's.](https://azure.microsoft.com/global-infrastructure/regions/) 
 
     <img src="./media/functions-create-student-starter/Create-ASP.png" width="800">
 
@@ -74,7 +74,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Een door HTTP geactiveerde functie maken
 
-1. Vouw de nieuwe functie-app **+** uit, selecteer vervolgens de knop naast **Functies,** kies **In-portal**en selecteer **Doorgaan**.
+1. Vouw uw nieuwe functie-app uit, selecteer **+** de knop naast **functies**, kies **in-portal**en selecteer **door gaan**.
 
     ![De Quick Start-pagina 'Kiezen' van het Functions-platform.](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 
@@ -108,29 +108,29 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="supported-features-in-azure-for-students-starter"></a>Ondersteunde functies in Azure voor studenten Starter
+## <a name="supported-features-in-azure-for-students-starter"></a>Ondersteunde functies in azure for students starter
 
-In Azure for Students Starter hebt u toegang tot de meeste functies van de runtime van Azure-functies, met verschillende belangrijke beperkingen die hieronder worden vermeld:
+In azure for students starter hebt u toegang tot de meeste functies van de Azure Functions runtime, met de volgende sleutel beperkingen:
 
-* De HTTP-trigger is het enige triggertype dat wordt ondersteund.
-    * Alle input en alle output bindingen worden ondersteund! [Bekijk hier de volledige lijst.](functions-triggers-bindings.md)
+* De HTTP-trigger is het enige type trigger dat wordt ondersteund.
+    * Alle invoer-en uitvoer bindingen worden ondersteund. [Bekijk hier de volledige lijst.](functions-triggers-bindings.md)
 * Ondersteunde talen: 
     * C# (.NET Core 2)
-    * JavaScript (Node.js 8 & 10)
-    * F# (.NET Core 2)
-    * [Bekijk hier talen die worden ondersteund in hogere plannen](supported-languages.md)
-* Windows is het enige ondersteunde besturingssysteem.
-* De schaal is beperkt tot [één gratis laagexemplaar](https://azure.microsoft.com/pricing/details/app-service/windows/) dat maximaal 60 minuten per dag wordt uitgevoerd. U schaalt automatisch van 0 naar 1 instantie als HTTP-verkeer wordt ontvangen, maar verder niet.
-* Alleen [versie 2.x en later](functions-versions.md) van de uitvoering van functies wordt ondersteund.
-* Alle tooling voor ontwikkelaars wordt ondersteund voor het bewerken en publiceren van functies. Dit omvat VS Code, Visual Studio, de Azure CLI en de Azure-portal. Als u iets anders dan de portal wilt gebruiken, moet u eerst een app in de portal maken en die app vervolgens kiezen als implementatiedoel in uw voorkeurstool.
+    * Java script (node. js 8 & 10)
+    * F # (.NET Core 2)
+    * [Bekijk hier de talen die in hogere plannen worden ondersteund](supported-languages.md)
+* Windows is het enige besturings systeem dat wordt ondersteund.
+* De schaal is beperkt tot [één exemplaar van een gratis laag](https://azure.microsoft.com/pricing/details/app-service/windows/) dat elke dag maxi maal 60 minuten wordt uitgevoerd. U kunt serverlessly schalen van 0 naar 1 automatisch als HTTP-verkeer wordt ontvangen, maar niet verder.
+* Alleen [versie 2. x en hoger](functions-versions.md) van de functions-runtime wordt ondersteund.
+* Alle hulpprogram ma's voor ontwikkel aars worden ondersteund voor het bewerken en publiceren van functies. Dit omvat VS code, Visual Studio, de Azure CLI en de Azure Portal. Als u andere items dan de portal wilt gebruiken, moet u eerst een app in de portal maken en vervolgens die app als een implementatie doel in uw favoriete hulp programma kiezen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een functie-app gemaakt met een eenvoudige HTTP-geactiveerde functie! Nu u lokale tooling, meer talen, monitoring en integraties verkennen.
+U hebt een functie-app gemaakt met een eenvoudige HTTP-geactiveerde functie. U kunt nu de lokale tool, meer talen, bewaking en integraties verkennen.
 
  * [Uw eerste functie maken met Visual Studio](./functions-create-your-first-function-visual-studio.md)
  * [Uw eerste functie maken met Visual Studio Code](./functions-create-first-function-vs-code.md)
- * [JavaScript-ontwikkelaarshandleiding voor Azure Functions](./functions-reference-node.md)
- * [Azure-functies gebruiken om verbinding te maken met een Azure SQL-database](./functions-scenario-database-table-cleanup.md)
- * [Meer informatie over HTTP-bindingen voor Azure-functies](./functions-bindings-http-webhook.md).
- * [Uw Azure-functies bewaken](./functions-monitoring.md)
+ * [Ontwikkelaars handleiding voor Azure Functions java script](./functions-reference-node.md)
+ * [Azure Functions gebruiken om verbinding te maken met een Azure SQL Database](./functions-scenario-database-table-cleanup.md)
+ * [Meer informatie over Azure functions HTTP-bindingen](./functions-bindings-http-webhook.md).
+ * [Uw Azure Functions bewaken](./functions-monitoring.md)

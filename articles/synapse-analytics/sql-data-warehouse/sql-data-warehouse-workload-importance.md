@@ -1,6 +1,6 @@
 ---
 title: Workloadurgentie
-description: Richtlijnen voor het instellen van het belang voor Synapse SQL-poolquery's in Azure Synapse Analytics.
+description: Richt lijnen voor het instellen van de urgentie voor Synapse SQL-pool query's in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,58 +12,58 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744037"
 ---
-# <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics-workloadbelang
+# <a name="azure-synapse-analytics-workload-importance"></a>Prioriteit van Azure Synapse Analytics-workload
 
-In dit artikel wordt uitgelegd hoe het werkbelastingbelang de volgorde van uitvoering voor Synapse SQL-poolaanvragen in Azure Synapse kan beïnvloeden.
+In dit artikel wordt uitgelegd hoe de urgentie van het workload invloed kan hebben op de volg orde van de uitvoering van Synapse SQL pool-aanvragen in azure Synapse.
 
 ## <a name="importance"></a>Urgentie
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Voor bedrijfsbehoeften kunnen workloads voor gegevensopslag belangrijker zijn dan andere.  Overweeg een scenario waarin bedrijfskritieke verkoopgegevens worden geladen voordat de fiscale periode wordt gesloten.  Gegevensbelastingen voor andere bronnen, zoals weergegevens, hebben geen strikte SLA's. Als u een aanvraag instelt om verkoopgegevens te laden en een laag belang voor een verzoek om weergegevens te laden, zorgt u ervoor dat de verkoopgegevensbelasting de eerste toegang tot resources krijgt en sneller wordt voltooid.
+Bedrijfs behoeften kunnen vereisen dat werk belastingen voor gegevens opslag belang rijker zijn dan andere.  Denk na over een scenario waarin essentiële verkoop gegevens worden geladen voordat de fiscale periode wordt gesloten.  Gegevens die worden geladen voor andere bronnen, zoals weer gegevens, hebben geen strikte Sla's. Als u het hoge urgentie niveau instelt voor een aanvraag voor het laden van verkoop gegevens en een lage urgentie voor een aanvraag om weer gegevens te laden, zorgt u ervoor dat de belasting van de omzet eerst toegang krijgt tot bronnen en sneller kan worden uitgevoerd.
 
-## <a name="importance-levels"></a>Belangniveaus
+## <a name="importance-levels"></a>Urgentie niveaus
 
-Er zijn vijf niveaus van belang: laag, below_normal, normaal, above_normal en hoog.  Aanvragen die geen belang instellen, krijgen het standaardniveau van normaal toegewezen. Aanvragen met hetzelfde belangrijkniveau hebben hetzelfde planningsgedrag dat vandaag bestaat.
+Er zijn vijf prioriteits niveaus: laag, below_normal, normaal, above_normal en hoog.  Aanvragen waarvoor geen urgentie is ingesteld, krijgen het standaard niveau normaal. Aanvragen met hetzelfde urgentie niveau hebben hetzelfde plannings gedrag als vandaag.
 
-## <a name="importance-scenarios"></a>Belangscenario's
+## <a name="importance-scenarios"></a>Urgentie scenario's
 
-Naast het hierboven beschreven basisscenario met verkoop- en weergegevens, zijn er andere scenario's waarin het belang van werkbelasting helpt te voldoen aan de behoeften van gegevensverwerking en query's.
+Naast het scenario met de basis prioriteit die hierboven wordt beschreven met verkoop-en weer gegevens, zijn er andere scenario's waarin de werk belasting van de workload aan gegevens verwerking en query behoeften voldoet.
 
 ### <a name="locking"></a>Vergrendelen
 
-Toegang tot sloten voor lees- en schrijfactiviteit is een gebied van natuurlijke twist. Activiteiten zoals [partitieschakelen](sql-data-warehouse-tables-partition.md) of [OBJECT RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vereisen verhoogde vergrendelingen.  Zonder het belang van de werkbelasting optimaliseert Synapse SQL-pool in Azure Synapse voor doorvoer. Optimaliseren voor doorvoer betekent dat wanneer uitvoerende en in de wachtrij staande aanvragen dezelfde vergrendelingsbehoeften hebben en dat resources beschikbaar zijn, de wachtrijaanvragen aanvragen kunnen omzeilen met hogere vergrendelingsbehoeften die eerder in de aanvraagwachtrij zijn aangekomen. Zodra het werkbelastingbelang wordt toegepast op aanvragen met hogere vergrendelingsbehoeften. Verzoek met een hoger belang zal worden uitgevoerd voor de aanvraag met een lager belang.
+Toegang tot de vergren delingen voor lees-en schrijf activiteiten is één gebied met natuurlijke conflicten. Voor activiteiten zoals het overschakelen van een [partitie](sql-data-warehouse-tables-partition.md) of het [wijzigen van de naam van het object](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) is verhoogde vergren deling vereist  Zonder urgentie van de werk belasting, Synapse SQL-pool in azure Synapse optimaliseert voor door voer. Optimalisatie voor door Voer betekent dat wanneer in-en in de wachtrij geplaatste aanvragen dezelfde vergrendelings behoeften hebben en resources beschikbaar zijn, de aanvragen in de wachtrij kunnen verzoeken met een hogere vergrendelings behoefte die eerder in de wachtrij voor aanvragen is aangekomen, worden overgeslagen. Zodra de urgentie van de werk belasting wordt toegepast op aanvragen met hogere vergrendelings behoeften. Een aanvraag met een hogere urgentie wordt uitgevoerd vóór de aanvraag met een lagere urgentie.
 
 Kijk een naar het volgende voorbeeld:
 
-- Q1 is actief bezig met het uitvoeren en selecteren van gegevens van SalesFact.
-- Q2 staat in de wachtrij in de rij om te wachten tot Q1 is voltooid.  Het werd ingediend om 9 uur en probeert om nieuwe gegevens over te schakelen naar SalesFact.
-- Q3 wordt om 9:01 uur ingediend en wil gegevens selecteren van SalesFact.
+- Q1 wordt actief uitgevoerd en er worden gegevens uit SalesFact geselecteerd.
+- Q2 is in de wachtrij gezet voordat Q1 is voltooid.  Het is verzonden op 9:00 en probeert de switch van nieuwe gegevens te partitioneren in SalesFact.
+- Q3 wordt verzonden op 9:01am en wil gegevens selecteren uit SalesFact.
 
-Als Q2 en Q3 hetzelfde belang hebben en Q1 nog steeds wordt uitgevoerd, zal Q3 beginnen met uitvoeren. Q2 blijft wachten op een exclusief slot op SalesFact.  Als Q2 belangrijker is dan Q3, zal Q3 wachten tot Q2 klaar is voordat het kan beginnen met de uitvoering.
+Als Q2 en Q3 hetzelfde urgentie hebben en Q1 nog steeds wordt uitgevoerd, wordt Q3 uitgevoerd. Q2 blijft wachten op een exclusieve vergren deling op SalesFact.  Als Q2 hoger is dan Q3, moet Q3 wachten tot Q2 is voltooid voordat de uitvoering kan worden gestart.
 
-### <a name="non-uniform-requests"></a>Niet-uniforme verzoeken
+### <a name="non-uniform-requests"></a>Niet-uniforme aanvragen
 
-Een ander scenario waarin belangrijk kan helpen voldoen aan query-eisen is wanneer aanvragen met verschillende resourceklassen worden ingediend.  Zoals eerder vermeld, onder hetzelfde belang, synapse SQL pool in Azure Synapse optimaliseert voor doorvoer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij staan, kiest Synapse SQL-groep de vroegste binnenkomende aanvraag die binnen de beschikbare resources past. Als het werkbelastingbelang wordt toegepast, wordt vervolgens de aanvraag voor het hoogste belang gepland.
+Een ander scenario waarbij het belang rijk kan zijn om te voldoen aan query vereisten is wanneer aanvragen met verschillende resource klassen worden verzonden.  Zoals eerder vermeld, is in Synapse SQL-pool in azure Synapse geoptimaliseerd voor door voer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij worden geplaatst, kiest Synapse SQL-pool de vroegste aankomende aanvraag die binnen de beschik bare resources past. Als de urgentie van de werk belasting wordt toegepast, wordt de aanvraag voor de hoogste urgentie gepland op de volgende regel.
   
-Overweeg het volgende voorbeeld op DW500c:
+Bekijk het volgende voor beeld op DW500c:
 
-- Q1, Q2, Q3 en Q4 worden uitgevoerd smallrc query's.
-- Q5 wordt ingediend met de mediumrc resource klasse om 9 uur.
-- Q6 wordt om 9:01 uur ingediend met de smallrc resourceklasse.
+- Q1, Q2, Q3 en Q4 voert smallrc-query's uit.
+- Q5 wordt verzonden met de resource klasse mediumrc op 9:00.
+- Q6 wordt verzonden met smallrc-resource klasse op 9:01am.
 
-Omdat Q5 mediumrc is, vereist het twee gelijktijdigheidssleuven. Q5 moet wachten tot twee van de lopende query's zijn voltooid.  Wanneer een van de query's (Q1-Q4) is voltooid, wordt Q6 echter onmiddellijk gepland omdat de resources bestaan om de query uit te voeren.  Als Q5 belangrijker is dan Q6, wacht Q6 tot Q5 wordt uitgevoerd voordat het kan beginnen met uitvoeren.
+Omdat Q5 mediumrc is, zijn er twee gelijktijdigheids sleuven nodig. Q5 moet wachten tot twee van de actieve query's zijn voltooid.  Wanneer een van de query's (Q1-Q4) wordt voltooid, wordt Q6 echter onmiddellijk gepland, omdat de resources bestaan om de query uit te voeren.  Als Q5 een hoger belang heeft dan Q6, wacht Q6 totdat Q5 wordt uitgevoerd voordat het kan worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [KLASSER (Transact-SQL) maken voor](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)meer informatie over het maken van een classificatie.  
-- Zie [Workloadclassificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over workloadclassificatie.  
-- Zie de classificatie Snelstart [Werkbelasting maken voor](quickstart-create-a-workload-classifier-tsql.md) het maken van een classificatie voor werkbelasting.
-- Bekijk de how-to-artikelen om [het belang van workloads](sql-data-warehouse-how-to-configure-workload-importance.md) te configureren en hoe [u Workload Management beheren en bewaken.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
-- Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en het toegewezen belang weer te geven.
+- Zie de [classificatie werk belasting maken (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over het maken van een classificatie.  
+- Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over de classificatie van werk belastingen.  
+- Zie de Snelstartgids [werk belasting maken classificatie](quickstart-create-a-workload-classifier-tsql.md) voor het maken van een classificatie van werk belastingen.
+- Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en de prioriteit weer te geven.

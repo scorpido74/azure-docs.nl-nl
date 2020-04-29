@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een enkele AD-forestomgeving in gebruik maken naar Azure | Microsoft Documenten'
+title: 'Zelf studie: een enkele AD-Forest-omgeving vermeerderen naar Azure | Microsoft Docs'
 description: In deze zelfstudie ziet u hoe u een omgeving met een hybride identiteit instelt met behulp van federatie.
 services: active-directory
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80673704"
 ---
-# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Zelfstudie: Een enkele AD-forestomgeving naar de cloud overmaken
+# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Zelf studie: een enkele AD-Forest-omgeving in de Cloud
 
 ![Maken](media/tutorial-federation/diagram.png)
 
@@ -88,8 +88,8 @@ Om het bouwen van de virtuele machine te voltooien, moet u de installatie van he
 5. Klik op **Nu installeren**.
 6. Voer uw licentiecode in en klik op **Volgende**.
 7. Geef aan dat u akkoord gaat met de licentievoorwaarden en klik op **Volgende**.
-8. **Selecteer Aangepast: Windows alleen installeren (geavanceerd)**
-9. Klik **op Volgende**
+8. Selecteer **aangepast: alleen Windows installeren (Geavanceerd)**
+9. Klik op **volgende**
 10. Als de installatie is voltooid, start u de virtuele machine opnieuw op, meldt u zich aan en installeert u de beschikbare Windows-updates om er zeker van te zijn dat de VM up-to-date is.  Installeer de laatste updates.
 
 ## <a name="install-active-directory-pre-requisites"></a>Vereisten voor het installeren van Active Directory Domain Services
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-a-certificate-for-ad-fs"></a>Een certificaat voor AD FS maken
-Nu maken we een TLS/SSL-certificaat dat wordt gebruikt door AD FS.  Dit is een zelfondertekend certificaat en is alleen voor testdoeleinden.  Microsoft beveelt het gebruik van een zelfondertekend certificaat in een productieomgeving niet aan. Ga als volgt te werk:
+Nu gaan we een TLS/SSL-certificaat maken dat door AD FS wordt gebruikt.  Dit is een zelfondertekend certificaat en is alleen voor testdoeleinden.  Microsoft beveelt het gebruik van een zelfondertekend certificaat in een productieomgeving niet aan. Ga als volgt te werk:
 
 1. Open de PowerShell ISE als Administrator.
 2. Voer het volgende script uit.
@@ -206,7 +206,7 @@ Nu moeten we een Azure Active Directory-tenant maken, zodat we onze gebruikers k
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
 ![Maken](media/tutorial-password-hash-sync/create1.png)</br>
-5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
+5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Een globale beheerder maken in Azure Active Directory
@@ -225,7 +225,7 @@ Nu dat we een tenant en een globale beheerder hebben, moeten we ons aangepast do
 
 1. Let op dat in de [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) de blade **Alle gebruikers** gesloten is.
 2. Selecteer aan de linkerkant **Namen van aangepaste domeinen**.
-3. Selecteer **Aangepast domein toevoegen**.</br>
+3. Selecteer **aangepast domein toevoegen**.</br>
 ![Federatie](media/tutorial-federation/custom1.png)</br>
 4. Typ op de blade **Aangepaste-domeinnamen** de naam van uw aangepaste domein in het vak en selecteer vervolgens **Domein toevoegen**.
 5. Op het scherm van de naam van het aangepast domein ziet u de TXT- of de MX-gegevens.  Deze informatie moet worden toegevoegd aan de DNS-gegevens van de domeinregistrar onder het domein.  Daarom moet u naar uw domeinregistrar gaan en de TXT- of de MX-gegevens in de DNS-instellingen voor uw domein invoeren.  Hierdoor kan Azure uw domein verifiëren.  Azure heeft maximaal 24 uur nodig om dit te verifiëren.  Zie [Een aangepaste domeinnaam toevoegen](../../active-directory/fundamentals/add-custom-domain.md) voor meer informatie.</br>
@@ -240,7 +240,7 @@ We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, ne
 2. Ga naar **AzureADConnect.msi** en dubbelklik erop.
 3. Selecteer in het welkomstscherm het vakje waarmee u aangeeft akkoord te gaan met de licentievoorwaarden en klik op **Doorgaan**.  
 4. Klik in het scherm Express-instellingen op **Aanpassen**.  
-5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik **op Installeren**.  
+5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik op **installeren**.  
 6. Selecteer op het scherm Aanmelden van gebruikers **Federatie met AD FS** en klik op **Volgende**.
 ![Federatie](media/tutorial-federation/fed1.png)
 
@@ -281,7 +281,7 @@ We gaan nu controleren of de gebruikers die aanwezig waren in onze on-premises a
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
 
-1. Blader naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Bladeren naar[https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik het wachtwoord waarmee de gebruiker zich on-premises aanmeldt.
    ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)
 
@@ -291,5 +291,5 @@ U hebt nu een omgeving met een hybride identiteit ingesteld die u kunt gebruiken
 
 - [Hardware en vereisten](how-to-connect-install-prerequisites.md) 
 - [Aangepaste instellingen](how-to-connect-install-custom.md)
-- [Azure AD Connect en federatie](how-to-connect-fed-whatis.md)
+- [Azure AD Connect en Federatie](how-to-connect-fed-whatis.md)
 

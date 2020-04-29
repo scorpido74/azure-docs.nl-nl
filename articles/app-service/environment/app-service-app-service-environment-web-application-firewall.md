@@ -1,6 +1,6 @@
 ---
 title: Een WAF configureren
-description: Meer informatie over het configureren van een Web Application Firewall (WAF) voor uw App Service-omgeving, met Azure Application Gateway of een WAF van derden.
+description: Meer informatie over het configureren van een Web Application Firewall (WAF) voor uw App Service Environment, hetzij met Azure-toepassing gateway of een WAF van derden.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804466"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Een Web Application Firewall (WAF) voor App Service Environment configureren
@@ -71,7 +71,7 @@ Klik op het tabblad **Services** om uw WAF te configureren voor services die dez
 ![Beheerservices toevoegen][ManagementAddServices]
 
 > [!NOTE]
-> Afhankelijk van hoe uw toepassingen zijn geconfigureerd en welke functies worden gebruikt in uw App Service-omgeving, moet u verkeer doorsturen voor andere TCP-poorten dan 80 en 443, bijvoorbeeld als u IP TLS-instellingen hebt voor een App Service-app. Zie voor een lijst met netwerkpoorten die worden gebruikt in App Service Environments, [Documentatie voor inkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md), in de sectie Netwerkpoorten.
+> Afhankelijk van hoe uw toepassingen zijn geconfigureerd en welke functies worden gebruikt in uw App Service Environment, moet u verkeer door sturen voor TCP-poorten behalve 80 en 443, bijvoorbeeld als u een TLS-installatie hebt voor een App Service-app. Zie voor een lijst met netwerkpoorten die worden gebruikt in App Service Environments, [Documentatie voor inkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md), in de sectie Netwerkpoorten.
 > 
 > 
 

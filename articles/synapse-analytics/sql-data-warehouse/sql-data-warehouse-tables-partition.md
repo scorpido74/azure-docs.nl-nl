@@ -1,6 +1,6 @@
 ---
-title: Partitietabellen
-description: Aanbevelingen en voorbeelden voor het gebruik van tabelpartities in de Synapse SQL-groep
+title: Tabellen partitioneren
+description: Aanbevelingen en voor beelden voor het gebruik van tabel partities in Synapse SQL-pool
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,43 +12,43 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742688"
 ---
-# <a name="partitioning-tables-in-synapse-sql-pool"></a>Partitietabellen in Synapse SQL-groep
+# <a name="partitioning-tables-in-synapse-sql-pool"></a>Partitioneren van tabellen in Synapse SQL-pool
 
-Aanbevelingen en voorbeelden voor het gebruik van tabelpartities in de Synapse SQL-pool.
+Aanbevelingen en voor beelden voor het gebruik van tabel partities in de SQL-groep Synapse.
 
-## <a name="what-are-table-partitions"></a>Wat zijn tabelpartities?
+## <a name="what-are-table-partitions"></a>Wat zijn tabel partities?
 
-Met tabelpartities u uw gegevens verdelen in kleinere groepen gegevens. In de meeste gevallen worden tabelpartities gemaakt op een datumkolom. Partitionering wordt ondersteund op alle Synapse SQL-pooltabeltypen; inclusief geclusterde kolomarchief, geclusterde index en heap. Partitionering wordt ook ondersteund op alle distributietypen, inclusief hash of round robin distributed.  
+Met tabel partities kunt u uw gegevens onderverdelen in kleinere gegevens groepen. In de meeste gevallen worden tabel partities gemaakt in een datum kolom. Partitioneren wordt ondersteund op alle Synapse SQL-pool tabel typen; inclusief geclusterde column Store, geclusterde index en heap. Partitioneren wordt ook ondersteund voor alle distributie typen, inclusief hash-of round robin gedistribueerd.  
 
-Partitionering kan het onderhoud van gegevens en queryprestaties ten goede komen. Of het beide of slechts één ten goede komt, is afhankelijk van hoe gegevens worden geladen en of dezelfde kolom voor beide doeleinden kan worden gebruikt, omdat partitioneren alleen op één kolom kan worden uitgevoerd.
+Partitioneren kan gebruikmaken van gegevens onderhoud en query prestaties. Of de IT-mede werkers al dan niet van elkaar afhankelijk zijn van de manier waarop gegevens worden geladen en of voor beide doel einden dezelfde kolom kan worden gebruikt, omdat partitioneren slechts op één kolom kan worden uitgevoerd.
 
-### <a name="benefits-to-loads"></a>Voordelen voor ladingen
+### <a name="benefits-to-loads"></a>Te laden voor delen
 
-Het belangrijkste voordeel van partitioneren in Synapse SQL-pool is het verbeteren van de efficiëntie en prestaties van laadgegevens door het gebruik van partitieverwijdering, switching en samenvoegen. In de meeste gevallen worden gegevens verdeeld over een datumkolom die nauw is gekoppeld aan de volgorde waarin de gegevens in de database worden geladen. Een van de grootste voordelen van het gebruik van partities om gegevens te behouden het vermijden van transactie logging. Hoewel het eenvoudig invoegen, bijwerken of verwijderen van gegevens de meest eenvoudige aanpak kan zijn, met een beetje nadenken en moeite, kan het gebruik van partitionering tijdens uw laadproces de prestaties aanzienlijk verbeteren.
+Het belangrijkste voor deel van partitionering in Synapse SQL pool is het verbeteren van de efficiëntie en prestaties van het laden van gegevens door het gebruik van het verwijderen van partities, scha kelen en samen voegen. In de meeste gevallen worden gegevens gepartitioneerd in een datum kolom die nauw is verbonden met de volg orde waarin de gegevens in de-Data Base worden geladen. Een van de grootste voor delen van het gebruik van partities voor het bijhouden van gegevens, het vermijden van transactie logboek registratie. Hoewel het eenvoudig is om gegevens in te voegen, bij te werken of te verwijderen, kan dit de eenvoudigste benadering zijn, met een beetje goed en moeite, met partitioneren tijdens het laad proces en de prestaties aanzienlijk kunnen verbeteren.
 
-Het schakelen van partities kan worden gebruikt om een gedeelte van een tabel snel te verwijderen of te vervangen.  Een verkoopfeitentabel kan bijvoorbeeld alleen gegevens van de afgelopen 36 maanden bevatten. Aan het einde van elke maand wordt de oudste maand met verkoopgegevens uit de tabel verwijderd.  Deze gegevens kunnen worden verwijderd met behulp van een verwijderinstructie om de gegevens voor de oudste maand te verwijderen. Het verwijderen van een grote hoeveelheid gegevens rij voor rij met een verwijderinstructie kan echter te veel tijd in beslag nemen, evenals het risico van grote transacties die lang duren om terug te draaien als er iets misgaat. Een meer optimale aanpak is het laten vallen van de oudste partitie van gegevens. Waar het verwijderen van de afzonderlijke rijen uren kan duren, kan het verwijderen van een hele partitie seconden duren.
+Het wisselen van partities kan worden gebruikt om een sectie van een tabel snel te verwijderen of te vervangen.  Een tabel met verkoop feiten kan bijvoorbeeld alleen gegevens bevatten over de afgelopen 36 maanden. Aan het einde van elke maand worden de oudste verkoop gegevens uit de tabel verwijderd.  Deze gegevens kunnen worden verwijderd met behulp van een instructie DELETE om de gegevens voor de oudste maand te verwijderen. Het verwijderen van een grote hoeveelheid gegevens rijen per rij met een DELETE-instructie kan echter te veel tijd in beslag nemen en het risico van grote trans acties te maken die lang duren als er iets fout gaat. Een optimale benadering is het verwijderen van de oudste gegevens partitie. Als het verwijderen van de afzonderlijke rijen uren kan duren, kan het verwijderen van een volledige partitie enkele seconden duren.
 
-### <a name="benefits-to-queries"></a>Voordelen voor query's
+### <a name="benefits-to-queries"></a>Voor delen van query's
 
-Partitionering kan ook worden gebruikt om de queryprestaties te verbeteren. Een query die een filter toepast op partitiegegevens, kan de scan beperken tot alleen de in aanmerking komende partities. Deze filtermethode kan een volledige tabelscan voorkomen en alleen een kleinere subset van gegevens scannen. Met de introductie van geclusterde columnstore-indexen zijn de prestatievoordelen van predicaateliminatie minder gunstig, maar in sommige gevallen kan er een voordeel zijn voor query's. Als de verkoopfeitentabel bijvoorbeeld is verdeeld in 36 maanden met behulp van het veld verkoopdatum, kunnen query's die filteren op de verkoopdatum het zoeken overslaan in partities die niet overeenkomen met het filter.
+Partitioneren kan ook worden gebruikt om de query prestaties te verbeteren. Een query waarmee een filter op gepartitioneerde gegevens wordt toegepast, kan de scan beperken tot alleen de in aanmerking komende partities. Met deze filter methode kunt u een volledige tabel scan voor komen en alleen een kleinere subset van gegevens scannen. Met de introductie van geclusterde column Store-indexen zijn de voor delen van eliminatie prestaties minder gunstig, maar in sommige gevallen kan er sprake zijn van een voor deel van query's. Als bijvoorbeeld de tabel sales feiten is gepartitioneerd in 36 maanden met behulp van het veld verkoop datum, kunnen query's die filteren op de verkoop datum, de zoek actie overs laan in partities die niet overeenkomen met het filter.
 
-## <a name="sizing-partitions"></a>Grootte van partities
+## <a name="sizing-partitions"></a>Grootte van partities aanpassen
 
-Hoewel partitionering kan worden gebruikt om de prestaties van sommige scenario's te verbeteren, kan het maken van een tabel met **te veel** partities onder bepaalde omstandigheden de prestaties schaden.  Deze problemen gelden met name voor geclusterde kolomarchieftabellen. Om partities nuttig te laten zijn, is het belangrijk om te begrijpen wanneer partities moeten worden gebruikt en het aantal partities dat moet worden gemaakt. Er is geen harde snelle regel over hoeveel partities zijn te veel, het hangt af van uw gegevens en hoeveel partities u tegelijkertijd laadt. Een succesvol partitioneringsschema heeft meestal tientallen tot honderden partities, niet duizenden.
+Hoewel partitioneren kan worden gebruikt om de prestaties van bepaalde scenario's te verbeteren, kan het maken van een tabel met **te veel** partities in bepaalde omstandigheden de prestaties nadelig beïnvloeden.  Deze problemen zijn vooral van toepassing op geclusterde column Store-tabellen. Voor partitionering is het belang rijk te weten wanneer u partitioneren gebruikt en het aantal partities dat moet worden gemaakt. Er is geen harde regel om te bepalen hoeveel partities te vaak zijn. Dit is afhankelijk van uw gegevens en het aantal partities dat u tegelijkertijd laadt. Een geslaagd partitie schema is doorgaans tien tot honderden partities, geen duizenden.
 
-Bij het maken van partities in **geclusterde kolomarchieftabellen** is het belangrijk om rekening te houden met het aantal rijen dat tot elke partitie behoort. Voor optimale compressie en prestaties van geclusterde kolomarchieftabellen is minimaal 1 miljoen rijen per distributie en partitie nodig. Voordat partities worden gemaakt, verdeelt Synapse SQL-pool elke tabel al in 60 gedistribueerde databases. Elke partitie toegevoegd aan een tabel is in aanvulling op de distributies gemaakt achter de schermen. Als de verkoopfeitentabel met dit voorbeeld 36 maandelijkse partities bevat en een Synapse SQL-groep 60-distributies heeft, moet de verkoopfeitentabel 60 miljoen rijen per maand bevatten, of 2,1 miljard rijen wanneer alle maanden worden ingevuld. Als een tabel minder bevat dan het aanbevolen minimumaantal rijen per partitie, u overwegen minder partities te gebruiken om het aantal rijen per partitie te verhogen. Zie voor meer informatie het artikel [Indexeren,](sql-data-warehouse-tables-index.md) waarin query's zijn bevat die de kwaliteit van clusterkolomarchiefindexen kunnen beoordelen.
+Wanneer u partities maakt voor **geclusterde column Store** -tabellen, is het belang rijk om te bepalen hoeveel rijen bij elke partitie horen. Voor optimale compressie en prestaties van geclusterde column Store-tabellen, is mini maal 1.000.000 rijen per distributie en partitie nodig. Voordat partities worden gemaakt, wordt in Synapse SQL-pool al elke tabel verdeeld in 60 gedistribueerde data bases. Elke partitie die is toegevoegd aan een tabel, is een aanvulling op de distributies die zijn gemaakt achter de schermen. Als in dit voor beeld de tabel sales feiten 36 maandelijkse partities bevat, en u hebt gezien dat een Synapse SQL-groep 60-distributies heeft, moet de tabel verkoop feiten 60.000.000 rijen per maand of 2.100.000.000 rijen bevatten wanneer alle maanden worden ingevuld. Als een tabel minder dan het aanbevolen minimum aantal rijen per partitie bevat, kunt u overwegen minder partities te gebruiken om het aantal rijen per partitie te verg Roten. Zie het artikel [indexeren](sql-data-warehouse-tables-index.md) , dat query's bevat waarmee de kwaliteit van de cluster-column Store-indexen kan worden beoordeeld voor meer informatie.
 
-## <a name="syntax-differences-from-sql-server"></a>Syntaxisverschillen ten opzichte van SQL Server
+## <a name="syntax-differences-from-sql-server"></a>Syntaxis verschillen ten opzichte van SQL Server
 
-Synapse SQL-pool introduceert een manier om partities te definiëren die eenvoudiger is dan SQL Server. Partitiefuncties en -schema's worden niet gebruikt in de Synapse SQL-groep zoals ze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de partitiekolom en de grenspunten te identificeren. Hoewel de syntaxis van partitionering enigszins kan verschillen van SQL Server, zijn de basisconcepten hetzelfde. SQL Server en Synapse SQL-pool ondersteunen één partitiekolom per tabel, die kan worden verdeeld. Zie [Partitietabellen en -indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over partitionering.
+Synapse SQL pool introduceert een manier om partities te definiëren die eenvoudiger zijn dan SQL Server. Het partitioneren van functies en schema's wordt niet gebruikt in de SQL-groep Synapse, omdat deze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de gepartitioneerde kolom en de grens punten aan te duiden. De syntaxis van partitionering kan enigszins afwijken van SQL Server, de basis concepten zijn hetzelfde. SQL Server en Synapse SQL-pool ondersteunen één partitie kolom per tabel, die partities kan bevatten. Zie [gepartitioneerde tabellen en indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over partitioneren.
 
-In het volgende voorbeeld wordt de instructie [TABEL MAKEN](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt om de factinternetsales-tabel te partitioneren in de kolom OrderDateKey:
+In het volgende voor beeld wordt de instructie [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gebruikt voor het partitioneren van de tabel FactInternetSales in de kolom OrderDateKey:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -74,14 +74,14 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>Partitionering migreren vanuit SQL Server
+## <a name="migrating-partitioning-from-sql-server"></a>Partitioneren migreren van SQL Server
 
-Ga als lid van het emigreren van SQL Server-partitiedefinities eenvoudig naar de Synapse SQL-groep:
+SQL Server partitie definities alleen migreren naar Synapse SQL-groep:
 
-- Elimineer het SQL [Server-partitieschema](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Voeg de definitie van de [partitiefunctie](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) toe aan de TABEL MAKEN.
+- Elimineer het SQL Server [partitie schema](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Voeg de [partitie functie](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) definitie toe aan uw Create Table.
 
-Als u een partitietabel migreert vanuit een SQL Server-instantie, kan de volgende SQL u helpen om het aantal rijen te achterhalen dat in elke partitie zit. Houd er rekening mee dat als dezelfde partitioneringsgranulariteit wordt gebruikt op synapse SQL-pool, het aantal rijen per partitie met een factor 60 afneemt.  
+Als u een gepartitioneerde tabel van een SQL Server-exemplaar migreert, kan de volgende SQL u helpen bij het berekenen van het aantal rijen in elke partitie. Houd er rekening mee dat als dezelfde partitie nauw keurigheid wordt gebruikt voor Synapse SQL-pool, het aantal rijen per partitie afneemt met een factor van 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -117,17 +117,17 @@ GROUP BY    s.[name]
 ;
 ```
 
-## <a name="partition-switching"></a>Partitieschakelen
+## <a name="partition-switching"></a>Partitie overschakelen
 
-Synapse SQL-pool ondersteunt partitiesplitsing, samenvoegen en schakelen. Elk van deze functies wordt uitgevoerd met de [verklaring ALTER TABLE.](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Synapse SQL pool ondersteunt het splitsen van partities, samen voegen en scha kelen. Elk van deze functies wordt uitgevoerd met behulp van de instructie [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
-Als u partities tussen twee tabellen wilt schakelen, moet u ervoor zorgen dat de partities worden uitgelijnd op hun respectieve grenzen en dat de tabeldefinities overeenkomen. Omdat controlebeperkingen niet beschikbaar zijn om het waardenbereik in een tabel af te dwingen, moet de brontabel dezelfde partitiegrenzen bevatten als de doeltabel. Als de partitiegrenzen dan niet hetzelfde zijn, mislukt de partitieswitch omdat de partitiemetagegevens niet worden gesynchroniseerd.
+Als u wilt scha kelen tussen partities tussen twee tabellen, moet u ervoor zorgen dat de partities worden uitgelijnd op de respectievelijke grenzen en dat de tabel definities overeenkomen. Als er geen controle beperkingen beschikbaar zijn voor het afdwingen van het bereik van waarden in een tabel, moet de bron tabel dezelfde partitie grenzen bevatten als de doel tabel. Als de grenzen van de partitie niet hetzelfde zijn, mislukt de partitie-switch omdat de meta gegevens van de partitie niet worden gesynchroniseerd.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Een partitie splitsen die gegevens bevat
 
-De meest efficiënte methode om een partitie te `CTAS` splitsen die al gegevens bevat, is het gebruik van een instructie. Als de partitietabel een geclusterd kolomarchief is, moet de tabelpartitie leeg zijn voordat deze kan worden gesplitst.
+De meest efficiënte methode voor het splitsen van een partitie die al gegevens bevat, is `CTAS` het gebruik van een-instructie. Als de gepartitioneerde tabel een geclusterde column Store is, moet de tabel partitie leeg zijn voordat deze kan worden gesplitst.
 
-In het volgende voorbeeld wordt een tabel met een partitionerende kolomarchief maakt. Het voegt één rij in elke partitie in:
+In het volgende voor beeld wordt een gepartitioneerde column Store-tabel gemaakt. Er wordt één rij in elke partitie ingevoegd:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -157,7 +157,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-In de volgende query wordt `sys.partitions` het aantal rijs gevonden met behulp van de catalogusweergave:
+Met de volgende query wordt het aantal rijen gezocht met `sys.partitions` behulp van de catalogus weergave:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -174,15 +174,15 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-Met de volgende gesplitste opdracht ontvangt u een foutbericht:
+De volgende opdracht splitsen ontvangt een fout bericht:
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, Level 15, State 1, Line 44 SPLIT-clausule van de WIJZIGINGSVERDELING-instructie is mislukt omdat de partitie niet leeg is. Alleen lege partities kunnen worden opgesplitst wanneer er een kolomarchiefindex op de tabel staat. Overweeg de kolomarchiefindex uit te schakelen voordat u de wijzigingspartitie-instructie uitgeeft en vervolgens de kolomarchiefindex opnieuw optebouwen nadat ALTER PARTITION is voltooid.
+Msg 35346, niveau 15, status 1, regel 44 SPLIT van de instructie ALTER PARTITION is mislukt omdat de partitie niet leeg is. Alleen lege partities kunnen worden gesplitst wanneer een column store-index in de tabel voor komt. Overweeg om de column store-index uit te scha kelen voordat u de instructie ALTER PARTITION geeft en bouw vervolgens de column store-index opnieuw op nadat ALTER PARTITION is voltooid.
 
-U echter `CTAS` wel een nieuwe tabel maken om de gegevens vast te houden.
+U kunt echter gebruiken `CTAS` om een nieuwe tabel te maken om de gegevens op te slaan.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -200,7 +200,7 @@ WHERE   1=2
 ;
 ```
 
-Als de scheidingsgrenzen zijn uitgelijnd, is een schakelaar toegestaan. Hierdoor blijft de brontabel met een lege partitie die u vervolgens splitsen.
+Wanneer de grenzen van de partitie zijn uitgelijnd, is een switch toegestaan. Hiermee verlaat u de bron tabel met een lege partitie die u vervolgens kunt splitsen.
 
 ```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Het enige dat overblijft is om de `CTAS`gegevens uit te lijnen op de nieuwe partitiegrenzen met behulp van , en vervolgens de gegevens terug te schakelen naar de hoofdtabel.
+U kunt de gegevens het beste uitlijnen met de nieuwe partitie grenzen met `CTAS`en de gegevens vervolgens weer omzetten in de hoofd tabel.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -229,15 +229,15 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-Zodra u de verplaatsing van de gegevens hebt voltooid, is het een goed idee om de statistieken op de doeltabel te vernieuwen. Het bijwerken van statistieken zorgt ervoor dat de statistieken de nieuwe verdeling van de gegevens in hun respectieve partities nauwkeurig weergeven.
+Wanneer u de gegevens verplaatsing hebt voltooid, is het een goed idee om de statistieken op de doel tabel te vernieuwen. Het bijwerken van statistieken zorgt ervoor dat de statistieken de nieuwe distributie van de gegevens in hun respectieve partities nauw keurig weer spie gelen.
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Nieuwe gegevens in partities laden die gegevens in één stap bevatten
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Nieuwe gegevens laden in partities die gegevens in één stap bevatten
 
-Het laden van gegevens in partities met partitieschakelen is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar is voor gebruikers van de switch in de nieuwe gegevens.  Het kan een uitdaging zijn op drukke systemen om te gaan met de vergrendeling stelling in verband met partitie schakelen.  Om de bestaande gegevens in een `ALTER TABLE` partitie te wissen, moest er vroeger een partitie worden uitgeschakeld.  Dan `ALTER TABLE` was een ander nodig om over te schakelen in de nieuwe gegevens.  In synapse SQL-pool wordt de `TRUNCATE_TARGET` `ALTER TABLE` optie ondersteund in de opdracht.  Met `TRUNCATE_TARGET` `ALTER TABLE` de opdracht overschrijft bestaande gegevens in de partitie met nieuwe gegevens.  Hieronder vindt u `CTAS` een voorbeeld dat wordt gebruikt om een nieuwe tabel met de bestaande gegevens te maken, nieuwe gegevens in te voegen en vervolgens alle gegevens terug te schakelen naar de doeltabel en de bestaande gegevens te overschrijven.
+Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, `ALTER TABLE` moet u hiervoor een vereiste gebruiken om de gegevens te deactiveren.  Daarna was `ALTER TABLE` een andere nood zakelijk om te scha kelen in de nieuwe gegevens.  In Synapse SQL pool wordt de `TRUNCATE_TARGET` optie ondersteund in de `ALTER TABLE` opdracht.  Met `TRUNCATE_TARGET` de `ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld `CTAS` waarin wordt gebruikt om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -261,11 +261,11 @@ VALUES (1,20000101,2,2,2,2,2,2);
 ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2 WITH (TRUNCATE_TARGET = ON);  
 ```
 
-### <a name="table-partitioning-source-control"></a>Bronbeheer voor tabelpartitionering
+### <a name="table-partitioning-source-control"></a>Broncode beheer voor tabel partities
 
-Om te voorkomen dat uw tabeldefinitie **roestin** uw broncontrolesysteem, u de volgende benadering overwegen:
+Als u wilt voor komen dat uw tabel wordt **geroestd** in uw broncode beheer systeem, kunt u de volgende aanpak overwegen:
 
-1. De tabel maken als een partitietabel, maar zonder partitiewaarden
+1. De tabel maken als een gepartitioneerde tabel, maar zonder partitie waarden
 
     ```sql
     CREATE TABLE [dbo].[FactInternetSales]
@@ -287,7 +287,7 @@ Om te voorkomen dat uw tabeldefinitie **roestin** uw broncontrolesysteem, u de v
     ;
     ```
 
-1. `SPLIT`de tabel als onderdeel van het implementatieproces:
+1. `SPLIT`de tabel als onderdeel van het implementatie proces:
 
     ```sql
      -- Create a table containing the partition boundaries
@@ -339,8 +339,8 @@ Om te voorkomen dat uw tabeldefinitie **roestin** uw broncontrolesysteem, u de v
     DROP TABLE #partitions;
     ```
 
-Met deze aanpak blijft de code in bronbesturingselement statisch en mogen de partitionerende grenswaarden dynamisch zijn; in de loop van de tijd met de database evolueren.
+Met deze aanpak blijft de code in broncode beheer statisch en kunnen de grens waarden voor partitioneren dynamisch zijn. na verloop van tijd in ontwikkeling met de data base.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de artikelen over [tabeloverzicht](sql-data-warehouse-tables-overview.md)voor meer informatie over het ontwikkelen van tabellen.
+Zie de artikelen in [tabel Overview](sql-data-warehouse-tables-overview.md)voor meer informatie over het ontwikkelen van tabellen.

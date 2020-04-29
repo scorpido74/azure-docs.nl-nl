@@ -1,76 +1,76 @@
 ---
-title: Lampen
-description: Beschrijving en eigenschappen van lichtbron
+title: Verlichting
+description: Beschrijving van de licht bron en eigenschappen
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680945"
 ---
-# <a name="lights"></a>Lampen
+# <a name="lights"></a>Verlichting
 
-Standaard worden de op afstand gerenderde objecten verlicht met behulp van een [hemellicht.](sky.md) Voor de meeste toepassingen is dit al voldoende, maar u nog meer lichtbronnen toevoegen aan de scène.
+Standaard worden de extern gerenderde objecten niet gebrand met een [lucht licht](sky.md). Voor de meeste toepassingen is dit al voldoende, maar u kunt verdere licht bronnen toevoegen aan de scène.
 
 > [!IMPORTANT]
-> Alleen [PBR-materialen](pbr-materials.md) worden beïnvloed door lichtbronnen. [Kleurmaterialen](color-materials.md) lijken altijd volledig helder.
+> Alleen [PBR-materialen](pbr-materials.md) worden beïnvloed door licht bronnen. [Kleuren materialen](color-materials.md) worden altijd volledig helder weer gegeven.
 
 > [!NOTE]
-> Het gieten van schaduwen wordt momenteel niet ondersteund. Azure Remote Rendering is geoptimaliseerd om enorme hoeveelheden geometrie weer te geven, waarbij indien nodig gebruik wordt gemaakt van meerdere GPU's. Traditionele benaderingen voor schaduwcasting werken niet goed in dergelijke scenario's.
+> Giet scha duwen worden momenteel niet ondersteund. De externe rendering van Azure is geoptimaliseerd voor het renderen van enorme hoeveel heden geometrie, waarbij gebruik wordt gemaakt van meerdere Gpu's, indien nodig. Traditionele benaderingen voor het converteren van schaduw werken niet goed in dergelijke scenario's.
 
-## <a name="common-light-component-properties"></a>Eigenschappen van algemene lichtcomponent
+## <a name="common-light-component-properties"></a>Eigenschappen van algemene licht onderdelen
 
-Alle lichttypen zijn afgeleid `LightComponent` van de abstracte basisklasse en delen deze eigenschappen:
+Alle lichte typen worden afgeleid van de abstracte basis `LightComponent` klasse en delen deze eigenschappen:
 
-* **Kleur:** De kleur van het licht in [gammaruimte.](https://en.wikipedia.org/wiki/SRGB) Alpha wordt genegeerd.
+* **Kleur:** De kleur van het licht in [gamma-ruimte](https://en.wikipedia.org/wiki/SRGB). Alfa wordt genegeerd.
 
-* **Intensiteit:** De helderheid van het licht. Voor punt- en spotlichten bepaalt de intensiteit ook hoe ver het licht schijnt.
+* **Intensiteit:** De helderheid van het licht. Voor punt-en spot lichten definieert de intensiteit ook hoe ver het licht schijnt.
 
-## <a name="point-light"></a>Puntlicht
+## <a name="point-light"></a>Punt licht
 
-In Azure Remote `PointLightComponent` Rendering kan het niet alleen licht uitzenden vanaf een enkel punt, maar ook vanuit een kleine bol of een kleine buis, om zachtere lichtbronnen te simuleren.
+In azure-rendering op `PointLightComponent` afstand kan het niet alleen licht vanaf één punt worden gegenereerd, maar ook van een kleine bol of een kleine buis om zachtere licht bronnen te simuleren.
 
 ### <a name="pointlightcomponent-properties"></a>PointLightComponent-eigenschappen
 
-* **Straal:** De standaardstraal is nul, in welk geval het licht fungeert als puntlicht. Als de straal groter is dan nul, fungeert deze als sferische lichtbron, wat het uiterlijk van spiegelende hooglichten verandert.
+* **RADIUS:** De standaard RADIUS is nul, in het geval dat het lampje als een punt licht fungeert. Als de RADIUS groter is dan nul, fungeert deze als een bolvormige licht bron, waardoor het uiterlijk van reflecterende hooglichten wordt gewijzigd.
 
-* **Lengte:** Als `Length` beide `Radius` en niet-nul, het licht fungeert als een buis licht. Dit kan worden gebruikt om neonbuizen te simuleren.
+* **Lengte:** Als beide `Length` en `Radius` niet-nul zijn, fungeert het licht als een buis licht. Dit kan worden gebruikt om neon buizen te simuleren.
 
-* **DempingCutoff:** Als het aan (0,0) wordt gelaten, hangt de `Intensity`demping van het licht alleen af van zijn . U echter aangepaste min/max-afstanden bieden waarover de intensiteit van het licht lineair wordt geschaald tot 0. Deze functie kan worden gebruikt om een kleiner bereik van invloed van een specifiek licht af te dwingen.
+* **AttenuationCutoff:** Indien van links naar (0, 0) is de uitzwakking van het licht alleen afhankelijk `Intensity`van het. U kunt echter aangepaste min/max-afstanden opgeven waarvan de intensiteit van het licht lineair omlaag wordt geschaald tot 0. Deze functie kan worden gebruikt om een kleiner bereik van invloed op een bepaald licht af te dwingen.
 
-* **Geprojecteerde Cubemap:** Als deze is ingesteld op een geldige [kubuskaart,](../../concepts/textures.md)wordt de textuur geprojecteerd op de omringende geometrie van het licht. De kleur van de kubuskaart is gemoduleerd met de kleur van het licht.
+* **ProjectedCubemap:** Als deze is ingesteld op een geldige [cubemap](../../concepts/textures.md), wordt het bitmappatroon geprojecteerd op de omringende geometrie van het licht. De kleur van de cubemap wordt gemoduleerd met de kleur van het licht.
 
-## <a name="spot-light"></a>Spotlicht
+## <a name="spot-light"></a>Spot licht
 
-Het `SpotLightComponent` is vergelijkbaar `PointLightComponent` met de maar het licht is beperkt tot de vorm van een kegel. De oriëntatie van de kegel wordt bepaald door de *negatieve z-as*van de eigenaar entiteit .
+Het `SpotLightComponent` is vergelijkbaar met het `PointLightComponent` licht, maar het lampje is beperkt tot de vorm van een kegel. De afdruk stand van de kegel wordt gedefinieerd door de *negatieve z-as van de eigenaar*van de entiteit.
 
-### <a name="spotlightcomponent-properties"></a>Eigenschappen spotlightcomponent
+### <a name="spotlightcomponent-properties"></a>SpotLightComponent-eigenschappen
 
-* **Straal:** Hetzelfde als `PointLightComponent`voor de .
+* **RADIUS:** Hetzelfde als voor de `PointLightComponent`.
 
-* **SpotAngleDeg:** Dit interval definieert de binnen- en buitenhoek van de kegel, gemeten in mate. Alles binnen de binnenhoek wordt verlicht met volledige helderheid. Een falloff wordt toegepast op de buitenste hoek die een penumbra-achtig effect genereert.
+* **SpotAngleDeg:** Dit interval definieert de binnenste en buitenste hoek van de kegel, gemeten in graden. Alles binnen de binnenste hoek is lichter met volledige helderheid. Er wordt een wegval toegepast op de buitenste hoek waarmee een Penumbra effect wordt gegenereerd.
 
-* **FalloffExponent:** Hiermee bepaalt u hoe scherp de valovergangen tussen de binnenste en de buitenste kegelhoek worden gemaakt. Een hogere waarde resulteert in een scherpere overgang. De standaardwaarde van 1.0 resulteert in een lineaire overgang.
+* **FalloffExponent:** Definieert hoe scherp de wegval overgang tussen de binnenste en de buitenste kegel hoek is. Een hogere waarde resulteert in een scherpere overgang. De standaard waarde van 1,0 resulteert in een lineaire overgang.
 
-* **DempingCutoff:** Hetzelfde als `PointLightComponent`voor de .
+* **AttenuationCutoff:** Hetzelfde als voor de `PointLightComponent`.
 
-* **Projected2dTexture:** Als deze is ingesteld op een geldige [2D-structuur,](../../concepts/textures.md)wordt het beeld geprojecteerd op de geometrie waarop het licht schijnt. De kleur van de textuur is gemoduleerd met de kleur van het licht.
+* **Projected2dTexture:** Als deze is ingesteld op een geldig [2D-patroon](../../concepts/textures.md), wordt de afbeelding geprojecteerd op de geometrie waar het lampje op staat. De kleur van het bitmappatroon wordt gemoduleerd met de kleur van het licht.
 
-## <a name="directional-light"></a>Richtingslicht
+## <a name="directional-light"></a>Directioneel licht
 
-Het `DirectionalLightComponent` simuleert een lichtbron die oneindig ver weg is. Het licht schijnt in de richting van de *negatieve z-as van de eigenaar entiteit*. De positie van de entiteit wordt genegeerd.
+Het `DirectionalLightComponent` simuleert een licht bron die oneindig ver weg is. Het licht schijnt in de richting van de *negatieve z-as van de entiteit eigenaar*. De positie van de entiteit wordt genegeerd.
 
-Er zijn geen extra eigenschappen.
+Er zijn geen aanvullende eigenschappen.
 
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 
-Lichtbronnen hebben een aanzienlijke invloed op de renderprestaties. Gebruik ze zorgvuldig en alleen indien vereist door de toepassing. Elke statische globale lichttoestand, inclusief een statische directionele component, kan worden bereikt met een [aangepaste hemeltextuur,](sky.md)zonder extra renderingkosten.
+Licht bronnen hebben veel invloed op de rendering van prestaties. Gebruik deze zorgvuldig en alleen als dit door de toepassing wordt vereist. Een statische globale belichtings voorwaarde, met inbegrip van een statische richtings onderdeel, kan worden behaald met een [aangepast lucht patroon](sky.md), zonder dat er extra kosten voor rendering zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Materialen](../../concepts/materials.md)
-* [Sky](sky.md)
+* [Heel](sky.md)

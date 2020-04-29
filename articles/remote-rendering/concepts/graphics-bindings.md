@@ -1,6 +1,6 @@
 ---
-title: Grafische binding
-description: Opstelling van grafische bindingen en use cases
+title: Afbeeldings binding
+description: Installatie van grafische bindingen en use cases
 author: florianborn71
 manager: jlyons
 services: azure-remote-rendering
@@ -10,31 +10,31 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.openlocfilehash: 8b5db0532f3dcc8b6dfb024238d0cacff2e6d2a1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681881"
 ---
-# <a name="graphics-binding"></a>Grafische binding
+# <a name="graphics-binding"></a>Afbeeldings binding
 
-Om Azure Remote Rendering in een aangepaste toepassing te kunnen gebruiken, moet deze worden geïntegreerd in de renderingpipeline van de toepassing. Deze integratie is de verantwoordelijkheid van de grafische binding.
+Als u de externe rendering van Azure in een aangepaste toepassing wilt gebruiken, moet u deze integreren in de rendering-pijp lijn van de toepassing. Deze integratie is de verantwoordelijkheid van de grafische binding.
 
-Eenmaal ingesteld, geeft de grafische binding toegang tot verschillende functies die van invloed zijn op de gerenderde afbeelding. Deze functies kunnen worden onderverdeeld in twee categorieën: algemene functies die altijd `Microsoft.Azure.RemoteRendering.GraphicsApiType`beschikbaar zijn en specifieke functies die alleen relevant zijn voor de geselecteerde .
+Zodra de afbeeldings binding is ingesteld, hebt u toegang tot verschillende functies die van invloed zijn op de gerenderde afbeelding. Deze functies kunnen worden onderverdeeld in twee categorieën: algemene functies die altijd beschikbaar zijn en specifieke functies die alleen relevant zijn voor de geselecteerde `Microsoft.Azure.RemoteRendering.GraphicsApiType`.
 
-## <a name="graphics-binding-in-unity"></a>Grafische binding in Unity
+## <a name="graphics-binding-in-unity"></a>Afbeeldings binding in eenheid
 
-In Unity wordt de gehele `RemoteUnityClientInit` binding behandeld door `RemoteManagerUnity.InitializeManager`de struct overgegaan in . Om de grafische modus `GraphicsApiType` in te stellen, moet het veld worden ingesteld op de gekozen binding. Het veld wordt automatisch ingevuld, afhankelijk van of er een XRDevice aanwezig is. Het gedrag kan handmatig worden overschreven met de volgende gedragingen:
+In eenheid wordt de volledige binding verwerkt door de `RemoteUnityClientInit` struct die is door `RemoteManagerUnity.InitializeManager`gegeven aan. Als u de grafische modus wilt instellen `GraphicsApiType` , moet u het veld instellen op de gekozen binding. Het veld wordt automatisch ingevuld, afhankelijk van of er een XRDevice aanwezig is. Het gedrag kan hand matig worden overschreven met het volgende gedrag:
 
-* **HoloLens 2**: de [Windows Mixed Reality](#windows-mixed-reality) grafische binding wordt altijd gebruikt.
-* **Platte UWP desktop app**: [Simulatie](#simulation) wordt altijd gebruikt. Als u deze modus wilt gebruiken, moet u de stappen in [Zelfstudie: Een Unity-project vanaf nul instellen.](../tutorials/unity/project-setup.md)
-* **Unity editor**: [Simulatie](#simulation) wordt altijd gebruikt, tenzij een WMR VR-headset is aangesloten in welk geval ARR wordt uitgeschakeld om de niet-ARR gerelateerde delen van de toepassing te debuggen. Zie ook [holografische remoting](../how-tos/unity/holographic-remoting.md).
+* **HoloLens 2**: de binding van de [Windows Mixed Reality](#windows-mixed-reality) -afbeelding wordt altijd gebruikt.
+* **Platte UWP bureau blad-app**: [simulatie](#simulation) wordt altijd gebruikt. Als u deze modus wilt gebruiken, moet u de stappen in de [zelf studie volgen: een geheel nieuw eenheids project instellen](../tutorials/unity/project-setup.md).
+* **Unity editor**: [simulatie](#simulation) wordt altijd gebruikt tenzij er een WMR VR-headset is verbonden in welk geval ARR wordt uitgeschakeld, zodat er fouten in de niet-ARR gerelateerde onderdelen van de toepassing kunnen worden opgespoord. Zie ook [Holographic Remoting](../how-tos/unity/holographic-remoting.md).
 
-Het enige andere relevante deel voor Unity is toegang tot de [basisbinding,](#access)alle andere secties hieronder kunnen worden overgeslagen.
+Het enige andere relevante deel voor de eenheid heeft toegang tot de [basis binding](#access). alle andere secties hieronder kunnen worden overgeslagen.
 
-## <a name="graphics-binding-setup-in-custom-applications"></a>Grafische bindingsinstelling in aangepaste toepassingen
+## <a name="graphics-binding-setup-in-custom-applications"></a>Installatie van afbeeldings binding in aangepaste toepassingen
 
-Als u een grafische binding wilt selecteren, neemt u de volgende twee stappen: Eerst moet de grafische binding statisch worden geinitialiseerd wanneer het programma wordt geïnitialiseerd:
+Als u een afbeeldings binding wilt selecteren, voert u de volgende twee stappen uit: eerst moet de binding van de afbeelding statisch worden geïnitialiseerd wanneer het programma wordt geïnitialiseerd:
 
 ``` cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization;
@@ -44,11 +44,11 @@ managerInit.right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
 ```
 
-De bovenstaande aanroep is nodig om Azure Remote Rendering te initialiseren in de holografische API's. Deze functie moet worden aangeroepen voordat een holografische API wordt aangeroepen en voordat andere API's voor externe rendering worden geopend. Op dezelfde manier moet de `RemoteManagerStatic.ShutdownRemoteRendering();` bijbehorende de-init-functie worden aangeroepen nadat er geen holografische API's meer worden aangeroepen.
+De bovenstaande aanroep is vereist voor het initialiseren van de externe rendering van Azure in de Holographic-Api's. Deze functie moet worden aangeroepen voordat een Holographic-API wordt aangeroepen en voordat andere Api's voor het weer geven van externe rendering worden gebruikt. Op dezelfde manier moet de bijbehorende functie `RemoteManagerStatic.ShutdownRemoteRendering();` deinit worden aangeroepen nadat er geen Holographic-api's meer worden aangeroepen.
 
-## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Toegang tot grafische binding
+## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Grafische binding openen
 
-Zodra een client is ingesteld, kan de basisgrafische `AzureSession.GraphicsBinding` binding worden geopend met de getter. Als voorbeeld kunnen de laatste framestatistieken als volgt worden opgehaald:
+Zodra een client is ingesteld, is de basis koppeling voor afbeeldingen toegankelijk met de `AzureSession.GraphicsBinding` getter. Als voor beeld kunnen de laatste frame statistieken als volgt worden opgehaald:
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -62,18 +62,18 @@ if (currentSesson.GraphicsBinding)
 }
 ```
 
-## <a name="graphic-apis"></a>Grafische API's
+## <a name="graphic-apis"></a>Grafische Api's
 
-Er zijn momenteel twee grafische API's die kunnen worden geselecteerd, `WmrD3D11` en `SimD3D11`. Een derde `Headless` bestaat, maar wordt nog niet ondersteund aan de clientkant.
+Er zijn momenteel twee grafische Api's die kunnen worden geselecteerd, `WmrD3D11` en `SimD3D11`. Er bestaat al `Headless` een derde account, maar dit wordt nog niet ondersteund aan de client zijde.
 
 ### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
-`GraphicsApiType.WmrD3D11`is de standaardbinding die moet worden uitgevoerd op HoloLens 2. Het zal `GraphicsBindingWmrD3d11` de binding creëren. In deze modus haakt Azure Remote Rendering rechtstreeks in de holografische API's.
+`GraphicsApiType.WmrD3D11`is de standaard binding die op HoloLens 2 moet worden uitgevoerd. De `GraphicsBindingWmrD3d11` binding wordt gemaakt. In deze modus wordt Azure remote rendering rechtstreeks in de Holographic-Api's weer gegeven.
 
-Om toegang te krijgen tot `GraphicsBinding` de afgeleide grafische bindingen, moet de basis worden gegoten.
-Er zijn twee dingen die gedaan moeten worden om de WMR-binding te gebruiken:
+Voor toegang tot de afgeleide grafische bindingen `GraphicsBinding` moet de basis cast zijn.
+Er zijn twee dingen die moeten worden uitgevoerd voor het gebruik van de WMR-binding:
 
-#### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>Remote Rendering informeren over het gebruikte coördinatensysteem
+#### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>Op de hoogte brengen van een externe rendering van het gebruikte coördinaten systeem
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -85,11 +85,11 @@ if (binding.UpdateUserCoordinateSystem(ptr) == Result.Success)
 }
 ```
 
-Wanneer het `ptr` bovenstaande een aanwijzer `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` moet zijn naar een native object dat het coördinatensysteem voor de wereldruimte definieert waarin coördinaten in de API worden uitgedrukt.
+Waar de bovenstaande `ptr` moet een verwijzing zijn naar een systeem `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` eigen object dat het wereld wijde coördinaten systeem definieert waarin de coördinaten in de API worden uitgedrukt.
 
-#### <a name="render-remote-image"></a>Externe afbeelding weergeven
+#### <a name="render-remote-image"></a>Externe installatie kopie weer geven
 
-Aan het begin van elk frame moet het externe frame worden weergegeven in de achterbuffer. Dit wordt gedaan `BlitRemoteFrame`door aan te roepen , die zowel kleur- als diepte-informatie in vult in het momenteel gebonden renderdoel. Het is dus belangrijk dat dit gebeurt na het binden van de rugbuffer als renderdoel.
+Aan het begin van elk frame moet het externe frame worden weer gegeven in de back-buffer. Dit wordt gedaan door aan `BlitRemoteFrame`te roepen, waardoor zowel kleur-als diepte gegevens worden gevuld in het momenteel gekoppelde weergave doel. Het is dus belang rijk dat u dit doet nadat u de back-upbuffer hebt gebonden als een weergave doel.
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -99,12 +99,12 @@ binding.BlitRemoteFrame();
 
 ### <a name="simulation"></a>Simulatie
 
-`GraphicsApiType.SimD3D11`is de simulatiebinding en maakt `GraphicsBindingSimD3d11` indien geselecteerd de grafische binding. Deze interface wordt gebruikt om hoofdbeweging te simuleren, bijvoorbeeld in een desktopapplicatie en maakt een monoscopische afbeelding weer.
-De setup is een beetje meer betrokken en werkt als volgt:
+`GraphicsApiType.SimD3D11`is de simulatie binding en als deze is geselecteerd, `GraphicsBindingSimD3d11` wordt de grafische binding gemaakt. Deze interface wordt gebruikt voor het simuleren van de hoofd verplaatsing, bijvoorbeeld in een bureaublad toepassing en het renderen van een monoscopic-installatie kopie.
+De instelling is een beetje meer betrokken en werkt als volgt:
 
-#### <a name="create-proxy-render-target"></a>Proxyrenderdoel maken
+#### <a name="create-proxy-render-target"></a>Proxy weergave doel maken
 
-Externe en lokale inhoud moet worden gerenderd naar een offscreen kleur / diepte render `GraphicsBindingSimD3d11.Update` doel genaamd 'proxy' met behulp van de proxy camera gegevens die door de functie. De proxy moet overeenkomen met de resolutie van de backbuffer. Zodra een sessie `GraphicsBindingSimD3d11.InitSimulation` klaar is, moet worden aangeroepen voordat u verbinding maakt met het:
+Externe en lokale inhoud moeten worden gerenderd naar een weergave doel met een achtergrond kleur/diepte met de proxy camera gegevens die door de `GraphicsBindingSimD3d11.Update` functie worden geleverd. De proxy moet overeenkomen met de resolutie van de back-buffer. Wanneer een sessie gereed is, `GraphicsBindingSimD3d11.InitSimulation` moet worden aangeroepen voordat er verbinding mee kan worden gemaakt:
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -118,16 +118,16 @@ GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as Graphics
 simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
 ```
 
-De init-functie moet worden voorzien van verwijzingen naar het native d3d-apparaat en naar de kleur en dieptetextuur van het proxyrenderdoel. `AzureSession.ConnectToRuntime` Eenmaal geïnitialiseerd, `DisconnectFromRuntime` en kan meerdere keren worden `GraphicsBindingSimD3d11.DeinitSimulation` opgeroepen, maar bij het `GraphicsBindingSimD3d11.InitSimulation` overschakelen naar een andere sessie, moet eerst worden opgeroepen op de oude sessie voordat kan worden opgeroepen op een andere sessie.
+De init-functie moet worden geleverd met pointers naar het systeem eigen D3D-apparaat en naar het kleur-en diepte patroon van het doel van de proxy weergave. Eenmaal is `AzureSession.ConnectToRuntime` geïnitialiseerd en `DisconnectFromRuntime` kan meerdere keren worden aangeroepen, maar wanneer u overschakelt naar een `GraphicsBindingSimD3d11.DeinitSimulation` andere sessie, moet eerst worden aangeroepen voor de oude `GraphicsBindingSimD3d11.InitSimulation` sessie voordat deze kan worden aangeroepen in een andere sessie.
 
-#### <a name="render-loop-update"></a>Update renderlus
+#### <a name="render-loop-update"></a>Lus-update weer geven
 
-De update renderloop bestaat uit meerdere stappen:
+De update voor de render-lus bestaat uit meerdere stappen:
 
-1. Elk frame, voordat er `GraphicsBindingSimD3d11.Update` rendering plaatsvindt, wordt aangeroepen met de huidige cameratransformatie die naar de server wordt verzonden om te worden weergegeven. Tegelijkertijd moet de geretourneerde proxy-transformatie worden toegepast op de proxycamera om te renderen in het proxy renderdoel.
-Als de geretourneerde proxy-update `SimulationUpdate.frameId` nietig is, zijn er nog geen externe gegevens. In dit geval moet, in plaats van het renderen in het proxyrenderdoel, alle lokale inhoud rechtstreeks naar de backbuffer worden gerenderd met behulp van de huidige cameragegevens en worden de volgende twee stappen overgeslagen.
-1. De toepassing moet nu binden de `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`proxy render doel en aanroepen . Hiermee wordt de externe kleur- en diepte-informatie in het proxyrenderdoel ingevuld. Alle lokale inhoud kan nu worden gerenderd op de proxy met behulp van de proxy camera transformeren.
-1. Vervolgens moet de terugbuffer worden gebonden als `GraphicsBindingSimD3d11.ReprojectProxy` een renderdoel en op welk punt de terugbuffer kan worden gepresenteerd.
+1. Elk frame, voordat een rendering plaatsvindt, `GraphicsBindingSimD3d11.Update` wordt aangeroepen met de huidige camera transformatie die wordt verzonden naar de server die moet worden gerenderd. Op hetzelfde moment moet de geretourneerde proxy transformatie worden toegepast op de proxy camera om weer te geven in het doel van de proxy weergave.
+Als de geretourneerde proxy `SimulationUpdate.frameId` update null is, zijn er nog geen externe gegevens. In dit geval moet u in plaats van het renderen van het doel van de proxy weer geven, alle lokale inhoud rechtstreeks met de huidige camera gegevens naar de back-buffer worden gerenderd en de volgende twee stappen worden overgeslagen.
+1. De toepassing moet nu het doel en de oproep `GraphicsBindingSimD3d11.BlitRemoteFrameToProxy`van de proxy-rendering binden. Hiermee worden de externe kleur en diepte gegevens in het doel van de proxy weergave opgevuld. Lokale inhoud kan nu worden weer gegeven op de proxy met behulp van de trans formatie van de proxy camera.
+1. Vervolgens moet de back-buffer zijn gebonden als een weergave doel en `GraphicsBindingSimD3d11.ReprojectProxy` worden aangeroepen waarop de back buffer kan worden weer gegeven.
 
 ``` cs
 AzureSession currentSesson = ...;
@@ -157,4 +157,4 @@ else
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelfstudie: Een Unity-project vanaf nul instellen](../tutorials/unity/project-setup.md)
+* [Zelf studie: een geheel nieuw eenheids project instellen](../tutorials/unity/project-setup.md)

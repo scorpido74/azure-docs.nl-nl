@@ -1,51 +1,51 @@
 ---
-title: Aanbevolen procedures voor podbeveiliging
+title: Best practices voor pod-beveiliging
 titleSuffix: Azure Kubernetes Service
-description: Meer informatie over de aanbevolen procedures voor ontwikkelaars voor het beveiligen van pods in Azure Kubernetes Service (AKS)
+description: Meer informatie over de aanbevolen procedures voor ontwikkel aars voor het beveiligen van Peul in azure Kubernetes service (AKS)
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
 ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804381"
 ---
-# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor podbeveiliging in Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
-Bij het ontwikkelen en uitvoeren van toepassingen in Azure Kubernetes Service (AKS) is de beveiliging van uw pods een belangrijke overweging. Uw toepassingen moeten worden ontworpen voor het principe van het minste aantal vereiste bevoegdheden. Het beveiligen van privégegevens is top of mind voor klanten. U wilt niet dat referenties zoals databaseverbindingen, sleutels of geheimen en certificaten worden blootgesteld aan de buitenwereld, waar een aanvaller misbruik kan maken van deze geheimen voor kwaadaardige doeleinden. Voeg ze niet toe aan uw code of sluit ze niet in in uw containerafbeeldingen. Deze aanpak zou leiden tot een risico voor blootstelling en beperken de mogelijkheid om deze referenties te draaien als de container beelden moeten worden herbouwd.
+Als u toepassingen ontwikkelt en uitvoert in azure Kubernetes service (AKS), is de beveiliging van uw peul een belang rijke overweging. Uw toepassingen moeten worden ontworpen voor het principe van het minst vereiste aantal bevoegdheden. Het is belang rijk om persoonlijke gegevens veilig te houden. U wilt niet dat referenties zoals database verbindings reeksen, sleutels of geheimen en certificaten die worden blootgesteld aan de buiten wereld waar een aanvaller kan profiteren van deze geheimen voor schadelijke doel einden. Voeg ze niet toe aan uw code of sluit ze in op uw container installatie kopieën. Deze aanpak maakt een risico voor bloot stelling en beperkt de mogelijkheid om deze referenties te draaien, omdat de container installatie kopieën opnieuw moeten worden opgebouwd.
 
-Dit best practices artikel richt zich op hoe pods in AKS te beveiligen. Procedures voor:
+Dit artikel Best practices is gericht op het beveiligen van AKS. Procedures voor:
 
 > [!div class="checklist"]
-> * De beveiligingscontext van de pod gebruiken om de toegang tot processen en services of escalatie van bevoegdheden te beperken
-> * Verifiëren met andere Azure-resources met podbeheerde identiteiten
-> * Referenties aanvragen en ophalen uit een digitale kluis, zoals Azure Key Vault
+> * Pod-beveiligings context gebruiken om de toegang tot processen en services of bevoegdheids escalatie te beperken
+> * Verifiëren met andere Azure-resources met behulp van door Pod beheerde identiteiten
+> * Referenties aanvragen en ophalen van een digitale kluis, zoals Azure Key Vault
 
-U ook de aanbevolen procedures voor [clusterbeveiliging][best-practices-cluster-security] en voor [containerimagebeheer][best-practices-container-image-management]lezen.
+U kunt ook de aanbevolen procedures voor [cluster beveiliging][best-practices-cluster-security] lezen en voor [container installatie kopie beheer][best-practices-container-image-management].
 
-## <a name="secure-pod-access-to-resources"></a>Beveiligde podtoegang tot bronnen
+## <a name="secure-pod-access-to-resources"></a>Pod toegang tot bronnen beveiligen
 
-**Richtlijnen voor aanbevolen procedures** - Als u als een andere gebruiker of groep wilt worden uitgevoerd en de toegang tot de onderliggende knooppuntprocessen en -services wilt beperken, definieert u de contextinstellingen voor podbeveiliging. Wijs het minste aantal vereiste bevoegdheden toe.
+**Richt lijnen voor best practices** : als u wilt uitvoeren als een andere gebruiker of groep en de toegang tot de onderliggende knooppunt processen en-services wilt beperken, definieert u pod security context Settings. Wijs het minste vereiste aantal bevoegdheden toe.
 
-Als u uw toepassingen correct wilt uitvoeren, moeten pods worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *root.* Met `securityContext` de voor een pod of container u instellingen definiëren, zoals *runAsUser* of *fsGroup* om de juiste machtigingen aan te nemen. Wijs alleen de vereiste gebruikers- of groepsmachtigingen toe en gebruik de beveiligingscontext niet als een middel om extra machtigingen aan te nemen. De *runAsUser,* privilege escalation en andere Linux-instellingen zijn alleen beschikbaar op Linux-knooppunten en -pods.
+Als u wilt dat uw toepassingen correct worden uitgevoerd, moet het Peul worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *basis*. Met `securityContext` de for a Pod of container kunt u instellingen zoals *runAsUser* of *fsGroup* definiëren om de juiste machtigingen aan te nemen. Wijs alleen de vereiste machtigingen van de gebruiker of groep toe en gebruik de beveiligings context niet als middel om aanvullende machtigingen te nemen. De instellingen voor *runAsUser*, bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
 
-Wanneer u als niet-hoofdgebruiker wordt uitgevoerd, kunnen containers niet worden gekoppeld aan de bevoorrechte poorten onder 1024. In dit scenario kan Kubernetes Services worden gebruikt om te verhullen dat een app op een bepaalde poort wordt uitgevoerd.
+Wanneer u als niet-hoofd gebruiker wordt uitgevoerd, kunnen containers niet worden gebonden aan de geprivilegieerde poorten onder 1024. In dit scenario kan Kubernetes services worden gebruikt om het feit te verhullen dat een app wordt uitgevoerd op een bepaalde poort.
 
-Een podbeveiligingscontext kan ook aanvullende mogelijkheden of machtigingen definiëren voor toegang tot processen en services. De volgende definities van de gemeenschappelijke beveiligingscontext kunnen worden ingesteld:
+Een pod-beveiligings context kan ook aanvullende mogelijkheden of machtigingen voor het verkrijgen van toegang tot processen en services definiëren. De volgende algemene beveiligings context definities kunnen worden ingesteld:
 
-* **allowPrivilegeEscalation** definieert of de pod *rootrechten* kan aannemen. Ontwerp uw toepassingen zodat deze instelling altijd is ingesteld op *false.*
-* **Linux-mogelijkheden** laten de pod toegang tot onderliggende knooppuntprocessen. Zorg ervoor dat u deze mogelijkheden toegeeft. Wijs het minste aantal benodigde bevoegdheden toe. Zie [Linux-mogelijkheden][linux-capabilities]voor meer informatie.
-* **SELinux-labels** is een Linux-kernelbeveiligingsmodule waarmee u toegangsbeleid voor services, processen en bestandssysteemtoegang definiëren. Wijs nogmaals het minste aantal benodigde bevoegdheden toe. Zie [SELinux-opties voor][selinux-labels] meer informatie in Kubernetes
+* **allowPrivilegeEscalation** definieert of de pod de *root* -bevoegdheden kan aannemen. Ontwerp uw toepassingen zodat deze instelling altijd is ingesteld op *Onwaar*.
+* Met de **Linux-mogelijkheden** kan pod toegang krijgen tot onderliggende knooppunt processen. Wees voorzichtig met het toewijzen van deze mogelijkheden. Wijs het minste aantal benodigde bevoegdheden toe. Zie [Linux-mogelijkheden][linux-capabilities]voor meer informatie.
+* **Selinux labels** is een Linux-kernel-beveiligings module waarmee u toegangs beleid kunt definiëren voor services, processen en toegang tot het bestands systeem. Wijs opnieuw het minste aantal benodigde bevoegdheden toe. Zie [selinux-opties in Kubernetes][selinux-labels] voor meer informatie.
 
-In het volgende voorbeeldpod YAML-manifest worden de instellingen voor beveiligingscontextingesteld om te definiëren:
+In het volgende voor beeld wordt pod YAML-manifest ingesteld op het definiëren van beveiligings context instellingen:
 
-* Pod wordt uitgevoerd als gebruikersnaam *1000* en onderdeel van groeps-ID *2000*
-* Kan de bevoegdheden voor het gebruik niet escaleren`root`
-* Met Linux-mogelijkheden toegang tot netwerkinterfaces en de real-time (hardware)klok van de host
+* Pod wordt uitgevoerd als gebruikers-ID *1000* en deel van groeps-id *2000*
+* Kan geen bevoegdheden escaleren voor gebruik`root`
+* Biedt Linux-mogelijkheden toegang tot netwerk interfaces en de real-time (hardware)-klok van de host
 
 ```yaml
 apiVersion: v1
@@ -64,46 +64,46 @@ spec:
         add: ["NET_ADMIN", "SYS_TIME"]
 ```
 
-Werk samen met uw clusteroperator om te bepalen welke beveiligingscontextinstellingen u nodig hebt. Probeer uw toepassingen te ontwerpen om extra machtigingen te minimaliseren en toegang te krijgen tot de pod. Er zijn extra beveiligingsfuncties om de toegang te beperken met behulp van AppArmor en seccomp (secure computing) die kunnen worden geïmplementeerd door clusteroperators. Zie [Toegang tot containers beveiligen tot resources voor][apparmor-seccomp]meer informatie.
+Werk samen met uw cluster operator om te bepalen welke beveiligings context instellingen u nodig hebt. Probeer uw toepassingen te ontwerpen om extra machtigingen te minimaliseren en de toegang tot de Pod vereist. Er zijn aanvullende beveiligings functies om de toegang te beperken met behulp van AppArmor en seccomp (veilig Computing) die kunnen worden geïmplementeerd door cluster operators. Zie [Secure container Access to resources][apparmor-seccomp](Engelstalig) voor meer informatie.
 
-## <a name="limit-credential-exposure"></a>Blootstelling aan referenties beperken
+## <a name="limit-credential-exposure"></a>Blootstelling van de referentie beperken
 
-**Richtlijnen voor aanbevolen procedures** - definieer geen referenties in uw toepassingscode. Gebruik beheerde identiteiten voor Azure-bronnen om uw pod toegang te geven tot andere bronnen. Een digitale kluis, zoals Azure Key Vault, moet ook worden gebruikt om digitale sleutels en referenties op te slaan en op te halen. Pod beheerde identiteiten is alleen bedoeld voor gebruik met Linux-pods en containerafbeeldingen.
+**Richt lijnen voor best practices** : Geef geen referenties in de toepassings code op. Gebruik beheerde identiteiten voor Azure-resources om ervoor te zorgen dat uw Pod toegang tot andere bronnen kan aanvragen. Een digitale kluis, zoals Azure Key Vault, moet ook worden gebruikt om digitale sleutels en referenties op te slaan en op te halen. Beheerde identiteiten van pod zijn alleen bedoeld voor gebruik met Linux-en container installatie kopieën.
 
-Als u het risico wilt beperken dat referenties in uw toepassingscode worden weergegeven, vermijdt u het gebruik van vaste of gedeelde referenties. Referenties of sleutels mogen niet direct in uw code worden opgenomen. Als deze referenties worden weergegeven, moet de toepassing worden bijgewerkt en opnieuw worden geïmplementeerd. Een betere aanpak is om pods hun eigen identiteit en manier te geven om zichzelf te verifiëren, of om automatisch referenties uit een digitale kluis op te halen.
+Vermijd het gebruik van vaste of gedeelde referenties om het risico te beperken dat de referenties worden weer gegeven in de toepassings code. Referenties of sleutels mogen niet rechtstreeks in uw code worden opgenomen. Als deze referenties worden weer gegeven, moet de toepassing worden bijgewerkt en opnieuw worden geïmplementeerd. Een betere benadering is het opgeven van een eigen identiteit en manier om zichzelf te verifiëren of automatisch referenties op te halen van een digitale kluis.
 
-Met de volgende [bijbehorende AKS-opensourceprojecten][aks-associated-projects] u pods automatisch verifiëren of referenties en sleutels aanvragen uit een digitale kluis:
+Met de volgende [gekoppelde open-source projecten van AKS][aks-associated-projects] kunt u automatisch peul verifiëren of referenties en sleutels van een digitale kluis aanvragen:
 
 * Beheerde identiteiten voor Azure-resources en
-* Azure Key Vault FlexVol-stuurprogramma
+* Azure Key Vault FlexVol-stuur programma
 
-Gekoppelde AKS-opensourceprojecten worden niet ondersteund door technische ondersteuning van Azure. Ze worden verstrekt om feedback en bugs van onze community te verzamelen. Deze projecten worden niet aanbevolen voor productiegebruik.
+Gerelateerde AKS open-source projecten worden niet ondersteund door de technische ondersteuning van Azure. Ze zijn bedoeld om feedback en bugs van onze community te verzamelen. Deze projecten worden niet aanbevolen voor productie gebruik.
 
-### <a name="use-pod-managed-identities"></a>Podbeheerde identiteiten gebruiken
+### <a name="use-pod-managed-identities"></a>Door Pod beheerde identiteiten gebruiken
 
-Met een beheerde identiteit voor Azure-resources kan een pod zichzelf verifiëren tegen Azure-services die deze ondersteunen, zoals Opslag of SQL. Aan de pod is een Azure-identiteit toegewezen waarmee ze kunnen verifiëren in Azure Active Directory en een digitaal token kunnen ontvangen. Dit digitale token kan worden gepresenteerd aan andere Azure-services die controleren of de pod is geautoriseerd om toegang te krijgen tot de service en de vereiste acties uit te voeren. Deze aanpak betekent dat er bijvoorbeeld geen geheimen nodig zijn voor databaseverbindingen. De vereenvoudigde werkstroom voor door een pod beheerde identiteit wordt weergegeven in het volgende diagram:
+Met een beheerde identiteit voor Azure-resources kan een pod zichzelf verifiëren voor Azure-Services die dit ondersteunen, zoals opslag of SQL. Aan de Pod wordt een Azure-identiteit toegewezen waarmee ze kunnen worden geverifieerd voor Azure Active Directory en een digitaal token kan worden ontvangen. Dit digitale token kan worden gepresenteerd aan andere Azure-Services die controleren of de Pod is gemachtigd om toegang te krijgen tot de service en de vereiste acties uit te voeren. Deze aanpak houdt in dat er geen geheimen vereist zijn voor database verbindings reeksen, bijvoorbeeld. De vereenvoudigde werk stroom voor pod beheerde identiteit wordt weer gegeven in het volgende diagram:
 
-![Vereenvoudigde werkstroom voor podbeheerde identiteit in Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
+![Vereenvoudigde werk stroom voor pod beheerde identiteit in azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
-Met een beheerde identiteit hoeft uw toepassingscode geen referenties op te nemen om toegang te krijgen tot een service, zoals Azure Storage. Zoals elke pod zich verifieert met een eigen identiteit, zodat u de toegang controleren en controleren. Als uw toepassing verbinding maakt met andere Azure-services, gebruikt u beheerde identiteiten om hergebruik van referenties en risico op blootstelling te beperken.
+Met een beheerde identiteit hoeft uw toepassings code geen referenties op te geven voor toegang tot een service, zoals Azure Storage. Elke pod verifieert met zijn eigen identiteit, zodat u de toegang kunt controleren en controleren. Als uw toepassing verbinding maakt met andere Azure-Services, moet u beheerde identiteiten gebruiken om het hergebruik van referenties en het risico op bloot stelling te beperken.
 
-Zie [Een AKS-cluster configureren om door een pod beheerde identiteiten en met uw toepassingen te gebruiken voor][aad-pod-identity] meer informatie over podidentiteiten.
+Zie [Configure a AKS cluster to use pod Managed Identities and with your Applications][aad-pod-identity] (Engelstalig) voor meer informatie over pod-identiteiten.
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>Azure Key Vault gebruiken met FlexVol
 
-Beheerde podidentiteiten werken geweldig om te verifiëren tegen ondersteuning van Azure-services. Voor uw eigen services of toepassingen zonder beheerde identiteiten voor Azure-bronnen, verifieert u nog steeds met referenties of sleutels. Een digitale kluis kan worden gebruikt om deze referenties op te slaan.
+Beheerde pod-identiteiten werken geweldig om te verifiëren tegen de ondersteuning van Azure-Services. Voor uw eigen services of toepassingen zonder beheerde identiteiten voor Azure-resources kunt u nog steeds verifiëren met behulp van referenties of sleutels. Een digitale kluis kan worden gebruikt om deze referenties op te slaan.
 
-Wanneer toepassingen een referentie nodig hebben, communiceren ze met de digitale kluis, halen ze de nieuwste referenties op en maken ze verbinding met de vereiste service. Azure Key Vault kan deze digitale kluis zijn. De vereenvoudigde werkstroom voor het ophalen van een referentie uit Azure Key Vault met podbeheerde identiteiten wordt weergegeven in het volgende diagram:
+Wanneer toepassingen een referentie nodig hebben, communiceren ze met de digitale kluis, ophalen we de meest recente referenties en maken ze vervolgens verbinding met de vereiste service. Azure Key Vault kan deze digitale kluis zijn. De vereenvoudigde werk stroom voor het ophalen van een referentie van Azure Key Vault met behulp van pod Managed Identities wordt weer gegeven in het volgende diagram:
 
-![Vereenvoudigde werkstroom voor het ophalen van een referentie uit Key Vault met behulp van een door een pod beheerde identiteit](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Vereenvoudigde werk stroom voor het ophalen van een referentie van Key Vault met behulp van een door Pod beheerde identiteit](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
 
-Met Key Vault slaat u geheimen op, zoals referenties, opslagaccountsleutels of certificaten. U Azure Key Vault integreren met een AKS-cluster met een FlexVolume. Met het FlexVolume-stuurprogramma kan het AKS-cluster referenties native ophalen uit Key Vault en deze veilig alleen aan de aanvragende pod verstrekken. Werk samen met uw clusteroperator om het Key Vault FlexVol-stuurprogramma te implementeren op de AKS-knooppunten. U een door een pod beheerde identiteit gebruiken om toegang tot Key Vault aan te vragen en de referenties op te halen die u nodig hebt via het FlexVolume-stuurprogramma.
+Met Key Vault kunt u geheimen, zoals referenties, opslag account sleutels of certificaten, opslaan en regel matig draaien. U kunt Azure Key Vault integreren met een AKS-cluster met behulp van een FlexVolume. Met het FlexVolume-stuur programma kan het AKS-cluster systeem eigen referenties ophalen van Key Vault en deze alleen veilig aanbieden aan de aanvragende pod. Werk samen met uw cluster operator om het Key Vault FlexVol-stuur programma op de AKS-knoop punten te implementeren. U kunt een beheerde pod-id gebruiken om toegang aan te vragen voor Key Vault en de referenties op te halen die u nodig hebt via het FlexVolume-stuur programma.
 
-Azure Key Vault met FlexVol is bedoeld voor gebruik met toepassingen en services die worden uitgevoerd op Linux-pods en -knooppunten.
+Azure Key Vault met FlexVol is bedoeld voor gebruik met toepassingen en services die worden uitgevoerd op Linux, peulen en knoop punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Dit artikel richtte zich op het beveiligen van uw pods. Zie de volgende artikelen om een aantal van deze gebieden te implementeren:
+Dit artikel is gericht op hoe u uw peul kunt beveiligen. Raadpleeg de volgende artikelen voor meer informatie over het implementeren van sommige van deze gebieden:
 
 * [Beheerde identiteiten gebruiken voor Azure-resources met AKS][aad-pod-identity]
 * [Azure Key Vault integreren met AKS][aks-keyvault-flexvol]

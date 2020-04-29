@@ -1,21 +1,21 @@
 ---
-title: Een ServiceFabric-cluster met Windows in Azure maken
-description: In deze zelfstudie leert u hoe u een Windows Service Fabric-cluster implementeert in een virtuele Azure-netwerk- en netwerkbeveiligingsgroep met PowerShell.
+title: Een Service Fabric cluster met Windows maken in azure
+description: In deze zelf studie leert u hoe u een Windows Service Fabric-cluster kunt implementeren in een virtueel Azure-netwerk en een netwerk beveiligings groep met behulp van Power shell.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756050"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelfstudie: Een ServiceFabric-cluster implementeren waarop Windows wordt uitgevoerd in een virtueel Azure-netwerk
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelf studie: een Service Fabric cluster met Windows implementeren in een virtueel Azure-netwerk
 
-Deze zelfstudie is deel één van een serie. U leert hoe u een Azure Service Fabric-cluster met Windows implementeert in een [azure-virtuele netwerk-](../virtual-network/virtual-networks-overview.md) en [netwerkbeveiligingsgroep](../virtual-network/virtual-networks-nsg.md) met PowerShell en een sjabloon. Wanneer u klaar bent, wordt er een cluster uitgevoerd in de cloud waarop u toepassingen implementeren. Zie [Een veilig Linux-cluster maken op Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)als u een Linux-cluster wilt maken dat gebruikmaakt van de Azure CLI.
+Deze zelfstudie is deel één van een serie. U leert hoe u een Azure Service Fabric cluster met Windows implementeert in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) en een [netwerk beveiligings groep](../virtual-network/virtual-networks-nsg.md) met behulp van Power shell en een sjabloon. Wanneer u klaar bent, hebt u een cluster dat wordt uitgevoerd in de Cloud waarop u toepassingen kunt implementeren. Zie [een beveiligd Linux-cluster maken in azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)voor informatie over het maken van een Linux-cluster dat gebruikmaakt van de Azure cli.
 
-In deze zelfstudie wordt een productiescenario beschreven. Zie [Een testcluster maken](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)als u een kleiner cluster wilt maken voor testdoeleinden.
+In deze zelfstudie wordt een productiescenario beschreven. Zie [een test cluster maken](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)als u een kleiner cluster wilt maken voor test doeleinden.
 
 In deze zelfstudie leert u het volgende:
 
@@ -24,7 +24,7 @@ In deze zelfstudie leert u het volgende:
 > * Een sleutelkluis maken en een certificaat uploaden
 > * Azure Active Directory-verificatie instellen
 > * Diagnostische verzameling configureren
-> * De EventStore-service instellen
+> * De Event Store-service instellen
 > * Azure Monitor-logboeken instellen
 > * Een beveiligd Service Fabric-cluster maken in Azure PowerShell
 > * Het cluster beveiligen met een X.509-certificaat
@@ -46,55 +46,55 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan.
-* Installeer de [Service Fabric SDK- en PowerShell-module.](service-fabric-get-started.md)
-* Azure [Powershell installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Installeer de [service Fabric SDK en Power shell-module](service-fabric-get-started.md).
+* Installeer [Azure Power shell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 * Bekijk de belangrijkste concepten van [Azure-clusters](service-fabric-azure-clusters-overview.md).
-* [Plannen en voorbereiden op](service-fabric-cluster-azure-deployment-preparation.md) een implementatie van een productiecluster.
+* [Plan en bereid](service-fabric-cluster-azure-deployment-preparation.md) u voor op een productie cluster implementatie.
 
-Met de volgende procedures wordt er een Service Fabric-cluster met zeven knooppunten gemaakt. Gebruik de [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) om de kosten te berekenen die zijn gemaakt door een Service Fabric-cluster in Azure uit te voeren.
+Met de volgende procedures wordt er een Service Fabric-cluster met zeven knooppunten gemaakt. Gebruik de [prijs calculator van Azure](https://azure.microsoft.com/pricing/calculator/) om de kosten te berekenen die worden gemaakt door een service Fabric cluster uit te voeren in Azure.
 
 ## <a name="download-and-explore-the-template"></a>De sjabloon downloaden en verkennen
 
-Download de volgende Azure Resource Manager-sjabloonbestanden:
+Down load de volgende Azure Resource Manager sjabloon bestanden:
 
-* [azuredeploy.json][template]
+* [azuredeploy. json][template]
 * [azuredeploy.parameters.json][parameters]
 
-Met deze sjabloon wordt een veilig cluster van zeven virtuele machines en drie knooppunttypen in een virtueel netwerk en een netwerkbeveiligingsgroep geïmplementeerd.  Andere voorbeeldsjablonen zijn te vinden op [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). De [azuredeploy.json][template] implementeert een aantal bronnen, waaronder het volgende.
+Met deze sjabloon wordt een veilig cluster van zeven virtuele machines en drie knooppunttypen in een virtueel netwerk en een netwerkbeveiligingsgroep geïmplementeerd.  Andere voorbeeldsjablonen zijn te vinden op [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [Azuredeploy. json][template] implementeert een aantal resources, waaronder de volgende.
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-cluster
 
 In de resource **Microsoft.ServiceFabric/clusters** wordt een Windows-cluster geconfigureerd met de volgende kenmerken:
 
-* Drie knooppunttypes.
-* Vijf knooppunten in het primaire knooppunttype (configureerbaar in de sjabloonparameters) en één knooppunt in elk van de andere twee knooppunttypen.
-* BE: Windows Server 2016 Datacenter with Containers (configureerbaar in de sjabloonparameters).
-* Certificaat beveiligd (configureerbaar in de sjabloonparameters).
+* Drie knooppunt typen.
+* Vijf knoop punten in het primaire knooppunt type (configureerbaar in de sjabloon parameters) en één knoop punt in elk van de andere twee typen knoop punten.
+* Besturings systeem: Windows Server 2016 Data Center met containers (configureerbaar in de sjabloon parameters).
+* Certificaat beveiligd (configureerbaar in de sjabloon parameters).
 * [Omgekeerde proxy](service-fabric-reverseproxy.md) is ingeschakeld.
-* [DNS-service](service-fabric-dnsservice.md) is ingeschakeld.
-* [Duurzaamheidsniveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) van brons (configureerbaar in de sjabloonparameters).
-* [Betrouwbaarheidsniveau](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) van Zilver (configureerbaar in de sjabloonparameters).
-* Eindpunt van de clientverbinding: 19000 (configureerbaar in de sjabloonparameters).
-* HTTP-gatewayeindpunt: 19080 (configureerbaar in de sjabloonparameters).
+* De [DNS-service](service-fabric-dnsservice.md) is ingeschakeld.
+* [Duurzaamheids niveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) van Bronze (configureerbaar in de sjabloon parameters).
+* [Betrouwbaarheids niveau](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) van zilver (configureerbaar in de sjabloon parameters).
+* Eind punt voor client verbinding: 19000 (configureerbaar in de sjabloon parameters).
+* HTTP-gateway-eind punt: 19080 (configureerbaar in de sjabloon parameters).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-In de **bron Microsoft.Network/loadBalancers** is een load balancer geconfigureerd. Voor de volgende poorten zijn sondes en regels ingesteld:
+In de resource **micro soft. Network/loadBalancers** is een Load Balancer geconfigureerd. Er worden tests en regels ingesteld voor de volgende poorten:
 
-* Eindpunt van clientverbinding: 19000
+* Eind punt client verbinding: 19000
 * het eindpunt van de HTTP-gateway: 19080
-* Toepassingspoort: 80
-* Toepassingspoort: 443
+* Toepassings poort: 80
+* Toepassings poort: 443
 * omgekeerde proxy van Service Fabric: 19081
 
-Als er andere toepassingspoorten nodig zijn, moet u de bron **Microsoft.Network/loadBalancers** en de bron **Microsoft.Network/networkSecurityGroups** aanpassen om het verkeer toe te laten.
+Als er andere toepassings poorten nodig zijn, moet u de resource **micro soft. Network/loadBalancers** en de resource **micro soft. Network/networkSecurityGroups** aanpassen om het verkeer in toe te staan.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtueel netwerk, subnet en netwerkbeveiligingsgroep
 
 De namen van het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep zijn gedefinieerd in de sjabloonparameters. Adresruimten van het virtuele netwerk en subnet worden ook gedeclareerd in de sjabloonparameters en geconfigureerd in de resource **Microsoft.Network/virtualNetworks**:
 
-* Virtuele netwerkadresruimte: 172.16.0.0/20
+* Adres ruimte van virtueel netwerk: 172.16.0.0/20
 * Service Fabric-subnetadresruimte: 172.16.2.0/23
 
 De volgende regels voor binnenkomend verkeer worden ingeschakeld in de resource **Microsoft.Network/networkSecurityGroups**. U kunt de poortwaarden wijzigen door de sjabloonvariabelen te wijzigen.
@@ -102,16 +102,16 @@ De volgende regels voor binnenkomend verkeer worden ingeschakeld in de resource 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
 * SMB: 445
-* Internodecommunicatie: 1025, 1026, 1027
-* Kortstondige poortbereik: 49152 tot 65534 (minimaal 256 poorten nodig).
+* Internodecommunication: 1025, 1026, 1027
+* Tijdelijk poort bereik: 49152 tot 65534 (mini maal 256 poorten nodig).
 * Poorten voor toepassingsgebruik: 80 en 443
-* Toepassingspoortbereik: 49152 tot 65534 (gebruikt voor service tot servicecommunicatie. Andere poorten worden niet geopend op de load balancer).
+* Poort bereik van de toepassing: 49152 tot 65534 (wordt gebruikt voor service to service-communicatie. Er zijn geen andere poorten geopend op de Load Balancer.
 * Blokkeer alle andere poorten
 
-Als er andere toepassingspoorten nodig zijn, moet u de bron **Microsoft.Network/loadBalancers** en de bron **Microsoft.Network/networkSecurityGroups** aanpassen om het verkeer toe te laten.
+Als er andere toepassings poorten nodig zijn, moet u de resource **micro soft. Network/loadBalancers** en de resource **micro soft. Network/networkSecurityGroups** aanpassen om het verkeer in toe te staan.
 
 ### <a name="windows-defender"></a>Windows Defender
-Standaard is het [Antivirusprogramma van Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) geïnstalleerd en functioneel op Windows Server 2016. De gebruikersinterface is standaard geïnstalleerd op sommige SKU's, maar is niet vereist. Voor elk knooppunttype dat/elke VM-schaalset die is aangegeven in de sjabloon, wordt de [Antimalware voor Azure-VM-extensie](/azure/virtual-machines/extensions/iaas-antimalware-windows) gebruikt voor het uitsluiten van de Service Fabric-mappen en processen:
+Het [Windows Defender anti virus-programma](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) is standaard geïnstalleerd en werkt op Windows Server 2016. De gebruikers interface wordt standaard geïnstalleerd op sommige Sku's, maar is niet vereist. Voor elk knooppunttype dat/elke VM-schaalset die is aangegeven in de sjabloon, wordt de [Antimalware voor Azure-VM-extensie](/azure/virtual-machines/extensions/iaas-antimalware-windows) gebruikt voor het uitsluiten van de Service Fabric-mappen en processen:
 
 ```json
 {
@@ -141,38 +141,38 @@ Standaard is het [Antivirusprogramma van Windows Defender](/windows/security/thr
 
 ## <a name="set-template-parameters"></a>De sjabloonparameters instellen
 
-Het parameterbestand [azuredeploy.parameters.json][parameters] bepaalt veel waarden die worden gebruikt om het cluster en de bijbehorende resources te implementeren. De volgende parameters zijn die u moet wijzigen voor uw implementatie:
+Het parameterbestand [azuredeploy.parameters.json][parameters] bepaalt veel waarden die worden gebruikt om het cluster en de bijbehorende resources te implementeren. Hier volgen de para meters die u kunt wijzigen voor uw implementatie:
 
-**Parameter** | **Voorbeeldwaarde** | **Opmerkingen** 
+**Bepaalde** | **Voorbeeld waarde** | **Opmerkingen** 
 |---|---|---|
-|adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. [Gebruikersnaamvereisten voor VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's. [Wachtwoordvereisten voor VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. De [gebruikers naam is vereist voor de VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's. [Wachtwoord vereisten voor de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| De naam van het cluster. Mag alleen letters en cijfers bevatten. De lengte kan minimaal 3 en maximaal 23 tekens zijn.|
 |location|southcentralus| De locatie van het cluster. |
 |certificateThumbprint|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de SHA1-waarde van de certificaatvingerafdruk in. Bijvoorbeeld 6190390162C988701DB5676EB81083EA608DCCF3.</p> |
-|certificateUrlValue|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft. </p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de URL van het certificaat in. Bijvoorbeeld "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft. </p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de URL van het certificaat in. Bijvoorbeeld ' https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346 '.</p>|
 |sourceVaultValue||<p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de waarde van de bronkluis in. Bijvoorbeeld /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT.</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Clientverificatie via Azure Active Directory instellen
 Voor Service Fabric-clusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor wederzijdse verificatie van client-naar-knooppunt:
-* Gebruik Azure Active Directory voor clientidentiteit.
-* Gebruik een certificaat voor serveridentiteit en TLS-versleuteling van HTTP-communicatie.
+* Gebruik Azure Active Directory voor client identiteit.
+* Gebruik een certificaat voor server identiteit en TLS-versleuteling van HTTP-communicatie.
 
-Het instellen van Azure Active Directory (Azure AD) om clients voor een Service Fabric-cluster te verifiëren, moet worden uitgevoerd voordat [het cluster wordt gemaakt.](#createvaultandcert) Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk. 
+Het instellen van Azure Active Directory (Azure AD) voor het verifiëren van clients voor een Service Fabric cluster moet worden uitgevoerd voordat [u het cluster maakt](#createvaultandcert). Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk. 
 
 Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-functionaliteit, met inbegrip van de webconsoles [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) en [Visual Studio](service-fabric-manage-application-in-visual-studio.md). Als gevolg hiervan, maakt u twee Azure Active Directory-toepassingen voor het beheren van toegang tot het cluster: een webtoepassing en een systeemeigen toepassing.  Nadat de toepassingen zijn gemaakt, wijst u gebruikers toe aan de rollen alleen-lezen en beheerder.
 
 > [!NOTE]
 > U moet de volgende stappen uitvoeren voordat u het cluster maakt. Omdat de scripts clusternamen en eindpunten verwachten, moeten de waarden worden gepland en geen waarden zijn die u al hebt gemaakt.
 
-In dit artikel gaan we ervan uit dat u al een tenant hebt gemaakt. Als u dit nog niet hebt gedaan, leest u nu [Hoe u een Azure Active Directory-tenant krijgen.](../active-directory/develop/quickstart-create-new-tenant.md)
+In dit artikel wordt ervan uitgegaan dat u al een Tenant hebt gemaakt. Als dat niet het geval is, lees dan eerst [hoe u een Azure Active Directory Tenant kunt ophalen](../active-directory/develop/quickstart-create-new-tenant.md).
 
-Om de stappen te vereenvoudigen die betrokken zijn bij het configureren van Azure AD met een Service Fabric-cluster, hebben we een set Windows PowerShell-scripts gemaakt. [Download de scripts](https://github.com/Azure-Samples/service-fabric-aad-helpers) op uw computer.
+We hebben een set Windows Power shell-scripts gemaakt om de stappen voor het configureren van Azure AD met een Service Fabric-cluster te vereenvoudigen. [Download de scripts](https://github.com/Azure-Samples/service-fabric-aad-helpers) op uw computer.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure Active Directory-toepassingen maken en gebruikers toewijzen aan rollen
-Maak twee Azure Active Directory-toepassingen voor het beheren van toegang tot het cluster: een webtoepassing en een systeemeigen toepassing. Nadat u de toepassingen hebt gemaakt om uw cluster weer te geven, wijst u uw gebruikers toe aan de [rollen die worden ondersteund door Service Fabric:](service-fabric-cluster-security-roles.md)alleen-lezen en beheerder.
+Maak twee Azure Active Directory-toepassingen voor het beheren van toegang tot het cluster: een webtoepassing en een systeemeigen toepassing. Nadat u de toepassingen hebt gemaakt om uw cluster te vertegenwoordigen, wijst u uw gebruikers toe aan de rollen die worden [ondersteund door service Fabric](service-fabric-cluster-security-roles.md): alleen-lezen en beheerder.
 
-Voer `SetupApplications.ps1` uit, en geef de tenant-ID, de naam van het cluster en de antwoord-URL van de webtoepassing op als parameters. Geef gebruikersnamen en wachtwoorden op voor de gebruikers. Bijvoorbeeld:
+Voer `SetupApplications.ps1` uit, en geef de tenant-ID, de naam van het cluster en de antwoord-URL van de webtoepassing op als parameters. Geef gebruikers namen en wacht woorden voor de gebruikers op. Bijvoorbeeld:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -181,22 +181,22 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Voor nationale clouds (bijvoorbeeld Azure Government, Azure China, Azure Germany) geeft u de `-Location` parameter op.
+> Voor nationale Clouds (bijvoorbeeld Azure Government, Azure China, Azure Duitsland), geeft u `-Location` de para meter op.
 
-U vindt uw *TenantId* ofwel de map-id in de [Azure-portal](https://portal.azure.com). Selecteer Azure Active**Directory-eigenschappen** **Azure Active Directory** > en kopieer de **waarde van de Directory-id.**
+U vindt uw *TenantId* ofwel de map-id in de [Azure-portal](https://portal.azure.com). Selecteer **Azure Active Directory** > **Eigenschappen** en kopieer de waarde van de **map-id** .
 
-De *Clusternaam* wordt gebruikt voor als prefix aan de Azure Active Directory-toepassingen die zijn gemaakt door het script. Het hoeft niet precies overeenkomen met de werkelijke clusternaam. Het maakt het alleen eenvoudiger om Azure AD-artefacten toe te zetten aan het in gebruik zijnde cluster Service Fabric.
+De *Clusternaam* wordt gebruikt voor als prefix aan de Azure Active Directory-toepassingen die zijn gemaakt door het script. Het hoeft niet exact overeen te komen met de daad werkelijke cluster naam. Het is alleen gemakkelijker om Azure AD-artefacten toe te wijzen aan de Service Fabric cluster in gebruik.
 
 *WebApplicationReplyUrl* wordt het standaardeindpunt dat Azure Active Directory retourneert naar uw gebruikers nadat ze klaar zijn aanmelden. Stel dit eindpunt in als het Service Fabric Explorer-eindpunt voor uw cluster, dit is standaard:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-U wordt gevraagd zich aan te melden bij een account met beheerdersbevoegdheden voor de Azure AD-tenant. Nadat u zich hebt aangemeld, maakt het script de web- en systeemeigen toepassingen voor uw Service Fabric-cluster. In de toepassingen van de tenant in de [Azure-portal](https://portal.azure.com)ziet u twee nieuwe vermeldingen:
+U wordt gevraagd om u aan te melden bij een account met beheerders bevoegdheden voor de Azure AD-Tenant. Nadat u zich hebt aangemeld, maakt het script de web- en systeemeigen toepassingen voor uw Service Fabric-cluster. In de toepassingen van de Tenant in de [Azure Portal](https://portal.azure.com)ziet u twee nieuwe vermeldingen:
 
-   * *Clusternaamcluster*\_
-   * *Clusternaamclient*\_
+   * *Cluster*\_naam cluster
+   * *Clustername*\_-client
 
-Het script drukt de JSON af die vereist is voor de resourcemanagersjabloon wanneer u het cluster maakt, dus het is een goed idee om het PowerShell-venster open te houden.
+Het script drukt de JSON af die vereist is voor de Resource Manager-sjabloon bij het maken van het cluster. Daarom is het een goed idee om het Power shell-venster geopend te laten.
 
 ```json
 "azureActiveDirectory": {
@@ -264,16 +264,16 @@ Voeg de parameterwaarden toe in het parameterbestand [azuredeploy.parameters.jso
 ```
 <a id="configurediagnostics" name="configurediagnostics_anchor"></a>
 
-## <a name="configure-diagnostics-collection-on-the-cluster"></a>Diagnostische verzameling configureren op het cluster
-Wanneer u een cluster servicestructuur uitvoert, is het een goed idee om de logboeken van alle knooppunten op een centrale locatie te verzamelen. Als u de logboeken op een centrale locatie hebt, u problemen in uw cluster of problemen in de toepassingen en services die in dat cluster worden uitgevoerd, analyseren en oplossen.
+## <a name="configure-diagnostics-collection-on-the-cluster"></a>De verzameling diagnostische gegevens configureren op het cluster
+Wanneer u een Service Fabric cluster uitvoert, is het een goed idee om de logboeken te verzamelen van alle knoop punten op een centrale locatie. Met de logboeken op een centrale locatie kunt u problemen in uw cluster analyseren en oplossen, of problemen in de toepassingen en services die in dat cluster worden uitgevoerd.
 
-Een manier om logboeken te uploaden en te verzamelen, is door de AZURE Diagnostics (WAD)-extensie te gebruiken, die logboeken uploadt naar Azure Storage, en ook de mogelijkheid heeft om logboeken naar Azure Application Insights of Event Hubs te verzenden. U ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze in een analyseplatformproduct te plaatsen, zoals Azure Monitor-logboeken of een andere log-parsing-oplossing.
+Een manier om logboeken te uploaden en te verzamelen, is door de uitbrei ding Azure Diagnostics (WAD) te gebruiken, waarmee logboeken naar Azure Storage worden geüpload en ook de mogelijkheid is om logboeken te verzenden naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals Azure Monitor Logboeken of een andere oplossing voor het parseren van Logboeken.
 
-Als u deze zelfstudie volgt, is de verzameling diagnostische gegevens al geconfigureerd in de [sjabloon.][template]
+Als u deze zelf studie volgt, is de diagnostische verzameling al geconfigureerd in de [sjabloon][template].
 
-Als u een bestaand cluster hebt dat geen Diagnose heeft geïmplementeerd, u dit toevoegen of bijwerken via de clustersjabloon. Wijzig de sjabloon Resourcemanager die wordt gebruikt om het bestaande cluster te maken of de sjabloon van de portal te downloaden. Wijzig het bestand template.json door de volgende taken uit te voeren:
+Als u een bestaand cluster hebt waarvoor geen diagnostische gegevens zijn geïmplementeerd, kunt u het toevoegen of bijwerken via de cluster sjabloon. Wijzig de Resource Manager-sjabloon die wordt gebruikt voor het maken van het bestaande cluster of down load de sjabloon vanuit de portal. Wijzig het bestand template. json door de volgende taken uit te voeren:
 
-Voeg een nieuwe opslagbron toe aan de sectie resources in de sjabloon:
+Voeg een nieuwe opslag resource toe aan de sectie resources in de sjabloon:
 ```json
 "resources": [
 ...
@@ -294,7 +294,7 @@ Voeg een nieuwe opslagbron toe aan de sectie resources in de sjabloon:
 ]
 ```
 
-Voeg vervolgens parameters toe voor de naam van het opslagaccount en typ aan de parameterssectie van de sjabloon. Vervang de naam van het tijdelijke tekstopslagaccount vervangen door de naam van het opslagaccount dat u wilt.
+Voeg vervolgens de para meters voor de naam van het opslag account en het type toe aan de sectie para meters van de sjabloon. Vervang de naam van het opslag account voor tijdelijke aanduidingen hier de naam van het opslag account dat u wilt.
 
 ```json
 "parameters": {
@@ -321,7 +321,7 @@ Voeg vervolgens parameters toe voor de naam van het opslagaccount en typ aan de 
 }
 ```
 
-Voeg vervolgens de **extensie IaaSDiagnostics** toe aan de extensiearray van de eigenschap **VirtualMachineProfile** van elke **Microsoft.Compute/virtualMachineScaleSets-bron** in het cluster.  Als u de [voorbeeldsjabloon][template]gebruikt, zijn er drie virtuele machineschaalsets (één voor elk knooppunttype in het cluster).
+Voeg vervolgens de uitbrei ding **IaaSDiagnostics** toe aan de uitbrei dingen-matrix van de eigenschap **VirtualMachineProfile** van elke **micro soft. Compute/virtualMachineScaleSets-** resource in het cluster.  Als u de [voorbeeld sjabloon][template]gebruikt, zijn er drie virtuele-machine schaal sets (één voor elk knooppunt type in het cluster).
 
 ```json
 "apiVersion": "2018-10-01",
@@ -392,16 +392,16 @@ Voeg vervolgens de **extensie IaaSDiagnostics** toe aan de extensiearray van de 
 ```
 <a id="configureeventstore" name="configureeventstore_anchor"></a>
 
-## <a name="configure-the-eventstore-service"></a>De EventStore-service configureren
-De EventStore-service is een bewakingsoptie in Service Fabric. EventStore biedt een manier om de status van uw cluster of workloads op een bepaald moment te begrijpen. De EventStore is een stateful Service Fabric-service die gebeurtenissen uit het cluster bijhoudt. De gebeurtenis wordt weergegeven via de Service Fabric Explorer, REST en API's. EventStore stelt het cluster rechtstreeks op om diagnostische gegevens op een entiteit in uw cluster te verzamelen en moet worden gebruikt om te helpen:
+## <a name="configure-the-eventstore-service"></a>De Event Store-service configureren
+De Event Store-service is een bewakings optie in Service Fabric. Event Store biedt een manier om inzicht te krijgen in de status van uw cluster of workloads op een bepaald moment. De Event Store is een stateful Service Fabric service die gebeurtenissen van het cluster onderhoudt. De gebeurtenis wordt weer gegeven via de Service Fabric Explorer, REST en Api's. Event Store vraagt het cluster rechtstreeks om diagnostische gegevens op te halen uit een wille keurige entiteit in uw cluster en moet worden gebruikt om het volgende te helpen:
 
-* Problemen bij de ontwikkeling of het testen diagnosticeren of waar u mogelijk een bewakingspijplijn gebruikt
-* Controleren of beheeracties die u op uw cluster onderneemt correct worden verwerkt
-* Ontvang een momentopname van de manier waarop Service Fabric met een bepaalde entiteit omgaat
+* Problemen met het ontwikkelen of testen vaststellen of een bewakings pijplijn gebruiken
+* Controleer of beheer acties die u uitvoert op het cluster correct worden verwerkt
+* Een ' moment opname ' van de interactie van Service Fabric met een bepaalde entiteit ophalen
 
 
 
-Als u de EventStore-service op uw cluster wilt inschakelen, voegt u het volgende toe aan de eigenschap **fabricSettings** van de bron **Microsoft.ServiceFabric/clusters:**
+Als u de Event Store-service in uw cluster wilt inschakelen, voegt u het volgende toe aan de eigenschap **fabricSettings** van de resource **micro soft. ServiceFabric/clusters** :
 
 ```json
 "apiVersion": "2018-02-01",
@@ -429,13 +429,13 @@ Als u de EventStore-service op uw cluster wilt inschakelen, voegt u het volgende
 ```
 <a id="configureloganalytics" name="configureloganalytics_anchor"></a>
 
-## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Azure Monitor-logboeken instellen voor het cluster
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Azure Monitor logboeken instellen voor het cluster
 
-Azure Monitor-logboeken is onze aanbeveling om gebeurtenissen op clusterniveau te controleren. Als u Azure Monitor-logboeken wilt instellen om uw cluster te controleren, moet u diagnostische gegevens hebben [ingeschakeld om gebeurtenissen op clusterniveau weer te geven.](#configure-diagnostics-collection-on-the-cluster)  
+Azure Monitor-Logboeken is onze aanbeveling om gebeurtenissen op cluster niveau te bewaken. Als u Azure Monitor logboeken wilt instellen om uw cluster te bewaken, moet u [Diagnostische gegevens inschakelen om gebeurtenissen op cluster niveau weer te geven](#configure-diagnostics-collection-on-the-cluster).  
 
-De werkruimte moet worden gekoppeld aan de diagnostische gegevens die afkomstig zijn van uw cluster.  Deze logboekgegevens worden opgeslagen in het opslagaccount *applicationDiagnosticsStorageAccountName,* in de tabelWADServiceFabric*EventTable, WADWindowsEventLogsTable en WADETWEventTable.
+De werk ruimte moet zijn verbonden met de diagnostische gegevens die afkomstig zijn uit uw cluster.  Deze logboek gegevens worden opgeslagen in het *applicationDiagnosticsStorageAccountName* -opslag account in de tabellen WADServiceFabric * EventTable, WADWindowsEventLogsTable en WADETWEventTable.
 
-Voeg de Azure Log Analytics-werkruimte toe en voeg de oplossing toe aan de werkruimte:
+Voeg de Azure Log Analytics-werk ruimte toe en voeg de oplossing toe aan de werk ruimte:
 
 ```json
 "resources": [
@@ -525,7 +525,7 @@ Voeg de Azure Log Analytics-werkruimte toe en voeg de oplossing toe aan de werkr
 ]
 ```
 
-Voeg vervolgens parameters toe
+Voeg vervolgens para meters toe
 ```json
 "parameters": {
     ...
@@ -560,7 +560,7 @@ Voeg vervolgens variabelen toe:
 }
 ```
 
-Voeg de extensie Log Analytics-agent toe aan elke virtuele machineschaalset in het cluster en verbind de agent met de werkruimte Log Analytics. Dit maakt het verzamelen van diagnostische gegevens over containers, toepassingen en prestatiebewaking mogelijk. Door deze toe te voegen als een uitbreiding aan de bron voor de virtuele machineschaalset, zorgt Azure Resource Manager ervoor dat het op elk knooppunt wordt geïnstalleerd, zelfs wanneer het cluster wordt geschaald.
+Voeg de Log Analytics agent-extensie toe aan elke schaalset voor virtuele machines in het cluster en verbind de agent met de werk ruimte Log Analytics. Hierdoor kunt u Diagnostische gegevens over containers, toepassingen en prestatie bewaking verzamelen. Door het toe te voegen als een uitbrei ding van de bron van de schaalset voor virtuele machines, zorgt Azure Resource Manager ervoor dat deze wordt geïnstalleerd op elk knoop punt, zelfs wanneer het cluster wordt geschaald.
 
 ```json
 "apiVersion": "2018-10-01",
@@ -597,13 +597,13 @@ Voeg de extensie Log Analytics-agent toe aan elke virtuele machineschaalset in h
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Het virtuele netwerk en het cluster implementeren
 
-Stel vervolgens de netwerktopologie in en implementeer het Service Fabric-cluster. Met de sjabloon [azuredeploy.json][template] Resource Manager wordt een virtuele netwerk-, subnet- en netwerkbeveiligingsgroep voor Service Fabric gemaakt. De sjabloon implementeert ook een cluster met certificaatbeveiliging ingeschakeld. Gebruik voor productieclusters een certificaat van een certificaatautoriteit als clustercertificaat. Een zelfondertekend certificaat kan worden gebruikt om testclusters te beveiligen.
+Stel vervolgens de netwerktopologie in en implementeer het Service Fabric-cluster. De Resource Manager-sjabloon [azuredeploy. json][template] maakt een virtueel netwerk, subnet en netwerk beveiligings groep voor service Fabric. De sjabloon implementeert ook een cluster met certificaatbeveiliging ingeschakeld. Gebruik voor productie clusters een certificaat van een certificerings instantie als het cluster certificaat. Een zelfondertekend certificaat kan worden gebruikt om testclusters te beveiligen.
 
-De sjabloon in dit artikel implementeert een cluster dat gebruik maakt van de certificaatvingerafdruk voor het identificeren van het clustercertificaat. Geen twee certificaten kunnen dezelfde vingerafdruk hebben, waardoor certificaatbeheer moeilijker wordt. Het overschakelen van een geïmplementeerd cluster van certificaatduimafdrukken naar gebrese certificaatnamen vereenvoudigt het certificaatbeheer. Lees Cluster wijzigen om het algemeen naambeheer van [het certificaat te gebruiken voor](service-fabric-cluster-change-cert-thumbprint-to-cn.md)meer informatie over het bijwerken van het cluster om gemeenschappelijke certificaatnamen te gebruiken.
+De sjabloon in dit artikel implementeert een cluster dat gebruik maakt van de certificaatvingerafdruk voor het identificeren van het clustercertificaat. Geen twee certificaten kunnen dezelfde vingerafdruk hebben, waardoor certificaatbeheer moeilijker wordt. Het overschakelen van een geïmplementeerd cluster van certificaat vingerafdrukken naar algemene certificaat namen vereenvoudigt het beheer van certificaten. Als u wilt weten hoe u het cluster bijwerkt voor het gebruik van algemene namen voor certificaat beheer, lees dan [cluster wijzigen in common name Management voor certificaten](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="create-a-cluster-by-using-an-existing-certificate"></a>Een cluster maken met behulp van een bestaand certificaat
 
-In het volgende script wordt de cmdlet [Nieuw-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) en een sjabloon gebruikt om een nieuw cluster in Azure te implementeren. De cmdlet maakt een nieuwe sleutelkluis in Azure en uploadt uw certificaat.
+Het volgende script maakt gebruik van de cmdlet [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) en een sjabloon voor het implementeren van een nieuw cluster in Azure. De cmdlet maakt een nieuwe sleutel kluis in Azure en uploadt uw certificaat.
 
 ```powershell
 # Variables.
@@ -631,9 +631,9 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 -KeyVaultName $vaultname -KeyVaultResourceGroupName $vaultgroupname -CertificateFile $certpath
 ```
 
-### <a name="create-a-cluster-by-using-a-new-self-signed-certificate"></a>Een cluster maken met een nieuw, zelfondertekend certificaat
+### <a name="create-a-cluster-by-using-a-new-self-signed-certificate"></a>Een cluster maken met een nieuw zelfondertekend certificaat
 
-In het volgende script wordt de cmdlet [Nieuw-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) en een sjabloon gebruikt om een nieuw cluster in Azure te implementeren. De cmdlet maakt een nieuwe sleutelkluis in Azure, voegt een nieuw zelfondertekend certificaat toe aan de sleutelkluis en downloadt het certificaatbestand lokaal.
+Het volgende script maakt gebruik van de cmdlet [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) en een sjabloon voor het implementeren van een nieuw cluster in Azure. De cmdlet maakt een nieuwe sleutel kluis in azure, voegt een nieuw zelfondertekend certificaat toe aan de sleutel kluis en downloadt het certificaat bestand lokaal.
 
 ```powershell
 # Variables.
@@ -665,7 +665,7 @@ New-AzServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile "$templa
 
 ## <a name="connect-to-the-secure-cluster"></a>Verbinding maken met het beveiligde cluster
 
-Maak verbinding met het cluster met de Service Fabric PowerShell-module die is geïnstalleerd met de Service Fabric SDK.  Installeer eerst het certificaat in de persoonlijke opslag (Mijn opslag) van de huidige gebruiker op uw computer. Voer de volgende PowerShell-opdracht uit:
+Maak verbinding met het cluster met behulp van de Power shell-module Service Fabric die is geïnstalleerd met de Service Fabric SDK.  Installeer eerst het certificaat in de persoonlijke opslag (Mijn opslag) van de huidige gebruiker op uw computer. Voer de volgende PowerShell-opdracht uit:
 
 ```powershell
 $certpwd="q6D7nN%6ck@6" | ConvertTo-SecureString -AsPlainText -Force
@@ -678,7 +678,7 @@ U bent nu klaar om verbinding te maken met uw beveiligde cluster.
 
 De **Service Fabric** PowerShell-module biedt veel cmdlets voor het beheren van Service Fabric-clusters, toepassingen en services. Gebruik de cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) om verbinding te maken met het beveiligde cluster. De SHA1-vingerafdruk van het certificaat en de eindpuntdetails van de verbinding vindt u in de uitvoer van de vorige stap.
 
-Als u eerder Azure AD-clientverificatie hebt ingesteld, voert u de volgende opdracht uit: 
+Als u eerder Azure AD-client verificatie hebt ingesteld, voert u de volgende opdracht uit: 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
         -KeepAliveIntervalInSec 10 `
@@ -686,7 +686,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
         -ServerCertThumbprint C4C1E541AD512B8065280292A8BA6079C3F26F10
 ```
 
-Als u azure AD-clientverificatie niet hebt ingesteld, voert u de volgende opdracht uit:
+Als u geen Azure AD-client verificatie hebt ingesteld, voert u de volgende opdracht uit:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -695,7 +695,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.southcentralus.c
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Controleer of u bent verbonden en of het cluster in orde is met de cmdlet [Get-ServiceFabricClusterHealth.](/powershell/module/servicefabric/get-servicefabricclusterhealth)
+Controleer of u bent verbonden en of het cluster in orde is met behulp van de cmdlet [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) .
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -703,25 +703,25 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De andere artikelen in deze zelfstudiereeks gebruiken het cluster dat u hebt gemaakt. Als u niet onmiddellijk naar het volgende artikel gaat, u [het cluster verwijderen](service-fabric-cluster-delete.md) om te voorkomen dat er kosten in rekening worden gebracht.
+De andere artikelen in deze zelfstudie reeks gebruiken het cluster dat u hebt gemaakt. Als u niet meteen overstapt op het volgende artikel, kunt u [het cluster verwijderen](service-fabric-cluster-delete.md) om te voor komen dat er kosten in rekening worden gebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de volgende zelfstudie om te leren hoe u uw cluster schalen.
+Ga naar de volgende zelf studie voor meer informatie over het schalen van uw cluster.
 
 > [!div class="checklist"]
 > * Een VNET maken in Azure met behulp van PowerShell
 > * Een sleutelkluis maken en een certificaat uploaden
 > * Azure Active Directory-verificatie instellen
 > * Diagnostische verzameling configureren
-> * De EventStore-service instellen
+> * De Event Store-service instellen
 > * Azure Monitor-logboeken instellen
 > * Een beveiligd Service Fabric-cluster maken in Azure PowerShell
 > * Het cluster beveiligen met een X.509-certificaat
 > * Verbinding maken met het cluster met behulp van PowerShell
 > * Een cluster verwijderen
 
-Ga vervolgens naar de volgende zelfstudie om te leren hoe u uw cluster controleren.
+Ga vervolgens verder met de volgende zelf studie voor meer informatie over het controleren van uw cluster.
 > [!div class="nextstepaction"]
 > [Een cluster bewaken](service-fabric-tutorial-monitor-cluster.md)
 

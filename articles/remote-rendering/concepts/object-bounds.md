@@ -1,28 +1,28 @@
 ---
 title: Objectgrenzen
-description: Legt uit hoe ruimtelijke objectgrenzen kunnen worden opgevraagd
+description: Legt uit hoe ruimtelijke object grenzen kunnen worden opgevraagd
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1d2dfdb203b05f2f6b7de740718d7407bd88066c
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681712"
 ---
 # <a name="object-bounds"></a>Objectgrenzen
 
-Objectgrenzen vertegenwoordigen het volume dat een [entiteit](entities.md) en haar kinderen bezetten. In Azure Remote Rendering worden objectgrenzen altijd weergegeven als *as uitgelijnde selectievakken* (AABB). Objectgrenzen kunnen zich in de *lokale ruimte* of in *de wereldruimte begeven.* Hoe dan ook, ze zijn altijd as-uitgelijnd, wat betekent dat de omvang en het volume kunnen verschillen tussen de lokale en wereld ruimte vertegenwoordiging.
+Object grenzen vertegenwoordigen het volume dat een [entiteit](entities.md) en de onderliggende items innemen. Bij de externe rendering van Azure worden object grenzen altijd gegeven als aan elkaar *uitgelijnde selectie vakjes* (AABB). Object grenzen kunnen zich in *lokale ruimte* of in de *wereld ruimte*bevinden. In beide gevallen zijn ze altijd gecentreerd, wat betekent dat de gebieden en het volume kunnen verschillen tussen de lokale en wereld wijde ruimte weergave.
 
-## <a name="querying-object-bounds"></a>Objectgrenzen opvragen
+## <a name="querying-object-bounds"></a>Object grenzen opvragen
 
-De lokale AABB van een [net](meshes.md) kan rechtstreeks vanuit de mesh-bron worden opgevraagd. Deze grenzen kunnen worden omgezet in de lokale ruimte of wereldruimte van een entiteit met behulp van de transformatie van de entiteit.
+De lokale AABB van een [net](meshes.md) kan rechtstreeks vanuit de netresource worden opgevraagd. Deze grenzen kunnen worden omgezet in de lokale ruimte of wereld wijde ruimte van een entiteit met behulp van de trans formatie van de entiteit.
 
-Het is mogelijk om de grenzen van een hele objecthiërarchie op deze manier te berekenen, maar dat vereist het doorlopen van de hiërarchie, het opvragen van de grenzen voor elk net en deze handmatig combineren. Deze operatie is zowel vervelend als inefficiënt.
+Het is mogelijk om de grenzen van een volledige object hiërarchie op deze manier te berekenen, maar dat moet de hiërarchie door lopen, query's uitvoeren op de grenzen voor elk net en ze hand matig combi neren. Deze bewerking is zowel omslachtig als inefficiënt.
 
-Een betere manier `QueryLocalBoundsAsync` is `QueryWorldBoundsAsync` om te bellen of op een entiteit. De berekening wordt vervolgens ontladen naar de server en met minimale vertraging geretourneerd.
+Een betere manier is om een `QueryLocalBoundsAsync` entiteit `QueryWorldBoundsAsync` te bellen of aan te roepen. De berekening wordt vervolgens geoffload naar de server en geretourneerd met minimale vertraging.
 
 ``` cs
 private BoundsQueryAsync _boundsQuery = null;

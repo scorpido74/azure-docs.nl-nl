@@ -1,6 +1,6 @@
 ---
 title: Isolatie van workloads
-description: Richtlijnen voor het instellen van workloadisolatie met workloadgroepen in Azure Synapse Analytics.
+description: Richt lijnen voor het instellen van workload isolatie met werkbelasting groepen in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,82 +12,82 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 5d81dc1f4da6e952061496fa348d0f8e87b00b81
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742973"
 ---
-# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Celisolatie azure Synapse Analytics-werkbelastinggroep (voorbeeld)
+# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Isolatie van de werkbelasting groep voor Azure Synapse (preview)
 
-In dit artikel wordt uitgelegd hoe werkbelastinggroepen kunnen worden gebruikt om werkbelastingisolatie te configureren, resources te bevatten en runtime-regels toe te passen voor queryuitvoering.
+In dit artikel wordt uitgelegd hoe werkbelasting groepen kunnen worden gebruikt voor het configureren van de isolatie van werk belastingen, het bevatten van resources en het Toep assen van runtime regels voor het uitvoeren van query's.
 
-## <a name="workload-groups"></a>Werkbelastinggroepen
+## <a name="workload-groups"></a>Werkbelasting groepen
 
-Workloadgroepen zijn containers voor een reeks aanvragen en vormen de basis voor de manier waarop workloadmanagement, inclusief workloadisolation, is geconfigureerd op een systeem.  Workloadgroepen worden gemaakt met de syntaxis [VAN DE WERKBELASTINGGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Een eenvoudige configuratie van het werkbelastingbeheer kan gegevenstaken en gebruikersquery's beheren.  Een workloadgroep met `wgDataLoads` de naam definieert bijvoorbeeld workload-aspecten voor gegevens die in het systeem worden geladen. Een workloadgroep met `wgUserQueries` de naam definieert ook workloadaspecten voor gebruikers die query's uitvoeren om gegevens uit het systeem te lezen.
+Werkbelasting groepen zijn containers voor een set aanvragen en vormen de basis voor de manier waarop werkbelasting beheer, waaronder isolatie van werk belasting, is geconfigureerd op een systeem.  Werkbelasting groepen worden gemaakt met de syntaxis [WERKBELASTING groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Een eenvoudige configuratie van werkbelasting beheer kan het laden van gegevens en gebruikers query's beheren.  Zo definieert een werkbelasting groep met `wgDataLoads` de naam werkbelasting onderdelen voor gegevens die in het systeem worden geladen. Daarnaast definieert een werkbelasting groep `wgUserQueries` met de naam workload-aspecten voor gebruikers die query's uitvoeren om gegevens van het systeem te lezen.
 
-In de volgende secties wordt uitgelegd hoe werkbelastinggroepen de mogelijkheid bieden om isolatie, containment, definitie van resources en uitvoeringsregels te definiëren.
+In de volgende secties wordt uitgelegd hoe werkbelasting groepen de mogelijkheid bieden om isolatie, containment en de resource definitie van de aanvraag te definiëren en om uitvoerings regels aan te houden.
 
 ## <a name="workload-isolation"></a>Isolatie van workloads
 
-Werkbelastingisolatie betekent dat resources uitsluitend zijn gereserveerd voor een workloadgroep.  Workloadisolatie wordt bereikt door de parameter MIN_PERCENTAGE_RESOURCE te configureren tot groter dan nul in de syntaxis [VAN DE WERKBELASTINGGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Voor continue uitvoeringsworkloads die moeten voldoen aan krappe SLA's, zorgt isolatie ervoor dat resources altijd beschikbaar zijn voor de workloadgroep.
+Isolatie van werk belasting betekent dat resources gereserveerd zijn, uitsluitend voor een werkbelasting groep.  De isolatie van de werk belasting wordt bereikt door de para meter MIN_PERCENTAGE_RESOURCE in te stellen op een waarde groter dan nul in de syntaxis van de [groep werk belasting maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Voor doorlopende uitvoerings werkbelastingen die moeten voldoen aan de strakke Sla's, wordt door isolatie gegarandeerd dat resources altijd beschikbaar zijn voor de werkbelasting groep.
 
-Het configureren van workloadisolatie definieert impliciet een gegarandeerd niveau van gelijktijdigheid. Een werkbelastinggroep met `MIN_PERCENTAGE_RESOURCE` een ingesteld op `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 30% en ingesteld op 2% is bijvoorbeeld gegarandeerd 15 gelijktijdigheid.  Het niveau van gelijktijdigheid is gegarandeerd omdat 15-2% slots van resources te allen `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` tijde binnen de werkbelastinggroep zijn gereserveerd (ongeacht hoe is geconfigureerd).  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` groter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` is `CAP_PERCENTAGE_RESOURCE` dan `MIN_PERCENTAGE_RESOURCE` en groter is dan extra resources worden toegevoegd per aanvraag.  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` en gelijk `CAP_PERCENTAGE_RESOURCE` zijn `MIN_PERCENTAGE_RESOURCE`en groter is dan , is extra gelijktijdigheid mogelijk.  Overweeg de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
+Door workload-isolatie te configureren, wordt impliciet een gegarandeerd niveau van gelijktijdigheid gedefinieerd. Een werkbelasting groep met een `MIN_PERCENTAGE_RESOURCE` ingesteld op 30% en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ingesteld op 2% is bijvoorbeeld gegarandeerd 15 gelijktijdigheid.  Het niveau van gelijktijdigheid wordt gegarandeerd omdat 15-2%-sleuven van resources op elk moment worden gereserveerd in de werkbelasting groep (ongeacht hoe `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` dit is geconfigureerd).  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` is groter dan `REQUEST_MIN_RESOURCE_GRANT_PERCENT` en `CAP_PERCENTAGE_RESOURCE` groter is dan `MIN_PERCENTAGE_RESOURCE` aanvullende resources, worden per aanvraag toegevoegd.  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` gelijk is aan `CAP_PERCENTAGE_RESOURCE` en groter is `MIN_PERCENTAGE_RESOURCE`dan, is aanvullende gelijktijdigheid mogelijk.  Bekijk de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
 
-[Gegarandeerde gelijktijdigheid] =`MIN_PERCENTAGE_RESOURCE`[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`] / [ ]
-
-> [!NOTE]
-> Er zijn specifieke serviceniveau minimale haalbare waarden voor min_percentage_resource.  Zie [Effectieve waarden](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) voor meer informatie voor meer informatie.
-
-Bij afwezigheid van werkbelastingisolatie werken aanvragen in de [gedeelde groep](#shared-pool-resources) resources.  Toegang tot bronnen in de gedeelde groep is niet gegarandeerd en wordt toegewezen op basis [van belang.](sql-data-warehouse-workload-importance.md)
-
-Het configureren van workloadisolatie moet met de nodige voorzichtigheid worden uitgevoerd, omdat de resources worden toegewezen aan de werkbelastinggroep, zelfs als er geen actieve aanvragen in de werkbelastinggroep zijn. Over-configureren isolatie kan leiden tot verminderde algehele systeemgebruik.
-
-Gebruikers moeten voorkomen dat een oplossing voor werkbelastingbeheer wordt geconfigureerd die 100% workload isolation configureert: 100% isolatie wordt bereikt wanneer de som van min_percentage_resource geconfigureerd voor alle workloadgroepen 100% bedraagt.  Dit type configuratie is te restrictief en rigide, waardoor er weinig ruimte overblijft voor resourceaanvragen die per ongeluk verkeerd zijn geclassificeerd. Er is een bepaling die een aanvraag kan uitvoeren vanuit werkbelastinggroepen die niet zijn geconfigureerd voor isolatie. De middelen die aan dit verzoek worden toegewezen, worden weergegeven als een nul in de systemen DMVs en lenen een smallrc-niveau van middelensubsidie uit systeemgereserveerde resources.
+[Gegarandeerde gelijktijdigheid] =`MIN_PERCENTAGE_RESOURCE`[]/`REQUEST_MIN_RESOURCE_GRANT_PERCENT`[]
 
 > [!NOTE]
-> Om een optimaal gebruik van resources te garanderen, overweeg dan een oplossing voor werkbelastingbeheer die gebruikmaakt van een isolatie om ervoor te zorgen dat SLA's worden nageleefd en worden gemengd met gedeelde resources die worden benaderd op basis van [het belang van de werkbelasting.](sql-data-warehouse-workload-importance.md)
+> Er zijn specifieke minimale levensvat bare waarden voor het service niveau voor min_percentage_resource.  Zie voor meer informatie [doel treffende waarden](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) voor meer informatie.
 
-## <a name="workload-containment"></a>Werkbelastinginsbeperking
+Als er geen isolatie van de werk belasting beschikbaar is, worden de aanvragen uitgevoerd in de [gedeelde groep](#shared-pool-resources) resources.  Toegang tot resources in de gedeelde groep is niet gegarandeerd en wordt op basis van [urgentie](sql-data-warehouse-workload-importance.md) toegewezen.
 
-Workloadcontainment verwijst naar het beperken van de hoeveelheid resources die een workloadgroep kan verbruiken.  Workloadcontainment wordt bereikt door de parameter CAP_PERCENTAGE_RESOURCE te configureren tot minder dan 100 in de syntaxis van de [werkbelastinggroep MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Denk aan het scenario waarbij gebruikers leestoegang tot het systeem nodig hebben, zodat ze een wat-als-analyse kunnen uitvoeren via ad-hocquery's.  Dit soort aanvragen kan een negatief effect hebben op andere workloads die op het systeem worden uitgevoerd.  Het configureren van containment zorgt ervoor dat de hoeveelheid resources beperkt is.
+Het configureren van de isolatie van werk belasting moet voorzichtig zijn wanneer de resources worden toegewezen aan de werkbelasting groep, zelfs als er geen actieve aanvragen in de werkbelasting groep zijn. Over het configureren van isolatie kan leiden tot een afbreuk aan het algehele systeem gebruik.
 
-Het configureren van workloadcontainment definieert impliciet een maximaal niveau van gelijktijdigheid.  Met een CAP_PERCENTAGE_RESOURCE ingesteld op 60% en een REQUEST_MIN_RESOURCE_GRANT_PERCENT ingesteld op 1%, is tot een niveau van 60 gelijktijdigheid toegestaan voor de werkbelastinggroep.  Overweeg de onderstaande methode voor het bepalen van de maximale gelijktijdigheid:
-
-[Max Concurrency]`CAP_PERCENTAGE_RESOURCE`= [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`] / [ ]
+Gebruikers moeten een beheer oplossing voor werk belastingen voor komen die 100% workload-isolatie configureert: 100% isolatie wordt bereikt wanneer de som van min_percentage_resource dat is geconfigureerd voor alle werkbelasting groepen gelijk is aan 100%.  Dit type configuratie is te beperkend en stijf, waardoor er weinig ruimte is voor resource aanvragen die per ongeluk zijn geclassificeerd. Er is een bepaling om toe te staan dat één aanvraag kan worden uitgevoerd vanuit werkbelasting groepen die niet zijn geconfigureerd voor isolatie. De resources die zijn toegewezen aan deze aanvraag, worden weer gegeven als een nul in de systemen Dmv's en lenen een smallrc niveau van resource toekenning van gereserveerde bronnen van het systeem.
 
 > [!NOTE]
-> De effectieve CAP_PERCENTAGE_RESOURCE van een werkbelastinggroep zal niet 100% bereiken wanneer workloadgroepen met MIN_PERCENTAGE_RESOURCE op een niveau van meer dan nul worden gemaakt.  Zie [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectieve runtime-waarden.
+> Als u optimaal gebruik wilt maken van resources, kunt u een oplossing voor workload Management gebruiken die een zekere isolatie benuttt om ervoor te zorgen dat Sla's wordt vervuld en gemengd met gedeelde resources die worden geopend op basis van de urgentie van het [werk belasting](sql-data-warehouse-workload-importance.md).
+
+## <a name="workload-containment"></a>Containment-werk belasting
+
+Insluiting van de werk belasting verwijst naar het beperken van de hoeveelheid resources die een werkbelasting groep mag verbruiken.  Het opnemen van de werk belasting wordt bereikt door de CAP_PERCENTAGE_RESOURCE-para meter in te stellen op minder dan 100 in de syntaxis voor het maken van een [WERKBELASTING groep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Denk na over het scenario waarmee gebruikers lees toegang tot het systeem nodig hebben, zodat ze een What-if-analyse kunnen uitvoeren via ad-hoc query's.  Deze typen aanvragen kunnen een negatieve invloed hebben op andere workloads die op het systeem worden uitgevoerd.  Het configureren van de insluiting zorgt ervoor dat de hoeveelheid resources beperkt is.
+
+Het configureren van een workload-containment definieert impliciet een maximum niveau van gelijktijdigheid.  Als een CAP_PERCENTAGE_RESOURCE is ingesteld op 60% en een REQUEST_MIN_RESOURCE_GRANT_PERCENT is ingesteld op 1%, is er Maxi maal 60-gelijktijdigheids niveau toegestaan voor de werkbelasting groep.  Bekijk de onderstaande methode voor het bepalen van de maximale gelijktijdigheid:
+
+[Max. gelijktijdigheids] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
+
+> [!NOTE]
+> De effectief CAP_PERCENTAGE_RESOURCE van een werkbelasting groep is 100% niet bereikt wanneer werkbelasting groepen met MIN_PERCENTAGE_RESOURCE op een hoger niveau dan nul worden gemaakt.  Zie [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.
 
 ## <a name="resources-per-request-definition"></a>Definitie van resources per aanvraag
 
-Werkbelastinggroepen bieden een mechanisme om de min- en maximumhoeveelheid resources te definiëren die per aanvraag worden toegewezen met de REQUEST_MIN_RESOURCE_GRANT_PERCENT- en REQUEST_MAX_RESOURCE_GRANT_PERCENT parameters in de [syntaxis VAN DE WERKBELASTINGGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Bronnen in dit geval zijn CPU en geheugen.  Het configureren van deze waarden bepaalt hoeveel resources en welk niveau van gelijktijdigheid kan worden bereikt op het systeem.
+Werkbelasting groepen bieden een mechanisme voor het definiëren van de minimum-en maximum hoeveelheid resources die worden toegewezen per aanvraag met de REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT para meters in de syntaxis van de [WERKBELASTING groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Resources in dit geval zijn CPU en geheugen.  Als deze waarden worden geconfigureerd, wordt bepaald hoeveel resources en welk niveau van gelijktijdigheid op het systeem kunnen worden behaald.
 
 > [!NOTE]
-> REQUEST_MAX_RESOURCE_GRANT_PERCENT is een optionele parameter die standaard wordt ingesteld op dezelfde waarde die is opgegeven voor REQUEST_MIN_RESOURCE_GRANT_PERCENT.
+> REQUEST_MAX_RESOURCE_GRANT_PERCENT is een optionele para meter die wordt ingesteld op de waarde die is opgegeven voor REQUEST_MIN_RESOURCE_GRANT_PERCENT.
 
-Net als het kiezen van een resourceklasse, stelt u REQUEST_MIN_RESOURCE_GRANT_PERCENT de waarde in voor de resources die door een aanvraag worden gebruikt.  Het bedrag van de middelen aangegeven door de ingestelde waarde is gegarandeerd voor toewijzing aan de aanvraag voordat deze met de uitvoering begint.  Voor klanten die migreren van resourceklassen naar werkbelastinggroepen, u het artikel [How To](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md) volgen om van resourcesklassen naar werkbelastinggroepen als uitgangspunt te brengen.
+Net als bij het kiezen van een resource klasse, stelt REQUEST_MIN_RESOURCE_GRANT_PERCENT de waarde in voor de resources die worden gebruikt door een aanvraag.  De hoeveelheid resources die wordt aangegeven door de set-waarde, wordt gegarandeerd toegewezen aan de aanvraag voordat de uitvoering wordt gestart.  Voor klanten die migreren van resource klassen naar werkbelasting groepen, kunt u het beste de volgende [procedure](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md) volgen om een toewijzing van resources-klassen aan werkbelasting groepen uit te zetten als uitgangs punt.
 
-Door REQUEST_MAX_RESOURCE_GRANT_PERCENT te configureren naar een waarde die groter is dan REQUEST_MIN_RESOURCE_GRANT_PERCENT, kan het systeem meer resources per aanvraag toewijzen.  Tijdens het plannen van een aanvraag bepaalt het systeem de werkelijke toewijzing van resources aan de aanvraag, die tussen REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT ligt, op basis van de beschikbaarheid van resources in de gedeelde groep en de huidige belasting van het systeem.  De resources moeten bestaan in de [gedeelde groep](#shared-pool-resources) resources wanneer de query is gepland.  
+Als u REQUEST_MAX_RESOURCE_GRANT_PERCENT configureert met een waarde die groter is dan REQUEST_MIN_RESOURCE_GRANT_PERCENT, kan het systeem meer resources per aanvraag toewijzen.  Bij het plannen van een aanvraag, bepaalt het systeem de werkelijke toewijzing van resources aan de aanvraag, tussen REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT, op basis van de beschik baarheid van resources in gedeelde groep en huidige belasting van het systeem.  De resources moeten aanwezig zijn in de [gedeelde groep](#shared-pool-resources) resources wanneer de query is gepland.  
 
 > [!NOTE]
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT hebben effectieve waarden die afhankelijk zijn van de effectieve MIN_PERCENTAGE_RESOURCE en CAP_PERCENTAGE_RESOURCE waarden.  Zie [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectieve runtime-waarden.
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT hebben ingangs waarden die afhankelijk zijn van de juiste MIN_PERCENTAGE_RESOURCE en CAP_PERCENTAGE_RESOURCE waarden.  Zie [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.
 
-## <a name="execution-rules"></a>Uitvoeringsregels
+## <a name="execution-rules"></a>Uitvoerings regels
 
-Op ad-hocrapportagesystemen kunnen klanten per ongeluk op hol geslagen query's uitvoeren die de productiviteit van anderen ernstig beïnvloeden.  Systeembeheerders worden gedwongen om tijd te besteden aan het doden van op hol geslagen query's om systeembronnen vrij te maken.  Werkbelastinggroepen bieden de mogelijkheid om een time-outregel voor query-uitvoering te configureren om query's te annuleren die de opgegeven waarde hebben overschreden.  De regel wordt geconfigureerd `QUERY_EXECUTION_TIMEOUT_SEC` door de parameter in te stellen in de syntaxis VAN DE [WERKGROEP MAKEN.](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+In AD-hocrapportage kunnen klanten per ongeluk overmatige query's uitvoeren die de productiviteit van anderen aanzienlijk beïnvloeden.  Systeem beheerders worden gedwongen tijd te best Eden aan het doden van overmatige query's om systeem bronnen vrij te maken.  Werkbelasting groepen bieden de mogelijkheid om een time-outregel voor het uitvoeren van query's te configureren om query's te annuleren die de opgegeven waarde hebben overschreden.  De regel wordt geconfigureerd door de `QUERY_EXECUTION_TIMEOUT_SEC` para meter in te stellen in de syntaxis voor het maken van een [werkbelasting groep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
-## <a name="shared-pool-resources"></a>Bronnen voor gedeelde groep
+## <a name="shared-pool-resources"></a>Bronnen van gedeelde groep
 
-Gedeelde groepbronnen zijn de resources die niet zijn geconfigureerd voor isolatie.  Werkbelastinggroepen met een MIN_PERCENTAGE_RESOURCE ingesteld op nul hefboombronnen in de gedeelde groep om aanvragen uit te voeren.  Workloadgroepen met een CAP_PERCENTAGE_RESOURCE groter dan MIN_PERCENTAGE_RESOURCE gebruikten ook gedeelde resources.  De hoeveelheid resources die beschikbaar zijn in de gedeelde groep wordt als volgt berekend.
+Gedeelde pool bronnen zijn de bronnen die niet zijn geconfigureerd voor isolatie.  Werkbelasting groepen waarvoor een MIN_PERCENTAGE_RESOURCE is ingesteld op nul, maken gebruik van resources in de gedeelde groep voor het uitvoeren van aanvragen.  Werkbelasting groepen met een CAP_PERCENTAGE_RESOURCE groter dan MIN_PERCENTAGE_RESOURCE ook gedeelde resources gebruikt.  De hoeveelheid beschik bare resources in de gedeelde groep wordt als volgt berekend.
 
-[Gedeelde groep] = 100 `MIN_PERCENTAGE_RESOURCE` - [som van alle werkbelastinggroepen]
+[Gedeelde groep] = 100-[som van `MIN_PERCENTAGE_RESOURCE` alle werkbelasting groepen]
 
-Toegang tot bronnen in de gedeelde pool wordt toegewezen op basis [van belang.](sql-data-warehouse-workload-importance.md)  Aanvragen met hetzelfde belangniveau hebben toegang tot gedeelde poolbronnen op een eerste in/first-outbasis.
+Toegang tot resources in de gedeelde groep wordt op basis van [urgentie](sql-data-warehouse-workload-importance.md) toegewezen.  Aanvragen met hetzelfde urgentie niveau hebben toegang tot gedeelde pool bronnen op basis van First in/first out.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstart: werkbelastingsisolatie configureren](quickstart-configure-workload-isolation-tsql.md)
-- [WORKLOADGROEP MAKEN](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Resourceklassen converteren naar werkbelastinggroepen](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).
-- [Monitoring van workloadmanagementportal .](sql-data-warehouse-workload-management-portal-monitor.md)  
+- [Snelstartgids: isolatie van werk belasting configureren](quickstart-configure-workload-isolation-tsql.md)
+- [WERKBELASTING GROEP MAKEN](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Resource klassen omzetten in werkbelasting groepen](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).
+- [Bewaking van werk belasting Beheerportal](sql-data-warehouse-workload-management-portal-monitor.md).  

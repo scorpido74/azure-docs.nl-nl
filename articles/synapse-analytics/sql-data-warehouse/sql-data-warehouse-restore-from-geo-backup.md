@@ -1,6 +1,6 @@
 ---
-title: Een gegevensmagazijn herstellen vanuit een geoback-up
-description: Handleiding voor het geo-herstellen van een SQL-pool.
+title: Een Data Warehouse terugzetten vanuit een geo-back-up
+description: Instructies voor het geo-herstellen van een SQL-groep.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,38 +12,38 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745075"
 ---
-# <a name="geo-restore-for-sql-pool"></a>Geo-herstel voor SQL-pool
+# <a name="geo-restore-for-sql-pool"></a>Geo-herstel voor SQL-groep
 
-In dit artikel leert u uw SQL-pool te herstellen van een geoback-up via Azure-portal en PowerShell.
+In dit artikel leert u hoe u de SQL-groep kunt herstellen vanuit een geo-back-up via Azure Portal en Power shell.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Controleer uw DTU-capaciteit.** Elke SQL-groep wordt gehost door een SQL-server (bijvoorbeeld myserver.database.windows.net) met een standaard DTU-quotum. Controleer of de SQL-server voldoende dtu-quotum heeft voor de database die wordt hersteld. Zie [Een DTU-quotumwijziging aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of het aanvragen van meer DTU-quota.
+**Controleer de DTU-capaciteit.** Elke SQL-groep wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) die een standaard DTU-quotum heeft. Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
 
-## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Herstellen vanuit een azure-geografische regio via PowerShell
+## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Herstellen vanuit een geografische regio van Azure via Power shell
 
-Als u wilt herstellen vanuit een geoback-up, gebruikt u de cmdlet [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en [Restore-AzSqlDatabase.](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Gebruik de cmdlet [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) om een geo-back-up te herstellen.
 
 > [!NOTE]
-> U een geo-herstel uitvoeren naar Gen2! Geef hiervoor een Gen2 ServiceObjectiveName (bijvoorbeeld DW1000**c)** op als optionele parameter.
+> U kunt een geo-herstel bewerking uitvoeren op Gen2. Als u dit wilt doen, geeft u een Gen2 ServiceObjectiveName op (bijvoorbeeld DW1000**c**) als een optionele para meter.
 >
 
-1. Voordat u begint, moet u [Azure PowerShell installeren.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Open PowerShell.
 3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
-4. Selecteer het abonnement dat het gegevensmagazijn bevat dat moet worden hersteld.
-5. Haal het gegevensmagazijn dat u wilt herstellen.
-6. Maak de herstelaanvraag voor het gegevensmagazijn.
-7. Controleer de status van het geoherstelde gegevensmagazijn.
-8. Zie [Uw database configureren na herstel]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)als u uw gegevensmagazijn wilt configureren nadat het herstel is voltooid.
+4. Selecteer het abonnement dat het Data Warehouse bevat dat moet worden hersteld.
+5. Haal het Data Warehouse op dat u wilt herstellen.
+6. Maak de herstel aanvraag voor het Data Warehouse.
+7. Controleer de status van het geografisch herstelde data warehouse.
+8. Als u uw data warehouse wilt configureren nadat het herstel is voltooid, raadpleegt u [de data base configureren na herstel]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -70,30 +70,30 @@ $GeoRestoredDatabase = Restore-AzSqlDatabase –FromGeoBackup -ResourceGroupName
 $GeoRestoredDatabase.status
 ```
 
-De herstelde database is tde-ingeschakeld als de brondatabase tde-ingeschakeld is.
+De herstelde data base wordt TDE ingeschakeld als de bron database TDE is ingeschakeld.
 
-## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Herstellen vanuit een Azure-geografische regio via Azure-portal
+## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Herstellen vanuit een geografische regio van Azure via Azure Portal
 
-Volg de onderstaande stappen om een SQL-groep te herstellen vanuit een geoback-up:
+Volg de onderstaande stappen om een SQL-groep te herstellen vanuit een geo-back-up:
 
-1. Meld u aan bij uw [Azure-portalaccount.](https://portal.azure.com/)
-2. Klik **op + Een resource maken**.
+1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) -account.
+2. Klik op **+ een resource maken**.
 
    ![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. Klik **op Databases** en vervolgens **Azure Synapse Analytics (voorheen SQL DW) **.
+3. Klik op **data bases** en vervolgens * * Azure Synapse Analytics (voorheen SQL DW) * *.
 
    ![Nieuwe DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
-4. Vul de gevraagde informatie in op het tabblad **Basisbeginselen** en klik op **Volgende: Aanvullende instellingen**.
+4. Vul de gevraagde gegevens in op het tabblad **basis beginselen** en klik op **volgende: aanvullende instellingen**.
 
    ![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. Selecteer Back-up voor **Het gebruik van bestaande gegevensparameter** **back-up** en selecteer de juiste back-up in de opties voor omlaag schuiven. Klik **op Controleren + Maken**.
+5. Selecteer voor het gebruik van de para meter **bestaande gegevens** **back-up** en selecteer de juiste back-up in de opties omlaag schuiven. Klik op **beoordeling + maken**.
 
    ![Back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. Controleer na het herstel van het gegevensmagazijn of de **status** online is.
+6. Nadat het Data Warehouse is hersteld, controleert u of de **status** online is.
 
 ## <a name="next-steps"></a>Volgende stappen
 

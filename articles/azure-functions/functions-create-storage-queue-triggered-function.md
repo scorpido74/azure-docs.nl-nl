@@ -1,15 +1,15 @@
 ---
-title: Een functie in Azure maken die wordt geactiveerd door wachtrijberichten
+title: Een functie in azure maken die wordt geactiveerd door wachtrij berichten
 description: Gebruik Azure Functions voor het maken van een functie zonder server die wordt aangeroepen door berichten die zijn verzonden naar een Azure Storage-wachtrij.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 98f0290aad9971bdb0c0b265d96e96d8ac34b99d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756519"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Een door Azure Queue Storage geactiveerde functie maken
@@ -22,7 +22,7 @@ Ontdek hoe u een functie maakt die wordt geactiveerd wanneer er berichten worden
 
 - De [Microsoft Azure Storage Explorer](https://storageexplorer.com/) downloaden en installeren.
 
-- Een Azure-abonnement. Als je nog geen account hebt, maak je een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat je begint.
+- Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="create-an-azure-function-app"></a>Een Azure-functie-app maken
 
@@ -36,7 +36,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-a-queue-triggered-function"></a>Een door een wachtrij geactiveerde functie maken
 
-1. Vouw de functie-app **+** uit en klik op de knop naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
+1. Vouw de functie-app uit en **+** Klik op de knop naast **functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
 
    ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -46,7 +46,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Typ `queue` in het zoekveld en kies vervolgens de sjabloon **Wachtrijtrigger**.
 
-1. Selecteer deoptie **Installeren** om de Azure Storage-extensie en eventuele afhankelijkheden in de functie-app te installeren als u daarom wordt gevraagd. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Als hierom wordt gevraagd, selecteert u **installeren** om de Azure Storage extensie en eventuele afhankelijkheden in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -78,7 +78,7 @@ Vervolgens maakt u verbinding met uw Azure Storage-account en maakt u de opslagw
 
     ![Voer de opslagreferenties in en maak verbinding.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Vouw het bijgevoegde opslagaccount uit, klik met `myqueue-items`de rechtermuisknop op **Wachtrijen,** klik op **Wachtrij maken,** typ en druk op Enter.
+1. Vouw het gekoppelde opslag account uit, klik met de rechter muisknop op **wacht rijen**, `myqueue-items`Klik op **wachtrij maken**, typ en druk op ENTER.
 
     ![Maak een opslagwachtrij.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
 
@@ -86,9 +86,9 @@ Nu u een opslagwachtrij hebt, kunt u de functie testen door een bericht toe te v
 
 ## <a name="test-the-function"></a>De functie testen
 
-1. Terug in de Azure-portal blader je naar je functie, vouw je de **logboeken** onder aan de pagina uit en zorg ervoor dat logboekstreaming niet wordt onderbroken.
+1. Blader in het Azure Portal naar uw functie, vouw de **Logboeken** aan de onderkant van de pagina uit en zorg ervoor dat logboek streaming niet wordt onderbroken.
 
-1. Vouw in Storage Explorer uw opslagaccount, **wachtrijen**en **myqueue-items**uit en klik vervolgens op **Bericht toevoegen**.
+1. Vouw in Storage Explorer uw opslag account, **wacht rijen**en **myqueue-items**uit en klik vervolgens op **bericht toevoegen**.
 
     ![Voeg een bericht toe aan de wachtrij.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Externe afbeelding analyseren - REST, JavaScript'
+title: 'Snelstartgids: externe installatie kopie analyseren-REST, java script'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een afbeelding met behulp van de Computer Vision-API met JavaScript.
 services: cognitive-services
@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 1d77acf9f076bbb9a4f4da5c592a0443b8585299
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656111"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Snelstart: Een externe afbeelding analyseren met behulp van de REST-API en JavaScript in Computer Vision
 
-In deze quickstart analyseert u een op afstand opgeslagen afbeelding om visuele functies te extraheren met behulp van de Computer Vision REST API. Met de methode [Afbeelding analyseren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) u visuele functies extraheren op basis van afbeeldingsinhoud.
+In deze Snelstartgids gaat u een op afstand opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van de Computer Vision REST API. Met de methode voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u visuele functies extra heren op basis van de inhoud van de installatie kopie.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet beschikken over een abonnementssleutel voor Computer Vision. U een gratis testsleutel krijgen van [Try Cognitive Services.](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) Of volg de instructies in [Een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op Computer Vision en uw sleutel te krijgen. Sla uw abonnementssleutel en url van eindpunt op naar een tijdelijke locatie.
+U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Sla de sleutel en eind punt-URL van uw abonnement op een tijdelijke locatie op.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Maak een bestand genaamd _analyze-image.html,_ open het in een teksteditor en kopieer de volgende code erin.
+1. Maak een bestand met de naam _analyze-image. html_, open het in een tekst editor en kopieer de volgende code naar deze map.
 1. Vervang eventueel de waarde van het `value`-kenmerk voor het `inputImage`-besturingselement door de URL van een andere afbeelding die u wilt analyseren.
 1. Open een browservenster.
 1. Sleep het bestand in de browser naar het browservenster.
-1. Wanneer de webpagina in de browser wordt weergegeven, plakt u uw abonnementssleutel en url van eindpunt in de juiste invoervakken.
-1. Selecteer de knop **Afbeelding analyseren.**
+1. Wanneer de webpagina wordt weer gegeven in de browser, plakt u uw abonnements sleutel en eind punt-URL in de relevante invoer vakken.
+1. Selecteer de knop **afbeelding analyseren** .
 
 ```html
 <!DOCTYPE html>

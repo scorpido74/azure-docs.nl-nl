@@ -1,28 +1,28 @@
 ---
-title: Materialen overschrijven tijdens modelconversie
-description: Legt de materiaaloverheersende workflow uit tijdens de conversietijd
+title: Materialen overschrijven tijden modelconversie
+description: Geeft uitleg over de manier waarop de werk stroom op de conversie tijd wordt overschreven
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681478"
 ---
-# <a name="override-materials-during-model-conversion"></a>Materialen overschrijven tijdens modelconversie
+# <a name="override-materials-during-model-conversion"></a>Materialen overschrijven tijden modelconversie
 
-Tijdens de conversie worden de materiaalinstellingen in het bronmodel gebruikt om de [PBR-materialen](../../overview/features/pbr-materials.md) te definiëren die door de renderer worden gebruikt.
-Soms geeft de [standaardconversie](../../reference/material-mapping.md) niet de gewenste resultaten en moet u wijzigingen aanbrengen.
-Wanneer een model wordt geconverteerd voor gebruik in Azure Remote Rendering, u een bestand voor materiaaloverschrijvingen verstrekken om aan te passen hoe materiaalconversie per materiaal wordt uitgevoerd.
-De sectie over [het configureren van modelconversie](configure-model-conversion.md) bevat instructies voor het declareren van de bestandsnaam van het materiaal.
+Tijdens de conversie worden de materiaal instellingen in het bron model gebruikt voor het definiëren van de [PBR-materialen](../../overview/features/pbr-materials.md) die worden gebruikt door de renderer.
+Soms geeft de [standaard conversie](../../reference/material-mapping.md) niet de gewenste resultaten en u moet wijzigingen aanbrengen.
+Wanneer een model wordt geconverteerd voor gebruik in azure-rendering op afstand, kunt u een bestand voor het overschrijven van materialen opgeven om te bepalen hoe de conversie van materialen per materiaal wordt uitgevoerd.
+De sectie over het configureren van de [model conversie](configure-model-conversion.md) bevat instructies voor het declareren van de bestands naam voor het overschrijven van materiaal.
 
-## <a name="the-override-file-used-during-conversion"></a>Het override-bestand dat tijdens de conversie wordt gebruikt
+## <a name="the-override-file-used-during-conversion"></a>Het overschrijvings bestand dat wordt gebruikt tijdens de conversie
 
-Als een eenvoudig voorbeeld, laten we zeggen dat een doos model heeft een enkel materiaal, genaamd "Standaard". De albedo kleur moet worden aangepast voor gebruik in ARR.
-In dit geval `box_materials_override.json` kan een bestand als volgt worden gemaakt:
+Stel dat een box-model een enkel materiaal heeft met de naam standaard. De kleur van de albedo moet worden aangepast voor gebruik in ARR.
+In dit geval kan een `box_materials_override.json` bestand als volgt worden gemaakt:
 
 ```json
 [
@@ -38,7 +38,7 @@ In dit geval `box_materials_override.json` kan een bestand als volgt worden gema
 ]
 ```
 
-Het `box_materials_override.json` bestand wordt in de invoercontainer geplaatst en er wordt een `ConversionSettings.json` naast `box.fbx`geplaatst , waarmee de conversie wordt geopend waar het overschrijfbestand moet worden gevonden (zie De [modelconversie configureren):](configure-model-conversion.md)
+Het `box_materials_override.json` bestand wordt in de invoer container geplaatst en er wordt `ConversionSettings.json` een toegevoegd naast `box.fbx`, waarmee wordt aangegeven dat het overschrijvings bestand moet worden gevonden (Zie [de model conversie configureren](configure-model-conversion.md)):
 
 ```json
 {
@@ -46,13 +46,13 @@ Het `box_materials_override.json` bestand wordt in de invoercontainer geplaatst 
 }
 ```
 
-Wanneer het model wordt geconverteerd, zijn de nieuwe instellingen van toepassing.
+Wanneer het model wordt geconverteerd, worden de nieuwe instellingen toegepast.
 
 ### <a name="color-materials"></a>Kleurmaterialen
 
-Het [kleurmateriaalmodel](../../overview/features/color-materials.md) beschrijft een voortdurend gearceerd oppervlak dat onafhankelijk is van verlichting.
-Dit is bijvoorbeeld handig voor assets gemaakt door Photogrammetry-algoritmen.
-In materiaaloverschrijven bestanden, kan een materiaal worden `unlit` gedeclareerd als een kleur materiaal door in te stellen op `true`.
+Het [kleuren materiaal](../../overview/features/color-materials.md) model beschrijft een voortdurend gearceerd Opper vlak dat onafhankelijk is van de belichting.
+Dit is handig voor assets die zijn gemaakt door Photogrammetry-algoritmen, bijvoorbeeld.
+In materiaal onderdrukking bestanden kan een materiaal worden gedeclareerd als een kleur materiaal door in te stellen `unlit` op `true`.
 
 ```json
 [
@@ -67,11 +67,11 @@ In materiaaloverschrijven bestanden, kan een materiaal worden `unlit` gedeclaree
 ]
 ```
 
-### <a name="ignore-specific-texture-maps"></a>Specifieke structuurkaarten negeren
+### <a name="ignore-specific-texture-maps"></a>Specifieke patroon kaarten negeren
 
-Soms wilt u misschien dat het conversieproces specifieke structuurkaarten negeert. Dit kan het geval zijn wanneer uw model is gegenereerd door een tool die speciale kaarten genereert die niet correct door de renderer worden begrepen. Bijvoorbeeld een "OpacityMap" die wordt gebruikt om iets anders dan dekking te definiëren, of een model waarbij de "NormalMap" wordt opgeslagen als "BumpMap". (In het laatste geval wilt u "NormalMap" negeren, waardoor de converter "BumpMap" als "NormalMap" gebruikt.)
+Soms wilt u het conversie proces specifieke structuur toewijzingen negeren. Dit kan het geval zijn wanneer het model is gegenereerd door een hulp programma waarmee speciale kaarten worden gegenereerd die niet goed zijn begrepen door de renderer. Bijvoorbeeld een ' OpacityMap ' die wordt gebruikt voor het definiëren van iets anders dan dekking, of een model waarin ' NormalMap ' is opgeslagen als ' BumpMap '. (In het laatste geval kunt u "NormalMap" negeren. Dit zorgt ervoor dat het conversie programma "BumpMap" als "NormalMap" gebruikt.)
 
-Het principe is eenvoudig. Voeg gewoon een `ignoreTextureMaps` eigenschap toe die wordt aangeroepen en voeg een structuurkaart toe die u wilt negeren:
+Het principe is eenvoudig. Voeg een eigenschap toe met `ignoreTextureMaps` de naam en voeg een structuur toewijzing toe die u wilt negeren:
 
 ```json
 [
@@ -82,11 +82,11 @@ Het principe is eenvoudig. Voeg gewoon een `ignoreTextureMaps` eigenschap toe di
 ]
 ```
 
-Zie het JSON-schema hieronder voor de volledige lijst met structuurkaarten die u negeren.
+Zie het onderstaande JSON-schema voor een volledige lijst met patroon toewijzingen die u kunt negeren.
 
 ## <a name="json-schema"></a>JSON-schema
 
-Het volledige JSON-schema voor materiaalbestanden wordt hier gegeven. Met uitzondering `unlit` van `ignoreTextureMaps`en , de beschikbare eigenschappen zijn een subset van de eigenschappen beschreven in de secties op het [kleurmateriaal](../../overview/features/color-materials.md) en [PBR materiaal](../../overview/features/pbr-materials.md) modellen.
+Hier wordt het volledige JSON-schema voor materiaal bestanden gegeven. Met uitzonde ring `unlit` van `ignoreTextureMaps`en, zijn de beschik bare eigenschappen een subset van de eigenschappen die worden beschreven in de secties op het [kleuren](../../overview/features/color-materials.md) -en [PBR-materiaal](../../overview/features/pbr-materials.md) model.
 
 ```json
 {

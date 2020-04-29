@@ -1,6 +1,6 @@
 ---
-title: Wachtwoordhashsynchronisatie inschakelen voor Azure AD Domain Services | Microsoft Documenten
-description: Lees in deze zelfstudie hoe u wachtwoordhashsynchronisatie inschakelt met Azure AD Connect met een beheerd Azure Active Directory Domain Services-domein.
+title: Wachtwoord-hash-synchronisatie inschakelen voor Azure AD Domain Services | Microsoft Docs
+description: In deze zelf studie leert u hoe u wachtwoord-hash synchronisatie kunt inschakelen met Azure AD Connect naar een Azure Active Directory Domain Services beheerd domein.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,70 +10,70 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80676611"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Zelfstudie: Wachtwoordsynchronisatie inschakelen in Azure Active Directory Domain Services voor hybride omgevingen
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Zelf studie: wachtwoord synchronisatie inschakelen in Azure Active Directory Domain Services voor hybride omgevingen
 
-Voor hybride omgevingen kan een Azure Active Directory-tenant (Azure AD) worden geconfigureerd om te synchroniseren met een on-premises AD DS-omgeving (Active Directory Domain Services) met Azure AD Connect. Azure AD Connect synchroniseert standaard geen verouderde NT LAN Manager (NTLM) en Kerberos wachtwoordhashes die nodig zijn voor Azure Active Directory Domain Services (Azure AD DS).
+Voor hybride omgevingen kan een Azure Active Directory-Tenant (Azure AD) worden geconfigureerd om te synchroniseren met een on-premises Active Directory Domain Services-omgeving (AD DS) met behulp van Azure AD Connect. Standaard synchroniseert Azure AD Connect geen oudere NT LAN Manager (NTLM)-en Kerberos-wachtwoord hashes die nodig zijn voor Azure Active Directory Domain Services (Azure AD DS).
 
-Als u Azure AD DS wilt gebruiken met accounts die zijn gesynchroniseerd vanuit een on-premises AD DS-omgeving, moet u Azure AD Connect configureren om de wachtwoordhashes te synchroniseren die nodig zijn voor NTLM- en Kerberos-verificatie. Nadat Azure AD Connect is geconfigureerd, synchroniseert een on-premises gebeurtenis voor het maken van een account of wachtwoordwijziging ook de verouderde wachtwoordhashes met Azure AD.
+Als u Azure AD DS wilt gebruiken met accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving, moet u Azure AD Connect configureren om de wachtwoord-hashes te synchroniseren die zijn vereist voor NTLM-en Kerberos-verificatie. Nadat Azure AD Connect is geconfigureerd, worden de verouderde wacht woord-hashes ook gesynchroniseerd met Azure AD wanneer er een on-premises account wordt gemaakt of een wachtwoord wijziging
 
-U hoeft deze stappen niet uit te voeren als u alleen cloudaccounts gebruikt zonder on-premises AD DS-omgeving.
+U hoeft deze stappen niet uit te voeren als u alleen Cloud accounts gebruikt zonder lokale AD DS omgeving.
 
-In deze zelfstudie leert u:
+In deze zelf studie leert u het volgende:
 
 > [!div class="checklist"]
-> * Waarom legacy NTLM en Kerberos wachtwoord hashes nodig zijn
-> * Verouderde wachtwoordhashsynchronisatie configureren voor Azure AD Connect
+> * Waarom zijn oudere NTLM-en Kerberos-wachtwoord-hashes vereist
+> * Verouderde wachtwoord-hash synchronisatie voor Azure AD Connect configureren
 
-Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze zelfstudie te voltooien, hebt u de volgende bronnen nodig:
+Voor het volt ooien van deze zelf studie hebt u de volgende resources nodig:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
-* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement dat is gesynchroniseerd met een on-premises directory met Azure AD Connect.
-    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
-    * Schakel indien nodig [Azure AD Connect in voor wachtwoordhashsynchronisatie.][enable-azure-ad-connect]
-* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
-    * Maak en configureer indien nodig [een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-Tenant die is gekoppeld aan uw abonnement dat is gesynchroniseerd met een on-premises Directory met behulp van Azure AD Connect.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+    * Schakel, indien nodig, [Azure AD Connect in voor synchronisatie van wacht woord-hashes][enable-azure-ad-connect].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
 
-## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Synchronisatie van wachtwoordhash met Azure AD Connect
+## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Wachtwoord hash synchroniseren met Azure AD Connect
 
-Azure AD Connect wordt gebruikt om objecten zoals gebruikersaccounts en groepen vanuit een on-premises AD DS-omgeving te synchroniseren met een Azure AD-tenant. Als onderdeel van het proces stelt wachtwoordhashsynchronisatie accounts in staat om hetzelfde wachtwoord te gebruiken in de on-prem AD DS-omgeving en Azure AD.
+Azure AD Connect wordt gebruikt voor het synchroniseren van objecten zoals gebruikers accounts en-groepen van een on-premises AD DS omgeving in een Azure AD-Tenant. Als onderdeel van het proces kunnen met wacht woord-hash-synchronisatie accounts hetzelfde wacht woord gebruiken in de on-premises AD DS omgeving en Azure AD.
 
-Azure AD DS heeft wachtwoordhashes nodig in een indeling die geschikt is voor NTLM- en Kerberos-verificatie om gebruikers op het beheerde domein te verifiëren. Azure AD slaat geen wachtwoordhashes op in de indeling die vereist is voor NTLM- of Kerberos-verificatie totdat u Azure AD DS inschakelt voor uw tenant. Om veiligheidsredenen slaat Azure AD ook geen wachtwoordreferenties op in formulier clear-text. Daarom kan Azure AD deze NTLM- of Kerberos-wachtwoordhashes niet automatisch genereren op basis van de bestaande referenties van gebruikers.
+Voor het verifiëren van gebruikers in het beheerde domein heeft Azure AD DS wacht woord-hashes nodig in een indeling die geschikt is voor NTLM-en Kerberos-verificatie. Azure AD slaat geen wacht woord-hashes in de vereiste indeling voor NTLM-of Kerberos-verificatie op totdat u Azure AD DS voor uw Tenant inschakelt. Uit veiligheids overwegingen slaat Azure AD ook geen wachtwoord referenties op in een normale tekst vorm. Daarom kan Azure AD deze NTLM-of Kerberos-wachtwoord hashes niet automatisch genereren op basis van de bestaande referenties van gebruikers.
 
-Azure AD Connect kan worden geconfigureerd om de vereiste NTLM- of Kerberos-wachtwoordhashes voor Azure AD DS te synchroniseren. Controleer of u de stappen hebt voltooid om Azure AD Connect in te [schakelen voor wachtwoordhashsynchronisatie.][enable-azure-ad-connect] Als u een bestaand exemplaar van Azure AD Connect hebt gehad, [downloadt en updatet][azure-ad-connect-download] u naar de nieuwste versie om ervoor te zorgen dat u de verouderde wachtwoordhashes voor NTLM en Kerberos synchroniseren. Deze functionaliteit is niet beschikbaar in vroege versies van Azure AD Connect of met het oudere DirSync-hulpprogramma. Azure AD Connect-versie *1.1.614.0* of hoger is vereist.
+Azure AD Connect kunnen worden geconfigureerd voor het synchroniseren van de vereiste NTLM-of Kerberos-wachtwoord hashes voor Azure AD DS. Zorg ervoor dat u de stappen hebt voltooid om [Azure AD Connect in te scha kelen voor de synchronisatie van wacht woord-hashes][enable-azure-ad-connect]. Als u een bestaand exemplaar van Azure AD Connect hebt, [downloadt en bijwerkt u de nieuwste versie][azure-ad-connect-download] om ervoor te zorgen dat u de verouderde wachtwoord hashes voor NTLM en Kerberos kunt synchroniseren. Deze functionaliteit is niet beschikbaar in vroege releases van Azure AD Connect of met het hulp programma legacy DirSync. Azure AD Connect versie *1.1.614.0* of hoger is vereist.
 
 > [!IMPORTANT]
-> Azure AD Connect mag alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Azure AD Connect wordt niet geïnstalleerd in een door Azure AD DS beheerd domein om objecten te synchroniseren met Azure AD.
+> Azure AD Connect mag alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS omgevingen. Het is niet mogelijk om Azure AD Connect te installeren in een beheerd domein van Azure AD DS om objecten terug te synchroniseren naar Azure AD.
 
-## <a name="enable-synchronization-of-password-hashes"></a>Synchronisatie van wachtwoordhashes inschakelen
+## <a name="enable-synchronization-of-password-hashes"></a>Synchronisatie van wacht woord-hashes inschakelen
 
-Nu Azure AD Connect is geïnstalleerd en geconfigureerd om te synchroniseren met Azure AD, configureert u nu de verouderde wachtwoordhashsynchronisatie voor NTLM en Kerberos. Een PowerShell-script wordt gebruikt om de vereiste instellingen te configureren en vervolgens een volledige wachtwoordsynchronisatie naar Azure AD te starten. Wanneer dat Azure AD Connect-wachtwoordhashsynchronisatieproces is voltooid, kunnen gebruikers zich aanmelden bij toepassingen via Azure AD DS die gebruikmaken van verouderde NTLM- of Kerberos-wachtwoordhashes.
+Als Azure AD Connect is geïnstalleerd en geconfigureerd om te synchroniseren met Azure AD, configureert u nu de verouderde hash-synchronisatie voor wacht woord voor NTLM en Kerberos. Er wordt een Power shell-script gebruikt voor het configureren van de vereiste instellingen en het starten van een volledige wachtwoord synchronisatie met Azure AD. Wanneer Azure AD Connect het synchronisatie proces voor wacht woord-hash is voltooid, kunnen gebruikers zich aanmelden bij toepassingen via Azure AD DS die gebruikmaken van verouderde NTLM-of Kerberos-wachtwoord-hashes.
 
-1. Open op de computer waarop Azure AD Connect is geïnstalleerd, in het menu Start de **Azure AD Connect->-synchronisatieservice**.
-1. Selecteer het tabblad **Connectors.** De verbindingsgegevens die worden gebruikt om de synchronisatie tussen de on-premises AD DS-omgeving en Azure AD vast te stellen, worden weergegeven.
+1. Open op de computer waarop Azure AD Connect is geïnstalleerd, in het menu Start de **Azure AD Connect >-synchronisatie service**.
+1. Selecteer het tabblad **connectors** . De verbindings gegevens die worden gebruikt om de synchronisatie tussen de on-premises AD DS omgeving en Azure AD tot stand te brengen, worden weer gegeven.
 
-    Het **type** geeft *Windows Azure Active Directory (Microsoft)* aan voor de Azure AD-connector of *Active Directory Domain Services* voor de on-premises AD DS-connector. Noteer de connectornamen die in de volgende stap in het PowerShell-script moeten worden gebruikt.
+    Het **type** geeft *Windows Azure Active Directory (micro soft)* aan voor de Azure AD-connector of *Active Directory Domain Services* voor de on-premises AD DS connector. Noteer de namen van connectors die in de volgende stap in het Power shell-script moeten worden gebruikt.
 
-    ![De verbindingsnamen weergeven in Synchronisatieservicebeheer](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
+    ![De namen van connectors weer geven in Sync Service Manager](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
-    In dit voorbeeld worden de volgende connectors gebruikt:
+    In dit voor beeld worden de volgende connectors gebruikt:
 
-    * De Azure AD-connector heeft de naam *contoso.onmicrosoft.com - AAD*
-    * De on-premises AD DS-connector heet *onprem.contoso.com*
+    * De Azure AD-connector heet *contoso.onmicrosoft.com-Aad*
+    * De on-premises AD DS connector bevindt zich in de naam *onprem.contoso.com*
 
-1. Kopieer en plak het volgende PowerShell-script op de computer waarop Azure AD Connect is geïnstalleerd. Het script activeert een volledige wachtwoordsynchronisatie met verouderde wachtwoordhashes. Werk `$azureadConnector` de `$adConnector` variabelen en variabelen bij met de connectornamen uit de vorige stap.
+1. Kopieer en plak het volgende Power shell-script naar de computer waarop Azure AD Connect is geïnstalleerd. Met het script wordt een volledige wachtwoord synchronisatie geactiveerd met verouderde wacht woord-hashes. Werk de `$azureadConnector` variabelen `$adConnector` en bij met de namen van de connectors uit de vorige stap.
 
-    Voer dit script uit op elk AD-forest om on-premises account NTLM- en Kerberos-wachtwoordhashes te synchroniseren met Azure AD.
+    Voer dit script uit in elk AD-forest om on-premises account NTLM-en Kerberos-wachtwoord-hashes te synchroniseren met Azure AD.
 
     ```powershell
     # Define the Azure AD Connect connector names and import the required PowerShell module
@@ -97,18 +97,18 @@ Nu Azure AD Connect is geïnstalleerd en geconfigureerd om te synchroniseren met
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    Afhankelijk van de grootte van uw directory in termen van aantal accounts en groepen, kan synchronisatie van de verouderde wachtwoordhashes naar Azure AD enige tijd in beslag nemen. De wachtwoorden worden vervolgens gesynchroniseerd met het door Azure AD DS beheerde domein nadat ze zijn gesynchroniseerd met Azure AD.
+    Afhankelijk van de grootte van uw map in termen van het aantal accounts en groepen, kan de synchronisatie van de verouderde wacht woord-hashes naar Azure AD enige tijd duren. De wacht woorden worden vervolgens gesynchroniseerd met het beheerde domein van Azure AD DS nadat het is gesynchroniseerd met Azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heb je geleerd:
+In deze zelf studie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Waarom legacy NTLM en Kerberos wachtwoord hashes nodig zijn
-> * Verouderde wachtwoordhashsynchronisatie configureren voor Azure AD Connect
+> * Waarom zijn oudere NTLM-en Kerberos-wachtwoord-hashes vereist
+> * Verouderde wachtwoord-hash synchronisatie voor Azure AD Connect configureren
 
 > [!div class="nextstepaction"]
-> [Meer informatie over hoe synchronisatie werkt in een beheerd Azure AD Domain Services-domein](synchronization.md)
+> [Meer informatie over hoe synchronisatie werkt in een Azure AD Domain Services beheerd domein](synchronization.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

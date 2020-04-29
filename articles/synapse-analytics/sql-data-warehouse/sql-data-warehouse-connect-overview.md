@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Synapse SQL-groep
-description: Maak verbinding met SQL-pool.
+title: Verbinding maken met de SQL-groep Synapse
+description: Maak verbinding met de SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e5c015751e8b0aeed7bd84086cc4f65c234fdb41
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745311"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>Verbinding maken met Synapse SQL-groep
+# <a name="connect-to-synapse-sql-pool"></a>Verbinding maken met de SQL-groep Synapse
 
-Maak verbinding met SQL-pool.
+Maak verbinding met de SQL-groep.
 
 ## <a name="find-your-server-name"></a>Uw servernaam vinden
 
-De servernaam in het volgende voorbeeld is sqlpoolservername.database.windows.net. Ga als volgt te werk om de volledig gekwalificeerde servernaam te vinden:
+De naam van de server in het volgende voor beeld is sqlpoolservername.database.windows.net. Ga als volgt te werk om de volledig gekwalificeerde servernaam te vinden:
 
-1. Ga naar de [Azure-portal.](https://portal.azure.com)
+1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Klik op **Azure Synapse Analytics**.
 3. Klik op de SQL-groep waarmee u verbinding wilt maken.
 4. Zoek de volledige servernaam.
@@ -35,9 +35,9 @@ De servernaam in het volgende voorbeeld is sqlpoolservername.database.windows.ne
 
 ## <a name="supported-drivers-and-connection-strings"></a>Ondersteunde stuurprogramma's en verbindingsreeksen
 
-SQL-groep ondersteunt [ADO.NET,](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) [ODBC,](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Als u de nieuwste versie en documentatie wilt vinden, klikt u op een van de voorgaande stuurprogramma's.
+De SQL-groep ondersteunt [ADO.net](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [php](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)en [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Klik op een van de voor gaande Stuur Programma's om de meest recente versie en documentatie te vinden.
 
-Als u de verbindingstekenreeks automatisch wilt genereren voor het stuurprogramma dat u gebruikt vanuit de Azure-portal, klikt u op de **tekenreeksen van de databaseverbinding weergeven** van het voorgaande voorbeeld. Hier volgen ook enkele voorbeelden van hoe een verbindingsreeks er voor elk stuurprogramma uitziet.
+Als u automatisch de connection string wilt genereren voor het stuur programma dat u gebruikt vanuit de Azure Portal, klikt u op de **verbindings reeksen Data Base weer geven** in het vorige voor beeld. Hier volgen ook enkele voorbeelden van hoe een verbindingsreeks er voor elk stuurprogramma uitziet.
 
 > [!NOTE]
 > Overweeg de verbindingstime-out in te stellen op 300 seconden. De verbinding blijft dan in stand tijdens korte perioden van niet-beschikbaarheid.
@@ -68,7 +68,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="connection-settings"></a>Verbindingsinstellingen
 
-SQL-groep standaardiseert een aantal instellingen tijdens het maken van verbinding en objecten. Deze instellingen kunnen niet worden overschreven, en omvatten:
+De SQL-pool standaardisert enkele instellingen tijdens het maken van verbinding en objecten. Deze instellingen kunnen niet worden overschreven, en omvatten:
 
 | Database-instelling | Waarde |
 |:--- |:--- |
@@ -79,4 +79,4 @@ SQL-groep standaardiseert een aantal instellingen tijdens het maken van verbindi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Query’s uitvoeren met Visual Studio](sql-data-warehouse-query-visual-studio.md) als u verbinding wilt maken en een query wilt uitvoeren met Visual Studio. Zie Verificatie naar Azure [Synapse Analytics voor](sql-data-warehouse-authentication.md)meer informatie over verificatieopties.
+Zie [Query’s uitvoeren met Visual Studio](sql-data-warehouse-query-visual-studio.md) als u verbinding wilt maken en een query wilt uitvoeren met Visual Studio. Zie [verificatie voor Azure Synapse Analytics](sql-data-warehouse-authentication.md)voor meer informatie over verificatie opties.

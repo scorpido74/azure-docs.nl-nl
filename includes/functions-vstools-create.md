@@ -5,37 +5,37 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/26/2020
+ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80657543"
 ---
-De projectsjabloon Azure Functions in Visual Studio maakt een project dat u publiceren naar een functie-app in Azure. U een functie-app gebruiken om functies te groeperen als een logische eenheid voor eenvoudiger beheer, implementatie, schalen en delen van resources.
+Met de sjabloon Azure Functions project in Visual Studio maakt u een project dat u kunt publiceren naar een functie-app in Azure. U kunt een functie-app gebruiken om functies te groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
-1. Selecteer **Bestand** > **nieuw** > **project**in het menu Visual Studio .
+1. Selecteer in Visual Studio in het menu **File** de optie **New** > **project**.
 
-1. Voer **in Een nieuw project maken** *functies* in het zoekvak in, kies de sjabloon **Azure-functies** en selecteer **Volgende**.
+1. In **een nieuw project maken**voert u *functies* in het zoekvak in en kiest u vervolgens de sjabloon **Azure functions** .
 
-1. Voer in **Uw nieuwe project configureren**een **projectnaam** voor uw project in en selecteer **Vervolgens Maken**. De functie-appnaam moet geldig zijn als een C#-naamruimte. Gebruik dus geen onderstrepingstekens, afbreekstreepjes of andere niet-alfanumerieke tekens.
+1. Voer in **uw nieuwe project configureren**een **project naam** in voor uw project en selecteer vervolgens **maken**. De functie-appnaam moet geldig zijn als een C#-naamruimte. Gebruik dus geen onderstrepingstekens, afbreekstreepjes of andere niet-alfanumerieke tekens.
 
-1. Gebruik de waarden in de volgende tabel voor de instellingen **voor een nieuwe Azure-functietoepassing** maken:
+1. Gebruik de waarden in de volgende tabel voor het nieuwe project: de instellingen van ** &lt;uw project naam&gt; ** .
 
     | Instelling      | Waarde  | Beschrijving                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Runtime van functies** | **Azure-functies <br />v2 (.NET-kern)** | Met deze waarde wordt een functieproject gemaakt dat gebruik maakt van de uitvoering van versie 2.x van Azure-functies, die .NET Core ondersteunt. Azure Functions 1.x ondersteunt .NET Framework. Zie [overzicht van azure functions runtime-versies](../articles/azure-functions/functions-versions.md)voor meer informatie.   |
-    | **Functiesjabloon** | **HTTP-trigger** | Met deze waarde wordt een functie geactiveerd door een HTTP-aanvraag. |
-    | **Opslagaccount**  | **Opslagemulator** | Omdat een Azure-functie een opslagaccount vereist, wordt er een toegewezen of gemaakt wanneer u uw project publiceert naar Azure. Een HTTP-trigger maakt geen gebruik van een tekenreeks voor azure-opslagaccountverbindingen. alle andere triggertypen vereisen een geldige azure storage-verbindingstekenreeks.  |
-    | **Toegangsrechten** | **Anoniem** | De gemaakte functie kan door iedere client worden geactiveerd zonder een sleutel op te geven. Met deze autorisatie-instelling kunt u eenvoudig uw nieuwe functie testen. Zie [Autorisatiesleutels](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) en [HTTP- en webhookbindingen](../articles/azure-functions/functions-bindings-http-webhook.md)voor meer informatie over sleutels en autorisatie. |
+    | **Functions runtime** | **Azure Functions v2 <br />(.net core)** | Met deze waarde wordt een functie project gemaakt dat gebruikmaakt van versie 2. x runtime van Azure Functions, dat .NET core ondersteunt. Azure Functions 1.x ondersteunt .NET Framework. Zie [Azure functions runtime versies Overview](../articles/azure-functions/functions-versions.md)(Engelstalig) voor meer informatie.   |
+    | **Functie sjabloon** | **HTTP-trigger** | Met deze waarde wordt een functie gemaakt die wordt geactiveerd door een HTTP-aanvraag. |
+    | **Opslag account**  | **Opslagemulator** | Omdat een Azure-functie een opslag account vereist, wordt er een toegewezen of gemaakt wanneer u uw project naar Azure publiceert. Een HTTP-trigger gebruikt geen Azure Storage-account connection string; voor alle andere trigger typen is een geldig Azure Storage account vereist connection string.  |
+    | **Toegangsrechten** | **Anoniem** | De gemaakte functie kan door iedere client worden geactiveerd zonder een sleutel op te geven. Met deze autorisatie-instelling kunt u eenvoudig uw nieuwe functie testen. Zie [autorisatie sleutels](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) en [bindingen voor http en webhook](../articles/azure-functions/functions-bindings-http-webhook.md)voor meer informatie over sleutels en autorisatie. |
     
 
     
-    ![Projectinstellingen voor Azure Functions](./media/functions-vs-tools-create/functions-project-settings.png)
+    ![Azure Functions project instellingen](./media/functions-vs-tools-create/functions-project-settings.png)
 
-    Zorg ervoor dat u de **toegangsrechten** instelt op **Anoniem**. Als u het standaardfunctieniveau **kiest,** moet u de [functiesleutel](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) weergeven in aanvragen om toegang te krijgen tot het eindpunt van de functie.
+    Zorg ervoor dat u de **toegangs rechten** instelt op **anoniem**. Als u het standaard niveau van de **functie**kiest, moet u de [functie sleutel](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) in aanvragen voor toegang tot uw functie-eind punt presen teren.
 
-1. Selecteer **Maken** om het functieproject en de HTTP-triggerfunctie te maken.
+1. Selecteer **OK** om het functie project en de http-geactiveerde functie te maken.
