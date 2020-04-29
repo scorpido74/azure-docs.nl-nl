@@ -1,50 +1,50 @@
 ---
-title: Azure-bestandsshares herstellen met REST API
-description: Meer informatie over het gebruik van REST API om Azure-bestandsshares of specifieke bestanden te herstellen vanaf een herstelpunt dat is gemaakt door Azure Backup
+title: Azure-bestands shares herstellen met REST API
+description: Meer informatie over het gebruik van REST API om Azure-bestands shares of specifieke bestanden te herstellen vanaf een herstel punt dat is gemaakt door Azure Backup
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252504"
 ---
-# <a name="restore-azure-file-shares-using-rest-api"></a>Azure-bestandsshares herstellen met REST API
+# <a name="restore-azure-file-shares-using-rest-api"></a>Azure-bestands shares herstellen met behulp van REST API
 
-In dit artikel wordt uitgelegd hoe u een volledige bestandsshare of specifieke bestanden herstellen vanaf een herstelpunt dat is gemaakt door [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) met behulp van de REST API.
+In dit artikel wordt uitgelegd hoe u een volledige bestands share herstelt of specifieke bestanden van een herstel punt dat is gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview) met behulp van de rest API.
 
-Aan het einde van dit artikel leert u hoe u de volgende bewerkingen uitvoeren met restapi:
+Aan het einde van dit artikel leert u hoe u de volgende bewerkingen kunt uitvoeren met behulp van REST API:
 
-* Herstelpunten weergeven voor een back-up azure-bestandsshare.
-* Een volledig Azure-bestandsshare herstellen.
+* Herstel punten weer geven voor een back-up van een Azure-bestands share.
+* Een volledige Azure-bestands share herstellen.
 * Afzonderlijke bestanden of mappen herstellen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We gaan ervan uit dat u al een back-up bestandsshare hebt die u wilt herstellen. Als u dit niet doet, schakelt u [Azure-bestandsshare back-up in met rest api](backup-azure-file-share-rest-api.md) om te leren hoe u er een maakt.
+We gaan ervan uit dat u al een back-up hebt gemaakt van de bestands share die u wilt herstellen. Als dat niet het geval is, controleert u [back-up van de Azure-bestands share met rest API](backup-azure-file-share-rest-api.md) om te leren hoe u er een maakt.
 
 Voor dit artikel gebruiken we de volgende bronnen:
 
 * **RecoveryServicesVault**: *azurefilesvault*
-* **Resourcegroep**: *azurefiles*
-* **Opslagrekening**: *afsaccount*
-* **Bestandsshare:** *azurefiles*
+* **Resource groep**: *Azure files*
+* **Opslag account**: *afsaccount*
+* **Bestands share**: *Azure files*
 
-## <a name="fetch-containername-and-protecteditemname"></a>ContainerNaam en ProtectedItemName ophalen
+## <a name="fetch-containername-and-protecteditemname"></a>Containernaam en ProtectedItemName ophalen
 
-Voor de meeste herstelgerelateerde API-aanroepen moet u waarden doorgeven voor de parameters {containerName} en {protectedItemName} URI. Gebruik het kenmerk ID in de antwoordtekst van de bewerking [GET backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get) om waarden voor deze parameters op te halen. In ons voorbeeld is de id van het bestandsaandeel dat we willen beveiligen:
+Voor de meeste Restore-gerelateerde API-aanroepen moet u waarden door geven voor de URI-para meters {containerName} en {protectedItemName}. Gebruik het kenmerk ID in de antwoord tekst van de bewerking [Get backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get) om waarden voor deze para meters op te halen. In ons voor beeld is de ID van de bestands share die u wilt beveiligen:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
-Dus de waarden vertalen als volgt:
+De waarden worden dus als volgt vertaald:
 
-* {containername} - *storagecontainer;storage;azurefiles;afsaccount*
-* {protectedItemName} - *azurefileshare;azurefiles*
+* {containerName}- *storagecontainer; opslag; Azure files; afsaccount*
+* {protectedItemName}- *azurefileshare; Azure files*
 
-## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Herstelpunten ophalen voor back-ups van Azure-bestandsshare
+## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Herstel punten ophalen voor het maken van een back-up van een Azure-bestands share
 
-Als u een back-up bestand of bestanden wilt herstellen, selecteert u eerst een herstelpunt om de herstelbewerking uit te voeren. De beschikbare herstelpunten van een back-upitem kunnen worden vermeld met de [API-aanroep voor herstelpuntenrest.](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) Het is een GET-bewerking met alle relevante waarden.
+Als u een back-up van de bestands share of bestanden wilt herstellen, selecteert u eerst een herstel punt om de herstel bewerking uit te voeren. De beschik bare herstel punten van een back-upitem kunnen worden weer gegeven met behulp van de aanroep van de [herstel punt lijst](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) rest API. Het is een GET-bewerking met alle relevante waarden.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -52,13 +52,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Stel de URI-waarden als volgt in:
 
-* {fabricName}: *Azure*
-* {vaultName}: *azurefilesvault*
-* {containername}: *storagecontainer;storage;azurefiles;afsaccount*
-* {protectedItemName}: *azurefileshare;azurefiles*
-* {ResourceGroupName}: *azurefiles*
+* {fabricnaam}: *Azure*
+* {kluisnaam}: *azurefilesvault*
+* {containerName}: *storagecontainer; Storage; Azure files; afsaccount*
+* {protectedItemName}: *azurefileshare; Azure files*
+* {ResourceGroupName}: *Azure files*
 
-De GET URI heeft alle vereiste parameters. Er is geen behoefte aan een extra aanvraag lichaam.
+De GET-URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
@@ -66,7 +66,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ### <a name="example-response"></a>Voorbeeld van een antwoord
 
-Zodra de GET URI is ingediend, wordt een 200-antwoord geretourneerd:
+Zodra de GET-URI is verzonden, wordt een 200-antwoord geretourneerd:
 
 ```http
 HTTP/1.1" 200 None
@@ -139,38 +139,38 @@ HTTP/1.1" 200 None
   },
 ```
 
-Het herstelpunt wordt geïdentificeerd met het veld {name} in het bovenstaande antwoord.
+Het herstel punt wordt geïdentificeerd met het veld {name} in het bovenstaande antwoord.
 
-## <a name="full-share-recovery-using-rest-api"></a>Herstel van volledige delen met REST API
+## <a name="full-share-recovery-using-rest-api"></a>Herstel van volledige shares met behulp van REST API
 
-Gebruik deze hersteloptie om de volledige bestandsshare in het origineel of een alternatieve locatie te herstellen.
-Het activeren van herstel is een POST-aanvraag en u deze bewerking uitvoeren met behulp van de [TRIGGER Restore](https://docs.microsoft.com/rest/api/backup/restores/trigger) REST API.
+Gebruik deze herstel optie om de volledige bestands share te herstellen op de oorspronkelijke of een alternatieve locatie.
+Het activeren van een herstel bewerking is een POST-aanvraag en u kunt deze actie uitvoeren met de [trigger herstellen](https://docs.microsoft.com/rest/api/backup/restores/trigger) rest API.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-De waarden {containerName} en {protectedItemName} zijn [hier](#fetch-containername-and-protecteditemname) ingesteld en recoveryPointID is het veld {name} van het hierboven genoemde herstelpunt.
+De waarden {containerName} en {protectedItemName} zijn [zo ingesteld,](#fetch-containername-and-protecteditemname) en recoveryPointID is het veld {name} van het hierboven vermelde herstel punt.
 
 ```http
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>Aanvraaginstantie maken
+### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 
-Als u een herstel voor een Azure-bestandsshare wilt activeren, zijn de volgende onderdelen van de aanvraaginstantie:
+Als u een herstel bewerking voor een Azure-bestands share wilt activeren, zijn de volgende onderdelen van de hoofd tekst van de aanvraag:
 
-Name |  Type   |   Beschrijving
+Naam |  Type   |   Beschrijving
 --- | ---- | ----
-Eigenschappen | AzureFileShareRestoreRequest | Eigenschappen RestoreRequestResource
+Eigenschappen | AzureFileShareRestoreRequest | RestoreRequestResource-eigenschappen
 
-Raadpleeg voor de volledige lijst met definities van de aanvraaginstantie en andere details het [trigger Restore REST API-document](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Raadpleeg het [document trigger Restore rest API](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)voor de volledige lijst met definities van de aanvraag tekst en andere details.
 
-### <a name="restore-to-original-location"></a>Herstellen naar oorspronkelijke locatie
+### <a name="restore-to-original-location"></a>Herstellen naar de oorspronkelijke locatie
 
-#### <a name="request-body-example"></a>Voorbeeld van het hoofdvoorbeeld van aanvraag
+#### <a name="request-body-example"></a>Voor beeld van aanvraag tekst
 
-In de volgende aanvraaginstantie worden eigenschappen gedefinieerd die nodig zijn om een Azure-bestandsshareherstel te activeren:
+De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor het activeren van een Azure-bestands share herstellen:
 
 ```json
 {
@@ -186,15 +186,15 @@ In de volgende aanvraaginstantie worden eigenschappen gedefinieerd die nodig zij
 
 ### <a name="restore-to-alternate-location"></a>Herstellen naar alternatieve locatie
 
-Geef de volgende parameters op voor alternatieve locatieherstel:
+Geef de volgende para meters op voor herstel naar een alternatieve locatie:
 
-* **targetResourceId:** het opslagaccount waarop de back-upinhoud wordt hersteld. Het doelopslagaccount moet zich op dezelfde locatie bevinden als de kluis.
-* **naam:** de bestandsshare binnen het doelopslagaccount waarop de back-upinhoud is hersteld.
-* **targetFolderPath:** de map onder de bestandsshare waaraan gegevens worden hersteld.
+* **targetResourceId**: het opslag account waarnaar de inhoud van de back-up wordt teruggezet. Het doel-opslag account moet zich op dezelfde locatie berichten als de kluis.
+* **naam**: de bestands share binnen het doel-opslag account waarnaar de inhoud van de back-up wordt teruggezet.
+* **targetFolderPath**: de map onder de bestands share waarop de gegevens worden teruggezet.
 
-#### <a name="request-body-example"></a>Voorbeeld van het hoofdvoorbeeld van aanvraag
+#### <a name="request-body-example"></a>Voor beeld van aanvraag tekst
 
-De volgende aanvraaginstantie herstelt het *azurefiles-bestandsaandeel* in het *account van afsaccountopslag* naar het *azurefiles1-bestandsaandeel* in het *opslagaccount afaccount1.*
+Met de volgende aanvraag tekst wordt de *Azure files* -bestands share in het *afsaccount* -opslag account teruggezet naar de *azurefiles1* -bestands share in het *afaccount1* -opslag account.
 
 ```json
 {
@@ -219,12 +219,12 @@ De volgende aanvraaginstantie herstelt het *azurefiles-bestandsaandeel* in het *
 
 ### <a name="response"></a>Antwoord
 
-Het activeren van een herstelbewerking is een [asynchrone bewerking.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Met deze bewerking wordt een andere bewerking uitgevoerd die afzonderlijk moet worden bijgehouden.
-Het retourneert twee antwoorden: 202 (Geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer die bewerking is voltooid.
+Het activeren van een herstel bewerking is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Met deze bewerking wordt een andere bewerking gemaakt die afzonderlijk moet worden bijgehouden.
+Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-#### <a name="response-example"></a>Voorbeeld van antwoord
+#### <a name="response-example"></a>Antwoord voorbeeld
 
-Zodra u de *POST* URI indient voor het activeren van een herstel, is het eerste antwoord 202 (Geaccepteerd) met een locatiekop- of Azure-async-header.
+Wanneer u de *post* -URI voor het activeren van een herstel bewerking verzendt, wordt het eerste antwoord 202 (geaccepteerd) met een locatie header of Azure-async-header.
 
 ```http
 HTTP/1.1" 202
@@ -245,13 +245,13 @@ HTTP/1.1" 202
 'Date': 'Wed, 05 Feb 2020 07:43:47 GMT'
 ```
 
-Houd vervolgens de resulterende bewerking bij met behulp van de locatiekop- of de Azure-AsyncOperation-header met een get-opdracht.
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een GET-opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/68ccfbc1-a64f-4b29-b955-314b5790cfa9?api-version=2016-12-01
 ```
 
-Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de id van de resulterende hersteltaak in de antwoordinstantie.
+Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de ID van de resulterende terugzet taak in de hoofd tekst van het antwoord.
 
 ```http
 HTTP/1.1" 200
@@ -304,7 +304,7 @@ HTTP/1.1" 200
 }
 ```
 
-Voor alternatieve locatie herstel, zal de reactie lichaam als volgt:
+Voor herstel naar een alternatieve locatie ziet de antwoord tekst er als volgt uit:
 
 ```http
 {
@@ -350,37 +350,37 @@ Voor alternatieve locatie herstel, zal de reactie lichaam als volgt:
 }
 ```
 
-Aangezien de back-uptaak een langdurige bewerking is, moet deze worden bijgehouden zoals uitgelegd in de [monitortaken met rest-API-document.](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)
+Aangezien de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met rest API document](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job).
 
-## <a name="item-level-recovery-using-rest-api"></a>Itemniveauherstel met REST API
+## <a name="item-level-recovery-using-rest-api"></a>Herstel op item niveau met REST API
 
-U deze hersteloptie gebruiken om afzonderlijke bestanden of mappen in het origineel of een alternatieve locatie te herstellen.
+U kunt deze terugzet optie gebruiken om afzonderlijke bestanden of mappen op de oorspronkelijke of een alternatieve locatie te herstellen.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-De waarden {containerName} en {protectedItemName} zijn [hier](#fetch-containername-and-protecteditemname) ingesteld en recoveryPointID is het veld {name} van het hierboven genoemde herstelpunt.
+De waarden {containerName} en {protectedItemName} zijn [zo ingesteld,](#fetch-containername-and-protecteditemname) en recoveryPointID is het veld {name} van het hierboven vermelde herstel punt.
 
 ```http
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>Aanvraaginstantie maken
+### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 
-Als u een herstel voor een Azure-bestandsshare wilt activeren, zijn de volgende onderdelen van de aanvraaginstantie:
+Als u een herstel bewerking voor een Azure-bestands share wilt activeren, zijn de volgende onderdelen van de hoofd tekst van de aanvraag:
 
-Name |  Type   |   Beschrijving
+Naam |  Type   |   Beschrijving
 --- | ---- | ----
-Eigenschappen | AzureFileShareRestoreRequest | Eigenschappen RestoreRequestResource
+Eigenschappen | AzureFileShareRestoreRequest | RestoreRequestResource-eigenschappen
 
-Raadpleeg voor de volledige lijst met definities van de aanvraaginstantie en andere details het [trigger Restore REST API-document](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Raadpleeg het [document trigger Restore rest API](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)voor de volledige lijst met definities van de aanvraag tekst en andere details.
 
-### <a name="restore-to-original-location"></a>Herstellen naar oorspronkelijke locatie
+### <a name="restore-to-original-location"></a>Herstellen naar de oorspronkelijke locatie
 
-De volgende aanvraaginstantie is het herstellen van het bestand *Restoretest.txt* in het *azurefiles-bestandsshare* in het account van de opslag account van *afsaccount.*
+De volgende aanvraag tekst is het herstellen van het *Restoretest. txt* -bestand in de *Azure files* -bestands share in het *afsaccount* -opslag account.
 
-Aanvraaghoofd maken
+Hoofd tekst van aanvraag maken
 
 ```json
 {
@@ -404,9 +404,9 @@ Aanvraaghoofd maken
 
 ### <a name="restore-to-alternate-location"></a>Herstellen naar alternatieve locatie
 
-De volgende aanvraaginstantie is het herstellen van het bestand *Restoretest.txt* in het *azurefiles-bestandsshare* in het account van de opslag van *afsaccount* naar de *map restoredata* van het *azurefiles1-bestandsshare* in het *opslagaccount van afaccount1.*
+De volgende aanvraag tekst is het herstellen van het *Restoretest. txt* -bestand in de *Azure files* -bestands share in het opslag account *afsaccount* naar de map *restoredata* van de *azurefiles1* -bestands share in het *afaccount1* -opslag account.
 
-Aanvraaginstantie maken
+Hoofd tekst van aanvraag maken
 
 ```json
 {
@@ -431,8 +431,8 @@ Aanvraaginstantie maken
 }
 ```
 
-Het antwoord moet worden behandeld op dezelfde manier als hierboven uiteengezet voor [volledige aandeel herstelt](#full-share-recovery-using-rest-api).
+Het antwoord moet worden afgehandeld op dezelfde manier als hierboven beschreven voor het terugzetten van de [volledige share](#full-share-recovery-using-rest-api).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [beheren van back-ups van Azure-bestandsshares met behulp van Rest API.](manage-azure-file-share-rest-api.md)
+* Meer informatie over het [beheren van back-ups van Azure-bestands shares met rest API](manage-azure-file-share-rest-api.md).

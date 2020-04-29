@@ -1,6 +1,6 @@
 ---
-title: Beschikbaarheidsgroepen configureren voor SQL Server op virtuele RHEL-machines in Azure - Virtuele Linux-machines | Microsoft Documenten
-description: Meer informatie over het instellen van hoge beschikbaarheid in een RHEL-clusteromgeving en het instellen van STONITH
+title: Beschikbaarheids groepen configureren voor SQL Server op virtuele RHEL-machines in azure-Linux Virtual Machines | Microsoft Docs
+description: Meer informatie over het instellen van een hoge Beschik baarheid in een RHEL-cluster omgeving en het instellen van STONITH
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -9,52 +9,52 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
 ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79096695"
 ---
-# <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Beschikbaarheidsgroepen configureren voor SQL Server op virtuele RHEL-machines in Azure 
+# <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelf studie: beschikbaarheids groepen configureren voor SQL Server op virtuele RHEL-machines in azure 
 
 > [!NOTE]
-> De tutorial gepresenteerd is in **openbare preview**. 
+> De zelf studie wordt weer gegeven in de **open bare preview**. 
 >
-> We gebruiken SQL Server 2017 met RHEL 7.6 in deze zelfstudie, maar het is mogelijk om SQL Server 2019 te gebruiken in RHEL 7 of RHEL 8 om HA te configureren. De opdrachten voor het configureren van bronnen voor beschikbaarheidsgroepen zijn gewijzigd in RHEL 8 en u wilt het artikel, [Beschikbaarheidsgroepbron maken](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) en RHEL 8-resources bekijken voor meer informatie over de juiste opdrachten.
+> In deze zelf studie gebruiken we SQL Server 2017 met RHEL 7,6, maar het is wel mogelijk om SQL Server 2019 te gebruiken in RHEL 7 of RHEL 8 om HA te configureren. De opdrachten voor het configureren van resources van de beschikbaarheids groep zijn gewijzigd in RHEL 8 en u wilt het artikel bekijken, [resource voor de beschikbaarheids groep maken](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) en RHEL 8 resources voor meer informatie over de juiste opdrachten.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> - Een nieuwe resourcegroep, beschikbaarheidsset en Virtuele Azure-machines (Azure Linux) maken
-> - Ha (Hoge beschikbaarheid) inschakelen
-> - Een pacemakercluster maken
-> - Een afrasteringsagent configureren door een STONITH-apparaat te maken
-> - SQL Server en mssql-tools installeren op RHEL
-> - SQL Server Always On Availability Group configureren
-> - Ag-resources (availability group) configureren in het cluster Pacemaker
-> - Test een failover en de hekwerkagent
+> - Een nieuwe resource groep, Beschikbaarheidsset en Azure Linux Virtual Machines maken (VM)
+> - Hoge Beschik baarheid inschakelen (HA)
+> - Een pacemaker-cluster maken
+> - Een omheinings agent configureren door een STONITH-apparaat te maken
+> - SQL Server en MSSQL-hulpprogram ma's installeren op RHEL
+> - SQL Server AlwaysOn-beschikbaarheids groep configureren
+> - De resources van de beschikbaarheids groep (AG) configureren in het pacemaker-cluster
+> - Een failover en de omheinings agent testen
 
-In deze zelfstudie wordt de Azure command-line interface (CLI) gebruikt om resources in Azure te implementeren.
+In deze zelf studie wordt gebruikgemaakt van de Azure-opdracht regel interface (CLI) voor het implementeren van resources in Azure.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Als u de CLI liever lokaal installeert en gebruikt, vereist deze zelfstudie Azure CLI-versie 2.0.30 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u liever de CLI lokaal wilt installeren en gebruiken, is voor deze zelf studie Azure CLI-versie 2.0.30 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Als u meer dan één abonnement hebt, stelt u [het abonnement in](/cli/azure/manage-azure-subscriptions-azure-cli) waarop u deze resources wilt implementeren.
+Als u meer dan één abonnement hebt, [stelt u het abonnement](/cli/azure/manage-azure-subscriptions-azure-cli) in waarvoor u deze resources wilt implementeren.
 
-Gebruik de volgende opdracht om `<resourceGroupName>` een resourcegroep in een regio te maken. Vervang `<resourceGroupName>` door een naam van uw keuze. We gebruiken `East US 2` voor deze tutorial. Zie de volgende [Quickstart](../quick-create-cli.md)voor meer informatie.
+Gebruik de volgende opdracht om een resource groep `<resourceGroupName>` in een regio te maken. Vervang `<resourceGroupName>` door de naam van uw keuze. Deze zelf studie `East US 2` wordt gebruikt. Zie de volgende [Snelstartgids](../quick-create-cli.md)voor meer informatie.
 
 ```azurecli-interactive
 az group create --name <resourceGroupName> --location eastus2
 ```
 
-## <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
+## <a name="create-an-availability-set"></a>Een Beschikbaarheidsset maken
 
-De volgende stap is het maken van een beschikbaarheidsset. Voer de volgende opdracht uit in `<resourceGroupName>` Azure Cloud Shell en vervang de naam van uw Resourcegroep. Kies een `<availabilitySetName>`naam voor .
+De volgende stap is het maken van een Beschikbaarheidsset. Voer de volgende opdracht uit in Azure Cloud Shell en vervang `<resourceGroupName>` door de naam van de resource groep. Kies een naam voor `<availabilitySetName>`.
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -64,7 +64,7 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-U moet de volgende resultaten krijgen zodra de opdracht is voltooid:
+Zodra de opdracht is voltooid, krijgt u de volgende resultaten:
 
 ```output
 {
@@ -87,14 +87,14 @@ U moet de volgende resultaten krijgen zodra de opdracht is voltooid:
 }
 ```
 
-## <a name="create-rhel-vms-inside-the-availability-set"></a>RHEL VM's maken in de beschikbaarheidsset
+## <a name="create-rhel-vms-inside-the-availability-set"></a>RHEL Vm's maken in de Beschikbaarheidsset
 
 > [!WARNING]
-> Als u kiest voor een Pay-As-You-Go (PAYG) RHEL-afbeelding en een HA (High Availability) configureert, moet u mogelijk uw abonnement registreren. Dit kan ertoe leiden dat u twee keer betaalt voor het abonnement, omdat er kosten in rekening worden gebracht voor het Microsoft Azure RHEL-abonnement voor de VM en een abonnement op Red Hat. Zie https://access.redhat.com/solutions/2458541 voor meer informatie.
+> Als u een PAYG-installatie kopie (betalen per gebruik) kiest en hoge Beschik baarheid (HA) configureert, moet u mogelijk uw abonnement registreren. Dit kan ertoe leiden dat u twee keer betaalt voor het abonnement, omdat er kosten in rekening worden gebracht voor het Microsoft Azure RHEL-abonnement voor de virtuele machine en een abonnement op Red Hat. Zie https://access.redhat.com/solutions/2458541 voor meer informatie.
 >
-> Gebruik een RHEL HA-afbeelding bij het maken van de Azure VM om te voorkomen dat u 'dubbel gefactureerd' wordt. Afbeeldingen aangeboden als RHEL-HA beelden zijn ook PAYG beelden met HA repo pre-enabled.
+> Gebruik een RHEL HA-afbeelding bij het maken van de Azure-VM om te voor komen dat u ' dubbel gefactureerd ' wordt. Afbeeldingen die worden aangeboden als RHEL-HA-afbeeldingen zijn ook PAYG installatie kopieën met HA opslag plaats vooraf ingeschakeld.
 
-1. Ontvang een lijst met VM-afbeeldingen (Virtual Machine) die RHEL met HA aanbieden:
+1. Een lijst met installatie kopieën van virtuele machines (VM) ophalen die RHEL bieden met HA:
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -128,17 +128,17 @@ U moet de volgende resultaten krijgen zodra de opdracht is voltooid:
     ]
     ```
 
-    Voor deze zelfstudie kiezen we `RedHat:RHEL-HA:7.6:7.6.2019062019`de afbeelding.
+    Voor deze zelf studie kiest u de installatie kopie `RedHat:RHEL-HA:7.6:7.6.2019062019`.
 
     > [!IMPORTANT]
-    > Machinenamen moeten minder dan 15 tekens bevatten om beschikbaarheidsgroep in te stellen. Gebruikersnaam mag geen hoofdletters bevatten en wachtwoorden moeten meer dan 12 tekens bevatten.
+    > Computer namen moeten uit minder dan vijf tien tekens bestaan om de beschikbaarheids groep in te stellen. De gebruikers naam mag geen hoofd letters en wacht woorden bevatten die uit meer dan 12 tekens bestaan.
 
-1. We willen 3 VM's maken in de beschikbaarheidsset. Vervang het volgende in de onderstaande opdracht:
+1. We willen drie Vm's maken in de Beschikbaarheidsset. Vervang het volgende in de onderstaande opdracht:
 
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>`- Een voorbeeld is "Standard_D16_v3"
+    - `<VM-Size>`-Een voor beeld is ' Standard_D16_v3 '
     - `<username>`
     - `<adminPassword>`
 
@@ -157,9 +157,9 @@ U moet de volgende resultaten krijgen zodra de opdracht is voltooid:
     done
     ```
 
-Met de bovenstaande opdracht worden de VM's gemaakt en wordt een standaard VNet gemaakt voor deze VM's. Zie voor meer informatie over de verschillende configuraties het artikel [az vm create.](https://docs.microsoft.com/cli/azure/vm)
+Met de bovenstaande opdracht maakt u de virtuele machines en maakt u een standaard-VNet voor deze Vm's. Zie het artikel [AZ VM Create](https://docs.microsoft.com/cli/azure/vm) voor meer informatie over de verschillende configuraties.
 
-U moet resultaten krijgen die vergelijkbaar zijn met de volgende zodra de opdracht voor elke vm is voltooid:
+Als de opdracht voor elke virtuele machine is voltooid, krijgt u de volgende resultaten te zien:
 
 ```output
 {
@@ -176,19 +176,19 @@ U moet resultaten krijgen die vergelijkbaar zijn met de volgende zodra de opdrac
 ```
 
 > [!IMPORTANT]
-> De standaardafbeelding die met de bovenstaande opdracht wordt gemaakt, maakt standaard een schijf van 32 GB os. Met deze standaardinstallatie u mogelijk geen ruimte meer hebben. U de volgende parameter `az vm create` aan de bovenstaande opdracht gebruiken om een OS-schijf met 128 GB als voorbeeld te maken: `--os-disk-size-gb 128`.
+> Met de standaard installatie kopie die wordt gemaakt met de bovenstaande opdracht maakt standaard een besturingssysteem schijf van 32 GB. Mogelijk is er onvoldoende schijf ruimte beschikbaar bij deze standaard installatie. U kunt de volgende para meter toevoegen aan de bovenstaande `az vm create` opdracht om een besturingssysteem schijf te maken met 128 GB als voor beeld `--os-disk-size-gb 128`:.
 >
-> U vervolgens [Logische volumebeheer (LVM) configureren](../../../virtual-machines/linux/configure-lvm.md) als u de juiste mapvolumes wilt uitbreiden om uw installatie te kunnen aanpassen.
+> U kunt vervolgens [Logical Volume Manager (LVM) configureren](../../../virtual-machines/linux/configure-lvm.md) als u de juiste mappen wilt uitbreiden voor uw installatie.
 
-### <a name="test-connection-to-the-created-vms"></a>Verbinding met de gemaakte VM's testen
+### <a name="test-connection-to-the-created-vms"></a>Verbinding met de gemaakte Vm's testen
 
-Maak verbinding met VM1 of de andere VM's met de volgende opdracht in Azure Cloud Shell. Als u uw VM-IP's niet vinden, volgt u deze [Quickstart op Azure Cloud Shell](../../../cloud-shell/quickstart.md#ssh-into-your-linux-vm).
+Maak verbinding met VM1 of de andere virtuele machines met behulp van de volgende opdracht in Azure Cloud Shell. Als u uw VM-Ip's niet kunt vinden, volgt u deze [Snelstartgids op Azure Cloud shell](../../../cloud-shell/quickstart.md#ssh-into-your-linux-vm).
 
 ```azurecli-interactive
 ssh <username>@publicipaddress
 ```
 
-Als de verbinding succesvol is, ziet u de volgende uitvoer die de Linux-terminal vertegenwoordigt:
+Als de verbinding is geslaagd, ziet u de volgende uitvoer van de Linux-Terminal:
 
 ```output
 [<username>@<VM1> ~]$
@@ -196,30 +196,30 @@ Als de verbinding succesvol is, ziet u de volgende uitvoer die de Linux-terminal
 
 Typ `exit` om de SSH-sessie te verlaten.
 
-## <a name="enable-high-availability"></a>Hoge beschikbaarheid inschakelen
+## <a name="enable-high-availability"></a>Hoge Beschik baarheid inschakelen
 
 > [!IMPORTANT]
-> Om dit gedeelte van de zelfstudie te voltooien, moet u een abonnement hebben voor RHEL en de add-on met hoge beschikbaarheid. Als u een afbeelding gebruikt die in de vorige sectie wordt aanbevolen, hoeft u geen ander abonnement te registreren.
+> Als u dit gedeelte van de zelf studie wilt volt ooien, moet u beschikken over een abonnement voor RHEL en de invoeg toepassing met hoge Beschik baarheid. Als u een installatie kopie gebruikt die wordt aanbevolen in de vorige sectie, hoeft u geen ander abonnement te registreren.
  
-Maak verbinding met elk VM-knooppunt en volg de onderstaande handleiding om HA in te schakelen. Zie abonnement [met hoge beschikbaarheid inschakelen voor RHEL voor](/sql/linux/sql-server-linux-availability-group-cluster-rhel#enable-the-high-availability-subscription-for-rhel)meer informatie.
+Maak verbinding met elk VM-knoop punt en volg de onderstaande gids om HA in te scha kelen. Zie [abonnement met hoge Beschik baarheid inschakelen voor RHEL](/sql/linux/sql-server-linux-availability-group-cluster-rhel#enable-the-high-availability-subscription-for-rhel)voor meer informatie.
 
 > [!TIP]
-> Het zal gemakkelijker zijn als u een SSH-sessie tegelijk met elk van de VM's opent, omdat dezelfde opdrachten op elke VM in het hele artikel moeten worden uitgevoerd.
+> Het is eenvoudiger als u een SSH-sessie op elk van de virtuele machines tegelijk opent, omdat dezelfde opdrachten moeten worden uitgevoerd op elke VM in het hele artikel.
 >
-> Als u meerdere `sudo` opdrachten kopieert en plakt en om een wachtwoord wordt gevraagd, worden de extra opdrachten niet uitgevoerd. Voer elke opdracht afzonderlijk uit.
+> Als u meerdere `sudo` opdrachten kopieert en plakt en u wordt gevraagd om een wacht woord, worden de extra opdrachten niet uitgevoerd. Voer elke opdracht afzonderlijk uit.
 
 
-1. Voer de volgende opdrachten uit op elke vm om de firewallpoorten van pacemakers te openen:
+1. Voer de volgende opdrachten uit op elke virtuele machine om de pacemaker-firewall poorten te openen:
 
     ```bash
     sudo firewall-cmd --permanent --add-service=high-availability
     sudo firewall-cmd --reload
     ```
 
-1. Pacemakerpakketten op alle knooppunten bijwerken en installeren met de volgende opdrachten:
+1. Update en installeer pacemaker-pakketten op alle knoop punten met behulp van de volgende opdrachten:
 
     > [!NOTE]
-    > **nmap** is geïnstalleerd als onderdeel van dit opdrachtblok als hulpmiddel om beschikbare IP-adressen in uw netwerk te vinden. U hoeft geen **nmap**te installeren, maar het zal later nuttig zijn in deze tutorial.
+    > **nmap** wordt geïnstalleerd als onderdeel van dit opdracht blok als een hulp programma voor het vinden van beschik bare IP-adressen in uw netwerk. U hoeft **nmap**niet te installeren, maar is later in deze zelf studie nuttig.
 
     ```bash
     sudo yum update -y
@@ -227,19 +227,19 @@ Maak verbinding met elk VM-knooppunt en volg de onderstaande handleiding om HA i
     sudo reboot
     ```
 
-1. Stel het wachtwoord in voor de standaardgebruiker die wordt gemaakt bij het installeren van Pacemaker-pakketten. Gebruik hetzelfde wachtwoord op alle knooppunten.
+1. Stel het wacht woord in voor de standaard gebruiker die wordt gemaakt bij het installeren van pacemaker-pakketten. Gebruik hetzelfde wacht woord op alle knoop punten.
 
     ```bash
     sudo passwd hacluster
     ```
 
-1. Gebruik de volgende opdracht om het hosts-bestand te openen en de oplossing van de hostnaam in te stellen. Zie [AG configureren](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) bij het configureren van het hosts-bestand voor meer informatie.
+1. Gebruik de volgende opdracht om het hosts-bestand te openen en de omzetting van hostnamen in te stellen. Zie [AG configureren](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) voor het configureren van het hosts-bestand voor meer informatie.
 
     ```
     sudo vi /etc/hosts
     ```
 
-    Voeg in de `i` **vi-editor** tekst in en voeg op een lege regel het **privé-IP** van de bijbehorende VM toe. Voeg vervolgens de VM-naam toe na een spatie naast het IP-adres. Elke regel moet een aparte vermelding hebben.
+    Voer `i` in de **VI** -editor tekst in en voeg op een lege regel het **privé-IP-adres** van de bijbehorende virtuele machine toe. Voeg vervolgens de naam van de virtuele machine toe na een spatie naast het IP-adres. Elke regel moet een afzonderlijke vermelding bevatten.
 
     ```output
     <IP1> <VM1>
@@ -248,17 +248,17 @@ Maak verbinding met elk VM-knooppunt en volg de onderstaande handleiding om HA i
     ```
 
     > [!IMPORTANT]
-    > We raden u aan uw **ip-adres** hierboven te gebruiken. Als u het openbare IP-adres in deze configuratie gebruikt, mislukt de installatie en raden we u aan uw VM bloot te stellen aan externe netwerken.
+    > U wordt aangeraden uw **privé-IP-** adres hierboven te gebruiken. Het gebruik van het open bare IP-adres in deze configuratie zorgt ervoor dat de installatie mislukt. het wordt niet aanbevolen uw VM beschikbaar te stellen voor externe netwerken.
 
-    Als u de **vi-editor** wilt afsluiten, drukt `:wq` u eerst op de **Esc-toets** en voert u de opdracht in om het bestand te schrijven en af te sluiten.
+    Als u de **VI** -editor wilt afsluiten, klikt u eerst op **ESC** en voert u `:wq` vervolgens de opdracht in om het bestand te schrijven en af te sluiten.
 
-## <a name="create-the-pacemaker-cluster"></a>Het cluster Pacemaker maken
+## <a name="create-the-pacemaker-cluster"></a>Het pacemaker-cluster maken
 
-In deze sectie schakelen we de pcsd-service in en starten we het cluster. Voor SQL Server op Linux worden de clusterbronnen niet automatisch gemaakt. We moeten de pacemakerbronnen handmatig inschakelen en maken. Zie voor meer informatie het artikel over [het configureren van een failoverclusterinstantie voor RHEL](/sql/linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure#install-and-configure-pacemaker-on-each-cluster-node)
+In deze sectie wordt de pcsd-service ingeschakeld en gestart. vervolgens configureert u het cluster. Voor SQL Server on Linux worden de cluster bronnen niet automatisch gemaakt. U moet de pacemaker-resources hand matig inschakelen en maken. Zie het artikel over het [configureren van een failover-cluster exemplaar voor RHEL](/sql/linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure#install-and-configure-pacemaker-on-each-cluster-node) voor meer informatie.
 
-### <a name="enable-and-start-pcsd-service-and-pacemaker"></a>Pcsd-service en Pacemaker inschakelen en starten
+### <a name="enable-and-start-pcsd-service-and-pacemaker"></a>Pcsd-service en pacemaker inschakelen en starten
 
-1. Voer de opdrachten uit op alle knooppunten. Met deze opdrachten kunnen de knooppunten na het opnieuw opstarten weer bij het cluster worden toegevoegd.
+1. Voer de opdrachten uit op alle knoop punten. Met deze opdrachten kunnen de knoop punten na het opnieuw opstarten opnieuw lid worden van het cluster.
 
     ```bash
     sudo systemctl enable pcsd
@@ -266,16 +266,16 @@ In deze sectie schakelen we de pcsd-service in en starten we het cluster. Voor S
     sudo systemctl enable pacemaker
     ``` 
 
-1. Verwijder bestaande clusterconfiguratie uit alle knooppunten. Voer de volgende opdracht uit:
+1. Verwijder alle bestaande cluster configuraties van alle knoop punten. Voer de volgende opdracht uit:
 
     ```bash
     sudo pcs cluster destroy 
     sudo systemctl enable pacemaker 
     ```
 
-1. Voer op het primaire knooppunt de volgende opdrachten uit om het cluster in te stellen.
+1. Voer de volgende opdrachten uit op het primaire knoop punt om het cluster in te stellen.
 
-    - Wanneer u `pcs cluster auth` de opdracht uitvoert om de clusterknooppunten te verifiëren, wordt u om een wachtwoord gevraagd. Voer het wachtwoord in voor de **hacluster-gebruiker** die eerder is gemaakt.
+    - Wanneer u de `pcs cluster auth` opdracht uitvoert om de cluster knooppunten te verifiëren, wordt u gevraagd een wacht woord op te vragen. Voer het wacht woord in voor de **hacluster** -gebruiker die u eerder hebt gemaakt.
 
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
@@ -284,13 +284,13 @@ In deze sectie schakelen we de pcsd-service in en starten we het cluster. Voor S
     sudo pcs cluster enable --all
     ```
 
-1. Voer de volgende opdracht uit om te controleren of alle knooppunten online zijn.
+1. Voer de volgende opdracht uit om te controleren of alle knoop punten online zijn.
 
     ```bash
     sudo pcs status
     ```
 
-    Als alle knooppunten online zijn, ziet u een uitvoer die vergelijkbaar is met de volgende:
+    Als alle knoop punten online zijn, ziet u een uitvoer die vergelijkbaar is met de volgende:
 
     ```output
     Cluster name: az-hacluster
@@ -317,25 +317,25 @@ In deze sectie schakelen we de pcsd-service in en starten we het cluster. Voor S
           pcsd: active/enabled
     ```
 
-1. Stel verwachte stemmen in het live cluster in op 3. Deze opdracht heeft alleen invloed op het live cluster en wijzigt de configuratiebestanden niet.
+1. Stel de verwachte stemmen in het Live-cluster in op 3. Deze opdracht is alleen van invloed op het Live-cluster en wijzigt de configuratie bestanden niet.
 
-    Stel op alle knooppunten de verwachte stemmen in met de volgende opdracht:
+    Stel op alle knoop punten de verwachte stemmen in met de volgende opdracht:
 
     ```bash
     sudo pcs quorum expected-votes 3
     ```
 
-## <a name="configure-the-fencing-agent"></a>De afrasteringsagent configureren
+## <a name="configure-the-fencing-agent"></a>De omheinings agent configureren
 
-Een STONITH-apparaat biedt een hekwerk. De onderstaande instructies zijn aangepast voor deze tutorial. Zie [Een STONITH-apparaat maken voor](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#create-stonith-device)meer informatie.
+Een STONITH-apparaat biedt een omheinings agent. De onderstaande instructies zijn gewijzigd voor deze zelf studie. Zie [een STONITH-apparaat maken](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#create-stonith-device)voor meer informatie.
  
-[Controleer de versie van de Azure Fence Agent om ervoor te zorgen dat deze wordt bijgewerkt.](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#cluster-installation) Gebruik de volgende opdracht:
+[Controleer de versie van de Azure Fence-agent om er zeker van te zijn dat deze is bijgewerkt](../../../virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker.md#cluster-installation). Gebruik de volgende opdracht:
 
 ```bash
 sudo yum info fence-agents-azure-arm
 ```
 
-U ziet een vergelijkbare uitvoer als het onderstaande voorbeeld.
+In het onderstaande voor beeld ziet u een vergelijk bare uitvoer.
 
 ```output
 Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
@@ -356,24 +356,24 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Een nieuwe toepassing registreren in Azure Active Directory
  
  1. Ga naar https://portal.azure.com
- 2. Open het [Azure Active Directory-blad](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Ga naar Eigenschappen en noteer de Directory-id. Dit is de`tenant ID`
- 3. Klik [ **op App-registraties**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
- 4. Klik op **Nieuwe registratie**
- 5. Een **naam** `<resourceGroupName>-app`als invoeren , **alleen Accounts in deze organisatiemap selecteren**
- 6. Selecteer Web van **toepassingstype**, voer een http://localhost) aanmeldings-URL in (bijvoorbeeld en klik op Toevoegen. De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn. Eenmaal klaar, klik op **Registreren**
- 7. Selecteer **Certificaten en geheimen** voor uw nieuwe app-registratie en klik op Nieuw **clientgeheim**
- 8. Voer een beschrijving in voor een nieuwe sleutel (clientgeheim), selecteer **Nooit verloopt** en klik op **Toevoegen**
- 9. Noteer de waarde van het geheim. Het wordt gebruikt als wachtwoord voor de Service Principal
-10. Selecteer **Overzicht**. Noteer de toepassings-id. Het wordt gebruikt als gebruikersnaam (inlog-id in de onderstaande stappen) van de Service Principal
+ 2. Open de [blade Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Ga naar eigenschappen en noteer de map-ID. Dit is de`tenant ID`
+ 3. Klik op [ **app-registraties**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+ 4. Klik op **nieuwe registratie**
+ 5. Voer een **naam** in `<resourceGroupName>-app`, selecteer **alleen accounts in deze organisatie Directory**
+ 6. Selecteer het **Web**van het type toepassing, voer een AANMELDINGS-URL in http://localhost) (bijvoorbeeld en klik op toevoegen. De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn. Als u klaar bent, klikt u op **registreren**
+ 7. Selecteer **certificaten en geheimen** voor uw nieuwe app-registratie en klik vervolgens op **Nieuw client geheim**
+ 8. Voer een beschrijving in voor een nieuwe sleutel (client geheim), selecteer **nooit verloopt** en klik op **toevoegen**
+ 9. Noteer de waarde van het geheim. Dit wordt gebruikt als het wacht woord voor de Service-Principal
+10. Selecteer **Overzicht**. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (aanmeldings-ID in de onderstaande stappen) van de Service-Principal
  
-### <a name="create-a-custom-role-for-the-fence-agent"></a>Een aangepaste rol voor de afrasteringsagent maken
+### <a name="create-a-custom-role-for-the-fence-agent"></a>Een aangepaste rol maken voor de Fence-agent
 
-Volg de zelfstudie om [een aangepaste rol voor Azure-resources](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)te maken met Azure CLI .
+Volg de zelf studie voor het [maken van een aangepaste rol voor Azure-resources met behulp van Azure cli](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role).
 
-Uw json-bestand moet er hetzelfde uitzien als het volgende:
+Het JSON-bestand moet er ongeveer als volgt uitzien:
 
-- Vervang `<username>` door een naam van uw keuze. Dit is om dubbel werk te voorkomen bij het maken van deze roldefinitie.
-- Vervang `<subscriptionId>` door uw Azure-abonnements-id.
+- Vervang `<username>` door een naam van uw keuze. Dit is om te voor komen dat u dupliceert bij het maken van deze roldefinitie.
+- Vervang `<subscriptionId>` door de id van uw Azure-abonnement.
 
 ```json
 {
@@ -397,7 +397,7 @@ Uw json-bestand moet er hetzelfde uitzien als het volgende:
 Voer de volgende opdracht uit om de rol toe te voegen:
 
 - Vervang `<filename>` door de naam van het bestand.
-- Als u de opdracht uitvoert vanaf een ander pad dan de map waarop het bestand is opgeslagen, neemt u het mappad van het bestand op in de opdracht.
+- Als u de opdracht uitvoert vanaf een ander pad dan de map waarin het bestand is opgeslagen, neemt u het mappad van het bestand op in de opdracht.
 
 ```bash
 az role definition create --role-definition "<filename>.json"
@@ -431,51 +431,51 @@ In dat geval moet de volgende uitvoer worden weergegeven:
 }
 ```
 
-### <a name="assign-the-custom-role-to-the-service-principal"></a>De aangepaste rol toewijzen aan de serviceprincipal
+### <a name="assign-the-custom-role-to-the-service-principal"></a>De aangepaste rol toewijzen aan de Service-Principal
 
-Wijs de `Linux Fence Agent Role-<username>` aangepaste rol die in de laatste stap is gemaakt toe aan de serviceprincipal. Gebruik de rol Eigenaar niet meer!
+Wijs de aangepaste rol `Linux Fence Agent Role-<username>` die in de laatste stap is gemaakt toe aan de Service-Principal. Gebruik de rol owner niet meer.
  
 1. Ga naar https://portal.azure.com
-2. Het [blad Alle resources openen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll)
-3. De virtuele machine van het eerste clusterknooppunt selecteren
-4. Klik **op Toegangsbesturingselement (IAM)**
-5. Klik **op Een roltoewijzing toevoegen**
-6. De rol `Linux Fence Agent Role-<username>` selecteren in de **lijst Met rollen**
-7. Voer **in** de lijst Selecteren de naam in van de toepassing die u hierboven hebt gemaakt.`<resourceGroupName>-app`
-8. Klik **op Opslaan**
-9. Herhaal de bovenstaande stappen voor het hele clusterknooppunt.
+2. Open de [Blade alle resources](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll)
+3. De virtuele machine van het eerste cluster knooppunt selecteren
+4. Klik op **toegangs beheer (IAM)**
+5. Klik op **een roltoewijzing toevoegen**
+6. Selecteer de rol `Linux Fence Agent Role-<username>` in de lijst met **rollen**
+7. Voer in de **selectie** lijst de naam in van de toepassing die u hierboven hebt gemaakt.`<resourceGroupName>-app`
+8. Klik op **Opslaan**
+9. Herhaal de bovenstaande stappen voor het cluster knooppunt alle.
 
 ### <a name="create-the-stonith-devices"></a>De STONITH-apparaten maken
 
-Voer de volgende opdrachten uit op knooppunt 1:
+Voer de volgende opdrachten uit op het knoop punt 1:
 
-- Vervang `<ApplicationID>` de met de ID-waarde van uw aanvraagregistratie.
-- Vervang `<servicePrincipalPassword>` de met de waarde van het clientgeheim.
-- Vervang `<resourceGroupName>` de groep met de resourcegroep uit uw abonnement dat voor deze zelfstudie wordt gebruikt.
-- Vervang `<tenantID>` de `<subscriptionId>` en de van uw Azure-abonnement.
+- Vervang de `<ApplicationID>` door de id-waarde uit de registratie van uw toepassing.
+- Vervang de `<servicePrincipalPassword>` door de waarde uit het client geheim.
+- Vervang de `<resourceGroupName>` door de resource groep van uw abonnement dat voor deze zelf studie wordt gebruikt.
+- Vervang de `<tenantID>` en `<subscriptionId>` van uw Azure-abonnement.
 
 ```bash
 sudo pcs property set stonith-timeout=900
 sudo pcs stonith create rsc_st_azure fence_azure_arm login="<ApplicationID>" passwd="<servicePrincipalPassword>" resourceGroup="<resourceGroupName>" tenantId="<tenantID>" subscriptionId="<subscriptionId>" power_timeout=240 pcmk_reboot_timeout=900
 ```
 
-Aangezien we al een regel aan onze firewall`--add-service=high-availability`hebben toegevoegd om de HA-service toe te staan ( ), is het niet nodig om de volgende firewallpoorten op alle knooppunten te openen: 2224, 3121, 21064, 5405. Als u echter problemen ondervindt met een aantal verbindingsproblemen met HA, gebruikt u de volgende opdracht om deze poorten te openen die zijn gekoppeld aan HA.
+Omdat we al een regel aan onze firewall hebben toegevoegd om de HA-service`--add-service=high-availability`() toe te staan, is het niet nodig om de volgende firewall poorten te openen op alle knoop punten: 2224, 3121, 21064, 5405. Als u echter een type verbindings problemen met HA ondervindt, gebruikt u de volgende opdracht om deze poorten te openen die zijn gekoppeld aan HA.
 
 > [!TIP]
-> U optioneel alle poorten in deze zelfstudie tegelijk toevoegen om wat tijd te besparen. De poorten die moeten worden geopend worden uitgelegd in hun relatieve secties hieronder. Als u nu alle poorten wilt toevoegen, voegt u de extra poorten toe: 1433 en 5022.
+> U kunt eventueel alle poorten in deze zelf studie tegelijk toevoegen om tijd te besparen. De poorten die moeten worden geopend, worden uitgelegd in hun relatieve secties hieronder. Als u nu alle poorten wilt toevoegen, voegt u de extra poorten toe: 1433 en 5022.
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=2224/tcp --add-port=3121/tcp --add-port=21064/tcp --add-port=5405/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-## <a name="install-sql-server-and-mssql-tools"></a>SQL Server en mssql-tools installeren
+## <a name="install-sql-server-and-mssql-tools"></a>SQL Server en MSSQL-hulpprogram ma's installeren
  
-Gebruik de onderstaande sectie om SQL Server en mssql-tools op de VM's te installeren. Voer elk van deze acties uit op alle knooppunten. Zie [SQL Server een Red Hat VM installeren](/sql/linux/quickstart-install-connect-red-hat)voor meer informatie.
+Gebruik de onderstaande sectie om SQL Server en MSSQL-tools op de Vm's te installeren. Voer elk van deze acties uit op alle knoop punten. Zie [install SQL Server a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat)(Engelstalig) voor meer informatie.
 
-### <a name="installing-sql-server-on-the-vms"></a>SQL Server installeren op de VM's
+### <a name="installing-sql-server-on-the-vms"></a>SQL Server op de Vm's installeren
 
-De volgende opdrachten worden gebruikt om SQL Server te installeren:
+De volgende opdrachten worden gebruikt voor het installeren van SQL Server:
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -484,18 +484,18 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
-### <a name="open-firewall-port-1433-for-remote-connections"></a>Firewallpoort 1433 openen voor externe verbindingen
+### <a name="open-firewall-port-1433-for-remote-connections"></a>Open firewall poort 1433 voor externe verbindingen
 
-U moet poort 1433 op de VM openen om op afstand verbinding te kunnen maken. Gebruik de volgende opdrachten om poort 1433 te openen in de firewall van elke vm:
+U moet poort 1433 openen op de VM om extern verbinding te kunnen maken. Gebruik de volgende opdrachten om poort 1433 te openen in de firewall van elke VM:
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=1433/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-### <a name="installing-sql-server-command-line-tools"></a>SQL Server-opdrachtregelgereedschappen installeren
+### <a name="installing-sql-server-command-line-tools"></a>SQL Server opdracht regel Programma's installeren
 
-De volgende opdrachten worden gebruikt om SQL Server-opdrachtregelgereedschappen te installeren. Zie [de sql server-opdrachtregelgereedschappen installeren](/sql/linux/quickstart-install-connect-red-hat#tools)voor meer informatie.
+De volgende opdrachten worden gebruikt om SQL Server opdracht regel Programma's te installeren. Zie [de SQL Server opdracht regel Programma's installeren](/sql/linux/quickstart-install-connect-red-hat#tools)voor meer informatie.
 
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
@@ -503,15 +503,15 @@ sudo yum install -y mssql-tools unixODBC-devel
 ```
  
 > [!NOTE] 
-> Voeg voor het gemak /opt/mssql-tools/bin/ toe aan de variabele PATH-omgeving. Hiermee u de gereedschappen uitvoeren zonder het volledige pad op te geven. Voer de volgende opdrachten uit als u het PAD wilt wijzigen voor zowel aanmeldingssessies als interactieve/niet-aanmeldingssessies:</br></br>
+> Voor het gemak voegt u/opt/MSSQL-tools/bin/toe aan de omgevings variabele PATH. Hierdoor kunt u de hulpprogram ma's uitvoeren zonder het volledige pad op te geven. Voer de volgende opdrachten uit als u het PAD wilt wijzigen voor zowel aanmeldingssessies als interactieve/niet-aanmeldingssessies:</br></br>
 `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile`</br>
 `echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`</br>
 `source ~/.bashrc`
 
 
-### <a name="check-the-status-of-the-sql-server"></a>De status van de SQL Server controleren
+### <a name="check-the-status-of-the-sql-server"></a>Controleer de status van de SQL Server
 
-Zodra u klaar bent met de configuratie, u de status van SQL Server controleren en controleren of deze wordt uitgevoerd:
+Wanneer u klaar bent met de configuratie, kunt u de status van SQL Server controleren en controleren of deze wordt uitgevoerd:
 
 ```bash
 systemctl status mssql-server --no-pager
@@ -530,13 +530,13 @@ In dat geval moet de volgende uitvoer worden weergegeven:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server Always On Availability Group configureren
+## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server AlwaysOn-beschikbaarheids groep configureren
 
-Gebruik de volgende stappen om SQL Server Always On Availability Group voor uw VM's te configureren. Zie [SQL Server Always On Availability Group configureren voor hoge beschikbaarheid op Linux voor](/sql/linux/sql-server-linux-availability-group-configure-ha) meer informatie.
+Gebruik de volgende stappen om SQL Server AlwaysOn-beschikbaarheids groep voor uw virtuele machines te configureren. Zie SQL Server AlwaysOn- [beschikbaarheids groep configureren voor hoge Beschik baarheid in Linux](/sql/linux/sql-server-linux-availability-group-configure-ha) voor meer informatie
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn-beschikbaarheidsgroepen inschakelen en mssql-server opnieuw starten
+### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn Availability groups inschakelen en MSSQL-server opnieuw starten
 
-AlwaysOn-beschikbaarheidsgroepen inschakelen op elk knooppunt dat een SQL Server-exemplaar host. Start vervolgens mssql-server opnieuw op. Voer het volgende script uit:
+Schakel AlwaysOn-beschikbaarheids groepen in op elk knoop punt dat als host fungeert voor een SQL Server-exemplaar. Start vervolgens MSSQL-server opnieuw. Voer het volgende script uit:
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -545,14 +545,14 @@ sudo systemctl restart mssql-server
 
 ### <a name="create-a-certificate"></a>Een certificaat maken
 
-We ondersteunen momenteel geen AD-verificatie naar het AG-eindpunt. Daarom moeten we een certificaat gebruiken voor AG-eindpuntversleuteling.
+AD-verificatie wordt momenteel niet ondersteund voor het AG-eind punt. Daarom moeten we een certificaat gebruiken voor AG-eindpunt versleuteling.
 
-1. Maak verbinding met **alle knooppunten** met SQL Server Management Studio (SSMS) of SQL CMD. Voer de volgende opdrachten uit om AlwaysOn_health sessie in te schakelen en een stramientoets te maken:
+1. Verbinding maken met **Alle knoop punten** met behulp van SQL Server Management Studio (SSMS) of SQL cmd. Voer de volgende opdrachten uit om AlwaysOn_health-sessie in te scha kelen en een hoofd sleutel te maken:
 
     > [!IMPORTANT]
-    > Als u op afstand verbinding maakt met uw SQL Server-exemplaar, moet u poort 1433 op uw firewall hebben geopend. U moet ook binnenkomende verbindingen met poort 1433 toestaan in uw NSG voor elke VM. Zie [Een beveiligingsregel maken](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) voor het maken van een binnenkomende beveiligingsregel voor meer informatie.
+    > Als u extern verbinding maakt met uw SQL Server-exemplaar, moet u poort 1433 op uw firewall hebben geopend. U moet ook binnenkomende verbindingen met poort 1433 in uw NSG toestaan voor elke VM. Zie [een beveiligings regel](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) voor het maken van een regel voor binnenkomende beveiliging maken voor meer informatie.
 
-    - Vervang `<Master_Key_Password>` de met uw eigen wachtwoord.
+    - Vervang de `<Master_Key_Password>` door uw eigen wacht woord.
 
 
     ```sql
@@ -562,9 +562,9 @@ We ondersteunen momenteel geen AD-verificatie naar het AG-eindpunt. Daarom moete
     ```
 
  
-1. Maak verbinding met de primaire replica met SSMS of SQL CMD. De onderstaande opdrachten maken `/var/opt/mssql/data/dbm_certificate.cer` een certificaat op `var/opt/mssql/data/dbm_certificate.pvk` en een privésleutel op uw primaire SQL Server-replica:
+1. Maak verbinding met de primaire replica met behulp van SSMS of SQL CMD. Met de onderstaande opdrachten maakt u een certificaat `/var/opt/mssql/data/dbm_certificate.cer` op en een persoonlijke sleutel `var/opt/mssql/data/dbm_certificate.pvk` op uw primaire SQL Server replica:
 
-    - Vervang `<Private_Key_Password>` de met uw eigen wachtwoord.
+    - Vervang de `<Private_Key_Password>` door uw eigen wacht woord.
 
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
@@ -579,19 +579,19 @@ BACKUP CERTIFICATE dbm_certificate
 GO
 ```
 
-Sluit de SQL CMD-sessie af door de `exit` opdracht uit te voeren en keer terug naar uw SSH-sessie.
+Sluit de SQL-CMD-sessie af `exit` door de opdracht uit te voeren en terug te keren naar uw SSH-sessie.
  
-### <a name="copy-the-certificate-to-the-secondary-replicas-and-create-the-certificates-on-the-server"></a>Het certificaat kopiëren naar de secundaire replica's en de certificaten op de server maken
+### <a name="copy-the-certificate-to-the-secondary-replicas-and-create-the-certificates-on-the-server"></a>Het certificaat kopiëren naar de secundaire replica's en de certificaten maken op de server
 
-1. Kopieer de twee bestanden die zijn gemaakt naar dezelfde locatie op alle servers die beschikbaarheidsreplica's hosten.
+1. Kopieer de twee bestanden die zijn gemaakt op dezelfde locatie op alle servers die de beschikbaarheids replica's zullen hosten.
  
-    Voer op de primaire `scp` server de volgende opdracht uit om het certificaat naar de doelservers te kopiëren:
+    Voer op de primaire server de volgende `scp` opdracht uit om het certificaat naar de doel servers te kopiëren:
 
-    - Vervang `<username>` `<VM2>` en met de gebruikersnaam en doel-VM-naam die u gebruikt.
+    - Vervang `<username>` en `<VM2>` door de naam van de gebruikers naam en de doel-VM die u gebruikt.
     - Voer deze opdracht uit voor alle secundaire replica's.
 
     > [!NOTE]
-    > Je hoeft niet te `sudo -i`lopen, wat je de wortelomgeving geeft. Je kon gewoon `sudo` de opdracht in de voorkant van elke opdracht als we eerder deden in deze tutorial.
+    > U hoeft niet uit te `sudo -i`voeren. Dit geeft u de hoofd omgeving. U kunt de `sudo` opdracht gewoon uitvoeren vóór elke opdracht, zoals eerder in deze zelf studie.
 
     ```bash
     # The below command allows you to run commands in the root environment
@@ -602,11 +602,11 @@ Sluit de SQL CMD-sessie af door de `exit` opdracht uit te voeren en keer terug n
     scp /var/opt/mssql/data/dbm_certificate.* <username>@<VM2>:/home/<username>
     ```
 
-1. Voer op de doelserver de volgende opdracht uit:
+1. Voer op de doel server de volgende opdracht uit:
 
-    - Vervang `<username>` door uw gebruikersnaam.
-    - De `mv` opdracht verplaatst de bestanden of map van de ene plaats naar de andere.
-    - De `chown` opdracht wordt gebruikt om de eigenaar en groep bestanden, mappen of koppelingen te wijzigen.
+    - Vervang `<username>` door uw gebruikers naam.
+    - Met `mv` de opdracht worden de bestanden of mappen verplaatst van de ene locatie naar een andere.
+    - De `chown` opdracht wordt gebruikt om de eigenaar en de groep van bestanden, directory's of koppelingen te wijzigen.
     - Voer deze opdrachten uit voor alle secundaire replica's.
 
     ```bash
@@ -616,7 +616,7 @@ Sluit de SQL CMD-sessie af door de `exit` opdracht uit te voeren en keer terug n
     chown mssql:mssql dbm_certificate.*
     ```
 
-1. Met het volgende Transact-SQL-script wordt een certificaat gemaakt van de back-up die u hebt gemaakt op de primaire SQL Server-replica. Werk het script bij met sterke wachtwoorden. Het decryptiewachtwoord is hetzelfde wachtwoord dat u hebt gebruikt om het .pvk-bestand in de vorige stap te maken. Als u het certificaat wilt maken, voert u het volgende script uit met SQL CMD of SSMS op alle secundaire servers:
+1. Met het volgende Transact-SQL-script maakt u een certificaat van de back-up die u hebt gemaakt op de primaire SQL Server replica. Werk het script bij met sterke wacht woorden. Het wacht woord voor ontsleuteling is hetzelfde als het wacht woord dat u hebt gebruikt voor het maken van het PVK-bestand in de vorige stap. Als u het certificaat wilt maken, voert u het volgende script uit met behulp van SQL CMD of SSMS op alle secundaire servers:
 
     ```sql
     CREATE CERTIFICATE dbm_certificate
@@ -628,9 +628,9 @@ Sluit de SQL CMD-sessie af door de `exit` opdracht uit te voeren en keer terug n
     GO
     ```
 
-### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>De database spiegelende eindpunten voor alle replica's maken
+### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>De data base mirroring-eind punten maken op alle replica's
 
-Voer het volgende script uit op alle SQL-exemplaren met SQL CMD of SSMS:
+Voer het volgende script uit op alle SQL-exemplaren met behulp van SQL CMD of SSMS:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -646,12 +646,12 @@ ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
 GO
 ```
 
-### <a name="create-the-availability-group"></a>De beschikbaarheidsgroep maken
+### <a name="create-the-availability-group"></a>De beschikbaarheids groep maken
 
-Maak verbinding met de SQL Server-instantie die de primaire replica host met SQL CMD of SSMS. Voer de volgende opdracht uit om de beschikbaarheidsgroep te maken:
+Maak verbinding met het SQL Server-exemplaar dat als host fungeert voor de primaire replica met behulp van SQL CMD of SSMS. Voer de volgende opdracht uit om de beschikbaarheids groep te maken:
 
-- Vervang `ag1` door de gewenste naam van de beschikbaarheidsgroep.
-- Vervang `<VM1>`de `<VM2>`, `<VM3>` en waarden door de namen van de SQL Server-exemplaren die de replica's hosten.
+- Vervang `ag1` door de naam van de gewenste beschikbaarheids groep.
+- Vervang de `<VM1>`waarden `<VM2>`, en `<VM3>` door de namen van de SQL Server exemplaren die de replica's hosten.
 
 ```sql
 CREATE AVAILABILITY GROUP [ag1]
@@ -684,11 +684,11 @@ ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
 GO
 ```
 
-### <a name="create-a-sql-server-login-for-pacemaker"></a>Een SQL Server-login voor pacemaker maken
+### <a name="create-a-sql-server-login-for-pacemaker"></a>Een SQL Server aanmelding maken voor pacemaker
 
-Maak op alle SQL-servers een SQL-login voor Pacemaker. Met de volgende Transact-SQL wordt een login aanmelding.
+Maak op alle SQL-servers een SQL-aanmelding voor pacemaker. Met de volgende Transact-SQL-instructie maakt u een aanmelding.
 
-- Vervang `<password>` door uw eigen complexe wachtwoord.
+- Vervang `<password>` door uw eigen complex wacht woord.
 
 ```sql
 USE [master]
@@ -701,40 +701,40 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server-aanmelding. 
+Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server aanmelding. 
 
-1. Maak het bestand:
+1. Het bestand maken:
 
     ```bash
     sudo vi /var/opt/mssql/secrets/passwd
     ```
 
-1. Voeg de volgende 2 regels toe aan het bestand:
+1. Voeg de volgende twee regels toe aan het bestand:
 
     ```bash
     pacemakerLogin
     <password>
     ```
 
-    Als u de **vi-editor** wilt afsluiten, drukt `:wq` u eerst op de **Esc-toets** en voert u de opdracht in om het bestand te schrijven en af te sluiten.
+    Als u de **VI** -editor wilt afsluiten, klikt u eerst op **ESC** en voert u `:wq` vervolgens de opdracht in om het bestand te schrijven en af te sluiten.
 
-1. Maak het bestand alleen leesbaar door root:
+1. Het bestand alleen leesbaar maken voor de hoofdmap:
 
     ```bash
     sudo chown root:root /var/opt/mssql/secrets/passwd
     sudo chmod 400 /var/opt/mssql/secrets/passwd
     ```
 
-### <a name="join-secondary-replicas-to-the-availability-group"></a>Secundaire replica's aansluiten bij de beschikbaarheidsgroep
+### <a name="join-secondary-replicas-to-the-availability-group"></a>Secundaire replica's toevoegen aan de beschikbaarheids groep
 
-1. Om de secundaire replica's aan de AG te kunnen verbinden, moet u poort 5022 op de firewall voor alle servers openen. Voer de volgende opdracht uit in uw SSH-sessie:
+1. Als u de secundaire replica's wilt toevoegen aan de AG, moet u poort 5022 op de firewall openen voor alle servers. Voer de volgende opdracht uit in uw SSH-sessie:
 
     ```bash
     sudo firewall-cmd --zone=public --add-port=5022/tcp --permanent
     sudo firewall-cmd --reload
     ```
 
-1. Voer op uw secundaire replica's de volgende opdrachten uit om ze aan de AG te koppelen:
+1. Voer op uw secundaire replica's de volgende opdrachten uit om ze toe te voegen aan de AG:
 
     ```sql
     ALTER AVAILABILITY GROUP [ag1] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
@@ -744,7 +744,7 @@ Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server
     GO
     ```
 
-1. Voer het volgende Transact-SQL-script uit op de primaire replica en elke secundaire replica:
+1. Voer het volgende Transact-SQL-script uit op de primaire replica en de secundaire replica's:
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -754,13 +754,13 @@ Sla op alle SQL-servers de referenties op die worden gebruikt voor de SQL Server
     GO
     ```
 
-1. Zodra de secundaire replica's zijn samengevoegd, u ze zien in SSMS Object Explorer door het knooppunt **Always On High Availability** uit te breiden:
+1. Zodra de secundaire replica's zijn gekoppeld, kunt u ze zien in SSMS Objectverkenner door het knoop punt **altijd op Maxi maal Beschik baarheid** uit te vouwen:
 
-    ![availability-group-joined.png](media/sql-server-linux-rhel-ha-stonith-tutorial/availability-group-joined.png)
+    ![Availability-Group-joined. png](media/sql-server-linux-rhel-ha-stonith-tutorial/availability-group-joined.png)
 
-### <a name="add-a-database-to-the-availability-group"></a>Een database toevoegen aan de beschikbaarheidsgroep
+### <a name="add-a-database-to-the-availability-group"></a>Een Data Base toevoegen aan de beschikbaarheids groep
 
-We volgen het artikel over de [beschikbaarheidsgroep configureren bij het toevoegen van een database.](/sql/linux/sql-server-linux-availability-group-configure-ha#add-a-database-to-the-availability-group)
+We volgen het [artikel beschikbaarheids groep configureren voor het toevoegen van een Data Base](/sql/linux/sql-server-linux-availability-group-configure-ha#add-a-database-to-the-availability-group).
 
 In deze stap worden de volgende Transact-SQL-opdrachten gebruikt. Voer deze opdrachten uit op de primaire replica:
 
@@ -779,9 +779,9 @@ ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to t
 GO
 ```
 
-### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Controleren of de database is gemaakt op de secundaire servers
+### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Controleer of de data base is gemaakt op de secundaire servers
 
-Voer op elke secundaire SQL Server-replica de volgende query uit om te zien of de db1-database is gemaakt en in een gesynchroniseerde status verkeert:
+Voer op elke secundaire SQL Server replica de volgende query uit om te zien of de db1-data base is gemaakt en de status GESYNCHRONISEERD heeft:
 
 ```
 SELECT * FROM sys.databases WHERE name = 'db1';
@@ -789,21 +789,21 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-Als `synchronization_state_desc` de lijst `db1`gesynchroniseerd voor, betekent dit dat de replica's zijn gesynchroniseerd. De secondaries `db1` worden weergegeven in de primaire replica.
+Als de `synchronization_state_desc` lijst is gesynchroniseerd `db1`voor, betekent dit dat de replica's worden gesynchroniseerd. De secundaire zones worden `db1` weer gegeven in de primaire replica.
 
-## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Bronnen voor beschikbaarheidsgroepen maken in het cluster Pacemaker
+## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Resources van een beschikbaarheids groep maken in het pacemaker-cluster
 
-We volgen de handleiding voor [het maken van de bronnen van de beschikbaarheidsgroep in het cluster Pacemaker.](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)
+We volgen de hand leiding voor het [maken van de resources van de beschikbaarheids groep in het pacemaker-cluster](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only).
 
-### <a name="create-the-ag-cluster-resource"></a>De AG-clusterbron maken
+### <a name="create-the-ag-cluster-resource"></a>De AG-cluster resource maken
 
-1. Gebruik de volgende opdracht `ag_cluster` om de resource `ag1`in de beschikbaarheidsgroep te maken.
+1. Gebruik de volgende opdracht om de resource `ag_cluster` te maken in de beschikbaarheids `ag1`groep.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
     ```
 
-1. Controleer uw bron en zorg ervoor dat deze online zijn voordat u verdergaat met de volgende opdracht:
+1. Controleer uw resource en zorg ervoor dat deze online zijn voordat u doorgaat met de volgende opdracht:
 
     ```bash
     sudo pcs resource
@@ -820,7 +820,7 @@ We volgen de handleiding voor [het maken van de bronnen van de beschikbaarheidsg
 
 ### <a name="create-a-virtual-ip-resource"></a>Een virtuele IP-bron maken
 
-1. Gebruik een beschikbaar statisch IP-adres uit uw netwerk om een virtuele IP-bron te maken. U er een `nmap`vinden met behulp van het opdrachtgereedschap.
+1. Gebruik een beschikbaar statisch IP-adres van uw netwerk om een virtuele IP-bron te maken. U kunt er een vinden met behulp `nmap`van het opdracht programma.
 
     ```bash
     nmap -sP <IPRange>
@@ -828,15 +828,15 @@ We volgen de handleiding voor [het maken van de bronnen van de beschikbaarheidsg
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. Stel de eigenschap **stonith** in op false
+1. Stel de eigenschap **stonith** in op False
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. Maak de virtuele IP-bron met de volgende opdracht:
+1. Maak de virtuele IP-bron met behulp van de volgende opdracht:
 
-    - Vervang `<availableIP>` de onderstaande waarde door een ongebruikt IP-adres.
+    - Vervang de `<availableIP>` onderstaande waarde door een niet-gebruikt IP-adres.
 
     ```bash
     sudo pcs resource create virtualip ocf:heartbeat:IPaddr2 ip=<availableIP>
@@ -844,19 +844,19 @@ We volgen de handleiding voor [het maken van de bronnen van de beschikbaarheidsg
 
 ### <a name="add-constraints"></a>Beperkingen toevoegen
 
-1. Om ervoor te zorgen dat het IP-adres en de AG-bron op hetzelfde knooppunt worden uitgevoerd, moet een colocatiebeperking worden geconfigureerd. Voer de volgende opdracht uit:
+1. Om ervoor te zorgen dat het IP-adres en de AG-bron op hetzelfde knoop punt worden uitgevoerd, moet u de beperking van een co-locatie configureren. Voer de volgende opdracht uit:
 
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. Maak een bestelbeperking om ervoor te zorgen dat de AG-bron actief is vóór het IP-adres. Hoewel de colocatiebeperking een bestelbeperking impliceert, dwingt dit deze af.
+1. Maak een ordenings beperking om ervoor te zorgen dat de AG-resource vóór het IP-adres actief is en wordt uitgevoerd. Hoewel de beperking voor de co-locatie een volgorde beperking impliceert, wordt deze afgedwongen.
 
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. Voer de volgende opdracht uit om de beperkingen te verifiëren:
+1. Voer de volgende opdracht uit om de beperkingen te controleren:
 
     ```bash
     sudo pcs constraint list --full
@@ -875,7 +875,7 @@ We volgen de handleiding voor [het maken van de bronnen van de beschikbaarheidsg
 
 ### <a name="re-enable-stonith"></a>Stonith opnieuw inschakelen
 
-We zijn klaar om te testen. Schakel stonith in het cluster opnieuw in door de volgende opdracht op Knooppunt 1 uit te voeren:
+We zijn klaar om te testen. Schakel stonith in het cluster opnieuw in door de volgende opdracht uit te voeren op knoop punt 1:
 
 ```bash
 sudo pcs property set stonith-enabled=true
@@ -883,7 +883,7 @@ sudo pcs property set stonith-enabled=true
 
 ### <a name="check-cluster-status"></a>De clusterstatus controleren
 
-U de status van uw clusterbronnen controleren met de volgende opdracht:
+U kunt de status van uw cluster bronnen controleren met de volgende opdracht:
 
 ```output
 [<username>@VM1 ~]$ sudo pcs status
@@ -914,15 +914,15 @@ Daemon Status:
 
 ## <a name="test-failover"></a>Testfailover
 
-Om ervoor te zorgen dat de configuratie tot nu toe is geslaagd, zullen we een failover testen. Zie [Always On Availability Group failover op Linux](/sql/linux/sql-server-linux-availability-group-failover-ha)voor meer informatie.
+Om ervoor te zorgen dat de configuratie tot nu toe is geslaagd, zullen we een failover testen. Zie [Always on-failover van de beschikbaarheids groep in Linux](/sql/linux/sql-server-linux-availability-group-failover-ha)voor meer informatie.
 
-1. Voer de volgende opdracht uit om de `<VM2>`primaire replica handmatig te mislukken naar . Vervang `<VM2>` door de waarde van uw servernaam.
+1. Voer de volgende opdracht uit om de primaire replica hand matig `<VM2>`te failoveren naar. Vervang `<VM2>` door de waarde van uw server naam.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Als u uw beperkingen opnieuw controleert, ziet u dat er een andere beperking is toegevoegd vanwege de handmatige failover:
+1. Als u de beperkingen opnieuw controleert, ziet u dat er een andere beperking is toegevoegd vanwege de hand matige failover:
 
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
@@ -936,13 +936,13 @@ Om ervoor te zorgen dat de configuratie tot nu toe is geslaagd, zullen we een fa
     Ticket Constraints:
     ```
 
-1. Verwijder de beperking `cli-prefer-ag_cluster-master` met ID met de volgende opdracht:
+1. Verwijder de beperking met de `cli-prefer-ag_cluster-master` id met behulp van de volgende opdracht:
 
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
     ```
 
-1. Controleer uw clusterbronnen `sudo pcs resource`met de opdracht en u moet `<VM2>`zien dat de primaire instantie nu .
+1. Controleer uw cluster bronnen met behulp `sudo pcs resource`van de opdracht en u ziet dat het primaire exemplaar nu `<VM2>`is.
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource
@@ -958,18 +958,18 @@ Om ervoor te zorgen dat de configuratie tot nu toe is geslaagd, zullen we een fa
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-## <a name="test-fencing"></a>Test hekwerk
+## <a name="test-fencing"></a>Test omheining
 
-U STONITH testen door de volgende opdracht uit te voeren. Probeer de onderstaande `<VM1>` `<VM3>`opdracht uit te voeren van voor .
+U kunt STONITH testen door de volgende opdracht uit te voeren. Probeer de onderstaande opdracht uit `<VM1>` te voeren `<VM3>`.
 
 ```bash
 sudo pcs stonith fence <VM3> --debug
 ```
 
 > [!NOTE]
-> Standaard, de omheining actie brengt het knooppunt uit en vervolgens op. Als u alleen het knooppunt offline wilt `--off` brengen, gebruikt u de optie in de opdracht.
+> De actie Fence brengt standaard het knoop punt uit en vervolgens aan. Als u het knoop punt alleen offline wilt plaatsen, gebruikt u de `--off` optie in de opdracht.
 
-U moet de volgende uitvoer krijgen:
+U moet de volgende uitvoer ophalen:
 
 ```output
 [<username>@<VM1> ~]$ sudo pcs stonith fence <VM3> --debug
@@ -980,11 +980,11 @@ Return Value: 0
  
 Node: <VM3> fenced
 ```
-Zie het volgende [Artikel red hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) voor meer informatie over het testen van een hekapparaat.
+Zie het volgende artikel over [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) voor meer informatie over het testen van een Fence-apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een Availability Group Listener voor uw SQL-servers wilt gebruiken, moet u een load balancer maken en configureren.
+Als u een beschikbaarheids groep-listener voor uw SQL-servers wilt gebruiken, moet u een load balancer maken en configureren.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Beschikbaarheidsgroeplistener configureren voor SQL Server op virtuele RHEL-machines in Azure](sql-server-linux-rhel-ha-listener-tutorial.md)
+> [Zelf studie: een beschikbaarheids groep-listener configureren voor SQL Server op virtuele RHEL-machines in azure](sql-server-linux-rhel-ha-listener-tutorial.md)

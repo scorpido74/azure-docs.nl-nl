@@ -1,6 +1,6 @@
 ---
-title: Azure-setvan virtuele machineschaalsets co-lokaliseren
-description: Meer informatie over hoe co-locating Azure virtual machine scale set resources de prestaties kunnen verbeteren.
+title: Schaal sets voor virtuele Azure-machines samen zoeken
+description: Meer informatie over hoe co-locatie van Azure virtual machine Scale set resources kan de prestaties verbeteren.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -9,21 +9,21 @@ ms.workload: infrastructure-services
 ms.date: 05/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 9d6e4e15c552cc4467dd17221a1ba901fd8e4f58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250827"
 ---
 # <a name="co-location"></a>Co-locatie
 
-Een van de grootste bijdragen aan latentie tussen VM's is gewoon afstand.
+Een van de grootste mede werkers voor latentie tussen virtuele machines is gewoon afstand.
 
-## <a name="preview-proximity-placement-groups"></a>Voorbeeld: plaatsingsgroepen voor nabijheid 
+## <a name="preview-proximity-placement-groups"></a>Voor beeld: proximity placement groups 
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../includes/virtual-machines-common-ppg-overview.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Maak een [plaatsingsgroep](proximity-placement-groups.md) voor nabijheid voor uw schaalset.
+Maak een [proximity-plaatsings groep](proximity-placement-groups.md) voor uw schaalset.
 

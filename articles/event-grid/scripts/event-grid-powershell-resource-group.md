@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure PowerShell-script - abonneren op resourcegroep | Microsoft Docs
-description: In dit artikel wordt een voorbeeld van Azure PowerShell-script weergegeven waarin wordt weergegeven hoe u zich abonneren op gebeurtenisrastergebeurtenissen voor een resourcegroep.
+description: In dit artikel vindt u een voor beeld van een Azure PowerShell script dat laat zien hoe u zich abonneert op Event Grid gebeurtenissen voor een resource groep.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e285f628d1ec3afce55dc8fe4efa50a361dab5ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720798"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>Abonneren op gebeurtenissen voor een resourcegroep met PowerShell
@@ -44,7 +44,7 @@ In dit script wordt de volgende opdracht gebruikt om het abonnement op de gebeur
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Nieuw-azeventgridabonnement](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Hiermee wordt een Event Grid-abonnement gemaakt. |
+| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Hiermee wordt een Event Grid-abonnement gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

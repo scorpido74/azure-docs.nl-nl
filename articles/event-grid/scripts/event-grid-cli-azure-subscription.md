@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure CLI-script - abonneren op een Azure-abonnement | Microsoft Docs
-description: In dit artikel wordt een voorbeeld van Azure CLI-script weergegeven waarin wordt weergegeven hoe u zich abonneren op Azure Event Grid-gebeurtenissen met Azure CLI.
+description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u zich abonneert op Azure Event Grid gebeurtenissen met Azure CLI.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 9d40367c8d0f4f1250504c30fcd6c4846921a830
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720891"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Abonneren op gebeurtenissen voor een Azure-abonnement met Azure CLI

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Monitor virtuele Linux-machines in Azure
-description: In deze zelfstudie leert u hoe u de prestaties controleren en hoe toepassingsonderdelen op uw Virtuele Linux-machines worden uitgevoerd.
+title: 'Zelf studie: virtuele Linux-machines bewaken in azure'
+description: In deze zelf studie leert u hoe u de prestatie-en gedetecteerde toepassings onderdelen kunt bewaken die op uw virtuele Linux-machines worden uitgevoerd.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: mgoedtel
@@ -16,15 +16,15 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: b06342d5034b820be4e6fd49436546a5aa7b7e02
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75749792"
 ---
-# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een virtuele Linux-machine in Azure controleren
+# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelf studie: een virtuele Linux-machine bewaken in azure
 
-Azure-bewaking maakt gebruik van agents om opstart- en prestatiegegevens te verzamelen van Azure VM's, deze gegevens op te slaan in Azure-opslag en deze toegankelijk te maken via portal, de Azure PowerShell-module en Azure CLI. Geavanceerde bewaking wordt geleverd met Azure Monitor voor VM's door prestatiestatistieken te verzamelen, toepassingsonderdelen te ontdekken die op de VM zijn geïnstalleerd en prestatiegrafieken en afhankelijkheidskaart.
+Azure monitoring gebruikt agenten voor het verzamelen van opstart-en prestatie gegevens van Azure-Vm's, het opslaan van deze gegevens in azure Storage en het toegankelijk maken via de portal, de Azure PowerShell module en Azure CLI. Geavanceerde bewaking wordt geleverd met Azure Monitor voor VM's door metrische gegevens over prestaties te verzamelen, toepassings onderdelen te detecteren die op de virtuele machine zijn geïnstalleerd en die prestatie grafieken en afhankelijkheids kaarten bevatten.
 
 In deze zelfstudie leert u het volgende:
 
@@ -32,15 +32,15 @@ In deze zelfstudie leert u het volgende:
 > * Diagnostische gegevens over opstarten op een VM inschakelen
 > * Diagnostische gegevens over opstarten bekijken
 > * Metrische gegevens over de VM-host weergeven
-> * Azure-monitor voor VM's inschakelen
-> * Vm-prestatiestatistieken weergeven
+> * Azure Monitor voor VM's inschakelen
+> * Metrische gegevens over de prestaties van de virtuele machine weer geven
 > * Een waarschuwing maken
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -125,38 +125,38 @@ Een Linux-VM heeft een toegewezen host in Azure die met deze VM samenwerkt. Metr
 
 ## <a name="enable-advanced-monitoring"></a>Geavanceerde bewaking inschakelen
 
-Ga als volgt te werk om bewaking van uw Azure VM in te schakelen met Azure Monitor voor VM's:
+Als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
 1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Selecteer op de VM-pagina in de sectie **Monitoring** de optie **Insights (voorbeeld)**.
+2. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)**.
 
-3. Selecteer **nu proberen**op de pagina **Insights (preview).**
+3. Selecteer **nu proberen**op de pagina **inzichten (preview)** .
 
-    ![Azure-monitor voor VM's inschakelen voor een vm](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Azure Monitor voor VM's inschakelen voor een VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-4. Als u op de **onboarding-pagina Azure Monitor Insights** een bestaande Log Analytics-werkruimte in hetzelfde abonnement hebt, selecteert u deze in de vervolgkeuzelijst.  
+4. Als u een bestaande Log Analytics-werk ruimte in hetzelfde abonnement hebt, selecteert u op de pagina **Azure monitor Insights voorbereiden** .  
 
-    De lijst selecteert vooraf de standaardwerkruimte en locatie waar de VM in het abonnement wordt geïmplementeerd. 
+    De lijst preselecteert de standaard werkruimte en de locatie waar de virtuele machine in het abonnement is geïmplementeerd. 
 
     >[!NOTE]
-    >Zie [Een werkruimte logboekanalyse maken](../../azure-monitor/learn/quick-create-workspace.md)als u een nieuwe werkruimte Log Analytics wilt maken om de bewakingsgegevens van de vm op te slaan. Uw loganalytics-werkruimte moet deel uitmaken van een van de [ondersteunde regio's](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics).
+    >Zie [een log Analytics-werk ruimte maken](../../azure-monitor/learn/quick-create-workspace.md)om een nieuwe log Analytics-werk ruimte te maken voor het opslaan van de bewakings gegevens van de virtuele machine. Uw Log Analytics-werk ruimte moet deel uitmaken van een van de [ondersteunde regio's](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics).
 
-Nadat u de bewaking hebt ingeschakeld, moet u mogelijk enkele minuten wachten voordat u de prestatiestatistieken voor de vm bekijken.
+Nadat u bewaking hebt ingeschakeld, moet u mogelijk enkele minuten wachten voordat u de metrische gegevens voor prestaties voor de virtuele machine kunt weer geven.
 
-![Azure Monitor voor VM's-controle-implementatieverwerking inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Verwerking van de implementatie van Azure Monitor voor VM's-bewaking inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
-## <a name="view-vm-performance-metrics"></a>Vm-prestatiestatistieken weergeven
+## <a name="view-vm-performance-metrics"></a>Metrische gegevens over de prestaties van de virtuele machine weer geven
 
-Azure Monitor voor VM's bevat een set prestatiegrafieken die verschillende key performance indicators (KPI's) targeten om u te helpen bepalen hoe goed een virtuele machine presteert. Voer de volgende stappen uit om toegang te krijgen vanaf uw VM.
+Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op verschillende Key Performance Indica tors (Kpi's) waarmee u kunt bepalen hoe goed een virtuele machine wordt uitgevoerd. Voer de volgende stappen uit om toegang te krijgen vanaf uw virtuele machine.
 
 1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Selecteer op de VM-pagina in de sectie **Monitoring** de optie **Insights (voorbeeld)**.
+2. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)**.
 
-3. Selecteer het tabblad **Prestaties.**
+3. Selecteer het tabblad **prestaties** .
 
-Deze pagina bevat niet alleen prestatieschema's, maar ook een tabel met voor elke logische schijf die wordt ontdekt, de capaciteit, het gebruik en het totale gemiddelde per maat.
+Deze pagina bevat niet alleen diagrammen voor prestatie gebruik, maar ook een tabel met voor elke gedetecteerde logische schijf, de capaciteit, het gebruik en het totale gemiddelde van elke meting.
 
 ## <a name="create-alerts"></a>Waarschuwingen maken
 
@@ -178,14 +178,14 @@ In het volgende voorbeeld wordt een waarschuwing gemaakt voor het gemiddelde CPU
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u de prestaties van uw vm geconfigureerd en bekeken. U hebt geleerd hoe u:
+In deze zelf studie hebt u de prestaties van uw VM geconfigureerd en bekeken. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een resourcegroep en VM maken
 > * Diagnostische gegevens over opstarten op de virtuele machine inschakelen
 > * Diagnostische gegevens over opstarten bekijken
 > * Metrische gegevens over de host weergeven
-> * Azure-monitor voor VM's inschakelen
+> * Azure Monitor voor VM's inschakelen
 > * Metrische gegevens over de VM weergeven
 > * Een waarschuwing maken
 

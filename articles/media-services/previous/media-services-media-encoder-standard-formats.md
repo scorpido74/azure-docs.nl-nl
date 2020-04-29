@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard-indelingen en codecs - Azure
-description: Dit artikel geeft een overzicht van Media Encoder Standard formaten en codecs.
+title: Media Encoder Standard indelingen en codecs-Azure
+description: Dit artikel bevat een overzicht van Media Encoder Standard indelingen en codecs.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251022"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard Formats and Codecs (Indelingen en codecs voor Media Encoder Standard)
@@ -27,9 +27,9 @@ ms.locfileid: "79251022"
 > * [Versie 2](media-services-media-encoder-standard-formats.md)
 > * [Versie 3](../latest/media-encoder-standard-formats.md)
 
-Dit document bevat een lijst met de meest voorkomende import- en exportbestandsindelingen die u gebruiken met Media Encoder Standard.
+Dit document bevat een lijst met de meest voorkomende indelingen voor het importeren en exporteren van bestanden die u kunt gebruiken met Media Encoder Standard.
 
-## <a name="input-containerfile-formats"></a>Invoercontainer/bestandsindelingen
+## <a name="input-containerfile-formats"></a>Invoer van container/bestands indelingen
 | Bestandsindelingen (bestandsextensies) | Ondersteund |
 | --- | --- |
 | FLV (met H.264- en AAC-codecs) (.flv) |Ja |
@@ -45,21 +45,21 @@ Dit document bevat een lijst met de meest voorkomende import- en exportbestandsi
 | QuickTime (.mov) |Ja |
 
 > [!NOTE]
-> Hierboven vindt u een lijst van de meer frequent voorkomende bestandsextensies. Media Encoder Standard ondersteunt vele anderen (bijvoorbeeld: .m2ts, .mpeg2video, .qt). Als u een bestand probeert te coderen en u een foutmelding krijgt over de indeling die niet wordt ondersteund, geeft u [hier](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)uw feedback .
+> Hierboven vindt u een lijst van de meer frequent voorkomende bestandsextensies. Media Encoder Standard ondersteunt veel andere (bijvoorbeeld:. m2ts,. mpeg2video,. qt). Als u een bestand probeert te coderen en er een fout bericht wordt weer gegeven over de indeling die niet wordt ondersteund, geeft u [hier](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)uw feedback.
 > 
 > 
 
-### <a name="audio-formats-in-input-containers"></a>Audio-indelingen in invoercontainers
-Media Encoder Standard ondersteunt het dragen van de volgende audioformaten in invoercontainers:
+### <a name="audio-formats-in-input-containers"></a>Audio-indelingen in invoer containers
+Media Encoder Standard ondersteunt het uitvoeren van de volgende audio-indelingen in invoer containers:
 
-* MXF-, GXF- en QuickTime-bestanden, die audiotracks met interleaved stereo of 5.1-samples hebben
+* MXF-, GXF-en QuickTime-bestanden met audio sporen met Interleaved stereo of 5,1 voor beelden
 
 of
 
 * MXF-, GXF- en QuickTime-bestanden waar de audio wordt uitgevoerd als afzonderlijke PCM-sporen, maar de kanaaltoewijzing (in stereo of 5.1) kan worden afgeleid van de metagegevens van het bestand
 
-## <a name="input-video-codecs"></a>Videocodecs invoeren
-| Videocodecs invoeren | Ondersteund |
+## <a name="input-video-codecs"></a>Video-codecs invoeren
+| Video-codecs invoeren | Ondersteund |
 | --- | --- |
 | AVC 8-bits/10-bits, maximaal 4:2:2, inclusief AVCIntra |8-bits 4:2:0 en 4:2:2 |
 | Avid DNxHD (in MXF) |Ja |
@@ -79,9 +79,9 @@ of
 | Apple ProRes Proxy |Ja |
 | Apple ProRes 4444 |Ja |
 | Apple ProRes 4444 XQ |Ja |
-| HEVC/H.265| Hoofd- en hoofdprofielen (&#42;)<br/>Ondersteuning voor het hoofdprofiel 10 is bedoeld voor 8bit 4:2:0-inhoud. |
+| HEVC/H. 265| Hoofd-en hoofd-10 (&#42;) profielen<br/>Ondersteuning voor hoofd-10-profielen is bedoeld voor 8bit 4:2:0-inhoud. |
 
-## <a name="input-audio-codecs"></a>Audiocodecs invoeren
+## <a name="input-audio-codecs"></a>Audio-codecs invoeren
 | Codecs audio-invoer | Ondersteund |
 | --- | --- |
 | AAC (AAC-LC, AAC-HE en AAC-HEv2; tot. 5.1) |Ja |
@@ -89,7 +89,7 @@ of
 | MP3 (MPEG-1 Audio Layer 3) |Ja |
 | Windows Media Audio |Ja |
 | WAV/PCM |Ja |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |Ja |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ja |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Ja |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ja |
 | AMR (Adaptive Multi-Rate) |Ja |
@@ -98,13 +98,13 @@ of
 | Dolby® Digital (AC3) |Nee |
 | Dolby® Digital Plus (E-AC3) |Nee |
 
-## <a name="output-formats-and-codecs"></a>Uitvoernotaties en codecs
-In de volgende tabel worden de codecs en bestandsindelingen weergegeven die worden ondersteund voor export.
+## <a name="output-formats-and-codecs"></a>Uitvoer indelingen en codecs
+De volgende tabel geeft een lijst van de codecs en bestands indelingen die worden ondersteund voor het exporteren.
 
 | Bestandsindeling | Videocodec | Audiocodec |
 | --- | --- | --- |
-| MP4 MP4 <br/><br/>(inclusief multibitrate MP4-containers) |H.264 (hoog-, hoofd- en basislijnprofielen) |AAC-LC, HE-AAC v1, HE-AAC v2 |
-| MPEG2-TS |H.264 (hoog-, hoofd- en basislijnprofielen) |AAC-LC, HE-AAC v1, HE-AAC v2 |
+| MP4 <br/><br/>(inclusief multi-bitrate MP4-containers) |H. 264 (High-, Main-en baseline-profielen) |AAC-LC, hij-AAC v1, HE-AAC v2 |
+| MPEG2-TS |H. 264 (High-, Main-en baseline-profielen) |AAC-LC, hij-AAC v1, HE-AAC v2 |
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -113,7 +113,7 @@ In de volgende tabel worden de codecs en bestandsindelingen weergegeven die word
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zie ook
-[On-demand content coderen met Azure Media Services](media-services-encode-asset.md)
+[Inhoud op aanvraag coderen met Azure Media Services](media-services-encode-asset.md)
 
 [Coderen met Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 

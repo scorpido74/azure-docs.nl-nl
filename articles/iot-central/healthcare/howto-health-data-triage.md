@@ -1,6 +1,6 @@
 ---
-title: Een triage-dashboard voor statusgegevens maken met Azure IoT Central | Microsoft Documenten
-description: Meer informatie over het bouwen van een dashboard voor het triagevan gegevens van statusgegevens met Azure IoT Central-toepassingssjablonen.
+title: Een sorteren-dash board met status gegevens maken met Azure IoT Central | Microsoft Docs
+description: Meer informatie over het bouwen van een sorteren-dash board met status gegevens met behulp van Azure IoT Central-toepassings sjablonen.
 author: philmea
 ms.author: philmea
 ms.date: 10/23/2019
@@ -9,73 +9,73 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021641"
 ---
-# <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Zelfstudie: Een dashboard van een Power BI-provider maken
+# <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Zelf studie: een Power BI provider-dash board maken
 
 
 
-Bij het bouwen van uw continue patiëntbewakingsoplossing u ook een dashboard maken voor een ziekenhuiszorgteam om patiëntgegevens te visualiseren. In deze zelfstudie leert u hoe u een Power BI-realtime streamingdashboard maakt op basis van uw iot central-sjabloon voor continue patiëntbewaking.
+Wanneer u uw oplossing voor continue patiënten-bewaking bouwt, kunt u ook een dash board maken voor een ziekenhuis Care team om patiënten-gegevens te visualiseren. In deze zelf studie leert u hoe u een Power BI realtime streaming-dash board kunt maken op basis van uw IoT Central toepassing voor continue patiënten-bewaking.
 
 >[!div class="mx-imgBorder"]
->![Dashboard GIF](media/dashboard-gif-3.gif)
+>![Dash board GIF](media/dashboard-gif-3.gif)
 
-De basisarchitectuur volgt deze structuur:
+De basis architectuur volgt deze structuur:
 
 >[!div class="mx-imgBorder"] 
->![Provider Triage-dashboard](media/dashboard-architecture.png)
+>![Sorteren-dash board van provider](media/dashboard-architecture.png)
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Gegevens exporteren vanuit Azure IoT Central naar Azure Event Hubs
-> * Een Power BI-streaminggegevensset instellen
-> * Uw Logic-app verbinden met Azure-gebeurtenishubs
-> * Gegevens streamen naar Power BI vanuit uw Logic-app
-> * Bouw een real-time dashboard voor de vitale functies van de patiënt
+> * Gegevens exporteren van Azure IoT Central naar Azure Event Hubs
+> * Een gegevensset voor Power BI stream instellen
+> * Uw logische app verbinden met Azure Event Hubs
+> * Gegevens streamen naar Power BI vanuit uw logische app
+> * Een real-time dash board bouwen voor vitale patiënten
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een azure IoT Central-sjabloon voor continue patiëntbewaking. Als u er nog geen hebt, u stappen uitvoeren om [een toepassingssjabloon te implementeren.](overview-iot-central-healthcare.md)
+* Een Azure IoT Central-sjabloon voor continue patiënten-bewakings toepassingen. Als u er nog geen hebt, kunt u de stappen voor [het implementeren van een toepassings sjabloon](overview-iot-central-healthcare.md)volgen.
 
-* Een [naamruimte voor](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)Azure Event Hubs en gebeurtenishub .
+* Een Azure [Event hubs-naam ruimte en Event hub](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-* De Logische App die u wilt openen bij uw gebeurtenishub. Als u uw Logic App wilt starten met een Trigger voor Azure Event Hubs, hebt u een [lege Logische App](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)nodig.
+* De logische app die u wilt gebruiken voor toegang tot uw event hub. Als u uw logische app wilt starten met een Azure Event Hubs-trigger, hebt u een [lege logische app](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)nodig.
 
-* Een Power BI-serviceaccount. Als u er nog geen hebt, u [een gratis proefaccount maken voor de Power BI-service.](https://app.powerbi.com/) Als u Power BI nog niet eerder hebt gebruikt, kan het handig zijn om aan de slag te gaan [met Power BI.](https://docs.microsoft.com/power-bi/service-get-started)
+* Een Power BI-service-account. Als u er nog geen hebt, kunt u [een gratis proef account maken voor Power bi-service](https://app.powerbi.com/). Als u Power BI nog niet eerder hebt gebruikt, kan het nuttig zijn om aan de slag te gaan [met Power bi](https://docs.microsoft.com/power-bi/service-get-started).
 
-## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Een continue gegevensexport naar Azure Event Hubs instellen
-U moet eerst een continue gegevensexport instellen vanuit uw Azure IoT Central-appsjabloon naar de Azure Event Hub in uw abonnement. U dit doen door de stappen te volgen in deze azure IoT Central-zelfstudie voor [exporteren naar gebeurtenishubs.](https://docs.microsoft.com/azure/iot-central/core/howto-export-data) U hoeft alleen te exporteren voor de telemetrie voor de doeleinden van deze tutorial.
+## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Een continue gegevens export naar Azure Event Hubs instellen
+U moet eerst een continue gegevens export instellen vanuit uw Azure IoT Central app-sjabloon naar de Azure Event hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelf studie [te volgen om naar Event hubs te exporteren](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Voor de doel einden van deze zelf studie hoeft u alleen voor de telemetrie te exporteren.
 
-## <a name="create-a-power-bi-streaming-dataset"></a>Een Power BI-streaminggegevensset maken
+## <a name="create-a-power-bi-streaming-dataset"></a>Een gegevensset voor Power BI stream maken
 
 1. Meld u aan bij uw Power BI-account.
 
-2. Maak in de gewenste werkruimte een nieuwe streaminggegevensset door de knop **+ Maken** in de rechterbovenhoek van de werkbalk te selecteren. U moet een aparte gegevensset maken voor elke patiënt die u op uw dashboard wilt hebben.
+2. Maak in de gewenste werk ruimte een nieuwe streaming-gegevensset door de knop **+ maken** te selecteren in de rechter bovenhoek van de werk balk. U moet een afzonderlijke gegevensset maken voor elke patiënt die u op uw dash board wilt hebben.
 
     >[!div class="mx-imgBorder"] 
-    >![Streaminggegevensset maken](media/create-streaming-dataset.png)
+    >![Streaming-gegevensset maken](media/create-streaming-dataset.png)
 
-3. Kies **API** voor de bron van uw gegevensset.
+3. Kies een **API** voor de bron van de gegevensset.
 
-4. Voer een **naam** in (bijvoorbeeld de naam van een patiënt) voor uw gegevensset en vul vervolgens de waarden van uw stream in. U hieronder een voorbeeld zien op basis van waarden die afkomstig zijn van de gesimuleerde apparaten in de sjabloon voor continue patiëntbewaking. Het voorbeeld heeft twee patiënten:
+4. Voer een **naam** (bijvoorbeeld de naam van een patiënt) in voor uw gegevensset en vul vervolgens de waarden in vanuit uw stream. U kunt hieronder een voor beeld zien op basis van waarden die afkomstig zijn van de gesimuleerde apparaten in de sjabloon continue patiënten-bewakings toepassing. Het voor beeld heeft twee patiënten:
 
-    * Teddy Silvers, die gegevens heeft van de Smart Knee Brace
-    * Yesenia Sanford, die gegevens heeft van de Smart Vitals Patch
+    * Teddy Silvers, die gegevens uit de slimme knie accolade bevat
+    * Yesenia Sanford, die gegevens bevat uit de Smart vitale patch
 
     >[!div class="mx-imgBorder"] 
-    >![Gegevenssetwaarden invoeren](media/enter-dataset-values.png)
+    >![Gegevenssetgegevens invoeren](media/enter-dataset-values.png)
 
-Voor meer informatie over streaming datasets in Power BI, u dit document lezen over [real-time streaming in Power BI](https://docs.microsoft.com/power-bi/service-real-time-streaming).
+Als u meer wilt weten over het streamen van gegevens sets in Power BI, kunt u dit document lezen in [realtime streaming in Power bi](https://docs.microsoft.com/power-bi/service-real-time-streaming).
 
-## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Uw Logic-app verbinden met Azure-gebeurtenishubs
-Als u uw Logic App wilt koppelen aan Azure Event Hubs, u de instructies volgen die in dit document worden beschreven voor [het verzenden van gebeurtenissen met Azure Event Hubs en Azure Logic Apps.](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action) Hier zijn enkele voorgestelde parameters:
+## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Uw logische app verbinden met Azure Event Hubs
+Als u uw logische app wilt verbinden met Azure Event Hubs, kunt u de instructies in dit document volgen op het [verzenden van gebeurtenissen met Azure Event hubs en Azure Logic apps](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Hier volgen enkele aanbevolen para meters:
 
 |Parameter|Waarde|
 |---|---|
@@ -83,17 +83,17 @@ Als u uw Logic App wilt koppelen aan Azure Event Hubs, u de instructies volgen d
 |Interval|3|
 |Frequency|Seconde|
 
-Aan het einde van deze stap moet uw Logic App Designer er als volgt uitzien:
+Aan het einde van deze stap moet de ontwerp functie voor logische apps er als volgt uitzien:
 
 >[!div class="mx-imgBorder"] 
->![Logic Apps maakt verbinding met gebeurtenishubs](media/eh-logic-app.png)
+>![Logic Apps maakt verbinding met Event Hubs](media/eh-logic-app.png)
 
-## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Gegevens streamen naar Power BI vanuit uw Logic-app
-De volgende stap is om de gegevens van uw gebeurtenishub te ontleden om deze te streamen naar de Power BI-gegevenssets die u eerder hebt gemaakt.
+## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Gegevens streamen naar Power BI vanuit uw logische app
+De volgende stap is het parseren van de gegevens die afkomstig zijn van uw event hub om deze te streamen naar de Power BI gegevens sets die u eerder hebt gemaakt.
 
-1. Voordat u dit doen, moet u de JSON-payload begrijpen die van uw apparaat naar uw Event Hub wordt verzonden. U dit doen door naar dit [voorbeeldschema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) te kijken en het aan te passen aan uw schema of [door de verkenner servicebus](https://github.com/paolosalvatori/ServiceBusExplorer) te gebruiken om de berichten te inspecteren. Als u de continue toepassingen voor patiëntbewaking gebruikt, zien uw berichten er als volgt uit:
+1. Voordat u dit kunt doen, moet u weten wat de JSON-nettolading is die vanaf uw apparaat wordt verzonden naar uw event hub. U kunt dit doen door te kijken naar dit [voorbeeld schema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) en dit te wijzigen zodat dit overeenkomt met uw schema of [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te controleren. Als u de toepassingen doorlopende patiënten-bewaking gebruikt, ziet uw berichten er als volgt uit:
 
-**Smart Vitals Patch telemetrie**
+**Intelligente essentiële patch-telemetrie**
 
 ```json
 {
@@ -109,7 +109,7 @@ De volgende stap is om de gegevens van uw gebeurtenishub te ontleden om deze te 
 }
 ```
 
-**Smart Knee Brace telemetrie**
+**Slimme knie accolade-telemetrie**
 
 ```json
 {
@@ -139,72 +139,72 @@ De volgende stap is om de gegevens van uw gebeurtenishub te ontleden om deze te 
 }
 ```
 
-2. Nu u uw JSON-payloads hebt geïnspecteerd, gaat u terug naar uw Logic App Designer en selecteert **u + Nieuwe stap.** Zoek en voeg **initialize variabele** toe als de volgende stap en voer de volgende parameters in:
+2. Nu u uw JSON-nettoladingen hebt geïnspecteerd, gaat u terug naar de ontwerp functie voor logische apps en selecteert u **+ nieuwe stap**. Zoek de **variabele Initialize** en voeg deze toe als uw volgende stap en voer de volgende para meters in:
 
     |Parameter|Waarde|
     |---|---|
-    |Name|Interfacenaam|
+    |Naam|Interface naam|
     |Type|Tekenreeks|
 
     Druk op **Opslaan**. 
 
-3. Voeg een andere variabele met de naam **Tekst** als **tekenreeks toe.** In uw Logic App worden deze acties toegevoegd:
+3. Voeg een andere variabele met de naam **Body** toe met het type **teken reeks**. Deze acties worden toegevoegd aan de logische app:
 
     >[!div class="mx-imgBorder"]
     >![Variabelen initialiseren](media/initialize-string-variables.png)
     
-4. Selecteer **+ Nieuwe stap** en voeg een **Parse JSON-actie** toe. Wijzig de naam van **deze naam in Parse Properties**. Kies **eigenschappen** die afkomstig zijn van de gebeurtenishub voor de inhoud. Selecteer **Voorbeeldpayload gebruiken om schema** onderaan te genereren en plak het monsterpayload in de sectie Eigenschappen hierboven.
+4. Selecteer **+ nieuwe stap** en voeg een **JSON-actie parseren** toe. Wijzig de naam van deze om **Eigenschappen te parseren**. Kies voor de inhoud **Eigenschappen** die afkomstig zijn van de Event hub. Selecteer **voor beeld-Payload gebruiken om een schema onderaan te genereren** en plak de voor beeld-nettolading uit de sectie eigenschappen hierboven.
 
-5. Kies vervolgens de variabele actie **Instellen** en werk de variabele **Interfacenaam** bij met de **iothub-interfacenaam** van de geparseerde JSON-eigenschappen.
+5. Kies vervolgens de actie **variabele instellen** en werk de variabele **interface naam** bij met de **iothub-interface-naam** van de geparseerde JSON-eigenschappen.
 
-6. Voeg een **gesplitst** besturingselement toe als uw volgende actie en kies de variabele **Interfacenaam** als parameter Aan. U gebruikt dit om de gegevens naar de juiste gegevensset te trechteren.
+6. Voeg een **Splits** Control toe als de volgende actie en kies de variabele **interface naam** als de para meter bij. U gebruikt deze om de gegevens naar de juiste gegevensset te trechteren.
 
-7. Zoek in uw Azure IoT Central-toepassing de interfacenaam voor de statusgegevens smart vitals patch en de statusgegevens van Smart Knee Brace in de weergave **Apparaatsjablonen.** Maak twee verschillende hoesjes voor het **switchbesturingselement** voor elke interfacenaam en wijzig de naam van het besturingselement op de juiste manier. U de standaardaanvraag zo instellen dat u het **besturingselement beëindigen** gebruikt en kiezen welke status u wilt weergeven.
-
-    >[!div class="mx-imgBorder"] 
-    >![Besturingselement splitsen](media/split-by-interface.png)
-
-8. Voor de **Smart Vitals** Patch-hoes voegt u een **Parse JSON-actie** toe. Kies voor de inhoud **Inhoud** die afkomstig is van de gebeurtenishub. Kopieer en plak de sample payloads voor de Smart Vitals Patch hierboven om het schema te genereren.
-
-9. Voeg een variabele actie **Instellen** toe en werk de **lichaamsvariabele** bij met de **body** van de geparseerde JSON in stap 7.
-
-10. Voeg een **condition** Control toe als uw volgende actie en stel de aandoening in **op Body**, **bevat** **, HeartRate**. Dit zorgt ervoor dat u de juiste set gegevens uit de Smart Vitals Patch hebt voordat u de Power BI-gegevensset bevolkt. Stap 7-9 ziet er als volgt uit:
+7. Zoek in uw Azure IoT Central-toepassing de naam van de interface voor de Smart vitale patch Health-gegevens en de info over de status van de Smart-beugels in de weer gave **apparaat-sjablonen** . Maak twee verschillende cases voor het besturings element **Switch** voor elke interface naam en wijzig de naam van het besturings element. U kunt de standaard Case instellen op het gebruik van de controle **beëindigen** en bepalen welke status u wilt weer geven.
 
     >[!div class="mx-imgBorder"] 
-    >![Smart Vitals toevoegen conditie](media/smart-vitals-pbi.png)
+    >![Gesplitste besturings element](media/split-by-interface.png)
 
-11. Voeg voor het geval **Waar** van de voorwaarde een actie toe die de **power bi-functionaliteit toevoegen aan een gegevensset** aanroept. Hiervoor moet u zich aanmelden bij Power BI. Uw **foutieve** aanvraag kan opnieuw het **besturingselement Beëindigen** gebruiken.
+8. Voeg een JSON-actie voor **parsering** toe aan de **Smart vitale patch** case. Kies voor de inhoud de **inhoud** die afkomstig is van de Event hub. Kopieer de voor beelden van nettoladingen en plak deze voor de bovenstaande patch voor het maken van een essentiële update om het schema te genereren.
 
-12. Kies de juiste **werkruimte**, **gegevensset**en **tabel**. Wijs de parameters die u hebt opgegeven bij het maken van uw streaminggegevensset in Power BI toe aan de geparseerde JSON-waarden die afkomstig zijn van uw gebeurtenishub. Uw ingevulde acties moeten er als volgt uitzien:
+9. Voeg een actie **variabele instellen** toe en werk de **hoofdtekst** variabele bij met de **hoofd tekst** van de geparseerde json in stap 7.
+
+10. Voeg een besturings element **voor waarde** toe als uw volgende actie en stel de voor waarde in op **Body**, **contains**, **HeartRate**. Dit zorgt ervoor dat u beschikt over de juiste set gegevens die afkomstig zijn uit de Smart vitale patch voordat u de Power BI gegevensset invult. De stappen 7-9 ziet er als volgt uit:
+
+    >[!div class="mx-imgBorder"] 
+    >![Voor waarde voor slimme vitale waarden toevoegen](media/smart-vitals-pbi.png)
+
+11. Voor het **geval van de voor** waarde voegt u een actie toe die de functionaliteit **rijen toevoegen aan een gegevensset** Power bi aanroept. U moet zich hiervoor aanmelden bij Power BI. Met de **fout melding kunt u het** besturings element **beëindigen** opnieuw gebruiken.
+
+12. Kies de juiste **werk ruimte**, **gegevensset**en **tabel**. U kunt de para meters die u hebt opgegeven tijdens het maken van uw streaming-gegevensset in Power BI toewijzen aan de geparseerde JSON-waarden die afkomstig zijn van uw event hub. De ingevulde acties moeten er als volgt uitzien:
 
     >[!div class="mx-imgBorder"] 
     >![Rijen toevoegen aan Power BI](media/add-rows-yesenia.png)
 
-13. Voeg voor de **Smart Knee Brace-switchcase** een **Parse JSON-actie** toe om de inhoud te ontleden, vergelijkbaar met stap 7. Voeg **vervolgens rijen toe aan een gegevensset** om de gegevensset Teddy Silvers in Power BI bij te werken.
+13. Voor de Smart-Schakel optie voor de **knie-accolades** voegt u een JSON-actie **parser** toe om de inhoud te parseren, vergelijkbaar met stap 7. **Voeg vervolgens rijen toe aan een gegevensset** om uw Teddy Silvers-gegevensset bij te werken in Power bi.
 
     >[!div class="mx-imgBorder"] 
-    >![Smart Vitals toevoegen conditie](media/knee-brace-pbi.png)
+    >![Voor waarde voor slimme vitale waarden toevoegen](media/knee-brace-pbi.png)
 
-14. Druk op **Opslaan** en voer vervolgens uw Logic-app uit.
+14. Druk op **Opslaan** en voer vervolgens uw logische app uit.
 
-## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Bouw een real-time dashboard voor de vitale functies van de patiënt
-Ga nu terug naar Power BI en selecteer **+ Maak om** een nieuw **dashboard**te maken. Geef uw dashboard een naam en druk op **Maken**.
+## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Een real-time dash board bouwen voor vitale patiënten
+Ga nu terug naar Power BI en selecteer **+ maken** om een nieuw **dash board**te maken. Geef uw dash board een naam en druk op **maken**.
 
-Selecteer de drie puntjes in de bovenste navigatiebalk en selecteer **+ Tegel toevoegen**.
+Selecteer de drie puntjes in de bovenste navigatie balk en selecteer vervolgens **+ tegel toevoegen**.
 
 >[!div class="mx-imgBorder"] 
->![Tegel toevoegen aan dashboard](media/add-tile.png)
+>![Tegel toevoegen aan het dash board](media/add-tile.png)
 
-Kies het type tegel dat u wilt toevoegen en pas uw app aan zoals u dat wilt.
+Kies het type tegel dat u wilt toevoegen en uw app aan te passen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet blijft gebruiken, verwijdert u uw bronnen met de volgende stappen:
+Als u deze toepassing niet wilt blijven gebruiken, verwijdert u uw resources met de volgende stappen:
 
-1. Vanuit de Azure-portal u de resources Event Hub en Logic Apps die u hebt gemaakt, verwijderen.
+1. Vanuit het Azure Portal kunt u de Event hub verwijderen en Logic Apps resources die u hebt gemaakt.
 
-2. Ga voor uw IoT Central-toepassing naar het tabblad Beheer en selecteer **Verwijderen**.
+2. Ga voor uw IoT Central-toepassing naar het tabblad beheer en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de [continue richtlijnen voor de architectuur van de patiëntmonitoring.](concept-continuous-patient-monitoring-architecture.md)
+* Bekijk de [richt lijnen voor de architectuur van voortdurende patiënten-bewaking](concept-continuous-patient-monitoring-architecture.md).

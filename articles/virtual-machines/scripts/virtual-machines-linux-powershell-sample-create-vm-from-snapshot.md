@@ -1,5 +1,5 @@
 ---
-title: Een VM maken op basis van een momentopname - PowerShell-voorbeeld
+title: Een virtuele machine maken op basis van een moment opname-Power shell-voor beeld
 description: 'Azure PowerShell-voorbeeldscript: een virtuele machine maken op basis van een momentopname'
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 21e31df7552dfe5e6368235173622695078626b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75463658"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Een virtuele machine maken van een momentopname met PowerShell

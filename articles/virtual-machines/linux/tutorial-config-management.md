@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Configuratie van linux virtuele machines beheren in Azure
-description: In deze zelfstudie leert u hoe u wijzigingen identificeren en pakketupdates op een Virtuele Linux-machine beheren
+title: Zelf studie-configuratie van virtuele Linux-machines beheren in azure
+description: In deze zelf studie leert u hoe u wijzigingen kunt identificeren en pakket updates kunt beheren op een virtuele Linux-machine
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: mgoedtel
@@ -16,15 +16,15 @@ ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239292"
 ---
-# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Wijzigingen controleren en een Virtuele Linux-machine bijwerken in Azure
+# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Zelf studie: wijzigingen bewaken en een virtuele Linux-machine bijwerken in azure
 
-Met Azure [Change Tracking](../../automation/change-tracking.md) u eenvoudig wijzigingen identificeren en [met UpdateManagement](../../automation/automation-update-management.md) u updates van het besturingssysteem voor uw Azure Linux VM's beheren.
+Met Azure [Wijzigingen bijhouden](../../automation/change-tracking.md) kunt u eenvoudig wijzigingen identificeren en [updatebeheer](../../automation/automation-update-management.md) kunt u updates van het besturings systeem beheren voor uw virtuele machines met Azure Linux.
 
 In deze zelfstudie leert u het volgende:
 
@@ -83,15 +83,15 @@ Als u aanvullende bewerkingen wilt uitvoeren op virtuele machines die updates ve
 
 Tijdens het validatieproces wordt ook gecontroleerd of de virtuele machine is ingericht met de Log Analytics-agent en Automation Hybrid Runbook Worker. Deze agent wordt gebruikt om te communiceren met de VM en om informatie op te vragen over de status van de update.
 
-Kies de werkruimte en automatiseringsaccount van Log Analytics en selecteer **Inschakelen** om de oplossing in te schakelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
+Kies de Log Analytics-werk ruimte en het Automation-account en selecteer **inschakelen** om de oplossing in te scha kelen. Het duurt maximaal 15 minuten om de oplossing in te schakelen.
 
 Als een van de volgende vereiste onderdelen ontbreekt na de onboarding, wordt dit automatisch toegevoegd:
 
-* [Werkruimte Log Analytics](../../log-analytics/log-analytics-overview.md)
-* [Automatiseringsaccount](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../log-analytics/log-analytics-overview.md) werk ruimte
+* [Automation-account](../../automation/automation-offering-get-started.md)
 * Een [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) wordt ingeschakeld op de VM.
 
-Het scherm **Updatebeheer** wordt geopend. Configureer de locatie, log Analytics-werkruimte en automatiseringsaccount om te gebruiken en selecteer **Inschakelen**. Als de velden lichtgrijs zijn, betekent dit dat een andere automatiseringsoplossing is ingeschakeld voor de virtuele machine en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
+Het scherm **Updatebeheer** wordt geopend. Configureer de locatie, Log Analytics werk ruimte en het Automation-account dat moet worden gebruikt en selecteer **inschakelen**. Als de velden lichtgrijs zijn, betekent dit dat een andere automatiseringsoplossing is ingeschakeld voor de virtuele machine en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt.
 
 ![Oplossing voor updatebeheer inschakelen](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -109,22 +109,22 @@ Als u updates wilt installeren, plant u een implementatie na uw release-planning
 
 Plan een nieuwe update-implementatie voor de VM door te klikken op **Update-implementatie plannen** boven aan het scherm **Updatebeheer**. Geef de volgende gegevens op in het scherm **Nieuwe update-implementatie**:
 
-Als u een nieuwe update-implementatie wilt maken, selecteert u **Update-implementatie plannen**. De pagina **Nieuwe update-implementatie** wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel zijn beschreven en klik op **Maken:**
+Selecteer **Update-implementatie plannen**om een nieuwe update-implementatie te maken. De pagina **nieuwe update-implementatie** wordt geopend. Voer waarden in voor de eigenschappen die in de volgende tabel worden beschreven en klik vervolgens op **maken**:
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Name |Unieke naam voor het identificeren van de update-implementatie. |
+| Naam |Unieke naam voor het identificeren van de update-implementatie. |
 |Besturingssysteem| Linux of Windows|
-| Groepen die moeten worden bijgewerkt |Definieer voor Azure-machines een query op basis van een combinatie van abonnement, brongroepen, locaties en tags om een dynamische groep Azure-VM's te maken die u in uw implementatie wilt opnemen. </br></br>Selecteer voor niet-Azure-machines een bestaande opgeslagen zoekopdracht om een groep niet-Azure-machines te selecteren die u in de implementatie wilt opnemen. </br></br>Zie [Dynamische groepen](../../automation/automation-update-management-groups.md) voor meer informatie|
-| Machines om bij te werken |selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies Computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
-|Update classifications|Selecteer alle updateclassificaties die u nodig hebt|
-|Updates opnemen/uitsluiten|Hiermee wordt de pagina **Opnemen/uitsluiten** geopend. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [Een update-implementatie plannen voor](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) meer informatie over hoe met opname wordt omgegaan |
-|Instellingen plannen|Selecteer het beginmoment en selecteer Eenmaal of terugkerend voor de herhaling|
-| Pre-scripts + Postscripts|Selecteer de scripts die voor en na uw implementatie moeten worden uitgevoerd|
-| Onderhoudsvenster |Aantal minuten ingesteld voor updates. De waarde mag niet minder dan 30 minuten en niet meer dan 6 uur |
-| Besturingselement opnieuw opstarten| Hiermee bepaalt u hoe opnieuw opstarten moet worden afgehandeld. De volgende opties zijn beschikbaar:</br>Opnieuw opstarten indien nodig (standaard)</br>Altijd opnieuw opstarten</br>Nooit opnieuw opstarten</br>Alleen opnieuw opstarten - updates worden niet geïnstalleerd|
+| Bij te werken groepen |Voor Azure-machines definieert u een query op basis van een combi natie van abonnement, resource groepen, locaties en tags om een dynamische groep virtuele Azure-machines samen te stellen die in uw implementatie moeten worden meegenomen. </br></br>Voor niet-Azure-machines selecteert u een bestaande opgeslagen zoek opdracht om een groep van niet-Azure-machines te selecteren die u in de implementatie wilt gebruiken. </br></br>Zie [Dynamische groepen](../../automation/automation-update-management-groups.md) voor meer informatie|
+| Machines die moeten worden bijgewerkt |selecteer een opgeslagen zoekopdracht of geïmporteerde groep, of kies Computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**.</br> Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken |
+|Update classifications|Selecteer alle update classificaties die u nodig hebt|
+|Updates opnemen/uitsluiten|Hiermee opent u de pagina **opnemen/uitsluiten** . Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [een update-implementatie plannen](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) voor meer informatie over het verwerken van de opname. |
+|Schema-instellingen|Selecteer het tijdstip waarop u wilt beginnen en selecteer een of meer keren of terugkerend voor het terugkeer patroon|
+| Pre-scripts en post scripts|De scripts selecteren die voor en na de implementatie moeten worden uitgevoerd|
+| Onderhouds venster |Aantal minuten dat is ingesteld voor updates. De waarde mag niet minder dan 30 minuten en Maxi maal 6 uur zijn |
+| Besturings element opnieuw opstarten| Hiermee wordt bepaald hoe opnieuw opstarten moet worden afgehandeld. De volgende opties zijn beschikbaar:</br>Opnieuw opstarten indien nodig (standaard)</br>Altijd opnieuw opstarten</br>Nooit opnieuw opstarten</br>Alleen opnieuw opstarten - updates worden niet geïnstalleerd|
 
-Implementaties bijwerken kan ook programmatisch worden gemaakt. Zie [Software-updateconfiguraties maken voor](/rest/api/automation/softwareupdateconfigurations/create)meer informatie over het maken van een update-implementatie met de REST-API. Er is ook een voorbeeldrunbook dat kan worden gebruikt om een wekelijkse update-implementatie te maken. Zie [Een wekelijkse update-implementatie maken voor een of meer VM's in een resourcegroep](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)voor meer informatie over dit runbook.
+Update-implementaties kunnen ook programmatisch worden gemaakt. Zie [Software-update configuraties-maken](/rest/api/automation/softwareupdateconfigurations/create)voor meer informatie over het maken van een update-implementatie met behulp van de rest API. Er is ook een voor beeld van een runbook dat kan worden gebruikt voor het maken van een wekelijkse update-implementatie. Zie [een wekelijkse update-implementatie maken voor een of meer virtuele machines in een resource groep](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)voor meer informatie over dit runbook.
 
 Nadat u klaar bent met het configureren van de planning, klikt u op de knop **Maken** en gaat u terug naar het statusdashboard.
 U ziet dat de tabel **Gepland** de implementatieplanning weergeeft die u hebt gemaakt.
@@ -142,8 +142,8 @@ Op de tegel **Updateresultaten** ziet u een overzicht van het totale aantal upda
 In de tabel aan de rechterkant vindt u gedetailleerde informatie over elke update en het resultaat van de installatie. Een van de volgende waarden wordt hier weergegeven:
 
 * **Niet geprobeerd**: de update is niet geïnstalleerd omdat er onvoldoende tijd beschikbaar was op basis van de opgegeven onderhoudsperiode.
-* **Geslaagd** - de update is geslaagd
-* **Mislukt** - de update is mislukt
+* **Geslaagd** : de update is voltooid
+* **Mislukt** : de update is mislukt
 
 Selecteer **Alle logboeken** als u alle logboekvermeldingen wilt zien die tijdens de implementatie zijn gemaakt.
 
@@ -163,7 +163,7 @@ Wijzigings- en inventarisbeheer inschakelen voor de VM:
 2. Selecteer een VM in de lijst.
 3. Selecteer in de sectie **Bewerkingen** van het VM-scherm de optie **Inventaris** of **Wijzigingen bijhouden**. Het scherm **Wijzigingen bijhouden en inventaris inschakelen** wordt geopend.
 
-Configureer de locatie, log Analytics-werkruimte en automatiseringsaccount om te gebruiken en selecteer **Inschakelen**. Als de velden lichtgrijs zijn, betekent dit dat een andere automatiseringsoplossing is ingeschakeld voor de virtuele machine en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt. Hoewel de oplossingen afzonderlijk worden weergegeven in het menu, is het dezelfde oplossing. Als u er één inschakelt, worden beide ingeschakeld voor de VM.
+Configureer de locatie, Log Analytics werk ruimte en het Automation-account dat moet worden gebruikt en selecteer **inschakelen**. Als de velden lichtgrijs zijn, betekent dit dat een andere automatiseringsoplossing is ingeschakeld voor de virtuele machine en dat dezelfde werkruimte en hetzelfde Automation-account moeten worden gebruikt. Hoewel de oplossingen afzonderlijk worden weergegeven in het menu, is het dezelfde oplossing. Als u er één inschakelt, worden beide ingeschakeld voor de VM.
 
 ![Bijhouden van wijzigingen en inventaris inschakelen](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -195,14 +195,14 @@ De grafiek toont wijzigingen die in de loop der tijd hebben plaatsgevonden. Nada
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u Wijzigingstracking en Updatebeheer voor uw vm geconfigureerd en beoordeeld. U hebt geleerd hoe u:
+In deze zelf studie hebt u Wijzigingen bijhouden en Updatebeheer voor uw virtuele machine geconfigureerd en gecontroleerd. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een resourcegroep en VM maken
 > * Linux-updates beheren
 > * Wijzigingen en inventaris bewaken
 
-Ga door naar de volgende zelfstudie om meer te weten te komen over het monitoren van uw VM.
+Ga naar de volgende zelf studie voor meer informatie over het bewaken van uw VM.
 
 > [!div class="nextstepaction"]
 > [Virtuele machines bewaken](tutorial-monitor.md)

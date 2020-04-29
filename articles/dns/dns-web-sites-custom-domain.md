@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939105"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
-U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. U bijvoorbeeld een Azure-web-app maken en uw\.gebruikers er toegang toe geven via www contoso.com of contoso.com als een volledig gekwalificeerde domeinnaam (FQDN).
+U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. U kunt bijvoorbeeld een Azure-web-app maken en uw gebruikers toegang geven met www\.-contoso.com of contoso.com als een Fully QUALIFIED domain name (FQDN).
 
 > [!NOTE]
 > Contoso.com wordt in de hele zelfstudie als voorbeeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 > * De aangepaste hostnamen testen
 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* U moet een domeinnaam beschikbaar hebben om mee te testen waarmee u hosten in Azure DNS. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+* U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 * [Maak een App Service-app](../app-service/app-service-web-get-started-html.md), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 
 * Maak een DNS-zone in Azure DNS en delegeer de zone in uw registrar naar Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 App Services gebruikt dit record alleen tijdens de configuratie, om te controleren of u de eigenaar bent van het aangepaste domein. Nadat uw aangepaste domein is gevalideerd en geconfigureerd in App Service, kunt u dit TXT-record verwijderen.
 
 > [!NOTE]
-> Als u de domeinnaam wilt verifiëren, maar geen productieverkeer wilt doorsturen naar de web-app, hoeft u alleen de TXT-record voor de verificatiestap op te geven.  Verificatie vereist geen A- of CNAME-record naast de TXT-record.
+> Als u de domein naam wilt controleren, maar geen productie verkeer naar de Web-App wilt door sturen, hoeft u alleen de TXT-record voor de verificatie stap op te geven.  Voor verificatie is naast de TXT-record geen CNAME-record vereist.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,7 +173,7 @@ set-AzWebApp `
 Open een browser en browse naar `http://www.<your domainname>` en `http://<you domain name>`.
 
 > [!NOTE]
-> Zorg ervoor dat `http://` u het voorvoegsel opneemt, anders kan uw browser proberen een URL voor u te voorspellen!
+> Zorg ervoor dat u het `http://` voor voegsel opneemt, anders kan uw browser proberen een URL voor te voors pellen.
 
 U zou voor beide URL's dezelfde pagina moeten zien. Bijvoorbeeld:
 

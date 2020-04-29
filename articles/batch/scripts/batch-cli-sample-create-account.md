@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI Script - Batch-account maken - Batchservice
+title: Voor beeld van Azure CLI-script-batch-account maken-batch-service
 description: Dit script maakt een Azure Batch-account in de Batch-servicemodus en laat zien hoe u verschillende eigenschappen van het account kunt opvragen of bijwerken.
 services: batch
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 2a11e3d7b8ba2b9f4a0d0d373367575a779eebc4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77017085"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI-voorbeeld:- Een batch-account maken in Batch-servicemodus

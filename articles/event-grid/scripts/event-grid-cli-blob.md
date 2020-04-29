@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure CLI-script - abonneren op Blob Storage-account | Microsoft Docs
-description: In dit artikel wordt een voorbeeld van Azure CLI-script weergegeven waarin wordt weergegeven hoe u zich abonneren op gebeurtenissen voor een Azure Blob Storage-account.
+description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u zich kunt abonneren op gebeurtenissen voor een Azure Blob Storage-account.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: b6cb60273b0fc3ac101eb03c55a3392bd9b942a4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720857"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Abonneren op gebeurtenissen voor een Blob Storage-account met Azure CLI

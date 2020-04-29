@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: deedd4d2553b3b06f76f698fdb2425a8d3878d23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248058"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines

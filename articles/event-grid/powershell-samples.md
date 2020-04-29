@@ -1,6 +1,6 @@
 ---
 title: Voorbeelden van Azure PowerShell - Event Grid | Microsoft Docs
-description: Dit artikel bevat een tabel met koppelingen naar Azure PowerShell-scriptvoorbeelden voor Azure Event Grid.
+description: Dit artikel bevat een tabel met koppelingen naar Azure PowerShell scripting voor beelden voor Azure Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: c3dea89b609dadb4cac26537c6669f5c7806f94e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76717520"
 ---
 # <a name="azure-powershell-samples-for-event-grid"></a>Voorbeelden van Azure PowerShell voor Event Grid

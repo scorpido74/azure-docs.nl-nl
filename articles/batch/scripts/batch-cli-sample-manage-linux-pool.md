@@ -1,6 +1,6 @@
 ---
-title: Voorbeeld van Azure CLI Script - Linux Pool in batch
-description: Dit script toont een aantal van de opdrachten die beschikbaar zijn in de Azure CLI om een groep Linux-compute nodes in Azure Batch te maken en te beheren.
+title: Voor beeld van Azure CLI-script-Linux-groep in batch
+description: Dit script toont enkele van de opdrachten die beschikbaar zijn in de Azure CLI voor het maken en beheren van een groep Linux-reken knooppunten in Azure Batch.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 7f896f7f6493cff8c25d4ccfd5a15f5edb11258f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77024480"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI-voorbeeld: een Linux-groep maken en beheren in Azure Batch
 
-Dit script toont een aantal van de opdrachten die beschikbaar zijn in de Azure CLI om een groep Linux-compute nodes in Azure Batch te maken en te beheren.
+Dit script toont enkele van de opdrachten die beschikbaar zijn in de Azure CLI voor het maken en beheren van een groep Linux-reken knooppunten in Azure Batch.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

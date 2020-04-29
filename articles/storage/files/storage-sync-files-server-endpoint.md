@@ -1,6 +1,6 @@
 ---
-title: Een eindpunt van een Azure File Sync-server toevoegen/verwijderen | Microsoft Documenten
-description: Lees waar u rekening mee moet houden bij het plannen van een Azure-bestandenimplementatie.
+title: Een Azure File Sync server-eind punt toevoegen/verwijderen | Microsoft Docs
+description: Meer informatie over hoe u rekening moet houden bij het plannen van een Azure Files-implementatie.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,70 +8,70 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255104"
 ---
-# <a name="addremove-an-azure-file-sync-server-endpoint"></a>Een eindpunt van een Azure File Sync-server toevoegen/verwijderen
-Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit gebeurt door uw Windows-servers om te zetten in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
+# <a name="addremove-an-azure-file-sync-server-endpoint"></a>Een Azure File Sync server-eind punt toevoegen/verwijderen
+Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
 
-Een *servereindpunt* vertegenwoordigt een specifieke locatie op een *geregistreerde server,* zoals een map op een servervolume of de hoofdmap van het volume. Er kunnen meerdere servereindpunten op hetzelfde volume bestaan als hun naamruimten elkaar niet overlappen (bijvoorbeeld F:\sync1 en F:\sync2). U voor elk servereindpunt afzonderlijk beleid voor cloudtiering configureren. Als u een serverlocatie met een bestaande set bestanden als servereindpunt toevoegt aan een synchronisatiegroep, worden deze bestanden samengevoegd met andere bestanden die al op andere eindpunten in de synchronisatiegroep zijn.
+Een *Server-eind punt* vertegenwoordigt een specifieke locatie op een *geregistreerde server*, zoals een map op een server volume of de hoofdmap van het volume. Meerdere server eindpunten kunnen bestaan op hetzelfde volume als hun naam ruimten niet overlappen (bijvoorbeeld F:\sync1 en F:\sync2). U kunt beleid voor Cloud lagen afzonderlijk configureren voor elk server eindpunt. Als u een server locatie met een bestaande set bestanden als een server-eind punt aan een synchronisatie groep toevoegt, worden deze bestanden samengevoegd met andere bestanden die zich al op andere eind punten in de synchronisatie groep bevindt.
 
-Zie [Azure File Sync implementeren](storage-sync-files-deployment-guide.md) voor informatie over het end-to-end implementeren van Azure File Sync.
+Zie [Azure file sync implementeren](storage-sync-files-deployment-guide.md) voor informatie over het implementeren van Azure File Sync End-to-end.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u een servereindpunt wilt maken, moet u er eerst voor zorgen dat aan de volgende criteria wordt voldaan: 
-- De server heeft de Azure File Sync-agent geïnstalleerd en is geregistreerd. Instructies voor het installeren van de Azure File Sync Agent zijn te vinden in het [artikel Een server registreren/uitschrijven met Azure File Sync.](storage-sync-files-server-registration.md) 
-- Controleer of er een Storage Sync-service is geïmplementeerd. Zie [Azure File Sync implementeren](storage-sync-files-deployment-guide.md) voor meer informatie over het implementeren van een Opslagsynchronisatieservice. 
-- Controleer of een synchronisatiegroep is geïmplementeerd. Meer informatie over het [maken van een synchronisatiegroep](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint).
-- Controleer of de server is verbonden met internet en dat Azure toegankelijk is. We gebruiken poort 443 voor alle communicatie tussen de server en onze service.
+Als u een server eindpunt wilt maken, moet u eerst controleren of aan de volgende criteria wordt voldaan: 
+- Op de server is Azure File Sync agent geïnstalleerd en deze is geregistreerd. Instructies voor het installeren van de Azure File Sync agent vindt u in het artikel [een server registreren of registratie ongedaan maken bij Azure file sync](storage-sync-files-server-registration.md) . 
+- Zorg ervoor dat er een opslag synchronisatie service is geïmplementeerd. Zie [Azure file sync implementeren](storage-sync-files-deployment-guide.md) voor meer informatie over het implementeren van een opslag synchronisatie service. 
+- Zorg ervoor dat er een synchronisatie groep is geïmplementeerd. Meer informatie over het [maken van een synchronisatie groep](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint).
+- Zorg ervoor dat de server is verbonden met internet en dat Azure toegankelijk is. We gebruiken poort 443 voor alle communicatie tussen de server en onze service.
 
 ## <a name="add-a-server-endpoint"></a>Servereindpunt toevoegen
-Als u een servereindpunt wilt toevoegen, navigeert u naar de gewenste synchronisatiegroep en selecteert u 'Servereindpunt toevoegen'.
+Als u een server eindpunt wilt toevoegen, gaat u naar de gewenste synchronisatie groep en selecteert u Server eindpunt toevoegen.
 
 ![Nieuw servereindpunt toevoegen in het deelvenster met de synchronisatiegroep](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
 
-De volgende informatie is vereist onder **Servereindpunt toevoegen:**
+De volgende informatie is vereist onder **Server eindpunt toevoegen**:
 
-- **Geregistreerde server:** de naam van de server of het cluster om het servereindpunt op te maken.
-- **Pad:** het pad op de Windows Server dat moet worden gesynchroniseerd als onderdeel van de synchronisatiegroep.
-- **Cloudtiering:** een switch om cloudtiering in of uit te schakelen. Wanneer ingeschakeld, worden cloudlagenbestanden *gelaagd* naar uw Azure-bestandsshares. Hiermee worden on-premises bestandsshares omgezet in een cache, in plaats van een volledige kopie van de gegevensset, om u te helpen de ruimteefficiëntie op uw server te beheren.
-- **Volumevrije ruimte:** de hoeveelheid vrije ruimte om te reserveren op het volume dat het servereindpunt bevindt. Als de volumevrije ruimte bijvoorbeeld is ingesteld op 50% op een volume met één servereindpunt, wordt ongeveer de helft van de hoeveelheid gegevens gelaagd naar Azure-bestanden. Ongeacht of cloudtiering is ingeschakeld, heeft uw Azure-bestandsshare altijd een volledige kopie van de gegevens in de synchronisatiegroep.
+- **Geregistreerde server**: de naam van de server of het cluster voor het maken van het server eindpunt op.
+- **Pad**: het pad op de Windows-Server dat moet worden gesynchroniseerd als onderdeel van de synchronisatie groep.
+- **Cloud lagen**: een schakel optie om Cloud lagen in of uit te scha kelen. Wanneer deze functie is ingeschakeld, worden bestanden door Cloud lagen *gelaagd* naar uw Azure-bestands shares. Hiermee converteert u on-premises bestands shares naar een cache, in plaats van een volledige kopie van de gegevensset, om u te helpen de efficiëntie van de ruimte op uw server te beheren.
+- **Beschik bare volume ruimte**: de hoeveelheid beschik bare ruimte die moet worden gereserveerd op het volume waarop het server eindpunt zich bevindt. Als het volume beschik bare ruimte bijvoorbeeld is ingesteld op 50% op een volume met één server eindpunt, wordt er ongeveer de helft van de hoeveelheid gegevens gelaagd tot Azure Files. Ongeacht of Cloud lagen zijn ingeschakeld, heeft uw Azure-bestands share altijd een volledige kopie van de gegevens in de synchronisatie groep.
 
-Selecteer **Maken** om het servereindpunt toe te voegen. De bestanden binnen een naamruimte van een synchronisatiegroep worden nu gesynchroniseerd. 
+Selecteer **maken** om het server eindpunt toe te voegen. De bestanden in een naam ruimte van een synchronisatie groep worden nu gesynchroniseerd. 
 
-## <a name="remove-a-server-endpoint"></a>Een servereindpunt verwijderen
-Als u azure bestandssynchronisatie voor een bepaald servereindpunt wilt stopzetten, u het servereindpunt verwijderen. 
+## <a name="remove-a-server-endpoint"></a>Een server eindpunt verwijderen
+Als u het gebruik van Azure File Sync voor een bepaald server eindpunt wilt stoppen, kunt u het server-eind punt verwijderen. 
 
 > [!Warning]  
-> Probeer geen problemen met synchronisatie, cloudtiering of enig ander aspect van Azure File Sync op te lossen door het eindpunt van de server te verwijderen en opnieuw te maken, tenzij dit expliciet is inopdracht gegeven door een Microsoft-technicus. Het verwijderen van een servereindpunt is een destructieve bewerking en gelaagde bestanden binnen het servereindpunt worden niet 'opnieuw' verbonden met hun locaties in het Azure-bestandsshare nadat het servereindpunt opnieuw is gemaakt, wat resulteert in synchronisatiefouten. Houd er ook rekening mee dat gelaagde bestanden die buiten de naamruimte van het servereindpunt bestaan, permanent verloren kunnen gaan. Er kunnen gelaagde bestanden bestaan binnen het eindpunt van uw server, zelfs als cloudtiering nooit is ingeschakeld.
+> Probeer geen problemen met synchronisatie, Cloud lagen of enig ander aspect van Azure File Sync op te lossen door het server eindpunt te verwijderen en opnieuw te maken, tenzij expliciet door een micro soft-Engineer wordt geïnstrueerd. Het verwijderen van een server eindpunt is een destructieve bewerking, en gelaagde bestanden binnen het server eindpunt worden niet opnieuw verbonden met hun locaties op de Azure-bestands share nadat het server-eind punt opnieuw is gemaakt, wat leidt tot synchronisatie fouten. Opmerking: gelaagde bestanden die zich buiten de naam ruimte van het server eindpunt bevinden, kunnen permanent verloren gaan. Er zijn mogelijk gelaagde bestanden aanwezig in uw server eindpunt, zelfs als Cloud lagen nooit zijn ingeschakeld.
 
-Als u ervoor wilt zorgen dat alle gelaagde bestanden worden teruggeroepen voordat u het servereindpunt verwijdert, schakelt u cloudtiering op het servereindpunt uit en voert u de volgende PowerShell-cmdlet uit om alle gelaagde bestanden in de naamruimte van uw servereindpunt op te roepen:
+Om ervoor te zorgen dat alle gelaagde bestanden worden ingetrokken voordat u het server eindpunt verwijdert, schakelt u Cloud lagen op het server eindpunt uit en voert u vervolgens de volgende Power shell-cmdlet uit om alle gelaagde bestanden binnen de naam ruimte van uw server eindpunt op te halen:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-Als `-Order CloudTieringPolicy` u opgeeft, worden eerst de meest recent gewijzigde bestanden in herinnering geroepen.
-Andere optionele maar nuttige parameters om rekening mee te houden zijn:
-* `-ThreadCount`bepaalt het aantal bestanden parallel kan worden teruggeroepen.
-* `-PerFileRetryCount`hiermee wordt bepaald hoe vaak een terugroepactie wordt geprobeerd van een bestand dat momenteel is geblokkeerd.
-* `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen het opnieuw inroepen van pogingen en moet altijd worden gebruikt in combinatie met de vorige parameter.
+Als `-Order CloudTieringPolicy` u opgeeft, worden de meest recent gewijzigde bestanden eerst ingetrokken.
+Andere optionele, maar nuttige para meters die u kunt overwegen:
+* `-ThreadCount`Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
+* `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
+* `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
 
 > [!Note]  
-> Als het lokale volume dat de server host niet genoeg vrije `Invoke-StorageSyncFileRecall` ruimte heeft om alle gelaagde gegevens terug te roepen, mislukt de cmdlet.  
+> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde `Invoke-StorageSyncFileRecall` gegevens in te trekken, mislukt de cmdlet.  
 
-Ga als een voorbeeld voor het verwijderen van het eindpunt van de server:
+Het server eindpunt verwijderen:
 
-1. Navigeer naar de opslagsynchronisatieservice waar uw server is geregistreerd.
-2. Navigeer naar de gewenste synchronisatiegroep.
-3. Verwijder het gewenste servereindpunt in de synchronisatiegroep in de opslagsynchronisatieservice. Dit kan worden bereikt door met de rechtermuisknop op het desbetreffende servereindpunt in het deelvenster synchronisatiegroep te klikken.
+1. Navigeer naar de opslag synchronisatie service waar uw server is geregistreerd.
+2. Navigeer naar de gewenste synchronisatie groep.
+3. Verwijder het server eindpunt dat u wenst in de synchronisatie groep in de opslag synchronisatie service. U kunt dit doen door met de rechter muisknop te klikken op het relevante server eindpunt in het deel venster synchronisatie groep.
 
-    ![Een servereindpunt uit een synchronisatiegroep verwijderen](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
+    ![Een server eindpunt verwijderen uit een synchronisatie groep](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een server registreren/uitschrijven met Azure File Sync](storage-sync-files-server-registration.md)
-- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Een server met Azure File Sync registreren of de registratie ervan opheffen](storage-sync-files-server-registration.md)
+- [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

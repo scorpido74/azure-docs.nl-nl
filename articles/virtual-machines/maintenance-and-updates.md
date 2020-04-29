@@ -1,6 +1,6 @@
 ---
 title: Onderhoud en updates
-description: Overzicht van onderhoud en updates voor virtuele machines die in Azure worden uitgevoerd.
+description: Overzicht van onderhoud en updates voor virtuele machines die worden uitgevoerd in Azure.
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,95 +8,95 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
 ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250229"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Onderhoud voor virtuele machines in Azure
 
-Azure werkt zijn platform regelmatig bij om de betrouwbaarheid, prestaties en beveiliging van de hostinfrastructuur voor virtuele machines te verbeteren. Het doel van deze updates behelst zowel het uitvoeren van softwarepatches voor onderdelen in de hostomgeving als het upgraden van netwerkonderdelen of het buiten gebruik stellen van hardware. 
+Azure werkt periodiek het platform bij om de betrouw baarheid, prestaties en beveiliging van de host-infra structuur voor virtuele machines te verbeteren. Het doel van deze updates behelst zowel het uitvoeren van softwarepatches voor onderdelen in de hostomgeving als het upgraden van netwerkonderdelen of het buiten gebruik stellen van hardware. 
 
-Updates hebben zelden invloed op de gehoste VM's. Wanneer updates wel effect hebben, kiest Azure de minst impactvolle methode voor updates:
+Updates zijn zelden van invloed op de gehoste Vm's. Wanneer de updates een effect hebben, kiest Azure de methode van de minst meest impact op updates:
 
-- Als de update geen herstart vereist, wordt de VM onderbroken terwijl de host wordt bijgewerkt of wordt de VM live gemigreerd naar een reeds bijgewerkte host. 
-- Als onderhoud een herstart vereist, wordt u op de hoogte gesteld van het geplande onderhoud. Azure biedt ook een tijdvenster waarin u het onderhoud zelf starten, op een tijdstip dat voor u werkt. Het zelfonderhoudsvenster is meestal 30 dagen, tenzij het onderhoud dringend is. Azure investeert in technologieën om het aantal gevallen te verminderen waarin gepland platformonderhoud vereist dat de VM's opnieuw worden opgestart. Zie Geplande onderhoudsmeldingen afhandelen met de Azure [CLI,](maintenance-notifications-cli.md) [PowerShell](maintenance-notifications-powershell.md) of [portal](maintenance-notifications-portal.md)voor instructies voor het beheren van gepland onderhoud.
+- Als de update niet opnieuw moet worden opgestart, wordt de virtuele machine onderbroken terwijl de host wordt bijgewerkt, of wordt de virtuele machine Live gemigreerd naar een al bijgewerkte host. 
+- Als het onderhoud opnieuw moet worden opgestart, ontvangt u een melding van het geplande onderhoud. Azure biedt ook een tijd venster waarin u het onderhoud zelf kunt starten, op het moment dat u voor u werkt. Het venster zelf onderhoud is doorgaans 30 dagen, tenzij het onderhoud urgent is. Azure is investeren in technologieën om het aantal cases te verminderen waarvoor gepland platform onderhoud vereist dat de Vm's opnieuw worden opgestart. Zie voor instructies voor het beheren van gepland onderhoud geplande onderhouds meldingen verwerken met Azure [cli](maintenance-notifications-cli.md), [Power shell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).
 
-Op deze pagina wordt beschreven hoe Azure beide typen onderhoud uitvoert. Zie [De beschikbaarheid van VM's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over ongeplande gebeurtenissen (uitval).
+Op deze pagina wordt beschreven hoe Azure beide soorten onderhoud uitvoert. Zie [de beschik baarheid van vm's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over niet-geplande gebeurtenissen (uitval).
 
-Binnen een VM u meldingen ontvangen over aankomend onderhoud door Geplande gebeurtenissen voor Windows of voor [Linux](./linux/scheduled-events.md)te [gebruiken.](./windows/scheduled-events.md)
+Binnen een VM kunt u meldingen ontvangen over aanstaande onderhoud door [gebruik te maken van Scheduled Events voor Windows](./windows/scheduled-events.md) of voor [Linux](./linux/scheduled-events.md).
 
 
 
 ## <a name="maintenance-that-doesnt-require-a-reboot"></a>Onderhoud waarvoor geen herstart nodig is
 
-De meeste platformupdates hebben geen invloed op de VM's van klanten. Wanneer een no-impact update niet mogelijk is, kiest Azure het updatemechanisme dat het minst impact heeft op de VM's van klanten. 
+De meeste platform updates zijn niet van invloed op virtuele machines van klanten. Wanneer een niet-impact update niet mogelijk is, kiest Azure het update mechanisme dat het minst invloed heeft op virtuele machines van de klant. 
 
-De meeste onderhoudswerkzaamheden zonder nuleffect worden de VM minder dan 10 seconden onderbroken. In bepaalde gevallen maakt Azure gebruik van geheugenbehoudende onderhoudsmechanismen. Deze mechanismen pauzeren de VM tot 30 seconden en behouden het geheugen in RAM. De VM wordt vervolgens hervat en de klok wordt automatisch gesynchroniseerd. 
+De meeste onderhoud van niet-nul-impact pauzeert de virtuele machine korter dan 10 seconden. In bepaalde gevallen maakt Azure gebruik van geheugen behoud van onderhouds mechanismen. Deze mechanismen pauzeren de virtuele machine tot 30 seconden en bewaren het geheugen in het RAM. De virtuele machine wordt vervolgens hervat en de klok wordt automatisch gesynchroniseerd. 
 
-Geheugenbehoud werkt voor meer dan 90 procent van de Azure VM's. Het werkt niet voor G, M, N en H-serie. Azure maakt steeds meer gebruik van technologieën voor live migratie en verbetert geheugenbehoudende onderhoudsmechanismen om de pauzeduur te verkorten.  
+Het onderhoud van geheugen-behoud werkt meer dan 90 procent van de Azure-Vm's. Het werkt niet voor G, M, N en H-serie. Azure maakt steeds meer gebruik van Live-migratie technologieën en verbetert de onderhouds mechanismen van het geheugen om de onderbrekings duur te verminderen.  
 
-Deze onderhoudsbewerkingen waarvoor geen herstart nodig is, worden één foutdomein tegelijk toegepast. Ze stoppen als ze waarschuwingssignalen voor de gezondheid ontvangen. 
+Voor deze onderhouds bewerkingen die niet opnieuw moeten worden opgestart, wordt één fout domein tegelijk toegepast. Deze worden gestopt als er waarschuwings status signalen worden ontvangen. 
 
-Dit soort updates kan van invloed zijn op sommige toepassingen. Wanneer de VM live is gemigreerd naar een andere host, kunnen sommige gevoelige workloads een lichte prestatiedegradatie laten zien in de paar minuten voorafgaand aan de VM-pauze. Als u zich wilt voorbereiden op VM-onderhoud en de impact tijdens Azure-onderhoud wilt verminderen, probeert u Geplande gebeurtenissen voor Windows of [Linux](./linux/scheduled-events.md) voor dergelijke toepassingen te [gebruiken.](./windows/scheduled-events.md) 
+Deze typen updates kunnen van invloed zijn op sommige toepassingen. Wanneer de virtuele machine Live naar een andere host wordt gemigreerd, kan het even duren voordat de virtuele machine wordt onderbroken door bepaalde gevoelige workloads. Voor de voor bereiding op het onderhoud van de virtuele machine en het verminderen van de impact tijdens het onderhoud van Azure, kunt [u Scheduled Events voor Windows](./windows/scheduled-events.md) of [Linux](./linux/scheduled-events.md) gebruiken voor dergelijke toepassingen. 
 
-Er is ook een functie, onderhoudscontrole, in openbare preview die kan helpen bij het beheren van onderhoud dat geen herstart vereist. U moet [Azure Dedicated Hosts](./linux/dedicated-hosts.md) of een geïsoleerde [VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhoudscontrole geeft u de mogelijkheid om platformupdates over te slaan en de updates naar keuze toe te passen binnen een rollend venster van 35 dagen. Zie [Updates beheren met onderhoudsbeheer en Azure CLI](maintenance-control-cli.md)voor meer informatie.
+Er is ook een functie, onderhouds beheer, in open bare preview die u kan helpen onderhoud te beheren waarvoor opnieuw opstarten niet nodig is. U moet een met [Azure toegewezen hosts](./linux/dedicated-hosts.md) of een [geïsoleerde VM](../security/fundamentals/isolation-choices.md)gebruiken. Onderhouds beheer biedt u de mogelijkheid om platform updates over te slaan en de updates op uw gewenste tijdstip toe te passen binnen een 35-daags venster. Zie [updates beheren met onderhouds beheer en de Azure cli](maintenance-control-cli.md)voor meer informatie.
 
 
 ### <a name="live-migration"></a>Livemigratie
 
-Live migratie is een bewerking waarvoor geen reboot nodig is en die het geheugen voor de VM behoudt. Het veroorzaakt een pauze of bevriezing, meestal niet langer dan 5 seconden. Met uitzondering van de G-, M-, N- en H-serie komen alle VM's voor infrastructuur als service (IaaS) in aanmerking voor live migratie. In aanmerking komende VM's vertegenwoordigen meer dan 90 procent van de IaaS VM's die worden geïmplementeerd in de Azure-vloot. 
+Livemigratie is een bewerking waarvoor geen herstart vereist is en waarmee het geheugen voor de virtuele machine wordt bewaard. Dit veroorzaakt een pauze ring of blok keren, meestal niet meer dan 5 seconden. Met uitzonde ring van G, M, N en H-serie, kunnen alle IaaS-Vm's (Infrastructure as a Service) in aanmerking komen voor Livemigratie. In aanmerking komende Vm's vertegenwoordigen meer dan 90 procent van de IaaS-Vm's die zijn geïmplementeerd op de Azure-vloot. 
 
-Het Azure-platform start live migratie in de volgende scenario's:
+De Livemigratie van het Azure-platform wordt gestart in de volgende scenario's:
 - Gepland onderhoud
 - Hardwarestoring
-- Toewijzingsoptimalisaties
+- Toewijzings optimalisaties
 
-Sommige scenario's voor gepland onderhoud maken gebruik van live migratie en u Geplande gebeurtenissen gebruiken om van tevoren te weten wanneer live migratiebewerkingen worden gestart.
+Bij sommige scenario's gepland onderhoud wordt gebruikgemaakt van Livemigratie, en u kunt Scheduled Events gebruiken om vooraf te weten wanneer Livemigratie wordt gestart.
 
-Live migratie kan ook worden gebruikt om VM's te verplaatsen wanneer Azure Machine Learning-algoritmen een dreigende hardwarefout voorspellen of wanneer u VM-toewijzingen wilt optimaliseren. Zie [Azure VM-tolerantie verbeteren met voorspellende machine learning en live migratie](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure)voor meer informatie over voorspellende modellering die gevallen van gedegradeerde hardware detecteert. Meldingen met livemigratie worden weergegeven in de Azure-portal in de logboeken Monitor- en Servicestatus en in Geplande gebeurtenissen als u deze services gebruikt.
+Livemigratie kan ook worden gebruikt om Vm's te verplaatsen wanneer Azure Machine Learning algoritmen een dreigende hardwarestoring of als u de VM-toewijzingen wilt optimaliseren. Zie de [tolerantie van Azure-Vm's verbeteren met voorspellende machine learning en Livemigratie](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure)voor meer informatie over voorspellende modellen die exemplaren van gedegradeerde hardware detecteren. Live-migratie meldingen worden weer gegeven in de Azure Portal in de monitor en Service Health logboeken, evenals in Scheduled Events als u deze services gebruikt.
 
-## <a name="maintenance-that-requires-a-reboot"></a>Onderhoud dat een herstart vereist
+## <a name="maintenance-that-requires-a-reboot"></a>Onderhoud waarvoor opnieuw opstarten is vereist
 
-In het zeldzame geval dat VM's opnieuw moeten worden opgestart voor gepland onderhoud, wordt u van tevoren op de hoogte gesteld. Gepland onderhoud kent twee fasen: de selfservicefase en een geplande onderhoudsfase.
+In de zeldzame gevallen waarin Vm's opnieuw moeten worden opgestart voor gepland onderhoud, wordt u hiervan op de hoogte gebracht. Gepland onderhoud bestaat uit twee fasen: de self-service fase en een geplande onderhouds fase.
 
-Tijdens de *selfservicefase*, die doorgaans vier weken duurt, start u het onderhoud aan uw VM's. Als onderdeel van de selfservice u elke virtuele machine opvragen om de status en het resultaat van uw laatste onderhoudsaanvraag te zien.
+Tijdens de *self-service fase*, die doorgaans vier weken duurt, start u het onderhoud op uw vm's. Als onderdeel van de self-service kunt u een query uitvoeren op elke virtuele machine om de status en het resultaat van uw laatste onderhouds aanvraag te bekijken.
 
-Wanneer u zelfserviceonderhoud start, wordt uw VM opnieuw geïmplementeerd op een reeds bijgewerkt knooppunt. Omdat de VM opnieuw wordt opgestart, gaat de tijdelijke schijf verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele netwerkinterface bijgewerkt.
+Wanneer u self-service onderhoud start, wordt uw VM opnieuw geïmplementeerd op een al bijgewerkt knoop punt. Omdat de VM opnieuw wordt opgestart, gaat de tijdelijke schijf verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele netwerk interface, bijgewerkt.
 
-Als er een fout optreedt tijdens selfserviceonderhoud, wordt de bewerking gestopt, wordt de VM niet bijgewerkt en krijgt u de optie om het selfserviceonderhoud opnieuw te proberen. 
+Als er een fout optreedt tijdens self-service onderhoud, wordt de bewerking gestopt, wordt de VM niet bijgewerkt en krijgt u de mogelijkheid om het selfservice onderhoud opnieuw uit te voeren. 
 
-Wanneer de selfservicefase is afgelopen, begint de *geplande onderhoudsfase.* Tijdens deze fase u nog steeds vragen stellen voor de onderhoudsfase, maar u het onderhoud niet zelf starten.
+Wanneer de self-service fase eindigt, begint de *geplande onderhouds fase* . Tijdens deze fase kunt u nog steeds een query uitvoeren voor de onderhouds fase, maar kunt u het onderhoud zelf niet starten.
 
-Zie **Geplande onderhoudsmeldingen afhandelen** met de Azure [CLI,](maintenance-notifications-cli.md) [PowerShell](maintenance-notifications-powershell.md) of [portal](maintenance-notifications-portal.md)voor meer informatie over het beheren van onderhoud waarvoor een herstart vereist is. 
+Zie voor meer informatie over het beheren van onderhoud waarvoor opnieuw opstarten is vereist het **verwerken van geplande onderhouds meldingen** met behulp van de Azure [cli](maintenance-notifications-cli.md), [Power shell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md). 
 
-### <a name="availability-considerations-during-scheduled-maintenance"></a>Beschikbaarheidsoverwegingen tijdens gepland onderhoud 
+### <a name="availability-considerations-during-scheduled-maintenance"></a>Beschik baarheid van overwegingen tijdens gepland onderhoud 
 
-Als u besluit te wachten tot de geplande onderhoudsfase, zijn er een paar dingen die u moet overwegen om de hoogste beschikbaarheid van uw VM's te behouden. 
+Als u van plan bent te wachten tot de geplande onderhouds fase, zijn er enkele dingen die u moet overwegen om de hoogst mogelijke Beschik baarheid van uw Vm's te hand haven. 
 
 #### <a name="paired-regions"></a>Gekoppelde regio's
 
-Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografische omgeving. Samen maken ze een regiopaar. Tijdens de geplande onderhoudsfase werkt Azure alleen de VM's bij in één regio van een regiopaar. Tijdens het updaten van de VM in North Central US werkt Azure bijvoorbeeld geen VM tegelijkertijd bij in South Central US. Tegelijkertijd met VS - oost kan er echter wel onderhoud plaatsvinden in andere regio's, zoals Europa - noord. Als u begrijpt hoe regioparen werken, u uw VM's beter verdelen over regio's. Zie [Azure-regioparen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie.
+Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografische omgeving. Samen maken ze een regio paar. Tijdens de geplande onderhouds fase worden in azure alleen de Vm's in één regio van een regio paar bijgewerkt. Tijdens het bijwerken van de virtuele machine in Noord-Centraal VS, werkt Azure de virtuele machine in Zuid-Centraal VS bijvoorbeeld niet bij. Tegelijkertijd met VS - oost kan er echter wel onderhoud plaatsvinden in andere regio's, zoals Europa - noord. Meer informatie over het werken met regio paren kan u helpen uw Vm's beter te verdelen over regio's. Zie [Azure Region-paren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie.
 
-#### <a name="availability-sets-and-scale-sets"></a>Beschikbaarheidssets en schaalsets
+#### <a name="availability-sets-and-scale-sets"></a>Beschikbaarheids sets en schaal sets
 
-Wanneer u een werkbelasting implementeert op Azure VM's, u de VM's maken binnen een *beschikbaarheidsset* om uw toepassing met een hoge beschikbaarheid te bieden. Met behulp van beschikbaarheidssets u ervoor zorgen dat tijdens een storing of onderhoudsgebeurtenissen waarvoor een herstart vereist is, ten minste één VM beschikbaar is.
+Bij het implementeren van een werk belasting op virtuele machines in azure, kunt u de virtuele machines binnen een *beschikbaarheidsset* maken om hoge Beschik baarheid voor uw toepassing te bieden. Met behulp van beschikbaarheids sets kunt u ervoor zorgen dat tijdens een storing of onderhouds gebeurtenis die opnieuw moet worden opgestart, ten minste één virtuele machine beschikbaar is.
 
-Binnen een beschikbaarheidsset zijn afzonderlijke VM's verspreid over maximaal 20 updatedomeinen. Tijdens gepland onderhoud wordt slechts één updatedomein op een bepaald moment bijgewerkt. Updatedomeinen worden niet noodzakelijkerwijs opeenvolgend bijgewerkt. 
+Binnen een beschikbaarheidsset worden afzonderlijke Vm's verdeeld over Maxi maal 20 Update domeinen. Tijdens gepland onderhoud wordt slechts één update domein op een bepaald moment bijgewerkt. Update domeinen worden niet noodzakelijkerwijs opeenvolgend bijgewerkt. 
 
-Virtuele *machineschaalsets* zijn een Azure-compute resource die u gebruiken om een set identieke VM's als één resource te implementeren en te beheren. De schaalset wordt automatisch geïmplementeerd in ud's, zoals VM's in een beschikbaarheidsset. Net als bij beschikbaarheidssets wordt bij het gebruik van schaalsets slechts één UD op een bepaald moment bijgewerkt tijdens gepland onderhoud.
+Virtuele-machine *schaal sets* vormen een Azure Compute-resource die u kunt gebruiken om een set identieke vm's te implementeren en te beheren als één resource. De schaalset wordt automatisch geïmplementeerd in de UDs, zoals virtuele machines in een beschikbaarheidsset. Net als bij beschikbaarheids sets, wanneer u schaal sets gebruikt, wordt slechts één UD bijgewerkt op een wille keurig tijdstip tijdens gepland onderhoud.
 
-Zie [De beschikbaarheid van uw VM's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over het instellen van uw VM's voor hoge beschikbaarheid.
+Zie [de beschik baarheid van uw vm's voor Windows](./windows/manage-availability.md) of het bijbehorende artikel voor [Linux](./linux/manage-availability.md)beheren voor meer informatie over het instellen van uw vm's voor maximale Beschik baarheid.
 
 #### <a name="availability-zones"></a>Beschikbaarheidszones
 
-Beschikbaarheidszones zijn unieke fysieke locaties binnen een Azure-gebied. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. 
+Beschikbaarheids zones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. 
 
-Een beschikbaarheidszone is een combinatie van een foutdomein en een updatedomein. Als u drie of meer VM's maakt in drie zones in een Azure-gebied, worden uw VM's effectief verdeeld over drie foutdomeinen en drie updatedomeinen. Het Azure-platform herkent deze verdeling over updatedomeinen om ervoor te zorgen dat virtuele machines in verschillende zones niet op hetzelfde moment worden bijgewerkt.
+Een beschikbaarheids zone is een combi natie van een fout domein en een update domein. Als u drie of meer virtuele machines maakt voor drie zones in een Azure-regio, worden uw Vm's effectief gedistribueerd over drie fout domeinen en drie update domeinen. Het Azure-platform herkent deze verdeling over updatedomeinen om ervoor te zorgen dat virtuele machines in verschillende zones niet op hetzelfde moment worden bijgewerkt.
 
-Elke infrastructuurupdate rolt zone per zone uit, binnen één regio. Maar, u implementatie gaande in zone 1, en verschillende inzet gaan in Zone 2, op hetzelfde moment. Implementaties zijn niet allemaal geserialiseerd. Maar één implementatie rolt slechts één zone tegelijk uit om het risico te verminderen.
+Elke infrastructuur update implementeert zone per zone, binnen één regio. Maar u kunt een implementatie uitvoeren in Zone 1 en tegelijkertijd een andere implementatie uitvoeren in Zone 2. Implementaties zijn niet allemaal geserialiseerd. Maar met één implementatie wordt slechts één zone tegelijk uitgedraaid om het risico te verminderen.
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-U de [Azure CLI,](maintenance-notifications-cli.md) [Azure PowerShell](maintenance-notifications-powershell.md) of de [portal](maintenance-notifications-portal.md) gebruiken om gepland onderhoud te beheren. 
+U kunt de [Azure cli](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) of de [Portal](maintenance-notifications-portal.md) gebruiken voor het beheren van gepland onderhoud. 

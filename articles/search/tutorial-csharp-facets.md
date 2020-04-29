@@ -1,7 +1,7 @@
 ---
-title: C# tutorial over het gebruik van facetten om navigatie te helpen
+title: C#-zelf studie over het gebruik van facetten om navigatie te helpen
 titleSuffix: Azure Cognitive Search
-description: Deze zelfstudie bouwt voort op het project 'Zoekresultaten - Azure Cognitive Search' om facetnavigatie toe te voegen. Ontdek hoe facetten kunnen worden gebruikt om een zoekopdracht eenvoudig te beperken.
+description: In deze zelf studie wordt gebruikgemaakt van het project Zoek resultaten pagineren-Azure Cognitive Search om facet navigatie toe te voegen. Meer informatie over hoe facetten kunnen worden gebruikt om eenvoudig een zoek opdracht te verfijnen.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77121569"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# zelfstudie: facetten gebruiken om navigatie te ondersteunen - Azure Cognitive Search
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#-zelf studie: facetten gebruiken om navigatie te helpen-Azure Cognitive Search
 
-Facetten worden gebruikt om navigatie te helpen, door de gebruiker te voorzien van een set van links te gebruiken om hun zoekopdracht te concentreren. Facetten zijn kenmerken van de gegevens (zoals de categorie, of een specifieke functie, van een hotel in onze voorbeeldgegevens).
+Facetten worden gebruikt om navigatie te helpen door de gebruiker een set koppelingen te bieden die u kunt gebruiken om de zoek opdracht te richten. Facetten zijn kenmerken van de gegevens (zoals de categorie of een specifieke functie van een hotel in de voorbeeld gegevens).
 
-Deze zelfstudie bouwt voort op het paging-project dat is gemaakt in de [zelfstudie C# Zelfstudie: Zoekresultaten - Azure Cognitive Search.](tutorial-csharp-paging.md)
+Deze zelf studie bouwt voort op het paginerings project dat in de [C#-zelf studie is gemaakt: Zoek resultaten pagineren-Azure Cognitive Search-](tutorial-csharp-paging.md) zelf studie.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Modeleigenschappen instellen als _IsFacetable_
-> * Facet-navigatie toevoegen aan uw app
+> * Model eigenschappen instellen als _IsFacetable_
+> * Facet navigatie toevoegen aan uw app
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-Laat de [C# Tutorial: Search results pagination - Azure Cognitive Search](tutorial-csharp-paging.md) project up and running. Dit project kan uw eigen versie zijn of het installeren vanuit GitHub: [Eerste app maken.](https://github.com/Azure-Samples/azure-search-dotnet-samples)
+De [C# zelf studie: Zoek resultaten pagineren-Azure Cognitive Search](tutorial-csharp-paging.md) project actief. Dit project kan uw eigen versie zijn of installeren vanaf GitHub: [Maak eerst een app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="set-model-properties-as-isfacetable"></a>Modeleigenschappen instellen als IsFacetable
+## <a name="set-model-properties-as-isfacetable"></a>Model eigenschappen instellen als IsFacetable
 
-Als u een modeleigenschap in een facetzoekopdracht wilt bevinden, moet deze worden getagd met **IsFacetable**.
+Een model eigenschap kan alleen in een facet zoekactie worden gevonden als deze is gelabeld met **IsFacetable**.
 
-1. Bestudeer de **hotelklas.** **Categorie** en **tags**worden bijvoorbeeld getagd als **IsFacetable,** maar **HotelName** en **Beschrijving** niet. 
+1. Controleer de klasse **Hotel** . **Categorie** en **Tags**zijn bijvoorbeeld gelabeld als **IsFacetable**, maar de naam van de **Hotels** en de **Beschrijving** is niet. 
 
     ```cs
     public partial class Hotel
@@ -82,40 +82,40 @@ Als u een modeleigenschap in een facetzoekopdracht wilt bevinden, moet deze word
     }
     ```
 
-2. We zullen geen tags wijzigen als onderdeel van deze zelfstudie, dus sluit het hotel.cs bestand ongewijzigd.
+2. Er worden geen tags gewijzigd als onderdeel van deze zelf studie. Sluit daarom het hotel.cs-bestand ongewijzigd.
 
     > [!Note]
-    > Een facetzoekopdracht brengt een fout met zich mee als een veld dat in de zoekopdracht wordt aangevraagd, niet op de juiste manier is getagd.
+    > Bij het zoeken naar facetten wordt een fout gegenereerd als een veld dat in de zoek opdracht is aangevraagd, niet op de juiste wijze is gelabeld.
 
 
-## <a name="add-facet-navigation-to-your-app"></a>Facet-navigatie toevoegen aan uw app
+## <a name="add-facet-navigation-to-your-app"></a>Facet navigatie toevoegen aan uw app
 
-For this example, we are going to enable the user to select one category of hotel, or one amenity, from lists of links shown to the left of the results. De gebruiker begint met het invoeren van een zoektekst, kan vervolgens de resultaten van de zoekopdracht verkleinen door een categorie te selecteren en kan de resultaten verder beperken door een voorziening te selecteren, of ze kunnen eerst de voorziening selecteren (de volgorde is niet belangrijk).
+In dit voor beeld gaan we de gebruiker in staat stellen om één categorie Hotel of één Amenity te selecteren, van lijsten met koppelingen die links van de resultaten worden weer gegeven. De gebruiker begint met het invoeren van bepaalde Zoek tekst, vervolgens kan de resultaten van de zoek opdracht worden beperkt door een categorie te selecteren en kan de resultaten verder beperken door een Amenity te selecteren, of ze kunnen de Amenity eerst selecteren (de volg orde is niet belang rijk).
 
-We hebben de controller nodig om de lijsten met facetten door te geven aan het uitzicht. We moeten de gebruikersselecties behouden naarmate de zoekopdracht vordert, en nogmaals, we gebruiken tijdelijke opslag als het mechanisme voor het bewaren van gegevens.
+De controller moet de lijst met facetten door geven aan de weer gave. De gebruikers selecties moeten worden behouden als de zoek actie wordt uitgevoerd en er worden opnieuw tijdelijke opslag gebruikt als mechanisme voor het bewaren van gegevens.
 
-![Facet-navigatie gebruiken om een zoekopdracht naar "pool" te verkleinen](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
+![Facet navigatie gebruiken om een zoek opdracht van ' pool ' te beperken](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
-### <a name="add-filter-strings-to-the-searchdata-model"></a>Filtertekenreeksen toevoegen aan het SearchData-model
+### <a name="add-filter-strings-to-the-searchdata-model"></a>Filter teken reeksen toevoegen aan het SearchData-model
 
-1. Open het SearchData.cs bestand en voeg tekenreekseigenschappen toe aan de klasse **SearchData** om de tekenreeksen van het facetfilter vast te houden.
+1. Open het SearchData.cs-bestand en voeg teken reeks eigenschappen toe aan de klasse **SearchData** om de facet filter teken reeksen op te slaan.
 
     ```cs
         public string categoryFilter { get; set; }
         public string amenityFilter { get; set; }
     ```
 
-### <a name="add-the-facet-action-method"></a>De actiemethode Facet toevoegen
+### <a name="add-the-facet-action-method"></a>De facet actie methode toevoegen
 
-De thuiscontroller heeft één nieuwe actie nodig, **Facet**en updates van de bestaande **index-** en **paginaacties,** evenals updates van de **RunQueryAsync-methode.**
+De start controller heeft één nieuwe actie, **facet**en updates nodig voor de bestaande **index** -en **pagina** acties, evenals de updates voor de methode **RunQueryAsync** .
 
-1. Open het thuiscontrollerbestand en voeg de **instructie met behulp** toe om de tekenreeksconstructie van de **lijst&lt;in&gt; ** te schakelen.
+1. Open het bestand van de start controller en voeg de instructie **using** toe om de **teken&lt;reeks&gt; constructie lijst** in te scha kelen.
 
     ```cs
     using System.Collections.Generic;
     ```
 
-2. Vervang de actiemethode **Index(SearchData-model).**
+2. Vervang de actie methode **index (SearchData model)** .
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -140,7 +140,7 @@ De thuiscontroller heeft één nieuwe actie nodig, **Facet**en updates van de be
         }
     ```
 
-3. Vervang de **actiemethode Pagina(SearchData-model).**
+3. Vervang de actie methode **pagina (SearchData-model)** .
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -187,7 +187,7 @@ De thuiscontroller heeft één nieuwe actie nodig, **Facet**en updates van de be
         }
     ```
 
-4. Voeg een **Facet(SearchData-model)** actiemethode toe, die moet worden geactiveerd wanneer de gebruiker op een facet-koppeling klikt. Het model bevat een zoekfilter voor categorieën of een zoekfilter voor voorzieningen. Misschien toevoegen na de **actie Pagina.**
+4. Een actie methode voor een **facet (SearchData-model)** toevoegen die moet worden geactiveerd wanneer de gebruiker op een facet koppeling klikt. Het model bevat een categorie-zoek filter of een Amenity-zoek filter. Mogelijk moet u deze na de **pagina** actie toevoegen.
 
     ```cs
         public async Task<ActionResult> Facet(SearchData model)
@@ -228,11 +228,11 @@ De thuiscontroller heeft één nieuwe actie nodig, **Facet**en updates van de be
         }
     ```
 
-### <a name="set-up-the-search-filter"></a>Het zoekfilter instellen
+### <a name="set-up-the-search-filter"></a>Het zoek filter instellen
 
-Wanneer een gebruiker bijvoorbeeld een bepaald facet selecteert, klikt hij op de categorie **Resort en Spa,** dan mogen alleen hotels die als deze categorie zijn opgegeven, worden geretourneerd in de resultaten. Om een zoekopdracht op deze manier te beperken, moeten we een _filter_instellen.
+Wanneer een gebruiker een bepaald facet selecteert, bijvoorbeeld door te klikken op de categorie **redmiddel en beveiligd-wachtwoord** verificatie, moeten alleen hotels die zijn opgegeven als deze categorie, worden geretourneerd in de resultaten. Als u een zoek opdracht op deze manier wilt beperken, moet u een _filter_instellen.
 
-1. Vervang de **methode RunQueryAsync** door de volgende code. In de eerste plaats is er een categoriefiltertekenreeks en een tekenreeks van het amenheidsfilter nodig en wordt de parameter **Filter** van de **parameter SearchParameters ingesteld.**
+1. Vervang de methode **RunQueryAsync** door de volgende code. In eerste instantie neemt het een categorie filter reeks en een Amenity-filter teken reeks op en stelt de **filter** parameter van de **SearchParameters**in.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
@@ -316,13 +316,13 @@ Wanneer een gebruiker bijvoorbeeld een bepaald facet selecteert, klikt hij op de
         }
     ```
 
-    We hebben de eigenschappen **Categorie** en **Tags** toegevoegd aan de lijst **met Objecten selecteren** om terug te keren. Deze toevoeging is geen vereiste voor facet navigatie om te werken, maar we gebruiken deze informatie om te controleren of we correct filteren.
+    De eigenschappen **categorie** en **Tags** zijn toegevoegd aan de lijst met **geselecteerde** items die moeten worden geretourneerd. Deze toevoeging is niet vereist voor het werken met facet navigatie, maar we gebruiken deze informatie om te controleren of er correct wordt gefilterd.
 
-### <a name="add-lists-of-facet-links-to-the-view"></a>Lijsten met facetkoppelingen toevoegen aan de weergave
+### <a name="add-lists-of-facet-links-to-the-view"></a>Lijsten met facet koppelingen toevoegen aan de weer gave
 
-Het uitzicht zal een aantal belangrijke veranderingen vereisen. 
+Er zijn enkele belang rijke wijzigingen vereist voor de weer gave. 
 
-1. Begin met het openen van het bestand hotels.css (in de map wwwroot/css) en voeg de volgende klassen toe.
+1. Begin met het openen van het bestand Hotels. CSS (in de map wwwroot/CSS) en voeg de volgende klassen toe.
 
     ```html
     .facetlist {
@@ -344,7 +344,7 @@ Het uitzicht zal een aantal belangrijke veranderingen vereisen.
     }
     ```
 
-2. Voor de weergave organiseren we de uitvoer in een tabel, om de facetlijsten aan de linkerkant en de resultaten aan de rechterkant netjes uit te lijnen. Open het bestand index.cshtml. Vervang de volledige inhoud &lt;&gt; van de HTML-hoofdtags door de volgende code.
+2. Voor de weer gave wordt de uitvoer in een tabel ingedeeld, zodat de facet lijsten op een overzichtelijke manier worden uitgelijnd op de linkerkant en de resultaten aan de rechter kant. Open het bestand index. cshtml. Vervang de volledige inhoud van de HTML &lt;-&gt; hoofdtekst Tags, met de volgende code.
 
     ```cs
     <body>
@@ -524,40 +524,40 @@ Het uitzicht zal een aantal belangrijke veranderingen vereisen.
     </body>
     ```
 
-    Let op het gebruik van de **Html.ActionLink-aanroep.** Deze aanroep communiceert geldige filtertekenreeksen naar de controller, wanneer de gebruiker op een facetkoppeling klikt. 
+    Let op het gebruik van de **HTML. ActionLink-** aanroep. Met deze aanroep worden geldige filter teken reeksen naar de controller gecommuniceerd wanneer de gebruiker op een facet koppeling klikt. 
 
 ### <a name="run-and-test-the-app"></a>De app uitvoeren en testen
 
-Het voordeel van facet navigatie aan de gebruiker is dat ze zoekopdrachten kunnen beperken met een enkele klik, die we kunnen laten zien in de volgende volgorde.
+Het voor deel van facet navigatie naar de gebruiker is dat de zoek opdracht met één klik kan worden beperkt, wat in de volgende volg orde kan worden weer gegeven.
 
-1. Voer de app uit en typ 'luchthaven' als zoektekst. Controleer of de lijst met facetten netjes naar links wordt weergegeven. Deze facetten zijn allemaal van toepassing op hotels die "luchthaven" in hun tekst gegevens, met een telling van hoe vaak ze voorkomen.
+1. Voer de app uit, typ "lucht haven" als Zoek tekst. Controleer of de lijst met facetten netjes aan de linkerkant wordt weer gegeven. Deze facetten zijn allemaal van toepassing op Hotels met ' lucht haven ' in hun tekst gegevens, met een telling van hoe vaak ze optreden.
 
-    ![Facet-navigatie gebruiken om een zoekopdracht op "luchthaven" te beperken](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
+    ![Facet navigatie gebruiken om een zoek opdracht van ' lucht haven ' te beperken](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-2. Klik op de categorie **Resort en Spa.** Controleer of alle resultaten in deze categorie vallen.
+2. Klik op de categorie **redmiddel en beveiligd-wachtwoord** verificatie. Controleer of alle resultaten in deze categorie zijn.
 
-    ![Vernauwing van de zoektocht naar "Resort en Spa"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
+    ![De zoek opdracht beperken tot "redmiddel en beveiligd-wachtwoord verificatie"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-3. Klik op de **continentale ontbijtvoorziening.** Controleer of alle resultaten nog steeds in de categorie "Resort and Spa" vallen, met de geselecteerde voorzieningen.
+3. Klik op het **continentale ontbijt** Amenity. Controleer of alle resultaten zich nog in de categorie "redmiddel" en "Spa" bevinden, met de geselecteerde Amenity.
 
-    ![Vernauwing van de zoektocht naar "continentaal ontbijt"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
+    ![De zoek opdracht beperken tot "continent ontbijt"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-4. Probeer een andere categorie te selecteren, vervolgens een voorziening, en bekijk de vernauwende resultaten. Probeer dan andersom, een voorziening, dan een categorie.
+4. Selecteer een andere categorie, vervolgens één Amenity en Bekijk de beperkende resultaten. Ga vervolgens op een andere manier te ronden, één Amenity en vervolgens één categorie.
 
     >[!Note]
-    > Wanneer één selectie wordt gemaakt in een facetlijst (zoals categorie), wordt elke eerdere selectie in de categorielijst overschreven.
+    > Wanneer een selectie wordt gemaakt in een facet lijst (bijvoorbeeld categorie), wordt een eerdere selectie in de categorie lijst overschreven.
 
 ## <a name="takeaways"></a>Opgedane kennis
 
-Denk aan de volgende afhaalmaaltijden van dit project:
+Houd rekening met de volgende Takeaways van dit project:
 
-* Het is noodzakelijk om elke eigenschap te markeren als **IsFacetable,** als ze moeten worden opgenomen in facet navigatie.
-* Facet-navigatie biedt een gebruiker een eenvoudige en intuïtieve manier om een zoekopdracht te verkleinen.
-* Facet navigatie is het best onderverdeeld in secties (categorieën van het hotel, voorzieningen van een hotel, prijsklassen, rating bereiken, enz.), elke sectie met een geschikte rubriek.
+* Het is essentieel dat elke eigenschap als **IsFacetable**wordt gemarkeerd als deze moeten worden opgenomen in de facet navigatie.
+* Facet navigatie biedt een gebruiker een gemakkelijke en intuïtieve manier om een zoek opdracht te verfijnen.
+* Facet navigatie is het meest geschikt voor secties (categorieën Hotel, voorzieningen van een hotel, prijs bereik, classificatie bereik enz.), elke sectie met een passende kop.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende tutorial kijken we naar het bestellen van resultaten. Tot op dit punt worden de resultaten eenvoudig geordend in de volgorde waarin ze zich in de database bevinden.
+In de volgende zelf studie kijken we naar de volg orde van resultaten. Tot nu toe worden de resultaten geordend in de volg orde waarin ze zich bevinden in de-data base.
 
 > [!div class="nextstepaction"]
-> [C# zelfstudie: De resultaten bestellen- Azure Cognitive Search](tutorial-csharp-orders.md)
+> [C#-zelf studie: de resultaten best Ellen-Azure Cognitive Search](tutorial-csharp-orders.md)

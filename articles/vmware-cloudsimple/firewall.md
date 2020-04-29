@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple - Firewalltabellen en -regels instellen
-description: Beschrijft hoe u Private Cloud-firewalltabellen en -regels instelt om het verkeer op subnetten en VLAN's te beperken.
+title: 'Azure VMware-oplossing op CloudSimple: Firewall tabellen en-regels instellen'
+description: Hierin wordt beschreven hoe u Firewall tabellen en-regels voor de Privécloud instelt om verkeer op subnetten en VLAN'S te beperken.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,71 +9,71 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244665"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Firewalltabellen en -regels instellen voor privéclouds
+# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Firewall tabellen en-regels voor persoonlijke Clouds instellen
 
-Met firewalltabellen en de bijbehorende regels u beperkingen opgeven voor verkeer dat van toepassing is op bepaalde subnetten en VLAN's.
+Met de firewall tabellen en de gekoppelde regels kunt u beperkingen opgeven voor het verkeer dat moet worden toegepast op bepaalde subnetten en VLAN'S.
 
-* Een subnet kan worden gekoppeld aan één firewalltabel.
-* Een firewalltabel kan worden gekoppeld aan meerdere subnetten.
+* Een subnet kan worden gekoppeld aan één firewall tabel.
+* Een firewall tabel kan worden gekoppeld aan meerdere subnetten.
 
-## <a name="add-a-new-firewall-table"></a>Een nieuwe firewalltabel toevoegen
+## <a name="add-a-new-firewall-table"></a>Een nieuwe firewall tabel toevoegen
 
-1. [Toegang tot de CloudSimple-portal](access-cloudsimple-portal.md) en selecteer **Netwerk** in het zijmenu.
-2. Selecteer **Firewalltabellen**.
-3. Selecteer **Firewalltabel maken**.
+1. [Open de CloudSimple-Portal](access-cloudsimple-portal.md) en selecteer **netwerk** in het menu aan de zijkant.
+2. Selecteer **firewall tabellen**.
+3. Selecteer **firewall tabel maken**.
 
-    ![VLAN/subnetpagina](media/firewall-tables-page.png)
+    ![VLAN/subnet-pagina](media/firewall-tables-page.png)
 
 4. Voer een naam in voor de tabel.
-5. Er wordt een standaardregel voor de tabel weergegeven. Klik **op Nieuwe regel maken** om een extra regel te maken. Zie de volgende procedure voor meer informatie.
-6. Klik **op Gereed** om de firewalltabel op te slaan.
+5. Er wordt een standaard regel voor de tabel weer gegeven. Klik op **nieuwe regel maken** om een extra regel te maken. Raadpleeg de volgende procedure voor meer informatie.
+6. Klik op **gereed** om de firewall tabel op te slaan.
 
 > [!IMPORTANT]
-> U maximaal twee Firewall-tabellen maken per Private Cloud.
+> U kunt Maxi maal twee firewall tabellen per Privécloud maken.
 
 ## <a name="firewall-rules"></a>Firewall-regels
 
-Firewallregels bepalen hoe de firewall specifieke typen verkeer behandelt. Op het tabblad **Regels** voor een geselecteerde firewalltabel worden alle bijbehorende regels weergegeven.
+Firewall regels bepalen hoe de firewall specifieke typen verkeer behandelt. Het tabblad **regels** voor een geselecteerde firewall tabel bevat een lijst met alle gekoppelde regels.
 
-![Tabel Firewallregels](media/firewall-rules-tab.png)
+![Tabel met firewall regels](media/firewall-rules-tab.png)
 
 ## <a name="create-a-firewall-rule"></a>Een firewallregel maken
 
-1. Geef de instellingen weer om een firewallregel op een van de volgende manieren te maken:
-    * Klik **op Regel toevoegen** bij het maken van een firewalltabel.
-    * Selecteer een bepaalde firewalltabel op de pagina **Netwerk > Firewalltabellen** en klik op **Nieuwe firewallregel maken**.
+1. De instellingen weer geven om een firewall regel op een van de volgende manieren te maken:
+    * Klik op **regel toevoegen** bij het maken van een firewall tabel.
+    * Selecteer een bepaalde firewall tabel op de pagina **netwerk > firewall tabellen** en klik op **nieuwe firewall regel maken**.
 2. Stel de regel als volgt in:
-    * **Naam**. Geef de regel een naam.
+    * **Naam**. Geef een naam op voor de regel.
     * **Prioriteit**. Wijs een prioriteit toe aan de regel. Regels met lagere getallen worden eerst uitgevoerd.
-    * **Verkeerstype**. Selecteer of de regel voor Private Cloud, Internet of VPN-verkeer (stateless) of voor een openbaar IP-adres (stateful) is.
-    * **Protocol**. Selecteer het protocol dat onder de regel valt (TCP, UDP of een protocol).
-    * **Richting**. Selecteer of de regel voor binnenkomend of uitgaand verkeer is. U moet afzonderlijke regels definiëren voor binnenkomend en uitgaand verkeer.
-    * **Actie**. Selecteer de actie die u wilt uitvoeren als de regel overeenkomt met (toestaan of weigeren).
-    * **Bron**. Geef de bronnen op die onder de regel vallen (CIDR-blok, interne of een bron).
-    * **Bronpoortbereik**. Geef het bereik van de poorten op waarop de regel van toepassing is.
-    * **Richting**. Selecteer binnenkomend of uitgaand.
-    * **Bestemming**. Geef de bestemmingen op die onder de regel vallen (CIDR-blok, interne of een bron).
-    * **Bronpoortbereik**. Geef het bereik van de poorten op waarop de regel van toepassing is.
+    * **Verkeers type**. Selecteer of de regel voor Privécloud, Internet of VPN-verkeer (stateless) of voor een openbaar IP-adres (stateful) is.
+    * **Protocol**. Selecteer het protocol dat onder de regel valt (TCP, UDP of een Protocol).
+    * **Richting**. Selecteer of de regel voor inkomend of uitgaand verkeer is. U moet afzonderlijke regels voor binnenkomend en uitgaand verkeer definiëren.
+    * **Actie**. Selecteer de actie die moet worden uitgevoerd als de regel overeenkomt (toestaan of weigeren).
+    * **Bron**. Geef de bronnen op die onder de regel vallen (CIDR-blok, intern of een wille keurige bron).
+    * **Bron poort bereik**. Geef het bereik van poorten op waarop de regel van toepassing is.
+    * **Richting**. Selecteer inkomend of uitgaand.
+    * **Doel**. Geef de bestemmingen op die onder de regel vallen (CIDR-blok, intern of een wille keurige bron).
+    * **Bron poort bereik**. Geef het bereik van poorten op waarop de regel van toepassing is.
 
-    ![Regels voor het toevoegen van firewalltabelen](media/firewall-rule-create.png)
+    ![Firewall tabel regel toevoegen](media/firewall-rule-create.png)
 
-3. Klik **op Gereed** om de regel op te slaan en deze toe te voegen aan de lijst met regels voor de firewalltabel.
+3. Klik op **gereed** om de regel op te slaan en toe te voegen aan de lijst met regels voor de firewall tabel.
 
 > [!IMPORTANT]
-> Elke Firewall-tabel kan maximaal 10 binnenkomende regels en 20 uitgaande regels hebben. Deze limieten kunnen worden verhoogd door [contact op te nemen met de ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+> Elke firewall tabel kan Maxi maal 10 regels voor binnenkomende verbindingen en 20 regels voor uitgaande verbindingen hebben. Deze limieten kunnen worden verhoogd door [contact op](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te nemen met de ondersteuning.
 
-## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>VLAN's/subnetten koppelen
+## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>VLAN'S/subnetten koppelen
 
-Nadat u een firewalltabel hebt gedefinieerd, u de subnetten opgeven waarop de regels in de tabel van toepassing zijn.
+Nadat u een firewall tabel hebt gedefinieerd, kunt u de subnetten opgeven waarop de regels in de tabel van toepassing zijn.
 
-1. Selecteer op de pagina > **Netwerkfirewalltabellen** een firewalltabel. **Network**
-2. Open het tabblad **Gekoppelde VLAN's/Subnet.**
-3. Klik **op Koppelen aan een VLAN/Subnet**.
-4. Selecteer de Private Cloud en VLAN. De bijbehorende subnetnaam en CIDR-blok worden weergegeven.
-5. Klik **op Verzenden**.
+1. Selecteer een firewall tabel op de pagina **netwerk** > **firewall tabellen** .
+2. Open het tabblad **gekoppelde vlan's/subnet** .
+3. Klik op **koppelen aan een VLAN/subnet**.
+4. Selecteer de Privécloud en het VLAN. De bijbehorende subnetnaam en het CIDR-blok worden weer gegeven.
+5. Klik op **verzenden**.

@@ -1,6 +1,6 @@
 ---
-title: Beschikbaarheidsgroeplistener configureren voor SQL Server op virtuele RHEL-machines in Azure - Virtuele Linux-machines | Microsoft Documenten
-description: Meer informatie over het instellen van een bronvan beschikbaarheidsgroeplistener in SQL Server op Virtuele RHEL-machines in Azure
+title: De listener voor de beschikbaarheids groep configureren voor SQL Server op virtuele RHEL-machines in azure-Linux Virtual Machines | Microsoft Docs
+description: Meer informatie over het instellen van een beschikbaarheids groep-listener in SQL Server op virtuele RHEL-machines in azure
 ms.service: virtual-machines-linux
 ms.subservice: ''
 ms.topic: tutorial
@@ -9,148 +9,148 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 80557eb3776ba17a4922d1fc384b87419ffbd67e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79096595"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Beschikbaarheidsgroeplistener configureren voor SQL Server op virtuele RHEL-machines in Azure
+# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelf studie: een beschikbaarheids groep-listener configureren voor SQL Server op virtuele RHEL-machines in azure
 
 > [!NOTE]
-> De tutorial gepresenteerd is in **openbare preview**. 
+> De zelf studie wordt weer gegeven in de **open bare preview**. 
 >
-> We gebruiken SQL Server 2017 met RHEL 7.6 in deze zelfstudie, maar het is mogelijk om SQL Server 2019 te gebruiken in RHEL 7 of RHEL 8 om HA te configureren. De opdrachten voor het configureren van bronnen voor beschikbaarheidsgroepen zijn gewijzigd in RHEL 8 en u wilt het artikel, [Beschikbaarheidsgroepbron maken](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) en RHEL 8-resources bekijken voor meer informatie over de juiste opdrachten.
+> In deze zelf studie gebruiken we SQL Server 2017 met RHEL 7,6, maar het is wel mogelijk om SQL Server 2019 te gebruiken in RHEL 7 of RHEL 8 om HA te configureren. De opdrachten voor het configureren van resources van de beschikbaarheids groep zijn gewijzigd in RHEL 8 en u wilt het artikel bekijken, [resource voor de beschikbaarheids groep maken](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) en RHEL 8 resources voor meer informatie over de juiste opdrachten.
 
-In deze zelfstudie worden stappen doorlopen over het maken van een authenticiteitsgroeplistener voor uw SQL-servers op virtuele RHEL-machines in Azure. U leert het volgende:
+Deze zelf studie gaat over de stappen voor het maken van een beschikbaarheids groep-listener voor uw SQL-servers op virtuele RHEL-machines in Azure. U leert het volgende:
 
 > [!div class="checklist"]
-> - Een load balancer maken in de Azure-portal
-> - De back-endpool configureren voor de load balancer
-> - Een sonde maken voor de load balancer
-> - De regels voor het balanceren van de lastenverdeling instellen
-> - De load balancer-bron in het cluster maken
-> - De authenticiteit van de beschikbaarheidsgroep maken
-> - Test verbinding maken met de luisteraar
+> - Maak een load balancer in het Azure Portal
+> - De back-end-pool voor de load balancer configureren
+> - Een test maken voor de load balancer
+> - De taakverdelings regels instellen
+> - De load balancer-resource in het cluster maken
+> - De listener voor de beschikbaarheids groep maken
+> - De verbinding met de listener testen
 > - Een failover testen
 
 ## <a name="prerequisite"></a>Vereiste
 
-Voltooide [ **zelfstudie: beschikbaarheidsgroepen configureren voor SQL Server op virtuele RHEL-machines in Azure**](sql-server-linux-rhel-ha-stonith-tutorial.md)
+Voltooide [ **zelf studie: beschikbaarheids groepen configureren voor SQL Server op virtuele RHEL-machines in azure**](sql-server-linux-rhel-ha-stonith-tutorial.md)
 
-## <a name="create-the-load-balancer-in-the-azure-portal"></a>De load balancer maken in de Azure-portal
+## <a name="create-the-load-balancer-in-the-azure-portal"></a>Maak de load balancer in het Azure Portal
 
-De volgende instructies nemen u deel aan stappen 1 tot en met 4 van de [load balancer maken en configureren in het azure-portalgedeelte](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal) van het artikel [Load balancer - Azure-portal.](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+De volgende instructies begeleidt u stapsgewijs door de stappen 1 tot en met 4 van de sectie [het Load Balancer maken en configureren in het Azure Portal](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal) gedeelte van het [Azure Portal artikel Load Balancer](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md) .
 
 ### <a name="create-the-load-balancer"></a>Load balancer maken
 
-1. Open in de Azure-portal de brongroep die de virtuele SQL Server-machines bevat. 
+1. Open in de Azure Portal de resource groep die de SQL Server virtuele machines bevat. 
 
-2. Klik in de resourcegroep op **Toevoegen**.
+2. Klik in de resource groep op **toevoegen**.
 
-3. Zoek naar **load balancer** en selecteer vervolgens in de zoekresultaten **Load Balancer**, die wordt gepubliceerd door **Microsoft**.
+3. Zoek naar **Load Balancer** en selecteer in de zoek resultaten **Load Balancer**, dat wordt gepubliceerd door **micro soft**.
 
-4. Klik op het blade **Load Balancer** op **Maken**.
+4. Klik op de Blade **Load Balancer** op **maken**.
 
-5. Configureer in het dialoogvenster **Load balancer maken** de load balancer als volgt:
+5. Configureer in het dialoog venster **Load Balancer maken** de Load Balancer als volgt:
 
    | Instelling | Waarde |
    | --- | --- |
-   | **Naam** |Een tekstnaam die de load balancer vertegenwoordigt. Bijvoorbeeld **SQLLB**. |
+   | **Naam** |Een tekst naam die de load balancer vertegenwoordigt. Bijvoorbeeld **sqlLB**. |
    | **Type** |**Intern** |
-   | **Virtueel netwerk** |De standaard VNet die is gemaakt, moet **VM1VNET de naam VM1VNET krijgen.** |
-   | **Subnet** |Selecteer het subnet waarin de SQL Server-instanties zich bevinden. De standaardinstelling moet **VM1Subnet**zijn.|
-   | **Toewijzing ip-adres** |**Statisch** |
-   | **Privé IP-adres** |Gebruik `virtualip` het IP-adres dat in het cluster is gemaakt. |
-   | **Abonnement** |Gebruik het abonnement dat is gebruikt voor uw resourcegroep. |
-   | **Resourcegroep** |Selecteer de brongroep waarin de SQL Server-instanties zich bevinden. |
-   | **Locatie** |Selecteer de Azure-locatie waarin de SQL Server-instanties zich bevinden. |
+   | **Virtueel netwerk** |Het standaard-VNet dat is gemaakt, moet de naam **VM1VNET**hebben. |
+   | **Subnetrouter** |Selecteer het subnet waarin de SQL Server exemplaren zich bevinden. De standaard waarde moet **VM1Subnet**zijn.|
+   | **Toewijzing van IP-adres** |**Statisch** |
+   | **Privé IP-adres** |Gebruik het `virtualip` IP-adres dat in het cluster is gemaakt. |
+   | **Abonnement** |Gebruik het abonnement dat is gebruikt voor uw resource groep. |
+   | **Resourcegroep** |Selecteer de resource groep waarvan de SQL Server exemplaren zich bevinden. |
+   | **Locatie** |Selecteer de Azure-locatie waar de SQL Server exemplaren zich bevinden. |
 
-### <a name="configure-the-back-end-pool"></a>De back-endpool configureren
-Azure roept de back-end-end pool *backend pool*. In dit geval is de back-endpool de adressen van de drie SQL Server-exemplaren in uw beschikbaarheidsgroep. 
+### <a name="configure-the-back-end-pool"></a>De back-end-pool configureren
+Azure roept de back-end *-back-* mailadres groep aan. In dit geval is de back-end-pool de adressen van de drie SQL Server exemplaren in uw beschikbaarheids groep. 
 
-1. Klik in uw resourcegroep op de load balancer die u hebt gemaakt. 
+1. Klik in de resource groep op het load balancer dat u hebt gemaakt. 
 
-2. Klik **op Instellingen**op **Backend-groepen**.
+2. Klik bij **instellingen**op **back-end-Pools**.
 
-3. Klik op **Backend-groepen**op **Toevoegen** om een back-endadresgroep te maken. 
+3. Klik op **toevoegen** op back-end- **Pools**om een back-end-adres groep te maken. 
 
-4. Typ **in Backend pool toevoegen**onder **Naam**een naam voor de back-endpool.
+4. Typ bij **naam**de **groep back-end toevoegen**een naam voor de back-end-pool.
 
-5. Selecteer Virtuele machine **onder Gekoppeld aan**, selecteer Virtuele **machine**. 
+5. Selecteer onder **gekoppeld aan**de optie **virtuele machine**. 
 
 6. Selecteer elke virtuele machine in de omgeving en koppel het juiste IP-adres aan elke selectie.
 
-    :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-backend-pool.png" alt-text="Backendpool toevoegen":::
+    :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-backend-pool.png" alt-text="Back-end-pool toevoegen":::
 
-7. Klik op**toevoegen**. 
+7. Klik op **Add**. 
 
-### <a name="create-a-probe"></a>Een sonde maken
+### <a name="create-a-probe"></a>Een test maken
 
-De sonde definieert hoe Azure verifieert welke SQL Server-exemplaren momenteel eigenaar is van de listener van de beschikbaarheidsgroep. Azure sondes de service op basis van het IP-adres op een poort die u definieert wanneer u de sonde maakt.
+De test definieert hoe Azure controleert welke van de SQL Server exemplaren momenteel eigenaar is van de beschikbaarheids groep-listener. Azure controleert de service op basis van het IP-adres op een poort die u opgeeft bij het maken van de test.
 
-1. Klik op het pagina's met de **lastenbalans instellingen** op **Sondes gezondheid**. 
+1. Klik op de Blade load balancer **instellingen** op **status controles**. 
 
-2. Klik op het blad **Health probes** op **Toevoegen**.
+2. Klik op de Blade **status tests** op **toevoegen**.
 
-3. Configureer de sonde op het **sondeblad toevoegen.** Gebruik de volgende waarden om de sonde te configureren:
+3. Configureer de test op de Blade **test toevoegen** . Gebruik de volgende waarden om de test te configureren:
 
    | Instelling | Waarde |
    | --- | --- |
-   | **Naam** |Een tekstnaam die de sonde voorstelt. **SQLAlwaysOnEndPointProbe**. |
-   | **Protocol** |**TCP** |
-   | **Poort** |U elke beschikbare poort gebruiken. Bijvoorbeeld *59999*. |
-   | **Interval** |*5* |
-   | **Ongezonde drempelwaarde** |*2* |
+   | **Naam** |Een tekst naam die de test weergeeft. Bijvoorbeeld **SQLAlwaysOnEndPointProbe**. |
+   | **Protocolsubstatus** |**TCP** |
+   | **Importeer** |U kunt elke beschik bare poort gebruiken. Bijvoorbeeld *59999*. |
+   | **Bereik** |*5* |
+   | **Drempel waarde voor onjuiste status** |*2* |
 
 4.  Klik op **OK**. 
 
-5. Meld u aan bij al uw virtuele machines en open de sondepoort met de volgende opdrachten:
+5. Meld u aan bij alle virtuele machines en open de test poort met de volgende opdrachten:
 
     ```bash
     sudo firewall-cmd --zone=public --add-port=59999/tcp --permanent
     sudo firewall-cmd --reload
     ```
 
-Azure maakt de sonde en gebruikt deze vervolgens om te testen welke SQL Server-instantie de listener heeft voor de beschikbaarheidsgroep.
+Azure maakt de test en gebruikt deze om te testen welke SQL Server instantie de listener voor de beschikbaarheids groep heeft.
 
-### <a name="set-the-load-balancing-rules"></a>De regels voor het balanceren van de lastenverdeling instellen
+### <a name="set-the-load-balancing-rules"></a>De taakverdelings regels instellen
 
-De regels voor taakverdeling configureren hoe de load balancer verkeer doorstuurt naar de SQL Server-instanties. Voor deze load balancer schakelt u direct serverretour in omdat slechts één van de drie SQL Server-exemplaren tegelijkertijd eigenaar is van de bron van de beschikbaarheidsgroeplistener.
+De taakverdelings regels configureren hoe de load balancer verkeer naar de SQL Server-instanties routeert. Voor deze load balancer schakelt u Direct Server Return in, omdat slechts één van de drie SQL Server exemplaren de listener-resource van de beschikbaarheids groep tegelijk bezit.
 
-1. Klik op het **pagina-instellingenblad van** de lastenbalans op **Taakverdelingsregels**. 
+1. Klik op de Blade load balancer **instellingen** op taakverdelings **regels**. 
 
-2. Klik op het blad **Taakverdelingsregels** op **Toevoegen**.
+2. Klik op de Blade taakverdelings **regels** op **toevoegen**.
 
-3. Configureer op het blad **Regelregels voor lastenverdeling toevoegen** de regel voor het balanceren van de lasten. Gebruik de volgende instellingen: 
+3. Configureer op de Blade taakverdelings **regels toevoegen** de taakverdelings regel. Gebruik de volgende instellingen: 
 
    | Instelling | Waarde |
    | --- | --- |
-   | **Naam** |Een tekstnaam die de regels voor het balanceren van de last en de tijd weergeeft. **SQLAlwaysOnEndPointListener**. |
-   | **Protocol** |**TCP** |
-   | **Poort** |*1433* |
-   | **Backend-poort** |*1433*. Deze waarde wordt genegeerd omdat deze regel **Zwevend IP (direct serverretour)** gebruikt. |
-   | **Sonde** |Gebruik de naam van de sonde die u voor deze load balancer hebt gemaakt. |
+   | **Naam** |Een tekst naam die de taakverdelings regels vertegenwoordigt. Bijvoorbeeld **SQLAlwaysOnEndPointListener**. |
+   | **Protocolsubstatus** |**TCP** |
+   | **Importeer** |*1433* |
+   | **Backend-poort** |*1433*. deze waarde wordt genegeerd omdat deze regel een **zwevend IP-adres (direct server return)** gebruikt. |
+   | **Meet** |Gebruik de naam van de test die u hebt gemaakt voor deze load balancer. |
    | **Sessiepersistentie** |**Geen** |
-   | **Niet-actieve time-out (minuten)** |*4* |
-   | **Zwevend IP (direct server retour)** |**Ingeschakeld** |
+   | **Time-out voor inactiviteit (minuten)** |*4* |
+   | **Zwevend IP (Direct Server Return)** |**Ingeschakeld** |
 
-   :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-load-balancing-rule.png" alt-text="Regel voor taakverdeling toevoegen":::
+   :::image type="content" source="media/sql-server-linux-rhel-ha-listener-tutorial/add-load-balancing-rule.png" alt-text="Taakverdelings regel toevoegen":::
 
 4. Klik op **OK**. 
-5. Azure configureert de regel voor het balanceren van de regel. Nu is de load balancer geconfigureerd om verkeer te routeren naar het SQL Server-exemplaar dat de listener host voor de beschikbaarheidsgroep. 
+5. De taakverdelings regel wordt door Azure geconfigureerd. Nu is de load balancer geconfigureerd om verkeer te routeren naar het SQL Server-exemplaar dat als host fungeert voor de listener voor de beschikbaarheids groep. 
 
-Op dit moment heeft de resourcegroep een load balancer die verbinding maakt met alle SQL Server-machines. De load balancer bevat ook een IP-adres voor de SQL Server Always On availability group listener, zodat elke machine kan reageren op verzoeken om de beschikbaarheidsgroepen.
+Op dit moment heeft de resource groep een load balancer die is verbonden met alle SQL Server machines. De load balancer bevat ook een IP-adres voor de SQL Server always on-beschikbaarheids groep, zodat elke computer kan reageren op aanvragen voor de beschikbaarheids groepen.
 
-## <a name="create-the-load-balancer-resource-in-the-cluster"></a>De load balancer-bron in het cluster maken
+## <a name="create-the-load-balancer-resource-in-the-cluster"></a>De load balancer-resource in het cluster maken
 
-1. Log in op de primaire virtuele machine. We moeten de bron maken om de Azure load balancer probe-poort in te schakelen (59999 wordt in ons voorbeeld gebruikt). Voer de volgende opdracht uit:
+1. Meld u aan bij de primaire virtuele machine. We moeten de resource maken om de Azure load balancer test poort in te scha kelen (59999 wordt in ons voor beeld gebruikt). Voer de volgende opdracht uit:
 
     ```bash
     sudo pcs resource create azure_load_balancer azure-lb port=59999
     ```
 
-1. Maak een groep `virtualip` die `azure_load_balancer` de bron en de resource bevat:
+1. Maak een groep die de `virtualip` resources en `azure_load_balancer` bevat:
 
     ```bash
     sudo pcs resource group add virtualip_group azure_load_balancer virtualip
@@ -158,18 +158,18 @@ Op dit moment heeft de resourcegroep een load balancer die verbinding maakt met 
 
 ### <a name="add-constraints"></a>Beperkingen toevoegen
 
-1. Er moet een colocatiebeperking worden geconfigureerd om ervoor te zorgen dat het IP-adres azure load balancer en de AG-bron op hetzelfde knooppunt worden uitgevoerd. Voer de volgende opdracht uit:
+1. Er moet een beperking voor een co-locatie worden geconfigureerd om ervoor te zorgen dat de Azure load balancer IP-adres en de AG-resource op hetzelfde knoop punt worden uitgevoerd. Voer de volgende opdracht uit:
 
     ```bash
     sudo pcs constraint colocation add azure_load_balancer ag_cluster-master INFINITY with-rsc-role=Master
     ```
-1. Maak een bestelbeperking om ervoor te zorgen dat de AG-bron actief is vóór het IP-adres van azure load balancer. Hoewel de colocatiebeperking een bestelbeperking impliceert, dwingt dit deze af.
+1. Maak een ordenings beperking om ervoor te zorgen dat de AG-bron vóór het Azure load balancer IP-adres actief is. Hoewel de beperking voor de co-locatie een volgorde beperking impliceert, wordt deze afgedwongen.
 
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start azure_load_balancer
     ```
 
-1. Voer de volgende opdracht uit om de beperkingen te verifiëren:
+1. Voer de volgende opdracht uit om de beperkingen te controleren:
 
     ```bash
     sudo pcs constraint list --full
@@ -188,11 +188,11 @@ Op dit moment heeft de resourcegroep een load balancer die verbinding maakt met 
     Ticket Constraints:
     ```
 
-## <a name="create-the-availability-group-listener"></a>De authenticiteit van de beschikbaarheidsgroep maken
+## <a name="create-the-availability-group-listener"></a>De listener voor de beschikbaarheids groep maken
 
-1. Voer op het primaire knooppunt de volgende opdracht uit in SQLCMD of SSMS:
+1. Voer op het primaire knoop punt de volgende opdracht uit in SQLCMD of SSMS:
 
-    - Vervang het IP-adres `virtualip` dat hieronder wordt gebruikt door het IP-adres.
+    - Vervang het IP-adres dat hieronder wordt `virtualip` gebruikt met het IP-adres.
 
     ```sql
     ALTER AVAILABILITY
@@ -203,65 +203,65 @@ Op dit moment heeft de resourcegroep een load balancer die verbinding maakt met 
     GO
     ```
 
-1. Log in op elk VM-knooppunt. Gebruik de volgende opdracht om het hosts-bestand te `ag1-listener` openen en de oplossing van de hostnaam in te stellen voor elke machine.
+1. Meld u aan bij elk VM-knoop punt. Gebruik de volgende opdracht om het hosts-bestand te openen en de naam omzetting van de `ag1-listener` host voor de op elke computer in te stellen.
 
     ```
     sudo vi /etc/hosts
     ```
 
-    Voeg in de `i` **vi-editor** tekst in en voeg op een `ag1-listener`lege regel het IP van de . Voeg `ag1-listener` vervolgens na een spatie naast het IP-adres toe.
+    Voer `i` in de `ag1-listener` **VI** -editor tekst in en voeg op een lege regel het IP-adres van de toe. Voeg vervolgens `ag1-listener` toe na een spatie naast het IP-adres.
 
     ```output
     <IP of ag1-listener> ag1-listener
     ```
 
-    Als u de **vi-editor** wilt afsluiten, drukt `:wq` u eerst op de **Esc-toets** en voert u de opdracht in om het bestand te schrijven en af te sluiten. Doe dit op elk knooppunt.
+    Als u de **VI** -editor wilt afsluiten, klikt u eerst op **ESC** en voert u `:wq` vervolgens de opdracht in om het bestand te schrijven en af te sluiten. Doe dit op elk knoop punt.
 
-## <a name="test-the-listener-and-a-failover"></a>Test de luisteraar en een failover
+## <a name="test-the-listener-and-a-failover"></a>De listener en een failover testen
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Logboekregistratie in SQL Server testen met de listener van de beschikbaarheidsgroep
+### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Logboek registratie in SQL Server met de beschikbaarheids groep-listener testen
 
-1. Gebruik SQLCMD om u aan te melden bij het primaire knooppunt van SQL Server met de naam van de listener voor beschikbaarheidsgroepen:
+1. Gebruik SQLCMD om u aan te melden bij het primaire knoop punt van SQL Server met behulp van de naam van de beschikbaarheids groep-listener:
 
-    - Gebruik een login die eerder `<YourPassword>` is gemaakt en vervang het juiste wachtwoord. In het onderstaande voorbeeld wordt de `sa` aanmelding gebruikt die met de SQL Server is gemaakt.
+    - Gebruik een eerder gemaakte aanmelding en vervang `<YourPassword>` door het juiste wacht woord. In het voor beeld hieronder `sa` wordt gebruikgemaakt van de aanmelding die is gemaakt met de SQL Server.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
     ```
 
-1. Controleer de naam van de server waarmee u bent verbonden. Voer de volgende opdracht uit in SQLCMD:
+1. Controleer de naam van de server waarmee u verbinding hebt. Voer de volgende opdracht uit in SQLCMD:
 
     ```sql
     SELECT @@SERVERNAME
     ```
 
-    Uw uitvoer moet het huidige primaire knooppunt weergeven. Dit zou `VM1` moeten zijn als u nog nooit een failover getest.
+    In de uitvoer moet het huidige primaire knoop punt worden weer gegeven. Dit moet zijn `VM1` als u een failover nooit hebt getest.
 
-    Sluit de SQL-sessie `exit` af door de opdracht te typen.
+    Sluit de SQL-sessie af door `exit` de opdracht te typen.
 
 ### <a name="test-a-failover"></a>Een failover testen
 
-1. Voer de volgende opdracht uit om de `<VM2>` primaire replica handmatig naar of een andere replica te failoveren. Vervang `<VM2>` door de waarde van uw servernaam.
+1. Voer de volgende opdracht uit om de primaire replica hand matig `<VM2>` te failoveren naar of een andere replica. Vervang `<VM2>` door de waarde van uw server naam.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Als u uw beperkingen controleert, ziet u dat er een andere beperking is toegevoegd vanwege de handmatige failover:
+1. Als u de beperkingen controleert, ziet u dat er een andere beperking is toegevoegd vanwege de hand matige failover:
 
     ```bash
     sudo pcs constraint list --full
     ```
 
-    U ziet dat er `cli-prefer-ag_cluster-master` een beperking met id is toegevoegd.
+    U ziet dat er een beperking met de `cli-prefer-ag_cluster-master` id is toegevoegd.
 
-1. Verwijder de beperking `cli-prefer-ag_cluster-master` met ID met de volgende opdracht:
+1. Verwijder de beperking met de `cli-prefer-ag_cluster-master` id met behulp van de volgende opdracht:
 
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
     ```
 
-1. Controleer uw clusterbronnen `sudo pcs resource`met de opdracht en u moet `<VM2>`zien dat de primaire instantie nu .
+1. Controleer uw cluster bronnen met behulp `sudo pcs resource`van de opdracht en u ziet dat het primaire exemplaar nu `<VM2>`is.
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource
@@ -273,9 +273,9 @@ Op dit moment heeft de resourcegroep een load balancer die verbinding maakt met 
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. Gebruik SQLCMD om u aan te melden bij uw primaire replica met de naam van de listener:
+1. Gebruik SQLCMD om u aan te melden bij uw primaire replica met behulp van de naam van de listener:
 
-    - Gebruik een login die eerder `<YourPassword>` is gemaakt en vervang het juiste wachtwoord. In het onderstaande voorbeeld wordt de `sa` aanmelding gebruikt die met de SQL Server is gemaakt.
+    - Gebruik een eerder gemaakte aanmelding en vervang `<YourPassword>` door het juiste wacht woord. In het voor beeld hieronder `sa` wordt gebruikgemaakt van de aanmelding die is gemaakt met de SQL Server.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
@@ -287,11 +287,11 @@ Op dit moment heeft de resourcegroep een load balancer die verbinding maakt met 
     SELECT @@SERVERNAME
     ```
 
-    U moet zien dat u nu bent verbonden met de VM waarmee u het niet hebt overgemaakt.
+    U ziet nu dat u verbinding hebt met de virtuele machine waarvoor u een failover hebt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie voor meer informatie over load balancers in Azure:
 
 > [!div class="nextstepaction"]
-> [Een load balancer configureren voor een beschikbaarheidsgroep op Azure SQL Server VM's](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+> [Een load balancer configureren voor een beschikbaarheids groep op Azure SQL Server Vm's](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)

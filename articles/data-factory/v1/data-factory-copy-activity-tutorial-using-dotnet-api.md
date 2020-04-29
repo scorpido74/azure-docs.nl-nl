@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b907663971e7a8a7c3b2c6cac95c38131e1ccb26
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74931740"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Zelfstudie: een pijplijn maken met de kopieeractiviteit in .NET API
@@ -25,7 +25,7 @@ ms.locfileid: "74931740"
 > * [De wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager-sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST-API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -34,7 +34,7 @@ ms.locfileid: "74931740"
 
 In dit artikel leert u hoe u [.NET API](https://portal.azure.com) kunt gebruiken om een gegevensfactory te maken met een pijplijn waarmee gegevens worden gekopieerd van een Azure blobopslag naar een Azure SQL-database. Als u niet bekend bent met Azure Data Factory, lees dan het artikel [Inleiding tot Azure Data Factory](data-factory-introduction.md) voordat u deze zelfstudie volgt.   
 
-In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractiviteit. De kopieeractiviteit in Data Factory kopieert gegevens uit een ondersteund gegevensarchief naar een ondersteund sinkgegevensarchief. Zie [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md)en gegevensverkeer voor meer informatie over de activiteit Kopiëren .
+In deze zelfstudie maakt u een pijplijn met één activiteit erin: kopieeractiviteit. De kopieeractiviteit in Data Factory kopieert gegevens uit een ondersteund gegevensarchief naar een ondersteund sinkgegevensarchief. Zie [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md)voor meer informatie over de Kopieer activiteit.
 
 Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Meerdere activiteiten in een pijplijn](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) voor meer informatie. 
 
@@ -55,7 +55,7 @@ Een pijplijn kan meer dan één activiteit hebben. Ook kunt u twee activiteiten 
 ### <a name="create-an-application-in-azure-active-directory"></a>Een toepassing maken in Azure Active Directory
 Maak een Azure Active Directory-toepassing, maak een service-principal voor de toepassing en wijs deze toe aan de rol **Inzender Data Factory**.
 
-1. PowerShell **starten**.
+1. Start **Power shell**.
 2. Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal.
 
     ```powershell
@@ -66,7 +66,7 @@ Maak een Azure Active Directory-toepassing, maak een service-principal voor de t
     ```powershell
     Get-AzSubscription
     ```
-4. Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. ** &lt;Vervang NameOfAzureSubscription** &gt; door de naam van uw Azure-abonnement.
+4. Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang ** &lt;NameOfAzureSubscription** &gt; door de naam van uw Azure-abonnement.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -75,7 +75,7 @@ Maak een Azure Active Directory-toepassing, maak een service-principal voor de t
    > [!IMPORTANT]
    > Noteer de **SubscriptionId** en de **TenantId** uit de uitvoer van deze opdracht.
 
-5. Maak een Azure-brongroep met de naam **ADFTutorialResourceGroup** door de volgende opdracht uit te voeren in de PowerShell.
+5. Maak een Azure-resource groep met de naam **ADFTutorialResourceGroup** door de volgende opdracht uit te voeren in Power shell.
 
     ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -119,7 +119,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
 * Toepassings-id
 * Wachtwoord (opgegeven in de eerste opdracht)
 
-## <a name="walkthrough"></a>Kennismaking
+## <a name="walkthrough"></a>Walkthrough
 1. Maak met behulp van Visual Studio 2012/2013/2015 een C# .NET-consoletoepassing.
    1. Open **Visual Studio** 2012/2013/2015.
    2. Klik op **File**, houd de muisaanwijzer op **New** en klik op **Project**.
@@ -134,7 +134,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
    2. Voer de volgende opdracht uit om het Azure Active Directory-pakket te installeren (u gebruikt de Active Directory API in de code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Voeg de volgende sectie **appSetttings** toe aan het bestand **App.config**. Deze instellingen worden gebruikt door de Help-methode: **GetAuthorizationHeader**.
 
-    Vervang waarden voor ** &lt;&gt;toepassings-id,** ** &lt;wachtwoord,&gt;** ** &lt;abonnements-id&gt;** en ** &lt;tenant-id&gt; ** door uw eigen waarden.
+    Vervang waarden voor ** &lt;de toepassings&gt;-id**, ** &lt;het wacht woord&gt;**, ** &lt;de abonnements-id&gt;** en ** &lt;de Tenant-id&gt; ** door uw eigen waarden.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -169,7 +169,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
 
     ```
 
-6. Voeg de volgende code die een instantie van de klasse **DataPipelineManagementClient** maakt toe aan de **hoofdmethode.** U gebruikt dit object om een gegevensfactory, een gekoppelde service, gegevenssets voor invoer en uitvoer, en een pijplijn te maken. U gebruikt dit object ook om segmenten van een gegevensset te bewaken tijdens runtime.
+6. Voeg de volgende code toe die een instantie van de klasse **DataPipelineManagementClient** maakt in de methode **Main** . U gebruikt dit object om een gegevensfactory, een gekoppelde service, gegevenssets voor invoer en uitvoer, en een pijplijn te maken. U gebruikt dit object ook om segmenten van een gegevensset te bewaken tijdens runtime.
 
     ```csharp
     // create data factory management client
@@ -511,7 +511,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
     John, Doe
     Jane, Doe
     ```
-18. Voer het voorbeeld uit door in het menu op Foutopsporing van **Foutopsporing debuggen** -> voor foutopsporing van**foutopsporing** te klikken. Als u **Getting run details of a data slice** ziet, wacht u een paar minuten en drukt u op **ENTER**.
+18. Voer het voor beeld uit door te klikken op **debug** -> **Start Debugging** in het menu. Als u **Getting run details of a data slice** ziet, wacht u een paar minuten en drukt u op **ENTER**.
 19. Gebruik Azure Portal om te controleren of de gegevensfactory **APITutorialFactory** wordt gemaakt met de volgende artefacten:
     * Gekoppelde service: **LinkedService_AzureStorage**
     * Gegevensset: **InputDataset** en **OutputDataset**.

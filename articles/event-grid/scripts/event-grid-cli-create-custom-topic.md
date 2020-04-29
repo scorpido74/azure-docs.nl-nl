@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure CLI-script - Aangepast onderwerp maken | Microsoft Docs
-description: In dit artikel wordt een voorbeeld van Azure CLI-script weergegeven waarin wordt weergegeven hoe u een aangepast Azure Event Grid-onderwerp maakt.
+description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u een Azure Event Grid aangepast onderwerp maakt.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 2c6e027d234104d5e45c632dd73e79d8f069deb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720840"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Aangepast Event Grid-onderwerp maken met Azure CLI

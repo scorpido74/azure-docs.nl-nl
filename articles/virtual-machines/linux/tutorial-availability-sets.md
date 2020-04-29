@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Hoge beschikbaarheid voor Linux VM's in Azure
+title: 'Zelf studie: hoge Beschik baarheid voor virtuele Linux-machines in azure'
 description: In deze zelfstudie leert u hoe u de Azure CLI gebruikt om maximaal beschikbare virtuele machines in beschikbaarheidssets te implementeren
 documentationcenter: ''
 services: virtual-machines-linux
@@ -16,10 +16,10 @@ ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76277251"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Zelfstudie: Virtuele machines met hoge beschikbaarheid maken en implementeren met de Azure CLI
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 > * Een VM maken in een beschikbaarheidsset
 > * Beschikbare VM-grootten controleren
 
-Deze zelfstudie maakt gebruik van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** boven aan een codeblok.
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
@@ -103,7 +103,7 @@ az vm availability-set list-sizes \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een beschikbaarheidsset maken
@@ -115,6 +115,6 @@ Ga naar de volgende zelfstudie voor meer informatie over virtuele-machineschaals
 > [!div class="nextstepaction"]
 > [Een virtuele-machineschaalset maken](tutorial-create-vmss.md)
 
-* Ga voor meer informatie over beschikbaarheidszones naar de [documentatie beschikbaarheidszones.](../../availability-zones/az-overview.md)
-* Meer documentatie over zowel beschikbaarheidsets als beschikbaarheidszones is [hier](./manage-availability.md)ook beschikbaar.
-* Als u beschikbaarheidszones wilt uitproberen, gaat [u naar Een virtuele Linux-machine maken in een beschikbaarheidszone met de Azure CLI](./create-cli-availability-zone.md)
+* Ga naar de [Beschikbaarheidszones-documentatie](../../availability-zones/az-overview.md)voor meer informatie over beschikbaarheids zones.
+* Meer documentatie over zowel beschikbaarheids sets als beschikbaarheids zones is [hier](./manage-availability.md)ook beschikbaar.
+* Als u beschikbaarheids zones wilt uitproberen, gaat u naar [een virtuele Linux-machine maken in een beschikbaarheids zone met de Azure cli](./create-cli-availability-zone.md)

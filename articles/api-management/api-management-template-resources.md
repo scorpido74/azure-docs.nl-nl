@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-sjabloonbronnen | Microsoft Documenten
-description: Meer informatie over de typen resources die beschikbaar zijn voor gebruik in ontwikkelaarsportalsjablonen in Azure API Management.
+title: Resources voor Azure API Management-sjabloon | Microsoft Docs
+description: Meer informatie over de typen resources die beschikbaar zijn voor gebruik in ontwikkelaars Portal sjablonen in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,62 +14,62 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249501"
 ---
-# <a name="azure-api-management-template-resources"></a>Azure API Management-sjabloonbronnen
-Azure API Management biedt de volgende typen resources voor gebruik in de ontwikkelaarsportalsjablonen.  
+# <a name="azure-api-management-template-resources"></a>Resources van Azure API Management-sjabloon
+Azure API Management biedt de volgende typen resources voor gebruik in de sjablonen voor de ontwikkelaars Portal.  
   
--   [Tekenreeksbronnen](#strings)  
+-   [Teken reeks resources](#strings)  
   
--   [Glyph-bronnen](#glyphs)  
+-   [Glyph-resources](#glyphs)  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="string-resources"></a><a name="strings"></a>Tekenreeksbronnen  
- API-beheer biedt een uitgebreide set tekenreeksbronnen voor gebruik in de ontwikkelaarsportal. Deze bronnen zijn gelokaliseerd in alle talen die worden ondersteund door API-beheer. De standaardset sjablonen gebruikt deze bronnen voor paginakoppen, labels en constante tekenreeksen die worden weergegeven in de ontwikkelaarsportal. Als u een tekenreeksbron in uw sjablonen wilt gebruiken, geeft u het voorvoegsel resourcetekenreeks op, gevolgd door de tekenreeksnaam, zoals in het volgende voorbeeld wordt weergegeven.  
+##  <a name="string-resources"></a><a name="strings"></a>Teken reeks resources  
+ API Management biedt een uitgebreide set teken reeks bronnen voor gebruik in de ontwikkelaars Portal. Deze resources worden gelokaliseerd in alle talen die door API Management worden ondersteund. In de standaardset sjablonen worden deze resources gebruikt voor paginakop teksten, labels en constanten die worden weer gegeven in de ontwikkelaars Portal. Als u een teken reeks bron in uw sjablonen wilt gebruiken, geeft u het voor voegsel van de resource teken reeks op, gevolgd door de naam van de teken reeks, zoals in het volgende voor beeld.  
   
 ```  
 {% localized "Prefix|Name" %}  
   
 ```  
   
- Het volgende voorbeeld is van de sjabloon Productlijst en geeft **producten** boven aan de pagina weer.  
+ Het volgende voor beeld is afkomstig uit de sjabloon producten lijst en geeft **producten** aan de bovenkant van de pagina weer.  
   
 ```  
 <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>  
   
 ```  
   
-De volgende lokalisatieopties worden ondersteund:
+De volgende lokalisatie opties worden ondersteund:
 
 | Landinstelling    | Taal               |
 |-----------|------------------------|
-| en      | "Engels"              |
-| "cs"      | "Čeština"              |
-| "de"      | "Deutsch"              |
-| "es"      | "Español"              |
-| "fr"      | "Français"             |
-| "hu"      | "Magyar"               |
-| "het"      | "Italiano"             |
-| "ja-JP"   | "???"                |
-| "ko"      | "ーسس"                |
-| "nl"      | "Nederlands"           |
-| "pl"      | "Polski"               |
+| en      | Engelstalig              |
+| Support      | Tsjechisch              |
+| normalis      | Deutsch              |
+| s      | Spaans              |
+| nl      | Frans             |
+| hu      | Magyar               |
+| ,      | Italiano             |
+| "ja-JP"   | Japans                |
+| ko      | Koreaans                |
+| nl      | Nederlands           |
+| pl      | Poolse               |
 | "pt-br"   | "Português (Brazilië)"   |
 | "pt-pt"   | "Português (Portugal)" |
-| "ru"      | "Русский"              |
-| "sv"      | "Svenska"              |
-| "tr"      | "Türkçe"               |
-| "zh-hans" | "??????           |
-| "zh-hant" | "??????           |
+| ru      | Russisch              |
+| SV      | Svenska              |
+| formulieren      | Turks               |
+| "zh-Hans" | "中文(简体)"           |
+| "zh-hant" | "中文(繁體)"           |
 
- Raadpleeg de volgende tabellen voor de tekenreeksbronnen die beschikbaar zijn voor gebruik in uw ontwikkelaarsportalsjablonen. Gebruik de tabelnaam als voorvoegsel voor de tekenreeksbronnen in die tabel.  
+ Raadpleeg de volgende tabellen voor de teken reeks bronnen die beschikbaar zijn voor gebruik in de sjablonen voor de ontwikkelaars Portal. Gebruik de tabel naam als voor voegsel voor de teken reeks resources in die tabel.  
   
 -   [ApisStrings](#ApisStrings)  
   
@@ -77,531 +77,531 @@ De volgende lokalisatieopties worden ondersteund:
   
 -   [AppDetailsStrings](#AppDetailsStrings)  
   
--   [AppTekenreeksen](#AppStrings)  
+-   [AppStrings](#AppStrings)  
   
 -   [CommonResources](#CommonResources)  
   
--   [Algemene tekenreeksen](#CommonStrings)  
+-   [CommonStrings](#CommonStrings)  
   
 -   [Documentatie](#Documentation)  
   
--   [Foutpaginatekenreeksen](#ErrorPageStrings)  
+-   [ErrorPageStrings](#ErrorPageStrings)  
   
--   [ProblemenStrings](#IssuesStrings)  
+-   [IssuesStrings](#IssuesStrings)  
   
--   [Notfoundstrings](#NotFoundStrings)  
+-   [NotFoundStrings](#NotFoundStrings)  
   
 -   [ProductDetailsStrings](#ProductDetailsStrings)  
   
--   [ProductenTekenreeksen](#ProductsStrings)  
+-   [ProductsStrings](#ProductsStrings)  
   
 -   [ProviderInfoStrings](#ProviderInfoStrings)  
   
 -   [SigninResources](#SigninResources)  
   
--   [Aanmeldingen](#SigninStrings)  
+-   [SigninStrings](#SigninStrings)  
   
--   [Aanmeldingstekenreeksen](#SignupStrings)  
+-   [SignupStrings](#SignupStrings)  
   
--   [AbonnementlistTekenreeksen](#SubscriptionListStrings)  
+-   [SubscriptionListStrings](#SubscriptionListStrings)  
   
--   [Abonnementen](#SubscriptionStrings)  
+-   [SubscriptionStrings](#SubscriptionStrings)  
   
--   [Profieltekenreeksen bijwerken](#UpdateProfileStrings)  
+-   [UpdateProfileStrings](#UpdateProfileStrings)  
   
 -   [UserProfile](#UserProfile)  
   
 ###  <a name="apisstrings"></a><a name="ApisStrings"></a>ApisStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|PageTitleApis PageTitleApis|API's|  
+|PageTitleApis|API's|  
   
 ###  <a name="appdetailsstrings"></a><a name="AppDetailsStrings"></a>AppDetailsStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|WebApplicationsDetailsTitle|Toepassingsvoorbeeld|  
+|WebApplicationsDetailsTitle|Voor beeld van toepassing|  
 |WebApplicationsRequirementsHeader|Vereisten|  
 |WebApplicationsScreenshotAlt|Schermopname|  
 |WebApplicationsScreenshotsHeader|Schermopnamen|  
   
 ###  <a name="applicationliststrings"></a><a name="ApplicationListStrings"></a>ApplicationListStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|WebDevelopersAppDeleteBevestiging|Weet u zeker dat u de toepassing wilt verwijderen?|  
-|WebDevelopersAppNotGepubliceerd|Niet gepubliceerd|  
-|WebDevelopersAppNotIngediend|Niet ingediend|  
+|WebDevelopersAppDeleteConfirmation|Weet u zeker dat u de toepassing wilt verwijderen?|  
+|WebDevelopersAppNotPublished|Niet gepubliceerd|  
+|WebDevelopersAppNotSubmitted|Niet verzonden|  
 |WebDevelopersAppTableCategoryHeader|Categorie|  
-|WebDevelopersAppTableNameHeader|Name|  
+|WebDevelopersAppTableNameHeader|Naam|  
 |WebDevelopersAppTableStateHeader|Status|  
 |WebDevelopersEditLink|Bewerken|  
 |WebDevelopersRegisterAppLink|Toepassing registreren|  
-|WebOntwikkelaarsRemoveLink|Verwijderen|  
+|WebDevelopersRemoveLink|Verwijderen|  
 |WebDevelopersSubmitLink|Verzenden|  
 |WebDevelopersYourApplicationsHeader|Uw toepassingen|  
   
-###  <a name="appstrings"></a><a name="AppStrings"></a>AppTekenreeksen  
+###  <a name="appstrings"></a><a name="AppStrings"></a>AppStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
 |WebApplicationsHeader|Toepassingen|  
   
 ###  <a name="commonresources"></a><a name="CommonResources"></a>CommonResources  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
 |NoItemsToDisplay|Geen resultaten gevonden.|  
-|Algemeen Uitzonderingsbericht|Er klopt iets niet. Het kan een tijdelijke storing of een bug. Probeer het nog eens.|  
-|GeneralJsonExceptionMessage GeneralJsonExceptionMessage GeneralJsonExceptionMessage GeneralJs|Er klopt iets niet. Het kan een tijdelijke storing of een bug. Gelieve, herlaad de pagina en probeer het opnieuw.|  
-|ConfirmationMessageUnsavedChanges|Er zijn enkele niet-opgeslagen wijzigingen. Weet u zeker dat u de wijzigingen wilt annuleren en verwijderen?|  
+|GeneralExceptionMessage|Er is iets geen recht. Dit kan een tijdelijke fout of een bug zijn. Probeer het opnieuw.|  
+|GeneralJsonExceptionMessage|Er is iets geen recht. Dit kan een tijdelijke fout of een bug zijn. Laad de pagina opnieuw en probeer het opnieuw.|  
+|ConfirmationMessageUnsavedChanges|Er zijn een aantal niet-opgeslagen wijzigingen. Weet u zeker dat u de wijzigingen wilt annuleren en wilt negeren?|  
 |AzureActiveDirectory|Azure Active Directory|  
-|HttplargerequestMessage HttplargerequestMessage|Http Request Body te groot.|  
+|HttpLargeRequestMessage|Hoofd tekst van de HTTP-aanvraag is te groot.|  
   
-###  <a name="commonstrings"></a><a name="CommonStrings"></a>Algemene tekenreeksen  
+###  <a name="commonstrings"></a><a name="CommonStrings"></a>CommonStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|ButtonLabelAnnuleren|Annuleren|  
-|ButtonLabelOpslaan|Opslaan|  
-|Algemeen Uitzonderingsbericht|Er klopt iets niet. Het kan een tijdelijke storing of een bug. Probeer het nog eens.|  
-|NoItemsToDisplay|Er zijn geen objecten om weer te geven.|  
-|PagerButtonLabelFirst PagerButtonLabelFirst|Eerste|  
+|ButtonLabelCancel|Annuleren|  
+|ButtonLabelSave|Opslaan|  
+|GeneralExceptionMessage|Er is iets geen recht. Dit kan een tijdelijke fout of een bug zijn. Probeer het opnieuw.|  
+|NoItemsToDisplay|Er zijn geen items om weer te geven.|  
+|PagerButtonLabelFirst|Eerste|  
 |PagerButtonLabelLast|Laatste|  
-|PagerButtonLabelNext PagerButtonLabelNext|Volgende|  
+|PagerButtonLabelNext|Volgende|  
 |PagerButtonLabelPrevious|Vorige|  
-|PagerLabelPageNOfM PagerLabel|Pagina {0} van {1}|  
-|PasswordtooShort PasswordTooShort|Het wachtwoord is te kort|  
-|EmailAsPassword|Gebruik uw e-mail niet als wachtwoord|  
-|PasswordSameasUserName|Uw wachtwoord kan uw gebruikersnaam niet bevatten|  
-|PasswordTwoCharacterClasses PasswordTwoCharacterClasses PasswordTwoCharacterClasses PasswordTwo|Verschillende tekenklassen gebruiken|  
-|PasswordTooManyHerhalings|Te veel herhalingen|  
-|PasswordSequenceFound PasswordSequenceFound|Uw wachtwoord bevat reeksen|  
-|PagerLabelPageSize PageSize PagePageSize PagePageSize PagePageSize Page|Paginagrootte|  
-|Gordijnlabelladen|Laden...|  
+|PagerLabelPageNOfM|Pagina {0} van {1}|  
+|PasswordTooShort|Het wacht woord is te kort|  
+|EmailAsPassword|Gebruik uw e-mail adres niet als uw wacht woord|  
+|PasswordSameAsUserName|Uw wacht woord mag niet uw gebruikers naam bevatten|  
+|PasswordTwoCharacterClasses|Verschillende teken klassen gebruiken|  
+|PasswordTooManyRepetitions|Te veel herhalingen|  
+|PasswordSequenceFound|Uw wacht woord bevat reeksen|  
+|PagerLabelPageSize|Paginagrootte|  
+|CurtainLabelLoading|Laden...|  
 |TablePlaceholderNothingToDisplay|Er zijn geen gegevens voor de geselecteerde periode en het bereik|  
-|ButtonLabelClose ButtonLabelClose|Sluiten|  
+|ButtonLabelClose|Sluiten|  
   
 ###  <a name="documentation"></a><a name="Documentation"></a>Documentatie  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|WebdocumentationinvalidheaderErrorMessage|Ongeldige{0}koptekst ' '|  
-|WebdocumentationinvalidrequestErrorMessage|URL van ongeldige aanvraag|  
-|TextboxLabelAccessToken|Toegangstoken *|  
-|VervolgkeuzelijstPrimaryKeyFormat|Primair-{0}|  
-|VervolgkeuzeoptieSecondaryKeyFormat|Secundair-{0}|  
-|WebdocumentationSubscriptionKeyText|Uw abonnementssleutel|  
+|WebDocumentationInvalidHeaderErrorMessage|Ongeldige header '{0}'|  
+|WebDocumentationInvalidRequestErrorMessage|Ongeldige aanvraag-URL|  
+|TextboxLabelAccessToken|Toegangs token *|  
+|DropdownOptionPrimaryKeyFormat|Basis{0}|  
+|DropdownOptionSecondaryKeyFormat|Primaire{0}|  
+|WebDocumentationSubscriptionKeyText|Uw abonnements sleutel|  
 |WebDocumentationTemplatesAddHeaders|Vereiste HTTP-headers toevoegen|  
-|WebdocumentationTemplatesBasicAuthSample|Voorbeeld van basisautorisatie|  
-|WebdocumentationTemplatesCurlForBasicAuth|voor basisautorisatiegebruik: --gebruiker {gebruikersnaam}:{password}|  
-|WebdocumentationTemplatesCurlValuesForPath|Waarden opgeven voor padparameters (weergegeven als {...}), uw abonnementssleutel en waarden voor queryparameters|  
-|WebdocumentationTemplatesDeveloperKey|Uw abonnementssleutel opgeven|  
-|WebdocumentationTemplatesJavaApache|In dit voorbeeld wordt de Apache HTTP-client van HTTP-componenten (http://hc.apache.org/httpcomponents-client-ga/)|  
-|WebDocumentationTemplatesOptionalParams|Waarden opgeven voor optionele parameters, indien nodig|  
-|WebDocumentationTemplatesPhpPakket|In dit voorbeeld wordt het HTTP_Request2 pakket gebruikt. (voor meer informatie:https://pear.php.net/package/HTTP_Request2)|  
-|WebdocumentationTemplatesPythonWaardenForPath|Waarden opgeven voor padparameters (weergegeven als {...}) en indien nodig een aanvraaginstantie|  
-|WebdocumentationTemplatesRequestBody|Aanvraaginstantie opgeven|  
-|WebDocumentationTemplatesRequiredParams|Waarden opgeven voor de volgende vereiste parameters|  
-|WebdocumentationTemplatesValuesForPath|Waarden opgeven voor padparameters (weergegeven als {...})|  
-|Beschrijving van OAuth2AuthorizationEndpoint|Het autorisatieeindpunt wordt gebruikt om te communiceren met de eigenaar van de resource en een autorisatiesubsidie te verkrijgen.|  
-|OAuth2AuthorizationEndpointName|Eindpunt voor autorisatie|  
-|Beschrijving van OAuth2TokenEndpoint|Het tokeneindpunt wordt door de client gebruikt om een toegangstoken te verkrijgen door het autorisatie-token of het vernieuwen van het token te presenteren.|  
-|OAuth2TokenEndpointName|Tokeneindpunt|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|<\> p De client initieert de stroom door de gebruikersagent van de broneigenaar naar het eindpunt van de autorisatie te leiden.  De client bevat zijn client-id, gevraagde scope, lokale status en een omleidings-URI waarnaar de autorisatieserver de user-agent terugstuurt zodra de toegang is verleend (of geweigerd).     </p\> <\> p De autorisatieserver verifieert de eigenaar van de bron (via de user-agent) en bepaalt of de eigenaar van de resource de toegangsaanvraag van de klant verleent of weigert.     </p\> <\> p Ervan uitgaande dat de eigenaar van de bron toegang verleent, stuurt de autorisatieserver de gebruiker-agent terug naar de client met behulp van de eerder geleverde omleidings-URI (in de aanvraag of tijdens de clientregistratie).  De omleiding URI bevat een autorisatiecode en een lokale staat die door de client eerder.     </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|<\> p Als de gebruiker de toegangsaanvraag weigert als het verzoek ongeldig is, wordt de client op de hoogte gebracht met behulp van de volgende parameters die zijn toegevoegd aan de omleiding: </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Vergunningsaanvraag|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<\> p De client-app moet de gebruiker naar het autorisatieeindpunt sturen om het OAuth-proces te starten.          Op het eindpunt van de autorisatie verifieert de gebruiker en verleent of weigert hij toegang tot de app.     </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|<\> p Ervan uitgaande dat de eigenaar van de bron toegang verleent, leidt autorisatieserver de gebruiker-agent terug naar de client met behulp van de eerder geleverde omleidings-URI (in de aanvraag of tijdens de clientregistratie).  De omleiding URI bevat een autorisatiecode en een lokale staat die door de client eerder. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|<\> p De client vraagt een toegangstoken aan van het tokeneindpunt van de autorisatieserver door de autorisatiecode op te die in de vorige stap is ontvangen.  Bij het indienen van de aanvraag verifieert de client met de autorisatieserver.  De client omvat de omleiding URI gebruikt om de autorisatie code te verkrijgen voor verificatie. </p\> <\> p De autorisatieserver verifieert de client, valideert de autorisatiecode en zorgt ervoor dat de omleidings-URI-ontvangen functie overeenkomt met de URI die wordt gebruikt om de client in stap (C) om te leiden.  Indien geldig, reageert de autorisatieserver terug met een toegangstoken en, optioneel, een vernieuwingstoken. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|<\> p Als de verificatie van de aanvraagclient is mislukt of ongeldig is, reageert de autorisatieserver met een HTTP 400 -statuscode (slecht verzoek) (tenzij anders opgegeven) en bevat hij de volgende parameters bij het antwoord. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|<\> p De client doet een verzoek aan het tokeneindpunt door de volgende parameters te verzenden met behulp van de "application/x-www-form-urlencoded" indeling met een tekencodering van UTF-8 in de HTTP-aanvraagentiteit-body. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|<\> p De autorisatieserver geeft een access token en optioneel vernieuwingstoken uit en construeert het antwoord door de volgende parameters toe te voegen aan de entiteitshoofd van de HTTP-respons met een statuscode van 200 (OK). </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|<\> p De client verifieert met de autorisatieserver en vraagt een toegangstoken aan vanaf het token-eindpunt. </p\> <\> p De autorisatieserver verifieert de client en geeft, indien geldig, een toegangstoken uit. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|<\> p Als de clientverificatie van de aanvraag is mislukt of ongeldig is, reageert de autorisatieserver met een HTTP 400 -status (Bad Request) (tenzij anders opgegeven) en bevat de volgende parameters bij het antwoord. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|<\> p De client doet een verzoek aan het tokeneindpunt door de volgende parameters toe te voegen met de indeling "toepassing/x-www-formulier-urlencoded" met een tekencodering van UTF-8 in de http-aanvraagentiteit.< </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|<\> p Als de aanvraag voor toegangstoken geldig en geautoriseerd is, geeft de autorisatieserver een toegangstoken en een optioneel vernieuwingstoken uit en construeert het antwoord door de volgende parameters toe te voegen aan de entiteitshoofd van het HTTP-antwoord met een statuscode van 200 (OK). </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|<\> p De client initieert de stroom door de gebruikersagent van de broneigenaar naar het eindpunt van de autorisatie te leiden.  De client bevat zijn client-id, gevraagde scope, lokale status en een omleidings-URI waarnaar de autorisatieserver de user-agent terugstuurt zodra de toegang is verleend (of geweigerd). </p\> <\> p De autorisatieserver verifieert de eigenaar van de bron (via de user-agent) en bepaalt of de eigenaar van de bron de toegangsaanvraag van de klant verleent of ontkent. </p\> <\> p Ervan uitgaande dat de eigenaar van de bron toegang verleent, stuurt de autorisatieserver de gebruikersagent terug naar de client met behulp van de eerder verstrekte omleidings-URI.  De omleidings-URI bevat het toegangstoken in het URI-fragment. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|<\> p Als de eigenaar van de bron het toegangsverzoek weigert of als het verzoek mislukt om andere redenen dan een ontbrekende of ongeldige omleidings-URI, informeert de autorisatieserver de client door de volgende parameters toe te voegen aan de fragmentcomponent van de omleidings-URI met behulp van de indeling "application/x-www-form-urlencoded". </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|<\> p De client-app moet de gebruiker naar het autorisatieeindpunt sturen om het OAuth-proces te starten.      Op het eindpunt van de autorisatie verifieert de gebruiker en verleent of weigert hij toegang tot de app. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|<\> p Als de eigenaar van de bron de toegangsaanvraag verleent, geeft de autorisatieserver een toegangstoken uit en levert het aan de client door de volgende parameters toe te voegen aan de fragmentcomponent van de omleidings-URI met behulp van de indeling "toepassing/x-www-formulier-urlencoded". </p\>|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Autorisatiecodestroom is geoptimaliseerd voor clients die in staat zijn de vertrouwelijkheid van hun referenties te behouden (bijvoorbeeld webservertoepassingen die zijn geïmplementeerd met PHP, Java, Python, Ruby, ASP.NET, enz.).|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Vergunningscode verlening|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Clientreferenties stroom is geschikt in gevallen waarin de client (uw toepassing) vraagt om toegang tot de beveiligde bronnen onder haar controle. De client wordt beschouwd als een broneigenaar, dus er is geen interactie van de eindgebruiker vereist.|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Clientreferenties verlenen|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Impliciete stroom is geoptimaliseerd voor clients die niet in staat zijn om de vertrouwelijkheid van hun referenties te behouden waarvan bekend is dat ze een bepaalde omleiding uri bedienen. Deze clients worden meestal geïmplementeerd in een browser met behulp van een scripttaal zoals JavaScript.|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Impliciete subsidie|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|De stroom van wachtwoordreferenties voor resourceeigenaren is geschikt in gevallen waarin de eigenaar van de resource een vertrouwensrelatie heeft met de client (uw toepassing), zoals het besturingssysteem voor apparaten of een zeer bevoorrechte toepassing. Deze stroom is geschikt voor clients die in staat zijn om de referenties van de broneigenaar te verkrijgen (gebruikersnaam en wachtwoord, meestal met behulp van een interactief formulier).|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Toekenning van wachtwoordreferenties voor resource-eigenaar|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|<\> p De eigenaar van de bron voorziet de client van zijn gebruikersnaam en wachtwoord. </p\> <\> p De client vraagt een toegangstoken aan van het tokeneindpunt van de autorisatieserver door de referenties op te geven die van de eigenaar van de bron zijn ontvangen.  Bij het indienen van de aanvraag verifieert de client met de autorisatieserver. </p\> <\> p De autorisatieserver verifieert de client en valideert de referenties van de broneigenaar en geeft, indien geldig, een toegangstoken uit. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|<\> p Als de clientverificatie van de aanvraag is mislukt of ongeldig is, reageert de autorisatieserver met een HTTP 400 -status (Bad Request) (tenzij anders opgegeven) en bevat de volgende parameters bij het antwoord. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|<\> p De client doet een verzoek aan het tokeneindpunt door de volgende parameters toe te voegen met de indeling "toepassing/x-www-formulier-urlencoded" met een tekencodering van UTF-8 in de http-aanvraagentiteit.< </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|<\> p Als de aanvraag voor toegangstoken geldig en geautoriseerd is, geeft de autorisatieserver een toegangstoken en een optioneel vernieuwingstoken uit en construeert het antwoord door de volgende parameters toe te voegen aan de entiteitshoofd van het HTTP-antwoord met een statuscode van 200 (OK). </p\>|  
-|OAuth2Step_AccessTokenRequest_Name|Toegangstokenaanvraag|  
-|OAuth2Step_AuthorizationRequest_Name|Vergunningsaanvraag|  
-|OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|Vereist. Het toegangstoken dat is uitgegeven door de autorisatieserver.|  
-|OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|Vereist. Het toegangstoken dat is uitgegeven door de autorisatieserver.|  
-|OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|Vereist. Het toegangstoken dat is uitgegeven door de autorisatieserver.|  
-|OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Vereist. Het toegangstoken dat is uitgegeven door de autorisatieserver.|  
+|WebDocumentationTemplatesBasicAuthSample|Basis verificatie voorbeeld|  
+|WebDocumentationTemplatesCurlForBasicAuth|voor het gebruik van basis autorisatie:--gebruiker {username}: {password}|  
+|WebDocumentationTemplatesCurlValuesForPath|Geef waarden op voor para meters voor het pad (weer gegeven als {...}), uw abonnements sleutel en waarden voor query parameters|  
+|WebDocumentationTemplatesDeveloperKey|Uw abonnements sleutel opgeven|  
+|WebDocumentationTemplatesJavaApache|In dit voor beeld wordt de Apache HTTP-client van HTTP-onderdelen gebruikt (http://hc.apache.org/httpcomponents-client-ga/)|  
+|WebDocumentationTemplatesOptionalParams|Geef indien nodig waarden op voor optionele para meters|  
+|WebDocumentationTemplatesPhpPackage|In dit voor beeld wordt het HTTP_Request2-pakket gebruikt. (voor meer informatie:https://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPythonValuesForPath|Geef waarden op voor Path-para meters (weer gegeven als {...}) en indien nodig de hoofd tekst van de aanvraag|  
+|WebDocumentationTemplatesRequestBody|Aanvraag tekst opgeven|  
+|WebDocumentationTemplatesRequiredParams|Geef waarden op voor de volgende vereiste para meters|  
+|WebDocumentationTemplatesValuesForPath|Geef waarden op voor para meters voor het pad (weer gegeven als {...})|  
+|OAuth2AuthorizationEndpointDescription|Het autorisatie-eind punt wordt gebruikt om te communiceren met de resource-eigenaar en krijgt een autorisatie machtiging.|  
+|OAuth2AuthorizationEndpointName|Autorisatie-eind punt|  
+|OAuth2TokenEndpointDescription|Het token-eind punt wordt door de client gebruikt voor het verkrijgen van een toegangs token door het verlenen of vernieuwen van het token te presen teren.|  
+|OAuth2TokenEndpointName|Token eindpunt|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|<p\> de client initieert de stroom door de gebruikers agent van de resource-eigenaar naar het autorisatie-eind punt te sturen.  De client bevat de client-id, het aangevraagde bereik, de lokale status en een omleidings-URI waarnaar de autorisatie server de gebruikers agent weer verzendt zodra toegang is verleend (of geweigerd).     </p\> <p\> de autorisatie server verifieert de resource-eigenaar (via de gebruikers agent) en bepaalt of de resource-eigenaar de toegangs aanvraag van de client verleent of weigert.     </p\> <p\> aangenomen dat de resource-eigenaar toegang verleent, stuurt de autorisatie server de gebruikers agent terug naar de client met behulp van de omleidings-URI die eerder is gegeven (in de aanvraag of tijdens de client registratie).  De omleidings-URI bevat een autorisatie code en een lokale status die eerder door de client is geleverd.     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|<p\> als de gebruiker de toegangs aanvraag van als de aanvraag ongeldig is, wordt de client op de hoogte gesteld door de volgende para meters toe te voegen aan de omleiding: </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Autorisatie aanvraag|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<p\> de client-app moet de gebruiker naar het autorisatie-eind punt sturen om het OAuth-proces te initiëren.          Bij het autorisatie-eind punt verifieert de gebruiker de toegang tot de app en verleent of weigert deze.     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|<p\> aangenomen dat de resource-eigenaar toegang verleent, stuurt de autorisatie server de gebruikers agent terug naar de client met behulp van de omleidings-URI die eerder is vermeld (in de aanvraag of tijdens de client registratie).  De omleidings-URI bevat een autorisatie code en een lokale status die eerder door de client is geleverd. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|<p\> de client vraagt om een toegangs token van het token eind punt van de autorisatie server door de autorisatie code op te nemen die in de vorige stap is ontvangen.  Bij het maken van de aanvraag verifieert de client bij de autorisatie server.  De client bevat de omleidings-URI die wordt gebruikt om de autorisatie code voor verificatie te verkrijgen. </p\> <p\> de autorisatie server verifieert de client, valideert de autorisatie code en zorgt ervoor dat de ontvangen omleidings-URI overeenkomt met de URI die wordt gebruikt om de client om te leiden in stap (C).  Als dit het geval is, reageert de autorisatie server terug met een toegangs token en eventueel een vernieuwings token. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|<p\> als de client verificatie van de aanvraag is mislukt of ongeldig is, reageert de autorisatie server met een HTTP 400 (ongeldige aanvraag) status code (tenzij anders opgegeven) en bevat de volgende para meters met het antwoord. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|<p\> maakt de client een aanvraag voor het token-eind punt door de volgende para meters te verzenden met de indeling ' Application/x-www-form-urlencoded ' met een teken codering van UTF-8 in de entiteit van de HTTP-aanvraag. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|<p\> geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteit-body van het HTTP-antwoord met een 200 (OK)-status code. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|<p\> de client verifieert met de autorisatie server en vraagt een toegangs token op uit het eind punt van de token. </p\> <p\> de autorisatie server verifieert de client, en als dit geldig is, wordt een toegangs token verleend. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|<p\> als de aanvraag client verificatie mislukt of ongeldig is, reageert de autorisatie server met een HTTP 400 (ongeldige aanvraag) status code (tenzij anders opgegeven) en bevat de volgende para meters met het antwoord. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|<p\> maakt de client een aanvraag voor het eind punt van het token door de volgende para meters toe te voegen met de indeling ' Application/x-www-form-urlencoded ' met een teken codering van UTF-8 in de entiteit van de HTTP-aanvraag. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|<p\> als de aanvraag voor het toegangs token geldig en goedgekeurd is, geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteits hoofdtekst van het HTTP-antwoord met een 200 (OK)-status code. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|<p\> de client initieert de stroom door de gebruikers agent van de resource-eigenaar naar het autorisatie-eind punt te sturen.  De client bevat de client-id, het aangevraagde bereik, de lokale status en een omleidings-URI waarnaar de autorisatie server de gebruikers agent weer verzendt zodra toegang is verleend (of geweigerd). </p\> <p\> de autorisatie server verifieert de resource-eigenaar (via de gebruikers agent) en bepaalt of de resource-eigenaar de toegangs aanvraag van de client verleent of weigert. </p\> <p\> aangenomen dat de resource-eigenaar toegang verleent, stuurt de autorisatie server de gebruikers agent terug naar de client met behulp van de omleidings-URI die u eerder hebt ingesteld.  De omleidings-URI bevat het toegangs token in het URI-fragment. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|<p\> als de eigenaar van de resource de toegangs aanvraag weigert of als de aanvraag om andere redenen dan een ontbrekende of ongeldige omleidings-URI is mislukt, informeert de autorisatie server de client door de volgende para meters toe te voegen aan het fragment onderdeel van de omleidings-URI met de indeling ' Application/x-www-form-urlencoded '. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|<p\> de client-app moet de gebruiker naar het autorisatie-eind punt sturen om het OAuth-proces te initiëren.      Bij het autorisatie-eind punt verifieert de gebruiker de toegang tot de app en verleent of weigert deze. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|<p\> als de resource-eigenaar de toegangs aanvraag verleent, geeft de autorisatie server een toegangs token uit en wordt het aan de client geleverd door de volgende para meters toe te voegen aan het fragment onderdeel van de omleidings-URI met de indeling ' Application/x-www-form-urlencoded '. </p\>|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|De autorisatie code stroom is geoptimaliseerd voor clients die de vertrouwelijkheid van hun referenties kunnen onderhouden (zoals webserver toepassingen die zijn geïmplementeerd met behulp van PHP, Java, Python, Ruby, ASP.NET, enzovoort).|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Autorisatie code verlenen|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|De stroom van client referenties is geschikt in gevallen waarin de client (uw toepassing) toegang tot de beveiligde bronnen aanvraagt onder het besturings element. De client wordt beschouwd als eigenaar van een resource, dus er is geen interactie tussen de eind gebruiker vereist.|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Verleende client referenties|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Impliciete stroom is geoptimaliseerd voor clients die niet in staat zijn om de vertrouwelijkheid van hun referenties te onderhouden die bekend zijn bij het werken met een bepaalde omleidings-URI. Deze clients worden meestal geïmplementeerd in een browser met behulp van een script taal zoals Java script.|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Impliciete toekenning|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|De gegevens stroom van het wacht woord voor de resource-eigenaar is geschikt wanneer de resource-eigenaar een vertrouwens relatie heeft met de client (uw toepassing), zoals het besturings systeem van het apparaat of een toepassing met veel bevoegdheden. Deze stroom is geschikt voor clients die de referenties van de resource-eigenaar kunnen verkrijgen (gebruikers naam en wacht woord, meestal met behulp van een interactief formulier).|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Toewijzing van wacht woord van resource-eigenaar|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|<p\> de eigenaar van de resource biedt de client de gebruikers naam en het wacht woord. </p\> <p\> de client vraagt om een toegangs token van het token eind punt van de autorisatie server door de referenties op te nemen die zijn ontvangen van de resource-eigenaar.  Bij het maken van de aanvraag verifieert de client bij de autorisatie server. </p\> <p\> de autorisatie server verifieert de client en valideert de referenties van de resource-eigenaar, en indien geldig een toegangs token. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|<p\> als de aanvraag client verificatie mislukt of ongeldig is, reageert de autorisatie server met een HTTP 400 (ongeldige aanvraag) status code (tenzij anders opgegeven) en bevat de volgende para meters met het antwoord. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|<p\> maakt de client een aanvraag voor het eind punt van het token door de volgende para meters toe te voegen met de indeling ' Application/x-www-form-urlencoded ' met een teken codering van UTF-8 in de entiteit van de HTTP-aanvraag. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|<p\> als de aanvraag voor het toegangs token geldig en goedgekeurd is, geeft de autorisatie server een toegangs token en een optioneel vernieuwings token uit en wordt het antwoord gemaakt door de volgende para meters toe te voegen aan de entiteits hoofdtekst van het HTTP-antwoord met een 200 (OK)-status code. </p\>|  
+|OAuth2Step_AccessTokenRequest_Name|Toegangs token aanvraag|  
+|OAuth2Step_AuthorizationRequest_Name|Autorisatie aanvraag|  
+|OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|Vereist. Het toegangs token dat is uitgegeven door de autorisatie server.|  
+|OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|Vereist. Het toegangs token dat is uitgegeven door de autorisatie server.|  
+|OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|Vereist. Het toegangs token dat is uitgegeven door de autorisatie server.|  
+|OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Vereist. Het toegangs token dat is uitgegeven door de autorisatie server.|  
 |OAuth2ClientId_AuthorizationCodeGrant_AuthorizationRequest|Vereist. Client-id.|  
-|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|Vereist als de client niet authenticeren met de autorisatieserver.|  
+|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|VEREIST als de client niet wordt geverifieerd met de autorisatie server.|  
 |OAuth2ClientId_ImplicitGrant_AuthorizationRequest|Vereist. De client-id.|  
-|OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|Vereist. De autorisatiecode die door de autorisatieserver wordt gegenereerd.|  
-|OAuth2Code_AuthorizationCodeGrant_TokenRequest|Vereist. De autorisatiecode die is ontvangen van de autorisatieserver.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|Optionele. Door de mens leesbare ASCII-tekst met aanvullende informatie.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|Optionele. Door de mens leesbare ASCII-tekst met aanvullende informatie.|  
-|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|Optionele. Door de mens leesbare ASCII-tekst met aanvullende informatie.|  
-|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|Optionele. Door de mens leesbare ASCII-tekst met aanvullende informatie.|  
-|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Optionele. Door de mens leesbare ASCII-tekst met aanvullende informatie.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|Optionele. Een URI die een door de mens leesbare webpagina identificeert met informatie over de fout.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|Optionele. Een URI die een door de mens leesbare webpagina identificeert met informatie over de fout.|  
-|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|Optionele. Een URI die een door de mens leesbare webpagina identificeert met informatie over de fout.|  
-|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|Optionele. Een URI die een door de mens leesbare webpagina identificeert met informatie over de fout.|  
-|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Optionele. Een URI die een door de mens leesbare webpagina identificeert met informatie over de fout.|  
-|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-foutcode van de volgende: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|Vereist. Een enkele ASCII-foutcode van het volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-foutcode van het volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-foutcode van de volgende: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
-|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-foutcode van het volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|Aanbevolen. De levensduur in seconden van het toegangstoken.|  
-|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|Aanbevolen. De levensduur in seconden van het toegangstoken.|  
-|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|Aanbevolen. De levensduur in seconden van het toegangstoken.|  
-|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Aanbevolen. De levensduur in seconden van het toegangstoken.|  
-|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|Vereist. Waarde MOET worden ingesteld op "authorization_code".|  
-|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|Vereist. Waarde MOET worden ingesteld op "client_credentials".|  
-|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. Waarde MOET worden ingesteld op "wachtwoord".|  
-|OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. Het wachtwoord van de broneigenaar.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|Optionele. Het omleidingseindpunt URI moet een absolute URI zijn.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|Vereist als de parameter "redirect_uri" is opgenomen in de autorisatieaanvraag en de waarden ervan identiek moeten zijn.|  
-|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|Optionele. Het omleidingseindpunt URI moet een absolute URI zijn.|  
-|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|Optionele. Het vernieuwingstoken, dat kan worden gebruikt om nieuwe toegangstokens te verkrijgen.|  
-|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|Optionele. Het vernieuwingstoken, dat kan worden gebruikt om nieuwe toegangstokens te verkrijgen.|  
-|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Optionele. Het vernieuwingstoken, dat kan worden gebruikt om nieuwe toegangstokens te verkrijgen.|  
-|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|Vereist. Waarde MOET worden ingesteld op "code".|  
-|OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|Vereist. Waarde MOET worden ingesteld op "token".|  
-|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|Optionele. De reikwijdte van het toegangsverzoek.|  
-|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|FACULTATIEf indien identiek aan het door de klant gevraagde bereik; anders, vereist.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenRequest|Optionele. De reikwijdte van het toegangsverzoek.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenResponse|FACULTATIEF, indien identiek aan het door de cliënt gevraagde bereik; anders, vereist.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationRequest|Optionele. De reikwijdte van het toegangsverzoek.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationResponse|FACULTATIEf indien identiek aan het door de klant gevraagde bereik; anders, vereist.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Optionele. De reikwijdte van het toegangsverzoek.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|FACULTATIEF, indien identiek aan het door de cliënt gevraagde bereik; anders, vereist.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|Vereist als de parameter "status" aanwezig was in de aanvraag voor clientautorisatie.  De exacte waarde van de klant.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|Aanbevolen. Een ondoorzichtige waarde die door de client wordt gebruikt om de status tussen de aanvraag en de callback te behouden.  De autorisatieserver bevat deze waarde bij het doorsturen van de user-agent naar de client.  De parameter MOET worden gebruikt voor het voorkomen van cross-site aanvraag vervalsing.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|Vereist als de parameter "status" aanwezig was in de aanvraag voor clientautorisatie.  De exacte waarde van de klant.|  
-|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|Vereist als de parameter "status" aanwezig was in de aanvraag voor clientautorisatie.  De exacte waarde van de klant.|  
-|OAuth2State_ImplicitGrant_AuthorizationRequest|Aanbevolen. Een ondoorzichtige waarde die door de client wordt gebruikt om de status tussen de aanvraag en de callback te behouden.  De autorisatieserver bevat deze waarde bij het doorsturen van de user-agent naar de client.  De parameter MOET worden gebruikt voor het voorkomen van cross-site aanvraag vervalsing.|  
-|OAuth2State_ImplicitGrant_AuthorizationResponse|Vereist als de parameter "status" aanwezig was in de aanvraag voor clientautorisatie.  De exacte waarde van de klant.|  
-|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|Vereist. Het type token dat is uitgegeven.|  
-|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|Vereist. Het type token dat is uitgegeven.|  
-|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|Vereist. Het type token dat is uitgegeven.|  
-|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Vereist. Het type token dat is uitgegeven.|  
-|OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. De gebruikersnaam van de broneigenaar.|  
-|OAuth2UnSupportedTokenType|Tokentype{0}' wordt niet ondersteund.|  
-|OAuth2InvalidState|Ongeldig antwoord van autorisatieserver|  
+|OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|Vereist. De autorisatie code die is gegenereerd door de autorisatie server.|  
+|OAuth2Code_AuthorizationCodeGrant_TokenRequest|Vereist. De autorisatie code die van de autorisatie server is ontvangen.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|Beschrijving. Menselijk Lees bare ASCII-tekst met aanvullende informatie.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|Beschrijving. Menselijk Lees bare ASCII-tekst met aanvullende informatie.|  
+|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|Beschrijving. Menselijk Lees bare ASCII-tekst met aanvullende informatie.|  
+|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|Beschrijving. Menselijk Lees bare ASCII-tekst met aanvullende informatie.|  
+|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Beschrijving. Menselijk Lees bare ASCII-tekst met aanvullende informatie.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
+|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
+|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
+|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Beschrijving. Een URI die een door een mens lees bare webpagina identificeert met informatie over de fout.|  
+|OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type invalid_scope.|  
+|OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type invalid_scope.|  
+|OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
+|OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Vereist. Een enkele ASCII-fout code van de volgende: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type invalid_scope.|  
+|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
+|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
+|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
+|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Aanbevelingen. De levens duur in seconden van het toegangs token.|  
+|OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op authorization_code.|  
+|OAuth2GrantType_ClientCredentialsGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op client_credentials.|  
+|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. De waarde moet worden ingesteld op ' wacht woord '.|  
+|OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. Het wacht woord voor de resource-eigenaar.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|Beschrijving. De URI van het omleidings eindpunt moet een absolute URI zijn.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|VEREIST als de para meter "redirect_uri" is opgenomen in de autorisatie aanvraag en de waarden ervan identiek moeten zijn.|  
+|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|Beschrijving. De URI van het omleidings eindpunt moet een absolute URI zijn.|  
+|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|Beschrijving. Het vernieuwings token dat kan worden gebruikt om nieuwe toegangs tokens te verkrijgen.|  
+|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|Beschrijving. Het vernieuwings token dat kan worden gebruikt om nieuwe toegangs tokens te verkrijgen.|  
+|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Beschrijving. Het vernieuwings token dat kan worden gebruikt om nieuwe toegangs tokens te verkrijgen.|  
+|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|Vereist. De waarde moet worden ingesteld op ' code '.|  
+|OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|Vereist. De waarde moet worden ingesteld op token.|  
+|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|Beschrijving. Het bereik van de toegangs aanvraag.|  
+|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|OPTIONEEL als deze identiek is aan het bereik dat door de client is aangevraagd; anders vereist.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenRequest|Beschrijving. Het bereik van de toegangs aanvraag.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenResponse|OPTIONEEL, indien identiek aan het bereik dat door de client is aangevraagd; anders vereist.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationRequest|Beschrijving. Het bereik van de toegangs aanvraag.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationResponse|OPTIONEEL als deze identiek is aan het bereik dat door de client is aangevraagd; anders vereist.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Beschrijving. Het bereik van de toegangs aanvraag.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPTIONEEL, indien identiek aan het bereik dat door de client is aangevraagd; anders vereist.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|VEREIST als de para meter ' state ' aanwezig is in de client autorisatie aanvraag.  De exacte waarde die van de client is ontvangen.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|Aanbevelingen. Een ondoorzichtige waarde die door de client wordt gebruikt om de status van de aanvraag en de retour aanroep bij te houden.  De autorisatie server bevat deze waarde bij het omleiden van de gebruiker-Agent naar de client.  De para meter moet worden gebruikt voor het voor komen van aanvraag vervalsing op meerdere sites.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|VEREIST als de para meter ' state ' aanwezig is in de client autorisatie aanvraag.  De exacte waarde die van de client is ontvangen.|  
+|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|VEREIST als de para meter ' state ' aanwezig is in de client autorisatie aanvraag.  De exacte waarde die van de client is ontvangen.|  
+|OAuth2State_ImplicitGrant_AuthorizationRequest|Aanbevelingen. Een ondoorzichtige waarde die door de client wordt gebruikt om de status van de aanvraag en de retour aanroep bij te houden.  De autorisatie server bevat deze waarde bij het omleiden van de gebruiker-Agent naar de client.  De para meter moet worden gebruikt voor het voor komen van aanvraag vervalsing op meerdere sites.|  
+|OAuth2State_ImplicitGrant_AuthorizationResponse|VEREIST als de para meter ' state ' aanwezig is in de client autorisatie aanvraag.  De exacte waarde die van de client is ontvangen.|  
+|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|Vereist. Het type van het token dat is uitgegeven.|  
+|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|Vereist. Het type van het token dat is uitgegeven.|  
+|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|Vereist. Het type van het token dat is uitgegeven.|  
+|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Vereist. Het type van het token dat is uitgegeven.|  
+|OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Vereist. De gebruikers naam van de resource-eigenaar.|  
+|OAuth2UnsupportedTokenType|Het token type{0}' ' wordt niet ondersteund.|  
+|OAuth2InvalidState|Ongeldig antwoord van de autorisatie server|  
 |OAuth2GrantType_AuthorizationCode|Autorisatiecode|  
-|OAuth2GrantType_Implicit|Impliciete|  
+|OAuth2GrantType_Implicit|Wenst|  
 |OAuth2GrantType_ClientCredentials|Clientreferenties|  
-|OAuth2GrantType_ResourceOwnerPassword|Wachtwoord voor broneigenaar|  
-|WebDocumentatie302Code|302 Gevonden|  
-|WebDocumentatie400Code|400 (Slecht verzoek)|  
-|OAuth2SendingMethod_AuthHeader|Autorisatiekoptekst|  
-|OAuth2SendingMethod_QueryParam|Queryparameter|  
-|OAuth2AuthorizationServerGeneralException|Er is een fout opgetreden tijdens het toestaan van toegang via{0}|  
-|OAuth2AuthorizationServerCommunicationException|Er kan geen HTTP-verbinding met autorisatieserver worden ingesteld of deze is onverwachtgesloten.|  
-|Webdocumentationoauth2GeneralErrorMessage|Er is onverwachte fout opgetreden.|  
-|AuthorizationServerCommunicationException|Er is een uitzondering op de communicatievan autorisatieserver. Neem contact op met de beheerder.|  
-|TextblockSubscriptionKeyHeaderDescription|Abonnementssleutel die toegang biedt tot deze API. Gevonden in uw <een href='/developer'\>Profiel</a\>.|  
-|TextblockOAuthHeaderBeschrijving|OAuth 2.0-toegangstoken verkregen van <i\> {0}</i\>. Ondersteunde subsidietypen: <\> {1} i\></i .|  
-|TextblockContentTypeHeaderDescription|Mediatype van de body die naar de API wordt verzonden.|  
-|ErrorMessageApiNotToegankelijk|De API die u probeert aan te roepen is op dit moment niet toegankelijk. Neem hier contact op met de API-uitgever <een href="/issues"\></a\>.|  
-|ErrorMessageApiTimedout|De API die u probeert aan te roepen duurt langer dan normaal om de reactie terug te krijgen. Neem hier contact op met de API-uitgever <een href="/issues"\></a\>.|  
-|BadRequestParameterVerwacht|"'{0}' parameter wordt verwacht"|  
-|TooltipTextDoubleClickToSelectAll|Dubbelklik om alles te selecteren.|  
-|TooltipTextHideRevealSecret|Weergeven/verbergen|  
+|OAuth2GrantType_ResourceOwnerPassword|Wacht woord van resource-eigenaar|  
+|WebDocumentation302Code|302 gevonden|  
+|WebDocumentation400Code|400 (ongeldige aanvraag)|  
+|OAuth2SendingMethod_AuthHeader|Autorisatie-header|  
+|OAuth2SendingMethod_QueryParam|Query parameter|  
+|OAuth2AuthorizationServerGeneralException|Er is een fout opgetreden tijdens het autoriseren van de toegang via{0}|  
+|OAuth2AuthorizationServerCommunicationException|Er kan geen HTTP-verbinding tot stand worden gebracht met de autorisatie server of het bestand is onverwacht gesloten.|  
+|WebDocumentationOAuth2GeneralErrorMessage|Er is een onverwachte fout opgetreden.|  
+|AuthorizationServerCommunicationException|Er is een communicatie fout opgetreden voor de autorisatie server. Neem contact op met de beheerder.|  
+|TextblockSubscriptionKeyHeaderDescription|De abonnements sleutel waarmee u toegang krijgt tot deze API. Gevonden in uw <een href = '/Developer-\>profiel</a\>.|  
+|TextblockOAuthHeaderDescription|Het OAuth 2,0-toegangs token dat is\> {0} verkregen van\><i</i. Ondersteunde toekennings typen: <\> {1} ik<\>/i.|  
+|TextblockContentTypeHeaderDescription|Het media type van de hoofd tekst die naar de API is verzonden.|  
+|ErrorMessageApiNotAccessible|De API die u probeert aan te roepen, is op dit moment niet toegankelijk. Neem contact op met de API-Uitgever <een href =\>"/issues"\>hier</a.|  
+|ErrorMessageApiTimedout|De API die u probeert aan te roepen, duurt langer dan normaal om het antwoord terug te krijgen. Neem contact op met de API-Uitgever <een href =\>"/issues"\>hier</a.|  
+|BadRequestParameterExpected|de para{0}meter ' ' ' wordt verwacht '|  
+|TooltipTextDoubleClickToSelectAll|Dubbel klik om alles te selecteren.|  
+|TooltipTextHideRevealSecret|Weer geven/verbergen|  
 |ButtonLinkOpenConsole|Probeer het nu|  
-|SectionheadingRequestBody SectionheadingRequestBody|Aanvraagbody|  
-|SectionheadingRequestParameters|Parameters aanvragen|  
-|SectionheadingRequestUrl SectionHeadingRequestUrl SectionHeading|Aanvraag-URL|  
+|SectionHeadingRequestBody|Aanvraagbody|  
+|SectionHeadingRequestParameters|Aanvraag parameters|  
+|SectionHeadingRequestUrl|Aanvraag-URL|  
 |SectionHeadingResponse|Antwoord|  
 |SectionHeadingRequestHeaders|Aanvraagheaders|  
-|FormLabelSubtextOptioneel|optioneel|  
-|SectionheadingCodeSamples|Codevoorbeelden|  
-|TextblockOpenidConnectHeaderDescription|OpenID Connect ID-token\> {0} verkregen\>van <i</i . Ondersteunde subsidietypen: <\> {1} i\></i .|  
+|FormLabelSubtextOptional|optioneel|  
+|SectionHeadingCodeSamples|Codevoorbeelden|  
+|TextblockOpenidConnectHeaderDescription|OpenID Connect Connect ID-token verkregen van <\> {0} i<\>/i. Ondersteunde toekennings typen: <\> {1} ik<\>/i.|  
   
-###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a>Foutpaginatekenreeksen  
+###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a>ErrorPageStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
 |LinkLabelBack|terug|  
-|LinkLabelHomePage|startpagina|  
-|LinkLabelSendusE-e-mail|Stuur ons een e-mail|  
-|PageTitleError PageTitle|Sorry, er was een probleem met het serveren van de opgevraagde pagina|  
-|TextblockPotentialCauseIntermittentIssue|Dit kan een incidenteel probleem met gegevenstoegang zijn dat al is verdwenen.|  
-|TextblockPotentialCauseOldLink|De link waarop u hebt geklikt kan oud zijn en niet meer naar de juiste locatie wijzen.|  
-|TextblockPotentialCauseTechnicalProblem|Er kan een technisch probleem aan onze kant zijn.|  
+|LinkLabelHomePage|Start pagina|  
+|LinkLabelSendUsEmail|Stuur ons een e-mail|  
+|PageTitleError|Er is een probleem opgetreden bij het uitvoeren van de aangevraagde pagina|  
+|TextblockPotentialCauseIntermittentIssue|Dit kan een onregelmatige gegevens toegangs probleem zijn dat al is verwijderd.|  
+|TextblockPotentialCauseOldLink|De koppeling waarop u hebt geklikt, is mogelijk oud en verwijst niet meer naar de juiste locatie.|  
+|TextblockPotentialCauseTechnicalProblem|Er is mogelijk een technisch probleem op onze kant.|  
 |TextblockPotentialSolutionRefresh|Vernieuw de pagina.|  
-|TextblockPotentialSolutionStartOver|Begin opnieuw {0}vanaf onze.|  
-|TextblockPotentialSolutionTryAgain|Ga {0} en probeer de actie die u hebt uitgevoerd opnieuw.|  
-|Tekstrapportprobleem|{0}beschrijven wat er mis ging en we zullen kijken naar het zo snel als we kunnen.|  
+|TextblockPotentialSolutionStartOver|Begin met onze {0}.|  
+|TextblockPotentialSolutionTryAgain|Ga {0} naar de bewerking en probeer het opnieuw.|  
+|TextReportProblem|{0}Er wordt gekeken wat er mis is gegaan en we kijken zo snel mogelijk.|  
 |TitlePotentialCause|Mogelijke oorzaak|  
-|TitlePotentialSolution|Het is misschien slechts een tijdelijk probleem, een paar dingen om te proberen|  
+|TitlePotentialSolution|Dit kan een tijdelijk probleem zijn, maar een aantal dingen die u kunt proberen|  
   
-###  <a name="issuesstrings"></a><a name="IssuesStrings"></a>ProblemenStrings  
+###  <a name="issuesstrings"></a><a name="IssuesStrings"></a>IssuesStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|WebIssuesIndexTitel|Problemen|  
-|WebIssuesNoActiveAbonnementen|Je hebt geen actieve abonnementen. U moet zich abonneren op een product om een probleem te melden.|  
-|WebIssuesNotSignin|Je bent niet ingelogd. Meld {0} een probleem of plaats een reactie.|  
-|WebIssuesReportIssueButton|Rapportprobleem|  
+|WebIssuesIndexTitle|Problemen|  
+|WebIssuesNoActiveSubscriptions|U hebt geen actieve abonnementen. U moet zich abonneren op een product om een probleem te melden.|  
+|WebIssuesNotSignin|U bent niet aangemeld. Meld {0} een probleem of post een opmerking.|  
+|WebIssuesReportIssueButton|Probleem melden|  
 |WebIssuesSignIn|aanmelden|  
-|WebIssuesStatusgerapporteerddoor|Status: {0} &#124; Gerapporteerd door{1}|  
+|WebIssuesStatusReportedBy|Status: {0} &#124; gerapporteerd door{1}|  
   
-###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a>Notfoundstrings  
+###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a>NotFoundStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|LinkLabelHomePage|startpagina|  
-|LinkLabelSendusE-e-mail|stuur ons een e-mail|  
-|PageTitleNotFound PageTitleNotFound PageTitleNotFound PageTitle|Sorry, we kunnen de pagina die u zoekt niet vinden|  
-|TextblockPotentialCauseMisspelledUrl|Het kan zijn dat u de URL verkeerd hebt gespeld als u deze hebt ingevoerd.|  
-|TextblockPotentialCauseOldLink|De link waarop u hebt geklikt kan oud zijn en niet meer naar de juiste locatie wijzen.|  
-|TextblockPotentialSolutionRetype|Probeer de URL opnieuw te typen.|  
-|TextblockPotentialSolutionStartOver|Begin opnieuw {0}vanaf onze.|  
-|Tekstrapportprobleem|{0}beschrijven wat er mis ging en we zullen kijken naar het zo snel als we kunnen.|  
+|LinkLabelHomePage|Start pagina|  
+|LinkLabelSendUsEmail|Stuur ons een e-mail|  
+|PageTitleNotFound|Kan de gezochte pagina niet vinden|  
+|TextblockPotentialCauseMisspelledUrl|Mogelijk hebt u de URL verkeerd gespeld als u deze in hebt getypt.|  
+|TextblockPotentialCauseOldLink|De koppeling waarop u hebt geklikt, is mogelijk oud en verwijst niet meer naar de juiste locatie.|  
+|TextblockPotentialSolutionRetype|Typ de URL opnieuw.|  
+|TextblockPotentialSolutionStartOver|Begin met onze {0}.|  
+|TextReportProblem|{0}Er wordt gekeken wat er mis is gegaan en we kijken zo snel mogelijk.|  
 |TitlePotentialCause|Mogelijke oorzaak|  
 |TitlePotentialSolution|Mogelijke oplossing|  
   
 ###  <a name="productdetailsstrings"></a><a name="ProductDetailsStrings"></a>ProductDetailsStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|WebProductenOvereenkomst|Door me {0} te abonneren op `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`product, ga ik akkoord met de .|  
+|WebProductsAgreement|Door u te {0} abonneren op het product, gaat u `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`akkoord met de.|  
 |WebProductsLegalTermsLink|Gebruiksrechtovereenkomst|  
 |WebProductsSubscribeButton|Abonneren|  
-|WebProductsUsageLimitsheader|Gebruikslimieten|  
-|WebProductenYouAreNotSubscribed|U bent geabonneerd op dit product.|  
-|WebProductsYouRequestedAbonnement|Je hebt een abonnement op dit product aangevraagd.|  
-|ErrorYouNeedToAgreeLegalTerms|U moet akkoord gaan met de gebruiksvoorwaarden voordat u verder gaan.|  
+|WebProductsUsageLimitsHeader|Gebruiks limieten|  
+|WebProductsYouAreNotSubscribed|U bent geabonneerd op dit product.|  
+|WebProductsYouRequestedSubscription|U hebt een abonnement op dit product aangevraagd.|  
+|ErrorYouNeedToAgreeWithLegalTerms|U moet akkoord gaan met de gebruiks voorwaarden voordat u kunt door gaan.|  
 |ButtonLabelAddSubscription|Abonnement toevoegen|  
 |LinkLabelChangeSubscriptionName|wijzigen|  
-|ButtonLabelConfirm ButtonLabelConfirm ButtonLabelConfirm ButtonLabel|Bevestigen|  
-|Aantal textblockveelvoudenabonnementen|U {0} heeft abonnementen op dit product:|  
-|TextblockSingleSubscriptionsCount TextblockSingleSubscriptionsCount TextblockSingleSubscriptionsCount Textblock|U {0} heeft een abonnement op dit product:|  
-|TextblockSingleApisCount|Dit product {0} bevat API:|  
-|TextblockMultipleApisCount|Dit product {0} bevat API's:|  
-|TextblockHeaderSubscribe|Abonneer u op product|  
-|Beschrijving van TextblockSubscription|Er wordt als volgt een nieuw abonnement gemaakt:|  
-|TextblockSubscriptionLimitBereikt|Abonnementslimiet bereikt.|  
+|ButtonLabelConfirm|Bevestigen|  
+|TextblockMultipleSubscriptionsCount|U hebt {0} abonnementen op dit product:|  
+|TextblockSingleSubscriptionsCount|U hebt {0} een abonnement op dit product:|  
+|TextblockSingleApisCount|Dit product bevat {0} API:|  
+|TextblockMultipleApisCount|Dit product bevat {0} api's:|  
+|TextblockHeaderSubscribe|Abonneren op product|  
+|TextblockSubscriptionDescription|Er wordt als volgt een nieuw abonnement gemaakt:|  
+|TextblockSubscriptionLimitReached|De limiet voor abonnementen is bereikt.|  
   
-###  <a name="productsstrings"></a><a name="ProductsStrings"></a>ProductenTekenreeksen  
+###  <a name="productsstrings"></a><a name="ProductsStrings"></a>ProductsStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|PageTitleProducten|Producten|  
+|PageTitleProducts|Producten|  
   
 ###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a>ProviderInfoStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|TekstvakExternalIdentitiesDisabled|Aanmelden is momenteel uitgeschakeld door de beheerders.|  
-|TekstvakExterne identiteitenMelduitnodiging|U zich ook aanmelden met|  
-|TekstvakExterne identiteitenMeldnaamPrimair|Log hier in|  
+|TextboxExternalIdentitiesDisabled|Aanmelden is op dit moment uitgeschakeld door de Administrators.|  
+|TextboxExternalIdentitiesSigninInvitation|U kunt zich ook aanmelden met|  
+|TextboxExternalIdentitiesSigninInvitationPrimary|Meld u aan met:|  
   
 ###  <a name="signinresources"></a><a name="SigninResources"></a>SigninResources  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|PrincipalNotFound|Opdrachtgever wordt niet gevonden of handtekening is ongeldig|  
-|ErrorSsoAuthentication Failed|SSO-verificatie is mislukt|  
-|ErrorSsoAuthenticationFailedDetailed|Ongeldige token of handtekening kan niet worden geverifieerd.|  
-|ErrorSsoTokenOngeldig|SSO-token is ongeldig|  
-|ValidatieErrorSpecificEmailBestaat al|E-mail '{0}' al geregistreerd|  
-|ValidatieErrorSpecificEmailOngeldig|E-mail '{0}' is ongeldig|  
-|ValidatieErrorPasswordOngeldig|Het wachtwoord is ongeldig. Corrigeer de fouten en probeer het opnieuw.|  
-|PropertytooShort|{0}is te kort|  
-|WebAuthenticationAddresserE-mailOngeldigFoutbericht|Het e-mailadres is ongeldig.|  
-|ValidatieMessageNewPasswordBevestiging vereist|Nieuw wachtwoord bevestigen|  
-|ValidatieErrorPasswordConfirmationvereist|Bevestigen dat het wachtwoord leeg is|  
-|WebAuthenticationEmailChangeNotice|Bevestigingsmail wijzigen is onderweg {0}naar . Volg de instructies om je nieuwe e-mailadres te bevestigen. Als de e-mail niet binnen enkele minuten in uw postvak IN wordt weergegeven, raadpleegt u uw map met ongewenste e-mail.|  
-|WebAuthenticationEmailChangeNoticeHeader|Uw e-mailwijzigingsverzoek is verwerkt|  
-|WebAuthenticationEmailChangeNoticeTitle|E-mailwijziging gevraagd|  
-|WebAuthenticationEmailHasBeenRevertedNotice|Je e-mail bestaat al. Aanvraag is teruggedraaid|  
-|ValidatieErrorEmailBestaat al|E-mail bestaat al|  
-|ValidatieErrorEmailOngeldig|Ongeldig e-mailadres|  
-|TextboxLabelEmail|Email|  
-|ValidatieErrorEmailvereist|Het e-mailadres is vereist.|  
+|PrincipalNotFound|Principal is niet gevonden of de hand tekening is ongeldig|  
+|ErrorSsoAuthenticationFailed|SSO-verificatie is mislukt|  
+|ErrorSsoAuthenticationFailedDetailed|Er is een ongeldig token gegeven of de hand tekening kan niet worden geverifieerd.|  
+|ErrorSsoTokenInvalid|SSO-token is ongeldig|  
+|ValidationErrorSpecificEmailAlreadyExists|{0}E-mail adres is al geregistreerd|  
+|ValidationErrorSpecificEmailInvalid|{0}E-mail adres is ongeldig|  
+|ValidationErrorPasswordInvalid|Het wacht woord is ongeldig. Corrigeer de fouten en probeer het opnieuw.|  
+|PropertyTooShort|{0}is te kort|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|Het e-mailadres is ongeldig.|  
+|ValidationMessageNewPasswordConfirmationRequired|Bevestig het nieuwe wacht woord|  
+|ValidationErrorPasswordConfirmationRequired|Wacht woord voor bevestigen is leeg|  
+|WebAuthenticationEmailChangeNotice|E-mail met {0}wijzigings bevestiging is aan. Volg de instructies in de IT om het nieuwe e-mail adres te bevestigen. Als het e-mail adres in de volgende paar minuten niet in uw postvak wordt ontvangen, controleert u de map Ongewenste e-mail.|  
+|WebAuthenticationEmailChangeNoticeHeader|De wijzigings aanvraag voor de e-mail is verwerkt|  
+|WebAuthenticationEmailChangeNoticeTitle|Wijziging van e-mail aangevraagd|  
+|WebAuthenticationEmailHasBeenRevertedNotice|U hebt al een e-mail adres. De aanvraag is teruggezet|  
+|ValidationErrorEmailAlreadyExists|E-mail adres bestaat al|  
+|ValidationErrorEmailInvalid|Ongeldig e-mail adres|  
+|TextboxLabelEmail|E-mail|  
+|ValidationErrorEmailRequired|Het e-mailadres is vereist.|  
 |WebAuthenticationErrorNoticeHeader|Fout|  
-|WebAuthenticationFieldLengthErrorMessage|{0}moet een maximale lengte van{1}|  
+|WebAuthenticationFieldLengthErrorMessage|{0}moet een maximum lengte van{1}|  
 |TextboxLabelEmailFirstName|Voornaam|  
-|ValidatieErrorFirstNamevereist|Voornaam is vereist.|  
-|ValidatieErrorFirstNameOngeldig|Ongeldige voornaam|  
-|NoticeInvalidInvitationToken|Houd er rekening mee dat bevestigingslinks slechts 48 uur geldig zijn. Als u zich nog steeds binnen deze termijn bevindt, moet u ervoor zorgen dat uw koppeling correct is. Als je koppeling is verlopen, herhaal je de actie die je probeert te bevestigen.|  
-|NoticeheaderInvalidInvitationToken|Ongeldig uitnodigingstoken|  
-|NoticeTitleInvalidInvitationToken|Bevestigingsfout|  
-|WebAuthenticationLastNameOngeldigFoutbericht|Ongeldige achternaam|  
-|TextboxLabelENaam|Achternaam|  
-|ValidatieErrorLastNamevereist|Achternaam is vereist.|  
-|WebAuthenticationLinkVerlopenNotice|De bevestigingskoppeling die naar u is verzonden, is verlopen. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
-|NoticePasswordResetLinkInvalidorverlopen|De koppeling voor het opnieuw instellen van uw wachtwoord is ongeldig of verlopen.|  
-|WebAuthenticationLinkVerlopenNoticeTitle|Gekoppeld verzonden|  
+|ValidationErrorFirstNameRequired|De voor naam is vereist.|  
+|ValidationErrorFirstNameInvalid|Ongeldige voor naam|  
+|NoticeInvalidInvitationToken|Bevestigings koppelingen zijn slechts 48 uur geldig. Als u zich nog steeds binnen deze periode bevindt, controleert u of de koppeling juist is. Als uw koppeling is verlopen, herhaalt u de bewerking die u probeert te bevestigen.|  
+|NoticeHeaderInvalidInvitationToken|Ongeldig uitnodigings token|  
+|NoticeTitleInvalidInvitationToken|Bevestigings fout|  
+|WebAuthenticationLastNameInvalidErrorMessage|Ongeldige achternaam|  
+|TextboxLabelEmailLastName|Achternaam|  
+|ValidationErrorLastNameRequired|De achternaam is vereist.|  
+|WebAuthenticationLinkExpiredNotice|De bevestigings koppeling die naar u is verzonden, is verlopen. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
+|NoticePasswordResetLinkInvalidOrExpired|De koppeling voor het opnieuw instellen van het wacht woord is ongeldig of verlopen.|  
+|WebAuthenticationLinkExpiredNoticeTitle|Koppeling verzonden|  
 |WebAuthenticationNewPasswordLabel|Nieuw wachtwoord|  
-|ValidatieMessageNewPasswordvereist|Nieuw wachtwoord is vereist.|  
-|TextboxLabelNotificationsSenderEmail|E-mail met afzendermeldingen|  
+|ValidationMessageNewPasswordRequired|Het nieuwe wacht woord is vereist.|  
+|TextboxLabelNotificationsSenderEmail|E-mail adres afzender|  
 |TextboxLabelOrganizationName|Organisatienaam|  
-|WebAuthenticationOrganisatieRequiredErrorMessage|De naam van de organisatie is leeg|  
-|WebAuthenticationPasswordChangedNotice|Uw wachtwoord is bijgewerkt|  
-|WebAuthenticationPasswordChangedNoticeTitle|Wachtwoord bijgewerkt|  
-|WebAuthenticationPasswordCompareErrorMessage|Wachtwoorden komen niet overeen|  
+|WebAuthenticationOrganizationRequiredErrorMessage|De naam van de organisatie is leeg|  
+|WebAuthenticationPasswordChangedNotice|Het wacht woord is bijgewerkt|  
+|WebAuthenticationPasswordChangedNoticeTitle|Wacht woord bijgewerkt|  
+|WebAuthenticationPasswordCompareErrorMessage|Wacht woorden komen niet overeen|  
 |WebAuthenticationPasswordConfirmLabel|Wachtwoord bevestigen|  
-|ValidatieErrorPasswordInvalidDetailed|Wachtwoord is te zwak.|  
+|ValidationErrorPasswordInvalidDetailed|Het wacht woord is te zwak.|  
 |WebAuthenticationPasswordLabel|Wachtwoord|  
-|ValidatieErrorPasswordVereist|Het wachtwoord is vereist.|  
-|WebAuthenticationPasswordResetSendNotice|Wachtwoordbevestiging wijzigen is onderweg {0}naar . Volg de instructies in de e-mail om uw proces voor wachtwoordwijziging voort te zetten.|  
-|WebAuthenticationPasswordResetSendNoticeheader|Uw verzoek tot het opnieuw instellen van uw wachtwoord is verwerkt|  
-|WebAuthenticationPasswordResetSendNoticeTitle|Wachtwoordreset gevraagd|  
-|WebAuthenticationRequestNotFoundNotice|Verzoek niet gevonden|  
-|WebAuthenticationSenderEmailRequiredErrorMessage|E-mail van de afzender van meldingen is leeg|  
-|WebAuthenticationSigninPasswordLabel|Bevestig de wijziging door een wachtwoord in te voeren|  
-|WebAuthenticationMeldbevestiging|Registratiebevestiging e-mail is {0}onderweg naar\> .<br / Volg instructies in\> de e-mail om uw account te activeren.<br / Als de e-mail niet binnen enkele minuten in uw inbox binnen enkele minuten binnenkomt, controleer dan uw map met ongewenste e-mail.|  
+|ValidationErrorPasswordRequired|Het wachtwoord is vereist.|  
+|WebAuthenticationPasswordResetSendNotice|E-mail bevestiging voor wacht woord wijzigen is {0}aan. Volg de instructies in het e-mail bericht om door te gaan met het wijzigen van het wacht woord.|  
+|WebAuthenticationPasswordResetSendNoticeHeader|De aanvraag voor het opnieuw instellen van het wacht woord is verwerkt|  
+|WebAuthenticationPasswordResetSendNoticeTitle|Wacht woord opnieuw instellen aangevraagd|  
+|WebAuthenticationRequestNotFoundNotice|Kan de aanvraag niet vinden|  
+|WebAuthenticationSenderEmailRequiredErrorMessage|E-mail adres afzender is leeg|  
+|WebAuthenticationSigninPasswordLabel|Bevestig de wijziging door een wacht woord in te voeren|  
+|WebAuthenticationSignupConfirmNotice|E-mail over registratie bevestiging is onderweg {0}. <BR/\> Volg de instructies in het e-mail bericht om uw account te activeren. <\> BR/als het e-mail bericht binnen enkele minuten niet in uw postvak wordt ontvangen, controleert u de map Ongewenste e-mail.|  
 |WebAuthenticationSignupConfirmNoticeHeader|Uw account is gemaakt|  
-|WebAuthenticationSignupConfirmNoticeRepeatHeader|Er is opnieuw een e-mail met registratiebevestiging verzonden|  
+|WebAuthenticationSignupConfirmNoticeRepeatHeader|Het e-mail adres voor registratie bevestiging is opnieuw verzonden|  
 |WebAuthenticationSignupConfirmNoticeTitle|Account gemaakt|  
-|WebAuthenticationTokenRequiredErrorMessage|Token is leeg|  
-|WebAuthenticationUserAlRegisteredNotice|Het lijkt erop dat een gebruiker met deze e-mail is al geregistreerd in het systeem. Als je je wachtwoord bent vergeten, probeer het dan te herstellen of neem contact op met ons ondersteuningsteam.|  
-|WebAuthenticationUserAlRegisteredNoticeHeader|Gebruiker al geregistreerd|  
-|WebAuthenticationUserReedsGeregistreerdeopmerktitel|Reeds geregistreerd|  
-|ButtonLabelChangePassword ButtonLabelChangePassword ButtonLabelChangePassword|Wachtwoord wijzigen|  
-|ButtonLabelChangeAccountInfo|Accountgegevens wijzigen|  
+|WebAuthenticationTokenRequiredErrorMessage|Het token is leeg|  
+|WebAuthenticationUserAlreadyRegisteredNotice|Het lijkt erop dat er al een gebruiker met deze e-mail in het systeem is geregistreerd. Als u uw wacht woord bent verg eten, kunt u het herstellen of contact opnemen met ons ondersteunings team.|  
+|WebAuthenticationUserAlreadyRegisteredNoticeHeader|De gebruiker is al geregistreerd|  
+|WebAuthenticationUserAlreadyRegisteredNoticeTitle|Al geregistreerd|  
+|ButtonLabelChangePassword|Wachtwoord wijzigen|  
+|ButtonLabelChangeAccountInfo|Account gegevens wijzigen|  
 |ButtonLabelCloseAccount|Account sluiten|  
-|WebAuthenticationInvalidCaptchaErrorMessage|De ingevoerde tekst komt niet overeen met de tekst op de afbeelding. Probeer het opnieuw.|  
-|ValidatieErrorCredentialsOngeldig|E-mail of wachtwoord is ongeldig. Corrigeer de fouten en probeer het opnieuw.|  
+|WebAuthenticationInvalidCaptchaErrorMessage|De ingevoerde tekst komt niet overeen met de tekst in de afbeelding. Probeer het opnieuw.|  
+|ValidationErrorCredentialsInvalid|E-mail adres of wacht woord is ongeldig. Corrigeer de fouten en probeer het opnieuw.|  
 |WebAuthenticationRequestIsNotValid|Aanvraag is niet geldig|  
-|WebAuthenticationUserIsNotConfirm|Bevestig uw inschrijving voordat u probeert in te loggen.|  
-|WebAuthenticationInvalidEmailFormated|E-mail is ongeldig:{0}|  
+|WebAuthenticationUserIsNotConfirm|Bevestig uw registratie voordat u zich aanmeldt.|  
+|WebAuthenticationInvalidEmailFormated|E-mail adres is ongeldig:{0}|  
 |WebAuthenticationUserNotFound|Gebruiker is niet gevonden|  
-|WebAuthenticationTenantNiet geregistreerd|Uw account behoort tot een Azure Active Directory-tenant die geen toegang heeft tot deze portal.|  
-|WebAuthenticationAuthentication Mislukt|Verificatie is mislukt.|  
-|WebAuthenticationGooglePlusNotIngeschakeld|Verificatie is mislukt. Als u de toepassing hebt geautoriseerd, neem dan contact op met de beheerder om ervoor te zorgen dat google-verificatie correct is geconfigureerd.|  
-|ValidatieErrorAllowedTenantIsVereist|Toegestane huurder is vereist|  
-|ValidatieErrorTenantisniet geldig|De Azure Active{0}Directory-tenant ' ' is ongeldig.|  
+|WebAuthenticationTenantNotRegistered|Uw account behoort tot een Azure Active Directory-Tenant die niet is gemachtigd voor toegang tot deze portal.|  
+|WebAuthenticationAuthenticationFailed|De verificatie is mislukt.|  
+|WebAuthenticationGooglePlusNotEnabled|De verificatie is mislukt. Als u de toepassing hebt geautoriseerd, neemt u contact op met de beheerder om te controleren of de Google-verificatie correct is geconfigureerd.|  
+|ValidationErrorAllowedTenantIsRequired|De toegestane Tenant is vereist|  
+|ValidationErrorTenantIsNotValid|De Azure Active Directory Tenant '{0}' is niet geldig.|  
 |WebAuthenticationActiveDirectoryTitle|Azure Active Directory|  
-|WebAuthenticationLoginUsingYourProvider|Log hier {0} in|  
-|WebAuthenticationUserLimitNotice|Deze service heeft het maximum aantal toegestane gebruikers bereikt. Gelieve `<a href="mailto:{0}"\>contact the administrator</a\>` hun service te upgraden en gebruikersregistratie opnieuw in te schakelen.|  
-|WebAuthenticationUserLimitNoticeHeader|Gebruikersregistratie uitgeschakeld|  
-|WebAuthenticationUserLimitNoticeTitle|Gebruikersregistratie uitgeschakeld|  
-|WebAuthenticationUserRegistrationDisabledNotice|Registratie van gebruikers is uitgeschakeld door de beheerder. Log dan in bij de externe identiteitsprovider.|  
-|WebAuthenticationUserRegistrationDisabledNoticeheader|Gebruikersregistratie uitgeschakeld|  
-|WebAuthenticationUserRegistrationDisabledNoticeTitle|Gebruikersregistratie uitgeschakeld|  
-|WebAuthenticationSignupPendingConfirmationNotice|Voordat we het aanmaken van uw account kunnen voltooien, moeten we uw e-mailadres verifiëren. We hebben een e-mail {0}gestuurd naar. Volg de instructies in de e-mail om uw account te activeren. Als de e-mail niet binnen enkele minuten binnen de komende minuten binnenkomt, controleer dan uw map met ongewenste e-mail.|  
-|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|We vonden een onbevestigde account voor {0}het e-mailadres. Om het aanmaken van je account te voltooien, moeten we je e-mailadres verifiëren. We hebben een e-mail {0}gestuurd naar. Volg de instructies in de e-mail om uw account te activeren. Als de e-mail niet binnen enkele minuten binnen de komende minuten binnenkomt, controleer dan uw map met ongewenste e-mail|  
-|WebAuthenticationSignupBevestigingBijnaDone|Bijna klaar|  
-|WebAuthenticationSignupConfirmationEmailSent|We hebben een e-mail {0}gestuurd naar. Volg de instructies in de e-mail om uw account te activeren. Als de e-mail niet binnen enkele minuten binnen de komende minuten binnenkomt, controleer dan uw map met ongewenste e-mail.|  
-|WebAuthenticationEmailSentNotificationMessage|E-mail verzonden naar{0}|  
-|WebAuthenticationNoAadTenantGeconfigureerd|Er is geen Azure Active Directory-tenant geconfigureerd voor de service.|  
-|SelectievakjeGebruikersregistratievoorwaardenvereist|Ik ga `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`akkoord met de .|  
-|Voorwaarden voor textblockuserregistratieverstrekt|Bekijk het eens`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
-|DialogheadingTermsOfUse|Gebruiksrechtovereenkomst|  
-|ValidatieBerichtToestemmingniet geaccepteerd|U moet akkoord gaan met de gebruiksvoorwaarden voordat u verder gaan.|  
+|WebAuthenticationLoginUsingYourProvider|Meld u aan met {0} uw account|  
+|WebAuthenticationUserLimitNotice|Deze service heeft het maximum aantal toegestane gebruikers bereikt. Voer `<a href="mailto:{0}"\>contact the administrator</a\>` een upgrade van de service uit en schakel de gebruikers registratie opnieuw in.|  
+|WebAuthenticationUserLimitNoticeHeader|Gebruikers registratie is uitgeschakeld|  
+|WebAuthenticationUserLimitNoticeTitle|Gebruikers registratie is uitgeschakeld|  
+|WebAuthenticationUserRegistrationDisabledNotice|De registratie van gebruikers is uitgeschakeld door de beheerder. Meld u aan met een externe ID-provider.|  
+|WebAuthenticationUserRegistrationDisabledNoticeHeader|Gebruikers registratie is uitgeschakeld|  
+|WebAuthenticationUserRegistrationDisabledNoticeTitle|Gebruikers registratie is uitgeschakeld|  
+|WebAuthenticationSignupPendingConfirmationNotice|Voordat we het maken van uw account kunnen volt ooien, moeten we uw e-mail adres verifiëren. Er is een e-mail {0}bericht verzonden naar. Volg de instructies in het e-mail bericht om uw account te activeren. Als het e-mail bericht niet binnen de komende minuten wordt ontvangen, controleert u de map Ongewenste e-mail.|  
+|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|Er is een niet-bevestigd account voor het e- {0}mail adres gevonden. U moet uw e-mail adres verifiëren om het maken van uw account te volt ooien. Er is een e-mail {0}bericht verzonden naar. Volg de instructies in het e-mail bericht om uw account te activeren. Als het e-mail bericht niet binnen de komende minuten wordt ontvangen, controleert u de map Ongewenste e-mail|  
+|WebAuthenticationSignupConfirmationAlmostDone|Bijna klaar|  
+|WebAuthenticationSignupConfirmationEmailSent|Er is een e-mail {0}bericht verzonden naar. Volg de instructies in het e-mail bericht om uw account te activeren. Als het e-mail bericht niet binnen de komende minuten wordt ontvangen, controleert u de map Ongewenste e-mail.|  
+|WebAuthenticationEmailSentNotificationMessage|Het e-mail bericht is verzonden naar{0}|  
+|WebAuthenticationNoAadTenantConfigured|Er is geen Azure Active Directory-Tenant geconfigureerd voor de service.|  
+|CheckboxLabelUserRegistrationTermsConsentRequired|Ik ga akkoord met `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`de.|  
+|TextblockUserRegistrationTermsProvided|Controleer`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
+|DialogHeadingTermsOfUse|Gebruiksrechtovereenkomst|  
+|ValidationMessageConsentNotAccepted|U moet akkoord gaan met de gebruiks voorwaarden voordat u kunt door gaan.|  
   
-###  <a name="signinstrings"></a><a name="SigninStrings"></a>Aanmeldingen  
+###  <a name="signinstrings"></a><a name="SigninStrings"></a>SigninStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Bent u uw wachtwoord vergeten?|  
-|WebAuthenticationIfAdministrator|Als u beheerder bent, `<a href="{0}"\>here</a\>`moet u zich aanmelden.|  
-|WebAuthenticationNotALid|Nog geen lid? `<a href="/signup"\>Sign up now</a\>`|  
-|WebAuthenticationRemember|Denk aan mij op deze computer|  
-|WebAuthenticationSigininMetPassword|Inloggen met uw gebruikersnaam en wachtwoord|  
+|WebAuthenticationIfAdministrator|Als u een beheerder bent, moet u zich `<a href="{0}"\>here</a\>`aanmelden.|  
+|WebAuthenticationNotAMember|Nog geen lid? `<a href="/signup"\>Sign up now</a\>`|  
+|WebAuthenticationRemember|Mij onthouden op deze computer|  
+|WebAuthenticationSigininWithPassword|Meld u aan met uw gebruikers naam en wacht woord|  
 |WebAuthenticationSigninTitle|Aanmelden|  
 |WebAuthenticationSignUpNow|Nu registreren|  
   
-###  <a name="signupstrings"></a><a name="SignupStrings"></a>Aanmeldingstekenreeksen  
+###  <a name="signupstrings"></a><a name="SignupStrings"></a>SignupStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|PageTitleSignup PageTitleSignup PageTitle|Aanmelden|  
-|WebAuthenticationAlALid|Ben je al lid?|  
+|PageTitleSignup|Aanmelden|  
+|WebAuthenticationAlreadyAMember|Bent u al lid?|  
 |WebAuthenticationCreateNewAccount|Een nieuw API Management-account maken|  
-|WebAuthenticationSigninNow|Log hier in|  
+|WebAuthenticationSigninNow|Nu aanmelden|  
 |ButtonLabelSignup|Aanmelden|  
   
-###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a>AbonnementlistTekenreeksen  
+###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a>SubscriptionListStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|AbonnementOpzeggenBevestiging|Weet u zeker dat u dit abonnement wilt opzeggen?|  
-|AbonnementvernieuwdeBevestiging|Weet u zeker dat u dit abonnement wilt verlengen?|  
+|SubscriptionCancelConfirmation|Weet u zeker dat u dit abonnement wilt annuleren?|  
+|SubscriptionRenewConfirmation|Weet u zeker dat u dit abonnement wilt vernieuwen?|  
 |WebDevelopersManageSubscriptions|Abonnementen beheren|  
 |WebDevelopersPrimaryKey|Primaire sleutel|  
-|WebDevelopersRegenerateLink WebDevelopersRegenerateLink|Opnieuw genereren|  
+|WebDevelopersRegenerateLink|Opnieuw genereren|  
 |WebDevelopersSecondaryKey|Secundaire sleutel|  
-|ButtonLabelShowKey ButtonLabelShowKey|Weergeven|  
-|ButtonLabelRenewAbonnement|Verlengen|  
-|WebDevelopersSubscriptionGevraagd|Gevraagd op{0}|  
+|ButtonLabelShowKey|Weergeven|  
+|ButtonLabelRenewSubscription|Verlengen|  
+|WebDevelopersSubscriptionRequested|Aangevraagd op{0}|  
 |WebDevelopersSubscriptionRequestedState|Aangevraagd|  
-|WebDevelopersSubscriptionTableNameHeader|Name|  
+|WebDevelopersSubscriptionTableNameHeader|Naam|  
 |WebDevelopersSubscriptionTableStateHeader|Status|  
-|WebDevelopersUsageStatisticsLink WebDevelopersUsageStatisticsLink WebDevelopersUsageStatisticsLink WebDeveloper|Analyserapporten|  
-|WebDevelopersYourAbonnementen|Uw abonnementen|  
-|AbonnementPropertyLabelRequestedDate|Gevraagd op|  
-|AbonnementPropertyLabelStartDate|Gestart op|  
-|PageTitleRenameSubscription|Naamname wijzigen|  
-|AbonnementPropertyLabelName|Abonnementsnaam|  
+|WebDevelopersUsageStatisticsLink|Analyse rapporten|  
+|WebDevelopersYourSubscriptions|Uw abonnementen|  
+|SubscriptionPropertyLabelRequestedDate|Aangevraagd op|  
+|SubscriptionPropertyLabelStartedDate|Gestart op|  
+|PageTitleRenameSubscription|Naam van abonnement wijzigen|  
+|SubscriptionPropertyLabelName|Abonnementsnaam|  
   
-###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a>Abonnementen  
+###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a>SubscriptionStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|SectionheadingCloseAccount|Wilt u uw account sluiten?|  
-|PageTitleDeveloperProfiel PageTitleDeveloperProfile PageTitleDeveloperProfile PageTitle|Profiel|  
+|SectionHeadingCloseAccount|Wilt u uw account sluiten?|  
+|PageTitleDeveloperProfile|Profiel|  
 |ButtonLabelHideKey|Verbergen|  
 |ButtonLabelRegenerateKey|Opnieuw genereren|  
-|InformatieMessageKeyWasRegenerated|Weet je zeker dat je deze sleutel wilt regenereren?|  
-|ButtonLabelShowKey ButtonLabelShowKey|Weergeven|  
+|InformationMessageKeyWasRegenerated|Weet u zeker dat u deze sleutel opnieuw wilt genereren?|  
+|ButtonLabelShowKey|Weergeven|  
   
-###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a>Profieltekenreeksen bijwerken  
+###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a>UpdateProfileStrings  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|ButtonLabelUpdateProfiel|Profiel bijwerken|  
-|PageTitleUpdateProfiel PageTitleUpdateProfile PageTitleUpdateProfile PageTitle|Accountgegevens bijwerken|  
+|ButtonLabelUpdateProfile|Profiel bijwerken|  
+|PageTitleUpdateProfile|Account gegevens bijwerken|  
   
-###  <a name="userprofile"></a><a name="UserProfile"></a>Userprofile  
+###  <a name="userprofile"></a><a name="UserProfile"></a>Gebruikers  
   
-|Name|Tekst|  
+|Naam|Tekst|  
 |----------|----------|  
-|ButtonLabelChangeAccountInfo|Accountgegevens wijzigen|  
-|ButtonLabelChangePassword ButtonLabelChangePassword ButtonLabelChangePassword|Wachtwoord wijzigen|  
+|ButtonLabelChangeAccountInfo|Account gegevens wijzigen|  
+|ButtonLabelChangePassword|Wachtwoord wijzigen|  
 |ButtonLabelCloseAccount|Account sluiten|  
-|TextboxLabelEmail|Email|  
+|TextboxLabelEmail|E-mail|  
 |TextboxLabelEmailFirstName|Voornaam|  
-|TextboxLabelENaam|Achternaam|  
-|TextboxLabelNotificationsSenderEmail|E-mail met afzendermeldingen|  
+|TextboxLabelEmailLastName|Achternaam|  
+|TextboxLabelNotificationsSenderEmail|E-mail adres afzender|  
 |TextboxLabelOrganizationName|Organisatienaam|  
-|AbonnementStateActive|Actief|  
-|Abonnementstategeannuleerd|Geannuleerd|  
-|AbonnementStateVerlopen|Verlopen|  
-|AbonnementStateAfgewezen|Geweigerd|  
-|AbonnementStateRequested|Aangevraagd|  
-|AbonnementStateopgeschort|Onderbroken|  
-|StandaardAbonnementNameTemplate|{0}(standaard)|  
-|AbonnementNameTemplate|Toegang tot ontwikkelaars #{0}|  
+|SubscriptionStateActive|Actief|  
+|SubscriptionStateCancelled|Geannuleerd|  
+|SubscriptionStateExpired|Verlopen|  
+|SubscriptionStateRejected|Geweigerd|  
+|SubscriptionStateRequested|Aangevraagd|  
+|SubscriptionStateSuspended|Onderbroken|  
+|DefaultSubscriptionNameTemplate|{0}prijs|  
+|SubscriptionNameTemplate|Ontwikkelaars toegang #{0}|  
 |TextboxLabelSubscriptionName|Abonnementsnaam|  
-|ValidatieMessageAbonnementnaamvereist|De naam van het abonnement kan niet leeg zijn.|  
-|ApiManagementUserLimitBereikt|Deze service heeft het maximum aantal toegestane gebruikers bereikt. Upgrade naar een hogere prijscategorie.|  
+|ValidationMessageSubscriptionNameRequired|De naam van het abonnement mag niet leeg zijn.|  
+|ApiManagementUserLimitReached|Deze service heeft het maximum aantal toegestane gebruikers bereikt. Voer een upgrade uit naar een hogere prijs categorie.|  
   
-##  <a name="glyph-resources"></a><a name="glyphs"></a>Glyph-bronnen  
- API Management developer portal templates can use the glyphs from [Glyphicons from Bootstrap.](https://getbootstrap.com/components/#glyphicons) Deze set glyphs bevat meer dan 250 glyphs in lettertype-indeling van de [set Glyphicon](https://glyphicons.com/) Halflings. Als u een glyph uit deze set wilt gebruiken, gebruikt u de volgende syntaxis.  
+##  <a name="glyph-resources"></a><a name="glyphs"></a>Glyph-resources  
+ API Management ontwikkelaars Portal sjablonen kunnen de glyphs van [Glyphicons uit Boots trap](https://getbootstrap.com/components/#glyphicons)gebruiken. Deze reeks glyphs bevat meer dan 250 glyphs in de lettertype notatie van de [Glyphicon](https://glyphicons.com/) Halflings ingesteld. Als u een glyph uit deze set wilt gebruiken, gebruikt u de volgende syntaxis.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Zie [Glyphicons van Bootstrap](https://getbootstrap.com/components/#glyphicons)voor de volledige lijst met glyphs.
+ Zie [Glyphicons van Boots trap](https://getbootstrap.com/components/#glyphicons)voor de volledige lijst met glyphs.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

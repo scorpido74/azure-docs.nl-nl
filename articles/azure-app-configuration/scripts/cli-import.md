@@ -1,7 +1,7 @@
 ---
-title: Voorbeeld van Azure CLI-script - Importeren in een app-configuratiearchief
+title: Voor beeld van Azure CLI-script-importeren naar een app-configuratie archief
 titleSuffix: Azure App Configuration
-description: Azure CLI-script gebruiken - Configuratie importeren in Azure App-configuratie
+description: Azure CLI-script gebruiken voor het importeren van configuratie naar Azure-app configuratie
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,21 +10,21 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 71d6aafa82f647b9c6164ee9a06b43ed7e9a66af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523592"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importeren in een Azure-app-configuratiearchief
 
-Met dit voorbeeldscript worden de instellingen voor sleutelwaarde geïmporteerd in een Azure App Configuration Store.
+Met dit voorbeeld script worden sleutel waarde-instellingen in een Azure-app configuratie archief geïmporteerd.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de Azure CLI lokaal te installeren en te gebruiken, moet u in dit artikel de Azure CLI-versie 2.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie De Azure [CLI installeren](/cli/azure/install-azure-cli)als u de Azure CLI wilt installeren.
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2,0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)als u wilt installeren of upgraden.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -39,14 +39,14 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten om te importeren in een app-configuratiearchief. Elke opdracht in de tabel is een koppeling naar opdracht-specifieke documentatie.
+In dit script worden de volgende opdrachten gebruikt om een app-configuratie archief te importeren. Elke opdracht in de tabel is een koppeling naar opdracht-specifieke documentatie.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig kv importeren](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Importeert naar een app-configuratieopslagbron. |
+| [AZ appconfig KV import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Hiermee worden geïmporteerd naar een app-configuratie opslag resource. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Azure CLI-documentatie](/cli/azure)voor meer informatie over de Azure CLI.
+Zie de [Azure cli-documentatie](/cli/azure)voor meer informatie over de Azure cli.
 
-Aanvullende CLI-scriptvoorbeelden voor app-configuratie zijn te vinden in de [bemonsteringen van Azure App Configuration CLI.](../cli-samples.md)
+Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).

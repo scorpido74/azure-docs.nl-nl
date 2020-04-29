@@ -1,5 +1,5 @@
 ---
-title: Vm's voor laadbalans binnen een zone - Azure CLI
+title: Taak verdeling van Vm's binnen een zone-Azure CLI
 description: In dit Azure CLI-voorbeeldscript ziet u hoe u verkeer kunt verdelen over VM’s binnen een specifieke beschikbaarheidszone
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79214543"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Voorbeeld van Azure CLI-script: Load balance-verkeer naar VM's binnen een specifieke beschikbaarheidszone
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Voor beeld van Azure CLI-script: taak verdeling van verkeer naar Vm's binnen een specifieke beschikbaarheids zone
 
 Met dit Azure CLI-voorbeeldscript maakt u alles wat nodig is voor het uitvoeren van verschillende virtuele Ubuntu-machines die zijn geconfigureerd in een maximaal beschikbare configuratie met gelijke taakverdeling binnen een specifieke beschikbaarheidszone. Nadat het script is uitgevoerd, beschikt u over drie virtuele machines in een enkele beschikbaarheidszone binnen een regio, die toegankelijk zijn via een Azure Standard Load Balancer. 
 

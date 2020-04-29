@@ -1,5 +1,5 @@
 ---
-title: VM-netwerkverkeer filteren - Voorbeeld van Azure PowerShell-script
+title: VM-netwerk verkeer filteren-Azure PowerShell script voorbeeld
 description: Azure PowerShell-voorbeeldscript - binnenkomend en uitgaand netwerkverkeer voor VM filteren.
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: c11a2249b66d56706783c865a77c14a276d870ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74091373"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Voorbeeldscript binnenkomend en uitgaand VM-netwerkverkeer filteren

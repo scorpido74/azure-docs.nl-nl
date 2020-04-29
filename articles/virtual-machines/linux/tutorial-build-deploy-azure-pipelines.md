@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - CI/CD naar Azure VM's met Azure Pipelines
-description: In deze zelfstudie leert u hoe u permanente integratie (CI) en continue implementatie (CD) van een Node.js-app inStelt op Azure VM's met behulp van Op YAML gebaseerde Azure-pijplijn.
+title: Zelf studie-CI/CD naar Azure Vm's met behulp van Azure-pijp lijnen
+description: In deze zelf studie leert u hoe u doorlopende integratie (CI) en doorlopende implementatie (CD) van een node. js-app naar Azure Vm's kunt instellen met behulp van YAML Azure-pijp lijn.
 author: ushan
 tags: azure-devops-pipelines
 ms.assetid: ''
@@ -12,32 +12,32 @@ ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
 ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76988325"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Zelfstudie: Uw app implementeren op virtuele Linux-machines in Azure met Azure DevOps-services en Azure-pijplijnen
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Zelf studie: uw app implementeren op virtuele Linux-machines in azure met behulp van Azure DevOps Services en Azure-pijp lijnen
 
-Continuous integration (CI) en continuous deployment (CD) vormen een pijplijn waarmee je je code bouwen, vrijgeven en implementeren na elke codecommit. Dit document bevat de stappen die zijn gekoppeld aan het instellen van een CI/CD-pijplijn voor het uitvoeren van implementaties met meerdere machines met Azure Pipelines.
+Doorlopende integratie (CI) en doorlopende implementatie (CD) vormen een pijp lijn waarmee u uw code kunt bouwen, vrijgeven en implementeren nadat elke code is doorgevoerd. Dit document bevat de stappen die zijn gekoppeld aan het instellen van een CI/CD-pijp lijn voor het uitvoeren van implementaties met meerdere machines met behulp van Azure-pijp lijnen.
 
-Azure Pipelines biedt een complete, volledig uitgeruste set CI/CD-automatiseringstools voor implementaties naar virtuele machines, zowel on-prem als in elke cloud.
+Azure-pijp lijnen bieden een volledige, volledig uitgeruste set hulpprogram ma's voor het automatiseren van CI/CD voor implementaties op virtuele machines, zowel on-premises als in elke Cloud.
 
-In deze zelfstudie stelt u een op YAML gebaseerde CI/CD-pijplijn in om uw app te implementeren in een Azure [Pipelines-omgeving](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops) met Virtuele Linux-machines als resources, die elk dienen als webservers om de app uit te voeren.
+In deze zelf studie stelt u een op YAML gebaseerde CI/CD-pijp lijn in om uw app te implementeren in een Azure pipelines- [omgeving](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops) met virtuele Linux-machines als bronnen, die allemaal fungeren als webservers om de app uit te voeren.
 
 Procedures voor:
 
 > [!div class="checklist"]
-> * Download een voorbeeld-app.
-> * Maak een op YAML gebaseerde Azure Pipelines CI-pijplijn voor het bouwen van de voorbeeld-app.
-> * Een Azure Pipelines-omgeving maken voor de virtuele Azure-machines
-> * Maak een cd-pijplijnvoor Azure Pipelines.
+> * Een voor beeld-app ophalen.
+> * Maak een op YAML gebaseerde Azure pipelines CI-pijp lijn voor het bouwen van de voor beeld-app.
+> * Een Azure-pipeline-omgeving maken voor de virtuele machines van Azure
+> * Een CD-pijp lijn met Azure-pijp lijnen maken.
 > * Handmatige en door CI geactiveerde implementaties uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Meld u aan bij uw Azure**https://dev.azure.com/** DevOps Services-organisatie ( ). 
+* Meld u aan bij uw Azure DevOps Services-**https://dev.azure.com/** organisatie (). 
   U kunt een [gratis Azure DevOps Services-organisatie](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) krijgen.
 
   > [!NOTE]
@@ -47,11 +47,11 @@ Procedures voor:
 
 *  Open de binnenkomende poort 80 voor uw virtuele machine. Zie [Netwerkbeveiligingsgroepen maken met Azure Portal](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic) voor meer informatie.
 
-## <a name="get-your-sample-app-code"></a>Uw voorbeeld-app-code downloaden
+## <a name="get-your-sample-app-code"></a>Uw voor beeld-app-code ophalen
 
-Als u al een app in GitHub hebt die u wilt implementeren, u proberen een pijplijn voor die code te maken.
+Als u al een app in GitHub hebt die u wilt implementeren, kunt u proberen een pijp lijn voor die code te maken.
 
-Echter, als je een nieuwe gebruiker, dan kun je een betere start met behulp van onze sample code. In dat geval, vork deze repo in GitHub:
+Als u echter een nieuwe gebruiker bent, kunt u aan de slag met de voorbeeld code. In dat geval splitst u deze opslag plaats in GitHub:
 
 #### <a name="java"></a>[Java](#tab/java)
 
@@ -60,7 +60,7 @@ https://github.com/spring-projects/spring-petclinic
 ```
 
 > [!NOTE]
-> Petclinic is een [Java Spring Boot](https://spring.io/guides/gs/spring-boot) applicatie gebouwd met behulp van [Maven](https://spring.io/guides/gs/maven/).
+> Petclinic is een [Java Spring boot](https://spring.io/guides/gs/spring-boot) -toepassing die is gebouwd met behulp van [maven](https://spring.io/guides/gs/maven/).
 
 #### <a name="javascript"></a>[Javascript](#tab/java-script)
 
@@ -69,7 +69,7 @@ https://github.com/azure-devops/fabrikam-node
 ```
 
 > [!NOTE]
-> Deze Node.js app is gebouwd via [Yeoman](https://yeoman.io/learning/index.html). Hierin is gebruikgemaakt van Express, Bower en Grunt. Daarnaast bevat deze een aantal npm-pakketten als afhankelijkheden.
+> Deze node. js-app is gebouwd via [Yeoman](https://yeoman.io/learning/index.html). Hierin is gebruikgemaakt van Express, Bower en Grunt. Daarnaast bevat deze een aantal npm-pakketten als afhankelijkheden.
 > Het voorbeeld bevat ook een script waarmee Nginx wordt ingesteld en de app wordt geïmplementeerd. Deze wordt uitgevoerd op de virtuele machines. Met name met het script:
 > 1. Worden Node, Nginx en PM2 geïnstalleerd.
 > 2. Worden Nginx en PM2 geconfigureerd.
@@ -77,73 +77,73 @@ https://github.com/azure-devops/fabrikam-node
 
 * * * 
 
-## <a name="prerequisites-for-the-linux-vm"></a>Voorwaarden voor de Linux VM
+## <a name="prerequisites-for-the-linux-vm"></a>Vereisten voor de virtuele Linux-machine
 
-Voorbeeld-apps hierboven vermeld zijn getest op Ubuntu 16.04, en we raden u aan dezelfde versie van Linux VM te gebruiken voor deze quickstart.
-Volg de hieronder beschreven extra stappen op basis van de runtimestack die voor de app wordt gebruikt.
+Voor beeld-apps die hierboven worden vermeld, zijn getest op Ubuntu 16,04. u wordt aangeraden dezelfde versie van de Linux-VM te gebruiken voor deze Quick Start.
+Volg de aanvullende stappen die hieronder worden beschreven, op basis van de runtime stack die voor de app wordt gebruikt.
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- Voor het implementeren van java spring boot- en springcloudgebaseerde apps maakt u een Linux-VM in Azure met behulp van [deze](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) sjabloon, die een volledig ondersteunde op OpenJDK gebaseerde runtime biedt.
-- Voor het implementeren van Java-servlets op de Tomcat-server maakt u een Linux-VM met Java 8 met behulp van [deze](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure-sjabloon en [configureert u Tomcat 9.x als service.](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)
-- Voor het implementeren van Java EE-gebaseerde app, gebruik een Azure template om een [Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) of een Linux VM + Java + [WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) of een [Linux VM +Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
+- Voor het implementeren van Java Spring-en lente-Cloud-apps, maakt u een virtuele Linux-machine in azure met behulp van [deze](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) sjabloon. Dit biedt een volledig ondersteunde openjdk-runtime.
+- Voor het implementeren van Java-Servlets op Tomcat-server maakt u een virtuele Linux-machine met Java 8 met behulp van [deze](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure-sjabloon en [configureert u Tomcat 9. x as a Service](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
+- Voor het implementeren van op Java EE gebaseerde app gebruikt u een Azure-sjabloon voor het maken van een [virtuele Linux-machine + Java + WebSphere 9. x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) of een Linux-VM [+ Java + WebLogic 12.](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) x of een [Linux-VM +](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Java + WildFly/JBoss 14 
 
 #### <a name="javascript"></a>[Javascript](#tab/java-script)
 
-Als u een javascript-app of een Node.js-app wilt installeren, hebt u een Linux-VM met Nginx-webserver nodig om de app te implementeren.
-Als u nog geen Linux-vm met Nginx hebt, maakt u er nu een in Azure met behulp van de stappen in [dit voorbeeld.](/azure/virtual-machines/linux/quick-create-cli)
+Als u een Java script-app of een node. js-app wilt installeren, hebt u een virtuele Linux-machine met nginx web server nodig om de app te implementeren.
+Als u nog geen virtuele Linux-machine met nginx hebt, maakt u er nu in azure met behulp van de stappen in [dit voor beeld](/azure/virtual-machines/linux/quick-create-cli).
 
 * * * 
 
-## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>Een Azure Pipelines-omgeving maken met virtuele Azure-machines
+## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>Een Azure pipeline-omgeving maken met Azure virtual machines
 
-Virtuele machines kunnen worden toegevoegd als resources binnen [omgevingen](https://docs.microsoft.com/azure/devops/pipelines/process/environments) en kunnen worden gericht op implementaties met meerdere machines. Implementatiegeschiedenisweergaven binnen de omgeving bieden traceerbaarheid van VM naar de pijplijn en vervolgens naar de commit.
+Virtuele machines kunnen worden toegevoegd als resources in [omgevingen](https://docs.microsoft.com/azure/devops/pipelines/process/environments) en kunnen worden gericht op implementaties met meerdere machines. Implementatie geschiedenis weergaven in een omgeving bieden traceer baarheid van de VM naar de pijp lijn en vervolgens naar de door voer.
 
-U een omgeving maken in de hub '**Omgevingen**' binnen de sectie**Pijplijnen.**
+U kunt een omgeving maken in de hub '**omgevingen**' in de sectie '**pijp lijnen**'.
 1.  Meld u aan bij uw Azure DevOps-organisatie en navigeer naar uw project.
-2.  Navigeer in uw project naar de pagina **Pijplijnen.** Kies vervolgens **Omgevingen** en klik op **Omgeving maken**. Geef een **naam** (vereist) op voor de omgeving en een **beschrijving**.
-3.  Kies **Virtuele machines** als **resource** die aan de omgeving moet worden toegevoegd en klik op **Volgende**.
-4.  Kies Besturingssysteem (Windows/Linux) en **kopieer PS-registratiescript**. 
-5.  Voer nu het gekopieerde script uit van een powershell-opdrachtprompt van de beheerder op elk van de doel-VM's die bij deze omgeving moeten worden geregistreerd.
+2.  Navigeer in uw project naar de pagina **pijp lijnen** . Kies vervolgens **omgevingen** en klik op **omgeving maken**. Geef een **naam** (vereist) voor de omgeving en een **Beschrijving**op.
+3.  Kies **virtual machines** als **resource** die moet worden toegevoegd aan de omgeving en klik op **volgende**.
+4.  Kies besturings systeem (Windows/Linux) en **Kopieer het PS-registratie script**. 
+5.  Voer nu het gekopieerde script uit vanuit een Power shell-opdracht prompt met beheerders rechten op elk van de doel-Vm's die in deze omgeving moeten worden geregistreerd.
     > [!NOTE]
-    > - Persoonlijke toegang Token van de ingelogde gebruiker wordt vooraf ingevoegd in het script dat op dezelfde dag verloopt en het gekopieerde script daarop onbruikbaar maakt.
-    > - Als uw VM al een agent heeft die erop draait, geeft u een unieke naam op voor 'agent' om zich te registreren bij de omgeving.
-6.  Zodra de VM is geregistreerd, wordt deze weergegeven als een omgevingsbron onder het tabblad 'resources' van de omgeving.
+    > - Het persoonlijke toegangs token van de aangemelde gebruiker wordt vooraf ingevoegd in het script dat op dezelfde dag verloopt, waardoor het gekopieerde script onbruikbaar wordt gemaakt.
+    > - Als op uw virtuele machine al een agent wordt uitgevoerd, geeft u een unieke naam op voor de agent om te registreren bij de omgeving.
+6.  Zodra de VM is geregistreerd, wordt deze weer gegeven als een omgevings bron op het tabblad resources van de omgeving.
 
-    ![VM-creatie](media/tutorial-deploy-vms-azure-pipelines/vm-creation.png)
+    ![VMcreation](media/tutorial-deploy-vms-azure-pipelines/vm-creation.png)
 
-7.  Als u meer VM's wilt toevoegen, u het script opnieuw bekijken en kopiëren door op 'Resource toevoegen' te klikken en 'Virtuele machines' als resource te kiezen. Dit script zou hetzelfde blijven voor alle VM's worden toegevoegd aan deze omgeving. 
-8.  Elke machine werkt samen met Azure Pipelines om de implementatie van uw app te coördineren.
+7.  Als u meer Vm's wilt toevoegen, kunt u het script opnieuw weer geven en kopiëren door te klikken op ' resource toevoegen ' en ' Virtual Machines ' als resource te kiezen. Dit script blijft hetzelfde voor alle Vm's die moeten worden toegevoegd aan deze omgeving. 
+8.  Elke computer communiceert met Azure-pijp lijnen voor het coördineren van de implementatie van uw app.
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. U tags toevoegen aan de VM als onderdeel van het interactieve PS-registratiescript (of) u hetzelfde toevoegen/verwijderen uit de bronweergave door op de driepunten aan het einde van elke VM-bron in de bronnenweergave te klikken.
+9. U kunt labels toevoegen aan de virtuele machine als onderdeel van het interactieve PS-registratie script (of) u kunt deze ook toevoegen aan/verwijderen uit de resource weergave door te klikken op de drie puntjes aan het einde van elke VM-resource in de weer gave resources.
 
-   Met de tags die u toewijst, u de implementatie beperken tot specifieke virtuele machines wanneer de omgeving wordt gebruikt in een implementatietaak. Tags zijn elk beperkt tot 256 tekens, maar er is geen limiet aan het aantal tags dat u gebruiken.
+   Met de labels die u toewijst kunt u de implementatie beperken tot specifieke virtuele machines wanneer de omgeving wordt gebruikt in een implementatie taak. Labels zijn allemaal beperkt tot 256 tekens, maar er is geen limiet voor het aantal tags dat u kunt gebruiken.
 
-   ![VMtags VMtags](media/tutorial-deploy-vms-azure-pipelines/vm-tags.png)
+   ![VMtags](media/tutorial-deploy-vms-azure-pipelines/vm-tags.png)
 
 * * * 
 
-## <a name="define-your-ci-build-pipeline"></a>Uw CI-buildpijplijn definiëren
+## <a name="define-your-ci-build-pipeline"></a>Uw CI-build-pijp lijn definiëren
 
-U hebt een CI-buildpijplijn (continuous integration) nodig die uw webtoepassing publiceert, evenals een implementatiescript dat lokaal kan worden uitgevoerd op de Ubuntu-server. Stel een CI-buildpijplijn in op basis van de runtime die u wilt gebruiken. 
+U hebt een pijp lijn voor continue integratie (CI) nodig die uw webtoepassing publiceert, evenals een implementatie script dat lokaal kan worden uitgevoerd op de Ubuntu-Server. Stel een CI-pijp lijn in op basis van de runtime die u wilt gebruiken. 
 
 1. Meld u aan bij uw Azure DevOps-organisatie en navigeer naar uw project.
 
-1. Navigeer in uw project naar de pagina **Pijplijnen.** Kies vervolgens de actie om een nieuwe pijplijn te maken.
+1. Navigeer in uw project naar de pagina **pijp lijnen** . Kies vervolgens de actie om een nieuwe pijp lijn te maken.
 
-1. Loop door de stappen van de wizard door **eerst GitHub** te selecteren als de locatie van uw broncode.
+1. Door loop de stappen van de wizard door eerst **github** te selecteren als de locatie van de bron code.
 
-1. Mogelijk wordt u doorgestuurd naar GitHub om u aan te melden. Voer dan uw GitHub-referenties in.
+1. U wordt mogelijk omgeleid naar GitHub om u aan te melden. Als dit het geval is, voert u uw GitHub-referenties in.
 
-1. Wanneer de lijst met opslagplaatsen wordt weergegeven, selecteert u de gewenste voorbeeld-app-opslagplaats.
+1. Wanneer de lijst met opslag plaatsen wordt weer gegeven, selecteert u de gewenste opslag plaats voor de voor beeld-app.
 
-1. Azure Pipelines analyseert uw repository en beveelt een geschikte pijplijnsjabloon aan.
+1. Azure-pijp lijnen analyseren uw opslag plaats en raden een geschikte pijplijn sjabloon aan.
 
 #### <a name="java"></a>[Java](#tab/java)
 
-Selecteer de **startersjabloon** en kopieer het onderstaande YAML-fragment dat uw Java-project bouwt en voert tests uit met Apache Maven:
+Selecteer de sjabloon **Start** en kopieer het onderstaande YAML-fragment dat uw Java-project bouwt en voert tests uit met Apache Maven:
 
 ```YAML
 - job: Build
@@ -163,11 +163,11 @@ Selecteer de **startersjabloon** en kopieer het onderstaande YAML-fragment dat u
     artifact: drop
 ```
 
-Voor meer begeleiding, volg de stappen die worden genoemd in [Bouw uw Java-app met Maven](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java).
+Volg de stappen in [uw Java-app bouwen met maven](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)voor meer informatie.
 
 #### <a name="javascript"></a>[Javascript](#tab/java-script)
 
-Selecteer de **startersjabloon** en kopieer het onderstaande YAML-fragment waarmee een algemeen Node.js-project met npm wordt gebouwd.
+Selecteer de **Start** sjabloon en kopieer het onderstaande YAML-fragment dat een algemeen node. js-project bouwt met NPM.
 
 ```YAML
 - stage: Build
@@ -196,19 +196,19 @@ Selecteer de **startersjabloon** en kopieer het onderstaande YAML-fragment waarm
       artifact: drop
 ```
 
-Volg voor meer begeleiding de stappen in [De app Node.js bouwen met gulp.](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript)
+Volg de stappen in [uw node. js-app bouwen met Gulp](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript)voor meer informatie.
 
-- Neem een kijkje op de pijplijn om te zien wat het doet. Zorg ervoor dat alle standaardingangen geschikt zijn voor uw code.
+- Bekijk de pijp lijn om te zien wat het doet. Zorg ervoor dat alle standaard invoer geschikt zijn voor uw code.
 
-- Selecteer **Opslaan en uitvoeren,** selecteer **Vervolgens Rechtstreeks vastleggen in de hoofdvertakking**en kies vervolgens Opslaan en opnieuw **uitvoeren.**
+- Selecteer **opslaan en uitvoeren**, selecteer **rechtstreeks door voeren naar de hoofd vertakking**en kies vervolgens **opslaan en opnieuw uitvoeren** .
 
-- Er wordt een nieuwe run gestart. Wacht tot de run is voltooid.
+- Er wordt een nieuwe uitvoering gestart. Wacht totdat de uitvoering is voltooid.
 
 * * * 
 
-## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Cd-stappen definiëren om te implementeren op de Linux-VM
+## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>CD-stappen definiëren voor de implementatie van de virtuele Linux-machine
 
-1. Bewerk de bovenstaande pijplijn en voeg een [implementatietaak toe](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs) door te verwijzen naar de omgeving en de VM-resources die u eerder hebt met de onderstaande yaml-syntaxis:
+1. Bewerk de bovenstaande pijp lijn en voeg een [implementatie taak](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs) toe door te verwijzen naar de omgeving en de VM-bronnen die u eerder met de yaml-syntaxis hebt gebruikt:
 
    ```YAML
    jobs:  
@@ -220,14 +220,14 @@ Volg voor meer begeleiding de stappen in [De app Node.js bouwen met gulp.](https
        tags: web1
      strategy:
    ```
-2. U specifieke sets virtuele machines uit de omgeving selecteren om de implementatie te ontvangen door de **tags** op te geven die u hebt gedefinieerd voor elke virtuele machine in de omgeving.
-[Hier](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) vindt u het volledige YAML-schema voor implementatietaak.
+2. U kunt specifieke sets virtuele machines selecteren in de omgeving om de implementatie te ontvangen door de **Tags** op te geven die u voor elke virtuele machine in de omgeving hebt gedefinieerd.
+[Dit](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) is het volledige YAML-schema voor de implementatie taak.
 
-3. U `runOnce` eithor `rolling` of als implementatiestrategie opgeven. 
+3. U kunt eithor `runOnce` of `rolling` als implementatie strategie opgeven. 
 
-   `runOnce`is de eenvoudigste implementatiestrategie waarin alle levenscyclushaken, namelijk `preDeploy` `deploy`, `routeTraffic`en `postRouteTraffic`, eenmaal worden uitgevoerd. Dan, `on:` `success` een `on:` `failure` of wordt uitgevoerd.
+   `runOnce`is de eenvoudigste implementatie strategie waarbij alle levens cyclus hooks, namelijk `preDeploy` `deploy`, `routeTraffic`en `postRouteTraffic`, eenmaal worden uitgevoerd. Vervolgens wordt een `on:` `success` of `on:` `failure` uitgevoerd.
 
-   Hieronder is het voorbeeld YAML fragment voor: `runOnce`
+   Hieronder ziet u het voor beeld- `runOnce` yaml-fragment voor:
    ```YAML
    jobs:
    - deployment: VMDeploy
@@ -244,7 +244,7 @@ Volg voor meer begeleiding de stappen in [De app Node.js bouwen met gulp.](https
              - script: echo my first deployment
    ```
 
-4. Hieronder vindt u een voorbeeld van het YAML-fragment dat u gebruiken om een rollende strategie voor virtuele machines te definiëren en maximaal 5 doelen in elke iteratie bij te werken. `maxParallel`zal tegelijkertijd het aantal doelen bepalen dat kan worden ingezet. De selectie is verantwoordelijk voor het absolute aantal of percentage doelen dat op elk moment beschikbaar moet blijven, met uitzondering van de doelen die worden geïmplementeerd. Het wordt ook gebruikt om het succes en de foutvoorwaarden tijdens de implementatie te bepalen.
+4. Hieronder ziet u een voor beeld van het YAML-fragment dat u kunt gebruiken voor het definiëren van een rollen strategie voor virtuele machines die zijn bijgewerkt tot 5 doelen in elke iteratie. `maxParallel`bepaalt het aantal doelen dat parallel kan worden geïmplementeerd. De selectie accounts voor een absoluut getal of percentage van doelen die op elk gewenst moment beschikbaar moeten blijven, met uitzonde ring van de doelen waarop wordt geïmplementeerd. Het wordt ook gebruikt om de geslaagde en fout situaties tijdens de implementatie te bepalen.
 
    ```YAML
    jobs: 
@@ -285,18 +285,18 @@ Volg voor meer begeleiding de stappen in [De app Node.js bouwen met gulp.](https
                - script: echo Notify! This is on success
    ```
 
-   Bij elke run van deze taak wordt `<environment name>` de implementatiegeschiedenis geregistreerd tegen de omgeving die u hebt gemaakt en de VM's hebt geregistreerd.
+   Bij elke uitvoering van deze taak wordt de implementatie geschiedenis vastgelegd in de `<environment name>` omgeving die u hebt gemaakt en de virtuele machines hebt geregistreerd.
 
-## <a name="run-your-pipeline-and-get-traceability-views-in-environment"></a>Voer uw pijplijn uit en ontvang traceerbaarheidsweergaven in de omgeving
-Implementaties weergave van de omgeving biedt volledige traceerbaarheid van commits en werkitems, en een cross-pipeline implementatie geschiedenis per omgeving / resource.
+## <a name="run-your-pipeline-and-get-traceability-views-in-environment"></a>Uw pijp lijn uitvoeren en tracerings weergaven in de omgeving ophalen
+De weer gave van implementaties van de omgeving biedt volledige traceer baarheid van door voeringen en werk items en een implementatie geschiedenis van meerdere pijp lijnen per omgeving/resource.
 
 ![VMDeployments_view](media/tutorial-deploy-vms-azure-pipelines/vm-deployments.png)
   
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- U [doorgaan met het aanpassen van de pijplijn die](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline) u zojuist hebt gemaakt.
-- Zie [YAML-schemaverwijzing](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)voor meer informatie over wat u nog meer doen in YAML-pijplijnen.
+- U kunt door gaan met [het aanpassen van de pijp lijn](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline) die u zojuist hebt gemaakt.
+- Zie [YAML-schema referentie](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema)voor meer informatie over wat u kunt doen in YAML-pijp lijnen.
 - Ga naar de volgende zelfstudie voor meer informatie over het implementeren van een LAMP-stack (Linux, Apache, MySQL en PHP).
 
 > [!div class="nextstepaction"]

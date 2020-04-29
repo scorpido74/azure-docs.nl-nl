@@ -1,6 +1,6 @@
 ---
-title: Permanenten van toepassingsbeheerbeheer delegeren - Azure AD | Microsoft Documenten
-description: Machtigingen verlenen voor beheer van toepassingstoegang in Azure Active Directory
+title: Machtigingen voor het beheer van de toepassings beheerder delegeren-Azure AD | Microsoft Docs
+description: Machtigingen verlenen voor toegang tot beheer van toepassingen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,93 +15,93 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253037"
 ---
-# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie delegeren in Azure Active Directory
+# <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie in Azure Active Directory delegeren
 
-In dit artikel wordt beschreven hoe u machtigingen gebruiken die zijn verleend door aangepaste rollen in Azure Active Directory (Azure AD) om tegemoet te komen aan de behoeften van uw toepassingsbeheer. In Azure AD u machtigingen voor het maken en beheren van toepassingen op de volgende manieren delegeren:
+In dit artikel wordt beschreven hoe u machtigingen kunt gebruiken die worden verleend door aangepaste rollen in Azure Active Directory (Azure AD) om uw behoeften op het gebied van toepassings beheer te verhelpen. In azure AD kunt u de machtigingen voor het maken en beheren van toepassingen op de volgende manieren delegeren:
 
-- [Beperken wie toepassingen kan maken](#restrict-who-can-create-applications) en de toepassingen die ze maken beheren. Standaard in Azure AD kunnen alle gebruikers toepassingsregistraties registreren en alle aspecten beheren van toepassingen die ze maken. Dit kan worden beperkt tot alleen toestaan dat geselecteerde personen die toestemming.
-- [Een of meer eigenaren toewijzen aan een toepassing](#assign-application-owners). Dit is een eenvoudige manier om iemand de mogelijkheid te geven om alle aspecten van Azure AD-configuratie voor een specifieke toepassing te beheren.
-- [Het toewijzen van een ingebouwde beheerrol](#assign-built-in-application-admin-roles) die toegang verleent tot het beheren van configuratie in Azure AD voor alle toepassingen. Dit is de aanbevolen manier om IT-experts toegang te verlenen voor het beheren van brede machtigingen voor toepassingsconfiguratie zonder toegang te verlenen tot het beheren van andere delen van Azure AD die niet gerelateerd zijn aan toepassingsconfiguratie.
-- [Een aangepaste rol maken](#create-and-assign-a-custom-role-preview) die zeer specifieke machtigingen definieert en aan iemand toewijs aan iemand als een enkele toepassing als beperkte eigenaar, of bij de directoryscope (alle toepassingen) als beperkte beheerder.
+- [Beperken wie toepassingen kan maken](#restrict-who-can-create-applications) en de toepassingen kan beheren die ze maken. In azure AD kunnen alle gebruikers standaard toepassings registraties registreren en alle aspecten beheren van de toepassingen die ze hebben gemaakt. Dit kan worden beperkt zodat alleen geselecteerde personen deze machtiging kunnen toestaan.
+- [Een of meer eigen aren toewijzen aan een toepassing](#assign-application-owners). Dit is een eenvoudige manier om iemand de mogelijkheid te geven alle aspecten van de Azure AD-configuratie voor een specifieke toepassing te beheren.
+- [Wijs een ingebouwde](#assign-built-in-application-admin-roles) beheerdersrol toe die toegang verleent voor het beheren van configuratie in azure AD voor alle toepassingen. Dit is de aanbevolen manier om IT-experts toegang te geven tot het beheren van brede toepassings configuratie machtigingen zonder toegang te verlenen tot het beheren van andere delen van Azure AD die niet gerelateerd zijn aan de configuratie van de toepassing.
+- Het [maken van een aangepaste rol](#create-and-assign-a-custom-role-preview) om zeer specifieke machtigingen te definiëren en deze toe te wijzen aan iemand, hetzij aan het bereik van één toepassing als een beperkte eigenaar, of in het bereik van de directory (alle toepassingen) als beperkte beheerder.
 
-Het is belangrijk om te overwegen om toegang te verlenen met behulp van een van de bovenstaande methoden om twee redenen. Ten eerste vermindert het delegeren van de mogelijkheid om administratieve taken uit te voeren de algemene beheerdersoverhead. Ten tweede, het gebruik van beperkte machtigingen verbetert uw beveiligingshouding en vermindert de kans op onbevoegde toegang. Delegatieproblemen en algemene richtlijnen worden besproken in [het beheer van gemachtigde in Azure Active Directory](roles-concept-delegation.md).
+Het is belang rijk om de toegang te verlenen met behulp van een van de bovenstaande methoden om twee redenen. Eerst dedraagt het delegeren van de mogelijkheid om beheer taken uit te voeren, de overhead van de globale beheerder. Ten tweede verbetert het gebruik van beperkte machtigingen uw beveiligings postuur en vermindert de kans op onbevoegde toegang. Overdrachts problemen en algemene richt lijnen worden besproken in [gedelegeerd beheer in azure Active Directory](roles-concept-delegation.md).
 
-## <a name="restrict-who-can-create-applications"></a>Beperken wie toepassingen kan maken
+## <a name="restrict-who-can-create-applications"></a>Beperk wie toepassingen kunnen maken
 
-Standaard in Azure AD kunnen alle gebruikers toepassingsregistraties registreren en alle aspecten beheren van toepassingen die ze maken. Iedereen heeft ook de mogelijkheid om namens hen toestemming te geven voor apps die toegang krijgen tot bedrijfsgegevens. U ervoor kiezen deze machtigingen selectief toe te kennen door de globale switches in te stellen op 'Nee' en de geselecteerde gebruikers toe te voegen aan de rol Toepassingsontwikkelaar.
+In azure AD kunnen alle gebruikers standaard toepassings registraties registreren en alle aspecten beheren van de toepassingen die ze hebben gemaakt. Iedereen heeft ook de mogelijkheid om apps toegang te geven tot Bedrijfs gegevens namens hen. U kunt deze machtigingen selectief verlenen door de algemene switches in te stellen op Nee en de geselecteerde gebruikers toe te voegen aan de ontwikkelaar van de toepassing.
 
-### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>De standaardmogelijkheid uitschakelen om toepassingsregistraties of toestemming voor toepassingen te maken
+### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>De standaard instelling voor het maken van toepassings registraties of toestemming voor toepassingen uitschakelen
 
 1. Meld u aan bij uw Azure AD-organisatie met een account dat in aanmerking komt voor de rol globale beheerder in uw Azure AD-organisatie.
 1. Stel een of beide van de volgende opties in:
 
-    - Stel op de [pagina Gebruikersinstellingen voor uw organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)de instelling Gebruikers in **op** Nee. Hierdoor wordt de standaardmogelijkheid voor gebruikers om toepassingsregistraties te maken uitgeschakeld.
-    - Stel in bij de [gebruikersinstellingen voor bedrijfstoepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)de **gebruikers kunnen instemmen met toepassingen die namens hen toegang krijgen tot bedrijfsgegevens** en instellen op Nr. Hierdoor wordt de standaardmogelijkheid voor gebruikers om namens hen toestemming te geven voor toepassingen die toegang krijgen tot bedrijfsgegevens uitgeschakeld.
+    - Stel op de [pagina gebruikers instellingen voor uw organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)de instelling **gebruikers kunnen toepassingen registreren** in op Nee. Hiermee wordt de standaard mogelijkheid voor gebruikers om toepassings registraties te maken uitgeschakeld.
+    - Stel de gebruikers in de [gebruikers instellingen voor zakelijke toepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)in om **toestemming te geven aan toepassingen die toegang hebben tot Bedrijfs gegevens, namens** de instelling Nee. Hiermee wordt de standaard mogelijkheid voor gebruikers om toestemming te geven voor het verkrijgen van toegang tot Bedrijfs gegevens in hun naam uitgeschakeld.
 
-### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Individuele machtigingen verlenen om toepassingen te maken en toestemming te geven wanneer de standaardmogelijkheid is uitgeschakeld
+### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Afzonderlijke machtigingen verlenen om toepassingen te maken en ermee toestemming te geven wanneer de standaard mogelijkheid is uitgeschakeld
 
-Wijs de rol Toepassingsontwikkelaars toe om toepassingsregistraties te maken wanneer de instelling **Toepassingen kunnen registreren** is ingesteld op Nee. Deze rol verleent ook toestemming om namens de gebruiker toestemming te geven wanneer de **gebruikers kunnen instemmen met apps die namens hen toegang hebben tot bedrijfsgegevens.** Als systeemgedrag wordt deze automatisch toegevoegd als de eerste eigenaar wanneer een gebruiker een nieuwe toepassingsregistratie maakt. Eigendomsmachtigingen geven de gebruiker de mogelijkheid om alle aspecten van een toepassingsregistratie of bedrijfstoepassing die hij of zij bezitten, te beheren.
+Wijs de ontwikkelaar van de toepassing toe om de mogelijkheid om toepassings registraties te maken wanneer de gebruikers de instelling **van toepassingen kunnen registreren** is ingesteld op Nee. Deze rol verleent ook toestemming om toestemming te geven aan de hand van een eigen naam wanneer de **gebruikers toestemming kunnen geven voor apps die toegang hebben tot Bedrijfs gegevens namens hun** instelling is ingesteld op Nee. Als systeem gedrag, wanneer een gebruiker een nieuwe toepassings registratie maakt, worden ze automatisch toegevoegd als de eerste eigenaar. Machtigingen voor eigendom bieden de gebruiker de mogelijkheid om alle aspecten te beheren van een toepassings registratie of bedrijfs toepassing waarvan ze eigenaar zijn.
 
-## <a name="assign-application-owners"></a>Toepassingseigenaren toewijzen
+## <a name="assign-application-owners"></a>Toepassings eigenaren toewijzen
 
-Het toewijzen van eigenaren is een eenvoudige manier om alle aspecten van Azure AD-configuratie te beheren voor een specifieke toepassingsregistratie of bedrijfstoepassing. Als systeemgedrag worden deze automatisch toegevoegd als de eerste eigenaar wanneer een gebruiker een nieuwe toepassingsregistratie maakt. Eigendomsmachtigingen geven de gebruiker de mogelijkheid om alle aspecten van een toepassingsregistratie of bedrijfstoepassing die hij of zij bezitten, te beheren. De oorspronkelijke eigenaar kan worden verwijderd en extra eigenaren kunnen worden toegevoegd.
+Het toewijzen van eigen aren is een eenvoudige manier om de mogelijkheid te bieden om alle aspecten van de Azure AD-configuratie voor een specifieke toepassings registratie of bedrijfs toepassing te beheren. Als systeem gedrag, wanneer een gebruiker een nieuwe toepassings registratie maakt, worden deze automatisch toegevoegd als de eerste eigenaar. Machtigingen voor eigendom bieden de gebruiker de mogelijkheid om alle aspecten te beheren van een toepassings registratie of bedrijfs toepassing waarvan ze eigenaar zijn. De oorspronkelijke eigenaar kan worden verwijderd en aanvullende eigen aars kunnen worden toegevoegd.
 
-### <a name="enterprise-application-owners"></a>Eigenaren van bedrijfstoepassingen
+### <a name="enterprise-application-owners"></a>Eigen aren van bedrijfs toepassingen
 
-Als eigenaar kan een gebruiker de organisatiespecifieke configuratie van de bedrijfstoepassing beheren, zoals de enkele aanmeldingsconfiguratie, inrichting en gebruikerstoewijzingen. Een eigenaar kan ook andere eigenaren toevoegen of verwijderen. In tegenstelling tot globale beheerders kunnen eigenaren alleen de bedrijfstoepassingen beheren die ze bezitten.
+Als eigenaar kan een gebruiker de organisatie-specifieke configuratie van de bedrijfs toepassing beheren, zoals de configuratie van eenmalige aanmelding, inrichting en gebruikers toewijzingen. Een eigenaar kan ook andere eigenaren toevoegen of verwijderen. In tegens telling tot globale beheerders kunnen eigen aren alleen de bedrijfs toepassingen beheren waarvan ze eigenaar zijn.
 
-In sommige gevallen omvatten ondernemingstoepassingen die vanuit de toepassingsgalerie zijn gemaakt, zowel een bedrijfstoepassing als een toepassingsregistratie. Wanneer dit waar is, voegt het toevoegen van een eigenaar aan de bedrijfstoepassing automatisch de eigenaar toe aan de bijbehorende toepassingsregistratie als eigenaar.
+In sommige gevallen bevatten bedrijfs toepassingen die zijn gemaakt in de toepassings galerie zowel een bedrijfs toepassing als een toepassings registratie. Als dit het geval is, voegt een eigenaar toe te voegen aan de bedrijfs toepassing automatisch de eigenaar toe aan de bijbehorende registratie van de toepassing als eigenaar.
 
-### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Een eigenaar toewijzen aan een ondernemingstoepassing
+### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Een eigenaar toewijzen aan een bedrijfs toepassing
 
-1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat in aanmerking komt voor de toepassingsbeheerder of cloudtoepassingsbeheerder voor de organisatie.
-1. Selecteer op de  [pagina App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)voor de organisatie een app om de pagina Overzicht voor de app te openen.
-1. Selecteer **Eigenaren** om de lijst met eigenaren voor de app te bekijken.
-1. Selecteer **Toevoegen** om een of meer eigenaren te selecteren die aan de app moeten worden toegevoegd.
+1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
+1. Selecteer op de [pagina](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) app-registraties voor de organisatie een app om de overzichts pagina voor de app te openen.
+1. Selecteer **eigen aars** om de lijst met eigen aars voor de app weer te geven.
+1. Selecteer **toevoegen** om een of meer eigen aars te selecteren die u aan de app wilt toevoegen.
 
 > [!IMPORTANT]
-> Gebruikers en serviceprincipals kunnen eigenaren zijn van toepassingsregistraties. Alleen gebruikers kunnen eigenaar zijn van bedrijfstoepassingen. Groepen kunnen niet worden toegewezen als eigenaren van beide.
+> Gebruikers en service-principals kunnen eigen aren van toepassings registraties zijn. Alleen gebruikers kunnen eigenaar zijn van bedrijfs toepassingen. Groepen kunnen niet worden toegewezen als eigen aren van ofwel.
 >
-> Eigenaren kunnen referenties toevoegen aan een toepassing en deze referenties gebruiken om zich voor te doen als de identiteit van de toepassing. De toepassing kan meer machtigingen dan de eigenaar, en dus zou een verhoging van de bevoegdheid over wat de eigenaar heeft toegang tot als gebruiker of service principal. Een toepassingseigenaar kan mogelijk gebruikers of andere objecten maken of bijwerken terwijl hij zich voordoet als de toepassing, afhankelijk van de machtigingen van de toepassing.
+> Eigen aren kunnen referenties toevoegen aan een toepassing en deze referenties gebruiken om de identiteit van de toepassing te imiteren. De toepassing heeft mogelijk meer machtigingen dan de eigenaar en zou daarom een uitbrei ding van bevoegdheden hebben ten opzichte van wat de eigenaar toegang heeft als een gebruiker of Service-Principal. Een toepassings eigenaar kan mogelijk gebruikers of andere objecten maken of bijwerken tijdens het imiteren van de toepassing, afhankelijk van de machtigingen van de toepassing.
 
-## <a name="assign-built-in-application-admin-roles"></a>Ingebouwde toepassingsbeheerdersrollen toewijzen
+## <a name="assign-built-in-application-admin-roles"></a>Ingebouwde toepassings beheerders rollen toewijzen
 
-Azure AD heeft een reeks ingebouwde beheerdersrollen voor het verlenen van toegang tot het beheren van configuratie in Azure AD voor alle toepassingen. Deze rollen zijn de aanbevolen manier om IT-experts toegang te verlenen voor het beheren van brede toepassingsconfiguratiemachtigingen zonder toegang te verlenen tot het beheren van andere delen van Azure AD die niet gerelateerd zijn aan toepassingsconfiguratie.
+Azure AD heeft een aantal ingebouwde beheerders rollen voor het verlenen van toegang tot het beheren van de configuratie in azure AD voor alle toepassingen. Deze rollen zijn de aanbevolen manier om IT-experts toegang te geven tot het beheren van brede toepassings configuratie machtigingen zonder dat ze toegang hoeven te verlenen tot het beheren van andere delen van Azure AD die niet gerelateerd zijn aan de configuratie van de toepassing.
 
-- Toepassingsbeheerder: gebruikers in deze rol kunnen alle aspecten van bedrijfstoepassingen, toepassingsregistraties en proxy-instellingen voor toepassingen maken en beheren. Deze rol biedt ook de mogelijkheid om in te stemmen met gedelegeerde machtigingen en toepassingsmachtigingen met uitzondering van Microsoft Graph. Gebruikers die aan deze rol zijn toegewezen, worden niet als eigenaars toegevoegd bij het maken van nieuwe toepassingsregistraties of bedrijfstoepassingen.
-- Cloudapplicationbeheerder: gebruikers in deze rol hebben dezelfde machtigingen als de rol Toepassingsbeheerder, met uitzondering van de mogelijkheid om de proxy van toepassingen te beheren. Gebruikers die aan deze rol zijn toegewezen, worden niet als eigenaars toegevoegd bij het maken van nieuwe toepassingsregistraties of bedrijfstoepassingen.
+- Toepassings beheerder: gebruikers met deze rol kunnen alle aspecten van bedrijfs toepassingen, toepassings registraties en toepassings proxy-instellingen maken en beheren. Deze rol verleent ook de mogelijkheid om toestemming te geven aan gedelegeerde machtigingen en toepassings machtigingen met uitzonde ring van Microsoft Graph. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
+- Cloud toepassings beheerder: gebruikers met deze rol hebben dezelfde machtigingen als de rol van toepassings beheerder, met uitzonde ring van de mogelijkheid om toepassings proxy te beheren. Gebruikers die aan deze rol zijn toegewezen, worden niet toegevoegd als eigen aren bij het maken van nieuwe toepassings registraties of zakelijke toepassingen.
 
-Zie [Beschikbare rollen](directory-assign-admin-roles.md#available-roles)voor meer informatie en om de beschrijving voor deze rollen te bekijken.
+Zie [beschik bare rollen](directory-assign-admin-roles.md#available-roles)voor meer informatie en om de beschrijving voor deze rollen weer te geven.
 
-Volg de instructies in de [rollen Toewijzen aan gebruikers met de](../fundamentals/active-directory-users-assign-role-azure-portal.md) handleiding voor Azure Active Directory om de rollen toepassingsbeheerder of cloudtoepassingsbeheerder toe te wijzen.
+Volg de instructies in de [rollen toewijzen aan gebruikers met Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md) instructies om de beheerders rollen van de toepassings beheerder of de Cloud toepassing toe te wijzen.
 
 > [!IMPORTANT]
-> Toepassingsbeheerders en Cloudtoepassingsbeheerders kunnen referenties toevoegen aan een toepassing en deze referenties gebruiken om zich voor te doen als de identiteit van de toepassing. De toepassing kan machtigingen hebben die een verhoging van de bevoegdheden zijn ten opzichte van de machtigingen van de beheerdersrol. Een beheerder in deze rol kan mogelijk gebruikers of andere objecten maken of bijwerken terwijl hij zich voordoet als de toepassing, afhankelijk van de machtigingen van de toepassing.
-> Geen van beide rollen verleent de mogelijkheid om instellingen voor voorwaardelijke toegang te beheren.
+> Toepassings beheerders en beheerders van Cloud toepassingen kunnen referenties toevoegen aan een toepassing en deze referenties gebruiken om de identiteit van de toepassing te imiteren. De toepassing heeft mogelijk machtigingen die een uitbrei ding van bevoegdheden hebben ten opzichte van de machtigingen van de rol beheerder. Een beheerder in deze rol kan mogelijk gebruikers of andere objecten maken of bijwerken tijdens het imiteren van de toepassing, afhankelijk van de machtigingen van de toepassing.
+> Geen van de rollen geeft de mogelijkheid om instellingen voor voorwaardelijke toegang te beheren.
 
-## <a name="create-and-assign-a-custom-role-preview"></a>Een aangepaste rol maken en toewijzen (voorbeeld)
+## <a name="create-and-assign-a-custom-role-preview"></a>Een aangepaste rol maken en toewijzen (preview-versie)
 
-Aangepaste rollen maken en aangepaste rollen toewijzen zijn afzonderlijke stappen:
+Het maken van aangepaste rollen en het toewijzen van aangepaste rollen is een afzonderlijke stap:
 
-- [Maak een aangepaste *roldefinitie* ](roles-create-custom.md) en [voeg er machtigingen aan toe vanuit een vooraf ingestelde lijst](roles-custom-available-permissions.md). Dit zijn dezelfde machtigingen die worden gebruikt in de ingebouwde rollen.
+- [Een aangepaste *roldefinitie* maken](roles-create-custom.md) en [er machtigingen aan toevoegen vanuit een vooraf ingestelde lijst](roles-custom-available-permissions.md). Dit zijn dezelfde machtigingen die worden gebruikt in de ingebouwde rollen.
 - [Maak een *roltoewijzing* ](roles-assign-powershell.md) om de aangepaste rol toe te wijzen.
 
-Met deze scheiding u één roldefinitie maken en deze vervolgens vele malen toewijzen op verschillende *scopes.* Een aangepaste rol kan worden toegewezen aan een bereik voor de hele organisatie of worden toegewezen aan het bereik als één Azure AD-object. Een voorbeeld van een objectbereik is één app-registratie. Met behulp van verschillende scopes kan dezelfde roldefinitie aan Sally worden toegewezen voor alle app-registraties in de organisatie en vervolgens aan Naveen over alleen de registratie van de Contoso Expense Reports-app.
+Met deze schei ding kunt u een definitie van één rol maken en deze vervolgens meerdere keren aan verschillende *bereiken*toewijzen. Een aangepaste rol kan worden toegewezen aan het hele organisatie bereik of kan worden toegewezen aan het bereik als één Azure AD-object. Een voor beeld van een object bereik is een enkele app-registratie. Als u verschillende bereiken gebruikt, kan dezelfde roldefinitie worden toegewezen aan Sandra via alle app-registraties in de organisatie en vervolgens Naveen alleen over de registratie van de app voor onkosten rapporten van contoso.
 
-Tips bij het maken en gebruiken van aangepaste rollen voor het delegeren van toepassingsbeheer:
-- Aangepaste rollen verlenen alleen toegang in de meest recente app-registratieblades van de Azure AD-portal. Ze geven geen toegang in de verouderde app registraties bladen.
-- Aangepaste rollen verlenen geen toegang tot de Azure AD-portal wanneer de gebruikersinstelling 'Toegang tot Azure AD-beheerportal beperken' is ingesteld op Ja.
-- App-registraties waartoe de gebruiker toegang heeft met roltoewijzingen worden alleen weergegeven op het tabblad 'Alle toepassingen' op de registratiepagina van apps. Ze worden niet weergegeven op het tabblad 'Owned applications'.
+Tips voor het maken en gebruiken van aangepaste rollen voor het delegeren van toepassings beheer:
+- Aangepaste rollen verlenen alleen toegang via de meest actuele Blade van de app-registratie van de Azure AD-Portal. Ze verlenen geen toegang via de Blade verouderde app-registraties.
+- Aangepaste rollen verlenen geen toegang tot de Azure AD-Portal wanneer de gebruikers instelling toegang tot de Azure AD-beheer Portal beperken is ingesteld op Ja.
+- App-registraties de gebruiker toegang heeft tot het gebruik van roltoewijzingen, wordt alleen weer gegeven op het tabblad alle toepassingen op de pagina app-registratie. Ze worden niet weer gegeven op het tabblad eigendoms toepassingen.
 
-Zie het overzicht van [aangepaste rollen,](roles-custom-overview.md)het overzicht van aangepaste rollen en het maken van [een aangepaste rol](roles-create-custom.md) en het toewijzen van [een rol](roles-assign-powershell.md)voor meer informatie over de basisprincipes van aangepaste rollen.
+Voor meer informatie over de basis principes van aangepaste rollen, zie het [overzicht van aangepaste functies](roles-custom-overview.md), en hoe u [een aangepaste rol maakt](roles-create-custom.md) en hoe u [een rol kunt toewijzen](roles-assign-powershell.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Subtypen en machtigingen voor toepassingsregistratie](roles-custom-available-permissions.md)
-- [Naslaginformatie over azure AD-ad-beheerdersrol](directory-assign-admin-roles.md)
+- [Subtypen en machtigingen voor toepassings registratie](roles-custom-available-permissions.md)
+- [Naslag informatie over Azure AD-beheerders rollen](directory-assign-admin-roles.md)

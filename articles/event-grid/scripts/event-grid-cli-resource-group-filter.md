@@ -1,6 +1,6 @@
 ---
-title: Azure CLI - abonneer u op brongroep & filteren op resource
-description: In dit artikel wordt een voorbeeld van Azure CLI-script weergegeven waarin wordt weergegeven hoe u zich abonneren op gebeurtenisrastergebeurtenissen voor een resource en filter voor een resource.
+title: Azure CLI-abonneren op resource groep & filteren op resource
+description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u zich abonneert op Event Grid gebeurtenissen voor een resource en een filter voor een resource.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 3dfe31a38d1bc1ba8662246a5dec3f10d0d1c948
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720823"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Abonneren op gebeurtenissen voor een resourcegroep en filteren op een resource met Azure CLI

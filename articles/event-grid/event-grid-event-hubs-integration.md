@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Gegevens over gebeurtenishubs verzenden naar datawarehouse - Gebeurtenisraster'
-description: 'Zelfstudie: beschrijft hoe u Azure Event Grid en Event Hubs gebruiken om gegevens te migreren naar een SQL Data Warehouse. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
+title: 'Zelf studie: Event Hubs gegevens verzenden naar Data Warehouse-Event Grid'
+description: 'Zelf studie: hier wordt beschreven hoe u Azure Event Grid en Event Hubs kunt gebruiken om gegevens te migreren naar een SQL Data Warehouse. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718193"
 ---
-# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big Data streamen naar een datawarehouse
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelf studie: stream big data naar een Data Warehouse
 Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar een SQL Data Warehouse.
 
 ![Overzicht van toepassing](media/event-grid-event-hubs-integration/overview.png)
@@ -44,8 +44,8 @@ In dit artikel voert u de volgende stappen uit:
 
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* [Visual studio 2019](https://www.visualstudio.com/vs/) met workloads voor: .NET desktop development, Azure development, ASP.NET and web development, Node.js development en Python development.
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* [Visual studio 2019](https://www.visualstudio.com/vs/) met werk belastingen voor: .net desktop Development, Azure development, ASP.net and Web Development, node. js Development en python Development.
 * Download het [voorbeeldproject EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) op uw computer.
 
 ## <a name="deploy-the-infrastructure"></a>De infrastructuur implementeren
@@ -60,7 +60,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure Cloud Shell openen in Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Selecteer de knop **Cloud Shell** bovenaan.
 
     ![Azure Portal](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -85,7 +85,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
         az group create -l eastus -n <Name for the resource group>
         ```
     1. Geef een naam op voor de **resourcegroep**
-    2. Druk op **ENTER**. 
+    2. Druk op **Enter**. 
 
         Hier volgt een voorbeeld:
     
@@ -134,7 +134,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
         ```powershell
         New-AzResourceGroup -Name rgDataMigration -Location westcentralus
         ```
-    2. Geef een naam op voor de **resourcegroep**.
+    2. Geef een naam op voor de **resource groep**.
     3. Druk op Enter. 
 3. Implementeer alle resources die worden vermeld in de vorige sectie (gebeurtenishub, opslagaccount, functie-app, SQL-datawarehouse) door de volgende opdracht uit te voeren:
     1. Kopieer en plak de opdracht in het Cloud Shell-venster. U kunt de opdracht ook kopiëren en plakken in een editor naar keuze, waarden instellen en de opdracht vervolgens kopiëren naar Cloud Shell. 
@@ -260,7 +260,7 @@ U bent nu klaar met het instellen van uw gebeurtenishub, SQL-datawarehouse, Azur
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Bouw de oplossing. Voer de **toepassing WindTurbineGenerator.exe uit.** 
+6. Bouw de oplossing. Voer de toepassing **WindTurbineGenerator. exe** uit. 
 7. Voer na een paar minuten een query voor de gemigreerde gegevens uit op de tabel in het datawarehouse.
 
     ![Queryresultaten](media/event-grid-event-hubs-integration/query-results.png)

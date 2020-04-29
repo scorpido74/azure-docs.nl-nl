@@ -1,6 +1,6 @@
 ---
-title: Een door de gebruiker toegewezen beheerde identiteit maken & verwijderen met Azure Resource Manager
-description: Stap voor stap instructies voor het maken en verwijderen van door de gebruiker toegewezen beheerde identiteiten met Azure Resource Manager.
+title: Een door de gebruiker toegewezen beheerde identiteit maken & verwijderen met behulp van Azure Resource Manager
+description: Stapsgewijze instructies voor het maken en verwijderen van door de gebruiker toegewezen beheerde identiteiten met behulp van Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,42 +16,42 @@ ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253375"
 ---
-# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weergeven en verwijderen met Azure Resource Manager
+# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven en verwijderen met behulp van Azure Resource Manager
 
 
-Beheerde identiteiten voor Azure-resources bieden Azure-services een beheerde identiteit in Azure Active Directory. U deze identiteit gebruiken om te verifiëren voor services die Azure AD-verificatie ondersteunen, zonder dat u referenties in uw code nodig hebt. 
+Beheerde identiteiten voor Azure-resources bieden Azure-Services met een beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij services die ondersteuning bieden voor Azure AD-verificatie, zonder dat er referenties in uw code nodig zijn. 
 
 In dit artikel maakt u een door de gebruiker toegewezen beheerde identiteit met behulp van een Azure Resource Manager.
 
-Het is niet mogelijk om een door de gebruiker toegewezen beheerde identiteit aan te bieden en te verwijderen met behulp van een Azure Resource Manager-sjabloon.  Zie de volgende artikelen om een door de gebruiker toegewezen beheerde identiteit te maken en weer te geven:
+Het is niet mogelijk om een door de gebruiker toegewezen beheerde identiteit weer te geven en te verwijderen met behulp van een Azure Resource Manager sjabloon.  Raadpleeg de volgende artikelen voor het maken en vermelden van een door de gebruiker toegewezen beheerde identiteit:
 
-- [Door de gebruiker toegewezen beheerde identiteit weergeven](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
-- [Beheerde identiteit die door de gebruiker is toegewezen](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
+- [Door de gebruiker toegewezen beheerde identiteit weer geven](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
+- [Door de gebruiker toegewezen beheerde identiteit verwijderen](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-bronnen, raadpleegt u het [overzichtsgedeelte](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 
-## <a name="template-creation-and-editing"></a>Sjabloonmaken en bewerken
+## <a name="template-creation-and-editing"></a>Sjabloon maken en bewerken
 
-Net als bij de Azure-portal en scripting bieden Azure Resource Manager-sjablonen de mogelijkheid om nieuwe of gewijzigde resources te implementeren die zijn gedefinieerd door een Azure-brongroep. Er zijn verschillende opties beschikbaar voor het bewerken en implementeren van sjablonen, zowel lokaal als op portalen gebaseerd, waaronder:
+Net als bij de Azure Portal en scripting bieden Azure Resource Manager sjablonen de mogelijkheid om nieuwe of gewijzigde resources te implementeren die zijn gedefinieerd door een Azure-resource groep. Er zijn verschillende opties beschikbaar voor het bewerken en implementeren van sjablonen, zowel lokaal als op basis van een portal, waaronder:
 
-- Met behulp van een [aangepaste sjabloon van de Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), waarmee u een sjabloon vanaf nul maken of deze baseren op een bestaande algemene of [QuickStart-sjabloon.](https://azure.microsoft.com/documentation/templates/)
-- Afgeleid van een bestaande resourcegroep, door een sjabloon te exporteren vanuit [de oorspronkelijke implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)of uit de huidige status van de [implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Een lokale [JSON-editor gebruiken (zoals VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)en vervolgens uploaden en implementeren met PowerShell of CLI.
-- Het project Visual Studio [Azure Resource Group gebruiken](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) om een sjabloon te maken en te implementeren. 
+- Met een [aangepaste sjabloon van Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)kunt u een volledig nieuwe sjabloon maken of deze baseren op een bestaande sjabloon common of [Quick](https://azure.microsoft.com/documentation/templates/)start.
+- Deze worden afgeleid van een bestaande resource groep door een sjabloon te exporteren uit [de oorspronkelijke implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)of vanuit de [huidige status van de implementatie](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- Een lokale [JSON-editor gebruiken (zoals VS code)](../../azure-resource-manager/resource-manager-create-first-template.md)en vervolgens uploaden en implementeren met behulp van Power shell of cli.
+- Het Visual Studio [Azure Resource Group-project](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) gebruiken om een sjabloon te maken en te implementeren. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken 
 
-Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, heeft uw account de roltoewijzing [Voor beheerde identiteitsbijdrager](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) nodig.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt u de volgende sjabloon. Vervang `<USER ASSIGNED IDENTITY NAME>` de waarde door uw eigen waarden:
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt u de volgende sjabloon. Vervang de `<USER ASSIGNED IDENTITY NAME>` waarde door uw eigen waarden:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -85,7 +85,7 @@ Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt 
 ```
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Beheerde identiteiten configureren voor Azure-resources op een Azure VM met behulp van een](qs-configure-template-windows-vm.md)Azure Resource Manager-sjabloon voor informatie over het toewijzen van een door de gebruiker toegewezen beheerde identiteit aan een Azure-vm.
+Voor informatie over het toewijzen van een door de gebruiker toegewezen beheerde identiteit aan een Azure-VM met behulp van een Azure Resource Manager-sjabloon raadpleegt u [beheerde identiteiten voor Azure-resources configureren op een Azure-VM met behulp van een](qs-configure-template-windows-vm.md)sjabloon.
 
 
  
