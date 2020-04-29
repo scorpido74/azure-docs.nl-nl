@@ -1,18 +1,18 @@
 ---
-title: Beheerde apps in de Marketplace
+title: Beheerde apps in Marketplace
 description: Hier vindt u een beschrijving van door Azure beheerde toepassingen die beschikbaar zijn via Marketplace.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
 ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79472993"
 ---
-# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Zelfstudie: Azure-beheerde toepassingen publiceren in de Marketplace
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Zelf studie: Azure Managed Applications publiceren in Marketplace
 
 Leveranciers gebruiken door Azure beheerde toepassingen om hun oplossingen aan te bieden aan alle klanten van Azure Marketplace. Voorbeelden van leveranciers zijn MSP's (Managed Service Providers), ISV's (Independent Software Vendors) en SI's (systeemintegrators). Beheerde toepassingen verminderen de overhead voor onderhoud voor klanten. Leveranciers verkopen infrastructuur en software via Marketplace. Ze kunnen services en operationele ondersteuning koppelen aan beheerde toepassingen. Zie [Overzicht van door Azure beheerde toepassingen](overview.md) voor meer informatie.
 
@@ -22,9 +22,9 @@ In dit artikel wordt uitgelegd hoe u een toepassing publiceert naar Marketplace 
 
 Om dit artikel te kunnen voltooien, moet u over het ZIP-bestand beschikken met de definitie van uw beheerde toepassing. Zie [Een beheerde toepassing voor intern verbruik publiceren](publish-service-catalog-app.md) voor meer informatie.
 
-Er zijn verschillende zakelijke vereisten. Dit zijn:
+Er zijn verschillende vereisten voor bedrijven. Dit zijn:
 
-* Uw bedrijf of dochteronderneming moet gevestigd zijn in een land/regio waar de verkoop wordt ondersteund door de marktplaats.
+* Uw bedrijf of diens dochter maatschappij moet zich bevinden in een land/regio waar de verkoop wordt ondersteund door de Marketplace.
 * Het product moet beschikken over een licentie die compatibel is met factureringsmodellen die worden ondersteund door Marketplace.
 * Klanten moeten op een commercieel redelijke wijze toegang hebben tot technische ondersteuning. Deze ondersteuning kan gratis zijn, betaald of worden aangeboden via een community.
 * Neem een licentie op uw software en op eventuele afhankelijke software van derden.
@@ -32,7 +32,7 @@ Er zijn verschillende zakelijke vereisten. Dit zijn:
 * Ga akkoord met de voorwaarden van het deelnamebeleid en de overeenkomst voor uitgevers van Azure Marketplace.
 * Ga akkoord met de gebruiksvoorwaarden, de Microsoft-privacyverklaring en de overeenkomst inzake het Microsoft Azure Certified-programma.
 
-Je moet ook een Marketplace-account hebben. Zie Een Commercieel [Marketplace-account maken in partnercentrum](../../marketplace/partner-center-portal/create-account.md)als u een account wilt maken.
+U moet ook een Marketplace-account hebben. Zie [een commercieel Marketplace-account maken in partner centrum voor meer informatie over het maken van](../../marketplace/partner-center-portal/create-account.md)een account.
 
 ## <a name="create-a-new-azure-application-offer"></a>Een nieuwe aanbieding voor een Azure-toepassing maken
 
@@ -44,7 +44,7 @@ De aanbieding voor een beheerde toepassing komt overeen met de klasse van een pr
 
 1. Meld u aan bij de [Cloud Partner-portal](https://cloudpartner.azure.com/).
 
-1. Selecteer in het navigatiedeelvenster aan de linkerkant**Azure-toepassingen** **aanbieden + Nieuw aanbieden** > .
+1. Selecteer in het navigatie deel venster aan de linkerkant **+ Nieuw** > **Azure-toepassingen**aanbieden.
 
 1. In de **Editor**-weergave ziet u de vereiste formulieren. De formulieren worden verderop in dit artikel beschreven.
 
@@ -70,7 +70,7 @@ Een SKU is de kleinst mogelijke eenheid van een aanbieding die kan worden gekoch
 
 Een SKU wordt in Marketplace weergegeven onder de bovenliggende aanbieding. Een SKU wordt als een afzonderlijk verkrijgbare entiteit weergegeven in Azure Portal.
 
-1. Selecteer **SKU's** > **nieuwe SKU**.
+1. Selecteer **sku's** > **nieuwe SKU**.
 
 1. Geef een waarde op voor **SKU ID**. Een SKU-id is een unieke id voor de SKU binnen een aanbieding. Deze id wordt weergegeven in product-URL's, Resource Manager-sjablonen en factureringsrapporten. De id kan alleen bestaan uit alfanumerieke tekens in kleine letters en streepjes (-). De id mag niet eindigen op een streepje en kan uit maximaal 50 tekens bestaan. Zodra een aanbieding is gepubliceerd, kan dit veld niet meer worden gewijzigd. U kunt meerdere SKU's hebben binnen een aanbieding. U hebt een SKU nodig voor elke installatiekopie die u wilt publiceren.
 
@@ -82,8 +82,8 @@ Een SKU wordt in Marketplace weergegeven onder de bovenliggende aanbieding. Een 
    * **Summary**: voer een korte samenvatting in voor deze SKU. Deze tekst wordt onder de titel weergegeven.
    * **Description**: voer een gedetailleerde beschrijving van de SKU in.
    * **SKU Type**: de toegestane waarden zijn *Managed Application* en *Solution Templates*. Selecteer voor deze aanvraag *Managed Application*.
-   * **Beschikbaarheid land/regio**: Selecteer de landen/regio's waar de beheerde toepassing beschikbaar is.
-   * **Pricing**: geef een prijs op voor beheer van de toepassing. Selecteer de beschikbare landen/regio's voordat u de prijs instelt.
+   * **Beschik baarheid land/regio**: Selecteer de landen/regio's waar de beheerde toepassing beschikbaar is.
+   * **Pricing**: geef een prijs op voor beheer van de toepassing. Selecteer de beschik bare landen/regio's voordat u de prijs instelt.
 
 1. Voeg een nieuw pakket toe. Vul de sectie **Package Details** in op het volgende formulier:
 
@@ -91,12 +91,12 @@ Een SKU wordt in Marketplace weergegeven onder de bovenliggende aanbieding. Een 
 
    * **Version**: voer een versie in voor het pakket dat u uploadt. Gebruik hierbij de notatie `{number}.{number}.{number}{number}`.
    * **Package file (.zip)**: dit pakket bevat twee vereiste bestanden die in één ZIP-pakket zijn gecomprimeerd. Het ene bestand is een Resource Manager-sjabloon die de resources definieert die voor de beheerde toepassing moeten worden geïmplementeerd. Het andere bestand definieert de [gebruikersinterface](create-uidefinition-overview.md) voor consumenten die de beheerde toepassing implementeren via de portal. In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
-   * **Tenant-id:** de tenant-id voor het account om toegang te krijgen.
-   * **JIT Access inschakelen:** selecteer **Ja** om [just-in-time toegangscontrole](request-just-in-time-access.md) voor het account in te schakelen. Wanneer u dit hebt ingeschakeld, vraagt u gedurende een bepaalde periode toegang tot het account van de consument. Als u wilt eisen dat consumenten van uw beheerde toepassing uw account permanente toegang verlenen, selecteert u **Nee**.
-   * **Toegestane acties van klanten aanpassen?**: Selecteer **Ja** om aan te geven welke acties consumenten kunnen uitvoeren op de beheerde resources.
-   * **Toegestane acties van klanten:** Als u **Ja** selecteert voor de vorige instelling, u opgeven welke acties zijn toegestaan voor consumenten door [weigeringstoewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md)te gebruiken.
+   * **Tenant-id**: de Tenant-id voor het account om toegang te krijgen.
+   * **JIT-toegang inschakelen**: Selecteer **Ja** om [just-in-time-toegangs beheer](request-just-in-time-access.md) in te scha kelen voor het account. Wanneer deze functie is ingeschakeld, vraagt u toegang tot het account van de consument voor een opgegeven periode. Als u wilt dat consumenten van uw beheerde toepassing uw account permanente toegang geven, selecteert u **Nee**.
+   * **Toegestane klant acties aanpassen?**: Selecteer **Ja** om op te geven welke acties consumenten kunnen uitvoeren op de beheerde resources.
+   * **Acties voor toegestane klant**: als u **Ja** selecteert voor de vorige instelling, kunt u opgeven welke acties mogen worden gebruikt voor het [weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md).
 
-     Zie [Azure Resource Manager resource provider operations](../../role-based-access-control/resource-provider-operations.md)voor beschikbare acties. Bijvoorbeeld, om consumenten toe te staan `Microsoft.Compute/virtualMachines/restart/action` om virtuele machines opnieuw op te starten, toe te voegen aan de toegestane acties. De `*/read` actie is automatisch toegestaan, zodat u die instelling niet hoeft op te nemen.
+     Zie Azure Resource Manager-bewerkingen voor de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor beschik bare acties. Als u bijvoorbeeld wilt toestaan dat gebruikers virtuele machines opnieuw opstarten, `Microsoft.Compute/virtualMachines/restart/action` moet u de toegestane acties toevoegen. De `*/read` actie wordt automatisch toegestaan zodat deze instelling niet hoeft te worden toegevoegd.
    * **PrincipalId**: deze eigenschap is de id van Azure Active Directory (Azure AD) van een gebruiker, groep of toepassing die toegang krijgt tot de resources in het abonnement van de klant. In de roldefinitie worden de machtigingen beschreven.
    * **Role Definition**: deze eigenschap bestaat uit een lijst met alle ingebouwde rollen voor op rollen gebaseerd toegangsbeheer (RBAC) die worden aangeboden door Azure AD. U kunt de rol selecteren die het meest geschikt is voor het beheren van resources namens de klant.
    * **Policy Settings**: pas een [Azure Policy](../../governance/policy/overview.md) op uw beheerde toepassing toe om nalevingsvereisten voor de geïmplementeerde oplossingen te specificeren. Selecteer de gewenste beleidsregels in de beschikbare opties. Geef bij **Policy Parameters** een JSON-tekenreeks met de parameterwaarden op. Zie [Voorbeelden van Azure Policy](../../governance/policy/samples/index.md) voor beleidsdefinities en de indeling van de parameterwaarden.
@@ -111,7 +111,7 @@ U gebruikt het formulier Marketplace om aan te geven welke velden moeten worden 
 
 ### <a name="preview-subscription-ids"></a>Preview van abonnement-id's
 
-Geef een lijst met id's van Azure-abonnementen op die toegang hebben tot de aanbieding nadat deze is gepubliceerd. U kunt deze gebruiken met abonnementen op de whitelist om de preview-aanbieding te testen voordat deze live gaat. U een lijst met toegestane abonnementen samenstellen in het partnerportaal.
+Geef een lijst met id's van Azure-abonnementen op die toegang hebben tot de aanbieding nadat deze is gepubliceerd. U kunt deze gebruiken met abonnementen op de whitelist om de preview-aanbieding te testen voordat deze live gaat. U kunt een acceptatie lijst van Maxi maal 100 abonnementen compileren in de partner portal.
 
 ### <a name="suggested-categories"></a>Voorgestelde categorieën
 
@@ -172,6 +172,6 @@ Als u alle secties hebt ingevuld, selecteert u **Publish** om het proces te star
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure-toepassingsaanbieding publiceren](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md) voor informatie over wat er gebeurt nadat u op **Publiceren**hebt geklikt
+* Voor informatie over wat er gebeurt nadat u op **publiceren**hebt geklikt, raadpleegt u [Azure-toepassings aanbieding publiceren](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * Zie [Overzicht van beheerde toepassingen](overview.md) voor een inleiding tot beheerde toepassingen.
 * Zie [Een beheerde toepassing voor intern verbruik publiceren](publish-service-catalog-app.md) voor meer informatie over het publiceren van een beheerde toepassing in een servicecatalogus.

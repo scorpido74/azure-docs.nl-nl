@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door - backend health monitoring | Microsoft Documenten
-description: Dit artikel helpt u te begrijpen hoe Azure Front Door de status van uw back-ends bewaakt
+title: Azure front-deur-back-end-status controle | Microsoft Docs
+description: Dit artikel helpt u te begrijpen hoe de status van uw back-ends wordt gecontroleerd door Azure front-deur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,65 +12,65 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471571"
 ---
 # <a name="health-probes"></a>Statuscontroles
 
-Om de gezondheid en nabijheid van elke backend van een bepaalde Front Door-omgeving te bepalen, stuurt elke Front Door-omgeving periodiek een synthetisch HTTP/HTTPS-verzoek naar elk van uw geconfigureerde backends. Front Door gebruikt de reacties op deze tests dan om te bepalen welke back-ends het beste zijn voor het routeren van echte aanvragen van klanten. 
+Om de status en nabijheid van elke back-end vanuit een bepaalde front-deur omgeving te bepalen, stuurt elke front-deur omgeving periodiek een synthetische HTTP/HTTPS-aanvraag naar elk van uw geconfigureerde back-ends. Front Door gebruikt de reacties op deze tests dan om te bepalen welke back-ends het beste zijn voor het routeren van echte aanvragen van klanten. 
 
 > [!WARNING]
-> Aangezien Front Door wereldwijd veel randomgevingen heeft, kan het volume van de statussonde vrij hoog zijn - variërend van 25 aanvragen per minuut tot wel 1200 aanvragen per minuut, afhankelijk van de statussondefrequentie die is geconfigureerd. Met de standaard sondefrequentie van 30 seconden moet het volume van de sonde op uw backend ongeveer 200 aanvragen per minuut zijn.
+> Omdat de voor deur veel Edge-omgevingen wereld wijd heeft, vraagt de status test een volume aan uw back-ends een hoge bereik van 25 aanvragen elke minuut tot Maxi maal 1200 aanvragen per minuut, afhankelijk van de frequentie van de Health probe die is geconfigureerd. Met de standaard test frequentie van 30 seconden moet het test volume op uw back-end ongeveer 200 aanvragen per minuut bedragen.
 
 ## <a name="supported-protocols"></a>Ondersteunde protocollen
 
-Front Door ondersteunt het verzenden van sondes via HTTP- of HTTPS-protocollen. De tests worden via dezelfde TCP-poorten verzonden als de poorten die zijn geconfigureerd voor het routeren van aanvragen van klanten. Deze instelling kan niet worden overschreven.
+De voor deur ondersteunt het verzenden van tests over HTTP-of HTTPS-protocollen. De tests worden via dezelfde TCP-poorten verzonden als de poorten die zijn geconfigureerd voor het routeren van aanvragen van klanten. Deze instelling kan niet worden overschreven.
 
-## <a name="supported-http-methods-for-health-probes"></a>Ondersteunde HTTP-methoden voor gezondheidssondes
+## <a name="supported-http-methods-for-health-probes"></a>Ondersteunde HTTP-methoden voor status tests
 
-Front Door ondersteunt de volgende HTTP-methoden voor het verzenden van de statussondes:
+De voor deur ondersteunt de volgende HTTP-methoden voor het verzenden van de status tests:
 
-1. **GET:** De GET-methode betekent ophalen welke informatie (in de vorm van een entiteit) wordt geïdentificeerd door de Request-URI.
-2. **HOOFD:** De HEAD-methode is identiek aan GET, behalve dat de server geen bericht-body in de reactie mag retourneren. Voor nieuwe frontdoorprofielen is de sondemethode standaard ingesteld als HEAD.
+1. **Ophalen:** De GET-methode geeft aan welke gegevens (in de vorm van een entiteit) worden geïdentificeerd door de aanvraag-URI.
+2. **Kop:** De HEAD-methode is identiek om aan te geven, behalve dat de server geen bericht tekst in het antwoord mag retour neren. Voor nieuwe profielen voor de voor deur wordt standaard de test methode ingesteld als HEAD.
 
 > [!NOTE]
-> Voor lagere belasting en kosten op uw backends, Front Door beveelt het gebruik van HEAD verzoeken voor de gezondheid sondes.
+> Voor een lagere belasting en kosten op uw back-end wordt aanbevolen om hoofd aanvragen voor status tests te gebruiken.
 
-## <a name="health-probe-responses"></a>Reacties op gezondheidssonde
+## <a name="health-probe-responses"></a>Antwoorden op status testen
 
 | Antwoorden  | Beschrijving | 
 | ------------- | ------------- |
-| Gezondheid bepalen  |  Een statuscode van 200 OK geeft aan dat de backend in orde is. Al het andere wordt beschouwd als een mislukking. Als om welke reden (inclusief netwerkstoring) een geldig HTTP-antwoord niet wordt ontvangen voor een sonde, wordt de sonde als een fout geteld.|
-| Latentie meten  | Latentie is de wandkloktijd gemeten vanaf het moment vlak voordat we het sondeverzoek sturen naar het moment waarop we de laatste byte van het antwoord ontvangen. We gebruiken voor elk verzoek een nieuwe TCP-verbinding, zodat deze meting niet is bevooroordeeld naar backends met bestaande warme verbindingen.  |
+| Status bepalen  |  Een 200 OK-status code geeft aan dat de back-end in orde is. Alle andere zaken worden beschouwd als een fout. Als er om een of andere reden (inclusief netwerk fout) geen geldig HTTP-antwoord wordt ontvangen voor een test, wordt de test als een fout beschouwd.|
+| Meet latentie  | Latentie is de klok tijd gemeten vanaf het moment onmiddellijk voordat de test aanvraag wordt verzonden naar het moment dat de laatste byte van het antwoord wordt ontvangen. We gebruiken een nieuwe TCP-verbinding voor elke aanvraag, zodat deze meting niet kan worden afgestemd op back-ends met bestaande warme verbindingen.  |
 
-## <a name="how-front-door-determines-backend-health"></a>Hoe Front Door de gezondheid van de backend bepaalt
+## <a name="how-front-door-determines-backend-health"></a>De status van de back-end voor de deur bepalen
 
-Azure Front Door gebruikt hetzelfde proces in drie stappen hieronder voor alle algoritmen om de status te bepalen.
+Azure front deur maakt gebruik van hetzelfde proces van drie stappen hieronder voor alle algoritmen om de status te bepalen.
 
-1. Uitgeschakelde backends uitsluiten.
+1. Uitgeschakelde back-ends uitsluiten.
 
-2. Sluit backends met fouten in de statussondes uit:
-    * Deze selectie wordt gedaan door te kijken naar de laatste _n_ gezondheid sonde reacties. Als ten minste _x_ gezond zijn, wordt de backend als gezond beschouwd.
+2. Back-end met status controles uitsluiten:
+    * Deze selectie wordt uitgevoerd door de laatste _n_ antwoorden op de status test te bekijken. Als ten minste _x_ in orde is, wordt de back-end als gezond beschouwd.
 
-    * _n_ wordt geconfigureerd door de eigenschap SampleSize te wijzigen in taakverdelingsinstellingen.
+    * _n_ wordt geconfigureerd door de eigenschap SampleSize in instellingen voor taak verdeling te wijzigen.
 
-    * _x_ is geconfigureerd door de eigenschap Met succesvollemonstersvereist te wijzigen in taakverdelingsinstellingen.
+    * _x_ wordt geconfigureerd door de eigenschap SuccessfulSamplesRequired in instellingen voor taak verdeling te wijzigen.
 
-3. Uit de set van gezonde backends in de backend pool, Front Door meet bovendien en onderhoudt de latentie (heen-en-terug tijd) voor elke backend.
+3. Van de set met gezonde back-ends in de back-end-pool, worden ook de latentie (round-trip tijd) voor elke back-end gemeten.
 
 
-## <a name="complete-health-probe-failure"></a>Volledige statussonde mislukt
+## <a name="complete-health-probe-failure"></a>Het volt ooien van de status test is mislukt
 
-Als de gezondheid sondes niet voor elke backend in een backend zwembad, dan Front Door overweegt alle backends gezond en routes verkeer in een ronde robin verdeling over alle van hen.
+Als de status controles voor elke back-end in een back-end-groep mislukken, worden alle back-ends in orde beschouwd en wordt het verkeer gerouteerd in een round robin distributie over alle.
 
-Zodra elke backend terugkeert naar een gezonde staat, dan zal Front Door het normale load-balancing algoritme hervatten.
+Zodra een back-end een goede status krijgt, wordt het normale algoritme voor taak verdeling door de voor deur hervat.
 
-## <a name="disabling-health-probes"></a>Gezondheidssondes uitschakelen
+## <a name="disabling-health-probes"></a>Status controles uitschakelen
 
-Als u één backend in uw backendpool hebt, u ervoor kiezen om de statussondes uit te schakelen die de belasting op de backend van uw toepassing verminderen. Zelfs als u meerdere backends in de backend pool, maar slechts een van hen is ingeschakeld staat, u uitschakelen gezondheid sondes.
+Als u één back-end in uw back-end-groep hebt, kunt u ervoor kiezen om de status controles uit te scha kelen die de belasting van de back-end van uw toepassing verminderen. Zelfs als u meerdere back-ends in de back-end-groep hebt, maar slechts een van deze is ingeschakeld, kunt u status controles uitschakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

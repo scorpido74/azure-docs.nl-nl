@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 60c754aeec3157abee02eb136dcf148c440d8da0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477269"
 ---
-De vermeldingen in `deploymentconfig.json` de documentkaart naar de parameters voor [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). In de volgende tabel wordt de toewijzing tussen de entiteiten in het JSON-document en de parameters voor de methode beschreven:
+De vermeldingen in de `deploymentconfig.json` document structuur met de para meters voor [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). De volgende tabel beschrijft de toewijzing tussen de entiteiten in het JSON-document en de para meters voor de-methode:
 
-| JSON-entiteit | Methodeparameter | Beschrijving |
+| JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
-| `computeType` | N.v.t. | Het rekendoel. Voor lokale doelen moet `local`de waarde . |
-| `port` | `port` | De lokale poort waarop het HTTP-eindpunt van de service kan worden weergegeven. |
+| `computeType` | N.v.t. | Het rekendoel. Voor lokale doelen moet de waarde zijn `local`. |
+| `port` | `port` | De lokale poort waarop het HTTP-eind punt van de service wordt weer gegeven. |
 
-Deze JSON is een voorbeeldconfiguratie voor implementatie voor gebruik met de CLI:
+Deze JSON is een voorbeeld implementatie configuratie voor gebruik met de CLI:
 
 ```json
 {
