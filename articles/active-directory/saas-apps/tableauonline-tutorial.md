@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Tableau Online | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Tableau Online.
+title: 'Zelf studie: integratie Azure Active Directory met tableau online | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en tableau online.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,68 +15,68 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 187600edb599f5a5775e1b847ed1cb3a49f3b827
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76985570"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Tableau Online
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met tableau online
 
-In deze zelfstudie leert u hoe u Tableau Online integreren met Azure Active Directory (Azure AD). Wanneer u Tableau Online integreert met Azure AD, u het:
+In deze zelf studie leert u hoe u tableau online integreert met Azure Active Directory (Azure AD). Wanneer u tableau online integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Tableau Online.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Tableau Online met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot tableau online.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij tableau met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Tableau Online single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Tableau online abonnement voor eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Tableau Online ondersteunt **SP** geïnitieerde SSO
-* Zodra je Tableau Online hebt geconfigureerd, kun je sessiecontrole afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van je organisatie in realtime beschermen. Sessiebeheer strekt zich uit van Voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Tableau online ondersteunt door **SP** GEÏNITIEERDe SSO
+* Nadat u tableau online hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-tableau-online-from-the-gallery"></a>Tableau Online toevoegen vanuit de galerie
+## <a name="adding-tableau-online-from-the-gallery"></a>Tableau online toevoegen vanuit de galerie
 
-Als u de integratie van Tableau Online in Azure AD wilt configureren, moet u Tableau Online vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van tableau online wilt configureren in azure AD, moet u tableau online toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Tableau Online** in het zoekvak in de sectie Toevoegen in **de galerijsectie.**
-1. Selecteer **Tableau Online** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **tableau online** in het zoekvak.
+1. Selecteer **tableau online** in het resultaten paneel en voeg de app vervolgens toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureer en test u Azure AD single sign-on met Tableau Online op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppeling worden gemaakt tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Tableau Online.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met tableau online op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in tableau online worden gemaakt.
 
-Als u Azure AD SSO wilt configureren en testen met Tableau Online, voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met tableau online, voert u de volgende bouw stenen uit:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Configureer Tableau Online SSO](#configure-tableau-online-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    1. **[Maak Tableau Online-testgebruiker](#create-tableau-online-test-user)** - om een tegenhanger van B.Simon te hebben in Tableau Online die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Tableau online-SSO configureren](#configure-tableau-online-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    1. **[Maak een tableau online test gebruiker](#create-tableau-online-test-user)** -om een soort tegen te brengen van B. Simon in tableau online dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Tableau Online te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met tableau online te configureren:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Tableau Online-toepassingsintegratie** de optie Eén **aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **tableau online** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -90,20 +90,20 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over Tableau Online-domein en URL's met één aanmelding](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding tableau online domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u de URL: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
     b. Typ in het tekstvak **Id (Entiteits-id)** de volgende URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
-    > Je krijgt `<entityid>` de waarde van de sectie **Tableau Online instellen** in deze zelfstudie. De waarde van de entiteits-id is de waarde **van azure AD-id** in de sectie **Tableau Online instellen.**
+    > U krijgt de `<entityid>` waarde uit de sectie **tableau online instellen** in deze zelf studie. De entiteit-ID-waarde is de **Azure AD-ID** -waarde in de sectie **tableau online instellen** .
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer in de sectie **Tableau Online instellen** de juiste URL(s) volgens uw eis.
+6. Kopieer op de sectie **tableau online instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -121,7 +121,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -131,24 +131,24 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld, BrittaSimon\@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Tableau Online.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan tableau online.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer Vervolgens **Tableau Online**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer **tableau online**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Tableau Online**in de lijst met toepassingen .
+2. Selecteer **tableau online**in de lijst toepassingen.
 
-    ![De Tableau Online-link in de lijst Toepassingen](common/all-applications.png)
+    ![De online koppeling tableau in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -158,82 +158,82 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-tableau-online-sso"></a>Tableau Online SSO configureren
+## <a name="configure-tableau-online-sso"></a>Tableau online-SSO configureren
 
-1. Meld je in een ander browservenster aan bij je Tableau Online-toepassing. Ga naar **Instellingen** en vervolgens **Verificatie**.
+1. Meld u in een ander browser venster aan bij uw tableau online-toepassing. Ga naar **instellingen** en vervolgens op **authenticatie**.
 
     ![Eenmalige aanmelding configureren](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
-2. Als u SAML wilt inschakelen, wordt onder sectie **Verificatietypen** ingeschakeld. Schakel **Een aanvullende verificatiemethode inschakelen** in en schakel het selectievakje **SAML** in.
+2. Als u SAML wilt inschakelen, onder **verificatie typen** sectie. Schakel **een extra verificatie methode in** en schakel het selectie vakje **SAML** in.
 
     ![Eenmalige aanmelding configureren](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-3. Scroll omlaag naar **het bestand met metagegevens importeren in de** sectie Tableau Online.  Klik op Bladeren en importeer het metagegevensbestand dat u hebt gedownload van Azure AD. Klik vervolgens op **Toepassen**.
+3. Schuif omlaag om het **META gegevensbestand te importeren in tableau online** .  Klik op Bladeren en importeer het meta gegevensbestand dat u hebt gedownload van Azure AD. Klik vervolgens op **Toep assen**.
 
    ![Eenmalige aanmelding configureren](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-4. Voeg in de sectie **Beweringen overeenkomen** de overeenkomstige bevestigingsnaam van de identiteitsprovider in voor **e-mailadres,** **voornaam**en **achternaam**. Ga als volgt te werk om deze informatie uit Azure AD te halen: 
+4. In de sectie **beweringen afstemmen** voert u de bijbehorende naam van de identiteits provider voor het **e-mail adres**, de **voor naam**en de **Achternaam**in. Als u deze informatie van Azure AD wilt ontvangen: 
   
-    a. Ga in de Azure-portal naar de pagina **Met de integratie** van Tableau Online-toepassingen.
+    a. Ga in het Azure Portal naar de pagina **tableau online** Application Integration.
 
-    b. Klik in de sectie **Gebruikerskenmerken & Claims** op het pictogram bewerken.
+    b. Klik in de sectie **gebruikers kenmerken & claims** op het pictogram bewerken.
 
    ![Eenmalige aanmelding configureren](./media/tableauonline-tutorial/attributesection.png)
 
-    c. Kopieer de naamruimtewaarde voor deze kenmerken: givenname, e-mail en achternaam met behulp van de volgende stappen:
+    c. Kopieer de waarde van de naam ruimte voor deze kenmerken: benamingnaam, e-mail en achternaam met behulp van de volgende stappen:
 
-   ![Azure AD-aanmelding](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Eenmalige aanmelding voor Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
-    d. Klik op de waarde **user.givenname**
+    d. Klik op de waarde **User.** valued
 
-    e. Kopieer de waarde uit het tekstvak **Naamruimte.**
+    e. Kopieer de waarde uit het tekstvak **naam ruimte** .
 
     ![Eenmalige aanmelding configureren](./media/tableauonline-tutorial/attributesection2.png)
 
-    f. Als u de naamruimtewaarden voor de e-mail en achternaam wilt kopiëren, herhaalt u de bovenstaande stappen.
+    f. De waarden van de naam ruimte voor het e-mail bericht kopiëren en de achternaam herhalen de bovenstaande stappen.
 
-    g. Schakel over naar de Tableau Online-toepassing en stel de sectie **Gebruikerskenmerken & Claims** als volgt in:
+    g. Ga naar de online toepassing tableau en stel de volgende **gebruikers kenmerken & claims** in:
 
-    * E-mail: **e-mail** of **gebruikersnaam**
+    * E-mail: **e-mail** of **userPrincipalName**
 
-    * Voornaam: **voornaam**
+    * Voor naam: **benaming**
 
-    * Achternaam: **achternaam**
+    * Achternaam: **naam**
 
     ![Eenmalige aanmelding configureren](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
-### <a name="create-tableau-online-test-user"></a>Tableau Online-testgebruiker maken
+### <a name="create-tableau-online-test-user"></a>Tableau online test gebruiker maken
 
-In deze sectie maak je een gebruiker genaamd Britta Simon in Tableau Online.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in tableau online.
 
-1. Klik op **Tableau Online**op **Instellingen** en vervolgens op de sectie **Verificatie.** Scroll omlaag naar de sectie **Gebruikers beheren.** Klik **op Gebruikers toevoegen** en klik vervolgens op **E-mailadressen invoeren**.
+1. Klik op **tableau online**op **instellingen** en vervolgens op **verificatie** sectie. Schuif omlaag naar de sectie **gebruikers beheren** . Klik op **gebruikers toevoegen** en klik vervolgens op **e-mail adressen invoeren**.
   
     ![Een Azure AD-testgebruiker maken](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Selecteer **Gebruikers toevoegen voor (SAML)-verificatie**. Voeg in het enter **e-mailadressen** tekstvak britta.simon\@toe contoso.com
+2. Selecteer **gebruikers voor SAML-verificatie (toevoegen)**. Voeg in het tekstvak **e-mail adressen invoeren** Julia\@. Simon contoso.com
   
     ![Een Azure AD-testgebruiker maken](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
-3. Klik **op Gebruikers toevoegen**.
+3. Klik op **gebruikers toevoegen**.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer je op de Tableau Online-tegel in het Toegangspaneel klikt, moet je automatisch worden aangemeld bij het Tableau Online waarvoor je SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel online tableau klikt in het deel venster toegang, moet u automatisch worden aangemeld bij de tableau online waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

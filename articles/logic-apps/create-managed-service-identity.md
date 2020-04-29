@@ -1,91 +1,91 @@
 ---
 title: Verifiëren met beheerde identiteiten
-description: Toegang tot bronnen in andere Azure Active Directory-tenants zonder u aan te melden met referenties of geheimen met behulp van een beheerde identiteit
+description: Toegang krijgen tot bronnen in andere Azure Active Directory-tenants zonder u aan te melden met referenties of geheimen met behulp van een beheerde identiteit
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: 82710a66cdf7874c745070e49b2c7aff7bc8816d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77117358"
 ---
-# <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Toegang tot Azure-bronnen verifiëren met beheerde identiteiten in Azure Logic Apps
+# <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Toegang tot Azure-bronnen verifiëren door beheerde identiteiten te gebruiken in Azure Logic Apps
 
-Als u toegang wilt krijgen tot resources in andere Azure Active Directory-tenants (Azure AD) en uw identiteit wilt verifiëren zonder u aan te melden, kan uw logische app een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen Managed Service Identity of MSI) gebruiken, in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt uw referenties te beveiligen omdat u geen geheimen hoeft op te geven of te roteren.
+Om toegang te krijgen tot resources in andere Azure Active Directory (Azure AD)-tenants en uw identiteit te verifiëren zonder zich aan te melden, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen Managed Service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien.
 
-Azure Logic Apps ondersteunt zowel [*door het systeem toegewezen*](../active-directory/managed-identities-azure-resources/overview.md) als door de gebruiker [*toegewezen*](../active-directory/managed-identities-azure-resources/overview.md) beheerde identiteiten. Uw logische app kan de door het systeem toegewezen identiteit of *een enkele* door de gebruiker toegewezen identiteit gebruiken, die u delen in een groep logische apps, maar niet beide. Momenteel ondersteunen alleen [specifieke ingebouwde triggers en acties](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) beheerde identiteiten, niet beheerde connectors of verbindingen, bijvoorbeeld:
+Azure Logic Apps ondersteunt zowel door het [*systeem toegewezen*](../active-directory/managed-identities-azure-resources/overview.md) als door de [*gebruiker toegewezen*](../active-directory/managed-identities-azure-resources/overview.md) beheerde identiteiten. Uw logische app kan gebruikmaken van de door het systeem toegewezen identiteit of *één* door de gebruiker toegewezen identiteit, die u kunt delen via een groep logische apps, maar niet beide. Momenteel ondersteunen alleen [specifieke ingebouwde triggers en acties](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) beheerde identiteiten, niet beheerde connectors of verbindingen, bijvoorbeeld:
 
 * HTTP
 * Azure Functions
 * Azure API Management
 * Azure App Services
 
-In dit artikel ziet u hoe u beide soorten beheerde identiteiten instelt voor uw logische app. Zie deze onderwerpen voor meer informatie:
+In dit artikel wordt beschreven hoe u beide soorten beheerde identiteiten instelt voor uw logische app. Zie deze onderwerpen voor meer informatie:
 
 * [Triggers en acties die beheerde identiteiten ondersteunen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Ondersteunde verificatietypen bij uitgaande gesprekken](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Beheerde identiteitslimieten voor logische apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
-* [Azure-services die Azure AD-verificatie ondersteunen met beheerde identiteiten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
+* [Ondersteunde verificatie typen voor uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [Beheerde identiteits limieten voor Logic apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
+* [Azure-Services die ondersteuning bieden voor Azure AD-verificatie met beheerde identiteiten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). Zowel de beheerde identiteit als de beoogde Azure-bron waar u toegang nodig hebt, moeten hetzelfde Azure-abonnement gebruiken.
+* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). Zowel de beheerde identiteit als de Azure-doel resource waarvoor u toegang nodig hebt, moeten hetzelfde Azure-abonnement gebruiken.
 
-* Als u een beheerde identiteit toegang wilt geven tot een Azure-bron, moet u een rol toevoegen aan de doelbron voor die identiteit. Als u rollen wilt toevoegen, hebt u [Azure AD-beheerdersmachtigingen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) nodig die rollen kunnen toewijzen aan identiteiten in de bijbehorende Azure AD-tenant.
+* Als u een beheerde identiteit toegang wilt geven tot een Azure-resource, moet u een rol toevoegen aan de doel resource voor die identiteit. Om rollen toe te voegen, hebt u [Azure AD-beheerders machtigingen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) nodig waarmee rollen kunnen worden toegewezen aan identiteiten in de bijbehorende Azure AD-Tenant.
 
-* De beoogde Azure-bron die u wilt openen. Op deze bron voegt u een rol toe voor de beheerde identiteit, waarmee de logische app de toegang tot de doelbron kan verifiëren.
+* De doel-Azure-resource waartoe u toegang wilt krijgen. Op deze resource voegt u een rol toe voor de beheerde identiteit, waarmee de logische app de toegang tot de doel bron kan verifiëren.
 
-* De logische app waarin u de trigger of acties wilt gebruiken [die beheerde identiteiten ondersteunen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* De logische app waarvoor u de [trigger of acties wilt gebruiken die beheerde identiteiten ondersteunen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 
 ## <a name="enable-managed-identity"></a>Beheerde identiteit inschakelen
 
-Als u de beheerde identiteit wilt instellen die u wilt gebruiken, volgt u de koppeling voor die identiteit:
+Als u de beheerde identiteit die u wilt gebruiken, wilt instellen, volgt u de koppeling voor die identiteit:
 
-* [Systeemtoegewezen identiteit](#system-assigned)
-* [Door de gebruiker toegewezen identiteit](#user-assigned)
+* [Door het systeem toegewezen identiteit](#system-assigned)
+* [Door gebruiker toegewezen identiteit](#user-assigned)
 
 <a name="system-assigned"></a>
 
-### <a name="enable-system-assigned-identity"></a>Systeemtoegewezen identiteit inschakelen
+### <a name="enable-system-assigned-identity"></a>Door het systeem toegewezen identiteit inschakelen
 
-In tegenstelling tot door de gebruiker toegewezen identiteiten, hoeft u de door het systeem toegewezen identiteit niet handmatig te maken. Als u de door het systeem toegewezen identiteit voor uw logische app wilt instellen, u het gewenste aantal opties gebruiken:
+In tegens telling tot door de gebruiker toegewezen identiteiten hoeft u de door het systeem toegewezen identiteit niet hand matig te maken. Als u de door het systeem toegewezen identiteit voor uw logische app wilt instellen, kunt u de volgende opties gebruiken:
 
-* [Azure-portal](#azure-portal-system-logic-app)
+* [Azure Portal](#azure-portal-system-logic-app)
 * [Azure Resource Manager-sjablonen](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
-#### <a name="enable-system-assigned-identity-in-azure-portal"></a>Systeemtoegewezen identiteit inschakelen in Azure-portal
+#### <a name="enable-system-assigned-identity-in-azure-portal"></a>Door het systeem toegewezen identiteit inschakelen in Azure Portal
 
-1. Open uw logische app in de [Azure-portal](https://portal.azure.com)in Logic App Designer.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer In het menu van de logische app onder **Instellingen**de optie **Identiteit**. Selecteer **Systeem toegewezen** > **op** > **opslaan**. Wanneer Azure u vraagt om te bevestigen, selecteert u **Ja**.
+1. Selecteer **identiteit**onder **instellingen**in het menu van de logische app. Selecteer **systeem toegewezen** > **bij** > **Opslaan**. Wanneer u wordt gevraagd om te bevestigen, selecteert u **Ja**.
 
-   ![De aan het systeem toegewezen identiteit inschakelen](./media/create-managed-service-identity/enable-system-assigned-identity.png)
+   ![De door het systeem toegewezen identiteit inschakelen](./media/create-managed-service-identity/enable-system-assigned-identity.png)
 
    > [!NOTE]
-   > Als u een foutmelding krijgt dat u slechts één beheerde identiteit hebben, is uw logische app al gekoppeld aan de door de gebruiker toegewezen identiteit. Voordat u de door het systeem toegewezen identiteit toevoegen, moet u eerst de door de gebruiker toegewezen identiteit uit uw logische app *verwijderen.*
+   > Als u een fout bericht krijgt dat u slechts één beheerde identiteit kunt hebben, is uw logische app al gekoppeld aan de door de gebruiker toegewezen identiteit. Voordat u de door het systeem toegewezen identiteit kunt toevoegen, moet u eerst de door de gebruiker toegewezen identiteit *verwijderen* uit uw logische app.
 
-   Uw logische app kan nu de door het systeem toegewezen identiteit gebruiken, die is geregistreerd bij Azure Active Directory en wordt vertegenwoordigd door een object-id.
+   Uw logische app kan nu gebruikmaken van de door het systeem toegewezen identiteit, die is geregistreerd bij Azure Active Directory en wordt vertegenwoordigd door een object-ID.
 
-   ![Object-id voor door het systeem toegewezen identiteit](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
+   ![Object-ID voor door het systeem toegewezen identiteit](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Object-id** | <*identiteits-resource-ID*> | Een GUID (Globally Unique Identifier) die de door het systeem toegewezen identiteit voor uw logische app in een Azure AD-tenant vertegenwoordigt |
+   | **Object-id** | <*identiteit-bron-ID*> | Een GUID (Globally Unique Identifier) die de door het systeem toegewezen identiteit voor uw logische app vertegenwoordigt in een Azure AD-Tenant |
    ||||
 
-1. Volg nu de stappen die die identiteit later in dit onderwerp [toegang geven tot de bron.](#access-other-resources)
+1. Volg nu de [stappen voor het verlenen van toegang tot de resource met de-id](#access-other-resources) verderop in dit onderwerp.
 
 <a name="template-system-logic-app"></a>
 
-#### <a name="enable-system-assigned-identity-in-azure-resource-manager-template"></a>Systeemtoegewezen identiteit inschakelen in Azure Resource Manager-sjabloon
+#### <a name="enable-system-assigned-identity-in-azure-resource-manager-template"></a>Door het systeem toegewezen identiteit in Azure Resource Manager sjabloon inschakelen
 
-Als u het maken en implementeren van Azure-bronnen zoals logische apps wilt automatiseren, u [Azure Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)gebruiken. Als u de door het systeem toegewezen beheerde identiteit `identity` voor `type` uw logische app in de sjabloon wilt inschakelen, voegt u het object en de eigenschap onderliggend toe aan de resourcedefinitie van de logische app in de sjabloon, bijvoorbeeld:
+U kunt [Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)gebruiken om het maken en implementeren van Azure-resources zoals Logic apps te automatiseren. Als u de door het systeem toegewezen beheerde identiteit voor uw logische app in de sjabloon wilt inschakelen `identity` , voegt u `type` het object en de onderliggende eigenschap toe aan de resource definitie van de logische app in de sjabloon, bijvoorbeeld:
 
 ```json
 {
@@ -110,7 +110,7 @@ Als u het maken en implementeren van Azure-bronnen zoals logische apps wilt auto
 }
 ```
 
-Wanneer Azure de definitie van `identity` uw logische app-bron maakt, krijgt het object de volgende extra eigenschappen:
+Wanneer Azure de resource definitie van de logische app maakt `identity` , krijgt het object de volgende aanvullende eigenschappen:
 
 ```json
 "identity": {
@@ -122,84 +122,84 @@ Wanneer Azure de definitie van `identity` uw logische app-bron maakt, krijgt het
 
 | Eigenschap (JSON) | Waarde | Beschrijving |
 |-----------------|-------|-------------|
-| `principalId` | <*principal-ID*> | De GUID (Globally Unique Identifier) van het hoofdobject van de service voor de beheerde identiteit die uw logische app in de Azure AD-tenant vertegenwoordigt. Deze GUID wordt soms weergegeven als `objectID`een "object-ID" of . |
-| `tenantId` | <*Azure-AD-tenant-ID*> | De GUID (Globally Unique Identifier) die de Azure AD-tenant vertegenwoordigt waar de logische app nu lid van is. Binnen de Azure AD-tenant heeft de serviceprincipal dezelfde naam als de instantie logische app. |
+| `principalId` | <*Principal-ID*> | De GUID (Globally Unique Identifier) van het Service-Principal-object voor de beheerde identiteit die uw logische app vertegenwoordigt in de Azure AD-Tenant. Deze GUID wordt soms weer gegeven als een ' object- `objectID`id ' of. |
+| `tenantId` | <*Azure-AD-Tenant-ID*> | De GUID (Globally Unique Identifier) die de Azure AD-Tenant vertegenwoordigt waarbij de logische app nu lid is. De Service-Principal in de Azure AD-Tenant heeft dezelfde naam als de logische app-instantie. |
 ||||
 
 <a name="user-assigned"></a>
 
-### <a name="enable-user-assigned-identity"></a>Door de gebruiker toegewezen identiteit inschakelen
+### <a name="enable-user-assigned-identity"></a>Door gebruiker toegewezen identiteit inschakelen
 
-Als u een door de gebruiker toegewezen beheerde identiteit voor uw logische app wilt instellen, moet u die identiteit eerst maken als een afzonderlijke zelfstandige Azure-bron. Dit zijn de opties die u gebruiken:
+Als u een door de gebruiker toegewezen beheerde identiteit voor uw logische app wilt instellen, moet u deze identiteit eerst als afzonderlijke zelfstandige Azure-resource maken. Dit zijn de opties die u kunt gebruiken:
 
-* [Azure-portal](#azure-portal-user-identity)
+* [Azure Portal](#azure-portal-user-identity)
 * [Azure Resource Manager-sjablonen](#template-user-identity)
 * Azure PowerShell
-  * [Identiteit die door de gebruiker is toegewezen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
+  * [Door de gebruiker toegewezen identiteit maken](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Roltoewijzing toevoegen](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* Azure-CLI
-  * [Identiteit die door de gebruiker is toegewezen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
+* Azure CLI
+  * [Door de gebruiker toegewezen identiteit maken](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
   * [Roltoewijzing toevoegen](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 * Azure REST API
-  * [Identiteit die door de gebruiker is toegewezen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-rest.md)
+  * [Door de gebruiker toegewezen identiteit maken](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-rest.md)
   * [Roltoewijzing toevoegen](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-user-identity"></a>
 
-#### <a name="create-user-assigned-identity-in-the-azure-portal"></a>Identiteit met gebruikers toegewezen in de Azure-portal
+#### <a name="create-user-assigned-identity-in-the-azure-portal"></a>Een door de gebruiker toegewezen identiteit maken in de Azure Portal
 
-1. Voer in de [Azure-portal](https://portal.azure.com)in het `managed identities`zoekvak op een pagina **Beheerde identiteiten in**en selecteer deze .
+1. Voer `managed identities`in het [Azure Portal](https://portal.azure.com), in het zoekvak op een wille keurige pagina, de optie **beheerde identiteiten**in en selecteer deze.
 
-   ![Zoeken en selecteren "Beheerde identiteiten"](./media/create-managed-service-identity/find-select-managed-identities.png)
+   ![Zoek en selecteer beheerde identiteiten](./media/create-managed-service-identity/find-select-managed-identities.png)
 
-1. Selecteer Onder **Beheerde identiteiten**de optie **Toevoegen**.
+1. Selecteer onder **beheerde identiteiten**de optie **toevoegen**.
 
    ![Nieuwe beheerde identiteit toevoegen](./media/create-managed-service-identity/add-user-assigned-identity.png)
 
-1. Geef informatie op over uw beheerde identiteit en selecteer vervolgens **Maken,** bijvoorbeeld:
+1. Geef informatie op over uw beheerde identiteit en selecteer vervolgens **maken**, bijvoorbeeld:
 
-   ![Beheerde identiteit met gebruiker maken](./media/create-managed-service-identity/create-user-assigned-identity.png)
+   ![Door de gebruiker toegewezen beheerde identiteit maken](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Resourcenaam** | Ja | <*gebruikersnaam toegewezen-identiteit*> | De naam om uw door de gebruiker toegewezen identiteit te geven. In dit voorbeeld wordt gebruik gemaakt van "Fabrikam-user-assigned-identity". |
-   | **Abonnement** | Ja | <*Azure-abonnementsnaam*> | De naam voor het Azure-abonnement dat moet worden gebruikt |
-   | **Resourcegroep** | Ja | <*Naam azure-resource-groep*> | De naam voor de resourcegroep die u wilt gebruiken. Maak een nieuwe groep of selecteer een bestaande groep. In dit voorbeeld wordt een nieuwe groep gemaakt met de naam "fabrikam-managed-identities-RG". |
-   | **Locatie** | Ja | <*Azure-regio*> | Het Azure-gebied waar informatie over uw bron kan worden opgeslagen. In dit voorbeeld wordt "West US" gebruikt. |
+   | **Resource naam** | Ja | <*door de gebruiker toegewezen identiteits naam*> | De naam om uw door de gebruiker toegewezen identiteit te geven. In dit voor beeld wordt gebruikgemaakt van ' fabrikam-door de gebruiker toegewezen identiteit '. |
+   | **Abonnement** | Ja | <*Azure-abonnement-naam*> | De naam voor het Azure-abonnement dat moet worden gebruikt |
+   | **Resourcegroep** | Ja | <*Azure-resource-group-name*> | De naam voor de resource groep die moet worden gebruikt. Maak een nieuwe groep of selecteer een bestaande groep. In dit voor beeld wordt een nieuwe groep gemaakt met de naam ' door fabrikam beheerde identiteiten-RG '. |
+   | **Locatie** | Ja | <*Azure-regio*> | De Azure-regio waar informatie over uw resource moet worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    |||||
 
-   Nu u de door de gebruiker toegewezen identiteit toevoegen aan uw logische app. U niet meer dan één door de gebruiker toegewezen identiteit toevoegen aan uw logische app.
+   U kunt nu de door de gebruiker toegewezen identiteit toevoegen aan uw logische app. U kunt niet meer dan één door de gebruiker toegewezen identiteit toevoegen aan uw logische app.
 
-1. Zoek en open uw logische app in de Azure-portal in Logic App Designer.
+1. Zoek in de Azure Portal uw logische app in de ontwerp functie voor logische apps en open deze.
 
-1. Selecteer in het menu van de logische app onder **Instellingen**de optie **Identiteit**en selecteer **Vervolgens Gebruiker toegewezen** > **Toevoegen**.
+1. Selecteer onder **instellingen**in het menu van de logische app de optie **identiteit**en selecteer vervolgens **aan gebruiker toegewezen** > **toevoegen**.
 
-   ![Beheerde identiteit met gebruiker toevoegen](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
+   ![Door de gebruiker toegewezen beheerde identiteit toevoegen](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
 
-1. Selecteer in het deelvenster **Beheerde identiteit toevoegen van gebruikers** in de lijst **Abonnement** uw Azure-abonnement als dit nog niet is geselecteerd. Zoek en selecteer in de lijst met *alle* beheerde identiteiten in dat abonnement de gewenste identiteit die door de gebruiker is toegewezen. Als u de lijst wilt filteren, voert u in het zoekvak Beheerde identiteit en de naam voor de identiteit of resourcegroep in in het zoekvak Met **gebruikers toegewezen beheerde identiteit.** Als u klaar bent, selecteert u **Toevoegen**.
+1. Selecteer uw Azure-abonnement in het deel venster door de **gebruiker toegewezen beheerde identiteit toevoegen** in de lijst **abonnement** als dat nog niet is gebeurd. Zoek in de lijst waarin *alle* beheerde identiteiten in het abonnement worden weer gegeven de door de gebruiker toegewezen identiteit en selecteer deze. Als u de lijst wilt filteren, voert u in het zoekvak door de **gebruiker toegewezen beheerde identiteiten** de naam in voor de identiteit of de resource groep. Wanneer u klaar bent, selecteert u **toevoegen**.
 
    ![De door de gebruiker toegewezen identiteit selecteren die moet worden gebruikt](./media/create-managed-service-identity/select-user-assigned-identity.png)
 
    > [!NOTE]
-   > Als u een foutmelding krijgt dat u slechts één beheerde identiteit hebben, is uw logische app al gekoppeld aan de door het systeem toegewezen identiteit. Voordat u de door de gebruiker toegewezen identiteit toevoegen, moet u eerst de door het systeem toegewezen identiteit uitschakelen in uw logische app.
+   > Als u een fout bericht krijgt dat u slechts één beheerde identiteit kunt hebben, is uw logische app al gekoppeld aan de door het systeem toegewezen identiteit. Voordat u de door de gebruiker toegewezen identiteit kunt toevoegen, moet u eerst de door het systeem toegewezen identiteit uitschakelen in uw logische app.
 
    Uw logische app is nu gekoppeld aan de door de gebruiker toegewezen beheerde identiteit.
 
-   ![Koppeling met door de gebruiker toegewezen identiteit](./media/create-managed-service-identity/added-user-assigned-identity.png)
+   ![Koppeling met door gebruiker toegewezen identiteit](./media/create-managed-service-identity/added-user-assigned-identity.png)
 
-1. Volg nu de stappen die die identiteit later in dit onderwerp [toegang geven tot de bron.](#access-other-resources)
+1. Volg nu de [stappen voor het verlenen van toegang tot de resource met de-id](#access-other-resources) verderop in dit onderwerp.
 
 <a name="template-user-identity"></a>
 
-#### <a name="create-user-assigned-identity-in-an-azure-resource-manager-template"></a>Identiteit met gebruikers toegewezen in een Azure Resource Manager-sjabloon
+#### <a name="create-user-assigned-identity-in-an-azure-resource-manager-template"></a>Een door de gebruiker toegewezen identiteit maken in een Azure Resource Manager sjabloon
 
-Als u het maken en implementeren van Azure-bronnen zoals logische apps wilt automatiseren, u [Azure Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)gebruiken die [door gebruikers toegewezen identiteiten ondersteunen voor verificatie.](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md) In de sectie `resources` van uw sjabloon vereist de resourcedefinitie van uw logische app de volgende items:
+Voor het automatiseren van het maken en implementeren van Azure-resources, zoals Logic apps, kunt u [Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)gebruiken die door de [gebruiker toegewezen identiteiten voor verificatie](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)ondersteunen. In de `resources` sectie van uw sjabloon zijn de resource definitie van de logische app vereist voor de volgende items:
 
-* Een `identity` object `type` waarop de eigenschap is ingesteld`UserAssigned`
+* Een `identity` object waarvan de `type` eigenschap is ingesteld op`UserAssigned`
 
-* Een `userAssignedIdentities` onderliggend object dat de resource-id van de identiteit `principalId` opgeeft, een ander onderliggend object met de eigenschappen en `clientId` eigenschappen
+* Een onderliggend `userAssignedIdentities` object dat de resource-id van de identiteit specificeert. Dit is een `principalId` ander `clientId` onderliggend object met de eigenschappen en
 
-In dit voorbeeld wordt een logische app-brondefinitie voor een `identity` HTTP PUT-aanvraag weergegeven en een niet-geparameteriseerd object. Het antwoord op de PUT-aanvraag en `identity` de daaropvolgende GET-bewerking hebben ook dit object:
+Dit voor beeld toont een resource definitie van een logische app voor een HTTP PUT-aanvraag en bevat een `identity` niet-geparametriseerde object. De reactie op de PUT-aanvraag en de volgende GET-bewerking `identity` hebben dit object ook:
 
 ```json
 {
@@ -234,11 +234,11 @@ In dit voorbeeld wordt een logische app-brondefinitie voor een `identity` HTTP P
 
 | Eigenschap (JSON) | Waarde | Beschrijving |
 |-----------------|-------|-------------|
-| `principalId` | <*principal-ID*> | De GUID (Globally Unique Identifier) voor de door de gebruiker toegewezen beheerde identiteit in de Azure AD-tenant |
-| `clientId` | <*client-ID*> | Een GUID (Globally Unique Identifier) voor de nieuwe identiteit van uw logische app die wordt gebruikt voor gesprekken tijdens runtime |
+| `principalId` | <*Principal-ID*> | De GUID (Globally Unique Identifier) van de door de gebruiker toegewezen beheerde identiteit in de Azure AD-Tenant |
+| `clientId` | <*client-ID*> | Een GUID (Globally Unique Identifier) voor de nieuwe identiteit van uw logische app die wordt gebruikt voor aanroepen tijdens runtime |
 ||||
 
-Als uw sjabloon ook de resourcedefinitie van de beheerde `identity` identiteit bevat, u het object parameteriseren. In dit voorbeeld `userAssignedIdentities` ziet u `userAssignedIdentity` hoe het onderliggende object `variables` verwijst naar een variabele die u definieert in de sectie van uw sjabloon. Deze variabele verwijst naar de resource-id voor uw door de gebruiker toegewezen identiteit.
+Als uw sjabloon ook de resource definitie van de beheerde identiteit bevat, kunt u het `identity` object para meters. In dit voor beeld ziet u `userAssignedIdentities` hoe het onderliggende `userAssignedIdentity` object verwijst naar een variabele die u in `variables` de sectie van uw sjabloon definieert. Met deze variabele wordt verwezen naar de resource-ID voor de door de gebruiker toegewezen identiteit.
 
 ```json
 {
@@ -293,212 +293,212 @@ Als uw sjabloon ook de resourcedefinitie van de beheerde `identity` identiteit b
 
 | Eigenschap (JSON) | Waarde | Beschrijving |
 |-----------------|-------|-------------|
-| `tenantId` | <*Azure-AD-tenant-ID*> | De GUID (Globally Unique Identifier) die de Azure AD-tenant vertegenwoordigt waarvan de door de gebruiker toegewezen identiteit nu lid is. Binnen de Azure AD-tenant heeft de serviceprincipal dezelfde naam als de door de gebruiker toegewezen identiteitsnaam. |
-| `principalId` | <*principal-ID*> | De GUID (Globally Unique Identifier) voor de door de gebruiker toegewezen beheerde identiteit in de Azure AD-tenant |
-| `clientId` | <*client-ID*> | Een GUID (Globally Unique Identifier) voor de nieuwe identiteit van uw logische app die wordt gebruikt voor gesprekken tijdens runtime |
+| `tenantId` | <*Azure-AD-Tenant-ID*> | De GUID (Globally Unique Identifier) die de Azure AD-Tenant vertegenwoordigt waarbij de door de gebruiker toegewezen identiteit nu lid is. De Service-Principal in de Azure AD-Tenant heeft dezelfde naam als de door de gebruiker toegewezen identiteits naam. |
+| `principalId` | <*Principal-ID*> | De GUID (Globally Unique Identifier) van de door de gebruiker toegewezen beheerde identiteit in de Azure AD-Tenant |
+| `clientId` | <*client-ID*> | Een GUID (Globally Unique Identifier) voor de nieuwe identiteit van uw logische app die wordt gebruikt voor aanroepen tijdens runtime |
 ||||
 
 <a name="access-other-resources"></a>
 
-## <a name="give-identity-access-to-resources"></a>Identiteitstoegang geven tot bronnen
+## <a name="give-identity-access-to-resources"></a>Identiteits toegang geven tot resources
 
-Voordat u de beheerde identiteit van uw logische app gebruiken voor verificatie, stelt u toegang voor die identiteit in op de Azure-bron waar u de identiteit wilt gebruiken. Als u deze taak wilt voltooien, wijst u de juiste rol toe aan die identiteit op de doelazure-bron. Dit zijn de opties die u gebruiken:
+Voordat u de beheerde identiteit van de logische app voor verificatie kunt gebruiken, moet u de toegang instellen voor die identiteit op de Azure-resource waar u de identiteit wilt gebruiken. Als u deze taak wilt volt ooien, wijst u de juiste rol toe aan die identiteit op de Azure-doel resource. Dit zijn de opties die u kunt gebruiken:
 
-* [Azure-portal](#azure-portal-assign-access)
-* [Azure Resource Manager-sjabloon](../role-based-access-control/role-assignments-template.md)
-* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)) - Zie [Roltoewijzing toevoegen met Azure RBAC en Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie.
-* Azure CLI ([az-roltoewijzing maken](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) - Zie [Roltoewijzing toevoegen met Azure RBAC en Azure CLI](../role-based-access-control/role-assignments-cli.md)voor meer informatie.
+* [Azure Portal](#azure-portal-assign-access)
+* [Azure Resource Manager sjabloon](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)): Zie [roltoewijzing toevoegen met behulp van Azure RBAC en Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie.
+* Azure CLI ([AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)): Zie [roltoewijzing toevoegen met behulp van Azure RBAC en Azure cli](../role-based-access-control/role-assignments-cli.md)voor meer informatie.
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
 
-### <a name="assign-access-in-the-azure-portal"></a>Toegang toewijzen in de Azure-portal
+### <a name="assign-access-in-the-azure-portal"></a>Toegang toewijzen in de Azure Portal
 
-1. Ga in de [Azure-portal](https://portal.azure.com)naar de Azure-bron waar u wilt dat uw beheerde identiteit toegang heeft.
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de Azure-resource waar u de beheerde identiteit toegang wilt geven.
 
-1. Selecteer in het menu van de resource de**roltoewijzingen** **(Access control)** > waar u de huidige roltoewijzingen voor die resource bekijken. Selecteer op de werkbalk **Roltoewijzing** > **toevoegen**.
+1. Selecteer in het menu resource **toegangs beheer (IAM)** > **roltoewijzingen waar u de huidige roltoewijzingen voor** die resource kunt controleren. **Selecteer op** > de werk balk de optie**roltoewijzing**toevoegen.
 
-   ![Selecteer 'Toevoegen' > 'Roltoewijzing toevoegen'](./media/create-managed-service-identity/add-role-to-resource.png)
+   ![Selecteer > functie toewijzing toevoegen.](./media/create-managed-service-identity/add-role-to-resource.png)
 
    > [!TIP]
-   > Als de optie **Roltoewijzing toevoegen** is uitgeschakeld, hebt u waarschijnlijk geen machtigingen. Zie [Beheerdersrolmachtigingen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de machtigingen waarmee u rollen voor resources beheren.
+   > Als de optie **roltoewijzing toevoegen** is uitgeschakeld, hebt u waarschijnlijk niet de juiste machtigingen. Zie [Administrator role permissions](../active-directory/users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) in azure Active Directory voor meer informatie over de machtigingen waarmee u rollen voor resources kunt beheren.
 
-1. Selecteer **onder Roltoewijzing toevoegen**een **rol** die uw identiteit de nodige toegang geeft tot de doelbron.
+1. Selecteer onder roltoewijzing **toevoegen**een **rol** die uw identiteit de benodigde toegang tot de doel resource geeft.
 
-   In het voorbeeld van dit onderwerp heeft uw identiteit een rol nodig [die toegang heeft tot de blob in een Azure Storage-container.](../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)
+   Voor het voor beeld van dit onderwerp moet uw identiteit een [rol hebben die toegang heeft tot de BLOB in een Azure storage-container](../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 
-   ![De rol 'Opslagblob-gegevensbijdrager' selecteren](./media/create-managed-service-identity/select-role-for-identity.png)
+   ![Selecteer de rol ' BLOB data Inzender voor opslag '](./media/create-managed-service-identity/select-role-for-identity.png)
 
-1. Volg de volgende stappen voor uw beheerde identiteit:
+1. Volg deze stappen voor uw beheerde identiteit:
 
-   * **Systeemtoegewezen identiteit**
+   * **Door het systeem toegewezen identiteit**
 
-     1. Selecteer **Logic App**in het vak Toegang **toewijzen tot** . Wanneer de eigenschap **Abonnement** wordt weergegeven, selecteert u het Azure-abonnement dat is gekoppeld aan uw identiteit.
+     1. Selecteer in het vak **toegang toewijzen aan** de optie **logische app**. Wanneer de eigenschap **abonnement** wordt weer gegeven, selecteert u het Azure-abonnement dat is gekoppeld aan uw identiteit.
 
         ![Toegang selecteren voor door het systeem toegewezen identiteit](./media/create-managed-service-identity/assign-access-system.png)
 
-     1. Selecteer onder het vak **Selecteren** de optie uw logische app in de lijst. Als de lijst te lang is, gebruikt u het vak **Selecteren** om de lijst te filteren.
+     1. Selecteer in het vak **selecteren** de logische app in de lijst. Als de lijst te lang is, gebruikt u het **selectie** vakje om de lijst te filteren.
 
-        ![Logische app selecteren voor aan het systeem toegewezen identiteit](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
+        ![Logische app selecteren voor door het systeem toegewezen identiteit](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
 
-   * **Door de gebruiker toegewezen identiteit**
+   * **Door gebruiker toegewezen identiteit**
 
-     1. Selecteer **in** het vak Toegang toewijzen tot de **optie Door gebruiker toegewezen beheerde identiteit**. Wanneer de eigenschap **Abonnement** wordt weergegeven, selecteert u het Azure-abonnement dat is gekoppeld aan uw identiteit.
+     1. Selecteer door de **gebruiker toegewezen beheerde identiteit**in het vak **toegang toewijzen aan** . Wanneer de eigenschap **abonnement** wordt weer gegeven, selecteert u het Azure-abonnement dat is gekoppeld aan uw identiteit.
 
         ![Toegang selecteren voor door de gebruiker toegewezen identiteit](./media/create-managed-service-identity/assign-access-user.png)
 
-     1. Selecteer onder het vak **Selecteren** uw identiteit in de lijst. Als de lijst te lang is, gebruikt u het vak **Selecteren** om de lijst te filteren.
+     1. Selecteer in het vak **selecteren** uw identiteit in de lijst. Als de lijst te lang is, gebruikt u het **selectie** vakje om de lijst te filteren.
 
-        ![Selecteer uw door de gebruiker toegewezen identiteit](./media/create-managed-service-identity/add-permissions-select-user-assigned-identity.png)
+        ![De door de gebruiker toegewezen identiteit selecteren](./media/create-managed-service-identity/add-permissions-select-user-assigned-identity.png)
 
 1. Selecteer **Opslaan** als u klaar bent.
 
-   De lijst met roltoewijzingen van de doelbron toont nu de geselecteerde beheerde identiteit en rol. In dit voorbeeld ziet u hoe u de door het systeem toegewezen identiteit gebruiken voor één logische app en een door de gebruiker toegewezen identiteit voor een groep andere logische apps.
+   De lijst met roltoewijzingen van de doel resource bevat nu de geselecteerde beheerde identiteit en rol. In dit voor beeld ziet u hoe u de door het systeem toegewezen identiteit kunt gebruiken voor één logische app en een door de gebruiker toegewezen identiteit voor een groep andere logische apps.
 
-   ![Beheerde identiteiten en rollen toegevoegd aan doelbron](./media/create-managed-service-identity/added-roles-for-identities.png)
+   ![Beheerde identiteiten en rollen toegevoegd aan doel bron](./media/create-managed-service-identity/added-roles-for-identities.png)
 
-   Voor meer informatie [wijst u een beheerde identiteitstoegang toe tot een bron met behulp van de Azure-portal.](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)
+   [Wijs een beheerde identiteits toegang toe aan een bron met behulp van de Azure Portal](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)voor meer informatie.
 
-1. Volg nu de [stappen om toegang met de identiteit te verifiëren](#authenticate-access-with-identity) in een trigger of actie die beheerde identiteiten ondersteunt.
+1. Volg nu de [stappen om toegang te verifiëren met de identiteit](#authenticate-access-with-identity) in een trigger of actie die beheerde identiteiten ondersteunt.
 
 <a name="authenticate-access-with-identity"></a>
 
 ## <a name="authenticate-access-with-managed-identity"></a>Toegang verifiëren met beheerde identiteit
 
-Nadat u [de beheerde identiteit van uw logische app](#azure-portal-system-logic-app) hebt ingeschakeld en die identiteit toegang hebt geven tot de [doelbron of -entiteit,](#access-other-resources)u die identiteit gebruiken in [triggers en acties die beheerde identiteiten ondersteunen.](logic-apps-securing-a-logic-app.md#managed-identity-authentication)
+Nadat u [de beheerde identiteit voor uw logische app hebt ingeschakeld](#azure-portal-system-logic-app) en [deze identiteit toegang geeft tot de doel resource of entiteit](#access-other-resources), kunt u die identiteit gebruiken in [Triggers en acties die beheerde identiteiten ondersteunen](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
 > [!IMPORTANT]
-> Als u een Azure-functie hebt waar u de door het systeem toegewezen identiteit wilt gebruiken, [schakelt u eerst verificatie in voor Azure-functies.](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)
+> Als u een Azure-functie hebt waarbij u de door het systeem toegewezen identiteit wilt gebruiken, moet u eerst [verificatie voor Azure functions inschakelen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
 
-In deze stappen wordt uitgelegd hoe u de beheerde identiteit gebruiken met een trigger of actie via de Azure-portal. Zie [Beheerde identiteitsverificatie](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication)als u de beheerde identiteit wilt opgeven in de onderliggende JSON-definitie van een trigger of actie.
+Deze stappen laten zien hoe u de beheerde identiteit met een trigger of actie kunt gebruiken via de Azure Portal. Zie [beheerde identiteits verificatie](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication)voor het opgeven van de beheerde identiteit in een trigger of de onderliggende JSON-definitie van een actie.
 
-1. Open uw logische app in de Logische App Designer in de [Azure-portal.](https://portal.azure.com)
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Als u dit nog niet hebt gedaan, voegt u de trigger of actie toe [die beheerde identiteiten ondersteunt.](logic-apps-securing-a-logic-app.md#managed-identity-authentication)
+1. Als u dit nog niet hebt gedaan, voegt u de [trigger of actie toe die beheerde identiteiten ondersteunt](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
-   De HTTP-trigger of -actie kan bijvoorbeeld de door het systeem toegewezen identiteit gebruiken die u hebt ingeschakeld voor uw logische app. In het algemeen gebruikt de HTTP-trigger of actie deze eigenschappen om de bron of entiteit op te geven die u wilt openen:
+   De HTTP-trigger of actie kan bijvoorbeeld de door het systeem toegewezen identiteit gebruiken die u hebt ingeschakeld voor uw logische app. Over het algemeen gebruikt de HTTP-trigger of actie deze eigenschappen om de resource of entiteit op te geven waartoe u toegang wilt krijgen:
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Methode** | Ja | De HTTP-methode die wordt gebruikt door de bewerking die u wilt uitvoeren |
-   | **Uri** | Ja | De URL van het eindpunt voor toegang tot de doelbron of -entiteit. De syntaxis van URI bevat meestal de [resource-id](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) voor de Azure-bron of -service. |
-   | **Headers** | Nee | Kopwaarden die u nodig hebt of wilt opnemen in de uitgaande aanvraag, zoals het inhoudstype |
-   | **Query's** | Nee | Alle queryparameters die u in de aanvraag nodig hebt of wilt opnemen, zoals de parameter voor een specifieke bewerking of de API-versie voor de bewerking die u wilt uitvoeren |
-   | **Verificatie** | Ja | Het verificatietype dat moet worden gebruikt voor het verifiëren van toegang tot de doelbron of -entiteit |
+   | **URI** | Ja | De eind punt-URL voor toegang tot de Azure-doel bron of-entiteit. De URI-syntaxis bevat doorgaans de [resource-id](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) voor de Azure-resource of-service. |
+   | **Headers** | Nee | Eventuele header waarden die u nodig hebt of wilt toevoegen in de uitgaande aanvraag, zoals het inhouds type |
+   | **Query's** | Nee | Alle query parameters die u nodig hebt of wilt toevoegen in de aanvraag, zoals de para meter voor een specifieke bewerking of de API-versie voor de bewerking die u wilt uitvoeren |
+   | **Verificatie** | Ja | Het verificatie type dat moet worden gebruikt voor het verifiëren van de toegang tot de doel bron of entiteit |
    ||||
 
-   Stel dat u in het specifieke voorbeeld de [bewerking Momentopname blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) wilt uitvoeren op een blob in het Azure Storage-account waar u eerder toegang voor uw identiteit hebt ingesteld. De [Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/) biedt deze bewerking momenteel echter niet. In plaats daarvan u deze bewerking uitvoeren met de [HTTP-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) of een andere [Blob Service REST API-bewerking](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs).
+   Stel dat u de bewerking voor het maken van een [moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) wilt uitvoeren op een BLOB in het Azure Storage account waar u eerder toegang hebt ingesteld voor uw identiteit. De [Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/) biedt deze bewerking echter momenteel niet. In plaats daarvan kunt u deze bewerking uitvoeren met behulp van de [http-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) of een andere [Blob-service rest API bewerking](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs).
 
    > [!IMPORTANT]
-   > Als u toegang wilt krijgen tot Azure-opslagaccounts achter firewalls met HTTP-aanvragen en beheerde identiteiten, moet u ervoor zorgen dat u ook uw opslagaccount instelt met uitzondering [waarmee toegang wordt verkrijgd door vertrouwde Microsoft-services.](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)
+   > Om toegang te krijgen tot Azure Storage-accounts achter firewalls met behulp van HTTP-aanvragen en beheerde identiteiten, moet u ervoor zorgen dat u ook uw opslag account hebt ingesteld met de [uitzonde ring die toegang verleent aan vertrouwde micro soft-Services](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
 
-   Als u de [bewerking Momentopnameblob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)wilt uitvoeren, geeft de HTTP-actie de volgende eigenschappen op:
+   Als u de [BLOB-bewerking van de moment opname](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)wilt uitvoeren, geeft de http-actie deze eigenschappen op:
 
    | Eigenschap | Vereist | Voorbeeldwaarde | Beschrijving |
    |----------|----------|---------------|-------------|
-   | **Methode** | Ja | `PUT`| De HTTP-methode die de opnameblobbewerking gebruikt |
-   | **Uri** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | De bron-id voor een Azure Blob Storage-bestand in de Azure Global -omgeving (openbare) die deze syntaxis gebruikt |
-   | **Headers** | Ja, voor Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | De `x-ms-blob-type` `x-ms-version` kopwaarden en kopwaarden die nodig zijn voor Azure Storage-bewerkingen. <p><p>**Belangrijk:** in uitgaande HTTP-trigger- en actieaanvragen `x-ms-version` voor Azure Storage vereist de header de eigenschap en de API-versie voor de bewerking die u wilt uitvoeren. <p>Zie deze onderwerpen voor meer informatie: <p><p>- [Kopteksten aanvragen - Momentopname Blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Versiebeheer voor Azure Storage-services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **Query's** | Ja, voor deze bewerking | `comp` = `snapshot` | De naam en de waarde van de queryparameter voor de bewerking Momentopnameblob. |
+   | **Methode** | Ja | `PUT`| De HTTP-methode die wordt gebruikt door de BLOB-bewerking van de moment opname |
+   | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | De resource-ID voor een Azure Blob Storage-bestand in de Azure Global (open bare) omgeving, die gebruikmaakt van deze syntaxis |
+   | **Headers** | Ja, voor Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | De `x-ms-blob-type` - `x-ms-version` en header-waarden die nodig zijn voor Azure Storage bewerkingen. <p><p>**Belang rijk**: in uitgaande HTTP-trigger-en actie aanvragen voor Azure Storage vereist de `x-ms-version` header de eigenschap en de API-versie voor de bewerking die u wilt uitvoeren. <p>Zie deze onderwerpen voor meer informatie: <p><p>- [Aanvraag headers-moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Versie beheer voor Azure Storage services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Query's** | Ja, voor deze bewerking | `comp` = `snapshot` | De naam en waarde van de query parameter voor de BLOB-bewerking van de moment opname. |
    |||||
 
-   Hier is het voorbeeld HTTP-actie die al deze eigenschapswaarden weergeeft:
+   Hier volgt een voor beeld van een HTTP-actie waarin al deze eigenschaps waarden worden weer gegeven:
 
-   ![Een HTTP-actie toevoegen om toegang te krijgen tot een Azure-bron](./media/create-managed-service-identity/http-action-example.png)
+   ![Een HTTP-actie toevoegen voor toegang tot een Azure-resource](./media/create-managed-service-identity/http-action-example.png)
 
-1. Voeg nu de eigenschap **Verificatie** toe aan de HTTP-actie. Selecteer **Verificatie**in de lijst **Nieuwe parameter toevoegen** .
+1. Voeg nu de eigenschap **Authentication** toe aan de http-actie. Selecteer in de lijst **nieuwe para meter toevoegen** de optie **verificatie**.
 
-   ![Eigenschap 'Verificatie' toevoegen aan HTTP-actie](./media/create-managed-service-identity/add-authentication-property.png)
+   ![De eigenschap Authentication toevoegen aan de HTTP-actie](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
-   > Niet alle triggers en acties ondersteunen waarmee u een verificatietype toevoegen. Zie [Verificatie toevoegen aan uitgaande gesprekken voor](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)meer informatie .
+   > Niet alle triggers en acties bieden ondersteuning voor het toevoegen van een verificatie type. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie.
 
-1. Selecteer **Beheerde identiteit**in de lijst **Met verificatietype** .
+1. Selecteer **beheerde identiteit**in de lijst **verificatie type** .
 
-   ![Selecteer voor 'Verificatie' de optie 'Beheerde identiteit'](./media/create-managed-service-identity/select-managed-identity.png)
+   ![Voor ' verificatie ' selecteert u ' beheerde identiteit '](./media/create-managed-service-identity/select-managed-identity.png)
 
-1. Kies in de lijst met beheerde identiteit de beschikbare opties op basis van uw scenario.
+1. Selecteer in de lijst beheerde identiteit een van de beschik bare opties op basis van uw scenario.
 
-   * Als u de door het systeem toegewezen identiteit instelt, selecteert u **System Assigned Managed Identity** als deze nog niet is geselecteerd.
+   * Als u de door het systeem toegewezen identiteit hebt ingesteld, selecteert u door het **systeem toegewezen beheerde identiteit** als dat nog niet is gebeurd.
 
-     ![Selecteer 'Beheerde identiteit met systeemtoegewezen'](./media/create-managed-service-identity/select-system-assigned-identity-for-action.png)
+     ![Selecteer de door het systeem toegewezen beheerde identiteit](./media/create-managed-service-identity/select-system-assigned-identity-for-action.png)
 
    * Als u een door de gebruiker toegewezen identiteit instelt, selecteert u die identiteit als deze nog niet is geselecteerd.
 
      ![De door de gebruiker toegewezen identiteit selecteren](./media/create-managed-service-identity/select-user-assigned-identity-for-action.png)
 
-   Dit voorbeeld gaat verder met de **beheerde identiteit met systeemtoegewezen identiteit**.
+   In dit voor beeld wordt de door het **systeem toegewezen beheerde identiteit**voortgezet.
 
-1. Bij sommige triggers en acties wordt de eigenschap **Doelgroep** ook weergegeven voor het instellen van de doelbron-id. Stel de eigenschap **Doelgroep** in op de [resource-id voor de doelbron of -service](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). Anders gebruikt de eigenschap **Audience** `https://management.azure.com/` standaard de resource-id, de bron-id voor Azure Resource Manager.
+1. Bij sommige triggers en acties wordt de eigenschap **doel groep** ook weer gegeven om de doel resource-id in te stellen. Stel de eigenschap **doel groep** in op de [resource-id voor de doel resource of-service](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). Anders wordt de eigenschap **doel groep** standaard gebruikt voor de `https://management.azure.com/` resource-id. Dit is de resource-id voor Azure Resource Manager.
 
    > [!IMPORTANT]
-   > Zorg ervoor dat de doelbron-id *exact overeenkomt met* de waarde die Azure Active Directory (AD) verwacht, inclusief eventuele vereiste trailing slashes. De resource-id voor alle Azure Blob Storage-accounts vereist bijvoorbeeld een trailing slash. De resource-id voor een specifiek opslagaccount vereist echter geen trailing slash. Controleer de [bron-id's voor de Azure-services die Azure AD ondersteunen.](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
+   > Zorg ervoor dat de doel Resource-ID *precies overeenkomt* met de waarde die Azure Active Directory (AD) verwacht, inclusief alle vereiste afsluitende slashes. De resource-ID voor alle Azure Blob Storage-accounts vereist bijvoorbeeld een afsluitende slash. De resource-ID voor een specifiek opslag account vereist echter geen afsluitende slash. Controleer de [resource-id's voor de Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-   In dit **Audience** voorbeeld wordt `https://storage.azure.com/` de eigenschap Doelgroep ingesteld op de toegang, zodat de toegangstokens die worden gebruikt voor verificatie geldig zijn voor alle opslagaccounts. U echter ook de URL `https://fabrikamstorageaccount.blob.core.windows.net`van de hoofdservice opgeven voor een specifiek opslagaccount.
+   In dit voor beeld wordt de eigenschap `https://storage.azure.com/` **doel groep** ingesteld op zodat de toegangs tokens die worden gebruikt voor verificatie geldig zijn voor alle opslag accounts. U kunt echter ook de URL `https://fabrikamstorageaccount.blob.core.windows.net`van de basis service voor een specifiek opslag account opgeven.
 
-   ![Eigenschap Doelgroep instellen op doelbron-id](./media/create-managed-service-identity/specify-audience-url-target-resource.png)
+   ![Eigenschap doel groep instellen op doel Resource-ID](./media/create-managed-service-identity/specify-audience-url-target-resource.png)
 
-   Zie de volgende onderwerpen voor meer informatie over het toestaan van toegang met Azure AD voor Azure Storage:
+   Zie de volgende onderwerpen voor meer informatie over het verlenen van toegang met Azure AD voor Azure Storage:
 
-   * [Toegang tot Azure-blobs en wachtrijen autoriseren met Azure Active Directory](../storage/common/storage-auth-aad.md)
+   * [Toegang tot Azure-blobs en-wacht rijen toestaan met behulp van Azure Active Directory](../storage/common/storage-auth-aad.md)
    * [Toegang tot Azure Storage autoriseren met Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
 
-1. Ga door met het bouwen van de logische app zoals u dat wilt.
+1. Ga door met het bouwen van de logische app op de gewenste manier.
 
 <a name="remove-identity"></a>
 
 ## <a name="disable-managed-identity"></a>Beheerde identiteit uitschakelen
 
-Als u wilt stoppen met het gebruik van een beheerde identiteit voor uw logische app, hebt u de volgende opties:
+Als u een beheerde identiteit voor uw logische app niet meer wilt gebruiken, hebt u de volgende opties:
 
-* [Azure-portal](#azure-portal-disable)
+* [Azure Portal](#azure-portal-disable)
 * [Azure Resource Manager-sjablonen](#template-disable)
 * Azure PowerShell
   * [Roltoewijzing verwijderen](../role-based-access-control/role-assignments-powershell.md)
-  * [Identiteit met gebruiker verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
-* Azure-CLI
+  * [Door de gebruiker toegewezen identiteit verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
+* Azure CLI
   * [Roltoewijzing verwijderen](../role-based-access-control/role-assignments-cli.md)
-  * [Identiteit met gebruiker verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
+  * [Door de gebruiker toegewezen identiteit verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 * Azure REST API
   * [Roltoewijzing verwijderen](../role-based-access-control/role-assignments-rest.md)
-  * [Identiteit met gebruiker verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-rest.md)
+  * [Door de gebruiker toegewezen identiteit verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-rest.md)
 
-Als u uw logische app verwijdert, verwijdert Azure automatisch de beheerde identiteit uit Azure AD.
+Als u uw logische app verwijdert, wordt de beheerde identiteit door Azure automatisch uit Azure AD verwijderd.
 
 <a name="azure-portal-disable"></a>
 
-### <a name="disable-managed-identity-in-the-azure-portal"></a>Beheerde identiteit uitschakelen in de Azure-portal
+### <a name="disable-managed-identity-in-the-azure-portal"></a>Beheerde identiteit in de Azure Portal uitschakelen
 
-Verwijder in de Azure-portal eerst de toegang van de identiteit tot [uw doelbron.](#disable-identity-target-resource) Schakel vervolgens de door het systeem toegewezen identiteit uit of verwijder de door de gebruiker toegewezen identiteit uit [uw logische app.](#disable-identity-logic-app)
+In de Azure Portal verwijdert u eerst de toegang van de identiteit tot [uw doel resource](#disable-identity-target-resource). Schakel vervolgens de door het systeem toegewezen identiteit uit of verwijder de door de gebruiker toegewezen identiteit uit [uw logische app](#disable-identity-logic-app).
 
 <a name="disable-identity-target-resource"></a>
 
-#### <a name="remove-identity-access-from-resources"></a>Identiteitstoegang uit bronnen verwijderen
+#### <a name="remove-identity-access-from-resources"></a>Identiteits toegang verwijderen uit resources
 
-1. Ga in de [Azure-portal](https://portal.azure.com)naar de doelbron azure waar u de toegang voor de beheerde identiteit wilt verwijderen.
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de doel-Azure-resource waar u de toegang tot de beheerde identiteit wilt verwijderen.
 
-1. Selecteer **access control (IAM)** in het menu van de doelbron. Selecteer onder de werkbalk **Roltoewijzingen**.
+1. Selecteer **toegangs beheer (IAM)** in het menu van de doel resource. Selecteer op de werk balk **roltoewijzingen**.
 
-1. Selecteer in de lijst met rollen de beheerde identiteiten die u wilt verwijderen. Selecteer op de werkbalk **Verwijderen**.
+1. Selecteer in de lijst rollen de beheerde identiteiten die u wilt verwijderen. Selecteer **verwijderen**op de werk balk.
 
    > [!TIP]
-   > Als de optie **Verwijderen** is uitgeschakeld, hebt u waarschijnlijk geen machtigingen. Zie [Beheerdersrolmachtigingen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de machtigingen waarmee u rollen voor resources beheren.
+   > Als de optie **verwijderen** is uitgeschakeld, hebt u waarschijnlijk niet de juiste machtigingen. Zie [Administrator role permissions](../active-directory/users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) in azure Active Directory voor meer informatie over de machtigingen waarmee u rollen voor resources kunt beheren.
 
-De beheerde identiteit wordt nu verwijderd en heeft geen toegang meer tot de doelbron.
+De beheerde identiteit wordt nu verwijderd en heeft geen toegang meer tot de doel resource.
 
 <a name="disable-identity-logic-app"></a>
 
-#### <a name="disable-managed-identity-on-logic-app"></a>Beheerde identiteit uitschakelen in de logische app
+#### <a name="disable-managed-identity-on-logic-app"></a>Beheerde identiteit voor logische app uitschakelen
 
-1. Open uw logische app in de [Azure-portal](https://portal.azure.com)in Logic App Designer.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer in het menu van de logische app onder **Instellingen**de optie **Identiteit**en volg de stappen voor uw identiteit:
+1. Selecteer onder **instellingen**in het menu van de logische app de optie **identiteit**en volg de stappen voor uw identiteit:
 
-   * Selecteer **Systeem toegewezen** > **op** > **opslaan**. Wanneer Azure u vraagt om te bevestigen, selecteert u **Ja**.
+   * Selecteer **systeem toegewezen** > **bij** > **Opslaan**. Wanneer u wordt gevraagd om te bevestigen, selecteert u **Ja**.
 
      ![De door het systeem toegewezen identiteit uitschakelen](./media/create-managed-service-identity/disable-system-assigned-identity.png)
 
-   * Selecteer **Toegewezen gebruiker** en de beheerde identiteit en selecteer **Verwijderen**. Wanneer Azure u vraagt om te bevestigen, selecteert u **Ja**.
+   * Selecteer de **gebruiker die is toegewezen** en de beheerde identiteit, en selecteer vervolgens **verwijderen**. Wanneer u wordt gevraagd om te bevestigen, selecteert u **Ja**.
 
      ![De door de gebruiker toegewezen identiteit verwijderen](./media/create-managed-service-identity/remove-user-assigned-identity.png)
 
@@ -506,9 +506,9 @@ De beheerde identiteit is nu uitgeschakeld in uw logische app.
 
 <a name="template-disable"></a>
 
-### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>Beheerde identiteit uitschakelen in azure resource manager-sjabloon
+### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>Beheerde identiteit in Azure Resource Manager sjabloon uitschakelen
 
-Als u de beheerde identiteit van de logische app hebt `identity` gemaakt `type` met behulp `None`van een Azure Resource Manager-sjabloon, stelt u de onderliggende eigenschap van het object in op . Voor de door het systeem beheerde identiteit wordt met deze actie ook de hoofd-id uit Azure AD verwijderd.
+Als u de beheerde identiteit van de logische app hebt gemaakt met behulp van een Azure Resource Manager `identity` sjabloon, `type` stelt u de `None`onderliggende eigenschap van het object in op. Voor de door het systeem beheerde identiteit verwijdert deze actie ook de principal-ID van Azure AD.
 
 ```json
 "identity": {

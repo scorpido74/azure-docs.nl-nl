@@ -1,53 +1,53 @@
 ---
-title: LeegDir-volume monteren in containergroep
-description: Meer informatie over het monteren van een leegDir-volume om gegevens te delen tussen de containers in een containergroep in Azure Container Instances
+title: EmptyDir volume koppelen aan container groep
+description: Meer informatie over het koppelen van een emptyDir-volume voor het delen van gegevens tussen de containers in een container groep in Azure Container Instances
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77117749"
 ---
-# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Een leegDir-volume monteren in Azure Container Instances
+# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Een emptyDir-volume koppelen in Azure Container Instances
 
-Meer informatie over het monteren van een *leeg Dir-volume* om gegevens te delen tussen de containers in een containergroep in Azure Container Instances. Gebruik *lege Dir-volumes* als tijdelijke caches voor uw containerized workloads.
+Meer informatie over het koppelen van een *emptyDir* -volume voor het delen van gegevens tussen de containers in een container groep in azure container instances. Gebruik *emptyDir* -volumes als tijdelijke caches voor uw door de container geplaatste workloads.
 
 > [!NOTE]
-> Het monteren van een *leegDir-volume* is momenteel beperkt tot Linux-containers. Terwijl we werken aan het brengen van alle functies naar Windows-containers, u actuele platformverschillen vinden in het [overzicht.](container-instances-overview.md#linux-and-windows-containers)
+> Het koppelen van een *emptyDir* -volume is momenteel beperkt tot Linux-containers. Terwijl we aan de slag gaan met het toevoegen van alle functies aan Windows-containers, kunt u de huidige platform verschillen vinden in het [overzicht](container-instances-overview.md#linux-and-windows-containers).
 
-## <a name="emptydir-volume"></a>leegDir-volume
+## <a name="emptydir-volume"></a>emptyDir volume
 
-Het *emptyDir-volume* biedt een beschrijfbare map die toegankelijk is voor elke container in een containergroep. Containers in de groep kunnen dezelfde bestanden in het volume lezen en schrijven en deze kunnen worden gemonteerd met dezelfde of verschillende paden in elke container.
+Het *emptyDir* -volume biedt een Beschrijf bare Directory die toegankelijk is voor elke container in een container groep. Containers in de groep kunnen dezelfde bestanden in het volume lezen en schrijven en kunnen worden gekoppeld met dezelfde of verschillende paden in elke container.
 
-Enkele voorbeelden worden gebruikt voor een *leegDir-volume:*
+Een voor beeld van een *emptyDir* -volume:
 
-* Krasruimte
-* Controlecontrole tijdens langlopende taken
-* Gegevens opslaan die door een zijspancontainer zijn opgehaald en door een toepassingscontainer worden aangeboden
+* Scratch ruimte
+* Controle punten uitvoeren tijdens langlopende taken
+* Gegevens opslaan die zijn opgehaald door een zijspan wagen en worden bediend door een toepassings container
 
-Gegevens in een *leegDir-volume* blijven bestaan door containercrashes. Containers die opnieuw worden gestart, zijn echter niet gegarandeerd dat de gegevens in een *leegDir-volume* blijven bestaan. Als u een containergroep stopt, blijft het *lege Dir-volume* niet bestaan.
+Gegevens in een *emptyDir* -volume blijven behouden via container crashes. Containers die opnieuw worden opgestart, zijn echter niet gegarandeerd de gegevens in een *emptyDir* -volume op te slaan. Als u een container groep stopt, wordt het *emptyDir* -volume niet persistent gemaakt.
 
-De maximale grootte van een Linux *leegDir* volume is 50 GB.
+De maximale grootte van een Linux *emptyDir* -volume is 50 GB.
 
-## <a name="mount-an-emptydir-volume"></a>Een leegDir-volume monteren
+## <a name="mount-an-emptydir-volume"></a>Een emptyDir-volume koppelen
 
-Als u een leeg Dir-volume wilt monteren in een containerinstantie, u implementeren met behulp van een [Azure Resource Manager-sjabloon,](/azure/templates/microsoft.containerinstance/containergroups)een [YAML-bestand](container-instances-reference-yaml.md)of andere programmatische methoden om een containergroep te implementeren.
+Als u een emptyDir-volume in een container exemplaar wilt koppelen, kunt u implementeren met behulp van een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups), een [yaml-bestand](container-instances-reference-yaml.md)of andere programmatische methoden voor het implementeren van een container groep.
 
-Vul eerst `volumes` de array in `properties` het gedeelte containergroep van het bestand in. Vul vervolgens voor elke container in de containergroep waarin u het *lege Dir-volume* wilt monteren, de `volumeMounts` array in het `properties` gedeelte van de containerdefinitie.
+Vul eerst de `volumes` matrix in het gedeelte container Group `properties` van het bestand in. Voor elke container in de container groep waarin u het *emptyDir* -volume wilt koppelen, vult u de `volumeMounts` matrix in het `properties` gedeelte van de container definitie.
 
-Met de volgende sjabloon Resourcemanager wordt bijvoorbeeld een containergroep gemaakt die bestaat uit twee containers, die elk het *lege Dir-volume* monteert:
+De volgende Resource Manager-sjabloon maakt bijvoorbeeld een container groep die bestaat uit twee containers, die elk het *emptyDir* -volume koppelen:
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Zie [Een multicontainergroep implementeren met behulp van een resourcemanagersjabloon](container-instances-multi-container-group.md) en Een [multicontainergroep implementeren met behulp van een YAML-bestand](container-instances-multi-container-yaml.md)als u voorbeelden van implementatie van containergroepen wilt zien.
+Zie [een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](container-instances-multi-container-group.md) en [een groep met meerdere containers implementeren met behulp van een yaml-bestand](container-instances-multi-container-yaml.md)om voor beelden te bekijken van implementatie van container groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het monteren van andere volumetypen in Azure Container Instances:
+Meer informatie over het koppelen van andere volume typen in Azure Container Instances:
 
 * [Een Azure-bestandsshare koppelen in Azure Container Instances](container-instances-volume-azure-files.md)
-* [Een gitRepo-volume monteren in Azure Container Instances](container-instances-volume-gitrepo.md)
-* [Een geheim volume in Azure Container Instances monteren](container-instances-volume-secret.md)
+* [Een gitRepo-volume koppelen in Azure Container Instances](container-instances-volume-gitrepo.md)
+* [Een geheim volume koppelen in Azure Container Instances](container-instances-volume-secret.md)

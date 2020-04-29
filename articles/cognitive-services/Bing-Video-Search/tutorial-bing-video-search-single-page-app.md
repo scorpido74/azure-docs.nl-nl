@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Een Bing Video Search-app met één pagina bouwen'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie wordt uitgelegd hoe u de Bing Video Search API gebruiken in een webtoepassing met één pagina.
+description: In deze zelf studie wordt uitgelegd hoe u de Bing Video's zoeken-API gebruikt in een webtoepassing met één pagina.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988257"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Zelfstudie: Video's zoeken-app met één pagina
@@ -138,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-De `SafeSearch` parameter in een werkelijke API-aanroep kan bijvoorbeeld de standaard-aanroep zijn `strict`of `moderate` `moderate` zijn.
+De `SafeSearch` para meter in een API- `strict` `moderate` `moderate` aanroep kan bijvoorbeeld de standaard waarde zijn.
 
 ## <a name="performing-the-request"></a>De aanvraag uitvoeren
-Nadat de query, de tekenreeks met opties en de API-sleutel zijn opgegeven, gebruikt de functie `BingWebSearch` een `XMLHttpRequest`-object om een aanvraag in te dienen bij het Bing Search-eindpunt. U het algemene eindpunt hieronder gebruiken of het [aangepaste subdomeineindpunt](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw bron.
+Nadat de query, de tekenreeks met opties en de API-sleutel zijn opgegeven, gebruikt de functie `BingWebSearch` een `XMLHttpRequest`-object om een aanvraag in te dienen bij het Bing Search-eindpunt. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -373,7 +373,7 @@ Met de renderer worden de volgende handelingen uitgevoerd:
 > * De HTML-`<a>`-tags worden gebouwd die zijn gekoppeld aan de afbeelding en aan de pagina die de afbeelding bevat.
 > * De beschrijving met informatie over de afbeelding en de bijbehorende site wordt samengesteld.
 
-De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. Bing retourneert een [miniatuur](../bing-web-search/resize-and-crop-thumbnails.md) van precies die grootte.
+De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. Er wordt een [miniatuur](../bing-web-search/resize-and-crop-thumbnails.md) van exact die grootte door Bing geretourneerd.
 
 ## <a name="persisting-client-id"></a>Permanente client-id
 Antwoorden van de Bing Search-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
@@ -389,7 +389,7 @@ Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-Clien
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een `Access-Control-Expose-Headers` dergelijke proxy heeft een header die antwoordkoppen mogelijk maakt en beschikbaar maakt voor JavaScript.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 

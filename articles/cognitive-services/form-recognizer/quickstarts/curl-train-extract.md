@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: een model trainen en formuliergegevens extraheren met behulp van cURL - Formulierherkenning'
+title: 'Quick Start: een model trainen en formulier gegevens extra heren met behulp van krul herkenning'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart gebruikt u de FORM Recognizer REST API met cURL om een model te trainen en gegevens uit formulieren te extraheren.
+description: In deze Quick Start gebruikt u de formulier Recognizer REST API met krul om een model te trainen en gegevens uit formulieren te extra heren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,62 +10,62 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77118401"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Snelstart: train een Form Recognizer-model en vernieuw formuliergegevens met behulp van de REST API met cURL
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Snelstartgids: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met krul
 
-In deze quickstart gebruikt u de Azure Form Recognizer REST API met cURL om formulieren te trainen en te scoren om sleutelwaardeparen en -tabellen te extraheren.
+In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul naar Train-en Score-formulieren om sleutel-waardeparen en tabellen te extra heren.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze snelle start te voltooien, moet u het:
-- [cURL](https://curl.haxx.se/windows/) geïnstalleerd.
-- Een set van ten minste zes vormen van hetzelfde type. Je gebruikt er vijf om het model te trainen, en dan test je het met het zesde formulier. Uw formulieren kunnen van verschillende bestandstypen zijn, maar moeten hetzelfde type document zijn. U een [voorbeeldgegevensset](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken voor deze quickstart. Upload de trainingsbestanden naar de hoofdmap van een blobopslagcontainer in een Azure Storage-account. U de testbestanden in een aparte map plaatsen.
+Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
+- [krul](https://curl.haxx.se/windows/) geïnstalleerd.
+- Een set van ten minste zes soorten van hetzelfde type. U gebruikt vijf van deze om het model te trainen en vervolgens test u het met het zesde formulier. Uw formulieren kunnen uit verschillende bestands typen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account. U kunt de test bestanden in een afzonderlijke map plaatsen.
 
-## <a name="create-a-form-recognizer-resource"></a>Een bron voor formulierherkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Een formulierherkenningsmodel trainen
+## <a name="train-a-form-recognizer-model"></a>Model van een formulier herkenning trainen
 
-Eerst hebt u een set trainingsgegevens nodig in een Azure Storage-blob. U moet minimaal vijf ingevulde formulieren (PDF-documenten en/of afbeeldingen) hebben van hetzelfde type/dezelfde structuur als uw belangrijkste invoergegevens. U ook één leeg formulier gebruiken met twee ingevulde formulieren. De bestandsnaam van het lege formulier moet het woord 'leeg' bevatten. Zie [Een trainingsgegevensset maken voor een aangepast model](../build-training-data-set.md) voor tips en opties voor het samenstellen van uw trainingsgegevens.
+Eerst hebt u een set trainings gegevens in een Azure Storage BLOB nodig. U moet mini maal vijf ingevulde formulieren (PDF-documenten en/of afbeeldingen) van hetzelfde type/dezelfde structuur als uw belangrijkste invoer gegevens hebben. U kunt ook één leeg formulier met twee ingevulde formulieren gebruiken. De bestands naam van het lege formulier moet het woord ' empty ' bevatten. Zie [een trainings gegevensset voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevens.
 
 > [!NOTE]
-> U de gelabelde gegevensfunctie gebruiken om vooraf een aantal of al uw trainingsgegevens handmatig te labelen. Dit is een complexer proces, maar resulteert in een beter opgeleid model. Bekijk het gedeelte [Trainen met labels](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
+> U kunt de functie met gelabelde gegevens hand matig een aantal of al uw trainings gegevens vooraf labelen. Dit is een complexere proces, maar resulteert in een beter getraind model. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie over deze functie.
 
-Als u een formulierherkenningsmodel wilt trainen met de documenten in uw Azure-blobcontainer, roept u de API **[voor aangepast model trainen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende cURL-opdracht uit te voeren. Voer de opdracht aan voordat u de opdracht uitvoert:
+Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de API voor het **[trainende aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende krul opdracht uit te voeren. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
-1. Vervang `<subscription key>` de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
-1. Vervang `<SAS URL>` de SAS-URL (Shared Access Signature) van de Azure Blob-opslagcontainer. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert **u Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de **sectie URL.** Het zou de `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`vorm moeten hebben: .
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
+1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang `<SAS URL>` door de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`:.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Je ontvangt een `201 (Success)` antwoord met een **koptekst Locatie.** De waarde van deze header is de ID van het nieuwe model dat wordt getraind. 
+U ontvangt een `201 (Success)` antwoord met een **locatie** -header. De waarde van deze header is de ID van het nieuwe model dat wordt getraind. 
 
-## <a name="get-training-results"></a>Krijg trainingsresultaten
+## <a name="get-training-results"></a>Trainings resultaten ophalen
 
-Nadat u de treinbewerking hebt gestart, gebruikt u een nieuwe bewerking, **[Aangepast model krijgen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** om de trainingsstatus te controleren. Geef de model-id door aan deze API-aanroep om de trainingsstatus te controleren:
+Nadat u de trein bewerking hebt gestart, gebruikt u een nieuwe bewerking, **[haalt u aangepast model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** op om de trainings status te controleren. Geef de model-ID door aan deze API-aanroep om de trainings status te controleren:
 
-1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen door de abonnementssleutel Voor formulierherkenning.
-1. Vervangen `<subscription key>` door uw abonnementssleutel
-1. Vervangen `<model ID>` door de model-id die u in de vorige stap hebt ontvangen
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning.
+1. Vervangen `<subscription key>` door de sleutel van uw abonnement
+1. Vervang `<model ID>` door de model-id die u in de vorige stap hebt ontvangen
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Je ontvangt een `200 (Success)` reactie met een JSON-body in de volgende indeling. Let `"status"` op het veld. Dit heeft de `"ready"` waarde zodra de training is voltooid. Als het model nog niet klaar is met trainen, moet u de service opnieuw opvragen door de opdracht opnieuw uit te voeren. We raden een interval van één seconde of meer tussen gesprekken aan.
+U ontvangt een `200 (Success)` antwoord met een JSON-hoofd tekst in de volgende indeling. Let op `"status"` het veld. Dit heeft de waarde `"ready"` wanneer de training is voltooid. Als het model niet is getraind, moet u de service opnieuw uitvoeren door de opdracht opnieuw uit te voeren. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
 
-Het `"modelId"` veld bevat de id van het model dat u traint. Je hebt dit nodig voor de volgende stap.
+Het `"modelId"` veld bevat de id van het model dat u wilt trainen. Dit hebt u nodig voor de volgende stap.
 
 ```json
 { 
@@ -133,36 +133,36 @@ Het `"modelId"` veld bevat de id van het model dat u traint. Je hebt dit nodig v
 }
 ```
 
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Formulieren voor sleutelwaardeparen en tabellen analyseren
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Formulieren analyseren voor sleutel-waardeparen en tabellen
 
-Vervolgens gebruikt u uw nieuw getrainde model om een document te analyseren en er sleutelwaardeparen en tabellen uit te halen. Roep de **[API voor formulier analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** aan door de volgende cURL-opdracht uit te voeren. Voer de opdracht aan voordat u de opdracht uitvoert:
+Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een document en het extra heren van sleutel-waardeparen en tabellen. Roep de **[analyse formulier](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** -API aan door de volgende krul opdracht uit te voeren. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen uit de abonnementssleutel Voor formulierherkenning. U het vinden op het tabblad Overzicht van **formulierherkenningsbronnen.**
-1. Vervang `<model ID>` de model-id die u in de vorige sectie hebt ontvangen.
-1. Vervang `<SAS URL>` een SAS-URL naar uw bestand in Azure-opslag. Volg de stappen in de sectie Training, maar in plaats van een SAS-URL voor de hele blobcontainer te krijgen, krijgt u er een voor het specifieke bestand dat u wilt analyseren.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<model ID>` door de model-id die u in de vorige sectie hebt ontvangen.
+1. Vervang `<SAS URL>` door een SAS-URL naar uw bestand in azure Storage. Volg de stappen in de sectie training, maar in plaats van een SAS-URL voor de hele BLOB-container op te halen, haalt u er een op voor het specifieke bestand dat u wilt analyseren.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-U ontvangt een `202 (Success)` antwoord met een koptekst **Operatie-Locatie.** De waarde van deze koptekst bevat een resultaten-id die u gebruikt om de resultaten van de bewerking Analyseren bij te houden. Sla deze resultaten-id op voor de volgende stap.
+U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie-** header. De waarde van deze header bevat een resultaten-ID die u gebruikt om de resultaten van de analyse bewerking bij te houden. Sla deze resultaat-ID op voor de volgende stap.
 
 ## <a name="get-the-analyze-results"></a>De resultaten analyseren
 
-Gebruik de volgende API om de resultaten van de bewerking Analyseren op te vragen.
+Gebruik de volgende API om de resultaten van de analyse bewerking op te vragen.
 
-1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen uit de abonnementssleutel Voor formulierherkenning. U het vinden op het tabblad Overzicht van **formulierherkenningsbronnen.**
-1. Vervang `<result ID>` de ID die u in de vorige sectie hebt ontvangen.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang `<result ID>` door de id die u in de vorige sectie hebt ontvangen.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-Je ontvangt een `200 (Success)` reactie met een JSON-body in de volgende indeling. De output is ingekort voor eenvoud. Let `"status"` op het veld in de buurt van de bodem. Dit heeft de `"succeeded"` waarde wanneer de bewerking Analyseren is voltooid. Als de bewerking Analyseren nog niet is voltooid, moet u de service opnieuw opvragen door de opdracht opnieuw uit te voeren. We raden een interval van één seconde of meer tussen gesprekken aan.
+U ontvangt een `200 (Success)` antwoord met een JSON-hoofd tekst in de volgende indeling. De uitvoer is kort voor eenvoud. U ziet `"status"` het veld onder aan de onderkant. Dit heeft de waarde `"succeeded"` wanneer de analyse bewerking is voltooid. Als de analyse bewerking nog niet is voltooid, moet u de service opnieuw uitvoeren door de opdracht opnieuw uit te voeren. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
 
-De belangrijkste sleutel/waardepaarkoppelingen en `"pageResults"` -tabellen bevinden zich in het knooppunt. Als u ook de extractie met platte tekst hebt `"readResults"` opgegeven via de URL-parameter *includeTextDetails,* wordt in het knooppunt de inhoud en posities van alle tekst in het document weergegeven.
+De belangrijkste koppelingen en tabellen voor sleutel/waarde-paars `"pageResults"` bevinden zich in het knoop punt. Als u ook tekst extractie hebt opgegeven via de para meter *includeTextDetails* URL, worden in `"readResults"` het knoop punt de inhoud en posities van alle tekst in het document weer gegeven.
 
 ```json
 {
@@ -419,7 +419,7 @@ De belangrijkste sleutel/waardepaarkoppelingen en `"pageResults"` -tabellen bevi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u de API voor formulierherkenningsrest met cURL gebruikt om een model te trainen en uit te voeren in een voorbeeldscenario. Zie vervolgens de referentiedocumentatie om de API voor formulierherkenning verder te verkennen.
+In deze Quick Start hebt u de formulier Recognizer REST API met krul gebruikt om een model te trainen en uit te voeren in een voorbeeld scenario. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
 
 > [!div class="nextstepaction"]
-> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

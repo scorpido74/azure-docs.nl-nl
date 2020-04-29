@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77112294"
 ---
-In de opdrachtuitvoer `identity` wordt een identiteit `SystemAssigned` van het type in de taak weergegeven. Het `principalId` is de belangrijkste id van de taakidentiteit:
+In de uitvoer van de opdracht `identity` ziet u in de sectie een `SystemAssigned` identiteit van het type is ingesteld in de taak. De `principalId` is de principal-id van de taak identiteit:
 
 ```console
 [...]
@@ -28,7 +28,7 @@ In de opdrachtuitvoer `identity` wordt een identiteit `SystemAssigned` van het t
   "location": "eastus",
 [...]
 ``` 
-Gebruik de opdracht [az acr-taakshow][az-acr-task-show] om de principalId in een variabele op te slaan, om in latere opdrachten te gebruiken. Vervang de naam van uw taak en uw register in de volgende opdracht:
+Gebruik de opdracht [AZ ACR Task show][az-acr-task-show] om de principalId in een variabele op te slaan, die u in latere opdrachten kunt gebruiken. Vervang de naam van uw taak en het REGI ster door de volgende opdracht:
 
 ```azurecli
 principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)

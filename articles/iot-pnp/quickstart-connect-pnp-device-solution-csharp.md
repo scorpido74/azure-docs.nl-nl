@@ -1,6 +1,6 @@
 ---
-title: Interactie met een IoT Plug and Play Preview-apparaat dat is aangesloten op uw Azure IoT-oplossing | Microsoft Documenten
-description: Gebruik C# (.NET) om verbinding te maken met en te communiceren met een IoT Plug and Play Preview-apparaat dat is verbonden met uw Azure IoT-oplossing.
+title: Interactie met een IoT Plug en Play preview-apparaat dat is verbonden met uw Azure IoT-oplossing | Microsoft Docs
+description: Gebruik C# (.NET) om verbinding te maken met een IoT Plug en Play preview-apparaat dat is verbonden met uw Azure IoT-oplossing.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/30/2019
@@ -9,23 +9,23 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963968"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Snelstart: interactie met een IoT Plug and Play Preview-apparaat dat is aangesloten op uw oplossing (C#)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Snelstartgids: interactie met een IoT Plug en Play preview-apparaat dat is verbonden met uw oplossing (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT Plug and Play Preview vereenvoudigt IoT doordat u communiceren met de mogelijkheden van een apparaat zonder kennis te hebben van de onderliggende apparaatimplementatie. Deze quickstart laat zien hoe u C# (met .NET) gebruiken om verbinding te maken met een IoT Plug and Play-apparaat dat is verbonden met uw oplossing en bestuurt.
+IoT Plug en Play preview vereenvoudigt IoT door u te laten communiceren met de mogelijkheden van een apparaat zonder kennis van de onderliggende implementatie van het apparaat. In deze Quick start ziet u hoe u C# (met .NET) kunt gebruiken om verbinding te maken met een IoT-Plug en Play apparaat te beheren dat is gekoppeld aan uw oplossing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze quickstart te voltooien, moet u .NET Core (2.x.x of 3.x.x) op uw ontwikkelingsmachine installeren. U de gewenste versie van de .NET Core SDK downloaden voor meerdere platforms van [Download .NET Core](https://dotnet.microsoft.com/download/dotnet-core/).
+Om deze Quick Start te volt ooien, moet u .NET core (2. x. x of 3. x. x) installeren op uw ontwikkel computer. U kunt de gewenste versie van de .NET Core SDK voor meerdere platformen downloaden van [.net core](https://dotnet.microsoft.com/download/dotnet-core/).
 
-U de versie van .NET die op uw ontwikkelingsmachine staat verifiëren door de volgende opdracht in een lokaal terminalvenster uit te voeren: 
+U kunt de versie van .NET controleren die zich op uw ontwikkel computer bevindt door de volgende opdracht uit te voeren in een lokaal Terminal venster: 
 
 ```cmd/sh
 dotnet --version
@@ -35,45 +35,45 @@ dotnet --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Voer de volgende opdracht uit om de _IoT-hubverbindingstekenreeks_ voor uw hub te krijgen (opmerking voor later gebruik):
+Voer de volgende opdracht uit om de _IOT hub-Connection String_ voor uw hub op te halen (Let op later gebruik):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
 
-## <a name="run-the-sample-device"></a>Het voorbeeldapparaat uitvoeren
+## <a name="run-the-sample-device"></a>Het voorbeeld apparaat uitvoeren
 
-In deze quickstart gebruikt u een voorbeeldomgevingssensor die in C# is geschreven als het IoT Plug and Play-apparaat. In de volgende instructies ziet u hoe u het apparaat installeert en uitvoert:
+In deze Quick Start gebruikt u een voor beeld van een omgevings sensor die in C# is geschreven als IoT Plug en Play-apparaat. De volgende instructies laten zien hoe u het apparaat installeert en uitvoert:
 
-1. Open een terminalvenster in de map van uw keuze. Voer de volgende opdracht uit om de [GitHub-opslagplaats Azure IoT-samples voor C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) op deze locatie te klonen:
+1. Open een Terminal venster in de gewenste map. Voer de volgende opdracht uit om de [Azure IOT-voor beelden voor C# (.net)](https://github.com/Azure-Samples/azure-iot-samples-csharp) github-opslag plaats naar deze locatie te klonen:
 
     ```cmd/sh
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
     ```
 
-1. Dit terminalvenster wordt nu gebruikt als _terminal voor uw apparaat._ Ga naar de map van uw gekloonde opslagplaats en navigeer naar de map **/azure-iot-samples-csharp/digitaltwin/Samples/device/EnvironmentalSensorSample.**
+1. Dit Terminal venster wordt nu gebruikt als uw _apparaat_ -Terminal. Ga naar de map van uw gekloonde opslag plaats en navigeer naar de map **/Azure-IOT-samples-csharp/digitaltwin/samples/Device/EnvironmentalSensorSample** .
 
-1. De _tekenreeks voor apparaatverbinding_configureren:
+1. De connection string van het _apparaat_configureren:
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-1. Bouw de benodigde pakketten en voer het voorbeeld uit met de volgende opdracht:
+1. Bouw de benodigde pakketten en voer het voor beeld uit met de volgende opdracht:
 
     ```cmd\sh
         dotnet run
     ```
 
-1. U ziet berichten waarin staat dat het apparaat met succes is geregistreerd en wacht op updates vanuit de cloud. Dit geeft aan dat het apparaat nu klaar is om opdrachten en eigenschapsupdates te ontvangen en is begonnen met het verzenden van telemetriegegevens naar de hub. Sluit deze terminal niet, u hebt deze later nodig om te bevestigen dat de servicemonsters ook werkten.
+1. Er worden berichten weer gegeven met de melding dat het apparaat is geregistreerd en wacht op updates vanuit de Cloud. Dit geeft aan dat het apparaat nu gereed is om opdrachten en updates van eigenschappen te ontvangen en dat er telemetriegegevens worden verzonden naar de hub. Sluit deze terminal niet. u hebt deze later nodig om te bevestigen dat de service voorbeelden ook hebben gewerkt.
 
-## <a name="run-the-sample-solution"></a>De voorbeeldoplossing uitvoeren
+## <a name="run-the-sample-solution"></a>De voorbeeld oplossing uitvoeren
 
-In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te communiceren met het voorbeeldapparaat.
+In deze Quick Start gebruikt u een IoT-voorbeeld oplossing in C# om te communiceren met het voor beeld-apparaat.
 
-1. Open een ander terminalvenster (dit wordt uw _serviceterminal)._ Ga naar de map van uw gekloonde opslagplaats en navigeer naar de **map /azure-iot-samples-csharp/digitaltwin/Samples/service.**
+1. Open een ander Terminal venster (dit is uw _service_ Terminal). Ga naar de map van uw gekloonde opslag plaats en navigeer naar de map **/Azure-IOT-samples-csharp/digitaltwin/samples/service** .
 
-1. Configureer de Reeks voor de Verbinding van de _IoT-hub_ en _de apparaat-id_ zodat de service verbinding kan maken met beide:
+1. Configureer de _IOT hub-Connection String_ en de _apparaat-id_ zodat de service verbinding kan maken met beide:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
@@ -82,20 +82,20 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
 
 ### <a name="read-a-property"></a>Een eigenschap lezen
 
-1. Wanneer u het _apparaat_ in de terminal hebt aangesloten, zag u het volgende bericht met de onlinestatus:
+1. Wanneer u het _apparaat_ in de Terminal hebt aangesloten, hebt u het volgende bericht met de online status gezien:
 
     ```cmd/sh
     Waiting to receive updates from cloud...
     ```
 
-1. Ga naar de _serviceterminal_ en gebruik de volgende opdrachten om het voorbeeld uit te voeren voor informatie over het leesapparaat:
+1. Ga naar de _service_ Terminal en gebruik de volgende opdrachten om het voor beeld voor het lezen van apparaatgegevens uit te voeren:
 
     ```cmd/sh
     cd GetDigitalTwin
     dotnet run
     ```
 
-1. Schuif in de uitvoer van `environmentalSensor` de _serviceterminal_ naar de component. U ziet `state` dat de eigenschap, die wordt gebruikt om aan te geven of het apparaat online is, is gemeld als _waar:_
+1. Schuif in de Terminal uitvoer van de _service_ naar `environmentalSensor` het onderdeel. U ziet dat de `state` eigenschap, die wordt gebruikt om aan te geven of het apparaat online is, is gerapporteerd als _waar_:
 
     ```JSON
     "environmentalSensor": {
@@ -110,23 +110,23 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
     }
     ```
 
-### <a name="update-a-writable-property"></a>Een beschrijfbare eigenschap bijwerken
+### <a name="update-a-writable-property"></a>Een Beschrijf bare eigenschap bijwerken
 
-1. Ga naar de _serviceterminal_ en stel de volgende variabelen in om te bepalen welke eigenschap moet worden bijgewerkt:
+1. Ga naar de _service_ Terminal en stel de volgende variabelen in om op te geven welke eigenschap moet worden bijgewerkt:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set PROPERTY_NAME=brightness
     set PROPERTY_VALUE=42
     ```
 
-1. Gebruik de volgende opdrachten om het voorbeeld uit te voeren voor het bijwerken van de eigenschap:
+1. Gebruik de volgende opdrachten om het voor beeld voor het bijwerken van de eigenschap uit te voeren:
 
     ```cmd/sh
     cd ..\UpdateProperty
     dotnet run
     ```
 
-1. De uitvoer van de _serviceterminal_ toont de bijgewerkte apparaatinformatie. Schuif naar `environmentalSensor` de component om de nieuwe helderheidswaarde van 42 te zien.
+1. De _service_ Terminal uitvoer toont de bijgewerkte apparaatgegevens. Ga naar het `environmentalSensor` onderdeel om de nieuwe helderheids waarde van 42 weer te geven.
 
     ```json
         "environmentalSensor": {
@@ -146,7 +146,7 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
     }
     ```
 
-1. Ga naar de terminal van uw _apparaat,_ u ziet dat het apparaat de update heeft ontvangen:
+1. Ga naar uw _apparaat_ -Terminal, u ziet dat het apparaat de update heeft ontvangen:
 
     ```cmd/sh
     Received updates for property 'brightness'
@@ -156,13 +156,13 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
     Sent pending status for brightness property.
     Sent completed status for brightness property.
     ```
-2. Ga terug naar uw _serviceterminal_ en voer de onderstaande opdrachten uit om de apparaatgegevens opnieuw te krijgen, om te bevestigen dat de accommodatie is bijgewerkt.
+2. Ga terug naar de _service_ Terminal en voer de onderstaande opdrachten uit om de apparaatgegevens opnieuw op te halen om te bevestigen dat de eigenschap is bijgewerkt.
     
     ```cmd/sh
     cd ..\GetDigitalTwin
     dotnet run
     ```
-3. In de uitvoer van `environmentalSensor` de _serviceterminal,_ onder het onderdeel, ziet u dat de bijgewerkte helderheidswaarde is gerapporteerd. Opmerking: het kan even duren voordat het apparaat de update heeft voltooid. U deze stap herhalen totdat het apparaat de eigenschapupdate daadwerkelijk heeft verwerkt.
+3. In de _service_ Terminal output, onder het `environmentalSensor` onderdeel, ziet u dat de bijgewerkte helderheids waarde is gerapporteerd. Opmerking: het kan enige tijd duren voordat het apparaat de update heeft voltooid. U kunt deze stap herhalen totdat het apparaat daad werkelijk de update van de eigenschap heeft verwerkt.
     
     ```json
     "environmentalSensor": {
@@ -192,20 +192,20 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
 
 ### <a name="invoke-a-command"></a>Een opdracht aanroepen
 
-1. Ga naar de _serviceterminal_ en stel de volgende variabelen in om te bepalen welke opdracht u moet aanroepen:
+1. Ga naar de _service_ Terminal en stel de volgende variabelen in om op te geven welke opdracht moet worden aangeroepen:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set COMMAND_NAME=blink
     ```
 
-1. Gebruik de volgende opdrachten om het voorbeeld uit te voeren voor het aanroepen van de opdracht:
+1. Gebruik de volgende opdrachten om het voor beeld voor het aanroepen van de opdracht uit te voeren:
 
     ```cmd/sh
     cd ..\InvokeCommand
     dotnet run
     ```
 
-1. De uitvoer in de _serviceterminal_ moet de volgende bevestiging weergeven:
+1. De uitvoer in de _service_ terminal moet de volgende bevestiging weer geven:
 
     ```cmd/sh
     Invoking blink on device <YourDeviceID> with interface instance name environmentalSensor
@@ -215,7 +215,7 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
     Enter any key to finish
     ```
 
-1. Ga naar de terminal van het _apparaat,_ u ziet dat de opdracht is erkend:
+1. Naar de _apparaat_ -Terminal gaat, ziet u dat de opdracht is bevestigd:
 
     ```cmd/sh
     Command - blink was invoked from the service
@@ -227,7 +227,7 @@ In deze quickstart gebruikt u een voorbeeld van IoT-oplossing in C# om te commun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart heb je geleerd hoe je een IoT Plug and Play-apparaat aansluiten op een IoT-oplossing. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug and Play-apparaten:
+In deze Quick Start hebt u geleerd hoe u een IoT-Plug en Play apparaat verbindt met een IoT-oplossing. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten:
 
 > [!div class="nextstepaction"]
-> [How-to: Verbinding maken met en communiceren met een apparaat](howto-develop-solution.md)
+> [Instructies: verbinding maken met en interactie met een apparaat](howto-develop-solution.md)

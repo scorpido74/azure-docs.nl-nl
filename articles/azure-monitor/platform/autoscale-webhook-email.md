@@ -1,35 +1,35 @@
 ---
-title: Automatisch schalen gebruiken om e-mail- en webhook-waarschuwingsmeldingen te verzenden
-description: Meer informatie over het gebruik van acties voor automatisch schalen om web-URL's aan te roepen of e-mailmeldingen te verzenden in Azure Monitor.
+title: Automatisch schalen gebruiken om e-mail berichten en webhook-waarschuwings meldingen te verzenden
+description: Meer informatie over het gebruik van acties voor automatisch schalen voor het aanroepen van web-Url's of het verzenden van e-mail meldingen in Azure Monitor.
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77120688"
 ---
-# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatische schaalacties gebruiken om e-mail- en webhook-waarschuwingsmeldingen te verzenden in Azure Monitor
-In dit artikel ziet u hoe u triggers zo instelt dat u specifieke web-URL's aanroepen of e-mails verzenden op basis van automatisch schalen in Azure.  
+# <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Acties voor automatisch schalen gebruiken voor het verzenden van e-mail berichten en waarschuwingen voor webhooks in Azure Monitor
+Dit artikel laat u zien hoe u triggers kunt instellen, zodat u specifieke Web-Url's aanroept of e-mail berichten verzendt op basis van acties voor automatisch schalen in Azure.  
 
 ## <a name="webhooks"></a>Webhooks
-Met webhooks u de Azure-waarschuwingsmeldingen doorsturen naar andere systemen voor nabewerking of aangepaste meldingen. Bijvoorbeeld het routeren van de waarschuwing naar services die een binnenkomend webverzoek kunnen verwerken om sms'jes te verzenden, bugs te registreren, een team op de hoogte te stellen via chat- of berichtenservices, enz. De webhook URI moet een geldig HTTP- of HTTPS-eindpunt zijn.
+Met webhooks kunt u de meldingen van Azure-waarschuwingen naar andere systemen routeren voor nabewerkingen of aangepaste meldingen. U kunt de waarschuwing bijvoorbeeld routeren naar services die een inkomende webaanvraag voor het verzenden van SMS-berichten, het registreren van fouten, het melden van een team via chat-of bericht Services, enzovoort. De webhook-URI moet een geldig HTTP-of HTTPS-eind punt zijn.
 
-## <a name="email"></a>Email
-E-mail kan worden verzonden naar een geldig e-mailadres. Beheerders en medebeheerders van het abonnement waar de regel wordt uitgevoerd, worden ook op de hoogte gebracht.
+## <a name="email"></a>E-mail
+E-mail kan worden verzonden naar een geldig e-mail adres. Beheerders en mede beheerders van het abonnement waarbij de regel wordt uitgevoerd, worden ook op de hoogte gesteld.
 
-## <a name="cloud-services-and-app-services"></a>Cloudservices en App-services
-U zich aanmelden via de Azure-portal voor Cloud Services en Server Farms (App Services).
+## <a name="cloud-services-and-app-services"></a>Cloud Services en App Services
+U kunt zich aanmelden vanaf de Azure Portal voor Cloud Services en server farms (App Services).
 
-* Kies de **schaal op** metrische statistiek.
+* Kies de **schaal op basis van** metrische gegevens.
 
-![schaal op schaal door](./media/autoscale-webhook-email/insights-autoscale-notify.png)
+![schalen op](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines
-Voor nieuwere virtuele machines die zijn gemaakt met Resource Manager (Virtual Machine scale sets), u dit configureren met REST API, Resource Manager templates, PowerShell en CLI. Een portal-interface is nog niet beschikbaar.
-Wanneer u de SJABLOON REST API of Resource Manager gebruikt, neemt u het element meldingen op in uw [instellingen voor automatisch schalen](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) met de volgende opties.
+Als u nieuwere Virtual Machines hebt gemaakt met Resource Manager (virtuele-machine schaal sets), kunt u dit configureren met behulp van REST API, Resource Manager-sjablonen, Power shell en CLI. Er is nog geen portal-interface beschikbaar.
+Wanneer u de REST API-of Resource Manager-sjabloon gebruikt, neemt u het element meldingen op in uw [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) met de volgende opties.
 
 ```
 "notifications": [
@@ -56,21 +56,21 @@ Wanneer u de SJABLOON REST API of Resource Manager gebruikt, neemt u het element
     ]
 ```
 
-| Veld | Verplicht? | Beschrijving |
+| Veld | Ingevuld? | Beschrijving |
 | --- | --- | --- |
-| Bewerking |ja |waarde moet "Schaal" zijn |
-| sendToSubscriptionAdministrator |ja |waarde moet "waar" of "onwaar" zijn |
-| sendToSubscriptionCoAdministrators sendToSubscriptionCoAdministrators |ja |waarde moet "waar" of "onwaar" zijn |
-| aangepasteE-mails |ja |waarde kan null [] of string array van e-mails zijn |
-| webhooks |ja |waarde kan null of geldig Uri |
-| serviceUri |ja |een geldige https Uri |
-| properties |ja |waarde moet {} leeg zijn of sleutelwaardeparen bevatten |
+| schijf |ja |de waarde moet ' Scale ' zijn |
+| sendToSubscriptionAdministrator |ja |de waarde moet ' waar ' of ' onwaar ' zijn |
+| sendToSubscriptionCoAdministrators |ja |de waarde moet ' waar ' of ' onwaar ' zijn |
+| customEmails |ja |de waarde kan null [] of een teken reeks matrix met e-mail berichten zijn |
+| webhooks |ja |waarde kan null of een geldige URI zijn |
+| serviceUri |ja |een geldige https-URI |
+| properties |ja |waarde moet leeg {} zijn of sleutel-waardeparen kunnen bevatten |
 
 ## <a name="authentication-in-webhooks"></a>Verificatie in webhooks
-De webhook kan verifiëren met behulp van token-gebaseerde verificatie, waarbij u de webhook URI opslaat met een token-id als queryparameter. Https bijvoorbeeld:\//mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+De webhook kan worden geverifieerd met verificatie op basis van tokens, waarbij u de webhook-URI opslaat met een token-ID als een query parameter. Bijvoorbeeld https:\//mysamplealert/webcallback? tokenid = sometokenid&someparameter = eenwaarde
 
-## <a name="autoscale-notification-webhook-payload-schema"></a>Autoscale melding webhook payload schema
-Wanneer de melding voor automatisch schalen wordt gegenereerd, worden de volgende metagegevens opgenomen in de webhook-payload:
+## <a name="autoscale-notification-webhook-payload-schema"></a>Automatische schaal melding webhook Payload schema
+Wanneer de melding over automatisch schalen wordt gegenereerd, worden de volgende meta gegevens opgenomen in de nettolading van de webhook:
 
 ```
 {
@@ -99,22 +99,22 @@ Wanneer de melding voor automatisch schalen wordt gegenereerd, worden de volgend
 ```
 
 
-| Veld | Verplicht? | Beschrijving |
+| Veld | Ingevuld? | Beschrijving |
 | --- | --- | --- |
 | status |ja |De status die aangeeft dat er een actie voor automatisch schalen is gegenereerd |
-| Bewerking |ja |Voor een toename van het aantal gevallen is het "Scale Out" en voor een afname in gevallen zal het "Schaal in" zijn |
-| context |ja |De context van de actie automatisch schalen |
-| tijdstempel |ja |Tijdstempel wanneer de actie automatisch schalen werd geactiveerd |
-| id |Ja |ResourceManager-id van de instelling voor automatisch schalen |
+| schijf |ja |Voor een verhoging van de instanties wordt het ' uitschalen ' en voor een afname van de instanties de waarde ' schaalt in ' |
+| context |ja |De actie context voor automatisch schalen |
+| tijdstempel |ja |Tijds tempel wanneer de actie voor automatisch schalen is geactiveerd |
+| id |Ja |Resource Manager-ID van de instelling voor automatisch schalen |
 | name |Ja |De naam van de instelling voor automatisch schalen |
-| Details |Ja |Uitleg over de actie die de autoscale-service heeft ondernomen en de wijziging in het aantal instance's |
-| subscriptionId |Ja |Abonnements-id van de doelbron die wordt geschaald |
-| resourceGroupName |Ja |Resourcegroepnaam van de doelbron die wordt geschaald |
-| resourceName |Ja |Naam van de doelbron die wordt geschaald |
-| resourceType |Ja |De drie ondersteunde waarden: "microsoft.classiccompute/domainnames/slots/roles" - Cloud Service rollen, "microsoft.compute/virtualmachinescalesets" - Virtual Machine Scale Sets, en "Microsoft.Web/serverfarms" - Web App |
-| resourceId |Ja |ResourceManager-id van de doelbron die wordt geschaald |
-| portalLink portalLink |Ja |Azure-portalkoppeling naar de overzichtspagina van de doelbron |
-| oldCapacity |Ja |Het huidige (oude) aantal instance's wanneer Autoscale een schaalactie heeft ondernomen |
-| nieuweCapaciteit |Ja |Het aantal nieuwe instantie en dat Autoscale de resource heeft geschaald naar |
-| properties |Nee |Optioneel. Set van <Toets, Waarde> paren (bijvoorbeeld Dictionary <String, String>). Het veld Eigenschappen is optioneel. In een aangepaste gebruikersinterface of op logische app gebaseerde workflow u toetsen en waarden invoeren die met behulp van de payload kunnen worden doorgegeven. Een alternatieve manier om aangepaste eigenschappen terug te geven aan de uitgaande webhook call is het gebruik van de webhook URI zelf (als query parameters) |
+| nadere |Ja |Uitleg van de actie die de service voor automatisch schalen heeft ondernomen en de wijziging van het aantal instanties |
+| subscriptionId |Ja |Abonnements-ID van de doel resource die wordt geschaald |
+| resourceGroupName |Ja |De naam van de resource groep van de doel resource die wordt geschaald |
+| resourceName |Ja |De naam van de doel resource die wordt geschaald |
+| resourceType |Ja |De drie ondersteunde waarden: ' micro soft. classiccompute/domainnames/sleuven/roles '-Cloud service roles ' micro soft. Compute/virtualmachinescalesets '-Virtual Machine Scale Sets en ' micro soft. web/server farms '-web-app |
+| resourceId |Ja |Resource Manager-ID van de doel resource die wordt geschaald |
+| portalLink |Ja |Azure Portal koppeling naar de overzichts pagina van de doel resource |
+| oldCapacity |Ja |Het huidige (oude) exemplaar aantal wanneer automatisch schalen een schaal actie heeft uitgevoerd |
+| newCapacity |Ja |Het nieuwe aantal exemplaren dat automatisch wordt geschaald naar de resource |
+| properties |Nee |Optioneel. Set <sleutel, waarde> paren (bijvoorbeeld woorden lijst <teken reeks, teken reeks>). Het veld eigenschappen is optioneel. In een aangepaste werk stroom op basis van een gebruikers interface of logische app kunt u sleutels en waarden invoeren die kunnen worden door gegeven met behulp van de payload. Een alternatieve manier om aangepaste eigenschappen door te geven aan de uitgaande webhook-aanroep is het gebruik van de webhook-URI zelf (als query parameters) |
 

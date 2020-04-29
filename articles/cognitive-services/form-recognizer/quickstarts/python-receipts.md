@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: ontvangstgegevens extraheren met Python - Formulierherkenning'
+title: 'Snelstartgids: ontvangst gegevens ophalen met behulp van python-formulier herkenner'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart gebruikt u de Form Recognizer REST API met Python om gegevens uit afbeeldingen van amerikaanse verkoopbewijzen te extraheren.
+description: In deze Quick Start gebruikt u de formulier Recognizer REST API met python voor het extra heren van gegevens uit installatie kopieën van Amerikaanse verkoop ontvangsten.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,35 +10,35 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77118771"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Snelstart: ontvangstgegevens extraheren met de FORM Recognizer REST API met Python
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met python
 
-In deze quickstart gebruikt u de Azure Form Recognizer REST API met Python om relevante informatie in verkoopbevestigingen in de VS te extraheren en te identificeren.
+In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python voor het uitpakken en identificeren van relevante informatie in de Amerikaanse verkoop kwitanties.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze snelle start te voltooien, moet u het:
-- [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
-- Een URL voor een afbeelding van een ontvangstbewijs. U een [voorbeeldafbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) gebruiken voor deze quickstart.
+Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
+- [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
+- Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) gebruiken voor deze Quick Start.
 
-## <a name="create-a-form-recognizer-resource"></a>Een bron voor formulierherkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="analyze-a-receipt"></a>Een ontvangstbewijs analyseren
+## <a name="analyze-a-receipt"></a>Een kwitantie analyseren
 
-Als u wilt beginnen met het analyseren van een ontvangstbewijs, belt u de **[API Voor ontvangst van bestanden](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** analyseren met behulp van het Python-script hieronder. Breng de volgende wijzigingen aan voordat u het script uitvoert:
+Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **[analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** van de ontvangst aan met het python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<Endpoint>` het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
-1. Vervang `<your receipt URL>` door het URL-adres van een ontvangstafbeelding.
-1. Vervang `<subscription key>` de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
+1. Vervang `<your receipt URL>` door het URL-adres van een kwitantie-installatie kopie.
+1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 
     ```python
     ########### Python Form Recognizer Async Layout #############
@@ -78,19 +78,19 @@ Als u wilt beginnen met het analyseren van een ontvangstbewijs, belt u de **[API
         quit()
     ```
 
-1. Sla de code op in een bestand met een .py-extensie. Bijvoorbeeld *form-recognizer-receipts.py*.
+1. Sla de code op in een bestand met de extensie. py. Bijvoorbeeld *Form-Recognizer-Receipts.py*.
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-receipts.py`.
 
-U ontvangt een `202 (Success)` antwoord met een koptekst **Operatie-locatie,** die het script op de console afdrukt. Deze koptekst bevat een bewerkings-id die u gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In het volgende voorbeeldwaarde `operations/` is de tekenreeks na de bewerkings-id.
+U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header, die door het script wordt afgedrukt naar de-console. Deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In de volgende voorbeeld waarde is de teken reeks `operations/` na de bewerkings-id.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>De ontvangstresultaten opmaken
+## <a name="get-the-receipt-results"></a>De ontvangst resultaten ophalen
 
-Nadat u de **API Voor ontvangstanalyse** hebt aangeroepen, roept u de API Voor het analyseren van **[ontvangstresultaten](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** aan om de status van de bewerking en de geëxtraheerde gegevens te verkrijgen. Voeg de volgende code toe aan de onderkant van uw Python-script. Hiermee wordt de waarde van de bewerkings-id gebruikt in een nieuwe API-aanroep. Dit script roept de API op regelmatige tijdstippen aan totdat de resultaten beschikbaar zijn. We raden een interval van een seconde of meer aan.
+Nadat u de API voor het analyseren van de **kwitantie** hebt aangeroepen, roept u de API **[analyse van ontvangst resultaten ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg de volgende code toe onder aan het python-script. Hierbij wordt gebruikgemaakt van de bewerkings-ID-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regel matige tussen pozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van één seconde of meer aan.
 
 ```python
 n_tries = 10
@@ -120,17 +120,17 @@ while n_try < n_tries:
 ```
 
 1. Sla het script op.
-1. Gebruik opnieuw `python` de opdracht om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-receipts.py`.
+1. Gebruik opnieuw de `python` opdracht om het voor beeld uit te voeren. Bijvoorbeeld `python form-recognizer-receipts.py`.
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-Het script drukt reacties op de console af totdat de bewerking **Ontvangst analyseren** is voltooid. Vervolgens worden de uitgepakte tekstgegevens afgedrukt in JSON-indeling. Het `"recognitionResults"` veld bevat elke regel tekst die uit de `"understandingResults"` ontvangst is gehaald en het veld bevat sleutel-/waarde-informatie voor de meest relevante delen van het ontvangstbewijs.
+Met het script worden reacties op de console afgedrukt totdat de bewerking voor het analyseren van de **ontvangst** is voltooid. Vervolgens worden de geëxtraheerde tekst gegevens in JSON-indeling afgedrukt. Het `"recognitionResults"` veld bevat elke regel tekst die is geëxtraheerd uit de ontvangst en het `"understandingResults"` veld bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst.
 
-Zie de volgende ontvangstafbeelding en de bijbehorende JSON-uitvoer. De output is ingekort voor leesbaarheid.
+Bekijk de volgende ontvangstbewijs afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is inge kort voor de Lees baarheid.
 
-![Een ontvangstbewijs van Contoso store](../media/contoso-allinone.jpg)
+![Een ontvangst bewijs van Contoso Store](../media/contoso-allinone.jpg)
 
-Het `"recognitionResults"` knooppunt bevat alle herkende tekst. Tekst wordt georganiseerd op pagina, vervolgens op regel, vervolgens op individuele woorden. Het `"understandingResults"` knooppunt bevat de ontvangstspecifieke waarden die het model heeft ontdekt. Hier vindt u nuttige sleutel-/waardeparen zoals de belasting, het totaal, het handelsadres, enzovoort.
+Het `"recognitionResults"` knoop punt bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het `"understandingResults"` knoop punt bevat de ontvangstbewijs waarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfs adres, enzovoort.
 
 ```json
 { 
@@ -459,7 +459,7 @@ Het `"recognitionResults"` knooppunt bevat alle herkende tekst. Tekst wordt geor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u de FORM Recognizer REST API met Python gebruikt om de inhoud van een verkoopbon te extraheren. Zie vervolgens de referentiedocumentatie om de API voor formulierherkenning verder te verkennen.
+In deze Quick Start hebt u de formulier Recognizer REST API met python gebruikt om de inhoud van een verkoop ontvangst te extra heren. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
 
 > [!div class="nextstepaction"]
-> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
+> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
