@@ -1,6 +1,6 @@
 ---
-title: NVIDIA GPU Driver Extension - Azure Linux VM's
-description: Microsoft Azure-extensie voor het installeren van NVIDIA GPU-stuurprogramma's op Gegevens-VM's uit de N-serie met Linux.
+title: Uitbrei ding van NVIDIA GPU-stuur programma-Azure Linux-Vm's
+description: Microsoft Azure-extensie voor het installeren van NVIDIA GPU-Stuur Programma's op virtuele machines met een N-serie en Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
@@ -14,41 +14,41 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415794"
 ---
-# <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU Driver Extension voor Linux
+# <a name="nvidia-gpu-driver-extension-for-linux"></a>Uitbrei ding van NVIDIA GPU-stuur programma voor Linux
 
 ## <a name="overview"></a>Overzicht
 
-Deze extensie installeert NVIDIA GPU drivers op Linux N-serie VM's. Afhankelijk van de VM-familie installeert de extensie CUDA- of GRID-stuurprogramma's. Wanneer u NVIDIA-stuurprogramma's installeert met behulp van deze extensie, accepteert en stemt u in met de voorwaarden van de [NVIDIA-licentieovereenkomst voor eindgebruikers.](https://go.microsoft.com/fwlink/?linkid=874330) Tijdens het installatieproces kan de VM opnieuw worden opgestart om de stuurprogramma-installatie te voltooien.
+Met deze uitbrei ding worden NVIDIA GPU-Stuur Programma's geïnstalleerd op Vm's uit de Linux N-serie. Afhankelijk van de VM-familie installeert de uitbrei ding CUDA of GRID-Stuur Programma's. Wanneer u NVIDIA-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert u de voor waarden van de [gebruiksrecht overeenkomst](https://go.microsoft.com/fwlink/?linkid=874330)van de NVIDIA en gaat u ermee akkoord. Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
 
-Instructies voor handmatige installatie van de stuurprogramma's en de huidige ondersteunde versies zijn [hier](
+Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](
 https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)beschikbaar.
-Er is ook een extensie beschikbaar voor het installeren van NVIDIA [GPU-stuurprogramma's op Vm's uit de Windows N-serie.](hpccompute-gpu-windows.md)
+Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te installeren op Vm's uit de [Windows N-serie](hpccompute-gpu-windows.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Deze extensie ondersteunt de volgende OS-distro's, afhankelijk van stuurprogrammaondersteuning voor specifieke OS-versie.
+Deze extensie ondersteunt de volgende OS distributies, afhankelijk van de ondersteuning van Stuur Programma's voor een specifieke versie van het besturings systeem.
 
 | Distributie | Versie |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
-| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
+| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
+| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De Microsoft Azure Extension for NVIDIA GPU Drivers vereist dat de doel-VM is verbonden met het internet en toegang heeft.
+De uitbrei ding van de Microsoft Azure voor NVIDIA GPU-Stuur Programma's vereist dat de doel-VM is verbonden met internet en toegang heeft.
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie.
+In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ```json
 {
@@ -72,22 +72,22 @@ De volgende JSON toont het schema voor de extensie.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Naam | Waarde / Voorbeeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| uitgever | Microsoft.HpcCompute | tekenreeks |
+| uitgever | Micro soft. HpcCompute | tekenreeks |
 | type | NvidiaGpuDriverLinux | tekenreeks |
-| typeHandlerVersie | 1.2 | int |
+| typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Instellingen
 
-Alle instellingen zijn optioneel. Het standaardgedrag is om de kernel niet bij te werken als deze niet vereist is voor de installatie van stuurprogramma's, het nieuwste ondersteunde stuurprogramma en de CUDA-toolkit (indien van toepassing) te installeren.
+Alle instellingen zijn optioneel. Standaard wordt de kernel niet bijgewerkt als deze niet is vereist voor de installatie van het stuur programma, installeert u het meest recente ondersteunde stuur programma en de CUDA Toolkit (indien van toepassing).
 
 | Naam | Beschrijving | Standaardwaarde | Geldige waarden | Gegevenstype |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor stuurprogramma-installatie | false | de waarde True, false | booleaans |
-| stuurprogrammaVersie | NV: GRID driver versie<br> NC/ND: CUDA toolkit versie. De nieuwste drivers voor de gekozen CUDA worden automatisch geïnstalleerd. | meest recente | GRID: "430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | tekenreeks |
-| installCUDA | Installeer CUDA toolkit. Alleen relevant voor VM's uit de NC/ND-serie. | waar | de waarde True, false | booleaans |
+| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | false | de waarde True, false | booleaans |
+| driverVersion | NV: raster versie van het stuur programma<br> NC/ND: CUDA Toolkit-versie. De meest recente Stuur Programma's voor de gekozen CUDA worden automatisch geïnstalleerd. | meest recente | RASTER: ' 430,30 ', ' 418,70 ', ' 410,92 ', ' 410,71 ', ' 390,75 ', ' 390,57 ', ' 390,42 '<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | tekenreeks |
+| installCUDA | Installeer de CUDA Toolkit. Alleen relevant voor virtuele machines van de NC/ND-serie. | waar | de waarde True, false | booleaans |
 
 
 ## <a name="deployment"></a>Implementatie
@@ -95,11 +95,11 @@ Alle instellingen zijn optioneel. Het standaardgedrag is om de kernel niet bij t
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon 
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor een configuratie na implementatie vereist is.
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
 
-De JSON-configuratie voor een virtuele machine-extensie kan worden genest in de bron van de virtuele machine of op het hoofd- of hoogste niveau van een JSON-sjabloon voor Resource Manager worden geplaatst. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en -type. Zie [Naam en type voor onderliggende bronnen instellen voor](../../azure-resource-manager/resource-manager-template-child-resource.md)meer informatie . 
+De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-In het volgende voorbeeld wordt ervan uitgegaan dat de extensie is genest in de bron van de virtuele machine. Bij het nesten van de extensiebron wordt `"resources": []` de JSON in het object van de virtuele machine geplaatst.
+In het volgende voor beeld wordt ervan uitgegaan dat de extensie is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []` object van de virtuele machine geplaatst.
 
 ```json
 {
@@ -138,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-In het volgende voorbeeld worden de bovenstaande voorbeelden van Azure Resource Manager en PowerShell weergegeven en worden aangepaste instellingen toegevoegd als voorbeeld voor niet-standaardstuurprogramma-installatie. Specifiek, het werkt de OS kernel en installeert een specifieke CUDA toolkit versie stuurprogramma.
+In het volgende voor beeld worden de bovenstaande Azure Resource Manager-en Power shell-voor beelden Spie gels en worden ook aangepaste instellingen toegevoegd als voor beeld voor een niet-standaard installatie van een stuur programma. Met name wordt de kernel van het besturings systeem bijgewerkt en wordt een specifiek stuur programma van de CUDA Toolkit geïnstalleerd.
 
 ```azurecli
 az vm extension set \
@@ -157,7 +157,7 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met Azure PowerShell en Azure CLI. Voer de volgende opdracht uit om de implementatiestatus van extensies voor een bepaalde vm te bekijken.
+Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal en met behulp van Azure PowerShell en Azure CLI. Voer de volgende opdracht uit om de implementatie status van uitbrei dingen voor een bepaalde virtuele machine weer te geven.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -167,30 +167,30 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-De uitvoer van extensieuitvoering wordt vastgelegd in het volgende bestand:
+Uitvoer voor uitvoering van extensie wordt vastgelegd in het volgende bestand:
 
 ```bash
 /var/log/azure/nvidia-vmext-status
 ```
 
-### <a name="exit-codes"></a>Uitgangscodes
+### <a name="exit-codes"></a>Afsluit codes
 
 | Afsluitcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 0 | Bewerking geslaagd |
-| 1 | Onjuist gebruik van extensie | Uitvoeringsuitvoerlogboek controleren |
-| 10 | Linux Integration Services voor Hyper-V en Azure niet beschikbaar of geïnstalleerd | Controleer de uitvoer van lspci |
-| 11 | NVIDIA GPU niet te vinden op deze VM-grootte | Een [ondersteunde VM-grootte en -besturingssysteem gebruiken](../linux/n-series-driver-setup.md) |
-| 12 | Afbeeldingsaanbieding niet ondersteund |
-| 13 | VM-grootte wordt niet ondersteund | Een N-serie VM gebruiken om te implementeren |
-| 14 | Bewerking mislukt | Uitvoeringsuitvoerlogboek controleren |
+| 0 | Bewerking is voltooid |
+| 1 | Onjuist gebruik van uitbrei ding | Uitvoer logboek van uitvoering controleren |
+| 10 | Linux-integratie Services voor Hyper-V en Azure zijn niet beschikbaar of geïnstalleerd | Controleer de uitvoer van lspci |
+| 11 | NVIDIA GPU niet gevonden op deze VM-grootte | Een [ondersteunde VM-grootte en besturings systeem](../linux/n-series-driver-setup.md) gebruiken |
+| 12 | Aanbieding met installatie kopieën wordt niet ondersteund |
+| 13 | VM-grootte wordt niet ondersteund | Een N-serie-VM gebruiken om te implementeren |
+| 14 | De bewerking is mislukt | Uitvoer logboek van uitvoering controleren |
 
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/community/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/community/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Virtuele machine-extensies en -functies voor Linux voor](features-linux.md)meer informatie over extensies.
+Zie [virtuele machines en functies voor Linux](features-linux.md)voor meer informatie over uitbrei dingen.
 
-Zie [GPU-geoptimaliseerde virtuele machineformaten](../linux/sizes-gpu.md)voor meer informatie over VM's uit de N-serie.
+Zie [grootten van virtuele machines](../linux/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.

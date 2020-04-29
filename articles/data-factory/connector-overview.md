@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Data Factory-connector
-description: Leer de ondersteunde connectors in Data Factory.
+description: Meer informatie over de ondersteunde connectors in Data Factory.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410419"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory ondersteunt de volgende gegevensopslag en -indelingen via activiteiten kopiëren, gegevensstromen, opzoeken, Metagegevens ophalen en verwijderen. Klik op elk gegevensarchief om de ondersteunde mogelijkheden en de bijbehorende configuraties in details te leren.
+Azure Data Factory ondersteunen de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
@@ -31,8 +31,8 @@ Azure Data Factory ondersteunt de volgende gegevensopslag en -indelingen via act
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Activiteit kopiëren](copy-activity-overview.md)
-- [Gegevensstroom toewijzen](concepts-data-flow-overview.md)
+- [Kopieer activiteit](copy-activity-overview.md)
+- [Toewijzingsgegevensstroom](concepts-data-flow-overview.md)
 - [Opzoekactiviteit](control-flow-lookup-activity.md)
 - [Activiteit ophalen van metagegevens](control-flow-get-metadata-activity.md)
 - [Activiteit verwijderen](delete-activity.md)

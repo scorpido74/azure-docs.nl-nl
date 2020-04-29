@@ -1,30 +1,30 @@
 ---
-title: Beheerde identiteitsondersteuning configureren in een bestaand cluster van Servicefabric
-description: Zo u ondersteuning voor beheerde identiteiten inschakelen in een bestaand Azure Service Fabric-cluster
+title: Ondersteuning voor beheerde identiteiten configureren in een bestaand Service Fabric cluster
+description: U kunt als volgt ondersteuning voor beheerde identiteiten inschakelen in een bestaand Azure Service Fabric-cluster
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
 ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415694"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Beheerde identiteitsondersteuning configureren in een bestaand cluster van Servicefabric
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Ondersteuning voor beheerde identiteiten configureren in een bestaand Service Fabric cluster
 
-Als u [Beheerde identiteiten wilt gebruiken voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) in uw Service Fabric-toepassingen, schakelt u eerst de Managed Identity Token *Service* in op het cluster. Deze service is verantwoordelijk voor de verificatie van Service Fabric-toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangstokens namens hen. Zodra de service is ingeschakeld, u deze zien in Service Fabric Explorer onder de sectie **Systeem** in het linkerdeelvenster, uitgevoerd onder de naam **fabric:/System/ManagedIdentityTokenService**.
+Als u [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) in uw service Fabric-toepassingen wilt gebruiken, moet u eerst de *service beheerde identiteits token* inschakelen op het cluster. Deze service is verantwoordelijk voor de verificatie van Service Fabric toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangs tokens in hun naam. Zodra de service is ingeschakeld, kunt u deze weer geven in Service Fabric Explorer onder het gedeelte **systeem** in het linkerdeel venster, dat wordt uitgevoerd onder de naam **Fabric:/System/ManagedIdentityTokenService**.
 
 > [!NOTE]
-> Service Fabric runtime versie 6.5.658.9590 of hoger is vereist om de **Managed Identity Token Service**in te schakelen.  
+> Service Fabric runtime versie 6.5.658.9590 of hoger is vereist om de **beheerde identiteits token service**in te scha kelen.  
 >
-> U de Service Fabric-versie van een cluster vinden vanuit de Azure-portal door de clusterbron te openen en de eigenschap **Service Fabric-versie** in de sectie **Essentials te** controleren.
+> U kunt de Service Fabric versie van een cluster uit de Azure Portal vinden door de cluster bron te openen en de eigenschap **service Fabric versie** te controleren in de sectie **Essentials** .
 >
-> Als het cluster de **handmatige** upgrademodus heeft, moet u het eerst upgraden naar 6.5.658.9590 of hoger.
+> Als het cluster zich in de **hand matige** upgrade modus bevindt, moet u het eerst upgraden naar 6.5.658.9590 of hoger.
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>*Managed Identity Token Service* inschakelen in een bestaand cluster
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>*Beheerde identiteits token service* inschakelen in een bestaand cluster
 
-Als u de Managed Identity Token Service in een bestaand cluster wilt inschakelen, moet u een clusterupgrade starten met twee wijzigingen: (1) De Managed Identity Token Service inschakelen en (2) het aanvragen van een herstart van elk knooppunt. Voeg eerst het volgende fragment toe met de sjabloon cluster Azure Resource Manager:
+Als u de service beheerde identiteits token in een bestaand cluster wilt inschakelen, moet u een cluster upgrade initiëren die twee wijzigingen specificeert: (1) het inschakelen van de beheerde identiteits token service, en (2) het aanvragen van het opnieuw opstarten van elk knoop punt. Voeg eerst het volgende fragment toe uw cluster Azure Resource Manager sjabloon:
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ Als u de Managed Identity Token Service in een bestaand cluster wilt inschakelen
 ]
 ```
 
-Als u wilt dat de wijzigingen van kracht worden, moet u ook het upgradebeleid wijzigen om een krachtige herstart van de runtime van de ServiceFabric op elk knooppunt op te geven naarmate de upgrade door het cluster vordert. Deze herstart zorgt ervoor dat de nieuw ingeschakelde systeemservice wordt gestart en op elk knooppunt wordt uitgevoerd. In het onderstaande fragment `forceRestart` is de essentiële instelling om opnieuw opstarten mogelijk te maken. Gebruik voor de overige parameters onderstaande waarden of gebruik bestaande aangepaste waarden die al zijn opgegeven voor de clusterbron. Aangepaste instellingen voor fabric-upgradebeleid ('upgradeBeschrijving') kunnen worden bekeken vanuit Azure Portal door de optie 'Fabric-upgrades' te selecteren op de bron van de ServiceFabric of resources.azure.com. Standaardopties voor het upgradebeleid ('upgradeBeschrijving') zijn niet zichtbaar vanaf powershell of resources.azure.com. Zie [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) voor meer informatie.  
+Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande fragment `forceRestart` is de essentiële instelling voor het inschakelen van opnieuw opstarten. Voor de overige para meters gebruikt u de hieronder beschreven waarden of gebruikt u bestaande aangepaste waarden die al zijn opgegeven voor de cluster bron. Aangepaste instellingen voor Fabric-upgrade beleid (' upgradeDescription ') kunnen worden weer gegeven vanuit Azure portal door de optie infrastructuur upgrades te selecteren op de Service Fabric resource of resources.azure.com. Standaard opties voor het upgrade beleid (' upgradeDescription ') zijn niet zichtbaar vanuit Power shell of resources.azure.com. Zie [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) voor meer informatie.  
 
 ```json
 "upgradeDescription": {
@@ -55,11 +55,11 @@ Als u wilt dat de wijzigingen van kracht worden, moet u ook het upgradebeleid wi
 ```
 
 > [!NOTE]
-> Vergeet na de succesvolle voltooiing van de upgrade `forceRestart` niet om de instelling terug te draaien, om de impact van latere upgrades te minimaliseren. 
+> Wanneer de upgrade is voltooid, vergeet dan niet om de `forceRestart` instelling terug te draaien om de impact van de volgende upgrades te minimaliseren. 
 
 ## <a name="errors-and-troubleshooting"></a>Fouten en probleemoplossing
 
-Als de implementatie mislukt met het volgende bericht, betekent dit dat het cluster niet wordt uitgevoerd op een voldoende servicefabric-versie:
+Als de implementatie mislukt met het volgende bericht, betekent dit dat het cluster niet wordt uitgevoerd op een hoge voldoende Service Fabric-versie:
 
 ```json
 {
@@ -69,7 +69,7 @@ Als de implementatie mislukt met het volgende bericht, betekent dit dat het clus
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een Azure Service Fabric-toepassing implementeren met een beheerde identiteit met systeemtoegewezen](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Gebruik maken van de beheerde identiteit van een Service Fabric-toepassing van servicecode](./how-to-managed-identity-service-fabric-app-code.md)
-* [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-bronnen](./how-to-grant-access-other-resources.md)
+* [Maak gebruik van de beheerde identiteit van een Service Fabric toepassing vanuit service code](./how-to-managed-identity-service-fabric-app-code.md)
+* [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-resources](./how-to-grant-access-other-resources.md)

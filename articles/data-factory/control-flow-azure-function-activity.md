@@ -1,6 +1,6 @@
 ---
-title: Azure-functieactiviteit in Azure Data Factory
-description: Meer informatie over het gebruik van de Azure-functieactiviteit om een Azure-functie uit te voeren in een pijplijn voor gegevensfabrieken
+title: Azure functions-activiteit in Azure Data Factory
+description: Meer informatie over het gebruik van de Azure function-activiteit voor het uitvoeren van een Azure-functie in een Data Factory-pijp lijn
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,63 +12,63 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415311"
 ---
-# <a name="azure-function-activity-in-azure-data-factory"></a>Azure-functieactiviteit in Azure Data Factory
+# <a name="azure-function-activity-in-azure-data-factory"></a>Azure functions-activiteit in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-Met de azure-functieactiviteit u [Azure-functies](../azure-functions/functions-overview.md) uitvoeren in een pijplijn voor gegevensfabrieken. Als u een Azure-functie wilt uitvoeren, moet u een gekoppelde serviceverbinding en een activiteit maken die de Azure-functie opgeeft die u van plan bent uit te voeren.
+Met de functie activiteit van Azure kunt u [Azure functions](../azure-functions/functions-overview.md) uitvoeren in een Data Factory-pijp lijn. Als u een Azure-functie wilt uitvoeren, moet u een gekoppelde service verbinding maken en een activiteit opgeven die de Azure-functie specificeert die u wilt uitvoeren.
 
-Bekijk de volgende video voor een acht minuten durende introductie en demonstratie van deze functie:
+Bekijk de volgende video voor een inleiding en demonstratie van acht minuten voor deze functie:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Run-Azure-Functions-from-Azure-Data-Factory-pipelines/player]
 
-## <a name="azure-function-linked-service"></a>Gekoppelde Azure-functieservice
+## <a name="azure-function-linked-service"></a>Gekoppelde Azure-functie Service
 
-Het retourtype van de Azure-functie `JObject`moet geldig zijn. (Houd er rekening mee *not* dat `JObject` [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) geen .) Elk retourtype `JObject` dat niet is mislukt en de inhoud van de reactievan de gebruikersfout *verhoogt, is geen geldig JObject*.
+Het retour type van de Azure-functie moet geldig `JObject`zijn. (Houd er wel bij [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) dat JArray *geen* is `JObject`.) Een ander retour type dan `JObject` mislukt en de inhoud van het fout bericht van de gebruiker wordt gegenereerd, *is geen geldige JObject*.
 
 | **Eigenschap** | **Beschrijving** | **Vereist** |
 | --- | --- | --- |
-| type   | De eigenschap type moet zijn ingesteld op: **AzureFunction** | ja |
-| url van functie-app | URL voor de Azure Function App. Opmaak `https://<accountname>.azurewebsites.net`is . Deze URL is de waarde onder **de SECTIE URL** bij het bekijken van uw functie-app in de Azure-portal  | ja |
-| functiesleutel | Toegangssleutel voor de Azure-functie. Klik op de sectie **Beheren** voor de betreffende functie en kopieer de **functiesleutel** of de **hostsleutel.** Lees hier meer: [Http-triggers en bindingen voor Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
+| type   | De eigenschap type moet worden ingesteld op: **AzureFunction** | ja |
+| URL van de functie-app | De URL voor de Azure-functie-app. Indeling is `https://<accountname>.azurewebsites.net`. Deze URL is de waarde onder **URL** -gedeelte bij het weer geven van uw functie-app in de Azure Portal  | ja |
+| functie toets | Toegangs sleutel voor de Azure-functie. Klik op de sectie **beheren** voor de betreffende functie en kopieer de **functie sleutel** of de host- **sleutel**. Meer informatie vindt u hier: [Azure functions HTTP-triggers en-bindingen](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 
-## <a name="azure-function-activity"></a>Azure-functieactiviteit
+## <a name="azure-function-activity"></a>Azure function-activiteit
 
 | **Eigenschap**  | **Beschrijving** | **Toegestane waarden** | **Vereist** |
 | --- | --- | --- | --- |
-| name  | Naam van de activiteit in de pijplijn  | Tekenreeks | ja |
-| type  | Type activiteit is 'AzureFunctionActivity' | Tekenreeks | ja |
-| gekoppelde service | De azure-functie gekoppelde service voor de bijbehorende Azure-functie-app  | Gekoppelde serviceverwijzing | ja |
-| functienaam  | Naam van de functie in de Azure Function App die deze activiteit aanroept | Tekenreeks | ja |
-| method  | REST API-methode voor de functieaanroep | Ondersteunde typen tekenreeksen: "GET", "POST", "PUT"   | ja |
-| koptekst  | Kopteksten die naar de aanvraag worden verzonden. Bijvoorbeeld om de taal en het type in te stellen op een verzoek: "headers": { "Accepteren-taal": "en-us", "Content-Type": "application/json" } | Tekenreeks (of expressie met resultaatType van tekenreeks) | Nee |
-| body  | lichaam dat samen met het verzoek naar de functie-api-methode wordt verzonden  | Tekenreeks (of expressie met resultaatType van tekenreeks) of object.   | Vereist voor PUT/POST-methoden |
+| name  | Naam van de activiteit in de pijp lijn  | Tekenreeks | ja |
+| type  | Type activiteit is ' AzureFunctionActivity ' | Tekenreeks | ja |
+| gekoppelde service | De gekoppelde Azure-functie service voor de bijbehorende Azure-functie-app  | Verwijzing naar gekoppelde service | ja |
+| functie naam  | De naam van de functie in de Azure-functie-app die deze activiteit aanroept | Tekenreeks | ja |
+| method  | REST API methode voor de functie aanroep | Ondersteunde typen teken reeksen: ' ophalen ', ' POST ', ' PUT '   | ja |
+| koptekst  | Kopteksten die naar de aanvraag worden verzonden. Als u bijvoorbeeld de taal en het type van een aanvraag wilt instellen: ' headers ': {' Accept-Language ': ' nl-nl ', ' content-type ': ' application/json '} | Teken reeks (of expressie met het resultType van de teken reeks) | Nee |
+| body  | hoofd tekst die samen met de aanvraag wordt verzonden naar de functie-API-methode  | Teken reeks (of expressie met het resultType van de teken reeks) of het object.   | Vereist voor PUT/POST-methoden |
 |   |   |   | |
 
-Zie het schema van de payload van het verzoek in de sectie [Payload-schema](control-flow-web-activity.md#request-payload-schema) aanvragen.
+Zie het schema van de sectie aanvraag lading in [schema](control-flow-web-activity.md#request-payload-schema) voor de lading van de aanvraag.
 
-## <a name="routing-and-queries"></a>Routering en query's
+## <a name="routing-and-queries"></a>Route ring en query's
 
-De Azure-functieactiviteit ondersteunt **routering**. Als uw Azure-functie bijvoorbeeld het `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`eindpunt `functionName` heeft, is `<functionName>/<value>`het te gebruiken in de Azure-functieactiviteit . U deze functie parameteriseren `functionName` om de gewenste functie te bieden bij runtime.
+De Azure functions-activiteit ondersteunt **route ring**. Als uw Azure-functie bijvoorbeeld het eind punt `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`heeft, is `functionName` `<functionName>/<value>`de functie voor het gebruik in de Azure functions-activiteit. U kunt deze functie para meters om de gewenste `functionName` runtime te leveren.
 
-De Azure-functieactiviteit ondersteunt ook **query's.** Een query moet worden opgenomen `functionName`als onderdeel van de . Als de functienaam zich `HttpTriggerCSharp` bijvoorbeeld bevindt en de `name=hello`query die u `functionName` wilt opnemen, `HttpTriggerCSharp?name=hello`kunt u de in de Azure-functieactiviteit als . Deze functie kan worden geparameteriseerd, zodat de waarde kan worden bepaald bij runtime.
+De Azure function-activiteit biedt ook ondersteuning voor **query's**. Een query moet worden opgenomen als onderdeel van de `functionName`. Als de naam van de functie bijvoorbeeld is `HttpTriggerCSharp` en de query die u wilt toevoegen `name=hello`, kunt u de `functionName` in de Azure function-activiteit als `HttpTriggerCSharp?name=hello`opgeven. Deze functie kan worden ingesteld op de para meter, zodat de waarde tijdens runtime kan worden bepaald.
 
 ## <a name="timeout-and-long-running-functions"></a>Time-out en langlopende functies
 
-Azure Functions is na 230 seconden `functionTimeout` een keer uit, ongeacht de instelling die u in de instellingen hebt geconfigureerd. Raadpleeg [dit artikel](../azure-functions/functions-versions.md#timeout) voor meer informatie. Als u dit gedrag wilt omzeilen, volgt u een synchronisatiepatroon of gebruikt u Duurzame functies. Het voordeel van duurzame functies is dat ze hun eigen state-tracking mechanisme bieden, zodat u niet hoeft te uw eigen implementeren.
+Azure Functions een time-out na 230 seconden, ongeacht `functionTimeout` de instelling die u in de instellingen hebt geconfigureerd. Raadpleeg [dit artikel](../azure-functions/functions-versions.md#timeout) voor meer informatie. U kunt dit probleem omzeilen door een async-patroon te volgen of door Durable Functions te gebruiken. Het voor deel van Durable Functions is dat ze hun eigen status tracerings mechanisme bieden, zodat u uw eigen functie niet hoeft te implementeren.
 
-Meer informatie over duurzame functies in [dit artikel](../azure-functions/durable/durable-functions-overview.md). U een Azure-functieactiviteit instellen om de duurzame functie aan te roepen, waarmee een antwoord wordt weergegeven met een andere URI, zoals [dit voorbeeld.](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery) Omdat `statusQueryGetUri` http-status 202 wordt geretourneerd terwijl de functie wordt uitgevoerd, u de status van de functie peilen met behulp van een webactiviteit. Stel eenvoudig een webactiviteit `url` in `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`met het veld ingesteld op . Wanneer de duurzame functie is voltooid, wordt de uitvoer van de functie de uitvoer van de webactiviteit.
+Meer informatie over Durable Functions in [dit artikel](../azure-functions/durable/durable-functions-overview.md). U kunt een Azure function-activiteit instellen om de duurzame functie aan te roepen, waardoor een antwoord wordt geretourneerd met een andere URI, zoals [dit voor beeld](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery). Omdat `statusQueryGetUri` de HTTP-status 202 wordt geretourneerd terwijl de functie wordt uitgevoerd, kunt u de status van de functie navragen met behulp van een webactiviteit. Stel een webactiviteit in waarbij het `url` veld is ingesteld op `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Wanneer de duurzame functie is voltooid, wordt de uitvoer van de functie de uitvoer van de webactiviteit.
 
 
 ## <a name="sample"></a>Voorbeeld
 
-Hier vindt u een voorbeeld van een gegevensfabriek die een Azure-functie gebruikt om de inhoud van een [teerbestand](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)te extraheren.
+U vindt een voor beeld van een Data Factory waarin een Azure-functie wordt gebruikt om de inhoud van een tar [-bestand te](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)extra heren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over activiteiten in Data Factory in [Pipelines en activiteiten in Azure Data Factory](concepts-pipelines-activities.md).
+Meer informatie over activiteiten in Data Factory in [pijp lijnen en activiteiten in azure Data Factory](concepts-pipelines-activities.md).

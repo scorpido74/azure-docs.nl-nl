@@ -1,6 +1,6 @@
 ---
-title: Problemen met zelfgehoste runtime voor integratie in Azure Data Factory oplossen
-description: Meer informatie over het oplossen van zelf gehoste problemen met de runtime van de integratie in Azure Data Factory.
+title: Problemen met een zelf-hostende Integration runtime in Azure Data Factory oplossen
+description: Meer informatie over het oplossen van problemen met zelf-hostende Integration runtime in Azure Data Factory.
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,56 +8,56 @@ ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
 ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414880"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf gehoste runtime voor integratie oplossen
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel worden veelvoorkomende probleemoplossingsmethoden voor zelfgehoste gebruiksruntime voor zelfgehoste integratie in Azure Data Factory onderzocht.
+In dit artikel worden algemene probleemoplossings methoden besproken voor zelf-hostende Integration runtime in Azure Data Factory.
 
 ## <a name="common-errors-and-resolutions"></a>Veelvoorkomende fouten en oplossingen
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Foutbericht: Runtime voor zelfgehoste integratie kan geen verbinding maken met cloudservice
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Fout bericht: zelf-hostende Integration runtime kan geen verbinding maken met de Cloud service
 
-![Zelf gehoste IR-verbindingsprobleem](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+![Probleem met de zelf-hosted IR-verbinding](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Oorzaak 
 
-De self-hosted integration runtime kan geen verbinding maken met de Data Factory-service (backend). Dit probleem wordt meestal veroorzaakt door netwerkinstellingen in de firewall.
+De zelf-hostende Integration runtime kan geen verbinding maken met de Data Factory Service (back-end). Dit probleem wordt meestal veroorzaakt door netwerk instellingen in de firewall.
 
 #### <a name="resolution"></a>Oplossing
 
-1. Controleer of de runtime-service voor integratie wordt uitgevoerd.
+1. Controleer of de service Integration runtime actief is.
     
-   ![Zelf gehoste IR-service- status](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Zelf-hostende status van de IR-service](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-1. Als de service wordt uitgevoerd, gaat u verder met stap 3.
+1. Als de service wordt uitgevoerd, gaat u naar stap 3.
 
-1. Als er geen proxy is geconfigureerd op de runtime voor zelfgehoste integratie (de standaardinstelling), voert u de volgende PowerShell-opdracht uit op de machine waar de zelfgehoste runtime voor integratie is geïnstalleerd:
+1. Als er geen proxy is geconfigureerd voor de zelf-hostende Integration runtime (dit is de standaard instelling), voert u de volgende Power shell-opdracht uit op de computer waarop de zelf-hostende Integration runtime is geïnstalleerd:
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
     ```
         
    > [!NOTE]     
-   > De URL van de service kan variëren, afhankelijk van de locatie van uw gegevensfabriek. U de url van de service vinden onder de runtimes voor integratie van **ADF-gebruikersinterface's** > **Connections** > **Integration runtimes** > Zelf gehoste**URL's**van**de IR-knooppuntenweergave** > **Nodes** > bewerken.
+   > De service-URL kan variëren, afhankelijk van de locatie van uw Data Factory. U kunt de service-URL vinden onder **ADF UI** > **Connections** > **Integration Runtimes** > **bewerken zelf-hostende IR** > -**knoop punten** > **bekijken service-url's**.
             
-    Het volgende is het verwachte antwoord:
+    Hier volgt de verwachte reactie:
             
-    ![PowerShell-opdrachtrespons](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    ![Power shell-opdracht antwoord](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
             
-1. Als u het verwachte antwoord niet ontvangt, gebruikt u een van de volgende methoden die past bij uw situatie:
+1. Als u het verwachte antwoord niet ontvangt, gebruikt u een van de volgende methoden, afhankelijk van uw situatie:
             
-    * Als u een bericht 'Externe naam kan niet worden opgelost' ontvangt, is er een DNS-probleem (Domain Name System). Neem contact op met uw netwerkteam om dit probleem op te lossen.
-    * Als u een bericht 'ssl/tls-cert wordt niet vertrouwd' ontvangt, controleert u of het certificaat https://wu2.frontend.clouddatahub.net/ op de machine wordt vertrouwd en installeert u het openbare certificaat met Behulp van Certificaatbeheer. Deze actie moet het probleem beperken.
-    * Ga naar **De** > **runtime** van Windows**Event viewer (logboeken)** > Applications and Services**Logs** > Integration en controleer op een storing die wordt veroorzaakt door DNS, een firewallregel of bedrijfsnetwerkinstellingen. (Als u een dergelijke fout vindt, sluit u de verbinding met geweld.) Omdat elk bedrijf aangepaste netwerkinstellingen heeft, neemt u contact op met uw netwerkteam om deze problemen op te lossen.
+    * Als er een bericht wordt weer gegeven dat de externe naam niet kan worden omgezet, is er een probleem met de Domain Name System (DNS). Neem contact op met uw netwerk team om dit probleem op te lossen.
+    * Als er een bericht wordt weer gegeven dat het SSL/TLS-certificaat niet wordt vertrouwd, controleert u https://wu2.frontend.clouddatahub.net/ of het certificaat voor wordt vertrouwd op de computer en installeert u vervolgens het open bare certificaat met behulp van certificaat beheer. Deze actie moet het probleem verminderen.
+    * Ga naar Logboeken**toepassingen en services** > van **Windows** > **(Logboeken)** > **Integration runtime** en controleer op fouten die worden veroorzaakt door DNS, een firewall regel of instellingen van het bedrijfs netwerk. (Als u een dergelijke fout vindt, sluit u de verbinding af.) Omdat elk bedrijf aangepaste netwerk instellingen heeft, neemt u contact op met uw netwerk team om deze problemen op te lossen.
 
-1. Als 'proxy' is geconfigureerd op de runtime voor zelfgehoste integratie, controleert u of uw proxyserver toegang heeft tot het eindpunt van de service. Zie [PowerShell, webaanvragen en proxy's voor](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)een voorbeeldopdracht.    
+1. Als "proxy" is geconfigureerd op de zelf-hostende Integration runtime, controleert u of de proxy server toegang heeft tot het service-eind punt. Zie [Power shell, webaanvragen en proxy's](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)voor een voor beeld van een opdracht.    
                 
     ```powershell
     $user = $env:username
@@ -76,31 +76,31 @@ De self-hosted integration runtime kan geen verbinding maken met de Data Factory
     $string
     ```
 
-Het volgende is het verwachte antwoord:
+Hier volgt de verwachte reactie:
             
-![Powershell-opdrachtrespons 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Power shell-opdracht antwoord 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
 > [!NOTE] 
-> Proxy overwegingen:
-> *    Controleer of de proxyserver op de lijst Veilige geadresseerden moet worden geplaatst. Zorg er dan voor dat [deze domeinen](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) in de lijst Veilige geadresseerden staan.
-> *    Controleer of het TLS/SSL-certificaat "wu2.frontend.clouddatahub.net/" wordt vertrouwd op de proxyserver.
-> *    Als u Active Directory-verificatie op de proxy gebruikt, wijzigt u het serviceaccount in het gebruikersaccount dat toegang heeft tot de proxy als 'Integratieruntimeservice'.
+> Overwegingen voor de proxy:
+> *    Controleer of de proxy server moet worden geplaatst in de lijst met veilige geadresseerden. Als dit het geval is, moet u ervoor zorgen dat [deze domeinen](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) zich in de lijst met veilige ontvangers bevinden.
+> *    Controleer of het TLS/SSL-certificaat "wu2.frontend.clouddatahub.net/" wordt vertrouwd op de proxy server.
+> *    Als u Active Directory verificatie gebruikt op de proxy, wijzigt u het service account in het gebruikers account dat toegang heeft tot de proxy als ' Integration Runtime-service.
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Foutbericht: Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" status
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Fout bericht: zelf-hostende Integration runtime-knoop punt/logische SHIR is in inactief/' wordt uitgevoerd (beperkt) '
 
 #### <a name="cause"></a>Oorzaak 
 
-Het zelf gehoste geïntegreerde runtime-knooppunt heeft mogelijk een **inactieve** status, zoals in de volgende schermafbeelding wordt weergegeven:
+Het zelf-hostende geïntegreerde runtime knooppunt heeft mogelijk een **inactieve** status, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Inactief zelfgehost IR-knooppunt](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![Niet-actief zelf-Hostend IR-knoop punt](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-Dit gedrag treedt op wanneer knooppunten niet met elkaar kunnen communiceren.
+Dit gedrag treedt op wanneer knoop punten niet met elkaar kunnen communiceren.
 
 #### <a name="resolution"></a>Oplossing
 
-1. Meld u aan bij de vm met knooppuntgehoste virtuele gegevens. Open Logboeken voor **logboeken en** > services**voor logboeken**integratie en filter alle foutlogboeken.
+1. Meld u aan bij de door het knoop punt gehoste VM. Open in de >  **Logboeken toepassingen en services****Integration runtime**logboeken en filter alle fouten Logboeken.
 
-1. Controleer of een foutlogboek de volgende fout bevat: 
+1. Controleer of een fouten logboek de volgende fout bevat: 
     
     ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
     System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 

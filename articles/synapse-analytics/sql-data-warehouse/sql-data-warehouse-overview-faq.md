@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics (voorheen SQL DW) veelgestelde vragen
-description: In dit artikel worden veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW) van klanten en ontwikkelaars weergegeven
+title: Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
+description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW) van klanten en ontwikkel aars
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,105 +11,105 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416075"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (voorheen SQL DW) Veelgestelde vragen
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
 ## <a name="general"></a>Algemeen
 
 V. Wat is Azure Synapse?
 
-A. Azure Synapse is een onbegrensde analyseservice die datawarehousing en Big Data-analyses samenbrengt. Het geeft u de vrijheid om gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte bronnen - op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens in te nemen, voor te bereiden, te beheren en te leveren voor onmiddellijke BI- en machine learning-behoeften. Zie [Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)voor meer informatie.
+A. Azure Synapse is een oneindig analyse service waarmee gegevens-en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op uw voor waarden op te vragen met behulp van serverloze on-demand of ingerichte resources op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften. Zie voor meer informatie, [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 V. Wat is er gebeurd met Azure SQL Data Warehouse?
 
-A. Azure Synapse is Azure SQL Data Warehouse (SQL DW) geëvolueerd. We hebben hetzelfde toonaangevende datawarehouse naar een geheel nieuw niveau van prestaties en mogelijkheden gebracht. U uw bestaande datawarehouseworkloads in productie blijven uitvoeren met Azure Synapse en automatisch profiteren van de nieuwe mogelijkheden, die in voorbeeldzijn. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)voor meer informatie.
+A. Azure Synapse is Azure SQL Data Warehouse (SQL DW) ontwikkeld. We hebben hetzelfde toonaangevende data warehouse gebruikt voor een geheel nieuw niveau van prestaties en mogelijkheden. U kunt door gaan met het uitvoeren van uw bestaande Data Warehouse-workloads in productie met Azure Synapse en automatisch profiteren van de nieuwe mogelijkheden, die in Preview zijn. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)? voor meer informatie.
 
-V. Wat is Synapse SQL-pool?
+V. Wat is Synapse SQL-groep?
 
-A. Synapse SQL-pool verwijst naar de enterprise data warehousing-functies die algemeen beschikbaar zijn met Azure Synapse. Zie [Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)voor meer informatie.
+A. Synapse SQL pool verwijst naar de functies voor Enter prise data warehousing die algemeen beschikbaar zijn met Azure Synapse. Zie voor meer informatie, [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-V. Hoe ga ik aan de slag met Azure Synapse?
+V. Hoe kan ik aan de slag met Azure Synapse?
 
-A. U aan de slag met een [gratis Azure-account](https://azure.microsoft.com/free/sql-data-warehouse/) of [contact opnemen met verkoop voor meer informatie.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)
+A. U kunt aan de slag met een [gratis Azure-account](https://azure.microsoft.com/free/sql-data-warehouse/) of [contact opnemen met de verkoop voor meer informatie](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html).
 
-V. Wat biedt Azure Synapse voor gegevensbeveiliging?
+V. Wat biedt Azure Synapse voor de beveiliging van gegevens?
 
-A. Azure Synapse biedt verschillende oplossingen voor het beschermen van gegevens zoals TDE en auditing. Zie [Beveiliging voor](sql-data-warehouse-overview-manage-security.md)meer informatie.
+A. Azure Synapse biedt verschillende oplossingen voor het beveiligen van gegevens, zoals TDE en controle. Zie [beveiliging](sql-data-warehouse-overview-manage-security.md)voor meer informatie.
 
-V. Waar kan ik erachter komen met welke wettelijke of zakelijke standaarden Azure Synapse voldoet?
+V. Waar kan ik zien welke juridische of zakelijke standaarden Azure Synapse compatibel is met?
 
-A. Ga naar de [Microsoft Compliance-pagina](https://www.microsoft.com/trustcenter/compliance/complianceofferings) voor verschillende compliance-aanbiedingen per product zoals SOC en ISO.
-Kies eerst op nalevingstitel. Vouw Azure vervolgens uit in de sectie Microsoft in-scope cloudservices aan de rechterkant van de pagina om te zien welke services Azure Synapse compatibel zijn.
+A. Ga naar de [micro soft-nalevings](https://www.microsoft.com/trustcenter/compliance/complianceofferings) pagina voor diverse nalevings aanbiedingen per product zoals Soc en ISO.
+Kies eerst op nalevings titel. Vouw vervolgens Azure uit in de sectie Cloud Services van micro soft in het bereik aan de rechter kant van de pagina om te zien welke Services compatibel zijn met Azure Synapse.
 
-V. Kan ik Power BI aansluiten?
+V. Kan ik Power BI verbinding maken?
 
-A. Ja. Hoewel Power BI directe query's ondersteunt met Azure Synapse, is het niet bedoeld voor een groot aantal gebruikers of realtime gegevens. Als u de Prestaties van Power BI verder wilt optimaliseren, u overwegen Power BI te gebruiken bovenop Azure Analysis Services of Analysis Service IaaS.
+A. Ja. Hoewel Power BI directe query met Azure Synapse ondersteunt, is het niet bedoeld voor een groot aantal gebruikers of realtime-gegevens. Als u de prestaties van Power BI verder wilt optimaliseren, kunt u Power BI gebruiken boven op Azure Analysis Services of Analysis Service IaaS.
 
-V. Wat zijn de capaciteitslimieten van synaps SQL-pool?
+V. Wat zijn de Synapse van SQL-groeps limieten?
 
-A. Zie onze pagina met huidige [capaciteitslimieten.](sql-data-warehouse-service-capacity-limits.md)
+A. Bekijk onze huidige [capaciteits limieten](sql-data-warehouse-service-capacity-limits.md) pagina.
 
-V. Waarom duurt het zo lang met mijn schaal/pauze/cv?
+V. Waarom duurt mijn schaal/onderbreken/hervatten?
 
-A. Verschillende factoren kunnen de tijd voor compute management operations beïnvloeden. Een veelvoorkomend geval voor langlopende bewerkingen is transactionele terugdraaiing. Wanneer een schaal- of pauzebewerking wordt gestart, worden alle binnenkomende sessies geblokkeerd en worden query's verwijderd. Om het systeem in een stabiele toestand te laten, moeten transacties worden teruggedraaid voordat een bewerking kan beginnen. Hoe groter het aantal en hoe groter de logboekgrootte van transacties, hoe langer de bewerking wordt vastgelopen door het systeem in een stabiele toestand te herstellen.
+A. Verschillende factoren kunnen invloed hebben op de tijd voor reken beheer bewerkingen. Een veelvoorkomend geval voor langlopende bewerkingen is transactioneel terugdraaien. Wanneer een schaal-of onderbrekings bewerking wordt gestart, worden alle binnenkomende sessies geblokkeerd en worden query's leeg gemaakt. Om ervoor te zorgen dat het systeem stabiel blijft, moeten trans acties worden teruggedraaid voordat een bewerking kan worden begonnen. Hoe groter het aantal en hoe groter de logboek grootte van trans acties, hoe langer de bewerking het systeem kan herstellen naar een stabiele status.
 
 ## <a name="user-support"></a>Gebruikersondersteuning
 
-V. Ik heb een functieaanvraag, waar kan ik deze indienen?
+V. Ik heb een functie verzoek, waar kan ik het verzenden?
 
-A. Als je een functieaanvraag hebt, dien je deze in op onze [UserVoice-pagina](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+A. Als u een functie aanvraag hebt, moet u deze verzenden op onze [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) -pagina
 
 V. Hoe kan ik x doen?
 
-A. Voor hulp bij het ontwikkelen met Azure Synapse u vragen stellen op onze [Stack Overflow-pagina.](https://stackoverflow.com/questions/tagged/azure-sqldw)
+A. Voor hulp bij het ontwikkelen met Azure Synapse kunt u vragen stellen op onze [stack overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) -pagina.
 
-V. Hoe dien ik een ondersteuningsticket in?
+V. Hoe kan ik een ondersteunings ticket verzenden?
 
-A. [Ondersteuningstickets](sql-data-warehouse-get-started-create-support-ticket.md) kunnen worden ingediend via azure portal.
+A. [Ondersteunings tickets](sql-data-warehouse-get-started-create-support-ticket.md) kunnen via Azure Portal worden ingediend.
 
-## <a name="sql-languagefeature-support"></a>ONDERSTEUNING voor SQL-taal/functie
+## <a name="sql-languagefeature-support"></a>Ondersteuning voor SQL-taal/-functie
 
-V. Welke gegevenstypen worden ondersteund?
+V. Welke gegevens typen worden ondersteund?
 
-A. Zie [gegevenstypen](sql-data-warehouse-tables-data-types.md).
+A. Zie [gegevens typen](sql-data-warehouse-tables-data-types.md).
 
-V. Welke tafelfuncties ondersteunt u?
+V. Welke tabel functies worden ondersteund?
 
-A. Veel functies worden ondersteund. Functies die niet worden ondersteund, zijn te vinden in [niet-ondersteunde tabelfuncties.](sql-data-warehouse-tables-data-types.md)
+A. Veel functies worden ondersteund. Functies die niet worden ondersteund, kunnen worden gevonden in [niet-ondersteunde tabel functies](sql-data-warehouse-tables-data-types.md).
 
-## <a name="tooling-and-administration"></a>Tooling en administratie
+## <a name="tooling-and-administration"></a>Hulp middelen en beheer
 
-V. Ondersteunt Synapse SQL-pool REST API's?
+V. Ondersteunt Synapse-SQL-pool REST-Api's?
 
-A. Ja. De meeste REST-functionaliteit die kan worden gebruikt met SQL Database is ook beschikbaar met Synapse SQL-pool. U API-informatie vinden op REST-documentatiepagina's of [databases.](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+A. Ja. De meeste REST-functionaliteit die met SQL Database kan worden gebruikt, is ook beschikbaar met de SQL-groep Synapse. U vindt API-informatie binnen REST-documentatie pagina's of [data bases](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-## <a name="loading"></a>Laden
+## <a name="loading"></a>Van
 
-V. Welke client drivers ondersteunt u?
+V. Welke client Stuur Programma's worden ondersteund?
 
-A. Driver support voor Synapse SQL pool is te vinden op de pagina [Connection Strings](../sql/connection-strings.md)
+A. Stuur programma-ondersteuning voor Synapse SQL-groep vindt u op de pagina [verbindings reeksen](../sql/connection-strings.md)
 
-V: Welke bestandsindelingen worden ondersteund door PolyBase?
+V: welke bestands indelingen worden ondersteund door poly base?
 
-A: Orc, RC, Parket en platte afgebakende tekst
+A: Orc, RC, Parquet en platte tekst met scheidings tekens
 
-V: Met welke gegevensbronnen kan ik verbinding maken met PolyBase?
+V: met welke gegevens bronnen kan ik verbinding maken met poly base?
 
-A: [Azure Data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) en Azure Storage [Blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+A: [Azure data Lake Storage](sql-data-warehouse-load-from-azure-data-lake-store.md) -en [Azure Storage-blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-V: Is berekening pushdown mogelijk bij het maken van verbinding met Azure Storage Blobs of ADLS?
+V: is de reken pushdown mogelijk bij het verbinden met Azure Storage blobs of ADLS?
 
-A: Nee, PolyBase werkt alleen samen met de opslagcomponenten.
+A: Nee, poly base werkt alleen met de opslag onderdelen.
 
-V: Kan ik verbinding maken met HDI?
+V: kan ik verbinding maken met HDI?
 
-A: HDI kan ADLS of WASB gebruiken als HDFS-laag. Als u een hdfs-laag hebt, u die gegevens in een Synapse SQL-groep laden. U echter geen pushdown-berekening genereren naar de HDI-instantie.
+A: HDI kan ADLS of WASB als de HDFS-laag gebruiken. Als u als uw HDFS-laag hebt, kunt u die gegevens laden in een Synapse SQL-groep. U kunt echter geen pushdown berekening genereren voor het HDI-exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie onze [overzichtspagina](sql-data-warehouse-overview-faq.md) voor meer informatie over Azure Synapse als geheel.
+Zie onze pagina [overzicht](sql-data-warehouse-overview-faq.md) voor meer informatie over Azure Synapse als geheel.

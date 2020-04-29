@@ -1,34 +1,34 @@
 ---
-title: Geheimen van Azure Service Fabric-toepassingsgeheimen beheren
-description: Meer informatie over het beveiligen van geheime waarden in een Service Fabric-toepassing (platform-agnostisch).
+title: Azure Service Fabric-toepassings geheimen beheren
+description: Meer informatie over het beveiligen van geheime waarden in een Service Fabric-toepassing (platform-neutraal).
 author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414517"
 ---
-# <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Versleutelde geheimen beheren in Service Fabric-toepassingen
-Deze gids leidt u door de stappen van het beheren van geheimen in een Service Fabric-toepassing. Geheimen kunnen gevoelige informatie zijn, zoals tekenreeksen voor opslagverbindingen, wachtwoorden of andere waarden die niet in platte tekst mogen worden verwerkt.
+# <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Versleutelde geheimen in Service Fabric-toepassingen beheren
+In deze hand leiding worden de stappen beschreven voor het beheren van geheimen in een Service Fabric-toepassing. Geheimen kunnen gevoelige informatie zijn, zoals verbindings reeksen voor opslag, wacht woorden of andere waarden die niet in tekst zonder opmaak moeten worden verwerkt.
 
-Het gebruik van versleutelde geheimen in een Service Fabric-toepassing omvat drie stappen:
-* Stel een versleutelingscertificaat in en versleutel geheimen.
-* Versleutelde geheimen opgeven in een toepassing.
-* Versleutelde geheimen ontsleutelen van servicecode.
+Het gebruik van versleutelde geheimen in een Service Fabric toepassing bestaat uit drie stappen:
+* Stel een versleutelings certificaat in en versleutel geheimen.
+* Versleutelde geheimen in een toepassing opgeven.
+* Versleutelde geheimen van service code ontsleutelen.
 
-## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Een versleutelingscertificaat instellen en geheimen versleutelen
-Het opzetten van een versleutelingscertificaat en het gebruik ervan om geheimen te versleutelen varieert tussen Windows en Linux.
-* [Stel een versleutelingscertificaat in en versleutel geheimen op Windows-clusters.][secret-management-windows-specific-link]
-* [Stel een versleutelingscertificaat in en versleutel geheimen op Linux-clusters.][secret-management-linux-specific-link]
+## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Een versleutelings certificaat instellen en geheimen versleutelen
+Het instellen van een versleutelings certificaat voor het versleutelen van geheimen is afhankelijk van Windows en Linux.
+* [Stel een versleutelings certificaat in en versleutel geheimen op Windows-clusters.][secret-management-windows-specific-link]
+* [Een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen.][secret-management-linux-specific-link]
 
-## <a name="specify-encrypted-secrets-in-an-application"></a>Versleutelde geheimen opgeven in een toepassing
-In de vorige stap wordt beschreven hoe u een geheim versleutelen met een certificaat en een basis-64 gecodeerde tekenreeks produceren voor gebruik in een toepassing. Deze basis-64 gecodeerde tekenreeks kan worden opgegeven als een gecodeerde [parameter][parameters-link] in de Instellingen.xml van een service of als een gecodeerde [omgevingsvariabele][environment-variables-link] in serviceManifest.xml van een service.
+## <a name="specify-encrypted-secrets-in-an-application"></a>Versleutelde geheimen in een toepassing opgeven
+In de vorige stap wordt beschreven hoe u een geheim versleutelt met een certificaat en een met base 64 gecodeerde teken reeks produceert voor gebruik in een toepassing. Deze met base 64 gecodeerde teken reeks kan worden opgegeven als een versleutelde [para meter][parameters-link] in de instellingen. XML van een service of als een versleutelde [omgevings variabele][environment-variables-link] in de ServiceManifest. XML van een service.
 
-Geef een versleutelde [parameter][parameters-link] op in het configuratiebestand `IsEncrypted` Settings.xml `true`van uw service met het kenmerk ingesteld op:
+Geef een versleutelde [para meter][parameters-link] op in het configuratie bestand van de service `IsEncrypted` -instellingen. `true`XML waarvoor het kenmerk is ingesteld op:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -38,7 +38,7 @@ Geef een versleutelde [parameter][parameters-link] op in het configuratiebestand
   </Section>
 </Settings>
 ```
-Geef een versleutelde [omgevingsvariabele][environment-variables-link] op in het ServiceManifest.xml-bestand van uw servicemet kenmerk `Type` ingesteld op: `Encrypted`
+Geef een versleutelde [omgevings variabele][environment-variables-link] in het ServiceManifest. XML-bestand `Type` van uw service `Encrypted`op waarvan het kenmerk is ingesteld op:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -47,7 +47,7 @@ Geef een versleutelde [omgevingsvariabele][environment-variables-link] op in het
 </CodePackage>
 ```
 
-De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een certificaat op te geven in het toepassingsmanifest. Voeg een **SecretsCertificate-element** toe aan **ApplicationManifest.xml** en voeg de duimafdruk van het gewenste certificaat toe.
+De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een certificaat op te geven in het manifest van de toepassing. Voeg een **SecretsCertificate** -element toe aan **ApplicationManifest. XML** en voeg de vinger afdruk van het gewenste certificaat toe.
 
 ```xml
 <ApplicationManifest … >
@@ -58,16 +58,16 @@ De geheimen moeten ook worden opgenomen in uw Service Fabric-toepassing door een
 </ApplicationManifest>
 ```
 > [!NOTE]
-> Bij het activeren van een toepassing die een SecretsCertificate opgeeft, vindt Service Fabric het overeenkomende certificaat en verleent de identiteit die de toepassing onder volledige machtigingen voor de privésleutel van het certificaat uitvoert. Service Fabric controleert ook het certificaat op wijzigingen en past de machtigingen dienovereenkomstig toe. Als u wijzigingen wilt detecteren voor certificaten die op algemene naam zijn gedeclareerd, voert Service Fabric een periodieke taak uit waarin alle overeenkomende certificaten worden gevonden en deze worden vergeleken met een lijst met duimafdrukken in de cache. Wanneer een nieuwe duimafdruk wordt gedetecteerd, betekent dit dat een certificaat van dat onderwerp is vernieuwd. De taak wordt eenmaal per minuut uitgevoerd op elk knooppunt van het cluster.
+> Wanneer een toepassing wordt geactiveerd waarmee een SecretsCertificate wordt opgegeven, wordt in Service Fabric het overeenkomende certificaat gevonden en wordt de identiteit verleend die de toepassing uitvoert onder volledige machtigingen voor de persoonlijke sleutel van het certificaat. Service Fabric wordt ook het certificaat gecontroleerd op wijzigingen en de machtigingen dienovereenkomstig opnieuw toe te passen. Als u wijzigingen wilt detecteren voor certificaten die zijn gedeclareerd met een algemene naam, wordt door Service Fabric een periodieke taak uitgevoerd waarmee alle overeenkomende certificaten worden gevonden en vergeleken met een lijst met vinger afdrukken in de cache. Wanneer een nieuwe vinger afdruk wordt gedetecteerd, betekent dit dat een certificaat van dat onderwerp is verlengd. De taak wordt één keer per minuut uitgevoerd op elk knoop punt van het cluster.
 >
-> Hoewel het SecretsCertificate op basis van onderwerpen verklaringen toestaat, moet u er rekening mee houden dat de versleutelde instellingen zijn gekoppeld aan het sleutelpaar dat is gebruikt om de instelling op de client te versleutelen. U moet ervoor zorgen dat het oorspronkelijke versleutelingscertificaat (of een gelijkwaardig) overeenkomt met de op het onderwerp gebaseerde aangifte en dat het is geïnstalleerd, inclusief de bijbehorende privésleutel, op elk knooppunt van het cluster dat de toepassing kan hosten. Alle certificaten die geldig zijn op tijd die overeenkomen met de op het onderwerp gebaseerde declaratie en die zijn opgebouwd uit hetzelfde sleutelpaar als het oorspronkelijke versleutelingscertificaat, worden als equivalenten beschouwd.
+> Terwijl de SecretsCertificate declaraties op basis van een onderwerp toestaat, moet u er rekening mee houden dat de versleutelde instellingen zijn gekoppeld aan het sleutel paar dat is gebruikt voor het versleutelen van de instelling op de client. U moet ervoor zorgen dat het oorspronkelijke versleutelings certificaat (of een equivalent) overeenkomt met de op onderwerp gebaseerde declaratie en dat deze is geïnstalleerd, inclusief de bijbehorende persoonlijke sleutel, op elk knoop punt van het cluster waarop de toepassing kan worden gehost. Alle tijdgebonden certificaten die overeenkomen met de op onderwerp gebaseerde declaratie en die zijn gebaseerd op hetzelfde sleutel paar als het oorspronkelijke versleutelings certificaat, worden beschouwd als gelijkwaardig.
 >
 
-### <a name="inject-application-secrets-into-application-instances"></a>Toepassingsgeheimen in toepassingsinstanties injecteren
-Idealiter moet de implementatie naar verschillende omgevingen zo geautomatiseerd mogelijk zijn. Dit kan worden bereikt door het uitvoeren van geheime encryptie in een build-omgeving en het verstrekken van de versleutelde geheimen als parameters bij het maken van toepassingsinstanties.
+### <a name="inject-application-secrets-into-application-instances"></a>Toepassings geheimen in toepassings exemplaren invoeren
+In het ideale geval moet de implementatie naar verschillende omgevingen zo automatisch mogelijk worden uitgevoerd. Dit kan worden bereikt door geheime versleuteling uit te voeren in een bouw omgeving en de versleutelde geheimen op te geven als para meters bij het maken van toepassings exemplaren.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Overridable parameters gebruiken in Settings.xml
-Het configuratiebestand Settings.xml maakt overridable parameters mogelijk die kunnen worden opgegeven tijdens het maken van toepassingen. Gebruik `MustOverride` het kenmerk in plaats van een waarde voor een parameter op te geven:
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Overschrijf bare-para meters gebruiken in Settings. XML
+Met het configuratie bestand settings. XML kunt u Overschrijf bare-para meters opgeven die tijdens het maken van de toepassing kunnen worden opgegeven. Gebruik het `MustOverride` kenmerk in plaats van een waarde voor een para meter op te geven:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -78,7 +78,7 @@ Het configuratiebestand Settings.xml maakt overridable parameters mogelijk die k
 </Settings>
 ```
 
-Als u waarden wilt overschrijven in Settings.xml, geeft u een overschrijfparameter voor de service in ApplicationManifest.xml aan:
+Als u waarden in Settings. XML wilt overschrijven, declareert u een override-para meter voor de service in ApplicationManifest. XML:
 
 ```xml
 <ApplicationManifest ... >
@@ -99,15 +99,15 @@ Als u waarden wilt overschrijven in Settings.xml, geeft u een overschrijfparamet
   </ServiceManifestImport>
  ```
 
-Nu kan de waarde worden opgegeven als een *toepassingsparameter* bij het maken van een instantie van de toepassing. Het maken van een toepassingsinstantie kan worden gescript met PowerShell of geschreven in C#, voor eenvoudige integratie in een buildproces.
+De waarde kan nu worden opgegeven als een *toepassings parameter* bij het maken van een exemplaar van de toepassing. Het maken van een toepassings exemplaar kan worden gescripteerd met Power shell of is geschreven in C#, voor een eenvoudige integratie in een bouw proces.
 
-Met PowerShell wordt de parameter `New-ServiceFabricApplication` als [hashtabel](https://technet.microsoft.com/library/ee692803.aspx)aan de opdracht geleverd:
+Met behulp van Power shell wordt de para `New-ServiceFabricApplication` meter aan de opdracht opgegeven als een [hash-tabel](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Met Behulp van C#, `ApplicationDescription` worden `NameValueCollection`toepassingsparameters opgegeven in een als :
+Met C# worden toepassings parameters opgegeven in een `ApplicationDescription` as a: `NameValueCollection`
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -125,8 +125,8 @@ ApplicationDescription applicationDescription = new ApplicationDescription(
 await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescription);
 ```
 
-## <a name="decrypt-encrypted-secrets-from-service-code"></a>Versleutelde geheimen uit servicecode decoderen
-De API's voor toegang tot [parameters][parameters-link] en [omgevingsvariabelen][environment-variables-link] zorgen voor eenvoudige decryptie van versleutelde waarden. Aangezien de versleutelde tekenreeks informatie bevat over het certificaat dat wordt gebruikt voor versleuteling, hoeft u het certificaat niet handmatig op te geven. Het certificaat hoeft alleen maar te worden geïnstalleerd op het knooppunt waarop de service wordt uitgevoerd.
+## <a name="decrypt-encrypted-secrets-from-service-code"></a>Versleutelde geheimen ontsleutelen van service code
+Met de Api's voor toegang tot [para meters][parameters-link] en [omgevings variabelen][environment-variables-link] kunt u versleutelde waarden eenvoudig ontsleutelen. Omdat de versleutelde teken reeks informatie bevat over het certificaat dat voor versleuteling wordt gebruikt, hoeft u het certificaat niet hand matig op te geven. Het certificaat hoeft alleen te worden geïnstalleerd op het knoop punt waarop de service wordt uitgevoerd.
 
 ```csharp
 // Access decrypted parameters from Settings.xml
@@ -143,8 +143,8 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Service Fabric [Secrets Store](service-fabric-application-secret-store.md) 
-* Meer informatie over [applicatie- en servicebeveiliging](service-fabric-application-and-service-security.md)
+* Archief met Service Fabric [geheimen](service-fabric-application-secret-store.md) 
+* Meer informatie over de [beveiliging van toepassingen en services](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

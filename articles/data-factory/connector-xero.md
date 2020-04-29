@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit Xero kopiëren met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens uit Xero naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van Xero met behulp van Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit Xero naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,55 +12,55 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: 8a704c3891c687edbb7c5aac206f4b6c7766fa8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409990"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory"></a>Gegevens uit Xero kopiëren met Azure Data Factory
+# <a name="copy-data-from-xero-using-azure-data-factory"></a>Gegevens kopiëren van Xero met behulp van Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van Xero te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Xero te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Xero-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van Xero kopiëren naar elk ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van Xero kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Met name deze Xero-connector ondersteunt:
+Deze Xero-connector ondersteunt met name:
 
-- Xero [private applicatie,](https://developer.xero.com/documentation/getting-started/api-application-types) maar geen openbare toepassing.
-- Alle Xero-tabellen (API-eindpunten) behalve "Rapporten". 
+- Xero [persoonlijke toepassing](https://developer.xero.com/documentation/getting-started/api-application-types) , maar geen open bare toepassing.
+- Alle Xero-tabellen (API-eind punten), behalve ' rapporten '. 
 
-Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
+Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Xero-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor Xero-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor xero gekoppelde service:
+De volgende eigenschappen worden ondersteund voor Xero gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **Xero** | Ja |
-| host | Het eindpunt van de Xero-server (`api.xero.com`).  | Ja |
-| consumerKey | De consumentensleutel die bij de Xero-toepassing is gekoppeld. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
-| privateKey privateKey | De privésleutel van het .pem-bestand dat is gegenereerd voor uw Xero-privétoepassing, [raadpleegt Een openbaar/privé sleutelpaar maken.](https://developer.xero.com/documentation/api-guides/create-publicprivate-key) Opmerking om **de privatekey.pem te genereren met numbits van 512** met behulp van `openssl genrsa -out privatekey.pem 512`; 1024 wordt niet ondersteund. Neem alle tekst uit het .pem-bestand op, inclusief de Unix-regeleinde(\n), zie voorbeeld hieronder.<br/><br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
-| gebruikVersleutelde eindpunten | Hiermee geeft u op of de eindpunten van de gegevensbron zijn versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam vereist is in het certificaat van de server om de hostnaam van de server te evenaren wanneer deze verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
-| usePeerVerification | Hiermee geeft u op of u de identiteit van de server moet verifiëren wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
+| type | De eigenschap type moet worden ingesteld op: **Xero** | Ja |
+| host | Het eind punt van de Xero-`api.xero.com`server ().  | Ja |
+| consumerKey | De consumenten sleutel die is gekoppeld aan de Xero-toepassing. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| privateKey | De persoonlijke sleutel uit het. pem-bestand dat is gegenereerd voor uw persoonlijke Xero-toepassing, vindt u in [een openbaar/persoonlijk sleutel paar maken](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Opmerking voor **het genereren van privatekey. pem met numbits van 512** met `openssl genrsa -out privatekey.pem 512`; 1024 wordt niet ondersteund. Voeg alle tekst uit het. pem-bestand toe, inclusief de Unix-regel eindigt op (\n), zie voor beeld hieronder.<br/><br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
+| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
+| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -82,9 +82,9 @@ De volgende eigenschappen worden ondersteund voor xero gekoppelde service:
 }
 ```
 
-**Voorbeeld van private key value:**
+**Voor beeld van een persoonlijke sleutel waarde:**
 
-Neem alle tekst uit het .pem-bestand op, inclusief de Unix-regeleinde(\n).
+Voeg alle tekst uit het. pem-bestand toe, inclusief de Unix-regel eindigt op (\n).
 
 ```
 "-----BEGIN RSA PRIVATE KEY-----\nMII***************************************************P\nbu****************************************************s\nU/****************************************************B\nA*****************************************************W\njH****************************************************e\nsx*****************************************************l\nq******************************************************X\nh*****************************************************i\nd*****************************************************s\nA*****************************************************dsfb\nN*****************************************************M\np*****************************************************Ly\nK*****************************************************Y=\n-----END RSA PRIVATE KEY-----"
@@ -92,14 +92,14 @@ Neem alle tekst uit het .pem-bestand op, inclusief de Unix-regeleinde(\n).
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Xero-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Xero-gegevensset.
 
-Als u gegevens uit Xero wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **XeroObject**. De volgende eigenschappen worden ondersteund:
+Als u gegevens van Xero wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **XeroObject**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet zijn ingesteld op: **XeroObject** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **XeroObject** | Ja |
+| tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -120,18 +120,18 @@ Als u gegevens uit Xero wilt kopiëren, stelt u de eigenschap type van de gegeve
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Xero-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door Xero-bron worden ondersteund.
 
 ### <a name="xero-as-source"></a>Xero als bron
 
-Als u gegevens van Xero wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **XeroSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Xero, stelt u het bron type in de Kopieer activiteit in op **XeroSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van kopieeractiviteit moet zijn ingesteld op: **XeroSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Contacts"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **XeroSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Contacts"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -165,11 +165,11 @@ Als u gegevens van Xero wilt kopiëren, stelt u het brontype in de kopieeractivi
 
 Let op het volgende wanneer u de Xero-query opgeeft:
 
-- Tabellen met complexe items worden opgesplitst in meerdere tabellen. Banktransacties hebben bijvoorbeeld een complexe gegevensstructuur "LineItems", zodat gegevens van `Bank_Transaction` `Bank_Transaction_Line_Items`banktransacties `Bank_Transaction_ID` worden toegewezen aan tabel en , met als buitenlandse sleutel om ze aan elkaar te koppelen.
+- Tabellen met complexe items worden op meerdere tabellen gesplitst. Bank transacties hebben bijvoorbeeld een complexe gegevens structuur ' regel items ', dus gegevens van Bank transacties worden toegewezen aan een tabel `Bank_Transaction` en `Bank_Transaction_Line_Items`, met `Bank_Transaction_ID` als refererende sleutel, om ze samen te koppelen.
 
-- Xero-gegevens zijn beschikbaar via `Minimal` twee schema's: (standaard) en `Complete`. Het schema Voltooien bevat vereiste aanroeptabellen waarvoor aanvullende gegevens nodig zijn (bijvoorbeeld id-kolom) voordat u de gewenste query maakt.
+- Xero-gegevens zijn beschikbaar via twee schema's: `Minimal` (standaard) en `Complete`. Het volledige schema bevat vereiste aanroep tabellen waarvoor extra gegevens (bijvoorbeeld ID-kolom) nodig zijn voordat de gewenste query wordt uitgevoerd.
 
-De volgende tabellen bevatten dezelfde informatie in het schema Minimaal en Volledig. Als u het aantal API-aanroepen wilt verminderen, gebruikt u Minimaal schema (standaard).
+De volgende tabellen hebben dezelfde informatie in het minimale en volledige schema. Gebruik Mini maal schema (standaard) om het aantal API-aanroepen te verminderen.
 
 - Bank_Transactions
 - Contact_Groups 
@@ -184,43 +184,43 @@ De volgende tabellen bevatten dezelfde informatie in het schema Minimaal en Voll
 - Expense_Claim_Validation_Errors
 - Facturen 
 - Invoices_Credit_Notes
-- Invoices_ Vooruitbetalingen 
+- Invoices_ voor uitbetalingen 
 - Invoices_Overpayments 
 - Manual_Journals 
-- Te veel betaalde bedragen 
+- Overbetalingen 
 - Overpayments_Allocations 
-- Vooruitbetalingen 
+- Uitbetalingen 
 - Prepayments_Allocations 
-- Ontvangsten 
+- Ontvangst bevestigingen 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
-De volgende tabellen kunnen alleen worden opgevraagd met een volledig schema:
+In de volgende tabellen kunnen alleen query's met een volledig schema worden uitgevoerd:
 
-- Compleet.Bank_Transaction_Line_Items 
-- Compleet.Bank_Transaction_Line_Item_Tracking 
-- Compleet.Contact_Group_Contacts 
-- Complete.Contacts_Contact_ Personen 
-- Compleet.Credit_Note_Line_Items 
-- Compleet.Credit_Notes_Line_Items_Tracking 
-- Complete.Expense_Claim_ Betalingen 
-- Compleet.Expense_Claim_Receipts 
-- Compleet.Invoice_Line_Items 
-- Compleet.Invoices_Line_Items_Tracking
-- Compleet.Manual_Journal_Lines 
-- Compleet.Manual_Journal_Line_Tracking 
-- Compleet.Overpayment_Line_Items 
-- Compleet.Overpayment_Line_Items_Tracking 
-- Compleet.Prepayment_Line_Items 
-- Compleet.Prepayment_Line_Item_Tracking 
-- Compleet.Receipt_Line_Items 
-- Compleet.Receipt_Line_Item_Tracking 
-- Compleet.Tracking_Category_Options
+- Volt ooien. Bank_Transaction_Line_Items 
+- Volt ooien. Bank_Transaction_Line_Item_Tracking 
+- Volt ooien. Contact_Group_Contacts 
+- Volt ooien. Contacts_Contact_ personen 
+- Volt ooien. Credit_Note_Line_Items 
+- Volt ooien. Credit_Notes_Line_Items_Tracking 
+- Volt ooien. Expense_Claim_ betalingen 
+- Volt ooien. Expense_Claim_Receipts 
+- Volt ooien. Invoice_Line_Items 
+- Volt ooien. Invoices_Line_Items_Tracking
+- Volt ooien. Manual_Journal_Lines 
+- Volt ooien. Manual_Journal_Line_Tracking 
+- Volt ooien. Overpayment_Line_Items 
+- Volt ooien. Overpayment_Line_Items_Tracking 
+- Volt ooien. Prepayment_Line_Items 
+- Volt ooien. Prepayment_Line_Item_Tracking 
+- Volt ooien. Receipt_Line_Items 
+- Volt ooien. Receipt_Line_Item_Tracking 
+- Volt ooien. Tracking_Category_Options
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met ondersteunde gegevensopslag door de kopieeractiviteit.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met ondersteunde gegevens archieven door de Kopieer activiteit.

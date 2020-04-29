@@ -1,5 +1,5 @@
 ---
-title: Een tabel stapsgewijs kopiëren met PowerShell
+title: Stapsgewijs een tabel kopiëren met behulp van Power shell
 description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee gegevens uit een Azure SQL-database stapsgewijs worden gekopieerd naar Azure Blob Storage.
 services: data-factory
 author: dearandyxu
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: f4de4c25cea251ea0db72bcb435ceb63eb308ff0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409234"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Gegevens van een Azure SQL-database stapsgewijs laden naar Azure Blob-opslag met PowerShell
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Incrementeel gegevens van een Azure-SQL database naar Azure Blob-opslag laden met Power shell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -48,7 +48,7 @@ Dit zijn de belangrijke stappen voor het maken van deze oplossing:
 2. **Bereid een gegevensopslag voor om de grenswaarde in op te slaan**.   
     In deze zelfstudie slaat u de grenswaarde op in een SQL-database.
 
-3. **Maak een pijplijn met de volgende werkstroom:**
+3. **Maak een pijp lijn met de volgende werk stroom**:
 
     De pijplijn in deze oplossing heeft de volgende activiteiten:
 
@@ -57,14 +57,14 @@ Dit zijn de belangrijke stappen voor het maken van deze oplossing:
     * Maak een opgeslagen-procedureactiviteit waarmee de grenswaarde wordt bijgewerkt voor de pijplijn die de volgende keer wordt uitgevoerd.
 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL-database**. U gebruikt de database als de brongegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
-* **Azure-opslag**. U gebruikt de Blob-opslag als de sinkgegevensopslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken. Maak een container met de naam adftutorial. 
+* **Azure SQL database**. U gebruikt de database als de brongegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
+* **Azure Storage**. U gebruikt de Blob-opslag als de sinkgegevensopslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken. Maak een container met de naam adftutorial. 
 * **Azure PowerShell**. Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Een gegevensbrontabel maken in uw SQL-database
@@ -177,7 +177,7 @@ END
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. Voer de volgende **set-AzDataFactoryV2-cmdlet** uit om de gegevensfabriek te maken:
+5. Voer de volgende **set-AzDataFactoryV2-** cmdlet uit om de Data Factory te maken:
 
     ```powershell       
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
@@ -199,7 +199,7 @@ Houd rekening met de volgende punten:
 U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw opslagaccount en de SQL-database.
 
 ### <a name="create-a-storage-linked-service"></a>Een gekoppelde Storage-service maken
-1. Maak een JSON-bestand met de naam AzureStorageLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang `<accountName>` `<accountKey>` en door de naam en sleutel van uw opslagaccount voordat u het bestand opslaat.
+1. Maak een JSON-bestand met de naam AzureStorageLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang `<accountName>` en `<accountKey>` door de naam en sleutel van uw opslag account voordat u het bestand opslaat.
 
     ```json
     {
@@ -214,7 +214,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 2. Schakel in PowerShell over naar de map ADF.
 
-3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u waarden door voor de parameters *ResourceGroupName* en *DataFactoryName:*
+3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voor beeld geeft u waarden door voor de para meters *ResourceGroupName* en *DataFactoryName* :
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -230,7 +230,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Een gekoppelde SQL Database-service maken
-1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;&gt; &lt;server,&gt; &lt;database,&gt;gebruikersnaam &lt;&gt; en wachtwoord door de naam van uw server, database, gebruikersnaam en wachtwoord voordat u het bestand opslaat.
+1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;server&gt;, &lt;data&gt;Base &lt;, User&gt;id en &lt;Password&gt; door de naam van uw server, Data Base, gebruikers-id en wacht woord voordat u het bestand opslaat.
 
     ```json
     {
@@ -245,7 +245,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 2. Schakel in PowerShell over naar de map ADF.
 
-3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken.
+3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -286,7 +286,7 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
     ```
     In deze zelfstudie wordt de tabelnaam data_source_table gebruikt. Vervang deze naam als u een tabel gebruikt met een andere naam.
 
-2. Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de gegevensset SourceDataset te maken.
+2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset source dataset te maken.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -329,7 +329,7 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
     > [!IMPORTANT]
     > In dit fragment wordt ervan uitgegaan dat u een blobcontainer hebt met de naam adftutorial in uw Blob-opslag. Maak de container als deze bestaat niet of stel deze in op de naam van een bestaande container. De uitvoermap `incrementalcopy` wordt automatisch gemaakt als deze niet bestaat in de container. In deze zelfstudie wordt de bestandsnaam dynamisch gegenereerd met behulp van de expressie `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
 
-2. Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de gegevensset SinkDataset te maken.
+2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset SinkDataset te maken.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -365,7 +365,7 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
         }
     }    
     ```
-2.  Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de gegevensset WatermarkDataset te maken.
+2.  Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset water Mark dataset te maken.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -497,7 +497,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ```
 
 
-2. Voer de cmdlet **Set-AzDataFactoryV2Pipeline** uit om de incrementele pipeline van de pijplijn te maken.
+2. Voer de cmdlet **set-AzDataFactoryV2Pipeline** uit om de pijp lijn IncrementalCopyPipeline te maken.
 
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -515,12 +515,12 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-1. Voer de pipeline IncrementalCopyPipeline uit met de cmdlet **Invoke-AzDataFactoryV2Pipeline.** Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
+1. Voer de pijplijn IncrementalCopyPipeline uit met behulp van de cmdlet **invoke-AzDataFactoryV2Pipeline** . Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-2. Controleer de status van de pijplijn door de cmdlet **Get-AzDataFactoryV2ActivityRun** uit te voeren totdat u alle activiteiten met succes ziet uitvoeren. Vervang tijdelijke aanduidingen door uw eigen juiste tijd voor de parameters *RunStartedAfter* en *RunStartedBefore*. In deze zelfstudie gaat u *-RunStartedAfter "2017/09/14"* en *-RunStartedBefore "2017/09/15"* gebruiken.
+2. Controleer de status van de pijp lijn door de cmdlet **Get-AzDataFactoryV2ActivityRun** uit te voeren totdat alle activiteiten worden uitgevoerd. Vervang tijdelijke aanduidingen door uw eigen juiste tijd voor de parameters *RunStartedAfter* en *RunStartedBefore*. In deze zelfstudie gaat u *-RunStartedAfter "2017/09/14"* en *-RunStartedBefore "2017/09/15"* gebruiken.
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -635,12 +635,12 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     6 | newdata | 2017-09-06 02:23:00.000
     7 | newdata | 2017-09-07 09:01:00.000
     ```
-2. Voer de pipeline IncrementalCopyPipeline opnieuw uit met de cmdlet **Invoke-AzDataFactoryV2Pipeline.** Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
+2. Voer de pijp lijn IncrementalCopyPipeline opnieuw uit met behulp van de cmdlet **invoke-AzDataFactoryV2Pipeline** . Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. Controleer de status van de pijplijn door de cmdlet **Get-AzDataFactoryV2ActivityRun** uit te voeren totdat u alle activiteiten met succes ziet uitvoeren. Vervang tijdelijke aanduidingen door uw eigen juiste tijd voor de parameters *RunStartedAfter* en *RunStartedBefore*. In deze zelfstudie gaat u *-RunStartedAfter "2017/09/14"* en *-RunStartedBefore "2017/09/15"* gebruiken.
+3. Controleer de status van de pijp lijn door de cmdlet **Get-AzDataFactoryV2ActivityRun** uit te voeren totdat alle activiteiten worden uitgevoerd. Vervang tijdelijke aanduidingen door uw eigen juiste tijd voor de parameters *RunStartedAfter* en *RunStartedBefore*. In deze zelfstudie gaat u *-RunStartedAfter "2017/09/14"* en *-RunStartedBefore "2017/09/15"* gebruiken.
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"

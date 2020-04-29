@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens transformeren met Spark in Azure Data Factory '
+title: 'Gegevens transformeren met behulp van Spark in Azure Data Factory '
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van Spark-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409092"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van Spark-activiteit in Azure Data Factory
@@ -30,7 +30,7 @@ In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te m
 > * Een pijplijnuitvoering starten.
 > * De pijplijnuitvoering controleert.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -135,8 +135,8 @@ Maak een JSON-bestand met behulp van de gewenste editor, kopieer de volgende JSO
 Werk de waarden voor de volgende eigenschappen bij in de definitie van de gekoppelde service: 
 
 - **hostSubscriptionId**. Vervang &lt;subscriptionID&gt; door de id van uw Azure-abonnement. Het HDInsight-cluster op aanvraag wordt gemaakt in dit abonnement. 
-- **huurder**. Vervang &lt;tenantID&gt; door de id van uw Azure-tenant. 
-- **servicePrincipalId**, **servicePrincipalKey**. Vervang &lt;servicePrincipalID&gt; en &lt;servicePrincipalKey&gt; door de id en de sleutel van de service-pincipal in de Azure Active-directory. Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor details. De **hoofd-id van** de service is gelijk aan de *toepassings-id* en een **hoofdsleutel van de service** is gelijk aan de waarde voor een *clientgeheim.*
+- **Tenant**. Vervang &lt;tenantID&gt; door de id van uw Azure-tenant. 
+- **servicePrincipalId**, **servicePrincipalKey**. Vervang &lt;servicePrincipalID&gt; en &lt;servicePrincipalKey&gt; door de id en de sleutel van de service-pincipal in de Azure Active-directory. Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor details. De **Service-Principal-id** is gelijk aan de *toepassings-id* en een **Service-Principal-sleutel** is gelijk aan de waarde voor een *client geheim*.
 - **clusterResourceGroup**. Vervang &lt;resourceGroupOfHDICluster&gt; door de naam van de resourcegroep waarin de HDInsight-cluster moet worden gemaakt. 
 
 > [!NOTE]
@@ -186,12 +186,12 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
 
 1. Stel één voor één de variabelen in.
 
-    **Naam resourcegroep**
+    **Naam van resource groep**
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Gegevens fabriek naam. Moet wereldwijd uniek zijn** 
+    **Data Factory naam. Moet globaal uniek zijn** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -200,7 +200,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. PowerShell **starten**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+2. Start **Power shell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -212,7 +212,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     ```powershell
     Get-AzSubscription
     ```
-    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
+    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    

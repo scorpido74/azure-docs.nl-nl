@@ -1,5 +1,5 @@
 ---
-title: Gegevens stapsgewijs kopiëren op basis van
+title: Incrementeel gegevens kopiëren door
 description: Deze zelfstudies tonen hoe u stapsgewijs gegevens kunt kopiëren van een brongegevensarchief naar een doelgegevensarchief. De eerste kopieert gegevens uit één tabel.
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 00d54f9adcab93152881852b6fcac417e9d7c7d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409906"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Incrementeel laden van gegevens van een brongegevensarchief naar een doelgegevensarchief
@@ -48,7 +48,7 @@ Zie de volgende zelfstudies voor stapsgewijze instructies: <br/>
 - [Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor wijzigingen bijhouden](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Alleen nieuwe en gewijzigde bestanden laden met behulp van LastModifiedDate
-U de nieuwe en gewijzigde bestanden alleen kopiëren met LastModifiedDate naar het doelarchief. ADF scant alle bestanden uit het bronarchief, past het bestandsfilter toe op hun LastModifiedDate en kopieert het nieuwe en bijgewerkte bestand alleen sinds de laatste keer naar het doelarchief.  Houd er rekening mee als u ADF enorme hoeveelheden bestanden laat scannen, maar slechts een paar bestanden naar de bestemming kopieert, zou u nog steeds verwachten dat de lange duur als gevolg van het scannen van bestanden ook tijdrovend is.   
+U kunt de nieuwe en gewijzigde bestanden alleen kopiëren met behulp van LastModifiedDate naar het doel archief. ADF scant alle bestanden in het bron archief, past het bestands filter toe op hun LastModifiedDate en kopieert alleen het nieuwe en bijgewerkte bestand sinds de laatste keer naar het doel archief.  Houd er rekening mee dat u met ADF een enorme hoeveelheid bestanden kunt scannen, maar slechts een paar bestanden naar een bestemming wilt kopiëren. het is ook mogelijk dat de lange duur als gevolg van het scannen van bestanden nog steeds tijdrovend is.   
 
 Zie de volgende zelfstudies voor stapsgewijze instructies: <br/>
 - [Nieuwe bestanden stapsgewijs kopiëren van Azure Blob-opslag naar Azure Blob-opslag op basis van LastModifiedDate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
@@ -57,7 +57,7 @@ Zie voor sjablonen het volgende:
 - [Nieuwe bestanden kopiëren op basis van LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Alleen nieuwe bestanden laden met behulp van de op tijdsbasis gepartitioneerde map- of bestandsnaam.
-U kunt alleen nieuwe bestanden kopiëren als bestanden of mappen al op basis van tijd zijn gepartitioneerd met tijdsdeelinformatie die onderdeel is van de bestands- of mapnaam (bijvoorbeeld /yyyy/mm/dd/file.csv). Het is de meest performante aanpak voor het stapsgewijs laden van nieuwe bestanden. 
+U kunt alleen nieuwe bestanden kopiëren als bestanden of mappen al op basis van tijd zijn gepartitioneerd met tijdsdeelinformatie die onderdeel is van de bestands- of mapnaam (bijvoorbeeld /yyyy/mm/dd/file.csv). Het is de meest krachtige aanpak voor het stapsgewijs laden van nieuwe bestanden. 
 
 Zie de volgende zelfstudies voor stapsgewijze instructies: <br/>
 - [Nieuwe bestanden stapsgewijs kopiëren van Azure Blob-opslag naar Azure Blob-opslag op basis van de op tijdsbasis gepartitioneerde map- of bestandsnaam](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

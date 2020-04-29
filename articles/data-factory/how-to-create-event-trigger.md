@@ -1,6 +1,6 @@
 ---
-title: Triggers op basis van gebeurtenissen maken in Azure Data Factory
-description: Meer informatie over het maken van een trigger in Azure Data Factory die een pijplijn uitvoert als reactie op een gebeurtenis.
+title: Activering op basis van gebeurtenissen in Azure Data Factory maken
+description: Meer informatie over het maken van een trigger in Azure Data Factory die een pijp lijn uitvoert in reactie op een gebeurtenis.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,97 +12,97 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.openlocfilehash: d697fb8afe3e92dfe54eb5d89a2ef59425cb0cde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414917"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Een trigger maken waarop een pijplijn wordt uitgevoerd als reactie op een gebeurtenis
+# <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Een trigger maken waarmee een pijp lijn wordt uitgevoerd als reactie op een gebeurtenis
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel worden de op gebeurtenissen gebaseerde triggers beschreven die u maken in uw Data Factory-pijplijnen.
+In dit artikel worden de activerings methoden beschreven die u kunt maken in uw Data Factory-pijp lijnen.
 
-Event-driven architecture (EDA) is een veelvoorkomend gegevensintegratiepatroon dat productie, detectie, verbruik en reactie op gebeurtenissen omvat. Gegevensintegratiescenario's vereisen vaak dat klanten van Data Factory pijplijnen activeren op basis van gebeurtenissen zoals het binnenhalen of verwijderen van een bestand in uw Azure Storage-account. Data Factory is nu geïntegreerd met [Azure Event Grid,](https://azure.microsoft.com/services/event-grid/)waarmee u pijplijnen activeren op een gebeurtenis.
+Event-aangedreven architectuur (EDA) is een gemeen schappelijk gegevens integratie patroon dat betrekking heeft op productie, detectie, verbruik en reactie op gebeurtenissen. Voor scenario's voor gegevens integratie zijn vaak Data Factory-klanten vereist om pijp lijnen te activeren op basis van gebeurtenissen, zoals de ontvangst of verwijdering van een bestand in uw Azure Storage-account. Data Factory is nu geïntegreerd met [Azure Event grid](https://azure.microsoft.com/services/event-grid/), waarmee u pijp lijnen kunt activeren voor een gebeurtenis.
 
-Voor een tien minuten durende introductie en demonstratie van deze functie, bekijk de volgende video:
+Bekijk de volgende video voor een inleiding en demonstratie van tien minuten voor deze functie:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
 
 > [!NOTE]
-> De integratie die in dit artikel wordt beschreven, is afhankelijk van [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Controleer of uw abonnement is geregistreerd bij de resourceprovider Event Grid. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)voor meer informatie.
+> De integratie die in dit artikel wordt beschreven, is afhankelijk van [Azure Event grid](https://azure.microsoft.com/services/event-grid/). Zorg ervoor dat uw abonnement is geregistreerd bij de resource provider Event Grid. Zie [resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)voor meer informatie.
 
 ## <a name="data-factory-ui"></a>Gebruikersinterface van Data Factory
 
-In deze sectie ziet u hoe u een gebeurtenistrigger maakt binnen de gebruikersinterface van Azure Data Factory.
+In deze sectie wordt beschreven hoe u een gebeurtenis trigger maakt in de gebruikers interface van Azure Data Factory.
 
-1. Naar **het ontwerpcanvas gaan**
+1. Ga naar het **ontwerp canvas**
 
 1. Klik in de linkerbenedenhoek op de knop **Triggers**
 
-1. Klik **op + Nieuw** die de triggerside-navigatie van de trigger maakt opent
+1. Klik op **+ Nieuw** , waardoor de linkernavigatie trigger maken wordt geopend
 
-1. Gebeurtenis voor triggertype **selecteren**
+1. **Gebeurtenis** trigger type selecteren
 
-    ![Nieuwe gebeurtenistrigger maken](media/how-to-create-event-trigger/event-based-trigger-image1.png)
+    ![Nieuwe gebeurtenis trigger maken](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
-1. Selecteer uw opslagaccount in de vervolgkeuzelijst voor Azure-abonnementen of handmatig met de bron-id voor opslagaccount. Kies op welke container u de gebeurtenissen wilt laten plaatsvinden. Containerselectie is optioneel, maar houd er rekening mee dat het selecteren van alle containers kan leiden tot een groot aantal gebeurtenissen.
+1. Selecteer uw opslag account in de vervolg keuzelijst van het Azure-abonnement of hand matig met de resource-ID van het opslag account. Kies op welke container de gebeurtenissen moeten worden uitgevoerd. Container selectie is optioneel, maar mindful het selecteren van alle containers kan leiden tot een groot aantal gebeurtenissen.
 
    > [!NOTE]
-   > De gebeurtenistrigger ondersteunt momenteel alleen Azure Data Lake Storage Gen2- en Algemene versie 2-opslagaccounts. Vanwege een Azure Event Grid-beperking ondersteunt Azure Data Factory slechts maximaal 500 gebeurtenistriggers per opslagaccount.
+   > De gebeurtenis trigger ondersteunt momenteel alleen Azure Data Lake Storage Gen2 en algemene opslag accounts voor versie 2. Als gevolg van een Azure Event Grid beperking, ondersteunt Azure Data Factory slechts een maximum van 500 gebeurtenis triggers per opslag account.
 
-1. Met het **Blob-pad begint en** **blobpad eindigt met** eigenschappen, u de containers, mappen en blobnamen opgeven waarvoor u gebeurtenissen wilt ontvangen. Voor de trigger van uw gebeurtenis moet ten minste één van deze eigenschappen worden gedefinieerd. U verschillende patronen gebruiken voor beide **Blob-paden begint met** en **Blob pad eindigt met** eigenschappen, zoals weergegeven in de voorbeelden later in dit artikel.
+1. Het **BLOB-pad begint met** en het **BLOB-pad eindigt** op Eigenschappen, zodat u de containers, mappen en BLOB-namen kunt opgeven waarvoor u gebeurtenissen wilt ontvangen. Voor uw gebeurtenis trigger moet ten minste één van deze eigenschappen worden gedefinieerd. U kunt verschillende patronen gebruiken voor beide **BLOB-paden begint met** en het **BLOB-pad eindigt met** eigenschappen, zoals wordt weer gegeven in de voor beelden verderop in dit artikel.
 
-    * **Blobpad begint met:** Het blobpad moet beginnen met een mappad. Geldige waarden `2018/` `2018/april/shoes.csv`zijn o.a. Dit veld kan niet worden geselecteerd als een container niet is geselecteerd.
-    * **Blobpad eindigt met:** Het blobpad moet eindigen met een bestandsnaam of extensie. Geldige waarden `shoes.csv` `.csv`zijn o.a. De naam van de container en de map is `/blobs/` optioneel, maar wanneer deze zijn opgegeven, moeten ze worden gescheiden door een segment. Een container met de naam 'orders' `/orders/blobs/2018/april/shoes.csv`kan bijvoorbeeld een waarde hebben van . Als u een map in een container wilt opgeven, laat u het hoofdteken '/' weg. Als `april/shoes.csv` u bijvoorbeeld een gebeurtenis activeert op een bestand dat in map een zogenaamde 'april' in een container wordt genoemd. `shoes.csv` 
+    * **Pad van BLOB begint met:** Het BLOB-pad moet beginnen met een mappad. Geldige waarden zijn `2018/` : `2018/april/shoes.csv`en. Dit veld kan niet worden geselecteerd als er geen container is geselecteerd.
+    * **Pad naar BLOB eindigt op:** Het pad naar de BLOB moet eindigen met een bestands naam of-extensie. Geldige waarden zijn `shoes.csv` : `.csv`en. De naam van de container en map zijn optioneel, maar als u deze opgeeft, moeten `/blobs/` ze worden gescheiden door een segment. Een container met de naam ' orders ' kan bijvoorbeeld een waarde van `/orders/blobs/2018/april/shoes.csv`hebben. Als u een map in een container wilt opgeven, laat u het voorloop teken '/' weg. Er `april/shoes.csv` wordt bijvoorbeeld een gebeurtenis geactiveerd voor elk bestand in de `shoes.csv` map met de naam ' april ' in een wille keurige container. 
 
-1. Selecteer of de trigger reageert op een **blob-gebeurtenis,** **blob-verwijderde** gebeurtenis of beide. Op uw opgegeven opslaglocatie wordt bij elke gebeurtenis de pijplijnen van Gegevensfabriek geactiveerd die aan de trigger zijn gekoppeld.
+1. Selecteer of uw trigger reageert op een gebeurtenis **die** door een blob is gemaakt, een gebeurtenis voor het verwijderen van een **BLOB** of beide. In de opgegeven opslag locatie worden met elke gebeurtenis de Data Factory pijp lijnen geactiveerd die zijn gekoppeld aan de trigger.
 
-    ![De gebeurtenistrigger configureren](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+    ![De gebeurtenis trigger configureren](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-1. Selecteer of de trigger blobs met nul bytes negeert.
+1. Selecteer of blobs met nul bytes moeten worden genegeerd door de trigger.
 
-1. Zodra u de trigger hebt geconfigureerd, klikt u op **Volgende: Voorbeeld van gegevens**. In dit scherm worden de bestaande blobs weergegeven die overeenkomen met de configuratie van de gebeurtenistrigger. Zorg ervoor dat je specifieke filters hebt. Het configureren van te brede filters kan overeenkomen met een groot aantal bestanden die zijn gemaakt/verwijderd en kan een aanzienlijke impact hebben op uw kosten. Zodra de filtervoorwaarden zijn geverifieerd, klikt u op **Voltooien**.
+1. Zodra u de trigger hebt geconfigureerd, klikt u op **volgende: voor beeld van gegevens**. In dit scherm ziet u de bestaande blobs die overeenkomen met de configuratie van de gebeurtenis trigger. Zorg ervoor dat u specifieke filters hebt. Het configureren van filters die te breed zijn, kan overeenkomen met een groot aantal bestanden dat is gemaakt/verwijderd. Dit kan aanzienlijk invloed hebben op uw kosten. Klik op **volt ooien**als de filter voorwaarden zijn gecontroleerd.
 
-    ![Voorbeeld van gebeurtenistriggergegevens](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+    ![Voor beeld van gebeurtenis trigger gegevens](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
-1. Als u een pijplijn aan deze trigger wilt koppelen, gaat u naar het pijplijncanvas en klikt u op **Trigger toevoegen** en selecteert u **Nieuw/Bewerken**. Wanneer de zijnavigatie wordt weergegeven, klikt u op de **vervolgkeuzelijst Trigger kiezen...** en selecteert u de trigger die u hebt gemaakt. Klik op **Volgende: Gegevensvoorbeeld** om te bevestigen dat de configuratie correct is en **vervolgens is vervolgens de** voorbeeldvan gegevens correct.
+1. Als u een pijp lijn aan deze trigger wilt koppelen, gaat u naar het pijp lijn-canvas en klikt u op **trigger toevoegen** en selecteert u **Nieuw/bewerken**. Wanneer de side-Navigator wordt weer gegeven, klikt u op de vervolg keuzelijst **Trigger selecteren...** en selecteert u de trigger die u hebt gemaakt. Klik op **volgende: voor beeld van gegevens** om te bevestigen dat de configuratie juist is en controleer vervolgens of de voorbeeld gegevens correct zijn. **Next**
 
-1. Als uw pijplijn parameters heeft, u deze opgeven op de navigatie aan de parameterzijde van de trigger. De gebeurtenistrigger legt het mappad en de `@triggerBody().folderPath` bestandsnaam van de blob vast in de eigenschappen en `@triggerBody().fileName`. Als u de waarden van deze eigenschappen in een pijplijn wilt gebruiken, moet u de eigenschappen toewijzen aan pijplijnparameters. Nadat u de eigenschappen aan parameters hebt in kaart `@pipeline().parameters.parameterName` gebracht, hebt u toegang tot de waarden die door de trigger zijn vastgelegd via de expressie in de pijplijn. Klik **op Voltooien** zodra u klaar bent.
+1. Als uw pijp lijn para meters heeft, kunt u deze opgeven op de activerings parameter zijde navigatie. De gebeurtenis trigger legt het mappad en de bestands naam van de BLOB vast in de eigenschappen `@triggerBody().folderPath` en `@triggerBody().fileName`. Als u de waarden van deze eigenschappen in een pijp lijn wilt gebruiken, moet u de eigenschappen toewijzen aan pijplijn parameters. Nadat u de eigenschappen hebt toegewezen aan para meters, kunt u toegang krijgen tot de waarden `@pipeline().parameters.parameterName` die zijn vastgelegd door de trigger via de expressie in de pijp lijn. Klik op **volt ooien** wanneer u klaar bent.
 
-    ![Toewijzingseigenschappen aan pijplijnparameters](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+    ![Eigenschappen toewijzen aan pijplijn parameters](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-In het voorgaande voorbeeld wordt de trigger geconfigureerd om te vuren wanneer een blobpad dat eindigt in .csv wordt gemaakt in de mapgebeurtenistests in de steekproefgegevens van de container. Met de eigenschappen **mapPath** en **fileName** wordt de locatie van de nieuwe blob vastgelegd. Wanneer MoviesDB.csv bijvoorbeeld wordt toegevoegd aan het `@triggerBody().folderPath` pad sample-data/event-testing, een waarde heeft van `sample-data/event-testing` en `@triggerBody().fileName` een waarde heeft van `moviesDB.csv`. Deze waarden worden in het voorbeeld `sourceFolder` toegewezen `sourceFile` aan de pijplijnparameters `@pipeline().parameters.sourceFolder` en `@pipeline().parameters.sourceFile` die in de hele pijplijn kunnen worden gebruikt als en naar gelang van het jaar.
+In het vorige voor beeld wordt de trigger zo geconfigureerd dat deze wordt geactiveerd wanneer een BLOB-pad dat eindigt op. csv wordt gemaakt in de map Event-test in de voorbeeld gegevens van de container. Met de eigenschappen **FolderPath** en **filename** wordt de locatie van de nieuwe BLOB vastgelegd. Als bijvoorbeeld MoviesDB. csv wordt toegevoegd aan het pad voor beeld/ `@triggerBody().folderPath` gebeurtenis testen, heeft de waarde `sample-data/event-testing` en `@triggerBody().fileName` de waarde. `moviesDB.csv` Deze waarden worden in het voor beeld toegewezen aan de pijplijn parameters `sourceFolder` en `sourceFile` kunnen worden gebruikt in de hele pijp lijn als `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` respectievelijk.
 
 ## <a name="json-schema"></a>JSON-schema
 
-In de volgende tabel vindt u een overzicht van de schema-elementen die gerelateerd zijn aan gebeurtenistriggers:
+De volgende tabel bevat een overzicht van de schema-elementen die zijn gerelateerd aan triggers op basis van gebeurtenissen:
 
 | **JSON-element** | **Beschrijving** | **Type** | **Toegestane waarden** | **Vereist** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Scope** | De Azure Resource Manager-bron-id van het opslagaccount. | Tekenreeks | Azure Resource Manager-id | Ja |
-| **Gebeurtenissen** | Het soort gebeurtenissen waardoor deze trigger wordt geactiveerd. | Matrix    | Microsoft.Storage.BlobGemaakt, Microsoft.Storage.BlobVerwijderd | Ja, elke combinatie van deze waarden. |
-| **blobPathBeginsWith** | Het blobpad moet beginnen met het patroon dat is opgegeven om de trigger te kunnen afvuren. Vuurt `/records/blobs/december/` bijvoorbeeld alleen de trigger af `december` voor `records` blobs in de map onder de container. | Tekenreeks   | | U moet een waarde voor ten minste `blobPathBeginsWith` een `blobPathEndsWith`van deze eigenschappen: of . |
-| **blobPathEndsWith** | Het blobpad moet eindigen met het patroon dat is opgegeven om de trigger te kunnen afvuren. Vuurt `december/boxes.csv` bijvoorbeeld alleen de trigger `boxes` af `december` voor blobs die in een map zijn genoemd. | Tekenreeks   | | U moet een waarde voor ten minste `blobPathBeginsWith` een `blobPathEndsWith`van deze eigenschappen: of . |
-| **negerenEmptyBlobs** | Of zero-byte blobs een pijplijnrun activeren. Standaard is dit ingesteld op true. | Booleaans | waar of onwaar | Nee |
+| **ligt** | De Azure Resource Manager Resource-ID van het opslag account. | Tekenreeks | Azure Resource Manager-ID | Ja |
+| **evenementen** | Het type gebeurtenissen dat ervoor zorgt dat deze trigger wordt gestart. | Matrix    | Micro soft. storage. BlobCreated, micro soft. storage. BlobDeleted | Ja, een wille keurige combi natie van deze waarden. |
+| **blobPathBeginsWith** | Het BLOB-pad moet beginnen met het patroon dat is ingesteld voor de trigger om te starten. De trigger wordt `/records/blobs/december/` bijvoorbeeld alleen geactiveerd voor blobs in de `december` map onder de `records` container. | Tekenreeks   | | U moet een waarde opgeven voor ten minste een van deze eigenschappen: `blobPathBeginsWith` of. `blobPathEndsWith` |
+| **blobPathEndsWith** | Het BLOB-pad moet eindigen met het patroon dat is ingesteld voor de trigger om te starten. De trigger wordt `december/boxes.csv` bijvoorbeeld alleen geactiveerd voor blobs met de `boxes` naam in `december` een map. | Tekenreeks   | | U moet een waarde opgeven voor ten minste een van deze eigenschappen: `blobPathBeginsWith` of. `blobPathEndsWith` |
+| **ignoreEmptyBlobs** | Hiermee wordt aangegeven of nul-byte-Blobs een pijplijn uitvoering activeren. Deze instelling is standaard ingesteld op waar. | Booleaans | waar of onwaar | Nee |
 
-## <a name="examples-of-event-based-triggers"></a>Voorbeelden van op gebeurtenissen gebaseerde triggers
+## <a name="examples-of-event-based-triggers"></a>Voor beelden van triggers op basis van gebeurtenissen
 
-In deze sectie vindt u voorbeelden van op gebeurtenissen gebaseerde triggerinstellingen.
+Deze sectie bevat voor beelden van activerings instellingen op basis van gebeurtenissen.
 
 > [!IMPORTANT]
-> U moet het `/blobs/` segment van het pad opnemen, zoals in de volgende voorbeelden wordt weergegeven wanneer u container en map, container en bestand of container, map en bestand opgeeft. Voor **blobPathBeginsWith**voegt de gebruikersinterface van `/blobs/` de gegevensfabriek automatisch toe tussen de map en de containernaam in de trigger JSON.
+> U moet het `/blobs/` segment van het pad toevoegen, zoals wordt weer gegeven in de volgende voor beelden, wanneer u container en map, container, bestand, container, map en bestand opgeeft. Voor **blobPathBeginsWith**voegt de Data Factory gebruikers interface automatisch toe `/blobs/` tussen de map en de container naam in de JSON van de trigger.
 
 | Eigenschap | Voorbeeld | Beschrijving |
 |---|---|---|
-| **Blobpad begint met** | `/containername/` | Ontvangt gebeurtenissen voor elke blob in de container. |
-| **Blobpad begint met** | `/containername/blobs/foldername/` | Ontvangt gebeurtenissen voor blobs `containername` in `foldername` de container en map. |
-| **Blobpad begint met** | `/containername/blobs/foldername/subfoldername/` | U ook verwijzen naar een submap. |
-| **Blobpad begint met** | `/containername/blobs/foldername/file.txt` | Ontvangt gebeurtenissen voor `file.txt` een `foldername` blob die `containername` is vernoemd in de map onder de container. |
-| **Blobpad eindigt met** | `file.txt` | Ontvangt gebeurtenissen voor `file.txt` een blob die in een willekeurig pad is genoemd. |
-| **Blobpad eindigt met** | `/containername/blobs/file.txt` | Ontvangt gebeurtenissen voor `file.txt` een `containername`blob met de naam onder container . |
-| **Blobpad eindigt met** | `foldername/file.txt` | Ontvangt gebeurtenissen voor `file.txt` een `foldername` blob die is vernoemd in map onder een container. |
+| **Pad van BLOB begint met** | `/containername/` | Hiermee ontvangt u gebeurtenissen voor alle blobs in de container. |
+| **Pad van BLOB begint met** | `/containername/blobs/foldername/` | Hiermee ontvangt u gebeurtenissen voor alle blobs `containername` in de `foldername` container en de map. |
+| **Pad van BLOB begint met** | `/containername/blobs/foldername/subfoldername/` | U kunt ook verwijzen naar een submap. |
+| **Pad van BLOB begint met** | `/containername/blobs/foldername/file.txt` | Hiermee ontvangt u gebeurtenissen voor een `file.txt` blob met `foldername` de naam in `containername` de map onder de container. |
+| **BLOB eindigt op** | `file.txt` | Hiermee ontvangt u gebeurtenissen voor een `file.txt` blob met de naam in een wille keurig pad. |
+| **BLOB eindigt op** | `/containername/blobs/file.txt` | Hiermee ontvangt u gebeurtenissen voor een `file.txt` blob met `containername`de naam onder container. |
+| **BLOB eindigt op** | `foldername/file.txt` | Hiermee ontvangt u gebeurtenissen voor een `file.txt` BLOB `foldername` met de naam in de map onder een wille keurige container. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md#trigger-execution)voor gedetailleerde informatie over triggers.
+Zie [pijp lijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#trigger-execution)voor meer informatie over triggers.

@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren naar of vanuit Azure Data Explorer
-description: Meer informatie over het kopiëren van gegevens naar of vanuit Azure Data Explorer met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren naar of van Azure Data Explorer
+description: Meer informatie over het kopiëren van gegevens naar of van Azure Data Explorer met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 ms.author: orspodek
 author: linda33wj
@@ -13,78 +13,78 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410767"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Gegevens kopiëren naar of vanuit Azure Data Explorer met Azure Data Factory
+# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure Data Explorer met behulp van Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory gebruiken om gegevens naar of vanuit [Azure Data Explorer](/azure/data-explorer/data-explorer-overview)te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel, dat een algemeen overzicht van kopieeractiviteit biedt.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van of naar [Azure Data Explorer](/azure/data-explorer/data-explorer-overview). Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit biedt een algemeen overzicht van de Kopieer activiteit.
 
 >[!TIP]
->Voor Azure Data Factory- en Azure Data Explorer-integratie in het algemeen, leest u meer over [Azure Data Explorer integreren met Azure Data Factory](/azure/data-explorer/data-factory-integration).
+>Voor Azure Data Factory-en Azure Data Explorer-integratie in het algemeen leert u meer over het [integreren van azure Data Explorer met Azure Data Factory](/azure/data-explorer/data-factory-integration).
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Azure Data Explorer-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens uit elk ondersteund brongegevensarchief kopiëren naar Azure Data Explorer. U ook gegevens uit Azure Data Explorer kopiëren naar een ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die de kopieeractiviteit als bronnen of zinkt ondersteunt.
+U kunt gegevens van elk ondersteund bron gegevens archief kopiëren naar Azure Data Explorer. U kunt ook gegevens uit Azure Data Explorer kopiëren naar een ondersteunde Sink-gegevens opslag. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen of Sinks.
 
 >[!NOTE]
->Het kopiëren van gegevens van of naar Azure Data Explorer via een on-premises gegevensarchief met behulp van zelfgehoste uitvoering van integratie wordt ondersteund in versie 3.14 en hoger.
+>Het kopiëren van gegevens naar of van Azure Data Explorer via een on-premises gegevens opslag met behulp van zelf-hostende Integration runtime wordt ondersteund in versie 3,14 en hoger.
 
-Met de Azure Data Explorer-connector u het volgende doen:
+Met de Azure Data Explorer-connector kunt u het volgende doen:
 
-* Kopieer gegevens met Azure Active Directory -verificatie (Azure AD) met een **serviceprincipal**.
-* Als bron u gegevens ophalen met behulp van een KQL-query (Kusto).
-* Als gootsteen worden gegevens toegevoegd aan een doeltabel.
+* Gegevens kopiëren met behulp van Azure Active Directory (Azure AD) verificatie van het toepassings token met een **Service-Principal**.
+* Haal als bron gegevens op met behulp van een KQL (Kusto)-query.
+* Gegevens toevoegen aan een doel tabel als sink.
 
 ## <a name="getting-started"></a>Aan de slag
 
 >[!TIP]
->Zie [Gegevens kopiëren van/naar Azure Data Explorer met Azure Data Factory](/azure/data-explorer/data-factory-load-data) en Bulk kopiëren vanuit een database naar Azure Data [Explorer](/azure/data-explorer/data-factory-template)voor een walkthrough van azure data explorer.
+>Zie voor een overzicht van de Azure Data Explorer-connector [gegevens kopiëren naar/van azure Data Explorer met behulp van Azure Data Factory](/azure/data-explorer/data-factory-load-data) en [bulksgewijs kopiëren van een data base naar Azure Data Explorer](/azure/data-explorer/data-factory-template).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Azure Data Explorer-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Data Explorer-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De Azure Data Explorer-connector maakt gebruik van serviceprincipal-verificatie. Volg deze stappen om een serviceprincipal te krijgen en machtigingen toe te kennen:
+De Azure Data Explorer-connector maakt gebruik van Service-Principal-verificatie. Volg deze stappen om een service-principal op te halen en machtigingen te verlenen:
 
-1. Registreer een toepassingsentiteit in Azure Active Directory door de stappen te volgen in [Uw toepassing registreren met een Azure AD-tenant](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
+1. Registreer een toepassings entiteit in Azure Active Directory door de stappen te volgen in [uw toepassing registreren bij een Azure AD-Tenant](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 
     - Toepassings-id
-    - Toepassingssleutel
+    - Toepassings sleutel
     - Tenant-id
 
-2. Geef de serviceprincipal de juiste machtigingen in Azure Data Explorer. Zie [Machtigingen voor Azure Data Explorer-database beheren](/azure/data-explorer/manage-database-permissions) voor gedetailleerde informatie over rollen en machtigingen en over het beheren van machtigingen. In het algemeen moet u:
+2. Verleen de service-principal de juiste machtigingen in azure Data Explorer. Zie [Azure Data Explorer-database machtigingen beheren](/azure/data-explorer/manage-database-permissions) voor gedetailleerde informatie over rollen en machtigingen en over het beheren van machtigingen. Over het algemeen moet u het volgende doen:
 
-    - **Als bron,** ten minste de rol van de **databaseviewer** toekennen aan uw database
-    - **Als sink,** verlenen ten minste de **Database innameor** rol aan uw database
+    - Geef ten minste de rol van **Database Viewer** voor uw Data Base op **als bron**.
+    - Ken **als Sink**ten minste de rol van **database opname** toe aan uw data base
 
 >[!NOTE]
->Wanneer u de gebruikersinterface van Data Factory gebruikt om te schrijven, wordt uw gebruikersaccount gebruikt om Azure Data Explorer-clusters, databases en tabellen weer te geven. Voer de naam handmatig in als u geen toestemming hebt voor deze bewerkingen.
+>Wanneer u de Data Factory gebruikers interface gebruikt om te schrijven, wordt uw aanmeldings gebruikers account gebruikt voor het weer geven van Azure Data Explorer clusters, data bases en tabellen. Voer de naam hand matig in als u niet bent gemachtigd voor deze bewerkingen.
 
 De volgende eigenschappen worden ondersteund voor de gekoppelde Azure Data Explorer-service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** moet zijn ingesteld op **AzureDataExplorer**. | Ja |
-| endpoint | URL van eindpunt van het Azure Data `https://<clusterName>.<regionName>.kusto.windows.net`Explorer-cluster, met de indeling als . | Ja |
-| database | Naam van de database. | Ja |
-| tenant | Geef de tenantgegevens op (domeinnaam of tenant-id) waaronder uw toepassing zich bevindt. Dit staat bekend als "Authority ID" in [Kusto verbindingstekenreeks](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Haal deze op door de muisaanwijzer in de rechterbovenhoek van de Azure-portal te zweven. | Ja |
-| servicePrincipalId | Geef de client-id van de toepassing op. Dit staat bekend als "AAD application client ID" in [Kusto connection string](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ja |
-| servicePrincipalKey | Geef de sleutel van de toepassing op. Dit staat bekend als "AAD-toepassingssleutel" in [kusto-verbindingstekenreeks](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Markeer dit veld als een **SecureString** om het veilig op te slaan in Data Factory of [zoek naar beveiligde gegevens die zijn opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **AzureDataExplorer**. | Ja |
+| endpoint | Eind punt-URL van het Azure Data Explorer-cluster, met `https://<clusterName>.<regionName>.kusto.windows.net`de indeling als. | Ja |
+| database | De naam van de data base. | Ja |
+| tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. Dit staat bekend als ' Authority-ID ' in [Kusto Connection String](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). U kunt deze ophalen door de muis aanwijzer in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| servicePrincipalId | Geef de client-ID van de toepassing op. Dit wordt ook wel ' AAD-toepassings client-ID ' genoemd in [Kusto Connection String](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Ja |
+| servicePrincipalKey | Geef de sleutel van de toepassing op. Dit wordt aangeduid als ' AAD-toepassings sleutel ' in [Kusto Connection String](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Markeer dit veld als een **SecureString** om het veilig op te slaan in Data Factory of om te [verwijzen naar beveiligde gegevens die zijn opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
-**Gekoppelde serviceeigenschappen bijvoorbeeld:**
+**Voor beeld van eigenschappen van gekoppelde service:**
 
 ```json
 {
@@ -107,18 +107,18 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde Azure Data Explo
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie [Gegevenssets in Azure Data Factory](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie worden eigenschappen weergegeven die de azure data explorer-gegevensset ondersteunt.
+Zie [gegevens sets in azure Data Factory](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u de eigenschappen die door de Azure Data Explorer-gegevensset worden ondersteund.
 
-Als u gegevens wilt kopiëren naar Azure Data Explorer, stelt u de eigenschap typeeigenschap van de gegevensset in op **AzureDataExplorerTable**.
+Als u gegevens wilt kopiëren naar Azure Data Explorer, stelt u de eigenschap type van de gegevensset in op **AzureDataExplorerTable**.
 
 De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** moet zijn ingesteld op **AzureDataExplorerTable**. | Ja |
-| tabel | De naam van de tabel waarnaar de gekoppelde service verwijst. | Ja voor gootsteen; Nee voor bron |
+| type | De eigenschap **type** moet worden ingesteld op **AzureDataExplorerTable**. | Ja |
+| tabel | De naam van de tabel waarnaar de gekoppelde service verwijst. | Ja voor Sink; Nee voor bron |
 
-**Voorbeeld van de eigenschappen van gegevensset:**
+**Voor beeld van eigenschappen van gegevensset:**
 
 ```json
 {
@@ -139,23 +139,23 @@ De volgende eigenschappen worden ondersteund:
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie [Pijplijnen en activiteiten in Azure Data Factory](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die azure data explorer-bronnen en sinks ondersteunen.
+Voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, Zie [pijp lijnen en activiteiten in azure Data Factory](concepts-pipelines-activities.md). In deze sectie vindt u een lijst met eigenschappen die door Azure Data Explorer-bronnen en-sinks worden ondersteund.
 
 ### <a name="azure-data-explorer-as-source"></a>Azure Data Explorer als bron
 
-Als u gegevens uit Azure Data Explorer wilt kopiëren, stelt u de **eigenschap type** in de activiteitsbron kopiëren in op **AzureDataExplorer.** De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit Azure Data Explorer, stelt u de eigenschap **type** in de bron voor het kopiëren van de activiteit in op **AzureDataExplorerSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de kopieeractiviteitsbron moet zijn ingesteld op: **AzureDataExplorerSource** | Ja |
-| query | Een alleen-lezen verzoek gegeven in een [KQL-formaat](/azure/kusto/query/). Gebruik de aangepaste KQL-query als referentie. | Ja |
-| queryTime-out | De wachttijd voordat de queryaanvraag een time-out heeft. De standaardwaarde is 10 min (00:10:00); toegestane maximale waarde is 1 uur (01:00:00). | Nee |
-| noTruncation noTruncation | Hiermee geeft u aan of de ingestelde geretourneerde resultaten moeten worden afgekapt. Standaard wordt het resultaat afgekapt na 500.000 records of 64 megabyte (MB). Afkappen wordt sterk aanbevolen om het juiste gedrag van de activiteit te garanderen. |Nee |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op: **AzureDataExplorerSource** | Ja |
+| query | Een alleen-lezen aanvraag in een [KQL-indeling](/azure/kusto/query/). Gebruik de aangepaste KQL-query als referentie. | Ja |
+| queryTimeout | De wacht tijd voordat de query aanvraag een time-out heeft. De standaard waarde is 10 minuten (00:10:00); de toegestane maximum waarde is 1 uur (01:00:00). | Nee |
+| geen Afkap ping | Hiermee wordt aangegeven of de geretourneerde resultatenset moet worden afgekapt. Standaard wordt het resultaat afgekapt na 500.000 records of 64 mega bytes (MB). Afkap ping wordt sterk aanbevolen om te zorgen voor het juiste gedrag van de activiteit. |Nee |
 
 >[!NOTE]
->Standaard heeft de Bron van Azure Data Explorer een groottelimiet van 500.000 records of 64 MB. Als u alle records zonder afgekapt `set notruncation;` wilt ophalen, u aan het begin van de query opgeven. Zie [Querylimieten voor](https://docs.microsoft.com/azure/kusto/concepts/querylimits)meer informatie .
+>Data Explorer bron van Azure heeft standaard een maximale grootte van 500.000 records of 64 MB. Als u alle records zonder afkap Ping wilt ophalen, kunt u `set notruncation;` aan het begin van de query opgeven. Zie [query limieten](https://docs.microsoft.com/azure/kusto/concepts/querylimits)voor meer informatie.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -188,17 +188,17 @@ Als u gegevens uit Azure Data Explorer wilt kopiëren, stelt u de **eigenschap t
 ]
 ```
 
-### <a name="azure-data-explorer-as-sink"></a>Azure Data Explorer als gootsteen
+### <a name="azure-data-explorer-as-sink"></a>Azure Data Explorer als Sink
 
-Als u gegevens wilt kopiëren naar Azure Data Explorer, stelt u de eigenschap type in de inhoudsgroep voor kopieeractiviteiten in op **AzureDataExplorerSink**. De volgende eigenschappen worden ondersteund in de sectie copy activity **sink:**
+Als u gegevens wilt kopiëren naar Azure Data Explorer, stelt u de eigenschap type in de Sink van de Kopieer activiteit in op **AzureDataExplorerSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de inhoudsgroep voor kopiëren moet worden ingesteld op: **AzureDataExplorerSink**. | Ja |
-| ingestionMappingName | Naam van een vooraf gemaakte [toewijzing](/azure/kusto/management/mappings#csv-mapping) op een Kusto-tabel. Als u de kolommen van bron naar Azure Data Explorer (die van toepassing is op [alle ondersteunde bronopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats), inclusief CSV/JSON/Avro-indelingen), wilt toewijzen, u de [toewijzing](copy-activity-schema-and-type-mapping.md) van de kolomtoewijzing voor kopieeractiviteiten (impliciet op naam of expliciet als geconfigureerd) en/of Azure Data Explorer-toewijzingen gebruiken. | Nee |
-| additionalProperties additionalProperties additionalProperties additionalProperties | Een eigenschappenzak die kan worden gebruikt voor het opgeven van een van de inname-eigenschappen die nog niet zijn ingesteld door de Azure Data Explorer Sink. In het bijzonder kan het handig zijn voor het opgeven van innametags. Meer informatie over [azure data Explore-gegevensopnamedocument](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html). | Nee |
+| type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op: **AzureDataExplorerSink**. | Ja |
+| ingestionMappingName | Naam van een vooraf gemaakte [toewijzing](/azure/kusto/management/mappings#csv-mapping) in een Kusto-tabel. Als u de kolommen van de bron wilt toewijzen aan Azure Data Explorer (wat van toepassing is op [alle ondersteunde bron archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats), waaronder CSV/JSON-AVRO), kunt u de [kolom toewijzing](copy-activity-schema-and-type-mapping.md) van de Kopieer activiteit (impliciet op naam of expliciet als geconfigureerd) en/of Azure Data Explorer toewijzingen gebruiken. | Nee |
+| additionalProperties | Een eigenschappen verzameling die kan worden gebruikt voor het opgeven van de opname-eigenschappen die niet al worden ingesteld door de Azure Data Explorer sink. Het is met name handig om opname Tags op te geven. Meer informatie over het [gegevens opname document van Azure data verkennen](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html). | Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -231,12 +231,12 @@ Als u gegevens wilt kopiëren naar Azure Data Explorer, stelt u de eigenschap ty
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Zie [Opzoekactiviteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Zie [lookup activity](control-flow-lookup-activity.md)(Engelstalig) voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die de kopieeractiviteit in Azure Data Factory ondersteunt als bronnen en zinkt.
+* Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die de Kopieer activiteit in azure Data Factory ondersteunt als bronnen en Sinks.
 
-* Meer informatie over het [kopiëren van gegevens uit Azure Data Factory naar Azure Data Explorer](/azure/data-explorer/data-factory-load-data).
+* Meer informatie over het [kopiëren van gegevens van Azure Data Factory naar Azure Data Explorer](/azure/data-explorer/data-factory-load-data).

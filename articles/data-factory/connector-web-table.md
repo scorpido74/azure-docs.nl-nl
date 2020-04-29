@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit webtabel kopiëren met Azure Data Factory
-description: Meer informatie over Web Table Connector van Azure Data Factory waarmee u gegevens uit een webtabel kopiëren naar gegevensopslag die door Data Factory worden ondersteund als putten.
+title: Gegevens uit een webtabel kopiëren met behulp van Azure Data Factory
+description: Meer informatie over web Table connector van Azure Data Factory waarmee u gegevens kunt kopiëren van een webtabel naar gegevens archieven die door Data Factory worden ondersteund als Sinks.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410217"
 ---
-# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Gegevens uit de webtabel kopiëren met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Gegevens uit een webtabel kopiëren met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-web-table-connector.md)
 > * [Huidige versie](connector-web-table.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een database met webtabelen te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een Data Base van een webtabel te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
-Het verschil tussen deze webtafelconnector, de [REST-connector](connector-rest.md) en de [HTTP-connector](connector-http.md) zijn:
+Het verschil tussen deze web Table-connector, de [rest-connector](connector-rest.md) en de [http-connector](connector-http.md) zijn:
 
-- **In de webtabelconnector** wordt tabelinhoud uit een HTML-webpagina geëxtraheerd.
-- **REST-connector** ondersteunt specifiek het kopiëren van gegevens van RESTful API's.
-- **HTTP-connector** is algemeen om gegevens op te halen uit elk HTTP-eindpunt, bijvoorbeeld om bestand te downloaden. 
+- Met **Web Table connector** wordt tabel inhoud geëxtraheerd van een HTML-webpagina.
+- **Rest connector** biedt specifiek ondersteuning voor het kopiëren van gegevens uit rest-api's.
+- **Http-connector** is algemeen om gegevens op te halen uit een http-eind punt, bijvoorbeeld om het bestand te downloaden. 
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Deze webtabelconnector wordt ondersteund voor de volgende activiteiten:
+Deze web Table-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens uit de database van de webtabel kopiëren naar een ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens uit de Web Table-Data Base kopiëren naar een ondersteunde Sink-gegevens opslag. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Deze webtabelconnector ondersteunt met name **het extraheren van tabelinhoud van een HTML-pagina.**
+Met name deze web Table-connector ondersteunt het **extra heren van tabel inhoud van een HTML-pagina**.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze webtabelconnector wilt gebruiken, moet u een self-hosted Integration Runtime instellen. Zie [artikel Self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) voor meer informatie.
+Als u deze web Table-connector wilt gebruiken, moet u een zelf-hostende Integration Runtime instellen. Zie [zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabrieken te definiëren die specifiek zijn voor de connector van de webtabel.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor web Table connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor gekoppelde webtabelservice:
+De volgende eigenschappen worden ondersteund voor gekoppelde webtabelgegevens:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **Web** |Ja |
+| type | De eigenschap type moet worden ingesteld op: **Web** |Ja |
 | url | URL naar de webbron |Ja |
-| authenticationType | Toegestane waarde is: **Anoniem**. |Ja |
-| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Een Self-hosted Integration Runtime is vereist zoals vermeld in [Voorwaarden](#prerequisites). |Ja |
+| authenticationType | Toegestane waarde is: **anoniem**. |Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -85,17 +85,17 @@ De volgende eigenschappen worden ondersteund voor gekoppelde webtabelservice:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de gegevensset van de webtabel.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de gegevensset van de webtabel.
 
-Als u gegevens uit de webtabel wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **WebTable**. De volgende eigenschappen worden ondersteund:
+Als u gegevens wilt kopiëren uit een webtabel, stelt u de eigenschap type van de gegevensset in op **Webtabel**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **WebTable** | Ja |
-| path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van gekoppelde service. |
-| Index |De index van de tabel in de resource. Zie [Index van een tabel in een HTML-paginasectie opvragen](#get-index-of-a-table-in-an-html-page) voor stappen om index van een tabel in een HTML-pagina op te halen. |Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **Webtable** | Ja |
+| path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
+| TabIndex |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -117,13 +117,13 @@ Als u gegevens uit de webtabel wilt kopiëren, stelt u de eigenschap type van de
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de bron van de webtabel.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de bron van de webtabel.
 
 ### <a name="web-table-as-source"></a>Webtabel als bron
 
-Als u gegevens uit de webtabel wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **WebSource,** er worden geen extra eigenschappen ondersteund.
+Als u gegevens wilt kopiëren uit een webtabel, stelt u het bron type in de Kopieer activiteit in op **webbron**. er worden geen aanvullende eigenschappen ondersteund.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -154,38 +154,38 @@ Als u gegevens uit de webtabel wilt kopiëren, stelt u het brontype in de kopiee
 ]
 ```
 
-## <a name="get-index-of-a-table-in-an-html-page"></a>Index van een tabel in een HTML-pagina opdoen
+## <a name="get-index-of-a-table-in-an-html-page"></a>Index van een tabel in een HTML-pagina ophalen
 
-Als u de index wilt krijgen van een tabel die u moet configureren in [gegevensseteigenschappen,](#dataset-properties)u bijvoorbeeld Excel 2016 als hulpmiddel als volgt gebruiken:
+Als u de index wilt ophalen van een tabel die u in de [Eigenschappen](#dataset-properties)van de gegevensset wilt configureren, kunt u bijvoorbeeld Excel 2016 als volgt gebruiken als het hulp programma:
 
-1. Start **Excel 2016** en ga naar het tabblad **Gegevens.**
-2. Klik op **Nieuwe query** op de werkbalk, wijs Uit **andere bronnen** aan en klik op Van **web**.
+1. Start **Excel 2016** en schakel over naar het tabblad **gegevens** .
+2. Klik op **nieuwe query** op de werk balk, wijs **vanuit andere bronnen** naar en klik op **van web**.
 
-    ![Power Query-menu](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. Voer in het dialoogvenster **Van web** **URL** in die u zou https://en.wikipedia.org/wiki/) gebruiken in de gekoppelde service JSON (bijvoorbeeld: samen met het pad dat u voor de gegevensset opgeeft (bijvoorbeeld: AFI%27s_100_Years... 100_Movies) en klik op **OK**.
+    ![Menu Power Query](./media/copy-data-from-web-table/PowerQuery-Menu.png)
+3. Voer in het dialoog venster **van het web** de **URL** in die u in de gekoppelde service-JSON zou gebruiken https://en.wikipedia.org/wiki/) (bijvoorbeeld: samen met het pad dat u opgeeft voor de gegevensset (bijvoorbeeld: AFI% 27s_100_Years... 100_Movies) en klik op **OK**.
 
-    ![Dialoogvenster Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
+    ![Vanuit het dialoog venster Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    URL die in dit voorbeeld wordt gebruikt:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Als u het dialoogvenster **Access Web-inhoud** ziet, selecteert u de juiste **URL**, **verificatie**en klikt u op **Verbinding maken**.
+    URL die in dit voor beeld wordt gebruikt:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. Als u het dialoog venster **webinhoud openen** ziet, selecteert u de juiste **URL**, **verificatie**en klikt u op **verbinding maken**.
 
-   ![Dialoogvenster Webinhoud openen](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. Klik op een **tabelitem** in de structuurweergave om de inhoud van de tabel te bekijken en klik vervolgens op **Knop Bewerken** onderin.  
+   ![Het dialoog venster toegang tot webinhoud](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+5. Klik in de structuur weergave op een **tabel** item om de inhoud van de tabel te bekijken en klik vervolgens onderaan op de knop **bewerken** .  
 
    ![Navigator-venster](./media/copy-data-from-web-table/Navigator-DialogBox.png)
-6. Klik in het venster **Queryeditor** op de knop **Geavanceerde editor** op de werkbalk.
+6. Klik in het venster **query-editor** op **Geavanceerde editor** knop op de werk balk.
 
     ![Knop Geavanceerde editor](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
-7. In het dialoogvenster Geavanceerde editor is het getal naast 'Bron' de index.
+7. In het dialoog venster Geavanceerde editor is het nummer naast ' Bron ' de index.
 
-    ![Geavanceerde editor - Index](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
+    ![Geavanceerde editor-index](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
 
-Als u Excel 2013 gebruikt, gebruikt u [Microsoft Power Query voor Excel](https://www.microsoft.com/download/details.aspx?id=39379) om de index op te halen. Zie [Verbinding maken met een webpaginaartikel](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) voor meer informatie. De stappen zijn vergelijkbaar als u [Microsoft Power BI voor bureaublad gebruikt.](https://powerbi.microsoft.com/desktop/)
+Als u Excel 2013 gebruikt, gebruikt u [Microsoft Power query voor Excel](https://www.microsoft.com/download/details.aspx?id=39379) om de index op te halen. Zie [verbinding maken met een webpagina](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) -artikel voor meer informatie. De stappen zijn vergelijkbaar als u [micro soft power BI voor het bureau blad](https://powerbi.microsoft.com/desktop/)gebruikt.
 
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

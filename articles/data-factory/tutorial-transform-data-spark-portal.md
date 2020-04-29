@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens transformeren met Spark in Azure Data Factory '
+title: 'Gegevens transformeren met behulp van Spark in Azure Data Factory '
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van een Spark-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409268"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van een Spark-activiteit in Azure Data Factory
@@ -31,13 +31,13 @@ In deze zelfstudie voert u de volgende stappen uit:
 > * Een pijplijnuitvoering activeren.
 > * De pijplijnuitvoering controleert.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure-opslagaccount**. U maakt een Python-script en een invoerbestand, en upload deze naar Azure Storage. De uitvoer van het Spark-programma wordt opgeslagen in dit opslagaccount. Het Spark-cluster op aanvraag gebruikt hetzelfde opslagaccount als de primaire opslag.  
+* **Azure-opslag account**. U maakt een Python-script en een invoerbestand, en upload deze naar Azure Storage. De uitvoer van het Spark-programma wordt opgeslagen in dit opslagaccount. Het Spark-cluster op aanvraag gebruikt hetzelfde opslagaccount als de primaire opslag.  
 
 > [!NOTE]
 > HdInsight ondersteunt alleen algemene opslagaccounts met de catogorie Standard. Zorg ervoor dat het account niet een premium of alleen-blob opslagaccount is.
@@ -46,7 +46,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 
 ### <a name="upload-the-python-script-to-your-blob-storage-account"></a>Het Python-script uploaden naar het Blob-opslagaccount
-1. Maak een Python-bestand met de volgende inhoud met de naam **WordCount_Spark.py:** 
+1. Maak een python-bestand met de naam **WordCount_Spark. py** met de volgende inhoud: 
 
     ```python
     import sys
@@ -71,7 +71,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
     if __name__ == "__main__":
         main()
     ```
-1. Vervang * &lt;storageAccountName&gt; * door de naam van uw Azure-opslagaccount. Sla het bestand vervolgens op. 
+1. Vervang * &lt;storageAccountName&gt; * door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
 1. Maak in Azure Blob-opslag een container met de naam **adftutorial** als deze nog niet bestaat. 
 1. Maak een map met de naam **spark**.
 1. Maak in de map **spark** een submap met de naam **script**. 
@@ -93,14 +93,14 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
       
    ![De pagina Nieuwe data factory](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   De naam van de Azure-gegevensfabriek moet *wereldwijd uniek*zijn. Als u de volgende fout ziet, wijzigt u de naam van de gegevensfactory. (Gebruik bijvoorbeeld ** &lt;de&gt;naam ADFTutorialDataFactory**). Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-data factory moet *wereld wijd uniek*zijn. Als u de volgende fout ziet, wijzigt u de naam van de gegevensfactory. (Gebruik ** &lt;bijvoorbeeld&gt;ADFTutorialDataFactory**). Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor naamgevingsregels voor Data Factory-artefacten.
   
    ![Fout als de naam niet beschikbaar is](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. Selecteer voor **Abonnement** het Azure-abonnement waarin u de gegevensfactory wilt maken. 
 1. Voer een van de volgende stappen uit voor **Resourcegroep**:
      
-   - Selecteer **Bestaande gebruiken**en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
-   - Selecteer **Nieuw maken**en voer de naam van een resourcegroep in.   
+   - Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst. 
+   - Selecteer **nieuwe maken**en voer de naam van een resource groep in.   
          
    Voor sommige van de stappen in deze snelstartgids wordt ervan uitgegaan dat u voor de resourcegroep de naam **ADFTutorialResourceGroup** gebruikt. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 1. Selecteer **V2** als **Versie**.
@@ -110,15 +110,15 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 1. Selecteer **Maken**.
 
-1. Nadat de creatie is voltooid, ziet u de **fabriekspagina Gegevens.** Selecteer de tegel **Maken en controleren** om de gebruikersinterface van Data Factory te openen op een afzonderlijk tabblad.
+1. Nadat het maken is voltooid, ziet u de pagina **Data Factory** . Selecteer de tegel **Maken en controleren** om de gebruikersinterface van Data Factory te openen op een afzonderlijk tabblad.
 
     ![Startpagina van Data Factory, met de tegel Maken en controleren](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 In deze sectie maakt u twee gekoppelde services: 
     
-- Een **azure storage-gekoppelde service** die een Azure-opslagaccount koppelt aan de gegevensfabriek. Deze opslag wordt gebruikt voor het HDInsight-cluster op aanvraag. De service bevat ook het Spark-script dat moet worden uitgevoerd. 
-- Een **on-demand HDInsight gekoppelde service.** Azure Data Factory maakt automatisch een HDInsight-cluster en voert het Spark-programma uit. Het HDInsight-cluster wordt vervolgens verwijderd als het cluster gedurende een vooraf geconfigureerde tijd inactief is geweest. 
+- Een **Azure Storage gekoppelde service** waarmee een Azure Storage-account wordt gekoppeld aan de Data Factory. Deze opslag wordt gebruikt voor het HDInsight-cluster op aanvraag. De service bevat ook het Spark-script dat moet worden uitgevoerd. 
+- Een **gekoppelde HDInsight-service op aanvraag**. Azure Data Factory maakt automatisch een HDInsight-cluster en voert het Spark-programma uit. Het HDInsight-cluster wordt vervolgens verwijderd als het cluster gedurende een vooraf geconfigureerde tijd inactief is geweest. 
 
 ### <a name="create-an-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 
@@ -149,13 +149,13 @@ In deze sectie maakt u twee gekoppelde services:
    
    b. Controleer of **On-demand HDInsight** is geselecteerd bij **Type**.
    
-   c. Selecteer **AzureBlobStorage1**voor **Azure Storage Linked Service**. U hebt deze gekoppelde service al eerder gemaakt. Als u een andere naam hebt gebruikt, geeft u hier de juiste naam op. 
+   c. Selecteer **AzureBlobStorage1**voor **Azure Storage gekoppelde service**. U hebt deze gekoppelde service al eerder gemaakt. Als u een andere naam hebt gebruikt, geeft u hier de juiste naam op. 
    
    d. Selecteer **spark** bij **Clustertype**.
    
    e. Voer bij **Service-principal-id** de id in van de service-principal die gemachtigd is om een HDInsight-cluster te maken. 
    
-      Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor meer informatie. De **hoofd-id van** de service is gelijk aan de *toepassings-id*en een **hoofdsleutel van de service** is gelijk aan de waarde voor een *clientgeheim*.
+      Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor meer informatie. De **Service-Principal-id** is gelijk aan de *toepassings-id*en een **Service-Principal-sleutel** is gelijk aan de waarde voor een *client geheim*.
    
    f. Geef bij **Sleutel van service-principal** de sleutel op. 
    
@@ -176,7 +176,7 @@ In deze sectie maakt u twee gekoppelde services:
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-1. Selecteer **+** de knop (plus) en selecteer **Vervolgens Pijplijn** in het menu.
+1. Selecteer de **+** knop (plus) en selecteer vervolgens **pijp lijn** in het menu.
 
    ![Knoppen voor het maken van een nieuwe pijplijn](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
 1. Vouw in de werkset **Activiteiten****HDInsight** uit. Sleep de activiteit **Spark** vanuit de werkset **Activities** naar het ontwerpoppervlak voor pijplijnen. 
@@ -184,14 +184,14 @@ In deze sectie maakt u twee gekoppelde services:
    ![De activiteit Spark slepen](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
 1. Voer de volgende stappen uit in de eigenschappen voor het **Spark**-activiteitvenster onderaan: 
 
-   a. Ga naar het tabblad **HDI-cluster.**
+   a. Ga naar het tabblad **HDI-cluster** .
    
    b. Selecteer **AzureHDInsightLinkedService** (gemaakt in de vorige procedure). 
         
    ![De gekoppelde HDInsight-service opgeven](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Ga naar het tabblad **Script/Jar** en voer de volgende stappen uit: 
 
-   a. Selecteer **AzureBlobStorage1**voor **Job Linked Service**.
+   a. Selecteer voor **taak gekoppelde service** **AzureBlobStorage1**.
    
    b. Selecteer **In opslag bladeren**.
 
@@ -199,7 +199,7 @@ In deze sectie maakt u twee gekoppelde services:
    
    c. Ga naar de map **adftutorial/spark/script**, selecteer **WordCount_Spark.py** en selecteer **Voltooien**.      
 
-1. Selecteer op de werkbalk de knop **Valideren** om de pijplijn te valideren. Selecteer **>>** de knop (pijl-rechts) om het validatievenster te sluiten. 
+1. Selecteer op de werkbalk de knop **Valideren** om de pijplijn te valideren. Selecteer de **>>** (pijl-rechts) om het validatie venster te sluiten. 
     
    ![De knop Valideren](./media/tutorial-transform-data-spark-portal/validate-button.png)
 1. Selecteer **Alles publiceren**. De gebruikersinterface van Data Factory publiceert entiteiten (gekoppelde services en pijplijn) naar de Azure Data Factory-service. 
@@ -208,13 +208,13 @@ In deze sectie maakt u twee gekoppelde services:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Een pijplijnuitvoering activeren
-Selecteer **Trigger toevoegen** op de werkbalk en selecteer Nu **activeren**. 
+Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. 
 
 ![De knoppen Activeren en Nu activeren](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
 ## <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
-1. Ga naar het tabblad **Monitor.** Controleer of er een pijplijn wordt uitgevoerd. Het duurt ongeveer 20 minuten om een Spark-cluster te maken. 
+1. Ga naar het tabblad **monitor** . Controleer of er een pijplijn uitvoering wordt weer geven. Het duurt ongeveer 20 minuten om een Spark-cluster te maken. 
    
 1. Selecteer regelmatig **Vernieuwen** om de status van de pijplijnuitvoering te controleren. 
 
@@ -224,7 +224,7 @@ Selecteer **Trigger toevoegen** op de werkbalk en selecteer Nu **activeren**.
 
    ![Status pijplijnuitvoering](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   U terugschakelen naar de weergave pijplijnuitvoeringen door bovenaan de koppeling **Alle pijplijnuitvoeringen** te selecteren.
+   U kunt teruggaan naar de weer gave pijplijn uitvoeringen door de koppeling **alle pijplijn uitvoeringen** bovenaan te selecteren.
 
    ![Uitvoering van activiteiten weergeven](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -255,7 +255,7 @@ De pijplijn in dit voorbeeld transformeert gegevens met behulp van een Spark-act
 Ga naar de volgende zelfstudie voor informatie over het transformeren van gegevens door een Hive-script uit te voeren in een Azure HDInsight-cluster in een virtueel netwerk: 
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Gegevens transformeren met Hive in Azure Virtual Network](tutorial-transform-data-hive-virtual-network-portal.md).
+> [Zelf studie: gegevens transformeren met behulp van Hive in Azure Virtual Network](tutorial-transform-data-hive-virtual-network-portal.md).
 
 
 

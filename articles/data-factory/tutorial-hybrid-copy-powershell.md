@@ -1,5 +1,5 @@
 ---
-title: Gegevens van SQL Server naar Blob-opslag kopiëren met PowerShell
+title: Gegevens kopiëren van SQL Server naar Blob-opslag met behulp van Power shell
 description: Meer informatie over het kopiëren van gegevens uit een on-premises gegevensopslag naar Azure-cloud met behulp van de zelf-hostende Integration Runtime in Azure Data Factory.
 services: data-factory
 author: nabhishek
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 70bc79470cd72ce01007265c6c1236c951ddd7d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81411442"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Zelfstudie: gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
@@ -43,7 +43,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ### <a name="azure-roles"></a>Azure-rollen
-Als u gegevensfabrieksexemplaren wilt maken, moet het gebruikersaccount dat u gebruikt om u aan te melden bij Azure, een *rol inzender* of *eigenaar* toegewezen krijgen of *beheerder* van het Azure-abonnement zijn.
+Als u data factory-exemplaren wilt maken, moet het gebruikers account dat u gebruikt om u aan te melden bij Azure, een rol voor *Inzender* of *eigenaar* worden toegewezen of moet u een *beheerder* van het Azure-abonnement zijn.
 
 Als u de machtigingen die u hebt in het abonnement wilt bekijken, gaat u naar Azure Portal, selecteert u rechtsboven in de hoek uw gebruikersnaam en selecteert u vervolgens **Machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren. Zie het artikel [Toegang beheren met RBAC en de Azure-portal](../role-based-access-control/role-assignments-portal.md) voor voorbeeldinstructies voor het toevoegen van een gebruiker aan een rol.
 
@@ -129,7 +129,7 @@ Installeer de nieuwste versie van Azure PowerShell als u deze niet al op uw comp
     Connect-AzAccount
     ```        
 
-1. Als u meerdere Azure-abonnementen hebt, voert u de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
+1. Als u meerdere Azure-abonnementen hebt, voert u de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -271,7 +271,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
     ![Integratieruntime registreren](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. Selecteer In het venster **Knooppunt Nieuwe integratie (Self-hosted)** de optie **Voltooien**.
+1. Selecteer in het venster **nieuwe Integration runtime (zelf-hostend) knoop punt** **volt ooien**.
 
     ![Venster Nieuw knooppunt voor Integration Runtime](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -413,9 +413,9 @@ In deze stap gaat u uw on-premises SQL Server-exemplaar aan de data factory kopp
 
     > [!IMPORTANT]
     > - Selecteer de sectie op basis van de verificatie die u gebruikt om verbinding te maken met uw SQL Server-exemplaar.
-    > - Vervang ** \<de naam van de nalooptijd van** de integratie>door de naam van uw intrede van uw integratie.
-    > - Voordat u het bestand opslaat, vervangt u ** \< ** ** \<servernaam>, ** ** \<databasenaam>, **gebruikersnaam>en ** \<wachtwoord>** door de waarden van uw SQL Server-exemplaar.
-    > - Als u een backslash wilt gebruiken (\\) in de naam van uw gebruikersaccount of server, moet u er voor het escapeteken (\\) gebruiken. Gebruik bijvoorbeeld *mydomain\\\\myuser*.
+    > - Vervang de naam van de ** \<Integration runtime>** door de naam van uw Integration runtime.
+    > - Voordat u het bestand opslaat, vervangt ** \<u servername>**, ** \<DATABASENAME>**, ** \<username>** en ** \<Password>** door de waarden van uw SQL Server-exemplaar.
+    > - Als u een backslash wilt gebruiken (\\) in de naam van uw gebruikersaccount of server, moet u er voor het escapeteken (\\) gebruiken. Gebruik bijvoorbeeld *\\\\mijn domein myuser*.
 
 1. Voor het versleutelen van gevoelige gegevens (gebruikersnaam, wachtwoord, enz.), voer de `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet uit.  
     Deze versleuteling zorgt ervoor dat de referenties zijn versleuteld met behulp van DPAPI (Data Protection Application Programming Interface). De versleutelde referenties worden lokaal op het zelf-hostende Integration Runtime-knooppunt (lokale computer) opgeslagen. De uitvoerpayload kan worden omgeleid naar een ander JSON-bestand (in dit geval *encryptedLinkedService.json*). Dit bestand bevat de versleutelde referenties.

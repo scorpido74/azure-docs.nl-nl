@@ -1,6 +1,6 @@
 ---
-title: Een database beveiligen
-description: Tips voor het beveiligen van een database en het ontwikkelen van oplossingen in een Synapse SQL-poolbron.
+title: Een Data Base beveiligen
+description: Tips voor het beveiligen van een Data Base en het ontwikkelen van oplossingen in een Synapse SQL-groeps resource.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,44 +12,44 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416061"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Een database beveiligen in Azure Synapse
+# <a name="secure-a-database-in-azure-synapse"></a>Een data base in azure Synapse beveiligen
 
 > [!div class="op_single_selector"]
 >
-> * [Overzicht van beveiliging](sql-data-warehouse-overview-manage-security.md)
+> * [Beveiligings overzicht](sql-data-warehouse-overview-manage-security.md)
 > * [Verificatie](sql-data-warehouse-authentication.md)
-> * [Versleuteling (portal)](sql-data-warehouse-encryption-tde.md)
+> * [Versleuteling (Portal)](sql-data-warehouse-encryption-tde.md)
 > * [Versleuteling (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-In dit artikel vindt u de basisprincipes van het beveiligen van uw Synapse SQL-pool. In dit artikel wordt u met name aan de slag gegaan met resources voor het beperken van de toegang, het beveiligen van gegevens en het controleren van activiteiten op een database die is ingericht met SQL-pool.
+Dit artikel begeleidt u stapsgewijs door de basis beginselen van het beveiligen van uw Synapse SQL-groep. In dit artikel wordt met name aan de slag met resources voor het beperken van toegang, het beveiligen van gegevens en het bewaken van activiteiten in een Data Base die is ingericht met een SQL-groep.
 
 ## <a name="connection-security"></a>Verbindingsbeveiliging
 
 Verbindingsbeveiliging verwijst naar de manier waarop u verbindingen met uw database beperkt en beveiligt met behulp van firewallregels en verbindingsversleuteling.
 
-Firewallregels worden door zowel de server als de database gebruikt om verbindingspogingen van IP-adressen die niet expliciet op de witte lijst zijn gezet, af te wijzen. Als u verbindingen wilt toestaan vanaf het openbare IP-adres van uw toepassing of clientmachine, moet u eerst een firewallregel op serverniveau maken met behulp van de Azure-portal, REST API of PowerShell.
+Firewall regels worden door de server en de data base gebruikt om verbindings pogingen af te wijzen van IP-adressen die niet expliciet zijn white list. Als u verbindingen van uw toepassing of het open bare IP-adres van de client computer wilt toestaan, moet u eerst een firewall regel op server niveau maken met behulp van de Azure Portal, REST API of Power shell.
 
-Als best practice moet u het IP-adresbereik dat is toegestaan door uw serverfirewall zoveel mogelijk beperken.  Als u sql-pool vanaf uw lokale computer wilt openen, moet u ervoor zorgen dat de firewall op uw netwerk en lokale computer uitgaande communicatie op TCP-poort 1433 mogelijk maken.  
+Als best practice moet u het IP-adresbereik dat is toegestaan door uw serverfirewall zoveel mogelijk beperken.  Als u toegang wilt krijgen tot de SQL-groep vanaf uw lokale computer, zorgt u ervoor dat de firewall op uw netwerk en lokale computer uitgaande communicatie toestaat op TCP-poort 1433.  
 
-Azure Synapse Analytics maakt gebruik van IP-firewallregels op serverniveau. Het ondersteunt geen IP-firewallregels op databaseniveau. Zie Azure SQL [Database firewallregels](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie
+Azure Synapse Analytics maakt gebruik van IP-firewall regels op server niveau. Het biedt geen ondersteuning voor IP-firewall regels op database niveau. Zie [Azure SQL database firewall-regels](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie.
 
-Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van verbindingsinstellingen om versleuteling uit te schakelen wordt genegeerd.
+Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
 
 ## <a name="authentication"></a>Verificatie
 
-Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-groep ondersteunt momenteel SQL Server-verificatie met een gebruikersnaam en wachtwoord en met Azure Active Directory.
+Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-pool ondersteunt momenteel SQL Server verificatie met een gebruikers naam en wacht woord en met Azure Active Directory.
 
-Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met behulp van deze referenties u zich verifiëren naar elke database op die server als de eigenaar van de database, of dbo via SQL Server Authentication.
+Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met deze referenties kunt u zich bij elke Data Base op die server als de eigenaar van de data base of "dbo" verifiëren via SQL Server-verificatie.
 
-Als aanbevolen toepassing moeten de gebruikers van uw organisatie echter een ander account gebruiken om te verifiëren. Op deze manier u de machtigingen voor de toepassing beperken en de risico's van schadelijke activiteiten verminderen in het geval uw toepassingscode kwetsbaar is voor een SQL-injectieaanval.
+Als best practice, moeten gebruikers van uw organisatie echter een ander account gebruiken om te verifiëren. Op deze manier kunt u de machtigingen die aan de toepassing worden verleend, beperken en het risico op schadelijke activiteiten verminderen voor het geval uw toepassings code kwetsbaar is voor een SQL-injectie aanval.
 
-Als u een SQL Server Authenticated-gebruiker wilt maken, maakt u verbinding met de **hoofddatabase** op uw server met uw serverbeheeraanmelding en maakt u een nieuwe serveraanmelding.  Het is een goed idee om ook een gebruiker in de hoofddatabase te maken. Als u een gebruiker in master maakt, kan een gebruiker zich aanmelden met behulp van hulpprogramma's zoals SSMS zonder een databasenaam op te geven.  Het stelt hen ook in staat om de objectexplorer te gebruiken om alle databases op een SQL-server te bekijken.
+Als u een SQL Server geverifieerde gebruiker wilt maken, maakt u verbinding met de **hoofd** database op uw server met de aanmelding van de server beheerder en maakt u een nieuwe Server aanmelding.  Het is een goed idee om ook een gebruiker in de hoofd database te maken. Als u een gebruiker maakt in de Master, kan een gebruiker zich aanmelden met hulpprogram ma's als SSMS zonder een database naam op te geven.  Ook kunnen ze de object Verkenner gebruiken om alle data bases op een SQL-Server weer te geven.
 
 ```sql
 -- Connect to master database and create a login
@@ -57,20 +57,20 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Maak vervolgens verbinding met uw **SQL-pooldatabase** met uw serverbeheerder-aanmelding en maak een databasegebruiker op basis van de serverlogin die u hebt gemaakt.
+Maak vervolgens verbinding met uw **SQL-groeps database** met de aanmelding van de server beheerder en maakt u een database gebruiker op basis van de Server aanmelding die u hebt gemaakt.
 
 ```sql
 -- Connect to the database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Als u een gebruiker toestemming wilt geven om aanvullende bewerkingen uit te `Loginmanager` `dbmanager` voeren, zoals het maken van aanmeldingen of het maken van nieuwe databases, wijst u de gebruiker toe aan de hoofdrollen in de hoofddatabase.
+Als u een gebruiker wilt machtigen om aanvullende bewerkingen uit te voeren, zoals het maken van aanmeldingen of het maken `Loginmanager` van `dbmanager` nieuwe data bases, wijst u de gebruiker toe aan de rollen en in de hoofd database.
 
-Zie [Databases en aanmeldingen beheren in Azure SQL Database voor](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)meer informatie over deze extra rollen en het verifiëren in een SQL-database.  Zie [Verbinding maken met Azure Active Directory voor](sql-data-warehouse-authentication.md)meer informatie over verbinding maken met Azure Active Directory.
+Zie [data bases en aanmeldingen beheren in Azure SQL database](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor meer informatie over deze aanvullende rollen en het verifiëren van een SQL database.  Zie [verbinding maken met behulp van Azure Active Directory-verificatie](sql-data-warehouse-authentication.md)voor meer informatie over verbinding maken met behulp van Azure Active Directory.
 
 ## <a name="authorization"></a>Autorisatie
 
-Autorisatie verwijst naar wat u doen in een database zodra u bent geverifieerd en verbonden. Autorisatiebevoegdheden worden bepaald door rollidmaatschappen en machtigingen. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen. Als u rollen wilt beheren, u de volgende opgeslagen procedures gebruiken:
+Autorisatie verwijst naar wat u in een Data Base kunt doen zodra u bent geverifieerd en verbonden. Autorisatie bevoegdheden worden bepaald door lidmaatschappen en machtigingen van de rol. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen. Als u rollen wilt beheren, kunt u de volgende opgeslagen procedures gebruiken:
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -79,29 +79,29 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Het serverbeheerdersaccount waarmee u verbinding maakt is lid van db_owner, die geautoriseerd is om alle bewerkingen binnen de database uit te voeren. Gebruik dit account voor het implementeren van schema-updates en andere beheerbewerkingen. Gebruik het 'ApplicationUser'-account met beperktere machtigingen om vanuit van uw toepassing verbinding te maken met de database met de minste bevoegdheden die nodig zijn voor uw toepassing.
 
-Er zijn manieren om verder te beperken wat een gebruiker kan doen in de database:
+Er zijn manieren om verder te beperken wat een gebruiker in de data base kan doen:
 
-* Met granulaire [machtigingen](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) u bepalen welke bewerkingen u uitvoeren op afzonderlijke kolommen, tabellen, weergaven, schema's, procedures en andere objecten in de database. Gebruik gedetailleerde machtigingen om de meeste controle te hebben en de minimale machtigingen toe te kennen die nodig zijn.
-* [Databaserollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anders dan db_datareader en db_datawriter kunnen worden gebruikt om krachtigere gebruikersaccounts van toepassingen of minder krachtige beheeraccounts te maken. De ingebouwde vaste databaserollen bieden een eenvoudige manier om machtigingen te verlenen, maar kunnen resulteren in het verlenen van meer machtigingen dan nodig is.
+* Met gedetailleerde [machtigingen](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kunt u bepalen welke bewerkingen u op afzonderlijke kolommen, tabellen, weer gaven, schema's, procedures en andere objecten in de-data base. Gebruik gedetailleerde machtigingen om de meeste controle te hebben en de minimale machtigingen te verlenen die nodig zijn.
+* Andere [database rollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dan db_datareader en db_datawriter kunnen worden gebruikt voor het maken van krachtigere toepassings gebruikers accounts of minder krachtige beheer accounts. De ingebouwde vaste database rollen bieden een eenvoudige manier om machtigingen te verlenen, maar kunnen wel tot het verlenen van meer machtigingen dan nodig zijn.
 * [Opgeslagen procedures](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kunnen worden gebruikt om de acties die op de database kunnen worden uitgevoerd te beperken.
 
-In het volgende voorbeeld wordt leestoegang tot een door de gebruiker gedefinieerd schema toegekend.
+In het volgende voor beeld wordt lees toegang verleend aan een door de gebruiker gedefinieerd schema.
 
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Het beheren van databases en logische servers vanuit de Azure-portal of het gebruik van de Azure Resource Manager API wordt beheerd door de roltoewijzingen van uw portalgebruikersaccount. Zie [Op rollen gebaseerd toegangsbeheer in Azure-portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor meer informatie.
+Het beheren van data bases en logische servers van de Azure Portal of het gebruik van de Azure Resource Manager-API wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie op [rollen gebaseerd toegangs beheer in azure Portal](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor meer informatie.
 
 ## <a name="encryption"></a>Versleuteling
 
-Transparent Data Encryption (TDE) helpt beschermen tegen de dreiging van kwaadaardige activiteiten door uw gegevens in rust te versleutelen en te decoderen. Wanneer u uw database versleutelt, worden gekoppelde back-ups en transactielogboekbestanden versleuteld zonder dat er wijzigingen in uw toepassingen nodig zijn. TDE versleutelt de opslag van een hele database met behulp van een symmetrische sleutel (de zogeheten databaseversleutelingssleutel).
+Met Transparent Data Encryption (TDE) kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door uw gegevens in rust te versleutelen en ontsleutelen. Wanneer u uw data base versleutelt, worden gekoppelde back-ups en transactie logboek bestanden versleuteld zonder dat er wijzigingen hoeven te worden aangebracht in uw toepassingen. TDE versleutelt de opslag van een hele database met behulp van een symmetrische sleutel (de zogeheten databaseversleutelingssleutel).
 
-In SQL Database wordt de databaseversleutelingssleutel beschermd door een ingebouwd servercertificaat. Het ingebouwde servercertificaat is uniek voor elke SQL Database-server. Microsoft draait deze certificaten automatisch ten minste om de 90 dagen. Het gebruikte encryptie-algoritme is AES-256. Zie [Transparante gegevensversleuteling](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor een algemene beschrijving van TDE.
+In SQL Database wordt de database versleutelings sleutel beveiligd door een ingebouwd server certificaat. Het ingebouwde server certificaat is uniek voor elke SQL Database-Server. Micro soft roteert deze certificaten ten minste elke 90 dagen automatisch. De gebruikte versleutelings algoritme is AES-256. Zie [transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor een algemene beschrijving van TDe.
 
-U uw database versleutelen met de [Azure-portal](sql-data-warehouse-encryption-tde.md) of [T-SQL.](sql-data-warehouse-encryption-tde-tsql.md)
+U kunt uw data base versleutelen met behulp van de [Azure Portal](sql-data-warehouse-encryption-tde.md) of [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Verbinding maken met [SQL-pool](../sql/connect-overview.md)voor meer informatie en voorbeelden over verbinding maken met uw magazijn met verschillende protocollen.
+Zie [verbinding maken met SQL-groep](../sql/connect-overview.md)voor meer informatie en voor beelden over het maken van verbinding met uw magazijn met verschillende protocollen.

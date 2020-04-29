@@ -1,30 +1,30 @@
 ---
-title: Unity game objecten en componenten
-description: Beschrijft Unity-specifieke methoden om te werken met entiteiten en componenten voor externe rendering.
+title: Unit-Game objecten en-onderdelen
+description: Hierin worden specifieke methoden beschreven voor het werken met externe rendering-entiteiten en-onderdelen.
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409861"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interactie met Unity-gameobjecten en -onderdelen
 
-Azure Remote Rendering (ARR) is geoptimaliseerd voor grote aantallen objecten (zie [Beperkingen).](../../reference/limits.md) Hoewel het mogelijk is om grote en complexe hiërarchieën op de host te beheren, is het niet haalbaar om ze allemaal te repliceren in Unity op apparaten met een laag effect.
+De externe rendering van Azure (ARR) is geoptimaliseerd voor grote aantallen objecten (Zie [beperkingen](../../reference/limits.md)). Hoewel het mogelijk is om grote en complexe hiërarchieën op de host te beheren, is het niet haalbaar om ze allemaal te repliceren in eenheid op apparaten met een lage voeding.
 
-Wanneer een model op de host wordt geladen, weerspiegelt Azure Remote Rendering daarom de informatie over de modelstructuur op het clientapparaat (waardoor netwerkverkeer wordt uitgevoerd), maar worden de objecten en componenten in Unity niet gerepliceerd. In plaats daarvan verwacht het dat u de benodigde Unity-gameobjecten en -componenten handmatig opvraagt, zodat u de overhead beperken tot wat er daadwerkelijk nodig is. Op deze manier hebt u meer controle over de prestaties aan de clientzijde.
+Wanneer een model op de host wordt geladen, komt de externe rendering van Azure overeen met de informatie over de model structuur op het client apparaat (waardoor netwerk verkeer wordt gedaan), maar worden de objecten en onderdelen in Unity niet gerepliceerd. In plaats daarvan moet u de benodigde unit-spel objecten en-onderdelen hand matig aanvragen, zodat u de overhead kunt beperken tot wat er echt nodig is. Op deze manier hebt u meer controle over de prestaties aan de client zijde.
 
-Daarom wordt de Unity-integratie van Azure Remote Rendering geleverd met extra functionaliteit om de remote rendering-structuur op aanvraag te repliceren.
+De eenheids integratie van Azure remote rendering wordt daarom geleverd met extra functionaliteit voor het repliceren van de externe rendering-structuur op aanvraag.
 
-## <a name="load-a-model-in-unity"></a>Een model laden in Unity
+## <a name="load-a-model-in-unity"></a>Een model in Unity laden
 
-Wanneer u een model laadt, krijgt u een verwijzing naar het hoofdobject van het geladen model. Deze verwijzing is geen Unity-spelobject, maar je `Entity.GetOrCreateGameObject()`er wel een maken met behulp van de extensiemethode. Die functie verwacht een `UnityCreationMode`argument van het type . Als u `CreateUnityComponents`slaagt, wordt het nieuw gemaakte Unity-spelobject bovendien gevuld met proxycomponenten voor alle externe renderingcomponenten die op de host bestaan. Het wordt echter aanbevolen om `DoNotCreateUnityComponents`de overhead minimaal te houden.
+Wanneer u een model laadt, krijgt u een verwijzing naar het hoofd object van het geladen model. Deze verwijzing is geen unit-Game object, maar u kunt dit omzetten in een-bestand met behulp van de uitbreidings methode `Entity.GetOrCreateGameObject()`. Deze functie verwacht een argument van het `UnityCreationMode`type. Als u passeert `CreateUnityComponents`, wordt het nieuw gemaakte object Unity Game ook gevuld met proxy onderdelen voor alle onderdelen voor externe rendering die op de host bestaan. We raden `DoNotCreateUnityComponents`u echter aan om de overhead zo min mogelijk te houden.
 
-### <a name="load-model-with-task"></a>Laadmodel met taak
+### <a name="load-model-with-task"></a>Model laden met taak
 
 ```cs
 LoadModelAsync _pendingLoadTask = null;
@@ -50,7 +50,7 @@ void LoadModelWithTask()
 }
 ```
 
-### <a name="load-model-with-unity-coroutines"></a>Laadmodel met Unity-coroutines
+### <a name="load-model-with-unity-coroutines"></a>Model laden met Unit-routines
 
 ```cs
 IEnumerator LoadModelWithCoroutine()
@@ -72,7 +72,7 @@ IEnumerator LoadModelWithCoroutine()
 }
 ```
 
-### <a name="load-model-with-await-pattern"></a>Laadmodel met wachtpatroon
+### <a name="load-model-with-await-pattern"></a>Model laden met wachtend patroon
 
 ```cs
 async void LoadModelWithAwait()
@@ -82,33 +82,33 @@ async void LoadModelWithAwait()
 }
 ```
 
-De bovenstaande codevoorbeelden gebruikten het laadpad van het model via SAS omdat het ingebouwde model is geladen. Het aanpakken van het `LoadModelAsync` model `LoadModelParams`via blob containers (met behulp van en) werkt volledig analoog.
+De bovenstaande code voorbeelden hebben het laad traject voor het model via SAS gebruikt, omdat het ingebouwde model is geladen. Het model wordt met behulp van de `LoadModelAsync` BLOB `LoadModelParams`-containers (met en) volledig vergelijkbaar.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-Als u een Unity-spelobject maakt, voegt u impliciet een `RemoteEntitySyncObject` component toe aan het spelobject. Deze component wordt gebruikt om de entiteitstransformatie naar de server te synchroniseren. Standaard `RemoteEntitySyncObject` moet de gebruiker expliciet `SyncToRemote()` bellen om de lokale Unity-status met de server te synchroniseren. Als `SyncEveryFrame` u het object inschakelt, wordt het object automatisch gesynchroniseerd.
+Als u een unit-spel object maakt, `RemoteEntitySyncObject` wordt impliciet een onderdeel toegevoegd aan het spel object. Dit onderdeel wordt gebruikt om de entiteits transformatie te synchroniseren met de-server. De gebruiker `RemoteEntitySyncObject` moet standaard expliciet aanroepen `SyncToRemote()` om de status van de lokale eenheid te synchroniseren met de server. Als `SyncEveryFrame` u inschakelt, wordt het object automatisch gesynchroniseerd.
 
-Objecten met `RemoteEntitySyncObject` een kunnen hun afgelegen kinderen laten instantiaten en getoond worden in de Unity-editor via de knop **Kinderen weergeven.**
+Objecten met een `RemoteEntitySyncObject` kunnen hun externe onderliggende items hebben geïnstantieerd en weer gegeven in de Unity-editor met de knop **onderliggende items weer geven** .
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
-## <a name="wrapper-components"></a>Wrappercomponenten
+## <a name="wrapper-components"></a>Wrapper-onderdelen
 
-[Componenten](../../concepts/components.md) die zijn gekoppeld aan entiteiten met `MonoBehavior`externe rendering worden blootgesteld aan Unity via proxy s. Deze volmachten vertegenwoordigen de externe component in Unity en sturen alle wijzigingen door naar de host.
+[Onderdelen](../../concepts/components.md) die zijn gekoppeld aan externe rendering-entiteiten, worden blootgesteld `MonoBehavior`aan de eenheid via proxy s. Deze proxy's vertegenwoordigen het externe onderdeel in eenheid en sturen alle wijzigingen door naar de host.
 
-Als u proxy-componenten voor externe `GetOrCreateArrComponent`rendering wilt maken, gebruikt u de extensiemethode:
+Als u externe rendering-onderdelen voor proxy wilt maken, `GetOrCreateArrComponent`gebruikt u de extensie methode:
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
 ```
 
-## <a name="coupled-lifetimes"></a>Gekoppelde levens
+## <a name="coupled-lifetimes"></a>Gekoppelde levens duur
 
-De levensduur van een externe [entiteit](../../concepts/entities.md) en een Unity-spelobject is gekoppeld terwijl ze gebonden zijn door een `RemoteEntitySyncObject`. Als u `UnityEngine.Object.Destroy(...)` belt met een dergelijk spelobject, wordt de externe entiteit ook verwijderd.
+De levens duur van een externe [entiteit](../../concepts/entities.md) en een unit-Game object wordt gekoppeld wanneer deze zijn gebonden `RemoteEntitySyncObject`via een. Als u een `UnityEngine.Object.Destroy(...)` dergelijk spel object aanroept, wordt de externe entiteit ook verwijderd.
 
-Om het Unity-spelobject te vernietigen, zonder de `Unbind()` externe `RemoteEntitySyncObject`entiteit te beïnvloeden, moet u eerst een beroep doen op de .
+Als u het eenheids spel object wilt vernietigen zonder dat dit van invloed is op de externe `Unbind()` entiteit, `RemoteEntitySyncObject`moet u eerst aanroepen op de.
 
-Hetzelfde geldt voor alle proxy-componenten. Als u alleen de vertegenwoordiging aan `Unbind()` de clientzijde wilt vernietigen, moet u eerst een beroep doen op de proxycomponent:
+Dit geldt ook voor alle proxy onderdelen. Als u alleen de client-side vertegenwoordiging wilt vernietigen, moet u `Unbind()` eerst het proxy-onderdeel aanroepen:
 
 ```cs
 var cutplane = gameObject.GetComponent<ARRCutPlaneComponent>();
@@ -122,4 +122,4 @@ if (cutplane != null)
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Remote Rendering voor Unity instellen](unity-setup.md)
-* [Zelfstudie: Werken met externe entiteiten in Unity](../../tutorials/unity/working-with-remote-entities.md)
+* [Zelf studie: werken met externe entiteiten in Unity](../../tutorials/unity/working-with-remote-entities.md)

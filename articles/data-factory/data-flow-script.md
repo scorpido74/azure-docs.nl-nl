@@ -1,6 +1,6 @@
 ---
-title: Script voor gegevensstromen toewijzen
-description: Overzicht van de dataflow script code-behind taal van Data Factory
+title: Gegevens stroom script toewijzen
+description: Overzicht van de script code voor de gegevens stroom van Data Factory-behind-taal
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413447"
 ---
-# <a name="data-flow-script-dfs"></a>Gegevensstroomscript (DFS)
+# <a name="data-flow-script-dfs"></a>Gegevens stroom script (DFS)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data flow script (DFS) is de onderliggende metagegevens, vergelijkbaar met een codeertaal, die wordt gebruikt om de transformaties uit te voeren die zijn opgenomen in een mapping data flow. Elke transformatie wordt vertegenwoordigd door een reeks eigenschappen die de nodige informatie bieden om de taak goed uit te voeren. Het script is zichtbaar en bewerkbaar vanuit ADF door te klikken op de knop 'script' op het bovenste lint van de gebruikersinterface van de browser.
+Data flow script (DFS) is de onderliggende meta gegevens, vergelijkbaar met een coderings taal, die wordt gebruikt voor het uitvoeren van de trans formaties die zijn opgenomen in een toewijzings gegevens stroom. Elke trans formatie wordt vertegenwoordigd door een reeks eigenschappen die de benodigde informatie biedt om de taak correct uit te voeren. Het script is zichtbaar en kan worden bewerkt vanuit ADF door te klikken op de knop script in het bovenste lint van de gebruikers interface van de browser.
 
-![Knop Script](media/data-flow/scriptbutton.png "Knop Script")
+![Script knop](media/data-flow/scriptbutton.png "Script knop")
 
-In een `allowSchemaDrift: true,` brontransformatie wordt bijvoorbeeld de service gevraagd om alle kolommen uit de brongegevensset in de gegevensstroom op te nemen, zelfs als ze niet zijn opgenomen in de schemaprojectie.
+In een bron `allowSchemaDrift: true,` transformatie vertelt de service bijvoorbeeld dat alle kolommen uit de bron-gegevensset in de gegevens stroom moeten worden opgenomen, zelfs als deze niet zijn opgenomen in de schema projectie.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
-De DFS wordt automatisch geproduceerd door de gebruikersinterface. U op de knop Script klikken om het script weer te geven en aan te passen. U ook scripts buiten de ADF-gebruikersinterface genereren en dat vervolgens doorgeven aan de PowerShell-cmdlet. Wanneer u complexe gegevensstromen debugadt, u het gemakkelijker vinden om de scriptcode achter te scannen in plaats van de weergave van de ui-grafiek van uw stromen te scannen.
+De DFS wordt automatisch geproduceerd door de gebruikers interface. U kunt op de knop script klikken om het script weer te geven en aan te passen. U kunt ook scripts maken buiten de ADF-gebruikers interface en vervolgens door geven aan de Power shell-cmdlet. Wanneer u fouten opspoort in complexe gegevens stromen, is het mogelijk dat u de script code achtereen kunt scannen in plaats van de UI-grafiek weergave van uw stromen te scannen.
 
-Hier zijn een paar voorbeeld voorbeelden gevallen:
-- Programmatisch produceren van veel gegevensstromen die vrij vergelijkbaar zijn, d.w.z. "stamping-out" datastromen.
-- Complexe expressies die moeilijk te beheren zijn in de gebruikersinterface of resulteren in validatieproblemen.
-- Foutopsporing en beter begrip van verschillende fouten die tijdens de uitvoering zijn geretourneerd.
+Hier volgen enkele voor beelden van use cases:
+- Een programmatische productie maakt van een groot aantal gegevens stromen die tamelijk vergelijkbaar zijn, d.w.z. het afstempelen van gegevens stromen.
+- Complexe expressies die moeilijk te beheren zijn in de gebruikers interface of die het gevolg zijn van validatie problemen.
+- Fout opsporing en betere inzicht in verschillende fouten die tijdens de uitvoering worden geretourneerd.
 
-Wanneer u een gegevensstroomscript bouwt dat u wilt gebruiken met PowerShell of een API, moet u de opgemaakte tekst samenvouwen in één regel. U tabbladen en nieuwe lijnen als escape personages. Maar de tekst moet worden opgemaakt om in een JSON-eigenschap te passen. Er is een knop op de scripteditor UI aan de onderkant die het script zal formatteren als een enkele regel voor jou.
+Wanneer u een gegevensstroom script bouwt voor gebruik met Power shell of een API, moet u de opgemaakte tekst in één regel samen vouwen. U kunt tabs en nieuwe regels gebruiken als escape tekens. Maar de tekst moet zijn opgemaakt om in een JSON-eigenschap te passen. Er bevindt zich een knop in de gebruikers interface van de Script Editor aan de onderkant waarmee het script wordt opgemaakt als één regel voor u.
 
 ![knop Kopiëren](media/data-flow/copybutton.png "knop Kopiëren")
 
-## <a name="how-to-add-transforms"></a>Transformaties toevoegen
-Het toevoegen van transformaties vereist drie basisstappen: het toevoegen van de kerntransformatiegegevens, het herrouteren van de invoerstroom en het opnieuw routeren van de uitvoerstroom. Dit kan het gemakkelijkst worden gezien in een voorbeeld.
-Laten we zeggen dat we beginnen met een eenvoudige bron om de gegevensstroom als volgt te laten zinken:
+## <a name="how-to-add-transforms"></a>Trans formaties toevoegen
+Voor het toevoegen van trans formaties zijn drie basis stappen vereist: het toevoegen van de kern transformatie gegevens, het omleiden van de invoer stroom en het omleiden van de uitvoer stroom. Dit kan eenvoudig worden weer gegeven in een voor beeld.
+Stel dat we beginnen met een eenvoudige bron om gegevens stroom te sinken, zoals in het volgende:
 
 ```
 source(output(
@@ -52,12 +52,12 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Als we besluiten om een transformatie toe te voegen, moeten we eerst de kerntransformatietekst maken, die een eenvoudige expressie heeft om een nieuwe kolom in hoofdletters toe te voegen, genaamd: `upperCaseTitle`
+Als we besluiten een afgeleide trans formatie toe te voegen, moet u eerst de tekst van de kern transformatie maken, met een eenvoudige expressie voor het toevoegen `upperCaseTitle`van een nieuwe hoofd kolom met de naam:
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
 
-Vervolgens nemen we de bestaande DFS en voegen we de transformatie toe:
+Daarna maken we de bestaande DFS en voegen we de trans formatie toe:
 ```
 source(output(
         movieId as string,
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-En nu leiden we de binnenkomende stroom om door te bepalen welke transformatie `source1`we willen dat de nieuwe transformatie komt (in dit geval) en de naam van de stroom te kopiëren naar de nieuwe transformatie:
+En de inkomende stroom wordt nu omgeleid door de trans formatie te identificeren waarnaar de nieuwe trans formatie moet worden verzonden (in dit `source1`geval) en het kopiëren van de naam van de stroom naar de nieuwe trans formatie:
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Tot slot identificeren we de transformatie die we na deze nieuwe transformatie `sink1`willen komen, en vervangen we de inputstream (in dit geval) door de naam van de uitvoerstroom van onze nieuwe transformatie:
+Ten slotte wordt de trans formatie geïdentificeerd die na deze nieuwe trans formatie moet worden uitgevoerd en wordt de invoer stroom (in dit `sink1`geval) vervangen door de naam van de uitvoer stroom van de nieuwe trans formatie:
 ```
 source(output(
         movieId as string,
@@ -99,17 +99,17 @@ deriveTransformationName sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="dfs-fundamentals"></a>DFS-fundamenten
-De DFS bestaat uit een reeks verbonden transformaties, waaronder bronnen, sinks en diverse andere die nieuwe kolommen kunnen toevoegen, gegevens filteren, gegevens toevoegen en gegevens kunnen toevoegen en nog veel meer. Meestal begint het script met een of meer bronnen, gevolgd door vele transformaties en eindigend met een of meer putten.
+## <a name="dfs-fundamentals"></a>Basis beginselen van DFS
+De DFS bestaat uit een reeks gekoppelde trans formaties, waaronder bronnen, sinks en verschillende andere, waarmee nieuwe kolommen kunnen worden toegevoegd, gegevens worden gefilterd, gegevens kunnen worden samengevoegd en nog veel meer. Normaal gesp roken wordt het script met een of meer bronnen gevolgd door veel trans formaties en eindigend met een of meer Sinks.
 
-Bronnen hebben allemaal dezelfde basisconstructie:
+Bronnen hebben allemaal dezelfde basis constructie:
 ```
 source(
   source properties
 ) ~> source_name
 ```
 
-Bijvoorbeeld, een eenvoudige bron met drie kolommen (movieId, titel, genres) zou zijn:
+Zo zou een eenvoudige bron met drie kolommen (movieId, title, genres) er als volgt uitzien:
 ```
 source(output(
         movieId as string,
@@ -120,42 +120,42 @@ source(output(
     validateSchema: false) ~> source1
 ```
 
-Alle andere transformaties dan bronnen hebben dezelfde basisconstructie:
+Alle trans formaties, behalve bronnen, hebben dezelfde basis constructie:
 ```
 name_of_incoming_stream transformation_type(
   properties
 ) ~> new_stream_name
 ```
 
-Een eenvoudige transformatie die een kolom (titel) neemt en deze bijvoorbeeld overschrijft met een hoofdletterversie, is als volgt:
+Een eenvoudige afleiding van een trans formatie die een kolom (titel) maakt en overschrijft met een hoofd versie is als volgt:
 ```
 source1 derive(
   title = upper(title)
 ) ~> derive1
 ```
 
-En een gootsteen zonder schema zou gewoon zijn:
+En een Sink zonder schema zou gewoon zijn:
 ```
 derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="script-snippets"></a>Scriptfragmenten
+## <a name="script-snippets"></a>Script fragmenten
 
-Scriptfragmenten zijn deelbare code van Data Flow Script die u gebruiken om te delen tussen gegevensstromen. In deze video hieronder wordt beschreven hoe u scriptfragmenten gebruiken en gegevensstroomscript gebruiken om delen van het script achter uw gegevensstroomgrafieken te kopiëren en plakken:
+Script fragmenten zijn deel bare code van het gegevensstroom script dat u kunt gebruiken om te delen tussen gegevens stromen. In deze video vindt u meer informatie over het gebruik van script fragmenten en het gebruik van gegevens stroom script voor het kopiëren en plakken van delen van het script achter uw gegevensstroom grafieken:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
 
 
-### <a name="aggregated-summary-stats"></a>Geaggregeerde overzichtsstatistieken
-Voeg een geaggregeerde transformatie toe aan uw gegevensstroom met de naam "SummaryStats" en plak vervolgens in deze code hieronder voor de samengevoegde functie in uw script, ter vervanging van de bestaande SummaryStats. Dit zal een generiek patroon voor gegevens profiel samenvatting statistieken.
+### <a name="aggregated-summary-stats"></a>Cumulatieve samenvattings statistieken
+Voeg een geaggregeerde trans formatie toe aan de gegevens stroom met de naam ' SummaryStats ' en plak deze hieronder in deze code voor de statistische functie in uw script, waarbij de bestaande SummaryStats wordt vervangen. Dit geeft een algemeen patroon voor samenvattings statistieken van gegevens profielen.
 
 ```
 aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
         each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
         each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
 ```
-U ook het onderstaande voorbeeld gebruiken om het aantal unieke en het aantal afzonderlijke rijen in uw gegevens te tellen. Het onderstaande voorbeeld kan worden geplakt in een gegevensstroom met aggregaattransformatie genaamd ValueDistAgg. In dit voorbeeld wordt een kolom gebruikt met de naam "titel". Zorg ervoor dat u 'titel' vervangt door de tekenreekskolom in uw gegevens die u wilt gebruiken om waardetellingen te krijgen.
+U kunt ook het onderstaande voor beeld gebruiken om het aantal unieke en het aantal afzonderlijke rijen in uw gegevens te tellen. Het onderstaande voor beeld kan worden geplakt in een gegevens stroom met een statistische trans formatie met de naam ValueDistAgg. In dit voor beeld wordt een kolom met de naam ' title ' gebruikt. Zorg ervoor dat u ' titel ' vervangt door de kolom met de teken reeks in de gegevens die u wilt gebruiken om het aantal waarden op te halen.
 
 ```
 aggregate(groupBy(title),
@@ -164,16 +164,16 @@ ValueDistAgg aggregate(numofunique = countIf(countunique==1),
         numofdistinct = countDistinct(title)) ~> UniqDist
 ```
 
-### <a name="include-all-columns-in-an-aggregate"></a>Alle kolommen in een aggregaat opnemen
-Dit is een algemeen totaalpatroon dat laat zien hoe u de resterende kolommen in uw uitvoermetagegevens behouden wanneer u aggregaten bouwt. In dit geval gebruiken ```first()``` we de functie om de eerste waarde te kiezen in elke kolom waarvan de naam geen "film" is. Als u dit wilt gebruiken, maakt u een aggregaattransformatie met de naam DistinctRows en plakt u deze vervolgens in het script boven op het bestaande distinctrows-geaggregeerde script.
+### <a name="include-all-columns-in-an-aggregate"></a>Alle kolommen in een samen voeging toevoegen
+Dit is een algemeen aggregatie patroon dat laat zien hoe u de resterende kolommen in uw uitvoer meta gegevens kunt gebruiken wanneer u aggregaties bouwt. In dit geval gebruiken we de ```first()``` functie om de eerste waarde in elke kolom te kiezen waarvan de naam geen ' film ' is. Als u dit wilt gebruiken, maakt u een geaggregeerde trans formatie met de naam DistinctRows en plakt u deze in uw script boven aan het bestaande DistinctRows-aggregatie script.
 
 ```
 aggregate(groupBy(movie),
     each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
 ```
 
-### <a name="create-row-hash-fingerprint"></a>Vingerafdruk van rijhash maken 
-Gebruik deze code in uw gegevensstroomscript om ```DWhash``` een nieuwe ```sha1``` afgeleide kolom te maken die een hash van drie kolommen produceert.
+### <a name="create-row-hash-fingerprint"></a>Rij-hash-vinger afdruk maken 
+Gebruik deze code in uw gegevensstroom script om een nieuwe afgeleide kolom ```DWhash``` te maken met ```sha1``` de naam die een hash van drie kolommen produceert.
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -181,4 +181,4 @@ derive(DWhash = sha1(Name,ProductNumber,Color))
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gegevensstromen verkennen door te beginnen met het [overzichtsartikel gegevensstromen](concepts-data-flow-overview.md)
+Gegevens stromen verkennen door te beginnen met het [artikel overzicht van gegevens stromen](concepts-data-flow-overview.md)

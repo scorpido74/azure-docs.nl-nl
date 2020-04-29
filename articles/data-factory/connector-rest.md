@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit een REST-bron kopiëren met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens uit een cloud of on-premises REST-bron naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren uit een REST-bron met behulp van Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens uit een Cloud of een on-premises REST-bron naar ondersteunde Sink-gegevens opslag met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,36 +12,36 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415034"
 ---
-# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens van een REST-eindpunt kopiëren met Azure Data Factory
+# <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u Activiteit kopiëren in Azure Data Factory gebruikt om gegevens van een REST-eindpunt te kopiëren. Het artikel bouwt voort op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), dat een algemeen overzicht van Kopieeractiviteit weergeeft.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een REST-eind punt te kopiëren. Het artikel bouwt voort op de [Kopieer activiteit in azure Data Factory](copy-activity-overview.md), waarin een algemeen overzicht van de Kopieer activiteit wordt weer gegeven.
 
-Het verschil tussen deze REST-connector, [HTTP-connector](connector-http.md) en de [webtafelconnector](connector-web-table.md) zijn:
+Het verschil tussen deze REST-connector, de [http-connector](connector-http.md) en de [Web Table-connector](connector-web-table.md) zijn:
 
-- **REST-connector** ondersteunt specifiek het kopiëren van gegevens van RESTful API's; 
-- **HTTP-connector** is algemeen om gegevens op te halen uit elk HTTP-eindpunt, bijvoorbeeld om bestand te downloaden. Voordat deze REST-connector beschikbaar komt, u toevallig HTTP-connector gebruiken om gegevens te kopiëren van RESTful API, die wordt ondersteund, maar minder functioneel in vergelijking met REST-connector.
-- **In de webtabelconnector** wordt tabelinhoud uit een HTML-webpagina geëxtraheerd.
+- **Rest-connector** ondersteunt het kopiëren van gegevens uit rest-api's; 
+- **Http-connector** is algemeen om gegevens op te halen uit een http-eind punt, bijvoorbeeld om het bestand te downloaden. Voordat deze REST-connector beschikbaar komt, kunt u gebruikmaken van de HTTP-connector om gegevens te kopiëren van de REST-API, die wordt ondersteund, maar minder functioneel is vergeleken met de REST-connector.
+- Met **Web Table connector** wordt tabel inhoud geëxtraheerd van een HTML-webpagina.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-U gegevens uit een REST-bron kopiëren naar een ondersteund sinkdataarchief. Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die Activiteit kopiëren als bronnen en sinks ondersteunt.
+U kunt gegevens uit een REST-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
-Met name deze generieke REST-connector ondersteunt:
+Deze algemene REST-connector ondersteunt met name:
 
-- Gegevens ophalen van een REST-eindpunt met behulp van de methoden **GET** of **POST.**
-- Gegevens ophalen met behulp van een van de volgende verificaties: **Anoniem,** **Basic,** **AAD-serviceprincipal**en **beheerde identiteiten voor Azure-resources**.
-- **[Pagination](#pagination-support)** in de REST API's.
-- Het kopiëren van de REST JSON-respons [as-is](#export-json-response-as-is) of ontleden met behulp van [schematoewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping). Alleen responspayload in **JSON** wordt ondersteund.
+- Gegevens ophalen van een REST-eind punt met behulp van de **Get** -of **post** -methoden.
+- Gegevens ophalen met behulp van een van de volgende authenticaties: **anoniem**, **basis**, **Aad-Service-Principal**en **beheerde identiteiten voor Azure-resources**.
+- **[Paginering](#pagination-support)** in de rest api's.
+- De REST JSON-respons kopiëren [als-is](#export-json-response-as-is) of parseren met behulp van [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping). Alleen de nettolading van een reactie in **JSON** wordt ondersteund.
 
 > [!TIP]
-> Als u een aanvraag voor het ophalen van gegevens wilt testen voordat u de REST-connector configureert in Gegevensfabriek, leest u meer over de API-specificatie voor header- en hoofdvereisten. U tools zoals Postman of een webbrowser gebruiken om te valideren.
+> Als u een aanvraag voor het ophalen van gegevens wilt testen voordat u de REST-connector in Data Factory configureert, kunt u meer informatie vinden over de API-specificatie voor vereisten voor koptekst en hoofd tekst. U kunt de hulpprogram ma's zoals postman of een webbrowser gebruiken om te valideren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,28 +51,28 @@ Met name deze generieke REST-connector ondersteunt:
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die u gebruiken om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor de REST-connector.
+De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de REST-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor de rest-gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** moet zijn ingesteld op **RestService**. | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
 | url | De basis-URL van de REST-service. | Ja |
-| enableServerCertificateValidation | Of u tls/SSL-certificaat aan de serverzijde moet valideren wanneer u verbinding maakt met het eindpunt. | Nee<br /> (de standaardinstelling is **waar)** |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **Anoniem,** **Basic,** **AadServicePrincipal** en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder over respectievelijk meer eigenschappen en voorbeelden. | Ja |
-| connectVia | De [runtime integratie](concepts-integration-runtime.md) om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als deze eigenschap niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
+| enableServerCertificateValidation | Hiermee wordt aangegeven of het TLS/SSL-certificaat aan de server zijde moet worden gevalideerd wanneer er verbinding wordt gemaakt met het eind punt. | Nee<br /> (de standaard waarde is **True**) |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal** en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Ja |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-### <a name="use-basic-authentication"></a>Basisverificatie gebruiken
+### <a name="use-basic-authentication"></a>Basis verificatie gebruiken
 
-De eigenschap **authenticationType** instellen op **Basic**. Geef naast de algemene eigenschappen die in de vorige sectie worden beschreven, de volgende eigenschappen op:
+Stel de eigenschap **authenticationType** in op **Basic**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| userName | De gebruikersnaam die u wilt gebruiken om toegang te krijgen tot het REST-eindpunt. | Ja |
-| wachtwoord | Het wachtwoord voor de gebruiker (de **waarde userName).** Markeer dit veld als een **SecureString-type** om het veilig op te slaan in Gegevensfabriek. U ook [verwijzen naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
+| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Ja |
+| wachtwoord | Het wacht woord voor de gebruiker (de waarde van de **gebruikers naam** ). Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
 **Voorbeeld**
 
@@ -98,16 +98,16 @@ De eigenschap **authenticationType** instellen op **Basic**. Geef naast de algem
 }
 ```
 
-### <a name="use-aad-service-principal-authentication"></a>Aad-serviceprincipalverificatie gebruiken
+### <a name="use-aad-service-principal-authentication"></a>Principal-verificatie van AAD-service gebruiken
 
-Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Geef naast de algemene eigenschappen die in de vorige sectie worden beschreven, de volgende eigenschappen op:
+Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| servicePrincipalId | Geef de client-id van de Azure Active Directory-toepassing op. | Ja |
-| servicePrincipalKey | Geef de sleutel van de Azure Active Directory-toepassing op. Markeer dit veld als een **SecureString** om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
-| tenant | Geef de tenantgegevens op (domeinnaam of tenant-id) waaronder uw toepassing zich bevindt. Haal deze op door met de muis in de rechterbovenhoek van de Azure-portal te zweven. | Ja |
-| aadResourceId | Geef de AAD-bron op die u om `https://management.core.windows.net`autorisatie vraagt, bijvoorbeeld .| Ja |
+| servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja |
+| servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor `https://management.core.windows.net`autorisatie, bijvoorbeeld.| Ja |
 
 **Voorbeeld**
 
@@ -135,13 +135,13 @@ Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Geef na
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Beheerde identiteiten gebruiken voor Azure-bronverificatie
+### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Beheerde identiteiten gebruiken voor Azure-bronnen verificatie
 
-Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Geef naast de algemene eigenschappen die in de vorige sectie worden beschreven, de volgende eigenschappen op:
+Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| aadResourceId | Geef de AAD-bron op die u om `https://management.core.windows.net`autorisatie vraagt, bijvoorbeeld .| Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor `https://management.core.windows.net`autorisatie, bijvoorbeeld.| Ja |
 
 **Voorbeeld**
 
@@ -167,18 +167,18 @@ Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Geef
 
 In deze sectie vindt u een lijst met eigenschappen die de REST-gegevensset ondersteunt. 
 
-Zie [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. 
+Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. 
 
-Als u gegevens van REST wilt kopiëren, worden de volgende eigenschappen ondersteund:
+Als u gegevens wilt kopiëren uit REST, worden de volgende eigenschappen ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de gegevensset moet worden ingesteld op **RestResource**. | Ja |
-| relativenurl | Een relatieve URL naar de bron die de gegevens bevat. Wanneer deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de gekoppelde servicedefinitie. De HTTP-connector kopieert gegevens `[URL specified in linked service]/[relative URL specified in dataset]`uit de gecombineerde URL: . | Nee |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. De HTTP-connector kopieert gegevens van de gecombineerde URL `[URL specified in linked service]/[relative URL specified in dataset]`:. | Nee |
 
-Als u `requestMethod`instelling `additionalHeaders` `requestBody` , `paginationRules` , en in de gegevensset, het wordt nog steeds ondersteund as-is, terwijl u wordt voorgesteld om het nieuwe model te gebruiken in activiteit bron gaan vooruit.
+`requestMethod`Als u instelt `additionalHeaders`,, `requestBody` en `paginationRules` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in activiteit bron gaat gebruiken.
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -197,30 +197,30 @@ Als u `requestMethod`instelling `additionalHeaders` `requestBody` , `paginationR
 }
 ```
 
-## <a name="copy-activity-properties"></a>Activiteitseigenschappen kopiëren
+## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
 
-In deze sectie vindt u een lijst met eigenschappen die de REST-bron ondersteunt.
+In deze sectie vindt u een lijst met eigenschappen die door de REST-bron worden ondersteund.
 
-Zie [Pijplijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
+Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
 
 ### <a name="rest-as-source"></a>REST als bron
 
-De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De **eigenschap type** van de bron van de kopieeractiviteit moet worden ingesteld op **RestSource**. | Ja |
-| requestMethode | De HTTP-methode. Toegestane waarden zijn **Get** (default) en **Post**. | Nee |
-| extra Kopteksten | Aanvullende HTTP-aanvraagkoppen. | Nee |
-| requestBody | De instantie voor het HTTP-verzoek. | Nee |
-| paginationRegels | De paginatieregels voor het samenstellen van volgende paginaaanvragen. Raadpleeg [de sectie ondersteuning](#pagination-support) van pagination over details. | Nee |
-| httpRequestTime-out | De time-out (de **TimeSpan-waarde)** voor het HTTP-verzoek om een antwoord te krijgen. Deze waarde is de time-out om een antwoord te krijgen, niet de time-out om antwoordgegevens te lezen. De standaardwaarde is **00:01:40**.  | Nee |
-| requestInterval | De tijd om te wachten voordat u het verzoek voor de volgende pagina verzendt. De standaardwaarde is **00:00:01** |  Nee |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
+| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
+| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
+| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
+| paginationRules | De paginerings regels voor het opstellen van volgende pagina-aanvragen. Raadpleeg de sectie [ondersteuning voor paginering](#pagination-support) voor meer informatie. | Nee |
+| httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | Nee |
+| requestInterval | De tijd die moet worden gewacht voordat de aanvraag wordt verzonden naar de volgende pagina. De standaard waarde is **00:00:01** |  Nee |
 
 >[!NOTE]
->Rest-connector negeert elke koptekst `additionalHeaders`accepteren die is opgegeven in . Als REST-connector alleen ondersteuning reactie in JSON, `Accept: application/json`zal het automatisch genereren van een header van .
+>De header ' Accept ' die is opgegeven in `additionalHeaders`, wordt door de rest-connector genegeerd. Als REST-connector alleen ondersteuning biedt voor een reactie in JSON, wordt er automatisch `Accept: application/json`een header van gegenereerd.
 
-**Voorbeeld 1: De methode Oppakken gebruiken met pagination**
+**Voor beeld 1: de methode Get gebruiken met paginering**
 
 ```json
 "activities":[
@@ -258,7 +258,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieerac
 ]
 ```
 
-**Voorbeeld 2: De methode Post gebruiken**
+**Voor beeld 2: de post-methode gebruiken**
 
 ```json
 "activities":[
@@ -292,39 +292,39 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieerac
 ]
 ```
 
-## <a name="pagination-support"></a>Ondersteuning voor Pagination
+## <a name="pagination-support"></a>Paginerings ondersteuning
 
-Normaal gesproken beperkt REST API de grootte van het antwoordlaadvermogen van één enkele aanvraag onder een redelijk getal; terwijl om grote hoeveelheid gegevens terug te keren, het splitst het resultaat in meerdere pagina's en vereist bellers om opeenvolgende verzoeken te sturen naar de volgende pagina van het resultaat te krijgen. Meestal is het verzoek voor één pagina dynamisch en samengesteld door de informatie die is geretourneerd uit het antwoord van de vorige pagina.
+Normaal gesp roken beperkt REST API de grootte van de reactie lading van een enkele aanvraag onder een redelijk nummer; tijdens het retour neren van een grote hoeveelheid gegevens wordt het resultaat in meerdere pagina's gesplitst en moeten aanroepers opeenvolgende aanvragen verzenden om de volgende pagina van het resultaat op te halen. Normaal gesp roken is de aanvraag voor één pagina dynamisch en samengesteld op basis van de informatie die wordt geretourneerd door het antwoord op de vorige pagina.
 
-Deze generieke REST-connector ondersteunt de volgende paginatiepatronen: 
+Deze algemene REST-connector ondersteunt de volgende paginerings patronen: 
 
-* De absolute of relatieve URL van volgende aanvraag = eigenschapswaarde in de huidige reactietekst
-* De absolute of relatieve URL van volgende aanvraag = kopwaarde in huidige antwoordkoppen
-* Queryparameter van volgende aanvraag = eigenschapswaarde in huidige antwoordbody
-* Queryparameter van volgende aanvraag = kopwaarde in huidige antwoordkoppen
-* Koptekst van volgende aanvraag = eigenschapswaarde in huidige antwoordtekst
-* Koptekst van volgende aanvraag = kopwaarde in huidige antwoordkoppen
+* Absolute of relatieve URL van de volgende aanvraag waarde van eigenschap in huidige antwoord tekst
+* Absolute of relatieve URL van de volgende aanvraag = koptekst waarde in huidige antwoord headers
+* Query parameter van volgende aanvraag = eigenschaps waarde in huidige antwoord tekst
+* Query parameter = koptekst waarde van volgende aanvraag in huidige antwoord headers
+* Header van volgende aanvraag = waarde van eigenschap in huidige antwoord tekst
+* Kop van volgende aanvraag = waarde van header in huidige antwoord headers
 
-**Pagination-regels** worden gedefinieerd als een woordenboek in de gegevensset die een of meer hoofdlettergevoelige sleutelwaardeparen bevat. De configuratie wordt gebruikt om de aanvraag te genereren vanaf de tweede pagina. De connector stopt met herhalen wanneer http-statuscode 204 (Geen inhoud) wordt weergegeven, of als een van de JSONPath-expressies in 'paginationRules' null retourneert.
+**Paginerings regels** worden gedefinieerd als een woorden lijst in een gegevensset die een of meer hoofdletter gevoelige sleutel-waardeparen bevat. De configuratie wordt gebruikt om de aanvraag te genereren vanaf de tweede pagina. De connector stopt met herhalen wanneer de HTTP-status code 204 (geen inhoud) wordt opgehaald, of een van de JSONPath-expressies in paginationRules retourneert null.
 
-**Ondersteunde sleutels** in pagination-regels:
+**Ondersteunde sleutels** in de paginerings regels:
 
 | Sleutel | Beschrijving |
 |:--- |:--- |
-| AbsoluteUrl AbsoluteUrl | Geeft de URL aan om het volgende verzoek uit te geven. Het kan **absolute URL of relatieve URL**zijn. |
-| Queryparameters. *request_query_parameter* OF QueryParameters['request_query_parameter'] | "request_query_parameter" is door de gebruiker gedefinieerd die verwijst naar één queryparameternaam in de volgende HTTP-aanvraag-URL. |
-| Headers. *request_header* OR-headers['request_header'] | "request_header" is door de gebruiker gedefinieerd die verwijst naar één kopnaam in de volgende HTTP-aanvraag. |
+| AbsoluteUrl | Hiermee wordt de URL aangegeven voor het uitgeven van de volgende aanvraag. Dit kan **absolute URL of een relatieve URL**zijn. |
+| QueryParameters. *request_query_parameter* OF QueryParameters [' request_query_parameter '] | ' request_query_parameter ' is door de gebruiker gedefinieerd en verwijst naar één query parameter naam in de volgende HTTP-aanvraag-URL. |
+| Koppen. *request_header* OF headers [' request_header '] | ' request_header ' is door de gebruiker gedefinieerd en verwijst naar één header naam in de volgende HTTP-aanvraag. |
 
-**Ondersteunde waarden** in paginationregels:
+**Ondersteunde waarden** in de paginerings regels:
 
 | Waarde | Beschrijving |
 |:--- |:--- |
-| Headers. *response_header* OR-headers['response_header'] | "response_header" is door de gebruiker gedefinieerd die verwijst naar één koptekstnaam in het huidige HTTP-antwoord, waarvan de waarde wordt gebruikt om de volgende aanvraag uit te geven. |
-| Een JSONPath-expressie die begint met '$' (die de wortel van de reactiebody vertegenwoordigt) | De responsbody mag slechts één JSON-object bevatten. De JSONPath-expressie moet één primitieve waarde retourneren, die wordt gebruikt om de volgende aanvraag uit te geven. |
+| Koppen. *response_header* OF headers [' response_header '] | "response_header" is door de gebruiker gedefinieerd en verwijst naar één header naam in het huidige HTTP-antwoord, waarvan de waarde wordt gebruikt om de volgende aanvraag uit te geven. |
+| Een JSONPath-expressie die begint met ' $ ' (die de hoofdmap van de antwoord tekst vertegenwoordigt) | De antwoord tekst mag slechts één JSON-object bevatten. De JSONPath-expressie moet één primitieve waarde Retour neren, die wordt gebruikt voor het uitgeven van de volgende aanvraag. |
 
-**Voorbeeld:**
+**Hierbij**
 
-Facebook Graph API retourneert reactie in de volgende structuur, in welk geval de URL van de volgende pagina wordt weergegeven in ***paging.next:***
+Facebook Graph API retourneert een antwoord in de volgende structuur, in dat geval de URL van de volgende pagina wordt weer gegeven in ***paginering. volgende***:
 
 ```json
 {
@@ -356,7 +356,7 @@ Facebook Graph API retourneert reactie in de volgende structuur, in welk geval d
 }
 ```
 
-De overeenkomstige REST kopie `paginationRules` activiteit bron configuratie met name de is als volgt:
+De bijbehorende bron configuratie van de REST Copy- `paginationRules` activiteit met name de is als volgt:
 
 ```json
 "typeProperties": {
@@ -374,82 +374,82 @@ De overeenkomstige REST kopie `paginationRules` activiteit bron configuratie met
 ```
 
 ## <a name="use-oauth"></a>OAuth gebruiken
-In deze sectie wordt beschreven hoe u een oplossingssjabloon gebruiken om gegevens van REST-connector te kopiëren naar Azure Data Lake Storage in JSON-indeling met OAuth. 
+In deze sectie wordt beschreven hoe u een oplossings sjabloon gebruikt om gegevens van de REST-connector naar Azure Data Lake Storage in JSON-indeling te kopiëren met behulp van OAuth. 
 
-### <a name="about-the-solution-template"></a>Informatie over de oplossingssjabloon
+### <a name="about-the-solution-template"></a>Over de oplossings sjabloon
 
 De sjabloon bevat twee activiteiten:
-- **Webactiviteit** haalt het token aan toonder op en geeft het door aan de volgende kopieeractiviteit als autorisatie.
-- **Kopieer** activiteit kopieergegevens van REST naar Azure Data Lake Storage.
+- **Webactiviteit haalt** het Bearer-token op en geeft dit vervolgens door aan de volgende Kopieer activiteit als autorisatie.
+- Met de **Kopieer** activiteit worden gegevens van REST naar Azure data Lake Storage gekopieerd.
 
-De sjabloon definieert twee parameters:
-- **SinkContainer** is het hoofdmappad waarnaar de gegevens worden gekopieerd in uw Azure Data Lake Storage. 
-- **SinkDirectory** is het mappad onder de hoofdmap waarnaar de gegevens worden gekopieerd in uw Azure Data Lake Storage. 
+De sjabloon definieert twee para meters:
+- **SinkContainer** is het pad naar de hoofdmap waarnaar de gegevens worden gekopieerd in uw Azure data Lake Storage. 
+- **SinkDirectory** is het mappad in de hoofdmap waarnaar de gegevens worden gekopieerd in uw Azure data Lake Storage. 
 
-### <a name="how-to-use-this-solution-template"></a>Deze oplossingssjabloon gebruiken
+### <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
-1. Ga naar de **sjabloon Kopiëren van REST of HTTP met OAuth.** Maak een nieuwe verbinding voor Bronverbinding. 
+1. Ga naar de **kopie van rest of http met OAuth** -sjabloon. Een nieuwe verbinding maken voor de bron verbinding. 
     ![Nieuwe verbindingen maken](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
-    Hieronder vindt u de belangrijkste stappen voor nieuwe instellingen voor gekoppelde service (REST):Below are key steps for new linked service (REST) settings:
+    Hieronder vindt u belang rijke stappen voor nieuwe instellingen voor de gekoppelde service (REST):
     
-     1. Geef **onder Basis-URL**de url-parameter op voor uw eigen bronREST-service. 
-     2. Kies *Anoniem* **voor verificatietype**.
+     1. Geef onder **basis-URL**de URL-para meter voor uw eigen bron rest-service op. 
+     2. Kies *anoniem*bij **verificatie type**.
         ![Nieuwe REST-verbinding](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
 
-2. Maak een nieuwe verbinding voor Doelverbinding.  
+2. Maak een nieuwe verbinding voor de doel verbinding.  
     ![Nieuwe Gen2-verbinding](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
-3. Selecteer **Deze sjabloon gebruiken**.
+3. Selecteer **deze sjabloon gebruiken**.
     ![Deze sjabloon gebruiken](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. U ziet de pijplijn die is gemaakt ![zoals weergegeven in het volgende voorbeeld: Pijplijn](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. U ziet de pijp lijn die u hebt gemaakt, zoals wordt weer gegeven ![in het volgende voor beeld: pijp lijn](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. Selecteer **Webactiviteit.** Geef in **Instellingen**de bijbehorende **URL**, **Methode**, **Kopteksten**en **Instantie** op om OAuth-token aan toonder op te halen uit de inlog-API van de service waarvan u gegevens wilt kopiëren. De tijdelijke aanduiding in de sjabloon toont een voorbeeld van Azure Active Directory (AAD) OAuth. Opmerking AAD-authenticatie wordt native ondersteund door REST-connector, hier is slechts een voorbeeld voor OAuth flow. 
+5. Selecteer **Web** webactiviteit. Geef in **instellingen**de corresponderende **URL**, **methode**, **headers**en **hoofd tekst** op om een OAUTH Bearer-token op te halen uit de API voor aanmelden van de service waarvan u gegevens wilt kopiëren. In de tijdelijke aanduiding in de sjabloon wordt een voor beeld van een Azure Active Directory (AAD) OAuth gedemonstreerd. Opmerking AAD-verificatie wordt systeem eigen ondersteund door REST connector. Dit is slechts een voor beeld van een OAuth-stroom. 
 
     | Eigenschap | Beschrijving |
     |:--- |:--- |:--- |
-    | URL |Geef de url op om OAuth-token aan toonder op te halen. bijvoorbeeld in het monster hier is hethttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
-    | Methode | De HTTP-methode. Toegestane waarden zijn **Post** en **Get**. | 
-    | Headers | Koptekst is door de gebruiker gedefinieerd, die verwijst naar één kopnaam in de HTTP-aanvraag. | 
-    | Hoofdtekst | De instantie voor het HTTP-verzoek. | 
+    | URL |Geef de URL op waarvoor het OAuth Bearer-token moet worden opgehaald. bijvoorbeeld in het voor beeld is dithttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | Methode | De HTTP-methode. Toegestane waarden zijn **post** en **Get**. | 
+    | Headers | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
+    | Hoofdtekst | De hoofd tekst van de HTTP-aanvraag. | 
 
     ![Pijplijn](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. Selecteer in **Gegevensactiviteit kopiëren,** selecteer Tabblad *Bron,* u zien dat het token aan de drager (access_token) dat is opgehaald uit de vorige stap, wordt doorgegeven aan Gegevensactiviteit kopiëren als **Autorisatie** onder Aanvullende kopteksten. Bevestig de instellingen voor het volgen van eigenschappen voordat u een pijplijnrun start.
+6. Selecteer in activiteit **gegevens kopiëren** het tabblad *bron* , u kunt zien dat het Bearer-token (access_token) dat is opgehaald uit de vorige stap, wordt door gegeven om de activiteit gegevens te kopiëren als **verificatie** onder aanvullende headers. Bevestig de instellingen voor de volgende eigenschappen voordat u begint met het uitvoeren van een pijplijn.
 
     | Eigenschap | Beschrijving |
     |:--- |:--- |:--- | 
-    | Aanvraagmethode | De HTTP-methode. Toegestane waarden zijn **Get** (default) en **Post**. | 
-    | Extra kopteksten | Aanvullende HTTP-aanvraagkoppen.| 
+    | Aanvraag methode | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | 
+    | Aanvullende kopteksten | Aanvullende HTTP-aanvraag headers.| 
 
-   ![Bronverificatie kopiëren](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   ![Bron verificatie kopiëren](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
-7. Selecteer **Foutopsporing,** voer de **parameters**in en selecteer **Voltooien**.
-   ![Pijplijnrun](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+7. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
+   ![Pijplijn uitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. Wanneer de pijplijnrun is voltooid, ziet u het resultaat ![vergelijkbaar met het volgende voorbeeld: resultaat voor pijplijnuitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. Wanneer de uitvoering van de pijp lijn is voltooid, ziet u het resultaat dat lijkt op het volgende voor ![beeld: resultaat van pijplijn uitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
-9. Klik op het pictogram 'Uitvoeren' van WebActiviteit in de kolom **Acties,** u ziet de access_token die door de service zijn geretourneerd.
+9. Klik op het pictogram uitvoer van webactiviteit in de kolom **acties** , maar u ziet de access_token die door de service is geretourneerd.
 
-   ![Tokenuitvoer](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+   ![Token uitvoer](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
 
-10. Klik op het pictogram 'Invoer' van CopyActivity in de kolom **Handelingen,** u ziet dat de access_token die door WebActiviteit zijn opgehaald, wordt doorgegeven aan CopyActivity voor verificatie. 
+10. Klik op het pictogram invoer in CopyActivity in **acties** kolom, maar u ziet dat de access_token opgehaald door webactiviteit wordt door gegeven aan CopyActivity voor verificatie. 
 
-    ![Tokeninvoer](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+    ![Token invoer](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
         
     >[!CAUTION] 
-    >Om te voorkomen dat token wordt aangemeld in platte tekst, schakelt u 'Secure output' in Webactiviteit en 'Veilige invoer' in Kopieeractiviteit in.
+    >Als u wilt voor komen dat token wordt geregistreerd als tekst zonder opmaak, schakelt u ' beveiligde uitvoer ' in bij webactiviteit en ' beveiligde invoer ' in Kopieer activiteit.
 
 
-## <a name="export-json-response-as-is"></a>Json-respons exporteren as-is
+## <a name="export-json-response-as-is"></a>JSON-antwoord exporteren als-is
 
-U deze REST-connector gebruiken om REST API JSON-respons as-is naar verschillende bestandenop te slaan te exporteren. Als u een dergelijke schema-agnostische kopie wilt bereiken, slaat u de sectie "structuur" (ook wel *schema*genoemd) in gegevensset en schematoewijzing in kopieeractiviteit over.
+U kunt deze REST-connector gebruiken voor het exporteren van REST API JSON-antwoord naar verschillende archieven op basis van bestanden. Om een dergelijke schema-neutraal kopie te krijgen, slaat u de sectie ' Structure ' (ook wel *schema*genoemd) in de gegevensset en schema toewijzing in de Kopieer activiteit over.
 
-## <a name="schema-mapping"></a>Schematoewijzing
+## <a name="schema-mapping"></a>Schema toewijzing
 
-Als u gegevens wilt kopiëren van REST-eindpunt naar tabelgoot, raadpleegt u [schematoewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
+Zie [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping)voor informatie over het kopiëren van het rest-eind punt naar tabellaire sink.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Ondersteunde gegevensopslag en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die activiteit kopiëren als bronnen en sinks in Azure Data Factory ondersteunt.
+Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en sinks in azure Data Factory.

@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met VSTS
-description: Query Azure Synapse Analytics met Visual Studio.
+description: Query's uitvoeren voor Azure Synapse Analytics met Visual Studio.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416039"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Verbinding maken met Azure Synapse Analytics met Visual Studio en SSDT
@@ -23,23 +23,23 @@ ms.locfileid: "81416039"
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-Gebruik Visual Studio om binnen enkele minuten een SQL-groep op te vragen binnen Azure Synapse. Deze methode maakt gebruik van de SQL Server Data Tools (SSDT) extensie in Visual Studio 2019. 
+Gebruik Visual Studio om binnen een paar minuten een SQL-groep in azure Synapse op te vragen. Deze methode maakt gebruik van de uitbrei ding SQL Server Data Tools (SSDT) in Visual Studio 2019. 
 
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een bestaande SQL-pool. Zie [Een SQL-pool maken](create-data-warehouse-portal.md)als u er een wilt maken.
-* SSDT voor Visual Studio. Als je Visual Studio hebt, heb je waarschijnlijk al SSDT voor Visual Studio. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](sql-data-warehouse-install-visual-studio.md).
-* De volledig gekwalificeerde SQL-servernaam. Zie Verbinding maken [met SQL-pool om](../sql/connect-overview.md)deze informatie te vinden.
+* Een bestaande SQL-groep. Zie [een SQL-groep maken](create-data-warehouse-portal.md)om er een te maken.
+* SSDT voor Visual Studio. Als u Visual Studio hebt, hebt u waarschijnlijk al SSDT voor Visual Studio. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren](sql-data-warehouse-install-visual-studio.md).
+* De volledig gekwalificeerde SQL-servernaam. Zie [verbinding maken met de SQL-groep](../sql/connect-overview.md)om deze informatie te vinden.
 
-## <a name="1-connect-to-your-sql-pool"></a>1. Verbinding maken met uw SQL-groep
+## <a name="1-connect-to-your-sql-pool"></a>1. Maak verbinding met de SQL-groep
 1. Open Visual Studio 2019.
-2. Open SQL Server Object Explorer door**SQL Server Object Explorer** **weergeven** > te selecteren .
+2. Open SQL Server-objectverkenner door SQL Server-objectverkenner **weer geven** > **SQL Server Object Explorer**te selecteren.
    
     ![SQL Server-objectverkenner](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Klik op het pictogram **SQL Server toevoegen**.
@@ -49,7 +49,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
    
     ![Verbinding maken met server](./media/sql-data-warehouse-query-visual-studio/connection-dialog.png)
    
-   * **Servernaam**. Voer de eerder vastgestelde **servernaam** in.
+   * **Server naam**. Voer de eerder vastgestelde **servernaam** in.
    * **Verificatie**. Selecteer **SQL Server Authentication** (SQL Server-verificatie) of **Active Directory Integrated Authentication** (Geïntegreerde Active Directory-verificatie).
    * **User Name** (Gebruikersnaam) en **Password** (Wachtwoord). Voer de gebruikersnaam en het wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
    * Klik op **Verbinden**.
@@ -57,19 +57,19 @@ Voor deze zelfstudie hebt u het volgende nodig:
    
     ![AdventureWorksDW verkennen](./media/sql-data-warehouse-query-visual-studio/explore-sample.png)
 
-## <a name="2-run-a-sample-query"></a>2. Een voorbeeldquery uitvoeren
+## <a name="2-run-a-sample-query"></a>2. Voer een voorbeeld query uit
 Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
     ![Nieuwe query](./media/sql-data-warehouse-query-visual-studio/new-query2.png)
-3. Kopieer de volgende T-SQL-query naar het queryvenster:
+3. Kopieer de volgende T-SQL-query naar het query venster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Voer de query uit door op de groene `CTRL` + `SHIFT` +pijl te klikken of gebruik de volgende snelkoppeling: `E`.
+4. Voer de query uit door op de groene pijl te klikken of de volgende `CTRL` + `SHIFT` + `E`snelkoppeling te gebruiken:.
    
     ![Query uitvoeren](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de tabel FactInternetSales 60398 rijen.
@@ -77,6 +77,6 @@ Nu er een verbinding met uw database is ingesteld, gaat u een query schrijven.
     ![Queryresultaten](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u verbinding maken en query's [uitvoeren,](sql-data-warehouse-get-started-visualize-with-power-bi.md)probeert u de gegevens te visualiseren met Power BI.
+Nu u verbinding maakt en query's uitvoert, kunt u proberen [de gegevens te visualiseren met Power bi](sql-data-warehouse-get-started-visualize-with-power-bi.md).
 
-Zie [Verifiëren naar SQL-groep](sql-data-warehouse-authentication.md)als u uw omgeving wilt configureren voor Azure Active Directory-verificatie.
+Zie [verifiëren bij SQL-groep](sql-data-warehouse-authentication.md)om uw omgeving te configureren voor Azure Active Directory-verificatie.

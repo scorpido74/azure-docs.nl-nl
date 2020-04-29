@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren vanuit ServiceNow
-description: Meer informatie over het kopiëren van gegevens van ServiceNow naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van ServiceNow
+description: Meer informatie over het kopiëren van gegevens uit ServiceNow naar ondersteunde Sink-gegevens archieven met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415340"
 ---
-# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Gegevens van ServiceNow kopiëren met Azure Data Factory
+# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Gegevens kopiëren van ServiceNow met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van ServiceNow te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit ServiceNow te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze ServiceNow-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
-- [Opzoekactiviteit](control-flow-lookup-activity.md)
+- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Opzoek activiteit](control-flow-lookup-activity.md)
 
-U gegevens van ServiceNow kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
+U kunt gegevens van ServiceNow kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
+Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de ServiceNow-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek zijn voor ServiceNow-connector.
 
-## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor serviceNow-gekoppelde service:
+De volgende eigenschappen worden ondersteund voor ServiceNow gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **ServiceNow** | Ja |
-| endpoint | Het eindpunt van de ServiceNow-server (`http://<instance>.service-now.com`).  | Ja |
-| authenticationType | Het te gebruiken verificatietype. <br/>Toegestane waarden zijn: **Basic**, **OAuth2** | Ja |
-| gebruikersnaam | De gebruikersnaam die wordt gebruikt om verbinding te maken met de ServiceNow-server voor Basis- en OAuth2-verificatie.  | Ja |
-| wachtwoord | Het wachtwoord dat overeenkomt met de gebruikersnaam voor Basis- en OAuth2-verificatie. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Ja |
+| type | De eigenschap type moet worden ingesteld op: **ServiceNow** | Ja |
+| endpoint | Het eind punt van de ServiceNow-`http://<instance>.service-now.com`server ().  | Ja |
+| authenticationType | Het verificatie type dat moet worden gebruikt. <br/>Toegestane waarden zijn: **Basic**, **OAuth2** | Ja |
+| gebruikersnaam | De gebruikers naam die wordt gebruikt om verbinding te maken met de ServiceNow-server voor Basic-en OAuth2-verificatie.  | Ja |
+| wachtwoord | Het wacht woord dat overeenkomt met de gebruikers naam voor Basic-en OAuth2-verificatie. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | clientId | De client-ID voor OAuth2-verificatie.  | Nee |
-| clientGeheim | Het clientgeheim voor OAuth2-authenticatie. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
-| gebruikVersleutelde eindpunten | Hiermee geeft u op of de eindpunten van de gegevensbron zijn versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
-| usePeerVerification | Hiermee geeft u op of u de identiteit van de server moet verifiëren wanneer u verbinding maakt via TLS. De standaardwaarde is waar.  | Nee |
+| clientSecret | Het client geheim voor OAuth2-verificatie. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
+| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
+| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
+| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 {
@@ -79,14 +79,14 @@ De volgende eigenschappen worden ondersteund voor serviceNow-gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de gegevensset ServiceNow.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de ServiceNow-gegevensset.
 
 Als u gegevens van ServiceNow wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **ServiceNowObject**. De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet zijn ingesteld op: **ServiceNowObject** | Ja |
-| tableName | Naam van de tabel. | Nee (als 'query' in activiteitsbron is opgegeven) |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **ServiceNowObject** | Ja |
+| tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
 
@@ -107,27 +107,27 @@ Als u gegevens van ServiceNow wilt kopiëren, stelt u de eigenschap type van de 
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Bron ServiceNow.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door ServiceNow-bron worden ondersteund.
 
 ### <a name="servicenow-as-source"></a>ServiceNow als bron
 
-Als u gegevens van ServiceNow wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **ServiceNowSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
+Als u gegevens wilt kopiëren uit ServiceNow, stelt u het bron type in de Kopieer activiteit in op **ServiceNowSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van kopieeractiviteit moet zijn ingesteld op: **ServiceNowSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Actual.alm_asset"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **ServiceNowSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Actual.alm_asset"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-Noteer het volgende bij het opgeven van het schema en de kolom voor ServiceNow in query en **raadpleeg [Prestatietips](#performance-tips) voor de implicatie van kopieerprestaties**.
+Let op het volgende wanneer u het schema en de kolom voor ServiceNow in query opgeeft en **Raadpleeg de [prestatie tips](#performance-tips) bij het kopiëren van de prestatie implicaties**.
 
-- **Schema:** geef het `Actual` `Display` schema op als of in de ServiceNow-query, die u zien als de parameter van true of false bij het aanroepen van `sysparm_display_value` [ServiceNow-rustgevende API's](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Kolom:** de kolomnaam voor `Actual` de `[column name]_value`werkelijke waarde onder `Display` schema `[column name]_display_value`is , terwijl voor weergavewaarde onder schema is . Let op de kolomnaam moet worden toegewezen aan het schema dat in de query wordt gebruikt.
+- **Schema:** Geef het schema op `Actual` als `Display` of in de ServiceNow-query, die u kunt bekijken als de para meter `sysparm_display_value` True of False bij het aanroepen van [ServiceNow-rest-api's](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Kolom:** de kolom naam voor de werkelijke waarde `Actual` onder schema `[column name]_value`is, terwijl de waarde weer `Display` geven onder `[column name]_display_value`schema is. Houd er rekening mee dat de naam van de kolom moet worden toegewezen aan het schema dat wordt gebruikt in de query.
 
-**Voorbeeldquery:** 
- `SELECT col_value FROM Actual.alm_asset` OF 
+**Voorbeeld query:** 
+ `SELECT col_value FROM Actual.alm_asset` of 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Voorbeeld:**
+**Hierbij**
 
 ```json
 "activities":[
@@ -160,20 +160,20 @@ Noteer het volgende bij het opgeven van het schema en de kolom voor ServiceNow i
 ```
 ## <a name="performance-tips"></a>Tips voor prestaties
 
-### <a name="schema-to-use"></a>Schema te gebruiken
+### <a name="schema-to-use"></a>Schema dat moet worden gebruikt
 
-ServiceNow heeft 2 verschillende schema's, een is **"Werkelijke"** die werkelijke gegevens retourneert, de andere is **"Display"** die de weergavewaarden van gegevens retourneert. 
+ServiceNow heeft twee verschillende schema's, een is **"werkelijk"** waarmee werkelijke gegevens worden geretourneerd. de andere waarde is **"display"** waarmee de weergave waarden van gegevens worden geretourneerd. 
 
-Als u een filter in uw query hebt, gebruikt u het schema 'Actueel' dat de prestaties van de kopie beter heeft. Bij het opvragen tegen het 'Werkelijke' schema ondersteunt ServiceNow native filter bij het ophalen van de gegevens om alleen de gefilterde resultaatset terug te sturen, terwijl ADF bij het opvragen van het schema 'Weergeven' alle gegevens ophaalt en het filter intern toepast.
+Als u een filter in uw query hebt, gebruikt u ' werkelijk ' schema dat betere Kopieer prestaties heeft. Bij het uitvoeren van een query op een ' werkelijk ' schema, ServiceNow systeem eigen ondersteuning bij het ophalen van de gegevens om alleen de gefilterde resultatenset te retour neren, terwijl bij het uitvoeren van query's op het schema ' weer geven ' alle gegevens worden opgehaald en filter intern wordt toegepast.
 
 ### <a name="index"></a>Index
 
-ServiceNow-tabelindex kan helpen bij het verbeteren van de queryprestaties, verwijzen naar [Een tabelindex maken](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
+Met de ServiceNow-tabel index kunt u de prestaties van query's verbeteren door [een tabel index te maken](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
+Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

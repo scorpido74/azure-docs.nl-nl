@@ -1,6 +1,6 @@
 ---
-title: Delta-kopie uit een database met behulp van een controletabel
-description: Meer informatie over het gebruik van een oplossingssjabloon om nieuwe of bijgewerkte rijen alleen vanuit een database met Azure Data Factory stapsgewijs te kopiëren.
+title: Delta kopie van een Data Base met behulp van een controle tabel
+description: Leer hoe u een oplossings sjabloon kunt gebruiken om nieuwe of bijgewerkte rijen incrementeel te kopiëren vanuit een Data Base met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,45 +13,45 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 01a6d796a9a8306da5bb707111b07786136a66cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414787"
 ---
-# <a name="delta-copy-from-a-database-with-a-control-table"></a>Delta-kopie uit een database met een controletabel
+# <a name="delta-copy-from-a-database-with-a-control-table"></a>Delta kopie van een Data Base met een controle tabel
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt een sjabloon beschreven die beschikbaar is om nieuwe of bijgewerkte rijen uit een databasetabel stapsgewijs te laden naar Azure met behulp van een externe controletabel die een hoogwatermerkwaarde opslaat.
+In dit artikel wordt een sjabloon beschreven die beschikbaar is voor het stapsgewijs laden van nieuwe of bijgewerkte rijen van een database tabel naar Azure met behulp van een externe controle tabel waarin een waarde met een bovengrens wordt opgeslagen.
 
-Deze sjabloon vereist dat het schema van de brondatabase een tijdstempelkolom of een verhogingssleutel bevat om nieuwe of bijgewerkte rijen te identificeren.
+Voor deze sjabloon moet het schema van de bron database een time stamp-kolom of een incrementele sleutel bevatten om nieuwe of bijgewerkte rijen te identificeren.
 
 >[!NOTE]
-> Als u een tijdstempelkolom in uw brondatabase hebt om nieuwe of bijgewerkte rijen te identificeren, maar u geen externe controletabel wilt maken die u wilt gebruiken voor delta-kopie, u in plaats daarvan het [hulpprogramma gegevenskopiëren](copy-data-tool.md) van Azure Data Factory gebruiken om een pijplijn te krijgen. Dat hulpprogramma gebruikt een door trigger geplande tijd als variabele om nieuwe rijen uit de brondatabase te lezen.
+> Als u een time stamp-kolom in uw bron database hebt om nieuwe of bijgewerkte rijen te identificeren, maar u geen externe beheer tabel wilt maken om te gebruiken voor een Delta kopie, kunt u in plaats daarvan het [hulp programma Azure Data Factory gegevens kopiëren](copy-data-tool.md) gebruiken om een pijp lijn te verkrijgen. Dit hulp programma gebruikt een trigger-geplande tijd als een variabele om nieuwe rijen te lezen uit de bron database.
 
-## <a name="about-this-solution-template"></a>Over deze oplossingssjabloon
+## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
 
-Deze sjabloon haalt eerst de oude watermerkwaarde op en vergelijkt deze met de huidige watermerkwaarde. Daarna worden alleen de wijzigingen uit de brondatabase kopieën gemaakt op basis van een vergelijking tussen de twee watermerkwaarden. Ten slotte slaat het de nieuwe hoogwatermerkwaarde op in een externe controletabel voor het laden van deltagegevens de volgende keer.
+Deze sjabloon haalt eerst de oude watermerk waarde op en vergelijkt deze met de huidige watermerk waarde. Daarna kopieert het alleen de wijzigingen uit de bron database, op basis van een vergelijking tussen de twee watermerk waarden. Ten slotte wordt de nieuwe waarde voor het hoge water merk opgeslagen in een externe controle tabel voor de volgende keer dat de Delta gegevens worden geladen.
 
 De sjabloon bevat vier activiteiten:
-- **Lookup** haalt de oude hoogwatermerkwaarde op, die is opgeslagen in een externe controletabel.
-- Een andere **opzoekactiviteit** haalt de huidige hoogwatermerkwaarde op uit de brondatabase.
-- **Kopieer** alleen wijzigingen van de brondatabase naar het doelarchief. De query die de wijzigingen in de brondatabase identificeert, is vergelijkbaar met 'SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > 'last high-watermark' en TIMESTAMP_Column <= 'current high-watermark''.
-- **SqlServerStoredProcedure** schrijft de huidige hoogwatermerkwaarde naar een externe controletabel voor delta-kopie de volgende keer.
+- Met **lookup** wordt de oude waarde met een bovengrens opgehaald, die wordt opgeslagen in een externe beheer tabel.
+- Met een andere **opzoek** activiteit wordt de huidige waarde van het hoogste water merk opgehaald uit de bron database.
+- **Copy** kopieert alleen wijzigingen van de bron database naar het doel archief. De query waarmee de wijzigingen in de bron database worden geïdentificeerd, is vergelijkbaar met ' SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > ' laatste bovengrens ' en TIMESTAMP_Column <= ' huidige bovengrens ' '.
+- **SqlServerStoredProcedure** schrijft de huidige waarde met hoge water merk naar een externe controle tabel voor de volgende keer dat de Delta kopie wordt gekopieerd.
 
-De sjabloon definieert de volgende parameters:
-- *Data_Source_Table_Name* is de tabel in de brondatabase waarvan u gegevens wilt laden.
-- *Data_Source_WaterMarkColumn* is de naam van de kolom in de brontabel die wordt gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom is meestal *datumtijd,* *INT*of iets dergelijks.
-- *Data_Destination_Container* is het hoofdpad van de plaats waar naar de gegevens wordt gekopieerd in uw bestemmingsarchief.
-- *Data_Destination_Directory* is het mappad onder de hoofdmap van de plaats waar naar de gegevens wordt gekopieerd in uw bestemmingsarchief.
-- *Data_Destination_Table_Name* is de plaats waar de gegevens worden gekopieerd naar in uw doelarchief (van toepassing wanneer "Azure Synapse Analytics (voorheen SQL DW)" is geselecteerd als Gegevensbestemming).
-- *Data_Destination_Folder_Path* is de plaats waar naar de gegevens wordt gekopieerd in uw bestemmingsarchief (van toepassing wanneer 'Bestandssysteem' of 'Azure Data Lake Storage Gen1' is geselecteerd als gegevensbestemming).
-- *Control_Table_Table_Name* is de externe controletabel die de hoogwatermerkwaarde opslaat.
-- *Control_Table_Column_Name* is de kolom in de externe controletabel die de waarde van het hoogwatermerk opslaat.
+De sjabloon definieert de volgende para meters:
+- *Data_Source_Table_Name* is de tabel in de bron database waaruit u gegevens wilt laden.
+- *Data_Source_WaterMarkColumn* is de naam van de kolom in de bron tabel die wordt gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom is doorgaans *DateTime*, *int*of soortgelijk.
+- *Data_Destination_Container* is het hoofdpad van de locatie waarnaar de gegevens worden gekopieerd in uw doel archief.
+- *Data_Destination_Directory* het mappad is in de hoofdmap van de locatie waarnaar de gegevens worden gekopieerd in uw doel archief.
+- *Data_Destination_Table_Name* is de plek waar de gegevens worden gekopieerd naar in uw doel archief (van toepassing wanneer ' Azure Synapse Analytics (voorheen SQL DW) ' is geselecteerd als de gegevens bestemming).
+- *Data_Destination_Folder_Path* is de plaats waar de gegevens naar worden gekopieerd in uw doel archief (van toepassing als ' bestands systeem ' of ' Azure data Lake Storage gen1 ' is geselecteerd als de bestemming van de gegevens).
+- *Control_Table_Table_Name* is de tabel voor externe controle waarin de waarde met een hoog watermerk niveau wordt opgeslagen.
+- *Control_Table_Column_Name* is de kolom in de tabel voor externe controle waarin de waarde met een hoog watermerk niveau wordt opgeslagen.
 
-## <a name="how-to-use-this-solution-template"></a>Deze oplossingssjabloon gebruiken
+## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
-1. Verken de brontabel die u wilt laden en definieer de hoogwatermerkkolom die kan worden gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom kan *datumtijd,* *INT*of iets dergelijks zijn. De waarde van deze kolom neemt toe naarmate nieuwe rijen worden toegevoegd. In de volgende voorbeeldbrontabel (data_source_table) kunnen we de kolom *LastModifytime* gebruiken als de kolom hoogwatermerk.
+1. Verken de bron tabel die u wilt laden en definieer de kolom met het hoogste water merk die kan worden gebruikt om nieuwe of bijgewerkte rijen te identificeren. Het type van deze kolom kan *DateTime*, *int*of soortgelijk zijn. De waarde van deze kolom neemt toe wanneer er nieuwe rijen worden toegevoegd. In het volgende voor beeld van een bron tabel (data_source_table), kunnen we de kolom *LastModifytime* gebruiken als de kolom met hoge water merken.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -66,7 +66,7 @@ De sjabloon definieert de volgende parameters:
             9   iiiiiiiii   2017-09-09 09:01:00.000
     ```
     
-2. Maak een besturingselementtabel in SQL Server of Azure SQL Database om de hoogwatermerkwaarde voor deltagegevensladen op te slaan. In het volgende voorbeeld is de naam van de controletabel *watermarktbaar.* In deze tabel is *WatermarkValue* de kolom die de waarde van het hoogwatermerk opslaat en het type *datumtijd*.
+2. Maak een controle tabel in SQL Server of Azure SQL Database om de bovengrens voor het laden van Delta gegevens op te slaan. In het volgende voor beeld is de naam van de beheer tabel *watermarktable*. In deze tabel is *WatermarkValue* de kolom waarin de waarde met een hoge water merk wordt opgeslagen en het type is *DateTime*.
 
     ```sql
             create table watermarktable
@@ -77,7 +77,7 @@ De sjabloon definieert de volgende parameters:
             VALUES ('1/1/2010 12:00:00 AM')
     ```
     
-3. Maak een opgeslagen procedure in dezelfde SQL Server- of Azure SQL Database-instantie die u hebt gebruikt om de beheertabel te maken. De opgeslagen procedure wordt gebruikt om de nieuwe hoogwatermerkwaarde naar de externe controletabel te schrijven voor het laden van deltagegevens de volgende keer.
+3. Maak een opgeslagen procedure in hetzelfde SQL Server-of Azure SQL Database-exemplaar dat u hebt gebruikt om de controle tabel te maken. De opgeslagen procedure wordt gebruikt om de nieuwe waarde met een hoog water merk te schrijven naar de externe controle tabel voor het laden van de volgende keer dat de Delta gegevens worden geladen.
 
     ```sql
             CREATE PROCEDURE update_watermark @LastModifiedtime datetime
@@ -91,41 +91,41 @@ De sjabloon definieert de volgende parameters:
             END
     ```
     
-4. Ga naar de **Delta-kopie van databasesjabloon.** Maak een **nieuwe** verbinding met de brondatabase waarvan u gegevens wilt kopiëren.
+4. Ga naar de **Delta kopie van de database** sjabloon. Maak een **nieuwe** verbinding met de bron database van waaruit u gegevens wilt kopiëren.
 
-    ![Een nieuwe verbinding met de brontabel maken](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
+    ![Een nieuwe verbinding maken met de bron tabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. Maak een **nieuwe** verbinding met het doelgegevensarchief waarnaar u de gegevens wilt kopiëren.
+5. Maak een **nieuwe** verbinding met de doel gegevens opslag waarnaar u de gegevens wilt kopiëren.
 
-    ![Een nieuwe verbinding maken met de doeltabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
+    ![Een nieuwe verbinding maken met de doel tabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. Maak een **nieuwe** verbinding met de externe controletabel en de opgeslagen procedure die u in stap 2 en 3 hebt gemaakt.
+6. Maak een **nieuwe** verbinding met de tabel voor externe controle en opgeslagen procedure die u hebt gemaakt in stap 2 en 3.
 
-    ![Een nieuwe verbinding maken met het gegevensarchief van de controletabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
+    ![Een nieuwe verbinding maken met het gegevens archief van de controle tabel](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Selecteer **Deze sjabloon gebruiken**.
+7. Selecteer **deze sjabloon gebruiken**.
     
-8. U ziet de beschikbare pijplijn, zoals weergegeven in het volgende voorbeeld:
+8. U ziet de beschik bare pijp lijn, zoals wordt weer gegeven in het volgende voor beeld:
   
-    ![De pijplijn bekijken](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+    ![De pijp lijn controleren](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Selecteer **Opgeslagen procedure**. Kies voor **de naam van de opgeslagen procedure** **[dbo].[ update_watermark]**. Selecteer **Parameter Importeren**en selecteer Dynamische inhoud **toevoegen**.  
+9. Selecteer **opgeslagen procedure**. Kies [dbo] voor de naam van de **opgeslagen procedure** **. [ update_watermark]**. Selecteer **para meter importeren**en selecteer vervolgens **dynamische inhoud toevoegen**.  
 
-    ![De opgeslagen procedureactiviteit instellen](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
+    ![De opgeslagen procedure-activiteit instellen](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. Schrijf de inhoud ** \@{activiteit('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** en selecteer **Voltooien**.  
+10. Schrijf de inhoud ** \@{activity (' LookupCurrentWaterMark '). output. firstRow. NewWatermarkValue}** en selecteer vervolgens **volt ooien**.  
 
-    ![De inhoud voor de parameters van de opgeslagen procedure schrijven](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
+    ![De inhoud voor de para meters van de opgeslagen procedure schrijven](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
-11. Selecteer **Foutopsporing,** voer de **parameters**in en selecteer **Voltooien**.
+11. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
 
-    ![Selecteer **Foutopsporing**](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![Selecteer * * fout opsporing * *](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-12. Resultaten die vergelijkbaar zijn met het volgende voorbeeld worden weergegeven:
+12. Resultaten die vergelijkbaar zijn met het volgende voor beeld worden weer gegeven:
 
     ![Bekijk het resultaat](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
 
-13. U nieuwe rijen maken in uw brontabel. Hier vindt u voorbeeldSQL-taal om nieuwe rijen te maken:
+13. U kunt nieuwe rijen in de bron tabel maken. Hier volgt een voor beeld van een SQL-taal om nieuwe rijen te maken:
 
     ```sql
             INSERT INTO data_source_table
@@ -135,15 +135,15 @@ De sjabloon definieert de volgende parameters:
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
 
-14. Als u de pijplijn opnieuw wilt uitvoeren, selecteert u **Foutopsporing,** voert u de **parameters**in en selecteert u **Voltooien**.
+14. Als u de pijp lijn opnieuw wilt uitvoeren, selecteert u **fout opsporing**, voert u de **para meters**in en selecteert u vervolgens **volt ooien**.
 
-    U zult zien dat alleen nieuwe rijen naar de bestemming zijn gekopieerd.
+    U ziet dat alleen nieuwe rijen zijn gekopieerd naar de bestemming.
 
-15. (Optioneel:) Als u Azure Synapse Analytics (voorheen SQL DW) als gegevensbestemming selecteert, moet u ook een verbinding met Azure Blob-opslag bieden voor fasering, wat vereist is door SQL Data Warehouse Polybase. De sjabloon genereert een containerpad voor u. Controleer na het uitvoeren van de pijplijn of de container is gemaakt in blobopslag.
+15. Beschrijving Als u Azure Synapse Analytics (voorheen SQL DW) als de gegevens bestemming selecteert, moet u ook een verbinding met Azure Blob Storage voor fase ring opgeven, die wordt vereist door SQL Data Warehouse poly base. Met de sjabloon wordt een pad naar een container gegenereerd. Controleer na de uitvoering van de pijp lijn of de container is gemaakt in Blob Storage.
     
-    ![Polybase configureren](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
+    ![Poly base configureren](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bulkkopie uit een database met behulp van een controletabel met Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
-- [Bestanden uit meerdere containers kopiëren met Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Bulksgewijs kopiëren van een Data Base met behulp van een controle tabel met Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
+- [Bestanden van meerdere containers met Azure Data Factory kopiëren](solution-template-copy-files-multiple-containers.md)

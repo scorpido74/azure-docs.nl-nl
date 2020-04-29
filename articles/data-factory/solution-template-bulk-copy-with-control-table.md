@@ -1,6 +1,6 @@
 ---
-title: Bulkkopie uit een database met de controletabel
-description: Meer informatie over het gebruik van een oplossingssjabloon om bulkgegevens uit een database te kopiëren met behulp van een externe controletabel om een partitielijst met brontabellen op te slaan met Azure Data Factory.
+title: Bulksgewijs kopiëren uit een Data Base met behulp van de controle tabel
+description: Meer informatie over het gebruik van een oplossings sjabloon voor het kopiëren van bulk gegevens uit een Data Base met behulp van een externe beheer tabel om een partitie lijst met bron tabellen op te slaan met behulp van Azure Data Factory.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -12,42 +12,42 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
 ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414831"
 ---
-# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Bulkkopie uit een database met een controletabel
+# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Bulksgewijs kopiëren van een Data Base met een controle tabel
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Als u gegevens uit een gegevensmagazijn in Oracle Server, Netezza, Teradata of SQL Server wilt kopiëren naar Azure SQL Data Warehouse, moet u enorme hoeveelheden gegevens uit meerdere tabellen laden. Meestal moeten de gegevens in elke tabel worden verdeeld, zodat u rijen met meerdere threads parallel vanuit één tabel laden. In dit artikel wordt een sjabloon beschreven die in deze scenario's moet worden gebruikt.
+Als u gegevens wilt kopiëren van een Data Warehouse in Oracle Server, Netezza, Teradata of SQL Server naar Azure SQL Data Warehouse, moet u enorme hoeveel heden gegevens uit meerdere tabellen laden. Normaal gesp roken moeten de gegevens in elke tabel worden gepartitioneerd, zodat u rijen met meerdere threads parallel vanuit één tabel kunt laden. In dit artikel wordt een sjabloon beschreven voor gebruik in deze scenario's.
 
- >! OPMERKING Als u gegevens uit een klein aantal tabellen met een relatief klein gegevensvolume naar SQL Data Warehouse wilt kopiëren, is het efficiënter om het [hulpprogramma voor kopiëren met Azure Data Factory Copy Data](copy-data-tool.md)te gebruiken. De sjabloon die in dit artikel wordt beschreven, is meer dan u nodig hebt voor dat scenario.
+ >! Opmerking: als u gegevens wilt kopiëren van een klein aantal tabellen met relatief klein gegevens volume naar SQL Data Warehouse, is het efficiënter om het [Azure Data Factory gegevens kopiëren tool](copy-data-tool.md)te gebruiken. De sjabloon die in dit artikel wordt beschreven, is meer dan u nodig hebt voor dat scenario.
 
-## <a name="about-this-solution-template"></a>Over deze oplossingssjabloon
+## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
 
-Met deze sjabloon wordt een lijst met brondatabasepartities opgehaald die u wilt kopiëren uit een externe controletabel. Vervolgens wordt elke partitie in de brondatabase over deze partitie heen getint en worden de gegevens naar de bestemming kopieën gemaakt.
+Met deze sjabloon wordt een lijst opgehaald met de bron database partities die moeten worden gekopieerd uit een externe beheer tabel. Vervolgens wordt elke partitie in de bron database herhaald en worden de gegevens naar het doel gekopieerd.
 
 De sjabloon bevat drie activiteiten:
-- **Lookup** haalt de lijst met bepaalde databasepartities op uit een externe controletabel.
-- **ForEach** krijgt de partitielijst van de opzoekactiviteit en vereert elke partitie naar de activiteit Kopiëren.
-- **Kopieer** kopieën van elke partitie van het brondatabasearchief naar het doelarchief.
+- Met **zoeken** wordt de lijst met verzekerde database partities opgehaald uit een tabel voor externe controle.
+- **Foreach** haalt de partitie lijst op uit de opzoek activiteit en herhaalt elke partitie met de Kopieer activiteit.
+- **Copy** kopieert elke partitie uit het archief van de bron database naar het doel archief.
 
-De sjabloon definieert de volgende parameters:
-- *Control_Table_Name* is uw externe controletabel, die de partitielijst voor de brondatabase opslaat.
-- *Control_Table_Schema_PartitionID* is de naam van de kolomnaam in de externe besturingselementtabel die elke partitie-id opslaat. Zorg ervoor dat de partitie-id uniek is voor elke partitie in de brondatabase.
-- *Control_Table_Schema_SourceTableName* is uw externe controletabel die elke tabelnaam opslaat in de brondatabase.
-- *Control_Table_Schema_FilterQuery* is de naam van de kolom in de externe besturingselementtabel die de filterquery opslaat om de gegevens uit elke partitie in de brondatabase te krijgen. Als u de gegevens bijvoorbeeld per jaar hebt verdeeld, kan de query die in elke rij is opgeslagen, vergelijkbaar zijn met 'selecteren * uit gegevensbron waar LastModifytime >= ''2015-01-01 00:00:00'' en LastModifytime <= ''2015-12-31 23:59:59.999'''.
-- *Data_Destination_Folder_Path* is het pad waarop de gegevens worden gekopieerd naar uw bestemmingsarchief (van toepassing wanneer de bestemming die u kiest 'Bestandssysteem' of 'Azure Data Lake Storage Gen1' is). 
-- *Data_Destination_Container* is het pad van de hoofdmap waarnaar de gegevens worden gekopieerd in uw bestemmingsarchief. 
-- *Data_Destination_Directory* is het mappad onder de hoofdmap waar de gegevens naar uw bestemmingsarchief worden gekopieerd. 
+De sjabloon definieert de volgende para meters:
+- *Control_Table_Name* is uw externe controle tabel, waarin de partitie lijst voor de bron database wordt opgeslagen.
+- *Control_Table_Schema_PartitionID* is de naam van de kolom naam in de tabel met externe controle waarin elke partitie-id wordt opgeslagen. Zorg ervoor dat de partitie-ID uniek is voor elke partitie in de bron database.
+- *Control_Table_Schema_SourceTableName* is uw externe beheer tabel waarin elke tabel naam wordt opgeslagen vanuit de bron database.
+- *Control_Table_Schema_FilterQuery* is de naam van de kolom in de tabel met externe controle waarin de filter query wordt opgeslagen om de gegevens op te halen uit elke partitie in de bron database. Als u bijvoorbeeld de gegevens per jaar hebt gepartitioneerd, kan de query die in elke rij is opgeslagen, vergelijkbaar zijn met ' Select * from data source where LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' en LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' '.
+- *Data_Destination_Folder_Path* is het pad naar de locatie waar de gegevens naar uw doel archief worden gekopieerd (van toepassing als de bestemming die u kiest, is "File System" of "Azure data Lake Storage gen1"). 
+- *Data_Destination_Container* is het pad naar de hoofdmap waarnaar de gegevens worden gekopieerd in uw doel archief. 
+- *Data_Destination_Directory* het mappad is in de hoofdmap waar de gegevens naar het doel archief worden gekopieerd. 
 
-De laatste drie parameters, die het pad in uw bestemmingsarchief definiëren, zijn alleen zichtbaar als de bestemming die u kiest opslag op basis van bestanden is. Als u 'Azure Synapse Analytics (voorheen SQL DW)' als bestemmingsarchief kiest, zijn deze parameters niet vereist. Maar de tabelnamen en het schema in SQL Data Warehouse moeten dezelfde zijn als die in de brondatabase.
+De laatste drie para meters, waarmee het pad in uw doel archief wordt gedefinieerd, zijn alleen zichtbaar als de bestemming die u kiest, opslag ruimte op basis van bestanden is. Als u ' Azure Synapse Analytics (voorheen SQL DW) ' als doel archief kiest, zijn deze para meters niet vereist. Maar de tabel namen en het schema in SQL Data Warehouse moeten gelijk zijn aan die in de bron database.
 
-## <a name="how-to-use-this-solution-template"></a>Deze oplossingssjabloon gebruiken
+## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
-1. Maak een besturingselementtabel in SQL Server of Azure SQL Database om de lijst met brondatabasepartities op te slaan voor bulkkopiëren. In het volgende voorbeeld zijn er vijf partities in de brondatabase. Drie partities zijn voor de *datasource_table*, en twee zijn voor de *project_table*. De kolom *LastModifytime* wordt gebruikt om de gegevens in tabel *datasource_table* uit de brondatabase te verdelen. De query die wordt gebruikt om de eerste partitie te lezen is 'select * from datasource_table where LastModifytime >= ''2015-01-01 00:00:00'' en LastModifytime <= ''2015-12-31 23:59:59.999''. U een vergelijkbare query gebruiken om gegevens uit andere partities te lezen.
+1. Maak een controle tabel in SQL Server of Azure SQL Database om de partitie lijst van de bron database op te slaan voor bulk kopieën. In het volgende voor beeld zijn er vijf partities in de bron database. Drie partities zijn voor de *datasource_table*en twee zijn voor de *project_table*. De kolom *LastModifytime* wordt gebruikt voor het partitioneren van de gegevens in tabel *datasource_table* van de bron database. De query die wordt gebruikt voor het lezen van de eerste partitie is ' Select * from datasource_table where LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' en LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' '. U kunt een vergelijk bare query gebruiken om gegevens uit andere partities te lezen.
 
      ```sql
             Create table ControlTableForTemplate
@@ -67,35 +67,35 @@ De laatste drie parameters, die het pad in uw bestemmingsarchief definiëren, zi
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. Ga naar de sjabloon **Bulkkopiëren uit database.** Maak een **nieuwe** verbinding met de externe controletabel die u in stap 1 hebt gemaakt.
+2. Ga naar de sjabloon **bulksgewijs kopiëren vanuit de data base** . Maak een **nieuwe** verbinding naar de externe controle tabel die u in stap 1 hebt gemaakt.
 
-    ![Een nieuwe verbinding maken met de controletabel](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    ![Een nieuwe verbinding maken met de controle tabel](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. Maak een **nieuwe** verbinding met de brondatabase waarvan u gegevens kopieert.
+3. Maak een **nieuwe** verbinding met de bron database waaruit u gegevens wilt kopiëren.
 
-    ![Een nieuwe verbinding met de brondatabase maken](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Een nieuwe verbinding maken met de bron database](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. Maak een **nieuwe** verbinding met het doelgegevensarchief waarnaar u de gegevens kopieert.
+4. Maak een **nieuwe** verbinding met de doel gegevens opslag waarnaar u de gegevens wilt kopiëren.
 
-    ![Een nieuwe verbinding maken met het doelarchief](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    ![Een nieuwe verbinding maken met het doel archief](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Selecteer **Deze sjabloon gebruiken**.
+5. Selecteer **deze sjabloon gebruiken**.
 
-6. U ziet de pijplijn, zoals in het volgende voorbeeld wordt weergegeven:
+6. U ziet de pijp lijn, zoals wordt weer gegeven in het volgende voor beeld:
 
-    ![De pijplijn bekijken](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    ![De pijp lijn controleren](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Selecteer **Foutopsporing,** voer de **parameters**in en selecteer **Voltooien**.
+7. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
 
-    ![Klik op **Foutopsporing**](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    ![Klik op * * fout opsporing * *](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
-8. U ziet resultaten die vergelijkbaar zijn met het volgende voorbeeld:
+8. Er worden resultaten weer gegeven die vergelijkbaar zijn met het volgende voor beeld:
 
     ![Bekijk het resultaat](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Optioneel) Als u 'Azure Synapse Analytics (voorheen SQL DW)' als gegevensbestemming hebt gekozen, moet u een verbinding met Azure Blob-opslag invoeren voor fasering, zoals vereist door SQL Data Warehouse Polybase. De sjabloon genereert automatisch een containerpad voor uw Blob-opslag. Controleer of de container is gemaakt nadat de pijplijn is uitgevoerd.
+9. Beschrijving Als u de gegevens bestemming ' Azure Synapse Analytics (voorheen SQL DW) ' hebt gekozen, moet u een verbinding met Azure Blob Storage voor fase ring invoeren, zoals vereist door SQL Data Warehouse poly base. Met de sjabloon wordt automatisch een pad naar een container gegenereerd voor de Blob-opslag. Controleer of de container is gemaakt na de uitvoering van de pijp lijn.
     
-    ![Polybase-instelling](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    ![Poly base-instelling](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
 ## <a name="next-steps"></a>Volgende stappen
 

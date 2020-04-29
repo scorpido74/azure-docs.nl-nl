@@ -12,56 +12,56 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415851"
 ---
-# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Gegevens laden in Azure Data Lake Storage Gen1 met Azure Data Factory
+# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Gegevens in Azure Data Lake Storage Gen1 laden met behulp van Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (voorheen bekend als Azure Data Lake Store) is een bedrijfsbrede hyper-scale repository voor big data analytische workloads. Met Data Lake Storage Gen1 u gegevens vastleggen van elke grootte, type en innamesnelheid. De gegevens worden op één plaats vastgelegd voor operationele en verkennende analyses.
+[Azure data Lake Storage gen1](../data-lake-store/data-lake-store-overview.md) (voorheen bekend als Azure data Lake Store) is een bedrijfsbrede opslag ruimte voor Big Data analytische werk belastingen. Met Data Lake Storage Gen1 kunt u gegevens van elke grootte, type en opname snelheid vastleggen. De gegevens worden op één plek vastgelegd voor operationele en experimentele analyses.
 
-Azure Data Factory is een volledig beheerde cloudgebaseerde data-integratieservice. U de service gebruiken om het meer te vullen met gegevens uit uw bestaande systeem en tijd te besparen bij het bouwen van uw analyseoplossingen.
+Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud. U kunt de service gebruiken om het Lake data van uw bestaande systeem te vullen en tijd te besparen bij het bouwen van uw analyse oplossingen.
 
-Azure Data Factory biedt de volgende voordelen voor het laden van gegevens in Data Lake Storage Gen1:
+Azure Data Factory biedt de volgende voor delen voor het laden van gegevens in Data Lake Storage Gen1:
 
-* **Eenvoudig in te stellen:** Een intuïtieve 5-staps wizard zonder scripting vereist.
-* **Rich data store support**: Ingebouwde ondersteuning voor een rijke set on-premises en cloud-gebaseerde datastores. Zie de tabel [met ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een gedetailleerde lijst .
-* **Veilig en compliant**: Gegevens worden overgedragen via HTTPS of ExpressRoute. De wereldwijde aanwezigheid van de service zorgt ervoor dat uw gegevens nooit de geografische grens verlaten.
-* **Hoge prestaties**: Tot 1 GB/s-laadsnelheid van gegevens in Data Lake Storage Gen1. Zie [Activiteitsprestaties kopiëren](copy-activity-performance.md)voor meer informatie .
+* **Eenvoudig in te stellen**: een intuïtieve 5-stap wizard zonder scripting vereist.
+* **Ondersteuning voor uitgebreide gegevens opslag**: ingebouwde ondersteuning voor een uitgebreide set on-premises en cloud-gebaseerde gegevens archieven. Zie de tabel met [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een gedetailleerde lijst.
+* **Beveiligd en compatibel**: gegevens worden overgebracht via https of ExpressRoute. De wereld wijde service aanwezigheid zorgt ervoor dat uw gegevens de geografische grens nooit verlaten.
+* **Hoge prestaties**: tot 1 GB/s gegevens laden in data Lake Storage gen1. Zie [prestaties van Kopieer activiteit](copy-activity-performance.md)voor meer informatie.
 
-In dit artikel ziet u hoe u de tool Gegevenskopiëren gegevens in de gegevensfabriek gebruiken om gegevens van Amazon S3 te _laden in Data Lake Storage Gen1._ U vergelijkbare stappen uitvoeren om gegevens uit andere soorten gegevensarchieven te kopiëren.
+Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopiëren _gegevens van Amazon S3 in data Lake Storage gen1 kunt laden_. U kunt vergelijk bare stappen volgen om gegevens te kopiëren van andere typen gegevens archieven.
 
 > [!NOTE]
-> Zie [Gegevens kopiëren naar of van Data Lake Storage Gen1 met Azure Data Factory](connector-azure-data-lake-store.md)voor meer informatie.
+> Zie [gegevens kopiëren naar of van data Lake Storage gen1 met behulp van Azure Data Factory](connector-azure-data-lake-store.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Data Lake Storage Gen1-account: als u geen Data Lake Storage Gen1-account hebt, raadpleegt u de instructies in [Een Data Lake Storage Gen1-account maken.](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)
-* Amazon S3: Dit artikel laat zien hoe u gegevens van Amazon S3 kopiëren. U andere gegevensarchieven gebruiken door vergelijkbare stappen te volgen.
+* Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Data Lake Storage Gen1 account: als u geen Data Lake Storage Gen1 account hebt, raadpleegt u de instructies in [een Data Lake Storage gen1-account maken](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
+* Amazon S3: in dit artikel wordt beschreven hoe u gegevens kopieert van Amazon S3. U kunt andere gegevens archieven gebruiken door vergelijk bare stappen te volgen.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer links in het menu Een resource > **Analytics** > **Data Factory maken:** **Create a resource**
+1. Selecteer in het menu links de optie **een resource** > **Analytics** > -**Data Factory**maken:
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Geef op de pagina **Nieuwe gegevensfabriek** waarden op voor de velden die in de volgende afbeelding worden weergegeven: 
+2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding: 
       
    ![Pagina Nieuwe gegevensfactory](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Naam:** Voer een wereldwijd unieke naam in voor uw Azure-gegevensfabriek. Als u de fout 'Gegevensfabrieksnaam \"LoadADLSG1Demo\" is niet beschikbaar' ontvangt, voert u een andere naam in voor de gegevensfabriek. U bijvoorbeeld de naam _**yourname**_**ADFTutorialDataFactory**gebruiken. Probeer de gegevensfabriek opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
-    * **Abonnement**: Selecteer uw Azure-abonnement waarin u de gegevensfabriek wilt maken. 
-    * **Resourcegroep:** selecteer een bestaande resourcegroep in de vervolgkeuzelijst of selecteer de optie **Nieuwe maken** en voer de naam van een resourcegroep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
-    * **Versie**: Selecteer **V2**.
-    * **Locatie**: Selecteer de locatie voor de gegevensfabriek. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslag die door gegevensfabriek worden gebruikt, kunnen zich in andere locaties en regio's bevinden. Deze gegevensopslag omvat Azure Data Lake Storage Gen1, Azure Storage, Azure SQL Database, enzovoort.
+    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadADLSG1Demo\" is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+    * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
+    * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
+    * **Versie**: Selecteer **v2**.
+    * **Locatie**: Selecteer de locatie voor de Data Factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven die door data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden. Deze gegevens archieven bevatten Azure Data Lake Storage Gen1, Azure Storage, Azure SQL Database, enzovoort.
 
 3. Selecteer **Maken**.
-4. Nadat de creatie is voltooid, gaat u naar uw gegevensfabriek. U ziet de startpagina **van Data Factory** zoals weergegeven in de volgende afbeelding: 
+4. Nadat het maken is voltooid, gaat u naar uw data factory. U ziet de **Data Factory** start pagina zoals wordt weer gegeven in de volgende afbeelding: 
    
    ![Startpagina van de gegevensfactory](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
@@ -69,84 +69,84 @@ In dit artikel ziet u hoe u de tool Gegevenskopiëren gegevens in de gegevensfab
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Gegevens laden in Data Lake Storage Gen1
 
-1. Selecteer **op de** pagina Aan de slag de tegel **Gegevens kopiëren** om het gereedschap Gegevens kopiëren te starten: 
+1. Selecteer op de pagina **aan de slag** de **gegevens kopiëren** tegel om het gegevens kopiëren-hulp programma te starten: 
 
    ![De tegel Copy Data-hulpprogramma](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
-2. Geef op de pagina **Eigenschappen** **CopyFromAmazonS3ToADLS** op voor het veld **Taaknaam** en selecteer **Volgende:**
+2. Geef op de pagina **Eigenschappen** **CopyFromAmazonS3ToADLS** op voor het veld **taak naam** en selecteer **volgende**:
 
     ![De pagina Eigenschappen](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. Klik op de pagina **Brongegevensarchief** op **+ Nieuwe verbinding maken:**
+3. Klik op de pagina **brongegevens archief** op **+ nieuwe verbinding maken**:
 
     ![De pagina Brongegevensarchief](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
     
-    Selecteer **Amazon S3**en selecteer **Doorgaan**
+    Selecteer **Amazon S3**en selecteer **door gaan**
     
-    ![Pagina Gegevensarchief S3](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    ![S3-pagina van brongegevens archief](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
-4. Ga op **de pagina Amazon S3-verbinding opgeven** de volgende stappen uit: 
-   1. Geef de waarde **van de toegangssleutel-id** op.
-   2. Geef de waarde **van de geheime toegangssleutel** op.
+4. Voer op de pagina **Amazon S3-verbinding opgeven** de volgende stappen uit: 
+   1. Geef de waarde voor de **toegangs sleutel-id** op.
+   2. Geef de waarde voor de **geheime toegangs sleutel** op.
    3. Selecteer **Finish**.
    
       ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. U ziet een nieuwe verbinding. Selecteer **Next**.
+   4. Er wordt een nieuwe verbinding weer geven. Selecteer **Next**.
    
    ![Amazon S3-account opgeven](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopiëren. Selecteer de map/het bestand, selecteer **Kiezen**en selecteer **Volgende:**
+5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopiëren. Selecteer de map/het bestand, selecteer **kiezen**en selecteer vervolgens **volgende**:
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Kies het kopieergedrag door de opties **Bestanden opnieuw kopiëren** en Binaire **kopie** (kopiëren bestanden as-is) te selecteren. Selecteer **Volgende**:
+6. Kies het Kopieer gedrag door de opties **bestanden recursief** en **binaire kopie** kopiëren (bestanden kopiëren als-is) te selecteren. Selecteer **volgende**:
 
     ![Uitvoermap opgeven](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
-7. Klik op de pagina **Doelgegevensarchief** op **+ Nieuwe verbinding maken**en selecteer Azure Data Lake Storage **Gen1**en selecteer **Doorgaan:**
+7. Klik op de pagina **doel gegevens archief** op **+ nieuwe verbinding maken**en selecteer vervolgens **Azure data Lake Storage gen1**en selecteer **door gaan**:
 
     ![De pagina Doelgegevensarchief](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
-8. Ga op de pagina **New Linked Service (Azure Data Lake Storage Gen1)** de volgende stappen uit: 
+8. Voer de volgende stappen uit op de pagina **nieuwe gekoppelde service (Azure data Lake Storage gen1)** : 
 
-   1. Selecteer uw Data Lake Storage Gen1-account voor de naam van het **Data Lake Store-account.**
-   2. Geef de **tenant**op en selecteer Voltooien.
+   1. Selecteer uw Data Lake Storage Gen1 account voor de **naam**van het data Lake Store-account.
+   2. Geef de **Tenant**op en selecteer volt ooien.
    3. Selecteer **Next**.
    
    > [!IMPORTANT]
-   > In deze walkthrough gebruikt u een beheerde identiteit voor Azure-bronnen om uw Data Lake Storage Gen1-account te verifiëren. Zorg ervoor dat u de MSI de juiste machtigingen in Data Lake Storage Gen1 verleent door deze instructies op te [volgen.](connector-azure-data-lake-store.md#managed-identity)
+   > In dit scenario gebruikt u een beheerde identiteit voor Azure-resources om uw Data Lake Storage Gen1-account te verifiëren. Zorg ervoor dat u het MSI-bestand de juiste machtigingen geeft in Data Lake Storage Gen1 door [deze instructies](connector-azure-data-lake-store.md#managed-identity)te volgen.
    
-   ![Gegevens Lake Storage Gen1-account opgeven](./media/load-data-into-azure-data-lake-store/specify-adls.png)
-9. Voer op de pagina **Het uitvoerbestand of de map kiezen** de naam **copyfroms3** in als naam van de uitvoermap en selecteer **Volgende:** 
+   ![Data Lake Storage Gen1 account opgeven](./media/load-data-into-azure-data-lake-store/specify-adls.png)
+9. Voer op de pagina **het uitvoer bestand of de map kiezen** **copyfroms3** in als de naam van de uitvoermap en selecteer **volgende**: 
 
     ![Uitvoermap opgeven](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
-10. Selecteer **op** de pagina Instellingen de optie **Volgende:**
+10. Selecteer op de pagina **instellingen** de optie **volgende**:
 
     ![De pagina Instellingen](./media/load-data-into-azure-data-lake-store/copy-settings.png)
-11. Controleer **op** de pagina Overzicht de instellingen en selecteer **Volgende:**
+11. Controleer de instellingen op de pagina **samen vatting** en selecteer **volgende**:
 
     ![Overzichtspagina](./media/load-data-into-azure-data-lake-store/copy-summary.png)
-12. Selecteer **op**de pagina Implementatie de optie **Monitor** om de pijplijn te controleren (taak):
+12. Selecteer op de **pagina implementatie**de optie **controleren** om de pijp lijn te bewaken (taak):
 
     ![De pagina Implementatie](./media/load-data-into-azure-data-lake-store/deployment-page.png)
-13. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **Acties** bevat koppelingen om activiteitenuit te voeren en de pijplijn opnieuw uit te voeren:
+13. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **acties** bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren:
 
     ![Pijplijnuitvoeringen controleren](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. Als u activiteitsruns wilt weergeven die zijn gekoppeld aan de pijplijnrun, selecteert u de koppeling **Activiteitsuitvoering weergeven** in de kolom **Acties.** Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt teruggaan naar de weergave **pijplijnuitvoeringen,** selecteert u de koppeling Pijplijn en bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen. 
+14. Selecteer de koppeling **uitvoeringen van activiteit weer** geven in de kolom **acties** om de uitvoering van activiteiten te bekijken die zijn gekoppeld aan de pijplijn uitvoering. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt terugkeren naar de weer gave pijplijn uitvoeringen, selecteert u de koppeling **pijp lijnen** bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen. 
 
     ![Uitvoering van activiteiten controleren](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-15. Als u de uitvoeringsgegevens voor elke kopieeractiviteit wilt controleren, selecteert u de koppeling **Details** onder **Acties** in de weergave activiteitsbewaking. U details controleren, zoals het volume van gegevens die van de bron naar de gootsteen zijn gekopieerd, gegevensdoorvoer, uitvoeringsstappen met bijbehorende duur en gebruikte configuraties:
+15. Als u de uitvoerings Details voor elke Kopieer activiteit wilt bewaken, selecteert u de koppeling **Details** onder **acties** in de weer gave activiteiten bewaking. U kunt details, zoals het volume van de gegevens die uit de bron zijn gekopieerd, bewaken naar de sink, gegevens doorvoer, uitvoerings stappen met de overeenkomstige duur en de gebruikte configuraties:
 
-    ![Details van het uitvoeren van activiteiten controleren](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
+    ![Details van uitvoering van activiteit bewaken](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
 
-16. Controleer of de gegevens worden gekopieerd naar uw Data Lake Storage Gen1-account: 
+16. Controleer of de gegevens zijn gekopieerd naar uw Data Lake Storage Gen1-account: 
 
-    ![Gegevens gegevensopslag-gen1-uitvoer controleren](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
+    ![Data Lake Storage Gen1 uitvoer controleren](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over ondersteuning voor Data Lake Storage Gen1: 
+Ga naar het volgende artikel voor meer informatie over de ondersteuning van Data Lake Storage Gen1: 
 
 > [!div class="nextstepaction"]
 >[Azure Data Lake Storage Gen1-connector](connector-azure-data-lake-store.md)

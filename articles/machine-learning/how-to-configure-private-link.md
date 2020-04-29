@@ -1,7 +1,7 @@
 ---
-title: Azure Private Link configureren
+title: Persoonlijke Azure-koppeling configureren
 titleSuffix: Azure Machine Learning
-description: Gebruik Azure Private Link om veilig toegang te krijgen tot uw Azure Machine Learning-werkruimte vanuit een virtueel netwerk.
+description: Persoonlijke Azure-koppeling gebruiken om veilig toegang te krijgen tot uw Azure Machine Learning-werk ruimte vanuit een virtueel netwerk.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
 ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411206"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private Link configureren voor een Azure Machine Learning-werkruimte (voorbeeld)
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
-In dit document leert u hoe u Azure Private Link gebruikt met uw Azure Machine Learning-werkruimte. Deze mogelijkheid is momenteel in preview, en is beschikbaar in het Amerikaanse oosten, US West 2, US South Central regio's. 
+In dit document leert u hoe u een persoonlijke Azure-koppeling kunt gebruiken met uw Azure Machine Learning-werk ruimte. Deze functie is momenteel beschikbaar als preview-versie en is verkrijgbaar in de regio VS Oost, VS West 2, VS Zuid-Centraal. 
 
-Met Azure Private Link u verbinding maken met uw werkruimte met behulp van een privéeindpunt. Het privéeindpunt is een set privé-IP-adressen binnen uw virtuele netwerk. U de toegang tot uw werkruimte vervolgens beperken tot alleen via de privé-IP-adressen. Private Link helpt het risico op dataexfiltratie te verminderen. Zie het artikel Azure Private [Link](/azure/private-link/private-link-overview) voor meer informatie over privéeindpunten.
+Met de persoonlijke Azure-koppeling kunt u verbinding maken met uw werk ruimte met behulp van een persoonlijk eind punt. Het persoonlijke eind punt is een reeks privé-IP-adressen in uw virtuele netwerk. Vervolgens kunt u de toegang tot uw werk ruimte beperken tot alleen de privé-IP-adressen. Een persoonlijke koppeling helpt het risico van gegevens exfiltration te verminderen. Zie het artikel over een [persoonlijke Azure-koppeling](/azure/private-link/private-link-overview) voor meer informatie over privé-eind punten.
 
 > [!IMPORTANT]
-> Azure Private Link heeft geen gevolgen voor Azure control plane (beheerbewerkingen), zoals het verwijderen van de werkruimte of het beheren van compute resources. Bijvoorbeeld het maken, bijwerken of verwijderen van een compute target. Deze bewerkingen worden normaal via het openbare internet uitgevoerd.
+> Persoonlijke Azure-koppeling heeft geen invloed op Azure Control-vlak (beheer bewerkingen), zoals het verwijderen van de werk ruimte of het beheren van reken resources. Bijvoorbeeld maken, bijwerken of verwijderen van een berekenings doel. Deze bewerkingen worden normaal gesp roken uitgevoerd via het open bare Internet.
 >
-> De voorbeeldpreview van Azure Machine Learning compute instances wordt niet ondersteund in een werkruimte waarin Private Link is ingeschakeld.
+> De preview-versie van Azure Machine Learning Compute-exemplaren wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling is ingeschakeld.
 
-## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Een werkruimte maken die een privéeindpunt gebruikt
+## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Een werk ruimte maken die gebruikmaakt van een persoonlijk eind punt
 
-Momenteel ondersteunen we alleen het inschakelen van een privéeindpunt bij het maken van een nieuwe Azure Machine Learning-werkruimte. De volgende sjablonen zijn beschikbaar voor verschillende populaire configuraties:
+Op dit moment ondersteunen we alleen het inschakelen van een persoonlijk eind punt bij het maken van een nieuwe Azure Machine Learning-werk ruimte. De volgende sjablonen worden gegeven voor verschillende populaire configuraties:
 
 > [!TIP]
-> Automatische goedkeuring regelt de geautomatiseerde toegang tot de bron met privékoppeling. Zie [Wat is Azure Private Link-service](../private-link/private-link-service-overview.md)voor meer informatie .
+> Automatische goed keuring beheert de geautomatiseerde toegang tot de resource die de persoonlijke koppeling heeft ingeschakeld. Zie [Wat is Azure Private Link service](../private-link/private-link-service-overview.md)voor meer informatie.
 
-* [Werkruimte met door de klant beheerde sleutels en automatische goedkeuring voor Private Link](#cmkaapl)
-* [Werkruimte met door de klant beheerde sleutels en handmatige goedkeuring voor Private Link](#cmkmapl)
-* [Werkruimte met door Microsoft beheerde sleutels en automatische goedkeuring voor Privékoppeling](#mmkaapl)
-* [Werkruimte met door Microsoft beheerde sleutels en handmatige goedkeuring voor Privékoppeling](#mmkmapl)
+* [Werk ruimte met door de klant beheerde sleutels en automatische goed keuring voor privé koppeling](#cmkaapl)
+* [Werk ruimte met door de klant beheerde sleutels en hand matige goed keuring voor persoonlijke koppeling](#cmkmapl)
+* [Werk ruimte met door micro soft beheerde sleutels en automatische goed keuring voor persoonlijke koppeling](#mmkaapl)
+* [Werk ruimte met door micro soft beheerde sleutels en hand matige goed keuring voor persoonlijke koppeling](#mmkmapl)
 
-Bij het implementeren van een sjabloon moet u de volgende informatie verstrekken:
+Bij het implementeren van een sjabloon moet u de volgende informatie opgeven:
 
 * Naam van de werkruimte
-* Azure-regio om de bronnen te maken in
-* Werkruimte-editie (Basic of Enterprise)
-* Als instellingen voor hoge vertrouwelijkheid voor de werkruimte moeten worden ingeschakeld
-* Als versleuteling voor de werkruimte met een door de klant beheerde sleutel moet zijn ingeschakeld en bijbehorende waarden voor de sleutel
-* Virtuele netwerk en subnet naam, sjabloon zal een nieuw virtueel netwerk en subnet te maken
+* Azure-regio voor het maken van de resources in
+* Werkruimte editie (Basic of ENTER prise)
+* Als u instellingen voor sterke vertrouwelijkheid voor de werk ruimte wilt inschakelen
+* Als versleuteling voor de werk ruimte met een door de klant beheerde sleutel moet zijn ingeschakeld, en de bijbehorende waarden voor de sleutel
+* Virtual Network en de naam van het subnet, sjabloon maakt een nieuw virtueel netwerk en subnet
 
-Zodra een sjabloon is ingediend en de inrichting is voltooid, bevat de resourcegroep die uw werkruimte bevat drie nieuwe artefacttypen met betrekking tot Private Link:
+Zodra een sjabloon is verzonden en de inrichting is voltooid, bevat de resource groep die uw werk ruimte bevat drie nieuwe artefact typen die betrekking hebben op persoonlijke koppeling:
 
-* Privéeindpunt
+* Persoonlijk eind punt
 * Netwerkinterface
 * Privé-DNS-zone
 
-De werkruimte bevat ook een Azure Virtual Network dat met de werkruimte kan communiceren via het privéeindpunt.
+De werk ruimte bevat ook een Azure-Virtual Network die via het persoonlijke eind punt met de werk ruimte kan communiceren.
 
-### <a name="deploy-the-template-using-the-azure-portal"></a>De sjabloon implementeren met de Azure-portal
+### <a name="deploy-the-template-using-the-azure-portal"></a>De sjabloon implementeren met behulp van de Azure Portal
 
-1. Volg de stappen in [Resources implementeren van aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Wanneer u bij het scherm __Sjabloon bewerken__ aankomt, plakt u een van de sjablonen vanaf het einde van dit document.
-1. Selecteer __Opslaan__ om de sjabloon te gebruiken. Geef de volgende informatie en ga akkoord met de vermelde algemene voorwaarden:
+1. Volg de stappen in [resources implementeren vanuit aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Wanneer u het scherm __sjabloon bewerken__ aankomt, plakt u een van de sjablonen uit het einde van dit document.
+1. Selecteer __Opslaan__ om de sjabloon te gebruiken. Geef de volgende informatie op en ga akkoord met de vermelde voor waarden:
 
-   * Abonnement: selecteer het Azure-abonnement dat u voor deze bronnen wilt gebruiken.
-   * Resourcegroep: selecteer of maak een resourcegroep om de services te bevatten.
-   * Naam van werkruimte: de naam die moet worden gebruikt voor de Azure Machine Learning-werkruimte die wordt gemaakt. De naam van de werkruimte moet tussen 3 en 33 tekens liggen. Het mag alleen alfanumerieke tekens en '-' bevatten.
-   * Locatie: selecteer de locatie waar de resources worden gemaakt.
+   * Abonnement: Selecteer het Azure-abonnement dat u wilt gebruiken voor deze resources.
+   * Resource groep: Selecteer of maak een resource groep om de services te bevatten.
+   * Werkruimte naam: de naam die moet worden gebruikt voor de Azure Machine Learning werk ruimte die wordt gemaakt. De naam van de werk ruimte moet tussen de 3 en 33 tekens lang zijn. De naam mag alleen alfanumerieke tekens en '-' bevatten.
+   * Locatie: Selecteer de locatie waar de resources worden gemaakt.
 
-Zie Resources [implementeren van aangepaste sjabloon voor](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)meer informatie.
+Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.
 
-### <a name="deploy-the-template-using-azure-powershell"></a>De sjabloon implementeren met Azure PowerShell
+### <a name="deploy-the-template-using-azure-powershell"></a>De sjabloon implementeren met behulp van Azure PowerShell
 
-In dit voorbeeld wordt ervan uitgegaan dat u een van de `azuredeploy.json` sjablonen vanaf het einde van dit document hebt opgeslagen in een bestand met de naam in de huidige map:
+In dit voor beeld wordt ervan uitgegaan dat u een van de sjablonen van het einde van dit document hebt opgeslagen `azuredeploy.json` in een bestand met de naam in de huidige map:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -80,11 +80,11 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Zie [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell en](../azure-resource-manager/templates/deploy-powershell.md) Sjabloon [Privéresourcebeheer implementeren met SAS-token en Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
+Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en een [privé Resource Manager-sjabloon met SAS-token en Azure PowerShell implementeren](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
-### <a name="deploy-the-template-using-the-azure-cli"></a>De sjabloon implementeren met azure cli
+### <a name="deploy-the-template-using-the-azure-cli"></a>De sjabloon implementeren met behulp van de Azure CLI
 
-In dit voorbeeld wordt ervan uitgegaan dat u een van de `azuredeploy.json` sjablonen vanaf het einde van dit document hebt opgeslagen in een bestand met de naam in de huidige map:
+In dit voor beeld wordt ervan uitgegaan dat u een van de sjablonen van het einde van dit document hebt opgeslagen `azuredeploy.json` in een bestand met de naam in de huidige map:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -95,46 +95,46 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Zie [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md) en Sjabloon [Privéresourcebeheer implementeren met SAS-token en Azure CLI](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
+Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>Een werkruimte gebruiken boven een privéeindpunt
+## <a name="using-a-workspace-over-a-private-endpoint"></a>Een werk ruimte gebruiken via een persoonlijk eind punt
 
-Aangezien communicatie met de werkruimte alleen is toegestaan vanuit het virtuele netwerk, moeten alle ontwikkelomgevingen die de werkruimte gebruiken, lid zijn van het virtuele netwerk. Bijvoorbeeld een virtuele machine in het virtuele netwerk of een machine die met een VPN-gateway is verbonden met het virtuele netwerk.
+Omdat de communicatie met de werk ruimte alleen is toegestaan vanuit het virtuele netwerk, moeten ontwikkel omgevingen die gebruikmaken van de werk ruimte lid zijn van het virtuele netwerk. Bijvoorbeeld een virtuele machine in het virtuele netwerk of een computer die is verbonden met het virtuele netwerk met behulp van een VPN-gateway.
 
 > [!IMPORTANT]
-> Om tijdelijke onderbreking van de connectiviteit te voorkomen, raadt Microsoft aan de DNS-cache te spoelen op machines die verbinding maken met de werkruimte nadat u Private Link hebt ingeschakeld. 
+> Om te voor komen dat de verbinding tijdelijk wordt verbroken, raadt micro soft aan de DNS-cache te wissen op computers die verbinding maken met de werk ruimte nadat een persoonlijke koppeling is ingeschakeld. 
 
-Zie de documentatie voor virtuele machines virtuele machines voor informatie over virtuele [azure-machines.](/azure/virtual-machines/)
+Raadpleeg de [virtual machines documentatie](/azure/virtual-machines/)voor meer informatie over Azure virtual machines.
 
-Zie [Wat is VPN-gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)voor informatie over VPN-gateways.
+Zie [Wat is VPN-gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)? voor meer informatie over VPN-gateways.
 
 ## <a name="using-azure-storage"></a>Met behulp van Azure Storage
 
-Als u het Azure Storage-account wilt beveiligen dat door uw werkruimte wordt gebruikt, plaatst u het in het virtuele netwerk.
+Als u het Azure Storage-account wilt beveiligen dat door uw werk ruimte wordt gebruikt, plaatst u het in het virtuele netwerk.
 
-Zie [Een opslagaccount voor uw werkruimte gebruiken voor](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)informatie over het plaatsen van het opslagaccount in het virtuele netwerk.
+Zie [een opslag account voor uw werk ruimte gebruiken](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)voor meer informatie over het opslaan van het opslag account in het virtuele netwerk.
 
 ## <a name="using-azure-key-vault"></a>Azure Key Vault gebruiken
 
-Als u de Azure Key Vault wilt beveiligen die door uw werkruimte wordt gebruikt, u deze in het virtuele netwerk plaatsen of Private Link inschakelen.
+Als u de Azure Key Vault wilt beveiligen die wordt gebruikt door uw werk ruimte, kunt u deze in het virtuele netwerk plaatsen of een persoonlijke koppeling inschakelen.
 
-Zie [Een sleutelkluisinstantie gebruiken met uw werkruimte](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)voor informatie over het plaatsen van de sleutelkluis in het virtuele netwerk.
+Zie [een sleutel kluis-instantie gebruiken met uw werk ruimte](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)voor meer informatie over het plaatsen van de sleutel kluis in het virtuele netwerk.
 
-Zie [Sleutelkluis integreren met Azure Private Link](/azure/key-vault/private-link-service)voor informatie over het inschakelen van Private Link voor de sleutelkluis.
+Zie voor meer informatie over het inschakelen van een persoonlijke koppeling voor de sleutel kluis [Key Vault integreren met persoonlijke Azure-koppeling](/azure/key-vault/private-link-service).
 
 ## <a name="using-azure-kubernetes-services"></a>Azure Kubernetes Services gebruiken
 
-Als u de Azure Kubernetes-services wilt beveiligen die door uw werkruimte worden gebruikt, plaatst u deze in een virtueel netwerk. Zie [Azure Kubernetes Services gebruiken met uw werkruimte](how-to-enable-virtual-network.md#aksvnet)voor meer informatie.
+Als u de Azure Kubernetes-services die door uw werk ruimte worden gebruikt, wilt beveiligen, plaatst u deze in een virtueel netwerk. Zie [Azure Kubernetes Services gebruiken met uw werk ruimte](how-to-enable-virtual-network.md#aksvnet)voor meer informatie.
 
 > [!WARNING]
-> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarmee een privékoppeling is ingeschakeld.
+> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarvoor een persoonlijke koppeling is ingeschakeld.
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-Zie [Azure Container Registry gebruiken](how-to-enable-virtual-network.md#use-azure-container-registry)voor informatie over het beveiligen van Azure Container Registry in het virtuele netwerk.
+Zie [Azure container Registry gebruiken](how-to-enable-virtual-network.md#use-azure-container-registry)voor meer informatie over het beveiligen van Azure container registry in het virtuele netwerk.
 
 > [!IMPORTANT]
-> Als u Private Link gebruikt voor uw Azure Machine Learning-werkruimte en het Azure Container Registry voor uw werkruimte in een virtueel netwerk plaatst, moet u ook de volgende sjabloon Azure Resource Manager toepassen. Met deze sjabloon kan uw werkruimte communiceren met ACR via de Private Link.
+> Als u een persoonlijke koppeling voor uw Azure Machine Learning-werk ruimte gebruikt en de Azure Container Registry voor uw werk ruimte in een virtueel netwerk hebt geplaatst, moet u ook de volgende Azure Resource Manager sjabloon Toep assen. Met deze sjabloon kan uw werk ruimte communiceren met ACR via de persoonlijke koppeling.
 
 ```json
 {
@@ -189,7 +189,7 @@ Zie [Azure Container Registry gebruiken](how-to-enable-virtual-network.md#use-az
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
 <a id="cmkaapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>Werkruimte met door de klant beheerde sleutels en automatische goedkeuring voor Private Link
+### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>Werk ruimte met door de klant beheerde sleutels en automatische goed keuring voor privé koppeling
 
 ```json
 {
@@ -492,7 +492,7 @@ Zie [Azure Container Registry gebruiken](how-to-enable-virtual-network.md#use-az
 ```
 
 <a id="cmkmapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>Werkruimte met door de klant beheerde sleutels en handmatige goedkeuring voor Private Link
+### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>Werk ruimte met door de klant beheerde sleutels en hand matige goed keuring voor persoonlijke koppeling
 
 ```json
 {
@@ -718,7 +718,7 @@ Zie [Azure Container Registry gebruiken](how-to-enable-virtual-network.md#use-az
 ```
 
 <a id="mmkaapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>Werkruimte met door Microsoft beheerde sleutels en automatische goedkeuring voor Privékoppeling
+### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>Werk ruimte met door micro soft beheerde sleutels en automatische goed keuring voor persoonlijke koppeling
 
 ```json
 {
@@ -979,7 +979,7 @@ Zie [Azure Container Registry gebruiken](how-to-enable-virtual-network.md#use-az
 ```
 
 <a id="mmkmapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>Werkruimte met door Microsoft beheerde sleutels en handmatige goedkeuring voor Privékoppeling
+### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>Werk ruimte met door micro soft beheerde sleutels en hand matige goed keuring voor persoonlijke koppeling
 
 ```json
 {
@@ -1164,4 +1164,4 @@ Zie [Azure Container Registry gebruiken](how-to-enable-virtual-network.md#use-az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [beveiligingsartikel Enterprise](concept-enterprise-security.md) voor meer informatie over het beveiligen van uw Azure Machine Learning-werkruimte.
+Zie het artikel over [zakelijke beveiliging](concept-enterprise-security.md) voor meer informatie over het beveiligen van uw Azure machine learning-werk ruimte.

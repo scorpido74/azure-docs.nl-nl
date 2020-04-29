@@ -1,6 +1,6 @@
 ---
-title: Transformatie afvlakken in kaartgegevensstroom
-description: Hiërarchische gegevens denormaliseren met de afvlaktransformatie
+title: Trans formatie afvlakken bij toewijzing van gegevens stroom
+description: Hiërarchische gegevens opwaarderen met behulp van de afvlakkings transformatie
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -8,41 +8,41 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413682"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>Transformatie afvlakken in kaartgegevensstroom
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Trans formatie afvlakken bij toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Gebruik de afvlaktransformatie om matrixwaarden in hiërarchische structuren zoals JSON te gebruiken en deze uit te rollen in afzonderlijke rijen. Dit proces staat bekend als denormalisatie.
+Gebruik de afvlakkings transformatie om matrix waarden binnen hiërarchische structuren te maken, zoals JSON en ze uit te vouwen in afzonderlijke rijen. Dit proces wordt ook wel denormaliseren genoemd.
 
 ## <a name="configuration"></a>Configuratie
 
-De afvlaktransformatie bevat de volgende configuratie-instellingen
+De afvlakkings transformatie bevat de volgende configuratie-instellingen
 
-![Afvlakkeninstellingen](media/data-flow/flatten1.png "Afvlakkeninstellingen")
+![Instellingen voor afvlakking](media/data-flow/flatten1.png "Instellingen voor afvlakking")
 
-### <a name="unroll-by"></a>Roll uitrollen door
+### <a name="unroll-by"></a>Uitrollen
 
-Selecteer een array die u wilt uitrollen. De uitvoergegevens hebben één rij per item in elke array. Als de uitrollen op matrix in de invoerrij null of leeg is, is er één uitvoerrij met niet-overeenkomende waarden als null.
+Selecteer een matrix om uit te vouwen. De uitvoer gegevens hebben één rij per item in elke matrix. Als de waarde voor de uitrollen in de invoer rij null of leeg is, wordt er één uitvoer rij met niet-gerollte waarden als null.
 
-### <a name="unroll-root"></a>Hoofdrol hoofdrollen uitrollen
+### <a name="unroll-root"></a>Hoofdmap uitrollen
 
-Standaard rolt de afvlakkende transformatie een array uit naar de bovenkant van de hiërarchie waarin deze bestaat. U optioneel een array selecteren als uw hoofdrol. De roll-hoofd moet een array van complexe objecten zijn die de roll by array is of bevat. Als een uitrollenshoofd is geselecteerd, bevatten de uitvoergegevens ten minste één rij per items in de hoofdmap uitrollen. Als de invoerrij geen items in de hoofdmap uitrollen heeft, wordt deze uit de uitvoergegevens verwijderd. Als u een uitrollenhoofd kiest, wordt altijd een kleiner of gelijk aantal rijen uitgevoerd dan het standaardgedrag.
+De afvlakkings transformatie ontdraait standaard een matrix naar de bovenkant van de hiërarchie waarin deze zich bevindt. U kunt desgewenst een matrix selecteren als uw root uit de hoofdmap. De uitrollen root moet een matrix zijn met complexe objecten die de waarde van het element untotal by bevatten. Als u een hoofdmap uitrollen selecteert, bevatten de uitvoer gegevens ten minste één rij per items in de hoofdmap van het uitrollen. Als de invoer rij geen items bevat in de uitrollen root, wordt deze verwijderd uit de uitvoer gegevens. Als u een uitrollend element kiest, wordt altijd een kleiner of gelijk aantal rijen uitgevoerd dan het standaard gedrag.
 
-### <a name="flatten-mapping"></a>Afvlakken
+### <a name="flatten-mapping"></a>Afvlakking koppelen
 
-Net als bij de geselecteerde transformatie kiest u de projectie van de nieuwe structuur uit binnenkomende velden en de gedenormaliseerde array. Als een gedenormaliseerde array in kaart wordt gebracht, is de uitvoerkolom hetzelfde gegevenstype als de array. Als de roll by array een array van complexe objecten is die subarrays bevat, wordt een array in kaart gebracht door een item van die subarry in kaart te brengen.
+Net als bij de Select trans formatie kiest u de projectie van de nieuwe structuur van binnenkomende velden en de gedenormaliseerde matrix. Als een gedenormaliseerde matrix wordt toegewezen, wordt de uitvoer kolom hetzelfde gegevens type als de matrix. Als de deroll by-matrix een matrix is met complexe objecten die submatrixen bevat, wordt een item van die subarry een matrix te koppelen.
 
-Raadpleeg het tabblad Inspecteren en het voorbeeld van gegevens om de toewijzingsuitvoer te verifiëren.
+Raadpleeg het tabblad controleren en de voorbeeld gegevens om de toewijzings uitvoer te controleren.
 
 ## <a name="examples"></a>Voorbeelden
 
-Raadpleeg het volgende JSON-object voor de onderstaande voorbeelden van de afvlaktransformatie
+Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvlakkings transformatie
 
 ``` json
 {
@@ -64,11 +64,11 @@ Raadpleeg het volgende JSON-object voor de onderstaande voorbeelden van de afvla
 {"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>Geen hoofdmap met tekenreeksarray
+### <a name="no-unroll-root-with-string-array"></a>Geen uitrollen basis met teken reeks matrix
 
-| Roll uitrollen door | Hoofdrol hoofdrollen uitrollen | Projectie |
+| Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goods.customers | Geen | name <br> klant = goods.customer |
+| goederen. klanten | Geen | name <br> klant = goederen. klant |
 
 #### <a name="output"></a>Uitvoer
 
@@ -82,11 +82,11 @@ Raadpleeg het volgende JSON-object voor de onderstaande voorbeelden van de afvla
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>Geen hoofdmap met complexe array
+### <a name="no-unroll-root-with-complex-array"></a>Geen uitrollen basis met complexe matrix
 
-| Roll uitrollen door | Hoofdrol hoofdrollen uitrollen | Projectie |
+| Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItems | Geen | name <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> locatie = locatie |
+| goederen. orders. verzonden. orderItems | Geen | name <br> orderId = goederen. orders. orderId <br> ItemName = goederen. orders. verzonden. orderItems. ItemName <br> itemQty = goederen. orders. verzonden. orderItems. itemQty <br> locatie = locatie |
 
 #### <a name="output"></a>Uitvoer
 
@@ -103,11 +103,11 @@ Raadpleeg het volgende JSON-object voor de onderstaande voorbeelden van de afvla
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>Dezelfde hoofdmap als roll array
+### <a name="same-root-as-unroll-array"></a>Zelfde basis als ondraai matrix
 
-| Roll uitrollen door | Hoofdrol hoofdrollen uitrollen | Projectie |
+| Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goods.orders | goods.orders | name <br> goods.orders.shipped.orderItems.itemName <br> goods.customers <br> location |
+| goederen. orders | goederen. orders | name <br> goederen. orders. verzonden. orderItems. ItemName <br> goederen. klanten <br> location |
 
 #### <a name="output"></a>Uitvoer
 
@@ -119,11 +119,11 @@ Raadpleeg het volgende JSON-object voor de onderstaande voorbeelden van de afvla
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>Hoofdrol met complexe array uitrollen
+### <a name="unroll-root-with-complex-array"></a>Root uitrollen met complexe matrix
 
-| Roll uitrollen door | Hoofdrol hoofdrollen uitrollen | Projectie |
+| Uitrollen | Hoofdmap uitrollen | Projectie |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItem | goods.orders |name <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> locatie = locatie |
+| goederen. orders. verzonden. orderItem | goederen. orders |name <br> orderId = goederen. orders. orderId <br> ItemName = goederen. orders. verzonden. orderItems. ItemName <br> itemQty = goederen. orders. verzonden. orderItems. itemQty <br> locatie = locatie |
 
 #### <a name="output"></a>Uitvoer
 
@@ -171,5 +171,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Gebruik de [draaitransformatie](data-flow-pivot.md) om rijen naar kolommen te draaien.
-* Gebruik de [transformatie Unpivot](data-flow-unpivot.md) om kolommen naar rijen te draaien.
+* Gebruik de [draai transformatie](data-flow-pivot.md) om rijen naar kolommen te draaien.
+* Gebruik de [draai tabel transformatie](data-flow-unpivot.md) om kolommen naar rijen te draaien.
