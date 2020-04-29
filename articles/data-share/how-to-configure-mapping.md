@@ -1,47 +1,47 @@
 ---
-title: Een toewijzing van gegevenssets configureren in Azure-gegevensshare
-description: Meer informatie over het configureren van een gegevenssettoewijzing voor een ontvangen share met Azure Data Share.
+title: Een toewijzing van een gegevensset configureren in een Azure-gegevens share
+description: Meer informatie over het configureren van een toewijzing van een gegevensset voor een ontvangen share met behulp van de Azure-gegevens share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964240"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Een toewijzing van gegevenssets configureren voor een ontvangen share in Azure Data Share
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de Azure-gegevens share
 
-In dit artikel wordt uitgelegd hoe u een toewijzing van gegevenssets configureert voor een ontvangen share met Azure-gegevensshare. U wilt dit doen als u een uitnodiging voor gegevensshare hebt geaccepteerd, maar ervoor hebt gekozen om later accepteren en configureren of als gegevens op hun plaats worden gedeeld. U een toewijzing van gegevenssets configureren als u de bestemming moet wijzigen voor gegevens die met u worden gedeeld of als u gegevens wilt ontvangen in een SQL Server. 
+In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de Azure-gegevens share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u hebt gekozen voor accepteren en configureren, of als de gegevens in-place worden gedeeld. U kunt een toewijzing van een gegevensset configureren als u de bestemming wilt wijzigen voor gegevens die met u worden gedeeld, of als u gegevens wilt ontvangen in een SQL Server. 
 
-## <a name="navigate-to-a-received-data-share"></a>Navigeren naar een ontvangen gegevensshare
+## <a name="navigate-to-a-received-data-share"></a>Navigeer naar een ontvangen gegevens share
 
-Navigeer in de Azure Data Share-service naar uw ontvangen deel en selecteer het tabblad **Details.** 
+Navigeer in de Azure data share-service naar de share die u hebt ontvangen en selecteer het tabblad **Details** . 
 
-![Toewijzing van gegevenssets](./media/dataset-mapping.png "Toewijzing van gegevenssets") 
+![Toewijzing van gegevensset](./media/dataset-mapping.png "Toewijzing van gegevensset") 
 
-Schakel het selectievakje in naast de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **De toewijzing opheffen** om de bestaande toewijzing ongedaan te maken. Selecteer **+ Map om te targeten** om een nieuwe bestemmingswinkel te kiezen. 
+Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **toewijzing** opheffen om de bestaande toewijzing te ontkoppelen. Selecteer **+ toewijzen aan doel** om een nieuw doel archief te kiezen. 
 
-![Kaart naar doel](./media/dataset-map-target.png "Kaart naar doel") 
+![Toewijzen aan doel](./media/dataset-map-target.png "Toewijzen aan doel") 
 
-## <a name="select-a-new-target-store"></a>Een nieuwe doelwinkel selecteren
+## <a name="select-a-new-target-store"></a>Een nieuw doel archief selecteren
 
-Selecteer een doelgegevenstype waarin de gegevens moeten worden verwerkt. Voor delen op basis van momentopnamen worden alle gegevens die al bestaan in eerder toegewezen opslagaccounts niet automatisch verplaatst naar het nieuwe doelarchief. Selecteer een gegevensarchief in de opgegeven locatie voor het delen op de plaats. De locatie is het Azure-datacenter waar het brongegevensarchief van de gegevensprovider zich bevindt.
+Selecteer een doel gegevens type waarvan u wilt dat de gegevens binnenkomen. Voor het delen op basis van moment opnamen worden alle gegevens die al in een eerder toegewezen opslag account bestaan, niet automatisch verplaatst naar het nieuwe doel archief. Selecteer voor in-place delen een gegevens archief op de opgegeven locatie. De locatie is het Azure Data Center waar de bron gegevens opslag van de gegevens provider zich bevindt.
 
-![Doelopslagaccount](./media/dataset-map-target-sql.png "Doelopslag") 
+![Doel opslag account](./media/dataset-map-target-sql.png "Doel opslag") 
 
-## <a name="select-a-file-format-sql-sources-only"></a>Een bestandsindeling selecteren (alleen SQL-bronnen)
+## <a name="select-a-file-format-sql-sources-only"></a>Selecteer een bestands indeling (alleen SQL-bronnen)
 
-Als de brongegevens afkomstig zijn van een SQL-bron, u kiezen in welke indeling deze is ontvangen. 
+Als de bron gegevens afkomstig zijn uit een bron op basis van SQL, kunt u kiezen in welke indeling deze wordt ontvangen. 
 
-![Indeling kiezen](./media/sql-file-formats.png "SQL-bestandsindelingen")
+![Indeling kiezen](./media/sql-file-formats.png "SQL-bestands indelingen")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door met het [delen van uw gegevenszelfstudie](share-your-data.md) om te leren hoe u gegevens delen.
+Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
 
 
 

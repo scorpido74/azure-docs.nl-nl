@@ -1,6 +1,6 @@
 ---
-title: WAF-limietregel configureren voor voordeur - Azure PowerShell
-description: Meer informatie over het configureren van een tarieflimietregel voor een bestaand frontdoor-eindpunt.
+title: De WAF-frequentie limiet regel voor de front-deur configureren-Azure PowerShell
+description: Meer informatie over het configureren van een frequentie limiet regel voor een bestaand eind punt van de voor deur.
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
@@ -8,47 +8,47 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77649361"
 ---
-# <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een begrenzesregel voor webtoepassingsfirewall configureren met Azure PowerShell
-De WAF-betariefregel (Azure Web Application Firewall) voor Azure Front Door regelt het aantal aanvragen dat tijdens een duur van één minuut van clients is toegestaan.
-In dit artikel ziet u hoe u een WAF-limietregel configureert die het aantal aanvragen regelt dat van clients naar een webtoepassing is toegestaan en die */promo* in de URL bevat met Azure PowerShell.
+# <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een regel voor het instellen van een firewall frequentie van webtoepassingen met behulp van Azure PowerShell
+De frequentie limiet regel voor Azure Web Application firewall (WAF) voor Azure front-deur bepaalt het aantal aanvragen dat is toegestaan van clients gedurende een duur van één minuut.
+In dit artikel wordt beschreven hoe u een regel voor frequentie limiet voor WAF configureert waarmee het aantal aanvragen dat is toegestaan van clients naar een webtoepassing met */promo* in de URL met behulp van Azure PowerShell, wordt beheerd.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u begint met het instellen van een tarieflimietbeleid, stelt u uw PowerShell-omgeving in en maakt u een voordeurprofiel.
+Voordat u begint met het instellen van een beleid voor frequentie limieten, stelt u uw Power shell-omgeving in en maakt u een voor deur profiel.
 ### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
 Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en installeer de Az PowerShell-module.
+U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en de AZ Power shell-module te installeren.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoogvenster voor aanmelden
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoog venster voor aanmelden
 ```
 Connect-AzAccount
 
 ```
-Controleer voordat u de Front Door-module installeert of de huidige versie van PowerShellGet is geïnstalleerd. Voer de volgende opdracht uit en open PowerShell opnieuw.
+Zorg ervoor dat de huidige versie van PowerShellGet is geïnstalleerd voordat u de front-deur module installeert. Voer de volgende opdracht uit en open Power shell opnieuw.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>Az.FrontDoor-module installeren 
+#### <a name="install-azfrontdoor-module"></a>De module AZ.-ingang installeren 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Een voordeurprofiel maken
-Een voordeurprofiel maken door de instructies te volgen die in [Quickstart zijn beschreven: Een voordeurprofiel maken](../../frontdoor/quickstart-create-front-door.md)
+### <a name="create-a-front-door-profile"></a>Een voor deur profiel maken
+Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md)
 
-## <a name="define-url-match-conditions"></a>Url-overeenkomstvoorwaarden definiëren
-Definieer een URL-overeenkomstvoorwaarde (URL bevat /promo) met [Nieuw-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
-In het volgende voorbeeld wordt */promo* als de waarde van de variabele *RequestUri gematcht:*
+## <a name="define-url-match-conditions"></a>URL-matching voorwaarden definiëren
+Definieer een URL-match voorwaarde (URL bevat/promo) met behulp van [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
+Het volgende voor beeld komt overeen met */promo* als de waarde van de variabele *RequestUri* :
 
 ```powershell-interactive
    $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -56,8 +56,8 @@ In het volgende voorbeeld wordt */promo* als de waarde van de variabele *Request
      -OperatorProperty Contains `
      -MatchValue "/promo"
 ```
-## <a name="create-a-custom-rate-limit-rule"></a>Een aangepaste regel voor tarieflimiet maken
-Stel een tarieflimiet in met [Nieuw-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). In het volgende voorbeeld wordt de limiet ingesteld op 1000. Verzoeken van een klant naar de promopagina van meer dan 1000 gedurende een minuut worden geblokkeerd totdat de volgende minuut begint.
+## <a name="create-a-custom-rate-limit-rule"></a>Een regel voor aangepaste frequentie limiet maken
+Stel een frequentie limiet in met behulp van [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). In het volgende voor beeld is de limiet ingesteld op 1000. Aanvragen van elke client naar de promotie pagina van meer dan 1000 gedurende één minuut worden geblokkeerd tot de volgende minuut wordt gestart.
 
 ```powershell-interactive
    $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
@@ -69,11 +69,11 @@ Stel een tarieflimiet in met [Nieuw-AzFrontDoorWafCustomRuleObject](/powershell/
 ```
 
 
-## <a name="configure-a-security-policy"></a>Een beveiligingsbeleid configureren
+## <a name="configure-a-security-policy"></a>Een beveiligings beleid configureren
 
-Zoek de naam van de resourcegroep die `Get-AzureRmResourceGroup`het frontdoorprofiel bevat met behulp van . Configureer vervolgens een beveiligingsbeleid met een aangepaste tarieflimietregel met [Nieuw-AzFrontDoorWafBeleid](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resourcegroep die het frontdoorprofiel bevat.
+Zoek de naam van de resource groep die het voorste deur profiel bevat met `Get-AzureRmResourceGroup`behulp van. Configureer vervolgens een beveiligings beleid met een aangepaste frequentie limiet regel met [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
 
-In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGroupFD1* gebruikt met de veronderstelling dat u het frontdoorprofiel hebt gemaakt met instructies in het [quickstart-artikel: Een voordeurartikel maken.](../../frontdoor/quickstart-create-front-door.md)
+In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken.
 
  met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
@@ -85,11 +85,11 @@ In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGrou
      -Mode Prevention `
      -EnabledState Enabled
 ```
-## <a name="link-policy-to-a-front-door-front-end-host"></a>Het beleid koppelen aan een front-door front-end host
-Koppel het beveiligingsbeleid object aan een bestaande Front Door front-end host en werk front door eigenschappen bij. Haal eerst het voordeurobject op met de opdracht [Get-AzFrontDoor.](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)
-Stel vervolgens de eigenschap Front-end *WebApplicationFirewallPolicyLink* in op de *resourceId* van de $ratePolicy die in de vorige stap is gemaakt met de opdracht [Set-AzFrontDoor.](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) 
+## <a name="link-policy-to-a-front-door-front-end-host"></a>Beleid koppelen aan een front-end-host voor de voor deur
+Koppel het object voor het beveiligings beleid aan een bestaande front-endwebserver front-end-host en werk front-deur eigenschappen bij. Haal eerst het voorste deur object op met de opdracht [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) .
+Stel vervolgens de front-end *WebApplicationFirewallPolicyLink* -eigenschap in op de *resourceId* van het $ratePolicy dat in de vorige stap is gemaakt met behulp van de opdracht [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) . 
 
-In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGroupFD1* gebruikt met de veronderstelling dat u het frontdoorprofiel hebt gemaakt met instructies in het [quickstart-artikel: Een voordeurartikel maken.](../../frontdoor/quickstart-create-front-door.md) Vervang in het onderstaande voorbeeld ook $frontDoorName door de naam van uw voordeurprofiel. 
+In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken. Vervang ook in het onderstaande voor beeld $frontDoorName door de naam van uw voorste deur profiel. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -100,10 +100,10 @@ In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGrou
  ```
 
 > [!NOTE]
-> U hoeft de eigenschap *WebApplicationFirewallPolicyLink* slechts één keer in te stellen om een beveiligingsbeleid te koppelen aan een frontdoorfront-end. Volgende beleidsupdates worden automatisch toegepast op de front-end.
+> U hoeft slechts één keer op de eigenschap *WebApplicationFirewallPolicyLink* in te stellen om een beveiligings beleid te koppelen aan de front-end van de voor deur. Volgende beleids updates worden automatisch toegepast op de front-end.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Voordeur.](../../frontdoor/front-door-overview.md) 
+- Meer informatie over de [voor deur](../../frontdoor/front-door-overview.md). 
 
 

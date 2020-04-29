@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple - CloudSimple Private Cloud maken
-description: Beschrijft hoe u een CloudSimple Private Cloud maakt om VMware-workloads uit te breiden naar de cloud met operationele flexibiliteit en continuïteit
+title: 'Azure VMware-oplossing op CloudSimple: CloudSimple-Privécloud maken'
+description: Hierin wordt beschreven hoe u een CloudSimple-Privécloud maakt om VMware-workloads uit te breiden naar de Cloud met operationele flexibiliteit en continuïteit
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -9,70 +9,70 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024786"
 ---
-# <a name="create-a-cloudsimple-private-cloud"></a>Een CloudSimple Private Cloud maken
+# <a name="create-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud maken
 
-Een Private Cloud is een geïsoleerde VMware-stack die ESXi-hosts, vCenter, vSAN en NSX ondersteunt. Private Clouds worden beheerd via de CloudSimple portal. Ze hebben hun eigen vCenter server in een eigen beheerdomein. De stack draait op speciale knooppunten en geïsoleerde bare metal hardware knooppunten.
+Een Privécloud is een geïsoleerde VMware-stack die ondersteuning biedt voor ESXi-hosts, vCenter, vSAN en NSX. Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eigen vCenter-Server in een eigen beheer domein. De stack wordt uitgevoerd op toegewezen knoop punten en geïsoleerde bare metal hardware-knoop punten.
 
-Het maken van een Private Cloud helpt u om tegemoet te komen aan een verscheidenheid aan gemeenschappelijke behoeften voor netwerkinfrastructuur:
+Het maken van een Privécloud helpt u bij het oplossen van een aantal gemeen schappelijke behoeften voor de netwerk infrastructuur:
 
-* **Groei**. Als u een hardwareverversingspunt voor uw bestaande infrastructuur hebt bereikt, u met een Private Cloud uitbreiden zonder dat er nieuwe hardware-investeringen nodig zijn.
+* **Groei**. Als u een hardware-vernieuwings punt hebt bereikt voor uw bestaande infra structuur, kunt u een Privécloud uitbreiden zonder dat er nieuwe hardware-investering vereist is.
 
-* **Snelle uitbreiding**. Als er tijdelijke of ongeplande capaciteitsbehoeften ontstaan, u met een Private Cloud de extra capaciteit zonder vertraging creëren.
+* **Snelle uitbrei ding**. Als er sprake is van tijdelijke of niet-geplande capaciteit, kunt u met een Privécloud de extra capaciteit zonder vertraging maken.
 
-* **Meer bescherming**. Met een Private Cloud van drie of meer knooppunten krijgt u automatische redundantie en bescherming met hoge beschikbaarheid.
+* **Betere beveiliging**. Met een Privécloud van drie of meer knoop punten krijgt u automatische redundantie en bescherming met hoge Beschik baarheid.
 
-* **Infrastructuurbehoeften op lange termijn**. Als uw datacenters op capaciteit zijn of als u wilt herstructureren om uw kosten te verlagen, u met een Private Cloud datacenters terugtrekken en migreren naar een cloudgebaseerde oplossing terwijl u compatibel blijft met uw bedrijfsactiviteiten.
+* **Vereisten voor de infra structuur op lange termijn**. Als uw data centers een capaciteit hebben of u zich wilt herstructureren om uw kosten te verlagen, kunt u met een Privécloud data centers buiten gebruik stellen en migreren naar een Cloud oplossing terwijl deze compatibel zijn met uw bedrijfs activiteiten.
 
-Wanneer u een private cloud maakt, krijgt u één vSphere-cluster en alle beheer-VM's die in dat cluster zijn gemaakt.
+Wanneer u een Privécloud maakt, krijgt u één vSphere-cluster en alle beheer-Vm's die in het cluster zijn gemaakt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Knooppunten moeten worden ingericht voordat u uw Private Cloud maken. Zie [Knooppunten voor Azure VMware-oplossing door CloudSimple voor](create-nodes.md)meer informatie over het inrichten van knooppunten.
+Knoop punten moeten worden ingericht voordat u de Privécloud kunt maken. Zie voor meer informatie over het inrichten van knoop punten [richt knooppunten inrichten voor Azure VMware-oplossing door CloudSimple](create-nodes.md).
 
-Wijs een CIDR-bereik toe voor vSphere/vSAN-subnetten voor de Private Cloud. Een Private Cloud wordt gemaakt als een geïsoleerde VMware-stackomgeving (met ESXi-hosts, vCenter, vSAN en NSX) die worden beheerd door een vCenter-server. Beheercomponenten worden geïmplementeerd in het netwerk dat is geselecteerd voor vSphere/vSAN-subnetten CIDR. Het CIDR-netwerk-bereik is tijdens de implementatie verdeeld in verschillende subnetten. De subnetadresruimte vSphere/vSAN moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving. De netwerken die communiceren met CloudSimple omvatten on-premises netwerken en Virtuele Azure-netwerken. Zie VLAN's en subnetten overzicht voor meer informatie over vSphere/vSAN-subnetten.
+Wijs een CIDR-bereik toe voor vSphere/vSAN-subnetten voor de Privécloud. Een Privécloud wordt gemaakt als een geïsoleerde VMware-stack omgeving (met ESXi-hosts, vCenter, vSAN en NSX) die worden beheerd door een vCenter-Server. Beheer onderdelen worden geïmplementeerd in het netwerk dat is geselecteerd voor vSphere/vSAN-subnets CIDR. Het netwerk-CIDR-bereik is tijdens de implementatie onderverdeeld in verschillende subnetten. De adres ruimte van het vSphere/vSAN-subnet moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving. De netwerken die met CloudSimple communiceren, zijn onder andere on-premises netwerken en Azure Virtual Networks. Zie voor meer informatie over vSphere-en vSAN-subnetten VLAN'S en subnetten-overzicht.
 
-* Minimaal vSphere/vSAN-subnetten CIDR-bereikvoorvoegsel: /24
-* Maximaal vSphere/vSAN-subnetten CIDR-bereikvoorvoegsel: /21
+* Minimum aantal vSphere/vSAN-subnetten CIDR-bereik voor voegsel:/24
+* Maximum aantal vSphere/vSAN-subnetten voor voegsel van CIDR-bereik:/21
 
 
 ## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
-Toegang tot de [CloudSimple-portal](access-cloudsimple-portal.md).
+Toegang tot de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
-## <a name="create-a-new-private-cloud"></a>Een nieuwe privécloud maken
+## <a name="create-a-new-private-cloud"></a>Een nieuwe Privécloud maken
 
-1. Selecteer **Alle services**.
+1. Selecteer **alle services**.
 2. Zoek naar **CloudSimple Services**.
-3. Selecteer de CloudSimple-service waarop u uw Private Cloud wilt maken.
-4. Klik **in Overzicht**op **Privécloud maken** om een nieuw browsertabblad voor CloudSimple-portal te openen. Meld u desgevraagd aan met uw Azure-aanmeldingsreferenties.
+3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
+4. Klik in **overzicht**op **privécloud maken** om een nieuw browser tabblad voor CloudSimple portal te openen. Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.
 
-    ![Private Cloud maken vanuit Azure](media/create-private-cloud-from-azure.png)
+    ![Een Privécloud maken van Azure](media/create-private-cloud-from-azure.png)
 
-5. Geef in de CloudSimple-portal een naam voor uw Private Cloud.
-6. Selecteer **Locatie** voor uw private cloud.
-7. Selecteer **Knooppunttype,** in overeenstemming met wat u op Azure hebt ingericht.
-8. Het **aantal nodes opgeven**.  Er zijn ten minste drie knooppunten nodig om een Private Cloud te maken.
+5. Geef in de CloudSimple-Portal een naam op voor de Privécloud.
+6. Selecteer een **locatie** voor de privécloud.
+7. Selecteer het **knooppunt type**in overeenstemming met wat u in azure hebt ingericht.
+8. Geef het **aantal knoop punten**op.  Er zijn ten minste drie knoop punten vereist voor het maken van een Privécloud.
 
-    ![Private Cloud maken - Basisinformatie](media/create-private-cloud-basic-info.png)
+    ![Een persoonlijke Cloud maken-basis gegevens](media/create-private-cloud-basic-info.png)
 
-9. Klik **op Volgende: Geavanceerde opties**.
+9. Klik op **volgende: geavanceerde opties**.
 10. Voer het CIDR-bereik in voor vSphere/vSAN-subnetten. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises of andere Azure-subnetten (virtuele netwerken) of met het gateway-subnet.
 
-    **CIDR-bereikopties:** /24, /23, /22 of /21. Een CIDR-bereik van /24 ondersteunt maximaal negen knooppunten, een CIDR-bereik van /23 ondersteunt maximaal 41 knooppunten en een CIDR-bereik van /22 en /21 ondersteunt maximaal 64 knooppunten (het maximum aantal knooppunten in een private cloud).
+    **Opties voor het CIDR-bereik:** /24,/23,/22 of/21. Een/24 CIDR-bereik ondersteunt Maxi maal negen knoop punten, een/23 CIDR-bereik ondersteunt Maxi maal 41 knoop punten en een/22-en/21 CIDR-bereik ondersteunt Maxi maal 64 knoop punten (het maximum aantal knoop punten in een Privécloud).
 
     > [!IMPORTANT]
-    > IP-adressen in het vSphere/vSAN CIDR-bereik zijn gereserveerd voor gebruik door de Private Cloud-infrastructuur.  Gebruik het IP-adres in dit bereik niet op een virtuele machine.
+    > IP-adressen in het vSphere/vSAN CIDR-bereik zijn gereserveerd voor gebruik door de infra structuur van de Privécloud.  Gebruik het IP-adres in dit bereik op geen enkele virtuele machine.
 
-11. Klik **op Volgende: Controleren en maken**.
-12. Bekijk de instellingen. Als u instellingen wilt wijzigen, klikt u op **Vorige**.
-13. Klik **op Maken**.
+11. Klik op **volgende: controleren en maken**.
+12. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
+13. Klik op **maken**.
 
-Private Cloud provisioning proces begint. Het kan tot twee uur duren voordat de Private Cloud is ingericht.
+Het inrichtings proces voor de privécloud wordt gestart. Het kan tot twee uur duren voordat de Privécloud is ingericht.
 
-Zie [Een private cloud uitbreiden](expand-private-cloud.md)voor instructies over het uitbreiden van een bestaande private cloud.
+Zie [een privécloud uitvouwen](expand-private-cloud.md)voor instructies over het uitbreiden van een bestaande privécloud.

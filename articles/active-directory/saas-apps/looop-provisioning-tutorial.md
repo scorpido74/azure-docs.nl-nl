@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Looop configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Looop.
+title: 'Zelf studie: looop configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op looop.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,164 +16,164 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e3e25a8c27b9a5c1bc1e7673300ac8aca9377c08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057434"
 ---
-# <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Zelfstudie: Looop configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Zelf studie: looop configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Looop en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen naar Looop.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in looop en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in looop.
 
 > [!NOTE]
-> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant
-* [Een Looop huurder](https://www.looop.co/pricing/)
-* Een gebruikersaccount op een Looop met beheerdersmachtigingen.
+* Een Azure AD-Tenant
+* [Een looop-Tenant](https://www.looop.co/pricing/)
+* Een gebruikers account op een looop met beheerders machtigingen.
 
-## <a name="assign-users-to-looop"></a>Gebruikers toewijzen aan Looop
+## <a name="assign-users-to-looop"></a>Gebruikers toewijzen aan looop
 
-Azure Active Directory gebruikt een concept genaamd toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Looop nodig hebben. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Looop door de instructies hier te volgen:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot looop. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan looop door de volgende instructies te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-looop"></a>Belangrijke tips voor het toewijzen van gebruikers aan Looop
+### <a name="important-tips-for-assigning-users-to-looop"></a>Belang rijke tips voor het toewijzen van gebruikers aan looop
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker aan Looop wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan looop om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker aan Looop toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
+* Wanneer u een gebruiker toewijst aan looop, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="set-up-looop-for-provisioning"></a>Looop instellen voor inrichten
+## <a name="set-up-looop-for-provisioning"></a>Looop instellen voor inrichting
 
-Voordat u Looop configureert voor automatische gebruikersvoorziening met Azure AD, moet u bepaalde informatie ophalen bij Looop.
+Voordat u looop configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u bepaalde inrichtings gegevens ophalen van looop.
 
-1. Meld u aan bij uw [Looop-beheerconsole](https://app.looop.co/#/login) en selecteer **Account**. Selecteer **onder Accountinstellingen** **verificatie**.
+1. Meld u aan bij de [looop-beheer console](https://app.looop.co/#/login) en selecteer **account**. Selecteer **verificatie**onder **account instellingen** .
 
-    ![Looop Voeg SCIM toe](media/looop-provisioning-tutorial/admin.png)
+    ![SCIM looop toevoegen](media/looop-provisioning-tutorial/admin.png)
 
-2. Genereer een nieuw token door te klikken op **Token opnieuw instellen** onder **SCIM-integratie**.
+2. Genereer een nieuw token door te klikken op **token opnieuw instellen** onder **scim-integratie**.
 
-    ![Looop Voeg SCIM toe](media/looop-provisioning-tutorial/resettoken.png)
+    ![SCIM looop toevoegen](media/looop-provisioning-tutorial/resettoken.png)
 
-3. Kopieer het **SCIM-eindpunt** en het **token**. Deze waarden worden ingevoerd in de velden **URL van tenant** en geheim **token** op het tabblad Inrichten van uw Looop-toepassing in de Azure-portal. 
+3. Kopieer het **scim-eind punt** en het **token**. Deze waarden worden ingevoerd in de velden **Tenant-URL** en **geheim-token** op het tabblad inrichten van uw looop-toepassing in de Azure Portal. 
 
-    ![Looop Token maken](media/looop-provisioning-tutorial/token.png)
+    ![Looop-token maken](media/looop-provisioning-tutorial/token.png)
 
 ## <a name="add-looop-from-the-gallery"></a>Looop toevoegen vanuit de galerie
 
-Als u Looop wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u Looop uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u looop wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u looop van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Selecteer **Looop** in **Looop**het resultatenvak in het zoekvak. 
+4. Typ **looop**in het zoekvak en selecteer **looop** in het deel venster resultaten. 
 
-    ![Looop in de resultatenlijst](common/search-new-app.png)
+    ![Looop in de lijst met resultaten](common/search-new-app.png)
 
-5. Selecteer de **knop Aanmelden voor Looop** die u doorverwijst naar de inlogpagina van Looop. 
+5. Selecteer de knop **Aanmelden voor looop** , waarmee u wordt doorgestuurd naar de aanmeldings pagina van looop. 
 
-    ![Looop OIDC Toevoegen](media/looop-provisioning-tutorial/signup.png)
+    ![Looop OIDC toevoegen](media/looop-provisioning-tutorial/signup.png)
 
-6. Omdat Looop een OpenIDConnect-app is, kiest u ervoor om in te loggen bij Looop met uw Microsoft-werkaccount.
+6. Als looop een OpenIDConnect-app is, kiest u aanmelden bij looop met uw micro soft-werk account.
 
-    ![Looop OIDC login](media/looop-provisioning-tutorial/msftlogin.png)
+    ![Looop OIDC-aanmelding](media/looop-provisioning-tutorial/msftlogin.png)
 
-7. Na een succesvolle verificatie accepteert u de toestemmingsprompt voor de toestemmingspagina. De applicatie wordt dan automatisch toegevoegd aan uw huurder en u wordt doorgestuurd naar uw Looop account.
+7. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw looop-account.
 
-    ![Looop OIDc Toestemming](media/looop-provisioning-tutorial/accept.png)
+    ![Looop OIDc toestemming](media/looop-provisioning-tutorial/accept.png)
 
-## <a name="configure-automatic-user-provisioning-to-looop"></a>Automatische gebruikersinrichting configureren voor Looop 
+## <a name="configure-automatic-user-provisioning-to-looop"></a>Automatische gebruikers inrichting configureren voor looop 
 
-In deze sectie u de Azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Looop te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in looop te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Ga als een te meer met de automatische gebruikersinrichting voor Looop in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor looop in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Looop**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **looop**.
 
-    ![De Looop-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling looop in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie `https://<organisation_domain>.looop.co/scim/v2` **Beheerdersreferenties** invoer in **Tenant-URL**in . Bijvoorbeeld `https://demo.looop.co/scim/v2`. Voer de waarde in die u eerder hebt opgehaald en opgeslagen bij Looop in **Secret Token**. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Looop. Als de verbinding mislukt, moet u ervoor zorgen dat uw Looop-account beheerdersmachtigingen heeft en het opnieuw proberen.
+5. Selecteer in de sectie **beheerders referenties** de `https://<organisation_domain>.looop.co/scim/v2` invoer in de **Tenant-URL**. Bijvoorbeeld `https://demo.looop.co/scim/v2`. Voer de waarde in die u hebt opgehaald en eerder hebt opgeslagen uit looop in een **geheim token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met looop. Als de verbinding mislukt, zorg er dan voor dat uw looop-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer Azure **Active Directory-gebruikers synchroniseren met Looop**in de sectie **Toewijzingen** .
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met looop**.
 
-    ![Looop Gebruikerstoewijzingen](media/looop-provisioning-tutorial/usermappings.png)
+    ![Looop-gebruikers toewijzingen](media/looop-provisioning-tutorial/usermappings.png)
 
-9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Looop in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Looop te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar looop in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in looop voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Looop-gebruikerskenmerken](media/looop-provisioning-tutorial/userattributes.png)
+    ![Looop-gebruikers kenmerken](media/looop-provisioning-tutorial/userattributes.png)
 
-10. Selecteer Azure **Active Directory-groepen synchroniseren met Meta Networks Connector**in de sectie **Toewijzingen** .
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met meta netwerken connector**.
 
-    ![Looop Group Mappings](media/looop-provisioning-tutorial/groupmappings.png)
+    ![Looop-groeps toewijzingen](media/looop-provisioning-tutorial/groupmappings.png)
 
-11. Controleer de groepskenmerken die zijn gesynchroniseerd van Azure AD naar Meta Networks Connector in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de groepen in Meta Networks Connector te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de meta netwerken-connector in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om de groepen in de meta netwerken connector te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Looop Groepskenmerken](media/looop-provisioning-tutorial/groupattributes.png)
+    ![Kenmerken van looop-groep](media/looop-provisioning-tutorial/groupattributes.png)
 
-10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-11. Als u de Azure AD-inrichtingsservice voor Looop wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
+11. Als u de Azure AD-inrichtings service voor **looop wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u aan Looop wilt inrichten door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
+12. Definieer de gebruikers en/of groepen die u wilt inrichten voor looop door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Looop.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op looop.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
 
 

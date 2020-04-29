@@ -1,403 +1,403 @@
 ---
-title: Azure Service Fabric CLI- sfctl-partitie
-description: Meer informatie over sfctl, de opdrachtregelinterface van Azure Service Fabric. Bevat een lijst met opdrachten voor het beheren van partities voor een service.
+title: Azure Service Fabric CLI-sfctl-partitie
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van partities voor een service.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905851"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
-Partities voor elke service opvragen en beheren.
+Zoek en beheer partities voor elke service.
 
 ## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| gegevensverlies | Deze API zal leiden tot gegevensverlies voor de opgegeven partitie. |
-| status van gegevensverlies | Hiermee wordt de voortgang van een bewerking voor het verlies van partitiegegevens gestart met de StartDataLoss API. |
-| Gezondheid | Krijgt de status van de opgegeven Service Fabric-partitie. |
-| Info | Krijgt de informatie over een Service Fabric-partitie. |
-| list | Hier wordt de lijst met partities van een Service Fabric-service weergegeven. |
-| laden | Krijgt de belastingsinformatie van de opgegeven Service Fabric-partitie. |
-| load-reset | Hiermee wordt de huidige belasting van een Service Fabric-partitie opnieuw ingesteld. |
-| quorumverlies | Leidt tot quorumverlies voor een bepaalde stateful servicepartitie. |
-| quorumverlies-status | Hiermee wordt de voortgang van een quorumverliesbewerking op een partitie gestart met de API StartQuorumLoss. |
-| herstellen | Geeft aan het cluster Servicefabric aan dat het moet proberen een specifieke partitie te herstellen die momenteel vastzit in quorumverlies. |
-| herstellen-all | Geeft aan het cluster Servicefabric aan dat het moet proberen alle services (inclusief systeemservices) te herstellen die momenteel vastzitten in quorumverlies. |
-| rapport-gezondheid | Hiermee verzendt u een statusrapport op de partitie Servicefabric. |
-| restart | Deze API start sommige of alle replica's of exemplaren van de opgegeven partitie opnieuw. |
-| herstartstatus | Hiermee wordt de voortgang van een partitiebewerkinggestart gestart met StartPartitionRestart. |
-| svc-naam | Krijgt de naam van de Service Fabric-service voor een partitie. |
+| gegevens verlies | Met deze API worden gegevens verlies voor de opgegeven partitie veroorzaakt. |
+| gegevens verlies-status | Hiermee wordt de voortgang opgehaald van een bewerking voor het verlies van een partitie gegevens die is gestart met de StartDataLoss-API. |
+| status | Hiermee wordt de status van de opgegeven Service Fabric partitie opgehaald. |
+| Info | Hiermee haalt u de informatie over een Service Fabric partitie. |
+| list | Hiermee haalt u de lijst met partities van een Service Fabric-service op. |
+| laden | Hiermee haalt u de gegevens van de belasting van de opgegeven Service Fabric partitie. |
+| laden-opnieuw instellen | Hiermee wordt de huidige belasting van een Service Fabric partitie opnieuw ingesteld. |
+| quorum-verlies | Induceert quorum verlies voor een bepaalde stateful service partitie. |
+| quorum-verlies-status | Hiermee wordt de voortgang van een quorum verlies bewerking opgehaald voor een partitie die is gestart met behulp van de StartQuorumLoss-API. |
+| herstellen | Geeft aan dat het Service Fabric cluster moet proberen een specifieke partitie te herstellen die momenteel is vastgelopen in quorum verlies. |
+| herstellen-alle | Geeft aan dat het Service Fabric cluster moet proberen om services (inclusief systeem Services) te herstellen die momenteel zijn vastgelopen in quorum verlies. |
+| rapport-status | Hiermee verzendt u een status rapport op de Service Fabric partitie. |
+| restart | Met deze API worden enkele of alle replica's of exemplaren van de opgegeven partitie opnieuw gestart. |
+| opnieuw starten: status | Hiermee wordt de voortgang opgehaald van een PartitionRestart-bewerking die is gestart met behulp van StartPartitionRestart. |
+| SVC-naam | Hiermee wordt de naam opgehaald van de Service Fabric-service voor een partitie. |
 
-## <a name="sfctl-partition-data-loss"></a>sfctl partitie verlies
-Deze API zal leiden tot gegevensverlies voor de opgegeven partitie.
+## <a name="sfctl-partition-data-loss"></a>sfctl-partitie gegevens-verlies
+Met deze API worden gegevens verlies voor de opgegeven partitie veroorzaakt.
 
-Het zal leiden tot een aanroep naar de OnDataLossAsync API van de partitie.  Deze API zal leiden tot gegevensverlies voor de opgegeven partitie. Het zal leiden tot een aanroep naar de OnDataLoss API van de partitie. Werkelijke gegevensverlies is afhankelijk van de opgegeven DataLossMode.
-- PartialDataLoss: Alleen een quorum van replica's wordt verwijderd en OnDataLoss wordt geactiveerd voor de partitie, maar het werkelijke gegevensverlies is afhankelijk van de aanwezigheid van replicatie tijdens de vlucht.  
-- FullDataLoss: Alle replica's worden verwijderd, dus alle gegevens gaan verloren en OnDataLoss wordt geactiveerd. Deze API mag alleen worden aangeroepen met een stateful service als doel. Het aanroepen van deze API met een systeemservice als doel wordt afgeraden.
+Er wordt een aanroep naar de OnDataLossAsync-API van de partitie geactiveerd.  Met deze API worden gegevens verlies voor de opgegeven partitie veroorzaakt. Er wordt een aanroep naar de OnDataLoss-API van de partitie geactiveerd. Het werkelijke gegevens verlies is afhankelijk van de opgegeven DataLossMode.
+- PartialDataLoss: alleen een quorum van replica's wordt verwijderd en OnDataLoss wordt geactiveerd voor de partitie, maar de werkelijke gegevens verlies is afhankelijk van de aanwezigheid van de replicatie in de vlucht.  
+- FullDataLoss: alle replica's worden verwijderd, dus alle gegevens gaan verloren en OnDataLoss wordt geactiveerd. Deze API mag alleen worden aangeroepen met een stateful service als doel. Het aanroepen van deze API met een systeem service als het doel wordt niet aanbevolen.
 
 > [!NOTE]   
-> Zodra deze API is aangeroepen, kan deze niet meer worden teruggedraaid. Als u CancelOperation aanroept, wordt de uitvoering alleen gestopt en wordt de interne systeemstatus opgeschoond. Het herstelt geen gegevens als de opdracht ver genoeg is gevorderd om gegevensverlies te veroorzaken. Bel de GetDataLossProgress API met dezelfde OperationId om informatie over de bewerking die met deze API is gestart, terug te sturen.
+> Nadat deze API is aangeroepen, kan deze niet meer worden omgekeerd. Het aanroepen van CancelOperation stopt alleen de uitvoering en opschonen van de interne systeem status. Er worden geen gegevens hersteld als de opdracht ver genoeg is uitgevoerd om gegevens verlies te veroorzaken. Roep de GetDataLossProgress-API aan met dezelfde OperationId om informatie te retour neren over de bewerking die is gestart met deze API.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --data-loss-modus [Vereist] | Dit enum wordt doorgegeven aan de StartDataLoss API om aan te geven welk type gegevensverlies moet worden veroorzaakt. |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --gegevens verlies-modus [vereist] | Deze Enum wordt door gegeven aan de StartDataLoss-API om aan te geven welk type gegevens verlies moet worden veroorzaakt. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-data-loss-status"></a>sfctl partitie data-loss-status
-Hiermee wordt de voortgang van een bewerking voor het verlies van partitiegegevens gestart met de StartDataLoss API.
+## <a name="sfctl-partition-data-loss-status"></a>sfctl Partition data-verlies-status
+Hiermee wordt de voortgang opgehaald van een bewerking voor het verlies van een partitie gegevens die is gestart met de StartDataLoss-API.
 
-Hiermee wordt de voortgang van een gegevensverliesbewerking gestart met StartDataLoss met behulp van de OperationId.
+Hiermee wordt de voortgang opgehaald van een bewerking voor gegevens verlies die is gestart met StartDataLoss met behulp van de OperationId.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-health"></a>sfctl partitie status
-Krijgt de status van de opgegeven Service Fabric-partitie.
+## <a name="sfctl-partition-health"></a>status van sfctl-partitie
+Hiermee wordt de status van de opgegeven Service Fabric partitie opgehaald.
 
-Gebruik EventsHealthStateFilter om het verzamelen van statusgebeurtenissen die op de service zijn gerapporteerd op basis van de status te filteren. Gebruik Replica'sHealthStateFilter om de verzameling replicahealthstate-objecten op de partitie te filteren. Als u een partitie opgeeft die niet in het statusarchief bestaat, wordt in deze aanvraag een fout geretourneerd.
+Gebruik EventsHealthStateFilter om de verzameling van status gebeurtenissen die op de service zijn gerapporteerd, te filteren op basis van de status. Gebruik ReplicasHealthStateFilter om de verzameling van ReplicaHealthState-objecten op de partitie te filteren. Als u een partitie opgeeft die niet voor komt in de Health Store, retourneert deze aanvraag een fout.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --events-health-state-filter | Hiermee u de verzameling HealthEvent-objecten filteren die zijn geretourneerd op basis van de status. De mogelijke waarden voor deze parameter omvatten de gehele waarde van een van de volgende statussen. Alleen gebeurtenissen die overeenkomen met het filter worden geretourneerd. Alle gebeurtenissen worden gebruikt om de geaggregeerde status te evalueren. Als dit niet is opgegeven, worden alle items geretourneerd. De statuswaarden zijn op vlag gebaseerde opsomming, dus de waarde kan een combinatie zijn van deze waarden, verkregen met behulp van de bitwise 'OR'-operator. Als de opgegeven waarde bijvoorbeeld 6 is, worden alle gebeurtenissen met de statuswaarde Van OK (2) en Waarschuwing (4) geretourneerd.  <br> - Standaard - Standaardwaarde. Komt overeen met elke HealthState. De waarde is nul.  <br> - Geen - Filter dat niet overeenkomt met een HealthState-waarde. Gebruikt om geen resultaten op een bepaalde verzameling van staten terug te keren. De waarde is 1.  <br> - Ok - Filter dat overeenkomt met invoer met HealthState-waarde Ok. De waarde is 2.  <br> - Waarschuwing - Filter dat overeenkomt met invoer met Waarschuwing voor de waarde HealthState. De waarde is 4.  <br> - Fout - Filter dat overeenkomt met invoer met Statuswaardefout. De waarde is 8.  <br> - Alles - Filter dat overeenkomt met de invoer met een healthstate-waarde. De waarde is 65535. |
-| --exclude-health-statistics | Geeft aan of de statusstatistieken moeten worden geretourneerd als onderdeel van het queryresultaat. Standaard onwaar. De statistieken tonen het aantal kinderen entiteiten in de gezondheidstoestand Ok, Waarschuwing en Fout. |
-| --replica's-health-state-filter | Hiermee u de verzameling ReplicaHealthState-objecten op de partitie filteren. De waarde kan worden verkregen van leden of bitwise operaties op leden van HealthStateFilter. Alleen replica's die overeenkomen met het filter worden geretourneerd. Alle replica's worden gebruikt om de geaggregeerde status te evalueren. Als dit niet is opgegeven, worden alle inzendingen geretourneerd. De statuswaarden zijn op vlag gebaseerde opsomming, dus de waarde kan een combinatie zijn van deze waarden die zijn verkregen met bitwise 'OR'-operator. Als de opgegeven waarde bijvoorbeeld 6 is, worden alle gebeurtenissen met de statuswaarde Van OK (2) en Waarschuwing (4) geretourneerd. De mogelijke waarden voor deze parameter omvatten de gehele waarde van een van de volgende statussen.  <br> - Standaard - Standaardwaarde. Komt overeen met elke HealthState. De waarde is nul.  <br> - Geen - Filter dat niet overeenkomt met een HealthState-waarde. Gebruikt om geen resultaten op een bepaalde verzameling van staten terug te keren. De waarde is 1.  <br> - Ok - Filter dat overeenkomt met invoer met HealthState-waarde Ok. De waarde is 2.  <br> - Waarschuwing - Filter dat overeenkomt met invoer met Waarschuwing voor de waarde HealthState. De waarde is 4.  <br> - Fout - Filter dat overeenkomt met invoer met Statuswaardefout. De waarde is 8.  <br> - Alles - Filter dat overeenkomt met de invoer met een healthstate-waarde. De waarde is 65535. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --gebeurtenissen-status-filter | Hiermee kunt u het verzamelen van HealthEvent-objecten die zijn geretourneerd op basis van de status wordt gefilterd. De mogelijke waarden voor deze para meter zijn gehele getallen van een van de volgende statussen. Alleen gebeurtenissen die overeenkomen met het filter worden geretourneerd. Alle gebeurtenissen worden gebruikt om de geaggregeerde status te evalueren. Als u niets opgeeft, worden alle vermeldingen geretourneerd. De status waarden zijn inventarisatie op basis van een vlag, waardoor de waarde kan bestaan uit een combi natie van deze waarden, verkregen met behulp van de operator bitsgewijze ' of '. Als de opgegeven waarde bijvoorbeeld 6 is, worden alle gebeurtenissen met HealthState waarde OK (2) en waarschuwing (4) geretourneerd.  <br> -Standaard-standaard waarde. Komt overeen met een wille keurige HealthState. De waarde is nul.  <br> -Geen: filter dat niet overeenkomt met een HealthState-waarde. Wordt gebruikt om geen resultaten te retour neren voor een bepaalde verzameling statussen. De waarde is 1.  <br> -OK-filter dat overeenkomt met de invoer met HealthState waarde OK. De waarde is 2.  <br> -Waarschuwings filter dat overeenkomt met invoer met HealthState-waarde waarschuwing. De waarde is 4.  <br> -Fout filter dat overeenkomt met de invoer met de HealthState-waarde fout. De waarde is 8.  <br> -Alle-filter die overeenkomt met invoer met een wille keurige waarde van HealthState. De waarde is 65535. |
+| --exclude-status-statistieken | Hiermee wordt aangegeven of de status statistieken moeten worden geretourneerd als onderdeel van het query resultaat. Standaard onwaar. In de statistieken wordt het aantal onderliggende entiteiten in de status OK, waarschuwing en fout weer gegeven. |
+| --replica's-status-filter | Hiermee kunt u het verzamelen van ReplicaHealthState-objecten op de partitie filteren. De waarde kan worden verkregen van leden of bitsgewijze bewerkingen op leden van HealthStateFilter. Alleen replica's die overeenkomen met het filter worden geretourneerd. Alle replica's worden gebruikt om de geaggregeerde status te evalueren. Als u niets opgeeft, worden alle vermeldingen geretourneerd. De status waarden zijn inventarisatie op basis van een vlag, waardoor de waarde kan bestaan uit een combi natie van deze waarden die zijn verkregen met behulp van de operator bitsgewijze of. Als de opgegeven waarde bijvoorbeeld 6 is, worden alle gebeurtenissen met HealthState waarde OK (2) en waarschuwing (4) geretourneerd. De mogelijke waarden voor deze para meter zijn gehele getallen van een van de volgende statussen.  <br> -Standaard-standaard waarde. Komt overeen met een wille keurige HealthState. De waarde is nul.  <br> -Geen: filter dat niet overeenkomt met een HealthState-waarde. Wordt gebruikt om geen resultaten te retour neren voor een bepaalde verzameling statussen. De waarde is 1.  <br> -OK-filter dat overeenkomt met de invoer met HealthState waarde OK. De waarde is 2.  <br> -Waarschuwings filter dat overeenkomt met invoer met HealthState-waarde waarschuwing. De waarde is 4.  <br> -Fout filter dat overeenkomt met de invoer met de HealthState-waarde fout. De waarde is 8.  <br> -Alle-filter die overeenkomt met invoer met een wille keurige waarde van HealthState. De waarde is 65535. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-info"></a>sfctl partitie info
-Krijgt de informatie over een Service Fabric-partitie.
+## <a name="sfctl-partition-info"></a>sfctl-partitie-informatie
+Hiermee haalt u de informatie over een Service Fabric partitie.
 
-Hier wordt de informatie over de opgegeven partitie opgevraagd. Het antwoord omvat de partitie-id, partitieschema-informatie, sleutels die worden ondersteund door de partitie, status, status en andere details over de partitie.
+Hiermee wordt de informatie opgehaald over de opgegeven partitie. Het antwoord bevat de partitie-ID, het partitioneren van schema-informatie, sleutels die worden ondersteund door de partitie, status, Health en andere informatie over de partitie.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-list"></a>sfctl-partitielijst
-Hier wordt de lijst met partities van een Service Fabric-service weergegeven.
+## <a name="sfctl-partition-list"></a>sfctl-partitie lijst
+Hiermee haalt u de lijst met partities van een Service Fabric-service op.
 
-Het antwoord omvat de partitie-id, partitieschema-informatie, sleutels die worden ondersteund door de partitie, status, status en andere details over de partitie.
+Het antwoord bevat de partitie-ID, het partitioneren van schema-informatie, sleutels die worden ondersteund door de partitie, status, Health en andere informatie over de partitie.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --continuation-token | De parameter vervolgtoken wordt gebruikt om volgende set resultaten te verkrijgen. Een vervolgtoken met een niet-lege waarde wordt opgenomen in de reactie van de API wanneer de resultaten van het systeem niet in één reactie passen. Wanneer deze waarde wordt doorgegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolgtoken geen waarde. De waarde van deze parameter mag niet worden gecodeerd met url's. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --vervolg token | De vervolg token parameter wordt gebruikt om de volgende set resultaten op te halen. Een vervolg token met een niet-lege waarde wordt opgenomen in het antwoord van de API wanneer de resultaten van het systeem niet in één antwoord passen. Wanneer deze waarde wordt door gegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolg token geen waarde. De waarde van deze para meter mag geen URL-code ring zijn. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-load"></a>sfctl partitiebelasting
-Krijgt de belastingsinformatie van de opgegeven Service Fabric-partitie.
+## <a name="sfctl-partition-load"></a>sfctl-partitie laden
+Hiermee haalt u de gegevens van de belasting van de opgegeven Service Fabric partitie.
 
-Retourneert informatie over de belasting van een opgegeven partitie. Het antwoord bevat een lijst met belastingsrapporten voor een Service Fabric-partitie. Elk rapport bevat de naam, waarde en de laatst gerapporteerde tijd in UTC.
+Retourneert informatie over de belasting van een opgegeven partitie. Het antwoord bevat een lijst met laad rapporten voor een Service Fabric partitie. Elk rapport bevat de naam, waarde en de laatst gerapporteerde tijd van de belasting in UTC.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-load-reset"></a>sfctl-partitie load-reset
-Hiermee wordt de huidige belasting van een Service Fabric-partitie opnieuw ingesteld.
+## <a name="sfctl-partition-load-reset"></a>sfctl-partitie laden-opnieuw instellen
+Hiermee wordt de huidige belasting van een Service Fabric partitie opnieuw ingesteld.
 
-Hiermee wordt de huidige belasting van een Service Fabric-partitie gereset naar de standaardbelasting voor de service.
+Hiermee wordt de huidige belasting van een Service Fabric partitie opnieuw ingesteld op de standaard belasting voor de service.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-quorum-loss"></a>sfctl partitie quorum-verlies
-Leidt tot quorumverlies voor een bepaalde stateful servicepartitie.
+## <a name="sfctl-partition-quorum-loss"></a>quorum van sfctl-partitie-verlies
+Induceert quorum verlies voor een bepaalde stateful service partitie.
 
-Deze API is handig voor een tijdelijke situatie van quorumverlies op uw service. Roep de GetQuorumLossProgress API met dezelfde OperationId aan om informatie over de bewerking die met deze API is gestart, terug te sturen. Dit kan alleen worden aangeroepen op stateful persisted (HasPersistedState==true) diensten.  Gebruik deze API niet op stateless services of stateful in-memory only services.
+Deze API is handig voor een tijdelijke verlies situatie bij uw service. Roep de GetQuorumLossProgress-API aan met dezelfde OperationId om informatie te retour neren over de bewerking die is gestart met deze API. Dit kan alleen worden aangeroepen voor services die permanent zijn gemaakt (HasPersistedState = = True).  Gebruik deze API niet op stateless Services of stateful alleen-geheugen Services.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --quorum-verlies-duur [Vereist] | De hoeveelheid tijd waarvoor de partitie in quorumverlies wordt bewaard.  Dit moet in enkele seconden worden opgegeven. |
-| --quorum-loss-modus [Vereist] | Dit enum wordt doorgegeven aan de StartQuorumLoss API om aan te geven welk type quorumverlies moet worden veroorzaakt. |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --quorum-verlies-duur [vereist] | De hoeveelheid tijd waarvoor de partitie in quorum verlies wordt bewaard.  Dit moet in seconden worden opgegeven. |
+| --quorum-verlies-modus [vereist] | Deze Enum wordt door gegeven aan de StartQuorumLoss-API om aan te geven welk type quorum verlies moet worden veroorzaakt. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-quorum-loss-status"></a>sfctl partitie quorum-verlies-status
-Hiermee wordt de voortgang van een quorumverliesbewerking op een partitie gestart met de API StartQuorumLoss.
+## <a name="sfctl-partition-quorum-loss-status"></a>sfctl-partitie quorum-verlies-status
+Hiermee wordt de voortgang van een quorum verlies bewerking opgehaald voor een partitie die is gestart met behulp van de StartQuorumLoss-API.
 
-Hiermee wordt de voortgang van een quorumverliesbewerking gestart met StartQuorumLoss met behulp van de meegeleverde OperationId.
+Hiermee wordt de voortgang opgehaald van een bewerking voor quorum verlies die is gestart met StartQuorumLoss, met behulp van de meegeleverde OperationId.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 ## <a name="sfctl-partition-recover"></a>sfctl-partitie herstellen
-Geeft aan het cluster Servicefabric aan dat het moet proberen een specifieke partitie te herstellen die momenteel vastzit in quorumverlies.
+Geeft aan dat het Service Fabric cluster moet proberen een specifieke partitie te herstellen die momenteel is vastgelopen in quorum verlies.
 
-Deze bewerking mag alleen worden uitgevoerd als bekend is dat de replica's die zijn uitgeschakeld niet kunnen worden hersteld. Onjuist gebruik van deze API kan leiden tot mogelijk gegevensverlies.
-
-### <a name="arguments"></a>Argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
-
-### <a name="global-arguments"></a>Globale argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
-
-## <a name="sfctl-partition-recover-all"></a>sfctl partitie recover-all
-Geeft aan het cluster Servicefabric aan dat het moet proberen alle services (inclusief systeemservices) te herstellen die momenteel vastzitten in quorumverlies.
-
-Deze bewerking mag alleen worden uitgevoerd als bekend is dat de replica's die zijn uitgeschakeld niet kunnen worden hersteld. Onjuist gebruik van deze API kan leiden tot mogelijk gegevensverlies.
+Deze bewerking mag alleen worden uitgevoerd als bekend is dat de replica's die niet beschikbaar zijn, niet kunnen worden hersteld. Een onjuist gebruik van deze API kan leiden tot mogelijk gegevens verlies.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-report-health"></a>sfctl partitie rapport-health
-Hiermee verzendt u een statusrapport op de partitie Servicefabric.
+## <a name="sfctl-partition-recover-all"></a>sfctl-partitie herstellen-alle
+Geeft aan dat het Service Fabric cluster moet proberen om services (inclusief systeem Services) te herstellen die momenteel zijn vastgelopen in quorum verlies.
 
-Rapporteert de status van de opgegeven servicestructuurpartitie. Het rapport moet de informatie bevatten over de bron van het gezondheidsrapport en de eigenschap waarop het wordt gerapporteerd. Het rapport wordt verzonden naar een Service Fabric-gatewaypartitie, die doorstuurt naar de statusopslag. Het rapport kan worden geaccepteerd door de gateway, maar afgewezen door het gezondheidsarchief na extra validatie. Het statusarchief kan het rapport bijvoorbeeld afwijzen vanwege een ongeldige parameter, zoals een verouderd volgnummer. Als u wilt zien of het rapport is toegepast in het gezondheidsarchief, controleert u of het rapport wordt weergegeven in de sectie Gebeurtenissen.
+Deze bewerking mag alleen worden uitgevoerd als bekend is dat de replica's die niet beschikbaar zijn, niet kunnen worden hersteld. Een onjuist gebruik van deze API kan leiden tot mogelijk gegevens verlies.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --health-property [Vereist] | De eigenschap van de gezondheidsinformatie. <br><br> Een entiteit kan statusrapporten voor verschillende eigenschappen hebben. De eigenschap is een tekenreeks en geen vaste opsomming om de verslaggever flexibiliteit om de toestand voorwaarde die het rapport triggers categoriseren. Een verslaggever met SourceId "LocalWatchdog" kan bijvoorbeeld de status van de beschikbare schijf op een knooppunt controleren, zodat het de eigenschap 'Beschikbare schijf' op dat knooppunt kan rapporteren. Dezelfde verslaggever kan de verbinding met het knooppunt controleren, zodat hij een eigenschap "Connectiviteit" op hetzelfde knooppunt kan melden. In het gezondheidsarchief worden deze rapporten behandeld als afzonderlijke statusgebeurtenissen voor het opgegeven knooppunt. Samen met de SourceId identificeert het pand op unieke wijze de gezondheidsinformatie. |
-| --gezondheidstoestand [Vereist] | Mogelijke waarden\: zijn 'Ongeldig', 'Ok', 'Waarschuwing', 'Fout', 'Onbekend'. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --source-id [Vereist] | De bronnaam die de client/waakhond/systeemcomponent identificeert die de gezondheidsinformatie heeft gegenereerd. |
-| --beschrijving | De beschrijving van de gezondheidsinformatie. <br><br> Het vertegenwoordigt gratis tekst die wordt gebruikt om menselijke leesbare informatie over het rapport toe te voegen. De maximale tekenreekslengte voor de beschrijving is 4096 tekens. Als de meegeleverde tekenreeks langer is, wordt deze automatisch afgekapt. Wanneer afgekapt, bevatten de laatste tekens van de beschrijving een markering "[Afgekapt]", en de totale tekenreeksgrootte is 4096 tekens. De aanwezigheid van de markering geeft aan gebruikers aan dat er een afsplitsing is opgetreden. Houd er rekening mee dat wanneer deze wordt afgekapt, de beschrijving minder dan 4096 tekens uit de oorspronkelijke tekenreeks bevat. |
-| --onmiddellijke | Een vlag die aangeeft of het rapport onmiddellijk moet worden verzonden. <br><br> Er wordt een gezondheidsrapport verzonden naar een Service Fabric-gatewaytoepassing, die doorstuurt naar de statuswinkel. Als Onmiddellijk is ingesteld op true, wordt het rapport onmiddellijk vanuit HTTP Gateway naar het gezondheidsarchief verzonden, ongeacht de fabricclientinstellingen die de HTTP-gatewaytoepassing gebruikt. Dit is handig voor kritieke rapporten die zo snel mogelijk moeten worden verzonden. Afhankelijk van de timing en andere voorwaarden kan het verzenden van het rapport nog steeds mislukken, bijvoorbeeld als de HTTP-gateway is gesloten of het bericht de gateway niet bereikt. Als Onmiddellijk is ingesteld op false, wordt het rapport verzonden op basis van de statusclientinstellingen van de HTTP-gateway. Daarom wordt het batched volgens de HealthReportSendInterval-configuratie. Dit is de aanbevolen instelling omdat de statusclient hiermee statusrapportageberichten naar het gezondheidsarchief en de verwerking van gezondheidsrapporten kan optimaliseren. Rapporten worden standaard niet onmiddellijk verzonden. |
-| --verwijderen-wanneer het is verlopen | Waarde die aangeeft of het rapport wordt verwijderd uit het gezondheidsarchief wanneer het verloopt. <br><br> Als het rapport is ingesteld op true, wordt het rapport uit het gezondheidsarchief verwijderd nadat het is verlopen. Als het rapport is ingesteld op false, wordt het als een fout behandeld wanneer het is verlopen. De waarde van deze eigenschap is standaard onjuist. Wanneer clients periodiek rapporteren, moeten ze RemoveWhenExpired false (standaard) instellen. Op deze manier, is de verslaggever heeft problemen (bijvoorbeeld impasse) en kan niet melden, de entiteit wordt geëvalueerd op fout wanneer het gezondheidsrapport verloopt. Hiermee wordt de entiteit als foutstatus aandeind. |
-| --sequence-nummer | Het volgnummer voor dit gezondheidsrapport als een numerieke tekenreeks. <br><br> Het rapportreeksnummer wordt door het statusarchief gebruikt om verouderde rapporten te detecteren. Als dit niet is opgegeven, wordt een volgnummer automatisch gegenereerd door de statusclient wanneer een rapport wordt toegevoegd. |
-| --time-out -t | Standaard\: 60. |
-| --ttl | De duur waarvoor dit gezondheidsrapport geldig is. In dit veld wordt de ISO8601-indeling gebruikt voor het opgeven van de duur. <br><br> Wanneer klanten periodiek rapporteren, moeten ze rapporten verzenden met een hogere frequentie dan de tijd om te leven. Als klanten rapporteren over de overgang, kunnen ze de tijd instellen om te leven op oneindig. Wanneer de tijd om te leven verloopt, wordt de statusgebeurtenis die de statusgegevens bevat, verwijderd uit het gezondheidsarchief, als RemoveWhenExpired true is of geëvalueerd bij een fout, als RemoveWhenExpired false. Als dit niet is opgegeven, is de tijd om standaard te leven in een oneindige waarde. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+
+## <a name="sfctl-partition-report-health"></a>sfctl-partitie rapport-status
+Hiermee verzendt u een status rapport op de Service Fabric partitie.
+
+Rapporteert de status van de opgegeven Service Fabric partitie. Het rapport moet de informatie bevatten over de bron van het status rapport en de eigenschap waarvoor deze is gerapporteerd. Het rapport wordt verzonden naar een Service Fabric gateway partitie die wordt doorgestuurd naar de Health Store. Het rapport kan worden geaccepteerd door de gateway, maar door de Health Store na een extra validatie afgewezen. Het Health Store kan bijvoorbeeld het rapport afwijzen vanwege een ongeldige para meter, zoals een verouderd volgorde nummer. Als u wilt zien of het rapport is toegepast in de Health Store, controleert u of het rapport wordt weer gegeven in de sectie Events.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --status-Property [required] | De eigenschap van de status informatie. <br><br> Een entiteit kan status rapporten voor verschillende eigenschappen hebben. De eigenschap is een teken reeks en geen vaste inventarisatie om de flexibiliteit van de rapporter in te stellen voor het categoriseren van de status voorwaarde waarmee het rapport wordt geactiveerd. Zo kan een rapporter met SourceId "LocalWatchdog" de status van de beschik bare schijf op een knoop punt bewaken, zodat de eigenschap "AvailableDisk" op dat knoop punt kan worden gerapporteerd. Dezelfde rapportage functie kan de verbinding met het knoop punt bewaken, zodat een eigenschap ' connectiviteit ' op hetzelfde knoop punt kan worden gerapporteerd. In de Health Store worden deze rapporten behandeld als afzonderlijke status gebeurtenissen voor het opgegeven knoop punt. Samen met de SourceId wordt met de eigenschap een unieke identificatie van de status informatie aangeduid. |
+| --status (vereist) | Mogelijke waarden zijn\: ' Unknown ', ' OK ', ' warn ', ' error ', ' Unknown '. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --bron-id [vereist] | De bron naam die het client/watchdog/systeem onderdeel identificeert dat de status informatie heeft gegenereerd. |
+| --Beschrijving | De beschrijving van de status informatie. <br><br> Hiermee wordt de vrije tekst aangegeven die wordt gebruikt om informatie over het rapport toe te voegen dat wordt gelezen. De maximale teken reeks lengte van de beschrijving is 4096 tekens. Als de gegeven teken reeks langer is, wordt deze automatisch afgekapt. Wanneer de laatste tekens van de beschrijving worden afgekapt, bevatten ze een markering [afgekapt] en de totale teken reeks grootte is 4096 tekens. De aanwezigheid van de markering geeft aan dat gebruikers de afkap ping hebben plaatsgevonden. Houd er rekening mee dat de beschrijving kleiner is dan 4096 tekens uit de oorspronkelijke teken reeks. |
+| --Immediate | Een vlag die aangeeft of het rapport direct moet worden verzonden. <br><br> Een status rapport wordt verzonden naar een Service Fabric gateway-toepassing, die wordt doorgestuurd naar de Health Store. Als direct is ingesteld op True, wordt het rapport direct van de HTTP-gateway naar de Health Store verzonden, ongeacht de instellingen van de Fabric-client die door de HTTP-gateway toepassing worden gebruikt. Dit is handig voor kritieke rapporten die zo snel mogelijk moeten worden verzonden. Afhankelijk van de timing en andere voor waarden, kan het verzenden van het rapport nog steeds mislukken, bijvoorbeeld als de HTTP-gateway is gesloten of als het bericht de gateway niet bereikt. Als direct is ingesteld op False, wordt het rapport verzonden op basis van de status client instellingen van de HTTP-gateway. Daarom wordt deze batch gebaseerd op de HealthReportSendInterval-configuratie. Dit is de aanbevolen instelling omdat de Health-client de status rapport berichten kan optimaliseren naar Health Store en dat de status rapporten worden verwerkt. Standaard worden rapporten niet onmiddellijk verzonden. |
+| --verwijderen-verlopen | Waarde die aangeeft of het rapport wordt verwijderd uit Health Store wanneer het is verlopen. <br><br> Als deze eigenschap is ingesteld op True, wordt het rapport verwijderd uit de Health Store nadat het is verlopen. Als deze eigenschap is ingesteld op False, wordt het rapport als een fout beschouwd wanneer het is verlopen. De waarde van deze eigenschap is standaard onwaar. Wanneer clients periodiek een rapport rapporteren, moeten ze RemoveWhenExpired False instellen (standaard). Op deze manier heeft de rapporter problemen (bijvoorbeeld deadlock) en kan het rapport niet worden gerapporteerd. de entiteit wordt geëvalueerd als er een fout optreedt wanneer het status rapport verloopt. Hiermee wordt de entiteit gemarkeerd als de fout status. |
+| --Volg nummer | Het Volg nummer voor dit status rapport als een numerieke teken reeks. <br><br> Het Volg nummer van het rapport wordt door de Health Store gebruikt voor het detecteren van verouderde rapporten. Als u niets opgeeft, wordt er automatisch een Volg nummer gegenereerd door de Health-client wanneer een rapport wordt toegevoegd. |
+| --time-out-t | Standaard\: 60. |
+| --TTL | De duur waarvoor dit status rapport geldig is. Dit veld maakt gebruik van de ISO8601-indeling voor het opgeven van de duur. <br><br> Wanneer clients periodiek rapporteren, moeten ze rapporten met een hogere frequentie verzenden dan live. Als clients rapporteren over overgang, kunnen ze de TTL-waarde (time to Live) instellen op oneindig. Wanneer time to Live verloopt, wordt de status gebeurtenis die de status informatie bevat verwijderd uit Health Store, als RemoveWhenExpired is ingesteld op True, of bij fout geëvalueerd als RemoveWhenExpired False is. Als u niets opgeeft, wordt de time-to-Live-waarde standaard ingesteld op oneindig. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 ## <a name="sfctl-partition-restart"></a>sfctl-partitie opnieuw opstarten
-Deze API start sommige of alle replica's of exemplaren van de opgegeven partitie opnieuw.
+Met deze API worden enkele of alle replica's of exemplaren van de opgegeven partitie opnieuw gestart.
 
-Deze API is handig voor het testen van failover. Als deze wordt gebruikt om een statusloze servicepartitie te targeten, moet RestartPartitionMode AllReplicasOrInstances zijn. Bel de GetPartitionRestartProgress API met dezelfde OperationId om de voortgang te krijgen.
-
-### <a name="arguments"></a>Argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --restart-partition-mode [Vereist] | Beschrijf welke partities u opnieuw wilt starten. |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
-
-### <a name="global-arguments"></a>Globale argumenten
-
-|Argument|Beschrijving|
-| --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
-
-## <a name="sfctl-partition-restart-status"></a>sfctl partitie herstart-status
-Hiermee wordt de voortgang van een partitiebewerkinggestart gestart met StartPartitionRestart.
-
-Hiermee wordt de voortgang van een PartitionRestart gestart met StartPartitionRestart met behulp van de meegeleverde OperationId.
+Deze API is handig voor het testen van failover. Als u deze gebruikt om een stateless service partitie te maken, moet RestartPartitionMode AllReplicasOrInstances zijn. Roep de GetPartitionRestartProgress-API aan met dezelfde OperationId om de voortgang te verkrijgen.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --operation-id [Vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt doorgegeven aan de bijbehorende GetProgress API. |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --service-id [Vereist] | De identiteit van de dienst. Deze ID is meestal de volledige naam van\:de dienst zonder de 'stof ' URI regeling. Vanaf versie 6.0 worden hiërarchische namen\~afgebakend met het " teken" Als de servicenaam bijvoorbeeld "fabric\:/myapp/app1/svc1" is, is\~de\~service-identiteit "myapp app1 svc1" in 6.0+ en "myapp/app1/svc1" in eerdere versies. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --Restart-partitie modus [vereist] | Beschrijf welke partities opnieuw moeten worden gestart. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
-## <a name="sfctl-partition-svc-name"></a>sfctl partitie svc-naam
-Krijgt de naam van de Service Fabric-service voor een partitie.
+## <a name="sfctl-partition-restart-status"></a>sfctl-partitie opnieuw opstarten-status
+Hiermee wordt de voortgang opgehaald van een PartitionRestart-bewerking die is gestart met behulp van StartPartitionRestart.
 
-Krijgt de naam van de service voor de opgegeven partitie. Er wordt een fout van 404 geretourneerd als de partitie-id niet in het cluster bestaat.
+Hiermee wordt de voortgang opgehaald van een PartitionRestart die is gestart met StartPartitionRestart met behulp van de gegeven OperationId.
 
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --partitie-id [Vereist] | De identiteit van de partitie. |
-| --time-out -t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Deze time-out geeft de tijdsduur aan die de client bereid is te wachten tot de gevraagde bewerking is voltooid. De standaardwaarde voor deze parameter is 60 seconden.  Standaard\: 60. |
+| --bewerking-id [vereist] | Een GUID die een aanroep van deze API identificeert.  Dit wordt door gegeven aan de bijbehorende GetProgress-API. |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --Service-id [vereist] | De identiteit van de service. Deze ID is doorgaans de volledige naam van de service zonder het URI-\:schema ' fabric '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het teken '\~'. Als de service naam bijvoorbeeld ' Fabric\:/MyApp/app1/svc1 ' is, is de service-identiteit ' Mijntoep\~app1\~svc1 ' in 6.0 + en ' Mijntoep/app1/svc1 ' in vorige versies. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
 
-### <a name="global-arguments"></a>Globale argumenten
+### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --foutopsporing | Verhoog de logboekregistratie om alle foutopsporingslogboeken weer te geven. |
-| --help -h | Dit helpbericht weergeven en afsluiten. |
-| --output -o | Uitvoerindeling.  Toegestane waarden\: json, jsonc, tabel, tsv.  Standaard\: json. |
-| --query | JMESPath-querytekenreeks. Zie\:http -jmespath.org/ voor meer informatie en voorbeelden. |
-| --verbose | Verhoog de houtkap. Gebruik --debug voor volledige foutopsporingslogboeken. |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+
+## <a name="sfctl-partition-svc-name"></a>sfctl-partitie-SVC-naam
+Hiermee wordt de naam opgehaald van de Service Fabric-service voor een partitie.
+
+Hiermee wordt de naam van de service voor de opgegeven partitie opgehaald. Er wordt een 404-fout geretourneerd als de partitie-ID niet in het cluster bestaat.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --partitie-id [vereist] | De identiteit van de partitie. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Stel](service-fabric-cli.md) de SERVICE Fabric CLI in.
-- Meer informatie over het gebruik van de CLI van de ServiceFabric met behulp van de [voorbeeldscripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Stel](service-fabric-cli.md) de service Fabric cli in.
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).

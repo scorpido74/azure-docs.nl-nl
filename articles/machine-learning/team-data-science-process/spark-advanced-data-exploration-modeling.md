@@ -1,6 +1,6 @@
 ---
-title: Geavanceerde gegevensverkenning en modellering met Spark - Team Data Science Process
-description: Gebruik HDInsight Spark om gegevensverkenning te doen en binaire classificatie- en regressiemodellen te trainen met cross-validatie en hyperparameteroptimalisatie.
+title: Geavanceerde gegevens exploratie en-modellering met Spark-team data Science process
+description: Gebruik HDInsight Spark om gegevens te verkennen en binaire classificatie en regressie modellen te trainen met behulp van kruis validatie en afstemming optimalisatie.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,63 +12,63 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76718647"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Met Spark verkennen en modelleren van geavanceerde gegevens
 
-Deze walkthrough maakt gebruik van HDInsight Spark om gegevensverkenning te doen en binaire classificatie- en regressiemodellen te trainen met behulp van cross-validatie en hyperparameteroptimalisatie op een voorbeeld van de NYC-taxirit en tarief2013-gegevensset. Het leidt u door de stappen van het [Data Science-proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, met behulp van een HDInsight Spark-cluster voor verwerking en Azure blobs om de gegevens en de modellen op te slaan. Het proces verkent en visualiseert gegevens die zijn binnengebracht vanuit een Azure Storage Blob en bereidt vervolgens de gegevens voor om voorspellende modellen te bouwen. Python is gebruikt om de oplossing te coderen en om de relevante plots weer te geven. Deze modellen worden gebouwd met behulp van de Spark MLlib toolkit om binaire classificatie en regressie modellering taken uit te voeren. 
+In deze walkthrough wordt gebruikgemaakt van HDInsight Spark om gegevens te verkennen en binaire classificatie en regressie modellen te trainen met behulp van kruis validatie en afstemming-optimalisatie op basis van een voor beeld van de NYC taxi en ritbedrag 2013-gegevensset. U wordt begeleid bij de stappen van het [Data Science proces](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, met behulp van een HDInsight Spark-cluster voor verwerking en Azure-blobs voor het opslaan van de gegevens en de modellen. Met het proces worden gegevens van een Azure Storage Blob verkend en gevisualiseerd. vervolgens worden de gegevens voor het ontwikkelen van voorspellende modellen voor bereid. Python is gebruikt om de oplossing te coderen en om de relevante waarnemings punten weer te geven. Deze modellen worden gebouwd met behulp van de Spark MLlib Toolkit om binaire classificatie en regressie model taken uit te voeren. 
 
-* De **binaire classificatie** taak is om te voorspellen of een tip wordt betaald voor de reis. 
-* De **regressietaak** is het voorspellen van de hoeveelheid tip op basis van andere tipfuncties. 
+* De **binaire classificatie** taak is om te voors pellen of een tip voor de reis wordt betaald. 
+* De **regressie** taak is om de hoeveelheid fooien te voors pellen op basis van andere tip-functies. 
 
-De modelleringsstappen bevatten ook code die laat zien hoe u elk type model traint, evalueert en opslaat. Het onderwerp heeft betrekking op een aantal van dezelfde grond als de [Data exploratie en modellering met Spark](spark-data-exploration-modeling.md) onderwerp. Maar het is meer "geavanceerd" in die zin dat het ook cross-validatie met hyperparameter vegen gebruikt om optimaal nauwkeurige classificatie- en regressiemodellen te trainen. 
+De stappen voor model lering bevatten ook code die laat zien hoe u elk type model traint, evalueert en opslaat. Het onderwerp behandelt een deel van hetzelfde terrein als het [verkennen van gegevens en het model leren met het Spark](spark-data-exploration-modeling.md) -onderwerp. Het is echter meer ' Geavanceerd ' in dat geval ook Kruis validatie met afstemming sweeping om optimaal nauw keurige classificatie-en regressie modellen te trainen. 
 
-**Cross-validation (CV)** is een techniek die beoordeelt hoe goed een model getraind op een bekende set van gegevens generaliseert om de kenmerken van datasets waarop het niet is opgeleid te voorspellen.  Een gemeenschappelijke implementatie die hier wordt gebruikt is om een dataset te verdelen in K plooien en vervolgens het model te trainen in een round-robin mode op alle, maar een van de plooien. Het vermogen van het model om nauwkeurig te voorspellen wanneer getest tegen de onafhankelijke dataset in deze vouw niet gebruikt om het model te trainen wordt beoordeeld.
+**Kruis validatie (AVK)** is een techniek waarmee wordt beoordeeld hoe goed een model dat is getraind op een bekende set gegevens, het voors pellen van de functies van gegevens sets waarop het niet is getraind.  Een algemene implementatie die hier wordt gebruikt, bestaat uit het verdelen van een gegevensset in K vouwen en vervolgens het model op een Round-Robin op alle, maar een van de vouwen. De mogelijkheid van het model om nauw keurig te worden voorspeld bij het testen op basis van de onafhankelijke gegevensset in deze vouw die niet wordt gebruikt om het model te trainen, wordt geëvalueerd.
 
-**Hyperparameter optimalisatie** is het probleem van het kiezen van een set hyperparameters voor een leeralgoritme, meestal met als doel het optimaliseren van een meting van de prestaties van het algoritme op een onafhankelijke gegevensset. **Hyperparameters** zijn waarden die buiten de modeltrainingsprocedure moeten worden opgegeven. Veronderstellingen over deze waarden kunnen van invloed zijn op de flexibiliteit en nauwkeurigheid van de modellen. Beslissingsbomen hebben hyperparameters, bijvoorbeeld, zoals de gewenste diepte en het aantal bladeren in de boom. Ondersteuning Vector Machines (SVMs) vereisen het instellen van een verkeerde classificatie boete term. 
+**Afstemming Optimization** is het probleem bij het kiezen van een set Hyper parameters voor een leer algoritme, meestal met het doel om een meting van de prestaties van het algoritme op een onafhankelijke gegevensset te optimaliseren. **Hyper parameters** zijn waarden die buiten de model trainings procedure moeten worden opgegeven. Veronderstellingen over deze waarden kunnen invloed hebben op de flexibiliteit en nauw keurigheid van de modellen. Beslissings structuren hebben bijvoorbeeld Hyper parameters, zoals de gewenste diepte en het aantal bladeren in de boom structuur. Voor ondersteuning voor vector machines (SVMs) is een niet-geclassificeerde straf voorwaarde vereist. 
 
-Een veelvoorkomende manier om hyperparameteroptimalisatie uit te voeren die hier wordt gebruikt, is een rasterzoekopdracht of een **parametersweep.** Deze zoekopdracht gaat door een subset van de hyperparameterruimte voor een leeralgoritme. Cross validatie kan een prestatiestatistiek leveren om de optimale resultaten van het rasterzoekalgoritme te sorteren. CV dat wordt gebruikt bij het vegen van hyperparameter helpt problemen zoals het overpassen van een model aan trainingsgegevens te beperken, zodat het model de capaciteit behoudt om toe te passen op de algemene set gegevens waaruit de trainingsgegevens zijn geëxtraheerd.
+Een veelgebruikte manier om de afstemming-optimalisatie uit te voeren die hier wordt gebruikt, is een raster zoekactie of een **parameter sweep**. Deze zoek opdracht gaat door een subset van de afstemming ruimte voor een leer algoritme. Kruis validatie kan een prestatie metriek bieden om de optimale resultaten te sorteren die worden geproduceerd door het zoek algoritme voor rasters. CV dat met afstemming-verruiming wordt gebruikt, helpt u bij het beperken van problemen, zoals het aanpassen van een model voor het trainen van gegevens, zodat het model de capaciteit behoudt die moet worden toegepast op de algemene set gegevens waaruit de trainings gegevens zijn geëxtraheerd.
 
-De modellen die we gebruiken omvatten logistieke en lineaire regressie, willekeurige bossen en gradiënt gebooste bomen:
+De modellen die we gebruiken zijn onder andere logistiek en lineaire regressie, wille keurige forests en verlopen structuren:
 
-* [Lineaire regressie met SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) is een lineair regressiemodel dat een SGD-methode (Stochastic Gradient Descent) gebruikt en voor optimalisatie en functieschaling om de betaalde tipbedragen te voorspellen. 
-* [Logistieke regressie met LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) of "logit" regressie, is een regressiemodel dat kan worden gebruikt wanneer de afhankelijke variabele categorisch is om gegevensclassificatie te doen. LBFGS is een quasi-Newton optimalisatie algoritme dat de Broyden-Fletcher-Goldfarb-Shanno (BFGS) algoritme benadert met behulp van een beperkte hoeveelheid computergeheugen en dat op grote schaal wordt gebruikt in machine learning.
-* [Willekeurige bossen](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) zijn ensembles van beslisbomen.  Ze combineren veel beslisbomen om het risico op overfitting te verminderen. Willekeurige forests worden gebruikt voor regressie en classificatie en kunnen categorische functies verwerken en kunnen worden uitgebreid tot de classificatie-instelling voor meerdere klassen. Ze vereisen geen functieschaling en zijn in staat om niet-lineariteiten en functieinteracties vast te leggen. Willekeurige bossen zijn een van de meest succesvolle machine learning-modellen voor classificatie en regressie.
-* [Gradiënt gebooste bomen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) zijn ensembles van beslissingsbomen. GBTS traint beslissingsbomen iteratief om een verliesfunctie te minimaliseren. GBTS wordt gebruikt voor regressie en classificatie en kan categorische functies verwerken, vereisen geen functieschaling en zijn in staat om niet-lineariteiten en functieinteracties vast te leggen. Ze kunnen ook worden gebruikt in een multiclass-classificatie-instelling.
+* [Lineaire regressie met SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) is een lineair regressie model dat gebruikmaakt van een stochastische Gradient DAAL (SGD)-methode en voor Optima Lise ring en functie schaaling om de fooien te voors pellen. 
+* [Logistiek regressie met LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) of ' logit-regressie ' is een regressie model dat kan worden gebruikt wanneer de afhankelijke variabele categorische is voor het uitvoeren van de gegevens classificatie. LBFGS is een quasi-Newton-optimalisatie algoritme die de Broyden-Fletcher – Goldfarb – Shanno-algoritme (BFGS) benadert met een beperkte hoeveelheid computer geheugen en die veel wordt gebruikt in machine learning.
+* [Wille keurige forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) zijn ensembles van beslissings structuren.  Ze combi neren veel beslissings structuren om het risico van overneming te verminderen. Wille keurige forests worden gebruikt voor regressie en classificatie en kunnen categorische-functies verwerken en kunnen worden uitgebreid naar de classificatie-instelling met een klasse. Ze hoeven niet te worden geschaald en kunnen niet-lineaire en functie-interacties worden vastgelegd. Wille keurige forests zijn een van de meest succes volle machine learning modellen voor classificatie en regressie.
+* GBTS ( [Gradient, boosted trees](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) ) zijn ensembles van beslissings structuren. GBTSer boom structuren van de trein om een verlies functie te minimaliseren. GBTS wordt gebruikt voor regressie en classificatie, en kan categorische-functies afhandelen, geen functie schaaling vereisen en niet-lineaire en functie-interacties kunnen vastleggen. Ze kunnen ook worden gebruikt in een instelling met een classificatie met een hoge klasse.
 
-Voorbeelden van modelleringmet BEHULP van CV en Hyperparameter sweep worden weergegeven voor het binaire classificatieprobleem. Eenvoudigere voorbeelden (zonder parametersweeps) worden weergegeven in het hoofdonderwerp voor regressietaken. Maar in de appendix, validatie met behulp van elastisch e-net voor lineaire regressie en CV met parameter sweep met behulp van voor willekeurige bos regressie worden ook gepresenteerd. Het **elastische net** is een geregulariseerde regressiemethode voor het monteren van lineaire regressiemodellen die lineair de L1- en L2-statistieken combineert als sancties van de [lasso-](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) en [nokmethoden.](https://en.wikipedia.org/wiki/Tikhonov_regularization)   
+Model voorbeelden die gebruikmaken van AVK en afstemming sweep worden weer gegeven voor het probleem met de binaire classificatie. Eenvoudiger voor beelden (zonder parameter sweeps) worden weer gegeven in het hoofd onderwerp voor regressie taken. Maar in de bijlage wordt validatie met behulp van elastisch net voor lineaire regressie en AVK met para meters voor het opruimen van wille keurige forests ook gepresenteerd. Het **elastische net** is een geregelde regressie methode voor het aanpassen van lineaire regressie modellen die de L1-en L2-metrische gegevens lineair combi neren als boete van de [Lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) -en [gleuf](https://en.wikipedia.org/wiki/Tikhonov_regularization) -methoden.   
 
 <!-- -->
 
 > [!NOTE]
-> Hoewel de Spark MLlib toolkit is ontworpen om te werken op grote datasets, een relatief kleine steekproef (~ 30 Mb met behulp van 170K rijen, ongeveer 0,1% van de oorspronkelijke NYC dataset) wordt hier gebruikt voor het gemak. De oefening die hier wordt gegeven, loopt efficiënt (in ongeveer 10 minuten) op een HDInsight-cluster met 2 werkknooppunten. Dezelfde code, met kleine wijzigingen, kan worden gebruikt om grotere gegevenssets te verwerken, met de juiste wijzigingen voor het incachen van gegevens in het geheugen en het wijzigen van de clustergrootte.
+> Hoewel de Spark MLlib Toolkit is ontworpen om te werken met grote gegevens sets, wordt hier voor het gemak een relatief klein voor beeld (ongeveer 30 MB met 170K-0,1 rijen) gebruikt. De hier opgegeven oefening wordt efficiënt uitgevoerd (in ongeveer 10 minuten) op een HDInsight-cluster met twee worker-knoop punten. Dezelfde code, met kleine wijzigingen, kan worden gebruikt voor het verwerken van grotere gegevens sets, met de juiste wijzigingen voor het opslaan van gegevens in het geheugen en het wijzigen van de cluster grootte.
 
 <!-- -->
 
-## <a name="setup-spark-clusters-and-notebooks"></a>Instellen: Spark-clusters en -notitieblokken
-Setup stappen en code zijn voorzien in deze walkthrough voor het gebruik van een HDInsight Spark 1.6. Maar Jupyter-laptops zijn beschikbaar voor zowel HDInsight Spark 1.6- als Spark 2.0-clusters. Een beschrijving van de notitieblokken en links naar hen zijn voorzien in de [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub repository met hen. Bovendien is de code hier en in de gekoppelde notitieblokken generiek en moet het werken op een Spark-cluster. Als u HDInsight Spark niet gebruikt, kunnen de clusterinstellingen en beheerstappen enigszins afwijken van wat hier wordt weergegeven. Voor het gemak, hier zijn de links naar de Jupyter notebooks voor Spark 1.6 en 2.0 worden uitgevoerd in de pyspark kernel van de Jupyter Notebook server:
+## <a name="setup-spark-clusters-and-notebooks"></a>Instellen: Spark-clusters en-notebooks
+Setup-stappen en-code zijn opgenomen in dit overzicht voor het gebruik van een HDInsight Spark 1,6. Maar er zijn Jupyter-notebooks voor zowel HDInsight Spark 1,6-als Spark 2,0-clusters. Er wordt een beschrijving van de notitie blokken en koppelingen naar deze notebooks gegeven in de [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslag plaats waarin deze zijn opgenomen. Bovendien zijn de code hier en in de gekoppelde notitie blokken Gene riek en moeten ze werken op een Spark-cluster. Als u geen gebruik maakt van HDInsight Spark, kunnen de stappen voor het instellen en beheren van het cluster enigszins afwijken van wat hier wordt weer gegeven. Voor het gemak kunt u de koppelingen naar de Jupyter-notebooks voor Spark 1,6 en 2,0 uitvoeren in de pyspark-kernel van de Jupyter Notebook-server:
 
-### <a name="spark-16-notebooks"></a>Spark 1.6-notitieblokken
+### <a name="spark-16-notebooks"></a>Spark 1,6-notebooks
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Bevat onderwerpen in notebook #1 en modelontwikkeling met behulp van hyperparameter tuning en cross-validatie.
+[pySpark-machine learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): bevat onderwerpen in notebook #1 en model ontwikkeling met afstemming tuning en kruislings validatie.
 
-### <a name="spark-20-notebooks"></a>Spark 2.0-notitieblokken
+### <a name="spark-20-notebooks"></a>Spark 2,0-notebooks
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)Dit bestand biedt informatie over het uitvoeren van gegevensverkenning, modellering en scoren in Spark 2.0-clusters.
+[Spark 2.0-pySpark3-machine-learning-data-wetenschappen-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het verkennen, model leren en scoren van gegevens in Spark 2,0-clusters.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Setup: opslaglocaties, bibliotheken en de vooraf ingestelde Spark-context
-Spark kan lezen en schrijven naar Azure Storage Blob (ook wel WASB genoemd). Dus al uw bestaande gegevens die daar zijn opgeslagen, kunnen worden verwerkt met behulp van Spark en de resultaten worden opnieuw opgeslagen in WASB.
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Setup: opslag locaties, Bibliotheken en de vooraf ingestelde Spark-context
+Spark kan lezen van en schrijven naar Azure Storage Blob (ook wel bekend als WASB). Een van de bestaande opgeslagen gegevens kan worden verwerkt met behulp van Spark en de resultaten die opnieuw worden opgeslagen in WASB.
 
-Om modellen of bestanden op te slaan in WASB, moet het pad correct worden opgegeven. De standaardcontainer die aan het Spark-cluster is gekoppeld, kan worden verwezen met behulp van een pad dat begint met: "wasb:///". Andere locaties worden verwezen door "wasb://".
+Om modellen of bestanden in WASB op te slaan, moet het pad correct worden opgegeven. Er kan naar de standaard container die aan het Spark-cluster is gekoppeld, een pad worden gebruikt dat begint met: ' wasb:///'. Er wordt naar andere locaties verwezen door ' wasb://'.
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Adreslijstpaden instellen voor opslaglocaties in WASB
-In het volgende codevoorbeeld wordt de locatie opgegeven van de te lezen gegevens en het pad voor de modelopslagmap waarop de modeluitvoer wordt opgeslagen:
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Mappaden instellen voor opslag locaties in WASB
+In het volgende code voorbeeld geeft u de locatie op van de gegevens die moeten worden gelezen en het pad voor de map voor het model opslag waarnaar de model uitvoer wordt opgeslagen:
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -84,12 +84,12 @@ In het volgende codevoorbeeld wordt de locatie opgegeven van de te lezen gegeven
     import datetime
     datetime.datetime.now()
 
-**Output**
+**UITVOER**
 
-datum.datumtijd(2016, 4, 18, 17, 36, 27, 832799)
+DateTime. datetime (2016, 4, 18, 17, 36, 27, 832799)
 
 ### <a name="import-libraries"></a>Bibliotheken importeren
-Noodzakelijke bibliotheken importeren met de volgende code:
+Importeer de benodigde bibliotheken met de volgende code:
 
     # LOAD PYSPARK LIBRARIES
     import pyspark
@@ -107,29 +107,29 @@ Noodzakelijke bibliotheken importeren met de volgende code:
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>Vooraf ingestelde Spark-context en PySpark-magie
-De PySpark-kernels die zijn voorzien van Jupyter-notebooks hebben een vooraf ingestelde context. U hoeft de Spark- of Hive-contexten dus niet expliciet in te stellen voordat u aan de slag gaat met de toepassing die u ontwikkelt. Deze contexten zijn standaard voor u beschikbaar. Deze contexten zijn:
+### <a name="preset-spark-context-and-pyspark-magics"></a>Vooraf ingestelde Spark-context en PySpark magics
+De PySpark-kernels die worden meegeleverd met Jupyter-notebooks hebben een vooraf ingestelde context. Het is dus niet nodig om de Spark-of Hive-contexten expliciet in te stellen voordat u begint te werken met de toepassing die u ontwikkelt. Deze contexten zijn standaard voor u beschikbaar. Deze contexten zijn:
 
-* sc - voor Spark 
-* sqlContext - voor Hive
+* SC-voor Spark 
+* sqlContext-voor-Hive
 
-De PySpark-kernel biedt een aantal vooraf gedefinieerde magics, die speciale opdrachten zijn die je aanroepen met %%. Er zijn twee van dergelijke commando's die worden gebruikt in deze code monsters.
+De PySpark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten die u kunt aanroepen met%%. Er zijn twee opdrachten die worden gebruikt in deze code voorbeelden.
 
-* **%%lokaal** Hiermee geeft u op dat de code in de volgende regels lokaal moet worden uitgevoerd. Code moet een geldige Python-code zijn.
-* **%%sql -o \<variabele naam>** Hiermee wordt een Hive-query uitgevoerd tegen de sqlContext. Als de parameter -o wordt doorgegeven, blijft het resultaat van de query bestaan in de context %%local Python als een Pandas DataFrame.
+* **%% Local** Geeft aan dat de code in volgende regels lokaal moet worden uitgevoerd. Code moet geldige python-code zijn.
+* **%% SQL-o \<variable name>** Voert een Hive-query uit op basis van de sqlContext. Als de-o-para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een Panda data frame.
 
-Voor meer informatie over de kernels voor Jupyter notebooks en de vooraf gedefinieerde "magics" die ze bieden, zie [Kernels beschikbaar voor Jupyter notebooks met HDInsight Spark Linux clusters op HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Zie [kernels die beschikbaar zijn voor Jupyter-notebooks met Hdinsight Spark Linux-clusters in hdinsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)voor meer informatie over de kernels voor Jupyter-notebooks en de vooraf gedefinieerde ' magics ' die ze bieden.
 
-## <a name="data-ingestion-from-public-blob"></a>Gegevensopname van openbare blob:
-De eerste stap in het data science-proces is het innemen van de gegevens die moeten worden geanalyseerd uit bronnen waar deze zich bevindt in uw omgeving voor gegevensverkenning en modellering. Deze omgeving is Spark in deze walkthrough. Deze sectie bevat de code om een reeks taken te voltooien:
+## <a name="data-ingestion-from-public-blob"></a>Gegevens opname vanuit open bare blob:
+De eerste stap in het data Science-proces is het opnemen van de gegevens die moeten worden geanalyseerd uit bronnen waar deze zich bevinden in uw omgeving voor het verkennen van gegevens en modellen. Deze omgeving is Spark in dit overzicht. Deze sectie bevat de code voor het volt ooien van een reeks taken:
 
-* inname van het te modelleren gegevensmonster
-* lezen in de invoergegevensset (opgeslagen als .tsv-bestand)
-* de gegevens opmaken en schoonmaken
-* objecten (RdD's of gegevensframes) maken en cachen in het geheugen
-* registreren als een temp-tabel in SQL-context.
+* het gegevens voorbeeld opnemen om te worden gemodelleerd
+* lezen in de invoer gegevensset (opgeslagen als een TSV-bestand)
+* de gegevens opmaken en opschonen
+* objecten (Rdd's of Data-frames) in het geheugen maken en opslaan
+* Registreer deze als een tijdelijke tabel in SQL-context.
 
-Hier is de code voor het innemen van gegevens.
+Dit is de code voor gegevens opname.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -187,20 +187,20 @@ Hier is de code voor het innemen van gegevens.
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 276,62 seconden
+Benodigde tijd voor het uitvoeren van de cel: 276,62 seconden
 
-## <a name="data-exploration--visualization"></a>Visualisatie van gegevensverkenning & visualisatie
-Zodra de gegevens in Spark zijn gebracht, is de volgende stap in het data science-proces om dieper inzicht te krijgen in de gegevens door middel van exploratie en visualisatie. In deze sectie onderzoeken we de taxigegevens met SQL-query's en plotten we de doelvariabelen en toekomstige functies voor visuele inspectie. Concreet zetten we de frequentie van het aantal passagiers in taxiritten, de frequentie van tipbedragen en hoe tips variëren per betalingsbedrag en type.
+## <a name="data-exploration--visualization"></a>& visualisatie voor het verkennen van gegevens
+Zodra de gegevens in Spark zijn gebracht, is de volgende stap in het data Science-proces het verkrijgen van diep gaande informatie over de gegevens via verkennen en visualisatie. In deze sectie onderzoeken we de taxi gegevens met behulp van SQL-query's en zetten ze de doel variabelen en de potentiële functies voor visuele inspectie uit. In het bijzonder zetten we de frequentie van het aantal reizigers in taxi reizen, de frequentie van fooien en de manier waarop tips variëren per betalings bedrag en type.
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Plot een histogram van passagierstellingfrequenties in de steekproef van taxireizen
-Deze code en de daaropvolgende fragmenten gebruiken SQL-magie om het voorbeeld en de lokale magie op te vragen om de gegevens in kaart te brengen.
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Een histogram met aantal reizigers-frequenties uitzetten in het voor beeld van taxi reizen
+Deze code en volgende fragmenten gebruiken SQL Magic om het voor beeld te doorzoeken en om de gegevens te tekenen.
 
-* **SQL-magie`%%sql`( )** De HDInsight PySpark kernel ondersteunt eenvoudige inline HiveQL-query's tegen de sqlContext. Het argument (-o VARIABLE_NAME) blijft de uitvoer van de SQL-query als een Pandas DataFrame op de Jupyter-server. Dit betekent dat het beschikbaar is in de lokale modus.
-* De ** `%%local` magie** wordt gebruikt om code lokaal uit te voeren op de Jupyter-server, de headnode van het HDInsight-cluster. Meestal gebruikt `%%local` u magie `%%sql -o` nadat de magie is gebruikt om een query uit te voeren. De parameter -o blijft de uitvoer van de SQL-query lokaal aanhouden. Vervolgens `%%local` activeert de magie de volgende set codefragmenten om lokaal te worden uitgevoerd tegen de uitvoer van de SQL-query's die lokaal zijn uitgevoerd. De uitvoer wordt automatisch gevisualiseerd nadat u de code hebt uitgevoerd.
+* **SQL Magic (`%%sql`)** De HDInsight PySpark-kernel ondersteunt eenvoudige inline HiveQL-query's op de sqlContext. Het argument (-o VARIABLE_NAME) persistent de uitvoer van de SQL-query als een Panda data frame op de Jupyter-server. Dit betekent dat het beschikbaar is in de lokale modus.
+* Het ** `%%local` Magic** wordt gebruikt om code lokaal uit te voeren op de Jupyter-server. Dit is de hoofd knooppunt van het HDInsight-cluster. Normaal gesp roken gebruikt `%%local` u Magic nadat `%%sql -o` het Magic wordt gebruikt om een query uit te voeren. Met de para meter-o wordt de uitvoer van de SQL-query lokaal opgeslagen. `%%local` Vervolgens wordt de volgende set code fragmenten geactiveerd om lokaal te worden uitgevoerd op basis van de uitvoer van de SQL-query's die lokaal zijn opgeslagen. De uitvoer wordt automatisch gevisualiseerd nadat u de code hebt uitgevoerd.
 
-Deze query haalt de reizen op per aantal passagiers. 
+Met deze query worden de TRIPS opgehaald op basis van het aantal reizigers. 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
@@ -209,12 +209,12 @@ Deze query haalt de reizen op per aantal passagiers.
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Met deze code wordt een lokaal gegevensframe op basis van de queryuitvoer uitgevoerd en worden de gegevens in een stand hersteld. De `%%local` magie creëert een lokaal `sqlResults`dataframe, dat kan worden gebruikt voor het plotten met matplotlib. 
+Met deze code wordt een lokaal gegevens frame gemaakt op basis van de uitvoer van de query en worden de gegevens getekend. Met `%%local` Magic maakt u een lokaal gegevens frame, `sqlResults`dat kan worden gebruikt voor het uitzetten met matplotlib. 
 
 <!-- -->
 
 > [!NOTE]
-> Deze PySpark magie wordt meerdere keren gebruikt in deze walkthrough. Als de hoeveelheid gegevens groot is, moet u een voorbeeld nemen om een gegevensframe te maken dat in het lokale geheugen past.
+> Deze PySpark Magic wordt meerdere keren gebruikt in dit overzicht. Als de hoeveelheid gegevens groot is, kunt u het beste een voor beeld maken van een gegevens frame dat past in het lokale geheugen.
 
 <!-- -->
 
@@ -225,7 +225,7 @@ Met deze code wordt een lokaal gegevensframe op basis van de queryuitvoer uitgev
     # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-Hier is de code om de reizen plot door passagierstellingen
+Hier volgt de code voor het uitzetten van de trips op het aantal reizigers
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -241,14 +241,14 @@ Hier is de code om de reizen plot door passagierstellingen
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**Output**
+**UITVOER**
 
-![Frequentie van reizen per aantal passagiers](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
+![Frequentie van de trips op het aantal reizigers](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-U verschillende typen visualisaties (tabel, cirkel, lijn, gebied of balk) selecteren met behulp van de menuknoppen **Type** in het notitieblok. De Bar plot is hier te zien.
+U kunt verschillende typen visualisaties (tabel, cirkel, lijn, vlak of staaf) selecteren met behulp van de menu knoppen van het **type** in het notitie blok. Het balk-plot wordt hier weer gegeven.
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Plot een histogram van tip bedragen en hoe tip bedrag varieert per passagier tellen en tarief bedragen.
-Gebruik een SQL-query om gegevens te samplen..
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Maak een histogram met fooien en de mate van fooien per aantal reizigers en ritbedrag bedragen.
+Een SQL-query gebruiken om gegevens te bemonsteren...
 
     # SQL SQUERY
     %%sql -q -o sqlResults
@@ -263,7 +263,7 @@ Gebruik een SQL-query om gegevens te samplen..
         AND tip_amount < 25
 
 
-Deze codecel gebruikt de SQL-query om drie plots van de gegevens te maken.
+In deze tabelcel wordt de SQL-query gebruikt om de gegevens in drie grafieken te maken.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -294,26 +294,26 @@ Deze codecel gebruikt de SQL-query om drie plots van de gegevens te maken.
     plt.show()
 
 
-**Output:** 
+**UITVOER** 
 
-![Tipbedragverdeling](./media/spark-advanced-data-exploration-modeling/tip-amount-distribution.png)
+![Verdeling fooie bedragen](./media/spark-advanced-data-exploration-modeling/tip-amount-distribution.png)
 
-![Tipbedrag per aantal passagiers](./media/spark-advanced-data-exploration-modeling/tip-amount-by-passenger-count.png)
+![Aantal fooien per passagier](./media/spark-advanced-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
-![Tipbedrag per tarief Bedrag](./media/spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
+![Aantal fooien per tarief](./media/spark-advanced-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Functie-engineering, transformatie en gegevensvoorbereiding voor modellering
-In deze sectie wordt de code beschreven en bevat u de code voor procedures die worden gebruikt om gegevens voor te bereiden op gebruik in ML-modellering. Het laat zien hoe u de volgende taken uitvoert:
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Functie techniek, trans formatie en gegevens voorbereiding voor model lering
+In deze sectie wordt beschreven hoe en hoe de code wordt gebruikt om gegevens voor te bereiden voor gebruik in ML-modellen. U ziet hoe u de volgende taken kunt uitvoeren:
 
-* Een nieuwe functie maken door uren te verdelen in verkeerstijdopslaglocaties
-* Index- en on-hot coderen categorische functies
-* Gelabelde puntobjecten maken voor invoer in ML-functies
-* Maak een willekeurige subsampling van de gegevens en splits deze op in trainings- en testsets
+* Een nieuwe functie maken door het partitioneren van uren in de verkeers tijd bakken
+* Index-en on-categorische functies voor code ring
+* Gelabelde punt objecten maken voor invoer in ML-functies
+* Een wille keurige subsampling van de gegevens maken en deze splitsen in trainings-en test sets
 * Functie schalen
-* Cacheobjecten in het geheugen
+* Cache objecten in het geheugen
 
-### <a name="create-a-new-feature-by-partitioning-traffic-times-into-bins"></a>Een nieuwe functie maken door de verkeerstijden in opslaglocaties te verdelen
-Deze code laat zien hoe u een nieuwe functie maakt door de verkeerstijden in opslaglocaties te verdelen en vervolgens het resulterende gegevensframe in het geheugen in de cache op te zetten. Caching leidt tot een verbeterde uitvoeringstijd waarbij Resilient Distributed Datasets (RDD's) en dataframes herhaaldelijk worden gebruikt. We cachen RDD's en dataframes in verschillende fasen van deze walkthrough.
+### <a name="create-a-new-feature-by-partitioning-traffic-times-into-bins"></a>Een nieuwe functie maken door het aantal verkeer naar opslag locaties te partitioneren
+Deze code laat zien hoe u een nieuwe functie maakt door verkeer naar opslag locaties te partitioneren en vervolgens te bepalen hoe het resulterende gegevens frame in het geheugen moet worden opgeslagen. Caching leidt tot een betere uitvoerings tijd waarbij flexibele, gedistribueerde gegevens sets (Rdd's) en data-frames herhaaldelijk worden gebruikt. Daarom slaan we Rdd's-en data-frames op in verschillende fasen in dit overzicht.
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -334,16 +334,16 @@ Deze code laat zien hoe u een nieuwe functie maakt door de verkeerstijden in ops
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**Output**
+**UITVOER**
 
 126050
 
-### <a name="index-and-one-hot-encode-categorical-features"></a>Index en one-hot coderen categorische functies
-In deze sectie ziet u hoe u categorische functies indexeert of codeert voor invoer in de modelleringsfuncties. De modellerings- en voorspellende functies van MLlib vereisen dat functies met categorische invoergegevens worden geïndexeerd of gecodeerd voordat ze worden gebruikt. 
+### <a name="index-and-one-hot-encode-categorical-features"></a>Index en categorische-functies met één Hot-code ring
+In deze sectie wordt beschreven hoe u categorische-functies indexeert of versleutelt voor invoer in de modelleer functies. De functies voor model leren en voors pellen van MLlib vereisen dat onderdelen met categorische-invoer gegevens worden geïndexeerd of gecodeerd voordat ze kunnen worden gebruikt. 
 
-Afhankelijk van het model moet u ze op verschillende manieren indexeren of coderen. Logistieke en lineaire regressiemodellen vereisen bijvoorbeeld een hot-codering, waarbij bijvoorbeeld een functie met drie categorieën kan worden uitgebreid tot drie functiekolommen, waarbij elk 0 of 1 bevat, afhankelijk van de categorie van een observatie. MLlib biedt [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) functie om one-hot encoding te doen. Deze encoder brengt een kolom met labelindexen in kaart met een kolom van binaire vectoren, met maximaal één waarde. Met deze codering kunnen algoritmen die numerieke waardekenmerken verwachten, zoals logistieke regressie, worden toegepast op categorische functies.
+Afhankelijk van het model moet u deze op verschillende manieren indexeren of coderen. Logistieke en lineaire regressie modellen vereisen bijvoorbeeld een hot-code ring, waarbij bijvoorbeeld een functie met drie categorieën kan worden uitgebreid naar drie functie kolommen, waarbij elk 0 of 1 is, afhankelijk van de categorie van een waarneming. MLlib biedt [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) -functie voor het uitvoeren van één Hot encoding. Met dit coderings programma wordt een kolom met label indexen toegewezen aan een kolom met binaire vectoren, met Maxi maal één waarde. Met deze code ring kunnen algoritmen die numerieke kenmerken verwachten, zoals logistiek regressie, worden toegepast op categorische-functies.
 
-Hier is de code om categorische functies te indexeren en te coderen:
+Hier volgt de code voor het indexeren en coderen van categorische-functies:
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -385,14 +385,14 @@ Hier is de code om categorische functies te indexeren en te coderen:
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 3,14 seconden
+Benodigde tijd voor het uitvoeren van de cel: 3,14 seconden
 
-### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Gelabelde puntobjecten maken voor invoer in ML-functies
-Deze sectie bevat code die laat zien hoe u categorische tekstgegevens indexeert als een gelabeld puntgegevenstype en hoe u deze coderen. Deze transformatie bereidt tekstgegevens voor die worden gebruikt om de logistieke regressie van MLlib en andere classificatiemodellen te trainen en te testen. Gelabelde puntobjecten zijn Resilient Distributed Datasets (RDD) opgemaakt op een manier die nodig is als invoergegevens door de meeste ML-algoritmen in MLlib. Een [gelabeld punt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) is een lokale vector, dicht of schaars, gekoppeld aan een label/respons.
+### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Gelabelde punt objecten maken voor invoer in ML-functies
+Deze sectie bevat code die laat zien hoe u categorische tekst gegevens indexeert als een gelabeld punt gegevens type en hoe u dit kunt coderen. Deze trans formatie bereidt tekst gegevens voor die moeten worden gebruikt voor het trainen en testen van MLlib en andere classificatie modellen. Gelabelde punt objecten zijn robuuste gedistribueerde gegevens sets (RDD) die zijn opgemaakt als invoer gegevens met de meeste ML-algoritmen in MLlib. Een [gelabeld punt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) is een lokale vector, een compacte of een sparse, die is gekoppeld aan een label/antwoord.
 
-Hier is de code om tekstfuncties te indexeren en te coderen voor binaire classificatie.
+Hier volgt de code voor het indexeren en coderen van tekst functies voor binaire classificatie.
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -416,7 +416,7 @@ Hier is de code om tekstfuncties te indexeren en te coderen voor binaire classif
         return  labPt
 
 
-Hier is de code om categorische tekstfuncties te coderen en te indexeren voor lineaire regressieanalyse.
+Hier volgt de code voor het coderen en indexeren van categorische-tekst functies voor lineaire regressie analyse.
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -438,8 +438,8 @@ Hier is de code om categorische tekstfuncties te coderen en te indexeren voor li
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Maak een willekeurige subsampling van de gegevens en splits deze op in trainings- en testsets
-Deze code maakt een willekeurige steekproef van de gegevens (25% wordt hier gebruikt). Hoewel dit bijvoorbeeld niet nodig is vanwege de grootte van de gegevensset, laten we zien hoe u de gegevens hier samplen. Dan weet je hoe je het moet gebruiken voor je eigen probleem als dat nodig is. Wanneer monsters groot zijn, kan bemonstering veel tijd besparen tijdens trainingsmodellen. Vervolgens splitsen we de steekproef in een trainingsonderdeel (75% hier) en een testonderdeel (25% hier) om te gebruiken in classificatie- en regressiemodellering.
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Een wille keurige subsampling van de gegevens maken en deze splitsen in trainings-en test sets
+Deze code maakt een wille keurige steek proef van de gegevens (25% wordt hier gebruikt). Hoewel dit voor beeld niet vereist is vanwege de grootte van de gegevensset, laten we zien hoe u de gegevens hier kunt bemonsteren. Vervolgens weet u hoe u dit zo nodig kunt gebruiken voor uw eigen probleem. Wanneer steek proeven groot zijn, kan de steek proef aanzienlijke tijd besparen bij het trainen van modellen. Vervolgens splitsen we het voor beeld in een trainings onderdeel (75% hier) en een test onderdeel (25% hier) om te gebruiken in de classificatie en regressie modellen.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -478,19 +478,19 @@ Deze code maakt een willekeurige steekproef van de gegevens (25% wordt hier gebr
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 0,31 seconde
+Benodigde tijd voor het uitvoeren van de cel: 0,31 seconde
 
 ### <a name="feature-scaling"></a>Functie schalen
-Feature scaling, ook wel bekend als data normalisatie, verzekert dat functies met op grote schaal uitbetaald waarden worden niet gegeven overmatige wegen in de objectieve functie. De code voor functieschaling gebruikt de [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) om de functies te schalen naar variantie van de eenheid. Het wordt geleverd door MLlib voor gebruik in lineaire regressie met Stochastic Gradient Descent (SGD). SGD is een populair algoritme voor het trainen van een breed scala aan andere machine learning-modellen, zoals geregulariseerde regressies of ondersteuningsvectormachines (SVM).   
+Het schalen van functies, ook wel bekend als gegevens normalisatie, verzekert dat onderdelen met veel uitbetaalde waarden geen buitensporige weging van de functie doel hebben. De code voor functie schaling maakt gebruik van de [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) om de functies te schalen op eenheids afwijking. Het wordt verschaft door MLlib voor gebruik in lineaire regressie met stochastische Gradient Daal (SGD). SGD is een populair algoritme voor het trainen van een breed scala aan andere machine learning modellen, zoals geregelde regressieën of Support Vector machines (SVM).   
 
 > [!TIP]
-> We hebben het LinearRegressionWithSGD-algoritme gevoelig gevonden voor feature scaling.   
+> We hebben het LinearRegressionWithSGD-algoritme gevonden dat gevoelig is voor het schalen van functies.   
 > 
 > 
 
-Hier is de code om variabelen te schalen voor gebruik met het geregulariseerde lineaire SGD-algoritme.
+Hier volgt de code voor het schalen van variabelen voor gebruik met het gemarkeerde lineaire SGD-algoritme.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -519,12 +519,12 @@ Hier is de code om variabelen te schalen voor gebruik met het geregulariseerde l
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 11,67 seconden
+Benodigde tijd voor het uitvoeren van de cel: 11,67 seconden
 
-### <a name="cache-objects-in-memory"></a>Cacheobjecten in het geheugen
-De tijd die nodig is voor het trainen en testen van ML-algoritmen kan worden verkort door de invoergegevensframeobjecten die worden gebruikt voor classificatie, regressie en geschaalde functies in cache te plaatsen.
+### <a name="cache-objects-in-memory"></a>Cache objecten in het geheugen
+De tijd die nodig is voor het trainen en testen van ML-algoritmen kan worden beperkt door de invoer gegevens frame objecten in de cache te plaatsen die worden gebruikt voor classificatie, regressie en geschaalde functies.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -550,43 +550,43 @@ De tijd die nodig is voor het trainen en testen van ML-algoritmen kan worden ver
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Output** 
+**UITVOER** 
 
-Tijd die nodig is om boven de cel uit te voeren: 0,13 seconde
+Benodigde tijd voor het uitvoeren van de cel: 0,13 seconde
 
-## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Voorspellen of een fooi wordt betaald met binaire classificatiemodellen
-In dit gedeelte ziet u hoe het gebruik van drie modellen voor de binaire classificatietaak om te voorspellen of een fooi al dan niet wordt betaald voor een taxirit. De gepresenteerde modellen zijn:
+## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Voors pellen of een tip wordt betaald met binaire classificatie modellen
+In deze sectie wordt beschreven hoe u drie modellen gebruikt voor het voors pellen van de binaire classificatie taak, ongeacht of er een tip voor een taxi wordt betaald. De gepresenteerde modellen zijn:
 
 * Logistieke regressie 
-* Willekeurig bos
-* Verloop stimuleren bomen
+* Wille keurig forest
+* Versterkings bomen met overgangen
 
-Elke sectie van de modelbouwcode wordt opgesplitst in stappen: 
+Elke model code sectie is onderverdeeld in stappen: 
 
-1. **Trainingsgegevens modelleren** met één parameterset
-2. **Evaluatie van het model** op een testgegevensset met statistieken
-3. **Model opslaan** in blob voor toekomstig verbruik
+1. **Trainings gegevens model leren** met één parameterset
+2. **Model evaluatie** van een test gegevensverzameling met metrische gegevens
+3. **Model opslaan** in BLOB voor toekomstig gebruik
 
-We laten op twee manieren zien hoe je cross-validatie (CV) uitvoeren met parametervegen:
+We laten u zien hoe u kruis validatie (AVK) met para meters op twee manieren kunt verruimen:
 
-1. Met behulp van **generieke** aangepaste code die kan worden toegepast op elk algoritme in MLlib en op alle parametersets in een algoritme. 
-2. De **functie pySpark CrossValidator-pijplijn gebruiken**. CrossValidator heeft een paar beperkingen voor Spark 1.5.0: 
+1. Het gebruik van **algemene** aangepaste code die kan worden toegepast op elk algoritme in MLlib en op alle parameter sets in een algoritme. 
+2. Met de **pijplijn functie PySpark CrossValidator**. CrossValidator heeft enkele beperkingen voor Spark 1.5.0: 
    
-   * Pijplijnmodellen kunnen niet worden opgeslagen of blijven bestaan voor toekomstig verbruik.
-   * Kan niet worden gebruikt voor elke parameter in een model.
+   * Pijplijn modellen kunnen niet worden opgeslagen of bewaard voor toekomstig gebruik.
+   * Kan niet worden gebruikt voor elke para meter in een model.
    * Kan niet worden gebruikt voor elk MLlib-algoritme.
 
-### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>Generieke cross validatie en hyperparameter vegen gebruikt met de logistieke regressie algoritme voor binaire classificatie
-De code in deze sectie laat zien hoe je een logistiek regressiemodel traint, evalueert en opslaat met [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) dat voorspelt of er al dan niet een fooi wordt betaald voor een reis in de NYC-taxirit en tariefgegevensset. Het model is getraind met behulp van cross validation (CV) en hyperparameter vegen geïmplementeerd met aangepaste code die kan worden toegepast op een van de leeralgoritmen in MLlib.   
+### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>Algemene kruis validatie en afstemming-leegmaak handelingen die worden gebruikt met het logistiek-algoritme voor binaire classificatie
+De code in deze sectie laat zien hoe u een logistiek regressie model traint, evalueert en opslaat met [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) die voor spelt of er een tip wordt betaald voor een reis in de NYCe taxi en ritbedrag-gegevensset. Het model wordt getraind met kruis validatie (AVK) en afstemming sweep, geïmplementeerd met aangepaste code die kan worden toegepast op elk van de leer algoritmen in MLlib.   
 
 <!-- -->
 
 > [!NOTE]
-> De uitvoering van deze aangepaste CV-code kan enkele minuten duren.
+> Het uitvoeren van deze aangepaste CV-code kan enkele minuten duren.
 
 <!-- -->
 
-**Train het logistieke regressiemodel met CV en hyperparameter vegen**
+**Het logistiek-regressie model trainen met AVK en afstemming sweep**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -667,17 +667,17 @@ De code in deze sectie laat zien hoe je een logistiek regressiemodel traint, eva
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-Coëfficiënten: [0,0082065285375, -0,0223675576104, -0,0183812028036, -3,48124578069e-05, -0,00247646947233, -0,00165897881503, 0,0675394837328, -0,111823113101, -0,32460912762, -0,204549780032, -1,36499216354, 0,591088507921, - 0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
+Coëfficiënten: [0.0082065285375,-0.0223675576104,-0.0183812028036,-3.48124578069 e-05,-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921,-0.664263411392,-1,00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
 
-Onderschepping: -0,0111216486893
+Interceptie:-0.0111216486893
 
-Tijd die nodig is om boven de cel uit te voeren: 14,43 seconden
+Benodigde tijd voor het uitvoeren van de cel: 14,43 seconden
 
-**Het binaire classificatiemodel evalueren met standaardstatistieken**
+**Het binaire classificatie model evalueren met standaard metrische gegevens**
 
-De code in deze sectie laat zien hoe u een logistiek regressiemodel evalueren aan de hand van een testgegevensset, inclusief een plot van de ROC-curve.
+De code in deze sectie laat zien hoe u een logistiek regressie model evalueert op basis van een test gegevensverzameling, met inbegrip van een tekening van de ROC-curve.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -720,32 +720,32 @@ De code in deze sectie laat zien hoe u een logistiek regressiemodel evalueren aa
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-Gebied onder PR = 0,985336538462
+Opper vlak onder PR = 0.985336538462
 
-Gebied onder ROC = 0,983383274312
+Gebied onder ROC = 0.983383274312
 
-Overzichtsstatistieken
+Samenvattings statistieken
 
-Precisie = 0,984174341679
+Precisie = 0.984174341679
 
-Terugroepactie = 0,984174341679
+Intrekken = 0.984174341679
 
-F1 Score = 0,984174341679
+F1-score = 0.984174341679
 
-Tijd die nodig is om boven de cel uit te voeren: 2,67 seconden
+Benodigde tijd voor het uitvoeren van de cel: 2,67 seconden
 
-**Zet de ROC-curve in kaart.**
+**De ROC-curve uitzetten.**
 
-De *voorspellingAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kan worden gebruikt om query's en uitvoerresultaten uit te brengen in het sqlResults-gegevensframe voor het plotten. Hier is de code.
+De *predictionAndLabelsDF* is geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kunnen worden gebruikt om query's uit te voeren en resultaten uit te voeren in het sqlResults-gegevens frame voor het uitzetten. Dit is de code.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-Hier is de code om voorspellingen te doen en plot de ROC-curve.
+Hier volgt de code voor het maken van voor spellingen en het uitzetten van de ROC-curve.
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
@@ -773,13 +773,13 @@ Hier is de code om voorspellingen te doen en plot de ROC-curve.
     plt.show()
 
 
-**Output**
+**UITVOER**
 
-![Logistieke regressie ROC curve voor generieke aanpak](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
+![Logistieke regressie-curve voor algemene aanpak](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
-**Persist-model in een blob voor toekomstig verbruik**
+**Model in een BLOB persistent maken voor toekomstig verbruik**
 
-De code in deze sectie laat zien hoe u het logistieke regressiemodel voor consumptie opslaan.
+De code in deze sectie laat zien hoe u het logistiek regressie model voor verbruik opslaat.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -800,17 +800,17 @@ De code in deze sectie laat zien hoe u het logistieke regressiemodel voor consum
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 34,57 seconden
+Benodigde tijd voor het uitvoeren van de cel: 34,57 seconden
 
-### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>Gebruik de CrossValidator-pijplijnfunctie van MLlib met het model van logistieke regressie (Elastic regression)
-De code in deze sectie laat zien hoe je een logistiek regressiemodel traint, evalueert en opslaat met [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) dat voorspelt of er al dan niet een fooi wordt betaald voor een reis in de NYC-taxirit en tariefgegevensset. Het model is getraind met behulp van cross validation (CV) en hyperparameter vegen geïmplementeerd met de MLlib CrossValidator pipeline functie voor CV met parameter sweep.   
+### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>De CrossValidator-pijplijn functie van MLlib gebruiken met een logistiek regressie model (elastisch regressie)
+De code in deze sectie laat zien hoe u een logistiek regressie model traint, evalueert en opslaat met [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) die voor spelt of er een tip wordt betaald voor een reis in de NYCe taxi en ritbedrag-gegevensset. Het model wordt getraind met kruis validatie (AVK) en afstemming-verruiming geïmplementeerd met de MLlib CrossValidator-pijplijn functie voor AVK met parameter sweep.   
 
 <!-- -->
 
 > [!NOTE]
-> De uitvoering van deze MLlib CV code kan enkele minuten duren.
+> Het uitvoeren van deze MLlib AVK-code kan enkele minuten duren.
 
 <!-- -->
 
@@ -858,19 +858,19 @@ De code in deze sectie laat zien hoe je een logistiek regressiemodel traint, eva
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 107,98 seconden
+Benodigde tijd voor het uitvoeren van de cel: 107,98 seconden
 
-**Zet de ROC-curve in kaart.**
+**De ROC-curve uitzetten.**
 
-De *voorspellingAndLabelsDF* wordt geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kan worden gebruikt om query's en uitvoerresultaten uit te brengen in het sqlResults-gegevensframe voor het plotten. Hier is de code.
+De *predictionAndLabelsDF* is geregistreerd als een tabel, *tmp_results*, in de vorige cel. *tmp_results* kunnen worden gebruikt om query's uit te voeren en resultaten uit te voeren in het sqlResults-gegevens frame voor het uitzetten. Dit is de code.
 
     # QUERY RESULTS
     %%sql -q -o sqlResults
     SELECT label, prediction, probability from tmp_results
 
-Hier is de code om de ROC curve plot.
+Hier volgt de code voor het uitzetten van de ROC-curve.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES 
     %%local
@@ -894,12 +894,12 @@ Hier is de code om de ROC curve plot.
     plt.show()
 
 
-**Output**
+**UITVOER**
 
-![Logistieke regressie ROC curve met MLlib's CrossValidator](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
+![De MLlib-curve van logistiek regressie met behulp van CrossValidator](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
-### <a name="random-forest-classification"></a>Willekeurige bosclassificatie
-De code in deze sectie laat zien hoe je een willekeurige bosregressie traint, evalueert en opslaat die voorspelt of er al dan niet een fooi wordt betaald voor een reis in de NYC-taxirit en tariefgegevensset.
+### <a name="random-forest-classification"></a>Wille keurige forest-classificatie
+De code in deze sectie laat zien hoe u een wille keurige regressie kunt trainen, evalueren en opslaan waarmee wordt gedicteerd of een tip wordt betaald voor een reis in de NYCe taxi en ritbedrag-gegevensset.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -943,14 +943,14 @@ De code in deze sectie laat zien hoe je een willekeurige bosregressie traint, ev
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-Gebied onder ROC = 0,985336538462
+Gebied onder ROC = 0.985336538462
 
-Tijd die nodig is om boven de cel uit te voeren: 26,72 seconden
+Benodigde tijd voor het uitvoeren van de cel: 26,72 seconden
 
-### <a name="gradient-boosting-trees-classification"></a>Verloop stimuleren bomen classificatie
-De code in deze sectie laat zien hoe je een verloop stimuleren bomen model dat voorspelt of een tip wordt betaald voor een reis in de NYC taxirit en tarief dataset op te slaan.
+### <a name="gradient-boosting-trees-classification"></a>Classificatie voor versterking van bomen met overgang
+De code in deze sectie laat zien hoe u een kleuren model voor het boosten van een kleurovergangsbeëindiging traint, evalueert en opslaat waarmee wordt gedicteerd of een tip wordt betaald voor een reis in de NYCe taxi en ritbedrag-gegevensset.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -987,44 +987,44 @@ De code in deze sectie laat zien hoe je een verloop stimuleren bomen model dat v
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Output**
+**UITVOER**
 
-Gebied onder ROC = 0,985336538462
+Gebied onder ROC = 0.985336538462
 
-Tijd die nodig is om boven de cel uit te voeren: 28,13 seconden
+Benodigde tijd voor het uitvoeren van de cel: 28,13 seconden
 
-## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Tipbedrag voorspellen met regressiemodellen (geen CV gebruiken)
-In dit gedeelte ziet u hoe drie modellen worden gebruikt voor de regressietaak: het tipbedrag dat voor een taxirit wordt betaald, voorspellen op basis van andere tipfuncties. De gepresenteerde modellen zijn:
+## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Aantal fooien voor spel met regressie modellen (geen gebruik van AVK)
+In deze sectie wordt uitgelegd hoe u drie modellen voor de regressie taak gebruikt: voor spelt u het fooien bedrag dat is betaald voor een taxi op basis van andere tip-functies. De gepresenteerde modellen zijn:
 
-* Geregulariseerde lineaire regressie
-* Willekeurig bos
-* Verloop stimuleren bomen
+* Geregelde lineaire regressie
+* Wille keurig forest
+* Versterkings bomen met overgangen
 
-Deze modellen werden beschreven in de inleiding. Elke sectie van de modelbouwcode wordt opgesplitst in stappen: 
+Deze modellen zijn beschreven in de inleiding. Elke model code sectie is onderverdeeld in stappen: 
 
-1. **Trainingsgegevens modelleren** met één parameterset
-2. **Evaluatie van het model** op een testgegevensset met statistieken
-3. **Model opslaan** in blob voor toekomstig verbruik   
-
-<!-- -->
-
-> [!NOTE] 
-> Cross-validatie wordt niet gebruikt met de drie regressiemodellen in deze sectie, omdat dit in detail werd getoond voor de logistieke regressiemodellen. Een voorbeeld van het gebruik van CV met Elastic Net voor lineaire regressie is opgenomen in de bijlage van dit onderwerp.
-
-<!-- -->
+1. **Trainings gegevens model leren** met één parameterset
+2. **Model evaluatie** van een test gegevensverzameling met metrische gegevens
+3. **Model opslaan** in BLOB voor toekomstig gebruik   
 
 <!-- -->
 
 > [!NOTE] 
-> In onze ervaring kunnen er problemen zijn met de convergentie van LinearRegressionWithSGD-modellen en moeten parameters zorgvuldig worden gewijzigd/geoptimaliseerd voor het verkrijgen van een geldig model. Het schalen van variabelen helpt aanzienlijk bij convergentie. Elastische netto regressie, weergegeven in de bijlage bij dit onderwerp, kan ook worden gebruikt in plaats van LinearRegressionWithSGD.
+> Kruis validatie wordt niet gebruikt in combi natie met de drie regressie modellen in deze sectie, omdat deze in detail zijn opgenomen voor de logistieke regressie modellen. In de bijlage van dit onderwerp vindt u een voor beeld waarin wordt getoond hoe u AVK met elastisch net voor lineaire regressie kunt gebruiken.
+
+<!-- -->
+
+<!-- -->
+
+> [!NOTE] 
+> In onze ervaring kan er sprake zijn van problemen met de convergentie van LinearRegressionWithSGD-modellen en moeten de para meters zorgvuldig worden gewijzigd/geoptimaliseerd voor het verkrijgen van een geldig model. Het schalen van variabelen helpt u aanzienlijk bij het convergentie. Een elastische net-regressie, weer gegeven in de bijlage van dit onderwerp, kan ook worden gebruikt in plaats van LinearRegressionWithSGD.
 
 <!-- -->
 
 ### <a name="linear-regression-with-sgd"></a>Lineaire regressie met SGD
-De code in deze sectie laat zien hoe geschaalde functies worden gebruikt om een lineaire regressie te trainen die stochastische gradiëntdescent (SGD) gebruikt voor optimalisatie en hoe u het model scoren, evalueren en opslaan in Azure Blob Storage (WASB).
+De code in deze sectie laat zien hoe u geschaalde functies gebruikt om een lineaire regressie te trainen die gebruikmaakt van stochastische Gradient Daal (SGD) voor Optima Lise ring, en hoe u het model kunt beoordelen, evalueren en opslaan in Azure Blob Storage (WASB).
 
 > [!TIP]
-> In onze ervaring kunnen er problemen zijn met de convergentie van LinearRegressionWithSGD-modellen en moeten parameters zorgvuldig worden gewijzigd/geoptimaliseerd voor het verkrijgen van een geldig model. Het schalen van variabelen helpt aanzienlijk bij convergentie.
+> In onze ervaring kan er sprake zijn van problemen met de convergentie van LinearRegressionWithSGD-modellen en moeten de para meters zorgvuldig worden gewijzigd/geoptimaliseerd voor het verkrijgen van een geldig model. Het schalen van variabelen helpt u aanzienlijk bij het convergentie.
 > 
 > 
 
@@ -1066,25 +1066,25 @@ De code in deze sectie laat zien hoe geschaalde functies worden gebruikt om een 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Output**
+**UITVOER**
 
-Coëfficiënten: [0,0141707753435, -0,0252930927087, -0,0231442517137, 0,247070902996, 0,312544147152, 0,360296120645, 0,0122079566092, -0,0045649888241, -0,0898228505177, 0,0714046248793, 0,102171263868, - 0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
+Coëfficiënten: [0.0141707753435,-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,-0.00791124681938, 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
 
-Onderschepping: 0,854507624459
+Interceptie: 0.854507624459
 
-RMSE = 1,23485131376
+RMSE = 1.23485131376
 
-R-sqr = 0,597963951127
+R-Sqr = 0.597963951127
 
-Tijd die nodig is om boven de cel uit te voeren: 38,62 seconden
+Benodigde tijd voor het uitvoeren van de cel: 38,62 seconden
 
-### <a name="random-forest-regression"></a>Willekeurige forestregressie
-De code in deze sectie laat zien hoe je een willekeurig bosmodel traint, evalueert en opslaat dat het tipbedrag voor de gegevens van de NYC-taxirit voorspelt.   
+### <a name="random-forest-regression"></a>Regressie van wille keurig forest
+De code in deze sectie laat zien hoe u een wille keurig forest model traint, evalueert en opslaat waarmee fooien voor de taxi reis gegevens worden voor speld.   
 
 <!-- -->
 
 > [!NOTE]
-> Cross-validatie met parameter vegen met behulp van aangepaste code is opgenomen in de bijlage.
+> Kruis validatie met parameter opruimen met aangepaste code vindt u in de bijlage.
 
 <!-- -->
 
@@ -1128,16 +1128,16 @@ De code in deze sectie laat zien hoe je een willekeurig bosmodel traint, evaluee
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**Output**
+**UITVOER**
 
-RMSE = 0,931981967875
+RMSE = 0.931981967875
 
-R-sqr = 0,733445485802
+R-Sqr = 0.733445485802
 
-Tijd die nodig is om boven de cel uit te voeren: 25,98 seconden
+Benodigde tijd voor het uitvoeren van de cel: 25,98 seconden
 
-### <a name="gradient-boosting-trees-regression"></a>Verloop stimuleren bomen regressie
-De code in deze sectie laat zien hoe te trainen, evalueren en opslaan van een gradiënt stimuleren bomen model dat tip bedrag voorspelt voor de NYC taxi reis gegevens.
+### <a name="gradient-boosting-trees-regression"></a>Scha kering van bomen regressie verhogen
+De code in deze sectie laat zien hoe u een kleuren model voor het boosten van een kleur overgang kunt trainen, evalueren en opslaan waarmee fooien voor de gegevens van de taxi van de NYC worden voor speld.
 
 **Trainen en evalueren**
 
@@ -1179,17 +1179,17 @@ De code in deze sectie laat zien hoe te trainen, evalueren en opslaan van een gr
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-RMSE = 0,928172197114
+RMSE = 0.928172197114
 
-R-sqr = 0,732680354389
+R-Sqr = 0.732680354389
 
-Tijd die nodig is om boven de cel uit te voeren: 20,9 seconden
+Benodigde tijd voor het uitvoeren van de cel: 20,9 seconden
 
-**Plot**
+**Ontwerp**
 
-*tmp_results* is geregistreerd als hive-tabel in de vorige cel. Resultaten uit de tabel zijn uitvoer naar het *sqlResults-gegevensframe* voor plotten. Hier is de code
+*tmp_results* is geregistreerd als een Hive-tabel in de vorige cel. De resultaten van de tabel worden uitgevoerd in het *sqlResults* -gegevens frame voor het uitzetten. Dit is de code
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1198,7 +1198,7 @@ Tijd die nodig is om boven de cel uit te voeren: 20,9 seconden
     SELECT * from tmp_results
 
 
-Hier is de code om de gegevens plot met behulp van de Jupyter server.
+Hier volgt de code voor het uitzetten van de gegevens met behulp van de Jupyter-server.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1214,13 +1214,13 @@ Hier is de code om de gegevens plot met behulp van de Jupyter server.
     plt.axis([-1, 15, -1, 15])
     plt.show(ax)
 
-![Werkelijke-vs-voorspelde-tip-bedragen](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
+![Werkelijk-VS-voor speld Tip-bedragen](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Bijlage: Extra regressietaken met kruisvalidatie met parametersweeps
-Deze bijlage bevat code die laat zien hoe cv te doen met Elastic net voor lineaire regressie en hoe cv te doen met parameter sweep met behulp van aangepaste code voor willekeurige bosregressie.
+## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Bijlage: aanvullende regressie taken met kruis validatie met parameter sweeps
+Deze bijlage bevat code waarin wordt getoond hoe u met behulp van elastisch net voor lineaire regressie een gebruik maakt van een flexibele, en hoe u dit kunt doen met behulp van para meters voor een wille keurige regressie met aangepaste code.
 
-### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>Kruisvalidatie met Elastic net voor lineaire regressie
-De code in deze sectie laat zien hoe cross validatie te doen met Elastic net voor lineaire regressie en hoe het model te evalueren tegen testgegevens.
+### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>Kruis validatie met elastisch net voor lineaire regressie
+De code in deze sectie laat zien hoe u kruis validatie kunt uitvoeren met elastisch net voor lineaire regressie en hoe u het model kunt evalueren op basis van test gegevens.
 
     ###  CV USING ELASTIC NET FOR LINEAR REGRESSION
 
@@ -1276,20 +1276,20 @@ De code in deze sectie laat zien hoe cross validatie te doen met Elastic net voo
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-Tijd die nodig is om boven de cel uit te voeren: 161,21 seconden
+Benodigde tijd voor het uitvoeren van de cel: 161,21 seconden
 
-**Evalueren met R-SQR-statistiek**
+**Evalueren met R-SQR-metriek**
 
-*tmp_results* is geregistreerd als hive-tabel in de vorige cel. Resultaten uit de tabel zijn uitvoer naar het *sqlResults-gegevensframe* voor plotten. Hier is de code
+*tmp_results* is geregistreerd als een Hive-tabel in de vorige cel. De resultaten van de tabel worden uitgevoerd in het *sqlResults* -gegevens frame voor het uitzetten. Dit is de code
 
     # SELECT RESULTS
     %%sql -q -o sqlResults
     SELECT label,prediction from tmp_results
 
 
-Hier is de code om R-sqr te berekenen.
+Hier volgt de code voor het berekenen van R-Sqr.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1301,12 +1301,12 @@ Hier is de code om R-sqr te berekenen.
     print("R-sqr = %s" % r2)
 
 
-**Output**
+**UITVOER**
 
-R-sqr = 0,619184907088
+R-Sqr = 0.619184907088
 
-### <a name="cross-validation-with-parameter-sweep-using-custom-code-for-random-forest-regression"></a>Kruisvalidatie met parametersweep met aangepaste code voor willekeurige forestregressie
-De code in deze sectie laat zien hoe u cross validatie met parameter sweep met behulp van aangepaste code voor willekeurige forest regressie en hoe het model te evalueren tegen testgegevens.
+### <a name="cross-validation-with-parameter-sweep-using-custom-code-for-random-forest-regression"></a>Kruis validatie met parameter opruimen met aangepaste code voor regressie van wille keurig forest
+De code in deze sectie laat zien hoe u kruis validatie met parameter opruiming kunt uitvoeren met aangepaste code voor regressie van wille keurig forest en hoe u het model kunt evalueren op basis van test gegevens.
 
     # RECORD START TIME
     timestart= datetime.datetime.now()
@@ -1388,16 +1388,16 @@ De code in deze sectie laat zien hoe u cross validatie met parameter sweep met b
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**Output**
+**UITVOER**
 
-RMSE = 0,906972198262
+RMSE = 0.906972198262
 
-R-sqr = 0,740751197012
+R-Sqr = 0.740751197012
 
-Tijd die nodig is om boven de cel uit te voeren: 69,17 seconden
+Benodigde tijd voor het uitvoeren van de cel: 69,17 seconden
 
-### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Objecten opschonen uit geheugen- en afdrukmodellocaties
-Hiermee `unpersist()` u objecten verwijderen die in het geheugen zijn opgeslagen.
+### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Objecten opschonen van geheugen en model locaties afdrukken
+Gebruiken `unpersist()` voor het verwijderen van objecten in cache in het geheugen.
 
     # UNPERSIST OBJECTS CACHED IN MEMORY
 
@@ -1424,11 +1424,11 @@ Hiermee `unpersist()` u objecten verwijderen die in het geheugen zijn opgeslagen
     oneHotTESTregScaled.unpersist()
 
 
-**Output**
+**UITVOER**
 
-PythonRDD[122] bij RDD bij PythonRDD.scala: 43
+PythonRDD [122] op RDD op PythonRDD. scala: 43
 
-**Uitvoerpad naar modelbestanden die in het verbruiksnotitieblok moeten worden gebruikt. ** Als u een onafhankelijke gegevensset wilt gebruiken en scoren, moet u deze bestandsnamen kopiëren en plakken in het 'Verbruiksnotitieblok'.
+* * Uitvoer traject naar model bestanden dat moet worden gebruikt in het verbruiks notitieblok. * * Als u een onafhankelijke gegevensverzameling wilt gebruiken en scoren, moet u deze bestands namen kopiëren en plakken in het ' verbruiks notitieblok '.
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1439,22 +1439,22 @@ PythonRDD[122] bij RDD bij PythonRDD.scala: 43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**Output**
+**UITVOER**
 
-logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
+logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05 -0316 _47_ 30.096528"
 
-linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-05-0316_51_28.433670"
+linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-05 -0316 _51_ 28.433670"
 
-randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-05-0316_50_17.454440"
+randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-05 -0316 _50_ 17.454440"
 
-randomForestRegFileLoc = modelDir + "RandomForestRegression_2016-05-0316_51_57.331730"
+randomForestRegFileLoc = modelDir + "RandomForestRegression_2016-05 -0316 _51_ 57.331730"
 
-BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification_2016-05-0316_50_40.138809"
+BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification_2016-05 -0316 _50_ 40.138809"
 
-BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
+BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05 -0316 _52_ 18.827237"
 
 ## <a name="whats-next"></a>Volgende stappen
-Nu u regressie- en classificatiemodellen hebt gemaakt met de Spark MlLib, bent u klaar om te leren scoren en evalueren van deze modellen.
+Nu u regressie-en classificatie modellen met de Spark MlLib hebt gemaakt, bent u klaar om te leren hoe u deze modellen kunt beoordelen en evalueren.
 
-**Modelverbruik:** Zie [Spark-built machine learning-modellen beoordelen voor](spark-model-consumption.md)meer informatie over het scoren en evalueren van de classificatie- en regressiemodellen die in dit onderwerp zijn gemaakt.
+**Model verbruik:** Voor meer informatie over het beoordelen en evalueren van de classificatie en regressie modellen die in dit onderwerp zijn gemaakt, raadpleegt u door [Spark ontwikkelde machine learning modellen te beoordelen en evalueren](spark-model-consumption.md).
 

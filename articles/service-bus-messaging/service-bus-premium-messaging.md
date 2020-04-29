@@ -1,6 +1,6 @@
 ---
-title: Premium en standaardlagen van Azure Service Bus
-description: In dit artikel worden standaard- en premiumlagen van Azure Service Bus beschreven. Hiermee worden deze lagen vergeleken en technische verschillen mogelijk.
+title: Azure Service Bus Premium-en Standard-lagen
+description: In dit artikel worden de standaard-en Premium-lagen van Azure Service Bus beschreven. Vergelijkt deze lagen en biedt technische verschillen.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774571"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Prijscategorieën voor Service Bus Premium en Standard Messaging
@@ -37,9 +37,9 @@ In de volgende tabel worden enkele belangrijke verschillen uitgelicht.
 | Mogelijkheid om de workload omhoog en omlaag te schalen |N.v.t. |
 | Berichtformaat tot maximaal 1 MB |Berichtformaat tot maximaal 256 kB |
 
-**Service Bus Premium Messaging** biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload van een klant geïsoleerd wordt uitgevoerd. Deze resourcecontainer wordt een *berichteneenheid*genoemd. Aan elke Premium-naamruimte wordt ten minste één Messaging-eenheid toegewezen. U 1, 2, 4 of 8 berichteneenheden kopen voor elke naamruimte van Service Bus Premium. Eén workload of entiteit kan meerdere berichteneenheden omvatten en het aantal berichten-eenheden kan naar will worden gewijzigd. Dit resulteert in voorspelbare en herhaalbare prestaties voor uw Service Bus-oplossing.
+**Service Bus Premium Messaging** biedt isolatie van resources op het niveau van de CPU en het geheugen, zodat elke workload van een klant geïsoleerd wordt uitgevoerd. Deze resource container wordt een *Messa ging-eenheid*genoemd. Aan elke Premium-naamruimte wordt ten minste één Messaging-eenheid toegewezen. U kunt 1, 2, 4 of 8 Messa ging-eenheden kopen voor elke Service Bus Premium-naam ruimte. Eén werk belasting of entiteit kan meerdere Messa ging-eenheden omvatten en het aantal Messa ging-eenheden kan worden gewijzigd in. Dit resulteert in voorspelbare en herhaalbare prestaties voor uw Service Bus-oplossing.
 
-Niet alleen zijn de prestaties beter voorspelbaar en beschikbaar, ze zijn ook sneller. Service Bus Premium Messaging bouwt voort op de opslagengine die is geïntroduceerd in [Azure Event Hubs.](https://azure.microsoft.com/services/event-hubs/) Met de Premium-laag zijn de piekprestaties veel sneller dan met de Standard-laag.
+Niet alleen zijn de prestaties beter voorspelbaar en beschikbaar, ze zijn ook sneller. Service Bus Premium-berichten worden gebaseerd op de opslag engine die is geïntroduceerd in [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/). Met de Premium-laag zijn de piekprestaties veel sneller dan met de Standard-laag.
 
 ## <a name="premium-messaging-technical-differences"></a>Technische verschillen Premium Messaging
 
@@ -55,44 +55,44 @@ Omdat Premium Messaging wordt uitgevoerd in een volledig geïsoleerde runtime-om
 
 Als u code uitvoert onder Standard Messaging en deze wilt overzetten naar de Premium-prijscategorie, moet de eigenschap [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) zijn ingesteld op **false** (de standaardwaarde).
 
-## <a name="premium-messaging-resource-usage"></a>Premium Messaging-brongebruik
-Over het algemeen kan elke bewerking op een entiteit cpu- en geheugengebruik veroorzaken. Hier zijn enkele van deze bewerkingen: 
+## <a name="premium-messaging-resource-usage"></a>Resource gebruik voor Premium Messa ging
+Over het algemeen kan elke bewerking van een entiteit CPU-en geheugen gebruik veroorzaken. Hier volgen enkele van deze bewerkingen: 
 
-- Beheerbewerkingen zoals CRUD-bewerkingen (Maken, Ophalen, Bijwerken en Verwijderen) voor wachtrijen, onderwerpen en abonnementen.
-- Runtime-bewerkingen (berichten verzenden en ontvangen)
-- Toezicht op operaties en signaleringen
+- Beheer bewerkingen zoals ruwe (maken, ophalen, bijwerken en verwijderen) voor wacht rijen, onderwerpen en abonnementen.
+- Runtime bewerkingen (berichten verzenden en ontvangen)
+- Bewakings bewerkingen en-waarschuwingen
 
-De extra CPU en het geheugen gebruik is niet extra geprijsd wel. Voor de premiumberichtenlaag is er één prijs voor de berichteenheid.
+Het extra CPU-en geheugen gebruik is ook niet geprijsd. Voor de laag Premium Messa ging is er één prijs voor de bericht eenheid.
 
-Het CPU- en geheugengebruik wordt om de volgende redenen bijgehouden en aan u weergegeven: 
+Het CPU-en geheugen gebruik worden bijgehouden en weer gegeven om de volgende redenen: 
 
-- Zorgen voor transparantie in de interne systeem
-- Inzicht in de capaciteit van de gekochte resources.
-- Capaciteitsplanning die u helpt om omhoog/omlaag te schalen.
+- Transparantie van het systeem opgeven
+- De capaciteit van de aangeschafte resources begrijpen.
+- Capaciteits planning waarmee u omhoog/omlaag kunt schalen.
 
-## <a name="messaging-unit---how-many-are-needed"></a>Berichten-eenheid - Hoeveel zijn er nodig?
+## <a name="messaging-unit---how-many-are-needed"></a>Messa ging-eenheid-hoeveel er nodig zijn?
 
-Bij het inrichten van een Azure Service Bus Premium-naamruimte moet het aantal toegewezen berichteneenheden worden opgegeven. Deze berichten-eenheden zijn speciale bronnen die zijn toegewezen aan de naamruimte.
+Bij het inrichten van een Azure Service Bus Premium-naam ruimte moet het aantal toegewezen Messa ging-eenheden worden opgegeven. Deze Messa ging-eenheden zijn toegewezen resources die aan de naam ruimte worden toegewezen.
 
-Het aantal berichteneenheden dat is toegewezen aan de naamruimte servicebuspremium kan dynamisch worden **aangepast** aan de wijziging (toename of afname) van de werkbelasting.
+Het aantal Messa ging-eenheden dat aan de Service Bus Premium-naam ruimte wordt toegewezen, kan **dynamisch worden aangepast** aan de factor van de wijziging (verg Roten of verkleinen) in werk belastingen.
 
-Er zijn een aantal factoren waarmee rekening moet worden gehouden bij het bepalen van het aantal berichten-eenheden voor uw architectuur:
+Er zijn een aantal factoren waarmee rekening moet worden gehouden bij het bepalen van het aantal Messa ging-eenheden voor uw architectuur:
 
-- Begin met ***1 of 2 berichteneenheden*** toegewezen aan uw naamruimte.
-- Bestudeer de CPU-gebruiksstatistieken in de [resourcegebruiksstatistieken](service-bus-metrics-azure-monitor.md#resource-usage-metrics) voor uw naamruimte.
-    - Als het CPU-gebruik lager is ***dan 20%,*** u mogelijk het aantal berichteneenheden dat aan uw naamruimte is ***toegewezen, schalen.***
-    - Als het CPU-gebruik hoger is ***dan 70%,*** profiteert uw toepassing van ***het opschalen*** van het aantal berichteneenheden dat aan uw naamruimte is toegewezen.
+- Begin met ***1 of 2 Messa ging-eenheden*** die aan uw naam ruimte zijn toegewezen.
+- Onderzoek de metrische gegevens over het CPU-gebruik binnen de [metrische gegevens over het resource gebruik](service-bus-metrics-azure-monitor.md#resource-usage-metrics) voor uw naam ruimte.
+    - Als het CPU-gebruik ***lager is dan 20%***, kunt u het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen, wellicht ***omlaag schalen*** .
+    - Als het CPU-gebruik ***hoger is dan 70%***, zal uw toepassing profiteren van het ***opschalen*** van het aantal Messa ging-eenheden dat aan uw naam ruimte is toegewezen.
 
-Het proces van het schalen van de resources die zijn toegewezen aan naamruimten van een servicebus, kan worden geautomatiseerd met [Azure Automation Runbooks.](../automation/automation-quickstart-create-runbook.md)
+Het proces voor het schalen van de resources die zijn toegewezen aan een Service Bus naam ruimten kunnen worden geautomatiseerd met behulp van [Azure Automation Runbooks](../automation/automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> **Schalen** van de resources die aan de naamruimte zijn toegewezen, kan preventief of reactief zijn.
+> Het **schalen** van de resources die zijn toegewezen aan de naam ruimte kan preventieve of reactiveren zijn.
 >
->  * **Preventief**: Als er extra werkbelasting wordt verwacht (vanwege seizoensgebondenheid of trends), u meer berichteneenheden toewijzen aan de naamruimte voordat de workloads worden getroffen.
+>  * **Preventieve**: als er een extra werk belasting wordt verwacht (vanwege seizoensgebondenheid of trends), kunt u door gaan met het toewijzen van meer Messa ging-eenheden aan de naam ruimte voordat de werk belasting wordt bereikt.
 >
->  * **Reactief:** Als extra workloads worden geïdentificeerd door de statistieken voor resourcegebruik te bestuderen, kunnen extra resources worden toegewezen aan de naamruimte om de toenemende vraag op te nemen.
+>  * Opnieuw **actief**: als er extra werk belastingen worden geïdentificeerd door te studie van de metrische gegevens over het resource gebruik, kunnen er extra resources worden toegewezen aan de naam ruimte om de toenemende vraag op te nemen.
 >
-> De facturatiemeters voor servicebus zijn per uur. In het geval van opschaling betaalt u alleen voor de extra resources voor de uren die deze zijn gebruikt.
+> De facturerings meters voor Service Bus zijn per uur. In het geval van omhoog schalen betaalt u alleen voor de extra resources voor het aantal uren dat deze zijn gebruikt.
 >
 
 ## <a name="get-started-with-premium-messaging"></a>Aan de slag met Premium Messaging
@@ -107,7 +107,7 @@ U kunt ook [Premium-naamruimtes maken met behulp van Azure Resource Manager-sjab
 
 Zie de volgende koppelingen voor meer informatie over de Service Bus Messaging-service:
 
-* [Introductie van Azure Service Bus Premium Messaging (blogbericht)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Inleiding tot Azure Service Bus Premium Messa ging (blog bericht)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Introducing Azure Service Bus Premium messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Overzicht van Service Bus Messaging](service-bus-messaging-overview.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)

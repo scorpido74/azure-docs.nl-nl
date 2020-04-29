@@ -1,6 +1,6 @@
 ---
-title: Uw recente aanmeldingsactiviteit weergeven en doorzoeken vanaf de pagina Mijn aanmelding (voorbeeld) - Azure Active Directory | Microsoft Documenten
-description: Details over het bekijken en doorzoeken van uw recente aanmeldingsactiviteit op de pagina Mijn aanmeldingen van de portal Mijn account.
+title: Uw recente aanmeldings activiteit bekijken en doorzoeken vanaf de pagina mijn aanmelding (preview)-Azure Active Directory | Microsoft Docs
+description: Meer informatie over het weer geven en doorzoeken van uw recente aanmeldings activiteit vanaf de pagina Mijn aanmeldingen van de portal mijn account.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064016"
 ---
-# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Uw recente aanmeldingsactiviteit weergeven en doorzoeken op de pagina Mijn aanmeldingen (voorbeeld)
+# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken via de pagina Mijn aanmeldingen (preview)
 
-Je al je recente aanmeldingsactiviteit voor werk of schoolaccount bekijken op de pagina **Mijn aanmeldingen** van de mijn **accountportal.** Als u uw aanmeldingsgeschiedenis bekijkt, u controleren op ongebruikelijke activiteiten door u te helpen het overzicht te krijgen:
+U kunt al uw recente aanmeldings activiteiten voor werk-of school accounts bekijken op de pagina **mijn aanmeldingen** van de portal **Mijn account** . Door uw aanmeldings geschiedenis te bekijken, kunt u controleren op ongebruikelijke activiteiten door u te helpen bij het volgende:
 
-- Als iemand probeert uw wachtwoord te raden.
+- Als iemand probeert uw wacht woord te raden.
 
 - Als een aanvaller zich heeft aangemeld bij uw account en vanaf welke locatie.
 
@@ -30,46 +30,46 @@ Je al je recente aanmeldingsactiviteit voor werk of schoolaccount bekijken op de
 
 ## <a name="view-your-recent-sign-in-activity"></a>Uw recente aanmeldingsactiviteiten bekijken
 
-1. Meld u aan bij uw werk- https://myprofile.microsoft.com/ of schoolaccount en ga vervolgens naar uw pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
 
-2. Selecteer **Mijn aanmelding (voorbeeld)** in het linkernavigatiedeelvenster of selecteer de koppeling **Recente activiteit controleren** in het blok Mijn **aanmeldingen (voorbeeld).**
+2. Selecteer **mijn aanmeldingen (preview)** in het navigatie deel venster links of selecteer de koppeling **recente activiteit controleren** van het blok **mijn aanmeldingen (preview)** .
 
-    ![Pagina Mijn account, met gemarkeerde recente activiteitskoppelingen](media/my-account-portal/my-account-portal-sign-ins.png)
+    ![Pagina Mijn account, met gemarkeerde recente koppelingen met activiteiten](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. Vouw en bekijk elk van de aanmeldingsitems, zodat u ze allemaal herkent. Als u een aanmeldingsitem vindt dat er niet bekend uitziet, raden we u ten zeerste aan uw wachtwoord te wijzigen om uw account te beschermen als het is gecompromitteerd.
+3. Vouw en Controleer elk van de aanmeldings items en zorg ervoor dat u ze herkent. Als u een aanmeldings item vindt dat niet bekend is, raden wij u ten zeerste aan uw wacht woord te wijzigen om uw account te beschermen als dit is aangetast.
 
-    ![Recente activiteitenpagina met uitgebreide aanmeldingsgegevens](media/my-account-portal/my-account-portal-sign-ins-page.png)
+    ![Pagina recente activiteiten met uitgebreide aanmeldings Details](media/my-account-portal/my-account-portal-sign-ins-page.png)
 
-### <a name="if-you-see-a-successful-sign-in"></a>Als u een aangemeld voor geslaagden ziet
+### <a name="if-you-see-a-successful-sign-in"></a>Als een geslaagde aanmelding wordt weer geven
 
-Je moet je eigen activiteit als normaal herkennen. Als u echter een succesvolle aanmelding ziet vanaf een vreemde locatie, browser of besturingssysteem, kan dit betekenen dat een aanvaller toegang heeft gekregen tot uw account. In deze situatie raden we u aan uw wachtwoord onmiddellijk te wijzigen en vervolgens naar de pagina [Beveiligingsgegevens](https://mysignins.microsoft.com/security-info) te gaan om uw beveiligingsinstellingen bij te werken.
+U moet uw eigen activiteit herkennen als normaal. Als u echter een geslaagde aanmelding van een vreemde locatie, browser of besturings systeem ziet, kan dit betekenen dat een aanvaller toegang tot uw account heeft verkregen. In deze situatie raden wij u aan om uw wacht woord onmiddellijk te wijzigen en gaat u vervolgens naar de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info) om uw beveiligings instellingen bij te werken.
 
-Voordat u vaststelt dat iets onjuist is, moet u ervoor zorgen dat u geen vals-positief ziet (waarbij het item er twijfelachtig uitziet, maar in orde is). We bepalen bijvoorbeeld uw locatie en kaart bij benadering op basis van uw IP-adres. Mobiele netwerken zijn vooral moeilijk te lokaliseren, omdat ze soms het verkeer route door verre locaties. Dus als u zich hebt aangemeld met uw mobiele apparaat in de staat Washington, kan de locatie de aanmelding vanuit Californië weergeven. Daarom raden we u ten zeerste aan om meer details te controleren, behalve alleen de locatie. U moet er ook voor zorgen dat het besturingssysteem, de browser en de app ook allemaal zinvol zijn.
+Voordat u opgeeft dat er iets onjuist is, controleert u of er geen onechte positieve is (waarbij het item wel vraagbaar is). We bepalen bijvoorbeeld uw geschatte locatie en kaart op basis van uw IP-adres. Mobiele netwerken zijn met name moeilijk te lokaliseren, omdat ze het verkeer soms via locaties op afstand routeren. Als u zich dus hebt aangemeld met uw mobiele apparaat in de staat Washington, kan de locatie de aanmelding weer geven die afkomstig is van Californië. Daarom is het raadzaam om meer details dan alleen de locatie te controleren. Zorg er ook voor dat het besturings systeem, de browser en de app allemaal zinvol zijn.
 
-### <a name="if-you-see-an-unsuccessful-sign-in"></a>Als u een niet-geslaagde aanmelding ziet
+### <a name="if-you-see-an-unsuccessful-sign-in"></a>Als er een mislukte aanmelding wordt weer geven
 
-Een mislukte aanmelding zonder sessieactiviteit betekent dat uw primaire verificatiemethode (gebruikersnaam/wachtwoord) is mislukt. Dit kan betekenen dat u uw gebruikersnaam of wachtwoord verkeerd hebt getypt, maar het kan ook betekenen dat een aanvaller uw wachtwoord probeerde te raden. Als u denkt dat het een aanvaller was die tevergeefs uw wachtwoord probeerde te raden, hoeft u uw wachtwoord niet te wijzigen, maar we raden u ten zeerste aan zich te registreren voor Azure Multi-Factor Authentication (MFA). Met MFA, zelfs als de hacker uiteindelijk uw wachtwoord raadt, zal het niet genoeg zijn om toegang te krijgen tot uw account.
+Een mislukte aanmelding, zonder sessie activiteit, betekent dat uw primaire verificatie methode (gebruikers naam/wacht woord) is mislukt. Dit kan betekenen dat u uw gebruikers naam of wacht woord hebt getypt, maar dit kan ook betekenen dat een aanvaller uw wacht woord wil raden. Als u denkt dat een aanvaller het wacht woord niet succesvol zou proberen te raden, hoeft u uw wacht woord niet te wijzigen, maar we raden u aan om u te registreren voor Azure Multi-Factor Authentication (MFA). Met MFA, zelfs als de hacker uw wacht woord uiteindelijk heeft geraden, is het niet voldoende om toegang te krijgen tot uw account.
 
-Als u een mislukte aanmelding ziet, met een notitie onder Sessieactiviteit met de tekst **Extra verificatie, ongeldige code,** betekent dit dat uw primaire verificatie (gebruikersnaam/wachtwoord) is geslaagd, maar MFA is mislukt. Als dit een aanvaller was, hebben ze uw wachtwoord correct geraden, maar konden ze de MFA-uitdaging nog steeds niet doorstaan. In dit geval raden we u aan uw wachtwoord nog steeds te wijzigen, omdat de aanvaller dat onderdeel goed heeft, en vervolgens naar de pagina [Beveiligingsgegevens](https://mysignins.microsoft.com/security-info) gaat om uw beveiligingsinstellingen bij te werken.
+Als er een niet-geslaagde aanmelding wordt weer geven, met een opmerking onder sessie activiteit met de melding dat er een **aanvullende verificatie is mislukt, ongeldige code**, betekent dit dat uw primaire authenticatie (gebruikers naam/wacht woord) is geslaagd, maar MFA is mislukt. Als dit een aanvaller is, raden ze uw wacht woord op de juiste wijze aan, maar kon de MFA-uitdaging nog steeds niet worden door gegeven. In dit geval wordt u aangeraden uw wacht woord nog steeds te wijzigen, omdat de aanvaller dat onderdeel recht heeft gekregen. Ga vervolgens naar de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info) om uw beveiligings instellingen bij te werken.
 
-## <a name="search-for-specific-sign-in-activity"></a>Zoeken naar specifieke aanmeldingsactiviteit
+## <a name="search-for-specific-sign-in-activity"></a>Zoeken naar specifieke aanmeldings activiteit
 
-U uw recente aanmeldingsactiviteit doorzoeken op een van de beschikbare informatie. U bijvoorbeeld zoeken naar uw recente aanmeldingsactiviteit op besturingssysteem, locatie, app, enzovoort.
+U kunt uw recente aanmeldings activiteit doorzoeken op een van de beschik bare gegevens. U kunt bijvoorbeeld zoeken naar uw recente aanmeldings activiteit per besturings systeem, locatie, app, enzovoort.
 
-1. Typ **op** de pagina Recente activiteit controleren de informatie die u wilt zoeken in de **zoekbalk.** Typ bijvoorbeeld `My Account` om te zoeken naar alle activiteiten die worden verzameld door de app Mijn account.
+1. Typ op de pagina **recente activiteit controleren** de informatie waarnaar u wilt zoeken in de **Zoek** balk. Typ `My Account` bijvoorbeeld om te zoeken naar alle activiteiten die worden verzameld door de app mijn account.
 
-2. Selecteer de knop **Zoeken** om te beginnen met zoeken.
+2. Selecteer de knop **zoeken** om te beginnen met zoeken.
 
-    ![Recente activiteitspagina met gemarkeerde zoekbalk, zoekknop en resultaten](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
+    ![Pagina recente activiteiten, met de gemarkeerde zoek balk, zoek knop en resultaten](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw recente aanmeldingsactiviteit hebt bekeken, u het nieuwe programma:
+Nadat u uw recente aanmeldings activiteit hebt bekeken, kunt u het volgende doen:
 
-- Uw [beveiligingsgegevens](user-help-security-info-overview.md)weergeven of beheren.
+- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
 
-- Uw verbonden [apparaten](my-account-portal-devices-page.md)weergeven of beheren.
+- Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 
-- Uw [organisaties](my-account-portal-organizations-page.md)weergeven of beheren.
+- Uw [organisaties](my-account-portal-organizations-page.md)weer geven of beheren.
 
-- Bekijk hoe uw organisatie [uw privacygerelateerde gegevens gebruikt.](my-account-portal-privacy-page.md)
+- Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).

@@ -1,6 +1,6 @@
 ---
-title: Op Azure Application Insights log gebaseerde statistieken | Microsoft Documenten
-description: In dit artikel worden Azure Application Insights-statistieken weergegeven met ondersteunde aggregaties en dimensies. De details over op logboeken gebaseerde statistieken omvatten de onderliggende Kusto-queryinstructies.
+title: Metrische op logboek gebaseerd op basis van Azure-toepassing Insights | Microsoft Docs
+description: Dit artikel bevat een overzicht van Azure-toepassing Insights-metrische gegevens met ondersteunde aggregaties en dimensies. De details over metrische gegevens op basis van een logboek bevatten de onderliggende Kusto-query-instructies.
 author: vgorbenko
 services: azure-monitor
 ms.topic: reference
@@ -8,48 +8,48 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664912"
 ---
-# <a name="application-insights-log-based-metrics"></a>Op logboekstatistieken gebaseerde loginzichten van application Insights
+# <a name="application-insights-log-based-metrics"></a>Metrische gegevens op basis van het logboek Application Insights
 
-Met op application Insights log gebaseerde statistieken u de status van uw bewaakte apps analyseren, krachtige dashboards maken en waarschuwingen configureren. Er zijn twee soorten statistieken:
+Met Application Insights metrische gegevens op basis van een logboek kunt u de status van uw bewaakte apps analyseren, krachtige Dash boards maken en waarschuwingen configureren. Er zijn twee soorten metrische gegevens:
 
-* [Log-based metrics](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) achter de scène worden vertaald in [Kusto query's](https://docs.microsoft.com/azure/kusto/query/) van opgeslagen gebeurtenissen.
-* [Standaardstatistieken](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) worden opgeslagen als vooraf geaggregeerde tijdreeksen.
+* [Metrische gegevens op basis](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) van een logboek achter de scène worden omgezet in [Kusto-query's](https://docs.microsoft.com/azure/kusto/query/) van opgeslagen gebeurtenissen.
+* [Standaard metrische gegevens](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) worden opgeslagen als vooraf samengestelde tijd reeksen.
 
-Aangezien *standaardstatistieken* vooraf worden samengevoegd tijdens het verzamelen, hebben ze betere prestaties op querytijd. Dit maakt hen een betere keuze voor dashboarding en in real-time alerting. De *op logboeken gebaseerde statistieken* hebben meer dimensies, waardoor ze de superieure optie zijn voor gegevensanalyse en ad-hocdiagnostiek. Gebruik de [naamruimtekiezer](metrics-getting-started.md#create-your-first-metric-chart) om te schakelen tussen log-gebaseerde en standaardstatistieken in [metrics explorer](metrics-getting-started.md).
+Aangezien *standaard metrische gegevens* vooraf worden geaggregeerd tijdens het verzamelen, hebben ze betere prestaties op het moment van de query. Dit maakt ze een betere keuze voor het maken van Dash boards en in realtime waarschuwingen. De *metrische gegevens op basis van een logboeken* hebben meer dimensies, waardoor ze de superieure optie zijn voor het analyseren van analyses en ad-hoc diagnostiek. Gebruik de [naam ruimte kiezer](metrics-getting-started.md#create-your-first-metric-chart) om te scha kelen tussen op logboek gebaseerde en standaard metrische gegevens in [Metrics Explorer](metrics-getting-started.md).
 
-## <a name="interpret-and-use-queries-from-this-article"></a>Query's uit dit artikel interpreteren en gebruiken
+## <a name="interpret-and-use-queries-from-this-article"></a>Query's in dit artikel interpreteren en gebruiken
 
-In dit artikel worden statistieken weergegeven met ondersteunde aggregaties en dimensies. De details over op logboeken gebaseerde statistieken omvatten de onderliggende Kusto-queryinstructies. Voor het gemak gebruikt elke query standaardinstellingen voor tijdgranulariteit, grafiektype en soms het splitsen van dimensie, wat het gebruik van de query in Log Analytics vereenvoudigt zonder dat deze hoeft te worden gewijzigd.
+In dit artikel worden metrische gegevens weer gegeven met ondersteunde aggregaties en dimensies. De details over metrische gegevens op basis van een logboek bevatten de onderliggende Kusto-query-instructies. Voor het gemak gebruikt elke query standaard waarden voor de tijd granulatie, het grafiek type en soms het splitsen van de query in Log Analytics zonder dat u wijzigingen hoeft aan te brengen.
 
-Wanneer u dezelfde statistiek in [metrics explorer](metrics-getting-started.md)plot , zijn er geen standaardwaarden - wordt de query dynamisch aangepast op basis van uw grafiekinstellingen:
+Wanneer u dezelfde metriek in [Metrics Explorer](metrics-getting-started.md)uitzet, zijn er geen standaard waarden. de query wordt dynamisch aangepast op basis van de instellingen van de grafiek:
 
-- Het geselecteerde **tijdsbereik** wordt vertaald in een extra *waar tijdstempel...* clausule om alleen de gebeurtenissen uit geselecteerde tijdsbereik te kiezen. Bijvoorbeeld, een grafiek met gegevens voor de meest recente 24 uur, de query omvat *| waar timestamp > geleden (24 uur)*.
+- Het geselecteerde **tijds bereik** wordt omgezet in een extra *Where Time Stamp...* -component, zodat alleen de gebeurtenissen uit het geselecteerde tijds bereik worden gekozen. Bijvoorbeeld een grafiek met gegevens gedurende de meest recente 24 uur, bevat de query *| waar tijds tempel > geleden (24 uur)*.
 
-- De geselecteerde **Tijd granulariteit** wordt in de uiteindelijke *samenvatting ... per bin(tijdstempel, [tijdkorrel])* clausule.
+- De geselecteerde **tijd granulatie** wordt in het definitieve overzicht geplaatst *... per bak (Time Stamp, [time korrel])-* component.
 
-- Alle geselecteerde **filterafmetingen** worden vertaald in aanvullende *functies waar* clausules.
+- Alle geselecteerde **filter** dimensies worden vertaald in aanvullende *where* -componenten.
 
-- De geselecteerde **dimensie van de gesplitste grafiek** wordt vertaald in een extra samenvatting. Als u bijvoorbeeld uw grafiek splitst op *locatie*en plot met behulp van een tijdgranulariteit van 5 minuten, wordt de *samenvattingsclausule* samengevat *... per opslaglocatie (tijdstempel, 5 m), locatie*.
+- De geselecteerde dimensie voor **gesplitste grafieken** wordt vertaald naar een extra samenvattings eigenschap. Als u bijvoorbeeld uw grafiek op *locatie*splitst en uitgeeft met een tijd granulatie van 5 minuten, wordt *de component samenvatten* samenvatten *... per bak (tijds tempel, 5 m), locatie*.
 
 > [!NOTE]
-> Als u nieuw bent in de Kusto-querytaal, begint u met het kopiëren en plakken van Kusto-instructies in het queryvenster Log Analytics zonder wijzigingen aan te brengen. Klik **op Uitvoeren** om het basisdiagram weer te geven. Als u de syntaxis van querytaal begint te begrijpen, u beginnen met het aanbrengen van kleine wijzigingen en de impact van uw wijziging zien. Het verkennen van uw eigen gegevens is een geweldige manier om te beginnen met het realiseren van de volledige kracht van [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) en [Azure Monitor.](../../azure-monitor/overview.md)
+> Als u geen ervaring hebt met de Kusto-query taal, kunt u beginnen met het kopiëren en plakken van Kusto-instructies in het query deel venster Log Analytics zonder dat u wijzigingen hoeft aan te brengen. Klik op **uitvoeren** om de basis grafiek weer te geven. U begint met het maken van de syntaxis van de query taal, maar u kunt nu kleine wijzigingen aanbrengen en de gevolgen van de wijziging bekijken. Het verkennen van uw eigen gegevens is een uitstekende manier om te beginnen met het realiseren van de volledige kracht van [log Analytics](../../azure-monitor/log-query/get-started-portal.md) en [Azure monitor](../../azure-monitor/overview.md).
 
-## <a name="availability-metrics"></a>Beschikbaarheidsstatistieken
+## <a name="availability-metrics"></a>Metrische beschikbaarheids gegevens
 
-Met statistieken in de categorie Beschikbaarheid u de status van uw webtoepassing zien zoals waargenomen op punten over de hele wereld. [Configureer de beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md) om statistieken uit deze categorie te gebruiken.
+Met metrische gegevens in de beschikbaarheids categorie kunt u de status van uw webtoepassing zien, zoals wordt waargenomen door punten over de hele wereld. [Configureer de beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) om alle metrische gegevens uit deze categorie te gebruiken.
 
-### <a name="availability-availabilityresultsavailabilitypercentage"></a>Beschikbaarheid (beschikbaarheidResultaten/beschikbaarheidPercentage)
-De *statistiek Beschikbaarheid* geeft het percentage van de webtestuitvoeringen weer dat geen problemen heeft gedetecteerd. De laagst mogelijke waarde is 0, wat aangeeft dat alle webtestruns zijn mislukt. De waarde van 100 betekent dat alle webtestuitvoeringen aan de validatiecriteria voldoen.
+### <a name="availability-availabilityresultsavailabilitypercentage"></a>Beschik baarheid (availabilityResults/availabilityPercentage)
+De metrische *beschikbaarheids* gegevens tonen het percentage van de webtest-runs waarvoor geen problemen zijn gedetecteerd. De laagst mogelijke waarde is 0, wat aangeeft dat alle uitvoeringen van de webtest zijn mislukt. De waarde van 100 betekent dat alle webtest uitvoeringen de validatie criteria heeft door gegeven.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
-|Percentage|Average|Locatie uitvoeren, Naam testen|
+|Percentage|Average|Uitvoerings locatie, naam van test|
 
 ```Kusto
 availabilityResults 
@@ -57,13 +57,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-test-duration-availabilityresultsduration"></a>Duur beschikbaarheidstest (beschikbaarheidResultaten/duur)
+### <a name="availability-test-duration-availabilityresultsduration"></a>Duur van beschikbaarheids test (availabilityResults/duur)
 
-De statistiek *Beschikbaarheidstestduur* geeft aan hoeveel tijd het heeft geduurd voordat de webtest is uitgevoerd. Voor de [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md)geeft de statistiek de totale uitvoeringstijd van alle stappen weer.
+De metrische gegevens voor de *beschikbaarheids test* geven aan hoe lang het duurt voordat de webtest wordt uitgevoerd. Voor de [webtests met meerdere stappen](../../azure-monitor/app/availability-multistep.md)weerspiegelt de metriek de totale uitvoerings tijd van alle stappen.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
-|Milliseconden|Gemiddeld, Min, Max|Locatie uitvoeren, Testnaam, Testresultaat
+|Milliseconden|Gemiddeld, min, Max|Uitvoerings locatie, naam van test, resultaat van test
 
 ```Kusto
 availabilityResults
@@ -73,13 +73,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-tests-availabilityresultscount"></a>Beschikbaarheidstests (beschikbaarheidResultaten/aantal)
+### <a name="availability-tests-availabilityresultscount"></a>Beschikbaarheids testen (availabilityResults/Count)
 
-De statistiek *Beschikbaarheidstests* weerspiegelt het aantal webtests dat wordt uitgevoerd door Azure Monitor.
+De metrische *beschikbaarheids tests* weerspiegelt het aantal van de webtests dat wordt uitgevoerd door Azure monitor.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
-|Count|Count|Locatie uitvoeren, Testnaam, Testresultaat|
+|Count|Count|Uitvoerings locatie, naam van test, resultaat van test|
 
 ```Kusto
 availabilityResults
@@ -87,18 +87,18 @@ availabilityResults
 | render timechart
 ```
 
-## <a name="browser-metrics"></a>Browserstatistieken
+## <a name="browser-metrics"></a>Metrische gegevens van de browser
 
-Browserstatistieken worden verzameld door de Application Insights JavaScript SDK van echte browsers voor eindgebruikers. Ze bieden geweldige inzichten in de ervaring van uw gebruikers met uw web-app. Browserstatistieken worden meestal niet gesampled, wat betekent dat ze een hogere precisie van de gebruiksnummers bieden in vergelijking met serverstatistieken die mogelijk worden scheefgetrokken door steekproeven.
+De metrische gegevens van de browser worden verzameld door de Application Insights java script SDK van echte gebruikers browsers. Ze bieden fantastische inzichten in de ervaring van uw gebruikers met uw web-app. De metrische gegevens van de browser worden doorgaans niet bemonsterd. Dit betekent dat ze een grotere nauw keurigheid van de gebruiks cijfers bieden ten opzichte van metrische gegevens aan de server zijde die kunnen worden schuingetrokken door steek proeven.
 
 > [!NOTE]
-> Als u browserstatistieken wilt verzamelen, moet uw toepassing worden geinstrumenteerd met de [Application Insights JavaScript SDK.](../../azure-monitor/app/javascript.md)
+> Als u metrische gegevens voor de browser wilt verzamelen, moet uw toepassing worden geinstrumenteerd met de [Application Insights java script SDK](../../azure-monitor/app/javascript.md).
 
-### <a name="browser-page-load-time-browsertimingstotalduration"></a>Laadtijd van browserpagina's (browserTimings/totalDuration)
+### <a name="browser-page-load-time-browsertimingstotalduration"></a>Laad tijd van browser pagina (browserTimings/totalDuration)
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, Min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|Geen|
 
 ```Kusto
 browserTimings
@@ -110,11 +110,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="client-processing-time-browsertimingprocessingduration"></a>Verwerkingstijd client (browserTiming/verwerkingDuur)
+### <a name="client-processing-time-browsertimingprocessingduration"></a>Verwerkings tijd van client (browserTiming/processingDuration)
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, Min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|Geen|
 
 ```Kusto
 browserTimings
@@ -126,11 +126,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Verbindingstijd van pagina's-netwerk (browserTimings/netwerkDuur)
+### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Netwerk verbindings tijd voor laden van pagina (browserTimings/networkDuration)
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, Min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|Geen|
 
 ```Kusto
 browserTimings
@@ -142,11 +142,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Ontvangstvan de responstijd (browserTimings/receiveDuration)
+### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Reactie tijd van ontvangen (browserTimings/receiveDuration)
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, Min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|Geen|
 
 ```Kusto
 browserTimings
@@ -158,11 +158,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="send-request-time-browsertimingssendduration"></a>Aanvraagtijd verzenden (browserTimings/sendDuration)
+### <a name="send-request-time-browsertimingssendduration"></a>Verzend aanvraag tijd (browserTimings/sendDuration)
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, Min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|Geen|
 
 ```Kusto
 browserTimings
@@ -174,17 +174,17 @@ browserTimings
 | render timechart
 ```
 
-## <a name="failure-metrics"></a>Foutstatistieken
+## <a name="failure-metrics"></a>Metrische fout gegevens
 
-De statistieken in **Fouten** tonen problemen met het verwerken van aanvragen, afhankelijkheidsoproepen en gegenereerde uitzonderingen.
+De metrische gegevens in **fouten** tonen problemen met verwerkings aanvragen, afhankelijkheids aanroepen en uitzonde ringen.
 
-### <a name="browser-exceptions-exceptionsbrowser"></a>Browseruitzonderingen (uitzonderingen/browser)
+### <a name="browser-exceptions-exceptionsbrowser"></a>Browser uitzonderingen (uitzonde ringen/browser)
 
-Deze statistiek geeft het aantal gegooide uitzonderingen weer van uw toepassingscode die in de browser wordt uitgevoerd. Alleen uitzonderingen die worden ```trackException()``` bijgehouden met een API-aanroep voor Application Insights, zijn opgenomen in de statistiek.
+Deze metriek weerspiegelt het aantal uitzonde ringen dat is veroorzaakt door de toepassings code die in de browser wordt uitgevoerd. Alleen uitzonde ringen die worden bijgehouden ```trackException()``` met een Application INSIGHTS-API-aanroep, zijn opgenomen in de metrische gegevens.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Geen|Op logboeken gebaseerde versie gebruikt **somaggregatie**|
+|Count|Count|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -193,13 +193,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="dependency-call-failures-dependenciesfailed"></a>Fouten in afhankelijkheidsoproepen (afhankelijkheden/mislukt)
+### <a name="dependency-call-failures-dependenciesfailed"></a>Mislukte afhankelijkheids aanroepen (afhankelijkheden/mislukt)
 
-Het aantal mislukte afhankelijkheidsoproepen.
+Het aantal mislukte afhankelijkheids aanroepen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Geen|Op logboeken gebaseerde versie gebruikt **somaggregatie**|
+|Count|Count|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 dependencies
@@ -208,13 +208,13 @@ dependencies
 | render barchart
 ```
 
-### <a name="exceptions-exceptionscount"></a>Uitzonderingen (uitzonderingen/aantal)
+### <a name="exceptions-exceptionscount"></a>Uitzonde ringen (uitzonde ringen/aantal)
 
-Elke keer dat u een uitzondering op Application Insights registreert, wordt er gebeld naar de [methode trackException()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) van de SDK. De statistiek Uitzonderingen geeft het aantal geregistreerde uitzonderingen weer.
+Telkens wanneer u een uitzonde ring registreert op Application Insights, wordt er een aanroep naar de [methode trackException ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) van de SDK. De metriek uitzonde ringen toont het aantal geregistreerde uitzonde ringen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Naam van cloudrol, cloudrolinstantie, apparaattype|Op logboeken gebaseerde versie gebruikt **somaggregatie**|
+|Count|Count|Rolnaam van Cloud, instantie van Cloud-rol, apparaattype|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -224,11 +224,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Mislukte aanvragen (aanvragen/mislukt)
 
-Het aantal bijgehouden serveraanvragen dat is gemarkeerd als *mislukt*. Standaard markeert de Application Insights SDK automatisch elk serververzoek dat HTTP-antwoordcode 5xx of 4xx heeft geretourneerd als een mislukt verzoek. U deze logica aanpassen door *de eigenschap succes* van het item request telemetrie te wijzigen in een aangepaste [telemetrieinitialisator](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Het aantal bijgehouden server aanvragen dat is gemarkeerd als *mislukt*. Standaard markeert de Application Insights SDK automatisch elke server aanvraag die de 5xx of 4xx van HTTP-antwoorden als een mislukte aanvraag heeft geretourneerd. U kunt deze logica aanpassen door de eigenschap *success* van het aanvraag-telemetrie in een [aangepaste telemetrie-initialisatie functie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)te wijzigen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Cloudrolinstantie, Cloudrolnaam, Echt of synthetisch verkeer, Prestatie aanvragen, Antwoordcode|Op logboeken gebaseerde versie gebruikt **somaggregatie**|
+|Count|Count|Cloud rolinstantie, naam van Cloud functie, reëel of synthetisch verkeer, prestaties aanvragen, respons code|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 requests
@@ -237,13 +237,13 @@ requests
 | render barchart
 ```
 
-### <a name="server-exceptions-exceptionsserver"></a>Serveruitzonderingen (uitzonderingen/server)
+### <a name="server-exceptions-exceptionsserver"></a>Server uitzonderingen (uitzonde ringen/server)
 
-Deze statistiek geeft het aantal serveruitzonderingen weer.
+Met deze metriek wordt het aantal server uitzonderingen weer gegeven.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf geaggregeerde afmetingen|Opmerkingen|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Naam van cloudrol, cloudrolinstantie|Op logboeken gebaseerde versie gebruikt **somaggregatie**|
+|Count|Count|Rolnaam van Cloud, instantie van Cloud-rol|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -254,9 +254,9 @@ exceptions
 
 ## <a name="performance-counters"></a>Prestatiemeteritems
 
-Gebruik statistieken in de categorie **Prestatiemeteritems** om toegang te krijgen tot [systeemprestatiemeteritems die zijn verzameld door Application Insights.](../../azure-monitor/app/performance-counters.md)
+Gebruik metrische gegevens in de categorie **prestatie meter items** om toegang te krijgen tot [systeem prestatie meter items die door Application Insights zijn verzameld](../../azure-monitor/app/performance-counters.md).
 
-### <a name="available-memory-performancecountersavailablememory"></a>Beschikbaar geheugen (performancecounters/beschikbaarGeheugen)
+### <a name="available-memory-performancecountersavailablememory"></a>Beschikbaar geheugen (Performance Counters/availableMemory)
 
 ```Kusto
 performanceCounters
@@ -266,7 +266,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="exception-rate-performancecountersexceptionrate"></a>Uitzonderingspercentage (prestatietellers/uitzonderingtarief)
+### <a name="exception-rate-performancecountersexceptionrate"></a>Uitzonderings frequentie (Performance Counters/exceptionRate)
 
 ```Kusto
 performanceCounters
@@ -276,7 +276,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>HTTP-aanvraaguitvoeringstijd (performanceCounters/requestExecutionTime)
+### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>Uitvoerings tijd van de HTTP-aanvraag (Performance Counters/requestExecutionTime)
 
 ```Kusto
 performanceCounters
@@ -286,7 +286,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-rate-performancecountersrequestspersecond"></a>HTTP-aanvraagpercentage (prestatietellers/aanvragenPerSeconde)
+### <a name="http-request-rate-performancecountersrequestspersecond"></a>Frequentie van HTTP-aanvragen (Performance Counters/requestsPerSecond)
 
 ```Kusto
 performanceCounters
@@ -296,7 +296,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>HTTP-aanvragen in toepassingswachtrij (performanceCounters/requestsInQueue)
+### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>HTTP-aanvragen in de toepassings wachtrij (Performance Counters/requestsInQueue)
 
 ```Kusto
 performanceCounters
@@ -306,13 +306,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-cpu-performancecountersprocesscpupercentage"></a>Proces-CPU (performancecounters/processCpuPercentage)
+### <a name="process-cpu-performancecountersprocesscpupercentage"></a>CPU van proces (Performance Counters/processCpuPercentage)
 
-De statistiek geeft aan hoeveel van de totale processorcapaciteit wordt verbruikt door het proces dat uw bewaakte app host.
+De metriek laat zien hoeveel van de totale processor capaciteit wordt verbruikt door het proces dat als host fungeert voor uw bewaakte app.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|
-|Percentage|Gemiddeld, Min, Max|Cloudrolinstantie
+|Percentage|Gemiddeld, min, Max|Cloud rolinstantie
 
 ```Kusto
 performanceCounters
@@ -322,11 +322,11 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>Io-snelheid verwerken (prestatietellers/processIOBytesPerSeconde)
+### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>I/o-frequentie van processen (Performance Counters/processIOBytesPerSecond)
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|
-|Bytes per seconde|Gemiddeld, Min, Max|Cloudrolinstantie
+|Bytes per seconde|Gemiddeld, min, Max|Cloud rolinstantie
 
 ```Kusto
 performanceCounters
@@ -336,13 +336,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Privébytes verwerken (prestatiemeteritems/processPrivateBytes)
+### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Privé-bytes verwerken (Performance Counters/processPrivateBytes)
 
-Hoeveelheid niet-gedeeld geheugen dat het bewaakte proces heeft toegewezen voor de gegevens.
+De hoeveelheid niet-gedeeld geheugen die het bewaakte proces voor de gegevens heeft toegewezen.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|
-|Bytes|Gemiddeld, Min, Max|Cloudrolinstantie
+|Bytes|Gemiddeld, min, Max|Cloud rolinstantie
 
 ```Kusto
 performanceCounters
@@ -352,16 +352,16 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="processor-time-performancecountersprocessorcpupercentage"></a>Processortijd (performancecounters/processorCpuPercentage)
+### <a name="processor-time-performancecountersprocessorcpupercentage"></a>Processor tijd (Performance Counters/processorCpuPercentage)
 
-CPU-verbruik door *alle* processen die op de bewaakte serverinstantie worden uitgevoerd.
+CPU-gebruik door *alle* processen die worden uitgevoerd op het bewaakte Server exemplaar.
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|
-|Percentage|Gemiddeld, Min, Max|Cloudrolinstantie
+|Percentage|Gemiddeld, min, Max|Cloud rolinstantie
 
 >[!NOTE]
-> De statistiek processortijd is niet beschikbaar voor de toepassingen die worden gehost in Azure App Services. Gebruik de [metriek Proces-CPU](#process-cpu-performancecountersprocesscpupercentage) om het CPU-gebruik van de webtoepassingen die worden gehost in App Services bij te houden.
+> De metrische processor tijd is niet beschikbaar voor de toepassingen die worden gehost in Azure-app Services. Gebruik de [CPU](#process-cpu-performancecountersprocesscpupercentage) -metriek van het proces om het CPU-gebruik bij te houden van de webtoepassingen die worden gehost in app Services.
 
 ```Kusto
 performanceCounters
@@ -371,11 +371,11 @@ performanceCounters
 | render timechart
 ```
 
-## <a name="server-metrics"></a>Serverstatistieken
+## <a name="server-metrics"></a>Metrische Server gegevens
 
-### <a name="dependency-calls-dependenciescount"></a>Afhankelijkheidsoproepen (afhankelijkheden/aantal)
+### <a name="dependency-calls-dependenciescount"></a>Afhankelijkheids aanroepen (afhankelijkheden/aantal)
 
-Deze statistiek heeft betrekking op het aantal afhankelijkheidsoproepen.
+Deze metriek is gerelateerd aan het aantal afhankelijkheids aanroepen.
 
 ```Kusto
 dependencies
@@ -383,9 +383,9 @@ dependencies
 | render barchart
 ```
 
-### <a name="dependency-duration-dependenciesduration"></a>Afhankelijkheidsduur (afhankelijkheden/duur)
+### <a name="dependency-duration-dependenciesduration"></a>Duur van afhankelijkheid (afhankelijkheden/duur)
 
-Deze statistiek verwijst naar de duur van afhankelijkheidsoproepen.
+Deze metrische waarde verwijst naar de duur van afhankelijkheids aanroepen.
 
 ```Kusto
 dependencies
@@ -398,9 +398,9 @@ dependencies
 | render timechart
 ```
 
-### <a name="server-requests-requestscount"></a>Serveraanvragen (aanvragen/aantal)
+### <a name="server-requests-requestscount"></a>Server aanvragen (aanvragen/aantal)
 
-Deze statistiek geeft het aantal inkomende serveraanvragen weer dat door uw webtoepassing is ontvangen.
+Deze metriek weerspiegelt het aantal inkomende server aanvragen dat door uw webtoepassing is ontvangen.
 
 ```Kusto
 requests
@@ -408,9 +408,9 @@ requests
 | render barchart
 ```
 
-### <a name="server-response-time-requestsduration"></a>Serverresponstijd (aanvragen/duur)
+### <a name="server-response-time-requestsduration"></a>Server reactietijd (aanvragen/duur)
 
-Deze statistiek weerspiegelt de tijd die nodig was voor het verwerken van binnenkomende aanvragen door de servers.
+Deze metriek weerspiegelt de tijd die nodig is voor het verwerken van binnenkomende aanvragen door de servers.
 
 ```Kusto
 requests
@@ -425,9 +425,9 @@ requests
 
 ## <a name="usage-metrics"></a>Metrische gebruiksgegevens
 
-### <a name="page-view-load-time-pageviewsduration"></a>Laadtijd van de paginaweergave (paginaWeergaven/duur)
+### <a name="page-view-load-time-pageviewsduration"></a>Laad tijd pagina weergave (page views/duur)
 
-Deze statistiek verwijst naar de hoeveelheid tijd die het duurde voordat PageView-gebeurtenissen werden geladen.
+Deze metrische waarde verwijst naar de hoeveelheid tijd die nodig was voor het laden van pagina weergave-gebeurtenissen.
 
 ```Kusto
 pageViews
@@ -440,9 +440,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="page-views-pageviewscount"></a>Paginaweergaven (pageViews/count)
+### <a name="page-views-pageviewscount"></a>Pagina weergaven (page views/aantal)
 
-Het aantal PageView-gebeurtenissen dat is geregistreerd met de TrackPageView() Application Insights API.
+Het aantal pagina weergave-gebeurtenissen dat is geregistreerd met de TrackPageView () Application Insights-API.
 
 ```Kusto
 pageViews
@@ -450,9 +450,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="sessions-sessionscount"></a>Sessies (sessies/tellingen)
+### <a name="sessions-sessionscount"></a>Sessies (sessies/aantal)
 
-Deze statistiek verwijst naar het aantal verschillende sessie-id's.
+Deze metrische waarde verwijst naar het aantal afzonderlijke sessie-Id's.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -461,9 +461,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="traces-tracescount"></a>Sporen (sporen/telling)
+### <a name="traces-tracescount"></a>Traceringen (traceringen/aantal)
 
-Het aantal traceringsverklaringen dat is vastgelegd met de TrackTrace() Application Insights API-aanroep.
+Het aantal trace-instructies dat is geregistreerd met de TrackTrace () Application Insights-API-aanroep.
 
 ```Kusto
 traces
@@ -473,7 +473,7 @@ traces
 
 ### <a name="users-userscount"></a>Gebruikers (gebruikers/aantal)
 
-Het aantal verschillende gebruikers dat toegang heeft tot uw toepassing. De nauwkeurigheid van deze statistiek kan aanzienlijk worden beïnvloed door telemetriebemonstering en -filtering.
+Het aantal afzonderlijke gebruikers die toegang hebben tot uw toepassing. De nauw keurigheid van deze metriek kan aanzienlijk worden beïnvloed door het gebruik van een telemetrie-steek proef en filters.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -482,9 +482,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="users-authenticated-usersauthenticated"></a>Gebruikers, Geverifieerd (gebruikers/geverifieerd)
+### <a name="users-authenticated-usersauthenticated"></a>Gebruikers, geverifieerd (gebruikers/geverifieerd)
 
-Het aantal verschillende gebruikers dat zich heeft geverifieerd in uw toepassing.
+Het aantal afzonderlijke gebruikers dat is geverifieerd in uw toepassing.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings

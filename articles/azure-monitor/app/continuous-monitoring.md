@@ -1,102 +1,102 @@
 ---
-title: Continue bewaking van uw DevOps-releasepijplijn met Azure Pipelines en Azure Application Insights | Microsoft Documenten
-description: Geeft instructies om snel continue monitoring in te stellen met Application Insights
+title: Continue bewaking van uw DevOps release-pijp lijn met Azure-pijp lijnen en Azure-toepassing inzichten | Microsoft Docs
+description: Biedt instructies voor het snel instellen van doorlopende bewaking met Application Insights
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655392"
 ---
-# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Continue bewaking toevoegen aan uw releasepijplijn
+# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Doorlopende bewaking aan uw release pijplijn toevoegen
 
-Azure Pipelines integreert met Azure Application Insights om continue bewaking van uw DevOps-releasepijplijn mogelijk te maken gedurende de hele levenscyclus van softwareontwikkeling. 
+Azure-pijp lijnen worden geïntegreerd met Azure-toepassing Insights, zodat uw DevOps-release pijplijn gedurende de levens cyclus van software ontwikkeling voortdurend kan worden bewaakt. 
 
-Met continue bewaking kunnen releasepijplijnen bewakingsgegevens van Application Insights en andere Azure-bronnen bevatten. Wanneer de releasepijplijn een Application Insights-waarschuwing detecteert, kan de pijplijn de implementatie poortof terugdraaien totdat de waarschuwing is opgelost. Als alle controles verlopen, kunnen implementaties automatisch doorgaan van de test tot de productie, zonder handmatige interventie. 
+Met continue bewaking kunnen release pijplijnen bewakings gegevens omvatten van Application Insights en andere Azure-resources. Wanneer de release-pijp lijn een Application Insights waarschuwing detecteert, kan de pijp lijn de implementatie destappen of terugdraaien totdat de waarschuwing is opgelost. Als alle controles zijn geslaagd, kunnen implementaties automatisch door gaan, van het testen van de gehele productie, zonder hand matige tussen komst. 
 
 ## <a name="configure-continuous-monitoring"></a>Continue bewaking configureren
 
-1. Selecteer in [Azure DevOps](https://dev.azure.com)een organisatie en project.
+1. Selecteer een organisatie en project in [Azure DevOps](https://dev.azure.com).
    
-1. Selecteer in het linkermenu van de projectpagina de optie > **Pijplijnreleases**. **Pipelines** 
+1. Selecteer in het menu links van de pagina project **pijp lijnen** > -**releases**. 
    
-1. Plaats de pijl naast **Nieuw** en selecteer **Nieuwe releasepijplijn**. Als u nog geen pijplijn hebt, selecteert u **Nieuwe pijplijn** op de pagina die wordt weergegeven.
+1. Vervolg de pijl naast **Nieuw** en selecteer **nieuwe release pijplijn**. Als u nog geen pijp lijn hebt, selecteert u **nieuwe pijp lijn** op de pagina die wordt weer gegeven.
    
-1. Zoek **in** het deelvenster Een sjabloon selecteren naar en selecteer **Azure App Service-implementatie met continue bewaking**en selecteer Vervolgens **Toepassen**. 
+1. Zoek en selecteer in het deel venster **sjabloon selecteren** de optie **Azure app service implementatie met doorlopende bewaking**en selecteer vervolgens **Toep assen**. 
 
-   ![Releasepijplijn voor nieuwe Azure Pipelines](media/continuous-monitoring/001.png)
+   ![Nieuwe release pijplijn voor Azure-pijp lijnen](media/continuous-monitoring/001.png)
 
-1. Selecteer **in het** vak Fase 1 de hyperlink naar **Fasetaken weergeven.**
+1. Selecteer in het vak **fase 1** de Hyper link om **fase taken weer te geven.**
 
-   ![Fasetaken weergeven](media/continuous-monitoring/002.png)
+   ![Fase taken weer geven](media/continuous-monitoring/002.png)
 
-1. Voer in **het configuratievenster van fase 1** de volgende velden in: 
+1. In het deel venster **fase 1** -configuratie vult u de volgende velden in: 
 
     | Parameter        | Waarde |
    | ------------- |:-----|
-   | **Fasenaam**      | Geef een artiestennaam op of laat deze achter in **fase 1**. |
-   | **Azure-abonnement** | Devalerplaats en selecteer het gekoppelde Azure-abonnement dat u wilt gebruiken.|
-   | **App-type** | Val neer en selecteer het type app. |
-   | **Naam app-service** | Voer de naam van uw Azure App Service in. |
-   | **Naam resourcegroep voor toepassingsinzichten**    | Laat de brongroep die u wilt gebruiken en selecteer de brongroep. |
-   | **Naam van application Insights-bron** | Devallijst en selecteer de resource Application Insights voor de door u geselecteerde resourcegroep.
+   | **Fasenaam**      | Geef een naam op voor de fase of geef deze op in **fase 1**. |
+   | **Azure-abonnement** | Vervolg keuzelijst en selecteer het gekoppelde Azure-abonnement dat u wilt gebruiken.|
+   | **App-type** | Vervolg keuzelijst en selecteer het type app. |
+   | **App Service naam** | Voer de naam van uw Azure App Service in. |
+   | **Naam van de resource groep voor Application Insights**    | Vervolg keuzelijst en selecteer de resource groep die u wilt gebruiken. |
+   | **Resource naam Application Insights** | Vervolg keuzelijst en selecteer de Application Insights resource voor de resource groep die u hebt geselecteerd.
 
-1. Als u de pijplijn wilt opslaan met standaardinstellingen voor waarschuwingsregels, selecteert **u Opslaan** rechtsboven in het azure devOps-venster. Voer een beschrijvende opmerking in en selecteer **OK**.
+1. Als u de pijp lijn met de standaard instellingen voor waarschuwings regels wilt opslaan, selecteert u in het Azure DevOps-venster rechtsboven **Opslaan** . Voer een beschrijvende opmerking in en selecteer **OK**.
 
-## <a name="modify-alert-rules"></a>Waarschuwingsregels wijzigen
+## <a name="modify-alert-rules"></a>Waarschuwings regels wijzigen
 
-De **Azure App Service-implementatie met sjabloon voor continue bewaking** heeft vier waarschuwingsregels: **Beschikbaarheid,** **Mislukte aanvragen,** **serverresponstijd**en **serveruitzonderingen**. U meer regels toevoegen of de regelinstellingen wijzigen om aan uw serviceniveaubehoeften te voldoen. 
+Out of box heeft de **Azure app service-implementatie met continue monitoring** sjabloon vier waarschuwings regels: **Beschik baarheid**, **mislukte aanvragen**, **reactie tijd van server**en **Server uitzonderingen**. U kunt meer regels toevoegen of de regel instellingen wijzigen om te voldoen aan de vereisten van uw service niveau. 
 
-Ga als u de instellingen van de waarschuwingsregel wijzigen:
+Instellingen voor waarschuwings regels wijzigen:
 
-1. Selecteer in het linkerdeelvenster van de releasepijplijnpagina de optie **Waarschuwingen voor toepassingsinzichten configureren**.
+1. Selecteer in het linkerdeel venster van de pagina release-pijp lijn de optie **Application Insights waarschuwingen configureren**.
 
-1. Selecteer in het deelvenster **Azure Monitor Alerts** de ellips **...** naast **Waarschuwingsregels**.
+1. Selecteer in het deel venster **waarschuwingen Azure monitor** het beletsel teken **...** naast **waarschuwings regels**.
    
-1. Selecteer in het dialoogvenster **Waarschuwingsregels** het vervolgkeuzesymbool naast een waarschuwingsregel, zoals **Beschikbaarheid**. 
+1. Selecteer in het dialoog venster **waarschuwings regels** de vervolg keuzelijst naast een waarschuwings regel, zoals **Beschik baarheid**. 
    
-1. Wijzig de **drempelwaarde** en andere instellingen om aan uw vereisten te voldoen.
+1. Wijzig de **drempel waarden** en andere instellingen om te voldoen aan uw vereisten.
    
    ![Waarschuwing wijzigen](media/continuous-monitoring/003.png)
    
-1. Selecteer **OK**en selecteer **Opslaan** rechtsboven in het azure devOps-venster. Voer een beschrijvende opmerking in en selecteer **OK**.
+1. Selecteer **OK**en selecteer vervolgens **Opslaan** in de rechter bovenhoek in het Azure DevOps-venster. Voer een beschrijvende opmerking in en selecteer **OK**.
 
-## <a name="add-deployment-conditions"></a>Implementatievoorwaarden toevoegen
+## <a name="add-deployment-conditions"></a>Implementatie voorwaarden toevoegen
 
-Wanneer u implementatiepoorten toevoegt aan uw releasepijplijn, voorkomt een waarschuwing die de ingestelde drempelwaarden overschrijdt, ongewenste releasepromotie. Zodra u de waarschuwing hebt opgelost, kan de implementatie automatisch worden gestart.
+Wanneer u implementatie-Gates toevoegt aan uw release pijplijn, voor komt een waarschuwing die de drempel waarden overschrijdt die u instelt, voor komt een ongewenste release promotie. Zodra u de waarschuwing hebt opgelost, kan de implementatie automatisch worden voortgezet.
 
-Ga als u implementatiepoorten toevoegen:
+Implementatie-Gates toevoegen:
 
-1. Selecteer op de hoofdpijplijnpagina onder **Stadia**het symbool **Voorimplementatievoorwaarden** of **voorwaarden na implementatie,** afhankelijk van welke fase een continue bewakingspoort nodig heeft.
+1. Selecteer op de hoofd pagina van de pijp lijn onder **stadia**het symbool **voor waarden vóór de implementatie** of na de **implementatie** , afhankelijk van welke fase een continue bewakings poort nodig heeft.
    
-   ![Voorwaarden voor implementatie](media/continuous-monitoring/004.png)
+   ![Voor waarden voorafgaand aan implementatie](media/continuous-monitoring/004.png)
    
-1. Stel **gates** in het configuratievenster **voor de randvan de implementatie** in op **Ingeschakeld**.
+1. Stel in het configuratie venster **voor waarden voor voor implementatie** de **poorten** in op **ingeschakeld**.
    
-1. Selecteer naast **Implementatiepoorten**de optie **Toevoegen**.
+1. Selecteer **toevoegen**naast **implementatie poorten**.
    
-1. Selecteer **Query Azure Monitor-waarschuwingen** in het vervolgkeuzemenu. Met deze optie hebt u toegang tot zowel Azure Monitor- als Application Insights-waarschuwingen.
+1. Selecteer **Query Azure monitor waarschuwingen** in het vervolg keuzemenu. Met deze optie krijgt u toegang tot zowel Azure Monitor als Application Insights-waarschuwingen.
    
-   ![Azure-monitorwaarschuwingen voor Query](media/continuous-monitoring/005.png)
+   ![Azure Monitor waarschuwingen voor query's](media/continuous-monitoring/005.png)
    
-1. Voer **onder Evaluatieopties**de gewenste waarden in voor instellingen zoals De tijd tussen de herevaluatie van poorten en De **time-out** **waarna gates mislukken.** 
+1. Onder **evaluatie opties**voert u de gewenste waarden in voor instellingen, zoals **de tijd tussen het opnieuw evalueren van poorten** en **de time-out waarna de poorten mislukken**. 
 
-## <a name="view-release-logs"></a>Releaselogboeken weergeven
+## <a name="view-release-logs"></a>Release logboeken weer geven
 
-U het gedrag van de implementatiepoort en andere releasestappen zien in de releaselogboeken. Ga als u de logboeken openen:
+U kunt het gedrag van de implementatie poort en andere release stappen in de release logboeken bekijken. De logboeken openen:
 
-1. Selecteer **Releases** in het linkermenu van de pijplijnpagina. 
+1. Selecteer **releases** in het menu links van de pijplijn pagina. 
    
 1. Selecteer een release. 
    
-1. Selecteer **onder Stadia**een willekeurig stadium om een releasesamenvatting weer te geven. 
+1. Selecteer onder **fases**een wille keurige fase om een release overzicht weer te geven. 
    
-1. Als u logboeken wilt weergeven, selecteert **u Logboeken weergeven** in het releaseoverzicht, selecteert u de hyperlink **Geslaagd** of **Mislukt** in een willekeurig stadium of zweeft u over een fase en selecteert **u Logboeken**. 
+1. Als u logboeken wilt weer geven, selecteert u **Logboeken weer geven** in het overzicht van de release, selecteert u de Hyper link **geslaagd** of **mislukt** in een wille keurig stadium, of **beweegt u de**muis aanwijzer over een wille keurig 
    
-   ![Releaselogboeken weergeven](media/continuous-monitoring/006.png)
+   ![Release logboeken weer geven](media/continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [azure pipelines-documentatie](https://docs.microsoft.com/azure/devops/pipelines)voor meer informatie over Azure Pipelines.
+Raadpleeg de [documentatie over Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines)voor meer informatie over Azure-pijp lijnen.

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-werkmappen die parameters maken
-description: Complexe rapportage vereenvoudigen met vooraf gebouwde en aangepaste geparametereerde werkmappen
+title: Azure Monitor werkmappen-para meters maken
+description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,78 +10,78 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658214"
 ---
-# <a name="workbook-parameters"></a>Werkmapparameters
+# <a name="workbook-parameters"></a>Werkmap parameters
 
-Met parameters kunnen auteurs van werkmapinvoer van de consumenten verzamelen en ernaar verwijzen in andere delen van de werkmap , meestal om de resultatenset te bereiken of de juiste visual in te stellen. Het is een belangrijke mogelijkheid waarmee auteurs interactieve rapporten en ervaringen kunnen maken. 
+Met para meters kunnen auteurs van de werkmap invoer van de consumenten verzamelen en ernaar verwijzen in andere delen van de werkmap. meestal kunt u het bereik van de resultatenset of de juiste Visual instellen. Het is een belang rijke functie waarmee auteurs interactieve rapporten en ervaringen kunnen bouwen. 
 
-Met werkmappen u bepalen hoe uw parameterbesturingselementen aan consumenten worden gepresenteerd : tekstvak versus drop down, single- versus multi-select, waarden uit tekst, JSON, KQL of Azure Resource Graph, enz.  
+Met werkmappen kunt u bepalen hoe uw parameter besturings elementen worden weer gegeven aan consumenten: tekstvak versus vervolg keuzelijst, enkelvoudige en meervoudige selectie, waarden van Text, JSON, KQL of Azure resource Graph, enzovoort.  
 
-Ondersteunde parametertypen zijn:
-* [Tijd](workbooks-time.md) - stelt een gebruiker in staat om te kiezen uit vooraf ingevulde tijdsbereiken of een aangepast bereik te selecteren
-* [Vervolgkeuzelijst](workbooks-dropdowns.md) - stelt een gebruiker in staat om te kiezen uit een waarde of set waarden
-* [Tekst](workbooks-text.md) - stelt een gebruiker in staat om willekeurige tekst in te voeren
-* [Resource](workbooks-resources.md) - stelt een gebruiker in staat om een of meer Azure-bronnen te selecteren
-* [Abonnement](workbooks-resources.md) - stelt een gebruiker in staat een of meer Azure-abonnementsbronnen te selecteren
-* Resourcetype - stelt een gebruiker in staat een of meer waarden voor Azure-bronnentype te selecteren
-* Locatie - stelt een gebruiker in staat een of meer Azure-locatiewaarden te selecteren
+Ondersteunde parameter typen zijn:
+* [Tijd](workbooks-time.md) : Hiermee kan een gebruiker kiezen uit vooraf ingevulde Peri Oden of een aangepast bereik selecteren
+* [Vervolg keuzelijst](workbooks-dropdowns.md) : Hiermee kan een gebruiker kiezen uit een waarde of set waarden
+* [Tekst](workbooks-text.md) : Hiermee kan een gebruiker wille keurige tekst invoeren
+* [Resource](workbooks-resources.md) : Hiermee kan een gebruiker een of meer Azure-resources selecteren
+* [Abonnement](workbooks-resources.md) : Hiermee kan een gebruiker een of meer Azure-abonnements resources selecteren
+* Resource type: Hiermee kan een gebruiker een of meer waarden van het Azure-resource type selecteren
+* Locatie: Hiermee kan een gebruiker een of meer Azure-locatie waarden selecteren
 
-Naar deze parameterwaarden kan in andere delen van werkmappen worden verwezen, hetzij via bindingen of waardeuitbreidingen.
+U kunt naar deze parameter waarden verwijzen in andere delen van werkmappen door middel van bindingen of waarde-uitbrei dingen.
 
-## <a name="creating-a-parameter"></a>Een parameter maken
-1. Begin met een lege werkmap in de bewerkingsmodus.
-2. Kies _Parameters toevoegen_ in de koppelingen in de werkmap.
-3. Klik op de blauwe _knop Parameter toevoegen._
-4. Voer in het nieuwe parametervenster dat wordt weergegeven:
-    1. Parameternaam: `TimeRange` *(merk op dat __parameternamen__ **geen** spaties of speciale tekens kunnen bevatten)*
-    2. Weergavenaam: `Time Range` * __(weergavenamen__ kunnen echter spaties, speciale tekens, emoji's, enz.)*  
-    2. Parametertype:`Time range picker`
+## <a name="creating-a-parameter"></a>Een para meter maken
+1. Beginnen met een lege werkmap in de bewerkings modus.
+2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
+3. Klik op de knop Blue _para meter toevoegen_ .
+4. Typ in het deel venster nieuwe para meters dat verschijnt:
+    1. Parameter naam: `TimeRange` *(de parameter __namen__ **mogen geen** spaties of speciale tekens bevatten)*
+    2. Weergave naam: `Time Range` *( __weergave namen__ mogen echter spaties, speciale tekens, Emoji, enzovoort) bevatten.*  
+    2. Parameter type:`Time range picker`
     3. Vereist:`checked`
-    4. Beschikbare tijdsbereiken: Laatste uur, Laatste 12 uur, Laatste 24 uur, Laatste 48 uur, Laatste 3 dagen, Laatste 7 dagen en Aangepaste tijdbereikselectie toestaan
-5. Kies 'Opslaan' op de werkbalk om de parameter te maken.
+    4. Beschik bare Peri Oden: vorig uur, laatste 12 uur, afgelopen 24 uur, afgelopen 48 uur, afgelopen 3 dagen, afgelopen 7 dagen en aangepast tijds bereik toestaan
+5. Kies opslaan op de werk balk om de para meter te maken.
 
-   ![Afbeelding met de creatie van een parameter voor tijdsbereik](./media/workbooks-parameters/time-settings.png)
+   ![Afbeelding van het maken van een tijds bereik parameter](./media/workbooks-parameters/time-settings.png)
 
-Dit is hoe de werkmap eruit zal zien in read-mode, in de "Pillen" stijl.
+Zo ziet de werkmap eruit als Lees modus, in de stijl "pills".
 
-   ![Afbeelding met een parameter voor tijdbereik in de leesmodus](./media/workbooks-parameters/parameters-time.png)
+   ![Afbeelding die een tijds bereik parameter weergeeft in de Lees modus](./media/workbooks-parameters/parameters-time.png)
 
-## <a name="referencing-a-parameter"></a>Een parameter verwijzen
-### <a name="via-bindings"></a>Via Bindings
-1. Voeg een querybesturingselement toe aan de werkmap en selecteer een Application Insights-bron.
-2. Open de vervolgkeuzelijst _Tijdbereik_ en selecteer de `Time Range` optie in de sectie Parameters onderaan.
-3. Hiermee wordt de parameter tijdbereik gekoppeld aan het tijdsbereik van de grafiek. De tijdsomvang van de voorbeeldquery is nu 24 uur.
+## <a name="referencing-a-parameter"></a>Verwijzen naar een para meter
+### <a name="via-bindings"></a>Via bindingen
+1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
+2. Open de vervolg keuzelijst _tijds bereik_ en selecteer in `Time Range` het gedeelte para meters onderaan de optie.
+3. Hiermee wordt de tijds bereik parameter gebonden aan het tijds bereik van de grafiek. Het tijds bereik van de voorbeeld query is nu de afgelopen 24 uur.
 4. Query uitvoeren om de resultaten te bekijken
 
-    ![Afbeelding met een parameter voor tijdsbereik waarnaar wordt verwezen via bindingen](./media/workbooks-parameters/time-binding.png)
+    ![Afbeelding van een tijds bereik parameter waarnaar wordt verwezen via bindingen](./media/workbooks-parameters/time-binding.png)
 
 ### <a name="in-kql"></a>In KQL
-1. Voeg een querybesturingselement toe aan de werkmap en selecteer een Application Insights-bron.
-2. Voer in de KQL een tijdbereikfilter in met de parameter:`| where timestamp {TimeRange}`
-3. Dit breidt op queryevaluatietijd uit tot `| where timestamp > ago(1d)`, dat is de tijdbereikwaarde van de parameter.
+1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
+2. Voer in het KQL een tijd bereik filter in met behulp van de para meter:`| where timestamp {TimeRange}`
+3. Dit wordt uitgebreid naar de evaluatie tijd van `| where timestamp > ago(1d)`de query tot, dat wil zeggen de waarde voor het tijds bereik van de para meter.
 4. Query uitvoeren om de resultaten te bekijken
 
-    ![Afbeelding met een tijdsbereik waarnaar wordt verwezen in KQL](./media/workbooks-parameters/time-in-code.png)
+    ![Afbeelding met een tijd bereik waarnaar wordt verwezen in KQL](./media/workbooks-parameters/time-in-code.png)
 
 ### <a name="in-text"></a>In tekst 
-1. Voeg een tekstbesturingselement toe aan de werkmap.
-2. Voer in de afwaardering`The chosen time range is {TimeRange:label}`
-3. _Gereed bewerken kiezen_
-4. Het tekstbesturingselement toont tekst: _Het gekozen tijdsbereik is Laatste 24 uur_
+1. Voeg een besturings element tekst toe aan de werkmap.
+2. Voer in de prijs verlaging`The chosen time range is {TimeRange:label}`
+3. Kies _gereed bewerken_
+4. In het tekst besturings element wordt tekst weer gegeven: _het gekozen tijds bereik is afgelopen 24 uur_
 
-## <a name="parameter-options"></a>Parameteropties
-In de sectie `label` In _Tekst_ gebruikte de parameter in plaats van de waarde ervan. Parameters leggen verschillende dergelijke opties bloot, afhankelijk van het type - bijvoorbeeld tijdbereikkiezer staan waarde, label, query, begin, einde en korrel toe.
+## <a name="parameter-options"></a>Parameter opties
+In de sectie _in tekst_ is `label` de para meter gebruikt in plaats van de waarde. Para meters bieden verschillende dergelijke opties, afhankelijk van het type, bijvoorbeeld het tijds bereik dat waarden, labels, query's, begin, einde en korrel toestaan.
 
-Gebruik `Previews` de sectie van het deelvenster _Parameter bewerken_ om de uitbreidingsopties voor uw parameter te bekijken:
+Gebruik de `Previews` sectie in het deel venster _para meter bewerken_ om de uitbreidings opties voor uw para meter te bekijken:
 
-![Afbeelding met parameteropties voor tijdbereik](./media/workbooks-parameters/time-previews.png)
+![Afbeelding van de opties voor een tijds bereik parameter](./media/workbooks-parameters/time-previews.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ga aan de slag met](workbooks-visualizations.md) het leren van meer over werkmappen met veel uitgebreide visualisatiesopties.
-* [Beheer](workbooks-access-control.md) en deel de toegang tot uw werkmapbronnen.
+* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
+* De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.

@@ -1,6 +1,6 @@
 ---
-title: Een MPEG-DASH Adaptive Streaming Video insluiten in een HTML5-toepassing met DASH.js | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd hoe u een MPEG-DASH Adaptive Streaming Video insluit in een HTML5-toepassing met DASH.js.
+title: Een MPEG-DASH Adaptive streaming video insluiten in een HTML5-toepassing met DASH. js | Microsoft Docs
+description: In dit onderwerp ziet u hoe u een MPEG-DASH Adaptive streaming video kunt insluiten in een HTML5-toepassing met DASH. js.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77564853"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Een adaptieve MPEG-DASH-videostream insluiten in een HTML5-toepassing met DASH.js  
 
 ## <a name="overview"></a>Overzicht
-MPEG-DASH is een ISO-standaard voor het adaptieve streamen van video-inhoud, wat aanzienlijke voordelen biedt voor ontwikkelaars die hoogwaardige, adaptieve videostreaming willen leveren. Met MPEG-DASH past de videostream zich automatisch aan een lagere definitie aan wanneer het netwerk overbelast raakt. Dit vermindert de kans dat de kijker een "onderbroken" video ziet terwijl de speler de volgende seconden downloadt om af te spelen (dat wil zeggen, het vermindert de kans op buffering). Als netwerk congestie vermindert, zal de videospeler op zijn beurt terug te keren naar een hogere kwaliteit stream. Dit vermogen om de vereiste bandbreedte aan te passen resulteert ook in een snellere starttijd voor video. Dat betekent dat de eerste paar seconden kunnen worden afgespeeld in een snel te downloaden segment van lagere kwaliteit en vervolgens naar een hogere kwaliteit kunnen gaan zodra voldoende inhoud is gebufferd.
+MPEG-DASH is een ISO-standaard voor het adaptief streamen van video-inhoud, die grote voor delen biedt voor ontwikkel aars die een adaptieve video-streaming van hoge kwaliteit willen leveren. Met MPEG-DASH wordt de video stroom automatisch aangepast naar een lagere definitie wanneer het netwerk overbelast raakt. Dit verkleint de kans dat de viewer een ' onderbroken ' video ziet wanneer de speler de volgende paar seconden downloadt om af te spelen (dat wil zeggen, het vermindert de kans op buffering). Naarmate netwerk congestie vermindert, wordt de video speler weer omgezet in een stroom met hogere kwaliteit. Deze mogelijkheid om de vereiste band breedte aan te passen, resulteert ook in een snellere start tijd voor video. Dit betekent dat de eerste paar seconden kan worden afgespeeld in een snel-naar-down load-segment met lagere kwaliteit en vervolgens tot een hogere kwaliteit worden gebufferd wanneer voldoende inhoud is gefactureerd.
 
-Dash.js is een open-source MPEG-DASH videospeler geschreven in JavaScript. Het doel is om een robuuste, cross-platform speler die vrij kan worden hergebruikt in toepassingen die video afspelen vereisen. Het biedt MPEG-DASH afspelen in elke browser die de W3C Media Source Extensions (MSE) ondersteunt, vandaag dat is Chrome, Microsoft Edge, en IE11 (andere browsers hebben aangegeven hun intentie om MSE te ondersteunen). Voor meer informatie over DASH.js, js zie de GitHub dash.js repository.
+Dash. js is een open-source MPEG-DASH video speler geschreven in Java script. Het doel is om een robuuste, platformoverschrijdende speler te bieden die vrij kan worden hergebruikt in toepassingen waarvoor het afspelen van video vereist is. Het biedt MPEG-DASH Play in elke browser die ondersteuning biedt voor de MSE (Media Source Extensions) van W3C, dat nu Chrome, micro soft Edge en IE11 (andere browsers hebben aangegeven dat hun intentie ondersteuning biedt voor MSE). Zie de opslag plaats GitHub Dash. js voor meer informatie over streepje. js.
 
-## <a name="creating-a-browser-based-streaming-video-player"></a>Een browsergebaseerde streaming videospeler maken
-Als u een eenvoudige webpagina wilt maken die een videospeler met de verwachte besturingselementen zoals afspelen, pauzeren, terugspoelen enz.
+## <a name="creating-a-browser-based-streaming-video-player"></a>Een op een browser gebaseerde video speler voor streaming maken
+Als u een eenvoudige webpagina wilt maken waarin een video speler wordt weer gegeven met de verwachte besturings elementen zoals afspelen, onderbreken, terugspoelen enzovoort, moet u:
 
 1. Een HTML-pagina maken
-2. De videotag toevoegen
-3. Voeg de dash.js-speler toe
-4. Initialiseren van de speler
-5. Enkele CSS-stijl toevoegen
-6. Bekijk de resultaten in een browser die MSE implementeert
+2. De video code toevoegen
+3. De streepje. js-speler toevoegen
+4. De speler initialiseren
+5. Een bepaalde CSS-stijl toevoegen
+6. De resultaten weer geven in een browser die de MSE implementeert
 
-Het initialiseren van de speler kan worden voltooid in slechts een handvol regels JavaScript-code. Met behulp van dash.js is het echt zo eenvoudig om MPEG-DASH-video in te sluiten in uw browsergebaseerde toepassingen.
+Het initialiseren van de speler kan in slechts een aantal regels java script-code worden uitgevoerd. Met streepje. js is het heel eenvoudig om MPEG-DASH-video in te sluiten in uw op browser gebaseerde toepassingen.
 
 ## <a name="creating-the-html-page"></a>De HTML-pagina maken
-De eerste stap is het maken van **video** een standaard HTML-pagina met het video-element, sla dit bestand op als basicPlayer.html, zoals het volgende voorbeeld illustreert:
+De eerste stap is het maken van een standaard-HTML-pagina met het **video** -element, sla dit bestand op als basicPlayer. html, zoals in het volgende voor beeld wordt getoond:
 
 ```html
     <!DOCTYPE html>
@@ -54,17 +54,17 @@ De eerste stap is het maken van **video** een standaard HTML-pagina met het vide
     </html>
 ```
 
-## <a name="adding-the-dashjs-player"></a>De DASH.js-speler toevoegen
-Als u de dash.js-referentieimplementatie aan de toepassing wilt toevoegen, moet u het dash.all.js-bestand uit de nieuwste versie van dash.js-project halen. Dit moet worden opgeslagen in de JavaScript-map van uw toepassing. Dit bestand is een gemaksbestand dat alle benodigde dash.js-code samenbrengt in één bestand. Als je een kijkje neemt in de dash.js repository, vind je de individuele bestanden, testcode en nog veel meer, maar als je alleen dash.js wilt gebruiken, dan is het dash.all.js-bestand wat je nodig hebt.
+## <a name="adding-the-dashjs-player"></a>De streepje. js-speler toevoegen
+Als u de streepje. js-referentie-implementatie wilt toevoegen aan de toepassing, moet u het bestand Dash. all. js van de meest recente versie van Dash. js-project. Dit moet worden opgeslagen in de Java script-map van uw toepassing. Dit bestand is een handig bestand dat alle benodigde streepje. js-code samen met één bestand ophaalt. Als u de streepjes. js-opslag plaats hebt bekeken, kunt u de afzonderlijke bestanden, test code en nog veel meer vinden, maar als u wilt dat u geen streepje. js gebruikt, dan is het bestand Dash. all. js wat u nodig hebt.
 
-Als u de dash.js-speler aan uw toepassingen wilt toevoegen, voegt u een scripttag toe aan het hoofdgedeelte van basicPlayer.html:
+Als u de streepje. js-speler wilt toevoegen aan uw toepassingen, voegt u een script code toe aan de sectie Head van basicPlayer. html:
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 ```
 
-Maak vervolgens een functie om de speler te initialiseren wanneer de pagina wordt geladen. Voeg het volgende script toe na de regel waarin u dash.all.js laadt:
+Maak vervolgens een functie voor het initialiseren van de speler wanneer de pagina wordt geladen. Voeg het volgende script toe na de regel waarin u het streepje laadt. alle. js:
 
 ```html
     <script>
@@ -80,19 +80,19 @@ Maak vervolgens een functie om de speler te initialiseren wanneer de pagina word
     </script>
 ```
 
-Met deze functie wordt eerst een DashContext gemaakt. Dit wordt gebruikt om de toepassing voor een specifieke runtime-omgeving te configureren. Vanuit een technisch oogpunt definieert het de klassen die het framework voor afhankelijkheidsinjectie moet gebruiken bij het samenstellen van de toepassing. In de meeste gevallen gebruikt u Dash.di.DashContext.
+Met deze functie maakt u eerst een DashContext. Dit wordt gebruikt om de toepassing te configureren voor een specifieke runtime-omgeving. Vanuit het oogpunt van technische controle definieert het de klassen die het afhankelijkheids injectie raamwerk moet gebruiken bij het maken van de toepassing. In de meeste gevallen gebruikt u streepje. di. DashContext.
 
-Vervolgens u de primaire klasse van het dash.js-framework, MediaPlayer, instantiëren. Deze klasse bevat de kernmethoden die nodig zijn, zoals afspelen en pauzeren, beheert de relatie met het video-element en beheert ook de interpretatie van het MPD-bestand (Media Presentation Description), waarin de video wordt beschreven die moet worden afgespeeld.
+Vervolgens maakt u een exemplaar van de primaire klasse van het dash. js-Framework, Media Player. Deze klasse bevat de kern methoden zoals Play en PAUSE, beheert de relatie met het video-element en beheert ook de interpretatie van het bestand met de media Presentation Description (MPD), waarin de video wordt beschreven die moet worden afgespeeld.
 
-De functie opstarten() van de Klasse MediaPlayer wordt aangeroepen om ervoor te zorgen dat de speler klaar is om video af te spelen. De functie zorgt er onder andere voor dat alle benodigde klassen (zoals gedefinieerd door de context) zijn geladen. Zodra de speler klaar is, u het video-element eraan koppelen met behulp van de functie attachView(). De opstartfunctie stelt de MediaPlayer in staat om de videostream in het element te injecteren en ook het afspelen te regelen als dat nodig is.
+De functie Startup () van de klasse Media Player wordt aangeroepen om ervoor te zorgen dat de speler klaar is voor het afspelen van video. De functie zorgt er onder andere voor dat alle benodigde klassen (zoals gedefinieerd door de context) zijn geladen. Als de speler klaar is, kunt u het video-element aan het object koppelen met behulp van de functie attachView (). Met de functie startup kan de Media Player de video stroom in het-element injecteren en zo nodig ook het afspelen regelen.
 
-Geef de URL van het MPD-bestand door aan de MediaPlayer, zodat het op de hoogte is van de video die naar verwachting wordt afgespeeld. De zojuist gemaakte functie setupVideo() moet worden uitgevoerd zodra de pagina volledig is geladen. Doe dit door de onload gebeurtenis van het lichaamselement te gebruiken. Wijzig `<body>` uw element in:
+Geef de URL van het MPD-bestand door aan het Media Player, zodat het weet wat de video is die naar verwachting wordt afgespeeld. De functie setupVideo () die u zojuist hebt gemaakt, moet worden uitgevoerd zodra de pagina volledig is geladen. Dit doet u door de gebeurtenis OnLoad van het element body te gebruiken. Wijzig uw `<body>` element in:
 
 ```html
     <body onload="setupVideo()">
 ```
 
-Stel ten slotte de grootte van het video-element in met CSS. In een adaptieve streamingomgeving is dit vooral belangrijk omdat de grootte van de video die wordt afgespeeld kan veranderen naarmate het afspelen zich aanpast aan veranderende netwerkomstandigheden. In deze eenvoudige demo gewoon dwingen de video-element te worden 80% van de beschikbare browser venster door het toevoegen van de volgende CSS aan het hoofd gedeelte van de pagina:
+Stel tot slot de grootte van het video-element in met behulp van CSS. In een adaptieve streaming-omgeving is dit met name belang rijk, omdat de grootte van de video die wordt afgespeeld kan veranderen naarmate het afspelen wordt aangepast aan veranderende netwerk omstandigheden. In deze eenvoudige demo dwingt u het video-element gewoon te 80% van het beschik bare browser venster door de volgende CSS toe te voegen aan het hoofd gedeelte van de pagina:
 
 ```html
     <style>
@@ -104,7 +104,7 @@ Stel ten slotte de grootte van het video-element in met CSS. In een adaptieve st
 ```
 
 ## <a name="playing-a-video"></a>Een video afspelen
-Als u een video wilt afspelen, wijst u uw browser op het bestand basicPlayback.html en klikt u op afspelen op de weergegeven videospeler.
+Als u een video wilt afspelen, wijst u uw browser aan in het bestand basicPlayback. html en klikt u op afspelen op de video speler die wordt weer gegeven.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -114,5 +114,5 @@ Als u een video wilt afspelen, wijst u uw browser op het bestand basicPlayback.h
 
 ## <a name="see-also"></a>Zie ook
 
-[GitHub dash.js repository](https://github.com/Dash-Industry-Forum/dash.js) 
+[GitHub streepje. js-opslag plaats](https://github.com/Dash-Industry-Forum/dash.js) 
 

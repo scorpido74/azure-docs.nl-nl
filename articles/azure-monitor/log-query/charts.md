@@ -1,29 +1,29 @@
 ---
-title: Grafieken en diagrammen maken op azure monitorlogboekquery's | Microsoft Documenten
-description: Beschrijft verschillende visualisaties in Azure Monitor om uw logboekgegevens op verschillende manieren weer te geven.
+title: Grafieken en diagrammen maken op basis van Azure Monitor-logboek query's | Microsoft Docs
+description: Beschrijft verschillende visualisaties in Azure Monitor om uw logboek gegevens op verschillende manieren weer te geven.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670318"
 ---
-# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Grafieken en diagrammen maken op azure monitor-logboekquery's
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Grafieken en diagrammen maken op basis van Azure Monitor-logboek query's
 
 > [!NOTE]
-> U moet [geavanceerde aggregaties in Azure Monitor-logboekquery's](advanced-aggregations.md) voltooien voordat u deze les voltooit.
+> U moet [Geavanceerde aggregaties in azure monitor logboek query's](advanced-aggregations.md) volt ooien voordat u deze les kunt volt ooien.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In dit artikel worden verschillende visualisaties in Azure Monitor beschreven om uw logboekgegevens op verschillende manieren weer te geven.
+In dit artikel worden verschillende visualisaties in Azure Monitor beschreven om uw logboek gegevens op verschillende manieren weer te geven.
 
-## <a name="charting-the-results"></a>De resultaten in kaart brengen
-Controleer eerst hoeveel computers er per besturingssysteem zijn, in het afgelopen uur:
+## <a name="charting-the-results"></a>Grafieken van de resultaten
+Begin met het controleren van het aantal computers per besturings systeem, gedurende het afgelopen uur:
 
 ```Kusto
 Heartbeat
@@ -31,17 +31,17 @@ Heartbeat
 | summarize count(Computer) by OSType  
 ```
 
-Standaard worden resultaten weergegeven als een tabel:
+Standaard worden resultaten weer gegeven als een tabel:
 
 ![Tabel](media/charts/table-display.png)
 
-Als u een beter beeld wilt krijgen, selecteert u **Grafiek**en kiest u de optie **Cirkel** om de resultaten te visualiseren:
+Als u een betere weer gave wilt, selecteert u **grafiek**en kiest u de optie **cirkel** om de resultaten te visualiseren:
 
 ![Cirkeldiagram](media/charts/charts-and-diagrams-pie.png)
 
 
-## <a name="timecharts"></a>Tijddiagrammen
-Toon de gemiddelde, 50e en 95e percentile van processortijd in opslagbakken van 1 uur. De query genereert meerdere reeksen en u vervolgens selecteren welke reeksen u wilt weergeven in het tijddiagram:
+## <a name="timecharts"></a>Timecharts
+De gemiddelde, 50e en 95e percentielen van de processor tijd weer geven in de opslag locaties van 1 uur. De query genereert meerdere reeksen en u kunt vervolgens selecteren welke reeks moet worden weer gegeven in de tijd grafiek:
 
 ```Kusto
 Perf
@@ -50,13 +50,13 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-Selecteer de optie **Grafiek lijn:**
+Selecteer de weergave optie **lijn** diagram:
 
 ![Lijndiagram](media/charts/charts-and-diagrams-multiSeries.png)
 
-### <a name="reference-line"></a>Referentieregel
+### <a name="reference-line"></a>Referentie lijn
 
-Een referentieregel kan u helpen eenvoudig te identificeren of de statistiek een specifieke drempelwaarde heeft overschreden. Als u een lijn aan een grafiek wilt toevoegen, breidt u de gegevensset uit met een constante kolom:
+Met een referentie lijn kunt u gemakkelijk identificeren of de metriek een specifieke drempel waarde overschrijdt. Als u een lijn wilt toevoegen aan een grafiek, breidt u de gegevensset uit met een constante kolom:
 
 ```Kusto
 Perf
@@ -66,10 +66,10 @@ Perf
 | extend Threshold = 20
 ```
 
-![Referentieregel](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
+![Referentie lijn](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>Meerdere dimensies
-Meerdere expressies `by` in `summarize` de clausule van meerdere rijen maken in de resultaten, één voor elke combinatie van waarden.
+Meerdere expressies in de `by` component voor `summarize` het maken van meerdere rijen in de resultaten, één voor elke combi natie van waarden.
 
 ```Kusto
 SecurityEvent
@@ -77,16 +77,16 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Wanneer u de resultaten als een grafiek bekijkt, `by` wordt de eerste kolom van de component gebruikt. In het volgende voorbeeld wordt een gestapeld kolomdiagram weergegeven met de _Gebeurtenis-ID._ Afmetingen moeten van `string` type zijn, dus in dit voorbeeld wordt de _EventID_ naar de tekenreeks gegoten. 
+Wanneer u de resultaten weergeeft als een diagram, wordt de eerste kolom uit de `by` component gebruikt. In het volgende voor beeld ziet u een gestapeld kolom diagram met behulp van de gebeurtenis-naam _._ De dimensies moeten van `string` het type zijn, dus in dit voor beeld wordt de _gebeurtenis_ -activiteit geconverteerd naar een teken reeks. 
 
-![Gebeurtenis-ID voor staafdiagram](media/charts/charts-and-diagrams-multiDimension1.png)
+![Werk balk grafiek-gebeurtenis](media/charts/charts-and-diagrams-multiDimension1.png)
 
-U schakelen tussen door de vervolgkeuzelijst met de kolomnaam te selecteren. 
+U kunt scha kelen tussen door de vervolg keuzelijst te selecteren met de naam van de kolom. 
 
-![Rekeningtekst voor staafdiagram](media/charts/charts-and-diagrams-multiDimension2.png)
+![Account type van staaf diagram](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk andere lessen voor het gebruik van de [Kusto-querytaal](/azure/kusto/query/) met Azure Monitor-logboekgegevens:
+Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/) met Azure monitor-logboek gegevens:
 
 - [Tekenreeksbewerkingen](string-operations.md)
 - [Datum- en tijdbewerkingen](datetime-operations.md)
@@ -94,4 +94,4 @@ Bekijk andere lessen voor het gebruik van de [Kusto-querytaal](/azure/kusto/quer
 - [Geavanceerde aggregaties](advanced-aggregations.md)
 - [JSON en gegevensstructuren](json-data-structures.md)
 - [Geavanceerde query's schrijven](advanced-query-writing.md)
-- [Joins](joins.md)
+- [Samenvoegingen](joins.md)

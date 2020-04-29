@@ -1,6 +1,6 @@
 ---
-title: Subnet overschrijven azure traffic manager met Azure PowerShell | Microsoft Documenten
-description: In dit artikel u begrijpen hoe subnetoverschrijving van Traffic Manager wordt gebruikt om de routeringsmethode van een Traffic Manager-profiel te overschrijven om verkeer naar een eindpunt te leiden op basis van het IP-adres van de eindgebruiker via een vooraf gedefinieerd IP-bereik naar eindpunttoewijzingen met Azure Powershell.
+title: Het subnet van Azure Traffic Manager worden overschreven met behulp van Azure PowerShell | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe Traffic Manager subnet overschrijving wordt gebruikt om de routerings methode van een Traffic Manager profiel te onderdrukken voor het omleiden van verkeer naar een eind punt op basis van het IP-adres van de eind gebruiker via vooraf gedefinieerd IP-bereik voor eindpunt toewijzingen met behulp van Azure PowerShell.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -10,52 +10,52 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
 ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938421"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Subnet overschrijven van traffic manager met Azure Powershell
+# <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Traffic Manager subnet overschrijven met Azure Power shell
 
-Met subnetoverschrijven van Traffic Manager u de routeringsmethode van een profiel wijzigen.  De toevoeging van een overschrijving leidt het verkeer op basis van het IP-adres van de eindgebruiker met een vooraf gedefinieerd IP-bereik naar endpoint mapping. 
+Met Traffic Manager subnet override kunt u de routerings methode van een profiel wijzigen.  Door het toevoegen van een onderdrukking wordt verkeer doorgestuurd op basis van het IP-adres van de eind gebruiker met een vooraf gedefinieerd IP-bereik voor de toewijzing van eind punten. 
 
-## <a name="how-subnet-override-works"></a>Hoe subnetoverschrijving werkt
+## <a name="how-subnet-override-works"></a>Hoe subnet overschrijving werkt
 
-Wanneer subnetoverschrijvingen worden toegevoegd aan een profiel van verkeersbeheerder, controleert Traffic Manager eerst of er een subnetoverschrijving is voor het IP-adres van de eindgebruiker. Als er een wordt gevonden, wordt de DNS-query van de gebruiker naar het bijbehorende eindpunt geleid.  Als er geen toewijzing wordt gevonden, valt Traffic Manager terug op de oorspronkelijke routeringsmethode van het profiel. 
+Wanneer subnet onderdrukkingen worden toegevoegd aan een Traffic Manager-profiel, wordt door Traffic Manager eerst gecontroleerd of er een subnet wordt overschreven voor het IP-adres van de eind gebruiker. Als er een wordt gevonden, wordt de DNS-query van de gebruiker omgeleid naar het bijbehorende eind punt.  Als een toewijzing niet wordt gevonden, wordt Traffic Manager terugvallen op de oorspronkelijke routerings methode van het profiel. 
 
-De IP-adresbereiken kunnen worden opgegeven als CIDR-bereiken (bijvoorbeeld 1.2.3.0/24) of als adresbereiken (bijvoorbeeld 1.2.3.4-5.6.7.8). De IP-bereiken die aan elk eindpunt zijn gekoppeld, moeten uniek zijn voor dat eindpunt. Elke overlapping van IP-bereiken tussen verschillende eindpunten zorgt ervoor dat het profiel wordt geweigerd door Traffic Manager.
+De IP-adresbereiken kunnen worden opgegeven als CIDR-bereiken (bijvoorbeeld 1.2.3.0/24) of als adresbereiken (bijvoorbeeld 1.2.3.4-5.6.7.8). De IP-bereiken die zijn gekoppeld aan elk eind punt, moeten uniek zijn voor dat eind punt. Elke overlap ping van IP-bereiken tussen verschillende eind punten leidt ertoe dat het profiel wordt geweigerd door Traffic Manager.
 
-Er zijn twee soorten routeringsprofielen die subnetoverschrijvingen ondersteunen:
+Er zijn twee typen routerings profielen die ondersteuning bieden voor subnet onderdrukkingen:
 
-* **Geografisch** - Als Traffic Manager een subnetoverschrijving voor het IP-adres van de DNS-query vindt, wordt de query doorgerouteerd naar het eindpunt, ongeacht de status van het eindpunt.
-* **Prestaties** - Als Traffic Manager een subnetoverschrijving voor het IP-adres van de DNS-query vindt, wordt het verkeer alleen doorsturen naar het eindpunt als het in orde is.  Traffic Manager valt terug naar de performance routing heuristisch als het eindpunt voor subnetoverride niet in orde is.
+* **Geografisch** : als Traffic Manager een onderdrukking van het subnet voor het IP-adres van de DNS-query vindt, stuurt de query door naar het eind punt, ongeacht de status van het eind punt.
+* **Prestaties** : als Traffic Manager een onderdrukking van het subnet voor het IP-adres van de DNS-query vindt, wordt het verkeer alleen doorgestuurd naar het eind punt als dit in orde is.  Traffic Manager gaat terug naar de prestatie routering heuristisch als het subnet onderdrukkings eindpunt niet in orde is.
 
-## <a name="create-a-traffic-manager-subnet-override"></a>Een subnet overschrijven van een verkeersbeheer-subnet maken
+## <a name="create-a-traffic-manager-subnet-override"></a>Een Traffic Manager subnet overschrijven maken
 
-Als u een subnetoverschrijving voor Traffic Manager wilt maken, u Azure PowerShell gebruiken om de subnetten voor de overschrijving toe te voegen aan het eindpunt Traffic Manager.
+Als u een Traffic Manager subnet overschrijven wilt maken, kunt u Azure PowerShell gebruiken om de subnetten voor de onderdrukking toe te voegen aan het Traffic Manager-eind punt.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U de opdrachten uitvoeren die volgen in de [Azure Cloud Shell](https://shell.azure.com/powershell)of door PowerShell vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u PowerShell vanaf uw computer uitvoert, hebt u de Azure PowerShell-module, 1.0.0 of hoger, nodig. U kunt `Get-Module -ListAvailable Az` uitvoeren om de geïnstalleerde versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet `Login-AzAccount` u ook uitvoeren om u aan te melden bij Azure.
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module 1.0.0 of hoger nodig. U kunt uitvoeren `Get-Module -ListAvailable Az` om de geïnstalleerde versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Login-AzAccount` om u aan te melden bij Azure.
 
 
-1. **Haal het eindpunt van Traffic Manager op:**
+1. **Het Traffic Manager-eind punt ophalen:**
 
-    Als u het subnet overschrijven wilt inschakelen, haalt u het eindpunt op waaraan u de overschrijving wilt toevoegen en slaat u het op in een variabele met [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
+    Als u het overschrijven van het subnet wilt inschakelen, haalt u het eind punt op waaraan u de onderdrukking wilt toevoegen en slaat u het op in een variabele met [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
 
-    Vervang de naam, profielnaam en resourcegroepnaam door de waarden van het eindpunt dat u wijzigt.
+    Vervang de naam, PROFILENAME en ResourceGroupName door de waarden van het eind punt dat u wilt wijzigen.
 
     ```powershell
 
     $TrafficManagerEndpoint = Get-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup" -Type AzureEndpoints
 
     ```
-2. **Voeg het IP-adresbereik toe aan het eindpunt:**
+2. **Voeg het IP-adres bereik toe aan het eind punt:**
     
-    Als u het IP-adresbereik aan het eindpunt wilt toevoegen, gebruikt u [Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) om het bereik toe te voegen.
+    Als u het IP-adres bereik wilt toevoegen aan het eind punt, gebruikt u [add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) om het bereik toe te voegen.
 
     ```powershell
 
@@ -69,27 +69,27 @@ U de opdrachten uitvoeren die volgen in de [Azure Cloud Shell](https://shell.azu
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    Zodra de bereiken zijn toegevoegd, gebruikt u [Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) om het eindpunt bij te werken.
+    Zodra de bereiken zijn toegevoegd, gebruikt u [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) om het eind punt bij te werken.
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-Verwijdering van het IP-adresbereik kan worden voltooid met [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0).
+Het verwijderen van het IP-adres bereik kan worden voltooid met behulp van [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0).
 
-1.  **Haal het eindpunt van Traffic Manager op:**
+1.  **Het Traffic Manager-eind punt ophalen:**
 
-    Als u het subnet overschrijven wilt inschakelen, haalt u het eindpunt op waaraan u de overschrijving wilt toevoegen en slaat u het op in een variabele met [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
+    Als u het overschrijven van het subnet wilt inschakelen, haalt u het eind punt op waaraan u de onderdrukking wilt toevoegen en slaat u het op in een variabele met [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0).
 
-    Vervang de naam, profielnaam en resourcegroepnaam door de waarden van het eindpunt dat u wijzigt.
+    Vervang de naam, PROFILENAME en ResourceGroupName door de waarden van het eind punt dat u wilt wijzigen.
 
     ```powershell
 
     $TrafficManagerEndpoint = Get-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup" -Type AzureEndpoints
 
     ```
-2. **Verwijder het IP-adresbereik van het eindpunt:**
+2. **Het IP-adres bereik uit het eind punt verwijderen:**
 
     ```powershell
     
@@ -103,7 +103,7 @@ Verwijdering van het IP-adresbereik kan worden voltooid met [Remove-AzTrafficMan
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     Zodra de bereiken zijn verwijderd, gebruikt u [Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) om het eindpunt bij te werken.
+     Zodra de bereiken zijn verwijderd, gebruikt u [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) om het eind punt bij te werken.
 
     ```powershell
 
@@ -112,6 +112,6 @@ Verwijdering van het IP-adresbereik kan worden voltooid met [Remove-AzTrafficMan
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [verkeersrouteringsmethoden voor](traffic-manager-routing-methods.md)Traffic Manager .
+Meer informatie over methoden voor het [routeren](traffic-manager-routing-methods.md)van Traffic Manager verkeer.
 
-Meer informatie over de [methode voor het routeren van subnetverkeer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Meer informatie over het [subnet Traffic-routerings methode](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

@@ -1,33 +1,33 @@
 ---
-title: Azure Application Insights-telemetrie filteren in uw Java-webapp
-description: Verminder telemetrieverkeer door de gebeurtenissen die u niet hoeft te controleren, uit te filteren.
+title: Azure-toepassing Insights-telemetrie in uw Java-Web-app filteren
+description: Verminder telemetrie-verkeer door de gebeurtenissen die u niet hoeft te bewaken, te filteren.
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77659914"
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-web-app
+# <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-Web-app
 
-Filters bieden een manier om de telemetrie te selecteren die uw [Java-web-app naar Application Insights verzendt.](java-get-started.md) Er zijn een aantal kant-en-klare filters die u gebruiken, en u ook uw eigen aangepaste filters schrijven.
+Filters bieden een manier om de telemetrie te selecteren die uw [Java-Web-app naar Application Insights verzendt](java-get-started.md). Er zijn een aantal out-of-the-box filters die u kunt gebruiken, en u kunt ook uw eigen aangepaste filters schrijven.
 
-De out-of-the-box filters omvatten:
+De out-of-the-box filters zijn:
 
-* Ernstniveau traceren
-* Specifieke URL's, trefwoorden of antwoordcodes
-* Snelle antwoorden - dat wil zeggen, verzoeken waarop uw app snel heeft gereageerd
-* Specifieke gebeurtenisnamen
+* Ernst niveau van tracering
+* Specifieke Url's, tref woorden of antwoord codes
+* Snelle reacties-dat wil zeggen, aanvragen waarop uw app snel heeft gereageerd
+* Specifieke gebeurtenis namen
 
 > [!NOTE]
-> Filters scheeftrekken de statistieken van uw app. U bijvoorbeeld besluiten dat u, om trage reacties te diagnosticeren, een filter instelt om snelle responstijden te verwijderen. Maar u moet zich ervan bewust zijn dat de gemiddelde responstijden die door Application Insights worden gerapporteerd dan langzamer zijn dan de werkelijke snelheid en dat het aantal aanvragen kleiner is dan de werkelijke telling.
-> Als dit een probleem is, gebruikt u in plaats daarvan [Sampling.](../../azure-monitor/app/sampling.md)
+> Filters scheefen de metrische gegevens van uw app. U kunt bijvoorbeeld bepalen dat u bij het vaststellen van langzame reacties een filter wilt instellen om snelle reactie tijden te negeren. Maar u moet er rekening mee houden dat de gemiddelde reactie tijd die wordt gerapporteerd door Application Insights lager is dan de werkelijke snelheid en dat het aantal aanvragen kleiner is dan het werkelijke aantal.
+> Als dit een probleem is, gebruikt u in plaats daarvan [steek proeven](../../azure-monitor/app/sampling.md) .
 
 ## <a name="setting-filters"></a>Filters instellen
 
-Voeg in ApplicationInsights.xml `TelemetryProcessors` een sectie als dit voorbeeld toe:
+Voeg in ApplicationInsights. XML een `TelemetryProcessors` sectie toe, zoals in dit voor beeld:
 
 
 ```XML
@@ -80,11 +80,11 @@ Voeg in ApplicationInsights.xml `TelemetryProcessors` een sectie als dit voorbee
 
 
 
-[Inspecteer de volledige set ingebouwde processors.](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor)
+[Inspecteer de volledige set ingebouwde processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Ingebouwde filters
 
-### <a name="metric-telemetry-filter"></a>Metriek telemetrie, filter
+### <a name="metric-telemetry-filter"></a>Filter metrische telemetrie
 
 ```XML
 
@@ -93,10 +93,10 @@ Voeg in ApplicationInsights.xml `TelemetryProcessors` een sectie als dit voorbee
            </Processor>
 ```
 
-* `NotNeeded`- Door komma's gescheiden lijst met aangepaste metrische namen.
+* `NotNeeded`-Door komma's gescheiden lijst met aangepaste metrische namen.
 
 
-### <a name="page-view-telemetry-filter"></a>Telemetriefilter Paginaweergave
+### <a name="page-view-telemetry-filter"></a>Telemetrie-filter pagina weergave
 
 ```XML
 
@@ -107,12 +107,12 @@ Voeg in ApplicationInsights.xml `TelemetryProcessors` een sectie als dit voorbee
            </Processor>
 ```
 
-* `DurationThresholdInMS`- Duur verwijst naar de tijd die nodig is om de pagina te laden. Als dit is ingesteld, worden pagina's die sneller geladen zijn dan deze tijd niet gerapporteerd.
-* `NotNeededNames`- Door komma's gescheiden lijst met paginanamen.
-* `NotNeededUrls`- Door komma's gescheiden lijst met URL-fragmenten. `"home"` Filtert bijvoorbeeld alle pagina's met 'thuis' in de URL.
+* `DurationThresholdInMS`-De duur verwijst naar de tijd die nodig is om de pagina te laden. Als deze instelling is ingesteld, worden pagina's die sneller zijn geladen dan deze keer niet gerapporteerd.
+* `NotNeededNames`-Door komma's gescheiden lijst met pagina namen.
+* `NotNeededUrls`-Door komma's gescheiden lijst met URL-fragmenten. Hiermee `"home"` filtert u bijvoorbeeld alle pagina's met ' Home ' in de URL.
 
 
-### <a name="request-telemetry-filter"></a>Telemetriefilter aanvragen
+### <a name="request-telemetry-filter"></a>Telemetrie-filter aanvragen
 
 
 ```XML
@@ -126,11 +126,11 @@ Voeg in ApplicationInsights.xml `TelemetryProcessors` een sectie als dit voorbee
 
 
 
-### <a name="synthetic-source-filter"></a>Synthetisch bronfilter
+### <a name="synthetic-source-filter"></a>Synthetisch bron filter
 
-Hiermee filtert u alle telemetrie met waarden in de eigenschap SyntheticSource. Deze omvatten verzoeken van bots, spinnen en beschikbaarheid tests.
+Filtert alle telemetrie die waarden hebben in de eigenschap SyntheticSource. Dit zijn onder andere aanvragen van bots, spiders en beschikbaarheids testen.
 
-Filter telemetrie voor alle synthetische aanvragen:
+Telemetrie voor alle synthetische aanvragen filteren:
 
 
 ```XML
@@ -138,7 +138,7 @@ Filter telemetrie voor alle synthetische aanvragen:
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Telemetrie filteren voor specifieke synthetische bronnen:
+Telemetrie filteren op specifieke synthetische bronnen:
 
 
 ```XML
@@ -148,11 +148,11 @@ Telemetrie filteren voor specifieke synthetische bronnen:
            </Processor>
 ```
 
-* `NotNeeded`- Door komma's gescheiden lijst van synthetische bronnamen.
+* `NotNeeded`-Door komma's gescheiden lijst met synthetische bron namen.
 
-### <a name="telemetry-event-filter"></a>Telemetriegebeurtenis, filter
+### <a name="telemetry-event-filter"></a>Telemetrie-gebeurtenis Filter
 
-Hiermee worden aangepaste gebeurtenissen (aangemeld met [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)gelogd.
+Filtert aangepaste gebeurtenissen (geregistreerd met behulp van [track Event ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -163,12 +163,12 @@ Hiermee worden aangepaste gebeurtenissen (aangemeld met [TrackEvent()](../../azu
 ```
 
 
-* `NotNeededNames`- Door komma's gescheiden lijst met gebeurtenisnamen.
+* `NotNeededNames`-Door komma's gescheiden lijst met gebeurtenis namen.
 
 
 ### <a name="trace-telemetry-filter"></a>Telemetrie-filter traceren
 
-Filters logtraces (ingelogd met [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) of een [logging framework collector).](java-trace-logs.md)
+Filtert logboek traceringen (geregistreerd met behulp van [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) of een [logboek registratie van de Framework-logging](java-trace-logs.md)).
 
 ```XML
 
@@ -178,19 +178,19 @@ Filters logtraces (ingelogd met [TrackTrace()](../../azure-monitor/app/api-custo
 ```
 
 * `FromSeverityLevel`geldige waarden zijn:
-  *  UIT - Filter alle sporen
-  *  TRACE - Geen filtering. gelijk aan Trace-niveau
-  *  INFO - Trace-niveau filteren
-  *  WAARSCHUWING - Trace en INFO filteren
-  *  FOUT - Filter WAARSCHUWEN, INFO, TRACE
-  *  KRITISCH - filter alles behalve KRITISCH
+  *  ALLE traceringen uit het filter uitschakelen
+  *  TRACERen: geen filters. is gelijk aan traceer niveau
+  *  INFO-traceer niveau uitfilteren
+  *  WAARSCHUWEN-TRACERing en informatie filteren
+  *  FOUT-filter voor waarschuwing, INFO, TRACERing
+  *  KRITIEK: alle alle maar essentiële filters uitfilteren
 
 
 ## <a name="custom-filters"></a>Aangepaste filters
 
-### <a name="1-code-your-filter"></a>1. Codeer uw filter
+### <a name="1-code-your-filter"></a>1. de code van uw filter
 
-Maak in uw code een `TelemetryProcessor`klasse die implementeert:
+Maak in uw code een klasse die het `TelemetryProcessor`volgende implementeert:
 
 ```Java
 
@@ -227,9 +227,9 @@ Maak in uw code een `TelemetryProcessor`klasse die implementeert:
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Uw filter aanroepen in het configuratiebestand
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. aanroepen van het filter in het configuratie bestand
 
-In ApplicationInsights.xml:
+In ApplicationInsights. XML:
 
 ```XML
 
@@ -246,9 +246,9 @@ In ApplicationInsights.xml:
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. Beroep doen op uw filter (Java Spring)
+### <a name="3-invoke-your-filter-java-spring"></a>3. het filter aanroepen (Java-lente)
 
-Voor toepassingen op basis van het Spring framework moeten aangepaste telemetrieprocessors worden geregistreerd in uw hoofdtoepassingsklasse als boon. Ze zullen dan worden autowired wanneer de toepassing begint.
+Voor toepassingen op basis van het lente-Framework moeten aangepaste telemetrie-processors als een bonen worden geregistreerd in uw hoofd toepassings klasse. Ze worden vervolgens automatisch bekabeld wanneer de toepassing wordt gestart.
 
 ```Java
 @Bean
@@ -257,15 +257,15 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-U moet uw eigen filterparameters `application.properties` maken in en gebruik maken van het externe configuratiekader van Spring Boot om deze parameters door te geven aan uw aangepaste filter. 
+U moet uw eigen filter parameters maken in `application.properties` en gebruikmaken van het externe configuratie raamwerk met lente opstarten om deze para meters door te geven aan uw aangepaste filter. 
 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 *Mijn filter werkt niet.*
 
-* Controleer of u geldige parameterwaarden hebt opgegeven. Duur moet bijvoorbeeld gehele getallen zijn. Ongeldige waarden zorgen ervoor dat het filter wordt genegeerd. Als uw aangepaste filter een uitzondering van een constructor of ingestelde methode gooit, wordt deze genegeerd.
+* Controleer of u geldige parameter waarden hebt ingevoerd. Bijvoorbeeld, de duur moet een geheel getal zijn. Ongeldige waarden zorgen ervoor dat het filter wordt genegeerd. Als uw aangepaste filter een uitzonde ring genereert van een constructor of set-methode, wordt deze genegeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Sampling](../../azure-monitor/app/sampling.md) - Beschouw sampling als een alternatief dat uw statistieken niet scheeftrekt.
+* [Bemonsteren](../../azure-monitor/app/sampling.md) : beschouw de steek proeven als een alternatief die uw metrische gegevens niet scheef stelt.

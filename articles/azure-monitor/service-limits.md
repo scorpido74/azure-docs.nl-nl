@@ -1,21 +1,21 @@
 ---
-title: Azure Monitor-servicelimieten | Microsoft Documenten
-description: Geeft limieten op in verschillende gebieden van Azure Monitor.
+title: Limieten voor Azure Monitor-service | Microsoft Docs
+description: Een lijst met limieten in verschillende gebieden van Azure Monitor.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657908"
 ---
-# <a name="azure-monitor-service-limits"></a>Azure Monitor-servicelimieten
+# <a name="azure-monitor-service-limits"></a>Azure Monitor-service limieten
 
-In dit artikel worden limieten weergegeven in verschillende gebieden van Azure Monitor.
+In dit artikel vindt u een overzicht van de limieten op verschillende gebieden van Azure Monitor.
 
 ## <a name="alerts"></a>Waarschuwingen
 
@@ -25,7 +25,7 @@ In dit artikel worden limieten weergegeven in verschillende gebieden van Azure M
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
 
-## <a name="log-queries-and-language"></a>Logboekquery's en taal
+## <a name="log-queries-and-language"></a>Query's en taal in logboek registreren
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
 
@@ -39,6 +39,6 @@ In dit artikel worden limieten weergegeven in verschillende gebieden van Azure M
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Monitor-prijzen](https://azure.microsoft.com/pricing/details/monitor/)
-- [Het gebruik en de geschatte kosten in Azure Monitor bewaken](platform/usage-estimated-costs.md)
+- [Azure Monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/)
+- [Gebruik en geschatte kosten in Azure Monitor bewaken](platform/usage-estimated-costs.md)
 - [Het gebruik en de kosten van Application Insights beheren](app/pricing.md)

@@ -1,6 +1,6 @@
 ---
-title: Niet-Microsoft-accounts toevoegen aan de Microsoft Authenticator-app - Azure AD
-description: Voeg niet-Microsoft-accounts, zoals voor Google of Facebook, toe aan de Microsoft Authenticator-app om uw identiteit te verifiëren terwijl u tweestapsverificatie gebruikt.
+title: Niet-micro soft-accounts toevoegen aan de Microsoft Authenticator-app-Azure AD
+description: Voeg niet-micro soft-accounts, zoals voor Google of Facebook, toe aan de Microsoft Authenticator-app om uw identiteit te verifiëren tijdens het gebruik van twee ledige verificatie.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,189 +12,189 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063948"
 ---
-# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-Microsoft-accounts toevoegen aan de Microsoft Authenticator-app
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
-Voeg uw niet-Microsoft-accounts, zoals voor Google, Facebook of GitHub, toe aan de Microsoft Authenticator-app voor tweestapsverificatie. De app Microsoft Authenticator werkt met elke app die verificatie in twee stappen gebruikt en met elk account dat de TOTP-normen (Time-Based One-Time Passwords) ondersteunt.
+Voeg uw niet-micro soft-accounts, zoals voor Google, Facebook of GitHub, toe aan de Microsoft Authenticator-app voor twee ledige verificatie. De app Microsoft Authenticator werkt met elke app die verificatie in twee stappen gebruikt en met elk account dat de TOTP-normen (Time-Based One-Time Passwords) ondersteunt.
 
 >[!Important]
->Voordat u uw account toevoegen, moet u de Microsoft Authenticator-app downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het [artikel Downloaden en installeren.](user-help-auth-app-download-install.md)
+>Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [app downloaden en installeren](user-help-auth-app-download-install.md) .
 
 ## <a name="add-personal-accounts"></a>Persoonlijke accounts toevoegen
 
-Over het algemeen moet u voor al uw persoonlijke accounts:
+Over het algemeen moet u voor al uw persoonlijke accounts het volgende doen:
 
-1. Meld u aan bij uw account en schakel tweestapsverificatie in met uw apparaat of uw computer.
+1. Meld u aan bij uw account en schakel twee ledige verificatie in met behulp van het apparaat of de computer.
 
-2. Voeg het account toe aan de Microsoft Authenticator-app. U wordt mogelijk gevraagd om een QR-code te scannen als onderdeel van dit proces.
+2. Voeg het account toe aan de app Microsoft Authenticator. U wordt mogelijk gevraagd om een QR-code te scannen als onderdeel van dit proces.
 
     >[!Note]
-    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, ontvangt u mogelijk een prompt met de vraag of u de app toegang wilt geven tot uw camera (iOS) of dat de app foto's kan maken en video (Android) opnemen. U moet **Toestaan** selecteren, zodat de authenticator-app toegang heeft tot uw camera om in de volgende stap een foto van de QR-code te maken. Als u de camera niet toestaat, u de authenticator-app nog steeds instellen, maar u moet de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app voor](user-help-auth-app-add-account-manual.md)informatie over het handmatig toevoegen van de code.
+    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of dat de app afbeeldingen en record video (Android) mag maken. U moet **toestaan** inschakelen zodat de verificator-app toegang heeft tot uw camera om een foto van de QR-code in de volgende stap te maken. Als u de camera niet toestaat, kunt u nog steeds de verificator-app instellen, maar u moet de code gegevens hand matig toevoegen. Zie [hand matig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md)voor meer informatie over het hand matig toevoegen van de code.
 
-We bieden het proces hier voor je Facebook-, Google-, GitHub- en Amazon-accounts, maar dit proces is hetzelfde voor elke andere app, zoals Instagram, Netflix of Adobe.
+We bieden hier het proces voor uw Facebook-, Google-, GitHub-en Amazon-accounts, maar dit proces is hetzelfde voor alle andere apps, zoals Insta gram, Netflix of Adobe.
 
 ## <a name="add-your-google-account"></a>Uw Google-account toevoegen
 
-Voeg uw Google-account toe door verificatie met twee stappen in te schakelen en vervolgens het account aan de app toe te voegen.
+Voeg uw Google-account toe door twee ledige verificatie in te scha kelen en het account vervolgens toe te voegen aan de app.
 
-### <a name="turn-on-two-factor-verification"></a>Tweestapsverificatie inschakelen
+### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Ga op uw https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcomecomputer naar , selecteer **Aan de slag**en controleer vervolgens uw identiteit.
+1. Ga op uw computer naar https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, selecteer aan de **slag**en controleer uw identiteit.
 
-2. Volg de stappen op de pagina om verificatie in twee stappen in te schakelen voor uw persoonlijke Google-account.
+2. Volg de stappen op de pagina om verificatie in twee stappen voor uw persoonlijke Google-account in te scha kelen.
 
 ### <a name="add-your-google-account-to-the-app"></a>Uw Google-account toevoegen aan de app
 
-1. Ga op de Google-pagina op uw computer naar de sectie **Alternatieve tweede stap instellen** en kies **Instellen** in de sectie **Authenticator-app.**
+1. Ga op de pagina Google op uw computer naar de sectie **alternatieve tweede stap instellen** en kies **instellen** in de sectie verificator- **app** .
 
-2. Selecteer op de pagina Codes ophalen op de pagina **Authenticator-app** de optie **Android** of **iPhone** op basis van uw telefoontype en selecteer **Volgende**.
+2. Op de pagina **codes van de verificator-app ophalen** selecteert u **Android** of **iPhone** op basis van uw telefoon type en selecteert u vervolgens **volgende**.
 
-    U krijgt een QR-code die u gebruiken om uw account automatisch te koppelen aan de Microsoft Authenticator-app. Sluit dit raam niet.
+    U krijgt een QR-code die u kunt gebruiken om uw account automatisch te koppelen aan de app Microsoft Authenticator. Sluit dit venster niet.
 
-3. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en besturingselement** rechtsboven en selecteer **Vervolgens Ander account (Google, Facebook, enz.)**.
+3. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek en selecteer vervolgens **ander account (Google, Facebook, enzovoort)**.
 
-4. Gebruik de camera van uw apparaat om de QR-code te scannen op de pagina **Authenticator instellen** op uw computer.
-
-    >[!Note]
-    >Als uw camera niet goed werkt, u de QR-code en URL handmatig invoeren.
-
-5. Bekijk de **pagina Accounts** van de Microsoft Authenticator-app op uw apparaat, om te controleren of uw accountgegevens juist zijn en of er een bijbehorende verificatiecode van zes cijfers is.
-
-    Voor extra beveiliging wordt de verificatiecode elke 30 seconden gewijzigd waardoor iemand een code meerdere keren kan gebruiken.
-
-6. Selecteer **Volgende** op de pagina **Authenticator instellen** op uw computer, typ de zescijferige verificatiecode die in de app voor uw Google-account wordt opgegeven en selecteer Vervolgens **Verifiëren**.
-
-7. Uw account is geverifieerd en u **Gereed** selecteren om de pagina **Authenticator instellen** te sluiten.
-
-    >[!NOTE]
-    >Zie Verificatie in twee stappen inschakelen en meer informatie over verificatie in twee stappen voor meer informatie over [tweestapsverificatie](https://www.google.com/landing/2step/help.html)en uw [Google-account.](https://support.google.com/accounts/answer/185839)
-
-## <a name="add-your-facebook-account"></a>Je Facebook-account toevoegen
-
-Voeg je Facebook-account toe door tweestapsverificatie in te schakelen en vervolgens het account aan de app toe te voegen.
-
-### <a name="turn-on-two-factor-verification"></a>Tweestapsverificatie inschakelen
-
-1. Open Facebook op je computer, selecteer het vervolgkeuzemenu in de rechterbovenhoek en ga naar **Instellingenbeveiliging** > **en Aanmelding.**
-
-    De pagina **Beveiliging en aanmelding** wordt weergegeven.
-
-2. Ga naar de optie **Tweestapsverificatie gebruiken** in de sectie **Tweestapsverificatie** en selecteer **Bewerken**.
-
-    De pagina **Tweefactorauthenticatie** wordt weergegeven.
-
-3. Selecteer **Inschakelen**.
-
-### <a name="add-your-facebook-account-to-the-app"></a>Je Facebook-account toevoegen aan de app
-
-1. Ga op de Facebook-pagina op je computer naar de sectie **Een back-up toevoegen** en kies **Instellen** in het gebied van de **verificatie-app.**
-
-    U krijgt een QR-code die u gebruiken om uw account automatisch te koppelen aan de Microsoft Authenticator-app. Sluit dit raam niet.
-
-2. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en besturingselement** rechtsboven en selecteer **Vervolgens Ander account (Google, Facebook, enz.)**.
-
-3. Gebruik de camera van uw apparaat om de QR-code te scannen op de **tweestapsverificatiepagina** op uw computer.
+4. Gebruik de camera van uw apparaat om de QR-code te scannen vanaf de pagina **verificator instellen** op de computer.
 
     >[!Note]
-    >Als uw camera niet goed werkt, u de QR-code en URL handmatig invoeren.
+    >Als uw camera niet goed werkt, kunt u de QR-code en URL hand matig invoeren.
 
-4. Bekijk de **pagina Accounts** van de Microsoft Authenticator-app op uw apparaat, om te controleren of uw accountgegevens juist zijn en of er een bijbehorende verificatiecode van zes cijfers is.
+5. Bekijk de pagina **accounts** van de Microsoft Authenticator-app op uw apparaat om er zeker van te zijn dat uw account gegevens juist zijn en dat er een verificatie code van zes cijfers is.
 
-    Voor extra beveiliging wordt de verificatiecode elke 30 seconden gewijzigd waardoor iemand een code meerdere keren kan gebruiken.
+    Voor extra beveiliging verandert de verificatie code elke 30 seconden om te voor komen dat iemand meerdere keren een code gebruikt.
 
-5. Selecteer **Volgende** op de pagina **Tweestapsverificatie** op uw computer en typ vervolgens de zescijferige verificatiecode die in de app wordt opgegeven voor uw Facebook-account.
+6. Selecteer **volgende** op de pagina **verificator instellen** op uw computer, typ de verificatie code van zes cijfers in de app voor uw Google-account en selecteer vervolgens **controleren**.
 
-    Je account is geverifieerd en je de app nu gebruiken om je account te verifiëren.
+7. Uw account is gecontroleerd en u kunt de optie **gereed** selecteren om de **verificator** -pagina instellen te sluiten.
 
     >[!NOTE]
-    >Zie [Wat is tweestapsverificatie en hoe werkt het?](https://www.facebook.com/help/148233965247823).
+    >Zie voor meer informatie over twee ledige verificatie en uw Google-account [2-stap verificatie inschakelen](https://support.google.com/accounts/answer/185839) en [meer informatie over verificatie](https://www.google.com/landing/2step/help.html)in twee stappen.
+
+## <a name="add-your-facebook-account"></a>Uw Facebook-account toevoegen
+
+Voeg uw Facebook-account toe door twee ledige verificatie in te scha kelen en het account vervolgens toe te voegen aan de app.
+
+### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
+
+1. Open Facebook op uw computer, selecteer de vervolg keuzelijst in de rechter bovenhoek en ga vervolgens naar **instellingen** > **beveiliging en aanmelding**.
+
+    De pagina **beveiliging en aanmelden** wordt weer gegeven.
+
+2. Ga naar de optie **twee ledige verificatie gebruiken** in het gedeelte met **twee ledige verificatie** en selecteer vervolgens **bewerken**.
+
+    De pagina **twee ledige verificatie** wordt weer gegeven.
+
+3. Selecteer **inschakelen**.
+
+### <a name="add-your-facebook-account-to-the-app"></a>Uw Facebook-account toevoegen aan de app
+
+1. Op de Facebook-pagina op uw computer, gaat u naar de sectie **een back-up toevoegen** en kiest u **Setup** in het gebied voor de **verificatie-app** .
+
+    U krijgt een QR-code die u kunt gebruiken om uw account automatisch te koppelen aan de app Microsoft Authenticator. Sluit dit venster niet.
+
+2. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek en selecteer vervolgens **ander account (Google, Facebook, enzovoort)**.
+
+3. Gebruik de camera van uw apparaat om de QR-code te scannen op de **twee Factor Authentication** -pagina op uw computer.
+
+    >[!Note]
+    >Als uw camera niet goed werkt, kunt u de QR-code en URL hand matig invoeren.
+
+4. Bekijk de pagina **accounts** van de Microsoft Authenticator-app op uw apparaat om er zeker van te zijn dat uw account gegevens juist zijn en dat er een verificatie code van zes cijfers is.
+
+    Voor extra beveiliging verandert de verificatie code elke 30 seconden om te voor komen dat iemand meerdere keren een code gebruikt.
+
+5. Selecteer **volgende** op de pagina **twee ledige verificatie** op uw computer en typ vervolgens de 6-cijferige verificatie code in de app voor uw Facebook-account.
+
+    Uw account is geverifieerd en u kunt nu de app gebruiken om uw account te verifiëren.
+
+    >[!NOTE]
+    >Zie [Wat is twee ledige verificatie en hoe werkt het?](https://www.facebook.com/help/148233965247823)voor meer informatie over twee ledige verificatie en uw Facebook-account.
 
 ## <a name="add-your-github-account"></a>Uw GitHub-account toevoegen
 
-Voeg uw GitHub-account toe door verificatie met twee stappen in te schakelen en vervolgens het account aan de app toe te voegen.
+Voeg uw GitHub-account toe door twee ledige verificatie in te scha kelen en het account vervolgens toe te voegen aan de app.
 
-### <a name="turn-on-two-factor-verification"></a>Tweestapsverificatie inschakelen
+### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Open GitHub op uw computer, selecteer uw afbeelding in de rechterbovenhoek en selecteer **Instellingen**.
+1. Open GitHub op uw computer, selecteer uw installatie kopie in de rechter bovenhoek en selecteer vervolgens **instellingen**.
 
-    De pagina **Tweestapsverificatie** wordt weergegeven.
+    De pagina **twee ledige verificatie** wordt weer gegeven.
 
-2. Selecteer **Beveiliging** in de zijbalk **Persoonlijke instellingen** en selecteer **tweestapsverificatie inschakelen** in het gebied **tweestapsverificatie.**
+2. Selecteer **beveiliging** in de zijbalk **persoonlijke instellingen** en selecteer vervolgens **twee ledige verificatie inschakelen** in het gebied **met twee ledige verificatie** .
 
 ### <a name="add-your-github-account-to-the-app"></a>Uw GitHub-account toevoegen aan de app
 
-1. Selecteer op de pagina **Tweestapsverificatie** op uw computer de optie **Instellen met een app**.
+1. Selecteer op de pagina **twee ledige verificatie** op uw computer **instellen met behulp van een app**.
 
-2. Sla uw herstelcodes op zodat u weer toegang krijgen tot uw account als u de toegang verliest en selecteer **Volgende**. 
+2. Sla uw herstel codes op zodat u weer terug kunt gaan naar uw account als u geen toegang meer hebt en selecteer **volgende**. 
 
-    U uw codes opslaan door ze naar uw apparaat te downloaden, door een papieren kopie af te drukken of door ze te kopiëren naar een hulpprogramma voor wachtwoordbeheer.
+    U kunt uw codes opslaan door ze te downloaden naar uw apparaat, door een harde kopie af te drukken of door ze te kopiëren naar een hulp programma voor wachtwoord beheer.
 
-3. Selecteer op de pagina **Tweestapsverificatie** de optie **Instellen met een app**.
+3. Selecteer op de pagina **twee ledige verificatie** de optie **instellen met behulp van een app**.
 
-    De pagina wordt gewijzigd om u een QR-code te laten zien. Sluit deze pagina niet.
+    De pagina wordt gewijzigd om een QR-code weer te geven. Sluit deze pagina niet.
 
-4. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en besturingselement** rechtsboven, selecteer Ander account **(Google, Facebook, enz.)** en selecteer **deze tekstcode** in de tekst boven aan de pagina.
+4. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek, selecteer een **ander account (Google, Facebook, enzovoort)** en selecteer vervolgens **deze tekst code invoeren** in de tekst boven aan de pagina.
 
-    De Microsoft Authenticator-app kan de QR-code niet scannen, dus u moet de code handmatig invoeren.
+    De Microsoft Authenticator-app kan de QR-code niet scannen, dus u moet de code hand matig invoeren.
 
-5. Voer een **accountnaam** in (bijvoorbeeld GitHub) en typ de **geheime sleutel** van stap 4 en selecteer **Voltooien.**
+5. Voer een **account naam** in (bijvoorbeeld github) en typ de **geheime sleutel** uit stap 4, en selecteer vervolgens **volt ooien**.
 
-6. Typ op de pagina **Tweestapsauthenticator** op uw computer de zescijferige verificatiecode die in de app voor uw GitHub-account is opgegeven en selecteer **Inschakelen**.
+6. Typ op de pagina **met de twee ledige verificator** op uw computer de 6-cijferige verificatie code in de app voor uw github-account en selecteer **inschakelen**.
 
-    Op de pagina **Accounts** van de app ziet u uw accountnaam en een zescijferige verificatiecode. Voor extra beveiliging wordt de verificatiecode elke 30 seconden gewijzigd waardoor iemand een code meerdere keren kan gebruiken.
+    Op de pagina **accounts** van de app wordt uw account naam en een 6-cijferige verificatie code weer gegeven. Voor extra beveiliging verandert de verificatie code elke 30 seconden om te voor komen dat iemand meerdere keren een code gebruikt.
 
     >[!NOTE]
-    >Zie [Over tweestapsverificatie](https://help.github.com/articles/about-two-factor-authentication/)voor meer informatie over tweestapsverificatie en uw GitHub-account.
+    >Zie [about Two-Factor Authentication](https://help.github.com/articles/about-two-factor-authentication/)(Engelstalig) voor meer informatie over twee ledige verificatie en uw github-account.
 
-## <a name="add-your-amazon-account"></a>Je Amazon-account toevoegen
+## <a name="add-your-amazon-account"></a>Uw Amazon-account toevoegen
 
-Voeg je Amazon-account toe door tweestapsverificatie in te schakelen en vervolgens het account aan de app toe te voegen.
+Voeg uw Amazon-account toe door twee ledige verificatie in te scha kelen en het account vervolgens toe te voegen aan de app.
 
-### <a name="turn-on-two-factor-verification"></a>Tweestapsverificatie inschakelen
+### <a name="turn-on-two-factor-verification"></a>Twee ledige verificatie inschakelen
 
-1. Open Amazon op uw computer, selecteer het vervolgkeuzemenu **Account & lijsten** en selecteer uw **account**.
+1. Open op uw computer Amazon, selecteer de vervolg keuzelijst **Account & lijsten** en selecteer vervolgens **uw account**.
 
-2. Selecteer **Aanmelden & beveiliging,** meld u aan bij uw Amazon-account en selecteer **Bewerken** in het gebied **Geavanceerde beveiligingsinstellingen.**
+2. Selecteer **aanmelden & beveiliging**, Meld u aan bij uw Amazon-account en selecteer vervolgens **bewerken** in het gebied **Geavanceerde beveiligings instellingen** .
 
-    De pagina **Geavanceerde beveiligingsinstellingen** wordt weergegeven.
+    De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven.
 
-3. Selecteer **Aan de slag**.
+3. Selecteer **aan de slag**.
 
-4. Selecteer **Authenticator-app** op de pagina **Kiezen hoe u codes ontvangt.**
+4. Selecteer **verificator-app** in de pagina **Kies hoe u codes wilt ontvangen** .
 
-    De pagina wordt gewijzigd om u een QR-code te laten zien. Sluit deze pagina niet.
+    De pagina wordt gewijzigd om een QR-code weer te geven. Sluit deze pagina niet.
 
-5. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en besturingselement** rechtsboven en selecteer **Vervolgens Ander account (Google, Facebook, enz.)**.
+5. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek en selecteer vervolgens **ander account (Google, Facebook, enzovoort)**.
 
-6. Gebruik de camera van uw apparaat om de QR-code te scannen op de pagina Kiezen hoe u codes op uw computer **ontvangt.**
+6. Gebruik de camera van uw apparaat om de QR-code te scannen vanaf de pagina **kiezen hoe u codes** op uw computer wilt ontvangen.
 
     >[!Note]
-    >Als uw camera niet goed werkt, u de QR-code en URL handmatig invoeren.
+    >Als uw camera niet goed werkt, kunt u de QR-code en URL hand matig invoeren.
 
-7. Bekijk de **pagina Accounts** van de Microsoft Authenticator-app op uw apparaat, om te controleren of uw accountgegevens juist zijn en of er een bijbehorende verificatiecode van zes cijfers is.
+7. Bekijk de pagina **accounts** van de Microsoft Authenticator-app op uw apparaat om er zeker van te zijn dat uw account gegevens juist zijn en dat er een verificatie code van zes cijfers is.
 
-    Voor extra beveiliging wordt de verificatiecode elke 30 seconden gewijzigd waardoor iemand een code meerdere keren kan gebruiken.
+    Voor extra beveiliging verandert de verificatie code elke 30 seconden om te voor komen dat iemand meerdere keren een code gebruikt.
 
-8. Typ op de **pagina Codes kiezen** op uw computer de zescijferige verificatiecode die in de app voor uw Amazon-account wordt opgegeven en selecteer Code verifiëren en **doorgaan.**
+8. Typ op de pagina **Kies hoe u codes wilt ontvangen** op uw computer de 6-cijferige verificatie code in de app voor uw Amazon-account en selecteer vervolgens **code verifiëren en door gaan**.
 
-9. Voltooi de rest van het aanmeldingsproces, inclusief het toevoegen van een back-upverificatiemethode, zoals een sms-bericht, en selecteer **Code verzenden**.
+9. Voltooi de rest van het aanmeldings proces, inclusief het toevoegen van een verificatie methode voor back-ups, zoals een tekst bericht, en selecteer vervolgens **code verzenden**.
 
-10. Typ op de pagina **Een back-upverificatiemethode** toevoegen op uw computer de verificatiecode van zes cijfers die door uw verificatiemethode voor back-up voor uw Amazon-account wordt verstrekt en selecteer **Vervolgens Code verifiëren en doorgaan.**
+10. Typ op de pagina **een verificatie methode voor back-ups toevoegen** op uw computer de 6-cijferige verificatie code van uw back-upverificatie methode voor uw Amazon-account en selecteer vervolgens **code verifiëren en door gaan**.
 
-11. Bepaal op de pagina **Bijna klaar** of u van uw computer een vertrouwd apparaat wilt maken en selecteer Vervolgens **Got it. Verificatie in twee stappen inschakelen**.
+11. Bepaal op de pagina **bijna klaar** of u uw computer een vertrouwd apparaat moet maken en selecteer vervolgens **ontvangen. Schakel verificatie in twee stappen in**.
 
-    De pagina **Geavanceerde beveiligingsinstellingen** wordt weergegeven met uw bijgewerkte verificatiegegevens van twee stappen.
+    De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven, met daarin de bijgewerkte gegevens over twee ledige verificatie.
 
     >[!NOTE]
-    >Zie Verificatie in twee stappen en aanmelden met verificatie in twee stappen voor meer informatie over [tweestapsverificatie](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)en uw [Amazon-account.](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330)
+    >Zie [over verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) en [Aanmelden met verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)voor meer informatie over twee ledige verificatie en uw Amazon-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Nadat u uw accounts aan de app hebt toegevoegd, u zich aanmelden met de Authenticator-app op uw apparaat. Zie [Aanmelden met de app](user-help-auth-app-sign-in.md)voor meer informatie.
+- Nadat u uw accounts aan de app hebt toegevoegd, kunt u zich aanmelden met behulp van de verificator-app op uw apparaat. Zie [Aanmelden met de app](user-help-auth-app-sign-in.md)voor meer informatie.
 
-- Voor apparaten met iOS u ook een back-up maken van uw accountreferenties en gerelateerde app-instellingen, zoals de volgorde van uw accounts, naar de cloud. Zie [Back-upmaken en herstellen met de Microsoft Authenticator-app voor](user-help-auth-app-backup-recovery.md)meer informatie.
+- Voor apparaten met iOS kunt u ook een back-up maken van uw account referenties en de bijbehorende app-instellingen, zoals de volg orde van uw accounts, naar de Cloud. Zie [back-up en herstellen met Microsoft Authenticator-app](user-help-auth-app-backup-recovery.md)voor meer informatie.

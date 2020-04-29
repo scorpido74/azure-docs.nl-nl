@@ -1,150 +1,150 @@
 ---
-title: Exporteren naar Power BI vanuit Azure Application Insights | Microsoft Documenten
-description: Analytics-query's kunnen worden weergegeven in Power BI.
+title: Exporteren naar Power BI vanuit Azure-toepassing inzichten | Microsoft Docs
+description: Analytische query's kunnen worden weer gegeven in Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663994"
 ---
-# <a name="feed-power-bi-from-application-insights"></a>Power BI voeden vanuit toepassingsinzichten
-[Power BI](https://www.powerbi.com/) is een reeks bedrijfstools waarmee u gegevens analyseren en inzichten delen. Rijke dashboards zijn beschikbaar op elk apparaat. U gegevens uit vele bronnen combineren, waaronder Analytics-query's van [Azure Application Insights.](../../azure-monitor/app/app-insights-overview.md)
+# <a name="feed-power-bi-from-application-insights"></a>Feed Power BI van Application Insights
+[Power bi](https://www.powerbi.com/) is een suite met zakelijke hulp middelen waarmee u gegevens kunt analyseren en inzichten deelt. Uitgebreide Dash boards zijn beschikbaar op elk apparaat. U kunt gegevens uit een groot aantal bronnen combi neren, met inbegrip van analyse query's van [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md).
 
-Er zijn drie methoden voor het exporteren van Application Insights-gegevens naar Power BI:
+Er zijn drie methoden voor het exporteren van Application Insights gegevens naar Power BI:
 
-* [**Analytics-query's exporteren**](#export-analytics-queries). Dit is de voorkeursmethode. Schrijf elke gewenste query en exporteer deze naar Power BI. U deze query op een dashboard plaatsen, samen met andere gegevens.
-* [**Continue export en Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Deze methode is handig als u uw gegevens voor langere tijd wilt opslaan. Als u geen uitgebreide vereiste voor gegevensbewaring hebt, gebruikt u de querymethode voor analysevan exporteren. Continue export en Stream Analytics vereist meer werk aan het opzetten en extra opslagoverhead.
-* **Power BI-adapter**. De set grafieken is vooraf gedefinieerd, maar u uw eigen query's toevoegen uit andere bronnen.
+* [**Analytics-Query's exporteren**](#export-analytics-queries). Dit is de voorkeursmethode. Schrijf elke gewenste query en exporteer deze naar Power BI. U kunt deze query op een dash board plaatsen, samen met andere gegevens.
+* [**Continue export en Azure stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Deze methode is handig als u uw gegevens lange tijd wilt opslaan. Als u geen uitgebreide gegevens Bewaar vereist, gebruikt u de methode voor het exporteren van analyse query's. Continue export en Stream Analytics vergt meer werk voor het instellen en extra opslag overhead.
+* **Power bi adapter**. De set met grafieken is vooraf gedefinieerd, maar u kunt uw eigen query's vanuit andere bronnen toevoegen.
 
 > [!NOTE]
-> De Power BI-adapter is nu **afgeschaft.** De vooraf gedefinieerde grafieken voor deze oplossing worden gevuld door statische onbewerkbare query's. U hebt niet de mogelijkheid om deze query's te bewerken en afhankelijk van bepaalde eigenschappen van uw gegevens is het mogelijk dat de verbinding met Power BI succesvol is, maar er worden geen gegevens ingevuld. Dit is te wijten aan uitsluitingscriteria die zijn ingesteld binnen de hardcoded query. Hoewel deze oplossing voor sommige klanten nog steeds werkt, is de aanbevolen oplossing vanwege het gebrek aan flexibiliteit van de adapter het gebruik van de [**exportanalytics-queryfunctionaliteit.**](#export-analytics-queries)
+> De Power BI adapter is nu **afgeschaft**. De vooraf gedefinieerde grafieken voor deze oplossing worden gevuld door statische niet-bewerk baarheids query's. U beschikt niet over de mogelijkheid om deze query's te bewerken en afhankelijk van bepaalde eigenschappen van uw gegevens kan de verbinding met Power BI worden geslaagd, maar er zijn geen gegevens ingevuld. Dit wordt veroorzaakt door uitsluitings criteria die zijn ingesteld in de hardcoded-query. Hoewel deze oplossing nog steeds werkt voor sommige klanten, vanwege het gebrek aan flexibiliteit van de adapter, is de aanbevolen oplossing de functionaliteit voor het [**exporteren van analyse query's**](#export-analytics-queries) te gebruiken.
 
 ## <a name="export-analytics-queries"></a>Analytics-query's exporteren
-Met deze route u elke door u bevalt Analytics-query schrijven of exporteren vanuit Use Funnels en deze exporteren naar een Power BI-dashboard. (U toevoegen aan het dashboard dat door de adapter is gemaakt.)
+Met deze route kunt u elke gewenste analyse query schrijven of exporteren uit gebruiks trechters en deze vervolgens exporteren naar een Power BI dash board. (U kunt toevoegen aan het dash board dat is gemaakt door de adapter.)
 
-### <a name="one-time-install-power-bi-desktop"></a>Eén keer: Power BI-bureaublad installeren
-Als u de query Application Insights wilt importeren, gebruikt u de bureaubladversie van Power BI. Vervolgens u het publiceren op het web of naar uw Power BI-cloudwerkruimte. 
+### <a name="one-time-install-power-bi-desktop"></a>Eén keer: Installeer Power BI Desktop
+Als u uw Application Insights query wilt importeren, gebruikt u de bureaublad versie van Power BI. Vervolgens kunt u het publiceren op internet of in uw Power BI Cloud-werk ruimte. 
 
-[Power BI-bureaublad installeren](https://powerbi.microsoft.com/en-us/desktop/).
+Installeer [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Een Analytics-query exporteren
 1. [Open Analytics en schrijf uw query](../../azure-monitor/log-query/get-started-portal.md).
-2. Test en verfijn de query totdat u tevreden bent met de resultaten. Zorg ervoor dat de query correct wordt uitgevoerd in Analytics voordat u deze exporteert.
-3. Kies in het menu **Exporteren** de optie **Power BI (M)**. Sla het tekstbestand op.
+2. U kunt de query testen en verfijnen totdat u tevreden bent met de resultaten. Zorg ervoor dat de query correct wordt uitgevoerd in Analytics voordat u deze exporteert.
+3. Kies in het menu **exporteren** de optie **Power bi (M)**. Sla het tekstbestand op.
    
-    ![Schermafbeelding van Analytics, met het menu Exporteren gemarkeerd](./media/export-power-bi/analytics-export-power-bi.png)
-4. Selecteer in Power BI-bureaublad de optie **Lege query** > voor gegevens**opvragen**. Selecteer vervolgens in de queryeditor onder **Weergave**de optie **Geavanceerde editor**.
+    ![Scherm opname van analyse, met het menu exporteren gemarkeerd](./media/export-power-bi/analytics-export-power-bi.png)
+4. Selecteer in Power bi Desktop de optie **gegevens** > **lege query**ophalen. Selecteer vervolgens in de query-editor onder **weer gave**de optie **Geavanceerde editor**.
 
-    Plak het geëxporteerde M-taalscript in de geavanceerde editor.
+    Plak het geëxporteerde M-taal script in de Geavanceerde editor.
 
-    ![Schermafbeelding van Power BI-bureaublad, met geavanceerde editor gemarkeerd](./media/export-power-bi/power-bi-import-analytics-query.png)
+    ![Scherm opname van Power BI Desktop, met Geavanceerde editor gemarkeerd](./media/export-power-bi/power-bi-import-analytics-query.png)
 
-5. Als u wilt dat Power BI toegang krijgt tot Azure, moet u mogelijk referenties verstrekken. Gebruik **organisatieaccount** om u aan te melden met uw Microsoft-account.
+5. Als Power BI toegang tot Azure wilt toestaan, moet u mogelijk referenties opgeven. Gebruik het account van de **organisatie** om u aan te melden met uw Microsoft-account.
    
-    ![Schermafbeelding van het dialoogvenster Power BI-query-instellingen](./media/export-power-bi/power-bi-import-sign-in.png)
+    ![Scherm afbeelding van Power BI dialoog venster query-instellingen](./media/export-power-bi/power-bi-import-sign-in.png)
 
-    Als u de referenties wilt verifiëren, gebruikt u de menuopdracht **Gegevensbroninstellingen** in de queryeditor. Zorg ervoor dat u de referenties opgeeft die u voor Azure gebruikt, die mogelijk verschillen van uw referenties voor Power BI.
-6. Kies een visualisatie voor uw query en selecteer de velden voor de afmetingen x-as, y-as en segmentering.
+    Als u de referenties wilt controleren, gebruikt u de menu opdracht **gegevens bron instellingen** in de query-editor. Zorg ervoor dat u de referenties opgeeft die u voor Azure gebruikt. Dit kan afwijken van uw referenties voor Power BI.
+6. Kies een visualisatie voor uw query en selecteer de velden voor de x-as, y-as en segmenting dimensie.
    
-    ![Schermafbeelding van power BI-bureaubladvisualisatieopties](./media/export-power-bi/power-bi-analytics-visualize.png)
-7. Publiceer uw rapport naar uw Power BI-cloudwerkruimte. Van daaruit u een gesynchroniseerde versie insluiten in andere webpagina's.
+    ![Scherm opname van Power BI Desktop visualisatie opties](./media/export-power-bi/power-bi-analytics-visualize.png)
+7. Publiceer uw rapport naar uw Power BI Cloud-werk ruimte. Van daaruit kunt u een gesynchroniseerde versie insluiten in andere webpagina's.
    
-    ![Schermafbeelding van Power BI-bureaublad, met de knop Publiceren gemarkeerd](./media/export-power-bi/publish-power-bi.png)
-8. Vernieuw het rapport handmatig met tussenpozen of stel een geplande vernieuwing in op de optiepagina.
+    ![Scherm opname van Power BI Desktop, met de knop publiceren gemarkeerd](./media/export-power-bi/publish-power-bi.png)
+8. Vernieuw het rapport hand matig met intervallen of stel een geplande vernieuwing in op de pagina opties.
 
 ### <a name="export-a-funnel"></a>Een trechter exporteren
-1. [Maak je trechter.](../../azure-monitor/app/usage-funnels.md)
-2. Selecteer **Power BI**.
+1. [Maak uw trechter](../../azure-monitor/app/usage-funnels.md).
+2. Selecteer **Power bi**.
 
-   ![Schermafbeelding van de knop Power BI](./media/export-power-bi/button.png)
+   ![Scherm afbeelding van de knop Power BI](./media/export-power-bi/button.png)
 
-3. Selecteer in Power BI-bureaublad de optie **Lege query** > voor gegevens**opvragen**. Selecteer vervolgens in de queryeditor onder **Weergave**de optie **Geavanceerde editor**.
+3. Selecteer in Power bi Desktop de optie **gegevens** > **lege query**ophalen. Selecteer vervolgens in de query-editor onder **weer gave**de optie **Geavanceerde editor**.
 
-   ![Schermafbeelding van Power BI-bureaublad, met knop Lege query gemarkeerd](./media/export-power-bi/blankquery.png)
+   ![Scherm opname van Power BI Desktop, met lege query knop gemarkeerd](./media/export-power-bi/blankquery.png)
 
-   Plak het geëxporteerde M-taalscript in de geavanceerde editor. 
+   Plak het geëxporteerde M-taal script in de Geavanceerde editor. 
 
-   ![Schermafbeelding van Power BI-bureaublad, met geavanceerde editor gemarkeerd](./media/export-power-bi/advancedquery.png)
+   ![Scherm opname van Power BI Desktop, met Geavanceerde editor gemarkeerd](./media/export-power-bi/advancedquery.png)
 
-4. Selecteer items uit de query en kies een trechtervisualisatie.
+4. Selecteer items in de query en kies een trechter visualisatie.
 
-   ![Schermafbeelding van power BI-bureaubladvisualisatieopties](./media/export-power-bi/selectsequence.png)
+   ![Scherm opname van Power BI Desktop visualisatie opties](./media/export-power-bi/selectsequence.png)
 
-5. Wijzig de titel om deze betekenis te geven en publiceer uw rapport in uw Power BI-cloudwerkruimte. 
+5. Wijzig de titel zodat deze zinvol is en publiceer uw rapport naar uw Power BI Cloud werkruimte. 
 
-   ![Schermafbeelding van Power BI-bureaublad, waarbij titelwijziging is gemarkeerd](./media/export-power-bi/changetitle.png)
+   ![Scherm opname van Power BI Desktop, waarbij de titel wijziging is gemarkeerd](./media/export-power-bi/changetitle.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-U fouten tegenkomen met betrekking tot referenties of de grootte van de gegevensset. Hier is wat informatie over wat te doen over deze fouten.
+Er kunnen fouten optreden met betrekking tot referenties of de grootte van de gegevensset. Hier vindt u informatie over wat u moet doen over deze fouten.
 
-### <a name="unauthorized-401-or-403"></a>Ongeautoriseerd (401 of 403)
-Dit kan gebeuren als uw vernieuwingstoken niet is bijgewerkt. Probeer deze stappen om ervoor te zorgen dat u nog steeds toegang hebt:
+### <a name="unauthorized-401-or-403"></a>Niet geautoriseerd (401 of 403)
+Dit kan gebeuren als uw vernieuwings token niet is bijgewerkt. Voer de volgende stappen uit om ervoor te zorgen dat u nog steeds toegang hebt:
 
-1. Meld u aan bij de Azure-portal en zorg ervoor dat u toegang hebt tot de bron.
-2. Probeer de referenties voor het dashboard te vernieuwen.
-3. Probeer de cache van uw PowerBI-bureaublad te wissen.
+1. Meld u aan bij de Azure Portal en zorg ervoor dat u toegang hebt tot de resource.
+2. Probeer de referenties voor het dash board te vernieuwen.
+3. Probeer de cache te wissen van uw PowerBI-bureau blad.
 
 
-   Als je wel toegang hebt en het vernieuwen van de referenties werkt niet, open dan een support ticket.
+   Open een ondersteunings ticket als u toegang hebt en de referenties niet werkt.
 
-### <a name="bad-gateway-502"></a>Bad Gateway (502)
-Dit wordt meestal veroorzaakt door een Analytics-query die te veel gegevens retourneert. Probeer een kleiner tijdsbereik voor de query te gebruiken. 
+### <a name="bad-gateway-502"></a>Ongeldige gateway (502)
+Dit wordt meestal veroorzaakt door een analyse query die te veel gegevens retourneert. Probeer een kleiner tijds bereik voor de query te gebruiken. 
 
-Als het verminderen van de gegevensset die afkomstig is van de Analytics-query niet aan uw vereisten voldoet, u overwegen de [API](https://dev.applicationinsights.io/documentation/overview) te gebruiken om een grotere gegevensset op te halen. U als u de M-Query-export converteren naar de API.
+Als het verminderen van de gegevensset die afkomstig is uit de analyse query niet voldoet aan uw vereisten, kunt u overwegen de [API](https://dev.applicationinsights.io/documentation/overview) te gebruiken om een grotere gegevensset te halen. U kunt het exporteren van de M-query converteren om de API te gebruiken.
 
-1. Een [API-sleutel maken.](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)
-2. Werk het Power BI M-script bij dat u vanuit Analytics hebt geëxporteerd door de URL van Azure Resource Manager te vervangen door de API voor Toepassingsinzichten.
-   * Https **vervangen:\//management.azure.com/subscriptions/...**
-   * met, **https:\//api.applicationinsights.io/beta/apps/...**
-3. Werk ten slotte de referenties bij naar basic en gebruik uw API-sleutel.
+1. Maak een [API-sleutel](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
+2. Werk het Power BI M-script dat u hebt geëxporteerd uit Analytics bij door de Azure Resource Manager URL te vervangen door de Application Insights-API.
+   * **Https:\//management.Azure.com/subscriptions/vervangen...**
+   * met, **https:\//API.applicationinsights.io/Beta/apps/...**
+3. Werk tot slot de referenties bij naar Basic en gebruik uw API-sleutel.
 
 **Bestaand script**
  ```
  Source = Json.Document(Web.Contents("https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups//providers/microsoft.insights/components//api/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
  ```
-**Bijgewerkt script**
+**Script bijgewerkt**
  ```
  Source = Json.Document(Web.Contents("https://api.applicationinsights.io/beta/apps/<APPLICATION_ID>/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
  ```
 
-## <a name="about-sampling"></a>Over sampling
-Afhankelijk van de hoeveelheid gegevens die door uw toepassing worden verzonden, u de functie adaptieve bemonstering gebruiken, die slechts een percentage van uw telemetrie verzendt. Hetzelfde geldt als u handmatig steekproeven hebt ingesteld in de SDK of bij inname. [Meer informatie over sampling](../../azure-monitor/app/sampling.md).
+## <a name="about-sampling"></a>Over steek proeven
+Afhankelijk van de hoeveelheid gegevens die door uw toepassing wordt verzonden, wilt u mogelijk de adaptieve sampling functie gebruiken. deze verzendt alleen een percentage van uw telemetrie. Dit geldt ook als u hand matig steek proeven hebt ingesteld in de SDK of op opname. Meer [informatie over steek proeven](../../azure-monitor/app/sampling.md).
 
-## <a name="power-bi-adapter-deprecated"></a>Power BI-adapter (afgeschaft)
-Met deze methode wordt een compleet dashboard van telemetrie voor u gemaakt. De eerste gegevensset is vooraf gedefinieerd, maar u er meer gegevens aan toevoegen.
+## <a name="power-bi-adapter-deprecated"></a>Power BI adapter (afgeschaft)
+Met deze methode maakt u een volledig dash board van telemetrie. De eerste gegevensset is vooraf gedefinieerd, maar u kunt er meer gegevens aan toevoegen.
 
-### <a name="get-the-adapter"></a>De adapter aanschaffen
+### <a name="get-the-adapter"></a>De adapter ophalen
 1. Meld u aan bij [Power BI](https://app.powerbi.com/).
-2. Open **Gegevens opvragen** ![Schermafbeelding van GetData-pictogram in de linkerbenedenhoek](./media/export-power-bi/001.png), **Services**.
+2. Open de scherm afbeelding **gegevens** ![ophalen van het pictogram GetData linksonder](./media/export-power-bi/001.png), **Services**.
 
-    ![Schermafbeeldingen van Get from Application Insights-gegevensbron](./media/export-power-bi/002.png)
+    ![Scherm opnamen van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/002.png)
 
-3. Selecteer **Nu oppakken** onder Toepassingsinzichten.
+3. Selecteer **nu downloaden** onder Application Insights.
 
-   ![Schermafbeeldingen van Get from Application Insights-gegevensbron](./media/export-power-bi/003.png)
-4. Geef de details van uw Application **Insights-bron**op en meld u vervolgens aan .
+   ![Scherm opnamen van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/003.png)
+4. Geef de details van de Application Insights resource op en **Meld**u aan.
 
-    ![Schermafbeelding van Ophalen van de gegevensbron van Application Insights](./media/export-power-bi/005.png)
+    ![Scherm afbeelding van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/005.png)
 
-     Deze informatie is te vinden in het deelvenster Overzicht van toepassingsinzichten:
+     Deze informatie vindt u in het overzichts venster van Application Insights:
 
-     ![Schermafbeelding van Ophalen van de gegevensbron van Application Insights](./media/export-power-bi/004.png)
+     ![Scherm afbeelding van de gegevens bron ophalen uit Application Insights](./media/export-power-bi/004.png)
 
-5. Open de nieuw gemaakte Application Insights Power BI-app.
+5. Open de zojuist gemaakte Application Insights Power BI-app.
 
-6. Wacht een minuut of twee tot de gegevens worden geïmporteerd.
+6. Wacht enkele minuten of twee om de gegevens te importeren.
 
-    ![Schermafbeelding van de Power BI-adapter](./media/export-power-bi/010.png)
+    ![Scherm afbeelding van Power BI adapter](./media/export-power-bi/010.png)
 
-U het dashboard bewerken door de grafieken Van Application Insights te combineren met die van andere bronnen en met Analytics-query's. U meer grafieken in de visualisatiegalerie krijgen en elke grafiek heeft parameters die u instellen.
+U kunt het dash board bewerken en de Application Insights grafieken combi neren met die van andere bronnen en met Analytics-query's. U kunt meer grafieken ophalen in de visualisatie galerie, en elke grafiek bevat para meters die u kunt instellen.
 
-Na de eerste import worden het dashboard en de rapporten dagelijks bijgewerkt. U het vernieuwingsschema op de gegevensset beheren.
+Na de eerste import blijven het dash board en de rapporten dagelijks worden bijgewerkt. U kunt het vernieuwings schema voor de gegevensset beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Power BI - Leren](https://www.powerbi.com/learning/)
-* [Zelfstudie voor Analytics](../../azure-monitor/log-query/get-started-portal.md)
+* [Power BI-meer informatie](https://www.powerbi.com/learning/)
+* [Zelf studie voor analyse](../../azure-monitor/log-query/get-started-portal.md)
 

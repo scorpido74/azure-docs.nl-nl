@@ -1,6 +1,6 @@
 ---
-title: Azure-platformlogboeken streamen naar een gebeurtenishub
-description: Meer informatie over het streamen van Azure-bronlogboeken naar een gebeurtenishub om gegevens naar externe systemen te verzenden, zoals SPM's van derden en andere oplossingen voor logboekanalyse.
+title: Azure-platform logboeken streamen naar een Event Hub
+description: Informatie over het streamen van Azure-bron logboeken naar een Event Hub voor het verzenden van gegevens naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658911"
 ---
-# <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure-platformlogboeken streamen naar Azure Event Hubs
-[Platformlogboeken](platform-logs-overview.md) in Azure, inclusief Azure Activity log en resource logs, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel worden logboeken van streamingplatforms naar gebeurtenishubs beschreven om gegevens naar externe systemen te verzenden, zoals SPM's van derden en andere oplossingen voor logboekanalyse.
+# <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure-platform logboeken streamen naar Azure Event Hubs
+[Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel worden streaming-platform logboeken voor Event hubs beschreven om gegevens te verzenden naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.
 
 
-## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>Wat u doen met platformlogboeken die naar een gebeurtenishub worden verzonden
-Stream platformlogboeken in Azure naar gebeurtenishubs om de volgende functionaliteit te bieden:
+## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>Wat u kunt doen met platform logboeken die worden verzonden naar een Event Hub
+Het streamen van platform Logboeken in azure naar Event hubs om de volgende functionaliteit te bieden:
 
-* **Stream logboeken naar logboekregistratie- en telemetriesystemen** van derden : stream al uw platformlogboeken naar één gebeurtenishub om logboekgegevens te pipeteren naar een SIEM- of loganalysetool van derden.
+* **Stroom logboeken naar logboek registratie van derden en telemetrie-systemen** : stream al uw platform logboeken naar één event hub om logboek gegevens naar een Siem of log Analytics-hulp programma van derden te verzenden.
   
-* **Bouw een aangepast telemetrie- en loggingplatform** - Het zeer schaalbare publicatie-abonneren de aard van event hubs u flexibel inslikken platform logs in een aangepaste teletry platform. Zie [Het ontwerpen en dimensioneren van een telemetrieplatform op globale schaal op Azure-gebeurtenishubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) voor meer informatie.
+* **Bouw een aangepast telemetrie-en logboek registratie platform** : met de uiterst schaal bare functie voor publiceren en abonneren van Event hubs kunt u platform logboeken flexibel vastleggen in een aangepast teletry-platform. Zie [het ontwerp en de grootte van een telemetrie-platform op wereld wijd schalen op Azure Event hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) voor meer informatie.
 
-* **Bekijk de status van de service door gegevens te streamen naar Power BI** : gebruik gebeurtenishubs, streamanalytics en Power BI om uw diagnostische gegevens om te zetten in bijna realtime inzichten over uw Azure-services. Zie [Stream Analytics en Power BI: een realtime analysedashboard voor het streamen van gegevens](../../stream-analytics/stream-analytics-power-bi-dashboard.md) voor meer informatie over deze oplossing.
+* **Bekijk de service status door gegevens te streamen naar Power bi** : gebruik Event Hubs, Stream Analytics en Power bi om uw diagnostische gegevens te transformeren naar bijna realtime inzichten op uw Azure-Services. Zie [Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens](../../stream-analytics/stream-analytics-power-bi-dashboard.md) voor meer informatie over deze oplossing.
 
-    De volgende SQL-code is een voorbeeldstreamanalysequery die u gebruiken om alle loggegevens in te delen in een Power BI-tabel:
+    De volgende SQL-code is een voor beeld van een Stream Analytics query die u kunt gebruiken voor het parseren van alle logboek gegevens in een Power BI tabel:
     
     ```sql
     SELECT
@@ -40,34 +40,34 @@ Stream platformlogboeken in Azure naar gebeurtenishubs om de volgende functional
     ```
 
 ## <a name="prerequisites"></a>Vereisten
-U moet [een gebeurtenishub maken](../../event-hubs/event-hubs-create.md) als u er nog geen hebt. Als u al een diagnostische instelling hebt met deze naamruimte voor gebeurtenishubs, wordt die gebeurtenishub opnieuw gebruikt.
+U moet [een event hub maken](../../event-hubs/event-hubs-create.md) als u er nog geen hebt. Als u al een diagnostische instelling hebt met behulp van deze Event Hubs naam ruimte, wordt dat Event Hub opnieuw gebruikt.
 
-Het beleid voor gedeelde toegang voor de naamruimte definieert de machtigingen die het streamingmechanisme heeft. Voor streaming naar gebeurtenishubs zijn machtigingen voor beheren, verzenden en luisteren vereist. U beleid voor gedeelde toegang maken of wijzigen in de Azure-portal onder het tabblad Configureren voor de naamruimte van uw gebeurtenishubs.
+Het beleid voor gedeelde toegang voor de naam ruimte definieert de machtigingen die het streaming-mechanisme heeft. Streaming naar Event Hubs vereist machtigingen voor beheren, verzenden en Luis teren. U kunt beleid voor gedeelde toegang maken of wijzigen in de Azure Portal op het tabblad configureren voor uw Event Hubs naam ruimte.
 
-Als u de diagnostische instelling wilt bijwerken om streaming op te nemen, moet u de machtiging ListKey hebben voor de autorisatieregel gebeurtenishubs. De naamruimte van Gebeurtenishubs hoeft niet in hetzelfde abonnement te zitten als het abonnement dat logboeken uitzendt, zolang de gebruiker die de instelling configureert, de juiste RBAC-toegang heeft tot beide abonnementen en beide abonnementen in dezelfde AAD-tenant staan.
+Als u de diagnostische instelling wilt bijwerken zodat deze streaming bevat, moet u de machtiging ListKey hebben voor die Event Hubs autorisatie regel. De naam ruimte van de Event Hubs hoeft zich niet te bevinden in hetzelfde abonnement als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert, de juiste RBAC-toegang heeft tot beide abonnementen en beide abonnementen zich in dezelfde AAD-Tenant bevinden.
 
 ## <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken
-Stuur platformlogboeken naar een gebeurtenishub en andere bestemmingen door een diagnostische instelling voor een Azure-bron te maken. Zie [Diagnostische instelling maken om logboeken en statistieken in Azure](diagnostic-settings.md) te verzamelen voor meer informatie.
+U kunt platform logboeken naar een Event Hub en andere bestemmingen verzenden door een diagnostische instelling voor een Azure-resource te maken. Zie [Diagnostische instelling maken voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md) voor meer informatie.
 
-## <a name="collect-data-from-compute-resources"></a>Gegevens verzamelen uit rekenbronnen
-Diagnostische instellingen verzamelen resourcelogs voor Azure-compute resources, net als elke andere resource, maar niet voor hun gastbesturingssysteem of workloads. Als u deze gegevens wilt verzamelen, installeert u de [agent Log Analytics](log-analytics-agent.md). 
+## <a name="collect-data-from-compute-resources"></a>Gegevens verzamelen van Compute-resources
+Met Diagnostische instellingen worden bron logboeken verzameld voor Azure-reken resources, zoals elke andere resource, maar niet het gast besturingssysteem of de werk belastingen. Als u deze gegevens wilt verzamelen, moet u de [log Analytics-agent](log-analytics-agent.md)installeren. 
 
 
-## <a name="consuming-log-data-from-event-hubs"></a>Loggegevens van gebeurtenishubs consumeren
-Platformlogboeken van gebeurtenishubs worden verbruikt in JSON-indeling met de elementen in de volgende tabel.
+## <a name="consuming-log-data-from-event-hubs"></a>Logboek gegevens van Event hubs gebruiken
+Platform logboeken van Event hubs worden gebruikt in JSON-indeling met de elementen in de volgende tabel.
 
 | Naam van element | Beschrijving |
 | --- | --- |
-| Records |Een array van alle log gebeurtenissen in deze payload. |
-| tijd |Het tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
-| category |Logboekcategorie voor deze gebeurtenis. |
-| resourceId |Resource-id van de resource die deze gebeurtenis heeft gegenereerd. |
-| operationName |Naam van de bewerking. |
-| niveau |Optioneel. Hiermee geeft u het gebeurtenisniveau van het logboek aan. |
-| properties |Eigenschappen van het evenement. Deze verschillen voor elke Azure-service zoals beschreven in [ ](). |
+| records |Een matrix van alle logboek gebeurtenissen in deze nettolading. |
+| tijd |Tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
+| category |Logboek categorie voor deze gebeurtenis. |
+| resourceId |De resource-ID van de resource die deze gebeurtenis heeft gegenereerd. |
+| operationName |De naam van de bewerking. |
+| niveau |Optioneel. Hiermee wordt het logboek gebeurtenis niveau aangegeven. |
+| properties |De eigenschappen van de gebeurtenis. Deze verschillen voor elke Azure-service, zoals beschreven [ ]()in. |
 
 
-Hieronder volgen voorbeelduitvoergegevens van gebeurtenishubs voor een bronlogboek:
+Hieronder ziet u voor beelden van uitvoer gegevens van Event Hubs voor een bron logboek:
 
 ```json
 {
@@ -134,8 +134,8 @@ Hieronder volgen voorbeelduitvoergegevens van gebeurtenishubs voor een bronlogbo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Lees meer over resourcelogs](platform-logs-overview.md).
-* [Diagnostische instelling maken om logboeken en statistieken in Azure te verzamelen.](diagnostic-settings.md)
-* [Azure Active Directory-logboeken streamen met Azure Monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
-* [Ga aan de slag met Event Hubs.](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Meer informatie over resource logboeken](platform-logs-overview.md).
+* [Maak een diagnostische instelling voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md).
+* [Stream Azure Active Directory-logboeken met Azure monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).
+* [Aan de slag met Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md).
 

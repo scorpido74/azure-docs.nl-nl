@@ -1,6 +1,6 @@
 ---
-title: Azure Automation-resources in beheeroplossingen | Microsoft Documenten
-description: Beheeroplossingen omvatten doorgaans runbooks in Azure Automation om processen zoals het verzamelen en verwerken van bewakingsgegevens te automatiseren.  In dit artikel wordt beschreven hoe u runbooks en bijbehorende bronnen in een oplossing opnemen.
+title: Azure Automation bronnen in beheer oplossingen | Microsoft Docs
+description: Beheer oplossingen bevatten doorgaans runbooks in Azure Automation voor het automatiseren van processen, zoals het verzamelen en verwerken van bewakings gegevens.  In dit artikel wordt beschreven hoe u runbooks en hun gerelateerde resources opneemt in een oplossing.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
@@ -8,42 +8,42 @@ ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663059"
 ---
-# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-resources toevoegen aan een beheeroplossing (Voorbeeld)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-resources toevoegen aan een beheer oplossing (preview)
 > [!NOTE]
-> Dit is voorlopige documentatie voor het maken van managementoplossingen die momenteel in preview zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.   
+> Dit is voorlopige documentatie voor het maken van beheer oplossingen die momenteel als preview-versie beschikbaar zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.   
 
 
-[Beheeroplossingen]( solutions.md) omvatten doorgaans runbooks in Azure Automation om processen zoals het verzamelen en verwerken van bewakingsgegevens te automatiseren.  Naast runbooks bevatten Automatiseringsaccounts activa zoals variabelen en schema's die de runbooks ondersteunen die in de oplossing worden gebruikt.  In dit artikel wordt beschreven hoe u runbooks en bijbehorende bronnen in een oplossing opnemen.
+[Beheer oplossingen]( solutions.md) bevatten doorgaans runbooks in azure Automation voor het automatiseren van processen, zoals het verzamelen en verwerken van bewakings gegevens.  Automation-accounts bevatten naast runbooks ook activa zoals variabelen en schema's die ondersteuning bieden voor de runbooks die in de oplossing worden gebruikt.  In dit artikel wordt beschreven hoe u runbooks en hun gerelateerde resources opneemt in een oplossing.
 
 > [!NOTE]
-> De voorbeelden in dit artikel gebruiken parameters en variabelen die vereist of gemeenschappelijk zijn voor beheeroplossingen en worden beschreven in [Ontwerp en een beheeroplossing bouwen in Azure]( solutions-creating.md) 
+> In de voor beelden in dit artikel worden para meters en variabelen gebruikt die vereist zijn of gemeen schappelijk zijn voor beheer oplossingen en die worden beschreven in [ontwerp en bouw een beheer oplossing in azure]( solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u al bekend bent met de volgende informatie.
 
-- Hoe [maak je een management oplossing]( solutions-creating.md).
-- De structuur van een [oplossingsbestand]( solutions-solution-file.md).
-- [Resourcebeheersjablonen maken](../../azure-resource-manager/templates/template-syntax.md)
+- [Een beheer oplossing maken]( solutions-creating.md).
+- De structuur van een [oplossings bestand]( solutions-solution-file.md).
+- [Resource Manager-sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Automation-account
-Alle resources in Azure Automation bevinden zich in een [Automatiseringsaccount](../../automation/automation-security-overview.md#automation-account-overview).  Zoals beschreven in [log Analytics-werkruimte en automatiseringsaccount,]( solutions.md#log-analytics-workspace-and-automation-account) is het automatiseringsaccount niet opgenomen in de beheeroplossing, maar moet het bestaan voordat de oplossing wordt geïnstalleerd.  Als het niet beschikbaar is, dan is de oplossing te installeren zal mislukken.
+Alle resources in Azure Automation zijn opgenomen in een [Automation-account](../../automation/automation-security-overview.md#automation-account-overview).  Zoals beschreven in [log Analytics werk ruimte en het Automation-account]( solutions.md#log-analytics-workspace-and-automation-account) is het Automation-account niet opgenomen in de beheer oplossing, maar moet het bestaan voordat de oplossing wordt geïnstalleerd.  Als deze niet beschikbaar is, mislukt de installatie van de oplossing.
 
-De naam van elke automatiseringsbron bevat de naam van het automatiseringsaccount.  Dit gebeurt in de oplossing met de parameter **accountName** zoals in het volgende voorbeeld van een runbook-bron.
+De naam van elke Automation-bron bevat de naam van het Automation-account.  Dit gebeurt in de oplossing met de para meter **AccountName** , zoals in het volgende voor beeld van een runbook-resource.
 
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
 ## <a name="runbooks"></a>Runbooks
-U moet alle runbooks die door de oplossing worden gebruikt, opnemen in het oplossingsbestand, zodat ze worden gemaakt wanneer de oplossing is geïnstalleerd.  U de hoofdtekst van het runbook echter niet in de sjabloon bevatten, dus u moet het runbook publiceren naar een openbare locatie waar het kan worden geopend door elke gebruiker die uw oplossing installeert.
+U moet alle runbooks die door de oplossing in het oplossings bestand worden gebruikt, gebruiken om ze te maken wanneer de oplossing is geïnstalleerd.  U kunt de hoofd tekst van het runbook niet in de sjabloon opnemen. Daarom moet u het runbook publiceren naar een open bare locatie waar het kan worden geopend door elke gebruiker die uw oplossing installeert.
 
-[Azure Automation runbook resources](../../automation/automation-runbook-types.md) hebben een type **Microsoft.Automation/automationAccounts/runbooks** en hebben de volgende structuur. Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen. 
+[Azure Automation runbook](../../automation/automation-runbook-types.md) -resources hebben het type **micro soft. Automation/automationAccounts/runbooks** en hebben de volgende structuur. Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
     {
         "name": "[concat(parameters('accountName'), '/', variables('Runbook').Name)]",
@@ -70,17 +70,17 @@ De eigenschappen voor runbooks worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| runbookType |Hiermee geeft u de typen van het runbook op. <br><br> Script - PowerShell-script <br>PowerShell - PowerShell-workflow <br> GraphPowerShell - Grafisch PowerShell-scriptrunboek <br> GraphPowerShellWorkflow - Grafische PowerShell-werkstroomrunboek |
-| logVoortgang |Hiermee geeft u op of [voortgangsrecords](../../automation/automation-runbook-output-and-messages.md) moeten worden gegenereerd voor het runbook. |
-| logVerbose logVerbose |Hiermee geeft u op of [verboserecords](../../automation/automation-runbook-output-and-messages.md) moeten worden gegenereerd voor het runbook. |
+| runbookType |Hiermee geeft u de typen van het runbook op. <br><br> Script-Power shell-script <br>Power shell-Power shell-werk stroom <br> GraphPowerShell-grafisch Power shell-script runbook <br> GraphPowerShellWorkflow-grafisch Power shell-werk stroom-runbook |
+| logProgress |Hiermee geeft u op of [voortgangs records](../../automation/automation-runbook-output-and-messages.md) moeten worden gegenereerd voor het runbook. |
+| logVerbose |Hiermee wordt aangegeven of [uitgebreide records](../../automation/automation-runbook-output-and-messages.md) moeten worden gegenereerd voor het runbook. |
 | description |Optionele beschrijving voor het runbook. |
-| ContentLink publiceren |Hiermee geeft u de inhoud van het runbook op. <br><br>uri - Uri naar de inhoud van het runbook.  Dit is een .ps1-bestand voor PowerShell- en Script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiekrunbook.  <br> versie - Versie van het runbook voor uw eigen tracking. |
+| publishContentLink |Hiermee geeft u de inhoud van het runbook op. <br><br>URI-URI naar de inhoud van het runbook.  Dit is een. ps1-bestand voor Power shell-en script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiek runbook.  <br> versie-versie van het runbook voor uw eigen tracking. |
 
 
-## <a name="automation-jobs"></a>Automatiseringstaken
-Wanneer u een runbook start in Azure Automation, wordt een automatiseringstaak gemaakt.  U een automatiseringstaakbron toevoegen aan uw oplossing om automatisch een runbook te starten wanneer de beheeroplossing is geïnstalleerd.  Deze methode wordt meestal gebruikt om runbooks te starten die worden gebruikt voor de eerste configuratie van de oplossing.  Als u een runbook op regelmatige tijdstippen wilt starten, maakt u een [planning](#schedules) en een [taakschema](#job-schedules)
+## <a name="automation-jobs"></a>Automation-taken
+Wanneer u een runbook start in Azure Automation, wordt er een Automation-taak gemaakt.  U kunt een Automation-taak resource toevoegen aan uw oplossing om automatisch een runbook te starten wanneer de beheer oplossing is geïnstalleerd.  Deze methode wordt doorgaans gebruikt om runbooks te starten die worden gebruikt voor de initiële configuratie van de oplossing.  Een [planning](#schedules) en een [taak schema](#job-schedules) maken om een runbook met regel matige tussen pozen te starten
 
-Taakresources hebben een type **Microsoft.Automation/automationAccounts/jobs** en hebben de volgende structuur.  Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen. 
+Taak resources hebben het type **micro soft. Automation/automationAccounts/Jobs** en hebben de volgende structuur.  Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
     {
       "name": "[concat(parameters('accountName'), '/', parameters('Runbook').JobGuid)]",
@@ -102,20 +102,20 @@ Taakresources hebben een type **Microsoft.Automation/automationAccounts/jobs** e
       }
     }
 
-De eigenschappen voor automatiseringstaken worden beschreven in de volgende tabel.
+De eigenschappen voor Automation-taken worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| runbook |Entiteit met één naam met de naam van het runbook om te beginnen. |
-| parameters |Entiteit voor elke parameterwaarde die vereist is voor het runbook. |
+| runbook |Entiteit met één naam en de naam van het runbook dat moet worden gestart. |
+| parameters |Entiteit voor elke parameter waarde die wordt vereist door het runbook. |
 
-De taak bevat de naam van het runbook en eventuele parameterwaarden die naar het runbook moeten worden verzonden.  De taak moet [afhangen van]( solutions-solution-file.md#resources) het runbook dat het begint, omdat het runbook moet worden gemaakt vóór de taak.  Als u meerdere runbooks hebt die moeten worden gestart, u hun volgorde definiëren door een taak te laten afhangen van andere taken die eerst moeten worden uitgevoerd.
+De taak bevat de naam van het runbook en de parameter waarden die naar het runbook moeten worden verzonden.  De taak moet [afhankelijk]( solutions-solution-file.md#resources) zijn van het runbook dat wordt gestart, omdat het runbook moet worden gemaakt voor de taak.  Als u meerdere runbooks hebt die moeten worden gestart, kunt u de volg orde definiëren door een taak te laten afhangen van andere taken die eerst moeten worden uitgevoerd.
 
-De naam van een taakbron moet een GUID bevatten die doorgaans door een parameter is toegewezen.  U meer lezen over GUID-parameters in [Het maken van een beheeroplossingsbestand in Azure.]( solutions-solution-file.md#parameters)  
+De naam van een taak resource moet een GUID bevatten die meestal wordt toegewezen door een para meter.  U kunt meer lezen over de GUID-para meters in het [maken van een beheer oplossings bestand in azure]( solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certificaten
-[Azure Automation-certificaten](../../automation/automation-certificates.md) hebben een type **Microsoft.Automation/automationAccounts/certificaten** en hebben de volgende structuur. Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen. 
+[Azure Automation certificaten](../../automation/automation-certificates.md) zijn van het type **micro soft. Automation/automationAccounts/certificates** en hebben de volgende structuur. Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Certificate').Name)]",
@@ -133,17 +133,17 @@ De naam van een taakbron moet een GUID bevatten die doorgaans door een parameter
 
 
 
-De eigenschappen voor bronnen certificaten worden beschreven in de volgende tabel.
+De eigenschappen voor certificaten bronnen worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| base64Waarde |Basis 64 waarde voor het certificaat. |
-| Vingerafdruk |Duimafdruk voor het certificaat. |
+| base64Value |Basis 64 waarde voor het certificaat. |
+| vingerafdruk |Vinger afdruk voor het certificaat. |
 
 
 
 ## <a name="credentials"></a>Referenties
-[Azure Automation-referenties](../../automation/automation-credentials.md) hebben een type **Microsoft.Automation/automationAccounts/credentials** en hebben de volgende structuur.  Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen. 
+[Azure Automation referenties](../../automation/automation-credentials.md) hebben het type **micro soft. Automation/automationAccounts/credentials** en hebben de volgende structuur.  Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
 
     {
@@ -160,16 +160,16 @@ De eigenschappen voor bronnen certificaten worden beschreven in de volgende tabe
       }
     }
 
-De eigenschappen voor referentiebronnen worden beschreven in de volgende tabel.
+De eigenschappen voor referentie bronnen worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| userName |Gebruikersnaam voor de referentie. |
-| wachtwoord |Wachtwoord voor de referentie. |
+| userName |De gebruikers naam voor de referentie. |
+| wachtwoord |Wacht woord voor de referentie. |
 
 
 ## <a name="schedules"></a>Planningen
-[Azure Automation-schema's](../../automation/automation-schedules.md) hebben een type **Microsoft.Automation/automationAccounts/schema's** en hebben de volgende structuur. Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen. 
+[Azure Automation planningen](../../automation/automation-schedules.md) hebben het type **micro soft. Automation/automationAccounts/schedules** en hebben de volgende structuur. Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').Name)]",
@@ -188,26 +188,26 @@ De eigenschappen voor referentiebronnen worden beschreven in de volgende tabel.
       }
     }
 
-De eigenschappen voor planningsresources worden beschreven in de volgende tabel.
+De eigenschappen voor plannings resources worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
 | description |Optionele beschrijving voor het schema. |
-| startTime |Hiermee geeft u de begintijd van een planning op als een datetime-object. Er kan een tekenreeks worden verstrekt als deze kan worden geconverteerd naar een geldige DateTime. |
-| Isenabled |Hiermee geeft u op of de planning is ingeschakeld. |
+| startTime |Hiermee geeft u de begin tijd van een schema op als een DateTime-object. Er kan een teken reeks worden gegeven als deze kan worden geconverteerd naar een geldige datum/tijd. |
+| isEnabled |Hiermee geeft u op of de planning is ingeschakeld. |
 | interval |Het type interval voor het schema.<br><br>day<br>uur |
-| frequency |Frequentie dat het schema moet vuren in aantal dagen of uren. |
+| frequency |De frequentie waarmee het schema binnen dagen of uren moet worden geactiveerd. |
 
-Schema's moeten een begintijd hebben met een waarde die groter is dan de huidige tijd.  U deze waarde niet voorzien van een variabele, omdat u geen manier zou hebben om te weten wanneer deze zal worden geïnstalleerd.
+Schema's moeten een begin tijd hebben met een waarde die hoger is dan de huidige tijd.  U kunt deze waarde niet opgeven met een variabele omdat u er geen manier van hoeft te weten wanneer deze wordt geïnstalleerd.
 
-Gebruik een van de volgende twee strategieën bij het gebruik van planningsbronnen in een oplossing.
+Gebruik een van de volgende twee strategieën bij het gebruik van resources plannen in een oplossing.
 
-- Gebruik een parameter voor de begintijd van de planning.  Dit zal de gebruiker vragen om een waarde te verstrekken wanneer hij de oplossing installeert.  Als u meerdere schema's hebt, u één parameterwaarde gebruiken voor meer dan één van deze schema's.
-- Maak de schema's met behulp van een runbook dat begint wanneer de oplossing is geïnstalleerd.  Hierdoor wordt de vereiste van de gebruiker verwijderd om een tijd op te geven, maar u het schema niet in uw oplossing bevatten, zodat deze wordt verwijderd wanneer de oplossing wordt verwijderd.
+- Gebruik een para meter voor de begin tijd van de planning.  Hiermee wordt de gebruiker gevraagd een waarde op te geven wanneer de oplossing wordt geïnstalleerd.  Als u meerdere schema's hebt, kunt u één parameter waarde gebruiken voor meer dan een van deze.
+- Maak de planningen met behulp van een runbook dat wordt gestart wanneer de oplossing wordt geïnstalleerd.  Hiermee verwijdert u de vereiste van de gebruiker om een tijd op te geven, maar u kunt de planning niet in uw oplossing opnemen zodat deze wordt verwijderd wanneer de oplossing wordt verwijderd.
 
 
 ### <a name="job-schedules"></a>Jobplanningen
-Bronnen voor taakplanning koppelen een runbook aan een planning.  Ze hebben een type **Microsoft.Automation/automationAccounts/jobSchedules** en hebben de volgende structuur.  Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen. 
+Taak planning resources koppelen een runbook met een schema.  Ze hebben het type **micro soft. Automation/automationAccounts/jobSchedules** en hebben de volgende structuur.  Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -231,17 +231,17 @@ Bronnen voor taakplanning koppelen een runbook aan een planning.  Ze hebben een 
     }
 
 
-De eigenschappen voor taakroosters worden beschreven in de volgende tabel.
+De eigenschappen voor taak schema's worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| naam plannen |Entiteit met één **naam** met de naam van het schema. |
-| runbook naam  |Entiteit met één **naam** met de naam van het runbook.  |
+| schema naam |Entiteit met één **naam** en de naam van het schema. |
+| runbooknaam  |Entiteit met één **naam** en de naam van het runbook.  |
 
 
 
 ## <a name="variables"></a>Variabelen
-[Azure Automation-variabelen](../../automation/automation-variables.md) hebben een type **Microsoft.Automation/automationAccounts/variabelen** en hebben de volgende structuur.  Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen.
+[Azure Automation variabelen](../../automation/automation-variables.md) hebben het type **micro soft. Automation/automationAccounts/Varia bles** en hebben de volgende structuur.  Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Variable').Name)]",
@@ -258,31 +258,31 @@ De eigenschappen voor taakroosters worden beschreven in de volgende tabel.
       }
     }
 
-De eigenschappen voor variabele resources worden beschreven in de volgende tabel.
+De eigenschappen voor variabelen bronnen worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
 | description | Optionele beschrijving voor de variabele. |
-| isVersleuteld | Hiermee geeft u op of de variabele moet worden versleuteld. |
-| type | Deze eigenschap heeft momenteel geen effect.  Het gegevenstype van de variabele wordt bepaald door de initiële waarde. |
+| isEncrypted | Hiermee geeft u op of de variabele moet worden versleuteld. |
+| type | Deze eigenschap heeft momenteel geen effect.  Het gegevens type van de variabele wordt bepaald door de oorspronkelijke waarde. |
 | waarde | Waarde voor de variabele. |
 
 > [!NOTE]
-> De **eigenschap type** heeft momenteel geen invloed op de variabele die wordt gemaakt.  Het gegevenstype voor de variabele wordt bepaald door de waarde.  
+> De eigenschap **type** heeft momenteel geen effect op de variabele die wordt gemaakt.  Het gegevens type voor de variabele wordt bepaald door de waarde.  
 
-Als u de initiële waarde voor de variabele instelt, moet deze worden geconfigureerd als het juiste gegevenstype.  In de volgende tabel worden de verschillende toegestane gegevenstypen en de syntaxis ervan weergegeven.  Houd er rekening mee dat waarden in JSON naar verwachting altijd worden ingesloten tussen aanhalingstekens met speciale tekens in de aanhalingstekens.  Een tekenreekswaarde wordt bijvoorbeeld opgegeven door aanhalingstekens rond\\de tekenreeks (met behulp van het escape-teken ( )), terwijl een numerieke waarde wordt opgegeven met één set aanhalingstekens.
+Als u de aanvankelijke waarde voor de variabele instelt, moet deze worden geconfigureerd als het juiste gegevens type.  De volgende tabel bevat de verschillende typen gegevens die kunnen worden en de syntaxis ervan.  Houd er rekening mee dat waarden die in JSON worden verwacht, altijd tussen aanhalings tekens worden geplaatst.  Zo zou een teken reeks waarde worden opgegeven door aanhalings tekens rond de teken reeks (met het escape\\-teken ()) terwijl een numerieke waarde wordt opgegeven met één set aanhalings tekens.
 
-| Gegevenstype | Beschrijving | Voorbeeld | Lost op om |
+| Gegevenstype | Beschrijving | Voorbeeld | Wordt omgezet in |
 |:--|:--|:--|:--|
-| tekenreeks   | Omsluiten waarde in dubbele aanhalingstekens.  | Hallo\"wereld\" | "Hallo wereld" |
-| numeriek  | Numerieke waarde met enkele aanhalingstekens.| "64" | 64 |
-| booleaans  | **waar** of **onwaar** tussen aanhalingstekens.  Houd er rekening mee dat deze waarde kleine letters moet zijn. | "Waar" | waar |
-| datum/tijd | Geserialiseerde datumwaarde.<br>U de cmdlet ConvertTo-Json in PowerShell gebruiken om deze waarde voor een bepaalde datum te genereren.<br>Voorbeeld: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Datum(1495656897378)\\ | 2017-05-24 13:14:57 |
+| tekenreeks   | Plaats de waarde tussen dubbele aanhalings tekens.  | "\"Hallo wereld\"" | "Hallo wereld" |
+| numeriek  | Numerieke waarde met enkele aanhalings tekens.| "64" | 64 |
+| booleaans  | **waar** of **Onwaar** in aanhalings tekens.  Houd er rekening mee dat deze waarde moet worden omgezet in kleine letters. | echte | waar |
+| datum/tijd | Geserialiseerde datum waarde.<br>U kunt de ConvertTo-JSON-cmdlet in Power shell gebruiken om deze waarde te genereren voor een bepaalde datum.<br>Voor beeld: Get-date "5/24/2017 13:14:57 \| " ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modules
-Uw beheeroplossing hoeft geen [globale modules](../../automation/automation-integration-modules.md) te definiëren die door uw runbooks worden gebruikt, omdat ze altijd beschikbaar zijn in uw Automatiseringsaccount.  U moet wel een bron opnemen voor elke andere module die door uw runbooks wordt gebruikt.
+Uw beheer oplossing hoeft geen [algemene modules](../../automation/automation-integration-modules.md) te definiëren die worden gebruikt door uw runbooks, omdat deze altijd beschikbaar zijn in uw Automation-account.  U moet een resource toevoegen voor een andere module die wordt gebruikt door uw runbooks.
 
-[Integratiemodules](../../automation/automation-integration-modules.md) hebben een type **Microsoft.Automation/automationAccounts/modules** en hebben de volgende structuur.  Dit omvat veelvoorkomende variabelen en parameters, zodat u dit codefragment kopiëren en plakken in uw oplossingsbestand en de parameternamen wijzigen.
+[Integratie modules](../../automation/automation-integration-modules.md) hebben het type **micro soft. Automation/automationAccounts/modules** en hebben de volgende structuur.  Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Module').Name)]",
@@ -298,35 +298,35 @@ Uw beheeroplossing hoeft geen [globale modules](../../automation/automation-inte
     }
 
 
-De eigenschappen voor modulebronnen worden beschreven in de volgende tabel.
+De eigenschappen voor module resources worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| contentLink |Hiermee geeft u de inhoud van de module op. <br><br>uri - Uri naar de inhoud van de module.  Dit is een .ps1-bestand voor PowerShell- en Script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiekrunbook.  <br> versie - Versie van de module voor uw eigen tracking. |
+| Content link |Hiermee geeft u de inhoud van de module. <br><br>URI-URI naar de inhoud van de module.  Dit is een. ps1-bestand voor Power shell-en script-runbooks en een geëxporteerd grafisch runbook-bestand voor een grafiek runbook.  <br> versie-versie van de module voor uw eigen tracking. |
 
-Het runbook moet afhankelijk zijn van de modulebron om ervoor te zorgen dat het is gemaakt vóór het runbook.
+Het runbook moet afhankelijk zijn van de resource module om ervoor te zorgen dat het wordt gemaakt vóór het runbook.
 
 ### <a name="updating-modules"></a>Modules bijwerken
-Als u een beheeroplossing bijwerkt die een runbook bevat die een planning gebruikt, en de nieuwe versie van uw oplossing een nieuwe module heeft die door dat runbook wordt gebruikt, kan het runbook de oude versie van de module gebruiken.  U moet de volgende runbooks in uw oplossing opnemen en een taak maken om ze uit te voeren voordat andere runbooks.  Dit zorgt ervoor dat alle modules worden bijgewerkt zoals vereist voordat de runbooks worden geladen.
+Als u een beheer oplossing bijwerkt die een runbook bevat dat een planning gebruikt, en de nieuwe versie van uw oplossing een nieuwe module heeft die door het runbook wordt gebruikt, kan het runbook gebruikmaken van de oude versie van de module.  U moet de volgende runbooks in uw oplossing toevoegen en een taak maken om deze voor andere runbooks uit te voeren.  Dit zorgt ervoor dat alle modules zo nodig worden bijgewerkt voordat de runbooks worden geladen.
 
-* [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/) zorgt ervoor dat alle modules die door runbooks in uw oplossing worden gebruikt, de nieuwste versie zijn.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/) registreert alle planningsbronnen opnieuw om ervoor te zorgen dat de runbooks die eraan zijn gekoppeld met behulp van de nieuwste modules.
+* [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/) zorgt ervoor dat alle modules die worden gebruikt door runbooks in uw oplossing de nieuwste versie zijn.  
+* [ReRegisterAutomationSchedule-MS-](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/) rewaak registreert alle plannings resources opnieuw om ervoor te zorgen dat de runbooks die aan hen zijn gekoppeld de nieuwste modules gebruiken.
 
 
 
 
 ## <a name="sample"></a>Voorbeeld
-Hieronder volgt een voorbeeld van een oplossing die de volgende bronnen bevat:
+Hieronder ziet u een voor beeld van een oplossing met daarin de volgende resources:
 
-- Runbook.  Dit is een voorbeeld van runbook die is opgeslagen in een openbare GitHub-opslagplaats.
-- Automatiseringstaak waarmee het runbook wordt gestart wanneer de oplossing is geïnstalleerd.
-- Plannen en werkschema om het runbook te starten op regelmatige tijdstippen.
+- Runbook.  Dit is een voor beeld van een runbook dat is opgeslagen in een open bare GitHub-opslag plaats.
+- Een Automation-taak waarmee het runbook wordt gestart wanneer de oplossing is geïnstalleerd.
+- Plannings-en taak planning om het runbook regel matig te starten.
 - Certificaat.
 - Referentie.
-- Variabele.
-- Module.  Dit is de [OMSIngestionAPI-module](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) voor het schrijven van gegevens naar Log Analytics. 
+- Variabeletype.
+- Programma.  Dit is de [OMSIngestionAPI-module](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) voor het schrijven van gegevens naar log Analytics. 
 
-Het voorbeeld maakt gebruik van [standaardparametersparametersvariabelen]( solutions-solution-file.md#parameters) die vaak in een oplossing worden gebruikt in tegenstelling tot hardcoderingswaarden in de brondefinities.
+In het voor beeld worden de variabelen voor [standaard oplossings parameters]( solutions-solution-file.md#parameters) gebruikt die doorgaans in een oplossing zouden worden toegepast, in tegens telling tot hardcoding-waarden in de resource definities.
 
 
     {
@@ -643,4 +643,4 @@ Het voorbeeld maakt gebruik van [standaardparametersparametersvariabelen]( solut
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Voeg een weergave toe aan uw oplossing om]( solutions-resources-views.md) verzamelde gegevens te visualiseren.
+* [Voeg een weer gave toe aan uw oplossing]( solutions-resources-views.md) om verzamelde gegevens te visualiseren.

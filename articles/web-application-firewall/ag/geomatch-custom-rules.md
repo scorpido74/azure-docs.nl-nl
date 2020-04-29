@@ -1,6 +1,6 @@
 ---
-title: Aangepaste regels voor Azure Web Application Firewall (WAF) Geomatch
-description: Dit artikel is een overzicht van de aangepaste regels van Web Application Firewall (WAF) op Azure Application Gateway.
+title: Aangepaste regels voor de geoovereenkomst van Azure Web Application firewall (WAF)
+description: Dit artikel bevat een overzicht van WAF (Web Application firewall) die voldoet aan aangepaste regels op Azure-toepassing gateway.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,26 +8,26 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76961086"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor Geomatch (voorbeeld)
+# <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor geomatching (preview-versie)
 
-Met aangepaste regels u aangepaste regels maken die voldoen aan de exacte behoeften van uw toepassingen en beveiligingsbeleid. U nu de toegang tot uw webtoepassingen per land/regio beperken. Zoals met alle aangepaste regels, kan deze logica worden samengesteld met andere regels om de behoeften van uw toepassing aan te passen.
+Aangepaste regels bieden u de mogelijkheid om op maat gemaakte regels te maken voor de exacte behoeften van uw toepassingen en beveiligings beleid. Nu kunt u de toegang tot uw webtoepassingen beperken op basis van land/regio. Net als bij alle aangepaste regels kan deze logica worden samengesteld met andere regels om te voldoen aan de behoeften van uw toepassing.
 
-Als u een aangepaste regel voor geofiltering wilt maken, selecteert u *Geo-locatie* als het type Match en selecteert u vervolgens het land of de landen die u wilt toestaan/blokkeren van uw toepassing. Zie [hoe u aangepaste regels maakt in Powershell](configure-waf-custom-rules.md) en meer aangepaste regelvoorbeelden (create-custom-waf-rules.md) voor meer informatie.
+Als u een aangepaste regel voor geografisch filteren wilt maken, selecteert u *geo-locatie* als het type overeenkomst en selecteert u vervolgens het land of de landen die u wilt toestaan of blok keren vanuit uw toepassing. Zie [aangepaste regels maken in Power shell](configure-waf-custom-rules.md) en meer voor beelden van aangepaste regels (Create-Custom-waf-rules.MD) voor meer informatie.
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Landcodes
+## <a name="country-codes"></a>Land codes
 
-Als u de Geomatch-operator gebruikt, kunnen de selectors een van de volgende landcodes van twee cijfers zijn. 
+Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende landen codes van twee cijfers zijn. 
 
-|Landcode | Landnaam |
+|Landcode | Land naam |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Verenigde Arabische Emiraten|
@@ -50,7 +50,7 @@ Als u de Geomatch-operator gebruikt, kunnen de selectors een van de volgende lan
 | BH | Bahrein|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Sint-Barthélemie|
+| BL | Saint--Barthélemy|
 | BN | Brunei Darussalam|
 | BO | Bolivia|
 | BR | Brazilië|
@@ -209,4 +209,4 @@ Als u de Geomatch-operator gebruikt, kunnen de selectors een van de volgende lan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u meer te weten bent over aangepaste regels, [maakt u uw eigen aangepaste regels.](create-custom-waf-rules.md)
+Nadat u meer informatie over aangepaste regels hebt [gemaakt, maakt u uw eigen aangepaste regels](create-custom-waf-rules.md).

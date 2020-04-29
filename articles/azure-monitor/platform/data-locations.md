@@ -1,39 +1,39 @@
 ---
-title: Gegevenslocaties bewaken in Azure Monitor | Microsoft Documenten
-description: Beschrijft de verschillende locaties waar bewakingsgegevens in Azure worden opgeslagen, waaronder het Azure Monitor-gegevensplatform.
+title: Gegevens locaties bewaken in Azure Monitor | Microsoft Docs
+description: Hierin worden de verschillende locaties beschreven waar bewakings gegevens worden opgeslagen in azure, met inbegrip van het Azure Monitor-gegevens platform.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/21/2019
 ms.openlocfilehash: 7d4459867081d920fefb9471b1a682d21040da9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77666612"
 ---
-# <a name="monitoring-data-locations-in-azure-monitor"></a>Gegevenslocaties bewaken in Azure Monitor
+# <a name="monitoring-data-locations-in-azure-monitor"></a>Gegevens locaties bewaken in Azure Monitor
 
-Azure Monitor is gebaseerd op een [gegevensplatform](data-platform.md) van [logboeken](data-platform-logs.md) en [statistieken zoals](data-platform-metrics.md) beschreven in [Azure Monitor-gegevensplatform.](data-platform.md) Het bewaken van gegevens uit Azure-bronnen kan echter naar andere locaties worden geschreven, voordat ze naar Azure Monitor worden gekopieerd of om aanvullende scenario's te ondersteunen. 
+Azure Monitor is gebaseerd op een [gegevens platform](data-platform.md) van [Logboeken](data-platform-logs.md) en [metrieken](data-platform-metrics.md) zoals beschreven in [Azure monitor data platform](data-platform.md). Het bewaken van gegevens van Azure-resources kan worden geschreven naar andere locaties, ofwel voordat ze worden gekopieerd naar Azure Monitor of om extra scenario's te ondersteunen. 
 
-## <a name="monitoring-data-locations"></a>Gegevenslocaties controleren
+## <a name="monitoring-data-locations"></a>Gegevens locaties bewaken
 
-In de volgende tabel worden de verschillende locaties aangegeven waar bewakingsgegevens in Azure worden verzonden en de verschillende methoden voor toegang tot deze gegevens.
+De volgende tabel bevat de verschillende locaties waar de bewakings gegevens in Azure worden verzonden en de verschillende methoden om deze te openen.
 
-| Locatie | Beschrijving | Toegangsmethoden |
+| Locatie | Beschrijving | Toegangs methoden |
 |:---|:---|:---|:--|
-| Azure-monitorstatistieken | Tijdreeksdatabase die is geoptimaliseerd voor het analyseren van tijdstempelgegevens. | [Metrics Explorer](metrics-getting-started.md)<br>[API azure monitormetrics](/rest/api/monitor/metrics) |
-| Azure Monitor-logboeken    | Log Analytics-werkruimte die is gebaseerd op Azure Data Explorer, die een krachtige analyse-engine en uitgebreide querytaal biedt. | [Logboekanalyse](../log-query/portals.md)<br>[Api voor logboekanalyse](https://dev.loganalytics.io/)<br>[API voor toepassingsinzichten](https://dev.applicationinsights.io/reference/get-query) |
-| Activiteitenlogboek | Gegevens uit het activiteitenlogboek zijn het handigst wanneer ze naar Azure Monitor Logs worden verzonden om deze te analyseren met andere gegevens, maar het wordt ook op zichzelf verzameld, zodat deze rechtstreeks in de Azure-portal kunnen worden bekeken. | [Azure-portal](activity-log-view.md#azure-portal)<br>[API azure monitorgebeurtenissen](/rest/api/monitor/eventcategories) |
-| Azure Storage | Sommige gegevensbronnen schrijven rechtstreeks naar Azure-opslag en vereisen configuratie om gegevens naar logboeken te verplaatsen. U ook gegevens verzenden naar Azure-opslag voor archivering en voor integratie met externe systemen.  | [Storage Analytics](/rest/api/storageservices/storage-analytics)<br>[Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
-| Event Hubs | Stuur gegevens naar Azure Event Hubs om deze naar andere locaties te streamen. | [Vastleggen op opslag](../../event-hubs/event-hubs-capture-overview.md)  |
-| Azure Monitor voor virtuele machines | Azure Monitor voor VM's slaat statusgegevens van workloads op op een aangepaste locatie die wordt gebruikt door de bewakingservaring in de Azure-portal. | [Azure-portal](../insights/vminsights-overview.md)<br>[RestAPI voor workloadmonitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[REST-API voor Azure-bronstatus](https://docs.microsoft.com/rest/api/resourcehealth/)  |
-| Waarschuwingen | Waarschuwingen die zijn gemaakt door Azure Monitor. | [Azure-portal](alerts-managing-alert-instances.md)<br>[WAARSCHUWINGEN Beheer REST API](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
+| Azure Monitor metrische gegevens | Time-Series-Data Base die is geoptimaliseerd voor het analyseren van gegevens met tijds tempel. | [Metrics Explorer](metrics-getting-started.md)<br>[API voor Azure Monitor metrieken](/rest/api/monitor/metrics) |
+| Azure Monitor-logboeken    | Log Analytics werk ruimte op basis van Azure Data Explorer die een krachtige analyse-engine en een uitgebreide query taal biedt. | [Log Analytics](../log-query/portals.md)<br>[Log Analytics-API](https://dev.loganalytics.io/)<br>[Application Insights-API](https://dev.applicationinsights.io/reference/get-query) |
+| Activiteitenlogboek | Gegevens uit het activiteiten logboek zijn het handigst wanneer ze naar Azure Monitor logboeken worden verzonden om deze te analyseren met andere gegevens, maar ook op de eigen manier worden verzameld, zodat deze rechtstreeks kan worden weer gegeven in de Azure Portal. | [Azure Portal](activity-log-view.md#azure-portal)<br>[API voor Azure Monitor gebeurtenissen](/rest/api/monitor/eventcategories) |
+| Azure Storage | Sommige gegevens bronnen schrijven rechtstreeks naar Azure Storage en vereisen configuratie om gegevens naar Logboeken te verplaatsen. U kunt ook gegevens verzenden naar Azure Storage voor archivering en voor integratie met externe systemen.  | [Opslaganalyse](/rest/api/storageservices/storage-analytics)<br>[Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Opslagverkenner](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
+| Event Hubs | Gegevens verzenden naar Azure Event Hubs om deze naar andere locaties te streamen. | [Vastleggen in opslag](../../event-hubs/event-hubs-capture-overview.md)  |
+| Azure Monitor voor virtuele machines | Azure Monitor voor VM's werk belasting status gegevens worden opgeslagen op een aangepaste locatie die wordt gebruikt door de bewakings ervaring in de Azure Portal. | [Azure Portal](../insights/vminsights-overview.md)<br>[Bewakings REST API workload](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Azure resource Health-REST API](https://docs.microsoft.com/rest/api/resourcehealth/)  |
+| Waarschuwingen | Waarschuwingen die zijn gemaakt door Azure Monitor. | [Azure Portal](alerts-managing-alert-instances.md)<br>[REST API voor waarschuwings beheer](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk de verschillende bronnen van [bewakingsgegevens die zijn verzameld door Azure Monitor.](data-sources.md)
-- Meer informatie over de [typen bewakingsgegevens die door Azure Monitor worden verzameld](data-platform.md) en hoe u deze gegevens bekijken en analyseren.
+- Bekijk de verschillende bronnen van [bewakings gegevens die door Azure monitor zijn verzameld](data-sources.md).
+- Meer informatie over de [typen bewakings gegevens die worden verzameld door Azure monitor](data-platform.md) en hoe u deze gegevens kunt weer geven en analyseren.

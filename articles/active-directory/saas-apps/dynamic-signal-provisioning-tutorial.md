@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Dynamisch signaal configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Dynamic Signal.
+title: 'Zelf studie: dynamische signalen configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en het ongedaan maken van de inrichting van gebruikers accounts op dynamische signalen.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,75 +16,75 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ec91d42dff8f3a1fc4b036aa1c3ec77faf6a0fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058039"
 ---
-# <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Zelfstudie: Dynamisch signaal configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Zelf studie: dynamische signalen configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Dynamic Signal en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor Dynamisch signaal.
+Het doel van deze zelf studie is om te demonstreren welke stappen moeten worden uitgevoerd in dynamische signalen en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen op dynamische signalen.
 
 > [!NOTE]
-> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant
-* [Een dynamic signal tenant](https://dynamicsignal.com/)
-* Een gebruikersaccount in Dynamic Signal met beheerdersmachtigingen.
+* Een Azure AD-Tenant
+* [Een dynamische signaal Tenant](https://dynamicsignal.com/)
+* Een gebruikers account in een dynamisch signaal met beheerders machtigingen.
 
-## <a name="add-dynamic-signal-from-the-gallery"></a>Dynamisch signaal toevoegen vanuit de galerie
+## <a name="add-dynamic-signal-from-the-gallery"></a>Dynamische signalen toevoegen uit de galerie
 
-Voordat u Dynamisch signaal configureert voor automatische gebruikersvoorziening met Azure AD, moet u Dynamisch signaal uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u dynamische signalen configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u het dynamische signaal vanuit de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om dynamisch signaal toe te voegen vanuit de Azure AD-toepassingsgalerie:**
+**Als u dynamische signalen wilt toevoegen uit de Azure AD-toepassings galerie, voert u de volgende stappen uit:**
 
-1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **dynamisch signaal**in het zoekvak, selecteer **Dynamisch signaal** in het deelvenster Resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak **dynamische signalen**in, selecteer **dynamisch signaal** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![Dynamic Signal in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="assigning-users-to-dynamic-signal"></a>Gebruikers toewijzen aan Dynamisch signaal
+## <a name="assigning-users-to-dynamic-signal"></a>Gebruikers toewijzen aan dynamisch signaal
 
-Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Dynamisch signaal nodig hebben. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Dynamic Signal door de instructies hier te volgen:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang tot dynamische signalen moeten hebben. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan dynamische signalen door de volgende instructies te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-dynamic-signal"></a>Belangrijke tips voor het toewijzen van gebruikers aan Dynamic Signal
+### <a name="important-tips-for-assigning-users-to-dynamic-signal"></a>Belang rijke tips voor het toewijzen van gebruikers aan een dynamisch signaal
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker wordt toegewezen aan Dynamic Signal om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+* Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan een dynamisch signaal om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker aan Dynamisch signaal toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
+* Wanneer u een gebruiker toewijst aan een dynamisch signaal, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>Automatische gebruikersvoorziening configureren voor Dynamisch signaal 
+## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>Automatische gebruikers inrichting op dynamische signalen configureren 
 
-In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Dynamisch signaal te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in dynamische signalen te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Dynamic Signal, volgens de instructies in de [zelfstudie voor eenmalig aanmelden van Dynamic Signal.](dynamicsignal-tutorial.md) Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
+> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor dynamische signalen in te scha kelen, volgens de instructies in de [zelf studie eenmalige aanmelding met het dynamische signaal](dynamicsignal-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
-### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor Dynamisch signaal in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor dynamische signalen in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -92,71 +92,71 @@ In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of
 
     ![De koppeling naar Dynamic Signal in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie **Beheerdersreferenties** de **URL van de tenant** en het geheime **token** van het account van uw dynamisch signaal in zoals beschreven in stap 6.
+5. Voer in het gedeelte **beheerders referenties** de **Tenant-URL** en het **geheime token** van het account van uw dynamische signaal in, zoals beschreven in stap 6.
 
-6. Navigeer in de beheerconsole Dynamisch signaal naar **Beheerder > Geavanceerde > API**.
+6. Navigeer in de beheer console van Dynamic signalering naar **admin > Advanced > API**.
 
-    ![Dynamische signaalvoorziening](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    ![Dynamische signaal inrichting](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
-    Kopieer de URL van de **SCIM API** naar **tenant-URL**. Klik op **Nieuw token genereren** om een token aan **toonder** te genereren en kopieer de waarde naar **Secret Token.**
+    Kopieer de **URL** van de scim-API naar de **Tenant-URL**. Klik op **nieuw token genereren** om een **Bearer-token** te genereren en kopieer de waarde naar een **geheim token**.
 
-    ![Dynamische signaalvoorziening](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    ![Dynamische signaal inrichting](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
-7. Klik op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Dynamisch signaal wanneer u de velden in stap 5 bevolken. Als de verbinding mislukt, moet u ervoor zorgen dat uw Dynamic Signal-account beheerdersmachtigingen heeft en het opnieuw proberen.
+7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met het dynamische signaal. Als de verbinding mislukt, zorg er dan voor dat uw dynamische signaal account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
+8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 9. Klik op **Opslaan**.
 
-10. Selecteer Azure **Active Directory-gebruikers synchroniseren met Dynamisch signaal**onder de sectie **Toewijzingen** .
+10. Selecteer in de sectie **toewijzingen** de optie **synchroniseren Azure Active Directory gebruikers naar dynamisch signaal**.
 
-    ![Dynamische signaalgebruikerstoewijzingen](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
+    ![Gebruikers toewijzingen voor dynamische signalen](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
-11. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Dynamisch signaal in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Dynamisch signaal te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar dynamische signalen in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in het dynamische signaal voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Kenmerken van dynamische signaalgebruikers](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
+    ![Gebruikers kenmerken van dynamisch signaal](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
-12. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-13. Als u de Azure AD-inrichtingsservice voor Dynamisch signaal wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
+13. Als u de Azure AD-inrichtings service voor dynamische signalen wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-14. Definieer de gebruikers en/of groepen die u wilt inrichten op Dynamisch signaal door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor dynamische signalen door de gewenste waarden in het **bereik** in de sectie **instellingen** te kiezen.
 
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Dynamisch signaal.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op het dynamische signaal.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="connector-limitations"></a>Beperkingen voor connectoren
+## <a name="connector-limitations"></a>Connector beperkingen
 
-* Dynamic Signal biedt geen ondersteuning voor permanente verwijderingen van gebruikers uit Azure AD. Als u een gebruiker permanent wilt verwijderen in Dynamic Signal, moet de bewerking worden uitgevoerd via de gebruikersinterface van de Dynamische signaalbeheerder. 
-* Dynamic Signal ondersteunt momenteel geen groepen.
+* Het dynamische signaal biedt geen ondersteuning voor permanente gebruikers verwijderingen van Azure AD. Als u een gebruiker permanent wilt verwijderen uit een dynamisch signaal, moet de bewerking worden uitgevoerd via de gebruikers interface van de Dynamic Signal-beheer console. 
+* Dynamische signalen biedt momenteel geen ondersteuning voor groepen.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor probleemoplossing - Azure DNS
-description: Ga in dit leerpad aan de slag met het oplossen van veelvoorkomende problemen met Azure DNS
+title: Gids voor probleem oplossing-Azure DNS
+description: In dit leer traject kunt u aan de slag met het oplossen van veelvoorkomende problemen met Azure DNS
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939033"
 ---
-# <a name="azure-dns-troubleshooting-guide"></a>Handleiding voor azure DNS-probleemoplossing
+# <a name="azure-dns-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure DNS
 
-In dit artikel vindt u informatie over probleemoplossing voor veelvoorkomende Azure DNS-vragen.
+Dit artikel bevat informatie over het oplossen van problemen met veelgestelde vragen over Azure DNS.
 
-Als deze stappen uw probleem niet oplossen, u uw probleem ook zoeken of plaatsen op ons [community support forum op MSDN.](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork) U ook een Azure-ondersteuningsaanvraag openen.
+Als met deze stappen het probleem niet is opgelost, kunt u ook naar het [ondersteunings forum van de community op MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)zoeken of het probleem daar plaatsen. U kunt ook een Azure-ondersteunings aanvraag openen.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>Ik kan geen DNS-zone maken
 
 Probeer een of meer van de volgende stappen om veelvoorkomende problemen op te lossen:
 
-1.  Controleer de Azure DNS-controlelogboeken om de foutreden te bepalen.
-2.  Elke DNS-zonenaam moet uniek zijn binnen de resourcegroep. Dat wil zeggen dat twee DNS-zones met dezelfde naam geen resourcegroep kunnen delen. Gebruik een andere zonenaam of een andere resourcegroep.
+1.  Raadpleeg de Azure DNS audit Logboeken om de reden van de fout te bepalen.
+2.  Elke DNS-zonenaam moet uniek zijn binnen de resourcegroep. Dat wil zeggen dat twee DNS-zones met dezelfde naam geen resource groep kunnen delen. Gebruik een andere zonenaam of een andere resourcegroep.
 3.  U ziet mogelijk de foutmelding 'Het maximumaantal zones in abonnement {abonnements-id} is bereikt of overschreden'. Gebruik een ander Azure-abonnement, verwijder enkele zones of neem contact op met de ondersteuning van Azure om uw abonnementslimiet te verhogen.
-4.  U ziet mogelijk de foutmelding 'De zone {zonenaam} is niet beschikbaar'. Dit betekent dat Azure DNS geen naamservers kan toewijzen voor deze DNS-zone. Gebruik dan een andere zonenaam. Of als u de eigenaar van de domeinnaam bent, u contact opnemen met Azure-ondersteuning om naamservers voor u toe te wijzen.
+4.  U ziet mogelijk de foutmelding 'De zone {zonenaam} is niet beschikbaar'. Dit betekent dat Azure DNS geen naamservers kan toewijzen voor deze DNS-zone. Gebruik dan een andere zonenaam. Als u de eigenaar van de domein naam bent, kunt u contact opnemen met de ondersteuning van Azure om naam servers voor u toe te wijzen.
 
 
 ### <a name="recommended-articles"></a>Aanbevolen artikelen
@@ -40,11 +40,11 @@ Probeer een of meer van de volgende stappen om veelvoorkomende problemen op te l
 
 Probeer een of meer van de volgende stappen om veelvoorkomende problemen op te lossen:
 
-1.  Controleer de Azure DNS-controlelogboeken om de foutreden te bepalen.
+1.  Raadpleeg de Azure DNS audit Logboeken om de reden van de fout te bepalen.
 2.  Bestaat de recordset al?  Azure DNS beheert records als *recordsets*. Hierin zijn records met dezelfde naam en van hetzelfde type opgenomen. Als er al een record met dezelfde naam en van hetzelfde type bestaat, kunt u nog een dergelijke record toevoegen door de bestaande recordset te bewerken.
-3.  Probeert u een record te maken in de apex (het hoofdniveau) van de DNS-zone? Dan is het de DNS-conventie om het @-teken te gebruiken als recordnaam. Houd er ook rekening mee dat de DNS-standaarden cname-records op de zone-top niet toestaan.
-4.  Is er sprake van een CNAME-conflict?  De DNS-standaarden staan geen CNAME-record toe met dezelfde naam als een record van een ander type. Als u een bestaande CNAME hebt, kunt u geen record maken met dezelfde naam maar van een ander type.  Op dezelfde manier kunt u ook geen CNAME maken als de naam overeenkomt met een bestaande record van een ander type. Verhelp het conflict door de andere record te verwijderen of een andere recordnaam te kiezen.
-5.  Hebt u de limiet voor het aantal toegestane recordsets in een DNS-zone bereikt? Het huidige aantal recordsets en het maximumaantal recordsets worden weergegeven in Azure Portal onder de eigenschappen van de zone. Als u deze limiet hebt bereikt, verwijdert u enkele recordsets of neemt u contact op met Azure Support om uw recordlimiet voor deze zone te verhogen en probeert u het opnieuw. 
+3.  Probeert u een record te maken in de apex (het hoofdniveau) van de DNS-zone? Dan is het de DNS-conventie om het @-teken te gebruiken als recordnaam. Houd er rekening mee dat de DNS-standaarden geen CNAME-records op de zone Apex toestaan.
+4.  Is er sprake van een CNAME-conflict?  De DNS-standaarden staan geen CNAME-records met dezelfde naam toe als een record van een ander type. Als u een bestaande CNAME hebt, kunt u geen record maken met dezelfde naam maar van een ander type.  Op dezelfde manier kunt u ook geen CNAME maken als de naam overeenkomt met een bestaande record van een ander type. Verhelp het conflict door de andere record te verwijderen of een andere recordnaam te kiezen.
+5.  Hebt u de limiet voor het aantal toegestane recordsets in een DNS-zone bereikt? Het huidige aantal recordsets en het maximumaantal recordsets worden weergegeven in Azure Portal onder de eigenschappen van de zone. Als u deze limiet hebt bereikt, verwijdert u een aantal record sets of neemt u contact op met de ondersteuning van Azure om de limiet voor record sets voor deze zone te verhogen. Probeer het vervolgens opnieuw. 
 
 
 ### <a name="recommended-articles"></a>Aanbevolen artikelen
@@ -91,7 +91,7 @@ Voorbeeld van SRV-recordnamen (servicenaam 'sip', protocol 'tcp'):
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure DNS-zones en -records](dns-zones-records.md)
-* Als u Azure DNS wilt gaan gebruiken, leest u hoe u [een DNS-zone maakt](dns-getstarted-create-dnszone-portal.md) en [DNS-records maakt.](dns-getstarted-create-recordset-portal.md)
-* Als u een bestaande DNS-zone wilt migreren, leest u hoe u [een DNS-zonebestand importeert en exporteert.](dns-import-export.md)
+* Meer informatie over [Azure DNS zones en records](dns-zones-records.md)
+* Als u Azure DNS wilt gaan gebruiken, leest u hoe u [een DNS-zone maakt](dns-getstarted-create-dnszone-portal.md) en hoe u [DNS-records maakt](dns-getstarted-create-recordset-portal.md).
+* Als u een bestaande DNS-zone wilt migreren, leert u hoe u [een DNS-zone bestand importeert en exporteert](dns-import-export.md).
 

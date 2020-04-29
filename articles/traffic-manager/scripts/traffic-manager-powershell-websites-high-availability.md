@@ -1,6 +1,6 @@
 ---
-title: Routeverkeer voor HA-toepassingen - Azure PowerShell - Traffic Manager
-description: Azure PowerShell-scriptvoorbeeld - Routeverkeer voor hoge beschikbaarheid van toepassingen
+title: Verkeer routeren voor HA van toepassingen-Azure PowerShell-Traffic Manager
+description: 'Azure PowerShell-voorbeeld script: route verkeer voor hoge Beschik baarheid van toepassingen'
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -16,15 +16,15 @@ ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: rohink
 ms.openlocfilehash: 3f448683dbb210ab196e27cfd98a376429d03aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76934733"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Routeverkeer voor hoge beschikbaarheid van toepassingen met Azure PowerShell
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Verkeer routeren voor hoge Beschik baarheid van toepassingen met behulp van Azure PowerShell
 
-Met dit script wordt een resourcegroep, twee app-serviceplannen, twee web-apps, een profiel van verkeersbeheeren en twee eindpunten voor verkeersbeheergemaakt. Traffic Manager leidt het verkeer naar de toepassing in één regio als primaire regio en naar het secundaire gebied wanneer de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden MyWebApp, MyWebAppL1 en MyWebAppL2 wijzigen in unieke waarden in Azure. Nadat u het script hebt uitgevoerd, hebt u toegang tot de app in het primaire gebied met de URL-mywebapp.trafficmanager.net.
+Met dit script maakt u een resource groep, twee app service-abonnementen, twee web-apps, een Traffic Manager-profiel en twee Traffic Manager-eind punten. Traffic Manager stuurt het verkeer naar de toepassing in één regio als de primaire regio, en naar de secundaire regio wanneer de toepassing in de primaire regio niet beschikbaar is. Voordat u het script uitvoert, moet u de waarden voor MyWebApp, MyWebAppL1 en MyWebAppL2 wijzigen in unieke waarden in Azure. Nadat het script is uitgevoerd, hebt u toegang tot de app in de primaire regio met de URL mywebapp.trafficmanager.net.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure.
 
@@ -52,9 +52,9 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Hiermee maakt u een App Service-plan. Dit is als een serverfarm voor uw Azure-web-app. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Hiermee maakt u een Azure-web-app in het App-serviceplan. |
-| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Hiermee maakt u een Azure-web-app in het App-serviceplan. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Hiermee maakt u een App Service-plan. Dit is net als een server farm voor uw Azure-web-app. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Hiermee maakt u een Azure-web-app binnen het App Service-abonnement. |
+| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Hiermee maakt u een Azure-web-app binnen het App Service-abonnement. |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Hiermee maakt u een Azure Traffic Manager-profiel. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Hiermee voegt u een eindpunt toe aan een Azure Traffic Manager-profiel. |
 

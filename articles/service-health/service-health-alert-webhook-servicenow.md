@@ -1,50 +1,50 @@
 ---
-title: Azure-servicestatuswaarschuwingen verzenden met ServiceNow
-description: Ontvang gepersonaliseerde meldingen over servicestatusgebeurtenissen naar uw ServiceNow-exemplaar.
+title: Azure service Health-waarschuwingen verzenden met ServiceNow
+description: Krijg persoonlijke meldingen over service status gebeurtenissen aan uw ServiceNow-exemplaar.
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77654100"
 ---
-# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure-servicestatuswaarschuwingen verzenden met ServiceNow met behulp van webhooks
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met ServiceNow met behulp van webhooks
 
-In dit artikel ziet u hoe u Azure-servicestatuswaarschuwingen integreren met ServiceNow met behulp van een webhook. Nadat u webhook-integratie hebt ingesteld met uw ServiceNow-exemplaar, ontvangt u waarschuwingen via uw bestaande meldingsinfrastructuur wanneer azure-serviceproblemen van invloed zijn op u. Elke keer dat een Azure Service Health-waarschuwing wordt geactiveerd, wordt een webhook aanroept via de Api voor scripte rest van ServiceNow.
+In dit artikel leest u hoe u Azure service Health Alerts integreert met ServiceNow met behulp van een webhook. Nadat u de integratie van webhook met uw ServiceNow-exemplaar hebt ingesteld, ontvangt u waarschuwingen via uw bestaande meldings infrastructuur wanneer de Azure-Service problemen van invloed zijn op u. Telkens wanneer een Azure Service Health waarschuwing wordt geactiveerd, wordt er een webhook aangeroepen via de script REST API van ServiceNow.
 
-## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Een gescripte REST-API maken in ServiceNow
+## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Een REST API in een script maken in ServiceNow
 
-1.  Zorg ervoor dat je je hebt aangemeld en je bent aangemeld bij je [ServiceNow-account.](https://www.servicenow.com/)
+1.  Zorg ervoor dat u zich hebt aangemeld voor en bent aangemeld bij uw [ServiceNow](https://www.servicenow.com/) -account.
 
-1.  Navigeer naar de sectie **Systeemwebservices** in ServiceNow en selecteer **API's voor gescripte REST.**
+1.  Ga naar de sectie **systeem webservices** in ServiceNow en selecteer **scripted rest-api's**.
 
-    ![De sectie 'Scripted Web Service' in ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
+    ![De sectie ' scripted web service ' in ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
 
-1.  Selecteer **Nieuw** om een nieuwe Scripted REST-service te maken.
+1.  Selecteer **Nieuw** om een nieuwe gescriptde rest-service te maken.
  
-    ![De knop 'Nieuwe API voor gescripte REST' in ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
+    ![De knop Nieuw script REST API in ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  Voeg een **naam** toe aan uw REST-API en stel de **API-id** in op `azureservicehealth`.
+1.  Voeg een **naam** toe aan uw rest API en stel de **API-id** in op `azureservicehealth`.
 
 1.  Selecteer **Indienen**.
 
-    ![De "REST API-instellingen" in ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
+    ![De instellingen voor ' REST API ' in ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-1.  Selecteer de REST-API die u hebt gemaakt en selecteer onder het tabblad **Resources** **Nieuw**.
+1.  Selecteer de REST API die u hebt gemaakt en selecteer op het tabblad **resources** de optie **Nieuw**.
 
-    ![Het tabblad 'Resource' in ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
+    ![Het tabblad resource in ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  **Geef** uw `event` nieuwe resource een `POST`naam en wijzig de **HTTP-methode** in .
+1.  **Geef** uw nieuwe resource `event` een naam en wijzig de **HTTP-methode** in `POST`.
 
-1.  Voeg in de sectie **Script** de volgende JavaScript-code toe:
+1.  Voeg in de sectie **script** de volgende Java script-code toe:
 
     >[!NOTE]
-    >U moet de `<secret>``<group>`waarde `<email>` en de waarde in het onderstaande script bijwerken.
-    >* `<secret>`moet een willekeurige string zijn, zoals een GUID
-    >* `<group>`moet de ServiceNow-groep zijn waaraan u het incident wilt toewijzen
-    >* `<email>`moet de specifieke persoon zijn aan wie u het incident wilt toewijzen (optioneel)
+    >U moet de `<secret>`waarde,`<group>`en `<email>` in het onderstaande script bijwerken.
+    >* `<secret>`moet een wille keurige teken reeks zijn, zoals een GUID
+    >* `<group>`moet de ServiceNow-groep waaraan u het incident wilt toewijzen
+    >* `<email>`moet de specifieke persoon waaraan u het incident wilt toewijzen (optioneel)
     >
 
     ```javascript
@@ -131,52 +131,52 @@ In dit artikel ziet u hoe u Azure-servicestatuswaarschuwingen integreren met Ser
     })(request, response);
     ```
 
-1.  Schakel op het tabblad Beveiliging het selectievakje **Verificatie vereist uit** en selecteer **Verzenden**. De `<secret>` ingestelde u beschermt deze API in plaats daarvan.
+1.  Schakel op het tabblad Beveiliging het selectie vakje **verificatie vereist** en selecteer **verzenden**in. `<secret>` Met deze instelling wordt deze API beveiligd.
 
-    ![Het selectievakje 'Verificatie vereist' in ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
+    ![Het selectie vakje ' authenticatie vereist ' in ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 
-1.  Terug in de sectie Api's voor gescripte REST vindt u het **BasisAPI-pad** voor uw nieuwe REST-API:
+1.  Terug op de sectie scripted REST Api's vindt u het basis- **API-pad** voor uw nieuwe rest API:
 
-     ![Het 'Basis-API-pad' in ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
+     ![Het ' basis-API-pad ' in ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
-1.  De volledige URL voor integratie ziet eruit als volgt:
+1.  Uw volledige integratie-URL ziet er als volgt uit:
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
 
-## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Een waarschuwing maken met ServiceNow in de Azure-portal
-### <a name="for-a-new-action-group"></a>Voor een nieuwe actiegroep:
-1. Volg de stappen 1 tot en met 8 in [dit artikel](../azure-monitor/platform/alerts-activity-log-service-notifications.md) om een waarschuwing te maken met een nieuwe actiegroep.
+## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Een waarschuwing maken met behulp van ServiceNow in de Azure Portal
+### <a name="for-a-new-action-group"></a>Voor een nieuwe actie groep:
+1. Volg de stappen 1 tot en met 8 in [dit artikel](../azure-monitor/platform/alerts-activity-log-service-notifications.md) om een waarschuwing met een nieuwe actie groep te maken.
 
-1. Definiëren in de lijst **met acties:**
+1. Definieer in de lijst met **acties**:
 
-    a. **Actietype:** *Webhook*
+    a. **Actie Type:** *webhook*
 
-    b. **Details:** De **URL servicenu-integratie** die u eerder hebt opgeslagen.
+    b. **Details:** De URL van de ServiceNow- **integratie** die u eerder hebt opgeslagen.
 
-    c. **Naam:** De naam, alias of id van Webhook.
+    c. **Naam:** Naam, alias of id van de webhook.
 
 1. Selecteer **Opslaan** wanneer u klaar bent om de waarschuwing te maken.
 
-### <a name="for-an-existing-action-group"></a>Voor een bestaande actiegroep:
-1. Selecteer **Monitor**in de [Azure-portal](https://portal.azure.com/).
+### <a name="for-an-existing-action-group"></a>Voor een bestaande actie groep:
+1. Selecteer in de [Azure Portal](https://portal.azure.com/) **monitor**.
 
-1. Selecteer **in** de sectie Instellingen de optie **Actiegroepen**.
+1. Selecteer in de sectie **instellingen** de optie **actie groepen**.
 
-1. Zoek en selecteer de actiegroep die u wilt bewerken.
+1. Zoek en selecteer de actie groep die u wilt bewerken.
 
-1. Toevoegen aan de lijst **met acties:**
+1. Toevoegen aan de lijst met **acties**:
 
-    a. **Actietype:** *Webhook*
+    a. **Actie Type:** *webhook*
 
-    b. **Details:** De **URL servicenu-integratie** die u eerder hebt opgeslagen.
+    b. **Details:** De URL van de ServiceNow- **integratie** die u eerder hebt opgeslagen.
 
-    c. **Naam:** De naam, alias of id van Webhook.
+    c. **Naam:** Naam, alias of id van de webhook.
 
-1. Selecteer **Opslaan** wanneer u klaar bent om de actiegroep bij te werken.
+1. Selecteer **Opslaan** wanneer u klaar bent om de actie groep bij te werken.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Uw webhook-integratie testen via een HTTP POST-verzoek
-1. Maak de payload servicestatus die u wilt verzenden. U een voorbeeld service status webhook payload vinden bij [Webhooks voor Azure activity log alerts](../azure-monitor/platform/activity-log-alerts-webhook.md).
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Uw integratie van webhooks testen via een HTTP POST-aanvraag
+1. Maak de service status Payload die u wilt verzenden. U kunt een voor beeld van een service Health-webhook Payload vinden op [webhooks voor Azure-activiteiten logboek waarschuwingen](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 1. Maak als volgt een HTTP POST-aanvraag:
 
@@ -187,12 +187,12 @@ In dit artikel ziet u hoe u Azure-servicestatuswaarschuwingen integreren met Ser
 
     BODY        <service health payload>
     ```
-1. U moet `200 OK` een antwoord ontvangen met het bericht 'Incident gemaakt'.
+1. U ontvangt een `200 OK` antwoord met het bericht ' incident gemaakt '.
 
-1. Ga naar [ServiceNow](https://www.servicenow.com/) om te bevestigen dat uw integratie is ingesteld.
+1. Ga naar [ServiceNow](https://www.servicenow.com/) om te bevestigen dat de integratie is ingesteld.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [configureren van webhookmeldingen voor bestaande probleembeheersystemen](service-health-alert-webhook-guide.md).
-- Bekijk het [webhookschema voor de waarschuwing voor activiteitenlogboeken](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Meer informatie over [meldingen over servicestatus](../azure-monitor/platform/service-notifications.md).
-- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).
+- Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
+- Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek. 
+- Meer informatie over [service status meldingen](../azure-monitor/platform/service-notifications.md).
+- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).

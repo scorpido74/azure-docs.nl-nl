@@ -1,7 +1,7 @@
 ---
-title: Operations, events en tellers controleren voor openbare Basisbalans
+title: Bewerkingen, gebeurtenissen en prestatie meter items bewaken voor open bare basis Load Balancer
 titleSuffix: Azure Load Balancer
-description: Meer informatie over het inschakelen van waarschuwingsgebeurtenissen en het registreren van de status van de sonde voor openbare basisbalans
+description: Meer informatie over het inschakelen van waarschuwings gebeurtenissen en het controleren van de status logboek registratie voor open bare basis Load Balancer
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,88 +14,88 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
 ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76935322"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-logboeken voor openbare Basic Azure Load Balancer
 
 >[!IMPORTANT]
->Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie Overzicht van Standaard load [balancer](load-balancer-standard-overview.md) dat telemetrie via multidimensionale statistieken in Azure Monitor blootlegt voor meerinformatie over Standard Load Balancer.
+>Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Voor meer informatie over Standard Load Balancer raadpleegt u [Standard Load Balancer Overview](load-balancer-standard-overview.md) , waarmee u telemetrie kunt weer geven via multidimensionale metrische gegevens in azure monitor.
 
-U verschillende typen logboeken in Azure gebruiken om Basislastsbalansen te beheren en op te lossen. Sommige van deze logboeken zijn toegankelijk via de portal. Logboeken kunnen worden gestreamd naar een gebeurtenishub of een Log Analytics-werkruimte. Alle logboeken kunnen worden geëxtraheerd uit Azure blob-opslag en worden weergegeven in verschillende hulpprogramma's, zoals Excel en Power BI.  U meer informatie over de verschillende soorten logs uit de onderstaande lijst.
+U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers te beheren en problemen op te lossen. Sommige van deze logboeken kunnen worden geopend via de portal. Logboeken kunnen worden gestreamd naar een Event Hub-of Log Analytics-werk ruimte. Alle logboeken kunnen worden geëxtraheerd uit Azure Blob-opslag en worden weer gegeven in verschillende hulpprogram ma's, zoals Excel en Power BI.  In de onderstaande lijst vindt u meer informatie over de verschillende typen logboeken.
 
-* **Activiteitslogboeken:** U [Activiteitslogboeken weergeven](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) gebruiken om acties op resources te controleren om alle activiteiten weer te geven die worden verzonden naar uw Azure-abonnement(en) en hun status. Activiteitslogboeken zijn standaard ingeschakeld en kunnen worden weergegeven in de Azure-portal.
-* **Logboeken voor waarschuwingsgebeurtenissen:** U dit logboek gebruiken om waarschuwingen van de load balancer weer te geven. De status voor de load balancer wordt elke vijf minuten verzameld. Dit logboek wordt alleen geschreven als een waarschuwing voor load balancer wordt verhoogd.
-* **Logboeken van de gezondheidssonde:** U dit logboek gebruiken om problemen weer te geven die zijn gedetecteerd door uw statussonde, zoals het aantal exemplaren in uw backend-pool die geen aanvragen van de load balancer ontvangen vanwege fouten in de statussonde. Dit logboek wordt geschreven wanneer er een wijziging is in de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de status van de
+* **Activiteiten logboeken:** U kunt [activiteiten logboeken weer geven gebruiken om acties op resources te controleren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) om alle activiteiten weer te geven die worden verzonden naar uw Azure-abonnement (en) en hun status. Activiteiten logboeken zijn standaard ingeschakeld en kunnen worden weer gegeven in de Azure Portal.
+* **Gebeurtenis logboeken voor waarschuwingen:** U kunt dit logboek gebruiken om waarschuwingen weer te geven die zijn gegenereerd door de load balancer. De status voor de load balancer wordt elke vijf minuten verzameld. Dit logboek wordt alleen geschreven als er een load balancer waarschuwings gebeurtenis optreedt.
+* **Health probe-logboeken:** U kunt dit logboek gebruiken om problemen weer te geven die zijn gedetecteerd door uw Health Probe, zoals het aantal exemplaren in uw back-end-pool die geen aanvragen ontvangen van de load balancer als gevolg van fouten in de status test. In dit logboek wordt geschreven wanneer er een wijziging is in de status van de status test.
 
 > [!IMPORTANT]
-> Azure Monitor-logboeken werken momenteel alleen voor openbare Basislastsaldi. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het implementatiemodel resourcebeheer. U logboeken niet gebruiken voor resources in het klassieke implementatiemodel. Zie [Resource manager-implementatie en klassieke implementatie begrijpen](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatiemodellen van de implementatie.
+> Azure Monitor-logboeken werken momenteel alleen voor open bare Basic load balancers. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatie modellen.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 
-Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboekregistratie en logboekregistratie van gebeurtenissen en statussen in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboekregistratie in te schakelen.
+Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboek registratie voor gebeurtenis-en status controle in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboek registratie in te scha kelen.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een load balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u verdergaat.
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
 
-1. Klik in de portal op **Resourcegroepen**.
-2. Selecteer ** \<de naam van de resourcegroep>** waar uw load balancer zich bevindt.
+1. Klik in de portal op **resource groepen**.
+2. Selecteer ** \<resource-group-name>** waarbij uw Load Balancer.
 3. Selecteer uw load balancer.
-4. Selecteer**Diagnostische instellingen voor** **controle** > selecteren .
-5. Selecteer in het deelvenster **Diagnostische instellingen** onder **Diagnostische instellingen**de optie + Diagnostische **instelling toevoegen**.
-6. Voer in het deelvenster **Instellingen voor diagnoseinstellingen** **mijnLBDiagnostics** in het veld **Naam** in.
-7. U hebt drie opties voor de **instellingen voor diagnostische gegevens.**  U er één, twee of alle drie kiezen en elk configureren voor uw vereisten:
-   * **Archiveren naar een opslagaccount**
-   * **Streamen naar een gebeurtenishub**
+4. Selecteer**Diagnostische instellingen** **bewaken** > .
+5. Selecteer in het deel venster **Diagnostische instellingen** onder **Diagnostische instellingen**de optie **+ Diagnostische instelling toevoegen**.
+6. Voer in het deel venster **Diagnostische instellingen** maken **myLBDiagnostics** in het veld **naam** in.
+7. Er zijn drie opties voor de **Diagnostische instellingen**.  U kunt een, twee of alle drie kiezen en elk configureren voor uw vereisten:
+   * **Archiveren naar een opslag account**
+   * **Streamen naar een Event Hub**
    * **Verzenden naar Log Analytics**
 
     ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslagaccount
-    Je hebt een opslagaccount nodig dat al is gemaakt voor dit proces.  Zie [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) als u een opslagaccount wilt maken
+    U hebt een opslag account nodig dat al is gemaakt voor dit proces.  Zie [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) voor meer informatie over het maken van een opslag account.
 
-    1. Schakel het selectievakje naast **Archief in op een opslagaccount**.
-    2. Selecteer **Configureren** om het deelvenster **Een opslagaccount selecteren** te openen.
-    3. Selecteer het **abonnement** waarbij uw opslagaccount is gemaakt in het keuzevak.
-    4. Selecteer de naam van uw opslagaccount onder **Opslagaccount** in het keuzevak.
+    1. Schakel het selectie vakje in naast **archiveren naar een opslag account**.
+    2. Selecteer **configureren** om het deel venster **een opslag account selecteren** te openen.
+    3. Selecteer het **abonnement** waarin uw opslag account is gemaakt in de vervolg keuzelijst.
+    4. Selecteer de naam van uw opslag account onder **opslag account** in de vervolg keuzelijst.
     5. Selecteer OK.
 
     ### <a name="stream-to-an-event-hub"></a>Streamen naar een Event Hub
-    Je hebt een gebeurtenishub nodig die al is gemaakt voor dit proces.  Zie [Quickstart: Een gebeurtenishub maken met Azure-portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) als u een gebeurtenishub wilt maken.
+    U hebt een Event Hub nodig dat voor dit proces al is gemaakt.  Als u een Event Hub wilt maken, raadpleegt u [Quick Start: een event hub maken met behulp van Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
-    1. Schakel het selectievakje naast **Streamen naar een gebeurtenishub in**
-    2. Selecteer **Configureren** om het **deelvenster Gebeurtenisknooppunt selecteren** te openen.
-    3. Selecteer het **abonnement** waarbij de gebeurtenishub is gemaakt in het keuzevak.
-    4. **Selecteer de naamruimte van de gebeurtenishub** in het uithaalvak.
-    5. Selecteer de naam van het **gebeurtenishubbeleid** in het keuzevak pull-down.
+    1. Schakel het selectie vakje **in naast streamen naar een event hub**
+    2. Selecteer **configureren** om het deel venster **Event hub selecteren** te openen.
+    3. Selecteer het **abonnement** waarin uw event hub is gemaakt in de vervolg keuzelijst.
+    4. **Selecteer Event hub naam ruimte** in de vervolg keuzelijst.
+    5. **Selecteer Event hub-beleids naam** in de vervolg keuzelijst.
     6. Selecteer OK.
 
     ### <a name="send-to-log-analytics"></a>Verzenden naar Log Analytics
-    U moet al een werkruimte voor logboekanalyse hebben die is gemaakt en geconfigureerd voor dit proces.  Zie Een werkruimte voor [Logboekanalyse maken in de Azure-portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) als u een werkruimte voor Logboekanalyse wilt maken
+    U moet al een log Analytics-werk ruimte hebben gemaakt en geconfigureerd voor dit proces.  Zie [een log Analytics-werk ruimte maken in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) om een log Analytics-werk ruimte te maken.
 
-    1. Schakel het selectievakje naast **Verzenden naar logboekanalyse in.**
-    2. Selecteer het **abonnement** waarin de werkruimte Log Analytics zich bevindt in het selectiekader.
-    3. Selecteer de **Logboekanalysewerkruimte** in het uithaalvak.
+    1. Schakel het selectie vakje in naast **verzenden naar log Analytics**.
+    2. Selecteer het **abonnement** waarin uw log Analytics werk ruimte zich in de vervolg keuzelijst bevindt.
+    3. Selecteer de **log Analytics werk ruimte** in de vervolg keuzelijst.
 
 
-8. Schakel onder de sectie **LOG** in het deelvenster **Instellingen voor diagnose** het selectievakje naast:
+8. Schakel onder de sectie **logboek** in het deel venster **Diagnostische instellingen** het selectie vakje in naast beide:
    * **LoadBalancerAlertEvent**
    * **LoadBalancerProbeHealthStatus**
 
-9.  Schakel onder de sectie **METRISCHE** in het deelvenster **Instellingen voor diagnose** het selectievakje in naast:
+9.  Schakel onder de sectie **metric** in het deel venster **Diagnostische instellingen** het selectie vakje in naast:
    * **AllMetrics**
 
-11. Controleer of alles er goed uitziet en klik boven aan het deelvenster **Diagnostische instellingen** maken op **Opslaan.**
+11. Controleer of alles goed lijkt en klik boven aan het deel venster **Diagnostische instellingen** maken op **Opslaan** .
 
 ## <a name="activity-log"></a>Activiteitenlogboek
 
-Het activiteitenlogboek wordt standaard gegenereerd. De logboeken worden 90 dagen bewaard in de logboekenvan Azure. Lees de [activiteitslogboeken weergeven om acties op bronnenartikel te lezen.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)
+Het activiteiten logboek wordt standaard gegenereerd. De logboeken blijven 90 dagen bewaard in de gebeurtenis logboeken van Azure. Lees voor meer informatie over deze logboeken de [activiteiten logboeken weer geven om acties op het artikel resources te controleren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) .
 
-## <a name="archive-to-storage-account-logs"></a>Archief naar opslagaccountlogboeken
+## <a name="archive-to-storage-account-logs"></a>Archiveren naar Logboeken van het opslag account
 
-### <a name="alert-event-log"></a>Logboek van waarschuwingsgebeurtenissen
+### <a name="alert-event-log"></a>Gebeurtenis logboek voor waarschuwingen
 
-Dit logboek wordt alleen gegenereerd als u het per load balancer hebt ingeschakeld. De gebeurtenissen worden aangemeld in de JSON-indeling en opgeslagen in het opslagaccount dat u hebt opgegeven toen u de logboekregistratie hebt ingeschakeld. Het volgende voorbeeld is van een gebeurtenis.
+Dit logboek wordt alleen gegenereerd als u het hebt ingeschakeld op basis van een per load balancer. De gebeurtenissen worden vastgelegd in de JSON-indeling en opgeslagen in het opslag account dat u hebt opgegeven tijdens het inschakelen van de logboek registratie. Het volgende voor beeld is een gebeurtenis.
 
 ```json
 {
@@ -114,11 +114,11 @@ Dit logboek wordt alleen gegenereerd als u het per load balancer hebt ingeschake
 }
 ```
 
-De JSON-uitvoer toont de eigenschap *eventname,* waarin de reden wordt beschreven waarom de load balancer een waarschuwing heeft gemaakt. In dit geval werd de gegenereerde waarschuwing veroorzaakt door tcp-poortuitputting veroorzaakt door ip-nat-limieten (Source NAT).
+De JSON-uitvoer toont de eigenschap *eventname* , waarmee wordt beschreven waarom de Load Balancer een waarschuwing heeft gemaakt. In dit geval wordt de gegenereerde waarschuwing veroorzaakt door de TCP-poort ontstaat vanwege IP NAT-limieten (SNAT) van de bron.
 
-### <a name="health-probe-log"></a>Logboek van de sonde van de gezondheid
+### <a name="health-probe-log"></a>Status test logboek
 
-Dit logboek wordt alleen gegenereerd als u het per load balancer hebt ingeschakeld, zoals hierboven beschreven. De gegevens worden opgeslagen in het opslagaccount dat u hebt opgegeven toen u de logboekregistratie hebt ingeschakeld. Er wordt een container met de naam 'insights-logs-loadbalancerprobehealthstatus' gemaakt en de volgende gegevens worden geregistreerd:
+Dit logboek wordt alleen gegenereerd als u het hebt ingeschakeld op een per load balancer, zoals hierboven is beschreven. De gegevens worden opgeslagen in het opslag account dat u hebt opgegeven tijdens het inschakelen van de logboek registratie. Er wordt een container met de naam ' Insights-logs-loadbalancerprobehealthstatus ' gemaakt en de volgende gegevens worden geregistreerd:
 
 ```json
 {
@@ -154,27 +154,27 @@ Dit logboek wordt alleen gegenereerd als u het per load balancer hebt ingeschake
 }
 ```
 
-De JSON-uitvoer toont in het veld Eigenschappen de basisinformatie voor de status van de sonde. De eigenschap *dipDownCount* toont het totale aantal exemplaren aan de back-end, die geen netwerkverkeer ontvangen vanwege mislukte sondereacties.
+De JSON-uitvoer wordt weer gegeven in het veld eigenschappen de basis informatie voor de test status. De eigenschap *dipDownCount* toont het totale aantal exemplaren op de back-end, die geen netwerk verkeer ontvangen vanwege mislukte test reacties.
 
 ### <a name="view-and-analyze-the-activity-log"></a>Het activiteitenlogboek bekijken en analyseren
 
-U gegevens over activiteitenlogboeken bekijken en analyseren met behulp van een van de volgende methoden:
+U kunt activiteiten logboek gegevens weer geven en analyseren met een van de volgende methoden:
 
-* **Azure-hulpprogramma's:** Informatie ophalen uit het activiteitenlogboek via Azure PowerShell, de Azure Command Line Interface (CLI), de Azure REST API of de Azure-portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [Controlebewerkingen met Resource Manager.](../azure-resource-manager/management/view-activity-logs.md)
-* **Power BI:** Als je nog geen [Power BI-account](https:// .microsoft.com/pricing) hebt, kun je het gratis proberen. Met behulp van het [inhoudspakket Azure Audit Logs voor Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)u uw gegevens analyseren met vooraf geconfigureerde dashboards of u weergaven aanpassen aan uw vereisten.
+* **Azure-hulpprogram ma's:** Gegevens ophalen uit het activiteiten logboek via Azure PowerShell, de Azure-opdracht regel interface (CLI), de Azure-REST API of de Azure Portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [controle bewerkingen met Resource Manager](../azure-resource-manager/management/view-activity-logs.md) .
+* **Power BI:** Als u nog geen [Power bi](https:// .microsoft.com/pricing) account hebt, kunt u het gratis uitproberen. Met het [Azure audit logs-inhouds pakket voor Power bi](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)kunt u uw gegevens analyseren met vooraf geconfigureerde Dash boards, of u kunt weer gaven aanpassen aan uw vereisten.
 
-### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Het logboek van de statussonde en het gebeurtenislogboek weergeven en analyseren
+### <a name="view-and-analyze-the-health-probe-and-event-log"></a>De status test en het gebeurtenis logboek weer geven en analyseren
 
-Maak verbinding met uw opslagaccount en haal de JSON-logboekvermeldingen op voor logboeken voor gebeurtenissen en statussondes. Zodra u de JSON-bestanden hebt gedownload, u deze converteren naar CSV en deze weergeven in Excel, Power BI of een ander hulpprogramma voor gegevensvisualisatie.
+Maak verbinding met uw opslag account en haal de JSON-logboek vermeldingen op voor gebeurtenis-en Health probe Logboeken. Wanneer u de JSON-bestanden hebt gedownload, kunt u deze converteren naar CSV en weer geven in Excel, Power BI of een ander hulp programma voor gegevens visualisatie.
 
 > [!TIP]
 > Als u bekend bent met Visual Studio en de basisconcepten van het wijzigen van waarden voor constanten en variabelen in C#, kunt u de [logboekconversieprogramma’s](https://github.com/Azure-Samples/networking-dotnet-log-converter) gebruiken die beschikbaar zijn in GitHub.
 
 ## <a name="stream-to-an-event-hub"></a>Streamen naar een Event Hub
-Wanneer diagnostische informatie wordt gestreamd naar een gebeurtenishub, kan deze worden gebruikt voor gecentraliseerde logboekanalyse in een SIEM-tool van derden met Azure Monitor-integratie. Zie [Azure-bewakingsgegevens streamen naar een gebeurtenishub voor](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration) meer informatie
+Wanneer diagnostische gegevens worden gestreamd naar een Event Hub, kan deze worden gebruikt voor gecentraliseerde logboek analyse in een SIEM-hulp programma van derden met Azure Monitor-integratie. Zie [Azure-bewakings gegevens streamen naar een event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration) voor meer informatie
 
 ## <a name="send-to-log-analytics"></a>Verzenden naar Log Analytics
-Bronnen in Azure kunnen hun diagnostische gegevens rechtstreeks naar een Log Analytics-werkruimte laten sturen, waar complexe query's kunnen worden uitgevoerd tegen de informatie voor probleemoplossing en analyse.  Zie [Azure-bronlogboeken verzamelen in de werkruimte Log Analytics in Azure Monitor voor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace) meer informatie
+De diagnostische gegevens van resources in azure kunnen rechtstreeks naar een Log Analytics-werk ruimte worden verzonden, waar complexe query's kunnen worden uitgevoerd op basis van de informatie voor probleem oplossing en analyse.  Zie [Azure-resource logboeken verzamelen in log Analytics werk ruimte in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

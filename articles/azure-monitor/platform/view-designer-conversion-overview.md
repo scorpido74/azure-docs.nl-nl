@@ -1,5 +1,5 @@
 ---
-title: Overgangshandleiding voor azure-monitorweergave ontwerper naar werkmappen
+title: Overgangs gids voor Azure Monitor Designer naar werkmappen
 description: ''
 author: austonli
 ms.author: aul
@@ -7,60 +7,60 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658690"
 ---
-# <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Overgangshandleiding voor azure-monitorweergave ontwerper naar werkmappen
-[View designer](view-designer.md) is een functie van Azure Monitor waarmee u aangepaste weergaven maken om gegevens in uw Log Analytics-werkruimte te visualiseren, met grafieken, lijsten en tijdlijnen. Ze worden uitgefaseerd en vervangen door werkmappen die extra functionaliteit bieden. In dit artikel vindt u een overzicht van het proces voor het converteren van uw bestaande weergaven naar werkmappen.
+# <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Overgangs gids voor Azure Monitor Designer naar werkmappen
+[View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Ze worden gefaseerd en vervangen door werkmappen die extra functionaliteit bieden. Dit artikel bevat een overzicht van het proces voor het converteren van uw bestaande weer gaven naar werkmappen.
 
 ## <a name="workbooks-overview"></a>Overzicht van werkmappen
-[Werkmappen](../insights/vminsights-workbooks.md) combineren tekst, [logboekquery's,](../log-query/query-language.md)statistieken en parameters in uitgebreide interactieve rapporten. Teamleden met dezelfde toegang tot Azure-bronnen kunnen ook werkmappen bewerken.
+[Werkmappen](../insights/vminsights-workbooks.md) combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Team leden met dezelfde toegang tot Azure-resources kunnen ook werkmappen bewerken.
 
 Werkmappen zijn handig voor scenario's zoals:
 
--   Het verkennen van het gebruik van uw virtuele machine wanneer u niet weet wat de statistieken van belang op voorhand: CPU-gebruik, schijfruimte, geheugen, netwerk afhankelijkheden, enz. In tegenstelling tot andere hulpprogramma's voor gebruiksanalyse, u met werkmappen meerdere soorten visualisaties en analyses combineren, waardoor ze ideaal zijn voor dit soort verkenning en verkenning in vrije vorm.
--   Uw team uitleggen hoe een recent ingerichte VM presteert, door statistieken weer te geven voor belangrijke tellers en andere logboekgebeurtenissen.
--   Het delen van de resultaten van een formaat experiment van uw VM met andere leden van uw team. U de doelen voor het experiment met tekst uitleggen en vervolgens elke gebruiksmetrische en analysequery's weergeven die worden gebruikt om het experiment te evalueren, samen met duidelijke call-outs voor de vraag of elke statistiek boven of onder het doel lag.
--   Het rapporteren van de impact van een storing op het gebruik van uw VM, het combineren van gegevens, tekstuitleg en een discussie over de volgende stappen om uitval in de toekomst te voorkomen.
+-   Het gebruik van uw virtuele machine verkennen wanneer u de metrische gegevens die van belang zijn, vooraf niet kent: CPU-gebruik, schijf ruimte, geheugen, netwerk afhankelijkheden, enzovoort. In tegens telling tot andere hulpprogram ma's voor gebruiks analyse kunt u met werkmappen meerdere soorten visualisaties en analyses combi neren, waardoor ze ideaal zijn voor dit soort vrije-vorm onderzoek.
+-   Uitleg over uw team hoe een onlangs ingerichte virtuele machine wordt uitgevoerd, door metrische gegevens voor sleutel items en andere logboek gebeurtenissen weer te geven.
+-   Het delen van de resultaten van een experiment voor het wijzigen van de grootte van uw virtuele machine met andere leden van uw team. U kunt de doel stellingen voor het experiment uitleggen met tekst, vervolgens elk gebruik van metrische gegevens en analyse query's weer geven die worden gebruikt voor het evalueren van het experiment, samen met duidelijke aanroep-outs voor of elke metriek boven of onder het doel ligt.
+-   Rapportage van de impact van een storing in het gebruik van uw virtuele machine, het combi neren van gegevens, tekst uitleg en een bespreking van de volgende stappen om te voor komen dat er storingen in de toekomst worden vermeden.
 
 
-## <a name="why-convert-view-designer-dashboards-to-workbooks"></a>Waarom weergavedashboards converteren naar werkmappen?
+## <a name="why-convert-view-designer-dashboards-to-workbooks"></a>Waarom converteer ik weergave Designer-Dash boards naar werkmappen?
 
-View designer biedt de mogelijkheid om verschillende query-gebaseerde weergaven en visualisaties te genereren. Aanpassingen op hoog niveau blijven echter beperkt, zoals bijvoorbeeld het formatteren van rasters en tegelindelingen of het selecteren van alternatieve graphics om uw gegevens weer te geven. View designer is beperkt tot een totaal van negen verschillende tegels om uw gegevens weer te geven.
+De weer gave Designer biedt de mogelijkheid om verschillende op query's gebaseerde weer gaven en visualisaties te genereren. Aanpassingen op hoog niveau blijven echter beperkt, zoals bijvoorbeeld het formatteren van rasters en tegelindelingen of het selecteren van alternatieve graphics om uw gegevens weer te geven. De weer gave Designer is beperkt tot een totaal van negen afzonderlijke tegels om uw gegevens weer te geven.
 
-Workbooks is een platform dat het volledige potentieel van uw gegevens benut. werkmappen behouden niet alleen alle mogelijkheden, maar ondersteunen ook extra functionaliteit via tekst, statistieken, parameters en nog veel meer. Met werkmappen kunnen gebruikers bijvoorbeeld dichte rasters consolideren en zoekbalken toevoegen om de gegevens eenvoudig te filteren en te analyseren. 
+Workbooks is een platform dat het volledige potentieel van uw gegevens benut. werkmappen behouden niet alleen alle mogelijkheden, maar bieden ook ondersteuning voor aanvullende functionaliteit via tekst, metrische gegevens, para meters en nog veel meer. Met werkmappen kunnen gebruikers bijvoorbeeld dichte rasters consolideren en zoek balken toevoegen om de gegevens eenvoudig te filteren en te analyseren. 
 
-### <a name="advantages-of-using-workbooks-over-view-designer"></a>Voordelen van het gebruik van werkmappen boven View Designer
+### <a name="advantages-of-using-workbooks-over-view-designer"></a>Voor delen van het gebruik van werkmappen over de ontwerp functie voor weer gaven
 
-* Ondersteunt zowel logboeken als statistieken.
-* Hiermee u zowel persoonlijke weergaven voor individuele toegangscontrole als gedeelde werkmappenweergaven weergeven.
-* Aangepaste indelingsopties met tabbladen, grootte en besturingselementen voor schalen.
-* Ondersteuning voor query's in meerdere Log Analytics-werkruimten, Application Insights-toepassingen en abonnementen.
-* Hiermee worden aangepaste parameters inschakelt die gekoppelde grafieken en visualisaties dynamisch bijwerken.
-* Ondersteuning voor sjabloongalerie seinen van openbare GitHub.
+* Ondersteunt logboeken en metrische gegevens.
+* Hiermee worden zowel persoonlijke weer gaven voor afzonderlijke Access Control-als gedeelde werkmap weergaven toegestaan.
+* Aangepaste indelings opties voor de besturings elementen tabs, formaat wijzigen en schalen.
+* Ondersteuning voor het uitvoeren van query's op meerdere Log Analytics werk ruimten, Application Insights toepassingen en abonnementen.
+* Hiermee schakelt u aangepaste para meters in waarmee gekoppelde grafieken en visualisaties dynamisch worden bijgewerkt.
+* Sjabloon galerie biedt ondersteuning voor open bare GitHub.
 
-Hoewel deze handleiding eenvoudige stappen biedt om een aantal van de veelgebruikte weergave-designerweergaven rechtstreeks opnieuw te maken, kunnen gebruikers met werkmappen de vrijheid hebben om een van hun eigen aangepaste visualisaties en statistieken te maken en te ontwerpen. De volgende schermafbeelding is te zien in de [sjabloon voor het gebruik](https://go.microsoft.com/fwlink/?linkid=874159&resourceId=Azure%20Monitor&featureName=Workbooks&itemId=community-Workbooks%2FAzure%20Monitor%20-%20Workspaces%2FWorkspace%20Usage&workbookTemplateName=Workspace%20Usage&func=NavigateToPortalFeature&type=workbook) van werkruimte en toont een voorbeeld van welke werkmappen kunnen worden gemaakt:
-
-
-![Voorbeeld van werkmappentoepassing](media/view-designer-conversion-overview/workbook-template-example.jpg)
+Hoewel deze hand leiding eenvoudige stappen biedt om een aantal veelgebruikte weer gave-ontwerp weergaven te maken, kunnen gebruikers met werkmappen de vrijheid hebben om een eigen aangepaste visualisaties en metrische gegevens te maken en te ontwerpen. De volgende scherm afbeelding is afkomstig uit de [sjabloon gebruiks werkruimte](https://go.microsoft.com/fwlink/?linkid=874159&resourceId=Azure%20Monitor&featureName=Workbooks&itemId=community-Workbooks%2FAzure%20Monitor%20-%20Workspaces%2FWorkspace%20Usage&workbookTemplateName=Workspace%20Usage&func=NavigateToPortalFeature&type=workbook) en toont een voor beeld van wat werkmappen kan maken:
 
 
-## <a name="how-to-start-using-workbooks"></a>Werken met werkmappen gaan gebruiken
-Geopende werkmappen uit de werkmappen zijn ingeschakeld in Log Analytics-werkruimten als item in de navigatiebalk aan de zijkant, direct onder de locatie van de weergaveontwerper.
+![Voor beeld van werkmappen-toepassing](media/view-designer-conversion-overview/workbook-template-example.jpg)
+
+
+## <a name="how-to-start-using-workbooks"></a>Het gebruik van werkmappen starten
+Werkmappen openen vanuit de werkmappen zijn ingeschakeld in Log Analytics werk ruimten als een item in de navigatie balk aan de zijkant, direct onder de locatie weergave ontwerp.
 
 ![Navigatie in werkmappen](media/view-designer-conversion-overview/workbooks-nav.png)
 
-Zodra deze optie is geselecteerd, wordt een galerie weergegeven met alle opgeslagen werkmappen en sjablonen voor uw werkruimte.
+Zodra deze is geselecteerd, wordt er een galerie weer gegeven met alle opgeslagen werkmappen en sjablonen voor uw werk ruimte.
 
-![Werkmappengalerie](media/view-designer-conversion-overview/workbooks-gallery.png)
+![Galerie met werkmappen](media/view-designer-conversion-overview/workbooks-gallery.png)
 
-Als u een nieuwe werkmap wilt starten, u de sjabloon **Leeg** selecteren onder **Snel starten**of het pictogram **Nieuw** in de bovenste navigatiebalk. Als u sjablonen wilt weergeven of wilt terugkeren naar opgeslagen werkmappen, selecteert u het item in de galerie of zoekt u naar de naam in de zoekbalk.
+Als u een nieuwe werkmap wilt starten, kunt u de **lege** sjabloon onder **snel starten**selecteren of het pictogram **Nieuw** in de bovenste navigatie balk. Als u sjablonen wilt weer geven of als u wilt terugkeren naar opgeslagen werkmappen, selecteert u het item in de galerie of zoekt u naar de naam in de zoek balk.
 
-Als u een werkmap wilt opslaan, moet u het rapport opslaan met een specifieke titel, abonnement, resourcegroep en locatie.
-De werkmap wordt automatisch ingevuld naar dezelfde instellingen als de LA-werkruimte, met hetzelfde abonnement, resourcegroep, maar gebruikers kunnen deze rapportinstellingen wijzigen. Werkmappen worden standaard opgeslagen in *Mijn rapporten,* alleen toegankelijk voor de individuele gebruiker. Ze kunnen ook rechtstreeks worden opgeslagen in gedeelde rapporten of later worden gedeeld.
+Als u een werkmap wilt opslaan, moet u het rapport opslaan met een specifieke titel, abonnement, resource groep en locatie.
+In de werkmap worden de instellingen van de werk ruimte van de LA automatisch gewijzigd, met hetzelfde abonnement, de resource groep, maar gebruikers kunnen deze rapport instellingen wijzigen. Werkmappen worden standaard opgeslagen in *mijn rapporten*, die alleen toegankelijk zijn voor de afzonderlijke gebruiker. Ze kunnen ook rechtstreeks worden opgeslagen in gedeelde rapporten of later worden gedeeld.
 
 ![Werkmappen opslaan](media/view-designer-conversion-overview/workbooks-save.png)
 

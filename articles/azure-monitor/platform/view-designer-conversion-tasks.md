@@ -1,5 +1,5 @@
 ---
-title: Algemene taken voor azure-monitorweergave ontwerper naar werkmappen
+title: Algemene taken voor de conversie van Designer naar werkmappen Azure Monitor weer geven
 description: ''
 author: austonli
 ms.author: aul
@@ -7,50 +7,50 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658741"
 ---
-# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Algemene taken voor het converteren van ontwerper naar werkmappen weergeven
-[View designer](view-designer.md) is een functie van Azure Monitor waarmee u aangepaste weergaven maken om gegevens in uw Log Analytics-werkruimte te visualiseren, met grafieken, lijsten en tijdlijnen. Ze worden uitgefaseerd en vervangen door werkmappen die extra functionaliteit bieden. In dit artikel worden taken beschreven die gebruikelijk zijn bij het converteren van weergaven naar werkmappen.
+# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Algemene taken voor de conversie van Designer naar werkmappen weer geven
+[View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Ze worden gefaseerd en vervangen door werkmappen die extra functionaliteit bieden. In dit artikel vindt u informatie over taken die gemeen schappelijk zijn in het converteren van weer gaven naar werkmappen.
 
 
-## <a name="quickstart-with-preset-view-designer-templates"></a>Snelstart met vooraf ingestelde weergave-ontwerpsjablonen
+## <a name="quickstart-with-preset-view-designer-templates"></a>Snelstartgids met vooraf ingestelde ontwerp sjablonen voor weer gaven
 
-Werkmappen in Logboekanalyse-werkruimten hebben al sjablonen gemaakt om een aantal weergaven in de weergaveontwerper aan te passen. Selecteer onder de categorie **Designergidsen weergeven** **de optie Ontwerpovergangshandleiding weergeven** voor meer informatie over uw opties of selecteer een van de vooraf ingestelde sjablonen.
+Werkmappen in Log Analytics-werk ruimten hebben al sjablonen gemaakt die overeenkomen met een aantal weer gaven in de ontwerp functie voor weer gave. Selecteer in de categorie **ontwerp handleidingen weer** geven de optie **ontwerp overgangs gids weer geven** voor meer informatie over uw opties of selecteer een van de vooraf gedefinieerde sjablonen.
 
-![Voorbeeldsjablonen](media/view-designer-conversion-tasks/templates.png)
+![Voorbeeld sjablonen](media/view-designer-conversion-tasks/templates.png)
 
-## <a name="enabling-time-range-filter"></a>Tijdbereikfilter inschakelen
-De ontwerper van de weergave heeft een ingebouwd standaardtijdbereikfilter, maar in werkmappen is deze instelling standaard niet ingeschakeld. Met werkmappen kunnen gebruikers wel hun eigen tijdbereikfilters maken die mogelijk meer van toepassing zijn op hun gegevenslogboeken. De stappen om het filter te genereren worden hieronder weergegeven:
+## <a name="enabling-time-range-filter"></a>Het filter tijd bereik inschakelen
+De weer gave Designer heeft een ingebouwd standaardtijd bereik filter, maar in werkmappen is deze instelling niet standaard ingeschakeld. Met werkmappen kunnen gebruikers hun eigen tijds bereik filters maken die mogelijk meer van toepassing zijn op de gegevens Logboeken. De stappen voor het genereren van het filter worden hieronder weer gegeven:
 
-Selecteer de optie **Parameters toevoegen.** De **standaardstijl** is ingesteld op *Pillen*.
+Selecteer de optie **para meters toevoegen** . De standaard **stijl** is ingesteld op *Pills*.
 
 ![Param toevoegen](media/view-designer-conversion-tasks/add-param.png)
 
- Selecteer de knop **Parameter toevoegen.**
+ Selecteer de knop **para meter toevoegen** .
 
 ![Parameter toevoegen](media/view-designer-conversion-tasks/add-parameter.png)
 
-Typ *TimeRange*in het menu zijbalk in het tekstvak **Parameternaam** . **Stel parametertype** in als *tijdbereikkiezer*. Schakel het selectievakje **Vereist?** in.
+Typ *time Range*in het tekstvak **parameter naam** van het menu Sidebar. Stel **parameter type** in als *tijd bereik kiezer*. Schakel het selectie vakje **vereist?** in.
 
-![Parametermenu](media/view-designer-conversion-tasks/parameter-menu.png)
+![Parameter menu](media/view-designer-conversion-tasks/parameter-menu.png)
 
-Sla de parameter op in de linkerbovenhoek van het menu zijbalk. U de vervolgkeuzelijst standaard als *uitgeschakeld* laten of een standaard **tijdbereikwaarde** selecteren, zoals *24 uur*. Selecteer **Gereed bewerken**.
+Sla de para meter op in de linkerbovenhoek van het menu Sidebar. U kunt de vervolg keuzelijst standaard *uitschakelen* of een standaard waarde voor **time Range** selecteren, bijvoorbeeld *24 uur*. Selecteer **gereed bewerken**.
 
-Parameters kunnen worden gebruikt in query's door krullende accolades toe te {} voegen rond uw parameternaam. Meer informatie over parameters is te vinden in de [werkboekendocumentatie over parameters.](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)
+Para meters kunnen worden gebruikt in query's door accolades {} toe te voegen rond uw parameter naam. Meer informatie over para meters vindt u in de [werkmappen-documentatie over para meters](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md).
 
-## <a name="updating-queries-with-the-timerange-parameter"></a>Query's bijwerken met de parameter TimeRange
+## <a name="updating-queries-with-the-timerange-parameter"></a>Query's bijwerken met de para meter time Range
 
-### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Optie 1: TimeRange selecteren in de vervolgkeuzelijst Tijdbereik
+### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>Optie 1: Selecteer Time Range in de vervolg keuzelijst tijds bereik
 
-![Tijdsparameter](media/view-designer-conversion-tasks/time-parameter.png)
+![Tijd parameter](media/view-designer-conversion-tasks/time-parameter.png)
 
-### <a name="option-2-update-your-log-queries"></a>Optie 2: Uw logboekquery's bijwerken
+### <a name="option-2-update-your-log-queries"></a>Optie 2: uw logboek query's bijwerken
 
-Voeg in uw query `| where TimeGenerated {TimeRange}` de regel toe: zoals in het volgende voorbeeld:
+Voeg in de query de regel toe `| where TimeGenerated {TimeRange}` : zoals in het volgende voor beeld:
 
 Oorspronkelijke query
 ```KQL
@@ -66,15 +66,15 @@ search *
 ```
 
 ## <a name="including-a-list"></a>Inclusief een lijst
-De meeste weergave-designerweergaven bevatten een lijst en u deze standaardlijst reproduceren in een werkmap.
+De meeste weergave ontwerp weergaven bevatten een lijst en u kunt deze standaard lijst in een werkmap reproduceren.
 
-![Lijst met tegels](media/view-designer-conversion-tasks/tile-list.png)
+![Tegel lijst](media/view-designer-conversion-tasks/tile-list.png)
 
-Voeg een visualisatie toe door te klikken op **Query toevoegen** vanuit de celopties.
+Voeg een visualisatie toe door te klikken op **query toevoegen** uit de Celopties.
 
 ![Param toevoegen](media/view-designer-conversion-tasks/add-param.png)
 
-De ontwerper van de weergave gebruikt een standaardquery die overeenkomt met de syntaxis uit het voorbeeld Origineel. Dit kan worden bijgewerkt door de query te wijzigen in het bijgewerkte formulier zoals in het volgende voorbeeld:
+In de weer gave Designer wordt gebruikgemaakt van een standaard query die overeenkomt met de syntaxis van het oorspronkelijke voor beeld. Dit kan worden bijgewerkt door de query te wijzigen in het bijgewerkte formulier, zoals in het volgende voor beeld:
 
 Oorspronkelijke query
 ```KQL
@@ -88,12 +88,12 @@ search *
 | summarize Count = count() by Type
 ```
 
-Hiermee wordt een lijst gegenereerd die lijkt op het volgende:
+Hiermee wordt een lijst gegenereerd die er ongeveer als volgt uitziet:
 
-![Voorbeeld van lijst](media/view-designer-conversion-tasks/list-example.png)
+![Voor beeld van lijst](media/view-designer-conversion-tasks/list-example.png)
 
 ## <a name="enabling-sparklines"></a>Sparklines inschakelen
-Een veelvoorkomende functie voor rasters is het toevoegen van sparklines om verschillende gegevenspatronen in de loop van de tijd samen te vatten. View designer biedt de functie **Sparklines inschakelen** voor alle lijsten, net als werkmappen. Als u sparklines wilt opnemen in uw gegevens die overeenkomen met de ontwerper van de weergave, sluit u de gegevens aan bij uw oorspronkelijke query, zoals in het volgende voorbeeld:
+Een gemeen schappelijke functie voor rasters is het toevoegen van sparklines voor het samenvatten van verschillende gegevens patronen in de loop van de tijd. De weer gave Designer biedt de functie **sparklines inschakelen** voor alle lijsten, zoals werkmappen. Als u sparklines wilt opnemen in uw gegevens die overeenkomen met de ontwerp functie voor weer gaven, voegt u de gegevens samen met uw oorspronkelijke query, zoals in het volgende voor beeld:
 
 Oorspronkelijke query
 ```KQL
@@ -110,48 +110,48 @@ search *
 | project Type, AggregatedValue, Trend
 ```
 
-Selecteer **Kolominstellingen**.
-![Kolominstellingen](media/view-designer-conversion-tasks/column-settings.png)
+Selecteer **kolom instellingen**.
+![Kolom instellingen](media/view-designer-conversion-tasks/column-settings.png)
 
-Werk de **vervolgkeuzelijst Kolomrenderer** bij als een *Spark-gebied*.
-![Sparklines](media/view-designer-conversion-tasks/sparkline.png)
+Werk de vervolg keuzelijst van de **kolom renderer** naar een *Spark-gebied*.
+![Groeperen](media/view-designer-conversion-tasks/sparkline.png)
 
-Sla de instellingen op en voer de query opnieuw uit om de tabel bij te werken met een sparkline.
+Sla de instellingen op en voer de query opnieuw uit om de tabel bij te werken zodat deze een sparkline bevat.
 
-Het resulterende raster ziet er ![op de volgende manier uit: Sparkline-voorbeeld](media/view-designer-conversion-tasks/sparkline-example.png)
+Het resulterende raster ziet er ongeveer als volgt uit ![: voor beeld van sparkline](media/view-designer-conversion-tasks/sparkline-example.png)
 
-## <a name="advanced-cell-settings"></a>Geavanceerde celinstellingen
-Als u de ontwerper van de spiegelspiegel wilt spiegelen, u taken uitvoeren, zoals het wijzigen van de grootte van werkmapcellen of het toevoegen van pins en externe koppelingen aan logboeken.
+## <a name="advanced-cell-settings"></a>Geavanceerde instellingen voor cellen
+Als u de weergave ontwerper wilt spie gelen, kunt u taken uitvoeren zoals het wijzigen van de grootte van werkmap cellen of het toevoegen van pincodes en externe koppelingen naar Logboeken.
 
-Als u geavanceerde **instellingen wilt openen,** selecteert u het tandwielpictogram onder aan elke cel.
+Als u toegang wilt krijgen tot **Geavanceerde instellingen** , selecteert u het tandwiel pictogram onder aan elke cel.
 
 ![Geavanceerde instellingen](media/view-designer-conversion-tasks/advanced-settings.png)
 
-Dit geeft een menu weer met verschillende opties:
+Hiermee wordt een menu met verschillende opties weer gegeven:
 
-![Geavanceerde instellingen](media/view-designer-conversion-tasks/advanced-settings-settings.png)
+![Instellingen voor geavanceerde instellingen](media/view-designer-conversion-tasks/advanced-settings-settings.png)
 
-Als u een pincode en een koppeling wilt toevoegen aan een externe query, schakelt u de bijbehorende selectievakjes in. Als u een titel aan uw cel wilt toevoegen, typt u de gewenste titel in de sectie **Grafiektitel.**
+Als u een pincode en een koppeling naar een externe query wilt toevoegen, selecteert u de betreffende selectie vakjes. Als u een titel wilt toevoegen aan uw cel, typt u de gewenste titel in de sectie **grafiek titel** .
 
-Standaard is elke werkmapcel ingesteld op het nemen van de volledige paginabreedte, maar u dit aanpassen door de cel omlaag te schalen onder het tabblad **Stijl** van het menu **Geavanceerde instellingen**
+Standaard is het zo dat alle werkmappen-cellen worden ingesteld op de volledige pagina breedte, maar u kunt dit aanpassen door de cel omlaag te schalen op het tabblad **stijl** van het menu **Geavanceerde instellingen**
 
-![Stijl voor geavanceerde instellingen](media/view-designer-conversion-tasks/advanced-settings-style.png)
+![Stijl van geavanceerde instellingen](media/view-designer-conversion-tasks/advanced-settings-style.png)
 
  
-## <a name="additional-parameters"></a>Aanvullende parameters
-Selecteer **Parameter toevoegen** om een nieuwe parameter in uw werkmap te maken. 
+## <a name="additional-parameters"></a>Aanvullende para meters
+Selecteer **para meter toevoegen** om een nieuwe para meter in uw werkmap te maken. 
 
-Als u een abonnement wilt selecteren, typt u *Abonnement* in het veld **Parameternaam** in het zijmenu en selecteert *u Subscription Picker* in de vervolgkeuzelijst **Parametertype**
+Als u een abonnement wilt selecteren, typt u *abonnement* in het veld **parameter naam** in het menu aan de zijkant en selecteert u de optie *abonnement* kiezen in de vervolg keuzelijst voor het **parameter type**
 
-![Abonnementsmenu](media/view-designer-conversion-tasks/subscription-filter.png)
+![Menu abonnement](media/view-designer-conversion-tasks/subscription-filter.png)
 
-Als u een resource wilt selecteren, typt u *Resource* in het veld **Parameternaam** in het zijmenu en selecteert *u Resourcekiezer* in de vervolgkeuzelijst **Parametertype.**
+Als u een resource wilt selecteren, typt u *resource* in het veld **parameter naam** in het menu aan de zijkant en selecteert u *resource kiezer* in de vervolg keuzelijst **type para meter** .
 
-![Resourcemenu](media/view-designer-conversion-tasks/resource-filter.png)
+![Resource menu](media/view-designer-conversion-tasks/resource-filter.png)
 
-Hiermee worden vervolgteksten ingevoegd om u toegang te geven tot uw verschillende abonnementen en bronnen.
+Hiermee worden vervolg keuzelijsten ingevoegd om toegang te krijgen tot uw verschillende abonnementen en resources.
 
-![Vervolgkeuzelijst voor abonnementsbronnen](media/view-designer-conversion-tasks/subscription-resource.png)
+![Vervolg keuzelijst voor abonnements resources](media/view-designer-conversion-tasks/subscription-resource.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

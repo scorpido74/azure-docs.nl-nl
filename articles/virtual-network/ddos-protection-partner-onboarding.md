@@ -1,6 +1,6 @@
 ---
-title: Samenwerken met Azure DDoS Protection Standard
-description: Inzicht in partnermogelijkheden die zijn ingeschakeld door Azure DDoS Protection Standard.
+title: Partnering met Azure DDoS Protection Standard
+description: Inzicht in de mogelijkheden van partner ondersteuning die worden ingeschakeld door Azure DDoS Protection Standard.
 ms.service: virtual-network
 documentationcenter: na
 author: anupamvi
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 01/28/2020
 ms.author: kumud
 ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76849680"
 ---
-# <a name="partnering-with-azure-ddos-protection-standard"></a>Samenwerken met Azure DDoS Protection Standard
-In dit artikel worden partnermogelijkheden beschreven die zijn ingeschakeld door de Azure DDoS Protection Standard. Dit artikel is ontworpen om productmanagers en business development-rollen te helpen de beleggingspaden te begrijpen en inzicht te geven in de partnerwaardeproposities.
+# <a name="partnering-with-azure-ddos-protection-standard"></a>Partnering met Azure DDoS Protection Standard
+In dit artikel worden de mogelijkheden voor partner ondersteuning beschreven die worden ingeschakeld door de Azure DDoS Protection Standard. Dit artikel is bedoeld om product managers en rollen van bedrijfs ontwikkeling inzicht te geven in de investerings paden en om inzicht te krijgen in de verwerkings waarde van de partner.
 
 ## <a name="background"></a>Achtergrond
-DDoS-aanvallen (Distributed denial of service) zijn een van de belangrijkste beschikbaarheids- en beveiligingsproblemen die worden geuit door klanten die hun toepassingen naar de cloud verplaatsen. Met afpersing en hacktivisme wordt de gemeenschappelijke motivaties achter DDoS-aanvallen, ze zijn consequent toe te nemen in type, schaal, en frequentie van het optreden als ze zijn relatief eenvoudig en goedkoop te lanceren.
+DDoS-aanvallen (Distributed Denial of service) vormen een van de belangrijkste Beschik baarheid en beveiligings problemen die worden gefactureerd door klanten die hun toepassingen naar de Cloud verplaatsen. Omdat Extortion en Hacktivisme de gebruikelijke motivaties achter DDoS-aanvallen zijn, zijn ze steeds groter geworden in het type, de schaal en de frequentie van het aantal keren dat ze relatief eenvoudig en goed koop kunnen worden gestart.
 
-Azure DDoS Protection biedt tegenmaatregelen tegen de meest geavanceerde DDoS-bedreigingen, waarbij gebruik wordt gemaakt van de wereldwijde schaal van Azure-netwerken. De service biedt verbeterde DDoS-mitigatiemogelijkheden voor toepassingen en resources die zijn geïmplementeerd in virtuele netwerken.
+Azure DDoS Protection biedt tegen de meest geavanceerde DDoSe bedreigingen de wereld wijde schaal van Azure-netwerken. De service biedt verbeterde DDoS-beperkings mogelijkheden voor toepassingen en resources die in virtuele netwerken zijn geïmplementeerd.
 
-Technologiepartners kunnen de bronnen van hun klanten in eigen land beschermen met Azure DDoS Protection Standard om de beschikbaarheids- en betrouwbaarheidsproblemen als gevolg van DDoS-aanvallen aan te pakken.
+Technologie partners kunnen hun resources van hun klanten systeem eigen beveiligen met Azure DDoS Protection Standard om de beschik baarheid en betrouw baarheid te verhelpen vanwege DDoS-aanvallen.
 
 ## <a name="introduction-to-azure-ddos-protection-standard"></a>Inleiding tot Azure DDoS Protection Standard
-Azure DDoS Protection Standard biedt verbeterde DDoS-mitigatiemogelijkheden tegen Layer 3- en Layer 4 DDoS-aanvallen. Hieronder volgen de belangrijkste functies van de DDoS Protection Standard-service.
+Azure DDoS Protection Standard biedt verbeterde DDoS-oplossings mogelijkheden voor aanvallen op laag 3 en laag 4 DDoS. Hier volgen de belangrijkste functies van DDoS Protection Standard-Service.
 
 ### <a name="adaptive-real-time-tuning"></a>Adaptieve real-time tuning
-Voor elke beveiligde toepassing stemt Azure DDoS Protection Standard automatisch de ddos-mitigatiebeleidsdrempels af op basis van de verkeersprofielpatronen van de toepassing. De service bereikt deze aanpassing door gebruik te maken van twee inzichten:
+Voor elke beveiligde toepassing worden met Azure DDoS Protection standaard de drempel waarden voor het DDoS-beperkings beleid automatisch afgestemd op basis van de patronen van het verkeers Profiel van de toepassing. Deze aanpassing wordt door de service uitgevoerd met behulp van twee inzichten:
 
-- Automatisch leren van verkeerspatronen per klant (per IP) voor Laag 3 en 4.
-- Het minimaliseren van false positives, gezien het feit dat de schaal van Azure het mogelijk maakt om een aanzienlijke hoeveelheid verkeer te absorberen.
+- Automatisch leren van verkeers patronen per klant (per IP) voor laag 3 en 4.
+- Het minimaliseren van valse positieven, waarbij rekening wordt gehouden met de schaal van Azure, waarmee IT een aanzienlijke hoeveelheid verkeer kan absorberen.
 
-![Adaptieve real-time tuning](./media/ddos-protection-partner-onboarding/real-time-tuning.png)
+![Adaptieve real time tuning](./media/ddos-protection-partner-onboarding/real-time-tuning.png)
 
-### <a name="attack-analytics-telemetry-monitoring-and-alerting"></a>Aanvalsanalyses, telemetrie, bewaking en waarschuwingen
-Azure DDoS Protection identificeert en vermindert DDoS-aanvallen zonder tussenkomst van de gebruiker.
+### <a name="attack-analytics-telemetry-monitoring-and-alerting"></a>Aanvals analyses, telemetrie, bewaking en waarschuwingen
+Azure DDoS Protection identificeert en vermindert DDoS-aanvallen zonder tussen komst van de gebruiker.
 
-- Als de beveiligde bron zich bevindt in het abonnement dat onder Azure Security Center valt, stuurt DDoS Protection Standard automatisch een waarschuwing naar Security Center wanneer een DDoS-aanval wordt gedetecteerd en beperkt tegen de beveiligde toepassing.
-- U ook [een waarschuwing configureren](manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics) voor de metrische DDoS-aanval onder DDoS.
-- U er bovendien voor kiezen om waarschuwingen voor de andere DDoS-statistieken te maken en [aanvalsanalyses](manage-ddos-protection.md#configure-ddos-attack-analytics) te configureren om inzicht te krijgen in de schaal van de aanval, verkeer dat wordt verwijderd, aanvalsvectoren, topbijdragers en andere details.
+- Als de beveiligde resource zich in het abonnement bevindt dat onder Azure Security Center wordt behandeld, stuurt DDoS Protection standaard automatisch een waarschuwing naar Security Center wanneer een DDoS-aanval wordt gedetecteerd en gereduceerd op basis van de beveiligde toepassing.
+- Als u een melding wilt ontvangen wanneer er een actieve beperking is voor een beveiligd openbaar IP-adres, kunt u ook [een waarschuwing configureren](manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics) voor de metriek onder DDoS-aanval of niet.
+- U kunt er ook voor kiezen om waarschuwingen te maken voor de andere DDoS-metrische gegevens en om [aanvals analyses te configureren](manage-ddos-protection.md#configure-ddos-attack-analytics) om inzicht te krijgen in de schaal van de aanval, het verkeer dat wordt verwijderd, aanvals vectoren, de belangrijkste inzenders en andere gegevens.
 
-![DDoS-statistieken](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
+![Metrische gegevens van DDoS](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
-### <a name="ddos-rapid-response-drr"></a>DDoS snelle reactie (DRR)
-DDoS Protection Standard-klanten hebben toegang tot [het Rapid Response-team](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/) tijdens een actieve aanval. DRR kan helpen met aanvalsonderzoek, aangepaste oplossingen tijdens een aanval en analyse na de aanval.
+### <a name="ddos-rapid-response-drr"></a>DDoS Rapid Response (DRR)
+DDoS Protection Standard-klanten hebben toegang tot het [snelle respons team](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/) tijdens een actieve aanval. DRR kan u helpen bij het onderzoeken van aanvallen, aangepaste Risico's tijdens een aanval en de analyse na een aanval.
 
-### <a name="sla-guarantee-and-cost-protection"></a>SLA-garantie en kostenbescherming
-DDoS Protection Standard-service wordt gedekt door een SLA van 99,99% en kostenbescherming biedt resourcecredits voor schaalvoordelen tijdens een gedocumenteerde aanval. Zie [SLA voor Azure DDoS Protection voor](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/)meer informatie.
+### <a name="sla-guarantee-and-cost-protection"></a>SLA-garantie en kosten beveiliging
+DDoS Protection Standard-service wordt gedekt door een SLA van 99,99% en kosten bescherming biedt resource-tegoed voor uitschalen tijdens een gedocumenteerde aanval. Zie [Sla voor Azure DDoS Protection](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/)voor meer informatie.
 
-## <a name="featured-partner-scenarios"></a>Aanbevolen partnerscenario's
-De volgende zijn de belangrijkste voordelen die u behalen door te integreren met de Azure DDoS Protection Standard:
+## <a name="featured-partner-scenarios"></a>Scenario's voor aanbevolen partners
+Hier volgen de belangrijkste voor delen die u kunt afleiden door te integreren met de Azure DDoS Protection Standard:
 
-- De aangeboden services van partners (load balancer, webapplication firewall, firewall, enz.) aan hun klanten worden automatisch beveiligd (white labeled) door Azure DDoS Protection Standard in de back-end.
-- Partners hebben toegang tot Azure DDoS Protection Standard-aanvalsanalyses en telemetrie die ze kunnen integreren met hun eigen producten en bieden een uniforme klantervaring.  
-- Partners hebben toegang tot DDoS-ondersteuning voor snelle respons, zelfs als er geen snelle reactie van Azure is, voor DDoS-gerelateerde problemen.
-- De beveiligde toepassingen van partners worden ondersteund door een DDoS SLA-garantie en kostenbescherming in het geval van DDoS-aanvallen.
+- De aangeboden services van partners (load balancer, Web Application Firewall, firewall, enz.) aan hun klanten worden automatisch beveiligd (wit met een label) door Azure DDoS Protection standaard in de back-end.
+- Partners hebben toegang tot Azure DDoS Protection Standard-aanvals analyse en telemetrie die ze kunnen integreren met hun eigen producten, en bieden een uniforme klant ervaring.  
+- Partners hebben toegang tot ondersteuning voor DDoS snelle reacties, zelfs als Azure Rapid Response geen problemen ondervindt voor DDoS.
+- Beveiligde toepassingen van partners worden ondersteund door een DDoS SLA-garantie en kosten beveiliging in het geval van DDoS-aanvallen.
 
 ## <a name="technical-integration-overview"></a>Overzicht van technische integratie
-Azure DDoS Protection Standard partnermogelijkheden worden beschikbaar gesteld via Azure portal, API's en CLI/PS.
+Azure DDoS Protection standaard verkoop kansen voor partners worden beschikbaar gesteld via Azure Portal, Api's en CLI/PS.
 
 ### <a name="integrate-with-ddos-protection-standard"></a>Integreren met DDoS Protection Standard
-De volgende stappen zijn vereist voor partners om integratie met Azure DDoS Protection Standard te configureren:
-1. Maak een DDoS Protection Plan in uw gewenste (partner)abonnement. Zie [Een DDoS-standaardbeveiligingsplan maken](manage-ddos-protection.md#create-a-ddos-protection-plan)voor stapsgewijze instructies.
+De volgende stappen zijn vereist voor partners voor het configureren van integratie met Azure DDoS Protection Standard:
+1. Maak een DDoS Protection Plan in uw gewenste partner abonnement. Zie [een DDoS Standard-beveiligings plan maken](manage-ddos-protection.md#create-a-ddos-protection-plan)voor stapsgewijze instructies.
    > [!NOTE]
-   > Er hoeft slechts 1 DDoS Protection Plan te worden gemaakt voor een bepaalde tenant. 
-2. Implementeer een service met openbaar eindpunt in uw (partner)abonnementen, zoals load balancer, firewalls en firewall voor webtoepassingen. 
-3. Azure DDoS Protection Standard inschakelen op het virtuele netwerk van de service met openbare eindpunten met DDoS Protection Plan dat in de eerste stap is gemaakt. Zie [DDoS-standaardbeschermingsplan inschakelen](manage-ddos-protection.md#enable-ddos-for-an-existing-virtual-network) voor stpe-by-step-instructies
+   > Er moet slechts één DDoS Protection Plan worden gemaakt voor een bepaalde Tenant. 
+2. Implementeer een service met een openbaar eind punt in uw (partner) abonnementen, zoals load balancer, firewalls en Web Application Firewall. 
+3. Schakel Azure DDoS Protection standaard in op het virtuele netwerk van de service met open bare eind punten die gebruikmaken van DDoS Protection Plan dat in de eerste stap is gemaakt. Zie [DDoS Standard-beveiligings plan inschakelen](manage-ddos-protection.md#enable-ddos-for-an-existing-virtual-network) voor stpe-by-Step-instructies
    > [!IMPORTANT] 
-   > Nadat Azure DDoS Protection Standard is ingeschakeld in een virtueel netwerk, worden alle openbare IP's binnen dat virtuele netwerk automatisch beveiligd. De oorsprong van deze openbare IP's kan zijn binnen Azure (clientabonnement) of buiten Azure. 
-4. Mogelijk integreer je azure DDoS Protection Standard-telemetrie en aanvalsanalyses in uw toepassingsspecifieke klantgerichte dashboard. Zie [DDoS Protection telemetrie gebruiken](manage-ddos-protection.md#use-ddos-protection-telemetry)voor meer informatie over het gebruik van telemetrie. Zie [DDoS-aanvalsanalyses configureren](manage-ddos-protection.md#configure-ddos-attack-analytics) voor meer informatie over het configureren van aanvalsanalyses
+   > Nadat Azure DDoS Protection standaard is ingeschakeld in een virtueel netwerk, worden alle open bare IP-adressen binnen dat virtuele netwerk automatisch beveiligd. De oorsprong van deze open bare Ip's kan binnen Azure (client abonnement) of buiten Azure vallen. 
+4. U kunt eventueel Azure DDoS Protection standaard-telemetrie en aanvals analyses integreren in uw toepassingsspecifiek dash board dat specifiek is voor de klant. Zie [DDoS Protection telemetrie gebruiken](manage-ddos-protection.md#use-ddos-protection-telemetry)voor meer informatie over het gebruik van telemetrie. Zie [DDoS-aanval configureren](manage-ddos-protection.md#configure-ddos-attack-analytics) voor meer informatie over het configureren van een aanvals analyse
 
-### <a name="onboarding-guides-and-technical-documentation"></a>Onboarding gidsen en technische documentatie
+### <a name="onboarding-guides-and-technical-documentation"></a>Gidsen en technische documentatie voor onboarding
 
-- [Productpagina Azure DDoS Protection](https://azure.microsoft.com/services/ddos-protection/)
-- [Azure DDoS Protection-documentatie](ddos-protection-overview.md)
-- [Azure DDoS Protection API-verwijzing](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
-- [Azure virtual network API-verwijzing](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
+- [Azure DDoS Protection product pagina](https://azure.microsoft.com/services/ddos-protection/)
+- [Documentatie over Azure DDoS Protection](ddos-protection-overview.md)
+- [Naslag informatie over Azure DDoS Protection-API](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
+- [Naslag informatie over Azure Virtual Network API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
 
 ### <a name="get-help"></a>Help opvragen
 
-- Als u vragen hebt over toepassings-, service- of productintegraties met Azure DDoS Protection Standard, neemt u contact op met de [Azure-beveiligingscommunity.](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)
-- Volg discussies over [Stack Overflow](https://stackoverflow.com/tags/azure-ddos/).
+- Neem contact op met de [Azure-beveiligings Community](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)als u vragen hebt over de integratie van toepassingen, services of producten met Azure DDoS Protection Standard.
+- Volg de discussies op [stack overflow](https://stackoverflow.com/tags/azure-ddos/).
 
-### <a name="get-to-market"></a>Kom op de markt
+### <a name="get-to-market"></a>Ga naar de markt
 
-- Het primaire programma voor het samenwerken met Microsoft is het [Microsoft Partner Network.](https://partner.microsoft.com/) – Microsoft Graph Security-integraties vallen in het [ISV-track (MPN Independent Software Vendor).](https://partner.microsoft.com/saas-solution-guide)
-- [Microsoft Intelligent Security Association](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) is het programma speciaal voor Microsoft Security Partners om uw beveiligingsproducten te verrijken en de vindbaarheid van uw integraties met Microsoft Security-producten te verbeteren.
+- Het primaire programma voor het samen werken met micro soft is de [Microsoft Partner Network](https://partner.microsoft.com/). – Microsoft Graph beveiligings integraties vallen binnen het [ISV-nummer (MPN Independent Software Vendor)](https://partner.microsoft.com/saas-solution-guide) .
+- [Micro soft intelligent Security Association](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) is het programma dat specifiek is voor micro soft-beveiligings partners om uw beveiligings producten te verrijken en de detectie van de klant te verbeteren van uw integraties naar micro soft-beveiligings producten.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk bestaande partnerintegraties:
+Bestaande partner integraties weer geven:
 
-- [Barracuda WAF-as-a-service](https://www.barracuda.com/waf-as-a-service)
+- [Barracuda WAF-as-a-Service](https://www.barracuda.com/waf-as-a-service)
 - [Azure Cloud WAF van Radware](https://www.radware.com/resources/microsoft-azure/)

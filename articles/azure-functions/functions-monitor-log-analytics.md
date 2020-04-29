@@ -1,44 +1,44 @@
 ---
-title: Azure-functies bewaken met Azure-monitorlogboeken
-description: Meer informatie over het gebruik van Azure Monitor Logs met Azure Functions om functie-uitvoeringen te controleren.
+title: Azure Functions controleren met Azure Monitor-logboeken
+description: Meer informatie over het gebruik van Azure Monitor-logboeken met Azure Functions voor het bewaken van functie-uitvoeringen.
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: cshoe
 ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77649871"
 ---
-# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure-functies bewaken met Azure-monitorlogboeken
+# <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
-Azure Functions biedt een integratie met [Azure Monitor Logs](../azure-monitor/platform/data-platform-logs.md) om functies te controleren. In dit artikel ziet u hoe u Azure-functies configureert om door het systeem gegenereerde en door gebruikers gegenereerde logboeken naar Azure Monitor-logboeken te verzenden.
+Azure Functions biedt een integratie met [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md) om functies te bewaken. Dit artikel laat u zien hoe u Azure Functions kunt configureren voor het verzenden van door het systeem gegenereerde en door de gebruiker gegenereerde logboeken naar Azure Monitor-Logboeken.
 
-Azure Monitor Logs biedt u de mogelijkheid om logboeken van verschillende bronnen in dezelfde werkruimte te consolideren, waar deze kunnen worden geanalyseerd met [query's](../azure-monitor/log-query/log-query-overview.md) om snel verzamelde gegevens op te halen, te consolideren en te analyseren.  U query's maken en testen met Behulp van [Log Analytics](../azure-monitor/log-query/portals.md) in de Azure-portal en vervolgens de gegevens direct analyseren met behulp van deze hulpprogramma's of query's opslaan voor gebruik met [visualisaties](../azure-monitor/visualizations.md) of [waarschuwingsregels.](../azure-monitor/platform/alerts-overview.md)
+Met Azure Monitor Logboeken kunt u logboeken van verschillende resources in dezelfde werk ruimte consolideren, waar het kan worden geanalyseerd met [query's](../azure-monitor/log-query/log-query-overview.md) om verzamelde gegevens snel op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen met behulp van [log Analytics](../azure-monitor/log-query/portals.md) in de Azure Portal en vervolgens de gegevens rechtstreeks analyseren met behulp van deze hulpprogram ma's of query's opslaan voor gebruik met [Visualisaties](../azure-monitor/visualizations.md) of [waarschuwings regels](../azure-monitor/platform/alerts-overview.md).
 
-Azure Monitor gebruikt een versie van de [Kusto-querytaal](/azure/kusto/query/) die wordt gebruikt door Azure Data Explorer en die geschikt is voor eenvoudige logboekquery's, maar ook geavanceerde functionaliteit bevat, zoals aggregaties, joins en slimme analyses. U de querytaal snel leren met [meerdere lessen.](../azure-monitor/log-query/get-started-queries.md)
+Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/) die wordt gebruikt door Azure Data Explorer die geschikt is voor eenvoudige logboek query's, maar bevat ook geavanceerde functies zoals aggregaties, samen voegingen en slimme analyses. U kunt de query taal snel leren kennen met [meerdere lessen](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Integratie met Azure Monitor Logs is momenteel in openbare preview voor functie-apps die worden uitgevoerd op Windows-beheer, Premium en Dedicated-hostingplannen.
+> Integratie met Azure Monitor Logboeken is momenteel beschikbaar als open bare Preview voor functie-apps die worden uitgevoerd op Windows-verbruiks-, Premium-en speciale hosting abonnementen.
 
 ## <a name="setting-up"></a>Instellen
 
-Selecteer **diagnostische** **instellingen** in de sectie Controle en klik op **Diagnostische instelling toevoegen**.
+Selecteer **Diagnostische instellingen** in het gedeelte **bewaking** en klik vervolgens op **Diagnostische instelling toevoegen**.
 
 ![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Kies **op** de pagina Diagnostische instellingen de optie **Verzenden naar Logboekanalyse**en selecteer vervolgens de werkruimte Log Analytics. Onder **log** kies **FunctionAppLogs**, deze tabel bevat de gewenste logs.
+Kies op de pagina **Diagnostische instellingen** de optie **verzenden naar log Analytics**en selecteer vervolgens uw log Analytics-werk ruimte. Onder **logboek** kiest u **FunctionAppLogs**. deze tabel bevat de gewenste Logboeken.
 
 ![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/choose-table.png)
 
-## <a name="user-generated-logs"></a>Door gebruikers gegenereerde logboeken
+## <a name="user-generated-logs"></a>Door de gebruiker gegenereerde logboeken
 
-Als u aangepaste logboeken wilt genereren, u de specifieke logboekeninstructie gebruiken, afhankelijk van uw taal, hier volgen voorbeeldcodefragmenten:
+Als u aangepaste logboeken wilt genereren, kunt u de specifieke registratie-instructie gebruiken, afhankelijk van uw taal. Hier volgen enkele voor beelden van code fragmenten:
 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
@@ -56,7 +56,7 @@ context.getLogger().info("My app logs here.");
 context.log('My app logs here.');
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[Zo](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
@@ -70,13 +70,13 @@ logging.info('My app logs here.')
 
 ---
 
-## <a name="querying-the-logs"></a>De logboeken opvragen
+## <a name="querying-the-logs"></a>Query's uitvoeren op de logboeken
 
-Als u de gegenereerde logboeken wilt opvragen, gaat u naar de werkruimte Log Analytics die u hebt geconfigureerd om de functielogboeken naar te verzenden en klikt u op **Logboeken**.
+Als u de gegenereerde logboeken wilt doorzoeken, gaat u naar de Log Analytics-werk ruimte die u hebt geconfigureerd om de functie Logboeken te verzenden naar en klikt u op **Logboeken**.
 
-![Queryvenster in LA-werkruimte](media/functions-monitor-log-analytics/querying.png)
+![Query venster in de werk ruimte van LA](media/functions-monitor-log-analytics/querying.png)
 
-Azure Functions schrijft alle logboeken naar de tabel **FunctionAppLogs,** hier zijn enkele voorbeeldquery's.
+Azure Functions worden alle logboeken naar de tabel **FunctionAppLogs** geschreven. Dit zijn enkele voor beelden van query's.
 
 ### <a name="all-logs"></a>Alle logboeken
 
@@ -87,7 +87,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Een specifieke functielogboeken
+### <a name="a-specific-function-logs"></a>Een specifieke functie Logboeken
 
 ```
 
@@ -108,6 +108,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Het [overzicht azure-functies bekijken](functions-overview.md)
-- Meer informatie over [Azure Monitor-logboeken](../azure-monitor/platform/data-platform-logs.md)
-- Meer informatie over de [querytaal](../azure-monitor/log-query/get-started-queries.md).
+- Bekijk het [Azure functions overzicht](functions-overview.md)
+- Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md)
+- Meer informatie over de [query taal](../azure-monitor/log-query/get-started-queries.md).

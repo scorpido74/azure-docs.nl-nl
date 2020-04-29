@@ -1,6 +1,6 @@
 ---
-title: Subnet overschrijven azure traffic manager met Azure CLI | Microsoft Documenten
-description: In dit artikel u begrijpen hoe subnetoverschrijving en overschrijven van Traffic Manager kan worden gebruikt om de routeringsmethode van een Traffic Manager-profiel te overschrijven om verkeer naar een eindpunt te leiden op basis van het IP-adres van de eindgebruiker via vooraf gedefinieerde IP-bereik naar eindpunttoewijzingen.
+title: Het subnet van Azure Traffic Manager worden overschreven met behulp van Azure CLI | Microsoft Docs
+description: Dit artikel helpt u inzicht te krijgen in de manier waarop Traffic Manager subnet overschrijving kan worden gebruikt om de routerings methode van een Traffic Manager profiel te onderdrukken voor het omleiden van verkeer naar een eind punt op basis van het IP-adres van de eind gebruiker met behulp van een vooraf gedefinieerd IP-bereik voor eindpunt toewijzingen.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -10,39 +10,39 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
 ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938476"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Subnet overschrijven van traffic manager met Azure CLI
+# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Onderdrukking van het subnet Traffic Manager met behulp van Azure CLI
 
-Met subnetoverschrijven van Traffic Manager u de routeringsmethode van een profiel wijzigen.  De toevoeging van een overschrijving leidt het verkeer op basis van het IP-adres van de eindgebruiker met een vooraf gedefinieerd IP-bereik naar endpoint mapping. 
+Met Traffic Manager subnet override kunt u de routerings methode van een profiel wijzigen.  Door het toevoegen van een onderdrukking wordt verkeer doorgestuurd op basis van het IP-adres van de eind gebruiker met een vooraf gedefinieerd IP-bereik voor de toewijzing van eind punten. 
 
-## <a name="how-subnet-override-works"></a>Hoe subnetoverschrijving werkt
+## <a name="how-subnet-override-works"></a>Hoe subnet overschrijving werkt
 
-Wanneer subnetoverschrijvingen worden toegevoegd aan een profiel van verkeersbeheerder, controleert Traffic Manager eerst of er een subnetoverschrijving is voor het IP-adres van de eindgebruiker. Als er een wordt gevonden, wordt de DNS-query van de gebruiker naar het bijbehorende eindpunt geleid.  Als er geen toewijzing wordt gevonden, valt Traffic Manager terug op de oorspronkelijke routeringsmethode van het profiel. 
+Wanneer subnet onderdrukkingen worden toegevoegd aan een Traffic Manager-profiel, wordt door Traffic Manager eerst gecontroleerd of er een subnet wordt overschreven voor het IP-adres van de eind gebruiker. Als er een wordt gevonden, wordt de DNS-query van de gebruiker omgeleid naar het bijbehorende eind punt.  Als er geen toewijzing wordt gevonden, wordt Traffic Manager terugvallen op de oorspronkelijke routerings methode van het profiel. 
 
-De IP-adresbereiken kunnen worden opgegeven als CIDR-bereiken (bijvoorbeeld 1.2.3.0/24) of als adresbereiken (bijvoorbeeld 1.2.3.4-5.6.7.8). De IP-bereiken die aan elk eindpunt zijn gekoppeld, moeten uniek zijn voor dat eindpunt. Elke overlapping van IP-bereiken tussen verschillende eindpunten zorgt ervoor dat het profiel wordt geweigerd door Traffic Manager.
+De IP-adresbereiken kunnen worden opgegeven als CIDR-bereiken (bijvoorbeeld 1.2.3.0/24) of als adresbereiken (bijvoorbeeld 1.2.3.4-5.6.7.8). De IP-bereiken die zijn gekoppeld aan elk eind punt, moeten uniek zijn voor dat eind punt. Elke overlap ping van IP-bereiken tussen verschillende eind punten leidt ertoe dat het profiel wordt geweigerd door Traffic Manager.
 
-Er zijn twee soorten routeringsprofielen die subnetoverschrijvingen ondersteunen:
+Er zijn twee typen routerings profielen die ondersteuning bieden voor subnet onderdrukkingen:
 
-* **Geografisch** - Als Traffic Manager een subnetoverschrijving voor het IP-adres van de DNS-query vindt, wordt de query doorgerouteerd naar het eindpunt, ongeacht de status van het eindpunt.
-* **Prestaties** - Als Traffic Manager een subnetoverschrijving voor het IP-adres van de DNS-query vindt, wordt het verkeer alleen doorsturen naar het eindpunt als het in orde is.  Traffic Manager valt terug naar de performance routing heuristisch als het eindpunt voor subnetoverride niet in orde is.
+* **Geografisch** : als Traffic Manager een onderdrukking van het subnet voor het IP-adres van de DNS-query vindt, stuurt de query door naar het eind punt, ongeacht de status van het eind punt.
+* **Prestaties** : als Traffic Manager een onderdrukking van het subnet voor het IP-adres van de DNS-query vindt, wordt het verkeer alleen doorgestuurd naar het eind punt als dit in orde is.  Traffic Manager gaat terug naar de prestatie routering heuristisch als het subnet onderdrukkings eindpunt niet in orde is.
 
-## <a name="create-a-traffic-manager-subnet-override"></a>Een subnet overschrijven van een verkeersbeheer-subnet maken
+## <a name="create-a-traffic-manager-subnet-override"></a>Een Traffic Manager subnet overschrijven maken
 
-Als u een subnetoverschrijving voor Traffic Manager wilt maken, u Azure CLI gebruiken om de subnetten voor de overschrijving toe te voegen aan het eindpunt Traffic Manager.
+Als u een Traffic Manager subnet overschrijven wilt maken, kunt u Azure CLI gebruiken om de subnetten voor de onderdrukking toe te voegen aan het Traffic Manager-eind punt.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie versie 2.0.28 of hoger van Azure CLI uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
-## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Werk het eindpunt Van Traffic Manager bij met subnetoverschrijving.
-Gebruik Azure CLI om uw eindpunt bij te werken met de update van het [EINDPUNT van AZ-netwerkverkeer.](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)
+## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Werk het Traffic Manager-eind punt bij met het overschrijven van het subnet.
+Gebruik Azure CLI om uw eind punt bij te werken met [AZ Network Traffic-Manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update).
 
 ```azurecli
 
@@ -64,7 +64,7 @@ az network traffic-manager endpoint update \
 
 ```
 
-U de IP-adresbereiken verwijderen door de eindpuntupdate voor het [AZ-netwerkverkeer-beheer](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) uit te voeren met de optie **-verwijderen.**
+U kunt de IP-adresbereiken verwijderen door het uitvoeren van de [Update AZ Network Traffic-Manager endpoint](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) met de optie **--Remove** .
 
 ```azurecli
 
@@ -77,6 +77,6 @@ az network traffic-manager endpoint update \
 
 ```
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [verkeersrouteringsmethoden voor](traffic-manager-routing-methods.md)Traffic Manager .
+Meer informatie over methoden voor het [routeren](traffic-manager-routing-methods.md)van Traffic Manager verkeer.
 
-Meer informatie over de [methode voor het routeren van subnetverkeer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+Meer informatie over het [subnet Traffic-routerings methode](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

@@ -1,6 +1,6 @@
 ---
-title: Statistieken verzenden naar de azure monitor-metrische database met rest-API
-description: Aangepaste statistieken voor een Azure-bron verzenden naar de Azure Monitor-metrische opslag met behulp van een REST-API
+title: Metrische gegevens naar de data base van de Azure Monitor metriek verzenden met behulp van REST API
+description: Aangepaste metrische gegevens voor een Azure-resource verzenden naar het Azure Monitor metrische archief met behulp van een REST API
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,45 +8,45 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662261"
 ---
-# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Aangepaste statistieken voor een Azure-bron verzenden naar de Azure Monitor-metrische opslag met behulp van een REST-API
+# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Aangepaste metrische gegevens voor een Azure-resource verzenden naar het Azure Monitor metrische archief met behulp van een REST API
 
-In dit artikel ziet u hoe u aangepaste statistieken voor Azure-resources verzenden naar de Azure Monitor-statistiekenopslag via een REST-API. Nadat de statistieken zich in Azure Monitor bevinden, u alle dingen met deze statistieken doen die u met standaardstatistieken doet. Voorbeelden hiervan zijn het in kaart brengen, waarschuwen en routeren naar andere externe hulpprogramma's.  
+Dit artikel laat u zien hoe u aangepaste metrische gegevens voor Azure-resources kunt verzenden naar de Azure Monitor metrische gegevens opslag via een REST API. Nadat de metrische gegevens zijn Azure Monitor, kunt u alle dingen doen met de metrieken met standaard metrische gegevens. Voor beelden hiervan zijn grafieken, waarschuwingen en route ring naar andere externe hulpprogram ma's.  
 
 >[!NOTE]  
->De REST API staat alleen het verzenden van aangepaste statistieken voor Azure-bronnen toe. Als u statistieken wilt verzenden voor resources in verschillende omgevingen of on-premises, u [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)gebruiken.    
+>Met de REST API is het verzenden van aangepaste metrische gegevens voor Azure-resources alleen toegestaan. Als u metrische gegevens voor resources in verschillende omgevingen of on-premises wilt verzenden, kunt u [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)gebruiken.    
 
 
-## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Een serviceprincipal maken en autoriseren om statistieken uit te stoten 
+## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Een service-principal maken en autoriseren voor het verzenden van metrische gegevens 
 
-Maak een serviceprincipal in uw Azure Active Directory-tenant met behulp van de instructies die zijn gevonden bij [Een serviceprincipal maken.](../../active-directory/develop/howto-create-service-principal-portal.md) 
+Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies op het [maken van een Service-Principal](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
-Let op het volgende terwijl u dit proces doorloopt: 
+Houd rekening met het volgende wanneer u dit proces door lopen: 
 
-- U elke URL voor de aanmeldings-URL invoeren.  
-- Maak een nieuw clientgeheim voor deze app.  
-- Bewaar de sleutel en de client-id voor gebruik in latere stappen.  
+- U kunt elke URL voor de aanmeldings-URL invoeren.  
+- Maak een nieuw client geheim voor deze app.  
+- Sla de sleutel en de client-ID op voor gebruik in latere stappen.  
 
-Geef de app die is gemaakt als onderdeel van stap 1, Monitoring Metrics Publisher, machtigingen voor de resource waartegen u statistieken wilt uitzenden. Als u van plan bent de app te gebruiken om aangepaste statistieken uit te zenden tegen veel bronnen, u deze machtigingen toestaan op resourcegroep- of abonnementsniveau. 
+Geef de app gemaakt als onderdeel van stap 1, bewaken van de uitgever van metrische gegevens, machtigingen voor de resource waarvoor u metrische gegevens wilt verzenden. Als u van plan bent om de app te gebruiken voor het verzenden van aangepaste metrische gegevens voor een groot aantal resources, kunt u deze machtigingen verlenen aan de resource groep of het abonnements niveau. 
 
-## <a name="get-an-authorization-token"></a>Een autorisatietoken aanvragen
-Open een opdrachtprompt en voer de volgende opdracht uit:
+## <a name="get-an-authorization-token"></a>Een autorisatie Token ophalen
+Open een opdracht prompt en voer de volgende opdracht uit:
 
 ```shell
 curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
-Sla het toegangstoken op vanuit het antwoord.
+Sla het toegangs token op uit het antwoord.
 
-![Access-token](./media/metrics-store-custom-rest-api/accesstoken.png)
+![Toegangs token](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>De statistiek uitzenden via de REST API 
+## <a name="emit-the-metric-via-the-rest-api"></a>De metriek verzenden via de REST API 
 
-1. Plak de volgende JSON in een bestand en sla het op als **custommetric.json** op uw lokale computer. Werk de tijdparameter in het JSON-bestand bij: 
+1. Plak de volgende JSON in een bestand en sla het op als **custommetric. json** op de lokale computer. Werk de tijd parameter in het JSON-bestand bij: 
     
     ```json
     { 
@@ -76,46 +76,46 @@ Sla het toegangstoken op vanuit het antwoord.
     } 
     ``` 
 
-1. Plaats de metrische gegevens in het opdrachtpromptvenster: 
-   - **azureRegion**. Moet overeenkomen met het implementatiegebied van de resource waarvoor u statistieken uitzendt. 
-   - **resourceID**.  Resource-id van de Azure-bron waartegen u de statistiek bijhoudt.  
-   - **AccessToken**. Plak het token dat u eerder hebt aangeschaft.
+1. In het opdracht prompt venster plaatst u de metrische gegevens: 
+   - **azureregio**. Moet overeenkomen met de implementatie regio van de resource waarvoor u de metrische gegevens wilt verzenden. 
+   - **resourceID**.  De resource-ID van de Azure-resource waarmee u de metrische gegevens wilt bijhouden.  
+   - **AccessToken**. Plak het token dat u eerder hebt verkregen.
 
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Wijzig de tijdstempel en waarden in het JSON-bestand. 
-1. Herhaal de vorige twee stappen een paar keer, zodat u gegevens voor enkele minuten hebt.
+1. Wijzig de tijds tempel en waarden in het JSON-bestand. 
+1. Herhaal de vorige twee stappen een paar keer, zodat u enkele minuten gegevens hebt.
 
 ## <a name="troubleshooting"></a>Problemen oplossen 
-Als u een foutbericht ontvangt met een deel van het proces, moet u rekening houden met de volgende informatie over probleemoplossing:
+Als er een fout bericht wordt weer gegeven met een deel van het proces, kunt u de volgende informatie over het oplossen van problemen overwegen:
 
-1. U geen statistieken afgeven voor een abonnement of brongroep als uw Azure-bron. 
-1. Je geen statistiek in de winkel plaatsen die meer dan 20 minuten oud is. De metrische winkel is geoptimaliseerd voor waarschuwingen en real-time grafieken. 
-2. Het aantal dimensienamen moet overeenkomen met de waarden en vice versa. Controleer de waarden. 
-2. Mogelijk geeft u statistieken uit tegen een regio die geen aangepaste statistieken ondersteunt. Zie [ondersteunde regio's](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+1. U kunt geen metrische gegevens uitgeven voor een abonnement of resource groep als uw Azure-resource. 
+1. U kunt geen metrische gegevens in de Store plaatsen die meer dan 20 minuten oud zijn. De metrische opslag is geoptimaliseerd voor waarschuwingen en realtime grafieken. 
+2. Het aantal dimensie namen moet overeenkomen met de waarden en vice versa. Controleer de waarden. 
+2. U kunt metrische gegevens verzenden naar een regio die geen aangepaste metrische gegevens ondersteunt. Zie [ondersteunde regio's](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
-## <a name="view-your-metrics"></a>Bekijk uw statistieken 
+## <a name="view-your-metrics"></a>Uw metrische gegevens weer geven 
 
 1. Meld u aan bij Azure Portal. 
 
-1. Selecteer **Monitor**in het linkermenu . 
+1. Selecteer in het menu links de optie **monitor**. 
 
-1. Selecteer op de pagina **Monitor** de optie **Metrische gegevens**. 
+1. Selecteer **metrische gegevens**op de pagina **monitor** . 
 
-   ![Statistieken selecteren](./media/metrics-store-custom-rest-api/metrics.png) 
+   ![Metrische gegevens selecteren](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. Wijzig de aggregatieperiode in **Laatste 30 minuten**.  
+1. Wijzig de aggregatie periode in de **laatste 30 minuten**.  
 
-1. Selecteer **in** de vervolgkeuzelijst resource de resource waartegen u de statistiek hebt uitgestoten.  
+1. Selecteer in de vervolg keuzelijst **resource** de resource waarmee u de metrische gegevens hebt verzonden.  
 
-1. Selecteer **QueueProcessing**in het vervolgkeuzemenu **Naamruimten** . 
+1. Selecteer in de vervolg keuzelijst **naam ruimten** de optie **QueueProcessing**. 
 
-1. Selecteer **QueueDepth**in het vervolgkeuzemenu **Metstatistieken** .  
+1. Selecteer in de vervolg keuzelijst **metrische gegevens** de optie **QueueDepth**.  
 
  
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [aangepaste statistieken](../../azure-monitor/platform/metrics-custom-overview.md).
+- Meer informatie over [aangepaste metrische gegevens](../../azure-monitor/platform/metrics-custom-overview.md).
 

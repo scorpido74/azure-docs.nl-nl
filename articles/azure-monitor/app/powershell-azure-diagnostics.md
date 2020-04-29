@@ -1,16 +1,16 @@
 ---
 title: PowerShell gebruiken om Application Insights in te stellen in Azure | Microsoft Docs
-description: Automatiseer het configureren van Azure Diagnostics om gegevens naar Application Insights te leiden.
+description: Automatisch configureren van Azure Diagnostics om gegevens te pipeen op Application Insights.
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669800"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>PowerShell gebruiken om Toepassingsinzichten voor Azure Cloud Services in te stellen
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Power shell gebruiken voor het instellen van Application Insights voor Azure Cloud Services
 
 [Microsoft Azure](https://azure.com) kan zo [worden geconfigureerd dat er diagnostische Azure-gegevens worden verzonden](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) naar [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). De diagnostische gegevens hebben betrekking op Azure Cloud Services en virtuele Azure-machines. Ze vormen een aanvulling op de telemetrie die u vanuit de app verzendt met behulp van de Application Insights-SDK. Als onderdeel van het automatiseringsproces voor het maken van nieuwe resources in Azure kunt u het verzenden van diagnostische gegevens configureren met PowerShell.
 
@@ -35,7 +35,7 @@ Als de web-app in Azure wordt uitgevoerd en u uw resources maakt met een Azure R
      } 
 
 * `nameOfAIAppResource`: een naam voor de Application Insights-resource
-* `myWebAppName`- de id van de web-app
+* `myWebAppName`-de ID van de web-app
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>De extensie voor diagnostische gegevens inschakelen als onderdeel van het implementeren van een cloudservice
 De cmdlet `New-AzureDeployment` bevat de parameter `ExtensionConfiguration`, die overweg kan met vele configuraties voor diagnostische gegevens. Deze kunnen worden gemaakt met de cmdlet `New-AzureServiceDiagnosticsExtensionConfig`. Bijvoorbeeld:

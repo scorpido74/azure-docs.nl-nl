@@ -1,41 +1,41 @@
 ---
-title: Beveiligingsdetectiepakket met Azure-toepassingsinzichten
-description: Monitor toepassing met Azure Application Insights en Slimme detectie voor mogelijke beveiligingsproblemen.
+title: Beveiligings detectie pakket met Azure-toepassing Insights
+description: Bewaak de toepassing met Azure-toepassing inzichten en Slimme detectie voor mogelijke beveiligings problemen.
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669723"
 ---
-# <a name="application-security-detection-pack-preview"></a>Detectiepakket voor toepassingsbeveiliging (voorbeeld)
+# <a name="application-security-detection-pack-preview"></a>Application Security-detectie pakket (preview-versie)
 
-Application Insights analyseert automatisch de telemetrie gegenereerd door uw toepassing en detecteert potentiële beveiligingsproblemen. Met deze mogelijkheid u potentiële beveiligingsproblemen identificeren en verwerken door de toepassing op te lossen of door de nodige beveiligingsmaatregelen te nemen.
+Application Insights analyseert automatisch de telemetrie die is gegenereerd door uw toepassing en detecteert mogelijke beveiligings problemen. Met deze mogelijkheid kunt u mogelijke beveiligings problemen identificeren en deze afhandelen door de toepassing te corrigeren of door de benodigde beveiligings maatregelen te nemen.
 
-Deze functie vereist geen speciale installatie, anders dan [het configureren van uw app om telemetrie te verzenden.](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview)
+Voor deze functie is geen speciale configuratie vereist, behalve [het configureren van uw app voor het verzenden van telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer zou ik dit soort slimme detectiemeldingen krijgen?
-Er zijn drie soorten beveiligingsproblemen die worden gedetecteerd:
-1. Onveilige URL-toegang: een URL in de toepassing wordt geopend via zowel HTTP als HTTPS. Een URL die HTTPS-verzoeken accepteert, moet doorgaans geen HTTP-verzoeken accepteren. Dit kan duiden op een bug of beveiligingsprobleem in uw toepassing.
-2. Onveilige vorm: een formulier (of een ander "POST"-verzoek) in de toepassing gebruikt HTTP in plaats van HTTPS. Het gebruik van HTTP kan de gebruikersgegevens die door het formulier worden verzonden, compromitteren.
-3. Verdachte gebruikersactiviteit: de toepassing wordt op ongeveer hetzelfde moment vanuit meerdere landen/regio's geopend door dezelfde gebruiker. Dezelfde gebruiker heeft bijvoorbeeld binnen hetzelfde uur toegang gekregen tot de toepassing vanuit Spanje en de Verenigde Staten. Deze detectie geeft een mogelijk kwaadaardige toegang poging tot uw toepassing.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
+Er zijn drie typen beveiligings problemen die worden gedetecteerd:
+1. Onveilige URL-toegang: een URL in de toepassing wordt geopend via HTTP en HTTPS. Normaal gesp roken mag een URL die HTTPS-aanvragen accepteert, geen HTTP-aanvragen accepteren. Dit kan duiden op een fout-of beveiligings probleem in uw toepassing.
+2. Onbeveiligde vorm: een formulier (of een andere ' POST '-aanvraag) in de toepassing gebruikt HTTP in plaats van HTTPS. Het gebruik van HTTP kan inbreuk maken op de gebruikers gegevens die door het formulier worden verzonden.
+3. Verdachte gebruikers activiteit: de toepassing wordt geopend vanuit meerdere landen/regio's door dezelfde gebruiker op ongeveer hetzelfde tijdstip. Bijvoorbeeld: de gebruiker heeft de toepassing geopend vanuit Spanje en de Verenigde Staten binnen hetzelfde uur. Deze detectie duidt op een mogelijk kwaad aardige toegangs poging tot uw toepassing.
 
-## <a name="does-my-app-definitely-have-a-security-issue"></a>Heeft mijn app zeker een beveiligingsprobleem?
-Nee, een melding betekent niet dat uw app zeker een beveiligingsprobleem heeft. Een detectie van een van de bovenstaande scenario's kan in veel gevallen duiden op een beveiligingsprobleem. De detectie kan echter een natuurlijke zakelijke rechtvaardiging hebben en kan worden genegeerd.
+## <a name="does-my-app-definitely-have-a-security-issue"></a>Heeft mijn app een beveiligings probleem?
+Nee, een melding betekent niet dat uw app over een beveiligings probleem beschikt. Een detectie van de bovenstaande scenario's kan in veel gevallen duiden op een beveiligings probleem. De detectie kan echter een natuurlijke zakelijke rechtvaardiging hebben en kan worden genegeerd.
 
-## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>Hoe los ik de detectie 'Onveilige URL-toegang' op?
-1. **Triage.** De melding geeft het aantal gebruikers dat toegang heeft gehad tot onveilige URL's en de URL die het meest werd beïnvloed door onveilige toegang. Dit kan u helpen een prioriteit toe te wijzen aan het probleem.
-2. **Scope.** Welk percentage van de gebruikers heeft toegang tot onveilige URL's? Hoeveel URL's zijn er beïnvloed? Deze informatie kan worden verkregen uit de kennisgeving.
-3. **Diagnosticeren.** De detectie biedt de lijst met onveilige aanvragen en de lijsten met URL's en gebruikers die zijn getroffen, om u te helpen het probleem verder te diagnosticeren.
+## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>De detectie van ' onveilige URL-toegang ' Hoe kan ik herstellen?
+1. **Sorteren.** De melding bevat het aantal gebruikers dat onbeveiligde Url's heeft geopend en de URL die het meest wordt beïnvloed door onveilige toegang. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
+2. **Ligt.** Welk percentage van de gebruikers heeft onbeveiligde Url's geopend? Hoeveel Url's zijn er betrokken? Deze informatie kan worden opgehaald uit de melding.
+3. **Vaststellen.** De detectie biedt de lijst met onveilige aanvragen, evenals de lijsten met Url's en gebruikers die worden beïnvloed, om u te helpen bij het oplossen van het probleem.
 
-## <a name="how-do-i-fix-the-insecure-form-detection"></a>Hoe los ik de detectie van 'Onveilig formulier' op?
-1. **Triage.** De melding bevat het aantal onveilige formulieren en het aantal gebruikers waarvan de gegevens mogelijk zijn gecompromitteerd. Dit kan u helpen een prioriteit toe te wijzen aan het probleem.
-2. **Scope.** Welke vorm was betrokken bij het grootste aantal onveilige transmissies, en wat is de verdeling van onveilige transmissies in de tijd? Deze informatie kan worden verkregen uit de kennisgeving.
-3. **Diagnosticeren.** De detectie biedt de lijst met onveilige formulieren en een uitsplitsing van het aantal onveilige transmissies voor elk formulier, om u te helpen het probleem verder te diagnosticeren.
+## <a name="how-do-i-fix-the-insecure-form-detection"></a>Hoe kan ik de detectie van ' Inveilige formulieren ' oplossen?
+1. **Sorteren.** De melding geeft het aantal onveilige formulieren en het aantal gebruikers waarvan de gegevens mogelijk zijn aangetast. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
+2. **Ligt.** Welk formulier is betrokken bij het grootste aantal onveilige verzen dingen en wat is de distributie van onveilige verzen dingen gedurende een bepaalde periode? Deze informatie kan worden opgehaald uit de melding.
+3. **Vaststellen.** De detectie biedt de lijst met onveilige formulieren en een uitsplitsing van het aantal onveilige verzen dingen voor elk formulier, om u te helpen bij het oplossen van het probleem.
 
-## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Hoe los ik de detectie 'Verdachte gebruikersactiviteit' op?
-1. **Triage.** De melding geeft het aantal verschillende gebruikers dat het verdachte gedrag heeft vertoond. Dit kan u helpen een prioriteit toe te wijzen aan het probleem.
-2. **Scope.** Uit welke landen/regio's zijn de verdachte verzoeken afkomstig? Welke gebruiker was het meest achterdochtig? Deze informatie kan worden verkregen uit de kennisgeving.
-3. **Diagnosticeren.** De detectie biedt de lijst met verdachte gebruikers en de lijst met landen/regio's voor elke gebruiker, om u te helpen het probleem verder te diagnosticeren.
+## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>De detectie van verdachte gebruikers activiteiten Hoe kan ik herstellen?
+1. **Sorteren.** De melding bevat het aantal verschillende gebruikers dat het verdachte gedrag vertoonde. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
+2. **Ligt.** Van welke landen/regio's zijn de verdachte aanvragen afkomstig? Welke gebruiker was het meest verdacht? Deze informatie kan worden opgehaald uit de melding.
+3. **Vaststellen.** De detectie biedt een lijst van verdachte gebruikers en de lijst met landen/regio's voor elke gebruiker, om u te helpen bij het oplossen van het probleem.

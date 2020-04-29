@@ -1,323 +1,323 @@
 ---
-title: Azure Storage-services bewaken met Azure Monitor for Storage (voorbeeld)| Microsoft Documenten
-description: In dit artikel wordt de functie Azure Monitor for Storage beschreven die opslagbeheerders een snelle kennis geeft van de prestatie- en gebruiksproblemen met hun Azure Storage-accounts.
+title: Azure Storage services bewaken met Azure Monitor voor opslag (preview) | Microsoft Docs
+description: In dit artikel wordt de Azure Monitor voor opslag functie beschreven waarmee opslag beheerders een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun Azure Storage accounts.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
 ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662516"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Uw opslagservice bewaken met Azure Monitor for Storage (voorbeeld)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Uw opslag service controleren met Azure Monitor voor opslag (preview-versie)
 
-Azure Monitor for Storage (preview) biedt uitgebreide bewaking van uw Azure Storage-accounts door een uniforme weergave te bieden van de prestaties, capaciteit en beschikbaarheid van uw Azure Storage Services. U de opslagcapaciteit en prestaties op twee manieren bekijken, rechtstreeks vanuit een opslagaccount bekijken of vanuit Azure Monitor bekijken om te zien in verschillende groepen opslagaccounts. 
+Azure Monitor voor opslag (preview) biedt uitgebreide controle over uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. U kunt de opslag capaciteit en prestaties op twee manieren observeren, rechtstreeks vanuit een opslag account of weer gave bekijken van Azure Monitor om over verschillende groepen opslag accounts te kijken. 
 
-Dit artikel helpt u inzicht te krijgen in de ervaring die Azure Monitor for Storage (preview) biedt om bruikbare kennis over de status en prestaties van opslagaccounts op schaal af te leiden, met de mogelijkheid om zich te concentreren op hotspots en latentie, beperking, te diagnosticeren, en beschikbaarheidsproblemen.
+Dit artikel helpt u inzicht te krijgen in de ervaring Azure Monitor voor opslag (preview) voor het afleiden van onbestelbare kennis over de status en prestaties van opslag accounts op schaal, met een mogelijkheid om te focussen op HOTS pots en latentie, beperking en beschikbaarheids problemen te onderzoeken.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Inleiding tot Azure Monitor for Storage (voorbeeld)
+## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Inleiding tot Azure Monitor voor opslag (preview)
 
-Voordat u in de ervaring duikt, moet u begrijpen hoe het informatie presenteert en visualiseert. Of u nu de opslagfunctie rechtstreeks selecteert vanuit een opslagaccount of vanuit Azure Monitor, Azure Monitor for Storage biedt een consistente ervaring. 
+Voordat u aan de slag gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. Ongeacht of u de opslag functie rechtstreeks vanuit een opslag account of van Azure Monitor selecteert, is Azure Monitor voor opslag een consistente ervaring. 
 
-Gecombineerd levert het:
+Gecombineerd IT-levert:
 
-* **Op schaalperspectief** met een momentopnameweergave van hun beschikbaarheid op basis van de status van de opslagservice of de API-bewerking, het gebruik dat het totale aantal aanvragen weergeeft dat de opslagservice ontvangt en de latentie die de gemiddelde tijd weergeeft die de opslagservice of het type API-bewerking neemt om aanvragen te verwerken. U ook de capaciteit bekijken per blob, bestand, tabel en wachtrij.
+* **Op schaal perspectief** met een moment opname van de beschik baarheid op basis van de status van de opslag service of de API-bewerking, het gebruik van het totale aantal aanvragen dat door de opslag service wordt ontvangen en latentie met de gemiddelde tijd dat het bewerkings type voor de opslag service of het API-berekenings aanvragen worden verwerkt. U kunt ook capaciteit weer geven per blob, bestand, tabel en wachtrij.
 
-* **Boor de analyse** van een bepaald opslagaccount in om problemen te diagnosticeren of gedetailleerde analyses per categorie uit te voeren - beschikbaarheid, prestaties, fouten en capaciteit. Als u een van deze opties selecteert, u een diepgaand overzicht geven van metrische gegevens.  
+* **Inzoomen** op een specifiek opslag account om problemen op te lossen of gedetailleerde analyses uit te voeren op categorie-Beschik baarheid, prestaties, fouten en capaciteit. Als u een van deze opties selecteert, krijgt u een gedetailleerde weer gave van metrische gegevens.  
 
-* **Aanpasbaar** waar u wijzigen welke statistieken u wilt zien, wijzigen of instellen drempels die overeenkomen met uw limieten, en opslaan als uw eigen werkmap. Grafieken in de werkmap kunnen worden vastgemaakt aan het Azure-dashboard.  
+* **Aanpasbaar** waar u kunt wijzigen welke metrische gegevens u wilt zien, wijzigen of instellen van drempel waarden die worden uitgelijnd met uw limieten en opslaan als uw eigen werkmap. Grafieken in de werkmap kunnen worden vastgemaakt aan het dash board van Azure.  
 
-Deze functie vereist niet dat u iets in- of configureert, de opslagstatistieken van uw opslagaccounts worden standaard verzameld. Als u niet bekend bent met statistieken die beschikbaar zijn in Azure Storage, bekijkt u de beschrijving en definitie in Azure Storage-statistieken door [azure-opslagstatistieken](../../storage/common/storage-metrics-in-azure-monitor.md)te bekijken.
-
->[!NOTE]
->Er zijn geen kosten verbonden aan toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de essentiële functies van Azure Monitor die u configureert of inschakelt, zoals beschreven op de pagina [met prijsdetails van Azure Monitor.](https://azure.microsoft.com/pricing/details/monitor/)
+Voor deze functie hoeft u niets in te scha kelen of te configureren. de metrische opslag gegevens van uw opslag accounts worden standaard verzameld. Als u niet bekend bent met metrische gegevens die beschikbaar zijn op Azure Storage, kunt u de beschrijving en definitie in Azure Storage metrieken bekijken door de [metrische gegevens voor Azure Storage](../../storage/common/storage-metrics-in-azure-monitor.md)te controleren.
 
 >[!NOTE]
->Azure Monitor for Storage biedt geen ondersteuning voor [v1-accounts voor algemene doeleinden.](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)
+>Er zijn geen kosten verbonden aan het verkrijgen van toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de Azure Monitor essentiële functies die u configureert of inschakelt, zoals wordt beschreven op de pagina met [Azure monitor prijs informatie](https://azure.microsoft.com/pricing/details/monitor/) .
+
+>[!NOTE]
+>Azure Monitor voor opslag biedt geen ondersteuning voor [algemene v1-accounts](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts).
 >
 
-## <a name="view-from-azure-monitor"></a>Weergave vanuit Azure-monitor
+## <a name="view-from-azure-monitor"></a>Weer geven van Azure Monitor
 
-Vanuit Azure Monitor u transactie-, latentie- en capaciteitsgegevens van meerdere opslagaccounts in uw abonnement bekijken en prestaties, capaciteitsproblemen en fouten identificeren.
+Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens van meerdere opslag accounts in uw abonnement weer geven en prestaties, capaciteits problemen en fouten helpen identificeren.
 
-Voer de volgende stappen uit om het gebruik en de beschikbaarheid van uw opslagaccounts voor al uw abonnementen te bekijken.
+Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer **Monitor** in het linkerdeelvenster in de Azure-portal en selecteer onder de sectie **Inzichten** de optie **Opslagaccounts (voorbeeld)**.
+2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts (preview)**.
 
-    ![Weergave Meerdere opslagaccounts](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
+    ![Weer gave meerdere opslag accounts](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
-### <a name="overview-workbook"></a>Overzichtswerkmap
+### <a name="overview-workbook"></a>Overzichts werkmap
 
-In de **werkmap Overzicht** voor het geselecteerde abonnement worden in de tabel interactieve opslagstatistieken en servicebeschikbaarheidsstatus weergegeven voor maximaal 10 opslagaccounts die zijn gegroepeerd in het abonnement. U de resultaten filteren op basis van de opties die u selecteert in de volgende vervolgkeuzelijsten:
+In de **overzichts** werkmap voor het geselecteerde abonnement worden in de tabel interactieve metrische opslag gegevens en status van service beschikbaarheid weer gegeven voor Maxi maal 10 opslag accounts gegroepeerd in het abonnement. U kunt de resultaten filteren op basis van de opties die u selecteert in de volgende vervolg keuzelijsten:
 
-* **Abonnementen** - alleen abonnementen met opslagaccounts worden weergegeven.  
+* **Abonnementen** : alleen abonnementen met opslag accounts worden weer gegeven.  
 
-* **Opslagaccounts** - standaard zijn 10 opslagaccounts vooraf geselecteerd. Als u alle of meerdere opslagaccounts selecteert in de scopekiezer, worden maximaal 200 opslagaccounts geretourneerd. Als u bijvoorbeeld in totaal 573 opslagaccounts had voor drie abonnementen die u hebt geselecteerd, worden slechts 200 accounts weergegeven. 
+* **Opslag accounts** : standaard zijn er tien opslag accounts vooraf geselecteerd. Als u alle of meerdere opslag accounts in de scope selector selecteert, worden er Maxi maal 200 opslag accounts geretourneerd. Als u bijvoorbeeld in totaal 573 opslag accounts hebt voor drie abonnementen die u hebt geselecteerd, worden er alleen 200-accounts weer gegeven. 
 
-* **Time Range** - geeft standaard de laatste 4 uur informatie weer op basis van de bijbehorende selecties.
+* **Tijds bereik** : de laatste 4 uur aan gegevens worden standaard weer gegeven op basis van de bijbehorende selecties.
 
-De tellertegel onder de vervolgkeuzelijsten rolt het totale aantal opslagaccounts in het abonnement op en geeft aan hoeveel van het totaal is geselecteerd. Er is voorwaardelijke kleurcodering of heatmaps voor kolommen in de werkmap die transactiestatistieken of fouten rapporteren. De diepste kleur heeft de hoogste waarde en een lichtere kleur is gebaseerd op de laagste waarden. Voor de op fouten gebaseerde kolommen is de waarde rood en voor de kolommen op basis van metrische gegevens is de waarde blauw.
+De tegel item in de vervolg keuzelijst bevat een samen telling van het totale aantal opslag accounts in het abonnement en geeft aan hoeveel van het totaal wordt geselecteerd. Er zijn voorwaardelijke kleurcoderings-of Heatmaps voor kolommen in de werkmap die de metrische gegevens over de trans actie of fouten rapporteren. De diepste kleur heeft de hoogste waarde en een lichtere kleur op basis van de laagste waarden. Voor de kolommen op basis van fouten is de waarde rood en voor de kolommen op basis van metrische gegevens de waarde blauw.
 
-Selecteer een waarde in de kolommen **Beschikbaarheid**, **E2E Latentie**, **Serverlatentie**en **transactiefouttype/Fouten** leidt u naar een rapport dat is afgestemd op het specifieke type opslagstatistieken dat overeenkomt met de kolom die is geselecteerd voor dat opslagaccount. Zie de sectie [Gedetailleerde opslagwerkmappen](#detailed-storage-workbooks) hieronder voor meer informatie over de werkmappen voor elke categorie. 
+Selecteer een waarde in de kolommen **Beschik baarheid**, **E2E latentie**, **Server latentie**en **transactie fout type/fouten** stuurt u een rapport dat is afgestemd op het specifieke type metrische opslag gegevens dat overeenkomt met de geselecteerde kolom voor dat opslag account. Zie de sectie [gedetailleerde opslag werkmappen](#detailed-storage-workbooks) hieronder voor meer informatie over de werkmappen voor elke categorie. 
 
 >[!NOTE]
->Zie [Het type antwoordschema](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) en zoek naar antwoordtypen zoals **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**voor meer informatie over welke fouten in het rapport kunnen worden weergegeven. Afhankelijk van de geselecteerde opslagaccounts worden alle andere fouten weergegeven onder de categorie **Overige**als er meer dan drie soorten fouten worden gerapporteerd.
+>Zie het [schema antwoord type](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) en zoek naar antwoord typen zoals **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**voor meer informatie over welke fouten in het rapport kunnen worden weer gegeven. Afhankelijk van de geselecteerde opslag accounts, worden alle andere fouten weer gegeven onder de **andere**categorie als er meer dan drie typen fouten worden gerapporteerd.
 
-De **standaardbeschikbaarheidsdrempel** is:
+De standaard drempelwaarde voor **Beschik baarheid** is:
 
-* Waarschuwing - 99%
-* Kritiek - 90%
+* Waarschuwing: 99%
+* Kritiek-90%
 
-Als u een beschikbaarheidsdrempel wilt instellen op basis van de resultaten van uw observatie of vereisten, wijzigt u [de beschikbaarheidsdrempel](#modify-the-availability-threshold). 
+Als u een beschikbaarheids drempel wilt instellen op basis van de resultaten van uw waarneming of vereisten, raadpleegt u [de drempel waarde voor de beschik baarheid wijzigen](#modify-the-availability-threshold). 
 
-### <a name="capacity-workbook"></a>Capaciteitswerkmap
+### <a name="capacity-workbook"></a>Capaciteits werkmap
 
-Selecteer **Capaciteit** boven aan de pagina en de **werkmap Capaciteit** wordt geopend. Het toont u de hoeveelheid totale opslag die wordt gebruikt in de account en de capaciteit die wordt gebruikt door elke gegevensservice in het account om te helpen bij het identificeren over en onder gebruikte opslag.
+Selecteer de optie **capaciteit** boven aan de pagina en de **capaciteits** werkmap wordt geopend. Hier ziet u de totale hoeveelheid opslag ruimte die wordt gebruikt in het account en de capaciteit die door elke gegevens service in het account wordt gebruikt om te helpen bij het identificeren van en onder gebruik van opslag.
 
-![Werkmap met meerdere opslagaccounts Capaciteit](./media/storage-insights-overview/storage-account-capacity-02.png) 
+![Werkmap met capaciteit van meerdere opslag accounts](./media/storage-insights-overview/storage-account-capacity-02.png) 
 
-Er zijn voorwaardelijke kleurcodering of heatmaps voor kolommen in de werkmap die capaciteitsstatistieken met een blauwe waarde rapporteren. De diepste kleur heeft de hoogste waarde en een lichtere kleur is gebaseerd op de laagste waarden.
+Er zijn voorwaardelijke kleurcoderings-of Heatmaps voor kolommen in de werkmap die de metrische gegevens over de capaciteit met een blauw waarde rapporteren. De diepste kleur heeft de hoogste waarde en een lichtere kleur op basis van de laagste waarden.
 
-Wanneer u een waarde selecteert onder een van de kolommen in de werkmap, zoomt u in op de **werkmap Capaciteit** voor het opslagaccount. Meer informatie over het drill-down rapport wordt beschreven in de sectie [Gedetailleerde opslagwerkmappen](#detailed-storage-workbooks) hieronder. 
+Wanneer u een waarde selecteert onder een van de kolommen in de werkmap, zoomt u in op de **capaciteits** werkmap voor het opslag account. Meer informatie over het inzoom rapport wordt beschreven in de sectie [gedetailleerde opslag werkmappen](#detailed-storage-workbooks) hieronder. 
 
-## <a name="view-from-a-storage-account"></a>Bekijken vanuit een opslagaccount
+## <a name="view-from-a-storage-account"></a>Weer geven vanuit een opslag account
 
-Ga als volgt te werk om azure-monitor voor VM's rechtstreeks vanuit een opslagaccount te openen:
+Direct toegang tot Azure Monitor voor VM's vanuit een opslag account:
 
-1. Selecteer Opslagaccounts in de Azure-portal.
+1. Selecteer opslag accounts in het Azure Portal.
 
-2. Kies in de lijst een opslagaccount. Kies in de sectie Monitoring de optie Insights (voorbeeld).
+2. Kies een opslag account in de lijst. Klik in de sectie bewaking op inzichten (preview-versie).
 
-    ![Overzichtspagina geselecteerde opslagaccount](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![Overzichts pagina voor de geselecteerde opslag account](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
-In de **overzichtswerkmap** voor het opslagaccount worden verschillende statistieken over opslagprestaties weergegeven waarmee u snel beoordelen:
+Op de **overzichts** werkmap voor het opslag account worden diverse metrische gegevens over opslag prestaties weer gegeven waarmee u snel kunt beoordelen:
 
-* Status van de opslagservice om onmiddellijk te zien of een probleem buiten uw besturingselement van invloed is op de opslagservice in de regio waarvoor deze is geïmplementeerd, wat wordt vermeld in de kolom **Overzicht.**
+* De status van de opslag service om onmiddellijk te zien of een probleem buiten uw besturings element wordt beïnvloed door de opslag service in de regio waarin het is geïmplementeerd, dat wordt vermeld in de kolom **samen vatting** .
 
-* Interactieve prestatiegrafieken met de meest essentiële details met betrekking tot opslagcapaciteit, beschikbaarheid, transacties en latentie.  
+* Interactieve prestatie grafieken met de meest essentiële gegevens met betrekking tot opslag capaciteit, Beschik baarheid, trans acties en latentie.  
 
-* Metrische en statustegels die de beschikbaarheid van service markeren, het totale aantal transacties voor de opslagservice, de latentie van E2E en de latentie van de server.
+* Tegels voor metrische gegevens en status markering Beschik baarheid van de service, het totale aantal trans acties voor de opslag service, E2E latentie en latentie van de server.
 
-Als u een van de knoppen selecteert voor **Fouten,** **Prestaties,** **Beschikbaarheid**en **Capaciteit,** wordt de desbetreffende werkmap geopend. 
+Als u een van de knoppen voor **fouten**, **prestaties**, **Beschik baarheid**en **capaciteit** selecteert, wordt de betreffende werkmap geopend. 
 
-![Overzichtspagina geselecteerde opslagaccount](./media/storage-insights-overview/storage-account-capacity-01.png)
+![Overzichts pagina voor de geselecteerde opslag account](./media/storage-insights-overview/storage-account-capacity-01.png)
 
-## <a name="detailed-storage-workbooks"></a>Gedetailleerde opslagwerkmappen
+## <a name="detailed-storage-workbooks"></a>Gedetailleerde opslag werkmappen
 
-Of u nu een waarde hebt geselecteerd in de kolommen **Beschikbaarheid,** **E2E Latentie**, **Serverlatentie**en **transactiefouttype/Fouten** uit de werkmap **Overzicht** van meerdere opslagaccounts, of een van de knoppen voor **fouten,** **Prestaties,** **Beschikbaarheid**en **Capaciteit** selecteert in de **werkmap Overzicht** van een specifiek opslagaccount, en elk een set interactieve opslaggerelateerde informatie leveren die is afgestemd op die categorie.  
+Hiermee wordt aangegeven of u een waarde hebt geselecteerd in de kolommen **Beschik baarheid**, **E2E latentie**, **Server latentie**en **transactie fout type/fouten** van **de werkmap met** meerdere opslag accounts, of dat u een van de knoppen voor **fouten**, **prestaties**, **Beschik baarheid**en **capaciteit** van de **overzichts** werkmap kunt selecteren op basis van een specifiek opslag account, waarbij elk een set interactieve gegevens met betrekking tot de opslag levert die  
 
-* **Beschikbaarheid** opent de **werkmap Beschikbaarheid.** Het toont de huidige status van azure storage-service, een tabel met de beschikbare status van elk object dat is gecategoriseerd op gegevensservice die is gedefinieerd in het opslagaccount met een trendlijn die het geselecteerde tijdsbereik weergeeft, en een trenddiagram voor beschikbaarheid elke gegevensservice in het account.  
+* Met **Beschik baarheid** wordt de **beschikbaarheids** werkmap geopend. Hier ziet u de huidige status van Azure Storage service, een tabel met de beschik bare status van elk object dat is gecategoriseerd door de gegevens service die is gedefinieerd in het opslag account met een trend lijn die het geselecteerde tijds bereik vertegenwoordigt, en een diagram met beschikbaarheids trend voor elke gegevens service in het account.  
 
-    ![Voorbeeld van beschikbaarheidsrapport](./media/storage-insights-overview/storage-account-availability-01.png)
+    ![Voor beeld van beschik baarheids rapport](./media/storage-insights-overview/storage-account-availability-01.png)
 
-* **E2E Latency** en **ServerLatentie** opent de **werkmap Prestaties.** Het bevat een rollupstatustegel met E2E-latentie en serverlatentie, een prestatiegrafiek van E2E versus serverlatentie en een tabel die de latentie van succesvolle aanroepen door API,, wordt afgebroken door gegevensservice die is gedefinieerd in het opslagaccount.
+* **E2E-latentie** en **Server latentie** Hiermee opent u de werk werkmap **prestaties** . Het bevat een Rollup-status tegel met E2E latentie en server latentie, een prestatie grafiek van E2E versus server latentie en een tabel die de latentie van geslaagde aanroepen door de API gecategoriseerd door de gegevens service die is gedefinieerd in het opslag account.
 
-    ![Voorbeeld van prestatierapport](./media/storage-insights-overview/storage-account-performance-01.png)
+    ![Voor beeld van prestatie rapport](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* Als u een van de foutcategorieën in het raster selecteert, opent u de werkmap **Fout.** Het rapport toont metrische tegels van alle andere client-side fouten, behalve beschreven en succesvolle aanvragen, client-throttling fouten, een prestatiegrafiek voor de transactie **Response Type** dimensie metrische specifiek voor ClientOtherError kenmerk, en twee tabellen - **Transacties op API naam** en Transacties op antwoord **type**.
+* Als u een van de fout categorieën in het raster selecteert, wordt de werkmap met **fouten** geopend. In het rapport worden metrische tegels van alle andere client-side-fouten weer gegeven, met uitzonde ring van beschreven en geslaagde aanvragen, client-bandbreedte fouten, een prestatie diagram voor het type trans actie- **antwoord** dat specifiek is voor het kenmerk ClientOtherError en twee tabellen- **trans acties op API-naam** en **trans acties per antwoord type**.
 
-   ![Voorbeeld van foutrapport](./media/storage-insights-overview/storage-account-failures-01.png)
+   ![Voor beeld van fouten rapport](./media/storage-insights-overview/storage-account-failures-01.png)
 
-* **Capaciteit** opent de **werkmap Capaciteit.** Het toont de totale hoeveelheid opslagruimte die wordt gebruikt voor elk opslaggegevensobject in de account in de tegels en de grafiek en hoeveel gegevensobjecten in het account zijn opgeslagen.  
+* Met **capaciteit** wordt de werkmap met **capaciteit** geopend. Hier wordt de totale hoeveelheid opslag ruimte weer gegeven die wordt gebruikt voor elk opslag gegevens object in het account in de tegels en de grafiek, en hoeveel gegevens objecten in het account zijn opgeslagen.  
 
-    ![Pagina Geselecteerde opslagaccountcapaciteit](./media/storage-insights-overview/storage-account-capacity-01.png) 
+    ![Pagina capaciteit geselecteerde opslag account](./media/storage-insights-overview/storage-account-capacity-01.png) 
 
-## <a name="pin-and-export"></a>Pinnen en exporteren
+## <a name="pin-and-export"></a>Vastmaken en exporteren
 
-U een van de metrische secties vastmaken aan een Azure-dashboard door het pushpinpictogram rechtsboven in de sectie te selecteren.
+U kunt een van de metrische gedeelten aan een Azure-dash board vastmaken door het pictogram punaise rechtsboven in de sectie te selecteren.
 
-![Voorbeeld van metrische sectie die is vastmaken aan dashboard](./media/storage-insights-overview/workbook-pin-example.png)
+![Voor beeld van de sectie metrische gegevens van de metriek naar dash board](./media/storage-insights-overview/workbook-pin-example.png)
 
-Het **overzicht** met een multi-abonnement en opslagaccount of **capaciteitswerkmappen** ondersteunt het exporteren van de resultaten in Excel-indeling door het pijl-omlaagpictogram rechts van het pushpinpictogram te selecteren.
+Het **overzicht** van meerdere abonnementen en opslag accounts of **capaciteits** werkmappen ondersteunen het exporteren van de resultaten in Excel-indeling door het pictogram pijl-omlaag rechts van het pictogram punaise te selecteren.
 
-![Voorbeeld van werkmaprasterresultaten exporteren](./media/storage-insights-overview/workbook-export-example.png)
+![Voor beeld van resultaat van werkmap raster exporteren](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Azure Monitor voor opslag aanpassen (voorbeeld)
+## <a name="customize-azure-monitor-for-storage-preview"></a>Azure Monitor voor opslag aanpassen (preview-versie)
 
-In deze sectie worden veelvoorkomende scenario's belicht voor het bewerken van de werkmap die u wilt aanpassen ter ondersteuning van uw behoeften op het gebied van gegevensanalyse:
+In deze sectie worden algemene scenario's beschreven voor het bewerken van de werkmap om uw behoeften aan te passen aan uw gegevens analyse:
 
-* De werkmap scopen om altijd een bepaald abonnement of opslagaccount(en) te selecteren
-* Statistieken in het raster wijzigen
-* De beschikbaarheidsdrempel wijzigen
-* De kleurweergave wijzigen
+* De werkmap zo beperken dat er altijd een bepaald abonnement of opslag account (s) wordt geselecteerd
+* Metrische gegevens in het raster wijzigen
+* De beschikbaarheids drempel wijzigen
+* De kleur weergave wijzigen
 
-De aanpassingen worden opgeslagen in een aangepaste werkmap om te voorkomen dat de standaardconfiguratie in onze gepubliceerde werkmap wordt overschreven. Werkmappen worden opgeslagen in een resourcegroep, hetzij in de sectie **Mijn rapporten** die privé voor u is, hetzij in de sectie **Gedeelde rapporten** die toegankelijk is voor iedereen die toegang heeft tot de resourcegroep. Nadat u de aangepaste werkmap hebt opgeslagen, moet u naar de werkmapgalerie gaan om deze te starten.
+De aanpassingen worden opgeslagen in een aangepaste werkmap om te voor komen dat de standaard configuratie in onze gepubliceerde werkmap wordt overschreven. Werkmappen worden opgeslagen in een resource groep, hetzij in het gedeelte **mijn rapporten** dat persoonlijk is of in de sectie **gedeelde rapporten** dat toegankelijk is voor iedereen die toegang heeft tot de resource groep. Nadat u de aangepaste werkmap hebt opgeslagen, moet u naar de galerie met werkmappen gaan om deze te starten.
 
-![Werkmapgalerie starten vanuit opdrachtbalk](./media/storage-insights-overview/workbook-command-bar-gallery.png)
+![Werkmap galerie starten vanaf de opdracht balk](./media/storage-insights-overview/workbook-command-bar-gallery.png)
 
-### <a name="specifying-a-subscription-or-storage-account"></a>Een abonnement of opslagaccount opgeven
+### <a name="specifying-a-subscription-or-storage-account"></a>Een abonnement of een opslag account opgeven
 
-U het **overzicht** van het multi-abonnement en opslagaccount of **capaciteitswerkmappen** configureren op het bereik van een bepaald abonnement(en) of opslagaccount(en) bij elke run, de volgende stappen uitvoeren.
+U kunt de volgende stappen uitvoeren om het **overzicht** van meerdere abonnementen en opslag accounts of **capaciteits** werkmappen te configureren voor een bepaald abonnement (en) of opslag account (s) voor elke uitvoering.
 
-1. Selecteer **Monitor** in de portal en selecteer **vervolgens Opslagaccounts (voorbeeld)** in het linkerdeelvenster.
+1. Selecteer **monitor** in de portal en selecteer vervolgens **opslag accounts (preview)** in het linkerdeel venster.
 
-2. Selecteer in de **werkmap Overzicht** in de opdrachtbalk **Bewerken**.
+2. Selecteer in de werk blad **overzicht** de optie **bewerken**in de opdracht balk.
 
-3. Selecteer in de vervolgkeuzelijst **Abonnementen** een of meer abonnementen waarop u deze standaard wilt aanbieden. Vergeet niet dat de werkmap maximaal 10 abonnementen selecteert.  
+3. Selecteer in de vervolg keuzelijst **abonnementen** een of meer abonnementen waarnaar de standaard instelling moet worden ingesteld. Houd er rekening mee dat de werkmap ondersteuning biedt voor het selecteren van Maxi maal 10 abonnementen.  
 
-4. Selecteer in de vervolgkeuzelijst **Opslagaccounts** een of meer accounts waarvan u wilt dat deze standaard wordt weergegeven. Vergeet niet dat de werkmap maximaal 200 opslagaccounts selecteert. 
+4. Selecteer in de vervolg keuzelijst **opslag accounts** een of meer accounts waarnaar de standaard instelling moet worden weer geven. Houd er rekening mee dat de werkmap het selecteren van Maxi maal 200 opslag accounts ondersteunt. 
 
-5. Selecteer **Opslaan als** in de opdrachtbalk om een kopie van de werkmap op te slaan met uw aanpassingen en klik vervolgens op **Gereed bewerken** om terug te keren naar de leesmodus.  
+5. Selecteer **Opslaan als** in de opdracht balk om een kopie van de werkmap met uw aanpassingen op te slaan en klik vervolgens op **gereed bewerken** om terug te keren naar de Lees modus.  
 
-### <a name="modify-metrics-and-colors-in-the-workbook"></a>Statistieken en kleuren in de werkmap wijzigen
+### <a name="modify-metrics-and-colors-in-the-workbook"></a>Metrische gegevens en kleuren in de werkmap wijzigen
 
-De vooraf gebouwde werkmappen bevatten metrische gegevens en u hebt de mogelijkheid om een van de visualisaties te wijzigen of te verwijderen en aan te passen aan de specifieke behoeften van uw team.
+De vooraf gemaakte werkmappen bevatten metrische gegevens en u hebt de mogelijkheid om een van de visualisaties te wijzigen of te verwijderen en aan te passen aan de specifieke behoeften van uw team.
 
-In ons voorbeeld werken we samen met de werkmap voor de capaciteit van meerdere abonnementen en opslagaccount, om aan te tonen hoe:
+In ons voor beeld werken we met de werkmap voor meerdere abonnementen en opslag accounts. zo kunt u zien hoe u:
 
-* Een statistiek verwijderen
-* Kleurweergave wijzigen
+* Een metriek verwijderen
+* Kleur weergave wijzigen
 
-U dezelfde wijzigingen uitvoeren ten opzichte van **Performance**een van de vooraf gebouwde **werkmappen Voor prestaties,** **beschikbaarheid**en **capaciteit.**
+U kunt dezelfde wijzigingen uitvoeren op een van de vooraf gebouwde **fouten**, **prestaties**, **Beschik baarheid**en **capaciteits** werkmappen.
 
-1. Selecteer **Monitor** in de portal en selecteer **vervolgens Opslagaccounts (voorbeeld)** in het linkerdeelvenster.
+1. Selecteer **monitor** in de portal en selecteer vervolgens **opslag accounts (preview)** in het linkerdeel venster.
 
-2. Selecteer **Capaciteit** om over te schakelen naar de capaciteitswerkmap en **selecteer** bewerken op de opdrachtbalk in de opdrachtbalk.
+2. Selecteer **capaciteit** om over te scha kelen naar de capaciteits werkmap en Selecteer vanuit de opdracht balk **bewerken** in de opdracht balk.
 
-    ![Bewerken selecteren om een werkmap te wijzigen](./media/storage-insights-overview/workbook-edit-workbook.png)
+    ![Selecteer Bewerken om een werkmap te wijzigen](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. Selecteer naast de sectie Statistieken de optie **Bewerken**.
+3. Selecteer in het gedeelte metrische gegevens de optie **bewerken**.
 
-    ![Selecteer Bewerken om de werkmapstatistieken voor capaciteit te wijzigen](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
+    ![Selecteer Bewerken om de metrische gegevens van de capaciteits werkmap te wijzigen](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
-4. We gaan de **tijdlijnkolom Account gebruikte capaciteit** verwijderen, dus selecteer **Kolominstellingen** in het statistiekenraster.
+4. We gaan de kolom **gebruikte capaciteits tijdlijn** verwijderen, dus Selecteer **kolom instellingen** in het raster metrische gegevens.
 
-    ![Kolominstellingen bewerken](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
+    ![Kolom instellingen bewerken](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. Selecteer in het deelvenster **Kolominstellingen bewerken** de optie onder de sectie **Kolommen** **microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$| Account gebruikte capaciteit Tijdlijn $**, en onder de vervolgkeuzelijst Kolom **renderer** selecteer **Verborgen**.
+5. Selecteer in het deel venster **kolom instellingen bewerken** onder het **Columns** gedeelte kolommen **micro soft. Storage/Storage accounts-capacity-UsedCapacity Timeline $ | Gebruikte capaciteit tijd lijn voor account $**, en onder de vervolg keuzelijst **kolom renderer** selecteert **verborgen**.
 
-6. Selecteer **Opslaan en dichtbij** om uw wijziging te maken.
+6. Selecteer **opslaan en sluiten** om de wijziging door te voeren.
 
-Laten we nu het kleurthema voor de capaciteitsstatistieken in het rapport wijzigen om groen te gebruiken in plaats van blauw.
+We gaan nu het kleuren thema wijzigen voor de metrische gegevens over capaciteit in het rapport om groen te gebruiken in plaats van blauw.
 
-1. Selecteer **Kolominstellingen** in het statistiekenraster.
+1. Selecteer **kolom instellingen** in het raster metrische gegevens.
 
-2. Selecteer in het deelvenster **Kolominstellingen bewerken** de optie onder de sectie **Kolommen** **microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$**. Selecteer Onder de vervolgkeuzelijst **Kleurenpalet**de optie **Groen**.
+2. Selecteer in het deel venster **kolom instellingen bewerken** onder het **Columns** gedeelte kolommen **micro soft. Storage/Storage accounts-capacity-UsedCapacity $ | micro soft. Storage/Storage accounts/blobservices-capacity-BlobCapacity $ | micro soft. Storage/Storage accounts/fileservices-capacity-** FileCapacity $ | micro soft. Storage/Storage accounts/queueservices-capacity-QueueCapacity $ | micro soft. Storage/Storage accounts/tableservices-capacity-TableCapacity $ Selecteer **groen**onder het **kleuren palet**vervolg keuzelijst.
 
-3. Selecteer **Opslaan en dichtbij** om uw wijziging te maken.
+3. Selecteer **opslaan en sluiten** om de wijziging door te voeren.
 
-4. Selecteer **Opslaan als** in de opdrachtbalk om een kopie van de werkmap op te slaan met uw aanpassingen en klik vervolgens op **Gereed bewerken** om terug te keren naar de leesmodus.  
+4. Selecteer **Opslaan als** in de opdracht balk om een kopie van de werkmap met uw aanpassingen op te slaan en klik vervolgens op **gereed bewerken** om terug te keren naar de Lees modus.  
 
-### <a name="modify-the-availability-threshold"></a>De beschikbaarheidsdrempel wijzigen
+### <a name="modify-the-availability-threshold"></a>De beschikbaarheids drempel wijzigen
 
-In dit voorbeeld werken we met de werkmap voor opslagcapaciteit van het opslagaccount en laten we zien hoe de beschikbaarheidsdrempel kan worden gewijzigd. Standaard worden de beschikbaarheid van tegel- en netrapportagepercentage geconfigureerd met een minimumdrempel van 90 en een maximale drempelwaarde van 99. We gaan de minimumdrempelwaarde van het **beschikbaarheidspercentage** in het **api-naamraster** wijzigen in 85%, wat betekent dat de status wordt gewijzigd in kritiek als de drempelwaarde minder dan 85 procent is. 
+In dit voor beeld werken we met de werkmap capaciteit van opslag account en laten we zien hoe de drempel waarde voor de beschik baarheid kan worden gewijzigd. De beschik baarheid van de tegel-en raster rapportage percentage wordt standaard geconfigureerd met een minimum drempel van 90 en een maximum drempel van 99. We gaan de minimale drempel waarde van het **beschik bare percentage** in het raster **Beschik baarheid per API-naam** wijzigen in 85%, wat betekent dat de status verandert in kritiek als de drempel waarde lager is dan 85 procent. 
 
-1. Selecteer **Opslagaccounts** in de portal en selecteer vervolgens een opslagaccount in de lijst.
+1. Selecteer **opslag accounts** in de portal en selecteer vervolgens een opslag account in de lijst.
 
-2. Selecteer **Insights (voorbeeld)** in het linkerdeelvenster.
+2. Selecteer **inzichten (preview)** in het linkerdeel venster.
 
-3. Selecteer **beschikbaarheid** in de werkmap om over te schakelen naar de beschikbaarheidswerkmap en selecteer **Vervolgens Bewerken** in de opdrachtbalk. 
+3. Selecteer in de werkmap **Beschik baarheid** om over te scha kelen naar de beschikbaarheids werkmap en selecteer vervolgens **bewerken** in de opdracht balk. 
 
-4. Schuif omlaag naar de onderkant van de pagina en selecteer aan de linkerkant naast het **API-raster Beschikbaarheid** door de **optie Bewerken**.
+4. Ga naar de onderkant van de pagina en klik aan de linkerkant naast het raster **Beschik baarheid per API** op **bewerken**.
 
-    ![Beschikbaarheid bewerken met api-naamrasterinstellingen](./media/storage-insights-overview/availability-workbook-avail-by-apiname.png)
+    ![Raster instellingen beschik baarheid bewerken per API-naam](./media/storage-insights-overview/availability-workbook-avail-by-apiname.png)
 
-5. Selecteer **Kolominstellingen** en selecteer vervolgens in het deelvenster **Kolominstellingen bewerken,** selecteer onder de sectie **Kolommen** **beschikbaarheid (%) (Drempelwaarden + opgemaakt)**.
+5. Selecteer **kolom instellingen** en selecteer in het deel venster **kolom instellingen bewerken** onder het gedeelte **kolommen** de optie **Beschik baarheid (%) (Drempel waarden + notatie)**.
 
-6. Wijzig de waarde voor de status **Kritieke** status van **90** naar **85** en klik op **Opslaan en sluiten**.
+6. Wijzig de waarde voor de **kritieke** status van **90** in **85** en klik vervolgens op **opslaan en sluiten**.
 
-    ![De waarde van de beschikbaarheidsdrempel voor kritieke status wijzigen](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
+    ![Wijzig de drempel waarde voor Beschik baarheid voor kritieke status](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
 
-7. Selecteer **Opslaan als** in de opdrachtbalk om een kopie van de werkmap op te slaan met uw aanpassingen en klik vervolgens op **Gereed bewerken** om terug te keren naar de leesmodus.
+7. Selecteer **Opslaan als** in de opdracht balk om een kopie van de werkmap met uw aanpassingen op te slaan en klik vervolgens op **gereed bewerken** om terug te keren naar de Lees modus.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-In deze sectie u de diagnose en het oplossen van problemen bij het probleem van enkele veelvoorkomende problemen bij het gebruik van Azure Monitor for Storage (voorbeeld) helpen. Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
+Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor opslag (preview). Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
 
-### <a name="resolving-performance-capacity-or-availability-issues"></a>Problemen met prestaties, capaciteit of beschikbaarheid oplossen
+### <a name="resolving-performance-capacity-or-availability-issues"></a>Problemen met prestaties, capaciteit of Beschik baarheid oplossen
 
-Zie de richtlijnen voor probleemoplossing voor [probleemoplossing](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)voor Azure Storage voor opslag voor problemen met opslag met Azure Monitor for Storage (preview.  
+Raadpleeg de Azure Storage [probleemoplossings richtlijnen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)voor hulp bij het oplossen van problemen met de opslag die u aanduidt met Azure monitor voor opslag (preview).  
 
-### <a name="why-can-i-only-see-200-storage-accounts"></a>Waarom kan ik slechts 200 opslagaccounts zien?
+### <a name="why-can-i-only-see-200-storage-accounts"></a>Waarom kan ik alleen 200 opslag accounts zien?
 
-Het aantal geselecteerde opslagaccounts heeft een limiet van 200, ongeacht het aantal geselecteerde abonnementen.
+Voor het aantal geselecteerde opslag accounts geldt een limiet van 200, ongeacht het aantal abonnementen dat is geselecteerd.
 
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Wat gebeurt er als ik op een onlangs vastgemaakte tegel in het dashboard klik?
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Wat gebeurt er wanneer ik op een onlangs vastgemaakte tegel in het dash board Klik?
 
-* Als u ergens op de tegel klikt, gaat u naar het tabblad waar de tegel is vastgemaakt. Als u bijvoorbeeld een grafiek vastmaakt op het tabblad 'Overzicht van het opslagaccount' wanneer u op die tegel in het dashboard klikt, opent deze die standaardweergave, maar als u een grafiek vastmaakt van uw eigen opgeslagen exemplaar, opent deze de weergave van uw opgeslagen kopie.
-* Het filterpictogram linksboven in de titel opent het tabblad Tegelinstellingen configureren.
-* Het ellipspictogram rechtsboven geeft u de opties om 'titelgegevens aanpassen', 'aanpassen', 'vernieuwen' en 'verwijderen uit het dashboard'.
+* Als u op een wille keurige plek op de tegel klikt, gaat u naar het tabblad waar de tegel is vastgemaakt. Als u bijvoorbeeld een grafiek vastmaakt in het tabblad Overzicht van het opslag account en vervolgens op die tegel in het dash board klikt, wordt de standaard weergave geopend, maar als u een grafiek van uw eigen opgeslagen kopie vastmaakt, wordt de weer gave van uw opgeslagen kopie geopend.
+* Met het filter pictogram in de linkerbovenhoek van de titel opent u het tabblad ' tegel instellingen configureren '.
+* Met het pictogram met de ovaal in de rechter bovenhoek krijgt u de opties voor het aanpassen van de titel gegevens, aanpassen, vernieuwen en verwijderen uit het dash board.
 
-### <a name="what-happens-when-i-save-a-workbook"></a>Wat gebeurt er als ik een werkmap opsla?
+### <a name="what-happens-when-i-save-a-workbook"></a>Wat gebeurt er wanneer ik een werkmap opsla?
 
-* Wanneer u een werkmap opslaat, u hiermee een nieuwe kopie van de werkmap maken met uw bewerkingen en de titel wijzigen. Opslaan overschrijft de werkmap niet, de huidige werkmap is altijd de standaardweergave.
-* Een **niet-opgeslagen** werkmap is slechts de standaardweergave.
+* Wanneer u een werkmap opslaat, kunt u een nieuwe kopie van de werkmap maken met behulp van uw wijzigingen en de titel wijzigen. Als u opslaat, wordt de werkmap niet overschreven, de huidige werkmap is altijd de standaard weergave.
+* Een **niet-opgeslagen** werkmap is alleen de standaard weergave.
 
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Waarom zie ik niet al mijn abonnementen in de portal?
 
-De portal toont alleen gegevens voor geselecteerde abonnementen bij het starten van portalen. Als u wilt wijzigen welke abonnementen zijn geselecteerd, gaat u rechtsboven op het notitieblok met een filterpictogram. Dit toont het tabblad Directory + abonnementen.
+In de portal worden alleen gegevens weer gegeven voor geselecteerde abonnementen op het starten van de portal. Als u wilt wijzigen welke abonnementen zijn geselecteerd, gaat u naar rechtsboven en klikt u op het notitie blok met een filter pictogram. Hiermee wordt het tabblad map en abonnementen weer gegeven.
 
 ![Map en abonnement](./media/storage-insights-overview/fqa3.png)
 
-### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Hoe wijzig je de kleuring en drempelwaarde voor beschikbaarheid?
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Hoe wijzigt u de kleur en drempel waarde voor Beschik baarheid?
 
-Raadpleeg de sectie [Beschikbaarheidsdrempel wijzigen](storage-insights-overview.md#modify-the-availability-threshold) voor de gedetailleerde stappen voor het wijzigen van de kleuring en drempelwaarden voor beschikbaarheid.
+Raadpleeg de sectie [de drempel waarde voor Beschik baarheid wijzigen](storage-insights-overview.md#modify-the-availability-threshold) voor gedetailleerde stappen voor het wijzigen van de kleur en drempel waarden voor Beschik baarheid.
 
-### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>De gegevens in Azure Monitor for Storage analyseren en oplossen?
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Hoe kunt u de gegevens die worden weer gegeven in Azure Monitor voor opslag analyseren en problemen oplossen?
 
- Raadpleeg het artikel [Monitor, diagnose en probleemoplossing](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) voor Microsoft Azure Storage voor meer informatie over het analyseren en oplossen van de Azure Storage-gegevens die worden weergegeven in Azure Monitor for Storage.
+ Raadpleeg Microsoft Azure Storage artikel [controleren, diagnosticeren en problemen oplossen](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) voor meer informatie over het analyseren en oplossen van de Azure Storage gegevens die in azure monitor voor opslag worden weer gegeven.
 
-### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Waarom zie ik niet alle soorten fouten in statistieken?
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Waarom zie ik niet alle typen fouten in metrische gegevens?
 
-Momenteel worden maximaal drie verschillende soorten fouten weergegeven en worden de rest van de fouten gegroepeerd in één emmer. Het wordt gecontroleerd met behulp van splitByLimit en kan worden gewijzigd. Voor het wijzigen van deze eigenschap:
+Op dit moment worden er Maxi maal drie verschillende typen fouten weer gegeven en worden de overige fouten gegroepeerd in één Bucket. Het wordt gecontroleerd met behulp van splitByLimit en kan worden gewijzigd. Voor het wijzigen van deze eigenschap:
 
 1. Klik op werkmap bewerken.
-2. Ga naar statistieken, klik op bewerken en selecteer **Vervolgens Transacties, Som** of welke statistieken u wilt bewerken.
+2. Ga naar metrische gegevens, klik op bewerken en selecteer vervolgens **trans acties, som** of de metrische gegevens die u wilt bewerken.
 
-    ![Ga naar statistieken en klik op bewerken en klik vervolgens op 'Transacties, sommen'](./media/storage-insights-overview/fqa7.png)
+    ![Ga naar metrische gegevens en klik op bewerken en vervolgens op trans acties, totalen](./media/storage-insights-overview/fqa7.png)
 
 1. Wijzig vervolgens het aantal splitsingen.
 
-    ![Selecteer Metrische parameters"](./media/storage-insights-overview/fqa7-2.png)
+    ![Metrische para meters selecteren "](./media/storage-insights-overview/fqa7-2.png)
 
-Als u n verschillende typen fouten wilt zien, geeft u splitByLimit op als n+1, 1 extra voor de rest van de fouten.
+Als u n verschillende typen fouten wilt zien dan splitByLimit opgeven als n + 1, 1 extra voor de rest van de fouten.
 
-###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Ik heb mijn werkmap opgeslagen terwijl ik op een opslagaccount zat. Waarom kan ik het nu niet vinden?
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Ik heb mijn werkmap opgeslagen in een opslag account. Waarom kan ik dit nu niet vinden?
 
-Elke werkmap wordt opgeslagen in het opslagaccount waarin u deze hebt opgeslagen. Probeer het specifieke opslagaccount te vinden waarin de gebruiker de werkmap heeft opgeslagen. Anders is er geen manier om een specifieke werkmap te vinden zonder de bron (opslagaccount) te kennen.
+Elke werkmap wordt opgeslagen in het opslag account waarin u deze hebt opgeslagen. Zoek het specifieke opslag account waarin de gebruiker de werkmap heeft opgeslagen. Anders is het niet mogelijk om een specifieke werkmap te vinden zonder de resource (opslag account) te weten.
 
-### <a name="what-is-time-range"></a>Wat is tijdsbereik?
+### <a name="what-is-time-range"></a>Wat is een tijds bereik?
 
-Het tijdsbereik toont u gegevens uit een bepaald tijdsbestek. Als het tijdsbereik bijvoorbeeld 24 uur is, worden gegevens van de afgelopen 24 uur weergegeven.
+In het tijds bereik worden gegevens uit een bepaald tijds bestek weer gegeven. Als het tijds bereik bijvoorbeeld 24 uur is, worden de gegevens van de afgelopen 24 uur weer gegeven.
 
-### <a name="what-is-time-granularity-time-grain"></a>Wat is tijdgranulariteit (tijdkorrel)?
+### <a name="what-is-time-granularity-time-grain"></a>Wat is een tijd granulariteit (tijd korrel)?
 
-Tijdgranulariteit is het tijdsverschil tussen twee gegevenspunten. Als de tijdkorrel bijvoorbeeld is ingesteld op 1 seconde betekent dit dat metrische gegevens elke seconde worden verzameld.
+Tijd granulatie is het tijds verschil tussen twee gegevens punten. Als de tijd korrel bijvoorbeeld is ingesteld op 1 seconde, worden metrische gegevens elke seconde verzameld.
 
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Wat is de tijd granulariteit zodra we een deel van de werkmappen vastmaken aan een dashboard?
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Wat is de tijd granulatie zodra een deel van de werkmappen is vastgemaakt aan een dash board?
 
-De standaardtijdgranulariteit is ingesteld op automatisch, deze kan momenteel niet worden gewijzigd.
+De standaardtijd granulatie is ingesteld op automatisch. deze kan momenteel niet worden gewijzigd.
 
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Hoe wijzig ik de tijdspanne van de werkmapstap op mijn dashboard?
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Hoe kan ik het tijds bereik van de werkmap stap in mijn dash board wijzigen?
 
-Standaard is het tijdsverloop/tijdbereik op uw dashboardtegel ingesteld op 24 uur, om deze klik op de ellipsen rechtsboven te wijzigen, **tegelgegevens aanpassen,** het selectievakje 'de instellingen van de dashboardtijd op titelniveau overschrijven' en vervolgens een tijdspanne kiezen met behulp van het vervolgkeuzemenu.  
+Standaard is het tijds bereik voor time span uren op de dashboard tegel ingesteld op 24 uur, om deze klik op het weglatings teken in de rechter bovenhoek te wijzigen. Selecteer **tegel gegevens aanpassen**, schakel het selectie vakje de tijd instellingen van het dash board negeren op het niveau van de titel in en kies vervolgens een time span in het vervolg keuzemenu.  
 
-![Selecteer de ellips in de rechterhoek van de tegel en kies Deze gegevens aanpassen](./media/storage-insights-overview/fqa-data-settings.png)
+![Selecteer de weglatings tekens in de rechter hoek van de tegel en kies deze gegevens aanpassen](./media/storage-insights-overview/fqa-data-settings.png)
 
-![Selecteer in Tegelinstellingen configureren de vervolgkeuzelijst tijdsperiode om het tijdsbereik/tijdbereik te wijzigen](./media/storage-insights-overview/fqa-timespan.png)
+![Selecteer in tegel instellingen configureren de vervolg keuzelijst time span om het interval/tijds bereik te wijzigen](./media/storage-insights-overview/fqa-timespan.png)
 
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Hoe wijzig ik de titel van de werkmap of een werkmapstap die ik vastgemaakt heb aan een dashboard?
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Hoe kan ik de titel van de werkmap of de stap van een werkmap wijzigen die ik heb vastgemaakt aan een dash board?
 
-De titel van de werkmap of werkmapstap die is vastgemaakt aan een dashboard, behoudt dezelfde naam als in de werkmap. Als u de titel wilt wijzigen, moet u uw eigen exemplaar van de werkmap opslaan. Dan u de werkmap een naam geven voordat u op opslaan drukt.
+De titel van de werkmap of werkmap stap die is vastgemaakt aan een dash board, behoudt dezelfde naam als in de werkmap. Als u de titel wilt wijzigen, moet u uw eigen kopie van de werkmap opslaan. Vervolgens kunt u de werkmap een naam geeft voordat u op Opslaan klikt.
 
-![Selecteer bovenaan opslaan om een kopie van de werkmap op te slaan en de naam ervan te wijzigen](./media/storage-insights-overview/fqa-change-workbook-name.png)
+![Selecteer boven opslaan om een kopie van de werkmap op te slaan en de naam ervan te wijzigen](./media/storage-insights-overview/fqa-change-workbook-name.png)
 
-Als u de naam van een stap in uw opgeslagen werkmap wilt wijzigen, selecteert u bewerken onder de stap en selecteert u het tandwiel helemaal onder aan de instellingen.
+Als u de naam van een stap in uw opgeslagen werkmap wilt wijzigen, selecteert u bewerken onder de stap en selecteert u vervolgens het vistuig aan de onderkant van de instellingen.
 
-![Selecteer bewerken onder aan een werkmapstap om](./media/storage-insights-overview/fqa-edit.png)
-![de instellingen te openen In de instellingen selecteer het tandwiel onderaan, om de stapnaam te kunnen wijzigen](./media/storage-insights-overview/fqa-change-name.png)
+![Selecteer Bewerken onder aan de stap van een werkmap om de instellingen](./media/storage-insights-overview/fqa-edit.png)
+![in instellingen te openen Selecteer onder aan het vistuig de optie aan de onderkant, zodat de stap naam kan worden gewijzigd](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Configureer [metrische waarschuwingen](../platform/alerts-metric.md) en [servicestatusmeldingen](../../service-health/alerts-activity-log-service-notifications.md) om automatische waarschuwingen in te stellen om te helpen bij het detecteren van problemen.
+* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications.md) configureren om automatische waarschuwingen in te stellen voor hulp bij het detecteren van problemen.
 
-* Lees de scenario's werkmappen zijn ontworpen om te ondersteunen, hoe u nieuwe rapporten maakt en bestaande rapporten aanpast door [interactieve rapporten maken met Azure Monitor-werkmappen](../app/usage-workbooks.md)te bekijken.
+* Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../app/usage-workbooks.md)te controleren.
 
-* Zie [Microsoft Azure Storage controleren, diagnosticeren en oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)van Problemen met Azure Storage voor een uitgebreide handleiding voor het gebruik van Storage Analytics en andere hulpprogramma's voor het identificeren, diagnosticeren en oplossen van azure storage.
+* Zie [Microsoft Azure Storage controleren, diagnosticeren en problemen oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)voor meer informatie over het gebruik van Opslaganalyse en andere hulpprogram ma's voor het identificeren, vaststellen en oplossen van problemen met Azure Storage.

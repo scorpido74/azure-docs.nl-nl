@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple - Private Cloud-machtigingsmodel
-description: Beschrijft het CloudSimple Private Cloud-machtigingsmodel, -groepen en -categorieën
+title: Azure VMware-oplossing door CloudSimple-machtigings model voor Privécloud
+description: Hierin worden het machtigings model, de groepen en de categorieën CloudSimple Private Cloud beschreven
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -9,140 +9,140 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77014943"
 ---
-# <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple Private Cloud-machtigingsmodel van VMware vCenter
+# <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple Private Cloud permission model van VMware vCenter
 
-CloudSimple behoudt volledige administratieve toegang tot de Private Cloud-omgeving. Elke CloudSimple-klant krijgt voldoende beheerdersrechten om de virtuele machines in zijn omgeving te kunnen implementeren en beheren.  Indien nodig u uw bevoegdheden om administratieve functies uit te voeren tijdelijk escaleren.
+CloudSimple behoudt volledige beheerders toegang tot de Privécloud. Elke CloudSimple-klant krijgt voldoende beheerders bevoegdheden om de virtuele machines in hun omgeving te kunnen implementeren en beheren.  Als dat nodig is, kunt u uw bevoegdheden tijdelijk escaleren om beheer functies uit te voeren.
 
-## <a name="cloud-owner"></a>Cloud-eigenaar
+## <a name="cloud-owner"></a>Cloud eigenaar
 
-Wanneer u een Private Cloud maakt, wordt een **CloudOwner-gebruiker** gemaakt in het vCenter Single Sign-On-domein, met toegang tot **cloud-eigenaar-rol** om objecten in de private cloud te beheren. Deze gebruiker kan ook extra [vCenter-identiteitsbronnen](set-vcenter-identity.md)en andere gebruikers instellen voor het VCenter private cloud.
+Wanneer u een Privécloud maakt, wordt er een **CloudOwner** -gebruiker gemaakt in het vCenter-domein voor eenmalige aanmelding, met toegang tot de **rol van Cloud-eigenaar** om objecten in de privécloud te beheren. Deze gebruiker kan ook extra vCenter- [identiteits bronnen](set-vcenter-identity.md)instellen en andere gebruikers naar de privécloud van de Cloud.
 
 > [!NOTE]
-> Standaardgebruiker voor uw CloudSimple Private cloudowner@cloudsimple.local Cloud vCenter is wanneer een Private Cloud wordt gemaakt.
+> De standaard gebruiker voor uw CloudSimple Private Cloud vCenter cloudowner@cloudsimple.local is wanneer er een privécloud wordt gemaakt.
 
 ## <a name="user-groups"></a>Gebruikersgroepen
 
-Een groep genaamd **Cloud-Owner-Group** wordt gemaakt tijdens de implementatie van een Private Cloud. Gebruikers in deze groep kunnen verschillende delen van de vSphere-omgeving beheren op de Private Cloud. Deze groep krijgt automatisch bevoegdheden **voor Cloud-Owner-Role** en de **CloudOwner-gebruiker** wordt toegevoegd als lid van deze groep.  CloudSimple maakt extra groepen met beperkte bevoegdheden voor het gemak van beheer.  U elke gebruiker toevoegen aan deze vooraf gemaakte groepen en de onderstaande bevoegdheden worden automatisch toegewezen aan de gebruikers in de groepen.
+Een groep met de naam **Cloud-eigenaar-groep** wordt gemaakt tijdens de implementatie van een privécloud. Gebruikers in deze groep kunnen verschillende onderdelen van de vSphere omgeving beheren op de Privécloud. Deze groep krijgt automatisch machtigingen voor de **rol van Cloud-eigenaar** en de **CloudOwner** -gebruiker wordt toegevoegd als lid van deze groep.  CloudSimple maakt extra groepen met beperkte bevoegdheden voor eenvoudig beheer.  U kunt elke wille keurige gebruiker toevoegen aan deze vooraf gemaakte groepen en de bevoegdheden die hieronder zijn gedefinieerd, worden automatisch toegewezen aan de gebruikers in de groepen.
 
 ### <a name="pre-created-groups"></a>Vooraf gemaakte groepen
 
 | Groepsnaam | Doel | Rol |
 | -------- | ------- | ------ |
-| Cloud-Owner-Group | Leden van deze groep hebben beheerdersrechten voor de Private Cloud vCenter | [Cloud-Owner-Rol](#cloud-owner-role) |
-| Cloud-Global-Cluster-Admin-Group | Leden van deze groep hebben beheerdersrechten op het VCenter-cluster Private Cloud | [Cloud-Cluster-Admin-Role](#cloud-cluster-admin-role) |
-| Cloud-Global-Storage-Admin-Group | Leden van deze groep kunnen opslag beheren in het VCenter Private Cloud | [Cloud-Storage-Admin-Role](#cloud-storage-admin-role) |
-| Cloud-Global-Network-Admin-Group | Leden van deze groep kunnen netwerk- en gedistribueerde poortgroepen beheren in het VCenter Private Cloud | [Cloud-Network-Admin-Role](#cloud-network-admin-role) |
-| Cloud-Global-VM-Admin-Group | Leden van deze groep kunnen virtuele machines beheren op het Private Cloud vCenter | [Cloud-VM-Admin-Rol](#cloud-vm-admin-role) |
+| Cloud-eigenaar-groep | Leden van deze groep hebben beheerders bevoegdheden voor de vCenter van de Privécloud | [Cloud-eigenaar-rol](#cloud-owner-role) |
+| Cloud-globaal-Cluster-beheer groep | Leden van deze groep hebben beheerders bevoegdheden op het vCenter-cluster van de Privécloud | [Cloud-cluster-beheerder-rol](#cloud-cluster-admin-role) |
+| Cloud-Global-Storage-admin-Group | Leden van deze groep kunnen opslag in de Privécloud van de Cloud beheren | [Cloud-opslag-beheerder-rol](#cloud-storage-admin-role) |
+| Cloud-globaal-netwerk-beheerder-groep | Leden van deze groep kunnen netwerk-en gedistribueerde poort groepen beheren in de Privécloud-vCenter | [Cloud-netwerk-admin-rol](#cloud-network-admin-role) |
+| Cloud-Global-VM-beheerder-groep | Leden van deze groep kunnen virtuele machines op de vCenter van de Privécloud beheren | [Cloud-VM-beheerder-rol](#cloud-vm-admin-role) |
 
-Als u individuele gebruikers machtigingen wilt verlenen voor het beheer van de Private Cloud, voegt u gebruikersaccounts toe aan de juiste groepen.
+Als u afzonderlijke gebruikers machtigingen wilt verlenen voor het beheren van de Privécloud, maakt u gebruikers accounts toevoegen aan de juiste groepen.
 
 > [!CAUTION]
-> Nieuwe gebruikers mogen alleen worden toegevoegd aan *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* of *Cloud-Global-VM-Admin-Group*.  Gebruikers die zijn toegevoegd aan de groep *Administrators,* worden automatisch verwijderd.  Alleen serviceaccounts mogen worden toegevoegd aan de groep *Administrators* en serviceaccounts mogen niet worden gebruikt om zich aan te melden bij de vSphere-webgebruikersinterface.
+> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* en service accounts moeten worden gebruikt om u aan te melden bij de vSphere-webgebruikersinterface.
 
-## <a name="list-of-vcenter-privileges-for-default-roles"></a>Lijst met vCenter-bevoegdheden voor standaardrollen
+## <a name="list-of-vcenter-privileges-for-default-roles"></a>Lijst met vCenter-bevoegdheden voor standaard rollen
 
-### <a name="cloud-owner-role"></a>Cloud-Owner-Rol
+### <a name="cloud-owner-role"></a>Cloud-eigenaar-rol
 
 | **Categorie** | **Bevoegdheid** |
 |----------|-----------|
-| **Waarschuwingen** | Waarschuwing bevestigen <br> Alarm maken <br> Alarmactie uitschakelen <br> Alarm wijzigen <br> Alarm verwijderen <br> Alarmstatus instellen |
-| **Machtigingen** | Machtigingen wijzigen |
-| **Inhoudsbibliotheek** | Bibliotheekitem toevoegen <br> Lokale bibliotheek maken <br> Geabonneerde bibliotheek maken <br> Bibliotheekitem verwijderen <br> Lokale bibliotheek verwijderen <br> Geabonneerde bibliotheek verwijderen <br> Bestanden downloaden <br> Bibliotheekitem verwijderen <br> Geabonneerde bibliotheek uitzetten <br> Opslag importeren <br> Abonnementsgegevens van Probe <br> Opslag lezen <br> Bibliotheekitem synchroniseren <br> Geabonneerde bibliotheek synchroniseren <br> Type introspectie <br> Configuratie-instellingen bijwerken <br> Bestanden bijwerken <br> Bibliotheek bijwerken <br> Bibliotheekitem bijwerken <br> Lokale bibliotheek bijwerken <br> Geabonneerde bibliotheek bijwerken <br> Configuratie-instellingen weergeven |
-| **Cryptografische bewerkingen** | Schijf toevoegen <br> Klonen <br> Ontsleutelen <br> Directe toegang <br> Versleutelen <br> Nieuw versleutelen <br> KM's beheren <br> Versleutelingsbeleid beheren <br> Sleutels beheren <br> Migreren <br> Opnieuw coderen <br> VM registreren <br> Host registreren |
-| **dvPort-groep** | Maken <br> Verwijderen <br> Wijzigen <br> Beleidsbewerking <br> Scope-bewerking |
-| **Gegevensarchief** | Ruimte toewijzen <br> Bladeren door datastore <br> Gegevensarchief configureren <br> Bestandsbewerkingen op laag niveau <br> Gegevensarchief verplaatsen <br> Gegevensarchief verwijderen <br> Bestand verwijderen <br> De naam van datastore wijzigen <br> Virtuele machinebestanden bijwerken <br> Metagegevens van virtuele machines bijwerken |
-| **ESX Agent Manager** | Configureren <br> Wijzigen <br> Weergave |
-| **Toestelnummer** | Extensie registreren <br> Extensie uitschrijven <br> Uitbreiding bijwerken |
-| **Externe statistieken provider**| Registreren <br> Registratie ongedaan maken <br> Update |
-| **Map** | Map maken <br> Map verwijderen <br> Map verplaatsen <br> Naam van map wijzigen |
-| **Wereldwijd** | Taak annuleren <br> Capaciteitsplanning <br> Diagnostiek <br> Methoden uitschakelen <br> Methoden inschakelen <br> Globale tag <br> Status <br> Licenties <br> Logboekgebeurtenis <br> Aangepaste kenmerken beheren <br> Proxy <br> Scriptactie <br> Servicemanagers <br> Aangepast kenmerk instellen <br> Systeemtag |
-| **Leverancier van statusupdates** | Registreren <br> Registratie ongedaan maken <br> Update |
-| **Host > Configuratie** | Configuratie van opslagpartitie |
-| **Voorraad host->** | Cluster wijzigen |
-| **vSphere-labelen** | VSphere-tag toewijzen of niet toewijzen <br> VSphere-tag maken <br> Categorie vSphere-tag maken <br> VSphere-tag verwijderen <br> VSphere-tagcategorie verwijderen <br> VSphere-tag bewerken <br> Categorie vSphere-tag bewerken <br> Usedby-veld wijzigen voor categorie <br> UsedBy-veld wijzigen voor tag |
+| **Waarschuwingen** | Waarschuwing bevestigen <br> Alarm maken <br> Waarschuwings actie uitschakelen <br> Waarschuwing wijzigen <br> Waarschuwing verwijderen <br> Waarschuwings status instellen |
+| **Machtigingen** | Machtiging wijzigen |
+| **Inhoudsbibliotheek** | Bibliotheek item toevoegen <br> Lokale bibliotheek maken <br> Geabonneerde bibliotheek maken <br> Bibliotheek item verwijderen <br> Lokale bibliotheek verwijderen <br> Geabonneerde bibliotheek verwijderen <br> Bestanden downloaden <br> Bibliotheek item verwijderen <br> Geabonneerde bibliotheek verwijderen <br> Opslag importeren <br> Abonnements gegevens testen <br> Opslag lezen <br> Bibliotheek item synchroniseren <br> Geabonneerde bibliotheek synchroniseren <br> Type introspectie <br> Configuratie-instellingen bijwerken <br> Update bestanden <br> Bibliotheek bijwerken <br> Bibliotheek item bijwerken <br> Lokale bibliotheek bijwerken <br> Geabonneerde bibliotheek bijwerken <br> Configuratie-instellingen weer geven |
+| **Cryptografische bewerkingen** | Schijf toevoegen <br> Klonen <br> Ontsleutelen <br> Directe toegang <br> Versleutelen <br> Nieuwe versleutelen <br> KMS beheren <br> Versleutelings beleid beheren <br> Sleutels beheren <br> Migreren <br> Hercryptografie <br> VM registreren <br> Host registreren |
+| **dvPort-groep** | Maken <br> Verwijderen <br> Wijzigen <br> Beleids bewerking <br> Bereik bewerking |
+| **Gegevensarchief** | Ruimte toewijzen <br> Door gegevens opslag bladeren <br> Gegevens opslag configureren <br> Bestands bewerkingen op laag niveau <br> Gegevens opslag verplaatsen <br> Gegevens opslag verwijderen <br> Bestand verwijderen <br> Naam gegevens opslag wijzigen <br> Bestanden van de virtuele machine bijwerken <br> Meta gegevens van de virtuele machine bijwerken |
+| **ESX-agent beheer** | Configureren <br> Wijzigen <br> Weergave |
+| **Toestelnummer** | Extensie registreren <br> Registratie uitbrei ding opheffen <br> Extensie bijwerken |
+| **Externe statistieken provider**| Registreren <br> Registratie ongedaan maken <br> Bijwerken |
+| **Map** | Map maken <br> Map verwijderen <br> Map verplaatsen <br> Mapnaam wijzigen |
+| **Wereldwijd** | Taak annuleren <br> Capaciteitsplanning <br> Diagnostiek <br> Methoden uitschakelen <br> Methoden inschakelen <br> Global-Tag <br> Status <br> Licenties <br> Logboek gebeurtenis <br> Aangepaste kenmerken beheren <br> Proxy <br> Script actie <br> Service managers <br> Aangepast kenmerk instellen <br> Systeem label |
+| **Status update provider** | Registreren <br> Registratie ongedaan maken <br> Bijwerken |
+| **Configuratie van > host** | Configuratie van de opslag partitie |
+| **Host > inventaris** | Cluster wijzigen |
+| **Tags voor vSphere** | VSphere-tag toewijzen of de toewijzing ervan opheffen <br> VSphere-tag maken <br> VSphere-label categorie maken <br> VSphere-tag verwijderen <br> VSphere-label categorie verwijderen <br> VSphere-tag bewerken <br> Categorie vSphere-code bewerken <br> Het veld UsedBy voor categorie wijzigen <br> UsedBy veld voor label wijzigen |
 | **Netwerk** | Netwerk toewijzen <br> Configureren <br> Netwerk verplaatsen <br> Verwijderen |
 | **Prestaties** | Intervallen wijzigen |
-| **Hostprofiel** | Weergave |
-| **Resource** | Aanbeveling toepassen <br> VApp toewijzen aan resourcegroep <br> Virtuele machine toewijzen aan resourcegroep <br> Resourcegroep maken <br> Uitgeschakelde virtuele machine migreren <br> Migreren op virtuele machine <br> Resourcegroep wijzigen <br> Resourcegroep verplaatsen <br> Query vMotion <br> Resourcegroep verwijderen <br> De naam van resourcegroep wijzigen |
+| **Host-profiel** | Weergave |
+| **Resource** | Aanbeveling Toep assen <br> VApp toewijzen aan resource groep <br> Virtuele machine aan resource groep toewijzen <br> Resource groep maken <br> Virtuele machine die is uitgeschakeld migreren <br> De ingeschakelde virtuele machine wordt gemigreerd <br> Resource groep wijzigen <br> Resource groep verplaatsen <br> Query's van vMotion <br> Resource groep verwijderen <br> Naam van resource groep wijzigen |
 | **Geplande taak** | Taken maken <br> Taak wijzigen <br> Taak verwijderen <br> Taak uitvoeren |
-| **Sessies** | Gebruiker imiteren <br> Bericht <br> Sessie valideren <br> Sessies weergeven en stoppen |
-| **Datastore-cluster** | Een datastore-cluster configureren |
-| **Profielgestuurde opslag** | Profielgestuurde opslagupdate <br> Profielgestuurde opslagweergave |
-| **Opslagweergaven** | Service configureren <br> Weergave |
+| **Sessies** | Gebruiker imiteren <br> Bericht <br> Sessie valideren <br> Sessies weer geven en stoppen |
+| **Data Store-cluster** | Een Data Store-cluster configureren |
+| **Op profielen gebaseerde opslag** | Update voor profiel gerichte opslag <br> Beschik bare opslag weergave voor profielen |
+| **Opslag weergaven** | Service configureren <br> Weergave |
 | **Taken** | Taak maken <br> Taak bijwerken |
-| **Overdrachtsservice**| Beheren <br> Controleren |
-| **vApp** | Virtuele machine toevoegen <br> Resourcegroep toewijzen <br> VApp toewijzen <br> Klonen <br> Maken <br> Verwijderen <br> Exporteren <br> Importeren <br> Verplaatsen <br> Uitschakelen <br> Inschakelen <br> Naam wijzigen <br> Onderbreken <br> Registratie ongedaan maken <br> OVF-omgeving bekijken <br> vApp-toepassingsconfiguratie <br> vApp-instantieconfiguratie <br> vApp beheerdDoor configuratie <br> vApp-bronconfiguratie |
-| **VRMBeleid** | VRM-beleid voor query's <br> VRM-beleid bijwerken |
-| **Configuratie van virtuele machines >** | Bestaande schijf toevoegen <br> Nieuwe schijf toevoegen <br> Apparaat toevoegen of verwijderen <br> Geavanceerd <br> CPU-telling wijzigen <br> Bron wijzigen <br> ManagedBy configureren <br> Schijfwijzigingstracking <br> Schijflease <br> Verbindingsinstellingen weergeven <br> Virtuele schijf uitbreiden <br> USB-apparaat hosten <br> Geheugen <br> Apparaatinstellingen wijzigen <br> Compatibiliteit met fouttolerantie voor query's <br> Niet-eigendombestanden opvragen <br> Raw-apparaat <br> Herladen vanaf pad <br> Schijf verwijderen <br> Naam wijzigen <br> Gastgegevens opnieuw instellen <br> Annotatie instellen <br> Instellingen <br> Plaatsing van swapbestanden <br> Voorvork bovenliggende wisselknop <br> Virtuele machine ontgrendelen <br> Compatibiliteit met virtuele machines bijwerken |
-| **Virtuele machine > gastbewerkingen** | Wijziging gastbewerkingalias <br> Aliasquery gastbewerking <br> Wijzigingen in gastbewerking <br> Uitvoering gastprogramma <br> Query's voor gastbewerking |
-| **Virtuele machine > interactie** | Antwoordvraag <br> Back-upbewerking op virtuele machine <br> CD-media configureren <br> Diskettemedia configureren <br> Consoleinteractie <br> Schermafbeelding maken <br> Alle schijven defragmenteren <br> Apparaatverbinding <br> Slepen en neerzetten <br> Guest operating system management door VIX API <br> USB HID-scancodes injecteren <br> Onderbreken of onderbreken <br> Veeg- of krimpbewerkingen uitvoeren <br> Uitschakelen <br> Inschakelen <br> Sessie opnemen op virtuele machine <br> Replay sessie op virtuele machine <br> Opnieuw instellen <br> Fouttolerantie hervatten <br> Onderbreken <br> Fouttolerantie onderbreken <br> Testfailover <br> Test opnieuw opstarten Secundaire VM <br> Fouttolerantie uitschakelen <br> Fouttolerantie inschakelen <br> VMware Tools installeren |
-| **Virtuele machine > inventaris** | Maken op uit bestaande <br> Nieuwe maken <br> Verplaatsen <br> Registreren <br> Verwijderen <br> Registratie ongedaan maken |
-| **Virtuele machine > provisioning** | Schijftoegang toestaan <br> Bestandstoegang toestaan <br> Alleen-lezen schijftoegang toestaan <br> Virtuele machine downloaden toestaan <br> Virtuele machinebestanden uploaden toestaan <br> Kloonsjabloon <br> Kloon virtuele machine <br> Sjabloon maken op virtuele machine <br> Aanpassen <br> Sjabloon implementeren <br> Markeren als sjabloon <br> Markeren als virtuele machine <br> Aanpassingsspecificatie wijzigen <br> Schijven promoten <br> Lees de specificaties voor aanpassingen |
-| **Configuratie van virtuele machine > Service** | Meldingen toestaan <br> Polling van wereldwijde gebeurtenismeldingen toestaan <br> Serviceconfiguraties beheren <br> Serviceconfiguratie wijzigen <br> Queryserviceconfiguraties <br> Serviceconfiguratie lezen |
-| **Beheer van virtuele machines > momentopname** | Momentopname maken <br> Momentopname verwijderen <br> De naam van momentopname wijzigen <br> Terugkeren naar momentopname |
-| **Virtuele machine > vSphere-replicatie** | Replicatie configureren <br> Replicatie beheren <br> Replicatie controleren |
-| **vService** | Afhankelijkheid maken <br> Afhankelijkheid vernietigen <br> Afhankelijkheidsconfiguratie opnieuw configureren <br> Afhankelijkheid bijwerken |
+| **Service overdragen**| Beheren <br> Controleren |
+| **vApp** | Virtuele machine toevoegen <br> Resource groep toewijzen <br> VApp toewijzen <br> Klonen <br> Maken <br> Verwijderen <br> Exporteren <br> Importeren <br> Verplaatsen <br> Uitschakelen <br> Inschakelen <br> Naam wijzigen <br> Onderbreken <br> Registratie ongedaan maken <br> OVF-omgeving weer geven <br> configuratie van vApp-toepassing <br> configuratie van vApp-exemplaar <br> configuratie van vApp managedBy <br> vApp-resource configuratie |
+| **VRMPolicy** | Query VRMPolicy <br> VRMPolicy bijwerken |
+| **Configuratie van virtuele-machine >** | Bestaande schijf toevoegen <br> Nieuwe schijf toevoegen <br> Apparaat toevoegen of verwijderen <br> Geavanceerd <br> CPU-aantal wijzigen <br> Resource wijzigen <br> ManagedBy configureren <br> Bijhouden van schijf wijzigingen <br> Lease van schijf <br> Verbindings instellingen weer geven <br> Virtuele schijf uitbreiden <br> Host-USB-apparaat <br> Geheugen <br> Apparaatinstellingen wijzigen <br> Compatibiliteit van query fout tolerantie <br> Niet-eigendoms bestanden opvragen <br> Onbewerkt apparaat <br> Opnieuw laden vanaf pad <br> Schijf verwijderen <br> Naam wijzigen <br> Gast gegevens opnieuw instellen <br> Aantekening instellen <br> Instellingen <br> Swapfile-plaatsing <br> Bovenliggende Fork in-/uitschakelen <br> Virtuele machine ontgrendelen <br> Compatibiliteit van virtuele machines bijwerken |
+| **>-gast bewerkingen voor virtuele machines** | Wijziging alias voor gast bewerkingen <br> Alias query voor gast bewerkingen <br> Wijzigingen in de gast bewerking <br> Uitvoering van gast bewerkings programma <br> Query's voor gast bewerkingen |
+| **Interactie van de virtuele machine >** | Vraag beantwoorden <br> Back-upbewerking op virtuele machine <br> CD-media configureren <br> Diskette media configureren <br> Interactie met de console <br> Scherm opname maken <br> Alle schijven defragmenteren <br> Apparaat-verbinding <br> Slepen en neerzetten <br> Beheer van gast besturingssystemen met VIX-API <br> USB HID-scan codes invoeren <br> Onderbreken of onderbreken <br> Bewerkingen voor wissen of verkleinen uitvoeren <br> Uitschakelen <br> Inschakelen <br> Sessie op virtuele machine opnemen <br> Sessie opnieuw afspelen op virtuele machine <br> Opnieuw instellen <br> Fout tolerantie hervatten <br> Onderbreken <br> Fout tolerantie opschorten <br> Testfailover <br> De secundaire virtuele machine opnieuw opstarten testen <br> Fout tolerantie uitschakelen <br> Fout tolerantie inschakelen <br> VMware-Hulpprogram Ma's installeren |
+| **> inventaris van virtuele machine** | Maken op basis van bestaande <br> Nieuwe maken <br> Verplaatsen <br> Registreren <br> Verwijderen <br> Registratie ongedaan maken |
+| **Inrichting van de virtuele machine >** | Schijf toegang toestaan <br> Toegang tot bestanden toestaan <br> Alleen-lezen schijf toegang toestaan <br> Downloaden van virtuele machines toestaan <br> Uploaden van virtuele machine bestanden toestaan <br> Sjabloon klonen <br> Virtuele machine klonen <br> Een sjabloon maken op basis van de virtuele machine <br> Aanpassen <br> Sjabloon implementeren <br> Als sjabloon markeren <br> Als virtuele machine markeren <br> Aanpassings specificatie wijzigen <br> Schijven promo veren <br> Aanpassings specificaties lezen |
+| **Configuratie van de virtuele-machine >-service** | Meldingen toestaan <br> Navragen van globale gebeurtenis meldingen toestaan <br> Service configuraties beheren <br> Service configuratie wijzigen <br> Query service configuraties <br> Service configuratie lezen |
+| **Beheer van > moment opnamen van virtuele machines** | Momentopname maken <br> Moment opname verwijderen <br> Naam van moment opname wijzigen <br> Herstellen naar moment opname |
+| **> vSphere-replicatie voor virtuele machines** | Replicatie configureren <br> Replicatie beheren <br> Replicatie controleren |
+| **vService** | Afhankelijkheid maken <br> Afhankelijkheid vernietigen <br> Afhankelijkheids configuratie opnieuw configureren <br> Afhankelijkheid bijwerken |
 
-### <a name="cloud-cluster-admin-role"></a>Cloud-Cluster-Admin-Role
+### <a name="cloud-cluster-admin-role"></a>Cloud-cluster-beheerder-rol
 
 | **Categorie** | **Bevoegdheid** |
 |----------|-----------|
-| **Gegevensarchief** | Ruimte toewijzen <br> Bladeren door datastore <br> Gegevensarchief configureren <br> Bestandsbewerkingen op laag niveau <br> Gegevensarchief verwijderen <br> De naam van datastore wijzigen <br> Virtuele machinebestanden bijwerken <br> Metagegevens van virtuele machines bijwerken |
-| **Map** | Map maken <br> Map verwijderen <br> Map verplaatsen <br> Naam van map wijzigen |
-| **Host > Configuratie**  | Configuratie van opslagpartitie |
-| **vSphere-labelen** | VSphere-tag toewijzen of niet toewijzen <br> VSphere-tag maken <br> Categorie vSphere-tag maken <br> VSphere-tag verwijderen <br> VSphere-tagcategorie verwijderen <br> VSphere-tag bewerken <br> Categorie vSphere-tag bewerken <br> Usedby-veld wijzigen voor categorie <br> UsedBy-veld wijzigen voor tag |
+| **Gegevensarchief** | Ruimte toewijzen <br> Door gegevens opslag bladeren <br> Gegevens opslag configureren <br> Bestands bewerkingen op laag niveau <br> Gegevens opslag verwijderen <br> Naam gegevens opslag wijzigen <br> Bestanden van de virtuele machine bijwerken <br> Meta gegevens van de virtuele machine bijwerken |
+| **Map** | Map maken <br> Map verwijderen <br> Map verplaatsen <br> Mapnaam wijzigen |
+| **Configuratie van > host**  | Configuratie van de opslag partitie |
+| **Tags voor vSphere** | VSphere-tag toewijzen of de toewijzing ervan opheffen <br> VSphere-tag maken <br> VSphere-label categorie maken <br> VSphere-tag verwijderen <br> VSphere-label categorie verwijderen <br> VSphere-tag bewerken <br> Categorie vSphere-code bewerken <br> Het veld UsedBy voor categorie wijzigen <br> UsedBy veld voor label wijzigen |
 | **Netwerk** | Netwerk toewijzen |
-| **Resource** | Aanbeveling toepassen <br> VApp toewijzen aan resourcegroep <br> Virtuele machine toewijzen aan resourcegroep <br> Resourcegroep maken <br> Uitgeschakelde virtuele machine migreren <br> Migreren op virtuele machine <br> Resourcegroep wijzigen <br> Resourcegroep verplaatsen <br> Query vMotion <br> Resourcegroep verwijderen <br> De naam van resourcegroep wijzigen |
-| **vApp** | Virtuele machine toevoegen <br> Resourcegroep toewijzen <br> VApp toewijzen <br> Klonen <br> Maken <br> Verwijderen <br> Exporteren <br> Importeren <br> Verplaatsen <br> Uitschakelen <br> Inschakelen <br> Naam wijzigen <br> Onderbreken <br> Registratie ongedaan maken <br> OVF-omgeving bekijken <br> vApp-toepassingsconfiguratie <br> vApp-instantieconfiguratie <br> vApp beheerdDoor configuratie <br> vApp-bronconfiguratie |
-| **VRMBeleid** | VRM-beleid voor query's <br> VRM-beleid bijwerken |
-| **Configuratie van virtuele machines >** | Bestaande schijf toevoegen <br> Nieuwe schijf toevoegen <br> Apparaat toevoegen of verwijderen <br> Geavanceerd <br> CPU-telling wijzigen <br> Bron wijzigen <br> ManagedBy configureren <br> Schijfwijzigingstracking <br> Schijflease <br> Verbindingsinstellingen weergeven <br> Virtuele schijf uitbreiden <br> USB-apparaat hosten <br> Geheugen <br> Apparaatinstellingen wijzigen <br> Compatibiliteit met fouttolerantie voor query's <br> Niet-eigendombestanden opvragen <br> Raw-apparaat <br> Herladen vanaf pad <br> Schijf verwijderen <br> Naam wijzigen <br> Gastgegevens opnieuw instellen <br> Annotatie instellen <br> Instellingen <br> Plaatsing van swapbestanden <br> Voorvork bovenliggende wisselknop <br> Virtuele machine ontgrendelen <br> Compatibiliteit met virtuele machines bijwerken |
-| **Virtuele machine > gastbewerkingen** | Wijziging gastbewerkingalias <br> Aliasquery gastbewerking <br> Wijzigingen in gastbewerking <br> Uitvoering gastprogramma <br> Query's voor gastbewerking |
-| **Virtuele machine > interactie** | Antwoordvraag <br> Back-upbewerking op virtuele machine <br> CD-media configureren <br> Diskettemedia configureren <br> Consoleinteractie <br> Schermafbeelding maken <br> Alle schijven defragmenteren <br> Apparaatverbinding <br> Slepen en neerzetten <br> Guest operating system management door VIX API <br> USB HID-scancodes injecteren <br> Onderbreken of onderbreken <br> Veeg- of krimpbewerkingen uitvoeren <br> Uitschakelen <br> Inschakelen <br> Sessie opnemen op virtuele machine <br> Replay sessie op virtuele machine <br> Opnieuw instellen <br> Fouttolerantie hervatten <br> Onderbreken <br> Fouttolerantie onderbreken <br> Testfailover <br> Test opnieuw opstarten Secundaire VM <br> Fouttolerantie uitschakelen <br> Fouttolerantie inschakelen <br> VMware Tools installeren
-| **Virtuele machine > inventaris** | Maken op uit bestaande <br> Nieuwe maken <br> Verplaatsen <br> Registreren <br> Verwijderen <br> Registratie ongedaan maken |
-| **Virtuele machine > provisioning** | Schijftoegang toestaan <br> Bestandstoegang toestaan <br> Alleen-lezen schijftoegang toestaan <br> Virtuele machine downloaden toestaan <br> Virtuele machinebestanden uploaden toestaan <br> Kloonsjabloon <br> Kloon virtuele machine <br> Sjabloon maken op virtuele machine <br> Aanpassen <br> Sjabloon implementeren <br> Markeren als sjabloon <br> Markeren als virtuele machine <br> Aanpassingsspecificatie wijzigen <br> Schijven promoten  <br> Lees de specificaties voor aanpassingen |
-| **Configuratie van virtuele machine > Service** | Meldingen toestaan <br> Polling van wereldwijde gebeurtenismeldingen toestaan <br> Serviceconfiguraties beheren <br> Serviceconfiguratie wijzigen <br> Queryserviceconfiguraties <br> Serviceconfiguratie lezen
-| **Beheer van virtuele machines > momentopname** | Momentopname maken <br> Momentopname verwijderen <br> De naam van momentopname wijzigen <br> Terugkeren naar momentopname |
-| **Virtuele machine > vSphere-replicatie** | Replicatie configureren <br> Replicatie beheren <br> Replicatie controleren |
-| **vService** | Afhankelijkheid maken <br> Afhankelijkheid vernietigen <br> Afhankelijkheidsconfiguratie opnieuw configureren <br> Afhankelijkheid bijwerken |
+| **Resource** | Aanbeveling Toep assen <br> VApp toewijzen aan resource groep <br> Virtuele machine aan resource groep toewijzen <br> Resource groep maken <br> Virtuele machine die is uitgeschakeld migreren <br> De ingeschakelde virtuele machine wordt gemigreerd <br> Resource groep wijzigen <br> Resource groep verplaatsen <br> Query's van vMotion <br> Resource groep verwijderen <br> Naam van resource groep wijzigen |
+| **vApp** | Virtuele machine toevoegen <br> Resource groep toewijzen <br> VApp toewijzen <br> Klonen <br> Maken <br> Verwijderen <br> Exporteren <br> Importeren <br> Verplaatsen <br> Uitschakelen <br> Inschakelen <br> Naam wijzigen <br> Onderbreken <br> Registratie ongedaan maken <br> OVF-omgeving weer geven <br> configuratie van vApp-toepassing <br> configuratie van vApp-exemplaar <br> configuratie van vApp managedBy <br> vApp-resource configuratie |
+| **VRMPolicy** | Query VRMPolicy <br> VRMPolicy bijwerken |
+| **Configuratie van virtuele-machine >** | Bestaande schijf toevoegen <br> Nieuwe schijf toevoegen <br> Apparaat toevoegen of verwijderen <br> Geavanceerd <br> CPU-aantal wijzigen <br> Resource wijzigen <br> ManagedBy configureren <br> Bijhouden van schijf wijzigingen <br> Lease van schijf <br> Verbindings instellingen weer geven <br> Virtuele schijf uitbreiden <br> Host-USB-apparaat <br> Geheugen <br> Apparaatinstellingen wijzigen <br> Compatibiliteit van query fout tolerantie <br> Niet-eigendoms bestanden opvragen <br> Onbewerkt apparaat <br> Opnieuw laden vanaf pad <br> Schijf verwijderen <br> Naam wijzigen <br> Gast gegevens opnieuw instellen <br> Aantekening instellen <br> Instellingen <br> Swapfile-plaatsing <br> Bovenliggende Fork in-/uitschakelen <br> Virtuele machine ontgrendelen <br> Compatibiliteit van virtuele machines bijwerken |
+| **>-gast bewerkingen voor virtuele machines** | Wijziging alias voor gast bewerkingen <br> Alias query voor gast bewerkingen <br> Wijzigingen in de gast bewerking <br> Uitvoering van gast bewerkings programma <br> Query's voor gast bewerkingen |
+| **Interactie van de virtuele machine >** | Vraag beantwoorden <br> Back-upbewerking op virtuele machine <br> CD-media configureren <br> Diskette media configureren <br> Interactie met de console <br> Scherm opname maken <br> Alle schijven defragmenteren <br> Apparaat-verbinding <br> Slepen en neerzetten <br> Beheer van gast besturingssystemen met VIX-API <br> USB HID-scan codes invoeren <br> Onderbreken of onderbreken <br> Bewerkingen voor wissen of verkleinen uitvoeren <br> Uitschakelen <br> Inschakelen <br> Sessie op virtuele machine opnemen <br> Sessie opnieuw afspelen op virtuele machine <br> Opnieuw instellen <br> Fout tolerantie hervatten <br> Onderbreken <br> Fout tolerantie opschorten <br> Testfailover <br> De secundaire virtuele machine opnieuw opstarten testen <br> Fout tolerantie uitschakelen <br> Fout tolerantie inschakelen <br> VMware-Hulpprogram Ma's installeren
+| **> inventaris van virtuele machine** | Maken op basis van bestaande <br> Nieuwe maken <br> Verplaatsen <br> Registreren <br> Verwijderen <br> Registratie ongedaan maken |
+| **Inrichting van de virtuele machine >** | Schijf toegang toestaan <br> Toegang tot bestanden toestaan <br> Alleen-lezen schijf toegang toestaan <br> Downloaden van virtuele machines toestaan <br> Uploaden van virtuele machine bestanden toestaan <br> Sjabloon klonen <br> Virtuele machine klonen <br> Een sjabloon maken op basis van de virtuele machine <br> Aanpassen <br> Sjabloon implementeren <br> Als sjabloon markeren <br> Als virtuele machine markeren <br> Aanpassings specificatie wijzigen <br> Schijven promo veren  <br> Aanpassings specificaties lezen |
+| **Configuratie van de virtuele-machine >-service** | Meldingen toestaan <br> Navragen van globale gebeurtenis meldingen toestaan <br> Service configuraties beheren <br> Service configuratie wijzigen <br> Query service configuraties <br> Service configuratie lezen
+| **Beheer van > moment opnamen van virtuele machines** | Momentopname maken <br> Moment opname verwijderen <br> Naam van moment opname wijzigen <br> Herstellen naar moment opname |
+| **> vSphere-replicatie voor virtuele machines** | Replicatie configureren <br> Replicatie beheren <br> Replicatie controleren |
+| **vService** | Afhankelijkheid maken <br> Afhankelijkheid vernietigen <br> Afhankelijkheids configuratie opnieuw configureren <br> Afhankelijkheid bijwerken |
 
-### <a name="cloud-storage-admin-role"></a>Cloud-Storage-Admin-Role
-
-| **Categorie** | **Bevoegdheid** |
-|----------|-----------|
-| **Gegevensarchief** | Ruimte toewijzen <br> Bladeren door datastore <br> Gegevensarchief configureren <br> Bestandsbewerkingen op laag niveau <br> Gegevensarchief verwijderen <br> De naam van datastore wijzigen <br> Virtuele machinebestanden bijwerken <br> Metagegevens van virtuele machines bijwerken |
-| **Host > Configuratie** | Configuratie van opslagpartitie |
-| **Datastore-cluster** | Een datastore-cluster configureren |
-| **Profielgestuurde opslag** | Profielgestuurde opslagupdate <br> Profielgestuurde opslagweergave |
-| **Opslagweergaven** | Service configureren <br> Weergave |
-
-### <a name="cloud-network-admin-role"></a>Cloud-Network-Admin-Role
+### <a name="cloud-storage-admin-role"></a>Cloud-opslag-beheerder-rol
 
 | **Categorie** | **Bevoegdheid** |
 |----------|-----------|
-| **dvPort-groep** | Maken <br> Verwijderen <br> Wijzigen <br> Beleidsbewerking <br> Scope-bewerking |
+| **Gegevensarchief** | Ruimte toewijzen <br> Door gegevens opslag bladeren <br> Gegevens opslag configureren <br> Bestands bewerkingen op laag niveau <br> Gegevens opslag verwijderen <br> Naam gegevens opslag wijzigen <br> Bestanden van de virtuele machine bijwerken <br> Meta gegevens van de virtuele machine bijwerken |
+| **Configuratie van > host** | Configuratie van de opslag partitie |
+| **Data Store-cluster** | Een Data Store-cluster configureren |
+| **Op profielen gebaseerde opslag** | Update voor profiel gerichte opslag <br> Beschik bare opslag weergave voor profielen |
+| **Opslag weergaven** | Service configureren <br> Weergave |
+
+### <a name="cloud-network-admin-role"></a>Cloud-netwerk-admin-rol
+
+| **Categorie** | **Bevoegdheid** |
+|----------|-----------|
+| **dvPort-groep** | Maken <br> Verwijderen <br> Wijzigen <br> Beleids bewerking <br> Bereik bewerking |
 | **Netwerk** | Netwerk toewijzen <br> Configureren <br> Netwerk verplaatsen <br> Verwijderen |
-| **Configuratie van virtuele machines >** | Apparaatinstellingen wijzigen |
+| **Configuratie van virtuele-machine >** | Apparaatinstellingen wijzigen |
 
-### <a name="cloud-vm-admin-role"></a>Cloud-VM-Admin-Rol
+### <a name="cloud-vm-admin-role"></a>Cloud-VM-beheerder-rol
 
 | **Categorie** | **Bevoegdheid** |
 |----------|-----------|
-| **Gegevensarchief** | Ruimte toewijzen <br> Bladeren door datastore |
+| **Gegevensarchief** | Ruimte toewijzen <br> Door gegevens opslag bladeren |
 | **Netwerk** | Netwerk toewijzen |
-| **Resource** | Virtuele machine toewijzen aan resourcegroep <br> Uitgeschakelde virtuele machine migreren <br> Migreren op virtuele machine
+| **Resource** | Virtuele machine aan resource groep toewijzen <br> Virtuele machine die is uitgeschakeld migreren <br> De ingeschakelde virtuele machine wordt gemigreerd
 | **vApp** | Exporteren <br> Importeren |
-| **Configuratie van virtuele machines >** | Bestaande schijf toevoegen <br> Nieuwe schijf toevoegen <br> Apparaat toevoegen of verwijderen <br> Geavanceerd <br> CPU-telling wijzigen <br> Bron wijzigen <br> ManagedBy configureren <br> Schijfwijzigingstracking <br> Schijflease <br> Verbindingsinstellingen weergeven <br> Virtuele schijf uitbreiden <br> USB-apparaat hosten <br> Geheugen <br> Apparaatinstellingen wijzigen <br> Compatibiliteit met fouttolerantie voor query's <br> Niet-eigendombestanden opvragen <br> Raw-apparaat <br> Herladen vanaf pad <br> Schijf verwijderen <br> Naam wijzigen <br> Gastgegevens opnieuw instellen <br> Annotatie instellen <br> Instellingen <br> Plaatsing van swapbestanden <br> Voorvork bovenliggende wisselknop <br> Virtuele machine ontgrendelen <br> Compatibiliteit met virtuele machines bijwerken |
-| **Virtuele machine >gastbewerkingen** | Wijziging gastbewerkingalias <br> Aliasquery gastbewerking <br> Wijzigingen in gastbewerking <br> Uitvoering gastprogramma <br> Query's voor gastbewerking    |
-| **Virtuele machine >interactie** | Antwoordvraag <br> Back-upbewerking op virtuele machine <br> CD-media configureren <br> Diskettemedia configureren <br> Consoleinteractie <br> Schermafbeelding maken <br> Alle schijven defragmenteren <br> Apparaatverbinding <br> Slepen en neerzetten <br> Guest operating system management door VIX API <br> USB HID-scancodes injecteren <br> Onderbreken of onderbreken <br> Veeg- of krimpbewerkingen uitvoeren <br> Uitschakelen <br> Inschakelen <br> Sessie opnemen op virtuele machine <br> Replay sessie op virtuele machine <br> Opnieuw instellen <br> Fouttolerantie hervatten <br> Onderbreken <br> Fouttolerantie onderbreken <br> Testfailover <br> Test opnieuw opstarten Secundaire VM <br> Fouttolerantie uitschakelen <br> Fouttolerantie inschakelen <br> VMware Tools installeren |
-| **Inventaris virtuele machine >** | Maken op uit bestaande <br> Nieuwe maken <br> Verplaatsen <br> Registreren <br> Verwijderen <br> Registratie ongedaan maken |
-| **Virtuele machine >provisioning** | Schijftoegang toestaan <br> Bestandstoegang toestaan <br> Alleen-lezen schijftoegang toestaan <br> Virtuele machine downloaden toestaan <br> Virtuele machinebestanden uploaden toestaan <br> Kloonsjabloon <br> Kloon virtuele machine <br> Sjabloon maken op virtuele machine <br> Aanpassen <br> Sjabloon implementeren <br> Markeren als sjabloon <br> Markeren als virtuele machine <br> Aanpassingsspecificatie wijzigen <br> Schijven promoten <br> Lees de specificaties voor aanpassingen |
-| **Configuratie van de >virtuele machine** | Meldingen toestaan <br> Polling van wereldwijde gebeurtenismeldingen toestaan <br> Serviceconfiguraties beheren <br> Serviceconfiguratie wijzigen <br> Queryserviceconfiguraties <br> Serviceconfiguratie lezen
-| **Beheer van virtuele >** | Momentopname maken <br> Momentopname verwijderen <br> De naam van momentopname wijzigen <br> Terugkeren naar momentopname |
-| **Virtuele machine >vSphere-replicatie** | Replicatie configureren <br> Replicatie beheren <br> Replicatie controleren |
-| **vService** | Afhankelijkheid maken <br> Afhankelijkheid vernietigen <br> Afhankelijkheidsconfiguratie opnieuw configureren <br> Afhankelijkheid bijwerken |
+| **Configuratie van virtuele-machine >** | Bestaande schijf toevoegen <br> Nieuwe schijf toevoegen <br> Apparaat toevoegen of verwijderen <br> Geavanceerd <br> CPU-aantal wijzigen <br> Resource wijzigen <br> ManagedBy configureren <br> Bijhouden van schijf wijzigingen <br> Lease van schijf <br> Verbindings instellingen weer geven <br> Virtuele schijf uitbreiden <br> Host-USB-apparaat <br> Geheugen <br> Apparaatinstellingen wijzigen <br> Compatibiliteit van query fout tolerantie <br> Niet-eigendoms bestanden opvragen <br> Onbewerkt apparaat <br> Opnieuw laden vanaf pad <br> Schijf verwijderen <br> Naam wijzigen <br> Gast gegevens opnieuw instellen <br> Aantekening instellen <br> Instellingen <br> Swapfile-plaatsing <br> Bovenliggende Fork in-/uitschakelen <br> Virtuele machine ontgrendelen <br> Compatibiliteit van virtuele machines bijwerken |
+| **>-gast bewerkingen voor virtuele machines** | Wijziging alias voor gast bewerkingen <br> Alias query voor gast bewerkingen <br> Wijzigingen in de gast bewerking <br> Uitvoering van gast bewerkings programma <br> Query's voor gast bewerkingen    |
+| **Interactie van de virtuele machine >** | Vraag beantwoorden <br> Back-upbewerking op virtuele machine <br> CD-media configureren <br> Diskette media configureren <br> Interactie met de console <br> Scherm opname maken <br> Alle schijven defragmenteren <br> Apparaat-verbinding <br> Slepen en neerzetten <br> Beheer van gast besturingssystemen met VIX-API <br> USB HID-scan codes invoeren <br> Onderbreken of onderbreken <br> Bewerkingen voor wissen of verkleinen uitvoeren <br> Uitschakelen <br> Inschakelen <br> Sessie op virtuele machine opnemen <br> Sessie opnieuw afspelen op virtuele machine <br> Opnieuw instellen <br> Fout tolerantie hervatten <br> Onderbreken <br> Fout tolerantie opschorten <br> Testfailover <br> De secundaire virtuele machine opnieuw opstarten testen <br> Fout tolerantie uitschakelen <br> Fout tolerantie inschakelen <br> VMware-Hulpprogram Ma's installeren |
+| **>inventaris van virtuele machine** | Maken op basis van bestaande <br> Nieuwe maken <br> Verplaatsen <br> Registreren <br> Verwijderen <br> Registratie ongedaan maken |
+| **Inrichting van de virtuele machine >** | Schijf toegang toestaan <br> Toegang tot bestanden toestaan <br> Alleen-lezen schijf toegang toestaan <br> Downloaden van virtuele machines toestaan <br> Uploaden van virtuele machine bestanden toestaan <br> Sjabloon klonen <br> Virtuele machine klonen <br> Een sjabloon maken op basis van de virtuele machine <br> Aanpassen <br> Sjabloon implementeren <br> Als sjabloon markeren <br> Als virtuele machine markeren <br> Aanpassings specificatie wijzigen <br> Schijven promo veren <br> Aanpassings specificaties lezen |
+| **Configuratie van de virtuele-machine >-service** | Meldingen toestaan <br> Navragen van globale gebeurtenis meldingen toestaan <br> Service configuraties beheren <br> Service configuratie wijzigen <br> Query service configuraties <br> Service configuratie lezen
+| **Beheer van >moment opnamen van virtuele machines** | Momentopname maken <br> Moment opname verwijderen <br> Naam van moment opname wijzigen <br> Herstellen naar moment opname |
+| **>vSphere-replicatie voor virtuele machines** | Replicatie configureren <br> Replicatie beheren <br> Replicatie controleren |
+| **vService** | Afhankelijkheid maken <br> Afhankelijkheid vernietigen <br> Afhankelijkheids configuratie opnieuw configureren <br> Afhankelijkheid bijwerken |

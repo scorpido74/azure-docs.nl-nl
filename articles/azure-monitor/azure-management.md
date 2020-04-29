@@ -1,16 +1,16 @@
 ---
 title: Azure-beheer
-description: Overzicht van de gebieden van beheer voor Azure-toepassingen en -resources met koppelingen naar inhoud op Azure-beheertools.
+description: Overzicht van de beheer gebieden voor Azure-toepassingen en-resources met koppelingen naar inhoud op Azure-beheer hulpprogramma's.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
 ms.openlocfilehash: 93180f088935531f83da785bb7a490f80909a6cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669197"
 ---
 # <a name="azure-management---monitoring"></a>Azure Management - bewaking
@@ -35,13 +35,13 @@ Bewaken is het verzamelen en analyseren van gegevens om de prestaties, status en
 Configureren heeft betrekking op de initiële implementatie en configuratie van toepassingen en resources, en op het voortdurende onderhoud ervan met patches en updates.  Automatisering van deze taken via scripts en beleid zorgt ervoor dat u redundantie wegneemt en zo de benodigde tijd en moeite beperkt, terwijl u de nauwkeurigheid en efficiëntie verbetert.  [Azure Automation](../automation/automation-intro.md) biedt het merendeel van de services die bestemd zijn om configuratietaken te automatiseren.  Naast runbooks om processen te automatiseren, biedt Azure Automation ook update- en configuratiebeheer. Hiermee kunt u configuraties beheren met behulp van beleid, en updates identificeren en implementeren.
 
 ## <a name="govern"></a>Governance
-Governance biedt mechanismen en processen om de controle over uw toepassingen en resources in Azure te behouden.  Dat omvat het plannen van initiatieven en het stellen van strategische prioriteiten.  Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services.  Met [Azure Policy](../governance/policy/overview.md) kunt u beleidsdefinities maken, toewijzen en beheren waarmee verschillende regels en acties voor uw resources worden afgedwongen, zodat deze resources blijven voldoen aan uw bedrijfsstandaarden en service level agreements. [Met Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) u het cloudgebruik en de uitgaven voor uw Azure-bronnen en andere cloudproviders, waaronder AWS en Google, bijhouden.
+Governance biedt mechanismen en processen om de controle over uw toepassingen en resources in Azure te behouden.  Dat omvat het plannen van initiatieven en het stellen van strategische prioriteiten.  Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services.  Met [Azure Policy](../governance/policy/overview.md) kunt u beleidsdefinities maken, toewijzen en beheren waarmee verschillende regels en acties voor uw resources worden afgedwongen, zodat deze resources blijven voldoen aan uw bedrijfsstandaarden en service level agreements. Met [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) kunt u het Cloud gebruik en-uitgaven bijhouden voor uw Azure-resources en andere cloud providers, waaronder AWS en Google.
 
 ## <a name="secure"></a>Beveiligen
 Het beheren van de beveiliging van uw toepassingen, resources en gegevens vereist een combinatie van taken: bedreigingen beoordelen, beveiligingsgegevens verzamelen en analyseren, en ervoor zorgen dat uw toepassingen en resources op een veilige manier zijn ontworpen en geconfigureerd.  Beveiligingsbewaking en bedreigingsanalyse worden door [Azure Security Center](../security-center/security-center-intro.md) geboden, dat ook geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbescherming voor verschillende hybride cloud-werkbelastingen mogelijk maakt.  Raadpleeg ook [Inleiding tot Azure-beveiliging](../security/fundamentals/overview.md) voor uitgebreide informatie over beveiliging in Azure en richtlijnen voor het veilig configureren van Azure-resources.
 
 
-## <a name="protect"></a>Beschermen
+## <a name="protect"></a>Beveiligen
 Bescherming heeft te maken met het altijd beschikbaar houden van uw toepassingen en gegevens, zelfs in het geval van storingen waar u niets aan kunt doen.  Bescherming in Azure wordt door twee services geboden.  [Azure Backup](../backup/backup-introduction-to-azure-backup.md) biedt back-ups en herstel van uw gegevens in de cloud of on-premises.    [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zorgt voor hoge beschikbaarheid van uw toepassingen door te zorgen voor bedrijfscontinuïteit en onmiddellijk herstel in het geval van nood.
 
 ## <a name="migrate"></a>Migreren 

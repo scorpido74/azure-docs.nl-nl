@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over azure Active Directory voor voorwaardelijke toegang | Microsoft Documenten
-description: Antwoorden op veelgestelde vragen over voorwaardelijke toegang in Azure Active Directory.
+title: Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory | Microsoft Docs
+description: Krijg antwoorden op veelgestelde vragen over voorwaardelijke toegang in Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,50 +12,50 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368085"
 ---
-# <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over azure Active Directory voorwaardelijke toegang
+# <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Welke toepassingen werken met beleid voor voorwaardelijke toegang?
 
-Zie Toepassingen en browsers die voorwaardelijke [toegangsregels gebruiken in Azure Active Directory](concept-conditional-access-cloud-apps.md)voor informatie over toepassingen die werken met beleid voor voorwaardelijke toegang.
+Zie [toepassingen en browsers die gebruikmaken van regels voor voorwaardelijke toegang in azure Active Directory](concept-conditional-access-cloud-apps.md)voor meer informatie over toepassingen die werken met beleid voor voorwaardelijke toegang.
 
-## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Wordt het beleid voor voorwaardelijke toegang afgedwongen voor B2B-samenwerking en gastgebruikers?
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Zijn beleids regels voor voorwaardelijke toegang afgedwongen voor B2B-samen werking en gast gebruikers?
 
-Beleid wordt afgedwongen voor b2b-samenwerkingsgebruikers (business-to-business). In sommige gevallen kan een gebruiker echter niet voldoen aan de beleidsvereisten. De organisatie van een gastgebruiker ondersteunt bijvoorbeeld geen multifactorauthenticatie. 
+Beleids regels worden afgedwongen voor samenwerkings gebruikers van Business-to-Business (B2B). In sommige gevallen kan een gebruiker echter mogelijk niet voldoen aan de beleids vereisten. Zo kan de organisatie van een gast gebruiker geen multi-factor Authentication ondersteunen. 
 
-## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Is een SharePoint Online-beleid ook van toepassing op OneDrive voor Bedrijven?
+## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Is er ook een share point online-beleid van toepassing op OneDrive voor bedrijven?
 
-Ja. Een SharePoint Online-beleid is ook van toepassing op OneDrive voor Bedrijven.
+Ja. Een share point online-beleid is ook van toepassing op OneDrive voor bedrijven.
 
-## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Waarom kan ik geen beleid rechtstreeks instellen voor clientapps, zoals Word of Outlook?
+## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Waarom kan ik een beleid niet rechtstreeks instellen op client-apps, zoals Word of Outlook?
 
-Een beleid voor voorwaardelijke toegang stelt vereisten in voor toegang tot een service. Dit wordt afgedwongen wanneer verificatie voor die service plaatsvindt. Het beleid is niet direct ingesteld op een clienttoepassing. In plaats daarvan wordt het toegepast wanneer een client een service aanroept. Een beleidsset op SharePoint is bijvoorbeeld van toepassing op clients die SharePoint aanroepen. Er is een beleid ingesteld op Exchange dat van toepassing is op Outlook.
+Een beleid voor voorwaardelijke toegang stelt vereisten in voor het openen van een service. Deze wordt afgedwongen wanneer verificatie voor die service plaatsvindt. Het beleid is niet rechtstreeks ingesteld voor een client toepassing. In plaats daarvan wordt deze toegepast wanneer een-client een service aanroept. Een beleid dat is ingesteld op share point is bijvoorbeeld van toepassing op clients die share point aanroepen. Een beleid dat is ingesteld op Exchange, is van toepassing op Outlook.
 
-## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Is een beleid voor voorwaardelijke toegang van toepassing op serviceaccounts?
+## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Is er een beleid voor voorwaardelijke toegang van toepassing op service accounts?
 
-Beleid voor voorwaardelijke toegang is van toepassing op alle gebruikersaccounts. Dit geldt ook voor gebruikersaccounts die worden gebruikt als serviceaccounts. Een serviceaccount dat zonder toezicht wordt uitgevoerd, voldoet vaak niet aan de vereisten van een beleid voor voorwaardelijke toegang. Multifactorauthenticatie is bijvoorbeeld vereist. Serviceaccounts kunnen worden uitgesloten van een beleid door gebruik te maken van instellingen voor beleidbeheer voor voorwaardelijke toegang. 
+Beleid voor voorwaardelijke toegang is van toepassing op alle gebruikers accounts. Dit geldt ook voor gebruikers accounts die worden gebruikt als service accounts. Vaak kan een service account dat zonder toezicht wordt uitgevoerd, niet voldoen aan de vereisten van een beleid voor voorwaardelijke toegang. Multi-factor Authentication kan bijvoorbeeld vereist zijn. Service accounts kunnen worden uitgesloten van een beleid met behulp van instellingen voor beleids beheer voor voorwaardelijke toegang. 
 
-## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Zijn Microsoft Graph API's beschikbaar voor het configureren van beleid voor voorwaardelijke toegang?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Zijn er Microsoft Graph Api's beschikbaar voor het configureren van beleid voor voorwaardelijke toegang?
 
-Op dit moment, nee. 
+Op dit moment is er geen. 
 
-## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>Wat is het standaarduitsluitingsbeleid voor niet-ondersteunde apparaatplatforms?
+## <a name="what-is-the-default-exclusion-policy-for-unsupported-device-platforms"></a>Wat is het standaard uitsluitings beleid voor niet-ondersteunde platformen?
 
-Momenteel wordt het beleid voor voorwaardelijke toegang selectief toegepast op gebruikers van iOS- en Android-apparaten. Toepassingen op andere apparaatplatforms worden standaard niet beïnvloed door het beleid voor voorwaardelijke toegang voor iOS- en Android-apparaten. Een tenantbeheerder kan ervoor kiezen het algemene beleid te overschrijven om toegang tot gebruikers op platforms die niet worden ondersteund, te weigeren.
+Momenteel worden beleids regels voor voorwaardelijke toegang selectief afgedwongen voor gebruikers van iOS-en Android-apparaten. Toepassingen op andere platformen zijn standaard niet van invloed op het beleid voor voorwaardelijke toegang voor iOS-en Android-apparaten. Een Tenant beheerder kan ervoor kiezen om het globale beleid te negeren om toegang te weigeren aan gebruikers op platforms die niet worden ondersteund.
 
-## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Hoe werkt het beleid voor voorwaardelijke toegang voor Microsoft Teams?
+## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Hoe werkt het beleid voor voorwaardelijke toegang voor micro soft-teams?
 
-Microsoft Teams is sterk afhankelijk van Exchange Online en SharePoint Online voor kernproductiviteitsscenario's, zoals vergaderingen, agenda's en het delen van bestanden. Het beleid voor voorwaardelijke toegang dat is ingesteld voor deze cloud-apps, is van toepassing op Microsoft Teams wanneer een gebruiker zich rechtstreeks aanmeldt bij Microsoft Teams.
+Micro soft teams is sterk afhankelijk van Exchange Online en share point online voor essentiële productiviteits scenario's, zoals vergaderingen, agenda's en het delen van bestanden. Beleid voor voorwaardelijke toegang dat is ingesteld voor deze Cloud-apps, is van toepassing op micro soft-teams wanneer een gebruiker zich rechtstreeks aanmeldt bij micro soft-teams.
 
-Microsoft Teams wordt ook afzonderlijk ondersteund als een cloud-app in azure Active Directory Conditional Access-beleidsregels. Het beleid voor voorwaardelijke toegang dat is ingesteld voor een cloud-app, is van toepassing op Microsoft Teams wanneer een gebruiker zich aanmeldt. Zonder het juiste beleid voor andere apps zoals Exchange Online en SharePoint Online hebben gebruikers mogelijk nog steeds rechtstreeks toegang tot deze bronnen.
+Micro soft teams worden ook afzonderlijk ondersteund als een Cloud-app in Azure Active Directory beleid voor voorwaardelijke toegang. Beleid voor voorwaardelijke toegang dat voor een Cloud-app is ingesteld, is van toepassing op micro soft-teams wanneer een gebruiker zich aanmeldt. Maar zonder het juiste beleid voor andere apps, zoals Exchange Online en share point online-gebruikers, kunnen ze nog steeds rechtstreeks toegang hebben tot deze bronnen.
 
-Microsoft Teams-bureaubladclients voor Windows en Mac ondersteunen moderne verificatie. Moderne verificatie brengt aanmelding op basis van de Azure Active Directory Authentication Library (ADAL) naar Microsoft Office-clienttoepassingen op verschillende platforms.
+Micro soft teams bureau blad-clients voor Windows en Mac bieden ondersteuning voor moderne verificatie. Moderne verificatie brengt aanmelden op basis van de Azure Active Directory Authentication Library (ADAL) om client toepassingen te Microsoft Office op verschillende platforms.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md)om beleid voor voorwaardelijke toegang voor uw omgeving te configureren. 
+- Zie de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md)voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving. 

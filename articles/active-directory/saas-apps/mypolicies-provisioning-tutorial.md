@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Mijn beleid configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor mijn beleid.
+title: 'Zelf studie: myPolicies configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op myPolicies.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,146 +16,146 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 353da826b6e339d40a5d85bbf63caac5bf7094f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061353"
 ---
-# <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Zelfstudie: Mijn beleid configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Zelf studie: myPolicies configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in myPolicies en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor mijn Beleid.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in myPolicies en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in myPolicies.
 
 > [!NOTE]
-> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-tenant.
-* [Een myPolicies tenant](https://mypolicies.com/index.html#section10).
-* Een gebruikersaccount in mijn beleid met beheerdersmachtigingen.
+* [Een myPolicies-Tenant](https://mypolicies.com/index.html#section10).
+* Een gebruikers account in myPolicies met beheerders machtigingen.
 
-## <a name="assigning-users-to-mypolicies"></a>Gebruikers toewijzen aan mijn beleid
+## <a name="assigning-users-to-mypolicies"></a>Gebruikers toewijzen aan myPolicies
 
-Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot mijn beleid nodig hebben. Zodra u hebt besloten, u deze gebruikers en/of groepen aan mijn beleid toewijzen door de instructies hier te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot myPolicies. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan myPolicies door de volgende instructies te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-mypolicies"></a>Belangrijke tips voor het toewijzen van gebruikers aan mijn beleid
+## <a name="important-tips-for-assigning-users-to-mypolicies"></a>Belang rijke tips voor het toewijzen van gebruikers aan myPolicies
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker aan mijn beleid wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan myPolicies om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker aan mijn beleid toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
+* Wanneer u een gebruiker toewijst aan myPolicies, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="setup-mypolicies-for-provisioning"></a>Mijn beleid instellen voor inrichten
+## <a name="setup-mypolicies-for-provisioning"></a>MyPolicies instellen voor inrichting
 
-Voordat u mijn beleid configureert voor automatische gebruikersvoorziening met Azure AD, moet u SCIM-inrichting voor mijn beleid inschakelen.
+Voordat u myPolicies configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op myPolicies.
 
-1. Neem contact op **support@mypolicies.com** met uw vertegenwoordiger van MyPolicies om het geheime token te verkrijgen dat nodig is om SCIM-provisioning te configureren.
+1. Neem contact op met uw myPolicies- **support@mypolicies.com** vertegenwoordiger om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
 
-2.  Sla de tokenwaarde op die wordt opgegeven door de vertegenwoordiger van mijn beleid. Deze waarde wordt ingevoerd in het veld **Geheim token** op het tabblad Inrichten van uw myPolicies-toepassing in de Azure-portal.
+2.  Sla de token waarde op die door de myPolicies-vertegenwoordiger is verschaft. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw myPolicies-toepassing in de Azure Portal.
 
-## <a name="add-mypolicies-from-the-gallery"></a>Mijn beleid toevoegen vanuit de galerie
+## <a name="add-mypolicies-from-the-gallery"></a>MyPolicies toevoegen vanuit de galerie
 
-Als u mijn beleid wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u mijn beleid uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u myPolicies wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u myPolicies van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om mijn beleid toe te voegen vanuit de Azure AD-toepassingsgalerie:**
+**Voer de volgende stappen uit om myPolicies toe te voegen vanuit de Azure AD-toepassings galerie:**
 
-1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **mijn beleid,** selecteer **mijn beleid** in het deelvenster Resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ **myPolicies**in het zoekvak, selecteer **myPolicies** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![mijnbeleid in de resultatenlijst](common/search-new-app.png)
+    ![myPolicies in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-mypolicies"></a>Automatische gebruikersvoorziening configureren voor mijn beleid 
+## <a name="configuring-automatic-user-provisioning-to-mypolicies"></a>Automatische gebruikers inrichting configureren voor myPolicies 
 
-In deze sectie u de Azure AD-inrichtingsservice configureren om gebruikers en/of groepen in mijn beleid te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in myPolicies te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U er ook voor kiezen om saml-gebaseerde eenmalige aanmelding in te schakelen voor mijn beleid, volgens de instructies in de [zelfstudie myPolicies Single sign-on](mypolicies-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor myPolicies, gevolgd door de instructies in de [myPolicies-zelf studie voor eenmalige aanmelding](mypolicies-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
-### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersinrichting voor mijn beleid in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-mypolicies-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor myPolicies in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen **mijnbeleid**.
+2. Selecteer in de lijst toepassingen de optie **myPolicies**.
 
-    ![De koppeling mijnbeleid in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling myPolicies in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie `https://<myPoliciesCustomDomain>.mypolicies.com/scim` **Beheerdersreferenties** invoer `<myPoliciesCustomDomain>` in **Tenant-URL** in waar is het aangepaste domein myPolicies. U uw klantdomein myPolicies ophalen op uw URL.
-Voorbeeld: `<demo0-qa>`.mypolicies.com.
+5. Selecteer in de sectie **beheerders referenties** de `https://<myPoliciesCustomDomain>.mypolicies.com/scim` invoer in de Tenant `<myPoliciesCustomDomain>` - **URL** waar het aangepaste domein van uw myPolicies is. U kunt uw myPolicies-klant domein ophalen uit uw URL.
+Voor beeld `<demo0-qa>`:. mypolicies.com.
 
-6. Voer in **Secret Token**de tokenwaarde in die eerder is opgehaald. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met mijn beleid. Als de verbinding mislukt, moet u ervoor zorgen dat uw myPolicies-account beheerdersmachtigingen heeft en het opnieuw proberen.
+6. In een **geheim token**voert u de token waarde in die eerder is opgehaald. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met myPolicies. Als de verbinding mislukt, zorg er dan voor dat uw myPolicies-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
+7. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 8. Klik op **Opslaan**.
 
-9. Selecteer Azure **Active Directory Users synchroniseren met mijn beleid**in de sectie **Toewijzingen** .
+9. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met myPolicies**.
 
-    ![Gebruikerstoewijzingen voor mijn beleid](media/mypolicies-provisioning-tutorial/usermapping.png)
+    ![myPolicies-gebruikers toewijzingen](media/mypolicies-provisioning-tutorial/usermapping.png)
 
-10. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar mijn beleid in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in mijn beleid voor updatebewerkingen te matchen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar myPolicies in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in myPolicies voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Gebruikerstoewijzingen voor mijn beleid](media/mypolicies-provisioning-tutorial/userattribute.png)
+    ![myPolicies-gebruikers toewijzingen](media/mypolicies-provisioning-tutorial/userattribute.png)
 
-11. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+11. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-12. Als u de Azure AD-inrichtingsservice voor mijn beleid wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
+12. Als u de Azure AD-inrichtings service voor **myPolicies wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-13. Definieer de gebruikers en/of groepen die u wilt inrichten op mijn beleid door de gewenste waarden te kiezen in **Bereik** in de sectie **Instellingen.**
+13. Definieer de gebruikers en/of groepen die u wilt inrichten voor myPolicies door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-14. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+14. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice voor mijn beleid.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op myPolicies.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="connector-limitations"></a>Verbindingsbeperkingen
+## <a name="connector-limitations"></a>Connector beperkingen
 
-* myPolicies vereist altijd **userName,** **e-mail** en **externalId**.
-* myPolicies biedt geen ondersteuning voor harde verwijderingen voor gebruikerskenmerken.
+* voor myPolicies is altijd **gebruikers naam**, **e-mail adres** en **externalId**vereist.
+* myPolicies biedt geen ondersteuning voor harde verwijderingen voor gebruikers kenmerken.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

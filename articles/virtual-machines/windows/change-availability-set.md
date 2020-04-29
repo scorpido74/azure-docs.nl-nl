@@ -1,29 +1,29 @@
 ---
-title: Een VM-beschikbaarheidsset wijzigen
-description: Meer informatie over het wijzigen van de beschikbaarheidsset voor uw virtuele machine met Azure PowerShell.
+title: Een beschikbaarheidsset met Vm's wijzigen
+description: Meer informatie over het wijzigen van de beschikbaarheidsset voor uw virtuele machine met behulp van Azure PowerShell.
 ms.service: virtual-machines
 author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964920"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>De beschikbaarheidsset voor een VM wijzigen
-In de volgende stappen wordt beschreven hoe u de beschikbaarheidsset van een vm wijzigen met Azure PowerShell. Een VM kan alleen worden toegevoegd aan een beschikbaarheidsset wanneer deze wordt gemaakt. Als u de beschikbaarheidsset wilt wijzigen, moet u de virtuele machine verwijderen en opnieuw maken. 
+In de volgende stappen wordt beschreven hoe u de beschikbaarheidsset van een virtuele machine wijzigt met behulp van Azure PowerShell. Een virtuele machine kan alleen worden toegevoegd aan een beschikbaarheidsset wanneer deze wordt gemaakt. Als u de beschikbaarheidsset wilt wijzigen, moet u de virtuele machine verwijderen en vervolgens opnieuw maken. 
 
-Dit artikel is van toepassing op zowel Linux- als Windows-VM's.
+Dit artikel is van toepassing op zowel Linux-als Windows-Vm's.
 
-Dit artikel is voor het laatst getest op 2/12/2019 met de [Azure Cloud Shell](https://shell.azure.com/powershell) en de Az [PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps) versie 1.2.0.
+Dit artikel is voor het laatst getest op 2/12/2019 met behulp van de [Azure Cloud shell](https://shell.azure.com/powershell) en de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) versie 1.2.0.
 
 
 ## <a name="change-the-availability-set"></a>De beschikbaarheidsset wijzigen 
 
-Het volgende script bevat een voorbeeld van het verzamelen van de vereiste informatie, het verwijderen van de oorspronkelijke VM en het opnieuw maken ervan in een nieuwe beschikbaarheidsset.
+Het volgende script geeft een voor beeld van het verzamelen van de vereiste informatie, het verwijderen van de oorspronkelijke VM en het opnieuw maken van de gegevens in een nieuwe beschikbaarheidsset.
 
 ```powershell
 # Set variables
@@ -104,5 +104,5 @@ Het volgende script bevat een voorbeeld van het verzamelen van de vereiste infor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voeg extra opslagruimte toe aan uw vm door een extra [gegevensschijf](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)toe te voegen.
+Voeg extra opslag ruimte toe aan uw virtuele machine door een extra [gegevens schijf](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)toe te voegen.
 

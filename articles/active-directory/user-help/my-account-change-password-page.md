@@ -1,6 +1,6 @@
 ---
-title: Wachtwoord voor werk- of schoolaccount wijzigen - Azure AD
-description: Meer informatie over het wijzigen van het wachtwoord van uw werk- of schoolaccount op de pagina Wachtwoord wijzigen van de portal Mijn account.
+title: Het wacht woord van uw werk-of school account wijzigen-Azure AD
+description: Meer informatie over het wijzigen van het wacht woord voor uw werk-of school account op de pagina wacht woord wijzigen van de portal mijn account.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064050"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Het wachtwoord van uw werk- of schoolaccount wijzigen op de pagina Wachtwoord wijzigen
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Het wacht woord voor uw werk-of school account wijzigen op de pagina wacht woord wijzigen
 
-Met de pagina **Wachtwoord wijzigen** van de portal **Mijn account** u een bestaand wachtwoord voor uw werk- of schoolaccount bijwerken, ervan uitgaande dat u het wachtwoord onthoudt en dat u niet buitengesloten bent van uw account. Als u uw wachtwoord niet meer weet, als u bent uitgesloten van uw account of als u nooit een wachtwoord van uw organisatie hebt ontvangen, u uw beveiligingsgegevens en uw mobiele apparaat gebruiken om uw wachtwoord opnieuw in te stellen.
+De pagina **wacht woord wijzigen** van de portal **Mijn account** helpt u bij het bijwerken van een bestaand wacht woord voor uw werk-of school account, ervan uitgaande dat u het wacht woord herinnert en dat u uw account niet hebt vergrendeld. Als u uw wacht woord niet meer weet, als u uw account hebt vergrendeld of als u nooit een wacht woord hebt ontvangen van uw organisatie, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw wacht woord opnieuw in te stellen.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die een bekend wachtwoord proberen bij te werken voor een bestaand werk- of schoolaccount. Als u een gebruiker bent die probeert deel te nemen aan een persoonlijk account, zoals voor Xbox, Hotmail of Outlook.com, probeert u de suggesties in het [artikel Wanneer u zich niet aanmelden bij uw Microsoft-accountartikel.](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) Zie [Selfservice-wachtwoord opnieuw](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)instellen als u een beheerder bent die meer informatie probeert te vinden over het testen van het opnieuw instellen van selfservicewachtwoorden voor uw werknemers of andere gebruikers.
+>Dit artikel is bedoeld voor gebruikers die proberen een bekend wacht woord bij te werken voor een bestaand werk-of school account. Als u een gebruiker bent die probeert toegang te krijgen tot een persoonlijk account, zoals voor Xbox, Hotmail of Outlook.com, probeert u de suggesties in de [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel. Zie [selfservice voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)voor meer informatie over het testen van self-service voor het opnieuw instellen van wacht woorden voor uw werk nemers of andere gebruikers.
 
-## <a name="update-a-password-from-the-change-password-page"></a>Een wachtwoord bijwerken vanaf de pagina Wachtwoord wijzigen
+## <a name="update-a-password-from-the-change-password-page"></a>Een wacht woord bijwerken op de pagina wacht woord wijzigen
 
-1. Meld u aan bij uw werk- of schoolaccount, gebruik uwhttps://myprofile.microsoft.com/) bestaande wachtwoord en ga naar de pagina Mijn **account** (pagina.
+1. Meld u aan bij uw werk-of school account, met uw bestaande wacht woord en ga vervolgens naar dehttps://myprofile.microsoft.com/) pagina **Mijn account** .
 
-2. Selecteer **Wachtwoord** in het linkernavigatiedeelvenster of selecteer de koppeling **Wachtwoord wijzigen** in het **wachtwoordblok.**
+2. Selecteer **wacht woord** in het navigatie deel venster links of selecteer de koppeling **wacht woord wijzigen** in het blok met **wacht woord** .
 
-    ![Pagina Mijn account met gemarkeerde koppeling Wachtwoord wijzigen](media/my-account-portal/my-account-portal-change-password.png)
+    ![Pagina Mijn account, met de gemarkeerde koppeling voor wachtwoord wijziging](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Typ uw oude wachtwoord en maak en bevestig uw nieuwe wachtwoord.
+3. Typ uw oude wacht woord en maak en bevestig uw nieuwe wacht woord.
 
-    ![Wachtwoordpagina wijzigen en wachtwoordvelden weergeven](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Pagina wacht woord wijzigen, waarin wachtwoord velden worden weer gegeven](media/my-account-portal/my-account-portal-change-password-page.png)
 
 4. Selecteer **Indienen**.
 
-    Je wachtwoord wordt gewijzigd en je wordt gevraagd je opnieuw aan te melden bij je werk- of schoolaccount.
+    Uw wacht woord wordt gewijzigd en u wordt gevraagd om u opnieuw aan te melden bij uw werk-of school account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u uw wachtwoord hebt gewijzigd, u het gewenste aantal
+Nadat u uw wacht woord hebt gewijzigd, kunt u het volgende doen:
 
-- Uw [beveiligingsgegevens](user-help-security-info-overview.md)weergeven of beheren.
+- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
 
-- Uw verbonden [apparaten](my-account-portal-devices-page.md)weergeven of beheren.
+- Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 
-- Uw [organisaties](my-account-portal-organizations-page.md)weergeven of beheren.
+- Uw [organisaties](my-account-portal-organizations-page.md)weer geven of beheren.
 
-- Bekijk uw [aanmeldingsactiviteit](my-account-portal-sign-ins-page.md).
+- Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
 
-- Bekijk hoe uw organisatie [uw privacygerelateerde gegevens gebruikt.](my-account-portal-privacy-page.md)
+- Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).

@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen van Azure Media Services
-description: In dit artikel vindt u antwoorden op de veelgestelde vragen over Azure Media Services.
+title: Veelgestelde vragen over Azure Media Services
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,57 +14,57 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705867"
 ---
-# <a name="media-services-v2-frequently-asked-questions"></a>Media Services v2 veelgestelde vragen
+# <a name="media-services-v2-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v2
 
-In dit artikel worden veelgestelde vragen van de gebruikerscommunity van Azure Media Services (AMS) beantwoord.
+In dit artikel worden veelgestelde vragen behandeld die worden gegenereerd door de gebruikers community van Azure Media Services (AMS).
 
-## <a name="general-ams-faqs"></a>Algemene VEELGestelde VRAGEN van AMS
+## <a name="general-ams-faqs"></a>Veelgestelde vragen over algemene AMS
 
-V: Hoe stream je naar Apple iOS-apparaten?
+V: hoe streamt u naar Apple iOS-apparaten?
 
-A: voeg "(format=m3u8-aapl)" pad toe aan het "/Manifest"-gedeelte van de URL om de streaming origin-server te vertellen HLS-inhoud terug te sturen voor consumptie op apple iOS-native apparaten (zie [het leveren van inhoud)](media-services-deliver-content-overview.md)
+A: Voeg ' (Format = M3U8-AAPL) ' toe aan het gedeelte '/manifest ' van de URL om de oorsprong van de streaming-server te laten weten HLS-inhoud te retour neren voor het gebruik van Apple iOS systeem eigen apparaten (Zie voor meer informatie [afleveren van inhoud](media-services-deliver-content-overview.md)),
 
-V: Hoe schaal je indexering?
+V: hoe schaal ik indexeren?
 
-A: De gereserveerde eenheden zijn hetzelfde voor coderings- en indexeringstaken. Volg instructies voor [het schalen van gereserveerde eenheden.](media-services-scale-media-processing-overview.md) **Houd er rekening mee** dat de prestaties van indexeren niet worden beïnvloed door het type gereserveerde eenheid.
+A: de gereserveerde eenheden zijn hetzelfde voor het coderen en indexeren van taken. Volg de instructies voor [het schalen van gereserveerde encoding-eenheden](media-services-scale-media-processing-overview.md). **Houd er rekening mee** dat de prestaties van de Indexeer functie niet worden beïnvloed door het gereserveerde eenheids type.
 
-V: Ik heb een video geüpload, gecodeerd en gepubliceerd. Wat zou de reden zijn dat de video niet wordt afgespeeld wanneer ik het probeer te streamen?
+V: Ik heb een video geüpload, gecodeerd en gepubliceerd. Wat is de reden waarom de video niet wordt afgespeeld wanneer ik deze probeer te streamen?
 
-A: Een van de meest voorkomende redenen is dat u niet het streaming eindpunt hebt van waaruit u probeert terug te spelen in de **status Lopend.**  
+A: een van de meest voorkomende oorzaken is dat u het streaming-eind punt niet hebt van waaruit u wilt afspelen in de **actieve** status.  
 
-V: Kan ik componeren op een livestream?
+V: kan ik samen stellen op een live stream?
 
-A: Componeren op livestreams wordt momenteel niet aangeboden in Azure Media Services, dus u moet vooraf opstellen op uw computer.
+A: het samen stellen op live streams wordt momenteel niet aangeboden in Azure Media Services. u moet de computer dus vooraf op de computers opstellen.
 
-V: Kan ik Azure CDN gebruiken met Live Streaming?
+V: kan ik Azure CDN gebruiken met live streamen?
 
-A: Media Services ondersteunt integratie met Azure CDN (zie Voor meer informatie [Over streaming eindpunten beheren in een Media Services-account).](media-services-portal-manage-streaming-endpoints.md)  U Live streaming gebruiken met CDN. Azure Media Services biedt Smooth Streaming, HLS- en MPEG-DASH-uitgangen. Al deze indelingen gebruiken HTTP voor het overbrengen van gegevens en krijgen voordelen van HTTP-caching. In live streaming worden de werkelijke video/audiogegevens verdeeld in fragmenten en deze afzonderlijke fragmenten worden in de cache opgeslagen in CDN. Alleen gegevens hoeven te worden vernieuwd, zijn de manifestgegevens. CDN vernieuwt regelmatig manifestgegevens.
+A: Media Services ondersteunt de integratie met Azure CDN (Zie [streaming-eind punten beheren in een Media Services-account](media-services-portal-manage-streaming-endpoints.md)) voor meer informatie.  U kunt live streamen met CDN gebruiken. Azure Media Services biedt Smooth Streaming, HLS en MPEG-DASH-uitvoer. Al deze indelingen gebruiken HTTP voor het overdragen van gegevens en profiteren van de voor delen van HTTP-caching. De werkelijke video-en audio gegevens van live streamen zijn verdeeld over fragmenten en deze afzonderlijke fragmenten worden in het cache geheugen in CDN opgehaald. Alleen gegevens moeten worden vernieuwd, zijn de gegevens in het manifest. Met CDN worden de manifest gegevens regel matig vernieuwd.
 
-V: Ondersteunt Azure Media-services het opslaan van afbeeldingen?
+V: biedt Azure Media Services ondersteuning voor het opslaan van installatie kopieën?
 
-A: Als u alleen JPEG- of PNG-afbeeldingen wilt opslaan, moet u deze in Azure Blob-opslag bewaren. Het heeft geen voordeel om ze in uw Media Services-account te plaatsen, tenzij u ze wilt koppelen aan uw video- of audio-elementen. Of als u de afbeeldingen als overlays in de video-encoder moet gebruiken. Media Encoder Standard ondersteunt het overleggen van afbeeldingen bovenop video's, en dat is wat jpeg en PNG wordt vermeld als ondersteunde invoerindelingen. Zie [Overlays maken voor](media-services-advanced-encoding-with-mes.md#overlay)meer informatie .
+A: als u alleen JPEG-of PNG-afbeeldingen wilt opslaan, moet u deze in Azure Blob Storage bewaren. U hoeft ze niet in uw Media Services-account te plaatsen, tenzij u ze wilt blijven gebruiken voor uw video-of audio-assets. Of als u de installatie kopieën wilt gebruiken als overlays in de video encoder. Media Encoder Standard ondersteunt het bedekken van afbeeldingen aan de bovenkant van Video's en dat is wat JPEG en PNG als ondersteunde invoer indelingen bevat. Zie [overlays maken](media-services-advanced-encoding-with-mes.md#overlay)voor meer informatie.
 
-V: Hoe kan ik assets kopiëren van het ene Media Services-account naar het andere?
+V: hoe kan ik assets van het ene Media Services account naar het andere kopiëren?
 
-A: Als u elementen van het ene Media Services-account naar het andere wilt kopiëren met .NET, gebruikt u [de extensiemethode IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) die beschikbaar is in de Azure [Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/) Extensions-opslagplaats. Voor meer informatie, zie [dit](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) forum draad.
+A: als u assets van een Media Services account wilt kopiëren met behulp van .NET, gebruikt u [IAsset. Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) extension methode die beschikbaar is in de [Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) -opslag plaats. Zie [deze](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) forum-thread voor meer informatie.
 
-V: Wat zijn de ondersteunde tekens voor het benoemen van bestanden bij het werken met AMS?
+V: wat zijn de ondersteunde tekens voor het benoemen van bestanden bij het werken met AMS?
 
-A: Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het bouwen van URL's voor de streaming-inhoud (bijvoorbeeld http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Om deze reden is procentcodering niet toegestaan. De waarde van de eigenschap **Naam** kan geen van de volgende tekens hebben [die zijn gereserveerd](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();::@&=+$,/?%#[]". Ook kan er maar één '.' voor de bestandsnaamextensie.
+A: Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het bouwen van Url's voor de streaming-inhoud (bijvoorbeeld http://{AMSAccount}. Origin. Media Services. Windows. net/{GUID}/{IAssetFile. name}/streamingParameters.) Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap **name** mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ &= + $,/?% # [] '. Er kan ook één '. ' zijn. voor de bestandsnaam extensie.
 
-V: Hoe maak je verbinding met REST?
+V: verbinding maken met behulp van REST?
 
-A: Zie Toegang tot de Azure Media [Services API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor informatie over hoe u verbinding maken met de AMS-API. 
+A: Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 
-V: Hoe kan ik een video draaien tijdens het coderingsproces?
+V: hoe kan ik een video draaien tijdens het coderings proces?
 
-A: De [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) ondersteunt rotatie door hoeken van 90/180/270. Het standaardgedrag is 'Automatisch', waarbij het de rotatiemetagegevens in het binnenkomende MP4/MOV-bestand probeert te detecteren en dit probeert te compenseren. Voeg het volgende **element Bronnen** toe aan een van de [hier](media-services-mes-presets-overview.md)gedefinieerde json-voorinstellingen:
+A: de [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) biedt ondersteuning voor rotaties op basis van de hoek van 90/180/270. Het standaard gedrag is ' auto ', waarbij wordt geprobeerd om de meta gegevens van de draai bewerking in het bestand binnenkomend MP4/MOV te detecteren en te compenseren. Neem het volgende **bron** element op in een van de [vooraf gedefinieerde JSON](media-services-mes-presets-overview.md)-voor instellingen:
 
     "Version": 1.0,
     "Sources": [

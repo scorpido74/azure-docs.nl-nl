@@ -1,29 +1,29 @@
 ---
-title: Waarschuwing over problemen in Azure Cloud Services met behulp van de Azure Diagnostics-integratie met Azure Application Insights | Microsoft Documenten
-description: Controleren op problemen zoals opstartfouten, crashes en rolrecyclinglussen in Azure Cloud Services met Azure Application Insights
+title: Meld u aan bij problemen in azure Cloud Services met behulp van de Azure Diagnostics-integratie met Azure-toepassing inzichten | Microsoft Docs
+description: Monitor voor problemen als opstart fouten, crashes en rollen recyclen in azure Cloud Services met Azure-toepassing Insights
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669740"
 ---
-# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Waarschuwing over problemen in Azure Cloud Services met behulp van de Azure-diagnostische integratie met Azure Application Insights
+# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Waarschuwen voor problemen in azure Cloud Services met behulp van de Azure Diagnostics-integratie met Azure-toepassing Insights
 
-In dit artikel beschrijven we hoe u waarschuwingsregels instelt die controleren op problemen zoals opstartfouten, crashes en rolrecyclinglussen in Azure Cloud Services (web- en werknemersrollen).
+In dit artikel wordt beschreven hoe waarschuwings regels worden ingesteld die worden gecontroleerd op problemen als opstart fouten, crashes en rollen herhalingen in azure Cloud Services (web-en werk rollen).
 
-De methode die in dit artikel wordt beschreven, is gebaseerd op de [Azure Diagnostics-integratie met Application Insights](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/)en de onlangs uitgebrachte mogelijkheid [Logboekwaarschuwingen voor Application Insights.](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/)
+De methode die in dit artikel wordt beschreven, is gebaseerd op de [integratie van Azure Diagnostics met Application Insights](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/)en de onlangs uitgebrachte [logboek waarschuwingen voor Application Insights](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) .
 
-## <a name="define-a-base-query"></a>Een basisquery definiëren
+## <a name="define-a-base-query"></a>Een basis query definiëren
 
-Om aan de slag te gaan, definiëren we een basisquery waarmee de gebeurtenissen in Windows Event Log worden opgehaald uit het Windows Azure-kanaal, die worden vastgelegd in Application Insights als traceerrecords.
-Deze records kunnen worden gebruikt voor het detecteren van verschillende problemen in Azure Cloud Services, zoals opstartfouten, runtime-fouten en recyclelussen.
+Om aan de slag te gaan, definiëren we een basis query waarmee de gebeurtenissen van het Windows-gebeurtenis logboek worden opgehaald uit het Windows Azure-kanaal, die in Application Insights worden vastgelegd als traceer records.
+Deze records kunnen worden gebruikt voor het detecteren van verschillende problemen in azure Cloud Services, zoals opstart fouten, runtime-fouten en recycling lussen.
 
 > [!NOTE]
-> De onderstaande basisquery controleert op problemen in een tijdvenster van 30 minuten en gaat uit van een latentie van 10 minuten bij het innemen van de telemetrierecords. Deze standaardinstellingen kunnen naar eigen inzicht worden geconfigureerd.
+> De onderstaande basis query controleert op problemen in een tijd venster van 30 minuten en gaat uit van een latentie van 10 minuten bij het opnemen van de telemetriegegevens. Deze standaard waarden kunnen zo worden geconfigureerd dat ze passen.
 
 ```
 let window = 30m;
@@ -36,13 +36,13 @@ let EventLogs = traces
 | project timestamp, channel, eventId, message, cloud_RoleInstance, cloud_RoleName, itemCount;
 ```
 
-## <a name="check-for-specific-event-ids"></a>Controleren op specifieke gebeurtenis--geïdentificeerde kenmerken
+## <a name="check-for-specific-event-ids"></a>Controleren op specifieke gebeurtenis-Id's
 
-Na het ophalen van de gebeurtenissen in het Windows-gebeurtenislogboek kunnen specifieke problemen worden gedetecteerd door te controleren op hun respectievelijke gebeurtenis-id en berichteigenschappen (zie voorbeelden hieronder).
-Combineer de bovenstaande basisquery met een van de onderstaande query's en gebruik die gecombineerde query bij het definiëren van de regel voor logboekwaarschuwingen.
+Nadat u de gebeurtenissen in het Windows-gebeurtenis logboek hebt opgehaald, kunnen er specifieke problemen worden gedetecteerd door te controleren op hun respectievelijke gebeurtenis-ID en bericht eigenschappen (Zie de voor beelden hieronder).
+Combi neer de basis query hierboven met een van de onderstaande query's en gebruik die gecombineerde query wanneer u de waarschuwings regel voor het logboek definieert.
 
 > [!NOTE]
-> In de onderstaande voorbeelden wordt een probleem gedetecteerd als er meer dan drie gebeurtenissen worden gevonden tijdens het geanalyseerde tijdvenster. Deze standaardinstelling kan worden geconfigureerd om de gevoeligheid van de waarschuwingsregel te wijzigen.
+> In de onderstaande voor beelden wordt een probleem gedetecteerd als er meer dan drie gebeurtenissen worden gevonden tijdens het geanalyseerde tijd venster. Deze standaard instelling kan worden geconfigureerd om de gevoeligheid van de waarschuwings regel te wijzigen.
 
 ```
 // Detect failures in the OnStart method
@@ -80,38 +80,38 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Een waarschuwing maken
 
-Ga in het navigatiemenu in de bron Application Insights naar **Waarschuwingen**en selecteer **Vervolgens Nieuwe waarschuwingsregel**.
+Ga in het navigatie menu binnen uw Application Insights resource naar **waarschuwingen**en selecteer **nieuwe waarschuwings regel**.
 
-![Schermafbeelding van Regel maken](./media/proactive-cloud-services/001.png)
+![Scherm opname van regel maken](./media/proactive-cloud-services/001.png)
 
-Klik in het venster **Regel maken** onder de sectie **Waarschuwingsvoorwaarde definiëren** op Criteria **toevoegen**en selecteer Vervolgens **Aangepaste logboekzoekopdrachten**.
+Klik in het venster **regel maken** , onder de sectie **waarschuwings voorwaarde definiëren** , op **criteria toevoegen**en selecteer vervolgens **aangepaste logboeken zoeken**.
 
-![Schermafbeelding van de voorwaardencriteria voor waarschuwing definiëren](./media/proactive-cloud-services/002.png)
+![Scherm afbeelding van criteria voor voor waarden definiëren voor een waarschuwing](./media/proactive-cloud-services/002.png)
 
-Plak in het queryvak **Zoeken** de gecombineerde query die u in de vorige stap hebt voorbereid.
+Plak in het vak **Zoek opdracht** de gecombineerde query die u in de vorige stap hebt voor bereid.
 
-Ga vervolgens verder naar het vak **Drempelwaarde** en stel de waarde ervan in op 0. U optioneel de **velden** **Periode en** Frequentie aanpassen.
+Ga vervolgens door naar het vak **drempel** en stel de waarde in op 0. U kunt de **velden**voor de **periode** en de frequentie eventueel aanpassen.
 Klik op **Gereed**.
 
-![Schermafbeelding van de query voor signaallogica configureren](./media/proactive-cloud-services/003.png)
+![Scherm opname van de logische query voor het configureren van signalen](./media/proactive-cloud-services/003.png)
 
-Geef onder de sectie **Waarschuwingsdetails definiëren** een **naam** en **beschrijving** op aan de waarschuwingsregel en stel de **ernst**in.
-Zorg er ook voor dat de **knop Inschakelen bij het maken** is ingesteld op **Ja**.
+Geef in de sectie **waarschuwings Details definiëren** een **naam** en **Beschrijving** op voor de waarschuwings regel en stel de **Ernst**in.
+Zorg er ook voor dat de knop **regel inschakelen bij maken** is ingesteld op **Ja**.
 
-![Details van schermafbeeldingen](./media/proactive-cloud-services/004.png)
+![Details van scherm afbeeldings waarschuwing](./media/proactive-cloud-services/004.png)
 
-Onder de sectie **Actiegroep definiëren** u een bestaande **actiegroep** selecteren of een nieuwe groep maken.
-U ervoor kiezen om de actiegroep meerdere acties van verschillende typen te laten bevatten.
+Onder de sectie **actie groep definiëren** kunt u een bestaande **actie groep** selecteren of een nieuwe maken.
+U kunt ervoor kiezen om de actie groep meerdere acties van verschillende typen te laten bevatten.
 
-![Schermafbeelding van de actiegroep](./media/proactive-cloud-services/005.png)
+![Actie groep scherm afbeelding](./media/proactive-cloud-services/005.png)
 
-Zodra u de actiegroep hebt gedefinieerd, bevestigt u de wijzigingen en klikt u op **Waarschuwingsregel maken**.
+Nadat u de actie groep hebt gedefinieerd, bevestigt u uw wijzigingen en klikt u op **waarschuwings regel maken**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over automatisch detecteren:
+Meer informatie over het automatisch detecteren van:
 
-[Storing anomalieën](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[Memory Leaks](../../azure-monitor/app/proactive-potential-memory-leak.md)
-[Prestatieafwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[Fout afwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md)
+[geheugen lekt](../../azure-monitor/app/proactive-potential-memory-leak.md)
+[prestatie afwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md)
 

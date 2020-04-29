@@ -1,6 +1,6 @@
 ---
-title: Parameters van Azure Monitor-werkmappenresource
-description: Complexe rapportage vereenvoudigen met vooraf gebouwde en aangepaste geparametereerde werkmappen
+title: Resource parameters voor Azure Monitor werkmappen
+description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,108 +10,108 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658099"
 ---
-# <a name="workbook-resource-parameters"></a>Resourceparameters voor werkmap
+# <a name="workbook-resource-parameters"></a>Resource parameters voor werkmap
 
-Resourceparameters maken het mogelijk resources in werkmappen te kiezen. Dit is handig bij het instellen van het bereik waaruit de gegevens kunnen worden opgehaald. Een voorbeeld is dat gebruikers de set VM's kunnen selecteren, die de grafieken later zullen gebruiken bij het presenteren van de gegevens.
+Met resource parameters kan resources in werkmappen worden verzameld. Dit is handig bij het instellen van het bereik van waaruit de gegevens moeten worden opgehaald. Een voor beeld: Hiermee staat u gebruikers toe om de set Vm's te selecteren, die later door de grafieken wordt gebruikt wanneer de gegevens worden gepresenteerd.
 
-Waarden van resourcepickers kunnen afkomstig zijn uit de werkmapcontext, statische lijst of uit Azure Resource Graph-query's.
+Waarden van resource-kiezers kunnen afkomstig zijn uit de context van de werkmap, de statische lijst of van Azure resource Graph-query's.
 
-## <a name="creating-a-resource-parameter-workbook-resources"></a>Een resourceparameter maken (werkmapbronnen)
-1. Begin met een lege werkmap in de bewerkingsmodus.
-2. Kies _Parameters toevoegen_ in de koppelingen in de werkmap.
-3. Klik op de blauwe _knop Parameter toevoegen._
-4. Voer in het nieuwe parametervenster dat wordt weergegeven:
-    1. Parameternaam:`Applications`
-    2. Parametertype:`Resource picker`
+## <a name="creating-a-resource-parameter-workbook-resources"></a>Een resource parameter maken (werkmap resources)
+1. Beginnen met een lege werkmap in de bewerkings modus.
+2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
+3. Klik op de knop Blue _para meter toevoegen_ .
+4. Typ in het deel venster nieuwe para meters dat verschijnt:
+    1. Parameter naam:`Applications`
+    2. Parameter type:`Resource picker`
     3. Vereist:`checked`
     4. Meerdere selecties toestaan:`checked`
-5. Haal gegevens uit:`Workbook Resources`
-6. Alleen resourcetypen opnemen:`Application Insights`
-7. Kies 'Opslaan' op de werkbalk om de parameter te maken.
+5. Gegevens ophalen uit:`Workbook Resources`
+6. Alleen resource typen toevoegen:`Application Insights`
+7. Kies opslaan op de werk balk om de para meter te maken.
 
-![Afbeelding met de creatie van een resourceparameter met behulp van werkmapbronnen](./media/workbooks-resources/resource-create.png)
+![Afbeelding van het maken van een resource parameter met werkmap resources](./media/workbooks-resources/resource-create.png)
 
-## <a name="creating-a-resource-parameter-azure-resource-graph"></a>Een resourceparameter maken (Azure Resource Graph)
-1. Begin met een lege werkmap in de bewerkingsmodus.
-2. Kies _Parameters toevoegen_ in de koppelingen in de werkmap.
-3. Klik op de blauwe _knop Parameter toevoegen._
-4. Voer in het nieuwe parametervenster dat wordt weergegeven:
-    1. Parameternaam:`Applications`
-    2. Parametertype:`Resource picker`
+## <a name="creating-a-resource-parameter-azure-resource-graph"></a>Een resource parameter maken (Azure resource Graph)
+1. Beginnen met een lege werkmap in de bewerkings modus.
+2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
+3. Klik op de knop Blue _para meter toevoegen_ .
+4. Typ in het deel venster nieuwe para meters dat verschijnt:
+    1. Parameter naam:`Applications`
+    2. Parameter type:`Resource picker`
     3. Vereist:`checked`
     4. Meerdere selecties toestaan:`checked`
-5. Haal gegevens uit:`Query`
-    1. Querytype:`Azure Resource Graph`
-    2. Abonnementen:`Use default subscriptions`
-    3. Voeg in het querybesturingselement dit fragment toe
+5. Gegevens ophalen uit:`Query`
+    1. Query type:`Azure Resource Graph`
+    2. Geabonneerd`Use default subscriptions`
+    3. Voeg dit fragment toe aan het besturings element query
     ```kusto
     where type == 'microsoft.insights/components'
     | project value = id, label = name, selected = false, group = resourceGroup
     ```
-7. Kies 'Opslaan' op de werkbalk om de parameter te maken.
+7. Kies opslaan op de werk balk om de para meter te maken.
 
-![Afbeelding met de aanmaak van een resourceparameter met Azure Resource Graph](./media/workbooks-resources/resource-query.png)
+![Afbeelding van het maken van een resource parameter met Azure resource Graph](./media/workbooks-resources/resource-query.png)
 
 > [!NOTE]
-> Azure Resource Graph is nog niet in alle clouds beschikbaar. Zorg ervoor dat het wordt ondersteund in uw doelcloud als u voor deze aanpak kiest.
+> Azure resource Graph is nog niet beschikbaar in alle Clouds. Zorg ervoor dat deze wordt ondersteund in uw doel-Cloud als u deze aanpak kiest.
 
 [Documentatie voor Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)
 
-## <a name="creating-a-resource-parameter--json-list"></a>Een resourceparameter maken (JSON-lijst)
-1. Begin met een lege werkmap in de bewerkingsmodus.
-2. Kies _Parameters toevoegen_ in de koppelingen in de werkmap.
-3. Klik op de blauwe _knop Parameter toevoegen._
-4. Voer in het nieuwe parametervenster dat wordt weergegeven:
-    1. Parameternaam:`Applications`
-    2. Parametertype:`Resource picker`
+## <a name="creating-a-resource-parameter--json-list"></a>Een resource parameter maken (JSON-lijst)
+1. Beginnen met een lege werkmap in de bewerkings modus.
+2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
+3. Klik op de knop Blue _para meter toevoegen_ .
+4. Typ in het deel venster nieuwe para meters dat verschijnt:
+    1. Parameter naam:`Applications`
+    2. Parameter type:`Resource picker`
     3. Vereist:`checked`
     4. Meerdere selecties toestaan:`checked`
-5. Haal gegevens uit:`JSON`
-    1. Voeg in het inhoudsbesturingselement dit jsonfragment toe
+5. Gegevens ophalen uit:`JSON`
+    1. Voeg dit JSON-fragment toe in het besturings element voor inhoud
     ```json
     [
         { "value":"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication", "label": "acmeauthentication", "selected":true, "group":"Acme Backend" },
         { "value":"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeweb", "label": "acmeweb", "selected":false, "group":"Acme Frontend" }
     ]
     ```
-    2. Druk op de blauwe _knop Bijwerken._
-6. Optioneel instellen `Include only resource types` op _Application Insights_
-7. Kies 'Opslaan' op de werkbalk om de parameter te maken.
+    2. Druk op de knop Blue _Update_ .
+6. Stel de `Include only resource types` _Application Insights_ in op
+7. Kies opslaan op de werk balk om de para meter te maken.
 
-## <a name="referencing-a-resource-parameter"></a>Een resourceparameter verwijzen
-1. Voeg een querybesturingselement toe aan de werkmap en selecteer een Application Insights-bron.
-2. Gebruik de vervolgkeuzelijst _Application Insights_ om de parameter aan het besturingselement te binden. Als u dit doet, stelt u het bereik van de query in op de resources die door de parameter worden geretourneerd tijdens de looptijd.
-4. Voeg in het Besturingselement KQL dit fragment toe
+## <a name="referencing-a-resource-parameter"></a>Verwijzen naar een resource parameter
+1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
+2. Gebruik de _Application Insights_ vervolg keuzelijst om de para meter aan het besturings element te koppelen. Hiermee stelt u het bereik van de query in op de resources die tijdens de uitvoering worden geretourneerd door de para meter.
+4. Voeg dit fragment toe aan het besturings element KQL
     ```kusto
     requests
     | summarize Requests = count() by appName, name
     | order by Requests desc
     ```
-5. Voer query uit om de resultaten te bekijken. 
+5. Voer de query uit om de resultaten te bekijken. 
 
-![Afbeelding met een resourceparameter waarnaar wordt verwezen in een querybesturingselement](./media/workbooks-resources/resource-reference.png)
+![Afbeelding van een resource parameter waarnaar wordt verwezen in een besturings element query](./media/workbooks-resources/resource-reference.png)
 
-> Deze benadering kan worden gebruikt om resources te binden aan andere besturingselementen, zoals metrische gegevens.
+> Deze benadering kan worden gebruikt om resources te binden aan andere besturings elementen, zoals metrische gegevens.
 
-## <a name="resource-parameter-options"></a>Resourceparameteropties
+## <a name="resource-parameter-options"></a>Opties voor de resource parameter
 | Parameter | Uitleg | Voorbeeld |
 | ------------- |:-------------|:-------------|
-| `{Applications}` | De geselecteerde resource-id | _/abonnementen/<sub-id->/resourceGroepen/<resourcegroep>/providers/<resourcetype>/acmeauthentication_ |
+| `{Applications}` | De geselecteerde resource-ID | _/Subscriptions/<sub-ID>/resourceGroups/<Resource-Group>/providers/<resource-type>/acmeauthentication_ |
 | `{Applications:label}` | Het label van de geselecteerde resource | `acmefrontend` |
-| `{Applications:value}` | De waarde van de geselecteerde resource | _'/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication'_ |
+| `{Applications:value}` | De waarde van de geselecteerde resource | _'/Subscriptions/<sub-ID>/resourceGroups/<Resource-Group>/providers/<resource-type>/acmeauthentication '_ |
 | `{Applications:name}` | De naam van de geselecteerde resource | `acmefrontend` |
-| `{Applications:resourceGroup}` | De resourcegroep van de geselecteerde resource | `acmegroup` |
-| `{Applications:resourceType}` | Het type van de geselecteerde resource | _microsoft.insights/componenten_ |
+| `{Applications:resourceGroup}` | De resource groep van de geselecteerde resource | `acmegroup` |
+| `{Applications:resourceType}` | Het type van de geselecteerde resource | _micro soft. Insights/onderdelen_ |
 | `{Applications:subscription}` | Het abonnement van de geselecteerde resource |  |
-| `{Applications:grid}` | Een raster met de resourceeigenschappen. Handig om te renderen in een tekstblok tijdens het foutopsporing  |  |
+| `{Applications:grid}` | Een raster met de eigenschappen van de resource. Handig om weer te geven in een tekst blok tijdens fout opsporing  |  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ga aan de slag met](workbooks-visualizations.md) het leren van meer over werkmappen met veel uitgebreide visualisatiesopties.
-* [Beheer](workbooks-access-control.md) en deel de toegang tot uw werkmapbronnen.
+* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
+* De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.

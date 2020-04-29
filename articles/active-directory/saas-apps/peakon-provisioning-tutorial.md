@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Peakon automatische gebruikersinrichting configureren met Azure Active Directory | Microsoft Documenten'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Peakon .
+title: 'Zelf studie: Peakon automatisch inrichten van gebruikers configureren met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Peakon.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,143 +16,143 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 0a67dc8069ee71305a47bd5d2a724a61cec234a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063370"
 ---
-# <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Zelfstudie: Peakon configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Zelf studie: Peakon configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Peakon en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen naar Peakon.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Peakon en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Peakon.
 
 > [!NOTE]
->  In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
+>  In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in Voorbeeld. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
+> Deze connector is momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten
 
 * Een Azure AD-tenant.
-* [Een Peakon huurder.](https://peakon.com/us/pricing/)
-* Een gebruikersaccount in Peakon met beheerdersmachtigingen.
+* [Een Peakon-Tenant](https://peakon.com/us/pricing/).
+* Een gebruikers account in Peakon met beheerders machtigingen.
 
 ## <a name="assigning-users-to-peakon"></a>Gebruikers toewijzen aan Peakon
 
-Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Peakon nodig hebben. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Peakon door de instructies hier te volgen:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Peakon. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Peakon door de volgende instructies te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-peakon"></a>Belangrijke tips voor het toewijzen van gebruikers aan Peakon 
+## <a name="important-tips-for-assigning-users-to-peakon"></a>Belang rijke tips voor het toewijzen van gebruikers aan Peakon 
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker aan Peakon wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Peakon om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker aan Peakon toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
+* Wanneer u een gebruiker toewijst aan Peakon, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-## <a name="set-up-peakon-for-provisioning"></a>Peakon instellen voor inrichten
+## <a name="set-up-peakon-for-provisioning"></a>Peakon instellen voor inrichting
 
-1.  Meld u aan bij uw [Peakon-beheerconsole](https://app.Peakon.com/login). Klik op **Configuratie**. 
+1.  Meld u aan bij de [Peakon-beheer console](https://app.Peakon.com/login). Klik op **configuratie**. 
 
-    ![Peakon-beheerconsole](media/Peakon-provisioning-tutorial/Peakon-admin-configuration.png)
+    ![Peakon-beheer console](media/Peakon-provisioning-tutorial/Peakon-admin-configuration.png)
 
-2.  Selecteer **Integraties**.
+2.  Selecteer **integraties**.
     
-    ![Peakon-employee-provision](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![Peakon-werk nemer-inrichten](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
-3.  Inrichten **van werknemers**inschakelen .
+3.  **Werk nemer inrichten**in te scha kelen.
 
-    ![Peakon-employee-provision](media/Peakon-provisioning-tutorial/peakon05.png)
+    ![Peakon-werk nemer-inrichten](media/Peakon-provisioning-tutorial/peakon05.png)
 
-4.  Kopieer de waarden voor **SCIM 2.0 URL** en **OAuth Bearer Token**. Deze waarden worden ingevoerd in het **veld URL van tenant** en geheim **token** op het tabblad Provisioning van uw Peakon-toepassing in de Azure-portal.
+4.  Kopieer de waarden voor de **SCIM 2,0-URL** en het **OAuth Bearer-token**. Deze waarden worden ingevoerd in het veld **Tenant-URL** en **geheim token** op het tabblad inrichten van uw Peakon-toepassing in de Azure Portal.
 
-    ![Peakon Token maken](media/Peakon-provisioning-tutorial/peakon04.png)
+    ![Peakon-token maken](media/Peakon-provisioning-tutorial/peakon04.png)
 
 ## <a name="add-peakon-from-the-gallery"></a>Peakon toevoegen vanuit de galerie
 
-Als u Peakon wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u Peakon vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u Peakon wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Peakon van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Peakon**in het zoekvak, selecteer **Peakon** in het deelvenster Resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ **Peakon**in het zoekvak, selecteer **Peakon** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Peakon in de resultatenlijst](common/search-new-app.png)
+    ![Peakon in de lijst met resultaten](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-peakon"></a>Automatische gebruikersvoorziening configureren voor Peakon 
+## <a name="configuring-automatic-user-provisioning-to-peakon"></a>Automatische gebruikers inrichting configureren voor Peakon 
 
-In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Peakon te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Peakon te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Peakon, volgens de instructies in de [Peakon Single sign-on tutorial](peakon-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Peakon, gevolgd door de instructies in de [Peakon-zelf studie voor eenmalige aanmelding](peakon-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
-### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Ga als bedoeldinname van eindgebruikers voor Peakon in Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-peakon--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Peakon in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Peakon**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Peakon**.
 
-    ![De koppeling Peakon in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling Peakon in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **Inrichten.**
+3. Selecteer het tabblad **inrichten** .
 
-    ![Tabblad Inrichten](common/provisioning.png)
+    ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtingsmodus** in op **Automatisch**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Tabblad Inrichten](common/provisioning-automatic.png)
+    ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer onder de sectie **Beheerdersreferenties** de **scim 2.0 URL-** en **OAuth-tokenwaarden voor dragers** in die eerder zijn opgehaald in respectievelijk **tenant-URL** en **Secret Token.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Peakon. Als de verbinding mislukt, moet u ervoor zorgen dat uw Peakon-account beheerdersmachtigingen heeft en het opnieuw proberen.
+5. In het gedeelte **beheerders referenties** voert u de **scim 2,0-URL** en de **OAuth Bearer-token** waarden in die respectievelijk eerder zijn opgehaald in de Tenant- **URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Peakon. Als de verbinding mislukt, zorg er dan voor dat uw Peakon-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
+7. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mail met meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 8. Klik op **Opslaan**.
 
-9. Selecteer Azure **Active Directory-gebruikers synchroniseren met Peakon**onder de sectie **Toewijzingen** .
+9. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Peakon**.
 
-    ![Peakon-gebruikerstoewijzingen](media/Peakon-provisioning-tutorial/Peakon-user-mappings.png)
+    ![Peakon-gebruikers toewijzingen](media/Peakon-provisioning-tutorial/Peakon-user-mappings.png)
 
-10. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Peakon in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **Eigenschappen matching** worden gebruikt om de gebruikersaccounts in Peakon te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
+10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Peakon in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Peakon voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Kenmerken van Peakon-gebruikers](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
+    ![Peakon-gebruikers kenmerken](media/Peakon-provisioning-tutorial/Peakon-user-attributes.png)
 
-12. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
     
-    ![Inrichtingskader](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-15. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Peakon.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Peakon.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="connector-limitations"></a>Verbindingsbeperkingen
+## <a name="connector-limitations"></a>Connector beperkingen
 
-* Alle aangepaste gebruikerskenmerken in Peakon moeten worden uitgebreid van peakon's `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`aangepaste SCIM-gebruikersextensie van .
+* Alle aangepaste gebruikers kenmerken in Peakon moeten worden uitgebreid van de aangepaste SCIM-gebruikers extensie van `urn:ietf:params:scim:schemas:extension:peakon:2.0:User`Peakon.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

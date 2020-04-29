@@ -1,6 +1,6 @@
 ---
-title: PowerShell gebruiken om Traffic Manager in Azure te beheren
-description: Ga met dit leerpad aan de slag met Azure PowerShell voor Traffic Manager.
+title: Power shell gebruiken voor het beheren van Traffic Manager in azure
+description: Met dit leer traject kunt u aan de slag met Azure PowerShell voor Traffic Manager.
 services: traffic-manager
 documentationcenter: na
 author: rohinkoul
@@ -12,23 +12,23 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938497"
 ---
-# <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell gebruiken om Traffic Manager te beheren
+# <a name="using-powershell-to-manage-traffic-manager"></a>Power shell gebruiken voor het beheren van Traffic Manager
 
-Azure Resource Manager is de voorkeursbeheerinterface voor services in Azure. Azure Traffic Manager-profielen kunnen worden beheerd met API's en hulpprogramma's op basis van Azure Resource Manager.
+Azure Resource Manager is de voorkeurs beheer interface voor services in Azure. Azure Traffic Manager-profielen kunnen worden beheerd met behulp van Azure Resource Manager-Api's en-hulpprogram ma's.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>Resourcemodel
 
-Azure Traffic Manager is geconfigureerd met behulp van een verzameling instellingen genaamd een Traffic Manager-profiel. Dit profiel bevat DNS-instellingen, instellingen voor verkeersroutering, eindpuntcontrole-instellingen en een lijst met serviceeindpunten waarnaar verkeer wordt doorgestuurd.
+Azure Traffic Manager is geconfigureerd met een verzameling instellingen die een Traffic Manager profiel worden genoemd. Dit profiel bevat DNS-instellingen, instellingen voor verkeers routering, instellingen voor eindpunt bewaking en een lijst met Service-eind punten waarop verkeer wordt gerouteerd.
 
-Elk Traffic Manager-profiel wordt vertegenwoordigd door een bron van het type 'TrafficManagerProfiles'. Op HET NIVEAU VAN DE API van DE REST, is URI voor elk profiel als volgt:
+Elk Traffic Manager profiel wordt vertegenwoordigd door een resource van het type ' TrafficManagerProfiles '. Op REST API niveau is de URI voor elk profiel als volgt:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
 
@@ -36,63 +36,63 @@ Elk Traffic Manager-profiel wordt vertegenwoordigd door een bron van het type 'T
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Deze instructies maken gebruik van Microsoft Azure PowerShell. In het volgende artikel wordt uitgelegd hoe u Azure PowerShell installeert en configureert.
+Deze instructies gebruiken Microsoft Azure PowerShell. In het volgende artikel wordt uitgelegd hoe u Azure PowerShell installeert en configureert.
 
 * [Azure PowerShell installeren en configureren](/powershell/azure/overview)
 
-In de voorbeelden in dit artikel wordt ervan uitgegaan dat u een bestaande resourcegroep hebt. U een resourcegroep maken met de volgende opdracht:
+In de voor beelden in dit artikel wordt ervan uitgegaan dat u een bestaande resource groep hebt. U kunt een resource groep maken met de volgende opdracht:
 
 ```powershell
 New-AzResourceGroup -Name MyRG -Location "West US"
 ```
 
 > [!NOTE]
-> Azure Resource Manager vereist dat alle resourcegroepen een locatie hebben. Deze locatie wordt gebruikt als standaardvoor resources die in die resourcegroep zijn gemaakt. Aangezien de profielbronnen van Traffic Manager echter globaal en niet regionaal zijn, heeft de locatie van de brongroep geen invloed op Azure Traffic Manager.
+> Azure Resource Manager vereist dat alle resource groepen een locatie hebben. Deze locatie wordt gebruikt als de standaard waarde voor resources die zijn gemaakt in die resource groep. Omdat Traffic Manager profiel bronnen echter globaal zijn, niet regionaal, heeft de keuze van de locatie van de resource groep geen invloed op Azure Traffic Manager.
 
-## <a name="create-a-traffic-manager-profile"></a>Een profiel van verkeersbeheer maken
+## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager profiel maken
 
-Als u een Traffic Manager-profiel wilt maken, gebruikt u de `New-AzTrafficManagerProfile` cmdlet:
+Gebruik de `New-AzTrafficManagerProfile` cmdlet om een Traffic Manager profiel te maken:
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName contoso -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 ```
 
-In de volgende tabel worden de parameters beschreven:
+De volgende tabel beschrijft de para meters:
 
 | Parameter | Beschrijving |
 | --- | --- |
-| Name |De resourcenaam voor de profielbron Traffic Manager. Profielen in dezelfde resourcegroep moeten unieke namen hebben. Deze naam staat los van de DNS-naam die wordt gebruikt voor DNS-query's. |
-| ResourceGroupName |De naam van de resourcegroep die de profielbron bevat. |
-| TrafficRoutingMethod |Hiermee geeft u de verkeersrouteringsmethode op die wordt gebruikt om te bepalen welk eindpunt wordt geretourneerd als reactie op een DNS-query. Mogelijke waarden zijn 'Performance', 'Weighted' of 'Priority'. |
-| Relatieve DnsName |Hiermee geeft u het hostnamegedeelte op van de DNS-naam die wordt opgegeven door dit Traffic Manager-profiel. Deze waarde wordt gecombineerd met de DNS-domeinnaam die door Azure Traffic Manager wordt gebruikt om de volledig gekwalificeerde domeinnaam (FQDN) van het profiel te vormen. Het instellen van de waarde van 'contoso' wordt bijvoorbeeld 'contoso.trafficmanager.net'. |
-| TTL |Hiermee geeft u de DNS Time-to-Live (TTL) in enkele seconden op. Deze TTL informeert de lokale DNS-resolvers en DNS-clients hoe lang het duurt voordat DNS-antwoorden voor dit Traffic Manager-profiel moeten worden opgeslagen. |
-| MonitorProtocol |Hiermee geeft u het protocol op dat moet worden gebruikt om de status van eindpunt te controleren. Mogelijke waarden zijn 'HTTP' en 'HTTPS'. |
-| MonitorPort |Hiermee geeft u de TCP-poort op die wordt gebruikt om de status van eindpunt te controleren. |
-| MonitorPad |Hiermee geeft u het pad op ten opzichte van de eindpuntdomeinnaam die wordt gebruikt om de status van eindpunt te zoeken. |
+| Naam |De resource naam voor de Traffic Manager-profiel bron. Profielen in dezelfde resource groep moeten unieke namen hebben. Deze naam is gescheiden van de DNS-naam die wordt gebruikt voor DNS-query's. |
+| ResourceGroupName |De naam van de resource groep die de profiel bron bevat. |
+| TrafficRoutingMethod |Hiermee geeft u de routerings methode voor verkeer die wordt gebruikt om te bepalen welk eind punt wordt geretourneerd als antwoord op een DNS-query. Mogelijke waarden zijn ' performance ', ' Weightd ' of ' Priority '. |
+| RelativeDnsName |Hiermee geeft u het gedeelte hostnaam van de DNS-naam op die door dit Traffic Manager profiel wordt opgegeven. Deze waarde wordt gecombineerd met de DNS-domein naam die wordt gebruikt door Azure Traffic Manager om de Fully Qualified Domain Name (FQDN) van het profiel te vormen. De waarde van ' Contoso ' wordt bijvoorbeeld ingesteld op ' contoso.trafficmanager.net '. |
+| TTL |Hiermee geeft u de DNS-TTL (time-to-Live) op (in seconden). Deze TTL informeert de lokale DNS-resolvers en DNS-clients hoe lang DNS-antwoorden in de cache moeten worden opgeslagen voor dit Traffic Manager profiel. |
+| MonitorProtocol |Hiermee geeft u het protocol op dat moet worden gebruikt om de eindpunt status te controleren. Mogelijke waarden zijn HTTP en HTTPS. |
+| MonitorPort |Specificeert de TCP-poort die wordt gebruikt om de status van het eind punt te controleren. |
+| MonitorPath |Hiermee geeft u het pad ten opzichte van de domein naam van het eind punt dat wordt gebruikt voor het testen van de eindpunt status |
 
-De cmdlet maakt een Traffic Manager-profiel in Azure en retourneert een bijbehorend profielobject naar PowerShell. Op dit moment bevat het profiel geen eindpunten. Zie Eindpunten voor verkeersbeheer toevoegen voor meer informatie over het toevoegen van eindpunten aan een Traffic Manager-profiel.
+De cmdlet maakt een Traffic Manager profiel in Azure en retourneert een overeenkomend profiel object in Power shell. Het profiel bevat op dit moment geen eind punten. Zie Traffic Manager-eind punten toevoegen voor meer informatie over het toevoegen van eind punten aan een Traffic Manager profiel.
 
-## <a name="get-a-traffic-manager-profile"></a>Een profiel van verkeersbeheer
+## <a name="get-a-traffic-manager-profile"></a>Een Traffic Manager profiel ophalen
 
-Als u een bestaand profielobject `Get-AzTrafficManagerProfle` van Traffic Manager wilt ophalen, gebruikt u de cmdlet:
+Als u een bestaand Traffic Manager profiel object wilt ophalen, `Get-AzTrafficManagerProfle` gebruikt u de cmdlet:
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 ```
 
-Met deze cmdlet wordt een profielobject Traffic Manager geretourneerd.
+Met deze cmdlet wordt een Traffic Manager profiel object geretourneerd.
 
-## <a name="update-a-traffic-manager-profile"></a>Een profiel van verkeersbeheer bijwerken
+## <a name="update-a-traffic-manager-profile"></a>Een Traffic Manager profiel bijwerken
 
-Het wijzigen van Traffic Manager-profielen volgt een proces in drie stappen:
+Het wijzigen van Traffic Manager profielen volgt een proces van drie stappen:
 
-1. Haal het `Get-AzTrafficManagerProfile` profiel op met `New-AzTrafficManagerProfile`behulp van het profiel dat is geretourneerd door .
-2. Wijzig het profiel. U eindpunten toevoegen en verwijderen of eindpunt- of profielparameters wijzigen. Deze wijzigingen zijn off-line bewerkingen. U wijzigt alleen het lokale object in het geheugen dat het profiel vertegenwoordigt.
-3. Bega uw `Set-AzTrafficManagerProfile` wijzigingen met behulp van de cmdlet.
+1. Haal het profiel op `Get-AzTrafficManagerProfile` met of gebruik het profiel dat `New-AzTrafficManagerProfile`wordt geretourneerd door.
+2. Wijzig het profiel. U kunt eind punten toevoegen en verwijderen of eind punt-of profiel parameters wijzigen. Deze wijzigingen zijn off-line bewerkingen. U wijzigt alleen het lokale object in het geheugen dat het profiel vertegenwoordigt.
+3. Uw wijzigingen door voeren met `Set-AzTrafficManagerProfile` de cmdlet.
 
-Alle profieleigenschappen kunnen worden gewijzigd, behalve de RelativeDnsName van het profiel. Als u de relatieve dnsname wilt wijzigen, moet u het profiel en een nieuw profiel met een nieuwe naam verwijderen.
+Alle profiel eigenschappen kunnen worden gewijzigd, met uitzonde ring van de RelativeDnsName van het profiel. Als u de RelativeDnsName wilt wijzigen, moet u het profiel en een nieuw profiel met een nieuwe naam verwijderen.
 
-In het volgende voorbeeld wordt uitgelegd hoe u de TTL van het profiel wijzigen:
+In het volgende voor beeld ziet u hoe u de TTL van het profiel wijzigt:
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
@@ -100,34 +100,34 @@ $TmProfile.Ttl = 300
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-Er zijn drie soorten eindpunten voor verkeersbeheer:
+Er zijn drie soorten Traffic Manager-eind punten:
 
-1. **Azure-eindpunten** zijn services die worden gehost in Azure
-2. **Externe eindpunten** zijn services die buiten Azure worden gehost
-3. **Geneste eindpunten** worden gebruikt om geneste hiërarchieën van Traffic Manager-profielen te construeren. Geneste eindpunten maken geavanceerde configuraties voor het routeren van verkeer voor complexe toepassingen mogelijk.
+1. **Azure-eind punten** zijn services die worden gehost in azure
+2. **Externe eind punten** zijn services die buiten Azure worden gehost
+3. **Geneste eind punten** worden gebruikt om geneste hiërarchieën van Traffic Manager profielen te maken. Met geneste eind punten kunt u geavanceerde configuratie van verkeer routeren voor complexe toepassingen.
 
-In alle drie de gevallen kunnen eindpunten op twee manieren worden toegevoegd:
+In alle drie de gevallen kunnen eind punten op twee manieren worden toegevoegd:
 
-1. Met behulp van een 3-stappenproces eerder beschreven. Het voordeel van deze methode is dat er meerdere eindpuntwijzigingen kunnen worden aangebracht in één update.
-2. Met behulp van de cmdlet Nieuw-AzTrafficManagerEndpoint. Deze cmdlet voegt een eindpunt toe aan een bestaand Traffic Manager-profiel in één bewerking.
+1. U gebruikt een proces van drie stappen dat eerder is beschreven. Het voor deel van deze methode is dat verschillende wijzigingen in het eind punt kunnen worden aangebracht in één update.
+2. Met de cmdlet New-AzTrafficManagerEndpoint. Met deze cmdlet wordt een eind punt toegevoegd aan een bestaand Traffic Manager profiel in één bewerking.
 
 ## <a name="adding-azure-endpoints"></a>Azure-eindpunten toevoegen
 
-Azure-eindpunten-referentieservices die worden gehost in Azure. Er worden twee typen Azure-eindpunten ondersteund:
+Referentie services van Azure-eind punten die worden gehost in Azure. Twee typen Azure-eind punten worden ondersteund:
 
 1. Azure App Service
-2. Azure PublicIpAddress-resources (die kunnen worden gekoppeld aan een load-balancer of een virtuele machine NIC). Op het PublicIpAddress moet een DNS-naam zijn toegewezen die is toegewezen in Traffic Manager.
+2. Azure PublicIpAddress-resources (die kunnen worden gekoppeld aan een Load Balancer of een NIC van een virtuele machine). Aan de PublicIpAddress moet een DNS-naam zijn toegewezen om te worden gebruikt in Traffic Manager.
 
 In elk geval:
 
-* De service wordt opgegeven met behulp van `Add-AzTrafficManagerEndpointConfig` `New-AzTrafficManagerEndpoint`de parameter 'targetResourceId' van of .
-* De 'Target' en 'EndpointLocation' worden geïmpliceerd door de TargetResourceId.
-* Het opgeven van het 'Gewicht' is optioneel. Gewichten worden alleen gebruikt als het profiel is geconfigureerd om de 'Gewogen' verkeersrouteringsmethode te gebruiken. Anders worden ze genegeerd. Indien gespecificeerd, moet de waarde een getal tussen 1 en 1000 zijn. De standaardwaarde is '1'.
-* Het opgeven van de 'Prioriteit' is optioneel. Prioriteiten worden alleen gebruikt als het profiel is geconfigureerd om de verkeersrouteringsmethode 'Prioriteit' te gebruiken. Anders worden ze genegeerd. Geldige waarden zijn 1 tot 1000 met lagere waarden die een hogere prioriteit aangeven. Indien opgegeven voor één eindpunt, moeten ze worden opgegeven voor alle eindpunten. Als deze worden weggelaten, worden standaardwaarden vanaf '1' toegepast in de volgorde waarin de eindpunten worden weergegeven.
+* De service wordt opgegeven met de para meter ' targetResourceId ' `Add-AzTrafficManagerEndpointConfig` van `New-AzTrafficManagerEndpoint`of.
+* De ' target ' en ' EndpointLocation ' worden geïmpliceerd door de TargetResourceId.
+* Opgeven van het gewicht is optioneel. Gewichten worden alleen gebruikt als het profiel is geconfigureerd voor het gebruik van de methode ' gewogen ' verkeers routering. Anders worden ze genegeerd. Indien opgegeven, moet de waarde een getal zijn tussen 1 en 1000. De standaard waarde is 1.
+* Het opgeven van de prioriteit is optioneel. Prioriteiten worden alleen gebruikt als het profiel is geconfigureerd voor het gebruik van de methode voor de route ring van het verkeer met de prioriteit. Anders worden ze genegeerd. Geldige waarden zijn 1 tot 1000 met lagere waarden die een hogere prioriteit aangeven. Indien opgegeven voor één eind punt, moeten deze worden opgegeven voor alle eind punten. Als u dit weglaat, worden de standaard waarden die beginnen van ' 1 ' toegepast in de volg orde waarin de eind punten worden weer gegeven.
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Voorbeeld 1: Eindpunten van app-service toevoegen met`Add-AzTrafficManagerEndpointConfig`
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Voor beeld 1: App Service-eind punten toevoegen met`Add-AzTrafficManagerEndpointConfig`
 
-In dit voorbeeld maken we een Traffic Manager-profiel aan `Add-AzTrafficManagerEndpointConfig` en voegen we twee App Service-eindpunten toe met de cmdlet.
+In dit voor beeld maken we een Traffic Manager profiel en voegen we twee App Service-eind `Add-AzTrafficManagerEndpointConfig` punten toe met behulp van de cmdlet.
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -137,9 +137,9 @@ $webapp2 = Get-AzWebApp -Name webapp2
 Add-AzTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $TmProfile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>Voorbeeld 2: Een publicIpAddress-eindpunt toevoegen met`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-aztrafficmanagerendpoint"></a>Voor beeld 2: een publicIpAddress-eind punt toevoegen met`New-AzTrafficManagerEndpoint`
 
-In dit voorbeeld wordt een openbare IP-adresbron toegevoegd aan het profiel Traffic Manager. Het openbare IP-adres moet een DNS-naam hebben geconfigureerd en kan worden gekoppeld aan de NIC van een VM of aan een load balancer.
+In dit voor beeld wordt een resource met een openbaar IP-adres toegevoegd aan het Traffic Manager profiel. Het open bare IP-adres moet een DNS-naam hebben en kan worden gebonden aan de NIC van een virtuele machine of op een load balancer.
 
 ```powershell
 $ip = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyRG
@@ -148,17 +148,17 @@ New-AzTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -Resource
 
 ## <a name="adding-external-endpoints"></a>Externe eindpunten toevoegen
 
-Traffic Manager gebruikt externe eindpunten om verkeer te leiden naar services die buiten Azure worden gehost. Net als bij Azure-eindpunten kunnen externe `Add-AzTrafficManagerEndpointConfig` eindpunten worden toegevoegd met behulp van, gevolgd door `Set-AzTrafficManagerProfile`, of `New-AzTrafficManagerEndpoint`.
+Traffic Manager gebruikt externe eind punten om verkeer te sturen naar services die buiten Azure worden gehost. Net als bij Azure-eind punten kunnen externe eind punten worden toegevoegd met `Add-AzTrafficManagerEndpointConfig` behulp `Set-AzTrafficManagerProfile`van gevolgd `New-AzTrafficManagerEndpoint`door, of.
 
-Bij het opgeven van externe eindpunten:
+Wanneer u externe eind punten opgeeft:
 
-* De domeinnaam van het eindpunt moet worden opgegeven met de parameter 'Target'.
-* Als de verkeersrouteringsmethode 'Prestaties' wordt gebruikt, is de 'EndpointLocation' vereist. Anders is het optioneel. De waarde moet een [geldige Azure-regionaam](https://azure.microsoft.com/regions/)zijn.
-* Het 'Gewicht' en 'Prioriteit' zijn optioneel.
+* De domein naam van het eind punt moet worden opgegeven met de para meter target
+* Als de Traffic-routerings methode ' prestaties ' wordt gebruikt, is de ' EndpointLocation ' vereist. Anders is het optioneel. De waarde moet een [geldige naam](https://azure.microsoft.com/regions/)zijn van een Azure-regio.
+* ' Weight ' en ' Priority ' zijn optioneel.
 
-### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Voorbeeld 1: Externe eindpunten toevoegen met `Add-AzTrafficManagerEndpointConfig` en`Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Voor beeld 1: externe eind punten toevoegen `Add-AzTrafficManagerEndpointConfig` met en`Set-AzTrafficManagerProfile`
 
-In dit voorbeeld maken we een Traffic Manager-profiel, voegen we twee externe eindpunten toe en verbinden we de wijzigingen.
+In dit voor beeld maken we een Traffic Manager profiel, voegt u twee externe eind punten toe en voert u de wijzigingen door.
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -167,28 +167,28 @@ Add-AzTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManagerProf
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>Voorbeeld 2: Externe eindpunten toevoegen met`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-aztrafficmanagerendpoint"></a>Voor beeld 2: externe eind punten toevoegen met`New-AzTrafficManagerEndpoint`
 
-In dit voorbeeld voegen we een extern eindpunt toe aan een bestaand profiel. Het profiel wordt opgegeven met de namen van de profiel- en resourcegroep.
+In dit voor beeld voegen we een extern eind punt toe aan een bestaand profiel. Het profiel wordt opgegeven met behulp van de namen van het profiel en de resource groep.
 
 ```powershell
 New-AzTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointStatus Enabled
 ```
 
-## <a name="adding-nested-endpoints"></a>'Geneste' eindpunten toevoegen
+## <a name="adding-nested-endpoints"></a>' Geneste ' eind punten toevoegen
 
-Elk Traffic Manager-profiel geeft één verkeersrouteringsmethode op. Er zijn echter scenario's die een geavanceerdere verkeersroutering vereisen dan de routebepaling die wordt geboden door één Traffic Manager-profiel. U Traffic Manager-profielen nesten om de voordelen van meer dan één verkeersrouteringsmethode te combineren. Met geneste profielen u het standaard gedrag van Traffic Manager overschrijven om grotere en complexere toepassingsimplementaties te ondersteunen. Zie [Geneste verkeersbeheerprofielen](traffic-manager-nested-profiles.md)voor meer gedetailleerde voorbeelden .
+Elk Traffic Manager profiel bevat één methode voor het routeren van verkeer. Er zijn echter scenario's die meer geavanceerde verkeers routering vereisen dan de route ring van een enkel Traffic Manager profiel. U kunt Traffic Manager profielen nesten om de voor delen van meer dan één Traffic-routerings methode te combi neren. Met geneste profielen kunt u het standaard gedrag van Traffic Manager onderdrukken om grotere en complexere toepassings implementaties te ondersteunen. Zie [Geneste Traffic Manager profielen](traffic-manager-nested-profiles.md)voor meer gedetailleerde voor beelden.
 
-Geneste eindpunten worden geconfigureerd op het bovenliggende profiel met behulp van een specifiek eindpunttype, 'Geneste Eindpunten'. Bij het opgeven van geneste eindpunten:
+Geneste eind punten worden geconfigureerd in het bovenliggende profiel, met behulp van een specifiek eindpunt type, ' NestedEndpoints '. Wanneer u geneste eind punten opgeeft:
 
-* Het eindpunt moet worden opgegeven met de parameter 'targetResourceId'.
-* Als de verkeersrouteringsmethode 'Prestaties' wordt gebruikt, is de 'EndpointLocation' vereist. Anders is het optioneel. De waarde moet een [geldige Azure-regionaam](https://azure.microsoft.com/regions/)zijn.
-* De 'Gewicht' en 'Prioriteit' zijn optioneel, net als voor Azure-eindpunten.
-* De parameter 'MinChildEndpoints' is optioneel. De standaardwaarde is '1'. Als het aantal beschikbare eindpunten onder deze drempel valt, beschouwt het bovenliggende profiel het onderliggende profiel als 'gedegradeerd' en leidt het verkeer door naar de andere eindpunten in het bovenliggende profiel.
+* Het eind punt moet worden opgegeven met de para meter ' targetResourceId '
+* Als de Traffic-routerings methode ' prestaties ' wordt gebruikt, is de ' EndpointLocation ' vereist. Anders is het optioneel. De waarde moet een [geldige naam](https://azure.microsoft.com/regions/)zijn van een Azure-regio.
+* Het gewicht en de prioriteit zijn optioneel voor Azure-eind punten.
+* De para meter MinChildEndpoints is optioneel. De standaard waarde is 1. Als het aantal beschik bare eind punten lager is dan deze drempel waarde, beschouwt het bovenliggende profiel het onderliggende profiel ' verslechterd ' en wordt het verkeer omleiden naar de andere eind punten in het bovenliggende profiel.
 
-### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Voorbeeld 1: Geneste eindpunten toevoegen met `Add-AzTrafficManagerEndpointConfig` en`Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Voor beeld 1: geneste eind `Add-AzTrafficManagerEndpointConfig` punten toevoegen met en`Set-AzTrafficManagerProfile`
 
-In dit voorbeeld maken we nieuwe onderliggende en bovenliggende profielen van Traffic Manager, voegen we het onderliggende kind toe als een genest eindpunt aan de ouder en verbinden we de wijzigingen.
+In dit voor beeld maken we nieuwe Traffic Manager onderliggende en bovenliggende profielen, voegt u het onderliggende element toe als een genest eind punt aan het bovenliggende item en voert u de wijzigingen door.
 
 ```powershell
 $child = New-AzTrafficManagerProfile -Name child -ResourceGroupName MyRG -TrafficRoutingMethod Priority -RelativeDnsName child -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -197,20 +197,20 @@ Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint -TrafficManagerP
 Set-AzTrafficManagerProfile -TrafficManagerProfile $parent
 ```
 
-Voor beknoptheid in dit voorbeeld hebben we geen andere eindpunten toegevoegd aan de onderliggende of bovenliggende profielen.
+In dit voor beeld hebben we geen andere eind punten aan de onderliggende of bovenliggende profielen toegevoegd.
 
-### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>Voorbeeld 2: Geneste eindpunten toevoegen met`New-AzTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-aztrafficmanagerendpoint"></a>Voor beeld 2: geneste eind punten toevoegen met`New-AzTrafficManagerEndpoint`
 
-In dit voorbeeld voegen we een bestaand onderliggend profiel toe als een genest eindpunt aan een bestaand bovenliggend profiel. Het profiel wordt opgegeven met de namen van de profiel- en resourcegroep.
+In dit voor beeld voegen we een bestaand onderliggend profiel als een genest eind punt toe aan een bestaand bovenliggend profiel. Het profiel wordt opgegeven met behulp van de namen van het profiel en de resource groep.
 
 ```powershell
 $child = Get-AzTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
 ```
 
-## <a name="adding-endpoints-from-another-subscription"></a>Eindpunten van een ander abonnement toevoegen
+## <a name="adding-endpoints-from-another-subscription"></a>Eind punten toevoegen vanuit een ander abonnement
 
-Traffic Manager kan werken met eindpunten van verschillende abonnementen. U moet overschakelen naar het abonnement met het eindpunt dat u wilt toevoegen om de benodigde invoer op te halen voor Traffic Manager. Vervolgens moet u overschakelen naar de abonnementen met het Traffic Manager-profiel en het eindpunt eraan toevoegen. In het onderstaande voorbeeld ziet u hoe u dit doen met een openbaar IP-adres.
+Traffic Manager kunt werken met eind punten van verschillende abonnementen. U moet overschakelen naar het abonnement met het eind punt dat u wilt toevoegen om de vereiste invoer voor Traffic Manager op te halen. Vervolgens moet u overschakelen naar de abonnementen met het Traffic Manager profiel en het eind punt hieraan toevoegen. In het onderstaande voor beeld ziet u hoe u dit doet met een openbaar IP-adres.
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription
@@ -220,16 +220,16 @@ Set-AzContext -SubscriptionId $trafficmanagerSubscription
 New-AzTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
-## <a name="update-a-traffic-manager-endpoint"></a>Een eindpunt van verkeersbeheer bijwerken
+## <a name="update-a-traffic-manager-endpoint"></a>Een Traffic Manager-eind punt bijwerken
 
-Er zijn twee manieren om een bestaand eindpunt voor Traffic Manager bij te werken:
+Er zijn twee manieren om een bestaand Traffic Manager-eind punt bij te werken:
 
-1. Haal het Traffic `Get-AzTrafficManagerProfile`Manager-profiel met behulp van , werk de `Set-AzTrafficManagerProfile`eindpunteigenschappen in het profiel bij en voer de wijzigingen door met behulp van . Deze methode heeft het voordeel dat u meer dan één eindpunt in één bewerking bijwerken.
-2. Haal het eindpunt Van `Get-AzTrafficManagerEndpoint`Traffic Manager met behulp van , `Set-AzTrafficManagerEndpoint`werk de eindpunteigenschappen bij en voer de wijzigingen door met behulp van . Deze methode is eenvoudiger, omdat deze niet hoeft te worden geïndexeerd in de array Endpoints in het profiel.
+1. Haal het Traffic Manager profiel op `Get-AzTrafficManagerProfile`met, werk de eindpunt eigenschappen binnen het profiel bij en voer de wijzigingen `Set-AzTrafficManagerProfile`door met behulp van. Deze methode heeft als voor deel dat er meer dan één eind punt in één bewerking kan worden bijgewerkt.
+2. Haal het Traffic Manager-eind `Get-AzTrafficManagerEndpoint`punt op met, werk de eindpunt eigenschappen bij en voer `Set-AzTrafficManagerEndpoint`de wijzigingen door met behulp van. Deze methode is eenvoudiger, omdat het niet nodig is om te indexeren in de matrix met eind punten in het profiel.
 
-### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>Voorbeeld 1: Eindpunten `Get-AzTrafficManagerProfile` bijwerken met en`Set-AzTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>Voor beeld 1: eind punten bijwerken `Get-AzTrafficManagerProfile` met en`Set-AzTrafficManagerProfile`
 
-In dit voorbeeld wijzigen we de prioriteit op twee eindpunten binnen een bestaand profiel.
+In dit voor beeld wijzigen we de prioriteit op twee eind punten binnen een bestaand profiel.
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG
@@ -238,9 +238,9 @@ $TmProfile.Endpoints[1].Priority = 1
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>Voorbeeld 2: Een eindpunt `Get-AzTrafficManagerEndpoint` bijwerken met en`Set-AzTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>Voor beeld 2: een eind punt `Get-AzTrafficManagerEndpoint` bijwerken met en`Set-AzTrafficManagerEndpoint`
 
-In dit voorbeeld wijzigen we het gewicht van één eindpunt in een bestaand profiel.
+In dit voor beeld wijzigen we het gewicht van één eind punt in een bestaand profiel.
 
 ```powershell
 $endpoint = Get-AzTrafficManagerEndpoint -Name myendpoint -ProfileName myprofile -ResourceGroupName MyRG -Type ExternalEndpoints
@@ -248,74 +248,74 @@ $endpoint.Weight = 20
 Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 ```
 
-## <a name="enabling-and-disabling-endpoints-and-profiles"></a>Eindpunten en profielen in- en uitschakelen
+## <a name="enabling-and-disabling-endpoints-and-profiles"></a>Eind punten en-profielen in-en uitschakelen
 
-Met Traffic Manager kunnen afzonderlijke eindpunten worden ingeschakeld en uitgeschakeld, evenals het inschakelen en uitschakelen van hele profielen.
-Deze wijzigingen kunnen worden aangebracht door het eindpunt of de profielbronnen te krijgen/bijwerken/instellen. Om deze gemeenschappelijke bewerkingen te stroomlijnen, worden ze ook ondersteund via speciale cmdlets.
+Traffic Manager kunnen afzonderlijke eind punten worden in-en uitgeschakeld, en kan het in-en uitschakelen van volledige profielen worden toegestaan.
+Deze wijzigingen kunnen worden aangebracht door het eind punt of de profiel resources op te halen/in te stellen. Om deze algemene bewerkingen te stroom lijnen, worden ze ook ondersteund via speciale cmdlets.
 
-### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Voorbeeld 1: Een traffic manager-profiel in- en uitschakelen
+### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Voor beeld 1: een Traffic Manager profiel in-en uitschakelen
 
-Als u een Traffic `Enable-AzTrafficManagerProfile`Manager-profiel wilt inschakelen, gebruikt u . Het profiel kan worden opgegeven met behulp van een profielobject. Het profielobject kan worden doorgegeven via de pijplijn of via de parameter 'TrafficManagerProfile'. In dit voorbeeld geven we het profiel op aan de naam van het profiel en de resourcegroep.
+Gebruik `Enable-AzTrafficManagerProfile`om een Traffic Manager profiel in te scha kelen. Het profiel kan worden opgegeven met behulp van een profiel object. Het profiel object kan worden door gegeven via de pijp lijn of door gebruik te maken van de para meter-TrafficManagerProfile. In dit voor beeld geven we het profiel op voor het profiel en de naam van de resource groep.
 
 ```powershell
 Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-Een Traffic Manager-profiel uitschakelen:
+Een Traffic Manager profiel uitschakelen:
 
 ```powershell
 Disable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-De cmdlet Disable-AzTrafficManagerProfile vraagt om bevestiging. Deze prompt kan worden onderdrukt met behulp van de parameter 'Force'.
+De cmdlet Disable-AzTrafficManagerProfile vraagt om bevestiging. Deze prompt kan worden onderdrukt met de para meter-Force.
 
-### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Voorbeeld 2: Een eindpunt van een verkeersbeheerbeheer inschakelen en uitschakelen
+### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Voor beeld 2: een Traffic Manager-eind punt in-en uitschakelen
 
-Als u een eindpunt van `Enable-AzTrafficManagerEndpoint`Verkeersbeheer wilt inschakelen, gebruikt u . Er zijn twee manieren om het eindpunt op te geven
+Gebruik `Enable-AzTrafficManagerEndpoint`om een Traffic Manager eind punt in te scha kelen. Er zijn twee manieren om het eind punt op te geven
 
-1. Een TrafficManagerEndpoint-object gebruiken dat via de pijplijn wordt doorgegeven of de parameter 'TrafficManagerEndpoint' gebruikt
-2. Met de naam eindpunt, eindpunttype, profielnaam en resourcegroepnaam:
+1. Het gebruik van een TrafficManagerEndpoint-object dat via de pijp lijn wordt door gegeven of de para meter-TrafficManagerEndpoint
+2. Met behulp van de naam van het eind punt, het type eind punt, de profiel naam en de naam van de resource groep:
 
 ```powershell
 Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
-Als u een eindpunt van Traffic Manager wilt uitschakelen:
+Op dezelfde manier kunt u een Traffic Manager-eind punt uitschakelen:
 
 ```powershell
 Disable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG -Force
 ```
 
-Net `Disable-AzTrafficManagerProfile`als `Disable-AzTrafficManagerEndpoint` bij , de cmdlet vraagt om bevestiging. Deze prompt kan worden onderdrukt met behulp van de parameter 'Force'.
+Net als `Disable-AzTrafficManagerProfile`bij heeft `Disable-AzTrafficManagerEndpoint` de cmdlet om bevestiging gevraagd. Deze prompt kan worden onderdrukt met de para meter-Force.
 
-## <a name="delete-a-traffic-manager-endpoint"></a>Een eindpunt van verkeersbeheer verwijderen
+## <a name="delete-a-traffic-manager-endpoint"></a>Een Traffic Manager-eind punt verwijderen
 
-Gebruik de `Remove-AzTrafficManagerEndpoint` cmdlet om afzonderlijke eindpunten te verwijderen:
+Als u afzonderlijke eind punten wilt verwijderen, `Remove-AzTrafficManagerEndpoint` gebruikt u de cmdlet:
 
 ```powershell
 Remove-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
-Deze cmdlet vraagt om bevestiging. Deze prompt kan worden onderdrukt met behulp van de parameter 'Force'.
+Met deze cmdlet wordt om bevestiging gevraagd. Deze prompt kan worden onderdrukt met de para meter-Force.
 
-## <a name="delete-a-traffic-manager-profile"></a>Een profiel van verkeersbeheer verwijderen
+## <a name="delete-a-traffic-manager-profile"></a>Een Traffic Manager profiel verwijderen
 
-Als u een Traffic Manager-profiel wilt verwijderen, gebruikt u de `Remove-AzTrafficManagerProfile` cmdlet en geeft u de namen van de profiel- en brongroep op:
+Als u een Traffic Manager profiel wilt verwijderen, `Remove-AzTrafficManagerProfile` gebruikt u de cmdlet, waarbij u de namen van het profiel en de resource groep opgeeft:
 
 ```powershell
 Remove-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Force]
 ```
 
-Deze cmdlet vraagt om bevestiging. Deze prompt kan worden onderdrukt met behulp van de parameter 'Force'.
+Met deze cmdlet wordt om bevestiging gevraagd. Deze prompt kan worden onderdrukt met de para meter-Force.
 
-Het te verwijderen profiel kan ook worden opgegeven met een profielobject:
+Het profiel dat moet worden verwijderd, kan ook worden opgegeven met behulp van een profiel object:
 
 ```powershell
 $TmProfile = Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 Remove-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile [-Force]
 ```
 
-Deze volgorde kan ook worden gepipeteerd:
+Deze reeks kan ook worden gepiped:
 
 ```powershell
 Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzTrafficManagerProfile [-Force]
@@ -323,6 +323,6 @@ Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzT
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Toezicht op verkeersbeheer](traffic-manager-monitoring.md)
+[Traffic Manager bewaking](traffic-manager-monitoring.md)
 
 [Prestatieoverwegingen voor Traffic Manager](traffic-manager-performance-considerations.md)

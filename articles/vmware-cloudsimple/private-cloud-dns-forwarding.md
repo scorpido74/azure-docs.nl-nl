@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing - DNS-forwarding van private cloud naar on-premises
-description: Beschrijft hoe u uw CloudSimple Private Cloud DNS-server in staat stelt om on-premises bronnen vooruit te kijken
+title: 'Azure VMware-oplossing: DNS door sturen van privécloud naar on-premises'
+description: Hierin wordt beschreven hoe u de DNS-server van uw CloudSimple-Privécloud inschakelt om het opzoeken van on-premises resources te doorstuurten
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 02/29/2020
@@ -9,49 +9,49 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76961125"
 ---
-# <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>CloudSimple Private Cloud DNS-servers inschakelen om DNS-lookup van on-premises resources door te sturen naar uw DNS-servers
+# <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>DNS-servers voor CloudSimple-Privécloud inschakelen om DNS-Zoek opdrachten van on-premises resources naar uw DNS-servers door te sturen
 
-Private Cloud DNS-servers kunnen DNS-lookup voor on-premises bronnen doorsturen naar uw DNS-servers.  Door de lookup in te schakelen, kunnen Private Cloud vSphere-componenten alle services opzoeken die in uw on-premises omgeving worden uitgevoerd en met hen communiceren met volledig gekwalificeerde domeinnamen (FQDN).
+DNS-servers in de privécloud kunnen DNS-Zoek opdrachten door sturen voor alle on-premises resources naar uw DNS-servers.  Als u de zoek functie inschakelt, kunnen vSphere-onderdelen in de Privécloud worden gebruikt voor het opzoeken van services die in uw on-premises omgeving worden uitgevoerd en met behulp van de volledig gekwalificeerde domein namen (FQDN).
 
 ## <a name="scenarios"></a>Scenario's 
 
-Door DNS-lookup door sturen voor uw on-premises DNS-server u uw Private Cloud gebruiken voor de volgende scenario's:
+Door de DNS-zoek opdracht voor uw on-premises DNS-server door te sturen, kunt u uw Privécloud gebruiken voor de volgende scenario's:
 
-* Gebruik Private Cloud als een noodherstel-installatie voor uw on-premises VMware-oplossing
-* On-premises Active Directory gebruiken als identiteitsbron voor uw Private Cloud vSphere
-* HCX gebruiken voor het migreren van virtuele machines van on-premises naar Private Cloud
+* Een Privécloud gebruiken als nood herstel installatie voor uw on-premises VMware-oplossing
+* On-premises Active Directory gebruiken als een identiteits bron voor uw Privécloud vSphere
+* HCX gebruiken voor het migreren van virtuele machines van on-premises naar een Privécloud
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Een netwerkverbinding moet aanwezig zijn vanuit uw Private Cloud-netwerk met uw on-premises netwerk om DNS door te sturen naar het werk.  U een netwerkverbinding instellen met:
+Er moet een netwerk verbinding zijn tussen uw particuliere cloud netwerk en uw on-premises netwerk voor het werken met DNS-door sturen.  U kunt de netwerk verbinding instellen met behulp van:
 
-* [Maak verbinding van on-premises naar CloudSimple via ExpressRoute](on-premises-connection.md)
-* [Een Site-to-Site VPN-gateway instellen](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [Verbinding maken tussen on-premises en CloudSimple met behulp van ExpressRoute](on-premises-connection.md)
+* [Een site-naar-site-VPN-gateway instellen](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
 
-Firewallpoorten moeten op deze verbinding worden geopend om DNS door te sturen naar het werk.  Gebruikte poorten zijn TCP-poort 53 of UDP-poort 53.
+Voor een goede werking van DNS moet u Firewall poorten openen op deze verbinding.  Gebruikte poorten zijn TCP-poort 53 of UDP-poort 53.
 
 > [!NOTE]
-> Als u Site-to-Site VPN gebruikt, moet uw on-premises DNS-serversubnet worden toegevoegd als onderdeel van on-premises voorvoegsels.
+> Als u site-naar-site-VPN gebruikt, moet uw on-premises DNS-server subnet worden toegevoegd als onderdeel van on-premises voor voegsels.
 
-## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>DNS-forwarding aanvragen van Private Cloud naar on-premises
+## <a name="request-dns-forwarding-from-private-cloud-to-on-premises"></a>Door sturen van DNS aanvragen van een Privécloud naar on-premises
 
-Als u DNS-forwarding van Private Cloud naar on-premises wilt inschakelen, dient u een [ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)in met de volgende informatie.
+Als u het door sturen van DNS vanuit een Privécloud naar on-premises wilt inschakelen, dient u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)in, waarbij de volgende informatie wordt verstrekt.
 
-* Type probleem: **Technisch**
-* Abonnement: **Abonnement waarbij CloudSimple-service wordt geïmplementeerd**
-* Service: **VMware Solution by CloudSimple**
-* Probleemtype: **Adviserend of Hoe kan ik...**
-* Probleemsubtype: **Hulp nodig met NW**
-* Geef de domeinnaam van uw on-premises domein op in het detailvenster.
-* Geef de lijst op van uw on-premises DNS-servers waarnaar de lookup vanuit uw privécloud wordt doorgestuurd in het detailvenster.
+* Probleem type: **technisch**
+* Abonnement: het **abonnement waar de CloudSimple-service is geïmplementeerd**
+* Service: **VMware-oplossing per CloudSimple**
+* Probleem type: **advies of hoe kan ik...**
+* Subtype van probleem: **hulp nodig met NW**
+* Geef de domein naam van uw on-premises domein op in het deel venster Details.
+* Geef de lijst met uw on-premises DNS-servers op waarnaar de zoek opdracht wordt doorgestuurd vanuit uw privécloud in het detail venster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over on-premises firewallconfiguratie](on-premises-firewall-configuration.md)
-* [On-premises DNS-serverconfiguratie](on-premises-dns-setup.md)
+* [Meer informatie over de configuratie van on-premises firewall](on-premises-firewall-configuration.md)
+* [Configuratie van on-premises DNS-server](on-premises-dns-setup.md)

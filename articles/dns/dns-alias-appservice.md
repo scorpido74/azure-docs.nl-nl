@@ -1,6 +1,6 @@
 ---
-title: Azure-web-apps met laadbalans hosten op de zone-top
-description: Een Azure DNS-aliasrecord gebruiken om geladen gebalanceerde web-apps te hosten op de zonetop
+title: Host load balanced Azure web apps op de zone Apex
+description: Een Azure DNS alias record gebruiken om de web-apps met taak verdeling te hosten op de zone Apex
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76937370"
 ---
-# <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Azure-web-apps met laadbalans hosten op de zone-top
+# <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Host load balanced Azure web apps op de zone Apex
 
-Het DNS-protocol voorkomt dat de toewijzing van iets anders dan een A- of AAAA-record op de top van de zone wordt uitgevoerd. Een voorbeeld zone apex is contoso.com. Deze beperking vormt een probleem voor toepassingseigenaren die load-balanced applicaties achter Traffic Manager hebben. Het is niet mogelijk om het Traffic Manager-profiel aan te wijzen vanuit de zone apex record. Als gevolg hiervan moeten eigenaren van toepassingen een tijdelijke oplossing gebruiken. Een omleiding op de toepassingslaag moet worden omgeleid van de zonetop naar een ander domein. Een voorbeeld is een omleiding\.van contoso.com naar www contoso.com. Deze regeling presenteert één storingspunt voor de omleidingsfunctie.
+Het DNS-protocol voor komt dat de toewijzing van iets anders dan een A-of AAAA-record bij de zone Apex. Een voor beeld van een zone Apex is contoso.com. Deze beperking geeft een probleem met de eigen aren van toepassingen die achter Traffic Manager toepassingen met taak verdeling hebben. Het is niet mogelijk om te verwijzen naar het Traffic Manager profiel in de zone Apex-record. Als gevolg hiervan moeten toepassings eigenaren gebruikmaken van een tijdelijke oplossing. Een omleiding op de toepassingslaag moet worden omgeleid van de zone naar een ander domein. Een voor beeld is een omleiding van contoso.com\.naar www contoso.com. Deze indeling bevat een Single Point of Failure voor de omleidings functie.
 
-Met aliasrecords bestaat dit probleem niet meer. Nu kunnen toepassingseigenaren hun zone-toprecord aanwijzen op een Traffic Manager-profiel met externe eindpunten. Toepassingseigenaren kunnen hetzelfde Traffic Manager-profiel aanwijzen dat wordt gebruikt voor een ander domein binnen hun DNS-zone.
+Met alias records bestaat dit probleem niet meer. Toepassings eigenaren kunnen nu de Apex-record van de zone naar een Traffic Manager profiel met externe eind punten aanwijzen. Toepassings eigenaren kunnen verwijzen naar hetzelfde Traffic Manager-profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone.
 
-Contoso.com en www\.contoso.com kunnen bijvoorbeeld hetzelfde Traffic Manager-profiel aanwijzen. Dit is het geval zolang het profiel Traffic Manager alleen externe eindpunten heeft geconfigureerd.
+Contoso.com en www\.contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Traffic Manager-profiel. Dit is het geval zolang het Traffic Manager profiel alleen externe eind punten heeft geconfigureerd.
 
-In dit artikel leert u hoe u een aliasrecord maakt voor de top van uw domein en uw eindpunten voor het Traffic Manager-profiel configureert voor uw web-apps.
+In dit artikel leert u hoe u een alias record kunt maken voor uw domein Apex en hoe u de eind punten van uw Traffic Manager-profiel kunt configureren voor uw web-apps.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,75 +36,75 @@ Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep om alle resources in dit artikel te behouden.
+Een resource groep maken voor het opslaan van alle resources die in dit artikel worden gebruikt.
 
-## <a name="create-app-service-plans"></a>App-serviceplannen maken
+## <a name="create-app-service-plans"></a>App Service-abonnementen maken
 
-Maak twee Web App Service-abonnementen in uw resourcegroep met de volgende tabel voor configuratiegegevens. Zie Een App Service-abonnement beheren in Azure voor meer informatie over het maken van een App [Service-abonnement.](../app-service/app-service-plan-manage.md)
+Maak twee Web App Service-abonnementen in uw resource groep met behulp van de volgende tabel voor configuratie-informatie. Zie [een app service-abonnement beheren in azure](../app-service/app-service-plan-manage.md)voor meer informatie over het maken van een app service-abonnement.
 
 
-|Name  |Besturingssysteem  |Locatie  |Prijscategorie  |
+|Naam  |Besturingssysteem  |Locatie  |Prijscategorie  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|VS - oost|Dev/Test D1-Gedeeld|
-|ASP-02     |Windows|VS - centraal|Dev/Test D1-Gedeeld|
+|ASP-01     |Windows|VS - oost|Dev/test D1-gedeeld|
+|ASP-02     |Windows|VS - centraal|Dev/test D1-gedeeld|
 
-## <a name="create-app-services"></a>App-services maken
+## <a name="create-app-services"></a>App Services maken
 
 Maak twee web-apps, één in elk App Service-abonnement.
 
-1. Selecteer linksboven op de Azure-portalpagina De optie **Een bron maken**.
-2. Typ **web-app** in de zoekbalk en druk op Enter.
+1. Selecteer in de linkerbovenhoek van de pagina Azure Portal **een resource maken**.
+2. Typ **Web-app** in de zoek balk en druk op ENTER.
 3. Selecteer **Web-app**.
 4. Selecteer **Maken**.
-5. Accepteer de standaardinstellingen en gebruik de volgende tabel om de twee web-apps te configureren:
+5. Accepteer de standaard waarden en gebruik de volgende tabel om de twee web-apps te configureren:
 
-   |Name<br>(moet uniek zijn binnen .azurewebsites.net)|Resourcegroep |Runtimestack|Regio|App-serviceplan/locatie
+   |Naam<br>(moet uniek zijn binnen. azurewebsites.net)|Resourcegroep |Runtimestack|Regio|Abonnement/locatie App Service
    |---------|---------|-|-|-------|
-   |App-01|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - oost|ASP-01(D1)|
-   |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - centraal|ASP-02(D1)|
+   |App-01|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - oost|ASP-01 (D1)|
+   |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - centraal|ASP-02 (D1)|
 
-### <a name="gather-some-details"></a>Verzamel enkele details
+### <a name="gather-some-details"></a>Enkele details verzamelen
 
-Nu moet u de IP-adres en hostnaam voor de web-apps noteren.
+Nu moet u het IP-adres en de hostnaam voor de web-apps noteren.
 
-1. Open uw brongroep en selecteer uw eerste web-app **(App-01** in dit voorbeeld).
-2. Selecteer **Eigenschappen**in de linkerkolom .
-3. Let op het adres onder **URL**en noteer onder **Uitgaande IP-adressen** het eerste IP-adres in de lijst. U gebruikt deze informatie later wanneer u de eindpunten van Traffic Manager configureert.
-4. Herhaal dit voor **App-02**.
+1. Open de resource groep en selecteer uw eerste web-app (**app-01** in dit voor beeld).
+2. Selecteer in de linkerkolom **Eigenschappen**.
+3. Noteer het adres onder **URL**en noteer het eerste IP-adres in de lijst onder **uitgaande IP-adressen** . U gebruikt deze informatie later wanneer u uw Traffic Manager-eind punten configureert.
+4. Herhaal dit voor **app-02**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
-Maak een Traffic Manager-profiel in uw resourcegroep. Gebruik de standaardinstellingen en typ een unieke naam in de trafficmanager.net naamruimte.
+Maak een Traffic Manager-profiel in de resource groep. Gebruik de standaard waarden en typ een unieke naam binnen de naam ruimte trafficmanager.net.
 
-Zie [Snelstart: Een Traffic Manager-profiel maken voor een zeer beschikbare webapplicatie voor](../traffic-manager/quickstart-create-traffic-manager-profile.md)informatie over het maken van een Traffic Manager-profiel.
+Voor informatie over het maken van een Traffic Manager profiel raadpleegt u [Quick Start: een Traffic Manager profiel maken voor een Maxi maal beschik bare webtoepassing](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 ### <a name="create-endpoints"></a>Eindpunten maken
 
-Nu u de eindpunten voor de twee web-apps maken.
+U kunt nu de eind punten voor de twee web-apps maken.
 
-1. Open uw resourcegroep en selecteer uw Traffic Manager-profiel.
-2. Selecteer **Eindpunten in**de linkerkolom .
+1. Open de resource groep en selecteer uw Traffic Manager profiel.
+2. Selecteer **eind punten**in de linkerkolom.
 3. Selecteer **Toevoegen**.
-4. Gebruik de volgende tabel om de eindpunten te configureren:
+4. Gebruik de volgende tabel om de eind punten te configureren:
 
-   |Type  |Name  |Doel  |Locatie  |Aangepaste header-instellingen|
+   |Type  |Naam  |Doel  |Locatie  |Instellingen voor aangepaste header|
    |---------|---------|---------|---------|---------|
-   |Extern eindpunt     |Einde-01|IP-adres dat u hebt geregistreerd voor App-01|VS - oost|host:\<de URL die u hebt opgenomen voor App-01\><br>Voorbeeld: **host:app-01.azurewebsites.net**|
-   |Extern eindpunt     |Einde-02|IP-adres dat u hebt geregistreerd voor App-02|VS - centraal|host:\<de URL die u hebt opgenomen voor App-02\><br>Voorbeeld: **host:app-02.azurewebsites.net**
+   |Extern eind punt     |End-01|IP-adres dat u hebt genoteerd voor app-01|VS - oost|host:\<de URL die u hebt vastgelegd voor app-01\><br>Voor beeld: **host: app-01.azurewebsites.net**|
+   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|VS - centraal|host:\<de URL die u voor app-02 hebt vastgelegd\><br>Voor beeld: **host: app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zone maken
 
-U een bestaande DNS-zone gebruiken om te testen, of u een nieuwe zone maken. Zie [Zelfstudie: Uw domein hosten in Azure DNS](dns-delegate-domain-azure-dns.md)als u een nieuwe DNS-zone in Azure wilt maken en delegeren.
+U kunt een bestaande DNS-zone gebruiken om te testen of u kunt een nieuwe zone maken. Als u een nieuwe DNS-zone wilt maken en delegeren in azure, raadpleegt u [zelf studie: host uw domein in azure DNS](dns-delegate-domain-azure-dns.md).
 
-## <a name="add-a-txt-record-for-custom-domain-validation"></a>Een TXT-record toevoegen voor aangepaste domeinvalidatie
+## <a name="add-a-txt-record-for-custom-domain-validation"></a>Een TXT-record toevoegen voor het valideren van aangepaste domeinen
 
-Wanneer u een aangepaste hostnaam toevoegt aan uw web-apps, wordt gezocht naar een specifieke TXT-record om uw domein te valideren.
+Wanneer u een aangepaste hostnaam aan uw web-apps toevoegt, zoekt deze naar een specifieke TXT-record om uw domein te valideren.
 
-1. Open uw brongroep en selecteer de DNS-zone.
+1. Open de resource groep en selecteer de DNS-zone.
 2. Selecteer **Recordset**.
-3. Voeg de recordset toe met de volgende tabel. Gebruik voor de waarde de werkelijke URL van de web-app die u eerder hebt opgenomen:
+3. Voeg de recordset toe met behulp van de volgende tabel. Voor de waarde gebruikt u de daad werkelijke web-app-URL die u eerder hebt vastgelegd:
 
-   |Name  |Type  |Waarde|
+   |Naam  |Type  |Waarde|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -113,51 +113,51 @@ Wanneer u een aangepaste hostnaam toevoegt aan uw web-apps, wordt gezocht naar e
 
 Voeg een aangepast domein toe voor beide web-apps.
 
-1. Open uw brongroep en selecteer uw eerste web-app.
-2. Selecteer **aangepaste domeinen**in de linkerkolom .
-3. Selecteer **Onder Aangepaste domeinen**de optie Aangepast domein **toevoegen**.
-4. Typ **onder Aangepast domein**uw aangepaste domeinnaam. Bijvoorbeeld contoso.com.
+1. Open de resource groep en selecteer uw eerste web-app.
+2. Selecteer in de linkerkolom **aangepaste domeinen**.
+3. Onder **aangepaste domeinen**selecteert u **aangepast domein toevoegen**.
+4. Onder **aangepast domein**typt u uw aangepaste domein naam. Bijvoorbeeld contoso.com.
 5. Selecteer **Valideren**.
 
-   Uw domein moet validatie doorgeven en groene vinkjes weergeven naast **beschikbaarheid hostname** en **domeineigendom.**
-5. Selecteer **Aangepast domein toevoegen**.
-6. Als u de nieuwe hostnaam wilt weergeven onder **Hostnames die aan de site zijn toegewezen,** vernieuwt u uw browser. De vernieuwing op de pagina wordt niet altijd meteen weergegeven.
+   Uw domein moet validatie door geven en groene vinkjes weer geven naast **hostnamen Beschik baarheid** en **domein eigendom**.
+5. Selecteer **aangepast domein toevoegen**.
+6. Vernieuw uw browser om de nieuwe hostnaam te bekijken onder **hostnamen die zijn toegewezen aan de site**. Bij het vernieuwen op de pagina worden de wijzigingen niet altijd meteen weer gegeven.
 7. Herhaal deze procedure voor uw tweede web-app.
 
-## <a name="add-the-alias-record-set"></a>De aliasrecordset toevoegen
+## <a name="add-the-alias-record-set"></a>De set met alias records toevoegen
 
-Voeg nu een aliasrecord toe voor de zonetop.
+Voeg nu een alias record toe voor de zone Apex.
 
-1. Open uw brongroep en selecteer de DNS-zone.
+1. Open de resource groep en selecteer de DNS-zone.
 2. Selecteer **Recordset**.
-3. Voeg de recordset toe met de volgende tabel:
+3. Voeg de recordset toe met behulp van de volgende tabel:
 
-   |Name  |Type  |Alias record set  |Aliastype  |Azure-bron|
+   |Naam  |Type  |Alias records instellen  |Alias type  |Azure-resource|
    |---------|---------|---------|---------|-----|
-   |@     |A|Ja|Azure-bron|Traffic Manager - uw profiel|
+   |@     |A|Ja|Azure-resource|Traffic Manager-uw profiel|
 
 
-## <a name="test-your-web-apps"></a>Uw web-apps testen
+## <a name="test-your-web-apps"></a>Uw Web-Apps testen
 
-Nu u testen of u uw web-app bereiken en dat deze in balans wordt gebracht.
+U kunt nu testen om er zeker van te zijn dat u uw web-app kunt bereiken en dat de taak verdeling wordt gebalanceerd.
 
-1. Open een webbrowser en blader naar uw domein. Bijvoorbeeld contoso.com. U ziet de standaardwebpagina.
-2. Stop je eerste web-app.
-3. Sluit uw webbrowser en wacht een paar minuten.
-4. Start uw webbrowser en blader naar uw domein. U moet nog steeds de standaardwebpagina zien.
+1. Open een webbrowser en blader naar uw domein. Bijvoorbeeld contoso.com. De pagina standaard web-app wordt weer geven.
+2. Stop uw eerste web-app.
+3. Sluit de webbrowser en wacht enkele minuten.
+4. Start uw webbrowser en blader naar uw domein. De standaard pagina voor web-apps moet nog steeds worden weer geven.
 5. Stop uw tweede web-app.
-6. Sluit uw webbrowser en wacht een paar minuten.
-7. Start uw webbrowser en blader naar uw domein. U moet Fout 403 zien, die aangeeft dat de web-app is gestopt.
+6. Sluit de webbrowser en wacht enkele minuten.
+7. Start uw webbrowser en blader naar uw domein. U ziet fout 403 om aan te geven dat de web-app is gestopt.
 8. Start uw tweede web-app.
-9. Sluit uw webbrowser en wacht een paar minuten.
-10. Start uw webbrowser en blader naar uw domein. U moet de standaardwebpagina van de web-app opnieuw bekijken.
+9. Sluit de webbrowser en wacht enkele minuten.
+10. Start uw webbrowser en blader naar uw domein. De pagina standaard web-app wordt opnieuw weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over aliasrecords:
+Raadpleeg de volgende artikelen voor meer informatie over alias records:
 
-- [Zelfstudie: Een aliasrecord configureren om te verwijzen naar een openbaar IP-adres van Azure](tutorial-alias-pip.md)
+- [Zelf studie: een alias record configureren om te verwijzen naar een openbaar IP-adres van Azure](tutorial-alias-pip.md)
 - [Zelfstudie: een Azure DNS-aliasrecord configureren om het gebruik van hoofddomeinnaam met Traffic Manager te ondersteunen](tutorial-alias-tm.md)
 - [Veelgestelde vragen over DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 
-Zie [Een actieve DNS-naam migreren naar Azure App Service](../app-service/manage-custom-dns-migrate-domain.md)voor meer informatie over het migreren van een actieve DNS-naam.
+Zie [een actieve DNS-naam migreren naar Azure app service](../app-service/manage-custom-dns-migrate-domain.md)voor meer informatie over het migreren van een actieve DNS-naam.

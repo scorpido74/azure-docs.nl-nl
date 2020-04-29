@@ -1,49 +1,49 @@
 ---
-title: Standpunten in managementoplossingen | Microsoft Documenten
-description: 'Beheeroplossingen bevatten doorgaans een of meer weergaven om gegevens te visualiseren.  In dit artikel wordt beschreven hoe u een weergave exporteren die is gemaakt door de View Designer en deze opnemen in een beheeroplossing. '
+title: Weer gaven in beheer oplossingen | Microsoft Docs
+description: 'Beheer oplossingen bevatten meestal een of meer weer gaven voor het visualiseren van gegevens.  In dit artikel wordt beschreven hoe u een weer gave exporteert die is gemaakt met de ontwerp functie voor weer gaven en deze opneemt in een beheer oplossing. '
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663042"
 ---
-# <a name="views-in-management-solutions-preview"></a>Weergaven in beheeroplossingen (Preview)
+# <a name="views-in-management-solutions-preview"></a>Weer gaven in beheer oplossingen (preview-versie)
 > [!NOTE]
-> Dit is voorlopige documentatie voor het maken van managementoplossingen die momenteel in preview zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.    
+> Dit is voorlopige documentatie voor het maken van beheer oplossingen die momenteel als preview-versie beschikbaar zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.    
 
 
-[Beheeroplossingen](solutions.md) bevatten doorgaans een of meer weergaven om gegevens te visualiseren.  In dit artikel wordt beschreven hoe u een weergave exporteren die is gemaakt door de [View Designer](../../azure-monitor/platform/view-designer.md) en deze opnemen in een beheeroplossing.  
+[Beheer oplossingen](solutions.md) bevatten meestal een of meer weer gaven voor het visualiseren van gegevens.  In dit artikel wordt beschreven hoe u een weer gave exporteert die is gemaakt met de [ontwerp functie voor weer gaven](../../azure-monitor/platform/view-designer.md) en deze opneemt in een beheer oplossing.  
 
 > [!NOTE]
-> De voorbeelden in dit artikel gebruiken parameters en variabelen die vereist of gemeenschappelijk zijn voor beheeroplossingen en worden beschreven in [Ontwerp en een beheeroplossing bouwen in Azure](solutions-creating.md)
+> In de voor beelden in dit artikel worden para meters en variabelen gebruikt die vereist zijn of gemeen schappelijk zijn voor beheer oplossingen en die worden beschreven in [ontwerp en bouw een beheer oplossing in azure](solutions-creating.md)
 >
 >
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u al weet hoe u [een beheeroplossing](solutions-creating.md) en de structuur van een oplossingsbestand maken.
+In dit artikel wordt ervan uitgegaan dat u al bekend bent met het [maken van een beheer oplossing](solutions-creating.md) en de structuur van een oplossings bestand.
 
 ## <a name="overview"></a>Overzicht
-Als u een weergave wilt opnemen in een beheeroplossing, maakt u er een **bron** voor in het [oplossingsbestand.](solutions-creating.md)  De JSON die de gedetailleerde configuratie van de weergave beschrijft, is meestal wel complex en niet iets dat een typische oplossingsauteur handmatig zou kunnen maken.  De meest voorkomende methode is om de weergave te maken met behulp van de [View Designer,](../../azure-monitor/platform/view-designer.md)exporteren en vervolgens de gedetailleerde configuratie toe te voegen aan de oplossing.
+Als u een weer gave in een beheer oplossing wilt gebruiken, maakt u een **bron** voor deze in het [oplossings bestand](solutions-creating.md).  De JSON die de gedetailleerde configuratie van de weer gave beschrijft, is doorgaans complex, maar niet iets dat een typische auteur van de oplossing hand matig zou kunnen maken.  De meest voorkomende methode is om de weer gave te maken met behulp van de [weer gave Designer](../../azure-monitor/platform/view-designer.md), deze te exporteren en vervolgens de gedetailleerde configuratie aan de oplossing toe te voegen.
 
-De basisstappen om een weergave aan een oplossing toe te voegen zijn als volgt.  Elke stap wordt in de onderstaande secties nader beschreven.
+De basis stappen om een weer gave aan een oplossing toe te voegen, zijn als volgt.  Elke stap wordt uitvoerig beschreven in de volgende secties.
 
-1. Exporteer de weergave naar een bestand.
-2. Maak de weergavebron in de oplossing.
-3. Voeg de weergavedetails toe.
+1. De weer gave exporteren naar een bestand.
+2. Maak de weergave resource in de oplossing.
+3. Voeg de weergave Details toe.
 
-## <a name="export-the-view-to-a-file"></a>De weergave exporteren naar een bestand
-Volg de instructies bij [Log Analytics View Designer](../../azure-monitor/platform/view-designer.md) om een weergave naar een bestand te exporteren.  Het geëxporteerde bestand is in JSON-indeling met dezelfde [elementen als het oplossingsbestand.](solutions-solution-file.md)  
+## <a name="export-the-view-to-a-file"></a>De weer gave naar een bestand exporteren
+Volg de instructies in [log Analytics Designer weer geven](../../azure-monitor/platform/view-designer.md) om een weer gave te exporteren naar een bestand.  Het geëxporteerde bestand heeft een JSON-indeling met dezelfde [elementen als het oplossings bestand](solutions-solution-file.md).  
 
-Het **bronnenelement** van het weergavebestand heeft een bron met een type **Microsoft.OperationalInsights/workspaces** dat de werkruimte Log Analytics vertegenwoordigt.  Dit element heeft een subelement met een type **weergaven** dat de weergave vertegenwoordigt en de gedetailleerde configuratie bevat.  U kopieert de details van dit element en kopieert het vervolgens naar uw oplossing.
+Het element **resources** van het weergave bestand heeft een resource met het type **micro soft. OperationalInsights/Workspaces** dat de log Analytics-werk ruimte vertegenwoordigt.  Dit element heeft een subelement met een type **weer gaven** dat de weer gave vertegenwoordigt en de gedetailleerde configuratie bevat.  U kopieert de details van dit element en kopieert deze vervolgens naar uw oplossing.
 
-## <a name="create-the-view-resource-in-the-solution"></a>De weergavebron in de oplossing maken
-Voeg de volgende weergavebron toe aan het **bronnenelement** van uw oplossingsbestand.  Dit maakt gebruik van variabelen die hieronder worden beschreven die u ook moet toevoegen.  Houd er rekening mee dat de eigenschappen **Dashboard** en **OverviewTile** tijdelijke aanduidingen zijn die u overschrijft met de bijbehorende eigenschappen uit het geëxporteerde weergavebestand.
+## <a name="create-the-view-resource-in-the-solution"></a>De bron van de weer gave maken in de oplossing
+Voeg de volgende weergave resource toe aan het element **resources** van het oplossings bestand.  Dit maakt gebruik van variabelen die hieronder worden beschreven en die u ook moet toevoegen.  Houd er rekening mee dat de eigenschappen **dash board** en **OverviewTile** tijdelijke aanduidingen zijn die u overschrijft met de bijbehorende eigenschappen uit het geëxporteerde weergave bestand.
 
     {
         "apiVersion": "[variables('LogAnalyticsApiVersion')]",
@@ -65,39 +65,39 @@ Voeg de volgende weergavebron toe aan het **bronnenelement** van uw oplossingsbe
         }
     }
 
-Voeg de volgende variabelen toe aan het element variabelen van het oplossingsbestand en vervang de waarden aan die voor uw oplossing.
+Voeg de volgende variabelen toe aan het element Varia bles van het oplossings bestand en vervang de waarden door die voor uw oplossing.
 
     "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
 
-Houd er rekening mee dat u de volledige weergavebron uit uw geëxporteerde weergavebestand kopiëren, maar dat u de volgende wijzigingen moet aanbrengen om deze in uw oplossing te laten werken.  
+U kunt de volledige weergave resource kopiëren vanuit het geëxporteerde weergave bestand, maar u moet wel de volgende wijzigingen aanbrengen om te werken in uw oplossing.  
 
-* Het **type** voor de weergavebron moet worden gewijzigd van **weergaven** naar **Microsoft.OperationalInsights/workspaces**.
-* De **eigenschap naam** voor de weergavebron moet worden gewijzigd om de naam van de werkruimte op te nemen.
-* De afhankelijkheid van de werkruimte moet worden verwijderd omdat de werkruimtebron niet is gedefinieerd in de oplossing.
-* De eigenschap **DisplayName** moet aan de weergave worden toegevoegd.  De **id,** **naam**en **displayname** moeten allemaal overeenkomen.
-* Parameternamen moeten worden gewijzigd om overeen te komen met de vereiste set parameters.
-* Variabelen moeten in de oplossing worden gedefinieerd en in de juiste eigenschappen worden gebruikt.
+* Het **type** voor de weergave resource moet worden gewijzigd van **views** in **micro soft. OperationalInsights/Workspaces**.
+* De **naam** eigenschap van de weergave resource moet worden gewijzigd om de naam van de werk ruimte op te geven.
+* De afhankelijkheid van de werk ruimte moet worden verwijderd omdat de werkruimte resource niet is gedefinieerd in de oplossing.
+* De eigenschap **DisplayName** moet worden toegevoegd aan de weer gave.  De **id**, **naam**en **DisplayName** moeten overeenkomen.
+* Parameter namen moeten worden gewijzigd om overeen te komen met de vereiste set para meters.
+* Variabelen moeten worden gedefinieerd in de oplossing en worden gebruikt in de relevante eigenschappen.
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API-versie
-Alle Log Analytics-resources die zijn gedefinieerd in een Resource Manager-sjabloon hebben een **eigenschapsapiVersie** die de versie van de API definieert die de bron moet gebruiken.  Deze versie is anders voor weergaven met query's die de [oudere en de bijgewerkte querytaal](../../azure-monitor/log-query/log-query-overview.md)gebruiken.  
+Alle Log Analytics resources die in een resource manager-sjabloon zijn gedefinieerd, hebben een eigenschap **apiVersion** die de versie definieert van de API die door de resource moet worden gebruikt.  Deze versie is anders voor weer gaven met query's die gebruikmaken van de [oude en bijgewerkte query taal](../../azure-monitor/log-query/log-query-overview.md).  
 
- In de volgende tabel worden de API-versies van Log Analytics opgegeven voor weergaven in verouderde en bijgewerkte werkruimten: 
+ De volgende tabel bevat de Log Analytics-API-versies voor weer gaven in oude en bijgewerkte werk ruimten: 
 
-| Werkruimteversie | API-versie | Query’s uitvoeren |
+| Werkruimte versie | API-versie | Query’s uitvoeren |
 |:---|:---|:---|
-| v1 (nalatenschap)   | 2015-11-01-preview | Legacy-indeling.<br> Voorbeeld: type=gebeurtenisgebeurtenisLevelName = Fout  |
-| v2 (geüpgraded) | 2015-11-01-preview | Legacy-indeling.  Geconverteerd naar een geüpgradede indeling bij installatie.<br> Voorbeeld: type=gebeurtenisgebeurtenisLevelName = Fout<br>Geconverteerd naar: gebeurtenis &#124; waar EventLevelName == "Fout"  |
-| v2 (geüpgraded) | 2017-03-03-preview | Upgrade-indeling. <br>Voorbeeld: gebeurtenis &#124; waarbij EventLevelName == "Fout"  |
+| V1 (verouderd)   | 2015-11-01-preview | Verouderde indeling.<br> Voor beeld: type = Event EventLevelName = error  |
+| v2 (bijgewerkt) | 2015-11-01-preview | Verouderde indeling.  Geconverteerd naar een bijgewerkte indeling bij de installatie.<br> Voor beeld: type = Event EventLevelName = error<br>Geconverteerd naar: gebeurtenis &#124; waarbij EventLevelName = = "Error"  |
+| v2 (bijgewerkt) | 2017-03-03-preview | Upgrade-indeling. <br>Voor beeld: gebeurtenis &#124; waarbij EventLevelName = = "Error"  |
 
 
-## <a name="add-the-view-details"></a>De weergavedetails toevoegen
-De weergavebron in het geëxporteerde weergavebestand bevat twee elementen in het **eigenschappenelement** **Dashboard** en **OverviewTile** die de gedetailleerde configuratie van de weergave bevatten.  Kopieer deze twee elementen en de inhoud ervan naar het **eigenschappenelement** van de weergavebron in uw oplossingsbestand.
+## <a name="add-the-view-details"></a>Details van de weer gave toevoegen
+De resource weer geven in het geëxporteerde weergave bestand bevat twee elementen in het element **Properties** met de naam **dash board** en **OverviewTile** , die de gedetailleerde configuratie van de weer gave bevatten.  Kopieer deze twee elementen en hun inhoud naar het **Eigenschappen** element van de resource weer geven in het oplossings bestand.
 
 ## <a name="example"></a>Voorbeeld
-In het volgende voorbeeld wordt bijvoorbeeld een eenvoudig oplossingsbestand met een weergave weergegeven.  Ellipsen (...) worden om ruimteredenen weergegeven voor de inhoud **van dashboard** en **OverzichtTegel.**
+In het volgende voor beeld ziet u bijvoorbeeld een eenvoudig oplossings bestand met een weer gave.  Er worden weglatings tekens (...) weer gegeven voor de inhoud van het **dash board** en de **OverviewTile** om redenen van ruimte.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -180,5 +180,5 @@ In het volgende voorbeeld wordt bijvoorbeeld een eenvoudig oplossingsbestand met
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het maken van [beheeroplossingen.](solutions-creating.md)
-* Neem [automatiseringsboeken op in uw beheeroplossing.](solutions-resources-automation.md)
+* Meer informatie over het maken van [beheer oplossingen](solutions-creating.md).
+* Neem [Automation-runbooks op in uw beheer oplossing](solutions-resources-automation.md).
