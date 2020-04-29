@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
 ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133625"
 ---
 # <a name="azure-networking-services-overview"></a>Overzicht van Azure Networking Services
@@ -93,18 +93,18 @@ In deze sectie worden netwerk services in azure beschreven waarmee u uw netwerk 
 |Service|Waarom gebruiken?|Scenario|
 |---|---|---|
 |[DDoS-beveiliging](#ddosprotection) |Hoge Beschik baarheid voor uw toepassingen met beveiliging tegen overtollige IP-verkeer|[Azure DDoS Protection beheren](../virtual-network/manage-ddos-protection.md)|
-|[Web Application firewall](#waf)|<p>[Azure WAF met Application Gateway](../web-application-firewall/ag/ag-overview.md) biedt regionale beveiliging van entiteiten in open bare en privé-adres ruimte</p><p>[Azure WAF met de voor deur](../web-application-firewall/afds/afds-overview.md) biedt beveiliging aan de rand van het netwerk tot open bare eind punten.</p>|<p>[Bot-beveiligings regels configureren](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Aangepast antwoordcode configureren](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-beperkings regels configureren](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Regel voor frequentie limiet configureren](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Web Application Firewall](#waf)|<p>[Azure WAF met Application Gateway](../web-application-firewall/ag/ag-overview.md) biedt regionale beveiliging van entiteiten in open bare en privé-adres ruimte</p><p>[Azure WAF met de voor deur](../web-application-firewall/afds/afds-overview.md) biedt beveiliging aan de rand van het netwerk tot open bare eind punten.</p>|<p>[Bot-beveiligings regels configureren](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Aangepast antwoordcode configureren](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-beperkings regels configureren](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Regel voor frequentie limiet configureren](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure Firewall](#firewall)|Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid.|<p>[Een Azure Firewall implementeren in een Vnet](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-Een Azure Firewall implementeren in een hybride netwerk](../firewall/tutorial-hybrid-ps.md)</p> <p>[Inkomend verkeer filteren met Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
 |[Netwerkbeveiligingsgroepen](#nsg)|Volledig granulair gedistribueerd besturings element voor eind knooppunten op VM/subnet voor alle netwerk verkeer stromen|[Netwerkverkeer filteren met netwerkbeveiligingsgroepen](../virtual-network/tutorial-filter-network-traffic.md)|
 |[Service-eindpunten voor virtueel netwerk](#serviceendpoints)|Hiermee kunt u de netwerk toegang tot bepaalde Azure-service bronnen beperken tot een subnet van een virtueel netwerk|[Netwerktoegang tot PaaS-resources beperken](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
-[Private Link](#privatelink)|Hiermee hebt u toegang tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste klanten services van de klant via een persoonlijk eind punt in uw virtuele netwerk.|<p>[Een privé-eindpunt maken](../private-link/create-private-endpoint-portal.md)</p><p>[Een Private Link-service maken](../private-link/create-private-link-service-portal.md)</p>|
+[Private Link](#privatelink)|Hiermee hebt u toegang tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste klanten services van de klant via een persoonlijk eind punt in uw virtuele netwerk.|<p>[Een persoonlijk eind punt maken](../private-link/create-private-endpoint-portal.md)</p><p>[Een Private Link-service maken](../private-link/create-private-link-service-portal.md)</p>|
 |||
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
 [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) biedt tegen maatregelen tegen de meest geavanceerde DDoS bedreigingen. De service biedt verbeterde mogelijkheden voor DDoS-beperking voor uw toepassing en resources die zijn geïmplementeerd in uw virtuele netwerken. Klanten die Azure DDoS Protection gebruiken, hebben bovendien toegang tot DDoS snelle reactie ondersteuning om DDoS-experts te benaderen tijdens een actieve aanval.
 
 ![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application firewall
+### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall
 
 [Azure Web Application firewall](../web-application-firewall/overview.md) (WAF) biedt beveiliging voor uw webtoepassingen van veelvoorkomende webtoepassingen en zwakke plekken, zoals SQL-injectie en scripting op meerdere sites. Azure WAF voorziet in out-of-Box-beveiliging van OWASP Top 10 van beveiligings problemen via beheerde regels. Daarnaast kunnen klanten aangepaste regels configureren, die door de klant beheerde regels zijn om extra beveiliging te bieden op basis van het bron-IP-bereik, en om kenmerken zoals kopteksten, cookies, formulier gegevens velden of query reeks parameters op te geven.
 

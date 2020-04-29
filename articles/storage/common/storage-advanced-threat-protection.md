@@ -11,10 +11,10 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127535"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigings beveiliging voor Azure Storage configureren
@@ -84,14 +84,14 @@ Gebruik een Azure Policy om geavanceerde bedreigings beveiliging in te scha kele
 
     ![Pagina beleids definities](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-api"></a>[REST-API](#tab/rest-api)
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Gebruik rest API-opdrachten om de geavanceerde instelling voor beveiliging tegen bedreigingen te maken, bij te werken of op te halen voor een specifiek opslag account.
 
 * [Advanced Threat Protection-maken](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Advanced Threat Protection-ophalen](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[Zo](#tab/azure-powershell)
 
 Gebruik de volgende Power shell-cmdlets:
 

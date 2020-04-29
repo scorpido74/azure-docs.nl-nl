@@ -1,6 +1,6 @@
 ---
-title: Asynchrone vernieuwing voor Azure Analysis Services-modellen | Microsoft Documenten
-description: Beschrijft hoe u de AZURE Analysis Services REST API gebruiken om asynchrone vernieuwing van modelgegevens te coderen.
+title: Asynchroon vernieuwen voor Azure Analysis Services modellen | Microsoft Docs
+description: Hierin wordt beschreven hoe u de Azure Analysis Services REST API gebruikt voor het coderen van asynchrone vernieuwing van model gegevens.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,49 +8,49 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406290"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
-Door elke programmeertaal te gebruiken die REST-oproepen ondersteunt, u asynchrone gegevensvernieuwingsbewerkingen uitvoeren op uw tabelmodellen van Azure Analysis Services. Dit omvat synchronisatie van alleen-lezen replica's voor queryscale-out. 
+Door gebruik te maken van elke programmeer taal die REST-aanroepen ondersteunt, kunt u asynchrone bewerkingen voor het vernieuwen van gegevens uitvoeren op uw Azure Analysis Services modellen in tabel vorm. Dit omvat synchronisatie van alleen-lezen replica's voor het uitbreiden van de query. 
 
-Gegevensvernieuwen kan enige tijd in beslag nemen, afhankelijk van een aantal factoren, waaronder het gegevensvolume, het optimalisatieniveau met behulp van partities, enz. Deze bewerkingen worden traditioneel aangeroepen met bestaande methoden zoals het gebruik van [TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabelvormig objectmodel), [PowerShell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) of [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (Tabelmodelscripttaal). Deze methoden kunnen echter vaak onbetrouwbare, langlopende HTTP-verbindingen vereisen.
+Het vernieuwen van gegevens kan enige tijd in beslag nemen, afhankelijk van een aantal factoren, zoals het gegevens volume, het optimalisatie niveau met behulp van partities, enzovoort. Deze bewerkingen zijn traditioneel aangeroepen met bestaande methoden, zoals het gebruik van [Tom](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellair object model), [Power shell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -cmdlets of [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tabellaire model script taal). Deze methoden kunnen echter vaak onbetrouwbare, langlopende HTTP-verbindingen vereisen.
 
-Met de REST API voor Azure Analysis Services kunnen bewerkingen voor gegevensvernieuwing asynchroon worden uitgevoerd. Door gebruik te maken van de REST API zijn langlopende HTTP-verbindingen van clienttoepassingen niet nodig. Er zijn ook andere ingebouwde functies voor betrouwbaarheid, zoals automatische retries en batched commits.
+Met de REST API voor Azure Analysis Services kunnen bewerkingen voor gegevens vernieuwing asynchroon worden uitgevoerd. Met behulp van de REST API kunnen langlopende HTTP-verbindingen van client toepassingen niet nodig zijn. Er zijn ook andere ingebouwde functies voor betrouw baarheid, zoals automatische nieuwe pogingen en batch doorvoer.
 
 ## <a name="base-url"></a>Basis-URL
 
-De basis-URL volgt deze indeling:
+De basis-URL heeft de volgende indeling:
 
 ```
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Overweeg bijvoorbeeld een model met de naam `myserver`AdventureWorks op een server met de naam , gelegen in de West US Azure-regio. De servernaam is:
+Denk bijvoorbeeld aan een model met de naam AdventureWorks op een server `myserver`met de naam, die zich bevindt in de Azure-regio West vs. De server naam is:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
 ```
 
-De basis-URL voor deze servernaam is:
+De basis-URL voor deze server naam is:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-Door gebruik te maken van de basis-URL kunnen resources en bewerkingen worden toegevoegd op basis van de volgende parameters: 
+Met behulp van de basis-URL kunnen resources en bewerkingen worden toegevoegd op basis van de volgende para meters: 
 
-![Async vernieuwen](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
+![Asynchroon vernieuwen](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
-- Alles wat eindigt in **s** is een collectie.
+- Alles wat in **s** eindigt, is een verzameling.
 - Alles wat eindigt met **()** is een functie.
-- Iets anders is een bron / object.
+- Iets anders is een resource/object.
 
-U bijvoorbeeld het werkwoord POST in de collectie Vernieuwen gebruiken om een vernieuwingsbewerking uit te voeren:
+U kunt bijvoorbeeld de bewerking POST in de verzameling vernieuwen gebruiken om een vernieuwings bewerking uit te voeren:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
@@ -58,22 +58,22 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 ## <a name="authentication"></a>Verificatie
 
-Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory -token (OAuth 2) in de kopautorisatie en moeten voldoen aan de volgende vereisten:
+Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token in de autorisatie-header en moeten voldoen aan de volgende vereisten:
 
-- Het token moet een gebruikerstoken of een aangever van de toepassingsservice zijn.
-- Het token moet de juiste `https://*.asazure.windows.net`doelgroep hebben ingesteld op .
-- De gebruiker of toepassing moet over voldoende machtigingen op de server of het model beschikken om de gevraagde oproep te kunnen doen. Het machtigingsniveau wordt bepaald door rollen binnen het model of de beheergroep op de server.
+- Het token moet een gebruikers token of een service-principal voor de toepassing zijn.
+- Voor het token moet de juiste doel groep zijn `https://*.asazure.windows.net`ingesteld op.
+- De gebruiker of toepassing moet voldoende machtigingen hebben op de server of het model om de aangevraagde aanroep te kunnen uitvoeren. Het machtigings niveau wordt bepaald door rollen in het model of de groep Administrators op de server.
 
     > [!IMPORTANT]
-    > Momenteel zijn **serverbeheerdersfunctiemachtigingen** nodig.
+    > Op dit moment zijn er machtigingen voor de **Server** beheerdersrol vereist.
 
-## <a name="post-refreshes"></a>POST /refreshes
+## <a name="post-refreshes"></a>/Refreshes plaatsen
 
-Als u een vernieuwingsbewerking wilt uitvoeren, gebruikt u het werkwoord POST in de verzameling /refreshes om een nieuw vernieuwend item aan de verzameling toe te voegen. De koptekst Locatie in het antwoord bevat de vernieuwings-id. De clienttoepassing kan de status later loskoppelen en controleren indien nodig omdat deze asynchroon is.
+Als u een vernieuwings bewerking wilt uitvoeren, gebruikt u de bewerking POST in de verzameling/refreshes om een nieuw vernieuwings item toe te voegen aan de verzameling. De locatie header in het antwoord bevat de vernieuwings-ID. De client toepassing kan de verbinding verbreken en de status later indien nodig controleren, omdat deze asynchroon is.
 
-Voor een model wordt slechts één vernieuwingsbewerking tegelijk geaccepteerd. Als er een huidige bewerking voor het vernieuwen van uitgevoerd is en er een andere is ingediend, wordt de HTTP-statuscode 409 Conflict geretourneerd.
+Er wordt slechts één vernieuwings bewerking geaccepteerd per keer voor een model. Als er een actieve vernieuwings bewerking wordt uitgevoerd en er een andere wordt verzonden, wordt de HTTP-status code van 409-conflicten geretourneerd.
 
-Het lichaam kan op het volgende lijken:
+De hoofd tekst kan er als volgt uitzien:
 
 ```
 {
@@ -95,35 +95,35 @@ Het lichaam kan op het volgende lijken:
 
 ### <a name="parameters"></a>Parameters
 
-Het opgeven van parameters is niet vereist. De standaardinstelling wordt toegepast.
+Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast.
 
 | Naam             | Type  | Beschrijving  |Standaard  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn uitgelijnd met de [vernieuwingstypen van](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) TMSL: volledig, clearValues, calculate, dataOnly, automatisch en defragment. Type toevoegen wordt niet ondersteund.      |   automatisch      |
-| `CommitMode`     | Enum  | Hiermee bepaalt u of objecten in batches worden vastgelegd of alleen wanneer deze zijn voltooid. Modi zijn: standaard, transactioneel, gedeeltelijkBatch.  |  Transactionele       |
-| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkingsopdrachten parallel moeten worden uitgevoerd. Deze waarde is uitgelijnd met de eigenschap MaxParallelisme die kan worden ingesteld in de opdracht TMSL [Sequence](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) of met andere methoden.       | 10        |
-| `RetryCount`     | Int   | Geeft aan hoe vaak de bewerking opnieuw wordt geprobeerd voordat deze mislukt.      |     0    |
-| `Objects`        | Matrix | Een array met objecten die moeten worden verwerkt. Elk object bevat: "tabel" bij het verwerken van de hele tabel of "tabel" en "partitie" bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het hele model verwerken      |
+| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   automatisch      |
+| `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
+| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
+| `RetryCount`     | Int   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
+| `Objects`        | Matrix | Een matrix met objecten die moeten worden verwerkt. Elk object bevat: ' tabel ' bij het verwerken van de volledige tabel of ' tabel ' en ' partitie ' bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het volledige model verwerken      |
 
-CommitMode is gelijk aan gedeeltelijkBatch. Het wordt gebruikt bij het doen van een eerste belasting van grote gegevenssets die uren kunnen duren. Als de vernieuwingsbewerking mislukt nadat een of meer batches zijn vastgelegd, blijven de met succes vastgelegde batches vastgelegd (deze worden niet met succes vastgelegde batches teruggedraaid).
+CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van een initiële belasting van grote gegevens sets die uren kunnen duren. Als de vernieuwings bewerking mislukt nadat een of meer batches zijn doorgevoerd, blijven de doorgevoerde batches doorgevoerd (de doorgevoerde batches kunnen niet worden hersteld).
 
 > [!NOTE]
-> Op het moment van schrijven is de batchgrootte de waarde maxparallelïsme, maar deze waarde kan veranderen.
+> De Batch grootte is op het moment van schrijven de MaxParallelism-waarde, maar deze waarde zou kunnen veranderen.
 
-### <a name="status-values"></a>Statuswaarden
+### <a name="status-values"></a>Status waarden
 
 |Statuswaarde  |Beschrijving  |
 |---------|---------|
-|`notStarted`    |   De operatie is nog niet begonnen.      |
-|`inProgress`     |   Operatie in volle gang.      |
-|`timedOut`     |    Er is een time-out op basis van een time-out van de gebruiker.     |
-|`cancelled`     |   Bewerking geannuleerd door gebruiker of systeem.      |
+|`notStarted`    |   De bewerking is nog niet gestart.      |
+|`inProgress`     |   De bewerking wordt uitgevoerd.      |
+|`timedOut`     |    Er is een time-out opgetreden voor de bewerking op basis van de opgegeven time     |
+|`cancelled`     |   De bewerking is geannuleerd door de gebruiker of het systeem.      |
 |`failed`     |   De bewerking is mislukt.      |
-|`succeeded`      |   De operatie is geslaagd.      |
+|`succeeded`      |   De bewerking is voltooid.      |
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+## <a name="get-refreshesrefreshid"></a>/Refreshes/\<refreshId ophalen>
 
-Als u de status van een vernieuwingsbewerking wilt controleren, gebruikt u het werkwoord GET op de vernieuwings-id. Hier is een voorbeeld van het reactielichaam. Als de bewerking aan `inProgress` de gang is, wordt deze als status geretourneerd.
+Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, `inProgress` wordt de status geretourneerd.
 
 ```
 {
@@ -147,12 +147,12 @@ Als u de status van een vernieuwingsbewerking wilt controleren, gebruikt u het w
 }
 ```
 
-## <a name="get-refreshes"></a>GET /refreshs
+## <a name="get-refreshes"></a>/Refreshes ophalen
 
-Als u een lijst met historische vernieuwingsbewerkingen voor een model wilt ophalen, gebruikt u het werkwoord GET in de verzameling /refreshes. Hier is een voorbeeld van het reactielichaam. 
+Als u een lijst met historische vernieuwings bewerkingen voor een model wilt weer geven, gebruikt u de bewerking GET in de/refreshes-verzameling. Hier volgt een voor beeld van de hoofd tekst van het antwoord. 
 
 > [!NOTE]
-> Op het moment van schrijven worden de laatste 30 dagen van vernieuwingsbewerkingen opgeslagen en geretourneerd, maar dit aantal kan veranderen.
+> Op het moment van schrijven, worden de laatste 30 dagen van de vernieuwings bewerkingen opgeslagen en geretourneerd, maar dit aantal kan veranderen.
 
 ```
 [
@@ -171,17 +171,17 @@ Als u een lijst met historische vernieuwingsbewerkingen voor een model wilt opha
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>Verwijderen /vernieuwen/\<vernieuwenId>
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<refreshId verwijderen>
 
-Als u een bewerking voor het vernieuwen in uitvoering wilt annuleren, gebruikt u het werkwoord Verwijderen op de vernieuwings-id.
+Als u een vernieuwings bewerking in voortgang wilt annuleren, gebruikt u de bewerking DELETE bij de ID vernieuwen.
 
-## <a name="post-sync"></a>POST /sync
+## <a name="post-sync"></a>/Sync plaatsen
 
-Nadat u vernieuwingsbewerkingen hebt uitgevoerd, kan het nodig zijn om de nieuwe gegevens te synchroniseren met replica's voor het uitschalen van query's. Als u een synchronisatiebewerking voor een model wilt uitvoeren, gebruikt u het werkwoord POST op de functie /sync. De koptekst Locatie in het antwoord bevat de synchronisatie-id.
+Als u een vernieuwings bewerking hebt uitgevoerd, kan het nodig zijn om de nieuwe gegevens te synchroniseren met replica's voor het uitbreiden van de query. Als u een synchronisatie bewerking voor een model wilt uitvoeren, gebruikt u de bewerking POST in de functie/Sync. De locatie header in het antwoord bevat de synchronisatie bewerkings-ID.
 
-## <a name="get-sync-status"></a>Get /sync-status
+## <a name="get-sync-status"></a>/Sync-status ophalen
 
-Als u de status van een synchronisatiebewerking wilt controleren, gebruikt u het werkwoord GET dat de bewerkings-id als parameter doorgeeft. Hier is een voorbeeld van de reactie body:
+Als u de status van een synchronisatie bewerking wilt controleren, gebruikt u de bewerking GET die de bewerkings-ID door geven als een para meter. Hier volgt een voor beeld van de hoofd tekst van de reactie:
 
 ```
 {
@@ -194,37 +194,37 @@ Als u de status van een synchronisatiebewerking wilt controleren, gebruikt u het
 }
 ```
 
-Waarden `syncstate`voor :
+Waarden voor `syncstate`:
 
-- 0: Repliceren. Databasebestanden worden gerepliceerd naar een doelmap.
-- 1: Hydrateren. De database wordt gerehydrateerd op alleen-lezen server-instantie(s).
-- 2: Voltooid. De synchronisatiebewerking is voltooid.
-- 3: Mislukt. De synchronisatiebewerking is mislukt.
-- 4: Afronding. De synchronisatiebewerking is voltooid, maar voert opruimstappen uit.
+- 0: repliceren. Database bestanden worden gerepliceerd naar een doelmap.
+- 1: reactiveren. De data base wordt opnieuw gehydrateerd op alleen-lezen Server exemplaar (en).
+- 2: voltooid. De synchronisatie bewerking is voltooid.
+- 3: mislukt. De synchronisatie bewerking is mislukt.
+- 4: volt ooien. De synchronisatie bewerking is voltooid, maar de stappen voor het opschonen worden uitgevoerd.
 
 ## <a name="code-sample"></a>Codevoorbeeld
 
-Hier is een C# code voorbeeld om u op weg te helpen, [RestApiSample op GitHub](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample).
+Hier volgt een voor beeld van een C#-code om aan de slag te gaan, [RestApiSample op github](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample).
 
-### <a name="to-use-the-code-sample"></a>Het codevoorbeeld gebruiken
+### <a name="to-use-the-code-sample"></a>Het code voorbeeld gebruiken
 
-1.    Kloon of download de repo. Open de RestApiSample-oplossing.
-2.    Zoek de **lijnclient. BaseAddress = ...** en geef uw [basis-URL](#base-url).
+1.    Kloon of down load de opslag plaats. Open de RestApiSample-oplossing.
+2.    Zoek de regel- **client. BaseAddress =...** en geef uw [basis-URL](#base-url)op.
 
-Het codevoorbeeld maakt gebruik van [servicehoofdverificatie.](#service-principal)
+Het code voorbeeld maakt gebruik van [Service-Principal](#service-principal) -verificatie.
 
 ### <a name="service-principal"></a>Service-principal
 
-Zie [Serviceprincipal maken - Azure-portal](../active-directory/develop/howto-create-service-principal-portal.md) en [Voeg een serviceprincipal toe aan de serverbeheerderrol](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een serviceprincipal en het toewijzen van de benodigde machtigingen in Azure AS. Voer de volgende extra stappen uit nadat u de stappen hebt voltooid:
+Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) en [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een Service-Principal en het toewijzen van de benodigde machtigingen in azure als. Nadat u de stappen hebt voltooid, voert u de volgende aanvullende stappen uit:
 
-1.    Zoek in het codevoorbeeld **tekenreeksautoriteit = ...**, vervang **gewoons** met de tenant-id van uw organisatie.
-2.    Opmerking/uncomment, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg \<ervoor dat \<de>-waarden van de app-id-> id en app-sleutel op een veilige manier worden geopend of gebruik verificatie op basis van certificaten voor serviceprincipals.
+1.    Zoek in het code voorbeeld naar **String Authority =...**, vervang **common** door de Tenant-id van uw organisatie.
+2.    Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor \<dat de app- \<ID> en de> waarden van de app-sleutel op een veilige manier toegankelijk zijn of gebruik verificatie op basis van certificaten voor service-principals.
 3.    Voet het voorbeeld uit.
 
 
 ## <a name="see-also"></a>Zie ook
 
-[Monsters](analysis-services-samples.md)   
+[Voor beelden](analysis-services-samples.md)   
 [REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

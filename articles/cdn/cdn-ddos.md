@@ -1,6 +1,6 @@
 ---
-title: Azure CDN DDoS-beveiliging | Microsoft Documenten
-description: Azure CDN van Microsoft wordt beschermd door DDoS Protection basic zonder extra kosten
+title: Azure CDN DDoS Protection mogelijkheden | Microsoft Docs
+description: Azure CDN van micro soft wordt beschermd door DDoS Protection Basic, zonder extra kosten
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: dc7af555bcaf8654ecdb27d804cbef0c2cedb284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253812"
 ---
-# <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS-beveiliging
+# <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
 
-Een content delivery netwerk biedt DDoS-bescherming door het ontwerp. Naast de wereldwijde capaciteit om volumetrische aanvallen op te nemen, heeft Azure CDN extra DDoS-bescherming zoals hieronder beschreven, zonder extra kosten.
+Een Content Delivery Network biedt DDoS Protection per ontwerp. Naast de algemene capaciteit om volumetrische aanvallen te absorberen, heeft Azure CDN extra DDoS-beveiliging, zoals hieronder beschreven, zonder extra kosten.
 
-## <a name="azure-cdn-from-microsoft"></a>Azure CDN van Microsoft
+## <a name="azure-cdn-from-microsoft"></a>Azure CDN van micro soft
 
-Azure CDN van Microsoft wordt beschermd door [Azure Basic DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview). Het is standaard geïntegreerd in het Azure CDN van het Microsoft-platform en zonder extra kosten. De volledige schaal en capaciteit van Azure CDN van het wereldwijd geïmplementeerde netwerk van Microsoft biedt verdediging tegen veelvoorkomende netwerklaagaanvallen door middel van always-on verkeersbewaking en real-time mitigatie. Basic DDoS-beveiliging verdedigt ook tegen de meest voorkomende, vaak voorkomende Layer 7 DNS Query Floods en Layer 3 en 4 volumetrische aanvallen die zich richten op CDN-eindpunten. Deze dienst heeft ook een bewezen track record in het beschermen van Microsoft's enterprise en consumer services tegen grootschalige aanvallen.
+Azure CDN van micro soft wordt beveiligd door [Azure Basic-DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview). Het is standaard geïntegreerd in het Azure CDN van het micro soft-platform en zonder extra kosten. De volledige schaal en capaciteit van Azure CDN van het wereld wijd geïmplementeerde netwerk van micro soft bieden bescherming tegen veelvoorkomende aanvallen in de netwerklaag via altijd verkeer controleren en real-time beperking. Basic DDoS Protection beschermt ook tegen de meest voorkomende, vaak voorkomende laag 7 DNS-query stromen en laag 3-en 4 volumetrische aanvallen die gericht zijn op CDN-eind punten. Deze service heeft ook een bewezen spoor record in de bescherming van de Enter prise-en consumenten services van micro soft tegen grootschalige aanvallen.
 
 ## <a name="azure-cdn-from-verizon"></a>Azure CDN van Verizon
 
-Azure CDN van Verizon wordt beschermd door Verzion's eigen DDoS mitigatie platform. Het is standaard geïntegreerd in Azure CDN van Verizon en zonder extra kosten. Het biedt basisbescherming tegen de meest voorkomende, vaak voorkomende Layer 7 DNS Query Floods en Layer 3 en 4 volumetrische aanvallen die zich richten op CDN-eindpunten.
+Azure CDN van Verizon wordt beschermd door het Verzion van het eigen DDoS-risico. Het is standaard geïntegreerd in Azure CDN van Verizon en zonder extra kosten. Het biedt basis beveiliging tegen de meest voorkomende, vaak voorkomende laag 7 DNS-query stromen en laag 3-en 4 volumetrische aanvallen die gericht zijn op CDN-eind punten.
 
 ## <a name="azure-cdn-from-akamai"></a>Azure CDN van Akamai
 
-Azure CDN van Akamai wordt beschermd door Akamai's eigen DDoS-mitigatieplatform. Het is standaard geïntegreerd in Azure CDN van Akamai en zonder extra kosten. Het biedt basisbescherming tegen de meest voorkomende, vaak voorkomende Layer 7 DNS Query Floods en Layer 3 en 4 volumetrische aanvallen die zich richten op CDN-eindpunten.
+Azure CDN van Akamai wordt beveiligd door het bedrijfsbeveiligings platform van Akamai. Het is standaard geïntegreerd in Azure CDN van Akamai en zonder extra kosten. Het biedt basis beveiliging tegen de meest voorkomende, vaak voorkomende laag 7 DNS-query stromen en laag 3-en 4 volumetrische aanvallen die gericht zijn op CDN-eind punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

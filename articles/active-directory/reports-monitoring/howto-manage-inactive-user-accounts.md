@@ -1,6 +1,6 @@
 ---
-title: Inactieve gebruikersaccounts beheren in Azure AD | Microsoft Documenten
-description: Meer informatie over het detecteren en verwerken van gebruikersaccounts in Azure AD die verouderd zijn
+title: Inactieve gebruikers accounts beheren in azure AD | Microsoft Docs
+description: Meer informatie over het detecteren en afhandelen van gebruikers accounts in azure AD die verouderd zijn geworden
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,34 +18,34 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886038"
 ---
-# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>How To: Inactieve gebruikersaccounts beheren in Azure AD
+# <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Procedure: inactieve gebruikers accounts beheren in azure AD
 
-In grote omgevingen worden gebruikersaccounts niet altijd verwijderd wanneer werknemers een organisatie verlaten. Als IT-beheerder wilt u deze verouderde gebruikersaccounts detecteren en verwerken omdat ze een beveiligingsrisico vormen.
+In grote omgevingen worden gebruikers accounts niet altijd verwijderd wanneer werk nemers een organisatie verlaten. Als IT-beheerder wilt u deze verouderde gebruikers accounts detecteren en verwerken omdat deze een beveiligings risico vormen.
 
-In dit artikel wordt een methode uitgelegd voor het verwerken van verouderde gebruikersaccounts in Azure AD. 
+In dit artikel wordt een methode beschreven voor het afhandelen van verouderde gebruikers accounts in azure AD. 
 
-## <a name="what-are-inactive-user-accounts"></a>Wat zijn inactieve gebruikersaccounts?
+## <a name="what-are-inactive-user-accounts"></a>Wat zijn inactieve gebruikers accounts?
 
-Inactieve accounts zijn gebruikersaccounts die niet meer nodig zijn voor leden van uw organisatie om toegang te krijgen tot uw bronnen. Een belangrijke id voor inactieve accounts is dat ze al *een tijdje* niet zijn gebruikt om zich aan te melden bij uw omgeving. Omdat inactieve accounts zijn gekoppeld aan de aanmeldingsactiviteit, u de tijdstempel van de laatste aanmelding gebruiken die is geslaagd om ze te detecteren. 
+Inactieve accounts zijn gebruikers accounts die niet meer door leden van uw organisatie zijn vereist om toegang te krijgen tot uw resources. Een sleutel-id voor inactieve accounts is dat deze niet is *gebruikt om* u aan te melden bij uw omgeving. Omdat inactieve accounts zijn gekoppeld aan de aanmeldings activiteit, kunt u de tijds tempel van de laatste aanmelding gebruiken die is geslaagd om ze te detecteren. 
 
-De uitdaging van deze methode is om te definiëren wat *voor een tijdje* betekent in het geval van uw omgeving. Gebruikers kunnen zich bijvoorbeeld *een tijdje*niet aanmelden bij een omgeving, omdat ze op vakantie zijn. Wanneer u definieert wat uw delta voor inactieve gebruikersaccounts is, moet u rekening houden met alle legitieme redenen om u niet aan te melden bij uw omgeving. In veel organisaties ligt de delta voor inactieve gebruikersaccounts tussen de 90 en 180 dagen. 
+De uitdaging van deze methode is om te definiëren wat *een while* betekent in het geval van uw omgeving. Gebruikers kunnen zich bijvoorbeeld *enige*tijd niet aanmelden bij een omgeving omdat ze zich op vakantie bevinden. Bij het definiëren van wat uw Delta is voor inactieve gebruikers accounts, moet u rekening houden met alle rechtmatige redenen om zich niet aan te melden bij uw omgeving. In veel organisaties ligt de Delta voor inactieve gebruikers accounts tussen 90 en 180 dagen. 
 
-De laatste succesvolle aanmelding biedt potentiële inzichten in de voortdurende behoefte van een gebruiker aan toegang tot bronnen.  Het kan helpen bij het bepalen of groepslidmaatschap of app-toegang nog steeds nodig is of kan worden verwijderd. Voor extern gebruikersbeheer u begrijpen of een externe gebruiker nog steeds actief is binnen de tenant of moet worden opgeschoond. 
+De laatste geslaagde aanmelding biedt mogelijke inzichten in de voortdurende behoefte van een gebruiker om toegang te krijgen tot bronnen.  Dit kan helpen om te bepalen of het groepslid maatschap of de toegang tot de app nog steeds nodig is of kan worden verwijderd. Voor extern gebruikers beheer kunt u begrijpen of een externe gebruiker nog steeds actief is binnen de Tenant of moet worden opgeruimd. 
 
     
-## <a name="how-to-detect-inactive-user-accounts"></a>Inactieve gebruikersaccounts detecteren
+## <a name="how-to-detect-inactive-user-accounts"></a>Inactieve gebruikers accounts detecteren
 
-U detecteert inactieve accounts door de **eigenschap lastSignInDateTime** te evalueren die wordt blootgesteld door het **brontype signInActivity** van de **Microsoft Graph-API.** Met deze eigenschap u een oplossing implementeren voor de volgende scenario's:
+U kunt inactieve accounts detecteren door de eigenschap **lastSignInDateTime** te evalueren die wordt weer gegeven door het resource type **signInActivity** van de API van **Microsoft Graph** . Met deze eigenschap kunt u een oplossing implementeren voor de volgende scenario's:
 
-- **Gebruikers op naam:** In dit scenario zoekt u naar een specifieke gebruiker op naam, waarmee u de laatsteSignInDate evalueren:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Gebruikers op naam**: in dit scenario zoekt u naar een specifieke gebruiker op naam, waarmee u de lastSignInDate kunt evalueren:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
-- **Gebruikers op datum**: In dit scenario vraagt u een lijst met gebruikers met een lastSignInDateTime aan vóór een bepaalde datum:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
+- **Gebruikers op datum**: in dit scenario vraagt u een lijst met gebruikers met een lastSignInDateTime op voor een opgegeven datum:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
 
 
@@ -54,42 +54,42 @@ U detecteert inactieve accounts door de **eigenschap lastSignInDateTime** te eva
 
 ## <a name="what-you-need-to-know"></a>Wat u dient te weten
 
-In deze sectie vindt u een overzicht van wat u moet weten over de laatste SignInDateTime-eigenschap.
+In deze sectie vindt u informatie over wat u moet weten over de eigenschap lastSignInDateTime.
 
-### <a name="how-can-i-access-this-property"></a>Hoe krijg ik toegang tot deze accommodatie?
+### <a name="how-can-i-access-this-property"></a>Hoe kan ik toegang krijgen tot deze eigenschap?
 
-De eigenschap **lastSignInDateTime** wordt weergegeven door het [brontype signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) van de [Microsoft Graph REST API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
+De eigenschap **lastSignInDateTime** wordt weer gegeven door het [resource type signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) van de [Microsoft Graph rest API](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph).   
 
-### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Is de laatste eigenschapSignInDateTime beschikbaar via de cmdlet Get-AzureAdUser?
+### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Is de eigenschap lastSignInDateTime beschikbaar via de cmdlet Get-AzureAdUser?
 
 Nee.
 
-### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Welke versie van Azure AD heb ik nodig om toegang te krijgen tot de eigenschap?
+### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Welke editie van Azure AD heb ik nodig voor toegang tot de eigenschap?
 
-U hebt toegang tot deze eigenschap in alle edities van Azure AD.
+U kunt deze eigenschap gebruiken in alle versies van Azure AD.
 
-### <a name="what-permission-do-i-need-to-read-the-property"></a>Welke toestemming heb ik nodig om de eigenschap te lezen?
+### <a name="what-permission-do-i-need-to-read-the-property"></a>Welke machtigingen heb ik nodig voor het lezen van de eigenschap?
 
-Om deze eigenschap te lezen, moet u de volgende rechten verlenen: 
+Als u deze eigenschap wilt lezen, moet u de volgende rechten verlenen: 
 
-- AuditLogs.Read.All
-- Organisation.Read.All  
+- Audit logs bevat. Read. all
+- Organisatie. Read. all  
 
 
-### <a name="when-does-azure-ad-update-the-property"></a>Wanneer werkt Azure AD de eigenschap bij?
+### <a name="when-does-azure-ad-update-the-property"></a>Wanneer wordt de eigenschap door Azure AD bijgewerkt?
 
-Elke interactieve aanmelding die succesvol was, resulteert in een update van het onderliggende gegevensarchief. Doorgaans worden succesvolle aanmeldingen binnen 10 minuten weergegeven in het gerelateerde aanmeldingsrapport.
+Elke interactieve aanmelding die geslaagd was, resulteert in een update van het onderliggende gegevens archief. Normaal gesp roken worden geslaagde aanmeldingen binnen 10 minuten weer gegeven in het gerelateerde aanmeldings rapport.
  
 
-### <a name="what-does-a-blank-property-value-mean"></a>Wat betekent een lege eigenschapswaarde?
+### <a name="what-does-a-blank-property-value-mean"></a>Wat betekent een lege eigenschaps waarde?
 
-Als u een laatste SignInDateTime-tijdstempel wilt genereren, hebt u een succesvolle aanmelding nodig. Omdat de eigenschap lastSignInDateTime een nieuwe functie is, kan de waarde van de eigenschap lastSignInDateTime leeg zijn als:
+U moet een geslaagde aanmelding hebben als u een lastSignInDateTime-tijds tempel wilt genereren. Omdat de eigenschap lastSignInDateTime een nieuwe functie is, kan de waarde van de eigenschap lastSignInDateTime leeg zijn als:
 
-- De laatste succesvolle aanmelding van een gebruiker vond plaats voordat deze functie werd uitgebracht (1 december 2019).
-- Het getroffen gebruikersaccount is nooit gebruikt voor een succesvolle aanmelding.
+- De laatste geslaagde aanmelding van een gebruiker heeft plaatsgevonden voordat deze functie werd uitgebracht (1 december 2019).
+- Het betrokken gebruikers account werd nooit gebruikt voor een geslaagde aanmelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten](tutorial-access-api-with-certificates.md)
-* [Api-verwijzing voor controle](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [API-verwijzing naar voor aanmeldingsactiviteitsrapport](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [Controle-API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [API-naslag informatie voor aanmeld activiteiten](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

@@ -5,23 +5,23 @@ ms.date: 04/22/2020
 ms.topic: article
 ms.reviewer: sunri
 ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082523"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Gegevens van Azure Blockchain Workbench weergeven met Microsoft Power BI
 
-Microsoft Power BI biedt de mogelijkheid om eenvoudig krachtige rapporten uit SQL [https://www.powerbi.com](https://www.powerbi.com)DB-databases te genereren met Power BI Desktop en deze vervolgens te publiceren naar .
+Micro soft Power BI biedt de mogelijkheid om eenvoudig krachtige rapporten te genereren van SQL DB-data bases met behulp van Power BI Desktop en vervolgens te publiceren naar [https://www.powerbi.com](https://www.powerbi.com).
 
 Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding te maken met een SQL-database van Azure Blockchain Workbench, een rapport te maken en dit rapport te implementeren op powerbi.com.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Power BI-bureaublad downloaden](https://powerbi.microsoft.com/desktop/).
+* Down load [Power bi Desktop](https://powerbi.microsoft.com/desktop/).
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI verbinden met gegevens in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI verbinding maken met gegevens in azure Block Chain workbench
 
 1.  Open Power BI Desktop.
 2.  Selecteer **Gegevens ophalen**.
@@ -43,7 +43,7 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 
     ![Navigator](./media/data-powerbi/navigator.png)
 
-7.  Selecteer de weergaven die u wilt opnemen in het rapport. Voor demonstratiedoeleinden nemen we **vwContractAction**op, dat details geeft over de acties die hebben plaatsgevonden op een contract.
+7.  Selecteer de weergaven die u wilt opnemen in het rapport. Voor demonstratie doeleinden bevatten we **vwContractAction**, dat details bevat over de acties die op een contract hebben plaatsgevonden.
 
     ![Weergaven selecteren](./media/data-powerbi/select-views.png)
 

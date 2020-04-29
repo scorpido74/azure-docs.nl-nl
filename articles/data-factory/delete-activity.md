@@ -1,6 +1,6 @@
 ---
 title: Verwijderactiviteit in Azure Data Factory
-description: Meer informatie over het verwijderen van bestanden in verschillende bestandsstores met de activiteit Verwijderen in Azure Data Factory.
+description: Meer informatie over het verwijderen van bestanden in verschillende bestands archieven met de activiteit verwijderen in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416382"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Verwijderactiviteit in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-U de activiteit verwijderen in Azure Data Factory gebruiken om bestanden of mappen te verwijderen uit on-premises opslagopslag of cloudopslag. Gebruik deze activiteit om bestanden op te schonen of te archiveren wanneer ze niet meer nodig zijn.
+U kunt de activiteit verwijderen in Azure Data Factory gebruiken om bestanden of mappen te verwijderen uit on-premises opslag archieven of opslag ruimten in de Cloud. Gebruik deze activiteit om bestanden op te schonen of te archiveren wanneer deze niet meer nodig zijn.
 
 > [!WARNING]
-> Verwijderde bestanden of mappen kunnen niet worden hersteld (tenzij de opslag is ingeschakeld voor soft-delete). Wees voorzichtig wanneer u de activiteit Verwijderen gebruikt voor het verwijderen van bestanden of mappen.
+> Verwijderde bestanden of mappen kunnen niet worden hersteld (tenzij voor de opslag een tijdelijke verwijdering is ingeschakeld). Wees voorzichtig wanneer u de activiteit Verwijderen gebruikt voor het verwijderen van bestanden of mappen.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Hier volgen enkele aanbevelingen voor het gebruik van de activiteit Verwijderen:
+Hier volgen enkele aanbevelingen voor het gebruik van de activiteit verwijderen:
 
--   Maak een back-up van uw bestanden voordat u ze verwijdert met de activiteit Verwijderen voor het geval u ze in de toekomst moet herstellen.
+-   Maak een back-up van uw bestanden voordat u ze verwijdert met de Delete-activiteit voor het geval u ze in de toekomst moet herstellen.
 
--   Zorg ervoor dat Data Factory schrijfmachtigingen heeft om mappen of bestanden uit het opslagarchief te verwijderen.
+-   Zorg ervoor dat Data Factory schrijf machtigingen heeft om mappen of bestanden uit het opslag archief te verwijderen.
 
--   Zorg ervoor dat u geen bestanden verwijderd die tegelijkertijd worden geschreven. 
+-   Zorg ervoor dat u geen bestanden verwijdert die tegelijkertijd worden geschreven. 
 
--   Als u bestanden of mappen wilt verwijderen uit een on-premises systeem, moet u ervoor zorgen dat u een zelf gehoste internetverbinding gebruikt met een versie groter dan 3.14.
+-   Als u bestanden of mappen van een on-premises systeem wilt verwijderen, moet u ervoor zorgen dat u een zelf-hostende Integration runtime gebruikt met een versie die hoger is dan 3,14.
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
--   [Azure Blob-opslag](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
 
-### <a name="file-system-data-stores"></a>Bestandssysteemgegevensopslag
+### <a name="file-system-data-stores"></a>Gegevens archieven van bestands systeem
 
 -   [Bestandssysteem](connector-file-system.md)
 -   [FTP](connector-ftp.md)
@@ -80,25 +80,25 @@ Hier volgen enkele aanbevelingen voor het gebruik van de activiteit Verwijderen:
 }
 ```
 
-## <a name="type-properties"></a>Eigenschappen typen
+## <a name="type-properties"></a>Type-eigenschappen
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| Dataset | Hiermee wordt de gegevenssetverwijzing weergegeven om te bepalen welke bestanden of mappen moeten worden verwijderd | Ja |
-| Recursieve | Hiermee geeft u aan of de bestanden opnieuw worden verwijderd uit de submappen of alleen uit de opgegeven map.  | Nee. De standaardwaarde is `false`. |
-| maxConcurrentVerbindingen | Het aantal verbindingen dat tegelijkertijd verbinding maakt met het opslagarchief voor het verwijderen van mappen of bestanden.   |  Nee. De standaardwaarde is `1`. |
-| inschakelen | Hiermee geeft u aan of u de map- of bestandsnamen die zijn verwijderd, moet opnemen. Als dit waar is, moet u verder een opslagaccount verstrekken om het logboekbestand op te slaan, zodat u het gedrag van de activiteit Verwijderen volgen door het logboekbestand te lezen. | Nee |
-| logStorageInstellingen | Alleen van toepassing wanneer enablelogging = true.<br/><br/>Een groep opslageigenschappen die kan worden opgegeven waar u het logboekbestand wilt opslaan met de map of bestandsnamen die zijn verwijderd door de activiteit Verwijderen. | Nee |
-| linkedServiceName | Alleen van toepassing wanneer enablelogging = true.<br/><br/>De gekoppelde service van [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), Azure Data Lake [Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)of [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) om het logboekbestand op te slaan dat de map- of bestandsnamen bevat die zijn verwijderd door de activiteit Verwijderen. Houd er rekening mee dat het moet zijn geconfigureerd met hetzelfde type integratieruntime van de activiteit die wordt gebruikt door activiteit te verwijderen om bestanden te verwijderen. | Nee |
-| path | Alleen van toepassing wanneer enablelogging = true.<br/><br/>Het pad om het logboekbestand op te slaan in uw opslagaccount. Als u geen pad opgeeft, maakt de service een container voor u. | Nee |
+| sets | Bevat de verwijzing naar de gegevensset om te bepalen welke bestanden of mappen moeten worden verwijderd | Ja |
+| recursieve | Hiermee wordt aangegeven of de bestanden recursief uit de submappen of alleen uit de opgegeven map worden verwijderd.  | Nee. De standaardwaarde is `false`. |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met opslag Archief voor het verwijderen van mappen of bestanden.   |  Nee. De standaardwaarde is `1`. |
+| enablelogging | Hiermee wordt aangegeven of u de naam van de map of het bestand dat u hebt verwijderd, moet vastleggen. Als dit het geval is, moet u een opslag account verder opgeven om het logboek bestand op te slaan, zodat u het gedrag van de activiteit verwijderen kunt volgen door het logboek bestand te lezen. | Nee |
+| logStorageSettings | Alleen van toepassing als EnableLogging = True.<br/><br/>Een groep opslag eigenschappen die kunnen worden opgegeven waar u het logboek bestand wilt opslaan met de map of de bestands namen die zijn verwijderd door de Delete-activiteit. | Nee |
+| linkedServiceName | Alleen van toepassing als EnableLogging = True.<br/><br/>De gekoppelde service van [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure data Lake Storage gen1](connector-azure-data-lake-store.md#linked-service-properties)of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van het logboek bestand met de map-of bestands namen die zijn verwijderd door de Delete-activiteit. Houd er rekening mee dat deze moet worden geconfigureerd met hetzelfde type Integration Runtime van de toepassing die wordt gebruikt door de Delete-activiteit om bestanden te verwijderen. | Nee |
+| path | Alleen van toepassing als EnableLogging = True.<br/><br/>Het pad voor het opslaan van het logboek bestand in uw opslag account. Als u geen pad opgeeft, maakt de service een container voor u. | Nee |
 
 ## <a name="monitoring"></a>Bewaking
 
-Er zijn twee plaatsen waar u de resultaten van de activiteit Verwijderen zien en controleren: 
--   Van de uitvoer van de activiteit Verwijderen.
--   Uit het logboekbestand.
+Er zijn twee locaties waar u de resultaten van de Delete-activiteit kunt zien en bewaken: 
+-   Uit de uitvoer van de Delete-activiteit.
+-   Vanuit het logboek bestand.
 
-### <a name="sample-output-of-the-delete-activity"></a>Voorbeelduitvoer van de activiteit Verwijderen
+### <a name="sample-output-of-the-delete-activity"></a>Voorbeeld uitvoer van de Delete-activiteit
 
 ```json
 { 
@@ -116,37 +116,37 @@ Er zijn twee plaatsen waar u de resultaten van de activiteit Verwijderen zien en
 }
 ```
 
-### <a name="sample-log-file-of-the-delete-activity"></a>Voorbeeldlogboekbestand van de activiteit Verwijderen
+### <a name="sample-log-file-of-the-delete-activity"></a>Voorbeeld logboek bestand van de activiteit verwijderen
 
 | Naam | Categorie | Status | Fout |
 |:--- |:--- |:--- |:--- |
-| test1/yyy.json | File | Verwijderen |  |
-| test2/hello789.txt | File | Verwijderen |  |
-| test2/test3/hello000.txt | File | Verwijderen |  |
-| test2/test3/zzz.json | File | Verwijderen |  |
+| test1/yyy. json | File | Verwijderen |  |
+| Test2/hello789. txt | File | Verwijderen |  |
+| Test2/Test3/hello000. txt | File | Verwijderen |  |
+| Test2/Test3/zzz. json | File | Verwijderen |  |
 
-## <a name="examples-of-using-the-delete-activity"></a>Voorbeelden van het gebruik van de activiteit Verwijderen
+## <a name="examples-of-using-the-delete-activity"></a>Voor beelden van het gebruik van de activiteit verwijderen
 
 ### <a name="delete-specific-folders-or-files"></a>Specifieke mappen of bestanden verwijderen
 
 Het archief heeft de volgende mapstructuur:
 
-Wortel/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt 8.txt
+Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt
 
-Nu gebruikt u de activiteit Verwijderen om map of bestanden te verwijderen door de combinatie van verschillende eigenschapswaarde uit de gegevensset en de activiteit Verwijderen:
+Nu gebruikt u de activiteit verwijderen om map of bestanden te verwijderen met de combi natie van verschillende eigenschaps waarden uit de gegevensset en de activiteit verwijderen:
 
-| folderPath (uit gegevensset) | fileName (uit de gegevensset) | recursieve (van de activiteit Verwijderen) | Uitvoer |
+| folderPath (uit gegevensset) | Bestands naam (van gegevensset) | recursief (vanuit de activiteit verwijderen) | Uitvoer |
 |:--- |:--- |:--- |:--- |
-| Wortel/ Folder_A_2 | NULL | False | Wortel/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt 8.txt |
-| Wortel/ Folder_A_2 | NULL | True | Wortel/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2.</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1.</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2.</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt 8.txt</strike> |
-| Wortel/ Folder_A_2 | *.txt | False | Wortel/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt 8.txt |
-| Wortel/ Folder_A_2 | *.txt | True | Wortel/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt 8.txt</strike> |
+| Hoofdmap/Folder_A_2 | NULL | False | Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5. CSV</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Hoofdmap/Folder_A_2 | NULL | True | Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5. CSV</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7. CSV</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
+| Hoofdmap/Folder_A_2 | *. txt | False | Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8. txt |
+| Hoofdmap/Folder_A_2 | *. txt | True | Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6. txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8. txt</strike> |
 
-### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>De tijdpartitiemap of -bestanden periodiek opschonen
+### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>Regel matig de gepartitioneerde map of bestanden opschonen
 
-U een pijplijn maken om de tijdpartitiemap of bestanden periodiek op te schonen.  De mapstructuur is bijvoorbeeld vergelijkbaar `/mycontainer/2018/12/14/*.csv`met: .  U adf-systeemvariabele gebruiken vanaf de trigger van de planning om te bepalen welke map of bestanden in elke pijplijnmoeten worden verwijderd. 
+U kunt een pijp lijn maken voor het periodiek opschonen van de gepartitioneerde map of bestanden.  De mapstructuur is bijvoorbeeld vergelijkbaar met: `/mycontainer/2018/12/14/*.csv`.  U kunt de systeem variabele ADF van schema gebruiken om te bepalen welke map of bestanden moeten worden verwijderd in elke pijplijn uitvoering. 
 
-#### <a name="sample-pipeline"></a>Voorbeeldpijplijn
+#### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 
 ```json
 {
@@ -196,7 +196,7 @@ U een pijplijn maken om de tijdpartitiemap of bestanden periodiek op te schonen.
 }
 ```
 
-#### <a name="sample-dataset"></a>Voorbeeldgegevensset
+#### <a name="sample-dataset"></a>Voor beeld-gegevensset
 
 ```json
 {
@@ -223,7 +223,7 @@ U een pijplijn maken om de tijdpartitiemap of bestanden periodiek op te schonen.
 }
 ```
 
-#### <a name="sample-trigger"></a>Voorbeeldtrigger
+#### <a name="sample-trigger"></a>Voorbeeld trigger
 
 ```json
 {
@@ -262,11 +262,11 @@ U een pijplijn maken om de tijdpartitiemap of bestanden periodiek op te schonen.
 }
 ```
 
-### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>De verlopen bestanden opschonen die voor het laatst zijn gewijzigd vóór 2018.1.1
+### <a name="clean-up-the-expired-files-that-were-last-modified-before-201811"></a>De verlopen bestanden opschonen die voor het laatst zijn gewijzigd voordat 2018.1.1
 
-U een pijplijn maken om de oude of verlopen bestanden op te schonen door gebruik te maken van het filter van bestandskenmerk: 'LastModified' in de gegevensset.  
+U kunt een pijp lijn maken voor het opschonen van de oude of verlopen bestanden met behulp van bestands kenmerk filter: ' LastModified ' in DataSet.  
 
-#### <a name="sample-pipeline"></a>Voorbeeldpijplijn
+#### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 
 ```json
 {
@@ -304,7 +304,7 @@ U een pijplijn maken om de oude of verlopen bestanden op te schonen door gebruik
 }
 ```
 
-#### <a name="sample-dataset"></a>Voorbeeldgegevensset
+#### <a name="sample-dataset"></a>Voor beeld-gegevensset
 
 ```json
 {
@@ -324,14 +324,14 @@ U een pijplijn maken om de oude of verlopen bestanden op te schonen door gebruik
 }
 ```
 
-### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Bestanden verplaatsen door de activiteit Kopiëren en de activiteit Verwijderen te ketenen
+### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Verplaats bestanden door de Kopieer activiteit en de activiteit verwijderen te koppelen
 
-U een bestand verplaatsen met behulp van een kopieeractiviteit om een bestand te kopiëren en vervolgens een verwijderactiviteit om een bestand in een pijplijn te verwijderen.  Wanneer u meerdere bestanden wilt verplaatsen, u de activiteit GetMetadata + Filteractiviteit + Activiteit voor elke activiteit + Kopieeractiviteit + Activiteit verwijderen gebruiken zoals in het volgende voorbeeld:
+U kunt een bestand verplaatsen met behulp van een Kopieer activiteit om een bestand te kopiëren en vervolgens een Verwijder activiteit om een bestand in een pijp lijn te verwijderen.  Als u meerdere bestanden wilt verplaatsen, kunt u de activiteit GetMetadata activiteit + activiteit + foreach activity + Copy activiteit + Delete gebruiken, zoals in het volgende voor beeld:
 
 > [!NOTE]
-> Als u de hele map wilt verplaatsen door een gegevensset te definiëren die alleen een mappad bevat, en vervolgens een kopieeractiviteit en een activiteit Verwijderen wilt gebruiken om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u heel voorzichtig zijn. Het is omdat je ervoor moet zorgen dat er geen nieuwe bestanden in de map komen tussen kopieerbewerking en verwijderen.  Als er nieuwe bestanden in de map aankomen op het moment dat uw kopieeractiviteit net de kopieertaak heeft voltooid, maar de activiteit Verwijderen niet is aangestaard, is het mogelijk dat de activiteit Verwijderen dit nieuwe binnenkomende bestand verwijdert dat nog niet naar de bestemming is gekopieerd door de hele map te verwijderen. 
+> Als u de volledige map wilt verplaatsen door een gegevensset met alleen een mappad te definiëren en vervolgens een Kopieer activiteit en een delete-activiteit wilt gebruiken om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u zeer voorzichtig zijn. Dit komt omdat u ervoor moet zorgen dat er geen nieuwe bestanden in de map arriveren tussen het kopiëren en het verwijderen van de bewerking.  Als er nieuwe bestanden binnenkomen in de map op het moment dat u de Kopieer activiteit zojuist hebt voltooid, maar de Delete-activiteit niet is gesterd, is het mogelijk dat de Delete-activiteit dit nieuwe aankomende bestand verwijdert dat nog niet naar de bestemming is gekopieerd. dit doet u door de volledige map te verwijderen. 
 
-#### <a name="sample-pipeline"></a>Voorbeeldpijplijn
+#### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 
 ```json
 {
@@ -488,7 +488,7 @@ U een bestand verplaatsen met behulp van een kopieeractiviteit om een bestand te
 
 #### <a name="sample-datasets"></a>Voorbeeldgegevenssets
 
-Gegevensset die wordt gebruikt door getMetadata-activiteit om de bestandslijst op te sommen.
+De gegevensset die wordt gebruikt door de GetMetadata-activiteit voor het inventariseren van de bestanden lijst.
 
 ```json
 {
@@ -507,7 +507,7 @@ Gegevensset die wordt gebruikt door getMetadata-activiteit om de bestandslijst o
 }
 ```
 
-Gegevensset voor gegevensbron die wordt gebruikt door kopieeractiviteit en de activiteit Verwijderen.
+Gegevensset voor gegevens bron die wordt gebruikt door de Kopieer activiteit en de Delete-activiteit.
 
 ```json
 {
@@ -540,7 +540,7 @@ Gegevensset voor gegevensbron die wordt gebruikt door kopieeractiviteit en de ac
 }
 ```
 
-Gegevensset voor gegevensbestemming die wordt gebruikt door kopieeractiviteit.
+Gegevensset voor de gegevens bestemming die wordt gebruikt door de Kopieer activiteit.
 
 ```json
 {
@@ -567,13 +567,13 @@ Gegevensset voor gegevensbestemming die wordt gebruikt door kopieeractiviteit.
 }
 ```
 
-U ook de sjabloon om bestanden te verplaatsen vanaf [hier](solution-template-move-files.md).
+U kunt ook de sjabloon ophalen om bestanden van [hier](solution-template-move-files.md)te verplaatsen.
 
 ## <a name="known-limitation"></a>Bekende beperking
 
--   Activiteit verwijderen biedt geen ondersteuning voor het verwijderen van een lijst met mappen die door een wildcard zijn beschreven.
+-   Delete-activiteit biedt geen ondersteuning voor het verwijderen van een lijst met mappen die worden beschreven door een Joker teken.
 
--   Wanneer u het filter van bestandskenmerk gebruikt: gewijzigdDatumtimeStart en gewijzigdDatetimeEnd om bestanden te selecteren die moeten worden verwijderd, moet u 'fileName': "*" instellen in de gegevensset.
+-   Wanneer u bestands kenmerk filter: modifiedDatetimeStart en modifiedDatetimeEnd gebruikt om bestanden te selecteren die moeten worden verwijderd, moet u "bestands naam": "*" in gegevensset instellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,10 +14,10 @@ ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: 075b5dc06c59682b33c20b182e0dc585b2727027
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097843"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>Voor beelden van Azure CLI voor Azure Lab Services
@@ -26,6 +26,6 @@ De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behul
 
 | | |
 |---|---|
-| [Beschik baarheid van een virtuele machine maken en verifiëren](scripts/create-verify-virtual-machine-in-lab-cli.md) | Hiermee maakt u een virtuele Windows-machine met een minimale configuratie. |
+| [Beschikbaarheid van een VM maken en verifiëren](scripts/create-verify-virtual-machine-in-lab-cli.md) | Hiermee maakt u een virtuele Windows-machine met een minimale configuratie. |
 | [Een VM starten](scripts/start-connect-virtual-machine-in-lab-cli.md) | Start een virtuele machine. |
 | [Een virtuele machine stoppen en verwijderen](scripts/stop-delete-virtual-machine-in-lab-cli.md) | Hiermee wordt een virtuele machine gestopt en verwijderd. |

@@ -1,6 +1,6 @@
 ---
-title: Marketplace Insights-dashboard in commerciële marktplaatsanalyses in partnercentrum
-description: Krijg toegang tot een overzicht van webanalytics op Marketplace, waarmee uitgevers de betrokkenheid van klanten in AppSource en Azure Marketplace-winkelpuien kunnen meten.
+title: Marketplace Insights-dash board in Commercial Marketplace Analytics op partner centrum
+description: Krijg toegang tot een overzicht van Marketplace Web Analytics, waarmee uitgevers de klant betrokkenheid kunnen meten in AppSource en Azure Marketplace-winkel.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,137 +8,137 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81251704"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-dashboard in commerciële marktplaatsanalyses
+# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-dash board in commerciële Marketplace-analyse
 
-In dit artikel vindt u informatie over het Marketplace Insights-dashboard in het Partnercentrum. Dit dashboard bevat een overzicht van webanalyses op Marktplaats, waarmee uitgevers de betrokkenheid van klanten kunnen meten voor hun respectieve productdetailpagina's die worden vermeld op de marketplace-winkelpuien: AppSource en Azure Marketplace.
+Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics, waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectieve product detail pagina's die worden vermeld op de Marketplace-winkels: AppSource en Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard voor Marketplace-inzichten
 
-Als u toegang wilt krijgen tot het **Marketplace Insights-dashboard** in partnercentrum, opent u het **[tabblad Analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder Commerciële marktplaats.
+Open het **[tabblad analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace om toegang te krijgen tot het **Marketplace Insights-dash board** in het partner centrum.
 
-U grafische weergaven van de volgende items bekijken:  
+U kunt grafische weer gaven van de volgende items bekijken:  
 
 - [Overzicht van Marketplace Insights](#marketplace-insights-summary)
-- [Paginabezoeken per geografie](#page-visits-by-geography)  
-- [Paginabezoeken versus unieke bezoekerstrend](#page-visits-versus-unique-visitors-trend)
-- [Call-to-action versus unieke bezoekers met CTA's](#call-to-action-versus-unique-visitors-with-ctas)
-- [Paginabezoeken en call-to-action door aanbiedingen](#page-visits-and-calls-to-action-by-offers)
-- [Trend van call-to-action-percentage](#call-to-action-percentage-trend)
-- [Paginabezoeken en oproepen tot actie door verwijzingsdomeinen](#page-visits-and-calls-to-action-by-referral-domains)
-- [Tabel met details van Marketplace Insights](#marketplace-insights-details-table)
+- [Pagina bezoekers per Geografie](#page-visits-by-geography)  
+- [Pagina bezoeken tegenover unieke bezoekers trend](#page-visits-versus-unique-visitors-trend)
+- [Aanroepen van actie tegenover unieke bezoekers met CTAs](#call-to-action-versus-unique-visitors-with-ctas)
+- [Pagina bezoeken en aanroepen van actie door aanbiedingen](#page-visits-and-calls-to-action-by-offers)
+- [Trend van actie percentage aanroepen](#call-to-action-percentage-trend)
+- [Pagina bezoeken en aanroepen naar actie door referentie domeinen](#page-visits-and-calls-to-action-by-referral-domains)
+- [Informatie tabel voor Marketplace Insights](#marketplace-insights-details-table)
 
 >[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses voor](./faq-terminology.md)gedetailleerde definities van analytics-terminologie.
+> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
 
-### <a name="insights-dashboard-layout"></a>Indeling van het Dashboard Insights
+### <a name="insights-dashboard-layout"></a>Lay-out van Insights-dash board
 
-Je de Marketplace-statistieken op verschillende manieren bekijken:
+U kunt de Marketplace-metrische gegevens op verschillende manieren bekijken:
 
-- Tabbladen storefront
-- Paginafilters
+- Tabbladen van de winkel
+- Pagina filters
 - Datumfilters
 
-**Storefront-tabbladen**: U de statistieken van uw aanbiedingen afzonderlijk bekijken via de tabbladen AppSource & Azure Marketplace. Selecteer de aanbieding(en) in de vervolgkeuzelijst aanbieding aan de rechterkant om een visualisatie van de statistieken voor de geselecteerde aanbieding(en) te bekijken. Standaard zijn alle aanbiedingen geselecteerd.
+**Tabbladen**voor de winkel: u kunt de metrische gegevens van uw aanbiedingen afzonderlijk bekijken via de AppSource & Azure Marketplace-tabbladen. Selecteer de aanbieding (en) in de vervolg keuzelijst aanbieding aan de rechter kant om een visualisatie van de metrische gegevens voor de geselecteerde aanbieding (en) weer te geven. Standaard zijn alle aanbiedingen geselecteerd.
 
-![Partner Center Insights-dashboard biedt vervolgkeuzelijst](./media/insights-offer-dropdown.png)
+![Vervolg keuzelijst voor de lijst met Dash boards van partner Center Insights](./media/insights-offer-dropdown.png)
 
-**Paginafilters voor inzichten**: Deze filters worden toegepast op het niveau van de aanbieding (productdetailpagina). U meerdere filters selecteren voor de criteria die u wilt weergeven. Dit filter is van toepassing op de volledige sectie Marketplace Insights, inclusief grafieken en details.
+**Insights-pagina filters**: deze filters worden toegepast op het niveau van de aanbieding (Product detail pagina). U kunt meerdere filters selecteren voor de criteria die u wilt weer geven. Dit filter is van toepassing op de volledige sectie voor Marketplace-inzichten, met inbegrip van grafieken en Details.
 
-![Partner Center Insights dashboardpaginafilters](./media/insights-page-filter.png)
+![Pagina filters voor Partner Center Insights-dashboard items](./media/insights-page-filter.png)
 
-- Aanbiedingsnamen worden alleen weergegeven voor de aanbiedingen met paginabezoeken in het geselecteerde datumbereik.  
-- De standaardselectie is 'Alles' voor elk van de filteropties
-- Toegepaste filters geven het aantal selectie(s) weer voor de gemaakte keuzes. Toegepaste filters worden niet weergegeven voor de standaardselectie 'Alles'.
+- Namen van aanbiedingen worden alleen vermeld voor aanbiedingen die pagina bezoeken hebben in het geselecteerde datum bereik.  
+- De standaard selectie is alle voor elk van de filter opties
+- Met toegepaste filters wordt het aantal selectie (s) weer gegeven voor de gemaakte keuzes. Toegepaste filters worden niet weer gegeven voor de standaard selectie ' alle '.
 
-![Partnercenter Insights-filters toegepast](./media/insights-page-filter-two.png)
+![Partner Center Insights-filters toegepast](./media/insights-page-filter-two.png)
 
-**Statistieken datumfilters**: Dit filter is van toepassing op de volledige sectie Marketplace Insights. Filters kunnen vooraf bepaalde datumbereiken of een aangepast datumbereik bevatten.
+**Inzichten datum filters**: dit filter is van toepassing op de volledige sectie voor Marketplace-inzichten. Filters kunnen vooraf bepaalde datumbereiken of een aangepast datum bereik bevatten.
 
-![Datumfilters voor Partnercenter Insights](./media/insights-date-range.png)
+![Datum filters van partner Center Insights](./media/insights-date-range.png)
 
 ## <a name="marketplace-insights-summary"></a>Overzicht van Marketplace Insights
 
-In de sectie Overzicht van de statistieken van Marketplace wordt een aantal **paginabezoeken,** **oproepen tot actie**en unieke **bezoekers** voor het geselecteerde datumbereik weergegeven.
+In het gedeelte Overzicht van Marketplace Insights worden het aantal **bezoeken**, **aanroepen naar actie**en **unieke bezoekers** voor het geselecteerde datum bereik weer gegeven.
 
-### <a name="page-visits"></a>Paginabezoeken
+### <a name="page-visits"></a>Pagina bezoeken
 
-Dit getal vertegenwoordigt het aantal afzonderlijke gebruikerssessies op de aanbiedingspagina (productdetailpagina) voor een geselecteerd datumbereik. De indicator rood/groen procentuele indicator geeft de groei % van de paginabezoeken weer. Het trenddiagram vertegenwoordigt het aantal paginabezoeken per maand.
+Dit nummer vertegenwoordigt het aantal afzonderlijke gebruikers sessies op de aanbiedings pagina (Product detail pagina) voor een geselecteerd datum bereik. De indicator voor een rood/groen percentage vertegenwoordigt het groei percentage van de pagina bezoeken. Het trend diagram vertegenwoordigt het aantal maanden tot maanden van pagina bezoeken.
 
 ### <a name="unique-visitors"></a>Unieke bezoekers
 
-Dit getal vertegenwoordigt het verschillende aantal bezoekers tijdens het geselecteerde datumbereik voor de aanbieding(en) die is geselecteerd in het paginafilter. Een bezoeker die een of meer productdetailpagina's heeft bezocht, wordt als één unieke bezoeker beschouwd.
+Dit nummer vertegenwoordigt het aantal unieke bezoekers tijdens het geselecteerde datum bereik voor de aanbieding (en) die zijn geselecteerd in het pagina filter. Een bezoeker die een of meer product detail pagina's heeft bezocht, wordt als één unieke bezoeker beschouwd.
 
-### <a name="call-to-action"></a>Oproep tot actie
+### <a name="call-to-action"></a>Actie aanroepen
 
-Dit getal vertegenwoordigt het aantal klikken op de knop **Call to Action** dat is voltooid op de aanbiedingspagina (productdetailpagina). **Oproepen tot actie** worden geteld wanneer de knoppen **Nu worden ontvangen,** **Gratis proefversie,** **Contact met mij**opnemen en de knoppen **Teststation** zijn geselecteerd.
+Dit nummer geeft het aantal **aanroepen aan actie** knop klikken dat is voltooid op de aanbiedings pagina (Product detail pagina). **Aanroepen naar actie** worden geteld als de knoppen **nu downloaden**, **gratis proef versie**, **contact persoon**en **test station** zijn geselecteerd.
 
-![Call-to-action-overzicht van PartnerCenter Insights](./media/insights-summary.png)
+![Partner centrum Insights-overzicht van actie-oproep](./media/insights-summary.png)
 
-## <a name="page-visits-by-geography"></a>Paginabezoeken per geografie
+## <a name="page-visits-by-geography"></a>Pagina bezoekers per Geografie
 
-De heatmap hieronder toont het aantal **paginabezoeken,** **oproepen tot actie**en unieke bezoekers volgens het land van de **klant**. Hogere paginabezoeken worden weergegeven door donkerdere kaartkleuren en lagere paginabezoeken worden weergegeven door lichtere kaartkleuren.
+In de onderstaande heatmap ziet u het aantal **bezoeken van pagina's**, **aanroepen naar actie**en **unieke bezoekers op basis**van het land van de klant. Meer bezoeken aan de pagina worden weer gegeven door kleur diepere kaarten en de bezoekers van kleinere pagina's worden weer gegeven met lichtere kaart kleuren.
 
-![Geografische spreiding van Partner Center Insights](./media/insights-geography.png)
+![Geografische sprei ding van partner Center Insights](./media/insights-geography.png)
 
-De heatmap bevat de volgende mogelijkheden:
+De heatmap omvat de volgende mogelijkheden:
 
-- De heatmap heeft een aanvullend raster om de details van **paginabezoeken,** **oproepen tot actie** en unieke **bezoekers** op een specifieke locatie te bekijken; u inzoomen op een specifieke locatie indien gewenst.  
-- **Landen spread** is het aantal van alle landen van waaruit uw klanten paginabezoeken hebben gemeld tijdens het geselecteerde datumbereik.
-- U zoeken en een land in het raster selecteren om in te zoomen op de locatie in de kaart. Ga terug naar de oorspronkelijke weergave door **Start** op de kaart te selecteren.
+- De heatmap heeft een aanvullend raster voor het weer geven van de details van de **bezoeken van pagina's**, **aanroepen van acties** en **unieke bezoekers** op een specifieke locatie. u kunt inzoomen op een specifieke locatie als voor keur.  
+- **Landen verspreiden** is het aantal landen van waaruit uw klanten pagina bezoeken hebben gerapporteerd tijdens het geselecteerde datum bereik.
+- U kunt zoeken en een land selecteren in het raster om in te zoomen op de locatie in de kaart. Keer terug naar de oorspronkelijke weer gave door **Start** op de kaart te selecteren.
 
-## <a name="page-visits-versus-unique-visitors-trend"></a>Paginabezoeken versus unieke bezoekerstrend
+## <a name="page-visits-versus-unique-visitors-trend"></a>Pagina bezoeken tegenover unieke bezoekers trend
 
-De onderstaande kolommen geven het aantal maandelijkse paginabezoeken weer, die worden weergegeven op de Y-as (as aan de linkerkant van de grafiek). De trendlijn vertegenwoordigt de maandelijkse trend van unieke bezoekers, die wordt weergegeven op de secundaire Y-as (as aan de rechterkant van de grafiek), voor uw aanbiedingen gepubliceerd in de etalages: Azure Marketplace en AppSource.
+De kolommen hieronder vertegenwoordigen het aantal maandelijkse pagina bezoekers dat wordt weer gegeven op de Y-as (as aan de linkerkant van de grafiek). De trend lijn vertegenwoordigt de maandelijkse trend van unieke bezoekers, die worden weer gegeven op de secundaire Y-as (as aan de rechter kant van de grafiek), voor uw aanbiedingen die in de winkel worden gepubliceerd: Azure Marketplace en AppSource.
 
-![Partner Center Insights paginabezoeken versus unieke bezoekerstrend](./media/insights-page-vists-unique-visitors.png)
+![Bezoeken pagina met partner Center Insights versus unieke bezoekers trend](./media/insights-page-vists-unique-visitors.png)
 
-## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>Call-to-action versus unieke bezoekers met CTA's
+## <a name="call-to-action-versus-unique-visitors-with-ctas"></a>Aanroepen van actie tegenover unieke bezoekers met CTAs
 
-De gestapelde kolommen vertegenwoordigen maandelijkse call-to-action (CTA), die zijn onderverdeeld door CTA-typen **(Get it now**, **Contact met mij**, en Free **Trial**) en uitgezet op de Y-as (as aan de linkerkant van de pagina). De trendlijn vertegenwoordigt de maandelijkse trend van unieke bezoekers met CTA's, die wordt weergegeven op de secundaire Y-as (as aan de rechterkant van de grafiek), voor uw aanbiedingen gepubliceerd in Azure Marketplace en AppSource.
+De gestapelde kolommen vertegenwoordigen maandelijkse aanroepen naar actie (CTA), die worden uitgesplitst door CTA typen (**nu downloaden**, **contact met mij opnemen**en een **gratis proef versie**hebben) en getekend op de Y-as (as aan de linkerkant van de pagina). De trend lijn vertegenwoordigt de maandelijkse trend van unieke bezoekers met CTAs, die wordt weer gegeven op de secundaire Y-as (as aan de rechter kant van de grafiek), voor uw aanbiedingen die zijn gepubliceerd in azure Marketplace en AppSource.
 
-![Partner Center Insights call-to-action versus unieke bezoekers met CTA's](./media/insights-call-to-action-unique-visitors.png)
+![Partner Center Insights-aanroepen naar actie versus unieke bezoekers met CTAs](./media/insights-call-to-action-unique-visitors.png)
 
-## <a name="page-visits-and-calls-to-action-by-offers"></a>Paginabezoeken en oproepen tot actie door aanbiedingen
+## <a name="page-visits-and-calls-to-action-by-offers"></a>Pagina bezoeken en aanroepen naar actie door aanbiedingen
 
-De buitenste cirkeldiagram vertegenwoordigt de uitsplitsing van **paginabezoeken** op basis van aanbiedingen die u in de marktplaats hebt gepubliceerd en die in het filter zijn geselecteerd. De binnenste grafiek vertegenwoordigt de uitsplitsing **Aanroepen naar actie** voor dezelfde aanbiedingen.
+Het buitenste cirkel diagram vertegenwoordigt de uitsplitsing van **pagina bezoeken** op basis van aanbiedingen die u hebt gepubliceerd op de Marketplace en geselecteerd in het filter. De interne grafiek vertegenwoordigt de **aanroepen naar actie** -uitsplitsing voor dezelfde aanbiedingen.
 
-![Partner Center Insights pagina bezoeken en oproepen tot actie door aanbiedingen](./media/insights-page-visits-and-cta-by-offer.png)
+![Bezoeken van partner Center Insights-pagina's en aanroepen naar actie door aanbiedingen](./media/insights-page-visits-and-cta-by-offer.png)
 
-## <a name="call-to-action-percentage-trend"></a>Trend van call-to-action-percentage
+## <a name="call-to-action-percentage-trend"></a>Trend van actie percentage aanroepen
 
-De **Call to action percentage trend** presenteert het CTA percentage voor de aanbiedingen gepubliceerd in de markt. CTA % = (CTA's/paginabezoeken) * 100.
+De **trend van het aanroepen van actie percentage** geeft het CTA percentage voor de aanbiedingen die op Marketplace worden gepubliceerd. CTA% = (CTAs/pagina bezoekers) * 100.
 
-![Partner Center Insights call-to-action percentage trend](./media/insights-call-to-action-percentage-trend.png)
+![Partner centrum Insights aanroepen naar actie percentage trend](./media/insights-call-to-action-percentage-trend.png)
 
-## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Paginabezoeken en oproepen tot actie door verwijzingsdomeinen
+## <a name="page-visits-and-calls-to-action-by-referral-domains"></a>Pagina bezoeken en aanroepen naar actie door referentie domeinen
 
-De onderstaande grafiek presenteert de top 50 verwijzing domeinen. Als u een specifiek verwijzingsdomein selecteert, wordt de maandelijkse trend van paginabezoeken en oproepen tot actie op de grafiek aan de rechterkant weergegeven.
+In de volgende grafiek ziet u de meest voorkomende referentie domeinen van 50. Als u een specifiek referentie domein selecteert, ziet u de maandelijkse trend van pagina bezoeken en aanroepen naar actie op de grafiek aan de rechter kant.
 
-![Partnercenter Insights pagina bezoeken en call-to-action door verwijzing domeinen en campagnes](./media/insights-page-visits-call-to-actions.png)
+![Bezoeken en aanroepen van partner Center Insights-pagina's met verwijzings domeinen en campagnes](./media/insights-page-visits-call-to-actions.png)
 
-## <a name="marketplace-insights-details-table"></a>Tabel met details van Marketplace Insights
+## <a name="marketplace-insights-details-table"></a>Informatie tabel voor Marketplace Insights
 
-In deze tabel vindt u een lijstweergave van de paginabezoeken en de aanzet tot actie van de geselecteerde aanbiedingen die zijn gesorteerd op datum.
+Deze tabel bevat een lijst weergave van de bezoeken van de pagina en de aanroepen naar actie van uw geselecteerde aanbiedingen gesorteerd op datum.
 
-![Detailstabel Partner Center Insights](./media/insights-details-page.png)
+![Detail tabel van partner Center Insights](./media/insights-details-page.png)
 
-- De gegevens kunnen worden geëxtraheerd naar een CSV-bestand als het aantal records minder dan 1000 is.
-- Als het aantal records meer dan 1000 is, worden geëxporteerde gegevens de komende 30 dagen asynchroon op een downloadspagina geplaatst.
-- Filters kunnen worden toegepast om de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op Namen van de aanbieding en campagnenamen.  
+- De gegevens kunnen worden geëxtraheerd naar een CSV-bestand als het aantal records kleiner is dan 1000.
+- Als het aantal records meer dan 1000 is, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
+- Filters kunnen worden toegepast om de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op naam van aanbieding en campagne namen.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Analytics voor de commerciële marktplaats voor](./analytics.md)de commerciële marktplaats voor een overzicht van analyserapporten die beschikbaar zijn in de commerciële marktplaats voor het Partnercentrum.
-- Zie [Overzichtsdashboard in commerciële marktplaatsanalyses](./summary-dashboard.md)voor grafieken, trends en waarden van geaggregeerde gegevens die de activiteit op de markt voor uw aanbieding samenvatten.
-- Zie [Orders Dashboard in commerciële marktplaatsanalyses](./orders-dashboard.md)voor informatie over uw bestellingen in een grafische en downloadbare indeling.
-- Zie [Gebruiksdashboard in commerciële marktplaatsanalyses](./usage-dashboard.md)voor virtuele machine (VM) voor gebruiks- en factureringsstatistieken met een datameter.
-- Zie [Customer Dashboard in commerciële marktplaatsanalyses](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, inclusief groeitrends.
-- Zie [Downloads Dashboard in commerciële marktplaatsanalyses](./downloads-dashboard.md)voor een lijst met uw downloadaanvragen van de afgelopen 30 dagen.
-- Zie [Dashboard Beoordelingen en beoordelingen in commerciële marktplaatsanalyses](./ratings-reviews.md)voor ziet een geconsolideerde weergave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
-- Voor veelgestelde vragen over commerciële marktplaatsanalyse en voor een uitgebreid woordenboek van gegevenstermen, zie [veelgestelde vragen en terminologie voor commerciële marktplaatsanalyses.](./faq-terminology.md)
+- Voor een overzicht van analyse rapporten die beschikbaar zijn in de commerciële Marketplace van partner Center raadpleegt u [Analytics voor de commerciële Marketplace in Partner Center](./analytics.md).
+- Zie [Summary dash board in Commercial Marketplace Analytics](./summary-dashboard.md)voor grafieken, trends en waarden van statistische gegevens die de Marketplace-activiteiten voor uw aanbieding samenvatten.
+- Voor informatie over uw orders in een grafische en download bare indeling raadpleegt u het [dash board orders in Commercial Marketplace Analytics](./orders-dashboard.md).
+- Voor virtuele machine (VM) zijn metrische gegevens over gebruik en gefactureerde facturering, Zie [gebruiks dashboard in commerciële Marketplace-analyses](./usage-dashboard.md).
+- Zie [klanten dashboard in Commercial Marketplace Analytics](./customer-dashboard.md)voor gedetailleerde informatie over uw klanten, waaronder groei trends.
+- Zie [dash board downloaden in Commercial Marketplace Analytics](./downloads-dashboard.md)voor een lijst met Download aanvragen voor de afgelopen 30 dagen.
+- Voor een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource raadpleegt u het [dash board beoordelingen en beoordelingen in Commercial Marketplace Analytics](./ratings-reviews.md).
+- Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor veelgestelde vragen over commerciële Marketplace-analyses en voor een uitgebreid woorden boek met gegevens termen.

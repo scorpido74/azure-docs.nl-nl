@@ -1,6 +1,6 @@
 ---
-title: Een door het systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-gegevens
-description: Meer informatie over het configureren van een Azure Active Directory (Azure AD) systeemtoegewezen beheerde identiteit (managed service identity) om toegang te krijgen tot sleutels vanuit Azure Cosmos DB.
+title: Een door het systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
+description: Meer informatie over het configureren van een door Azure Active Directory het systeem toegewezen beheerde identiteit (beheerde service-identiteit voor Azure AD) voor het verkrijgen van toegang tot sleutels van Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,79 +8,79 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641236"
 ---
-# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Beheerde identiteiten met het systeem gebruiken om toegang te krijgen tot Azure Cosmos DB-gegevens
+# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
 
-In dit artikel stelt u een *robuuste, toetsrotatieagnostische* oplossing in om toegang te krijgen tot Azure Cosmos DB-sleutels met behulp van [beheerde identiteiten.](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) In het voorbeeld in dit artikel wordt Azure-functies gebruikt, maar u elke service gebruiken die beheerde identiteiten ondersteunt. 
+In dit artikel gaat u een *robuuste neutraal-* oplossing voor het draaien van sleutels instellen om toegang te krijgen tot Azure Cosmos DB toetsen door [beheerde identiteiten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)te gebruiken. In het voor beeld in dit artikel wordt gebruikgemaakt van Azure Functions, maar u kunt elke service gebruiken die beheerde identiteiten ondersteunt. 
 
-U leert hoe u een functie-app maakt die toegang heeft tot Azure Cosmos DB-gegevens zonder dat u Azure Cosmos DB-sleutels hoeft te kopiëren. De functie-app wordt elke minuut wakker en registreert de huidige temperatuur van een aquariumaquarium. Zie de functie Maken in Azure die wordt geactiveerd door een functie-app die wordt geactiveerd door een timer-artikel voor meer informatie over het instellen van een functie-app die door timers [wordt geactiveerd.](../azure-functions/functions-create-scheduled-function.md)
+U leert hoe u een functie-app kunt maken die toegang heeft tot Azure Cosmos DB gegevens zonder dat u Azure Cosmos DB sleutels hoeft te kopiëren. De functie-app wordt elke minuut geactiveerd en registreert de huidige Tempe ratuur van een aquarium uit de Vries. Zie voor meer informatie over het instellen van een door een timer geactiveerde functie-app het artikel [een functie maken in azure die wordt geactiveerd door een gebeurtenis](../azure-functions/functions-create-scheduled-function.md) .
 
-Om het scenario te vereenvoudigen, is een [time-to-live-instelling](./time-to-live.md) al geconfigureerd om oudere temperatuurdocumenten op te schonen. 
+Voor het vereenvoudigen van het scenario is de instelling [time to Live](./time-to-live.md) al geconfigureerd voor het opschonen van oudere temperatuur documenten. 
 
 ## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Een door het systeem toegewezen beheerde identiteit toewijzen aan een functie-app
 
 In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan uw functie-app.
 
-1. Open in de [Azure-portal](https://portal.azure.com/)het deelvenster **Azure-functie** en ga naar de functie-app. 
+1. Open in het [Azure Portal](https://portal.azure.com/)het deel venster **Azure** en ga naar uw functie-app. 
 
-1. Open het tabblad**Identiteit van** **platformfuncties:** >  
+1. Open het tabblad**identiteit** van **platform functies** > : 
 
-   ![Schermafbeelding met platformfuncties en identiteitsopties voor de functie-app.](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   ![Scherm opname van platform functies en identiteits opties voor de functie-app.](./media/managed-identity-based-authentication/identity-tab-selection.png)
 
-1. Schakel op het tabblad **Identiteit** de **status** van de systeemidentiteit **in** en selecteer **Opslaan**. Het **identiteitsvenster** moet er als volgt uitzien:  
+1. Schakel op het tabblad **identiteit** de **status** van de systeem identiteit **in** en selecteer **Opslaan**. Het **identiteits** venster moet er als volgt uitzien:  
 
-   ![Schermafbeelding van de status van de systeemidentiteit ingesteld op Aan.](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   ![Scherm afbeelding met de status van de systeem identiteit ingesteld op aan.](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Toegang verlenen tot uw Azure Cosmos-account
 
-In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde identiteit van de functie-app. Azure Cosmos DB heeft meerdere ingebouwde rollen die u toewijzen aan de beheerde identiteit. Voor deze oplossing gebruikt u de volgende twee rollen:
+In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde identiteit van de functie-app. Azure Cosmos DB heeft meerdere ingebouwde rollen die u aan de beheerde identiteit kunt toewijzen. Voor deze oplossing gebruikt u de volgende twee rollen:
 
 |Ingebouwde rol  |Beschrijving  |
 |---------|---------|
-|[DocumentDB-accountbijdrager](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB-accounts beheren. Hiermee u lees-/schrijftoetsen ophalen. |
-|[Cosmos DB-accountlezer](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan Azure Cosmos DB-accountgegevens lezen. Hiermee u leessleutels ophalen. |
+|[Inzender voor DocumentDB-accounts](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB accounts beheren. Het ophalen van sleutels voor lezen/schrijven is toegestaan. |
+|[Lezer van Cosmos DB-account](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan gegevens van Azure Cosmos DB-account lezen. Kan Lees sleutels ophalen. |
 
 > [!IMPORTANT]
-> Ondersteuning voor op rollen gebaseerde toegangscontrole in Azure Cosmos DB is alleen van toepassing op beheervlakbewerkingen. Gegevensvlakbewerkingen worden beveiligd via hoofdsleutels of resourcetokens. Zie het artikel [Beveiligde toegang tot gegevens](secure-access-to-data.md) voor meer informatie.
+> Ondersteuning voor op rollen gebaseerd toegangs beheer in Azure Cosmos DB is alleen van toepassing op beheer vlak bewerkingen. Data-vlak bewerkingen worden beveiligd via hoofd sleutels of bron tokens. Zie het artikel [beveiligde toegang tot gegevens](secure-access-to-data.md) voor meer informatie.
 
 > [!TIP] 
-> Wanneer u rollen toewijst, wijst u alleen de benodigde toegang toe. Als uw service alleen leesgegevens vereist, wijst u de rol **Cosmos DB-accountlezer** toe aan de beheerde identiteit. Zie het artikel Lagere blootstelling van bevoegde accounts voor meer informatie over het belang van de minste toegang tot [bevoegdheden.](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)
+> Wijs, wanneer u rollen toewijst, alleen de benodigde toegang toe. Als uw service alleen gegevens heeft gelezen, wijst u de rol van **Cosmos DB-account lezer** toe aan de beheerde identiteit. Zie het artikel [onderbelichting van geprivilegieerde accounts](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) voor meer informatie over het belang van de minimale toegang tot bevoegdheden.
 
-In dit scenario leest de functie-app de temperatuur van het aquarium en schrijft deze gegevens terug naar een container in Azure Cosmos DB. Omdat de functie-app de gegevens moet schrijven, moet u de rol **documentdb-accountinzender toewijzen.** 
+In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijft vervolgens de gegevens terug naar een container in Azure Cosmos DB. Omdat de functie-app de gegevens moet schrijven, moet u de rol Inzender voor het **DocumentDB-account** toewijzen. 
 
-1. Meld u aan bij de Azure-portal en ga naar uw Azure Cosmos DB-account. Open het deelvenster **Toegangsbesturingselement (IAM)** en vervolgens het tabblad **Toewijzingen van rollen:**
+1. Meld u aan bij de Azure Portal en ga naar uw Azure Cosmos DB-account. Open het deel venster **toegangs beheer (IAM)** en vervolgens het tabblad **roltoewijzingen** :
 
-   ![Schermafbeelding van het toegangsbesturingselement en het tabblad Toewijzingen van rollen.](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   ![Scherm opname van het deel venster toegangs beheer en het tabblad roltoewijzingen.](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
 
-1. Selecteren **+ Roltoewijzing** > **toevoegen**.
+1. Selecteer **+** > **functie toewijzing toevoegen**toevoegen.
 
-1. Het deelvenster **Roltoewijzing toevoegen** wordt rechts geopend:
+1. Het deel venster **roltoewijzing toevoegen** wordt aan de rechter kant geopend:
 
-   ![Schermafbeelding van het deelvenster Roltoewijzing toevoegen.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   ![Scherm opname van het deel venster toewijzing van rol toevoegen.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
 
-   * **Functie**: **DocumentDB-accountbijdrager selecteren**
-   * **Selecteer** **Functie-app**onder de onderafdeling Beheerde identiteit selecteren onder de onderafdeling **Beheerde identiteit selecteren** .
-   * **Selecteer**: Het deelvenster wordt gevuld met alle functie-apps in uw abonnement met een **beheerde systeemidentiteit.** Selecteer in dit geval de **functie-app FishTankTemperatureService:** 
+   * **Rol**: Selecteer **Inzender** voor het DocumentDB-account
+   * **Toegang toewijzen aan**: Selecteer onder de Subsectie door het **systeem toegewezen beheerde identiteit selecteren** de optie **functie-app**.
+   * **Selecteren**: het deel venster wordt gevuld met alle functie-apps in uw abonnement die een **beheerde systeem identiteit**hebben. In dit geval selecteert u de functie-app **FishTankTemperatureService** : 
 
-      ![Schermafbeelding van het deelvenster Roltoewijzing toevoegen dat is gevuld met voorbeelden.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      ![Scherm opname waarin het deel venster roltoewijzing toevoegen is ingevuld met voor beelden.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
 
 1. Nadat u de functie-app hebt geselecteerd, selecteert u **Opslaan**.
 
-## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programmatisch toegang tot de Azure Cosmos DB-toetsen
+## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programmatisch toegang tot de Azure Cosmos DB sleutels
 
-Nu hebben we een functie-app met een door het systeem toegewezen beheerde identiteit met de rol **DocumentDB-accountbijdrage in** de Azure Cosmos DB-machtigingen. De volgende functie-app-code krijgt de Azure Cosmos DB-toetsen, maakt een CosmosClient-object, krijgt de temperatuur van het aquarium en slaat deze op in Azure Cosmos DB.
+Nu hebben we een functie-app met een door het systeem toegewezen beheerde identiteit met de rol Inzender voor het **DocumentDB-account** in de Azure Cosmos DB machtigingen. Met de volgende functie-app code worden de Azure Cosmos DB sleutels opgehaald, wordt een CosmosClient-object gemaakt, wordt de Tempe ratuur van het aquarium opgehaald en wordt dit vervolgens opgeslagen op Azure Cosmos DB.
 
-In dit voorbeeld wordt de [API voor lijstsleutels](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) gebruikt om toegang te krijgen tot uw Azure Cosmos DB-accountsleutels.
+In dit voor beeld wordt de [List Keys API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) gebruikt om toegang te krijgen tot de sleutels van uw Azure Cosmos DB-account.
 
 > [!IMPORTANT] 
-> Als u de rol [Cosmos DB-accountlezer](#grant-access-to-your-azure-cosmos-account) wilt toewijzen, moet u de API [Voor alleen-lezen lijst](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)gebruiken. Dit vult alleen de alleen-lezen toetsen.
+> Als u de rol van [de Cosmos DB-account lezer wilt toewijzen](#grant-access-to-your-azure-cosmos-account) , moet u de [API lijst met alleen-lezen sleutels](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)gebruiken. Hiermee worden alleen-lezen sleutels gevuld.
 
-De API Lijstsleutels `DatabaseAccountListKeysResult` retourneert het object. Dit type is niet gedefinieerd in de C#-bibliotheken. De volgende code toont de implementatie van deze klasse:  
+De List Keys-API retourneert `DatabaseAccountListKeysResult` het object. Dit type is niet gedefinieerd in de C#-bibliotheken. De volgende code toont de implementatie van deze klasse:  
 
 ```csharp 
 namespace Monitor 
@@ -95,7 +95,7 @@ namespace Monitor
 }
 ```
 
-In het voorbeeld wordt ook gebruik gemaakt van een eenvoudig document genaamd 'TemperatureRecord', dat als volgt wordt gedefinieerd:
+In het voor beeld wordt ook een eenvoudig document met de naam ' TemperatureRecord ' gebruikt. dit wordt als volgt gedefinieerd:
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace Monitor
 }
 ```
 
-U gebruikt de [Microsoft.Azure.Services.AppAuthentication-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) om het door het systeem toegewezen beheerde identiteitstoken te krijgen. Zie het artikel [service-to-service-verificatie](../key-vault/general/service-to-service-authentication.md) voor `Microsoft.Azure.Service.AppAuthentication` meer informatie over het token en meer informatie over de bibliotheek.
+U gebruikt de bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) om het door het systeem toegewezen beheerde identiteits token op te halen. Zie het artikel [service-naar-service-verificatie](../key-vault/general/service-to-service-authentication.md) voor meer informatie over andere `Microsoft.Azure.Service.AppAuthentication` manieren om het token op te halen en meer te weten te komen over de-bibliotheek.
 
 
 ```csharp
@@ -196,10 +196,10 @@ namespace Monitor
 }
 ```
 
-U bent nu klaar om [uw functie-app](../azure-functions/functions-create-first-function-vs-code.md)te implementeren.
+U bent nu klaar om [uw functie-app te implementeren](../azure-functions/functions-create-first-function-vs-code.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Verificatie op basis van certificaten met Azure Cosmos DB en Azure Active Directory](certificate-based-authentication.md)
-* [Azure Cosmos DB-sleutels beveiligen met Azure Key Vault](access-secrets-from-keyvault.md)
-* [Beveiligingsbasislijn voor Azure Cosmos DB](security-baseline.md)
+* [Azure Cosmos DB sleutels beveiligen met behulp van Azure Key Vault](access-secrets-from-keyvault.md)
+* [Beveiligings basislijn voor Azure Cosmos DB](security-baseline.md)

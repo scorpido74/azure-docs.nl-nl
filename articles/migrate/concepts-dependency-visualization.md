@@ -1,84 +1,84 @@
 ---
-title: Afhankelijkheidsanalyse in Azure Migrate Server Assessment
-description: Beschrijft hoe u afhankelijkheidsanalyse gebruiken voor beoordeling met Azure Migrate Server Assessment.
+title: Afhankelijkheids analyse in Azure Migrate server-evaluatie
+description: Hierin wordt beschreven hoe u afhankelijkheids analyse gebruikt voor evaluatie met behulp van Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024758"
 ---
-# <a name="dependency-analysis"></a>Afhankelijkheidsanalyse
+# <a name="dependency-analysis"></a>Afhankelijkheids analyse
 
-In dit artikel wordt afhankelijkheidsanalyse beschreven in Azure Migrate:Server Assessment.
+In dit artikel wordt de analyse van afhankelijkheden in Azure Migrate: Server evaluatie beschreven.
 
 ## <a name="overview"></a>Overzicht
 
-Afhankelijkheidsanalyse helpt u om afhankelijkheden te identificeren tussen on-premises machines die u wilt beoordelen en migreren naar Azure. 
+Afhankelijkheids analyse helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. 
 
-- In Azure Migrate:Server Assessment verzamelt u machines in een groep en beoordeelt u de groep. Afhankelijkheidsanalyse helpt u om machines nauwkeuriger te groeperen, met een hoog vertrouwen voor beoordeling.
-- Met afhankelijkheidsanalyse u machines identificeren die samen moeten worden gemigreerd. U bepalen of machines in gebruik zijn of dat ze kunnen worden buiten bedrijf gesteld in plaats van gemigreerd.
-- Het analyseren van afhankelijkheden helpt ervoor te zorgen dat er niets achterblijft en voorkom verrassingsonderbrekingen tijdens migratie.
-- Analyse is vooral handig als u niet zeker weet of machines deel uitmaken van een app-implementatie die u naar Azure wilt migreren.
-- [Lees](common-questions-discovery-assessment.md#what-is-dependency-visualization) veelgestelde vragen over afhankelijkheidsanalyse.
+- In Azure Migrate: Server analyse verzamelt u computers in een groep en evalueert u vervolgens de groep. Afhankelijkheids analyse helpt u machines nauw keuriger te groeperen, met een hoge mate van vertrouwen voor evaluatie.
+- Met afhankelijkheids analyse kunt u computers identificeren die samen moeten worden gemigreerd. U kunt nagaan of machines in gebruik zijn of in plaats van gemigreerd kunnen worden.
+- Met het analyseren van afhankelijkheden kunt u ervoor zorgen dat er geen onverwachte storingen optreden tijdens de migratie.
+- Analyse is vooral nuttig als u niet zeker weet of machines deel uitmaken van een app-implementatie die u naar Azure wilt migreren.
+- [Bekijk](common-questions-discovery-assessment.md#what-is-dependency-visualization) Veelgestelde vragen over afhankelijkheids analyse.
 
-Er zijn twee opties voor het implementeren van afhankelijkheidsanalyse
+Er zijn twee opties voor het implementeren van afhankelijkheids analyse
 
-- **Op agentgebaseerd:** voor afhankelijkheidsanalyse op basis van agenten moeten agents worden geïnstalleerd op elke on-premises machine die u wilt analyseren.
-- **Agentless**: Met agentless analyse hoeft u geen agents te installeren op machines die u wilt controleren. Deze optie is momenteel in preview en is alleen beschikbaar voor VMware VM's.
+- **Op agent gebaseerd**: afhankelijkheids analyse op basis van een agent vereist dat agents worden geïnstalleerd op elke on-premises computer die u wilt analyseren.
+- Zonder **agents**: u hoeft geen agents te installeren op computers die u wilt kruisen om te controleren. Deze optie is momenteel in Preview en is alleen beschikbaar voor virtuele VMware-machines.
 
 > [!NOTE]
-> Afhankelijkheidsanalyse op basis van agenten is niet beschikbaar in Azure Government. U gebruik maken van agentless afhankelijkheidanalyse.
+> Afhankelijkheids analyse op basis van een agent is niet beschikbaar in Azure Government. U kunt afhankelijkheids analyse zonder agent gebruiken.
 
-## <a name="agentless-analysis"></a>Agentloze analyse
+## <a name="agentless-analysis"></a>Analyse zonder agent
 
-Agentless dependency analysis werkt door het vastleggen van TCP-verbindingsgegevens van machines waarvoor deze is ingeschakeld. Er zijn geen agents geïnstalleerd op machines die u wilt analyseren.
+Analyse van de afhankelijkheid van agents werkt door TCP-verbindings gegevens vast te leggen van computers waarvoor deze is ingeschakeld. Er zijn geen agents geïnstalleerd op computers die u wilt analyseren.
 
 ### <a name="collected-data"></a>Verzamelde gegevens
 
-Nadat de afhankelijkheidsdetectie is gestart, verzamelt het toestel elke vijf minuten gegevens van machines om gegevens te verzamelen. Deze gegevens worden verzameld van gast VM's via vCenter Server, met behulp van vSphere API's. De verzamelde gegevens worden verwerkt op het Azure Migrate-toestel om identiteitsgegevens af te leiden en worden elke zes uur naar Azure Migrate verzonden.
+Nadat de detectie van afhankelijkheden is gestart, pollt het apparaat om de vijf minuten gegevens van machines om gegevens te verzamelen. Deze gegevens worden verzameld van gast-Vm's via vCenter Server, met behulp van vSphere-Api's. De verzamelde gegevens worden verwerkt op het Azure Migrate apparaat, om identiteits gegevens af te leiden en worden elke zes uur verzonden naar Azure Migrate.
 
-Polling verzamelt deze gegevens van machines: 
-- Naam van processen die actieve verbindingen hebben.
+Met polling worden deze gegevens van machines verzameld: 
+- De naam van processen die actieve verbindingen hebben.
 - Naam van de toepassing die processen uitvoert die actieve verbindingen hebben.
-- Bestemmingspoort op de actieve verbindingen.
+- Doel poort van de actieve verbindingen.
 
-## <a name="agent-based-analysis"></a>Agent-gebaseerde analyse
+## <a name="agent-based-analysis"></a>Analyse op basis van een agent
 
-Voor analyse op basis van agenten gebruikt Server Assessment de [servicekaartoplossing](../azure-monitor/insights/service-map.md) in Azure Monitor om afhankelijkheidsvisualisatie en -analyse mogelijk te maken. De [Microsoft Monitoring Agent/Log Analytics-agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) en de [afhankelijkheidsagent](../azure-monitor/platform/agents-overview.md#dependency-agent)moeten worden geïnstalleerd op elke machine die u wilt analyseren.
+Voor analyse op basis van een agent gebruikt server beoordeling de [servicetoewijzing oplossing](../azure-monitor/insights/service-map.md) in azure monitor om de visualisatie en analyse van afhankelijkheden in te scha kelen. De agent voor [micro soft Monitoring Agent/log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent) en de [agent voor afhankelijkheden](../azure-monitor/platform/agents-overview.md#dependency-agent)moeten worden geïnstalleerd op elke computer die u wilt analyseren.
 
 ### <a name="collected-data"></a>Verzamelde gegevens
 
-Voor analyse op basis van agenten worden de volgende gegevens verzameld:
+Voor analyse op basis van een agent worden de volgende gegevens verzameld:
 
-- Naam van de sourcemachineserver, proces, naam van de toepassing.
-- Naam, proces, toepassingsnaam en poort van doelmachineserver.
-- Het aantal verbindingen, latentie en gegevensoverdrachtsgegevens wordt verzameld en beschikbaar voor Log Analytics-query's. 
+- Naam van de bron computer server, proces, toepassings naam.
+- Naam van de doel computer server, proces, toepassings naam en poort.
+- Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 
 
-## <a name="compare-agentless-and-agent-based"></a>Vergelijk agentless en agent-based
+## <a name="compare-agentless-and-agent-based"></a>Vergelijkt agentloos en op basis van een agent
 
-De verschillen tussen agentloze visualisatie en agentgebaseerde visualisatie worden samengevat in de tabel.
+De verschillen tussen visualisatie zonder agents en visualisaties op basis van agents worden in de tabel samenvatten.
 
-**Vereiste** | **Zonder agent** | **Agent-based**
+**Vereiste** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---
-Ondersteuning | Deze optie is momenteel in preview en is alleen beschikbaar voor VMware VM's. [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) ondersteunde besturingssystemen. | In het algemeen beschikbaarheid (GA).
-Agent | Het is niet nodig om agents te installeren op machines die u wilt controleren. | Agents die moeten worden geïnstalleerd op elke on-premises machine die u wilt analyseren: de [Microsoft Monitoring-agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)en de [afhankelijkheidsagent.](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent) 
-Log Analytics | Niet vereist. | Azure Migrate gebruikt de [Service Map-oplossing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) in [Azure Monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor afhankelijkheidsanalyse. 
-Hoe werkt het? | Hiermee legt u TCP-verbindingsgegevens vast op machines die zijn ingeschakeld voor afhankelijkheidsvisualisatie. Na ontdekking verzamelt het gegevens met intervallen van vijf minuten. | Servicemap-agents die op een machine zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
-Gegevens | Naam van de sourcemachineserver, proces, naam van de toepassing.<br/><br/> Naam, proces, toepassingsnaam en poort van doelmachineserver. | Naam van de sourcemachineserver, proces, naam van de toepassing.<br/><br/> Naam, proces, toepassingsnaam en poort van doelmachineserver.<br/><br/> Het aantal verbindingen, latentie en gegevensoverdrachtsgegevens wordt verzameld en beschikbaar voor Log Analytics-query's. 
-Visualisatie | Afhankelijkheidskaart van één server kan gedurende een uur tot 30 dagen worden bekeken. | Afhankelijkheidskaart van één server.<br/><br/> Kaart kan worden bekeken meer dan een uur alleen.<br/><br/> Afhankelijkheidskaart van een groep servers.<br/><br/> Servers in een groep toevoegen en verwijderen uit de kaartweergave.
-Gegevensexport | Kan momenteel niet worden gedownload in tabelindeling. | Gegevens kunnen worden opgevraagd met Log Analytics.
+Ondersteuning | Deze optie is momenteel in Preview en is alleen beschikbaar voor virtuele VMware-machines. [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) ondersteunde besturings systemen. | In algemene Beschik baarheid (GA).
+Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)en de [dependency agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor afhankelijkheids analyse. 
+Hoe werkt het? | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
+Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
+Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
+Gegevensexport | Kan momenteel niet worden gedownload in de indeling tabellair. | Gegevens kunnen worden opgevraagd met Log Analytics.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Bekijk de vereisten voor het opzetten van op agentgebaseerde analyses voor Vm's op basis [van VMware,](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements) [fysieke servers](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)en [Hyper-V VM's](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
-- [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) de vereisten voor agentless analyse van VMware VM's.
-- [Afhankelijkheidsvisualisatie](how-to-create-group-machine-dependencies.md) op basis van agent instellen
-- [Probeer](how-to-create-group-machine-dependencies-agentless.md) agentloze afhankelijkheidsvisualisatie voor VMware VM's uit.
-- Lees [veelgestelde vragen](common-questions-discovery-assessment.md#what-is-dependency-visualization) over afhankelijkheidsvisualisatie.
+- Bekijk de vereisten voor het instellen van analyse op basis van een agent voor virtuele [VMware-machines](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [fysieke servers](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)en [Hyper-V-vm's](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) de vereisten voor de analyse zonder agent van virtuele VMware-machines.
+- Visualisatie van afhankelijkheid op basis van [een agent instellen](how-to-create-group-machine-dependencies.md)
+- [Probeer](how-to-create-group-machine-dependencies-agentless.md) visualisatie van de afhankelijkheid van agents uit voor VMware-vm's.
+- Bekijk [Veelgestelde vragen](common-questions-discovery-assessment.md#what-is-dependency-visualization) over de visualisatie van afhankelijkheden.
 
 

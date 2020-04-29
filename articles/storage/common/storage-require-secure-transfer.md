@@ -1,7 +1,7 @@
 ---
-title: Veilige overdracht vereisen om veilige verbindingen te garanderen
+title: Veilige overdracht vereisen om beveiligde verbindingen te garanderen
 titleSuffix: Azure Storage
-description: Meer informatie over het vereisen van veilige overdracht voor aanvragen naar Azure Storage. Wanneer u een veilige overdracht voor een opslagaccount nodig hebt, worden aanvragen die afkomstig zijn van een onveilige verbinding geweigerd.
+description: Meer informatie over het vereisen van een veilige overdracht van aanvragen voor Azure Storage. Wanneer u een beveiligde overdracht van een opslag account nodig hebt, worden aanvragen die afkomstig zijn van een onbeveiligde verbinding, geweigerd.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,65 +11,65 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870520"
 ---
-# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Veilige overdracht vereisen om veilige verbindingen te garanderen
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>Veilige overdracht vereisen om beveiligde verbindingen te garanderen
 
-U uw opslagaccount configureren om aanvragen van beveiligde verbindingen alleen te accepteren door de vereiste eigenschap **Secure transfer** voor het opslagaccount in te stellen. Wanneer u een veilige overdracht nodig hebt, worden aanvragen die afkomstig zijn van een onveilige verbinding afgewezen. Microsoft raadt u aan altijd een veilige overdracht voor al uw opslagaccounts te vereisen.
+U kunt uw opslag account zo configureren dat alleen aanvragen van beveiligde verbindingen worden geaccepteerd door de eigenschap **beveiligde overdracht vereist** voor het opslag account in te stellen. Wanneer u een veilige overdracht nodig hebt, worden aanvragen die afkomstig zijn van een onbeveiligde verbinding, geweigerd. Micro soft raadt u aan om altijd een veilige overdracht te vereisen voor al uw opslag accounts.
 
-Wanneer een veilige overdracht vereist is, moet een aanroep naar een Azure Storage REST API-bewerking via HTTPS worden uitgevoerd. Elk verzoek dat via HTTP wordt ingediend, wordt afgewezen.
+Wanneer beveiligde overdracht is vereist, moet een aanroep van een Azure Storage REST API bewerking worden uitgevoerd via HTTPS. Alle aanvragen via HTTP worden geweigerd.
 
-Verbinding maken met een Azure File-share via SMB zonder versleuteling mislukt wanneer beveiligde overdracht vereist is voor het opslagaccount. Voorbeelden van onveilige verbindingen zijn die gemaakt via SMB 2.1, SMB 3.0 zonder encryptie, of sommige versies van de Linux SMB-client.
+Het is niet mogelijk om verbinding te maken met een Azure-bestands share via SMB zonder versleuteling wanneer beveiligde overdracht is vereist voor het opslag account. Voor beelden van Inveilige verbindingen zijn die zijn gemaakt via SMB 2,1, SMB 3,0 zonder versleuteling of een aantal versies van de Linux SMB-client.
 
-Standaard is de vereiste eigenschap **Secure transfer** ingeschakeld wanneer u een opslagaccount maakt.
+Standaard is de eigenschap **beveiligde overdracht vereist** ingeschakeld wanneer u een opslag account maakt.
 
 > [!NOTE]
-> Omdat Azure Storage geen HTTPS ondersteunt voor aangepaste domeinnamen, wordt deze optie niet toegepast wanneer u een aangepaste domeinnaam gebruikt. En klassieke opslagaccounts worden niet ondersteund.
+> Omdat Azure Storage geen ondersteuning biedt voor HTTPS voor aangepaste domein namen, wordt deze optie niet toegepast wanneer u een aangepaste domein naam gebruikt. En klassieke opslag accounts worden niet ondersteund.
 
-## <a name="require-secure-transfer-in-the-azure-portal"></a>Beveiligde overdracht vereisen in de Azure-portal
+## <a name="require-secure-transfer-in-the-azure-portal"></a>Veilige overdracht vereisen in de Azure Portal
 
-U de vereiste eigenschap **Secure transfer** inschakelen wanneer u een opslagaccount maakt in de [Azure-portal.](https://portal.azure.com) U het ook inschakelen voor bestaande opslagaccounts.
+U kunt de eigenschap **beveiligde overdracht vereist** inschakelen wanneer u een opslag account maakt in de [Azure Portal](https://portal.azure.com). U kunt dit ook inschakelen voor bestaande opslag accounts.
 
-### <a name="require-secure-transfer-for-a-new-storage-account"></a>Veilige overdracht vereisen voor een nieuw opslagaccount
+### <a name="require-secure-transfer-for-a-new-storage-account"></a>Veilige overdracht vereisen voor een nieuw opslag account
 
-1. Open het deelvenster **Opslagaccount maken** in de Azure-portal.
-1. Selecteer Onder **Beveiligde overdracht vereist**de optie **Ingeschakeld**.
+1. Open het deel venster **opslag account maken** in de Azure Portal.
+1. Selecteer onder **beveiligde overdracht vereist**de optie **ingeschakeld**.
 
-   ![Het blad van het opslagaccount maken](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+   ![Blade opslag account maken](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
-### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Veilige overdracht vereisen voor een bestaand opslagaccount
+### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Veilige overdracht vereisen voor een bestaand opslag account
 
-1. Selecteer een bestaand opslagaccount in de Azure-portal.
-1. Selecteer **Configuratie**in het menuvenster opslagaccount onder **INSTELLINGEN**.
-1. Selecteer Onder **Beveiligde overdracht vereist**de optie **Ingeschakeld**.
+1. Selecteer een bestaand opslag account in de Azure Portal.
+1. Selecteer in het menu venster voor het opslag account onder **instellingen**de optie **configuratie**.
+1. Selecteer onder **beveiligde overdracht vereist**de optie **ingeschakeld**.
 
-   ![Menuvenster Opslagaccount](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+   ![Menu venster voor het opslag account](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="require-secure-transfer-from-code"></a>Veilige overdracht van code vereisen
 
-Als u een veilige overdracht programmatisch wilt vereisen, stelt u de eigenschap _supportsHttpsTrafficOnly_ in op het opslagaccount. U deze eigenschap instellen met behulp van de REST API, clientbibliotheken of hulpprogramma's voor storage resource provider rest:
+Stel de eigenschap _supportsHttpsTrafficOnly_ in op het opslag account om een veilige overdracht via een programma te vereisen. U kunt deze eigenschap instellen met behulp van de opslag Resource provider REST API, client bibliotheken of hulpprogram ma's:
 
-* [REST-API](/rest/api/storagerp/storageaccounts)
-* [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
+* [REST API](/rest/api/storagerp/storageaccounts)
+* [Zo](/powershell/module/az.storage/set-azstorageaccount)
 * [CLI](/cli/azure/storage/account)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python-SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
-## <a name="require-secure-transfer-with-powershell"></a>Veilige overdracht vereisen met PowerShell
+## <a name="require-secure-transfer-with-powershell"></a>Veilige overdracht vereisen met Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Voor dit voorbeeld is de Azure PowerShell-module Az-versie 0.7 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
+Voor dit voor beeld is de Azure PowerShell-module AZ versie 0,7 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
 Voer `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 
- Gebruik de volgende opdrachtregel om de instelling te controleren:
+ Gebruik de volgende opdracht regel om de instelling te controleren:
 
 ```powershell
 Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
@@ -80,7 +80,7 @@ EnableHttpsTrafficOnly : False
 
 ```
 
-Gebruik de volgende opdrachtregel om de instelling in te schakelen:
+Gebruik de volgende opdracht regel om de instelling in te scha kelen:
 
 ```powershell
 Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
@@ -110,7 +110,7 @@ az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 
 ```
 
-Gebruik de volgende opdracht om de instelling in te schakelen:
+Gebruik de volgende opdracht om de instelling in te scha kelen:
 
 ```azurecli-interactive
 az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
@@ -125,4 +125,4 @@ az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Beveiligingsaanbevelingen voor Blob-opslag](../blobs/security-recommendations.md)
+[Beveiligings aanbevelingen voor Blob Storage](../blobs/security-recommendations.md)

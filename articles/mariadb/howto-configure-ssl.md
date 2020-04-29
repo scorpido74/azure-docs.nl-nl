@@ -1,70 +1,70 @@
 ---
-title: SSL - Azure Database configureren voor MariaDB
-description: Instructies voor het correct configureren van Azure Database voor MariaDB en bijbehorende toepassingen om SSL-verbindingen correct te gebruiken
+title: SSL-Azure Database for MariaDB configureren
+description: Instructies voor het correct configureren van Azure Database for MariaDB en gekoppelde toepassingen om SSL-verbindingen correct te gebruiken
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: 0af94d04f4e50fd039f01c5746b3a5d47a3698b3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769950"
 ---
-# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database voor MariaDB
-Azure Database voor MariaDB ondersteunt het verbinden van uw Azure Database voor MariaDB-server met clienttoepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
+# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MariaDB
+Azure Database for MariaDB ondersteunt het verbinden van uw Azure Database for MariaDB server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
 ## <a name="obtain-ssl-certificate"></a>SSL-certificaat verkrijgen
-Download het certificaat dat nodig is om via SSL [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) te communiceren met uw Azure Database voor MariaDB-server van en sla het certificaatbestand op uw lokale schijf (deze zelfstudie maakt bijvoorbeeld gebruik van c:\ssl).
-**Voor Microsoft Internet Explorer en Microsoft Edge:** Nadat de download is voltooid, wijzigt u het certificaat naar BaltimoreCyberTrustRoot.crt.pem.
+Down load het certificaat dat nodig is om via SSL met uw Azure Database for MariaDB [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -server te communiceren en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
+**Voor micro soft Internet Explorer en micro soft Edge:** Wanneer het downloaden is voltooid, wijzigt u de naam van het certificaat in BaltimoreCyberTrustRoot. CRT. pem.
 
 ## <a name="bind-ssl"></a>SSL binden
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>Verbinding maken met server via MySQL Workbench via SSL
-Configureer MySQL Workbench om veilig verbinding te maken via SSL. 
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>Verbinding maken met de server via MySQL Workbench via SSL
+MySQL Workbench configureren om veilig te verbinden via SSL. 
 
-1. Navigeer vanuit de dialoog Met nieuwe verbinding instellen naar het **tabblad SSL.** 
+1. Ga in het dialoog venster nieuwe verbinding instellen naar het tabblad **SSL** . 
 
-1. Werk het veld **SSL gebruiken** bij om 'Vereisen' te maken.
+1. Werk het veld **SSL gebruiken** bij naar vereist.
 
-1. Voer in het veld **SSL CA-bestand** de bestandslocatie van de **BaltimoreCyberTrustRoot.crt.pem in.** 
+1. Voer in het veld **SSL-ca-bestand:** de bestands locatie in van de **BaltimoreCyberTrustRoot. CRT. pem**. 
     
     ![SSL-configuratie opslaan](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-Voor bestaande verbindingen u SSL binden door met de rechtermuisknop op het verbindingspictogram te klikken en bewerken te kiezen. Navigeer vervolgens naar het **tabblad SSL** en bind het cert-bestand.
+Voor bestaande verbindingen kunt u SSL koppelen door met de rechter muisknop op het verbindings pictogram te klikken en bewerken te kiezen. Ga vervolgens naar het tabblad **SSL** en bind het certificaat bestand.
 
-### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Verbinding maken met server via de MySQL CLI via SSL
-Een andere manier om het SSL-certificaat te binden, is door de MySQL-opdrachtregelinterface te gebruiken door de volgende opdrachten uit te voeren. 
+### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Verbinding maken met de server via de MySQL CLI via SSL
+Een andere manier om het SSL-certificaat te koppelen, is door de volgende opdrachten uit te voeren via de MySQL-opdracht regel interface. 
 
 ```bash
 mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
 > [!NOTE]
-> Wanneer u de MySQL-opdrachtregelinterface op Windows `SSL connection error: Certificate signature check failed`gebruikt, ontvangt u mogelijk een foutmelding . Als dit gebeurt, `--ssl-mode=REQUIRED --ssl-ca={filepath}` vervangt `--ssl`u de parameters door .
+> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een `SSL connection error: Certificate signature check failed`fout bericht weer gegeven. Als dit het geval is, `--ssl-mode=REQUIRED --ssl-ca={filepath}` vervangt u `--ssl`de para meters door.
 
-## <a name="enforcing-ssl-connections-in-azure"></a>SSL-verbindingen afdwingen in Azure 
+## <a name="enforcing-ssl-connections-in-azure"></a>SSL-verbindingen afdwingen in azure 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
-Ga met de Azure-portal naar de Azure Database voor MariaDB-server en klik vervolgens op **Verbindingsbeveiliging**. Gebruik de knop Schakelen om de instelling **SSL-verbinding afdwingen** in of uit te schakelen en klik vervolgens op **Opslaan**. Microsoft raadt aan om altijd de instelling **SSL-verbinding afdwingen** in te schakelen voor verbeterde beveiliging.
-![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
+Ga met behulp van de Azure Portal naar uw Azure Database for MariaDB-server en klik vervolgens op **verbindings beveiliging**. Gebruik de wissel knop om de instelling SSL- **verbinding afdwingen** in of uit te scha kelen en klik vervolgens op **Opslaan**. Micro soft adviseert altijd de instelling **SSL-verbinding afdwingen** in te scha kelen voor verbeterde beveiliging.
+![inschakelen-SSL](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
-U de parameter **ssl-handhaving** in- of uitschakelen met respectievelijk ingeschakelde of uitgeschakelde waarden in Azure CLI.
+U kunt de **SSL-afdwinging-** para meter in-of uitschakelen door respectievelijk ingeschakelde of uitgeschakelde waarden in azure CLI te gebruiken.
 ```azurecli-interactive
 az mariadb server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="verify-the-ssl-connection"></a>De SSL-verbinding verifiëren
-Voer de **mysql-statusopdracht** uit om te controleren of u verbinding hebt gemaakt met uw MariaDB-server via SSL:
+## <a name="verify-the-ssl-connection"></a>De SSL-verbinding controleren
+Voer de MySQL- **status** opdracht uit om te controleren of u verbinding hebt met de MariaDB-server met behulp van SSL:
 ```sql
 status
 ```
-Bevestig dat de verbinding is versleuteld door de uitvoer te bekijken, die moet worden weergegeven: **SSL: Cipher in gebruik is AES256-SHA** 
+Controleer of de verbinding is versleuteld door de uitvoer te bekijken. deze moet er als volgt uitzien: **SSL: code in gebruik is AES256-SHA** 
 
 ## <a name="sample-code"></a>Voorbeeldcode
-Raadpleeg de volgende codevoorbeelden voor het maken van een beveiligde verbinding met Azure Database voor MariaDB voor MariaDB via SSL via uw toepassing:
+Raadpleeg de volgende code voorbeelden om een beveiligde verbinding tot stand te brengen met Azure Database for MariaDB via SSL van uw toepassing:
 
 ### <a name="php"></a>PHP
 ```php
@@ -75,7 +75,7 @@ if (mysqli_connect_errno($conn)) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
-### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
+### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector python)
 ```python
 try:
     conn = mysql.connector.connect(user='myadmin@mydemoserver',

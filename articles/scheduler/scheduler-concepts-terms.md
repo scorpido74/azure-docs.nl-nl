@@ -10,18 +10,18 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878388"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Concepten, terminologie en entiteiten in Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vervangt Azure Scheduler, dat [wordt uitgeschakeld.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Als u wilt blijven werken met de taken die u in Scheduler hebt ingesteld, migreert u zo snel mogelijk [naar Azure Logic Apps.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
+> [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 >
-> Scheduler is niet langer beschikbaar in de Azure-portal, maar de [REST API-](/rest/api/scheduler) en [Azure Scheduler PowerShell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taakverzamelingen beheren.
+> Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
 ## <a name="entity-hierarchy"></a>Entiteitenhiërarchie
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler ondersteunt meerdere jobtypen: 
 
-* HTTP-taken, inclusief HTTPS-taken die TLS ondersteunen, voor wanneer u het eindpunt hebt voor een bestaande service of werkbelasting
+* HTTP-taken, met inbegrip van HTTPS-taken die TLS ondersteunen, voor wanneer u het eind punt voor een bestaande service of werk belasting hebt
 * Opslagwachtrijjobs voor workloads die opslagwachtrijen gebruiken, zoals het posten van berichten naar opslagwachtrijen
 * Service Bus-wachtrijjobs voor workloads die gebruikmaken van Service Bus-wachtrijen
 * Service Bus-onderwerpjobs voor workloads die gebruikmaken van Service Bus-onderwerpen
@@ -84,13 +84,13 @@ De job bevat ook door het systeem geleverde gegevens, zoals volgende geplande ui
 
 | Element | Vereist | Beschrijving | 
 |---------|----------|-------------| 
-| [**Starttime**](#start-time) | Nee | De begintijd voor de taak, met een tijdverschuiving in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**Actie**](#action) | Ja | De details van de primaire actie, die een **errorAction**-object kan omvatten | 
+| [**startTime**](#start-time) | Nee | De begintijd voor de taak, met een tijdverschuiving in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**optreden**](#action) | Ja | De details van de primaire actie, die een **errorAction**-object kan omvatten | 
 | [**errorAction**](#error-action) | Nee | De details van de secundaire actie, die wordt uitgevoerd als de eerste actie mislukt |
-| [**Herhaling**](#recurrence) | Nee | Details als frequentie en interval van een terugkerende job | 
+| [**optreden**](#recurrence) | Nee | Details als frequentie en interval van een terugkerende job | 
 | [**retryPolicy**](#retry-policy) | Nee | De details voor hoe vaak een actie moet worden herhaald | 
 | [**state**](#state) | Ja | De details van de huidige status van de job |
-| [**Status**](#status) | Ja | De details van de huidige status van de job, die onder controle staan van de service |
+| [**hebben**](#status) | Ja | De details van de huidige status van de job, die onder controle staan van de service |
 ||||
 
 Hier is een voorbeeld dat een uitgebreide jobdefinitie laat zien voor een HTTP-actie, waarvan meer details van het element in latere secties ter sprake komen: 
@@ -248,16 +248,16 @@ Een job wordt herhaald als de JSON-definitie van de job het object **recurrence*
 
 | Eigenschap | Vereist | Waarde | Beschrijving | 
 |----------|----------|-------|-------------| 
-| **frequency** | Ja, als **recurrence** wordt gebruikt | Minuut, Uur, Dag, Week, Maand, Jaar | De tijdseenheid tussen de opgetreden gevallen | 
-| **Interval** | Nee | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
-| **Schema** | Nee | Varieert | De details voor complexere en geavanceerdere schema's. Zie **hours**, **minutes**, **weekDays**, **months** en **monthDays** | 
-| **hours** | Nee | 1 tot 24 | Een matrix met de uuraanduidingen voor wanneer de job moet worden uitgevoerd | 
-| **minutes** | Nee | 0 t/m 59 | Een matrix met de minuutaanduidingen voor wanneer de job moet worden uitgevoerd | 
+| **ingang** | Ja, als **recurrence** wordt gebruikt | Minuut, Uur, Dag, Week, Maand, Jaar | De tijdseenheid tussen de opgetreden gevallen | 
+| **bereik** | Nee | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
+| **planning** | Nee | Varieert | De details voor complexere en geavanceerdere schema's. Zie **hours**, **minutes**, **weekDays**, **months** en **monthDays** | 
+| **loopt** | Nee | 1 tot 24 | Een matrix met de uuraanduidingen voor wanneer de job moet worden uitgevoerd | 
+| **wachten** | Nee | 0 tot 59 | Een matrix met de minuutaanduidingen voor wanneer de job moet worden uitgevoerd | 
 | **months** | Nee | 1 tot 12 | Een matrix met de maanden voor wanneer de job moet worden uitgevoerd | 
 | **monthDays** | Nee | Varieert | Een matrix met de dagen van de maand voor wanneer de job moet worden uitgevoerd | 
 | **weekDays** | Nee | Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag | Een matrix met de dagen van de week voor wanneer de job moet worden uitgevoerd | 
-| **Tellen** | Nee | <*Geen*> | Het aantal opgetreden gevallen. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
-| **endTime** | Nee | <*Geen*> | De datum en tijd waarop het terugkeerpatroon moet worden gestopt. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
+| **aantal** | Nee | <*geen*> | Het aantal opgetreden gevallen. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
+| **endTime** | Nee | <*geen*> | De datum en tijd waarop het terugkeerpatroon moet worden gestopt. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
 ||||
 
 Zie [Complexe schema's en geavanceerde terugkeerpatronen bouwen](../scheduler/scheduler-advanced-complexity.md) voor meer informatie over deze elementen.

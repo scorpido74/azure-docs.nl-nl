@@ -1,6 +1,6 @@
 ---
-title: Basislijn- en aangepaste controles
-description: Meer informatie over het concept van Azure Security Center for IoT-basislijn.
+title: Basis lijnen en aangepaste controles
+description: Meer informatie over het concept van Azure Security Center voor IoT-basis lijn.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,35 +16,35 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: c52a3e55e3801eaaac885b9a3c364283f74906ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311647"
 ---
-# <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center voor IoT-basislijn- en aangepaste controles
+# <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center voor IoT-basis lijn en aangepaste controles
 
-In dit artikel wordt uitgelegd in azure security center voor IoT-basislijn en worden alle bijbehorende eigenschappen van aangepaste basislijncontroles samengevat.
+In dit artikel wordt Azure Security Center voor IoT-basis lijn beschreven en worden alle bijbehorende eigenschappen van aangepaste controles volgens basis lijn samenvatten.
 
 ## <a name="baseline"></a>Basislijn
 
-Een basislijn stelt standaardgedrag vast voor elk apparaat en maakt het gemakkelijker om ongewoon gedrag of afwijking van verwachte normen vast te stellen.
+Met een basis lijn wordt het standaard gedrag voor elk apparaat bepaald en is het eenvoudiger om ongebruikelijk gedrag of afwijking van verwachte normen vast te leggen.
 
-## <a name="baseline-custom-checks"></a>Aangepaste controles basislijn
+## <a name="baseline-custom-checks"></a>Aangepaste controles basis lijn
 
-Aangepaste controles basislijn stellen een aangepaste lijst met controles samen voor elke basislijn met behulp van de **moduleidentiteitstweeling** van het apparaat.
+Met aangepaste basis controles wordt een aangepaste lijst met controles voor elke apparaat-baseline tot stand gebracht met behulp van de **module-identiteit** van het apparaat.
 
-## <a name="setting-baseline-properties"></a>Basislijneigenschappen instellen
+## <a name="setting-baseline-properties"></a>Eigenschappen van basis lijn instellen
 
-1. Zoek en selecteer in uw IoT-hub het apparaat dat u wilt wijzigen.
-1. Klik op het apparaat en klik vervolgens op de **azureiotsecuritymodule.**
-1. Klik **op Module Identiteit Twin**.
-1. Upload het **aangepaste controlebestand basislijn** naar het apparaat.
-1. Voeg basislijneigenschappen toe aan de beveiligingsmodule en klik op **Opslaan**.
+1. Zoek en selecteer het apparaat dat u wilt wijzigen in de IoT Hub.
+1. Klik op het apparaat en klik vervolgens op de module **azureiotsecurity** .
+1. Klik op **module identiteit, twee**.
+1. Upload het **aangepaste controle** bestand voor de basis lijn naar het apparaat.
+1. Voeg eigenschappen van basis lijn toe aan de beveiligings module en klik op **Opslaan**.
 
-### <a name="baseline-custom-check-file-example"></a>Voorbeeld van aangepaste controle-bestands basislijn
+### <a name="baseline-custom-check-file-example"></a>Voor beeld van aangepast controle bestand basis lijn
 
-Aangepaste controles basislijn configureren:
+Aangepaste controles voor basis lijn configureren:
 
    ```json
     "desired": {
@@ -62,19 +62,19 @@ Aangepaste controles basislijn configureren:
     },
    ```
 
-## <a name="baseline-custom-check-properties"></a>Aangepaste controleeigenschappen basislijn
+## <a name="baseline-custom-check-properties"></a>Aangepaste controle-eigenschappen van basis lijn
 
-| Name| Status | Geldige waarden| Standaardwaarden| Beschrijving |
+| Naam| Status | Geldige waarden| Standaardwaarden| Beschrijving |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|basislijnCustomChecksIngeschakeld|Vereist: true |Geldige waarden: **Boolean** |Standaardwaarde: **false** |Maximaal tijdsinterval voordat berichten met hoge prioriteit worden verzonden.|
-|basislijnCustomChecksFilePath |Vereist: true|Geldige waarden: **Tekenreeks**, **null** |Standaardwaarde: **null** |Volledig pad van de xml-configuratie basislijn|
-|basislijnCustomChecksFileHash |Vereist: true|Geldige waarden: **Tekenreeks**, **null** |Standaardwaarde: **null** |`sha256sum`van het xml-configuratiebestand. Gebruik de [sha256sum-referentie](https://linux.die.net/man/1/sha256sum) voor aanvullende informatie. |
+|baselineCustomChecksEnabled|Vereist: True |Geldige waarden: **Booleaans** |Standaard waarde: **False** |Het maximale tijds interval voor berichten met een hoge prioriteit wordt verzonden.|
+|baselineCustomChecksFilePath |Vereist: True|Geldige waarden: **teken reeks**, **Null** |Standaard waarde: **Null** |Volledig pad van de XML-configuratie voor basis lijn|
+|baselineCustomChecksFileHash |Vereist: True|Geldige waarden: **teken reeks**, **Null** |Standaard waarde: **Null** |`sha256sum`van het XML-configuratie bestand. Gebruik de [sha256sum-verwijzing](https://linux.die.net/man/1/sha256sum) voor aanvullende informatie. |
 
-Zie voorbeeld van aangepaste [basislijn -1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) en [aangepast basislijnvoorbeeld -2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml)als u aanvullende basislijnvoorbeelden wilt bekijken.
+Zie [aangepaste basis lijn voor beeld-1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) en [aangepaste basis lijn voor beeld: 2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml)als u aanvullende voor beelden van basis lijnen wilt bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Toegang tot uw [ruwe beveiligingsgegevens](how-to-security-data-access.md)
+- Toegang tot uw [onbewerkte beveiligings gegevens](how-to-security-data-access.md)
 - [Een apparaat onderzoeken](how-to-investigate-device.md)
-- [Beveiligingsaanbevelingen](concept-recommendations.md) begrijpen en verkennen
-- [Beveiligingswaarschuwingen](concept-security-alerts.md) begrijpen en verkennen
+- [Beveiligings aanbevelingen](concept-recommendations.md) begrijpen en verkennen
+- [Beveiligings waarschuwingen](concept-security-alerts.md) begrijpen en verkennen

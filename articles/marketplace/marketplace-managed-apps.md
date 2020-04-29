@@ -1,6 +1,6 @@
 ---
-title: Publicatiehandleiding voor beheerde azure-toepassingen | Azure Marketplace
-description: In dit artikel worden de vereisten beschreven voor het publiceren van een beheerde toepassing in de Azure Marketplace.
+title: Publicatie handleiding voor Azure Applications Managed Application aanbieding | Azure Marketplace
+description: In dit artikel worden de vereisten beschreven voor het publiceren van een beheerde toepassing in azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: dsindona
 ms.openlocfilehash: 946e7524eada600d5ef17b2663a3fea066dcfaa2
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084869"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-requirements"></a>Azure-toepassingen: beheerde toepassingsvereisten voor publicatie
+# <a name="azure-applications-managed-application-offer-publishing-requirements"></a>Azure-toepassingen: publicatie vereisten voor beheerde toepassingen bieden
 
-In dit artikel worden de vereisten voor het type beheerde toepassingsaanbieding uitgelegd, wat een manier is om een Azure-toepassingsaanbieding in de Azure Marketplace te publiceren. Beheerde toepassingen zijn transact-aanbiedingen die worden geïmplementeerd en gefactureerd via de Azure Marketplace. De call-to-action die een gebruiker ziet is 'Nu halen'.
+In dit artikel worden de vereisten voor het type beheerde toepassings aanbieding beschreven. Dit is een manier om een Azure-toepassings aanbieding te publiceren in azure Marketplace. Beheerde toepassingen zijn Transact-aanbiedingen die worden geïmplementeerd en gefactureerd via Azure Marketplace. De aanroep van een actie die een gebruiker ziet is ' nu ophalen '.
 
-Gebruik het type beheerde aanbiedingsaanbieding wanneer de volgende voorwaarden vereist zijn:
+Gebruik het type beheerde toepassing-aanbieding wanneer de volgende voor waarden zijn vereist:
 
-- U implementeert een op abonnementen gebaseerde oplossing voor uw klant met behulp van een VM of een volledige IaaS-oplossing.
-- U of uw klant eist dat de oplossing wordt beheerd door een partner.
+- U implementeert een oplossing op basis van een abonnement voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS.
+- U of uw klant vereisen dat de oplossing wordt beheerd door een partner.
 
 >[!NOTE]
->Een partner kan bijvoorbeeld een SI- of managed service provider (MSP) zijn.  
+>Een partner kan bijvoorbeeld een SI-of managed service provider (MSP) zijn.  
 
-## <a name="managed-application-offer"></a>Aangeboden beheerde toepassing
+## <a name="managed-application-offer"></a>Aanbieding voor beheerde toepassing
 
 |Vereisten |Details  |
 |---------|---------|
-|Geïmplementeerd in het Azure-abonnement van een klant | Beheerde apps moeten worden geïmplementeerd in het abonnement van de klant en kunnen worden beheerd door een derde partij. |
-|Facturering en meting    |  De resources worden ingericht in het Azure-abonnement van de klant. Pay-as-you-go (PAYGO) virtuele machines worden afgehandeld met de klant via Microsoft, gefactureerd via het Azure-abonnement (PAYGO) van de klant. <br> In het geval van bring-your-own-license, terwijl Microsoft de infrastructuurkosten voor het klantabonnement in rekening brengt, voert u uw softwarelicentiekosten rechtstreeks uit aan de klant.        |
-|Azure-compatibele virtuele harde schijf (VHD)    |   VM's moeten worden gebouwd op Windows of Linux.<ul> <ul> <li>Zie [Linux-distributies die zijn goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor meer informatie over het maken van een Linux VHD.</li> <li>Zie [Een Azure-toepassingsaanbieding maken](./partner-center-portal/create-new-azure-apps-offer.md)voor meer informatie over het maken van een Windows VHD.</li> </ul> |
+|Geïmplementeerd in het Azure-abonnement van een klant | Beheerde apps moeten worden geïmplementeerd in het abonnement van de klant en kunnen worden beheerd door derden. |
+|Facturering en meting    |  De resources worden ingericht in het Azure-abonnement van de klant. PAYGO-virtuele machines (betalen per gebruik) worden met de klant in rekening gebracht via micro soft, gefactureerd via het Azure-abonnement van de klant (PAYGO). <br> In het geval van uw eigen licentie kunt u, terwijl micro soft de infrastructuur kosten voor het abonnement van de klant in rekening brengt, uw software licentie kosten rechtstreeks aan de klant door geven.        |
+|Azure-compatibele virtuele harde schijf (VHD)    |   Vm's moeten zijn gebouwd op Windows of Linux.<ul> <ul> <li>Zie [Linux-distributies die zijn goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor meer informatie over het maken van een virtuele Linux-harde schijf.</li> <li>Zie [een Azure-toepassings aanbieding maken](./partner-center-portal/create-new-azure-apps-offer.md)voor meer informatie over het maken van een Windows-VHD.</li> </ul> |
 
 >[!NOTE]
-> Beheerde apps moeten kunnen worden geïmplementeerd via de Marketplace. Als klantcommunicatie een punt van zorg is, moet u contact opnemen met geïnteresseerde klanten nadat u het delen van leaden hebt ingeschakeld.  
+> Beheerde apps moeten via Marketplace kunnen worden geïmplementeerd. Als de communicatie van de klant een probleem is, kunt u contact met geïnteresseerde klanten bereiken nadat u het delen van leads hebt ingeschakeld.  
 
 >[!Note]
->Cloud Solution Providers (CSP) partnerkanaal opt-in is nu beschikbaar. Zie [Cloud Solution Providers](./cloud-solution-providers.md)voor meer informatie over het op de markt brengen van uw aanbod via de Microsoft CSP-partnerkanalen.
+>Opt-in voor Cloud Solution Providers (CSP)-partner kanaal is nu beschikbaar. Zie [Cloud Solution Providers](./cloud-solution-providers.md)(Engelstalig) voor meer informatie over het marketing uw aanbod via de micro soft CSP-partner kanalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u dit nog niet hebt gedaan, [leest u meer](https://azuremarketplace.microsoft.com/sell) over de Azure Marketplace.
-- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te voltooien.
-- [Maak een Azure-toepassingsaanbieding](./partner-center-portal/create-new-azure-apps-offer.md) voor meer informatie.
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over Azure Marketplace als u dit nog niet hebt gedaan.
+- [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
+- [Maak een Azure-toepassings aanbieding](./partner-center-portal/create-new-azure-apps-offer.md) voor meer informatie.

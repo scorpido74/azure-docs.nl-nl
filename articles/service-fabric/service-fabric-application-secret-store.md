@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric Central Secrets Store
-description: In dit artikel wordt beschreven hoe u de Central Secrets Store gebruiken in Azure Service Fabric.
+title: Archief met Azure Service Fabric Central-geheimen
+description: In dit artikel wordt beschreven hoe u het archief centrale geheimen kunt gebruiken in azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770419"
 ---
-# <a name="central-secrets-store-in-azure-service-fabric"></a>Centrale geheimen winkel in Azure Service Fabric 
-In dit artikel wordt beschreven hoe u DE Central Secrets Store (CSS) in Azure Service Fabric gebruiken om geheimen te maken in Service Fabric-toepassingen. CSS is een lokale geheime winkelcache die gevoelige gegevens, zoals een wachtwoord, tokens en sleutels, versleuteld in het geheugen bewaart.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Archief met centrale geheimen in azure Service Fabric 
+In dit artikel wordt beschreven hoe u centraal geheimen (CSS) in azure Service Fabric kunt gebruiken om geheimen te maken in Service Fabric toepassingen. CSS is een lokale archief cache voor het opslaan van gevoelige gegevens, zoals een wacht woord, tokens en sleutels, versleuteld in het geheugen.
 
-## <a name="enable-central-secrets-store"></a>Centrale geheimen winkel inschakelen
-Voeg het volgende script toe `fabricSettings` aan uw clusterconfiguratie onder om CSS in te schakelen. We raden u aan een ander certificaat te gebruiken dan een clustercertificaat voor CSS. Zorg ervoor dat het versleutelingscertificaat `NetworkService` op alle knooppunten is geïnstalleerd en dat de leestoestemming voor de privésleutel van het certificaat heeft.
+## <a name="enable-central-secrets-store"></a>Archief met centrale geheimen inschakelen
+Voeg het volgende script toe aan de cluster configuratie `fabricSettings` onder om CSS in te scha kelen. Het is raadzaam om een ander certificaat dan een cluster certificaat voor CSS te gebruiken. Zorg ervoor dat het versleutelings certificaat is geïnstalleerd op alle `NetworkService` knoop punten en dat lees machtigingen heeft voor de persoonlijke sleutel van het certificaat.
   ```json
     "fabricSettings": 
     [
@@ -46,12 +46,12 @@ Voeg het volgende script toe `fabricSettings` aan uw clusterconfiguratie onder o
         ...
      ]
 ```
-## <a name="declare-a-secret-resource"></a>Een geheime bron declareren
-U een geheime bron maken met behulp van de REST API.
+## <a name="declare-a-secret-resource"></a>Een geheime resource declareren
+U kunt een geheime bron maken met behulp van de REST API.
   > [!NOTE] 
-  > Als het cluster windows-verificatie gebruikt, wordt de REST-aanvraag verzonden via een onbeveiligd HTTP-kanaal. De aanbeveling is om een X509 gebaseerd cluster te gebruiken met beveiligde eindpunten.
+  > Als het cluster gebruikmaakt van Windows-verificatie, wordt de REST-aanvraag verzonden via een onbeveiligd HTTP-kanaal. De aanbeveling is een x509-cluster te gebruiken met beveiligde eind punten.
 
-Als u `supersecret` een geheime bron wilt maken met `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`behulp van de API REST, dient u een PUT-verzoek in om . U hebt het clustercertificaat of het beheerdersclientcertificaat nodig om een geheime bron te maken.
+Als u een `supersecret` geheime resource wilt maken met behulp van de rest API, maakt `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`u een put-aanvraag naar. U hebt het cluster certificaat of het client certificaat van de beheerder nodig voor het maken van een geheime resource.
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
@@ -65,15 +65,15 @@ Gebruik het volgende script om de REST API te gebruiken om de geheime waarde in 
 $Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-### <a name="examine-the-secret-value"></a>De geheime waarde onderzoeken
+### <a name="examine-the-secret-value"></a>Controleer de geheime waarde
 ```powershell
 Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
-## <a name="use-the-secret-in-your-application"></a>Gebruik het geheim in uw toepassing
+## <a name="use-the-secret-in-your-application"></a>Het geheim gebruiken in uw toepassing
 
 Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
 
-1. Voeg een sectie toe in het bestand **settings.xml** met het volgende fragment. Houd hier rekening mee dat`secretname:version`de waarde in de indeling { }.
+1. Voeg een sectie toe aan het bestand **Settings. XML** met het volgende code fragment. Hier ziet u dat de waarde de indeling {`secretname:version`} heeft.
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +81,7 @@ Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
      </Section>
    ```
 
-1. Importeer de sectie in **ApplicationManifest.xml**.
+1. Importeer de sectie in **ApplicationManifest. XML**.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -94,12 +94,12 @@ Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
      </ServiceManifestImport>
    ```
 
-   De omgevingsvariabele `SecretPath` wijst naar de map waar alle geheimen worden opgeslagen. Elke parameter die `testsecrets` onder de sectie wordt vermeld, wordt opgeslagen in een apart bestand. De toepassing kan nu het geheim als volgt gebruiken:
+   De omgevings `SecretPath` variabele verwijst naar de map waarin alle geheimen zijn opgeslagen. Elke para meter die in `testsecrets` de sectie wordt vermeld, wordt opgeslagen in een afzonderlijk bestand. De toepassing kan het geheim nu als volgt gebruiken:
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. Monteer de geheimen op een container. De enige verandering die nodig is om `specify` de geheimen `<ConfigPackage>`beschikbaar te maken in de container is om een mount punt in .
-Het volgende fragment is het gewijzigde **ApplicationManifest.xml**.  
+1. De geheimen koppelen aan een container. De enige wijziging die is vereist om de geheimen beschikbaar te maken in de `specify` container, is op `<ConfigPackage>`een koppel punt in.
+Het volgende code fragment is de gewijzigde **ApplicationManifest. XML**.  
 
    ```xml
    <ServiceManifestImport>
@@ -115,9 +115,9 @@ Het volgende fragment is het gewijzigde **ApplicationManifest.xml**.
        </Policies>
      </ServiceManifestImport>
    ```
-   Geheimen zijn beschikbaar onder de mount punt in uw container.
+   Geheimen zijn beschikbaar onder het koppel punt in uw container.
 
-1. U een geheim binden aan een `Type='SecretsStoreRef`variabele procesomgeving door op te geven. Het volgende fragment is een voorbeeld `supersecret` `ver1` van hoe `MySuperSecret` u de versie aan de omgevingsvariabele in **ServiceManifest.xml kunt**binden.
+1. U kunt een geheim binden aan een proces omgevings variabele door `Type='SecretsStoreRef`op te geven. Het volgende code fragment is een voor beeld van het koppelen `supersecret` van `ver1` de versie aan de `MySuperSecret` omgevings variabele in **ServiceManifest. XML**.
 
    ```xml
    <EnvironmentVariables>
@@ -126,4 +126,4 @@ Het volgende fragment is het gewijzigde **ApplicationManifest.xml**.
    ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [applicatie- en servicebeveiliging](service-fabric-application-and-service-security.md).
+Meer informatie over de [beveiliging van toepassingen en services](service-fabric-application-and-service-security.md).

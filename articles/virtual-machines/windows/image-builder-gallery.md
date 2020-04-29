@@ -1,6 +1,6 @@
 ---
-title: Azure Image Builder gebruiken met een afbeeldingsgalerie voor Windows VM's (voorbeeld)
-description: Azure Shared Gallery-afbeeldingsversies maken met Azure Image Builder en Azure PowerShell.
+title: Azure Image Builder gebruiken met een galerie met installatie kopieën voor Windows-Vm's (preview-versie)
+description: Maak installatie kopieën van de gedeelde Azure-galerie met behulp van Azure Image Builder en Azure PowerShell.
 author: cynthn
 ms.author: cynthn
 ms.date: 01/14/2020
@@ -8,27 +8,27 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.openlocfilehash: 48eff11facf0f1432534d61f003f61e6755caf33
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869520"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Voorbeeld: een Windows-afbeelding maken en distribueren naar een gedeelde afbeeldingsgalerie 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Windows-installatie kopie maken en deze distribueren naar een gedeelde installatie kopie galerie 
 
-In dit artikel ziet u hoe u de Azure Image Builder en Azure PowerShell gebruiken om een afbeeldingsversie te maken in een [Galerie voor gedeelde afbeeldingen](shared-image-galleries.md)en de afbeelding vervolgens wereldwijd te distribueren. U dit ook doen met de [Azure CLI](../linux/image-builder-gallery.md).
+In dit artikel wordt uitgelegd hoe u de opbouw functie voor installatie kopieën van Azure en Azure PowerShell kunt gebruiken om een installatie kopie versie te maken in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md)en vervolgens de installatie kopie wereld wijd te distribueren. U kunt dit ook doen met behulp van de [Azure cli](../linux/image-builder-gallery.md).
 
-We gebruiken een .json-sjabloon om de afbeelding te configureren. Het .json-bestand dat we gebruiken is hier: [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). We zullen een lokale versie van de sjabloon downloaden en bewerken, dus dit artikel is geschreven met behulp van lokale PowerShell-sessie.
+Er wordt een JSON-sjabloon gebruikt om de installatie kopie te configureren. Het JSON-bestand dat we gebruiken, is hier: [armTemplateWinSIG. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). We gaan een lokale versie van de sjabloon downloaden en bewerken, zodat dit artikel wordt geschreven met behulp van een lokale Power shell-sessie.
 
-Als u de afbeelding wilt distribueren naar een gedeelde afbeeldingsgalerie, gebruikt de sjabloon [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als de waarde voor de `distribute` sectie van de sjabloon.
+De sjabloon maakt gebruik van [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) als de waarde voor de `distribute` sectie van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
 
-Azure Image Builder voert automatisch sysprep uit om de afbeelding te generaliseren, dit is een algemene opdracht voor sysprep, die u indien nodig [overschrijven.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) 
+Azure Image Builder voert automatisch Sysprep uit om de installatie kopie te generaliseren. Dit is een generieke Sysprep-opdracht, die u zo nodig kunt [overschrijven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
-Houd er rekening mee hoe vaak u laagaanpassingen hebt. U de opdracht Sysprep tot 8 keer uitvoeren op één Windows-afbeelding. Nadat u Sysprep 8 keer hebt uitgevoerd, moet u uw Windows-afbeelding opnieuw maken. Zie Limieten voor meer informatie [over hoe vaak u Sysprep uitvoeren.](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 
+Houd er rekening mee dat het aantal keren dat u de laag wilt aanpassen. U kunt de Sysprep-opdracht Maxi maal 8 keer uitvoeren op één Windows-installatie kopie. Nadat u Sysprep acht keer hebt uitgevoerd, moet u de Windows-installatie kopie opnieuw maken. Zie [limieten voor het aantal keren dat u Sysprep kunt uitvoeren](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)voor meer informatie. 
 
 > [!IMPORTANT]
-> Azure Image Builder bevindt zich momenteel in een openbare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Azure Image Builder is momenteel beschikbaar als open bare preview.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>De functies registreren
 Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe functie registreren.
@@ -37,15 +37,15 @@ Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe fu
 Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Controleer de status van de functieregistratie.
+Controleer de status van de functie registratie.
 
 ```powershell
 Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Wacht `RegistrationState` tot `Registered` het is voordat u naar de volgende stap gaat.
+Wacht tot `RegistrationState` de `Registered` bewerking is gestart voordat u verdergaat met de volgende stap.
 
-Controleer de registraties van uw provider. Zorg ervoor `Registered`dat elk retourneert .
+Controleer uw provider registraties. Zorg ervoor dat elke `Registered`keer wordt geretourneerd.
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
@@ -54,7 +54,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Prop
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-Als ze niet `Registered`terugkeren, gebruik dan het volgende om de aanbieders te registreren:
+Als ze niet retour neren `Registered`, gebruikt u het volgende om de providers te registreren:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
@@ -65,7 +65,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 ## <a name="create-variables"></a>Variabelen maken
 
-We zullen een aantal stukjes informatie herhaaldelijk gebruiken, dus we zullen een aantal variabelen maken om die informatie op te slaan. Vervang de waarden voor de `username` `vmpassword`variabelen, zoals en , met uw eigen informatie.
+We zullen enkele gegevens herhaaldelijk gebruiken, dus we maken een aantal variabelen om deze informatie op te slaan. Vervang de waarden voor de variabelen, zoals `username` en `vmpassword`, door uw eigen gegevens.
 
 ```powershell
 # Get existing context
@@ -95,7 +95,7 @@ $runOutputName="winclientR01"
 
 ## <a name="create-the-resource-group"></a>De resourcegroep maken
 
-Maak een resourcegroep en geef Azure Image Builder toestemming om resources in die resourcegroep te maken.
+Maak een resource groep en geef de Azure Image Builder-machtiging voor het maken van resources in die resource groep.
 
 ```powershell
 New-AzResourceGroup `
@@ -111,9 +111,9 @@ New-AzRoleAssignment `
 
 ## <a name="create-the-shared-image-gallery"></a>De galerie met gedeelde afbeeldingen maken
 
-Als u Image Builder wilt gebruiken met een gedeelde afbeeldingsgalerie, moet u een bestaande afbeeldingsgalerie en afbeeldingsdefinitie hebben. Image Builder maakt niet de afbeeldingsgalerie en afbeeldingsdefinitie voor u.
+Als u de opbouw functie voor afbeeldingen wilt gebruiken met een galerie met gedeelde afbeeldingen, moet u een bestaande afbeeldings galerie en afbeeldings definitie hebben. Met de opbouw functie voor installatie kopieën wordt de installatie kopie galerie en de definitie van de installatie kopie niet voor u gemaakt.
 
-Als u nog geen galerie- en afbeeldingsdefinitie hebt om te gebruiken, moet u deze eerst maken. Maak eerst een afbeeldingsgalerie.
+Als u nog geen galerie en afbeeldings definitie hebt om te gebruiken, maakt u deze eerst. Maak eerst een galerie met installatie kopieën.
 
 ```powershell
 # Image gallery name
@@ -148,7 +148,7 @@ New-AzGalleryImageDefinition `
 
 ## <a name="download-and-configure-the-template"></a>De sjabloon downloaden en configureren
 
-Download de .json-sjabloon en configureer deze met uw variabelen.
+Down load de JSON-sjabloon en configureer deze met de variabelen.
 
 ```powershell
 
@@ -177,9 +177,9 @@ Invoke-WebRequest `
 ```
 
 
-## <a name="create-the-image-version"></a>De afbeeldingsversie maken
+## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
 
-Uw sjabloon moet worden ingediend bij de service, dit downloadt alle afhankelijke artefacten, zoals scripts, en slaat ze op in de brongroep met tijdelijke bestanden, vooraf zijn bevestigd met *IT_.*
+Uw sjabloon moet worden verzonden naar de service. Hierdoor worden alle afhankelijke artefacten, zoals scripts, gedownload en opgeslagen in de staging-resource groep, voorafgegaan door *IT_*.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,7 +190,7 @@ New-AzResourceGroupDeployment `
    -svclocation $location
 ```
 
-Om de afbeelding te maken moet je 'Uitvoeren' op de sjabloon aanroepen.
+Als u de installatie kopie wilt maken, moet u uitvoeren op de sjabloon.
 
 ```powershell
 Invoke-AzResourceAction `
@@ -201,16 +201,16 @@ Invoke-AzResourceAction `
    -Action Run
 ```
 
-Het maken van de afbeelding en het repliceren naar beide regio's kan een tijdje duren. Wacht totdat dit onderdeel is voltooid voordat u overgaat tot het maken van een vm.
+Het maken van de installatie kopie en het repliceren naar beide regio's kan enige tijd duren. Wacht tot dit onderdeel is voltooid voordat u doorgaat met het maken van een virtuele machine.
 
-Zie De [Readme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) voor deze sjabloon op GitHub voor informatie over opties voor het automatiseren van de status van het maken van de afbeelding.
+Zie het [Leesmij-bestand](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) voor deze sjabloon op github voor informatie over opties voor het automatiseren van de status van de installatie kopie.
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak een VM op basis van de afbeeldingsversie die is gemaakt door Azure Image Builder.
+Maak een virtuele machine op basis van de installatie kopie versie die is gemaakt door de opbouw functie voor installatie kopieën van Azure.
 
-Download de afbeeldingsversie die u hebt gemaakt.
+Haal de versie van de installatie kopie op die u hebt gemaakt.
 ```powershell
 $imageVersion = Get-AzGalleryImageVersion `
    -ResourceGroupName $imageResourceGroup `
@@ -218,7 +218,7 @@ $imageVersion = Get-AzGalleryImageVersion `
    -GalleryImageDefinitionName $imageDefName
 ```
 
-De VM in het tweede gebied maken waarin de afbeelding is gerepliceerd.
+Maak de virtuele machine in de tweede regio die de afbeelding had gerepliceerd.
 
 ```powershell
 $vmResourceGroup = "myResourceGroup"
@@ -254,37 +254,37 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfig
 ```
 
-## <a name="verify-the-customization"></a>De aanpassing verifiëren
-Maak een verbinding met Extern bureaublad met de vm met de gebruikersnaam en het wachtwoord die u hebt ingesteld toen u de virtuele machine maakte. Open in de VM een cmd-prompt en typ:
+## <a name="verify-the-customization"></a>De aanpassing controleren
+Maak een Extern bureaublad verbinding met de virtuele machine met behulp van de gebruikers naam en het wacht woord die u hebt ingesteld tijdens het maken van de virtuele machine. Open een opdracht prompt in de virtuele machine en typ het volgende:
 
 ```console
 dir c:\
 ```
 
-U ziet een `buildActions` map met de naam die is gemaakt tijdens het aanpassen van afbeeldingen.
+Als het goed is, ziet `buildActions` u een map met de naam die is gemaakt tijdens het aanpassen van de installatie kopie.
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u nu wilt proberen de afbeeldingsversie opnieuw aan te stellen om een nieuwe versie van dezelfde afbeelding te maken, **slaat u deze stap over** en gaat u Azure Image Builder gebruiken om een andere [afbeeldingsversie te maken.](image-builder-gallery-update-image-version.md)
+Als u de installatie kopie nu opnieuw wilt aanpassen om een nieuwe versie van dezelfde installatie kopie te maken, slaat u **deze stap over** en gaat u verder met het [gebruik van Azure Image Builder om een andere versie van de installatie kopie te maken](image-builder-gallery-update-image-version.md).
 
 
-Hiermee wordt de afbeelding verwijderd die is gemaakt, samen met alle andere bronbestanden. Zorg ervoor dat u klaar bent met deze implementatie voordat u de resources verwijderd.
+Hiermee verwijdert u de installatie kopie die is gemaakt, samen met alle andere bron bestanden. Zorg ervoor dat u klaar bent met deze implementatie voordat u de resources verwijdert.
 
-Verwijder eerst de sjabloon resourcegroep, anders wordt de groep met tijdelijke resources *(IT_)* die door AIB wordt gebruikt, niet opgeschoond.
+Verwijder eerst de sjabloon voor de resource groep, anders wordt de staging-resource groep (*IT_*) die door AIB wordt gebruikt, niet opgeschoond.
 
-ResourceID van de afbeeldingssjabloon downloaden. 
+Haal ResourceID van de afbeeldings sjabloon op. 
 
 ```powerShell
 $resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-Afbeeldingssjabloon verwijderen.
+Verwijder de afbeeldings sjabloon.
 
 ```powerShell
 Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
 ```
 
-de brongroep verwijderen.
+Verwijder de resource groep.
 
 ```powerShell
 Remove-AzResourceGroup $imageResourceGroup -Force
@@ -292,4 +292,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Azure Image Builder gebruiken om [een andere afbeeldingsversie te maken](image-builder-gallery-update-image-version.md)voor meer informatie over het bijwerken van de afbeeldingsversie die u hebt gemaakt.
+Zie [Azure Image Builder gebruiken om een andere versie](image-builder-gallery-update-image-version.md)van de installatie kopie te maken voor meer informatie over het bijwerken van de versie van de installatie kopie die u hebt gemaakt.

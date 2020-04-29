@@ -1,6 +1,6 @@
 ---
-title: Wat zijn toepassingssjablonen in Azure IoT Central | Microsoft Documenten
-description: Met Azure IoT Central-toepassingssjablonen u meedoen aan de ontwikkeling van IoT-oplossingen.
+title: Wat zijn toepassings sjablonen in azure IoT Central | Microsoft Docs
+description: Met Azure IoT Central-toepassings sjablonen kunt u overgaan naar de ontwikkeling van IoT-oplossingen.
 author: philmea
 ms.author: philmea
 ms.date: 10/25/2019
@@ -8,55 +8,55 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 244de9a3236977308a9f7bcaf5106e86a0984201
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024673"
 ---
 # <a name="what-are-application-templates"></a>Wat zijn toepassingssjablonen?
 
-Toepassingssjablonen in Azure IoT Central zijn een hulpmiddel om oplossingsbouwers te helpen hun IoT-oplossingsontwikkeling een kickstart te geven. U app-sjablonen gebruiken voor alles, van het krijgen van een gevoel voor wat mogelijk is, tot het volledig aanpassen en uw toepassing voor wederverkoop aan uw klanten.
+Toepassings sjablonen in azure IoT Central zijn een hulp programma waarmee oplossingen bouwers kickstart hun IoT-oplossings ontwikkeling kunnen ontwikkelen. U kunt app-sjablonen voor alles gebruiken om een idee te krijgen van wat mogelijk is, om volledig aan te passen en uw toepassing te verkopen voor uw klanten.
 
-Toepassingssjablonen bestaan uit:
+Toepassings sjablonen bestaan uit:
 
-- Voorbeeldoperatordashboards
-- Voorbeeldapparaatsjablonen
-- Gesimuleerde apparaten die realtime gegevens produceren
+- Voor beeld-operator dashboards
+- Voorbeeld sjablonen voor apparaten
+- Gesimuleerde apparaten die real-time gegevens produceren
 - Vooraf geconfigureerde regels en taken
-- Uitgebreide documentatie, inclusief tutorials en how-tos
+- Uitgebreide documentatie, inclusief zelf studies en uitleg
 
-U kiest de toepassingssjabloon wanneer u uw toepassing maakt. U de sjabloon niet wijzigen nadat de toepassing is gemaakt.
+U kiest de toepassings sjabloon wanneer u uw toepassing maakt. U kunt de sjabloon niet meer wijzigen nadat de toepassing is gemaakt.
 
 ## <a name="custom-templates"></a>Aangepaste sjablonen
 
-Als u uw toepassing helemaal opnieuw wilt maken, kiest u een van de twee aangepaste toepassingssjablonen:
+Als u een volledig nieuwe toepassing wilt maken, kiest u een van de twee aangepaste toepassings sjablonen:
 
 - Aangepaste toepassing
 - Aangepaste toepassing (verouderd)
 
-Kies de **aangepaste toepassingssjabloon,** tenzij u een specifieke reden hebt om de verouderde sjabloon te gebruiken.
+Kies de sjabloon voor **aangepaste toepassingen** , tenzij u een specifieke reden hebt om de oude sjabloon te gebruiken.
 
-## <a name="industry-focused-templates"></a>Branchegerichte sjablonen
+## <a name="industry-focused-templates"></a>Sjablonen voor branche gerichte
 
-Azure IoT Central is een industrieagnostisch toepassingsplatform. Toepassingssjablonen zijn branchegerichte voorbeelden die vandaag beschikbaar zijn voor deze industrieën, met meer in de toekomst:
+Azure IoT Central is een branche neutraal-toepassings platform. Toepassings sjablonen zijn toonaangevende voor beelden die tegenwoordig beschikbaar zijn voor deze branches, met meer om in de toekomst te komen:
 
 - [Retail](../retail/overview-iot-central-retail.md)
   - Verbonden logistiek
   - Digitaal distributiecentrum
-  - In-store analytics - conditiebewaking
-  - Analyse in de winkel - afrekenen
-  - Slim voorraadbeheer
+  - Bewaking in de Store-voor waarden
+  - In-Store-analyses-uitchecken
+  - Intelligent inventaris beheer
 - [Energie](../energy/overview-iot-central-energy.md)
-  - Slimme meterbewaking
-  - Monitor van zonnepanelen
+  - Slimme meter controle
+  - Monitor voor zonne deel venster
 - [Overheid](../government/overview-iot-central-government.md)
-  - Verbonden afvalbeheer
-  - Monitoring van het waterverbruik
-  - Monitoring van de waterkwaliteit
-- [Gezondheidszorg.](../healthcare/overview-iot-central-healthcare.md)
-  - Continue patiëntbewaking
+  - Beheer van verbonden afval
+  - Bewaking van water verbruik
+  - Bewaking van water kwaliteit
+- [Gezondheids zorg](../healthcare/overview-iot-central-healthcare.md).
+  - Voortdurende controle van patiënten
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet wat IoT Central-toepassingssjablonen zijn, gaat u aan de slag met [het maken van een IoT Central Application.](quick-deploy-iot-central.md)
+Nu u weet wat IoT Central toepassings sjablonen zijn, kunt u aan de slag met het [maken van een IOT Central-toepassing](quick-deploy-iot-central.md).

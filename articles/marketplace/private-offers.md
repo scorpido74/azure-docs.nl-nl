@@ -1,6 +1,6 @@
 ---
-title: Particuliere aanbiedingen | Azure Marketplace
-description: Privéaanbiedingen in de Azure Marketplace voor app- en service-uitgevers.
+title: Persoonlijke aanbiedingen | Azure Marketplace
+description: Persoonlijke aanbiedingen in azure Marketplace voor app-en service-uitgevers.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
 ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681433"
 ---
-# <a name="private-offers"></a>Privéaanbiedingen
+# <a name="private-offers"></a>Persoonlijke aanbiedingen
 
-Met privéaanbiedingen op [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen uitgevers SKU's maken die alleen zichtbaar zijn voor gerichte klanten.
+Met persoonlijke aanbiedingen op [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen uitgevers sku's maken die alleen zichtbaar zijn voor doel klanten.
 
-## <a name="unlock-enterprise-deals-with-private-offers"></a>Sluit zakelijke deals met privéaanbiedingen
+## <a name="unlock-enterprise-deals-with-private-offers"></a>Zakelijke deals met persoonlijke aanbiedingen ontgrendelen
 
-Zakelijke klanten gebruiken steeds vaker online marktplaatsen om cloudoplossingen te vinden, uit te proberen en te kopen. Nu met privéaanbiedingen kunnen uitgevers marketplace gebruiken om op maat gemaakte oplossingen privé te delen met gerichte klanten met mogelijkheden die bedrijven nodig hebben:
+Enter prise-klanten gebruiken vaker online markt plaatsen om cloud oplossingen te zoeken, te proberen en te kopen. Uitgevers kunnen nu met persoonlijke aanbiedingen gebruikmaken van Marketplace om persoonlijke oplossingen te delen met de doel klanten, met mogelijkheden die ondernemingen nodig hebben:
 
-- *Met onderhandelde prijzen* kunnen uitgevers kortingen en prijzen buiten de lijst uitbreiden van openbaar beschikbare aanbiedingen.
-- *Met privévoorwaarden* kunnen uitgevers de algemene voorwaarden afstemmen op een specifieke klant.
-- *Met gespecialiseerde configuraties* kunnen uitgevers hun virtuele machines, Azure-toepassingen en SaaS-apps aanpassen aan de behoeften van een individuele klant. Met deze optie kunnen uitgevers ook preview-toegang tot nieuwe productfuncties bieden, voordat ze breder worden gestart voor alle klanten.
+- Met de *overeengekomen prijzen* kunnen uitgevers kortingen en afwijkende prijzen uit openbaar beschik bare aanbiedingen uitbreiden.
+- Met *persoonlijke voor* waarden kunnen uitgevers voor waarden aanpassen aan een specifieke klant.
+- Met *gespecialiseerde configuraties* kunnen uitgevers hun virtual machines, Azure-toepassingen en SaaS-apps aanpassen aan de behoeften van een individuele klant. Met deze optie kunnen uitgevers ook preview-toegang bieden tot nieuwe product functies, voordat ze ruim uitgebreid worden gestart naar alle klanten.
 
-Met privéaanbiedingen kunnen uitgevers profiteren van de schaal en wereldwijde beschikbaarheid van een openbare marktplaats, met de flexibiliteit en controle die nodig zijn om te onderhandelen en aangepaste deals en configuraties te leveren. Samen openen deze functies de deur naar een sterke acceptatie van cloudmarkten door bedrijven. Ondernemingen kunnen nu kopen en verkopen op manieren die ze verwachten en de vraag.
+Met persoonlijke aanbiedingen kunnen uitgevers profiteren van de schaal en wereld wijde Beschik baarheid van een open bare Marketplace, met de flexibiliteit en controle die nodig is om te onderhandelen en aangepaste deals en configuraties te leveren. Met deze functies wordt de deur van een krachtige Enter prise-acceptatie van Cloud marketplaces geopend. Ondernemingen kunnen nu kopen en verkopen op hun verwachte en aanbod wijze.
 
-Privéaanbiedingen zijn nu beschikbaar voor Virtual Machine, Azure Application (geïmplementeerd als oplossingssjablonen of beheerde toepassingen) en SaaS Apps-aanbiedingen. 
+Persoonlijke aanbiedingen zijn nu beschikbaar voor virtuele machines, Azure-toepassing (geïmplementeerd als oplossings sjablonen of beheerde toepassingen) en SaaS-apps bieden. 
 
 <!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  Customers can be granted or revoked access to private offers in minutes.
 --->
 
-## <a name="creating-private-offers-using-skus-and-plans"></a>Privéaanbiedingen maken met SKU's en plannen
+## <a name="creating-private-offers-using-skus-and-plans"></a>Persoonlijke aanbiedingen maken met Sku's en abonnementen
 
-Voor *nieuwe of bestaande aanbiedingen met openbare SKU's of plannen*kunnen uitgevers eenvoudig nieuwe, privévariaties maken door nieuwe SKU's of plannen te maken en ze als privé te markeren.  
+Voor *nieuwe of bestaande aanbiedingen met open bare sku's of abonnementen*kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe sku's of plannen te maken en ze als privé te markeren.  
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) ---> 
 
-Particuliere SKU's en plannen zijn onderdelen van een aanbod en zijn alleen zichtbaar en purchasable door de beoogde klanten. Privé-SKU's en -plannen kunnen de basisafbeeldingen en/of metadata die al zijn gepubliceerd voor een openbare SKU of -abonnement opnieuw gebruiken. Met deze optie kunnen uitgevers meerdere privévariaties van een openbaar aanbod maken zonder dat ze meerdere versies van dezelfde basisafbeelding hoeven te publiceren en metagegevens hoeven aan te bieden. Voor virtual machine- en Azure-toepassingsaanbiedingen worden alleen aangeboden wanneer een privé-SKU een basisafbeelding deelt met een openbare SKU, worden eventuele wijzigingen in de basisafbeelding van de aanbieding vooralle openbare en particuliere SKU's verspreid met behulp van die basisafbeelding.
+Persoonlijke Sku's en abonnementen zijn onderdelen van een aanbieding en zijn alleen zichtbaar en tevens door de doel klanten. Persoonlijke Sku's en abonnementen kunnen de basis installatie kopieën en/of de meta gegevens van de aanbieding die al zijn gepubliceerd voor een open bare SKU of abonnement hergebruiken. Met deze optie kunnen uitgevers meerdere persoonlijke variaties van een open bare aanbieding maken zonder dat ze meerdere versies van dezelfde basis installatie kopie hoeven te publiceren en meta gegevens te bieden. Voor alleen aanbiedingen voor virtuele machines en Azure-toepassingen, wanneer een persoonlijke SKU een basis installatie kopie deelt met een open bare SKU, worden wijzigingen in de basis installatie kopie van de aanbieding door gegeven aan alle open bare en persoonlijke Sku's met die basis installatie kopie.
 
-Voor *nieuwe aanbiedingen die alleen privé SKU's of plannen bevatten,* kunnen uitgevers hun aanbiedingen maken als elke andere aanbieding en vervolgens de SKU's of plannen als privé markeren. De aanbiedingen die alleen privé SKU's of -abonnementen hebben, zijn niet vindbaar of toegankelijk via de commerciële marktplaats van Microsoft of de [Azure-portal](https://azure.microsoft.com/features/azure-portal/) door klanten die niet aan de aanbieding zijn gekoppeld.
+Voor *nieuwe aanbiedingen die alleen particuliere sku's of abonnementen bevatten*, kunnen uitgevers hun aanbiedingen als een andere aanbieding maken en de sku's of plannen als privé markeren. De aanbiedingen die alleen persoonlijke Sku's of abonnementen hebben, kunnen niet worden gedetecteerd of toegankelijk via micro soft Commercial Marketplace of de [Azure Portal](https://azure.microsoft.com/features/azure-portal/) door klanten die niet aan de aanbieding zijn gekoppeld.
 
-## <a name="targeting-customers-with-private-offers"></a>Klanten targeten met privéaanbiedingen
+## <a name="targeting-customers-with-private-offers"></a>Klanten richten met persoonlijke aanbiedingen
 
-Voor zowel nieuwe als bestaande privéaanbiedingen kunnen uitgevers klanten targeten met abonnements-id's. Uitgevers die een Virtual Machine- of Azure-toepassingsaanbieding gebruiken, kunnen de beschikbaarheid van een privé-SKU beperken tot een afzonderlijke Azure-abonnements-id of een CSV van maximaal 20.000 Azure-abonnements-id's uploaden. Tijdens het gebruik van een privéaanbieding van de SaaS-app kunnen uitgevers een tenant-id koppelen om de beschikbaarheid van een privé-abonnement te beperken, met behulp van de handmatige of CSV-uploadbenadering.
+Voor zowel nieuwe als bestaande persoonlijke aanbiedingen kunnen uitgevers klanten richten met behulp van abonnements-id's. Uitgevers die een virtuele machine of Azure-toepassing aanbieding gebruiken, kunnen de beschik baarheid van een privé-SKU beperken tot een afzonderlijke Azure-abonnements-ID of een CSV van Maxi maal 20.000 Azure-abonnement-Id's uploaden. Bij het gebruik van een SaaS-app-aanbieding kunnen uitgevers een Tenant-ID koppelen om de beschik baarheid van een privé-abonnement te beperken met behulp van de hand matige of CSV-upload methode.
 
-Zodra een aanbieding is gecertificeerd en gepubliceerd, kunnen klanten binnen enkele minuten worden bijgewerkt of verwijderd uit de SKU of plannen met de functie Privéabonnementen synchroniseren. Deze mogelijkheid stelt uitgevers in staat om snel en eenvoudig de lijst met klanten bij te werken waaraan de private SKU of het plan wordt gepresenteerd zonder de aanbieding opnieuw te certificeren of te publiceren.
+Zodra een aanbieding is gecertificeerd en gepubliceerd, kunnen klanten binnen enkele minuten worden bijgewerkt of verwijderd uit de SKU of het abonnement met behulp van de functie Persoonlijke abonnementen synchroniseren. Met deze mogelijkheid kunnen uitgevers snel en eenvoudig de lijst met klanten waarop de privé-SKU of het plan wordt gepresenteerd, bijwerken zonder dat u de aanbieding opnieuw moet certificeren of publiceren.
 
-## <a name="deploying-private-offers"></a>Privéaanbiedingen implementeren
+## <a name="deploying-private-offers"></a>Persoonlijke aanbiedingen implementeren
 
-Privéaanbiedingen zijn alleen vindbaar via de [Azure-portal](https://azure.microsoft.com/features/azure-portal/) en worden niet weergegeven in [Microsoft AppSource](https://appsource.microsoft.com/) of [Azure Marketplace.](https://azuremarketplace.microsoft.com) Zie [Uw publicatieoptie bepalen](./determine-your-listing-type.md)voor meer informatie over publiceren naar de verschillende winkelpuien voor commerciële marktplaatsen.
+Persoonlijke aanbiedingen kunnen alleen worden gedetecteerd via de [Azure Portal](https://azure.microsoft.com/features/azure-portal/) en worden niet weer gegeven in [Microsoft AppSource](https://appsource.microsoft.com/) of [Azure Marketplace](https://azuremarketplace.microsoft.com). Zie [uw publicatie optie bepalen](./determine-your-listing-type.md)voor meer informatie over het publiceren naar de verschillende Commercial Marketplace-winkel.
 
-Zodra ze zijn aangemeld bij de Azure-portal, kunnen klanten het Marketplace-navigatieelement selecteren om toegang te krijgen tot hun privéaanbiedingen. Privéaanbiedingen worden ook weergegeven in zoekresultaten en kunnen worden geïmplementeerd via opdrachtregel- en Azure Resource Manager-sjablonen, net als alle andere aanbiedingen.
+Zodra klanten zijn aangemeld bij de Azure Portal, kunnen ze het navigatie-element voor Marketplace selecteren om toegang te krijgen tot hun persoonlijke aanbiedingen. Persoonlijke aanbiedingen worden ook weer gegeven in Zoek resultaten en kunnen worden geïmplementeerd via opdracht regel-en Azure Resource Manager sjablonen zoals andere aanbiedingen.
 
-![[Privé-aanbiedingen]](./media/marketplace-publishers-guide/private-offer.png)
+![[Persoonlijke aanbiedingen]](./media/marketplace-publishers-guide/private-offer.png)
 
-Privéaanbiedingen worden ook weergegeven in zoekresultaten. Zoek gewoon naar de "Private" badge.
+Persoonlijke aanbiedingen worden ook weer gegeven in Zoek resultaten. U ziet gewoon het logo ' persoonlijk '.
 
 >[!Note]
->Privé-aanbiedingen worden niet ondersteund met abonnementen die zijn ingesteld via een reseller van het Cloud Solution Provider-programma (CSP).
+>Privé aanbiedingen worden niet ondersteund met abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider Program (CSP).
 
 <!---
 ## Next steps

@@ -1,26 +1,26 @@
 ---
-title: Azure Frontend API's voor verificatie
-description: Legt uit hoe u de C# frontend API gebruiken voor verificatie
+title: Azure front-end-Api's voor verificatie
+description: Uitleg over het gebruik van de C#-frontend-API voor verificatie
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681348"
 ---
-# <a name="use-the-azure-frontend-apis-for-authentication"></a>De Azure Frontend API's gebruiken voor verificatie
+# <a name="use-the-azure-frontend-apis-for-authentication"></a>De Azure-frontend-API's gebruiken voor verificatie
 
-In deze sectie beschrijven we hoe we de C#API kunnen gebruiken voor verificatie.
+In deze sectie wordt beschreven hoe u de C#-API voor verificatie gebruikt.
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
-AzureFrontendAccountInfo wordt gebruikt om de verificatiegegevens voor een ```AzureFrontend``` instantie in de SDK in te stellen.
+AzureFrontendAccountInfo wordt gebruikt voor het instellen van de verificatie gegevens voor ```AzureFrontend``` een instantie in de SDK.
 
-De belangrijke velden zijn:
+De belangrijkste velden zijn:
 
 ```cs
 
@@ -41,29 +41,29 @@ De belangrijke velden zijn:
 
 ```
 
-Gebruik voor het _regiodeel_ in het domein een [regio bij u in de buurt.](../reference/regions.md)
+Voor het _regio_ deel in het domein gebruikt u een [regio bij u](../reference/regions.md)in de buurt.
 
-De accountgegevens kunnen worden verkregen bij de portal zoals beschreven in de alinea [accountgegevens ophalen.](create-an-account.md#retrieve-the-account-information)
+De account gegevens kunnen worden opgehaald uit de portal, zoals wordt beschreven in de alinea [account gegevens ophalen](create-an-account.md#retrieve-the-account-information) .
 
-## <a name="azure-frontend"></a>Azure Frontend
+## <a name="azure-frontend"></a>Azure-front-end
 
-De relevante klassen ```AzureFrontend``` ```AzureSession```zijn en . ```AzureFrontend```wordt gebruikt voor accountbeheer en functionaliteit op accountniveau, waaronder: asset conversie en rendering sessie creatie. ```AzureSession```wordt gebruikt voor functionaliteit op sessieniveau en omvat: sessie-update, query's, vernieuwing en ontmanteling.
+De relevante klassen zijn ```AzureFrontend``` en ```AzureSession```. ```AzureFrontend```wordt gebruikt voor account beheer en functionaliteit op account niveau, waaronder: activa conversie en rendering-sessie maken. ```AzureSession```wordt gebruikt voor de functionaliteit op sessie niveau en bevat: sessie-update, query's, vernieuwen en buiten gebruik stellen.
 
-Elke geopende/gemaakte ```AzureSession``` zal een verwijzing naar de frontend die het heeft gemaakt. Om netjes af te sluiten, moeten alle sessies worden toegewezen voordat de frontend zal worden deallocated.
+Elk geopend/gemaakt ```AzureSession``` bevat een verwijzing naar het front-end dat het heeft gemaakt. Als u wilt opschonen, moeten alle sessies worden verwijderd voordat de toewijzing van de front-end wordt opgeheven.
 
-Als u een sessie deallocatie afwijst, wordt de VM op Azure niet gestopt, `AzureSession.StopAsync` moet expliciet worden aangeroepen.
+Bij het ongedaan maken van de toewijzing van een sessie wordt `AzureSession.StopAsync` de VM in azure niet gestopt. deze moet expliciet worden aangeroepen.
 
-Zodra een sessie is gemaakt en de status is gemarkeerd als gereed, `AzureSession.ConnectToRuntime`kan deze verbinding maken met de runtime voor externe rendering met .
+Zodra een sessie is gemaakt en de status ervan is gemarkeerd als gereed, kan deze verbinding maken met de externe rendering runtime met `AzureSession.ConnectToRuntime`.
 
 ### <a name="threading"></a>Threading
 
-Alle AzureSession- en AzureFrontend-async-oproepen worden voltooid in een achtergrondthread, niet de hoofdtoepassingsthread.
+Alle asynchrone aanroepen voor AzureSession en AzureFrontend worden uitgevoerd in een achtergrond thread, niet op de hoofd toepassings thread.
 
-### <a name="conversion-apis"></a>Conversie-API's
+### <a name="conversion-apis"></a>Conversie-Api's
 
-Zie [de API voor de rest van de modelconversie voor](conversion/conversion-rest-api.md)meer informatie over de conversieservice .
+Zie voor meer informatie over de conversie service [de model conversie-rest API](conversion/conversion-rest-api.md).
 
-#### <a name="start-asset-conversion"></a>Assetconversie starten
+#### <a name="start-asset-conversion"></a>Activum conversie starten
 
 ``` cs
 private StartConversionAsync _pendingAsync = null;
@@ -89,7 +89,7 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
-#### <a name="get-conversion-status"></a>Conversiestatus genereren
+#### <a name="get-conversion-status"></a>Conversie status ophalen
 
 ``` cs
 private ConversionStatusAsync _pendingAsync = null
@@ -113,13 +113,13 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>Rendering API's
+### <a name="rendering-apis"></a>Rendering-Api's
 
-Zie [de REST API voor sessiebeheer](session-rest-api.md) voor meer informatie over sessiebeheer.
+Zie [de rest API voor sessie beheer](session-rest-api.md) voor meer informatie over sessie beheer.
 
-Een renderingsessie kan dynamisch worden gemaakt op de service of een reeds bestaande sessie-id kan worden 'geopend' in een AzureSession-object.
+Een rendering-sessie kan dynamisch worden gemaakt voor de service of een al bestaande sessie-ID kan worden geopend in een AzureSession-object.
 
-#### <a name="create-rendering-session"></a>Renderingsessie maken
+#### <a name="create-rendering-session"></a>Rendering-sessie maken
 
 ``` cs
 private CreateSessionAsync _pendingAsync = null;
@@ -144,9 +144,9 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 }
 ```
 
-#### <a name="open-an-existing-rendering-session"></a>Een bestaande renderingsessie openen
+#### <a name="open-an-existing-rendering-session"></a>Een bestaande rendering-sessie openen
 
-Het openen van een bestaande sessie is een synchrone oproep.
+Het openen van een bestaande sessie is een synchrone aanroep.
 
 ``` cs
 void CreateRenderingSession(AzureFrontend frontend, string sessionId)
@@ -156,7 +156,7 @@ void CreateRenderingSession(AzureFrontend frontend, string sessionId)
 }
 ```
 
-#### <a name="get-current-rendering-sessions"></a>Huidige renderingsessies bekijken
+#### <a name="get-current-rendering-sessions"></a>Huidige rendering-sessies ophalen
 
 ``` cs
 private SessionPropertiesArrayAsync _pendingAsync = null;
@@ -179,9 +179,9 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 }
 ```
 
-### <a name="session-apis"></a>Session API's
+### <a name="session-apis"></a>Sessie-Api's
 
-#### <a name="get-rendering-session-properties"></a>Eigenschappen van renderingsessie
+#### <a name="get-rendering-session-properties"></a>Eigenschappen van rendering-sessie ophalen
 
 ``` cs
 private SessionPropertiesAsync _pendingAsync = null;
@@ -204,7 +204,7 @@ void GetRenderingSessionProperties(AzureSession session)
 }
 ```
 
-#### <a name="update-rendering-session"></a>Renderingsessie bijwerken
+#### <a name="update-rendering-session"></a>Rendering-sessie bijwerken
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -228,7 +228,7 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>Renderingsessie stoppen
+#### <a name="stop-rendering-session"></a>Rendering-sessie stoppen
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -251,7 +251,7 @@ void StopRenderingSession(AzureSession session)
 }
 ```
 
-#### <a name="connect-to-arr-inspector"></a>Verbinding maken met ARR-inspecteur
+#### <a name="connect-to-arr-inspector"></a>Verbinding maken met ARR Inspector
 
 ``` cs
 private ArrInspectorAsync _pendingAsync = null;
@@ -289,4 +289,4 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een account maken](create-an-account.md)
-* [Voorbeeld PowerShell-scripts](../samples/powershell-example-scripts.md)
+* [PowerShell-voorbeeldscripts](../samples/powershell-example-scripts.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: VMware CloudSimple-service maken'
+title: 'Snelstartgids: VMware CloudSimple-service maken'
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Meer informatie over het maken van de CloudSimple-service, inkoopknooppunten en het reserveren van knooppunten
+description: Meer informatie over het maken van de CloudSimple-service, het aanschaffen van knoop punten en het reserveren van knoop punten
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -10,27 +10,27 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868020"
 ---
-# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Quickstart - Azure VMware-oplossing maken met CloudSimple-service
+# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Quick Start: een Azure VMware-oplossing maken op basis van de CloudSimple-service
 
-Maak de Azure VMware-oplossing van CloudSimple in de Azure-portal om aan de slag te gaan.
+Om aan de slag te gaan, maakt u de Azure VMware-oplossing door CloudSimple in de Azure Portal.
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware Solution by CloudSimple - Serviceoverzicht
+## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware-oplossing per CloudSimple-service-overzicht
 
-Met de CloudSimple-service u Azure VMware-oplossing van CloudSimple gebruiken.  Als u de service maakt, u knooppunten inrichten, knooppunten reserveren en privéclouds maken.  U voegt de CloudSimple-service toe in elke Azure-regio waar de CloudSimple-service beschikbaar is.  De service definieert het edge-netwerk van Azure VMware-oplossing door CloudSimple.  Dit edge-netwerk wordt gebruikt voor services zoals VPN, ExpressRoute en internetverbinding met uw privéclouds.
+Met de CloudSimple-service kunt u Azure VMware-oplossing gebruiken door CloudSimple.  Door de service te maken, kunt u knoop punten inrichten, knoop punten reserveren en persoonlijke clouds maken.  U voegt de CloudSimple-service toe aan elke Azure-regio waar de CloudSimple-service beschikbaar is.  De service definieert het Edge-netwerk van de Azure VMware-oplossing door CloudSimple.  Dit Edge-netwerk wordt gebruikt voor services die VPN, ExpressRoute en Internet connectiviteit met uw persoonlijke Clouds bevatten.
 
-Als u de CloudSimple-service wilt toevoegen, moet u een gateway-subnet maken. Het gatewaysubnet wordt gebruikt bij het maken van het edge-netwerk en vereist een /28 CIDR-blok. De subnetadresruimte van de gateway moet uniek zijn. Het kan niet overlappen met een van uw on-premises netwerkadresruimten of Azure virtuele netwerkadresruimte.
+U moet een gateway-subnet maken om de CloudSimple-service toe te voegen. Het gateway-subnet wordt gebruikt bij het maken van het Edge-netwerk en vereist een/28 CIDR-blok. De adres ruimte van het gateway-subnet moet uniek zijn. Het mag niet overlappen met een van uw on-premises netwerk adres ruimten of de adres ruimte van het virtuele Azure-netwerk.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Wijs een /28 CIDR-blok toe voor gatewaysubnet.  Een gatewaysubnet is vereist per CloudSimple-service en is uniek voor de regio waarin het is gemaakt. Het gatewaysubnet wordt gebruikt voor Azure VMware Solution door CloudSimple edge network services en vereist een /28 CIDR-blok. De subnetadresruimte van de gateway moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving.  De netwerken die communiceren met CloudSimple omvatten on-premises netwerken en Virtuele Azure-netwerken.
+Een/28 CIDR-blok voor gateway-subnet toewijzen.  Een gateway-subnet is vereist per CloudSimple-service en is uniek voor de regio waarin het is gemaakt. Het gateway-subnet wordt gebruikt voor de Azure VMware-oplossing door CloudSimple Edge-netwerk services en vereist een/28 CIDR-blok. De adres ruimte van het gateway-subnet moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving.  De netwerken die met CloudSimple communiceren, zijn onder andere on-premises netwerken en Azure Virtual Networks.
 
-Netwerkvereisten [bekijken](cloudsimple-network-checklist.md). 
+Controleer de [netwerk vereisten](cloudsimple-network-checklist.md). 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -38,53 +38,53 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-the-service"></a>De service maken
 
-1. Selecteer **Alle services**.
-2. Zoek naar **CloudSimple Service**.
+1. Selecteer **alle services**.
+2. Zoek naar de **CloudSimple-service**.
 
     ![CloudSimple-service zoeken](media/create-cloudsimple-service-search.png)
 
 3. Selecteer **CloudSimple Services**.
-4. Klik **op Toevoegen** om een nieuwe service te maken.
+4. Klik op **toevoegen** om een nieuwe service te maken.
 
     ![CloudSimple-service toevoegen](media/create-cloudsimple-service-add.png)
 
 5. Selecteer het abonnement waar u de CloudSimple-service wilt maken.
-6. Selecteer de resourcegroep voor de service. Als u een nieuwe resourcegroep wilt toevoegen, klikt u op **Nieuw maken**.
-7. Voer de naam in om de service te identificeren.
-8. Voer de CIDR voor de servicegateway in. Geef een /28-subnet op dat niet overlapt met een van uw on-premises subnetten, Azure-subnetten of geplande CloudSimple-subnetten. U de CIDR niet wijzigen nadat de service is gemaakt.
+6. Selecteer de resource groep voor de service. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
+7. Voer een naam in om de service te identificeren.
+8. Voer de CIDR in voor de service gateway. Geef een/28-subnet op dat niet overlapt met een van uw on-premises subnetten, Azure-subnetten of geplande CloudSimple-subnetten. U kunt de CIDR niet wijzigen nadat de service is gemaakt.
 
     ![De CloudSimple-service maken](media/create-cloudsimple-service.png)
 
 9. Klik op **OK**.
 
-De service wordt gemaakt en toegevoegd aan de lijst met services.
+De service wordt gemaakt en toegevoegd aan de lijst met Services.
 
 ## <a name="provision-nodes"></a>Knooppunten inrichten
 
-Als u de capaciteit voor betalen per gebruik wilt instellen voor een CloudSimple Private Cloud-omgeving, worden knooppunten in de eerste voorziening in de Azure-portal ingericht.
+Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privécloud, moet u eerst knoop punten inrichten in de Azure Portal.
 
-1. Selecteer **Alle services**.
-2. Zoeken naar **CloudSimple-knooppunten**.
+1. Selecteer **alle services**.
+2. Zoek naar **CloudSimple-knoop punten**.
 
-    ![Zoeken in CloudSimple-knooppunten](media/create-cloudsimple-node-search.png)
+    ![CloudSimple-knoop punten zoeken](media/create-cloudsimple-node-search.png)
 
-3. Selecteer **CloudSimple-knooppunten**.
-4. Klik **op Toevoegen** om knooppunten te maken.
+3. Selecteer **CloudSimple-knoop punten**.
+4. Klik op **toevoegen** om knoop punten te maken.
 
-    ![CloudSimple-knooppunten toevoegen](media/create-cloudsimple-node-add.png)
+    ![CloudSimple-knoop punten toevoegen](media/create-cloudsimple-node-add.png)
 
-5. Selecteer het abonnement waar u CloudSimple-knooppunten wilt inrichten.
-6. Selecteer de brongroep voor de knooppunten. Als u een nieuwe resourcegroep wilt toevoegen, klikt u op **Nieuw maken**.
-7. Voer het voorvoegsel in om de knooppunten te identificeren.
-8. Selecteer de locatie voor de knooppuntbronnen.
-9. Selecteer de specifieke locatie om de knooppuntbronnen te hosten.
-10. Selecteer het [knooppunttype](cloudsimple-node.md).
-11. Selecteer het aantal knooppunten dat u wilt inrichten.
+5. Selecteer het abonnement waar u de CloudSimple-knoop punten wilt inrichten.
+6. Selecteer de resource groep voor de knoop punten. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
+7. Voer het voor voegsel in om de knoop punten te identificeren.
+8. Selecteer de locatie voor de knooppunt resources.
+9. Selecteer de toegewezen locatie om de knooppunt resources te hosten.
+10. Selecteer het [knooppunt type](cloudsimple-node.md).
+11. Selecteer het aantal knoop punten dat moet worden ingericht.
 12. Selecteer **Controleren + maken**.
-13. Bekijk de instellingen. Als u instellingen wilt wijzigen, klikt u op **Vorige**.
+13. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
 14. Selecteer **Maken**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Private Cloud maken en omgeving configureren](quickstart-create-private-cloud.md)
-* Meer informatie over [cloudsimple-service](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)
+* [Een Privécloud maken en omgeving configureren](quickstart-create-private-cloud.md)
+* Meer informatie over de [CloudSimple-service](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)

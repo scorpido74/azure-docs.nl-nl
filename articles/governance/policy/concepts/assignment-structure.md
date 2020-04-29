@@ -1,30 +1,30 @@
 ---
-title: Details van de beleidstoewijzingsstructuur
-description: Beschrijft de beleidstoewijzingsdefinitie die wordt gebruikt door Azure Policy om beleidsdefinities en parameters te relateren aan resources voor evaluatie.
+title: Details van de structuur van de beleids toewijzing
+description: Beschrijft de beleids toewijzings definitie die door Azure Policy wordt gebruikt om beleids definities en-para meters te koppelen aan resources voor evaluatie.
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683219"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
-Beleidstoewijzingen worden gebruikt door Azure Policy om te bepalen welke resources worden toegewezen aan welk beleid of welke initiatieven. De beleidstoewijzing kan de waarden van parameters voor die groep resources bepalen tijdens de toewijzing, zodat beleidsdefinities die dezelfde resourceeigenschappen met verschillende nalevingsbehoeften worden aangepakt, opnieuw kunnen worden gebruikt.
+Beleids toewijzingen worden gebruikt door Azure Policy om te definiëren welke resources worden toegewezen aan welke beleids regels of initiatieven. De beleids toewijzing kan de waarden van para meters voor die groep resources tijdens de toewijzing bepalen, waardoor beleids definities die overeenkomen met dezelfde resource-eigenschappen, opnieuw kunnen worden gebruikt met verschillende vereisten voor naleving.
 
-U gebruikt JSON om een beleidstoewijzing te maken. De beleidstoewijzing bevat elementen voor:
+U gebruikt JSON om een beleids toewijzing te maken. De beleids toewijzing bevat elementen voor:
 
-- weergavenaam
+- weergave naam
 - description
 - metagegevens
-- handhavingsmodus
-- uitgesloten scopes
-- beleidsdefinitie
+- Afdwingings modus
+- uitgesloten bereiken
+- beleids definitie
 - parameters
 
-In de volgende JSON wordt bijvoorbeeld een beleidstoewijzing weergegeven in _de DoNotEnforce-modus_ met dynamische parameters:
+Zo toont de volgende JSON een beleids toewijzing in de modus _DoNotEnforce_ met dynamische para meters:
 
 ```json
 {
@@ -49,38 +49,38 @@ In de volgende JSON wordt bijvoorbeeld een beleidstoewijzing weergegeven in _de 
 }
 ```
 
-Alle azure-beleidsvoorbeelden bevinden zich op [Azure Policy-voorbeelden](../samples/index.md).
+Alle Azure Policy-voor beelden zijn Azure Policy-voor [beelden](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Weergavenaam en beschrijving
+## <a name="display-name-and-description"></a>Weergave naam en beschrijving
 
-U gebruikt **displayName** en **beschrijving** om de beleidstoewijzing te identificeren en context te bieden voor het gebruik ervan met de specifieke set resources. **displayName** heeft een maximale lengte van _128_ tekens en **een beschrijving** met een maximale lengte van _512_ tekens.
+U gebruikt **DisplayName** en **Beschrijving** om de beleids toewijzing te identificeren en context te bieden voor het gebruik van de specifieke set resources. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
 
-## <a name="enforcement-mode"></a>Handhavingsmodus
+## <a name="enforcement-mode"></a>Afdwingings modus
 
-De eigenschap **enforcementMode** biedt klanten de mogelijkheid om de resultaten van een beleid op bestaande resources te testen zonder het beleidseffect te initiëren of items in het [Azure Activity-logboek te](../../../azure-monitor/platform/platform-logs-overview.md)activeren. Dit scenario wordt vaak aangeduid als 'Wat als' genoemd en wordt uitgelijnd op veilige implementatiepraktijken. **enforcementMode** is anders dan het [effect Uitgeschakeld,](./effects.md#disabled) omdat dat effect voorkomt dat resourceevaluatie helemaal niet gebeurt.
+De eigenschap **enforcementMode** biedt klanten de mogelijkheid om het resultaat van een beleid op bestaande bronnen te testen zonder het beleids effect of de trigger vermeldingen in het [Azure-activiteiten logboek](../../../azure-monitor/platform/platform-logs-overview.md)te initiëren. Dit scenario wordt meestal ' What If ' genoemd en is afgestemd op veilige implementatie procedures. **enforcementMode** wijkt af van het [Uitgeschakelde](./effects.md#disabled) effect, wat betekent dat de resource-evaluatie helemaal niet kan plaatsvinden.
 
 Deze eigenschap heeft de volgende waarden:
 
-|Modus |JSON-waarde |Type |Handmatig herstellen |Vermelding van activiteitenlogboeken |Beschrijving |
+|Modus |JSON-waarde |Type |Hand matig herstellen |Vermelding in het activiteiten logboek |Beschrijving |
 |-|-|-|-|-|-|
-|Ingeschakeld |Standaard |tekenreeks |Ja |Ja |Het beleidseffect wordt afgedwongen tijdens het maken of bijwerken van resources. |
-|Uitgeschakeld |DoNotEnforce |tekenreeks |Ja |Nee | Het beleidseffect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
+|Ingeschakeld |Standaard |tekenreeks |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
+|Uitgeschakeld |DoNotEnforce |tekenreeks |Ja |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
 
-Als **enforcementMode** niet is opgegeven in een beleids- of initiatiefdefinitie, wordt de waarde _Standaard_ gebruikt. [Hersteltaken](../how-to/remediate-resources.md) kunnen worden gestart voor [het implementeren van IfNotExists-beleid,](./effects.md#deployifnotexists) zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.
+Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie, wordt de _standaard_ waarde gebruikt. [Herstel taken](../how-to/remediate-resources.md) kunnen worden gestart voor [deployIfNotExists](./effects.md#deployifnotexists) -beleid, zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.
 
-## <a name="excluded-scopes"></a>Uitgesloten scopes
+## <a name="excluded-scopes"></a>Uitgesloten bereiken
 
-Het **bereik** van de toewijzing omvat alle onderliggende resourcecontainers en onderliggende resources. Als de definitie van een onderliggende resource container of onderliggende resource niet moet zijn toegepast, kan elke container worden uitgesloten van evaluatie door **notScopes**in te stellen. Deze eigenschap is een array waarmee een of meer resourcecontainers of resources kunnen worden uitgesloten van evaluatie. **notScopes** kunnen worden toegevoegd of bijgewerkt na het maken van de oorspronkelijke toewijzing.
+Het **bereik** van de toewijzing bevat alle onderliggende resource containers en onderliggende resources. Als de definitie van een onderliggende bron container of onderliggende bron niet moet worden toegepast, kan deze worden uitgesloten van de evaluatie door **notScopes**in te stellen. Deze eigenschap is een matrix waarmee een of meer resource containers of bronnen kunnen worden uitgesloten. **notScopes** kunnen worden toegevoegd of bijgewerkt na het maken van de eerste toewijzing.
 
-## <a name="policy-definition-id"></a>Beleidsdefinitie-id
+## <a name="policy-definition-id"></a>Beleids definitie-ID
 
-Dit veld moet de volledige padnaam zijn van een beleidsdefinitie of een initiatiefdefinitie.
-`policyDefinitionId`is een tekenreeks en geen array. Het wordt aanbevolen dat als meerdere beleidsregels vaak samen worden toegewezen, in plaats daarvan een [initiatief](./definition-structure.md#initiatives) gebruiken.
+Dit veld moet de volledige padnaam zijn van ofwel een beleids definitie of een initiatief definitie.
+`policyDefinitionId`is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./definition-structure.md#initiatives) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
 
 ## <a name="parameters"></a>Parameters
 
-Dit segment van de beleidstoewijzing bevat de waarden voor de parameters die zijn gedefinieerd in de [beleidsdefinitie of initiatiefdefinitie](./definition-structure.md#parameters).
-Dit ontwerp maakt het mogelijk om een beleids- of initiatiefdefinitie met verschillende bronnen te hergebruiken, maar te controleren op verschillende bedrijfswaarden of -resultaten.
+Dit segment van de beleids toewijzing bevat de waarden voor de para meters die zijn gedefinieerd in de [beleids definitie of initiatief definitie](./definition-structure.md#parameters).
+Dit ontwerp maakt het mogelijk om een beleid of initiatief definitie met verschillende resources te hergebruiken, maar te controleren op verschillende bedrijfs waarden of-resultaten.
 
 ```json
 "parameters": {
@@ -93,12 +93,12 @@ Dit ontwerp maakt het mogelijk om een beleids- of initiatiefdefinitie met versch
 }
 ```
 
-In dit voorbeeld zijn de parameters die `prefix` eerder `suffix`in de beleidsdefinitie zijn gedefinieerd en . `prefix` Deze specifieke beleidsopdracht wordt ingesteld `suffix` op **DeptA** en **-LC**. Dezelfde beleidsdefinitie is herbruikbaar met een andere reeks parameters voor een andere afdeling, waardoor de duplicatie en complexiteit van beleidsdefinities worden verminderd en flexibiliteit wordt geboden.
+In dit voor beeld zijn de para meters die eerder zijn `prefix` gedefinieerd in `suffix`de beleids definitie, en. Deze specifieke beleids toewijzing is `prefix` ingesteld op **afda** en `suffix` naar **-LC**. Dezelfde beleids definitie kan opnieuw worden gebruikt met een andere set para meters voor een andere afdeling, waardoor het dupliceren en de complexiteit van beleids definities wordt verkort tijdens het bieden van flexibiliteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [beleidsdefinitiestructuur](./definition-structure.md).
-- Begrijpen hoe [u programmatisch beleid maken.](../how-to/programmatically-create.md)
-- Meer informatie over het [verzamelen van nalevingsgegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [herstellen van niet-conforme resources.](../how-to/remediate-resources.md)
-- Bekijk wat een beheergroep is met [Uw resources organiseren met Azure-beheergroepen.](../../management-groups/overview.md)
+- Meer informatie over de structuur van de [beleids definitie](./definition-structure.md).
+- Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
+- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 46ecf1bf2f5bd7900677cd115f8571ec3551a874
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134271"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209023"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
@@ -55,7 +55,7 @@ Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de v
 |Azure Database for MySQL (micro soft. DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (micro soft. DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
 |Azure Key Vault (micro soft.-sleutel kluis/kluizen)|kluis|privatelink.vaultcore.azure.net|
-|Azure Kubernetes-service-Kubernetes-API (micro soft. container service/managedClusters)    | managedCluster | {GUID}. privatelink. <region>. azmk8s.io|
+|Azure Kubernetes-service-Kubernetes-API (micro soft. container service/managedClusters)    | managedCluster | {GUID}. privatelink. {Region}. azmk8s. io|
 |Azure Search (micro soft. Search/searchServices)|searchService|privatelink.search.windows.net|   
 |Azure Container Registry (micro soft. ContainerRegistry/registers) | registry | privatelink.azurecr.io |
 |Azure-app configuratie (micro soft. Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|

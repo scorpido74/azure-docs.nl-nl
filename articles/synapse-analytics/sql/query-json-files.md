@@ -1,6 +1,6 @@
 ---
-title: JSON-bestanden opvragen met SQL on-demand (voorbeeld)
-description: In dit gedeelte wordt uitgelegd hoe u JSON-bestanden lezen met SQL on-demand in Azure Synapse Analytics.
+title: Een query uitvoeren op JSON-bestanden met behulp van SQL op aanvraag (preview)
+description: In deze sectie wordt uitgelegd hoe u JSON-bestanden kunt lezen met behulp van SQL op aanvraag in azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770813"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-bestanden opvragen met SQL on-demand (preview) in Azure Synapse Analytics
+# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met SQL on-demand (preview) in Azure Synapse Analytics. Het doel van de query is om JSON-bestanden te lezen.
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de rest van dit artikel leest, leest u de volgende artikelen:
+Lees de volgende artikelen voordat u de rest van dit artikel leest:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
-## <a name="sample-json-files"></a>Voorbeeld van JSON-bestanden
+## <a name="sample-json-files"></a>Voor beeld van JSON-bestanden
 
-De sectie hieronder bevat voorbeeldscripts om JSON-bestanden te lezen. Bestanden worden opgeslagen in een *json-container,* *mapboeken*en bevatten één boekvermelding met de volgende structuur:
+De volgende sectie bevat voorbeeld scripts voor het lezen van JSON-bestanden. Bestanden worden opgeslagen in een *JSON* -container, in mappen *boeken*en bevatten één boek vermelding met de volgende structuur:
 
 ```json
 {
@@ -49,7 +49,7 @@ De sectie hieronder bevat voorbeeldscripts om JSON-bestanden te lezen. Bestanden
 
 ## <a name="read-json-files"></a>JSON-bestanden lezen
 
-Als u JSON-bestanden wilt verwerken met JSON_VALUE en [JSON_QUERY,](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)moet u het JSON-bestand in één kolom uit de opslag lezen. In het volgende script wordt het *bestand book1.json* als één kolom gelezen:
+Als u JSON-bestanden wilt verwerken met JSON_VALUE en [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), moet u het JSON-bestand lezen uit de opslag als één kolom. Met het volgende script wordt het bestand *book1. json* als één kolom gelezen:
 
 ```sql
 SELECT
@@ -68,11 +68,11 @@ FROM
 ```
 
 > [!NOTE]
-> U leest het hele JSON-bestand als één rij of kolom. Veldterminator, FIELDQUOTE en ROWTERMINATOR zijn ingesteld op 0x0b.
+> U leest het hele JSON-bestand als één rij of kolom. So, FIELDTERMINATOR, FIELDQUOTE en ROWTERMINATOR zijn ingesteld op 0x0B.
 
-## <a name="query-json-files-using-json_value"></a>JSON-bestanden opvragen met JSON_VALUE
+## <a name="query-json-files-using-json_value"></a>Een query uitvoeren op JSON-bestanden met JSON_VALUE
 
-De onderstaande query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek getiteld *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles:*
+De onderstaande query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de getiteld *Probabilistic-en statistische methoden in Cryptology, een inleiding op geselecteerde artikelen*:
 
 ```sql
 SELECT
@@ -94,9 +94,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-json_query"></a>JSON-bestanden opvragen met JSON_QUERY
+## <a name="query-json-files-using-json_query"></a>Een query uitvoeren op JSON-bestanden met JSON_QUERY
 
-In de volgende query ziet u hoe u [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om objecten en arrays (auteurs) op te halen uit een boek getiteld *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics:*
+De volgende query laat zien hoe u [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om objecten en matrices (auteurs) op te halen uit een boek met de titel *Probabilistic en statistische methoden in Cryptology, een inleiding op de geselecteerde onderwerpen*:
 
 ```sql
 SELECT
@@ -117,9 +117,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-openjson"></a>JSON-bestanden opvragen met OPENJSON
+## <a name="query-json-files-using-openjson"></a>Een query uitvoeren op JSON-bestanden met openjson
 
-In de volgende query wordt [OPENJSON gebruikt.](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Het zal ophalen objecten en eigenschappen in een boek getiteld *Probabilistic en statistische methoden in cryptologie, een inleiding door geselecteerde artikelen:*
+De volgende query maakt gebruik van [openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Er worden objecten en eigenschappen opgehaald binnen een boek met de naam *Probabilistic en statistische methoden in Cryptology, een inleiding op geselecteerde artikelen*:
 
 ```sql
 SELECT
@@ -142,7 +142,7 @@ WHERE
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende artikelen in deze serie zal laten zien hoe:
+In de volgende artikelen in deze reeks wordt uitgelegd hoe u:
 
-- [Mappen en meerdere bestanden opvragen](query-folders-multiple-csv-files.md)
+- [Query's uitvoeren op mappen en meerdere bestanden](query-folders-multiple-csv-files.md)
 - [Weergaven maken en gebruiken](create-use-views.md)

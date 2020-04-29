@@ -5,66 +5,66 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461443"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Beheerde identiteiten voor Azure gebruiken met ServiceFabric
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Beheerde identiteiten gebruiken voor Azure met Service Fabric
 
-Een veelvoorkomende uitdaging bij het bouwen van cloudtoepassingen is het veilig beheren van de referenties in uw code voor het verifiëren van verschillende services zonder ze lokaal op te slaan op een ontwikkelaarswerkstation of in bronbeheer. *Beheerde identiteiten voor Azure* lossen dit probleem op voor al uw resources in Azure Active Directory (Azure AD) door ze automatisch beheerde identiteiten binnen Azure AD te bieden. U de identiteit van een service gebruiken om te verifiëren voor elke service die Azure AD-verificatie ondersteunt, inclusief Key Vault, zonder dat er referenties zijn opgeslagen in uw code.
+Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veilig beheren van de referenties in uw code voor verificatie bij verschillende services zonder ze lokaal op te slaan op een werk station voor ontwikkel aars of in broncode beheer. Met *beheerde identiteiten voor Azure* kunt u dit probleem oplossen voor al uw resources in azure Active Directory (Azure AD) door ze te voorzien van automatische beheerde identiteiten in azure AD. U kunt de identiteit van een service gebruiken om te verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder dat er referenties zijn opgeslagen in uw code.
 
-*Beheerde identiteiten voor Azure-bronnen* zijn gratis bij Azure AD voor Azure-abonnementen. Er zijn geen extra kosten.
+*Beheerde identiteiten voor Azure-resources* zijn gratis met Azure AD voor Azure-abonnementen. Er zijn geen extra kosten.
 
 > [!NOTE]
-> *Beheerde identiteiten voor Azure* is de nieuwe naam voor de service die voorheen managed service identity (MSI) heette.
+> *Beheerde identiteiten voor Azure* is de nieuwe naam voor de service, voorheen bekend als managed service Identity (MSI).
 
 ## <a name="concepts"></a>Concepten
 
-Beheerde identiteiten voor Azure zijn gebaseerd op verschillende belangrijke concepten:
+Beheerde identiteiten voor Azure zijn gebaseerd op verschillende belang rijke concepten:
 
-- **Client-id** - een unieke id die is gegenereerd door Azure AD en die tijdens de eerste inlevering is gekoppeld aan een toepassing en serviceprincipal (zie ook [toepassings-id](/azure/active-directory/develop/developer-glossary#application-id-client-id).)
+- **Client-id** : een unieke id die wordt gegenereerd door Azure AD die is gekoppeld aan een toepassing en Service-Principal tijdens de eerste inrichting (ook de [toepassings-id](/azure/active-directory/develop/developer-glossary#application-id-client-id).)
 
-- **Hoofd-id** : de object-id van het hoofdobject van de service voor uw beheerde identiteit dat wordt gebruikt om op rollen gebaseerde toegang tot een Azure-bron te verlenen.
+- **Principal-id** : de object-id van het Service-Principal-object voor uw beheerde identiteit die wordt gebruikt om op rollen gebaseerde toegang tot een Azure-resource te verlenen.
 
-- **Serviceprincipal** - een Azure Active Directory-object, dat de projectie van een AAD-toepassing in een bepaalde tenant vertegenwoordigt (zie ook [serviceprincipal](../active-directory/develop/developer-glossary.md#service-principal-object).)
+- **Service-Principal** : een Azure Active Directory-object dat de projectie van een Aad-toepassing in een bepaalde Tenant vertegenwoordigt (ook [Service-Principal](../active-directory/develop/developer-glossary.md#service-principal-object)weer gegeven.)
 
 Er zijn twee typen beheerde identiteit:
 
-- Een **door het systeem toegewezen beheerde identiteit** is rechtstreeks ingeschakeld op een Azure-serviceinstantie.  De levenscyclus van een door het systeem toegewezen identiteit is uniek voor het Azure-serviceexemplaar waarop deze is ingeschakeld.
-- Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. De identiteit kan worden toegewezen aan een of meer Azure-service-exemplaren en wordt afzonderlijk beheerd van de levenscyclus van die exemplaren.
+- Een door het **systeem toegewezen beheerde identiteit** wordt rechtstreeks ingeschakeld voor een Azure-service-exemplaar.  De levens cyclus van een door het systeem toegewezen identiteit is uniek voor het Azure-service-exemplaar waarop het is ingeschakeld.
+- Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. De identiteit kan worden toegewezen aan een of meer Azure-service-exemplaren en wordt onafhankelijk van de levens cyclus van die instanties beheerd.
 
-Zie [Hoe werken beheerde identiteiten voor Azure-resources om](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) het verschil tussen beheerde identiteitstypen beter te begrijpen?
+Zie [Hoe worden beheerde identiteiten voor Azure-resources werken?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) voor meer informatie over het verschil tussen beheerde identiteits typen.
 
-## <a name="supported-scenarios-for-service-fabric-applications"></a>Ondersteunde scenario's voor Service Fabric-toepassingen
+## <a name="supported-scenarios-for-service-fabric-applications"></a>Ondersteunde scenario's voor Service Fabric toepassingen
 
-Beheerde identiteiten voor Service Fabric worden alleen ondersteund in azure-geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources; een toepassing die niet is geïmplementeerd als Azure-bron, kan geen identiteit toegewezen krijgen. Conceptueel gezien bestaat ondersteuning voor beheerde identiteiten in een Azure Service Fabric-cluster uit twee fasen:
+Beheerde identiteiten voor Service Fabric worden alleen ondersteund in door Azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. Er kan geen identiteit worden toegewezen aan een toepassing die niet is geïmplementeerd als een Azure-resource. De ondersteuning voor beheerde identiteiten in een Azure Service Fabric-cluster bestaat uit twee fasen:
 
-1. Een of meer beheerde identiteiten toewijzen aan de toepassingsbron; aan een toepassing kan worden toegewezen aan één door het systeem toegewezen identiteit en/of maximaal 32 door de gebruiker toegewezen identiteiten.
+1. Een of meer beheerde identiteiten toewijzen aan de resource van de toepassing. aan een toepassing kunnen respectievelijk een door het systeem toegewezen identiteit en/of Maxi maal 32 door de gebruiker toegewezen identiteiten worden toegewezen.
 
-2. Breng binnen de definitie van de toepassing een van de identiteiten die aan de toepassing zijn toegewezen in kaart aan een afzonderlijke service die de toepassing omvat.
+2. In de definitie van de toepassing wijst u een van de identiteiten die aan de toepassing zijn toegewezen toe aan een afzonderlijke service die de toepassing omvat.
 
-De door het systeem toegewezen identiteit van een toepassing is uniek voor die toepassing; een door de gebruiker toegewezen identiteit is een zelfstandige bron, die kan worden toegewezen aan meerdere toepassingen. Binnen een toepassing kan één identiteit (toegewezen systeem of door de gebruiker toegewezen) worden toegewezen aan meerdere services van de toepassing, maar aan elke afzonderlijke service kan slechts één identiteit worden toegewezen. Ten slotte moet aan een service expliciet een identiteit worden toegewezen om toegang te hebben tot deze functie. In feite maakt het in kaart brengen van de identiteit van een toepassing aan de samenstellende services in-application het mogelijk om in-application isolatie te gebruiken : een service mag alleen de identiteit gebruiken die eraan is toegewezen.  
+De door het systeem toegewezen identiteit van een toepassing is uniek voor die toepassing. een door de gebruiker toegewezen identiteit is een zelfstandige resource die kan worden toegewezen aan meerdere toepassingen. Binnen een toepassing kan één identiteit (of toegewezen systeem of gebruikers toegewezen) aan meerdere services van de toepassing worden toegewezen, maar aan elke afzonderlijke service kan slechts één identiteit worden toegewezen. Ten slotte moet aan een service expliciet een identiteit worden toegewezen om toegang te krijgen tot deze functie. Als gevolg hiervan kan de toewijzing van de identiteit van een toepassing aan de samenstellende Services in de toepassings isolatie worden uitgevoerd: een service mag alleen de identiteit gebruiken die eraan is toegewezen.  
 
-Momenteel worden de volgende scenario's ondersteund voor deze functie:
+Op dit moment worden de volgende scenario's ondersteund voor deze functie:
 
-- Een nieuwe toepassing implementeren met een of meer services en een of meer toegewezen identiteiten
+- Een nieuwe toepassing met een of meer services en een of meer toegewezen identiteiten implementeren
 
-- Een of meer beheerde identiteiten toewijzen aan een bestaande (Azure-geïmplementeerde) toepassing om toegang te krijgen tot Azure-bronnen
+- Een of meer beheerde identiteiten toewijzen aan een bestaande (door Azure geïmplementeerde) toepassing om toegang te krijgen tot Azure-resources
 
-De volgende scenario's worden niet ondersteund of niet aanbevolen; houd er rekening mee dat deze acties mogelijk niet worden geblokkeerd, maar kunnen leiden tot uitval in uw toepassingen:
+De volgende scenario's worden niet ondersteund of worden niet aanbevolen. Houd er rekening mee dat deze acties mogelijk niet worden geblokkeerd, maar kan leiden tot storingen in uw toepassingen:
 
-- De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen; Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in om eerst een nieuwe identiteitstoewijzing toe te voegen en vervolgens een eerder toegewezen implementatie te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste effecten hebben, waaronder het verlaten van uw toepassing in een staat die niet kan worden geüderd. Het is veilig om de toepassing helemaal te verwijderen als het verwijderen van een identiteit noodzakelijk is; Let op: hiermee wordt de aan het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, verwijderd en worden eventuele koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, verwijderd.
+- De identiteiten die aan een toepassing zijn toegewezen, verwijderen of wijzigen. Als u wijzigingen moet aanbrengen, dient u afzonderlijke implementaties in te dienen om eerst een nieuwe identiteits toewijzing toe te voegen en vervolgens een eerder toegewezen account te verwijderen. Het verwijderen van een identiteit uit een bestaande toepassing kan ongewenste gevolgen hebben, zoals het verlaten van uw toepassing in een status die niet kan worden geüpgraded. Het is veilig om de toepassing te verwijderen als het verwijderen van een identiteit nood zakelijk is. Houd er rekening mee dat hiermee de door het systeem toegewezen identiteit (indien gedefinieerd) die aan de toepassing is gekoppeld, wordt verwijderd en alle koppelingen met de door de gebruiker toegewezen identiteiten die aan de toepassing zijn toegewezen, worden verwijderd.
 
-- Service Fabric-ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider.](../key-vault/general/service-to-service-authentication.md)
+- Service Fabric ondersteuning voor beheerde identiteiten is op dit moment niet geïntegreerd in de [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een nieuw Azure Service Fabric-cluster implementeren met ondersteuning voor beheerde identiteit](./configure-new-azure-service-fabric-enable-managed-identity.md)
-- [Beheerde identiteitsondersteuning inschakelen in een bestaand Azure Service Fabric-cluster](./configure-existing-cluster-enable-managed-identity-token-service.md)
-- [Een Azure Service Fabric-toepassing implementeren met een beheerde identiteit met systeemtoegewezen](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+- [Een nieuw Azure Service Fabric-cluster implementeren met beheerde identiteits ondersteuning](./configure-new-azure-service-fabric-enable-managed-identity.md)
+- [Ondersteuning van beheerde identiteiten inschakelen in een bestaand Azure Service Fabric-cluster](./configure-existing-cluster-enable-managed-identity-token-service.md)
+- [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 - [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-- [Gebruik maken van de beheerde identiteit van een Service Fabric-toepassing van servicecode](./how-to-managed-identity-service-fabric-app-code.md)
-- [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-bronnen](./how-to-grant-access-other-resources.md)
-- [Toepassingsgeheimen declareren en gebruiken als KeyVaultReferences](./service-fabric-keyvault-references.md)
+- [Maak gebruik van de beheerde identiteit van een Service Fabric toepassing vanuit service code](./how-to-managed-identity-service-fabric-app-code.md)
+- [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-resources](./how-to-grant-access-other-resources.md)
+- [Toepassings geheimen declareren en gebruiken als KeyVaultReferences](./service-fabric-keyvault-references.md)

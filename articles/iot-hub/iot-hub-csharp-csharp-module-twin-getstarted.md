@@ -1,5 +1,5 @@
 ---
-title: Aan de slag w/ Azure IoT Hub-module-identiteit & moduletwin (.NET)
+title: Aan de slag met de & module identiteit van Azure IoT Hub-module (.NET)
 description: Informatie over het maken van module-id's en het bijwerken van moduledubbels met IoT SDK's voor .NET.
 author: chrissie926
 ms.service: iot-hub
@@ -10,24 +10,24 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733381"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met de identiteit van de IoT Hub-module en moduletwin (.NET)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met IoT Hub module-identiteit en-module twee (.NET)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Module-id's en moduledubbels](iot-hub-devguide-module-twins.md) zijn vergelijkbaar met Azure IoT Hub-apparaat-id's en apparaatdubbels, maar bieden een hogere granulariteit. Terwijl de identiteit van azure IoT Hub-apparaten en apparaattweeling de back-endtoepassing in staat stellen om een apparaat te configureren en inzicht te bieden in de omstandigheden van het apparaat, bieden een module-identiteit en moduletwee deze mogelijkheden voor afzonderlijke onderdelen van een apparaat. Op geschikte apparaten met meerdere componenten, zoals op het besturingssysteem gebaseerde apparaten of firmware-apparaten, moduleidentiteiten en moduletweelingen, kunnen geïsoleerde configuraties en omstandigheden voor elk onderdeel worden mogelijk.
+> [Module-id's en moduledubbels](iot-hub-devguide-module-twins.md) zijn vergelijkbaar met Azure IoT Hub-apparaat-id's en apparaatdubbels, maar bieden een hogere granulariteit. Hoewel Azure IoT Hub apparaat-id en-apparaat twee keer de back-end-toepassing in staat stellen om een apparaat te configureren en inzicht te krijgen in de voor waarden van het apparaat, bieden een module-identiteit en-module twee deze mogelijkheden voor afzonderlijke onderdelen van een apparaat. Op apparaten die geschikt zijn voor meerdere onderdelen, zoals apparaten op het besturings systeem of firmware apparaten, kunnen module-identiteiten en module-apparaatdubbels geïsoleerde configuratie en voor waarden voor elk onderdeel toestaan.
 
 Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
-* **Identiteiten maken**. Deze app maakt een apparaatidentiteit, een module-identiteit en bijbehorende beveiligingssleutel om uw apparaat- en moduleclients met elkaar te verbinden.
+* **CreateIdentities**. Deze app maakt een apparaat-id, een module-ID en de bijbehorende beveiligings sleutel om uw apparaat en module-clients te verbinden.
 
-* **UpdateModuleTwinReportedProperties**. Deze app stuurt bijgewerkte module twin gerapporteerde eigenschappen naar uw IoT-hub.
+* **UpdateModuleTwinReportedProperties**. Deze app verzendt bijgewerkte module dubbele gerapporteerde eigenschappen naar uw IoT-hub.
 
 > [!NOTE]
 > Raadpleeg het artikel [Azure IoT-SDKs](iot-hub-devguide-sdks.md) voor meer informatie over de verschillende Azure IoT-SDK's die u kunt gebruiken om beide toepassingen zo te maken dat ze zowel op het apparaat als op de back-end van uw oplossing kunnen worden uitgevoerd.
@@ -36,13 +36,13 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 * Visual Studio.
 
-* Een actief Azure-account. Als je nog geen account hebt, kun je binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aanmaken.
+* Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
 ## <a name="create-a-hub"></a>Een hub maken
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>De verbindingstekenreeks voor IoT-hub
+## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
 [!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
@@ -54,23 +54,23 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 In deze sectie maakt u een .NET-consoletoepassing op het gesimuleerde apparaat waarmee de gerapporteerde eigenschappen van de moduledubbel worden bijgewerkt.
 
-Voordat u begint, krijgt u de tekenreeks voor de moduleverbinding. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IoT-apparaten**. Zoek **myFirstDevice**. Selecteer **myFirstDevice** om het te openen en selecteer **myFirstModule** om het te openen. Kopieer in **moduleidentiteitsgegevens**de **verbindingstekenreeks (primaire sleutel)** wanneer dat nodig is in de volgende procedure.
+Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
 
    ![Details van de Azure Portal-module](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. Voeg in Visual Studio een nieuw project toe aan uw oplossing door **Bestand** > **Nieuw** > **project**te selecteren. Selecteer in Een nieuw project maken de optie **Console-app (.NET Framework)** en selecteer **Volgende**.
+1. Voeg in Visual Studio een nieuw project toe aan uw oplossing door **bestand** > **Nieuw** > **project**te selecteren. Selecteer in een nieuw project maken de optie **console-app (.NET Framework)** en selecteer **volgende**.
 
-1. Noem het project *UpdateModuleTwinReportedProperties*. Selecteer Toevoegen **aan oplossing**voor **oplossing voor oplossing**. Zorg ervoor dat de versie van .NET Framework minimaal 4.6.1 is.
+1. Noem het project *UpdateModuleTwinReportedProperties*. Selecteer voor **oplossing**de optie **toevoegen aan oplossing**. Zorg ervoor dat de versie van .NET Framework minimaal 4.6.1 is.
 
     ![Een Visual Studio-project maken](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-1. Selecteer **Maken** om uw project te maken.
+1. Selecteer **maken** om het project te maken.
 
-1. Open in Visual Studio **Tools** > **NuGet Package Manager** > **Beheer NuGet-pakketten voor oplossing.** Selecteer het tabblad **Browse**.
+1. Open in Visual Studio **tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
 
-1. Zoek naar en selecteer **Microsoft.Azure.Devices.Client**en selecteer **Vervolgens Installeren**.
+1. Zoek en selecteer **micro soft. Azure. devices. client**en selecteer vervolgens **installeren**.
 
-    ![Huidige versie Azure IoT Hub .NET-service SDK installeren](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
+    ![De huidige versie van de Azure IoT Hub .NET Service SDK installeren](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
 1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
 
@@ -112,7 +112,7 @@ Voordat u begint, krijgt u de tekenreeks voor de moduleverbinding. Meld u aan bi
         }
     ```
 
-1. Voeg de volgende regels toe aan de **hoofdmethode:**
+1. Voeg de volgende regels toe aan de methode **Main** :
 
     ```csharp
     static void Main(string[] args)
@@ -152,7 +152,7 @@ Voordat u begint, krijgt u de tekenreeks voor de moduleverbinding. Meld u aan bi
 
     In dit codevoorbeeld ziet u hoe u de gerapporteerde eigenschappen van de moduledubbel kunt ophalen en bijwerken met het AMQP-protocol. In de openbare preview-versie wordt alleen AMQP ondersteund voor moduledubbelbewerkingen.
 
-1. Optioneel u deze instructies toevoegen aan de **hoofdmethode** om een gebeurtenis vanuit uw module naar IoT Hub te verzenden. Plaats deze regels `try catch` onder het blok.
+1. Desgewenst kunt u deze instructies toevoegen aan de methode **Main** om een gebeurtenis te verzenden naar IOT hub vanuit uw module. Plaats deze regels onder het `try catch` blok.
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -165,13 +165,13 @@ Voordat u begint, krijgt u de tekenreeks voor de moduleverbinding. Meld u aan bi
 
 ## <a name="run-the-apps"></a>De apps uitvoeren
 
-U de apps nu uitvoeren.
+U kunt nu de apps uitvoeren.
 
-1. Klik in Visual Studio in **Solution Explorer**met de rechtermuisknop op uw oplossing en selecteer **Vervolgens StartUp-projecten instellen.**
+1. Klik in Visual Studio in **Solution Explorer**met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer **Project opstarten** onder Algemene **eigenschappen.**
+1. Onder **algemene eigenschappen**selecteert u **opstart project.**
 
-1. Selecteer **Meerdere opstartprojecten**en selecteer **Start** als actie voor de apps en **OK** om uw wijzigingen te accepteren.
+1. Selecteer **meerdere opstart projecten**, en selecteer vervolgens **Start** als actie voor de apps en klik op **OK** om uw wijzigingen te accepteren.
 
 1. Druk op **F5** om de apps te starten.
 

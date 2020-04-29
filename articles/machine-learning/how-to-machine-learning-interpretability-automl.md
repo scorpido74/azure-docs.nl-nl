@@ -1,7 +1,7 @@
 ---
-title: Uitleg in geautomatiseerde ML
+title: Uitleg bij automatische ML
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u uitleg krijgt over hoe uw geautomatiseerde ML-model het belang van de functie bepaalt en voorspellingen doet bij het gebruik van de Azure Machine Learning SDK.
+description: Meer informatie over het verkrijgen van uitleg over hoe uw Automated ML-model bepaalt het belang van de functie en voor spellingen wanneer u de Azure Machine Learning SDK gebruikt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,38 @@ ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
 ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086416"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpreteerbaarheid: modeluitleg in geautomatiseerde machine learning
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretiteit: model uitleg bij automatische machine learning
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u uitleg krijgt voor geautomatiseerde machine learning (ML) in Azure Machine Learning. Geautomatiseerde ML helpt u inzicht te krijgen in het belang van de engineered feature. 
+In dit artikel vindt u informatie over het verkrijgen van uitleg voor automatische machine learning (ML) in Azure Machine Learning. Automatische ML helpt u bij het begrijpen van het belang van de functie. 
 
-Alle SDK-versies na standaard ingesteld `model_explainability=True` op 1.0.85. In SDK-versie 1.0.85 en eerdere `model_explainability=True` versies `AutoMLConfig` moeten gebruikers het object instellen om modelinterpreteerbaarheid te gebruiken. 
+Alle SDK-versies nadat 1.0.85 `model_explainability=True` standaard is ingesteld. In SDK-versie 1.0.85 en eerdere versies moeten gebruikers in `model_explainability=True` het `AutoMLConfig` object worden ingesteld om te kunnen werken met model Interpretation. 
 
 In dit artikel leert u het volgende:
 
-- Voer interpreteerbaarheid uit tijdens de training voor het beste model of een model.
-- Schakel visualisaties in om u te helpen patronen in gegevens en uitleg te zien.
-- Implementeer interpreteerbaarheid tijdens gevolgtrekking of score.
+- Voer interpretiteit uit tijdens de training voor het beste model of een model.
+- Visualisaties inschakelen zodat u patronen in gegevens en uitleg kunt zien.
+- Implementeer de interpretiteit tijdens de deinterferentie of het scoren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Eigenschappen van interpreteerbaarheid. Ren `pip install azureml-interpret azureml-contrib-interpret` om de nodige pakketten te krijgen.
-- Kennis van het bouwen van geautomatiseerde ML experimenten. Voer deze zelfstudie voor [het regressiemodel in](tutorial-auto-train-models.md) voor meer informatie over het gebruik van de Azure Machine Learning SDK of het configureren van [geautomatiseerde ML-experimenten.](how-to-configure-auto-train.md)
+- Functies voor interpretaties. Voer `pip install azureml-interpret azureml-contrib-interpret` uit om de vereiste pakketten op te halen.
+- Kennis van het bouwen van geautomatiseerde ML experimenten. Voor meer informatie over het gebruik van de Azure Machine Learning SDK, voltooit u de [zelf studie voor het regressie model](tutorial-auto-train-models.md) of raadpleegt u How to [Configure Automated ml experimenten](how-to-configure-auto-train.md).
 
-## <a name="interpretability-during-training-for-the-best-model"></a>Interpreteerbaarheid tijdens de training voor het beste model
+## <a name="interpretability-during-training-for-the-best-model"></a>Interpretiteit tijdens de training voor het beste model
 
-Haal de uitleg `best_run`uit de , die uitleg voor engineered functies bevat.
+Haal de uitleg op uit `best_run`de, die uitleg bevat over functies die zijn ontworpen voor de functie.
 
-### <a name="download-engineered-feature-importance-from-artifact-store"></a>Download engineered feature belang van artefact store
+### <a name="download-engineered-feature-importance-from-artifact-store"></a>Belang rijk onderdeel van de artefact opslag downloaden
 
-U kunt `ExplanationClient` gebruiken om de engineered functie uitleg `best_run`te downloaden van de artefact winkel van de . 
+U kunt gebruiken `ExplanationClient` voor het downloaden van de toelichtingen van de functie die door `best_run`de engine zijn verstrekt vanuit het artefact archief van de. 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -51,25 +51,25 @@ engineered_explanations = client.download_model_explanation(raw=False)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-## <a name="interpretability-during-training-for-any-model"></a>Interpreteerbaarheid tijdens de training voor elk model 
+## <a name="interpretability-during-training-for-any-model"></a>Interpretiteit tijdens de training voor elk model 
 
-Wanneer u modeluitleg berekent en visualiseert, bent u niet beperkt tot een bestaande modeluitleg voor een geautomatiseerd ML-model. U ook een verklaring krijgen voor uw model met verschillende testgegevens. De stappen in deze sectie laten u zien hoe u het belang van de ontworpen functie berekenen en visualiseren op basis van uw testgegevens.
+Wanneer u de beschrijving van het model berekent en ze visualiseren, bent u niet beperkt tot een bestaande beschrijving van een model voor een geautomatiseerd ML-model. U kunt ook een uitleg voor uw model met verschillende test gegevens krijgen. In de stappen in deze sectie wordt uitgelegd hoe u het belang van de functie hebt berekend en gevisualiseerd op basis van uw test gegevens.
 
-### <a name="retrieve-any-other-automl-model-from-training"></a>Elk ander AutoML-model ophalen uit de training
+### <a name="retrieve-any-other-automl-model-from-training"></a>Alle andere AutoML-modellen uit de training ophalen
 
 ```python
 automl_run, fitted_model = local_run.get_output(metric='accuracy')
 ```
 
-### <a name="set-up-the-model-explanations"></a>De modeluitleg instellen
+### <a name="set-up-the-model-explanations"></a>De beschrijving van het model instellen
 
-Gebruik `automl_setup_model_explanations` om de gemanipuleerde uitleg te krijgen. Het `fitted_model` kan de volgende items genereren:
+Gebruiken `automl_setup_model_explanations` om de uitgevende uitleg te verkrijgen. De `fitted_model` kan de volgende items genereren:
 
-- Aanbevolen gegevens van getrainde of testvoorbeelden
-- Lijsten met door de kundige functie
-- Vindbare klassen in de kolom met label in classificatiescenario's
+- Aanbevolen gegevens uit getrainde of test voorbeelden
+- Lijst met functies voor de functie naam
+- Zoekbaar klassen in de kolom gelabeld in classificatie scenario's
 
-De `automl_explainer_setup_obj` bevat alle structuren van bovenstaande lijst.
+De `automl_explainer_setup_obj` bevat alle structuren uit de bovenstaande lijst.
 
 ```python
 from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
@@ -79,15 +79,15 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              task='classification')
 ```
 
-### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Initialiseer de Mimic Explainer voor functiebelang
+### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>De belichtings uitleg voor de functie prioriteit initialiseren
 
-Gebruik de `MimicWrapper` klasse om een verklaring voor AutoML-modellen te genereren. U de MimicWrapper initialiseren met de volgende parameters:
+Als u een uitleg voor AutoML-modellen wilt genereren `MimicWrapper` , gebruikt u de klasse. U kunt de MimicWrapper initialiseren met de volgende para meters:
 
-- Het installatieobject explainer
-- Uw werkruimte
-- Een LightGBM-model, dat fungeert `fitted_model` als surrogaat voor het geautomatiseerde ML-model
+- Het object van de uitleger installatie
+- Uw werk ruimte
+- Een LightGBM-model dat fungeert als een surrogaat voor het `fitted_model` geautomatiseerde ml model
 
-De MimicWrapper neemt `automl_run` ook het object waar de engineered uitleg zal worden geüpload.
+De MimicWrapper neemt ook het `automl_run` object over waar de toelichte verklaringen worden geüpload.
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -101,24 +101,24 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
                          classes=automl_explainer_setup_obj.classes)
 ```
 
-### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>MimicExplainer gebruiken voor het berekenen en visualiseren van het belang van de engineered feature
+### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>MimicExplainer gebruiken voor het berekenen en visualiseren van de belang rijke functie
 
-U `explain()` de methode in MimicWrapper aanroepen met de getransformeerde testmonsters om het functiebelang voor de gegenereerde engineered functies te krijgen. U `ExplanationDashboard` ook de dashboardvisualisatie van de functiebelangwaarden van de gegenereerde engineered-functies bekijken door geautomatiseerde ML-featurizers.
+U kunt de `explain()` methode in MimicWrapper aanroepen met de getransformeerde test voorbeelden om het belang van de functie voor de gegenereerde functies te verkrijgen. U kunt ook gebruiken `ExplanationDashboard` om de visualisatie van het dash board weer te geven van de belang rijke waarden van de functie van de gegenereerde functies van ontworpen door featurizers ml.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>Interpreteerbaarheid tijdens gevolgtrekking
+### <a name="interpretability-during-inference"></a>Interpretiteit tijdens deinterferentie
 
-In deze sectie leert u hoe u een geautomatiseerd ML-model operationaliseren met de uitleg die is gebruikt om de uitleg in de vorige sectie te berekenen.
+In deze sectie leert u hoe u een geautomatiseerd ML-model kunt operationeel maken met de uitleger die is gebruikt voor het berekenen van de uitleg in de vorige sectie.
 
-### <a name="register-the-model-and-the-scoring-explainer"></a>Registreer het model en de scoreexplainer
+### <a name="register-the-model-and-the-scoring-explainer"></a>Het model en de uitleg over scores registreren
 
-Gebruik `TreeScoringExplainer` de scoreexplainer die de ontworpen functiebelangwaarden op gevolgtrekkingstijd berekent. U initialiseert de scoreexplainer `feature_map` met de scoredie eerder is berekend. 
+Gebruik de `TreeScoringExplainer` om de Score-uitlegie te maken waarmee de belang rijke waarden van de functie worden berekend op het tijdstip van de afnemen. U initialiseert de beoordelings verklaring met de `feature_map` eerder berekende score. 
 
-Sla de scoreexplainer op en registreer vervolgens het model en de scoreuitleg bij de Model Management Service. Voer de volgende code uit:
+Sla de uitleg van de scoreer op en registreer het model en de Score uitleger met de Modelbeheer-service. Voer de volgende code uit:
 
 ```python
 from azureml.interpret.scoring.scoring_explainer import TreeScoringExplainer, save
@@ -138,9 +138,9 @@ automl_run.upload_file('scoring_explainer.pkl', 'scoring_explainer.pkl')
 scoring_explainer_model = automl_run.register_model(model_name='scoring_explainer', model_path='scoring_explainer.pkl')
 ```
 
-### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>De afhankelijkheden van conda maken voor het instellen van de service
+### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>De Conda-afhankelijkheden voor het instellen van de service maken
 
-Maak vervolgens de benodigde omgevingsafhankelijkheden in de container voor het geïmplementeerde model. Houd er rekening mee dat azureml-standaardinstellingen met versie >= 1.0,45 moeten worden vermeld als een pip-afhankelijkheid, omdat het de functionaliteit bevat die nodig is om het model als webservice te hosten.
+Maak vervolgens de benodigde omgevings afhankelijkheden in de container voor het geïmplementeerde model. De waarden voor azureml-defaults en version >= 1.0.45 moeten worden vermeld als een PIP-afhankelijkheid, omdat deze de functionaliteit bevat die nodig is om het model als een webservice te hosten.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -163,7 +163,7 @@ with open("myenv.yml","r") as f:
 
 ### <a name="deploy-the-service"></a>Implementeer de service
 
-Implementeer de service met behulp van het conda-bestand en het scorebestand uit de vorige stappen.
+Implementeer de service met het Conda-bestand en het Score bestand uit de vorige stappen.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -188,9 +188,9 @@ service = Model.deploy(ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-### <a name="inference-with-test-data"></a>Gevolgtrekking met testgegevens
+### <a name="inference-with-test-data"></a>Afleiding met test gegevens
 
-Gevolgtrekking met een aantal testgegevens om de voorspelde waarde van geautomatiseerd ML-model te zien. Bekijk het belang van de ontworpen functie voor de voorspelde waarde.
+Detrain met een aantal test gegevens om de voorspelde waarde van het model geautomatiseerd ML te bekijken. Bekijk de belang rijke functie voor de voorspelde waarde.
 
 ```python
 if service.state == 'Healthy':
@@ -205,12 +205,12 @@ if service.state == 'Healthy':
     print(output['engineered_local_importance_values'])
 ```
 
-### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualiseer om patronen in gegevens en uitleg te ontdekken tijdens de training
+### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualiseer om patronen in gegevens en uitleg te ontdekken tijdens de trainings tijd
 
-U de functiebelangrijkgrafiek in uw werkruimte visualiseren in [Azure Machine Learning-studio.](https://ml.azure.com) Nadat de geautomatiseerde ML-run is voltooid, selecteert u **Modeldetails weergeven** om een specifieke run weer te geven. Selecteer het tabblad **Uitleg** om het dashboard voor uitlegvisualisatie weer te geven.
+U kunt het grafiek onderdeel urgentie in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com)visualiseren. Nadat de automatische uitvoering van de ML is voltooid, selecteert u **model details weer geven** om een specifieke uitvoering weer te geven. Selecteer het tabblad **uitleg** om het visualisatie dashboard te bekijken.
 
-[![Machine Learning Interpretability Architecture](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Architectuur van Machine Learning-interpretaties](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [conceptartikel over interpreteerbaarheid](how-to-machine-learning-interpretability.md)voor meer informatie over hoe u modeluitleg en functiebelang inschakelen op andere gebieden van de Azure Machine Learning SDK dan geautomatiseerde machine learning.
+Zie voor meer informatie over het inschakelen van model uitleg en het belang rijkheid van de functie in de onderdelen van de Azure Machine Learning SDK, met uitzonde ring van automatische machine learning, het [concept artikel over de manier waarop u kunt interpreteren](how-to-machine-learning-interpretability.md).

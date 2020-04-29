@@ -1,67 +1,67 @@
 ---
-title: Azure Resource Manager-sjabloon voor de werkruimte Log Analytics
-description: U Azure Resource Manager-sjablonen gebruiken om Logboekanalysewerkruimten te maken en te configureren.
+title: Azure Resource Manager sjabloon voor Log Analytics werk ruimte
+description: U kunt Azure Resource Manager sjablonen gebruiken om Log Analytics-werk ruimten te maken en te configureren.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768127"
 ---
-# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Logboekanalysewerkruimte beheren met Azure Resource Manager-sjablonen
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics-werk ruimte beheren met Azure Resource Manager sjablonen
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-U [Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/template-syntax.md) gebruiken om Logboekanalysewerkruimten te maken en te configureren in Azure Monitor. Voorbeelden van de taken die u met sjablonen uitvoeren, zijn:
+U kunt [Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md) gebruiken om log Analytics-werk ruimten in azure monitor te maken en te configureren. Voor beelden van de taken die u kunt uitvoeren met sjablonen zijn:
 
-* Een werkruimte maken, inclusief het instellen van de prijsniveau en capaciteitsreservering
+* Een werk ruimte maken, inclusief het instellen van de prijs categorie en capaciteits reservering
 * Een oplossing toevoegen
-* Opgeslagen zoekopdrachten maken
-* Een computergroep maken
-* Verzameling van IIS-logboeken inschakelen vanaf computers waarop de Windows-agent is geïnstalleerd
-* Prestatiemeteritems verzamelen van Linux- en Windows-computers
+* Opgeslagen Zoek opdrachten maken
+* Een computer groep maken
+* Verzamelen van IIS-logboeken inschakelen op computers waarop de Windows-agent is geïnstalleerd
+* Prestatie meter items verzamelen van Linux-en Windows-computers
 * Gebeurtenissen verzamelen van syslog op Linux-computers 
-* Gebeurtenissen verzamelen uit Logboeken van Windows-gebeurtenissen
+* Gebeurtenissen verzamelen van Windows-gebeurtenis logboeken
 * Aangepaste logboeken van Windows-computer verzamelen
-* De logboekanalyseagent toevoegen aan een virtuele Azure-machine
-* Logboekanalyses configureren om gegevens te indexeren die zijn verzameld met Azure-diagnose
+* De log Analytics-agent toevoegen aan een virtuele machine van Azure
+* Log Analytics configureren voor het indexeren van gegevens die zijn verzameld met Azure Diagnostics
 
-In dit artikel worden sjabloonvoorbeelden gegeven die een aantal van de configuratie illustreren die u met sjablonen uitvoeren.
+In dit artikel vindt u voor beelden van sjablonen die een deel van de configuratie illustreren die u kunt uitvoeren met sjablonen.
 
 ## <a name="api-versions"></a>API-versies
 
-In de volgende tabel vindt u de API-versie voor de resources die in dit voorbeeld worden gebruikt.
+De volgende tabel geeft een overzicht van de API-versie voor de resources die in dit voor beeld worden gebruikt.
 
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
 | Werkruimte   | werkruimten    | 2017-03-15-preview |
-| Search      | opgeslagenzoekopdrachten | 2015-03-20 |
-| Gegevensbron | Datasources   | 2015-11-01-preview |
+| Search      | savedSearches | 2015-03-20 |
+| Gegevensbron | gegevens bronnen   | 2015-11-01-preview |
 | Oplossing    | oplossingen     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
 
-In het volgende voorbeeld wordt een werkruimte gemaakt met behulp van een sjabloon van uw lokale machine. De JSON-sjabloon is zo geconfigureerd dat alleen de naam en locatie van de nieuwe werkruimte vereist zijn. Het gebruikt waarden die zijn opgegeven voor andere werkruimteparameters, zoals [de toegangscontrolemodus,](design-logs-deployment.md#access-control-mode)de prijscategorie, de retentie en het capaciteitsreserveringsniveau.
+In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjabloon van uw lokale computer. De JSON-sjabloon is zo geconfigureerd dat alleen de naam en locatie van de nieuwe werk ruimte zijn vereist. Het gebruikt waarden die zijn opgegeven voor andere werkruimte parameters, zoals de [toegangs beheer modus](design-logs-deployment.md#access-control-mode), de prijs categorie, de retentie en het capaciteits reserverings niveau.
 
 > [!WARNING]
-> Met de volgende sjabloon wordt een werkruimte Log Analytics gemaakt en wordt het verzamelen van gegevens geconfigureerd. Dit kan uw factureringsinstellingen wijzigen. Controleer [Gebruik en kosten beheren met Azure Monitor-logboeken](manage-cost-storage.md) om inzicht te krijgen in facturering voor gegevens die zijn verzameld in een werkruimte log Analytics voordat u deze toepast in uw Azure-omgeving.
+> Met de volgende sjabloon maakt u een Log Analytics-werk ruimte en configureert u de gegevens verzameling. Hierdoor kunnen uw facturerings instellingen worden gewijzigd. Bekijk het beheren van het [gebruik en de kosten met Azure monitor logboeken](manage-cost-storage.md) om inzicht te krijgen in de facturering van gegevens die zijn verzameld in een log Analytics werk ruimte voordat u deze toepast in uw Azure-omgeving.
 
-Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreservering voor het `CapacityReservation` opnemen van gegevens door `capacityReservationLevel`de SKU en een waarde in GB voor de eigenschap op te geven. In de volgende lijst worden de ondersteunde waarden en het gedrag beschreven bij het configureren ervan.
+Voor de capaciteits reservering definieert u een geselecteerde capaciteits reservering voor het opnemen van gegevens door `CapacityReservation` de SKU en een waarde in GB voor `capacityReservationLevel`de eigenschap op te geven. De volgende lijst bevat de ondersteunde waarden en het gedrag bij het configureren ervan.
 
-- Zodra u de reserveringslimiet hebt ingesteld, u niet binnen 31 dagen overschakelen naar een andere SKU.
+- Zodra u de reserverings limiet hebt ingesteld, kunt u niet binnen 31 dagen overschakelen op een andere SKU.
 
-- Zodra u de reserveringswaarde instelt, u deze alleen binnen 31 dagen verhogen.
+- Zodra u de reserverings waarde hebt ingesteld, kunt u deze alleen binnen 31 dagen verg Roten.
 
-- U de waarde `capacityReservationLevel` van alleen in veelvouden van 100 instellen, met een maximale waarde van 50000.
+- U kunt alleen de waarde van `capacityReservationLevel` in veelvouden van 100 instellen, met een maximale waarde van 50000.
 
-- Als u het reserveringsniveau verhoogt, wordt de timer opnieuw ingesteld en u deze niet nog 31 dagen wijzigen vanaf deze update.  
+- Als u het reserverings niveau verhoogt, wordt de timer opnieuw ingesteld en kunt u deze niet meer 31 dagen uit deze update wijzigen.  
 
-- Als u een andere eigenschap voor de werkruimte wijzigt, maar de reserveringslimiet op hetzelfde niveau behoudt, wordt de timer niet opnieuw ingesteld. 
+- Als u een andere eigenschap voor de werk ruimte wijzigt, maar de reserverings limiet op hetzelfde niveau behoudt, wordt de timer niet opnieuw ingesteld. 
 
 ### <a name="create-and-deploy-template"></a>Een sjabloon maken en implementeren
 
@@ -149,45 +149,45 @@ Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreserverin
     ```
 
    >[!NOTE]
-   >Gebruik deze eigenschappen voor capaciteitsreserveringsinstellingen onder 'sku':
+   >Voor instellingen voor capaciteits reservering gebruikt u deze eigenschappen onder SKU:
    >* "naam": "CapacityReservation",
    >* "capacityReservationLevel": 100
 
-2. Bewerk de sjabloon om aan uw vereisten te voldoen. Overweeg een [resourcebeheerbestand te](../../azure-resource-manager/templates/parameter-files.md) maken in plaats van parameters door te geven als inlinewaarden. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
+2. Bewerk de sjabloon om te voldoen aan uw vereisten. Overweeg om een [Resource Manager-parameter bestand](../../azure-resource-manager/templates/parameter-files.md) te maken in plaats van para meters door te geven als inline-waarden. Raadpleeg de naslag informatie over [micro soft. OperationalInsights/werkruimte sjablonen](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) als u wilt weten welke eigenschappen en waarden worden ondersteund. 
 
-3. Sla dit bestand op als **deploylaworkspacetemplate.json** in een lokale map.
+3. Sla dit bestand op als **deploylaworkspacetemplate. json** naar een lokale map.
 
-4. U kunt deze sjabloon nu implementeren. U gebruikt PowerShell of de opdrachtregel om de werkruimte te maken en de naam en locatie van de werkruimte op te geven als onderdeel van de opdracht. De naam van de werkruimte moet wereldwijd uniek zijn voor alle Azure-abonnementen.
+4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de opdracht regel gebruiken om de werk ruimte te maken, waarbij u de naam en locatie van de werk ruimte opgeeft als onderdeel van de opdracht. De naam van de werk ruimte moet globaal uniek zijn in alle Azure-abonnementen.
 
-   * Voor PowerShell gebruiken de volgende opdrachten uit de map met de sjabloon:
+   * Gebruik voor Power shell de volgende opdrachten uit de map met de sjabloon:
    
         ```powershell
         New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
-   * Gebruik voor opdrachtregel de volgende opdrachten uit de map met de sjabloon:
+   * Voor de opdracht regel gebruikt u de volgende opdrachten uit de map met de sjabloon:
 
         ```cmd
         azure config mode arm
         azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
-De implementatie kan enkele minuten duren. Wanneer het is voltooid, ziet u een bericht dat vergelijkbaar is met het volgende dat het resultaat bevat:<br><br> ![Voorbeeldresultaat wanneer de implementatie is voltooid](./media/template-workspace-configuration/template-output-01.png)
+De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, ziet u een bericht dat lijkt op het volgende:<br><br> ![Voor beeld van resultaat wanneer de implementatie is voltooid](./media/template-workspace-configuration/template-output-01.png)
 
-## <a name="configure-a-log-analytics-workspace"></a>Een werkruimte Log Analytics configureren
+## <a name="configure-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte configureren
 
-In het volgende voorbeeld van een sjabloon ziet u hoe u:
+In het volgende sjabloon voorbeeld ziet u hoe u:
 
-1. Oplossingen toevoegen aan de werkruimte
-2. Opgeslagen zoekopdrachten maken. Om ervoor te zorgen dat implementaties opgeslagen zoekopdrachten niet per ongeluk overschrijven, moet een eTag-eigenschap worden toegevoegd in de bron 'savedSearches' om de idempotentie van opgeslagen zoekopdrachten te overschrijven en te behouden.
-3. Opgeslagen functie maken. De eTag moet worden toegevoegd om de functie te overschrijven en idempotentie te behouden.
-4. Een computergroep maken
-5. Verzameling van IIS-logboeken inschakelen vanaf computers waarop de Windows-agent is geïnstalleerd
-6. Logische schijfperftellers verzamelen van Linux-computers (% Gebruikte Inodes; Gratis Megabytes; % gebruikte ruimte; Schijfoverdrachten per seconde; Schijfleest/sec; Schijfschrijft/sec)
-7. Syslog-gebeurtenissen verzamelen vanaf Linux-computers
-8. Fout- en waarschuwingsgebeurtenissen verzamelen in het logboek van toepassingsgebeurtenis van Windows-computers
-9. Beschikbare Mbytes-prestatiemeter items verzamelen vanaf Windows-computers
-10. IIS-logboeken en Windows-gebeurtenislogboeken verzamelen die zijn geschreven door Azure-diagnose smaken naar een opslagaccount
+1. Oplossingen toevoegen aan de werk ruimte
+2. Opgeslagen Zoek opdrachten maken. Om ervoor te zorgen dat implementaties niet per ongeluk opgeslagen Zoek opdrachten overschrijven, moet een eTag-eigenschap worden toegevoegd aan de resource ' savedSearches ' om de idempotentie van opgeslagen Zoek opdrachten te overschrijven en te onderhouden.
+3. Opgeslagen functie maken. De eTag moet worden toegevoegd om de functie override te onderdrukken en idempotentie te onderhouden.
+4. Een computer groep maken
+5. Verzamelen van IIS-logboeken inschakelen op computers waarop de Windows-agent is geïnstalleerd
+6. Prestatie meter items voor logische schijven verzamelen van Linux-computers (% used inodes; Beschik bare mega bytes; Percentage gebruikte ruimte; Schijf overdrachten per seconde; Schijf lezen per seconde; Schrijf bewerkingen per seconde)
+7. Syslog-gebeurtenissen verzamelen van Linux-computers
+8. Fout-en waarschuwings gebeurtenissen verzamelen uit het toepassings gebeurtenis logboek van Windows-computers
+9. Het prestatie meter item geheugen beschik bare Mbytes verzamelen van Windows-computers
+10. IIS-logboeken en Windows-gebeurtenis logboeken die door Azure Diagnostics zijn geschreven, verzamelen in een opslag account
 11. Aangepaste logboeken van Windows-computer verzamelen
 
 ```json
@@ -649,13 +649,13 @@ In het volgende voorbeeld van een sjabloon ziet u hoe u:
 }
 ```
 
-### <a name="deploying-the-sample-template"></a>De voorbeeldsjabloon implementeren
+### <a name="deploying-the-sample-template"></a>De voorbeeld sjabloon implementeren
 
-Ga als volgende over de volgende keer dat u de voorbeeldsjabloon wilt implementeren:
+De voorbeeld sjabloon implementeren:
 
-1. Het bijgevoegde voorbeeld opslaan in een bestand, bijvoorbeeld`azuredeploy.json` 
-2. De sjabloon bewerken om de gewenste configuratie te hebben
-3. PowerShell of de opdrachtregel gebruiken om de sjabloon te implementeren
+1. Sla het bijgevoegde voor beeld op in een bestand, bijvoorbeeld`azuredeploy.json` 
+2. Bewerk de sjabloon voor de gewenste configuratie
+3. Power shell of de opdracht regel gebruiken om de sjabloon te implementeren
 
 #### <a name="powershell"></a>PowerShell
 
@@ -670,18 +670,18 @@ azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
-## <a name="example-resource-manager-templates"></a>Voorbeeld van Resource Manager-sjablonen
+## <a name="example-resource-manager-templates"></a>Voor beelden van Resource Manager-sjablonen
 
-De azure quickstart-sjabloongalerie bevat verschillende sjablonen voor Logboekanalyse, waaronder:
+De Azure Quick Start-sjabloon galerie bevat verschillende sjablonen voor Log Analytics, waaronder:
 
-* [Een virtuele machine met Windows implementeren met de VM-extensie Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
-* [Een virtuele machine met Linux implementeren met de LOG Analytics VM-extensie](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
-* [Azure-siteherstel bewaken met behulp van een bestaande Logboekanalysewerkruimte](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
-* [Azure Web Apps bewaken met behulp van een bestaande Log Analytics-werkruimte](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Een bestaand opslagaccount toevoegen aan Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Een virtuele machine met Windows met de extensie Log Analytics VM implementeren](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
+* [Een virtuele machine met Linux implementeren met de extensie Log Analytics VM](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
+* [Azure Site Recovery bewaken met behulp van een bestaande Log Analytics werk ruimte](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
+* [Azure Web Apps bewaken met behulp van een bestaande Log Analytics-werk ruimte](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
+* [Een bestaand opslag account toevoegen aan Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Windows-agent implementeren in Azure VM's met behulp van resourcebeheersjabloon](../../virtual-machines/extensions/oms-windows.md).
+* [Implementeer Windows-agent op Azure vm's met behulp van de Resource Manager-sjabloon](../../virtual-machines/extensions/oms-windows.md).
 
-* [Linux-agent implementeren in Azure VM's met behulp van resourcebeheersjabloon](../../virtual-machines/extensions/oms-linux.md).
+* [Implementeer een Linux-agent naar Azure vm's met behulp van de Resource Manager-sjabloon](../../virtual-machines/extensions/oms-linux.md).

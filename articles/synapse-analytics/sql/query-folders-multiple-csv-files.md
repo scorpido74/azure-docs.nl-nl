@@ -1,6 +1,6 @@
 ---
-title: Querymappen en meerdere CSV-bestanden met SQL on-demand (voorbeeld)
-description: SQL on-demand (preview) ondersteunt het lezen van meerdere bestanden/mappen met behulp van jokers, die vergelijkbaar zijn met de wildcards die in Windows OS worden gebruikt.
+title: Query's uitvoeren op mappen en meerdere CSV-bestanden met behulp van SQL op aanvraag (preview)
+description: SQL on-demand (preview) ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,38 +10,38 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457362"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Querymappen en meerdere CSV-bestanden  
+# <a name="query-folders-and-multiple-csv-files"></a>Query mappen en meerdere CSV-bestanden  
 
-In dit artikel leert u hoe u een query schrijft met SQL on-demand (preview) in Azure Synapse Analytics.
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics.
 
-SQL on-demand ondersteunt het lezen van meerdere bestanden/mappen met jokertekens, die vergelijkbaar zijn met de wildcards die in Windows OS worden gebruikt. Er is echter meer flexibiliteit aanwezig omdat meerdere wildcards zijn toegestaan.
+SQL on-demand ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt. Er is echter meer flexibiliteit aanwezig omdat meerdere joker tekens zijn toegestaan.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de rest van dit artikel leest, moet u de onderstaande artikelen bekijken:
+Voordat u de rest van dit artikel leest, moet u de onderstaande artikelen door nemen:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
-## <a name="read-multiple-files-in-folder"></a>Meerdere bestanden in map lezen
+## <a name="read-multiple-files-in-folder"></a>Meerdere bestanden in de map lezen
 
-U gebruikt de map *csv/taxi* om de voorbeeldquery's te volgen. Het bevat nyc taxi - Yellow Taxi Trip Records gegevens van juli 2016 tot juni 2018.
+U gebruikt de map *CSV/taxi* om de voorbeeld query's te volgen. Het bevat NYC-Gelee taxi-excursie records van 2016 juli tot juni 2018.
 
-Bestanden in *csv/taxi* worden vernoemd naar jaar en maand:
+Bestanden in *CSV/taxi* worden na jaar en maand benoemd:
 
-- yellow_tripdata_2016-07.csv
-- yellow_tripdata_2016-08.csv
-- yellow_tripdata_2016-09.csv
+- yellow_tripdata_2016 -07. CSV
+- yellow_tripdata_2016 -08. CSV
+- yellow_tripdata_2016 -09. CSV
 - ...
-- yellow_tripdata_2018-04.csv
-- yellow_tripdata_2018-05.csv
-- yellow_tripdata_2018-06.csv
+- yellow_tripdata_2018 -04. CSV
+- yellow_tripdata_2018 -05. CSV
+- yellow_tripdata_2018 -06. CSV
 
 Elk bestand heeft de volgende structuur:
         
@@ -49,7 +49,7 @@ Elk bestand heeft de volgende structuur:
 
 ## <a name="read-all-files-in-folder"></a>Alle bestanden in de map lezen
     
-In het onderstaande voorbeeld leest u alle gegevensbestanden van NYC Yellow Taxi uit de *csv/taximap* en retourneert het totale aantal passagiers en ritten per jaar. Het toont ook het gebruik van geaggregeerde functies.
+In het onderstaande voor beeld worden alle NYC Yellow Taxi-gegevens bestanden uit de map *CSV/taxi* gelezen en wordt het totale aantal passagiers en onderdrukkingen per jaar geretourneerd. Ook wordt het gebruik van statistische functies weer gegeven.
 
 ```sql
 SELECT 
@@ -87,11 +87,11 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Alle bestanden die met de afzonderlijke OPENROWSET worden geopend, moeten dezelfde structuur hebben (d.w.z. het aantal kolommen en hun gegevenstypen).
+> Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
-### <a name="read-subset-of-files-in-folder"></a>Subset van bestanden in map lezen
+### <a name="read-subset-of-files-in-folder"></a>Subset van bestanden in de map lezen
 
-In het onderstaande voorbeeld leest u de gegevensbestanden van NYC Yellow Taxi 2017 uit de *csv/taximap* met behulp van een wildcard en retourneert het totale tariefbedrag per betalingstype.
+In het onderstaande voor beeld worden de 2017 gele taxi-gegevens bestanden uit de map *CSV/taxi* gelezen met behulp van een Joker teken en wordt het totale ritbedrag bedrag per betalings type geretourneerd.
 
 ```sql
 SELECT 
@@ -126,20 +126,20 @@ ORDER BY payment_type;
 ```
 
 > [!NOTE]
-> Alle bestanden die met de afzonderlijke OPENROWSET worden geopend, moeten dezelfde structuur hebben (d.w.z. het aantal kolommen en hun gegevenstypen).
+> Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
 ## <a name="read-folders"></a>Mappen lezen
 
-Het pad dat u aan OPENROWSET geeft, kan ook een pad naar een map zijn. De volgende secties bevatten deze querytypen.
+Het pad dat u opgeeft voor OPENROWSET, kan ook een pad naar een map zijn. De volgende secties bevatten deze query typen.
 
-### <a name="read-all-files-from-specific-folder"></a>Alle bestanden uit een specifieke map lezen
+### <a name="read-all-files-from-specific-folder"></a>Alle bestanden van een specifieke map lezen
 
-U alle bestanden in een map lezen met de wildcard op bestandsniveau zoals weergegeven in [Alle bestanden in de map lezen.](#read-all-files-in-folder) Er is echter een manier om een map op te vragen en alle bestanden in die map te gebruiken.
+U kunt alle bestanden in een map lezen met behulp van het Joker teken op bestands niveau, zoals wordt weer gegeven in [alle bestanden in de map lezen](#read-all-files-in-folder). Maar er is een manier om een query uit te stellen op een map en alle bestanden in die map te gebruiken.
 
-Als het pad in OPENROWSET naar een map verwijst, worden alle bestanden in die map gebruikt als bron voor uw query. In de volgende query worden alle bestanden in de *csv/taximap* gelezen.
+Als het pad in OpenRowset naar een map verwijst, worden alle bestanden in die map gebruikt als bron voor uw query. Met de volgende query worden alle bestanden in de map *CSV/taxi* gelezen.
 
 > [!NOTE]
-> Let op het bestaan van de / aan het einde van het pad in de query hieronder. Het duidt een map aan. Als de / wordt weggelaten, zal de query in plaats daarvan gericht zijn op een bestand met de naam *taxi.*
+> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt de query gericht op een bestand met de naam *taxi* .
 
 ```sql
 SELECT
@@ -177,14 +177,14 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Alle bestanden die met de afzonderlijke OPENROWSET worden geopend, moeten dezelfde structuur hebben (d.w.z. het aantal kolommen en hun gegevenstypen).
+> Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
 ### <a name="read-all-files-from-multiple-folders"></a>Alle bestanden uit meerdere mappen lezen
 
-Het is mogelijk om bestanden uit meerdere mappen te lezen met behulp van een wildcard. In de volgende query worden alle bestanden uit alle mappen in de *csv-map* met namen gelezen die beginnen met *t* en eindigend met *i*.
+Het is mogelijk om bestanden uit meerdere mappen te lezen met behulp van een Joker teken. Met de volgende query worden alle bestanden gelezen van alle mappen in de *CSV* -map die namen hebben die beginnen met *t* en eindigen met *i*.
 
 > [!NOTE]
-> Let op het bestaan van de / aan het einde van het pad in de query hieronder. Het duidt een map aan. Als de / wordt weggelaten, zal de query richten op bestanden met de naam *t&ast;i* in plaats daarvan.
+> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt in de query het doel bestand met de naam *&ast;i* weer te richten.
 
 ```sql
 SELECT
@@ -222,17 +222,17 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Alle bestanden die met de afzonderlijke OPENROWSET worden geopend, moeten dezelfde structuur hebben (d.w.z. het aantal kolommen en hun gegevenstypen).
+> Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
-Aangezien u slechts één map hebt die aan de criteria voldoet, is het queryresultaat hetzelfde als [Alle bestanden in de map lezen.](#read-all-files-in-folder)
+Omdat u slechts één map hebt die voldoet aan de criteria, is het resultaat van de query hetzelfde als [alle bestanden in de map lezen](#read-all-files-in-folder).
 
-## <a name="multiple-wildcards"></a>Meerdere wildcards
+## <a name="multiple-wildcards"></a>Meerdere joker tekens
 
-U meerdere jokertekens gebruiken op verschillende padniveaus. U bijvoorbeeld eerdere query's verrijken om alleen bestanden met gegevens uit 2017 te lezen, uit alle mappen die met *t* en eindigen met *i*.
+U kunt meerdere joker tekens gebruiken op verschillende padvariabelen. U kunt bijvoorbeeld een eerdere query verrijken om bestanden met alleen 2017 gegevens te lezen, van alle mappen met een naam die begint met *t* en eindigt met *i*.
 
 > [!NOTE]
-> Let op het bestaan van de / aan het einde van het pad in de query hieronder. Het duidt een map aan. Als de / wordt weggelaten, zal de query richten op bestanden met de naam *t&ast;i* in plaats daarvan.
-> Er is een maximumlimiet van 10 wildcards per query.
+> Let op het bestaan van de/aan het einde van het pad in de onderstaande query. Hiermee wordt een map aangeduid. Als de/wordt wegge laten, wordt in de query het doel bestand met de naam *&ast;i* weer te richten.
+> Er is een maximum limiet van 10 joker tekens per query.
 
 ```sql
 SELECT
@@ -270,10 +270,10 @@ ORDER BY
 ```
 
 > [!NOTE]
-> Alle bestanden die met de afzonderlijke OPENROWSET worden geopend, moeten dezelfde structuur hebben (d.w.z. het aantal kolommen en hun gegevenstypen).
+> Alle bestanden die worden geopend met één OPENROWSET, moeten dezelfde structuur hebben (bijvoorbeeld het aantal kolommen en de bijbehorende gegevens typen).
 
-Aangezien u slechts één map hebt die aan de criteria voldoet, is het queryresultaat hetzelfde als [De subset van bestanden in map lezen](#read-subset-of-files-in-folder) en Alle bestanden uit een specifieke map [lezen.](#read-all-files-from-specific-folder) Complexere scenario's voor het gebruik van jokertekens worden behandeld in [queryparketbestanden](query-parquet-files.md).
+Omdat u slechts één map hebt die voldoet aan de criteria, is het resultaat van de query hetzelfde als de [subset van bestanden in de map lezen](#read-subset-of-files-in-folder) en [alle bestanden uit een specifieke map lezen](#read-all-files-from-specific-folder). Complexere gebruiks scenario's voor joker tekens worden behandeld in [Parquet-bestanden van query's](query-parquet-files.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie is te vinden in het artikel in [Query specific files.](query-specific-files.md)
+Meer informatie vindt u in het artikel [query-specifieke bestanden](query-specific-files.md) .

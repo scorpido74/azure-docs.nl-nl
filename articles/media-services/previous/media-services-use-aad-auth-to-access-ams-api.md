@@ -1,6 +1,6 @@
 ---
-title: Toegang tot Azure Media Services API met Azure Active Directory-verificatie | Microsoft Documenten
-description: Meer informatie over concepten en stappen die u moet ondernemen om Azure Active Directory (Azure AD) te gebruiken om toegang tot de Azure Media Services API te verifiëren.
+title: Toegang tot Azure Media Services-API met Azure Active Directory-verificatie | Microsoft Docs
+description: Meer informatie over concepten en stappen voor het gebruik van Azure Active Directory (Azure AD) voor het verifiëren van toegang tot de Azure Media Services-API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,147 +14,147 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682051"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Toegang tot de API van Azure Media Services met Azure Active Directory-verificatie  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-De Azure Media Services API is een RESTful API. U het gebruiken om bewerkingen uit te voeren op mediabronnen met behulp van een REST API of met behulp van beschikbare client-SDK's. Azure Media Services biedt een Media Services-client SDK voor Microsoft .NET. Als u toestemming wilt krijgen om toegang te krijgen tot Media Services-bronnen en de API voor Media Services, moet u eerst worden geverifieerd. 
+De Azure Media Services-API is een REST API. U kunt deze gebruiken om bewerkingen uit te voeren op media bronnen met behulp van een REST API of door beschik bare client-Sdk's te gebruiken. Azure Media Services biedt een Media Services client-SDK voor Microsoft .NET. Als u toegang wilt hebben tot Media Services resources en de Media Services-API, moet u eerst worden geverifieerd. 
 
-Media Services ondersteunt [Azure Active Directory (Azure AD)-gebaseerde verificatie](../../active-directory/fundamentals/active-directory-whatis.md). De Azure Media REST-service vereist dat de gebruiker of toepassing die de REST API-aanvragen maakt, de rol **Inzender** of **eigenaar** heeft om toegang te krijgen tot de resources. Zie [Aan de slag met op rollen gebaseerd toegangsbeheer in de Azure-portal](../../role-based-access-control/overview.md)voor meer informatie.  
+Media Services ondersteunt [Azure Active Directory (op Azure AD) gebaseerde verificatie](../../active-directory/fundamentals/active-directory-whatis.md). De Azure media REST-service vereist dat de gebruiker of toepassing die de REST API aanvragen maakt, de rol **Inzender** of **eigenaar** heeft om toegang te krijgen tot de resources. Zie [aan de slag met Access Control op basis van rollen in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie.  
 
-Dit document geeft een overzicht van hoe u toegang krijgt tot de Media Services API met behulp van REST of .NET API's.
+Dit document bevat een overzicht van de manier waarop u toegang hebt tot de Media Services-API met behulp van REST-of .NET-Api's.
 
 > [!NOTE]
-> Toegangscontroleautorisatie is op 1 juni 2018 afgeschaft.
+> Access Control autorisatie is afgeschaft op 1 juni 2018.
 
 ## <a name="access-control"></a>Toegangsbeheer
 
-Als het Azure Media REST-verzoek wil slagen, moet de aanroepende gebruiker een rol inzender of eigenaar hebben voor het Media Services-account dat hij probeert te openen.  
-Alleen een gebruiker met de rol Eigenaar kan mediabron (account) toegang geven tot nieuwe gebruikers of apps. De rol Inzender heeft alleen toegang tot de mediabron.
-Ongeautoriseerde aanvragen mislukken, met statuscode van 401. Als u deze foutcode ziet, controleert u of de rol Inzender of Eigenaar is toegewezen voor het Media Services-account van de gebruiker. U dit controleren in de Azure-portal. Zoek naar uw mediaaccount en klik op het tabblad **Toegangsbeheer.** 
+Voor een succes volle Azure media-aanvraag moet de aanroepende gebruiker een rol Inzender of eigenaar hebben voor het Media Services account dat toegang probeert te krijgen.  
+Alleen een gebruiker met de rol eigenaar kan media resource (account) toegang geven tot nieuwe gebruikers of apps. De rol Inzender heeft alleen toegang tot de media bron.
+Niet-geautoriseerde aanvragen zijn mislukt, met de status code 401. Als u deze fout code ziet, controleert u of uw gebruiker de rol Inzender of eigenaar heeft toegewezen voor het Media Services account van de gebruiker. U kunt dit controleren in de Azure Portal. Zoek naar uw media account en klik vervolgens op het tabblad **toegangs beheer** . 
 
-![Tabblad Toegangsbeheer](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
+![Tabblad toegangs beheer](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
-## <a name="types-of-authentication"></a>Typen verificatie 
+## <a name="types-of-authentication"></a>Verificatie typen 
  
-Wanneer u Azure AD-verificatie gebruikt met Azure Media Services, hebt u twee verificatieopties:
+Wanneer u Azure AD-verificatie met Azure Media Services gebruikt, hebt u twee verificatie opties:
 
-- **Gebruikersverificatie**. Verifieer een persoon die de app gebruikt om te communiceren met Media Services-bronnen. De interactieve toepassing moet eerst de gebruiker om de referenties van de gebruiker vragen. Een voorbeeld is een beheerconsole-app die door geautoriseerde gebruikers wordt gebruikt om coderingstaken of live streaming te controleren. 
-- **Serviceprincipal-verificatie**. Een service verifiëren. Toepassingen die deze verificatiemethode vaak gebruiken, zijn apps die daemonservices, services op het middenniveau of geplande taken uitvoeren. Voorbeelden zijn web-apps, functie-apps, logische apps, API en microservices.
+- **Gebruikers verificatie**. Verifieer een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen naar de referenties van de gebruiker. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen. 
+- **Service-Principal-verificatie**. Verifieer een service. Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren. Voor beelden zijn web-apps, functie-apps, Logic apps, API en micro Services.
 
 ### <a name="user-authentication"></a>Gebruikersverificatie 
 
-Toepassingen die de gebruikersverificatiemethode moeten gebruiken, zijn het beheer of de bewaking van native apps: mobiele apps, Windows-apps en Console-toepassingen. Dit type oplossing is handig wanneer u menselijke interactie met de service wilt in een van de volgende scenario's:
+Toepassingen die gebruikmaken van de verificatie methode van de gebruiker zijn onder andere beheer of bewaking van systeem eigen apps: mobiele apps, Windows-apps en console toepassingen. Dit type oplossing is handig als u wilt dat mensen interactie met de service in een van de volgende scenario's:
 
-- Dashboard controleren voor uw coderingstaken.
-- Monitoring dashboard voor uw live streams.
-- Beheertoepassing voor desktop- of mobiele gebruikers om resources in een Media Services-account te beheren.
-
-> [!NOTE]
-> Deze verificatiemethode mag niet worden gebruikt voor toepassingen die gericht zijn op consumenten. 
-
-Een native toepassing moet eerst een toegangstoken van Azure AD aanschaffen en het vervolgens gebruiken wanneer u HTTP-aanvragen indient voor de MEDIA Services REST API. Voeg het toegangstoken toe aan de aanknopingspunt. 
-
-In het volgende diagram ziet u een typische interactieve verificatiestroom voor toepassingen: 
-
-![Diagram voor native apps](./media/media-services-use-aad-auth-to-access-ams-api/media-services-native-aad-app1.png)
-
-In het voorgaande diagram geven de getallen de stroom van de aanvragen in chronologische volgorde weer.
+- Bewakings dashboard voor uw coderings taken.
+- Bewakings dashboard voor uw live streams.
+- Beheer toepassing voor desktop-of mobiele gebruikers om resources te beheren in een Media Services-account.
 
 > [!NOTE]
-> Wanneer u de gebruikersverificatiemethode gebruikt, delen alle apps dezelfde (standaard) native toepassingsclient-id en worden uri omgeleid door de native application. 
+> Deze verificatie methode mag niet worden gebruikt voor consument gerichte toepassingen. 
 
-1. Vraag een gebruiker om referenties.
-2. Vraag een Azure AD-toegangstoken aan met de volgende parameters:  
+Een systeem eigen toepassing moet eerst een toegangs token van Azure AD verkrijgen en dit vervolgens gebruiken wanneer u HTTP-aanvragen maakt voor de Media Services REST API. Voeg het toegangs token toe aan de aanvraag header. 
 
-   * Eindpunt azure AD-tenant.
+In het volgende diagram ziet u een typische verificatie stroom voor interactieve toepassingen: 
 
-       De tenantgegevens kunnen worden opgehaald uit de Azure-portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechterbovenhoek.
-   * Media Services resource URI. 
+![Diagram van systeem eigen apps](./media/media-services-use-aad-auth-to-access-ams-api/media-services-native-aad-app1.png)
 
-       Deze URI is hetzelfde voor Media Services-accounts die zich in\/dezelfde Azure-omgeving bevinden (bijvoorbeeld https: /rest.media.azure.net).
+In het voor gaande diagram vertegenwoordigt de getallen de stroom van de aanvragen in chronologische volg orde.
 
-   * Media Services (native) application client ID.
-   * Media Services (native) applicatie redirect URI.
-   * Resource URI voor REST Media Services.
+> [!NOTE]
+> Wanneer u de verificatie methode van de gebruiker gebruikt, delen alle apps dezelfde standaard client-ID voor de toepassing en de omleidings-URI van de systeem eigen toepassing. 
+
+1. Een gebruiker vragen om referenties.
+2. Een Azure AD-toegangs token aanvragen met de volgende para meters:  
+
+   * Azure AD-Tenant eindpunt.
+
+       De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechter bovenhoek.
+   * Media Services resource-URI. 
+
+       Deze URI is hetzelfde voor Media Services accounts die zich in dezelfde Azure-omgeving (bijvoorbeeld https:\//rest.media.Azure.net) bevinden.
+
+   * Media Services (systeem eigen) client-ID van toepassing.
+   * Media Services (systeem eigen) URI voor omleiding van toepassing.
+   * Resource-URI voor REST-Media Services.
         
-       De URI vertegenwoordigt het REST API-eindpunt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/).
+       De URI vertegenwoordigt het REST API-eind punt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/).
 
-     Zie [De Azure-portal gebruiken om toegang te krijgen tot Azure AD-verificatieinstellingen](media-services-portal-get-started-with-aad.md) met behulp van de optie gebruikersverificatie als u waarden voor deze parameters wilt opvragen.
+     Zie [de Azure Portal gebruiken om toegang te krijgen tot Azure AD-verificatie-instellingen](media-services-portal-get-started-with-aad.md) met behulp van de optie gebruikers verificatie om waarden voor deze para meters op te halen.
 
-3. Het Azure AD-toegangstoken wordt naar de client verzonden.
-4. De client stuurt een aanvraag naar de Azure Media REST API met het Azure AD Access-token.
-5. De klant krijgt de gegevens terug van Media Services.
+3. Het Azure AD-toegangs token wordt verzonden naar de client.
+4. De client verzendt een aanvraag naar de Azure media REST API met het Azure AD-toegangs token.
+5. De client haalt de gegevens terug van Media Services.
 
-Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services API met .NET](media-services-dotnet-get-started-with-aad.md). 
+Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services-API met .net](media-services-dotnet-get-started-with-aad.md)voor informatie over het gebruik van Azure AD-verificatie om te communiceren met rest-aanvragen met behulp van de Media Services .net-client-SDK. 
 
-Als u de SDK van de Media Services .NET-client niet gebruikt, moet u handmatig een Azure AD-toegangstokenaanvraag maken met behulp van de parameters die in stap 2 zijn beschreven. Zie [De Azure AD-verificatiebibliotheek gebruiken om het Azure AD-token te krijgen voor](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)meer informatie.
+Als u de Media Services .NET-client-SDK niet gebruikt, moet u hand matig een Azure AD-toegangs token aanvraag maken met behulp van de para meters die zijn beschreven in stap 2. Zie [de Azure AD-verificatie bibliotheek gebruiken om het Azure AD-token op te halen](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)voor meer informatie.
 
 ### <a name="service-principal-authentication"></a>Verificatie van service-principal
 
-Toepassingen die deze verificatiemethode vaak gebruiken, zijn apps die services op het middenniveau en geplande taken uitvoeren: web-apps, functie-apps, logische apps, API's en microservices. Deze verificatiemethode is ook geschikt voor interactieve toepassingen waarin u mogelijk een serviceaccount wilt gebruiken om resources te beheren.
+Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die services voor de middelste laag en geplande taken uitvoeren: Web apps, functie-apps, Logic apps, Api's en micro Services. Deze verificatie methode is ook geschikt voor interactieve toepassingen waarin u mogelijk een service account wilt gebruiken om resources te beheren.
 
-Wanneer u de serviceprincipal-verificatiemethode gebruikt om consumentenscenario's te maken, wordt verificatie meestal in de middelste laag (via een API) en niet rechtstreeks in een mobiele of desktoptoepassing verwerkt. 
+Wanneer u de Service-Principal-verificatie methode gebruikt om consumenten scenario's samen te stellen, wordt de verificatie doorgaans verwerkt in de middelste laag (via sommige API'S) en niet rechtstreeks in een mobiele of bureaublad toepassing. 
 
-Als u deze methode wilt gebruiken, maakt u een Azure AD-toepassing en serviceprincipal in de eigen tenant. Nadat u de toepassing hebt gemaakt, geeft u de rol inzender van de app inzender of eigenaar toegang tot het Media Services-account. U dit doen in de Azure-portal, met behulp van de Azure CLI of met een PowerShell-script. U ook een bestaande Azure AD-toepassing gebruiken. U uw Azure AD-app en serviceprincipal registreren en beheren [in de Azure-portal.](media-services-portal-get-started-with-aad.md) U dit ook doen met [Azure CLI](media-services-use-aad-auth-to-access-ams-api.md) of [PowerShell.](media-services-powershell-create-and-configure-aad-app.md) 
+Als u deze methode wilt gebruiken, maakt u een Azure AD-toepassing en Service-Principal in een eigen Tenant. Nadat u de toepassing hebt gemaakt, geeft u de rol app Inzender of eigenaar toegang tot het Media Services-account. U kunt dit doen in de Azure Portal, met behulp van de Azure CLI of met een Power shell-script. U kunt ook een bestaande Azure AD-toepassing gebruiken. U kunt uw Azure AD-app en Service-Principal registreren en beheren [in de Azure Portal](media-services-portal-get-started-with-aad.md). U kunt dit ook doen met behulp van [Azure cli](media-services-use-aad-auth-to-access-ams-api.md) of [Power shell](media-services-powershell-create-and-configure-aad-app.md). 
 
-![Apps op het middelste niveau](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Toepassingen op middelste laag](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
 Nadat u uw Azure AD-toepassing hebt gemaakt, krijgt u waarden voor de volgende instellingen. U hebt deze waarden nodig voor verificatie:
 
 - Client-id 
 - Clientgeheim 
 
-In het voorgaande cijfer geven de getallen de stroom van de aanvragen in chronologische volgorde weer:
+In de voor gaande afbeelding vertegenwoordigen de getallen de stroom van de aanvragen in chronologische volg orde:
     
-1. Een middelste-tier app (web-API of webtoepassing) vraagt een Azure AD access token met de volgende parameters:  
+1. Een middelste app (Web API of Web Application) vraagt een Azure AD-toegangs token met de volgende para meters:  
 
-   * Eindpunt azure AD-tenant.
+   * Azure AD-Tenant eindpunt.
 
-       De tenantgegevens kunnen worden opgehaald uit de Azure-portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechterbovenhoek.
-   * Media Services resource URI. 
+       De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechter bovenhoek.
+   * Media Services resource-URI. 
 
-       Deze URI is hetzelfde voor Media Services-accounts die zich in\/dezelfde Azure-omgeving bevinden (bijvoorbeeld https: /rest.media.azure.net).
+       Deze URI is hetzelfde voor Media Services accounts die zich in dezelfde Azure-omgeving bevinden (bijvoorbeeld https:\//rest.media.Azure.net).
 
-   * Resource URI voor REST Media Services.
+   * Resource-URI voor REST-Media Services.
 
-       De URI vertegenwoordigt het REST API-eindpunt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/).
+       De URI vertegenwoordigt het REST API-eind punt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/).
 
-   * Azure AD-toepassingswaarden: de client-id en het clientgeheim.
+   * Azure AD-toepassings waarden: de client-ID en het client geheim.
     
-     Zie [De Azure-portal gebruiken om toegang te krijgen tot Azure AD-verificatieinstellingen](media-services-portal-get-started-with-aad.md) met behulp van de optie serviceprincipal-verificatie als u waarden voor deze parameters wilt krijgen.
+     Als u waarden voor deze para meters wilt ophalen, raadpleegt u [de Azure Portal gebruiken om toegang te krijgen tot Azure AD-verificatie-instellingen](media-services-portal-get-started-with-aad.md) met behulp van de optie Service-Principal-verificatie
 
-2. Het Azure AD-toegangstoken wordt naar de middelste laag verzonden.
-4. De middelste laag verzendt aanvraag naar de Azure Media REST API met het Azure AD-token.
-5. De middelste laag krijgt de gegevens terug van Media Services.
+2. Het Azure AD-toegangs token wordt verzonden naar de middelste laag.
+4. De middelste laag verzendt een aanvraag naar de Azure media-REST API met het Azure AD-token.
+5. De middelste laag krijgt een back-up van de gegevens van Media Services.
 
-Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Services API met .NET](media-services-dotnet-get-started-with-aad.md). 
+Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Services API met .net](media-services-dotnet-get-started-with-aad.md)voor meer informatie over het gebruik van Azure AD-verificatie om te communiceren met rest-aanvragen met behulp van de Media Services .net-client-SDK. 
 
-Als u de SDK van de Media Services .NET-client niet gebruikt, moet u handmatig een Azure AD-tokenaanvraag maken met behulp van parameters die in stap 1 zijn beschreven. Zie [De Azure AD-verificatiebibliotheek gebruiken om het Azure AD-token te krijgen voor](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)meer informatie.
+Als u de Media Services .NET-client-SDK niet gebruikt, moet u hand matig een Azure AD-token aanvraag maken met behulp van para meters die worden beschreven in stap 1. Zie [de Azure AD-verificatie bibliotheek gebruiken om het Azure AD-token op te halen](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)voor meer informatie.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Uitzondering: "De externe server heeft een fout geretourneerd: (401) Ongeautoriseerd."
+Uitzonde ring: de externe server heeft een fout geretourneerd: (401) niet toegestaan.
 
-Oplossing: Als het REST-verzoek voor MediaServices succesvol is, moet de bellende gebruiker een rol van inzender of eigenaar zijn in het Media Services-account dat hij probeert te openen. Zie de sectie [Toegangsbeheer](media-services-use-aad-auth-to-access-ams-api.md#access-control) voor meer informatie.
+Oplossing: voor de Media Services REST-aanvraag om te slagen, moet de aanroepende gebruiker een rol Inzender of eigenaar zijn in het Media Services-account dat toegang probeert te krijgen. Zie de sectie [toegangs beheer](media-services-use-aad-auth-to-access-ams-api.md#access-control) voor meer informatie.
 
 ## <a name="resources"></a>Resources
 
-De volgende artikelen zijn overzichten van Azure AD-verificatieconcepten: 
+De volgende artikelen zijn overzichten van de concepten van Azure AD-verificatie: 
 
-- [Verificatiescenario's aangepakt door Azure AD](../../active-directory/develop/authentication-scenarios.md)
-- [Een toepassing toevoegen, bijwerken of verwijderen in Azure AD](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
-- [Toegangsbeheer op basis van rollen configureren en beheren met PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Verificatie scenario's die worden behandeld door Azure AD](../../active-directory/develop/authentication-scenarios.md)
+- [Een toepassing toevoegen, bijwerken of verwijderen in azure AD](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+- [Op rollen gebaseerde Access Control configureren en beheren met behulp van Power shell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Gebruik de Azure-portal om toegang te [krijgen tot Azure AD-verificatie om Azure Media Services API te gebruiken.](media-services-portal-get-started-with-aad.md)
-* Gebruik Azure AD-verificatie om toegang te [krijgen tot de Azure Media Services API met .NET](media-services-dotnet-get-started-with-aad.md).
+* Gebruik de Azure Portal om [toegang te krijgen tot Azure AD-verificatie om Azure Media Services API te](media-services-portal-get-started-with-aad.md)gebruiken.
+* Gebruik Azure AD-verificatie om [toegang te krijgen tot Azure Media Services-API met .net](media-services-dotnet-get-started-with-aad.md).
 

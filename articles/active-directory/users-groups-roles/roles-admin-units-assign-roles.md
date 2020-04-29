@@ -1,6 +1,6 @@
 ---
-title: Rollen toewijzen en weergeven met beheereenheidsbereik (voorbeeld) - Azure Active Directory | Microsoft Documenten
-description: Beheereenheden gebruiken om het bereik van roltoewijzingen in Azure Active Directory te beperken
+title: Rollen toewijzen en weer geven met het bereik van de beheer eenheid (preview)-Azure Active Directory | Microsoft Docs
+description: Beheer eenheden gebruiken om het bereik van roltoewijzingen in Azure Active Directory te beperken
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,40 +15,40 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3af281846e2bd1a39e691d84e964d8a8f780a6f1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870418"
 ---
-# <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een administratieve eenheid
+# <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
-In Azure Active Directory (Azure AD) u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer beheereenheden (AU's) voor meer gedetailleerd beheerbeheerbeheer.
+In Azure Active Directory (Azure AD) kunt u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer administratieve eenheden (AUs) voor een gedetailleerdere administratieve controle.
 
-Zie [Aan](roles-admin-units-manage.md#get-started)de slag voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
+Zie aan de [slag](roles-admin-units-manage.md#get-started)voor de stappen voor het voorbereiden van het gebruik van Power shell en Microsoft Graph voor beheer van beheer eenheden.
 
-## <a name="roles-available"></a>Beschikbare rollen
+## <a name="roles-available"></a>Beschik bare rollen
 
 Rol  |  Beschrijving
 ----- |  -----------
-Verificatiebeheerder  |  Heeft alleen toegang tot het weergeven, instellen en opnieuw instellen van verificatiemethodegegevens voor elke niet-beheerdersgebruiker in de toegewezen beheereenheid.
-Groepsbeheerder  |  Kan alle aspecten van groepen en groepeninstellingen beheren, zoals alleen naamgevings- en verloopbeleid in de toegewezen administratieve eenheid.
-Helpdeskbeheerder  |  Kan wachtwoorden opnieuw instellen voor niet-beheerders en helpdeskbeheerders in de toegewezen administratieve eenheid.
-Licentiebeheerder  |  Kan alleen licentietoewijzingen binnen de administratieve eenheid toewijzen, verwijderen en bijwerken.
-Wachtwoordbeheerder  |  Kan wachtwoorden opnieuw instellen voor niet-beheerders en wachtwoordbeheerders binnen de toegewezen administratieve eenheid.
-Gebruikersbeheerder  |  Kan alle aspecten van gebruikers en groepen beheren, inclusief het opnieuw instellen van wachtwoorden voor beperkte beheerders binnen de toegewezen administratieve eenheid.
+Verificatie beheerder  |  Heeft toegang voor het weer geven, instellen en opnieuw instellen van verificatie methode-informatie voor een niet-beheerders gebruiker in de toegewezen beheer eenheid.
+Groeps beheerder  |  Kan alle aspecten van groepen en groeps instellingen, zoals naamgeving en verloop beleid alleen in de toegewezen beheer eenheid beheren.
+Helpdesk beheerder  |  Kan wacht woorden voor niet-beheerders en helpdesk beheerders opnieuw instellen in de toegewezen beheer eenheid.
+Licentie beheerder  |  Kan alleen licentie toewijzingen binnen de beheer eenheid toewijzen, verwijderen en bijwerken.
+Wachtwoord beheerder  |  Kan wacht woorden voor niet-beheerders en wachtwoord beheerders binnen de toegewezen beheer eenheid opnieuw instellen.
+Gebruikersbeheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
 
-## <a name="assign-a-scoped-role"></a>Een scoperol toewijzen
+## <a name="assign-a-scoped-role"></a>Een scoped rol toewijzen
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Ga naar **Azure AD->-beheereenheden** in de portal. Selecteer de administratieve eenheid waarover u de rol aan een gebruiker wilt toewijzen. Selecteer in het linkerdeelvenster Rollen en beheerders om alle beschikbare rollen weer te geven.
+Ga naar **Azure AD >-beheer eenheden** in de portal. Selecteer de administratieve eenheid waarover u de rol wilt toewijzen aan een gebruiker. Selecteer in het linkerdeel venster de optie rollen en beheerders om alle beschik bare rollen weer te geven.
 
-![Een administratieve eenheid selecteren om het rolbereik te wijzigen](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
+![Een administratieve eenheid selecteren om het gebruikersrol bereik te wijzigen](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-Selecteer de toegewezen rol en selecteer **Toewijzingen toevoegen**. Hiermee wordt een deelvenster aan de rechterkant geopend waarin u een of meer gebruikers selecteren die aan de rol moeten worden toegewezen.
+Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toevoegen**. Hiermee wordt een deel venster aan de rechter kant geopend, waar u een of meer gebruikers kunt selecteren om aan de rol toe te wijzen.
 
-![Selecteer de rol die u wilt scopen en selecteer vervolgens Toewijzingen toevoegen](./media/roles-admin-units-assign-roles/select-add-assignment.png)
+![Selecteer de rol die u wilt bereik en selecteer vervolgens toewijzingen toevoegen](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -57,7 +57,7 @@ Selecteer de toegewezen rol en selecteer **Toewijzingen toevoegen**. Hiermee wor
     $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
     Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
 
-De gemarkeerde sectie kan worden gewijzigd zoals vereist voor de specifieke omgeving.
+De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -72,18 +72,18 @@ De gemarkeerde sectie kan worden gewijzigd zoals vereist voor de specifieke omge
       }
     }
 
-## <a name="list-the-scoped-admins-on-an-au"></a>De scoped-beheerders op een AU weergeven
+## <a name="list-the-scoped-admins-on-an-au"></a>De scoped Administrators op een AU weer geven
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Alle roltoewijzingen die met een beheereenheid worden uitgevoerd, kunnen worden weergegeven in de [sectie Beheereenheden van Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit). Ga naar **Azure AD->-beheereenheden** in de portal. Selecteer de beheereenheid voor de roltoewijzingen die u wilt aanbieden. Selecteer **Rollen en beheerders** en open een rol om de toewijzingen in de beheereenheid weer te geven.
+Alle roltoewijzingen die met een bereik van een beheer eenheid worden uitgevoerd, kunnen worden weer gegeven in de [sectie administratieve eenheden van Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit). Ga naar **Azure AD >-beheer eenheden** in de portal. Selecteer de beheer eenheid voor de roltoewijzingen die u wilt weer geven. Selecteer **rollen en beheerders** en open een rol om de toewijzingen in de beheer eenheid weer te geven.
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
 
-De gemarkeerde sectie kan worden gewijzigd zoals vereist voor de specifieke omgeving.
+De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -94,4 +94,4 @@ De gemarkeerde sectie kan worden gewijzigd zoals vereist voor de specifieke omge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Problemen met administratieve eenheden oplossen en veelgestelde vragen](roles-admin-units-faq-troubleshoot.md)
+- [Probleem oplossing en veelgestelde vragen over administratieve eenheden](roles-admin-units-faq-troubleshoot.md)

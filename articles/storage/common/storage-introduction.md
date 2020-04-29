@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133784"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
@@ -22,7 +22,7 @@ Het Azure Storage platform is de oplossing voor de Cloud opslag van micro soft v
 - **Duurzaam en maximaal beschikbaar.** Redundantie zorgt ervoor dat uw gegevens veilig zijn in geval van tijdelijke hardwarefouten. U kunt er ook voor kiezen gegevens te repliceren in datacenters of geografische regio's voor extra beveiliging tegen lokale rampen of natuurrampen. Op deze manier gerepliceerde gegevens blijven maximaal beschikbaar in het geval van een stroomstoring.
 - **Beveiligd.** Alle gegevens die naar een Azure Storage-account worden geschreven, worden versleuteld door de service. Azure Storage biedt u gedetailleerde controle over wie toegang tot uw gegevens heeft.
 - **Aanpas.** Azure Storage is in hoge mate schaalbaar om te voldoen aan de gegevensopslag- en prestatiebehoeften van de huidige toepassingen.
-- **Beheerd.** Azure verwerkt onderhoud van hardware, updates en kritieke problemen voor u.
+- **Bijgehouden.** Azure verwerkt onderhoud van hardware, updates en kritieke problemen voor u.
 - **Toegankelijk.** Gegevens in Azure Storage zijn overal ter wereld toegankelijk via HTTP of HTTPS. Micro soft biedt client bibliotheken voor Azure Storage in verschillende talen, waaronder .NET, Java, node. js, Python, PHP, Ruby, Go en anderen, evenals een rijp REST API. Azure Storage ondersteunt scripts in Azure PowerShell of Azure CLI. En Azure Portal en Azure Storage Explorer bieden handige visuele oplossingen voor het werken met uw gegevens.  
 
 ## <a name="core-storage-services"></a>Kern opslag Services

@@ -1,138 +1,138 @@
 ---
-title: Lees-replica's beheren - Azure portal - Azure Database voor MariaDB
-description: In dit artikel wordt beschreven hoe u leesreplica's in Azure Database voor MariaDB instellen en beheren met behulp van de portal
+title: Lees replica's beheren-Azure Portal-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u in Azure Database for MariaDB Lees replica's instelt en beheert met behulp van de portal
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025081"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Lees-replica's maken en beheren in Azure Database voor MariaDB met behulp van de Azure-portal
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure Portal
 
-In dit artikel leert u hoe u leesreplica's maakt en beheert in de Azure Database for MariaDB-service met behulp van de Azure-portal.
+In dit artikel leert u hoe u in de Azure Database for MariaDB-service Lees replica's maakt en beheert met behulp van de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een [Azure-database voor MariaDB-server](quickstart-create-mariadb-server-database-using-azure-portal.md) die wordt gebruikt als hoofdserver.
+- Een [Azure database for MariaDB-server](quickstart-create-mariadb-server-database-using-azure-portal.md) die wordt gebruikt als de hoofd server.
 
 > [!IMPORTANT]
-> De functie leesreplica is alleen beschikbaar voor Azure Database voor MariaDB-servers in de prijzenlagen Algemeen Doel of Geheugengeoptimaliseerd. Zorg ervoor dat de hoofdserver zich in een van deze prijsniveaus bevindt.
+> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
 
-## <a name="create-a-read-replica"></a>Een gelezen replica maken
+## <a name="create-a-read-replica"></a>Een lees replica maken
 
-Een leesreplicaserver kan worden gemaakt met de volgende stappen:
+Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer de bestaande Azure Database voor MariaDB-server die u als stramien wilt gebruiken. Met deze actie wordt de pagina **Overzicht** geopend.
+2. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als een Master. Met deze actie wordt de pagina **overzicht** geopend.
 
-3. Selecteer **Replicatie** in het menu onder **INSTELLINGEN**.
+3. Selecteer **replicatie** in het menu onder **instellingen**.
 
-4. Selecteer **Replica toevoegen**.
+4. Selecteer **replica toevoegen**.
 
-   ![Azure-database voor MariaDB - Replicatie](./media/howto-read-replica-portal/add-replica.png)
+   ![Azure Database for MariaDB-replicatie](./media/howto-read-replica-portal/add-replica.png)
 
-5. Voer een naam in voor de replicaserver.
+5. Voer een naam in voor de replica server.
 
-    ![Azure Database voor MariaDB - Replicanaam](./media/howto-read-replica-portal/replica-name.png)
+    ![Azure Database for MariaDB-replica naam](./media/howto-read-replica-portal/replica-name.png)
 
-6. Selecteer de locatie voor de replicaserver. De standaardlocatie is hetzelfde als die van de hoofdserver.
+6. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de hoofd server.
 
-    ![Azure Database voor MariaDB - Replicalocatie](./media/howto-read-replica-portal/replica-location.png)
+    ![Azure Database for MariaDB-replica locatie](./media/howto-read-replica-portal/replica-location.png)
 
-7. Selecteer **OK** om het maken van de replica te bevestigen.
+7. Selecteer **OK** om te bevestigen dat u de replica wilt maken.
 
 > [!NOTE]
-> Leesreplica's worden gemaakt met dezelfde serverconfiguratie als de stramien. De configuratie van de replicaserver kan worden gewijzigd nadat deze is gemaakt. Het wordt aanbevolen dat de configuratie van de replicaserver op gelijke of grotere waarden wordt gehouden dan de master om ervoor te zorgen dat de replica het model kan bijhouden.
+> Lees replica's worden gemaakt met dezelfde server configuratie als de Master. De configuratie van de replica server kan worden gewijzigd nadat deze is gemaakt. Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de Master om ervoor te zorgen dat de replica kan blijven werken met de Master.
 
-Zodra de replicaserver is gemaakt, kan deze worden bekeken vanaf het **replicatieblad.**
+Zodra de replica server is gemaakt, kan deze worden weer gegeven op de Blade **replicatie** .
 
-   ![Azure Database voor MariaDB - Replica's weergeven](./media/howto-read-replica-portal/list-replica.png)
+   ![Azure Database for MariaDB-lijst replica's](./media/howto-read-replica-portal/list-replica.png)
 
-## <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replicaserver stoppen
+## <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
 
 > [!IMPORTANT]
-> Het stoppen van replicatie naar een server is onomkeerbaar. Zodra replicatie is gestopt tussen een stramien en replica, kan deze niet ongedaan worden gemaakt. De replicaserver wordt dan een standalone server en ondersteunt nu zowel lezen als schrijven. Deze server kan niet opnieuw worden omgezet in een replica.
+> Het stoppen van de replicatie naar een server is onomkeerbaar. Zodra de replicatie tussen een hoofd-en replica is gestopt, kan deze niet meer ongedaan worden gemaakt. De replica-server wordt vervolgens een zelfstandige server en ondersteunt nu lezen en schrijven. Deze server kan niet opnieuw in een replica worden gemaakt.
 
-Als u de replicatie tussen een stramien en een replicaserver van de Azure-portal wilt stoppen, gebruikt u de volgende stappen:
+Voer de volgende stappen uit om de replicatie tussen een Master en een replica server te stoppen met de Azure Portal:
 
-1. Selecteer in de Azure-portal uw hoofdAzure Database voor MariaDB-server. 
+1. Selecteer in de Azure Portal uw Master Azure Database for MariaDB-server. 
 
-2. Selecteer **Replicatie** in het menu onder **INSTELLINGEN**.
+2. Selecteer **replicatie** in het menu onder **instellingen**.
 
-3. Selecteer de replicaserver waarvoor u de replicatie wilt stoppen.
+3. Selecteer de replica server waarvoor u de replicatie wilt stoppen.
 
-   ![Azure Database voor MariaDB - Replicatie selecteren server stoppen](./media/howto-read-replica-portal/stop-replication-select.png)
+   ![Azure Database for MariaDB-replicatie stoppen server selecteren](./media/howto-read-replica-portal/stop-replication-select.png)
 
 4. Selecteer **Replicatie stoppen**.
 
-   ![Azure Database voor MariaDB - Replicatie stoppen](./media/howto-read-replica-portal/stop-replication.png)
+   ![Azure Database for MariaDB-replicatie stoppen](./media/howto-read-replica-portal/stop-replication.png)
 
 5. Bevestig dat u de replicatie wilt stoppen door op **OK**te klikken.
 
-   ![Azure Database voor MariaDB - Replicatie stoppen bevestigen](./media/howto-read-replica-portal/stop-replication-confirm.png)
+   ![Azure Database for MariaDB-replicatie stoppen bevestigen](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
-## <a name="delete-a-replica-server"></a>Een replicaserver verwijderen
+## <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
-Als u een gelezen replicaserver uit de Azure-portal wilt verwijderen, gebruikt u de volgende stappen:
+Voer de volgende stappen uit om een lees replica-server te verwijderen uit de Azure Portal:
 
-1. Selecteer in de Azure-portal uw hoofdAzure Database voor MariaDB-server.
+1. Selecteer in de Azure Portal uw Master Azure Database for MariaDB-server.
 
-2. Selecteer **Replicatie** in het menu onder **INSTELLINGEN**.
+2. Selecteer **replicatie** in het menu onder **instellingen**.
 
-3. Selecteer de replicaserver die u wilt verwijderen.
+3. Selecteer de replica server die u wilt verwijderen.
 
-   ![Azure Database voor MariaDB - Replica select server verwijderen](./media/howto-read-replica-portal/delete-replica-select.png)
+   ![Azure Database for MariaDB-replica verwijderen server selecteren](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. Replica **verwijderen selecteren**
+4. **Replica verwijderen** selecteren
 
-   ![Azure-database voor MariaDB - Replica verwijderen](./media/howto-read-replica-portal/delete-replica.png)
+   ![Azure Database for MariaDB-replica verwijderen](./media/howto-read-replica-portal/delete-replica.png)
 
-5. Typ de naam van de replica en klik op **Verwijderen** om de verwijdering van de replica te bevestigen.  
+5. Typ de naam van de replica en klik op **verwijderen** om de verwijdering van de replica te bevestigen.  
 
-   ![Azure Database voor MariaDB - Replica bevestigen verwijderen](./media/howto-read-replica-portal/delete-replica-confirm.png)
+   ![Azure Database for MariaDB-replica verwijderen bevestigen](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Een hoofdserver verwijderen
+## <a name="delete-a-master-server"></a>Een hoofd server verwijderen
 
 > [!IMPORTANT]
 > Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
-Als u een hoofdserver uit de Azure-portal wilt verwijderen, gebruikt u de volgende stappen:
+Als u een master-server wilt verwijderen uit de Azure Portal, gebruikt u de volgende stappen:
 
-1. Selecteer in de Azure-portal uw hoofdAzure Database voor MariaDB-server.
+1. Selecteer in de Azure Portal uw Master Azure Database for MariaDB-server.
 
-2. Selecteer **Verwijderen**in het **overzicht**.
+2. Selecteer **verwijderen**in het **overzicht**.
 
-   ![Azure Database voor MariaDB - Master verwijderen](./media/howto-read-replica-portal/delete-master-overview.png)
+   ![Azure Database for MariaDB-Master verwijderen](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. Typ de naam van de hoofdserver en klik op **Verwijderen** om de verwijdering van de hoofdserver te bevestigen.  
+3. Typ de naam van de hoofd server en klik op **verwijderen** om de verwijdering van de hoofd server te bevestigen.  
 
-   ![Azure Database voor MariaDB - Master verwijderen](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MariaDB-Master verwijderen](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>Replicatie controleren
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)de replica Azure Database voor MariaDB-server die u wilt controleren.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)de replica Azure database for MariaDB server die u wilt bewaken.
 
-2. Selecteer onder de sectie **Controle** van de zijbalk de optie **Metrische gegevens:**
+2. Onder de sectie **bewaking** van de zijbalk selecteert u **metrische gegevens**:
 
-3. Selecteer **Replicatievertraging in enkele seconden** in de vervolgkeuzelijst met beschikbare statistieken.
+3. Selecteer **replicatie vertraging in seconden in** de vervolg keuzelijst met beschik bare metrische gegevens.
 
-   ![Replicatievertraging selecteren](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
+   ![Replicatie vertraging selecteren](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 
-4. Selecteer het tijdsbereik dat u wilt weergeven. De onderstaande afbeelding selecteert een tijdsbereik van 30 minuten.
+4. Selecteer het tijds bereik dat u wilt weer geven. In de onderstaande afbeelding wordt een tijds bereik van 30 minuten geselecteerd.
 
-   ![Tijdbereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![Tijds bereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
-5. De replicatievertraging voor het geselecteerde tijdsbereik weergeven. De afbeelding hieronder toont de laatste 30 minuten voor een grote werkbelasting.
+5. De replicatie vertraging voor het geselecteerde tijds bereik weer geven. In de onderstaande afbeelding wordt de laatste 30 minuten voor een grote werk belasting weer gegeven.
 
-   ![Tijdbereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Tijds bereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [gelezen replica's](concepts-read-replicas.md)
+- Meer informatie over het [lezen van replica's](concepts-read-replicas.md)

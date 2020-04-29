@@ -1,6 +1,6 @@
 ---
 title: Tijdelijke tabellen
-description: Essentiële richtlijnen voor het gebruik van tijdelijke tabellen in synapse SQL-pool, waarbij de beginselen van tijdelijke tabellen op sessieniveau worden benadrukt.
+description: Essentiële richt lijnen voor het gebruik van tijdelijke tabellen in de Synapse SQL-pool, waarbij de principes van tijdelijke tabellen op sessie niveau worden gemarkeerd.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,33 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408032"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>Tijdelijke tabellen in de Synapsische SQL-groep
-Dit artikel bevat essentiële richtlijnen voor het gebruik van tijdelijke tabellen en belicht de principes van tijdelijke tabellen op sessieniveau. 
+# <a name="temporary-tables-in-synapse-sql-pool"></a>Tijdelijke tabellen in Synapse SQL-pool
+Dit artikel bevat essentiële richt lijnen voor het gebruik van tijdelijke tabellen en markeert de principes van tijdelijke tabellen op sessie niveau. 
 
-Het gebruik van de informatie in dit artikel kan u helpen uw code te modulariseren, waardoor zowel de herbruikbaarheid als het onderhoudsgemak wordt verbeterd.
+Met behulp van de informatie in dit artikel kunt u uw code modularize, waardoor zowel het hergebruik als het gemak van onderhoud wordt verbeterd.
 
 ## <a name="what-are-temporary-tables"></a>Wat zijn tijdelijke tabellen?
-Tijdelijke tabellen zijn handig bij het verwerken van gegevens, vooral tijdens transformatie waarbij de tussenliggende resultaten van voorbijgaande aard zijn. In SQL-pool bestaan tijdelijke tabellen op sessieniveau.  
+Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. In de SQL-groep bestaan er tijdelijke tabellen op sessie niveau.  
 
-Tijdelijke tabellen zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt en worden automatisch verwijderd wanneer die sessie zich afmeldt.  
+Tijdelijke tabellen zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt en die automatisch worden verwijderd wanneer deze sessie wordt afgemeld.  
 
-Tijdelijke tabellen bieden een prestatievoordeel omdat hun resultaten worden geschreven naar lokale in plaats van externe opslag.
+Tijdelijke tabellen bieden een prestatie voordelen omdat hun resultaten naar een lokale locatie worden geschreven in plaats van externe opslag.
 
-Tijdelijke tabellen zijn handig bij het verwerken van gegevens, vooral tijdens transformatie waarbij de tussenliggende resultaten van voorbijgaande aard zijn. Met SQL Analytics bestaan er tijdelijke tabellen op sessieniveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch gedropt wanneer die sessie zich afmeldt. 
+Tijdelijke tabellen zijn handig bij het verwerken van gegevens, met name tijdens trans formatie waarbij de tussenliggende resultaten tijdelijk zijn. Met SQL Analytics bestaan er tijdelijke tabellen op sessie niveau.  Ze zijn alleen zichtbaar voor de sessie waarin ze zijn gemaakt. Als zodanig worden ze automatisch verwijderd wanneer deze sessie wordt afgemeld. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>Tijdelijke tabellen in SQL-groep
 
-In de SQL-poolbron bieden tijdelijke tabellen een prestatievoordeel omdat de resultaten ervan worden geschreven naar lokale in plaats van externe opslag.
+In de resource van de SQL-groep bieden tijdelijke tabellen een voor deel van prestaties omdat hun resultaten naar een lokale locatie worden geschreven in plaats van externe opslag.
 
 ### <a name="create-a-temporary-table"></a>Een tijdelijke tabel maken
 
-Tijdelijke tabellen worden gemaakt door uw `#`tabelnaam vooraf te bevestigen met een .  Bijvoorbeeld:
+Tijdelijke tabellen worden gemaakt door het voor voegsel van de tabel naam `#`te maken met een.  Bijvoorbeeld:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -57,7 +57,7 @@ WITH
 )
 ```
 
-Tijdelijke tabellen kunnen ook `CTAS` worden gemaakt met een met behulp van precies dezelfde aanpak:
+Tijdelijke tabellen kunnen ook worden gemaakt met `CTAS` behulp van dezelfde benadering:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -98,14 +98,14 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`is een krachtige opdracht en heeft het extra voordeel van efficiënt in het gebruik van transactielogboekruimte. 
+> `CTAS`is een krachtige opdracht en het toegevoegde voor deel van het gebruik van de transactie logboek ruimte is efficiënt. 
 > 
 > 
 
-## <a name="dropping-temporary-tables"></a>Tijdelijke tabellen laten vallen
-Wanneer een nieuwe sessie wordt gemaakt, mogen er geen tijdelijke tabellen bestaan.  
+## <a name="dropping-temporary-tables"></a>Tijdelijke tabellen verwijderen
+Wanneer er een nieuwe sessie wordt gemaakt, moeten er geen tijdelijke tabellen aanwezig zijn.  
 
-Als u dezelfde opgeslagen procedure aanroept, die een tijdelijke met dezelfde `CREATE TABLE` naam maakt, om ervoor te `DROP` zorgen dat uw verklaringen succesvol zijn, kan een eenvoudige pre-existente-controle met een worden gebruikt zoals in het volgende voorbeeld:
+Als u dezelfde opgeslagen procedure aanroept, waardoor er een tijdelijke met dezelfde naam ontstaat, om ervoor te zorgen `CREATE TABLE` dat uw instructies slagen, kan een eenvoudige controle van het vooraf `DROP` bestaan met een worden gebruikt, zoals in het volgende voor beeld:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -114,18 +114,18 @@ BEGIN
 END
 ```
 
-Voor coderingsconsistentie is het een goede gewoonte om dit patroon te gebruiken voor zowel tabellen als tijdelijke tabellen.  Het is ook een goed `DROP TABLE` idee om tijdelijke tabellen te verwijderen wanneer u klaar bent met deze tabellen in uw code.  
+Voor het coderen van consistentie is het een goed idee om dit patroon te gebruiken voor zowel tabellen als tijdelijke tabellen.  Het is ook een goed idee om tijdelijke `DROP TABLE` tabellen te verwijderen wanneer u ze in uw code hebt voltooid.  
 
-Bij de ontwikkeling van opgeslagen procedures is het gebruikelijk om de dropopdrachten samen te zien aan het einde van een procedure om ervoor te zorgen dat deze objecten worden opgeschoond.
+Bij het ontwikkelen van opgeslagen procedures is het gebruikelijk om de door u gebundelde opdrachten aan het einde van een procedure te bekijken om ervoor te zorgen dat deze objecten worden opgeruimd.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>Modulariseringscode
-Aangezien tijdelijke tabellen overal in een gebruikerssessie kunnen worden gezien, kan deze mogelijkheid worden benut om u te helpen uw toepassingscode te modulariseren.  
+## <a name="modularizing-code"></a>Modularizing-code
+Omdat tijdelijke tabellen overal in een gebruikers sessie kunnen worden weer gegeven, kan deze functie worden gebruikt om u te helpen bij het modularize van uw toepassings code.  
 
-De volgende opgeslagen procedure genereert bijvoorbeeld DDL om alle statistieken in de database bij te werken op statistische naam:
+Met de volgende opgeslagen procedure wordt bijvoorbeeld DDL gegenereerd om alle statistieken in de-data base bij te werken met een statistische naam:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -199,13 +199,13 @@ FROM    t1
 GO
 ```
 
-In dit stadium is de enige actie die heeft plaatsgevonden het maken van een opgeslagen procedure die een tijdelijke tabel genereert, #stats_ddl, met DDL-instructies.  
+In deze fase is de enige actie die is opgetreden, het maken van een opgeslagen procedure waarmee een tijdelijke tabel, #stats_ddl, met DDL-instructies wordt gegenereerd.  
 
-Met deze opgeslagen procedure wordt een bestaand #stats_ddl om ervoor te zorgen dat deze niet mislukken als deze meer dan één keer binnen een sessie wordt uitgevoerd.  
+Met deze opgeslagen procedure wordt een bestaande #stats_ddl verbroken om ervoor te zorgen dat deze niet meer dan één keer in een sessie wordt uitgevoerd.  
 
-Aangezien er echter `DROP TABLE` geen aan het einde van de opgeslagen procedure is, verlaat de opgeslagen procedure, wanneer de opgeslagen procedure is voltooid, zodat deze buiten de opgeslagen procedure kan worden gelezen.  
+Omdat er zich echter geen `DROP TABLE` aan het einde van de opgeslagen procedure bevindt en de opgeslagen procedure is voltooid, blijft de tabel gemaakt, zodat deze buiten de opgeslagen procedure kan worden gelezen.  
 
-In SQL-groep is het, in tegenstelling tot andere SQL Server-databases, mogelijk om de tijdelijke tabel te gebruiken buiten de procedure die deze heeft gemaakt.  Sql pool tijdelijke tabellen kunnen **overal** in de sessie worden gebruikt. Deze functie kan leiden tot meer modulaire en beheersbare code zoals in het volgende voorbeeld:
+In SQL-groep, in tegens telling tot andere SQL Server-data bases, is het mogelijk om de tijdelijke tabel te gebruiken buiten de procedure waarmee deze is gemaakt.  Tijdelijke tabellen van SQL-groep kunnen **overal** in de sessie worden gebruikt. Deze functie kan leiden tot meer modulaire en beheersbaarere code, zoals in het volgende voor beeld:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -226,12 +226,12 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-## <a name="temporary-table-limitations"></a>Tijdelijke tabelbeperkingen
-SQL-pool legt wel een paar beperkingen op bij het implementeren van tijdelijke tabellen.  Momenteel worden alleen tijdelijke sessies met sessiescoped ondersteund.  Globale tijdelijke tabellen worden niet ondersteund.  
+## <a name="temporary-table-limitations"></a>Tijdelijke tabel beperkingen
+De SQL-groep kent een aantal beperkingen bij het implementeren van tijdelijke tabellen.  Momenteel worden alleen tijdelijke tabellen met sessie bereik ondersteund.  Globale tijdelijke tabellen worden niet ondersteund.  
 
-Ook kunnen weergaven niet worden gemaakt op tijdelijke tabellen.  Tijdelijke tabellen kunnen alleen worden gemaakt met hash of round robin distributie.  Gerepliceerde tijdelijke tabeldistributie wordt niet ondersteund. 
+Ook kunnen geen weer gaven worden gemaakt voor tijdelijke tabellen.  Tijdelijke tabellen kunnen alleen worden gemaakt met hash-of round robin distributie.  De replicatie van de tijdelijke tabel wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de tabellen ontwerpen voor meer informatie over het ontwikkelen van tabellen in het artikel [SQL Analytics resources.](sql-data-warehouse-tables-overview.md)
+Zie de [tabellen ontwerpen met behulp van het artikel SQL Analytics-resources](sql-data-warehouse-tables-overview.md) voor meer informatie over het ontwikkelen van tabellen.
 

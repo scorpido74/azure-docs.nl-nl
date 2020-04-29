@@ -1,6 +1,6 @@
 ---
-title: Fouten bij het maken van groepen oplossen met Azure HDInsight
-description: Meer informatie over het oplossen van problemen met het maken van Apache-clustercreatie voor Azure HDInsight.
+title: Problemen met het maken van clusters oplossen met Azure HDInsight
+description: Meer informatie over het oplossen van problemen met het maken van Apache-clusters voor Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,80 +9,80 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
 ms.openlocfilehash: 3af7515995a305f41fb9b9f85deb9107de51c622
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453486"
 ---
-# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fouten bij het maken van groepen oplossen met Azure HDInsight
+# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Problemen met het maken van clusters oplossen met Azure HDInsight
 
-De volgende problemen zijn de meest voorkomende oorzaken voor fouten bij het maken van clusteren:
+De volgende problemen zijn de meest voorkomende oorzaken voor het maken van een cluster:
 
-- Machtigingsproblemen
-- Beperkingen voor resourcebeleid
+- Machtigings problemen
+- Beperkingen voor het resource beleid
 - Firewalls
 - Resourcevergrendelingen
-- Niet-ondersteunde componentversies
-- Beperkingen voor naam van het opslagaccount
-- Serviceonderbrekingen
+- Niet-ondersteunde onderdeel versies
+- Naam beperkingen van opslag account
+- Service storingen
 
 ## <a name="permissions-issues"></a>Problemen met machtigingen
 
-Als u Azure Data Lake Storage Gen2 `AmbariClusterCreationFailedErrorCode`gebruikt:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::en de fout ontvangt: " "open de Azure-portal, ga naar uw opslagaccount en onder Toegangsbeheer (IAM), controleert u of de **opslagblobgegevensbijdrager** of de rol **Storage Blob Data Owner** toegang heeft toegewezen aan de door de gebruiker toegewezen **beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
+Als u Azure data Lake Storage Gen2 gebruikt en het volgende fout `AmbariClusterCreationFailedErrorCode`bericht wordt weer gegeven:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::: "", opent u de Azure Portal, gaat u naar uw opslag account en klikt u onder Access Control (IAM), zorgt u ervoor dat de rol **BLOB data contributor** van de opslag of de eigenaar van de blob van de **opslag** toegang heeft toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
 
-Als u Azure Data Lake Storage Gen1 gebruikt, raadpleegt u [hier](../hdinsight-hadoop-use-data-lake-store.md)installatie- en configuratie-instructies. Data Lake Storage Gen1 wordt niet ondersteund voor HBase-clusters en wordt niet ondersteund in HDInsight-versie 4.0.
+Als u Azure Data Lake Storage Gen1 gebruikt, raadpleegt u de installatie-en configuratie-instructies [hier](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 wordt niet ondersteund voor HBase-clusters en wordt niet ondersteund in HDInsight-versie 4,0.
 
-Als u Azure Storage gebruikt, moet u ervoor zorgen dat de naam van het opslagaccount geldig is tijdens het maken van het cluster.
+Als Azure Storage wordt gebruikt, moet u ervoor zorgen dat de naam van het opslag account geldig is tijdens het maken van het cluster.
 
-## <a name="resource-policy-restrictions"></a>Beperkingen voor resourcebeleid
+## <a name="resource-policy-restrictions"></a>Beperkingen voor het resource beleid
 
-Azure-beleid op basis van abonnementen kan het maken van openbare IP-adressen weigeren. Voor het maken van een HDInsight-cluster zijn twee openbare IP-adressen vereist.  
+Met Azure-beleid op basis van een abonnement kan het maken van open bare IP-adressen niet worden geweigerd. Voor het maken van een HDInsight-cluster zijn twee openbare IP-adressen vereist.  
 
-In het algemeen kan het volgende beleid van invloed zijn op het maken van clusteren:
+In het algemeen kunnen de volgende beleids regels van invloed zijn op het maken van een cluster:
 
-* Beleid dat het maken van IP-adres & Load balancers binnen het abonnement verhindert.
-* Beleid dat het aanmaken van een opslagaccount verhindert.
-* Beleid dat verwijdering van netwerkbronnen voorkomt (IP-adres /Load Balancers).
+* Het maken van IP-adressen & load balancers binnen het abonnement wordt verhinderd door beleid.
+* Het maken van het opslag account wordt voor komen.
+* Het verwijderen van netwerk bronnen (IP-adres/load balancers) wordt voor komen.
 
 ## <a name="firewalls"></a>Firewalls
 
-Firewalls op uw virtuele netwerk- of opslagaccount kunnen de communicatie met HDInsight-beheer-IP-adressen weigeren.
+Firewalls in uw virtuele netwerk of opslag account kunnen communicatie met IP-adressen van HDInsight-beheer weigeren.
 
-Verkeer toestaan vanaf de IP-adressen in de onderstaande tabel.
+Verkeer toestaan van de IP-adressen in de onderstaande tabel.
 
 | IP-adres van bron | Doel | Richting |
 |---|---|---|
-| 168.61.49.99 | *:443 | Inkomend |
-| 23.99.5.239 | *:443 | Inkomend |
-| 168.61.48.131 | *:443 | Inkomend |
-| 138.91.141.162 | *:443 | Inkomend |
+| 168.61.49.99 | *: 443 | Inkomend |
+| 23.99.5.239 | *: 443 | Inkomend |
+| 168.61.48.131 | *: 443 | Inkomend |
+| 138.91.141.162 | *: 443 | Inkomend |
 
-Voeg ook de IP-adressen toe die specifiek zijn voor het gebied waar het cluster wordt gemaakt. Zie [IP-adressen van HDInsight-beheer](../hdinsight-management-ip-addresses.md) voor een lijst met de adressen voor elke Azure-regio.
+Voeg ook de IP-adressen toe die specifiek zijn voor de regio waarin het cluster is gemaakt. Zie [IP-adressen van HDInsight-beheer](../hdinsight-management-ip-addresses.md) voor een lijst van de adressen voor elke Azure-regio.
 
-Als u een expresroute of uw eigen aangepaste DNS-server gebruikt, [raadpleegt u Een virtueel netwerk plannen voor Azure HDInsight - meerdere netwerken verbinden](../hdinsight-plan-virtual-network-deployment.md#multinet).
+Zie [een virtueel netwerk plannen voor Azure HDInsight-verbinding maken met meerdere netwerken](../hdinsight-plan-virtual-network-deployment.md#multinet)als u een snelle route of uw eigen aangepaste DNS-server gebruikt.
 
-## <a name="resources-locks"></a>Resources-vergrendelingen  
+## <a name="resources-locks"></a>Resources vergren delen  
 
-Zorg ervoor dat er geen vergrendelingen zijn [op uw virtuele netwerk- en resourcegroep.](../../azure-resource-manager/management/lock-resources.md) Clusters kunnen niet worden gemaakt of verwijderd als de brongroep is vergrendeld. 
+Zorg ervoor dat [het virtuele netwerk en de resource groep geen vergren delingen](../../azure-resource-manager/management/lock-resources.md)hebben. Clusters kunnen niet worden gemaakt of verwijderd als de resource groep is vergrendeld. 
 
-## <a name="unsupported-component-versions"></a>Niet-ondersteunde componentversies
+## <a name="unsupported-component-versions"></a>Niet-ondersteunde onderdeel versies
 
-Zorg ervoor dat u een [ondersteunde versie van Azure HDInsight](../hdinsight-component-versioning.md) en eventuele Apache [Hadoop-componenten](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) in uw oplossing gebruikt.  
+Zorg ervoor dat u een [ondersteunde versie van Azure HDInsight](../hdinsight-component-versioning.md) gebruikt en alle [Apache Hadoop onderdelen](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) in uw oplossing.  
 
-## <a name="storage-account-name-restrictions"></a>Beperkingen voor naam van het opslagaccount
+## <a name="storage-account-name-restrictions"></a>Naam beperkingen van opslag account
 
-De namen van opslagaccounten mogen niet meer dan 24 tekens bevatten en mogen geen speciaal teken bevatten. Deze beperkingen zijn ook van toepassing op de standaardnaam voor containers in het opslagaccount.
+Namen van opslag accounts mogen niet langer zijn dan 24 tekens en mogen geen speciaal teken bevatten. Deze beperkingen zijn ook van toepassing op de standaardnaam voor containers in het opslagaccount.
 
-Andere naamgevingsbeperkingen zijn ook van toepassing op het maken van clusteren. Zie [Clusternaambeperkingen](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)voor meer informatie.
+Andere naamgevings beperkingen zijn ook van toepassing op het maken van een cluster. Zie [beperkingen voor cluster namen](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)voor meer informatie.
 
-## <a name="service-outages"></a>Serviceonderbrekingen
+## <a name="service-outages"></a>Service storingen
 
-Controleer [de Azure-status](https://status.azure.com) op mogelijke uitval of serviceproblemen.
+Controleer de [Azure-status](https://status.azure.com) op mogelijke storingen of Service problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure HDInsight uitbreiden met een Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
+* [Azure HDInsight uitbreiden met behulp van een Azure-Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
 * [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Azure-opslag gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-blob-storage.md)
 * [Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer](../hdinsight-hadoop-provision-linux-clusters.md)

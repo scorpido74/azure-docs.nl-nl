@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 865cfc6daa7568236b0306ba591b42a9f7704dd4
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101175"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Back-up maken van Azure Files met Power shell

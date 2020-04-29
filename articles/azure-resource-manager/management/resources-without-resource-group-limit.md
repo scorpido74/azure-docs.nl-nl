@@ -1,125 +1,125 @@
 ---
-title: Resources zonder limiet voor 800 tellingen
-description: Hiermee worden de Azure-brontypen weergegeven die meer dan 800 exemplaren in een resourcegroep kunnen bevatten.
+title: Aantal resources zonder limiet van 800
+description: Geeft een lijst van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804772"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet zijn beperkt tot 800 exemplaren per resourcegroep
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
-Standaard u in elke resourcegroep maximaal 800 exemplaren van een resourcetype implementeren. Sommige resourcetypen zijn echter vrijgesteld van de 800-instantielimiet. In dit artikel worden de Azure-brontypen weergegeven die meer dan 800 exemplaren in een resourcegroep kunnen bevatten. Alle andere resources typen zijn beperkt tot 800 exemplaren.
+Standaard kunt u Maxi maal 800 exemplaren van een resource type implementeren in elke resource groep. Sommige resource typen zijn echter uitgezonderd van de limiet van 800-exemplaren. In dit artikel vindt u een overzicht van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten. Alle andere typen resources zijn beperkt tot 800 exemplaren.
 
-Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-instantielimiet te laten verwijderen. Deze resourcetypen worden in dit artikel vermeld.
+Voor sommige resource typen moet u contact opnemen met ondersteuning om de limiet van 800-exemplaren te verwijderen. Deze resource typen worden in dit artikel vermeld.
 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
-* automatiseringAccounts
+* automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Micro soft. AzureStack
 
-* Registraties
-* registraties/klantAbonnementen
+* registraties
+* registraties/customerSubscriptions
 * registraties/producten
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftbotservice"></a>Micro soft. BotService
 
-* botServices - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
+* botServices: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* Schijven
-* Galeries
-* galerijen/afbeeldingen
-* galerijen/afbeeldingen/versies
+* cd's
+* Galerij
+* galerieën/afbeeldingen
+* galerieën/afbeeldingen/versies
 * images
 * momentopnamen
-* virtueleMachines
+* Informatie
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
 
-* containerGroepen
+* containerGroups
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
-* registers/buildTaken
-* registers/buildTaken/listSourceRepositoryProperties
-* registers/buildTaken/stappen
-* registers/buildTaken/steps/listBuildArguments
+* registers/buildTasks
+* registers/buildTasks/listSourceRepositoryProperties
+* registers/buildTasks/stappen
+* registers/buildTasks/stappen/listBuildArguments
 * registers/eventGridFilters
 * registers/replicaties
 * registers/taken
 * registers/webhooks
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Micro soft. DBforMariaDB
 
-* Servers
+* Server
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Micro soft. DBforMySQL
 
-* Servers
+* Server
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Micro soft. DBforPostgreSQL
 
-* serverGroepen
-* Servers
+* serverGroups
+* Server
 * serversv2
 * singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* schema's - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
+* planningen: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Micro soft. EnterpriseKnowledgeGraph
 
 * services
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
-* Clusters
-* Naamruimten
+* clusters
+* naam ruimten
 
-## <a name="microsoftexperimentation"></a>Microsoft.Experimenteren
+## <a name="microsoftexperimentation"></a>Micro soft. experimenten
 
-* experimentWerkruimten
+* experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
 
 * autoManagedVmConfigurationProfiles
-* configuratieProfielToewijzingen
-* gastConfiguratieToewijzingen
-* Software
-* softwareUpdateProfiel
+* configurationProfileAssignments
+* guestConfigurationAssignments
+* software
+* softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftinsights"></a>microsoft.insights
+## <a name="microsoftinsights"></a>micro soft. Insights
 
-* metrische waarschuwingen
+* metricalerts
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
-* integratieAccounts
-* Werkstromen
+* integrationAccounts
+* stroom
 
-## <a name="microsoftnetapp"></a>Microsoft.NetApp
+## <a name="microsoftnetapp"></a>Micro soft. NetApp
 
 * netAppAccounts
-* netAppAccounts/capaciteitspools
-* netAppAccounts/capaciteitspools/volumes
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
-* netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/capacityPools/volumes/moment opnamen
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
-* applicationGatewayWebApplicationFirewallBeleid
+* applicationGatewayWebApplicationFirewallPolicies
 * applicationSecurityGroups
 * bastionHosts
-* ddosProtectionPlans ddosProtectionPlans
+* ddosProtectionPlans
 * dnszones
 * dnszones/A
 * dnszones/AAAA
@@ -132,9 +132,9 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 * dnszones/SRV
 * dnszones/TXT
 * dnszones/alle
-* dnszones/recordsets
-* netwerkIntentPolicies
-* netwerkInterfaces
+* dnszones/record sets
+* networkIntentPolicies
+* networkInterfaces
 * privateDnsZones
 * privateDnsZones/A
 * privateDnsZones/AAAA
@@ -146,45 +146,45 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 * privateDnsZones/TXT
 * privateDnsZones/alle
 * privateDnsZones/virtualNetworkLinks
-* privéeindpunten
+* privateEndpoints
 * privateLinkServices
-* publicIPAddresses - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
-* serviceEndpointBeleid
-* trafficmanagerprofielen
+* publicIPAddresses: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
+* serviceEndpointPolicies
+* trafficmanagerprofiles
 * virtualNetworkTaps
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk Microsoft.PortalSdk
+## <a name="microsoftportalsdk"></a>Micro soft. PortalSdk
 
 * rootResources
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
+## <a name="microsoftpowerbi"></a>Micro soft. PowerBI
 
-* werkruimtecollecties - Standaard beperkt tot 800 exemplaren. Die limiet kan worden verhoogd door contact op te nemen met ondersteuning.
+* workspaceCollections: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* Naamruimten
+* naam ruimten
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-* jobcollecties
+* jobcollections
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* Naamruimten
+* naam ruimten
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Micro soft. ServiceFabricMesh
 
 * toepassingen
-* containerGroepen
-* Gateways
-* Netwerken
+* containerGroups
+* gateways
+* netwerken
 * geheimen
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* storageAccounts
+* Storage accounts
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -193,4 +193,4 @@ Voor sommige resourcetypen moet u contact opnemen met ondersteuning om de 800-in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure-abonnements- en servicelimieten, quota en beperkingen](azure-subscription-service-limits.md)voor een volledige lijst met quota en limieten.
+Zie [Azure-abonnement en service limieten, quota's en beperkingen](azure-subscription-service-limits.md)voor een volledige lijst met quota's en limieten.

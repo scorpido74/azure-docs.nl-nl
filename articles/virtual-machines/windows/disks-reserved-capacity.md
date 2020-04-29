@@ -1,6 +1,6 @@
 ---
-title: Kosten optimaliseren voor Azure Disk Storage met reserveringen
-description: Meer informatie over het aanschaffen van Azure Disk Storage-reserveringen om kosten te besparen op premium SSD-beheerde schijven.
+title: Kosten optimaliseren voor Azure Disk Storage met reserve ringen
+description: Meer informatie over het aanschaffen van Azure Disk Storage reserveringen om kosten te besparen op Premium SSD Managed disks.
 author: roygara
 ms.author: rogarana
 ms.date: 01/30/2020
@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 18d10dfa1f45f9f2a669e35d13f94dfbeabd3cee
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085514"
 ---
-# <a name="reduce-costs-with-azure-disks-reservation"></a>Kosten verlagen met Azure Disks-reservering
+# <a name="reduce-costs-with-azure-disks-reservation"></a>Kosten verlagen met Azure Disk reservation
 [!INCLUDE [disk-reserved-capacity-shared](../../../includes/disk-reserved-capacity-shared.md)]

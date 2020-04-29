@@ -1,6 +1,6 @@
 ---
-title: Go-To-Market Services - Hoe kom je op marktplaats te staan | Azure Marketplace
-description: Go-To-Market Services - In deze sectie wordt beschreven hoe u een vermelding in Azure Marketplace krijgen
+title: 'Go-to-Market-Services: aanbevolen in Marketplace | Azure Marketplace'
+description: Go-to-Market-Services-in deze sectie wordt beschreven hoe u een aanbieding kunt ophalen in azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
 ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684602"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Aanbevolen worden in AppSource en Azure Marketplace
+# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>De aanbevolen procedure voor het gebruik van AppSource en Azure Marketplace
 
-Azure Marketplace en AppSource hebben **aanbevolen apps** secties, waar u uw app featured:
+Azure Marketplace en AppSource hebben secties met **Aanbevolen apps** , waar u uw app kunt weer geven:
 
-* Ten eerste, als u een proef- of transactieaanbieding hebt, u uw voordeel voor categoriepromotie gebruiken via [commerciële marktplaatsvoordelen.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)
-* Ten tweede, bekijk de lijst van best practices en criteria hieronder om een plek te verdienen.
+* Als u een proef-of transactie aanbieding hebt, kunt u het voor deel van uw categorie promotie gebruiken via [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
+* Bekijk vervolgens de lijst met aanbevolen procedures en criteria hieronder om een spot te verdienen.
 
-Het classificatie-algoritme voor het selecteren van apps genereert een score voor een app van Microsoft, net als de kredietscore van een persoon in de VS.  De wekelijkse selectie van aanbevolen apps wordt gebaseerd op een berekening van de app- en serviceprestaties.
+Het selectie algoritme aanbevolen apps genereert een score voor een app van micro soft, net als bij de krediet score van een persoon in de Verenigde Staten.  De wekelijkse selectie van aanbevolen apps wordt gebaseerd op een berekening van de prestaties van apps en services.
 
-## <a name="steps-to-take"></a>Stappen te nemen
+## <a name="steps-to-take"></a>Te ondernemen stappen
 
-Je de volgende actie-items uitvoeren om je score te verbeteren:
+U kunt de volgende actie punten ondernemen om uw score te verbeteren:
 
-1. *Zorg ervoor dat uw app of service op de juiste manier is gecategoriseerd:* kies drie categorieën die de mogelijkheden van uw app of service vertegenwoordigen.
-2. *Azure Marketplace-apps: uw Azure-verbruik op maandbasis laten groeien.* Als u in staat bent om 1.000 uur Azure-gebruik per maand te bereiken, verhoogt u uw kansen om te worden uitgelicht.
-3. *AppSource Apps: verhoog de acquisities die op uw aanbod komen.* Als u in staat bent om 10 acquisities per maand te bereiken, zult u sterk verhogen uw kansen om te worden gekenmerkt. 
-4. *Behaal co-sell-ready status:* voltooi de vereisten voor co-sell ready.
-5. *De kwaliteit van uw aanbieding verbeteren:* zie richtlijnen voor [inhoudsvermeldingen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) voor informatie over het wijzigen van uw aanbieding
-6. Meerdere aanbiedingen publiceren op Marketplace: worden al uw belangrijkste apps en services weergegeven? Heb je een proefervaring?
-7. Moedig uw klanten aan om beoordelingen te schrijven.
+1. *Zorg ervoor dat uw app of service op de juiste wijze is gecategoriseerd*: Kies drie categorieën die de mogelijkheden van uw app of service vertegenwoordigen.
+2. *Azure Marketplace-apps: verg root uw Azure-verbruik per maand.* Als u gedurende 1.000 uur aan Azure-gebruik per maand kunt profiteren, verhoogt u de kans dat deze wordt aanbevolen.
+3. *AppSource-apps: Verhoog de aanschaf van uw aanbieding.* Als u 10 verwervingen per maand kunt bezorgen, verhoogt u de kans dat deze wordt aanbevolen. 
+4. Behaal de status van de *kant-en-klare mede koop*: Voltooi de vereisten voor het samen verkopen van het bedrijf.
+5. *Verbeter de kwaliteit van uw aanbieding*: Zie [richt lijnen voor inhouds vermelding](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) voor informatie over het wijzigen van uw aanbieding
+6. Meerdere aanbiedingen publiceren in Marketplace: zijn al uw kern-apps en-services opgenomen? Hebt u een proef ervaring?
+7. Stimuleer uw klanten om beoordelingen te schrijven.
 
-Aanbevolen apps-promoties werken afzonderlijk van het zoekalgoritme.
+Aanbiedingen met aanbevolen apps worden afzonderlijk van het zoek algoritme gebruikt.
 
 >[!Note]
->Als uw oplossing niet correct wordt weergegeven in de zoekresultaten, dient u een ondersteuningsticket in via het Help-menu in [partnercentrum.](https://partner.microsoft.com/)
+>Als uw oplossing niet correct wordt weer gegeven in de zoek resultaten, kunt u een ondersteunings ticket indienen via het menu Help in [partner centrum](https://partner.microsoft.com/).
 
-Uw GTM-ondersteuning bevat ook een volledige bibliotheek met zelfhulpsjablonen, webinhoud, training en hulpmiddelen om u te helpen uw aanbiedingen en uw bedrijf verder te promoten.
+Uw GTM-ondersteuning omvat ook een volledige bibliotheek met zelfhulp sjablonen, webinhoud, training en hulpprogram ma's waarmee u uw aanbiedingen en uw bedrijf verder kunt promoten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over uw [commerciële marktplaatsvoordelen.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)
+Meer informatie over de [voor delen van uw commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
 Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.
 

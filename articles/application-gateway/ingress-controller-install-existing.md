@@ -1,6 +1,6 @@
 ---
-title: Een ingress-controller maken met een bestaande toepassingsgateway
-description: In dit artikel vindt u informatie over het implementeren van een Application Gateway Ingress Controller met een bestaande Application Gateway.
+title: Een ingangs controller maken met een bestaande Application Gateway
+description: Dit artikel bevat informatie over het implementeren van een Application Gateway ingangs controller met een bestaande Application Gateway.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,43 +8,43 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869900"
 ---
-# <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Een Application Gateway Ingress Controller (AGIC) installeren met behulp van een bestaande Application Gateway
+# <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een bestaande Application Gateway
 
-De Application Gateway Ingress Controller (AGIC) is een pod binnen uw Kubernetes-cluster.
-AGIC bewaakt de Kubernetes [Ingress-bronnen](https://kubernetes.io/docs/concepts/services-networking/ingress/) en maakt en past Application Gateway config toe op basis van de status van het Kubernetes-cluster.
+De Application Gateway ingangs controller (AGIC) is een pod in uw Kubernetes-cluster.
+Met AGIC worden de [Kubernetes-](https://kubernetes.io/docs/concepts/services-networking/ingress/) bronnen bewaakt en worden Application Gateway config gemaakt en toegepast op basis van de status van het Kubernetes-cluster.
 
-## <a name="outline"></a>Overzicht:
+## <a name="outline"></a>Overzichtscode4
 - [Vereisten](#prerequisites)
 - [Azure Resource Manager-verificatie (ARM)](#azure-resource-manager-authentication)
-    - Optie 1: [Aad-pod-identity instellen](#set-up-aad-pod-identity) en Azure Identity maken op ARMs
-    - Optie 2: [Een serviceprincipal gebruiken](#using-a-service-principal)
-- [Ingress Controller installeren met Helm](#install-ingress-controller-as-a-helm-chart)
-- [Multi-cluster / Shared Application Gateway](#multi-cluster--shared-application-gateway): Installeer AGIC in een omgeving, waar Application Gateway wordt gedeeld tussen een of meer AKS-clusters en/of andere Azure-componenten.
+    - Optie 1: [Aad-pod instellen](#set-up-aad-pod-identity) en Azure-identiteit maken op wapen
+    - Optie 2: [een Service-Principal gebruiken](#using-a-service-principal)
+- [De ingangs controller installeren met behulp van helm](#install-ingress-controller-as-a-helm-chart)
+- [Multi-cluster/gedeelde Application Gateway](#multi-cluster--shared-application-gateway): Installeer AGIC in een omgeving, waarbij Application Gateway wordt gedeeld tussen een of meer AKS-clusters en/of andere Azure-onderdelen.
 
 ## <a name="prerequisites"></a>Vereisten
-In dit document wordt ervan uitgegaan dat u al de volgende hulpprogramma's en infrastructuur hebt geïnstalleerd:
+In dit document wordt ervan uitgegaan dat u de volgende hulpprogram ma's en infra structuur al hebt geïnstalleerd:
 - [AKS](https://azure.microsoft.com/services/kubernetes-service/) met [geavanceerde netwerken](https://docs.microsoft.com/azure/aks/configure-azure-cni) ingeschakeld
 - [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) in hetzelfde virtuele netwerk als AKS
-- [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) geïnstalleerd op uw AKS-cluster
-- [Cloud Shell](https://shell.azure.com/) is de Azure `az` shell-omgeving, die CLI heeft en `kubectl` `helm` geïnstalleerd. Deze tools zijn vereist voor de onderstaande opdrachten.
+- De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is geïnstalleerd op uw AKS-cluster
+- [Cloud shell](https://shell.azure.com/) is de Azure shell-omgeving, die `az` CLI, `kubectl`en `helm` geïnstalleerd heeft. Deze hulpprogram ma's zijn vereist voor de onderstaande opdrachten.
 
-Maak __een back-up van de configuratie van uw Application Gateway__ voordat u AGIC installeert:
-  1. [Azure-portal](https://portal.azure.com/) gebruiken `Application Gateway` om naar uw exemplaar te navigeren
-  2. van `Export template` klik`Download`
+Maak __een back-up van de configuratie van uw Application Gateway voordat u__ AGIC installeert:
+  1. [Azure Portal](https://portal.azure.com/) naar uw `Application Gateway` exemplaar navigeren
+  2. van `Export template` klikken`Download`
 
-Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash- en PowerShell-scripts die u gebruiken om App Gateway te herstellen als dat nodig is
+Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash-en Power shell-scripts die u kunt gebruiken om app-gateway te herstellen, die nodig is
 
 ## <a name="install-helm"></a>Helm installeren
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) is package manager voor Kubernetes. We zullen het gebruiken `application-gateway-kubernetes-ingress` om het pakket te installeren.
-Gebruik [Cloud Shell](https://shell.azure.com/) om Helm te installeren:
+[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) is een pakket beheerder voor Kubernetes. We gebruiken dit om het `application-gateway-kubernetes-ingress` pakket te installeren.
+Gebruik [Cloud shell](https://shell.azure.com/) om helm te installeren:
 
-1. Installeer [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) en voer `application-gateway-kubernetes-ingress` het volgende uit om het helmpakket toe te voegen:
+1. Installeer [helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) en voer het volgende uit om `application-gateway-kubernetes-ingress` het helm-pakket toe te voegen:
 
     - *RBAC ingeschakeld* AKS-cluster
 
@@ -54,13 +54,13 @@ Gebruik [Cloud Shell](https://shell.azure.com/) om Helm te installeren:
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - *RBAC uitgeschakeld* AKS-cluster
+    - *RBAC is uitgeschakeld* AKS-cluster
 
     ```bash
     helm init
     ```
 
-1. Voeg de AGIC Helm repository toe:
+1. Voeg de AGIC helm-opslag plaats toe:
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
@@ -68,32 +68,32 @@ Gebruik [Cloud Shell](https://shell.azure.com/) om Helm te installeren:
 
 ## <a name="azure-resource-manager-authentication"></a>Azure Resource Manager-verificatie
 
-AGIC communiceert met de Kubernetes API-server en de Azure Resource Manager. Het vereist een identiteit om toegang te krijgen tot deze API's.
+AGIC communiceert met de Kubernetes-API-server en de Azure Resource Manager. Hiervoor is een identiteit vereist voor toegang tot deze Api's.
 
-## <a name="set-up-aad-pod-identity"></a>AAD Pod-identiteit instellen
+## <a name="set-up-aad-pod-identity"></a>AAD pod-identiteit instellen
 
-[AAD Pod Identity](https://github.com/Azure/aad-pod-identity) is een controller, vergelijkbaar met AGIC, die ook op uw AKS draait. Het bindt Azure Active Directory-identiteiten aan uw Kubernetes-pods. Identiteit is vereist voor een toepassing in een Kubernetes-pod om te kunnen communiceren met andere Azure-componenten. In het specifieke geval hier, hebben we toestemming nodig voor de AGIC pod om HTTP-verzoeken te maken aan [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+De [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) is een controller, VERGELIJKBAAR met AGIC, die ook wordt uitgevoerd op uw AKS. Azure Active Directory-identiteiten worden aan uw Kubernetes-peul gebonden. De identiteit van een toepassing in een Kubernetes-Pod is vereist om te kunnen communiceren met andere Azure-onderdelen. In het specifieke geval hebt u autorisatie nodig voor de AGIC-pod om HTTP-aanvragen te kunnen maken voor [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
-Volg de [installatie-instructies](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) van AAD Pod Identity om dit onderdeel aan uw AKS toe te voegen.
+Volg de [installatie-instructies voor de Aad pod-identiteit](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) om dit onderdeel toe te voegen aan uw AKS.
 
-Vervolgens moeten we een Azure-identiteit maken en deze machtigingen GEVEN.
-Gebruik [Cloud Shell](https://shell.azure.com/) om alle volgende opdrachten uit te voeren en een identiteit te maken:
+Daarna moet u een Azure-identiteit maken en de IT-machtigingen ARM bieden.
+Gebruik [Cloud shell](https://shell.azure.com/) om alle van de volgende opdrachten uit te voeren en een identiteit te maken:
 
-1. Maak een Azure-identiteit **in dezelfde brongroep als de AKS-knooppunten**. Het kiezen van de juiste resourcegroep is belangrijk. De resourcegroep die vereist is in de onderstaande opdracht is *niet* de groep waarnaar wordt verwezen in het AKS-portaalvenster. Dit is de resourcegroep van de `aks-agentpool` virtuele machines. Meestal begint die resourcegroep met `MC_` en bevat de naam van uw AKS. Bijvoorbeeld:`MC_resourceGroup_aksABCD_westus`
+1. Maak een Azure-identiteit **in dezelfde resource groep als de AKS-knoop punten**. Het is belang rijk dat u de juiste resource groep kiest. De resource groep die is vereist in de onderstaande opdracht, is *niet* het account dat wordt verwezen in het deel venster AKS-Portal. Dit is de resource groep van de `aks-agentpool` virtuele machines. Normaal gesp roken begint de resource `MC_` groep met en bevat de naam van uw AKS. Bijvoorbeeld:`MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
-1. Voor de onderstaande opdrachtopdrachten voor `principalId` roltoewijzingdie we moeten verkrijgen voor de nieuw gemaakte identiteit:
+1. Voor de opdrachten voor roltoewijzingen die hieronder worden beschreven, `principalId` moeten we voor de zojuist gemaakte identiteit verkrijgen:
 
     ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Geef de `Contributor` identiteit toegang tot uw Application Gateway. Hiervoor heb je de ID van de Application Gateway nodig, die er ongeveer zo uitziet:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Geef de identiteit `Contributor` toegang tot uw Application Gateway. Hiervoor hebt u de ID van de Application Gateway nodig. deze ziet er ongeveer als volgt uit:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    Download de lijst met toepassingsgateway-------iD's in uw abonnement met:`az network application-gateway list --query '[].id'`
+    De lijst met Application Gateway-Id's in uw abonnement ophalen met:`az network application-gateway list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -102,7 +102,7 @@ Gebruik [Cloud Shell](https://shell.azure.com/) om alle volgende opdrachten uit 
         --scope <App-Gateway-ID>
     ```
 
-1. Geef de `Reader` identiteit toegang tot de brongroep Application Gateway. De resourcegroep-id ziet `/subscriptions/A/resourceGroups/B`eruit als: . U alle resourcegroepen krijgen met:`az group list --query '[].id'`
+1. Geef de identiteit `Reader` toegang tot de Application Gateway resource groep. De resource groep-ID ziet er als `/subscriptions/A/resourceGroups/B`volgt uit:. U kunt alle resource groepen ophalen met:`az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -111,37 +111,37 @@ Gebruik [Cloud Shell](https://shell.azure.com/) om alle volgende opdrachten uit 
         --scope <App-Gateway-Resource-Group-ID>
     ```
 
-## <a name="using-a-service-principal"></a>Een serviceprincipal gebruiken
-Het is ook mogelijk om AGIC toegang te bieden tot ARM via een Kubernetes geheim.
+## <a name="using-a-service-principal"></a>Een Service-Principal gebruiken
+Het is ook mogelijk om AGIC toegang tot ARM te bieden via een Kubernetes-geheim.
 
-1. Maak een Active Directory Service Principal en codeer met base64. De base64-codering is vereist om de JSON-blob op te slaan in Kubernetes.
+1. Een Active Directory Service-Principal maken en coderen met base64. De base64-code ring is vereist voor het opslaan van de JSON-Blob in Kubernetes.
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
-2. Voeg de gecodeerde JSON-blob van Base64 toe aan het `helm-config.yaml` bestand. Meer informatie `helm-config.yaml` over is in de volgende sectie.
+2. Voeg de met base64 gecodeerde JSON-BLOB `helm-config.yaml` toe aan het bestand. Meer informatie over `helm-config.yaml` vindt u in de volgende sectie.
 ```yaml
 armAuth:
     type: servicePrincipal
     secretJSON: <Base64-Encoded-Credentials>
 ```
 
-## <a name="install-ingress-controller-as-a-helm-chart"></a>Ingress Controller installeren als helmdiagram
-In de eerste stappen installeren we Helm's Tiller op je Kubernetes-cluster. Gebruik [Cloud Shell](https://shell.azure.com/) om het AGIC Helm-pakket te installeren:
+## <a name="install-ingress-controller-as-a-helm-chart"></a>De ingangs controller installeren als een helm-grafiek
+In de eerste paar stappen installeert helm de Tiller op uw Kubernetes-cluster. Gebruik [Cloud shell](https://shell.azure.com/) om het AGIC helm-pakket te installeren:
 
-1. Voeg `application-gateway-kubernetes-ingress` de helmrepo toe en voer een helmupdate uit
+1. De `application-gateway-kubernetes-ingress` helm-opslag plaats toevoegen en een helm-update uitvoeren
 
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
     ```
 
-1. Download helm-config.yaml, die AGIC zal configureren:
+1. Down load helm-config. yaml, waarmee AGIC wordt geconfigureerd:
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
-    Of kopieer het YAML-bestand hieronder: 
+    Of kopieer het onderstaande YAML-bestand: 
     
     ```yaml
     # This file contains the essential configs for the ingress controller helm chart
@@ -196,21 +196,21 @@ In de eerste stappen installeren we Helm's Tiller op je Kubernetes-cluster. Gebr
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Bewerk helm-config.yaml en vul `appgw` de `armAuth`waarden in voor en .
+1. Bewerk helm-config. yaml en vul de waarden voor `appgw` en `armAuth`in.
     ```bash
     nano helm-config.yaml
     ```
 
     > [!NOTE] 
-    > De `<identity-resource-id>` `<identity-client-id>` eigenschappen van de Azure AD-identiteit die u in de vorige sectie hebt ingesteld. U deze informatie ophalen door `az identity show -g <resourcegroup> -n <identity-name>`de `<resourcegroup>` volgende opdracht uit te voeren:, waar is de brongroep waarin het AKS-clusterobject op het hoogste niveau, Application Gateway en Managed Identify zijn geïmplementeerd.
+    > De `<identity-resource-id>` en `<identity-client-id>` zijn de eigenschappen van de Azure AD-identiteit die u in de vorige sectie hebt ingesteld. U kunt deze gegevens ophalen door de volgende opdracht uit te `az identity show -g <resourcegroup> -n <identity-name>`voeren: `<resourcegroup>` , waarbij de resource groep is waarin het cluster object op het hoogste niveau AKS, Application Gateway en beheerde identiteiten worden geïmplementeerd.
 
-1. Helmdiagram `application-gateway-kubernetes-ingress` installeren `helm-config.yaml` met de configuratie van de vorige stap
+1. Helm-grafiek `application-gateway-kubernetes-ingress` installeren met `helm-config.yaml` de configuratie uit de vorige stap
 
     ```bash
     helm install -f <helm-config.yaml> application-gateway-kubernetes-ingress/ingress-azure
     ```
 
-    U de `helm-config.yaml` opdracht en het roer in één stap combineren:
+    U kunt ook de `helm-config.yaml` en de opdracht helm combi neren in één stap:
     ```bash
     helm install ./helm/ingress-azure \
          --name ingress-azure \
@@ -228,29 +228,29 @@ In de eerste stappen installeren we Helm's Tiller op je Kubernetes-cluster. Gebr
          --set aksClusterConfiguration.apiServerAddress=aks-abcdefg.hcp.westus2.azmk8s.io
     ```
 
-1. Controleer het logboek van de nieuw gemaakte pod om te controleren of deze goed is gestart
+1. Controleer het logboek van de zojuist gemaakte pod om te controleren of deze correct is gestart
 
-Raadpleeg deze handleiding om te begrijpen hoe u een [AKS-service](ingress-controller-expose-service-over-http-https.md) via HTTP of HTTPS blootstellen aan het internet, met behulp van een Azure Application Gateway.
+Raadpleeg [deze hand leiding](ingress-controller-expose-service-over-http-https.md) voor informatie over hoe u een AKS-service via http of https kunt weer geven op internet met behulp van een Azure-toepassing gateway.
 
 
 
-## <a name="multi-cluster--shared-application-gateway"></a>Cluster - / gedeelde toepassingsgateway
-Standaard neemt AGIC de volledige eigendom van de Application Gateway aan. AGIC-versie 0.8.0 en hoger kan één toepassingsgateway delen met andere Azure-componenten. We kunnen bijvoorbeeld dezelfde Application Gateway gebruiken voor een app die wordt gehost op virtuele machineschaalset en een AKS-cluster.
+## <a name="multi-cluster--shared-application-gateway"></a>Multi-cluster/gedeelde Application Gateway
+Standaard AGIC neemt de volledige eigendom van het Application Gateway waaraan deze is gekoppeld. AGIC versie 0.8.0 en hoger kunnen één Application Gateway delen met andere Azure-onderdelen. We kunnen bijvoorbeeld hetzelfde Application Gateway gebruiken voor een app die wordt gehost op virtuele-machine schaal sets en een AKS-cluster.
 
-Maak __een back-up van de configuratie van de Toepassingsgateway__ voordat u deze instelling inschakelt:
-  1. [Azure-portal](https://portal.azure.com/) gebruiken `Application Gateway` om naar uw exemplaar te navigeren
-  2. van `Export template` klik`Download`
+Maak __een back-up van de configuratie van uw Application Gateway voordat u__ deze instelling inschakelt:
+  1. [Azure Portal](https://portal.azure.com/) naar uw `Application Gateway` exemplaar navigeren
+  2. van `Export template` klikken`Download`
 
-Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash- en PowerShell-scripts die u gebruiken om Application Gateway te herstellen
+Het zip-bestand dat u hebt gedownload, heeft JSON-sjablonen, bash-en Power shell-scripts die u kunt gebruiken om Application Gateway te herstellen
 
 ### <a name="example-scenario"></a>Voorbeeldscenario
-Laten we eens kijken naar een denkbeeldige Application Gateway, die verkeer voor twee websites beheert:
-  - `dev.contoso.com`- gehost op een nieuwe AKS, met behulp van Application Gateway en AGIC
-  - `prod.contoso.com`- gehost op een [Azure Virtual Machine Scale Set](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+Laten we eens kijken naar een imaginaire Application Gateway, waarmee het verkeer voor twee websites wordt beheerd:
+  - `dev.contoso.com`-gehost op een nieuwe AKS met behulp van Application Gateway en AGIC
+  - `prod.contoso.com`-gehost op een [virtuele-machine-schaalset van Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
-Met standaardinstellingen neemt AGIC 100% eigenaar van de Application Gateway waarnaar wordt gewezen. AGIC overschrijft alle configuratie van App Gateway. Als we handmatig een listener `prod.contoso.com` voor (op Application Gateway) zouden maken, zonder deze te `prod.contoso.com` definiëren in de Kubernetes Ingress, zal AGIC de config binnen enkele seconden verwijderen.
+Met de standaard instellingen van AGIC wordt ervan uitgegaan dat 100% eigenaar is van de Application Gateway deze wordt verwijzen. AGIC overschrijft alle configuratie van de app-gateway. Als u hand matig een listener moet maken voor `prod.contoso.com` (op Application Gateway) zonder deze te definiëren in de Kubernetes-inkomen, wordt de `prod.contoso.com` configuratie binnen enkele seconden door AGIC verwijderd.
 
-Om AGIC te `prod.contoso.com` installeren en ook te bedienen vanaf onze Virtual `dev.contoso.com` Machine Scale Set-machines, moeten we AGIC beperken tot alleen configureren. Dit wordt vergemakkelijkt door de volgende [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)te instantiën:
+Als u AGIC wilt installeren en `prod.contoso.com` ook van onze virtuele machine Scale set machines, moet u AGIC beperken voor `dev.contoso.com` het configureren van alleen. Dit wordt vergemakkelijkt door de volgende [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)te instantiëren:
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -263,12 +263,12 @@ spec:
 EOF
 ```
 
-Met de opdracht `AzureIngressProhibitedTarget` hierboven wordt een object gemaakt. Dit maakt AGIC (versie 0.8.0 en hoger) bewust van `prod.contoso.com` het bestaan van Application Gateway config voor en uitdrukkelijk instrueert het om te voorkomen dat een configuratie met betrekking tot die hostname.
+Met de bovenstaande opdracht maakt `AzureIngressProhibitedTarget` u een object. Dit maakt AGIC (versie 0.8.0 en hoger) op de hoogte van het bestaan van Application Gateway `prod.contoso.com` configuratie voor en geeft dit expliciet aan om te voor komen dat een configuratie met betrekking tot die hostnaam wordt gewijzigd.
 
 
-### <a name="enable-with-new-agic-installation"></a>Inschakelen met nieuwe AGIC-installatie
-Als u AGIC (versie 0.8.0 en hoger) wilt beperken `helm-config.yaml` tot een subset van de configuratie van de Application Gateway, wijzigt u de sjabloon.
-Voeg `appgw:` onder de `shared` sectie de toets `true`toe en stel deze in op .
+### <a name="enable-with-new-agic-installation"></a>Inschakelen met de nieuwe AGIC-installatie
+Als u AGIC (versie 0.8.0 en hoger) wilt beperken tot een subset van de Application Gateway configuratie `helm-config.yaml` , wijzigt u de sjabloon.
+Voeg onder `appgw:` de sectie sleutel `shared` toe en stel deze in op `true`aan.
 
 ```yaml
 appgw:
@@ -278,12 +278,12 @@ appgw:
     shared: true                        # <<<<< Add this field to enable shared Application Gateway >>>>>
 ```
 
-Pas de wijzigingen van het roer toe:
-  1. Zorg `AzureIngressProhibitedTarget` ervoor dat de CRD is geïnstalleerd met:
+De helm-wijzigingen Toep assen:
+  1. Zorg ervoor `AzureIngressProhibitedTarget` dat de CRD is geïnstalleerd met:
       ```bash
       kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/ae695ef9bd05c8b708cedf6ff545595d0b7022dc/crds/AzureIngressProhibitedTarget.yaml
       ```
-  2. Update Helm:
+  2. Helm bijwerken:
       ```bash
       helm upgrade \
           --recreate-pods \
@@ -291,20 +291,20 @@ Pas de wijzigingen van het roer toe:
           ingress-azure application-gateway-kubernetes-ingress/ingress-azure
       ```
 
-Als gevolg hiervan heeft uw AKS `AzureIngressProhibitedTarget` `prohibit-all-targets`een nieuw exemplaar van de naam:
+Als gevolg hiervan krijgt uw AKS een nieuw exemplaar van `AzureIngressProhibitedTarget` de naam `prohibit-all-targets`:
 ```bash
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-Het `prohibit-all-targets`object , zoals de naam al aangeeft, verbiedt AGIC van het veranderen van config voor *een* host en pad.
-Helm installeren `appgw.shared=true` met zal implementeren AGIC, maar zal geen wijzigingen aanbrengen in Application Gateway.
+Het object `prohibit-all-targets`, zoals de naam al aangeeft, voor komt dat AGIC config voor *een* host en pad wijzigt.
+Met helm install `appgw.shared=true` with wordt AGIC geïmplementeerd, maar worden er geen wijzigingen aangebracht in Application Gateway.
 
 
-### <a name="broaden-permissions"></a>Machtigingen verbreden
-Aangezien Helm `appgw.shared=true` met `prohibit-all-targets` en de standaard blokkeert AGIC van het toepassen van een config.
+### <a name="broaden-permissions"></a>Machtigingen uitbreiden
+Sinds helm met `appgw.shared=true` en de standaard `prohibit-all-targets` blokken AGIC geen enkele configuratie toe te passen.
 
-Verbreed AGIC-machtigingen met:
-1. Maak een `AzureIngressProhibitedTarget` nieuwe met uw specifieke setup:
+AGIC-machtigingen uitbreiden met:
+1. Maak een nieuw `AzureIngressProhibitedTarget` met uw specifieke installatie:
     ```bash
     cat <<EOF | kubectl apply -f -
     apiVersion: "appgw.ingress.k8s.io/v1"
@@ -316,16 +316,16 @@ Verbreed AGIC-machtigingen met:
     EOF
     ```
 
-2. Pas nadat u uw eigen aangepaste verbod hebt gemaakt, u de standaardverbod verwijderen, die te breed is:
+2. Pas nadat u uw eigen aangepaste verbod hebt gemaakt, kunt u de standaard instelling verwijderen. Dit is te breed:
 
     ```bash
     kubectl delete AzureIngressProhibitedTarget prohibit-all-targets
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Inschakelen voor een bestaande AGIC-installatie
-Laten we aannemen dat we al een werkende AKS, Application Gateway en geconfigureerde AGIC in ons cluster hebben. We hebben een `prod.contosor.com` Ingress voor en zijn met succes het dienen van het verkeer voor het van AKS. We willen `staging.contoso.com` toevoegen aan onze bestaande Application Gateway, maar moeten deze hosten op een [VM.](https://azure.microsoft.com/services/virtual-machines/) We gaan de bestaande Application Gateway opnieuw gebruiken en handmatig `staging.contoso.com`een listener- en backendpools configureren voor . Maar handmatig tweaken Application Gateway config (via [portal,](https://portal.azure.com) [ARM API's](https://docs.microsoft.com/rest/api/resources/) of [Terraform)](https://www.terraform.io/)zou in strijd zijn met agic's veronderstellingen van volledige eigendom. Kort nadat we wijzigingen hebben toegepast, zal AGIC ze overschrijven of verwijderen.
+We gaan ervan uit dat we al een werkende AKS, Application Gateway en geconfigureerde AGIC in het cluster hebben. Er is een ingang voor `prod.contosor.com` en het verkeer wordt door aks. We willen graag toevoegen `staging.contoso.com` aan onze bestaande Application Gateway, maar moeten deze hosten op een [virtuele machine](https://azure.microsoft.com/services/virtual-machines/). We gaan de bestaande Application Gateway opnieuw gebruiken en hand matig een listener en back-end-Pools configureren `staging.contoso.com`voor. Het hand matig aanpassen van Application Gateway configuratie (via [Portal](https://portal.azure.com), [arm-api's](https://docs.microsoft.com/rest/api/resources/) of [terraform](https://www.terraform.io/)) zou echter conflicteren met de veronderstellingen van het volledige eigendom van AGIC. Kort nadat we wijzigingen hebben toegepast, worden ze door AGIC overschreven of verwijderd.
 
-We kunnen AGIC verbieden wijzigingen aan te brengen in een subset van configuratie.
+We kunnen verhinderen dat AGIC wijzigingen in een subset van de configuratie aanbrengt.
 
 1. Een `AzureIngressProhibitedTarget` object maken:
     ```bash
@@ -339,9 +339,9 @@ We kunnen AGIC verbieden wijzigingen aan te brengen in een subset van configurat
     EOF
     ```
 
-2. Het nieuw gemaakte object weergeven:
+2. Bekijk het object dat u zojuist hebt gemaakt:
     ```bash
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. Wijzigen Application Gateway config via portal - voeg luisteraars, routing regels, backends etc. Het nieuwe object`manually-configured-staging-environment`dat we hebben gemaakt ( ) zal `staging.contoso.com`agic verbieden om Application Gateway-configuratie te overschrijven met betrekking tot .
+3. Application Gateway configuratie wijzigen via portal: Voeg listeners, routerings regels, back-ends, enzovoort toe. Het nieuwe object dat we hebben`manually-configured-staging-environment`gemaakt () voor komt dat AGIC overschreven Application Gateway configuratie `staging.contoso.com`met betrekking tot.

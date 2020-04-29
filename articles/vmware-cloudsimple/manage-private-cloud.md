@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing beheren door CloudSimple Private Cloud
-description: Beschrijft de mogelijkheden die beschikbaar zijn voor het beheren van uw CloudSimple Private Cloud-bronnen en -activiteiten
+title: Azure VMware-oplossing beheren via CloudSimple Private Cloud
+description: Beschrijft de mogelijkheden die beschikbaar zijn voor het beheren van uw CloudSimple persoonlijke cloud resources en-activiteit
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -9,15 +9,15 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869305"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>Private Cloud-bronnen en -activiteiten beheren
+# <a name="manage-private-cloud-resources-and-activity"></a>Persoonlijke cloud resources en-activiteiten beheren
 
-Private clouds worden beheerd vanuit cloudsimple portal.  Controleer de status, beschikbare resources, activiteit in de privécloud en andere instellingen via de CloudSimple-portal.
+Persoonlijke Clouds worden beheerd vanuit de CloudSimple-Portal.  Controleer de status, beschik bare resources, activiteit op de privécloud en andere instellingen in de CloudSimple-Portal.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -25,70 +25,70 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
-Toegang tot de [CloudSimple-portal](access-cloudsimple-portal.md).
+Toegang tot de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-private-clouds"></a>Bekijk de lijst met privéwolken
+## <a name="view-the-list-of-private-clouds"></a>De lijst met persoonlijke Clouds weer geven
 
-Op het tabblad **Privéwolken** op de pagina **Resources** worden alle privéwolken in uw abonnement weergegeven. Informatie omvat de naam, het aantal vSphere-clusters, locatie, de huidige status van de private cloud en brongegevens.
+Op het tabblad **persoonlijke Clouds** op de pagina **resources** wordt een lijst weer gegeven met alle persoonlijke Clouds in uw abonnement. De informatie bevat de naam, het aantal vSphere-clusters, de locatie, de huidige status van de privécloud en de resource gegevens.
 
-![Privécloudpagina](media/manage-private-cloud.png)
+![Pagina Persoonlijke Cloud](media/manage-private-cloud.png)
 
-Selecteer een Private Cloud voor meer informatie en acties.
+Selecteer een Privécloud voor meer informatie en acties.
 
-## <a name="private-cloud-summary"></a>Samenvatting van de private cloud
+## <a name="private-cloud-summary"></a>Samen vatting van privécloud
 
-Bekijk een uitgebreid overzicht van de geselecteerde Private Cloud.  Overzichtspagina bevat de DNS-servers die zijn geïmplementeerd in de Private Cloud.  U DNS-forwarding instellen van on-premises DNS-servers naar uw Private Cloud DNS-servers.  Zie DNS configureren voor naamomzetting voor Private Cloud vCenter configureren voor meer informatie over [DNS-forwarding van on-premises](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/).
+Een uitgebreid overzicht van de geselecteerde Privécloud weer geven.  Overzichts pagina bevat de DNS-servers die zijn geïmplementeerd in de Privécloud.  U kunt DNS-door sturen van lokale DNS-servers naar uw particuliere cloud-DNS-servers instellen.  Voor meer informatie over DNS-door sturen raadpleegt [u DNS configureren voor naam omzetting voor Private Cloud vCenter vanuit on-premises](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/).
 
-![Samenvatting van de privécloud](media/private-cloud-summary.png)
-
-### <a name="available-actions"></a>Beschikbare acties
-
-* [VSphere-client starten](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Toegang tot het vCenter voor deze Private Cloud.
-* [Inkoopknooppunten](create-nodes.md). Voeg knooppunten toe aan deze Private Cloud.
-* [Uitvouwen](expand-private-cloud.md). Voeg knooppunten toe aan deze Private Cloud.
-* **Vernieuwen**. Werk de informatie op deze pagina bij.
-* **Verwijderen**. U de Private Cloud op elk gewenst moment verwijderen. **Voordat u het verwijderen uitbrengt, moet u ervoor zorgen dat u een back-up hebt gemaakt van alle systemen en gegevens.** Als u een privécloud verwijdert, worden alle VM's, vCenter-configuratie en gegevens verwijderd. Klik **op Verwijderen** in de sectie overzicht voor de geselecteerde private cloud. Na verwijdering worden alle Private Cloud-gegevens gewist in een beveiligd, zeer compatibel verwijderingsproces.
-* [VSphere-bevoegdheden wijzigen](escalate-private-cloud-privileges.md).  Escaleer uw privileges op deze Private Cloud.
-
-## <a name="private-cloud-vlanssubnets"></a>Private Cloud VLANS/subnetten
-
-Bekijk de lijst met gedefinieerde VLAN's/subnetten voor de geselecteerde Private Cloud.  De lijst bevat het beheer VAN VLAN's/subnetten die zijn gemaakt toen de private cloud werd gemaakt.
-
-![Private Cloud - VLAN's/Subnetten](media/private-cloud-vlans-subnets.png) 
+![Samen vatting van privécloud](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Beschikbare acties
 
-* [VLANS/Subnetten toevoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Private Cloud.
+* [Start de vSphere-client](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Toegang tot de vCenter voor deze Privécloud.
+* [Inkoop knooppunten](create-nodes.md). Voeg knoop punten toe aan deze Privécloud.
+* [Uitvouwen](expand-private-cloud.md). Voeg knoop punten toe aan deze Privécloud.
+* **Vernieuwen**. De gegevens op deze pagina bijwerken.
+* **Verwijderen**. U kunt de Privécloud op elk gewenst moment verwijderen. **Voordat u verwijdert, moet u ervoor zorgen dat u een back-up hebt gemaakt van alle systemen en gegevens.** Wanneer u een Privécloud verwijdert, worden alle Vm's, de configuratie van de vCenter en de gegevens verwijderd. Klik op **verwijderen** in het gedeelte samen vatting van de geselecteerde privécloud. Na het verwijderen worden alle gegevens van de Privécloud gewist in een beveiligd, uiterst compatibel verwijderings proces.
+* [Wijzig de vSphere-bevoegdheden](escalate-private-cloud-privileges.md).  Escaleren uw bevoegdheden op deze Privécloud.
 
-Een VLAN/Subnet selecteren voor volgende acties
-* [Firewalltabel bijvoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Voeg een firewalltabel toe aan deze Private Cloud.
+## <a name="private-cloud-vlanssubnets"></a>Particuliere cloud-VLAN'S/-subnetten
+
+Bekijk de lijst met gedefinieerde VLAN'S/subnetten voor de geselecteerde Privécloud.  De lijst bevat de beheer-VLAN'S/-subnetten die zijn gemaakt tijdens het maken van de privécloud.
+
+![Privécloud-VLAN'S/subnetten](media/private-cloud-vlans-subnets.png) 
+
+### <a name="available-actions"></a>Beschikbare acties
+
+* [Vlan's/subnetten toevoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Privécloud.
+
+Een VLAN/subnet selecteren voor de volgende acties
+* Een [firewall tabel toevoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Een firewall tabel koppelen aan deze Privécloud.
 * **Bewerken**
-* **Verwijderen** (alleen door de gebruiker gedefinieerde VLAN's/Subnetten)
+* **Verwijderen** (alleen door de gebruiker gedefinieerde Vlan's/subnetten)
 
-## <a name="private-cloud-activity"></a>Private Cloud-activiteit
+## <a name="private-cloud-activity"></a>Activiteit privécloud
 
-Bekijk de volgende informatie voor de geselecteerde Private Cloud.  De activiteitsgegevens zijn een gefilterde lijst met alle activiteiten voor de geselecteerde Private Cloud.  Deze pagina toont maximaal 25 recente activiteiten.
+Bekijk de volgende informatie voor de geselecteerde Privécloud.  De gegevens van de activiteit zijn een gefilterde lijst met alle activiteiten voor de geselecteerde Privécloud.  Op deze pagina worden Maxi maal 25 recente activiteiten weer gegeven.
 
 * Recente waarschuwingen
 * Recente gebeurtenissen
 * Recente taken
 * Recente controle
 
-![Private Cloud - Activiteit](media/private-cloud-activity.png)
+![Privécloud-activiteit](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>Cloudracks
+## <a name="cloud-racks"></a>Cloud racks
 
-Cloudracks zijn de bouwstenen van uw Private Cloud. Elk rek biedt een eenheid van capaciteit. CloudSimple configureert automatisch cloudracks op basis van uw selecties bij het maken of uitbreiden van een Private Cloud.  Bekijk de volledige lijst met cloudracks, inclusief de Private Cloud waaraan elk is toegewezen.
+Cloud racks zijn de bouw stenen van uw Privécloud. Elk rek biedt een capaciteits eenheid. CloudSimple configureert automatisch Cloud racks op basis van uw selecties bij het maken of uitbreiden van een Privécloud.  Bekijk de volledige lijst met Cloud racks, met inbegrip van de privécloud die aan hen is toegewezen.
 
-![Private Cloud - Cloud Racks](media/private-cloud-cloudracks.png)
+![Particuliere cloud-Cloud racks](media/private-cloud-cloudracks.png)
 
 ## <a name="vsphere-management-network"></a>vSphere-beheernetwerk
 
-Lijst met VMware-beheerbronnen en virtuele machines die momenteel zijn geconfigureerd in de Private Cloud. Informatie omvat de softwareversie, volledig gekwalificeerde domeinnaam (FQDN) en IP-adres van de bronnen.
+Een lijst met VMware-beheer bronnen en virtuele machines die momenteel zijn geconfigureerd in de Privécloud. De informatie omvat de software versie, de Fully Qualified Domain Name (FQDN) en het IP-adres van de bronnen.
 
-![Private Cloud - vSphere Management Network](media/private-cloud-vsphere-management-network.png)
+![Private Cloud-vSphere Management-netwerk](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [VMware-VM's in Azure gebruiken](quickstart-create-vmware-virtual-machine.md)
-* Meer informatie over [Private Clouds](cloudsimple-private-cloud.md)
+* Meer informatie over [persoonlijke Clouds](cloudsimple-private-cloud.md)

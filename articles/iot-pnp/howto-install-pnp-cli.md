@@ -1,6 +1,6 @@
 ---
-title: Gebruik de Azure IoT-extensie voor Azure CLI om te communiceren met IoT Plug and Play Preview-apparaten | Microsoft Documenten
-description: Installeer de Azure IoT-extensie voor Azure CLI en gebruik deze om te communiceren met de IoT Plug and Play-apparaten die zijn verbonden met mijn IoT-hub.
+title: Gebruik de Azure IoT-extensie voor Azure CLI om te communiceren met IoT Plug en Play preview-apparaten | Microsoft Docs
+description: Installeer de Azure IoT-extensie voor Azure CLI en gebruik deze om te communiceren met de IoT-Plug en Play apparaten die zijn verbonden met mijn IoT-hub.
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
@@ -9,36 +9,36 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 1ccb32996cd8f15805a810dd5b5985aeb5f87c26
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770445"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren en gebruiken
 
-[De Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open-source cross-platform command-line tool voor het beheren van Azure-resources zoals IoT Hub. De Azure CLI is beschikbaar op Windows, Linux en MacOS. De Azure CLI is ook vooraf geïnstalleerd in de [Azure Cloud Shell.](https://shell.azure.com) Met Azure CLI u Azure IoT Hub-resources, device Provisioning Service-exemplaren en gekoppelde hubs beheren zonder extensies te installeren.
+[Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT hub. De Azure CLI is beschikbaar in Windows, Linux en MacOS. De Azure CLI is ook vooraf geïnstalleerd in de [Azure Cloud shell](https://shell.azure.com). Met de Azure CLI kunt u Azure IoT Hub-resources, Device Provisioning Service-instanties en gekoppelde hubs beheren zonder de extensies te installeren.
 
-De Azure IoT-extensie voor azure CLI is een opdrachtregelhulpmiddel voor het communiceren met en testen van IoT Plug and Play Preview-apparaten. U de extensie gebruiken om:
+De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van IoT Plug en Play preview-apparaten. U kunt de extensie gebruiken voor het volgende:
 
-- Maak verbinding met een apparaat.
-- Bekijk de telemetrie die het apparaat verzendt.
-- Werken met apparaateigenschappen.
-- Opdrachten voor oproepapparaten.
+- Verbinding maken met een apparaat.
+- De telemetrie weer geven die het apparaat verzendt.
+- Werken met Apparaateigenschappen.
+- Roep de opdrachten van het apparaat aan.
 
 In dit artikel leest u informatie over:
 
 - Installeer en configureer de Azure IoT-extensie voor de Azure CLI.
-- Gebruik de extensie om te communiceren met en test uw apparaten.
-- Gebruik de extensie om interfaces in de modelopslagplaats te beheren.
+- Gebruik de uitbrei ding om uw apparaten te gebruiken en te testen.
+- Gebruik de uitbrei ding voor het beheren van interfaces in de model opslagplaats.
 
-## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Azure IoT-extensie voor de Azure CLI installeren
+## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Azure IoT-extensie voor Azure CLI installeren
 
-### <a name="step-1---install-the-azure-cli"></a>Stap 1 - Installeer de Azure CLI
+### <a name="step-1---install-the-azure-cli"></a>Stap 1: de Azure CLI installeren
 
-Volg de [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om de Azure CLI in uw omgeving in te stellen. Als u alle onderstaande opdrachten wilt gebruiken, moet uw Azure CLI-versie versie versie 2.0.73 of hoger zijn. Gebruik `az -–version` om de versie te valideren.
+Volg de [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om de Azure cli in uw omgeving in te stellen. Als u alle onderstaande opdrachten wilt gebruiken, moet u versie 2.0.73 of hoger van uw versie van Azure CLI. Gebruik `az -–version` om de versie te valideren.
 
-### <a name="step-2---install-iot-extension"></a>Stap 2 - IoT-extensie installeren
+### <a name="step-2---install-iot-extension"></a>Stap 2: IoT-extensie installeren
 
 [In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension) worden verschillende manieren voor het installeren van de extensie beschreven. De eenvoudigste manier is `az extension add --name azure-iot` uit te voeren. Na de installatie kunt u gebruikmaken van `az extension list` om de momenteel geïnstalleerde extensies te valideren of van `az extension show --name azure-iot` voor informatie over de IoT-extensie. U kunt `az extension remove --name azure-iot` gebruiken om de extensie te verwijderen.
 
@@ -46,40 +46,40 @@ Volg de [installatie-instructies](https://docs.microsoft.com/cli/azure/install-a
 
 ### <a name="prerequisites"></a>Vereisten
 
-Als u zich wilt aanmelden bij uw Azure-abonnement, voert u de volgende opdracht uit:
+Voer de volgende opdracht uit om u aan te melden bij uw Azure-abonnement:
 
 ```azurecli
 az login
 ```
 
 > [!NOTE]
-> Als u de Azure-cloudshell gebruikt, bent u automatisch aangemeld en hoeft u de vorige opdracht niet uit te voeren.
+> Als u de Azure Cloud shell gebruikt, bent u automatisch aangemeld en hoeft u de vorige opdracht niet uit te voeren.
 
-Als u de Azure IoT-extensie voor de Azure CLI wilt gebruiken, hebt u het:
+Als u de Azure IoT-extensie voor Azure CLI wilt gebruiken, hebt u het volgende nodig:
 
-- Een Azure IoT-hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [Een IoT-hub maken met de Azure CLI.](../iot-hub/iot-hub-create-using-cli.md) U hebt de verbindingstekenreeks van de IoT-hub nodig om de opdrachten voor Azure IoT-extensie uit te voeren. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+- Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de connection string van de IoT-hub nodig om de Azure IoT-extensie opdrachten uit te voeren. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-- Een apparaat dat is geregistreerd in uw IoT-hub. U de volgende opdracht Azure CLI gebruiken om `{YourIoTHubName}` een `{YourDeviceID}` apparaat te registreren, zorg ervoor dat u de tijdelijke aanduidingen en tijdelijke aanduidingen vervangt door uw waarden:
+- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Vervang de `{YourIoTHubName}` `{YourDeviceID}` tijdelijke aanduidingen door uw waarden.
 
     ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
-- Sommige opdrachten hebben de verbindingstekenreeks nodig voor een bedrijfsmodelopslagplaats. Er wordt een modelopslagplaats voor uw bedrijf gemaakt wanneer u [voor het eerst aan boord gaat van de Azure Certified for IoT-portal.](howto-onboard-portal.md) Een derde partij kan hun modelrepository-verbindingstekenreeks met u delen om u toegang te geven tot hun interfaces en modellen.
+- Sommige opdrachten hebben de connection string nodig voor een bedrijfs model opslagplaats. Er wordt een model opslagplaats voor uw bedrijf gemaakt wanneer u [de Azure Certified voor IOT-portal voor het eerst onboardt](howto-onboard-portal.md). Een derde partij kan hun model opslagplaats connection string met u delen om u toegang te geven tot hun interfaces en modellen.
 
 ### <a name="interact-with-a-device"></a>Interactie met een apparaat
 
-U de extensie gebruiken om IoT Plug and Play-apparaten te bekijken en ermee te werken die zijn verbonden met een IoT-hub. De extensie werkt met de digitale tweeling die het IoT Plug and Play-apparaat vertegenwoordigt.
+U kunt de extensie gebruiken voor het weer geven en gebruiken van IoT Plug en Play-apparaten die zijn verbonden met een IoT-hub. De uitbrei ding werkt met de digitale dubbele shape waarmee het IoT-Plug en Play apparaat wordt aangeduid.
 
-#### <a name="list-devices-and-interfaces"></a>Apparaten en interfaces weergeven
+#### <a name="list-devices-and-interfaces"></a>Apparaten en interfaces weer geven
 
-Alle apparaten op een IoT-hub weergeven:
+Alle apparaten op een IoT Hub weer geven:
 
 ```azurecli
 az iot hub device-identity list --hub-name {YourIoTHubName}
 ```
 
-Vermeld alle interfaces die zijn geregistreerd door een IoT Plug and Play-apparaat:
+Alle interfaces weer geven die zijn geregistreerd door een IoT-Plug en Play apparaat:
 
 ```azurecli
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -87,19 +87,19 @@ az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 
 #### <a name="properties"></a>Eigenschappen
 
-Alle eigenschappen en eigenschappenwaarden voor een interface op een apparaat weergeven:
+Alle eigenschappen en eigenschaps waarden weer geven voor een interface op een apparaat:
 
 ```azurecli
 az iot dt list-properties --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login "{YourCompanyModelRepoConnectionString}"
 ```
 
-Stel de waarde in van een eigenschap lezen schrijven:
+Stel de waarde van een eigenschap voor lezen/schrijven in:
 
 ```azurecli
 az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface-payload {JSONPayload or FilePath}
 ```
 
-Een voorbeeld payload-bestand om de **eigenschap naam** op de **sensorinterface** van een apparaat in te stellen op **Contoso** ziet er als volgt uit:
+Een voor beeld van een payload-bestand voor het instellen van de eigenschap **name** op de **sensor** interface van een apparaat naar **Contoso** ziet er als volgt uit:
 
 ```json
 {
@@ -117,13 +117,13 @@ Een voorbeeld payload-bestand om de **eigenschap naam** op de **sensorinterface*
 
 #### <a name="commands"></a>Opdrachten
 
-Alle opdrachten voor een interface op een apparaat weergeven:
+Alle opdrachten weer geven voor een interface op een apparaat:
 
 ```azurecli
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-Zonder `--repo-login` de parameter maakt deze opdracht gebruik van de openbare modelopslagplaats.
+Zonder de `--repo-login` para meter gebruikt deze opdracht de open bare model opslagplaats.
 
 Een opdracht aanroepen:
 
@@ -131,100 +131,100 @@ Een opdracht aanroepen:
 az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="digital-twin-events"></a>Digitale twin events
+#### <a name="digital-twin-events"></a>Digitale dubbele gebeurtenissen
 
-Monitor alle IoT Plug and Play digital twin-evenementen vanaf een specifiek apparaat en interface naar de **$Default-groep** van de eventhub:
+Bewaak alle IoT Plug en Play digitale dubbele gebeurtenissen van een specifiek apparaat en een specifieke interface naar de **$Default** Event hub consumenten groep:
 
 ```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Monitor alle IoT Plug and Play digital twin-gebeurtenissen vanaf een specifiek apparaat en interface die een specifieke consumentengroep vormen:
+Bewaak alle IoT Plug en Play digitale dubbele gebeurtenissen van een specifiek apparaat en een specifieke interface naar een specifieke consumenten groep:
 
 ```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
-### <a name="manage-interfaces-in-a-model-repository"></a>Interfaces beheren in een modelopslagplaats
+### <a name="manage-interfaces-in-a-model-repository"></a>Interfaces in een model opslagplaats beheren
 
-De volgende opdrachten maken gebruik van de openbare IoT Plug and Play-modelrepository. Als u een bedrijfsmodelrepository `--login` wilt gebruiken, voegt u het argument toe met de tekenreeks van de modelrepository-verbinding.
+De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, `--login` voegt u het argument toe met uw model opslagplaats Connection String.
 
-Lijst interfaces in de openbare IoT Plug and Play model repository:
+Interfaces in de open bare IoT-Plug en Play model opslagplaats weer geven:
 
 ```azurecli
 az iot pnp interface list
 ```
 
-Een interface weergeven in de openbare IoT Plug and Play-modelopslagplaats:
+Een interface weer geven in de opslag plaats Public IoT Plug en Play model:
 
 ```azurecli
 az iot pnp interface show --interface {YourInterfaceId}
 ```
 
-Maak een interface in uw IoT Plug and Play-bedrijfsmodelrepository:
+Maak een interface in uw IoT Plug en Play-bedrijfs model-opslag plaats:
 
 ```azurecli
 az iot pnp interface create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-U niet direct een interface maken in de openbare modelopslagplaats.
+U kunt geen directe interface maken in de open bare model opslagplaats.
 
-Werk een interface bij in uw IoT Plug and Play-bedrijfsmodelrepository:
+Een interface bijwerken in uw IoT Plug en Play bedrijfs model-opslag plaats:
 
 ```azurecli
 az iot pnp interface update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-U een interface niet rechtstreeks bijwerken in de openbare modelopslagplaats.
+U kunt een interface niet rechtstreeks bijwerken in de open bare model opslagplaats.
 
-Publiceer een interface van uw IoT Plug and Play-bedrijfsmodelrepository naar de openbare modelopslagplaats. Deze bewerking maakt de interface onveranderlijk:
+Publiceer een interface vanuit uw IoT Plug en Play-bedrijfs model opslagplaats naar de open bare model opslagplaats. Met deze bewerking wordt de interface onveranderbaar:
 
 ```azurecli
 az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Alleen Microsoft-partners kunnen interfaces publiceren naar de openbare modelopslagplaats.
+Alleen micro soft-partners kunnen interfaces publiceren naar de open bare model opslagplaats.
 
-### <a name="manage-device-capability-models-in-a-model-repository"></a>Apparaatcapaciteitsmodellen beheren in een modelopslagplaats
+### <a name="manage-device-capability-models-in-a-model-repository"></a>Hulp modellen voor apparaten beheren in een model opslagplaats
 
-De volgende opdrachten maken gebruik van de openbare IoT Plug and Play-modelrepository. Als u een bedrijfsmodelrepository `--login` wilt gebruiken, voegt u het argument toe met de tekenreeks van de modelrepository-verbinding.
+De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, `--login` voegt u het argument toe met uw model opslagplaats Connection String.
 
-Lijst apparaatmogelijkheden modellen in de IoT Plug and Play public model repository:
+Geef een overzicht van de mogelijkheden van apparaten in de IoT Plug en Play Public model-opslag plaats:
 
 ```azurecli
 az iot pnp capability-model list
 ```
 
-Een apparaatcapaciteitsmodel weergeven in de openbare iot-structuur voor Plug and Play:
+Een mogelijkheidsprofiel weer geven in de open bare model opslagplaats van IoT Plug en Play:
 
 ```azurecli
 az iot pnp capability-model show --model {YourModelID}
 ```
 
-Maak een apparaatcapaciteitsmodel in een IoT Plug and Play-bedrijfsmodelopslagplaats:
+Maak een hulp model voor het maken van een apparaat in een IoT Plug en Play-bedrijfs model opslagplaats:
 
 ```azurecli
 az iot pnp capability-model create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-U niet direct een model maken in de openbare modelopslagplaats.
+U kunt niet rechtstreeks een model maken in de open bare model opslagplaats.
 
-Werk een apparaatcapaciteitsmodel bij in de iot-structuurvan het bedrijf Plug and Play:
+Een mogelijkheidsprofiel bijwerken in de opslag voor IoT Plug en Play-bedrijfs model:
 
 ```azurecli
 az iot pnp capability-model update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-U een model niet rechtstreeks bijwerken in de openbare modelopslagplaats.
+U kunt een model niet rechtstreeks bijwerken in de open bare model opslagplaats.
 
-Publiceer een apparaatcapaciteitsmodel van uw IoT Plug and Play-bedrijfsmodelrepository naar de openbare modelopslagplaats. Deze bewerking maakt het model onveranderlijk:
+Publiceer een mogelijkheidsprofiel van uw IoT Plug en Play-bedrijfs model-opslag plaats naar de open bare model opslagplaats. Met deze bewerking wordt het model onveranderbaar:
 
 ```azurecli
 az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Alleen Microsoft-partners kunnen modellen publiceren naar de openbare modelopslagplaats.
+Alleen micro soft-partners kunnen modellen publiceren naar de open bare model opslagplaats.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u de Azure IoT-extensie voor de Azure CLI installeren en gebruiken om te communiceren met uw Plug and Play-apparaten. Een voorgestelde volgende stap is om te leren hoe modellen te [beheren](./howto-manage-models.md).
+In dit artikel leert u hoe u de Azure IoT-extensie voor Azure CLI kunt installeren en gebruiken om te communiceren met uw Plug en Play-apparaten. Een voorgestelde volgende stap is informatie over het [beheren van modellen](./howto-manage-models.md).
