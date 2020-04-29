@@ -1,43 +1,43 @@
 ---
-title: Twilio-binding met Azure-functies
-description: Meer informatie over het gebruik van Twilio-bindingen met Azure-functies.
+title: Twilio-binding Azure Functions
+description: Meer informatie over het gebruik van Twilio-bindingen met Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76715055"
 ---
-# <a name="twilio-binding-for-azure-functions"></a>Twilio-binding voor Azure-functies
+# <a name="twilio-binding-for-azure-functions"></a>Twilio-binding voor Azure Functions
 
-In dit artikel wordt uitgelegd hoe u tekstberichten verzendt met [Twilio-bindingen](https://www.twilio.com/) in Azure-functies. Azure Functions ondersteunt uitvoerbindingen voor Twilio.
+In dit artikel wordt uitgelegd hoe u tekst berichten verzendt met behulp van [Twilio](https://www.twilio.com/) -bindingen in azure functions. Azure Functions ondersteunt uitvoer bindingen voor Twilio.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Pakketten - Functies 1.x
+## <a name="packages---functions-1x"></a>Pakketten-functions 1. x
 
-De Twilio-bindingen worden geleverd in het [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 1.x. Broncode voor het pakket bevindt zich in de [GitHub-repository van Azure-Webjobs-sdk.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/)
+De Twilio-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 1. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) .
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>Pakketten - Functies 2.x en hoger
+## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
-De Twilio-bindingen worden geleverd in het [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 3.x. Broncode voor het pakket bevindt zich in de [GitHub-repository van Azure-Webjobs-sdk.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/)
+De Twilio-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 <a id="example"></a>
 
-## <a name="example---functions-2x-and-higher"></a>Voorbeeld - Functies 2.x en hoger
+## <a name="example---functions-2x-and-higher"></a>Voor beeld-functions 2. x en hoger
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-In het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) weergegeven die een sms-bericht verzendt wanneer het wordt geactiveerd door een wachtrijbericht.
+In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) die een SMS-bericht verzendt wanneer het wordt geactiveerd door een wachtrij bericht.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -68,15 +68,15 @@ namespace TwilioQueueOutput
 }
 ```
 
-In dit `TwilioSms` voorbeeld wordt het kenmerk met de retourwaarde van de methode gebruikt. Een alternatief is het gebruik `out CreateMessageOptions` van `ICollector<CreateMessageOptions>` het `IAsyncCollector<CreateMessageOptions>` kenmerk met een parameter of een parameter.
+In dit voor beeld `TwilioSms` wordt het-kenmerk gebruikt met de retour waarde van de methode. U kunt het kenmerk ook gebruiken met een `out CreateMessageOptions` para meter of een `ICollector<CreateMessageOptions>` or `IAsyncCollector<CreateMessageOptions>` -para meter.
 
-# <a name="c-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voorbeeld ziet u een Twilio-uitvoerbinding in een *function.json-bestand* en een [C#-scriptfunctie](functions-reference-csharp.md) die de binding gebruikt. De functie `out` gebruikt een parameter om een sms-bericht te verzenden.
+In het volgende voor beeld ziet u een Twilio-uitvoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt gebruik `out` van een para meter voor het verzenden van een tekst bericht.
 
-Hier vindt u bindende gegevens in het *bestand function.json:*
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
-Voorbeeld functie.json:
+Voor beeld van function. json:
 
 ```json
 {
@@ -90,7 +90,7 @@ Voorbeeld functie.json:
 }
 ```
 
-Hier is C# scriptcode:
+Dit is de C#-script code:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
 }
 ```
 
-U geen parameters gebruiken in asynchrone code. Hier is een asynchrone C# scriptcode voorbeeld:
+U kunt geen out-para meters gebruiken in asynchrone code. Hier volgt een voor beeld van een asynchroon C#-script code:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -158,11 +158,11 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voorbeeld wordt een Twilio-uitvoerbinding weergegeven in een *function.json-bestand* en een [JavaScript-functie](functions-reference-node.md) die de binding gebruikt.
+In het volgende voor beeld ziet u een Twilio-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
 
-Hier vindt u bindende gegevens in het *bestand function.json:*
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
-Voorbeeld functie.json:
+Voor beeld van function. json:
 
 ```json
 {
@@ -176,7 +176,7 @@ Voorbeeld functie.json:
 }
 ```
 
-Hier is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -203,7 +203,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voorbeeld ziet u hoe u een sms-bericht verzendt met de uitvoerbinding zoals gedefinieerd in de volgende *functie.js*.
+In het volgende voor beeld ziet u hoe u een SMS-bericht verzendt met behulp van de uitvoer binding zoals gedefinieerd in de volgende *functie. js*.
 
 ```json
     {
@@ -217,7 +217,7 @@ In het volgende voorbeeld ziet u hoe u een sms-bericht verzendt met de uitvoerbi
     }
 ```
 
-U een geserialiseerd JSON-object doorgeven aan de `func.Out` parameter om het sms-bericht te verzenden.
+U kunt een geserialiseerd JSON-object door geven aan `func.Out` de para meter om het SMS-bericht te verzenden.
 
 ```python
 import logging
@@ -241,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voorbeeld ziet u hoe u de [twilioSmsOutput-annotatie](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) gebruiken om een sms-bericht te verzenden. Waarden `to`voor `from`, `body` en zijn vereist in de kenmerkdefinitie, zelfs als u ze programmatisch overschrijft.
+In het volgende voor beeld ziet u hoe u de [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -aantekening gebruikt om een SMS-bericht te verzenden. Waarden voor `to`, `from`en `body` zijn vereist in de kenmerk definitie, zelfs als u ze via een programma overschrijft.
 
 ```java
 package com.function;
@@ -285,13 +285,13 @@ public class TwilioOutput {
 
 ---
 
-## <a name="attributes-and-annotations"></a>Kenmerken en annotaties
+## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Gebruik [in klassebibliotheken van C#](functions-dotnet-class-library.md)het kenmerk [TwilioSms.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs)
+Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) .
 
-Zie [Configuratie](#configuration)voor informatie over kenmerkeigenschappen die u configureren. Hier is `TwilioSms` een kenmerkvoorbeeld in een methodehandtekening:
+Zie [configuratie](#configuration)voor informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een `TwilioSms` voor beeld van een kenmerk in een methode handtekening:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -303,44 +303,44 @@ public static CreateMessageOptions Run(
 }
  ```
 
-Zie [Voorbeeld C#](#example)voor een volledig voorbeeld .
+Zie C#-voor [beeld](#example)voor een volledig voor beeld.
 
-# <a name="c-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door C# Script.
+Kenmerken worden niet ondersteund door een C#-script.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door JavaScript.
+Kenmerken worden niet ondersteund door Java script.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door Python.
+Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Plaats [TwilioSmsOutput-annotatie](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) op [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) een parameter waarbij `T` een `int` `String`native `byte[]`Java-type kan zijn, zoals , , of een POJO-type.
+Plaats [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -aantekening [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) op een `T` para meter die een eigen Java `int`- `String` `byte[]`type kan zijn, zoals,, of een Pojo-type.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `TwilioSms` die u instelt in het *function.json-bestand* en het kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `TwilioSms` -kenmerk.
 
-| v1 function.json, eigenschap | v2 function.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
+| v1 function. json-eigenschap | v2 function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|---------|----------------------|
-|**Type**|**Type**| moeten worden `twilioSms`ingesteld op .|
-|**direction**|**direction**| moeten worden `out`ingesteld op .|
-|**Naam**|**Naam**| Variabele naam gebruikt in functiecode voor het Twilio SMS-bericht. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio Account Sid bevat (`TwilioAccountSid`). Als dit niet is ingesteld, is de standaardnaam voor de instelling van de app "AzureWebJobsTwilioAccountSid". |
-|**AuthToken**|**authTokenInstelling**|**AuthTokenSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-verificatietoken bevat (`TwilioAccountAuthToken`). Als dit niet is ingesteld, is de standaardnaam voor app-instellingen "AzureWebJobsTwilioAuthToken". |
-|**Aan**| N/A - opgeven in code | **Aan**| Deze waarde is ingesteld op het telefoonnummer waarnaar de sms-tekst wordt verzonden.|
-|**Van**|**Van** | **Van**| Deze waarde is ingesteld op het telefoonnummer waarvan de sms-tekst wordt verzonden.|
-|**Lichaam**|**Lichaam** | **Hoofdtekst**| Deze waarde kan worden gebruikt om het sms-bericht hard te coderen als u het niet dynamisch hoeft in te stellen in de code voor uw functie. |  
+|**voert**|**voert**| moet worden ingesteld op `twilioSms`.|
+|**direction**|**direction**| moet worden ingesteld op `out`.|
+|**naam**|**naam**| De naam van de variabele die wordt gebruikt in de functie code voor het SMS-tekst bericht van Twilio. |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-account-`TwilioAccountSid`sid () bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsTwilioAccountSid '. |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-verificatie token`TwilioAccountAuthToken`() bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsTwilioAuthToken '. |
+|**Aan**| N.v.t.-opgeven in code | **Aan**| Deze waarde wordt ingesteld op het telefoon nummer waarnaar de SMS-tekst wordt verzonden.|
+|**Van**|**Van** | **Van**| Deze waarde wordt ingesteld op het telefoon nummer van waaruit de SMS-tekst wordt verzonden.|
+|**organen**|**organen** | **Hoofdtekst**| Deze waarde kan worden gebruikt om het SMS-tekst bericht vast te maken als u het niet dynamisch hoeft in te stellen in de code voor uw functie. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over triggers en bindingen voor Azure-functies](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)

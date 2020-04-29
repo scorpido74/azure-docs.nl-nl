@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.openlocfilehash: 82d122ed236dc72ced7ebafe2301ef5f1143897f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963649"
 ---
-Gebruik een apart opslagaccount voor elke functie-app om de prestaties te maximaliseren. Dit is vooral belangrijk wanneer u duurzame functies of gebeurtenishub-geactiveerde functies hebt, die beide een groot aantal opslagtransacties genereren. Wanneer uw toepassingslogica samenwerkt met Azure Storage, rechtstreeks (met behulp van de Storage SDK) of via een van de opslagbindingen, moet u een speciaal opslagaccount gebruiken. Als u bijvoorbeeld een functie hebt die door de gebeurtenishub wordt&mdash;geactiveerd bij het schrijven van bepaalde gegevens naar blobopslag, gebruikt u twee opslagaccounts één voor de functie-app en een andere voor de blobs die door de functie worden opgeslagen.
+Gebruik een afzonderlijk opslag account voor elke functie-app om de prestaties te maximaliseren. Dit is vooral belang rijk wanneer u Durable Functions of event hub geactiveerde functies hebt, waarbij beide een groot aantal opslag transacties genereren. Wanneer uw toepassings logica communiceert met Azure Storage, direct (met behulp van de opslag-SDK) of via een van de opslag bindingen, moet u een speciaal opslag account gebruiken. Als u bijvoorbeeld een event hub-functie hebt geactiveerd om bepaalde gegevens te schrijven naar Blob Storage, gebruikt u twee opslag accounts&mdash;voor de functie-app en een andere voor de blobs die door de functie worden opgeslagen.

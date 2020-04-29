@@ -1,6 +1,6 @@
 ---
-title: Clustercreatie mislukt met DomainNotFound-fout in Azure HDInsight
-description: Problemen oplossen met stappen en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters
+title: Het maken van een cluster mislukt met DomainNotFound-fout in azure HDInsight
+description: Probleemoplossings stappen en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76776233"
 ---
-# <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Scenario: Clustercreatie mislukt met DomainNotFound-fout in Azure HDInsight
+# <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Scenario: het maken van een cluster mislukt met DomainNotFound-fout in azure HDInsight
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Het maken van hdi secure (Enterprise Security Package) clustercreatie mislukt met `DomainNotFound` een foutmelding.
+Het maken van een HDI Secure (Enterprise Security Package) `DomainNotFound` -cluster mislukt met fout bericht.
 
 ## <a name="cause"></a>Oorzaak
 
@@ -28,30 +28,30 @@ Onjuiste DNS-instellingen.
 
 ## <a name="resolution"></a>Oplossing
 
-Wanneer de samengevoegde clusters van het domein worden geïmplementeerd, maakt HDI een interne gebruikersnaam en wachtwoord in AAD DS (voor elk cluster) en voegt alle clusterknooppunten samen met dit domein. De domeinjoin wordt uitgevoerd met sambatools. Zorg ervoor dat aan de volgende voorwaarden wordt voldaan:
+Wanneer de aan het domein gekoppelde clusters zijn geïmplementeerd, maakt HDI een interne gebruikers naam en wacht woord in AAD DS (voor elk cluster) en worden alle cluster knooppunten toegevoegd aan dit domein. De toevoeging aan het domein is voltooid met behulp van samba-hulpprogram ma's. Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 
-* De domeinnaam moet worden opgelost via DNS.
-* Het IP-adres van de domeincontrollers moet worden ingesteld in de DNS-instellingen voor het virtuele netwerk waar het cluster wordt geïmplementeerd.
-* Als het virtuele netwerk is peered met het virtuele netwerk van AAD DS, dan moet het handmatig worden gedaan.
-* Als u DNS-expediteurs gebruikt, moet de domeinnaam correct worden opgelost binnen het virtuele netwerk.
-* Beveiligingsbeleid (NSG's) mag de domeinjoin niet blokkeren.
+* De domein naam moet worden omgezet via DNS.
+* Het IP-adres van de domein controllers moet worden ingesteld in de DNS-instellingen voor het virtuele netwerk waarin het cluster wordt geïmplementeerd.
+* Als het virtuele netwerk is gekoppeld aan het virtuele netwerk van AAD DS, moet het hand matig worden uitgevoerd.
+* Als u DNS-doorstuur servers gebruikt, moet de domein naam correct worden omgezet in het virtuele netwerk.
+* Het beveiligings beleid (Nsg's) mag het lidmaatschap van het domein niet blok keren.
 
-### <a name="additional-debugging-steps"></a>Aanvullende foutopsporingsstappen
+### <a name="additional-debugging-steps"></a>Aanvullende stappen voor fout opsporing
 
-* Een windows-VM implementeren in hetzelfde subnet, domein toetreden tot de machine met behulp van een gebruikersnaam en wachtwoord (dit kan worden gedaan via de gebruikersinterface van het configuratiescherm), of
+* Een Windows-VM implementeren in hetzelfde subnet, domein lid worden van de computer met een gebruikers naam en wacht woord (dit kan worden gedaan via de gebruikers interface van het configuratie scherm) of
 
-* Een ubuntu VM implementeren in hetzelfde subnet en domein join the machine
-  * SSH in de machine
+* Een Ubuntu-VM implementeren in hetzelfde subnet en domein lid worden van de computer
+  * SSH in de computer
   * sudo su
-  * Het script uitvoeren met gebruikersnaam en wachtwoord
-  * Het script pingt, maakt de vereiste configuratiebestanden en vervolgens domein. Als dit lukt, zijn uw DNS-instellingen goed.
+  * Voer het script uit met de gebruikers naam en het wacht woord
+  * Het script wordt gepingd, de vereiste configuratie bestanden en vervolgens het domein gemaakt. Als de service slaagt, zijn uw DNS-instellingen goed.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

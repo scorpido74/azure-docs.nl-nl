@@ -1,6 +1,6 @@
 ---
-title: Quota en limieten schalen in uw lab in Azure DevTest Labs | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u uw lab schalen in Azure DevTest Labs. Bekijk uw gebruiksquota en -limieten en vraag om een verhoging.
+title: Quota en limieten in uw Lab in Azure DevTest Labs schalen | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u uw Lab in Azure DevTest Labs kunt schalen. Bekijk uw gebruiks quota's en limieten en vraag om een verhoging.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,57 +14,57 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76761182"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Quota en limieten schalen in DevTest Labs
-Terwijl u in DevTest Labs werkt, merkt u mogelijk dat er bepaalde standaardlimieten zijn voor sommige Azure-resources, die van invloed kunnen zijn op de DevTest Labs-service. Deze grenswaarden worden **quota**genoemd .
+Wanneer u in DevTest Labs werkt, merkt u misschien dat er bepaalde standaard limieten gelden voor sommige Azure-resources, die van invloed kunnen zijn op de service DevTest Labs. Deze limieten worden **quota's**genoemd.
 
 > [!NOTE]
-> De DevTest Labs-service legt geen quota op. Eventuele quota die u tegenkomt, zijn standaardbeperkingen van het totale Azure-abonnement.
+> De DevTest Labs-service heeft geen quota opgelegd. Alle quota's die u kunt tegen komen, zijn standaard beperkingen van het hele Azure-abonnement.
 
-U elke Azure-bron gebruiken totdat u het quotum hebt bereikt. Elk abonnement heeft afzonderlijke quota en het gebruik wordt bijgehouden per abonnement.
+U kunt elke Azure-Resource gebruiken totdat u het quotum bereikt. Elk abonnement heeft afzonderlijke quota en het gebruik wordt bijgehouden per abonnement.
 
-Elk abonnement heeft bijvoorbeeld een standaardquotum van 20 cores. Dus als u VM's maakt in uw lab met elk vier cores, u slechts vijf VM's maken.
+Elk abonnement heeft bijvoorbeeld een standaard quotum van 20 kernen. Als u bijvoorbeeld virtuele machines in uw Lab maakt met vier kernen, kunt u slechts vijf Vm's maken.
 
-[Azure Subscription and Service Limits](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) bevat enkele van de meest voorkomende quota voor Azure-resources. De resources die het meest worden gebruikt in een lab en waarvoor u quota tegenkomen, omvatten VM-cores, openbare IP-adressen, netwerkinterface, beheerde schijven, RBAC-roltoewijzing en ExpressRoute-circuits.
+Met de [limieten voor Azure-abonnementen en-services](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) worden enkele van de meest voorkomende Quota's voor Azure-resources vermeld. De resources die het meest worden gebruikt in een lab en waarvoor u quota kunt tegen komen, zijn onder andere VM-kernen, open bare IP-adressen, netwerk interface, beheerde schijven, RBAC-roltoewijzing en ExpressRoute-circuits.
 
-## <a name="view-your-usage-and-quotas"></a>Uw gebruik en quota weergeven
-In deze stappen ziet u hoe u de huidige quota in uw abonnement voor specifieke Azure-bronnen weergeven en welk percentage van elk quotum dat u hebt gebruikt, bekijken.
+## <a name="view-your-usage-and-quotas"></a>Uw gebruik en quota's weer geven
+In deze stappen ziet u hoe u de huidige quota's in uw abonnement kunt weer geven voor specifieke Azure-resources en kunt u zien welk percentage van elk quotum u hebt gebruikt.
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **Meer services**en selecteer Vervolgens **Facturering** in de lijst.
-1. Selecteer in het blad Facturering een abonnement.
-4. Selecteer **Gebruik + quota**.
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Selecteer **meer services**en selecteer vervolgens **facturering** in de lijst.
+1. Selecteer een abonnement op de Blade facturering.
+4. Selecteer **gebruik en quota's**.
 
-   ![Knop Gebruik en quota](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
+   ![De knop gebruik en quota's](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
 
-   Het blade Gebruik + quota wordt weergegeven, waarin verschillende bronnen worden vermeld die beschikbaar zijn in dat abonnement en het percentage van het quotum dat per resource wordt gebruikt.
+   De Blade gebruik + quota's wordt weer gegeven, waarin verschillende beschik bare resources in het abonnement en het percentage van het quotum dat per resource wordt gebruikt, worden vermeld.
 
    ![Quota en gebruik](./media/devtest-lab-scale-lab/devtestlab-view-quotas.png)
 
 ## <a name="requesting-more-resources-in-your-subscription"></a>Meer resources aanvragen in uw abonnement
-Als u een quotumlimiet bereikt, kan de standaardlimiet van een resource in een abonnement worden verhoogd tot een maximumlimiet, zoals beschreven in [Azure-abonnements- en servicelimieten.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+Als u een quotum limiet bereikt, kan de standaard limiet van een resource in een abonnement worden verhoogd tot een maximum limiet, zoals beschreven in [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
-In deze stappen ziet u hoe u een quotumverhoging aanvragen via de [Azure-portal.](https://go.microsoft.com/fwlink/p/?LinkID=525040)
+Deze stappen laten zien hoe u een quotum verhoging kunt aanvragen via de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Selecteer **Meer services,** selecteer **Facturering**en selecteer Vervolgens Gebruik **+ quota**.
-1. Selecteer in het mes Gebruik + quota de knop **Verhoging aanvragen.**
+1. Selecteer **meer services**, selecteer **facturering**en selecteer vervolgens **gebruik en quota's**.
+1. Selecteer op de Blade gebruik en quota's de knop voor het **verg Roten van aanvragen** .
 
-   ![Knop Verhoging aanvragen](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
+   ![Knop verhogen aanvragen](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
 
-1. Als u het verzoek wilt invullen en indienen, vult u de vereiste informatie in op alle drie de tabbladen van het formulier **Nieuw ondersteuningsaanvraag.**
+1. Vul de vereiste gegevens in op alle drie tabbladen van het nieuwe formulier voor een **ondersteunings aanvraag** om de aanvraag uit te voeren en in te dienen.
 
-   ![Formulier voor het verhogen van aanvragen](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
+   ![Formulier verg Roten aanvragen](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
 
-[Inzicht in Azure Limits and Increases](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) biedt meer informatie over het contact opnemen met Azure-ondersteuning om een quotumverhoging aan te vragen.
+Meer informatie over [Azure-limieten en verg Roten](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/) biedt meer gegevens over het contact opnemen met de ondersteuning van Azure om een quotum toename aan te vragen.
 
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Volgende stappen
-* Bekijk [de sjabloongalerie voor Azure Resource Manager QuickStart van DevTest Labs.](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)
+* Verken de [DevTest Labs Azure Resource Manager-sjabloon galerie voor Quick](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)start.

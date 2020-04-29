@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67176666"
 ---
-SPF-records (Sender Policy Framework) worden gebruikt om aan te geven welke e-mailservers e-mail namens een domeinnaam kunnen verzenden. Een correcte configuratie van SPF-records is belangrijk om te voorkomen dat ontvangers uw e-mail als ongewenste e-mail markeren.
+SPF-records (Sender Policy Framework) worden gebruikt om op te geven welke e-mail servers e-mail namens een domein naam kunnen verzenden. De juiste configuratie van SPF-records is belang rijk om te voor komen dat ontvangers uw e-mail berichten als ongewenste e-mail markeren.
 
-De DNS RFC's introduceerden oorspronkelijk een nieuw SPF-recordtype om dit scenario te ondersteunen. Om oudere naamservers te ondersteunen, stonden ze ook toe dat het type TXT-record wordt gebruikt om SPF-records op te geven. Deze dubbelzinnigheid leidde tot verwarring, die werd opgelost door [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1). Daarin staat dat SPF-records moeten worden gemaakt met behulp van het type TXT-record. Het stelt ook dat de SPF record type is afgeschaft.
+De DNS Rfc's heeft oorspronkelijk een nieuw SPF-record type geïntroduceerd ter ondersteuning van dit scenario. Ter ondersteuning van oudere naam servers, hebben ze ook het gebruik van het record type TXT toegestaan om SPF-records op te geven. Deze ambiguïteit heeft geleid tot Verwar ring, die is opgelost door [RFC 7208](http://tools.ietf.org/html/rfc7208#section-3.1). Hiermee wordt aangegeven dat SPF-records moeten worden gemaakt met behulp van het record type TXT. Ook wordt aangegeven dat het SPF-record type is afgeschaft.
 
-**SPF-records worden ondersteund door Azure DNS en moeten worden gemaakt met behulp van het TXT-recordtype.** Het verouderde SPF-recordtype wordt niet ondersteund. Wanneer u [een DNS-zonebestand importeert,](../articles/dns/dns-import-export.md)worden alle SPF-records die het SPF-recordtype gebruiken, geconverteerd naar het recordtype TXT.
+**SPF-records worden ondersteund door Azure DNS en moeten worden gemaakt met behulp van het record type TXT.** Het verouderde SPF-record type wordt niet ondersteund. Wanneer u [een DNS-zone bestand importeert](../articles/dns/dns-import-export.md), worden alle SPF-records die gebruikmaken van het SPF-record type geconverteerd naar het TXT-record type.

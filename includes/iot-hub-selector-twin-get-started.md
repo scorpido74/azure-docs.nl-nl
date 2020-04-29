@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 08/20/2019
 ms.openlocfilehash: c412f7f3e20e4d04083e457bfb245b850b65e126
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050389"
 ---
 > [!div class="op_single_selector"]
@@ -17,42 +17,42 @@ ms.locfileid: "70050389"
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
-Apparaatdubbels zijn JSON-documenten waarin statusinformatie van een apparaat zijn opgeslagen, zoals metagegevens, configuraties en voorwaarden. IoT Hub blijft bestaan voor elk apparaat dat er verbinding mee maakt.
+Apparaatdubbels zijn JSON-documenten waarin statusinformatie van een apparaat zijn opgeslagen, zoals metagegevens, configuraties en voorwaarden. IoT Hub persistent voor elk apparaat dat verbinding maakt met het apparaat.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Gebruik apparaattweelingen om:
+Apparaat apparaatdubbels gebruiken voor het volgende:
 
-* Sla apparaatmetagegevens op via de back-end van uw oplossing.
+* Meta gegevens van het apparaat opslaan vanuit de back-end van uw oplossing.
 
-* Rapporteer actuele statusgegevens, zoals beschikbare mogelijkheden en voorwaarden, bijvoorbeeld de gebruikte verbindingsmethode, vanuit uw apparaat-app.
+* Rapporteert de huidige status informatie, zoals de beschik bare mogelijkheden en voor waarden, bijvoorbeeld de gebruikte verbindings methode, van de apparaat-app.
 
-* Synchroniseer de status van langlopende werkstromen, zoals firmware- en configuratie-updates, tussen een apparaat-app en een back-end-app.
+* Synchroniseer de status van langlopende werk stromen, zoals firmware en configuratie-updates, tussen een apparaat-app en een back-end-app.
 
-* Query uw apparaat metagegevens, configuratie of status.
+* Query's uitvoeren op de meta gegevens, configuratie of status van uw apparaat.
 
-Apparaattweelingen zijn ontworpen voor synchronisatie en voor het opvragen van apparaatconfiguraties en -omstandigheden. Meer informatie over wanneer apparaattweelingen moeten worden gebruikt, vindt u [in Begrijpen apparaattweelingen](../articles/iot-hub/iot-hub-devguide-device-twins.md).
+Apparaatdubbels zijn ontworpen voor synchronisatie en voor het uitvoeren van query's op de configuraties en voor waarden van apparaten. Meer informatie over het gebruik van apparaatdubbels vindt u in inzicht in de apparaatdubbels van het [apparaat](../articles/iot-hub/iot-hub-devguide-device-twins.md).
 
-Apparaattweelingen worden opgeslagen in een IoT-hub en bevatten de volgende elementen:
+Apparaatdubbels van apparaten worden opgeslagen in een IoT-hub en bevatten de volgende elementen:
 
-* **Tags**. Apparaatmetagegevens alleen toegankelijk via de back-end van de oplossing.
+* **Tags**. Meta gegevens van apparaten die alleen toegankelijk zijn voor de back-end van de oplossing.
 
-* **Gewenste eigenschappen.** JSON-objecten die door de back-end van de oplossing kunnen worden gewijzigd en door de apparaat-app kunnen worden waargenomen.
+* **Gewenste eigenschappen**. JSON-objecten die worden gewijzigd door de back-end van de oplossing en kunnen worden weer gegeven door de apparaat-app.
 
-* **Gerapporteerde eigenschappen**. JSON-objecten die door de apparaat-app kunnen worden gewijzigd en leesbaar zijn door de back-end van de oplossing.
+* **Gerapporteerde eigenschappen**. JSON-objecten die worden gewijzigd door de apparaat-app en kunnen worden gelezen door de back-end van de oplossing.
 
-Tags en eigenschappen kunnen geen arrays bevatten, maar objecten kunnen worden genest.
+Tags en eigenschappen kunnen geen matrices bevatten, maar objecten kunnen worden genest.
 
 In de volgende afbeelding ziet u de dubbele organisatie van het apparaat:
 
-![Dubbele afbeelding van het apparaat met functionaliteit](./media/iot-hub-selector-twin-get-started/twin.png)
+![Dubbele afbeelding van apparaat met functionaliteit](./media/iot-hub-selector-twin-get-started/twin.png)
 
-Bovendien kan de back-end van de oplossing apparaattweelingen opvragen op basis van alle bovenstaande gegevens.
-Zie [Apparaattweelingen begrijpen](../articles/iot-hub/iot-hub-devguide-device-twins.md)voor meer informatie over apparaattweelingen. Zie [IoT Hub-querytaal](../articles/iot-hub/iot-hub-devguide-query-language.md)voor meer informatie over query's.
+Daarnaast kan de back-end van de oplossing het apparaat apparaatdubbels opvragen op basis van alle bovenstaande gegevens.
+Zie voor meer informatie over device apparaatdubbels inzicht in de [apparaatdubbels](../articles/iot-hub/iot-hub-devguide-device-twins.md)van het apparaat. Zie [IOT hub query language (Engelstalig](../articles/iot-hub/iot-hub-devguide-query-language.md)) voor meer informatie over het uitvoeren van query's.
 
 
 In deze handleiding ontdekt u hoe u:
 
-* Maak een back-end-app die tags toevoegt aan een apparaattweeling en een gesimuleerde apparaat-app die het verbindingskanaal rapporteert als een gerapporteerde eigenschap op de apparaattweeling.
+* Maak een back-end-app waarmee Tags worden toegevoegd aan een apparaat, en een gesimuleerde apparaat-app die het verbindings kanaal rapporteert als een gerapporteerde eigenschap op het apparaat dubbele.
 
-* Queryapparaten uit uw back-end-app met behulp van filters op de eerder gemaakte tags en eigenschappen.
+* Zoek apparaten uit uw back-end-app met behulp van filters voor de tags en eigenschappen die eerder zijn gemaakt.

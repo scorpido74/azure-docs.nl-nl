@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176097"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Openbare eindpunten op het cloudapparaat maken
@@ -31,7 +31,7 @@ ms.locfileid: "67176097"
 
         Doe het volgende op de blade Inkomende beveiligingsregel toevoegen:
 
-        1. Typ voor de **naam**de volgende naam voor het eindpunt: WinRMHttps.
+        1. Typ voor de **naam**de volgende naam voor het eind punt: WinRMHttps.
         
         2. Selecteer voor de **Prioriteit** een getal dat kleiner is dan 1000 (dit is de prioriteit voor de standaardregel). Hoe hoger de waarde, hoe lager de prioriteit.
 

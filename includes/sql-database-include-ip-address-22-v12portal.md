@@ -1,7 +1,7 @@
 ---
 title: Firewallregels op serverniveau
 description: Firewallregels op serverniveau
-keywords: sql-verbinding, verbindingstekenreeks
+keywords: SQL-verbinding, connection string
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,33 +11,33 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176114"
 ---
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Selecteer Alle **services**in de lijst aan de linkerkant .
+2. Selecteer in de lijst aan de linkerkant **alle services**.
 
-3. Scroll en selecteer **SQL-servers**.
+3. Schuif en selecteer **SQL-servers**.
 
-    ![Uw Azure SQL Database-server zoeken in de portal][b21-FindServerInPortal]
-5. Typ in het tekstvak filter de naam van uw server. Uw rij wordt weergegeven.
+    ![Uw Azure SQL Database-Server zoeken in de portal][b21-FindServerInPortal]
+5. Typ in het tekstvak Filter de naam van uw server. De rij wordt weer gegeven.
 
-6. Selecteer de rij voor uw server. Er wordt een blade voor uw server weergegeven.
+6. Selecteer de rij voor uw server. Er wordt een Blade voor uw server weer gegeven.
 
-7. Selecteer **Instellingen**op uw serverblad .
+7. Selecteer op de Blade Server de optie **instellingen**.
 
-8. Selecteer **Firewall**.
+8. Selecteer **firewall**.
 
-    ![Selecteer Instellingen > Firewall][b31-SettingsFirewallNavig]
-9. Selecteer **Client-IP toevoegen**. Typ een naam voor uw nieuwe regel in het eerste tekstvak.
+    ![Instellingen > firewall selecteren][b31-SettingsFirewallNavig]
+9. Selecteer **client-IP toevoegen**. Typ in het eerste tekstvak een naam voor de nieuwe regel.
 
-10. Typ de lage en hoge IP-adreswaarden voor het bereik dat u wilt inschakelen.
+10. Typ de waarden voor het laagste en hoogste IP-adres voor het bereik dat u wilt inschakelen.
 
-    * Het kan handig zijn om de lage waarde einde met **0,0** en de hoge waarde einde met **.255**.
+    * Het kan handig zijn om de lage waarde end te hebben met **dpm\dpm\protectionagents\ra\3.0.** en de hoge waarde eindigt op **. 255**.
 
 11. Selecteer **Opslaan**.
 

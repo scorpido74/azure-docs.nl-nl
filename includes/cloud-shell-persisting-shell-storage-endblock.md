@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176372"
 ---
-## <a name="transfer-local-files-to-cloud-shell"></a>Lokale bestanden overbrengen naar Cloud Shell
-De `clouddrive` map synchroniseert met het Azure-portalopslagblad. Gebruik dit blad om lokale bestanden over te zetten van of naar uw bestandsshare. Het bijwerken van bestanden vanuit Cloud Shell wordt weergegeven in de GUI voor bestandsopslag wanneer u het blad vernieuwt.
+## <a name="transfer-local-files-to-cloud-shell"></a>Lokale bestanden overdragen aan Cloud Shell
+De `clouddrive` Directory wordt gesynchroniseerd met de blade Azure Portal opslag. Gebruik deze Blade voor het overdragen van lokale bestanden naar of van uw bestands share. Het bijwerken van bestanden vanuit Cloud Shell wordt weer gegeven in de gebruikers interface van bestands opslag wanneer u de Blade vernieuwt.
 
 ### <a name="download-files"></a>Bestanden downloaden
 
 ![Lijst met lokale bestanden](../articles/cloud-shell/media/persisting-shell-storage/download.png)
-1. Ga in de Azure-portal naar het gemonteerde bestandsshare.
-2. Selecteer het doelbestand.
-3. Selecteer de knop **Downloaden.**
+1. Ga in het Azure Portal naar de gekoppelde bestands share.
+2. Selecteer het doel bestand.
+3. Selecteer de knop **downloaden** .
 
 ### <a name="upload-files"></a>Bestanden uploaden
 
-![Lokale bestanden die moeten worden geüpload](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
-1. Ga naar uw gemonteerde bestandsshare.
+![Te uploaden lokale bestanden](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
+1. Ga naar de gekoppelde bestands share.
 2. Selecteer de knop **Uploaden**.
 3. Selecteer het bestand of de bestanden die u wilt uploaden.
-4. Bevestig de upload.
+4. Bevestig het uploaden.
 
-U ziet nu de bestanden die `clouddrive` toegankelijk zijn in uw directory in Cloud Shell.
+Nu ziet u de bestanden die toegankelijk zijn in uw `clouddrive` directory in Cloud shell.

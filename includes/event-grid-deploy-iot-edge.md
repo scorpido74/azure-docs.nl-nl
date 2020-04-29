@@ -9,45 +9,45 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844582"
 ---
-## <a name="deploy-event-grid-iot-edge-module"></a>GebeurtenisrasterIoT Edge-module implementeren
+## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge-module implementeren
 
-Er zijn verschillende manieren om modules te implementeren op een IoT Edge-apparaat en ze werken allemaal voor Azure Event Grid op IoT Edge. In dit artikel worden de stappen beschreven om gebeurtenisraster op IoT Edge te implementeren vanuit de Azure-portal.
+Er zijn verschillende manieren om modules op een IoT Edge apparaat te implementeren en ze werken allemaal voor Azure Event Grid op IoT Edge. In dit artikel worden de stappen beschreven voor het implementeren van Event Grid op IoT Edge van de Azure Portal.
 
 >[!NOTE]
-> In deze zelfstudie implementeert u de module Event Grid zonder volharding. Dit betekent dat alle onderwerpen en abonnementen die u in deze zelfstudie maakt, worden verwijderd wanneer u de module opnieuw implementeert. Zie de volgende artikelen: Status blijven bestaan [in Linux](../articles/event-grid/edge/persist-state-linux.md) of Persist status in [Windows](../articles/event-grid/edge/persist-state-windows.md)voor meer informatie over het instellen van persistentie. Voor productieworkloads raden we u aan de Event Grid-module met volharding te installeren.
+> In deze zelf studie implementeert u de module Event Grid zonder persistentie. Dit betekent dat alle onderwerpen en abonnementen die u in deze zelf studie maakt, worden verwijderd wanneer u de module opnieuw implementeert. Raadpleeg de volgende artikelen voor meer informatie over het instellen van persistentie: [behoud de status in Linux](../articles/event-grid/edge/persist-state-linux.md) of [persistent in Windows](../articles/event-grid/edge/persist-state-windows.md). Voor werk belastingen wordt u aangeraden de Event Grid module met persistentie te installeren.
 
 >[!IMPORTANT]
-> In deze zelfstudie wordt de module Event Grid geïmplementeerd met clientverificatie uitgeschakeld en staan HTTP-abonnees toe. Voor productieworkloads raden we u aan alleen HTTPS-verzoeken en abonnees in te schakelen met clientverificatie ingeschakeld. Zie [Beveiliging en verificatie](../articles/event-grid/edge/security-authentication.md)voor meer informatie over het veilig configureren van de gebeurtenisrastermodule.
+> In deze zelf studie wordt Event Grid module geïmplementeerd met de client verificatie uitgeschakeld en worden HTTP-abonnees toegestaan. Voor werk belastingen wordt u aangeraden alleen HTTPS-aanvragen en abonnees in te scha kelen met client verificatie ingeschakeld. Zie [beveiliging en verificatie](../articles/event-grid/edge/security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
  
-### <a name="select-your-iot-edge-device"></a>Selecteer uw IoT Edge-apparaat
+### <a name="select-your-iot-edge-device"></a>Uw IoT Edge-apparaat selecteren
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com)
-1. Navigeer naar uw IoT-hub.
-1. Selecteer **IoT Edge** in het menu in de sectie **Automatisch apparaatbeheer.** 
-1. Klik op de id van het doelapparaat in de lijst met apparaten
-1. Selecteer **Modules instellen**. Houd de pagina open. U gaat verder met de stappen in het volgende gedeelte.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Navigeer naar uw IoT Hub.
+1. Selecteer **IOT Edge** in het menu van het gedeelte **Automatic Device Management** . 
+1. Klik op de ID van het doel apparaat in de lijst met apparaten
+1. Selecteer **modules instellen**. Laat de pagina geopend. U gaat verder met de stappen in de volgende sectie.
 
-### <a name="configure-a-deployment-manifest"></a>Een implementatiemanifest configureren
+### <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
 
-Een implementatiemanifest is een JSON-document dat beschrijft welke modules moeten worden geïmplementeerd, hoe gegevens tussen de modules stromen en de gewenste eigenschappen van de moduletweeling. De Azure-portal heeft een wizard die u door het maken van een implementatiemanifest leidt, in plaats van het JSON-document handmatig te bouwen.  Het heeft drie stappen: **Modules toevoegen,** **Routes opgeven**en **Implementatie controleren**.
+Een implementatie manifest is een JSON-document waarin wordt beschreven welke modules moeten worden geïmplementeerd, hoe gegevens stromen tussen de modules en gewenste eigenschappen van de module apparaatdubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
-1. Selecteer **Toevoegen** in de sectie **Implementatiemodules**
-1. Selecteer **IoT Edge Module** in de typen modules in de vervolgkeuzelijst
-1. Geef de opties voor het maken van containers op:
+1. Selecteer in de sectie **implementatie modules** de optie **toevoegen**
+1. Selecteer **IOT Edge module** uit de typen modules in de vervolg keuzelijst.
+1. Geef de naam, de afbeelding en de opties voor het maken van de container van de container op:
 
 [!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Naam**: eventgridmodule
-   * **Afbeelding URI**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
-   * **Opties voor het maken van containers:**
+   * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Opties**voor het maken van containers:
 
     ```json
         {
@@ -67,26 +67,26 @@ Een implementatiemanifest is een JSON-document dat beschrijft welke modules moet
         }
     ```
 
- 1. Klik **op Opslaan**
- 1. Klik **op Volgende** om verder te gaan naar de sectie routes
+ 1. Klik op **Opslaan**
+ 1. Klik op **volgende** om door te gaan naar de sectie routes
 
     > [!NOTE]
-    > Als u een Azure VM als randapparaat gebruikt, voegt u een inkomende poortregel toe om binnenkomend verkeer op poort 4438 toe te staan. Zie Poorten openen voor [een vm voor](../articles/virtual-machines/windows/nsg-quickstart-portal.md)instructies voor het toevoegen van de regel.
+    > Als u een virtuele machine van Azure als een edge-apparaat gebruikt, voegt u een regel voor binnenkomende poort toe om binnenkomend verkeer op poort 4438 toe te staan. Zie [poorten openen voor een virtuele machine](../articles/virtual-machines/windows/nsg-quickstart-portal.md)voor instructies over het toevoegen van de regel.
 
 
-### <a name="setup-routes"></a>Setup routes
+### <a name="setup-routes"></a>Installatie routes
 
- De standaardroutes behouden en **Volgende** selecteren om door te gaan naar de controlesectie
+ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sectie beoordeling
 
 ### <a name="review-deployment"></a>Implementatie controleren
 
-1. In de sectie beoordeling ziet u het JSON-implementatiemanifest dat is gemaakt op basis van uw selecties in de vorige twee secties. Controleer of u de twee modules in de lijst ziet: **$edgeAgent** en **$edgeHub**. Deze twee modules vormen de IoT Edge-runtime en zijn vereist standaardinstellingen voor elke implementatie.
-1. Controleer uw implementatiegegevens en selecteer **Verzenden**.
+1. In het gedeelte beoordeling ziet u het JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige twee secties. Controleer of de twee modules in de lijst worden weer geven: **$edgeAgent** en **$edgeHub**. Deze twee modules vormen de IoT Edge runtime en zijn de standaard instellingen voor elke implementatie.
+1. Controleer uw implementatie gegevens en selecteer vervolgens **verzenden**.
 
 ### <a name="verify-your-deployment"></a>Uw implementatie verifiëren
 
-1. Nadat u de implementatie hebt verzonden, keert u terug naar de IoT Edge-pagina van uw IoT-hub.
-1. Selecteer het **IoT Edge-apparaat** dat u met de implementatie hebt getarget om de details te openen.
-1. Controleer in de apparaatgegevens of de module Gebeurtenisraster wordt vermeld als **opgegeven in implementatie** en Gerapporteerd per **apparaat**.
+1. Nadat u de implementatie hebt verzonden, keert u terug naar de pagina IoT Edge van uw IoT-hub.
+1. Selecteer het **IOT edge apparaat** waarop de implementatie is gericht om de details ervan te openen.
+1. Controleer in de details van het apparaat of de Event Grid module wordt vermeld als **opgegeven in de implementatie** en wordt **gerapporteerd door het apparaat**.
 
-Het kan even duren voordat de module op het apparaat is gestart en vervolgens wordt gerapporteerd aan IoT Hub. Vernieuw de pagina om een bijgewerkte status te zien.
+Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.

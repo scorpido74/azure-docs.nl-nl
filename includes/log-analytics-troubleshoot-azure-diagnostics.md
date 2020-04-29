@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176428"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>Problemen oplossen met Azure Diagnostics
@@ -30,8 +30,8 @@ Voer de volgende stappen in Azure Portal uit om de resourceprovider te registrer
 Nadat de *Microsoft.insights* resourceprovider is geregistreerd, configureert u Diagnostics opnieuw.
 
 
-Als u in PowerShell het volgende foutbericht ontvangt, moet u uw versie van PowerShell bijwerken:
+Als u het volgende fout bericht ontvangt in Power shell, moet u uw versie van Power shell bijwerken:
 
 `Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-Werk uw versie van Azure PowerShell bij, volg de instructies in het artikel [Azure PowerShell installeren.](/powershell/azure/install-az-ps)
+Werk uw versie van Azure PowerShell bij en volg de instructies in het artikel [installatie Azure PowerShell](/powershell/azure/install-az-ps) .

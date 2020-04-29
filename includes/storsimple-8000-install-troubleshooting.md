@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176230"
 ---
 ## <a name="troubleshooting-update-failures"></a>Problemen oplossen met mislukte updates
 **Wat moet ik doen als ik een melding zie dat de controles vóór de upgrade zijn mislukt?**
 
-Als een controle vooraf mislukt, bekijkt u de gedetailleerde meldingsbalk onder aan de pagina. Hierin kunt u zien welke controle vooraf is mislukt. U ontvangt bijvoorbeeld een melding dat de statuscontrole van de controller en de statuscontrole van hardwareonderdelen zijn mislukt. Ga naar **Monitor > Hardware-status**. U moet ervoor zorgen dat beide controllers gezond en online zijn. U moet er ook voor zorgen dat alle hardwarecomponenten in het StorSimple-apparaat gezond zijn in dit blad. U kunt daarna proberen de updates te installeren. Als het niet lukt om de problemen met de hardwareonderdelen op te lossen, neemt u contact op met Microsoft-ondersteuning voor de volgende stappen.
+Als een controle vooraf mislukt, bekijkt u de gedetailleerde meldingsbalk onder aan de pagina. Hierin kunt u zien welke controle vooraf is mislukt. U ontvangt bijvoorbeeld een melding dat de status controle van de controller en het hardware-onderdeel is mislukt. Ga naar **Monitor > hardware Health**. U moet ervoor zorgen dat beide controllers in orde zijn en online zijn. U moet er ook voor zorgen dat alle hardware-onderdelen in het StorSimple-apparaat in orde zijn in deze Blade. U kunt daarna proberen de updates te installeren. Als het niet lukt om de problemen met de hardwareonderdelen op te lossen, neemt u contact op met Microsoft-ondersteuning voor de volgende stappen.
 
 **Wat moet ik doen als ik de foutmelding "Kan geen updates installeren" zie en de aanbeveling krijg de gids voor het oplossen van problemen met updates te raadplegen om de oorzaak van het probleem vast te stellen?**
 

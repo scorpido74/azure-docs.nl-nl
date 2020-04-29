@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: d5de8efc62984b9738c9247b12225f35265309c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67175803"
 ---
 > [!TIP]
 >
-> Als u van plan bent om de HTTP- of WebHook-bindingen te gebruiken, bent u van plan om poortuitputting te voorkomen die kan worden veroorzaakt door onjuiste instantiatie van `HttpClient`. Zie [Verbindingen beheren in Azure-functies](../articles/azure-functions/manage-connections.md)voor meer informatie.
+> Als u van plan bent de HTTP-of webhook-bindingen te gebruiken, moet u ervoor zorgen dat er geen poort ontstaat die `HttpClient`kan worden veroorzaakt door een onjuiste instantie van. Zie [verbindingen beheren in azure functions](../articles/azure-functions/manage-connections.md)voor meer informatie.

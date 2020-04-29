@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176224"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Een StorSimple-back-upschema toevoegen of wijzigen
 
 1. Ga naar uw StorSimple-apparaat en klik op **Back-upbeleid**.
 
-2. Selecteer en klik in de tabeltabellijst van het beleid op het beleid dat u wilt wijzigen. Klik met de rechtermuisknop om het contextmenu aan te roepen en selecteer **Vervolgens Planning toevoegen**.
+2. Selecteer in de lijst in tabel vorm van het beleid en klik op het beleid dat u wilt wijzigen. Klik met de rechter muisknop om het context menu te openen en selecteer vervolgens **schema toevoegen**.
 
     ![schema's beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
-3. Wijzig in het **blad Planning toevoegen** het momentopnametype, de back-upfrequentie, de retentie en de begindatum en -tijd. Klik op**toevoegen**.
+3. Wijzig op de Blade **schema toevoegen** het type moment opname, de back-upfrequentie, retentie en de begin datum en-tijd. Klik op **Add**.
 
     ![schema's beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
-4. U krijgt een melding wanneer het maken van het back-upbeleid is voltooid. De lijst met back-upbeleid wordt ook bijgewerkt.
+4. U wordt gewaarschuwd wanneer het maken van het back-upbeleid is voltooid. De lijst back-upbeleid is ook bijgewerkt.
 
     ![schema's beheren](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
 

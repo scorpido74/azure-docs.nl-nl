@@ -1,6 +1,6 @@
 ---
-title: VHD-bestand uploaden naar Azure DevTest Labs met PowerShell | Microsoft Documenten
-description: In dit artikel vindt u een walkthrough waarin u laat zien hoe u een VHD-bestand uploadt naar Azure DevTest Labs met PowerShell.
+title: VHD-bestand uploaden naar Azure DevTest Labs met behulp van Power shell | Microsoft Docs
+description: Dit artikel bevat een overzicht waarin wordt uitgelegd hoe u een VHD-bestand uploadt naar Azure DevTest Labs met behulp van Power shell.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: a9e5a69cd7840bbaff081a4d47cb60f62a76eda6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759752"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-bestand uploaden naar het opslagaccount van het lab met PowerShell
+# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-bestand uploaden naar het opslag account van de Lab met behulp van Power shell
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs kunnen VHD-bestanden worden gebruikt om aangepaste afbeeldingen te maken, die worden gebruikt om virtuele machines in te richten. Met de volgende stappen u powershell gebruiken om een VHD-bestand te uploaden naar het opslagaccount van een lab. Zodra u uw VHD-bestand hebt geüpload, bevat de [sectie Volgende stappen](#next-steps) enkele artikelen die illustreren hoe u een aangepaste afbeelding maakt van het geüploade VHD-bestand. Zie [Inleiding tot beheerde schijven](../virtual-machines/linux/managed-disks-overview.md) voor meer informatie over schijven en VHD's in Azure
+In Azure DevTest Labs kunnen VHD-bestanden worden gebruikt om aangepaste installatie kopieën te maken die worden gebruikt om virtuele machines in te richten. De volgende stappen helpen u bij het gebruik van Power shell om een VHD-bestand te uploaden naar een opslag account van een lab. Zodra u uw VHD-bestand hebt geüpload, worden in de [sectie volgende stappen](#next-steps) een aantal artikelen weer gegeven waarin wordt uitgelegd hoe u een aangepaste installatie kopie maakt op basis van het GEÜPLOADe VHD-bestand. Zie [Introduction to Managed disks](../virtual-machines/linux/managed-disks-overview.md) (Engelstalig) voor meer informatie over schijven en Vhd's in azure
 
 ## <a name="step-by-step-instructions"></a>Stapsgewijze instructies
 
-In de volgende stappen u een VHD-bestand uploaden naar Azure DevTest Labs met PowerShell. 
+De volgende stappen begeleiden u bij het uploaden van een VHD-bestand naar Azure DevTest Labs met behulp van Power shell. 
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Selecteer **Alle services**en selecteer Vervolgens **DevTest Labs** in de lijst.
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 
-1. Selecteer in de lijst met laboratoria het gewenste lab.  
+1. Selecteer in de lijst met Labs het gewenste Lab.  
 
-1. Selecteer **Configuratie**op het blad van het lab. 
+1. Selecteer **configuratie**op de Blade van het lab. 
 
-1. Selecteer **aangepaste afbeeldingen (VHD's)** in het **configuratieblad** van het lab.
+1. Selecteer **aangepaste installatie kopieën (vhd's)** op de Blade Lab- **configuratie** .
 
-1. Selecteer **Custom images** **+Toevoegen**. 
+1. Selecteer op de Blade **aangepaste installatie kopieën** **+ toevoegen**. 
 
-1. Selecteer **VHD**in het **aangepaste afbeeldingsblad** .
+1. Selecteer **VHD**op de Blade **aangepaste installatie kopie** .
 
-1. Selecteer op het **VHD-blad** de optie **Een VHD uploaden met PowerShell**.
+1. Selecteer op **VHD** de Blade VHD **een VHD uploaden met behulp van Power shell**.
 
-    ![VHD uploaden met PowerShell](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
+    ![VHD uploaden met Power shell](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
 
-1. Kopieer het gegenereerde PowerShell-script naar een teksteditor in het **afbeeldingsblad uploaden met PowerShell-blad.**
+1. Kopieer op de Blade **een afbeelding uploaden met Power shell** het gegenereerde Power shell-script naar een tekst editor.
 
-1. Wijzig de parameter **LocalFilePath** van de cmdlet **Add-AzureVhd** om te wijzen op de locatie van het VHD-bestand dat u wilt uploaden.
+1. Wijzig de para meter **LocalFilePath** van de cmdlet **add-AzureVhd** zodat deze verwijst naar de locatie van het VHD-bestand dat u wilt uploaden.
 
-1. Voer bij een PowerShell-prompt de cmdlet **Add-AzureVhd** uit (met de gewijzigde parameter **LocalFilePath).**
+1. Voer bij een Power shell-prompt de cmdlet **add-AzureVhd** (met de para meter modified **LocalFilePath** ) uit.
 
 > [!WARNING] 
 > 
-> Het proces van het uploaden van een VHD-bestand kan lang zijn, afhankelijk van de grootte van het VHD-bestand en uw verbindingssnelheid.
+> Het uploaden van een VHD-bestand kan lang duren, afhankelijk van de grootte van het VHD-bestand en de verbindings snelheid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een aangepaste afbeelding maken in Azure DevTest Labs vanuit een VHD-bestand met behulp van de Azure-portal](devtest-lab-create-template.md)
-- [Een aangepaste afbeelding maken in Azure DevTest Labs vanuit een VHD-bestand met PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Een aangepaste installatie kopie maken in Azure DevTest Labs van een VHD-bestand met behulp van de Azure Portal](devtest-lab-create-template.md)
+- [Een aangepaste installatie kopie maken in Azure DevTest Labs van een VHD-bestand met behulp van Power shell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

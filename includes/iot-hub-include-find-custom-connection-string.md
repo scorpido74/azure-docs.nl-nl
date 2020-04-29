@@ -9,30 +9,30 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 6f43bbcd83861f7d39de2aa89bbe035c2ff5b809
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050416"
 ---
 <!-- This tells how to create a custom shared access policy for your IoT hub and get the connection string for it-->
 
-Voer de volgende stappen uit om een beleid voor gedeelde toegang te maken dat machtigingen voor **serviceverbinding** en **registerlees** verleent en een verbindingstekenreeks voor dit beleid wilt krijgen:
+Ga als volgt te werk om een beleid voor gedeelde toegang te maken dat machtigingen voor het verbinden en het **REGI ster** van **Services** verleent en een Connection String voor dit beleid krijgt:
 
-1. Selecteer **Resourcegroepen**in de [Azure-portal](https://portal.azure.com). Selecteer de resourcegroep waar uw hub zich bevindt en selecteer vervolgens uw hub in de lijst met bronnen.
+1. Selecteer **resource groepen**In het [Azure Portal](https://portal.azure.com). Selecteer de resource groep waar uw hub zich bevindt en selecteer vervolgens uw hub in de lijst met resources.
 
-1. Selecteer in het linkerdeelvenster van uw hub de optie **Beleid voor gedeelde toegang**.
+1. Selecteer in het linkerdeel venster van uw hub het beleid voor **gedeelde toegang**.
 
-1. Selecteer **Toevoegen**in het bovenste menu boven de lijst met beleidsregels .
+1. Selecteer in het bovenste menu boven de lijst met beleids regels **toevoegen**.
 
-1. Voer **onder Een beleid voor gedeelde toegang toevoegen**een beschrijvende naam in voor uw beleid, zoals *serviceEnRegisterLezen*. Selecteer **onder Machtigingen** **registerlees-** en **Serviceverbinding**en selecteer **Vervolgens Maken**.
+1. Voer onder **een gedeeld toegangs beleid toevoegen**een beschrijvende naam in voor het beleid, zoals *serviceAndRegistryRead*. Onder **machtigingen**selecteert u **REGI ster lezen** en **service verbinding**maken en selecteert u **maken**.
 
-    ![Een nieuw beleid voor gedeelde toegang toevoegen](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
+    ![Weer geven hoe een nieuw beleid voor gedeelde toegang moet worden toegevoegd](./media/iot-hub-include-find-custom-connection-string/iot-hub-add-custom-policy.png)
 
-1. Selecteer uw nieuwe beleid in de lijst met beleidsregels.
+1. Selecteer uw nieuwe beleid in de lijst met beleids regels.
 
-1. Selecteer **onder Gedeelde toegangstoetsen**het kopieerpictogram voor de **verbindingstekenreeks : primaire sleutel** en sla de waarde op.
+1. Onder **gedeelde toegangs sleutels**selecteert u het Kopieer pictogram voor de **verbindings reeks--primaire sleutel** en slaat u de waarde op.
 
     ![Het ophalen van de verbindingsreeks](./media/iot-hub-include-find-custom-connection-string/iot-hub-get-connection-string.png)
 
-Zie [Toegangsbeheer en machtigingen](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)voor meer informatie over het gedeelde toegangsbeleid en machtigingen voor IoT Hub.
+Zie [toegangs beheer en machtigingen](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)voor meer informatie over het IOT hub van het beleid voor gedeelde toegang en machtigingen.

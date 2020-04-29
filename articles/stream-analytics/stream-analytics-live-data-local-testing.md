@@ -1,6 +1,6 @@
 ---
-title: Live gegevens testen met Azure Stream Analytics voor Visual Studio
-description: Meer informatie over het lokaal testen van uw Azure Stream Analytics-taak met behulp van live streaminggegevens.
+title: Live-gegevens testen met Azure Stream Analytics voor Visual Studio
+description: Meer informatie over hoe u uw Azure Stream Analytics-taak lokaal kunt testen met live streaming-gegevens.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840482"
 ---
-# <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Live gegevens lokaal testen met Azure Stream Analytics-hulpprogramma's voor Visual Studio (Preview)
+# <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Live-gegevens lokaal testen met Azure Stream Analytics-hulpprogram ma's voor Visual Studio (preview)
 
-Met Azure Stream Analytics-hulpprogramma's voor Visual Studio u taken lokaal testen vanuit de IDE met behulp van live gebeurtenisstreams vanuit Azure Event Hub, IoT Hub en Blob Storage. Lokale tests met live gegevens kunnen de [prestatie- en schaalbaarheidstests](stream-analytics-streaming-unit-consumption.md) die u in de cloud uitvoeren niet vervangen, maar u tijd besparen tijdens het testen van games door u niet telkens in de cloud hoeft in te dienen wanneer u uw Stream Analytics-taak wilt testen. Deze functie is in preview en mag niet worden gebruikt voor productieworkloads.
+Met Azure Stream Analytics-hulpprogram ma's voor Visual Studio kunt u taken lokaal vanuit de IDE testen met live gebeurtenis stromen van Azure Event hub, IoT Hub en Blob Storage. Lokale tests van live data kunnen de [prestaties en schaal baarheid](stream-analytics-streaming-unit-consumption.md) niet vervangen die u in de cloud kunt uitvoeren, maar u kunt tijdens functionele tests tijd besparen door niet telkens wanneer u uw stream Analytics-taak wilt testen naar de Cloud. Deze functie is beschikbaar als preview-versie en mag niet worden gebruikt voor werk belastingen voor de productie.
 
-## <a name="testing-options"></a>Testopties
+## <a name="testing-options"></a>Test opties
 
-De volgende lokale testopties worden ondersteund:
+De volgende lokale test opties worden ondersteund:
 
-|**Invoer**  |**Output**  |**Taaktype**  |
+|**Invoer**  |**Uitvoer**  |**Taak type**  |
 |---------|---------|---------|
-|Lokale statische gegevens   |  Lokale statische gegevens   |   Cloud/rand |
-|Live invoergegevens   |  Lokale statische gegevens   |   Cloud |
-|Live invoergegevens   |  Live-uitvoergegevens   |   Cloud |
+|Lokale statische gegevens   |  Lokale statische gegevens   |   Cloud/Edge |
+|Live invoer gegevens   |  Lokale statische gegevens   |   Cloud |
+|Live invoer gegevens   |  Live uitvoer gegevens   |   Cloud |
 
-## <a name="local-testing-with-live-data"></a>Lokale tests met live gegevens
+## <a name="local-testing-with-live-data"></a>Lokale tests met Live-gegevens
 
-1. Nadat u een [Azure Stream Analytics-cloudproject hebt](stream-analytics-quick-create-vs.md)gemaakt in Visual Studio, opent u **script.asaql**. De lokale tests maken standaard gebruik van lokale invoer en lokale uitvoer.
+1. Nadat u een [Azure stream Analytics Cloud project in Visual Studio](stream-analytics-quick-create-vs.md)hebt gemaakt, opent u **script. asaql**. De lokale test maakt standaard gebruik van lokale invoer en lokale uitvoer.
 
-   ![Lokale invoer en lokale uitvoer van Azure Stream Analytics Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
+   ![Lokale invoer en lokale uitvoer van Visual Studio Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
-2. Als u live gegevens wilt testen, kiest **u Cloudinvoer gebruiken** in het vervolgkeuzevak.
+2. Als u Live-gegevens wilt testen, kiest **u Cloud invoer gebruiken** in de vervolg keuzelijst.
 
-   ![Azure Stream Analytics Visual Studio live cloud-invoer](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
+   ![Azure Stream Analytics Visual Studio Live-Cloud invoer](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
-3. Stel de **begintijd in** om te bepalen wanneer de taak wordt gestart met het verwerken van invoergegevens. De taak moet mogelijk van tevoren invoergegevens lezen om nauwkeurige resultaten te garanderen. De standaardtijd is ingesteld op 30 minuten voor de huidige tijd.
+3. De **begin tijd** instellen om te definiëren wanneer de taak wordt gestart met het verwerken van invoer gegevens. De taak moet mogelijk invoer gegevens van tevoren lezen om nauw keurige resultaten te garanderen. De standaard instelling is ingesteld op 30 minuten vóór de huidige tijd.
 
-   ![Starttijd van Azure Stream Analytics Visual Studio live-gegevens](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
+   ![Start tijd van Visual Studio Live-gegevens Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. Klik **op Lokaal uitvoeren**. Er wordt een consolevenster weergegeven met de voortgangsvoortgang en taakstatistieken. Als u het proces wilt stoppen, u dit handmatig doen. 
+4. Klik op **lokaal uitvoeren**. Er wordt een console venster weer gegeven met de uitvoerings voortgang en taak gegevens. Als u het proces wilt stoppen, kunt u dit hand matig doen. 
 
-   ![Venster Live dataproces van Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
+   ![Azure Stream Analytics Visual Studio live data process-venster](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
-   De uitvoerresultaten worden elke drie seconden vernieuwd met de eerste 500 uitvoerrijen in het lokale run-resultaatvenster en de uitvoerbestanden worden in de map **ASALocalRun** van het projectpad geplaatst. U de uitvoerbestanden ook openen door op de knop **Map met resultaten** openen te klikken in het lokale run-resultaatvenster.
+   De uitvoer resultaten worden om de drie seconden vernieuwd met de eerste 500 uitvoer rijen in het venster voor de lokale uitvoering van resultaten en de uitvoer bestanden worden geplaatst in de map **ASALocalRun** van het project. U kunt de uitvoer bestanden ook openen door te klikken op de knop **map openen** in het venster lokale uitvoer resultaten.
 
-   ![Azure Stream Analytics Visual Studio live data open resultaten map](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
+   ![Map voor open bare resultaten van de Azure Stream Analytics Visual Studio Live-gegevens](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
 
-5. Als u de resultaten wilt uitvoeren naar uw clouduitvoersinks, kiest **u Uitvoer naar cloud** vanuit het tweede vervolgkeuzevak. Power BI en Azure Data Lake Storage worden niet ondersteund uitvoerputten.
+5. Als u de resultaten naar de Cloud uitvoer-sinks wilt uitvoeren, kiest u in de tweede vervolg keuzelijst **uitvoer naar de Cloud** . Power BI en Azure Data Lake Storage worden geen uitvoer filters ondersteund.
 
-   ![Azure Stream Analytics Visual Studio live data-uitvoer naar cloud](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
+   ![Azure Stream Analytics Visual Studio Live-gegevens uitvoer naar de Cloud](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
  
 ## <a name="limitations"></a>Beperkingen
 
-* Power BI en Azure Data Lake Storage worden niet ondersteund als gevolg van verificatiemodelbeperkingen.
+* Power BI en Azure Data Lake Storage worden geen uitvoer filters ondersteund vanwege beperkingen van het verificatie model.
 
-* Alleen opties voor cloudinvoer hebben [ondersteuning voor tijdbeleid,](stream-analytics-out-of-order-and-late-events.md) terwijl lokale invoeropties dat niet doen.
+* Alleen opties voor Cloud invoer hebben ondersteuning voor [tijd beleid](stream-analytics-out-of-order-and-late-events.md) , terwijl lokale invoer opties niet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Stream Analytics-taak maken met behulp van de Azure Stream Analytics-tools voor Visual Studio](stream-analytics-quick-create-vs.md)
-* [Query's van Stream Analytics lokaal testen met Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Stream Analytics query's lokaal testen met Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven](stream-analytics-vs-tools.md)

@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tomfitz
 ms.openlocfilehash: 03e4053b65cf39101e8cb5d35ce439a759ec11d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67176422"
 ---
 1. Ga naar de blade Vergrendelingen voor de resource, de resourcegroep of het abonnement waarvoor u een vergrendeling wilt instellen en selecteer **Vergrendelingen**.
    
-      ![selecteren vergrendelen](./media/resource-manager-lock-resources/select-lock.png)
-2. Als u een vergrendeling wilt toevoegen, selecteert u **Toevoegen**. Als u een vergrendeling op bovenliggend niveau wilt maken, selecteert u de bovenliggende optie. De momenteel geselecteerde resource neemt het slot over van de bovenliggende bron. U bijvoorbeeld de resourcegroep vergrendelen om een vergrendeling toe te passen op al zijn resources.
+      ![vergren deling selecteren](./media/resource-manager-lock-resources/select-lock.png)
+2. Als u een vergrendeling wilt toevoegen, selecteert u **Toevoegen**. Als u een vergren deling op een bovenliggend niveau wilt maken, selecteert u de bovenliggende site. De momenteel geselecteerde resource neemt de vergren deling van het bovenliggende item over. U kunt bijvoorbeeld de resource groep vergren delen om een vergren deling toe te passen op alle bijbehorende resources.
    
-      ![slot toevoegen](./media/resource-manager-lock-resources/add-lock.png) 
-3. Geef het slot een naam en slotniveau. U kunt desgewenst ook notities toevoegen waarin de vergrendeling wordt beschreven.
+      ![vergren deling toevoegen](./media/resource-manager-lock-resources/add-lock.png) 
+3. Geef de vergren deling een naam en vergrendelings niveau. U kunt desgewenst ook notities toevoegen waarin de vergrendeling wordt beschreven.
    
-      ![slot instellen](./media/resource-manager-lock-resources/set-lock.png) 
-4. Als u het slot wilt verwijderen, selecteert u de ellips en **Verwijderen** uit de beschikbare opties.
+      ![vergren deling instellen](./media/resource-manager-lock-resources/set-lock.png) 
+4. Als u de vergren deling wilt verwijderen, selecteert u het beletsel teken en **verwijdert** u uit de beschik bare opties.
    
-      ![vergrendeling verwijderen](./media/resource-manager-lock-resources/delete-lock.png) 
+      ![vergren deling verwijderen](./media/resource-manager-lock-resources/delete-lock.png) 
 

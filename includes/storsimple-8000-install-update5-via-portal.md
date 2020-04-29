@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d2df7388018c463ba58b57be46945915210b84b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176233"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Een update installeren via Azure Portal
@@ -17,17 +17,17 @@ ms.locfileid: "67176233"
 
     ![Apparaat selecteren](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
-2. Ga naar > **Apparaatinstellingen-updates**. **Device settings**
+2. Navigeren > naar **Apparaatinstellingen apparaat-****updates**.
 
-    ![Klik op Apparaatupdates](./media/storsimple-8000-install-update5-via-portal/update2.png)
+    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update5-via-portal/update2.png)
 
-2. Er verschijnt een melding als er nieuwe updates beschikbaar zijn. U ook in het blade **Apparaatupdates** klikken op **Updates scannen**. Er wordt een taak gemaakt om te zoeken naar beschikbare updates. U ontvangt een melding wanneer de taak is voltooid.
+2. Er wordt een melding weer gegeven als er nieuwe updates beschikbaar zijn. U kunt ook op de Blade **updates voor apparaten** klikken op **updates scannen**. Er wordt een taak gemaakt om te zoeken naar beschikbare updates. U ontvangt een melding wanneer de taak is voltooid.
 
-    ![Klik op Apparaatupdates](./media/storsimple-8000-install-update5-via-portal/update3.png)
+    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
-3. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Als u updates wilt toepassen, klikt u op **Updates installeren**. Bekijk in het blade **Voor regelmatige updates bevestigen** de vereisten die u moet voltooien voordat u updates toepast. Schakel het selectievakje in om aan te geven dat u klaar bent om het apparaat bij te werken en klik op **Installeren**.
+3. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Klik op **updates installeren**om updates toe te passen. Controleer op de Blade **regel matige updates bevestigen** de vereiste onderdelen om te volt ooien voordat u updates toepast. Schakel het selectie vakje in om aan te geven dat u klaar bent voor het bijwerken van het apparaat en klik vervolgens op **installeren**.
 
-    ![Klik op Apparaatupdates](./media/storsimple-8000-install-update5-via-portal/update4.png)
+    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
 6. Er wordt een reeks vereiste controles gestart. Deze controles zijn onder andere:
    
@@ -35,9 +35,9 @@ ms.locfileid: "67176233"
    * **Statuscontroles hardwareonderdelen** om te controleren of alle hardwareonderdelen op uw StorSimple-apparaat in orde zijn.
    * **DATA 0-controles** om te controleren of DATA 0 is ingeschakeld op uw apparaat. Als deze interface niet is ingeschakeld, schakelt u deze in en probeert u het vervolgens opnieuw.
 
-     De update wordt alleen gedownload en geïnstalleerd als alle controles zijn voltooid. U krijgt een melding wanneer de controles worden uitgevoerd. Als de prechecks mislukken, dan krijgt u de redenen voor het mislukken. Deze problemen aanpakken en vervolgens de bewerking opnieuw proberen. Mogelijk moet u contact opnemen met Microsoft-ondersteuning als u deze problemen niet zelf kunt oplossen.
+     De update wordt alleen gedownload en geïnstalleerd als alle controles zijn voltooid. U krijgt een melding wanneer de controles worden uitgevoerd. Als de voor controle mislukt, dan worden de redenen voor de fout weer gegeven. Los deze problemen op en voer de bewerking opnieuw uit. Mogelijk moet u contact opnemen met Microsoft-ondersteuning als u deze problemen niet zelf kunt oplossen.
 
-7. Nadat de voorcontroles zijn voltooid, wordt een updatetaak gemaakt. U krijgt een melding wanneer de bijwerktaak is gemaakt.
+7. Nadat de voor controle is voltooid, wordt een update taak gemaakt. U krijgt een melding wanneer de bijwerktaak is gemaakt.
    
     ![Maken van bijwerktaak](./media/storsimple-8000-install-update5-via-portal/update6.png)
    
@@ -47,9 +47,9 @@ ms.locfileid: "67176233"
 
     ![Maken van bijwerktaak](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
-     U ook de voortgang van de updatetaak volgen vanuit **apparaatinstellingen > Vacatures.** Op het blade **Jobs** ziet u de voortgang van de update.
+     U kunt ook de voortgang van de update taak controleren op basis van **apparaatinstellingen > taken**. Op de Blade **taken** ziet u de voortgang van de update.
 
      ![Maken van bijwerktaak](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
-10. Nadat de taak is voltooid, navigeert u naar de **apparaatinstellingen > apparaatupdates**. De softwareversie moet nu worden bijgewerkt.
+10. Nadat de taak is voltooid, gaat u naar de **apparaatinstellingen > updates**van het apparaat. De software versie moet nu worden bijgewerkt.
 

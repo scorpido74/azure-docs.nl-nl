@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67176225"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Een StorSimple-back-upbeleid toevoegen
@@ -23,7 +23,7 @@ ms.locfileid: "67176225"
    
    1. **Apparaat selecteren** wordt automatisch ingevuld op basis van het apparaat dat u hebt geselecteerd.
    
-   2. Geef een **back-upbeleidsnaam** op die tussen de 3 en 150 tekens bevat. Als het beleid is gemaakt, kunt u het beleid niet hernoemen.
+   2. Geef een naam voor het back- **upbeleid** op dat tussen de 3 en 150 tekens bevat. Als het beleid is gemaakt, kunt u het beleid niet hernoemen.
        
    3. Als u volumes wilt toewijzen aan dit back-upbeleid, selecteert u **Volumes toevoegen** en klikt u vervolgens vanuit de lijst in tabelvorm met volumesop het selectievakje uit om een of meer volumes toe te wijzen aan het back-upbeleid.
 
@@ -35,7 +35,7 @@ ms.locfileid: "67176225"
 
        1. Selecteer voor **Type momentopname** de optie **Cloud** of **Lokaal**.
 
-       2. Geef de frequentie van back-ups aan (geef een getal op en kies **dagen** of **weken** in de vervolgkeuzelijst.
+       2. Geef de frequentie van back-ups (een getal op en kies vervolgens **dagen** of **weken** in de vervolg keuzelijst).
 
        3. Voer een bewaarschema in.
 

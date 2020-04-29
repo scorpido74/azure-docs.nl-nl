@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67176071"
 ---
-#### <a name="to-cable-your-device-for-power"></a>Uw apparaat bekabelen voor stroomvoorziening
+#### <a name="to-cable-your-device-for-power"></a>Uw apparaat bekabelen voor energie beheer
 > [!NOTE]
-> Beide behuizingen op uw StorSimple-apparaat bevatten redundante PCM's. Voor elke behuizing moeten de PCM's worden geïnstalleerd en aangesloten op verschillende stroombronnen om een hoge beschikbaarheid te garanderen.
+> Beide behuizingen op uw StorSimple-apparaat bevatten redundante PCMs. Voor elke behuizing moet de PCMs zijn geïnstalleerd en verbonden met verschillende energie bronnen om hoge Beschik baarheid te garanderen.
 > 
 > 
 
-1. Zorg ervoor dat de aan/uit-schakelaars op alle PCM's zich in de UIT-positie bevinden.
-2. Sluit op de primaire behuizing de stroomkabels aan op beide PCM's. De netsnoeren zijn in het rood geïdentificeerd in het stroombekabeldiagram, hieronder.
-3. Zorg ervoor dat de twee PCM's op de primaire behuizing afzonderlijke stroombronnen gebruiken.
-4. Bevestig de netsnoeren aan de stroom op de rackdistributie-eenheden, zoals aangegeven in het stroombekabelingsdiagram.
-5. Herhaal stap 2 tot en met 4 voor de EBOD-behuizing.
-6. Schakel de EBOD-behuizing in door de aan/uit-schakelaar op elke PCM naar de ON-positie te draaien.
-7. Controleer of de EBOD-behuizing is ingeschakeld door te controleren of de groene LED's op de achterkant van de EBOD-controller zijn ingeschakeld.
-8. Schakel de primaire behuizing in door elke PCM-schakelaar naar de AAN-positie te draaien.
-9. Controleer of het systeem is ingeschakeld door ervoor te zorgen dat de LED's van de apparaatcontroller zijn ingeschakeld.
-10. Zorg ervoor dat de verbinding tussen de EBOD-controller en de apparaatcontroller actief is door te controleren of de vier LED's naast de SAS-poort op de EBOD-controller groen zijn.
+1. Zorg ervoor dat de energie switches op alle PCMs zich in de buiten stand bevinden.
+2. Op de primaire behuizing verbindt u de stroom kabels met beide PCMs. De stroom snoeren worden rood aangeduid in het onderstaande diagram voor energie bekabeling.
+3. Zorg ervoor dat de twee PCMs op de primaire behuizing afzonderlijke energie bronnen gebruiken.
+4. Koppel de netsnoeren aan de kracht van de rack distributie-eenheden, zoals wordt weer gegeven in het diagram energie bekabeling.
+5. Herhaal stap 2 t/m 4 voor de EBOD behuizing.
+6. Schakel de EBOD-behuizing in door de aan/uit-schakelaar op elke PCM te spie gelen.
+7. Controleer of de EBOD-behuizing is ingeschakeld door te controleren of de groene Led's aan de achterkant van de EBOD-controller zijn ingeschakeld.
+8. Schakel de primaire behuizing in door elke PCM-switch naar de op positie te spie gelen.
+9. Controleer of het systeem is ingeschakeld door de Led's van de controller in te scha kelen.
+10. Zorg ervoor dat de verbinding tussen de EBOD-controller en de apparaat-controller actief is door te controleren of de vier Led's naast de SAS-poort op de EBOD-controller groen zijn.
     
     > [!IMPORTANT]
-    > Om een hoge beschikbaarheid voor uw systeem te garanderen, raden we u aan zich strikt te houden aan het stroombekabelingsschema in het volgende diagram.
+    > Om hoge Beschik baarheid voor uw systeem te garanderen, wordt u aangeraden strikt te voldoen aan het energie bekabelings schema dat in het volgende diagram wordt weer gegeven.
     > 
     > 
     
-    ![Kabel uw 4U-apparaat voor stroom](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
+    ![Uw 4U-apparaat bekabelen voor energie beheer](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
     
-    **Bekabeling**
+    **Stroom kabels**
     
     | Label | Beschrijving |
     |:--- |:--- |
@@ -47,5 +47,5 @@ ms.locfileid: "67176071"
     | 6 |EBOD-controller 0 |
     | 7 |EBOD-controller 1 |
     | 8 |EBOD-behuizing |
-    | 9 |PDU's |
+    | 9 |Pdu's |
 

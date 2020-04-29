@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76759842"
 ---
 Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, volgt u deze stappen:
@@ -36,8 +36,8 @@ Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, 
    |Replicatie     |Geografisch redundante opslag met leestoegang (RA-GRS)         |
    |Toegangslaag     |Warm         |
 
-8. Als u [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, kiest u het tabblad **Geavanceerd** en stelt u **hiërarchische naamruimte** in **op Ingeschakeld**.
+8. Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, kiest u het tabblad **Geavanceerd** en stelt u **hiërarchische naam ruimte** in op **ingeschakeld**.
 9. Selecteer **Beoordelen en maken** om uw opslagaccountinstellingen te bekijken en het account te maken.
 10. Selecteer **Maken**.
 
-Zie [Azure-opslagaccountoverzicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview) voor meer informatie over typen opslagaccounts en andere opslagaccountinstellingen. Zie overzicht van Azure [Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor meer informatie over resourcegroepen. 
+Zie [Azure-opslagaccountoverzicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview) voor meer informatie over typen opslagaccounts en andere opslagaccountinstellingen. Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor meer informatie over resource groepen. 

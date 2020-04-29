@@ -9,34 +9,34 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
 ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75541801"
 ---
-1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
-1. Upgrade uw werkruimte naar Enterprise-editie.
+1. Voer een upgrade uit voor uw werk ruimte naar Enter prise Edition.
 
-    Na het upgraden worden al uw experimenten met visuele interface omgezet in pijplijnconcepten in de ontwerper.
+    Na de upgrade worden alle Visual-Interface experimenten geconverteerd naar de concepten van pijp lijnen in de ontwerp functie.
     
     > [!NOTE]
-    > U hoeft niet te upgraden naar de Enterprise-editie om webservices voor visuele interface om te zetten in realtime eindpunten.
+    > U hoeft niet bij te werken naar de Enter prise-editie om de webservices van Visual Interface te converteren naar realtime-eind punten.
     
-1. Ga naar het ontwerpgedeelte van de werkruimte om de lijst met pijplijnconcepten weer te geven. 
+1. Ga naar de sectie ontwerp van de werk ruimte om uw lijst met pijp lijnen concepten weer te geven. 
     
-    Geconverteerde webservices kunnen worden gevonden door te navigeren naar **eindpunten** > **Real-time eindpunten**.
+    Geconverteerde webservices kunt u vinden door te navigeren naar **eind** > punten in**realtime-eind punten**.
 
-1. Selecteer een pijplijnconcept om het te openen.
+1. Selecteer een pijp lijn concept om deze te openen.
 
-    Als er een fout is opgetreden tijdens het conversieproces, verschijnt er een foutbericht met instructies om het probleem op te lossen. 
+    Als er tijdens het conversie proces een fout is opgetreden, wordt een fout bericht weer gegeven met instructies om het probleem op te lossen. 
 
 ### <a name="known-issues"></a>Bekende problemen
 
- Hieronder staan bekende migratieproblemen die handmatig moeten worden aangepakt:
+ Hieronder vindt u bekende migratie problemen die hand matig moeten worden opgelost:
 
-- **Modules gegevens importeren** **of gegevens exporteren**
+- **Gegevens importeren** of **gegevens modules exporteren**
         
-    Als u een module **Gegevens importeren** of **Gegevens exporteren** in het experiment hebt, moet u de gegevensbron bijwerken om een gegevensopslag te gebruiken. Zie Hoe u toegang krijgt [tot gegevens in Azure-opslagservices](../articles/machine-learning/how-to-access-data.md)voor meer informatie over het maken van een gegevensarchief. Uw cloudopslagaccountgegevens zijn toegevoegd in de opmerkingen van de module **Gegevens importeren** of **Gegevens exporteren** voor uw gemak. 
+    Als u in het experiment een module **gegevens importeren** of **gegevens exporteren** hebt, moet u de gegevens bron bijwerken om een Data Store te gebruiken. Zie [toegang tot gegevens in azure Storage-services](../articles/machine-learning/how-to-access-data.md)voor meer informatie over het maken van een gegevens opslag. De gegevens van uw Cloud-opslag account zijn toegevoegd aan de opmerkingen van de module **gegevens importeren** of **gegevens exporteren** voor uw gemak. 
       
