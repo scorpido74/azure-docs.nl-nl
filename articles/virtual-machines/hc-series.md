@@ -1,6 +1,6 @@
 ---
-title: HC-serie - Azure Virtual Machines
-description: Specificaties voor de HC-serie VM's.
+title: HC-serie-Azure Virtual Machines
+description: Specificaties voor Vm's van de HC-serie.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164777"
 ---
 # <a name="hc-series"></a>HC-serie
 
-HC-serie VM's zijn geoptimaliseerd voor toepassingen die worden aangedreven door dichte berekeningen, zoals impliciete eindige elementenanalyse, moleculaire dynamica en computationele chemie. HC VM's zijn voorzien van 44 Intel Xeon Platinum 8168-processorcores, 8 GB RAM per CPU-kern en geen hyperthreading. Het Intel Xeon Platinum-platform ondersteunt Intel's rijke ecosysteem van softwaretools zoals de Intel Math Kernel Library.
+Vm's uit de HC-serie zijn geoptimaliseerd voor toepassingen die worden aangedreven door een dichte berekening, zoals impliciete, geeindigd element analyse, moleculaire dynamiek en reken kundige schei kunde. HC Vm's feature 44 Intel Xeon Platinum 8168-processor kernen, 8 GB aan RAM per CPU-kern en geen hyperthreading. Het Intel Xeon Platinum-platform biedt ondersteuning voor een uitgebreid ecosysteem van Intel-software Programma's zoals de Intel math-kernelmodus.
 
 ACU: 297-315
 
-Premium opslag: ondersteund
+Premium Storage: ondersteund
 
-Premium Storage Caching: ondersteund
+Premium Storage caching: ondersteund
 
-Live migratie: niet ondersteund
+Livemigratie: niet ondersteund
 
-Updates voor geheugenbehoud: niet ondersteund
+Updates voor het behouden van geheugen: niet ondersteund
 
-| Grootte | vCPU | Processor | Geheugen (GB) | Geheugenbandbreedte GB/s | Cpu-frequentie baseren (GHz) | All-cores frequentie (GHz, piek) | Single-core frequentie (GHz, piek) | RDMA-prestaties (Gb/s) | ONDERSTEUNING VOOR MPI | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Max Ethernet-NIC's |
+| Grootte | vCPU | Processor | Geheugen (GB) | Geheugen bandbreedte GB/s | Basis-CPU-frequentie (GHz) | Frequentie van alle kernen (GHz, piek) | Frequentie met één kern geheugen (GHz, piek) | RDMA-prestaties (GB/s) | MPI-ondersteuning | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Maximum aantal Ethernet Nic's |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Alle | 700 | 4 | 1 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -45,4 +45,4 @@ Updates voor geheugenbehoud: niet ondersteund
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

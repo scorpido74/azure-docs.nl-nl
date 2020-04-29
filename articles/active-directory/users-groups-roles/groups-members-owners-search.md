@@ -1,6 +1,6 @@
 ---
-title: Leden en eigenaren zoeken en filteren (voorbeeld) - Azure Active Directory | Microsoft Documenten
-description: Zoek- en filtergroepen van leden en eigenaren in de Azure-portal.
+title: Groeps leden en eigen aren zoeken en filteren (preview)-Azure Active Directory | Microsoft Docs
+description: Zoek en filter groeps leden en eigen aren in de Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,72 +15,72 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206109"
 ---
-# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Zoekgroepen en leden (voorbeeld) in Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Zoeken in groepen en leden (preview) in Azure Active Directory
 
-In dit artikel vindt u hoe u zoeken naar leden en eigenaren van een groep en hoe u zoekfilters gebruiken als onderdeel van de preview-functie voor groepsverbetering in de Azure AD-portal (Azure AD). Er zijn veel verbeteringen in de groepservaringen om u te helpen uw groepen, inclusief leden en eigenaren, snel en eenvoudig te beheren. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over voorvertoningen.
+In dit artikel leest u hoe u kunt zoeken naar leden en eigen aren van een groep en hoe u zoek filters kunt gebruiken als onderdeel van de preview-versie voor het verbeteren van groepen in de Azure Active Directory-Portal (Azure AD). Er zijn veel verbeteringen in de groeps ervaringen waarmee u uw groepen, met inbegrip van leden en eigen aren, snel en eenvoudig kunt beheren. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 Wijzigingen in deze preview zijn onder andere:
 
-- Nieuwe zoekmogelijkheden voor groepen, zoals subtekenreekszoeken in groepsnamen
-- Nieuwe filter- en sorteeropties op leden- en eigenaarlijsten
-- Nieuwe zoekmogelijkheden voor leden- en eigenaarlijsten
-- Nauwkeurigere groepstellingen voor grote groepen
+- Nieuwe groepen zoek mogelijkheden, zoals subtekenreeksen zoeken in groeps namen
+- Nieuwe filter-en sorteer opties voor de lijsten leden en eigen aren
+- Nieuwe zoek mogelijkheden voor lijsten van leden en eigen aren
+- Nauw keurigere groeps aantallen voor grote groepen
 
-## <a name="enabling-and-managing-the-preview"></a>De preview in- en beheren
+## <a name="enabling-and-managing-the-preview"></a>De preview inschakelen en beheren
 
-We hebben het gemakkelijk gemaakt om deel te nemen aan de preview:
+U kunt de preview-versie eenvoudig samen voegen:
 
-  1. Meld u aan bij de [Azure AD-portal](https://portal.azure.com)en selecteer **Groepen**.
-  2. Selecteer in de pagina Groepen – Alle groepen de banner boven aan de pagina om deel te nemen aan het voorbeeld.
+  1. Meld u aan bij de [Azure AD-Portal](https://portal.azure.com)en selecteer **groepen**.
+  2. Selecteer op de pagina groepen – alle groepen de banner boven aan de pagina om aan de preview-versie toe te voegen.
 
-U ook de nieuwste functies en verbeteringen bekijken door **Voorbeeldinformatie** te selecteren op de pagina **Alle groepen.** Nadat u bent lid geworden van de preview, u de voorbeeldtag zien op alle groepenpagina's die verbeteringen hebben en deel uitmaken van de preview. Niet elke pagina met groepen is bijgewerkt als onderdeel van deze preview.
+U kunt ook de nieuwste functies en verbeteringen bekijken door **Preview-info** te selecteren op de pagina **alle groepen** . Nadat u de preview hebt toegevoegd, ziet u de preview-code op alle pagina's met groepen die verbeteringen hebben en deel uitmaken van de preview-versie. Niet elke groepen pagina is bijgewerkt als onderdeel van deze preview.
 
-Als u problemen ondervindt, u de verouderde ervaring terugschakelen door de banner boven aan de pagina **Alle groepen** te selecteren. We stellen uw feedback op prijs, zodat we onze ervaring kunnen verbeteren.
+Als u problemen ondervindt, kunt u teruggaan naar de oude ervaring door de banner boven aan de pagina **alle groepen** te selecteren. We stellen uw feedback op prijs zodat we onze ervaring kunnen verbeteren.
 
-## <a name="group-search-and-sorting"></a>Groepszoeken en sorteren
+## <a name="group-search-and-sorting"></a>Groep zoeken en sorteren
 
-De zoekfunctie voor groepenlijst is verbeterd, zodat wanneer u een `startswith` zoektekenreeks invoeren, de zoekopdracht automatisch een en substring-zoekopdracht uitvoert in de lijst met groepsnamen. De substring zoekopdracht wordt alleen uitgevoerd op hele woorden, en bevat geen speciale tekens. Substring zoeken is hoofdlettergevoelig.
+De zoek opdracht in de groeps lijst is uitgebreid, zodat u met de zoek functie automatisch een en een `startswith` subtekenreeks kunt zoeken in de lijst met groeps namen. De subtekenreeks zoeken wordt alleen uitgevoerd op hele woorden en bevat geen speciale tekens. Zoeken in subtekenreeksen is hoofdletter gevoelig.
 
-![nieuwe subtekenreekszoekopdrachten op de pagina Alle groepen](./media/groups-members-owners-search/groups-search-preview.png)
+![nieuwe subtekenreeks zoekt op de pagina alle groepen](./media/groups-members-owners-search/groups-search-preview.png)
 
-Een zoekopdracht naar 'beleid' retourneert nu bijvoorbeeld zowel 'MDM-beleid – West' als 'Beleidsgroep'. Een groep met de naam 'New_policy' wordt niet geretourneerd.
+Bijvoorbeeld, een zoek opdracht voor ' beleid ' retourneert nu zowel ' MDM-beleid – westelijke ' als ' beleids groep '. Een groep met de naam ' New_policy ' zou niet worden geretourneerd.
 
-- U dezelfde zoekopdracht ook uitvoeren op lijsten met groepslidmaatschapslijsten.
-- U de lijst met groepen nu sorteren op naam met de pijlen rechts van de naamkolomkop om de lijst in oplopende of aflopende volgorde te sorteren.
+- U kunt ook dezelfde zoek actie uitvoeren op groeps lidmaatschaps lijsten.
+- U kunt de lijst met groepen nu sorteren op naam met behulp van de pijlen rechts van de kolomkop naam om de lijst in oplopende of aflopende volg orde te sorteren.
 
-## <a name="group-member-search-and-filtering"></a>Zoeken en filteren van groepsleden
+## <a name="group-member-search-and-filtering"></a>Groeps leden zoeken en filteren
 
-### <a name="search-group-member-and-owner-lists"></a>Lijst met groepsleden en eigenaarzoeken
+### <a name="search-group-member-and-owner-lists"></a>Lijst met groeps leden en eigen aren zoeken
 
-U nu de leden van een specifieke groep op naam doorzoeken en dezelfde zoekopdracht uitvoeren op de lijst met de eigenaren van een groep. Als u in de nieuwe ervaring een tekenreeks invoert in het zoekvak, wordt automatisch een beginzoekopdracht uitgevoerd. Bijvoorbeeld, een zoektocht naar "Scott" zal Scott Wilkinson terug.
+U kunt nu de leden van een specifieke groep op naam zoeken en dezelfde zoek opdracht uitvoeren op de lijst met de eigen aren van de groep. Als u in de nieuwe ervaring een teken reeks in het zoekvak invoert, wordt er automatisch een startsWith-zoek opdracht uitgevoerd. Als u bijvoorbeeld ' Scott ' zoekt, wordt Scott Wilkinson geretourneerd.
 
-![nieuwe substring zoekopdrachten op de lijst met groepsleden en -eigenaren](./media/groups-members-owners-search/members-list.png)
+![nieuwe subtekenreeks zoekt op de lijst groeps leden en eigen aren](./media/groups-members-owners-search/members-list.png)
 
-### <a name="filter-member-and-owners-list"></a>Lijst met leden en eigenaren filteren
+### <a name="filter-member-and-owners-list"></a>Leden en eigen aars lijst filteren
 
-Naast zoeken u nu ook de leden- en eigenaarlijsten filteren op gebruikerstype. Dit is de informatie in de kolom Gebruikerstype van de lijst. U de lijst dus filteren op leden en gasten om te bepalen of er gasten in de groep zijn.
+U kunt nu niet alleen zoeken en de lijst met leden en eigen aren filteren op gebruikers type. Dit is de informatie in de kolom gebruikers type van de lijst. U kunt de lijst ook filteren op leden en gasten om te bepalen of er gasten in de groep zijn.
 
-### <a name="view-and-manage-membership"></a>Lidmaatschap weergeven en beheren
+### <a name="view-and-manage-membership"></a>Lidmaatschap weer geven en beheren
 
-Naast het bekijken van de directe leden van een specifieke groep, u nu de lijst van alle leden van de groep bekijken op de pagina Leden. De ledenlijst bevat alle unieke leden van de groep, inclusief alle tijdelijke leden.
+Naast het weer geven van de directe leden van een specifieke groep, kunt u nu de lijst met alle leden van de groep weer geven op de pagina leden. De lijst met leden bevat alle unieke leden van de groep, inclusief eventuele transitieve leden.
 
-U ook de lijst met directe leden en de lijst met alle leden afzonderlijk zoeken en filteren. Het filteren van de lijst met alle leden heeft geen invloed op de filters die worden toegepast op de lijst met directe leden.
+U kunt ook de lijst direct leden en alle leden lijst afzonderlijk zoeken en filteren. Filteren van de lijst alle leden heeft geen invloed op de filters die worden toegepast op de lijst direct leden.
 
-## <a name="improved-group-member-counts"></a>Verbeterde groepleden tellen
+## <a name="improved-group-member-counts"></a>Verbeterd aantal groepslid gebruikers
 
-We hebben de pagina **groepsoverzicht** verbeterd om groepsledentellingen voor groepen van elke grootte te bieden. U zien dat het lid telt, zelfs voor groepen met meer dan 1.000 leden. U nu het totale aantal directe leden voor een groep en het totale aantal leden van het lidmaatschap (alle unieke leden van groepsleden inclusief tijdelijke leden) zien op de **pagina Overzicht.**
+We hebben de groeps **overzichts** pagina verbeterd om aantallen groepslid gebruikers te bieden voor groepen van elke grootte. U kunt het aantal leden bekijken, zelfs voor groepen met meer dan 1.000 leden. U kunt nu het totale aantal directe leden voor een groep bekijken en het totale aantal lidmaatschappen (alle unieke leden van de groep inclusief overgankelijke leden) op de pagina **overzicht** .
 
-![Hogere nauwkeurigheid in groepslidmaatschaptelt](./media/groups-members-owners-search/member-numbers.png)
+![Hogere nauw keurigheid bij aantallen groepslid maatschappen](./media/groups-members-owners-search/member-numbers.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze artikelen bevatten aanvullende informatie over het werken met groepen in Azure AD.
+Deze artikelen bevatten aanvullende informatie over het werken met groepen in azure AD.
 
 - [Groepen en leden weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Groepslidmaatschap beheren](../fundamentals/active-directory-groups-membership-azure-portal.md)

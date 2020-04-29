@@ -1,6 +1,6 @@
 ---
-title: Azure Media Video Miniaturen gebruiken om een videosoming te maken | Microsoft Documenten
-description: Videosummarisatie kan u helpen bij het maken van samenvattingen van lange video's door automatisch interessante fragmenten uit de bronvideo te selecteren. Dit is handig als u een snel overzicht wilt geven van wat u verwachten in een lange video.
+title: Azure Media Video Thumbnails gebruiken om een video samenvatting te maken | Microsoft Docs
+description: Video overzicht kan u helpen bij het maken van samen vattingen van lange Video's door automatisch interessante fragmenten te selecteren uit de bron video. Dit is handig als u een kort overzicht wilt geven van wat u in een lange video kunt verwachten.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,40 +16,40 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918311"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Miniaturen gebruiken om een videosoming te maken  
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
 
 > [!NOTE]
-> De **mediaprocessor Azure Media Video Thumbnails** wordt buiten gebruik gesteld. Zie voor de pensioendatum het onderwerp [oudere onderdelen.](legacy-components.md)
+> De **Azure Media video thumbnails** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
 
 ## <a name="overview"></a>Overzicht
 
-Met **de mediaprocessor Miniaturen** van Azure Media Video (MP) u een samenvatting maken van een video die handig is voor klanten die alleen een voorbeeld van een samenvatting van een lange video willen bekijken. Klanten willen bijvoorbeeld een korte 'overzichtsvideo' zien wanneer ze over een miniatuur zweven. Door de parameters van **Azure Media Video Miniaturen** aan te passen via een configuratie-voorinstelling, u de krachtige opnamedetectie- en samenvoegingstechnologie van de MP gebruiken om algoritmisch een beschrijvende subclip te genereren.  
+Met de **Azure Media video thumbnails** media processor (MP) kunt u een samen vatting maken van een video die nuttig is voor klanten die alleen een samen vatting van een lange video willen bekijken. Klanten willen bijvoorbeeld een korte ' samen vattings video ' zien wanneer ze op een miniatuur bewegen. Door de para meters van **Azure Media video thumbnails** te wijzigen via een vooraf ingestelde configuratie, kunt u de krachtige opname-en samenvoegings technologie van MP gebruiken om algorithmically een beschrijvende subclip te genereren.  
 
-Het **MP voor miniatuur van Azure Media Video** bevindt zich momenteel in Preview.
+De **Azure Media Video thumbnail** -MP is momenteel beschikbaar als preview-versie.
 
-In dit artikel vindt u informatie over **azure mediavideominiatuur** en wordt uitgelegd hoe u deze gebruiken met Media Services SDK voor .NET.
+Dit artikel bevat informatie over de **miniatuur van Azure Media Video** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net.
 
 ## <a name="limitations"></a>Beperkingen
 
-In sommige gevallen, als uw video niet uit verschillende scènes bestaat, zal de uitvoer slechts één schot zijn.
+In sommige gevallen geldt dat als uw video niet bestaat uit verschillende scènes, de uitvoer slechts één foto is.
 
-## <a name="video-summary-example"></a>Voorbeeld van videooverzicht
-Hier volgen enkele voorbeelden van wat de mediaprocessor Azure Media Video Thumbnails kan doen:
+## <a name="video-summary-example"></a>Video samenvattings voorbeeld
+Hier volgen enkele voor beelden van wat de Azure Media Video Thumbnails-media processor kan doen:
 
-### <a name="original-video"></a>Originele video
-[Originele video](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+### <a name="original-video"></a>Oorspronkelijke video
+[Oorspronkelijke video](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
-### <a name="video-thumbnail-result"></a>Resultaat voor videominiatuur
-[Resultaat voor videominiatuur](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+### <a name="video-thumbnail-result"></a>Resultaat van video miniatuur
+[Resultaat van video miniatuur](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-preset"></a>Taakconfiguratie (vooraf ingesteld)
-Wanneer u een miniatuurtaak voor video's maakt met **Azure Media Video Miniaturen,** moet u een configuratievoorinstelling opgeven. Het bovenstaande miniatuurvoorbeeld is gemaakt met de volgende basis-JSON-configuratie:
+## <a name="task-configuration-preset"></a>Taak configuratie (voor instelling)
+Wanneer u een miniatuur van een video met **Azure Media video thumbnails**maakt, moet u een voor instelling voor de configuratie opgeven. Het bovenstaande miniatuur voorbeeld is gemaakt met de volgende basis-JSON-configuratie:
 
 ```json
     {
@@ -57,22 +57,22 @@ Wanneer u een miniatuurtaak voor video's maakt met **Azure Media Video Miniature
     }
 ```
 
-Momenteel u de volgende parameters wijzigen:
+Op dit moment kunt u de volgende para meters wijzigen:
 
 | Param | Beschrijving |
 | --- | --- |
-| uitvoerAudio |Hiermee geeft u op of de resulterende video audio bevat. <br/>Toegestane waarden zijn: Waar of Onwaar. Standaard is True. |
-| fadeInFadeOut fadeout |Hiermee geeft u op of overgangen met vervagen al dan niet worden gebruikt tussen de afzonderlijke bewegingsminiaturen.  <br/>Toegestane waarden zijn: Waar of Onwaar.  Standaard is True. |
-| maxMotionThumbnailDurationInSecs |Geheel getal dat aangeeft hoe lang de volledige resulterende video moet zijn.  Standaard is afhankelijk van de oorspronkelijke videoduur. |
+| outputAudio |Hiermee wordt aangegeven of de resulterende video audio bevat. <br/>Toegestane waarden zijn: True of false. De standaard waarde is True. |
+| fadeInFadeOut |Hiermee wordt aangegeven of vervag overgangen tussen de afzonderlijke animatie miniaturen worden gebruikt.  <br/>Toegestane waarden zijn: True of false.  De standaard waarde is True. |
+| maxMotionThumbnailDurationInSecs |Een geheel getal dat aangeeft hoe lang de volledige resulterende video moet zijn.  De standaard waarde is afhankelijk van de oorspronkelijke duur van de video. |
 
-In de volgende tabel wordt de standaardduur beschreven wanneer **maxMotionThumbnailInSecs** niet wordt gebruikt.
+In de volgende tabel wordt de standaard duur beschreven, wanneer **maxMotionThumbnailInSecs** niet wordt gebruikt.
 
 |  |  |  |
 | --- | --- | --- |
-| Videoduur |d < 3 min |3 min < d < 15 min |
-| Miniatuurduur |15 sec (2-3 scènes) |30 sec (3-5 scènes) |
+| Video duur |d < 3 min. |3 min < d < 15 minuten |
+| Miniatuur duur |15 seconden (2-3 scènes) |30 seconden (3-5 scènes) |
 
-De volgende JSON stelt beschikbare parameters in.
+De volgende JSON-sets beschik bare para meters.
 
 ```json
     {
@@ -85,12 +85,12 @@ De volgende JSON stelt beschikbare parameters in.
     }
 ```
 
-## <a name="net-sample-code"></a>.NET-voorbeeldcode
+## <a name="net-sample-code"></a>.NET-voorbeeld code
 
-In het volgende programma ziet u hoe u:
+Het volgende programma laat zien hoe u:
 
-1. Maak een asset en upload een mediabestand naar het item.
-2. Hiermee maakt u een taak met een miniatuurtaak voor video op basis van een configuratiebestand met de volgende json-voorinstelling: 
+1. Maak een Asset en upload een media bestand naar de Asset.
+2. Hiermee maakt u een taak met een miniatuur van een video op basis van een configuratie bestand dat de volgende JSON-voor instelling bevat: 
     
     ```json
             {                
@@ -103,11 +103,11 @@ In het volgende programma ziet u hoe u:
             }
     ```
 
-3. Downloadt de uitvoerbestanden. 
+3. De uitvoer bestanden worden gedownload. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 
@@ -281,8 +281,8 @@ Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgeg
     }
 ```
 
-### <a name="video-thumbnail-output"></a>Videominiatuuruitvoer
-[Videominiatuuruitvoer](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+### <a name="video-thumbnail-output"></a>Video miniatuur uitvoer
+[Video miniatuur uitvoer](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -293,5 +293,5 @@ Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgeg
 ## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Azure Media Analytics-demo's](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

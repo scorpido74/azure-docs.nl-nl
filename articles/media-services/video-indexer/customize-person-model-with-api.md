@@ -1,7 +1,7 @@
 ---
-title: Een persoonsmodel aanpassen met videoindexer-API
+title: Een persoonlijk model met Video Indexer-API aanpassen
 titleSuffix: Azure Media Services
-description: Meer informatie over het aanpassen van een persoonsmodel met de API voor videoindexer.
+description: Meer informatie over het aanpassen van een persoons model met de Video Indexer-API.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,33 +11,33 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: fa41fca7f8ad96cf507aa6f04059b1254c8c3961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80127892"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Een persoonsmodel aanpassen met de API voor videoindexer
+# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Een persoonlijk model aanpassen met de Video Indexer-API
 
-Video Indexer ondersteunt gezichtsherkenning en herkenning door beroemdheden voor video-inhoud. De functie voor herkenning van beroemdheden omvat ongeveer een miljoen gezichten op basis van veelgevraagde gegevensbronnen zoals IMDB, Wikipedia en top LinkedIn-beïnvloeders. Gezichten die niet worden herkend door de functie voor herkenning van beroemdheden worden gedetecteerd, maar links naamloos. Nadat je je video hebt geüpload naar Video Indexer en resultaten hebt teruggekregen, kun je teruggaan en de gezichten een naam geven die niet is herkend. Zodra u een gezicht met een naam labelt, worden het gezicht en de naam toegevoegd aan het persoonsmodel van uw account. Video Indexer herkent dit gezicht dan in je toekomstige video's en eerdere video's.
+Video Indexer ondersteunt gezichts detectie en beroemdheden herkenning voor video-inhoud. De functie voor beroemdheden-herkenning gaat over 1.000.000-gezichten op basis van een gevraagde gegevens bron, zoals IMDB, Wikipedia en belangrijkste LinkedIn-gevolgen. Gezichten die niet worden herkend door de functie voor beroemdheden-herkenning, zijn gedetecteerd, maar hebben geen naam gekregen. Nadat u uw video naar Video Indexer hebt geüpload en de resultaten terug hebt opgehaald, kunt u teruggaan en de gezichten benoemen die niet is herkend. Zodra u een gezicht met een naam hebt gelabeld, worden het gezicht en de naam toegevoegd aan het persoonlijke model van uw account. Video Indexer zal dit gezicht vervolgens herkennen in uw toekomstige Video's en eerdere Video's.
 
-U de API voor video-indexergebruiken om gezichten te bewerken die in een video zijn gedetecteerd, zoals beschreven in dit onderwerp. U ook de website Video Indexer gebruiken, zoals beschreven in [het model Persoon aanpassen met behulp van de website Video Indexer.](customize-person-model-with-api.md)
+U kunt de Video Indexer-API gebruiken om gezichten te bewerken die in een video zijn gedetecteerd, zoals beschreven in dit onderwerp. U kunt ook de Video Indexer website gebruiken, zoals beschreven in [persoonlijk model aanpassen met behulp van de video indexer-website](customize-person-model-with-api.md).
 
-## <a name="managing-multiple-person-models"></a>Meerdere persoonsmodellen beheren
+## <a name="managing-multiple-person-models"></a>Meerdere persoons modellen beheren
 
-Video Indexer ondersteunt meerdere persoonsmodellen per account. Deze functie is momenteel alleen beschikbaar via de API's voor video-indexer.
+Video Indexer ondersteunt meerdere persoons modellen per account. Deze functie is momenteel alleen beschikbaar via de Video Indexer-Api's.
 
-Als uw account zich richt op verschillende use-case scenario's, u meerdere persoonsmodellen per account maken. Als uw inhoud bijvoorbeeld gerelateerd is aan sport, u voor elke sport een apart persoonsmodel maken (voetbal, basketbal, voetbal, enzovoort).
+Als uw account verantwoordelijk is voor verschillende gebruiks scenario's, wilt u mogelijk meerdere persoons modellen per account maken. Als uw inhoud bijvoorbeeld is gerelateerd aan sport, kunt u vervolgens een afzonderlijk persoons model maken voor elke sport (voetbal, basketbal, voetbal, enzovoort).
 
-Zodra een model is gemaakt, u het gebruiken door de model-ID van een specifiek persoonsmodel op te geven bij het uploaden/indexeren of opnieuw indexeren van een video. Het trainen van een nieuw gezicht voor een video werkt het specifieke aangepaste model bij waarmee de video is gekoppeld.
+Zodra een model is gemaakt, kunt u het gebruiken door de model-ID van een specifiek persoons model op te geven bij het uploaden/indexeren of indexeren van een video. Als u een nieuw gezicht voor een video bijwerkt, wordt het specifieke aangepaste model waarmee de video is gekoppeld, bijgewerkt.
 
-Elk account heeft een limiet van 50 person modellen. Als u de ondersteuning voor het model met meerdere personen niet nodig hebt, wijst u geen persoonsmodel-id toe aan uw video bij het uploaden/indexeren of opnieuw indexeren. In dit geval gebruikt Video Indexer het standaard aangepaste persoonsmodel in uw account.
+Voor elk account geldt een limiet van 50 persoons modellen. Als u de ondersteuning voor meerdere persoons modellen niet nodig hebt, wijst u geen persoons model-ID toe aan uw video bij het uploaden/indexeren of opnieuw indexeren. In dit geval gebruikt Video Indexer het standaard aangepaste persoons model in uw account.
 
-## <a name="create-a-new-person-model"></a>Een nieuw persoonsmodel maken
+## <a name="create-a-new-person-model"></a>Een nieuw persoons model maken
 
-Als u een nieuw persoonsmodel wilt maken in het opgegeven account, gebruikt u de API [voor een persoonsmodel maken.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)
+Als u een nieuw persoons model wilt maken in het opgegeven account, gebruikt u de API [een persoons model maken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) .
 
-Het antwoord bevat de naam en gegenereerde model-ID van het persoonsmodel dat u zojuist hebt gemaakt naar aanleiding van de indeling van het onderstaande voorbeeld.
+Het antwoord bevat de naam en de gegenereerde model-ID van het persoons model dat u zojuist hebt gemaakt, in de indeling van het onderstaande voor beeld.
 
 ```json
 {
@@ -46,21 +46,21 @@ Het antwoord bevat de naam en gegenereerde model-ID van het persoonsmodel dat u 
 }
 ```
 
-Vervolgens gebruikt u de **id-waarde** voor de parameter **personModelId** bij het uploaden van een video om een video [te indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) of [opnieuw te indexeren.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)
+Vervolgens gebruikt u de **id-** waarde voor de para meter **personModelId** wanneer u [een video uploadt om een video te indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) of opnieuw te [indexeren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
-## <a name="delete-a-person-model"></a>Een persoonsmodel verwijderen
+## <a name="delete-a-person-model"></a>Een persoons model verwijderen
 
-Als u een aangepast persoonsmodel uit het opgegeven account wilt verwijderen, gebruikt u de API [voor een persoonsmodel verwijderen.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?)
+Als u een aangepast persoons model wilt verwijderen uit het opgegeven account, gebruikt u de API voor het [verwijderen van een persoons model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) .
 
-Zodra het persoonsmodel is verwijderd, blijft de index van uw huidige video's die het verwijderde model gebruikten ongewijzigd totdat u ze opnieuw indexeert. Bij het opnieuw indexeren worden de gezichten die in het verwijderde model zijn genoemd, niet herkend door Video Indexer in uw huidige video's die met dat model zijn geïndexeerd, maar de gezichten worden nog steeds gedetecteerd. Uw huidige video's die zijn geïndexeerd met het verwijderde model, gebruiken nu het standaard persoonsmodel van uw account. Als gezichten uit het verwijderde model ook worden genoemd in het standaardmodel van uw account, blijven deze gezichten worden herkend in de video's.
+Zodra het persoons model is verwijderd, blijft de index van uw huidige Video's die gebruikmaken van het verwijderde model ongewijzigd totdat u ze opnieuw indexeert. Wanneer u het indexeren opnieuw indexeert, worden de gezichten die in het verwijderde model werden genoemd, niet herkend door Video Indexer in uw huidige Video's die zijn geïndexeerd met het model, maar worden de gezichten nog steeds gedetecteerd. Uw huidige Video's die zijn geïndexeerd met het verwijderde model, gebruiken nu het standaard persoons model van uw account. Als gezichten van het verwijderde model ook worden genoemd in het standaard model van uw account, worden deze gezichten nog steeds herkend in de Video's.
 
-Er is geen geretourneerde inhoud wanneer het persoonsmodel is verwijderd.
+Er is geen inhoud geretourneerd wanneer het persoons model is verwijderd.
 
-## <a name="get-all-person-models"></a>Alle Person-modellen ophalen
+## <a name="get-all-person-models"></a>Alle persoons modellen ophalen
 
-Als u alle person-modellen in het opgegeven account wilt krijgen, gebruikt u de API [voor een persoonsmodel.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?)
+Als u alle persoons modellen in het opgegeven account wilt ophalen, gebruikt u de API [een persoons model ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) .
 
-Het antwoord bevat een lijst met alle persoonsmodellen in uw account (inclusief het standaardpersoonsmodel in het opgegeven account) en elk van hun namen en id's volgens de indeling van het onderstaande voorbeeld.
+Het antwoord bevat een lijst met alle persoons modellen in uw account (met inbegrip van het standaard persoons model in het opgegeven account) en elk van de namen en Id's volgens de indeling van het onderstaande voor beeld.
 
 ```json
 [
@@ -75,20 +75,20 @@ Het antwoord bevat een lijst met alle persoonsmodellen in uw account (inclusief 
 ]
 ```
 
-U kiezen welk model u voor een `id` video wilt gebruiken `personModelId` met behulp van de waarde van het persoonsmodel voor de parameter bij [het uploaden van een video om](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) een video te indexeren of [opnieuw te indexeren.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)
+U kunt kiezen welk model u wilt gebruiken voor een video door `id` de waarde van het persoons model voor de para `personModelId` meter te gebruiken bij het [uploaden van een video om](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) [een video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)te indexeren of opnieuw te indexeren.
 
 ## <a name="update-a-face"></a>Een gezicht bijwerken
 
-Met deze opdracht u een gezicht in uw video bijwerken met een naam met behulp van de id van de video en id van het gezicht. Met deze actie wordt vervolgens het persoonsmodel bijgewerkt waarmee de video is gekoppeld bij het uploaden/indexeren of opnieuw indexeren. Als er geen Persoonsmodel is toegewezen, wordt het standaardpersoonsmodel van het account bijgewerkt.
+Met deze opdracht kunt u een gezicht in uw video bijwerken met een naam met behulp van de ID van de video en de ID van het gezicht. Met deze actie wordt vervolgens het persoons model bijgewerkt waarmee de video is gekoppeld bij het uploaden/indexeren of opnieuw indexeren. Als er geen persoons model is toegewezen, wordt het standaard persoons model van de account bijgewerkt.
 
-Het systeem herkent vervolgens de gebeurtenissen van hetzelfde gezicht in uw andere huidige video's die hetzelfde persoonsmodel delen. Het herkennen van het gezicht in uw andere huidige video's kan enige tijd duren voordat het van kracht wordt, omdat dit een batchproces is.
+Het systeem herkent vervolgens de instanties van hetzelfde gezicht in uw andere huidige Video's die hetzelfde persoons model delen. De herkenning van het gezicht in uw andere huidige Video's kan enige tijd in beslag nemen omdat dit een batch proces is.
 
-U een gezicht bijwerken dat Video Indexer herkende als een beroemdheid met een nieuwe naam. De nieuwe naam die je geeft zal voorrang hebben op de ingebouwde celebrity erkenning.
+U kunt een gezicht bijwerken dat Video Indexer herkend als een beroemdheden met een nieuwe naam. De nieuwe naam die u geeft, heeft voor rang op de ingebouwde beroemdheden-herkenning.
 
-Als u het gezicht wilt bijwerken, gebruikt u de [update van een videoface-API.](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?)
+Als u het gezicht wilt bijwerken, gebruikt u de API [een video face bijwerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) .
 
-Namen zijn uniek voor persoonsmodellen, dus als u twee `name` verschillende gezichten in hetzelfde persoonsmodel dezelfde parameterwaarde geeft, bekijkt Video Indexer de gezichten als dezelfde persoon en convergeert deze zodra u uw video opnieuw indexeert.
+Namen zijn uniek voor persoons modellen, dus als u twee verschillende gezichten in hetzelfde persoons model dezelfde `name` parameter waarde geeft, video indexer de gezichten weer geven als dezelfde persoon en deze coniciteit zodra u de video opnieuw indexeert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Persoonsmodel aanpassen met de website Video-indexer](customize-person-model-with-website.md)
+[Persoonlijk model aanpassen met behulp van de Video Indexer-website](customize-person-model-with-website.md)

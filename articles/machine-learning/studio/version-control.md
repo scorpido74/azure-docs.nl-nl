@@ -1,7 +1,7 @@
 ---
 title: Beheer van toepassingslevenscyclus
 titleSuffix: ML Studio (classic) - Azure
-description: Aanbevolen procedures voor application lifecycle management toepassen in Azure Machine Learning Studio (klassiek)
+description: Best practices voor toepassings levenscyclus beheer Toep assen in Azure Machine Learning Studio (klassiek)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,93 +10,93 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
 ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204133"
 ---
-# <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Application Lifecycle Management in Azure Machine Learning Studio (klassiek)
+# <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Beheer van toepassings levenscyclus in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio (klassiek) is een hulpmiddel voor het ontwikkelen van machine learning-experimenten die worden geoperationaliseerd in het Azure-cloudplatform. Het is alsof de Visual Studio IDE en schaalbare cloudservice zijn samengevoegd tot één platform. U standaard ALM-procedures (Application Lifecycle Management) opnemen, van het versien van verschillende assets tot geautomatiseerde uitvoering en implementatie, in Azure Machine Learning Studio (klassiek). Dit artikel bespreekt een aantal van de opties en benaderingen.
+Azure Machine Learning Studio (klassiek) is een hulp programma voor het ontwikkelen van machine learning experimenten die operationeel zijn in het Azure-Cloud platform. Het is vergelijkbaar met de Visual Studio IDE en de schaal bare Cloud service die is samengevoegd met één platform. U kunt standaard ALM-procedures (Application Lifecycle Management) opnemen van het versie beheer van verschillende assets tot geautomatiseerde uitvoering en implementatie, in Azure Machine Learning Studio (klassiek). In dit artikel worden enkele van de opties en benaderingen besproken.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="versioning-experiment"></a>Versie-experiment
-Er zijn twee aanbevolen manieren om uw experimenten te versionen. U vertrouwen op de ingebouwde rungeschiedenis of het experiment exporteren in een JSON-indeling om het extern te beheren. Elke aanpak komt met zijn voors en tegens.
+## <a name="versioning-experiment"></a>Experimenteren met versie beheer
+Er zijn twee aanbevolen manieren voor het versie nummer van uw experimenten. U kunt vertrouwen op de ingebouwde uitvoerings geschiedenis of het experiment exporteren in een JSON-indeling, zodat het extern kan worden beheerd. Elke benadering wordt geleverd met zijn voor-en nadelen.
 
-### <a name="experiment-snapshots-using-run-history"></a>Momentopnamen experimenteren met Run History
-In het uitvoeringsmodel van het Azure Machine Learning Studio (klassiek) leerexperiment wordt een onveranderlijke momentopname van het experiment naar de taakplanner verzonden wanneer u op **Uitvoeren** klikt in de experimenteditor. Als u deze lijst met momentopnamen wilt weergeven, klikt u op **Geschiedenis uitvoeren** op de opdrachtbalk in de weergave van de experimenteditor.
+### <a name="experiment-snapshots-using-run-history"></a>Moment opnamen experimenteren met de uitvoerings geschiedenis
+In het uitvoerings model van het Learning-experiment van Azure Machine Learning Studio (klassiek) wordt een onveranderlijke moment opname van het experiment verzonden naar de job scheduler wanneer u op **uitvoeren** klikt in de experiment editor. Als u deze lijst met moment opnamen wilt weer geven, klikt u op de opdracht balk in de weer gave experiment editor op **geschiedenis uitvoeren** .
 
 ![Knop Geschiedenis uitvoeren](./media/version-control/runhistory.png)
 
-U de momentopname vervolgens openen in de modus Vergrendeld door op de naam van het experiment te klikken op het moment dat het experiment is uitgevoerd en de momentopname is gemaakt. Merk op dat alleen het eerste item in de lijst, dat het huidige experiment vertegenwoordigt, zich in een bewerkbare status bevindt. Merk ook op dat elke momentopname ook in verschillende statusstatussen kan staan, waaronder Voltooid (Gedeeltelijke uitvoering), Mislukt, Mislukt (Gedeeltelijke uitvoering) of Concept.
+U kunt de moment opname vervolgens openen in de vergrendelde modus door te klikken op de naam van het experiment op het moment dat het experiment werd verzonden om te worden uitgevoerd en de moment opname is gemaakt. U ziet dat alleen het eerste item in de lijst, dat het huidige experiment vertegenwoordigt, zich in een Bewerk bare staat bevindt. U ziet ook dat elke moment opname in verschillende statussen kan worden opgenomen, zoals voltooide (gedeeltelijke uitvoering), mislukt, mislukt (gedeeltelijke uitvoering) of concept.
 
-![Lijst Geschiedenis uitvoeren](./media/version-control/runhistorylist.png)
+![Lijst met uitvoerings geschiedenis](./media/version-control/runhistorylist.png)
 
-Nadat het is geopend, u het momentopnameexperiment opslaan als een nieuw experiment en het vervolgens wijzigen. Als de momentopname van uw experiment elementen bevat zoals getrainde modellen, transformaties of gegevenssets met bijgewerkte versies, behoudt de momentopname de verwijzingen naar de oorspronkelijke versie toen de momentopname is gemaakt. Als u de vergrendelde momentopname opslaat als een nieuw experiment, detecteert Azure Machine Learning Studio (klassiek) het bestaan van een nieuwere versie van deze elementen en werkt deze automatisch bij in het nieuwe experiment.
+Nadat de app is geopend, kunt u het momentopname experiment opslaan als een nieuw experiment en dit vervolgens wijzigen. Als uw proef momentopname assets bevat, zoals getrainde modellen, trans formaties of gegevens sets die bijgewerkte versies hebben, behoudt de moment opname de verwijzingen naar de oorspronkelijke versie wanneer de moment opname werd gemaakt. Als u de vergrendelde moment opname als een nieuw experiment opslaat, detecteert Azure Machine Learning Studio (klassiek) het bestaan van een nieuwere versie van deze assets en worden ze in het nieuwe experiment automatisch bijgewerkt.
 
-Als u het experiment verwijdert, worden alle momentopnamen van dat experiment verwijderd.
+Als u het experiment verwijdert, worden alle moment opnamen van dat experiment verwijderd.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Experiment exporteren/importeren in JSON-indeling
-De momentopnamen voor rungeschiedenis behouden een onveranderlijke versie van het experiment in Azure Machine Learning Studio (klassiek) elke keer dat het wordt verzonden om uit te voeren. U ook een lokale kopie van het experiment opslaan en inchecken in uw favoriete broncontrolesysteem, zoals Team Foundation Server, en later een experiment opnieuw maken vanuit dat lokale bestand. U de [Azure Machine Learning PowerShell-opdrachten](https://aka.ms/amlps) [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) en [*Import-AmlExperimentGraph gebruiken*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) om dat te bereiken.
+De moment opnamen van de uitvoerings geschiedenis blijven een onveranderbare versie van het experiment in Azure Machine Learning Studio (klassiek) elke keer dat deze wordt verzonden om uit te voeren. U kunt ook een lokale kopie van het experiment opslaan en deze controleren in uw favoriete bron beheersysteem, zoals Team Foundation Server, en later opnieuw een experiment maken op basis van het lokale bestand. U kunt de [Azure machine learning Power shell](https://aka.ms/amlps) Commandlets [*export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) en [*import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) gebruiken om dat te bereiken.
 
-Het JSON-bestand is een tekstuele weergave van de experimentgrafiek, die een verwijzing naar elementen in de werkruimte kan bevatten, zoals een gegevensset of een getraind model. Het bevat geen geserialiseerde versie van het item. Als u het JSON-document opnieuw probeert te importeren in de werkruimte, moeten de naar de verwijzing genoemde elementen al bestaan met dezelfde asset-id's waarnaar in het experiment wordt verwezen. Anders hebt u geen toegang tot het geïmporteerde experiment.
+Het JSON-bestand is een tekst weergave van de experimentele grafiek, die mogelijk een verwijzing bevat naar assets in de werk ruimte, zoals een gegevensset of een getraind model. Het bevat geen geserialiseerde versie van de Asset. Als u het JSON-document weer in de werk ruimte probeert te importeren, moeten de activa waarnaar wordt verwezen al bestaan met dezelfde activa-Id's waarnaar in het experiment wordt verwezen. Anders hebt u geen toegang tot het geïmporteerde experiment.
 
-## <a name="versioning-trained-model"></a>Versiemodel
-Een getraind model in Azure Machine Learning Studio (klassiek) wordt geserialiseerd naar een indeling die bekend staat als een iLearner-bestand (`.iLearner`) en wordt opgeslagen in het Azure Blob-opslagaccount dat is gekoppeld aan de werkruimte. Een manier om een kopie van het iLearner-bestand te krijgen, is via de omscholings-API. [In dit artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wordt uitgelegd hoe de API omscholen werkt. De stappen op hoog niveau:
+## <a name="versioning-trained-model"></a>Getraind model voor versie beheer
+Een getraind model in Azure Machine Learning Studio (klassiek) wordt geserialiseerd in een indeling die wordt aangeduid als een`.iLearner`iLearner-bestand () en wordt opgeslagen in het Azure Blob Storage-account dat is gekoppeld aan de werk ruimte. Een manier om een kopie van het iLearner-bestand op te halen, is via de retraining-API. In [dit artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wordt uitgelegd hoe de retraining-API werkt. De stappen op hoog niveau:
 
-1. Stel je trainingsexperiment in.
-2. Voeg een webserviceuitvoerpoort toe aan de module Treinmodel of de module die het getrainde model produceert, zoals Tune Model Hyperparameter of Create R-model.
-3. Voer uw trainingsexperiment uit en implementeer het vervolgens als een webservice voor modeltraining.
-4. Bel het BES-eindpunt van de webservice voor training en geef de gewenste iLearner-bestandsnaam en blob-opslagaccountlocatie op waar deze wordt opgeslagen.
-5. Oogst het geproduceerde iLearner-bestand nadat de BES-oproep is voltooid.
+1. Stel uw trainings experiment in.
+2. Voeg een webservice-uitvoer poort toe aan de module Train model of de module die het getrainde model produceert, zoals model afstemming afstemmen of R-model maken.
+3. Voer uw trainings experiment uit en implementeer dit als een model training-webservice.
+4. Roep het BES-eind punt van de training-webservice aan en geef de gewenste locatie van de iLearner-bestands naam en het Blob-opslag account op waar de service wordt opgeslagen.
+5. Oogst het geproduceerde iLearner-bestand nadat de BES-aanroep is voltooid.
 
-Een andere manier om het iLearner-bestand op te halen is via de PowerShell-commandlet [*Download-AmlExperimentNodeOutput.*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput) Dit is misschien makkelijker als u gewoon een kopie van het iLearner-bestand wilt krijgen zonder dat u het model programmatisch hoeft om te scholen.
+Een andere manier om het iLearner-bestand op te halen, is via de Power shell [*-Commandlet down load-AmlExperimentNodeOutput*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Dit kan handig zijn als u alleen een kopie wilt ophalen van het iLearner-bestand zonder dat u het model programmatisch opnieuw moet trainen.
 
-Nadat u het iLearner-bestand met het getrainde model hebt, u vervolgens uw eigen versiestrategie gebruiken. De strategie kan zo eenvoudig zijn als het toepassen van een pre/postfix als een naamgevingsconventie en het verlaten van het iLearner-bestand in Blob-opslag, of het kopiëren/importeren in uw versiebeheersysteem.
+Nadat u het iLearner-bestand met het getrainde model hebt, kunt u vervolgens uw eigen versie beheer strategie gebruiken. De strategie kan net zo eenvoudig zijn als het Toep assen van een pre-achtervoegsel als een naamgevings Conventie en het iLearner-bestand in Blob Storage te verlaten, of door het te kopiëren/importeren in uw versie beheersysteem.
 
-Het opgeslagen iLearner-bestand kan vervolgens worden gebruikt om te scoren via geïmplementeerde webservices.
+Het opgeslagen iLearner-bestand kan vervolgens worden gebruikt voor het scoren via geïmplementeerde webservices.
 
-## <a name="versioning-web-service"></a>Webservice voor versiebeheer
-U twee typen webservices implementeren vanuit een experiment met Azure Machine Learning Studio (klassiek). De klassieke webservice is nauw gekoppeld aan het experiment en de werkruimte. De nieuwe webservice maakt gebruik van het Azure Resource Manager-framework en is niet langer gekoppeld aan het oorspronkelijke experiment of de werkruimte.
+## <a name="versioning-web-service"></a>Webservice voor versie beheer
+U kunt twee soorten webservices implementeren vanuit een Azure Machine Learning Studio (klassiek)-experiment. De klassieke webservice is nauw gekoppeld aan het experiment en de werk ruimte. De nieuwe webservice gebruikt het Azure Resource Manager Framework en is niet meer gekoppeld aan het oorspronkelijke experiment of de werk ruimte.
 
 ### <a name="classic-web-service"></a>Klassieke webservice
-Als u een klassieke webservice wilt gebruiken, u profiteren van de webservice-eindpuntconstructie. Hier is een typische stroom:
+Als u een klassieke webservice wilt maken, kunt u profiteren van de web service-eindpunt constructie. Hier volgt een typische stroom:
 
-1. Vanuit uw voorspellende experiment implementeert u een nieuwe klassieke webservice, die een standaardeindpunt bevat.
-2. U maakt een nieuw eindpunt met de naam EP2, waarmee de huidige versie van het experiment/getrainde model wordt blootgesteld.
-3. Je gaat terug en werkt je voorspellende experiment en getraind model bij.
-4. U implementeert het voorspellende experiment opnieuw, waardoor het standaardeindpunt wordt bijgewerkt. Maar dit zal ep2 niet veranderen.
-5. U maakt een extra eindpunt met de naam EP3, waarmee de nieuwe versie van het experiment en het getrainde model worden blootgesteld.
-6. Ga terug naar stap 3 indien nodig.
+1. Vanuit uw voorspellende experiment implementeert u een nieuwe klassieke webservice, die een standaard eindpunt bevat.
+2. U maakt een nieuw eind punt met de naam EP2, waarmee de huidige versie van het model voor experiment/getraind wordt weer gegeven.
+3. U gaat terug en uw voorspellende experiment en getrainde model bijwerken.
+4. U implementeert het voorspellende experiment, waarna het standaard eindpunt wordt bijgewerkt. Maar dit kan EP2 niet wijzigen.
+5. U maakt een extra eind punt met de naam eP3, dat de nieuwe versie van het experiment en het getrainde model beschrijft.
+6. Ga terug naar stap 3, indien nodig.
 
-Na verloop van tijd u veel eindpunten hebben gemaakt in dezelfde webservice. Elk eindpunt vertegenwoordigt een point-in-time kopie van het experiment met de point-in-time versie van het getrainde model. U vervolgens externe logica gebruiken om te bepalen welk eindpunt u wilt aanroepen, wat in feite betekent dat u een versie van het getrainde model voor de scoringsrun moet selecteren.
+In de loop van de tijd zijn er mogelijk veel eind punten gemaakt in dezelfde webservice. Elk eind punt vertegenwoordigt een tijdgebonden kopie van het experiment dat de tijdgebonden versie van het getrainde model bevat. U kunt vervolgens externe logica gebruiken om te bepalen welk eind punt moet worden aangeroepen. Dit betekent effectief dat u een versie selecteert van het getrainde model voor de uitvoering van het score.
 
-U ook veel identieke eindpunten voor webservice maken en vervolgens verschillende versies van het iLearner-bestand patchen naar het eindpunt om een vergelijkbaar effect te bereiken. [In dit artikel](create-models-and-endpoints-with-powershell.md) wordt nader uitgelegd hoe u dat bereiken.
+U kunt ook veel identieke webservice-eind punten maken en vervolgens verschillende versies van het iLearner-bestand naar het eind punt patchen om een vergelijkbaar effect te krijgen. In [dit artikel](create-models-and-endpoints-with-powershell.md) vindt u meer informatie over hoe u dit kunt doen.
 
 ### <a name="new-web-service"></a>Nieuwe webservice
-Als u een nieuwe webservice op basis van Azure Resource Manager maakt, is de geconstrueerd voor eindpunten niet meer beschikbaar. In plaats daarvan u WSD-bestanden (Webservice definition) genereren, in JSON-indeling, vanuit uw voorspellende experiment met behulp van de [opdrachtuitvoer van Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell of met behulp van de [*Opdrachtuitvoer-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell exporteren vanuit een geïmplementeerde op Resource Manager gebaseerde webservice.
+Als u een nieuwe webservice op basis van Azure Resource Manager maakt, is de eindpunt constructie niet meer beschikbaar. In plaats daarvan kunt u WSD-bestanden (web service Definition) in JSON-indeling genereren vanuit uw voorspellende experiment met behulp van de Power shell [-Commandlet export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) of met behulp van de Power shell-commandlet [*export-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) van een geïmplementeerde web service van Resource Manager.
 
-Nadat u het geëxporteerde WSD-bestand en versiebeheer hebt, u de WSD ook implementeren als een nieuwe webservice in een ander webserviceplan in een andere Azure-regio. Zorg ervoor dat u de juiste configuratie van het opslagaccount en de nieuwe webservice-abonnement ID. Als u in verschillende iLearner-bestanden wilt patchen, u het WSD-bestand wijzigen en de locatieverwijzing van het getrainde model bijwerken en implementeren als een nieuwe webservice.
+Nadat u het WSD-bestand en de versie beheer ervan hebt geëxporteerd, kunt u de WSD ook als een nieuwe webservice implementeren in een ander abonnement in een andere Azure-regio. Zorg ervoor dat u de juiste configuratie voor het opslag account en de nieuwe abonnement-ID van de webservice opgeeft. Als u een patch in verschillende iLearner-bestanden wilt uitvoeren, kunt u het WSD-bestand wijzigen en de locatie verwijzing van het getrainde model bijwerken en implementeren als een nieuwe webservice.
 
-## <a name="automate-experiment-execution-and-deployment"></a>Implementatie en implementatie van experimenten automatiseren
-Een belangrijk aspect van ALM is om het uitvoerings- en implementatieproces van de toepassing te kunnen automatiseren. In Azure Machine Learning Studio (klassiek) u dit bereiken met behulp van de [PowerShell-module](https://aka.ms/amlps). Hier volgt een voorbeeld van end-to-end stappen die relevant zijn voor een standaard ALM geautomatiseerd uitvoerings-/implementatieproces met behulp van de [Azure Machine Learning Studio (klassieke) PowerShell-module.](https://aka.ms/amlps) Elke stap is gekoppeld aan een of meer PowerShell-opdrachten die u gebruiken om die stap te volbrengen.
+## <a name="automate-experiment-execution-and-deployment"></a>Experimenteel uitvoeren en implementeren automatiseren
+Een belang rijk aspect van ALM is om het uitvoerings-en implementatie proces van de toepassing te automatiseren. In Azure Machine Learning Studio (klassiek) kunt u dit doen met behulp van de [Power shell-module](https://aka.ms/amlps). Hier volgt een voor beeld van end-to-end-stappen die relevant zijn voor een standaard ALM voor automatische uitvoering/implementatie met behulp van de [Power shell-module Azure machine learning Studio (klassiek)](https://aka.ms/amlps). Elke stap is gekoppeld aan een of meer Power shell-Commandlets die u kunt gebruiken om deze stap uit te voeren.
 
-1. [Een gegevensset uploaden](https://github.com/hning86/azuremlps#upload-amldataset).
-2. Kopieer een trainingsexperiment naar de werkruimte vanuit een [werkruimte](https://github.com/hning86/azuremlps#copy-amlexperiment) of vanuit [Galerie](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)of [importeer](https://github.com/hning86/azuremlps#import-amlexperimentgraph) een [geëxporteerd](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment vanaf de lokale schijf.
-3. [Werk de gegevensset](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) in het trainingsexperiment bij.
-4. [Voer het trainingsexperiment uit.](https://github.com/hning86/azuremlps#start-amlexperiment)
-5. [Promoot het getrainde model.](https://github.com/hning86/azuremlps#promote-amltrainedmodel)
-6. [Kopieer een voorspellend experiment](https://github.com/hning86/azuremlps#copy-amlexperiment) naar de werkruimte.
-7. [Werk het getrainde model](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) bij in het voorspellende experiment.
-8. [Voer het voorspellende experiment uit.](https://github.com/hning86/azuremlps#start-amlexperiment)
-9. [Implementeer een webservice](https://github.com/hning86/azuremlps#new-amlwebservice) vanuit het voorspellende experiment.
-10. Test de webservice [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) of [BES-eindpunt.](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)
+1. [Upload een gegevensset](https://github.com/hning86/azuremlps#upload-amldataset).
+2. Kopieer een Oefen experiment naar de werk ruimte vanuit een [werk ruimte](https://github.com/hning86/azuremlps#copy-amlexperiment) of vanuit de [Galerie](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)of [Importeer](https://github.com/hning86/azuremlps#import-amlexperimentgraph) een [geëxporteerd](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment vanaf een lokale schijf.
+3. [Werk de gegevensset](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) bij in het trainings experiment.
+4. [Voer het trainings experiment uit](https://github.com/hning86/azuremlps#start-amlexperiment).
+5. [Promoot het getrainde model](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
+6. [Kopieer een voorspellend experiment](https://github.com/hning86/azuremlps#copy-amlexperiment) naar de werk ruimte.
+7. [Werk het getrainde model](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) in het voorspellende experiment bij.
+8. [Voer het voorspellende experiment uit](https://github.com/hning86/azuremlps#start-amlexperiment).
+9. [Implementeer een webservice](https://github.com/hning86/azuremlps#new-amlwebservice) van het voorspellende experiment.
+10. Test de [bron records](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) van de webservice of het [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) -eind punt.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Download de [Azure Machine Learning Studio (klassieke) PowerShell-module](https://aka.ms/amlps) en begin met het automatiseren van uw ALM-taken.
-* Leer hoe u [een groot aantal ML-modellen maakt en beheert met slechts één experiment](create-models-and-endpoints-with-powershell.md) via PowerShell en de API omscholen.
-* Meer informatie over [het implementeren van Azure Machine Learning-webservices](deploy-a-machine-learning-web-service.md).
+* Down load de [Azure machine learning Studio (klassieke) Power shell](https://aka.ms/amlps) -module en start uw ALM-taken.
+* Meer informatie over hoe u [een groot aantal ml modellen maakt en beheert met behulp van een enkel experiment](create-models-and-endpoints-with-powershell.md) via Power shell en retraining-API.
+* Meer informatie over het [implementeren van Azure machine learning-webservices](deploy-a-machine-learning-web-service.md).

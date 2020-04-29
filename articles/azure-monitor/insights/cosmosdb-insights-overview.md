@@ -1,127 +1,127 @@
 ---
-title: Azure Cosmos DB bewaken met Azure Monitor voor Cosmos DB (preview)| Microsoft Documenten
-description: In dit artikel wordt de Azure Monitor for Cosmos DB-functie beschreven die eigenaren van Cosmos DB een snel inzicht geeft in de problemen met prestaties en gebruik met hun CosmosDB-accounts.
+title: Azure Cosmos DB met Azure Monitor bewaken voor Cosmos DB (preview) | Microsoft Docs
+description: In dit artikel wordt de Azure Monitor voor Cosmos DB functie beschreven waarmee Cosmos DB-eigen aars een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun CosmosDB-accounts.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
 ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78250680"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure-monitor voor Azure Cosmos DB verkennen (voorbeeld)
+# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor verkennen voor Azure Cosmos DB (preview-versie)
 
-Azure Monitor for Azure Cosmos DB (preview) biedt een overzicht van de algehele prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB-resources in een uniforme interactieve ervaring. Dit artikel helpt u inzicht te krijgen in de voordelen van deze nieuwe monitoringervaring en hoe u de ervaring aanpassen aan de unieke behoeften van uw organisatie.   
+Azure Monitor voor Azure Cosmos DB (preview) biedt een overzicht van de algehele prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB bronnen in een uniforme interactieve ervaring. In dit artikel vindt u meer informatie over de voor delen van deze nieuwe bewakings ervaring en hoe u de ervaring kunt aanpassen en aanpassen aan de unieke behoeften van uw organisatie.   
 
 ## <a name="introduction"></a>Inleiding
 
-Voordat u in de ervaring duikt, moet u begrijpen hoe het informatie presenteert en visualiseert. 
+Voordat u aan de slag gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. 
 
-Het levert:
+Het biedt:
 
-* **Op schaal perspectief** van uw Azure Cosmos DB resources voor al uw abonnementen op één locatie, met de mogelijkheid om selectief scope aan alleen die abonnementen en middelen die u geïnteresseerd bent in de evaluatie.
+* **Op schaal perspectief** van uw Azure Cosmos DB resources in al uw abonnementen op één locatie, met de mogelijkheid om alleen de abonnementen en resources te bepalen die u wilt evalueren.
 
-* **Boor de analyse** van een bepaalde Azure CosmosDB-bron in om problemen te diagnosticeren of gedetailleerde analyses per categorie uit te voeren - gebruik, storingen, capaciteit en bewerkingen. Als u een van deze opties selecteert, krijgt u een diepgaand overzicht van de relevante Azure Cosmos DB-statistieken.  
+* **Zoom analyse** van een bepaalde Azure CosmosDB-resource uit om problemen op te lossen of gedetailleerde analyses uit te voeren op categorie gebruik, storingen, capaciteit en bewerkingen. Als u een van deze opties selecteert, krijgt u een gedetailleerde weer gave van de relevante Azure Cosmos DB metrische gegevens.  
 
-* **Aanpasbaar** : deze ervaring is gebouwd bovenop azure monitor-werkmapsjablonen, zodat u wijzigen welke statistieken worden weergegeven, drempels wijzigen of instellen die overeenkomen met uw limieten en vervolgens in een aangepaste werkmap worden opgeslagen. Grafieken in de werkmappen kunnen vervolgens worden vastgemaakt aan Azure-dashboards.  
+* **Aanpasbaar** : deze ervaring is gebaseerd op Azure monitor werkmap sjablonen, zodat u kunt wijzigen welke metrische gegevens worden weer gegeven, wijzigen of instellen van drempel waarden die worden uitgelijnd met uw limieten en vervolgens opslaan in een aangepaste werkmap. Grafieken in de werkmappen kunnen vervolgens worden vastgemaakt aan Azure-Dash boards.  
 
-Deze functie vereist niet dat u iets in- of configureert, deze Azure Cosmos DB-statistieken worden standaard verzameld.
+Voor deze functie hoeft u niets in te scha kelen of te configureren. deze Azure Cosmos DB metrische gegevens worden standaard verzameld.
 
 >[!NOTE]
->Er zijn geen kosten verbonden aan toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de essentiële functies van Azure Monitor die u configureert of inschakelt, zoals beschreven op de pagina [met prijsdetails van Azure Monitor.](https://azure.microsoft.com/pricing/details/monitor/)
+>Er zijn geen kosten verbonden aan het verkrijgen van toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de Azure Monitor essentiële functies die u configureert of inschakelt, zoals wordt beschreven op de pagina met [Azure monitor prijs informatie](https://azure.microsoft.com/pricing/details/monitor/) .
 
-## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Gebruiks- en prestatiestatistieken voor Azure Cosmos DB weergeven
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Metrische gegevens over gebruik en prestaties voor Azure Cosmos DB weer geven
 
-Voer de volgende stappen uit om het gebruik en de prestaties van uw opslagaccounts voor al uw abonnementen weer te geven.
+Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek **naar Monitor** en selecteer **Monitor**.
+2. Zoek naar **monitor** en selecteer **monitor**.
 
-    ![Zoekvak met het woord "Monitor" en een vervolgkeuzelijst met de tekst Services "Monitor" met een snelheidsmeterstijlafbeelding](./media/cosmosdb-insights-overview/search-monitor.png)
+    ![Zoekvak met het woord ' Monitor ' en een vervolg keuzelijst met de tekst ' Monitor ' met een snelheid van de schijf stijl](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Selecteer **Cosmos DB (voorbeeld)**.
+3. Selecteer **Cosmos DB (preview)**.
 
-    ![Schermafbeelding van de overzichtswerkmap Cosmos DB](./media/cosmosdb-insights-overview/cosmos-db.png)
+    ![Scherm opname van Cosmos DB werkmap overzicht](./media/cosmosdb-insights-overview/cosmos-db.png)
 
 ### <a name="overview"></a>Overzicht
 
-In **Overzicht**wordt in de tabel interactieve Azure Cosmos DB-statistieken weergegeven. U de resultaten filteren op basis van de opties die u selecteert in de volgende vervolgkeuzelijsten:
+In **overzicht**bevat de tabel interactieve Azure Cosmos DB metrische gegevens. U kunt de resultaten filteren op basis van de opties die u selecteert in de volgende vervolg keuzelijsten:
 
-* **Abonnementen** - alleen abonnementen met een Azure Cosmos DB-bron worden weergegeven.  
+* **Abonnementen** : alleen abonnementen met een Azure Cosmos DB resource worden weer gegeven.  
 
-* **Cosmos DB** - U alle, een subset of één Azure Cosmos DB-bron selecteren.
+* **Cosmos DB** : u kunt alle, een subset of één Azure Cosmos DB resource selecteren.
 
-* **Time Range** - geeft standaard de laatste 4 uur informatie weer op basis van de bijbehorende selecties.
+* **Tijds bereik** : de laatste 4 uur aan gegevens worden standaard weer gegeven op basis van de bijbehorende selecties.
 
-De tellertegel onder de vervolgkeuzelijsten rolt het totale aantal Azure Cosmos DB-resources op in de geselecteerde abonnementen. Er zijn voorwaardelijke kleurcodering of heatmaps voor kolommen in de werkmap die transactiestatistieken rapporteren. De diepste kleur heeft de hoogste waarde en een lichtere kleur is gebaseerd op de laagste waarden. 
+De tegel item in de vervolg keuzelijst bevat een samen telling van het totale aantal Azure Cosmos DB resources in de geselecteerde abonnementen. Er zijn voorwaardelijke kleurcoderings-of Heatmaps voor kolommen in de werkmap die de metrische gegevens van trans acties rapporteren. De diepste kleur heeft de hoogste waarde en een lichtere kleur op basis van de laagste waarden. 
 
-Als u een vervolgkeuzepijl selecteert naast een van de Azure Cosmos DB-resources, wordt een uitsplitsing van de prestatiestatistieken op het niveau van de afzonderlijke databasecontainer weergegeven:
+Als u een vervolg keuze pijl naast een van de Azure Cosmos DB resources selecteert, wordt er een uitsplitsing van de prestatie gegevens op het niveau van de afzonderlijke database container weer gegeven:
 
-![Uitgebreide vervolgkeuzelijst met afzonderlijke databasecontainers en bijbehorende prestatie-uitsplitsing](./media/cosmosdb-insights-overview/container-view.png)
+![Uitgevouwen vervolg keuzelijst met afzonderlijke database containers en bijbehorende prestatie analyse](./media/cosmosdb-insights-overview/container-view.png)
 
-Als u de blauw gemarkeerde Azure Cosmos DB-bronnaam selecteert, gaat u naar het **standaardoverzicht** voor het bijbehorende Azure Cosmos DB-account. 
+Als u de naam van de Azure Cosmos DB resource selecteert, wordt het standaard overzicht van het gekoppelde Azure Cosmos DB account weer **gegeven** . 
 
 ### <a name="failures"></a>Fouten
 
-Selecteer **Fouten** boven aan de pagina en het gedeelte **Fouten** van de werkmapsjabloon wordt geopend. Het toont u totale aanvragen met de verdeling van de antwoorden die deel uitmaken van deze verzoeken:
+Selecteer **fouten** aan de bovenkant van de pagina en het gedeelte **storingen** van de werkmap sjabloon wordt geopend. Hierin worden de totale aanvragen weer gegeven met de distributie van antwoorden waaruit deze aanvragen worden gemaakt:
 
-![Schermafbeelding van fouten met uitsplitsing op HTTP-aanvraagtype](./media/cosmosdb-insights-overview/failures.png)
+![Scherm opname van fouten met uitsplitsing op basis van het type HTTP-aanvraag](./media/cosmosdb-insights-overview/failures.png)
 
 | Code      |  Beschrijving       | 
 |-----------|:--------------------|
-| `200 OK`  | Een van de volgende REST-activiteiten was succesvol: </br>- GET op een resource. </br> - Zet op een bron. </br> - POST op een bron. </br> - POST op een opgeslagen procedure bron om de opgeslagen procedure uit te voeren.|
-| `201 Created` | Een post-bewerking om een resource te maken, is geslaagd. |
-| `404 Not Found` | De bewerking probeert te reageren op een resource die niet meer bestaat. De bron is bijvoorbeeld al verwijderd. |
+| `200 OK`  | Een van de volgende REST-bewerkingen is geslaagd: </br>-Een resource ophalen. </br> : In een resource plaatsen. </br> -POST op een resource. </br> -POST op een opgeslagen procedure resource om de opgeslagen procedure uit te voeren.|
+| `201 Created` | Er is een POST-bewerking voor het maken van een resource geslaagd. |
+| `404 Not Found` | De bewerking probeert uit te voeren op een resource die niet meer bestaat. De resource is bijvoorbeeld mogelijk al verwijderd. |
 
-Raadpleeg het artikel over de [statuscode van Azure Cosmos DB HTTP](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor een volledige lijst met statuscodes .
+Raadpleeg het artikel over de [Azure Cosmos DB HTTP-status code](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor een volledige lijst met status codes.
 
 ### <a name="capacity"></a>Capaciteit
 
-Selecteer **Capaciteit** boven aan de pagina en het **gedeelte Capaciteit** van de werkmapsjabloon wordt geopend. Het toont u hoeveel documenten u hebt, de groei van uw document in de loop van de tijd, het gegevensgebruik en de totale hoeveelheid beschikbare opslagruimte die u nog hebt.  Dit kan worden gebruikt om potentiële problemen met het opslag- en gegevensgebruik te identificeren.
+Selecteer de optie **capaciteit** boven aan de pagina en het gedeelte **capaciteit** van de werkmap sjabloon wordt geopend. U ziet hoe veel documenten u hebt, uw document groei in de loop van de tijd, het gegevens gebruik en de totale hoeveelheid beschik bare opslag die u hebt verlaten.  Dit kan worden gebruikt om mogelijke problemen met de opslag en het gebruik van gegevens te identificeren.
 
-![Capaciteitswerkmap](./media/cosmosdb-insights-overview/capacity.png) 
+![Capaciteits werkmap](./media/cosmosdb-insights-overview/capacity.png) 
 
-Net als bij de overzichtswerkmap wordt bij het selecteren van de vervolgkeuzelijst naast een Azure Cosmos DB-bron in de kolom **Abonnement** een uitsplitsing weergegeven van de afzonderlijke containers waaruit de database bestaat.
+Net als bij de overzichts werkmap selecteert de vervolg keuzelijst naast een Azure Cosmos DB resource in de kolom **abonnement** een uitsplitsing van de afzonderlijke containers waaruit de data base is opgebouwd.
 
 ### <a name="operations"></a>Bewerkingen 
 
-Selecteer **Bewerkingen** boven aan de pagina en het **gedeelte Bewerkingen** van de werkmapsjabloon wordt geopend. Het geeft u de mogelijkheid om uw verzoeken te zien, uitgesplitst naar het type aanvragen dat wordt gedaan. 
+Selecteer **bewerkingen** boven aan de pagina en het gedeelte **bewerkingen** van de werkmap sjabloon wordt geopend. Het biedt u de mogelijkheid om uw aanvragen weer te geven die zijn gesplitst op basis van het type aanvragen. 
 
-In het onderstaande voorbeeld `eastus-billingint` zie je dat het voornamelijk gaat om het ontvangen van leesverzoeken, maar met een klein aantal upsert en het maken van aanvragen. Terwijl `westeurope-billingint` is alleen-lezen vanuit een verzoek perspectief, ten minste in de afgelopen vier uur dat de werkmap is momenteel scoped via de tijdbereik parameter.
+In het onderstaande voor beeld ziet u dat `eastus-billingint` voornamelijk Lees aanvragen ontvangt, maar met een klein aantal upsert en aanvragen maken. Overwegende dat `westeurope-billingint` is alleen-lezen vanuit een aanvraag perspectief, ten minste in de afgelopen vier uur dat de werkmap momenteel is ingesteld op basis van de tijds bereik parameter.
 
-![Werkmap voor bewerkingen](./media/cosmosdb-insights-overview/operation.png) 
+![Operations-werkmap](./media/cosmosdb-insights-overview/operation.png) 
 
-## <a name="pin-export-and-expand"></a>Pinnen, exporteren en uitbreiden
+## <a name="pin-export-and-expand"></a>Vastmaken, exporteren en uitvouwen
 
-U een van de metrische secties vastmaken aan een [Azure-dashboard](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) door het pushpinpictogram rechtsboven in de sectie te selecteren.
+U kunt een van de metrische gedeelten aan een Azure- [dash board](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) vastmaken door het pictogram punaise rechtsboven in de sectie te selecteren.
 
-![Voorbeeld van metrische sectie die is vastmaken aan dashboard](./media/cosmosdb-insights-overview/pin.png)
+![Voor beeld van de sectie metrische gegevens van de metriek naar dash board](./media/cosmosdb-insights-overview/pin.png)
 
-Als u uw gegevens wilt exporteren naar de Excel-indeling, selecteert u het pijl-omlaagpictogram links van het pushpinpictogram.
+Als u uw gegevens wilt exporteren naar de Excel-indeling, selecteert u de pijl-omlaag links van het punaise pictogram.
 
-![Pictogram Werkmap exporteren](./media/cosmosdb-insights-overview/export.png)
+![Pictogram werkmap exporteren](./media/cosmosdb-insights-overview/export.png)
 
-Als u alle vervolgkeuzeweergaven in de werkmap wilt uitvouwen of samenvouwen, selecteert u het pictogram Uitvouwen links van het exportpictogram:
+Als u alle vervolg keuzelijsten in de werkmap wilt uitvouwen of samen vouwen, selecteert u het pictogram uitvouwen links van het pictogram exporteren:
 
-![Pictogram Werkmap uitvouwen](./media/cosmosdb-insights-overview/expand.png)
+![Pictogram werkmap uitvouwen](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor voor Azure Cosmos DB aanpassen (voorbeeld)
+## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor aanpassen voor Azure Cosmos DB (preview-versie)
 
-Aangezien deze ervaring is gebouwd bovenop azure monitor-werkmapsjablonen, u een kopie van uw gewijzigde versie **aanpassen** > **en** **opslaan** in een aangepaste werkmap. 
+Omdat deze ervaring is gebaseerd op Azure monitor werkmap sjablonen, kunt u **Customize** > **bewerken** en een kopie van uw gewijzigde versie in een aangepaste werkmap **Opslaan** . 
 
 ![Balk aanpassen](./media/cosmosdb-insights-overview/customize.png)
 
-Werkmappen worden opgeslagen in een resourcegroep, hetzij in de sectie **Mijn rapporten** die privé voor u is, hetzij in de sectie **Gedeelde rapporten** die toegankelijk is voor iedereen die toegang heeft tot de resourcegroep. Nadat u de aangepaste werkmap hebt opgeslagen, moet u naar de werkmapgalerie gaan om deze te starten.
+Werkmappen worden opgeslagen in een resource groep, hetzij in het gedeelte **mijn rapporten** dat persoonlijk is of in de sectie **gedeelde rapporten** dat toegankelijk is voor iedereen die toegang heeft tot de resource groep. Nadat u de aangepaste werkmap hebt opgeslagen, moet u naar de galerie met werkmappen gaan om deze te starten.
 
-![Werkmapgalerie starten vanuit opdrachtbalk](./media/cosmosdb-insights-overview/gallery.png)
+![Werkmap galerie starten vanaf de opdracht balk](./media/cosmosdb-insights-overview/gallery.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Configureer [metrische waarschuwingen](../platform/alerts-metric.md) en [servicestatusmeldingen](../../service-health/alerts-activity-log-service-notifications.md) om automatische waarschuwingen in te stellen om te helpen bij het detecteren van problemen.
+* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications.md) configureren om automatische waarschuwingen in te stellen voor hulp bij het detecteren van problemen.
 
-* Lees de scenario's werkmappen zijn ontworpen om te ondersteunen, hoe u nieuwe rapporten maakt en bestaande rapporten aanpast door [interactieve rapporten maken met Azure Monitor-werkmappen](../app/usage-workbooks.md)te bekijken.
+* Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../app/usage-workbooks.md)te controleren.

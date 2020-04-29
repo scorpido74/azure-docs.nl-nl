@@ -1,6 +1,6 @@
 ---
-title: Beperkingen voor beveiligingscontext beheren in Azure Red Hat OpenShift | Microsoft Documenten
-description: Beperkingen in de beveiligingscontext voor Azure Red Hat OpenShift-clusterbeheerders
+title: Beveiligings context beperkingen beheren in azure Red Hat open Shift | Microsoft Docs
+description: Beveiligings context beperkingen voor Azure Red Hat open Shift cluster-Administrators
 services: container-service
 author: troy0820
 ms.author: b-trconn
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063176"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Beperkingen voor beveiligingscontext beheren in Azure Red Hat OpenShift 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Beveiligings context beperkingen beheren in azure Red Hat open Shift 
 
-Met beveiligingscontextbeperkingen (SSC's) kunnen clusterbeheerders machtigingen voor pods beheren. Zie de [architectuurdocumentatie voor SCS voor](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)meer informatie over dit API-type. U SCCs in uw instantie beheren als normale API-objecten met behulp van de CLI.
+Met SCCs (Security context constraints) kunnen cluster beheerders machtigingen voor een Peul beheren. Zie de [architectuur documentatie voor SCCs voor](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)meer informatie over dit API-type. U kunt SCCs in uw exemplaar als normale API-objecten beheren door gebruik te maken van de CLI.
 
-## <a name="list-security-context-constraints"></a>Beveiligingscontextbeperkingen weergeven
+## <a name="list-security-context-constraints"></a>Beveiligings context beperkingen weer geven
 
-Als u een huidige lijst met SPC's wilt ophalen, gebruikt u deze opdracht: 
+Als u een actuele lijst met SCCs wilt ophalen, gebruikt u deze opdracht: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Een object onderzoeken op beperkingen in de beveiligingscontext
+## <a name="examine-an-object-for-security-context-constraints"></a>Een object controleren op beveiligings context beperkingen
 
-Om een bepaalde SCC `oc get` `oc describe`te `oc edit`onderzoeken, gebruik , , of .  Als u bijvoorbeeld de beperkte SCC **wilt** onderzoeken, gebruikt u deze opdracht:
+Voor het onderzoeken van een bepaald SCC `oc get`, `oc describe`gebruik, `oc edit`of.  Als u bijvoorbeeld het **beperkte** SCC wilt bekijken, gebruikt u deze opdracht:
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

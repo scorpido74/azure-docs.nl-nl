@@ -1,6 +1,6 @@
 ---
-title: Azure-schijfversleuteling voor Windows
-description: Implementeert Azure Disk Encryption naar een Virtuele Windows-machine met behulp van een virtuele machine-extensie.
+title: Azure Disk Encryption voor Windows
+description: Hiermee worden Azure Disk Encryption geïmplementeerd op een virtuele Windows-machine met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
@@ -14,37 +14,37 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066870"
 ---
-# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure-schijfversleuteling voor Windows (Microsoft.Azure.Security.AzureDiskEncryption)
+# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption voor Windows (micro soft. Azure. Security. AzureDiskEncryption)
 
 ## <a name="overview"></a>Overzicht
 
-Azure Disk Encryption maakt gebruik van BitLocker om volledige schijfversleuteling te bieden op virtuele Azure-machines met Windows.  Deze oplossing is geïntegreerd met Azure Key Vault om schijfversleutelingssleutels en -geheimen te beheren in uw key vault-abonnement. 
+Azure Disk Encryption maakt gebruik van BitLocker om versleuteling van de volledige schijf te bieden op virtuele machines van Azure waarop Windows wordt uitgevoerd.  Deze oplossing is geïntegreerd met Azure Key Vault voor het beheren van schijf versleutelings sleutels en geheimen in uw sleutel kluis abonnement. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zie Azure Disk Encryption for Windows VM's voor een volledige lijst met vereisten, zie [Azure Disk Encryption for Windows VM's,](../windows/disk-encryption-overview.md)met name de volgende secties:
+Zie voor een volledige lijst met vereisten [Azure Disk Encryption voor Windows-vm's](../windows/disk-encryption-overview.md), met name de volgende secties:
 
-- [Ondersteunde VM's en besturingssystemen](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [Netwerkvereisten](../windows/disk-encryption-overview.md#networking-requirements)
-- [Vereisten voor groepsbeleid](../windows/disk-encryption-overview.md#group-policy-requirements)
+- [Ondersteunde Vm's en besturings systemen](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Netwerk vereisten](../windows/disk-encryption-overview.md#networking-requirements)
+- [groepsbeleid vereisten](../windows/disk-encryption-overview.md#group-policy-requirements)
 
-## <a name="extension-schema"></a>Uitbreidingsschema
+## <a name="extension-schema"></a>Extensie schema
 
-Er zijn twee versies van extensieschema's voor Azure Disk Encryption (ADE):
-- v2.2 - Een nieuwer aanbevolen schema dat geen AAD-eigenschappen (Azure Active Directory) gebruikt.
-- v1.1 - Een ouder schema waarvoor AAD-eigenschappen (Azure Active Directory) vereist zijn. 
+Er zijn twee versies van het uitbreidings schema voor Azure Disk Encryption (ADE):
+- v 2.2-een nieuwer aanbevolen schema dat geen eigenschappen van Azure Active Directory (AAD) gebruikt.
+- v 1.1-een ouder schema dat eigenschappen van Azure Active Directory (AAD) vereist. 
 
-Als u een doelschema wilt selecteren, moet de eigenschap worden ingesteld die gelijk is aan de `typeHandlerVersion` versie van het schema dat u wilt gebruiken.
+Als u een doel schema wilt selecteren `typeHandlerVersion` , moet de eigenschap zijn ingesteld op de versie van het schema dat u wilt gebruiken.
 
-### <a name="schema-v22-no-aad-recommended"></a>Schema v2.2: Geen AAD (aanbevolen)
+### <a name="schema-v22-no-aad-recommended"></a>Schema v 2.2: geen AAD (aanbevolen)
 
-Het v2.2-schema wordt aanbevolen voor alle nieuwe VM's en vereist geen Azure Active Directory-eigenschappen.
+Het v 2.2-schema wordt aanbevolen voor alle nieuwe virtuele machines en vereist geen Azure Active Directory eigenschappen.
 
 ```json
 {
@@ -72,11 +72,11 @@ Het v2.2-schema wordt aanbevolen voor alle nieuwe VM's en vereist geen Azure Act
 ```
 
 
-### <a name="schema-v11-with-aad"></a>Schema v1.1: met AAD 
+### <a name="schema-v11-with-aad"></a>Schema v 1.1: met AAD 
 
-Het 1.1-schema vereist `aadClientID` en vereist `aadClientSecret` of `AADClientCertificate` wordt niet aanbevolen voor nieuwe VM's.
+Het 1,1-schema `aadClientID` vereist en `aadClientSecret` `AADClientCertificate` wordt niet aanbevolen voor nieuwe vm's.
 
-Met `aadClientSecret`behulp van :
+Gebruiken `aadClientSecret`:
 
 ```json
 {
@@ -106,7 +106,7 @@ Met `aadClientSecret`behulp van :
 }
 ```
 
-Met `AADClientCertificate`behulp van :
+Gebruiken `AADClientCertificate`:
 
 ```json
 {
@@ -137,48 +137,48 @@ Met `AADClientCertificate`behulp van :
 ```
 
 
-### <a name="property-values"></a>Eigenschapswaarden
+### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde / Voorbeeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| uitgever | Microsoft.Azure.Security | tekenreeks |
+| uitgever | Micro soft. Azure. Security | tekenreeks |
 | type | AzureDiskEncryption | tekenreeks |
-| typeHandlerVersie | 2.2, 1.1 | tekenreeks |
-| (1.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Guid | 
-| (1.1 schema) AADClientSecret | wachtwoord | tekenreeks |
-| (1.1 schema) AADClientCertificaat | Vingerafdruk | tekenreeks |
-| EncryptieOperatie | Encryptie inschakelen, EncryptieOpmaakall inschakelen | tekenreeks | 
-| (optioneel - standaard RSA-OAEP) Sleutelversleutelingsalgoritme | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | tekenreeks |
+| typeHandlerVersion | 2,2, 1,1 | tekenreeks |
+| (1,1-schema) AADClientID | XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | guid | 
+| (1,1-schema) AADClientSecret | wachtwoord | tekenreeks |
+| (1,1-schema) AADClientCertificate | vingerafdruk | tekenreeks |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | tekenreeks | 
+| (optioneel-standaard-RSA-OAEP) KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | tekenreeks |
 | KeyVaultURL | url | tekenreeks |
 | KeyVaultResourceId | url | tekenreeks |
-| (facultatief) KeyEncryptionKeyURL | url | tekenreeks |
-| (facultatief) KekVaultResourceId | url | tekenreeks |
-| (facultatief) SequenceVersie | uniqueidentifier | tekenreeks |
-| VolumeType | OS, Gegevens, Alles | tekenreeks |
+| Beschrijving KeyEncryptionKeyURL | url | tekenreeks |
+| Beschrijving KekVaultResourceId | url | tekenreeks |
+| Beschrijving SequenceVersion | uniqueidentifier | tekenreeks |
+| VolumeType | Besturings systeem, gegevens, alle | tekenreeks |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Zie Azure QuickStart Template [201-encrypt-running-windows-vm-zonder-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)voor een voorbeeld van sjabloonimplementatie op basis van schema v2.2.
+Voor een voor beeld van een sjabloon implementatie op basis van schema v 2.2 raadpleegt u Azure Quick Start-sjabloon [201-versleutelen-uitvoeren-Windows-VM-zonder-Aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad).
 
-Zie Azure QuickStart Template [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)voor een voorbeeld van sjabloonimplementatie op basis van schema v1.1.
+Voor een voor beeld van een sjabloon implementatie op basis van schema v 1.1 raadpleegt u de Azure Quick Start-sjabloon [201-Encrypt-running-Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 >[!NOTE]
-> Ook `VolumeType` als de parameter is ingesteld op Alles, worden gegevensschijven alleen versleuteld als ze correct zijn opgemaakt. 
+> Als `VolumeType` para meter is ingesteld op alle, worden gegevens schijven alleen versleuteld als ze juist zijn ingedeeld. 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Raadpleeg voor het oplossen van problemen de [handleiding voor het oplossen van problemen met azure disk encryptie](../windows/disk-encryption-troubleshooting.md).
+Raadpleeg de [Azure Disk Encryption Troubleshooting Guide (Engelstalig](../windows/disk-encryption-troubleshooting.md)) voor het oplossen van problemen.
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/community/) 
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/community/). 
 
-U ook een Azure-ondersteuningsincident indienen. Ga naar [Azure-ondersteuning](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de [veelgestelde vragen](https://azure.microsoft.com/support/faq/)over Microsoft Azure Support voor informatie over het gebruik van Azure Support.
+U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar [ondersteuning voor Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Virtuele machine-extensies en -functies voor Windows voor](features-windows.md)meer informatie over extensies.
-* Zie [Virtuele Windows-apparaten](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#windows-virtual-machines)voor meer informatie over Azure Disk Encryption voor Windows.
+* Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.
+* Zie [Windows virtual machines](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#windows-virtual-machines)voor meer informatie over Azure Disk Encryption voor Windows.

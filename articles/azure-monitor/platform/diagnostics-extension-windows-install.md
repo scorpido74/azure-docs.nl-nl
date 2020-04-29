@@ -1,6 +1,6 @@
 ---
-title: Windows Azure-diagnostische extensie (WAD) installeren en configureren
-description: Meer informatie over het verzamelen van Azure-diagnostische gegevens in een Azure Storage-account, zodat u deze bekijken met een van de verschillende beschikbare hulpprogramma's.
+title: De Windows Azure Diagnostics-extensie (WAD) installeren en configureren
+description: Meer informatie over het verzamelen van diagnostische gegevens van Azure in een Azure Storage-account, zodat u deze kunt bekijken met een van de beschik bare hulpprogram ma's.
 services: azure-monitor
 author: bwren
 ms.subservice: diagnostic-extension
@@ -8,51 +8,51 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672256"
 ---
-# <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure-diagnostische extensie (WAD) installeren en configureren
-Azure-diagnostische extensie is een agent in Azure Monitor die bewakingsgegevens verzamelt van het gastbesturingssysteem en workloads van Azure virtuele machines en andere rekenbronnen. In dit artikel vindt u informatie over het installeren en configureren van de Windows-diagnostische extensie en een beschrijving van de manier waarop de gegevens zijn opgeslagen en het Azure Storage-account.
+# <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>De Windows Azure Diagnostics-extensie (WAD) installeren en configureren
+Azure Diagnostics-extensie is een agent in Azure Monitor die bewakings gegevens van het gast besturingssysteem en werk belastingen van virtuele Azure-machines en andere reken bronnen verzamelt. Dit artikel bevat informatie over het installeren en configureren van de Windows diagnostische uitbrei ding en een beschrijving van de manier waarop de gegevens worden opgeslagen in en Azure Storage-account.
 
-De diagnostische extensie wordt geïmplementeerd als een [extensie voor virtuele machines](../../virtual-machines/extensions/overview.md) in Azure, zodat deze dezelfde installatieopties ondersteunt met behulp van Resource Manager-sjablonen, PowerShell en CLI. Zie [Virtuele machine-extensies en -functies voor Windows](../../virtual-machines/extensions/features-windows.md) voor meer informatie over het installeren en onderhouden van virtuele machine-extensies.
+De uitbrei ding van diagnostische gegevens wordt geïmplementeerd als extensie van een [virtuele machine](../../virtual-machines/extensions/overview.md) in azure, zodat deze dezelfde installatie opties ondersteunt met Resource Manager-sjablonen, Power shell en cli. Zie [extensies en functies voor virtuele machines voor Windows](../../virtual-machines/extensions/features-windows.md) voor meer informatie over het installeren en onderhouden van extensies van virtuele machines.
 
-## <a name="install-with-azure-portal"></a>Installeren met Azure-portal
-U de diagnostische extensie installeren en configureren op een afzonderlijke virtuele machine in de Azure-portal, die u een interface biedt in plaats van rechtstreeks met de configuratie te werken. Wanneer u de diagnostische extensie inschakelt, wordt automatisch een standaardconfiguratie gebruikt met de meest voorkomende prestatiemeteritems en gebeurtenissen. U deze standaardconfiguratie aanpassen aan uw specifieke vereisten.
+## <a name="install-with-azure-portal"></a>Installeren met Azure Portal
+U kunt de diagnostische extensie installeren en configureren op een afzonderlijke virtuele machine in de Azure Portal die u een interface biedt in plaats van rechtstreeks met de configuratie te werken. Wanneer u de uitbrei ding voor diagnostische gegevens inschakelt, wordt automatisch een standaard configuratie gebruikt met de meest voorkomende prestatie meter items en-gebeurtenissen. U kunt deze standaard configuratie aanpassen op basis van uw specifieke vereisten.
 
 > [!NOTE]
-> Er zijn instellingen voor diagnostische extensie die u niet configureren met behulp van de Azure-portal, inclusief het verzenden van gegevens naar Azure Event Hubs. U moet een van de andere configuratiemethoden gebruiken voor deze instellingen.
+> Er zijn instellingen voor diagnostische uitbrei dingen die u niet kunt configureren met de Azure Portal, zoals het verzenden van gegevens naar Azure Event Hubs. U moet een van de andere configuratie methoden voor deze instellingen gebruiken.
 
-1. Open het menu voor een virtuele machine in de Azure-portal.
-2. Klik op **Diagnostische instellingen** in de sectie **Controle** van het VM-menu.
-3. Klik **op Controle op gastniveau inschakelen** als de diagnostische extensie nog niet is ingeschakeld.
-4. Er wordt een nieuw Azure Storage-account gemaakt voor de VM met de naam, gebaseerd op de naam van de resourcegroep voor de VM. U de vm aan een ander opslagaccount koppelen door het tabblad **Agent te** selecteren.
+1. Open het menu voor een virtuele machine in de Azure Portal.
+2. Klik op **Diagnostische instellingen** in de sectie **bewaking** van het VM-menu.
+3. Klik op **bewaking op gast niveau inschakelen** als de uitbrei ding voor diagnostische gegevens nog niet is ingeschakeld.
+4. Er wordt een nieuw Azure Storage-account gemaakt voor de virtuele machine met de naam die is gebaseerd op de naam van de resource groep voor de virtuele machine. U kunt de virtuele machine koppelen aan een ander opslag account door het tabblad **agent** te selecteren.
 
 ![Diagnostische instellingen](media/diagnostics-extension-windows-install/diagnostic-settings.png)
 
 
-U de standaardconfiguratie wijzigen zodra de diagnostische extensie is ingeschakeld. In de volgende tabel worden de opties beschreven die u in de verschillende tabbladen wijzigen. Sommige opties hebben een **opdracht Aangepast** waarmee u een meer gedetailleerde configuratie opgeven. zie [windows-extensieschema](diagnostics-extension-schema-windows.md) voor diagnostische gegevens voor meer informatie over verschillende instellingen.
+U kunt de standaard configuratie wijzigen nadat de diagnostische uitbrei ding is ingeschakeld. In de volgende tabel worden de opties beschreven die u kunt wijzigen op de verschillende tabbladen. Sommige opties hebben een **aangepaste** opdracht waarmee u meer gedetailleerde configuratie kunt opgeven. Zie het [uitbreidings schema voor Windows diagnostische](diagnostics-extension-schema-windows.md) gegevens voor meer informatie over de verschillende instellingen.
 
 | Tab | Beschrijving |
 |:---|:---|
-| Overzicht | Hiermee wordt de huidige configuratie met koppelingen naar de andere tabbladen weergegeven. |
-| Prestatiemeteritems | Selecteer de prestatiemeteritems die u wilt verzamelen en de samplesnelheid voor elk.  |
-| Logboeken | Selecteer de logboekgegevens die u wilt verzamelen. Dit omvat Windows Event logs, IIS logs, .NET applicatie logs en ETW gebeurtenissen.  |
-| Crashdumps | Schakel crashdump in voor verschillende processen. |
-| Putten | Schakel gegevenssinks in om gegevens naar bestemmingen te verzenden naast Azure Storage.<br>Azure Monitor - Stuurt prestatiegegevens naar Azure Monitor Metrics.<br>Application Insights - Gegevens verzenden naar een Application Insights-toepassing. |
-| Agent | Wijzig de volgende configuratie voor de agent:<br>- Wijzig het opslagaccount.<br>- Geef de maximale lokale schijf op die voor de agent wordt gebruikt.<br>- Logboeken configureren voor de status van het agent zelf.|
+| Overzicht | Hiermee wordt de huidige configuratie met koppelingen naar de andere tabbladen weer gegeven. |
+| Prestatiemeteritems | Selecteer de prestatie meter items die u wilt verzamelen en de sampling frequentie voor elke.  |
+| Logboeken | Selecteer de logboek gegevens die u wilt verzamelen. Dit omvat Windows-gebeurtenis logboeken, IIS-logboeken, .NET-toepassings logboeken en ETW-gebeurtenissen.  |
+| Crashdumps | Crash dump inschakelen voor verschillende processen. |
+| Wastafel | Schakel gegevens filters in om naast Azure Storage ook gegevens naar bestemmingen te verzenden.<br>Azure Monitor: verzendt prestatie gegevens naar Azure Monitor meet waarden.<br>Application Insights: gegevens verzenden naar een Application Insights-toepassing. |
+| Agent | Wijzig de volgende configuratie voor de agent:<br>-Wijzig het opslag account.<br>-Geef de maximale lokale schijf op die wordt gebruikt voor de agent.<br>-Logboeken configureren voor de status van de agent zelf.|
 
 
 > [!NOTE]
-> Hoewel de configuratie voor diagnostische extensie kan worden opgemaakt in JSON of XML, wordt elke configuratie die in de Azure-portal wordt uitgevoerd altijd opgeslagen als JSON. Als u XML met een andere configuratiemethode gebruikt en vervolgens uw configuratie wijzigt met de Azure-portal, worden de instellingen gewijzigd in JSON.
+> Hoewel de configuratie voor de diagnostische gegevens in JSON of XML kan worden geformatteerd, worden alle configuraties die in de Azure Portal worden uitgevoerd, altijd opgeslagen als JSON. Als u XML gebruikt met een andere configuratie methode en vervolgens uw configuratie wijzigt met de Azure Portal, worden de instellingen gewijzigd in JSON.
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
-Zie [Controle en diagnose gebruiken met een Windows VM- en Azure Resource Manager-sjablonen](../../virtual-machines/extensions/diagnostics-template.md) voor het implementeren van de diagnostische extensie met Azure Resource Manager-sjablonen. 
+Zie [controle en diagnose gebruiken met een Windows-VM en Azure Resource Manager sjablonen](../../virtual-machines/extensions/diagnostics-template.md) voor het implementeren van de diagnostische uitbrei ding met Azure Resource Manager sjablonen. 
 
-## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
-De Azure CLI kan worden gebruikt om de Azure Diagnostics-extensie te implementeren op een bestaande virtuele machine met behulp van [az vm-extensie ingesteld](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) als in het volgende voorbeeld. 
+## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
+De Azure CLI kan worden gebruikt om de Azure Diagnostics-extensie op een bestaande virtuele machine te implementeren met behulp van [AZ VM extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) , zoals in het volgende voor beeld. 
 
 ```azurecli
 az vm extension set \
@@ -64,7 +64,7 @@ az vm extension set \
   --settings public-settings.json 
 ```
 
-De beveiligde instellingen worden gedefinieerd in het [PrivateConfig-element](diagnostics-extension-schema-windows.md#privateconfig-element) van het configuratieschema. Hieronder volgt een minimaal voorbeeld van een bestand met beveiligde instellingen dat het opslagaccount definieert. Zie [Voorbeeldconfiguratie](diagnostics-extension-schema-windows.md#privateconfig-element) voor volledige details van de privé-instellingen.
+De beveiligde instellingen worden gedefinieerd in het [PrivateConfig-element](diagnostics-extension-schema-windows.md#privateconfig-element) van het configuratie schema. Hieronder volgt een mini maal voor beeld van een bestand met beveiligde instellingen waarmee het opslag account wordt gedefinieerd. Bekijk de [voorbeeld configuratie](diagnostics-extension-schema-windows.md#privateconfig-element) voor de volledige details van de persoonlijke instellingen.
 
 ```JSON
 {
@@ -73,7 +73,7 @@ De beveiligde instellingen worden gedefinieerd in het [PrivateConfig-element](di
     "storageAccountEndPoint": "https://mystorageaccount.blob.core.windows.net"
 }
 ```
-De openbare instellingen worden gedefinieerd in het [element Openbaar](diagnostics-extension-schema-windows.md#publicconfig-element) van het configuratieschema. Hieronder volgt een minimaal voorbeeld van een bestand met openbare instellingen waarmee diagnostische infrastructuurlogboeken, één prestatiemeteren en één gebeurtenislogboek kunnen worden opgehaald. Zie [Voorbeeldconfiguratie](diagnostics-extension-schema-windows.md#publicconfig-element) voor volledige details van de openbare instellingen.
+De open bare instellingen worden gedefinieerd in het [open bare element](diagnostics-extension-schema-windows.md#publicconfig-element) van het configuratie schema. Hieronder volgt een mini maal voor beeld van een bestand met open bare instellingen waarmee u logboeken met diagnostische infra structuur, één prestatie meter item en één gebeurtenis logboek kunt verzamelen. Bekijk de [voorbeeld configuratie](diagnostics-extension-schema-windows.md#publicconfig-element) voor de volledige details van de open bare instellingen.
 
 ```JSON
 {
@@ -106,8 +106,8 @@ De openbare instellingen worden gedefinieerd in het [element Openbaar](diagnosti
 
 
 
-## <a name="powershell-deployment"></a>PowerShell-implementatie
-PowerShell kan worden gebruikt om de Azure Diagnostics-extensie te implementeren op een bestaande virtuele machine met [set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) zoals in het volgende voorbeeld. 
+## <a name="powershell-deployment"></a>Power shell-implementatie
+Power shell kan worden gebruikt om de Azure Diagnostics-extensie te implementeren op een bestaande virtuele machine met behulp van [set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) , zoals in het volgende voor beeld. 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
@@ -115,9 +115,9 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
   -DiagnosticsConfigurationPath "DiagnosticsConfiguration.json"
 ```
 
-De privé-instellingen worden gedefinieerd in het [element PrivateConfig,](diagnostics-extension-schema-windows.md#privateconfig-element)terwijl de openbare instellingen worden gedefinieerd in het [element Openbaar](diagnostics-extension-schema-windows.md#publicconfig-element) van het configuratieschema. U er ook voor kiezen om de details van het opslagaccount op te geven als parameters van de cmdlet Set-AzVMDiagnosticsExtension in plaats van ze op te nemen in de privé-instellingen.
+De persoonlijke instellingen worden gedefinieerd in het [PrivateConfig-element](diagnostics-extension-schema-windows.md#privateconfig-element), terwijl de open bare instellingen worden gedefinieerd in het [open bare element](diagnostics-extension-schema-windows.md#publicconfig-element) van het configuratie schema. U kunt er ook voor kiezen om de details van het opslag account op te geven als para meters van de cmdlet Set-AzVMDiagnosticsExtension in plaats van deze op te nemen in de persoonlijke instellingen.
 
-Hieronder volgt een minimaal voorbeeld van een configuratiebestand waarmee diagnostische infrastructuurlogboeken, één prestatiemeteren en één gebeurtenislogboek kunnen worden opgehaald. Zie [Voorbeeldconfiguratie](diagnostics-extension-schema-windows.md#publicconfig-element) voor volledige details van de privé- en openbare instellingen. 
+Hieronder volgt een mini maal voor beeld van een configuratie bestand dat het verzamelen van logboeken met diagnostische infra structuur, één prestatie meter item en één gebeurtenis logboek mogelijk maakt. Bekijk de [voorbeeld configuratie](diagnostics-extension-schema-windows.md#publicconfig-element) voor de volledige details van de persoonlijke en open bare instellingen. 
 
 ```JSON
 {
@@ -159,29 +159,29 @@ Hieronder volgt een minimaal voorbeeld van een configuratiebestand waarmee diagn
 }
 ```
 
-Zie ook [PowerShell gebruiken om Azure Diagnostics in te schakelen in een virtuele machine met Windows](../../virtual-machines/extensions/diagnostics-windows.md).
+Zie ook [Power shell gebruiken om Azure Diagnostics in te scha kelen op een virtuele machine waarop Windows wordt uitgevoerd](../../virtual-machines/extensions/diagnostics-windows.md).
 
 ## <a name="data-storage"></a>Gegevensopslag
-In de volgende tabel worden de verschillende soorten gegevens weergegeven die zijn verzameld uit de diagnostische extensie en of ze zijn opgeslagen als een tabel of een blob. De gegevens die in tabellen zijn opgeslagen, kunnen ook worden opgeslagen in blobs, afhankelijk van de [instelling StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) in uw openbare configuratie.
+De volgende tabel geeft een lijst van de verschillende typen gegevens die worden verzameld uit de diagnostische uitbrei ding en of ze worden opgeslagen als een tabel of BLOB. De gegevens die zijn opgeslagen in tabellen kunnen ook worden opgeslagen in blobs, afhankelijk van de [instelling para](diagnostics-extension-schema-windows.md#publicconfig-element) in uw open bare configuratie.
 
 
 | Gegevens | Opslagtype | Beschrijving |
 |:---|:---|:---|
-| WADDiagnosticInfrastructureLogsTable | Tabel | Diagnostische monitor- en configuratiewijzigingen. |
-| WADDirectoriesTable | Tabel | Mappen die de diagnostische monitor controleert.  Dit omvat IIS-logboeken, IIS-logboeken met mislukte aanvragen en aangepaste mappen.  De locatie van het bloblogboekbestand wordt opgegeven in het veld Container en de naam van de blob bevindt zich in het veld Relativepath.  Het veld AbsolutePath geeft de locatie en naam van het bestand aan zoals het bestond op de virtuele Azure-machine. |
-| WadLogsTable | Tabel | Logboeken geschreven in code met behulp van de trace listener. |
-| WADPerformanceCountersTabel | Tabel | Prestatiemeteritems. |
-| TABEL WADWindowsEventLogs | Tabel | Windows Event-logboeken. |
-| wad-iis-failedreqlogfiles | Blob | Bevat informatie uit logboeken met mislukte aanvraag van IIS. |
-| wad-iis-logfiles | Blob | Bevat informatie over IIS-logboeken. |
-| "aangepaste" | Blob | Een aangepaste container op basis van het configureren van mappen die worden gecontroleerd door de diagnostische monitor.  De naam van deze blobcontainer wordt opgegeven in WADDirectoriesTable. |
+| WADDiagnosticInfrastructureLogsTable | Tabel | Diagnostische monitor-en configuratie wijzigingen. |
+| WADDirectoriesTable | Tabel | Mappen die door de diagnostische monitor worden bewaakt.  Dit zijn onder andere IIS-logboeken, IIS-aanvraag logboeken en aangepaste directory's.  De locatie van het BLOB-logboek bestand wordt opgegeven in het container veld en de naam van de BLOB bevindt zich in het veld RelativePath.  Het veld AbsolutePath geeft de locatie en de naam van het bestand aan zoals het aanwezig is op de virtuele Azure-machine. |
+| WadLogsTable | Tabel | Logboeken geschreven in code met behulp van de traceer-listener. |
+| WADPerformanceCountersTable | Tabel | Prestatie meter items. |
+| WADWindowsEventLogsTable | Tabel | Windows-gebeurtenis Logboeken. |
+| wad-IIS-failedreqlogfiles | Blob | Bevat informatie uit logboeken voor mislukte aanvragen van IIS. |
+| wad-IIS-logboek bestanden | Blob | Bevat informatie over IIS-logboeken. |
+| instel | Blob | Een aangepaste container die is gebaseerd op het configureren van mappen die worden bewaakt door de diagnostische monitor.  De naam van deze BLOB-container wordt opgegeven in WADDirectoriesTable. |
 
-## <a name="tools-to-view-diagnostic-data"></a>Hulpprogramma's voor het weergeven van diagnostische gegevens
-Er zijn verschillende tools beschikbaar om de gegevens te bekijken nadat deze naar opslag zijn overgebracht. Bijvoorbeeld:
+## <a name="tools-to-view-diagnostic-data"></a>Hulpprogram ma's voor het weer geven van diagnostische gegevens
+Er zijn verschillende hulpprogram ma's beschikbaar voor het weer geven van de gegevens nadat deze zijn overgebracht naar opslag. Bijvoorbeeld:
 
-* Server Explorer in Visual Studio - Als u de Azure Tools voor Microsoft Visual Studio hebt geïnstalleerd, u het Azure-opslagknooppunt in Server Explorer gebruiken om alleen-lezen blob- en tabelgegevens van uw Azure-opslagaccounts weer te geven. U gegevens weergeven van uw emulatoraccount voor lokale opslag en ook van opslagaccounts die u voor Azure hebt gemaakt. Zie [Opslagbronnen bladeren en beheren met Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)voor meer informatie.
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is een zelfstandige app waarmee u eenvoudig werken met Azure Storage-gegevens op Windows, OSX en Linux.
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) bevat Azure Diagnostics Manager waarmee u de diagnostische gegevens bekijken, downloaden en beheren die worden verzameld door de toepassingen die op Azure worden uitgevoerd.
+* Server Explorer in Visual Studio: als u de Azure-Hulpprogram Ma's voor micro soft Visual Studio hebt geïnstalleerd, kunt u het knoop punt Azure Storage in Server Explorer gebruiken om alleen-lezen Blob-en tabel gegevens uit uw Azure-opslag accounts weer te geven. U kunt gegevens weer geven vanuit uw lokale opslag emulator-account en ook van opslag accounts die u hebt gemaakt voor Azure. Zie [opslag resources doorzoeken en beheren met Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)voor meer informatie.
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is een zelfstandige app waarmee u eenvoudig met Azure Storage gegevens kunt werken in Windows, OSX en Linux.
+* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) bevat Azure Diagnostics Manager waarmee u de diagnostische gegevens kunt weer geven, downloaden en beheren die zijn verzameld door de toepassingen die worden uitgevoerd op Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Gegevens van windows Azure-diagnostische extensie verzenden naar Gebeurtenishubs](diagnostics-extension-stream-event-hubs.md) voor meer informatie over het doorsturen van bewakingsgegevens naar Azure Event Hubs.
+- Zie [gegevens verzenden van de Windows Azure Diagnostics-extensie naar Event hubs](diagnostics-extension-stream-event-hubs.md) voor meer informatie over het door sturen van bewakings gegevens naar Azure Event hubs.

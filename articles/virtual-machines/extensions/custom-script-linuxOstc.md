@@ -1,6 +1,6 @@
 ---
-title: Aangepaste scripts uitvoeren op Linux VM's in Azure
-description: Linux VM-configuratietaken automatiseren met de Custom Script Extension v1
+title: Aangepaste scripts uitvoeren op Linux-Vm's in azure
+description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v1
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,74 +15,74 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535405"
 ---
-# <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>De Azure Custom Script Extension Version 1 gebruiken met Virtuele Linux-machines
+# <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 1 van Azure met virtuele Linux-machines
 
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
 
-De Custom Script Extension Version 1 downloadt en voert scripts uit op virtuele Azure-machines. Deze extensie is handig voor configuratie na implementatie, software-installatie of een andere configuratie/beheertaak. U scripts downloaden van Azure Storage of een andere toegankelijke internetlocatie, of u ze aan de runtime van de extensie verstrekken.
+De aangepaste script extensie versie 1 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding.
 
-De aangepaste scriptextensie integreert met Azure Resource Manager-sjablonen. U het ook uitvoeren met Azure CLI, PowerShell, de Azure-portal of de Azure Virtual Machines REST API.
+De aangepaste script extensie kan worden geïntegreerd met Azure Resource Manager sjablonen. U kunt dit ook uitvoeren met behulp van Azure CLI, Power shell, de Azure Portal of de Azure Virtual Machines REST API.
 
-In dit artikel wordt beschreven hoe u de aangepaste scriptextensie van Azure CLI gebruikt en hoe u de extensie uitvoert met behulp van een Azure Resource Manager-sjabloon. In dit artikel worden ook stappen voor het oplossen van problemen voor Linux-systemen vermeld.
+In dit artikel wordt beschreven hoe u de aangepaste script extensie van Azure CLI gebruikt en hoe u de extensie kunt uitvoeren met behulp van een Azure Resource Manager sjabloon. Dit artikel bevat ook stappen voor het oplossen van problemen met Linux-systemen.
 
-Er zijn twee Linux Custom Script-extensies:
+Er zijn twee aangepaste Linux-script uitbreidingen:
 
-* Versie 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
+* Versie 1: micro soft. OSTCExtensions. CustomScriptForLinux
 
-* Versie 2 - Microsoft.Azure.Extensions.CustomScript
+* Versie 2: micro soft. Azure. Extensions. CustomScript
 
-Schakel in plaats daarvan over op nieuwe en bestaande implementaties om de nieuwe versie[(Microsoft.Azure.Extensions.CustomScript)](custom-script-linux.md)te gebruiken. De nieuwe versie is bedoeld als kant-en-klare vervanging. Voor de migratie hoeft u slechts de naam en versie te wijzigen. De configuratie van de extensie hoeft niet te worden gewijzigd.
+Wijzig in plaats daarvan nieuwe en bestaande implementaties om de nieuwe versie ([micro soft. Azure. Extensions. CustomScript](custom-script-linux.md)) te gebruiken. De nieuwe versie is bedoeld als kant-en-klare vervanging. Voor de migratie hoeft u slechts de naam en versie te wijzigen. De configuratie van de extensie hoeft niet te worden gewijzigd.
 
 ### <a name="operating-system"></a>Besturingssysteem
 
 Ondersteunde Linux-distributies:
 
-* CentOS 6.5 en hoger
+* CentOS 6,5 en hoger
 * Debian 8 en hoger
-  * Debian 8.7 wordt niet verzonden met Python2 in de nieuwste afbeeldingen, die CustomScriptForLinux breekt.
+  * Debian 8,7 wordt niet geleverd met Python2 in de meest recente installatie kopieën, wat CustomScriptForLinux verbreekt.
 * FreeBSD
-* OpenSUSE 13.1 en hoger
-* Oracle Linux 6.4 en hoger
+* OpenSUSE 13,1 en hoger
+* Oracle Linux 6,4 en hoger
 * SUSE Linux Enterprise Server 11 SP3 en hoger
-* Ubuntu 12.04 en hoger
+* Ubuntu 12,04 en hoger
 
-### <a name="script-location"></a>Scriptlocatie
+### <a name="script-location"></a>Locatie van script
 
-U de extensie gebruiken om uw Azure Blob-opslagreferenties te gebruiken om toegang te krijgen tot Azure Blob-opslag. Als alternatief kan de scriptlocatie overal zijn, zolang de VM naar dat eindpunt kan worden doorgestuurd, zoals GitHub, interne bestandsserver enz.
+U kunt de extensie gebruiken om uw Azure Blob Storage-referenties te gebruiken voor toegang tot Azure Blob-opslag. Het is ook mogelijk dat de locatie van het script een wille keurige waar is, zolang de virtuele machine kan worden doorgestuurd naar dat eind punt, zoals GitHub, interne bestands server, enzovoort.
 
-### <a name="internet-connectivity"></a>Internetverbinding
+### <a name="internet-connectivity"></a>Internet verbinding
 
-Als u een script extern moet downloaden, zoals GitHub of Azure Storage, moeten er extra firewall/Network Security Group-poorten worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, u toegang toestaan via Azure NSG-servicetags voor [opslag.](../../virtual-network/security-overview.md#service-tags)
+Als u een script extern moet downloaden, zoals GitHub of Azure Storage, moeten er extra poorten voor de firewall/netwerk beveiligings groep worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/security-overview.md#service-tags).
 
-Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extra firewall/Network Security Group-poorten openen.
+Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extra firewall-of netwerk beveiligings groep poorten openen.
 
 ### <a name="tips-and-tricks"></a>Tips en trucs
 
 * De meeste fouten voor deze extensie worden veroorzaakt door syntaxisfouten in het script. Test de scriptuitvoeringen zonder fouten en schakel aanvullende logboekregistratie in het script in om gemakkelijker te achterhalen waar het misging.
 * Schrijf scripts die idempotent zijn, zodat het systeem niet wordt gewijzigd als de scripts per ongeluk opnieuw meer dan één keer worden uitgevoerd.
-* Zorg ervoor dat de scripts geen gebruikersinvoer vereisen wanneer ze worden uitgevoerd.
-* Er is 90 minuten toegestaan voor het script uit te voeren, iets langer zal resulteren in een mislukte bepaling van de uitbreiding.
-* Plaats reboots niet in het script, dit zal problemen veroorzaken met andere extensies die worden geïnstalleerd en na het opnieuw opstarten gaat de extensie niet verder na de herstart. 
-* Als u een script dat een reboot zal veroorzaken, installeer dan toepassingen en scripts uitvoeren, enz. U moet de reboot plannen met behulp van een Cron-taak of tools zoals DSC of Chef, Puppet-extensies gebruiken.
-* De extensie wordt slechts één keer uitgevoerd, als u een script op elke boot wilt uitvoeren, u [cloud-init-afbeelding](../linux/using-cloud-init.md) gebruiken en een [module Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) gebruiken. U het script ook gebruiken om een Systemd-service-eenheid te maken.
-* Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een Cron-taak te maken.
-* Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u vaker statusupdates van een uitgevoerd script wilt, moet u uw eigen oplossing maken.
-* Aangepaste Script-extensie ondersteunt geen standaardservers, maar u een hulpmiddel voor bestandsoverdracht gebruiken dat proxyservers in uw script ondersteunt, zoals *Curl.*
-* Wees je bewust van niet-standaard directory locaties waar uw scripts of opdrachten op kunnen vertrouwen, hebben logica om dit te verwerken.
+* Zorg ervoor dat de scripts geen gebruikers invoer vereisen wanneer ze worden uitgevoerd.
+* Er is 90 minuten om het script uit te voeren, wat langer resulteert in een mislukte inrichting van de uitbrei ding.
+* Start de computer niet opnieuw op in het script, waardoor er problemen zijn met andere uitbrei dingen die worden geïnstalleerd en na het opnieuw opstarten. de uitbrei ding wordt na het opnieuw opstarten niet voortgezet. 
+* Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart, installeert u toepassingen en voert u scripts, enz. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
+* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
+* Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een cron-taak te maken.
+* Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
+* Aangepaste script extensie biedt geen systeem eigen ondersteuning voor proxy servers, maar u kunt wel een hulp programma voor bestands overdracht gebruiken dat proxy servers in uw script ondersteunt, zoals *krul*.
+* Houd er rekening mee dat niet-standaard adreslijst locaties waarvan uw scripts of opdrachten afhankelijk zijn, logica hebben om dit te kunnen afhandelen.
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De configuratie van de aangepaste scriptextensie geeft zaken aan zoals de locatie van het script en de opdracht die moet worden uitgevoerd. U deze configuratie opslaan in configuratiebestanden, deze opgeven op de opdrachtregel of opgeven in een Azure Resource Manager-sjabloon. 
+De configuratie van de aangepaste script extensie bevat dingen als de script locatie en de opdracht die moet worden uitgevoerd. U kunt deze configuratie opslaan in configuratie bestanden, opgeven op de opdracht regel of in een Azure Resource Manager sjabloon opgeven. 
 
-U gevoelige gegevens opslaan in een beveiligde configuratie, die is versleuteld en alleen wordt gedecodeerd in de virtuele machine. De beveiligde configuratie is handig wanneer de uitvoeringsopdracht geheimen zoals een wachtwoord bevat.
+U kunt gevoelige gegevens in een beveiligde configuratie opslaan, die zijn versleuteld en alleen worden ontsleuteld in de virtuele machine. De beveiligde configuratie is handig wanneer de uitvoering-opdracht geheimen bevat zoals een wacht woord.
 
-Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in de configuratie van de beveiligde instelling voor extensies. Azure VM-extensiebeveiligde instellingsgegevens worden versleuteld en alleen gedecodeerd op de virtuele doelmachine.
+Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in de configuratie van de instellingen voor beveiligde extensies. De beveiligde instellings gegevens voor de Azure VM-extensie zijn versleuteld en worden alleen ontsleuteld op de virtuele doel machine.
 
 ```json
 {
@@ -116,39 +116,39 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 }
 ```
 
-### <a name="property-values"></a>Eigenschapswaarden
+### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde / Voorbeeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| uitgever | Microsoft.OSTCExtensions | tekenreeks |
-| type | CustomScriptForLinux (CustomScriptForLinux) | tekenreeks |
-| typeHandlerVersie | 1.5 | int |
-| fileUris (bijv. | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
-| commandToExecute (bijv. | python \<MyPythonScript.py mijn-param1\> | tekenreeks |
-| inschakelenInternalDNSCheck | waar | booleaans |
-| storageAccountName (bijv. | voorbeeldstorageacct | tekenreeks |
-| storageAccountKey (bijv. | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | tekenreeks |
+| uitgever | Micro soft. OSTCExtensions | tekenreeks |
+| type | CustomScriptForLinux | tekenreeks |
+| typeHandlerVersion | 1.5 | int |
+| fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
+| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<My-param1\> | tekenreeks |
+| enableInternalDNSCheck | waar | booleaans |
+| storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | tekenreeks |
 
-### <a name="property-value-details"></a>Details van de waarde van onroerend goed
+### <a name="property-value-details"></a>Details van eigenschaps waarde
 
-* `fileUris`: (optioneel, tekenreeksarray) de urilijst van de scripts
-* `enableInternalDNSCheck`: (optioneel, bool) standaard is True, ingesteld op False om DNS-controle uit te schakelen.
-* `commandToExecute`: (optioneel, tekenreeks) het entrypoint-script dat moet worden uitgevoerd
-* `storageAccountName`: (optioneel, tekenreeks) de naam van het opslagaccount
-* `storageAccountKey`: (optioneel, tekenreeks) de toegangssleutel van het opslagaccount
+* `fileUris`: (optioneel, teken reeks matrix) de URI-lijst van de scripts
+* `enableInternalDNSCheck`: (optioneel, BOOL) de standaard waarde is True, ingesteld op false om DNS-controle uit te scha kelen.
+* `commandToExecute`: (optioneel, teken reeks) het entry point-script dat moet worden uitgevoerd
+* `storageAccountName`: (optioneel, String) de naam van het opslag account
+* `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
 
-De volgende waarden kunnen worden ingesteld in openbare of beveiligde instellingen, u mag deze waarden niet hieronder hebben ingesteld in zowel openbare als beveiligde instellingen.
+De volgende waarden kunnen worden ingesteld in de open bare of beveiligde instellingen, maar u moet deze waarden niet in de open bare en beveiligde instellingen hebben ingesteld.
 
 * `commandToExecute`
 
-Het gebruik van openbare instellingen is misschien handig voor het debuggen, maar het wordt ten zeerste aanbevolen om beveiligde instellingen te gebruiken.
+Het gebruik van open bare instellingen kan handig zijn voor het opsporen van fouten, maar het wordt ten zeerste aanbevolen om beveiligde instellingen te gebruiken.
 
-Openbare instellingen worden in duidelijke tekst naar de VM gestuurd waar het script wordt uitgevoerd.  Beveiligde instellingen worden versleuteld met een sleutel die alleen bekend is bij azure en de VM. De instellingen worden opgeslagen in de VM als ze werden verzonden, dat wil zeggen als de instellingen zijn versleuteld worden ze versleuteld opgeslagen op de VM. Het certificaat dat wordt gebruikt om de versleutelde waarden te decoderen, wordt opgeslagen op de VM en wordt gebruikt om instellingen (indien nodig) te decoderen tijdens runtime.
+Open bare instellingen worden in ongecodeerde tekst verzonden naar de virtuele machine waarop het script wordt uitgevoerd.  Beveiligde instellingen worden versleuteld met een sleutel die alleen bekend is bij Azure en de virtuele machine. De instellingen worden opgeslagen op de VM als ze zijn verzonden, d.w.z. als de instellingen zijn versleuteld, worden deze versleuteld opgeslagen op de VM. Het certificaat dat wordt gebruikt voor het ontsleutelen van de versleutelde waarden wordt opgeslagen op de virtuele machine en wordt gebruikt voor het ontsleutelen van instellingen (indien nodig) tijdens runtime.
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie is beschreven, kan worden gebruikt in een Azure Resource Manager-sjabloon om de aangepaste scriptextensie uit te voeren tijdens een azure resource manager-sjabloonimplementatie.
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens het implementeren van een Azure Resource Manager sjabloon.
 
 ```json
 {
@@ -180,11 +180,11 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sja
 ```
 
 >[!NOTE]
->Deze eigenschapsnamen zijn geval-gevoelig. Gebruik de namen zoals hier weergegeven om implementatieproblemen te voorkomen.
+>Deze eigenschaps namen zijn hoofdletter gevoelig. Als u implementatie problemen wilt voor komen, gebruikt u de namen zoals hier wordt weer gegeven.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
-Wanneer u Azure CLI gebruikt om de aangepaste scriptextensie uit te voeren, maakt u een configuratiebestand of -bestanden. Je moet minimaal 'commandToExecute' hebben.
+Wanneer u Azure CLI gebruikt om de aangepaste script extensie uit te voeren, moet u een configuratie bestand of-bestanden maken. U moet mini maal ' commandToExecute ' hebben.
 
 ```azurecli
 az vm extension set -n VMAccessForLinux \
@@ -194,7 +194,7 @@ az vm extension set -n VMAccessForLinux \
   --protected-settings '{"commandToExecute": "echo hello"}'
 ```
 
-Optioneel u de instellingen in de opdracht opgeven als een tekenreeks met JSON-indeling. Hierdoor kan de configuratie worden opgegeven tijdens de uitvoering en zonder een apart configuratiebestand.
+Desgewenst kunt u de instellingen in de opdracht opgeven als een JSON-indelings teken reeks. Hierdoor kan de configuratie worden opgegeven tijdens de uitvoering en zonder een afzonderlijk configuratie bestand.
 
 ```azurecli
 az vm extension set \
@@ -207,7 +207,7 @@ az vm extension set \
 
 ### <a name="azure-cli-examples"></a>Azure CLI-voorbeelden
 
-#### <a name="public-configuration-with-no-script-file"></a>Openbare configuratie zonder scriptbestand
+#### <a name="public-configuration-with-no-script-file"></a>Open bare configuratie zonder script bestand
 
 ```json
 {
@@ -215,7 +215,7 @@ az vm extension set \
 }
 ```
 
-Azure CLI, opdracht:
+Azure CLI-opdracht:
 
 ```azurecli
 az vm extension set \
@@ -226,11 +226,11 @@ az vm extension set \
   --settings ./script-config.json
 ```
 
-#### <a name="public-and-protected-configuration-files"></a>Openbare en beveiligde configuratiebestanden
+#### <a name="public-and-protected-configuration-files"></a>Open bare en beveiligde configuratie bestanden
 
-U gebruikt een openbaar configuratiebestand om het scriptbestand URI op te geven. U gebruikt een beveiligd configuratiebestand om de opdracht op te geven die moet worden uitgevoerd.
+U gebruikt een openbaar configuratie bestand om de URI van het script bestand op te geven. U gebruikt een beveiligd configuratie bestand om de opdracht op te geven die moet worden uitgevoerd.
 
-Openbaar configuratiebestand:
+Openbaar configuratie bestand:
 
 ```json
 {
@@ -238,7 +238,7 @@ Openbaar configuratiebestand:
 }
 ```
 
-Beveiligd configuratiebestand:  
+Beveiligd configuratie bestand:  
 
 ```json
 {
@@ -246,7 +246,7 @@ Beveiligd configuratiebestand:
 }
 ```
 
-Azure CLI, opdracht:
+Azure CLI-opdracht:
 
 ```azurecli
 az vm extension set
@@ -260,19 +260,19 @@ az vm extension set
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer de aangepaste scriptextensie wordt uitgevoerd, wordt het script gemaakt of gedownload naar een map die vergelijkbaar is met het volgende voorbeeld. De opdrachtuitvoer wordt ook opgeslagen `stdout` `stderr` in deze map en bestanden.
+Wanneer de aangepaste script extensie wordt uitgevoerd, wordt het script gemaakt of gedownload in een directory die er ongeveer als volgt uitziet. De uitvoer van de opdracht wordt ook opgeslagen in deze `stdout` map `stderr` en in bestanden.
 
 ```bash
 /var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-<version>/download/1
 ```
 
-Als u problemen wilt oplossen, controleert u eerst het Linux Agent Log, controleert u of de extensie is uitgevoerd, controleert u:
+Controleer eerst het logboek van de Linux-agent om problemen op te lossen, Controleer of de uitbrei ding is uitgevoerd.
 
 ```bash
 /var/log/waagent.log
 ```
 
-Je moet kijken voor de uitbreiding uitvoering, zal het er ongeveer uitzien als:
+U moet de uitvoering van de extensie controleren. deze ziet er ongeveer als volgt uit:
 
 ```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
@@ -291,19 +291,19 @@ Je moet kijken voor de uitbreiding uitvoering, zal het er ongeveer uitzien als:
 2018/04/26 15:29:47.178163 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Enable, message=Launch command succeeded: customscript.py -enable, duration=1012
 ```
 
-Enkele punten om op te merken:
+Enkele punten om te noteren:
 
-1. Inschakelen is wanneer de opdracht wordt uitgevoerd.
-1. Download heeft betrekking op het downloaden van het CustomScript-uitbreidingspakket van Azure, niet op de scriptbestanden die zijn opgegeven in fileUris.
-1. U ook zien welk logbestand het uitschrijft`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Wanneer de opdracht wordt uitgevoerd, wordt ingeschakeld.
+1. Down load is gekoppeld aan het downloaden van het CustomScript-extensie pakket van Azure, niet de script bestanden die zijn opgegeven in fileUris.
+1. U kunt ook zien naar welk logboek bestand deze wordt geschreven`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
-Volgende stap is om te gaan een check het logbestand, dit is de indeling:
+Ga vervolgens als volgt te werk om het logboek bestand te controleren:
 
 ```bash
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Je moet op zoek naar de individuele uitvoering, zal het er ongeveer als:
+U moet de afzonderlijke uitvoering controleren. deze ziet er ongeveer als volgt uit:
 
 ```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
@@ -332,20 +332,20 @@ Je moet op zoek naar de individuele uitvoering, zal het er ongeveer als:
 2018/04/26 15:29:47
 ```
 
-Hier u zien:
+Hier ziet u het volgende:
 
-* De opdracht Inschakelen is dit logboek
-* De instellingen zijn doorgegeven aan de extensie
-* De extensie downloaden bestand en het resultaat van dat.
-* De opdracht wordt uitgevoerd en het resultaat.
+* De opdracht inschakelen starten is dit logboek
+* De instellingen die zijn door gegeven aan de extensie
+* De extensie die het bestand downloadt en het resultaat hiervan.
+* De opdracht die wordt uitgevoerd en het resultaat.
 
-U ook de uitvoeringsstatus van de aangepaste scriptextensie ophalen met Azure CLI:
+U kunt ook de uitvoerings status van de aangepaste script extensie ophalen met behulp van Azure CLI:
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
-De uitvoer ziet eruit als de volgende tekst:
+De uitvoer ziet er als volgt uit:
 
 ```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
@@ -355,4 +355,4 @@ CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Repo customscript-extensie repo](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)voor de code, huidige problemen en versies.
+Zie [CustomScript extension opslag plaats](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript)voor een overzicht van de code, de huidige problemen en versies.

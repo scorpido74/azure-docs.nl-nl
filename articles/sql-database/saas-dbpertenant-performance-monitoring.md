@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79214468"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Prestaties van Azure SQL-data bases en-Pools bewaken en beheren in een SaaS-app met meerdere tenants
@@ -241,7 +241,7 @@ In deze zelfstudie leert u het volgende:
 [Zelfstudie Een individuele tenant herstellen](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Aanvullende [zelf studies die voortbouwen op de Wingtip tickets SaaS data base per Tenant toepassings implementatie](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische SQL-Pools](sql-database-elastic-pool.md)

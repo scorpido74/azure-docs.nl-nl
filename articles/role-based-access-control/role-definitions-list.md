@@ -1,6 +1,6 @@
 ---
-title: Functiedefinities in Azure RBAC weergeven met Azure-portal, Azure PowerShell, Azure CLI of REST API | Microsoft Documenten
-description: Meer informatie over het weergeven van ingebouwde en aangepaste rollen in Azure RBAC met Azure-portal, Azure PowerShell, Azure CLI of REST API.
+title: Roldefinities weer geven in azure RBAC met behulp van Azure Portal, Azure PowerShell, Azure CLI of REST API | Microsoft Docs
+description: Meer informatie over het vermelden van ingebouwde en aangepaste rollen in azure RBAC met behulp van Azure Portal, Azure PowerShell, Azure CLI of REST API.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,41 +15,41 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062989"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Functiedefinities weergeven in Azure RBAC
+# <a name="list-role-definitions-in-azure-rbac"></a>Roldefinities in azure RBAC weer geven
 
-Een roldefinitie is een verzameling machtigingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het wordt meestal gewoon een rol genoemd. [RBAC (Azure role-based access control)](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen weergeeft die u gebruiken om toegang te verlenen tot Azure-bronnen.
+Een roldefinitie is een verzameling machtigingen die kan worden uitgevoerd, zoals lezen, schrijven en verwijderen. Normaal gesp roken wordt gewoon een rol genoemd. [Op rollen gebaseerd toegangs beheer (RBAC) van Azure](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u kunt uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen vermeldt die u kunt gebruiken om toegang te verlenen tot Azure-resources.
 
-Zie [Beheerdersrolmachtigingen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor de lijst met beheerdersrollen voor Azure Active Directory.
+Zie [beheerders rollen in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor een overzicht van de beheerders rollen voor Azure Active Directory.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-### <a name="list-all-roles"></a>Alle rollen weergeven
+### <a name="list-all-roles"></a>Alle rollen weer geven
 
-Volg deze stappen om alle rollen in de Azure-portal weer te geven.
+Volg deze stappen om alle rollen in de Azure Portal weer te geven.
 
-1. Klik in de Azure-portal op **Alle services** en selecteer vervolgens een bereik. U bijvoorbeeld **Beheergroepen,** **Abonnementen,** **Resourcegroepen**of een resource selecteren.
+1. Klik in de Azure Portal op **alle services** en selecteer vervolgens een bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
 
 1. Klik op de specifieke resource.
 
 1. Klik op **Toegangsbeheer (IAM)**.
 
-1. Klik op het tabblad **Rollen** om een lijst met alle ingebouwde en aangepaste rollen weer te geven.
+1. Klik op het tabblad **rollen** om een lijst met alle ingebouwde en aangepaste rollen weer te geven.
 
-   U het aantal gebruikers en groepen zien dat aan elke rol is toegewezen op het huidige bereik.
+   U kunt het aantal gebruikers en groepen zien dat is toegewezen aan elke rol in het huidige bereik.
 
    ![Lijst met rollen](./media/role-definitions-list/roles-list.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="list-all-roles"></a>Alle rollen weergeven
+### <a name="list-all-roles"></a>Alle rollen weer geven
 
-Als u alle rollen in Azure PowerShell wilt weergeven, gebruikt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Als u alle rollen in Azure PowerShell wilt weer geven, gebruikt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -69,9 +69,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-role-definition"></a>Een roldefinitie weergeven
+### <a name="list-a-role-definition"></a>Een roldefinitie weer geven
 
-Als u de details van een specifieke rol wilt weergeven, gebruikt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Gebruik [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)om de details van een specifieke rol weer te geven.
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -92,9 +92,9 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-role-definition-in-json-format"></a>Een roldefinitie in JSON-indeling weergeven
+### <a name="list-a-role-definition-in-json-format"></a>Een roldefinitie in JSON-indeling weer geven
 
-Als u een rol wilt aanbieden in JSON-indeling, gebruikt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Gebruik [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)om een rol in JSON-indeling weer te geven.
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -126,9 +126,9 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Machtigingen voor een roldefinitie weergeven
+### <a name="list-permissions-of-a-role-definition"></a>Machtigingen van een roldefinitie weer geven
 
-Als u de machtigingen voor een specifieke rol wilt weergeven, gebruikt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Gebruik [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)om de machtigingen voor een specifieke rol weer te geven.
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -162,17 +162,17 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
-### <a name="list-all-roles"></a>Alle rollen weergeven
+### <a name="list-all-roles"></a>Alle rollen weer geven
 
-Als u alle rollen in Azure CLI wilt weergeven, gebruikt u [de lijst met az-rollendefinitie](/cli/azure/role/definition#az-role-definition-list).
+Als u alle rollen in azure CLI wilt weer geven, gebruikt u de [lijst AZ Role definition](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
 az role definition list
 ```
 
-In het volgende voorbeeld worden de naam en beschrijving van alle beschikbare roldefinities weergegeven:
+In het volgende voor beeld worden de naam en beschrijving van alle beschik bare roldefinities weer gegeven:
 
 ```azurecli
 az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
@@ -195,7 +195,7 @@ az role definition list --output json | jq '.[] | {"roleName":.roleName, "descri
 ...
 ```
 
-In het volgende voorbeeld worden alle ingebouwde rollen weergegeven.
+In het volgende voor beeld worden alle ingebouwde rollen weer gegeven.
 
 ```azurecli
 az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
@@ -221,15 +221,15 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-a-role-definition"></a>Een roldefinitie weergeven
+### <a name="list-a-role-definition"></a>Een roldefinitie weer geven
 
-Als u details van een rol wilt vermelden, gebruikt u [de lijst met az-rollendefinitie](/cli/azure/role/definition#az-role-definition-list).
+Gebruik [AZ Role definition List](/cli/azure/role/definition#az-role-definition-list)om details van een rol weer te geven.
 
 ```azurecli
 az role definition list --name <role_name>
 ```
 
-In het volgende voorbeeld wordt de *roldefinitie van inzender* weergegeven:
+In het volgende voor beeld wordt de roldefinitie van de rol *Inzender* weer gegeven:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -267,9 +267,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Machtigingen voor een roldefinitie weergeven
+### <a name="list-permissions-of-a-role-definition"></a>Machtigingen van een roldefinitie weer geven
 
-In het volgende voorbeeld worden alleen de *acties* en *nietActies* van de rol *bijdragers* weergegeven.
+*In het* volgende voor beeld worden alleen de *acties* en de verslechtering van de rol *Inzender* vermeld.
 
 ```azurecli
 az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
@@ -288,7 +288,7 @@ az role definition list --name "Contributor" --output json | jq '.[] | {"actions
 }
 ```
 
-In het volgende voorbeeld worden alleen de acties van de rol *Virtuele machinebijdrager weergegeven.*
+In het volgende voor beeld worden alleen de acties van de rol *Inzender voor virtuele machines* vermeld.
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
@@ -312,11 +312,11 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="list-role-definitions"></a>Lijst met roldefinities weergeven
 
-Als u functiedefinities wilt weergeven, gebruikt u de [API Voor functiedefinities - Rest-API](/rest/api/authorization/roledefinitions/list) weergeven. Als u uw resultaten wilt verfijnen, geeft u een bereik en een optioneel filter op.
+Als u roldefinities wilt weer geven, gebruikt u de [functie definities-lijst](/rest/api/authorization/roledefinitions/list) rest API. Als u uw resultaten wilt verfijnen, geeft u een bereik en een optioneel filter op.
 
 1. Begin met de volgende aanvraag:
 
@@ -324,7 +324,7 @@ Als u functiedefinities wilt weergeven, gebruikt u de [API Voor functiedefinitie
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
     ```
 
-1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de roldefinities wilt weergeven.
+1. Vervang *{Scope}* in de URI door het bereik waarvoor u de roldefinities wilt weer geven.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -334,19 +334,19 @@ Als u functiedefinities wilt weergeven, gebruikt u de [API Voor functiedefinitie
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
 
-    In het vorige voorbeeld is microsoft.web een resourceprovider die verwijst naar een app-service-exemplaar. U ook andere resourceproviders gebruiken en het bereik opgeven. Zie [Azure Resource providers en -typen en](../azure-resource-manager/management/resource-providers-and-types.md) ondersteunde Azure Resource [Manager-resourceproviderbewerkingen](resource-provider-operations.md)voor meer informatie.  
+    In het vorige voor beeld is micro soft. web een resource provider die verwijst naar een App Service-exemplaar. U kunt ook andere resource providers gebruiken en het bereik opgeven. Zie voor meer informatie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) en ondersteunde Azure Resource Manager van de [resource provider](resource-provider-operations.md).  
      
-1. Vervang *{filter}* door de voorwaarde die u wilt toepassen om de lijst met roldefinitie te filteren.
+1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met functie definities te filteren.
 
     > [!div class="mx-tableFixed"]
     > | Filteren | Beschrijving |
     > | --- | --- |
-    > | `$filter=atScopeAndBelow()` | Hiermee worden roldefinities voor het opgegeven bereik en eventuele subscopen weergegeven. |
-    > | `$filter=type+eq+'{type}'` | Hiermee worden roldefinities van het opgegeven type weergegeven. Type rol kan `CustomRole` `BuiltInRole`zijn of . |
+    > | `$filter=atScopeAndBelow()` | Hiermee worden roldefinities voor het opgegeven bereik en eventuele subbereiken weer gegeven. |
+    > | `$filter=type+eq+'{type}'` | Hiermee wordt een lijst met roldefinities van het opgegeven type weer gegeven. Type rol kan of `CustomRole` `BuiltInRole`zijn. |
 
-### <a name="list-a-role-definition"></a>Een roldefinitie weergeven
+### <a name="list-a-role-definition"></a>Een roldefinitie weer geven
 
-Als u de details van een specifieke rol wilt weergeven, gebruikt u de [functiedefinities - Definities of](/rest/api/authorization/roledefinitions/get) [Roldefinities - Get By Id](/rest/api/authorization/roledefinitions/getbyid) REST API.
+Als u de details van een specifieke rol wilt weer geven, gebruikt u de [functie definities-ophalen](/rest/api/authorization/roledefinitions/get) of [roldefinities-ophalen op id](/rest/api/authorization/roledefinitions/getbyid) rest API.
 
 1. Begin met de volgende aanvraag:
 
@@ -354,13 +354,13 @@ Als u de details van een specifieke rol wilt weergeven, gebruikt u de [functiede
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-    Voor een roldefinitie op directoryniveau u dit verzoek gebruiken:
+    U kunt deze aanvraag voor een functie definitie op Directory niveau gebruiken:
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de roldefinitie wilt weergeven.
+1. Vervang *{Scope}* in de URI door het bereik waarvoor u de roldefinitie wilt weer geven.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -370,11 +370,11 @@ Als u de details van een specifieke rol wilt weergeven, gebruikt u de [functiede
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
      
-1. Vervang *{roleDefinitionId}* door de functiedefinitie-id.
+1. Vervang *{roledefinitionid hebben}* door de roldefinitie-id.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ingebouwde rollen voor Azure-resources](built-in-roles.md)
 - [Aangepaste rollen voor Azure-resources](custom-roles.md)
-- [Roltoewijzingen weergeven met Azure RBAC en de Azure-portal](role-assignments-list-portal.md)
-- [Roltoewijzingen toevoegen of verwijderen met Azure RBAC en de Azure-portal](role-assignments-portal.md)
+- [Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal](role-assignments-list-portal.md)
+- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](role-assignments-portal.md)

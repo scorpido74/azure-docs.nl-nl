@@ -1,7 +1,7 @@
 ---
-title: 'Partitie en voorbeeld: moduleverwijzing'
+title: 'Partitie en voor beeld: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de partitie- en voorbeeldmodule in Azure Machine Learning om steekproeven uit te voeren op een gegevensset of om partities te maken van uw gegevensset.
+description: Meer informatie over het gebruik van de partitie-en voorbeeld module in Azure Machine Learning om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,161 +10,161 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477507"
 ---
-# <a name="partition-and-sample-module"></a>Partitie- en voorbeeldmodule
+# <a name="partition-and-sample-module"></a>Partitie en voorbeeld module
 
-In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik de module Partitie en Voorbeeld om steekproeven uit te voeren op een gegevensset of om partities te maken van uw gegevensset.
+Gebruik de partitie-en voorbeeld module om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
 
-Sampling is een belangrijk hulpmiddel in machine learning, omdat u hiermee de grootte van een gegevensset verkleinen met behoud van dezelfde verhouding van waarden. Deze module ondersteunt verschillende gerelateerde taken die belangrijk zijn in machine learning: 
+Steek proeven zijn een belang rijk hulp middel in machine learning omdat u hiermee de grootte van een gegevensset kunt reduceren en dezelfde verhouding van waarden behouden. Deze module biedt ondersteuning voor verschillende gerelateerde taken die belang rijk zijn in machine learning: 
 
-- Uw gegevens verdelen in meerdere onderafdelingen van dezelfde grootte. 
+- Gegevens delen in meerdere subsecties van dezelfde grootte. 
 
-  U de partities gebruiken voor crossvalidatie of om aanvragen toe te wijzen aan willekeurige groepen.
+  U kunt de partities voor kruis validatie gebruiken of aanvragen toewijzen aan wille keurige groepen.
 
-- Gegevens scheiden in groepen en vervolgens werken met gegevens uit een specifieke groep. 
+- Het scheiden van gegevens in groepen en het werken met gegevens uit een specifieke groep. 
 
-  Nadat u willekeurig aanvragen aan verschillende groepen hebt toegewezen, moet u mogelijk de functies wijzigen die aan slechts één groep zijn gekoppeld.
+  Wanneer u wille keurig cases aan verschillende groepen toewijst, moet u mogelijk de functies wijzigen die aan slechts één groep zijn gekoppeld.
 
-- Bemonstering. 
+- Proef. 
 
-  U een percentage van de gegevens extraheren, willekeurige steekproeven toepassen of een kolom kiezen die u wilt gebruiken voor het in evenwicht brengen van de gegevensset en gestratificeerde steekproeven uitvoeren op de waarden ervan.
+  U kunt een percentage van de gegevens extra heren, wille keurige steek proeven Toep assen of een kolom kiezen die u wilt gebruiken om de gegevensset te verdelen en stratified-steek proeven uit te voeren op waarden.
 
 - Een kleinere gegevensset maken voor het testen. 
 
-  Als u veel gegevens hebt, u alleen de eerste *n-rijen* gebruiken tijdens het instellen van de pijplijn en vervolgens overschakelen naar het gebruik van de volledige gegevensset wanneer u uw model bouwt. U ook steekproeven gebruiken om een kleinere gegevensset te maken voor gebruik in ontwikkeling.
+  Als u veel gegevens hebt, wilt u mogelijk alleen de eerste *n* rijen gebruiken tijdens het instellen van de pijp lijn en vervolgens overschakelen naar het gebruik van de volledige gegevensset wanneer u het model bouwt. U kunt ook steek proeven gebruiken om een kleinere gegevensset te maken voor gebruik in ontwikkeling.
 
 ## <a name="configure-the-module"></a>De module configureren
 
-Deze module ondersteunt de volgende methoden voor het verdelen van uw gegevens in partities of voor bemonstering. Kies eerst de methode en stel vervolgens extra opties in die de methode vereist.
+Deze module biedt ondersteuning voor de volgende methoden voor het verdelen van uw gegevens in partities of voor steek proeven. Kies eerst de methode en stel vervolgens aanvullende opties in die voor de methode vereist zijn.
 
 - Head
 - Steekproeven
-- Toewijzen aan vouwen
-- Kies vouw
+- Aan vouwen toewijzen
+- Vouw kiezen
 
-### <a name="get-top-n-rows-from-a-dataset"></a>TOP N-rijen ophalen uit een gegevensset
+### <a name="get-top-n-rows-from-a-dataset"></a>BOVENSTE N rijen uit een gegevensset ophalen
 
-Gebruik deze modus om alleen de eerste *n-rijen* te krijgen. Deze optie is handig als u een pijplijn op een klein aantal rijen wilt testen en u hoeft de gegevens op geen enkele manier in evenwicht te brengen of te bemonsteren.
+Gebruik deze modus om alleen de eerste *n* rijen op te halen. Deze optie is handig als u een pijp lijn wilt testen op een klein aantal rijen en u niet wilt dat de gegevens op enigerlei wijze worden verdeeld of gesampled.
 
-1. Voeg de **partitie- en voorbeeldmodule** toe aan uw pijplijn in de interface en verbind de gegevensset.  
+1. Voeg de **partitie-en voorbeeld** module toe aan uw pijp lijn in de interface en verbind de gegevensset.  
 
-1. **Partitie- of voorbeeldmodus**: Stel deze optie in op **Hoofd**.
+1. **Partitie of voorbeeld modus**: Stel deze optie in op **kop**.
 
-1. **Aantal rijen dat u wilt selecteren:** Voer het aantal rijen in dat moet worden retournerd.
+1. **Aantal rijen dat moet worden geselecteerd**: Voer het aantal rijen in dat moet worden geretourneerd.
 
-   Het aantal rijen moet een niet-negatief geheel getal zijn. Als het aantal geselecteerde rijen groter is dan het aantal rijen in de gegevensset, wordt de volledige gegevensset geretourneerd.
+   Het aantal rijen moet een niet-negatief geheel getal zijn. Als het aantal geselecteerde rijen groter is dan het aantal rijen in de gegevensset, wordt de hele gegevensset geretourneerd.
 
-1. Verzend de pijplijn.
+1. Verzend de pijp lijn.
 
-De module wordt uitgevoerd met één gegevensset die alleen het opgegeven aantal rijen bevat. De rijen worden altijd vanaf de bovenkant van de gegevensset gelezen.
+De module voert een enkele gegevensset uit die alleen het opgegeven aantal rijen bevat. De rijen worden altijd gelezen vanaf de bovenkant van de gegevensset.
 
-### <a name="create-a-sample-of-data"></a>Een voorbeeld van gegevens maken
+### <a name="create-a-sample-of-data"></a>Een voor beeld van gegevens maken
 
-Deze optie ondersteunt eenvoudige willekeurige bemonstering of gestratificeerde steekproeven. Het is handig als u een kleinere representatieve voorbeeldgegevensset wilt maken voor het testen.
+Deze optie ondersteunt eenvoudige wille keurige steek proeven of stratified wille keurige steek proeven. Het is handig als u een kleinere representatieve voorbeeld gegevensset wilt maken voor het testen.
 
-1. Voeg de **partitie- en voorbeeldmodule** toe aan uw pijplijn en verbind de gegevensset.
+1. Voeg de **partitie-en voorbeeld** module toe aan uw pijp lijn en verbind de gegevensset.
 
-1. **Partitie- of voorbeeldmodus**: Stel deze optie in op **Sampling**.
+1. **Partitie of voorbeeld modus**: Stel deze optie in op **steek proeven**.
 
-1. **Bemonsteringspercentage**: Voer een waarde in tussen 0 en 1. deze waarde geeft het percentage rijen uit de brongegevensset op dat moet worden opgenomen in de uitvoergegevensset.
+1. **Sampling frequentie**: Voer een waarde in tussen 0 en 1. met deze waarde wordt het percentage rijen van de bron-gegevensset opgegeven dat moet worden opgenomen in de uitvoer gegevensset.
 
-   Als u bijvoorbeeld slechts de helft van `0.5` de oorspronkelijke gegevensset wilt, voert u in om aan te geven dat de bemonsteringssnelheid 50 procent moet zijn.
+   Als u bijvoorbeeld slechts de helft van de oorspronkelijke gegevensset wilt, voert `0.5` u in om aan te geven dat de sampling frequentie 50 procent moet zijn.
 
-   De rijen van de invoergegevensset worden geschud en selectief in de uitvoergegevensset geplaatst, volgens de opgegeven verhouding.
+   De rijen van de invoer gegevensset worden in een wille keurige volg orde geplaatst en op basis van de opgegeven verhouding in de uitvoer gegevensset ingevoegd.
 
-1. **Willekeurig zaad voor bemonstering**: Vul eventueel een geheel getal in dat als zaadwaarde kan worden gebruikt.
+1. **Wille keurig zaad voor bemonstering**: Voer eventueel een geheel getal in dat moet worden gebruikt als een Seed-waarde.
 
-   Deze optie is belangrijk als u wilt dat de rijen elke keer op dezelfde manier worden verdeeld. De standaardwaarde is **0,** wat betekent dat een startzaad wordt gegenereerd op basis van de systeemklok. Deze waarde kan leiden tot iets andere resultaten elke keer dat u de pijplijn uitvoert.
+   Deze optie is belang rijk als u wilt dat de rijen op dezelfde manier worden gedeeld als elke keer. De standaard waarde is **0**, wat betekent dat een begin Seed wordt gegenereerd op basis van de systeem klok. Deze waarde kan leiden tot enigszins verschillende resultaten telkens wanneer u de pijp lijn uitvoert.
 
-1. **Gestratificeerde splitsing voor steekproeven**: Selecteer deze optie als het belangrijk is dat de rijen in de gegevensset gelijkmatig worden verdeeld door een sleutelkolom voordat u deze bemonstert.
+1. **Stratified splitsen voor steek proeven**: Selecteer deze optie als het belang rijk is dat de rijen in de gegevensset gelijkmatig zijn verdeeld over een bepaalde sleutel kolom vóór de steek proef.
 
-   Selecteer **voor De sleutelkolom Stratificatie voor bemonstering**een enkele *stratakolom* die u wilt gebruiken bij het verdelen van de gegevensset. De rijen in de gegevensset worden vervolgens als volgt verdeeld:
+   Voor een **stratificatie sleutel kolom voor steek proeven**selecteert u één *Strata kolom* die moet worden gebruikt bij het delen van de gegevensset. De rijen in de gegevensset worden vervolgens als volgt onderverdeeld:
 
-   1. Alle invoerrijen worden gegroepeerd (gestratificeerd) door de waarden in de opgegeven lagenkolom.
+   1. Alle invoer rijen worden gegroepeerd (stratified) door de waarden in de opgegeven kolom Strata.
 
-   1. Rijen worden binnen elke groep geschud.
+   1. Rijen worden in elke groep in een andere volg orde geplaatst.
 
-   1. Elke groep wordt selectief toegevoegd aan de uitvoergegevensset om aan de opgegeven verhouding te voldoen.
+   1. Elke groep wordt selectief toegevoegd aan de uitvoer gegevensset om te voldoen aan de opgegeven verhouding.
 
 
-1. Verzend de pijplijn.
+1. Verzend de pijp lijn.
 
-   Met deze optie wordt in de module één gegevensset uitgevoerd die een representatieve steekproef van de gegevens bevat. Het resterende, niet-gesamplede gedeelte van de gegevensset wordt niet uitgevoerd. 
+   Met deze optie voert de module een enkele gegevensset uit die een representatieve steek proef van de gegevens bevat. Het resterende, niet-bemonsterde gedeelte van de gegevensset wordt niet uitgevoerd. 
 
-## <a name="split-data-into-partitions"></a>Gegevens splitsen in partities
+## <a name="split-data-into-partitions"></a>Gegevens in partities splitsen
 
-Gebruik deze optie wanneer u de gegevensset wilt verdelen in subsets van de gegevens. Deze optie is ook handig wanneer u een aangepast aantal plooien wilt maken voor crossvalidatie of rijen wilt splitsen in verschillende groepen.
+Gebruik deze optie als u de gegevensset wilt verdelen over subsets van de gegevens. Deze optie is ook handig als u een aangepast aantal vouwen wilt maken voor kruis validatie of als u rijen wilt splitsen in verschillende groepen.
 
-1. Voeg de **partitie- en voorbeeldmodule** toe aan uw pijplijn en verbind de gegevensset.
+1. Voeg de **partitie-en voorbeeld** module toe aan uw pijp lijn en verbind de gegevensset.
 
-1. Selecteer **Toewijzen aan vouwen voor** **partitie- of voorbeeldmodus.**
+1. Voor **partitie of voorbeeld modus**selecteert **u toewijzen aan vouwen**.
 
-1. **Vervanging gebruiken in de partitionering**: Selecteer deze optie als u wilt dat de gesamplede rij weer in de groep rijen wordt geplaatst voor mogelijk hergebruik. Als gevolg hiervan kan dezelfde rij worden toegewezen aan meerdere plooien.
+1. **Vervanging gebruiken in partitioneren**: Selecteer deze optie als u wilt dat de geplaatste rij wordt weer gegeven in de pool met rijen voor een mogelijke hergebruik. Als gevolg hiervan kan dezelfde rij worden toegewezen aan verschillende vouwen.
 
-   Als u geen vervanging gebruikt (de standaardoptie), wordt de gesamplede rij niet teruggezet in de groep rijen voor mogelijk hergebruik. Als gevolg hiervan kan elke rij worden toegewezen aan slechts één vouw.
+   Als u geen vervanging gebruikt (de standaard optie), wordt de rij met het voor beeld niet weer gegeven in de pool met rijen voor een mogelijke hergebruik. Als gevolg hiervan kan elke rij slechts aan één vouw worden toegewezen.
 
-1. **Gerandomiseerde split**: Selecteer deze optie als u wilt dat rijen willekeurig worden toegewezen aan vouwen.
+1. **Wille keurige splitsing**: Selecteer deze optie als u wilt dat rijen wille keurig worden toegewezen aan vouwen.
 
-   Als u deze optie niet selecteert, worden rijen toegewezen om door de round-robin-methode te vouwen.
+   Als u deze optie niet selecteert, worden de rijen door de Round-Robin methode aan vouwen.
 
-1. **Willekeurig zaad**: Vul eventueel een geheel getal in om te gebruiken als zaadwaarde. Deze optie is belangrijk als u wilt dat de rijen elke keer op dezelfde manier worden verdeeld. Anders betekent de standaardwaarde van **0** dat een willekeurig startzaad wordt gebruikt.
+1. **Wille keurig zaad**: Voer eventueel een geheel getal in dat moet worden gebruikt als seed-waarde. Deze optie is belang rijk als u wilt dat de rijen op dezelfde manier worden gedeeld als elke keer. Anders is de standaard waarde **0** betekent dat een wille keurige begin Seed wordt gebruikt.
 
-1. **Geef de partitiemethode**op: geef aan hoe u wilt dat gegevens aan elke partitie worden verdeeld, met behulp van deze opties:
+1. **Geef de partitioner-methode**op: Geef aan hoe u wilt dat gegevens worden verdeeld over elke partitie, met behulp van de volgende opties:
 
-   - **Partitie gelijkmatig:** gebruik deze optie om een gelijk aantal rijen in elke partitie te plaatsen. Als u het aantal uitvoerpartities wilt opgeven, voert u een heel getal in het aantal plooien opgeven in om gelijkmatig in het vak **te splitsen.**
+   - **Gelijkmatige partitie**: gebruik deze optie om een gelijk aantal rijen in elke partitie te plaatsen. Als u het aantal uitvoer partities wilt opgeven, geeft u een geheel getal op in het vak **Geef het aantal gevouwen vouwingen op dat gelijkmatig moet worden gesplitst** .
 
-   - **Partitie met aangepaste verhoudingen**: Gebruik deze optie om de grootte van elke partitie op te geven als een door komma's gescheiden lijst.
+   - **Partitie met aangepaste verhoudingen**: gebruik deze optie om de grootte van elke partitie op te geven als een lijst met door komma's gescheiden waarden.
 
-     Stel dat u drie partities wilt maken. De eerste partitie bevat 50 procent van de gegevens. De overige twee partities bevatten elk 25 procent van de gegevens. Voer in de **lijst met verhoudingen, gescheiden door** komma,.de volgende getallen in: **.5, .25, .25**.
+     Stel dat u drie partities wilt maken. De eerste partitie bevat 50 procent van de gegevens. De overige twee partities bevatten elk 25 procent van de gegevens. Voer in het vak **lijst met verhoudingen gescheiden door een komma** de volgende getallen in: **0,5,. 25,. 25**.
 
-     De som van alle partitiegroottes moet precies 1 bedragen.
+     De som van alle partitie grootten moet precies 1 zijn.
 
-     Als u getallen invoert die optellen tot *minder dan 1,* wordt een extra partitie gemaakt om de resterende rijen vast te houden. Als u bijvoorbeeld de waarden **0,2** en **0,3**invoert, wordt een derde partitie gemaakt om de resterende 50 procent van alle rijen vast te houden.
+     Als u getallen opgeeft die Maxi maal *1*zijn, wordt er een extra partitie gemaakt om de resterende rijen te bewaren. Als u bijvoorbeeld de waarden **.2** en **.3**opgeeft, wordt er een derde partitie gemaakt om het resterende 50 procent van alle rijen te bewaren.
      
-     Als u getallen invoert die meer *dan 1*bevatten, wordt er een fout gegenereerd wanneer u de pijplijn uitvoert.
+     Als u getallen opgeeft die Maxi maal *1*zijn, treedt er een fout op wanneer u de pijp lijn uitvoert.
 
-1. **Gestratificeerde splitsing**: Selecteer deze optie als u wilt dat de rijen worden gestratificeerd wanneer ze worden gesplitst, en kies vervolgens de _stratakolom_.
+1. **Stratified splitsen**: Selecteer deze optie als u wilt dat de rijen worden stratified wanneer deze worden gesplitst en kies vervolgens de _kolom Strata_.
 
-1. Verzend de pijplijn.
+1. Verzend de pijp lijn.
 
-   Met deze optie worden meerdere gegevenssets uitgevoerd door de module. De gegevenssets worden verdeeld volgens de regels die u hebt opgegeven.
+   Met deze optie worden meerdere gegevens sets in de module uitgevoerd. De gegevens sets worden gepartitioneerd op basis van de regels die u hebt opgegeven.
 
-### <a name="use-data-from-a-predefined-partition"></a>Gegevens uit een vooraf gedefinieerde partitie gebruiken  
+### <a name="use-data-from-a-predefined-partition"></a>Gegevens van een vooraf gedefinieerde partitie gebruiken  
 
-Gebruik deze optie wanneer u een gegevensset in meerdere partities hebt verdeeld en nu elke partitie op zijn beurt wilt laden voor verdere analyse of verwerking.
+Gebruik deze optie wanneer u een gegevensset hebt onderverdeeld in meerdere partities en nu elke partitie op zijn beurt wilt laden voor verdere analyse of verwerking.
 
-1. Voeg de **partitie- en voorbeeldmodule** toe aan de pijplijn.
+1. Voeg de **partitie en de voorbeeld** module toe aan de pijp lijn.
 
-1. Sluit de module aan op de uitvoer van een vorige instantie van **Partitie en Voorbeeld**. In dat exemplaar moet de optie **Toewijzen aan vouwen** zijn gebruikt om een aantal partities te genereren.
+1. Koppel de module aan de uitvoer van een eerder exemplaar van de **partitie en**het voor beeld. Dat exemplaar moet de optie **toewijzen aan vouwen** hebben gebruikt om een aantal partities te genereren.
 
-1. **Partitie- of voorbeeldmodus**: Selecteer **Fold kiezen**selecteren .
+1. **Partitie of voorbeeld modus**: Selecteer **vouw vouwen**.
 
-1. **Geef op welke vouw moet worden gesampled uit**: Selecteer een partitie die u wilt gebruiken door de index in te voeren. Partitie-indexen zijn 1-gebaseerd. Als u de gegevensset bijvoorbeeld in drie delen opgedeeld, hebben de partities de indexen 1, 2 en 3.
+1. **Geef op met welke vouw moet worden steek proef**: Selecteer een te gebruiken partitie door de index ervan op te geven. Partitie-indexen zijn op 1 gebaseerd. Als u de gegevensset bijvoorbeeld in drie delen hebt verdeeld, hebben de partities de indices 1, 2 en 3.
 
-   Als u een ongeldige indexwaarde invoert, wordt een fout in de ontwerptijd verhoogd: 'Fout 0018: gegevensset bevat ongeldige gegevens'.
+   Als u een ongeldige index waarde invoert, wordt een fout in de ontwerp fase gegenereerd: ' fout 0018: gegevensset bevat ongeldige gegevens '.
 
-   Naast het groeperen van de gegevensset op vouwen, u de gegevensset in twee groepen scheiden: een doelvouw en al het andere. Voer hiervoor de index van één vouw in en selecteer vervolgens de **optie Pick-aanvulling van de geselecteerde vouw** om alles te krijgen, behalve de gegevens in de opgegeven vouw.
+   Naast het groeperen van de gegevensset door vouwen, kunt u de gegevensset in twee groepen scheiden: een doel vouwen en alle andere. Als u dit wilt doen, voert u de index van één Vouw in en selecteert u vervolgens de optie selectie **complement van de geselecteerde vouw** om alles op te halen, behalve de gegevens in de opgegeven vouwen.
 
-1. Als u met meerdere partities werkt, moet u meer exemplaren van de **partitie- en voorbeeldmodule** toevoegen om elke partitie te verwerken.
+1. Als u met meerdere partities werkt, moet u meer exemplaren van de **partitie en voorbeeld** module toevoegen voor het afhandelen van elke partitie.
 
-   De module **Partitie en Voorbeeld** in de tweede rij is bijvoorbeeld ingesteld op **Toewijzen aan plooien**en de module in de derde rij is ingesteld op Fold **kiezen.**   
+   Bijvoorbeeld, de **partitie en de voorbeeld** module in de tweede rij zijn ingesteld om **te worden toegewezen aan de vouwen**en de module in de derde rij is ingesteld op **vouw vouwen**.   
 
-   ![Partitie en voorbeeld](./media/module/partition-and-sample.png)
+   ![Partitie en voor beeld](./media/module/partition-and-sample.png)
 
-1. Verzend de pijplijn.
+1. Verzend de pijp lijn.
 
-   Met deze optie wordt in de module één gegevensset uitgevoerd die alleen de rijen bevat die aan die vouw zijn toegewezen.
+   Met deze optie voert de module een enkele gegevensset uit die alleen de rijen bevat die aan de vouwen zijn toegewezen.
 
 > [!NOTE]
->  U de vouwaanduidingen niet rechtstreeks bekijken. Ze zijn alleen aanwezig in de metadata.
+>  U kunt de gevouwen ontwerps niet rechtstreeks weer geven. Ze zijn alleen aanwezig in de meta gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

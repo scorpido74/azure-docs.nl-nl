@@ -1,6 +1,6 @@
 ---
-title: Aangepaste transformatie coderen met Media Services v3 .NET - Azure | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services v3 gebruiken om een aangepaste transformatie te coderen met .NET.
+title: Aangepaste trans formatie coderen met Media Services v3 .NET-Azure | Microsoft Docs
+description: In dit onderwerp wordt uitgelegd hoe u Azure Media Services V3 gebruikt om een aangepaste trans formatie te coderen met behulp van .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,22 +13,22 @@ ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80068035"
 ---
-# <a name="how-to-encode-with-a-custom-transform---net"></a>Hoe te coderen met een aangepaste transformatie - .NET
+# <a name="how-to-encode-with-a-custom-transform---net"></a>Coderen met een aangepaste trans formatie-.NET
 
-Wanneer u codeert met Azure Media Services, u snel aan de slag met een van de aanbevolen ingebouwde voorinstellingen op basis van aanbevolen procedures in de branche, zoals aangetoond in de zelfstudie [voor streamingbestanden.](stream-files-tutorial-with-api.md) U ook een aangepaste voorinstelling maken om uw specifieke scenario of apparaatvereisten te targeten.
+Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen standaard instellingen op basis van best practices in de branche, zoals wordt getoond in de zelf studie voor [streaming-bestanden](stream-files-tutorial-with-api.md) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 
 ## <a name="considerations"></a>Overwegingen
 
-Bij het maken van aangepaste voorinstellingen zijn de volgende overwegingen van toepassing:
+Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
-* Alle waarden voor hoogte en breedte op AVC-inhoud moeten een veelvoud van 4 zijn.
-* In Azure Media Services v3 zijn alle coderingsbitrates in bits per seconde. Dit is anders dan de presets met onze v2 API's, die kilobits per seconde als eenheid gebruikten. Als de bitrate in v2 bijvoorbeeld is opgegeven als 128 (kilobits/seconde), wordt deze in v3 ingesteld op 128000 (bits/seconde).
+* Alle waarden voor de hoogte en breedte van AVC-inhoud moeten een meervoud van 4 zijn.
+* In Azure Media Services v3 bevinden alle coderings bitsnelheden zich in bits per seconde. Dit wijkt af van de voor instellingen met onze v2 Api's, die kilobits/seconde als eenheid hebben gebruikt. Als de bitrate in v2 bijvoorbeeld is opgegeven als 128 (kilobits/seconde), wordt deze in v3 ingesteld op 128000 (bits/seconde).
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -36,23 +36,23 @@ Bij het maken van aangepaste voorinstellingen zijn de volgende overwegingen van 
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Kloon een GitHub-repository die het volledige .NET Core-voorbeeld bevat naar uw machine met de volgende opdracht:  
+Kloon een GitHub-opslag plaats met het volledige .NET core-voor beeld naar uw machine met behulp van de volgende opdracht:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials.git
  ```
  
-Het aangepaste voorinstellingsvoorbeeld bevindt zich in de map [EncodeCustomTransform.](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/)
+Het voor beeld van een aangepaste voor instelling bevindt zich in de map [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) .
 
-## <a name="create-a-transform-with-a-custom-preset"></a>Een transformatie maken met een aangepaste voorinstelling 
+## <a name="create-a-transform-with-a-custom-preset"></a>Een trans formatie maken met een aangepaste voor instelling 
 
-Wanneer u een nieuwe [transformatie maakt,](https://docs.microsoft.com/rest/api/media/transforms)moet u opgeven wat u wilt dat deze als uitvoer produceert. De vereiste parameter is een [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput)-object, zoals weergegeven in de onderstaande code. Elke **transformatie-uitvoer** bevat een **voorinstelling**. De **voorinstelling** beschrijft de stapsgewijze instructies van video- en/of audioverwerkingsbewerkingen die moeten worden gebruikt om de gewenste **TransformOutput**te genereren. Met de volgende **TransformOutput** worden aangepaste codec- en laaguitvoerinstellingen gemaakt.
+Wanneer u een nieuwe [trans formatie](https://docs.microsoft.com/rest/api/media/transforms)maakt, moet u opgeven wat u wilt produceren als uitvoer. De vereiste parameter is een [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput)-object, zoals weergegeven in de onderstaande code. Elke **transformatie-uitvoer** bevat een **voorinstelling**. In de **voor instelling** worden de stapsgewijze instructies beschreven van de bewerkingen voor video en/of audio verwerking die moeten worden gebruikt om de gewenste **TransformOutput**te genereren. Met de volgende **TransformOutput** worden aangepaste codec-en laag uitvoer instellingen gemaakt.
 
-Bij het maken van een [transformatie](https://docs.microsoft.com/rest/api/media/transforms) moet u controleren of er al een bestaat met de methode **Ophalen** zoals weergegeven in de volgende code. In Media Services v3 **retourneer methoden** voor entiteiten **null** als de entiteit niet bestaat (een hoofdletter-ingevoelige controle op de naam).
+Bij het maken van een [transformatie](https://docs.microsoft.com/rest/api/media/transforms) moet u controleren of er al een bestaat met de methode **Ophalen** zoals weergegeven in de volgende code. In Media Services v3, **Get** -methoden op entiteiten retour neren **Null** als de entiteit niet bestaat (een niet-hoofdletter gevoelige controle op de naam).
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld wordt een reeks uitvoer gedefinieerd die we willen genereren wanneer deze transformatie wordt gebruikt. We voegen eerst een AacAudio-laag toe voor de audiocodering en twee H264Video-lagen voor de videocodering. In de videolagen wijzen we labels toe, zodat ze kunnen worden gebruikt in de namen van uitvoerbestanden. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voorbeeld geven we afbeeldingen op in PNG-indeling, gegenereerd bij 50% van de resolutie van de invoervideo, en bij drie tijdstempels - {25%, 50%, 75} van de lengte van de invoervideo. Ten slotte specificeren we het formaat voor de uitvoerbestanden - een voor video + audio en een andere voor de miniaturen. Aangezien we meerdere H264Layers hebben, moeten we macro's gebruiken die unieke namen per laag produceren. We kunnen een `{Label}` `{Bitrate}` of macro gebruiken, het voorbeeld toont het eerste.
+In het volgende voor beeld wordt een set uitvoer gedefinieerd die we willen genereren wanneer deze trans formatie wordt gebruikt. We voegen eerst een AacAudio-laag toe voor de audio codering en twee H264Video-lagen voor de video codering. In de video lagen worden labels toegewezen zodat ze kunnen worden gebruikt in de naam van het uitvoer bestand. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voor beeld geven we installatie kopieën op in PNG-indeling, gegenereerd om 50% van de oplossing van de video-invoer en met drie time Stamps-{25%, 50%, 75} van de lengte van de invoer video. Ten slotte geven we de indeling voor de uitvoer bestanden op: één voor video en audio, en een andere voor de miniaturen. Omdat we meerdere H264Layers hebben, moeten we macro's gebruiken waarmee unieke namen per laag worden geproduceerd. We kunnen een `{Label}` or `{Bitrate}` -macro gebruiken, maar in het voor beeld wordt het voormalige weer gegeven.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

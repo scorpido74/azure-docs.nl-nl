@@ -1,31 +1,31 @@
 ---
-title: Verbindingstekenreeksen - Azure Database voor MySQL
-description: In dit document worden de momenteel ondersteunde verbindingstekenreeksen weergegeven voor toepassingen die verbinding kunnen maken met Azure Database voor MySQL, waaronder ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python en Ruby.
+title: Verbindings reeksen-Azure Database for MySQL
+description: In dit document worden de momenteel ondersteunde verbindings reeksen vermeld voor toepassingen waarmee verbinding kan worden gemaakt met Azure Database for MySQL, waaronder ADO.NET (C#), JDBC, node. js, ODBC, PHP, python en Ruby.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062400"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Toepassingen koppelen met Azure Database voor MySQL
-In dit onderwerp worden de verbindingstekenreekstypen weergegeven die worden ondersteund door Azure Database voor MySQL, samen met sjablonen en voorbeelden. Mogelijk hebt u verschillende parameters en instellingen in uw verbindingstekenreeks.
+In dit onderwerp vindt u een overzicht van de connection string typen die door Azure Database for MySQL worden ondersteund, samen met sjablonen en voor beelden. Er zijn mogelijk verschillende para meters en instellingen in uw connection string.
 
-- Zie SSL configureren als u het certificaat [wilt verkrijgen.](./howto-configure-ssl.md)
-- {your_host} \<= servernaam>.mysql.database.azure.com
-- {your_user}@{servername} = userID-indeling voor verificatie correct.  Als u alleen de gebruikers-id gebruikt, mislukt de verificatie.
+- Zie [SSL configureren voor meer informatie over](./howto-configure-ssl.md)het verkrijgen van het certificaat.
+- {your_host} = \<servername>. mysql.database.Azure.com
+- {your_user} @ {servername} = indeling van gebruikers-id voor de juiste verificatie.  Als u alleen de gebruikers-id gebruikt, mislukt de verificatie.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-In dit `mydemoserver`voorbeeld is de servernaam, `wpdb`de databasenaam `WPAdmin`is, de `mypassword!2`gebruikersnaam is , en het wachtwoord is . Als gevolg hiervan moet de verbindingstekenreeks zijn:
+In dit `mydemoserver`voor beeld is de naam van de server, de naam `wpdb`van de data base, `WPAdmin`de gebruikers naam en het `mypassword!2`wacht woord. Als gevolg hiervan moet de connection string:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -61,10 +61,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>De details van de verbindingstekenreeks ophalen van de Azure-portal
-Ga in de [Azure-portal](https://portal.azure.com)naar uw Azure Database voor MySQL-server en klik ![vervolgens op **Verbindingstekenreeksen** om de tekenreeksenlijst voor uw instantie op te halen: het deelvenster Verbindingstekenreeksen in de Azure-portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-the-connection-string-details-from-the-azure-portal"></a>De connection string Details ophalen uit de Azure Portal
+Ga in het [Azure Portal](https://portal.azure.com)naar de Azure database for mysql-server en klik vervolgens op **verbindings reeksen** om de teken reeks lijst voor uw instantie op ![te halen: het deel venster verbindings reeksen in de Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-De tekenreeks bevat details zoals het stuurprogramma, de server en andere parameters voor databaseverbindingen. Wijzig deze voorbeelden om uw eigen parameters te gebruiken, zoals databasenaam, wachtwoord, enzovoort. U deze tekenreeks vervolgens gebruiken om verbinding te maken met de server vanuit uw code en toepassingen.
+De teken reeks bevat details zoals het stuur programma, de server en andere para meters voor database verbindingen. Wijzig deze voor beelden om uw eigen para meters te gebruiken, zoals de database naam, het wacht woord, enzovoort. U kunt deze teken reeks vervolgens gebruiken om vanuit uw code en toepassingen verbinding te maken met de server.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Concepten - Verbindingsbibliotheken](./concepts-connection-libraries.md)voor meer informatie over verbindingsbibliotheken.
+- Zie [concepten-Connection Libraries](./concepts-connection-libraries.md)(Engelstalig) voor meer informatie over verbindings bibliotheken.

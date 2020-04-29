@@ -1,7 +1,7 @@
 ---
-title: Studio-werkruimte (klassieke) werkruimte implementeren met Azure Resource Manager
+title: Studio-werk ruimte (klassiek) implementeren met Azure Resource Manager
 titleSuffix: ML Studio (classic) - Azure
-description: Een werkruimte implementeren voor Azure Machine Learning Studio (klassiek) met azure resource manager-sjabloon
+description: Een werk ruimte voor Azure Machine Learning Studio (klassiek) implementeren met behulp van Azure Resource Manager sjabloon
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,27 +11,27 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
 ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218117"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio (klassieke) werkruimte implementeren met Azure Resource Manager
+# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio-werk ruimte (klassieke) implementeren met behulp van Azure Resource Manager
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Het gebruik van een Azure Resource Manager-implementatiesjabloon bespaart u tijd dooru een schaalbare manier te geven om onderling verbonden componenten te implementeren met een validatie- en opnieuw probeermechanisme. Als u bijvoorbeeld Azure Machine Learning Studio (klassieke) werkruimten wilt instellen, moet u eerst een Azure-opslagaccount configureren en vervolgens uw werkruimte implementeren. Stel je voor dat je dit handmatig doet voor honderden werkplekken. Een eenvoudiger alternatief is het gebruik van een Azure Resource Manager-sjabloon om een Studio (klassieke) workspace en al zijn afhankelijkheden te implementeren. Dit artikel neemt u mee door dit proces stap voor stap. Zie overzicht van Azure Resource Manager voor een goed overzicht van Azure [Resource Manager.](../../azure-resource-manager/management/overview.md)
+Met een Azure Resource Manager-implementatie sjabloon bespaart u tijd door u een schaal bare manier te bieden voor het implementeren van onderling verbonden onderdelen met een validatie en een mechanisme voor opnieuw proberen. Als u bijvoorbeeld Azure Machine Learning Studio (klassieke) werk ruimten wilt instellen, moet u eerst een Azure-opslag account configureren en vervolgens uw werk ruimte implementeren. Stel dit hand matig in voor honderden werk ruimten. Een eenvoudiger alternatief is het gebruik van een Azure Resource Manager sjabloon voor het implementeren van een studio-werk ruimte (klassiek) en alle bijbehorende afhankelijkheden. Dit artikel begeleidt u stapsgewijs door de stapsgewijze procedure. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)voor een geweldig overzicht van Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="step-by-step-create-a-machine-learning-workspace"></a>Stap voor stap: maak een Machine Learning Workspace
-We maken een Azure-brongroep en implementeren vervolgens een nieuw Azure-opslagaccount en een nieuwe Azure Machine Learning Studio (klassieke) werkruimte met behulp van een Resource Manager-sjabloon. Zodra de implementatie is voltooid, zullen we belangrijke informatie uitprinten over de werkruimten die zijn gemaakt (de primaire sleutel, de werkruimte-id en de URL naar de werkruimte).
+## <a name="step-by-step-create-a-machine-learning-workspace"></a>Stap voor stap: een Machine Learning-werkruimte maken
+We gaan een Azure-resource groep maken en vervolgens een nieuw Azure-opslag account en een nieuwe Azure Machine Learning Studio (klassieke) werk ruimte implementeren met behulp van een resource manager-sjabloon. Zodra de implementatie is voltooid, worden belang rijke gegevens afgedrukt over de werk ruimten die zijn gemaakt (de primaire sleutel, de workspaceID en de URL naar de werk ruimte).
 
-### <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon maken
+### <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon maken
 
-Voor een Machine Learning Workspace is een Azure-opslagaccount vereist om de aan deze gegevensgekoppelde gegevensset op te slaan.
-In de volgende sjabloon wordt de naam van de resourcegroep gebruikt om de naam van het opslagaccount en de naam van de werkruimte te genereren.  Het gebruikt ook de naam van het opslagaccount als eigenschap bij het maken van de werkruimte.
+Een Machine Learning-werkruimte vereist een Azure Storage-account om de gekoppelde gegevensset op te slaan.
+De volgende sjabloon maakt gebruik van de naam van de resource groep om de naam van het opslag account en de naam van de werk ruimte te genereren.  De naam van het opslag account wordt ook gebruikt als eigenschap bij het maken van de werk ruimte.
 
 ```json
 {
@@ -78,12 +78,12 @@ In de volgende sjabloon wordt de naam van de resourcegroep gebruikt om de naam v
 }
 
 ```
-Sla deze sjabloon op als mlworkspace.json-bestand onder c:\temp\.
+Sla deze sjabloon op als mlworkspace. JSON-bestand onder c:\temp\.
 
-### <a name="deploy-the-resource-group-based-on-the-template"></a>De resourcegroep implementeren op basis van de sjabloon
+### <a name="deploy-the-resource-group-based-on-the-template"></a>Implementeer de resource groep op basis van de sjabloon
 
 * Open PowerShell.
-* Modules installeren voor Azure Resource Manager en Azure Service Management
+* Modules voor Azure Resource Manager en Azure Service Management installeren
 
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press "A")
@@ -93,19 +93,19 @@ Install-Module Az -Scope CurrentUser
 Install-Module Azure -Scope CurrentUser
 ```
 
-   Deze stappen downloaden en installeren de modules die nodig zijn om de resterende stappen te voltooien. Dit hoeft slechts één keer te gebeuren in de omgeving waarin u de PowerShell-opdrachten uitvoert.
+   Met deze stappen downloadt en installeert u de benodigde modules om de resterende stappen uit te voeren. Dit hoeft alleen te worden gedaan in de omgeving waarin u de Power shell-opdrachten uitvoert.
 
-* Verifiëren naar Azure
+* Verifiëren bij Azure
 
 ```powershell
 # Authenticate (enter your credentials in the pop-up window)
 Connect-AzAccount
 ```
-Deze stap moet voor elke sessie worden herhaald. Na verificatie moeten uw abonnementsgegevens worden weergegeven.
+Deze stap moet voor elke sessie worden herhaald. Nadat de gegevens zijn geverifieerd, moeten uw abonnements informatie worden weer gegeven.
 
 ![Azure-account](./media/deploy-with-resource-manager-template/azuresubscription.png)
 
-Nu we toegang hebben tot Azure, kunnen we de brongroep maken.
+Nu u toegang hebt tot Azure, kunnen we de resource groep maken.
 
 * Een resourcegroep maken
 
@@ -114,38 +114,38 @@ $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central
 $rg
 ```
 
-Controleer of de resourcegroep correct is ingericht. **ProvisioningState** moet worden "Geslaagd."
-De naam van de brongroep wordt door de sjabloon gebruikt om de naam van het opslagaccount te genereren. De naam van het opslagaccount moet tussen de 3 en 24 tekens lang zijn en alleen getallen en kleine letters gebruiken.
+Controleer of de resource groep juist is ingericht. **ProvisioningState** moet "geslaagd" zijn.
+De naam van de resource groep wordt door de sjabloon gebruikt voor het genereren van de naam van het opslag account. De naam van het opslag account moet tussen 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 
 ![Resourcegroep](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
 
-* Implementeer met de implementatie van de resourcegroep een nieuwe Machine Learning Workspace.
+* Implementeer een nieuwe Machine Learning-werkruimte met behulp van de implementatie van de resource groep.
 
 ```powershell
 # Create a Resource Group, TemplateFile is the location of the JSON template.
 $rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
-Zodra de implementatie is voltooid, is het eenvoudig om toegang te krijgen tot eigenschappen van de werkruimte die u hebt geïmplementeerd. U hebt bijvoorbeeld toegang tot het token voor primaire sleutels.
+Zodra de implementatie is voltooid, hebt u eenvoudig toegang tot de eigenschappen van de werk ruimte die u hebt geïmplementeerd. U kunt bijvoorbeeld toegang krijgen tot het primaire-sleutel token.
 
 ```powershell
 # Access Azure Machine Learning Studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-Een andere manier om tokens van bestaande werkruimte op te halen, is door de opdracht Aanroepen-AzResourceAction te gebruiken. U bijvoorbeeld de primaire en secundaire tokens van alle werkruimten weergeven.
+U kunt ook de opdracht invoke-AzResourceAction gebruiken om tokens van een bestaande werk ruimte op te halen. U kunt bijvoorbeeld de primaire en secundaire tokens van alle werk ruimten weer geven.
 
 ```powershell
 # List the primary and secondary tokens of all workspaces
 Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-Nadat de werkruimte is ingericht, u ook veel Azure Machine Learning Studio-taken (klassieke) taken automatiseren met behulp van de [PowerShell-module voor Azure Machine Learning Studio (klassiek).](https://aka.ms/amlps)
+Nadat de werk ruimte is ingericht, kunt u ook veel Azure Machine Learning Studio (klassieke) taken automatiseren met behulp [van de Power shell-module voor Azure machine learning Studio (klassiek)](https://aka.ms/amlps).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [het maken van Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/template-syntax.md).
-* Neem een kijkje in de [Azure Quickstart Templates Repository](https://github.com/Azure/azure-quickstart-templates).
+* Meer informatie over het [ontwerpen van Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md).
+* Bekijk de [opslag plaats voor Azure Quick](https://github.com/Azure/azure-quickstart-templates)start-sjablonen.
 * Bekijk deze video over [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).
-* Zie de [naslaghulp voor sjabloonresourcebeheer](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
+* Zie de [Naslag informatie voor de Resource Manager-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 
 <!--Link references-->

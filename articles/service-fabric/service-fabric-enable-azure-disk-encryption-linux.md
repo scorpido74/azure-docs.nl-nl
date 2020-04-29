@@ -1,29 +1,29 @@
 ---
-title: Schijfversleuteling inschakelen voor Linux-clusters
-description: In dit artikel wordt beschreven hoe u schijfversleuteling voor Azure Service Fabric-clusterknooppunten in Linux inschakelen met Azure Resource Manager en Azure Key Vault.
+title: Schijf versleuteling voor Linux-clusters inschakelen
+description: In dit artikel wordt beschreven hoe u schijf versleuteling inschakelt voor Azure Service Fabric cluster knooppunten in Linux met behulp van Azure Resource Manager en Azure Key Vault.
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252819"
 ---
-# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Schijfversleuteling inschakelen voor Azure Service Fabric-clusterknooppunten in Linux 
+# <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Schijf versleuteling inschakelen voor Azure Service Fabric cluster knooppunten in Linux 
 > [!div class="op_single_selector"]
-> * [Schijfversleuteling voor Linux](service-fabric-enable-azure-disk-encryption-linux.md)
-> * [Schijfversleuteling voor Windows](service-fabric-enable-azure-disk-encryption-windows.md)
+> * [Schijf versleuteling voor Linux](service-fabric-enable-azure-disk-encryption-linux.md)
+> * [Schijf versleuteling voor Windows](service-fabric-enable-azure-disk-encryption-windows.md)
 >
 >
 
-In deze zelfstudie leert u hoe u schijfversleuteling inschakelt op Azure Service Fabric-clusterknooppunten in Linux. U moet deze stappen volgen voor elk knooppunttype en virtuele machineschaalsets. Voor het versleutelen van de knooppunten gebruiken we de azure disk encryptie-mogelijkheden op virtuele machine schaalsets.
+In deze zelf studie leert u hoe u schijf versleuteling kunt inschakelen op Azure Service Fabric cluster knooppunten in Linux. U moet deze stappen volgen voor elk van de knooppunt typen en virtuele-machine schaal sets. Voor het versleutelen van de knoop punten gebruiken we de Azure Disk Encryption capaciteit van virtuele-machine schaal sets.
 
-De gids behandelt de volgende onderwerpen:
+De hand leiding bevat de volgende onderwerpen:
 
-* Belangrijke concepten om op de hoogte te zijn van het inschakelen van schijfversleuteling op servicefabricclusterclusterdetectiesets in Linux.
-* Stappen die moeten worden gevolgd voordat schijfversleuteling op servicefabric-clusterknooppunten in Linux wordt ingeschakeld.
-* Stappen die moeten worden gevolgd om schijfversleuteling in te schakelen op clusterknooppunten van Service Fabric in Linux.
+* Belang rijke concepten waarvan u rekening moet houden bij het inschakelen van schijf versleuteling op Service Fabric schaal sets voor virtuele cluster machines in Linux.
+* De stappen die moeten worden gevolgd voordat u schijf versleuteling inschakelt op Service Fabric cluster knooppunten in Linux.
+* De stappen die moeten worden gevolgd om schijf versleuteling in te scha kelen op Service Fabric cluster knooppunten in Linux.
 
 
 
@@ -31,49 +31,49 @@ De gids behandelt de volgende onderwerpen:
 
 ## <a name="prerequisites"></a>Vereisten
 
- **Zelfregistratie**
+ **Zelf registratie**
 
-De schijfversleutelingspreview voor de virtuele machineschaalset vereist zelfregistratie. Voer de volgende stappen uit:
+Voor de preview-versie van schijf versleuteling voor de schaalset voor virtuele machines is zelf registratie vereist. Voer de volgende stappen uit:
 
 1. Voer de volgende opdracht uit: 
     ```powershell
     Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
     ```
-2. Wacht ongeveer 10 minuten tot de status *Geregistreerd*staat. U de status controleren door de volgende opdracht uit te voeren:
+2. Wacht ongeveer 10 minuten totdat de status is *geregistreerd*. U kunt de status controleren door de volgende opdracht uit te voeren:
     ```powershell
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
     ```
 **Azure Key Vault**
 
-1. Maak een sleutelkluis in hetzelfde abonnement en dezelfde regio als de schaalset. Selecteer vervolgens het toegangsbeleid **voor toegang tot enabledfordiskversleuteling** op de sleutelkluis met behulp van de PowerShell-cmdlet. U het beleid ook instellen met de Key Vault-gebruikersinterface in de Azure-portal met de volgende opdracht:
+1. Maak een sleutel kluis in hetzelfde abonnement en dezelfde regio als de schaalset. Selecteer vervolgens het toegangs beleid voor **EnabledForDiskEncryption** op de sleutel kluis met behulp van de Power shell-cmdlet. U kunt het beleid ook instellen met behulp van de Key Vault gebruikers interface in de Azure Portal met de volgende opdracht:
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
-2. Installeer de nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli), die de nieuwe encryptie commando's heeft.
+2. Installeer de nieuwste versie van de [Azure cli](/cli/azure/install-azure-cli), die de nieuwe versleutelings opdrachten heeft.
 
-3. Installeer de nieuwste versie van de [Azure SDK van Azure PowerShell](https://github.com/Azure/azure-powershell/releases) release. Hieronder volgen de cmdlets van de virtuele machineschaal azure disk encryptie om versleuteling in te schakelen ([instellen)](/powershell/module/az.compute/set-azvmssdiskencryptionextension)in te schakelen, de versleutelingsstatus op te halen[(ophalen)](/powershell/module/az.compute/get-azvmssvmdiskencryption)en versleuteling op de schaalsetinstantie te verwijderen ([uitschakelen).](/powershell/module/az.compute/disable-azvmssdiskencryption)
+3. Installeer de nieuwste versie van de [Azure SDK vanuit Azure PowerShell](https://github.com/Azure/azure-powershell/releases) release. Hieronder vindt u de virtuele-machine schaalset Azure Disk Encryption-cmdlets voor het inschakelen ([instellen](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) van versleuteling, ophalen ([Get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) versleutelings status en verwijderen ([uitschakelen](/powershell/module/az.compute/disable-azvmssdiskencryption)) voor het exemplaar van de schaalset.
 
 
 | Opdracht | Versie |  Bron  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 of hoger | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 of hoger | Az.Compute |
-| Disable-AzVmssDiskEncryption Disable-AzVmssDiskEncryption   | 1.0.0 of hoger | Az.Compute |
+| Disable-AzVmssDiskEncryption   | 1.0.0 of hoger | Az.Compute |
 | Get-AzVmssDiskEncryption   | 1.0.0 of hoger | Az.Compute |
 | Get-AzVmssVMDiskEncryption   | 1.0.0 of hoger | Az.Compute |
 | Set-AzVmssDiskEncryptionExtension   | 1.0.0 of hoger | Az.Compute |
 
 
-## <a name="supported-scenarios-for-disk-encryption"></a>Ondersteunde scenario's voor schijfversleuteling
-* Versleuteling voor virtuele machineschaalsets wordt alleen ondersteund voor schaalsets die zijn gemaakt met beheerde schijven. Het wordt niet ondersteund voor native (of onbeheerde) schijfwaardensets.
-* Zowel versleuteling als uitschakelen van versleuteling worden ondersteund voor OS- en gegevensvolumes in virtuele machineschaalsets in Linux. 
-* Virtuele machine (VM) reimage en upgrade operaties voor virtuele machine schaal sets worden niet ondersteund in de huidige preview.
+## <a name="supported-scenarios-for-disk-encryption"></a>Ondersteunde scenario's voor schijf versleuteling
+* Versleuteling voor schaal sets voor virtuele machines wordt alleen ondersteund voor schaal sets die zijn gemaakt met Managed disks. Het wordt niet ondersteund voor een systeem eigen (of niet-beheerde) schijf schaal sets.
+* Versleuteling en uitschakeling uitschakelen worden ondersteund voor besturings systeem-en gegevens volumes in virtuele-machine schaal sets in Linux. 
+* Installatie kopieën van virtuele machines (VM) en upgrades voor schaal sets voor virtuele machines worden niet ondersteund in de huidige preview-versie.
 
 
-## <a name="create-a-new-cluster-and-enable-disk-encryption"></a>Een nieuw cluster maken en schijfversleuteling inschakelen
+## <a name="create-a-new-cluster-and-enable-disk-encryption"></a>Een nieuw cluster maken en schijf versleuteling inschakelen
 
-Gebruik de volgende opdrachten om een cluster te maken en schijfversleuteling in te schakelen met behulp van een Azure Resource Manager-sjabloon en een zelfondertekend certificaat.
+Gebruik de volgende opdrachten om een cluster te maken en schijf versleuteling in te scha kelen met behulp van een Azure Resource Manager sjabloon en een zelfondertekend certificaat.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure  
 
@@ -95,9 +95,9 @@ az account set --subscription $subscriptionId
 
 ### <a name="use-the-custom-template-that-you-already-have"></a>De aangepaste sjabloon gebruiken die u al hebt 
 
-Als u een aangepaste sjabloon wilt maken, raden we u ten zeerste aan een van de sjablonen te gebruiken op de pagina Sjabloonvoorbeelden voor het maken van [azure-servicesfabric.](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) 
+Als u een aangepaste sjabloon moet maken, raden we u ten zeerste aan een van de sjablonen te gebruiken op de pagina met voor beelden voor het [maken van Azure service Fabric-cluster sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) . 
 
-Als u al een aangepaste sjabloon hebt, controleert u of alle drie de certificaatgerelateerde parameters in de sjabloon en het parameterbestand als volgt worden genoemd. Zorg er ook voor dat de waarden als volgt niet worden vermeld:
+Als u al een aangepaste sjabloon hebt, controleert u of alle drie certificaat-gerelateerde para meters in de sjabloon en het parameter bestand als volgt worden genoemd. Zorg er ook voor dat de waarden als volgt zijn:
 
 ```Json
    "certificateThumbprint": {
@@ -111,7 +111,7 @@ Als u al een aangepaste sjabloon hebt, controleert u of alle drie de certificaat
     },
 ```
 
-Omdat alleen versleuteling van gegevensschijven wordt ondersteund voor virtuele machineschaalsets in Linux, moet u een gegevensschijf toevoegen met behulp van een resourcemanagersjabloon. Werk uw sjabloon als volgt bij voor het opmaken van gegevensschijven:
+Omdat alleen versleuteling van de gegevens schijf wordt ondersteund voor virtuele-machine schaal sets in Linux, moet u een gegevens schijf toevoegen met behulp van een resource manager-sjabloon. Werk de sjabloon voor het inrichten van gegevens schijven als volgt bij:
 
 ```Json
    
@@ -153,7 +153,7 @@ New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOut
 
 ```
 
-Hier is de gelijkwaardige CLI commando. Wijzig de waarden in de declarestatements in de juiste waarden. De CLI ondersteunt alle andere parameters die de vorige PowerShell-opdracht ondersteunt.
+Dit is de equivalente CLI-opdracht. Wijzig de waarden in de Declare-instructies in de juiste waarden. De CLI ondersteunt alle andere para meters die de voor gaande Power shell-opdracht ondersteunt.
 
 ```azurecli
 declare certPassword=""
@@ -172,16 +172,16 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ```
 
-### <a name="mount-a-data-disk-to-a-linux-instance"></a>Een gegevensschijf aan een Linux-exemplaar monteren
-Voordat u verdergaat met versleuteling op een virtuele machineschaalset, moet u ervoor zorgen dat de toegevoegde gegevensschijf correct is gemonteerd. Meld u aan bij de VM van het Linux-cluster en voer de opdracht **LSBLK** uit. De uitvoer moet die toegevoegde gegevensschijf in de kolom **Punt invoegen** weergeven weergeven.
+### <a name="mount-a-data-disk-to-a-linux-instance"></a>Een gegevens schijf koppelen aan een Linux-exemplaar
+Voordat u doorgaat met het versleutelen van een schaalset voor virtuele machines, moet u ervoor zorgen dat de toegevoegde gegevens schijf correct is gekoppeld. Meld u aan bij de virtuele Linux-cluster-VM en voer de opdracht **LSBLK** uit. In de uitvoer moet worden aangegeven dat de gegevens schijf is toegevoegd in de kolom **koppel punt** .
 
 
-### <a name="deploy-application-to-a-service-fabric-cluster-in-linux"></a>Toepassing implementeren in een Cluster van Servicefabric in Linux
-Als u een toepassing wilt implementeren in uw cluster, volgt u de stappen en richtlijnen bij [Quickstart: Linux-containers implementeren voor servicestructuur.](service-fabric-quickstart-containers-linux.md)
+### <a name="deploy-application-to-a-service-fabric-cluster-in-linux"></a>Toepassing implementeren in een Service Fabric-cluster in Linux
+Als u een toepassing in uw cluster wilt implementeren, volgt u de stappen en richt lijnen op [Quick Start: Linux-containers implementeren op service Fabric](service-fabric-quickstart-containers-linux.md).
 
 
-### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>Schijfversleuteling inschakelen voor de eerder gemaakte virtuele machineschaalsets
-Voer de volgende opdrachten uit om schijfversleuteling in te schakelen voor de virtuele machineschaalsets die u via de vorige stappen hebt gemaakt:
+### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>Schijf versleuteling inschakelen voor de virtuele-machine schaal sets die eerder zijn gemaakt
+Voer de volgende opdrachten uit om schijf versleuteling in te scha kelen voor de schaal sets voor virtuele machines die u tijdens de vorige stappen hebt gemaakt:
  
 ```powershell
 $VmssName = "nt1vm"
@@ -201,9 +201,9 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 
 ```
 
-### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-linux"></a>Valideren of schijfversleuteling is ingeschakeld voor een virtuele machineschaal die is ingesteld in Linux
-Voer de volgende opdrachten uit om de status van een volledige virtuele machineschaalset of een instantie in een schaalset te krijgen.
-Daarnaast u zich aanmelden bij de VM van het Linux-cluster en de opdracht **LSBLK** uitvoeren. De uitvoer moet de toegevoegde gegevensschijf in de kolom **Punt instellen** weergeven weergeven en de kolom **Type** moet *Crypt*lezen.
+### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-linux"></a>Valideren of schijf versleuteling is ingeschakeld voor een schaalset voor virtuele machines in Linux
+Voer de volgende opdrachten uit om de status van een volledige schaalset voor virtuele machines of een wille keurig exemplaar in een schaalset op te halen.
+Daarnaast kunt u zich aanmelden bij de virtuele Linux-cluster-VM en de opdracht **LSBLK** uitvoeren. In de uitvoer moet de toegevoegde gegevens schijf worden weer gegeven in de kolom **koppel punt** , en de kolom **type** moet *crypt*lezen.
 
 ```powershell
 
@@ -220,8 +220,8 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 
 ```
 
-### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Schijfversleuteling uitschakelen voor een virtuele machineschaal die is ingesteld in een cluster van Servicefabric
-Schakel schijfversleuteling voor een virtuele machineschaal in door de volgende opdrachten uit te voeren. Houd er rekening mee dat het uitschakelen van schijfversleuteling van toepassing is op de volledige virtuele machineschaalset en niet op een afzonderlijke instantie.
+### <a name="disable-disk-encryption-for-a-virtual-machine-scale-set-in-a-service-fabric-cluster"></a>Schijf versleuteling uitschakelen voor een schaalset voor virtuele machines in een Service Fabric cluster
+Schakel de schijf versleuteling voor een schaalset voor virtuele machines uit door de volgende opdrachten uit te voeren. Houd er rekening mee dat het uitschakelen van schijf versleuteling van toepassing is op de gehele schaalset voor virtuele machines en niet op een afzonderlijk exemplaar.
 
 ```powershell
 $VmssName = "nt1vm"
@@ -237,4 +237,4 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Op dit punt moet u een beveiligd cluster hebben en weten hoe u schijfversleuteling in- en uitschakelt voor clusterknooppunten van Service Fabric en virtuele machineschaalsets. Zie [Schijfversleuteling voor Windows voor](service-fabric-enable-azure-disk-encryption-windows.md)vergelijkbare richtlijnen voor clusterknooppunten van Service Fabric in Linux. 
+Op dit moment moet u een beveiligd cluster hebben en kunt u schijf versleuteling voor Service Fabric cluster knooppunten en virtuele-machine schaal sets in-en uitschakelen. Zie [schijf versleuteling voor Windows](service-fabric-enable-azure-disk-encryption-windows.md)voor vergelijk bare richt lijnen op service Fabric cluster knooppunten in Linux. 

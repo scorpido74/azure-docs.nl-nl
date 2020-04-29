@@ -1,68 +1,68 @@
 ---
-title: Parse-tekstgegevens in Azure Monitor-logboeken | Microsoft Documenten
-description: Beschrijft verschillende opties voor het ontleden van logboekgegevens in Azure Monitor-records wanneer de gegevens worden ingenomen en wanneer deze in een query worden opgehaald, waarbij de relatieve voordelen voor elk worden vergeleken.
+title: Tekst gegevens parseren in Logboeken van Azure Monitor | Microsoft Docs
+description: Beschrijft verschillende opties voor het parseren van logboek gegevens in Azure Monitor records wanneer de gegevens worden opgenomen en wanneer deze worden opgehaald in een query, waarbij de relatieve voor delen voor elk van elkaar worden vergeleken.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672443"
 ---
-# <a name="parse-text-data-in-azure-monitor-logs"></a>Parse-tekstgegevens in Azure Monitor-logboeken
-Sommige logboekgegevens die door Azure Monitor worden verzameld, bevatten meerdere gegevens in één eigenschap. Door deze gegevens in meerdere eigenschappen te ontzetten, u deze gemakkelijker gebruiken in query's. Een veelvoorkomend voorbeeld is een [aangepast logboek](../../log-analytics/log-analytics-data-sources-custom-logs.md) dat een volledige logboekvermelding met meerdere waarden in één eigenschap verzamelt. Door afzonderlijke eigenschappen voor de verschillende waarden te maken, u op elk van deze waarden zoeken en aggregeren.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Tekst gegevens parseren in Azure Monitor logboeken
+Sommige logboek gegevens die worden verzameld door Azure Monitor, bevatten meerdere stukjes informatie in één eigenschap. Het parseren van deze gegevens in meerdere eigenschappen maakt het gemakkelijker om in query's te gebruiken. Een veelvoorkomend voor beeld is een [aangepast logboek](../../log-analytics/log-analytics-data-sources-custom-logs.md) dat een volledige logboek vermelding met meerdere waarden in één eigenschap verzamelt. Door afzonderlijke eigenschappen voor de verschillende waarden te maken, kunt u zoeken en samen voegen.
 
-In dit artikel worden verschillende opties beschreven voor het ontleden van logboekgegevens in Azure Monitor wanneer de gegevens worden ingenomen en wanneer deze in een query worden opgehaald, waarbij de relatieve voordelen voor elk worden vergeleken.
+In dit artikel worden verschillende opties beschreven voor het parseren van logboek gegevens in Azure Monitor wanneer de gegevens worden opgenomen en wanneer deze worden opgehaald in een query, waarbij de relatieve voor delen voor elk van elkaar worden vergeleken.
 
 
-## <a name="parsing-methods"></a>Parsingmethoden
-U gegevens ontschepen op het moment dat de gegevens worden verzameld of op querytijd bij het analyseren van de gegevens met een query. Elke strategie heeft unieke voordelen zoals hieronder beschreven.
+## <a name="parsing-methods"></a>Methoden parseren
+U kunt gegevens parseren op opname tijd wanneer de gegevens worden verzameld of op query tijdstip bij het analyseren van de gegevens met een query. Elke strategie heeft unieke voor delen, zoals hieronder wordt beschreven.
 
-### <a name="parse-data-at-collection-time"></a>Parse-gegevens bij het verzamelen
-Wanneer u gegevens onteert tijdens het verzamelen, configureert u [Aangepaste velden](../../log-analytics/log-analytics-custom-fields.md) die nieuwe eigenschappen in de tabel maken. Query's hoeven geen ontwijslogica op te nemen en gebruiken deze eigenschappen gewoon als elk ander veld in de tabel.
+### <a name="parse-data-at-collection-time"></a>Gegevens parseren tijdens verzamelings tijd
+Wanneer u gegevens parseert tijdens de verzamelings tijd, configureert u [aangepaste velden](../../log-analytics/log-analytics-custom-fields.md) die nieuwe eigenschappen in de tabel maken. Query's hoeven geen enige logica voor het parseren van gegevens op te vragen en deze eigenschappen eenvoudigweg als elk ander veld in de tabel te gebruiken.
 
-Voordelen van deze methode zijn onder meer:
+Voor delen van deze methode zijn onder andere het volgende:
 
-- Eenvoudiger om de verzamelde gegevens op te vragen, omdat u geen parse-opdrachten in de query hoeft op te nemen.
-- Betere queryprestaties omdat de query geen parsing hoeft uit te voeren.
+- Het is eenvoudiger om de verzamelde gegevens op te vragen omdat u geen parser-opdrachten in de query hoeft op te halen.
+- Betere query prestaties omdat de query niet hoeft te worden geparseerd.
  
-Nadelen aan deze methode zijn onder andere:
+De nadelen van deze methode zijn onder andere:
 
-- Moet vooraf worden gedefinieerd. Kan geen gegevens bevatten die al zijn verzameld.
-- Als u de parsing-logica wijzigt, is deze alleen van toepassing op nieuwe gegevens.
-- Minder parsingopties dan beschikbaar in query's.
-- Verhoogt de latentietijd voor het verzamelen van gegevens.
-- Fouten kunnen moeilijk te hanteren zijn.
+- Moeten vooraf worden gedefinieerd. Kan geen gegevens bevatten die al zijn verzameld.
+- Als u de parsering-logica wijzigt, is deze alleen van toepassing op nieuwe gegevens.
+- Minder opties voor het parseren dan beschikbaar in query's.
+- Verhoogt de latentie tijd voor het verzamelen van gegevens.
+- Het kan lastig zijn fouten te verwerken.
 
 
-### <a name="parse-data-at-query-time"></a>Parse-gegevens tijdens query's
-Wanneer u gegevens onteert tijdens querytijd, neemt u logica op in uw query om gegevens in meerdere velden te ontlopen. De werkelijke tabel zelf wordt niet gewijzigd.
+### <a name="parse-data-at-query-time"></a>Gegevens parseren op query tijdstip
+Wanneer u gegevens op query tijdstip parseert, neemt u in uw query logica op om gegevens te parseren in meerdere velden. De daad werkelijke tabel zelf wordt niet gewijzigd.
 
-Voordelen van deze methode zijn onder meer:
+Voor delen van deze methode zijn onder andere het volgende:
 
-- Geldt voor alle gegevens, inclusief gegevens die al zijn verzameld.
-- Wijzigingen in de logica kunnen onmiddellijk worden toegepast op alle gegevens.
-- Flexibele parsingopties, inclusief vooraf gedefinieerde logica voor bepaalde gegevensstructuren.
+- Is van toepassing op alle gegevens, inclusief gegevens die al zijn verzameld.
+- Wijzigingen in logica kunnen direct worden toegepast op alle gegevens.
+- Flexibele opties voor parseren, inclusief vooraf gedefinieerde logica voor bepaalde gegevens structuren.
  
-Nadelen aan deze methode zijn onder andere:
+De nadelen van deze methode zijn onder andere:
 
-- Vereist complexere query's. Dit kan worden beperkt door functies te gebruiken [om een tabel te simuleren.](#use-function-to-simulate-a-table)
-- Moet ontweringlogica repliceren in meerdere query's. Kan enige logica delen door middel van functies.
-- Kan overhead maken bij het uitvoeren van complexe logica tegen zeer grote recordsets (miljarden records).
+- Vereist complexere query's. Dit kan worden verholpen door gebruik [te maken van functies voor het simuleren van een tabel](#use-function-to-simulate-a-table).
+- Moet het parseren van logica in meerdere query's repliceren. Kan enige logica delen via functies.
+- Kan overhead maken bij het uitvoeren van complexe logica tegen zeer grote record sets (miljarden records).
 
-## <a name="parse-data-as-its-collected"></a>Parse-gegevens tijdens het verzamelen
-Zie [Aangepaste velden maken in Azure Monitor](../platform/custom-fields.md) voor meer informatie over het ontwijsmaken van gegevens terwijl deze worden verzameld. Hiermee worden aangepaste eigenschappen in de tabel gemaakt die kunnen worden gebruikt door query's, net als elke andere eigenschap.
+## <a name="parse-data-as-its-collected"></a>Gegevens parseren wanneer deze worden verzameld
+Zie [aangepaste velden maken in azure monitor](../platform/custom-fields.md) voor meer informatie over het parseren van gegevens die worden verzameld. Hiermee maakt u aangepaste eigenschappen in de tabel die kunnen worden gebruikt door query's, net als elke andere eigenschap.
 
-## <a name="parse-data-in-query-using-patterns"></a>Parse-gegevens in query met patronen
-Wanneer de gegevens die u wilt ontlopen kunnen worden geïdentificeerd door een patroon dat in records wordt herhaald, u verschillende operatoren in de [Kusto-querytaal](/azure/kusto/query/) gebruiken om het specifieke stuk gegevens in een of meer nieuwe eigenschappen te extraheren.
+## <a name="parse-data-in-query-using-patterns"></a>Gegevens in query's parseren met behulp van patronen
+Wanneer de gegevens die u wilt parseren kunnen worden geïdentificeerd door een patroon dat voor alle records wordt herhaald, kunt u verschillende Opera tors in de [Kusto-query taal](/azure/kusto/query/) gebruiken om de specifieke gegevens in een of meer nieuwe eigenschappen te extra heren.
 
-### <a name="simple-text-patterns"></a>Eenvoudige tekstpatronen
+### <a name="simple-text-patterns"></a>Eenvoudige tekst patronen
 
-Gebruik de [parse-operator](/azure/kusto/query/parseoperator) in uw query om een of meer aangepaste eigenschappen te maken die uit een tekenreeksexpressie kunnen worden geëxtraheerd. U geeft het te identificeren patroon op en de namen van de te maken eigenschappen. Dit is vooral handig voor gegevens met tekenreeksen met sleutelwaarde met een formulier dat lijkt op _key=value._
+Gebruik de operator [parse](/azure/kusto/query/parseoperator) in uw query om een of meer aangepaste eigenschappen te maken die kunnen worden geëxtraheerd uit een teken reeks expressie. U geeft het patroon op dat moet worden geïdentificeerd en de namen van de eigenschappen die moeten worden gemaakt. Dit is met name handig voor gegevens met sleutel waarde-teken reeksen met een vergelijkbaar formulier als _Key = waarde_.
 
 Overweeg een aangepast logboek met gegevens in de volgende indeling.
 
@@ -74,7 +74,7 @@ Time=2018-03-10 01:38:22 Event Code=302 Status=Error Message=Application could n
 Time=2018-03-10 01:31:34 Event Code=303 Status=Error Message=Application lost connection to database
 ```
 
-Met de volgende query worden deze gegevens in afzonderlijke eigenschappen opgenomen. De regel met _het project_ wordt toegevoegd om alleen de berekende eigenschappen te retourneren en niet _RawData,_ de enige eigenschap die de volledige vermelding van het aangepaste logboek vasthoudt.
+Met de volgende query worden deze gegevens in afzonderlijke eigenschappen geparseerd. De regel met _project_ wordt toegevoegd om alleen de berekende eigenschappen te retour neren en niet _RawData_. Dit is de enige eigenschap die de volledige vermelding in het aangepaste logboek houdt.
 
 ```Kusto
 MyCustomLog_CL
@@ -82,7 +82,7 @@ MyCustomLog_CL
 | project EventTime, Code, Status, Message
 ```
 
-Hieronder volgt een ander voorbeeld dat de gebruikersnaam van een UPN in de _AzureActivity-tabel_ uitbreekt.
+Hieronder volgt een ander voor beeld dat de gebruikers naam van een UPN in de tabel _AzureActivity_ uitsplitst.
 
 ```Kusto
 AzureActivity
@@ -93,7 +93,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>Reguliere expressies
-Als uw gegevens kunnen worden geïdentificeerd met een reguliere expressie, u functies gebruiken [die reguliere expressies gebruiken](/azure/kusto/query/re2) om afzonderlijke waarden te extraheren. In het volgende voorbeeld wordt [extract](/azure/kusto/query/extractfunction) gebruikt om het _UPN-veld_ uit _AzureActivity-records_ te halen en vervolgens afzonderlijke gebruikers terug te sturen.
+Als uw gegevens kunnen worden geïdentificeerd met een reguliere expressie, kunt u [functies gebruiken die gebruikmaken van reguliere expressies](/azure/kusto/query/re2) om afzonderlijke waarden te extra heren. In het volgende voor beeld wordt [extract](/azure/kusto/query/extractfunction) gebruikt om het _UPN_ -veld uit _AzureActivity_ -records te verbreken en vervolgens afzonderlijke gebruikers te retour neren.
 
 ```Kusto
 AzureActivity
@@ -101,14 +101,14 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Om efficiënt ontsen op grote schaal mogelijk te maken, maakt Azure Monitor gebruik van een Re2-versie van reguliere expressies, die vergelijkbaar is, maar niet identiek is aan sommige van de andere reguliere expressievarianten. Raadpleeg de syntaxis van de [re2-expressie](https://aka.ms/kql_re2syntax) voor meer informatie.
+Azure Monitor maakt gebruik van een RE2-versie van reguliere expressies, die vergelijkbaar is met maar niet gelijk is aan enkele andere reguliere-expressie varianten om efficiënte parsering op grote schaal in te scha kelen. Raadpleeg de syntaxis van de [expressie RE2](https://aka.ms/kql_re2syntax) voor meer informatie.
 
 
-## <a name="parse-delimited-data-in-a-query"></a>Parse-afgebakende gegevens in een query
-Afgebakende gegevens scheiden velden met een gemeenschappelijk teken, zoals een komma in een CSV-bestand. Gebruik de [gesplitste](/azure/kusto/query/splitfunction) functie om afgebakende gegevens te ontzeggen met behulp van een door u opgegeven scheidingsteken. U dit gebruiken met [de operator uit te breiden](/azure/kusto/query/extendoperator) om alle velden in de gegevens terug te sturen of om afzonderlijke velden op te geven die in de uitvoer moeten worden opgenomen.
+## <a name="parse-delimited-data-in-a-query"></a>Gescheiden gegevens in een query parseren
+Gescheiden gegevens scheiden velden met een gemeen schappelijk teken, zoals een komma in een CSV-bestand. Gebruik de functie [Split](/azure/kusto/query/splitfunction) om gescheiden gegevens te parseren met behulp van een scheidings teken dat u opgeeft. U kunt dit met de operator [Extend](/azure/kusto/query/extendoperator) gebruiken om alle velden in de gegevens te retour neren of om afzonderlijke velden op te geven die in de uitvoer moeten worden opgenomen.
 
 > [!NOTE]
-> Aangezien split een dynamisch object retourneert, moeten de resultaten mogelijk expliciet worden gegoten naar gegevenstypen, zoals tekenreeksen die moeten worden gebruikt in operatoren en filters.
+> Omdat splitsen een dynamisch object retourneert, moeten de resultaten mogelijk expliciet worden geconverteerd naar gegevens typen zoals teken reeks die moet worden gebruikt in Opera tors en filters.
 
 Overweeg een aangepast logboek met gegevens in de volgende CSV-indeling.
 
@@ -120,7 +120,7 @@ Overweeg een aangepast logboek met gegevens in de volgende CSV-indeling.
 2018-03-10 01:31:34, 303,Error,Application lost connection to database
 ```
 
-De volgende query zou deze gegevens ontlasten en samenvatten door twee van de berekende eigenschappen. De eerste regel splitst de eigenschap _RawData_ in een tekenreeksarray. Elk van de volgende regels geeft een naam aan afzonderlijke eigenschappen en voegt deze toe aan de uitvoer met behulp van functies om ze om te zetten naar het juiste gegevenstype.
+Met de volgende query worden deze gegevens geparseerd en samenvatten met twee van de berekende eigenschappen. De eerste regel splitst de eigenschap _RawData_ in een teken reeks matrix. Elk van de volgende regels geeft een naam aan afzonderlijke eigenschappen en voegt deze toe aan de uitvoer met behulp van functies om ze te converteren naar het juiste gegevens type.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -133,19 +133,19 @@ MyCustomCSVLog_CL
 | summarize count() by Status,Code
 ```
 
-## <a name="parse-predefined-structures-in-a-query"></a>Parse vooraf gedefinieerde structuren in een query
-Als uw gegevens zijn opgemaakt in een bekende structuur, u mogelijk een van de functies in de [Kusto-querytaal](/azure/kusto/query/) gebruiken voor het ontzeggen van vooraf gedefinieerde structuren:
+## <a name="parse-predefined-structures-in-a-query"></a>Vooraf gedefinieerde structuren parseren in een query
+Als uw gegevens zijn ingedeeld in een bekende structuur, kunt u een van de functies in de [Kusto-query taal](/azure/kusto/query/) gebruiken voor het parseren van vooraf gedefinieerde structuren:
 
-- [Json](/azure/kusto/query/parsejsonfunction)
-- [Xml](/azure/kusto/query/parse-xmlfunction)
+- [JSON](/azure/kusto/query/parsejsonfunction)
+- [INDELING](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
-- [Url](/azure/kusto/query/parseurlfunction)
+- [URL](/azure/kusto/query/parseurlfunction)
 - [URL-query](/azure/kusto/query/parseurlqueryfunction)
 - [Bestandspad](/azure/kusto/query/parsepathfunction)
-- [Gebruikersagent](/azure/kusto/query/parse-useragentfunction)
-- [Versietekenreeks](/azure/kusto/query/parse-versionfunction)
+- [Gebruikers agent](/azure/kusto/query/parse-useragentfunction)
+- [Versie teken reeks](/azure/kusto/query/parse-versionfunction)
 
-In het volgende voorbeeld query wordt het veld _Eigenschappen_ van de _azureactivity-tabel,_ die is gestructureerd in JSON, geparsiseerd. Het slaat de resultaten op in een dynamische eigenschap genaamd _parsedProp_, die de individuele waarde met de naam in de JSON bevat. Deze waarden worden gebruikt om de queryresultaten te filteren en samen te vatten.
+Met de volgende voorbeeld query wordt het veld _Eigenschappen_ van de tabel _AzureActivity_ , die is gestructureerd in JSON, geparseerd. De resultaten worden opgeslagen in een dynamische eigenschap met de naam _parsedProp_, die de afzonderlijke benoemde waarde bevat in de JSON. Deze waarden worden gebruikt voor het filteren en samenvatten van de query resultaten.
 
 ```Kusto
 AzureActivity
@@ -154,9 +154,9 @@ AzureActivity
 | summarize count() by ResourceGroup, tostring(parsedProp.tags.businessowner)
 ```
 
-Deze parsingsfuncties kunnen processorintensief zijn, dus ze mogen alleen worden gebruikt wanneer uw query meerdere eigenschappen van de opgemaakte gegevens gebruikt. Anders zal eenvoudige patroon matching verwerking sneller zijn.
+Deze functies voor het parseren van processoren kunnen intensief worden gebruikt, zodat ze alleen worden gebruiken als uw query meerdere eigenschappen van de opgemaakte gegevens gebruikt. Als dat niet het geval is, is de verwerking van eenvoudige patroon overeenkomsten sneller.
 
-In het volgende voorbeeld ziet u de uitsplitsing van het TGT Preauth-type van de domeincontroller. Het type bestaat alleen in het veld EventData, een XML-tekenreeks, maar er zijn geen andere gegevens uit dit veld nodig. In dit geval wordt [parse](/azure/kusto/query/parseoperator) gebruikt om het vereiste stukje gegevens uit te kiezen.
+In het volgende voor beeld ziet u de uitsplitsing van het type domein controller TGT PreAuth. Het type bestaat alleen in het event data-veld. Dit is een XML-teken reeks, maar er zijn geen andere gegevens uit dit veld nodig. In dit geval wordt [parse](/azure/kusto/query/parseoperator) gebruikt om de vereiste gegevens te verzamelen.
 
 ```Kusto
 SecurityEvent
@@ -166,9 +166,9 @@ SecurityEvent
 ```
 
 ## <a name="use-function-to-simulate-a-table"></a>Functie gebruiken om een tabel te simuleren
-U meerdere query's hebben die dezelfde ontwering van een bepaalde tabel uitvoeren. Maak in dit geval [een functie](functions.md) die de ontleedde gegevens retourneert in plaats van de parsingslogica in elke query te repliceren. U de functiealias vervolgens gebruiken in plaats van de oorspronkelijke tabel in andere query's.
+Mogelijk hebt u meerdere query's die hetzelfde parseren van een bepaalde tabel uitvoeren. In dit geval [maakt u een functie](functions.md) die de geparseerde gegevens retourneert in plaats van de parsering van de logica in elke query te repliceren. U kunt vervolgens de functie alias gebruiken in plaats van de oorspronkelijke tabel in andere query's.
 
-Overweeg het hierboven afgebakende voorbeeld van het aangepaste logboek van komma's. Als u de ontleedde gegevens in meerdere query's wilt gebruiken, maakt u een functie met de volgende query en slaat u deze op met de alias _MyCustomCSVLog_.
+Bekijk hierboven het voor beeld met een scheidings teken voor aangepaste Logboeken. Als u de geparseerde gegevens in meerdere query's wilt gebruiken, maakt u een functie met behulp van de volgende query en slaat u deze op met de alias _MyCustomCSVLog_.
 
 ```Kusto
 MyCustomCSVLog_CL
@@ -179,7 +179,7 @@ MyCustomCSVLog_CL
 | extend Message   = tostring(CSVFields[3]) 
 ```
 
-U nu de alias _MyCustomCSVLog_ gebruiken in plaats van de werkelijke tabelnaam in query's zoals de volgende.
+U kunt nu de alias _MyCustomCSVLog_ gebruiken in plaats van de werkelijke tabel naam in query's zoals in het volgende.
 
 ```Kusto
 MyCustomCSVLog
@@ -188,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [logboekquery's](log-query-overview.md) om de gegevens te analyseren die zijn verzameld uit gegevensbronnen en -oplossingen.
+* Meer informatie over [logboek query's](log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.

@@ -1,6 +1,6 @@
 ---
-title: De e-mailservice SendGrid gebruiken (.NET) | Microsoft Documenten
-description: Meer informatie over het verzenden van e-mail met de e-mailservice SendGrid op Azure. Codevoorbeelden geschreven in C# en gebruik de .NET API.
+title: De SendGrid-e-mail service (.NET) gebruiken | Microsoft Docs
+description: Meer informatie over het verzenden van e-mail met de SendGrid-e-mail service op Azure. Code voorbeelden geschreven in C# en de .NET API gebruiken.
 services: ''
 documentationcenter: .net
 author: georgewallace
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062202"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>E-mail verzenden met SendGrid met Azure
 ## <a name="overview"></a>Overzicht
-In deze handleiding wordt uitgelegd hoe u veelvoorkomende programmeertaken uitvoeren met de e-mailservice SendGrid op Azure. De samples zijn\# geschreven in C en ondersteunen .NET Standard 1.3. De scenario's die onder meer worden behandeld, zijn het maken van e-mail, het verzenden van e-mail, het toevoegen van bijlagen en het inschakelen van verschillende e-mail- en trackinginstellingen. Zie de sectie [Volgende stappen][Next steps] voor meer informatie over SendGrid en het verzenden van e-mail.
+In deze hand leiding wordt gedemonstreerd hoe u algemene programmeer taken uitvoert met de SendGrid-e-mail service op Azure. De voor beelden zijn geschreven in\# C en ondersteunen .net Standard 1,3. De volgende scenario's omvatten het samen stellen van e-mail, het verzenden van e-mail, het toevoegen van bijlagen en het inschakelen van verschillende e-mail-en tracerings instellingen. Zie de sectie [volgende stappen][Next steps] voor meer informatie over het SendGrid en verzenden van e-mail.
 
-## <a name="what-is-the-sendgrid-email-service"></a>Wat is de SendGrid Email Service?
-SendGrid is een [cloudgebaseerde e-mailservice] die betrouwbare [transactionele e-maillevering,]schaalbaarheid en realtime analyses biedt, samen met flexibele API's die aangepaste integratie eenvoudig maken. Veelvoorkomende SendGrid-gebruiksvoorbeelden zijn:
+## <a name="what-is-the-sendgrid-email-service"></a>Wat is de SendGrid-e-mail service?
+SendGrid is een [cloud-gebaseerde e-mail service] die betrouw bare [transactionele e-mail levering], schaal baarheid en real-time analyse biedt, samen met flexibele api's die eenvoudig aangepaste integratie maken. Veelvoorkomende SendGrid-use-cases zijn:
 
-* Automatisch ontvangstbewijzen of aankoopbevestigingen naar klanten verzenden.
-* Het beheren van distributielijsten voor het verzenden van klanten maandelijkse flyers en promoties.
-* Het verzamelen van realtime statistieken voor zaken als geblokkeerde e-mail en klantbetrokkenheid.
-* Het doorsturen van vragen van klanten.
-* Inkomende e-mails verwerken.
+* Automatisch ontvangst bewijzen of aankoop bevestigingen verzenden aan klanten.
+* Het beheren van distributie lijsten voor het verzenden van klanten per maand flyers en promoties.
+* Het verzamelen van metrische gegevens in realtime voor zaken als geblokkeerde e-mail en klant betrokkenheid.
+* Vragen van klanten door sturen.
+* Binnenkomende e-mail berichten verwerken.
 
-Ga voor meer [https://sendgrid.com](https://sendgrid.com) informatie naar de [C#-bibliotheek][sendgrid-csharp] GitHub repo van SendGrid of SendGrid.
+Bezoek [https://sendgrid.com](https://sendgrid.com) of SendGrid [C# Library][sendgrid-csharp] github opslag plaats voor meer informatie.
 
 ## <a name="create-a-sendgrid-account"></a>Een SendGrid-account maken
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference-the-sendgrid-net-class-library"></a>Verwijzen naar de SendGrid .NET-klassebibliotheek
-Het [SendGrid NuGet-pakket](https://www.nuget.org/packages/Sendgrid) is de eenvoudigste manier om de SendGrid API te krijgen en uw toepassing te configureren met alle afhankelijkheden. NuGet is een Visual Studio-extensie die is meegeleverd met Microsoft Visual Studio 2015 en hoger, waardoor het eenvoudig is om bibliotheken en hulpprogramma's te installeren en bij te werken.
+## <a name="reference-the-sendgrid-net-class-library"></a>Naslag informatie over de SendGrid .NET-klassen bibliotheek
+Het [SendGrid NuGet-pakket](https://www.nuget.org/packages/Sendgrid) is de eenvoudigste manier om de SENDGRID-API op te halen en om uw toepassing te configureren met alle afhankelijkheden. NuGet is een Visual Studio-extensie die is opgenomen in micro soft Visual Studio 2015 en hoger, waarmee u eenvoudig bibliotheken en hulpprogram ma's kunt installeren en bijwerken.
 
 > [!NOTE]
-> Als u NuGet wilt installeren als u een versie van Visual Studio [https://www.nuget.org](https://www.nuget.org)eerder uitvoert dan Visual Studio 2015, gaat u naar NuGet en klikt u op **nuget installeren.**
+> Als u NuGet wilt installeren als u een versie van Visual Studio gebruikt die ouder is dan Visual Studio [https://www.nuget.org](https://www.nuget.org)2015, gaat u naar en klikt u op de knop **NuGet installeren** .
 >
 >
 
@@ -52,29 +52,29 @@ Ga als volgt te werk om het SendGrid NuGet-pakket in uw toepassing te installere
 1. Klik op **Nieuw project** en selecteer een **sjabloon**.
 
    ![Een nieuw project maken][create-new-project]
-2. Klik in **Solution Explorer**met de rechtermuisknop **op Verwijzingen**en klik vervolgens op **NuGet-pakketten beheren**.
+2. Klik in **Solution Explorer**met de rechter muisknop op **verwijzingen**en vervolgens op **NuGet-pakketten beheren**.
 
    ![SendGrid NuGet-pakket][SendGrid-NuGet-package]
-3. Zoek **naar SendGrid** en selecteer het item **SendGrid** in de resultatenlijst.
-4. Selecteer de nieuwste stabiele versie van het Nuget-pakket in de vervolgkeuzelijst van de versie om te kunnen werken met het objectmodel en API's die in dit artikel worden gedemonstreerd.
+3. Zoek naar **SendGrid** en selecteer het item **SendGrid** in de lijst met resultaten.
+4. Selecteer de nieuwste stabiele versie van het Nuget-pakket in de vervolg keuzelijst versie om te kunnen werken met het object model en de Api's die in dit artikel worden getoond.
 
    ![SendGrid-pakket][sendgrid-package]
-5. Klik **op Installeren** om de installatie te voltooien en sluit dit dialoogvenster.
+5. Klik op **installeren** om de installatie te volt ooien en sluit dit dialoog venster.
 
-De .NET-klassenbibliotheek van SendGrid heet **SendGrid**. Het bevat de volgende naamruimten:
+De .NET-klassen bibliotheek van SendGrid heet **SendGrid**. Deze bevat de volgende naam ruimten:
 
 * **SendGrid** voor communicatie met de API van SendGrid.
-* **SendGrid.Helpers.Mail** voor helpermethoden om eenvoudig SendGridMessage-objecten te maken waarin wordt aangegeven hoe u e-mails verzendt.
+* **SendGrid. helpers. mail** voor hulp methoden om eenvoudig SendGridMessage-objecten te maken die aangeven hoe e-mails moeten worden verzonden.
 
-Voeg de volgende codenaamruimtedeclaratie toe aan de bovenkant van een C#-bestand waarin u programmatisch toegang wilt krijgen tot de e-mailservice SendGrid.
+Voeg de volgende code naam ruimte declaraties toe aan de bovenkant van een C#-bestand waarin u programmatisch toegang wilt krijgen tot de SendGrid-e-mail service.
 
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
-## <a name="how-to-create-an-email"></a>Hoe: Een e-mail maken
-Gebruik het object **SendGridMessage** om een e-mailbericht te maken. Zodra het berichtobject is gemaakt, u eigenschappen en methoden instellen, waaronder de e-mailafzender, de e-mailontvanger en het onderwerp en de hoofdtekst van de e-mail.
+## <a name="how-to-create-an-email"></a>Procedure: een E-mail maken
+Gebruik het object **SendGridMessage** om een e-mail bericht te maken. Zodra het bericht object is gemaakt, kunt u eigenschappen en methoden instellen, waaronder de e-mail afzender, de e-mail ontvanger en het onderwerp en de hoofd tekst van de e-mail.
 
-In het volgende voorbeeld wordt uitgelegd hoe u een volledig ingevuld e-mailobject maakt:
+In het volgende voor beeld ziet u hoe u een volledig ingevuld e-mail object maakt:
 
     var msg = new SendGridMessage();
 
@@ -93,23 +93,23 @@ In het volgende voorbeeld wordt uitgelegd hoe u een volledig ingevuld e-mailobje
     msg.AddContent(MimeType.Text, "Hello World plain text!");
     msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
-Zie [sendgrid-csharp][sendgrid-csharp] op GitHub voor meer informatie over alle eigenschappen en methoden die worden ondersteund door het type **SendGrid.**
+Zie [SendGrid-csharp][sendgrid-csharp] op github voor meer informatie over alle eigenschappen en methoden die worden ondersteund door het type **SendGrid** .
 
-## <a name="how-to-send-an-email"></a>Hoe: Een e-mail verzenden
-Nadat u een e-mailbericht hebt gemaakt, u het verzenden via de API van SendGrid. U ook [. NET is ingebouwde bibliotheek.][NET-library]
+## <a name="how-to-send-an-email"></a>Procedure: een E-mail verzenden
+Nadat u een e-mail bericht hebt gemaakt, kunt u het verzenden met behulp van de API van SendGrid. U kunt ook gebruikmaken van [. Ingebouwde bibliotheek van NET][NET-library].
 
-Voor het verzenden van e-mail moet u uw SendGrid API-sleutel leveren. Als u informatie wilt over het configureren van API-sleutels, gaat u naar de [API-sleutelsdocumentatie][documentation]van SendGrid.
+Als u een e-mail bericht wilt verzenden, moet u uw SendGrid API-sleutel opgeven. Ga naar de [documentatie][documentation]van de API-sleutels van SendGrid als u meer wilt weten over het configureren van API-sleutels.
 
-U deze referenties opslaan via uw Azure-portal door op Toepassingsinstellingen te klikken en de sleutel-/waardeparen toe te voegen onder App-instellingen.
+U kunt deze referenties opslaan via uw Azure Portal door te klikken op toepassings instellingen en de sleutel-waardeparen toe te voegen onder App-instellingen.
 
  ![Azure-app-instellingen][azure_app_settings]
 
- Vervolgens u ze als volgt openen:
+ Vervolgens kunt u deze als volgt openen:
 
     var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
     var client = new SendGridClient(apiKey);
 
-In de volgende voorbeelden ziet u hoe u een e-mailbericht verzendt met de SendGrid Web API met een consoletoepassing.
+In de volgende voor beelden ziet u hoe u een e-mail bericht verzendt met behulp van de SendGrid-Web-API met een console toepassing.
 
     using System;
     using System.Threading.Tasks;
@@ -142,13 +142,13 @@ In de volgende voorbeelden ziet u hoe u een e-mailbericht verzendt met de SendGr
         }
     }
     
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>How to: E-mail verzenden vanuit ASP .NET Core API met de klasse MailHelper
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Procedure: e-mail verzenden vanuit ASP .NET core API met behulp van de klasse mail helper
 
-Het onderstaande voorbeeld kan worden gebruikt om één e-mail te verzenden `MailHelper` naar `SendGrid.Helpers.Mail` meerdere personen uit de ASP .NET Core API met behulp van de klasse van de naamruimte. Voor dit voorbeeld gebruiken we ASP .NET Core 1.0. 
+Het onderstaande voor beeld kan worden gebruikt om één e-mail bericht te verzenden naar meerdere personen uit de ASP .NET `MailHelper` core API `SendGrid.Helpers.Mail` met behulp van de klasse van naam ruimte. Voor dit voor beeld gebruiken we ASP .NET Core 1,0. 
 
-In dit voorbeeld is de API-sleutel opgeslagen in het `appsettings.json` bestand, dat kan worden overschreven vanuit de Azure-portal, zoals in de bovenstaande voorbeelden wordt weergegeven.
+In dit voor beeld is de API-sleutel opgeslagen in het `appsettings.json` bestand dat kan worden overschreven van de Azure Portal zoals weer gegeven in de bovenstaande voor beelden.
 
-De inhoud `appsettings.json` van het bestand moet er hetzelfde uitzien als:
+De inhoud van `appsettings.json` het bestand moet er ongeveer als volgt uitzien:
 
     {
        "Logging": {
@@ -162,7 +162,7 @@ De inhoud `appsettings.json` van het bestand moet er hetzelfde uitzien als:
      "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     }
 
-Eerst moeten we de onderstaande `Startup.cs` code toevoegen in het bestand van het .NET Core API-project. Dit is vereist zodat we `SENDGRID_API_KEY` toegang `appsettings.json` hebben tot het bestand met behulp van afhankelijkheidsinjectie in de API-controller. De `IConfiguration` interface kan worden geïnjecteerd bij de constructeur `ConfigureServices` van de controller na het toevoegen van het in de onderstaande methode. De inhoud `Startup.cs` van het bestand ziet er als volgt uit na het toevoegen van de vereiste code:
+Eerst moet u de onderstaande code toevoegen in het `Startup.cs` bestand van het .net core API-project. Dit is vereist om toegang te krijgen tot de `SENDGRID_API_KEY` vanuit het `appsettings.json` bestand met behulp van AFHANKELIJKHEIDS injectie in de API-controller. De `IConfiguration` interface kan worden ingevoegd bij de constructor van de controller nadat deze is toegevoegd in de `ConfigureServices` onderstaande methode. De inhoud van `Startup.cs` het bestand ziet er ongeveer als volgt uit nadat u de vereiste code hebt toegevoegd:
 
         public IConfigurationRoot Configuration { get; }
 
@@ -173,7 +173,7 @@ Eerst moeten we de onderstaande `Startup.cs` code toevoegen in het bestand van h
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
-Bij de controller kunnen `IConfiguration` we, na het `CreateSingleEmailToMultipleRecipients` injecteren `MailHelper` van de interface, de methode van de klasse gebruiken om één e-mail naar meerdere ontvangers te sturen. De methode accepteert een extra `showAllRecipients`booleaanse parameter met de naam . Deze parameter kan worden gebruikt om te bepalen of e-mailontvangers elkaars e-mailadres kunnen zien in de sectie Aan van e-mailheader. De voorbeeldcode voor de controller moet zijn zoals hieronder 
+Na het injecteren van de `IConfiguration` interface kunt u op de controller de `CreateSingleEmailToMultipleRecipients` methode van de `MailHelper` -klasse gebruiken om één e-mail bericht naar meerdere ontvangers te verzenden. De methode accepteert een extra Booleaanse para meter `showAllRecipients`met de naam. Deze para meter kan worden gebruikt om te bepalen of e-mail ontvangers elk ander e-mail adres kunnen zien in het gedeelte aan van de koptekst van een e-mail. De voorbeeld code voor de controller moet er als volgt uitzien 
 
     using System;
     using System.Collections.Generic;
@@ -218,8 +218,8 @@ Bij de controller kunnen `IConfiguration` we, na het `CreateSingleEmailToMultipl
        }
     }
     
-## <a name="how-to-add-an-attachment"></a>Hoe: Een bijlage toevoegen
-Bijlagen kunnen aan een bericht worden toegevoegd door de **methode Addattachment aan** te roepen en minimaal de bestandsnaam en base64-gecodeerde inhoud op te geven die u wilt toevoegen. U meerdere bijlagen opnemen door deze methode eenmalig aan te roepen voor elk bestand dat u wilt toevoegen of met de methode **Bijlagen toevoegen.** In het volgende voorbeeld wordt het toevoegen van een bijlage aan een bericht weergegeven:
+## <a name="how-to-add-an-attachment"></a>Procedure: een bijlage toevoegen
+Bijlagen kunnen worden toegevoegd aan een bericht door de methode **AddAttachment** aan te roepen en mini maal de bestands naam en base64-gecodeerde inhoud op te geven die u wilt koppelen. U kunt meerdere bijlagen opnemen door deze methode eenmaal aan te roepen voor elk bestand dat u wilt koppelen of door de methode **AddAttachments** te gebruiken. In het volgende voor beeld ziet u het toevoegen van een bijlage aan een bericht:
 
     var banner2 = new Attachment()
     {
@@ -231,14 +231,14 @@ Bijlagen kunnen aan een bericht worden toegevoegd door de **methode Addattachmen
     };
     msg.AddAttachment(banner2);
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Hoe: E-mailinstellingen gebruiken om voetteksten, tracking en analyses in te schakelen
-SendGrid biedt extra e-mailfunctionaliteit door het gebruik van e-mailinstellingen en tracking-instellingen. Deze instellingen kunnen worden toegevoegd aan een e-mailbericht om specifieke functionaliteit in te schakelen, zoals click tracking, Google Analytics, abonnementstracking, enzovoort. Zie de [instellingendocumentatie][settings-documentation]voor een volledige lijst met apps.
+## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Procedure: e-mail instellingen gebruiken om voet tekst, tracering en analyse in te scha kelen
+SendGrid biedt extra e-mail functionaliteit via het gebruik van instellingen voor e-mail en tracerings instellingen. Deze instellingen kunnen worden toegevoegd aan een e-mail bericht om specifieke functionaliteit in te scha kelen, zoals het bijhouden van Google Analytics, het bijhouden van abonnementen, enzovoort. Zie de documentatie van de [instellingen][settings-documentation]voor een volledige lijst met apps.
 
-Apps kunnen worden toegepast op **E-mailberichten van SendGrid** met methoden die zijn geïmplementeerd als onderdeel van de klasse **SendGridMessage.** In de volgende voorbeelden worden de filterfilters voor het bijhouden van de voettekst en klikken gedemonstreerd:
+Apps kunnen worden toegepast op **SendGrid** -e-mail berichten met behulp van methoden die zijn geïmplementeerd als onderdeel van de klasse **SendGridMessage** . In de volgende voor beelden ziet u de voet tekst en klikt u op traceer filters:
 
-In de volgende voorbeelden worden de filterfilters voor het bijhouden van de voettekst en klikken gedemonstreerd:
+In de volgende voor beelden ziet u de voet tekst en klikt u op traceer filters:
 
-### <a name="footer-settings"></a>Voettekstinstellingen
+### <a name="footer-settings"></a>Instellingen voor voet tekst
     msg.SetFooterSetting(
                          true,
                          "Some Footer HTML",
@@ -247,13 +247,13 @@ In de volgende voorbeelden worden de filterfilters voor het bijhouden van de voe
 ### <a name="click-tracking"></a>Klik op bijhouden
     msg.SetClickTracking(true);
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Hoe: Extra SendGrid-services gebruiken
-SendGrid biedt verschillende API's en webhooks die u gebruiken om extra functionaliteit binnen uw Azure-toepassing te gebruiken. Zie de [SendGrid API-verwijzing][SendGrid API documentation]voor meer informatie .
+## <a name="how-to-use-additional-sendgrid-services"></a>Procedure: extra SendGrid Services gebruiken
+SendGrid biedt verschillende Api's en webhooks die u kunt gebruiken om gebruik te maken van extra functionaliteit binnen uw Azure-toepassing. Zie de [SENDGRID API-verwijzing][SendGrid API documentation]voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basisbeginselen van de SendGrid-e-mailservice hebt geleerd, volgt u deze koppelingen voor meer informatie.
+Nu u de basis principes van de SendGrid-e-mail service hebt geleerd, volgt u deze koppelingen voor meer informatie.
 
-* SendGrid\# C bibliotheek repo: [sendgrid-csharp][sendgrid-csharp]
+* SendGrid C\# Library opslag plaats: [SendGrid-csharp][sendgrid-csharp]
 * SendGrid API-documentatie:<https://sendgrid.com/docs>
 
 [Next steps]: #next-steps
@@ -278,6 +278,6 @@ Nu u de basisbeginselen van de SendGrid-e-mailservice hebt geleerd, volgt u deze
 [documentation]: https://sendgrid.com/docs/Classroom/Send/api_keys.html
 [settings-documentation]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
 
-[cloudgebaseerde e-mailservice]: https://sendgrid.com/solutions
-[transactionele e-mailbezorging]: https://sendgrid.com/use-cases/transactional-email
+[e-mail service op basis van de Cloud]: https://sendgrid.com/solutions
+[e-mail levering via een transactie]: https://sendgrid.com/use-cases/transactional-email
 

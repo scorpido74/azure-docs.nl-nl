@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen die worden veroorzaakt door toepassingen die TLS 1.2 niet ondersteunen | Microsoft Documenten
-description: Problemen oplossen die worden veroorzaakt door toepassingen die TLS 1.2 niet ondersteunen
+title: Problemen oplossen die worden veroorzaakt door toepassingen die geen ondersteuning bieden voor TLS 1,2 | Microsoft Docs
+description: Problemen oplossen die worden veroorzaakt door toepassingen die geen ondersteuning bieden voor TLS 1,2
 services: cloud-services
 documentationcenter: ''
 author: mimckitt
@@ -15,30 +15,30 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053755"
 ---
-# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problemen oplossen met toepassingen die TLS 1.2 niet ondersteunen
-In dit artikel wordt beschreven hoe u de oudere TLS-protocollen (TLS 1.0 en 1.1) inschakelt en oudere versleutelingssuites toepast ter ondersteuning van de aanvullende protocollen op het web- en werknemersrollen van de Windows Server 2019-cloudservice. 
+# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problemen oplossen met toepassingen die TLS 1,2 niet ondersteunen
+In dit artikel wordt beschreven hoe u de oudere TLS-protocollen (TLS 1,0 en 1,1) inschakelt, en het Toep assen van verouderde coderings suites ter ondersteuning van de extra protocollen op de web-en werk rollen van de Windows Server 2019 Cloud service. 
 
-We begrijpen dat terwijl we stappen ondernemen om TLS 1.0 en TLS 1.1 te deprecate, onze klanten mogelijk de oudere protocollen en cipher suites moeten ondersteunen totdat ze hun afschrijving kunnen plannen.  Hoewel we niet aanraden om deze verouderde waarden opnieuw in te schakelen, bieden we richtlijnen om klanten te helpen. We moedigen klanten aan om het risico van regressie te evalueren voordat ze de in dit artikel beschreven wijzigingen implementeren. 
+We begrijpen dat we met de stappen voor het afnemen van TLS 1,0 en TLS 1,1 de oudere protocollen en coderings suites mogelijk moeten ondersteunen totdat ze hun afschaffing kunnen plannen.  We raden u aan om deze verouderde waarden niet opnieuw in te scha kelen. we bieden hulp bij het helpen van klanten. We raden klanten aan om het risico van regressie te evalueren voordat ze de wijzigingen implementeren die in dit artikel worden beschreven. 
 
 > [!NOTE]
-> Guest OS Family 6 release dwingt TLS 1.2 af door TLS 1.0 en 1.1 expliciet uit te schakelen en een specifieke set cipher suites te definiëren. Voor meer informatie over Guest OS families zie [Guest OS release nieuws](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> De release van het gast besturingssysteem Family 6 dwingt TLS 1,2 af door TLS 1,0 en 1,1 expliciet uit te scha kelen en een specifieke set coderings suites te definiëren. Zie [release News voor het gast besturingssysteem](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases) voor meer informatie over gast besturingssysteem families
 
 
-## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Ondersteuning voor TLS 1.0, TLS 1.1 en oudere ciphersuites laten vallen 
-Ter ondersteuning van onze toewijding om de beste versleuteling te gebruiken, kondigde Microsoft plannen aan om in juni 2017 te beginnen met migratie uit de buurt van TLS 1.0 en 1.1.   Sinds die eerste aankondiging kondigde Microsoft aan dat we in de eerste helft van 2020 tls en 1.1 standaard willen uitschakelen in ondersteunde versies van Microsoft Edge en Internet Explorer 11.  Soortgelijke aankondigingen van Apple, Google en Mozilla geven aan in welke richting de industrie gaat.   
+## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Ondersteuning voor TLS 1,0-, TLS 1,1-en oudere coderings suites verwijderen 
+Ter ondersteuning van onze toezeg ging voor het gebruik van de beste versleuteling, kondigde micro soft aan om te beginnen met de migratie van TLS 1,0 en 1,1 in juni van 2017.   Sinds deze eerste aankondiging heeft micro soft ons intentie aangekondigd om Transport Layer Security (TLS) 1,0 en 1,1 standaard in ondersteunde versies van micro soft Edge en Internet Explorer 11 in de eerste helft van 2020 uit te scha kelen.  Vergelijk bare aankondigingen van Apple, Google en Mozilla geven aan in welke richting de branche zich bevindt.   
 
-Zie [Voorbereiden op TLS 1.2 in Microsoft Azure voor](https://azure.microsoft.com/updates/azuretls12/) meer informatie.
+Zie [voorbereiden voor TLS 1,2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/) voor meer informatie
 
 ## <a name="tls-configuration"></a>TLS-configuratie  
-De windows server 2019-cloudserverafbeelding is geconfigureerd met TLS 1.0 en TLS 1.1 uitgeschakeld op registerniveau. Dit betekent dat toepassingen die zijn geïmplementeerd op deze versie van Windows en het gebruik van de Windows-stack voor TLS-onderhandeling tls 1.0- en TLS 1.1-communicatie niet toestaan.   
+De installatie kopie van de Windows Server 2019-Cloud Server is geconfigureerd met TLS 1,0 en TLS 1,1 uitgeschakeld op het niveau van het REGI ster. Dit betekent dat toepassingen die zijn geïmplementeerd in deze versie van Windows en het gebruik van de Windows stack voor TLS-onderhandeling geen TLS 1,0-en TLS 1,1-communicatie toestaan.   
 
-De server wordt ook geleverd met een beperkte set van cipher suites: 
+De server wordt ook geleverd met een beperkt aantal coderings suites: 
 
 ```
     TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 
@@ -51,9 +51,9 @@ De server wordt ook geleverd met een beperkte set van cipher suites:
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Stap 1: Het PowerShell-script maken om TLS 1.0 en TLS 1.1 in te schakelen 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Stap 1: het Power shell-script maken om TLS 1,0 en TLS 1,1 in te scha kelen 
 
-Gebruik de volgende code als voorbeeld om een script te maken waarmee de oudere protocollen en ciphersuites worden gebruikt. Voor de toepassing van deze documentatie krijgt dit script de naam: **TLSsettings.ps1**. Sla dit script op uw lokale bureaublad op voor eenvoudige toegang in latere stappen. 
+Gebruik de volgende code als voor beeld voor het maken van een script waarmee oudere protocollen en coderings suites worden ingeschakeld. Voor de doel einden van deze documentatie krijgt dit script de naam: **TLSsettings. ps1**. Sla dit script op uw lokale bureau blad op voor eenvoudige toegang in latere stappen. 
 
 
 ```Powershell
@@ -273,9 +273,9 @@ If ($reboot) {
 }
 ```
 
-## <a name="step-2-create-a-command-file"></a>Stap 2: Een opdrachtbestand maken 
+## <a name="step-2-create-a-command-file"></a>Stap 2: een opdracht bestand maken 
 
-Maak een CMD-bestand met de naam **RunTLSSettings.cmd** met behulp van de onderstaande. Sla dit script op uw lokale bureaublad op voor eenvoudige toegang in latere stappen. 
+Maak een CMD-bestand met de naam **RunTLSSettings. cmd** aan de hand van de onderstaande. Sla dit script op uw lokale bureau blad op voor eenvoudige toegang in latere stappen. 
 
 ```cmd
 SET LOG_FILE="%TEMP%\StartupLog.txt"
@@ -300,9 +300,9 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Stap 3: De opstarttaak toevoegen aan de servicedefinitie van de rol (csdef) 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>Stap 3: de opstart taak toevoegen aan de service definitie (csdef) van de functie 
 
-Voeg het volgende fragment toe aan uw bestaande servicedefinitiebestand. 
+Voeg het volgende code fragment toe aan uw bestaande service definitie bestand. 
 
 ```
     <Startup> 
@@ -311,7 +311,7 @@ Voeg het volgende fragment toe aan uw bestaande servicedefinitiebestand.
     </Startup> 
 ```
 
-Hier is een voorbeeld dat zowel de rol van de werknemer als de webrol weergeeft. 
+Hier volgt een voor beeld waarin zowel de werk rollen als de webrol worden weer gegeven. 
 
 ```
 <?xmlversion="1.0"encoding="utf-8"?> 
@@ -341,27 +341,27 @@ Hier is een voorbeeld dat zowel de rol van de werknemer als de webrol weergeeft.
 </ServiceDefinition> 
 ```
 
-## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Stap 4: De scripts toevoegen aan uw cloudservice 
+## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Stap 4: de scripts toevoegen aan uw Cloud service 
 
-1) Klik in Visual Studio met de rechtermuisknop op uw WebRole of WorkerRole
-2) Selecteer **Toevoegen**
-3) **Bestaand item selecteren**
-4) Navigeer in de verkenner naar uw bureaublad waar u de **IPSsettings.ps1-** en **RunTLSSettings.cmd-bestanden** hebt opgeslagen 
-5) Selecteer de twee bestanden om ze toe te voegen aan uw Cloud Services-project
+1) Klik in Visual Studio met de rechter muisknop op uw webfunctie-of WorkerRole
+2) Selecteer **toevoegen**
+3) **Bestaand item** selecteren
+4) Ga in Verkenner naar het bureau blad waar u de bestanden **TLSsettings. ps1** en **RunTLSSettings. cmd** hebt opgeslagen 
+5) Selecteer de twee bestanden om deze aan uw Cloud Services project toe te voegen
 
-## <a name="step-5-enable-copy-to-output-directory"></a>Stap 5: Map kopiëren naar uitvoer inschakelen
+## <a name="step-5-enable-copy-to-output-directory"></a>Stap 5: kopiëren naar uitvoermap inschakelen
 
-Om ervoor te zorgen dat de scripts worden geüpload met elke update die vanuit Visual Studio wordt gepusht, moet de instelling *Kopiëren naar uitvoermap* worden ingesteld op *Altijd kopiëren*
+Om ervoor te zorgen dat de scripts worden geüpload bij elke update die wordt gepusht vanuit Visual Studio, moet de instelling *kopiëren naar uitvoermap* worden ingesteld op *altijd kopiëren*
 
-1) Klik onder uw WebRole of WorkerRole met de rechtermuisknop op RunTLSSettings.cmd
-2) **Eigenschappen selecteren**
-3) Wijzig op het tabblad Eigenschappen *Kopiëren naar uitvoermap* om *altijd te kopiëren"*
-4) Herhaal de stappen voor **TLSsettings.ps1**
+1) Klik onder uw webrole of WorkerRole met de rechter muisknop op RunTLSSettings. cmd
+2) **Eigenschappen** selecteren
+3) Wijzig op het tabblad Eigenschappen de *Opties kopiëren naar uitvoer Directory* naar *altijd kopiëren* .
+4) Herhaal de stappen voor **TLSsettings. ps1**
 
 ## <a name="step-6-publish--validate"></a>Stap 6: & valideren publiceren
 
-Nu de bovenstaande stappen zijn voltooid, publiceert u de update naar uw bestaande Cloud Service. 
+Nu de bovenstaande stappen zijn voltooid, kunt u de update publiceren naar uw bestaande Cloud service. 
 
-U [SSLLabs](https://www.ssllabs.com/) gebruiken om de TLS-status van uw eindpunten te valideren 
+U kunt [SSLLabs](https://www.ssllabs.com/) gebruiken om de TLS-status van uw eind punten te valideren 
 
  

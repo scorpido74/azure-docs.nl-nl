@@ -1,47 +1,47 @@
 ---
-title: SQL-queryoperatoren voor Azure Cosmos DB
-description: Meer informatie over SQL-operators zoals gelijkheid, vergelijking en logische operatoren die worden ondersteund door Azure Cosmos DB.
+title: SQL-query operators voor Azure Cosmos DB
+description: Meer informatie over SQL-Opera tors zoals gelijkheid, vergelijking en logische Opera tors die door Azure Cosmos DB worden ondersteund.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063560"
 ---
-# <a name="operators-in-azure-cosmos-db"></a>Operators in Azure Cosmos DB
+# <a name="operators-in-azure-cosmos-db"></a>Opera tors in Azure Cosmos DB
 
-In dit artikel worden de verschillende operators beschreven die worden ondersteund door Azure Cosmos DB.
+In dit artikel vindt u meer informatie over de verschillende Opera tors die door Azure Cosmos DB worden ondersteund.
 
-## <a name="equality-and-comparison-operators"></a>Actoren op het gebied van gelijkheid en vergelijking
+## <a name="equality-and-comparison-operators"></a>Gelijkheids-en vergelijkings operators
 
 In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-API voor elk paar JSON-typen.
 
-| **Op** | **Undefined** | **Null** | **Booleaanse** | **Nummer** | **Tekenreeks** | **Object** | **Array** |
+| **Op** | **Undefined** | **Null** | **Booleaans** | **Telwoord** | **Tekenreeks** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Booleaanse** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
-| **Nummer** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
+| **Booleaans** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
+| **Telwoord** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
 | **Tekenreeks** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
 | **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
 
-Voor vergelijkingsoperatoren `>=` `!=`zoals `<` `>`, `<=`, , en , vergelijking tussen `Undefined`typen of tussen twee objecten of arrays produceert .  
+Voor vergelijkings operatoren `>`zoals `>=`, `!=` `<`,, en `<=`wordt vergelijking tussen typen of tussen twee objecten of matrices gegenereerd `Undefined`.  
 
-Als het resultaat van de `Undefined`scalaire expressie is, wordt `Undefined` het item `true`niet opgenomen in het resultaat, omdat het niet gelijk is .
+Als het resultaat van de scalaire expressie `Undefined`is, wordt het item niet opgenomen in het resultaat `Undefined` omdat het `true`niet gelijk is aan.
 
 ## <a name="logical-and-or-and-not-operators"></a>Logische operatoren (EN, OF en NIET)
 
-Logische operatoren worden uitgevoerd op Booleaanse waarden. In de volgende tabellen worden de logische waarheidstabellen voor deze operatoren weergegeven:
+Logische operatoren worden uitgevoerd op Booleaanse waarden. In de volgende tabellen ziet u de logische waarheids tabellen voor deze opera tors:
 
 **Operator OF**
 
-Retourneert `true` wanneer een `true`van de voorwaarden is .
+Retourneert `true` wanneer een van de voor waarden `true`is.
 
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ Retourneert `true` wanneer een `true`van de voorwaarden is .
 
 **Operator EN**
 
-Retourneert `true` wanneer `true`beide expressies .
+Retourneert `true` wanneer beide expressies zijn `true`.
 
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
@@ -61,49 +61,49 @@ Retourneert `true` wanneer `true`beide expressies .
 
 **Operator NIET**
 
-Hiermee keert u de waarde van een Booleaanse expressie om.
+Keert de waarde van een booleaanse expressie om.
 
-|  | **Niet** |
+|  | **TEN** |
 | --- | --- |
 | **True** |False |
 | **False** |True |
 | **Undefined** |Undefined |
 
-**Operatorprioriteit**
+**Operator prioriteit**
 
-De logische `OR` `AND`operatoren `NOT` , en hebben het voorrangsniveau hieronder weergegeven:
+De logische Opera `OR`tors `AND`, en `NOT` hebben het prioriteits niveau dat hieronder wordt weer gegeven:
 
-| **Operator** | **Prioriteit** |
+| **And** | **Prioriteiten** |
 | --- | --- |
-| **Niet** |1 |
-| **En** |2 |
-| **Of** |3 |
+| **TEN** |1 |
+| **MAAR** |2 |
+| **OF** |3 |
 
-## <a name="-operator"></a>* operator
+## <a name="-operator"></a>*-operator
 
-De speciale operator * projecteert het hele item zoals het is. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query `SELECT * FROM Families f` als is `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geldig, maar niet geldig.
+De speciale operator * projecteert het hele item in de vorm van. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, maar `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` is niet geldig.
 
-## <a name="-and--operators"></a>? En?? operatoren
+## <a name="-and--operators"></a>? en?? operatoren
 
-U de beheerders Ternary (?) en Coalesce (??) gebruiken om voorwaardelijke expressies te bouwen, zoals in programmeertalen zoals C# en JavaScript.
+U kunt de Opera tors van ternaire (?) en Coalesce (?) gebruiken om voorwaardelijke expressies te maken, zoals in programmeer talen zoals C# en Java script.
 
-U kunt de ? operator om nieuwe JSON-eigenschappen on the fly te bouwen. In de volgende query worden bijvoorbeeld `elementary` cijferniveaus ingedeeld in of: `other`
+U kunt de ? operator voor het maken van nieuwe JSON-eigenschappen. Met de volgende query worden bijvoorbeeld de classificatie niveaus geclassificeerd in `elementary` of: `other`
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-U ook nesten oproepen naar de? operator, zoals in de volgende query: 
+U kunt ook aanroepen nesten naar de? , zoals in de volgende query: 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-Net als bij andere queryoperatoren, de ? als de operator items uitsluit als de waarnaar wordt verwezen of de typen die worden vergeleken, verschillen.
+Net als bij andere query operators, de? de operator sluit items uit als de eigenschappen van de verwijzing ontbreken of de typen die worden vergeleken, verschillen.
 
-Gebruik de ?? operator om efficiënt te controleren op een eigenschap in een item bij het opvragen tegen semi-gestructureerde of gemengde gegevens. De volgende query wordt `lastName` bijvoorbeeld geretourneerd `surname` `lastName` als deze aanwezig is of als deze niet aanwezig is.
+Gebruikt u de? operator om efficiënt te controleren op een eigenschap in een item bij het uitvoeren van query's op semi-gestructureerde of gegevens van een gemengd type. De volgende query retourneert bijvoorbeeld, indien `lastName` aanwezig, of `surname` als `lastName` deze niet aanwezig is.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

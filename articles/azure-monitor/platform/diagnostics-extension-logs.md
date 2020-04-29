@@ -1,68 +1,68 @@
 ---
-title: Blob-opslag gebruiken voor IIS en tabelopslag voor gebeurtenissen in Azure Monitor | Microsoft Documenten
-description: Azure Monitor kan de logboeken voor Azure-services lezen die diagnostische gegevens schrijven naar tabelopslag of IIS-logboeken die zijn geschreven naar blobopslag.
+title: Gebruik Blob Storage voor IIS en tabel opslag voor gebeurtenissen in Azure Monitor | Microsoft Docs
+description: Azure Monitor kunt de logboeken lezen voor Azure-Services die diagnostische gegevens schrijven naar Table-opslag of IIS-logboeken die zijn geschreven naar Blob Storage.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672392"
 ---
-# <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Gegevens verzamelen van Azure-diagnostische extensie naar Azure Monitor-logboeken
-Azure-diagnostische extensie is een [agent in Azure Monitor](agents-overview.md) die bewakingsgegevens verzamelt van het gastbesturingssysteem van Azure-rekenbronnen, waaronder virtuele machines. In dit artikel wordt beschreven hoe u gegevens verzamelt die zijn verzameld door de diagnostische extensie van Azure Storage naar Azure Monitor-logboeken.
+# <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Gegevens verzamelen van de Azure Diagnostics-extensie naar Azure Monitor-logboeken
+Azure Diagnostics-extensie is een [agent in azure monitor](agents-overview.md) die bewakings gegevens verzamelt van het gast besturingssysteem van Azure Compute-resources, waaronder virtuele machines. In dit artikel wordt beschreven hoe u gegevens verzamelt die worden verzameld door de uitbrei ding van de diagnose van Azure Storage naar Azure Monitor-Logboeken.
 
 > [!NOTE]
-> De loganalytics-agent in Azure Monitor is doorgaans de voorkeursmethode om gegevens van het gastbesturingssysteem te verzamelen in Azure Monitor-logboeken. Zie [Overzicht van de Azure Monitor-agents](agents-overview.md) voor een gedetailleerde vergelijking van de agents.
+> De Log Analytics-agent in Azure Monitor is doorgaans de voorkeurs methode voor het verzamelen van gegevens van het gast besturingssysteem in Azure Monitor Logboeken. Zie [overzicht van de Azure monitor agents](agents-overview.md) voor een gedetailleerde vergelijking van de agents.
 
-## <a name="supported-data-types"></a>Ondersteunde gegevenstypen
-Azure-diagnostische extensie slaat gegevens op in een Azure Storage-account. Als u Azure Monitor Logs wilt verzamelen, moet deze zich op de volgende locaties bevinden:
+## <a name="supported-data-types"></a>Ondersteunde gegevens typen
+Met de Azure Diagnostics-extensie worden gegevens opgeslagen in een Azure Storage-account. Voor Azure Monitor logboeken voor het verzamelen van deze gegevens moet het zich op de volgende locaties bevinden:
 
-| Logboektype | Resourcetype | Locatie |
+| Logboek type | Resourcetype | Locatie |
 | --- | --- | --- |
-| IIS-logboeken |Virtuele machines <br> Webrollen <br> Werknemersrollen |wad-iis-logfiles (Blob-opslag) |
-| Syslog |Virtuele machines |LinuxsyslogVer2v0 (Tabelopslag) |
-| Operationele evenementen voor servicefabric |Servicefabricknooppunten |WADServiceFabricSystemEventTable |
-| Service Fabric Betrouwbare Actor Evenementen |Servicefabricknooppunten |WADServiceFabricReliableActorEventTable |
-| Service Fabric Betrouwbare servicegebeurtenissen |Servicefabricknooppunten |WADServiceFabricReliableServiceEventTable |
-| Logboeken voor Windows-gebeurtenissen |Servicefabricknooppunten <br> Virtuele machines <br> Webrollen <br> Werknemersrollen |WADWindowsEventLogsTable (tabelopslag) |
-| Windows ETW-logboeken |Servicefabricknooppunten <br> Virtuele machines <br> Webrollen <br> Werknemersrollen |WADETWEventTable (tabelopslag) |
+| IIS-logboeken |Virtuele machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
+| Syslog |Virtuele machines |LinuxsyslogVer2v0 (Table Storage) |
+| Operationele gebeurtenissen Service Fabric |Service Fabric knooppunten |WADServiceFabricSystemEventTable |
+| Service Fabric betrouw bare actor gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableActorEventTable |
+| Service Fabric betrouw bare service gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableServiceEventTable |
+| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
 
-## <a name="data-types-not-supported"></a>Gegevenstypen die niet worden ondersteund
+## <a name="data-types-not-supported"></a>Gegevens typen worden niet ondersteund
 
-- Prestatiegegevens van het gastbesturingssysteem
-- IIS-logboeken van Azure-websites
-
-
-## <a name="enable-azure-diagnostics-extension"></a>Azure-diagnostische extensie inschakelen
-Zie [De diagnostische extensie (WAD) van Windows Azure installeren en configureren](diagnostics-extension-windows-install.md) of Linux Diagnostische extensie gebruiken om statistieken en [logboeken te controleren](../../virtual-machines/extensions/diagnostics-linux.md) voor meer informatie over het installeren en configureren van de diagnostische extensie. Hiermee u het opslagaccount opgeven en de verzameling configureren van de gegevens die u wilt doorsturen naar Azure Monitor-logboeken.
+- Prestatie gegevens van het gast besturingssysteem
+- IIS-logboeken van Azure websites
 
 
-## <a name="collect-logs-from-azure-storage"></a>Logboeken verzamelen van Azure Storage
-Gebruik de volgende procedure om het verzamelen van diagnostische extensiegegevens van een Azure Storage-account mogelijk te maken:
+## <a name="enable-azure-diagnostics-extension"></a>De Azure Diagnostics-extensie inschakelen
+Zie de [Windows Azure Diagnostics-extensie (WAD) installeren en configureren,](diagnostics-extension-windows-install.md) of [Gebruik de diagnostische Linux-extensie voor het bewaken van metrische gegevens en logboeken](../../virtual-machines/extensions/diagnostics-linux.md) voor meer informatie over het installeren en configureren van de diagnostische uitbrei ding. Hiermee slaapstandknop u het opslag account op te geven en een verzameling van de gegevens te configureren die u wilt door sturen naar Azure Monitor Logboeken.
 
-1. Ga in de Azure-portal naar **Log Analytics Workspaces** en selecteer uw werkruimte.
-1. Klik **op Logboeken voor opslagaccounts** in de sectie **Werkruimtegegevensbronnen** van het menu.
-2. Klik **op Toevoegen**.
-3. Selecteer het **opslagaccount** dat de gegevens bevat die moeten worden verzameld.
-4. Selecteer het **gegevenstype** dat u wilt verzamelen.
-5. De waarde voor Bron wordt automatisch ingevuld op basis van het gegevenstype.
+
+## <a name="collect-logs-from-azure-storage"></a>Logboeken van Azure Storage verzamelen
+Gebruik de volgende procedure om het verzamelen van gegevens van diagnostische uitbrei dingen van een Azure Storage-account in te scha kelen:
+
+1. Ga in het Azure Portal naar **log Analytics-werk ruimten** en selecteer uw werk ruimte.
+1. Klik op **Logboeken voor opslag accounts** in de sectie **werkruimte gegevens bronnen** van het menu.
+2. Klik op **toevoegen**.
+3. Selecteer het **opslag account** dat de gegevens bevat die u wilt verzamelen.
+4. Selecteer het **gegevens type** dat u wilt verzamelen.
+5. De waarde voor de bron wordt automatisch ingevuld op basis van het gegevens type.
 6. Klik op **OK** om de configuratie op te slaan.
-7. Herhaal dit voor extra gegevenstypen.
+7. Herhaal dit voor aanvullende gegevens typen.
 
-In ongeveer 30 minuten u gegevens zien van het opslagaccount in de werkruimte Log Analytics. U ziet alleen gegevens die naar de opslag worden geschreven nadat de configuratie is toegepast. De werkruimte leest de reeds bestaande gegevens van het opslagaccount niet.
+In ongeveer 30 minuten kunt u de gegevens van het opslag account in de werk ruimte Log Analytics bekijken. Er worden alleen gegevens weer gegeven die naar opslag zijn geschreven nadat de configuratie is toegepast. De bestaande gegevens van het opslag account worden niet door de werk ruimte gelezen.
 
 > [!NOTE]
-> De portal valideert niet of de bron in het opslagaccount bestaat of dat er nieuwe gegevens worden geschreven.
+> De portal valideert niet dat de bron bestaat in het opslag account of dat er nieuwe gegevens worden geschreven.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verzamel logboeken en statistieken voor Azure-services](collect-azure-metrics-logs.md) voor ondersteunde Azure-services.
-* [Solutions in staat stellen](../../azure-monitor/insights/solutions.md) om inzicht te geven in de gegevens.
-* [Gebruik zoekopdrachten](../../azure-monitor/log-query/log-query-overview.md) om de gegevens te analyseren.
+* [Verzamel logboeken en metrische gegevens voor Azure-Services](collect-azure-metrics-logs.md) voor ondersteunde Azure-Services.
+* [Schakel oplossingen](../../azure-monitor/insights/solutions.md) in om inzicht te krijgen in de gegevens.
+* [Gebruik Zoek query's](../../azure-monitor/log-query/log-query-overview.md) om de gegevens te analyseren.

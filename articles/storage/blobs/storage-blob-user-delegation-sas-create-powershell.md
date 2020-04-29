@@ -1,7 +1,7 @@
 ---
-title: PowerShell gebruiken om een SAS voor gebruikersdelegatie te maken voor een container of blob
+title: Power shell gebruiken om een gebruikers delegering SA'S te maken voor een container of BLOB
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een SAS voor gebruikersoverdrachten met Azure Active Directory-referenties met PowerShell.
+description: Meer informatie over het maken van een gebruiker met Azure Active Directory referenties met behulp van Power shell.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,36 +11,36 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 5250a27e6c5fcf012207f1edb95ad46c0aabfe63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536170"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Een SAS voor gebruikersdelegatie maken voor een container of blob met PowerShell
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Power shell
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In dit artikel ziet u hoe u Azure Active Directory-referenties (Azure AD) gebruikt om een SAS voor gebruikersdelegatie sas te maken voor een container of blob met Azure PowerShell.
+In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referenties gebruikt om een gebruikers delegering SA'S te maken voor een container of BLOB met Azure PowerShell.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
+## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
-Als u een SAS voor gebruikersoverdracht wilt maken met PowerShell, installeert u versie 1.10.0 of hoger van de Az.Storage-module. Volg de volgende stappen om de nieuwste versie van de module te installeren:
+Als u een gebruikers delegering SA'S met Power shell wilt maken, installeert u versie 1.10.0 of hoger van de module AZ. storage. Volg deze stappen om de meest recente versie van de module te installeren:
 
-1. Verwijder eerdere installaties van Azure PowerShell:
+1. Eerdere installaties van Azure PowerShell verwijderen:
 
-    - Verwijder eerdere installaties van Azure PowerShell uit Windows met behulp van de instelling **Apps & functies** onder **Instellingen**.
-    - Verwijder alle **Azure-modules** uit `%Program Files%\WindowsPowerShell\Modules`.
+    - Verwijder eerdere installaties van Azure PowerShell van Windows met de instelling **Apps & onderdelen** onder **instellingen**.
+    - Verwijder alle **Azure** -modules `%Program Files%\WindowsPowerShell\Modules`uit.
 
-1. Zorg ervoor dat u de nieuwste versie van PowerShellGet hebt geïnstalleerd. Open een Windows PowerShell-venster en voer de volgende opdracht uit om de nieuwste versie te installeren:
+1. Zorg ervoor dat de meest recente versie van PowerShellGet is geïnstalleerd. Open een Windows Power shell-venster en voer de volgende opdracht uit om de meest recente versie te installeren:
 
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
 
-1. Sluit het PowerShell-venster en open het opnieuw na het installeren van PowerShellGet.
+1. Sluit het Power shell-venster en open het opnieuw nadat u PowerShellGet hebt geïnstalleerd.
 
 1. Installeer de nieuwste versie van Azure PowerShell:
 
@@ -48,41 +48,41 @@ Als u een SAS voor gebruikersoverdracht wilt maken met PowerShell, installeert u
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Zorg ervoor dat u Azure PowerShell-versie 3.2.0 of hoger hebt geïnstalleerd. Voer de volgende opdracht uit om de nieuwste versie van de Azure Storage PowerShell-module te installeren:
+1. Zorg ervoor dat u Azure PowerShell versie 3.2.0 of hoger hebt geïnstalleerd. Voer de volgende opdracht uit om de nieuwste versie van de Azure Storage Power shell-module te installeren:
 
     ```powershell
     Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
-1. Sluit het PowerShell-venster en open deze opnieuw.
+1. Sluit het Power shell-venster en open het opnieuw.
 
-Voer de volgende opdracht uit om te controleren welke versie van de Az.Storage-module is geïnstalleerd:
+Als u wilt controleren welke versie van de module AZ. Storage is geïnstalleerd, voert u de volgende opdracht uit:
 
 ```powershell
 Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
-Zie [Azure PowerShell installeren met PowerShellGet](/powershell/azure/install-az-ps)voor meer informatie over het installeren van Azure PowerShell.
+Zie [Install Azure PowerShell with PowerShellGet](/powershell/azure/install-az-ps)(Engelstalig) voor meer informatie over het installeren van Azure PowerShell.
 
-## <a name="sign-in-to-azure-powershell-with-azure-ad"></a>Aanmelden bij Azure PowerShell met Azure AD
+## <a name="sign-in-to-azure-powershell-with-azure-ad"></a>Meld u aan bij Azure PowerShell met Azure AD
 
-Bel de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) om u aan te melden met uw Azure AD-account:
+Roep de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) aan om u aan te melden met uw Azure ad-account:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Zie [Aanmelden bij Azure PowerShell](/powershell/azure/authenticate-azureps)voor meer informatie over aanmelden bij PowerShell.
+Zie [Aanmelden met Azure PowerShell](/powershell/azure/authenticate-azureps)voor meer informatie over het aanmelden met Power shell.
 
 ## <a name="assign-permissions-with-rbac"></a>Machtigingen toewijzen met RBAC
 
-Als u een SAS voor gebruikersoverdracht wilt maken vanuit Azure PowerShell, moet het Azure AD-account dat wordt gebruikt om u aan te melden bij PowerShell, een rol worden toegewezen die de actie **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** bevat. Met deze machtiging kan dat Azure AD-account de *sleutel voor gebruikersoverdracht*aanvragen. De gebruikersdelegatiesleutel wordt gebruikt om de gebruikersdelegatie SAS te ondertekenen. De rol die de actie **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** biedt, moet worden toegewezen op het niveau van het opslagaccount, de brongroep of het abonnement. Zie de sectie **Machtigingen toewijzen met RBAC** in SAS voor meer informatie over [RBAC-machtigingen](/rest/api/storageservices/create-user-delegation-sas)voor het maken van een SAS voor gebruikersdelegatie.
+Als u een gebruikers delegering SA'S wilt maken op basis van Azure PowerShell, moet aan het Azure AD-account dat wordt gebruikt om u aan te melden bij Power shell een rol worden toegewezen die de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevat. Met deze machtiging is het mogelijk dat Azure AD-account de *gebruikers delegerings sleutel*aanvraagt. De sleutel voor gebruikers overdracht wordt gebruikt voor het ondertekenen van de SA'S van de gebruikers delegering. De rol voor het opgeven van de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** moet worden toegewezen op het niveau van het opslag account, de resource groep of het abonnement. Voor meer informatie over RBAC-machtigingen voor het maken van een SA'S voor het delegeren van gebruikers, zie de sectie **machtigingen toewijzen met RBAC** in [een gebruikers delegering maken sa's](/rest/api/storageservices/create-user-delegation-sas).
 
-Als u niet over voldoende machtigingen beschikt om RBAC-rollen toe te wijzen aan een Azure AD-beveiligingsprincipal, moet u mogelijk de eigenaar of beheerder van het account vragen om de benodigde machtigingen toe te wijzen.
+Als u niet gemachtigd bent om RBAC-rollen toe te wijzen aan een Azure AD-beveiligingsprincipal, moet u mogelijk de eigenaar van het account of de beheerder vragen om de benodigde machtigingen toe te wijzen.
 
-In het volgende voorbeeld wordt de rol **opslagblobgegevensbijdrager toetekent,** waaronder de actie **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey.** De rol wordt verdeeld op het niveau van het opslagaccount.
+In het volgende voor beeld wordt de rol **Storage BLOB data Inzender** toegewezen, inclusief de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** . De rol is bereik op het niveau van het opslag account.
 
-Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -90,27 +90,27 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-Zie [Ingebouwde rollen voor Azure-resources voor](../../role-based-access-control/built-in-roles.md)meer informatie over de ingebouwde rollen die de actie **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** bevatten.
+Zie [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)voor meer informatie over de ingebouwde rollen die de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevatten.
 
-## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Azure AD-referenties gebruiken om een SAS te beveiligen
+## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Azure AD-referenties gebruiken voor het beveiligen van een SAS
 
-Wanneer u een SAS voor gebruikersoverdracht en Azure PowerShell maakt, wordt de gebruikersdelegatiesleutel die wordt gebruikt om de SAS te ondertekenen impliciet voor u gemaakt. De begin- en vervaldatum die u voor de SAS opgeeft, worden ook gebruikt als begin- en vervaldatum voor de gebruikersdelegatiesleutel. 
+Wanneer u een SAS voor gebruikers overdracht met Azure PowerShell maakt, wordt de sleutel voor gebruikers overdracht die wordt gebruikt om de SA'S te ondertekenen, impliciet voor u gemaakt. De begin tijd en verloop tijd die u opgeeft voor de SA'S, worden ook gebruikt als de begin tijd en verloop tijd voor de gebruikers delegerings sleutel. 
 
-Omdat het maximale interval waarop de gebruikersdelegatiesleutel geldig is, 7 dagen na de begindatum is, moet u een vervaldatum opgeven voor de SAS die binnen 7 dagen na de begintijd is. De SAS is ongeldig nadat de sleutel voor de delegatie van de gebruiker is verlopen, dus een SAS met een vervaldatum van meer dan 7 dagen is nog steeds slechts 7 dagen geldig.
+Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Als u een SAS voor gebruikersdelegatie wilt maken voor een container of blob met `-UseConnectedAccount` Azure PowerShell, maakt u eerst een nieuw contextobject azure storage, waarin de parameter wordt opgegeven. De `-UseConnectedAccount` parameter geeft aan dat de opdracht het contextobject maakt onder het Azure AD-account waarmee u zich hebt aangemeld.
+Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage `-UseConnectedAccount` context-object maken, waarbij u de para meter opgeeft. De `-UseConnectedAccount` para meter geeft aan dat met de opdracht het context object wordt gemaakt onder het Azure ad-account waarmee u zich hebt aangemeld.
 
-Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName <storage-account> -UseConnectedAccount
 ```
 
-### <a name="create-a-user-delegation-sas-for-a-container"></a>Een gebruikersdelegatie SAS voor een container maken
+### <a name="create-a-user-delegation-sas-for-a-container"></a>Een SAS voor gebruikers overdracht maken voor een container
 
-Als u een SAS-token voor gebruikersdelegatie voor een container wilt retourneren, roept u de opdracht [Nieuw-AzStorageContainerSASToken](/powershell/module/az.storage/new-azstoragecontainersastoken) aan en geeft u het contextobject Azure Storage door dat u eerder hebt gemaakt.
+Als u een SAS-token voor gebruikers overdracht voor een container wilt retour neren, roept u de opdracht [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-azstoragecontainersastoken) aan en geeft u het object Azure Storage context door dat u eerder hebt gemaakt.
 
-In het volgende voorbeeld wordt een SAS-token voor gebruikersdelegatie voor een container geretourneerd. Vergeet niet om de plaatsaanduidingswaarden tussen haakjes te vervangen door uw eigen waarden:
+In het volgende voor beeld wordt een SAS-token voor gebruikers overdracht voor een container geretourneerd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```powershell
 New-AzStorageContainerSASToken -Context $ctx `
@@ -119,18 +119,18 @@ New-AzStorageContainerSASToken -Context $ctx `
     -ExpiryTime <date-time>
 ```
 
-Het geretourneerde SAS-token voor gebruikersdelegeren is vergelijkbaar met:
+Het geretourneerde SAS-token voor gebruikers overdracht is vergelijkbaar met:
 
 ```output
 ?sv=2018-11-09&sr=c&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-05T22%3A24%3A36Z&ske=2019-08-07T07%3A
 00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=rwdl
 ```
 
-### <a name="create-a-user-delegation-sas-for-a-blob"></a>Een SAS voor gebruikersdelegatie maken voor een blob
+### <a name="create-a-user-delegation-sas-for-a-blob"></a>Een SAS voor gebruikers overdracht maken voor een BLOB
 
-Als u een SAS-token voor gebruikersdelegatie wilt retourneren voor een blob, roept u de opdracht [Nieuw-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) aan en geeft u het contextobject Azure Storage door dat u eerder hebt gemaakt.
+Als u een SAS-token voor gebruikers overdracht voor een BLOB wilt retour neren, roept u de opdracht [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) aan en geeft u het object Azure Storage context door dat u eerder hebt gemaakt.
 
-Met de volgende syntaxis retourneert een gebruikersdelegatie SAS voor een blob. In het `-FullUri` voorbeeld wordt de parameter opgegeven, waardoor de blob URI wordt geretourneerd met het SAS-token toegevoegd. Vergeet niet om de plaatsaanduidingswaarden tussen haakjes te vervangen door uw eigen waarden:
+De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld `-FullUri` wordt de para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `
@@ -141,20 +141,20 @@ New-AzStorageBlobSASToken -Context $ctx `
     -FullUri
 ```
 
-De teruggekeerde gebruikersdelegatie SAS URI is vergelijkbaar met:
+De geretourneerde SAS-URI voor gebruikers overdracht is vergelijkbaar met:
 
 ```output
 https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 
 > [!NOTE]
-> Een gebruikersdelegatie SAS ondersteunt geen definiërende machtigingen met een opgeslagen toegangsbeleid.
+> Een door de gebruiker overgedragen SA'S biedt geen ondersteuning voor het definiëren van machtigingen met een opgeslagen toegangs beleid.
 
-## <a name="revoke-a-user-delegation-sas"></a>Een gebruikersdelegatie SAS intrekken
+## <a name="revoke-a-user-delegation-sas"></a>Een SAS voor gebruikers overdracht intrekken
 
-Als u een SAS voor gebruikersdeleger wilt intrekken vanuit Azure PowerShell, roept u de opdracht **Intrekken-AzStorageAccountUserDelegationKeys** in. Met deze opdracht worden alle gebruikersdelegatiesleutels ingetrokken die zijn gekoppeld aan het opgegeven opslagaccount. Alle gedeelde toegangshandtekeningen die aan deze sleutels zijn gekoppeld, worden ongeldig verklaard.
+Als u een gebruikers delegering SA'S van Azure PowerShell wilt intrekken, roept u de opdracht **REVOKE-AzStorageAccountUserDelegationKeys** aan. Met deze opdracht worden alle sleutels voor gebruikers overdracht die zijn gekoppeld aan het opgegeven opslag account ingetrokken. Shared Access signatures die zijn gekoppeld aan deze sleutels, worden ongeldig gemaakt.
 
-Vergeet niet om plaatsaanduidingswaarden in hoekhaakjes te vervangen door uw eigen waarden:
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
 ```powershell
 Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
@@ -162,9 +162,9 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 ```
 
 > [!IMPORTANT]
-> Zowel de gebruikersdelegatiesleutel als de RBAC-roltoewijzingen worden in de cache opgeslagen door Azure Storage, dus er kan een vertraging optreden tussen het moment waarop u het intrekkingsproces initieert en wanneer een bestaande gebruikersdelegatie SAS ongeldig wordt.
+> Zowel de toewijzing van de sleutel voor gebruikers overdracht als de RBAC-rollen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging optreden wanneer u het proces van het intrekken initieert en wanneer een bestaande SA'S van de gebruikers overdracht ongeldig wordt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een SAS voor gebruikersdelegatie (REST API) maken](/rest/api/storageservices/create-user-delegation-sas)
-- [De sleutelbewerking voor gebruikersdelegatie uitvoeren](/rest/api/storageservices/get-user-delegation-key)
+- [Een SAS (REST API) voor gebruikers overdracht maken](/rest/api/storageservices/create-user-delegation-sas)
+- [Sleutel bewerking voor gebruikers overdracht ophalen](/rest/api/storageservices/get-user-delegation-key)

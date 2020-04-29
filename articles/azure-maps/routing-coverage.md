@@ -1,6 +1,6 @@
 ---
-title: Dekking van de routeroute | Microsoft Azure Maps
-description: In dit artikel vindt u meer informatie over regio's met routeringsdekking voor Microsoft Azure Maps.
+title: Routerings dekking | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over regio's met een route ring voor Microsoft Azure kaarten.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 04/04/2019
@@ -9,37 +9,37 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b59816abf0cd03450c9fc4ebb8417c62df7e3288
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529388"
 ---
-# <a name="azure-maps-routing-coverage"></a>Dekking voor Azure Maps-routering
+# <a name="azure-maps-routing-coverage"></a>Routerings dekking Azure Maps
 
-In dit artikel vindt u dekkingsgegevens voor Azure Maps-routering. Bij een zoekopdracht retourneert Azure Maps een optimale route van locatie A naar locatie B. U krijgt nauwkeurige reistijden, live updates van reisinformatie en route-instructies. U ook extra zoekparameters toevoegen, zoals huidig verkeer, voertuigtype en voorwaarden om te vermijden. De optimalisatie van de route is afhankelijk van de regio. Azure Maps heeft namelijk verschillende niveaus van informatie en nauwkeurigheid voor verschillende regio's. In de volgende tabel worden de regio's weergegeven en wat voor soort informatie u hiervoor opvragen.
+In dit artikel vindt u informatie over de dekking van Azure Maps route ring. Bij een zoek opdracht retourneert Azure Maps een optimale route van locatie A naar locatie B. U krijgt de beschikking over nauw keurige reis tijden, actuele updates van reis gegevens en route-instructies. U kunt ook aanvullende zoek parameters toevoegen, zoals het huidige verkeer, het type Voer tuig en voor waarden om te voor komen. De optimalisatie van de route is afhankelijk van de regio. Dat komt omdat Azure Maps verschillende niveaus van informatie en nauw keurigheid voor verschillende regio's heeft. De volgende tabel geeft een lijst van de regio's en wat voor soort informatie u kunt aanvragen.
  
-Bekijk de dekking voor [**Geocoding.**](geocoding-coverage.md)       
-Bekijk de dekking voor [**Verkeer**](traffic-coverage.md).  
-Bekijk de dekking voor [**Render**](render-coverage.md).
+Bekijk de dekking voor [**geocodering**](geocoding-coverage.md).       
+Bekijk de dekking van [**verkeer**](traffic-coverage.md).  
+Bekijk de dekking voor [**weer gave**](render-coverage.md).
 <br>  
-**Legende**
+**Labels**
 
 | Symbool             | Betekenis                                |
 |--------------------|----------------------------------------|
-| ✓                  | Land/regio voorzien van gedetailleerde gegevens.   |
-| Ø                  | Land/regio voorzien van vereenvoudigde gegevens. |
-| Land ontbreekt | Land/regio gegevens worden niet verstrekt.          |
+| ✓                  | Het land/de regio is voorzien van gedetailleerde gegevens.   |
+| Ø                  | Het land of de regio die is meegeleverd met vereenvoudigde gegevens. |
+| Land ontbreekt | Er zijn geen land-of regio gegevens gegeven.          |
 
 <br>  
 
-In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
+De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 <br>  
 
 
 ## <a name="africa"></a>Afrika
 
-| Land/regio                 | Routering         | Routering met verkeer | Truck Routing |
+| Land/regio                 | Routering         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Algerije                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
@@ -49,9 +49,9 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 | Burundi                        |        ✓       |                       |             |
 | Kameroen                       |        ✓       |                       |             |
 | Cabo Verde                     |        ✓       |                       |             |
-| Congo- Brazzaville Kinshasa    |        ✓       |                       |             |
-| Congo- Kinshasa                |        ✓       |                       |             |
-| ivoorkust                  |        ✓       |                       |             |
+| Congo-Brazzaville Kinshasa    |        ✓       |                       |             |
+| Congo-Kinshasa                |        ✓       |                       |             |
+| Ivoor kust                  |        ✓       |                       |             |
 | Egypte                          |        ✓       |         ✓            |             |
 | Gabon                          |        ✓       |                       |             |
 | Gambia                         |        ✓       |                       |             |
@@ -82,7 +82,7 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio                 | Routering         | Routering met verkeer | Truck Routing |
+| Land/regio                 | Routering         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentinië                      |        ✓       |         ✓            |     ✓       |
 | Antigua en Barbuda            |        ✓       |                      |             |
@@ -112,25 +112,25 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 | Paraguay                       |        ✓       |                      |             |
 | Peru                           |        ✓       |         ✓            |             |
 | St. Kitts en Nevis            |        ✓       |                      |             |
-| St. Lucia                      |        ✓       |                      |             |
+| Saint Lucia                      |        ✓       |                      |             |
 | St. Vincent & Grenadines       |        ✓       |                      |             |
 | Suriname                       |        ✓       |                      |             |
 | Trinidad & Tobago              |        ✓       |                      |             |
 | Verenigde Staten                  |        ✓       |         ✓            |     ✓      | 
-| +Amerikaans Samoa                |        ✓       |                      |             |
-| +Noordelijke Marianen      |        ✓       |                      |             |
-| +Puerto Rico                   |        ✓       |                      |             |
-| +Amerikaanse Maagdeneilanden           |        ✓       |                      |             |
+| + Amerikaans-Samoa                |        ✓       |                      |             |
+| + Noordelijke Marianen      |        ✓       |                      |             |
+| + Puerto Rico                   |        ✓       |                      |             |
+| + Amerikaanse Maagden eilanden           |        ✓       |                      |             |
 | Uruguay                        |        ✓       |         ✓            |     ✓      | 
 | Venezuela                      |        ✓       |                      |             |
 
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-| Land/regio                 | Routering         | Routering met verkeer | Truck Routing |
+| Land/regio                 | Routering         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Australië                      |        ✓       |         ✓            |     ✓       |
-| +Christmas Island              |        ✓       |                      |             |
+| + Christmas eiland              |        ✓       |                      |             |
 | Brunei                         |        ✓       |         ✓            |             |
 | Cambodja                       |        ✓       |                      |             |
 | Fiji                           |        ✓       |                      |             |
@@ -154,7 +154,7 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 
 ## <a name="europe"></a>Europa
 
-| Land/regio                 | Routering         | Routering met verkeer | Truck Routing |
+| Land/regio                 | Routering         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albanië                        |        ✓       |                      |             |
 | Andorra                        |        ✓       |         ✓            |             |
@@ -168,15 +168,15 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 | Cyprus                         |        ✓       |                      |             |
 | Tsjechië                 |        ✓       |         ✓            |     ✓      |
 | Denemarken                        |        ✓       |         ✓            |     ✓      |
-| +Faeröer                 |        ✓       |                      |             |
+| + Faeröer                 |        ✓       |                      |             |
 | Estland                        |        ✓       |         ✓            |     ✓      |
 | Finland                        |        ✓       |         ✓            |     ✓      |
 | Frankrijk                         |        ✓       |         ✓            |     ✓      | 
-| +Guadeloupe                    |        ✓       |                      |             |
-| +Martinique                    |        ✓       |                      |             |
-| +St. Barthélemy                |        ✓       |                      |             |
-| +St. Martin                    |        ✓       |                      |             |
-| +St. Pierre & Miquelon         |        ✓       |                      |             |
+| + Guadeloupe                    |        ✓       |                      |             |
+| + Martinique                    |        ✓       |                      |             |
+| + St.-Barthélemy                |        ✓       |                      |             |
+| + St. Martin                    |        ✓       |                      |             |
+| + St. Pierre & Miquelon         |        ✓       |                      |             |
 | Georgië                        |        ✓       |                      |             |
 | Duitsland                        |        ✓       |         ✓            |     ✓      | 
 | Griekenland                         |        ✓       |         ✓            |     ✓      |  
@@ -196,10 +196,10 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 | Monaco                         |        ✓       |         ✓            |             |
 | Montenegro                     |        ✓       |                      |     ✓      | 
 | Nederland                    |        ✓       |         ✓            |     ✓      | 
-| +Aruba                         |        ✓       |                      |             | 
-| +Caribisch Nederland         |        ✓       |                      |             |
-| +Curaçao                       |        ✓       |                      |             |
-| +Sint Maarten                  |        ✓       |                      |             |
+| + Aruba                         |        ✓       |                      |             | 
+| + Caribisch gebied Nederland         |        ✓       |                      |             |
+| + Curaçao                       |        ✓       |                      |             |
+| + Sint-Maarten                  |        ✓       |                      |             |
 | Noorwegen                         |        ✓       |         ✓            |     ✓      | 
 | Polen                         |        ✓       |         ✓            |     ✓      | 
 | Portugal                       |        ✓       |         ✓            |     ✓      |  
@@ -215,20 +215,20 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 | Turkije                         |        ✓       |         ✓            |     ✓      | 
 | Oekraïne                        |        ✓       |         ✓            |             | 
 | Verenigd Koninkrijk                 |        ✓       |         ✓            |     ✓      | 
-| +Anguilla                      |        ✓       |                      |             |
-| +Bermuda                       |        ✓       |                      |             |
-| +Britse Maagdeneilanden        |        ✓       |                      |             |
-| +Kaaimaneilanden                |        ✓       |                      |             |
-| +Gibraltar                     |        ✓       |         ✓            |             | 
-| +Montserrat                    |        ✓       |                      |             |
-| +Turken en Caicoseilanden      |        ✓       |                      |             |
-| Vaticaanstad                   |        ✓       |         ✓            |             |
+| + Anguilla                      |        ✓       |                      |             |
+| + Bermuda                       |        ✓       |                      |             |
+| + Britse Maagden eilanden        |        ✓       |                      |             |
+| + Caymaneilanden                |        ✓       |                      |             |
+| + Gibraltar                     |        ✓       |         ✓            |             | 
+| + Montserrat                    |        ✓       |                      |             |
+| + Turks-en Caicos-eilanden      |        ✓       |                      |             |
+| Vaticaan stad                   |        ✓       |         ✓            |             |
 | Isle of Man                    |        ✓       |                      |             |
 
 
 ## <a name="middle-east"></a>Midden-Oosten
 
-| Land/regio                 | Routering         | Routering met verkeer | Truck Routing |
+| Land/regio                 | Routering         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrein                        |        ✓       |         ✓            |             |
 | Irak                           |        ✓       |                      |             |
@@ -245,4 +245,4 @@ In de volgende tabel vindt u dekkingsgegevens voor Azure Maps-routering.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [referentiepagina's routering](https://docs.microsoft.com/rest/api/maps/route) voor meer informatie over azure maps-routering.
+Zie de pagina [route ring](https://docs.microsoft.com/rest/api/maps/route) -verwijzing voor meer informatie over Azure Maps route ring.

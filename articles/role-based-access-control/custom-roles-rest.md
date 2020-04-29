@@ -1,6 +1,6 @@
 ---
-title: Aangepaste rollen voor Azure-resources maken of bijwerken met de REST-API
-description: Meer informatie over het aanbieden, maken, bijwerken of verwijderen van aangepaste rollen met RBAC (Role-based access control) voor Azure-resources met behulp van de REST API.
+title: Aangepaste rollen voor Azure-resources maken of bijwerken met de REST API
+description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste rollen met op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources met behulp van de REST API.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -16,24 +16,24 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062191"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Aangepaste rollen voor Azure-resources maken of bijwerken met behulp van de REST-API
+# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van de REST API
 
 > [!IMPORTANT]
-> Het toevoegen van `AssignableScopes` een beheergroep aan is momenteel in preview.
+> Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe aangepaste rollen worden weergegeven, gemaakt, bijgewerkt of verwijderd met behulp van de REST-API.
+Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijsteert, maakt, bijwerkt of verwijdert met behulp van de REST API.
 
 ## <a name="list-custom-roles"></a>Aangepaste rollen opvragen
 
-Als u alle aangepaste rollen in een map wilt weergeven, gebruikt u de [functiedefinities - Rest-API weergeven.](/rest/api/authorization/roledefinitions/list)
+Als u alle aangepaste rollen in een directory wilt weer geven, gebruikt u de [roldefinities-lijst](/rest/api/authorization/roledefinitions/list) rest API.
 
 1. Begin met de volgende aanvraag:
 
@@ -41,16 +41,16 @@ Als u alle aangepaste rollen in een map wilt weergeven, gebruikt u de [functiede
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Vervang *{filter}* door het roltype.
+1. Vervang *{filter}* door het type rol.
 
     > [!div class="mx-tableFixed"]
     > | Filteren | Beschrijving |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filteren op basis van het type CustomRole |
 
-## <a name="list-custom-roles-at-a-scope"></a>Aangepaste rollen aanbieden op een bereik
+## <a name="list-custom-roles-at-a-scope"></a>Aangepaste rollen in een bereik weer geven
 
-Als u aangepaste rollen op een bereik wilt weergeven, gebruikt u de [functiedefinities - REST-API weergeven.](/rest/api/authorization/roledefinitions/list)
+Als u aangepaste rollen in een bereik wilt weer geven, gebruikt u de [roldefinities-lijst](/rest/api/authorization/roledefinitions/list) rest API.
 
 1. Begin met de volgende aanvraag:
 
@@ -58,7 +58,7 @@ Als u aangepaste rollen op een bereik wilt weergeven, gebruikt u de [functiedefi
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de rollen wilt weergeven.
+1. Vervang *{Scope}* in de URI door het bereik waarvoor u de rollen wilt weer geven.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -68,16 +68,16 @@ Als u aangepaste rollen op een bereik wilt weergeven, gebruikt u de [functiedefi
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | Resource |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
 
-1. Vervang *{filter}* door het roltype.
+1. Vervang *{filter}* door het type rol.
 
     > [!div class="mx-tableFixed"]
     > | Filteren | Beschrijving |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filteren op basis van het type CustomRole |
 
-## <a name="list-a-custom-role-definition-by-name"></a>Een aangepaste roldefinitie op naam weergeven
+## <a name="list-a-custom-role-definition-by-name"></a>Een aangepaste roldefinitie op naam vermelden
 
-Als u informatie wilt krijgen over een aangepaste rol op basis van de weergavenaam, gebruikt u de [roldefinities - REST-API opvragen.](/rest/api/authorization/roledefinitions/get)
+Als u informatie wilt weer geven over een aangepaste rol met behulp van de weergave naam, gebruikt u de [roldefinities-ophalen](/rest/api/authorization/roledefinitions/get) rest API.
 
 1. Begin met de volgende aanvraag:
 
@@ -85,7 +85,7 @@ Als u informatie wilt krijgen over een aangepaste rol op basis van de weergavena
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
     ```
 
-1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de rollen wilt weergeven.
+1. Vervang *{Scope}* in de URI door het bereik waarvoor u de rollen wilt weer geven.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -95,18 +95,18 @@ Als u informatie wilt krijgen over een aangepaste rol op basis van de weergavena
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | Resource |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
 
-1. Vervang *{filter}* door de weergavenaam voor de rol.
+1. Vervang *{filter}* door de weergave naam voor de rol.
 
     > [!div class="mx-tableFixed"]
     > | Filteren | Beschrijving |
     > | --- | --- |
-    > | `$filter=roleName+eq+'{roleDisplayName}'` | Gebruik de door de URL gecodeerde vorm van de exacte weergavenaam van de rol. Bijvoorbeeld,`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | Gebruik het formulier URL-code ring van de exacte weergave naam van de rol. Bijvoorbeeld,`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
-## <a name="list-a-custom-role-definition-by-id"></a>Een aangepaste roldefinitie op id weergeven
+## <a name="list-a-custom-role-definition-by-id"></a>Een aangepaste roldefinitie op basis van een ID weer geven
 
-Als u informatie wilt krijgen over een aangepaste rol door de unieke id, gebruikt u de [roldefinities - Rest-API opvragen.](/rest/api/authorization/roledefinitions/get)
+Als u informatie wilt ophalen over een aangepaste rol met de unieke id, gebruikt u de [roldefinities-get](/rest/api/authorization/roledefinitions/get) rest API.
 
-1. Gebruik de [functiedefinities - Lijst](/rest/api/authorization/roledefinitions/list) REST-API om de GUID-id voor de rol te krijgen.
+1. Gebruik de [roldefinities-lijst](/rest/api/authorization/roledefinitions/list) rest API om de GUID-id voor de rol op te halen.
 
 1. Begin met de volgende aanvraag:
 
@@ -114,7 +114,7 @@ Als u informatie wilt krijgen over een aangepaste rol door de unieke id, gebruik
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Vervang *{scope}* binnen de URI door het bereik waarvoor u de rollen wilt weergeven.
+1. Vervang *{Scope}* in de URI door het bereik waarvoor u de rollen wilt weer geven.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -124,17 +124,17 @@ Als u informatie wilt krijgen over een aangepaste rol door de unieke id, gebruik
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | Resource |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
 
-1. Vervang *{roleDefinitionId}* door de GUID-id van de roldefinitie.
+1. Vervang *{roledefinitionid hebben}* door de GUID-id van de roldefinitie.
 
 ## <a name="create-a-custom-role"></a>Een aangepaste rol maken
 
-Als u een aangepaste rol wilt maken, gebruikt u de [functiedefinities - REST-API maken of bijwerken.](/rest/api/authorization/roledefinitions/createorupdate) Als u deze API wilt aanroepen, moet u zijn aangemeld `Microsoft.Authorization/roleDefinitions/write` bij een `assignableScopes`gebruiker waaraan een rol is toegewezen die de toestemming heeft voor alle . Van de ingebouwde rollen bevatten alleen [eigenaar-](built-in-roles.md#owner) en [gebruikerstoegangsbeheerder](built-in-roles.md#user-access-administrator) deze machtiging.
+Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken of bijwerken](/rest/api/authorization/roledefinitions/createorupdate) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die `Microsoft.Authorization/roleDefinitions/write` de machtiging voor alle `assignableScopes`heeft. Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
 
-1. Bekijk de lijst met bewerkingen van [resourceprovideren](resource-provider-operations.md) die beschikbaar zijn om de machtigingen voor uw aangepaste rol te maken.
+1. Bekijk de lijst met beschik bare bewerkingen voor de [resource provider](resource-provider-operations.md) voor het maken van de machtigingen voor uw aangepaste rol.
 
-1. Gebruik een GUID-tool om een unieke id te genereren die wordt gebruikt voor de aangepaste rol-id. De id heeft de indeling:`00000000-0000-0000-0000-000000000000`
+1. Gebruik een GUID-hulp programma voor het genereren van een unieke id die wordt gebruikt voor de id van de aangepaste rol. De id heeft de volgende indeling:`00000000-0000-0000-0000-000000000000`
 
-1. Begin met de volgende aanvraag en instantie:
+1. Beginnen met de volgende aanvraag en hoofd tekst:
 
     ```http
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
@@ -168,7 +168,7 @@ Als u een aangepaste rol wilt maken, gebruikt u de [functiedefinities - REST-API
     }
     ```
 
-1. Vervang *{scope}* binnen de URI `assignableScopes` door de eerste van de aangepaste rol.
+1. Vervang *{Scope}* in de URI door de eerste `assignableScopes` van de aangepaste rol.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -177,21 +177,21 @@ Als u een aangepaste rol wilt maken, gebruikt u de [functiedefinities - REST-API
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Resourcegroep |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
 
-1. Vervang *{roleDefinitionId}* door de GUID-id van de aangepaste rol.
+1. Vervang *{roledefinitionid hebben}* door de GUID-id van de aangepaste rol.
 
-1. Vervang *{roleDefinitionId}* binnen de aanvraaginstantie door de GUID-id.
+1. Vervang *{roledefinitionid hebben}* door de GUID-id in de aanvraag tekst.
 
-1. Als `assignableScopes` dit een abonnement of resourcegroep is, vervangt u de *{subscriptionId}* of *{resourceGroup}* exemplaren door uw id's.
+1. Als `assignableScopes` een abonnement of resource groep is, vervangt u de exemplaren van *{subscriptionId}* of *{resourceGroup}* door uw id's.
 
-1. Als `assignableScopes` het een beheergroep is, vervangt u de instantie *{groupId}* door uw beheergroep-id. Het toevoegen van `assignableScopes` een beheergroep aan is momenteel in preview.
+1. Als `assignableScopes` een beheer groep is, vervangt u het exemplaar van *{groupid}* door de id van uw beheer groep. Een beheer groep toevoegen aan `assignableScopes` is momenteel beschikbaar als preview-versie.
 
-1. Voeg `actions` in de eigenschap de bewerkingen toe die de rol toestaat om te worden uitgevoerd.
+1. Voeg in `actions` de eigenschap de bewerkingen toe die door de functie kunnen worden uitgevoerd.
 
-1. Voeg `notActions` in de eigenschap de bewerkingen toe `actions`die zijn uitgesloten van de toegestane .
+1. Voeg in `notActions` de eigenschap de bewerkingen toe die zijn uitgesloten van de toegestaan `actions`.
 
-1. Geef `roleName` in `description` de eigenschappen en eigenschappen een unieke rolnaam en een beschrijving op. Zie [Aangepaste rollen voor](custom-roles.md)meer informatie over de eigenschappen.
+1. Geef in `roleName` de `description` eigenschappen en een unieke rolnaam en een beschrijving op. Zie voor meer informatie over de eigenschappen [aangepaste rollen](custom-roles.md).
 
-    Het volgende toont een voorbeeld van een aanvraaginstantie:
+    Hieronder ziet u een voor beeld van een aanvraag tekst:
 
     ```json
     {
@@ -227,9 +227,9 @@ Als u een aangepaste rol wilt maken, gebruikt u de [functiedefinities - REST-API
 
 ## <a name="update-a-custom-role"></a>Een aangepaste rol bijwerken
 
-Als u een aangepaste rol wilt bijwerken, gebruikt u de [functiedefinities - REST-API maken of bijwerken.](/rest/api/authorization/roledefinitions/createorupdate) Als u deze API wilt aanroepen, moet u zijn aangemeld `Microsoft.Authorization/roleDefinitions/write` bij een `assignableScopes`gebruiker waaraan een rol is toegewezen die de toestemming heeft voor alle . Van de ingebouwde rollen bevatten alleen [eigenaar-](built-in-roles.md#owner) en [gebruikerstoegangsbeheerder](built-in-roles.md#user-access-administrator) deze machtiging.
+Als u een aangepaste rol wilt bijwerken, gebruikt u de [roldefinities-rest API maken of bijwerken](/rest/api/authorization/roledefinitions/createorupdate) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die `Microsoft.Authorization/roleDefinitions/write` de machtiging voor alle `assignableScopes`heeft. Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
 
-1. Gebruik de [functiedefinities - Lijst-](/rest/api/authorization/roledefinitions/list) of [roldefinities - Download](/rest/api/authorization/roledefinitions/get) DE REST-API om informatie te krijgen over de aangepaste rol. Zie de sectie Aangepaste [rollen lijst](#list-custom-roles) voor meer informatie.
+1. De roldefinities gebruiken [-lijst](/rest/api/authorization/roledefinitions/list) -of [roldefinities-rest API ophalen](/rest/api/authorization/roledefinitions/get) om informatie over de aangepaste rol op te halen. Zie de sectie [met aangepaste rollen](#list-custom-roles) van de eerdere lijst voor meer informatie.
 
 1. Begin met de volgende aanvraag:
 
@@ -237,7 +237,7 @@ Als u een aangepaste rol wilt bijwerken, gebruikt u de [functiedefinities - REST
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Vervang *{scope}* binnen de URI `assignableScopes` door de eerste van de aangepaste rol.
+1. Vervang *{Scope}* in de URI door de eerste `assignableScopes` van de aangepaste rol.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -246,9 +246,9 @@ Als u een aangepaste rol wilt bijwerken, gebruikt u de [functiedefinities - REST
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Resourcegroep |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
 
-1. Vervang *{roleDefinitionId}* door de GUID-id van de aangepaste rol.
+1. Vervang *{roledefinitionid hebben}* door de GUID-id van de aangepaste rol.
 
-1. Maak op basis van de informatie over de aangepaste rol een aanvraaginstantie met de volgende indeling:
+1. Maak op basis van de informatie over de aangepaste rol een aanvraag tekst met de volgende indeling:
 
     ```json
     {
@@ -278,9 +278,9 @@ Als u een aangepaste rol wilt bijwerken, gebruikt u de [functiedefinities - REST
     }
     ```
 
-1. Werk de aanvraaginstantie bij met de wijzigingen die u wilt aanbrengen in de aangepaste rol.
+1. Werk de hoofd tekst van de aanvraag bij met de wijzigingen die u wilt aanbrengen in de aangepaste rol.
 
-    Het volgende toont een voorbeeld van een aanvraaginstantie met een nieuwe actie voor diagnostische instellingen:
+    Hieronder ziet u een voor beeld van een aanvraag tekst met een nieuwe actie voor Diagnostische instellingen toegevoegd:
 
     ```json
     {
@@ -317,9 +317,9 @@ Als u een aangepaste rol wilt bijwerken, gebruikt u de [functiedefinities - REST
 
 ## <a name="delete-a-custom-role"></a>Een aangepaste rol verwijderen
 
-Als u een aangepaste rol wilt verwijderen, gebruikt u de [API Voor roldefinities verwijderen](/rest/api/authorization/roledefinitions/delete) . Als u deze API wilt aanroepen, moet u zijn aangemeld `Microsoft.Authorization/roleDefinitions/delete` bij een `assignableScopes`gebruiker waaraan een rol is toegewezen die de toestemming heeft voor alle . Van de ingebouwde rollen bevatten alleen [eigenaar-](built-in-roles.md#owner) en [gebruikerstoegangsbeheerder](built-in-roles.md#user-access-administrator) deze machtiging.
+Als u een aangepaste rol wilt verwijderen, gebruikt u de [roldefinities-rest API verwijderen](/rest/api/authorization/roledefinitions/delete) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die `Microsoft.Authorization/roleDefinitions/delete` de machtiging voor alle `assignableScopes`heeft. Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
 
-1. Gebruik de [functiedefinities - Lijst-](/rest/api/authorization/roledefinitions/list) of [roldefinities - Download](/rest/api/authorization/roledefinitions/get) DE API voor REST om de GUID-id van de aangepaste rol te krijgen. Zie de sectie Aangepaste [rollen lijst](#list-custom-roles) voor meer informatie.
+1. Gebruik de roldefinities [-lijst](/rest/api/authorization/roledefinitions/list) -of [roldefinities-Get](/rest/api/authorization/roledefinitions/get) rest API om de GUID-id van de aangepaste rol op te halen. Zie de sectie [met aangepaste rollen](#list-custom-roles) van de eerdere lijst voor meer informatie.
 
 1. Begin met de volgende aanvraag:
 
@@ -327,7 +327,7 @@ Als u een aangepaste rol wilt verwijderen, gebruikt u de [API Voor roldefinities
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. Vervang *{scope}* binnen de URI door het bereik dat u de aangepaste rol wilt verwijderen.
+1. Vervang *{Scope}* in de URI door het bereik dat u wilt verwijderen van de aangepaste rol.
 
     > [!div class="mx-tableFixed"]
     > | Bereik | Type |
@@ -336,10 +336,10 @@ Als u een aangepaste rol wilt verwijderen, gebruikt u de [API Voor roldefinities
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | Resourcegroep |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
 
-1. Vervang *{roleDefinitionId}* door de GUID-id van de aangepaste rol.
+1. Vervang *{roledefinitionid hebben}* door de GUID-id van de aangepaste rol.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aangepaste rollen voor Azure-resources](custom-roles.md)
-- [Toegang tot Azure-bronnen beheren met RBAC en de REST API](role-assignments-rest.md)
-- [Azure REST API-verwijzing](/rest/api/azure/)
+- [Toegang tot Azure-resources beheren met RBAC en de REST API](role-assignments-rest.md)
+- [Naslag informatie over Azure REST API](/rest/api/azure/)

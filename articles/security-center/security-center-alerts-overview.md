@@ -1,6 +1,6 @@
 ---
-title: Beveiligingswaarschuwingen in Azure Security Center | Microsoft Documenten
-description: In dit onderwerp wordt uitgelegd wat beveiligingswaarschuwingen zijn en welke verschillende typen beschikbaar zijn in Azure Security Center.
+title: Beveiligings waarschuwingen in Azure Security Center | Microsoft Docs
+description: In dit onderwerp wordt uitgelegd welke beveiligings waarschuwingen er zijn en welke verschillende typen beschikbaar zijn in Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,85 +11,85 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
 ms.openlocfilehash: 697c038a2fefdde8e488dad23a4e38e0b2b7b288
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79415859"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
-In Azure Security Center zijn er verschillende waarschuwingen voor veel verschillende resourcetypen. Security Center genereert waarschuwingen voor resources die zijn geïmplementeerd op Azure, en ook voor resources die zijn geïmplementeerd op on-premises en hybride cloudomgevingen.
+In Azure Security Center zijn er diverse waarschuwingen voor veel verschillende resource typen. Security Center genereert waarschuwingen voor resources die zijn geïmplementeerd op Azure en ook voor resources die zijn geïmplementeerd op on-premises en hybride Cloud omgevingen.
 
-Beveiligingswaarschuwingen worden geactiveerd door geavanceerde detecties en zijn alleen beschikbaar in de standaardlaag van Azure Security Center. Er is een gratis proefversie beschikbaar. U kunt uw versie opwaarderen door Prijscategorie te selecteren in het gedeelte [Beveiligingsbeleid](security-center-pricing.md). Ga naar de [Security Center-pagina](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie over tarieven.
+Beveiligings waarschuwingen worden geactiveerd door geavanceerde detecties en zijn alleen beschikbaar in de laag standaard van Azure Security Center. Er is een gratis proefversie beschikbaar. U kunt uw versie opwaarderen door Prijscategorie te selecteren in het gedeelte [Beveiligingsbeleid](security-center-pricing.md). Ga naar de [Security Center-pagina](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie over tarieven.
 
-## <a name="responding-to-todays-threats"></a>Reageren op de <a name="respond-threats"> </a> bedreigingen van vandaag
+## <a name="responding-to-todays-threats"></a>Reageren op bedreigingen <a name="respond-threats"> </a> van vandaag
 
-De bedreigingen zijn de afgelopen 20 jaar aanzienlijk veranderd. In het verleden, bedrijven meestal alleen zorgen te maken over website defacement door individuele aanvallers die vooral geïnteresseerd waren in het zien van "wat ze konden doen". De aanvallers van vandaag zijn veel geavanceerder en georganiseerder. Ze hebben vaak specifieke financiële en strategische doelstellingen. Ook hebben ze meer middelen beschikbaar, omdat ze mogelijk worden gefinancierd door staten of de georganiseerde misdaad.
+De bedreigingen zijn de afgelopen 20 jaar aanzienlijk veranderd. In het verleden moesten bedrijven meestal zich richten op een website met individuele aanvallers die meestal geïnteresseerd zijn in de weer gave ' wat ze zouden kunnen doen '. De huidige aanvallers zijn veel geavanceerder en georganiseerd. Ze hebben vaak specifieke financiële en strategische doelstellingen. Ook hebben ze meer middelen beschikbaar, omdat ze mogelijk worden gefinancierd door staten of de georganiseerde misdaad.
 
-Deze veranderende realiteit hebben geleid tot een ongekend niveau van professionaliteit in de aanvaller gelederen. Ze zijn niet langer geïnteresseerd in het beschadigen van websites. Ze zijn nu geïnteresseerd in het stelen van informatie, financiële rekeningen en privégegevens - die ze allemaal kunnen gebruiken om geld te genereren op de open markt of om een bepaalde zakelijke, politieke of militaire positie te benutten. Nog zorgwekkender dan de aanvallers met financiële oogmerken zijn de aanvallers die netwerken kraken om schade te berokkenen aan de infrastructuur en personen.
+Deze veranderende vaststaande hebben geleid tot een ongekend niveau van professionalisatie in de aanvals classificaties. Ze zijn niet langer geïnteresseerd in het beschadigen van websites. Ze zijn nu geïnteresseerd in het stelen van informatie, financiële accounts en persoonlijke gegevens, die allemaal kunnen worden gebruikt om geld te genereren op de open markt of om gebruik te maken van een bepaalde bedrijfs-, politieke of militaire positie. Nog zorgwekkender dan de aanvallers met financiële oogmerken zijn de aanvallers die netwerken kraken om schade te berokkenen aan de infrastructuur en personen.
 
 Organisaties implementeren als antwoord vaak verschillende afzonderlijke oplossingen die zich richten op het verdedigen van de bedrijfsomtrek of de eindpunten waarbij specifieke aanvalskenmerken in de gaten worden gehouden. Deze oplossingen genereren meestal een groot aantal onbetrouwbare waarschuwingen die een beveiligingsanalist vervolgens moet bekijken en onderzoeken. De meeste organisaties hebben niet de tijd en expertise die vereist zijn om te reageren op deze waarschuwingen - vele worden niet nader onderzocht.  
 
-Bovendien hebben aanvallers hun methoden ontwikkeld om veel op handtekeningen gebaseerde verdedigingen te ondermijnen en [zich aan te passen aan cloudomgevingen.](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/) Nieuwe handelswijzen zijn vereist om nieuwe bedreigingen sneller te identificeren, te detecteren en erop te reageren.
+Daarnaast hebben aanvallers hun methoden ontwikkeld om veel op hand tekeningen gebaseerde verdedigingen te doen en zich aan [te passen aan Cloud omgevingen](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/). Nieuwe handelswijzen zijn vereist om nieuwe bedreigingen sneller te identificeren, te detecteren en erop te reageren.
 
-## <a name="what-are-security-alerts-and-security-incidents"></a>Wat zijn beveiligingswaarschuwingen en beveiligingsincidenten? 
+## <a name="what-are-security-alerts-and-security-incidents"></a>Wat zijn beveiligings waarschuwingen en beveiligings incidenten? 
 
-**Waarschuwingen** zijn de meldingen die Security Center genereert wanneer het bedreigingen op uw resources detecteert. Security Center geeft prioriteit aan en geeft een overzicht van de waarschuwingen, samen met de informatie die nodig is om het probleem snel te onderzoeken. Security Center geeft ook aanbevelingen voor hoe u een aanval kunt oplossen.
+**Waarschuwingen** zijn de meldingen die Security Center gegenereerd wanneer er bedreigingen voor uw resources worden gedetecteerd. Security Center prioriteiten en de waarschuwingen weer gegeven, samen met de informatie die u nodig hebt om snel het probleem te onderzoeken. Security Center geeft ook aanbevelingen voor hoe u een aanval kunt oplossen.
 
-**Een beveiligingsincident** is een verzameling gerelateerde waarschuwingen, in plaats van elke waarschuwing afzonderlijk te vermelden. Security Center maakt gebruik van [Cloud Smart Alert Correlatie](security-center-alerts-cloud-smart.md) om verschillende waarschuwingen en low fidelity signalen te correleren in beveiligingsincidenten.
+**Een beveiligings incident** is een verzameling van gerelateerde waarschuwingen, in plaats van elke waarschuwing afzonderlijk weer te geven. Security Center maakt gebruik van de correlatie van een [Smart-waarschuwing](security-center-alerts-cloud-smart.md) in de cloud om verschillende waarschuwingen en signalen met lage betrouw baarheid te correleren in beveiligings incidenten
 
-Met behulp van incidenten biedt Security Center u één overzicht van een aanvalscampagne en alle gerelateerde waarschuwingen. Met deze weergave u snel begrijpen welke acties de aanvaller heeft uitgevoerd en welke resources zijn beïnvloed. Zie [Cloud smart alert-correlatie](security-center-alerts-cloud-smart.md)voor meer informatie.
+Met behulp van incidenten Security Center biedt u één weer gave van een aanvals campagne en alle gerelateerde waarschuwingen. Met deze weer gave kunt u snel inzicht krijgen in welke acties de aanvaller heeft geduurd en welke resources zijn beïnvloed. Zie [Cloud Smart alert correlatie](security-center-alerts-cloud-smart.md)(Engelstalig) voor meer informatie.
 
 
 
 ## <a name="how-does-security-center-detect-threats"></a>Hoe detecteert Security Center bedreigingen? <a name="detect-threats"> </a>
 
-Beveiligingsonderzoekers van Microsoft zijn voortdurend op zoek naar bedreigingen. Vanwege de wereldwijde aanwezigheid van Microsoft in de cloud en on-premises, hebben ze toegang tot een uitgebreide set telemetrie. De uitgebreide en gevarieerde verzameling datasets maakt het ontdekken van nieuwe aanvalspatronen en trends mogelijk in zijn on-premises consumenten- en bedrijfsproducten, evenals zijn online diensten. Als gevolg hiervan kan Security Center de detectie-algoritmen snel bijwerken wanneer aanvallers met nieuwe en steeds meer geavanceerde aanvallen komen. Met deze benadering kunt u de snel veranderende bedreigingen bijhouden.
+Beveiligingsonderzoekers van Microsoft zijn voortdurend op zoek naar bedreigingen. Vanwege de wereld wijde aanwezigheid van micro soft in de Cloud en on-premises, hebben ze toegang tot een expansieve,-set telemetrie. Dankzij de uitgebreide en gevarieerde verzameling gegevens sets kunt u nieuwe aanvals patronen en-trends detecteren in de on-premises consumenten-en bedrijfs producten, evenals de onlineservices. Als gevolg hiervan kan Security Center de detectie-algoritmen snel bijwerken wanneer aanvallers met nieuwe en steeds meer geavanceerde aanvallen komen. Met deze benadering kunt u de snel veranderende bedreigingen bijhouden.
 
-Om echte bedreigingen te detecteren en fout-positieven te verminderen, verzamelt, analyseert en integreert Security Center logboekgegevens van uw Azure-bronnen en het netwerk. Het werkt ook met connected partner oplossingen, zoals firewall en endpoint protection oplossingen. Security Center analyseert deze informatie, vaak correleren informatie uit meerdere bronnen, om bedreigingen te identificeren.
+Security Center verzamelt, analyseert en integreert de logboek gegevens van uw Azure-resources en het netwerk om echte bedreigingen te detecteren en fout-positieven te verminderen. Het werkt ook met verbonden partner oplossingen, zoals firewall-en eindpunt beveiligings oplossingen. Security Center analyseert deze gegevens, vaak het correleren van informatie uit meerdere bronnen, om bedreigingen te identificeren.
 
 ![Gegevensverzameling en -presentatie in Security Center](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
 
 Security Center maakt gebruik van geavanceerde beveiligingsanalyses die veel verder gaan dan op handtekeningen gebaseerde benaderingen. Doorbraken in big data- en [machine learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)-technologieën worden gebruikt om gebeurtenissen overal in de cloudinfrastructuur te evalueren - waarbij bedreigingen worden gedetecteerd die onmogelijk te identificeren waren geweest met behulp van handmatige benaderingen en het voorspellen van de ontwikkeling van aanvallen. Deze beveiligingsanalyses omvatten:
 
-* **Geïntegreerde threat intelligence**: Microsoft heeft een enorme hoeveelheid wereldwijde threat intelligence. Telemetrie komt uit meerdere bronnen, zoals Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, de Microsoft Digital Crimes Unit (DCU) en Microsoft Security Response Center (MSRC). Onderzoekers ontvangen ook informatie over bedreigingsinformatie die wordt gedeeld door grote cloudserviceproviders en feeds van andere derden. Azure Security Center kan deze informatie gebruiken om u te waarschuwen over bedreigingen van bekende beveiligingsrisico’s.
+* **Geïntegreerde bedreigings informatie**: micro soft heeft een enorme hoeveelheid wereld wijde bedreigings informatie. Telemetrie loopt over van meerdere bronnen, zoals Azure, Office 365, micro soft CRM Online, micro soft Dynamics AX, outlook.com, MSN.com, de micro soft Digital misdrijven Unit (DCU) en het micro soft Security Response Center (MSRC). Onderzoekers ontvangen ook informatie over bedreigingen die worden gedeeld door grote Cloud serviceproviders en feeds van andere derden. Azure Security Center kan deze informatie gebruiken om u te waarschuwen over bedreigingen van bekende beveiligingsrisico’s.
 
-* **Gedragsanalyse**: Gedragsanalyse is een techniek die gegevens analyseert en vergelijkt met een verzameling bekende patronen. Deze patronen zijn echter geen eenvoudige handtekeningen. Ze worden vastgesteld aan de hand van complexe machine learning-algoritmen die worden toegepast op grote gegevenssets. Ze worden ook vastgesteld via de zorgvuldige analyse van schadelijk gedrag door deskundige analisten. Azure Security Center kan gedragsanalyses gebruiken om gecompromitteerde bronnen te identificeren op basis van analyse van logboeken van virtuele machines, logboeken van virtuele netwerkapparaten, fabriclogs, crashdumps en andere bronnen.
+* **Gedrags analyse**: gedrags analyse is een techniek die gegevens analyseert en vergelijkt met een verzameling van bekende patronen. Deze patronen zijn echter geen eenvoudige handtekeningen. Ze worden vastgesteld aan de hand van complexe machine learning-algoritmen die worden toegepast op grote gegevenssets. Ze worden ook vastgesteld via de zorgvuldige analyse van schadelijk gedrag door deskundige analisten. Azure Security Center kunt gedrags analyse gebruiken om gemanipuleerde resources te identificeren op basis van de analyse van logboeken van virtuele machines, logboeken voor virtuele netwerk apparaten, infrastructuur logboeken, crash dumps en andere bronnen.
 
-* **Anomaliedetectie**: Azure Security Center gebruikt ook anomaliedetectie om bedreigingen te identificeren. In tegenstelling tot gedragsanalyse (die afhankelijk is van bekende patronen die zijn afgeleid van grote gegevenssets), is anomaliedetectie meer "gepersonaliseerd" en richt het zich op basislijnen die specifiek zijn voor uw implementaties. Machine learning wordt toegepast om de normale activiteit voor uw implementaties te bepalen en vervolgens worden regels gegenereerd om afwijkende omstandigheden te definiëren die een veiligheidsrisico zouden kunnen vormen.
+* **Afwijkings detectie**: Azure Security Center gebruikt ook anomalie detectie om bedreigingen te identificeren. In tegens telling tot gedrags analyse (die afhankelijk is van bekende patronen die zijn afgeleid van grote gegevens sets), is afwijkings detectie meer ' persoonlijk ' en wordt er gekeken naar basis lijnen die specifiek zijn voor uw implementaties. Machine learning wordt toegepast om de normale activiteit voor uw implementaties te bepalen en vervolgens worden regels gegenereerd om afwijkende omstandigheden te definiëren die een veiligheidsrisico zouden kunnen vormen.
 
 ## <a name="how-are-alerts-classified"></a>Hoe worden waarschuwingen geclassificeerd?
 
-Security Center wijst een ernst toe aan waarschuwingen, zodat u prioriteit geven aan de volgorde waarin u elke waarschuwing bijwoont, zodat wanneer een resource wordt gecompromitteerd, u er meteen bij komen. De ernst is gebaseerd op hoe zeker Security Center is in de bevinding of de analytische gebruikt om de waarschuwing en het betrouwbaarheidsniveau dat er kwaadaardige bedoelingen achter de activiteit die leidde tot de waarschuwing.
+Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde kunt bepalen van elke waarschuwing, zodat u meteen aan de voor waarde wordt gevraagd wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
 
 > [!NOTE]
-> De ernst van de waarschuwing wordt anders weergegeven in de portal en versies van de REST API die voorafgaan aan 01-01-2019. Als u een oudere versie van de API gebruikt, upgradet u voor de consistente ervaring die hieronder wordt beschreven.
+> Ernst van waarschuwing wordt anders weer gegeven in de portal en de versies van de REST API die vóór datum 01-01-2019. Als u een oudere versie van de API gebruikt, moet u een upgrade uitvoeren voor de consistente ervaring die hieronder wordt beschreven.
 
-- **Hoog:** Er is een grote kans dat uw bron is aangetast. Je moet er meteen naar kijken. Security Center heeft veel vertrouwen in zowel de kwaadaardige opzet en in de bevindingen die worden gebruikt om de waarschuwing uit te geven. Bijvoorbeeld een waarschuwing die de uitvoering van een bekend kwaadaardig hulpmiddel zoals Mimikatz detecteert, een veelgebruikte tool die wordt gebruikt voor diefstal van referenties.
-- **Medium:** Dit is waarschijnlijk een verdachte activiteit kan erop wijzen dat een bron is aangetast.
-Security Center's vertrouwen in de analytische of het vinden is gemiddeld en het vertrouwen van de kwaadaardige intentie is gemiddeld tot hoog. Dit zou meestal machine learning of anomalie-gebaseerde detecties. Bijvoorbeeld een aanmeldingspoging vanaf een afwijkende locatie.
-- **Laag:** Dit kan een goedaardigpositief of een geblokkeerde aanval zijn.
-   * Security Center is niet zeker genoeg dat de bedoeling kwaadaardig is en de activiteit kan onschuldig zijn. Log clear is bijvoorbeeld een actie die kan plaatsvinden wanneer een aanvaller zijn sporen probeert te verbergen, maar in veel gevallen een routinebewerking is die door beheerders wordt uitgevoerd.
-   * Security Center vertelt je meestal niet wanneer aanvallen werden geblokkeerd, tenzij het een interessant geval is waar je naar aanraadt. 
-- **Informatief:** U ziet alleen informatieve waarschuwingen wanneer u inzoomt op een beveiligingsincident of als u de REST-API gebruikt met een specifieke waarschuwings-ID. Een incident bestaat meestal uit een aantal waarschuwingen, waarvan sommige op zichzelf kunnen verschijnen als slechts informatief, maar in de context van de andere waarschuwingen kan het waard zijn om nader te bekijken. 
+- **Hoog:** Er is een hoge waarschijnlijkheid dat uw resource is aangetast. U ziet het meteen. Security Center heeft hoge betrouw baarheid in zowel de schadelijke intentie als de bevindingen die worden gebruikt voor het uitgeven van de waarschuwing. Een waarschuwing waarmee de uitvoering van een bekend schadelijk hulp programma, zoals Mimikatz, wordt gedetecteerd, is een algemeen hulp programma dat wordt gebruikt voor referentie diefstal.
+- **Gemiddeld:** Dit is waarschijnlijk een verdachte activiteit kan erop wijzen dat een bron is aangetast.
+Het vertrouwen van Security Center in het analyse programma of het zoeken is gemiddeld en het vertrouwen van de schadelijke intentie is gemiddeld voor hoog. Deze worden doorgaans machine learning en detecties op basis van anomalieën. Bijvoorbeeld een aanmeldings poging vanaf een afwijkende locatie.
+- **Laag:** Dit kan een goed aardige positieve of een geblokkeerde aanval zijn.
+   * Security Center niet zeker weet dat de intentie schadelijk is en de activiteit mogelijk onschuld is. Logboek wissen is bijvoorbeeld een actie die zich kan voordoen wanneer een aanvaller hun tracks probeert te verbergen, maar in veel gevallen is een routine bewerking door beheerders uitgevoerd.
+   * Security Center vertelt u doorgaans niet wanneer er aanvallen zijn geblokkeerd, tenzij dit een interessant geval is. 
+- **Ter informatie:** Er worden alleen informatieve waarschuwingen weer geven wanneer u inzoomt op een beveiligings incident of als u de REST API met een specifieke waarschuwings-ID gebruikt. Een incident bestaat doorgaans uit een aantal waarschuwingen, wat soms alleen ter informatie kan worden weer gegeven, maar in de context van de andere waarschuwingen kan het een betrouw bare zijn. 
 
-## <a name="continuous-monitoring-and-assessments"></a>Continue monitoring en beoordelingen
+## <a name="continuous-monitoring-and-assessments"></a>Doorlopende bewaking en evaluaties
 
-Azure Security Center profiteert van beveiligingsonderzoek en data science-teams in heel Microsoft die continu controleren op wijzigingen in het bedreigingslandschap. Dit omvat de volgende initiatieven:
+Azure Security Center voor delen van het uitvoeren van beveiligings onderzoek en data Science teams in micro soft die voortdurend controleren op wijzigingen in de beveiliging tegen bedreigingen. Dit omvat de volgende initiatieven:
 
-* **Monitoring van bedreigingsinformatie**: Threat intelligence omvat mechanismen, indicatoren, implicaties en bruikbare adviezen over bestaande of opkomende bedreigingen. Deze informatie wordt gedeeld in de beveiligingscommunity en Microsoft volgt continu feeds met informatie over bedreigingen uit interne en externe bronnen.
-* **Signaaldelen:** Inzichten van beveiligingsteams in het brede portfolio van cloud- en on-premises services, servers en clienteindpuntapparaten van Microsoft worden gedeeld en geanalyseerd.
+* **Threat Intelligence-bewaking**: bedreigings informatie omvat mechanismen, indica toren, implicaties en bruikbare adviezen over bestaande of opkomende bedreigingen. Deze informatie wordt gedeeld in de beveiligingscommunity en Microsoft volgt continu feeds met informatie over bedreigingen uit interne en externe bronnen.
+* **Signaal deling**: inzichten van beveiligings teams in het brede assortiment van de Cloud en on-premises services van micro soft, servers en client eindpunt apparaten worden gedeeld en geanalyseerd.
 * **Microsoft-beveiligingsspecialisten**: continue inzet van teams overal bij Microsoft die op gespecialiseerde beveiligingsgebieden werken, zoals forensisch onderzoek en webaanvaldetectie.
 * **Detectieafstemming**: algoritmen worden uitgevoerd op echte gegevenssets van klanten en beveiligingsonderzoekers werken samen met klanten om de resultaten te valideren. Echte en fout-positieven worden gebruikt voor het verfijnen van machine learning-algoritmen.
 
-Deze gecombineerde inspanningen culmineren in nieuwe en verbeterde detecties, waar u direct van profiteren - er is geen actie voor u om te ondernemen.
+Deze gecombineerde inspanningen culminate in nieuwe en verbeterde detecties, die u direct kunt voor delen. u hoeft zich geen actie te ondernemen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leert u over de verschillende soorten waarschuwingen die beschikbaar zijn in Security Center. Zie voor meer informatie:
+In dit artikel hebt u geleerd over de verschillende soorten waarschuwingen die beschikbaar zijn in Security Center. Zie voor meer informatie:
 
-* [Bescherming tegen bedreigingen in Azure Security Center](threat-protection.md) - Voor een korte beschrijving van de bronnen van de beveiligingswaarschuwingen die worden weergegeven door Azure Security Center 
-* **Beveiligingswaarschuwingen in Azure Activity Log - Beveiligingswaarschuwingen** en incidenten worden niet alleen beschikbaar in de Azure-portal of programmatisch, maar worden ook gecontroleerd als gebeurtenissen in Azure Activity [Log](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Zie [Beveiligingswaarschuwingen in azure-activiteitenlogboek](https://go.microsoft.com/fwlink/?linkid=2114113) voor meer informatie over het gebeurtenisschema
+* [Beveiliging tegen bedreigingen in azure Security Center](threat-protection.md) : een korte beschrijving van de bronnen van de beveiligings waarschuwingen die worden weer gegeven door Azure Security Center 
+* **Beveiligings waarschuwingen in azure-activiteiten logboek** -naast de beschik baarheid van de Azure portal of programmatisch, worden beveiligings waarschuwingen en incidenten gecontroleerd als gebeurtenissen in [Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Zie [beveiligings waarschuwingen in azure-activiteiten logboek](https://go.microsoft.com/fwlink/?linkid=2114113) voor meer informatie over het gebeurtenis schema
 

@@ -1,6 +1,6 @@
 ---
-title: Mediabestanden indexeren met Azure Media Indexer
-description: Azure Media Indexer stelt u in staat om inhoud van uw mediabestanden doorzoekbaar te maken en een volledige teksttranscriptie te genereren voor ondertiteling en trefwoorden. In dit onderwerp wordt uitgelegd hoe u Media Indexer gebruikt.
+title: Media bestanden indexeren met Azure Media Indexer
+description: Met Azure Media Indexer kunt u inhoud van uw media bestanden doorzoekbaar maken en een transcriptie van volledige tekst genereren voor ondertiteling en tref woorden. In dit onderwerp wordt beschreven hoe u Media Indexer gebruikt.
 services: media-services
 documentationcenter: ''
 author: Asolanki
@@ -16,41 +16,41 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163995"
 ---
-# <a name="indexing-media-files-with-azure-media-indexer"></a>Mediabestanden indexeren met Azure Media Indexer
+# <a name="indexing-media-files-with-azure-media-indexer"></a>Media bestanden indexeren met Azure Media Indexer
 
 > [!NOTE]
-> De **mediaprocessor azure media-indexer** wordt buiten gebruik gesteld. Zie voor de pensioendata dit [onderwerp met oudere onderdelen.](legacy-components.md) [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde mediaprocessor. Zie [Migreren van Azure Media Indexer en Azure Media Indexer 2 naar Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)voor meer informatie.
+> De **Azure media indexer** -media processor wordt buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
 
-Azure Media Indexer stelt u in staat om inhoud van uw mediabestanden doorzoekbaar te maken en een volledige teksttranscriptie te genereren voor ondertiteling en trefwoorden. U één mediabestand of meerdere mediabestanden in een batch verwerken.  
+Met Azure Media Indexer kunt u inhoud van uw media bestanden doorzoekbaar maken en een transcriptie van volledige tekst genereren voor ondertiteling en tref woorden. U kunt één media bestand of meerdere media bestanden in een batch verwerken.  
 
-Bij het indexeren van inhoud moet u mediabestanden gebruiken met duidelijke spraak (zonder achtergrondmuziek, ruis, effecten of een sisser van de microfoon). Enkele voorbeelden van de juiste inhoud zijn: opgenomen vergaderingen, lezingen of presentaties. De volgende inhoud is mogelijk niet geschikt voor indexering: films, tv-programma's, alles met gemengde audio- en geluidseffecten, slecht opgenomen inhoud met achtergrondgeluid (gesis).
+Wanneer u inhoud indexeert, moet u ervoor zorgen dat u media bestanden gebruikt met duidelijke spraak (zonder achtergrond muziek, ruis, effecten of microfoon hiss). Enkele voor beelden van de juiste inhoud zijn: vastgelegde vergaderingen, colleges of presentaties. De volgende inhoud is mogelijk niet geschikt voor indexering: films, TV-Program ma's, alles met gemengde audio en geluids effecten, slecht vastgelegde inhoud met achtergrond geluid (hiss).
 
-Een indexeringstaak kan de volgende uitvoer genereren:
+Een indexerings taak kan de volgende uitvoer genereren:
 
-* Bestanden met ondertiteling in de volgende indelingen: **TTML**en **WebVTT**.
+* Ondertitelings bestanden in de volgende indelingen: **TTML**en **WebVTT**.
   
-    Bestanden met ondertiteling bevatten een tag met de naam Herkenbaarheid, die een indexeringstaak scoort op basis van hoe herkenbaar de spraak in de bronvideo is.  U de waarde van Recognizeability gebruiken om uitvoerbestanden te screenen voor bruikbaarheid. Een lage score zou betekenen slechte indexering resultaten als gevolg van audiokwaliteit.
-* Trefwoordbestand (XML).
+    Ondertitelings bestanden bevatten een tag met de naam herkenning, waarmee een indexerings taak wordt gescoord op basis van de manier waarop de spraak in de bron video herkenbaar is.  U kunt de waarde van herkenning voor scherm uitvoer bestanden gebruiken voor bruikbaarheid. Een lage score zou een slechte indexerings resultaat hebben als gevolg van de audio kwaliteit.
+* Trefwoord bestand (XML).
 
-In dit artikel ziet u hoe u indexeringstaken maakt om een asset te **indexeren** en **meerdere bestanden te indexeren**.
+In dit artikel wordt beschreven hoe u Indexeer taken maakt voor **het indexeren van een Asset en het** **indexeren van meerdere bestanden**.
 
-## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Configuratie- en manifestbestanden gebruiken voor indexeringstaken
-U meer details voor uw indexeringstaken opgeven met behulp van een taakconfiguratie. U bijvoorbeeld opgeven welke metagegevens u moet gebruiken voor uw mediabestand. Deze metadata wordt gebruikt door de taalengine om zijn woordenschat uit te breiden en verbetert de nauwkeurigheid van de spraakherkenning aanzienlijk.  U ook de gewenste uitvoerbestanden opgeven.
+## <a name="using-configuration-and-manifest-files-for-indexing-tasks"></a>Configuratie-en manifest bestanden gebruiken voor indexerings taken
+U kunt meer informatie voor uw indexerings taken opgeven met behulp van een taak configuratie. U kunt bijvoorbeeld opgeven welke meta gegevens voor uw media bestand moeten worden gebruikt. Deze meta gegevens worden door de taal engine gebruikt om de bijbehorende woorden lijst uit te breiden, waardoor de nauw keurigheid van de spraak herkenning aanzienlijk wordt verbeterd.  U kunt ook de gewenste uitvoer bestanden opgeven.
 
-U ook meerdere mediabestanden tegelijk verwerken met behulp van een manifestbestand.
+U kunt ook meerdere media bestanden tegelijk verwerken door een manifest bestand te gebruiken.
 
-Zie [Taakvoorinstelling voor Azure Media Indexer voor](https://msdn.microsoft.com/library/dn783454.aspx)meer informatie .
+Zie voor meer informatie [taak vooraf instellen voor Azure media indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
-## <a name="index-an-asset"></a>Een actief indexeren
-Met de volgende methode wordt een mediabestand als een actief geüpload en wordt een taak gemaakt om het actief te indexeren.
+## <a name="index-an-asset"></a>Een Asset indexeren
+Met de volgende methode wordt een media bestand als een Asset geüpload en wordt een taak gemaakt om het activum te indexeren.
 
-Als er geen configuratiebestand is opgegeven, wordt het mediabestand geïndexeerd met alle standaardinstellingen.
+Als er geen configuratie bestand is opgegeven, wordt het Media bestand geïndexeerd met alle standaard instellingen.
 
 ```csharp
     static bool RunIndexingJob(string inputMediaFilePath, string outputFolder, string configurationFile = "")
@@ -142,23 +142,23 @@ Als er geen configuratiebestand is opgegeven, wordt het mediabestand geïndexeer
 ```
 
 <!-- __ -->
-### <a name="output-files"></a><a id="output_files"></a>Uitvoerbestanden
-Standaard genereert een indexeringstaak de volgende uitvoerbestanden. De bestanden worden opgeslagen in het eerste uitvoeritem.
+### <a name="output-files"></a><a id="output_files"></a>Uitvoer bestanden
+Standaard genereert een indexerings taak de volgende uitvoer bestanden. De bestanden worden opgeslagen in het eerste uitvoer activum.
 
-Wanneer er meer dan één invoermediabestand is, genereert Indexer een manifestbestand voor de taakuitvoer, genaamd 'JobResult.txt'. Voor elk invoermediabestand worden de resulterende TTML-, WebVTT- en trefwoordbestanden achtereenvolgens genummerd en benoemd met de naam 'Alias'.
+Wanneer er meer dan één invoer Media bestand is, genereert de Indexeer functie een manifest bestand voor de taak uitvoer, met de naam JobResult. txt. Voor elk invoer Media bestand zijn de resulterende TTML-, WebVTT-en trefwoord bestanden opeenvolgend genummerd en benoemd met behulp van de alias.
 
 | Bestandsnaam | Beschrijving |
 | --- | --- |
-| **InvoerFileName.ttml**<br/>**InputFileName.vtt** |CC-bestanden (Closed Caption) in TTML- en WebVTT-indelingen.<br/><br/>Ze kunnen worden gebruikt om audio- en videobestanden toegankelijk te maken voor mensen met een gehoorbeperking.<br/><br/>Ondertitelingsbestanden bevatten een tag met de naam <b>Herkenbaarheid</b> die een indexeringstaak scoort op basis van hoe herkenbaar de spraak in de bronvideo is.  U de waarde van <b>Recognizeability</b> gebruiken om uitvoerbestanden te screenen voor bruikbaarheid. Een lage score zou betekenen slechte indexering resultaten als gevolg van audiokwaliteit. |
-| **InvoerFileName.kw.xml<br/>InputFileName.info** |Trefwoord- en infobestanden. <br/><br/>Trefwoordbestand is een XML-bestand dat trefwoorden bevat die zijn geëxtraheerd uit de spraakinhoud, met frequentie- en verschuivingsinformatie. <br/><br/>Infobestand is een bestand met platte tekst dat gedetailleerde informatie bevat over elke herkende term. De eerste regel is speciaal en bevat de Score van de Herkenbaarheid. Elke volgende regel is een lijst met de volgende gegevens: begintijd, eindtijd, woord/zin, vertrouwen. De tijden worden gegeven in seconden en het vertrouwen wordt gegeven als een nummer van 0-1. <br/><br/>Voorbeeldregel: "1.20 1.45 woord 0.67" <br/><br/>Deze bestanden kunnen worden gebruikt voor een aantal doeleinden, zoals spraakanalyses of blootgesteld aan zoekmachines zoals Bing, Google of Microsoft SharePoint om de mediabestanden beter vindbaar te maken of zelfs om relevantere advertenties weer te geven. |
-| **JobResult.txt** |Uitvoermanifest, alleen aanwezig bij het indexeren van meerdere bestanden, met de volgende informatie:<br/><br/><table border="1"><tr><th>Invoerbestand</th><th>Alias</th><th>MediaLengte</th><th>Fout</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
+| **InputFileName. ttml**<br/>**InputFileName. VTT** |Ondertitelings bestanden (CC) in TTML en WebVTT-indelingen.<br/><br/>Ze kunnen worden gebruikt om audio-en video bestanden toegankelijk te maken voor mensen met een gehoor handicap.<br/><br/>Ondertitelings bestanden bevatten een tag met de naam <b>herkenning</b> waarmee een indexerings taak wordt gescoord op basis van de manier waarop de spraak in de bron video herkenbaar is.  U kunt de waarde van <b>herkenning</b> voor scherm uitvoer bestanden gebruiken voor bruikbaarheid. Een lage score zou een slechte indexerings resultaat hebben als gevolg van de audio kwaliteit. |
+| **InputFileName. kW. XML<br/>InputFileName.info** |Trefwoord-en info bestanden. <br/><br/>Trefwoord bestand is een XML-bestand dat tref woorden bevat die zijn geëxtraheerd uit de spraak inhoud, met frequentie en verschuivings gegevens. <br/><br/>Info bestand is een bestand met onbewerkte tekst dat gedetailleerde informatie bevat over elke herkende term. De eerste regel is speciaal en bevat de herken bare Score. Elke volgende regel is een door tabs gescheiden lijst met de volgende gegevens: begin tijd, eind tijd, woord/zin, betrouw baarheid. De tijden worden in seconden gegeven en het vertrouwen wordt gegeven als een getal van 0-1. <br/><br/>Voorbeeld regel: "1,20 1,45 Word 0,67" <br/><br/>Deze bestanden kunnen worden gebruikt voor een aantal doel einden, zoals, voor het uitvoeren van een spraak analyse of voor het weer geven van zoek machines zoals Bing, Google of micro soft share point, om de media bestanden meer detecteerbaar te maken of zelfs te gebruiken voor het leveren van meer relevante advertenties. |
+| **JobResult. txt** |Uitvoer manifest, alleen aanwezig bij het indexeren van meerdere bestanden, met de volgende gegevens:<br/><br/><table border="1"><tr><th>Invoer</th><th>Alias</th><th>MediaLength</th><th>Fout</th></tr><tr><td>een. MP4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b. MP4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c. MP4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
 
-Als niet alle invoermediabestanden met succes worden geïndexeerd, mislukt de indexeringstaak met foutcode 4000. Zie [Foutcodes](#error_codes)voor meer informatie .
+Als niet alle invoer media bestanden zijn geïndexeerd, mislukt de indexerings taak met fout code 4000. Zie [fout codes](#error_codes)voor meer informatie.
 
 ## <a name="index-multiple-files"></a>Meerdere bestanden indexeren
-Met de volgende methode worden meerdere mediabestanden als een asset geüpload en wordt een taak gemaakt om al deze bestanden in een batch te indexeren.
+Met de volgende methode uploadt u meerdere media bestanden als een Asset en maakt u een taak voor het indexeren van alle bestanden in een batch.
 
-Een manifestbestand met de extensie ".lst" wordt gemaakt en geüpload naar het actief. Het manifestbestand bevat de lijst met alle activabestanden. Zie [Taakvoorinstelling voor Azure Media Indexer voor](https://msdn.microsoft.com/library/dn783454.aspx)meer informatie .
+Een manifest bestand met de extensie '. lst ' wordt gemaakt en geüpload naar de Asset. Het manifest bestand bevat de lijst met alle asset-bestanden. Zie voor meer informatie [taak vooraf instellen voor Azure media indexer](https://msdn.microsoft.com/library/dn783454.aspx).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -235,38 +235,38 @@ Een manifestbestand met de extensie ".lst" wordt gemaakt en geüpload naar het a
     }
 ```
 
-### <a name="partially-succeeded-job"></a>Gedeeltelijk opgevolgd taak
-Als niet alle invoermediabestanden met succes worden geïndexeerd, mislukt de indexeringstaak met foutcode 4000. Zie [Foutcodes](#error_codes)voor meer informatie .
+### <a name="partially-succeeded-job"></a>Gedeeltelijk geslaagde taak
+Als niet alle invoer media bestanden zijn geïndexeerd, mislukt de indexerings taak met fout code 4000. Zie [fout codes](#error_codes)voor meer informatie.
 
-Dezelfde outputs (als opgevolgd taken) worden gegenereerd. U verwijzen naar het uitvoermanifestbestand om erachter te komen welke invoerbestanden zijn mislukt, afhankelijk van de waarden van de kolom Fout. Voor invoerbestanden die zijn mislukt, worden de resulterende TTML-, WebVTT- en trefwoordbestanden NIET gegenereerd.
+Dezelfde uitvoer (als geslaagde taken) worden gegenereerd. U kunt naar het uitvoer manifest bestand zoeken om te ontdekken welke invoer bestanden zijn mislukt, volgens de fout kolom waarden. Voor invoer bestanden die zijn mislukt, worden de resulterende TTML-, WebVTT-en trefwoord bestanden niet gegenereerd.
 
-### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Taakvoorinstelling voor Azure Media Indexer
-De verwerking van Azure Media Indexer kan worden aangepast door naast de taak een optionele taakvoorinstelling op te geven.  Het volgende beschrijft de indeling van deze configuratie xml.
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a>Taak voorinstelling voor Azure Media Indexer
+De verwerking van Azure Media Indexer kan worden aangepast door naast de taak een optionele vooraf ingestelde taak te geven.  Hieronder wordt de indeling van deze XML-configuratie beschreven.
 
-| Name | Require | Beschrijving |
+| Naam | Require | Beschrijving |
 | --- | --- | --- |
-| **Input** |false |Assetbestand(en) dat u wilt indexeren.</p><p>Azure Media Indexer ondersteunt de volgende mediabestandsindelingen: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>U de bestandsnaam(s) opgeven in de **naam** of **het lijstkenmerk** van het **invoerelement** (zoals hieronder wordt weergegeven). Als u niet opgeeft welk actiefbestand moet worden geïndexeerd, wordt het primaire bestand gekozen. Als er geen primaire assetbestand is ingesteld, wordt het eerste bestand in het invoerelement geïndexeerd.</p><p>Ga als volgt te werk om de naam van het assetbestand expliciet op te geven:<br/>`<input name="TestFile.wmv">`<br/><br/>U ook meerdere assetbestanden tegelijk indexeren (maximaal 10 bestanden). Om dit te doen:<br/><br/><ol class="ordered"><li><p>Maak een tekstbestand (manifestbestand) en geef het een .lst-extensie. </p></li><li><p>Voeg een lijst met alle namen van assetbestanden in uw invoerelement toe aan dit manifestbestand. </p></li><li><p>Voeg het manifestbestand toe aan het item.Add (upload) the manifest file to the asset.  </p></li><li><p>Geef de naam op van het manifestbestand in het lijstkenmerk van de invoer.<br/>`<input list="input.lst">`</li></ol><br/><br/>Opmerking: Als u meer dan 10 bestanden aan het manifestbestand toevoegt, mislukt de indexeringstaak met de foutcode van 2006. |
-| **Metagegevens** |false |Metagegevens voor het opgegeven assetbestand(en) dat wordt gebruikt voor woordenschataanpassing.  Handig om Indexer voor te bereiden op het herkennen van niet-standaard woordenschatwoorden zoals de juiste zelfstandige naamwoorden.<br/>`<metadata key="..." value="..."/>` <br/><br/>U **waarden** leveren voor vooraf gedefinieerde **sleutels.** Momenteel worden de volgende toetsen ondersteund:<br/><br/>"titel" en "beschrijving" - gebruikt voor woordenschat aanpassing aan het taalmodel voor uw werk te tweaken en de nauwkeurigheid van spraakherkenning te verbeteren.  De waarden zaaien internet zoekt naar contextueel relevante tekstdocumenten, met behulp van de inhoud om het interne woordenboek te vergroten voor de duur van uw indexeringstaak.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **Functies** <br/><br/> Toegevoegd in versie 1.2. Momenteel is de enige ondersteunde functie spraakherkenning ('ASR'). |false |De functie Spraakherkenning heeft de volgende instellingentoetsen:<table><tr><th><p>Sleutel</p></th>        <th><p>Beschrijving</p></th><th><p>Voorbeeldwaarde</p></th></tr><tr><td><p>Taal</p></td><td><p>De natuurlijke taal die moet worden herkend in het multimediabestand.</p></td><td><p>Engels, Spaans</p></td></tr><tr><td><p>Bijschriftindelingen</p></td><td><p>een puntkomma-gescheiden lijst van de gewenste uitvoerbijschriftindelingen (indien aanwezig)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Waar; Valse</p></td></tr><tr><td><p>Trefwoorden genereren</p></td><td><p>Een booleaanse vlag die aangeeft of een XML-trefwoordbestand vereist is.</p></td><td><p>Waar; Valse. </p></td></tr><tr><td><p>ForceFullCaption (ForceFullCaption)</p></td><td><p>Een booleaanse vlag die aangeeft of volledige bijschriften (ongeacht het betrouwbaarheidsniveau) al dan niet moeten worden gedwongen.  </p><p>Standaard is onjuist, in welk geval woorden en zinnen met een betrouwbaarheidsniveau van minder dan 50% worden weggelaten uit de uitvoer van het eindbijschrift en vervangen door ellipsen ("...").  De ellipsen zijn handig voor kwaliteitscontrole en controle van bijschriften.</p></td><td><p>Waar; Valse. </p></td></tr></table> |
+| **ingevoerd** |false |Activa bestand (en) die u wilt indexeren.</p><p>Azure Media Indexer ondersteunt de volgende indelingen voor media bestanden: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>U kunt de bestands namen opgeven in het kenmerk **name** of **List** van het **input** -element (zoals hieronder weer gegeven). Als u niet opgeeft welk item bestand moet worden geïndexeerd, wordt het primaire bestand gekozen. Als er geen primair activa bestand is ingesteld, wordt het eerste bestand in de invoer Asset geïndexeerd.</p><p>Ga als volgt te werk om de naam van het activa bestand expliciet op te geven:<br/>`<input name="TestFile.wmv">`<br/><br/>U kunt ook meerdere Asset-bestanden tegelijk indexeren (Maxi maal 10 bestanden). Om dit te doen:<br/><br/><ol class="ordered"><li><p>Maak een tekst bestand (manifest bestand) en geef het de extensie. lst. </p></li><li><p>Voeg een lijst met alle bestands namen van assets in uw invoer Asset toe aan dit manifest bestand. </p></li><li><p>Voeg het manifest bestand toe (upload) naar de Asset.  </p></li><li><p>Geef de naam op van het manifest bestand in het lijst kenmerk van de invoer.<br/>`<input list="input.lst">`</li></ol><br/><br/>Opmerking: als u meer dan 10 bestanden aan het manifest bestand toevoegt, mislukt de indexerings taak met de fout code 2006. |
+| **metagegevensarchiefmethode** |false |Meta gegevens voor het opgegeven item bestand (en) die worden gebruikt voor het aanpassen van de woorden lijst.  Het is handig om de Indexeer functie voor te bereiden om niet-standaard woordenlijst woorden, zoals de juiste naam woorden, te herkennen.<br/>`<metadata key="..." value="..."/>` <br/><br/>U kunt **waarden** voor vooraf gedefinieerde **sleutels**opgeven. Momenteel worden de volgende sleutels ondersteund:<br/><br/>"title" en "Description": wordt gebruikt voor het aanpassen van de terminologie van het taal model voor uw taak en het verbeteren van de nauw keurigheid van spraak herkenning.  De waarden Seed internet zoekt naar context afhankelijke relevante tekst documenten, waarbij de inhoud wordt gebruikt om de interne woorden lijst voor de duur van uw indexerings taak te verg Roten.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
+| **functies** <br/><br/> Toegevoegd in versie 1,2. Op dit moment is de enige ondersteunde functie spraak herkenning (ASR). |false |De functie voor spraak herkenning heeft de volgende instellingen sleutels:<table><tr><th><p>Sleutel</p></th>        <th><p>Beschrijving</p></th><th><p>Voorbeeldwaarde</p></th></tr><tr><td><p>Taal</p></td><td><p>De natuurlijke taal die moet worden herkend in het multimedia bestand.</p></td><td><p>Engels, Spaans</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>een door punt komma's gescheiden lijst met de gewenste indelingen van de uitvoer bijschriften (indien van toepassing)</p></td><td><p>ttml; webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>Echte Terecht</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Een Booleaanse vlag die aangeeft of een XML-bestand met een tref woord is vereist.</p></td><td><p>Echte Terecht. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Een Booleaanse vlag die aangeeft of volledige bijschriften moeten worden geforceerd (ongeacht het betrouwbaarheids niveau).  </p><p>De standaard waarde is False, in het geval dat woorden en zinsdelen met een kleiner dan 50% betrouw niveau worden wegge laten uit de laatste bijschrift uitvoer en worden vervangen door beletsel tekens ("...").  De weglatings tekens zijn handig voor het controleren van bijschriften en controles.</p></td><td><p>Echte Terecht. </p></td></tr></table> |
 
 ### <a name="error-codes"></a><a id="error_codes"></a>Foutcodes
-In het geval van een fout moet Azure Media Indexer een van de volgende foutcodes rapporteren:
+In het geval van een fout moet Azure Media Indexer een van de volgende fout codes rapporteren:
 
-| Code | Name | Mogelijke redenen |
+| Code | Naam | Mogelijke redenen |
 | --- | --- | --- |
 | 2000 |Ongeldige configuratie |Ongeldige configuratie |
-| 2001 |Ongeldige invoerelementen |Ontbrekende invoeractiva of lege activa. |
-| 2002 |Ongeldig manifest |Manifest is leeg of manifest bevat ongeldige items. |
-| 2003 |Kan mediabestand niet downloaden |Ongeldige URL in manifestbestand. |
-| 2004 |Niet-ondersteund protocol |De URL van het protocol van media wordt niet ondersteund. |
-| 2005 |Niet-ondersteund bestandstype |Het bestandstype voor invoermedia wordt niet ondersteund. |
-| 2006 |Te veel invoerbestanden |Er zijn meer dan 10 bestanden in het invoermanifest. |
-| 3000 |Kan mediabestand niet decoderen |Niet-ondersteunde mediacodec <br/>of<br/> Beschadigd mediabestand <br/>of<br/> Geen audiostream in invoermedia. |
-| 4000 |Batchindexering gedeeltelijk geslaagd |Sommige van de invoermediabestanden kunnen niet worden geïndexeerd. Zie <a href="#output_files">Uitvoerbestanden voor</a>meer informatie . |
-| andere |Interne fouten |Neem contact op met het ondersteuningsteam. indexer@microsoft.com |
+| 2001 |Ongeldige invoer assets |Ontbrekende invoer assets of lege activa. |
+| 2002 |Ongeldig manifest |Het manifest is leeg of het manifest bevat ongeldige items. |
+| 2003 |Kan het Media bestand niet downloaden |De URL in het manifest bestand is ongeldig. |
+| 2004 |Niet-ondersteund protocol |Het Protocol van de media-URL wordt niet ondersteund. |
+| 2005 |Niet-ondersteund bestandstype |Invoer media bestands type wordt niet ondersteund. |
+| 2006 |Te veel invoer bestanden |Er zijn meer dan 10 bestanden in het invoer manifest. |
+| 3000 |Kan Media bestand niet decoderen |Niet-ondersteunde media-codec <br/>of<br/> Beschadigd media bestand <br/>of<br/> Geen audio stroom in invoer media. |
+| 4000 |Batch indexeren is gedeeltelijk voltooid |Een aantal invoer media bestanden kan niet worden geïndexeerd. Zie <a href="#output_files">uitvoer bestanden</a>voor meer informatie. |
+| andere |Interne fouten |Neem contact op met het ondersteunings team. indexer@microsoft.com |
 
 ## <a name="supported-languages"></a><a id="supported_languages"></a>Ondersteunde talen
-Momenteel worden de Engelse en Spaanse talen ondersteund.  
+Op dit moment worden de Engelse en Spaanse talen ondersteund.  
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -277,5 +277,5 @@ Momenteel worden de Engelse en Spaanse talen ondersteund.
 ## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Mediabestanden indexeren met Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md)
+[Media bestanden indexeren met Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md)
 

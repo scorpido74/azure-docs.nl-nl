@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services Def. LoadBalancerProbe-schema | Microsoft Documenten
-description: De door de klant gedefinieerde LoadBalancerProbe is een statussonde van eindpunten in rolexemplaren. Het combineert met web- of werknemersrollen in een servicedefinitiebestand.
+title: Azure Cloud Services def. LoadBalancerProbe-schema | Microsoft Docs
+description: De door de klant gedefinieerde LoadBalancerProbe is een status test van eind punten in rolinstanties. Het is gecombineerd met de web-of werk rollen in een service definitie bestand.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,28 +10,28 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537343"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition LoadBalancerProbe-schema
-De load balancer-sonde is een door de klant gedefinieerde statussonde van UDP-eindpunten en eindpunten in rolexemplaren. Het `LoadBalancerProbe` is geen standalone element; het wordt gecombineerd met de webrol of de rol van de werknemer in een servicedefinitiebestand. A `LoadBalancerProbe` kan worden gebruikt door meer dan een rol.
+# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe-schema voor Azure Cloud Services definition
+De load balancer test is een door de klant gedefinieerde status test van UDP-eind punten en-eind punten in rolinstanties. Het `LoadBalancerProbe` is geen zelfstandig element; het wordt gecombineerd met de webrole of werk rollen in een service definitie bestand. Een `LoadBalancerProbe` kan worden gebruikt door meer dan één rol.
 
-De standaardextensie voor het servicedefinitiebestand is .csdef.
+De standaard extensie voor het service definitie bestand is. csdef.
 
-## <a name="the-function-of-a-load-balancer-probe"></a>De functie van een lastenbalancersonde
-De Azure Load Balancer is verantwoordelijk voor het routeren van binnenkomend verkeer naar uw rolexemplaren. De load balancer bepaalt welke instanties verkeer kunnen ontvangen door elke instantie regelmatig te onderzoeken om de status van die instantie te bepalen. De load balancer sondes elke instantie meerdere keren per minuut. Er zijn twee verschillende opties voor het verstrekken van bijvoorbeeld status aan de load balancer - de standaard load balancer sonde, of een aangepaste load balancer sonde, die wordt geïmplementeerd door het definiëren van de LoadBalancerProbe in de .csdef bestand.
+## <a name="the-function-of-a-load-balancer-probe"></a>De functie van een load balancer test
+De Azure Load Balancer is verantwoordelijk voor het door sturen van binnenkomend verkeer naar uw rolinstanties. De load balancer bepaalt welke instanties verkeer kunnen ontvangen door regel matig een exemplaar te zoeken om de status van dat exemplaar te bepalen. De load balancer test elke instantie meerdere keren per minuut. Er zijn twee verschillende opties voor het leveren van de instantie status van de load balancer: de standaard load balancer test of een aangepaste load balancer test, die wordt geïmplementeerd door de LoadBalancerProbe in het. csdef-bestand te definiëren.
 
-De standaard load balancer sonde maakt gebruik van de Gast agent in de virtuele machine, die luistert en reageert met een HTTP 200 OK reactie alleen wanneer de instantie is in de status Klaar (zoals wanneer de instantie niet in de status Bezet, Recycling, Stoppen, etc. staat). Als de gastagent niet reageert met HTTP 200 OK, markeert de Azure Load Balancer de instantie als niet-reagerend en stopt het verzenden van verkeer naar die instantie. De Azure Load Balancer blijft de instantie pingen en als de gastagent reageert met een HTTP 200, stuurt de Azure Load Balancer opnieuw verkeer naar die instantie. Bij het gebruik van een webrol wordt uw websitecode meestal uitgevoerd in w3wp.exe, wat niet wordt gecontroleerd door de Azure-fabric of gastagent, wat fouten in w3wp.exe betekent (bijv. HTTP 500-antwoorden) worden niet gemeld aan de gastagent en de load balancer weet niet dat hij dat exemplaar uit de rotatie moet halen.
+De standaard load balancer test maakt gebruik van de gast agent in de virtuele machine, die luistert en reageert alleen met een HTTP 200 OK-antwoord wanneer het exemplaar de status gereed heeft (zoals wanneer het exemplaar zich niet in de bezet, recycling, stopte, enz. Staten bevindt). Als de gast agent niet reageert met HTTP 200 OK, markeert de Azure Load Balancer het exemplaar als niet-reagerend en wordt het verzenden van verkeer naar dat exemplaar gestopt. De Azure Load Balancer blijft de instantie pingen en als de gast agent reageert met een HTTP-200, stuurt de Azure Load Balancer het verkeer naar dat exemplaar opnieuw. Wanneer u een ondernemingsrol gebruikt, wordt de code van uw website doorgaans uitgevoerd in W3wp. exe, die niet wordt bewaakt door de Azure-infra structuur of gast agent. Dit betekent fouten in W3wp. exe (bijvoorbeeld HTTP 500-antwoorden) worden niet gerapporteerd aan de gast agent en het load balancer weet niet dat het exemplaar niet kan worden gedraaid.
 
-De aangepaste lastenbalancersonde overschrijft de standaard gastagentsonde en stelt u in staat om uw eigen aangepaste logica te maken om de status van de rolinstantie te bepalen. De load balancer sonde regelmatig uw eindpunt (elke 15 seconden, standaard) en de instantie wordt in rotatie beschouwd als deze binnen de time-outperiode reageert met een TCP ACK of HTTP 200 (standaard 31 seconden). Dit kan handig zijn om uw eigen logica te implementeren om exemplaren uit de rotatie van de load balancer te verwijderen, bijvoorbeeld door een niet-200-status terug te sturen als de instantie boven de 90% CPU ligt. Voor webrollen met w3wp.exe betekent dit ook dat u automatisch uw website controleren, omdat fouten in uw websitecode een niet-200-status teruggeven aan de load balancer-sonde. Als u een LoadBalancerProbe niet definieert in het .csdef-bestand, wordt het standaard gedrag van de load balancer (zoals eerder beschreven) gebruikt.
+De aangepaste load balancer test overschrijft de standaard test voor de gast agent en maakt het mogelijk om uw eigen aangepaste logica te maken om de status van de rolinstantie te bepalen. De load balancer regelt uw eind punt (standaard elke 15 seconden) en het exemplaar wordt als gedraaid beschouwd als het reageert met een TCP-ACK of HTTP 200 binnen de time-outperiode (standaard van 31 seconden). Dit kan handig zijn om uw eigen logica te implementeren om instanties uit load balancer draaiing te verwijderen, bijvoorbeeld een niet-200-status retour neren als het exemplaar hoger is dan 90% CPU. In het geval van webrollen met W3wp. exe, betekent dit dat u de automatische controle van uw website krijgt, omdat storingen in de website code een niet-200 status retour neren naar de load balancer test. Als u geen LoadBalancerProbe definieert in het. csdef-bestand, wordt het standaard gedrag voor load balancer (zoals eerder beschreven) gebruikt.
 
-Als u een aangepaste lastenbalancersonde gebruikt, moet u ervoor zorgen dat uw logica rekening houdt met de methode RoleEnvironment.OnStop. Bij het gebruik van de standaard load balancer-sonde wordt de instantie uit de rotatie gehaald voordat OnStop wordt aangeroepen, maar een aangepaste lastenbalancersonde kan een 200 OK blijven retourneren tijdens de gebeurtenis OnStop. Als u de gebeurtenis OnStop gebruikt om cache op te schonen, de service te stoppen of anderszins wijzigingen aan te brengen die van invloed kunnen zijn op het runtimegedrag van uw service, moet u ervoor zorgen dat de logica van de aangepaste lastbalansssonde de instantie uit de rotatie verwijdert.
+Als u een aangepaste load balancer test gebruikt, moet u ervoor zorgen dat uw logica rekening houdt met de methode RoleEnvironment. OnStop. Wanneer u de standaard load balancer test gebruikt, wordt het exemplaar uit de rotatie gehaald voordat de OnStop wordt aangeroepen, maar een aangepaste load balancer test kan blijven terugkeren naar een 200 OK tijdens de gebeurtenis OnStop. Als u de OnStop-gebeurtenis gebruikt voor het opschonen van de cache, het stoppen van de service of het wijzigen van wijzigingen die van invloed kunnen zijn op het runtime-gedrag van uw service, moet u ervoor zorgen dat uw aangepaste load balancer probe Logic het exemplaar uit de rotatie verwijdert.
 
-## <a name="basic-service-definition-schema-for-a-load-balancer-probe"></a>Basisservicedefinitieschema voor een load balancer-sonde
- De basisindeling van een servicedefinitiebestand met een load balancer-sonde is als volgt.
+## <a name="basic-service-definition-schema-for-a-load-balancer-probe"></a>Basis-service definitie schema voor een load balancer test
+ De basis indeling van een service definitie bestand met een load balancer test is als volgt.
 
 ```xml
 <ServiceDefinition …>
@@ -42,27 +42,27 @@ Als u een aangepaste lastenbalancersonde gebruikt, moet u ervoor zorgen dat uw l
 ```
 
 ## <a name="schema-elements"></a>Schema-elementen
-Het `LoadBalancerProbes` element van het servicedefinitiebestand bevat de volgende elementen:
+Het `LoadBalancerProbes` element van het service definitie bestand bevat de volgende elementen:
 
-- [LoadBalancerProbes Element](#LoadBalancerProbes)
-- [LoadBalancerProbe Element](#LoadBalancerProbe)
+- [LoadBalancerProbes-element](#LoadBalancerProbes)
+- [LoadBalancerProbe-element](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes Element
-Het `LoadBalancerProbes` element beschrijft de verzameling van load balancer sondes. Dit element is het bovenliggende element van het [Element LoadBalancerProbe](#LoadBalancerProbe). 
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes-element
+Met `LoadBalancerProbes` het element wordt de verzameling Load Balancer tests beschreven. Dit element is het bovenliggende element van het [element LoadBalancerProbe](#LoadBalancerProbe). 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe Element
-Het `LoadBalancerProbe` element definieert de statussonde voor een model. U meerdere load balancer probes definiëren. 
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe-element
+Het `LoadBalancerProbe` element definieert de status test voor een model. U kunt meerdere load balancer tests definiëren. 
 
-In de volgende tabel worden `LoadBalancerProbe` de kenmerken van het element beschreven:
+In de volgende tabel worden de kenmerken van `LoadBalancerProbe` het element beschreven:
 
 |Kenmerk|Type|Beschrijving|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | Vereist. De naam van de lastensonde. De naam moet uniek zijn.|
-| `protocol`          | `string` | Vereist. Hiermee geeft u het protocol van het eindpunt op. Mogelijke waarden zijn `http` en `tcp`. Als `tcp` dit is opgegeven, is een ontvangen ACK vereist om de sonde succesvol te laten zijn. Als `http` dit is opgegeven, is een 200 OK-antwoord van de opgegeven URI vereist om de sonde succesvol te laten zijn.|
-| `path`              | `string` | De URI die wordt gebruikt voor het aanvragen van de status van de status van de VM. `path`is vereist `protocol` als `http`is ingesteld op . Anders is het niet toegestaan.<br /><br /> Er is geen standaardwaarde.|
-| `port`              | `integer` | Optioneel. De poort voor het communiceren van de sonde. Dit is optioneel voor elk eindpunt, omdat dezelfde poort vervolgens voor de sonde wordt gebruikt. U een andere poort configureren voor hun indringende, als goed. Mogelijke waarden variëren van 1 tot 65535, inclusief.<br /><br /> De standaardwaarde wordt ingesteld op het eindpunt.|
-| `intervalInSeconds` | `integer` | Optioneel. Het interval, in seconden, voor hoe vaak het eindpunt voor de status van de status moet worden gesonde. Meestal is het interval iets minder dan de helft van de toegewezen time-outperiode (in seconden) waarmee twee volledige sondes kunnen worden uitgevoerd voordat de instantie uit de rotatie wordt gehaald.<br /><br /> De standaardwaarde is 15, de minimumwaarde 5.|
-| `timeoutInSeconds`  | `integer` | Optioneel. De time-outperiode, in seconden, toegepast op de sonde waar geen reactie zal resulteren in het stoppen van verdere verkeer wordt geleverd aan het eindpunt. Met deze waarde kunnen eindpunten sneller of langzamer uit de rotatie worden gehaald dan de typische tijden die in Azure worden gebruikt (de standaardwaarden).<br /><br /> De standaardwaarde is 31, de minimumwaarde 11.|
+| `name`              | `string` | Vereist. De naam van de load balancer-test. De naam moet uniek zijn.|
+| `protocol`          | `string` | Vereist. Hiermee geeft u het Protocol van het eind punt. Mogelijke waarden zijn `http` en `tcp`. Als `tcp` is opgegeven, is een ontvangen ack vereist om de test te laten slagen. Als `http` is opgegeven, is er een antwoord van 200 OK van de opgegeven URI vereist om de test te laten slagen.|
+| `path`              | `string` | De URI die wordt gebruikt voor het aanvragen van de integriteits status van de virtuele machine. `path`is vereist als `protocol` is ingesteld op `http`. Als dat niet het geval is, is dit niet toegestaan.<br /><br /> Er is geen standaard waarde.|
+| `port`              | `integer` | Optioneel. De poort voor het communiceren van de test. Dit is optioneel voor elk eind punt, omdat dezelfde poort wordt gebruikt voor de test. U kunt ook een andere poort voor hun zoek opdracht configureren. Mogelijke waarden variëren van 1 tot 65535, inclusief.<br /><br /> De standaard waarde wordt ingesteld door het eind punt.|
+| `intervalInSeconds` | `integer` | Optioneel. Het interval in seconden voor hoe vaak het eind punt moet worden getest op de status. Normaal gesp roken is het interval iets minder dan de helft van de toegewezen time-outperiode (in seconden) waarmee twee volledige tests kunnen worden uitgevoerd voordat het exemplaar uit de rotatie kan worden gehaald.<br /><br /> De standaard waarde is 15, de minimum waarde is 5.|
+| `timeoutInSeconds`  | `integer` | Optioneel. De time-outperiode, in seconden, die wordt toegepast op de test, waarbij geen enkele reactie leidt tot het stoppen van verdere verkeer van de bezorging bij het eind punt. Met deze waarde kunnen eind punten sneller of langzamer worden gemaakt dan de typische tijden die worden gebruikt in azure (dit zijn de standaard waarden).<br /><br /> De standaard waarde is 31, de minimum waarde is 11.|
 
 ## <a name="see-also"></a>Zie ook
-[Cloud Service (klassiek) definitieschema](schema-csdef-file.md)
+[Schema voor Cloud service (klassiek)](schema-csdef-file.md)

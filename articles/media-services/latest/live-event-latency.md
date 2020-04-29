@@ -1,6 +1,6 @@
 ---
-title: LiveEvent-instellingen voor lage latentie in Azure Media Services | Microsoft Documenten
-description: In dit onderwerp vindt u een overzicht van live-instellingen met lage latentie en wordt uitgelegd hoe u lage latentie instellen.
+title: Instellingen voor LiveEvent lage latentie in Azure Media Services | Microsoft Docs
+description: Dit onderwerp bevat een overzicht van de instellingen voor LiveEvent-lage latentie en laat zien hoe u een lage latentie kunt instellen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78199645"
 ---
-# <a name="live-event-low-latency-settings"></a>Instellingen voor lage latentie van live-gebeurtenis
+# <a name="live-event-low-latency-settings"></a>Instellingen voor lage latentie van Live Event
 
-In dit artikel ziet u hoe u lage latentie instelt op een [live-evenement](https://docs.microsoft.com/rest/api/media/liveevents). Het bespreekt ook typische resultaten die u ziet bij het gebruik van de lage latentie-instellingen in verschillende spelers. De resultaten variëren op basis van CDN en netwerklatentie.
+In dit artikel wordt beschreven hoe u een lage latentie kunt instellen voor een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents). Ook worden de gebruikelijke resultaten besproken die u ziet wanneer u de instellingen voor lage latentie gebruikt in verschillende spelers. De resultaten variëren op basis van CDN en netwerk latentie.
 
-Als u de nieuwe **functie LowLatency** wilt gebruiken, stelt u de **StreamOptionsFlag** in op **LowLatency** op het **LiveEvent.** Wanneer u [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) maakt voor het afspelen van HLS, stelt u [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) in op 1. Zodra de stream actief is, u de [Azure Media Player](https://ampdemo.azureedge.net/) (AMP-demopagina) gebruiken en de afspeelopties instellen om het profiel 'Low Latency Heuristics' te gebruiken.
+Als u de nieuwe functie **LowLatency** wilt gebruiken, stelt u de **StreamOptionsFlag** in op **LowLatency** op de **LiveEvent**. Wanneer u [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) maakt voor HLS afspelen, stelt u [LiveOutput. HLS. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) in op 1. Zodra de stroom actief is, kunt u de [Azure Media Player](https://ampdemo.azureedge.net/) (pagina amp-demo) gebruiken en de afspeel opties instellen op het gebruik van het profiel ' laag latentie heuristiek '.
 
 > [!NOTE]
-> Momenteel is de LowLatency HeuristicProfile in Azure Media Player ontworpen voor het afspelen van streams in het `format=mdp-time-csf` MPEG-DASH-protocol, met een CSF- of CMAF-indeling (bijvoorbeeld of `format=mdp-time-cmaf`). 
+> Op dit moment is de LowLatency HeuristicProfile in Azure Media Player ontworpen voor het afspelen van streams in MPEG-DASH protocol, met een KVP-of CMAF- `format=mdp-time-csf` indeling `format=mdp-time-cmaf`(bijvoorbeeld of). 
 
-In het volgende .NET-voorbeeld ziet u hoe **u lowlatency** instelt op het **LiveEvent:**
+In het volgende .NET-voor beeld ziet u hoe u **LowLatency** instelt op de **LiveEvent**:
 
 ```csharp
 LiveEvent liveEvent = new LiveEvent(
@@ -52,31 +52,31 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-Zie het volledige voorbeeld: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Bekijk het volledige voor beeld: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="live-events-latency"></a>Latentie voor livegebeurtenissen
+## <a name="live-events-latency"></a>Latentie van Live-gebeurtenissen
 
-In de volgende tabellen worden typische resultaten weergegeven voor latentie (wanneer de vlag LowLatency is ingeschakeld) in Media Services, gemeten vanaf het moment dat de bijdragefeed de service bereikt tot wanneer een kijker het afspelen op de speler ziet. Als u lage latentie optimaal wilt gebruiken, moet u uw encoderinstellingen afstemmen op de lengte van 1 seconde "Groep van foto's". Wanneer u een hogere GOP-lengte gebruikt, minimaliseert u het bandbreedteverbruik en vermindert u de bitrate onder dezelfde framesnelheid. Het is vooral gunstig in video's met minder beweging.
+In de volgende tabellen worden de gemiddelde resultaten weer gegeven voor latentie (wanneer de vlag LowLatency is ingeschakeld) in Media Services, gemeten vanaf het moment dat de bijdrage toevoer de service bereikt wanneer een viewer het afspelen in de speler ziet. Als u de maximale latentie optimaal wilt gebruiken, moet u de instellingen voor de code ring afstemmen op 1 seconde ' groep afbeeldingen ' (GOP terug). Wanneer u een hogere GOP terug lengte gebruikt, minimaliseert u het bandbreedte verbruik en vermindert u de bitsnelheid onder dezelfde frame frequentie. Het is vooral nuttig in Video's met minder beweging.
 
 ### <a name="pass-through"></a>Pass-through 
 
-||2s GOP lage latentie ingeschakeld|1s GOP lage latentie ingeschakeld|
+||2-GOP terug lage latentie ingeschakeld|1S GOP terug lage latentie ingeschakeld|
 |---|---|---|
-|DASH in AMP|10s|8s|
-|HLS op native iOS-speler|14s|10s|
+|STREEPJE in AMP|10|8s|
+|HLS op systeem eigen iOS-speler|14s|10|
 
 ### <a name="live-encoding"></a>Live Encoding
 
-||2s GOP lage latentie ingeschakeld|1s GOP lage latentie ingeschakeld|
+||2-GOP terug lage latentie ingeschakeld|1S GOP terug lage latentie ingeschakeld|
 |---|---|---|
-|DASH in AMP|14s|10s|
-|HLS op native iOS-speler|18s|13s|
+|STREEPJE in AMP|14s|10|
+|HLS op systeem eigen iOS-speler|18s|13s|
 
 > [!NOTE]
-> De end-to-end latentie kan variëren afhankelijk van de lokale netwerkomstandigheden of door de invoering van een CDN-cachinglaag. U moet uw exacte configuraties testen.
+> De end-to-end-latentie kan variëren afhankelijk van de lokale netwerk omstandigheden of door een CDN-cache laag te introduceren. U moet uw exacte configuraties testen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van live streaming](live-streaming-overview.md)
-- [Zelfstudie voor live streaming](stream-live-tutorial-with-api.md)
+- [Overzicht van live streamen](live-streaming-overview.md)
+- [Zelf studie over live streamen](stream-live-tutorial-with-api.md)
 

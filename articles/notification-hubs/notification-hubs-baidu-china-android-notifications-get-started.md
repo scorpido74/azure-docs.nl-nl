@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536986"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Aan de slag met Azure Notification Hubs die gebruikmaken van Baidu
@@ -41,8 +41,8 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 Ga als volgt te werk om aan de slag te gaan:
 
-1. Maak een Baidu-account aan.
-2. Maak een Baidu cloud push project en noteer de API-sleutel en geheime sleutel.
+1. Maak een Baidu-account.
+2. Maak een Baidu Cloud Push project en noteer de API-sleutel en de geheime sleutel.
 
 ## <a name="configure-a-new-notification-hub"></a>Een nieuwe Notification Hub configureren
 
@@ -68,7 +68,7 @@ Noteer de `DefaultListenSharedAccessSignature` en `DefaultFullSharedAccessSignat
 
 2. Voer een toepassingsnaam in en zorg ervoor dat de minimaal vereiste SDK-versie is ingesteld op API 16: Android 4.1. **Zorg er ook voor dat de pakketnaam (应用包名) hetzelfde is als in de Baidu-cloudpush-portal**
 
-    ![Azure Notification Hubs - Baidu Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs - Baidu Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure notification hubs-Baidu min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure notification hubs-Baidu min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Klik op Next en doorloop de wizard totdat het venster Create Activity (Activiteit maken) wordt weergegeven. Zorg ervoor dat Empty Activity (Lege activiteit) is geselecteerd en selecteer daarna Finish (Voltooien) om een nieuwe Android-toepassing te maken.
 
@@ -426,7 +426,7 @@ Hier zijn verschillende methoden om meldingen te verzenden:
 
 * **REST-interface**: u kunt meldingen op elk back-endplatform ondersteunen met de [REST-interface](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
 * **Microsoft Azure Notification Hubs .NET SDK**: in NuGet Package Manager voor Visual Studio voert u [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) uit.
-* **Node.js**: [Meldingshubs van Node.js gebruiken.](notification-hubs-nodejs-push-notification-tutorial.md)
+* **Node. js**: [Notification hubs gebruiken vanuit node. js](notification-hubs-nodejs-push-notification-tutorial.md).
 * **Mobile Apps**: zie [Pushmeldingen toevoegen voor mobiele apps](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) voor een voorbeeld van hoe u meldingen verzendt vanuit een Azure App Service Mobile Apps-backend die is geïntegreerd met Notification Hubs.
 * **Java/PHP**: zie 'Notification Hubs gebruiken vanuit Java/PHP' voor een voorbeeld van hoe u meldingen verzendt met de REST API's ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 

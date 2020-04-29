@@ -1,6 +1,6 @@
 ---
-title: Een klassieke SQL Server VM (PowerShell) maken
-description: Biedt stappen en PowerShell-scripts voor het maken van een Azure VM met sql server-galerieafbeeldingen voor virtuele machines. In dit onderwerp wordt de klassieke implementatiemodus gebruikt.
+title: Een klassieke SQL Server-VM maken (Power shell)
+description: Bevat stappen en Power shell-scripts voor het maken van een Azure-VM met SQL Server galerie installatie kopieën van virtuele machines. In dit onderwerp wordt gebruikgemaakt van de klassieke implementatie modus.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,88 +16,88 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77914786"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Een virtuele SQL Server-machine inrichten met Azure PowerShell (klassiek)
 
 [!INCLUDE [classic-vm-deprecation](../../../../includes/classic-vm-deprecation.md)]
 
-In dit artikel vindt u stappen voor het maken van een virtuele SQL Server-machine in Azure met behulp van de PowerShell-cmdlets.
+In dit artikel worden de stappen beschreven voor het maken van een SQL Server virtuele machine in azure met behulp van de Power shell-cmdlets.
 
 > [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken en werken met resources: [Resource Manager en Classic.](../../../azure-resource-manager/management/deployment-models.md) In dit artikel wordt het implementatiemodel Classic gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
-Zie [Een virtuele SQL Server-machine inrichten met Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md)voor de resourcebeheerversie van dit onderwerp.
+Voor de Resource Manager-versie van dit onderwerp raadpleegt [u een SQL Server virtuele machine inrichten met behulp van Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md).
 
-### <a name="install-and-configure-powershell"></a>PowerShell installeren en configureren:
+### <a name="install-and-configure-powershell"></a>Power Shell installeren en configureren:
 1. Als u geen Azure-account hebt, gaat u naar [Azure, gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
-2. [Download en installeer de nieuwste Azure PowerShell-opdrachten.](/powershell/azure/overview)
-3. Start Windows PowerShell en verbind het met uw Azure-abonnement met de opdracht **Add-AzureAccount.**
+2. [Down load en installeer de meest recente Azure PowerShell-opdrachten](/powershell/azure/overview).
+3. Start Windows Power shell en verbind deze met uw Azure-abonnement met de opdracht **add-AzureAccount** .
 
    ```powershell
    Add-AzureAccount
    ```
 
-## <a name="determine-your-target-azure-region"></a>Uw azure-doelregio bepalen
+## <a name="determine-your-target-azure-region"></a>De Azure-doel regio bepalen
 
-Uw SQL Server Virtual Machine wordt gehost in een cloudservice die zich bevindt in een specifieke Azure-regio. Met de volgende stappen u uw regio, opslagaccount en cloudservice bepalen die voor de rest van de zelfstudie worden gebruikt.
+Uw SQL Server virtuele machine wordt gehost in een Cloud service die een specifieke Azure-regio bevindt. De volgende stappen helpen u bij het bepalen van de regio, het opslag account en de Cloud service die voor de rest van de zelf studie wordt gebruikt.
 
-1. Bepaal het datacenter dat u wilt gebruiken om uw SQL Server VM te hosten. Met de volgende PowerShell-opdracht wordt een lijst met beschikbare regionamen weergegeven.
+1. Bepaal het Data Center dat u wilt gebruiken voor het hosten van uw SQL Server-VM. Met de volgende Power shell-opdracht wordt een lijst met beschik bare regio namen weer gegeven.
 
    ```powershell
    (Get-AzureLocation).Name
    ```
 
-2. Zodra u uw gewenste locatie hebt geïdentificeerd, stelt u een variabele in met de naam **$dcLocation** naar die regio. Met de volgende opdracht stelt u bijvoorbeeld de regio in op 'Oost-VS':
+2. Wanneer u de gewenste locatie hebt opgegeven, stelt u een variabele met de naam **$dcLocation** in op die regio. Met de volgende opdracht stelt u bijvoorbeeld de regio in op ' Oost-VS ':
 
    ```powershell
    $dcLocation = "East US"
    ```
 
-## <a name="set-your-subscription-and-storage-account"></a>Uw abonnements- en opslagaccount instellen
+## <a name="set-your-subscription-and-storage-account"></a>Uw abonnement en opslag account instellen
 
-1. Bepaal het Azure-abonnement dat u voor de nieuwe virtuele machine gebruikt.
+1. Bepaal het Azure-abonnement dat u wilt gebruiken voor de nieuwe virtuele machine.
 
    ```powershell
    (Get-AzureSubscription).SubscriptionName
    ```
 
-2. Wijs uw doelAzure-abonnement toe aan de **variabele $subscr.** Stel dit vervolgens in als uw huidige Azure-abonnement.
+2. Wijs uw doel-Azure-abonnement toe aan de **$subscr** variabele. Stel deze vervolgens in als uw huidige Azure-abonnement.
 
    ```powershell
    $subscr="<subscription name>"
    Select-AzureSubscription -SubscriptionName $subscr –Current
    ```
 
-3. Controleer vervolgens op bestaande opslagaccounts. In het volgende script worden alle opslagaccounts weergegeven die in de door u gekozen regio bestaan:
+3. Controleer vervolgens op bestaande opslag accounts. In het volgende script worden alle opslag accounts weer gegeven die voor komen in de gekozen regio:
 
    ```powershell
    (Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName
    ```
 
    > [!NOTE]
-   > Als u een nieuw opslagaccount nodig hebt, maakt u eerst een accountnaam voor kleine kleine letters met de opdracht Nieuw-AzureStorageAccount zoals in het volgende voorbeeld:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
+   > Als u een nieuw opslag account nodig hebt, maakt u eerst een naam voor het opslag account met een kleine letters met de opdracht New-AzureStorageAccount, zoals in het volgende voor beeld:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
-4. Wijs de naam van het doelopslagaccount toe aan de **$staccount**. Gebruik vervolgens **Set-AzureSubscription** om het abonnement en het huidige opslagaccount in te stellen.
+4. Wijs de naam van het doel opslag account toe aan de **$staccount**. Gebruik vervolgens **set-abonnement** om het abonnement en het huidige opslag account in te stellen.
 
    ```powershell
    $staccount="<storage account name>"
    Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
    ```
 
-## <a name="select-a-sql-server-virtual-machine-image"></a>Een sql server-afbeelding voor virtuele machines selecteren
+## <a name="select-a-sql-server-virtual-machine-image"></a>Een installatie kopie van een SQL Server virtuele machine selecteren
 
-1. Ontdek de lijst met beschikbare SQL Server virtuele machines afbeeldingen uit de galerij. Deze afbeeldingen hebben allemaal een **eigenschap ImageFamily** die begint met "SQL". In de volgende query wordt de afbeeldingsfamilie weergegeven waarop SQL Server vooraf is geïnstalleerd.
+1. Bekijk de lijst met beschik bare installatie kopieën voor virtuele machines van SQL Server in de galerie. Deze installatie kopieën hebben allemaal een **ImageFamily** -eigenschap die begint met ' SQL '. Met de volgende query wordt de afbeeldings familie weer gegeven die beschikbaar is SQL Server vooraf geïnstalleerd.
 
    ```powershell
    Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
    ```
 
-2. Wanneer u de virtuele machine afbeelding familie, kunnen er meerdere gepubliceerde afbeeldingen in deze familie. Gebruik het volgende script om de laatst gepubliceerde afbeeldingsnaam voor virtuele machines te vinden voor uw geselecteerde afbeeldingsfamilie (zoals **SQL Server 2016 RTM Enterprise op Windows Server 2012 R2):**
+2. Wanneer u de installatie kopie serie van de virtuele machine vindt, kunnen er meerdere gepubliceerde installatie kopieën in deze serie zijn. Gebruik het volgende script om de meest recente naam van de installatie kopie van de virtuele machine te vinden voor de geselecteerde installatie kopie familie (zoals **SQL Server 2016 RTM Enter prise op Windows Server 2012 R2**):
 
    ```powershell
    $family="<ImageFamily value>"
@@ -109,16 +109,16 @@ Uw SQL Server Virtual Machine wordt gehost in een cloudservice die zich bevindt 
 
 ## <a name="create-the-virtual-machine"></a>De virtuele machine maken
 
-Maak ten slotte de virtuele machine met PowerShell:
+Maak ten slotte de virtuele machine met Power shell:
 
-1. Maak een cloudservice om de nieuwe VM te hosten. Houd er rekening mee dat het ook mogelijk is om in plaats daarvan een bestaande cloudservice te gebruiken. Maak een nieuwe variabele **$svcname** met de korte naam van de cloudservice.
+1. Maak een Cloud service om de nieuwe VM te hosten. Het is ook mogelijk om in plaats daarvan een bestaande Cloud service te gebruiken. Maak een nieuwe variabele **$svcname** met de korte naam van de Cloud service.
 
    ```powershell
    $svcname = "<cloud service name>"
    New-AzureService -ServiceName $svcname -Label $svcname -Location $dcLocation
    ```
 
-2. Geef de naam van de virtuele machine en een grootte op. Zie [Virtuele machineformaten voor Azure voor](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)meer informatie over virtuele machineformaten.
+2. Geef de naam van de virtuele machine en een grootte op. Zie [Virtual Machine sizes for Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)(Engelstalig) voor meer informatie over de grootte van virtuele machines.
 
    ```powershell
    $vmname="<machine name>"
@@ -126,7 +126,7 @@ Maak ten slotte de virtuele machine met PowerShell:
    $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
    ```
 
-3. Geef het lokale beheerdersaccount en wachtwoord op.
+3. Geef het lokale Administrator-account en-wacht woord op.
 
    ```powershell
    $cred=Get-Credential -Message "Type the name and password of the local administrator account."
@@ -140,11 +140,11 @@ Maak ten slotte de virtuele machine met PowerShell:
    ```
 
 > [!NOTE]
-> Zie de sectie **Uw opdrachtset bouwen** in [Azure PowerShell gebruiken om virtuele machines in Windows te maken en vooraf te configureren](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor aanvullende uitleg- en configuratieopties.
+> Zie de sectie **uw opdrachtset bouwen** in [gebruik Azure PowerShell voor het maken en vooraf configureren van op Windows gebaseerde virtual machines](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer uitleg en configuratie opties.
 
 ## <a name="example-powershell-script"></a>Voorbeeld PowerShell-script
 
-Het volgende script bevat een voorbeeld van een compleet script waarmee een **SQL Server 2016 RTM Enterprise op de virtuele machine van Windows Server 2012 R2** wordt gemaakt. Als u dit script gebruikt, moet u de eerste variabelen aanpassen op basis van de vorige stappen in dit onderwerp.
+Het volgende script geeft een voor beeld van een volledig script waarmee een **SQL Server 2016 RTM Enter prise op een virtuele machine met Windows Server 2012 R2** wordt gemaakt. Als u dit script gebruikt, moet u de eerste variabelen aanpassen op basis van de vorige stappen in dit onderwerp.
 
 ```powershell
 # Customize these variables based on your settings and requirements:
@@ -179,32 +179,32 @@ $vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCrede
 New-AzureVM –ServiceName $svcname -VMs $vm1
 ```
 
-## <a name="connect-with-remote-desktop"></a>Verbinding maken met extern bureaublad
+## <a name="connect-with-remote-desktop"></a>Verbinding maken met extern bureau blad
 
-1. Maak de RDP-bestanden in de documentmap van de huidige gebruiker om deze virtuele machines te starten om de installatie te voltooien:
+1. Maak de RDP-bestanden in de map document van de huidige gebruiker om deze virtuele machines te starten om de installatie te volt ooien:
 
    ```powershell
    $documentspath = [environment]::getfolderpath("mydocuments")
    Get-AzureRemoteDesktopFile -ServiceName $svcname -Name $vmname -LocalPath "$documentspath\vm1.rdp"
    ```
 
-2. Start het RDP-bestand in de map documenten. Maak verbinding met de eerder verstrekte gebruikersnaam en wachtwoord van de beheerder (bijvoorbeeld als uw gebruikersnaam VMAdmin was, geef "\VMAdmin" op als gebruiker en geef het wachtwoord op).
+2. Start het RDP-bestand in de map documenten. Maak verbinding met de gebruikers naam en het wacht woord van de beheerder die u eerder hebt opgegeven (als uw gebruikers naam bijvoorbeeld VMAdmin is, geeft u "\VMAdmin" op als de gebruiker en geeft u het wacht woord op).
 
    ```powershell
    cd $documentspath
    .\vm1.rdp
    ```
 
-## <a name="complete-the-configuration-of-the-sql-server-machine-for-remote-access"></a>De configuratie van de SQL Server Machine voor externe toegang voltooien
+## <a name="complete-the-configuration-of-the-sql-server-machine-for-remote-access"></a>De configuratie van de SQL Server machine voor externe toegang volt ooien
 
-Nadat u zich hebt aanmeldt bij de machine met extern bureaublad, configureert u SQL Server op basis van de instructies in [Stappen voor het configureren van SQL Server-connectiviteit in een Azure VM.](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)
+Nadat u zich hebt aangemeld bij de computer met extern bureau blad, configureert u SQL Server op basis van de instructies in de [stappen voor het configureren van SQL Server connectiviteit in een Azure-VM](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U vindt aanvullende instructies voor het inrichten van virtuele machines met PowerShell in de [documentatie van virtuele machines.](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Meer instructies voor het inrichten van virtuele machines met Power shell vindt u in de [documentatie van virtual machines](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-In veel gevallen is de volgende stap het migreren van uw databases naar deze nieuwe SQL Server VM. Zie Een database [migreren naar SQL Server op een Azure VM](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor richtlijnen voor databasemigratie.
+In veel gevallen is de volgende stap het migreren van uw data bases naar deze nieuwe SQL Server VM. Zie [een Data Base migreren naar SQL Server op een virtuele machine van Azure](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor meer informatie over database migratie.
 
-Zie [Een SQL Server Virtual Machine inrichten op Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)als u ook de Azure-portal wilt gebruiken om SQL Virtual Machines te maken. Houd er rekening mee dat de zelfstudie die u door de portal leidt, VM's maakt met behulp van het aanbevolen Resource Manager-model, in plaats van het klassieke model dat wordt gebruikt in dit PowerShell-onderwerp.
+Als u de Azure Portal ook wilt gebruiken om SQL-Virtual Machines te maken, raadpleegt u [een SQL Server virtuele machine inrichten in azure](../sql/virtual-machines-windows-portal-sql-server-provision.md). Houd er rekening mee dat de zelf studie die u via de portal doorgeeft, virtuele machines maakt met behulp van het aanbevolen Resource Manager-model in plaats van het klassieke model dat wordt gebruikt in dit Power shell-onderwerp.
 
-Naast deze bronnen raden we u aan [andere onderwerpen met betrekking tot het uitvoeren van SQL Server in Azure Virtual Machines te bekijken.](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+Naast deze bronnen wordt u aangeraden [andere onderwerpen te bekijken die betrekking hebben op het uitvoeren van SQL Server in Azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

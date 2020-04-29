@@ -1,33 +1,33 @@
 ---
-title: Azure Application Insights-model voor telemetriegegevens van Azure Application Insights
-description: Application Insights-gegevensmodel voor uitzonderingstelemetrie
+title: Telemetrie-gegevens model Azure-toepassing Insights-uitzonde ring
+description: Application Insights gegevens model voor uitzonderings-telemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671933"
 ---
-# <a name="exception-telemetry-application-insights-data-model"></a>Uitzondering telemetrie: gegevensmodel Application Insights
+# <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie van uitzonde ring: Application Insights gegevens model
 
-In [Application Insights](../../azure-monitor/app/app-insights-overview.md)vertegenwoordigt een instantie van Exception een afgehandelde of onverwerkte uitzondering die is opgetreden tijdens de uitvoering van de bewaakte toepassing.
+In [Application Insights](../../azure-monitor/app/app-insights-overview.md)vertegenwoordigt een exemplaar van uitzonde ring een verwerkte of onverwerkte uitzonde ring die is opgetreden tijdens de uitvoering van de bewaakte toepassing.
 
 ## <a name="problem-id"></a>Probleem-id
 
-Id van waar de uitzondering in code is gegooid. Wordt gebruikt voor het groeperen van uitzonderingen. Typisch een combinatie van uitzonderingstype en een functie van de oproepstack.
+De id van de plaats waar de uitzonde ring is opgetreden in de code. Wordt gebruikt voor de groepering van uitzonde ringen. Meestal een combi natie van het uitzonderings type en een functie van de aanroep stack.
 
 Maximale lengte: 1024 tekens
 
 ## <a name="severity-level"></a>Ernstniveau
 
-Trace ernst niveau. Waarde kan `Verbose` `Information`worden `Warning` `Error`, `Critical`, , , .
+Niveau van de ernst van de tracering. `Verbose`Waarde kan `Information`, `Warning`,, `Error`,. `Critical`
 
 ## <a name="exception-details"></a>Details van uitzondering
 
-(Uit te breiden)
+(Uitgebreid)
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 
@@ -39,6 +39,6 @@ Trace ernst niveau. Waarde kan `Verbose` `Information`worden `Warning` `Error`, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [gegevensmodel](data-model.md) voor toepassingsinzichten en gegevensmodel.
-- Meer informatie over het [diagnosticeren van uitzonderingen in uw webapps met Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
-- Bekijk [platforms](../../azure-monitor/app/platforms.md) die worden ondersteund door Application Insights.
+- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
+- Meer informatie over het [opsporen van uitzonde ringen in uw web-apps met Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
+- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.

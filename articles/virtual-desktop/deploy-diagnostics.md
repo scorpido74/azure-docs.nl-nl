@@ -1,6 +1,6 @@
 ---
-title: Het diagnoseprogramma voor Windows Virtual Desktop implementeren - Azure
-description: Het implementeren van het UX-hulpprogramma voor diagnostische gegevens voor Windows Virtual Desktop.
+title: Het hulp programma voor diagnostische gegevens implementeren voor het virtuele bureau blad van Windows-Azure
+description: Het hulp programma Diagnostics UX voor Windows Virtual Desktop implementeren.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,55 +9,55 @@ ms.date: 03/20/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4eb63fe4bd8f8a8b0961aa6a7fccb8de9b7c2f16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123406"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
 >[!IMPORTANT]
->Vanaf 16 maart 2020 hebben we diagnostische query's die van invloed zijn op de gebruikerservaring tijdelijk uitgeschakeld vanwege de toegenomen vraag naar de service. Dit zorgt ervoor dat het hulpprogramma niet meer werkt omdat het afhankelijk is van deze query's om te functioneren. We werken dit artikel bij wanneer diagnostische query's weer beschikbaar zijn.
+>Vanaf 16 maart 2020 hebben we de diagnostische query's die van invloed zijn op de gebruikers ervaring tijdelijk uitgeschakeld vanwege een verhoogde vraag naar de service. Dit zorgt ervoor dat het hulp programma niet meer werkt omdat het afhankelijk is van deze query's. Dit artikel wordt bijgewerkt wanneer diagnostische query's weer beschikbaar zijn.
 >
->Tot die tijd raden we u ten zeerste aan [Log Analytics te gebruiken](diagnostics-log-analytics.md) voor voortdurende monitoring.
+>Tot slot raden wij u ten zeerste aan om [log Analytics te gebruiken](diagnostics-log-analytics.md) voor voortdurende bewaking.
 
-Dit is wat het diagnoseprogramma voor Windows Virtual Desktop voor u kan doen:
+Het hulp programma voor diagnostische gegevens voor Windows Virtual Desktop kan voor u worden uitgevoerd:
 
-- Diagnostische activiteiten (beheer, verbinding of feed) voor één gebruiker opzoeken gedurende een periode van één week.
-- Verzamel sessiehostgegevens voor verbindingsactiviteiten vanuit uw Log Analytics-werkruimte.
-- Bekijk de prestatiegegevens van virtuele machines voor een bepaalde host.
+- Zoek naar diagnostische activiteiten (beheer, verbinding of feed) voor één gebruiker gedurende een periode van één week.
+- Informatie over de sessie-host verzamelen voor verbindings activiteiten vanuit uw Log Analytics-werk ruimte.
+- Bekijk de prestatie gegevens van de virtuele machine (VM) voor een bepaalde host.
 - Bekijk welke gebruikers zijn aangemeld bij de sessiehost.
-- Stuur bericht naar actieve gebruikers op een specifieke sessiehost.
-- Meld gebruikers af bij een sessiehost.
+- Bericht verzenden naar actieve gebruikers op een specifieke sessiehost.
+- Gebruikers afmelden bij een sessiehost.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een Azure Active Directory App-registratie en een logboekanalysewerkruimte maken voordat u de sjabloon Azure Resource Manager voor het hulpprogramma implementeren. U of de beheerder hebt deze machtigingen nodig om dat te doen:
+U moet een Azure Active Directory app-registratie en een Log Analytics-werk ruimte maken voordat u de Azure Resource Manager sjabloon voor het hulp programma kunt implementeren. U of de beheerder heeft deze machtigingen nodig om het volgende te doen:
 
 - Eigenaar van het Azure-abonnement
-- Toestemming om resources te maken in uw Azure-abonnement
-- Toestemming om een Azure AD-app te maken
-- RDS-eigenaar of inzenderrechten
+- Machtiging voor het maken van resources in uw Azure-abonnement
+- Machtiging voor het maken van een Azure AD-app
+- RDS-eigenaar of Inzender rechten
 
-U moet deze twee PowerShell-modules ook installeren voordat u aan de slag gaat:
+U moet deze twee Power shell-modules ook installeren voordat u aan de slag gaat:
 
 - [Azure PowerShell-module](/powershell/azure/install-az-ps?view=azps-2.4.0/)
 - [Azure AD-module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
-Zorg ervoor dat je je abonnements-id bij de hand hebt staan voor wanneer je je aanmeldt.
+Zorg ervoor dat uw abonnement-ID gereed is voor wanneer u zich aanmeldt.
 
-Nadat u alles op orde hebt, u de azure AD-appregistratie maken.
+Nadat u alles in de juiste volg orde hebt, kunt u de Azure AD-App-registratie maken.
 
-## <a name="create-an-azure-active-directory-app-registration"></a>Een Azure Active Directory-app-registratie maken
+## <a name="create-an-azure-active-directory-app-registration"></a>Een Azure Active Directory app-registratie maken
 
-In deze sectie ziet u hoe u PowerShell gebruiken om de Azure Active Directory-app met een serviceprincipal te maken en api-machtigingen ervoor te krijgen.
+In deze sectie wordt uitgelegd hoe u Power shell kunt gebruiken om de Azure Active Directory-app te maken met een Service-Principal en om API-machtigingen voor te krijgen.
 
 >[!NOTE]
->De API-machtigingen zijn Windows Virtual Desktop, Log Analytics en Microsoft Graph API-machtigingen worden toegevoegd aan de Azure Active Directory-toepassing.
+>De API-machtigingen zijn Windows virtueel bureau blad, Log Analytics-en Microsoft Graph API-machtigingen worden toegevoegd aan de Azure Active Directory-toepassing.
 
 1. Open PowerShell als administrator.
-2. Meld u aan bij Azure met een account met machtigingen voor eigenaar of inzender voor het Azure-abonnement dat u wilt gebruiken voor het diagnoseprogramma:
+2. Meld u aan bij Azure met een account met eigenaar-of Inzender machtigingen voor het Azure-abonnement dat u wilt gebruiken voor het diagnostische hulp programma:
    ```powershell
    Login-AzAccount
    ```
@@ -65,204 +65,204 @@ In deze sectie ziet u hoe u PowerShell gebruiken om de Azure Active Directory-ap
    ```powershell
    Connect-AzureAD
    ```
-4. Ga naar de [RdS-Templates GitHub repo](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het **Script CreateADAppRegistrationforDiagnostics.ps1** uit in PowerShell.
-5.  Wanneer het script u vraagt om uw app een naam te geven, voert u een unieke app-naam in.
+4. Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **CreateADAppRegistrationforDiagnostics. Ps1** uit in Power shell.
+5.  Wanneer u wordt gevraagd uw app een naam te geven, voert u een unieke app-naam in.
 
 
-Nadat het script is uitgevoerd, moet het de volgende dingen in de uitvoer weergeven:
+Nadat het script is uitgevoerd, moeten de volgende dingen worden weer gegeven in de uitvoer:
 
--  Een bericht dat bevestigt dat uw app nu een opdracht voor een serviceprincipal-rol heeft.
--  Uw client-id en clientgeheime sleutel die u nodig hebt wanneer u de diagnosetool implementeert.
+-  Een bericht waarin wordt bevestigd dat uw app nu een functie toewijzing van een service-principal heeft.
+-  De client-ID en de geheime sleutel van de client die u nodig hebt voor het implementeren van het diagnostische hulp programma.
 
-Nu u uw app hebt geregistreerd, is het tijd om uw Log Analytics-werkruimte te configureren.
+Nu u uw app hebt geregistreerd, is het tijd om uw Log Analytics-werk ruimte te configureren.
 
-## <a name="configure-your-log-analytics-workspace"></a>Uw werkruimte Log Analytics configureren
+## <a name="configure-your-log-analytics-workspace"></a>Uw Log Analytics-werk ruimte configureren
 
-Voor de best mogelijke ervaring raden we u aan uw Log Analytics-werkruimte te configureren met de volgende prestatiemeteritems waarmee u verklaringen van de gebruikerservaring afleiden in een externe sessie. Zie Prestatiemeterdrempels voor Windows voor een lijst met aanbevolen tellers met voorgestelde [drempelwaarden.](deploy-diagnostics.md#windows-performance-counter-thresholds)
+Voor de beste ervaring raden we u aan om uw Log Analytics-werk ruimte te configureren met de volgende prestatie meter items waarmee u instructies van de gebruikers ervaring in een externe sessie kunt afleiden. Zie [drempel waarden voor het prestatie meter item](deploy-diagnostics.md#windows-performance-counter-thresholds)voor een lijst met aanbevolen prestatie meter items met aanbevolen drempel waarden.
 
-### <a name="create-an-azure-log-analytics-workspace-using-powershell"></a>Een Azure Log Analytics-werkruimte maken met PowerShell
+### <a name="create-an-azure-log-analytics-workspace-using-powershell"></a>Een Azure Log Analytics-werk ruimte maken met behulp van Power shell
 
-U een PowerShell-script uitvoeren om een Log Analytics-werkruimte te maken en de aanbevolen Windows-prestatiemeteritems configureren om de gebruikerservaring en de prestaties van apps te controleren.
-
->[!NOTE]
->Als u al een bestaande Log Analytics-werkruimte hebt die u hebt gemaakt zonder het PowerShell-script dat u wilt gebruiken, gaat u verder met [Het valideren van de scriptresultaten in de Azure-portal.](#validate-the-script-results-in-the-azure-portal)
-
-Ga als u het PowerShell-script uitvoert:
-
-1.  Open PowerShell als beheerder.
-2.  Ga naar de [GitHub-repo voor RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het **Script CreateLogAnalyticsWorkspaceforDiagnostics.ps1** uit in PowerShell.
-3. Voer de volgende waarden voor de parameters in:
-
-    - Voer **voor ResourceGroupName**de naam voor de resourcegroep in.
-    - Voer voor **LogAnalyticsWorkspaceName**een unieke naam in voor uw Log Analytics-werkruimte.
-    - Voer **voor Locatie**het Azure-gebied in dat u gebruikt.
-    - Voer de **Azure Subscription ID**in die u vinden in de Azure-portal onder **Abonnementen**.
-
-4. Voer de referenties in van een gebruiker met gedelegeerde beheerderstoegang.
-5. Meld u aan bij de Azure-portal met de referenties van dezelfde gebruiker.
-6. Schrijf de LogAnalyticsWorkspace ID op of onthoud de LogAnalyticsWorkspace ID voor later.
-7. Als u de werkruimte Log Analytics instelt met het PowerShell-script, moeten uw prestatiemeteritems al zijn geconfigureerd en u doorgaan met [Het scriptvalideren in de Azure-portal.](#validate-the-script-results-in-the-azure-portal) Ga anders verder naar de volgende sectie.
-
-### <a name="configure-windows-performance-counters-in-your-existing-log-analytics-workspace"></a>Windows-prestatiemeteritems configureren in uw bestaande Werkruimte Log Analytics
-
-Deze sectie is bedoeld voor gebruikers die een bestaande Azure Log Analytics-werkruimte willen gebruiken die is gemaakt zonder het PowerShell-script in de vorige sectie. Als u het script niet hebt gebruikt, moet u de aanbevolen Windows-prestatiemeteritems handmatig configureren.
-
-U de aanbevolen prestatiemeteritems als u de aanbevolen prestatiemeteritems handmatig configureren:
-
-1. Open uw internetbrowser en meld u aan bij de [Azure-portal](https://portal.azure.com/) met uw beheerdersaccount.
-2. Ga vervolgens naar **Log Analytics-werkruimten** om de geconfigureerde Windows-prestatiemeteritems te bekijken.
-3. Selecteer **in** de sectie Instellingen de optie **Geavanceerde instellingen**.
-4. Ga daarna naar De**prestatiemeteritems** **voor gegevens** > windows en voeg de volgende tellers toe:
-
-    -   Logische\*Schijf(\\) %Vrije ruimte
-    -   LogicalDisk(C:)\\Avg. Schijfwachtrijlengte
-    -   Geheugen(\*\\) Beschikbare Mbytes
-    -   Processorinformatie(\*\\) Processortijd
-    -   Vertraging van de\*invoer\\van gebruikers per sessie( ) Maximale invoervertraging
-
-Meer informatie over de prestatiemeteritems bij [Windows- en Linux-prestatiegegevensbronnen in Azure Monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
+U kunt een Power shell-script uitvoeren om een Log Analytics-werk ruimte te maken en de aanbevolen prestatie meter items voor Windows te configureren om de gebruikers ervaring en de prestaties van de app te bewaken.
 
 >[!NOTE]
->Eventuele extra tellers die u configureert, worden niet weergegeven in het diagnoseprogramma zelf. Als u het wilt laten verschijnen in het diagnoseprogramma, moet u het config-bestand van het gereedschap configureren. Instructies voor hoe dit te doen met geavanceerd beheer zullen op een later tijdstip beschikbaar zijn in GitHub.
+>Als u al een bestaande Log Analytics-werk ruimte hebt gemaakt zonder het Power shell-script dat u wilt gebruiken, gaat u verder met het [valideren van de script resultaten in de Azure Portal](#validate-the-script-results-in-the-azure-portal).
 
-## <a name="validate-the-script-results-in-the-azure-portal"></a>De scriptresultaten valideren in de Azure-portal
+Het Power shell-script uitvoeren:
 
-Voordat u doorgaat met het implementeren van het diagnoseprogramma, raden we u aan te controleren of uw Azure Active Directory-toepassing API-machtigingen heeft en dat uw Log Analytics-werkruimte de vooraf geconfigureerde Windows-prestatiemeteritems heeft.
+1.  Open Power shell als beheerder.
+2.  Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **CreateLogAnalyticsWorkspaceforDiagnostics. Ps1** uit in Power shell.
+3. Voer de volgende waarden in voor de para meters:
+
+    - Voer voor **ResourceGroupName**de naam in voor de resource groep.
+    - Voer voor **LogAnalyticsWorkspaceName**een unieke naam in voor uw log Analytics-werk ruimte.
+    - Voer bij **locatie**de Azure-regio in die u gebruikt.
+    - Voer de **Azure-abonnements-id**in die u kunt vinden in de Azure portal onder **abonnementen**.
+
+4. Voer de referenties in van een gebruiker met gedelegeerde beheerders toegang.
+5. Meld u aan bij de Azure Portal met de referenties van dezelfde gebruiker.
+6. Noteer de LogAnalyticsWorkspace-ID voor later.
+7. Als u de Log Analytics-werk ruimte instelt met het Power shell-script, moeten de prestatie meter items al zijn geconfigureerd en kunt u verder gaan om [de script resultaten in de Azure portal te valideren](#validate-the-script-results-in-the-azure-portal). Als dat niet het geval is, gaat u verder met de volgende sectie.
+
+### <a name="configure-windows-performance-counters-in-your-existing-log-analytics-workspace"></a>Windows-prestatie meter items configureren in uw bestaande Log Analytics-werk ruimte
+
+Deze sectie is voor gebruikers die een bestaande Azure Log Analytics-werk ruimte willen gebruiken die is gemaakt zonder het Power shell-script in de vorige sectie. Als u het script nog niet hebt gebruikt, moet u de aanbevolen Windows-prestatie meter items hand matig configureren.
+
+U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
+
+1. Open uw Internet browser en meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
+2. Ga vervolgens naar **log Analytics-werk ruimten** om de geconfigureerde Windows-prestatie meter items te controleren.
+3. Selecteer in de sectie **instellingen** de optie **Geavanceerde instellingen**.
+4. Daarna gaat u naar **gegevens** > **prestatie meter items van Windows** en voegt u de volgende tellers toe:
+
+    -   Logische schijf\*(\\)% beschik bare ruimte
+    -   Logische schijf (C\\:) gem. wachtrij lengte voor schijven
+    -   Beschik\*bare\\MB geheugen ()
+    -   Processor informatie (\*)\\processor tijd
+    -   Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
+
+Meer informatie over de prestatie meter items [in Windows-en Linux-prestatie gegevens bronnen in azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
+
+>[!NOTE]
+>Alle extra tellers die u configureert, worden niet weer gegeven in het diagnostische hulp programma zelf. Als u deze wilt weer geven in het diagnostische hulp programma, moet u het configuratie bestand van het hulp programma configureren. Instructies voor het uitvoeren van een geavanceerd beheer vindt u op een later tijdstip in GitHub.
+
+## <a name="validate-the-script-results-in-the-azure-portal"></a>De resultaten van het script valideren in de Azure Portal
+
+Voordat u doorgaat met de implementatie van het diagnostische hulp programma, kunt u het beste controleren of uw Azure Active Directory-toepassing API-machtigingen heeft en uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-prestatie meter items heeft.
 
 ### <a name="review-your-app-registration"></a>Uw app-registratie controleren
 
-Ga als u ervoor zorgen dat uw app-registratie API-machtigingen heeft:
+Om ervoor te zorgen dat de app-registratie API-machtigingen heeft:
 
-1. Open een browser en maak verbinding met de [Azure-portal](https://portal.azure.com/) met uw beheerdersaccount.
+1. Open een browser en maak verbinding met de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
 2. Ga naar **Azure Active Directory**.
-3. Ga naar **App-registraties** en selecteer **Alle toepassingen**.
-4. Zoek naar uw Azure AD-appregistratie met dezelfde app-naam die u hebt ingevoerd in stap 5 van [Een Azure Active Directory-app-registratie maken.](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)
+3. Ga naar **app-registraties** en selecteer **alle toepassingen**.
+4. Zoek naar uw Azure AD-App-registratie met dezelfde app-naam die u hebt opgegeven in stap 5 van [een registratie van een Azure Active Directory-app maken](deploy-diagnostics.md#create-an-azure-active-directory-app-registration).
 
-### <a name="review-your-log-analytics-workspace"></a>Uw logboekanalysewerkruimte controleren
+### <a name="review-your-log-analytics-workspace"></a>Uw Log Analytics-werk ruimte controleren
 
-Ga als u ervoor zorgen dat uw log analytics-werkruimte de vooraf geconfigureerde Windows-prestatiemeteritems heeft:
+Zorg ervoor dat uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-prestatie meter items heeft:
 
-1. Ga in de [Azure-portal](https://portal.azure.com/)naar **Log Analytics-werkruimten** om de geconfigureerde Windows-prestatiemeteritems te bekijken.
-2. Selecteer **Onder Instellingen**de optie Geavanceerde **instellingen**.
-3. Ga daarna naar > **Gegevenswindows-prestatiemeteritems**. **Data**
-4. Controleer of de volgende tellers vooraf zijn geconfigureerd:
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar **log Analytics-werk ruimten** om de geconfigureerde Windows-prestatie meter items te controleren.
+2. Selecteer onder **instellingen**de optie **Geavanceerde instellingen**.
+3. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items**.
+4. Zorg ervoor dat de volgende prestatie meter items zijn geconfigureerd:
 
-   - Logische\*schijf(\\) %Vrije ruimte: geeft de hoeveelheid vrije ruimte van de totale bruikbare ruimte op de schijf als percentage weer.
-   - LogicalDisk(C:)\\Avg. Schijfwachtrijlengte: de lengte van de aanvraag voor schijfoverdracht voor uw C-station. De waarde mag niet meer dan 2 voor meer dan een korte periode van tijd.
-   - Geheugen(\*\\) Beschikbare Mbytes: Het beschikbare geheugen voor het systeem in megabytes.
-   - Processorinformatie(\*\\) Processortijd: het percentage verstreken tijd dat de processor besteedt aan het uitvoeren van een niet-Idle thread.
-   - Vertraging van de\*invoer\\van gebruikers per sessie( ) Maximale invoervertraging
+   - Logische schijf\*(\\)% beschik bare ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
+   - Logische schijf (C\\:) gem. wachtrij lengte voor schijven: de lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
+   - Beschik\*bare\\MB geheugen (): het beschik bare geheugen voor het systeem in mega bytes.
+   - Processor informatie (\*)\\processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
+   - Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
 
-### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Verbinding maken met VM's in uw Log Analytics-werkruimte
+### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Verbinding maken met virtuele machines in uw Log Analytics-werk ruimte
 
-Als u de status van VM's wilt bekijken, moet u de Log Analytics-verbinding inschakelen. Volg de volgende stappen om uw VM's met elkaar te verbinden:
+Als u de status van virtuele machines wilt kunnen bekijken, moet u de Log Analytics-verbinding inschakelen. Volg deze stappen om uw Vm's te verbinden:
 
-1. Open een browser en meld u aan bij de [Azure-portal](https://portal.azure.com/) met uw beheerdersaccount.
-2. Ga naar uw Log Analytics Workspace.
-3. Selecteer **virtuele machines**in het linkerdeelvenster onder Werkruimtegegevensbronnen .
-4. Selecteer de naam van de VM waarmee u verbinding wilt maken.
+1. Open een browser en meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
+2. Ga naar uw Log Analytics-werk ruimte.
+3. Selecteer in het linkerdeel venster onder gegevens bronnen voor werk ruimte de optie **virtuele machines**.
+4. Selecteer de naam van de virtuele machine waarmee u verbinding wilt maken.
 5. Selecteer **Verbinden**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
-Ga als u de sjabloon Azure Resource Management implementeren voor het diagnosehulpprogramma:
+Voor het implementeren van de Azure resource management-sjabloon voor het diagnostische hulp programma:
 
-1.  Ga naar de [pagina GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
-2.  Implementeer de sjabloon naar Azure en volg de instructies in de sjabloon. Zorg ervoor dat u over de volgende informatie beschikt:
+1.  Ga naar de [pagina github Azure RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
+2.  Implementeer de sjabloon in Azure en volg de instructies in de sjabloon. Zorg ervoor dat u over de volgende informatie beschikt:
 
     -   Client-id
-    -   Client-Secret
+    -   Client-geheim
     -   Log Analytics-werkruimte-id
 
-3.  Zodra de invoerparameters zijn opgegeven, accepteert u de algemene voorwaarden en selecteert u **Kopen**.
+3.  Zodra de invoer parameters zijn opgegeven, accepteert u de voor waarden en selecteert u vervolgens **aanschaffen**.
 
-De implementatie duurt 2-3 minuten. Ga na een succesvolle implementatie naar de brongroep en zorg ervoor dat de bronnen voor web-app- en app-serviceplannen aanwezig zijn.
+De implementatie duurt 2 tot 3 minuten. Nadat de implementatie is voltooid, gaat u naar de resource groep en controleert u of de resources van de web-app en het app service-plan aanwezig zijn.
 
-Daarna moet u de OMLEIDING URI instellen.
+Daarna moet u de omleidings-URI instellen.
 
-### <a name="set-the-redirect-uri"></a>De URI omleiden instellen
+### <a name="set-the-redirect-uri"></a>De omleidings-URI instellen
 
-Ga als u de URI omleiden:
+De omleidings-URI instellen:
 
-1.  Ga in de [Azure-portal](https://portal.azure.com/)naar **App Services** en zoek de toepassing die u hebt gemaakt.
-2.  Ga naar de overzichtspagina en kopieer de URL die je daar vindt.
+1.  Ga in het [Azure Portal](https://portal.azure.com/)naar **app Services** en zoek de toepassing die u hebt gemaakt.
+2.  Ga naar de pagina overzicht en kopieer de URL die u hier vindt.
 3.  Navigeer naar **app-registraties** en selecteer de app die u wilt implementeren.
-4.  Selecteer **verificatie**in het linkerdeelvenster onder Sectie Beheren .
-5.  Voer de gewenste URI-omleiding in het tekstvak **URI omleiden** en selecteer **Opslaan** in de linkerbovenhoek van het menu.
-6. Selecteer **Web** in het vervolgkeuzemenu onder Type.
-7. Voer de URL in op de pagina met app-overzicht en voeg **/security/signin-callback toe** aan het einde ervan. Bijvoorbeeld: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+4.  Selecteer in het linkerdeel venster onder sectie beheren de optie **verificatie**.
+5.  Voer de gewenste omleidings-URI in het tekstvak **omleidings-URI** in en selecteer vervolgens **Opslaan** in de linkerbovenhoek van het menu.
+6. Selecteer **Web** in de vervolg keuzelijst onder Type.
+7. Voer de URL van de overzichts pagina van de app in en voeg **/Security/signin-callback** toe aan het eind. Bijvoorbeeld: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![De uri-pagina omleiden](media/redirect-uri-page.png)
+   ![De omleidings-URI-pagina](media/redirect-uri-page.png)
 
-8. Ga nu naar uw Azure-bronnen, selecteer de Azure App Services-bron met de naam die u in de sjabloon hebt opgegeven en navigeer naar de URL die eraan is gekoppeld. (Als de app-naam die u in `contosoapp45`de sjabloon hebt <https://contosoapp45.azurewebsites.net>gebruikt, bijvoorbeeld is, dan is de bijbehorende URL ).
-9. Meld u aan met het juiste Azure Active Directory-gebruikersaccount.
+8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt `contosoapp45`, bijvoorbeeld is, is <https://contosoapp45.azurewebsites.net>de bijbehorende URL).
+9. Meld u aan met het juiste Azure Active Directory gebruikers account.
 10.   Selecteer **Accepteren**.
 
-## <a name="distribute-the-diagnostics-tool"></a>Het diagnosegereedschap distribueren
+## <a name="distribute-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens distribueren
 
-Voordat u het diagnoseprogramma beschikbaar maakt voor uw gebruikers, controleert u of ze de volgende machtigingen hebben:
+Voordat u het hulp programma voor diagnostische gegevens beschikbaar maakt voor uw gebruikers, moet u ervoor zorgen dat ze over de volgende machtigingen beschikken:
 
-- Gebruikers hebben leestoegang nodig voor log-analyses. Zie [Aan de slag met rollen, machtigingen en beveiliging met Azure Monitor](/azure/azure-monitor/platform/roles-permissions-security)voor meer informatie.
--  Gebruikers hebben ook leestoegang nodig voor de Windows Virtual Desktop-tenant (RDS Reader-rol). Zie [Gedelegeerde toegang in Windows Virtual Desktop](delegated-access-virtual-desktop.md)voor meer informatie.
+- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/azure/azure-monitor/platform/roles-permissions-security)voor meer informatie.
+-  Gebruikers hebben ook lees toegang nodig voor de Windows-Tenant voor virtueel bureau blad (functie voor RDS-lezer). Zie voor meer informatie [gedelegeerde toegang in virtueel bureau blad van Windows](delegated-access-virtual-desktop.md).
 
 U moet uw gebruikers ook de volgende informatie geven:
 
 - De URL van de app
-- De namen van de individuele tenant van de tenantgroep die ze kunnen openen.
+- De namen van de Tenant groep afzonderlijke tenants waartoe ze toegang hebben.
 
-## <a name="use-the-diagnostics-tool"></a>Het diagnosegereedschap gebruiken
+## <a name="use-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens gebruiken
 
-Nadat u zich bij uw account hebt aangemeld met de informatie die u van uw organisatie hebt ontvangen, moet u de UPN klaarhebben voor de gebruiker waarvoor u activiteiten wilt opvragen. Een zoekopdracht geeft u alle activiteiten onder het opgegeven activiteitstype dat in de afgelopen week is gebeurd.
+Nadat u zich hebt aangemeld bij uw account met behulp van de informatie die u hebt ontvangen van uw organisatie, moet u de UPN gereed maken voor de gebruiker waarvoor u een query wilt uitvoeren voor activiteiten. Een zoek opdracht geeft u alle activiteiten onder het opgegeven type activiteit die in de afgelopen week zijn gebeurd.
 
-### <a name="how-to-read-activity-search-results"></a>Zoekresultaten voor activiteiten lezen
+### <a name="how-to-read-activity-search-results"></a>Zoek resultaten voor activiteiten lezen
 
-Activiteiten worden gesorteerd op tijdstempel, met de nieuwste activiteit eerst. Als de resultaten een fout retourneren, controleert u eerst of het een servicefout is. Maak voor servicefouten een ondersteuningsticket met de activiteitsgegevens om ons te helpen het probleem te debuggen. Alle andere fouttypen kunnen meestal worden opgelost door de gebruiker of beheerder. Zie [Problemen identificeren en diagnosticeren](diagnostics-role-service.md#common-error-scenarios)voor een lijst met de meest voorkomende foutscenario's en hoe deze op te lossen.
+Activiteiten worden gesorteerd op tijds tempel, met de nieuwste activiteit eerst. Als de resultaten een fout retour neren, controleert u eerst of er een service fout is opgetreden. Maak voor service fouten een ondersteunings ticket met de informatie over de activiteit om het probleem op te lossen. Alle andere fout typen kunnen meestal worden opgelost door de gebruiker of de beheerder. Zie [problemen identificeren en onderzoeken](diagnostics-role-service.md#common-error-scenarios)voor een overzicht van de meest voorkomende fout scenario's en hoe u deze kunt oplossen.
 
 >[!NOTE]
->Servicefouten worden in de gekoppelde documentatie "externe fouten" genoemd. Dit wordt gewijzigd wanneer we de PowerShell-referentie bijwerken.
+>Service fouten worden "externe fouten" genoemd in de gekoppelde documentatie. Dit wordt gewijzigd tijdens het bijwerken van de Power shell-verwijzing.
 
-Verbindingsactiviteiten kunnen meer dan één fout bevatten. U het activiteitstype uitbreiden om andere fouten te zien die de gebruiker is tegengekomen. Selecteer de naam van de foutcode om een dialoogvenster te openen om meer informatie over de fout code te bekijken.
+Verbindings activiteiten kunnen meer dan één fout bevatten. U kunt het type activiteit uitvouwen om eventuele andere fouten te zien die de gebruiker heeft bereikt. Selecteer de naam van de fout code om een dialoog venster te openen voor meer informatie hierover.
 
 ### <a name="investigate-the-session-host"></a>De sessiehost onderzoeken 
 
-Zoek en selecteer in de zoekresultaten de sessiehost waarover u informatie wilt.
+Zoek en selecteer in de zoek resultaten de sessiehost waarover u informatie wilt.
 
-U de status van sessiehost analyseren:
+U kunt de status van de sessie-host analyseren:
 
-- Op basis van een vooraf gedefinieerde drempelwaarde u de statusgegevens van de sessiehost opvragen met Log Analytics-query's ophalen.
-- Als er geen activiteit is of de sessiehost niet is verbonden met Log Analytics, is de informatie niet beschikbaar.
+- Op basis van een vooraf gedefinieerde drempel waarde kunt u de status gegevens van de sessie-host ophalen die Log Analytics query's.
+- Als er geen activiteit is of als de sessiehost niet is verbonden met Log Analytics, is de informatie niet beschikbaar.
 
-U ook communiceren met gebruikers op de sessiehost:
+U kunt ook communiceren met gebruikers op de sessiehost:
 
-- U zich afmelden of een bericht sturen naar aangemelde gebruikers.
-- De gebruiker waar naar u oorspronkelijk hebt gezocht, is standaard geselecteerd, maar u ook extra gebruikers selecteren om berichten te verzenden of meerdere gebruikers tegelijk af te melden.
+- U kunt zich afmelden of een bericht verzenden naar een aangemelde gebruiker.
+- De gebruiker die u oorspronkelijk hebt gezocht, is standaard geselecteerd, maar u kunt ook extra gebruikers selecteren om berichten te verzenden of meerdere gebruikers tegelijk af te melden.
 
-### <a name="windows-performance-counter-thresholds"></a>Windows prestatiemeterdrempels
+### <a name="windows-performance-counter-thresholds"></a>Drempel waarden voor prestatie meter items voor Windows
 
-- LogicalDisk(\*\\) %Vrije ruimte:
+- Logische schijf\*(\\)% beschik bare ruimte:
 
-    - Hiermee geeft u het percentage van de totale bruikbare ruimte weer op de logische schijf die vrij is.
-    - Drempel: Minder dan 20% is gemarkeerd als ongezond.
+    - Hiermee wordt het percentage van de totale bruikbare ruimte op de logische schijf weer gegeven die vrij is.
+    - Drempel waarde: minder dan 20% is gemarkeerd als beschadigd.
 
-- LogicalDisk(C:)\\Avg. Schijfwachtrijlengte:
+- Logische schijf (C\\:) gem. lengte van de wachtrij:
 
-    - Staat voor de omstandigheden van het opslagsysteem.
-    - Drempelwaarde: Hoger dan 5 is gemarkeerd als ongezond.
+    - Geeft de voor waarden van het opslag systeem aan.
+    - Drempel waarde: hoger dan 5 is gemarkeerd als beschadigd.
 
-- Geheugen(\*\\) Beschikbare Mbytes:
+- Beschik\*bare\\mega bytes () geheugen ():
 
-    - Het beschikbare geheugen voor het systeem.
-    - Drempel: Minder dan 500 megabyte gemarkeerd als ongezond.
+    - Het beschik bare geheugen voor het systeem.
+    - Drempel waarde: minder dan 500 mega bytes, gemarkeerd als beschadigd.
 
-- Processorinformatie(\*\\) Processortijd:
+- Processor informatie (\*)\\processor tijd:
 
-    - Drempelwaarde: Hoger dan 80% is gemarkeerd als ongezond.
+    - Drempel waarde: hoger dan 80% is gemarkeerd als beschadigd.
 
-- [Vertraging van de\*invoer\\van gebruikers per sessie( ) Maximale invoervertraging:](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)
+- [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
-    - Drempelwaarde: Hoger dan 2000 ms is gemarkeerd als ongezond.
+    - Drempel waarde: hoger dan 2000 MS is gemarkeerd als beschadigd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het monitoren van activiteitenlogboeken bij [Diagnostische gegevens gebruiken met Log Analytics](diagnostics-log-analytics.md).
-- Lees meer over veelvoorkomende foutscenario's en hoe u deze oplossen bij [Problemen identificeren en diagnosticeren.](diagnostics-role-service.md)
+- Meer informatie over het bewaken van activiteiten Logboeken bij het [gebruik van diagnostische gegevens met log Analytics](diagnostics-log-analytics.md).
+- Meer informatie over veelvoorkomende fout scenario's en hoe u deze kunt oplossen bij het [identificeren en diagnosticeren van problemen](diagnostics-role-service.md).

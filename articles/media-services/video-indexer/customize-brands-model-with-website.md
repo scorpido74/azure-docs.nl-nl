@@ -1,7 +1,7 @@
 ---
-title: Een Brands-model aanpassen met de website video-indexer
+title: Een Brands model aanpassen met de Video Indexer-website
 titleSuffix: Azure Media Services
-description: Meer informatie over het aanpassen van een brands-model met de website Video Indexer.
+description: Meer informatie over het aanpassen van een merk model met de Video Indexer-website.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,96 +11,96 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 81df3897dff13823e4b97e10bc91d3a22b0e1b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128047"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Een Brands-model aanpassen met de website video-indexer
+# <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Een Brands model aanpassen met de Video Indexer-website
 
-Video Indexer ondersteunt merkdetectie van spraak en visuele tekst tijdens het indexeren en opnieuw indexeren van video- en audio-inhoud. De merkdetectiefunctie identificeert vermeldingen van producten, services en bedrijven die worden voorgesteld door de merkendatabase van Bing. Als Microsoft bijvoorbeeld wordt vermeld in video- of audio-inhoud of als deze wordt weergegeven in visuele tekst in een video, detecteert Video Indexer het als een merk in de inhoud.
+Video Indexer ondersteunt merk detectie van spraak-en visuele tekst tijdens het indexeren en opnieuw indexeren van video-en audio-inhoud. De merk detectie functie identificeert vermeldingen van producten, services en bedrijven die worden voorgesteld door de merken database van Bing. Als micro soft bijvoorbeeld wordt vermeld in video-of audio-inhoud, of als het in visuele tekst in een video wordt weer gegeven, detecteert Video Indexer deze als een merk in de inhoud.
 
-Met een custom Brands-model u:
+Met een aangepast merk model kunt u het volgende doen:
 
-- selecteer als u wilt dat Video Indexer merken uit de bing-merkendatabase detecteert.
-- selecteer als u wilt dat Video Indexer bepaalde merken uitsluit van gedetecteerde merken (in wezen een lijst met merken weigeren).
-- selecteer als u wilt dat Video Indexer merken opneemt die deel moeten uitmaken van uw model en die mogelijk niet in de merkendatabase van Bing staan (in wezen een lijst met merken accepteren).
+- Selecteer deze optie als u wilt dat Video Indexer Brands detecteert van de Bing Brands-data base.
+- Selecteer deze optie als u wilt dat Video Indexer bepaalde merken uitsluiten van detectie (in feite het maken van een lijst met geweigerde merken).
+- Selecteer deze optie als u wilt dat Video Indexer Brands bevat die deel moeten uitmaken van uw model en zich mogelijk niet in de data base van Bing Brands bevallen (in feite een acceptatie lijst met merken maken).
 
-Voor een gedetailleerd overzicht, zie dit [overzicht](customize-brands-model-overview.md).
+Zie dit [overzicht](customize-brands-model-overview.md)voor een gedetailleerd overzicht.
 
-U de website Video Indexer gebruiken om aangepaste merkenmodellen te maken, gebruiken en bewerken die in een video zijn gedetecteerd, zoals beschreven in dit onderwerp. U de API ook gebruiken, zoals beschreven in [het model Merken aanpassen met API's.](customize-brands-model-with-api.md)
+U kunt de Video Indexer-website gebruiken om aangepaste merk modellen te maken, te gebruiken en te bewerken die in een video zijn gedetecteerd, zoals beschreven in dit onderwerp. U kunt ook de API gebruiken, zoals beschreven in de instructies [model aanpassen met behulp van api's](customize-brands-model-with-api.md).
 
-## <a name="edit-brands-model-settings"></a>Modelinstellingen voor merken bewerken
+## <a name="edit-brands-model-settings"></a>Model instellingen voor Brands bewerken
 
-U instellen of u merken uit de bing-merkendatabase wilt detecteren. Als u deze optie wilt instellen, moet u de instellingen van uw Brands-model bewerken. Volg deze stappen:
+U kunt instellen of u wilt dat de merken van de Bing Brands-Data Base worden gedetecteerd. Als u deze optie wilt instellen, moet u de instellingen van uw Brands model bewerken. Volg deze stappen:
 
-1. Ga naar de [website van Video Indexer](https://www.videoindexer.ai/) en meld u aan.
-2. Als u een model in uw account wilt aanpassen, selecteert u de knop **Inhoudsmodel aanpassen** in de rechterbovenhoek van de pagina.
+1. Ga naar de [video indexer](https://www.videoindexer.ai/) -website en meld u aan.
+2. Als u een model in uw account wilt aanpassen, selecteert u de knop **aanpassing van inhouds model** in de rechter bovenhoek van de pagina.
 
-   ![Inhoudsmodel aanpassen in videoindexer](./media/content-model-customization/content-model-customization.png)
+   ![Het inhouds model in Video Indexer aanpassen](./media/content-model-customization/content-model-customization.png)
 
-3. Als u merken wilt bewerken, selecteert u het tabblad **Merken.**
+3. Als u de Brands wilt bewerken, selecteert u het tabblad **Brands** .
 
-    ![Merkenmodel aanpassen in Video Indexer](./media/customize-brand-model/customize-brand-model.png)
+    ![Het model van Brands aanpassen in Video Indexer](./media/customize-brand-model/customize-brand-model.png)
 
-4. Controleer de **optie Merken weergeven die door Bing worden voorgesteld** als u wilt dat Video-indexer merken detecteert die door Bing worden voorgesteld, en laat de optie niet aangevinkt als u dat niet doet.
+4. Schakel de optie **Brands weer geven die door Bing worden voorgesteld** in als u wilt dat video indexer de door Bing Aanbevolen merken detecteert. laat de optie uitgeschakeld als dat niet het geval is.
 
-## <a name="include-brands-in-the-model"></a>Merken opnemen in het model
+## <a name="include-brands-in-the-model"></a>Brands in het model toevoegen
 
-De sectie **Merken opnemen** vertegenwoordigt aangepaste merken die u wilt dat Video Indexer detecteert, zelfs als deze niet worden voorgesteld door Bing.  
+De sectie **inclusief Brands bevat** aangepaste merken die u video indexer wilt laten detecteren, zelfs als ze niet worden voorgesteld door Bing.  
 
-### <a name="add-a-brand-to-include-list"></a>Een merk toevoegen om een lijst op te nemen
+### <a name="add-a-brand-to-include-list"></a>Een merk toevoegen aan de lijst met insluitingen
 
-1. Selecteer **+ Merk toevoegen**.
+1. Selecteer **+ merk toevoegen**.
 
-    ![Merkenmodel aanpassen in Video Indexer](./media/customize-brand-model/add-brand.png)
+    ![Het model van Brands aanpassen in Video Indexer](./media/customize-brand-model/add-brand.png)
 
-    Geef een naam (vereist), categorie (optioneel), beschrijving (optioneel) en referentie-URL (optioneel) op.
-    Het categorieveld is bedoeld om u te helpen uw merken te taggen. Dit veld wordt weergegeven als de *tags* van het merk bij het gebruik van de API's voor video-indexer. Het merk "Azure" kan bijvoorbeeld worden getagd of gecategoriseerd als "Cloud".
+    Geef een naam op (vereist), categorie (optioneel), beschrijving (optioneel) en Referentie-URL (optioneel).
+    Het veld categorie is bedoeld om u te helpen labels voor uw Brands te geven. Dit veld wordt weer gegeven als *Tags* van het merk bij gebruik van de video indexer-api's. Het merk "Azure" kan bijvoorbeeld worden gelabeld of gecategoriseerd als "Cloud".
 
-    Het referentie-URL-veld kan elke referentiewebsite voor het merk zijn (zoals een link naar de Wikipedia-pagina).
+    Het veld Referentie-URL kan een referentie website zijn voor het merk (zoals een koppeling naar de Wikipedia-pagina).
 
-2. Selecteer **Merk toevoegen** en je ziet dat het merk is toegevoegd aan de lijst Met merken **opnemen.**
+2. Selecteer **merk toevoegen** en u ziet dat het merk is toegevoegd aan de lijst met **include Brands** .
 
-### <a name="edit-a-brand-on-the-include-list"></a>Een merk bewerken op de lijst met include
+### <a name="edit-a-brand-on-the-include-list"></a>Een merk bewerken in de lijst met insluitingen
 
-1. Selecteer het potloodpictogram naast het merk dat u wilt bewerken.
+1. Selecteer het potlood pictogram naast het merk dat u wilt bewerken.
 
-    U de categorie, beschrijving of referentie-URL van een merk bijwerken. Je de naam van een merk niet veranderen omdat namen van merken uniek zijn. Als u de merknaam wilt wijzigen, verwijdert u het hele merk (zie volgende sectie) en maakt u een nieuw merk met de nieuwe naam.
+    U kunt de categorie, beschrijving of Referentie-URL van een merk bijwerken. U kunt de naam van een merk niet wijzigen, omdat de namen van merken uniek zijn. Als u de merk naam moet wijzigen, verwijdert u het gehele merk (Zie de volgende sectie) en maakt u een nieuw merk met de nieuwe naam.
 
-2. Selecteer de knop **Bijwerken** om het merk bij te werken met de nieuwe informatie.
+2. Selecteer de knop **bijwerken** om het merk bij te werken met de nieuwe informatie.
 
-### <a name="delete-a-brand-on-the-include-list"></a>Een merk verwijderen in de lijst met include
+### <a name="delete-a-brand-on-the-include-list"></a>Een merk verwijderen uit de lijst met insluitingen
 
-1. Selecteer het prullenbakpictogram naast het merk dat u wilt verwijderen.
-2. Selecteer **Verwijderen** en het merk wordt niet meer weergegeven in de lijst *Met merk opnemen.*
+1. Selecteer het prullenbak pictogram naast het merk dat u wilt verwijderen.
+2. Selecteer **verwijderen** en het merk wordt niet meer weer gegeven in de lijst *brandss opnemen* .
 
 ## <a name="exclude-brands-from-the-model"></a>Merken uitsluiten van het model
 
-De sectie **Merken uitsluiten** vertegenwoordigt de merken die u niet wilt dat Video Indexer detecteert.
+De sectie **Brands uitsluiten** vertegenwoordigt de merken die u niet video indexer wilt laten detecteren.
 
-### <a name="add-a-brand-to-exclude-list"></a>Een merk toevoegen om de lijst uit te sluiten
+### <a name="add-a-brand-to-exclude-list"></a>Een merk toevoegen aan de uitsluitings lijst
 
-1. Selecteer **+ Merk toevoegen.**
+1. Selecteer **+ merk toevoegen.**
 
-    Geef een naam (vereist), categorie (optioneel).
+    Geef een naam op (vereist), categorie (optioneel).
 
-2. Selecteer **Merk toevoegen** en je ziet dat het merk is toegevoegd aan de lijst Merken *uitsluiten.*
+2. Selecteer **merk toevoegen** en u ziet dat het merk is toegevoegd aan de lijst met *uitzonde ringen* .
 
-### <a name="edit-a-brand-on-the-exclude-list"></a>Een merk bewerken op de lijst met uitsluiting
+### <a name="edit-a-brand-on-the-exclude-list"></a>Een merk bewerken in de uitsluitings lijst
 
-1. Selecteer het potloodpictogram naast het merk dat u wilt bewerken.
+1. Selecteer het potlood pictogram naast het merk dat u wilt bewerken.
 
-    U alleen de categorie van een merk bijwerken. Je de naam van een merk niet veranderen omdat namen van merken uniek zijn. Als u de merknaam wilt wijzigen, verwijdert u het hele merk (zie volgende sectie) en maakt u een nieuw merk met de nieuwe naam.
+    U kunt de categorie van een merk alleen bijwerken. U kunt de naam van een merk niet wijzigen, omdat de namen van merken uniek zijn. Als u de merk naam moet wijzigen, verwijdert u het gehele merk (Zie de volgende sectie) en maakt u een nieuw merk met de nieuwe naam.
 
-2. Selecteer de knop **Bijwerken** om het merk bij te werken met de nieuwe informatie.
+2. Selecteer de knop **bijwerken** om het merk bij te werken met de nieuwe informatie.
 
-### <a name="delete-a-brand-on-the-exclude-list"></a>Een merk verwijderen op de lijst met uitsluiting
+### <a name="delete-a-brand-on-the-exclude-list"></a>Een merk verwijderen uit de uitsluitings lijst
 
-1. Selecteer het prullenbakpictogram naast het merk dat u wilt verwijderen.
-2. Selecteer **Verwijderen** en het merk wordt niet meer weergegeven in de lijst *Met merkproducten uitsluiten.*
+1. Selecteer het prullenbak pictogram naast het merk dat u wilt verwijderen.
+2. Selecteer **verwijderen** en het merk wordt niet meer weer gegeven in de lijst *exclude Brands* .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Merkenmodel aanpassen met API's](customize-brands-model-with-api.md)
+[Het merk model aanpassen met behulp van Api's](customize-brands-model-with-api.md)

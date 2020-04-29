@@ -1,6 +1,6 @@
 ---
-title: Een gedeelde afbeeldingsgalerie gebruiken in Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het configureren van een labaccount om een gedeelde afbeeldingsgalerie te gebruiken, zodat een gebruiker een afbeelding met een andere afbeelding kan delen en een andere gebruiker de afbeelding kan gebruiken om een sjabloon-VM in het lab te maken.
+title: Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services | Microsoft Docs
+description: Informatie over het configureren van een Lab-account voor het gebruik van een galerie met gedeelde afbeeldingen zodat een gebruiker een installatie kopie kan delen met andere en een andere gebruiker kan de installatie kopie gebruiken om een sjabloon-VM in het lab te maken.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190446"
 ---
-# <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een gedeelde afbeeldingsgalerie gebruiken in Azure Lab Services
-In dit artikel ziet u hoe docenten/labbeheerders een virtuele sjabloonafbeelding kunnen opslaan om door anderen te kunnen worden hergebruikt. Deze afbeeldingen worden opgeslagen in een [azure-galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-image-galleries.md). Als eerste stap koppelt de labbeheerder een bestaande gedeelde afbeeldingsgalerie aan het labaccount. Zodra de gedeelde afbeeldingsgalerie is gekoppeld, kunnen laboratoria die in het labaccount zijn gemaakt, afbeeldingen opslaan in de gedeelde afbeeldingsgalerie. Andere docenten kunnen deze afbeelding selecteren in de gedeelde afbeeldingsgalerie om een sjabloon voor hun klassen te maken. 
+# <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
+In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een installatie kopie van een virtuele machine van een sjabloon kan opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Deze installatie kopieën worden opgeslagen in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md)van Azure. Als eerste stap koppelt de testlab-beheerder een bestaande galerie met gedeelde afbeeldingen aan het lab-account. Zodra de galerie met gedeelde installatie kopieën is gekoppeld, kunnen Labs die in het lab-account is gemaakt, afbeeldingen opslaan in de galerie met gedeelde afbeeldingen. Andere docenten kunnen deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun klassen te maken. 
 
 > [!NOTE]
-> Momenteel ondersteunt Azure Lab Services het maken van sjabloonVM's op basis van alleen **gegeneraliseerde** VM-afbeeldingen (geen gespecialiseerde afbeeldingen) in een gedeelde afbeeldingsgalerie. 
+> Op dit moment biedt Azure Lab Services alleen ondersteuning voor het maken van sjabloon-Vm's op basis van alleen **gegeneraliseerde** VM-installatie kopieën (geen gespecialiseerde installatie kopieën) in een galerie met gedeelde installatie kopieën. 
 
 ## <a name="prerequisites"></a>Vereisten
-- Maak een gedeelde afbeeldingsgalerie met [Azure PowerShell](../../virtual-machines/windows/shared-images.md) of [Azure CLI](../../virtual-machines/linux/shared-images.md).
-- U hebt de gedeelde afbeeldingsgalerie aan het labaccount gekoppeld. Zie [Gedeelde afbeeldingsgalerie toevoegen of loskoppelen](how-to-attach-detach-shared-image-gallery.md)voor stapsgewijze instructies.
+- Maak een galerie met gedeelde installatie kopieën met behulp van [Azure PowerShell](../../virtual-machines/windows/shared-images.md) of [Azure cli](../../virtual-machines/linux/shared-images.md).
+- U hebt de galerie met gedeelde afbeeldingen aan het lab-account gekoppeld. Zie de [Galerie gedeelde installatie kopieën koppelen of ontkoppelen](how-to-attach-detach-shared-image-gallery.md)voor stapsgewijze instructies.
 
 
-## <a name="save-an-image-to-the-shared-image-gallery"></a>Een afbeelding opslaan in de gedeelde afbeeldingsgalerie
-Nadat een gedeelde afbeeldingsgalerie is gekoppeld, kan een labaccountbeheerder of een docent een afbeelding opslaan in de gedeelde afbeeldingsgalerie, zodat deze door andere docenten kan worden hergebruikt. 
+## <a name="save-an-image-to-the-shared-image-gallery"></a>Een afbeelding opslaan in de galerie met gedeelde afbeeldingen
+Nadat een galerie met gedeelde installatie kopieën is gekoppeld, kan een Lab-account beheerder of een docent een afbeelding opslaan in de galerie met gedeelde afbeeldingen, zodat deze door andere docenten opnieuw kan worden gebruikt. 
 
-1. Selecteer op de pagina **Sjabloon** voor het lab de optie **Exporteren naar gedeelde afbeeldingsgalerie** op de werkbalk.
+1. Op de **sjabloon** pagina voor het lab selecteert **u exporteren naar gedeelde installatie kopie galerie** op de werk balk.
 
     ![Knop Afbeelding opslaan](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
-2. Voer in het dialoogvenster **Exporteren naar gedeelde afbeeldingsgalerie** een **naam voor de afbeelding**in en selecteer **Vervolgens Exporteren**. 
+2. Voer in het dialoog venster **exporteren naar gedeelde afbeeldingen galerie** een **naam in voor de installatie kopie**en selecteer vervolgens **exporteren**. 
 
-    ![Dialoogvenster Exporteren naar gedeelde afbeeldingsgalerie](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
-3. U de voortgang van deze bewerking zien op de **sjabloonpagina.** Deze operatie kan een keer duren. 
+    ![Dialoog venster exporteren naar de galerie gedeelde afbeeldingen](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. U kunt de voortgang van deze bewerking zien op de **sjabloon** pagina. Deze bewerking kan enige tijd duren. 
 
-    ![Export in uitvoering](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
-4. Wanneer de exportbewerking is geslaagd, ziet u het volgende bericht:
+    ![Exporteren wordt uitgevoerd](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. Wanneer de export bewerking is voltooid, wordt het volgende bericht weer gegeven:
 
-    ![Export voltooid](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
+    ![Exporteren is voltooid](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
-U ook een afbeelding uploaden naar de gedeelde afbeeldingsgalerie buiten de context van een lab. Zie [Overzicht van gedeelde afbeeldingsgalerie voor](../../virtual-machines/windows/shared-images.md)meer informatie . 
+U kunt ook een installatie kopie uploaden naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Zie overzicht van de [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-images.md)voor meer informatie. 
 
-## <a name="use-an-image-from-the-shared-image-gallery"></a>Een afbeelding gebruiken in de gedeelde afbeeldingsgalerie
-Een docent/professor kan een aangepaste afbeelding kiezen die beschikbaar is in de gedeelde afbeeldingsgalerie voor de sjabloon tijdens het maken van nieuwe labs.
+## <a name="use-an-image-from-the-shared-image-gallery"></a>Een installatie kopie uit de galerie met gedeelde afbeeldingen gebruiken
+Een docent/docent kan een aangepaste afbeelding kiezen die beschikbaar is in de galerie met gedeelde afbeeldingen voor de sjabloon tijdens het maken van een nieuwe lab.
 
-![Virtuele machineafbeelding gebruiken vanuit de galerie](../media/how-to-use-shared-image-gallery/use-shared-image.png)
+![Installatie kopie van virtuele machine uit de galerie gebruiken](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [gedeelde afbeeldingsgalerie](../../virtual-machines/windows/shared-image-galleries.md)voor meer informatie over gedeelde galeries voor afbeeldingen.
+Zie [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën.

@@ -1,35 +1,35 @@
 ---
-title: Functiefilters gebruiken om een functie in te schakelen voor een subset van gebruikers
+title: Functie filters gebruiken om een functie in te scha kelen voor een subset van gebruikers
 titleSuffix: Azure App Configuration
-description: Meer informatie over het gebruik van functiefilters om een functie in te schakelen voor een subset van gebruikers
+description: Meer informatie over het gebruik van functie filters om een functie in te scha kelen voor een subset van gebruikers
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80056999"
 ---
-# <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Functiefilters gebruiken om een functie in te schakelen voor een subset van gebruikers
+# <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Functie filters gebruiken om een functie in te scha kelen voor een subset van gebruikers
 
-Met functievlaggen u functionaliteit in uw toepassing activeren of deactiveren. Een eenvoudige functievlag is aan of uit. De applicatie gedraagt zich altijd op dezelfde manier. U bijvoorbeeld een nieuwe functie achter een functievlag uitrollen. Wanneer de functievlag is ingeschakeld, zien alle gebruikers de nieuwe functie. Als u de functievlag uitschakelt, wordt de nieuwe functie verborgen.
+Met functie vlaggen kunt u de functionaliteit in uw toepassing activeren of deactiveren. Een eenvoudige functie vlag is in-of uitgeschakeld. De toepassing gedraagt zich altijd op dezelfde manier. U kunt bijvoorbeeld een nieuwe functie achter een functie vlag implementeren. Wanneer de functie vlag is ingeschakeld, zien alle gebruikers de nieuwe functie. Als u de functie vlag uitschakelt, wordt de nieuwe functie verborgen.
 
-Met een _voorwaardelijke functievlag_ kan de functievlag daarentegen dynamisch worden ingeschakeld of uitgeschakeld. De toepassing kan zich anders gedragen, afhankelijk van de criteria voor de functievlag. Stel dat u uw nieuwe functie eerst aan een kleine subset van gebruikers wilt weergeven. Met een voorwaardelijke functievlag u de functievlag voor sommige gebruikers inschakelen terwijl u deze voor anderen uitschakelt. _Functiefilters_ bepalen de status van de functievlag telkens wanneer deze wordt geëvalueerd.
+Als u daarentegen een _vlag voor voorwaardelijke functies_ gebruikt, kan de functie vlag dynamisch worden in-of uitgeschakeld. De toepassing kan zich anders gedragen, afhankelijk van de criteria van de functie vlag. Stel dat u de nieuwe functie wilt weer geven in een kleine subset van gebruikers op het eerst. Met een vlag voor voorwaardelijke functies kunt u de functie vlag voor sommige gebruikers inschakelen en uitschakelen voor anderen. _Functie filters_ bepalen de status van de functie vlag elke keer dat deze wordt geëvalueerd.
 
-De `Microsoft.FeatureManagement` bibliotheek bevat twee functiefilters:
+De `Microsoft.FeatureManagement` bibliotheek bevat twee functie filters:
 
-- `PercentageFilter`hiermee wordt de functievlag ingeschakeld op basis van een percentage.
-- `TimeWindowFilter`hiermee wordt de functievlag gedurende een bepaald tijdsvenster inschakelt.
+- `PercentageFilter`Hiermee schakelt u de functie vlag in op basis van een percentage.
+- `TimeWindowFilter`Hiermee schakelt u de functie vlag in gedurende een opgegeven periode.
 
-U ook uw eigen functiefilter maken dat de [Microsoft.FeatureManagement.IFeatureFilter-interface](/dotnet/api/microsoft.featuremanagement.ifeaturefilter)implementeert.
+U kunt ook uw eigen functie filter maken waarmee de [Interface micro soft. FeatureManagement. IFeatureFilter wordt](/dotnet/api/microsoft.featuremanagement.ifeaturefilter)geïmplementeerd.
 
-## <a name="registering-a-feature-filter"></a>Een functiefilter registreren
+## <a name="registering-a-feature-filter"></a>Een functie filter registreren
 
-U registreert een functiefilter `AddFeatureFilter` door de methode aan te roepen en de naam van het functiefilter op te geven. De volgende code registreert `PercentageFilter`bijvoorbeeld:
+U registreert een functie filter door de `AddFeatureFilter` methode aan te roepen en de naam van het functie filter op te geven. De volgende code wordt bijvoorbeeld geregistreerd `PercentageFilter`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -39,48 +39,48 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="configuring-a-feature-filter-in-azure-app-configuration"></a>Een functiefilter configureren in Azure App-configuratie
+## <a name="configuring-a-feature-filter-in-azure-app-configuration"></a>Een functie filter configureren in Azure-app configuratie
 
-Sommige functiefilters hebben extra instellingen. `PercentageFilter` Hiermee activeert u bijvoorbeeld een functie op basis van een percentage. Het heeft een instelling die het te gebruiken percentage definieert.
+Sommige functie filters hebben aanvullende instellingen. U kunt `PercentageFilter` bijvoorbeeld een functie activeren op basis van een percentage. Het heeft een instelling die het te gebruiken percentage definieert.
 
-U deze instellingen configureren voor functievlaggen die zijn gedefinieerd in Azure App-configuratie. Voer bijvoorbeeld de volgende `PercentageFilter` stappen uit die u wilt gebruiken om de functievlag in te schakelen voor 50% van de aanvragen voor een web-app:
+U kunt deze instellingen configureren voor functie vlaggen die zijn gedefinieerd in Azure-app configuratie. Voer de volgende stappen uit om `PercentageFilter` de functie vlag in te scha kelen voor 50% van aanvragen voor een web-app:
 
-1. Volg de instructies in [Quickstart: Functievlaggen toevoegen aan een ASP.NET Core-app](./quickstart-feature-flag-aspnet-core.md) om een web-app met een functievlag te maken.
+1. Volg de instructies in [Quick Start: Voeg functie vlaggen toe aan een ASP.net core-app](./quickstart-feature-flag-aspnet-core.md) om een web-app te maken met een functie vlag.
 
-1. Ga in de Azure-portal naar uw configuratiearchief en klik op **Functiebeheer**.
+1. Ga in het Azure Portal naar uw configuratie archief en klik op **functie beheer**.
 
-1. Klik op het contextmenu voor de *functievlag van de bètafunctie* die u in de snelstart hebt gemaakt. Klik op **Bewerken**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Functievlag bètabewerken](./media/edit-beta-feature-flag.png)
-
-1. Selecteer in het scherm **Bewerken** de knop **Aan-radio** als deze nog niet is geselecteerd. Klik vervolgens op de knop **Filter toevoegen.** (Het label **van** de keuzerondje wordt gewijzigd in **Voorwaardelijke**tekst .)
-
-1. Voer **in** het veld Sleutel *Microsoft.Percentage*in .
+1. Klik op het context menu voor de functie vlag van de *bèta versie* die u in de Quick Start hebt gemaakt. Klik op **Bewerken**.
 
     > [!div class="mx-imgBorder"]
-    > ![Functiefilter toevoegen](./media/feature-flag-add-filter.png)
+    > ![Bèta-functie vlag bewerken](./media/edit-beta-feature-flag.png)
 
-1. Klik op het contextmenu naast de filtertoets van de functie. Klik **op Parameters bewerken**.
+1. Selecteer in het **bewerkings** scherm **het keuze** rondje als dit nog niet is geselecteerd. Klik vervolgens op de knop **filter toevoegen** . (Het label **op** de radio knop wordt gewijzigd in **voorwaardelijke**tekst lezen.)
 
-    > [!div class="mx-imgBorder"]
-    > ![Functiefilterparameters bewerken](./media/feature-flag-edit-filter-parameters.png)
-
-1. Plaats de plaats onder de **koptekst Naam,** zodat tekstvakken in het raster worden weergegeven. Voer een *waardenaam* en een **waarde** van 50 in. **Name** Het veld **Waarde** geeft het percentage aanvragen aan waarvoor het functiefilter moet worden ingeschakeld.
+1. Voer *micro soft. percentage*in het veld **sleutel** in.
 
     > [!div class="mx-imgBorder"]
-    > ![Filterparameters voor functies instellen](./media/feature-flag-set-filter-parameters.png)
+    > ![Functie filter toevoegen](./media/feature-flag-add-filter.png)
 
-1. Klik **op Toepassen** om terug te keren naar het vlagscherm van de functie **bewerken.** Klik vervolgens nogmaals op **Toepassen** om de instellingen voor de functievlag op te slaan.
-
-1. De **status** van de functievlag wordt nu weergegeven als *voorwaardelijk*. Deze status geeft aan dat de functievlag per aanvraag wordt ingeschakeld of uitgeschakeld op basis van de criteria die worden afgedwongen door het functiefilter.
+1. Klik op het context menu naast de functie filter sleutel. Klik op **para meters bewerken**.
 
     > [!div class="mx-imgBorder"]
-    > ![Voorwaardelijke functievlag](./media/feature-flag-filter-enabled.png)
+    > ![Para meters voor functie filter bewerken](./media/feature-flag-edit-filter-parameters.png)
 
-## <a name="feature-filters-in-action"></a>Functiefilters in actie
+1. Beweeg de muis aanwijzer onder de **naam** van de koptekst zodat er tekst vakken worden weer gegeven in het raster. Voer een **naam** in voor de *waarde* en de **waarde** 50. Het veld **waarde** geeft het percentage aanvragen aan waarvoor het functie filter moet worden ingeschakeld.
 
-Als u de effecten van deze functievlag wilt zien, start u de toepassing en drukt u meerdere keren op de knop **Vernieuwen** in uw browser. U ziet dat het *bèta-item* ongeveer 50% van de tijd op de werkbalk wordt weergegeven. Het is de rest van de `PercentageFilter` tijd verborgen, *Beta* omdat de bètafunctie wordt gedeactiveerd voor een subset van aanvragen. De volgende video toont dit gedrag in actie.
+    > [!div class="mx-imgBorder"]
+    > ![Para meters voor functie filter instellen](./media/feature-flag-set-filter-parameters.png)
+
+1. Klik op **Toep assen** om terug te gaan naar het scherm **functie vlag bewerken** . Klik vervolgens nogmaals op **Toep assen** om de instellingen voor de functie vlag op te slaan.
+
+1. De **status** van de functie vlag wordt nu weer gegeven als *voorwaardelijk*. Deze status geeft aan dat de functie vlag per aanvraag wordt in-of uitgeschakeld, op basis van de criteria die worden afgedwongen door het functie filter.
+
+    > [!div class="mx-imgBorder"]
+    > ![Vlag voor voorwaardelijke functie](./media/feature-flag-filter-enabled.png)
+
+## <a name="feature-filters-in-action"></a>Functie filters in actie
+
+Als u de effecten van deze functie vlag wilt zien, start u de toepassing en klikt u op de knop **vernieuwen** in uw browser meerdere keren. U ziet dat het *bèta* -item ongeveer 50% van de tijd op de werk balk wordt weer gegeven. Het is de rest van de tijd verborgen, omdat de `PercentageFilter` *bèta* functie wordt gedeactiveerd voor een subset van aanvragen. In de volgende video ziet u dit gedrag in actie.
 
 > [!div class="mx-imgBorder"]
 > ![PercentageFilter in actie](./media/feature-flags-percentagefilter.gif)
@@ -88,4 +88,4 @@ Als u de effecten van deze functievlag wilt zien, start u de toepassing en drukt
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Overzicht van functiebeheer](./concept-feature-management.md)
+> [Overzicht van functie beheer](./concept-feature-management.md)

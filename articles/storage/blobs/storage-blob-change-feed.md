@@ -1,6 +1,6 @@
 ---
-title: Feed wijzigen in Azure Blob Storage (Preview) | Microsoft Documenten
-description: Meer informatie over feedlogboeken wijzigen in Azure Blob Storage en hoe u deze gebruiken.
+title: Feed wijzigen in Azure Blob Storage (preview) | Microsoft Docs
+description: Meer informatie over wijzigingen in feed-Logboeken in Azure Blob Storage en hoe u deze kunt gebruiken.
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,108 +9,108 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536884"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Feedondersteuning wijzigen in Azure Blob Storage (Voorbeeld)
+# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)
 
-Het doel van de wijzigingsfeed is om transactielogboeken te verstrekken van alle wijzigingen die zich voordoen in de blobs en de blobmetagegevens in uw opslagaccount. De wijziging feed biedt **geordende,** **gegarandeerd,** **duurzaam,** **onveranderlijke**, **read-only** log van deze wijzigingen. Clienttoepassingen kunnen deze logboeken op elk gewenst moment lezen, in streaming of in batchmodus. Met de wijzigingsfeed u efficiënte en schaalbare oplossingen bouwen die gebeurtenissen die zich voordoen in uw Blob Storage-account verwerken tegen lage kosten.
+Het doel van de wijzigings feed is het bieden van transactie logboeken van alle wijzigingen die plaatsvinden in de blobs en de BLOB-meta gegevens in uw opslag account. De wijzigings feed biedt **besteld**, **gegarandeerd**, **duurzaam**, **onveranderbaar**, **alleen-lezen** logboek van deze wijzigingen. Client toepassingen kunnen deze logboeken op elk gewenst moment in streaming of in de batch modus lezen. Met de wijzigings feed kunt u efficiënte en schaal bare oplossingen bouwen die wijzigings gebeurtenissen verwerken die in uw Blob Storage-account tegen lage kosten optreden.
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
-De [wijzigingsfeed](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) wordt opgeslagen als blobs in een speciale container in uw opslagaccount tegen standaard [blob-prijskosten.](https://azure.microsoft.com/pricing/details/storage/blobs/) U de bewaarperiode van deze bestanden beheren op basis van uw vereisten (Zie de [voorwaarden](#conditions) van de huidige release). Wijzigingsgebeurtenissen worden toegevoegd aan de wijzigingsfeed als records in de [Specificatie apache Avro-indeling:](https://avro.apache.org/docs/1.8.2/spec.html) een compact, snel, binair formaat dat rijke gegevensstructuren met inline-schema biedt. Deze indeling wordt veel gebruikt in het Hadoop-ecosysteem, Stream Analytics en Azure Data Factory.
+De wijzigings feed wordt opgeslagen als [blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) in een speciale container in uw opslag account tegen standaard [prijs voor blobs](https://azure.microsoft.com/pricing/details/storage/blobs/) . U kunt de Bewaar periode van deze bestanden beheren op basis van uw vereisten (Zie de [voor waarden](#conditions) van de huidige versie). Wijzigings gebeurtenissen worden toegevoegd aan de wijzigings feed als records in de [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) Format-specificatie: een compacte, snelle en binaire indeling die voorziet in uitgebreide gegevens structuren met inline-schema's. Deze indeling wordt veel gebruikt in het Hadoop-ecosysteem, het Stream Analytics en het Azure Data Factory.
 
-U deze logboeken asynchroon, stapsgewijs of volledig verwerken. Elk aantal clienttoepassingen kan de wijzigingsfeed onafhankelijk lezen, parallel en in hun eigen tempo. Analytics-toepassingen zoals [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) of [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) kunnen logboeken rechtstreeks gebruiken als Avro-bestanden, waarmee u ze verwerken tegen lage kosten, met een hoge bandbreedte en zonder dat u een aangepaste toepassing hoeft te schrijven.
+U kunt deze logboeken asynchroon, incrementeel of volledig verwerken. Een wille keurig aantal client toepassingen kan onafhankelijk van de wijzigings feed, parallel en in hun eigen tempo lezen. Analyse toepassingen zoals [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) of [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) kunnen Logboeken rechtstreeks gebruiken als Avro-bestanden, waarmee u ze kunt verwerken tegen lage kosten, met een hoge band breedte en zonder dat u een aangepaste toepassing hoeft te schrijven.
 
-Feedondersteuning wijzigen is zeer geschikt voor scenario's die gegevens verwerken op basis van objecten die zijn gewijzigd. Toepassingen kunnen bijvoorbeeld:
+De ondersteuning voor het wijzigen van feeds is heel geschikt voor scenario's waarin gegevens worden verwerkt op basis van objecten die zijn gewijzigd. Toepassingen kunnen bijvoorbeeld:
 
-  - Werk een secundaire index bij, synchroniseer met een cache, zoekmachine of andere scenario's voor inhoudsbeheer.
+  - Een secundaire index bijwerken, synchroniseren met een cache, zoek machine of andere scenario's voor inhouds beheer.
   
-  - Haal inzichten en statistieken voor bedrijfsanalyses uit, op basis van wijzigingen die in uw objecten optreden, op een streamingmanier of in batchmodus.
+  - De inzichten en metrische gegevens van Business Analytics extra heren, op basis van wijzigingen die plaatsvinden in uw objecten, hetzij in een streaming-of in batch modus.
   
-  - Sla wijzigingen in uw objecten op, controleer en analyseer deze gedurende elke periode voor beveiliging, naleving of intelligentie voor bedrijfsgegevensbeheer.
+  - Bewaar, audit en analyseer wijzigingen in uw objecten, gedurende een bepaalde periode, voor beveiliging, naleving of intelligentie voor ondernemings gegevens beheer.
 
-  - Bouw oplossingen voor het back-ups maken, spiegelen of repliceren van objectstatus in uw account voor disaster management of compliance.
+  - Ontwikkel oplossingen voor het maken van een back-up, Mirror of replicatie van object status in uw account voor nood beheer of naleving.
 
-  - Maak verbonden toepassingspijplijnen die reageren op het wijzigen van gebeurtenissen of het plannen van uitvoeringen op basis van een gemaakt of gewijzigd object.
+  - Bouw verbonden toepassings pijplijnen die reageren op wijzigings gebeurtenissen of het plannen van uitvoeringen op basis van een gemaakt of gewijzigd object.
 
 > [!NOTE]
-> Change feed biedt een duurzaam, geordend logboekmodel van de wijzigingen die zich voordoen in een blob. Wijzigingen worden geschreven en beschikbaar gesteld in uw wijzigingsfeedlogboek binnen een paar minuten na de wijziging. Als uw toepassing veel sneller op gebeurtenissen moet reageren, u in plaats daarvan [blobopslaggebeurtenissen](storage-blob-event-overview.md) gebruiken. [Blob Storage Events](storage-blob-event-overview.md) biedt realtime eenmalige gebeurtenissen waarmee uw Azure-functies of -toepassingen snel kunnen reageren op wijzigingen die zich voordoen in een blob. 
+> Wijzigings feed biedt een duurzaam, geordend logboek model van de wijzigingen die zich voordoen op een blob. Wijzigingen worden geschreven en beschikbaar gesteld in het wijzigingslog bestand binnen een bestelling van een paar minuten van de wijziging. Als uw toepassing sneller moet reageren op gebeurtenissen, kunt u in plaats daarvan [Blob Storage gebeurtenissen](storage-blob-event-overview.md) gebruiken. [Blob Storage gebeurtenissen](storage-blob-event-overview.md) biedt realtime eenmalige gebeurtenissen waarmee uw Azure functions of toepassingen snel kunnen reageren op wijzigingen die zich voordoen aan een blob. 
 
-## <a name="enable-and-disable-the-change-feed"></a>De wijzigingsfeed in- en uitschakelen
+## <a name="enable-and-disable-the-change-feed"></a>De wijzigings feed in-en uitschakelen
 
-U moet de wijzigingsfeed van uw opslagaccount inschakelen om wijzigingen vast te leggen en vast te leggen. Schakel de wijzigingsfeed uit om het vastleggen van wijzigingen te stoppen. U wijzigingen in- en uitschakelen met Azure Resource Manager-sjablonen in Portal of Powershell.
+U moet de wijzigings feed inschakelen in uw opslag account om te beginnen met het vastleggen en vastleggen van wijzigingen. Schakel de wijzigings feed uit om het vastleggen van wijzigingen te stoppen. U kunt wijzigingen in-en uitschakelen met behulp van Azure Resource Manager sjablonen in de portal of Power shell.
 
-Hier zijn een paar dingen om in gedachten te houden wanneer u de change feed inschakelt.
+Hier volgen enkele dingen die u moet onthouden wanneer u de wijzigings feed inschakelt.
 
-- Er is slechts één wijzigingsfeed voor de blobservice in elk opslagaccount en wordt opgeslagen in de **$blobchangefeed** container.
+- Er is slechts één wijzigings feed voor de BLOB-service in elk opslag account en deze wordt opgeslagen in de **$blobchangefeed** -container.
 
-- Wijzigingen maken, bijwerken en verwijderen worden alleen vastgelegd op blobserviceniveau.
+- Maken, bijwerken en verwijderen van wijzigingen worden alleen vastgelegd op het niveau van de BLOB-service.
 
-- De wijzigingsfeed legt *alle* wijzigingen vast voor alle beschikbare gebeurtenissen die op het account plaatsvinden. Clienttoepassingen kunnen gebeurtenistypen naar behoefte filteren. (Zie de [voorwaarden](#conditions) van de huidige release).
+- De wijzigings feed legt *alle* wijzigingen vast voor alle beschik bare gebeurtenissen die op het account plaatsvinden. Client toepassingen kunnen gebeurtenis typen filteren zoals vereist. (Zie de [voor waarden](#conditions) van de huidige versie).
 
-- Alleen GPv2- en Blob-opslagaccounts kunnen de feed Wijzigen inschakelen. Premium BlockBlobStorage-accounts en hiërarchische naamruimte-accounts worden momenteel niet ondersteund. GPv1-opslagaccounts worden niet ondersteund, maar kunnen zonder downtime worden geüpgraded naar GPv2, zie [Upgrade naar een GPv2-opslagaccount](../common/storage-account-upgrade.md) voor meer informatie.
+- Alleen GPv2-en Blob Storage-accounts kunnen wijzigings toevoer inschakelen. Premium BlockBlobStorage-accounts en hiërarchische naam ruimte ingeschakelde accounts worden momenteel niet ondersteund. GPv1-opslag accounts worden niet ondersteund, maar kunnen wel worden bijgewerkt naar GPv2 zonder downtime. Zie [upgraden naar een GPv2 Storage-account](../common/storage-account-upgrade.md) voor meer informatie.
 
 > [!IMPORTANT]
-> De wijzigingsfeed is openbaar en is beschikbaar in de regio's **Westcentralus** en **Westus2.** Zie de [voorwaarden](#conditions) sectie van dit artikel. Zie het gedeelte [Uw abonnement registreren](#register) van dit artikel om u in te schrijven voor het voorbeeld. U moet uw abonnement registreren voordat u de wijzigingsfeed op uw opslagaccounts inschakelen.
+> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **westcentralus** en **westus2** . Zie de sectie [voor waarden](#conditions) in dit artikel. Zie de sectie [uw abonnement registreren](#register) in dit artikel voor meer informatie over het inschrijven van de preview-versie. U moet uw abonnement registreren voordat u feed voor wijzigen kunt inschakelen voor uw opslag accounts.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Wijzigfeed inschakelen voor uw opslagaccount met azure portal:
+Schakel feed Change in voor uw opslag account met behulp van Azure Portal:
 
-1. Selecteer uw opslagaccount in de [Azure-portal.](https://portal.azure.com/) 
+1. Selecteer uw opslag account in de [Azure Portal](https://portal.azure.com/). 
 
-2. Navigeer naar de optie **Gegevensbescherming** onder **Blob-service**.
+2. Navigeer naar de optie **gegevens bescherming** onder **BLOB-service**.
 
-3. Klik **op Ingeschakeld** onder **Blob-feed wijzigen**
+3. Klik op **ingeschakeld** onder **feed voor BLOB-wijziging**
 
-4. Kies de knop **Opslaan** om de instellingen voor gegevensbescherming te bevestigen
+4. Klik op de knop **Opslaan** om uw instellingen voor gegevens beveiliging te bevestigen
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[Zo](#tab/azure-powershell)
 
-Change feed inschakelen met PowerShell:
+Feed voor wijziging inschakelen met behulp van Power shell:
 
-1. Installeer de nieuwste PowershellGet.
+1. Installeer de meest recente PowershellGet.
 
    ```powershell
    Install-Module PowerShellGet –Repository PSGallery –Force
    ```
 
-2. Sluit en open de Powershell-console opnieuw.
+2. Sluit de Power shell-console en open deze opnieuw.
 
-3. Installeer de previewmodule **az.storage.**
+3. Installeer de module **AZ. Storage** preview.
 
    ```powershell
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
    ```
 
-4. Meld u met de `Connect-AzAccount` opdracht aan bij uw Azure-abonnement en volg de aanwijzingen op het scherm om te verifiëren.
+4. Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de opdracht en volg de instructies op het scherm om te verifiëren.
 
    ```powershell
    Connect-AzAccount
    ```
 
-5. Schakel wijzigingsfeed in voor uw opslagaccount.
+5. Schakel feed voor wijziging in voor uw opslag account.
 
    ```powershell
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
 ### <a name="template"></a>[Sjabloon](#tab/template)
-Gebruik een Azure Resource Manager-sjabloon om de feed wijzigen op uw bestaande opslagaccount in te schakelen via azure-portal:
+Gebruik een Azure Resource Manager sjabloon om feed voor wijzigingen in uw bestaande opslag account via Azure Portal in te scha kelen:
 
-1. Kies in de Azure-portal de optie **Een resource maken**.
+1. Kies in het Azure Portal **een resource maken**.
 
 2. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
 
-3. Kies **[Een aangepaste sjabloon implementeren](https://portal.azure.com/#create/Microsoft.Template)** en kies Vervolgens Uw eigen sjabloon maken in de **editor**.
+3. Kies **[een aangepaste sjabloon implementeren](https://portal.azure.com/#create/Microsoft.Template)** en kies vervolgens **uw eigen sjabloon bouwen in de editor**.
 
-4. Plak in de sjablooneditor de volgende json. Vervang de tijdelijke plaatsaanduiding `<accountName>` door de naam van uw opslagaccount.
+4. Plak in de sjabloon editor de volgende JSON. Vervang de tijdelijke plaatsaanduiding `<accountName>` door de naam van uw opslagaccount.
 
    ```json
    {
@@ -131,30 +131,30 @@ Gebruik een Azure Resource Manager-sjabloon om de feed wijzigen op uw bestaande 
    }
    ```
     
-5. Kies de knop **Opslaan,** geef de brongroep van het account op en kies de knop **Aankoop** om de sjabloon te implementeren en de wijzigingsfeed in te schakelen.
+5. Kies de knop **Opslaan** , geef de resource groep van het account op en kies vervolgens de knop **aanschaffen** om de sjabloon te implementeren en de wijzigings feed in te scha kelen.
 
 ---
 
-## <a name="consume-the-change-feed"></a>De wijzigingsfeed consumeren
+## <a name="consume-the-change-feed"></a>De wijzigings feed gebruiken
 
-De wijzigingsfeed produceert verschillende metagegevens en logboekbestanden. Deze bestanden bevinden zich in de **$blobchangefeed** container van het opslagaccount. 
+De wijzigings feed produceert verschillende meta gegevens en logboek bestanden. Deze bestanden bevinden zich in de **$blobchangefeed** container van het opslag account. 
 
 > [!NOTE]
-> In de huidige versie is de **$blobchangefeed** container niet zichtbaar in Azure Storage Explorer of de Azure-portal. U momenteel de $blobchangefeed container niet zien wanneer u ListContainers API aanroept, maar u de ListBlobs API rechtstreeks op de container aanroepen om de blobs te zien.
+> In de huidige release is de **$blobchangefeed** -container niet zichtbaar in azure Storage Explorer of de Azure Portal. U kunt de $blobchangefeed-container momenteel niet zien wanneer u de ListContainers-API aanroept, maar u kunt de ListBlobs-API rechtstreeks aan de container aanroepen om de blobs te bekijken.
 
-Uw clienttoepassingen kunnen de wijzigingsfeed gebruiken met behulp van de blob-feedprocessorbibliotheek die is geleverd met de SDK van de feedprocessor wijzigen. 
+Uw client toepassingen kunnen de wijzigings feed gebruiken met behulp van de processor bibliotheek voor de invoer van de BLOB-wijziging die wordt meegeleverd met de SDK voor de wijzigings feed processor. 
 
-Zie [Feedlogboeken voor proceswijzigingen in Azure Blob Storage](storage-blob-change-feed-how-to.md).
+Zie [Logboeken voor feed changes in Azure Blob Storage verwerken](storage-blob-change-feed-how-to.md).
 
-## <a name="understand-change-feed-organization"></a>Inzicht in wijzigingsfeedorganisatie
+## <a name="understand-change-feed-organization"></a>Meer informatie over veranderingen in de feed
 
 <a id="segment-index"></a>
 
 ### <a name="segments"></a>Segmenten
 
-De wijzigingsfeed is een logboek van wijzigingen die zijn georganiseerd in *segmenten* **per uur,** maar die om de paar minuten worden toegevoegd en bijgewerkt. Deze segmenten worden alleen gemaakt wanneer er blobwijzigingsgebeurtenissen zijn die in dat uur plaatsvinden. Hierdoor kan uw clienttoepassing wijzigingen gebruiken die binnen specifieke tijdsbereiken plaatsvinden zonder dat u door het hele logboek hoeft te zoeken. Zie de specificaties [voor](#specifications)meer informatie.
+De wijzigings feed is een logboek met wijzigingen die zijn ingedeeld in **uren** *segmenten* , maar worden toegevoegd aan en bijgewerkt om de paar minuten. Deze segmenten worden alleen gemaakt wanneer er BLOB-wijzigings gebeurtenissen in dat uur optreden. Hierdoor kan uw client toepassing wijzigingen gebruiken die binnen bepaalde Peri Oden optreden zonder dat het hele logboek moet worden doorzocht. Zie de [specificaties](#specifications)voor meer informatie.
 
-Een beschikbaar uursegment van de wijzigingsfeed wordt beschreven in een manifestbestand dat de paden naar de feedbestanden voor dat segment aangeeft. De lijst `$blobchangefeed/idx/segments/` van de virtuele directory toont deze segmenten besteld door de tijd. Het pad van het segment beschrijft het begin van het uurtijdbereik dat het segment vertegenwoordigt. U die lijst gebruiken om de segmenten van logboeken te filteren die voor u interessant zijn.
+Een beschikbaar segment van de wijzigings feed wordt beschreven in een manifest bestand dat de paden specificeert naar de wijzigings bestanden voor dat segment. In de lijst van `$blobchangefeed/idx/segments/` de virtuele map worden deze segmenten weer gegeven op tijd. Het pad van het segment beschrijft het begin van het uur tijd bereik dat het segment vertegenwoordigt. U kunt deze lijst gebruiken om de segmenten van de logboeken te filteren die voor u van belang zijn.
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -166,9 +166,9 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> Deze `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` wordt automatisch gemaakt wanneer u de wijzigingsfeed inschakelt. U dit bestand veilig negeren. Het is een altijd leeg initialisatiebestand. 
+> De `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` wordt automatisch gemaakt wanneer u de wijzigings feed inschakelt. U kunt dit bestand negeren. Het is een altijd leeg initialisatie bestand. 
 
-Het segmentmanifestbestand`meta.json`( ) toont het pad van de `chunkFilePaths` feedbestanden voor wijzigingen voor dat segment in de eigenschap. Hier is een voorbeeld van een segment manifest bestand.
+Het segment manifest bestand (`meta.json`) toont het pad van de wijzigings bestanden voor dat segment in de `chunkFilePaths` eigenschap. Hier volgt een voor beeld van een segment manifest bestand.
 
 ```json
 {
@@ -199,17 +199,17 @@ Het segmentmanifestbestand`meta.json`( ) toont het pad van de `chunkFilePaths` f
 ```
 
 > [!NOTE]
-> De `$blobchangefeed` container wordt pas weergegeven nadat u de functie Feed wijzigen in uw account hebt ingeschakeld. U moet een paar minuten wachten nadat u de wijzigingsfeed hebt ingeschakeld voordat u de blobs in de container weergeven. 
+> De `$blobchangefeed` container wordt alleen weer gegeven nadat u de functie voor het wijzigen van de feed hebt ingeschakeld voor uw account. Nadat u de feed voor wijzigingen hebt ingeschakeld, moet u een paar minuten wachten voordat u de blobs in de container kunt weer geven. 
 
 <a id="log-files"></a>
 
-### <a name="change-event-records"></a>Gebeurtenisrecords wijzigen
+### <a name="change-event-records"></a>Gebeurtenis records wijzigen
 
-De feedbestanden wijzigen bevatten een reeks gebeurtenisrecords voor wijzigingen. Elke gebeurtenisrecord komt overeen met één wijziging in een afzonderlijke blob. De records worden geserialiseerd en naar het bestand geschreven met behulp van de Apache Avro-formaatspecificatie. [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) De records kunnen worden gelezen met behulp van de Avro file format specificatie. Er zijn verschillende bibliotheken beschikbaar om bestanden in die indeling te verwerken.
+De Change feed-bestanden bevatten een reeks wijzigings gebeurtenis records. Elke wijzigings gebeurtenis record komt overeen met één wijziging in een afzonderlijke blob. De records worden geserialiseerd en naar het bestand geschreven met behulp van de [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) Format-specificatie. De records kunnen worden gelezen met behulp van de Avro-bestands indeling. Er zijn verschillende bibliotheken beschikbaar voor het verwerken van bestanden in die indeling.
 
-Feedbestanden wijzigen worden `$blobchangefeed/log/` in de virtuele map opgeslagen als [toevoegende blobs.](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Het eerste feedbestand wijzigen onder `00000` elk pad heeft `00000.avro`in de bestandsnaam (bijvoorbeeld ). De naam van elk volgend logboekbestand dat aan dat `00001.avro`pad is toegevoegd, wordt met 1 verhoogd (Bijvoorbeeld: ).
+Wijzigingen in de feed worden opgeslagen in `$blobchangefeed/log/` de virtuele map als [toevoeg-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). Het eerste invoer bestand onder elk pad heeft `00000` de bestands naam (bijvoorbeeld `00000.avro`). De naam van elk volgende logboek bestand dat aan het pad wordt toegevoegd, wordt verhoogd met 1 ( `00001.avro`bijvoorbeeld:).
 
-Hier is een voorbeeld van wijzigingsgebeurtenisrecord van het feedbestand wijzigen dat is geconverteerd naar Json.
+Hier volgt een voor beeld van het wijzigen van de gebeurtenis record van het wijzigingslog bestand dat is geconverteerd naar JSON.
 
 ```json
 {
@@ -238,32 +238,32 @@ Hier is een voorbeeld van wijzigingsgebeurtenisrecord van het feedbestand wijzig
 }
 ```
 
-Zie [Azure Event Grid-gebeurtenisschema voor Blob Storage voor](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)een beschrijving van elke eigenschap.
+Zie [Azure Event grid-gebeurtenis schema voor Blob Storage](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)voor een beschrijving van elke eigenschap.
 
 > [!NOTE]
-> De feedbestanden voor wijzigingen voor een segment worden niet onmiddellijk weergegeven nadat een segment is gemaakt. De duur van de vertraging is binnen het normale interval van het publiceren van latentie van de wijzigingsfeed die zich binnen een paar minuten van de wijziging bevindt.
+> De wijzigings bestanden voor een segment worden niet direct weer gegeven nadat een segment is gemaakt. De lengte van de vertraging ligt binnen het normale interval van de publicatie latentie van de wijzigings feed binnen een paar minuten van de wijziging.
 
 <a id="specifications"></a>
 
 ## <a name="specifications"></a>Specificaties
 
-- Gebeurtenissen records wijzigen worden alleen toegevoegd aan de wijzigingsfeed. Zodra deze records zijn toegevoegd, ze zijn onveranderlijk en record-positie is stabiel. Clienttoepassingen kunnen hun eigen controlepunt behouden op de leespositie van de wijzigingsfeed.
+- Records met wijzigings gebeurtenissen worden alleen toegevoegd aan de wijzigings feed. Zodra deze records zijn toegevoegd, zijn ze onveranderbaar en is de positie van de record stabiel. Client toepassingen kunnen hun eigen controle punt behouden op de Lees positie van de wijzigings feed.
 
-- Gebeurtenisrecords wijzigen worden toegevoegd binnen een paar minuten na de wijziging. Clienttoepassingen kunnen ervoor kiezen om records te gebruiken omdat ze worden toegevoegd voor streamingtoegang of in bulk op een ander moment.
+- Wijzigings gebeurtenis records worden toegevoegd binnen een volg orde van enkele minuten van de wijziging. Client toepassingen kunnen ervoor kiezen om records te gebruiken wanneer ze worden toegevoegd voor het streamen van toegang of bulksgewijs op een wille keurig moment.
 
-- Gebeurtenisrecords wijzigen worden geordend op wijzigingsvolgorde **per blob**. Volgorde van wijzigingen in blobs is niet gedefinieerd in Azure Blob Storage. Alle wijzigingen in een voorafgaand segment zijn vóór wijzigingen in volgende segmenten.
+- Wijzigings gebeurtenis records worden geordend op basis van de wijzigings volgorde **per BLOB**. De volg orde van wijzigingen in blobs is niet gedefinieerd in Azure Blob Storage. Alle wijzigingen in een voor gaande segment zijn vóór eventuele wijzigingen in volgende segmenten.
 
-- Gebeurtenisrecords wijzigen worden geserialiseerd in het logboekbestand met behulp van de specificatie van het [Apache Avro 1.8.2-formaat.](https://avro.apache.org/docs/1.8.2/spec.html)
+- Wijzigings gebeurtenis records worden geserialiseerd in het logboek bestand met behulp van de [Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) -indeling.
 
-- Gebeurtenisrecords wijzigen `eventType` waarvan de `Control` waarde interne systeemrecords heeft en geen wijziging in objecten in uw account weergeven. Je die gegevens veilig negeren.
+- Wijzig gebeurtenis records waarbij de `eventType` waarde van `Control` een interne systeem record is en niet een wijziging in de objecten in uw account weerspiegelt. U kunt deze records gewoon negeren.
 
-- Waarden in `storageDiagnonstics` de property bag zijn alleen voor intern gebruik en niet ontworpen voor gebruik door uw toepassing. Uw toepassingen mogen geen contractuele afhankelijkheid van die gegevens hebben. U deze eigenschappen veilig negeren.
+- De waarden in `storageDiagnonstics` de eigenschappen verzameling zijn alleen voor intern gebruik en zijn niet bedoeld voor gebruik door uw toepassing. Uw toepassingen mogen geen contractuele afhankelijkheid op die gegevens hebben. U kunt deze eigenschappen gewoon negeren.
 
-- De tijd die door het segment wordt vertegenwoordigd is **benaderend** met grenzen van 15 minuten. Dus om het verbruik van alle records binnen een bepaalde tijd te garanderen, verbruikt u het opeenvolgende vorige en volgende uursegment.
+- De tijd die door het segment wordt weer gegeven, is bij **benadering** met een limiet van 15 minuten. Om ervoor te zorgen dat alle records binnen een opgegeven periode worden verbruikt, verbruikt u het opeenvolgende vorige en volgende uur segment.
 
-- Elk segment kan een `chunkFilePaths` ander aantal hebben als gevolg van interne partitionering van de logboekstroom om publicatiedoorvoer te beheren. De logbestanden `chunkFilePath` in elk zijn gegarandeerd te bevatten wederzijds exclusieve blobs, en kan worden verbruikt en verwerkt in parallel zonder schending van het bestellen van wijzigingen per blob tijdens de iteratie.
+- Elk segment kan een ander aantal hebben als `chunkFilePaths` gevolg van een interne partitionering van de logboek stroom voor het beheren van de door Voer van de publicatie. De logboek bestanden in elk `chunkFilePath` van beide kunnen wederzijds exclusieve blobs bevatten en kunnen worden gebruikt en gelijktijdig worden verwerkt zonder dat de volg orde van wijzigingen per BLOB tijdens de herhaling wordt geschonden.
 
-- De segmenten beginnen `Publishing` in status. Zodra de toepassing van de records aan het `Finalized`segment is voltooid, zal het . Logbestanden in elk segment dat is gedateerd `LastConsumable` na `$blobchangefeed/meta/Segments.json` de datum van de eigenschap in het bestand, mogen niet worden verbruikt door uw toepassing. Hier is een voorbeeld `LastConsumable`van `$blobchangefeed/meta/Segments.json` de eigenschap in een bestand:
+- De segmenten beginnen met `Publishing` de status. Zodra het toevoegen van de records aan het segment is voltooid, wordt het uitgevoerd `Finalized`. Logboek bestanden in een segment waarvan de naam na de datum van de `LastConsumable` eigenschap in het `$blobchangefeed/meta/Segments.json` bestand valt, mogen niet worden gebruikt door uw toepassing. Hier volgt een voor beeld van `LastConsumable`de eigenschap in `$blobchangefeed/meta/Segments.json` een bestand:
 
 ```json
 {
@@ -283,22 +283,22 @@ Zie [Azure Event Grid-gebeurtenisschema voor Blob Storage voor](https://docs.mic
 
 <a id="register"></a>
 
-## <a name="register-your-subscription-preview"></a>Uw abonnement registreren (Voorbeeld)
+## <a name="register-your-subscription-preview"></a>Uw abonnement registreren (preview-versie)
 
-Omdat de wijzigingsfeed alleen in een openbare preview is, moet u uw abonnement registreren om de functie te gebruiken.
+Omdat de wijzigings feed alleen in de open bare preview is, moet u uw abonnement registreren om de functie te gebruiken.
 
-### <a name="register-by-using-powershell"></a>Registreren met PowerShell
+### <a name="register-by-using-powershell"></a>Registreren met behulp van Power shell
 
-Voer de volgende opdrachten uit in een PowerShell-console:
+Voer de volgende opdrachten uit in een Power shell-console:
 
 ```powershell
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
    
-### <a name="register-by-using-azure-cli"></a>Registreren met Azure CLI
+### <a name="register-by-using-azure-cli"></a>Registreren met behulp van Azure CLI
 
-Voer in Azure Cloud Shell de volgende opdrachten uit:
+Voer de volgende opdrachten uit in Azure Cloud Shell:
 
 ```azurecli
 az feature register --namespace Microsoft.Storage --name Changefeed
@@ -307,30 +307,30 @@ az provider register --namespace 'Microsoft.Storage'
 
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>Voorwaarden en bekende problemen (Preview)
+## <a name="conditions-and-known-issues-preview"></a>Voor waarden en bekende problemen (preview-versie)
 
-In deze sectie worden bekende problemen en voorwaarden beschreven in de huidige openbare preview van de wijzigingsfeed. 
-- Voor preview moet u [eerst uw abonnement registreren](#register) voordat u de wijzigingsfeed voor uw opslagaccount in de regio's Westcentralus of Westus2 inschakelen. 
-- De wijzigingsfeed legt alleen bewerkingen voor het maken, bijwerken, verwijderen en kopiëren vast. Metagegevensupdates worden momenteel niet vastgelegd in preview.
-- Gebeurtenisrecords wijzigen voor een enkele wijziging kan meerdere keer worden weergegeven in uw wijzigingsfeed.
-- U de levensduur van feedlogbestanden voor wijzigingen nog niet beheren door er een op tijd gebaseerd bewaarbeleid op in te stellen en u de blobs niet verwijderen 
-- De `url` eigenschap van het logboekbestand is momenteel altijd leeg.
-- De `LastConsumable` eigenschap van het bestand segments.json vermeldt niet het allereerste segment dat de wijzigingsfeed afrondt. Dit probleem treedt pas op nadat het eerste segment is afgerond. Alle volgende segmenten na het eerste uur `LastConsumable` worden nauwkeurig vastgelegd in de eigenschap.
-- U momenteel de **$blobchangefeed** container niet zien wanneer u ListContainers API aanroept en de container niet wordt weergegeven op Azure portal of Storage Explorer
-- Opslagaccounts die eerder een [failoveraccount](../common/storage-disaster-recovery-guidance.md) hebben gestart, kunnen problemen hebben met het logboekbestand dat niet wordt weergegeven. Eventuele toekomstige failovers van een account kunnen ook van invloed zijn op het logboekbestand tijdens de preview.
+In deze sectie worden bekende problemen en voor waarden in de huidige open bare preview van de wijzigings feed beschreven. 
+- Voor de preview moet u eerst [uw abonnement registreren](#register) voordat u feed voor wijzigen kunt inschakelen voor uw opslag account in de regio's westcentralus of westus2. 
+- In de wijzigings feed worden alleen bewerkingen voor maken, bijwerken, verwijderen en kopiëren gemaakt. Meta gegevens updates worden momenteel niet opgenomen in de preview-versie.
+- Het wijzigen van gebeurtenis records voor één wijziging kan meermaals voor komen in uw wijzigings feed.
+- U kunt de levens duur van wijzigingslog bestand bestanden nog niet beheren door op tijd gebaseerd Bewaar beleid in te stellen en u kunt de blobs niet verwijderen 
+- De `url` eigenschap van het logboek bestand is momenteel altijd leeg.
+- De `LastConsumable` eigenschap van het bestand segmenten. json vermeldt niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in `LastConsumable` de eigenschap.
+- U kunt de **$blobchangefeed** -container momenteel niet zien wanneer u de LISTCONTAINERS-API aanroept en de container wordt niet weer gegeven op Azure Portal of Storage Explorer
+- Opslag accounts die eerder een account- [failover](../common/storage-disaster-recovery-guidance.md) hebben gestart, hebben mogelijk problemen met het logboek bestand dat niet wordt weer gegeven. Eventuele toekomstige account-failovers kunnen ook van invloed zijn op het logboek bestand tijdens de preview-fase.
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Wat is het verschil tussen Feed wijzigen en logboekregistratie voor Storage Analytics?
-Analytics-logboeken hebben records van alle bewerkingen die worden gelezen, geschreven, opgenomen en verwijderd met geslaagde en mislukte aanvragen voor alle bewerkingen. Analytics logs zijn best-effort en geen bestelling is gegarandeerd.
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Wat is het verschil tussen wijzigings invoer en Opslaganalyse logboek registratie?
+Analyse logboeken hebben records van alle bewerkingen voor lezen, schrijven, lijsten en verwijderen met succes volle en mislukte aanvragen voor alle bewerkingen. Analytische logboeken zijn de beste inspanningen en worden niet gegarandeerd.
 
-Change feed is een oplossing die transactionele logboek van succesvolle mutaties of wijzigingen in uw account, zoals blob creatie, wijziging, en verwijderingen biedt. Change feed garandeert dat alle gebeurtenissen worden geregistreerd en weergegeven in de volgorde van succesvolle wijzigingen per blob, zodat u geen ruis hoeft uit een enorm volume leesbewerkingen of mislukte aanvragen te filteren. Change feed is fundamenteel ontworpen en geoptimaliseerd voor applicatieontwikkeling die bepaalde garanties vereist.
+Wijzigings invoer is een oplossing die transactionele logboeken van geslaagde mutaties of wijzigingen aan uw account biedt, zoals het maken, aanpassen en verwijderen van blobs. Change feed zorgt ervoor dat alle gebeurtenissen worden vastgelegd en weer gegeven in de volg orde van geslaagde wijzigingen per blob, zodat u geen ruis hoeft te filteren op een enorme hoeveelheid Lees bewerkingen of mislukte aanvragen. De wijzigings feed is fundamenteel ontworpen en geoptimaliseerd voor het ontwikkelen van toepassingen waarvoor bepaalde garanties zijn vereist.
 
-### <a name="should-i-use-change-feed-or-storage-events"></a>Moet ik feed- of opslaggebeurtenissen wijzigen gebruiken?
-U gebruikmaken van beide functies zoals Feed wijzigen en [Blob-opslaggebeurtenissen](storage-blob-event-overview.md) bieden dezelfde informatie met dezelfde betrouwbaarheidsgarantie voor de levering, met als belangrijkste verschil de latentie, het bestellen en opslaan van gebeurtenisrecords. Change feed publiceert records in het logboek binnen enkele minuten na de wijziging en garandeert ook de volgorde van de wijzigingsbewerkingen per blob. Opslaggebeurtenissen worden in realtime gepusht en worden mogelijk niet besteld. Feedgebeurtenissen wijzigen worden blijvend opgeslagen in uw opslagaccount als alleen-lezen stabiele logboeken met uw eigen gedefinieerde bewaring, terwijl opslaggebeurtenissen van voorbijgaande aard zijn om door de gebeurtenishandler te worden verbruikt, tenzij u ze expliciet opslaat. Met change feed kunnen een willekeurig aantal van uw toepassingen de logboeken op hun eigen gemak gebruiken met blob-API's of SDK's. 
+### <a name="should-i-use-change-feed-or-storage-events"></a>Moet ik een wijzigings feed of opslag gebeurtenissen gebruiken?
+U kunt beide functies gebruiken als Change feed-en [Blob Storage-gebeurtenissen](storage-blob-event-overview.md) dezelfde informatie bieden met dezelfde gegarandeerde betrouw baarheid, waarbij het belangrijkste verschil is dat de latentie, ordening en opslag van gebeurtenis records. De wijzigings feed publiceert records in het logboek binnen enkele minuten van de wijziging en garandeert ook de volg orde van de wijzigings bewerkingen per blob. Opslag gebeurtenissen worden in realtime gepusht en worden mogelijk niet besteld. Change feed-gebeurtenissen worden in uw opslag account opgeslagen als alleen-lezen stabiele logboeken met uw eigen gedefinieerde Bewaar periode, terwijl opslag gebeurtenissen tijdelijk worden gebruikt door de gebeurtenis-handler, tenzij u deze expliciet opslaat. Met een wijzigings feed kan elk gewenst aantal toepassingen de logboeken in hun eigen gemak gebruiken met behulp van BLOB-Api's of Sdk's. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie een voorbeeld van hoe u de wijzigingsfeed lezen met behulp van een .NET-clienttoepassing. Zie [Feedlogboeken voor proceswijzigingen in Azure Blob Storage](storage-blob-change-feed-how-to.md).
-- Meer informatie over hoe je in realtime op gebeurtenissen reageren. Zie [Reageren op blobopslaggebeurtenissen](storage-blob-event-overview.md)
-- Meer informatie over gedetailleerde logboekregistratiegegevens voor zowel geslaagde als mislukte bewerkingen voor alle aanvragen. Zie [Logboekregistratie voor Azure Storage-analyses](../common/storage-analytics-logging.md)
+- Bekijk een voor beeld van hoe u de wijzigings feed kunt lezen met behulp van een .NET-client toepassing. Zie [Logboeken voor feed changes in Azure Blob Storage verwerken](storage-blob-change-feed-how-to.md).
+- Meer informatie over het reageren op gebeurtenissen in realtime. Zie [reageren op Blob Storage gebeurtenissen](storage-blob-event-overview.md)
+- Meer informatie over gedetailleerde logboek gegevens voor zowel geslaagde als mislukte bewerkingen voor alle aanvragen. Zie [Azure Storage Analytics-logboek registratie](../common/storage-analytics-logging.md)

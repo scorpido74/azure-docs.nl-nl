@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Machine Scale Sets Attached Data Disks
-description: Meer informatie over het gebruik van gekoppelde gegevensschijven met virtuele machineschaalsets via overzichten van specifieke use cases.
+title: Gegevens schijven die zijn gekoppeld aan Azure Virtual Machine Scale Sets
+description: Meer informatie over het gebruik van gekoppelde gegevens schijven met schaal sets voor virtuele machines via overzichten van specifieke use cases.
 author: avirishuv
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/25/2017
 ms.author: avverma
 ms.openlocfilehash: 6e39a8ffb24b0cca720890e3d00a55d1e58fadc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123374"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Virtuele-machineschaalsets in Azure en gekoppelde gegevensschijven
@@ -86,12 +86,12 @@ Als u de gegevensschijven automatisch wilt voorbereiden in een Linux-cluster, vo
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Vooraf gevulde gegevensschijven toevoegen aan een bestaande schaalset
-Gegevensschijven die zijn opgegeven in het schaalsetmodel, zijn altijd leeg. U kunt echter een bestaande gegevensschijf koppelen aan een specifieke virtuele machine in een schaalset. Als u gegevens wilt verspreiden over alle VM's in de schaalset, u uw gegevensschijf dupliceren en aan elke vm in de schaalset koppelen, of een aangepaste afbeelding maken die de gegevens bevat en de schaalset uit deze aangepaste afbeelding inrichten , of u Azure Files of een vergelijkbaar aanbod voor gegevensopslag gebruiken.
+Gegevensschijven die zijn opgegeven in het schaalsetmodel, zijn altijd leeg. U kunt echter een bestaande gegevensschijf koppelen aan een specifieke virtuele machine in een schaalset. Als u gegevens wilt door geven over alle virtuele machines in de schaalset, kunt u de gegevens schijf dupliceren en koppelen aan elke virtuele machine in de schaalset, of een aangepaste installatie kopie maken die de gegevens bevat en de schaalset inricht vanuit deze aangepaste installatie kopie, of u kunt Azure Files of een soort gelijke gegevens opslag gebruiken.
 
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 Er is ondersteuning voor Azure Managed Disks en aan schaalsets gekoppelde gegevensschijven beschikbaar in API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) of hoger van de Microsoft.Compute API.
 
-Azure-portalondersteuning voor gekoppelde gegevensschijven in schaalsets is beperkt. Afhankelijk van uw vereisten kunt u Azure-sjablonen, CLI, PowerShell, SDK's en REST API gebruiken voor het beheren van gekoppelde schijven.
+Azure Portal ondersteuning voor gekoppelde gegevens schijven in schaal sets is beperkt. Afhankelijk van uw vereisten kunt u Azure-sjablonen, CLI, PowerShell, SDK's en REST API gebruiken voor het beheren van gekoppelde schijven.
 
 

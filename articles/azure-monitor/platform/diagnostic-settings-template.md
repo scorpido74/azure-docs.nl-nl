@@ -1,6 +1,6 @@
 ---
-title: Diagnostische instelling maken in Azure met behulp van resourcebeheersjabloon
-description: Diagnostische instellingen maken met behulp van een Resource Manager-sjabloon om Azure-platformlogboeken door te sturen naar Azure Monitor-logboeken, Azure-opslag of Azure Event Hubs.
+title: Een diagnostische instelling maken in azure met behulp van de Resource Manager-sjabloon
+description: Diagnostische instellingen maken met een resource manager-sjabloon voor het door sturen van Azure-platform logboeken naar Azure Monitor-logboeken, Azure-opslag of Azure Event Hubs.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,31 +8,31 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672426"
 ---
-# <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in Azure met behulp van een resourcemanagersjabloon
-[Diagnostische instellingen](diagnostic-settings.md) in Azure Monitor geven aan waar [platformlogboeken](platform-logs-overview.md) moeten worden verzonden die worden verzameld door Azure-bronnen en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u details en voorbeelden voor het gebruik van een [Azure Resource Manager-sjabloon](../../azure-resource-manager/templates/template-syntax.md) om diagnostische instellingen te maken en te configureren om platformlogboeken naar verschillende bestemmingen te verzamelen.
+# <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
+[Diagnostische instellingen](diagnostic-settings.md) in azure monitor opgeven waar u de [platform logboeken](platform-logs-overview.md) wilt verzenden die worden verzameld door Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u details en voor beelden voor het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) voor het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties.
 
 > [!NOTE]
-> Aangezien u geen [diagnostische instelling](diagnostic-settings.md) voor het Azure Activity-logboek maken met PowerShell- of CLI-achtige diagnostische instellingen voor andere Azure-resources, maakt u een resourcebeheersjabloon voor het activiteitenlogboek met behulp van de informatie in dit artikel en implementeert u de sjabloon met PowerShell of CLI.
+> Omdat u geen [Diagnostische instelling](diagnostic-settings.md) voor het Azure-activiteiten logboek kunt maken met behulp van Power shell of cli zoals Diagnostische instellingen voor andere Azure-resources, maakt u een resource manager-sjabloon voor het activiteiten logboek met behulp van de informatie in dit artikel en implementeert u de sjabloon met Power shell of cli.
 
-## <a name="deployment-methods"></a>Implementatiemethoden
-U Resource Manager-sjablonen implementeren met behulp van elke geldige methode, waaronder PowerShell en CLI. Diagnostische instellingen voor het activiteitslogboek `az deployment create` moeten `New-AzDeployment` worden geïmplementeerd op een abonnement met cli of powershell. Diagnostische instellingen voor resourcelogboeken moeten `az group deployment create` worden geïmplementeerd `New-AzResourceGroupDeployment` in een resourcegroep die wordt gebruikt voor CLI of voor PowerShell.
+## <a name="deployment-methods"></a>Implementatie methoden
+U kunt Resource Manager-sjablonen implementeren met een wille keurige geldige methode, waaronder Power shell en CLI. Diagnostische instellingen voor het activiteiten logboek moeten worden geïmplementeerd op `az deployment create` een abonnement met `New-AzDeployment` voor cli of voor Power shell. Diagnostische instellingen voor resource logboeken moeten worden geïmplementeerd op een `az group deployment create` resource groep met `New-AzResourceGroupDeployment` voor cli of voor Power shell.
 
-Zie [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell-](../../azure-resource-manager/templates/deploy-powershell.md) en [Implementeerresources met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie. 
+Zie [resources implementeren met Resource Manager-sjablonen en resources Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) en [implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie. 
 
 
 
 
 
 ## <a name="resource-logs"></a>Resourcelogboeken
-Voeg voor bronlogboeken een `<resource namespace>/providers/diagnosticSettings` bron van type toe aan de sjabloon. De sectie Eigenschappen volgt de indeling die is beschreven in [Diagnostische instellingen - Maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Geef `category` een `logs` in de sectie op voor elk van de categorieën die geldig zijn voor de resource die u wilt verzamelen. Voeg `metrics` de eigenschap toe om resourcestatistieken aan dezelfde bestemmingen te verzamelen als de [resource statistieken ondersteunt](metrics-supported.md).
+Voor resource logboeken voegt u een resource van `<resource namespace>/providers/diagnosticSettings` het type toe aan de sjabloon. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Geef een `category` in de `logs` sectie op voor elk van de categorieën die geldig zijn voor de resource die u wilt verzamelen. Voeg de `metrics` eigenschap voor het verzamelen van metrische gegevens van resources aan dezelfde doelen toe als de [resource metrische gegevens ondersteunt](metrics-supported.md).
 
-Hieronder volgt een sjabloon die een resourcelogboekcategorie voor een bepaalde resource verzamelt voor een werkruimte, opslagaccount en gebeurtenishub van Log Analytics.
+Hieronder volgt een sjabloon waarmee een resource logboek categorie voor een bepaalde resource wordt verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
 
 ```json
 "resources": [
@@ -69,7 +69,7 @@ Hieronder volgt een sjabloon die een resourcelogboekcategorie voor een bepaalde 
 
 
 ### <a name="example"></a>Voorbeeld
-Hieronder volgt een voorbeeld dat een diagnostische instelling maakt voor een instelling voor automatisch schalen waarmee bronlogboeken naar een gebeurtenishub, een opslagaccount en een werkruimte Log Analytics kunnen worden gestreamd.
+Hier volgt een voor beeld van het maken van een diagnostische instelling voor een instelling voor automatisch schalen waarmee streaming van bron logboeken kan worden gestreamd naar een Event Hub, een opslag account en een Log Analytics-werk ruimte.
 
 ```json
 {
@@ -144,7 +144,7 @@ Hieronder volgt een voorbeeld dat een diagnostische instelling maakt voor een in
 ```
 
 ## <a name="activity-log"></a>Activiteitenlogboek
-Voeg voor het azure-activiteitenlogboek `Microsoft.Insights/diagnosticSettings`een bron van het type toe . De beschikbare rubrieken worden weergegeven in [Rubrieken in het activiteitenlogboek](activity-log-view.md#categories-in-the-activity-log). Hieronder volgt een sjabloon die alle categorieën van activiteitenlogboeken verzamelt voor een log-inhoudswerkruimte, opslagaccount en gebeurtenishub.
+Voor het Azure-activiteiten logboek voegt u een bron van `Microsoft.Insights/diagnosticSettings`het type toe. De beschik bare categorieën worden weer gegeven in [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log). Hieronder volgt een sjabloon waarmee alle activiteiten logboek categorieën worden verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
 
 
 ```json
@@ -237,5 +237,5 @@ Voeg voor het azure-activiteitenlogboek `Microsoft.Insights/diagnosticSettings`e
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Lees meer over [platformlogboeken in Azure.](platform-logs-overview.md)
-* Meer informatie over [diagnostische instellingen](diagnostic-settings.md).
+* Meer informatie over [platform Logboeken vindt u in azure](platform-logs-overview.md).
+* Meer informatie over [Diagnostische instellingen](diagnostic-settings.md).

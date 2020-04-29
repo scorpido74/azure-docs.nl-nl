@@ -1,7 +1,7 @@
 ---
-title: Aanmelden en aanmelden met een Microsoft-account instellen
+title: Registratie instellen en aanmelden met een micro soft-account
 titleSuffix: Azure AD B2C
-description: Geef aanmeldingen en aanmelding aan klanten met Microsoft-accounts in uw toepassingen met Azure Active Directory B2C.
+description: Bied u de mogelijkheid om u aan te melden en u aan te melden bij klanten met micro soft-accounts in uw toepassingen met Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,41 +12,41 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 25784eb161a860398b0741d1d20375cabd1c4eca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188015"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Aanmelden en aanmelden met een Microsoft-account instellen met Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Microsoft-account met behulp van Azure Active Directory B2C
 
-## <a name="create-a-microsoft-account-application"></a>Een Microsoft-accounttoepassing maken
+## <a name="create-a-microsoft-account-application"></a>Een Microsoft-account-toepassing maken
 
-Als u een Microsoft-account wilt gebruiken als [identiteitsprovider](openid-connect.md) in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in de Azure AD-tenant. De Azure AD-tenant is niet hetzelfde als uw Azure AD B2C-tenant. Als u nog geen Microsoft-account hebt, kunt [https://www.live.com/](https://www.live.com/)u er een krijgen op .
+Als u een Microsoft-account als een [ID-provider](openid-connect.md) in Azure Active Directory B2C (Azure AD B2C) wilt gebruiken, moet u een toepassing maken in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant. Als u nog geen Microsoft-account hebt, kunt u er een op [https://www.live.com/](https://www.live.com/)ontvangen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zorg ervoor dat u de map met uw Azure AD-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw Azure AD-tenant bevat.
-1. Kies **Alle services** in de linkerbovenhoek van de Azure-portal en zoek en selecteer **app-registraties**.
-1. Selecteer **Nieuwe registratie**.
-1. Voer een **naam** in voor uw toepassing. *MsAapp1*bijvoorbeeld .
-1. Selecteer **accounts in een organisatiemap en persoonlijke Microsoft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** onder Ondersteunde **accounttypen.** Deze optie is gericht op de breedste set microsoft-identiteiten.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
+1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+1. Selecteer **nieuwe registratie**.
+1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld *MSAapp1*.
+1. Onder **ondersteunde account typen**selecteert u **accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)**. Deze optie is gericht op de breedste set micro soft-identiteiten.
 
-   Zie [Snelstart: Een toepassing registreren bij het Microsoft-identiteitsplatform](../active-directory/develop/quickstart-register-app.md)voor meer informatie over de verschillende selecties van het accounttype.
-1. Selecteer Onder **URI omleiden (optioneel)** **web** en voer u `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` het tekstvak in. Vervang `your-tenant-name` door de naam van uw Azure AD B2C-tenant.
-1. Selecteer **Registreren**
-1. Neem de **toepassings-id (client) op** die wordt weergegeven op de pagina Toepassingsoverzicht. U hebt dit nodig wanneer u de identiteitsprovider in de volgende sectie configureert.
-1. Certificaten **& geheimen selecteren**
-1. Klik **op Nieuw clientgeheim**
-1. Voer een **beschrijving** in voor het geheim, bijvoorbeeld *Toepassingswachtwoord 1,* en klik op **Toevoegen**.
-1. Neem het toepassingswachtwoord op dat wordt weergegeven in de kolom **Waarde.** U hebt dit nodig wanneer u de identiteitsprovider in de volgende sectie configureert.
+   Zie [Quick Start: een toepassing registreren bij het micro soft-identiteits platform](../active-directory/develop/quickstart-register-app.md)voor meer informatie over de verschillende selecties van het account type.
+1. Onder **omleidings-URI (optioneel)** selecteert u `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **Web** en voert u in het tekstvak in. Vervang `your-tenant-name` door de naam van uw Azure AD B2C-Tenant.
+1. Selecteer **registreren**
+1. Noteer de **id van de toepassing (client)** die wordt weer gegeven op de overzichts pagina van de toepassing. U hebt deze nodig wanneer u de ID-provider in de volgende sectie configureert.
+1. **Certificaten & geheimen** selecteren
+1. Klik op **Nieuw client geheim**
+1. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld *toepassings wachtwoord 1*, en klik vervolgens op **toevoegen**.
+1. Noteer het toepassings wachtwoord dat wordt weer gegeven in de kolom **waarde** . U hebt deze nodig wanneer u de ID-provider in de volgende sectie configureert.
 
-## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Een Microsoft-account configureren als identiteitsprovider
+## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Een Microsoft-account als een id-provider configureren
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw tenant bevat.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer **Identiteitsproviders**en selecteer **vervolgens Microsoft-account**.
-1. Voer een **naam**in . Bijvoorbeeld, *MSA*.
+1. Selecteer **id-providers**en selecteer vervolgens **micro soft-account**.
+1. Voer een **naam**in. Bijvoorbeeld *MSA*.
 1. Voer voor de **client-id**de toepassings-id (client) in van de Azure AD-toepassing die u eerder hebt gemaakt.
-1. Voer **voor**het geheim van de client het clientgeheim in dat u hebt opgenomen.
+1. Voer voor het **client geheim**het client geheim in dat u hebt vastgelegd.
 1. Selecteer **Opslaan**.

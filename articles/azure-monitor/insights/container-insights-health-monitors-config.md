@@ -1,81 +1,81 @@
 ---
-title: Azure Monitor voor configuratie van containersstatusmonitors | Microsoft Documenten
-description: In dit artikel vindt u inhoud waarin de gedetailleerde configuratie van de statusmonitors in Azure Monitor voor containers wordt beschreven.
+title: Azure Monitor voor containers status monitors configuratie | Microsoft Docs
+description: In dit artikel vindt u informatie over de gedetailleerde configuratie van de status monitors in Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: 99ea6e96f5a8a486784cb3d633a6e031b60eaad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055705"
 ---
-# <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Configuratiehandleiding voor Azure Monitor voor statusmonitor van containers
+# <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Configuratie handleiding voor containers Health Monitor Azure Monitor
 
-Monitoren zijn het belangrijkste element voor het meten van de status en het detecteren van fouten in Azure Monitor voor containers. In dit artikel u inzicht krijgen in de concepten van de manier waarop de gezondheid wordt gemeten en de elementen die het gezondheidsmodel omvatten om de status van uw Kubernetes-cluster te controleren en te rapporteren met de functie [Gezondheid (voorbeeld).](container-insights-health.md)
+Monitors zijn het primaire element voor het meten van de status en het detecteren van fouten in Azure Monitor voor containers. Dit artikel helpt u bij het begrijpen van de concepten van de manier waarop de status wordt gemeten en de elementen waaruit het status model bestaat om de status van uw Kubernetes-cluster te controleren en te rapporteren met de [status (preview-functie)](container-insights-health.md) .
 
 >[!NOTE]
->De functie Gezondheid is op dit moment in openbare preview.
+>De status functie is momenteel beschikbaar als open bare preview.
 >
 
 ## <a name="monitors"></a>Monitors
 
-Een monitor meet de status van een bepaald aspect van een beheerd object. Monitoren hebben elk twee of drie gezondheidstoestanden. Een monitor zal in een en slechts een van de potentiële staten op een bepaald moment. Wanneer een monitor geladen door de containeragent, wordt het geïnitialiseerd tot een gezonde staat. De status wordt alleen gewijzigd als de opgegeven voorwaarden voor een andere status worden gedetecteerd.
+Een monitor meet de status van een bepaald aspect van een beheerd object. Monitors hebben beide twee of drie statussen. Een monitor bevindt zich in slechts één van de mogelijke statussen op een bepaald moment. Wanneer een monitor wordt geladen door de container agent, wordt deze geïnitialiseerd met de status in orde. De status wordt alleen gewijzigd als de opgegeven voor waarden voor een andere status worden gedetecteerd.
 
-De algehele status van een bepaald object wordt bepaald aan de hand van de status van elk van zijn monitoren. Deze hiërarchie wordt geïllustreerd in het deelvenster Statushiërarchie in Azure Monitor voor containers. Het beleid voor het oprollen van de status maakt deel uit van de configuratie van de geaggregeerde monitoren.
+De algemene status van een bepaald object wordt bepaald aan de hand van de status van elk van de monitors. Deze hiërarchie wordt geïllustreerd in het deel venster status hiërarchie in Azure Monitor voor containers. Het beleid voor de manier waarop de status wordt getotaliseerd, maakt deel uit van de configuratie van de geaggregeerde monitors.
 
-## <a name="types-of-monitors"></a>Typen beeldschermen
+## <a name="types-of-monitors"></a>Typen monitors
 
 |Controleren | Beschrijving | 
 |--------|-------------|
-| Eenheidsmonitor |Een eenheidsmonitor meet een bepaald aspect van een resource of toepassing. Dit kan het controleren van een prestatieteller om de prestaties van de resource of de beschikbaarheid ervan te bepalen. |
-|Aggregaatmonitor | Geaggregeerde monitors groeperen meerdere monitoren om één status van de status van de status in de status van de status te bieden. Eenheidsmonitors worden doorgaans geconfigureerd onder een bepaalde aggregaatmonitor. Een aggregaatmonitor van knooppunt rolt bijvoorbeeld de status van het gebruik van de node-CPU, het geheugengebruik en de status Knooppunt op.
+| Unit-monitor |Een unit-monitor meet een aspect van een resource of toepassing. Dit kan een prestatie meter item controleren om de prestaties van de resource of de beschik baarheid te bepalen. |
+|Aggregaatmonitor | Aggregatie bewaakt meerdere monitors om één status geaggregeerde status te bieden. Eenheids monitors worden doorgaans geconfigureerd onder een bepaalde aggregaatmonitor. Een knooppunt aggregatie kan bijvoorbeeld de status van het CPU-gebruik van het knoop punt, het geheugen gebruik en de knooppunt status samen vouwen.
  |
 
-### <a name="aggregate-monitor-health-rollup-policy"></a>Geaggregeerdbeleid voor het oprollen van monitorstatus
+### <a name="aggregate-monitor-health-rollup-policy"></a>Totaliserings beleid voor totaliseren van status controleren
 
-Elke geaggregeerde monitor definieert een statusrollupbeleid, dat is de logica die wordt gebruikt om de status van de aggregaatmonitor te bepalen op basis van de status van de monitoren eronder. Het mogelijke beleid voor het oprollen van de gezondheid voor een geaggregeerde monitor is als volgt:
+Elke aggregaatmonitor definieert een totaliserings beleid voor statussen. Dit is de logica die wordt gebruikt om de status van de aggregaatmonitor te bepalen op basis van de status van de monitors daaronder. De volgende beleids regels voor het samen vouwen van de status van een aggregaatmonitor:
 
-#### <a name="worst-state-policy"></a>Slechtste staatsbeleid
+#### <a name="worst-state-policy"></a>Slechtste status beleid
 
-De status van de geaggregeerde monitor komt overeen met de status van de onderliggende monitor met de slechtste status. Dit is het meest voorkomende beleid dat wordt gebruikt door geaggregeerde monitoren.
+De status van de aggregaatmonitor komt overeen met de status van de onderliggende monitor met de slechtste status. Dit is het meest voorkomende beleid dat wordt gebruikt door geaggregeerde monitors.
 
-![Voorbeeld van de slechtste status van de totale monitor](./media/container-insights-health-monitoring-cfg/aggregate-monitor-rollup-worstof.png)
+![Voor beeld van de slechtste status van Total monitor Rollup](./media/container-insights-health-monitoring-cfg/aggregate-monitor-rollup-worstof.png)
 
-### <a name="percentage-policy"></a>Percentagebeleid
+### <a name="percentage-policy"></a>Percentage beleid
 
-Het bronobject komt overeen met de slechtste status van één lid van een bepaald percentage doelobjecten in de beste status. Dit beleid wordt gebruikt wanneer een bepaald percentage doelobjecten in orde moet zijn om het doelobject als gezond te laten worden beschouwd. Percentagebeleid sorteert de monitors in aflopende volgorde van de ernst van de status en de status van de aggregaatmonitor wordt berekend als de slechtste status van N% (N wordt bepaald door de configuratieparameter *StateThresholdPercentage).*
+Het bron object komt overeen met de slechtste status van één lid van een opgegeven percentage doel objecten in de beste status. Dit beleid wordt gebruikt wanneer een bepaald percentage van doel objecten in orde moet zijn voordat het doel object in orde wordt beschouwd. Het percentage beleid sorteert de monitors in aflopende volg orde van de ernst van de status en de status van de aggregaatmonitor wordt berekend als de slechtste status N% (N wordt bepaald door de configuratie parameter *StateThresholdPercentage*).
 
-Stel dat er vijf containerexemplaren van een containerafbeelding zijn en dat de afzonderlijke **statussen kritiek**, **waarschuwing**, **gezond**, **gezond**, gezond **, gezond**zijn .  De status van de container CPU-gebruikmonitor is **kritiek**, omdat de slechtste toestand van 90% van de containers **kritiek** is wanneer deze wordt gesorteerd in aflopende volgorde van ernst.
+Stel dat er vijf container exemplaren van een container installatie kopie zijn en dat hun individuele status **kritiek**, **waarschuwing**, **in orde** **, in orde, in** **orde**is.  De status van de monitor voor het CPU-gebruik van de container is **kritiek**, aangezien de slechtste status van 90% van de containers **kritiek** is wanneer deze in aflopende volg orde van ernst wordt gesorteerd.
 
-## <a name="understand-the-monitoring-configuration"></a>De bewakingsconfiguratie begrijpen
+## <a name="understand-the-monitoring-configuration"></a>Informatie over de bewakings configuratie
 
-Azure Monitor voor containers bevat een aantal belangrijke bewakingsscenario's die als volgt zijn geconfigureerd.
+Azure Monitor voor containers bevat een aantal scenario's voor sleutel bewaking die als volgt zijn geconfigureerd.
 
-### <a name="unit-monitors"></a>Eenheidsmonitoren
+### <a name="unit-monitors"></a>Unit-monitors
 
-|**Monitornaam** | Monitortype | **Beschrijving** | **Parameter** | **Waarde** |
+|**Monitor naam** | Monitor type | **Beschrijving** | **Bepaalde** | **Waarde** |
 |-----------------|--------------|-----------------|---------------|-----------|
-|Gebruik van knooppuntgeheugen |Eenheidsmonitor |Deze monitor evalueert het geheugengebruik van een knooppunt elke minuut, met behulp van de cadvisor gerapporteerde gegevens. |Opeenvolgende monstersforstatetransition<br> FailifgreaterthanPercentage<br> WarnIfGreaterthanPercentage | 3<br> 90<br> 80  ||
-|Gebruik van knooppunt-CPU's |Eenheidsmonitor |Deze monitor controleert het CPU-gebruik van het knooppunt elke minuut, met behulp van de cadvisor gerapporteerde gegevens. | Opeenvolgende monstersforstatetransition<br> FailifgreaterthanPercentage<br> WarnIfGreaterthanPercentage | 3<br> 90<br> 80  ||
-|Knooppuntstatus |Eenheidsmonitor |Deze monitor controleert knooppuntvoorwaarden die door Kubernetes zijn gerapporteerd.<br> Momenteel worden de volgende knooppuntvoorwaarden gecontroleerd: Schijfdruk, geheugendruk, PID-druk, Out of Disk, Netwerk niet beschikbaar, Status klaar voor het knooppunt.<br> Als Niet-beschikbaar is *als niet-beschikbaar* **is,** verandert de monitor **in** kritieke status als *niet-beschikbaar* is voor niet-beschikbaar zijn.<br> Als andere voorwaarden **gelijk zijn**aan true , anders dan een status **Gereed,** wordt de monitor gewijzigd in de status **Waarschuwing.** | NodeConditionTypeForFailedState | outofdisk, netwerk niet beschikbaar ||
-|Gebruik containergeheugen |Eenheidsmonitor |Deze monitor rapporteert de gecombineerde status van het geheugengebruik (RSS) van de exemplaren van de container.<br> Het voert een eenvoudige vergelijking uit die elk monster vergelijkt met één drempel waardewaarde en wordt opgegeven door de configuratieparameter **ConsecutiveSamplesForStateTransition**.<br> De status ervan wordt berekend als de slechtste status van 90% van de containerexemplaren (StateThresholdPercentage), gesorteerd in aflopende volgorde van de ernst van de containerstatus (dat wil zeggen kritiek, waarschuwing, gezond).<br> Als er geen record wordt ontvangen van een containerinstantie, wordt de status van de containerinstantie gerapporteerd als **Onbekend**en heeft deze hogere prioriteit in de sorteervolgorde boven de **status Kritieke** status.<br> De status van elke afzonderlijke containerinstantie wordt berekend aan de hand van de drempelwaarden die in de configuratie zijn opgegeven. Als het gebruik boven de kritieke drempel waarde (90%) is, bevindt de instantie zich in een **kritieke** toestand, als deze lager is dan kritieke drempelwaarde (90%) maar groter dan de waarschuwingsdrempel (80%), dan is de instantie in een **waarschuwingstaat.** Anders is het in **gezonde** staat. |Opeenvolgende monstersforstatetransition<br> Failiflessthanpercentage<br> StateThresholdPercentage<br> WarnIfGreaterthanPercentage| 3<br> 90<br> 90<br> 80 ||
-|Gebruik van container-CPU's |Eenheidsmonitor |Deze monitor rapporteert de gecombineerde status van het CPU-gebruik van de exemplaren van de container.<br> Het voert een eenvoudige vergelijking uit die elk monster vergelijkt met één drempel waardewaarde en wordt opgegeven door de configuratieparameter **ConsecutiveSamplesForStateTransition**.<br> De status ervan wordt berekend als de slechtste status van 90% van de containerexemplaren (StateThresholdPercentage), gesorteerd in aflopende volgorde van de ernst van de containerstatus (dat wil zeggen kritiek, waarschuwing, gezond).<br> Als er geen record wordt ontvangen van een containerinstantie, wordt de status van de containerinstantie gerapporteerd als **Onbekend**en heeft deze hogere prioriteit in de sorteervolgorde boven de **status Kritieke** status.<br> De status van elke afzonderlijke containerinstantie wordt berekend aan de hand van de drempelwaarden die in de configuratie zijn opgegeven. Als het gebruik boven de kritieke drempel waarde (90%) is, bevindt de instantie zich in een **kritieke** toestand, als deze lager is dan kritieke drempelwaarde (90%) maar groter dan de waarschuwingsdrempel (80%), dan is de instantie in een **waarschuwingstaat.** Anders is het in **gezonde** staat. |Opeenvolgende monstersforstatetransition<br> Failiflessthanpercentage<br> StateThresholdPercentage<br> WarnIfGreaterthanPercentage| 3<br> 90<br> 90<br> 80 ||
-|Systeemwerkbelastingpods gereed |Eenheidsmonitor |Deze monitor rapporteert de status op basis van het percentage pods in gereedstaat in een bepaalde werkbelasting. De status is ingesteld op **Kritiek** als minder dan 100% van de pods in **een gezonde** toestand verkeren |Opeenvolgende monstersforstatetransition<br> Failiflessthanpercentage |2<br> 100 ||
-|Kube API-status |Eenheidsmonitor |Deze monitor rapporteert de status van de Kube API-service. Monitor is in kritieke toestand voor het geval Kube API-eindpunt niet beschikbaar is. Voor deze specifieke monitor wordt de status bepaald door een query te maken naar het eindpunt 'knooppunten' voor de kube-api-server. Iets anders dan een OK-antwoordcode verandert de monitor in een **kritieke** status. | Geen configuratie-eigenschappen |||
+|Geheugen gebruik van knoop punt |Unit-monitor |Deze monitor evalueert elke minuut het geheugen gebruik van een knoop punt, met behulp van de gerapporteerde gegevens in cadvisor. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|CPU-gebruik van knoop punt |Unit-monitor |Met deze monitor wordt het CPU-gebruik van het knoop punt elke minuut gecontroleerd met behulp van de gerapporteerde gegevens in cadvisor. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|Knooppunt status |Unit-monitor |Deze monitor controleert de knooppunt voorwaarden die door Kubernetes worden gerapporteerd.<br> Momenteel zijn de volgende knooppunt omstandigheden ingeschakeld: schijf belasting, geheugen belasting, PID-druk, onvoldoende schijf, netwerk niet beschikbaar, status gereed voor het knoop punt.<br> Als er *onvoldoende schijf ruimte* of *netwerk beschikbaar* **is, wordt de**status van de monitor gewijzigd in **kritiek** .<br> Als andere voor waarden gelijk zijn aan **waar**, anders dan de status **gereed** , verandert de monitor in een **waarschuwings** status. | NodeConditionTypeForFailedState | outofdisk,networkunavailable ||
+|Geheugen gebruik door containers |Unit-monitor |Deze monitor rapporteert de gecombineerde integriteits status van het geheugen gebruik (RSS) van de exemplaren van de container.<br> Er wordt een eenvoudige vergelijking uitgevoerd die elk voor beeld vergelijkt met één drempel en wordt opgegeven door de configuratie parameter **ConsecutiveSamplesForStateTransition**.<br> De status wordt berekend als de slechtste status van 90% van de container-exemplaren (StateThresholdPercentage), gesorteerd in aflopende volg orde van ernst van de status van de container (dat wil zeggen, kritiek, waarschuwing, in orde).<br> Als er geen record wordt ontvangen van een container exemplaar, wordt de status van de container instantie gerapporteerd als **onbekend**en heeft deze een hogere prioriteit in de sorteer volgorde ten opzichte van de **kritieke** status.<br> De status van elk afzonderlijk container exemplaar wordt berekend met behulp van de drempel waarden die zijn opgegeven in de configuratie. Als het gebruik de kritieke drempel waarde (90%) overschrijdt, heeft de instantie een **kritieke** status als deze lager is dan de kritieke drempel waarde (90%) maar groter dan waarschuwings drempelwaarde (80%), de instantie heeft een **waarschuwings** status. Anders is de status in **orde** . |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|CPU-gebruik van container |Unit-monitor |Deze monitor rapporteert de gecombineerde integriteits status van het CPU-gebruik van de exemplaren van de container.<br> Er wordt een eenvoudige vergelijking uitgevoerd die elk voor beeld vergelijkt met één drempel en wordt opgegeven door de configuratie parameter **ConsecutiveSamplesForStateTransition**.<br> De status wordt berekend als de slechtste status van 90% van de container-exemplaren (StateThresholdPercentage), gesorteerd in aflopende volg orde van ernst van de status van de container (dat wil zeggen, kritiek, waarschuwing, in orde).<br> Als er geen record wordt ontvangen van een container exemplaar, wordt de status van de container instantie gerapporteerd als **onbekend**en heeft deze een hogere prioriteit in de sorteer volgorde ten opzichte van de **kritieke** status.<br> De status van elk afzonderlijk container exemplaar wordt berekend met behulp van de drempel waarden die zijn opgegeven in de configuratie. Als het gebruik de kritieke drempel waarde (90%) overschrijdt, heeft de instantie een **kritieke** status als deze lager is dan de kritieke drempel waarde (90%) maar groter dan waarschuwings drempelwaarde (80%), de instantie heeft een **waarschuwings** status. Anders is de status in **orde** . |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|Systeem werkbelasting peul gereed |Unit-monitor |Met deze monitor wordt de status gerapporteerd op basis van het percentage van de in de status gereed van een bepaalde werk belasting. De status is ingesteld op **kritiek** als minder dan 100% van de peulen de status in **orde** heeft |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage |2<br> 100 ||
+|Status van uitvoeren-API |Unit-monitor |Deze monitor rapporteert de status van de uitvoeren API-service. De monitor bevindt zich in een kritieke status in het geval uitvoeren API-eind punt niet beschikbaar is. Voor deze monitor wordt de status bepaald door een query uit te voeren op het eind punt knoop punten voor de uitvoeren-API-server. Anders dan bij een antwoord code van OK wordt de monitor gewijzigd in een **kritieke** status. | Geen configuratie-eigenschappen |||
 
-### <a name="aggregate-monitors"></a>Geaggregeerde monitoren
+### <a name="aggregate-monitors"></a>Aggregaatmonitor
 
-|**Monitornaam** | **Beschrijving** | **Algoritme** |
+|**Monitor naam** | **Beschrijving** | **Algoritme** |
 |-----------------|-----------------|---------------|
-|Knooppunt |Deze monitor is een aggregaat van alle node monitoren. Het komt overeen met de toestand van de onderliggende monitor met de slechtste gezondheidstoestand:<br> Cpu-gebruik knooppunt<br> Geheugengebruik knooppunt<br> Knooppuntstatus | Slechtste van|
-|Knooppuntzwembad |Deze monitor rapporteert de gecombineerde status van alle knooppunten in de *agentpool van*de knooppuntgroep . Dit is een driestatusmonitor, waarvan de status is gebaseerd op de slechtste toestand van 80% van de knooppunten in de knooppuntgroep, gesorteerd in aflopende volgorde van de ernst van knooppunttoestanden (dat wil zeggen, Kritiek, Waarschuwing, Gezond).|Percentage |
-|Knooppunten (bovenliggende groep knooppunt) |Dit is een geaggregeerde monitor van alle knooppuntpools. De status is gebaseerd op de slechtste status van de onderliggende monitoren (dat wil zeggen, de knooppuntpools die aanwezig zijn in het cluster). |Slechtste van |
-|Cluster (bovenliggende knooppunten/<br> Kubernetes-infrastructuur) |Dit is de bovenliggende monitor die overeenkomt met de status van de onderliggende monitor met de slechtste status, dat is kubernetes-infrastructuur en knooppunten. |Slechtste van |
-|Kubernetes-infrastructuur |Deze monitor rapporteert de gecombineerde status van de beheerde infrastructuurcomponenten van het cluster. de status ervan wordt berekend als de 'slechtste van' de onderliggende monitor staten, d.w.z. kube-system workloads en API Server status. |Slechtste van|
-|Systeemwerkbelasting |Deze monitor rapporteert de status van een kube-systeemwerkbelasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, dat wil zeggen de **Pods in gereedstaat** (monitor en de containers in de werkbelasting). |Slechtste van |
-|Container |Deze monitor rapporteert de algehele status van een container in een bepaalde werkbelasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, dat wil zeggen het **CPU-gebruik** en **geheugengebruiksmonitors.** |Slechtste van |
+|Knooppunt |Deze monitor is een aggregatie van alle knooppunt monitors. Dit komt overeen met de status van de onderliggende monitor met de slechtste status:<br> CPU-gebruik van knoop punt<br> Geheugen gebruik van knoop punt<br> Knooppunt status | Slechtste van|
+|Knooppunt groep |Deze monitor rapporteert de gecombineerde integriteits status van alle knoop punten in de *agent pool*van de knooppunt groep. Dit is een monitor met drie statussen waarvan de status is gebaseerd op de slechtste staat van 80% van de knoop punten in de knooppunt groep, gesorteerd in aflopende volg orde van ernst van de status van knoop punten (dat wil zeggen, kritiek, waarschuwing, in orde).|Percentage |
+|Knoop punten (bovenliggend knoop punt groep) |Dit is een geaggregeerde monitor van alle knooppunt groepen. De status is gebaseerd op de slechtste status van de onderliggende monitors (dat wil zeggen, de knooppunt Pools die aanwezig zijn in het cluster). |Slechtste van |
+|Cluster (bovenliggend knoop punt/<br> Kubernetes-infra structuur) |Dit is de bovenliggende monitor die overeenkomt met de status van de onderliggende monitor met de slechtste status, dat wil zeggen kubernetes-infra structuur en-knoop punten. |Slechtste van |
+|Kubernetes-infra structuur |Deze monitor rapporteert de gecombineerde integriteits status van de onderdelen van de beheerde infra structuur van het cluster. de status wordt berekend als ' slechtste ' van de onderliggende monitor statussen, d.w.z. uitvoeren-systeem werk belastingen en API-server status. |Slechtste van|
+|Systeem belasting |Deze monitor rapporteert de status van een uitvoeren-systeem werk belasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, dat wil zeggen de meest gunstige **status** (monitor en de containers in de werk belasting). |Slechtste van |
+|Container |Deze monitor rapporteert de algehele status van een container in een bepaalde werk belasting. Deze monitor komt overeen met de status van de onderliggende monitor met de slechtste status, dat wil zeggen het **CPU-gebruik** en de monitors voor **geheugen gebruik** . |Slechtste van |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk [de monitorclusterstatus](container-insights-health.md) voor meer informatie over het weergeven van de status van uw Kubernetes-cluster.
+Bekijk de status van het [monitor cluster](container-insights-health.md) voor meer informatie over het weer geven van de integriteits status van uw Kubernetes-cluster.

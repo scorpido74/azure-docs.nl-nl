@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services NetworkConfiguration Schema | Microsoft Documenten
-description: Meer informatie over de onderliggende elementen van het element NetworkConfiguration van het serviceconfiguratiebestand, waarin virtuele netwerk- en DNS-waarden worden opgegeven.
+title: Azure Cloud Services NetworkConfiguration-schema | Microsoft Docs
+description: Meer informatie over de onderliggende elementen van het element NetworkConfiguration van het service configuratie bestand, waarmee Virtual Network-en DNS-waarden worden opgegeven.
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,24 +10,24 @@ caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529285"
 ---
-# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services Config NetworkConfiguration Schema
+# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services config NetworkConfiguration-schema
 
-Het `NetworkConfiguration` element van het serviceconfiguratiebestand geeft virtuele netwerk- en DNS-waarden op. Deze instellingen zijn optioneel voor cloudservices.
+Het `NetworkConfiguration` element van het service configuratie bestand bevat Virtual Network-en DNS-waarden. Deze instellingen zijn optioneel voor Cloud Services.
 
-U de volgende bron gebruiken voor meer informatie over virtuele netwerken en de bijbehorende schema's:
+U kunt de volgende resource gebruiken voor meer informatie over virtuele netwerken en de bijbehorende schema's:
 
-- [Cloud Service (klassiek) configuratieschema](schema-cscfg-file.md)
-- [Cloud Service (klassiek) definitieschema](schema-csdef-file.md)
-- [Een virtueel netwerk maken (klassiek)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [Configuratie schema van Cloud service (klassiek)](schema-cscfg-file.md)
+- [Schema voor Cloud service (klassiek)](schema-csdef-file.md)
+- [Een Virtual Network maken (klassiek)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
 
-## <a name="networkconfiguration-element"></a>Element netwerkconfiguratie
-In het volgende `NetworkConfiguration` voorbeeld worden het element en de onderliggende elementen weergegeven.
+## <a name="networkconfiguration-element"></a>NetworkConfiguration-element
+In het volgende voor beeld `NetworkConfiguration` ziet u het element en de onderliggende elementen.
 
 ```xml
 <ServiceConfiguration>
@@ -60,18 +60,18 @@ In het volgende `NetworkConfiguration` voorbeeld worden het element en de onderl
 </ServiceConfiguration>
 ```
 
-In de volgende tabel worden `NetworkConfiguration` de onderliggende elementen van het element beschreven.
+In de volgende tabel worden de onderliggende elementen van `NetworkConfiguration` het element beschreven.
 
 | Element       | Beschrijving |
 | ------------- | ----------- |
-| AccessControl | Optioneel. Hiermee geeft u de regels op voor toegang tot eindpunten in een cloudservice. De naam van het toegangsbeheer `name` wordt gedefinieerd door een tekenreeks voor het kenmerk. Het `AccessControl` element bevat `Rule` een of meer elementen. Er kan `AccessControl` meer dan één element worden gedefinieerd.|
-| Regel | Optioneel. Hiermee geeft u de actie op die moet worden uitgevoerd voor een bepaald subnetbereik van IP-adressen. De volgorde van de regel wordt gedefinieerd `order` door een tekenreekswaarde voor het kenmerk. Hoe lager het regelnummer, hoe hoger de prioriteit. Regels kunnen bijvoorbeeld worden opgegeven met ordernummers van 100, 200 en 300. De regel met het ordernummer van 100 heeft voorrang op de regel die een order van 200 heeft.<br /><br /> De actie voor de regel wordt gedefinieerd `action` door een tekenreeks voor het kenmerk. Mogelijke waarden zijn:<br /><br /> -   `permit`– Hiermee geeft u op dat alleen pakketten uit het opgegeven subnetbereik met het eindpunt kunnen communiceren.<br />-   `deny`– Hiermee geeft u op dat de toegang wordt geweigerd tot de eindpunten in het opgegeven subnetbereik.<br /><br /> Het subnetbereik van IP-adressen dat wordt beïnvloed door de `remoteSubnet` regel, wordt gedefinieerd door een tekenreeks voor het kenmerk. De beschrijving voor de regel wordt gedefinieerd `description` door een tekenreeks voor het kenmerk.|
-| EindpuntAcl | Optioneel. Hiermee geeft u de toewijzing van toegangscontroleregels op naar een eindpunt. De naam van de rol die het eindpunt bevat, `role` wordt gedefinieerd door een tekenreeks voor het kenmerk. De naam van het eindpunt wordt gedefinieerd `endpoint` door een tekenreeks voor het kenmerk. De naam van `AccessControl` de set regels die op het eindpunt moet worden `accessControl` toegepast, wordt gedefinieerd in een tekenreeks voor het kenmerk. Er kunnen `EndpointAcl` meer dan één elementen worden gedefinieerd.|
-| DnsServer | Optioneel. Hiermee geeft u de instellingen voor een DNS-server op. U instellingen opgeven voor DNS-servers zonder virtueel netwerk. De naam van de DNS-server wordt `name` gedefinieerd door een tekenreeks voor het kenmerk. Het IP-adres van de DNS-server wordt `IPAddress` gedefinieerd door een tekenreeks voor het kenmerk. Het IP-adres moet een geldig IPv4-adres zijn.|
-| VirtualNetworkSite VirtualNetworkSite | Optioneel. Hiermee geeft u de naam op van de site voor virtueel netwerk waarin u uw cloudservice wilt implementeren. Met deze instelling wordt geen virtuele netwerksite gemaakt. Het verwijst naar een site die eerder is gedefinieerd in het netwerkbestand voor uw virtuele netwerk. Een cloudservice kan alleen lid zijn van één virtueel netwerk. Als u deze instelling niet opgeeft, wordt de cloudservice niet geïmplementeerd in een virtueel netwerk. De naam van de virtuele netwerksite wordt `name` gedefinieerd door een tekenreeks voor het kenmerk.|
-| InstanceAdres | Optioneel. Hiermee geeft u de koppeling van een rol op met een subnet of een set subnetten in het virtuele netwerk. Wanneer u een rolnaam koppelt aan een instantieadres, u de subnetten opgeven waaraan deze rol moet worden gekoppeld. Het `InstanceAddress` bevat een subnets-element. De naam van de rol die is gekoppeld aan het subnet of `roleName` subnetten wordt gedefinieerd door een tekenreeks voor het kenmerk.|
-| Subnet | Optioneel. Hiermee geeft u het subnet op dat overeenkomt met de subnetnaam in het netwerkconfiguratiebestand. De naam van het subnet wordt gedefinieerd `name` door een tekenreeks voor het kenmerk.|
-| Gereserveerde IP | Optioneel. Hiermee geeft u het gereserveerde IP-adres op dat aan de implementatie moet worden gekoppeld. U moet Gereserveerd IP-adres maken gebruiken om het gereserveerde IP-adres te maken. Elke implementatie in een cloudservice kan worden gekoppeld aan één gereserveerd IP-adres. De naam van het gereserveerde IP-adres `name` wordt gedefinieerd door een tekenreeks voor het kenmerk.|
+| AccessControl | Optioneel. Hiermee geeft u de regels voor toegang tot eind punten in een Cloud service. De naam van het toegangs beheer wordt gedefinieerd door een `name` teken reeks voor het kenmerk. Het `AccessControl` element bevat een of meer `Rule` elementen. Er kan meer `AccessControl` dan één element worden gedefinieerd.|
+| Regel | Optioneel. Hiermee geeft u de actie op die moet worden uitgevoerd voor een opgegeven subnet-IP-adres bereik. De volg orde van de regel wordt gedefinieerd door een teken reeks waarde `order` voor het kenmerk. Hoe lager de regel, hoe hoger de prioriteit. U kunt bijvoorbeeld regels opgeven met order nummers van 100, 200 en 300. De regel met het order nummer 100 heeft voor rang op de regel met een bestelling van 200.<br /><br /> De actie voor de regel wordt gedefinieerd door een teken reeks voor `action` het kenmerk. Mogelijke waarden zijn:<br /><br /> -   `permit`-Geeft aan dat alleen pakketten van het opgegeven subnet-bereik kunnen communiceren met het eind punt.<br />-   `deny`-Geeft aan dat de toegang wordt geweigerd tot de eind punten in het opgegeven subnet-bereik.<br /><br /> Het subnetten van IP-adressen die worden beïnvloed door de regel, worden gedefinieerd door een teken `remoteSubnet` reeks voor het kenmerk. De beschrijving voor de regel wordt gedefinieerd door een teken reeks voor `description` het kenmerk.|
+| EndpointAcl | Optioneel. Hiermee geeft u de toewijzing van regels voor toegangs beheer aan een eind punt op. De naam van de rol die het eind punt bevat, wordt gedefinieerd door een teken `role` reeks voor het kenmerk. De naam van het eind punt wordt gedefinieerd door een teken reeks `endpoint` voor het kenmerk. De naam van de set `AccessControl` regels die op het eind punt moet worden toegepast, wordt gedefinieerd in een teken reeks `accessControl` voor het kenmerk. Er `EndpointAcl` kunnen meerdere elementen worden gedefinieerd.|
+| DnsServer | Optioneel. Hiermee geeft u de instellingen voor een DNS-server. U kunt instellingen opgeven voor DNS-servers zonder een Virtual Network. De naam van de DNS-server wordt gedefinieerd door een teken reeks `name` voor het kenmerk. Het IP-adres van de DNS-server wordt gedefinieerd door een teken `IPAddress` reeks voor het kenmerk. Het IP-adres moet een geldig IPv4-adres zijn.|
+| VirtualNetworkSite | Optioneel. Hiermee geeft u de naam op van de Virtual Network site waarin u uw Cloud service wilt implementeren. Met deze instelling wordt geen Virtual Network-site gemaakt. Er wordt verwezen naar een site die eerder in het netwerk bestand voor uw Virtual Network is gedefinieerd. Een Cloud service kan alleen lid zijn van een Virtual Network. Als u deze instelling niet opgeeft, wordt de Cloud service niet geïmplementeerd op een Virtual Network. De naam van de Virtual Network site wordt gedefinieerd door een teken reeks voor `name` het kenmerk.|
+| InstanceAddress | Optioneel. Hiermee geeft u de koppeling van een rol aan een subnet of een set subnetten in de Virtual Network. Wanneer u een rolnaam aan een exemplaar adres koppelt, kunt u de subnetten opgeven waaraan u deze rol wilt koppelen. Het `InstanceAddress` element bevat een subnets. De naam van de rol die aan het subnet of de subnetten is gekoppeld, wordt gedefinieerd door een teken `roleName` reeks voor het kenmerk.|
+| Subnet | Optioneel. Hiermee geeft u het subnet op dat overeenkomt met de naam van het subnet in het netwerk configuratie bestand. De naam van het subnet wordt gedefinieerd door een teken reeks voor `name` het kenmerk.|
+| ReservedIP | Optioneel. Hiermee geeft u het gereserveerde IP-adres op dat moet worden gekoppeld aan de implementatie. U moet Gereserveerd IP adres maken gebruiken om het gereserveerde IP-adres te maken. Elke implementatie in een Cloud service kan worden gekoppeld aan één gereserveerd IP-adres. De naam van het gereserveerde IP-adres wordt gedefinieerd door een teken `name` reeks voor het kenmerk.|
 
 ## <a name="see-also"></a>Zie ook
-[Cloud Service (klassiek) configuratieschema](schema-cscfg-file.md)
+[Configuratie schema van Cloud service (klassiek)](schema-cscfg-file.md)

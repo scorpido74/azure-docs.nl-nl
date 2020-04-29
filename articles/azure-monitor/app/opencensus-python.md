@@ -1,76 +1,76 @@
 ---
-title: Python-toepassingen controleren met Azure Monitor (voorbeeld) | Microsoft Documenten
-description: Geeft instructies om OpenCensus Python te verbinden met Azure Monitor
+title: Python-toepassingen bewaken met Azure Monitor (preview) | Microsoft Docs
+description: Biedt instructies om opentellingen python te bekabelen met Azure Monitor
 ms.topic: conceptual
 author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537105"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw Python-toepassing
+# <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
-Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en logboekregistratie van Python-toepassingen door integratie met [OpenCensus.](https://opencensus.io) In dit artikel wordt u door het proces van het instellen van OpenCensus voor Python en het verzenden van uw bewakingsgegevens naar Azure Monitor meegestouw.
+Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en logboek registratie van python-toepassingen via integratie met [Opentellingen](https://opencensus.io). Dit artikel begeleidt u stapsgewijs door het proces voor het instellen van opentellingen voor python en het verzenden van uw bewakings gegevens naar Azure Monitor.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-- Python installatie. Dit artikel maakt gebruik van [Python 3.7.0,](https://www.python.org/downloads/)hoewel eerdere versies waarschijnlijk zullen werken met kleine wijzigingen.
+- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+- Installatie van python. In dit artikel wordt [python 3.7.0](https://www.python.org/downloads/)gebruikt, hoewel eerdere versies waarschijnlijk met kleine wijzigingen werken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Een Application Insights-bron maken in Azure Monitor
+## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Een Application Insights resource in Azure Monitor maken
 
-Eerst moet u een Application Insights-bron maken in Azure Monitor, waarmee een instrumentatiesleutel (ikey) wordt gegenereerd. De ikey wordt vervolgens gebruikt om de OpenCensus SDK te configureren om telemetriegegevens naar Azure Monitor te verzenden.
+Eerst moet u een Application Insights-resource in Azure Monitor maken, waarmee een instrumentatie sleutel (Ikey) wordt gegenereerd. De iKey wordt vervolgens gebruikt voor het configureren van de opentellings-SDK voor het verzenden van telemetriegegevens naar Azure Monitor.
 
-1. Selecteer De**toepassingsinzichten van hulpprogramma's** >  **voor resourceontwikkelaars** > **maken**.
+1. Selecteer **een resource** > **maken hulp programma** > voor ontwikkel aars**Application Insights**.
 
-   ![Een Application Insights-bron toevoegen](./media/opencensus-python/0001-create-resource.png)
+   ![Een Application Insights resource toevoegen](./media/opencensus-python/0001-create-resource.png)
 
-1. Er verschijnt een configuratievak. Gebruik de volgende tabel om de invoervelden in te vullen.
+1. Er wordt een configuratie venster weer gegeven. Gebruik de volgende tabel om de invoer velden in te vullen.
 
    | Instelling        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Naam**      | Wereldwijd unieke waarde | Naam die de app identificeert die u controleert |
-   | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resourcegroep om Application Insights-gegevens te hosten |
-   | **Locatie** | VS - oost | Een locatie bij u in de buurt of in de buurt van waar uw app wordt gehost |
+   | **Naam**      | Wereld wijd unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken |
+   | **Resource groep**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
+   | **Locatie** | VS - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
 
 1. Selecteer **Maken**.
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrument met OpenCensus Python SDK voor Azure Monitor
+## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrument met opentellingen python SDK voor Azure Monitor
 
-Installeer de Exporteurs van de OpenCensus Azure Monitor:
+Installeer de Azure Monitor Exporters van opentellingen:
 
 ```console
 python -m pip install opencensus-ext-azure
 ```
 
-Zie [OpenCensus-pakketten voor](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)een volledige lijst met pakketten en integraties.
+Zie [pakket met Opentellingen](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)voor een volledige lijst met pakketten en integraties.
 
 > [!NOTE]
-> De `python -m pip install opencensus-ext-azure` opdracht gaat ervan `PATH` uit dat u een omgevingsvariabele hebt ingesteld voor uw Python-installatie. Als u deze variabele niet hebt geconfigureerd, moet u het volledige mappad geven waar uw Python uitvoerbaar is. Het resultaat is een `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`commando als volgt: .
+> De `python -m pip install opencensus-ext-azure` opdracht gaat ervan uit dat u een `PATH` omgevings variabele hebt ingesteld voor uw python-installatie. Als u deze variabele niet hebt geconfigureerd, moet u het volledige mappad opgeven waar uw python-uitvoerbaar bestand zich bevindt. Het resultaat is een opdracht die er als `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`volgt uitziet:.
 
-De SDK gebruikt drie Azure Monitor-exporteurs om verschillende soorten telemetrie naar Azure Monitor te verzenden: traceering, metrische gegevens en logboeken. Zie het overzicht van het [dataplatform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)voor meer informatie over deze telemetrietypen. Gebruik de volgende instructies om deze telemetrietypes via de drie exporteurs te verzenden.
+De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillende soorten telemetrie naar Azure Monitor: tracering, metrische gegevens en Logboeken. Zie [het overzicht van het gegevens platform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)voor meer informatie over deze typen telemetrie. Gebruik de volgende instructies om deze typen telemetrie via de drie Exporters te verzenden.
 
-## <a name="telemetry-type-mappings"></a>Toewijzingen van telemetrietypen
+## <a name="telemetry-type-mappings"></a>Toewijzingen van het type telemetrie
 
-Hier volgen de exporteurs die OpenCensus biedt, toegewezen aan de typen telemetrie die u in Azure Monitor ziet.
+Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen telemetrie die u ziet in Azure Monitor.
 
-![Schermafbeelding van toewijzing van telemetrietypen van OpenCensus naar Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
+![Scherm opname van de toewijzing van telemetrie-typen van opentelling naar Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
 
 ### <a name="trace"></a>Tracering
 
 > [!NOTE]
-> `Trace`in OpenCensus verwijst naar [distributed tracing](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). De `AzureExporter` `requests` verzendingen en `dependency` telemetrie naar Azure Monitor.
+> `Trace`in opentelling verwijst naar [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). De `AzureExporter` verzonden `requests` en `dependency` telemetrie naar Azure monitor.
 
-1. Laten we eerst lokaal wat traceergegevens genereren. Voer in Python IDLE of uw editor naar keuze de volgende code in.
+1. Eerst gaan we een aantal tracerings gegevens lokaal genereren. Voer de volgende code in python niet-actief of uw editor van keuze in.
 
     ```python
     from opencensus.trace.samplers import ProbabilitySampler
@@ -91,7 +91,7 @@ Hier volgen de exporteurs die OpenCensus biedt, toegewezen aan de typen telemetr
         main()
     ```
 
-2. Als u de code uitvoert, wordt u herhaaldelijk gevraagd een waarde in te voeren. Bij elk item wordt de waarde afgedrukt op de shell en genereert de `SpanData`OpenCensus Python Module een overeenkomstig stuk . Het OpenCensus-project definieert een [spoor als een reeks overspanningen.](https://opencensus.io/core-concepts/tracing/)
+2. Als u de code uitvoert, wordt u herhaaldelijk gevraagd om een waarde in te voeren. Bij elke vermelding wordt de waarde afgedrukt op de shell en wordt door de module opentellingen python een bijbehorend onderdeel gegenereerd `SpanData`. Het project opentelling definieert een [tracering als een boom structuur van reeksen](https://opencensus.io/core-concepts/tracing/).
     
     ```
     Enter a value: 4
@@ -105,7 +105,7 @@ Hier volgen de exporteurs die OpenCensus biedt, toegewezen aan de typen telemetr
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Hoewel het invoeren van waarden nuttig is voor `SpanData` demonstratiedoeleinden, willen we uiteindelijk de naar Azure Monitor uitzenden. Geef uw verbindingstekenreeks rechtstreeks door aan de exporteur, `APPLICATIONINSIGHTS_CONNECTION_STRING`of u deze opgeven in een omgevingsvariabele. Wijzig uw code uit de vorige stap op basis van het volgende codevoorbeeld:
+3. Hoewel het invoeren van waarden nuttig is voor demonstratie doeleinden, willen we uiteindelijk de `SpanData` Azure monitor verzenden. Geef uw connection string rechtstreeks door aan de exporteur of u kunt dit opgeven in een omgevings variabele `APPLICATIONINSIGHTS_CONNECTION_STRING`. Wijzig uw code uit de vorige stap op basis van het volgende code voorbeeld:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -132,24 +132,24 @@ Hier volgen de exporteurs die OpenCensus biedt, toegewezen aan de typen telemetr
         main()
     ```
 
-4. Wanneer u nu het Python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De `SpanData` gemaakte wordt verzonden naar Azure Monitor. U vindt de uitgestraalde `dependencies`spangegevens onder . Zie [Afhankelijkheden](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)van OpenCensus Python voor meer informatie over uitgaande aanvragen.
-Zie OpenCensus [Python-aanvragen](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)voor meer informatie over binnenkomende aanvragen.
+4. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. Het gemaakte `SpanData` wordt verzonden naar Azure monitor. U vindt de verzonden gegevens over het bereik onder `dependencies`. Zie voor meer informatie over uitgaande aanvragen opentellingen python- [afhankelijkheden](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
+Zie voor meer informatie over inkomende aanvragen opentellingen python- [aanvragen](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
 
 #### <a name="sampling"></a>Steekproeven
 
-Voor informatie over de bemonstering in OpenCensus, neem een kijkje op [bemonstering in OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
 
 #### <a name="trace-correlation"></a>Correlatie traceren
 
-Voor meer informatie over telemetrie correlatie in uw trace gegevens, neem een kijkje op OpenCensus Python [telemetrie correlatie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python).
+Voor meer informatie over de correlatie van de telemetrie in uw traceer gegevens, Bekijk dan de relatie met de python- [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)van opentellingen.
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
-Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden.
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
 
 ### <a name="metrics"></a>Metrische gegevens
 
-1. Laten we eerst lokale metrische gegevens genereren. We maken een eenvoudige statistiek om bij te houden hoe vaak de gebruiker op Enter drukt.
+1. Eerst gaan we een aantal lokale metrische gegevens genereren. We maken een eenvoudige metriek om het aantal keren dat de gebruiker op ENTER drukt, te volgen.
 
     ```python
     from datetime import datetime
@@ -189,7 +189,7 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
     if __name__ == "__main__":
         main()
     ```
-2. Als u de code uitvoert, wordt u herhaaldelijk gevraagd op Enter te drukken. Er wordt een statistiek gemaakt om bij te houden hoe vaak Enter wordt ingedrukt. Bij elk item wordt de waarde verhoogd en wordt de metrische informatie weergegeven in de console. De informatie bevat de huidige waarde en de huidige tijdstempel wanneer de statistiek werd bijgewerkt.
+2. Als u de code uitvoert, wordt u herhaaldelijk gevraagd om op ENTER te drukken. Er wordt een metriek gemaakt om het aantal keren dat de invoer wordt ingedrukt, bij te houden. Bij elke vermelding wordt de waarde verhoogd en wordt de metrische informatie weer gegeven in de-console. De informatie bevat de huidige waarde en het huidige tijds tempel waarop de metriek is bijgewerkt.
 
     ```
     Press enter.
@@ -200,7 +200,7 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Hoewel het invoeren van waarden nuttig is voor demonstratiedoeleinden, willen we de metrische gegevens uiteindelijk uitzenden naar Azure Monitor. Geef uw verbindingstekenreeks rechtstreeks door aan de exporteur, `APPLICATIONINSIGHTS_CONNECTION_STRING`of u deze opgeven in een omgevingsvariabele. Wijzig uw code uit de vorige stap op basis van het volgende codevoorbeeld:
+3. Hoewel het invoeren van waarden nuttig is voor demonstratie doeleinden, willen we uiteindelijk de metrische gegevens naar Azure Monitor verzenden. Geef uw connection string rechtstreeks door aan de exporteur of u kunt dit opgeven in een omgevings variabele `APPLICATIONINSIGHTS_CONNECTION_STRING`. Wijzig uw code uit de vorige stap op basis van het volgende code voorbeeld:
 
     ```python
     from datetime import datetime
@@ -248,11 +248,11 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
         main()
     ```
 
-4. De exporteur stuurt metrische gegevens naar Azure Monitor met een vast interval. De standaardinstelling is elke 15 seconden. We volgen één statistiek, dus deze metrische gegevens, met welke waarde en tijdstempel het ook bevat, worden elk interval verzonden. U de `customMetrics`gegevens vinden onder.
+4. De export functie verzendt metrische gegevens naar Azure Monitor met een vast interval. De standaard waarde is elke 15 seconden. Er wordt één metrische waarde bijgehouden, dus deze metrische gegevens, met een wille keurige vermeldings-en tijds tempel, worden elk interval verzonden. U kunt de gegevens vinden onder `customMetrics`.
 
-#### <a name="standard-metrics"></a>Standaardstatistieken
+#### <a name="standard-metrics"></a>Standaard metrische gegevens
 
-Standaard stuurt de metrische exporteur een reeks standaardstatistieken naar Azure Monitor. U dit uitschakelen `enable_standard_metrics` door `False` de vlag in te stellen in de constructeur van de metrische exporteur.
+Standaard wordt door de export functie voor metrische gegevens een aantal standaard metrische gegevens naar Azure Monitor verzonden. U kunt dit uitschakelen door de `enable_standard_metrics` vlag in te `False` stellen op de constructor van de metrische gegevens Exporter.
 
     ```python
     ...
@@ -261,25 +261,25 @@ Standaard stuurt de metrische exporteur een reeks standaardstatistieken naar Azu
       connection_string='InstrumentationKey=<your-instrumentation-key-here>')
     ...
     ```
-Hieronder vindt u een lijst met standaardstatistieken die momenteel worden verzonden:
+Hieronder ziet u een lijst met standaard metrische gegevens die momenteel worden verzonden:
 
 - Beschikbaar geheugen (bytes)
-- CPU-processortijd (percentage)
-- Inkomende aanvraagsnelheid (per seconde)
-- Gemiddelde uitvoeringstijd voor binnenkomende aanvraag (milliseconden)
-- Percentage uitgaande aanvragen (per seconde)
+- Processor tijd CPU (percentage)
+- Binnenkomende aanvraag frequentie (per seconde)
+- Gemiddelde uitvoerings tijd inkomende aanvragen (milliseconden)
+- Uitgaande aanvraag frequentie (per seconde)
 - CPU-gebruik verwerken (percentage)
-- Privébytes verwerken (bytes)
+- Privé bytes verwerken (bytes)
 
-U moet deze statistieken kunnen `performanceCounters`zien in . Het inkomende aanvraagtarief `customMetrics`zou onder . Zie [prestatiemeteritems voor](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)meer informatie .
+U kunt deze metrische gegevens weer geven in `performanceCounters`. De frequentie van binnenkomende aanvragen is `customMetrics`onder. Zie [prestatie meter items](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)voor meer informatie.
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
-Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden.
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
 
 ### <a name="logs"></a>Logboeken
 
-1. Laten we eerst wat lokale loggegevens genereren.
+1. Eerst gaan we een aantal lokale logboek gegevens genereren.
 
     ```python
     import logging
@@ -298,7 +298,7 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
         main()
     ```
 
-2.  De code zal voortdurend vragen om een waarde in te voert. Voor elke ingevoerde waarde wordt een logboekvermelding uitgezonden.
+2.  De code vraagt voortdurend naar een waarde die moet worden ingevoerd. Voor elke ingevoerde waarde wordt een logboek vermelding verzonden.
 
     ```
     Enter a value: 24
@@ -311,7 +311,7 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
     90
     ```
 
-3. Hoewel het invoeren van waarden nuttig is voor demonstratiedoeleinden, willen we de loggegevens uiteindelijk uitzenden naar Azure Monitor. Geef uw verbindingstekenreeks rechtstreeks door aan de exporteur, `APPLICATIONINSIGHTS_CONNECTION_STRING`of u deze opgeven in een omgevingsvariabele. Wijzig uw code uit de vorige stap op basis van het volgende codevoorbeeld:
+3. Hoewel het invoeren van waarden nuttig is voor demonstratie doeleinden, willen we uiteindelijk de logboek gegevens naar Azure Monitor verzenden. Geef uw connection string rechtstreeks door aan de exporteur of u kunt dit opgeven in een omgevings variabele `APPLICATIONINSIGHTS_CONNECTION_STRING`. Wijzig uw code uit de vorige stap op basis van het volgende code voorbeeld:
 
     ```python
     import logging
@@ -336,12 +336,12 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
         main()
     ```
 
-4. De exporteur stuurt loggegevens naar Azure Monitor. U de `traces`gegevens vinden onder. 
+4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens vinden onder `traces`. 
 
 > [!NOTE]
-> `traces`in deze context is `Tracing`niet hetzelfde als . `traces`verwijst naar het type telemetrie dat u in `AzureLogHandler`Azure Monitor ziet wanneer u de . `Tracing`verwijst naar een concept in OpenCensus en heeft betrekking op [distributed tracing](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+> `traces`in deze context is niet hetzelfde als `Tracing`. `traces`verwijst naar het type telemetrie dat u in Azure Monitor kunt zien wanneer u de `AzureLogHandler`gebruikt. `Tracing`verwijst naar een concept in opentellingen en is gekoppeld aan [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
-5. Als u uw logboekberichten wilt `formatters` opmaken, u deze gebruiken in de ingebouwde Python-logboekregistratie-API. [logging API](https://docs.python.org/3/library/logging.html#formatter-objects)
+5. Als u uw logboek berichten wilt Format teren `formatters` , kunt u gebruiken in de ingebouwde python- [logboek registratie-API](https://docs.python.org/3/library/logging.html#formatter-objects).
 
     ```python
     import logging
@@ -370,9 +370,9 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
         main()
     ```
 
-6. U ook aangepaste eigenschappen toevoegen aan uw logboekberichten in het argument *extra* trefwoord met behulp van het veld custom_dimensions. Deze worden weergegeven als sleutelwaardeparen in `customDimensions` Azure Monitor.
+6. U kunt ook aangepaste eigenschappen toevoegen aan uw logboek berichten in het argument *extra* tref woord met behulp van het veld custom_dimensions. Deze worden weer gegeven als sleutel-waardeparen in `customDimensions` in azure monitor.
 > [!NOTE]
-> Als u deze functie wilt gebruiken, moet u een woordenboek doorgeven aan het veld custom_dimensions. Als u argumenten van een ander type doorgeeft, zal de logger ze negeren.
+> Als u deze functie wilt gebruiken, moet u een woorden lijst door geven aan het veld custom_dimensions. Als u argumenten van elk ander type doorgeeft, worden deze door de logboeken genegeerd.
 
     ```python
     import logging
@@ -391,9 +391,9 @@ Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/az
     logger.warning('action', extra=properties)
     ```
 
-#### <a name="sending-exceptions"></a>Uitzonderingen verzenden
+#### <a name="sending-exceptions"></a>Uitzonde ringen verzenden
 
-OpenCensus Python volgt en verzendt `exception` telemetrie niet automatisch. Ze worden verzonden via de `AzureLogHandler` door middel van uitzonderingen via de Python logging bibliotheek. U aangepaste eigenschappen toevoegen, net als bij normale logboekregistratie.
+Met opentellingen python worden telemetrie `exception` niet automatisch bijgehouden en verzonden. Ze worden via de `AzureLogHandler` logboek bibliotheek van python verzonden met behulp van uitzonde ringen. U kunt aangepaste eigenschappen toevoegen, net als bij normale logboek registratie.
 
     ```python
     import logging
@@ -414,51 +414,51 @@ OpenCensus Python volgt en verzendt `exception` telemetrie niet automatisch. Ze 
     except Exception:
         logger.exception('Captured an exception.', extra=properties)
     ```
-Aangezien u uitzonderingen expliciet moet registreren, is het aan de gebruiker om onverwerkte uitzonderingen te registreren. OpenCensus stelt geen beperkingen op in hoe een gebruiker dit wil doen, zolang deze expliciet een uitzonderingstelemetrie registreert.
+Aangezien u uitzonde ringen expliciet moet vastleggen, is het aan de gebruiker te weten hoe ze niet-verwerkte uitzonde ringen willen vastleggen. Opentelling heeft geen beperkingen voor de manier waarop een gebruiker dit wil doen, zolang een telemetrie van een uitzonde ring expliciet wordt vastgelegd.
 
 #### <a name="sampling"></a>Steekproeven
 
-Voor informatie over de bemonstering in OpenCensus, neem een kijkje op [bemonstering in OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
 
 #### <a name="log-correlation"></a>Logboekcorrelatie
 
-Zie OpenCensus Python [logs integration](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)voor meer informatie over het verrijken van uw logboeken met traceringscontextgegevens.
+Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
-Zie OpenCensus [Python-telemetrieprocessors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze naar Azure Monitor wordt verzonden.
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
 
-## <a name="view-your-data-with-queries"></a>Uw gegevens weergeven met query's
+## <a name="view-your-data-with-queries"></a>Uw gegevens weer geven met query's
 
-U de telemetriegegevens die vanuit uw toepassing zijn verzonden, bekijken via het tabblad **Logboeken (Analytics).**
+U kunt de telemetriegegevens weer geven die vanuit uw toepassing zijn verzonden via het tabblad **Logboeken (analyse)** .
 
-![Schermafbeelding van het overzichtsvenster met 'Logboeken (Analytics)' geselecteerd in een rood vak](./media/opencensus-python/0010-logs-query.png)
+![Scherm opname van het deel venster overzicht met de melding ' logboeken (analyse) ' geselecteerd in een rood vak](./media/opencensus-python/0010-logs-query.png)
 
-In de lijst onder **Actief**:
+In de lijst onder **actief**:
 
-- Voor telemetrie die wordt verzonden met de `requests`Azure Monitor trace-exporteur, worden binnenkomende aanvragen weergegeven onder . Uitgaande of in-process `dependencies`aanvragen worden weergegeven onder .
-- Voor telemetrie die wordt verzonden met `customMetrics`de Azure Monitor-statistiekenexporteur, worden verzonden statistieken weergegeven onder .
-- Voor telemetrie die wordt verzonden met `traces`de Azure Monitor-logboekenexporteur, worden logboeken weergegeven onder . Uitzonderingen worden `exceptions`weergegeven onder .
+- Voor telemetrie die wordt verzonden met de Azure Monitor Trace-export functie worden `requests`binnenkomende aanvragen weer gegeven onder. Uitgaand of in behandeling zijnde `dependencies`aanvragen worden weer gegeven onder.
+- Voor telemetrie die met de export functie voor metrische gegevens van Azure Monitor worden verzonden, `customMetrics`worden verzonden metrische gegevens weer gegeven onder.
+- Voor telemetrie die wordt verzonden met de export functie van de Azure Monitor `traces`logboeken, worden logboeken weer gegeven onder. Uitzonde ringen `exceptions`worden weer gegeven onder.
 
-Zie [Logboeken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)voor meer gedetailleerde informatie over het gebruik van query's en logboeken.
+Zie [Logboeken in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)voor meer gedetailleerde informatie over het gebruik van query's en Logboeken.
 
-## <a name="learn-more-about-opencensus-for-python"></a>Meer informatie over OpenCensus voor Python
+## <a name="learn-more-about-opencensus-for-python"></a>Meer informatie over opentellingen voor python
 
-* [OpenCensus Python op GitHub](https://github.com/census-instrumentation/opencensus-python)
+* [Opentellingen python op GitHub](https://github.com/census-instrumentation/opencensus-python)
 * [Aanpassing](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
 * [Azure Monitor-exporteurs op GitHub](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
-* [OpenCensus-integraties](https://github.com/census-instrumentation/opencensus-python#extensions)
-* [Voorbeeldtoepassingen voor Azure-monitor](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
+* [Integratie van opentellingen](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Voorbeeld toepassingen Azure Monitor](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Binnenkomende aanvragen bijhouden](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [Out-going verzoeken bijhouden](./../../azure-monitor/app/opencensus-python-request.md)
-* [Toepassingskaart](./../../azure-monitor/app/app-map.md)
-* [End-to-end prestatiebewaking](./../../azure-monitor/learn/tutorial-performance.md)
+* [Lopende aanvragen bijhouden](./../../azure-monitor/app/opencensus-python-request.md)
+* [Toepassings overzicht](./../../azure-monitor/app/app-map.md)
+* [End-to-end prestatie bewaking](./../../azure-monitor/learn/tutorial-performance.md)
 
 ### <a name="alerts"></a>Waarschuwingen
 
 * [Beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md): maak tests om ervoor te zorgen dat uw site zichtbaar is op internet.
 * [Slimme diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
-* [Metrische waarschuwingen:](../../azure-monitor/app/alerts.md)stel waarschuwingen in om u te waarschuwen als een statistiek een drempelwaarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
+* [Metrische waarschuwingen](../../azure-monitor/app/alerts.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.

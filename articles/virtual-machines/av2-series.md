@@ -1,6 +1,6 @@
 ---
-title: Av2-serie - Azure Virtual Machines
-description: Specificaties voor de Av2-serie VM's.
+title: Av2-serie-Azure Virtual Machines
+description: Specificaties voor de virtuele machines uit de Av2-serie.
 services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
@@ -8,39 +8,39 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: fe27a1cc78d1f37d535f364c03803a5196090a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163944"
 ---
 # <a name="av2-series"></a>Av2-serie
 
-De VM's uit de Av2-serie kunnen worden geïmplementeerd op verschillende hardwaretypen en -processors. Vm's uit de AV2-serie hebben CPU-prestaties en geheugenconfiguraties die het meest geschikt zijn voor instapworkloads zoals ontwikkeling en test. De grootte wordt beperkt om consistente processorprestaties te bieden voor de lopende instantie, ongeacht de hardware waarop deze wordt geïmplementeerd. Om de fysieke hardware te bepalen waarop deze grootte is geïmplementeerd, vraagt u vanuit de virtuele machine gegevens over de virtuele hardware op. Enkele voorbeeldusecases zijn ontwikkelings- en testservers, webservers met weinig verkeer, kleine tot middelgrote databases, proof-of-concepts en coderepositories.
+De virtuele machines uit de Av2-serie kunnen worden geïmplementeerd op diverse typen hardware en processors. Vm's uit de Av2-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte wordt beperkt om consistente processor prestaties te bieden voor het actieve exemplaar, ongeacht de hardware waarop het wordt geïmplementeerd. Om de fysieke hardware te bepalen waarop deze grootte is geïmplementeerd, vraagt u vanuit de virtuele machine gegevens over de virtuele hardware op. Enkele voor beelden van use-cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine tot middel grote data bases, controle van concepten en code opslagplaatsen.
 
 ACU: 100
 
-Premium opslag: niet ondersteund
+Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
 
-Live migratie: ondersteund
+Livemigratie: ondersteund
 
-Updates voor geheugenbehoud: ondersteund
+Updates voor geheugen behoud: ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale temp opslagdoorvoer: IOPS/Read MBps/Write MBps | Maximale gegevensschijven/doorvoer: IOPS | Max NIC's/Verwachte netwerkbandbreedte (Mbps) |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Maximum aantal gegevens schijven/door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_A1_v2  | 1 | 2  | 10 | 1000/20/10  | 2/2x500   | 2/250  |
-| Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4/4x500   | 2/500  |
-| Standard_A4_v2  | 4 | 8  | 40 | 4000/80/40  | 8/8x500   | 4/1000 |
-| Standard_A8_v2  | 8 | 16 | 80 | 8000/160/80 | 16/16x500 | 8/2000 |
-| Standard_A2m_v2 | 2 | 16 | 20 | 2000/40/20  | 4/4x500   | 2/500  |
-| Standard_A4m_v2 | 4 | 32 | 40 | 4000/80/40  | 8/8x500   | 4/1000 |
-| Standard_A8m_v2 | 8 | 64 | 80 | 8000/160/80 | 16/16x500 | 8/2000 |
+| Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4-4x500   | 2/500  |
+| Standard_A4_v2  | 4 | 8  | 40 | 4000/80/40  | 8-8x500   | 4/1000 |
+| Standard_A8_v2  | 8 | 16 | 80 | 8000/160/80 | 16-16x500 | 8/2000 |
+| Standard_A2m_v2 | 2 | 16 | 20 | 2000/40/20  | 4-4x500   | 2/500  |
+| Standard_A4m_v2 | 4 | 32 | 40 | 4000/80/40  | 8-8x500   | 4/1000 |
+| Standard_A8m_v2 | 8 | 64 | 80 | 8000/160/80 | 16-16x500 | 8/2000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -51,4 +51,4 @@ Updates voor geheugenbehoud: ondersteund
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

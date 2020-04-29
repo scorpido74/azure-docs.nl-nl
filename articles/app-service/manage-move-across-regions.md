@@ -1,54 +1,54 @@
 ---
 title: Een app verplaatsen naar een andere regio
-description: Meer informatie over het verplaatsen van app-servicebronnen van de ene regio naar de andere.
+description: Meer informatie over het verplaatsen van App Service resources van de ene regio naar een andere.
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77925707"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>Een App-service-app verplaatsen naar een andere regio
+# <a name="move-an-app-service-app-to-another-region"></a>Een App Service-app naar een andere regio verplaatsen
 
-In dit artikel wordt beschreven hoe u app-servicebronnen verplaatst naar een andere Azure-regio. U uw resources om een aantal redenen naar een andere regio verplaatsen. Bijvoorbeeld om te profiteren van een nieuwe Azure-regio, om functies of services te implementeren die alleen beschikbaar zijn in specifieke regio's, om te voldoen aan interne beleids- en governancevereisten of om te voldoen aan de vereisten voor capaciteitsplanning.
+In dit artikel wordt beschreven hoe u App Service-resources verplaatst naar een andere Azure-regio. U kunt uw resources om een aantal redenen verplaatsen naar een andere regio. Om bijvoorbeeld te profiteren van een nieuwe Azure-regio, voor het implementeren van functies of services die alleen beschikbaar zijn in specifieke regio's, om te voldoen aan de interne beleids-en beheer vereisten, of als reactie op vereisten voor capaciteits planning.
 
-App Service-bronnen zijn regiospecifiek en kunnen niet worden verplaatst naar verschillende regio's. U moet een kopie maken van uw bestaande App-servicebronnen in het doelgebied en uw inhoud verplaatsen naar de nieuwe app. Als uw bron-app een aangepast domein gebruikt, u [deze migreren naar de nieuwe app in het doelgebied](manage-custom-dns-migrate-domain.md) wanneer u klaar bent.
+App Service resources zijn regio-specifiek en kunnen niet worden verplaatst naar andere regio's. U moet een kopie van uw bestaande App Service-resources maken in de doel regio. Verplaats de inhoud naar de nieuwe app. Als uw bron-app gebruikmaakt van een aangepast domein, kunt u [deze migreren naar de nieuwe app in de doel regio](manage-custom-dns-migrate-domain.md) wanneer u klaar bent.
 
-Om het kopiëren van uw app gemakkelijker te maken, u [een afzonderlijke App Service-app klonen](app-service-web-app-cloning.md) in een App Service-abonnement in een andere regio, maar het heeft wel [beperkingen](app-service-web-app-cloning.md#current-restrictions), vooral dat het geen Linux-apps ondersteunt.
+Om het kopiëren van uw app gemakkelijker te maken, kunt u [een afzonderlijke app service-app klonen](app-service-web-app-cloning.md) in een app service plan in een andere regio, maar dit heeft wel [beperkingen](app-service-web-app-cloning.md#current-restrictions), met name dat het geen ondersteuning biedt voor Linux-apps.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat de App Service-app zich in het Azure-gebied bevindt van waaruit u wilt verplaatsen.
-- Zorg ervoor dat de doelregio app-service en elke gerelateerde service ondersteunt, waarvan u de resources wilt verplaatsen.
+- Zorg ervoor dat de App Service-app zich in de Azure-regio bevindt waaruit u wilt verplaatsen.
+- Zorg ervoor dat de doel regio App Service en een gerelateerde service ondersteunt waarvan u de resources wilt verplaatsen.
 <!-- - Domain bindings, certificates, and managed identities can't replicated using the **Export template** method. You must create them manually. -->
 
 ## <a name="prepare"></a>Voorbereiden
 
-Identificeer alle App Service-bronnen die u momenteel gebruikt. Bijvoorbeeld:
+Identificeer alle App Service resources die u momenteel gebruikt. Bijvoorbeeld:
 
 - App Service-apps
 - [App Service-abonnementen](overview-hosting-plans.md)
-- [Implementatiesleuven](deploy-staging-slots.md)
-- [Aangepaste domeinen die zijn aangeschaft in Azure](manage-custom-dns-buy-domain.md)
+- [Implementatiesites](deploy-staging-slots.md)
+- [Aangepaste domeinen die zijn gekocht in azure](manage-custom-dns-buy-domain.md)
 - [SSL-certificaten](configure-ssl-certificate.md)
-- [Azure Virtual Network-integratie](web-sites-integrate-with-vnet.md)
+- [Integratie van Azure Virtual Network](web-sites-integrate-with-vnet.md)
 - [Hybride verbindingen](app-service-hybrid-connections.md).
 - [Beheerde identiteiten](overview-managed-identity.md)
 - [Back-upinstellingen](manage-backup.md)
 
-Bepaalde bronnen, zoals geïmporteerde certificaten of hybride verbindingen, bevatten integratie met andere Azure-services. Zie de documentatie voor de betreffende services voor informatie over het verplaatsen van deze bronnen door regio's.
+Bepaalde resources, zoals geïmporteerde certificaten of hybride verbindingen, bevatten integratie met andere Azure-Services. Zie de documentatie voor de desbetreffende services voor informatie over het verplaatsen van deze resources over regio's.
 
 ## <a name="move"></a>Verplaatsen
 
 1. [Maak een back-up van de bron-app](manage-backup.md).
-1. [Maak een app in een nieuw App Service-abonnement in het doelgebied.](app-service-plan-manage.md#create-an-app-service-plan)
+1. [Maak een app in een nieuw app service plan in de doel regio](app-service-plan-manage.md#create-an-app-service-plan).
 2. [De back-up herstellen in de doel-app](web-sites-restore.md)
-2. Als u een aangepast domein gebruikt, [bindt u het preventief aan de doel-app](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively) met `awverify.` en schakelt u het domein in de [doel-app in.](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app)
-3. Configureer al het andere in uw doel-app als hetzelfde als de bron-app en controleer uw configuratie.
-4. Wanneer u klaar bent om het aangepaste domein naar de doel-app te wijzen, [brengt u de domeinnaam opnieuw in kaart.](manage-custom-dns-migrate-domain.md#remap-the-active-dns-name)
+2. Als u een aangepast domein gebruikt, [bindt u het preventief met de doel-app](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively) met `awverify.` en [schakelt u het domein in de doel-app in](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app).
+3. Configureer de rest van de doel-app zodat deze hetzelfde is als de bron-app en controleer uw configuratie.
+4. Wanneer u klaar bent voor het aangepaste domein om te verwijzen naar de doel-app, moet u [de domein naam opnieuw toewijzen](manage-custom-dns-migrate-domain.md#remap-the-active-dns-name).
 
 <!-- 1. Login to the [Azure portal](https://portal.azure.com) > **Resource Groups**.
 2. Locate the Resource Group that contains the source App Service resources and click on it.
@@ -102,10 +102,10 @@ Bepaalde bronnen, zoals geïmporteerde certificaten of hybride verbindingen, bev
 8. Click **BASICS** > **Create new** to create a new resource group. Type the group name and click **OK**.
 9. In **BASICS** > **Location**, select the region you want.   -->
 
-## <a name="clean-up-source-resources"></a>Bronbronnen opschonen
+## <a name="clean-up-source-resources"></a>Bron resources opschonen
 
-Verwijder het bron-app- en App-serviceplan. [Een App Service-abonnement in de niet-vrije laag brengt kosten met zich mee, zelfs als er geen app in wordt uitgevoerd.](app-service-plan-manage.md#delete-an-app-service-plan)
+Verwijder de bron-app en het App Service plan. [Een App Service plan in de niet-gratis laag brengt kosten in rekening, zelfs als er geen app in wordt uitgevoerd.](app-service-plan-manage.md#delete-an-app-service-plan)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure App Service App klonen met PowerShell](app-service-web-app-cloning.md)
+[App-klonen Azure App Service met behulp van Power shell](app-service-web-app-cloning.md)

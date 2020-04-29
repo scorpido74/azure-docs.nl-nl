@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: ExpressRoute Direct configureren: CLI'
-description: Met dit artikel u ExpressRoute Direct configureren met behulp van de Azure CLI
+title: 'Azure ExpressRoute: ExpressRoute direct configureren: CLI'
+description: Dit artikel helpt u bij het configureren van ExpressRoute direct met behulp van de Azure CLI
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481973"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute Direct configureren met behulp van de Azure CLI
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute direct configureren met behulp van de Azure CLI
 
-U Azure ExpressRoute Direct gebruiken om rechtstreeks verbinding te maken met het wereldwijde Microsoft-netwerk op peeringlocaties die strategisch over de hele wereld zijn verspreid. Zie [Over ExpressRoute Direct Connect](expressroute-erdirect-about.md)voor meer informatie.
+U kunt Azure ExpressRoute direct gebruiken om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op locaties op locatie strategisch gedistribueerd over de hele wereld. Zie [about ExpressRoute Direct Connect](expressroute-erdirect-about.md)(Engelstalig) voor meer informatie.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>De resource maken
 
-1. Meld u aan bij Azure en selecteer het abonnement dat ExpressRoute bevat. De ExpressRoute Direct-resource en de ExpressRoute-circuits moeten in hetzelfde abonnement zitten. Voer in Azure CLI de volgende opdrachten uit:
+1. Meld u aan bij Azure en selecteer het abonnement dat ExpressRoute bevat. De ExpressRoute direct-resource en uw ExpressRoute-circuits moeten zich in hetzelfde abonnement benemen. Voer de volgende opdrachten uit in de Azure CLI:
 
    ```azurecli
    az login
@@ -38,18 +38,18 @@ U Azure ExpressRoute Direct gebruiken om rechtstreeks verbinding te maken met he
    az account set --subscription "<subscription ID>"
    ```
 
-2. Uw abonnement op Microsoft.Network opnieuw registreren om toegang te krijgen tot de expressrouteportslocatie en expressrouteport API's
+2. Registreer uw abonnement opnieuw voor het micro soft. Network om toegang te krijgen tot de expressrouteportslocation-en expressrouteport-Api's
 
    ```azurecli
    az provider register --namespace Microsoft.Network
    ```
-3. Vermeld alle locaties waar ExpressRoute Direct wordt ondersteund:
+3. Alle locaties weer geven waar ExpressRoute direct wordt ondersteund:
     
    ```azurecli
    az network express-route port location list
    ```
 
-   **Voorbeelduitvoer**
+   **Voorbeeld uitvoer**
   
    ```output
    [
@@ -110,13 +110,13 @@ U Azure ExpressRoute Direct gebruiken om rechtstreeks verbinding te maken met he
    }
    ]
    ```
-4. Bepaal of een van de locaties in de vorige stap beschikbare bandbreedte heeft:
+4. Bepaal of er band breedte beschikbaar is op een van de locaties die in de voor gaande stap worden vermeld:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
    ```
 
-   **Voorbeelduitvoer**
+   **Voorbeeld uitvoer**
 
    ```output
    {
@@ -136,14 +136,14 @@ U Azure ExpressRoute Direct gebruiken om rechtstreeks verbinding te maken met he
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-5. Maak een ExpressRoute Direct-bron die is gebaseerd op de locatie die u in de voorgaande stappen hebt gekozen.
+5. Maak een ExpressRoute direct-resource die is gebaseerd op de locatie die u in de voor gaande stappen hebt gekozen.
 
-   ExpressRoute Direct ondersteunt zowel QinQ als Dot1Q inkapseling. Als u QinQ selecteert, krijgt elk ExpressRoute-circuit dynamisch een S-Tag toegewezen en is het uniek in de ExpressRoute Direct-bron. Elke C-Tag op het circuit moet uniek zijn op het circuit, maar niet over de ExpressRoute Direct-bron.  
+   ExpressRoute direct ondersteunt zowel QinQ-als Dot1Q-inkapseling. Als u QinQ selecteert, wordt elk ExpressRoute-circuit dynamisch toegewezen aan een S-tag en is deze uniek in de directe resource van ExpressRoute. Elk C-tag op het circuit moet uniek zijn op het circuit, maar niet in de ExpressRoute direct-resource.  
 
-   Als u Dot1Q-inkapseling selecteert, moet u de uniciteit van de C-Tag (VLAN) beheren voor de gehele ExpressRoute Direct-bron.  
+   Als u Dot1Q-inkapseling selecteert, moet u de uniekheid van de C-tag (VLAN) beheren voor de hele ExpressRoute direct-resource.  
 
    > [!IMPORTANT]
-   > ExpressRoute Direct kan slechts één inkapselingstype zijn. U het inkapselingstype niet wijzigen nadat u de ExpressRoute Direct-bron hebt gemaakt.
+   > ExpressRoute direct kan slechts één encapsulation-type zijn. U kunt het encapsulation-type niet wijzigen nadat u de ExpressRoute-directe resource hebt gemaakt.
    > 
  
    ```azurecli
@@ -151,10 +151,10 @@ U Azure ExpressRoute Direct gebruiken om rechtstreeks verbinding te maken met he
    ```
 
    > [!NOTE]
-   > U ook het kenmerk **Encapsulation** instellen op **Dot1Q.** 
+   > U kunt ook het **encapsulation** -kenmerk instellen op **Dot1Q**. 
    >
 
-   **Voorbeelduitvoer**
+   **Voorbeeld uitvoer**
 
    ```output
    {
@@ -210,11 +210,11 @@ U Azure ExpressRoute Direct gebruiken om rechtstreeks verbinding te maken met he
 
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>AdminState wijzigen voor koppelingen
 
-Gebruik dit proces om een laag 1-test uit te voeren. Zorg ervoor dat elke kruisverbinding correct is gepatcht in elke router in de primaire en secundaire poorten.
+Gebruik dit proces om een laag 1-test uit te voeren. Zorg ervoor dat elke Kruis verbinding op de juiste wijze is geïnstalleerd in elke router in de primaire en secundaire poorten.
 
-1. Koppelingen instellen **op Ingeschakeld**. Herhaal deze stap om elke koppeling in te stellen **op Ingeschakeld**.
+1. Stel links in op **ingeschakeld**. Herhaal deze stap om elke koppeling in te stellen op **ingeschakeld**.
 
-   Links[0] is de primaire poort en Links[1] is de secundaire poort.
+   Koppelingen [0] is de primaire poort en koppelingen [1] is de secundaire poort.
 
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
@@ -222,7 +222,7 @@ Gebruik dit proces om een laag 1-test uit te voeren. Zorg ervoor dat elke kruisv
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
    ```
-   **Voorbeelduitvoer**
+   **Voorbeeld uitvoer**
 
    ```output
    {
@@ -276,26 +276,26 @@ Gebruik dit proces om een laag 1-test uit te voeren. Zorg ervoor dat elke kruisv
    }
    ```
 
-   Gebruik dezelfde procedure om de `AdminState = "Disabled"`poorten omlaag te maken met behulp van .
+   Gebruik dezelfde procedure om de poorten te verlagen met behulp `AdminState = "Disabled"`van.
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Een circuit maken
 
-Standaard u 10 circuits maken in het abonnement dat de ExpressRoute Direct-bron bevat. Microsoft Support kan de standaardlimiet verhogen. U bent verantwoordelijk voor het bijhouden van de ingerichte en gebruikte bandbreedte. Ingerichte bandbreedte is de som van de bandbreedte van alle circuits op de ExpressRoute Direct-bron. Benutte bandbreedte is het fysieke gebruik van de onderliggende fysieke interfaces.
+Standaard kunt u 10 circuits maken in het abonnement dat de directe resource ExpressRoute bevat. Microsoft Ondersteuning kunt de standaard limiet verhogen. U bent zelf verantwoordelijk voor het bijhouden van ingerichte en gebruikte band breedte. Ingerichte band breedte is de som van de band breedte van alle circuits op de ExpressRoute direct-resource. Gebruikte band breedte is het fysieke gebruik van de onderliggende fysieke interfaces.
 
-U extra circuitbandbreedtes op ExpressRoute Direct alleen gebruiken om de hier beschreven scenario's te ondersteunen. De bandbreedtes zijn 40 Gbps en 100 Gbps.
+U kunt extra circuit bandbreedten alleen op ExpressRoute direct gebruiken ter ondersteuning van de scenario's die hier worden beschreven. De band breedten zijn 40 Gbps en 100 Gbps.
 
-**SkuTier** kan lokaal, standaard of premium zijn.
+**SkuTier** kan lokaal, standaard of Premium zijn.
 
-**SkuFamily** mag alleen GemetenData hebben, omdat onbeperkt niet wordt ondersteund op ExpressRoute Direct.
-Maak een circuit op de ExpressRoute Direct-bron:
+**SkuFamily** moet MeteredData alleen als onbeperkt worden niet ondersteund op ExpressRoute direct.
+Een circuit maken op de ExpressRoute direct-resource:
 
   ```azurecli
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Andere bandbreedtes zijn 5 Gbps, 10 Gbps en 40 Gbps.
+  Andere band breedten zijn 5 Gbps, 10 Gbps en 40 Gbps.
 
-  **Voorbeelduitvoer**
+  **Voorbeeld uitvoer**
 
   ```output
   {
@@ -333,4 +333,4 @@ Maak een circuit op de ExpressRoute Direct-bron:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over ExpressRoute Direct, zie het [overzicht](expressroute-erdirect-about.md).
+Zie het [overzicht](expressroute-erdirect-about.md)voor meer informatie over ExpressRoute direct.

@@ -1,57 +1,57 @@
 ---
-title: Problemen met Azure Application Insights Snapshot Debuggerbugger
-description: In dit artikel worden stappen en informatie over probleemoplossing gepresenteerd om ontwikkelaars te helpen die problemen hebben met het inschakelen of gebruiken van de foutopsporing van application insights snapshot.
+title: Problemen met Azure-toepassing Insights oplossen Snapshot Debugger
+description: Dit artikel bevat probleemoplossings stappen en informatie om ontwikkel aars te helpen bij het inschakelen of gebruiken van Application Insights Snapshot Debugger.
 ms.topic: conceptual
 author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671406"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Problemen oplossen waardoor Defoutfout op momentopnamen van toepassingsstatistieken wordt in- of als u momentopnamen bekijken
-Als u De buggerbugger van Application Insights voor uw toepassing hebt ingeschakeld, maar geen momentopnamen voor uitzonderingen ziet, u deze instructies gebruiken om problemen op te lossen. Er kunnen veel verschillende redenen zijn waarom momentopnamen niet worden gegenereerd. U de momentopnamestatuscontrole uitvoeren om enkele van de mogelijke veelvoorkomende oorzaken te identificeren.
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>Problemen oplossen met het inschakelen van Application Insights Snapshot Debugger of het weer geven van moment opnamen
+Als u Application Insights Snapshot Debugger voor uw toepassing hebt ingeschakeld, maar geen moment opnamen voor uitzonde ringen ziet, kunt u deze instructies gebruiken om problemen op te lossen. Er kunnen verschillende redenen zijn waarom moment opnamen niet worden gegenereerd. U kunt de status controle van de moment opname uitvoeren om enkele van de mogelijke veelvoorkomende oorzaken te identificeren.
 
-## <a name="use-the-snapshot-health-check"></a>De momentopnamestatuscontrole gebruiken
-Verschillende veelvoorkomende problemen resulteren in de Momentopname Open Foutopsporing die niet wordt weergegeven. Bijvoorbeeld een verouderde Snapshot Collector gebruiken; het bereiken van de dagelijkse uploadlimiet; of misschien is de momentopname is gewoon een lange tijd te uploaden. Gebruik de momentopnamestatuscontrole om veelvoorkomende problemen op te lossen.
+## <a name="use-the-snapshot-health-check"></a>De status controle van de moment opname gebruiken
+Enkele veelvoorkomende problemen leiden ertoe dat de moment opname van de geopende fout opsporing niet wordt weer gegeven. Met een verouderde Snapshot Collector, bijvoorbeeld; de dagelijkse upload limiet bereikt; of de moment opname neemt gewoon veel tijd in beslag om te uploaden. Gebruik de status controle van de moment opname om veelvoorkomende problemen op te lossen.
 
-Er is een koppeling in het uitzonderingsvenster van de end-to-end trace-weergave die u naar de momentopnamestatuscontrole brengt.
+Er is een koppeling in het deel venster uitzonde ringen van de end-to-end tracerings weergave waarmee u naar de status controle van de moment opname gaat.
 
-![Momentopnamestatuscontrole invoeren](./media/snapshot-debugger/enter-snapshot-health-check.png)
+![Status controle van de moment opname invoeren](./media/snapshot-debugger/enter-snapshot-health-check.png)
 
-De interactieve, chat-achtige interface zoekt naar veelvoorkomende problemen en begeleidt u om ze op te lossen.
+De interactieve, chat interface zoekt naar veelvoorkomende problemen en helpt u bij het oplossen ervan.
 
-![Gezondheidscontrole](./media/snapshot-debugger/healthcheck.png)
+![Status controle](./media/snapshot-debugger/healthcheck.png)
 
-Als dat het probleem niet oplost, raadpleegt u de volgende handmatige stappen voor het oplossen van problemen.
+Als het probleem hiermee niet is opgelost, raadpleegt u de volgende hand matige stappen voor probleem oplossing.
 
-## <a name="verify-the-instrumentation-key"></a>Controleer de instrumentatiesleutel
+## <a name="verify-the-instrumentation-key"></a>De instrumentatie sleutel controleren
 
-Zorg ervoor dat u de juiste instrumentatiesleutel gebruikt in uw gepubliceerde toepassing. Meestal wordt de instrumentatiesleutel gelezen uit het bestand ApplicationInsights.config. Controleer of de waarde hetzelfde is als de instrumentatiesleutel voor de application insights-bron die u in de portal ziet.
+Zorg ervoor dat u de juiste instrumentatie sleutel gebruikt in de gepubliceerde toepassing. Normaal gesp roken wordt de instrumentatie sleutel gelezen uit het bestand ApplicationInsights. config. Controleer of de waarde gelijk is aan de instrumentatie sleutel voor de Application Insights bron die u in de portal ziet.
 
-## <a name="preview-versions-of-net-core"></a>Voorbeeld van versies van .NET Core
-Als de toepassing een voorbeeldversie van .NET Core gebruikt en Snapshot Debugger is ingeschakeld via het [deelvenster Toepassingsinzichten](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) in de portal, wordt de foutopsporing van Momentopname n.m. mogelijk niet gestart. Volg de instructies bij [Snapshot Debugger inschakelen voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) om eerst het [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket met de toepassing op te nemen, ***naast*** het inschakelen via het [deelvenster Toepassingsinzichten.](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
+## <a name="preview-versions-of-net-core"></a>Preview-versies van .NET core
+Als de toepassing gebruikmaakt van een preview-versie van .NET core en Snapshot Debugger is ingeschakeld via het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) in de portal, wordt Snapshot debugger mogelijk niet gestart. Volg de instructies in [enable snapshot debugger voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) eerst om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket met de toepassing toe te voegen, naast het inschakelen ***van*** het [deel venster Application Insights](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
 
-## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade naar de nieuwste versie van het NuGet-pakket
+## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade uitvoeren naar de nieuwste versie van het NuGet-pakket
 
-Als Snapshot Debugger is ingeschakeld via het [deelvenster Toepassingsinzichten in de portal,](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)moet uw toepassing al het nieuwste NuGet-pakket uitvoeren. Als Snapshot Debugger is ingeschakeld door het [NuGet-pakket Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op te nemen, gebruikt u nuGet-pakketbeheer van Visual Studio om ervoor te zorgen dat u de nieuwste versie van Microsoft.ApplicationInsights.SnapshotCollector gebruikt. Release notes zijn te vinden ophttps://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Als Snapshot Debugger is ingeschakeld via het [deel venster Application Insights in de portal](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), moet uw toepassing al het meest recente NuGet-pakket uitvoeren. Als Snapshot Debugger is ingeschakeld door het pakket [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet op te nemen, gebruikt u Visual Studio NuGet Package Manager om te controleren of u de nieuwste versie van micro soft. ApplicationInsights. SnapshotCollector gebruikt. Release opmerkingen vindt u ophttps://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
-## <a name="check-the-uploader-logs"></a>De logboeken van de uploader controleren
+## <a name="check-the-uploader-logs"></a>Raadpleeg de uploader-logboeken
 
-Nadat een momentopname is gemaakt, wordt een minidumpbestand (.dmp) op schijf gemaakt. Een afzonderlijk uploaderproces maakt dat minidump-bestand en uploadt het, samen met eventuele bijbehorende PDF's, naar de opslag van Snapshot Debugger van Application Insights. Nadat de minidump is geüpload, wordt deze van de schijf verwijderd. De logbestanden voor het uploaderproces worden op schijf bewaard. In een App Service-omgeving `D:\Home\LogFiles`u deze logboeken vinden in. Gebruik de Kudu-beheersite voor App-service om deze logboekbestanden te vinden.
+Nadat een moment opname is gemaakt, wordt er een mini dump bestand (. dmp) gemaakt op de schijf. Met een afzonderlijk Uploader-proces wordt dit bestand met de mini dump gemaakt en geüpload, samen met eventuele gekoppelde PDBs, om Snapshot Debugger opslag te Application Insights. Nadat het mini maal is geüpload, wordt het verwijderd van de schijf. De logboek bestanden voor het Uploader-proces worden op schijf bewaard. In een App Service omgeving kunt u deze logboeken vinden in `D:\Home\LogFiles`. Gebruik de kudu-beheer site voor App Service om deze logboek bestanden te vinden.
 
-1. Open uw App Service-toepassing in de Azure-portal.
-2. Klik op **Geavanceerd hulpprogramma's**of zoek naar **Kudu**.
-3. Klik **op Ga**.
-4. Selecteer **CMD**in de vervolgkeuzelijst **Debug-console** .
-5. Klik **op LogFiles**.
+1. Open uw App Service-toepassing in de Azure Portal.
+2. Klik op **geavanceerde hulp middelen**of zoek naar **kudu**.
+3. Klik op **Go**.
+4. Selecteer in de vervolg keuzelijst **debug-console** de optie **cmd**.
+5. Klik op **logboek bestanden**.
 
-U moet ten minste één bestand zien `Uploader_` `SnapshotUploader_` met `.log` een naam die begint met of een extensie. Klik op het juiste pictogram om logboekbestanden te downloaden of te openen in een browser.
-De bestandsnaam bevat een uniek achtervoegsel dat het exemplaar van de App-service identificeert. Als uw App Service-instantie op meer dan één machine wordt gehost, zijn er afzonderlijke logboekbestanden voor elke machine. Wanneer de uploader een nieuw minidumpbestand detecteert, wordt het opgenomen in het logboekbestand. Hier is een voorbeeld van een succesvolle momentopname en upload:
+U ziet ten minste één bestand met een naam die begint met `Uploader_` of `SnapshotUploader_` en een `.log` uitbrei ding. Klik op het juiste pictogram om eventuele logboek bestanden te downloaden of open ze in een browser.
+De bestands naam bevat een uniek achtervoegsel dat de App Service instantie aanduidt. Als uw App Service-exemplaar op meer dan één computer wordt gehost, zijn er afzonderlijke logboek bestanden voor elke computer. Wanneer de uploader een nieuw bestand met een mini dump detecteert, wordt het vastgelegd in het logboek bestand. Hier volgt een voor beeld van een geslaagde moment opname en upload:
 
 ```
 SnapshotUploader.exe Information: 0 : Received Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
@@ -79,12 +79,12 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> Het bovenstaande voorbeeld is van versie 1.2.0 van het Microsoft.ApplicationInsights.SnapshotCollector NuGet-pakket. In eerdere versies wordt het uploaderproces aangeroepen `MinidumpUploader.exe` en is het logboek minder gedetailleerd.
+> Het bovenstaande voor beeld is van versie 1.2.0 van het pakket micro soft. ApplicationInsights. SnapshotCollector NuGet. In eerdere versies wordt het Uploader-proces aangeroepen `MinidumpUploader.exe` en wordt het logboek minder gedetailleerd beschreven.
 
-In het vorige voorbeeld is `c12a605e73c44346a984e00000000000`de instrumentatietoets . Deze waarde moet overeenkomen met de instrumentatiesleutel voor uw toepassing.
-De minidump is gekoppeld aan `139e411a23934dc0b9ea08a626db16c5`een momentopname met de ID . U deze id later gebruiken om de bijbehorende uitzondering telemetrie te vinden in Application Insights Analytics.
+In het vorige voor beeld is `c12a605e73c44346a984e00000000000`de instrumentatie sleutel. Deze waarde moet overeenkomen met de instrumentatie sleutel voor uw toepassing.
+Het mini dump is gekoppeld aan een moment opname met `139e411a23934dc0b9ea08a626db16c5`de id. U kunt deze ID later gebruiken om de bijbehorende telemetrie voor uitzonde ringen in Application Insights Analytics te vinden.
 
-De uploader scant ongeveer eens per 15 minuten naar nieuwe PDF's. Hier volgt een voorbeeld:
+De uploader scant elke 15 minuten op nieuwe PDBs. Hier volgt een voorbeeld:
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -97,24 +97,24 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-Voor toepassingen die _niet worden_ gehost in App Service, de uploader logs `%TEMP%\Dumps\<ikey>` zijn `<ikey>` in dezelfde map als de minidumps: (waar is uw instrumentatiesleutel).
+Voor toepassingen die _niet_ in app service worden gehost, bevinden de uploader-logboeken zich in dezelfde map `%TEMP%\Dumps\<ikey>` als de `<ikey>` minidumps: (waarbij de instrumentatie sleutel is).
 
-## <a name="troubleshooting-cloud-services"></a>Problemen met cloudservices oplossen
-Voor rollen in Cloud Services is de standaard tijdelijke map mogelijk te klein om de minidumpbestanden vast te houden, wat leidt tot verloren momentopnamen.
-De benodigde ruimte is afhankelijk van de totale werkset van uw toepassing en het aantal gelijktijdige momentopnamen.
-De werkset van een 32-bits ASP.NET webrol ligt meestal tussen 200 MB en 500 MB.
-Laat ten minste twee gelijktijdige momentopnamen toe.
-Als uw toepassing bijvoorbeeld 1 GB aan totale werkset gebruikt, moet u ervoor zorgen dat er ten minste 2 GB schijfruimte is om momentopnamen op te slaan.
-Volg deze stappen om uw Cloud Service-rol te configureren met een speciale lokale bron voor momentopnamen.
+## <a name="troubleshooting-cloud-services"></a>Problemen met Cloud Services oplossen
+Voor rollen in Cloud Services is de tijdelijke standaardmap mogelijk te klein voor de mini dump bestanden, waardoor moment opnamen verloren zijn gegaan.
+Welke ruimte u nodig hebt, is afhankelijk van de totale werkset van uw toepassing en het aantal gelijktijdige moment opnamen.
+De werkset van een 32-bits ASP.NET-webrol is doorgaans tussen 200 MB en 500 MB.
+Maxi maal twee gelijktijdige moment opnamen toestaan.
+Als uw toepassing bijvoorbeeld gebruikmaakt van 1 GB van het totale aantal werk sets, moet u ervoor zorgen dat er ten minste 2 GB schijf ruimte is om moment opnamen op te slaan.
+Volg deze stappen om de functie van de Cloud service te configureren met een toegewezen lokale resource voor moment opnamen.
 
-1. Voeg een nieuwe lokale bron toe aan uw Cloud Service door het cloudservicedefinitiebestand (.csdef) te bewerken. In het volgende voorbeeld `SnapshotStore` wordt een resource gedefinieerd met een grootte van 5 GB.
+1. Voeg een nieuwe lokale resource aan uw Cloud service toe door het bestand met de Cloud service definition (. csdef) te bewerken. In het volgende voor beeld wordt een `SnapshotStore` resource met de naam 5 GB gedefinieerd.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
    ```
 
-2. Wijzig de opstartcode van uw rol om `SnapshotStore` een omgevingsvariabele toe te voegen die verwijst naar de lokale resource. Voor Werknemersrollen moet de code worden toegevoegd `OnStart` aan de methode van uw rol:
+2. Wijzig de opstart code van uw rol om een omgevings variabele toe te voegen die verwijst naar de `SnapshotStore` lokale resource. Voor werk rollen moet de code worden toegevoegd aan de methode van `OnStart` uw rol:
    ```csharp
    public override bool OnStart()
    {
@@ -122,7 +122,7 @@ Volg deze stappen om uw Cloud Service-rol te configureren met een speciale lokal
        return base.OnStart();
    }
    ```
-   Voor webrollen (ASP.NET) moet de code worden `Application_Start` toegevoegd aan de methode van uw webtoepassing:
+   Voor webrollen (ASP.NET) moet de code worden toegevoegd aan de methode van `Application_Start` uw webtoepassing:
    ```csharp
    using Microsoft.WindowsAzure.ServiceRuntime;
    using System;
@@ -140,7 +140,7 @@ Volg deze stappen om uw Cloud Service-rol te configureren met een speciale lokal
    }
    ```
 
-3. Update het bestand ApplicationInsights.config van uw rol bij om de tijdelijke maplocatie te overschrijven die wordt gebruikt door`SnapshotCollector`
+3. Werk het bestand ApplicationInsights. config van uw rol bij om de locatie van de tijdelijke map te overschrijven die wordt gebruikt door`SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -151,25 +151,25 @@ Volg deze stappen om uw Cloud Service-rol te configureren met een speciale lokal
    </TelemetryProcessors>
    ```
 
-## <a name="overriding-the-shadow-copy-folder"></a>De map Schaduwkopie overschrijven
+## <a name="overriding-the-shadow-copy-folder"></a>De schaduw kopie map overschrijven
 
-Wanneer het momentopnameverzamelaar wordt opgestart, wordt geprobeerd een map op schijf te vinden die geschikt is voor het uitvoeren van het proces momentopnameuploader. De gekozen map staat bekend als de map Schaduwkopie.
+Wanneer de Snapshot Collector wordt gestart, wordt geprobeerd een map op schijf te vinden die geschikt is voor het uitvoeren van het Uploader-proces van de moment opname. De gekozen map wordt de map schaduw kopie genoemd.
 
-De Momentopnameverzamelaar controleert een aantal bekende locaties en controleert of het machtigingen heeft om de binaries van snapshot-uploader te kopiëren. De volgende omgevingsvariabelen worden gebruikt:
+De Snapshot Collector controleert een aantal bekende locaties en controleert of het machtigingen heeft om de binaire bestanden van de moment opname van Uploader te kopiëren. De volgende omgevings variabelen worden gebruikt:
 - Fabric_Folder_App_Temp
 - LOCALAPPDATA
-- Appdata
-- Temp
+- APPDATA
+- RATUUR
 
-Als er geen geschikte map kan worden gevonden, meldt Momentopnameverzamelaar een foutmelding met de tekst _'Kon geen geschikte map voor schaduwkopieën vinden'._
+Als een geschikte map niet kan worden gevonden, wordt door Snapshot Collector een fout gemeld met _de melding ' kan geen geschikte schaduw kopie map vinden '._
 
-Als de kopie mislukt, `ShadowCopyFailed` meldt Momentopnameverzamelaar een fout.
+Als het kopiëren mislukt, Snapshot Collector een `ShadowCopyFailed` fout gemeld.
 
-Als de uploader niet kan worden gestart, meldt Snapshot Collector een `UploaderCannotStartFromShadowCopy` fout. Het hoofd van het `System.UnauthorizedAccessException`bericht bevat vaak . Deze fout treedt meestal op omdat de toepassing wordt uitgevoerd onder een account met beperkte machtigingen. Het account heeft toestemming om naar de map met schaduwkopieën te schrijven, maar heeft geen toestemming om code uit te voeren.
+Als de uploader niet kan worden gestart, meldt `UploaderCannotStartFromShadowCopy` snapshot Collector een fout. De hoofd tekst van het bericht bevat `System.UnauthorizedAccessException`vaak. Deze fout treedt meestal op omdat de toepassing wordt uitgevoerd met een account met beperkte machtigingen. Het account heeft toestemming om naar de map Shadow Copy te schrijven, maar is niet gemachtigd om code uit te voeren.
 
-Aangezien deze fouten meestal gebeuren tijdens het opstarten, `ExceptionDuringConnect` worden ze meestal gevolgd door een foutmelding met de tekst _'Uploader is niet gestart'._
+Omdat deze fouten doorgaans optreden tijdens het opstarten, worden ze meestal gevolgd door een `ExceptionDuringConnect` fout bericht met de melding _' Uploader is niet gestart '._
 
-Als u deze fouten wilt omzeilen, u `ShadowCopyFolder` de map voor schaduwkopieën handmatig opgeven via de configuratieoptie. Bijvoorbeeld met Behulp van ApplicationInsights.config:
+Als u deze fouten wilt omzeilen, kunt u de map voor schaduw kopieën hand `ShadowCopyFolder` matig opgeven via de configuratie optie. Bijvoorbeeld met behulp van ApplicationInsights. config:
 
    ```xml
    <TelemetryProcessors>
@@ -181,7 +181,7 @@ Als u deze fouten wilt omzeilen, u `ShadowCopyFolder` de map voor schaduwkopieë
    </TelemetryProcessors>
    ```
 
-Of als u appsettings.json gebruikt met een .NET Core-toepassing:
+Of als u gebruikmaakt van appSettings. json met een .NET core-toepassing:
 
    ```json
    {
@@ -194,26 +194,26 @@ Of als u appsettings.json gebruikt met een .NET Core-toepassing:
    }
    ```
 
-## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Zoeken naar Toepassingsinzichten gebruiken om uitzonderingen met momentopnamen te vinden
+## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Application Insights zoeken gebruiken om uitzonde ringen te vinden met moment opnamen
 
-Wanneer een momentopname wordt gemaakt, wordt de werpuitzondering getagd met een momentopname-id. Die momentopname-id wordt opgenomen als een aangepaste eigenschap wanneer de uitzondering telemetrie wordt gerapporteerd aan Application Insights. Met **Zoeken** in Application Insights u `ai.snapshot.id` alle telemetrie vinden met de aangepaste eigenschap.
+Wanneer een moment opname wordt gemaakt, wordt de uitzonde ring gegenereerd met een moment opname-ID. Die moment opname-ID is opgenomen als een aangepaste eigenschap wanneer de telemetrie van de uitzonde ring wordt gerapporteerd aan Application Insights. Met **Search** in Application Insights kunt u alle telemetrie met de `ai.snapshot.id` aangepaste eigenschap zoeken.
 
-1. Blader naar uw Application Insights-bron in de Azure-portal.
+1. Blader naar uw Application Insights-resource in de Azure Portal.
 2. Klik op **Zoeken**.
-3. Typ `ai.snapshot.id` het tekstvak Zoeken en druk op Enter.
+3. Typ `ai.snapshot.id` in het tekstvak zoeken en druk op ENTER.
 
-![Zoeken naar telemetrie met een momentopname-id in de portal](./media/snapshot-debugger/search-snapshot-portal.png)
+![Telemetrie zoeken met een moment opname-ID in de portal](./media/snapshot-debugger/search-snapshot-portal.png)
 
-Als deze zoekopdracht geen resultaten oplevert, zijn er geen momentopnamen gerapporteerd aan Application Insights voor uw toepassing in het geselecteerde tijdsbereik.
+Als deze zoek opdracht geen resultaten oplevert, worden er geen moment opnamen gerapporteerd aan Application Insights voor uw toepassing in het geselecteerde tijds bereik.
 
-Als u wilt zoeken naar een specifieke momentopname-id in de logboeken van Uploader, typt u die id in het vak Zoeken. Als u geen telemetrie vinden voor een momentopname waarvan u weet dat deze is geüpload, voert u de volgende stappen uit:
+Als u wilt zoeken naar een specifieke moment opname-ID uit de uploader-logboeken, typt u die ID in het zoekvak. Als u geen telemetrie kunt vinden voor een moment opname die u weet, voert u de volgende stappen uit:
 
-1. Controleer of u de juiste Application Insights-bron bekijkt door de instrumentatiesleutel te verifiëren.
+1. Controleer of u de juiste Application Insights resource bekijkt door de instrumentatie sleutel te verifiëren.
 
-2. Met behulp van de tijdstempel uit het logboek Uploader past u het filter Tijdbereik van de zoekopdracht aan om dat tijdsbereik te dekken.
+2. Gebruik het tijds tempel in het Uploader-logboek om het tijds bereik filter van de zoek opdracht aan te passen.
 
-Als u nog steeds geen uitzondering ziet met die momentopname-id, is de uitzonderingstelemetrie niet gerapporteerd aan Application Insights. Deze situatie kan gebeuren als uw toepassing is gecrasht nadat deze de momentopname heeft gemaakt, maar voordat de uitzondering telemetrie is gerapporteerd. Controleer in dit geval de `Diagnose and solve problems` logboeken van de appservice onder om te zien of er onverwachte opnieuw opstarten of onverwerkte uitzonderingen zijn geweest.
+Als u nog steeds geen uitzonde ring ziet met die moment opname-ID, wordt de telemetrie van de uitzonde ring niet gerapporteerd aan Application Insights. Deze situatie kan zich voordoen als uw toepassing is vastgelopen nadat de moment opname is gemaakt, maar voordat de telemetrie van de uitzonde ring werd gerapporteerd. In dit geval raadpleegt u de App Service Logboeken onder `Diagnose and solve problems` om te zien of er onverwachte herstartingen of onverwerkte uitzonde ringen zijn.
 
-## <a name="edit-network-proxy-or-firewall-rules"></a>Netwerkproxy- of firewallregels bewerken
+## <a name="edit-network-proxy-or-firewall-rules"></a>Netwerk proxy-of firewall regels bewerken
 
-Als uw toepassing verbinding maakt met internet via een proxy of een firewall, moet u mogelijk de regels bewerken om uw toepassing te laten communiceren met de Snapshot Debugger-service. De IP's die door Snapshot Debugger worden gebruikt, zijn opgenomen in de Azure Monitor-servicetag.
+Als uw toepassing verbinding maakt met Internet via een proxy of een firewall, moet u mogelijk de regels bewerken zodat uw toepassing kan communiceren met de Snapshot Debugger-service. De IP-adressen die door Snapshot Debugger worden gebruikt, zijn opgenomen in de code van de Azure Monitor-service.

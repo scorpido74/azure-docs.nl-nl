@@ -1,6 +1,6 @@
 ---
-title: Patchplanningsschema voor besturingssysteem configureren voor Azure HDInsight-clusters
-description: Meer informatie over het configureren van het patchschema voor het patchen van het besturingssysteem voor HDInsight-clusters op basis van Linux.
+title: Het patch schema voor het besturings systeem voor Azure HDInsight-clusters configureren
+description: Meer informatie over het configureren van het patch schema voor het besturings systeem voor HDInsight-clusters op basis van Linux.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,65 +9,65 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
 ms.openlocfilehash: f8e694f658d6e9de04c92001214ecd5c32ff7753
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206857"
 ---
-# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patchschema voor het besturingssysteem configureren voor HDInsight-clusters op basis van Linux
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux
 
 > [!IMPORTANT]
-> Ubuntu-afbeeldingen worden binnen drie maanden na publicatie beschikbaar voor het maken van nieuwe Azure HDInsight-cluster. Vanaf januari 2019 worden de lopende clusters niet automatisch gepatcht. Klanten moeten scriptacties of andere mechanismen gebruiken om een lopend cluster te patchen. Nieuw gemaakte clusters hebben altijd de nieuwste beschikbare updates, inclusief de meest recente beveiligingspatches.
+> Er worden binnen drie maanden na publicatie een Ubuntu-installatie kopie beschikbaar voor het maken van nieuwe Azure HDInsight-clusters. Vanaf januari 2019 worden er geen automatische patches uitgevoerd voor clusters. Klanten moeten script acties of andere mechanismen gebruiken om een actief cluster te patchen. Nieuwe clusters hebben altijd de meest recente beschik bare updates, inclusief de meest recente beveiligings patches.
 
-HDInsight biedt ondersteuning voor u om veelvoorkomende taken op uw cluster uit te voeren, zoals het installeren van OS-patches, beveiligingsupdates en het opnieuw opstarten van knooppunten. Deze taken worden uitgevoerd met behulp van de volgende twee scripts die kunnen worden uitgevoerd als [scriptacties](hdinsight-hadoop-customize-cluster-linux.md)en geconfigureerd met parameters:
+HDInsight biedt ondersteuning voor u om algemene taken uit te voeren op uw cluster, zoals het installeren van besturingssysteem patches, beveiligings updates en het opnieuw opstarten van knoop punten. Deze taken worden uitgevoerd met behulp van de volgende twee scripts die kunnen worden uitgevoerd als [script acties](hdinsight-hadoop-customize-cluster-linux.md), en geconfigureerd met para meters:
 
-- `schedule-reboots.sh`- Maak een onmiddellijke herstart of plan een herstart op de clusterknooppunten.
-- `install-updates-schedule-reboots.sh`- Installeer alle updates, alleen kernel + beveiligingsupdates of alleen kernelupdates.
+- `schedule-reboots.sh`-Doe een onmiddellijke start of plan opnieuw opstarten op de cluster knooppunten.
+- `install-updates-schedule-reboots.sh`-Alle updates, alleen kernel-en beveiligings updates of alleen kernel-updates installeren.
 
 > [!NOTE]  
-> Scriptacties passen niet automatisch updates toe voor alle toekomstige updatecycli. Voer de scripts elke keer uit wanneer nieuwe updates moeten worden toegepast om de updates te installeren en start de VM opnieuw.
+> Met script acties worden updates voor alle toekomstige update cycli niet automatisch toegepast. Voer de scripts telkens uit wanneer er nieuwe updates moeten worden toegepast om de updates te installeren en start de virtuele machine vervolgens opnieuw op.
 
 ## <a name="preparation"></a>Voorbereiding
 
-Patch op een representatieve niet-productieomgeving voordat deze wordt geïmplementeerd in productie. Ontwikkel een plan om uw systeem adequaat te testen voorafgaand aan uw eigenlijke patching.
+Patch voor een representatieve niet-productie omgeving voordat u de productie implementeert. Ontwikkel een plan om uw systeem op een afdoende wijze te testen voorafgaand aan uw werkelijke patches.
 
-Van tijd tot tijd, vanuit een ssh-sessie met uw cluster, u een bericht ontvangen dat er een upgrade beschikbaar is. Het bericht ziet er mogelijk uit als:
+Vanuit de tijd tot tijd, vanuit een SSH-sessie met uw cluster, wordt een bericht weer gegeven dat er een upgrade beschikbaar is. Het bericht kan er ongeveer als volgt uitzien:
 
 ```
 New release '18.04.3 LTS' available.
 Run 'do-release-upgrade' to upgrade it
 ```
 
-Patchen is optioneel en naar eigen inzicht.
+Patching is optioneel en op uw keuze.
 
-## <a name="restart-nodes"></a>Knooppunten opnieuw starten
+## <a name="restart-nodes"></a>Knoop punten opnieuw starten
   
-Het [scriptschema-reboots](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh), stelt het type reboot in dat wordt uitgevoerd op de machines in het cluster. Stel bij het indienen van de scriptactie de actie in op alle drie knooppunttypen: hoofdknooppunt, werknemersknooppunt en zookeeper. Als het script niet is toegepast op een knooppunttype, worden de VM's voor dat knooppunttype niet bijgewerkt of opnieuw gestart.
+Het script [schema-opnieuw opstarten:](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh)Hiermee stelt u het type opnieuw opstarten in dat wordt uitgevoerd op de computers in het cluster. Bij het indienen van de script actie stelt u deze in op alle drie knooppunt typen: hoofd knooppunt, Worker-knoop punt en Zookeeper. Als het script niet wordt toegepast op een knooppunt type, worden de Vm's voor dat knooppunt type niet bijgewerkt of opnieuw gestart.
 
-De `schedule-reboots script` accepteert één numerieke parameter:
-
-| Parameter | Geaccepteerde waarden | Definitie |
-| --- | --- | --- |
-| Type opnieuw opstarten om uit te voeren | 1 of 2 | Een waarde van 1 maakt het opnieuw opstarten van de planning mogelijk (gepland in 12-24 uur). Een waarde van 2 maakt het mogelijk om direct opnieuw op te starten (in 5 minuten). Als er geen parameter wordt gegeven, is de standaardwaarde 1. |  
-
-## <a name="install-updates-and-restart-nodes"></a>Updates installeren en knooppunten opnieuw opstarten
-
-Het script [install-updates-schedule-reboots.sh](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh) biedt opties om verschillende soorten updates te installeren en de VM opnieuw te starten.
-
-Het `install-updates-schedule-reboots` script accepteert twee numerieke parameters, zoals beschreven in de volgende tabel:
+De `schedule-reboots script` para meter Eén numeriek accepteren:
 
 | Parameter | Geaccepteerde waarden | Definitie |
 | --- | --- | --- |
-| Type updates om te installeren | 0, 1 of 2 | Een waarde van 0 installeert alleen kernel updates. Een waarde van 1 installeert alle updates, en 2 installeert alleen kernel + beveiligingsupdates. Als er geen parameter is opgegeven, is de standaardinstelling 0. |
-| Type opnieuw opstarten om uit te voeren | 0, 1 of 2 | Een waarde van 0 schakelt opnieuw opstarten uit. Een waarde van 1 maakt het opnieuw opstarten van de planning mogelijk en 2 maakt het mogelijk om onmiddellijk opnieuw op te starten. Als er geen parameter is opgegeven, is de standaardinstelling 0. De gebruiker moet invoerparameter 1 wijzigen in invoerparameter 2. |
+| Type opnieuw opstarten om uit te voeren | 1 of 2 | Met de waarde 1 wordt het opnieuw starten van de planning ingeschakeld (gepland over 12-24 uur). Een waarde van 2 maakt direct opnieuw opstarten mogelijk (in 5 minuten). Als er geen para meter wordt opgegeven, is de standaard waarde 1. |  
+
+## <a name="install-updates-and-restart-nodes"></a>Updates installeren en knoop punten opnieuw starten
+
+De script [install-updates-Schedule-reboots.sh](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh) biedt opties voor het installeren van verschillende soorten updates en het opnieuw opstarten van de virtuele machine.
+
+Het `install-updates-schedule-reboots` script accepteert twee numerieke para meters, zoals wordt beschreven in de volgende tabel:
+
+| Parameter | Geaccepteerde waarden | Definitie |
+| --- | --- | --- |
+| Type updates die moeten worden geïnstalleerd | 0, 1 of 2 | Met de waarde 0 worden alleen kernel-updates geïnstalleerd. Met de waarde 1 worden alle updates geïnstalleerd en 2 worden alleen kernel + beveiligings updates geïnstalleerd. Als er geen para meter wordt gegeven, is de standaard waarde 0. |
+| Type opnieuw opstarten om uit te voeren | 0, 1 of 2 | Met de waarde 0 wordt opnieuw opstarten uitgeschakeld. Met de waarde 1 wordt het opnieuw starten van de planning ingeschakeld en 2 wordt direct opnieuw opgestart. Als er geen para meter wordt gegeven, is de standaard waarde 0. De gebruiker moet invoer parameter 1 wijzigen in invoer parameter 2. |
 
 > [!NOTE]
-> U moet een script markeren als volhard nadat u het hebt toegepast op een bestaand cluster. Anders worden alle nieuwe knooppunten die via schaalbewerkingen zijn gemaakt, het standaardpatchschema gebruikt. Als u het script toepast als onderdeel van het proces voor het maken van het cluster, blijft het automatisch bestaan.
+> U moet een script markeren als bewaard nadat u het toepast op een bestaand cluster. Anders wordt de standaard planning voor het patchen gebruikt voor nieuwe knoop punten die zijn gemaakt via schaal bewerkingen. Als u het script toepast als onderdeel van het proces voor het maken van het cluster, wordt het automatisch gehandhaafd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende secties in [Op Linux gebaseerde HDInsight-clusters aanpassen met scriptactie](hdinsight-hadoop-customize-cluster-linux.md)voor specifieke stappen over het gebruik van scriptacties:
+Zie de volgende secties in de op [Linux gebaseerde HDInsight-clusters aanpassen met behulp van script actie](hdinsight-hadoop-customize-cluster-linux.md)voor specifieke stappen voor het gebruik van script acties:
 
-- [Een scriptactie gebruiken tijdens het maken van een cluster](hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)
-- [Een scriptactie toepassen op een lopend cluster](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)
+- [Een script actie gebruiken tijdens het maken van een cluster](hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)
+- [Een script actie Toep assen op een actief cluster](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)

@@ -1,6 +1,6 @@
 ---
-title: Fsv2-serie - Azure Virtual Machines
-description: Specificaties voor de FSV2-serie VM's.
+title: Fsv2-serie-Azure Virtual Machines
+description: Specificaties voor de virtuele machines uit de Fsv2-serie.
 services: virtual-machines
 author: brbell
 ms.service: virtual-machines
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164845"
 ---
 # <a name="fsv2-series"></a>Fsv2-serie
 
-De Fsv2-serie is gebaseerd op de Intel® Xeon® Platinum 8168 processor. Het beschikt over een duurzame all core Turbo kloksnelheid van 3,4 GHz en een maximale single-core turbo frequentie van 3,7 GHz. Intel® AVX-512 instructies zijn nieuw op Intel Scalable Processors. Deze instructies bieden tot een 2x prestatieverbetering voor vectorverwerkingsworkloads op zowel enkele als dubbele precisie floating point-bewerkingen. Met andere woorden, ze zijn echt snel voor elke computationele werkbelasting.
+De Fsv2-serie is gebaseerd op de Intel® Xeon® Platinum 8168-processor. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale Turbo frequentie van 3,7 GHz met één kern. Intel® AVX-512-instructies zijn nieuw op schaal bare Intel-processors. Deze instructies bieden een 2X hoge prestatie verbetering van de werk belasting voor vector verwerking op bewerkingen met een drijvende komma van zowel één als dubbele precisie. Met andere woorden, ze zijn heel snel voor elke reken werk belasting.
 
-Fsv2-serie VM's zijn voorzien van Intel® Hyper-Threading Technology.
+Virtuele machines uit de Fsv2-serie bieden een Intel® Hyper-Threading-technologie.
 
-ACU: 195 - 210
+ACU: 195-210
 
-Premium opslag: ondersteund
+Premium Storage: ondersteund
 
-Premium Storage-cache: ondersteund
+Premium Storage caching: ondersteund
 
-Live migratie: ondersteund
+Livemigratie: ondersteund
 
-Updates voor geheugenbehoud: ondersteund
+Updates voor geheugen behoud: ondersteund
 
-| Grootte | vCPU's | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer in cache en tijdelijke opslag: IOPS/MBps (cachegrootte in GiB) | Maximale schijfdoorvoer zonder cache: IOPS/MBps | Max NIC's/Verwachte netwerkbandbreedte (Mbps) |
+| Grootte | van vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_F2s_v2  | 2  | 4   | 16  | 4  | 4000/31 (32)       | 3200/47    | 2/875   |
 | Standard_F4s_v2  | 4  | 8   | 32  | 8  | 8000/63 (64)       | 6400/95    | 2/1750  |
@@ -39,25 +39,25 @@ Updates voor geheugenbehoud: ondersteund
 | Standard_F32s_v2 | 32 | 64  | 256 | 32 | 64000/512 (512)    | 51200/750  | 8/14000 |
 | Standard_F48s_v2 | 48 | 96  | 384 | 32 | 96000/768 (768)    | 76800/1100 | 8/21000 |
 | Standard_F64s_v2 | 64 | 128 | 512 | 32 | 128000/1024 (1024) | 80000/1100 | 8/28000 |
-| Standard_F72s_v2<sup>1.</sup> | 72 | 144 | 576 | 32 | 144000/1152 (1520) | 80000/1100 | 8/30000 |
+| Standard_F72s_v2<sup>1, 2</sup> | 72 | 144 | 576 | 32 | 144000/1152 (1520) | 80000/1100 | 8/30000 |
 
-<sup>1</sup> Het gebruik van meer dan 64 vCPU vereisen een van deze ondersteunde gast besturingssystemen:
+<sup>1</sup> voor het gebruik van meer dan 64 vCPU is een van de volgende ondersteunde gast besturingssystemen vereist:
 
 - Windows Server 2016 of hoger
-- Ubuntu 16.04 LTS of hoger, met Azure tuned kernel (4.15 kernel of hoger)
+- Ubuntu 16,04 LTS of hoger, met door Azure afgestemde kernel (4,15 kernel of hoger)
 - SLES 12 SP2 of hoger
-- RHEL- of CentOS-versie 6.7 tot en met 6.10, met door Microsoft geleverd LIS-pakket 4.3.1 (of hoger) geïnstalleerd
-- RHEL- of CentOS-versie 7.3, met door Microsoft geleverd LIS-pakket 4.2.1 (of hoger) geïnstalleerd
-- RHEL- of CentOS-versie 7.6 of hoger
+- RHEL of CentOS versie 6,7 tot en met 6,10, met het door micro soft meegeleverde LIS-pakket 4.3.1 (of hoger)
+- RHEL of CentOS versie 7,3, met het door micro soft meegeleverde LIS-pakket 4.2.1 (of hoger) geïnstalleerd
+- RHEL of CentOS versie 7,6 of hoger
 - Oracle Linux met UEK4 of hoger
-- Debian 9 met de backports kernel, Debian 10 of hoger
-- CoreOS met een 4.14 kernel of hoger
+- Debian 9 met de backports-kernel, Debian 10 of hoger
+- CoreOS met een 4,14-kernel of hoger
 
-<sup>2</sup> Instance is geïsoleerd voor hardware die is gewijd aan één klant.
+<sup>2</sup> exemplaar is geïsoleerd voor hardware, speciaal voor één klant.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -68,4 +68,4 @@ Updates voor geheugenbehoud: ondersteund
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

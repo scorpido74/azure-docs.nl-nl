@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center-functies voor ondersteunde Azure PaaS-resources.
-description: Op deze pagina ziet u de beschikbaarheid van Azure Security Center-functies voor de ondersteunde Azure PaaS-resources.
+title: Azure Security Center functies voor ondersteunde Azure PaaS-resources.
+description: Op deze pagina ziet u de beschik baarheid van Azure Security Center-functies voor de ondersteunde Azure PaaS-resources.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78209361"
 ---
-# <a name="feature-coverage-for-azure-paas-services"></a>Functiedekking voor Azure PaaS-services<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Functie dekking voor Azure PaaS Services<a name="paas-services"></a>
 
-In de onderstaande tabel ziet u de beschikbaarheid van Azure Security Center-functies voor de ondersteunde Azure PaaS-resources.
+In de volgende tabel ziet u de beschik baarheid van Azure Security Center-functies voor de ondersteunde Azure PaaS-resources.
 
-|Service|Aanbevelingen (gratis)|Beveiligingswaarschuwingen (standaard)|Kwetsbaarheidsbeoordeling (standaard)|
+|Service|Aanbevelingen (gratis)|Beveiligings waarschuwingen (standaard)|Evaluatie van beveiligings problemen (standaard)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Automation-account|✔|-|-|
@@ -34,25 +34,25 @@ In de onderstaande tabel ziet u de beschikbaarheid van Azure Security Center-fun
 |Azure Cloud Services|✔|-|-|
 |Azure Cognitive Search|✔|-|-|
 |Azure Container Registry|-|-|✔|
-|Azure Cosmos DB*|-|✔|-|
+|Azure Cosmos DB *|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
 |Azure Data Lake Storage|✔|-|-|
-|Azure-database voor MySQL*|✔|✔|-|
-|Azure-database voor PostgreSQL*|✔|✔|-|
-|Naamruimte azure-gebeurtenishubs|✔|-|-|
+|Azure Database for MySQL *|✔|✔|-|
+|Azure Database for PostgreSQL *|✔|✔|-|
+|Naam ruimte van Azure Event Hubs|✔|-|-|
 |Azure Functions-app|✔|-|-|
 |Azure Key Vault|✔|✔ *|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
-|Azure SQL-databases|✔|✔|✔|
-|Naamruimte azure servicebus|✔|-|-|
+|Azure SQL-data bases|✔|✔|✔|
+|Azure Service Bus naam ruimte|✔|-|-|
 |Azure Service Fabric-account|✔|-|-|
 |Azure Storage-accounts|✔|-|-|
 |Azure Stream Analytics|✔|-|-|
 |Azure-abonnement|✔ **|✔|-|
-|Azure Virtual Network</br> (incl. subnetten, NIC's en netwerkbeveiligingsgroepen)|✔|-|-|
+|Azure Virtual Network</br> (incl. subnetten, Nic's en netwerk beveiligings groepen)|✔|-|-|
 
-\*Deze functies worden momenteel ondersteund in preview.
+\*Deze functies worden momenteel ondersteund in de preview-versie.
 
-\*\*Azure Active Directory -aanbevelingen (Azure AD) zijn alleen beschikbaar voor Standaardabonnementen.
+\*\*Aanbevelingen voor Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.

@@ -1,6 +1,6 @@
 ---
-title: Cluster SAP ASCS/SCS op WSFC met bestandsshare in Azure | Microsoft Documenten
-description: Meer informatie over het clusteren van een SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een bestandsshare in Azure.
+title: Cluster SAP ASCS/SCS op WSFC met behulp van de bestands share in azure | Microsoft Docs
+description: Meer informatie over het clusteren van een SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een bestands share in Azure.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 545bcd1fa521b945d822b7eb69945cf381bf480a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918662"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -90,7 +90,7 @@ ms.locfileid: "77918662"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID configuratie met hoge beschikbaarheid)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Multi-SID-configuratie met hoge Beschik baarheid van SAP)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -203,155 +203,155 @@ ms.locfileid: "77918662"
 
 [1869038]:https://launchpad.support.sap.com/#/notes/1869038 
 
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Een SAP ASCS/SCS-exemplaar clusteren op een Windows-failovercluster met behulp van een bestandsshare in Azure
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een bestands share in azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
-Windows Server failover clustering is de basis van een hoge beschikbaarheid SAP ASCS / SCS installatie en DBMS in Windows.
+Windows Server Failover Clustering is de basis van een High-Availability SAP-ASCS/SCS-installatie en DBMS in Windows.
 
-Een failovercluster is een groep van 1+n onafhankelijke servers (knooppunten) die samenwerken om de beschikbaarheid van toepassingen en services te vergroten. Als er een node-fout optreedt, berekent windows Server-failoverclustering het aantal fouten dat kan optreden en behoudt het nog steeds een gezond cluster om toepassingen en services te leveren. U kiezen uit verschillende quorummodi om failoverclustering te bereiken.
+Een failovercluster is een groep van 1 + n onafhankelijke servers (knoop punten) die samen werken om de beschik baarheid van toepassingen en services te verg Roten. Als er een storing optreedt in een knoop punt, wordt in Windows Server failover clustering het aantal fouten berekend dat kan optreden en nog steeds een goed onderhanden cluster voor het leveren van toepassingen en services. U kunt kiezen uit verschillende quorum modi om failover clustering te bezorgen.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u begint met de taken die in dit artikel worden beschreven, controleert u dit artikel:
+Lees dit artikel voordat u begint met de taken die in dit artikel worden beschreven:
 
-* [Azure Virtual Machines met hoge beschikbaarheid en scenario's voor SAP NetWeaver][sap-high-availability-architecture-scenarios]
+* [Azure Virtual Machines architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver][sap-high-availability-architecture-scenarios]
 
 > [!IMPORTANT]
-> Het clusteren van SAP ASCS/SCS-exemplaren met behulp van een bestandsshare wordt ondersteund voor SAP NetWeaver 7.40 (en hoger), met SAP Kernel 7.49 (en hoger).
+> Het clusteren van SAP ASCS/SCS-instanties met behulp van een bestands share wordt ondersteund voor SAP NetWeaver 7,40 (en hoger) met SAP kernel 7,49 (en hoger).
 >
 
 
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server failover clustering in Azure
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server Failover Clustering in azure
 
-In vergelijking met bare-metal- of private cloudimplementaties vereist Azure Virtual Machines extra stappen om windows server-failoverclustering te configureren. Wanneer u een cluster bouwt, moet u verschillende IP-adressen en virtuele hostnamen instellen voor het exemplaar SAP ASCS/SCS.
+Vergeleken met bare-metal of privécloud-implementaties, vereist Azure Virtual Machines extra stappen voor het configureren van Windows Server Failover Clustering. Wanneer u een cluster bouwt, moet u verschillende IP-adressen en namen van virtuele hosts instellen voor het SAP-exemplaar ASCS/SCS.
 
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Naamresolutie in Azure en de naam van de virtuele clusterhost
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Naam omzetting in Azure en de naam van de virtuele cluster-host
 
-Het Azure-cloudplatform biedt niet de optie om virtuele IP-adressen te configureren, zoals zwevende IP-adressen. U hebt een alternatieve oplossing nodig om een virtueel IP-adres in te stellen om de clusterbron in de cloud te bereiken. 
+Het Azure-Cloud platform biedt geen optie voor het configureren van virtuele IP-adressen, zoals zwevende IP-adressen. U hebt een alternatieve oplossing nodig om een virtueel IP-adres in te stellen om de cluster bron in de cloud te bereiken. 
 
-De Azure Load Balancer-service biedt een *interne load balancer* voor Azure. Met de interne load balancer bereiken clients het cluster via het virtuele IP-adres van het cluster. 
+De Azure Load Balancer-service biedt een *interne Load Balancer* voor Azure. Met de interne load balancer bereiken clients het cluster via het virtuele IP-adres van het cluster. 
 
-Implementeer de interne load balancer in de resourcegroep die de clusterknooppunten bevat. Configureer vervolgens alle benodigde poortdoorstuurregels met behulp van de sondepoortenpoorten van de interne load balancer. De clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server lost het IP-adres van het cluster op. De interne load balancer verwerkt poortdoorsturen naar het actieve knooppunt van het cluster.
+Implementeer de interne load balancer in de resource groep die de cluster knooppunten bevat. Configureer vervolgens alle benodigde regels voor het door sturen van poorten met behulp van de test poorten van de interne load balancer. De clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server lost het IP-adres van het cluster op. De interne load balancer verwerkt poort door sturen naar het actieve knoop punt van het cluster.
 
-![Figuur 1: Configuratie van failoverclustering van Windows Server in Azure zonder gedeelde schijf][sap-ha-guide-figure-1001]
+![Afbeelding 1: configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
 
-_**Figuur 1:** Configuratie van windows Server-failoverclustering in Azure zonder gedeelde schijf_
+_**Afbeelding 1:** Configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf_
 
-## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS HA met bestandsshare
+## <a name="sap-ascsscs-ha-with-file-share"></a>SAP ASCS/SCS HA met bestands share
 
-SAP ontwikkelde een nieuwe aanpak en een alternatief voor gedeelde clusterschijven voor het clusteren van een SAP ASCS/SCS-exemplaar op een Windows-failovercluster. In plaats van gedeelde clusterschijven te gebruiken, u een SMB-bestandsshare gebruiken om algemene gehostbestanden van SAP te implementeren.
+SAP heeft een nieuwe benadering en een alternatief voor gedeelde cluster schijven ontwikkeld voor het clusteren van een SAP ASCS/SCS-exemplaar op een Windows-failovercluster. In plaats van gedeelde cluster schijven kunt u een SMB-bestands share gebruiken voor het implementeren van SAP Global host-bestanden.
 
 > [!NOTE]
-> Een SMB-bestandsshare is een alternatief voor het gebruik van gedeelde clusterschijven voor het clusteren van SAP ASCS/SCS-exemplaren.  
+> Een SMB-bestands share is een alternatief voor het gebruik van gedeelde cluster schijven voor het clusteren van SAP ASCS/SCS-instanties.  
 >
 
-Deze architectuur is specifiek op de volgende manieren:
+Deze architectuur is op de volgende manieren specifiek:
 
-* SAP centrale diensten (met een eigen bestandsstructuur en berichten- en wachtrijprocessen) staan los van de SAP global host-bestanden.
-* SAP centrale diensten worden uitgevoerd onder een SAP ASCS/SCS-exemplaar.
-* Sap ASCS/SCS-exemplaar is geclusterd \<en is toegankelijk met\> de virtuele hostnaam ASCS/SCS.
-* SAP global files worden geplaatst op het mkb-bestand \<delen en\> worden \\ \\ &lt;benaderd met&gt;behulp van\\&lt;&gt;de\.SAP global host host naam: SAP global host \sapmnt SID \SYS ..
-* De instantie SAP ASCS/SCS is geïnstalleerd op een lokale schijf op beide clusterknooppunten.
-* De \<naam van het virtuele\> hostnetwerk van &lt;ASCS/SCS verschilt van de wereldwijde host&gt;van SAP.
+* SAP Central-Services (met een eigen bestands structuur en berichten-en bewerkings processen) zijn gescheiden van de SAP Global host-bestanden.
+* SAP Central Services wordt uitgevoerd onder een SAP ASCS/SCS-exemplaar.
+* Het SAP ASCS/SCS-exemplaar is geclusterd en is toegankelijk \<via de naam van de virtuele\> hostnaam ASCS/SCS.
+* SAP Global-bestanden worden geplaatst op de SMB-bestands share en worden geopend met \<behulp van\> de SAP Global \\ \\ &lt;host host name&gt;:\\&lt;SAP&gt;Global\.host \sapmnt sid \SYS..
+* Het SAP ASCS/SCS-exemplaar wordt geïnstalleerd op een lokale schijf op beide cluster knooppunten.
+* De \<naam van de virtuele-ASCS\> /SCS van het netwerk &lt;wijkt af van&gt;de SAP Global host.
 
-![Figuur 2: SAP ASCS/SCS HA-architectuur met mkb-bestandsshare][sap-ha-guide-figure-8004]
+![Afbeelding 2: SAP ASCS/SCS HA Architecture met SMB-bestands share][sap-ha-guide-figure-8004]
 
-_**Figuur 2:** Nieuwe SAP ASCS/SCS HA-architectuur met een smb-bestandsaandeel_
+_**Afbeelding 2:** Nieuwe SAP ASCS/SCS HA-architectuur met een SMB-bestands share_
 
-Vereisten voor een aandeel van een MKB-bestand:
+Vereisten voor een SMB-bestands share:
 
-* SMB 3.0 (of hoger) protocol.
-* Mogelijkheid om Active Directory access control lists (ACL's) in te stellen voor Active Directory-gebruikersgroepen en het `computer$` computerobject.
-* De bestandsshare moet HA-ingeschakeld zijn:
-    * Schijven die worden gebruikt om bestanden op te slaan, mogen geen enkel storingspunt zijn.
-    * Server- of VM-downtime leidt niet tot downtime in het bestandsshare.
+* SMB 3,0-protocol (of hoger).
+* De mogelijkheid om Active Directory toegangs beheer lijsten (Acl's) in te stellen voor Active Directory gebruikers `computer$` groepen en het computer object.
+* De bestands share moet HA-ingeschakeld zijn:
+    * Schijven die worden gebruikt voor het opslaan van bestanden mogen geen Single Point of Failure zijn.
+    * Uitval tijd van de server of VM leidt niet tot uitval tijd op de bestands share.
 
-De \<SAP\> SID-clusterrol bevat geen gedeelde clusterschijven of een algemene clusterbron voor bestandsshare.
-
-
-![Figuur 3: \<\> SAP SID-clusterrolbronnen voor het gebruik van een bestandsshare][sap-ha-guide-figure-8005]
-
-_**Figuur 3:** SAP &lt;&gt; SID-clusterrolbronnen voor het gebruik van een bestandsshare_
+De rol \<SAP\> sid cluster bevat geen gedeelde cluster schijven of een algemene bestands share cluster bron.
 
 
-## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Schaal-out bestandsshares met Storage Spaces Direct in Azure als SAPMNT-bestandsshare
+![Afbeelding 3: SAP \<sid\> -cluster functie resources voor het gebruik van een bestands share][sap-ha-guide-figure-8005]
 
-U een scale-out bestandsshare gebruiken om sap-globale hostbestanden te hosten en te beveiligen. Een scale-out bestandsshare biedt ook een zeer beschikbare SAPMNT file share service.
+_**Afbeelding 3:** SAP &lt;sid&gt; -cluster functie resources voor het gebruik van een bestands share_
 
-![Figuur 4: Scale-out bestandsshare gebruikt om SAP global host files te beschermen][sap-ha-guide-figure-8006]
 
-_**Figuur 4:** Een scale-out bestandsshare dat wordt gebruikt om sap-globale hostbestanden te beschermen_
+## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Scale-out bestands shares met Opslagruimten Direct in azure als een SAPMNT-bestands share
+
+U kunt een scale-out bestands share gebruiken om SAP Global host-bestanden te hosten en te beveiligen. Een scale-out bestands share biedt ook een Maxi maal beschik bare SAPMNT-bestands share service.
+
+![Afbeelding 4: scale-out bestands share die wordt gebruikt voor het beveiligen van SAP Global host-bestanden][sap-ha-guide-figure-8006]
+
+_**Afbeelding 4:** Een scale-out bestands share die wordt gebruikt voor het beveiligen van SAP Global host files_
 
 > [!IMPORTANT]
-> Scale-out bestandsshares worden volledig ondersteund in de Microsoft Azure-cloud en in on-premises omgevingen.
+> Scale-out bestands shares worden volledig ondersteund in de Microsoft Azure Cloud en in on-premises omgevingen.
 >
 
-Een scale-out bestandsshare biedt een zeer beschikbare en horizontaal schaalbare SAPMNT-bestandsshare.
+Een scale-out bestands share biedt een Maxi maal beschik bare en horizon taal schaal bare SAPMNT-bestands share.
 
-Storage Spaces Direct wordt gebruikt als gedeelde schijf voor een scale-out bestandsshare. U Storage Spaces Direct gebruiken om zeer beschikbare en schaalbare opslag te bouwen met behulp van servers met lokale opslag. Gedeelde opslag die wordt gebruikt voor een scale-out bestandsshare, zoals voor SAP global host-bestanden, is geen enkel storingspunt.
+Opslagruimten Direct wordt gebruikt als een gedeelde schijf voor een scale-out bestands share. U kunt Opslagruimten Direct gebruiken om Maxi maal beschik bare en schaal bare opslag te bouwen met behulp van servers met lokale opslag. Gedeelde opslag die wordt gebruikt voor een scale-out bestands share, zoals voor SAP Global host-bestanden, is geen Single Point of Failure.
 
-Houd bij het kiezen van Direct aan opslagruimten rekening met deze use cases:
+Houd bij het kiezen van Opslagruimten Direct rekening met het volgende:
 
-- De virtuele machines die worden gebruikt om het cluster Direct voor opslagruimten te bouwen, moeten worden geïmplementeerd in een Azure-beschikbaarheidsset.
-- Voor noodherstel van een direct cluster voor opslagruimten u [Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)gebruiken.
-- Het wordt niet ondersteund om het storage space direct-cluster uit te rekken over verschillende Azure Availability Zones.
+- De virtuele machines die worden gebruikt voor het bouwen van het Opslagruimten Direct cluster moeten worden geïmplementeerd in een beschikbaarheidsset van Azure.
+- Voor herstel na nood gevallen van een Opslagruimten Direct cluster kunt u [Azure site Recovery-Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)gebruiken.
+- Het wordt niet ondersteund voor het uitrekken van het directe cluster voor opslag ruimte in verschillende Azure-beschikbaarheidszones.
 
-### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>SAP-vereisten voor scale-out bestandsshares in Azure
+### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>SAP-vereisten voor scale-out bestands shares in azure
 
-Als u een scale-out bestandsshare wilt gebruiken, moet uw systeem aan de volgende vereisten voldoen:
+Als u een scale-out bestands share wilt gebruiken, moet uw systeem voldoen aan de volgende vereisten:
 
-* Ten minste twee clusterknooppunten voor een scale-out bestandsshare.
-* Elk knooppunt moet ten minste twee lokale schijven hebben.
-* Om prestatieredenen moet u *spiegelende tolerantie*gebruiken:
-    * Tweerichtingsspiegeling voor een scale-out bestandsshare met twee clusterknooppunten.
-    * Driewegspiegeling voor een scale-out bestandsshare met drie (of meer) clusterknooppunten.
-* We raden drie (of meer) clusterknooppunten aan voor een scale-out bestandsshare, met drie-weg spiegeling.
-    Deze instelling biedt meer schaalbaarheid en meer opslagtolerantie dan de scale-out bestandsshare-installatie met twee clusterknooppunten en tweerichtingsmirroring.
+* Ten minste twee cluster knooppunten voor een scale-out bestands share.
+* Elk knoop punt moet ten minste twee lokale schijven hebben.
+* Om prestatie redenen moet u de *tolerantie voor mirroring*gebruiken:
+    * Twee richtings spiegeling voor een scale-out bestands share met twee cluster knooppunten.
+    * Mirroring in drie richtingen voor een scale-out bestands share met drie (of meer) cluster knooppunten.
+* We raden u aan drie (of meer) cluster knooppunten voor een scale-out bestands share te gebruiken met mirroring in drie richtingen.
+    Deze installatie biedt meer schaal baarheid en meer flexibiliteit dan bij het instellen van scale-out bestands shares met twee cluster knooppunten en mirroring in twee richtingen.
 * U moet Azure Premium-schijven gebruiken.
-* We raden u aan Azure Managed Disks te gebruiken.
-* We raden u aan volumes op te maken met behulp van Resilient File System (ReFS).
-    * Zie [SAP Note 1869038 - SAP-ondersteuning voor ReFs-bestandssysteem][1869038] en het [hoofdstuk Van het bestandssysteem][planning-volumes-s2d-choosing-filesystem] kiezen van het artikel Planning volumes in Storage Spaces Direct voor meer informatie.
-    * Zorg ervoor dat u [de cumulatieve update van Microsoft KB4025334 installeert.][kb4025334]
-* U Azure VM-formaten uit de DS-serie of DSv2-serie gebruiken.
-* Voor goede netwerkprestaties tussen VM's, die nodig zijn voor direct schijfsynchronisatie met opslagruimten, gebruikt u een VM-type dat ten minste een "hoge" netwerkbandbreedte heeft.
-    Zie voor meer informatie de specificaties van de [DSv2-serie][dv2-series] en [DS-serie.][ds-series]
-* We raden u aan een aantal niet-toegewezen capaciteit in de opslaggroep te reserveren. Het verlaten van een aantal niet-toegewezen capaciteit in de opslag pool geeft volumes ruimte om te repareren "op zijn plaats" als een station uitvalt. Dit verbetert de veiligheid en prestaties van gegevens.  Zie [Volumegrootte kiezen][choosing-the-size-of-volumes-s2d]voor meer informatie .
-* U hoeft de interne load balancer van Azure niet te configureren voor de \<naam\>van het scale-out netwerk voor bestandsshare, zoals voor SAP global host. Dit wordt gedaan \<voor de virtuele hostnaam\> ASCS/SCS van het SAP ASCS/SCS-exemplaar of voor het DBMS. Een scale-out bestandsshare schaalt de belasting op alle clusterknooppunten. \<SAP global\> host gebruikt het lokale IP-adres voor alle clusterknooppunten.
+* U wordt aangeraden Azure Managed Disks te gebruiken.
+* U wordt aangeraden volumes te Format teren met behulp van een ReFS-bestands systeem.
+    * Zie [SAP Note 1869038-SAP-ondersteuning voor ReFs-bestands][1869038] systeem en de [keuze van het bestandssysteem][planning-volumes-s2d-choosing-filesystem] in het artikel de volumes in opslagruimten direct plannen voor meer informatie.
+    * Zorg ervoor dat u de [cumulatieve update van micro soft KB4025334][kb4025334]installeert.
+* U kunt Azure VM-grootten van de DS-serie of de DSv2-serie gebruiken.
+* Gebruik voor goede netwerk prestaties tussen virtuele machines, die nodig zijn voor Opslagruimten Direct schijf synchronisatie, een VM-type met ten minste een ' hoge ' netwerk bandbreedte.
+    Zie de specificaties van de [DSv2-serie][dv2-series] en de [DS-serie][ds-series] voor meer informatie.
+* U wordt aangeraden enkele niet-toegewezen capaciteit in de opslag groep te reserveren. Als er sprake is van een niet-toegewezen capaciteit in de opslag groep, kan de schijf ruimte in beschik bare volumes herstellen als een station mislukt. Dit verbetert de veiligheid en prestaties van uw gegevens.  Zie [volume grootte kiezen][choosing-the-size-of-volumes-s2d]voor meer informatie.
+* U hoeft de interne Azure-load balancer niet te configureren voor de scale-out bestands share netwerk naam, zoals voor \<SAP Global host\>. Dit wordt gedaan voor de \<virtuele ASCS/SCS\> van het SAP ASCS/SCS-exemplaar of voor het DBMS. Een scale-out bestands share verg root de belasting over alle cluster knooppunten. \<SAP Global host\> gebruikt het lokale IP-adres voor alle cluster knooppunten.
 
 
 > [!IMPORTANT]
-> U de naam van de SAPMNT-bestandsshare, die verwijst naar \<SAP global host,\>niet wijzigen. SAP ondersteunt alleen de naam 'sapmnt'.
+> U kunt de naam van de bestands share voor SAPMNT, \<die verwijst naar\>de SAP Global host, niet wijzigen. SAP ondersteunt alleen de share naam ' sapmnt '.
 >
-> Zie [SAP Note 2492395 - Kan de naam sapmnt van het aandeel worden gewijzigd voor][2492395] meer informatie?
+> Zie [SAP Note 2492395-kan de share naam sapmnt wijzigen?][2492395] voor meer informatie.
 
-### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>SAP ASCS/SCS-exemplaren configureren en een scale-out bestandsshare in twee clusters
+### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>SAP-ASCS/SCS-instanties en een scale-out bestands share in twee clusters configureren
 
-U SAP ASCS/SCS-exemplaren implementeren in \<één\> cluster, met hun eigen SAP SID-clusterrol. In dit geval configureert u de scale-out bestandsshare op een ander cluster, met een andere clusterrol.
+U kunt SAP ASCS/SCS-exemplaren in één cluster implementeren met hun eigen SAP \<sid\> -cluster functie. In dit geval configureert u de scale-out bestands share op een ander cluster, met een andere cluster functie.
 
 > [!IMPORTANT]
->In dit scenario is het exemplaar SAP ASCS/SCS geconfigureerd om toegang \\ \\ &lt;te&gt;krijgen tot\\&lt;de&gt;globale SAP-host met behulp van UNC-pad SAP global host \sapmnt SID \SYS\.
+>In dit scenario is het SAP ASCS/SCS-exemplaar geconfigureerd voor toegang tot de SAP Global host met behulp \\ \\ &lt;van UNC Path&gt;SAP\\&lt;Global&gt;host \sapmnt sid \SYS\.
 >
 
-![Figuur 5: SAP ASCS/SCS-exemplaar en een scale-out bestandsshare geïmplementeerd in twee clusters][sap-ha-guide-figure-8007]
+![Afbeelding 5: SAP ASCS/SCS instance en een scale-out bestands share geïmplementeerd in twee clusters][sap-ha-guide-figure-8007]
 
-_**Figuur 5:** Een SAP ASCS/SCS-exemplaar en een scale-out bestandsshare geïmplementeerd in twee clusters_
+_**Afbeelding 5:** Een SAP ASCS/SCS-exemplaar en een scale-out bestands share die in twee clusters zijn geïmplementeerd_
 
 > [!IMPORTANT]
-> In de Azure-cloud moet elk cluster dat wordt gebruikt voor SAP- en scale-outbestandsshares worden geïmplementeerd in de eigen Azure-beschikbaarheidsset of in Azure Availability Zones. Dit zorgt voor gedistribueerde plaatsing van de clusterVM's over de onderliggende Azure-infrastructuur. Beschikbaarheid Zone-implementaties worden ondersteund met deze technologie.
+> In de Azure-Cloud moeten alle clusters die worden gebruikt voor SAP en scale-out bestands shares worden geïmplementeerd in een eigen Azure-beschikbaarheidsset of op verschillende Azure-beschikbaarheidszones. Dit zorgt voor gedistribueerde plaatsing van de cluster-Vm's in de onderliggende Azure-infra structuur. Implementaties van beschikbaarheids zones worden ondersteund met deze technologie.
 >
 
-## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Algemene bestandsshare met SIOS DataKeeper als gedeelde clusterschijven
+## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Algemene bestands share met SIOS data keeper als gedeelde cluster schijven
 
 
-Een generieke bestandsshare is een andere optie voor het bereiken van een zeer beschikbare bestandsshare.
+Een algemene bestands share is een andere optie voor het bereiken van een Maxi maal beschik bare bestands share.
 
-In dit geval u een SIOS-oplossing van derden gebruiken als gedeelde clusterschijf.
+In dit geval kunt u een SIOS-oplossing van derden gebruiken als gedeelde cluster schijf.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De Azure-infrastructuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en bestandsshare voor een SAP ASCS/SCS-exemplaar][sap-high-availability-infrastructure-wsfc-file-share]
-* [SAP NetWeaver HA installeren op een Windows-failovercluster en bestandsshare voor een SAP ASCS/SCS-exemplaar][sap-high-availability-installation-wsfc-shared-disk]
-* [Een direct uitschalende bestandsserver met twee nodes openen voor UPD-opslag in Azure][deploy-sofs-s2d-in-azure]
+* [De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een bestands share voor een SAP ASCS/SCS-exemplaar][sap-high-availability-infrastructure-wsfc-file-share]
+* [SAP NetWeaver HA installeren op een Windows-failovercluster en bestands share voor een SAP ASCS/SCS-exemplaar][sap-high-availability-installation-wsfc-shared-disk]
+* [Een Opslagruimten Direct scale-out Bestands server met twee knoop punten implementeren voor UPD-opslag in azure][deploy-sofs-s2d-in-azure]
 * [Opslagruimten Direct in Windows Server 2016][s2d-in-win-2016]
-* [Diepe duik: Volumes in Storage Spaces Direct][deep-dive-volumes-in-s2d]
+* [Uitgebreide kennis: volumes in Opslagruimten Direct][deep-dive-volumes-in-s2d]

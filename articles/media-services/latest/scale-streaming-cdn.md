@@ -1,7 +1,7 @@
 ---
 title: Inhoud streamen met CDN-integratie
 titleSuffix: Azure Media Services
-description: Meer informatie over streaming content met CDN-integratie, evenals prefetching en Origin-Assist CDN-Prefetch.
+description: Meer informatie over het streamen van inhoud met CDN-integratie en het vooraf ophalen en verkrijgen van CDN-prefetch.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,148 +13,148 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128056"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Inhoud streamen met CDN-integratie
 
 Azure Content Delivery Network (CDN) biedt ontwikkelaars een globale oplossing voor het snel leveren van inhoud met hoge bandbreedte door de inhoud op strategische, fysieke knooppunten in de hele wereld in de cache op te slaan.  
 
-CDN caches inhoud gestreamd vanaf een Media Services [Streaming Endpoint (origin)](streaming-endpoint-concept.md) per codec, per streaming protocol, per bitrate, per containerformaat en per encryptie/DRM. Voor elke combinatie van codec-streaming protocol-container format-bitrate-encryptie, zal er een aparte CDN-cache.
+Met CDN wordt inhoud gestreamd van een Media Services [streaming-eind punt (oorsprong)](streaming-endpoint-concept.md) per codec, per streaming-protocol, per bitrate, per container indeling en per VERSLEUTELING/DRM. Voor elke combi natie van codec-streaming protocol-container indeling-bitrate-Encryption is er een afzonderlijke CDN-cache.
 
-De populaire inhoud wordt rechtstreeks vanuit de CDN-cache weergegeven, zolang het videofragment in de cache wordt opgeslagen. Live content wordt waarschijnlijk in de cache opgeslagen omdat veel mensen naar exact hetzelfde kijken. On-demand content kan een beetje lastiger zijn omdat je wat inhoud hebben die populair is en sommige niet. Als u miljoenen video-activa waar geen van hen zijn populair (slechts een of twee kijkers per week), maar je hebt duizenden mensen kijken naar alle verschillende video's, de CDN wordt veel minder effectief.
+De populaire inhoud wordt rechtstreeks vanuit de CDN-cache verwerkt zolang het video fragment in de cache wordt opgeslagen. Live-inhoud wordt waarschijnlijk in de cache opgeslagen, omdat er meestal veel mensen precies hetzelfde zijn. Inhoud op aanvraag kan een beetje trickier, omdat u een aantal inhoud zou kunnen hebben die populair is en niet. Als u miljoenen video-assets hebt waar geen van de elementen populair zijn (slechts één of twee kijkers per week), maar duizenden personen die alle verschillende Video's volgen, wordt het CDN veel minder effectief.
 
-Je moet ook overwegen hoe adaptieve streaming werkt. Elk afzonderlijk videofragment wordt in de cache opgeslagen als zijn eigen entiteit. Stel je bijvoorbeeld de eerste keer voor dat een bepaalde video wordt bekeken. Als de kijker hier en daar slechts een paar seconden kijkt, worden alleen de videofragmenten die zijn gekoppeld aan wat de persoon heeft bekeken in de cache opgeslagen in CDN. Met adaptieve streaming heb je meestal 5 tot 7 verschillende bitrates video. Als een persoon kijkt naar een bitrate en een andere persoon kijkt naar een andere bitrate, dan zijn ze elk apart in de cache in het CDN. Zelfs als twee mensen kijken naar dezelfde bitrate, kunnen ze worden gestreamd via verschillende protocollen. Elk protocol (HLS, MPEG-DASH, Smooth Streaming) wordt apart opgeslagen. Dus elke bitrate en protocol worden apart in de cache opgeslagen en alleen de videofragmenten die zijn aangevraagd, worden in de cache opgeslagen.
+U moet ook nadenken over de werking van adaptieve streaming. Elk afzonderlijk video fragment wordt in de cache opgeslagen als een eigen entiteit. Stel bijvoorbeeld dat de eerste keer dat een bepaalde video wordt bekeken. Als de Viewer niet meer dan een paar seconden ziet, worden er alleen video fragmenten weer gegeven die zijn gekoppeld aan wat de persoon bekijkt in het cache geheugen in CDN. Met adaptieve streaming hebt u doorgaans 5 tot 7 verschillende bitrates voor video. Als één persoon een bitrate bekijkt en een andere persoon een andere bitsnelheid bekijkt, worden ze afzonderlijk in het CDN opgeslagen. Zelfs als twee mensen dezelfde bitsnelheid volgen, kunnen ze worden gestreamd via verschillende protocollen. Elk protocol (HLS, MPEG-DASH, Smooth Streaming) wordt afzonderlijk in de cache opgeslagen. Elke bitsnelheid en elk protocol worden afzonderlijk in de cache opgeslagen en alleen de video fragmenten die zijn aangevraagd, worden in de cache opgeslagen.
 
-Bij de beslissing om CDN in te schakelen op het [streaming-eindpunt van](streaming-endpoint-concept.md)Media Services, moet u rekening houden met het aantal verwachte kijkers. CDN helpt alleen als je veel kijkers verwacht voor je content. Als de maximale gelijktijdigheid van kijkers lager is dan 500, is het raadzaam om CDN uit te schakelen, omdat CDN het beste schaalt met gelijktijdigheid.
+Als u wilt bepalen of CDN moet worden ingeschakeld op het Media Services [streaming-eind punt](streaming-endpoint-concept.md), moet u rekening houden met het aantal verwachte viewers. CDN helpt alleen als u veel kijkers voor uw inhoud verwacht. Als de maximale gelijktijdigheid van viewers lager is dan 500, is het raadzaam CDN uit te scha kelen omdat CDN het beste met gelijktijdigheid kan worden geschaald.
 
-In dit onderwerp wordt gesproken over het inschakelen van [CDN-integratie](#enable-azure-cdn-integration). Het verklaart ook prefetching (active caching) en het [Origin-Assist CDN-Prefetch](#origin-assist-cdn-prefetch) concept.
+In dit onderwerp vindt u informatie over het inschakelen van [CDN-integratie](#enable-azure-cdn-integration). Ook wordt uitgelegd hoe u vooraf haalt (actieve cache) en het concept van [CDN-prefetch](#origin-assist-cdn-prefetch) .
 
 ## <a name="considerations"></a>Overwegingen
 
-* Het [streaming-eindpunt](streaming-endpoint-concept.md) `hostname` en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt of niet.
-* Als u de mogelijkheid nodig hebt om uw inhoud met of zonder CDN te testen, maakt u een ander streamingeindpunt dat niet is ingeschakeld voor CDN.
+* Het [streaming-eind punt](streaming-endpoint-concept.md) `hostname` en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt.
+* Als u de mogelijkheid wilt bieden om uw inhoud te testen met of zonder CDN, maakt u een ander streaming-eind punt dat niet is ingeschakeld voor CDN.
 
-## <a name="enable-azure-cdn-integration"></a>Azure CDN-integratie inschakelen
+## <a name="enable-azure-cdn-integration"></a>Integratie van Azure CDN inschakelen
 
 > [!IMPORTANT]
-> U CDN niet inschakelen voor proefversies of Azure-accounts voor studenten.
+> U kunt CDN niet inschakelen voor Azure-accounts voor proef abonnementen of studenten.
 >
-> CDN-integratie is ingeschakeld in alle Azure-datacenters, behalve de regio's van de federale overheid en China.
+> CDN-integratie is ingeschakeld in alle Azure-data centers, met uitzonde ring van regio's van de federale overheid en China.
 
-Nadat een streaming-eindpunt is ingericht met CDN ingeschakeld, is er een bepaalde wachttijd op Media Services voordat DNS-update wordt uitgevoerd om het streaming-eindpunt in kaart te brengen naar CDN-eindpunt.
+Nadat een streaming-eind punt is ingericht met CDN ingeschakeld, is er een gedefinieerde wacht tijd op Media Services voordat de DNS-update wordt uitgevoerd om het streaming-eind punt toe te wijzen aan het CDN-eind punt.
 
-Als u het CDN later wilt uitschakelen/inschakelen, moet uw streaming-eindpunt in de **gestopte** status staan. Het kan tot twee uur duren voordat de Azure CDN-integratie is ingeschakeld en dat de wijzigingen actief zijn voor alle CDN-POP's. U echter uw streaming-eindpunt starten en streamen zonder onderbrekingen vanaf het streaming-eindpunt. Zodra de integratie is voltooid, wordt de stream geleverd vanuit het CDN. Tijdens de inrichtingsperiode bevindt uw streaming-eindpunt zich in de **beginstatus** en u de verminderde prestaties waarnemen.
+Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Het kan tot twee uur duren voordat de Azure CDN integratie is ingeschakeld en de wijzigingen voor alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbrekingen van het streaming-eind punt. Zodra de integratie is voltooid, wordt de stroom geleverd vanuit het CDN. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
 
-Wanneer het standaardstreamingeindpunt wordt gemaakt, wordt het standaard geconfigureerd met Standaard Verizon. U Premium Verizon- of Standard Akamai-providers configureren met REST API's.
+Wanneer het standaard streaming-eind punt wordt gemaakt, wordt het standaard geconfigureerd met standaard Verizon. U kunt Premium Verizon-of Standard Akamai-providers configureren met behulp van REST Api's.
 
-Azure Media Services-integratie met Azure CDN wordt geïmplementeerd op **Azure CDN van Verizon** voor standaard streaming eindpunten. Premium streaming-eindpunten kunnen worden geconfigureerd met alle **Azure CDN-prijsniveaus en -providers.**
+Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers**.
 
 > [!NOTE]
 > Zie het [CDN-overzicht](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.
 
-## <a name="determine-if-a-dns-change-was-made"></a>Bepalen of er een DNS-wijziging is aangebracht
+## <a name="determine-if-a-dns-change-was-made"></a>Bepalen of een DNS-wijziging is doorgevoerd
 
-U met behulp van <https://www.digwebinterface.com>. Als u azureedge.net domeinnamen in de resultaten ziet, wordt het verkeer nu naar het CDN gericht.
+U kunt bepalen of de DNS-wijziging is doorgevoerd in een streaming-eind punt (het verkeer wordt omgeleid naar <https://www.digwebinterface.com>de Azure CDN) met behulp van. Als u azureedge.net-domein namen in de resultaten ziet, wordt het verkeer nu naar het CDN gewijsd.
 
-## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
+## <a name="origin-assist-cdn-prefetch"></a>Oorsprong-door CDN-prefetch
 
-CDN caching is een reactief proces. Als CDN kan voorspellen wat het volgende object wordt aangevraagd, kan CDN het volgende object proactief opvragen en in de cache bewaren. Met dit proces u een cache-hit voor alle (of de meeste) van de objecten, die de prestaties verbetert.
+CDN-caching is een reactief proces. Als CDN kan voors pellen wat het volgende object zal worden aangevraagd, kan CDN het volgende object proactief aanvragen en in de cache opslaan. Met dit proces kunt u een cache-treffer voor alle (of de meeste) objecten bereiken, waardoor de prestaties verbeteren.
 
-Het concept van prefetching streeft ernaar om objecten te plaatsen aan de "rand van het internet" in afwachting dat deze zullen worden gevraagd door de speler op korte termijn, waardoor de tijd om dat object te leveren aan de speler.
+Het concept van het vooraf ophalen streeft naar het plaatsen van objecten aan de rand van het Internet, in afwachting dat deze door de speler onmiddellijk worden aangevraagd, waardoor de tijd voor het leveren van dat object aan de speler wordt verminderd.
 
-Om dit doel te bereiken, moeten een streaming endpoint (origin) en CDN op een aantal manieren hand in hand werken:
+Om dit doel te verzorgen, moet een streaming-eind punt (oorsprong) en CDN op een paar manieren aan de hand worden gebracht:
 
-- De oorsprong van Media Services moet de "intelligentie" (Origin-Assist) hebben om CDN te informeren over het volgende object dat vooraf moet worden opgehaald.
-- CDN doet de prefetch en caching (CDN-prefetch deel). CDN moet ook de "intelligentie" om de oorsprong te informeren of het nu een prefetch of een regelmatige halen, omgaan met de 404 reacties, en een manier om eindeloze prefetch lus te voorkomen.
+- De Media Services oorsprong moet de ' intelligentie ' (oorsprong-assistent) hebben om CDN het volgende object te informeren over prefetch.
+- CDN voert de prefetch-en caching-functie (CDN-prefetch) uit. CDN moet ook beschikken over de "intelligentie" om de oorsprong te informeren of het een prefetch of een regel matige ophaal bewerking is, de antwoorden van 404 afhandelen en een manier om oneindige prefetch-lus te voor komen.
 
 ### <a name="benefits"></a>Voordelen
 
-De voordelen van de *Origin-Assist CDN-Prefetch-functie* zijn:
+De voor delen van de functie voor *CDN-prefetch van oorsprong-assistentie zijn* onder andere:
 
-- Prefetch verbetert de kwaliteit van het afspelen van video's door verwachte videosegmenten vooraf aan de rand te positioneren tijdens het afspelen, de latentie voor de kijker te verminderen en de downloadtijden van het videosegment te verbeteren. Dit resulteert in een snellere opstarttijd voor video's en lagere rebufferingsgebeurtenissen.
-- Dit concept is van toepassing op het algemene CDN-oorsprongsscenario en is niet beperkt tot media.
-- Akamai heeft deze functie toegevoegd aan [Akamai Cloud Embed (ACE).](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html)
+- Met Prefetch wordt de video weergave kwaliteit verbeterd door verwachte video segmenten aan de rand te plaatsen tijdens het afspelen, het verminderen van de latentie tot de viewer en het verbeteren van download tijden voor video segmenten. Dit leidt tot snellere video-start tijd en kleinere rebuffering van exemplaren.
+- Dit concept is van toepassing op het algemene CDN-Origin-scenario en is niet beperkt tot media.
+- Akamai heeft deze functie toegevoegd aan [Akamai Cloud Embed (ACE)](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html).
 
 > [!NOTE]
-> Deze functie is nog niet van toepassing op het Akamai CDN-eindpunt dat is geïntegreerd met het streamingeindpunt van Media Services. Het is echter beschikbaar voor Media Services-klanten die een reeds bestaand Akamai-contract hebben en aangepaste integratie vereisen tussen Akamai CDN en de oorsprong van Media Services.
+> Deze functie is nog niet van toepassing op het Akamai CDN dat is geïntegreerd met Media Services streaming-eind punt. Het is echter wel beschikbaar voor Media Services klanten die een reeds bestaand Akamai-contract hebben en aangepaste integratie vereisen tussen Akamai CDN en de Media Services oorsprong.
 
 ### <a name="how-it-works"></a>Hoe werkt het?
 
-CDN-ondersteuning `Origin-Assist CDN-Prefetch` voor de headers (voor zowel live als video on-demand streaming) is beschikbaar voor klanten die een direct contract hebben met Akamai CDN. De functie omvat de volgende HTTP-header uitwisselingen tussen Akamai CDN en de oorsprong van Media Services:
+CDN-ondersteuning voor `Origin-Assist CDN-Prefetch` de headers (voor Live en video on-demand streaming) is beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. De functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en de Media Services Origin:
 
-|HTTP-koptekst|Waarden|Afzender|Ontvanger|Doel|
+|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (standaard) of 0 |CDN|Oorsprong|Als u wilt aangeven dat CDN vooraf is ingeschakeld.|
-|`CDN-Origin-Assist-Prefetch-Path`| Voorbeeld: <br/>Fragmenten(video=14000000000,format=mpd-time-cmaf)|Oorsprong|CDN|Prefetch-pad naar CDN verstrekken.|
-|`CDN-Origin-Assist-Prefetch-Request`|1 (prefetch-aanvraag) of 0 (regulier verzoek)|CDN|Oorsprong|Het aangeven van het verzoek van CDN is een prefetch.|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN is ingeschakeld.|
+|`CDN-Origin-Assist-Prefetch-Path`| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Om het prefetch-pad naar CDN op te geven.|
+|`CDN-Origin-Assist-Prefetch-Request`|1 (prefetch-aanvraag) of 0 (normale aanvraag)|CDN|Oorsprong|Om aan te geven dat de aanvraag van CDN een prefetch is.|
 
-Als u een deel van de header-uitwisseling in actie wilt zien, u de volgende stappen proberen:
+Als u een deel van de koptekst uitwisseling in actie wilt zien, kunt u de volgende stappen uitvoeren:
 
-1. Gebruik Postman of cURL om een verzoek uit te geven aan de oorsprong van mediaservices voor een audio- of videosegment of fragment. Zorg ervoor dat `CDN-Origin-Assist-Prefetch-Enabled: 1` u de koptekst toevoegt aan de aanvraag.
-2. In het antwoord moet u `CDN-Origin-Assist-Prefetch-Path` de koptekst met een relatief pad als waarde zien.
+1. Gebruik postman of krul om een aanvraag uit te geven aan de Media Services oorsprong van een audio-of video segment of fragment. Zorg ervoor dat u de header `CDN-Origin-Assist-Prefetch-Enabled: 1` toevoegt in de aanvraag.
+2. In het antwoord ziet u de koptekst `CDN-Origin-Assist-Prefetch-Path` met een relatief pad als waarde.
 
-### <a name="supported-streaming-protocols"></a>Ondersteunde streamingprotocollen
+### <a name="supported-streaming-protocols"></a>Ondersteunde streaming protocollen
 
-De `Origin-Assist CDN-Prefetch` functie ondersteunt de volgende streamingprotocollen voor live en on-demand streaming:
+De `Origin-Assist CDN-Prefetch` functie ondersteunt de volgende streaming-protocollen voor Live en on-demand streaming:
 
 * HLS v3
 * HLS v4
 * HLS CMAF
-* DASH (CSF)
-* DASH (CMAF)
-* Vloeiende streaming
+* STREEPJE (KVP)
+* STREEPJE (CMAF)
+* Vloeiend streamen
 
 ### <a name="faqs"></a>Veelgestelde vragen
 
-* Wat gebeurt er als een prefetch-pad-URL ongeldig is, zodat CDN prefetch een 404 krijgt?
+* Wat gebeurt er als de URL van een prefetch-pad ongeldig is zodat CDN prefetch een 404 krijgt?
 
-    CDN cachet slechts een 404-respons gedurende 10 seconden (of andere geconfigureerde waarde).
+    CDN zal alleen gedurende 10 seconden (of een andere geconfigureerde waarde) een 404-antwoord in de cache opslaan.
 
-* Stel dat u een on-demand video hebt. Als CDN-prefetch is ingeschakeld, impliceert deze functie dan dat zodra een client het eerste videosegment aanvraagt, prefetch een lus start om alle volgende videosegmenten op dezelfde bitrate te prefetchen?
+* Stel dat u een video op aanvraag hebt. Als CDN-prefetch is ingeschakeld, impliceert deze functie dat wanneer een client het eerste video segment opvraagt, wordt door prefetch een lus gestart om alle volgende video segmenten met dezelfde bitrate te prefetch?
 
-    Nee, CDN-prefetch wordt alleen gedaan na een door de klant geïnitieerde aanvraag/reactie. CDN-prefetch wordt nooit geactiveerd door een prefetch, om een prefetch-lus te voorkomen.
+    Nee, CDN-prefetch wordt pas uitgevoerd na een aanvraag/antwoord dat door de client is gestart. CDN-prefetch wordt nooit geactiveerd door een prefetch, om een prefetch-lus te voor komen.
 
-* Is de Origin-Assist CDN-Prefetch-functie altijd ingeschakeld? Hoe kan het worden in-/uitgeschakeld?
+* Is oorsprong: de functie voor het vooraf gebruiken van CDN-prefetch is altijd ingeschakeld? Hoe kan deze worden in-of uitgeschakeld?
 
-    Deze functie is standaard uitgeschakeld. Klanten moeten het inschakelen via Akamai API.
+    Deze functie is standaard uitgeschakeld. Klanten moeten deze inschakelen via Akamai API.
 
-* Wat gebeurt er met Origin-Assist als het volgende segment of fragment nog niet beschikbaar is?
+* Wat gebeurt er met live streamen als het volgende segment of fragment nog niet beschikbaar is?
 
-    In dit geval biedt `CDN-Origin-Assist-Prefetch-Path` de oorsprong van Media Services geen header en treedt CDN-prefetch niet op.
+    In dit geval bieden `CDN-Origin-Assist-Prefetch-Path` de Media Services oorsprong geen header en kan CDN-prefetch niet worden uitgevoerd.
 
-* Hoe `Origin-Assist CDN-Prefetch` werkt het met dynamische manifestfilters?
+* Hoe `Origin-Assist CDN-Prefetch` werkt het met dynamische manifest filters?
 
-    Deze functie werkt onafhankelijk van manifestfilter. Wanneer het volgende fragment uit een filtervenster is, wordt de URL nog steeds gelokaliseerd door naar het raw-clientmanifest te kijken en vervolgens terug te keren als CDN-voorhaal-antwoordkop. Dus CDN krijgt de URL van een fragment dat is gefilterd uit DASH / HLS / Smooth manifest. De speler zal echter nooit een GET-verzoek doen aan CDN om dat fragment op te halen, omdat dat fragment niet is opgenomen in het DASH/HLS/Smooth-manifest dat door de speler wordt bewaard (de speler weet niet het bestaan van dat fragment).
+    Deze functie werkt onafhankelijk van het manifest filter. Wanneer het volgende fragment zich buiten een filter venster bevindt, wordt de bijbehorende URL nog steeds gevonden door naar het onbewerkte client manifest te kijken en vervolgens te retour neren als de header van het prefetch-verzoek van de CDN. Daarom krijgt CDN de URL van een fragment dat wordt uitgefilterd op basis van een DASH-HLS/glad-manifest. De speler maakt echter nooit een GET-aanvraag naar CDN om het fragment op te halen, omdat dat fragment niet is opgenomen in het DASH-HLS/Smooth-manifest dat door de speler wordt bewaard (de speler weet niet dat het aanwezige fragment is).
 
-* Kan DASH MPD/HLS playlist/Smooth manifest vooraf worden opgehaald?
+* Kan streepje MPD/HLS-afspeel lijst/glad manifest vooraf worden opgehaald?
 
-    Nee, DASH MPD, HLS-hoofdafspeellijst, HLS-variantafspeellijst of vloeiende manifest-URL wordt niet toegevoegd aan de prefetch-header.
+    Nee, streepje MPD, HLS, HLS variant List of Smooth manifest URL is niet toegevoegd aan de prefetch-header.
 
-* Zijn prefetch-URL's relatief of absoluut?
+* Zijn prefetch-Url's relatief of absoluut?
 
-    Hoewel Akamai CDN beide toestaat, biedt de oorsprong van Media Services alleen relatieve URL's voor prefetch-pad, omdat er geen duidelijk voordeel is in het gebruik van absolute URL's.
+    Hoewel Akamai CDN beide toestaat, biedt de Media Services oorsprong alleen relatieve Url's voor het prefetch-pad, omdat er geen voor deel is van het gebruik van absolute Url's.
 
-* Werkt deze functie met drm-beveiligde inhoud?
+* Werkt deze functie met inhoud die is beveiligd met DRM?
 
-    Ja, aangezien deze functie op HTTP-niveau werkt, wordt het geen segment/fragment gedecodeerd of ontsnapt. Het maakt niet uit of de inhoud is versleuteld of niet.
+    Ja, omdat deze functie werkt op het HTTP-niveau, wordt geen segment/fragment gedecodeerd of geparseerd. Het maakt niet uit of de inhoud is versleuteld of niet.
 
-* Werkt deze functie met Server Side Ad Insertion (SSAI)?
+* Werkt deze functie met AD-invoeging (SSAI) aan de server zijde?
     
-    Dit geldt voor originele/hoofdinhoud (de oorspronkelijke video-inhoud vóór het invoegen van advertenties) werkt, omdat SSAI de tijdstempel van de broninhoud van de oorsprong van Media Services niet wijzigt. Of deze functie werkt met advertentie-inhoud, hangt af van de vraag of de oorsprong van advertenties Origin-Assist ondersteunt. Als advertentie-inhoud bijvoorbeeld ook wordt gehost in Azure Media Services (dezelfde of afzonderlijke oorsprong), wordt de advertentie-inhoud ook vooraf opgehaald.
+    Dit geldt voor oorspronkelijke/hoofd inhoud (de oorspronkelijke video-inhoud vóór het invoegen van AD), omdat SSAI de tijds tempel van de bron inhoud niet wijzigt van de Media Services oorsprong. Of deze functie werkt met AD-inhoud, is afhankelijk van of AD Origin ondersteuning biedt voor oorsprong-assistentie. Als bijvoorbeeld de inhoud van de advertentie ook wordt gehost in Azure Media Services (zelfde of afzonderlijke oorsprong), wordt de inhoud van AD ook vooraf opgehaald.
 
-* Werkt deze functie met UHD/HEVC-inhoud?
+* Werkt deze functie met de inhoud van UHD/HEVC?
 
     Ja.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, geef feedback, ontvang updates
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het communityartikel [van Azure Media Services](media-services-community.md) om verschillende manieren te zien waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Controleer het document [Streaming Endpoint (Origin).](streaming-endpoint-concept.md)
-* Het voorbeeld [in deze repository](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) laat zien hoe u het standaard streaming eindpunt start met .NET.
+* Zorg ervoor dat u het [streaming-eind punt document (origin)](streaming-endpoint-concept.md) bekijkt.
+* Het voor beeld [in deze opslag plaats](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) laat zien hoe u het standaard streaming-eind punt met .net kunt starten.

@@ -1,29 +1,29 @@
 ---
-title: Azure Application Insights Data Model - Telemetrie traceren
-description: Application Insights-gegevensmodel voor tracetelemetrie
+title: Azure-toepassing Insights-gegevens model-telemetrie traceren
+description: Application Insights gegevens model voor het traceren van telemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671950"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>Trace telemetrie: datamodel Application Insights
+# <a name="trace-telemetry-application-insights-data-model"></a>Telemetrie traceren: Application Insights gegevens model
 
-Trace telemetrie (in `printf` [Application Insights)](../../azure-monitor/app/app-insights-overview.md)vertegenwoordigt stijltraceringsinstructies die door tekst zijn doorzocht. `Log4Net`, `NLog`en andere op tekst gebaseerde logboekbestandsvermeldingen worden vertaald naar exemplaren van dit type. Het spoor heeft geen metingen als een uitbreidbaarheid.
+Telemetrie traceren [Application Insights](../../azure-monitor/app/app-insights-overview.md)(in Application Insights `printf` ) vertegenwoordigt opmaak overzichten die met tekst worden doorzocht. `Log4Net`, `NLog`en andere vermeldingen op basis van tekst logboek bestanden worden omgezet in exemplaren van dit type. De tracering heeft geen metingen als een uitbreid baarheid.
 
 ## <a name="message"></a>Bericht
 
-Trace bericht.
+Traceer bericht.
 
 Maximale lengte: 32768 tekens
 
 ## <a name="severity-level"></a>Ernstniveau
 
-Trace ernst niveau. Waarde kan `Verbose` `Information`worden `Warning` `Error`, `Critical`, , , .
+Niveau van de ernst van de tracering. `Verbose`Waarde kan `Information`, `Warning`,, `Error`,. `Critical`
 
 ## <a name="custom-properties"></a>Aangepaste eigenschappen
 
@@ -31,8 +31,8 @@ Trace ernst niveau. Waarde kan `Verbose` `Information`worden `Warning` `Error`, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verken .NET trace logs in Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Ontdek Java trace logs in Application Insights.](../../azure-monitor/app/java-trace-logs.md)
-- Zie [gegevensmodel](data-model.md) voor toepassingsinzichten en gegevensmodel.
-- [Aangepaste tracetelemetrie schrijven](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Bekijk [platforms](../../azure-monitor/app/platforms.md) die worden ondersteund door Application Insights.
+- [Verken .net-traceer Logboeken in Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+- [Verken Java-traceer Logboeken in Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- Zie [gegevens model](data-model.md) voor Application Insights typen en gegevens model.
+- [Telemetrie van aangepaste tracering schrijven](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
+- Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.

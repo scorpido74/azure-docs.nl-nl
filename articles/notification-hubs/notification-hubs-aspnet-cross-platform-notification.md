@@ -1,6 +1,6 @@
 ---
-title: Cross-platform meldingen verzenden naar gebruikers met Azure Notification Hubs (ASP.NET)
-description: Meer informatie over het gebruik van Notification Hubs-sjablonen om in één aanvraag een platformagnostische melding te verzenden die zich richt op alle platforms.
+title: Kruis platform meldingen verzenden naar gebruikers met Azure Notification Hubs (ASP.NET)
+description: Meer informatie over het gebruik van Notification Hubs sjablonen voor het verzenden van een neutraal-melding die gericht is op alle platformen.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,33 +17,33 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
 ms.openlocfilehash: fc3cec348517244c8a7f54d2d3d17298c58e4262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80127051"
 ---
-# <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Cross-platformmeldingen verzenden met Azure Notification Hubs
+# <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Cross-platform meldingen verzenden met Azure Notification Hubs
 
-Deze zelfstudie bouwt voort op de vorige zelfstudie, [Meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs.] In die zelfstudie wordt beschreven hoe u meldingen pusht naar alle apparaten die zijn geregistreerd bij een specifieke geverifieerde gebruiker. Die aanpak vereiste meerdere verzoeken om een melding te sturen naar elk ondersteund clientplatform. Azure Notification Hubs ondersteunt sjablonen, waarmee u opgeven hoe een specifiek apparaat meldingen wil ontvangen. Deze methode vereenvoudigt het verzenden van cross-platform meldingen.
+Deze zelf studie is gebaseerd op de vorige zelf studie, [stuurt meldingen naar specifieke gebruikers met behulp van Azure notification hubs]. In deze zelf studie wordt beschreven hoe u meldingen pusht naar alle apparaten die zijn geregistreerd voor een specifieke geverifieerde gebruiker. Deze aanpak vereist meerdere aanvragen om een melding te verzenden naar elk ondersteund client platform. Azure Notification Hubs ondersteunt sjablonen, waarmee u kunt opgeven hoe een specifiek apparaat meldingen wil ontvangen. Deze methode vereenvoudigt het verzenden van cross-platform meldingen.
 
-In dit artikel wordt uitgelegd hoe u gebruik maken van sjablonen om een melding te verzenden die zich richt op alle platforms. In dit artikel wordt één verzoek gebruikt om een platformneutrale melding te verzenden. Zie [Overzicht van meldingenhubs][Templates]voor meer gedetailleerde informatie over sjablonen.
+In dit artikel wordt beschreven hoe u sjablonen kunt gebruiken om een melding te verzenden die gericht is op alle platformen. In dit artikel wordt één aanvraag gebruikt voor het verzenden van een platform neutrale melding. Zie [Notification hubs Overview][Templates]voor meer gedetailleerde informatie over sjablonen.
 
 > [!IMPORTANT]
-> Windows Phone-projecten 8.1 en eerder worden niet ondersteund in Visual Studio 2019. Zie [Targeting en compatibiliteit van Visual Studio 2019 Platform](/visualstudio/releases/2019/compatibility)voor meer informatie.
+> Windows Phone projecten 8,1 en lager worden niet ondersteund in Visual Studio 2019. Zie [Visual Studio 2019-platform doelen en-compatibiliteit](/visualstudio/releases/2019/compatibility)voor meer informatie.
 
 > [!NOTE]
-> Met Notification Hubs kan een apparaat meerdere sjablonen registreren met dezelfde tag. In dit geval resulteert een binnenkomend bericht dat zich richt op de tag in meerdere meldingen die naar het apparaat worden verzonden, één voor elke sjabloon. Met dit proces u hetzelfde bericht weergeven in meerdere visuele meldingen, zoals zowel als badge als als een pop-upmelding in een Windows Store-app.
+> Met Notification Hubs kan een apparaat meerdere sjablonen registreren met behulp van dezelfde tag. In dit geval wordt een inkomend bericht dat de tag bedoelt, in meerdere meldingen bezorgd bij het apparaat, één voor elke sjabloon. Met dit proces kunt u hetzelfde bericht weer geven in meerdere visuele meldingen, zoals een badge en als een pop-upmelding in een Windows Store-app.
 
-## <a name="send-cross-platform-notifications-using-templates"></a>Cross-platform meldingen verzenden met sjablonen
+## <a name="send-cross-platform-notifications-using-templates"></a>Cross-platform meldingen verzenden met behulp van sjablonen
 
-In deze sectie wordt de voorbeeldcode gebruikt die u hebt ingebouwd in de [zelfstudie Meldingen verzenden naar specifieke gebruikers] met behulp van de zelfstudie van Azure Notification Hubs. U kunt het voorbeeld downloaden uit [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
+In deze sectie wordt gebruikgemaakt van de voorbeeld code die u hebt gemaakt in de zelf studie [meldingen verzenden naar specifieke gebruikers met behulp van Azure notification hubs] . U kunt het voorbeeld downloaden uit [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
-Ga als volgt te werk om cross-platform meldingen te verzenden met behulp van sjablonen:
+Voer de volgende stappen uit om cross-platform meldingen te verzenden met behulp van sjablonen:
 
-1. Vouw in Visual Studio in **Solution Explorer**de map **Controllers** uit en open het *RegisterController.cs-bestand.*
+1. Vouw in Visual Studio in **Solution Explorer**de map **controllers** uit en open vervolgens het bestand *RegisterController.cs* .
 
-1. Zoek het codeblok `Put` in de methode waarmee een nieuwe `switch` registratie wordt gemaakt en vervang de inhoud door de volgende code:
+1. Zoek het code blok in de `Put` methode die een nieuwe registratie maakt en vervang de `switch` inhoud door de volgende code:
 
     ```csharp
     switch (deviceUpdate.Platform)
@@ -74,9 +74,9 @@ Ga als volgt te werk om cross-platform meldingen te verzenden met behulp van sja
     }
     ```
 
-    Deze code roept de platformspecifieke methode aan om een sjabloonregistratie te maken in plaats van een native registratie. Omdat sjabloonregistraties afkomstig zijn van native registraties, hoeft u bestaande registraties niet te wijzigen.
+    Met deze code wordt de platformspecifieke methode aangeroepen voor het maken van een sjabloon registratie in plaats van een systeem eigen registratie. Omdat sjabloon registraties zijn afgeleid van systeem eigen registraties, hoeft u geen bestaande registraties te wijzigen.
 
-1. Open **in Solution Explorer**in de map **Controllers** het *NotificationsController.cs* bestand. Vervang de `Post`-methode door de volgende code:
+1. Open in **Solution Explorer**in de map **Controllers** het bestand *NotificationsController.cs* . Vervang de `Post`-methode door de volgende code:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -91,20 +91,20 @@ Ga als volgt te werk om cross-platform meldingen te verzenden met behulp van sja
     }
     ```
 
-    Deze code stuurt een melding naar alle platforms tegelijk. Je geeft geen eigen lading op. Notification Hubs bouwt en levert het juiste laadvermogen aan elk apparaat met de opgegeven tagwaarde, zoals gespecificeerd in de geregistreerde sjablonen.
+    Met deze code wordt op hetzelfde moment een melding verzonden naar alle platformen. U geeft geen systeem eigen Payload op. Notification Hubs bouwt en levert de juiste Payload aan elk apparaat met de opgegeven label waarde, zoals opgegeven in de geregistreerde sjablonen.
 
-1. Uw Web API-project opnieuw publiceren.
+1. Publiceer uw web API-project opnieuw.
 
 1. Voer de client-app opnieuw uit om te controleren of de registratie is geslaagd.
 
-1. Implementeer de client-app optioneel op een tweede apparaat en voer de app uit. Op elk apparaat wordt een melding weergegeven.
+1. U kunt de client-app eventueel implementeren op een tweede apparaat en vervolgens de app uitvoeren. Op elk apparaat wordt een melding weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u deze zelfstudie hebt voltooid, vindt u meer informatie over meldingenhubs en sjablonen in deze artikelen:
+Nu u deze zelf studie hebt voltooid, kunt u meer informatie vinden over Notification Hubs en sjablonen in deze artikelen:
 
-* Zie de [pushmeldingen voor specifieke Windows-apparaten met zelfstudie universal Windows Platform-toepassingen][Use Notification Hubs to send breaking news] voor een ander scenario voor het gebruik van sjablonen.
-* Zie [Overzicht van meldingenhubs][Templates]voor meer gedetailleerde informatie over sjablonen.
+* Zie voor een ander scenario voor het gebruik van sjablonen de [Push meldingen naar specifieke Windows-apparaten met universeel Windows-platform][Use Notification Hubs to send breaking news] -zelf studie voor toepassingen.
+* Zie [Notification hubs Overview][Templates]voor meer gedetailleerde informatie over sjablonen.
 
 <!-- Anchors. -->
 

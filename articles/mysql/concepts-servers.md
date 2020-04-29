@@ -1,57 +1,57 @@
 ---
-title: Serverconcepten - Azure Database voor MySQL
-description: In dit onderwerp worden overwegingen en richtlijnen weergegeven voor het werken met Azure Database voor MySQL-servers.
+title: Server concepten-Azure Database for MySQL
+description: In dit onderwerp vindt u overwegingen en richt lijnen voor het werken met Azure Database for MySQL-servers.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 300470b2e8fb10fda7cfc59517cef00c07bf0632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537003"
 ---
-# <a name="server-concepts-in-azure-database-for-mysql"></a>Serverconcepten in Azure Database voor MySQL
+# <a name="server-concepts-in-azure-database-for-mysql"></a>Server concepten in Azure Database for MySQL
 
-In dit artikel vindt u overwegingen en richtlijnen voor het werken met Azure Database voor MySQL-servers.
+In dit artikel vindt u overwegingen en richt lijnen voor het werken met Azure Database for MySQL-servers.
 
-## <a name="what-is-an-azure-database-for-mysql-server"></a>Wat is een Azure Database voor MySQL-server?
+## <a name="what-is-an-azure-database-for-mysql-server"></a>Wat is een Azure Database for MySQL-server?
 
-Een Azure Database voor MySQL-server is een centraal beheerpunt voor meerdere databases. Het is dezelfde MySQL-serverconstructie die u mogelijk kent in de on-premises wereld. Met name de Azure Database for MySQL-service wordt beheerd, biedt prestatiegaranties en legt toegang en functies op serverniveau bloot.
+Een Azure Database for MySQL server is een centraal beheer punt voor meerdere data bases. Het is dezelfde MySQL-server constructie die u mogelijk kent in de on-premises wereld. Met name de Azure Database for MySQL-service wordt beheerd, levert prestatie garanties en biedt toegang en functies op server niveau.
 
-Een Azure-database voor MySQL-server:
+Een Azure Database for MySQL-server:
 
-- Is gemaakt binnen een Azure-abonnement.
-- Is de bovenliggende bron voor databases.
-- Biedt een naamruimte voor databases.
-- Is een container met een sterke levenslange semantiek - verwijder een server en verwijdert de opgenomen databases.
-- Collocates resources in een regio.
-- Biedt een verbindingseindpunt voor server- en databasetoegang.
-- Biedt de ruimte voor beheerbeleid dat van toepassing is op de databases: login, firewall, gebruikers, rollen, configuraties, enz.
-- Is beschikbaar in meerdere versies. Zie [Ondersteunde Azure Database voor MySQL-databaseversies voor](./concepts-supported-versions.md)meer informatie.
+- Wordt gemaakt binnen een Azure-abonnement.
+- Is de bovenliggende resource voor data bases.
+- Biedt een naam ruimte voor data bases.
+- Is een container met sterke levens duur semantiek: een server verwijderen en de Inge sloten data bases verwijdert.
+- Groepeert bronnen in een regio.
+- Biedt een verbindings eindpunt voor toegang tot de server en data base.
+- Voorziet in het bereik voor beheer beleid dat van toepassing is op de bijbehorende data bases: aanmelden, firewall, gebruikers, rollen, configuraties, enzovoort.
+- Is beschikbaar in meerdere versies. Zie [supported Azure database for MySQL data base versions](./concepts-supported-versions.md)(Engelstalig) voor meer informatie.
 
-Op een Azure Database voor MySQL-server kunt u een of meerdere databases maken. U ervoor kiezen om één database per server te maken om alle bronnen te gebruiken of om meerdere databases te maken om de bronnen te delen. De prijzen zijn gestructureerd per server, gebaseerd op de configuratie van de prijscategorie, vCores en opslag (GB). Zie [Prijsniveaus voor](./concepts-service-tiers.md)meer informatie .
+Op een Azure Database voor MySQL-server kunt u een of meerdere databases maken. U kunt ervoor kiezen om één data base per server te maken voor het gebruik van alle resources of om meerdere data bases te maken om de resources te delen. De prijzen zijn gestructureerd per server, op basis van de configuratie van de prijs categorie, vCores en opslag (GB). Zie [prijs categorieën](./concepts-service-tiers.md)voor meer informatie.
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hoe maak ik verbinding en verifieer ik met een Azure Database voor MySQL-server?
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hoe kan ik verbinding maken en verifiëren met een Azure Database for MySQL-server?
 
-De volgende elementen zorgen voor een veilige toegang tot uw database.
+De volgende elementen helpen veilige toegang tot uw data base te garanderen.
 
 |     |     |
 | :-- | :-- |
-| **Verificatie en autorisatie** | Azure Database voor MySQL-server ondersteunt native MySQL-verificatie. U verbinding maken en verifiëren met een server met de beheerdersaanmelding van de server. |
-| **Protocol** | De service ondersteunt een op berichten gebaseerd protocol dat door MySQL wordt gebruikt. |
-| **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domeinsockets. |
-| **Firewall** | Om uw gegevens te beschermen, voorkomt een firewallregel alle toegang tot uw databaseserver totdat u opgeeft welke computers toestemming hebben. Zie [Azure Database voor MySQL Server-firewallregels](./concepts-firewall-rules.md). |
-| **SSL** | De service ondersteunt het afdwingen van SSL-verbindingen tussen uw toepassingen en uw databaseserver.  Zie [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL](./howto-configure-ssl.md) (SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure-database voor MySQL) voor meer informatie. |
+| **Verificatie en autorisatie** | Azure Database for MySQL-server ondersteunt native MySQL-verificatie. U kunt verbinding maken met en verifiëren met een server met de beheerders aanmelding van de server. |
+| **Protocolsubstatus** | De service ondersteunt een op berichten gebaseerd protocol dat wordt gebruikt door MySQL. |
+| **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domein sockets. |
+| **Firewall** | Ter bescherming van uw gegevens voor komt een firewall regel alle toegang tot uw database server, totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure database for MySQL Server firewall-regels](./concepts-firewall-rules.md). |
+| **SSL** | De service biedt ondersteuning voor het afdwingen van SSL-verbindingen tussen uw toepassingen en uw database server.  Zie [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL](./howto-configure-ssl.md) (SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure-database voor MySQL) voor meer informatie. |
 
-## <a name="how-do-i-manage-a-server"></a>Hoe beheer ik een server?
+## <a name="how-do-i-manage-a-server"></a>Hoe kan ik een server beheren?
 
-U Azure Database voor MySQL-servers beheren met behulp van de Azure-portal of de Azure CLI.
+U kunt Azure Database for MySQL servers beheren door gebruik te maken van de Azure Portal of de Azure CLI.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Azure Database for [MySQL-overzicht voor](./overview.md) een overzicht van de service
-- Zie [Servicelagen](./concepts-service-tiers.md) voor informatie over specifieke resourcequota en -beperkingen op basis van uw **servicelaag**
-- Zie [Verbindingsbibliotheken voor Azure Database voor MySQL voor](./concepts-connection-libraries.md)informatie over het maken van verbinding met de service.
+- Zie [overzicht van Azure database for MySQL](./overview.md) voor een overzicht van de service
+- Zie [service lagen](./concepts-service-tiers.md) voor informatie over specifieke resource quota en beperkingen op basis **van uw servicelaag**.
+- Zie [verbindings bibliotheken voor Azure database for MySQL](./concepts-connection-libraries.md)voor meer informatie over het maken van een verbinding met de service.

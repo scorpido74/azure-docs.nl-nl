@@ -1,23 +1,23 @@
 ---
-title: Prestatieaanbevelingen - Azure Database voor MariaDB
-description: In dit artikel wordt de functie Prestatieaanbeveling in Azure Database voor MariaDB beschreven
+title: Aanbevelingen voor prestaties-Azure Database for MariaDB
+description: In dit artikel wordt de functie aanbevolen prestatie aanbeveling in Azure Database for MariaDB
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 838a4123bd5007f987f27674862409445967a2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79528095"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Prestatieaanbevelingen in Azure Database for MariaDB
 
-**Geldt voor:** Azure-database voor MariaDB 10.2
+**Van toepassing op:** Azure Database for MariaDB 10,2
 
-De functie Prestatieaanbevelingen analyseert uw databases om aangepaste suggesties te maken voor betere prestaties. Om de aanbevelingen te produceren, wordt in de analyse gekeken naar verschillende databasekenmerken, waaronder schema. Stel [Query Store](concepts-query-store.md) op uw server in om de functie Prestatieaanbevelingen volledig te gebruiken. Als het prestatieschema is uitgeschakeld, schakelt u Query Store in performance_schema en een subset van prestatieschema-instrumenten die nodig zijn voor de functie. Nadat u een prestatieaanbeveling hebt geïmplementeerd, moet u de prestaties testen om de impact van deze wijzigingen te evalueren.
+Met de functie voor prestatie verbeteringen worden uw data bases geanalyseerd om aangepaste suggesties te maken voor betere prestaties. Voor het produceren van de aanbevelingen kijken de analyse naar verschillende database kenmerken, waaronder schema. Schakel het [query archief](concepts-query-store.md) op de server in om de functie aanbevelingen voor prestaties volledig te benutten. Als het prestatie schema is uitgeschakeld, schakelt het inschakelen van query Store performance_schema en een subset van performance schema-instrumenten in die voor de functie zijn vereist. Nadat u een aanbevolen prestatie aanbeveling hebt geïmplementeerd, moet u de prestaties testen om de impact van deze wijzigingen te evalueren.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -27,26 +27,26 @@ De machtigingen van **Eigenaar** of **Inzender** zijn vereist voor het uitvoeren
 
 De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) analyseert workloads op de server om indexen te analyseren met de mogelijkheid om prestaties te verbeteren.
 
-Open **prestatieaanbevelingen** in het gedeelte **Intelligente prestaties** van de menubalk op de Azure-portalpagina voor uw MariaDB-server.
+Open **prestatie aanbevelingen** van het gedeelte **intelligente prestaties** van de menu balk op de pagina Azure portal voor uw MariaDB-server.
 
 ![Landingspagina van Prestatieaanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Selecteer **Analyseren** en een database kiezen, waarmee de analyse wordt gestart. Afhankelijk van uw werkbelasting kan het enkele minuten duren voordat de analyse is voltooid. Wanneer de analyse is voltooid, verschijnt er een melding in de portal. Analyse voert een diepgaand onderzoek van uw database. Wij raden u aan analyses uit te voeren tijdens daluren.
+Selecteer **analyseren** en kies een Data Base, waarmee de analyse wordt gestart. Afhankelijk van uw werk belasting kan het enkele minuten duren voordat de analyse is voltooid. Wanneer de analyse is voltooid, verschijnt er een melding in de portal. Analyse voert een grondige controle uit van uw data base. We raden u aan om analyses uit te voeren tijdens rustige Peri Oden.
 
-In het venster **Aanbevelingen** wordt een lijst met aanbevelingen weergegeven als deze zijn gevonden en de bijbehorende query-id die deze aanbeveling heeft gegenereerd. Met de query-id u de weergave [mysql.query_store](concepts-query-store.md#mysqlquery_store) gebruiken om meer te weten te komen over de query.
+In het venster **aanbevelingen** wordt een lijst met aanbevelingen weer gegeven als deze zijn gevonden en de gerelateerde query-id die deze aanbeveling heeft gegenereerd. Met de query-ID kunt u de [mysql. query_store](concepts-query-store.md#mysqlquery_store) weer gave gebruiken om meer te weten te komen over de query.
 
-![Nieuwe pagina Prestatieaanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Nieuwe pagina prestatie aanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt toepassen, kopieert u de querytekst en voert u deze uit van uw client naar keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren.
+Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt Toep assen, kopieert u de query tekst en voert u deze uit vanaf de client van uw keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren.
 
-## <a name="recommendation-types"></a>Aanbevelingstypen
+## <a name="recommendation-types"></a>Aanbevelings typen
 
-Momenteel worden alleen *Aanbevelingen voor index maken* ondersteund.
+Momenteel worden alleen aanbevelingen voor het *maken van indexen* ondersteund.
 
-### <a name="create-index-recommendations"></a>Indexaanbevelingen maken
+### <a name="create-index-recommendations"></a>Aanbevelingen voor index maken
 
-*Indexaanbevelingen maken,* stellen nieuwe indexen voor om de meest voorkomende of tijdrovende query's in de werkbelasting te versnellen. Voor dit aanbevelingstype moet [queryarchief](concepts-query-store.md) worden ingeschakeld. Query Store verzamelt querygegevens en biedt de gedetailleerde queryruntime- en frequentiestatistieken die de analyse gebruikt om de aanbeveling te doen.
+Bij het *maken van index* aanbevelingen worden nieuwe indexen voorgesteld om de meest frequente uitvoeringen of tijdrovende query's in de werk belasting te versnellen. Voor dit aanbevelings type moet het [query archief](concepts-query-store.md) worden ingeschakeld. In query Store worden query gegevens verzameld en worden de gedetailleerde query runtime en de frequentie statistieken beschreven die de analyse gebruikt om de aanbeveling te doen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [monitoring en tuning](concepts-monitoring.md) in Azure Database voor MariaDB.
+- Meer informatie over het [bewaken en afstemmen](concepts-monitoring.md) van Azure database for MariaDB.

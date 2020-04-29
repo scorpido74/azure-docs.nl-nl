@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect cloud provisioning agent: Automatische upgrade | Microsoft Documenten'
-description: In dit artikel wordt de ingebouwde automatische upgradefunctie beschreven in de Azure AD Connect-cloudinrichtingsagent.
+title: 'Azure AD Connect Cloud-inrichtings agent: automatische upgrade | Microsoft Docs'
+description: In dit artikel wordt de ingebouwde functie voor automatische upgrades in de Azure AD Connect Cloud inrichtings agent beschreven.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,36 +16,36 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190310"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect cloud provisioning agent: automatische upgrade
+# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect Cloud-inrichtings agent: automatische upgrade
 
-Met de automatische upgradefunctie u ervoor zorgen dat de installatie van uw Azure Active Directory (Azure AD) Connect-cloudinrichtingsagent altijd up-to-date is.
+Zorg ervoor dat uw Azure Active Directory (Azure AD) Connect-installatie van de Cloud-inrichtings agent altijd up-to-date is met de functie voor automatische upgrades.
 
-De agent is hier geïnstalleerd: "Program files\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe"
+De agent wordt hier geïnstalleerd: ' Program files\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe '
 
-Als u uw versie wilt verifiëren, klikt u met de rechtermuisknop op de uitvoerbare eigenschappen en selecteert u eigenschappen en vervolgens details.
+Als u uw versie wilt controleren, klikt u met de rechter muisknop op het uitvoer bare bestand en selecteert u eigenschappen en vervolgens Details.
 
-![Agent-bestandsversie](media/how-to-automatic-upgrade/agent1.png)
+![Versie van agent bestand](media/how-to-automatic-upgrade/agent1.png)
 
-De agentupdater is hier geïnstalleerd: "Program files\Azure AD Connect Provisioning Agent Updater\AzureADConnectAgentUpdater.exe"
+De agent Updater wordt hier geïnstalleerd: ' Program files\Azure AD Connect inrichtings agent Updater\AzureADConnectAgentUpdater.exe '
 
-Als u uw versie wilt verifiëren, klikt u met de rechtermuisknop op de uitvoerbare eigenschappen en selecteert u eigenschappen en vervolgens details.
+Als u uw versie wilt controleren, klikt u met de rechter muisknop op het uitvoer bare bestand en selecteert u eigenschappen en vervolgens Details.
 
-![Agent updater-versie](media/how-to-automatic-upgrade/agent2.png)
+![Versie van agent updater](media/how-to-automatic-upgrade/agent2.png)
 
 ## <a name="uninstall-the-agent"></a>Agent verwijderen
-Als u de agent wilt verwijderen, gaat u naar **Verwijderen of een programma wijzigen** en verwijdert u het volgende:
+Als u de agent wilt verwijderen, gaat u naar **een programma verwijderen of wijzigen** en verwijdert u het volgende:
 
-- **Microsoft Azure AD Connect Agent Updater**
-- **Microsoft Azure AD Connect Provisioning Agent**
-- **Microsoft Azure AD Connect Provisioning Agent-pakket**
+- **Updater Microsoft Azure AD-agent**
+- **Inrichtings agent Microsoft Azure AD verbinding maken**
+- **Inrichtings agent pakket Microsoft Azure AD koppelen**
 
-![Agent verwijdering](media/how-to-automatic-upgrade/agent3.png)
+![Agent verwijderen](media/how-to-automatic-upgrade/agent3.png)
 
 ## <a name="next-steps"></a>Volgende stappen 
 

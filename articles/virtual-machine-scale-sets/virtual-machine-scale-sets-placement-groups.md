@@ -1,6 +1,6 @@
 ---
-title: Werken met grote Azure Virtual Machine Scale Sets
-description: Wat u moet weten over grote Azure virtuele machine schaalsets om ze te gebruiken in uw toepassing.
+title: Werken met grote Azure-Virtual Machine Scale Sets
+description: Wat u moet weten over grote virtuele-machine schaal sets van Azure, zodat u ze in uw toepassing kunt gebruiken.
 author: cynthn
 ms.author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79531036"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Werken met grote virtuele-machineschaalsets
@@ -35,7 +35,7 @@ Overweeg de volgende vereisten voordat u beslist of uw toepassing doeltreffend g
 - Laag-4 taakverdeling met schaalsets die uit meerdere plaatsingsgroepen bestaan vereist [Azure Load Balancer standaard-SKU](../load-balancer/load-balancer-standard-overview.md). De Load Balancer standaard-SKU biedt extra voordelen, zoals de mogelijkheid om taken te verdelen tussen meerdere schaalsets. Standaard-SKU vereist ook dat er een netwerkbeveiligingsgroep is gekoppeld aan de schaalset, anders werken de NAT-pools niet correct. Als u de Azure Load Balancer basis-SKU moet gebruiken, zorgt u dat de schaalset is geconfigureerd voor het gebruik van één plaatsingsgroep. Dit is de standaardinstelling.
 - Laag-7 taakverdeling met de Azure Application Gateway wordt voor alle schaalsets ondersteund.
 - Een schaalset wordt gedefinieerd met één subnet. Zorg dat het subnet een adresruimte heeft die groot genoeg is voor alle virtuele machines die u nodig hebt. Standaard wordt een schaalset te groot ingericht (dat wil zeggen dat er tijdens de implementatie of bij het uitschalen extra virtuele machines worden gemaakt, waarvoor u niet hoeft te betalen), om de betrouwbaarheid en prestaties van de implementatie te verbeteren. Zorg daarom voor een adresruimte die 20% groter is dan het aantal virtuele machines waarnaar u wilt gaan schalen.
-- Fout- en upgradedomeinen zijn alleen consistent binnen een plaatsingsgroep. Deze architectuur verandert niet de algemene beschikbaarheid van een schaalset, omdat virtuele machines evenredig worden verdeeld over verschillende fysieke hardware. Als u moet garanderen dat twee virtuele machines zich op verschillende hardware bevinden, betekent dit echter wel dat u ervoor moet zorgen dat ze zich in verschillende foutdomeinen in dezelfde plaatsingsgroep bevinden. Raadpleeg deze link [Beschikbaarheidsopties.](/azure/virtual-machines/windows/availability) 
+- Fout- en upgradedomeinen zijn alleen consistent binnen een plaatsingsgroep. Deze architectuur verandert niet de algemene beschikbaarheid van een schaalset, omdat virtuele machines evenredig worden verdeeld over verschillende fysieke hardware. Als u moet garanderen dat twee virtuele machines zich op verschillende hardware bevinden, betekent dit echter wel dat u ervoor moet zorgen dat ze zich in verschillende foutdomeinen in dezelfde plaatsingsgroep bevinden. Raadpleeg deze [beschik bare opties](/azure/virtual-machines/windows/availability)voor de koppeling. 
 - Het foutdomein en de id van de plaatsingsgroep worden weergegeven in de _exemplaarweergave _ van een schaalset-VM. U kunt de exemplaarweergave van een schaalset-VM bekijken in de [Azure Resource Explorer](https://resources.azure.com/).
 
 ## <a name="creating-a-large-scale-set"></a>Een grote schaalset maken
@@ -75,7 +75,7 @@ Als u een grote schaalset maakt door een Azure Resource Manager-sjabloon te make
     }
 ```
 
-Voor een volledig voorbeeld van een setsjabloon op grote schaal verwijzen wij u naar [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
+Zie voor een volledig voor beeld van een sjabloon voor een grote schaalset [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Een bestaande schaalset converteren zodat deze meerdere plaatsingsgroepen omvat
 Als u een bestaande virtuele-machineschaalset geschikt wilt maken voor schaling naar meer dan 100 virtuele machines, moet u de eigenschap _singlePlacementGroup_ in het schaalsetmodel wijzigen naar _false_. Met de [Azure Resource Explorer](https://resources.azure.com/) kunt u controleren of deze eigenschap is gewijzigd. Zoek een bestaande schaalset, selecteer _Edit_ (Bewerken) en wijzig de eigenschap _singlePlacementGroup_. Als u deze eigenschap niet ziet, bekijkt u de schaalset misschien met een oudere versie van de Microsoft.Compute-API.

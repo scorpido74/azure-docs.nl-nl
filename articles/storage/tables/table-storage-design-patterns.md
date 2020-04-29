@@ -1,6 +1,6 @@
 ---
-title: Ontwerppatronen voor Azure-opslagtabellen | Microsoft Documenten
-description: Gebruik patronen voor Azure table service-oplossingen.
+title: Ontwerp patronen voor Azure Storage-tabellen | Microsoft Docs
+description: Gebruik patronen voor Azure Table service-oplossingen.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,557 +9,557 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529336"
 ---
 # <a name="table-design-patterns"></a>Tabelontwerppatronen
-In dit artikel worden enkele patronen beschreven die geschikt zijn voor gebruik met serviceoplossingen voor tabelservices. Ook zult u zien hoe u praktisch een aantal van de problemen en trade-offs besproken in andere tabel opslag ontwerp artikelen aan te pakken. In het volgende diagram worden de relaties tussen de verschillende patronen samengevat:  
+In dit artikel worden enkele patronen beschreven die geschikt zijn voor gebruik met Table service oplossingen. U zult ook zien hoe u een aantal van de problemen en commerciële benadert die worden besproken in andere ontwerp artikelen van Table-opslag. In het volgende diagram ziet u een overzicht van de relaties tussen de verschillende patronen:  
 
-![om gerelateerde gegevens op te zoeken](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
+![gerelateerde gegevens opzoeken](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-De patroonkaart hierboven markeert enkele relaties tussen patronen (blauw) en antipatronen (oranje) die in deze handleiding zijn gedocumenteerd. Er zijn van vele andere patronen die het overwegen waard zijn. Een van de belangrijkste scenario's voor Tabelservice is bijvoorbeeld het gebruik van het [gematerialiseerde weergavepatroon](https://msdn.microsoft.com/library/azure/dn589782.aspx) vanuit het [CQRS-patroon (Command Query Responsibility Segregation).](https://msdn.microsoft.com/library/azure/jj554200.aspx)  
+In het patroon schema hierboven ziet u een aantal relaties tussen patronen (blauw) en anti patronen (oranje) die in deze hand leiding worden beschreven. Er zijn veel andere patronen die moeten worden overwogen. Een van de belangrijkste scenario's voor Table service is bijvoorbeeld het gebruik van het [patroon gerealiseerde weer gave](https://msdn.microsoft.com/library/azure/dn589782.aspx) van het [CQRS-patroon (Command query](https://msdn.microsoft.com/library/azure/jj554200.aspx) promaterialing).  
 
-## <a name="intra-partition-secondary-index-pattern"></a>Secundair indexpatroon binnen partitie
-Sla meerdere kopieën van elke entiteit op met verschillende **RowKey-waarden** (in dezelfde partitie) om snelle en efficiënte opzoekingen en alternatieve sorteerorders in te schakelen met behulp van verschillende **RowKey-waarden.** Updates tussen kopieën kunnen consistent worden gehouden met behulp van EGT's.  
+## <a name="intra-partition-secondary-index-pattern"></a>Secundair index patroon voor de intra partitie
+Sla meerdere exemplaren van elke entiteit op met behulp van verschillende **RowKey** -waarden (in dezelfde partitie) om snelle en efficiënte zoek acties en alternatieve Sorteer volgorden mogelijk te maken met behulp van verschillende **RowKey** -waarden. Updates tussen kopieën kunnen consistent worden gehouden met behulp van EGTs.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-De tabelservice indexeert automatisch entiteiten met de waarden **PartitionKey** en **RowKey.** Hierdoor kan een clienttoepassing een entiteit efficiënt ophalen met behulp van deze waarden. Met behulp van de tabelstructuur die hieronder wordt weergegeven, kan een clienttoepassing bijvoorbeeld een puntquery gebruiken om een afzonderlijke werknemersentiteit op te halen met behulp van de afdelingsnaam en de werknemers-id (de **partitionkey-** en **rowkey-waarden).** Een client kan ook entiteiten ophalen die zijn gesorteerd op werknemers-id binnen elke afdeling.
+De Table service indexeert automatisch entiteiten met behulp van de waarden **PartitionKey** en **RowKey** . Hiermee kan een client toepassing een entiteit efficiënt ophalen met behulp van deze waarden. Met de tabel structuur die hieronder wordt weer gegeven, kan een client toepassing bijvoorbeeld een punt query gebruiken om een afzonderlijke werknemers entiteit op te halen met behulp van de afdelings naam en de werk nemer-ID (de waarden **PartitionKey** en **RowKey** ). Een client kan ook entiteiten ophalen die zijn gesorteerd op werk nemer-ID binnen elke afdeling.
 
-![Afbeelding06](media/storage-table-design-guide/storage-table-design-IMAGE06.png)
+![Image06](media/storage-table-design-guide/storage-table-design-IMAGE06.png)
 
-Als u ook een werknemer wilt kunnen vinden op basis van de waarde van een andere eigenschap, zoals e-mailadres, moet u een minder efficiënte partitiescan gebruiken om een overeenkomst te vinden. Dit komt omdat de tabelservice geen secundaire indexen biedt. Bovendien is er geen optie om een lijst met werknemers aan te vragen die in een andere volgorde zijn gesorteerd dan **RowKey-order.**  
+Als u ook een werknemers entiteit wilt kunnen vinden op basis van de waarde van een andere eigenschap, zoals e-mail adres, moet u een minder efficiënte partitie Scan gebruiken om een overeenkomst te vinden. Dit komt doordat de Table service geen secundaire indexen biedt. Daarnaast is er geen optie voor het aanvragen van een lijst met werk nemers die in een andere volg orde zijn gesorteerd dan **RowKey** order.  
 
 ### <a name="solution"></a>Oplossing
-Als u wilt werken aan het ontbreken van secundaire indexen, u meerdere kopieën van elke entiteit bij elke kopie opslaan met behulp van een andere **RowKey-waarde.** Als u een entiteit opslaat met de onderstaande structuren, u op efficiënte wijze werknemersentiteiten ophalen op basis van e-mailadres of werknemers-id. Met de voorvoegselwaarden voor de **RowKey,** empid_ en email_ u een zoekopdracht uitvoeren voor één werknemer of een reeks werknemers met behulp van een reeks e-mailadressen of werknemers-id's.  
+Om het ontbreken van secundaire indexen te omzeilen, kunt u meerdere exemplaren van elke entiteit met elk exemplaar opslaan met behulp van een andere **RowKey** -waarde. Als u een entiteit met de hieronder weer gegeven structuren opslaat, kunt u op efficiënte wijze werknemers entiteiten ophalen op basis van het e-mail adres of de werk nemer-ID. Met de voorvoegsel waarden voor de **RowKey**, empid_ en email_ kunt u een query uitvoeren voor één werk nemer of een bereik van werk nemers met behulp van een reeks e-mail adressen of werk nemer-id's.  
 
-![Werknemersentiteiten](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
+![Werknemers entiteiten](media/storage-table-design-guide/storage-table-design-IMAGE07.png)
 
-De volgende twee filtercriteria (één op zoek naar werknemers-ID en één op zoek naar e-mailadres) geven beide puntquery's op:  
+De volgende twee filter criteria (één op te geven op basis van de werk nemer-ID en één op te zoeken op basis van een e-mail adres) beide opgeven punt query's:  
 
-* $filter=(PartitionKey eq 'Sales') en (RowKey eq 'empid_000223')  
-* $filter=(PartitionKey eq 'Sales') en (RowKey eq 'email_jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ ' empid_000223 ')  
+* $filter = (PartitionKey EQ ' Sales ') en (RowKey EQ 'email_jonesj@contoso.com')  
 
-Als u een zoekopdracht opvraagt voor een reeks werknemersentiteiten, u een bereik opgeven dat is gesorteerd in de volgorde van de werknemer-id of een bereik dat is gesorteerd in e-mailadresvolgorde door te zoeken naar entiteiten met het juiste voorvoegsel in de **RowKey**.  
+Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven dat is gesorteerd in de volg orde van de werk nemer-ID of een bereik dat in de e-mail adres volgorde is gesorteerd door een query uit te sturen naar entiteiten met het juiste voor voegsel in de **RowKey**.  
 
-* Om alle medewerkers in de afdeling Verkoop te vinden met een werknemers-ID in het bereik 000100 tot 000199 gebruik: $filter=(PartitionKey eq 'Sales') en (RowKey ge 'empid_000100') en (RowKey le 'empid_000199')  
-* Om alle medewerkers op de afdeling Verkoop te vinden met een e-mailadres te beginnen met de letter 'a' gebruik: $filter=(PartitionKey eq 'Sales') en (RowKey ge 'email_a') en (RowKey lt 'email_b')  
+* Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een werk nemer-ID in het bereik 000100 tot 000199 gebruikt u: $filter = (PartitionKey EQ ' Sales ') en (RowKey ge ' empid_000100 ') en (RowKey Le ' empid_000199 ')  
+* Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een e-mail adres dat begint met de letter ' a ' gebruiken: $filter = (PartitionKey EQ ' Sales ') en (RowKey ge ' email_a ') en (RowKey lt ' email_b ')  
   
-  De filtersyntaxis die in de bovenstaande voorbeelden wordt gebruikt, is afkomstig uit de API REST van de tabelservice, zie [Queryentiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
+  De filter syntaxis die in de bovenstaande voor beelden wordt gebruikt, is afkomstig uit de Table service REST API, Zie [query-entiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Tabelopslag is relatief goedkoop te gebruiken, zodat de kosten overhead van het opslaan van dubbele gegevens mag niet een grote zorg. U moet echter altijd de kosten van uw ontwerp evalueren op basis van uw verwachte opslagvereisten en alleen dubbele entiteiten toevoegen ter ondersteuning van de query's die uw clienttoepassing uitvoert.  
-* Omdat de secundaire indexentiteiten zijn opgeslagen in dezelfde partitie als de oorspronkelijke entiteiten, moet u ervoor zorgen dat u de schaalbaarheidsdoelen voor een afzonderlijke partitie niet overschrijdt.  
-* U uw dubbele entiteiten consistent met elkaar houden door EGT's te gebruiken om de twee kopieën van de entiteit atoombij te werken. Dit houdt in dat u alle kopieën van een entiteit in dezelfde partitie moet opslaan. Zie voor meer informatie de sectie [Entiteitsgroeptransacties gebruiken](table-storage-design.md#entity-group-transactions).  
-* De waarde die voor de RowKey wordt **gebruikt,** moet uniek zijn voor elke entiteit. Overweeg samengestelde sleutelwaarden te gebruiken.  
-* Opvulling van numerieke waarden in de **RowKey** (bijvoorbeeld de werknemers-ID 000223), maakt het correct sorteren en filteren mogelijk op basis van boven- en ondergrenzen.  
-* U hoeft niet per se alle eigenschappen van uw entiteit te dupliceren. Als de query's die de entiteiten opzoeken met behulp van het e-mailadres in de **RowKey** bijvoorbeeld nooit de leeftijd van de werknemer nodig hebben, kunnen deze entiteiten de volgende structuur hebben:
+* Table Storage is relatief goed koop om te gebruiken, dus de kosten overhead van het opslaan van dubbele gegevens mag geen grote bezorgdheid zijn. U moet de kosten van uw ontwerp echter altijd evalueren op basis van uw verwachte opslag vereisten en alleen dubbele entiteiten toevoegen ter ondersteuning van de query's die door uw client toepassing worden uitgevoerd.  
+* Omdat de secundaire index entiteiten worden opgeslagen in dezelfde partitie als de oorspronkelijke entiteiten, moet u ervoor zorgen dat u de schaalbaarheids doelen voor een afzonderlijke partitie niet overschrijdt.  
+* U kunt ervoor zorgen dat uw dubbele entiteiten consistent blijven door gebruik te maken van EGTs om de twee exemplaren van de entiteit atomisch bij te werken. Dit betekent dat u alle kopieën van een entiteit in dezelfde partitie moet opslaan. Zie de sectie [trans acties voor entiteits groepen gebruiken](table-storage-design.md#entity-group-transactions)voor meer informatie.  
+* De waarde die wordt gebruikt voor de **RowKey** moet uniek zijn voor elke entiteit. Overweeg het gebruik van samengestelde sleutel waarden.  
+* Met de opvullings numerieke waarden in de **RowKey** (bijvoorbeeld de werk nemer-id 000223) kunt u de sorteer-en filter functie op basis van de boven-en ondergrenzen sorteren.  
+* U hoeft niet noodzakelijkerwijs alle eigenschappen van uw entiteit te dupliceren. Als de query's voor het opzoeken van de entiteiten die gebruikmaken van het e-mail adres in de **RowKey** nooit de leeftijd van de werk nemer nodig hebben, kunnen deze entiteiten de volgende structuur hebben:
 
-   ![Entiteitsstructuur van werknemers](media/storage-table-design-guide/storage-table-design-IMAGE08.png)
+   ![Entiteits structuur werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE08.png)
 
 
-* Het is meestal beter om dubbele gegevens op te slaan en ervoor te zorgen dat u alle gegevens ophalen die u nodig hebt met één query, dan om één query te gebruiken om een entiteit te vinden en een andere om de vereiste gegevens op te zoeken.  
+* Het is doorgaans beter om dubbele gegevens op te slaan en ervoor te zorgen dat u alle gegevens kunt ophalen die u nodig hebt met één query, dan om één query te gebruiken om een entiteit te zoeken en een andere om de vereiste gegevens op te zoeken.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer uw clienttoepassing entiteiten moet ophalen met behulp van verschillende sleutels, wanneer uw client entiteiten in verschillende sorteerorders moet ophalen en waar u elke entiteit identificeren met behulp van verschillende unieke waarden. U moet er echter zeker van zijn dat u de schaalbaarheidslimieten voor partities niet overschrijdt wanneer u entiteitsopzoekingen uitvoert met behulp van de verschillende **RowKey-waarden.**  
+Gebruik dit patroon wanneer uw client toepassing entiteiten moet ophalen met behulp van verschillende sleutels, wanneer uw client entiteiten in verschillende sorteer volgorden moet ophalen en waar u elke entiteit kunt identificeren met behulp van verschillende unieke waarden. U moet er echter zeker van zijn dat u de schaal baarheids limieten van de partitie niet overschrijdt wanneer u entiteiten lookups uitvoert met behulp van de verschillende **RowKey** -waarden.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Secundair indexpatroon tussen partitie](#inter-partition-secondary-index-pattern)
-* [Samengestelde sleutelpatroon](#compound-key-pattern)
-* Entiteitgroeptransacties
-* [Werken met heterogene entiteitstypen](#working-with-heterogeneous-entity-types)
+* [Secundair index patroon tussen partities](#inter-partition-secondary-index-pattern)
+* [Samengesteld sleutel patroon](#compound-key-pattern)
+* Trans acties van entiteits groep
+* [Werken met heterogene entiteits typen](#working-with-heterogeneous-entity-types)
 
-## <a name="inter-partition-secondary-index-pattern"></a>Secundair indexpatroon tussen partitie
-Sla meerdere kopieën van elke entiteit op met verschillende **RowKey-waarden** in afzonderlijke partities of in afzonderlijke tabellen om snelle en efficiënte opzoekingen en alternatieve sorteerorders in te schakelen met behulp van verschillende **RowKey-waarden.**  
+## <a name="inter-partition-secondary-index-pattern"></a>Secundair index patroon tussen partities
+Sla meerdere exemplaren van elke entiteit op met behulp van verschillende **RowKey** -waarden in afzonderlijke partities of in afzonderlijke tabellen om snelle en efficiënte zoek acties en alternatieve Sorteer volgorden mogelijk te maken met behulp van verschillende **RowKey** -waarden.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-De tabelservice indexeert automatisch entiteiten met de waarden **PartitionKey** en **RowKey.** Hierdoor kan een clienttoepassing een entiteit efficiënt ophalen met behulp van deze waarden. Met behulp van de tabelstructuur die hieronder wordt weergegeven, kan een clienttoepassing bijvoorbeeld een puntquery gebruiken om een afzonderlijke werknemersentiteit op te halen met behulp van de afdelingsnaam en de werknemers-id (de **partitionkey-** en **rowkey-waarden).** Een client kan ook entiteiten ophalen die zijn gesorteerd op werknemers-id binnen elke afdeling.  
+De Table service indexeert automatisch entiteiten met behulp van de waarden **PartitionKey** en **RowKey** . Hiermee kan een client toepassing een entiteit efficiënt ophalen met behulp van deze waarden. Met de tabel structuur die hieronder wordt weer gegeven, kan een client toepassing bijvoorbeeld een punt query gebruiken om een afzonderlijke werknemers entiteit op te halen met behulp van de afdelings naam en de werk nemer-ID (de waarden **PartitionKey** en **RowKey** ). Een client kan ook entiteiten ophalen die zijn gesorteerd op werk nemer-ID binnen elke afdeling.  
 
 ![Werknemer-id](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
-Als u ook een werknemer wilt kunnen vinden op basis van de waarde van een andere eigenschap, zoals e-mailadres, moet u een minder efficiënte partitiescan gebruiken om een overeenkomst te vinden. Dit komt omdat de tabelservice geen secundaire indexen biedt. Bovendien is er geen optie om een lijst met werknemers aan te vragen die in een andere volgorde zijn gesorteerd dan **RowKey-order.**  
+Als u ook een werknemers entiteit wilt kunnen vinden op basis van de waarde van een andere eigenschap, zoals e-mail adres, moet u een minder efficiënte partitie Scan gebruiken om een overeenkomst te vinden. Dit komt doordat de Table service geen secundaire indexen biedt. Daarnaast is er geen optie voor het aanvragen van een lijst met werk nemers die in een andere volg orde zijn gesorteerd dan **RowKey** order.  
 
-U anticipeert op een groot aantal transacties ten opzichte van deze entiteiten en wilt het risico minimaliseren dat de tabelservice uw client beperkt.  
+U verwacht een groot aantal trans acties voor deze entiteiten en wilt het risico van de Table service beperking van uw client tot een minimum beperken.  
 
 ### <a name="solution"></a>Oplossing
-Als u wilt werken aan het ontbreken van secundaire indexen, u meerdere kopieën van elke entiteit met elke kopie opslaan met behulp van verschillende **partitionkey-** en **rowkey-waarden.** Als u een entiteit opslaat met de onderstaande structuren, u op efficiënte wijze werknemersentiteiten ophalen op basis van e-mailadres of werknemers-id. Met de voorvoegselwaarden voor **partitionkey,** empid_ en email_ u bepalen welke index u voor een query wilt gebruiken.  
+Om het ontbreken van secundaire indexen te omzeilen, kunt u meerdere exemplaren van elke entiteit met elk exemplaar opslaan met behulp van verschillende **PartitionKey** -en **RowKey** -waarden. Als u een entiteit met de hieronder weer gegeven structuren opslaat, kunt u op efficiënte wijze werknemers entiteiten ophalen op basis van het e-mail adres of de werk nemer-ID. Met de voorvoegsel waarden voor de **PartitionKey**, empid_ en email_ kunt u bepalen welke index u wilt gebruiken voor een query.  
 
 ![Primaire index en secundaire index](media/storage-table-design-guide/storage-table-design-IMAGE10.png)
 
 
-De volgende twee filtercriteria (één op zoek naar werknemers-ID en één op zoek naar e-mailadres) geven beide puntquery's op:  
+De volgende twee filter criteria (één op te geven op basis van de werk nemer-ID en één op te zoeken op basis van een e-mail adres) beide opgeven punt query's:  
 
-* $filter=(PartitionKey eq 'empid_Sales') en (RowKey eq '000223')
-* $filter=(PartitionKey eq 'email_Sales') en (RowKey eq 'jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' empid_Sales ') en (RowKey EQ ' 000223 ')
+* $filter = (PartitionKey EQ ' email_Sales ') en (RowKey EQ 'jonesj@contoso.com')  
 
-Als u een zoekopdracht opvraagt voor een reeks werknemersentiteiten, u een bereik opgeven dat is gesorteerd in de volgorde van de werknemer-id of een bereik dat is gesorteerd in e-mailadresvolgorde door te zoeken naar entiteiten met het juiste voorvoegsel in de **RowKey**.  
+Als u een query uitvoert voor een bereik van werk nemers, kunt u een bereik opgeven dat is gesorteerd in de volg orde van de werk nemer-ID of een bereik dat in de e-mail adres volgorde is gesorteerd door een query uit te sturen naar entiteiten met het juiste voor voegsel in de **RowKey**.  
 
-* Alle medewerkers in de afdeling Verkoop met een werknemers-ID in het bereik **000100** tot **000199** gesorteerd in gebruik van employee ID-order: $filter=(PartitionKey eq 'empid_Sales') en (RowKey ge '000100') en (RowKey le '000199')  
-* Alle medewerkers op de afdeling Verkoop vinden met een e-mailadres dat begint met 'a' gesorteerd in gebruik van e-mailadressen: $filter=(PartitionKey eq 'email_Sales') en (RowKey ge 'a') en (RowKey lt 'b')  
+* Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een werk nemer-ID in het bereik **000100** tot **000199** , gesorteerd op werk nemer-id order gebruik: $filter = (PartitionKey EQ ' empid_Sales ') en (RowKey ge 000100 ') en (RowKey Le ' 000199 ')  
+* Als u wilt zoeken naar alle werk nemers van de afdeling verkoop met een e-mail adres dat begint met ' a ' gesorteerd op e-mail adres order gebruiken: $filter = (PartitionKey EQ ' email_Sales ') en (RowKey ge ' a ') en (RowKey lt ' b ')  
 
-De filtersyntaxis die in de bovenstaande voorbeelden wordt gebruikt, is afkomstig uit de API REST van de tabelservice, zie [Queryentiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
+De filter syntaxis die in de bovenstaande voor beelden wordt gebruikt, is afkomstig uit de Table service REST API, Zie [query-entiteiten](https://msdn.microsoft.com/library/azure/dd179421.aspx)voor meer informatie.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* U uw dubbele entiteiten uiteindelijk consistent met elkaar houden door het [patroon Uiteindelijk consistente transacties](#eventually-consistent-transactions-pattern) te gebruiken om de primaire en secundaire indexentiteiten te behouden.  
-* Tabelopslag is relatief goedkoop te gebruiken, zodat de kosten overhead van het opslaan van dubbele gegevens mag niet een grote zorg. U moet echter altijd de kosten van uw ontwerp evalueren op basis van uw verwachte opslagvereisten en alleen dubbele entiteiten toevoegen ter ondersteuning van de query's die uw clienttoepassing uitvoert.  
-* De waarde die voor de RowKey wordt **gebruikt,** moet uniek zijn voor elke entiteit. Overweeg samengestelde sleutelwaarden te gebruiken.  
-* Opvulling van numerieke waarden in de **RowKey** (bijvoorbeeld de werknemers-ID 000223), maakt het correct sorteren en filteren mogelijk op basis van boven- en ondergrenzen.  
-* U hoeft niet per se alle eigenschappen van uw entiteit te dupliceren. Als de query's die de entiteiten opzoeken met behulp van het e-mailadres in de **RowKey** bijvoorbeeld nooit de leeftijd van de werknemer nodig hebben, kunnen deze entiteiten de volgende structuur hebben:
+* U kunt ervoor zorgen dat uw dubbele entiteiten uiteindelijk consistent zijn met elkaar met behulp van het [patroon voor uiteindelijk consistente trans acties](#eventually-consistent-transactions-pattern) voor het onderhouden van de primaire en secundaire index entiteiten.  
+* Table Storage is relatief goed koop om te gebruiken, dus de kosten overhead van het opslaan van dubbele gegevens mag geen grote bezorgdheid zijn. U moet de kosten van uw ontwerp echter altijd evalueren op basis van uw verwachte opslag vereisten en alleen dubbele entiteiten toevoegen ter ondersteuning van de query's die door uw client toepassing worden uitgevoerd.  
+* De waarde die wordt gebruikt voor de **RowKey** moet uniek zijn voor elke entiteit. Overweeg het gebruik van samengestelde sleutel waarden.  
+* Met de opvullings numerieke waarden in de **RowKey** (bijvoorbeeld de werk nemer-id 000223) kunt u de sorteer-en filter functie op basis van de boven-en ondergrenzen sorteren.  
+* U hoeft niet noodzakelijkerwijs alle eigenschappen van uw entiteit te dupliceren. Als de query's voor het opzoeken van de entiteiten die gebruikmaken van het e-mail adres in de **RowKey** nooit de leeftijd van de werk nemer nodig hebben, kunnen deze entiteiten de volgende structuur hebben:
   
-   ![Werknemerentiteit (secundaire index)](media/storage-table-design-guide/storage-table-design-IMAGE11.png)
+   ![Werknemers entiteit (secundaire index)](media/storage-table-design-guide/storage-table-design-IMAGE11.png)
 
-* Het is meestal beter om dubbele gegevens op te slaan en ervoor te zorgen dat u alle gegevens die u nodig hebt met één query ophalen dan om één query te gebruiken om een entiteit te vinden met behulp van de secundaire index en een andere om de vereiste gegevens in de primaire index op te zoeken.  
+* Het is doorgaans beter om dubbele gegevens op te slaan en ervoor te zorgen dat u alle gegevens kunt ophalen die u nodig hebt met één query dan om één query te gebruiken om een entiteit te zoeken met behulp van de secundaire index en een andere om de vereiste gegevens in de primaire index op te zoeken.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer uw clienttoepassing entiteiten moet ophalen met behulp van verschillende sleutels, wanneer uw client entiteiten in verschillende sorteerorders moet ophalen en waar u elke entiteit identificeren met behulp van verschillende unieke waarden. Gebruik dit patroon wanneer u wilt voorkomen dat de schaalbaarheidslimieten voor partities worden overschreden wanneer u entiteitsopzoekingen uitvoert met de verschillende **RowKey-waarden.**  
+Gebruik dit patroon wanneer uw client toepassing entiteiten moet ophalen met behulp van verschillende sleutels, wanneer uw client entiteiten in verschillende sorteer volgorden moet ophalen en waar u elke entiteit kunt identificeren met behulp van verschillende unieke waarden. Gebruik dit patroon wanneer u wilt voor komen dat de schaal limieten voor partities worden overschreden wanneer u entiteits lookups uitvoert met behulp van de verschillende **RowKey** -waarden.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Uiteindelijk consistent transactiepatroon](#eventually-consistent-transactions-pattern)  
-* [Secundair indexpatroon binnen partitie](#intra-partition-secondary-index-pattern)  
-* [Samengestelde sleutelpatroon](#compound-key-pattern)  
-* Entiteitgroeptransacties  
-* [Werken met heterogene entiteitstypen](#working-with-heterogeneous-entity-types)  
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
+* [Secundair index patroon voor de intra partitie](#intra-partition-secondary-index-pattern)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
+* Trans acties van entiteits groep  
+* [Werken met heterogene entiteits typen](#working-with-heterogeneous-entity-types)  
 
-## <a name="eventually-consistent-transactions-pattern"></a>Uiteindelijk consistent transactiepatroon
-Maak uiteindelijk consistent gedrag mogelijk over de grenzen van de partitie of de grenzen van het opslagsysteem met Azure-wachtrijen.  
+## <a name="eventually-consistent-transactions-pattern"></a>Patroon uiteindelijk consistent trans acties
+Schakel uiteindelijk consistent gedrag in voor de partitie grenzen of de grenzen van het opslag systeem met behulp van Azure-wacht rijen.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-EGT's maken atoomtransacties mogelijk tussen meerdere entiteiten die dezelfde partitiesleutel delen. Om prestatie- en schaalbaarheidsredenen u besluiten entiteiten met consistentievereisten op te slaan in afzonderlijke partities of in een afzonderlijk opslagsysteem: in een dergelijk scenario u geen EGT's gebruiken om consistentie te behouden. U bijvoorbeeld een vereiste hebben om de uiteindelijke consistentie tussen:  
+EGTs schakelt atomische trans acties in voor meerdere entiteiten die dezelfde partitie sleutel delen. Om redenen van prestaties en schaal baarheid kunt u ervoor kiezen om entiteiten op te slaan die consistentie vereisten hebben in afzonderlijke partities of in een afzonderlijk opslag systeem: in dit scenario kunt u EGTs niet gebruiken om consistentie te hand haven. U hebt bijvoorbeeld een vereiste voor het onderhouden van mogelijke consistentie tussen:  
 
-* Entiteiten die zijn opgeslagen in twee verschillende partities in dezelfde tabel, in verschillende tabellen of in verschillende opslagaccounts.  
-* Een entiteit die is opgeslagen in de tabelservice en een blob die is opgeslagen in de Blob-service.  
-* Een entiteit die is opgeslagen in de tabelservice en een bestand in een bestandssysteem.  
-* Een entiteit die is opgeslagen in de tabelservice en nog is geïndexeerd met de Azure Cognitive Search-service.  
+* Entiteiten die zijn opgeslagen in twee verschillende partities in dezelfde tabel, in verschillende tabellen of in verschillende opslag accounts.  
+* Een entiteit die is opgeslagen in de Table service en een blob die is opgeslagen in de Blob service.  
+* Een entiteit die is opgeslagen in de Table service en een bestand in een bestands systeem.  
+* Een entiteit die is opgeslagen in de Table service nog is geïndexeerd met de Azure Cognitive Search-service.  
 
 ### <a name="solution"></a>Oplossing
-Door Azure-wachtrijen te gebruiken, u een oplossing implementeren die uiteindelijke consistentie biedt voor twee of meer partities of opslagsystemen.
-Om deze aanpak te illustreren, gaat u ervan uit dat u een vereiste hebt om oude werknemersentiteiten te kunnen archiveren. Oude werknemersentiteiten worden zelden opgevraagd en moeten worden uitgesloten van activiteiten die betrekking hebben op huidige werknemers. Als u deze vereiste wilt implementeren, slaat u actieve medewerkers op in de **tabel Huidige** en oude werknemers in de **tabel Archief.** Voor het archiveren van een werknemer moet u de entiteit uit de **tabel Huidige** verwijderen en de entiteit toevoegen aan de **archieftabel,** maar u een EGT niet gebruiken om deze twee bewerkingen uit te voeren. Om het risico te vermijden dat een entiteit door een fout in beide of geen tabellen wordt weergegeven, moet de archiefbewerking uiteindelijk consistent zijn. In het volgende reeksdiagram worden de stappen in deze bewerking beschreven. Meer details is beschikbaar voor uitzonderingspaden in de volgende tekst.  
+Met behulp van Azure queues kunt u een oplossing implementeren die uiteindelijke consistentie biedt in twee of meer partities of opslag systemen.
+Om deze aanpak te illustreren, moet u ervan uitgaan dat u een vereiste hebt om oude werknemers entiteiten te archiveren. Oude werknemers entiteiten worden zelden gequeryeerd en moeten worden uitgesloten van activiteiten die worden uitgevoerd op huidige werk nemers. U kunt deze vereiste alleen implementeren als u actieve werk nemers in de **huidige** tabel en de oude werk nemers in de **Archief** tabel opslaat. Voor het archiveren van een werk nemer moet u de entiteit uit de **huidige** tabel verwijderen en de entiteit toevoegen aan de **Archief** tabel, maar u kunt geen EGT gebruiken om deze twee bewerkingen uit te voeren. Om het risico te voor komen dat een entiteit in beide of geen van beide tabellen wordt weer gegeven, moet de archief bewerking uiteindelijk consistent zijn. In het volgende sequentie diagram ziet u een overzicht van de stappen in deze bewerking. Meer gedetailleerde informatie over uitzonderings paden vindt u in de volgende tekst.  
 
-![Azure-wachtrijoplossing](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
+![Oplossing voor Azure-wacht rijen](media/storage-table-design-guide/storage-table-design-IMAGE12.png)
 
-Een client initieert de archiefbewerking door een bericht in een Azure-wachtrij te plaatsen, in dit voorbeeld om #456 te archiveren. Een werknemersrol geeft een enquête in de wachtrij voor nieuwe berichten; wanneer het vindt een, het leest het bericht en laat een verborgen kopie op de wachtrij. De werkrol haalt vervolgens een kopie van de entiteit uit de **tabel Huidige** op, voegt een kopie in de **tabel Archief** in en verwijdert vervolgens het origineel uit de **tabel Huidige.** Als er ten slotte geen fouten zijn gemaakt in de vorige stappen, verwijdert de werkrol het verborgen bericht uit de wachtrij.  
+Een client initieert de archief bewerking door een bericht in een Azure-wachtrij te plaatsen, in dit voor beeld om werk nemers te archiveren #456. Een werk rollen pollt de wachtrij voor nieuwe berichten; Wanneer er een wordt gevonden, wordt het bericht gelezen en wordt er een verborgen kopie in de wachtrij geplaatst. Met de rol werk rollen volgende wordt een kopie van de entiteit opgehaald uit de **huidige** tabel, wordt een kopie ingevoegd in de **Archief** tabel en wordt vervolgens het origineel uit de **huidige** tabel verwijderd. Ten slotte, als er geen fouten zijn opgetreden uit de vorige stappen, verwijdert de rol van de werk nemer het verborgen bericht uit de wachtrij.  
 
-In dit voorbeeld voegt stap 4 de werknemer in de **tabel Archief** in. Het kan de werknemer toevoegen aan een blob in de Blob-service of een bestand in een bestandssysteem.  
+In dit voor beeld voegt stap 4 de werk nemer in de **Archief** tabel in. De werk nemer kan worden toegevoegd aan een BLOB in de Blob service of een bestand in een bestands systeem.  
 
-### <a name="recovering-from-failures"></a>Herstellen van storingen
-Het is belangrijk dat de bewerkingen in stap **4** en **5** *idempotent* zijn voor het geval de rol van de werknemer de archiefbewerking opnieuw moet starten. Als u de tabelservice gebruikt, moet u voor stap **4** een bewerking 'invoegen of vervangen' gebruiken. voor stap **5** moet u een bewerking 'verwijderen als er bestaat' gebruiken in de clientbibliotheek die u gebruikt. Als u een ander opslagsysteem gebruikt, moet u een geschikte idempotente bewerking gebruiken.  
+### <a name="recovering-from-failures"></a>Herstellen van fouten
+Het is belang rijk dat de bewerkingen in stap **4** en **5** moeten worden *idempotent* voor het geval de werk rollen de archief bewerking opnieuw moeten starten. Als u de Table service gebruikt, moet u voor stap **4** de bewerking ' invoegen of vervangen ' gebruiken. voor stap **5** moet u een bewerking delete if exists gebruiken in de client bibliotheek die u gebruikt. Als u een ander opslag systeem gebruikt, moet u een geschikte idempotent-bewerking gebruiken.  
 
-Als de werkrol stap **6**nooit voltooit, wordt het bericht na een time-out opnieuw weergegeven in de wachtrij die klaar is voor de rol van de werknemer om te proberen het opnieuw te verwerken. De rol van de werknemer kan controleren hoe vaak een bericht in de wachtrij is gelezen en, indien nodig, markeren is het een "gif" bericht voor onderzoek door het naar een aparte wachtrij te sturen. Zie Berichten ontvangen voor meer informatie over het lezen van wachtrijberichten en het controleren van het aantal [wachtrijen.](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
+Als de rol werk nemer nooit stap **6**voltooit, wordt na een time-out het bericht opnieuw in de wachtrij geplaatst om de werk rollen opnieuw te kunnen verwerken. De rol van de werk nemer kan controleren hoe vaak een bericht in de wachtrij is gelezen en, indien nodig, een ' verontreinigd ' bericht voor onderzoek worden verzonden door het naar een afzonderlijke wachtrij te verzenden. Zie [berichten ophalen](https://msdn.microsoft.com/library/azure/dd179474.aspx)voor meer informatie over het lezen van wachtrij berichten en het controleren van het aantal in de wachtrij.  
 
-Sommige fouten uit de tabel- en wachtrijservices zijn tijdelijke fouten en uw clienttoepassing moet geschikte logica voor nieuwe toepassingen bevatten om deze te verwerken.  
+Sommige fouten van de tabel-en wachtrij Services zijn tijdelijke fouten, en de client toepassing moet de juiste pogings logica voor het uitvoeren van deze taken bevatten.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Deze oplossing voorziet niet in transactieisolatie. Een client kan bijvoorbeeld de tabellen **Huidige** en **Archief** lezen wanneer de werknemerrol zich tussen stap **4** en **5**bevond en een inconsistente weergave van de gegevens bekijken. De gegevens zullen uiteindelijk consistent zijn.  
-* U moet er zeker van zijn dat stap 4 en 5 idempotent zijn om uiteindelijke consistentie te garanderen.  
-* U de oplossing schalen met meerdere wachtrijen en rolinstanties voor werknemers.  
+* Deze oplossing biedt geen transactie isolatie. Een client kan bijvoorbeeld de **huidige** en **Archief** tabellen lezen wanneer de rol van werk nemers tussen stap **4** en **5**was en een inconsistente weer gave van de gegevens te zien krijgt. De gegevens zullen uiteindelijk consistent zijn.  
+* U moet er zeker van zijn dat stap 4 en 5 idempotent zijn om te zorgen voor een uiteindelijke consistentie.  
+* U kunt de oplossing schalen door meerdere wacht rijen en worker-instanties te gebruiken.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u eventuele consistentie wilt garanderen tussen entiteiten die in verschillende partities of tabellen bestaan. U dit patroon uitbreiden om eventuele consistentie te garanderen voor bewerkingen in de tabelservice en de Blob-service en andere niet-Azure Storage-gegevensbronnen, zoals database of het bestandssysteem.  
+Gebruik dit patroon wanneer u de uiteindelijke consistentie tussen entiteiten die in verschillende partities of tabellen bestaan, wilt garanderen. U kunt dit patroon uitbreiden om te zorgen voor mogelijke consistentie voor bewerkingen in het Table service en de Blob service en andere gegevens bronnen die niet Azure Storage zijn, zoals data base of het bestands systeem.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* Entiteitgroeptransacties  
-* [Samenvoegen of vervangen](#merge-or-replace)  
+* Trans acties van entiteits groep  
+* [Samen voegen of vervangen](#merge-or-replace)  
 
 > [!NOTE]
-> Als transactieisolatie belangrijk is voor uw oplossing, moet u overwegen uw tabellen opnieuw te ontwerpen zodat u EGT's gebruiken.  
+> Als de transactie isolatie belang rijk is voor uw oplossing, kunt u het beste uw tabellen opnieuw ontwerpen zodat u EGTs kunt gebruiken.  
 > 
 > 
 
-## <a name="index-entities-pattern"></a>Patroon van indexentiteiten
-Indexentiteiten onderhouden om efficiënte zoekopdrachten in te schakelen die lijsten met entiteiten retourneren.  
+## <a name="index-entities-pattern"></a>Patroon van index entiteiten
+Behoud index entiteiten om efficiënte Zoek opdrachten in te scha kelen waarmee lijsten met entiteiten worden geretourneerd.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-De tabelservice indexeert automatisch entiteiten met de waarden **PartitionKey** en **RowKey.** Hierdoor kan een clienttoepassing een entiteit efficiënt ophalen met behulp van een puntquery. Met behulp van de onderstaande tabelstructuur kan een clienttoepassing bijvoorbeeld een afzonderlijke werknemersentiteit efficiënt ophalen met behulp van de afdelingsnaam en de werknemers-id (de **PartitionKey** en **RowKey).**  
+De Table service indexeert automatisch entiteiten met behulp van de waarden **PartitionKey** en **RowKey** . Hiermee kan een client toepassing een entiteit efficiënt ophalen met behulp van een Point-query. Met de tabel structuur die hieronder wordt weer gegeven, kan een client toepassing bijvoorbeeld een afzonderlijke werknemers entiteit ophalen met behulp van de afdelings naam en de werk nemer-ID (de **PartitionKey** en **RowKey**).  
 
-![Werknemerentiteit](media/storage-table-design-guide/storage-table-design-IMAGE13.png)
+![Entiteit werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE13.png)
 
-Als u ook een lijst met werknemersentiteiten wilt kunnen ophalen op basis van de waarde van een andere niet-unieke eigenschap, zoals hun achternaam, moet u een minder efficiënte partitiescan gebruiken om overeenkomsten te vinden in plaats van een index te gebruiken om ze rechtstreeks op te zoeken. Dit komt omdat de tabelservice geen secundaire indexen biedt.  
+Als u ook een lijst met werknemers entiteiten wilt kunnen ophalen op basis van de waarde van een andere niet-unieke eigenschap, zoals de achternaam, moet u een minder efficiënte partitie Scan gebruiken om overeenkomsten te vinden in plaats van een index te gebruiken om deze direct te zoeken. Dit komt doordat de Table service geen secundaire indexen biedt.  
 
 ### <a name="solution"></a>Oplossing
-Als u opzoeken op achternaam wilt inschakelen met de bovenstaande entiteitsstructuur, moet u lijsten met werknemers-id's bijhouden. Als u de werknemersentiteiten met een bepaalde achternaam, zoals Jones, wilt ophalen, moet u eerst de lijst met werknemers-id's voor werknemers met Jones als achternaam vinden en vervolgens deze werknemersentiteiten ophalen. Er zijn drie belangrijke opties voor het opslaan van de lijsten met werknemers-geïdentificeerde gegevens:  
+Als u zoeken op achternaam wilt inschakelen met de entiteits structuur die hierboven wordt weer gegeven, moet u lijsten met werk nemer-Id's onderhouden. Als u de entiteiten van werk nemers met een bepaalde achternaam wilt ophalen, bijvoorbeeld Jansen, moet u eerst de lijst met werk nemer-Id's voor werk nemers met Jansen als achternaam vinden en vervolgens die entiteiten van de werk nemer ophalen. Er zijn drie belang rijke opties voor het opslaan van de lijsten met werk nemer-Id's:  
 
-* Gebruik blobopslag.  
-* Maak indexentiteiten in dezelfde partitie als de werknemersentiteiten.  
-* Maak indexentiteiten in een afzonderlijke partitie of tabel.  
+* Gebruik Blob Storage.  
+* Maak index entiteiten in dezelfde partitie als de entiteiten van de werk nemer.  
+* Maak index entiteiten in een afzonderlijke partitie of tabel.  
 
-<u>Optie #1: Blob-opslag gebruiken</u>  
+<u>Optie #1: Blob Storage gebruiken</u>  
 
-Voor de eerste optie maakt u een blob voor elke unieke achternaam en in elke blob slaat u een lijst op met de waarden **PartitionKey** (afdeling) en **RowKey** (employee ID) voor werknemers met die achternaam. Wanneer u een werknemer toevoegt of verwijdert, moet u ervoor zorgen dat de inhoud van de relevante blob uiteindelijk consistent is met de werknemersentiteiten.  
+Voor de eerste optie maakt u een BLOB voor elke unieke achternaam en slaat u in elke Blob een lijst op met de waarden van de **PartitionKey** (Department) en **RowKey** (werk nemer-id) voor werk nemers die deze achternaam hebben. Wanneer u een werk nemer toevoegt of verwijdert, moet u ervoor zorgen dat de inhoud van de relevante BLOB uiteindelijk consistent is met de entiteiten van de werk nemer.  
 
-<u>Optie #2:</u> Indexentiteiten in dezelfde partitie maken  
+<u>Optie #2:</u> Index entiteiten in dezelfde partitie maken  
 
-Gebruik voor de tweede optie indexentiteiten die de volgende gegevens opslaan:  
+Voor de tweede optie gebruikt u index entiteiten waarin de volgende gegevens zijn opgeslagen:  
 
-![Entiteit werknemersindex](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
+![Entiteit van werk nemer-index](media/storage-table-design-guide/storage-table-design-IMAGE14.png)
 
-De eigenschap **EmployeeID's** bevat een lijst met werknemers-id's voor werknemers met de achternaam die is opgeslagen in de **RowKey.**  
+De eigenschap **EmployeeIDs** bevat een lijst met werk nemer-id's voor werk nemers met de achternaam die is opgeslagen in de **RowKey**.  
 
-In de volgende stappen wordt het proces beschreven dat u moet volgen wanneer u een nieuwe werknemer toevoegt als u de tweede optie gebruikt. In dit voorbeeld voegen we een werknemer toe met ID 000152 en een achternaam Jones op de afdeling Verkoop:  
+De volgende stappen beschrijven het proces dat u moet volgen wanneer u een nieuwe werk nemer toevoegt als u de tweede optie gebruikt. In dit voor beeld voegen we een werk nemer met de ID 000152 en een achternaam Jansen toe op de verkoop afdeling:  
 
-1. Haal de indexentiteit op met een **partitionkey-waarde** 'Verkoop' en de waarde 'Jones' van **RowKey.** Sla de ETag van deze entiteit op om te gebruiken in stap 2.  
-2. Maak een entiteitsgroeptransactie (dat wil zeggen een batchbewerking) die de nieuwe werknemersentiteit **(PartitionKey-waarde** 'Verkoop' en **RowKey-waarde** '000152') invoegt en de indexentiteit **(PartitionKey-waarde** 'Verkoop' en **RowKey-waarde** 'Jones') bijwerkt door de nieuwe werknemers-id toe te voegen aan de lijst in het veld EmployeeIDs. Zie Entiteitgroeptransacties voor meer informatie over entiteitsgroepstransacties.  
-3. Als de entiteitsgroeptransactie mislukt vanwege een optimistische gelijktijdigheidsfout (iemand anders heeft zojuist de indexentiteit gewijzigd), moet u opnieuw beginnen bij stap 1.  
+1. Haal de index entiteit op met de **PartitionKey** -waarde "Sales" en de **RowKey** -waarde "Jansen". Sla de ETag van deze entiteit op die u in stap 2 wilt gebruiken.  
+2. Maak een trans actie voor een entiteits groep (dat wil zeggen een batch bewerking) die de nieuwe werknemers entiteit (**PartitionKey** waarde "Sales" en **RowKey** value "000152") invoegt en de index entiteit (**PartitionKey** waarde "Sales" en **RowKey** value Jansen ") BIJwerkt door de nieuwe werknemers-id toe te voegen aan de lijst in het veld EmployeeIDs. Zie trans acties voor entiteits groepen voor meer informatie over entiteits groeps transacties.  
+3. Als de trans actie van de entiteits groep mislukt als gevolg van een optimistische gelijktijdigheids fout (iemand anders heeft zojuist de index entiteit gewijzigd), moet u opnieuw beginnen met stap 1.  
 
-U een vergelijkbare benadering gebruiken om een werknemer te verwijderen als u de tweede optie gebruikt. Het wijzigen van de achternaam van een werknemer is iets complexer omdat u een entiteitsgroeptransactie moet uitvoeren die drie entiteiten bijwerkt: de werknemerentiteit, de indexentiteit voor de oude achternaam en de indexentiteit voor de nieuwe achternaam. U moet elke entiteit ophalen voordat u wijzigingen aanbrengt om de ETag-waarden op te halen die u vervolgens gebruiken om de updates uit te voeren met optimistische gelijktijdigheid.  
+U kunt een soort gelijke aanpak gebruiken om een werk nemer te verwijderen als u de tweede optie gebruikt. Het wijzigen van de achternaam van een werk nemer is iets ingewik kelder omdat u de trans actie van een entiteits groep moet uitvoeren die drie entiteiten bijwerkt: de werknemers entiteit, de index entiteit voor de oude achternaam en de index entiteit voor de nieuwe achternaam. U moet elke entiteit ophalen voordat u wijzigingen aanbrengt om de ETag-waarden op te halen die u vervolgens kunt gebruiken om de updates uit te voeren met optimistische gelijktijdigheid.  
 
-In de volgende stappen wordt het proces beschreven dat u moet volgen wanneer u alle werknemers met een bepaalde achternaam in een afdeling moet opzoeken als u de tweede optie gebruikt. In dit voorbeeld zoeken we alle medewerkers met achternaam Jones op in de afdeling Verkoop:  
+De volgende stappen geven een overzicht van het proces dat u moet volgen wanneer u alle werk nemers met een bepaalde achternaam in een afdeling moet opzoeken als u de tweede optie gebruikt. In dit voor beeld worden alle werk nemers met de naam Jansen op de verkoop afdeling opzoeken:  
 
-1. Haal de indexentiteit op met een **partitionkey-waarde** 'Verkoop' en de waarde 'Jones' van **RowKey.**  
-2. Ontwende de lijst met werknemers-id's in het veld EmployeeID's.  
-3. Als u aanvullende informatie nodig hebt over elk van deze werknemers (zoals hun e-mailadressen), haalt u elk van de werknemersentiteiten op met **partitionkey-waarde** 'Verkoop' en **RowKey-waarden** uit de lijst met werknemers die u in stap 2 hebt verkregen.  
+1. Haal de index entiteit op met de **PartitionKey** -waarde "Sales" en de **RowKey** -waarde "Jansen".  
+2. De lijst met werk nemer-Id's parseren in het veld EmployeeIDs.  
+3. Als u meer informatie nodig hebt over elk van deze werk nemers (zoals hun e-mail adressen), haalt u elk van de werk nemers op met behulp van de **PartitionKey** -waarde "Sales" en **RowKey** -waarden uit de lijst met werk nemers die u in stap 2 hebt verkregen.  
 
-<u>Optie #3:</u> Indexentiteiten maken in een afzonderlijke partitie of tabel  
+<u>Optie #3:</u> Index entiteiten in een afzonderlijke partitie of tabel maken  
 
-Gebruik voor de derde optie indexentiteiten die de volgende gegevens opslaan:  
+Voor de derde optie gebruikt u index entiteiten waarin de volgende gegevens worden opgeslagen:  
 
-![Entiteit van werknemersindex in een afzonderlijke partitie](media/storage-table-design-guide/storage-table-design-IMAGE15.png)
+![Entiteit van werk nemer-index in een afzonderlijke partitie](media/storage-table-design-guide/storage-table-design-IMAGE15.png)
 
 
-De eigenschap **EmployeeID's** bevat een lijst met werknemers-id's voor werknemers met de achternaam die is opgeslagen in de **RowKey.**  
+De eigenschap **EmployeeIDs** bevat een lijst met werk nemer-id's voor werk nemers met de achternaam die is opgeslagen in de **RowKey**.  
 
-Met de derde optie u GEEN EGT's gebruiken om de consistentie te behouden omdat de indexentiteiten zich in een afzonderlijke partitie van de werknemersentiteiten bevinden. Zorg ervoor dat de indexentiteiten uiteindelijk consistent zijn met de werknemersentiteiten.  
+Met de derde optie kunt u EGTs niet gebruiken om consistentie te behouden, omdat de index entiteiten zich in een afzonderlijke partitie van de entiteiten van de werk nemer bevinden. Zorg ervoor dat de index entiteiten uiteindelijk consistent zijn met de entiteiten van de werk nemer.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Deze oplossing vereist ten minste twee query's om overeenkomende entiteiten op te halen: één om de indexentiteiten op te vragen om de lijst met **RowKey-waarden** te verkrijgen en vervolgens query's op te vragen om elke entiteit in de lijst op te halen.  
-* Aangezien een afzonderlijke entiteit een maximale grootte van 1 MB heeft, gaan de optie #2 en optie #3 in de oplossing ervan uit dat de lijst met werknemers-id's voor een bepaalde achternaam nooit groter is dan 1 MB. Als de lijst met werknemers-id's waarschijnlijk groter is dan 1 MB, gebruikt u de optie #1 en slaat u de indexgegevens op in blobopslag.  
-* Als u optie#2 gebruikt (met BEHULP van EGT's om het toevoegen en verwijderen van werknemers te verwerken en de achternaam van een werknemer te wijzigen), moet u evalueren of het volume van transacties de schaalbaarheidslimieten in een bepaalde partitie zal benaderen. Als dit het geval is, moet u een uiteindelijk consistente oplossing overwegen (optie #1 of optie #3) die wachtrijen gebruikt om de updateaanvragen af te handelen en waarmee u uw indexentiteiten opslaan in een afzonderlijke partitie van de werknemersentiteiten.  
-* Optie #2 in deze oplossing ervan uitgaat dat u op achternaam wilt opzoeken binnen een afdeling: u wilt bijvoorbeeld een lijst met werknemers met een achternaam Jones ophalen op de afdeling Verkoop. Als u alle werknemers met een achternaam Jones in de hele organisatie wilt kunnen opzoeken, gebruikt u optie #1 of optie #3.
-* U een oplossing op basis van wachtrijen implementeren die uiteindelijkconsistentie oplevert (zie het [patroon Uiteindelijk consistente transacties](#eventually-consistent-transactions-pattern) voor meer details).  
+* Deze oplossing vereist ten minste twee query's voor het ophalen van overeenkomende entiteiten: een om de index entiteiten te doorzoeken om de lijst met **RowKey** -waarden te verkrijgen, en vervolgens query's om elke entiteit in de lijst op te halen.  
+* Als een afzonderlijke entiteit een maximum grootte van 1 MB heeft, wordt met de optie #2 en optie #3 in de oplossing ervan uitgegaan dat de lijst met werk nemer-Id's voor een gegeven achternaam nooit groter is dan 1 MB. Als de lijst met werk nemer-Id's waarschijnlijk groter dan 1 MB groot is, gebruikt u de optie #1 en slaat u de index gegevens op in Blob Storage.  
+* Als u de optie #2 gebruikt (met behulp van EGTs om werk nemers toe te voegen en te verwijderen, en de achternaam van een werk nemer te wijzigen), moet u evalueren of het volume van de trans acties de schaalbaarheids limieten in een bepaalde partitie zal belasten. Als dit het geval is, moet u rekening houden met een uiteindelijk consistente oplossing (optie #1 of optie #3) die wacht rijen gebruikt voor het verwerken van de update aanvragen en u in staat stelt uw index entiteiten op te slaan in een afzonderlijke partitie van de entiteiten van de werk nemer.  
+* In de optie #2 in deze oplossing wordt ervan uitgegaan dat u wilt zoeken op achternaam binnen een afdeling: u wilt bijvoorbeeld een lijst met werk nemers ophalen met een achternaam Jansen op de verkoop afdeling. Als u alle werk nemers met een achternaam Jansen wilt kunnen opzoeken in de hele organisatie, gebruikt u een van de opties #1 of optie #3.
+* U kunt een op een wachtrij gebaseerde oplossing implementeren die uiteindelijke consistentie biedt (Zie het [patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern) voor meer informatie).  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u een set entiteiten wilt opzoeken die allemaal een gemeenschappelijke eigendomswaarde hebben, zoals alle werknemers met de achternaam Jones.  
+Gebruik dit patroon wanneer u een set entiteiten wilt opzoeken die alle een gemeen schappelijke eigenschaps waarde delen, zoals alle werk nemers met de achternaam Jansen.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Samengestelde sleutelpatroon](#compound-key-pattern)  
-* [Uiteindelijk consistent transactiepatroon](#eventually-consistent-transactions-pattern)  
-* Entiteitgroeptransacties  
-* [Werken met heterogene entiteitstypen](#working-with-heterogeneous-entity-types)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
+* Trans acties van entiteits groep  
+* [Werken met heterogene entiteits typen](#working-with-heterogeneous-entity-types)  
 
-## <a name="denormalization-pattern"></a>Denormalisatiepatroon
-Combineer gerelateerde gegevens samen in één entiteit, zodat u alle gegevens ophalen die u nodig hebt met één puntquery.  
+## <a name="denormalization-pattern"></a>Het denormalisatie patroon
+Gerelateerde gegevens samen voegen in één entiteit zodat u alle gegevens kunt ophalen die u nodig hebt met één punt query.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-In een relationele database normaliseert u doorgaans gegevens om duplicatie te verwijderen, wat resulteert in query's die gegevens uit meerdere tabellen ophalen. Als u uw gegevens normaliseert in Azure-tabellen, moet u meerdere retourvluchten van de client naar de server maken om uw gerelateerde gegevens op te halen. Met de onderstaande tabelstructuur hebt u bijvoorbeeld twee retourvluchten nodig om de details voor een afdeling op te halen: een om de afdelingsentiteit op te halen die de id van de manager bevat, en vervolgens een ander verzoek om de gegevens van de manager in een werknemerentiteit op te halen.  
+In een relationele data base normaliseren we doorgaans gegevens om duplicatie te verwijderen, wat resulteert in query's die gegevens uit meerdere tabellen ophalen. Als u uw gegevens in azure-tabellen normaliseert, moet u meerdere round trips van de client naar de server maken om de gerelateerde gegevens op te halen. Met de tabel structuur die hieronder wordt weer gegeven, hebt u bijvoorbeeld twee retour retouren nodig om de details van een afdeling op te halen: een voor het ophalen van de afdelings entiteit die de Manager-ID bevat en vervolgens een andere aanvraag om de details van de Manager op te halen in een entiteit van een werk nemer.  
 
-![Afdelingsentiteit en werknemerentiteit](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
+![Afdelings-en werknemers entiteit](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Oplossing
-In plaats van de gegevens op te slaan in twee afzonderlijke entiteiten, denormaliseert u de gegevens en bewaart u een kopie van de gegevens van de manager in de afdelingsentiteit. Bijvoorbeeld:  
+In plaats van de gegevens in twee afzonderlijke entiteiten op te slaan, moet u de gegevens denormaliseren en een kopie van de details van de manager in de entiteit afdeling bewaren. Bijvoorbeeld:  
 
-![Afdelingsentiteit](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
+![Afdelings entiteit](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
-Met afdelingsentiteiten die met deze eigenschappen zijn opgeslagen, u nu alle gegevens die u nodig hebt over een afdeling ophalen met behulp van een puntquery.  
+Als afdelings entiteiten met deze eigenschappen zijn opgeslagen, kunt u nu alle Details ophalen die u nodig hebt over een afdeling met behulp van een Point-query.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Er zijn kosten overhead in verband met het opslaan van een aantal gegevens twee keer. Het prestatievoordeel (als gevolg van minder aanvragen voor de opslagservice) weegt doorgaans op tegen de marginale stijging van de opslagkosten (en deze kosten worden gedeeltelijk gecompenseerd door een vermindering van het aantal transacties dat u nodig hebt om de gegevens van een afdeling op te halen ).  
-* U moet de consistentie behouden van de twee entiteiten die informatie over managers opslaan. U het consistentieprobleem afhandelen door EGT's te gebruiken om meerdere entiteiten in één atoomtransactie bij te werken: in dit geval worden de afdelingsentiteit en de werknemerentiteit voor de afdelingsmanager in dezelfde partitie opgeslagen.  
+* Er zijn kosten overhead gekoppeld aan het opslaan van een aantal gegevens twee maal. Het prestatie voordeel (als gevolg van minder aanvragen voor de opslag service) verlaagt doorgaans de marginale toename van de opslag kosten (en deze kosten worden deels gecompenseerd door een verlaging van het aantal trans acties dat u nodig hebt om de details van een afdeling op te halen).  
+* U moet de consistentie van de twee entiteiten onderhouden die informatie over managers opslaan. U kunt het consistentie probleem afhandelen met behulp van EGTs om meerdere entiteiten in één atomische trans actie bij te werken. in dit geval worden de afdelings entiteit en de werknemers entiteit voor de afdelings manager in dezelfde partitie opgeslagen.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u vaak gerelateerde informatie moet opzoeken. Dit patroon vermindert het aantal query's dat uw client moet maken om de benodigde gegevens op te halen.  
+Gebruik dit patroon wanneer u vaak verwante informatie wilt opzoeken. Dit patroon vermindert het aantal query's dat door de client moet worden gemaakt om de benodigde gegevens op te halen.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Samengestelde sleutelpatroon](#compound-key-pattern)  
-* Entiteitgroeptransacties  
-* [Werken met heterogene entiteitstypen](#working-with-heterogeneous-entity-types)
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
+* Trans acties van entiteits groep  
+* [Werken met heterogene entiteits typen](#working-with-heterogeneous-entity-types)
 
-## <a name="compound-key-pattern"></a>Samengestelde sleutelpatroon
-Gebruik samengestelde **RowKey-waarden** om een client in staat te stellen gerelateerde gegevens op te zoeken met één puntquery.  
+## <a name="compound-key-pattern"></a>Samengesteld sleutel patroon
+Gebruik samengestelde **RowKey** -waarden om een client in staat te stellen gerelateerde gegevens op te zoeken met een single point-query.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-In een relationele database is het natuurlijk om joins in query's te gebruiken om gerelateerde gegevens in één query terug te sturen naar de client. U bijvoorbeeld de werknemers-id gebruiken om een lijst op te zoeken met verwante entiteiten die prestatie- en controlegegevens voor die werknemer bevatten.  
+In een relationele data base is het natuurlijk om samen voegingen in query's te gebruiken om gerelateerde gegevens items te retour neren naar de client in één query. U kunt bijvoorbeeld de werk nemer-ID gebruiken om een lijst op te zoeken met gerelateerde entiteiten die de prestaties en de beoordelings gegevens voor die werk nemer bevatten.  
 
-Stel dat u werknemersentiteiten opslaat in de tabelservice met behulp van de volgende structuur:  
+Stel dat u werknemers entiteiten opslaat in de Table service met behulp van de volgende structuur:  
 
-![Entiteitsstructuur van werknemers](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![Entiteits structuur werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
-U moet ook historische gegevens met betrekking tot beoordelingen en prestaties opslaan voor elk jaar dat de werknemer voor uw organisatie heeft gewerkt en u moet toegang hebben tot deze informatie per jaar. Een optie is het maken van een andere tabel die entiteiten met de volgende structuur opslaat:  
+U moet ook historische gegevens over beoordelingen en prestaties opslaan voor elk jaar dat de werk nemer heeft gewerkt aan uw organisatie en u deze gegevens per jaar moet kunnen openen. U kunt ook een andere tabel maken waarin entiteiten worden opgeslagen met de volgende structuur:  
 
-![Alternatieve entiteitsstructuur van werknemers](media/storage-table-design-guide/storage-table-design-IMAGE19.png)
+![Entiteits structuur van alternatieve werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE19.png)
 
-Merk op dat u met deze aanpak besluiten om bepaalde informatie (zoals voor- en achternaam) in de nieuwe entiteit te dupliceren, zodat u uw gegevens met één verzoek ophalen. U echter geen sterke consistentie behouden omdat u een EGT niet gebruiken om de twee entiteiten atoomtewijs bij te werken.  
+Met deze aanpak kunt u ervoor kiezen om bepaalde gegevens (zoals de voor naam en achternaam) in de nieuwe entiteit te dupliceren, zodat u uw gegevens kunt ophalen met één aanvraag. U kunt echter geen sterke consistentie behouden omdat u geen EGT kunt gebruiken om de twee entiteiten atomisch bij te werken.  
 
 ### <a name="solution"></a>Oplossing
-Sla een nieuw entiteitstype op in de oorspronkelijke tabel met entiteiten met de volgende structuur:  
+Sla een nieuw entiteits type op in de oorspronkelijke tabel met behulp van entiteiten met de volgende structuur:  
 
-![Oplossing voor de structuur van de entiteit van werknemers](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
+![Oplossing voor entiteits structuur van werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE20.png)
 
-Merk op hoe de **RowKey** nu een samengestelde sleutel is die bestaat uit de werknemers-ID en het jaar van de controlegegevens waarmee u de prestaties van de werknemer ophalen en gegevens controleren met één verzoek voor één entiteit.  
+U ziet dat de **RowKey** nu een samengestelde sleutel is die bestaat uit de werk nemer-id en het jaar van de beoordelings gegevens waarmee u de prestaties van de werk nemer kunt ophalen en gegevens met één enkele aanvraag voor één entiteit kan controleren.  
 
-In het volgende voorbeeld wordt beschreven hoe u alle controlegegevens voor een bepaalde werknemer ophalen (zoals werknemer 000123 op de afdeling Verkoop):  
+In het volgende voor beeld wordt beschreven hoe u alle controle gegevens voor een bepaalde werk nemer kunt ophalen (zoals werk nemer 000123 van de afdeling verkoop):  
 
-$filter=(PartitionKey eq 'Sales') en (RowKey ge 'empid_000123') en (RowKey lt 'empid_000124')&$select=RowKey,Manager Rating, Peer Rating, Comments  
+$filter = (PartitionKey EQ ' Sales ') en (RowKey ge ' empid_000123 ') en (RowKey lt ' empid_000124 ') &$select = RowKey, Manager-classificatie, peer rating, opmerkingen  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* U moet een geschikt scheidingsteken gebruiken waarmee u de **RowKey-waarde** eenvoudig ontken: bijvoorbeeld **000123_2012**.  
-* U slaat deze entiteit ook op in dezelfde partitie als andere entiteiten die gerelateerde gegevens voor dezelfde werknemer bevatten, wat betekent dat u EGT's gebruiken om een sterke consistentie te behouden.
-* U moet overwegen hoe vaak u de gegevens opvraagt om te bepalen of dit patroon geschikt is.  Als u bijvoorbeeld zelden toegang krijgt tot de controlegegevens en de belangrijkste werknemersgegevens, moet u deze vaak als afzonderlijke entiteiten bewaren.  
+* U moet een geschikt scheidings teken gebruiken waarmee u de **RowKey** -waarde eenvoudig kunt parseren: bijvoorbeeld **000123_2012**.  
+* U slaat deze entiteit ook op in dezelfde partitie als andere entiteiten die gerelateerde gegevens bevatten voor dezelfde werk nemer. Dit betekent dat u EGTs kunt gebruiken om sterke consistentie te hand haven.
+* U kunt overwegen hoe vaak u de gegevens wilt opvragen om te bepalen of dit patroon geschikt is.  Bijvoorbeeld, als u de gegevens over de controle en de belangrijkste gegevens van werk nemers vaker opent, moet u deze als afzonderlijke entiteiten houden.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u een of meer verwante entiteiten moet opslaan die u regelmatig opvraagt.  
+Gebruik dit patroon wanneer u een of meer gerelateerde entiteiten wilt opslaan die u regel matig doorzoekt.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* Entiteitgroeptransacties  
-* [Werken met heterogene entiteitstypen](#working-with-heterogeneous-entity-types)  
-* [Uiteindelijk consistent transactiepatroon](#eventually-consistent-transactions-pattern)  
+* Trans acties van entiteits groep  
+* [Werken met heterogene entiteits typen](#working-with-heterogeneous-entity-types)  
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
 
-## <a name="log-tail-pattern"></a>Het staartpatroon van het logboek
-Haal *n* de n-entiteiten op die onlangs aan een partitie zijn toegevoegd met behulp van een **RowKey-waarde** die wordt sorteert in omgekeerde datum- en tijdvolgorde.  
+## <a name="log-tail-pattern"></a>Eind patroon van logboek
+Haal de *n* -entiteiten die het laatst zijn toegevoegd aan een partitie op met behulp van een **RowKey** -waarde die wordt gesorteerd in omgekeerde datum-en tijd volgorde.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Een gemeenschappelijke vereiste is in staat geweest om de meest recent gemaakte entiteiten op te halen, bijvoorbeeld de 10 meest recente onkostenclaims die door een werknemer zijn ingediend. Tabelquery's ondersteunen een **$top** querybewerking om de eerste *n-entiteiten* uit een set terug te sturen: er is geen gelijkwaardige querybewerking om de laatste n-entiteiten in een set terug te sturen.  
+Een algemene vereiste is de mogelijkheid om de meest recent gemaakte entiteiten op te halen, bijvoorbeeld de 10 meest recente onkosten claims die zijn ingediend door een werk nemer. Tabel query's bieden ondersteuning voor een **$Top** query bewerking voor het retour neren van de eerste *n* entiteiten uit een set: er is geen equivalente query bewerking om de laatste n-entiteiten in een set te retour neren.  
 
 ### <a name="solution"></a>Oplossing
-Sla de entiteiten op met behulp van een **RowKey** die van nature sorteert in omgekeerde datum/ tijdvolgorde met behulp van, zodat de meest recente vermelding altijd de eerste in de tabel is.  
+Sla de entiteiten op met behulp van een **RowKey** die op natuurlijke wijze in omgekeerde datum/tijd wordt gesorteerd door gebruik te maken van de meest recente vermelding altijd het eerste item in de tabel.  
 
-Als u bijvoorbeeld de 10 meest recente onkostenclaims van een werknemer wilt ophalen, u een omgekeerde tekenwaarde gebruiken die is afgeleid van de huidige datum/tijd. In het volgende c#-codevoorbeeld wordt één manier weergegeven om een geschikte waarde 'omgekeerde teken' te maken voor een **RowKey** die sorteert van de meest recente tot de oudste:  
+Als u bijvoorbeeld de 10 meest recente onkosten claims wilt ophalen die door een werk nemer zijn ingediend, kunt u een omgekeerde maat waarde gebruiken die is afgeleid van de huidige datum/tijd. In het volgende voor beeld van C#-code ziet u één manier om een geschikte ' omgekeerde Ticks '-waarde te maken voor een **RowKey** die van de meest recente naar de oudste sorteert:  
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`  
 
-U teruggaan naar de datumtijdwaarde met behulp van de volgende code:  
+U kunt teruggaan naar de waarde datum en tijd met de volgende code:  
 
 `DateTime dt = new DateTime(DateTime.MaxValue.Ticks - Int64.Parse(invertedTicks));`  
 
-De tabelquery ziet er als volgt uit:  
+De tabel query ziet er als volgt uit:  
 
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* U moet de omgekeerde tekenwaarde met voorloopnullen plaatsen om ervoor te zorgen dat de tekenreekswaarde sorteert zoals verwacht.  
-* U moet zich bewust zijn van de schaalbaarheidsdoelen op het niveau van een partitie. Zorg ervoor dat u geen hot spot-partities maakt.  
+* U moet de omgekeerde Tick-waarde met voorloop nullen aanvullen om ervoor te zorgen dat de teken reeks waarde op de verwachte manier wordt gesorteerd.  
+* U moet rekening houden met de schaalbaarheids doelen op het niveau van een partitie. Wees voorzichtig met het maken van hot spot-partities.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u toegang moet krijgen tot entiteiten in omgekeerde datum/tijdvolgorde of wanneer u toegang moet krijgen tot de meest recent toegevoegde entiteiten.  
+Gebruik dit patroon wanneer u entiteiten in omgekeerde datum/tijd-volg orde wilt gebruiken of wanneer u toegang wilt krijgen tot de meest recent toegevoegde entiteiten.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Antipatroon voorbereiden / toevoegen](#prepend-append-anti-pattern)  
+* [Anti-patroon laten voorafgaan door/toevoegen](#prepend-append-anti-pattern)  
 * [Entiteiten ophalen](#retrieving-entities)  
 
-## <a name="high-volume-delete-pattern"></a>Patroon voor het verwijderen van hoge volumes
-Een groot aantal entiteiten kunnen verwijderen door alle entiteiten op te slaan voor gelijktijdige verwijdering in hun eigen afzonderlijke tabel; u de entiteiten verwijdert door de tabel te verwijderen.  
+## <a name="high-volume-delete-pattern"></a>Patroon voor hoog volume verwijderen
+Schakel het verwijderen van een groot aantal entiteiten in door alle entiteiten voor gelijktijdige verwijdering in hun eigen afzonderlijke tabel op te slaan. u verwijdert de entiteiten door de tabel te verwijderen.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Veel toepassingen verwijderen oude gegevens die niet langer beschikbaar hoeven te zijn voor een clienttoepassing of die de toepassing heeft gearchiveerd naar een ander opslagmedium. U identificeert dergelijke gegevens meestal op een datum: u hebt bijvoorbeeld een verplichting om records te verwijderen van alle aanmeldingsverzoeken die meer dan 60 dagen oud zijn.  
+Veel toepassingen verwijderen oude gegevens die niet meer beschikbaar zijn voor een client toepassing of die de toepassing heeft gearchiveerd naar een ander opslag medium. Normaal gesp roken identificeert u gegevens met een datum: u hebt bijvoorbeeld een vereiste om records te verwijderen van alle aanmeldings aanvragen die meer dan 60 dagen oud zijn.  
 
-Een mogelijk ontwerp is het gebruik van de datum en het tijdstip van de aanmeldingsaanvraag in de **RowKey:**  
+Een mogelijk ontwerp is het gebruik van de datum en tijd van de aanmeldings aanvraag in de **RowKey**:  
 
-![Datum en tijd van inlogpoging](media/storage-table-design-guide/storage-table-design-IMAGE21.png)
+![Datum en tijd waarop de aanmeldings poging is gedaan](media/storage-table-design-guide/storage-table-design-IMAGE21.png)
 
-Deze aanpak voorkomt partitiehotspots omdat de toepassing inlogentiteiten voor elke gebruiker in een afzonderlijke partitie kan invoegen en verwijderen. Deze aanpak kan echter kostbaar en tijdrovend zijn als u een groot aantal entiteiten hebt, omdat u eerst een tabelscan moet uitvoeren om alle entiteiten te identificeren die moeten worden verwijderd en vervolgens elke oude entiteit moet verwijderen. U het aantal retouren naar de server die nodig is om de oude entiteiten te verwijderen verminderen door meerdere verwijderingsaanvragen in ET's te batcheren.  
+Deze aanpak voor komt het partitioneren van HOTS pots, omdat de toepassing aanmeldings entiteiten kan invoegen en verwijderen voor elke gebruiker in een afzonderlijke partitie. Deze aanpak kan echter kosten en tijd in beslag nemen als u een groot aantal entiteiten hebt, omdat u eerst een tabel scan moet uitvoeren om alle entiteiten te identificeren die moeten worden verwijderd. vervolgens moet u elke oude entiteit verwijderen. U kunt het aantal Retouren naar de server verminderen dat nodig is voor het verwijderen van de oude entiteiten door meerdere verwijderings aanvragen in batch op te nemen in EGTs.  
 
 ### <a name="solution"></a>Oplossing
-Gebruik een aparte tabel voor elke dag van inlogpogingen. U het bovenstaande entiteitsontwerp gebruiken om hotspots te vermijden wanneer u entiteiten invoegt, en het verwijderen van oude entiteiten is nu gewoon een kwestie van elke dag één tabel verwijderen (één opslagbewerking) in plaats van honderden en duizenden afzonderlijke inloggen entiteiten elke dag.  
+Gebruik een afzonderlijke tabel voor elke dag van de aanmeldings pogingen. U kunt het entiteits ontwerp hierboven gebruiken om HOTS pots te voor komen bij het invoegen van entiteiten, en het verwijderen van oude entiteiten is nu gewoon een kwestie van het verwijderen van één tabel elke dag (één opslag bewerking) in plaats van honderden en duizenden afzonderlijke aanmeldings entiteiten elke dag te zoeken en te verwijderen.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Ondersteunt uw ontwerp andere manieren waarop uw toepassing de gegevens gebruikt, zoals het opzoeken van specifieke entiteiten, het koppelen met andere gegevens of het genereren van geaggregeerde informatie?  
-* Vermijdt uw ontwerp hotspots wanneer u nieuwe entiteiten invoegt?  
-* Verwacht een vertraging als u dezelfde tabelnaam opnieuw wilt gebruiken nadat u deze hebt verwijderd. Het is beter om altijd unieke tafelnamen te gebruiken.  
-* Verwacht enige beperking wanneer u voor het eerst een nieuwe tabel gebruikt terwijl de tabelservice de toegangspatronen leert en de partities over knooppunten verdeelt. U moet overwegen hoe vaak u nieuwe tabellen moet maken.  
+* Ondersteunt uw ontwerp andere manieren waarop uw toepassing de gegevens gebruikt, zoals het opzoeken van specifieke entiteiten, het koppelen met andere gegevens of het genereren van geaggregeerde gegevens?  
+* Vermijdt uw ontwerp hot spots wanneer u nieuwe entiteiten invoegt?  
+* Er wordt een vertraging verwacht als u dezelfde tabel naam wilt gebruiken nadat u deze hebt verwijderd. Het is beter om altijd unieke tabel namen te gebruiken.  
+* Er wordt enige beperking verwacht wanneer u een nieuwe tabel voor het eerst gebruikt terwijl de Table service de toegangs patronen leert en de partities verdeeld over knoop punten. U kunt overwegen hoe vaak nieuwe tabellen moeten worden gemaakt.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u een groot aantal entiteiten hebt die u tegelijkertijd moet verwijderen.  
+Gebruik dit patroon wanneer u een groot aantal entiteiten hebt dat tegelijk moet worden verwijderd.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* Entiteitgroeptransacties
+* Trans acties van entiteits groep
 * [Entiteiten wijzigen](#modifying-entities)  
 
-## <a name="data-series-pattern"></a>Patroon van gegevensreeksen
-Sla complete gegevensreeksen op in één entiteit om het aantal aanvragen dat u doet te minimaliseren.  
+## <a name="data-series-pattern"></a>Patroon van de gegevens reeks
+Sla volledige gegevens reeksen op in één entiteit om het aantal aanvragen dat u maakt, te minimaliseren.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Een veelvoorkomend scenario is dat een toepassing een reeks gegevens opslaat die deze doorgaans in één keer moet ophalen. Uw toepassing kan bijvoorbeeld registreren hoeveel chatberichten elke werknemer elk uur verzendt en deze informatie vervolgens gebruiken om uit te leggen hoeveel berichten elke gebruiker in de afgelopen 24 uur heeft verzonden. Een ontwerp kan zijn om 24 entiteiten op te slaan voor elke werknemer:  
+Een veelvoorkomend scenario is voor een toepassing om een reeks gegevens op te slaan die normaal gesp roken allemaal tegelijk moeten worden opgehaald. Uw toepassing kan bijvoorbeeld registreren hoeveel berichten elke werk nemer elk uur verzendt, en vervolgens deze gegevens gebruiken om te tekenen hoe vaak elke gebruiker de voor gaande 24 uur heeft verzonden. Het kan zijn dat u voor elke werk nemer 24 entiteiten opslaat:  
 
-![24 entiteiten opslaan voor elke werknemer](media/storage-table-design-guide/storage-table-design-IMAGE22.png)
+![24 entiteiten opslaan voor elke werk nemer](media/storage-table-design-guide/storage-table-design-IMAGE22.png)
 
-Met dit ontwerp u de entiteit eenvoudig vinden en bijwerken om voor elke werknemer bij te werken wanneer de toepassing de waarde voor het aantal berichten moet bijwerken. Als u echter de informatie wilt ophalen om een grafiek van de activiteit voor de voorgaande 24 uur te plotten, moet u 24 entiteiten ophalen.  
+Met dit ontwerp kunt u de entiteit die u wilt bijwerken voor elke werk nemer eenvoudig vinden en bijwerken wanneer de toepassing de waarde voor het aantal berichten moet bijwerken. Als u echter de informatie wilt ophalen om een grafiek van de activiteit voor de voor gaande 24 uur te tekenen, moet u 24 entiteiten ophalen.  
 
 ### <a name="solution"></a>Oplossing
 Gebruik het volgende ontwerp met een afzonderlijke eigenschap om het aantal berichten voor elk uur op te slaan:  
 
-![Entiteit berichtstatistieken](media/storage-table-design-guide/storage-table-design-IMAGE23.png)
+![Entiteit voor bericht statistieken](media/storage-table-design-guide/storage-table-design-IMAGE23.png)
 
-Met dit ontwerp u een samenvoegbewerking gebruiken om het aantal berichten voor een werknemer gedurende een bepaald uur bij te werken. U nu alle informatie ophalen die u nodig hebt om de grafiek te plotten met een aanvraag voor één entiteit.  
+Met dit ontwerp kunt u een samenvoeg bewerking gebruiken om het aantal berichten voor een werk nemer voor een bepaald uur bij te werken. U kunt nu alle informatie ophalen die u nodig hebt om de grafiek uit te zetten met behulp van een aanvraag voor één entiteit.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Als uw volledige gegevensreeks niet in één entiteit past (een entiteit kan maximaal 252 eigenschappen hebben), gebruikt u een alternatief gegevensarchief zoals een blob.  
-* Als u meerdere clients tegelijk een entiteit hebt, moet u de **ETag** gebruiken om optimistische gelijktijdigheid te implementeren. Als u veel klanten hebt, u ervaren hoge twist.  
+* Als uw volledige gegevens reeks niet in één entiteit past (een entiteit kan Maxi maal 252 eigenschappen hebben), gebruikt u een alternatief gegevens archief, zoals een blob.  
+* Als u meerdere clients tegelijk een entiteit bijwerkt, moet u de **ETAG** gebruiken voor het implementeren van optimistische gelijktijdigheid. Als u veel clients hebt, kunt u veel conflicten ondervinden.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u een gegevensreeks moet bijwerken en ophalen die is gekoppeld aan een afzonderlijke entiteit.  
+Gebruik dit patroon wanneer u een gegevens reeks die aan een afzonderlijke entiteit is gekoppeld, moet bijwerken en ophalen.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Patroon grote entiteiten](#large-entities-pattern)  
-* [Samenvoegen of vervangen](#merge-or-replace)  
-* [Uiteindelijk consistent transactiepatroon](#eventually-consistent-transactions-pattern) (als u de gegevensreeksen in een blob opslaat)  
+* [Patroon voor grote entiteiten](#large-entities-pattern)  
+* [Samen voegen of vervangen](#merge-or-replace)  
+* [Uiteindelijk consistent transactie patroon](#eventually-consistent-transactions-pattern) (als u de gegevens reeksen opslaat in een blob)  
 
-## <a name="wide-entities-pattern"></a>Breed entiteitspatroon
+## <a name="wide-entities-pattern"></a>Patroon voor grote entiteiten
 Gebruik meerdere fysieke entiteiten om logische entiteiten met meer dan 252 eigenschappen op te slaan.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Een afzonderlijke entiteit mag niet meer dan 252 eigenschappen hebben (met uitzondering van de verplichte systeemeigenschappen) en mag in totaal niet meer dan 1 MB aan gegevens opslaan. In een relationele database krijgt u doorgaans alle limieten voor de grootte van een rij omzeilen door een nieuwe tabel toe te voegen en een 1-op-1-relatie tussen deze gegevens af te dwingen.  
+Een afzonderlijke entiteit kan niet meer dan 252 eigenschappen hebben (met uitzonde ring van de verplichte systeem eigenschappen) en kan niet meer dan 1 MB aan gegevens in totaal opslaan. In een relationele data base krijgt u normaal gesp roken een afronding van de limieten voor de grootte van een rij door een nieuwe tabel toe te voegen en een 1-op-1-relatie tussen hen af te dwingen.  
 
 ### <a name="solution"></a>Oplossing
-Met de tabelservice u meerdere entiteiten opslaan om één groot bedrijfsobject met meer dan 252 eigenschappen weer te geven. Als u bijvoorbeeld een telling wilt opslaan van het aantal chatberichten dat elke werknemer de afgelopen 365 dagen heeft verzonden, u het volgende ontwerp gebruiken dat twee entiteiten met verschillende schema's gebruikt:  
+Met behulp van de Table service kunt u meerdere entiteiten opslaan om één groot zakelijk object met meer dan 252 eigenschappen aan te duiden. Als u bijvoorbeeld een telling wilt opslaan van het aantal IM-berichten dat elke werk nemer heeft verzonden voor de afgelopen 365 dagen, kunt u het volgende ontwerp gebruiken dat twee entiteiten met verschillende schema's gebruikt:  
 
 ![Meerdere entiteiten](media/storage-table-design-guide/storage-table-design-IMAGE24.png)
 
-Als u een wijziging moet aanbrengen waarvoor beide entiteiten moeten worden bijgewerkt om ze met elkaar gesynchroniseerd te houden, u een EGT gebruiken. Anders u één samenvoegbewerking gebruiken om het aantal berichten voor een bepaalde dag bij te werken. Als u alle gegevens voor een individuele werknemer wilt ophalen, moet u beide entiteiten ophalen, wat u doen met twee efficiënte aanvragen die zowel een **PartitionKey-** als een **RowKey-waarde** gebruiken.  
+Als u een wijziging wilt aanbrengen waarvoor beide entiteiten moeten worden bijgewerkt zodat ze met elkaar gesynchroniseerd blijven, kunt u een EGT gebruiken. U kunt ook één samenvoeg bewerking gebruiken om het aantal berichten voor een specifieke dag bij te werken. Als u alle gegevens voor een individuele werk nemer wilt ophalen, moet u beide entiteiten ophalen, die u kunt doen met twee efficiënte aanvragen die zowel een **PartitionKey** als een **RowKey** -waarde gebruiken.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Het ophalen van een volledige logische entiteit omvat ten minste twee opslagtransacties: één om elke fysieke entiteit op te halen.  
+* Het ophalen van een volledige logische entiteit omvat ten minste twee opslag transacties: één om elke fysieke entiteit op te halen.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u entiteiten moet opslaan waarvan de grootte of het aantal eigenschappen de limieten voor een afzonderlijke entiteit in de tabelservice overschrijdt.  
+Gebruik dit patroon wanneer u entiteiten wilt opslaan waarvan de grootte of het aantal eigenschappen groter is dan de limieten voor een afzonderlijke entiteit in de Table service.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* Entiteitgroeptransacties
-* [Samenvoegen of vervangen](#merge-or-replace)
+* Trans acties van entiteits groep
+* [Samen voegen of vervangen](#merge-or-replace)
 
-## <a name="large-entities-pattern"></a>Patroon grote entiteiten
-Gebruik blobopslag om grote eigenschapswaarden op te slaan.  
+## <a name="large-entities-pattern"></a>Patroon voor grote entiteiten
+Gebruik Blob Storage voor het opslaan van grote eigenschaps waarden.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Een afzonderlijke entiteit mag in totaal niet meer dan 1 MB aan gegevens opslaan. Als een of meer van uw eigenschappen waarden opslaan waardoor de totale grootte van uw entiteit deze waarde overschrijdt, u de volledige entiteit niet opslaan in de tabelservice.  
+Een afzonderlijke entiteit kan niet meer dan 1 MB aan gegevens in totaal opslaan. Als een of meer van uw eigenschappen waarden opslaan die ervoor zorgen dat de totale grootte van uw entiteit deze waarde overschrijdt, kunt u de hele entiteit niet opslaan in de Table service.  
 
 ### <a name="solution"></a>Oplossing
-Als uw entiteit meer dan 1 MB groot is omdat een of meer eigenschappen een grote hoeveelheid gegevens bevatten, u gegevens opslaan in de Blob-service en vervolgens het adres van de blob opslaan in een eigenschap in de entiteit. U bijvoorbeeld de foto van een werknemer opslaan in blobopslag en een koppeling naar de foto opslaan in de eigenschap **Foto** van uw werknemerentiteit:  
+Als uw entiteit groter is dan 1 MB, omdat een of meer eigenschappen een grote hoeveelheid gegevens bevatten, kunt u gegevens opslaan in de Blob service en het adres van de BLOB vervolgens opslaan in een eigenschap in de entiteit. U kunt bijvoorbeeld de foto van een werk nemer opslaan in Blob Storage en een koppeling naar de foto opslaan in de eigenschap **foto** van uw werknemers entiteit:  
 
-![Foto, eigenschap](media/storage-table-design-guide/storage-table-design-IMAGE25.png)
+![Foto-eigenschap](media/storage-table-design-guide/storage-table-design-IMAGE25.png)
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Als u de uiteindelijke consistentie tussen de entiteit in de tabelservice en de gegevens in de Blob-service wilt behouden, gebruikt u het [patroon Uiteindelijk consistente transacties](#eventually-consistent-transactions-pattern) om uw entiteiten te behouden.
-* Het ophalen van een volledige entiteit omvat ten minste twee opslagtransacties: één om de entiteit op te halen en één om de blobgegevens op te halen.  
+* Als u de uiteindelijke consistentie tussen de entiteit in het Table service en de gegevens in de Blob service wilt behouden, gebruikt u het patroon met de [uiteindelijk consistente trans acties](#eventually-consistent-transactions-pattern) om uw entiteiten te onderhouden.
+* Het ophalen van een volledige entiteit omvat ten minste twee opslag transacties: een om de entiteit op te halen en één om de BLOB-gegevens op te halen.  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Gebruik dit patroon wanneer u entiteiten moet opslaan waarvan de grootte de limieten voor een afzonderlijke entiteit in de tabelservice overschrijdt.  
+Gebruik dit patroon wanneer u entiteiten wilt opslaan waarvan de grootte de limieten voor een afzonderlijke entiteit in de Table service overschrijdt.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Uiteindelijk consistent transactiepatroon](#eventually-consistent-transactions-pattern)  
-* [Breed entiteitspatroon](#wide-entities-pattern)
+* [Patroon uiteindelijk consistent trans acties](#eventually-consistent-transactions-pattern)  
+* [Patroon voor grote entiteiten](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>
 
-## <a name="prependappend-anti-pattern"></a>Antipatroon voorbereiden/toevoegen
-Vergroot de schaalbaarheid wanneer u een hoog volume aan wisselplaten hebt door de inserts over meerdere partities te spreiden.  
+## <a name="prependappend-anti-pattern"></a>Anti-patroon laten voorafgaan door/toevoegen
+Verg root de schaal baarheid wanneer u een groot aantal toevoegingen hebt door de toevoegingen over meerdere partities te spreiden.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Het vooraf gebruiken of toevoegen van entiteiten aan uw opgeslagen entiteiten resulteert meestal in de toepassing die nieuwe entiteiten toevoegt aan de eerste of laatste partitie van een reeks partities. In dit geval vinden alle inserts op een bepaald moment plaats in dezelfde partitie, waardoor een hotspot wordt gemaakt die voorkomt dat de tabelservice inserts over meerdere knooppunten laadt en mogelijk de schaalbaarheidsdoelen voor Partitie. Als u bijvoorbeeld een toepassing hebt die netwerk- en resourcetoegang door werknemers registreert, kan een entiteitsstructuur zoals hieronder worden weergegeven, ertoe leiden dat de partitie van het huidige uur een hotspot wordt als het volume van transacties het schaalbaarheidsdoel voor een afzonderlijke partitie:  
+In afwachting van de in behandeling zijnde of toegevoegde entiteiten aan uw opgeslagen entiteiten resulteert doorgaans in de toepassing door nieuwe entiteiten toe te voegen aan de eerste of laatste partitie van een reeks partities. In dit geval worden alle invoegingen op elk gewenst moment in dezelfde partitie geplaatst, waardoor er een hotspot wordt gemaakt waarmee wordt voor komen dat de tabel service van taak verdeling wordt ingevoegd op meerdere knoop punten, waardoor uw toepassing mogelijk de schaalbaarheids doelen voor de partitie kan bereiken. Als u bijvoorbeeld een toepassing hebt die netwerk-en bron toegang door werk nemers registreert, kan een entiteits structuur, zoals hieronder wordt weer gegeven, ertoe leiden dat de partitie van het huidige uur een hotspot wordt als het volume van trans acties het schaalbaarheids doel voor een afzonderlijke partitie bereikt:  
 
-![Entiteitsstructuur](media/storage-table-design-guide/storage-table-design-IMAGE26.png)
+![Entiteits structuur](media/storage-table-design-guide/storage-table-design-IMAGE26.png)
 
 ### <a name="solution"></a>Oplossing
-De volgende alternatieve entiteitsstructuur voorkomt een hotspot op een bepaalde partitie terwijl de toepassing gebeurtenissen registreert:  
+De volgende alternatieve entiteits structuur voor komt een hotspot op een bepaalde partitie als de toepassing gebeurtenissen registreert:  
 
-![Alternatieve entiteitsstructuur](media/storage-table-design-guide/storage-table-design-IMAGE27.png)
+![Alternatieve entiteits structuur](media/storage-table-design-guide/storage-table-design-IMAGE27.png)
 
-Let met dit voorbeeld op hoe zowel de **PartitionKey** als **RowKey** samengestelde sleutels zijn. De **PartitionKey** gebruikt zowel de afdeling als de werknemers-id om de logboekregistratie over meerdere partities te distribueren.  
+In dit voor beeld ziet u hoe zowel de **PartitionKey** als de **RowKey** samengestelde sleutels zijn. De **PartitionKey** gebruikt zowel de afdeling als de werk nemer-id om de logboek registratie over meerdere partities te verdelen.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
 Beschouw de volgende punten als u besluit hoe u dit patroon wilt implementeren:  
 
-* Ondersteunt de alternatieve sleutelstructuur die het maken van hot partities op inserts efficiënt ondersteunt bij de query's die uw clienttoepassing maakt?  
-* Betekent uw verwachte volume van transacties dat u waarschijnlijk de schaalbaarheidsdoelstellingen voor een afzonderlijke partitie bereikt en wordt beperkt door de opslagservice?  
+* Biedt de alternatieve sleutel structuur waarmee wordt voor komen dat u Hot partitioneert op invoegingen de query's die uw client toepassing maakt, efficiënt worden ondersteund?  
+* Betekent uw verwachte volume aan trans acties dat u waarschijnlijk de schaalbaarheids doelen voor een afzonderlijke partitie zult bereiken en dat deze wordt beperkt door de opslag service?  
 
 ### <a name="when-to-use-this-pattern"></a>Wanneer dit patroon gebruiken
-Vermijd het antipatroon voor het voorbereiden/toevoegen wanneer uw volume van transacties waarschijnlijk zal leiden tot beperking door de opslagservice wanneer u een hot partitie opent.  
+Vermijd het Anti-patroon laten voorafgaan door/Append wanneer uw volume aan trans acties waarschijnlijk zal leiden tot een beperking door de opslag service wanneer u toegang hebt tot een dynamische partitie.  
 
 ### <a name="related-patterns-and-guidance"></a>Gerelateerde patronen en richtlijnen
 De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementatie van dit patroon:  
 
-* [Samengestelde sleutelpatroon](#compound-key-pattern)  
-* [Het staartpatroon van het logboek](#log-tail-pattern)  
+* [Samengesteld sleutel patroon](#compound-key-pattern)  
+* [Eind patroon van logboek](#log-tail-pattern)  
 * [Entiteiten wijzigen](#modifying-entities)  
 
-## <a name="log-data-anti-pattern"></a>Antipatroon van loggegevens
-Doorgaans moet u de Blob-service gebruiken in plaats van de tabelservice om logboekgegevens op te slaan.  
+## <a name="log-data-anti-pattern"></a>Anti-patroon van logboek gegevens
+Normaal gesp roken moet u de Blob service gebruiken in plaats van de Table service om logboek gegevens op te slaan.  
 
 ### <a name="context-and-problem"></a>Context en probleem
-Een veelgebruikte use case voor loggegevens is het ophalen van een selectie logboekvermeldingen voor een specifiek datum-/tijdbereik: u wilt bijvoorbeeld alle fout- en kritieke berichten vinden die uw toepassing tussen 15:04 en 15:06 op een specifieke datum heeft geregistreerd. U wilt de datum en tijd van het logboekbericht niet gebruiken om de partitie te bepalen waarop u logboekentiteiten opslaat: dat resulteert in een hete partitie, omdat op een gegeven moment alle logentiteiten dezelfde **partitionkey-waarde** delen (zie de sectie [Anti-patroon prepend/toevoegen).](#prepend-append-anti-pattern) Het volgende entiteitsschema voor een logboekbericht resulteert bijvoorbeeld in een hot partitie omdat de toepassing alle logboekberichten naar de partitie schrijft voor de huidige datum en het huidige uur:  
+Een veelvoorkomende use-case voor logboek gegevens is het ophalen van een selectie logboek vermeldingen voor een specifiek datum/tijd bereik: u wilt bijvoorbeeld alle fout-en kritieke berichten zoeken die uw toepassing heeft geregistreerd tussen 15:04 en 15:06 op een specifieke datum. U wilt de datum en tijd van het logboek bericht niet gebruiken om te bepalen met welke partitie u logboek entiteiten opslaat: op een bepaald moment worden alle logboek entiteiten met dezelfde **PartitionKey** -waarde gedeeld (Zie de sectie [laten voorafgaan door/Append anti-pattern](#prepend-append-anti-pattern)). Het volgende entiteits schema voor een logboek bericht resulteert bijvoorbeeld in een hete partitie, omdat de toepassing alle logboek berichten naar de partitie schrijft voor de huidige datum en tijd:  
 
-![Entiteit voor logboekberichten](media/storage-table-design-guide/storage-table-design-IMAGE28.png)
+![Entiteit van het logboek bericht](media/storage-table-design-guide/storage-table-design-IMAGE28.png)
 
-In dit voorbeeld bevat de **RowKey** de datum en tijd van het logboekbericht om ervoor te zorgen dat logboekberichten worden opgeslagen gesorteerd in datum/tijdvolgorde en bevat een bericht-id voor het geval meerdere logboekberichten dezelfde datum en tijd delen.  
+In dit voor beeld bevat de **RowKey** de datum en tijd van het logboek bericht om er zeker van te zijn dat logboek berichten worden opgeslagen in de volg orde van datum/tijd en een bericht-id bevat als meerdere logboek berichten dezelfde datum en tijd delen.  
 
-Een andere benadering is het gebruik van een **PartitionKey** die ervoor zorgt dat de toepassing berichten schrijft over een reeks partities. Als de bron van het logboekbericht bijvoorbeeld een manier biedt om berichten over veel partities te distribueren, u het volgende entiteitsschema gebruiken:  
+Een andere benadering is het gebruik van een **PartitionKey** die ervoor zorgt dat de toepassing berichten schrijft over diverse partities. Als de bron van het logboek bericht bijvoorbeeld een manier biedt om berichten over meerdere partities te verdelen, kunt u het volgende entiteits schema gebruiken:  
 
-![Entiteit alternatief logboekbericht](media/storage-table-design-guide/storage-table-design-IMAGE29.png)
+![Andere entiteit van het logboek bericht](media/storage-table-design-guide/storage-table-design-IMAGE29.png)
 
-Het probleem met dit schema is echter dat u elke partitie in de tabel moet doorzoeken om alle logboekberichten voor een bepaalde tijdspanne op te halen.
+Het probleem met dit schema is echter dat alle logboek berichten moeten worden opgehaald voor een specifieke periode die u moet doorzoeken op elke partitie in de tabel.
 
 ### <a name="solution"></a>Oplossing
-In het vorige gedeelte werd gewezen op het probleem van het gebruik van de tabelservice om logboekvermeldingen op te slaan en werden twee, onbevredigende ontwerpen voorgesteld. Een oplossing leidde tot een hete partitie met het risico van slechte prestaties schrijven log berichten; de andere oplossing resulteerde in slechte queryprestaties vanwege de vereiste om elke partitie in de tabel te scannen om logboekberichten op te halen voor een specifieke tijdspanne. Blob-opslag biedt een betere oplossing voor dit type scenario en zo slaat Azure Storage Analytics de logboekgegevens op die het verzamelt.  
+In de vorige sectie is het probleem gemarkeerd dat probeert de Table service te gebruiken voor het opslaan van logboek vermeldingen en voorgestelde twee, niet-bevredigende ontwerpen. Een oplossing heeft geleid tot een hot partitie met het risico op slechte prestaties logboek berichten te schrijven. de andere oplossing resulteerde in slechtere query prestaties vanwege de vereiste om elke partitie in de tabel te scannen om logboek berichten op te halen voor een bepaalde periode. Blob Storage biedt een betere oplossing voor dit type scenario. Dit is de manier waarop Azure Opslaganalyse de logboek gegevens opslaat die worden verzameld.  
 
-In dit gedeelte wordt beschreven hoe Storage Analytics loggegevens opslaat in blob-opslag als illustratie van deze benadering voor het opslaan van gegevens die u doorgaans per bereik opvraagt.  
+In deze sectie wordt beschreven hoe Opslaganalyse logboek gegevens opslaat in Blob Storage als een illustratie van deze benadering om gegevens op te slaan die u doorgaans doorzoekt op bereik.  
 
-Storage Analytics slaat logboekberichten op in een afgebakende indeling in meerdere blobs. De afgebakende indeling maakt het gemakkelijk voor een clienttoepassing om de gegevens in het logboekbericht te ontindirecten.  
+Opslaganalyse slaat logboek berichten op in een indeling met scheidings tekens in meerdere blobs. De indeling met scheidings tekens maakt het eenvoudig voor een client toepassing om de gegevens in het logboek bericht te parseren.  
 
-Storage Analytics gebruikt een naamgevingsconventie voor blobs waarmee u de blob (of blobs) vinden die de logboekberichten bevatten waarvoor u zoekt. Een blob met de naam 'wachtrij/2014/07/31/1800/000001.log' bevat bijvoorbeeld logboekberichten die betrekking hebben op de wachtrijservice voor het uur dat begint om 18:00 uur op 31 juli 2014. De "000001" geeft aan dat dit het eerste logboekbestand voor deze periode is. Storage Analytics registreert ook de tijdstempels van de eerste en laatste logboekberichten die in het bestand zijn opgeslagen als onderdeel van de metagegevens van de blob. Met de API voor blobopslag u blobs in een container vinden op basis van een naamvoorvoegsel: om alle blobs te vinden die wachtrijlogboekgegevens bevatten voor het uur dat om 18:00 uur begint, u het voorvoegsel 'queue/2014/07/31/1800' gebruiken.  
+Opslaganalyse gebruikt een naamgevings Conventie voor blobs waarmee u de BLOB (of blobs) kunt vinden die de logboek berichten bevat waarvoor u zoekt. Een blob met de naam Queue/2014/07/31/1800/000001. log bevat bijvoorbeeld logboek berichten die betrekking hebben op de wachtrij service voor het uur, te beginnen bij 18:00 op 31 juli 2014. De ' 000001 ' geeft aan dat dit het eerste logboek bestand voor deze periode is. Opslaganalyse registreert ook de tijds tempels van de eerste en laatste logboek berichten die in het bestand zijn opgeslagen als onderdeel van de meta gegevens van de blob. Met de API voor Blob Storage kunt u blobs vinden in een container op basis van een naam voorvoegsel: voor het zoeken van alle blobs die wachtrij logboek gegevens bevatten voor het uur vanaf 18:00, gebruikt u het voor voegsel ' queue/2014/07/31/1800 '.  
 
-Storage Analytics buffert logberichten intern en werkt vervolgens periodiek de juiste blob bij of maakt een nieuwe met de nieuwste batch logboekvermeldingen. Dit vermindert het aantal schrijfbewerkingen dat moet worden uitgevoerd naar de blobservice.  
+Opslaganalyse buffers worden intern logboek berichten opgeslagen en vervolgens wordt de juiste BLOB bijgewerkt of wordt er een nieuwe gemaakt met de laatste batch logboek vermeldingen. Dit beperkt het aantal schrijf bewerkingen dat moet worden uitgevoerd naar de BLOB-service.  
 
-Als u een soortgelijke oplossing implementeert in uw eigen toepassing, moet u overwegen hoe u de afweging beheren tussen betrouwbaarheid (het schrijven van elke logboekvermelding voor blob-opslag als het gebeurt) en kosten en schaalbaarheid (het bufferen van updates in uw toepassing en schrijven deze blob opslag in batches).  
+Als u een soort gelijke oplossing in uw eigen toepassing implementeert, moet u overwegen hoe u de afweging tussen de betrouw baarheid (het schrijven van elke logboek vermelding naar Blob-opslag wanneer deze wordt uitgevoerd) en de kosten en schaal baarheid (het bufferen van updates in uw toepassing en het schrijven naar Blob-opslag in batches) kunt beheren.  
 
 ### <a name="issues-and-considerations"></a>Problemen en overwegingen
-Houd rekening met de volgende punten bij het bepalen hoe logboekgegevens moeten worden opgeslagen:  
+Houd rekening met de volgende punten wanneer u bepaalt hoe u logboek gegevens wilt opslaan:  
 
-* Als u een tabelontwerp maakt dat potentiële hot partities vermijdt, u merken dat u uw logboekgegevens niet efficiënt openen.  
-* Om logboekgegevens te verwerken, moet een client vaak veel records laden.  
-* Hoewel logboekgegevens vaak gestructureerd zijn, kan blobopslag een betere oplossing zijn.  
+* Als u een tabel ontwerp maakt waarmee mogelijke Hot-partities worden voor komen, is het mogelijk dat u geen efficiënt toegang hebt tot uw logboek gegevens.  
+* Voor het verwerken van logboek gegevens moet een client vaak veel records laden.  
+* Hoewel logboek gegevens vaak worden gestructureerd, is het mogelijk dat Blob Storage een betere oplossing is.  
 
 ## <a name="implementation-considerations"></a>Afwegingen bij de implementatie
-In dit gedeelte worden enkele overwegingen besproken om rekening mee te houden wanneer u de in de vorige secties beschreven patronen implementeert. De meeste van deze sectie maakt gebruik van voorbeelden geschreven in C# die gebruik maken van de Storage Client Library (versie 4.3.0 op het moment van schrijven).  
+In deze sectie worden enkele aandachtspunten besproken wanneer u de in de vorige secties beschreven patronen implementeert. In de meeste van deze sectie worden voor beelden gebruikt die zijn geschreven in C# en die gebruikmaken van de Storage-client bibliotheek (versie 4.3.0 op het moment van schrijven).  
 
 ## <a name="retrieving-entities"></a>Entiteiten ophalen
-Zoals besproken in de sectie Ontwerp voor query's, is de meest efficiënte query een puntquery. In sommige scenario's moet u echter mogelijk meerdere entiteiten ophalen. In deze sectie worden enkele veelvoorkomende benaderingen beschreven voor het ophalen van entiteiten met behulp van de opslagclientbibliotheek.  
+Zoals beschreven in het sectie ontwerp voor het uitvoeren van query's, is de meest efficiënte query een Point-query. In sommige scenario's is het echter mogelijk dat u meerdere entiteiten moet ophalen. In deze sectie worden enkele veelvoorkomende benaderingen beschreven om entiteiten op te halen met behulp van de Storage-client bibliotheek.  
 
-### <a name="executing-a-point-query-using-the-storage-client-library"></a>Een puntquery uitvoeren met de opslagclientbibliotheek
-De eenvoudigste manier om een puntquery uit te voeren, is door de bewerking **Tabel ophalen** te gebruiken zoals weergegeven in het volgende C#-codefragment waarmee een entiteit met een **partitionkey** van waarde 'Verkoop' en een **RowKey** van waarde "212" wordt opgehaald:  
+### <a name="executing-a-point-query-using-the-storage-client-library"></a>Een Point-query uitvoeren met de Storage-client bibliotheek
+De eenvoudigste manier om een punt query uit te voeren, is door de bewerking tabel **ophalen** te gebruiken, zoals wordt weer gegeven in het volgende code fragment van C# waarmee een entiteit wordt opgehaald met een **PartitionKey** van de waarde "Sales" en een **RowKey** van de waarde "212":  
 
 ```csharp
 TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -571,16 +571,16 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-Merk op hoe dit voorbeeld verwacht dat de entiteit die het ophaalt van het type **EmployeeEntity**is.  
+U ziet hoe in dit voor beeld wordt verwacht dat de entiteit die wordt opgehaald, van het type **EmployeeEntity**is.  
 
-### <a name="retrieving-multiple-entities-using-linq"></a>Meerdere entiteiten ophalen met LINQ
-U LINQ gebruiken om meerdere entiteiten uit de tabelservice op te halen wanneer u werkt met microsoft Azure Cosmos Table Standard Library. 
+### <a name="retrieving-multiple-entities-using-linq"></a>Ophalen van meerdere entiteiten met behulp van LINQ
+U kunt LINQ gebruiken om meerdere entiteiten uit de Table service op te halen wanneer u met Microsoft Azure Cosmos-tabel standaard bibliotheek werkt. 
 
 ```azurecli
 dotnet add package Microsoft.Azure.Cosmos.Table
 ```
 
-Als u de onderstaande voorbeelden wilt laten werken, moet u naamruimten opnemen:
+Om de onderstaande voor beelden te laten werken, moet u naam ruimten toevoegen:
 
 ```csharp
 using System.Linq;
@@ -588,11 +588,11 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-De employeeTable is een CloudTable-object\<waarmee een methode CreateQuery ITableEntity\<>() wordt geïmplementeerd, waarmee een TableQuery ITableEntity> wordt geretourneerd. Objecten van dit type implementeren een IQueryable en maken het gebruik van zowel LINQ Query Expressions en dot notatie syntax.
+De employeeTable is een CloudTable-object dat de methode CreateQuery\<ITableEntity> () implementeert, waarmee een TableQuery\<ITableEntity-> wordt geretourneerd. Objecten van dit type implementeren een IQueryable en toestaan de syntaxis van LINQ-query-expressies en punt notatie te gebruiken.
 
-Het ophalen van meerdere entiteiten en worden bereikt door het opgeven van een query met een **waar** clausule. Om een tabelscan te voorkomen, moet u altijd de **partitionkey-waarde** opnemen in de waar-clausule en, indien mogelijk, de **RowKey-waarde** om tabel- en partitiescans te voorkomen. De tabelservice ondersteunt een beperkt aantal vergelijkingsoperatoren (groter dan, groter dan of gelijk, minder dan, kleiner dan of gelijk, gelijk en niet gelijk) om te gebruiken in de waar-clausule. 
+Meerdere entiteiten ophalen en worden bereikt door een query op te geven met een **where** -component. Als u een tabel scan wilt voor komen, moet u altijd de waarde **PartitionKey** in de component WHERE toevoegen en indien mogelijk de **RowKey** -waarde om te voor komen dat er tabel-en partitie scans worden uitgevoerd. De tabel service ondersteunt een beperkt aantal vergelijkings operatoren (groter dan, groter dan of gelijk aan, kleiner dan, kleiner dan of gelijk aan, gelijk aan en niet gelijk aan) die worden gebruikt in de component WHERE. 
 
-In het volgende C#-codefragment worden alle werknemers gevonden waarvan de achternaam begint met 'B' (ervan uitgaande dat de **RowKey** de achternaam opslaat) in de verkoopafdeling (uitgaande van de **partitionkey** slaat de afdelingsnaam op):  
+In het volgende code fragment van C# vindt u alle werk nemers waarvan de achternaam begint met ' B ' (ervan uitgaande dat de **RowKey** de achternaam opslaat) op de verkoop afdeling (ervan uitgaande dat de **PartitionKey** de naam van de afdeling opslaat):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -605,9 +605,9 @@ var query = (from employee in employeeQuery
 var employees = query.Execute();  
 ```
 
-Let op hoe de query zowel een **RowKey** als een **partitionkey** opgeeft om betere prestaties te garanderen.  
+U ziet hoe de query zowel een **RowKey** als een **PartitionKey** opgeeft om betere prestaties te garanderen.  
 
-In het volgende codevoorbeeld wordt gelijkwaardige functionaliteit weergegeven zonder de syntaxis van LINQ te gebruiken:  
+Het volgende code voorbeeld toont gelijkwaardige functionaliteit zonder gebruik te maken van de LINQ-syntaxis:  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = 
@@ -624,18 +624,18 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 ```
 
 > [!NOTE]
-> Het voorbeeld genest meerdere **CombineFilters-methoden** om de drie filtervoorwaarden op te nemen.  
+> Het voor beeld nest meerdere **CombineFilters** -methoden om de drie filter voorwaarden op te nemen.  
 > 
 > 
 
-### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>Grote aantallen entiteiten uit een query ophalen
-Een optimale query retourneert een afzonderlijke entiteit op basis van een **PartitionKey-waarde** en een **RowKey-waarde.** In sommige scenario's u echter een vereiste hebben om veel entiteiten terug te sturen van dezelfde partitie of zelfs van veel partities.  
+### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>Grote aantallen entiteiten ophalen uit een query
+Een optimale query retourneert een afzonderlijke entiteit op basis van een **PartitionKey** -waarde en een **RowKey** -waarde. In sommige scenario's is het echter mogelijk dat u een groot aantal entiteiten van dezelfde partitie of zelfs van een groot aantal partities moet retour neren.  
 
-U moet de prestaties van uw toepassing altijd volledig testen in dergelijke scenario's.  
+In dergelijke scenario's moet u de prestaties van uw toepassing altijd volledig testen.  
 
-Een query ten opzichte van de tabelservice kan maximaal 1.000 entiteiten tegelijk retourneren en maximaal vijf seconden worden uitgevoerd. Als de resultaatset meer dan 1.000 entiteiten bevat, als de query niet binnen vijf seconden is voltooid of als de query de partitiegrens overschrijdt, retourneert de tabelservice een vervolgtoken om de clienttoepassing in staat te stellen de volgende set entiteiten aan te vragen. Zie [Time-out voor query's en paginatie](https://msdn.microsoft.com/library/azure/dd135718.aspx)voor meer informatie over hoe vervolgtokens werken.  
+Een query voor de tabel service kan Maxi maal 1.000 entiteiten tegelijk retour neren en kan Maxi maal vijf seconden worden uitgevoerd. Als de resultatenset meer dan 1.000 entiteiten bevat, als de query niet binnen vijf seconden is voltooid, of als de query de grens van de partitie overschrijdt, retourneert de Table service een vervolg token om de client toepassing in staat te stellen de volgende set entiteiten aan te vragen. Zie querytime [-out en paginering](https://msdn.microsoft.com/library/azure/dd135718.aspx)voor meer informatie over de werking van vervolg tokens.  
 
-Als u de opslagclientbibliotheek gebruikt, kan deze automatisch vervolgtokens voor u verwerken omdat entiteiten uit de tabelservice worden geretourneerd. In het volgende c-codevoorbeeld met de opslagclientbibliotheek worden automatisch vervolgtokens verwerkt als de tabelservice deze in een reactie retourneert:  
+Als u de Storage-client bibliotheek gebruikt, kan het automatisch vervolg tokens voor u afhandelen wanneer het entiteiten van de Table service retourneert. In het volgende voor beeld van een C#-code met behulp van de Storage-client bibliotheek worden vervolg tokens automatisch verwerkt als de Table-service deze retourneert in een antwoord:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
@@ -648,7 +648,7 @@ foreach (var emp in employees)
 }  
 ```
 
-De volgende C#-code verwerkt expliciet vervolgtokens:  
+De volgende C#-code verwerkt vervolg tokens expliciet:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
@@ -667,25 +667,25 @@ do
 } while (continuationToken != null);  
 ```
 
-Door vervolgtokens expliciet te gebruiken, u bepalen wanneer uw toepassing het volgende segment van gegevens ophaalt. Als uw clienttoepassing gebruikers bijvoorbeeld in staat stelt om de entiteiten te bekijken die in een tabel zijn opgeslagen, kan een gebruiker besluiten om niet door alle entiteiten te pagina's die door de query zijn opgehaald, zodat uw toepassing alleen een vervolgtoken gebruikt om het volgende segment op te halen wanneer de gebruiker was klaar met paging door alle entiteiten in het huidige segment. Deze aanpak heeft verschillende voordelen:  
+Door vervolg tokens expliciet te gebruiken, kunt u bepalen wanneer uw toepassing het volgende segment met gegevens ophaalt. Als uw client toepassing bijvoorbeeld gebruikers in staat stelt om de entiteiten die zijn opgeslagen in een tabel in te wisselen, kan een gebruiker besluiten niet alle entiteiten die door de query zijn opgehaald, te gebruiken zodat uw toepassing alleen een vervolg token gebruikt om het volgende segment op te halen wanneer de gebruiker klaar was met het door lopen van alle entiteiten in het huidige segment. Deze benadering heeft verschillende voor delen:  
 
-* Hiermee u de hoeveelheid gegevens beperken die u uit de tabelservice ophalen en die u over het netwerk verplaatst.  
-* Hiermee u asynchrone IO uitvoeren in .NET.  
-* Hiermee u het vervolgtoken serialiseren naar permanente opslag, zodat u doorgaan in het geval van een crash van een toepassing.  
+* Hiermee kunt u de hoeveelheid gegevens die moet worden opgehaald van de Table service, en die u via het netwerk verplaatst, beperken.  
+* Hiermee kunt u asynchrone i/o uitvoeren in .NET.  
+* U kunt hiermee het vervolg token serialiseren naar permanente opslag, zodat u kunt door gaan in het geval een toepassing vastloopt.  
 
 > [!NOTE]
-> Een vervolgtoken retourneert doorgaans een segment met 1.000 entiteiten, hoewel dit mogelijk minder is. Dit is ook het geval als u het aantal vermeldingen van een query retourneert met **Take** om de eerste n-entiteiten terug te sturen die overeenkomen met uw opzoekcriteria: de tabelservice kan een segment met minder dan n-entiteiten retourneren, samen met een vervolgtoken, zodat u de resterende entiteiten ophalen.  
+> Een vervolg token retourneert meestal een segment met 1.000 entiteiten, maar dit kan minder zijn. Dit is ook het geval als u het aantal vermeldingen dat door een query wordt geretourneerd, beperkt **door gebruik te maken van** de eerste n entiteiten die overeenkomen met uw zoek criteria: de Table-service retourneert een segment met minder dan n entiteiten en een vervolg token om u in staat te stellen de resterende entiteiten op te halen.  
 > 
 > 
 
-In de volgende C#-code ziet u hoe u het aantal entiteiten dat binnen een segment is geretourneerd, wijzigt:  
+De volgende C#-code laat zien hoe u het aantal entiteiten wijzigt dat binnen een segment wordt geretourneerd:  
 
 ```csharp
 employeeQuery.TakeCount = 50;  
 ```
 
-### <a name="server-side-projection"></a>Projectie aan de serverzijde
-Eén entiteit kan maximaal 255 eigenschappen hebben en maximaal 1 MB groot zijn. Wanneer u de tabel opvraagt en entiteiten ophaalt, hebt u mogelijk niet alle eigenschappen nodig en u voorkomen dat gegevens onnodig worden overgedragen (om de latentie en kosten te verminderen). U server-side projectie gebruiken om alleen de eigenschappen over te dragen die u nodig hebt. In het volgende voorbeeld wordt alleen de eigenschap **E-mail** opgehaald (samen met **PartitionKey,** **RowKey**, **Timestamp**en **ETag)** uit de entiteiten die door de query zijn geselecteerd.  
+### <a name="server-side-projection"></a>Projectie aan server zijde
+Eén entiteit kan Maxi maal 255 eigenschappen hebben en kan Maxi maal 1 MB groot zijn. Wanneer u een query uitvoert op de tabel en entiteiten ophaalt, hebt u mogelijk niet alle eigenschappen nodig en kunt u voor komen dat gegevens onnodig worden overgedragen (om latentie en kosten te beperken). U kunt projectie aan server zijde gebruiken om alleen de eigenschappen over te dragen die u nodig hebt. In het volgende voor beeld wordt alleen de **e-mail** eigenschap (samen met **PartitionKey**, **RowKey**, **Time Stamp**en **ETAG**) opgehaald uit de entiteiten die zijn geselecteerd door de query.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
@@ -700,30 +700,30 @@ foreach (var e in entities)
 }  
 ```
 
-Merk op hoe de **RowKey-waarde** beschikbaar is, ook al is deze niet opgenomen in de lijst met eigenschappen die u wilt ophalen.  
+U ziet dat de waarde **RowKey** beschikbaar is, ook al is deze niet opgenomen in de lijst met eigenschappen die moeten worden opgehaald.  
 
 ## <a name="modifying-entities"></a>Entiteiten wijzigen
-Met de opslagclientbibliotheek u uw entiteiten wijzigen die zijn opgeslagen in de tabelservice door entiteiten in te voegen, te verwijderen en bij te werken. U EGT's gebruiken om meerdere inserts te batchn, bewerkingen samen te werken en te verwijderen om het aantal vereiste retourvluchten te verminderen en de prestaties van uw oplossing te verbeteren.  
+Met de Storage-client bibliotheek kunt u uw entiteiten die in de tabel service zijn opgeslagen, wijzigen door entiteiten in te voegen, te verwijderen en bij te werken. U kunt EGTs gebruiken om meerdere insert-, update-en delete-bewerkingen samen te nemen om het aantal benodigde retouren te verminderen en de prestaties van uw oplossing te verbeteren.  
 
-Uitzonderingen die worden gegenereerd wanneer de opslagclientbibliotheek een EGT uitvoert, bevatten doorgaans de index van de entiteit waardoor de batch is mislukt. Dit is handig wanneer u code debugging die EGTs gebruikt.  
+Uitzonde ringen die worden gegenereerd wanneer de Storage-client bibliotheek een EGT uitvoert, bevatten doorgaans de index van de entiteit die de oorzaak van de batch heeft veroorzaakt. Dit is handig bij het opsporen van fouten in code die gebruikmaakt van EGTs.  
 
-U moet ook overwegen hoe uw ontwerp van invloed is op de manier waarop uw clienttoepassing omgaat met gelijktijdigheid en updatebewerkingen.  
+U moet ook overwegen hoe uw ontwerp van invloed is op de manier waarop uw client toepassing gelijktijdig valuta's en update bewerkingen verwerkt.  
 
 ### <a name="managing-concurrency"></a>Gelijktijdigheid beheren
-Standaard implementeert de tabelservice optimistische gelijktijdigheidscontroles op het niveau van afzonderlijke entiteiten voor **bewerkingen invoegen,** **Samenvoegen**en **Verwijderen,** hoewel het mogelijk is voor een client om de tabelservice te dwingen deze controles te omzeilen. Zie [Gelijktijdigheid beheren in Microsoft Azure Storage](../../storage/common/storage-concurrency.md)voor meer informatie over hoe de tabelservice gelijktijdigheid beheert.  
+De tabel service implementeert standaard optimistische gelijktijdigheid controles op het niveau van afzonderlijke entiteiten voor **Insert**-, **Merge**-en **Delete** -bewerkingen, hoewel het mogelijk is dat een client de Table-service afdwingt deze controles over te slaan. Zie voor meer informatie over hoe de tabel service gelijktijdigheid beheert, [gelijktijdigheid beheren in Microsoft Azure Storage](../../storage/common/storage-concurrency.md).  
 
-### <a name="merge-or-replace"></a>Samenvoegen of vervangen
-De methode **Vervangen** van de klasse **TableOperation** vervangt altijd de volledige entiteit in de tabelservice. Als u een eigenschap niet opneemt in de aanvraag wanneer die eigenschap in de opgeslagen entiteit bestaat, verwijdert de aanvraag die eigenschap uit de opgeslagen entiteit. Tenzij u een eigenschap expliciet uit een opgeslagen entiteit wilt verwijderen, moet u elke eigenschap in het verzoek opnemen.  
+### <a name="merge-or-replace"></a>Samen voegen of vervangen
+De methode **replace** van de klasse **TableOperation** vervangt altijd de volledige entiteit in de Table service. Als u in de aanvraag geen eigenschap opneemt wanneer die eigenschap in de opgeslagen entiteit bestaat, wordt die eigenschap door de aanvraag uit de opgeslagen entiteit verwijderd. Tenzij u een eigenschap expliciet van een opgeslagen entiteit wilt verwijderen, moet u elke eigenschap in de aanvraag toevoegen.  
 
-U de methode **Samenvoegen** van de klasse **TableOperation** gebruiken om de hoeveelheid gegevens die u naar de tabelservice verzendt, te verminderen wanneer u een entiteit wilt bijwerken. De **methode Samenvoegen** vervangt alle eigenschappen in de opgeslagen entiteit door eigenschapswaarden van de entiteit die in de aanvraag is opgenomen, maar laat alle eigenschappen in de opgeslagen entiteit intact die niet in de aanvraag zijn opgenomen. Dit is handig als u grote entiteiten hebt en slechts een klein aantal eigenschappen in een aanvraag hoeft bij te werken.  
+U kunt de methode **Merge** van de klasse **TableOperation** gebruiken om de hoeveelheid gegevens te verminderen die u naar de Table service stuurt wanneer u een entiteit wilt bijwerken. De methode **Merge** vervangt alle eigenschappen in de opgeslagen entiteit door eigenschaps waarden van de entiteit die in de aanvraag is opgenomen, maar laat alle eigenschappen in de opgeslagen entiteit intact die niet zijn opgenomen in de aanvraag. Dit is handig als u grote entiteiten hebt en alleen een klein aantal eigenschappen in een aanvraag hoeft bij te werken.  
 
 > [!NOTE]
-> De methoden **Vervangen** en **samenvoegen** mislukken als de entiteit niet bestaat. Als alternatief u de methoden **InsertOrReplace** en **InsertOrMerge** gebruiken die een nieuwe entiteit maken als deze niet bestaat.  
+> De methoden **vervangen** en **samen voegen** mislukken als de entiteit niet bestaat. Als alternatief kunt u de methoden **InsertOrReplace** en **InsertOrMerge** gebruiken om een nieuwe entiteit te maken als deze niet bestaat.  
 > 
 > 
 
-## <a name="working-with-heterogeneous-entity-types"></a>Werken met heterogene entiteitstypen
-De tabelservice is een *tabelarchief zonder schema* dat betekent dat één tabel entiteiten van meerdere typen kan opslaan die een grote flexibiliteit in uw ontwerp bieden. In het volgende voorbeeld wordt een tabel geïllustreerd die zowel werknemers- als afdelingsentiteiten opslaat:  
+## <a name="working-with-heterogeneous-entity-types"></a>Werken met heterogene entiteits typen
+De Table service is een tabel archief met *schema-minder* . Dit betekent dat een enkele tabel entiteiten van meerdere typen kan opslaan die een grote flexibiliteit in uw ontwerp bieden. In het volgende voor beeld ziet u een tabel waarin zowel werk nemer-als afdelings entiteiten worden opgeslagen:  
 
 <table>
 <tr>
@@ -742,7 +742,7 @@ De tabelservice is een *tabelarchief zonder schema* dat betekent dat één tabel
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -762,7 +762,7 @@ De tabelservice is een *tabelarchief zonder schema* dat betekent dat één tabel
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -780,7 +780,7 @@ De tabelservice is een *tabelarchief zonder schema* dat betekent dat één tabel
 <table>
 <tr>
 <th>DepartmentName</th>
-<th>Aantal werknemers</th>
+<th>EmployeeCount</th>
 </tr>
 <tr>
 <td></td>
@@ -799,7 +799,7 @@ De tabelservice is een *tabelarchief zonder schema* dat betekent dat één tabel
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -812,10 +812,10 @@ De tabelservice is een *tabelarchief zonder schema* dat betekent dat één tabel
 </tr>
 </table>
 
-Elke entiteit moet nog steeds **partitionkey-,** **rowkey-** en **tijdstempelwaarden** hebben, maar kan een set eigenschappen hebben. Bovendien is er niets dat het type entiteit aangeeft, tenzij u ervoor kiest om die informatie ergens op te slaan. Er zijn twee opties voor het identificeren van het entiteitstype:  
+Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time Stamp** hebben, maar kan een set eigenschappen hebben. Bovendien is er niets om het type van een entiteit aan te geven, tenzij u ervoor kiest om die informatie ergens op te slaan. Er zijn twee opties voor het identificeren van het entiteits type:  
 
-* Het entiteitstype voorbereiden op de **RowKey** (of mogelijk de **PartitionKey).** Bijvoorbeeld **EMPLOYEE_000123** of **DEPARTMENT_SALES** als **RowKey-waarden.**  
-* Gebruik een afzonderlijke eigenschap om het entiteitstype vast te leggen zoals weergegeven in de onderstaande tabel.  
+* Laten voorafgaan door het entiteits type naar de **RowKey** (of mogelijk de **PartitionKey**). Bijvoorbeeld **EMPLOYEE_000123** of **DEPARTMENT_SALES** als **RowKey** -waarden.  
+* Gebruik een afzonderlijke eigenschap om het entiteits type vast te leggen, zoals wordt weer gegeven in de onderstaande tabel.  
 
 <table>
 <tr>
@@ -835,7 +835,7 @@ Elke entiteit moet nog steeds **partitionkey-,** **rowkey-** en **tijdstempelwaa
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -857,7 +857,7 @@ Elke entiteit moet nog steeds **partitionkey-,** **rowkey-** en **tijdstempelwaa
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -877,7 +877,7 @@ Elke entiteit moet nog steeds **partitionkey-,** **rowkey-** en **tijdstempelwaa
 <tr>
 <th>EntityType</th>
 <th>DepartmentName</th>
-<th>Aantal werknemers</th>
+<th>EmployeeCount</th>
 </tr>
 <tr>
 <td>Afdeling</td>
@@ -898,7 +898,7 @@ Elke entiteit moet nog steeds **partitionkey-,** **rowkey-** en **tijdstempelwaa
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -912,23 +912,23 @@ Elke entiteit moet nog steeds **partitionkey-,** **rowkey-** en **tijdstempelwaa
 </tr>
 </table>
 
-De eerste optie, die afhankelijk is van het entiteitstype naar de **RowKey,** is handig als er een mogelijkheid is dat twee entiteiten van verschillende typen dezelfde sleutelwaarde hebben. Het groepeert ook entiteiten van hetzelfde type samen in de partitie.  
+De eerste optie, in afwachting van het entiteits type op de **RowKey**, is handig als er sprake is van een mogelijkheid dat twee entiteiten van verschillende typen dezelfde sleutel waarde hebben. Het groepeert ook entiteiten van hetzelfde type samen in de partitie.  
 
-De technieken besproken in deze sectie zijn vooral relevant voor de discussie [Erfenis relaties](table-storage-design-modeling.md#inheritance-relationships) eerder in deze gids in het artikel [Modellering relaties](table-storage-design-modeling.md).  
+De technieken die in deze sectie worden beschreven, zijn met name relevant voor de relaties van de discussie [overname](table-storage-design-modeling.md#inheritance-relationships) eerder in deze hand leiding in de artikel [modellerings relaties](table-storage-design-modeling.md).  
 
 > [!NOTE]
-> U moet overwegen een versienummer op te nemen in de waarde van het entiteitstype om clienttoepassingen in staat te stellen POCO-objecten te ontwikkelen en met verschillende versies te werken.  
+> U moet overwegen een versie nummer in de waarde entiteits type op te nemen om client toepassingen in staat te stellen POCO-objecten te ontwikkelen en te werken met andere versies.  
 > 
 > 
 
-In de rest van deze sectie worden enkele functies in de opslagclientbibliotheek beschreven die het werken met meerdere entiteitstypen in dezelfde tabel vergemakkelijken.  
+In de rest van deze sectie worden enkele van de functies in de Storage-client bibliotheek beschreven, waarmee u in dezelfde tabel met meerdere entiteits typen kan werken.  
 
-### <a name="retrieving-heterogeneous-entity-types"></a>Heterogene entiteitstypen ophalen
-Als u de opslagclientbibliotheek gebruikt, hebt u drie opties voor het werken met meerdere entiteitstypen.  
+### <a name="retrieving-heterogeneous-entity-types"></a>Heterogene entiteits typen ophalen
+Als u de Storage-client bibliotheek gebruikt, hebt u drie opties voor het werken met meerdere entiteits typen.  
 
-Als u het type entiteit kent dat is opgeslagen met een specifieke **RowKey-** en **PartitionKey-waarden,** u het entiteitstype opgeven wanneer u de entiteit ophaalt zoals weergegeven in de vorige twee voorbeelden die entiteiten van type **EmployeeEntity**ophalen: [Een puntquery uitvoeren met de opslagclientbibliotheek](#executing-a-point-query-using-the-storage-client-library) en [meerdere entiteiten ophalen met LINQ](#retrieving-multiple-entities-using-linq).  
+Als u het type entiteit weet dat is opgeslagen met een specifieke **RowKey** -en **PartitionKey** -waarden, kunt u het entiteits type opgeven wanneer u de entiteit ophaalt, zoals wordt weer gegeven in de vorige twee voor beelden waarin entiteiten van het type **EmployeeEntity**worden opgehaald: [een punt query wordt uitgevoerd met de Storage-client bibliotheek](#executing-a-point-query-using-the-storage-client-library) en [meerdere entiteiten met LINQ ophalen](#retrieving-multiple-entities-using-linq).  
 
-De tweede optie is het **dynamictableentitytype** (een eigenschappenzak) te gebruiken in plaats van een concreet POCO-entiteitstype (deze optie kan ook de prestaties verbeteren omdat het niet nodig is de entiteit te serialiseren en te deserialiseren naar .NET-typen). Met de volgende C#-code worden mogelijk meerdere entiteiten van verschillende typen uit de tabel opgehaald, maar worden alle entiteiten geretourneerd als **DynamicTableEntity-instanties.** Vervolgens wordt de eigenschap **EntityType** gebruikt om het type van elke entiteit te bepalen:  
+De tweede optie is het gebruik van het type **DynamicTableEntity** (een eigenschappen verzameling) in plaats van een concreet poco entiteits type (deze optie kan ook de prestaties verbeteren omdat het niet nodig is om de entiteit te serialiseren en deserialiseren naar .net-typen). De volgende C#-code haalt mogelijk meerdere entiteiten van verschillende typen op uit de tabel, maar retourneert alle entiteiten als **DynamicTableEntity** -exemplaren. Vervolgens wordt de eigenschap **EntityType** gebruikt om het type van elke entiteit te bepalen:  
 
 ```csharp
 string filter =
@@ -959,9 +959,9 @@ foreach (var e in entities)
 }  
 ```
 
-Als u andere eigenschappen wilt ophalen, moet u de methode **TryGetValue** gebruiken op de eigenschap **Properties** van de klasse **DynamicTableEntity.**  
+Als u andere eigenschappen wilt ophalen, moet u de methode **TryGetValue** gebruiken voor de eigenschap **Properties** van de klasse **DynamicTableEntity** .  
 
-Een derde optie is het combineren met het type **DynamicTableEntity** en een instantie **EntityResolver.** Hiermee u meerdere POCO-typen in dezelfde query oplossen. In dit voorbeeld gebruikt de **delegate EntityResolver** de eigenschap **EntityType** om onderscheid te maken tussen de twee typen entiteiten die de query retourneert. De methode **Oplossen** gebruikt de **resolver-gemachtigde** om de instanties **van DynamicTableEntity** op te lossen in **tabelentiteitinstanties.**  
+Een derde optie is om te combi neren met behulp van het type **DynamicTableEntity** en een **EntityResolver** -exemplaar. Zo kunt u omzetten in meerdere POCO-typen in dezelfde query. In dit voor beeld gebruikt de gemachtigde van de **EntityResolver** de eigenschap **EntityType** om onderscheid te maken tussen de twee typen entiteiten die door de query worden geretourneerd. De methode **Resolve** gebruikt de **resolver** -gemachtigde voor het omzetten van **DynamicTableEntity** -instanties in **TableEntity** -exemplaren.  
 
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
@@ -1006,8 +1006,8 @@ foreach (var e in entities)
 }  
 ```
 
-### <a name="modifying-heterogeneous-entity-types"></a>Heterogene entiteitstypen wijzigen
-U hoeft niet te weten welk type entiteit deze moet verwijderen en u weet altijd het type entiteit wanneer u deze invoegt. U **dynamictableentity-type** echter gebruiken om een entiteit bij te werken zonder het type ervan te kennen en zonder een POCO-entiteitsklasse te gebruiken. In het volgende codevoorbeeld wordt één entiteit opgehaald en wordt gecontroleerd of de eigenschap **EmployeeCount** bestaat voordat deze wordt bijgewerkt.  
+### <a name="modifying-heterogeneous-entity-types"></a>Heterogene entiteits typen wijzigen
+U hoeft niet te weten welk type entiteit u wilt verwijderen en u weet altijd het type van een entiteit wanneer u deze invoegt. U kunt echter **DynamicTableEntity** type gebruiken om een entiteit bij te werken zonder het type ervan te weten en zonder een poco-entiteits klasse te gebruiken. Met het volgende code voorbeeld wordt één entiteit opgehaald en wordt gecontroleerd of de eigenschap **EmployeeCount** bestaat voordat deze wordt bijgewerkt.  
 
 ```csharp
 TableResult result = employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
@@ -1023,24 +1023,24 @@ countProperty.Int32Value += 1;
 employeeTable.Execute(TableOperation.Merge(department));
 ```
 
-## <a name="controlling-access-with-shared-access-signatures"></a>Toegang beheren met gedeelde toegangshandtekeningen
-U SAS-tokens (Shared Access Signature) gebruiken om clienttoepassingen in staat te stellen entiteiten (en query's) te wijzigen zonder dat u uw opslagaccountsleutel in uw code hoeft op te nemen. Meestal zijn er drie belangrijke voordelen aan het gebruik van SAS in uw toepassing:  
+## <a name="controlling-access-with-shared-access-signatures"></a>Toegang beheren met hand tekeningen voor gedeelde toegang
+U kunt Shared Access Signature-tokens (SAS) gebruiken om client toepassingen de mogelijkheid te bieden om tabel entiteiten te wijzigen (en query) zonder dat u de sleutel van uw opslag account in uw code hoeft op te slaan. Normaal gesp roken zijn er drie belang rijke voor delen van het gebruik van SAS in uw toepassing:  
 
-* U hoeft uw opslagaccountsleutel niet te distribueren naar een onveilig platform (zoals een mobiel apparaat) om dat apparaat toegang te geven tot entiteiten in de tabelservice en deze te wijzigen.  
-* U een deel van het werk dat web- en werknemersrollen uitvoeren bij het beheren van uw entiteiten naar clientapparaten zoals computers van eindgebruikers en mobiele apparaten, ontladen.  
-* U een beperkte en tijdbeperkte set machtigingen toewijzen aan een client (zoals alleen-lezen toegang geven tot specifieke bronnen).  
+* U hoeft de sleutel van uw opslag account niet te distribueren naar een niet-beveiligd platform (zoals een mobiel apparaat) om het apparaat in de Table service toe te staan om entiteiten te openen en te wijzigen.  
+* U kunt een deel van het werk dat web-en werk rollen uitvoeren, gebruiken om uw entiteiten te beheren op client apparaten, zoals computers en mobiele apparaten voor eind gebruikers.  
+* U kunt een beperkte en tijdgebonden set machtigingen toewijzen aan een client (zoals alleen-lezen toegang toestaan voor specifieke resources).  
 
-Zie [Gedeelde toegangshandtekeningen (SAS) gebruiken voor](../../storage/common/storage-sas-overview.md)meer informatie over het gebruik van SAS-tokens met de tabelservice.  
+Zie [using Shared Access signatures (SAS) (Engelstalig)](../../storage/common/storage-sas-overview.md)voor meer informatie over het gebruik van SAS-tokens met de Table service.  
 
-U moet echter nog steeds de SAS-tokens genereren die een clienttoepassing verlenen aan de entiteiten in de tabelservice: u moet dit doen in een omgeving die beveiligde toegang heeft tot uw opslagaccountsleutels. Doorgaans gebruikt u een web- of werknemersrol om de SAS-tokens te genereren en deze te leveren aan de clienttoepassingen die toegang tot uw entiteiten nodig hebben. Omdat er nog steeds een overhead betrokken is bij het genereren en leveren van SAS-tokens aan klanten, moet u overwegen hoe u deze overhead het beste verminderen, vooral in scenario's met een hoog volume.  
+U moet echter nog steeds de SAS-tokens genereren die een client toepassing verlenen aan de entiteiten in de Table-service: u moet dit doen in een omgeving met beveiligde toegang tot uw opslag account sleutels. Normaal gesp roken gebruikt u een web-of worker-rol voor het genereren van de SAS-tokens en levert u deze aan de client toepassingen die toegang nodig hebben tot uw entiteiten. Omdat er nog steeds overhead is betrokken bij het genereren en leveren van SAS-tokens aan clients, moet u rekening houden met het beste om deze overhead te reduceren, met name in scenario's met grote volumes.  
 
-Het is mogelijk om een SAS-token te genereren dat toegang verleent tot een subset van de entiteiten in een tabel. Standaard maakt u een SAS-token voor een hele tabel, maar het is ook mogelijk om op te geven dat het SAS-token toegang verleent tot een reeks **PartitionKey-waarden** of een reeks **partitionkey-** en **rowkey-waarden.** U ervoor kiezen om SAS-tokens te genereren voor individuele gebruikers van uw systeem, zodat het SAS-token van elke gebruiker hen alleen toegang geeft tot hun eigen entiteiten in de tabelservice.  
+Het is mogelijk om een SAS-token te genereren dat toegang verleent tot een subset van de entiteiten in een tabel. Standaard maakt u een SAS-token voor een hele tabel, maar het is ook mogelijk om op te geven dat het SAS-token toegang verleent tot een reeks **PartitionKey** -waarden of een bereik van **PartitionKey** -en **RowKey** -waarden. U kunt ervoor kiezen om SAS-tokens te genereren voor afzonderlijke gebruikers van uw systeem, zodat de SAS-token van elke gebruiker alleen toegang tot hun eigen entiteiten in de tabel service toestaat.  
 
 ## <a name="asynchronous-and-parallel-operations"></a>Asynchrone en parallelle bewerkingen
-Op voorwaarde dat u uw aanvragen over meerdere partities verspreidt, u de doorvoer en de responsiviteit van de client verbeteren door asynchrone of parallelle query's te gebruiken.
-U hebt bijvoorbeeld twee of meer exemplaren van de werkrol die toegang hebben tot uw tabellen parallel. U afzonderlijke werknemersrollen hebben die verantwoordelijk zijn voor bepaalde sets partities, of gewoon meerdere functie-exemplaren van werknemers hebben, die elk toegang hebben tot alle partities in een tabel.  
+Als u uw aanvragen verspreidt over meerdere partities, kunt u de reactie snelheid van de door Voer en de client verbeteren met behulp van asynchrone of parallelle query's.
+Stel dat u twee of meer worker-instanties tegelijk toegang hebt tot uw tabellen. U kunt afzonderlijke worker-rollen hebben die verantwoordelijk zijn voor bepaalde sets van partities of alleen meerdere rolinstanties hebben, die elk toegang hebben tot alle partities in een tabel.  
 
-Binnen een clientinstantie u de doorvoer verbeteren door opslagbewerkingen asynchroon uit te voeren. De opslagclientbibliotheek maakt het eenvoudig om asynchrone query's en wijzigingen te schrijven. U bijvoorbeeld beginnen met de synchrone methode waarmee alle entiteiten in een partitie worden opgehaald, zoals weergegeven in de volgende C#-code:  
+Binnen een client exemplaar kunt u de door Voer verbeteren door opslag bewerkingen asynchroon uit te voeren. Met de Storage-client bibliotheek kunt u eenvoudig asynchrone query's en wijzigingen schrijven. U kunt bijvoorbeeld beginnen met de synchrone methode waarmee alle entiteiten in een partitie worden opgehaald, zoals wordt weer gegeven in de volgende C#-code:  
 
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
@@ -1062,7 +1062,7 @@ private static void ManyEntitiesQuery(CloudTable employeeTable, string departmen
 }  
 ```
 
-U deze code eenvoudig wijzigen zodat de query als volgt asynchroon wordt uitgevoerd:  
+U kunt deze code eenvoudig wijzigen zodat de query asynchroon wordt uitgevoerd:  
 
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
@@ -1084,16 +1084,16 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 }  
 ```
 
-In dit asynchrone voorbeeld ziet u de volgende wijzigingen van de synchrone versie:  
+In dit asynchrone voor beeld ziet u de volgende wijzigingen ten opzichte van de synchrone versie:  
 
-* De methodehandtekening bevat nu de **async-modifier** en retourneert een **taakinstantie.**  
-* In plaats van de **methode ExecuteSegmented** aan te roepen om resultaten op te halen, roept de methode nu de methode **ExecuteSegmentedAsync** aan en gebruikt de **wachtmodifier** om resultaten asynchroon op te halen.  
+* De methode handtekening bevat nu de **async** -modificator en retourneert een **taak** exemplaar.  
+* In plaats van de **ExecuteSegmented** -methode aan te roepen om de resultaten op te halen, roept de methode nu de **ExecuteSegmentedAsync** -methode aan en gebruikt de wijzigings functie **await** om resultaten asynchroon op te halen.  
 
-De clienttoepassing kan deze methode meerdere keren aanroepen (met verschillende waarden voor de **afdelingsparameter)** en elke query wordt uitgevoerd op een afzonderlijke thread.  
+De client toepassing kan deze methode meerdere keren aanroepen (met verschillende waarden voor de para meter **afdeling** ) en elke query wordt uitgevoerd in een afzonderlijke thread.  
 
-Er is geen asynchrone versie van de methode **Uitvoeren** in de klasse **TabelQuery** omdat de **IEnumerable-interface** geen asynchrone opsomming ondersteunt.  
+Er is geen asynchrone versie van de methode **Execute** in de klasse **TableQuery** , omdat de **IEnumerable** -interface geen ondersteuning biedt voor asynchrone inventarisatie.  
 
-U entiteiten ook asynchroon invoegen, bijwerken en verwijderen. In het volgende c#-voorbeeld wordt een eenvoudige, synchrone methode weergegeven om een werknemerentiteit in te voegen of te vervangen:  
+U kunt ook instanties asynchroon invoegen, bijwerken en verwijderen. In het volgende C#-voor beeld ziet u een eenvoudige, synchrone methode voor het invoegen of vervangen van een werknemers entiteit:  
 
 ```csharp
 private static void SimpleEmployeeUpsert(
@@ -1105,7 +1105,7 @@ private static void SimpleEmployeeUpsert(
 }  
 ```
 
-U deze code eenvoudig wijzigen zodat de update als volgt wordt uitgevoerd:  
+U kunt deze code eenvoudig aanpassen zodat de update op de volgende manier asynchroon wordt uitgevoerd:  
 
 ```csharp
 private static async Task SimpleEmployeeUpsertAsync(
@@ -1117,12 +1117,12 @@ private static async Task SimpleEmployeeUpsertAsync(
 }  
 ```
 
-In dit asynchrone voorbeeld ziet u de volgende wijzigingen van de synchrone versie:  
+In dit asynchrone voor beeld ziet u de volgende wijzigingen ten opzichte van de synchrone versie:  
 
-* De methodehandtekening bevat nu de **async-modifier** en retourneert een **taakinstantie.**  
-* In plaats van de methode **Uitvoeren** aan te roepen om de entiteit bij te werken, roept de methode **executeasync** nu aan en gebruikt de **wachtmodifier** om resultaten asynchroon op te halen.  
+* De methode handtekening bevat nu de **async** -modificator en retourneert een **taak** exemplaar.  
+* In plaats van de **Execute** -methode aan te roepen om de entiteit bij te werken, roept de methode nu de methode **ExecuteAsync** aan en gebruikt de wijzigings functie **await** om resultaten asynchroon op te halen.  
 
-De clienttoepassing kan meerdere asynchrone methoden zoals deze aanroepen en elke methodeaanroep wordt uitgevoerd op een afzonderlijke thread.  
+De client toepassing kan meerdere asynchrone methoden, zoals deze, aanroepen en elke methode aanroep wordt uitgevoerd op een afzonderlijke thread.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

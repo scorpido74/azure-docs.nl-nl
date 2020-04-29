@@ -1,6 +1,6 @@
 ---
-title: Problemen met de implementatie van linux-virtuele machines in Azure oplossen | Microsoft Documenten
-description: Problemen met de implementatie van Linux-virtuele machines in het azure resource beheer-implementatiemodel oplossen.
+title: Problemen oplossen met het implementeren van problemen met virtuele Linux-machines in azure | Microsoft Docs
+description: Problemen met het implementeren van problemen met virtuele Linux-machines in het Azure Resource Manager-implementatie model oplossen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,80 +15,80 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921433"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Problemen bij het implementeren van virtuele Linux-machines in Azure oplossen
 
-Als u vm-implementatieproblemen (virtual machine) in Azure wilt oplossen, controleert u de [belangrijkste problemen](#top-issues) voor veelvoorkomende fouten en oplossingen.
+Voor het oplossen van problemen met de implementatie van virtuele machines (VM) in azure, raadpleegt u de [meest voorkomende problemen](#top-issues) met veelvoorkomende fouten en oplossingen.
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op [de FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
-## <a name="top-issues"></a>Belangrijkste kwesties
+## <a name="top-issues"></a>Belangrijkste problemen
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
-## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan de gevraagde VM-grootte niet ondersteunen
-\<eigenschappen supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Probeer de aanvraag opnieuw met een kleiner VM-formaat.
-- Als de grootte van de gevraagde vm niet kan worden gewijzigd:
-    - Stop alle VM's in de beschikbaarheidsset. Klik op **Resourcegroepen** > uw resourcegroep > **Resources** > uw beschikbaarheidsset > **virtuele machines** > uw virtuele machine > **Stoppen**.
-    - Nadat alle VM's stoppen, maakt u de VM in de gewenste grootte.
-    - Start eerst de nieuwe vm en selecteer vervolgens elk van de gestopte VM's en klik op Start.
+## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan de aangevraagde VM-grootte niet ondersteunen
+\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
+- Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
+- Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
+    - Stop alle virtuele machines in de beschikbaarheidsset. Klik op **resource groepen** > de resource groep > **resources** > uw beschikbaarheidsset > **virtual machines** > uw virtuele machine > **gestopt**.
+    - Nadat alle virtuele machines zijn gestopt, maakt u de virtuele machine in de gewenste grootte.
+    - Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op Start.
 
 
-## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster beschikt niet over gratis bronnen
-\<eigenschappen supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Probeer het verzoek later opnieuw.
-- Als de nieuwe virtuele machine deel kan uitmaken van een andere beschikbaarheidsset
-    - Een VM maken in een andere beschikbaarheidsset (in dezelfde regio).
-    - Voeg de nieuwe vm toe aan hetzelfde virtuele netwerk.
+## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster heeft geen vrije resources
+\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
+- Voer de aanvraag later opnieuw uit.
+- Als de nieuwe VM deel kan uitmaken van een andere beschikbaarheidsset
+    - Maak een virtuele machine in een andere beschikbaarheidsset (in dezelfde regio).
+    - Voeg de nieuwe virtuele machine toe aan hetzelfde virtuele netwerk.
 
-## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Hoe activeer ik mijn maandelijkse tegoed voor Visual studio Enterprise (BizSpark)
+## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Hoe kan ik mijn maandelijkse tegoed voor Visual Studio Enter prise (BizSpark) activeren
 
-Zie dit [artikel](https://azure.microsoft.com/offers/ms-azr-0064p/)om uw maandelijkse tegoed te activeren.
+Als u uw maandelijkse tegoed wilt activeren, raadpleegt u dit [artikel](https://azure.microsoft.com/offers/ms-azr-0064p/).
 
-## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Waarom kan ik het GPU-stuurprogramma niet installeren voor een Ubuntu NV VM?
+## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Waarom kan ik het GPU-stuur programma voor een Ubuntu NV-VM niet installeren?
 
-Momenteel is Linux GPU-ondersteuning alleen beschikbaar op Azure NC VM's met Ubuntu Server 16.04 LTS. Zie [GPU-stuurprogramma's instellen voor Vm's uit de N-serie met Linux](../linux/n-series-driver-setup.md)instellen voor meer informatie.
+Linux GPU-ondersteuning is momenteel alleen beschikbaar op Azure NC-Vm's waarop Ubuntu Server 16,04 LTS wordt uitgevoerd. Zie [GPU-Stuur Programma's instellen voor vm's met de N-serie waarop Linux wordt uitgevoerd](../linux/n-series-driver-setup.md)voor meer informatie.
 
-## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>Mijn drivers ontbreken voor mijn Linux N-Series VM
+## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>De Stuur Programma's ontbreken voor de VM van mijn Linux N-serie
 
-Drivers voor Linux-gebaseerde VM's bevinden zich [hier.](../linux/n-series-driver-setup.md) 
+De Stuur Programma's voor Vm's op basis van Linux bevinden zich [hier](../linux/n-series-driver-setup.md). 
 
-## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ik kan geen GPU-exemplaar vinden in mijn VM uit de N-serie
+## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ik kan geen GPU-exemplaar vinden in mijn N-serie-VM
 
-Als u wilt profiteren van de GPU-mogelijkheden van Azure N-serie VM's met Windows Server 2016 of Windows Server 2012 R2, moet u NVIDIA-grafische stuurprogramma's op elke VM installeren na implementatie. Gegevens over het instellen van stuurprogramma's zijn beschikbaar voor [Windows VM's](../windows/n-series-driver-setup.md) en [Linux VM's.](../linux/n-series-driver-setup.md)
+Als u gebruik wilt maken van de GPU-mogelijkheden van Azure N-serie Vm's met Windows Server 2016 of Windows Server 2012 R2, moet u na de implementatie NVIDIA grafische Stuur Programma's installeren op elke VM. Informatie over stuur programma-instellingen is beschikbaar voor virtuele [Windows-machines](../windows/n-series-driver-setup.md) en [Linux-vm's](../linux/n-series-driver-setup.md).
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Zijn VM's uit de N-serie beschikbaar in mijn regio?
+## <a name="is-n-series-vms-available-in-my-region"></a>Zijn er Vm's uit de N-serie beschikbaar in mijn regio?
 
-U de beschikbaarheid bekijken in de [tabel Producten die beschikbaar zijn per regio](https://azure.microsoft.com/regions/services)en de prijzen [hier.](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
+U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en [de prijzen.](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
 
-## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Ik kan de VM Size-familie die ik wil niet zien bij het wijzigen van het formaat van mijn VM.
+## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Ik kan de serie van de VM-grootte niet zien die ik wil bij het wijzigen van de grootte van mijn VM.
 
-Wanneer een VM wordt uitgevoerd, wordt deze geïmplementeerd op een fysieke server. De fysieke servers in Azure-regio's zijn gegroepeerd in clusters van algemene fysieke hardware. Het wijzigen van het formaat van een VM waarvoor de VM moet worden verplaatst naar verschillende hardwareclusters, is afhankelijk van het implementatiemodel dat is gebruikt om de VM te implementeren.
+Wanneer een virtuele machine wordt uitgevoerd, wordt deze geïmplementeerd op een fysieke server. De fysieke servers in azure-regio's worden gegroepeerd in clusters van algemene fysieke hardware. Het wijzigen van de grootte van een virtuele machine die vereist dat de VM naar verschillende hardwareconfiguraties wordt verplaatst, is afhankelijk van het implementatie model dat is gebruikt voor het implementeren van de virtuele machine.
 
-- VM's geïmplementeerd in het klassieke implementatiemodel, moet de implementatie van de cloudservice worden verwijderd en opnieuw worden geïmplementeerd om de VM's te wijzigen in een grootte in een andere groottefamilie.
+- Vm's die zijn geïmplementeerd in het klassieke implementatie model, moet de Cloud service-implementatie worden verwijderd en opnieuw worden geïmplementeerd om de Vm's te wijzigen in een grootte in een andere grootte familie.
 
-- Vm's geïmplementeerd in Resource Manager-implementatiemodel, moet u alle VM's in de beschikbaarheidsset stoppen voordat u de grootte van een VM in de beschikbaarheidsset wijzigt.
+- Vm's die zijn geïmplementeerd in het Resource Manager-implementatie model, moet u alle virtuele machines in de beschikbaarheidsset stoppen voordat u de grootte van een virtuele machine in de beschikbaarheidsset wijzigt.
 
-## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>De vermelde VM-grootte wordt niet ondersteund tijdens het implementeren in beschikbaarheidsset.
+## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>De vermelde VM-grootte wordt niet ondersteund tijdens de implementatie in de Beschikbaarheidsset.
 
-Kies een grootte die wordt ondersteund op het cluster van de beschikbaarheidsset. Het wordt aanbevolen bij het maken van een beschikbaarheidsset om de grootste VM-grootte te kiezen die u denkt nodig te hebben en dat dit uw eerste implementatie naar de beschikbaarheidsset is.
+Kies een grootte die wordt ondersteund op het cluster van de beschikbaarheidsset. Het is raadzaam om een beschikbaarheidsset te maken om de grootste VM-grootte te kiezen die u nodig hebt en die uw eerste implementatie voor de Beschikbaarheidsset moet zijn.
 
-## <a name="what-linux-distributionsversions-are-supported-on-azure"></a>Welke Linux-distributies/versies worden ondersteund op Azure?
+## <a name="what-linux-distributionsversions-are-supported-on-azure"></a>Welke Linux-distributies/-versies worden ondersteund in azure?
 
-U vindt de lijst op Linux op [Azure-endorsed Distributions](../linux/endorsed-distros.md).
+U kunt de lijst op Linux vinden in door [Azure goedgekeurde distributies](../linux/endorsed-distros.md).
 
-## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Kan ik een bestaande Klassieke VM toevoegen aan een beschikbaarheidsset?
+## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Kan ik een bestaande klassieke virtuele machine toevoegen aan een beschikbaarheidsset?
 
-Ja. U een bestaande klassieke vm toevoegen aan een nieuwe of bestaande beschikbaarheidsset. Zie Een [bestaande virtuele machine toevoegen aan een beschikbaarheidsset voor](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)meer informatie.
+Ja. U kunt een bestaande klassieke virtuele machine toevoegen aan een nieuwe of bestaande Beschikbaarheidsset. Zie [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)voor meer informatie.
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op [de FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/)
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/).
 
-U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

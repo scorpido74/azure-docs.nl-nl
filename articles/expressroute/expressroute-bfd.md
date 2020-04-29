@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: BFD configureren'
-description: In dit artikel vindt u instructies over het configureren van BFD (Bidirectional Forwarding Detection) via private-peering van een ExpressRoute-circuit.
+title: 'Azure-ExpressRoute: BFD configureren'
+description: In dit artikel vindt u instructies voor het configureren van BFD (bidirectionele doorstuur detectie) via particuliere peering van een ExpressRoute-circuit.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,34 +8,34 @@ ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
 ms.openlocfilehash: 378b639e89ffd46f6b32d7004f934104dd4b5407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064841"
 ---
 # <a name="configure-bfd-over-expressroute"></a>BFD configureren via ExpressRoute
 
-ExpressRoute ondersteunt Bidirectional Forwarding Detection (BFD) zowel via private als Microsoft peering. Door BFD in te schakelen via ExpressRoute, u de detectie van koppelingen door Microsoft Enterprise edge (MSEE) en de routers waarop u het ExpressRoute-circuit (CE/PE) beëindigt, versnellen. U ExpressRoute beëindigen via customer edge-routeringsapparaten of Partner Edge-routeringsapparaten (als u met beheerde Layer 3-verbindingsservice bent gegaan). Dit document leidt u door de behoefte aan BFD, en hoe BFD over ExpressRoute in te schakelen.
+ExpressRoute biedt ondersteuning voor bidirectionele forwarding-detectie (BFD) via persoonlijke en micro soft-peering. Door BFD in te scha kelen via ExpressRoute, kunt u de detectie van koppelings fouten tussen de micro soft Enter prise Edge (MSEE)-apparaten verkorten en de routers waarop u het ExpressRoute circuit (CE/PE) beëindigt. U kunt ExpressRoute beëindigen via routerings apparaten van klanten of partner Edge-routerings apparaten (als u met Managed Layer 3 Connection service hebt gewerkt). In dit document wordt uitgelegd hoe u BFD nodig hebt en hoe u BFD inschakelt via ExpressRoute.
 
-## <a name="need-for-bfd"></a>Behoefte aan BFD
+## <a name="need-for-bfd"></a>Benodigde BFD
 
-Het volgende diagram toont het voordeel van het inschakelen van BFD via expressroutecircuit: [![1]][1 1]
+In het volgende diagram ziet u het voor deel van het inschakelen van BFD over ExpressRoute-circuit: [![1]][1]
 
-U expressroute-circuit inschakelen via Layer 2-verbindingen of beheerde Layer 3-verbindingen. In beide gevallen, als er een of meer Layer-2-apparaten in het Verbindingspad ExpressRoute zijn, ligt de verantwoordelijkheid voor het detecteren van verbindingsfouten in het pad bij de bovenliggende BGP.
+U kunt het ExpressRoute-circuit inschakelen via laag-2-verbindingen of beheerde laag-3-verbindingen. Als er sprake is van een of meer laag-2-apparaten in het pad van de ExpressRoute-verbinding, is de verantwoordelijkheid van het detecteren van eventuele koppelings fouten in het pad ook de bovenliggende BGP.
 
-Op de MSEE-apparaten worden BGP keepalive en hold-time meestal geconfigureerd als respectievelijk 60 en 180 seconden. Daarom zou het na een koppelingsfout tot drie minuten duren voordat een koppelingsfout wordt gedetecteerd en het verkeer naar een alternatieve verbinding wordt overgeschakeld.
+Op de MSEE-apparaten worden BGP keepalive en hold-time doorgaans geconfigureerd als 60 en 180 seconden. Als gevolg van het mislukken van een koppeling kan het drie minuten duren voordat een koppelings fout is gedetecteerd en verkeer naar een andere verbinding wordt geswitcheerd.
 
-U de BGP-timers bedienen door lagere BGP-keepalive- en hold-time te configureren op het peering-apparaat van de klantrand. Als de BGP-timers niet overeenkomen tussen de twee peering-apparaten, gebruikt de BGP-sessie tussen de peers de lagere timerwaarde. De BGP keepalive kan worden ingesteld als laag als drie seconden, en de hold-time in de orde van tientallen seconden. Het agressief instellen van BGP-timers heeft echter minder de voorkeur omdat het protocol procesintensief is.
+U kunt de BGP-timers beheren door lagere BGP-keepalive en-wacht tijd op het peering-apparaat van de klant te configureren. Als de BGP-timers niet overeenkomen tussen de twee peering-apparaten, zou de BGP-sessie tussen de peers de lagere timer waarde gebruiken. De BGP-keepalive kan worden ingesteld op Maxi maal drie seconden en de wacht tijd in de volg orde van tien seconden. Het instellen van BGP-timers is echter minder wenselijk, omdat het protocol proces intensief is.
 
-In dit scenario kan BFD helpen. BFD biedt detectie van low-overhead koppelingen in een subtweede tijdsinterval. 
+In dit scenario kan BFD u helpen. BFD biedt de detectie van een lage overhead van een koppeling in een subseconde tijd interval. 
 
 
 ## <a name="enabling-bfd"></a>BFD inschakelen
 
-BFD is standaard geconfigureerd onder alle nieuw gecreëerde ExpressRoute private peering interfaces op de MEEs. Daarom moet u BFD configureren op uw CE's/PO's (zowel op uw primaire als secundaire apparaten om BFD in te schakelen). Bfd configureren is een proces in twee stappen: u moet de BFD op de interface configureren en deze koppelen aan de BGP-sessie.
+BFD wordt standaard geconfigureerd onder alle zojuist gemaakte ExpressRoute-particuliere peering-interfaces op de Msee's. Om BFD in te scha kelen, moet u daarom BFD op uw CEs/PEs (op uw primaire en secundaire apparaten) configureren. Het configureren van BFD is een proces dat uit twee stappen bestaat: u moet de BFD op de interface configureren en vervolgens koppelen aan de BGP-sessie.
 
-Hieronder ziet u een voorbeeld ce/pe (met cisco IOS XE) configuratie. 
+Hieronder ziet u een voor beeld van een CE/PE-configuratie (met Cisco IOS XE). 
 
     interface TenGigabitEthernet2/0/0.150
        description private peering to Azure
@@ -55,26 +55,26 @@ Hieronder ziet u een voorbeeld ce/pe (met cisco IOS XE) configuratie.
        exit-address-family
 
 >[!NOTE]
->Bfd inschakelen onder een reeds bestaande private peering; je nodig hebt om het peering resetten. Zie [ExpressRoute-peerings opnieuw instellen][ResetPeering]
+>BFD inschakelen onder een al bestaande persoonlijke peering; u moet de peering opnieuw instellen. Zie [ExpressRoute-peerings opnieuw instellen][ResetPeering]
 >
 
-## <a name="bfd-timer-negotiation"></a>BFD-timeronderhandeling
+## <a name="bfd-timer-negotiation"></a>BFD timer-onderhandeling
 
-Tussen BFD-peers bepaalt de langzamere van de twee peers de transmissiesnelheid. BOF-transmissie-/ontvangstintervallen zijn ingesteld op 300 milliseconden. In bepaalde scenario's kan het interval worden ingesteld op een hogere waarde van 750 milliseconden. Door hogere waarden te configureren, u deze intervallen langer forceren. maar niet korter.
+Tussen BFD-peers wordt de verzend frequentie bepaald door de langzamere van de twee peers. Msee's BFD-verzen ding/ontvangst intervallen worden ingesteld op 300 milliseconden. In bepaalde scenario's kan het interval worden ingesteld op een hogere waarde van 750 milliseconden. Door hogere waarden te configureren, kunt u deze intervallen langer laten afdwingen. maar niet korter.
 
 >[!NOTE]
->Als u Geo-redundante ExpressRoute-circuits hebt geconfigureerd of site-to-site IPSec VPN-connectiviteit als back-up gebruikt; BFD inschakelen zou helpen failover sneller na een ExpressRoute-verbindingsfout. 
+>Als u geografisch redundante ExpressRoute-circuits hebt geconfigureerd of VPN-verbinding tussen sites als back-up gebruikt. door BFD in te scha kelen, kunt u de failover sneller volgen door een ExpressRoute-verbindings fout. 
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie of hulp naar de volgende links:
+Raadpleeg de volgende koppelingen voor meer informatie of hulp:
 
 - [Een ExpressRoute-circuit maken en wijzigen][CreateCircuit]
 - [Routering voor een ExpressRoute-circuit maken en wijzigen][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-bfd/BFD_Need.png "BFD versnelt link fout aftrek tijd"
+[1]: ./media/expressroute-bfd/BFD_Need.png "BFD versnelt de tijd" voor het ongedaan maken van de koppelings fout
 
 <!--Link References-->
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
