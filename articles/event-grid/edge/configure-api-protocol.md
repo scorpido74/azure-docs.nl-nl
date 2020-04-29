@@ -1,6 +1,6 @@
 ---
-title: API-protocollen configureren - IoT Edge voor Azure Event Grid | Microsoft Documenten
-description: API-protocollen configureren die worden weergegeven door gebeurtenisraster op IoT Edge.
+title: API-protocollen configureren-Azure Event Grid IoT Edge | Microsoft Docs
+description: API-protocollen configureren die worden weer gegeven door Event Grid op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,24 +10,24 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841807"
 ---
-# <a name="configure-event-grid-api-protocols"></a>Api-protocollen voor gebeurtenisraster configureren
+# <a name="configure-event-grid-api-protocols"></a>Event Grid API-protocollen configureren
 
-Deze handleiding geeft voorbeelden van de mogelijke protocolconfiguraties van een Event Grid-module. De module Event Grid stelt API bloot voor de beheer- en runtime-bewerkingen. In de volgende tabel worden de protocollen en poorten vastgelegd.
+Deze hand leiding bevat voor beelden van de mogelijke protocol configuraties van een Event Grid module. In de module Event Grid wordt API weer gegeven voor de beheer-en runtime-bewerkingen. In de volgende tabel worden de protocollen en poorten vastgelegd.
 
 | Protocol | Poort | Beschrijving |
 | ---------------- | ------------ | ------------ |
-| HTTP | 5888 | Standaard uitgeschakeld. Alleen nuttig tijdens het testen. Niet geschikt voor productieworkloads.
+| HTTP | 5888 | Standaard uitgeschakeld. Alleen nuttig tijdens het testen. Niet geschikt voor productie werkbelastingen.
 | HTTPS | 4438 | Standaard
 
-Zie [beveiligings- en verificatiehandleiding](security-authentication.md) voor alle mogelijke configuraties.
+Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md) voor alle mogelijke configuraties.
 
-## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>HTTPS blootstellen aan IoT-modules op hetzelfde randnetwerk
+## <a name="expose-https-to-iot-modules-on-the-same-edge-network"></a>HTTPS beschikbaar maken voor IoT-modules op hetzelfde Edge-netwerk
 
 ```json
  {
@@ -59,9 +59,9 @@ Zie [beveiligings- en verificatiehandleiding](security-authentication.md) voor a
  ```
 
 >[!NOTE]
-> Met de sectie **PortBindings** u interne poorten toewijzen aan poorten van de containerhost. Deze functie maakt het mogelijk om de Event Grid-module van buiten het IoT Edge-containernetwerk te bereiken, als het IoT-edge-apparaat openbaar bereikbaar is.
+> Met de sectie **PortBindings** kunt u interne poorten toewijzen aan poorten van de container host. Met deze functie kunt u de module Event Grid van buiten het netwerk van IoT Edge container bereiken als het IoT edge-apparaat openbaar is.
 
-## <a name="expose-http-and-https-to-iot-modules-on-the-same-edge-network"></a>HTTP en HTTPS blootstellen aan IoT-modules op hetzelfde edge-netwerk
+## <a name="expose-http-and-https-to-iot-modules-on-the-same-edge-network"></a>HTTP en HTTPS beschikbaar maken voor IoT-modules op hetzelfde Edge-netwerk
 
 ```json
  {
@@ -98,7 +98,7 @@ Zie [beveiligings- en verificatiehandleiding](security-authentication.md) voor a
  ```
 
 >[!NOTE]
-> Standaard maakt elke IoT-module deel uit van de IoT Edge-runtime die door het brugnetwerk is gemaakt. Hiermee kunnen verschillende IoT-modules op hetzelfde netwerk met elkaar communiceren. **Met PortBindings** u een interne containerpoort op de hostmachine toewijzen, zodat iedereen van buitenaf toegang heeft tot de poort van de Event Grid-module.
+> Elke IoT-module maakt standaard deel uit van de IoT Edge runtime die door het brug netwerk is gemaakt. Hierdoor kunnen verschillende IoT-modules op hetzelfde netwerk communiceren met elkaar. Met **PortBindings** kunt u een interne container poort toewijzen op de hostcomputer, zodat iedereen toegang heeft tot de poort van Event grid module van buiten.
 
 >[!IMPORTANT]
-> Hoewel de poorten toegankelijk kunnen worden gemaakt buiten het IoT Edge-netwerk, dwingt clientverificatie wie daadwerkelijk mag bellen naar de module.
+> Hoewel de poorten toegankelijk kunnen worden gemaakt buiten het IoT Edge netwerk, dwingt client verificatie af wie in feite aanroepen naar de module mag worden uitgevoerd.

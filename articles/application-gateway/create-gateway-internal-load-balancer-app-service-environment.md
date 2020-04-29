@@ -1,6 +1,6 @@
 ---
-title: Problemen met een toepassingsgateway in Azure oplossen – ILB ASE | Microsoft Documenten
-description: Meer informatie over het oplossen van problemen met een toepassingsgateway met behulp van een interne load balancer met een app-serviceomgeving in Azure
+title: Problemen oplossen met een Application Gateway in azure – ILB ASE | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met een toepassings gateway met behulp van een interne Load Balancer met een App Service Environment in azure
 services: vpn-gateway
 documentationCenter: na
 author: genlin
@@ -15,60 +15,60 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668563"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Back-endservercertificaat wordt niet op de witte lijst voor een toepassingsgateway weergegeven met behulp van een interne load balancer met een app-serviceomgeving
+# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Het back-end-server certificaat is niet white list voor een toepassings gateway met een interne Load Balancer met een App Service Environment
 
-In dit artikel wordt het volgende probleem opgelost: een certificaat wordt niet op de witte lijst weergegeven wanneer u een toepassingsgateway maakt met behulp van een ILB (Internal Load Balancer) samen met een App Service Environment (ASE) aan de achterkant wanneer u end-to-end TLS in Azure gebruikt.
+In dit artikel wordt het volgende probleem opgelost: een certificaat is niet white list wanneer u een toepassings gateway maakt met behulp van een interne Load Balancer (ILB) in combi natie met een App Service Environment (ASE) bij de back-end wanneer u end-to-end TLS gebruikt in Azure.
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u een toepassingsgateway maakt met behulp van een ILB met een ASE aan de achterkant, kan de back-endserver ongezond worden. Dit probleem treedt op als het verificatiecertificaat van de toepassingsgateway niet overeenkomt met het geconfigureerde certificaat op de back-endserver. Zie het volgende scenario als voorbeeld:
+Wanneer u een toepassings gateway maakt met behulp van een ILB met een ASE aan de back-end, wordt de back-endserver mogelijk beschadigd. Dit probleem treedt op als het verificatie certificaat van de toepassings gateway niet overeenkomt met het geconfigureerde certificaat op de back-endserver. Zie het volgende scenario als voor beeld:
 
-**Configuratie van toepassingsgateway:**
+**Application Gateway configuratie:**
 
-- **Luisteraar:** Meerdere plaatsen
+- **Listener:** Meerdere locaties
 - **Poort:** 443
-- **Hostname:** test.appgwtestase.com
-- **SSL-certificaat:** CN=test.appgwtestase.com
-- **Backend Pool:** IP-adres of FQDN
+- **Hostnaam:** test.appgwtestase.com
+- **SSL-certificaat:** CN = test. appgwtestase. com
+- **Back-end-groep:** IP-adres of FQDN
 - **IP-adres:**: 10.1.5.11
-- **HTTP-instellingen:** HTTPS
-- **Haven:**: 443
-- **Aangepaste sonde:** Hostname – test.appgwtestase.com
-- **Verificatiecertificaat:** .cer van test.appgwtestase.com
-- **Backend Gezondheid:** Niet in orde : backendservercertificaat staat niet op de witte lijst met Application Gateway.
+- **Http-instellingen:** HTTPS
+- **Poort:**: 443
+- **Aangepaste test:** Hostnaam – test.appgwtestase.com
+- **Verificatie certificaat:** . cer van test.appgwtestase.com
+- **Back-end status:** Onjuist: het back-endserver certificaat is niet white list met Application Gateway.
 
 **ASE-configuratie:**
 
 - **ILB IP:** 10.1.5.11
-- **Domeinnaam:** appgwtestase.com
-- **App-service:** test.appgwtestase.com
-- **SSL-binding:** SNI SSL – CN=test.appgwtestase.com
+- **Domein naam:** appgwtestase.com
+- **App service:** test.appgwtestase.com
+- **SSL-binding:** SNI SSL – CN = test. appgwtestase. com
 
-Wanneer u de toepassingsgateway opent, ontvangt u het volgende foutbericht omdat de back-endserver niet in orde is:
+Wanneer u de toepassings gateway opent, wordt het volgende fout bericht weer gegeven omdat de back-endserver niet in orde is:
 
-**502 – Webserver heeft een ongeldige reactie ontvangen terwijl deze fungeert als gateway- of proxyserver.**
+**502 – webserver heeft een ongeldig antwoord ontvangen terwijl deze fungeert als gateway of proxy server.**
 
 ## <a name="solution"></a>Oplossing
 
-Wanneer u geen hostnaam gebruikt om toegang te krijgen tot een HTTPS-website, retourneert de back-endserver het geconfigureerde certificaat op de standaardwebsite, voor het geval SNI is uitgeschakeld. Voor een ILB ASE is het standaardcertificaat afkomstig van het ILB-certificaat. Als er geen geconfigureerde certificaten voor de ILB zijn, is het certificaat afkomstig van het ASE App-certificaat.
+Wanneer u geen hostnaam gebruikt voor toegang tot een HTTPS-website, retourneert de back-endserver het geconfigureerde certificaat op de standaard website, in het geval SNI is uitgeschakeld. Voor een ILB-ASE is het standaard certificaat afkomstig van het ILB-certificaat. Als er geen certificaten zijn geconfigureerd voor de ILB, is het certificaat afkomstig uit het ASE-app-certificaat.
 
-Wanneer u een volledig gekwalificeerde domeinnaam (FQDN) gebruikt om toegang te krijgen tot de ILB, retourneert de back-endserver het juiste certificaat dat is geüpload in de HTTP-instellingen. Als dat niet het geval is, overweeg dan de volgende opties:
+Wanneer u een Fully Qualified Domain Name (FQDN) gebruikt om toegang te krijgen tot de ILB, retourneert de back-endserver het juiste certificaat dat is geüpload in de HTTP-instellingen. Als dat niet het geval is, moet u rekening houden met de volgende opties:
 
-- Gebruik FQDN in de back-endpool van de toepassingsgateway om naar het IP-adres van de ILB te wijzen. Deze optie werkt alleen als u een privé-DNS-zone of een aangepaste DNS-instelling hebt geconfigureerd. Anders moet u een A-record maken voor een openbare DNS.
+- Gebruik FQDN in de back-end-pool van de toepassings gateway om te verwijzen naar het IP-adres van de ILB. Deze optie werkt alleen als u een privé-DNS-zone of een aangepaste DNS-configuratie hebt geconfigureerd. Anders moet u een A-record maken voor een open bare DNS-server.
 
-- Gebruik het geüploade certificaat op de ILB of het standaardcertificaat (ILB-certificaat) in de HTTP-instellingen. De toepassingsgateway krijgt het certificaat wanneer deze toegang krijgt tot het IP-adres van de ILB voor de sonde.
+- Gebruik het geüploade certificaat op de ILB of het standaard certificaat (ILB-certificaat) in de HTTP-instellingen. De Application Gateway haalt het certificaat op wanneer het het IP-adres van de ILB voor de test opent.
 
-- Gebruik een wildcardcertificaat op de ILB en de back-endserver, zodat voor alle websites het certificaat gebruikelijk is. Deze oplossing is echter alleen mogelijk in het geval van subdomeinen en niet als elk van de websites verschillende hostnamen vereist.
+- Gebruik een certificaat met Joker tekens op de ILB en de back-endserver, zodat voor alle websites het certificaat gebruikelijk is. Deze oplossing is echter alleen mogelijk in het geval van subdomeinen en niet als voor elk van de websites verschillende hostnamen zijn vereist.
 
-- Schakel de optie **Gebruik voor App-service** voor de toepassingsgateway uit voor het geval u het IP-adres van de ILB gebruikt.
+- Schakel de optie **voor app service gebruiken** voor de toepassings gateway uit als u het IP-adres van de ILB gebruikt.
 
-Om de overhead te verminderen, u het ILB-certificaat uploaden in de HTTP-instellingen om het sondepad te laten werken. (Deze stap is alleen voor whitelisting. Het wordt niet gebruikt voor TLS-communicatie.) U het ILB-certificaat ophalen door toegang te krijgen tot de ILB met het IP-adres vanuit uw browser op HTTPS en vervolgens het TLS/SSL-certificaat te exporteren in een door basis-64 gecodeerde CER-indeling en het certificaat te uploaden naar de respectievelijke HTTP-instellingen.
+Als u de overhead wilt beperken, kunt u het ILB-certificaat uploaden in de HTTP-instellingen om het probe-pad te laten werken. (Deze stap is alleen bedoeld voor white list. Het wordt niet gebruikt voor TLS-communicatie.) U kunt het ILB-certificaat ophalen door de ILB te openen met het IP-adres van uw browser op HTTPS en vervolgens het TLS/SSL-certificaat te exporteren in een met base64 64 gecodeerde CER-indeling en het certificaat te uploaden naar de respectievelijke HTTP-instellingen.
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 

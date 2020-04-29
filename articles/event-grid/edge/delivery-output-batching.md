@@ -1,6 +1,6 @@
 ---
-title: Batching uitvoer in Azure Event Grid IoT Edge | Microsoft Documenten
-description: Batching uitvoer in gebeurtenisraster op IoT Edge.
+title: Uitvoer batching in Azure Event Grid IoT Edge | Microsoft Docs
+description: Uitvoer batching in Event Grid op IoT Edge.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,50 +10,50 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841744"
 ---
 # <a name="output-batching"></a>Batchverwerking van uitvoer
 
-Event Grid heeft ondersteuning om meer dan één gebeurtenis in één leveringsaanvraag te leveren. Deze functie maakt het mogelijk om de totale leveringsdoorvoer te verhogen zonder de HTTP-kosten per aanvraag te betalen. Batching is standaard uitgeschakeld en kan per abonnement worden ingeschakeld.
+Event Grid biedt ondersteuning voor het leveren van meer dan één gebeurtenis in één bezorgings aanvraag. Deze functie maakt het mogelijk de algehele leverings doorvoer te verhogen zonder de HTTP per-aanvraag-overhead te betalen. Batch verwerking is standaard uitgeschakeld en kan per abonnement worden ingeschakeld.
 
 > [!WARNING]
-> De maximaal toegestane duur om elke leveringsaanvraag te verwerken, verandert niet, hoewel de abonneecode mogelijk meer werk per batched request moet doen. De time-out van de levering is standaard 60 seconden.
+> De Maxi maal toegestane duur voor het verwerken van elke leverings aanvraag wordt niet gewijzigd, zelfs als de abonnee code mogelijk meer werk moet doen per batch-aanvraag. De standaard time-outwaarde is 60 seconden.
 
-## <a name="batching-policy"></a>Batching-beleid
+## <a name="batching-policy"></a>Batch beleid
 
-Het batchgedrag van Event Grid kan per abonnee worden aangepast door de volgende twee instellingen aan te passen:
+U kunt het batch gedrag van Event Grid per abonnee aanpassen door de volgende twee instellingen te wijzigen:
 
-* Maximale gebeurtenissen per batch
+* Maximum aantal gebeurtenissen per batch
 
-  Met deze instelling stelt u een bovengrens in voor het aantal gebeurtenissen dat kan worden toegevoegd aan een batched delivery request.
+  Met deze instelling stelt u een bovenlimiet in voor het aantal gebeurtenissen dat kan worden toegevoegd aan een batch-bezorgings aanvraag.
 
-* Voorkeursbatchgrootte in Kilobytes
+* Voorkeurs Batch grootte in KB
 
-  Deze knop wordt gebruikt om het maximum aantal kilobytes dat per leveringsaanvraag kan worden verzonden verder te regelen
+  Deze knop wordt gebruikt om het maximum aantal kilo bytes te bepalen dat per bezorgings aanvraag kan worden verzonden
 
-## <a name="batching-behavior"></a>Batching-gedrag
+## <a name="batching-behavior"></a>Batch verwerking
 
-* Alles of geen
+* Alle of geen
 
-  Event Grid werkt met alles-of-geen semantiek. Het ondersteunt geen gedeeltelijk succes van een batchlevering. Abonnees moeten voorzichtig zijn om alleen te vragen voor zo veel gebeurtenissen per partij als ze redelijkerwijs kunnen verwerken in 60 seconden.
+  Event Grid werkt met alle-of-geen semantiek. Het biedt geen ondersteuning voor het gedeeltelijk slagen van een batch-levering. U moet er rekening mee houden dat abonnees alleen kunnen worden gevraagd om het aantal gebeurtenissen per batch, omdat deze binnen 60 seconden redelijkerwijs kan worden verwerkt.
 
-* Optimistische batching
+* Optimistische batch verwerking
 
-  De instellingen voor batchingbeleid zijn geen strikte grenzen aan het batchgedrag en worden op basis van de beste inspanning gerespecteerd. Bij lage gebeurtenistarieven ziet u vaak dat de batchgrootte kleiner is dan de gevraagde maximale gebeurtenissen per batch.
+  De instellingen voor batch verwerking zijn niet strikt gebonden aan het batch gedrag en worden gerespecteerd op basis van de beste inspanningen. Bij lage gebeurtenis frequenties houdt u vaak rekening met de Batch grootte die kleiner is dan het aangevraagde maximum aantal gebeurtenissen per batch.
 
-* Standaard is ingesteld op UIT
+* De standaard waarde is ingesteld op uit
 
-  Gebeurtenisraster voegt standaard slechts één gebeurtenis toe aan elke leveringsaanvraag. De manier om batching in te schakelen is om een van de eerder genoemde instellingen in het artikel in het evenement abonnement JSON.
+  Standaard voegt Event Grid slechts één gebeurtenis toe aan elke bezorgings aanvraag. De manier om batching in te scha kelen, is door een van de eerder genoemde instellingen in het artikel in de JSON van het gebeurtenis abonnement in te stellen.
 
 * Standaardwaarden
 
-  Het is niet nodig om zowel de instellingen (Maximale gebeurtenissen per batch als de grootte van de geschatte batch in kilobytes) op te geven bij het maken van een gebeurtenisabonnement. Als er slechts één instelling is ingesteld, gebruikt Gebeurtenisraster (configureerbare) standaardwaarden. Zie de volgende secties voor de standaardwaarden en hoe u deze overschrijven.
+  Het is niet nodig om zowel de instellingen (het maximum aantal gebeurtenissen per batch en de Batch grootte in kilo bytes) op te geven bij het maken van een gebeurtenis abonnement. Als er slechts één instelling is ingesteld, gebruikt Event Grid (Configureer bare) standaard waarden. Zie de volgende secties voor de standaard waarden en hoe u deze kunt negeren.
 
-## <a name="turn-on-output-batching"></a>Uitvoerbatching inschakelen
+## <a name="turn-on-output-batching"></a>Uitvoer batching inschakelen
 
 ```json
 {
@@ -73,20 +73,20 @@ Het batchgedrag van Event Grid kan per abonnee worden aangepast door de volgende
 }
 ```
 
-## <a name="configuring-maximum-allowed-values"></a>Maximum toegestane waarden configureren
+## <a name="configuring-maximum-allowed-values"></a>Maxi maal toegestane waarden configureren
 
-Met de volgende instellingen voor implementatietijd bepalen u de maximale waarde die is toegestaan bij het maken van een gebeurtenisabonnement.
+De volgende implementatie tijd instellingen bepalen de toegestane maximum waarde bij het maken van een gebeurtenis abonnement.
 
 | Naam van eigenschap | Beschrijving |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Maximale waarde toegestaan `PreferredBatchSizeInKilobytes` voor de knop. Standaard `1033`.
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | Maximale waarde toegestaan `MaxEventsPerBatch` voor de knop. Standaard `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | De toegestane maximum waarde voor `PreferredBatchSizeInKilobytes` de knop. Standaard `1033`instelling.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor `MaxEventsPerBatch` de knop. Standaard `50`instelling.
 
-## <a name="configuring-runtime-default-values"></a>Standaardwaarden voor runtime configureren
+## <a name="configuring-runtime-default-values"></a>Standaard waarden voor runtime configureren
 
-Met de volgende instellingen voor implementatietijd bepalen de standaardwaarde runtime van elke knop wanneer deze niet is opgegeven in het gebeurtenisabonnement. Om dit te herhalen, moet ten minste één knop op het gebeurtenisabonnement worden ingesteld om batchgedrag in te schakelen.
+De volgende implementatie tijd instellingen bepalen de runtime standaard waarde van elke knop wanneer deze niet is opgegeven in het gebeurtenis abonnement. Als u wilt herhalen, moet er ten minste één knop worden ingesteld op het gebeurtenis abonnement om batch-gedrag in te scha kelen.
 
 | Naam van eigenschap | Beschrijving |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | Maximale leveringsaanvraaggrootte `MaxEventsPerBatch` wanneer alleen is opgegeven. Standaard `1_058_576`.
-| `broker__defaultMaxEventsPerBatch` | Maximum aantal gebeurtenissen dat aan een `MaxBatchSizeInBytes` batch moet worden toegevoegd wanneer alleen is opgegeven. Standaard `10`.
+| `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van leverings aanvraag `MaxEventsPerBatch` wanneer alleen is opgegeven. Standaard `1_058_576`instelling.
+| `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd `MaxBatchSizeInBytes` als alleen wordt opgegeven. Standaard `10`instelling.

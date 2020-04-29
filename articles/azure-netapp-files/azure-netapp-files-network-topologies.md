@@ -1,6 +1,6 @@
 ---
-title: Richtlijnen voor netwerkplanning azure NetApp Files | Microsoft Documenten
-description: Beschrijft richtlijnen waarmee u een effectieve netwerkarchitectuur ontwerpen met Azure NetApp-bestanden.
+title: Richt lijnen voor het plannen van Azure NetApp Files netwerken | Microsoft Docs
+description: Hierin worden richt lijnen beschreven die u kunnen helpen bij het ontwerpen van een efficiënte netwerk architectuur met behulp van Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: ram-kakani
@@ -15,117 +15,117 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80667863"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
 
-Netwerkarchitectuurplanning is een belangrijk element van het ontwerpen van een toepassingsinfrastructuur. Met dit artikel u een effectieve netwerkarchitectuur ontwerpen voor uw workloads om te profiteren van de uitgebreide mogelijkheden van Azure NetApp-bestanden.
+Planning van de netwerk architectuur is een belang rijk onderdeel van het ontwerpen van elke toepassings infrastructuur. Dit artikel helpt u bij het ontwerpen van een efficiënte netwerk architectuur voor uw workloads om te profiteren van de uitgebreide mogelijkheden van Azure NetApp Files.
 
-Azure NetApp-bestandenvolumes zijn ontworpen om te worden opgenomen in een subnet voor speciale doeleinden, een [gedelegeerd subnet,](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) binnen uw Azure Virtual Network. Daarom hebt u rechtstreeks toegang tot de volumes vanaf uw VNet, vanaf peered VNets in dezelfde regio of indien nodig via een Virtual Network Gateway (ExpressRoute of VPN Gateway). Het subnet is gewijd aan Azure NetApp Files en er is geen verbinding met andere Azure-services of internet.
+Azure NetApp Files volumes zijn ontworpen om te worden opgenomen in een speciaal subnet met de naam een [gedelegeerd subnet](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) binnen uw Azure Virtual Network. Daarom kunt u de volumes rechtstreeks vanuit uw VNet benaderen, van peered VNets in dezelfde regio, of van on-premises via een Virtual Network gateway (ExpressRoute of VPN Gateway), indien nodig. Het subnet is toegewezen aan Azure NetApp Files en er is geen verbinding met andere Azure-Services of Internet.
 
 ## <a name="considerations"></a>Overwegingen  
 
-U moet een paar overwegingen begrijpen wanneer u een abonnement plant voor het Azure NetApp Files-netwerk.
+U moet rekening houden met enkele overwegingen bij het plannen van Azure NetApp Files netwerk.
 
 ### <a name="constraints"></a>Beperkingen
 
-De onderstaande functies worden momenteel niet ondersteund voor Azure NetApp-bestanden: 
+De onderstaande functies worden momenteel niet ondersteund voor Azure NetApp Files: 
 
-* Netwerkbeveiligingsgroepen (NSG's) toegepast op het gedelegeerde subnet
-* Door de gebruiker gedefinieerde routes (UDR's) met adresvoorvoegsel als subnet Azure NetApp-bestanden
-* Azure-beleid (bijvoorbeeld aangepaste naamgevingsbeleidsregels) op de Azure NetApp-bestandeninterface
-* Load balancers voor Azure NetApp Files-verkeer
+* Netwerk beveiligings groepen (Nsg's) die zijn toegepast op het overgedragen subnet
+* Door de gebruiker gedefinieerde routes (Udr's) met adres voorvoegsel als Azure NetApp files-subnet
+* Azure-beleid (bijvoorbeeld aangepaste naamgevings beleid) op de Azure NetApp Files interface
+* Load balancers voor Azure NetApp Files verkeer
 * Azure NetApp Files wordt niet ondersteund met Azure Virtual WAN
 
-De volgende netwerkbeperkingen zijn van toepassing op Azure NetApp-bestanden:
+De volgende netwerk beperkingen zijn van toepassing op Azure NetApp Files:
 
-* Het aantal IP's dat wordt gebruikt in een VNet met Azure NetApp-bestanden (inclusief peered VNets) mag niet hoger zijn dan 1000. We werken aan het verhogen van deze limiet om te voldoen aan de vraag van klantenschaal. 
+* Het aantal Ip's dat in een VNet met Azure NetApp Files (inclusief peered VNets) wordt gebruikt, mag niet hoger zijn dan 1000. We zijn bezig om deze limiet te verhogen om tegemoet te komen aan de schaal vereisten van klanten. 
 * In elk virtueel Azure-netwerk (VNet) kan er slechts één subnet aan Azure NetApp Files worden gedelegeerd.
 
 
-### <a name="supported-network-topologies"></a>Ondersteunde netwerktopologieën
+### <a name="supported-network-topologies"></a>Ondersteunde netwerk topologieën
 
-In de volgende tabel worden de netwerktopologieën beschreven die worden ondersteund door Azure NetApp-bestanden.  Het beschrijft ook de oplossingen voor de niet-ondersteunde topologieën. 
+De volgende tabel beschrijft de netwerktopologieën die door Azure NetApp Files worden ondersteund.  Hierin worden ook de tijdelijke oplossingen voor de niet-ondersteunde topologieën beschreven. 
 
 |    Topologieën    |    Wordt ondersteund    |     Tijdelijke oplossing    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Verbinding met volume in een lokaal VNet    |    Ja    |         |
-|    Verbinding met volume in een peered VNet (Zelfde regio)    |    Ja    |         |
-|    Connectiviteit met volume in een peered VNet (Cross region of global peering)    |    Nee    |    Geen    |
-|    Connectiviteit met een volume via ExpressRoute-gateway    |    Ja    |         |
-|    Connectiviteit van on-premises naar een volume in een spaak VNet over ExpressRoute gateway en VNet peering met gateway transit    |    Ja    |        |
-|    Connectiviteit van on-premises naar een volume in een gesproken VNet via VPN-gateway    |    Ja    |         |
-|    Connectiviteit van on-premises naar een volume in een gesproken VNet via VPN-gateway en VNet-peering met gatewaytransit    |    Ja    |         |
+|    Connectiviteit met volume in een lokaal VNet    |    Ja    |         |
+|    Connectiviteit met volume in een gepeerd VNet (dezelfde regio)    |    Ja    |         |
+|    Connectiviteit met volume in een gepeerd VNet (meerdere regio's of globale peering)    |    Nee    |    Geen    |
+|    Connectiviteit met een volume via de ExpressRoute-gateway    |    Ja    |         |
+|    Connectiviteit van on-premises naar een volume in een spoke-VNet via ExpressRoute gateway en VNet-peering met gateway-door Voer    |    Ja    |        |
+|    Connectiviteit van on-premises naar een volume in een spoke-VNet via een VPN-gateway    |    Ja    |         |
+|    Connectiviteit van on-premises naar een volume in een spoke-VNet via VPN-gateway en VNet-peering met gateway-door Voer    |    Ja    |         |
 
 
-## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtueel netwerk voor Azure NetApp-bestandenvolumes
+## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtueel netwerk voor Azure NetApp Files volumes
 
-In dit gedeelte worden concepten uitgelegd die u helpen bij de planning van virtuele netwerken.
+In deze sectie worden de concepten uitgelegd die u helpen bij het plannen van virtuele netwerken.
 
 ### <a name="azure-virtual-networks"></a>Virtuele netwerken van Azure
 
-Voordat u een Azure NetApp Files-volume indient, moet u een Virtueel Azure-netwerk (VNet) maken of een netwerk gebruiken dat al in uw abonnement bestaat. De VNet definieert de netwerkgrens van het volume.  Zie de documentatie van het [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)voor meer informatie over het maken van virtuele netwerken.
+Voordat u een Azure NetApp Files-volume inricht, moet u een virtueel Azure-netwerk (VNet) maken of er een gebruiken dat al aanwezig is in uw abonnement. Het VNet definieert de netwerk grens van het volume.  Zie de [documentatie van Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)voor meer informatie over het maken van virtuele netwerken.
 
 ### <a name="subnets"></a>Subnetten
 
-Subnetten segmenteren het virtuele netwerk in afzonderlijke adresruimten die bruikbaar zijn voor de Azure-bronnen in deze netwerken.  Azure NetApp-bestandenvolumes zijn opgenomen in een subnet voor speciale doeleinden dat een [gedelegeerd subnet](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)wordt genoemd. 
+Subnetten segmenteert het virtuele netwerk in afzonderlijke adres ruimten die kunnen worden gebruikt door de Azure-resources.  Azure NetApp Files volumes bevinden zich in een subnet met speciale doel einden, een zogenaamde [gedelegeerd subnet](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
 
-Subnetdelegatie geeft expliciete machtigingen aan de Azure NetApp Files-service om servicespecifieke bronnen in het subnet te maken.  Het maakt gebruik van een unieke id bij het implementeren van de service. In dit geval wordt een netwerkinterface gemaakt om connectiviteit met Azure NetApp-bestanden mogelijk te maken.
+Subnet delegering biedt expliciete machtigingen voor de Azure NetApp Files-service om servicespecifieke bronnen in het subnet te maken.  Er wordt gebruikgemaakt van een unieke id bij het implementeren van de service. In dit geval wordt een netwerk interface gemaakt om verbinding met Azure NetApp Files mogelijk te maken.
 
-Als u een nieuw VNet gebruikt, u een subnet maken en het subnet delegeren aan Azure NetApp-bestanden door instructies te volgen in [Een subnet delegeren aan Azure NetApp-bestanden](azure-netapp-files-delegate-subnet.md). U ook een bestaand leeg subnet delegeren dat nog niet is gedelegeerd aan andere services.
+Als u een nieuw VNet gebruikt, kunt u een subnet maken en het subnet delegeren naar Azure NetApp Files door de instructies in [een subnet naar Azure NetApp files te delegeren](azure-netapp-files-delegate-subnet.md). U kunt ook een bestaand leeg subnet delegeren dat nog niet is gedelegeerd aan andere services.
 
-Als de VNet is peered met een andere VNet, u de VNet-adresruimte niet uitbreiden. Daarom moet het nieuwe gedelegeerde subnet worden gemaakt binnen de VNet-adresruimte. Als u de adresruimte wilt uitbreiden, moet u de VNet-peering verwijderen voordat u de adresruimte uitbreidt.
+Als het VNet is gekoppeld aan een ander VNet, kunt u de VNet-adres ruimte niet uitbreiden. Daarom moet het nieuwe gedelegeerde subnet worden gemaakt binnen de VNet-adres ruimte. Als u de adres ruimte wilt uitbreiden, moet u de VNet-peering verwijderen voordat u de adres ruimte uitbreidt.
 
-### <a name="udrs-and-nsgs"></a>UDR's en NSGs
+### <a name="udrs-and-nsgs"></a>Udr's en Nsg's
 
-Door de gebruiker gedefinieerde routes (UDR's) en Netwerkbeveiligingsgroepen (NSG's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp-bestanden.
+Door de gebruiker gedefinieerde routes (Udr's) en netwerk beveiligings groepen (Nsg's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp Files.
 
-Als tijdelijke oplossing u NSG's toepassen op andere subnetten die het verkeer van en naar het gedelegeerde subnet van Azure NetApp Files toestaan of weigeren.  
+Als tijdelijke oplossing kunt u Nsg's Toep assen op andere subnetten die het verkeer van en naar het Azure NetApp Files overgedragen subnet toestaan of weigeren.  
 
-## <a name="azure-native-environments"></a>Azure-native omgevingen
+## <a name="azure-native-environments"></a>Systeem eigen Azure-omgevingen
 
-In het volgende diagram wordt een Azure-native omgeving geïllustreerd:
+Het volgende diagram illustreert een systeem eigen Azure-omgeving:
 
-![Azure-native netwerkomgeving](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
+![Azure-systeem eigen netwerk omgeving](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
 
-### <a name="local-vnet"></a>Lokale VNet
+### <a name="local-vnet"></a>Lokaal VNet
 
-Een basisscenario is het maken of verbinden met een Azure NetApp-bestandenvolume vanaf een virtuele machine (VM) in hetzelfde VNet. Voor VNet 2 in het bovenstaande diagram wordt volume 1 gemaakt in een gedelegeerd subnet en kan deze op VM 1 in het standaardsubnet worden gemonteerd.
+Een basis scenario is het maken of verbinden van een Azure NetApp Files-volume van een virtuele machine (VM) in hetzelfde VNet. Voor VNet 2 in het bovenstaande diagram wordt volume 1 in een gedelegeerd subnet gemaakt en kan het worden gekoppeld op VM 1 in het standaard subnet.
 
 ### <a name="vnet-peering"></a>VNet-peering
 
-Als u extra VNets in dezelfde regio hebt die toegang tot elkaars resources nodig hebben, kunnen de VNets worden verbonden met [VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) om veilige connectiviteit via de Azure-infrastructuur mogelijk te maken. 
+Als er extra VNets in dezelfde regio zijn die toegang moeten hebben tot de resources van elkaar, kan de VNets worden verbonden met behulp van [VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) om veilige connectiviteit mogelijk te maken via de Azure-infra structuur. 
 
-Denk aan VNet 2 en VNet 3 in het bovenstaande diagram. Als VM 1 verbinding moet maken met VM 2 of Volume 2, of als VM 2 verbinding moet maken met VM 1 of Volume 1, moet u VNet-peering tussen VNet 2 en VNet 3 inschakelen. 
+Overweeg VNet 2 en VNet 3 in het bovenstaande diagram. Als VM 1 verbinding moet maken met VM 2 of volume 2, of als VM 2 verbinding moet maken met VM 1 of volume 1, moet u VNet-peering inschakelen tussen VNet 2 en VNet 3. 
 
-Overweeg bovendien een scenario waarin VNet 1 is gekoppeld aan VNet 2 en VNet 2 wordt peered met VNet 3 in dezelfde regio. De bronnen van VNet 1 kunnen verbinding maken met resources in VNet 2, maar het kan geen verbinding maken met resources in VNet 3, tenzij VNet 1 en VNet 3 zijn peered. 
+Bedenk daarnaast een scenario waarin VNet 1 is gekoppeld aan VNet 2 en VNet 2 is gekoppeld aan VNet 3 in dezelfde regio. De resources van VNet 1 kunnen verbinding maken met resources in VNet 2, maar kunnen geen verbinding maken met resources in VNet 3, tenzij VNet 1 en VNet 3 gelijkwaardig zijn. 
 
-In het bovenstaande diagram kan VM 3 weliswaar verbinding maken met volume 1, maar kan VM 4 geen verbinding maken met Volume 2.  De reden hiervoor is dat de spaak VNets niet worden peered, en _transit routing wordt niet ondersteund via VNet peering_.
+In het bovenstaande diagram, hoewel VM 3 verbinding kan maken met volume 1, kan VM 4 geen verbinding maken met volume 2.  De reden hiervoor is dat de spoke-VNets niet worden gepeerd en dat _Transit routering niet wordt ondersteund via VNet-peering_.
 
 ## <a name="hybrid-environments"></a>Hybride omgevingen
 
 Het volgende diagram illustreert een hybride omgeving: 
 
-![Hybride netwerkomgeving](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
+![Hybride netwerk omgeving](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-In het hybride scenario hebben toepassingen uit on-premises datacenters toegang nodig tot de bronnen in Azure.  Dit is het geval of u uw datacenter wilt uitbreiden naar Azure, of dat u Azure Native Services wilt gebruiken of voor noodherstel. Zie [VPN-gatewayplanningsopties](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) voor informatie over het on-premises verbinden van meerdere bronnen met resources in Azure via een site-to-site VPN of een ExpressRoute.
+In het hybride scenario moeten toepassingen van on-premises data centers toegang hebben tot de resources in Azure.  Dit is het geval: u wilt uw Data Center uitbreiden naar Azure of u wilt Azure native-Services gebruiken of voor herstel na nood gevallen. Zie [VPN gateway plannings opties](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) voor informatie over hoe u meerdere on-premises resources verbindt met resources in azure via een site-naar-site-VPN of een ExpressRoute.
 
-In een hybride hub-spoke topologie fungeert de hub VNet in Azure als een centraal verbindingspunt voor uw on-premises netwerk. De spaken zijn VNets peered met de hub, en ze kunnen worden gebruikt om workloads te isoleren.
+In een hybride hub-spoke-topologie fungeert de hub VNet in azure als een centraal punt van connectiviteit met uw on-premises netwerk. De spokes zijn VNets gekoppeld aan de hub en ze kunnen worden gebruikt om workloads te isoleren.
 
-Afhankelijk van de configuratie u on-premises resources verbinden met resources in de hub en de spaken.
+Afhankelijk van de configuratie kunt u on-premises resources verbinden met resources in de hub en de spokes.
 
-In de hierboven geïllustreerde topologie is het on-premises netwerk verbonden met een hub VNet in Azure en zijn er 2 spaakvNets in dezelfde regio die zijn peered met de hub VNet.  In dit scenario zijn de connectiviteitsopties die worden ondersteund voor Azure NetApp Files-volumes als volgt:
+In de bovenstaande topologie is het on-premises netwerk verbonden met een hub VNet in Azure en zijn er twee spoke-VNets in dezelfde regio die zijn gekoppeld aan de hub VNet.  In dit scenario zijn de connectiviteits opties die worden ondersteund voor Azure NetApp Files volumes als volgt:
 
-* On-premises bronnen VM 1 en VM 2 kunnen verbinding maken met Volume 1 in de hub via een site-to-site VPN- of ExpressRoute-circuit. 
-* On-premises bronnen VM 1 en VM 2 kunnen verbinding maken met Deel 2 of Deel 3 via een site-to-site VPN en regionale Vnet-peering.
-* VM 3 in de hub VNet kan verbinding maken met Volume 2 in spaak VNet 1 en Volume 3 in spaak VNet 2.
-* VM 4 van spaakVNet 1 en VM 5 van spaak VNet 2 kunnen verbinding maken met Volume 1 in de hub VNet.
-* VM 4 in spaak VNet 1 kan geen verbinding maken met Volume 3 in spaak VNet 2. Ook VM 5 in spaak VNet2 kan geen verbinding maken met Volume 2 in spaak VNet 1. Dit is het geval omdat de spaak VNets niet worden peered en _transit routing wordt niet ondersteund via VNet peering_.
-* In de bovenstaande architectuur als er ook een gateway in de spaak VNET zit, gaat de verbinding met het ANF-volume van on-prem verbinding via de gateway in de Hub verloren. Door het ontwerp, zou de voorkeur worden gegeven aan de gateway in de spaak VNet en dus alleen machines die verbinding maken over die gateway kan verbinding maken met de ANF volume.
+* On-premises resources VM 1 en VM 2 kunnen verbinding maken met volume 1 in de hub via een site-to-site VPN-of ExpressRoute-circuit. 
+* On-premises resources VM 1 en VM 2 kunnen verbinding maken met volume 2 of volume 3 via een site-naar-site-VPN en regionale Vnet-peering.
+* VM 3 in de hub-VNet kan verbinding maken met volume 2 in spoke VNet 1 en volume 3 in spoke VNet 2.
+* VM 4 van spoke VNet 1 en VM 5 van spoke VNet 2 kan verbinding maken met volume 1 in de hub VNet.
+* VM 4 in spoke VNet 1 kan geen verbinding maken met volume 3 in spoke VNet 2. Daarnaast kan VM 5 in spoke VNet2 geen verbinding maken met volume 2 in spoke VNet 1. Dit is het geval omdat de spoke-VNets niet worden gepeerd en _Transit routering niet wordt ondersteund via VNet-peering_.
+* Als er in de bovenstaande architectuur ook een gateway in de spoke-VNET bestaat, gaat de connectiviteit met het ANF-volume van on-premises verbinding via de gateway in de hub verloren. Op basis van het ontwerp wordt de voor keur gegeven aan de gateway in de spoke-VNet, zodat alleen computers die verbinding maken via die gateway verbinding kunnen maken met het ANF-volume.
 
 ## <a name="next-steps"></a>Volgende stappen
 

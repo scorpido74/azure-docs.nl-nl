@@ -1,6 +1,6 @@
 ---
-title: Azure-monitorlogboeken gebruiken met Azure Logic Apps en Power Automate
-description: Ontdek hoe u Azure Logic Apps en Power Automate gebruiken om herhaalbare processen snel te automatiseren met behulp van de Azure Monitor-connector.
+title: Azure Monitor-Logboeken gebruiken met Azure Logic Apps en energie automatisering
+description: Meer informatie over het gebruik van Azure Logic Apps en energie automatisering om Herhaal bare processen snel te automatiseren met behulp van de Azure Monitor-connector.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
@@ -8,65 +8,65 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480008"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor Logs-connector voor Logische apps en Stroom
-[Met Azure Logic Apps](/azure/logic-apps/) en [Power Automate](https://ms.flow.microsoft.com) u geautomatiseerde werkstromen maken met behulp van honderden acties voor verschillende services. Met de Azure Monitor Logs-connector u werkstromen maken die gegevens ophalen uit een log Analytics-werkruimte of een Application Insights-toepassing in Azure Monitor. In dit artikel worden de acties beschreven die bij de connector zijn opgenomen en wordt een walkthrough verstrekt om een werkstroom te bouwen met behulp van deze gegevens.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor logboeken connector voor Logic Apps en flow
+Met [Azure Logic apps](/azure/logic-apps/) en [energie automatisering](https://ms.flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Met de Azure Monitor logs connector kunt u werk stromen bouwen waarmee gegevens worden opgehaald uit een Log Analytics-werk ruimte of een Application Insights-toepassing in Azure Monitor. In dit artikel worden de acties beschreven die zijn opgenomen in de connector en vindt u een overzicht van het maken van een werk stroom met behulp van deze gegevens.
 
-U bijvoorbeeld een logische app maken om Azure Monitor-logboekgegevens te gebruiken in een e-mailmelding van Office 365, een bug in Azure DevOps te maken of een Slack-bericht te plaatsen.  U een werkstroom activeren via een eenvoudig schema of van een actie in een verbonden service, zoals wanneer een e-mail of een tweet wordt ontvangen. 
+U kunt bijvoorbeeld een logische app maken om Azure Monitor logboek gegevens te gebruiken in een e-mail melding van Office 365, een bug in azure DevOps te maken of een bericht over een toegestane vertraging te plaatsen.  U kunt een werk stroom activeren op basis van een eenvoudig schema of van een actie in een verbonden service, zoals wanneer een e-mail of een tweet wordt ontvangen. 
 
 ## <a name="actions"></a>Acties
-In de volgende tabel worden de acties beschreven die zijn opgenomen in de Azure Monitor Logs-connector. Met beide u een logboekquery uitvoeren op basis van een Log Analytics-werkruimte of toepassing Application Insights. Het verschil zit hem in de manier waarop de gegevens worden geretourneerd.
+In de volgende tabel worden de acties beschreven die zijn opgenomen in de Azure Monitor logs connector. Beide bieden u de mogelijkheid om een logboek query uit te voeren op een Log Analytics werk ruimte of Application Insights toepassing. Het verschil bevindt zich in de manier waarop de gegevens worden geretourneerd.
 
 > [!NOTE]
-> De Azure Monitor Logs-connector vervangt de [Azure Log Analytics-connector](https://docs.microsoft.com/connectors/azureloganalytics/) en de [Azure Application Insights-connector.](https://docs.microsoft.com/connectors/applicationinsights/) Deze connector biedt dezelfde functionaliteit als de andere en is de voorkeursmethode voor het uitvoeren van een query ten opzichte van een Log Analytics-werkruimte of een Application Insights-toepassing.
+> De Azure Monitor logs connector vervangt de [Azure log Analytics-connector](https://docs.microsoft.com/connectors/azureloganalytics/) en de [Azure-toepassing Insights-connector](https://docs.microsoft.com/connectors/applicationinsights/). Deze connector biedt dezelfde functionaliteit als de andere, en is de voorkeurs methode voor het uitvoeren van een query op een Log Analytics-werk ruimte of een Application Insights-toepassing.
 
 
-| Actie | Beschrijving |
+| Bewerking | Beschrijving |
 |:---|:---|
-| [Query- en lijstresultaten uitvoeren](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Retourneert elke rij als zijn eigen object. Gebruik deze actie wanneer u met elke rij afzonderlijk wilt werken in de rest van de werkstroom. De actie wordt meestal gevolgd door een [Voor elke activiteit](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
-| [Query- en en visualiseerresultaten uitvoeren](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Retourneert alle rijen in de resultaatset als één opgemaakt object. Gebruik deze actie wanneer u het resultaat dat is ingesteld in de rest van de werkstroom wilt gebruiken, zoals het verzenden van de resultaten in een e-mail.  |
+| [Query-en Lijst resultaten uitvoeren](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Retourneert elke rij als een eigen object. Gebruik deze actie als u met elke rij afzonderlijk in de rest van de werk stroom wilt werken. De actie wordt doorgaans gevolgd door een [voor elke activiteit](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop). |
+| [Query's uitvoeren en resultaten visualiseren](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Retourneert alle rijen in de resultatenset als een enkel opgemaakt object. Gebruik deze actie wanneer u de resultatenset samen in de rest van de werk stroom wilt gebruiken, zoals het verzenden van de resultaten in een e-mail.  |
 
 ## <a name="walkthroughs"></a>Rondleidingen
-De volgende zelfstudies illustreren het gebruik van de Azure Monitor-connectors in Azure Logic Apps. U dit zelfde voorbeeld uitvoeren met Power Automate, het enige verschil is hoe u de eerste werkstroom maakt en deze uitvoert wanneer deze is voltooid. De configuratie van de werkstroom en acties is hetzelfde tussen beide. Zie [Een stroom maken van een sjabloon in Power Automate](https://docs.microsoft.com/power-automate/get-started-logic-template) om aan de slag te gaan.
+De volgende zelf studies illustreren het gebruik van de Azure Monitor-connectors in Azure Logic Apps. U kunt dit zelfde voor beeld uitvoeren met automatische stroom verwerking, maar het enige verschil is het maken van de eerste werk stroom en het uitvoeren ervan wanneer dit is voltooid. De configuratie van de werk stroom en acties is hetzelfde voor beide. Zie [een stroom maken op basis van een sjabloon in energie automatisering](https://docs.microsoft.com/power-automate/get-started-logic-template) om aan de slag te gaan.
 
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
 
-Ga naar **Logische apps** in de Azure-portal en klik op **Toevoegen**. Selecteer een **abonnementsgroep**, **resourcegroep**en **regio** om de nieuwe logische app op te slaan en geef deze vervolgens een unieke naam. U **de** instelling Log Analytics inschakelen om informatie te verzamelen over runtime-gegevens en -gebeurtenissen zoals beschreven in [Azure Monitor-logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps.](../../logic-apps/monitor-logic-apps-log-analytics.md) Deze instelling is niet vereist voor het gebruik van de Azure Monitor Logs-connector.
+Ga naar **Logic apps** in het Azure Portal en klik op **toevoegen**. Selecteer een **abonnement**, **resource groep**en **regio** om de nieuwe logische app op te slaan en geef deze een unieke naam. U kunt **log Analytics** instelling inschakelen om informatie over runtime gegevens en-gebeurtenissen te verzamelen, zoals wordt beschreven in [Azure monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic apps](../../logic-apps/monitor-logic-apps-log-analytics.md). Deze instelling is niet vereist voor het gebruik van de Azure Monitor logs connector.
 
 ![Logische app maken](media/logicapp-flow-connector/create-logic-app.png)
 
 
-Klik **op Controleren + maken** en maak vervolgens **.** Wanneer de implementatie is voltooid, klikt u op **Ga naar resource om** de Logic Apps Designer te **openen.**
+Klik op **beoordeling + maken** en vervolgens op **maken**. Wanneer de implementatie is voltooid, klikt u op **Ga naar resource** om de **Logic apps Designer**te openen.
 
 ### <a name="create-a-trigger-for-the-logic-app"></a>Een trigger maken voor de logische app
-Selecteer **Recidief**onder **Start met een algemene trigger**. Hiermee wordt een logische app gemaakt die automatisch wordt uitgevoerd met een regelmatig interval. Selecteer **in** het vak Frequentie van de actie **Day** en voer in het vak **Interval** **1** in om de werkstroom eenmaal per dag uit te voeren.
+Selecteer onder **beginnen met een gemeen schappelijke trigger de**optie **terugkeer patroon**. Hiermee maakt u een logische app die automatisch met een regel matig interval wordt uitgevoerd. In het vak **frequentie** van de actie selecteert u **dag** en voert u in het vak **interval** **1** in om de werk stroom eenmaal per dag uit te voeren.
 
-![Herhalingsactie](media/logicapp-flow-connector/recurrence-action.png)
+![Herhalings actie](media/logicapp-flow-connector/recurrence-action.png)
 
-## <a name="walkthrough-mail-visualized-results"></a>Walkthrough: Gevisualiseerde resultaten mailen
-In de volgende zelfstudie ziet u hoe u een logische app maakt die de resultaten van een Azure Monitor-logboekquery per e-mail verzendt. 
+## <a name="walkthrough-mail-visualized-results"></a>Walkthrough: gevisualiseerde resultaten van E-mail
+In de volgende zelf studie ziet u hoe u een logische app maakt die de resultaten van een Azure Monitor logboek query per e-mail verzendt. 
 
-### <a name="add-azure-monitor-logs-action"></a>Azure Monitor-logboeken toevoegen: actie
-Klik **op + Nieuwe stap** om een actie toe te voegen die wordt uitgevoerd na de herhalingsactie. Typ **azure-monitor** onder **Een actie kiezen**en selecteer Azure Monitor **Logs**.
+### <a name="add-azure-monitor-logs-action"></a>Actie Azure Monitor logboeken toevoegen
+Klik op **+ nieuwe stap** om een actie toe te voegen die wordt uitgevoerd na de actie van het terugkeer patroon. Onder **Kies een actie**, typt u **Azure monitor** en selecteert u **Azure monitor logboeken**.
 
-![Azure Monitor-logboeken, actie](media/logicapp-flow-connector/select-azure-monitor-connector.png)
+![Actie Azure Monitor logboeken](media/logicapp-flow-connector/select-azure-monitor-connector.png)
 
-Klik op **Azure Log Analytics – Query uitvoeren en resultaten visualiseren.**
+Klik op **Azure log Analytics: Query's uitvoeren en resultaten visualiseren**.
 
-![Query uitvoeren en resultatenactiviteit visualiseren](media/logicapp-flow-connector/select-query-action-visualize.png)
+![Actie query uitvoeren en resultaten visualiseren](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
-### <a name="add-azure-monitor-logs-action"></a>Azure Monitor-logboeken toevoegen: actie
+### <a name="add-azure-monitor-logs-action"></a>Actie Azure Monitor logboeken toevoegen
 
-Selecteer de **abonnements-** en **brongroep** voor uw werkruimte Log Analytics. Selecteer *Log Analytics Workspace* voor het **resourcetype** en selecteer vervolgens de naam van de werkruimte onder **Resourcenaam**.
+Selecteer het **abonnement** en de **resource groep** voor uw log Analytics-werk ruimte. Selecteer *log Analytics werk ruimte* voor het **resource type** en selecteer vervolgens de naam van de werk ruimte onder **resource naam**.
 
-Voeg de volgende logboekquery toe aan het **venster Query.**  
+Voeg de volgende logboek query toe aan het **query** -venster.  
 
 ```Kusto
 Event
@@ -76,46 +76,46 @@ Event
 | sort by Computer asc   
 ```
 
-Selecteer *Instellen in query* voor het **tijdbereik** en de **HTML-tabel** voor het **grafiektype**.
+Selecteer *in query instellen* voor het **tijds bereik** en de **HTML-tabel** voor het **grafiek type**.
    
-![Query uitvoeren en resultatenactiviteit visualiseren](media/logicapp-flow-connector/run-query-visualize-action.png)
+![Actie query uitvoeren en resultaten visualiseren](media/logicapp-flow-connector/run-query-visualize-action.png)
 
-De e-mail wordt verzonden door het account dat is gekoppeld aan de huidige verbinding. U een ander account opgeven door op **Verbinding wijzigen**te klikken.
+Het e-mail bericht wordt verzonden door het account dat is gekoppeld aan de huidige verbinding. U kunt een ander account opgeven door te klikken op **verbinding wijzigen**.
 
-### <a name="add-email-action"></a>E-mailactie toevoegen
+### <a name="add-email-action"></a>E-mail actie toevoegen
 
-Klik **op + Nieuwe stap**en klik vervolgens op + Een actie **toevoegen**. Typ **outlook** **onder Een actie kiezen**en selecteer Office **365 Outlook**.
+Klik op **+ nieuwe stap**en vervolgens op **+ een actie toevoegen**. Onder **Kies een actie**, typt u **Outlook** en selecteert u vervolgens **Office 365 Outlook**.
 
-![Outlook-connector selecteren](media/logicapp-flow-connector/select-outlook-connector.png)
+![Outlook-Connector selecteren](media/logicapp-flow-connector/select-outlook-connector.png)
 
-Selecteer **Een e-mail verzenden (V2)**.
+Selecteer **een E-mail verzenden (v2)**.
 
-![Office 365 Outlook-selectievenster](media/logicapp-flow-connector/select-mail-action.png)
+![Office 365 Outlook-selectie venster](media/logicapp-flow-connector/select-mail-action.png)
 
-Klik ergens in het vak **Hoofdtekst** om een **dynamisch inhoudsvenster** te openen dat wordt geopend met waarden uit de vorige acties in de logische app. Selecteer **Meer weergeven** en vervolgens **Hoofdtekst,** de resultaten van de query in de actie Log Analytics.
+Klik op een wille keurige plaats in het vak **hoofd tekst** om een venster **dynamische inhoud** te openen met waarden van de vorige acties in de logische app. Selecteer **meer weer geven** en vervolgens **hoofd tekst** die de resultaten van de query in de log Analytics actie.
 
-![Hoofdtekst selecteren](media/logicapp-flow-connector/select-body.png)
+![Hoofd tekst selecteren](media/logicapp-flow-connector/select-body.png)
 
-Geef het e-mailadres van een ontvanger op in het venster **Aan** en een onderwerp voor de e-mail in **Onderwerp**. 
+Geef het e-mail adres van een ontvanger op in het venster **aan** en een onderwerp voor het e-mail bericht in het **onderwerp**. 
 
-![E-mailactie](media/logicapp-flow-connector/mail-action.png)
+![E-mail actie](media/logicapp-flow-connector/mail-action.png)
 
 
 ### <a name="save-and-test-your-logic-app"></a>Uw logische app opslaan en testen
-Klik **op Opslaan** en voer **deze** uit om een testrun van de logische app uit te voeren.
+Klik op **Opslaan** en **Voer vervolgens uit** om een test uitvoering van de logische app uit te voeren.
 
 ![Opslaan en uitvoeren](media/logicapp-flow-connector/save-run.png)
 
 
-Wanneer de logische app is voltooid, controleert u de e-mail van de opgegeven ontvanger.  U had een e-mail moeten ontvangen met een lichaam dat vergelijkbaar is met het volgende:
+Wanneer de logische app is voltooid, controleert u het e-mail adres van de ontvanger die u hebt opgegeven.  U moet een e-mail bericht hebben ontvangen met een hoofd tekst die er ongeveer als volgt uitziet:
 
-![Voorbeeld e-mail](media/logicapp-flow-connector/sample-mail.png)
+![Voor beeld-e-mail](media/logicapp-flow-connector/sample-mail.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [logboekquery's in Azure Monitor](../log-query/log-query-overview.md).
-- Meer informatie over [Logische Apps](/azure/logic-apps/)
-- Meer informatie over [Microsoft Flow](https://ms.flow.microsoft.com).
+- Meer informatie over [logboek query's vindt u in azure monitor](../log-query/log-query-overview.md).
+- Meer informatie over [Logic apps](/azure/logic-apps/)
+- Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).
 

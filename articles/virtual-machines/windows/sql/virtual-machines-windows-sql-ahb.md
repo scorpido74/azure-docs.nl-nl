@@ -1,6 +1,6 @@
 ---
-title: Het licentiemodel voor een SQL Server VM in Azure wijzigen
-description: Lees hoe u licenties voor een virtuele SQL Server-machine in Azure overschakelen van pay-as-you-go naar bring-your-own-license met behulp van het Azure Hybrid Benefit.
+title: Het licentie model voor een SQL Server virtuele machine in azure wijzigen
+description: Meer informatie over het scha kelen tussen licenties voor een SQL Server virtuele machine in azure van betalen per gebruik naar uw eigen licentie met behulp van de Azure Hybrid Benefit.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,64 +15,64 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201816"
 ---
-# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Het licentiemodel voor een virtuele SQL Server-machine in Azure wijzigen
-In dit artikel wordt beschreven hoe u het licentiemodel voor een VIRTUELE SQL Server -virtuele machine (VM) in Azure wijzigen met behulp van de nieuwe SQL VM-bronprovider **Microsoft.SqlVirtualMachine**.
+# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Het licentie model voor een SQL Server virtuele machine in azure wijzigen
+In dit artikel wordt beschreven hoe u het licentie model voor een SQL Server virtuele machine (VM) in azure wijzigt met behulp van de nieuwe SQL VM-resource provider **micro soft. SqlVirtualMachine**.
 
-Er zijn drie licentiemodellen voor een VM die SQL Server host: pay-as-you-go, Azure Hybrid Benefit en disaster recovery (DR). U het licentiemodel van uw SQL Server VM wijzigen met behulp van de Azure-portal, de Azure CLI of PowerShell. 
+Er zijn drie licentie modellen voor een virtuele machine die als host fungeert voor SQL Server: betalen per gebruik, Azure Hybrid Benefit en nood herstel (DR). U kunt het licentie model van uw SQL Server-VM wijzigen met behulp van de Azure Portal, de Azure CLI of Power shell. 
 
-- Het **pay-as-you-go-model** betekent dat de kosten per seconde voor het uitvoeren van de Azure VM de kosten van de SQL Server-licentie omvatten.
-- [Met Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) u uw eigen SQL Server-licentie gebruiken met een VM waarop SQL Server wordt uitgevoerd. 
-- Het type **disaster recovery-licentie** wordt gebruikt voor de [gratis DR-replica](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) in Azure. 
+- Het **betalen naar gebruik** -model betekent dat de kosten per seconde van het uitvoeren van de Azure-VM de kosten van de SQL Server licentie bevatten.
+- Met [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) kunt u uw eigen SQL Server licentie gebruiken met een VM waarop SQL Server wordt uitgevoerd. 
+- Het licentie type voor **herstel na nood gevallen** wordt gebruikt voor de [gratis Dr-replica](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) in Azure. 
 
-Azure Hybrid Benefit maakt het gebruik van SQL Server-licenties met Software Assurance ('Gekwalificeerde licentie') op virtuele Azure-machines mogelijk. Met Azure Hybrid Benefit worden klanten niet in rekening gebracht voor het gebruik van een SQL Server-licentie op een VM. Maar ze moeten nog steeds betalen voor de kosten van de onderliggende cloud compute (dat wil zeggen, de basissnelheid), opslag en back-ups. Zij moeten ook betalen voor I/O in verband met hun gebruik van de diensten (indien van toepassing).
+Azure Hybrid Benefit staat het gebruik toe van SQL Server licenties met Software Assurance (' gekwalificeerde licentie ') op virtuele machines van Azure. Met Azure Hybrid Benefit worden klanten niet in rekening gebracht voor het gebruik van een SQL Server licentie op een virtuele machine. Ze moeten echter wel betalen voor de kosten van de onderliggende Cloud Compute (dat wil zeggen, het basis tarief), opslag en back-ups. Ze moeten ook betalen voor I/O die is gekoppeld aan het gebruik van de Services (indien van toepassing).
 
-Volgens de Microsoft-productvoorwaarden: "Klanten moeten aangeven dat ze Azure SQL Database (Managed Instance, Elastic Pool en Single Database), Azure Data Factory, SQL Server Integration Services of SQL Server Virtual Machines onder Azure Hybride voordeel voor SQL Server bij het configureren van workloads op Azure."
+Volgens de micro soft-product termen: ' klanten moeten aangeven dat ze Azure SQL Database (beheerde instantie, Elastische pool en Individuele database), Azure Data Factory, SQL Server Integration Services of SQL Server virtual machines onder Azure Hybrid Benefit voor SQL Server worden gebruikt bij het configureren van werk belastingen op Azure. "
 
-Als u het gebruik van Azure Hybrid Benefit voor SQL Server op een Azure VM wilt aangeven en compatibel wilt zijn, hebt u drie opties:
+Om het gebruik van Azure Hybrid Benefit voor SQL Server op een virtuele Azure-machine aan te geven en compatibel te zijn, hebt u drie opties:
 
-- Inrichten van een virtuele machine met behulp van een SQL Server-afbeelding met uw eigen licentie van Azure Marketplace. Deze optie is alleen beschikbaar voor klanten die een Enterprise Agreement hebben.
-- Inrichten van een virtuele machine met behulp van een pay-as-you-go SQL Server-afbeelding van Azure Marketplace en activeer het Azure Hybrid Benefit.
-- Installeer SQL Server zelf op een Azure VM, registreer u handmatig [bij de SQL VM-bronprovider](virtual-machines-windows-sql-register-with-resource-provider.md)en activeer Azure Hybrid Benefit.
+- Richt een virtuele machine in met behulp van een SQL Server installatie kopie van uw eigen licentie vanuit Azure Marketplace. Deze optie is alleen beschikbaar voor klanten die een Enterprise Agreement hebben.
+- Richt een virtuele machine in met behulp van een betalen naar gebruik-SQL Server installatie kopie van Azure Marketplace en activeer de Azure Hybrid Benefit.
+- Installeer SQL Server zelf op een virtuele Azure-machine, [Registreer hand matig bij de resource provider van de SQL-VM](virtual-machines-windows-sql-register-with-resource-provider.md)en activeer Azure Hybrid Benefit.
 
-Het licentietype SQL Server wordt ingesteld wanneer de VM is ingericht. U het op elk gewenst moment daarna wijzigen. Het schakelen tussen licentiemodellen leidt niet tot downtime, start de VM of de SQL Server-service niet opnieuw op, voegt geen extra kosten toe en is onmiddellijk van kracht. Het activeren van Azure Hybrid Benefit *verlaagt de* kosten.
+Het licentie type van SQL Server wordt ingesteld wanneer de virtuele machine wordt ingericht. U kunt deze later op elk gewenst moment wijzigen. Als u overschakelt tussen licentie modellen, wordt geen downtime gestart, wordt de VM of de SQL Server-service niet opnieuw opgestart, worden er geen extra kosten in rekening gebracht en direct van kracht. Het activeren van Azure Hybrid Benefit *verlaagt* de kosten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het licentiemodel van uw SQL Server VM wijzigt, gelden de volgende vereisten: 
+Het wijzigen van het licentie model van uw SQL Server virtuele machine heeft de volgende vereisten: 
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
-- Een [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) die is geregistreerd bij de SQL [VM-resourceprovider](virtual-machines-windows-sql-register-with-resource-provider.md).
-- [Software assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) is een vereiste om het [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)te gebruiken. 
+- Een [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) die is geregistreerd bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)van de SQL-VM.
+- [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) is een vereiste voor het gebruik van de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
 
-## <a name="vms-already-registered-with-the-resource-provider"></a>VM's die al zijn geregistreerd bij de resourceprovider 
+## <a name="vms-already-registered-with-the-resource-provider"></a>Vm's die al zijn geregistreerd bij de resource provider 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-U het licentiemodel rechtstreeks vanuit de portal wijzigen: 
+U kunt het licentie model rechtstreeks vanuit de portal wijzigen: 
 
-1. Open de [Azure-portal](https://portal.azure.com) en open de [SQL virtual machines-bron](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) voor uw SQL Server VM. 
-1. Selecteer **Configureren** onder **Instellingen**. 
-1. Schakel de optie **Azure Hybrid Benefit in** en schakel het selectievakje in om te bevestigen dat u een SQL Server-licentie hebt met Software Assurance. 
-1. Selecteer **Toepassen** onder aan de pagina **Configureren.** 
+1. Open de [Azure Portal](https://portal.azure.com) en open de [resource van de virtuele SQL-machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) voor uw SQL Server VM. 
+1. Selecteer **configureren** onder **instellingen**. 
+1. Selecteer de optie **Azure Hybrid Benefit** en schakel het selectie vakje in om te bevestigen dat u een SQL Server licentie hebt met Software Assurance. 
+1. Selecteer **Toep assen** onder aan de pagina **configureren** . 
 
 ![Azure Hybrid Benefit in de portal](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
 
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-U de Azure CLI gebruiken om uw licentiemodel te wijzigen.  
+U kunt de Azure CLI gebruiken om uw licentie model te wijzigen.  
 
 
-**Azure hybride voordeel**
+**Azure Hybrid-voor deel**
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
@@ -81,7 +81,7 @@ U de Azure CLI gebruiken om uw licentiemodel te wijzigen.
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**Betaal naar eigen zeggen:** 
+**Betalen**naar gebruik: 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -99,9 +99,9 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type DR
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 
-U PowerShell gebruiken om uw licentiemodel te wijzigen.
+U kunt Power shell gebruiken om uw licentie model te wijzigen.
 
 **Azure Hybrid Benefit**
 
@@ -117,7 +117,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
-**Noodherstel** 
+**Herstel na nood geval** 
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -126,55 +126,55 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 ---
 
-## <a name="vms-not-registered-with-the-resource-provider"></a>VM's die niet zijn geregistreerd bij de resourceprovider
+## <a name="vms-not-registered-with-the-resource-provider"></a>Vm's die niet zijn geregistreerd bij de resource provider
 
-Als u een SQL Server VM hebt ingericht op basis van pay-as-you-go Azure Marketplace-afbeeldingen, is het SQL Server-licentietype betalen per gebruik. Als u een SQL Server VM hebt ingericht met behulp van een bring-your-own-license-afbeelding van Azure Marketplace, is het licentietype AHUB. Alle SQL Server VM's die zijn ingericht vanaf standaard (pay-as-you-go) of Azure Marketplace-afbeeldingen met bring-your-own-license worden automatisch geregistreerd bij de SQL VM-resourceprovider, zodat ze het [licentietype](#vms-already-registered-with-the-resource-provider)kunnen wijzigen.
+Als u een SQL Server VM hebt ingericht op basis van betalen per gebruik, Azure Marketplace-installatie kopieën, wordt het SQL Server licentie type betalen naar gebruik. Als u een SQL Server-VM hebt ingericht met behulp van een kopie van uw eigen licentie via Azure Marketplace, wordt het licentie type AHUB. Alle SQL Server Vm's die zijn ingericht op basis van standaard (betalen per gebruik) of uw eigen licentie Azure Marketplace-installatie kopieën worden automatisch geregistreerd bij de resource provider van de SQL-VM, zodat ze het [licentie type](#vms-already-registered-with-the-resource-provider)kunnen wijzigen.
 
-U komt alleen in aanmerking voor zelfinstallatie van SQL Server op een Azure VM via Azure Hybrid Benefit. U moet [deze VM's registreren bij de SQL VM-resourceprovider](virtual-machines-windows-sql-register-with-resource-provider.md) door de SQL Server-licentie in te stellen als Azure Hybrid Benefit om het Azure Hybrid Benefit-gebruik aan te geven volgens microsoft-productvoorwaarden.
+U kunt SQL Server zelf installeren op een virtuele Azure-machine via Azure Hybrid Benefit. U moet [deze vm's registreren bij de resource provider](virtual-machines-windows-sql-register-with-resource-provider.md) van de SQL-VM door de SQL Server-licentie in te stellen als Azure Hybrid Benefit, om aan te geven dat het Azure Hybrid Benefit gebruik is gebaseerd op de product voorwaarden van micro soft.
 
-U het licentietype van een SQL Server VM alleen wijzigen als pay-as-you-go- of Azure Hybrid Benefit als de SQL Server VM is geregistreerd bij de SQL VM-resourceprovider.
+U kunt het licentie type van een SQL Server-VM wijzigen als betalen naar gebruik of alleen Azure Hybrid Benefit als de SQL Server VM is geregistreerd bij de resource provider van de SQL-VM.
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Klanten van Azure Cloud Solution Provider (CSP) kunnen het Azure Hybrid Benefit gebruiken door eerst een pay-as-you-go-VM te implementeren en deze vervolgens om te zetten naar bring-your-own-license, als ze actieve Software Assurance hebben.
-- Als u uw SQL Server VM-bron laat vallen, gaat u terug naar de hard-coded licentie-instelling van de afbeelding. 
-- De mogelijkheid om het licentiemodel te wijzigen is een functie van de SQL VM-resourceprovider. Als u een Azure Marketplace-afbeelding implementeert via de Azure-portal, wordt automatisch een SQL Server VM bij de resourceprovider geregistreerd. Maar klanten die SQL Server zelf installeren, moeten hun SQL Server VM handmatig [registreren.](virtual-machines-windows-sql-register-with-resource-provider.md) 
-- Als u een SQL Server VM toevoegt aan een beschikbaarheidsset, moet de VM opnieuw worden gemaakt. Als zodanig gaan alle VM's die aan een beschikbaarheidsset zijn toegevoegd, terug naar het standaard licentietype voor betalen per gebruik. Azure Hybrid Benefit moet opnieuw worden ingeschakeld. 
+- Azure Cloud Solution Provider-klanten (CSP) kunnen de Azure Hybrid Benefit gebruiken door eerst een ' betalen per gebruik-VM ' te implementeren en deze vervolgens te converteren naar uw eigen licentie, als ze actieve Software Assurance hebben.
+- Als u uw SQL Server VM-resource weghaalt, gaat u terug naar de hardcoded licentie-instelling van de installatie kopie. 
+- De mogelijkheid om het licentie model te wijzigen, is een functie van de resource provider van de SQL-VM. Als u een installatie kopie van Azure Marketplace implementeert via de Azure Portal, wordt automatisch een SQL Server VM geregistreerd bij de resource provider. Klanten die zelf een SQL Server installeren, moeten [hun SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md)hand matig registreren. 
+- Voor het toevoegen van een SQL Server-VM aan een beschikbaarheidsset moet de virtuele machine opnieuw worden gemaakt. Als zodanig worden Vm's die aan een beschikbaarheidsset zijn toegevoegd, teruggestuurd naar het standaard licentie type voor betalen naar gebruik. Azure Hybrid Benefit moet opnieuw worden ingeschakeld. 
 
 
 ## <a name="limitations"></a>Beperkingen
 
-Het licentiemodel wijzigen is:
-   - Alleen beschikbaar voor klanten met [Software Assurance.](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview)
-   - Alleen ondersteund voor de Standard- en Enterprise-edities van SQL Server. Licentiewijzigingen voor Express, Web en Ontwikkelaar worden niet ondersteund. 
-   - Alleen ondersteund voor virtuele machines die worden geïmplementeerd via het Azure Resource Manager-model. Virtuele machines die via het klassieke model worden geïmplementeerd, worden niet ondersteund. 
-   - Alleen beschikbaar voor openbare of Azure Government-clouds. 
-   - Alleen ondersteund op virtuele machines met één netwerkinterface (NIC). 
+Het wijzigen van het licentie model is:
+   - Alleen beschikbaar voor klanten met [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview).
+   - Alleen ondersteund voor de Standard-en Enter prise-edities van SQL Server. Licentie wijzigingen voor Express, Web en Developer worden niet ondersteund. 
+   - Alleen ondersteund voor virtuele machines die zijn geïmplementeerd via het Azure Resource Manager model. Virtuele machines die via het klassieke model zijn geïmplementeerd, worden niet ondersteund. 
+   - Alleen beschikbaar voor de open bare of Azure Government Clouds. 
+   - Alleen ondersteund op virtuele machines met één netwerk interface (NIC). 
 
 
 ## <a name="known-errors"></a>Bekende fouten
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De Bron 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>'\<onder resource group ' resource-group>' is niet gevonden.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>De resource ' micro soft. SqlVirtualMachine/SqlVirtualMachines\</Resource-Group> ' onder resource groep\<' Resource-Group> ' is niet gevonden.
 
-Deze fout treedt op wanneer u het licentiemodel op een SQL Server VM probeert te wijzigen die niet is geregistreerd bij de SQL VM-bronprovider:
+Deze fout treedt op wanneer u probeert het licentie model op een SQL Server virtuele machine te wijzigen die niet is geregistreerd bij de resource provider van de SQL-VM:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-U moet uw abonnement registreren bij de resourceprovider en [vervolgens uw SQL Server VM registreren bij de resourceprovider.](virtual-machines-windows-sql-register-with-resource-provider.md) 
+U moet uw abonnement registreren bij de resource provider en vervolgens [uw SQL Server-VM registreren bij de resource provider](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>De virtuele\<machine\>' vmname ' heeft meer dan een NIC geassocieerd
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Aan de virtuele machine\<vmname\>zijn meer dan één NIC gekoppeld
 
-Deze fout treedt op bij virtuele machines met meer dan één NIC. Verwijder een van de NIC's voordat u het licentiemodel wijzigt. Hoewel u de NIC terug toevoegen aan de VM nadat u het licentiemodel hebt gewijzigd, worden bewerkingen in de Azure-portal, zoals automatische back-up en patchen, niet langer ondersteund. 
+Deze fout doet zich voor op virtuele machines met meer dan één NIC. Verwijder een van de Nic's voordat u het licentie model wijzigt. Hoewel u de NIC opnieuw kunt toevoegen aan de VM nadat u het licentie model hebt gewijzigd, worden de bewerkingen in de Azure Portal, zoals automatische back-up en patching, niet meer ondersteund. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg voor meer informatie de volgende artikelen: 
 
-* [Overzicht van SQL Server op een Windows VM](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Veelgestelde vragen over SQL Server op een Windows-vm](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Richtlijnen voor prijzen voor SQL Server op een Windows-vm](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Notities voor SQL Server vrijgeven op een Windows-vm](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Overzicht van SQL Server op een Windows-VM](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Veelgestelde vragen over SQL Server op een Windows-VM](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Prijs informatie voor SQL Server op een Windows-VM](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Release opmerkingen voor SQL Server op een Windows-VM](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

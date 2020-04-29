@@ -1,6 +1,6 @@
 ---
-title: ExpressRoute gebruiken met Azure Site Recovery
-description: Beschrijft hoe u Azure ExpressRoute gebruiken met de Azure Site Recovery-service voor herstel en migratie na noodgevallen.
+title: Over het gebruik van ExpressRoute met Azure Site Recovery
+description: Hierin wordt beschreven hoe u Azure ExpressRoute gebruikt met de Azure Site Recovery-service voor herstel na nood gevallen en migratie.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,57 +9,57 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258003"
 ---
-# <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute met Azure-siteherstel
+# <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute met Azure Site Recovery
 
 Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365.
 
-In dit artikel wordt beschreven hoe u Azure ExpressRoute gebruiken met Azure Site Recovery voor herstel en migratie na noodgevallen.
+In dit artikel wordt beschreven hoe u Azure ExpressRoute kunt gebruiken met Azure Site Recovery voor herstel na nood gevallen en migratie.
 
 ## <a name="expressroute-circuits"></a>ExpressRoute-circuits
 
-Een ExpressRoute-circuit vormt een logische verbinding tussen uw on-premises infrastructuur en Microsoft-cloudservices via een connectiviteitsprovider. U meerdere ExpressRoute-circuits bestellen. Elk circuit kan zich in dezelfde of verschillende regio's bevinden en kan via verschillende connectiviteitsproviders met uw locatie worden verbonden. Lees [hier](../expressroute/expressroute-circuit-peerings.md)meer over ExpressRoute-circuits.
+Een ExpressRoute-circuit vertegenwoordigt een logische verbinding tussen uw on-premises infra structuur en micro soft-Cloud Services via een connectiviteits provider. U kunt meerdere ExpressRoute-circuits best Ellen. Elk circuit kan zich in dezelfde of verschillende regio's bevindt en kan worden aangesloten op uw locatie via verschillende connectiviteits providers. Meer informatie over ExpressRoute-circuits [vindt u hier](../expressroute/expressroute-circuit-peerings.md).
 
-Aan een ExpressRoute-circuit zijn meerdere routeringsdomeinen gekoppeld. Lees [hier](../expressroute/expressroute-circuit-peerings.md#peeringcompare)meer over en vergelijk Routeringsdomeinen van ExpressRoute.
+Er zijn meerdere routerings domeinen gekoppeld aan een ExpressRoute-circuit. Meer informatie over en vergelijkt u ExpressRoute-routerings [domeinen.](../expressroute/expressroute-circuit-peerings.md#peeringcompare)
 
-## <a name="on-premises-to-azure-replication-with-expressroute"></a>On-premises naar Azure-replicatie met ExpressRoute
+## <a name="on-premises-to-azure-replication-with-expressroute"></a>Replicatie van on-premises naar Azure met ExpressRoute
 
-Azure Site Recovery maakt disaster recovery en migratie naar Azure mogelijk voor on-premises [Virtuele Hyper-V-machines,](hyper-v-azure-architecture.md) [Virtuele VMware-machines](vmware-azure-architecture.md)en [fysieke servers](physical-azure-architecture.md). Voor alle on-premises naar Azure-scenario's worden replicatiegegevens verzonden naar en opgeslagen in een Azure Storage-account. Tijdens de replicatie betaalt u geen kosten voor virtuele machines. Wanneer u een failover uitvoert naar Azure, maakt Site Recovery automatisch azure IaaS-virtuele machines.
+Azure Site Recovery herstel na nood gevallen en migratie naar Azure mogelijk maken voor on-premises [virtuele Hyper-V-machines](hyper-v-azure-architecture.md), [virtuele VMware-machines](vmware-azure-architecture.md)en [fysieke servers](physical-azure-architecture.md). Voor alle on-premises naar Azure-scenario's worden er replicatie gegevens verzonden naar en opgeslagen in een Azure Storage-account. Tijdens de replicatie betaalt u geen kosten voor de virtuele machine. Wanneer u een failover naar Azure uitvoert, maakt Site Recovery automatisch virtuele Azure IaaS-machines.
 
-Siteherstel repliceert gegevens naar een Azure Storage-account of replica Beheerde schijf op het doelAzure-gebied via een openbaar eindpunt. Als u ExpressRoute wilt gebruiken voor replicatieverkeer voor siteherstel, u [Microsoft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) of een bestaande [openbare peering](../expressroute/about-public-peering.md) gebruiken (afgeschaft voor nieuwe creaties). Microsoft-peering is het aanbevolen routeringsdomein voor replicatie. Houd er rekening mee dat replicatie niet wordt ondersteund via privé-peering.
+Site Recovery repliceert gegevens naar een Azure Storage account of een door de replica beheerde schijf in de Azure-doel regio via een openbaar eind punt. Als u ExpressRoute wilt gebruiken voor Site Recovery replicatie verkeer, kunt u gebruikmaken van [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) of een bestaande [open bare peering](../expressroute/about-public-peering.md) (afgeschaft voor nieuwe creatie). Micro soft-peering is het aanbevolen routerings domein voor replicatie. Houd er rekening mee dat replicatie niet wordt ondersteund via persoonlijke peering.
 
-Controleer of ook aan de [netwerkvereisten](vmware-azure-configuration-server-requirements.md#network-requirements) voor configuratieserver is voldaan. Connectiviteit met specifieke URL's is vereist door Configuration Server voor orkestratie van siteherstelreplicatie. ExpressRoute kan niet worden gebruikt voor deze connectiviteit. 
+Zorg er ook voor dat aan de [netwerk vereisten](vmware-azure-configuration-server-requirements.md#network-requirements) voor de configuratie server wordt voldaan. De configuratie server voor de indeling van Site Recovery replicatie vereist dat er verbinding wordt met specifieke Url's. ExpressRoute kan niet worden gebruikt voor deze verbinding. 
 
-Als u proxy on-premises gebruikt en ExpressRoute wilt gebruiken voor replicatieverkeer, moet u de proxybypasslijst configureren op de configuratieserver en processervers. Volg de onderstaande stappen:
+Als u on-premises proxy gebruikt en ExpressRoute voor replicatie verkeer wilt gebruiken, moet u de lijst met ongebruikte proxy configureren op de configuratie server en de proces servers. Volg de onderstaande stappen:
 
-- Download PsExec tool vanaf [hier](https://aka.ms/PsExec) om toegang te krijgen tot de gebruikerscontext van het systeem.
-- Open Internet Explorer in de context van systeemgebruikers door de volgende opdrachtregel psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" uit te voeren
-- Proxy-instellingen toevoegen in IE
-- Voeg in de bypasslijst de URL van Azure-opslag *.blob.core.windows.net
+- Down load het PsExec-hulp programma van [hier](https://aka.ms/PsExec) om toegang te krijgen tot systeem gebruikers context.
+- Open Internet Explorer in de context van het systeem gebruikers door de volgende opdracht regel PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" uit te voeren.
+- Proxy-instellingen in Internet Explorer toevoegen
+- Voeg in de lijst overs Laan de Azure Storage-URL *. blob.core.windows.net
 
-Dit zorgt ervoor dat alleen replicatieverkeer via ExpressRoute verloopt terwijl de communicatie via proxy kan verlopen.
+Dit zorgt ervoor dat alleen replicatie verkeer via ExpressRoute loopt terwijl de communicatie via de proxy kan passeren.
 
-Nadat virtuele machines of servers niet zijn overgegaan naar een virtueel Azure-netwerk, u ze openen met behulp van [private peering.](../expressroute/expressroute-circuit-peerings.md#privatepeering) 
+Nadat de failover van virtuele machines of servers naar een virtueel Azure-netwerk is uitgevoerd, kunt u deze openen met behulp van [privé-peering](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Het gecombineerde scenario wordt weergegeven in ![het volgende diagram: On-premises-to-Azure met ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Het gecombineerde scenario wordt in het volgende diagram weer gegeven ![: on-premises-naar-Azure met ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
-## <a name="azure-to-azure-replication-with-expressroute"></a>Azure-replicatie naar Azure met ExpressRoute
+## <a name="azure-to-azure-replication-with-expressroute"></a>Replicatie van Azure naar Azure met ExpressRoute
 
-Azure Site Recovery maakt disaster recovery van [Azure virtuele machines](azure-to-azure-architecture.md)mogelijk. Afhankelijk van of uw Azure virtuele machines [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md)gebruiken, worden replicatiegegevens verzonden naar een Azure Storage-account of replica Managed Disk in het doelAzure-gebied. Hoewel de replicatieeindpunten openbaar zijn, wordt het replicatieverkeer voor Azure VM-replicatie standaard niet door het internet doorkruist, ongeacht in welk Azure-gebied het virtuele bronnetwerk bestaat. U de standaardsysteemroute van Azure voor het voorvoegsel 0.0.0.0/0 overschrijven met een [aangepaste route](../virtual-network/virtual-networks-udr-overview.md#custom-routes) en VM-verkeer omleiden naar een on-premises virtuele netwerk -toestel (NVA), maar deze configuratie wordt niet aanbevolen voor siteherstelreplicatie. Als u aangepaste routes gebruikt, moet u [een eindpunt voor virtuele netwerkservice maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in uw virtuele netwerk voor 'Opslag' zodat het replicatieverkeer de Azure-grens niet verlaat.
+Azure Site Recovery kunnen nood herstel van [virtuele machines van Azure](azure-to-azure-architecture.md)worden hersteld. Afhankelijk van of uw virtuele Azure-machines [azure Managed disks](../virtual-machines/windows/managed-disks-overview.md)gebruiken, worden de replicatie gegevens verzonden naar een Azure Storage account of een door de replica beheerde schijf in de Azure-doel regio. Hoewel de replicatie-eind punten openbaar zijn, wordt het replicatie verkeer voor Azure VM-replicatie standaard niet door lopen via internet, ongeacht de Azure-regio waarin het virtuele bron netwerk zich bevindt. U kunt de standaard systeem route van Azure voor het adres voorvoegsel 0.0.0.0/0 vervangen door een aangepaste route en VM-verkeer [omleiden](../virtual-network/virtual-networks-udr-overview.md#custom-routes) naar een on-premises netwerk virtueel apparaat (NVA), maar deze configuratie wordt niet aanbevolen voor replicatie van site Recovery. Als u aangepaste routes gebruikt, moet u [een service-eind punt voor een virtueel netwerk maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in het virtuele netwerk voor "opslag" zodat het replicatie verkeer de Azure-grens niet verlaat.
 
-Voor Azure VM-noodherstel is ExpressRoute standaard niet vereist voor replicatie. Nadat virtuele machines niet zijn overgelaten aan de doelregio Azure, hebt u er toegang toe met behulp van [private peering.](../expressroute/expressroute-circuit-peerings.md#privatepeering) Houd er rekening mee dat de prijzen voor gegevensoverdracht van toepassing zijn, ongeacht de wijze van gegevensreplicatie in Azure-regio's.
+Voor Azure VM-nood herstel is ExpressRoute standaard niet vereist voor replicatie. Nadat de failover van virtuele machines naar de Azure-doel regio is uitgevoerd, kunt u deze openen met behulp van [privé-peering](../expressroute/expressroute-circuit-peerings.md#privatepeering). Houd er rekening mee dat tarieven voor gegevens overdracht van toepassing zijn onafhankelijk van de modus voor gegevens replicatie tussen Azure-regio's.
 
-Als u ExpressRoute al gebruikt om verbinding te maken vanuit uw on-premises datacenter met de Azure VM's in het brongebied, u de ExpressRoute-connectiviteit herstellen in de failoverdoelregio. U hetzelfde ExpressRoute-circuit gebruiken om verbinding te maken met het doelgebied via een nieuwe virtuele netwerkverbinding of een apart ExpressRoute-circuit en -verbinding te gebruiken voor noodherstel. De verschillende mogelijke scenario's worden [hier](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)beschreven.
+Als u al gebruikmaakt van ExpressRoute om verbinding te maken vanaf uw on-premises Data Center met de Azure-Vm's in de bron regio, kunt u een planning maken voor het opnieuw instellen van de ExpressRoute-connectiviteit in de doel regio van de failover. U kunt hetzelfde ExpressRoute-circuit gebruiken om via een nieuwe virtuele netwerk verbinding verbinding te maken met de doel regio, of gebruik een afzonderlijk ExpressRoute-circuit en verbinding voor nood herstel. De verschillende mogelijke scenario's worden [hier](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)beschreven.
 
-U virtuele Azure-machines repliceren naar elke Azure-regio binnen hetzelfde geografische cluster als [hier](../site-recovery/azure-to-azure-support-matrix.md#region-support)wordt beschreven. Als de gekozen doelazure-regio zich niet binnen dezelfde geopolitieke regio bevindt als de bron, moet u mogelijk ExpressRoute Premium inschakelen. Kijk voor meer informatie op [ExpressRoute-locaties](../expressroute/expressroute-locations.md) en [ExpressRoute-prijzen.](https://azure.microsoft.com/pricing/details/expressroute/)
+U kunt virtuele Azure-machines repliceren naar elke Azure-regio binnen hetzelfde geografische cluster, zoals [hier](../site-recovery/azure-to-azure-support-matrix.md#region-support)wordt beschreven. Als de gekozen Azure-doel regio zich niet in dezelfde geopolitieke regio als de bron bevindt, moet u mogelijk ExpressRoute Premium inschakelen. Raadpleeg [ExpressRoute-locaties](../expressroute/expressroute-locations.md) en [ExpressRoute-prijzen](https://azure.microsoft.com/pricing/details/expressroute/)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [ExpressRoute-circuits](../expressroute/expressroute-circuit-peerings.md).
-- Meer informatie over [routeringsdomeinen van ExpressRoute](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+- Meer informatie over [ExpressRoute-routerings domeinen](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 - Meer informatie over [ExpressRoute-locaties](../expressroute/expressroute-locations.md).
-- Meer informatie over noodherstel van [Azure virtuele machines met ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).
+- Meer informatie over herstel na nood gevallen van [virtuele Azure-machines met ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

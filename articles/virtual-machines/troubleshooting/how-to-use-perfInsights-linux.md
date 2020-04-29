@@ -1,6 +1,6 @@
 ---
-title: PerfInsights Linux gebruiken in Microsoft Azure| Microsoft Documenten
-description: Leert hoe u PerfInsights gebruiken om problemen met de prestaties van Linux VM op te lossen.
+title: PerfInsights Linux gebruiken in Microsoft Azure | Microsoft Docs
+description: Meer informatie over hoe u PerfInsights kunt gebruiken om problemen met de prestaties van Linux-VM'S op te lossen.
 services: virtual-machines-linux'
 documentationcenter: ''
 author: anandhms
@@ -14,85 +14,85 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266986"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
-[PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload) is een zelfhulpdiagnosetool die de diagnostische gegevens verzamelt en analyseert en een rapport biedt om problemen met de prestaties van Linux-virtuele machines in Azure op te lossen. PerfInsights kan worden uitgevoerd op ondersteunde virtuele machines als een zelfstandig hulpmiddel, of rechtstreeks vanuit de portal met behulp van [Performance Diagnostics voor Azure virtuele machines.](performance-diagnostics.md)
+[PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload) is een hulp programma voor zelf ondersteuning waarmee de diagnostische gegevens worden verzameld en geanalyseerd, en biedt een rapport voor het oplossen van problemen met de prestaties van virtuele Linux-machines in Azure. PerfInsights kan worden uitgevoerd op ondersteunde virtuele machines als een zelfstandig hulp programma of rechtstreeks vanuit de portal door gebruik te maken van [prestatie diagnostiek voor virtuele Azure-machines](performance-diagnostics.md).
 
-Als u prestatieproblemen ondervindt met virtuele machines, voert u dit hulpprogramma uit voordat u contact opneemt met de ondersteuning.
+Als u prestatie problemen ondervindt met virtuele machines, moet u dit hulp programma uitvoeren voordat u contact opneemt met de ondersteuning.
 
-## <a name="supported-troubleshooting-scenarios"></a>Ondersteunde scenario's voor het oplossen van problemen
+## <a name="supported-troubleshooting-scenarios"></a>Ondersteunde scenario's voor probleem oplossing
 
-PerfInsights kan verschillende soorten informatie verzamelen en analyseren. De volgende secties hebben betrekking op veelvoorkomende scenario's.
+PerfInsights kunnen diverse soorten informatie verzamelen en analyseren. In de volgende secties worden algemene scenario's besproken.
 
-### <a name="quick-performance-analysis"></a>Snelle prestatieanalyse
+### <a name="quick-performance-analysis"></a>Analyse van snelle prestaties
 
-Dit scenario verzamelt basisinformatie zoals opslag en hardwareconfiguratie van uw virtuele machine, verschillende logboeken, waaronder:
+In dit scenario worden basis gegevens verzameld, zoals opslag en hardwareconfiguratie van uw virtuele machine, verschillende logboeken, waaronder:
 
-- Informatie over het besturingssysteem
+- Informatie over het besturings systeem
 
-- INFORMATIE over PCI-apparaten
+- Informatie over PCI-apparaat
 
-- Algemene logboeken van gastbesturingssysteem
+- Algemene gast besturingssysteem logboeken
 
-- Configuratiebestanden
+- Configuratie bestanden
 
-- Opslaggegevens
+- Opslag gegevens
 
-- Azure Virtual Machine Configuration (verzameld met [Azure Instance Metadata Service)](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- Configuratie van virtuele Azure-machine (verzameld met [azure instance metadata service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service))
 
-- Lijst met lopende processen, schijf-, geheugen- en CPU-gebruik
+- Lijst met actieve processen, schijf, geheugen en CPU-gebruik
 
-- Netwerkinformatie
+- Netwerk gegevens
 
-Dit is een passieve verzameling van informatie die geen invloed mag hebben op het systeem.
+Dit is een passieve verzameling informatie die niet van invloed is op het systeem.
 
 >[!Note]
->Snel prestatieanalysescenario wordt automatisch opgenomen in elk van de volgende scenario's:
+>Het analyse scenario voor snelle prestaties wordt automatisch opgenomen in elk van de volgende scenario's:
 
-### <a name="performance-analysis"></a>Prestatieanalyse
+### <a name="performance-analysis"></a>Analyse van prestaties
 
-Dit scenario is vergelijkbaar met quick performance analyse, maar maakt het mogelijk om diagnostische informatie voor langere tijd vast te leggen.
+Dit scenario is vergelijkbaar met analyse van snelle prestaties, maar maakt het vastleggen van diagnostische gegevens voor langere duur mogelijk.
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Wat voor informatie wordt verzameld door PerfInsights
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Wat voor soort informatie wordt verzameld door PerfInsights
 
-Informatie over de Virtuele Machine van Linux, werkend systeem, blokapparaten, hoge bronconsumenten, configuratie, en diverse logboeken worden verzameld. Hier vindt u meer informatie:
+Informatie over de virtuele Linux-machine, het besturings systeem, het blok keren van apparaten, gebruikers van hoge bron, configuratie en diverse logboeken wordt verzameld. Hier vindt u meer informatie:
 
 - Besturingssysteem
-  - Linux distributie en versie
-  - Kernelinformatie
-  - Gegevens van de chauffeur
+  - Linux-distributie en-versie
+  - Informatie over kernel
+  - Stuur programmagegevens
 
 - Hardware
-  - PCI-apparaten`*`[ ]
+  - PCI-apparaten`*`[]
 
 - Processen en geheugen
-  - Lijst met processen (taaknaam, gebruikte geheugen, geopende bestanden)
-  - Totaal, beschikbaar en gratis fysiek geheugen
-  - Totaal, beschikbaar en gratis swapgeheugen
-  - Profilering van CPU-opname en verwerkt CPU-gebruik met interval van 5 seconden
-  - Profilering van het vastleggen van het geheugengebruik van processen met een interval van 5 seconden
+  - Lijst met processen (taak naam, gebruikt geheugen, bestanden geopend)
+  - Totaal, beschikbaar en vrij fysiek geheugen
+  - Totaal, beschikbaar en vrij wissel geheugen
+  - Profileren van het vastleggen van CPU en het CPU-gebruik wordt met 5 seconden per interval verwerkt
+  - Profileren van het vastleggen van geheugen gebruik door een proces met 5 seconden per interval
 
 - Netwerken  
-  - Lijst met netwerkadapters met statistieken over adapters
-  - Tabel netwerkroutering
-  - Geopende poorten en status
+  - Lijst met netwerk adapters met adapter statistieken
+  - Netwerk routerings tabel
+  - Poorten en status geopend
 
 - Storage
-  - Lijst met apparaten blokkeren
+  - Lijst met apparaten blok keren
   - Lijst met partities
-  - Lijst met punten monteren
-  - MDADM volume-informatie
-  - GEGEVENS over het LVM-volume
-  - Profilering vastleggen op alle schijven op 5-seconden interval
+  - Koppelings punten lijst
+  - MDADM-volume gegevens
+  - LVM-volume gegevens
+  - Profilerings Capture op alle schijven met een interval van 5 seconden
 
 - Logboeken
-  - /var/log/berichten
+  - /var/log/messages
   - /var/log/syslog
   - /var/log/kern.log
   - /var/log/cron.log
@@ -103,67 +103,67 @@ Informatie over de Virtuele Machine van Linux, werkend systeem, blokapparaten, h
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/azure/[extensiemap]/\*logboek\*
+  - /var/log/Azure/[extensie map]/\*logboek\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
-  - Output van journalctl voor de laatste vijf dagen
+  - Uitvoer van journalctl voor de afgelopen vijf dagen
 
-- [Metagegevens van Azure-virtuele machine-instantie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Meta gegevens van Azure virtual machine-instantie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] PCI-informatie wordt nog niet verzameld over Debian- en SLES-distributies
+>[`*`] PCI-informatie is nog niet verzameld in Debian-en SLES-distributies
 
-## <a name="run-the-perfinsights-linux-on-your-vm"></a>Voer de PerfInsights Linux uit op uw VM
+## <a name="run-the-perfinsights-linux-on-your-vm"></a>De PerfInsights Linux uitvoeren op uw VM
 
-### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Wat moet ik weten voordat ik de tool uitvoer
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Wat moet ik weten voordat ik het hulp programma uitvoer
 
-#### <a name="tool-requirements"></a>Gereedschapsvereisten
+#### <a name="tool-requirements"></a>Hulp programma vereisten
 
-- Deze tool moet worden uitgevoerd op de VM die het prestatieprobleem heeft.
-- Python 2.7 moet op de VM worden geïnstalleerd
+- Dit hulp programma moet worden uitgevoerd op de VM met het prestatie probleem.
+- Python 2,7 moet zijn geïnstalleerd op de VM
 
 - De volgende distributies worden momenteel ondersteund:
 
     | Distributie               | Versie                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux-server        | 6.10`*`[ ], 7.3, 7.6, 7.5 (Oracle-Database-Ee 13.8 marketplace image)|
-    | CentOS                     | 6,5`*`[ ], 7,6                                    |
-    | RHEL                       | 7.2, 7.5, 8.0 [ ]`*`                               |
+    | Oracle Linux server        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-data base-ee 13,8 Marketplace-installatie kopie)|
+    | CentOS                     | 6,5 [`*`], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4`*`[ ]                                      |
+    | SLES                       | 12 SP4 [`*`]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Raadpleeg de sectie [Bekende problemen](#known-issues)
+>[`*`] Raadpleeg de sectie [bekende problemen](#known-issues)
 
 ### <a name="known-issues"></a>Bekende problemen
 
-- RHEL 8 heeft Python niet standaard geïnstalleerd. Om PerfInsights Linux uit te voeren, moet u eerst Python 2.7 installeren
+- Voor RHEL 8 is python niet standaard geïnstalleerd. Als u PerfInsights Linux wilt uitvoeren, moet u eerst python 2,7 installeren
 
-- Het verzamelen van informatie van gastagenten kan mislukken op CentOS 6.x
+- Het verzamelen van informatie over de gast agent kan mislukken op CentOS 6. x
 
-- INFORMATIE over PCI-apparaten wordt niet verzameld op op Debian gebaseerde distributies
+- Informatie over PCI-apparaten wordt niet verzameld op op Debian gebaseerde distributies
 
-- LVM-informatie wordt gedeeltelijk verzameld over sommige distributies
+- LVM-gegevens worden gedeeltelijk verzameld op sommige distributies
 
-### <a name="how-do-i-run-perfinsights"></a>Hoe kan ik PerfInsights uitvoeren
+### <a name="how-do-i-run-perfinsights"></a>PerfInsights uitvoeren Hoe kan ik
 
-U PerfInsights op een virtuele machine uitvoeren door Azure Performance Diagnostics te installeren vanuit Azure-portal. U het ook uitvoeren als een standalone tool.
+U kunt PerfInsights uitvoeren op een virtuele machine door Azure-prestatie diagnostiek van Azure Portal te installeren. U kunt deze ook uitvoeren als een zelfstandig hulp programma.
 
 >[!Note]
->PerfInsights verzamelt en analyseert eenvoudig de gegevens. Het maakt geen wijzigingen aan het systeem.
+>PerfInsights verzamelt en analyseert de gegevens. Er worden geen wijzigingen aangebracht in het systeem.
 
-#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>PerfInsights installeren en uitvoeren vanuit de Azure-portal
+#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>PerfInsights installeren en uitvoeren vanuit de Azure Portal
 
-Zie [Azure Performance Diagnostics](performance-diagnostics.md)voor meer informatie over deze optie.  
+Zie [Azure prestatie diagnostiek](performance-diagnostics.md)voor meer informatie over deze optie.  
 
-#### <a name="run-perfinsights-in-standalone-mode"></a>PerfInsights uitvoeren in zelfstandige modus
+#### <a name="run-perfinsights-in-standalone-mode"></a>PerfInsights uitvoeren in de zelfstandige modus
 
-Voer de volgende stappen uit om het gereedschap PerfInsights uit te voeren:
+Voer de volgende stappen uit om het PerfInsights-hulp programma uit te voeren:
 
-1. Download [PerfInsights.tar.gz](https://aka.ms/perfinsightslinuxdownload) naar een map op uw virtuele machine en haal de inhoud uit met de onderstaande opdrachten van de terminal.
+1. Down load [PerfInsights. tar. gz](https://aka.ms/perfinsightslinuxdownload) naar een map op uw virtuele machine en pak de inhoud uit met behulp van de onderstaande opdrachten van de Terminal.
 
    ```bash
    wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
@@ -173,85 +173,85 @@ Voer de volgende stappen uit om het gereedschap PerfInsights uit te voeren:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Navigeer naar de `perfinsights.py` map die bestand `perfinsights.py` bevat en voer deze uit om de beschikbare opdrachtregelparameters weer te geven.
+2. Ga naar de map die het `perfinsights.py` bestand bevat en voer uit `perfinsights.py` om de beschik bare commandline-para meters weer te geven.
 
     ```bash
     cd <the path of PerfInsights folder>
     sudo python perfinsights.py
     ```
 
-    ![Schermafbeelding van PerfInsights Linux commandline-uitvoer](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
+    ![Scherm opname van de uitvoer van PerfInsights linux commandline](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
 
-    De basissyntaxis voor het uitvoeren van PerfInsights-scenario's is:
+    De basis syntaxis voor het uitvoeren van PerfInsights-scenario's is:
 
     ```bash
     sudo python perfinsights.py -r <ScenarioName> -d [duration]<H | M | S> [AdditionalOptions]
     ```
 
-    U het onderstaande voorbeeld gebruiken om een scenario voor snelle prestatieanalyse gedurende 1 minuut uit te voeren en de resultaten te maken onder /tmp/outputmap:
+    U kunt het onderstaande voor beeld gebruiken om een scenario voor snelle prestatie analyse uit te voeren gedurende 1 minuut en de resultaten te maken onder de map/tmp/output:
 
     ```bash
     sudo python perfinsights.py -r quick -d 1M -a -o /tmp/output
     ```
 
-    U het onderstaande voorbeeld gebruiken om een scenario voor prestatieanalyse gedurende 5 minuten uit te voeren en de resultaatteerbal naar het opslagaccount te uploaden:
+    U kunt het onderstaande voor beeld gebruiken voor het uitvoeren van een prestatie analyse scenario gedurende 5 minuten en het uploaden van de tar-bal naar het opslag account:
 
     ```bash
     sudo python perfinsights.py -r vmslow -d 300S -a -t <StorageAccountName> -k <StorageAccountKey> -i <full resource Uri of the current VM>
     ```
 
     >[!Note]
-    >Voordat een scenario wordt uitgevoerd, vraagt PerfInsights de gebruiker om in te stemmen met het delen van diagnostische informatie en in te stemmen met de EULA. Gebruik **-een optie --accepteren-disclaimer-en-share-diagnostics** om deze prompts over te slaan.
+    >Voordat u een scenario uitvoert, wordt de gebruiker door PerfInsights gevraagd om de diagnostische gegevens te delen en de gebruiksrecht overeenkomst te accepteren. Gebruik **de optie-a of--accept-vrijwaring-en-share-Diagnostics** om deze prompts over te slaan.
     >
-    >Als u een actief ondersteuningsticket hebt bij Microsoft en PerfInsights uitvoert op verzoek van de ondersteuningstechnicus waarmee u werkt, moet u het ondersteuningsticketnummer opgeven met behulp van de optie **-s of --support-request.**
+    >Als u een actief ondersteunings ticket hebt met micro soft en PerfInsights wilt uitvoeren volgens de aanvraag van de ondersteunings technicus waarmee u werkt, moet u ervoor zorgen dat u het nummer van het ondersteunings ticket opgeeft met de optie **-s of--Support-aanvraag** .
 
-Wanneer de run is voltooid, verschijnt er een nieuw teerbestand in dezelfde map als PerfInsights, tenzij er geen uitvoermap is opgegeven. De naam van het bestand is **PerformanceDiagnostics\_\_yyyy-MM-dd hh-mm-ss-fff.tar.gz.** U dit bestand naar de ondersteuningsmedewerker sturen voor analyse of het rapport in het bestand openen om bevindingen en aanbevelingen te bekijken.
+Wanneer de uitvoering is voltooid, wordt een nieuw tar-bestand weer gegeven in dezelfde map als PerfInsights, tenzij er geen uitvoermap is opgegeven. De naam van het bestand is **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz.** U kunt dit bestand naar de ondersteunings agent verzenden voor analyse of het rapport openen in het bestand om de bevindingen en aanbevelingen te bekijken.
 
-## <a name="review-the-diagnostics-report"></a>Het diagnoserapport bekijken
+## <a name="review-the-diagnostics-report"></a>Het diagnostische rapport controleren
 
-In het **PerformanceDiagnostics\_\_yyyy-MM-dd hh-mm-ss-fff.tar.gz-bestand** vindt u een HTML-rapport met de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **PerformanceDiagnostics\_\_yyyy-MM-dd hh-mm-ss-fff.tar.gz** uit en opent u het bestand **PerfInsights Report.html.**
+Binnen het **PerformanceDiagnostics\_jjjj-mm-dd\_hh-mm-SS-FFF. tar. gz** -bestand kunt u een HTML-rapport vinden met informatie over de bevindingen van PerfInsights. Als u het rapport wilt bekijken, vouwt u het bestand **\_PERFORMANCEDIAGNOSTICS\_jjjj-mm-dd hh-mm-SS-FFF. tar. gz** uit en opent u vervolgens het bestand **PerfInsights Report. html** .
 
 ### <a name="overview-tab"></a>Tabblad Overzicht
 
-Het tabblad **Overzicht** bevat basisgegevens voor de uitgevoerd en informatie over virtuele machines. Op het tabblad **Bevindingen** wordt een overzicht weergegeven van de aanbevelingen uit alle verschillende secties van het rapport PerfInsights.
+Het tabblad **overzicht** bevat basis informatie over de uitvoering en de gegevens van de virtuele machine. Het tabblad **bevindingen** bevat een samen vatting van de aanbevelingen van alle verschillende secties van het PerfInsights-rapport.
 
-![Schermafbeelding van perfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Schermafbeelding van perfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Scherm opname van het PerfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Scherm opname van het PerfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
-> Bevindingen gecategoriseerd als hoog zijn bekende problemen die prestatieproblemen kunnen veroorzaken. Bevindingen die als medium zijn gecategoriseerd, vertegenwoordigen niet-optimale configuraties die niet noodzakelijkerwijs prestatieproblemen veroorzaken. Bevindingen gecategoriseerd als laag zijn informatieve verklaringen alleen.
+> Bevindingen die zijn gecategoriseerd als hoog, zijn bekende problemen die prestatie problemen kunnen veroorzaken. Bevindingen die zijn gecategoriseerd als medium, vertegenwoordigen niet-optimale configuraties die niet noodzakelijkerwijs prestatie problemen veroorzaken. Bevindingen die zijn gecategoriseerd als laag, zijn alleen informatieve instructies.
 
-Bekijk de aanbevelingen en links voor alle hoge en middelgrote bevindingen. Meer informatie over hoe ze de prestaties kunnen beïnvloeden, en ook over best practices voor prestatiegeoptimaliseerde configuraties.
+Bekijk de aanbevelingen en koppelingen voor alle belang rijke en middel grote bevindingen. Meer informatie over hoe deze prestaties kunnen beïnvloeden en ook over de aanbevolen procedures voor de prestaties geoptimaliseerde configuraties.
 
 ### <a name="cpu-tab"></a>Tabblad CPU
 
-**Het CPU-tabblad** bevat informatie over het cpu-verbruik voor het hele systeem tijdens de PerfInsights-run. Informatie over hoge CPU-gebruiksperioden en de best lopende CPU-consumenten zullen nuttig zijn om hoge CPU-gerelateerde problemen op te lossen.
+Tabblad **CPU** bevat informatie over het CPU-verbruik op het hele systeem tijdens het uitvoeren van de PerfInsights. Informatie over de hoge CPU-gebruiks perioden en de belangrijkste, veeleisende CPU-consumenten zijn handig voor het oplossen van problemen met hoge CPU.
 
-![Schermafbeelding van het CPU-tabblad Van PerfInsights Report](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
+![Scherm opname van het tabblad CPU van PerfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
 
-### <a name="storage-tab"></a>Tabblad Opslag
+### <a name="storage-tab"></a>Tabblad opslag
 
-De **sectie Bevindingen** toont verschillende bevindingen en aanbevelingen met betrekking tot opslag.
+In het gedeelte **bevindingen** worden verschillende bevindingen en aanbevelingen met betrekking tot opslag weer gegeven.
 
-De **tabbladen Blokapparaten** en andere gerelateerde secties, zoals **partities,** **LVM**en **MDADM,** beschrijven hoe blokapparaten zijn geconfigureerd en aan elkaar zijn gerelateerd.
+Op de tabbladen **apparaten** en andere gerelateerde secties, zoals **partities**, **LVM**en **MDADM** , wordt beschreven hoe blok apparaten worden geconfigureerd en aan elkaar zijn gerelateerd.
 
-![Schermafbeelding van het tabblad Opslag](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
-![Schermafbeelding van het tabblad MDADM](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
+![Scherm afbeelding van het tabblad opslag](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
+![Scherm afbeelding van het tabblad MDADM](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
 
 ### <a name="linux-tab"></a>Tabblad Linux
 
-Het **tabblad Linux** bevat informatie over de hardware en het besturingssysteem dat in uw VM wordt uitgevoerd. Details omvatten een lijst met lopende processen en informatie over Gastagent, PCI, CPU, Drivers en LIS-stuurprogramma's.
+Op het tabblad **Linux** vindt u informatie over de hardware en het besturings systeem die worden uitgevoerd in uw VM. Details bevatten een lijst met actieve processen en informatie over gast agent, PCI, CPU, stuur Programma's en LIS-stuur programma.
 
-![Schermafbeelding van het tabblad Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
+![Scherm afbeelding van het tabblad Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U diagnostische logboeken en rapporten uploaden naar Microsoft Support voor verdere controle. Wanneer u met de Microsoft Support-medewerkers werkt, wordt u mogelijk gevraagd de uitvoer die door PerfInsights wordt gegenereerd, te verzenden om te helpen bij het probleemoplossingsproces.
+U kunt Diagnostische logboeken en rapporten uploaden naar Microsoft Ondersteuning voor verdere beoordeling. Wanneer u met de Microsoft Ondersteuning personeel werkt, kunnen ze een aanvraag indienen om de uitvoer die door PerfInsights wordt gegenereerd, te verzenden om te helpen bij het oplossen van het probleem.
 
-In de volgende schermafbeelding wordt een bericht weergegeven dat vergelijkbaar is met wat u mogelijk ontvangt:
+Op de volgende scherm afbeelding wordt een bericht weer gegeven dat vergelijkbaar is met wat u kunt ontvangen:
 
-![Schermafbeelding van voorbeeldbericht van Microsoft Support](media/how-to-use-perfinsights-linux/support-email.png)
+![Scherm opname van het voorbeeld bericht van Microsoft Ondersteuning](media/how-to-use-perfinsights-linux/support-email.png)
 
-Volg de instructies in het bericht om toegang te krijgen tot de werkruimte voor bestandsoverdracht. Voor extra beveiliging moet u uw wachtwoord bij het eerste gebruik wijzigen.
+Volg de instructies in het bericht voor toegang tot de werk ruimte bestands overdracht. Voor extra beveiliging moet u uw wacht woord wijzigen bij het eerste gebruik.
 
-Nadat u zich hebt aangemeld, vindt u een dialoogvenster om het **\_PerformanceDiagnostics\_yyyy-MM-dd hh-mm-ss-fff.tar.gz-bestand** te uploaden dat is verzameld door PerfInsights.
+Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van het bestand **PerformanceDiagnostics\_jjjj-\_mm-dd hh-mm-SS-FFF. tar. gz** dat door PerfInsights is verzameld.

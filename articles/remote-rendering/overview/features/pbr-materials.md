@@ -1,88 +1,88 @@
 ---
 title: PBR-materialen
-description: Beschrijft het PBR-materiaaltype.
+description: Hierin wordt het PBR-materiaal type beschreven.
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680256"
 ---
 # <a name="pbr-materials"></a>PBR-materialen
 
-*PBR-materialen* zijn een van de ondersteunde [materiaaltypen](../../concepts/materials.md) in Azure Remote Rendering. Ze worden gebruikt voor [mazen](../../concepts/meshes.md) die realistische verlichting moeten ontvangen.
+*PBR-materialen* zijn een van de ondersteunde [materiaal typen](../../concepts/materials.md) in de externe rendering van Azure. Ze worden gebruikt voor [netten](../../concepts/meshes.md) die realistische verlichting moeten ontvangen.
 
-PBR staat voor **P**hysically **B**ased **R**vertederend en betekent dat het materiaal de visuele eigenschappen van een oppervlak op een fysiek plausibele manier beschrijft, zodat realistische resultaten onder alle lichtomstandigheden mogelijk zijn. De meeste moderne game engines en content creation tools ondersteunen PBR materialen omdat ze worden beschouwd als de beste benadering van de echte wereld scenario's voor real-time rendering.
+PBR staat voor **P**hysically **B**ased **R**endering en houdt in dat het materiaal de visuele eigenschappen van een Opper vlak op een fysiek plausible manier beschrijft, waardoor realistische resultaten onder alle belichtings omstandigheden mogelijk zijn. De meeste moderne game engines en hulpprogram ma's voor het maken van inhoud ondersteunen PBR-materialen omdat ze worden beschouwd als de beste benadering van echte wereld scenario's voor realtime-rendering.
 
-![Helm glTF monster model gemaakt door ARR](media/helmet.png)
+![GlTF-voorbeeld model voor helm gegenereerd door ARR](media/helmet.png)
 
-PBR materialen zijn echter geen universele oplossing. Er zijn materialen die kleur anders reflecteren, afhankelijk van de kijkhoek. Bijvoorbeeld, sommige stoffen of auto verven. Dit soort materialen worden niet verwerkt door het standaard PBR-model en worden momenteel niet ondersteund door Azure Remote Rendering. Dit omvat PBR-extensies, zoals *Thin-Film* (meerlaagse oppervlakken) en *Clear-Coat* (voor autolakken).
+PBR-materialen zijn echter geen universele oplossing. Afhankelijk van de weergave hoek zijn er materialen die een andere kleur weer geven. Bijvoorbeeld, sommige weefsels of auto verf. Dit soort materialen worden niet verwerkt door het standaard-PBR-model en worden momenteel niet ondersteund door Azure remote rendering. Dit omvat PBR-extensies, zoals *dun-film* (meerkanaals Opper vlakken) en *heldere coating* (voor auto verf).
 
-## <a name="common-material-properties"></a>Algemene materiaaleigenschappen
+## <a name="common-material-properties"></a>Algemene materiaal eigenschappen
 
-Deze eigenschappen zijn gemeenschappelijk voor alle materialen:
+Deze eigenschappen zijn gebruikelijk voor alle materialen:
 
-* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap-* of *hoekpuntkleuren.* Als *transparantie* is ingeschakeld op een materiaal, wordt het alfakanaal `1` gebruikt om `0` de dekking aan te passen, met betekenis volledig ondoorzichtig en betekenis volledig transparant. Standaard is wit.
+* **albedoColor:** Deze kleur wordt vermenigvuldigd met andere kleuren, zoals de *albedoMap* of *vertex kleuren*. Als *transparantie* is ingeschakeld voor een materiaal, wordt het Alfa kanaal gebruikt voor het aanpassen van de dekking `1` , met een volledig `0` ondoorzichtigheid en duidelijk doorzichtig. De standaard waarde is wit.
 
   > [!NOTE]
-  > Wanneer een PBR-materiaal volledig transparant is, als een perfect schoon stuk glas, weerspiegelt het nog steeds de omgeving. Heldere vlekken zoals de zon zijn nog steeds zichtbaar in de reflectie. Dit is anders voor [kleurmaterialen.](color-materials.md)
+  > Wanneer een PBR-materiaal volledig transparant is, zoals een perfect gereinigd glas, wordt de omgeving nog steeds weer gegeven. Heldere vlekken zoals de zon zijn nog steeds zichtbaar in de reflectie. Dit wijkt af van [kleur materialen](color-materials.md).
 
-* **albedoMap:** Een [2D-textuur](../../concepts/textures.md) voor albedowaarden per pixel.
+* **albedoMap:** Een [2D-patroon](../../concepts/textures.md) voor albedo waarden per pixel.
 
-* **alphaClipEnabled** en **alphaClipThreshold:** Als *alphaClipEnabled* waar is, worden alle pixels waarbij de alfawaarde van albedo lager is dan *alphaClipThreshold* niet getekend. Alpha clipping kan zelfs worden gebruikt zonder transparantie en is veel sneller te renderen. Alpha geknipte materialen zijn nog steeds langzamer te renderen dan volledig ondoorzichtige materialen, dat wel. Standaard is alpha clipping uitgeschakeld.
+* **alphaClipEnabled** en **AlphaClipThreshold:** als *alphaClipEnabled* is ingesteld op True, worden alle pixels waarvan de waarde van albedo alpha lager is dan *alphaClipThreshold* niet getekend. Alfa knipsel kan zelfs worden gebruikt zonder transparantie in te scha kelen en is veel sneller te renderen. Afgekapte Alfa materialen zijn nog steeds langzamer dan volledig dekkende materialen, maar. Alpha-knipsels zijn standaard uitgeschakeld.
 
-* **textureCoordinateScale** en **textureCoordinateOffset:** De schaal wordt vermenigvuldigd in de UV-structuurcoördinaten, de verschuiving wordt eraan toegevoegd. Kan worden gebruikt om de texturen uit te rekken en te verschuiven. De standaardschaal is (1, 1) en offset is (0, 0).
+* **textureCoordinateScale** en **textureCoordinateOffset:** de schaal wordt vermenigvuldigd met de UV-textuur coördinaten, de offset wordt hieraan toegevoegd. Kan worden gebruikt om de bitmappatronen te spreiden en te verschuiven. De standaard schaal is (1, 1) en de offset is (0, 0).
 
-* **useVertexColor:** Als het net hoekpuntkleuren bevat en deze optie is ingeschakeld, worden de hoekpuntkleuren van de mazen vermenigvuldigd tot de *albedoColor* en *albedoMap.* Standaard zijn vertex-kleuren uitgeschakeld.
+* **useVertexColor:** Als de mesh hoekpunt kleuren bevat en deze optie is ingeschakeld, worden de vertex kleuren van de mazen vermenigvuldigd met de *albedoColor* en *albedoMap*. Standaard zijn vertex kleuren uitgeschakeld.
 
-* **isDoubleSided:** Als dubbelzijdigheid is ingesteld op true, driehoeken met dit materiaal worden weergegeven, zelfs als de camera kijkt naar hun achterste gezichten. Voor PBR materialen verlichting is ook goed berekend voor achtervlakken. Standaard is deze optie uitgeschakeld. Zie ook [Single-sided rendering](single-sided-rendering.md).
+* **isDoubleSided:** Als Double-sidedness is ingesteld op True, worden drie hoeken met dit materiaal weer gegeven, zelfs als de camera op de achtergrond is. Voor de verlichting van PBR-materialen wordt ook correct berekend voor back-gezichten. Deze optie is standaard uitgeschakeld. Zie ook [Single-Side rendering](single-sided-rendering.md).
 
-## <a name="pbr-material-properties"></a>PBR-materiaaleigenschappen
+## <a name="pbr-material-properties"></a>Eigenschappen van het PBR-materiaal
 
-Het kernidee van fysiek gebaseerde rendering is om *BaseColor,* *Metalness*en *Roughness* eigenschappen te gebruiken om een breed scala aan echte materialen na te bootsen. Een gedetailleerde beschrijving van PBR valt buiten het toepassingsgebied van dit artikel. Zie voor meer informatie over PBR [andere bronnen.](http://www.pbr-book.org) De volgende eigenschappen zijn specifiek voor PBR-materialen:
+Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik van *BaseColor*, *metaaling*en *Grove* eigenschappen om een breed scala aan reële materialen te emuleren. Een gedetailleerde beschrijving van PBR valt buiten het bereik van dit artikel. Zie [andere bronnen](http://www.pbr-book.org)voor meer informatie over PBR. De volgende eigenschappen zijn specifiek voor PBR-materialen:
 
-* **baseColor:** In PBR-materialen wordt de *albedo-kleur* aangeduid als de *basiskleur.* In Azure Remote Rendering is de eigenschap *albedo-kleur* al aanwezig via de algemene materiaaleigenschappen, dus er is geen extra eigenschap basiskleur.
+* **baseColor:** In PBR-materialen wordt de *albedo-kleur* aangeduid als de *basis kleur*. In azure rendering op afstand de eigenschap *albedo Color* is al aanwezig via de algemene eigenschappen van het materiaal, dus er is geen aanvullende eigenschap Base Color.
 
-* **ruwheid** en **ruwheidMap:** Ruwheid bepaalt hoe ruw of glad het oppervlak is. Ruwe oppervlakken verspreiden het licht in meer richtingen dan gladde oppervlakken, waardoor reflecties wazig in plaats van scherp. Het waardebereik `0.0` is `1.0`van tot . Wanneer `roughness` `0.0`gelijken , reflecties scherp zal zijn. Wanneer `roughness` `0.5`gelijken, reflecties zal wazig worden.
+* **ruw** en **roughnessMap:** de juistheid van het Opper vlak. Ruwe Opper vlakken verstrooien het licht in meer richtingen dan gladde Opper vlakken, waardoor reflecties wazig zijn in plaats van scherp. Het waardebereik is van `0.0` tot. `1.0` Als `roughness` gelijk is `0.0`, zijn reflecties scherper. Als `roughness` gelijk is `0.5`, worden reflecties wazig.
 
-  Als zowel een ruwheidswaarde als een ruwheidskaart worden geleverd, zal de uiteindelijke waarde het product van twee zijn.
+  Als zowel een grove waarde als een grove kaart wordt opgegeven, is de uiteindelijke waarde het product van de twee.
 
-* **metaal-** en **metaalheidMap:** In de natuurkunde komt deze eigenschap overeen met de vraag of een oppervlak geleidend of d-elektrisch is. Geleidende materialen hebben verschillende reflecterende eigenschappen, en ze hebben de neiging om reflecterend te zijn zonder albedo kleur. In PBR-materialen beïnvloedt deze eigenschap hoeveel een oppervlak de omgeving weerspiegelt. Waarden variëren `0.0` `1.0`van . Wanneer metaalachtigheid is, `0.0`is de albedokleur volledig zichtbaar en ziet het materiaal eruit als plastic of keramiek. Wanneer metaalachtigheid is, `0.5`het ziet eruit als geschilderd metaal. Wanneer metaalheid `1.0`is, verliest het oppervlak bijna volledig zijn albedokleur en weerspiegelt alleen de omgeving. Bijvoorbeeld, als `metalness` `1.0` is `roughness` `0.0` en is dan een oppervlak ziet eruit als real-world spiegel.
+* **metaal** -en **metalnessMap:** bij fysieke fysica komt deze eigenschap overeen met het feit of een Opper vlak een uitvoerbaar of dielectric is. Het uitvoeren van materialen heeft verschillende reflecterende eigenschappen, en ze zijn meestal reflecteel zonder albedo kleur. In PBR-materialen is deze eigenschap van invloed op het gedeelte van het Opper vlak van de omgeving. De waarden variëren `0.0` van `1.0`tot. Wanneer de metaaling `0.0`is, is de kleur van de albedo volledig zichtbaar en ziet het materiaal eruit als plastic of keramische stoffen. Wanneer de metaaling `0.5`is, ziet deze eruit als geschilderd metaal. Wanneer de metaaling `1.0`is, verliest het Opper vlak bijna de albedo kleur en wordt alleen de omgeving weer gegeven. `metalness` Bijvoorbeeld, als `1.0` is en `roughness` is `0.0` , ziet een Opper vlak eruit als een echte mirror.
 
-  Als zowel een metaalheidswaarde als een metaalheidskaart worden geleverd, is de uiteindelijke waarde het product van de twee.
+  Als er zowel een waarde voor metaaliteit als een koppeling naar een metaliteit is opgegeven, is de uiteindelijke waarde het product van de twee.
 
-  ![metaalen en ruwheid](./media/metalness-roughness.png)
+  ![metaal en ruw](./media/metalness-roughness.png)
 
-  Op de foto hierboven, de bol in de rechterbenedenhoek ziet eruit als een echte metalen materiaal, de linkerbenedenhoek ziet eruit als keramiek of plastic. De albedo kleur verandert ook afhankelijk van fysieke eigenschappen. Bij toenemende ruwheid verliest het materiaal reflectiescherpte.
+  In de bovenstaande afbeelding ziet de bol in de rechter benedenhoek eruit als een echt metaal materiaal, de linkerbenedenhoek ziet eruit als keramisch of plastic. De albedo-kleur wordt ook gewijzigd op basis van de fysieke eigenschappen. Met een grotere groveheid verliest het materiaal de reflectie scherpte.
 
-* **normalMap:** Om fijnkorrelige details te simuleren, kan een [normale kaart](https://en.wikipedia.org/wiki/Normal_mapping) worden verstrekt.
+* **normalMap:** Voor het simuleren van nauw keurige details kan er een [normale kaart](https://en.wikipedia.org/wiki/Normal_mapping) worden gegeven.
 
-* **occlusionMap** en **aoScale:** [Ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion) zorgt ervoor dat objecten met spleten er realistischer uitzien door schaduwen toe te voegen aan afgesloten gebieden. Occlusie waarde `0.0` variëren `1.0`van `0.0` tot , waar `1.0` betekent duisternis (occluded) en betekent geen occlusies. Als een 2D-structuur wordt geleverd als een occlusiekaart, wordt het effect ingeschakeld en fungeert *aoScale* als een multiplier.
+* **occlusionMap** en **aoScale:** [omgevings bedekking](https://en.wikipedia.org/wiki/Ambient_occlusion) maken objecten met crevices er realistischer uit door scha duwen aan occluded gebieden toe te voegen. Bedekking-waarde is `0.0` van `1.0`tot, `0.0` waarbij ' donker ' (occluded `1.0` ) en betekent dat er geen occlusions is. Als een 2D-structuur wordt gegeven als een bedekking-kaart, wordt het effect ingeschakeld en fungeert *aoScale* als een vermenigvuldiger.
 
-  ![Occlusiekaart](./media/boom-box-ao2.gif)
+  ![Bedekking-kaart](./media/boom-box-ao2.gif)
 
-* **transparant:** Voor PBR-materialen is er slechts één transparantie-instelling: het is ingeschakeld of niet. De dekking wordt gedefinieerd door het alfakanaal van de albedo-kleur. Wanneer ingeschakeld, wordt een complexere renderingpipeline aangeroepen om semi-transparante oppervlakken te tekenen. Azure Remote Rendering implementeert true [order independent transparency](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT).
+* **transparant:** Voor PBR-materialen is er slechts één transparantie-instelling: deze is ingeschakeld of niet. De dekking wordt gedefinieerd door het Alfa kanaal van de albedo kleur. Wanneer deze functie is ingeschakeld, wordt een complexere rendering-pijp lijn opgeroepen om semi-transparante Opper vlakken te tekenen. Met de externe rendering van Azure wordt de oit ( [nabestel onafhankelijke transparantie](https://en.wikipedia.org/wiki/Order-independent_transparency) ) geïmplementeerd.
 
-  Transparante geometrie is duur om te renderen. Als u alleen gaten in een oppervlak nodig hebt, bijvoorbeeld voor de bladeren van een boom, is het beter om in plaats daarvan alfaknippen te gebruiken.
+  Transparante geometrie is duur om weer te geven. Als u alleen gaten in een Opper vlak nodig hebt, bijvoorbeeld voor de bladeren van een structuur, is het beter om in plaats daarvan alpha-knipsels te gebruiken.
 
-  ![Transparantie](./media/transparency.png) Let op in de afbeelding hierboven, hoe de meest rechtse bol volledig transparant is, maar de reflectie is nog steeds zichtbaar.
+  ![Transparantie](./media/transparency.png) in de bovenstaande afbeelding ziet u hoe de meest rechtse sfeer volledig transparant is, maar de reflectie nog steeds zichtbaar is.
 
   > [!IMPORTANT]
-  > Als materiaal tijdens runtime van ondoorzichtig naar transparant moet worden overgeschakeld, moet de renderer de *TileBasedComposition-renderingmodus* [rendering mode](../../concepts/rendering-modes.md)gebruiken. Deze beperking is niet van toepassing op materialen die om te beginnen als transparant materiaal worden omgezet.
+  > Als materialen moeten worden overgeschakeld van dekkend naar transparant tijdens runtime, moet de renderer gebruikmaken van de rendermethode *TileBasedComposition* [rendering mode](../../concepts/rendering-modes.md). Deze beperking is niet van toepassing op materialen die worden geconverteerd als transparante materialen om te beginnen met.
 
 ## <a name="technical-details"></a>Technische details
 
-Azure Remote Rendering maakt gebruik van de Cook-Torrance micro-facet BRDF met GGX NDF, Schlick Fresnel en een GGX Smith gecorreleerd zichtbaarheidterm met een Lambert diffuse term. Dit model is de de facto industrie standaard op dit moment. Voor meer diepgaande details, verwijzen naar dit artikel: [Fysiek gebaseerde Rendering - Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure remote rendering maakt gebruik van de Torrance micro facet BRDF met GGX NDF, Schlick Fresnel en een GGX Smith gecorreleerde zichtbaarheids termijn met een Lambert diffuse term. Dit model is op dit moment de meest facto industrie norm. Raadpleeg dit artikel: [fysieke rendering-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx) voor meer gedetailleerde informatie.
 
- Een alternatief voor het *PBR-model Metalness-Roughness* dat wordt gebruikt in Azure Remote Rendering is het *PBR-model Specular-Glossiness.* Dit model kan een breder scala aan materialen vertegenwoordigen. Echter, het is duurder, en meestal niet goed werkt voor real-time gevallen.
-Het is niet altijd mogelijk om van *Spiegelende glans* om te zetten in *Metalness-Roughness* omdat er *(Diffuus, Spiegelende)* waardeparen zijn die niet kunnen worden omgezet in *(BaseColor, Metalness).* De omzetting in de andere richting is eenvoudiger en nauwkeuriger, aangezien alle *paren (BaseColor, Metalness)* aan goed-bepaalde *(Diffuse, Spiegelende)* paren beantwoorden.
+ Een alternatief voor het in azure externe rendering geplaatste PBR *-* model is het *onspiegelde Glossiness PBR-* model. Dit model kan een breder scala aan materialen vertegenwoordigen. Het is echter duurder en werkt normaal gesp roken niet goed voor real-time cases.
+Het is niet altijd mogelijk om van *reflecterende Glossiness* te converteren *naar een* onscherpheid als er paren zijn *(diffuus, reflecterend)* die niet kunnen worden geconverteerd naar *(BaseColor, metaaling)*. De conversie in de andere richting is eenvoudiger en nauw keuriger, omdat alle paren *(BaseColor, metaaling)* overeenkomen met de goed gedefinieerde paren *(diffuus, reflecterend)* .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Kleurmaterialen](color-materials.md)
-* [Texturen](../../concepts/textures.md)
-* [Netten](../../concepts/meshes.md)
+* [Patronen](../../concepts/textures.md)
+* [Meshes](../../concepts/meshes.md)

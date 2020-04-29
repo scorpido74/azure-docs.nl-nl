@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: routeringsvereisten'
+title: 'Azure-ExpressRoute: routerings vereisten'
 description: Deze pagina bevat gedetailleerde vereisten voor het configureren en beheren van routering voor ExpressRoute-circuits.
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273044"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
@@ -39,7 +39,7 @@ U kunt privé IP-adressen of openbare IP-adressen gebruiken om de peerings te co
   * Onze [beschikbaarheids-SLA](https://azure.microsoft.com/support/legal/sla/) is alleen geldig als beide BGP-sessies zijn ingesteld.  
 
 #### <a name="example-for-private-peering"></a>Voorbeeld voor persoonlijke peering
-Als u a.b.c.d/29 gebruikt om de peering in te stellen, wordt dit gesplitst in twee /30-subnetten. In het volgende voorbeeld wordt opgemerkt hoe het subnet a.b.c.d/29 wordt gebruikt:
+Als u a.b.c.d/29 gebruikt om de peering in te stellen, wordt dit gesplitst in twee /30-subnetten. In het volgende voor beeld ziet u hoe het subnet a. b. c. d/29 wordt gebruikt:
 
 * a.b.c.d/29 wordt gesplitst in a.b.c.d/30 en a.b.c.d+4/30, en via de inrichting-API's doorgegeven aan Microsoft.
   * U gebruikt a.b.c.d+1 als de VRF-IP voor de primaire PE en Microsoft gebruikt a.b.c.d+2 als de VRF-IP voor de primaire MSEE.
@@ -66,7 +66,7 @@ U moet voor het instellen van de BGP-sessies openbare IP-adressen gebruiken waar
 ### <a name="ip-addresses-used-for-azure-public-peering"></a>IP-adressen die worden gebruikt voor openbare Azure-peering
 
 > [!NOTE]
-> Azure public peering is niet beschikbaar voor nieuwe circuits.
+> Open bare Azure-peering is niet beschikbaar voor nieuwe circuits.
 > 
 
 U moet voor het instellen van de BGP-sessies openbare IP-adressen gebruiken waarvan u eigenaar bent. Microsoft moet het eigenaarschap van de IP-adressen kunnen verifiëren via Routing Internet Registries en Internet Routing Registries. 
@@ -83,7 +83,7 @@ U moet voor het instellen van de BGP-sessies openbare IP-adressen gebruiken waar
 U kunt kiezen om openbare of persoonlijke IPv4-adressen te gebruiken voor persoonlijke peering. We bieden end-to-end-isolatie van uw verkeer, zodat het overlappen van adressen met andere klanten niet mogelijk is in het geval van persoonlijke peering. Deze adressen worden niet geadverteerd naar internet. 
 
 ### <a name="microsoft-peering"></a>Microsoft-peering
-Met het peeringpad van Microsoft u verbinding maken met Microsoft-cloudservices. De lijst met services bevat Office 365-services, zoals Exchange Online, SharePoint Online, Skype voor Bedrijven en Microsoft Teams. Microsoft ondersteunt bidirectionele connectiviteit op de Microsoft-peering. Verkeer dat is bestemd voor Microsoft Cloud-services, moet geldige openbare IPv4-adressen gebruiken voordat het het Microsoft-netwerk binnenkomt.
+Met het micro soft-peering-pad kunt u verbinding maken met micro soft-Cloud Services. De lijst met Services bevat Office 365-Services, zoals Exchange Online, share point online, Skype voor bedrijven en micro soft teams. Microsoft ondersteunt bidirectionele connectiviteit op de Microsoft-peering. Verkeer dat is bestemd voor Microsoft Cloud-services, moet geldige openbare IPv4-adressen gebruiken voordat het het Microsoft-netwerk binnenkomt.
 
 Controleer of uw IP-adres en AS-nummer in een van de volgende registers op uw naam zijn geregistreerd:
 
@@ -100,18 +100,18 @@ Als uw voorvoegsel en AS-nummer in voorgaande registers niet aan u zijn toegewez
 Een persoonlijk AS-nummer is toegestaan met Microsoft-peering, maar moet ook handmatig worden gevalideerd. Bovendien verwijderen we persoonlijke AS-nummers in het AS-pad voor de ontvangen voorvoegsels. Hierdoor is het niet mogelijk om persoonlijke AS-nummers aan het AS-pad toe te voegen om [routering voor Microsoft-peering te beïnvloeden](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Adverteer niet dezelfde openbare IP-route naar het openbare internet en via ExpressRoute. Om het risico van onjuiste configuratie veroorzaakt asymmetrische routing te verminderen, raden we ten zeerste aan dat de [NAT IP-adressen](expressroute-nat.md) geadverteerd aan Microsoft via ExpressRoute worden van een bereik dat niet wordt geadverteerd op het internet op alle. Als dit niet mogelijk is om te bereiken, is het essentieel om ervoor te zorgen dat u adverteert met een specifieker bereik via ExpressRoute dan die op de internetverbinding. Naast de openbare route voor NAT, u ook adverteren via ExpressRoute de openbare IP-adressen die worden gebruikt door de servers in uw on-premises netwerk die communiceren met Office 365-eindpunten binnen Microsoft. 
+> Adverteer niet dezelfde open bare IP-route naar het open bare Internet en over ExpressRoute. Om het risico te verminderen dat een onjuiste configuratie wordt veroorzaakt door asymmetrische route ring, raden wij u ten zeerste aan dat de [NAT IP-adressen](expressroute-nat.md) die naar micro soft worden geadverteerd via ExpressRoute, afkomstig zijn uit een bereik dat helemaal niet is geadverteerd naar Internet. Als dit niet mogelijk is, is het van essentieel belang om ervoor te zorgen dat u een meer specifiek bereik aankondigt boven ExpressRoute dan het account dat op de Internet verbinding is. Naast de open bare route voor NAT kunt u ook adverteren via ExpressRoute de open bare IP-adressen die worden gebruikt door de servers in uw on-premises netwerk die communiceren met Office 365-eind punten in micro soft. 
 > 
 > 
 
-### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Openbare peering (afgeschaft - niet beschikbaar voor nieuwe circuits)
+### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Open bare peering (afgeschaft-niet beschikbaar voor nieuwe circuits)
 Met het pad voor openbare Azure-peering kunt u verbinding maken met alle services die via de openbare IP-adressen worden gehost in Azure. Deze lijst bevat services die worden vermeld in de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) en alle services die door ISV's worden gehost op Microsoft Azure. Connectiviteit met Microsoft Azure-services via openbare peering wordt altijd gestart vanuit uw netwerk naar het Microsoft-netwerk. U moet openbare IP-adressen gebruiken voor het verkeer dat bestemd is voor het Microsoft-netwerk.
 
 > [!IMPORTANT]
-> Alle Azure PaaS-services zijn toegankelijk via Microsoft-peering.
+> Alle Azure PaaS-Services zijn toegankelijk via micro soft-peering.
 >   
 
-Een privé-AS-nummer is toegestaan met openbare peering.
+Een persoonlijk AS-nummer is toegestaan met open bare peering.
 
 ## <a name="dynamic-route-exchange"></a>Dynamische route-uitwisseling
 Routeringsuitwisseling vindt plaats via het eBGP-protocol. EBGP-sessies worden tot stand gebracht tussen de MSEE's en uw routers. Verificatie van BGP-sessies is niet vereist. Indien nodig kan een MD5-hash worden geconfigureerd. Zie [Configure routing](how-to-routefilter-portal.md) (Routering configureren) en [Circuit provisioning workflows and circuit states](expressroute-workflows.md) (Werkstromen voor de inrichting van ExpressRoute-circuits en circuittoestanden) voor informatie over het configureren van BGP-sessies.
@@ -119,7 +119,7 @@ Routeringsuitwisseling vindt plaats via het eBGP-protocol. EBGP-sessies worden t
 ## <a name="autonomous-system-numbers"></a>Autonome systeemnummers
 Microsoft gebruikt AS 12076 voor openbare Azure-peering, privé Azure-peering en Microsoft-peering. We hebben ASN's van 65515 tot 65520 gereserveerd voor intern gebruik. Zowel 16- als 32-bits AS-getallen worden ondersteund.
 
-Er zijn geen vereisten met betrekking tot gegevensoverdrachtsymmetrie. De inkomende en uitgaande paden lopen mogelijk langs verschillende routerparen. Identieke routes moeten van beide kanten worden geadverteerd in meerdere circuitparen die van u zijn. Route metrics hoeven niet identiek te zijn.
+Er zijn geen vereisten met betrekking tot gegevensoverdrachtsymmetrie. De inkomende en uitgaande paden lopen mogelijk langs verschillende routerparen. Identieke routes moeten worden geadverteerd van beide zijden over meerdere circuit paren die bij u horen. Route metrics hoeven niet identiek te zijn.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Limieten voor route-aggregatie en voorvoegsel
 Wij ondersteunen maximaal 4000 voorvoegsels die aan ons zijn geadverteerd door middel van de persoonlijke Azure-peering. Dit aantal kan worden verhoogd tot 10.000 voorvoegsels als de Premium-invoegtoepassing voor ExpressRoute wordt ingeschakeld. We accepteren maximaal 200 voorvoegsels per BGP-sessie voor openbare Azure-peering en Microsoft-peering. 
@@ -134,7 +134,7 @@ Standaardroutes zijn alleen toegestaan voor persoonlijke Azure-peeringsessies. I
 
  Als u connectiviteit met andere Azure-services en infrastructuurservices wilt inschakelen, moet u een van de volgende voorzieningen treffen:
 
-* Azure public peering is ingeschakeld om verkeer naar openbare eindpunten te leiden.
+* Open bare Azure-peering is ingeschakeld voor het routeren van verkeer naar open bare eind punten.
 * U gebruikt door de gebruiker gedefinieerde routering om internetconnectiviteit toe te staan voor elk subnet dat internetconnectiviteit vereist.
 
 > [!NOTE]
@@ -151,9 +151,9 @@ Als u bijvoorbeeld via ExpressRoute bent verbonden met Microsoft in Amsterdam, h
 
 Raadpleeg de pagina [ExpressRoute partners and peering locations](expressroute-locations.md) (Overzicht van ExpressRoute-partners en -peeringlocaties) voor een gedetailleerde lijst van de geopolitieke regio's, bijbehorende Azure-regio's en bijbehorende ExpressRoute-peeringlocaties.
 
-U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. Het hebben van meer verbindingen biedt aanzienlijke voordelen wat betreft hoge beschikbaarheid vanwege geografische redundantie. In gevallen waarin u meerdere ExpressRoute-circuits hebt, ontvangt u dezelfde set voorvoegsels die van Microsoft worden geadverteerd op de peering- en openbare peeringpaden van Microsoft. Dat betekent dat er vanuit uw netwerk meerdere paden zijn naar Microsoft. Hierdoor kunnen er in uw netwerk suboptimale routeringsbeslissingen worden genomen. Dit kan leiden tot suboptimale connectiviteitservaringen met andere services. Op basis van de communitywaarden worden de juiste routeringsbeslissingen genomen voor [optimale routering naar gebruikers](expressroute-optimize-routing.md).
+U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. Het hebben van meer verbindingen biedt aanzienlijke voordelen wat betreft hoge beschikbaarheid vanwege geografische redundantie. In gevallen waarin u meerdere ExpressRoute-circuits hebt, ontvangt u dezelfde set voor voegsels die van micro soft worden aangekondigd op de paden voor micro soft-peering en open bare peering. Dat betekent dat er vanuit uw netwerk meerdere paden zijn naar Microsoft. Hierdoor kunnen er in uw netwerk suboptimale routeringsbeslissingen worden genomen. Dit kan leiden tot suboptimale connectiviteitservaringen met andere services. Op basis van de communitywaarden worden de juiste routeringsbeslissingen genomen voor [optimale routering naar gebruikers](expressroute-optimize-routing.md).
 
-| **Microsoft Azure-regio** | **Regionale BGP-gemeenschap** | **Opslag BGP-community** | **SQL BGP-community** | **Cosmos DB BGP gemeenschap** |
+| **Microsoft Azure-regio** | **Regionale BGP-Community** | **Opslag-BGP-Community** | **SQL BGP-Community** | **Cosmos DB BGP-Community** |
 | --- | --- | --- | --- | --- |
 | **Noord-Amerika** | |
 | VS - oost | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
@@ -175,12 +175,12 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | Verenigd Koninkrijk West | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Frankrijk - centraal | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Frankrijk - zuid | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
-| Zwitserland Noord | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
-| Zwitserland West | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
-| Duitsland Noord | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
-| Duitsland West Centraal | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
-| Noorwegen-Oost | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
-| Noorwegen West | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
+| Zwitserland - noord | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
+| Zwitserland - west | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
+| Duitsland - noord | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
+| Duitsland - west-centraal | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
+| Noor wegen-Oost | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
+| Noor wegen West | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
 | **Azië en Stille Oceaan** | |
 | Azië - oost | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Azië - zuidoost | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
@@ -201,11 +201,11 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | Korea - zuid | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
 | Korea - centraal | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Zuid-Afrika**| |
-| Zuid-Afrika Noord | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
-| Zuid-Afrika West | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| Zuid-Afrika - noord | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Zuid-Afrika - west | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **VAE**| |
-| VAE Noord | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
-| VAE Centraal | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
+| UAE - noord | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| UAE - centraal | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 Alle routes die worden geadverteerd vanuit Microsoft, worden gemarkeerd met de juiste community-waarde. 
@@ -215,22 +215,22 @@ Alle routes die worden geadverteerd vanuit Microsoft, worden gemarkeerd met de j
 > 
 > 
 
-### <a name="service-to-bgp-community-value"></a>Service aan BGP-communitywaarde
-Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service waartoe ze behoren. Dit geldt alleen voor de Microsoft-peering. De volgende tabel bevat een toewijzing van services aan BGP-communitywaarden. U de cmdlet 'Get-AzBgpServiceCommunity' uitvoeren voor een volledige lijst met de nieuwste waarden.
+### <a name="service-to-bgp-community-value"></a>Waarde van service naar BGP-Community
+Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service waartoe ze behoren. Dit geldt alleen voor de Microsoft-peering. De volgende tabel bevat een toewijzing van services aan BGP-communitywaarden. U kunt de cmdlet ' Get-AzBgpServiceCommunity ' uitvoeren voor een volledige lijst met de meest recente waarden.
 
 | **Service** | **BGP-communitywaarde** |
 | --- | --- |
-| Exchange Online** | 12076:5010 |
-| SharePoint Online** | 12076:5020 |
-| Skype voor Bedrijven Online** | 12076:5030 |
-| CRM Online*** |12076:5040 |
-| Azure Global Services* | 12076:5050 |
+| Exchange Online * * | 12076:5010 |
+| Share point online * * | 12076:5020 |
+| Skype voor bedrijven online * * | 12076:5030 |
+| CRM Online * * * |12076:5040 |
+| Wereld wijde services van Azure * | 12076:5050 |
 | Azure Active Directory |12076:5060 |
-| Andere Office 365 Online-services** | 12076:5100 |
+| Andere Office 365 Online Services * * | 12076:5100 |
 
-*Azure Global Services bevat op dit moment alleen Azure DevOps.\
-** Autorisatie vereist van Microsoft, verwijzen [Routefilters configureren voor Microsoft Peering](how-to-routefilter-portal.md)\
-CRM Online ondersteunt Dynamics v8.2 en lager. Selecteer voor hogere versies de regionale community voor uw Dynamics-implementaties.
+* Azure Global Services omvat op dit moment alleen Azure DevOps. \
+* * Autorisatie vereist van micro soft, Zie [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md)\
+CRM Online ondersteunt Dynamics v 8.2 en lager. Voor hogere versies selecteert u de regionale Community voor uw Dynamics-implementaties.
 
 > [!NOTE]
 > BGP-communitywaarden die u instelt op de routes die worden geadverteerd naar Microsoft, worden niet door Microsoft erkend.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: een VNet koppelen aan circuit: CLI'
-description: In dit artikel ziet u hoe u virtuele netwerken (VNets) koppelt aan expressroute-circuits met behulp van het implementatiemodel Resource Manager en CLI.
+title: 'Azure-ExpressRoute: een VNet koppelen aan het circuit: CLI'
+description: In dit artikel wordt beschreven hoe u virtuele netwerken (VNets) koppelt aan ExpressRoute-circuits met behulp van het Resource Manager-implementatie model en de CLI.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,45 +8,45 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476131"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Een virtueel netwerk aansluiten op een ExpressRoute-circuit met CLI
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van CLI
 
-Met dit artikel u virtuele netwerken (VNets) koppelen aan Azure ExpressRoute-circuits met CLI. Als u een koppeling wilt maken met Azure CLI, moeten de virtuele netwerken worden gemaakt met behulp van het implementatiemodel Resource Beheer. Ze kunnen in hetzelfde abonnement, of een deel van een ander abonnement. Als u een andere methode wilt gebruiken om uw VNet aan een ExpressRoute-circuit te verbinden, u een artikel selecteren in de volgende lijst:
+Dit artikel helpt u virtuele netwerken (VNets) te koppelen aan Azure ExpressRoute-circuits met behulp van CLI. Als u een koppeling wilt maken met behulp van Azure CLI, moeten de virtuele netwerken worden gemaakt met behulp van het Resource Manager-implementatie model. Ze kunnen zich in hetzelfde abonnement bevinden of deel uitmaken van een ander abonnement. Als u een andere methode wilt gebruiken om uw VNet te verbinden met een ExpressRoute-circuit, kunt u een artikel selecteren in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-linkvnet-arm.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Zo](expressroute-howto-linkvnet-arm.md)
 > * [Azure-CLI](howto-linkvnet-cli.md)
-> * [Video - Azure-portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell (klassiek)](expressroute-howto-linkvnet-classic.md)
+> * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Power shell (klassiek)](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
 
-* U hebt de nieuwste versie van de command-line interface (CLI) nodig. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
+* U hebt de nieuwste versie van de opdracht regel interface (CLI) nodig. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
 
-* U moet de [vereisten,](expressroute-prerequisites.md) [routeringsvereisten](expressroute-routing.md)en [werkstromen](expressroute-workflows.md) bekijken voordat u met de configuratie begint.
+* U moet de [vereiste onderdelen](expressroute-prerequisites.md), [routerings vereisten](expressroute-routing.md)en [werk stromen](expressroute-workflows.md) controleren voordat u begint met de configuratie.
 
 * U moet een actief ExpressRoute-circuit hebben. 
-  * Volg de instructies om [een ExpressRoute-circuit](howto-circuit-cli.md) te maken en laat het circuit inschakelen door uw connectiviteitsprovider. 
-  * Zorg ervoor dat Azure private peering is geconfigureerd voor uw circuit. Zie het [routeringsartikel configureren](howto-routing-cli.md) voor routeringsinstructies. 
-  * Controleer of Azure private peering is geconfigureerd. De BGP-peering tussen uw netwerk en Microsoft moet up zijn, zodat u end-to-end-connectiviteit inschakelen.
-  * Zorg ervoor dat u een virtueel netwerk en een virtuele netwerkgateway hebt gemaakt en volledig is ingericht. Volg de instructies voor [het configureren van een virtuele netwerkgateway voor ExpressRoute.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli) Zorg ervoor `--gateway-type ExpressRoute`dat u .
+  * Volg de instructies voor het [maken van een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit ingeschakeld door uw connectiviteits provider. 
+  * Zorg ervoor dat u persoonlijke Azure-peering voor uw circuit hebt geconfigureerd. Zie het artikel [route ring configureren](howto-routing-cli.md) voor instructies voor route ring. 
+  * Zorg ervoor dat persoonlijke Azure-peering is geconfigureerd. De BGP-peering tussen uw netwerk en micro soft moet actief zijn, zodat u end-to-end connectiviteit kunt inschakelen.
+  * Zorg ervoor dat u een virtueel netwerk en een virtuele netwerk gateway hebt gemaakt en volledig hebt ingericht. Volg de instructies voor het [configureren van een virtuele netwerk gateway voor ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Zorg ervoor dat u `--gateway-type ExpressRoute`gebruikt.
 
-* U maximaal 10 virtuele netwerken koppelen aan een standaard ExpressRoute-circuit. Alle virtuele netwerken moeten zich in dezelfde geopolitieke regio bevinden wanneer ze een standaard ExpressRoute-circuit gebruiken. 
+* U kunt Maxi maal 10 virtuele netwerken koppelen aan een standaard ExpressRoute-circuit. Alle virtuele netwerken moeten zich in dezelfde geopolitieke regio bevinden wanneer een standaard ExpressRoute-circuit wordt gebruikt. 
 
-* Een enkele VNet kan worden gekoppeld aan maximaal vier ExpressRoute-circuits. Gebruik het onderstaande proces om een nieuw verbindingsobject te maken voor elk ExpressRoute-circuit waaru verbinding mee maakt. De ExpressRoute-circuits kunnen in hetzelfde abonnement, verschillende abonnementen of een mix van beide zijn.
+* Eén VNet kan worden gekoppeld aan Maxi maal vier ExpressRoute-circuits. Gebruik de onderstaande procedure om een nieuw verbindings object te maken voor elk ExpressRoute-circuit waarmee u verbinding maakt. De ExpressRoute-circuits kunnen zich in hetzelfde abonnement, verschillende abonnementen of een combi natie van beide bevindt.
 
-* Als u de ExpressRoute premium add-on inschakelt, u een virtueel netwerk buiten de geopolitieke regio van het ExpressRoute-circuit koppelen of een groter aantal virtuele netwerken verbinden met uw ExpressRoute-circuit. Zie de [veelgestelde vragen voor](expressroute-faqs.md)meer informatie over de premium add-on.
+* Als u de Premium-invoeg toepassing ExpressRoute inschakelt, kunt u een virtueel netwerk koppelen buiten de geopolitieke regio van het ExpressRoute-circuit of een groter aantal virtuele netwerken verbinden met uw ExpressRoute-circuit. Raadpleeg de [Veelgestelde vragen](expressroute-faqs.md)voor meer informatie over de Premium-invoeg toepassing.
 
-## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Een virtueel netwerk in hetzelfde abonnement aansluiten op een circuit
+## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Een virtueel netwerk in hetzelfde abonnement verbinden met een circuit
 
-U een virtuele netwerkgateway aansluiten op een ExpressRoute-circuit met behulp van het voorbeeld. Zorg ervoor dat de virtuele netwerkgateway is gemaakt en klaar is voor koppeling voordat u de opdracht uitvoert.
+U kunt een virtuele netwerk gateway verbinden met een ExpressRoute-circuit met behulp van het voor beeld. Zorg ervoor dat de virtuele netwerk gateway is gemaakt en gereed is voor koppeling voordat u de opdracht uitvoert.
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
@@ -54,36 +54,36 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Een virtueel netwerk in een ander abonnement verbinden met een circuit
 
-U een ExpressRoute-circuit delen via meerdere abonnementen. De onderstaande figuur toont een eenvoudig schema van hoe delen werkt voor ExpressRoute-circuits over meerdere abonnementen.
+U kunt een ExpressRoute-circuit delen tussen meerdere abonnementen. In de afbeelding hieronder ziet u hoe delen werkt voor ExpressRoute-circuits voor meerdere abonnementen.
 
-Elk van de kleinere clouds binnen de grote cloud wordt gebruikt om abonnementen weer te geven die behoren tot verschillende afdelingen binnen een organisatie. Elk van de afdelingen binnen de organisatie kan hun eigen abonnement gebruiken voor het implementeren van hun services - maar ze kunnen één ExpressRoute-circuit delen om verbinding te maken met uw on-premises netwerk. Eén afdeling (in dit voorbeeld: IT) kan eigenaar zijn van het ExpressRoute circuit. Andere abonnementen binnen de organisatie kunnen gebruik maken van het ExpressRoute circuit.
+Elk van de kleinere Clouds in de grote Cloud wordt gebruikt om abonnementen weer te geven die deel uitmaken van verschillende afdelingen binnen een organisatie. Elk van de afdelingen in de organisatie kan hun eigen abonnement gebruiken voor het implementeren van hun services, maar ze kunnen een enkel ExpressRoute-circuit delen om verbinding te maken met uw on-premises netwerk. Eén afdeling (in dit voor beeld: IT) kan eigenaar zijn van het ExpressRoute-circuit. Andere abonnementen binnen de organisatie kunnen het ExpressRoute-circuit gebruiken.
 
 > [!NOTE]
-> Connectiviteit en bandbreedte kosten voor de dedicated circuit zal worden toegepast op de ExpressRoute Circuit Eigenaar. Alle virtuele netwerken delen dezelfde bandbreedte.
+> Connectiviteits-en bandbreedte kosten voor het specifieke circuit worden toegepast op de eigenaar van het ExpressRoute-circuit. Alle virtuele netwerken delen dezelfde band breedte.
 > 
 > 
 
-![Connectiviteit met abonnementen voor abonnementen](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
+![Connectiviteit tussen abonnementen](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
-### <a name="administration---circuit-owners-and-circuit-users"></a>Administratie - Circuit eigenaren en circuit gebruikers
+### <a name="administration---circuit-owners-and-circuit-users"></a>Beheer-circuit eigen aren en circuit gebruikers
 
-De 'Circuit Owner' is een geautoriseerde Power User van de ExpressRoute circuit resource. De circuiteigenaar kan autorisaties maken die kunnen worden ingewisseld door 'Circuit-gebruikers'. Circuit Gebruikers zijn eigenaren van virtuele netwerk gateways die niet binnen hetzelfde abonnement als de ExpressRoute circuit. Circuitgebruikers kunnen autorisaties inwisselen (één autorisatie per virtueel netwerk).
+De ' circuit eigenaar ' is een geautoriseerde hoofd gebruiker van de ExpressRoute-circuit resource. De eigenaar van het circuit kan autorisaties maken die kunnen worden ingewisseld door ' circuit gebruikers '. Circuit gebruikers zijn eigen aren van virtuele netwerk gateways die zich niet in hetzelfde abonnement bevinden als het ExpressRoute-circuit. Circuit gebruikers kunnen autorisaties inwisselen (één autorisatie per virtueel netwerk).
 
-De circuiteigenaar heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Wanneer een autorisatie wordt ingetrokken, worden alle koppelingsverbindingen verwijderd uit het abonnement waarvan de toegang is ingetrokken.
+De eigenaar van het circuit heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Wanneer een autorisatie wordt ingetrokken, worden alle koppelings verbindingen verwijderd uit het abonnement waarvan de toegang is ingetrokken.
 
-### <a name="circuit-owner-operations"></a>Circuit eigenaar operaties
+### <a name="circuit-owner-operations"></a>Bewerkingen voor circuit eigenaars
 
 **Een autorisatie maken**
 
-De circuiteigenaar maakt een autorisatie, waarmee een autorisatiesleutel wordt gemaakt die door een circuitgebruiker kan worden gebruikt om hun virtuele netwerkgateways aan te sluiten op het ExpressRoute-circuit. Een autorisatie is geldig voor slechts één verbinding.
+De eigenaar van het circuit maakt een autorisatie, waarmee een autorisatie sleutel wordt gemaakt die door een circuit gebruiker kan worden gebruikt om de virtuele netwerk gateways te verbinden met het ExpressRoute-circuit. Een autorisatie is slechts voor één verbinding geldig.
 
-In het volgende voorbeeld ziet u hoe u een autorisatie maakt:
+In het volgende voor beeld ziet u hoe u een autorisatie maakt:
 
 ```azurecli
 az network express-route auth create --circuit-name MyCircuit -g ExpressRouteResourceGroup -n MyAuthorization
 ```
 
-Het antwoord bevat de autorisatiesleutel en -status:
+Het antwoord bevat de autorisatie sleutel en-status:
 
 ```output
 "authorizationKey": "0a7f3020-541f-4b4b-844a-5fb43472e3d7",
@@ -97,7 +97,7 @@ Het antwoord bevat de autorisatiesleutel en -status:
 
 **Autorisaties controleren**
 
-De eigenaar van het circuit kan alle autorisaties die op een bepaald circuit zijn uitgegeven, controleren door het volgende voorbeeld uit te voeren:
+De eigenaar van het circuit kan alle autorisaties controleren die op een bepaald circuit worden uitgegeven door het volgende voor beeld uit te voeren:
 
 ```azurecli
 az network express-route auth list --circuit-name MyCircuit -g ExpressRouteResourceGroup
@@ -105,7 +105,7 @@ az network express-route auth list --circuit-name MyCircuit -g ExpressRouteResou
 
 **Autorisaties toevoegen**
 
-De eigenaar van het circuit kan autorisaties toevoegen met behulp van het volgende voorbeeld:
+De eigenaar van het circuit kan autorisaties toevoegen met behulp van het volgende voor beeld:
 
 ```azurecli
 az network express-route auth create --circuit-name MyCircuit -g ExpressRouteResourceGroup -n MyAuthorization1
@@ -113,55 +113,55 @@ az network express-route auth create --circuit-name MyCircuit -g ExpressRouteRes
 
 **Autorisaties verwijderen**
 
-De eigenaar van het circuit kan autorisaties voor de gebruiker intrekken/verwijderen door het volgende voorbeeld uit te voeren:
+De eigenaar van het circuit kan autorisaties voor de gebruiker intrekken/verwijderen door het volgende voor beeld uit te voeren:
 
 ```azurecli
 az network express-route auth delete --circuit-name MyCircuit -g ExpressRouteResourceGroup -n MyAuthorization1
 ```
 
-### <a name="circuit-user-operations"></a>Gebruikersbewerkingen van circuit
+### <a name="circuit-user-operations"></a>Gebruikers bewerkingen circuit
 
-De Circuit-gebruiker heeft de peer-ID en een autorisatiesleutel van de circuiteigenaar nodig. De autorisatiesleutel is een GUID.
+De circuit gebruiker heeft de peer-ID en een autorisatie sleutel nodig van de eigenaar van het circuit. De autorisatie sleutel is een GUID.
 
 ```powershell
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Een verbindingsautorisatie inwisselen**
+**Een verbindings autorisatie inwisselen**
 
-De circuitgebruiker kan het volgende voorbeeld uitvoeren om een koppelingsautorisatie in te wisselen:
+De circuit gebruiker kan het volgende voor beeld uitvoeren om een koppelings autorisatie in te wisselen:
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit --authorization-key "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**Een verbindingsautorisatie vrijgeven**
+**Een verbindings autorisatie vrijgeven**
 
-U een autorisatie vrijgeven door de verbinding te verwijderen die het ExpressRoute-circuit koppelt aan het virtuele netwerk.
+U kunt een autorisatie vrijgeven door de verbinding die het ExpressRoute-circuit koppelt, te verwijderen in het virtuele netwerk.
 
-## <a name="modify-a-virtual-network-connection"></a>Een virtuele netwerkverbinding wijzigen
-U bepaalde eigenschappen van een virtuele netwerkverbinding bijwerken. 
+## <a name="modify-a-virtual-network-connection"></a>Een virtuele netwerk verbinding wijzigen
+U kunt bepaalde eigenschappen van een virtuele netwerk verbinding bijwerken. 
 
-**Het verbindingsgewicht bijwerken**
+**Het verbindings gewicht bijwerken**
 
-Uw virtuele netwerk kan worden aangesloten op meerdere ExpressRoute-circuits. U hetzelfde voorvoegsel van meer dan één ExpressRoute-circuit ontvangen. Als u wilt kiezen welke verbinding verkeer wilt verzenden dat is bestemd voor dit voorvoegsel, u *Routeweggewicht* van een verbinding wijzigen. Verkeer wordt verzonden op de verbinding met het hoogste *routegewicht.*
+Uw virtuele netwerk kan worden verbonden met meerdere ExpressRoute-circuits. U kunt hetzelfde voor voegsel van meer dan één ExpressRoute-circuit ontvangen. U kunt de *RoutingWeight* van een verbinding wijzigen om te kiezen welke verbinding moet worden verzonden naar het verkeer dat bestemd is voor dit voor voegsel. Verkeer wordt verzonden via de verbinding met de hoogste *RoutingWeight*.
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
 ```
 
-Het bereik van *RoutingWeight* is 0 tot 32000. De standaardwaarde is 0.
+Het bereik van *RoutingWeight* is 0 tot en met 32000. De standaardwaarde is 0.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath configureren 
-U [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) inschakelen als uw ExpressRoute-circuit zich op [ExpressRoute Direct bevindt](expressroute-erdirect-about.md) en uw virtuele newtork-gateway Ultra Performance of ErGw3AZ is. FastPath verbetert de voorvorm van gegevenspaden, zoals pakketten per seconde en verbindingen per seconde tussen uw on-premises netwerk en uw virtuele netwerk. 
+U kunt [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) inschakelen als uw ExpressRoute-circuit zich op [ExpressRoute direct](expressroute-erdirect-about.md) bevindt en uw virtuele netwerk-gateway zeer presteert of ErGw3AZ. FastPath verbetert de preformiteit van het gegevenspad, zoals pakketten per seconde, en verbindingen per seconde tussen uw on-premises netwerk en het virtuele netwerk. 
 
-**FastPath configureren op een nieuwe verbinding**
+**FastPath configureren voor een nieuwe verbinding**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
-**Een bestaande verbinding bijwerken om FastPath in te schakelen**
+**Een bestaande verbinding bijwerken om FastPath in te scha kelen**
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
@@ -169,4 +169,4 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de Veelgestelde vragen over [ExpressRoute voor](expressroute-faqs.md)meer informatie over ExpressRoute.
+Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md)voor meer informatie over ExpressRoute.

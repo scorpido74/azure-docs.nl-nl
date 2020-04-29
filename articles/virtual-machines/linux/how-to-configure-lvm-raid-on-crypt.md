@@ -1,6 +1,6 @@
 ---
-title: LVM en RAID configureren op versleutelde apparaten - Azure Disk Encryption
-description: Dit artikel bevat instructies voor het configureren van LVM en RAID op versleutelde apparaten voor Linux VM's.
+title: LVM en RAID op versleutelde apparaten configureren-Azure Disk Encryption
+description: Dit artikel bevat instructies voor het configureren van LVM en RAID op versleutelde apparaten voor Linux-Vm's.
 author: jofrance
 ms.service: security
 ms.topic: article
@@ -8,60 +8,60 @@ ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80657445"
 ---
-# <a name="configure-lvm-and-raid-on-encrypted-devices"></a>LVM en RAID configureren op versleutelde apparaten
+# <a name="configure-lvm-and-raid-on-encrypted-devices"></a>LVM en RAID op versleutelde apparaten configureren
 
-Dit artikel is een stapsgewijs proces voor het uitvoeren van Logical Volume Management (LVM) en RAID op versleutelde apparaten. Het proces is van toepassing op de volgende omgevingen:
+Dit artikel is een stapsgewijze procedure voor het uitvoeren van LVM (Logical Volume Management) en RAID op versleutelde apparaten. Het proces is van toepassing op de volgende omgevingen:
 
 - Linux-distributies
-    - RHEL 7,6+
-    - Ubuntu 18.04+
-    - SUSE 12+
-- Azure Disk Encryption single-pass extensie
-- Azure Disk Encryption dual-pass extensie
+    - RHEL 7,6 +
+    - Ubuntu 18.04 +
+    - SUSE 12 +
+- Azure Disk Encryption extensie voor één stap
+- Azure Disk Encryption-extensie voor dubbel slagen
 
 
 ## <a name="scenarios"></a>Scenario's
 
-De procedures in dit artikel ondersteunen de volgende scenario's:  
+De procedures in dit artikel bieden ondersteuning voor de volgende scenario's:  
 
-- LVM configureren bovenop versleutelde apparaten (LVM-on-crypt)
-- RAID configureren bovenop versleutelde apparaten (RAID-on-crypt)
+- LVM boven op versleutelde apparaten configureren (LVM-on-cryptografie)
+- RAID configureren boven op versleutelde apparaten (RAID-on-cryptografie)
 
-Nadat het onderliggende apparaat of de onderliggende apparaten zijn versleuteld, u de LVM- of RAID-structuren bovenop die gecodeerde laag maken. 
+Nadat de onderliggende apparaten zijn versleuteld, kunt u de LVM-of RAID-structuren boven op die versleutelde laag maken. 
 
-De fysieke volumes (PC's) worden gemaakt bovenop de gecodeerde laag. De fysieke volumes worden gebruikt om de volumegroep te maken. U maakt de volumes en voegt de vereiste vermeldingen toe op /etc/fstab. 
+De fysieke volumes (PVs) worden boven op de versleutelde laag gemaakt. De fysieke volumes worden gebruikt om de volume groep te maken. U maakt de volumes en voegt de vereiste vermeldingen toe aan/etc/fstab. 
 
 ![Diagram van de lagen van LVM-structuren](./media/disk-encryption/lvm-raid-on-crypt/000-lvm-raid-crypt-diagram.png)
 
-Op een vergelijkbare manier wordt het RAID-apparaat gemaakt bovenop de gecodeerde laag op de schijven. Bovenop het RAID-apparaat wordt een bestandssysteem gemaakt dat als normaal apparaat wordt toegevoegd aan /etc/fstab.
+Op soort gelijke wijze wordt het RAID-apparaat boven op de versleutelde laag op de schijven gemaakt. Een bestands systeem wordt boven op het RAID-apparaat gemaakt en als een normaal apparaat toegevoegd aan bestand/etc/fstab.
 
 ## <a name="considerations"></a>Overwegingen
 
-Wij raden u aan LVM-on-crypt te gebruiken. RAID is een optie wanneer LVM niet kan worden gebruikt vanwege specifieke toepassings- of omgevingsbeperkingen.
+U wordt aangeraden LVM-on-cryptografie te gebruiken. RAID is een optie wanneer LVM niet kan worden gebruikt vanwege specifieke beperkingen voor toepassingen of omgevingen.
 
-U gebruikt de optie **EncryptFormatAll.** Zie [De functie EncryptFormatAll gebruiken voor gegevensschijven op Linux VM's voor](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms)meer informatie over deze optie.
+U gebruikt de **EncryptFormatAll** -optie. Zie [de functie EncryptFormatAll gebruiken voor gegevens schijven op virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms)voor meer informatie over deze optie.
 
-Hoewel u deze methode gebruiken wanneer u het besturingssysteem ook versleutelt, versleutelen we hier alleen gegevensstations.
+Hoewel u deze methode kunt gebruiken wanneer u ook het besturings systeem versleutelt, worden de gegevens stations hier gewoon versleuteld.
 
-De procedures gaan ervan uit dat u de vereisten al hebt gecontroleerd in [Azure Disk Encryption-scenario's op Linux VM's](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) en in [Quickstart: Een Linux-VM maken en versleutelen met de Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
+In de procedures wordt ervan uitgegaan dat u de vereisten in [Azure Disk Encryption scenario's voor Linux-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) en in Quick start al hebt bekeken [: een virtuele Linux-machine maken en versleutelen met de Azure cli](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart).
 
-De Dual-Pass-versie azure diskencryptie bevindt zich op een afschrijvingspad en mag niet langer worden gebruikt op nieuwe versleutelingen.
+De Azure Disk Encryption Dual-Pass-versie bevindt zich op een afschaffing-pad en mag niet meer worden gebruikt voor nieuwe versleuteling.
 
 ## <a name="general-steps"></a>Algemene stappen
 
-Wanneer u de "on-crypt"-configuraties gebruikt, gebruikt u het proces dat in de volgende procedures wordt beschreven.
+Wanneer u de configuraties ' op cryptografie ' gebruikt, gebruikt u het proces dat wordt beschreven in de volgende procedures.
 
 >[!NOTE] 
 >We gebruiken variabelen in het hele artikel. Vervang de waarden dienovereenkomstig.
 
 ### <a name="deploy-a-vm"></a>Een virtuele machine implementeren 
-De volgende opdrachten zijn optioneel, maar we raden u aan deze toe te passen op een nieuw geïmplementeerde virtuele machine (VM).
+De volgende opdrachten zijn optioneel, maar we raden u aan deze toe te passen op een nieuwe geïmplementeerde virtuele machine (VM).
 
 PowerShell:
 
@@ -87,8 +87,8 @@ az vm create \
 --size ${VMSIZE} \
 -o table
 ```
-### <a name="attach-disks-to-the-vm"></a>Schijven aan de VM koppelen
-Herhaal de volgende `$N` opdrachten voor het aantal nieuwe schijven dat u aan de vm wilt koppelen.
+### <a name="attach-disks-to-the-vm"></a>Schijven koppelen aan de virtuele machine
+Herhaal de volgende opdrachten voor `$N` het aantal nieuwe schijven dat u wilt koppelen aan de virtuele machine.
 
 PowerShell:
 
@@ -120,51 +120,51 @@ PowerShell:
 $VM = Get-AzVM -ResourceGroupName ${RGNAME} -Name ${VMNAME}
 $VM.StorageProfile.DataDisks | Select-Object Lun,Name,DiskSizeGB
 ```
-![Lijst met bijgevoegde schijven in PowerShell](./media/disk-encryption/lvm-raid-on-crypt/001-lvm-raid-check-disks-powershell.png)
+![Lijst met gekoppelde schijven in Power shell](./media/disk-encryption/lvm-raid-on-crypt/001-lvm-raid-check-disks-powershell.png)
 
 Azure CLI:
 
 ```bash
 az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.dataDisks -o table
 ```
-![Lijst met bijgevoegde schijven in azure cli](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
+![Lijst met gekoppelde schijven in de Azure CLI](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
 
 Portal:
 
-![Lijst met bijgevoegde schijven in de portal](./media/disk-encryption/lvm-raid-on-crypt/003-lvm-raid-check-disks-portal.png)
+![Lijst met gekoppelde schijven in de portal](./media/disk-encryption/lvm-raid-on-crypt/003-lvm-raid-check-disks-portal.png)
 
 Besturingssysteem:
 
 ```bash
 lsblk 
 ```
-![Lijst met bijgevoegde schijven in het besturingssysteem](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+![Lijst met gekoppelde schijven in het besturings systeem](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
 
-### <a name="configure-the-disks-to-be-encrypted"></a>De schijven configureren om te worden versleuteld
-Deze configuratie gebeurt op het niveau van het besturingssysteem. De bijbehorende schijven zijn geconfigureerd voor een traditionele versleuteling via Azure Disk Encryption:
+### <a name="configure-the-disks-to-be-encrypted"></a>De schijven configureren die moeten worden versleuteld
+Deze configuratie wordt uitgevoerd op het niveau van het besturings systeem. De bijbehorende schijven zijn geconfigureerd voor een traditionele versleuteling via Azure Disk Encryption:
 
-- Op de schijven worden bestandssystemen gemaakt.
-- Er worden tijdelijke bevestigingspunten gemaakt om de bestandssystemen te monteren.
-- Bestandssystemen zijn geconfigureerd op /etc/fstab om te worden gemonteerd bij het opstarten.
+- Bestands systemen worden boven op de schijven gemaakt.
+- Tijdelijke koppel punten worden gemaakt om de bestands systemen te koppelen.
+- Bestands systemen worden geconfigureerd op bestand/etc/fstab om te worden gekoppeld tijdens het opstarten.
 
-Controleer de apparaatletter die aan de nieuwe schijven is toegewezen. In dit voorbeeld gebruiken we vier gegevensschijven.
+Controleer de stationsletter die aan de nieuwe schijven is toegewezen. In dit voor beeld gebruiken we vier gegevens schijven.
 
 ```bash
 lsblk 
 ```
-![Gegevensschijven die aan het besturingssysteem zijn gekoppeld](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+![Gegevens schijven die zijn gekoppeld aan het besturings systeem](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
 
-### <a name="create-a-file-system-on-top-of-each-disk"></a>Een bestandssysteem maken boven op elke schijf
-Deze opdracht verlegt de creatie van een ext4-bestandssysteem op elke schijf die is gedefinieerd op het "in" deel van de "voor"-cyclus.
+### <a name="create-a-file-system-on-top-of-each-disk"></a>Een bestands systeem boven op elke schijf maken
+Met deze opdracht wordt het maken van een ext4-bestands systeem herhaald op elke schijf die is gedefinieerd in het deel van de for-cyclus.
 
 ```bash
 for disk in c d e f; do echo mkfs.ext4 -F /dev/sd${disk}; done |bash
 ```
-![Het creëren van een ext4-bestandssysteem](./media/disk-encryption/lvm-raid-on-crypt/005-lvm-raid-create-temp-fs.png)
+![Maken van een ext4-bestands systeem](./media/disk-encryption/lvm-raid-on-crypt/005-lvm-raid-create-temp-fs.png)
 
-Zoek de universeel unieke id (UUID) van de bestandssystemen die u onlangs hebt gemaakt, maak een tijdelijke map, voeg de bijbehorende vermeldingen toe op /etc/fstab en monteer alle bestandssystemen.
+Zoek de UUID (Universally Unique Identifier) van de bestands systemen die u onlangs hebt gemaakt, maak een tijdelijke map, voeg de bijbehorende vermeldingen toe aan bestand/etc/fstab en koppel alle bestands systemen.
 
-Deze opdracht wordt ook herhaald op elke schijf die is gedefinieerd op het "in" deel van de "voor"-cyclus:
+Met deze opdracht wordt ook herhaald op elke schijf die is gedefinieerd in het deel van de cyclus ' voor ':
 
 ```bash
 for disk in c d e f; do diskuuid="$(blkid -s UUID -o value /dev/sd${disk})"; \
@@ -174,11 +174,11 @@ mount -a; \
 done
 ``` 
 
-### <a name="verify-that-the-disks-are-mounted-properly"></a>Controleren of de schijven goed zijn gemonteerd
+### <a name="verify-that-the-disks-are-mounted-properly"></a>Controleren of de schijven goed zijn gekoppeld
 ```bash
 lsblk
 ```
-![Lijst van gemonteerde tijdelijke bestandssystemen](./media/disk-encryption/lvm-raid-on-crypt/006-lvm-raid-verify-temp-fs.png)
+![Lijst met gekoppelde tijdelijke bestands systemen](./media/disk-encryption/lvm-raid-on-crypt/006-lvm-raid-verify-temp-fs.png)
 
 Controleer ook of de schijven zijn geconfigureerd:
 
@@ -187,8 +187,8 @@ cat /etc/fstab
 ```
 ![Configuratie-informatie via fstab](./media/disk-encryption/lvm-raid-on-crypt/007-lvm-raid-verify-temp-fstab.png)
 
-### <a name="encrypt-the-data-disks"></a>De gegevensschijven versleutelen
-PowerShell met behulp van een sleutelversleutelingssleutel (KEK):
+### <a name="encrypt-the-data-disks"></a>De gegevens schijven versleutelen
+Power shell met een sleutel versleutelings sleutel (KEK):
 
 ```powershell
 $sequenceVersion = [Guid]::NewGuid() 
@@ -204,7 +204,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGNAME `
 -skipVmBackup;
 ```
 
-Azure CLI met een KEK:
+Azure CLI met behulp van een KEK:
 
 ```bash
 az vm encryption enable \
@@ -217,76 +217,76 @@ az vm encryption enable \
 --encrypt-format-all \
 -o table
 ```
-### <a name="verify-the-encryption-status"></a>De versleutelingsstatus verifiëren
+### <a name="verify-the-encryption-status"></a>De versleutelings status controleren
 
-Ga alleen door naar de volgende stap wanneer alle schijven zijn versleuteld.
+Ga door naar de volgende stap alleen wanneer alle schijven zijn versleuteld.
 
 PowerShell:
 
 ```powershell
 Get-AzVmDiskEncryptionStatus -ResourceGroupName ${RGNAME} -VMName ${VMNAME}
 ```
-![Versleutelingsstatus in PowerShell](./media/disk-encryption/lvm-raid-on-crypt/008-lvm-raid-verify-encryption-status-ps.png)
+![Versleutelings status in Power shell](./media/disk-encryption/lvm-raid-on-crypt/008-lvm-raid-verify-encryption-status-ps.png)
 
 Azure CLI:
 
 ```bash
 az vm encryption show -n ${VMNAME} -g ${RGNAME} -o table
 ```
-![Versleutelingsstatus in azure cli](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
+![Versleutelings status in de Azure CLI](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
 
 Portal:
 
-![Versleutelingsstatus in de portal](./media/disk-encryption/lvm-raid-on-crypt/010-lvm-raid-verify-encryption-status-portal.png)
+![Versleutelings status in de portal](./media/disk-encryption/lvm-raid-on-crypt/010-lvm-raid-verify-encryption-status-portal.png)
 
-OS-niveau:
+BESTURINGSSYSTEEM niveau:
 
 ```bash
 lsblk
 ```
-![Versleutelingsstatus in het besturingssysteem](./media/disk-encryption/lvm-raid-on-crypt/011-lvm-raid-verify-encryption-status-os.png)
+![Versleutelings status in het besturings systeem](./media/disk-encryption/lvm-raid-on-crypt/011-lvm-raid-verify-encryption-status-os.png)
 
-De extensie voegt de bestandssystemen toe aan /var/lib/azure_disk_encryption_config/azure_crypt_mount (een oude encryptie) of aan /etc/crypttab (nieuwe encryptie).
+De uitbrei ding voegt de bestands systemen toe aan/var/lib/azure_disk_encryption_config/azure_crypt_mount (een oude versleuteling) of/etc/crypttab (nieuwe versleuteling).
 
 >[!NOTE] 
 >Wijzig geen van deze bestanden.
 
-Dit bestand zorgt ervoor dat deze schijven tijdens het opstartproces worden geactiveerd, zodat LVM of RAID ze later kunnen gebruiken. 
+Dit bestand zorgt ervoor dat deze schijven tijdens het opstart proces worden geactiveerd, zodat LVM of RAID ze later kunnen gebruiken. 
 
-Maak je geen zorgen over de bevestigingspunten in dit bestand. Azure Disk Encryption verliest de mogelijkheid om de schijven te laten monteren als een normaal bestandssysteem nadat we een fysiek volume of een RAID-apparaat bovenop die versleutelde apparaten hebben gemaakt. (Hiermee wordt de bestandssysteemindeling verwijderd die we tijdens het voorbereidingsproces hebben gebruikt.)
+U hoeft zich geen zorgen te maken over de koppel punten van dit bestand. Azure Disk Encryption verliest de mogelijkheid om de schijven te verkrijgen die zijn gekoppeld als een normaal bestands systeem nadat u een fysiek volume of een RAID-apparaat hebt gemaakt boven op die versleutelde apparaten. (Hiermee wordt de bestandssysteem indeling verwijderd die we tijdens het voorbereidings proces hebben gebruikt.)
 
-### <a name="remove-the-temporary-folders-and-temporary-fstab-entries"></a>De tijdelijke mappen en tijdelijke fstab-items verwijderen
-U ontkoppelt de bestandssystemen op de schijven die worden gebruikt als onderdeel van LVM.
+### <a name="remove-the-temporary-folders-and-temporary-fstab-entries"></a>Tijdelijke mappen en tijdelijke fstab-vermeldingen verwijderen
+U ontkoppelt de bestands systemen op de schijven die worden gebruikt als onderdeel van LVM.
 
 ```bash
 for disk in c d e f; do unmount /tempdata${disk}; done
 ```
-En verwijder de /etc/fstab items:
+En verwijder de bestand/etc/fstab-vermeldingen:
 
 ```bash
 vi /etc/fstab
 ```
-### <a name="verify-that-the-disks-are-not-mounted-and-that-the-entries-on-etcfstab-were-removed"></a>Controleer of de schijven niet zijn gemonteerd en of de vermeldingen op /etc/fstab zijn verwijderd
+### <a name="verify-that-the-disks-are-not-mounted-and-that-the-entries-on-etcfstab-were-removed"></a>Controleer of de schijven niet zijn gekoppeld en of de vermeldingen op bestand/etc/fstab zijn verwijderd
 
 ```bash
 lsblk
 ```
-![Verificatie dat tijdelijke bestandssystemen zijn ontkoppeld](./media/disk-encryption/lvm-raid-on-crypt/012-lvm-raid-verify-disks-not-mounted.png)
+![Verificatie dat tijdelijke bestands systemen niet gekoppeld zijn](./media/disk-encryption/lvm-raid-on-crypt/012-lvm-raid-verify-disks-not-mounted.png)
 
-En controleer of de schijven zijn geconfigureerd:
+Controleer of de schijven zijn geconfigureerd:
 ```bash
 cat /etc/fstab
 ```
-![Controleren of tijdelijke fstab-items worden verwijderd](./media/disk-encryption/lvm-raid-on-crypt/013-lvm-raid-verify-fstab-temp-removed.png)
+![Verificatie dat tijdelijke fstab-vermeldingen worden verwijderd](./media/disk-encryption/lvm-raid-on-crypt/013-lvm-raid-verify-fstab-temp-removed.png)
 
-## <a name="steps-for-lvm-on-crypt"></a>Stappen voor LVM-on-crypt
-Nu de onderliggende schijven zijn versleuteld, u de LVM-structuren maken.
+## <a name="steps-for-lvm-on-crypt"></a>Stappen voor LVM-on-cryptografie
+Nu de onderliggende schijven zijn versleuteld, kunt u de LVM-structuren maken.
 
-In plaats van de apparaatnaam te gebruiken, gebruikt u de /dev/mapperpaden voor elk van de schijven om een fysiek volume te maken (op de cryptelaag bovenop de schijf, niet op de schijf zelf).
+In plaats van de naam van het apparaat te gebruiken, gebruikt u de/dev/mapper-paden voor elk van de schijven om een fysiek volume te maken (op de Crypt-laag boven op de schijf, niet op de schijf zelf).
 
-### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>LVM bovenop de versleutelde lagen configureren
+### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>LVM configureren boven op de versleutelde lagen
 #### <a name="create-the-physical-volumes"></a>De fysieke volumes maken
-U krijgt een waarschuwing waarin wordt gevraagd of het ok is om de handtekening van het bestandssysteem uit te wissen. Ga verder door **y**in te voeren of gebruik **echo "y"** zoals afgebeeld:
+Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd of u de hand tekening van het bestands systeem OK wilt wissen. Ga door met het invoeren van **y**of gebruik **echo ' y '** zoals weer gegeven:
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -294,26 +294,26 @@ echo "y" | pvcreate /dev/mapper/6712ad6f-65ce-487b-aa52-462f381611a1
 echo "y" | pvcreate /dev/mapper/ea607dfd-c396-48d6-bc54-603cf741bc2a
 echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ```
-![Verificatie of er een fysiek volume is gemaakt](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
+![Verificatie dat een fysiek volume is gemaakt](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->De /dev/mapper/device namen hier moeten worden vervangen voor uw werkelijke waarden op basis van de output van **lsblk**.
+>De/dev/mapper/device-namen moeten worden vervangen door de werkelijke waarden op basis van de uitvoer van **lsblk**.
 
-#### <a name="verify-the-information-for-physical-volumes"></a>De informatie voor fysieke volumes verifiëren
+#### <a name="verify-the-information-for-physical-volumes"></a>Controleer de gegevens voor fysieke volumes
 ```bash
 pvs
 ```
 
-![Informatie over fysieke volumes](./media/disk-encryption/lvm-raid-on-crypt/015-lvm-raid-pvs.png)
+![Informatie voor fysieke volumes](./media/disk-encryption/lvm-raid-on-crypt/015-lvm-raid-pvs.png)
 
-#### <a name="create-the-volume-group"></a>De volumegroep maken
-Maak de volumegroep met dezelfde apparaten die al zijn geïnitialiseerd:
+#### <a name="create-the-volume-group"></a>De volume groep maken
+Maak de volume groep met behulp van dezelfde apparaten die al zijn geïnitialiseerd:
 
 ```bash
 vgcreate vgdata /dev/mapper/
 ```
 
-### <a name="check-the-information-for-the-volume-group"></a>De informatie voor de volumegroep controleren
+### <a name="check-the-information-for-the-volume-group"></a>Controleer de informatie voor de volume groep
 
 ```bash
 vgdisplay -v vgdata
@@ -321,7 +321,7 @@ vgdisplay -v vgdata
 ```bash
 pvs
 ```
-![Informatie voor de volumegroep](./media/disk-encryption/lvm-raid-on-crypt/016-lvm-raid-pvs-on-vg.png)
+![Informatie voor de volume groep](./media/disk-encryption/lvm-raid-on-crypt/016-lvm-raid-pvs-on-vg.png)
 
 #### <a name="create-logical-volumes"></a>Logische volumes maken
 
@@ -330,7 +330,7 @@ lvcreate -L 10G -n lvdata1 vgdata
 lvcreate -L 7G -n lvdata2 vgdata
 ``` 
 
-#### <a name="check-the-created-logical-volumes"></a>De gemaakte logische volumes controleren
+#### <a name="check-the-created-logical-volumes"></a>Controleer de gemaakte logische volumes
 
 ```bash
 lvdisplay
@@ -339,21 +339,21 @@ lvdisplay vgdata/lvdata2
 ```
 ![Informatie voor logische volumes](./media/disk-encryption/lvm-raid-on-crypt/017-lvm-raid-lvs.png)
 
-#### <a name="create-file-systems-on-top-of-the-structures-for-logical-volumes"></a>Bestandssystemen maken bovenop de structuren voor logische volumes
+#### <a name="create-file-systems-on-top-of-the-structures-for-logical-volumes"></a>Bestands systemen boven op de structuren maken voor logische volumes
 
 ```bash
 echo "yes" | mkfs.ext4 /dev/vgdata/lvdata1
 echo "yes" | mkfs.ext4 /dev/vgdata/lvdata2
 ```
 
-#### <a name="create-the-mount-points-for-the-new-file-systems"></a>De bevestigingspunten voor de nieuwe bestandssystemen maken
+#### <a name="create-the-mount-points-for-the-new-file-systems"></a>De koppel punten maken voor de nieuwe bestands systemen
 
 ```bash
 mkdir /data0
 mkdir /data1
 ```
 
-#### <a name="add-the-new-file-systems-to-etcfstab-and-mount-them"></a>Voeg de nieuwe bestandssystemen toe aan /etc/fstab en monteer ze
+#### <a name="add-the-new-file-systems-to-etcfstab-and-mount-them"></a>Voeg de nieuwe bestands systemen toe aan bestand/etc/fstab en koppel ze
 
 ```bash
 echo "/dev/mapper/vgdata-lvdata1 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
@@ -361,26 +361,26 @@ echo "/dev/mapper/vgdata-lvdata2 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
 mount -a
 ```
 
-#### <a name="verify-that-the-new-file-systems-are-mounted"></a>Controleren of de nieuwe bestandssystemen zijn gemonteerd
+#### <a name="verify-that-the-new-file-systems-are-mounted"></a>Controleren of de nieuwe bestands systemen zijn gekoppeld
 
 ```bash
 lsblk -fs
 df -h
 ```
-![Informatie voor gemonteerde bestandssystemen](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![Informatie voor gekoppelde bestands systemen](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-Op deze variant van **lsblk**, we zijn een lijst van de apparaten met de afhankelijkheden in omgekeerde volgorde. Met deze optie u de apparaten identificeren die zijn gegroepeerd op basis van het logische volume in plaats van de oorspronkelijke /dev/sd[schijf] apparaatnamen.
+Op deze variatie van **lsblk**worden de apparaten waarop de afhankelijkheden in omgekeerde volg orde worden weer gegeven. Met deze optie kunt u de apparaten die zijn gegroepeerd op het logische volume identificeren in plaats van de oorspronkelijke/dev/sd [disk]-apparaatnamen.
 
-Het is belangrijk om ervoor te zorgen dat de **nofail-optie** wordt toegevoegd aan de opties voor het instellen van het bevestigingspunt van de LVM-volumes die zijn gemaakt bovenop een apparaat dat is versleuteld via Azure Disk Encryption. Het voorkomt dat het besturingssysteem vast komt te zitten tijdens het opstartproces (of in de onderhoudsmodus).
+Het is belang rijk om ervoor te zorgen dat de **niet-werkende** optie wordt toegevoegd aan de koppel punt opties van de LVM-volumes die boven op een apparaat zijn versleuteld via Azure Disk Encryption. Hiermee wordt voor komen dat het besturings systeem vastloopt tijdens het opstart proces (of in de onderhouds modus).
 
-Als u de **optie nofail** niet gebruikt:
+Als **u de optie niet gebruiken** gebruikt:
 
-- Het besturingssysteem komt nooit in de fase waarin Azure Disk Encryption wordt gestart en de gegevensschijven worden ontgrendeld en gemonteerd. 
-- De versleutelde schijven worden ontgrendeld aan het einde van het opstartproces. De LVM-volumes en bestandssystemen worden automatisch gemonteerd totdat Azure Disk Encryption ze ontgrendelt. 
+- Het besturings systeem wordt nooit weer gegeven in het stadium waar Azure Disk Encryption wordt gestart en de gegevens schijven worden ontgrendeld en gekoppeld. 
+- De versleutelde schijven worden ontgrendeld aan het einde van het opstart proces. De LVM-volumes en bestands systemen worden automatisch gekoppeld totdat Azure Disk Encryption ze ontgrendelt. 
 
-U het opnieuw opstarten van de VM testen en valideren dat de bestandssystemen ook automatisch worden gemonteerd na het opstarten. Dit proces kan enkele minuten duren, afhankelijk van het aantal en de grootte van bestandssystemen.
+U kunt de virtuele machine opnieuw opstarten testen en valideren dat de bestands systemen na het opstarten ook automatisch worden gekoppeld. Dit proces kan enkele minuten duren, afhankelijk van het aantal en de grootte van het bestands systeem.
 
-#### <a name="reboot-the-vm-and-verify-after-reboot"></a>Start de VM opnieuw op en verifieer na opnieuw opstarten
+#### <a name="reboot-the-vm-and-verify-after-reboot"></a>De virtuele machine opnieuw opstarten en controleren na opnieuw opstarten
 
 ```bash
 shutdown -r now
@@ -389,10 +389,10 @@ shutdown -r now
 lsblk
 df -h
 ```
-## <a name="steps-for-raid-on-crypt"></a>Stappen voor RAID-on-crypt
-Nu de onderliggende schijven zijn versleuteld, u doorgaan met het maken van de RAID-structuren. Het proces is hetzelfde als het proces voor LVM, maar in plaats van de apparaatnaam te gebruiken, gebruikt u de /dev/mapperpaden voor elke schijf.
+## <a name="steps-for-raid-on-crypt"></a>Stappen voor RAID-op-cryptografie
+Nu de onderliggende schijven zijn versleuteld, kunt u door gaan met het maken van de RAID-structuren. Het proces is hetzelfde als het voor LVM, maar in plaats van de apparaatnaam te gebruiken, gebruikt u de/dev/mapper-paden voor elke schijf.
 
-#### <a name="configure-raid-on-top-of-the-encrypted-layer-of-the-disks"></a>RAID configureren bovenop de versleutelde laag van de schijven
+#### <a name="configure-raid-on-top-of-the-encrypted-layer-of-the-disks"></a>Configureer RAID boven op de versleutelde laag van de schijven
 ```bash
 mdadm --create /dev/md10 \
 --level 0 \
@@ -405,9 +405,9 @@ mdadm --create /dev/md10 \
 ![Informatie voor geconfigureerde RAID via de mdadm-opdracht](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->De /dev/mapper/device namen hier moeten worden vervangen door uw werkelijke waarden, gebaseerd op de output van **lsblk**.
+>De/dev/mapper/device-namen moeten worden vervangen door de werkelijke waarden, op basis van de uitvoer van **lsblk**.
 
-### <a name="checkmonitor-raid-creation"></a>RAID-creatie controleren/controleren
+### <a name="checkmonitor-raid-creation"></a>RAID maken controleren/controleren
 ```bash
 watch -n1 cat /proc/mdstat
 mdadm --examine /dev/mapper/[]
@@ -415,12 +415,12 @@ mdadm --detail /dev/md10
 ```
 ![Status van RAID](./media/disk-encryption/lvm-raid-on-crypt/020-lvm-raid-md-details.png)
 
-### <a name="create-a-file-system-on-top-of-the-new-raid-device"></a>Een bestandssysteem maken bovenop het nieuwe RAID-apparaat
+### <a name="create-a-file-system-on-top-of-the-new-raid-device"></a>Een bestands systeem maken boven op het nieuwe RAID-apparaat
 ```bash
 mkfs.ext4 /dev/md10
 ```
 
-Maak een nieuw bevestigingspunt voor het bestandssysteem, voeg het nieuwe bestandssysteem toe aan /etc/fstab en monteer het:
+Maak een nieuw koppel punt voor het bestands systeem, voeg het nieuwe bestands systeem toe aan bestand/etc/fstab en koppel het.
 
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \
@@ -430,28 +430,28 @@ mount -a; \
 done
 ```
 
-Controleer of het nieuwe bestandssysteem is gemonteerd:
+Controleer of het nieuwe bestands systeem is gekoppeld:
 
 ```bash
 lsblk -fs
 df -h
 ```
-![Informatie voor gemonteerde bestandssystemen](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Informatie voor gekoppelde bestands systemen](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
-Het is belangrijk om ervoor te zorgen dat de **nofail-optie** wordt toegevoegd aan de opties voor het instellen van het bevestigingspunt van de RAID-volumes die zijn gemaakt bovenop een apparaat dat is versleuteld via Azure Disk Encryption. Het voorkomt dat het besturingssysteem vast komt te zitten tijdens het opstartproces (of in de onderhoudsmodus).
+Het is belang rijk om ervoor te zorgen dat de **niet-werkende** optie wordt toegevoegd aan de koppel punt opties van de RAID-volumes die boven op een apparaat zijn versleuteld via Azure Disk Encryption. Hiermee wordt voor komen dat het besturings systeem vastloopt tijdens het opstart proces (of in de onderhouds modus).
 
-Als u de **optie nofail** niet gebruikt:
+Als **u de optie niet gebruiken** gebruikt:
 
-- Het besturingssysteem komt nooit in de fase waarin Azure Disk Encryption wordt gestart en de gegevensschijven worden ontgrendeld en gemonteerd.
-- De versleutelde schijven worden ontgrendeld aan het einde van het opstartproces. De RAID-volumes en bestandssystemen worden automatisch gemonteerd totdat Azure Disk Encryption ze ontgrendelt.
+- Het besturings systeem wordt nooit weer gegeven in het stadium waar Azure Disk Encryption wordt gestart en de gegevens schijven worden ontgrendeld en gekoppeld.
+- De versleutelde schijven worden ontgrendeld aan het einde van het opstart proces. De RAID-volumes en bestands systemen worden automatisch gekoppeld totdat Azure Disk Encryption ze ontgrendelt.
 
-U het opnieuw opstarten van de VM testen en valideren dat de bestandssystemen ook automatisch worden gemonteerd na het opstarten. Dit proces kan enkele minuten duren, afhankelijk van het aantal en de grootte van bestandssystemen.
+U kunt de virtuele machine opnieuw opstarten testen en valideren dat de bestands systemen na het opstarten ook automatisch worden gekoppeld. Dit proces kan enkele minuten duren, afhankelijk van het aantal en de grootte van het bestands systeem.
 
 ```bash
 shutdown -r now
 ```
 
-En wanneer u inloggen:
+En wanneer u zich kunt aanmelden:
 
 ```bash
 lsblk

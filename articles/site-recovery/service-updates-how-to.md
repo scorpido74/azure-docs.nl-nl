@@ -1,6 +1,6 @@
 ---
-title: Updates en componentupgrades in Azure Site Recovery
-description: Biedt een overzicht van updates van de Azure Site Recovery-service en componentupgrades.
+title: Updates en onderdeel upgrades in Azure Site Recovery
+description: Hierin wordt een overzicht gegeven van Azure Site Recovery service-updates en onderdeel upgrades.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,137 +8,137 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257821"
 ---
-# <a name="service-updates-in-site-recovery"></a>Service-updates in Site recovery
+# <a name="service-updates-in-site-recovery"></a>Service-updates in Site Recovery
 
-In dit artikel vindt u een overzicht van [Azure Site Recovery-updates](site-recovery-overview.md) en wordt beschreven hoe u siteherstelcomponenten upgraden.
+In dit artikel vindt u een overzicht van [Azure site Recovery](site-recovery-overview.md) updates en wordt beschreven hoe u site Recovery-onderdelen bijwerkt.
 
-Site Recovery publiceert regelmatig service-updates. Updates bevatten nieuwe functies, ondersteuningsverbeteringen, componentupdates en bugfixes. Om te profiteren van de nieuwste functies en oplossingen, raden we u aan de nieuwste versies van Site Recovery-componenten uit te voeren. 
+Site Recovery service-updates regel matig te publiceren. Updates bevatten nieuwe functies, ondersteuning voor verbeteringen, onderdeel updates en oplossingen voor oplossingen. Als u de nieuwste functies en oplossingen wilt gebruiken, raden we u aan om de nieuwste versies van Site Recovery-onderdelen uit te voeren. 
  
  
 ## <a name="updates-support"></a>Ondersteuning voor updates
 
-### <a name="support-statement-for-azure-site-recovery"></a>Ondersteuningsinstructie voor Azure Site Recovery
+### <a name="support-statement-for-azure-site-recovery"></a>Ondersteunings verklaring voor Azure Site Recovery
 
-We raden u aan altijd te upgraden naar de nieuwste componentversies:
+U wordt aangeraden altijd een upgrade uit te voeren naar de nieuwste versie van het onderdeel:
 
-**Bij elke nieuwe versie 'N' van een Azure Site Recovery-component die is uitgebracht, worden alle versies onder 'N-4' als buiten de ondersteuning beschouwd.** 
+**Bij elke nieuwe versie ' n ' van een Azure site Recovery onderdeel dat wordt uitgebracht, worden alle versies onder N-4 als niet-ondersteund beschouwd**. 
 
 > [!IMPORTANT]
-> Officiële ondersteuning is voor het upgraden van > N-4 versie naar N-versie. Als u bijvoorbeeld n-6 uitvoert, moet u eerst upgraden naar N-4 en vervolgens upgraden naar N.
+> Officiële ondersteuning is voor het upgraden van > N-4-versie naar een N-versie. Als u bijvoorbeeld werkt met N-6, moet u eerst upgraden naar N-4 en vervolgens upgraden naar N.
 
 
-### <a name="links-to-currently-supported-update-rollups"></a>Koppelingen naar momenteel ondersteunde update-rollups
+### <a name="links-to-currently-supported-update-rollups"></a>Koppelingen naar momenteel ondersteunde update pakketten
 
- Bekijk de laatste update rollup (versie N) in [dit artikel](site-recovery-whats-new.md). Vergeet niet dat Site Recovery ondersteuning biedt voor N-4-versies.
+ Bekijk het meest recente update pakket (versie N) in [dit artikel](site-recovery-whats-new.md). Houd er rekening mee dat Site Recovery ondersteuning biedt voor N-4-versies.
 
 
 
-## <a name="component-expiry"></a>Het verlopen van onderdelen
+## <a name="component-expiry"></a>Verval datum onderdeel
 
-Site recovery waarschuwt u over verlopen onderdelen (of het naderen van het verstrijken) per e-mail (als u zich hebt geabonneerd op e-mailmeldingen) of op het dashboard van de kluis in de portal.
+Site Recovery waarschuwt u voor verlopen onderdelen (of bijna verlopen) via e-mail (als u zich hebt geabonneerd op e-mail meldingen) of in het kluis dashboard in de portal.
 
-- Bovendien verschijnt er in de infrastructuurweergave voor uw scenario in de portal een knop **Update** beschikbaar naast het onderdeel wanneer er updates beschikbaar zijn. Deze knop verwijst u door naar een link voor het downloaden van de nieuwste componentversie.
--  Meldingen van vaults-dashboard zijn niet beschikbaar als u Hyper-V VM's repliceert. 
+- Wanneer er updates beschikbaar zijn, wordt er in de infrastructuur weergave voor uw scenario in de portal ook een knop **Update beschikbaar** weer gegeven naast het onderdeel. Met deze knop wordt u omgeleid naar een koppeling voor het downloaden van de nieuwste versie van het onderdeel.
+-  Waarschuwingen voor het dash board zijn niet beschikbaar als u virtuele Hyper-V-machines repliceert. 
 
-E-mails meldingen worden verzonden als volgt.
+E-mail meldingen worden als volgt verzonden.
 
-**Tijd** | **Frequentie**
+**Tegelijk** | **Frequentie**
 --- | ---
-60 dagen voor het verstrijken van de component | Eenmaal tweewekelijks
-Volgende 53 dagen | Eén keer per week
-Laatste 7 dagen | Eenmaal per dag
-Na afloop | Eenmaal tweewekelijks
+60 dagen voor het verval van het onderdeel | Eenmaal per twee weken
+Volgende 53 dagen | Eenmaal per week
+Afgelopen 7 dagen | Eenmaal per dag
+Na verloop datum | Eenmaal per twee weken
 
 
-### <a name="upgrading-outside-official-support"></a>Upgraden van externe officiële ondersteuning
+### <a name="upgrading-outside-official-support"></a>Upgrade uitvoeren buiten officiële ondersteuning
 
-Als het verschil tussen uw componentversie en de nieuwste versie groter is dan vier, wordt dit als niet-ondersteuning beschouwd. Upgrade in dit geval als volgt: 
+Als het verschil tussen de versie van uw onderdeel en de meest recente release versie meer dan vier zijn, wordt dit beschouwd als niet-ondersteund. In dit geval moet u de volgende upgrade uitvoeren: 
 
-1. Upgrade het momenteel geïnstalleerde onderdeel naar uw huidige versie plus vier. Als uw versie bijvoorbeeld 9.16 is, u upgraden naar 9,20.
-2. Upgrade vervolgens naar de volgende compatibele versie. Dus in ons voorbeeld, na het upgraden van 9,16 naar 9,20, upgrade naar 9,24. 
+1. Voer een upgrade uit van het momenteel geïnstalleerde onderdeel naar uw huidige versie plus vier. Als uw versie bijvoorbeeld 9,16 is, voert u een upgrade uit naar 9,20.
+2. Voer vervolgens een upgrade uit naar de volgende compatibele versie. In het voor beeld, na de upgrade van 9,16 naar 9,20, voert u een upgrade uit naar 9,24. 
 
-Volg hetzelfde proces voor alle relevante componenten.
+Volg hetzelfde proces voor alle relevante onderdelen.
 
-### <a name="support-for-latest-operating-systemskernels"></a>Ondersteuning voor de nieuwste besturingssystemen/kernels
+### <a name="support-for-latest-operating-systemskernels"></a>Ondersteuning voor de nieuwste besturings systemen/kernels
 
 > [!NOTE]
-> Als u een onderhoudsvenster hebt gepland en er een reboot in is opgenomen, raden we u aan eerst siteherstelcomponenten te upgraden en vervolgens verder te gaan met de rest van de geplande activiteiten in het onderhoudsvenster.
+> Als u een onderhouds venster hebt gepland en de computer opnieuw wordt opgestart, wordt u aangeraden eerst Site Recovery onderdelen bij te werken en vervolgens door te gaan met de overige geplande activiteiten in het onderhouds venster.
 
-1. Controleer voordat u de versies van het besturingssysteem/de kernel upgradet of de doelversie wordt ondersteund Site Recovery. 
+1. Controleer voordat u de versies van het besturings systeem/de kernel bijwerkt of de doel versie wordt ondersteund Site Recovery. 
 
-    - [Azure VM-ondersteuning.](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)
-    - [Ondersteuning voor VMware/fysieke servers](vmware-physical-azure-support-matrix.md#replicated-machines)
-    - [Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) ondersteuning.
-2. Bekijk [beschikbare updates](site-recovery-whats-new.md) om erachter te komen wat u wilt upgraden.
-3. Upgrade naar de nieuwste siteherstelversie.
-4. Upgrade het besturingssysteem/kernel naar de vereiste versies.
-5. Opnieuw opstarten.
+    - Ondersteuning voor [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) .
+    - Ondersteuning voor [VMware/fysieke server](vmware-physical-azure-support-matrix.md#replicated-machines)
+    - Ondersteuning voor [Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) .
+2. Bekijk de [beschik bare updates](site-recovery-whats-new.md) voor informatie over wat u wilt upgraden.
+3. Voer een upgrade uit naar de nieuwste versie van Site Recovery.
+4. Voer een upgrade uit voor het besturings systeem/de kernel naar de vereiste versies.
+5. Voltooid.
 
 
-Dit proces zorgt ervoor dat het besturingssysteem/de nieuwste versie wordt geüpgraded naar de nieuwste versie en dat de nieuwste wijzigingen in siteherstel die nodig zijn om de nieuwe versie te ondersteunen, op de machine worden geladen.
+Dit proces zorgt ervoor dat het besturings systeem/de kernel van de machine wordt bijgewerkt naar de nieuwste versie en dat de meest recente Site Recovery wijzigingen die nodig zijn om de nieuwe versie te ondersteunen, zijn geladen op de computer.
 
 ## <a name="azure-vm-disaster-recovery-to-azure"></a>Herstel na noodgevallen van virtuele Azure-machines naar Azure
 
-In dit scenario raden we u ten zeerste [aan automatische updates in te schakelen.](azure-to-azure-autoupdate.md) U Site Recovery toestaan om updates als volgt te beheren:
+In dit scenario wordt u ten zeerste aangeraden [Automatische updates in te scha kelen](azure-to-azure-autoupdate.md). U kunt Site Recovery als volgt toestaan om updates te beheren:
 
-- Tijdens het proces van replicatie inschakelen.
-- Door de instellingen voor extensie-updates in de kluis in te stellen.
+- Tijdens het inschakelen van het replicatie proces.
+- Door de instellingen voor de extensie-update in de kluis in te stellen.
 
-Als u updates handmatig wilt beheren, gaat u als volgt te werk:
+Als u updates hand matig wilt beheren, gaat u als volgt te werk:
 
-1. Klik in de kluis > **gerepliceerde items**op deze melding boven aan het scherm: 
+1. Klik in de kluis > **gerepliceerde items**op deze melding aan de bovenkant van het scherm: 
     
-    **Er is een update van de nieuwe replicatieagent voor siteherstel beschikbaar. Klik om ->te installeren**
+    **Er is een nieuwe Site Recovery update voor de replicatie agent beschikbaar. Klik om te installeren->**
 
-4. Selecteer de VM's waarvoor u de update wilt toepassen en klik op **OK**.
+4. Selecteer de Vm's waarvoor u de update wilt Toep assen en klik vervolgens op **OK**.
 
 
-## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>VMware VM/physical server disaster recovery to Azure
+## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Herstel na nood geval voor virtuele VMware-machines en fysieke servers naar Azure
 
-1. Op basis van uw huidige versie en de [ondersteuningsverklaring](#support-statement-for-azure-site-recovery)installeert u de update eerst op de on-premises configuratieserver met behulp van [deze instructies.](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server) 
-2. Als u processervers hebt, werkt u deze vervolgens bij met behulp van [deze instructies.](vmware-azure-manage-process-server.md#upgrade-a-process-server)
-3. Raadpleeg [dit](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) artikel om de mobiliteitsagent op elke beveiligde machine bij te werken.
+1. Op basis van uw huidige versie en de [ondersteunings verklaring](#support-statement-for-azure-site-recovery)installeert u de update eerst op de on-premises configuratie server met behulp van [deze instructies](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). 
+2. Als u scale-out proces servers hebt, moet u deze nu bijwerken met behulp van [deze instructies](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+3. Raadpleeg [Dit](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) artikel voor het bijwerken van de Mobility-agent op elke beveiligde computer.
 
-### <a name="reboot-after-mobility-service-upgrade"></a>Opnieuw opstarten na upgrade van mobility-service
+### <a name="reboot-after-mobility-service-upgrade"></a>Opnieuw opstarten na de upgrade van de Mobility-service
 
-Een reboot wordt aanbevolen na elke upgrade van de Mobility-service, om ervoor te zorgen dat alle laatste wijzigingen op de bronmachine worden geladen.
+Een herstart wordt aanbevolen na elke upgrade van de Mobility-service om ervoor te zorgen dat alle meest recente wijzigingen worden geladen op de bron machine.
 
-Een reboot is niet verplicht, tenzij het verschil tussen de agentversie tijdens de laatste reboot en de huidige versie groter is dan vier.
+Opnieuw opstarten is niet verplicht, tenzij het verschil tussen de agent versie tijdens de laatste keer opnieuw opstarten en de huidige versie groter is dan vier.
 
-Het voorbeeld in de tabel laat zien hoe dit werkt.
+In het voor beeld in de tabel ziet u hoe dit werkt.
 
-|**Agent-versie (laatste reboot)** | **Upgrade naar** | **Verplichte reboot?**|
+|**Agent versie (laatste keer opnieuw opstarten)** | **Upgrade naar** | **Verplicht opnieuw opstarten?**|
 |---------|---------|---------|
-|9.16 |  9.18 | Niet verplicht|
-|9.16 | 9.19 | Niet verplicht|
-| 9.16 | 9.20 | Niet verplicht
- | 9.16 | 9.21 | Verplicht.<br/><br/> Upgrade naar 9,20 en start opnieuw op voordat je een upgrade uitvoert naar 9,21.
+|9,16 |  9,18 | Niet verplicht|
+|9,16 | 9,19 | Niet verplicht|
+| 9,16 | 9,20 | Niet verplicht
+ | 9,16 | 9,21 | Verplicht.<br/><br/> Voer een upgrade uit naar 9,20 en start het systeem opnieuw op voordat u een upgrade uitvoert naar 9,21.
 
 ## <a name="hyper-v-vm-disaster-recovery-to-azure"></a>Herstel na noodgevallen van virtuele Hyper-V-machines naar Azure
 
 ### <a name="between-a-hyper-v-site-and-azure"></a>Tussen een Hyper-V-site en Azure
 
-1. Download de update voor de Microsoft Azure Site Recovery Provider.
-2. Installeer de provider op elke Hyper-V-server die is geregistreerd in Site recovery. Als u een cluster uitvoert, u upgraden naar alle clusterknooppunten.
+1. Down load de update voor de provider van de Microsoft Azure-Site Recovery.
+2. Installeer de provider op elke Hyper-V-server die is geregistreerd in Site Recovery. Als u een cluster uitvoert, voert u een upgrade uit op alle cluster knooppunten.
 
 
 ## <a name="between-an-on-premises-vmm-site-and-azure"></a>Tussen een on-premises VMM-site en Azure
-1. Download de update voor de Microsoft Azure Site Recovery Provider.
-2. Installeer de provider op de VMM-server. Als VMM in een cluster wordt geïmplementeerd, installeert u de provider op alle clusterknooppunten.
-3. Installeer de nieuwste Microsoft Azure Recovery Services-agent op alle Hyper-V-hosts of clusterknooppunten.
+1. Down load de update voor de provider van de Microsoft Azure-Site Recovery.
+2. Installeer de provider op de VMM-server. Als VMM in een cluster is geïmplementeerd, installeert u de provider op alle cluster knooppunten.
+3. Installeer de nieuwste Microsoft Azure Recovery Services-agent op alle Hyper-V-hosts of cluster knooppunten.
 
 
 ## <a name="between-two-on-premises-vmm-sites"></a>Tussen twee on-premises VMM-sites
-1. Download de nieuwste update voor de Microsoft Azure Site Recovery Provider.
-2. Installeer de nieuwste provider op de VMM-server die de secundaire herstelsite beheert. Als VMM in een cluster wordt geïmplementeerd, installeert u de provider op alle clusterknooppunten.
-3. Nadat de herstelsite is bijgewerkt, installeert u de provider op de VMM-server die de primaire site beheert.
+1. Down load de meest recente update voor de provider van de Microsoft Azure-Site Recovery.
+2. Installeer de meest recente provider op de VMM-server die de secundaire herstel site beheert. Als VMM in een cluster is geïmplementeerd, installeert u de provider op alle cluster knooppunten.
+3. Nadat de herstel site is bijgewerkt, installeert u de provider op de VMM-server die de primaire site beheert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg onze [Azure Updates-pagina](https://azure.microsoft.com/updates/?product=site-recovery) om nieuwe updates en releases bij te houden.
+Volg onze pagina met [Azure-updates](https://azure.microsoft.com/updates/?product=site-recovery) om nieuwe updates en releases bij te houden.

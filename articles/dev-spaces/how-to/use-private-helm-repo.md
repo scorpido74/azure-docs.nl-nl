@@ -1,27 +1,27 @@
 ---
-title: Een privé-Helm-opslagplaats gebruiken in Azure Dev Spaces
+title: Een persoonlijke helm-opslag plaats gebruiken in azure dev Spaces
 services: azure-dev-spaces
 author: zr-msft
 ms.author: zarhoads
 ms.date: 08/22/2019
 ms.topic: conceptual
-description: Gebruik een privé-Helm-opslagplaats in een Azure Dev Space.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers, Helm
+description: Gebruik een persoonlijke helm-opslag plaats in een Azure dev-ruimte.
+keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers, helm
 manager: gwallace
 ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240475"
 ---
-# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Een privé-Helm-opslagplaats gebruiken in Azure Dev Spaces
+# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Een persoonlijke helm-opslag plaats gebruiken in azure dev Spaces
 
-[Helm][helm] is package manager voor Kubernetes. Helm gebruikt een [grafiekindeling][helm-chart] om afhankelijkheden te verpakken. Helmdiagrammen worden opgeslagen in een opslagplaats, die openbaar of privé kan zijn. Azure Dev Spaces haalt alleen Helm-diagrammen op uit openbare opslagplaatsen wanneer u uw toepassing uitvoert. In gevallen waarin de Helm-repository privé is of Azure Dev Spaces er geen toegang toe heeft, u een grafiek vanuit die opslagplaats rechtstreeks aan uw toepassing toevoegen. Als u de grafiek rechtstreeks toevoegt, kan Azure Dev Spaces uw toepassing uitvoeren zonder dat u toegang hoeft te krijgen tot de privé-Helm-opslagplaats.
+[Helm][helm] is een pakket beheerder voor Kubernetes. Helm maakt gebruik van een [grafiek][helm-chart] indeling voor pakket afhankelijkheden. Helm-grafieken worden opgeslagen in een opslag plaats, die openbaar of privé kan zijn. Met Azure dev Spaces worden alleen helm-grafieken uit open bare opslag plaatsen opgehaald wanneer uw toepassing wordt uitgevoerd. In gevallen waarin de helm-opslag plaats privé is of Azure dev Spaces geen toegang hebben, kunt u een grafiek van die opslag plaats rechtstreeks aan uw toepassing toevoegen. Door de grafiek rechtstreeks toe te voegen, kunnen Azure-ontwikkel ruimten uw toepassing uitvoeren zonder dat u toegang hebt tot de persoonlijke helm-opslag plaats.
 
-## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Voeg de private Helm-opslagplaats toe aan uw lokale machine
+## <a name="add-the-private-helm-repository-to-your-local-machine"></a>De persoonlijke helm-opslag plaats toevoegen aan uw lokale computer
 
-Gebruik [helm repo toevoegen][helm-repo-add] en roer [repo update][helm-repo-update] om toegang te krijgen tot de prive Helm repository van uw lokale machine.
+Gebruik [helm opslag plaats add][helm-repo-add] and [helm opslag plaats update][helm-repo-update] voor toegang tot de persoonlijke helm-opslag plaats vanaf uw lokale computer.
 
 ```cmd
 helm repo add privateRepoName http://example.com/helm/v1/repo --username user --password 5tr0ng_P@ssw0rd!
@@ -30,16 +30,16 @@ helm repo update
 
 ## <a name="add-the-chart-to-your-application"></a>De grafiek toevoegen aan uw toepassing
 
-Navigeer naar de map van `azds prep`uw project en voer uit.
+Ga naar de directory van uw project en `azds prep`Voer uit.
 
 ```cmd
 azds prep --enable-ingress
 ```
 
 > [!TIP]
-> De `prep` opdracht probeert [een Dockerfile- en Helm-diagram](../how-dev-spaces-works-prep.md#prepare-your-code) voor uw project te genereren. Azure Dev Spaces gebruikt deze bestanden om uw code te bouwen en uit te voeren, maar u deze bestanden wijzigen als u de manier waarop het project is opgebouwd en uitgevoerd wilt wijzigen.
+> Met `prep` deze opdracht wordt geprobeerd [een Dockerfile-en helm-grafiek](../how-dev-spaces-works-prep.md#prepare-your-code) voor uw project te genereren. Azure dev Spaces gebruiken deze bestanden om uw code te bouwen en uit te voeren, maar u kunt deze bestanden wijzigen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
 
-Maak een [requirements.yaml-bestand][helm-requirements] met uw grafiek in de grafiekmap van uw toepassing. Als uw toepassing bijvoorbeeld *app1*wordt genoemd, maakt u *grafieken/app1/requirements.yaml*.
+Maak een [yaml][helm-requirements] -bestand met vereisten voor uw grafiek in de map grafieken van uw toepassing. Als uw toepassing bijvoorbeeld *app1*heet, maakt u *grafieken/app1/vereisten. yaml*.
 
 ```yaml
 dependencies:
@@ -48,19 +48,19 @@ dependencies:
       repository:  http://example.com/helm/v1/repo
 ```
 
-Navigeer naar de grafiekmap van uw toepassing en gebruik [de afhankelijkheidsupdate van het roer][helm-dependency-update] om de afhankelijkheden van het helm voor uw toepassing bij te werken en download de grafiek vanuit de privéopslagplaats.
+Ga naar de grafiek Directory van uw toepassing en gebruik [helm dependency update][helm-dependency-update] om de helm-afhankelijkheden voor uw toepassing bij te werken en de grafiek te downloaden vanuit de privé-opslag plaats.
 
 ```cmd
 helm dependency update
 ```
 
-Controleer of er een *grafiekensubmap* met een *tgz-bestand* is toegevoegd aan de grafiekmap van uw toepassing. *Grafieken/app1/grafieken/mychart-0.1.0.tgz*.
+Controleer of er een submap met *grafieken* met een *tgz* -bestand is toegevoegd aan de grafiek Directory van uw toepassing. Bijvoorbeeld *grafieken/app1/Charts/myChart-0.1.0. tgz*.
 
-De grafiek van uw privé-Helm-opslagplaats is gedownload en toegevoegd aan uw project. Verwijder het *bestand requirements.yaml,* zodat Dev Spaces niet probeert deze afhankelijkheid bij te werken.
+De grafiek uit uw persoonlijke helm-opslag plaats is gedownload en toegevoegd aan uw project. Verwijder het bestand *Requirements. yaml* zodat dev Spaces deze afhankelijkheid niet proberen bij te werken.
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 
-Navigeer naar de hoofdmap van `azds up` uw project en voer deze uit om te controleren of uw toepassing in uw ontwikkelaarsruimte wordt uitgevoerd.
+Ga naar de hoofdmap van het project en voer uit `azds up` om te controleren of de toepassing correct wordt uitgevoerd in uw dev-ruimte.
 
 ```cmd
 $ azds up
@@ -77,7 +77,7 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Helm en hoe het werkt.][helm]
+Meer informatie over [helm en hoe deze werkt][helm].
 
 [helm]: https://docs.helm.sh
 [helm-chart]: https://helm.sh/docs/topics/charts/

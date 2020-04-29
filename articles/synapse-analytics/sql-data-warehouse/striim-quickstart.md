@@ -1,6 +1,6 @@
 ---
-title: Striim snel aan de slag
-description: Ga snel aan de slag met Striim en Azure SQL Data Warehouse.
+title: Quick start voor realtimeplatform
+description: Ga snel aan de slag met Realtimeplatform en Azure SQL Data Warehouse.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,57 +12,57 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349946"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW Marketplace-installatiehandleiding
+# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Installatie handleiding voor Azure SQL DW Marketplace-realtimeplatform
 
-Deze quickstart gaat ervan uit dat u al een reeds bestaande instantie van SQL Data Warehouse hebt.
+In deze Quick Start wordt ervan uitgegaan dat u al een reeds bestaand exemplaar van SQL Data Warehouse hebt.
 
-Zoeken naar Striim in de Azure Marketplace en selecteer de optie Striim voor gegevensintegratie naar SQL Data Warehouse (Gefaseerd) 
+Zoek naar Realtimeplatform in azure Marketplace en selecteer de optie Realtimeplatform voor gegevens integratie met SQL Data Warehouse (klaargezet) 
 
-![Striim installeren][install]
+![Realtimeplatform installeren][install]
 
-De Striim-VM configureren met opgegeven eigenschappen, waarbij het striim-clusternaam,-wachtwoord en beheerderswachtwoord worden vermeld
+Configureer de Realtimeplatform-VM met de opgegeven eigenschappen en noteer de Realtimeplatform-cluster naam, het wacht woord en het beheerders wachtwoord
 
-![Striim configureren][configure]
+![Realtimeplatform configureren][configure]
 
-Eenmaal geïmplementeerd, klikt \<u op VM-naam>-masternode in de Azure-portal, klikt u op Verbinding maken en kopieert u de aanmelding met het lokale VM-account 
+Zodra de implementatie is geïmplementeerd \<, klikt u op de naam van de virtuele machine>-masternode in de Azure Portal, klikt u op verbinding maken en kopieert u de aanmelding met een lokaal VM-account 
 
-![Striim verbinden met SQL Data Warehouse][connect]
+![Realtimeplatform verbinden met SQL Data Warehouse][connect]
 
-Download de sqljdbc42.jar van <https://www.microsoft.com/en-us/download/details.aspx?id=54671> uw lokale machine. 
+Down load het sqljdbc42. jar <https://www.microsoft.com/en-us/download/details.aspx?id=54671> van op uw lokale computer. 
 
-Open een opdrachtregelvenster en wijzig mappen naar de plaats waar u de JDBC-pot hebt gedownload. SCP het jar-bestand naar uw Striim VM, het ophalen van het adres en wachtwoord van de Azure-portal
+Open een opdracht regel venster en wijzig de mappen in de locatie waar u het JDBC-jar hebt gedownload. SCP het jar-bestand naar uw Realtimeplatform-VM en haal het adres en het wacht woord op uit de Azure Portal
 
-![Jar-bestand naar uw vm kopiëren][copy-jar]
+![Jar-bestand kopiëren naar uw VM][copy-jar]
 
-Open een ander opdrachtregelvenster of gebruik een ssh-hulpprogramma om in het Striim-cluster te ssh
+Open een ander opdracht regel venster of gebruik een ssh-hulp programma voor ssh in het Realtimeplatform-cluster
 
 ![SSH in het cluster][ssh]
 
-Voer de volgende opdrachten uit om het JDBC-jarbestand naar de libmap van Striim te verplaatsen en de server te starten en te stoppen.
+Voer de volgende opdrachten uit om het JDBC jar-bestand naar de map lib van Realtimeplatform te verplaatsen en de server te starten en te stoppen.
 
    1. sudo su
-   2. cd /tmp
-   3. mv sqljdbc42.jar /opt/striim/lib
-   4. systemctl stop striim-node
-   5. systemctl stop striim-dbms
-   6. systemctl start striim-dbms
-   7. systemctl start striim-node
+   2. cd-map/tmp
+   3. MV sqljdbc42. jar/opt/striim/lib
+   4. systemctl stoppen realtimeplatform-knoop punt
+   5. systemctl stoppen realtimeplatform-DBMS
+   6. systemctl start realtimeplatform-DBMS
+   7. systemctl start realtimeplatform-node
 
-![Het Striim-cluster starten][start-striim]
+![Het Realtimeplatform-cluster starten][start-striim]
 
-Open nu uw favoriete browser \<en navigeer naar DNS-naam>:9080
+Open nu uw favoriete browser en navigeer naar \<de DNS-naam>:9080
 
-![Navigeren naar het inlogscherm][navigate]
+![Ga naar het aanmeldings scherm][navigate]
 
-Meld u aan met de gebruikersnaam en het wachtwoord dat u in de Azure-portal hebt ingesteld en selecteer de gewenste wizard om aan de slag te gaan of ga naar de pagina Apps om de gebruikersinterface slepen en neerzetten te gebruiken
+Meld u aan met de gebruikers naam en het wacht woord dat u in de Azure Portal hebt ingesteld en selecteer de wizard die u wilt gebruiken om aan de slag te gaan of ga naar de pagina apps om de gebruikers interface te slepen en neer te zetten
 
-![Inloggen met serverreferenties][login]
+![Aanmelden met Server referenties][login]
 
 
 

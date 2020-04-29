@@ -1,6 +1,6 @@
 ---
-title: Problemen met domein- en TLS/SSL-certificaten oplossen
-description: Oplossingen zoeken voor de veelvoorkomende problemen die u tegenkomen wanneer u een domein of TLS/SSL-certificaat configureert in Azure App Service.
+title: Problemen met domein-en TLS/SSL-certificaten oplossen
+description: Vind oplossingen voor de veelvoorkomende problemen die u kunt tegen komen wanneer u een domein-of TLS/SSL-certificaat in Azure App Service configureert.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,49 +9,49 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668028"
 ---
-# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problemen met domein- en TLS/SSL-certificaten oplossen in Azure App Service
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problemen met domein-en TLS/SSL-certificaten in Azure App Service oplossen
 
-In dit artikel worden veelvoorkomende problemen weergegeven die u tegenkomen wanneer u een domein of TLS/SSL-certificaat configureert voor uw webapps in Azure App Service. Het beschrijft ook mogelijke oorzaken en oplossingen voor deze problemen.
+In dit artikel vindt u veelvoorkomende problemen die kunnen optreden wanneer u een domein-of TLS/SSL-certificaat voor uw web-apps configureert in Azure App Service. Hierin worden ook mogelijke oorzaken en oplossingen voor deze problemen beschreven.
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de [Azure-experts op de MSDN- en Stack Overflow-forums.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure Support-site](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="certificate-problems"></a>Certificaatproblemen
+## <a name="certificate-problems"></a>Certificaat problemen
 
-### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>U geen TLS/SSL-certificaat binding aan een app toevoegen 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>U kunt geen TLS/SSL-certificaat binding toevoegen aan een app 
 
 #### <a name="symptom"></a>Symptoom
 
-Wanneer u een TLS-binding toevoegt, ontvangt u het volgende foutbericht:
+Wanneer u een TLS-binding toevoegt, wordt het volgende fout bericht weer gegeven:
 
-"Kan geen SSL-binding toevoegen. Kan geen certificaat instellen voor bestaande VIP omdat een andere VIP dat certificaat al gebruikt."
+Kan de SSL-binding niet toevoegen. Het certificaat kan niet worden ingesteld voor de bestaande VIP omdat een ander VIP al gebruikmaakt van dat certificaat.
 
 #### <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden als u meerdere IP-gebaseerde SSL-bindingen hebt voor hetzelfde IP-adres in meerdere apps. App A heeft bijvoorbeeld een IP-gebaseerde SSL met een oud certificaat. App B heeft een IP-gebaseerde SSL met een nieuw certificaat voor hetzelfde IP-adres. Wanneer u de TLS-binding van de app bijwerkt met het nieuwe certificaat, mislukt deze met deze fout omdat hetzelfde IP-adres wordt gebruikt voor een andere app. 
+Dit probleem kan optreden als u meerdere op IP gebaseerde SSL-bindingen hebt voor hetzelfde IP-adres voor meerdere apps. App A heeft bijvoorbeeld een SSL op basis van IP met een oud certificaat. App B heeft een op IP gebaseerde SSL met een nieuw certificaat voor hetzelfde IP-adres. Wanneer u de TLS-binding van de app bijwerkt met het nieuwe certificaat, mislukt dit met deze fout omdat hetzelfde IP-adres wordt gebruikt voor een andere app. 
 
 #### <a name="solution"></a>Oplossing 
 
-Als u dit probleem wilt oplossen, gebruikt u een van de volgende methoden:
+Gebruik een van de volgende methoden om dit probleem op te lossen:
 
-- Verwijder de IP-gebaseerde SSL-binding op de app die het oude certificaat gebruikt. 
-- Maak een nieuwe IP-gebaseerde SSL-binding die het nieuwe certificaat gebruikt.
+- Verwijder de op IP gebaseerde SSL-binding in de app die gebruikmaakt van het oude certificaat. 
+- Maak een nieuwe SSL-binding op basis van IP die gebruikmaakt van het nieuwe certificaat.
 
-### <a name="you-cant-delete-a-certificate"></a>U een certificaat niet verwijderen 
+### <a name="you-cant-delete-a-certificate"></a>U kunt een certificaat niet verwijderen 
 
 #### <a name="symptom"></a>Symptoom
 
-Wanneer u een certificaat probeert te verwijderen, ontvangt u het volgende foutbericht:
+Wanneer u een certificaat probeert te verwijderen, wordt het volgende fout bericht weer gegeven:
 
-"Kan het certificaat niet verwijderen omdat het momenteel wordt gebruikt in een TLS/SSL-binding. De TLS-binding moet worden verwijderd voordat u het certificaat verwijderen.
+Het certificaat kan niet worden verwijderd omdat het momenteel wordt gebruikt in een TLS/SSL-binding. De TLS-binding moet worden verwijderd voordat u het certificaat kunt verwijderen. "
 
 #### <a name="cause"></a>Oorzaak
 
@@ -59,171 +59,171 @@ Dit probleem kan zich voordoen als een andere app het certificaat gebruikt.
 
 #### <a name="solution"></a>Oplossing
 
-Verwijder de TLS-binding voor dat certificaat uit de apps. Probeer vervolgens het certificaat te verwijderen. Als u het certificaat nog steeds niet verwijderen, verwijdert u de cache van de internetbrowser en opent u de Azure-portal opnieuw in een nieuw browservenster. Probeer vervolgens het certificaat te verwijderen.
+Verwijder de TLS-binding voor dat certificaat uit de apps. Verwijder vervolgens het certificaat. Als u het certificaat nog steeds niet kunt verwijderen, wist u de cache van de Internet browser en opent u de Azure Portal opnieuw in een nieuw browser venster. Verwijder vervolgens het certificaat.
 
-### <a name="you-cant-purchase-an-app-service-certificate"></a>U geen App Service-certificaat kopen 
+### <a name="you-cant-purchase-an-app-service-certificate"></a>U kunt geen App Service certificaat kopen 
 
 #### <a name="symptom"></a>Symptoom
-U geen [Azure App Service-certificaat](./configure-ssl-certificate.md#import-an-app-service-certificate) kopen via de Azure-portal.
+U kunt geen [Azure app service certificaat](./configure-ssl-certificate.md#import-an-app-service-certificate) kopen via de Azure Portal.
 
 #### <a name="cause-and-solution"></a>Oorzaak en oplossing
-Dit probleem kan zich om een van de volgende redenen voordoen:
+Dit probleem kan om de volgende redenen optreden:
 
-- Het App-serviceplan is gratis of gedeeld. Deze prijsniveaus ondersteunen TLS niet. 
+- Het App Service plan is gratis of gedeeld. Deze prijs categorieën bieden geen ondersteuning voor TLS. 
 
-    **Oplossing:** Upgrade het App Service-abonnement voor app naar Standaard.
+    **Oplossing**: Voer een upgrade uit voor het app service plan voor de app naar Standard.
 
-- Het abonnement heeft geen geldige creditcard.
+- Het abonnement heeft geen geldige credit card.
 
-    **Oplossing:** Voeg een geldige creditcard toe aan uw abonnement. 
+    **Oplossing**: Voeg een geldige credit card toe aan uw abonnement. 
 
-- De abonnementsaanbieding biedt geen ondersteuning voor de aankoop van een App Service-certificaat zoals Microsoft Student.  
+- Het abonnements aanbod biedt geen ondersteuning voor het aanschaffen van een App Service certificaat zoals micro soft student.  
 
-    **Oplossing:** Upgrade uw abonnement. 
+    **Oplossing**: Voer een upgrade uit voor uw abonnement. 
 
-- Het abonnement heeft de limiet bereikt van aankopen die zijn toegestaan op een abonnement.
+- Het abonnement heeft de limiet voor het aantal aankopen dat is toegestaan voor een abonnement bereikt.
 
-    **Oplossing:** App Service-certificaten hebben een limiet van 10 certificaataankopen voor de abonnementen voor betalen per gebruik en EA. Voor andere abonnementstypen is de limiet 3. Neem contact op met [Azure-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om de limiet te verhogen.
-- Het App Service-certificaat is gemarkeerd als fraude. U hebt het volgende foutbericht ontvangen: "Uw certificaat is gemarkeerd voor mogelijke fraude. Het verzoek wordt momenteel herzien. Als het certificaat niet binnen 24 uur bruikbaar is, neemt u contact op met Azure Support."
+    **Oplossing**: voor app service certificaten geldt een limiet van 10 certificaat aankopen voor de typen betalen per gebruik en EA-abonnement. Voor andere typen abonnementen is de limiet 3. Neem contact op met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om de limiet te verhogen.
+- Het App Service certificaat is gemarkeerd als fraude. U hebt het volgende fout bericht ontvangen: ' uw certificaat is gemarkeerd voor mogelijke fraude. De aanvraag wordt momenteel gecontroleerd. Als het certificaat binnen 24 uur niet kan worden gebruikt, neemt u contact op met de ondersteuning van Azure. "
 
-    **Oplossing:** Als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
+    **Oplossing**: als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
 
-    1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-    2. Ga naar **App Service-certificaten**en selecteer het certificaat.
-    3. Selecteer stap 2 **certificaatconfiguratie:** > **domeinverificatie****verifiëren** > . Met deze stap wordt een e-mailbericht naar de Azure-certificaatprovider gestuurd om het probleem op te lossen.
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+    2. Ga naar **app service certificaten**en selecteer het certificaat.
+    3. Selecteer **certificaat configuratie** > **stap 2: Controleer** > de verificatie van het**domein**. Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
 
-## <a name="custom-domain-problems"></a>Aangepaste domeinproblemen
+## <a name="custom-domain-problems"></a>Problemen met aangepaste domeinen
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Een aangepast domein retourneert een fout van 404 
+### <a name="a-custom-domain-returns-a-404-error"></a>Een aangepast domein retourneert een 404-fout 
 
 #### <a name="symptom"></a>Symptoom
 
-Wanneer u naar de site bladert met de aangepaste domeinnaam, ontvangt u het volgende foutbericht:
+Wanneer u naar de site bladert met behulp van de aangepaste domein naam, wordt het volgende fout bericht weer gegeven:
 
-"Fout 404-Web app niet gevonden."
+Fout 404-kan Web-app niet vinden.
 
 #### <a name="cause-and-solution"></a>Oorzaak en oplossing
 
 **Oorzaak 1** 
 
-Het aangepaste domein dat u hebt geconfigureerd, mist een CNAME- of A-record. 
+Voor het aangepaste domein dat u hebt geconfigureerd, ontbreekt een CNAME of een record. 
 
 **Oplossing voor oorzaak 1**
 
-- Als u een A-record hebt toegevoegd, moet u ervoor zorgen dat er ook een TXT-record wordt toegevoegd. Zie [De A-record maken](./app-service-web-tutorial-custom-domain.md#create-the-a-record)voor meer informatie .
-- Als u het hoofddomein niet voor uw app hoeft te gebruiken, raden we u aan een CNAME-record te gebruiken in plaats van een A-record.
-- Gebruik niet zowel een CNAME-record als een A-record voor hetzelfde domein. Dit probleem kan een conflict veroorzaken en voorkomen dat het domein wordt opgelost. 
+- Als u een record hebt toegevoegd, moet u ervoor zorgen dat er ook een TXT-record is toegevoegd. Zie [de A-record maken](./app-service-web-tutorial-custom-domain.md#create-the-a-record)voor meer informatie.
+- Als u het hoofd domein voor uw app niet hoeft te gebruiken, raden we u aan om een CNAME-record te gebruiken in plaats van een record.
+- Gebruik niet zowel een CNAME-record als een record voor hetzelfde domein. Dit probleem kan een conflict veroorzaken en voor komen dat het domein wordt opgelost. 
 
 **Oorzaak 2** 
 
-De internetbrowser kan nog steeds het oude IP-adres voor uw domein in cache plaatsen. 
+De Internet browser kan nog steeds het oude IP-adres in de cache opslaan voor uw domein. 
 
 **Oplossing voor oorzaak 2**
 
-De browser wissen. Voor Windows-apparaten u `ipconfig /flushdns`de opdracht uitvoeren. Gebruik [WhatsmyDNS.net](https://www.whatsmydns.net/) om te controleren of uw domein naar het IP-adres van de app wijst. 
+Wis de browser. Voor Windows-apparaten kunt u de opdracht `ipconfig /flushdns`uitvoeren. Gebruik [WhatsmyDNS.net](https://www.whatsmydns.net/) om te controleren of uw domein verwijst naar het IP-adres van de app. 
 
-### <a name="you-cant-add-a-subdomain"></a>U geen subdomein toevoegen 
+### <a name="you-cant-add-a-subdomain"></a>U kunt geen subdomein toevoegen 
 
 #### <a name="symptom"></a>Symptoom
 
-U geen nieuwe hostnaam aan een app toevoegen om een subdomein toe te wijzen.
+U kunt geen nieuwe hostnaam toevoegen aan een app om een subdomein toe te wijzen.
 
 #### <a name="solution"></a>Oplossing
 
-- Neem contact op met de beheerder van het abonnement om te controleren of u machtigingen hebt om een hostnaam aan de app toe te voegen.
-- Als u meer subdomeinen nodig hebt, raden we u aan de domeinhosting te wijzigen in Azure Domain Name Service (DNS). Met Azure DNS u 500 hostnamen aan uw app toevoegen. Zie [Een subdomein toevoegen voor](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)meer informatie.
+- Neem contact op met de abonnements beheerder om ervoor te zorgen dat u gemachtigd bent om een hostnaam toe te voegen aan de app.
+- Als u meer subdomeinen nodig hebt, raden we u aan om het domein hosting te wijzigen in azure Domain Name Service (DNS). U kunt met behulp van Azure DNS 500-hostnamen toevoegen aan uw app. Zie [een subdomein toevoegen](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)voor meer informatie.
 
-### <a name="dns-cant-be-resolved"></a>DNS kan niet worden opgelost
+### <a name="dns-cant-be-resolved"></a>DNS kan niet worden omgezet
 
 #### <a name="symptom"></a>Symptoom
 
-U hebt het volgende foutbericht ontvangen:
+U hebt het volgende fout bericht ontvangen:
 
-"De DNS-record kan niet worden gelokaliseerd."
+De DNS-record kan niet worden gevonden.
 
 #### <a name="cause"></a>Oorzaak
 Dit probleem treedt op om een van de volgende redenen:
 
-- De periode om te leven (TTL) is niet verstreken. Controleer de DNS-configuratie voor uw domein om de TTL-waarde te bepalen en wacht tot de periode is verlopen.
+- De TTL-periode (time to Live) is niet verlopen. Controleer de DNS-configuratie voor uw domein om de TTL-waarde te bepalen en wacht totdat de periode verloopt.
 - De DNS-configuratie is onjuist.
 
 #### <a name="solution"></a>Oplossing
-- Wacht 48 uur tot dit probleem zichzelf is opgelost.
-- Als u de TTL-instelling in uw DNS-configuratie wijzigen, wijzigt u de waarde in 5 minuten om te zien of dit het probleem oplost.
-- Gebruik [WhatsmyDNS.net](https://www.whatsmydns.net/) om te controleren of uw domein naar het IP-adres van de app wijst. Als dit niet het zo is, configureert u de A-record naar het juiste IP-adres van de app.
+- Wacht tot 48 uur voordat dit probleem is opgelost.
+- Als u de TTL-instelling in uw DNS-configuratie kunt wijzigen, wijzigt u de waarde in 5 minuten om te zien of het probleem hiermee is opgelost.
+- Gebruik [WhatsmyDNS.net](https://www.whatsmydns.net/) om te controleren of uw domein verwijst naar het IP-adres van de app. Als dat niet het geval is, configureert u de A-record in het juiste IP-adres van de app.
 
 ### <a name="you-need-to-restore-a-deleted-domain"></a>U moet een verwijderd domein herstellen 
 
 #### <a name="symptom"></a>Symptoom
-Uw domein is niet meer zichtbaar in de Azure-portal.
+Uw domein is niet meer zichtbaar in de Azure Portal.
 
 #### <a name="cause"></a>Oorzaak 
 De eigenaar van het abonnement heeft het domein mogelijk per ongeluk verwijderd.
 
 #### <a name="solution"></a>Oplossing
-Als uw domein minder dan zeven dagen geleden is verwijderd, is het domein nog niet begonnen met het verwijderingsproces. In dit geval u hetzelfde domein opnieuw kopen op de Azure-portal onder hetzelfde abonnement. (Typ de exacte domeinnaam in het zoekvak.) Er worden geen kosten meer in rekening gebracht voor dit domein. Als het domein meer dan zeven dagen geleden is verwijderd, neemt u contact op met [Azure-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) voor hulp bij het herstellen van het domein.
+Als uw domein minder dan zeven dagen geleden is verwijderd, is de verwijdering van het domein nog niet gestart. In dit geval kunt u hetzelfde domein opnieuw kopen op het Azure Portal onder hetzelfde abonnement. (Zorg ervoor dat u de exacte domein naam in het zoekvak typt.) Voor dit domein worden er geen kosten meer in rekening gebracht. Als het domein meer dan zeven dagen geleden is verwijderd, neemt u contact op met [Azure-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) voor hulp bij het herstellen van het domein.
 
-## <a name="domain-problems"></a>Domeinproblemen
+## <a name="domain-problems"></a>Domein problemen
 
-### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>U hebt een TLS/SSL-certificaat voor het verkeerde domein gekocht
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>U hebt een TLS/SSL-certificaat voor het verkeerde domein aangeschaft
 
 #### <a name="symptom"></a>Symptoom
 
-U hebt een App Service-certificaat voor het verkeerde domein gekocht. U het certificaat niet bijwerken om het juiste domein te gebruiken.
+U hebt een App Service certificaat voor het verkeerde domein aangeschaft. U kunt het certificaat niet bijwerken om het juiste domein te gebruiken.
 
 #### <a name="solution"></a>Oplossing
 
-Verwijder dat certificaat en koop vervolgens een nieuw certificaat.
+Verwijder het certificaat en koop vervolgens een nieuw certificaat.
 
-Als het huidige certificaat dat het verkeerde domein gebruikt, de status 'Uitgegeven' is, wordt er ook een factuur voor dat certificaat in rekening gebracht. App Service-certificaten worden niet terugbetaald, maar u contact opnemen met [Azure-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om te zien of er andere opties zijn. 
+Als het huidige certificaat dat gebruikmaakt van het onjuiste domein de status ' uitgereikt ' heeft, wordt u ook gefactureerd voor dat certificaat. App Service certificaten zijn niet teruggestort, maar u kunt contact opnemen met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om te controleren of er andere opties zijn. 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>Een App Service-certificaat is vernieuwd, maar de app toont het oude certificaat 
+### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>Er is een App Service certificaat vernieuwd, maar in de app wordt het oude certificaat weer gegeven 
 
 #### <a name="symptom"></a>Symptoom
 
-Het App Service-certificaat is vernieuwd, maar de app die het App Service-certificaat gebruikt, gebruikt nog steeds het oude certificaat. Ook kreeg u een waarschuwing dat het HTTPS-protocol vereist is.
+Het App Service certificaat is vernieuwd, maar de app die gebruikmaakt van het App Service certificaat, maakt nog gebruik van het oude certificaat. Daarnaast hebt u een waarschuwing ontvangen dat het HTTPS-protocol vereist is.
 
 #### <a name="cause"></a>Oorzaak 
-App Service synchroniseert uw certificaat automatisch binnen 48 uur. Wanneer u een certificaat roteert of bijwerkt, wordt het oude certificaat soms nog steeds opgehaald en niet het onlangs bijgewerkte certificaat. De reden hiervoor is dat de taak om de certificaatbron te synchroniseren nog niet is uitgevoerd. Klik op Synchroniseren. De synchronisatiebewerking werkt automatisch de hostnaambindingen voor het certificaat in App-service bij zonder dat uw apps minder tijd uitvalt.
+App Service synchroniseert uw certificaat automatisch binnen 48 uur. Wanneer u een certificaat roteert of bijwerkt, wordt de toepassing toch nog steeds het oude certificaat opgehaald en niet het zojuist bijgewerkte certificaat. De reden hiervoor is dat de taak voor het synchroniseren van de certificaat bron nog niet is uitgevoerd. Klik op synchroniseren. Met de synchronisatie bewerking worden de hostname-bindingen voor het certificaat in App Service automatisch bijgewerkt zonder dat er uitval tijd voor uw apps wordt veroorzaakt.
  
 #### <a name="solution"></a>Oplossing
 
-U een synchronisatie van het certificaat forceren:
+U kunt de synchronisatie van het certificaat forceren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **App Service-certificaten**en selecteer vervolgens het certificaat.
-2. Selecteer **Opnieuw sleutelen en Synchroniseren**en selecteer Vervolgens **Synchroniseren**. De synchronisatie duurt enige tijd om te voltooien. 
-3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: 'Alle bronnen met het nieuwste certificaat hebben bijgewerkt'.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
+2. Selecteer opnieuw **genereren en synchroniseren**en selecteer vervolgens **synchroniseren**. Het kan enige tijd duren voordat de synchronisatie is voltooid. 
+3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: alle resources zijn bijgewerkt met het nieuwste certificaat.
 
-### <a name="domain-verification-is-not-working"></a>Domeinverificatie werkt niet 
+### <a name="domain-verification-is-not-working"></a>Domein verificatie werkt niet 
 
 #### <a name="symptom"></a>Symptoom 
-Het App Service-certificaat vereist domeinverificatie voordat het certificaat klaar is voor gebruik. Wanneer u **Verifiëren**selecteert, mislukt het proces.
+Het App Service certificaat vereist domein verificatie voordat het certificaat gereed is voor gebruik. Wanneer u **controleren**selecteert, mislukt het proces.
 
 #### <a name="solution"></a>Oplossing
-Verifieer uw domein handmatig door een TXT-record toe te voegen:
+Bevestig uw domein hand matig door een TXT-record toe te voegen:
  
-1.  Ga naar de DNS-provider (Domain Name Service) die uw domeinnaam host.
-2.  Voeg een TXT-record toe voor uw domein die de waarde gebruikt van het domeintoken dat wordt weergegeven in de Azure-portal. 
+1.  Ga naar de Domain Name Service (DNS)-provider die als host fungeert voor uw domein naam.
+2.  Voeg een TXT-record voor uw domein toe die gebruikmaakt van de waarde van het domein token dat wordt weer gegeven in de Azure Portal. 
 
-Wacht een paar minuten tot dns-propagatie is uitgevoerd en selecteer vervolgens de knop **Vernieuwen** om de verificatie te activeren. 
+Wacht enkele minuten totdat de DNS-doorgifte is uitgevoerd en selecteer vervolgens de knop **vernieuwen** om de verificatie te activeren. 
 
-Als alternatief u de HTML-webpaginamethode gebruiken om uw domein handmatig te verifiëren. Met deze methode kan de certificaatautoriteit het domeineigendom van het domein bevestigen waarvoor het certificaat is uitgegeven.
+Als alternatief kunt u de methode HTML-webpagina gebruiken om uw domein hand matig te verifiëren. Met deze methode kan de certificerings instantie het domein eigendom bevestigen van het domein waarvoor het certificaat is uitgegeven.
 
-1.  Maak een HTML-bestand met de naam {domeinverificatietoken}.html. De inhoud van dit bestand moet de waarde zijn van domeinverificatietoken.
-3.  Upload dit bestand aan de basis van de webserver die uw domein host.
-4.  Selecteer **Vernieuwen** om de certificaatstatus te controleren. Het kan enkele minuten duren voordat de verificatie is voltooid.
+1.  Maak een HTML-bestand met de naam {Domain verificatie token}. html. De inhoud van dit bestand moet de waarde zijn van het domein verificatie token.
+3.  Upload dit bestand in de hoofdmap van de webserver die als host fungeert voor uw domein.
+4.  Selecteer **vernieuwen** om de certificaat status te controleren. Het kan enkele minuten duren voordat de verificatie is voltooid.
 
-Als u bijvoorbeeld een standaardcertificaat voor azure.com koopt met het domeinverificatietoken 1234abcd, moet een webverzoek om 1234abcd terug te https://azure.com/1234abcd.html sturen. 
+Als u bijvoorbeeld een standaard certificaat voor azure.com koopt met het domein verificatie token 1234abcd, moet er een webaanvraag worden ingediend om https://azure.com/1234abcd.html 1234abcd te retour neren. 
 
 > [!IMPORTANT]
-> Een certificaatorder heeft slechts 15 dagen om de domeinverificatiebewerking te voltooien. Na 15 dagen weigert de certificaatautoriteit het certificaat en worden er geen kosten in rekening gebracht voor het certificaat. Verwijder in deze situatie dit certificaat en probeer het opnieuw.
+> Een certificaat order heeft slechts 15 dagen voor het volt ooien van de domein verificatie bewerking. Na 15 dagen weigert de certificerings instantie het certificaat en worden er geen kosten in rekening gebracht voor het certificaat. In deze situatie verwijdert u dit certificaat en probeert u het opnieuw.
 >
 > 
 
-### <a name="you-cant-purchase-a-domain"></a>U geen domein kopen
+### <a name="you-cant-purchase-a-domain"></a>U kunt geen domein kopen
 
 #### <a name="symptom"></a>Symptoom
-U een App Service-domein niet kopen in de Azure-portal.
+U kunt geen App Service domein kopen in de Azure Portal.
 
 #### <a name="cause-and-solution"></a>Oorzaak en oplossing
 
@@ -231,36 +231,36 @@ Dit probleem treedt op om een van de volgende redenen:
 
 - Er is geen creditcard in het Azure-abonnement, of de creditcard is ongeldig.
 
-    **Oplossing:** Voeg een geldige creditcard toe aan uw abonnement.
+    **Oplossing**: Voeg een geldige credit card toe aan uw abonnement.
 
 - U bent niet de eigenaar van het abonnement, dus u bent niet gemachtigd om een domein aan te schaffen.
 
-    **Oplossing:** [Wijs de rol Eigenaar toe](../role-based-access-control/role-assignments-portal.md) aan uw account. Of neem contact op met de abonnementsbeheerder om toestemming te krijgen om een domein aan te schaffen.
+    **Oplossing**: [Wijs de rol eigenaar](../role-based-access-control/role-assignments-portal.md) toe aan uw account. Of neem contact op met de abonnements beheerder om toestemming te krijgen om een domein aan te schaffen.
 - U hebt de limiet voor het aanschaffen van domeinen in uw abonnement bereikt. De huidige limiet is 20.
 
-    **Oplossing:** Neem contact op met [Azure-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om een verhoging tot de limiet aan te vragen.
+    **Oplossing**: Neem contact op met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om een verhoging van de limiet aan te vragen.
 - Uw type Azure-abonnement biedt geen ondersteuning voor de aanschaf van een App Service-domein.
 
-    **Oplossing:** Upgrade uw Azure-abonnement naar een ander abonnementstype, zoals een Abonnement per gebruik.
+    **Oplossing**: Voer een upgrade uit van uw Azure-abonnement naar een ander abonnements type, zoals een abonnement op basis van betalen naar gebruik.
 
-### <a name="you-cant-add-a-host-name-to-an-app"></a>U geen hostnaam aan een app toevoegen 
+### <a name="you-cant-add-a-host-name-to-an-app"></a>U kunt geen hostnaam toevoegen aan een app 
 
 #### <a name="symptom"></a>Symptoom
 
-Wanneer u een hostnaam toevoegt, wordt het domein niet gevalideerd en geverifieerd.
+Wanneer u een hostnaam toevoegt, kan het proces het domein niet valideren en verifiëren.
 
 #### <a name="cause"></a>Oorzaak 
 
 Dit probleem treedt op om een van de volgende redenen:
 
-- Je hebt geen toestemming om een hostnaam toe te voegen.
+- U bent niet gemachtigd om een hostnaam toe te voegen.
 
-    **Oplossing:** Vraag de abonnementsbeheerder om u toestemming te geven om een hostnaam toe te voegen.
-- Uw domeineigendom kan niet worden geverifieerd.
+    **Oplossing**: vraag de abonnements beheerder u toestemming te geven om een hostnaam toe te voegen.
+- Het eigendom van het domein kan niet worden geverifieerd.
 
-    **Oplossing:** Controleer of uw CNAME- of A-record correct is geconfigureerd. Als u een aangepast domein wilt toewijzen aan een app, maakt u een CNAME-record of een A-record. Als u een hoofddomein wilt gebruiken, moet u A- en TXT-records gebruiken:
+    **Oplossing**: Controleer of de CNAME of een record juist is geconfigureerd. Als u een aangepast domein wilt toewijzen aan een app, moet u een CNAME-record of een record maken. Als u een hoofd domein wilt gebruiken, moet u een-en TXT-record gebruiken:
 
-    |Recordtype|Host|Wijs aan op|
+    |Recordtype|Host|Wijs naar|
     |------|------|-----|
     |A|@|IP-adres voor een app|
     |TXT|@|`<app-name>.azurewebsites.net`|
@@ -268,56 +268,56 @@ Dit probleem treedt op om een van de volgende redenen:
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-**Moet ik mijn aangepaste domein voor mijn website configureren zodra ik het heb gekocht?**
+**Moet ik mijn aangepaste domein voor mijn website configureren nadat ik het heb gekocht?**
 
-Wanneer u een domein koopt via de Azure-portal, wordt de App Service-toepassing automatisch geconfigureerd om dat aangepaste domein te gebruiken. U hoeft geen extra stappen te ondernemen. Bekijk Azure App Service Self Help voor meer [informatie: voeg een aangepaste domeinnaam toe](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) op Channel9.
+Wanneer u een domein aanschaft vanuit de Azure Portal, wordt de App Service-toepassing automatisch geconfigureerd voor gebruik van dat aangepaste domein. U hoeft geen extra stappen uit te voeren. Bekijk [Azure app service Self Help: een aangepaste domein naam toevoegen](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) aan Channel 9 voor meer informatie.
 
-**Kan ik een domein gebruiken dat is aangeschaft in de Azure-portal om in plaats daarvan een Azure VM aan te wijzen?**
+**Kan ik een in de Azure Portal gekocht domein gebruiken om in plaats daarvan naar een virtuele Azure-machine te verwijzen?**
 
-Ja, u het domein naar een vm wijzen. Zie [Use Azure DNS to provide custom domain settings for an Azure service](../dns/dns-custom-domain.md) (Azure DNS gebruiken om aangepaste domeininstellingen te verstrekken voor een Azure-service) voor meer informatie.
+Ja, u kunt het domein naar een virtuele machine laten wijzen. Zie [Use Azure DNS to provide custom domain settings for an Azure service](../dns/dns-custom-domain.md) (Azure DNS gebruiken om aangepaste domeininstellingen te verstrekken voor een Azure-service) voor meer informatie.
 
 **Wordt mijn domein gehost door GoDaddy of Azure DNS?**
 
-App Service-domeinen gebruiken GoDaddy voor domeinregistratie en Azure DNS om de domeinen te hosten. 
+App Service domeinen gebruiken GoDaddy voor domein registratie en Azure DNS om de domeinen te hosten. 
 
-**Ik heb automatisch verlengen ingeschakeld, maar nog steeds een verlengingsbericht ontvangen voor mijn domein via e-mail. Wat moet ik doen?**
+**Ik heb automatische verlenging ingeschakeld, maar ik heb nog steeds een verlengings kennisgeving ontvangen voor mijn domein via e-mail. Wat moet ik doen?**
 
-Als u automatisch verlengen hebt ingeschakeld, hoeft u geen actie te ondernemen. De e-mail van de kennisgeving wordt verstrekt om u te informeren dat het domein bijna verloopt en om handmatig te verlengen als automatisch verlengen niet is ingeschakeld.
+Als u automatisch verlengen hebt ingeschakeld, hoeft u geen actie te ondernemen. Het e-mail bericht wordt verstrekt om u te informeren dat het domein bijna verloopt en hand matig kan worden vernieuwd als automatisch verlengen niet is ingeschakeld.
 
-**Worden er kosten in rekening gebracht voor Azure DNS die mijn domein host?**
+**Worden er kosten in rekening gebracht voor Azure DNS mijn domein hosten?**
 
-De initiële kosten van domeinaankoop zijn alleen van toepassing op domeinregistratie. Naast de registratiekosten zijn er kosten verbonden aan Azure DNS op basis van uw gebruik. Zie [Azure DNS-prijzen](https://azure.microsoft.com/pricing/details/dns/) voor meer informatie voor meer informatie.
+De initiële kosten voor de domein aankoop gelden alleen voor domein registratie. Naast de registratie kosten worden er kosten in rekening gebracht voor Azure DNS op basis van uw gebruik. Zie [Azure DNS prijzen](https://azure.microsoft.com/pricing/details/dns/) voor meer informatie.
 
-**Ik heb mijn domein eerder gekocht via de Azure-portal en wil overstappen van GoDaddy-hosting naar Azure DNS-hosting. Hoe kan ik dit doen?**
+**Ik heb mijn domein eerder aangeschaft bij de Azure Portal en wil van GoDaddy-hosting naar Azure DNS-hosting. Hoe kan ik dit doen?**
 
-Het is niet verplicht om te migreren naar Azure DNS-hosting. Als u wilt migreren naar Azure DNS, biedt de domeinbeheerervaring in de Azure-portal informatie over de stappen die nodig zijn om naar Azure DNS te gaan. Als het domein is gekocht via App Service, is migratie van GoDaddy-hosting naar Azure DNS een relatief naadloze procedure.
+Het is niet verplicht om te migreren naar Azure DNS-hosting. Als u wilt migreren naar Azure DNS, vindt u in de domein beheer ervaring in het Azure Portal informatie over de stappen die nodig zijn om naar Azure DNS te gaan. Als het domein is aangeschaft via App Service, is de migratie van GoDaddy die op Azure DNS wordt gehost, een betrekkelijk naadloze procedure.
 
-**Ik wil mijn domein kopen via App Service Domain, maar kan ik mijn domein hosten op GoDaddy in plaats van Azure DNS?**
+**Ik wil mijn domein kopen vanaf App Service domein, maar kan ik mijn domein hosten op GoDaddy in plaats van Azure DNS?**
 
-Vanaf 24 juli 2017 worden App Service-domeinen die in de portal zijn aangeschaft, gehost op Azure DNS. Als u liever een andere hostingprovider gebruikt, moet u naar hun website gaan om een domeinhostingoplossing te verkrijgen.
+Vanaf 24 juli 2017 worden App Service domeinen die in de portal zijn aangeschaft, gehost op Azure DNS. Als u liever een andere hosting provider gebruikt, moet u naar de website gaan om een oplossing voor het hosten van een domein te verkrijgen.
 
-**Moet ik betalen voor privacybescherming voor mijn domein?**
+**Moet ik betalen voor privacy-bescherming voor mijn domein?**
 
-Wanneer u een domein koopt via de Azure-portal, u ervoor kiezen om zonder extra kosten privacy toe te voegen. Dit is een van de voordelen van de aankoop van uw domein via Azure App Service.
+Wanneer u een domein aanschaft via de Azure Portal, kunt u ervoor kiezen om privacy gratis toe te voegen. Dit is een van de voor delen van het aanschaffen van uw domein via Azure App Service.
 
-**Als ik besluit dat ik mijn domein niet meer wil, kan ik dan mijn geld terugkrijgen?**
+**Als ik besluit dat ik mijn domein niet meer wil, kan ik mijn geld terug krijgen?**
 
-Wanneer u een domein koopt, worden er gedurende een periode van vijf dagen geen kosten in rekening gebracht, gedurende welke tijd u beslissen dat u het domein niet wilt. Als u besluit dat u het domein niet binnen die periode van vijf dagen wilt, worden er geen kosten in rekening gebracht. (.uk domeinen zijn hierop een uitzondering. Als u een .uk-domein koopt, worden er onmiddellijk kosten in rekening gebracht en u niet worden terugbetaald.)
+Wanneer u een domein koopt, worden er geen kosten in rekening gebracht voor een periode van vijf dagen, gedurende welke tijd u kunt bepalen of u het domein niet wilt. Als u besluit dat u het domein niet binnen deze periode van vijf dagen wilt, moet u niet in rekening worden gebracht. (in UK-domeinen is dit een uitzonde ring. Als u een. uk-domein aanschaft, worden er direct kosten in rekening gebracht en u kunt geen restitutie maken.)
 
-**Kan ik het domein gebruiken in een andere Azure App Service-app in mijn abonnement?**
+**Kan ik het domein in een andere Azure App Service-app gebruiken in mijn abonnement?**
 
-Ja. Wanneer u het aangepaste domeinen en tls-blad opent in de Azure-portal, ziet u de domeinen die u hebt gekocht. U uw app configureren om een van deze domeinen te gebruiken.
+Ja. Wanneer u de Blade aangepaste domeinen en TLS in de Azure Portal opent, ziet u de domeinen die u hebt aangeschaft. U kunt uw app configureren voor het gebruik van een van deze domeinen.
 
-**Kan ik een domein van het ene abonnement naar een ander abonnement overzetten?**
+**Kan ik een domein van een abonnement overdragen naar een ander abonnement?**
 
-U een domein verplaatsen naar een andere abonnementsgroep/resourcegroep met de [cmdlet Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell.
+Met de Power shell [-cmdlet Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) kunt u een domein verplaatsen naar een ander abonnement of een andere resource groep.
 
 **Hoe kan ik mijn aangepaste domein beheren als ik momenteel geen Azure App Service-app heb?**
 
-U uw domein beheren, zelfs als u geen Web App-web-app hebt. Domein kan worden gebruikt voor Azure-services zoals Virtual machine, Storage etc. Als u van plan bent het domein te gebruiken voor Web Apps van App Service, moet u een web-app opnemen die niet op het gratis app-serviceplan staat om het domein aan uw web-app te binden.
+U kunt uw domein beheren, zelfs als u geen App Service web-app hebt. Het domein kan worden gebruikt voor Azure-Services zoals virtuele machine, opslag, enzovoort. Als u van plan bent om het domein voor App Service Web Apps te gebruiken, moet u een web-app opnemen die zich niet op het Free App Service plan bevindt om het domein aan uw web-app te koppelen.
 
-**Kan ik een web-app met een aangepast domein verplaatsen naar een ander abonnement of van App Service Environment v1 naar V2?**
+**Kan ik een web-app met een aangepast domein verplaatsen naar een ander abonnement of van App Service Environment v1 naar v2?**
 
-Ja, u uw web-app verplaatsen tussen abonnementen. Volg de richtlijnen in [Hoe u resources in Azure verplaatsen.](../azure-resource-manager/management/move-resource-group-and-subscription.md) Er zijn een paar beperkingen bij het verplaatsen van de web-app. Zie [Beperkingen voor het verplaatsen van App Service-bronnen voor](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)meer informatie.
+Ja, u kunt uw web-app verplaatsen naar andere abonnementen. Volg de richt lijnen [voor het verplaatsen van resources in azure](../azure-resource-manager/management/move-resource-group-and-subscription.md). Er zijn enkele beperkingen bij het verplaatsen van de web-app. Zie [beperkingen voor het verplaatsen van app service resources](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)voor meer informatie.
 
-Na het verplaatsen van de web-app moeten de hostnaambindingen van de domeinen binnen de instelling aangepaste domeinen hetzelfde blijven. Er zijn geen extra stappen nodig om de hostnaambindingen te configureren.
+Na het verplaatsen van de web-app, moeten de hostnamen van de domeinen binnen de instellingen van de aangepaste domeinen hetzelfde blijven. Er zijn geen extra stappen vereist om de bindingen met de hostnaam te configureren.

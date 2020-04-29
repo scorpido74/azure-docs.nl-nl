@@ -1,70 +1,70 @@
 ---
-title: Azure Blockchain-servicelimieten
-description: Overzicht van de service- en functionele limieten in Azure Blockchain Service
+title: Limieten voor Azure Block Chain-Service
+description: Overzicht van de service-en functionele limieten in azure Block Chain Service
 ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80676523"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limieten in Azure Blockchain-service
+# <a name="limits-in-azure-blockchain-service"></a>Limieten in azure Block Chain Service
 
-Azure Blockchain Service heeft service- en functionele limieten, zoals het aantal knooppunten dat een lid kan hebben, consortiumbeperkingen en opslagbedragen.
+De Azure Block Chain-service heeft service-en functionele limieten, zoals het aantal knoop punten dat een lid kan hebben, consortium beperkingen en opslag bedragen.
 
 ## <a name="pricing-tier"></a>Prijscategorie
 
-Maximale limieten voor transacties en validatorknooppunten zijn afhankelijk van de vraag of u Azure Blockchain Service indient op basis- of standaardprijsniveaus.
+De maximum limieten voor trans acties en validatie knooppunten zijn afhankelijk van of u de Azure Block Chain-Service inricht op basis van de prijs categorie Basic of Standard.
 
-| Prijscategorie | Maximale transactieknooppunten | Maximale validatorknooppunten |
+| Prijscategorie | Maximum aantal transactie knooppunten | Maxi maal aantal validatie knooppunten |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-Uw consortiumnetwerk moet ten minste twee Azure Blockchain Service-standaardniveauknooppunten hebben. Standaardniveauknooppunten bevatten twee validatorknooppunten. Vier validator knooppunten zijn nodig om Istanbul [Byzantijnse Fault Tolerance consensus](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)te voldoen.
+Uw consortium netwerk moet ten minste twee knoop punten van de Standard-laag van Azure Block Chain service hebben. De Standard-laag knooppunten bevatten twee validatie knooppunten. Er zijn vier validatie knooppunten vereist om te voldoen aan de [fout tolerantie consensus van Istanboel Byzantine](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus).
 
-Gebruik de basislaag is voor ontwikkeling, testen en proof of concepts. Gebruik de standaardlaag voor implementaties van productiekwaliteit. U moet ook de *standaardlaag* gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privétransacties verzendt.
+De basis-laag gebruiken is voor het ontwikkelen, testen en controleren van concepten. De Standard-laag gebruiken voor implementaties van productie cijfers. U moet ook de laag *standaard* gebruiken als u Block Chain Data Manager gebruikt of een groot aantal privé transacties verzendt.
 
-Het wijzigen van de prijslaag tussen basis en standaard na het maken van leden wordt niet ondersteund.
+Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 
-De maximale hoeveelheid opslagruimte die per knooppunt kan worden gebruikt voor grootboekgegevens en logboeken is 1,8 terabyte.
+De maximale hoeveelheid opslag die per knoop punt voor grootboek gegevens en logboeken kan worden gebruikt, is 1,8 terabyte.
 
-De grootte van het aantal grootboek en logboekopslag wordt niet ondersteund.
-## <a name="consortium-limits"></a>Consortiumlimieten
+Het verminderen van de omvang van het groot boek en de logboek opslag wordt niet ondersteund.
+## <a name="consortium-limits"></a>Consortium limieten
 
-* **Consortium- en lidnamen moeten uniek zijn** voor andere consortium- en lidnamen in de Azure Blockchain-service.
+* De **namen van consortiums en leden moeten uniek zijn** van andere consortium-en lidnamen in de Azure Block Chain-service.
 
-* **Namen van leden en consortiums kunnen niet worden gewijzigd**
+* **De namen van leden en consortiums kunnen niet worden gewijzigd**
 
-* **Alle leden in een consortium moeten zich in dezelfde prijscategorie**
+* **Alle leden in een consortium moeten dezelfde prijs categorie hebben**
 
-* **Alle leden die deelnemen aan een consortium moeten in dezelfde regio wonen**
+* **Alle leden die deel uitmaken van een consortium, moeten zich in dezelfde regio bevinden**
 
-    Het eerste lid dat in een consortium is gemaakt, dicteert de regio. Uitgenodigde leden van het consortium moeten in dezelfde regio wonen als het eerste lid. Door alle leden tot dezelfde regio te beperken, wordt de netwerkconsensus niet negatief beïnvloed.
+    Het eerste lid dat is gemaakt in een consortium, bepaalt de regio. Uitgenodigde leden van het consortium moeten zich in dezelfde regio bevinden als het eerste lid. Als u alle leden beperkt tot dezelfde regio, zorgt u ervoor dat netwerk consensus geen negatieve gevolgen heeft.
 
 * **Een consortium moet ten minste één beheerder hebben**
 
-    Als er slechts één beheerder in een consortium is, kunnen ze zichzelf niet uit het consortium verwijderen of hun lid verwijderen totdat een andere beheerder in het consortium is toegevoegd of gepromoot.
+    Als er slechts één beheerder in een consortium is, kunnen ze zich niet van het consortium verwijderen of hun lid verwijderen totdat een andere beheerder wordt toegevoegd of bevorderd in het consortium.
 
 * **Leden die uit het consortium zijn verwijderd, kunnen niet opnieuw worden toegevoegd**
 
-    In plaats daarvan moeten ze opnieuw worden uitgenodigd om zich bij het consortium aan te sluiten en een nieuw lid te creëren. Hun bestaande ledenbronnen worden niet verwijderd om historische transacties te behouden.
+    Ze moeten daarom opnieuw worden uitgenodigd om lid te worden van het consortium en een nieuw lid te maken. De bestaande leden resources worden niet verwijderd om historische trans acties te behouden.
 
-* **Alle leden in een consortium moeten dezelfde grootboekversie gebruiken**
+* **Alle leden van een consortium moeten dezelfde grootboek versie gebruiken**
 
-    Zie [Patchen, updates en versies](ledger-versions.md)voor meer informatie over de versies voor patchen, updates en grootboeken die beschikbaar zijn in Azure Blockchain Service.
+    Zie [patches, updates en versies](ledger-versions.md)voor meer informatie over de patches, updates en grootboek versies die beschikbaar zijn in de Azure Block Chain-service.
 
 ## <a name="performance"></a>Prestaties
 
-Gebruik *geen eth.estimate* gasfunctie voor elke transactieindiening. De *eth.estimate-functie* is geheugenintensief. Als u de functie meerdere keren aanroept, worden transacties per seconde drastisch verminderd.
+Gebruik niet de functie *Eth. schatting* voor het verzenden van elke trans actie. De functie *Eth. estimate* is geheugen intensief. Als u de functie meerdere keren aanroept, worden de trans acties per seconde aanzienlijk verminderd.
 
-Gebruik indien mogelijk een conservatieve gaswaarde voor het indienen van transacties en minimaliseer het gebruik van *eth.estimate*.
+Gebruik, indien mogelijk, een conservatieve aardgas waarde voor het verzenden van trans acties en Minimaliseer het gebruik van *Eth. estimate*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over beleid met betrekking tot patching en upgrades van systemen - [Patching, updates en versies](ledger-versions.md).
+Meer informatie over beleids regels met betrekking tot patches en upgrades voor systemen- [patches, updates en versies](ledger-versions.md).

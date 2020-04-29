@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79453867"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
@@ -235,7 +235,7 @@ De blob-container waarin uw gebeurtenisgegevens worden vastgelegd.
 }
 ```
 
-Gebruik de volgende parameters als u Azure Data Lake Store Gen 1 als bestemming kiest. U moet machtigingen instellen voor het Data Lake Store-pad waarin u de gebeurtenis wilt vastleggen. Zie Gegevens vastleggen [op Azure Data Lake Storage Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)als u machtigingen wilt instellen.
+Gebruik de volgende para meters als u Azure Data Lake Store gen 1 als uw bestemming kiest. U moet machtigingen instellen voor het Data Lake Store-pad waarin u de gebeurtenis wilt vastleggen. Zie [gegevens vastleggen voor Azure data Lake Storage gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)om machtigingen in te stellen.
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -429,7 +429,7 @@ U kunt Event Hubs Capture ook configureren via de [Azure-portal](https://portal.
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van gebeurtenishubs](event-hubs-what-is-event-hubs.md)
+* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Een Event Hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 

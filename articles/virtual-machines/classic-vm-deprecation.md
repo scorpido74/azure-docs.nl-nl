@@ -1,6 +1,6 @@
 ---
-title: We gaan per 1 maart 2023 met Azure Classic VM's
-description: Artikel biedt een overzicht op hoog niveau van Classic VM pensioen
+title: Op 1 maart 2023 worden klassieke Azure-Vm's buiten gebruik gesteld.
+description: Artikel bevat een overzicht op hoog niveau van het buiten gebruik stellen van klassieke VM'S
 services: virtual-machines
 author: tanmaygore
 manager: vashan
@@ -11,40 +11,40 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
 ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668813"
 ---
-# <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Uw IaaS-resources vmigreren naar Azure Resource Manager vtegen 1 maart 2023 
+# <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migreer uw IaaS-resources naar Azure Resource Manager op 1 maart 2023 
 
-In 2014 lanceerden we IaaS op Azure Resource Manager en sindsdien verbeteren we de mogelijkheden. Omdat [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nu volledige IaaS-mogelijkheden en andere verbeteringen heeft, hebben we het beheer van IaaS VM's via Azure Service Manager op 28 februari 2020 afgeschaft en wordt deze functionaliteit op 1 maart 2023 volledig buiten gebruik gesteld. 
+In 2014 heeft micro soft IaaS op Azure Resource Manager gestart en zijn de mogelijkheden van ooit verbeterd. Omdat [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nu volledige IaaS-mogelijkheden en andere voor uitgangen heeft, is het beheer van IaaS-Vm's via Azure Service Manager op 28 februari 2020 afgeschaft en is deze functionaliteit volledig buiten gebruik gesteld op 1 maart 2023. 
 
-Vandaag de dag gebruikt ongeveer 90% van de IaaS VM's Azure Resource Manager. Als u IaaS-resources gebruikt via Azure Service Manager (ASM), begint u nu met het plannen van uw migratie en voltooit u deze v:12 uur om te profiteren van [Azure Resource Manager.](https://docs.microsoft.com/azure/azure-resource-manager/management/)
+Vandaag 90% van de virtuele machines van IaaS gebruikt Azure Resource Manager. Als u IaaS-resources gebruikt via Azure Service Manager (ASM), start u uw migratie nu en voltooit u deze op 1 maart 2023 om te profiteren van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/).
 
-Klassieke VM's volgen het [moderne levenscyclusbeleid](https://support.microsoft.com/help/30881/modern-lifecycle-policy) voor pensionering.
+Klassieke Vm's volgen het [moderne levenscyclus beleid](https://support.microsoft.com/help/30881/modern-lifecycle-policy) voor het buiten gebruik stellen.
 
 ## <a name="how-does-this-affect-me"></a>Wat betekent dit voor mij? 
 
-1) Vanaf 28 februari 2020 kunnen klanten die in de maand februari 2020 geen IaaS VM's hebben gebruikt via Azure Service Manager (ASM) geen klassieke VM's meer maken. 
-2) Op 1 maart 2023 kunnen klanten iaas-vm's niet meer starten met Azure Service Manager en worden alle klanten die nog worden uitgevoerd of toegewezen, gestopt en dealen. 
-2) Op 1 maart 2023 worden abonnementen die niet zijn gemigreerd naar Azure Resource Manager op de hoogte gebracht van tijdlijnen voor het verwijderen van resterende Klassieke VM's.  
+1) Met ingang van 28 februari 2020 kunnen klanten die IaaS Vm's via Azure Service Manager (ASM) niet gebruiken in de maand van februari 2020 geen klassieke Vm's meer maken. 
+2) Op 1 maart 2023 kunnen klanten geen IaaS Vm's meer starten met behulp van Azure Service Manager en worden er nog steeds actieve of toegewezen gebruikers worden gestopt en wordt de toewijzing ervan ongedaan gemaakt. 
+2) Op 1 maart 2023 worden abonnementen die niet zijn gemigreerd naar Azure Resource Manager, op de hoogte gesteld van tijd lijnen voor het verwijderen van alle resterende klassieke Vm's.  
 
-De volgende Azure-services en -functionaliteit worden **NIET** beïnvloed door dit pensioen: 
+De volgende Azure-Services en-functionaliteit worden **niet** beïnvloed door dit buiten gebruik stellen: 
 - Cloud Services 
-- Opslagaccounts **die niet** worden gebruikt door klassieke VM's 
-- Virtuele netwerken (VNets) **worden niet** gebruikt door klassieke VM's. 
-- Andere klassieke bronnen
+- Opslag accounts die **niet** worden gebruikt door klassieke vm's 
+- Virtuele netwerken (VNets) die **niet** worden gebruikt door klassieke vm's. 
+- Andere klassieke resources
 
 ## <a name="what-actions-should-i-take"></a>Welke acties moet ik ondernemen? 
 
-- Begin vandaag nog met het plannen van uw migratie naar Azure Resource Manager. 
+- Begin met het plannen van de migratie naar Azure Resource Manager, vandaag. 
 
-- [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) over het migreren van uw klassieke [Linux-](./linux/migration-classic-resource-manager-plan.md) en Windows-VM's naar Azure Resource Manager. [Windows](./windows/migration-classic-resource-manager-plan.md)
+- Meer [informatie](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) over het migreren van uw klassieke [Linux](./linux/migration-classic-resource-manager-plan.md) -en [Windows](./windows/migration-classic-resource-manager-plan.md) -vm's naar Azure Resource Manager.
 
-- Raadpleeg voor meer informatie de [veelgestelde vragen over de migratie naar Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
+- Raadpleeg de [Veelgestelde vragen over klassieke migratie naar Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) voor meer informatie.
 
-- Voor technische vragen, problemen en het whitelisting van abonnementen [kunt u contact opnemen met ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)voor contact .
+- [Neem contact op met de ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)voor technische vragen, problemen en abonnementen voor white list.
 
-- Voor andere vragen die geen deel uitmaken van faq en feedback, commentaar hieronder.
+- Voor andere vragen die geen deel uitmaken van veelgestelde vragen en feedback, opmerking hieronder.

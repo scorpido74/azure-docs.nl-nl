@@ -1,5 +1,5 @@
 ---
-title: Webhook-abonneeverificatie configureren - Azure Event Grid IoT Edge | Microsoft Documenten
+title: Webhook-abonnee verificatie configureren-Azure Event Grid IoT Edge | Microsoft Docs
 description: Verificatie van webhook-abonnee configureren
 author: VidyaKukke
 manager: rajarv
@@ -10,15 +10,15 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76841727"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Verificatie van webhook-abonnee configureren
 
-Deze handleiding geeft voorbeelden van de mogelijke webhook abonneeconfiguraties voor een Event Grid module. Standaard worden alleen HTTPS-eindpunten geaccepteerd voor webhook-abonnees. De module Event Grid wordt geweigerd als de abonnee een zelfondertekend certificaat presenteert.
+Deze hand leiding bevat voor beelden van de mogelijke configuratie van de webhook-abonnee voor een Event Grid module. Standaard worden alleen HTTPS-eind punten geaccepteerd voor webhook-abonnees. De module Event Grid wordt geweigerd als de abonnee een zelfondertekend certificaat presenteert.
 
 ## <a name="allow-only-https-subscriber"></a>Alleen HTTPS-abonnee toestaan
 
@@ -32,7 +32,7 @@ Deze handleiding geeft voorbeelden van de mogelijke webhook abonneeconfiguraties
 }
  ```
 
-## <a name="allow-https-subscriber-with-self-signed-certificate"></a>HTTPS-abonnee toestaan met zelfondertekend certificaat
+## <a name="allow-https-subscriber-with-self-signed-certificate"></a>HTTPS-abonnee met zelfondertekend certificaat toestaan
 
 ```json
  {
@@ -45,9 +45,9 @@ Deze handleiding geeft voorbeelden van de mogelijke webhook abonneeconfiguraties
  ```
 
 >[!NOTE]
->Stel de `outbound__webhook__allowUnknownCA` `true` eigenschap alleen in testomgevingen in, omdat u doorgaans zelfondertekende certificaten gebruiken. Voor productieworkloads raden we ze aan om op **false**te worden ingesteld.
+>Stel de eigenschap `outbound__webhook__allowUnknownCA` in `true` op alleen in test omgevingen, omdat u meestal zelfondertekende certificaten kunt gebruiken. Voor werk belastingen voor productie raden wij aan dat ze worden ingesteld op **Onwaar**.
 
-## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS-abonnee toestaan, maar certificaatvalidatie overslaan
+## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS-abonnee toestaan, maar certificaat validatie overs Laan
 
 ```json
  {
@@ -60,7 +60,7 @@ Deze handleiding geeft voorbeelden van de mogelijke webhook abonneeconfiguraties
  ```
 
 >[!NOTE]
->Stel de `outbound__webhook__skipServerCertValidation` `true` eigenschap alleen in testomgevingen in, omdat u mogelijk geen certificaat presenteert dat moet worden geverifieerd. Voor productieworkloads raden we ze aan om op **valse**
+>Stel de eigenschap `outbound__webhook__skipServerCertValidation` `true` alleen in op test omgevingen als u mogelijk geen certificaat presenteert dat moet worden geverifieerd. Voor werk belastingen voor productie raden wij aan dat ze worden ingesteld op **Onwaar** .
 
 ## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>Zowel HTTP als HTTPS toestaan met zelfondertekende certificaten
 
@@ -75,4 +75,4 @@ Deze handleiding geeft voorbeelden van de mogelijke webhook abonneeconfiguraties
  ```
 
 >[!NOTE]
->Stel de `outbound__webhook__httpsOnly` `false` eigenschap alleen in testomgevingen in, omdat u misschien eerst een HTTP-abonnee wilt ophalen. Voor productieworkloads raden we ze aan om **op true**
+>Stel de eigenschap `outbound__webhook__httpsOnly` `false` alleen in op test omgevingen als u mogelijk eerst een http-abonnee wilt maken. Voor werk belastingen voor productie raden wij aan dat deze worden ingesteld op **waar**

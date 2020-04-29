@@ -1,7 +1,7 @@
 ---
-title: Netwerkbeveiliging analyseren - Weergave beveiligingsgroep - Azure REST API
+title: Netwerk beveiliging analyseren-beveiligings groep weer geven-Azure REST API
 titleSuffix: Azure Network Watcher
-description: In dit artikel wordt beschreven hoe u PowerShell gebruiken om de beveiliging van virtuele machines te analyseren met de beveiligingsgroepweergave.
+description: In dit artikel wordt beschreven hoe u Power shell gebruikt voor het analyseren van de beveiliging van virtuele machines met een beveiligings groep.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,35 +13,35 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: c9c76e9c06d4c45a096cff79dac82bb80ebe25d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840737"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Uw beveiliging van virtuele machines analyseren met de beveiligingsgroepweergave met behulp van REST API
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analyseer de beveiliging van uw virtuele machine met de weer gave van de beveiligings groep met REST API
 
 > [!div class="op_single_selector"]
-> - [Powershell](network-watcher-security-group-view-powershell.md)
+> - [Zo](network-watcher-security-group-view-powershell.md)
 > - [Azure-CLI](network-watcher-security-group-view-cli.md)
-> - [REST-API](network-watcher-security-group-view-rest.md)
+> - [REST API](network-watcher-security-group-view-rest.md)
 
-De weergave beveiligingsgroep retourneert geconfigureerde en effectieve netwerkbeveiligingsregels die worden toegepast op een virtuele machine. Deze mogelijkheid is handig voor het controleren en diagnosticeren van netwerkbeveiligingsgroepen en regels die zijn geconfigureerd op een vm om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we u zien hoe u de effectieve en toegepaste beveiligingsregels op haalt voor een virtuele machine met restAPI
+De weer gave beveiligings groep retourneert geconfigureerde en efficiënte netwerk beveiligings regels die worden toegepast op een virtuele machine. Deze mogelijkheid is nuttig bij het controleren en diagnosticeren van netwerk beveiligings groepen en-regels die zijn geconfigureerd op een virtuele machine om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we zien hoe u de effectief en toegepaste beveiligings regels kunt ophalen voor een virtuele machine met behulp van REST API
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit scenario belt u de Network Watcher Rest API om de weergave van de beveiligingsgroep voor een virtuele machine te krijgen. ARMclient wordt gebruikt om de REST API aan te roepen met PowerShell. ARMClient is te vinden op chocolatey bij [ARMClient op Chocolatey](https://chocolatey.org/packages/ARMClient)
+In dit scenario roept u de Network Watcher rest API aan om de weer gave van de beveiligings groep voor een virtuele machine op te halen. ARMclient wordt gebruikt om de REST API aan te roepen met behulp van Power shell. ARMClient is in Choco lade op [ARMClient op Choco lade](https://chocolatey.org/packages/ARMClient) gevonden
 
-In dit scenario wordt ervan uitgegaan dat u de stappen in [Een netwerkwatcher maken](network-watcher-create.md) al hebt gevolgd om een netwerkwatcher te maken. In het scenario wordt ook ervan uitgegaan dat er een resourcegroep met een geldige virtuele machine bestaat om te worden gebruikt.
+In dit scenario wordt ervan uitgegaan dat u de stappen in [Create a Network Watcher](network-watcher-create.md) voor het maken van een Network Watcher, al hebt gevolgd. In het scenario wordt ervan uitgegaan dat er een resource groep met een geldige virtuele machine bestaat om te worden gebruikt.
 
 ## <a name="scenario"></a>Scenario
 
-Het scenario in dit artikel haalt de effectieve en toegepaste beveiligingsregels voor een bepaalde virtuele machine.
+In het scenario dat in dit artikel wordt behandeld, worden de effectief en toegepaste beveiligings regels voor een bepaalde virtuele machine opgehaald.
 
-## <a name="log-in-with-armclient"></a>Inloggen met ARMClient
+## <a name="log-in-with-armclient"></a>Aanmelden met ARMClient
 
 ```powershell
 armclient login
@@ -49,10 +49,10 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Een virtuele machine ophalen
 
-Voer het volgende script uit om een virtuele machine terug te sturenDe volgende code heeft variabelen nodig:
+Voer het volgende script uit om een virtuele-machineThe te retour neren met de volgende code variabelen moeten worden geretourneerd:
 
-- **abonnementId** - De abonnements-id kan ook worden opgehaald met de **Get-AzSubscription** cmdlet.
-- **resourceGroupName** - De naam van een resourcegroep die virtuele machines bevat.
+- **subscriptionId** -de abonnements-id kan ook worden opgehaald met de cmdlet **Get-AzSubscription** .
+- **resourceGroupName** : de naam van een resource groep die virtuele machines bevat.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -61,7 +61,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-De informatie die nodig **id** is, `Microsoft.Compute/virtualMachines` is de id onder het type in reactie, zoals te zien in het volgende voorbeeld:
+De informatie die nodig is, is de **id** onder het `Microsoft.Compute/virtualMachines` type in antwoord, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 ...,
@@ -91,9 +91,9 @@ pute/virtualMachines/{vmName}/extensions/CustomScriptExtension"
 }
 ```
 
-## <a name="get-security-group-view-for-virtual-machine"></a>Beveiligingsgroepweergave voor virtuele machine bekijken
+## <a name="get-security-group-view-for-virtual-machine"></a>De weer gave van de beveiligings groep voor de virtuele machine ophalen
 
-In het volgende voorbeeld wordt de weergave van de beveiligingsgroep van een gerichte virtuele machine gevraagd. De resultaten van dit voorbeeld kunnen worden gebruikt om te vergelijken met de regels en beveiliging gedefinieerd door de oorsprong om te zoeken naar configuratie drift.
+In het volgende voor beeld wordt de weer gave van de beveiligings groep van een specifieke virtuele machine opgevraagd. De resultaten van dit voor beeld kunnen worden gebruikt om te vergelijken met de regels en beveiliging die zijn gedefinieerd door de herkomst om te zoeken naar configuratie drift.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -112,7 +112,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="view-the-response"></a>Bekijk het antwoord
 
-Het volgende voorbeeld is het antwoord dat is geretourneerd van de vorige opdracht. De resultaten tonen alle effectieve en toegepaste beveiligingsregels op de virtuele machine, onderverdeeld in groepen van **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**en **EffectiveSecurityRules**.
+Het volgende voor beeld is het antwoord dat is geretourneerd door de voor gaande opdracht. De resultaten tonen alle effectief en toegepaste beveiligings regels op de virtuele machine, onderverdeeld in groepen **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**en **EffectiveSecurityRules**.
 
 ```json
 
@@ -182,6 +182,6 @@ Het volgende voorbeeld is het antwoord dat is geretourneerd van de vorige opdrac
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga [naar Auditing Network Security Groups (NSG) met Network Watcher](network-watcher-security-group-view-powershell.md) voor meer informatie over het automatiseren van validatie van netwerkbeveiligingsgroepen.
+Ga naar [controle netwerk beveiligings groepen (NSG) met Network Watcher](network-watcher-security-group-view-powershell.md) voor meer informatie over het automatiseren van de validatie van netwerk beveiligings groepen.
 
 

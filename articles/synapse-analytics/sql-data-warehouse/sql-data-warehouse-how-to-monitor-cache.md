@@ -1,6 +1,6 @@
 ---
-title: Uw Gen2-cache optimaliseren
-description: Meer informatie over het bewaken van uw Gen2-cache met behulp van de Azure-portal.
+title: Optimaliseer uw Gen2-cache
+description: Meer informatie over het bewaken van uw Gen2-cache met behulp van de Azure Portal.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,51 +12,51 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: bb5560164af2b573e6aaffd4e4c62bbe0dc24a51
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350411"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>De Gen2-cache controleren
+# <a name="how-to-monitor-the-gen2-cache"></a>De Gen2-cache bewaken
 
-In dit artikel wordt beschreven hoe u trage queryprestaties controleren en oplossen door te bepalen of uw werkbelasting optimaal gebruik maakt van de Gen2-cache.
+In dit artikel wordt beschreven hoe u langzame query prestaties bewaakt en oplost door te bepalen of uw werk belasting optimaal gebruikmaakt van de Gen2-cache.
 
-De Gen2-opslagarchitectuur laagt automatisch uw meest opgevraagde kolomarchiefsegmenten in een cache die zich bevindt op NVMe-gebaseerde SSD's die zijn ontworpen voor Gen2-gegevensmagazijnen. Betere prestaties worden gerealiseerd wanneer uw query's segmenten ophalen die zich in de cache bevinden.
+De Gen2-opslag architectuur bevat automatisch uw meest query's in de opgeslagen column Store-segmenten in een cache op NVMe gebaseerd Ssd's ontworpen voor Gen2 data warehouses. Betere prestaties worden gerealiseerd wanneer uw query's segmenten ophalen die zich in de cache bevinden.
  
-## <a name="troubleshoot-using-the-azure-portal"></a>Problemen oplossen met de Azure-portal
+## <a name="troubleshoot-using-the-azure-portal"></a>Problemen oplossen met behulp van de Azure Portal
 
-U Azure Monitor gebruiken om Gen2-cachestatistieken weer te geven om problemen met query's op te lossen. Ga eerst naar de Azure-portal en klik op **Monitor,** **Statistieken** en **+ Selecteer een bereik:**
+U kunt Azure Monitor gebruiken om de Gen2-cache gegevens weer te geven om de prestaties van query's op te lossen. Ga eerst naar de Azure Portal en klik op **monitor**, **metrische gegevens** en **+ een bereik selecteren**:
 
 ![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-Gebruik de zoek- en vervolgkeuzebalken om uw gegevensmagazijn te vinden. Selecteer vervolgens toepassen.
+Gebruik de balken zoeken en vervolg keuzelijst om uw data warehouse te zoeken. Selecteer vervolgens Toep assen.
 
 ![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-De belangrijkste statistieken voor het oplossen van problemen met de Gen2-cache zijn **cachehitpercentage** en **cachepercentage.** Selecteer **Het percentage cachedruk** en gebruik de **knop Metrische toevoegen** om het gebruikte **percentage cache**toe te voegen. 
+De belangrijkste metrische gegevens voor het oplossen van problemen met de Gen2-cache zijn het **percentage cache treffers** en het **percentage cache gebruik**. Selecteer **percentage cache treffers** en gebruik vervolgens de knop **metriek toevoegen** om **percentage gebruikt geheugen**toe te voegen. 
 
-![Cachestatistieken](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
+![Metrische cache gegevens](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 
-## <a name="cache-hit-and-used-percentage"></a>Cachehit- en gebruikt percentage
+## <a name="cache-hit-and-used-percentage"></a>Aantal cache treffers en gebruikte percentages
 
-De onderstaande matrix beschrijft scenario's op basis van de waarden van de cachestatistieken:
+In de volgende matrix worden scenario's beschreven op basis van de waarden van de cache-metrische gegevens:
 
-|                                | **Hoog slagpercentage met cache** | **Laag slagingspercentage cache** |
+|                                | **Percentage treffers in hoge cache** | **Percentage treffers voor lage cache** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Gebruikt hoog cachepercentage** |          Scenario 1           |          Scenario 2          |
-| **Gebruikt percentage met lage cache**  |          Scenario 3           |          Scenario 4          |
+| **Percentage gebruikt hoog cache geheugen** |          Scenario 1           |          Scenario 2          |
+| **Percentage beperkt cache gebruik**  |          Scenario 3           |          Scenario 4          |
 
-**Scenario 1:** U gebruikt uw cache optimaal. [Problemen oplossen](sql-data-warehouse-manage-monitor.md) met andere gebieden die uw query's mogelijk vertragen.
+**Scenario 1:** U kunt uw cache optimaal gebruiken. [Los](sql-data-warehouse-manage-monitor.md) andere gebieden op die uw query's mogelijk vertragen.
 
-**Scenario 2:** Uw huidige werkgegevensset past niet in de cache, wat een laag slagingspercentage in de cache veroorzaakt als gevolg van fysieke reads. Overweeg uw prestatieniveau op te schalen en uw werkbelasting opnieuw uit te voeren om de cache te vullen.
+**Scenario 2:** De huidige werkset voor werk gegevens past niet in de cache, waardoor er een percentage van lage cache treffers wordt veroorzaakt door fysieke Lees bewerkingen. U kunt het prestatie niveau omhoog schalen en de werk belasting opnieuw uitvoeren om de cache te vullen.
 
-**Scenario 3:** Het is waarschijnlijk dat uw query traag wordt uitgevoerd vanwege redenen die niets met de cache te maken hebben. [Problemen oplossen](sql-data-warehouse-manage-monitor.md) met andere gebieden die uw query's mogelijk vertragen. U ook overwegen [uw instantie te verkleinen](sql-data-warehouse-manage-monitor.md) om de cachegrootte te verkleinen om kosten te besparen. 
+**Scenario 3:** Waarschijnlijk wordt uw query traag als gevolg van redenen die niet aan de cache zijn gerelateerd. [Los](sql-data-warehouse-manage-monitor.md) andere gebieden op die uw query's mogelijk vertragen. U kunt ook overwegen [uw exemplaar omlaag te schalen](sql-data-warehouse-manage-monitor.md) om uw cache grootte te beperken om kosten te besparen. 
 
-**Scenario 4:** Je had een koude cache die de reden zou kunnen zijn waarom uw query traag was. Overweeg uw query opnieuw uit te voeren omdat uw werkgegevensset nu in de cache moet staan. 
+**Scenario 4:** U had een koude cache. Dit kan de reden zijn waarom uw query traag is. Overweeg de query opnieuw uit te voeren, omdat uw werk gegevensset nu in de cache moet worden opgeslagen. 
 
 > [!IMPORTANT]
-> Als het percentage cachehit of het gebruikte percentage cache niet wordt bijgewerkt nadat uw werkbelasting opnieuw is uitgevoerd, kan uw werkset al in het geheugen staan. Alleen geclusterde kolomarchieftabellen worden in de cache opgeslagen.
+> Als het percentage van de cache treffer of het cache gebruik niet wordt bijgewerkt na het opnieuw uitvoeren van de workload, kan de werkset al in het geheugen worden geplaatst. Alleen geclusterde column Store-tabellen worden opgeslagen in de cache.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Queryuitvoering controleren](sql-data-warehouse-manage-monitor.md#monitor-query-execution)voor meer informatie over algemene queryprestaties.
+Zie de [uitvoering van query's bewaken](sql-data-warehouse-manage-monitor.md#monitor-query-execution)voor meer informatie over het afstemmen van algemene query prestaties.

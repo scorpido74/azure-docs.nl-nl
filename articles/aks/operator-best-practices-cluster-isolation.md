@@ -1,65 +1,65 @@
 ---
 title: Aanbevolen procedures voor clusterisolatie
 titleSuffix: Azure Kubernetes Service
-description: Lees de aanbevolen procedures voor de clusteroperator voor isolatie in Azure Kubernetes Service (AKS)
+description: Meer informatie over de aanbevolen procedures voor cluster operators voor isolatie in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668340"
 ---
-# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor clusterisolatie in Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster isolatie in azure Kubernetes service (AKS)
 
-Terwijl u clusters beheert in Azure Kubernetes Service (AKS), moet u vaak teams en workloads isoleren. AKS biedt flexibiliteit in hoe u clusters met meerdere tenant's uitvoeren en resources isoleren. Om uw investering in Kubernetes te maximaliseren, moeten deze functies voor multi-tenancy en isolatie worden begrepen en geïmplementeerd.
+Wanneer u clusters beheert in azure Kubernetes service (AKS), moet u vaak teams en workloads isoleren. AKS biedt flexibiliteit bij het uitvoeren van meerdere Tenant clusters en het isoleren van bronnen. Om uw investering in Kubernetes te maximaliseren, moeten deze functies voor multitenancy en isolatie worden begrepen en geïmplementeerd.
 
-Dit best practices-artikel richt zich op isolatie voor clusteroperators. In dit artikel leert u het volgende:
+Dit artikel Best practices is gericht op isolatie voor cluster operators. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Plannen voor clusters met meerdere tenants en scheiding van resources
+> * Plan voor multi tenant clusters en schei ding van resources
 > * Logische of fysieke isolatie gebruiken in uw AKS-clusters
 
-## <a name="design-clusters-for-multi-tenancy"></a>Ontwerpclusters voor multi-tenancy
+## <a name="design-clusters-for-multi-tenancy"></a>Clusters ontwerpen voor multitenancy
 
-Kubernetes biedt functies waarmee u teams en workloads in hetzelfde cluster logisch isoleren. Het doel is om het minste aantal bevoegdheden op te geven, die aangepast zijn aan de resources die nodig zijn voor elk team. Een [naamruimte][k8s-namespaces] in Kubernetes creëert een logische isolatiegrens. Aanvullende Kubernetes-functies en overwegingen voor isolatie en multi-tenancy omvatten de volgende gebieden:
+Kubernetes biedt functies waarmee u teams en werk belastingen logisch kunt isoleren in hetzelfde cluster. Het doel is om het minste aantal bevoegdheden op te geven, die aangepast zijn aan de resources die nodig zijn voor elk team. Een [naam ruimte][k8s-namespaces] in Kubernetes maakt een logische isolatie grens. Aanvullende Kubernetes-functies en overwegingen voor isolatie en multitenancy bevatten de volgende gebieden:
 
-* **Planning** omvat het gebruik van basisfuncties zoals resourcequota en podonderbrekingsbudgetten. Zie Aanbevolen procedures voor [basisplannerfuncties in AKS voor][aks-best-practices-scheduler]meer informatie over deze functies.
-  * Meer geavanceerde planner functies omvatten taints en toleranties, knooppunt selectors, en knooppunt en pod affiniteit of anti-affiniteit. Zie Aanbevolen procedures voor [geavanceerde plannerfuncties in AKS voor][aks-best-practices-advanced-scheduler]meer informatie over deze functies.
-* **Netwerken** omvat het gebruik van netwerkbeleid om de verkeersstroom in en uit pods te controleren.
-* **Verificatie en autorisatie** omvatten de gebruiker van rbac-integratie (Role-based access control) en Azure Active Directory (AD), pod-identiteiten en geheimen in Azure Key Vault. Zie Aanbevolen procedures voor [verificatie en autorisatie in AKS voor][aks-best-practices-identity]meer informatie over deze functies.
-* **Containers** omvatten pod beveiligingsbeleid, pod security contexten, het scannen van afbeeldingen en runtimes voor kwetsbaarheden. Ook gaat het gebruik van App Armor of Seccomp (Secure Computing) om container toegang tot het onderliggende knooppunt te beperken.
+* **Planning** omvat het gebruik van basis functies, zoals resource quota en pod-verstorings budgets. Zie [Best Practices for Basic scheduler-functies in AKS][aks-best-practices-scheduler]voor meer informatie over deze functies.
+  * Meer geavanceerde functies van scheduler zijn onder andere taints en verdragen, knooppunt selecties en node-en pod-affiniteit of anti-affiniteit. Zie [Aanbevolen procedures voor geavanceerde functies van scheduler in AKS][aks-best-practices-advanced-scheduler]voor meer informatie over deze functies.
+* **Netwerken** omvatten het gebruik van netwerk beleid om de stroom van verkeer in en uit te best uren.
+* **Verificatie en autorisatie** omvatten de gebruiker van op rollen gebaseerd toegangs beheer (RBAC) en Azure Active Directory (AD) integratie, Pod-identiteiten en geheimen in azure Key Vault. Zie [Aanbevolen procedures voor verificatie en autorisatie in AKS][aks-best-practices-identity]voor meer informatie over deze functies.
+* **Containers** bevatten pod-beveiligings beleid, Pod-beveiligings contexten, scan afbeeldingen en Runtimes voor beveiligings problemen. Hiervoor moet u ook app-beveiliging of Seccomp (beveiligd Computing) gebruiken om toegang tot de container te beperken tot het onderliggende knoop punt.
 
 ## <a name="logically-isolate-clusters"></a>Clusters logisch isoleren
 
-**Richtlijnen voor beste praktijken** - Gebruik logische isolatie om teams en projecten te scheiden. Probeer het aantal fysieke AKS-clusters dat u implementeert om teams of toepassingen te isoleren tot een minimum te beperken.
+**Richt lijnen voor best practices** : logische isolatie gebruiken om teams en projecten te scheiden. Probeer het aantal fysieke AKS-clusters dat u implementeert, te minimaliseren om teams of toepassingen te isoleren.
 
-Met logische isolatie kan één AKS-cluster worden gebruikt voor meerdere workloads, teams of omgevingen. Kubernetes [Namespaces][k8s-namespaces] vormen de logische isolatiegrens voor workloads en resources.
+Met logische isolatie kan één AKS-cluster worden gebruikt voor meerdere werk belastingen, teams of omgevingen. Kubernetes- [naam ruimten][k8s-namespaces] vormen de logische isolatie grens voor werk belastingen en resources.
 
 ![Logische isolatie van een Kubernetes-cluster in AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
-Logische scheiding van clusters biedt meestal een hogere poddichtheid dan fysiek geïsoleerde clusters. Er is minder overcapaciteit die niet actief is in het cluster. In combinatie met de Kubernetes cluster autoscaler u het aantal knooppunten omhoog of omlaag schalen om aan de eisen te voldoen. Met deze best practice-benadering voor automatisch schalen u alleen het aantal vereiste knooppunten uitvoeren en de kosten minimaliseren.
+Logische schei ding van clusters biedt meestal een hogere pod-dichtheid dan fysiek geïsoleerde clusters. Er is minder dan de reken capaciteit die inactief is in het cluster. In combi natie met de Kubernetes van het cluster kunt u het aantal knoop punten omhoog of omlaag schalen om te voldoen aan de eisen. Met deze best practice methode voor automatisch schalen kunt u alleen het aantal knoop punten uitvoeren dat vereist is en de kosten minimaliseren.
 
-Kubernetes-omgevingen, in AKS of elders, zijn niet helemaal veilig voor vijandig multi-tenant gebruik. In een multi-tenant omgeving werken meerdere tenants aan een gemeenschappelijke, gedeelde infrastructuur. Als alle tenants niet kunnen worden vertrouwd, moet u extra planning maken om te voorkomen dat de ene tenant de beveiliging en service van een andere tenant beïnvloedt. Extra beveiligingsfuncties zoals *Pod Security Policy* en meer fijnmazige role-based access controls (RBAC) voor knooppunten maken exploits moeilijker. Echter, voor echte beveiliging bij het uitvoeren van vijandige multi-tenant workloads, een hypervisor is het enige niveau van beveiliging die u moet vertrouwen. Het beveiligingsdomein voor Kubernetes wordt het hele cluster, geen individueel knooppunt. Voor dit soort vijandige multi-tenant workloads moet u fysiek geïsoleerde clusters gebruiken.
+Kubernetes-omgevingen, in AKS of elders, zijn niet volledig veilig voor gebruik van een vijandend multi tenant. In een omgeving met meerdere tenants werken meerdere tenants met een gemeen schappelijke, gedeelde infra structuur. Als alle tenants niet kunnen worden vertrouwd, moet u daarom extra plannen om te voor komen dat een Tenant die de beveiliging en service van een ander beïnvloedt. Aanvullende beveiligings functies, zoals *pod-beveiligings beleid* en meer verfijnde, op rollen gebaseerde toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken.
 
 ## <a name="physically-isolate-clusters"></a>Clusters fysiek isoleren
 
-**Richtlijnen voor aanbevolen procedures** - Minimaliseer het gebruik van fysieke isolatie voor elke afzonderlijke team- of toepassingsimplementatie. Gebruik in plaats daarvan *logische* isolatie, zoals besproken in de vorige sectie.
+**Richt lijnen voor best practices** : het gebruik van fysieke isolatie voor elke afzonderlijke team-of toepassings implementatie minimaliseren. Gebruik in plaats daarvan *logische* isolatie, zoals beschreven in de vorige sectie.
 
-Een veelvoorkomende benadering van clusterisolatie is het gebruik van fysiek gescheiden AKS-clusters. In dit isolatiemodel krijgen teams of workloads hun eigen AKS-cluster toegewezen. Deze aanpak lijkt vaak de eenvoudigste manier om workloads of teams te isoleren, maar voegt extra beheer en financiële overhead toe. U moet deze meerdere clusters nu onderhouden en moet afzonderlijk toegang bieden en machtigingen toewijzen. U wordt ook gefactureerd voor alle afzonderlijke knooppunten.
+Een veelvoorkomende aanpak van cluster isolatie is het gebruik van fysiek gescheiden AKS-clusters. In dit isolatie model worden teams of workloads toegewezen aan hun eigen AKS-cluster. Deze benadering lijkt vaak op de eenvoudigste manier om workloads of teams te isoleren, maar voegt extra beheer en financiële overhead toe. U moet deze meerdere clusters nu onderhouden en afzonderlijk toegang geven en machtigingen toewijzen. U wordt ook gefactureerd voor alle afzonderlijke knoop punten.
 
-![Fysieke isolatie van individuele Kubernetes-clusters in AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
+![Fysieke isolatie van afzonderlijke Kubernetes-clusters in AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-Fysiek gescheiden clusters hebben meestal een lage poddichtheid. Omdat elk team of workload zijn eigen AKS-cluster heeft, is het cluster vaak over-ingericht met rekenresources. Vaak zijn er een klein aantal pods gepland op deze knooppunten. Ongebruikte capaciteit op de knooppunten kan niet worden gebruikt voor toepassingen of services in ontwikkeling door andere teams. Deze overtollige middelen dragen bij aan de extra kosten in fysiek gescheiden clusters.
+Fysiek gescheiden clusters hebben doorgaans een lage pod-dichtheid. Wanneer elk team of werk belasting een eigen AKS-cluster heeft, is het cluster vaak overbelast met reken resources. Vaak wordt een klein aantal peulen op deze knoop punten gepland. Ongebruikte capaciteit op de knoop punten kan niet worden gebruikt voor toepassingen of services in ontwikkeling door andere teams. Deze overtollige resources dragen bij aan de extra kosten in fysiek gescheiden clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Dit artikel richtte zich op clusterisolatie. Zie de volgende aanbevolen procedures voor meer informatie over clusterbewerkingen in AKS:
+Dit artikel is gericht op de isolatie van het cluster. Zie voor meer informatie over cluster bewerkingen in AKS de volgende aanbevolen procedures:
 
-* [Basisfuncties kubernetes scheduler][aks-best-practices-scheduler]
-* [Geavanceerde functies voor Kubernetes scheduler][aks-best-practices-advanced-scheduler]
+* [Functies van de Basic Kubernetes scheduler][aks-best-practices-scheduler]
+* [Geavanceerde functies van Kubernetes scheduler][aks-best-practices-advanced-scheduler]
 * [Verificatie en autorisatie][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

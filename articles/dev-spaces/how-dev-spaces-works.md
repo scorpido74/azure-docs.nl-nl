@@ -3,50 +3,50 @@ title: Hoe Azure Dev Spaces werkt
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Beschrijft de processen die Azure Dev Spaces van stroom voorstaan
-keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+description: Hierin worden de processen beschreven die Power Azure dev Spaces
+keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80234962"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
 
-Het ontwikkelen van een Kubernetes applicatie kan een uitdaging zijn. U hebt Docker- en Kubernetes-configuratiebestanden nodig. U moet uitzoeken hoe u uw toepassing lokaal testen en communiceren met andere afhankelijke services. Mogelijk moet u meerdere services tegelijk ontwikkelen en testen en met een team van ontwikkelaars.
+Het ontwikkelen van een Kubernetes-toepassing kan lastig zijn. U hebt configuratie bestanden voor docker en Kubernetes nodig. U moet nagaan hoe u uw toepassing lokaal kunt testen en interactie met andere afhankelijke services. U moet mogelijk meerdere services tegelijk en met een team van ontwikkel aars verwerken en testen.
 
-Azure Dev Spaces biedt u meerdere manieren om Kubernetes-toepassingen snel te herhalen en te debuggen en samen te werken met uw team. In dit artikel wordt beschreven wat Azure Dev Spaces kan doen en hoe het werkt.
+Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing voor Kubernetes-toepassingen en samen werken met uw team. In dit artikel wordt beschreven wat Azure dev Spaces kan doen en hoe het werkt.
 
-## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>Snel herhalen en debuggen uw Kubernetes-toepassing
+## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>Uw Kubernetes-toepassing snel herhalen en fouten opsporen
 
-Azure Dev Spaces vermindert de inspanning om uw Kubernetes-toepassing te ontwikkelen, te testen en te herhalen in de context van uw AKS-cluster. Deze vermindering van de inspanning stelt ontwikkelaars in staat om zich te concentreren op de bedrijfslogica van hun toepassingen en niet hun services te configureren om in Kubernetes te draaien.
+Azure dev Spaces vermindert de inspanningen voor het ontwikkelen, testen en herhalen van uw Kubernetes-toepassing in de context van uw AKS-cluster. Met deze reductie in inspanningen kunnen ontwikkel aars zich richten op de bedrijfs logica van hun toepassingen en hun services niet configureren om te worden uitgevoerd in Kubernetes.
 
-### <a name="connect-your-development-machine-to-aks"></a>Verbind uw ontwikkelmachine met AKS
+### <a name="connect-your-development-machine-to-aks"></a>Uw ontwikkel machine verbinden met AKS
 
-Met Azure Dev Spaces u uw ontwikkelcomputer verbinden met uw AKS-cluster, zodat u code op uw ontwikkelcomputer uitvoeren en debuggen alsof deze op het cluster wordt uitgevoerd. Azure Dev Spaces leidt het verkeer tussen uw verbonden AKS-cluster om door een pod op uw cluster uit te voeren die fungeert als een externe agent om verkeer tussen uw ontwikkelingsmachine en het cluster om te leiden. Met deze verkeersomleiding kunnen code op uw ontwikkelingscomputer en services die in uw AKS-cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde AKS-cluster bevinden. Zie [Hoe het aansluiten van uw ontwikkelcomputer op uw AKS werkt][how-it-works-connect]voor meer informatie over het verbinden van uw ontwikkelmachine met AKS.
+Met Azure dev Spaces kunt u uw ontwikkel computer verbinden met uw AKS-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Azure dev Spaces omleidt verkeer tussen uw verbonden AKS-cluster door een pod op uw cluster uit te voeren dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en-services die worden uitgevoerd in uw AKS-cluster communiceren alsof ze zich in hetzelfde AKS-cluster bevonden. Zie [How to connect your Development computer to your AKS cluster Works][how-it-works-connect](Engelstalig) voor meer informatie over het verbinden van uw ontwikkel computer met AKS.
 
 ### <a name="run-your-code-in-aks"></a>Uw code uitvoeren in AKS
 
-Naast het omleiden van verkeer tussen uw ontwikkelcomputer en uw AKS-cluster, u met Azure Dev Spaces uw code direct in AKS configureren en snel uitvoeren. Met Visual Studio, Visual Studio Code of de Azure Dev Spaces CLI uploaden Azure Dev-spaties uw code naar het cluster en bouwen en uitvoeren deze vervolgens. Azure Dev-spaties kunnen ook op intelligente wijze codewijzigingen synchroniseren en uw service opnieuw starten om wijzigingen weer te geven als dat nodig is. Tijdens het uitvoeren van uw code worden logboeken en HTTP-sporen naar uw client gestreamd, zodat u de voortgang controleren en eventuele problemen diagnosticeren. U Azure Dev Spaces ook gebruiken om de foutopsporing in Visual Studio en Visual Studio Code toe te voegen aan Java,Node.js en .NET Core-services. Zie [Hoe het voorbereiden van een project voor Azure Dev Spaces werkt][how-it-works-prep], Hoe het uitvoeren van uw code met Azure [Dev Spaces werkt][how-it-works-up]en hoe het [afluisteren van uw code op afstand met Azure Dev Spaces werkt][how-it-works-remote-debugging]voor meer informatie.
+Naast het omleiden van verkeer tussen uw ontwikkel computer en uw AKS-cluster kunt u met Azure dev Spaces uw code rechtstreeks in AKS configureren en snel uitvoeren. Met Visual Studio, Visual Studio code of de Azure dev Spaces-CLI uploadt Azure dev Spaces uw code naar het cluster en bouwt en voert u deze uit. Met Azure dev Spaces kunt u ook code wijzigingen intelligent synchroniseren en uw service opnieuw starten om zo nodig wijzigingen weer te geven. Tijdens het uitvoeren van uw code worden build-logboeken en HTTP-traceringen weer gestreamd naar uw client, zodat u de voortgang kunt bewaken en eventuele problemen moet vaststellen. U kunt ook Azure dev Spaces gebruiken om de fout opsporing in Visual Studio en Visual Studio code te koppelen aan Java, node. js en .NET Core Services. Zie How to premate [a project for Azure dev Spaces][how-it-works-prep](Engelstalig) voor meer informatie, [hoe u uw code kunt uitvoeren met Azure dev Spaces werkt][how-it-works-up]en [hoe u uw code op afstand kunt debuggen met Azure dev Spaces][how-it-works-remote-debugging].
 
 ## <a name="team-development"></a>Teamontwikkeling
 
-Azure Dev Spaces helpt teams productief aan hun toepassing te werken op hetzelfde AKS-cluster zonder storend te zijn.
+Met Azure dev Spaces kunnen teams productief werken aan hun toepassing op hetzelfde AKS-cluster zonder dat dit wordt verstoord.
 
-### <a name="intelligent-routing-between-dev-spaces"></a>Intelligente routering tussen dev-ruimten
+### <a name="intelligent-routing-between-dev-spaces"></a>Intelligente route ring tussen dev-ruimten
 
-Met Azure Dev Spaces kan een team één AKS-cluster delen waarop een cloud-native toepassing wordt uitgevoerd en geïsoleerde ontwikkelruimten maken waar het team kan ontwikkelen, testen en debuggen zonder de andere dev-ruimten te verstoren. Een basislijnversie van de toepassing wordt uitgevoerd in een root-dev-ruimte. Teamleden maken vervolgens onafhankelijke onderliggende dev-ruimten op basis van de hoofdruimte voor wijzigingen in de toepassing voor ontwikkeling, testen en foutopsporing. Via de routeringsmogelijkheden in Dev Spaces kunnen onderliggende dev-ruimten aanvragen routeren tussen services die worden uitgevoerd in de onderliggende dev-ruimte en de bovenliggende dev-ruimte. Met deze routering kunnen ontwikkelaars hun eigen versie van een service uitvoeren terwijl ze afhankelijke services van de bovenliggende ruimte opnieuw gebruiken. Elke onderliggende ruimte heeft zijn eigen unieke URL, die door anderen kan worden gedeeld en geopend voor samenwerking. Zie [Hoe routering werkt met Azure Dev Spaces][how-it-works-routing]voor meer informatie over hoe routering werkt in Azure Dev Spaces.
+Met Azure dev Spaces kan een team een single AKS-cluster met een Cloud toepassing delen en geïsoleerde ontwikkel ruimten maken waar het team kan ontwikkelen, testen en fouten opsporen zonder de andere ontwikkel ruimten te verstoren. Een basislijn versie van de toepassing wordt uitgevoerd in een hoofd dev-ruimte. Team leden maken vervolgens onafhankelijke onderliggende ontwikkel ruimten op basis van de hoofd ruimte voor het ontwikkelen, testen en fout opsporing van wijzigingen in de toepassing. Met de routerings mogelijkheden in dev Spaces kunnen onderliggende ontwikkel ruimten aanvragen routeren tussen services die worden uitgevoerd in de onderliggende ontwikkel ruimte en de bovenliggende ontwikkel ruimte. Met deze route ring kunnen ontwikkel aars hun eigen versie van een service uitvoeren terwijl ze afhankelijke services van de bovenliggende ruimte opnieuw gebruiken. Elke onderliggende ruimte heeft een eigen unieke URL, die door anderen kan worden gedeeld en geopend voor samen werking. Zie [hoe route ring werkt met Azure dev Spaces][how-it-works-routing]voor meer informatie over hoe route ring werkt in azure dev Spaces.
 
 ### <a name="live-testing-an-open-pull-request"></a>Live testen van een open pull-aanvraag
 
-U GitHub Actions met Azure Dev Spaces ook gebruiken om wijzigingen in uw toepassing te testen in een pull-aanvraag rechtstreeks in uw cluster voordat u deze samenvoegt. Azure Dev Spaces kan automatisch een revisieversie van de toepassing implementeren in uw cluster, zodat de auteur en andere teamleden de wijzigingen in de context van de hele toepassing kunnen bekijken. Met behulp van de routeringsmogelijkheden van Azure Dev Spaces wordt deze revisieversie van de toepassing ook geïmplementeerd in uw cluster zonder dat dit gevolgen heeft voor andere dev-ruimten. Met al deze mogelijkheden u pull-aanvragen met vertrouwen goedkeuren en samenvoegen. Zie [GitHub Actions & Azure Kubernetes Service][pr-flow]voor een voorbeeld van GitHub Actions en Azure Dev Spaces.
+U kunt ook GitHub-acties met Azure-ontwikkel ruimten gebruiken om wijzigingen in uw toepassing in een pull-aanvraag rechtstreeks in uw cluster te testen voordat u ze samenvoegt. Met Azure dev Spaces kan automatisch een beoordelings versie van de toepassing naar uw cluster worden geïmplementeerd, zodat de auteur en andere team leden de wijzigingen in de context van de hele toepassing kunnen controleren. Door gebruik te maken van de routerings mogelijkheden van Azure dev Spaces, wordt deze beoordelings versie van de toepassing ook geïmplementeerd in uw cluster zonder dat dit van invloed is op andere ontwikkel ruimten. Al deze mogelijkheden bieden u de mogelijkheid om pull-aanvragen goed te keuren en samen te voegen. Zie [github actions & Azure Kubernetes service][pr-flow](Engelstalig) voor een voor beeld van github-acties en Azure dev Spaces.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Uw ontwikkelmachine verbinden met een AKS-cluster om][connect]aan de slag te gaan met het aansluiten van uw lokale ontwikkelingsmachine op uw AKS-cluster.
+Zie [uw ontwikkel machine verbinden met een AKS-cluster][connect]om aan de slag te gaan met het koppelen van uw lokale ontwikkel computer aan uw AKS-cluster.
 
-Zie de [teamontwikkeling in Azure Dev Spaces][quickstart-team] snel van start om aan de slag te gaan met Azure Dev Spaces voor teamontwikkeling.
+Als u aan de slag wilt gaan met Azure dev Spaces voor team ontwikkeling, raadpleegt u de [team ontwikkeling in azure dev Spaces][quickstart-team] Quick Start.
 
 [connect]: how-to/connect.md
 [how-it-works-connect]: how-dev-spaces-works-connect.md

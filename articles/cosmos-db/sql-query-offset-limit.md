@@ -1,23 +1,23 @@
 ---
-title: COMPENSATIELIMIET-component in Azure Cosmos DB
-description: Meer informatie over het gebruik van de clausule COMPENSATIELIMIET om bepaalde waarden over te slaan en te nemen bij het query's in Azure Cosmos DB
+title: Component OFFSET LIMIT in Azure Cosmos DB
+description: Meer informatie over het gebruik van de component OFFSET LIMIT voor het overs Laan en het uitvoeren van bepaalde waarden bij het uitvoeren van query's in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
 ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76771575"
 ---
-# <a name="offset-limit-clause-in-azure-cosmos-db"></a>COMPENSATIELIMIET-component in Azure Cosmos DB
+# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Component OFFSET LIMIT in Azure Cosmos DB
 
-De clausule OVERCOMPENSATIELIMIET is een optionele clausule om over te slaan en vervolgens een aantal waarden uit de query te halen. De telling VAN DE COMPENSATIE en het aantal LIMIET zijn vereist in de component COMPENSATIELIMIET.
+De component OFFSET LIMIT is een optionele component waarmee u een aantal waarden uit de query kunt overs Laan. Het aantal OFFSET en het aantal LIMIETen zijn vereist in de component OFFSET LIMIT.
 
-Wanneer OFFSET LIMIT wordt gebruikt in combinatie met een ORDER BY-component, wordt de resultaatset geproduceerd door het overslaan te doen en de bestelde waarden over te nemen. Als er geen ORDER BY-clausule wordt gebruikt, zal dit resulteren in een deterministische volgorde van waarden.
+Wanneer de OFFSET limiet wordt gebruikt in combi natie met een ORDER BY-component, wordt de resultatenset gemaakt door overs Laan en de geordende waarden uit te voeren. Als er geen ORDER BY-component wordt gebruikt, resulteert dit in een deterministische volg orde van waarden.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -29,23 +29,23 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 - `<offset_amount>`
 
-   Hiermee geeft u het gehele aantal items op dat de queryresultaten moeten overslaan.
+   Hiermee geeft u het aantal items op dat door de query resultaten moet worden overgeslagen.
 
 - `<limit_amount>`
   
-   Hiermee geeft u het gehele aantal items op dat de queryresultaten moeten bevatten
+   Hiermee geeft u het gehele getal op van items die de query resultaten moeten bevatten
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Zowel `OFFSET` de telling `LIMIT` als de `OFFSET LIMIT` telling zijn vereist in de clausule. Als een `ORDER BY` optionele clausule wordt gebruikt, wordt de resultaatset geproduceerd door de bestelde waarden over te slaan. Anders retourneert de query een vaste volgorde van waarden.
+  Zowel het `OFFSET` aantal als het `LIMIT` aantal is vereist in de `OFFSET LIMIT` component. Als er een `ORDER BY` optionele component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden.
 
-  De RU-kosten van `OFFSET LIMIT` een query met zal toenemen naarmate het aantal voorwaarden wordt gecompenseerd toeneemt. Voor query's met meerdere pagina's met resultaten raden we meestal aan om vervolgtokens te gebruiken. Vervolgtokens zijn een "bladwijzer" voor de plaats waar de query later kan worden hervat. Als u `OFFSET LIMIT`gebruikt, is er geen "bladwijzer". Als u de volgende pagina van de query wilt retourneren, moet u vanaf het begin beginnen.
+  De RU-kosten van een query `OFFSET LIMIT` met worden verhoogd naarmate er meer termen worden gecompenseerd. Voor query's met meerdere pagina's met resultaten raden we u aan om vervolg tokens te gebruiken. Vervolg tokens zijn een ' blad wijzer ' voor de locatie waar de query later kan worden hervat. Als u gebruikt `OFFSET LIMIT`, is er geen blad wijzer. Als u de volgende pagina van de query wilt retour neren, moet u beginnen met het begin.
   
-  U moet `OFFSET LIMIT` gebruiken voor aanvragen wanneer u documenten volledig wilt overslaan en clientresources wilt opslaan. U moet bijvoorbeeld `OFFSET LIMIT` gebruiken als u wilt doorgaan naar het 1000e queryresultaat en de resultaten 1 tot en met 999 niet hoeft te bekijken. Op de backend laadt `OFFSET LIMIT` u nog steeds elk document, inclusief documenten die worden overgeslagen. Het prestatievoordeel is een besparing in de bronnen van klanten door het vermijden van het verwerken van documenten die niet nodig zijn.
+  Gebruik `OFFSET LIMIT` voor gevallen waarin u documenten volledig wilt overs Laan en client bronnen wilt opslaan. U moet bijvoorbeeld gebruiken `OFFSET LIMIT` als u wilt door gaan naar het 1000th-query resultaat en geen resultaten meer wilt weer geven van 1 tot en met 999. Op de back- `OFFSET LIMIT` end wordt nog steeds elk document geladen, met inbegrip van de bestanden die worden overgeslagen. De prestaties profiteren van een besparing in client bronnen door te voor komen dat documenten worden verwerkt die niet nodig zijn.
 
 ## <a name="examples"></a>Voorbeelden
 
-Hier vindt u bijvoorbeeld een query die de eerste waarde overslaat en de tweede waarde (in volgorde van de naam van de inwoner):
+Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede waarde wordt geretourneerd (op volg orde van de naam van de residente plaats):
 
 ```sql
     SELECT f.id, f.address.city
@@ -65,7 +65,7 @@ U ziet deze uitvoer:
     ]
 ```
 
-Hier is een query die de eerste waarde overslaat en de tweede waarde retourneert (zonder te bestellen):
+Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede waarde wordt geretourneerd (zonder volg orde):
 
 ```sql
    SELECT f.id, f.address.city
@@ -86,6 +86,6 @@ U ziet deze uitvoer:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Slag](sql-query-getting-started.md)
+- [Aan de slag](sql-query-getting-started.md)
 - [SELECT-component](sql-query-select.md)
-- [ORDER BY-clausule](sql-query-order-by.md)
+- [ORDER BY-component](sql-query-order-by.md)

@@ -1,6 +1,6 @@
 ---
-title: Een SMB-volume maken voor Azure NetApp-bestanden | Microsoft Documenten
-description: Beschrijft hoe u een SMB-volume maakt voor Azure NetApp-bestanden.
+title: Een SMB-volume maken voor Azure NetApp Files | Microsoft Docs
+description: Hierin wordt beschreven hoe u een SMB-volume maakt voor Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,29 +15,29 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: b-juche
 ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668008"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
-Azure NetApp Files ondersteunt NFS- en SMBv3-volumes. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool. In dit artikel ziet u hoe u een SMBv3-volume maakt. Zie [Een NFS-volume maken voor Azure NetApp-bestanden](azure-netapp-files-create-volumes.md)als u een NFS-volume wilt maken. 
+Azure NetApp Files ondersteunt NFS-en SMBv3-volumes. Capaciteitsgebruik van een volume wordt in mindering gebracht op de ingerichte capaciteit van de pool. In dit artikel wordt beschreven hoe u een SMBv3-volume maakt. Als u een NFS-volume wilt maken, raadpleegt u [een NFS-volume maken voor Azure NetApp files](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Voordat u begint 
 U dient al een capaciteitspool te hebben ingesteld.   
-[Een capaciteitspool instellen](azure-netapp-files-set-up-capacity-pool.md)   
+[Een capaciteits groep instellen](azure-netapp-files-set-up-capacity-pool.md)   
 Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.  
 [Een subnet delegeren aan Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
-## <a name="requirements-for-active-directory-connections"></a>Vereisten voor Active Directory-verbindingen
+## <a name="requirements-for-active-directory-connections"></a>Vereisten voor Active Directory verbindingen
 
- U moet Active Directory-verbindingen maken voordat u een SMB-volume maakt. De vereisten voor Active Directory-verbindingen zijn als volgt: 
+ U moet Active Directory verbindingen maken voordat u een SMB-volume maakt. De vereisten voor Active Directory verbindingen zijn als volgt: 
 
-* Het beheerdersaccount dat u gebruikt, moet de mogelijkheid hebben om machineaccounts te maken in het organisatie-eenheidspad (OU) dat u opgeeft.  
+* Het beheerders account dat u gebruikt, moet de mogelijkheid hebben om computer accounts te maken in het pad naar de organisatie-eenheid (OE) dat u opgeeft.  
 
-* De juiste poorten moeten zijn geopend op de toepasselijke Windows Active Directory -server (AD).  
+* De juiste poorten moeten geopend zijn op de betreffende Windows Active Directory (AD)-server.  
     De vereiste poorten zijn als volgt: 
 
     |     Service           |     Poort     |     Protocol     |
@@ -45,7 +45,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     |    AD-webservices    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N.v.t.       |    Echo-antwoord    |
+    |    ICMPv4             |    N.v.t.       |    ECHO antwoord    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -56,23 +56,23 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     |    NetBIOS-naam       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    W32time            |    123       |    UDP           |
+    |    W32Time            |    123       |    UDP           |
 
-* De sitetopologie voor de beoogde Active Directory Domain Services moet voldoen aan best practices, met name het Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  
+* De site topologie voor de doel-Active Directory Domain Services moet voldoen aan de aanbevolen procedures, met name de Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  
 
-    De adresruimte voor het virtuele netwerk waar Azure NetApp-bestanden wordt geïmplementeerd, moet worden toegevoegd aan een nieuwe of bestaande Active Directory-site (waar een domeincontroller bereikbaar is voor Azure NetApp Files). 
+    De adres ruimte voor het virtuele netwerk waar Azure NetApp Files wordt geïmplementeerd, moet worden toegevoegd aan een nieuwe of bestaande Active Directory site (waarbij een domein controller bereikbaar is voor Azure NetApp Files). 
 
-* De opgegeven DNS-servers moeten bereikbaar zijn via het [gedelegeerde subnet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) van Azure NetApp-bestanden.  
+* De opgegeven DNS-servers moeten bereikbaar zijn vanaf het [overgedragen subnet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) van Azure NetApp files.  
 
-    Zie [Richtlijnen voor azure NetApp Files-netwerkplanning](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) voor ondersteunde netwerktopologieën.
+    Zie de [richt lijnen voor het Azure NetApp files-netwerk planning](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) voor ondersteunde netwerk topologieën.
 
-    De Network Security Groups (NSGs) en firewalls moeten op de juiste wijze geconfigureerde regels hebben om Active Directory- en DNS-verkeersaanvragen mogelijk te maken. 
+    De netwerk beveiligings groepen (Nsg's) en firewalls moeten de juiste geconfigureerde regels hebben om Active Directory-en DNS-verkeers aanvragen toe te staan. 
 
-* Het gedelegeerde subnet azure NetApp-bestanden moet alle Active Directory Domain Services -domeincontrollers in het domein kunnen bereiken, inclusief alle lokale en externe domeincontrollers. Anders kan serviceonderbreking optreden.  
+* Het Azure NetApp Files overgedragen subnet moet alle Active Directory Domain Services (toevoegen) domein controllers in het domein, inclusief alle lokale en externe domein controllers, kunnen bereiken. Anders kan er sprake zijn van een onderbreking van de service.  
 
-    Als u domeincontrollers hebt die onbereikbaar zijn door het gedelegeerde subnet van Azure NetApp Files, u een Active Directory-site opgeven tijdens het maken van de Active Directory-verbinding.  Azure NetApp Files hoeft alleen te communiceren met domeincontrollers op de site waar de gedelegeerde subnetadresruimte van Azure NetApp Files zich bevindt.
+    Als u domein controllers hebt die niet bereikbaar zijn voor het Azure NetApp Files overgedragen subnet, kunt u een Active Directory site opgeven tijdens het maken van de Active Directory verbinding.  Azure NetApp Files moet alleen communiceren met domein controllers in de site waar de Azure NetApp Files adres ruimte van het subnet is overgedragen.
 
-    Zie [Het ontwerpen van de sitetopologie](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en -services. 
+    Zie [de site topologie ontwerpen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
     
 <!--
 * Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
@@ -84,111 +84,111 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
 
-Zie [veelgestelde vragen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) over Azure NetApp Files SMB over aanvullende AD-informatie. 
+Zie Azure NetApp Files [SMB Veelgestelde vragen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) over extra AD-informatie. 
 
-## <a name="decide-which-domain-services-to-use"></a>Beslissen welke domeinservices moeten worden gebruikt 
+## <a name="decide-which-domain-services-to-use"></a>Beslissen welke domein Services u wilt gebruiken 
 
-Azure NetApp Files ondersteunt zowel [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) als Azure Active Directory Domain Services (AADDS) voor AD-verbindingen.  Voordat u een AD-verbinding maakt, moet u beslissen of u ADDS of AADDS wilt gebruiken.  
+Azure NetApp Files ondersteunt zowel [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (toevoegen) als Azure Active Directory Domain Services (AADDS) voor AD-verbindingen.  Voordat u een AD-verbinding maakt, moet u beslissen of u toevoegt of AADDS wilt gebruiken.  
 
-Zie [Zelfbeheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions)voor meer informatie. 
+Zie voor meer informatie [zelf beheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-U de gewenste [Active Directory-sites en -services-scope](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) gebruiken voor Azure NetApp-bestanden. Met deze optie u lezen en schrijven naar Active Directory Domain Services -domeincontrollers (ADDS) die toegankelijk zijn [voor Azure NetApp-bestanden.](azure-netapp-files-network-topologies.md) Het voorkomt ook dat de service communiceert met domeincontrollers die zich niet in de opgegeven Active Directory-sites en -services-site bevinden. 
+U kunt uw favoriete [Active Directory-sites en-services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) -bereik gebruiken voor Azure NetApp files. Met deze optie schakelt u lees-en schrijf bewerkingen naar Active Directory Domain Services (toevoegen) domein controllers die [toegankelijk zijn via Azure NetApp files](azure-netapp-files-network-topologies.md). Ook wordt voor komen dat de service communiceert met domein controllers die zich niet in de opgegeven Active Directory sites en Services-site. 
 
-Als u uw sitenaam wilt vinden wanneer u ADDS gebruikt, u contact opnemen met de beheergroep in uw organisatie die verantwoordelijk is voor Active Directory Domain Services. In het onderstaande voorbeeld ziet u de plug-in Active Directory Sites and Services waar de sitenaam wordt weergegeven: 
+Als u wilt zoeken naar de naam van uw site wanneer u toevoegt, kunt u contact opnemen met de beheer groep in uw organisatie die verantwoordelijk is voor Active Directory Domain Services. In het onderstaande voor beeld ziet u de Active Directory-invoeg toepassing sites en services waar de site naam wordt weer gegeven: 
 
 ![Sites en services van Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
 
-Wanneer u een AD-verbinding configureert voor Azure NetApp-bestanden, geeft u de sitenaam op in het bereik van het veld **AD-sitenaam.**
+Wanneer u een AD-verbinding voor Azure NetApp Files configureert, geeft u de site naam in bereik op voor het veld **ad-site naam** .
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
 
-Zie configuratie en richtlijnen van [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/)voor aadds (Azure Active Directory Domain Services) .
+Zie [Azure AD Domain Services documentatie](https://docs.microsoft.com/azure/active-directory-domain-services/)voor Azure Active Directory Domain Services (AADDS) configuratie en richt lijnen.
 
-Aanvullende AADDS-overwegingen zijn van toepassing op Azure NetApp-bestanden: 
+Er zijn aanvullende AADDS-overwegingen van toepassing op Azure NetApp Files: 
 
-* Controleer of het VNet of subnet waar AADDS wordt geïmplementeerd zich in dezelfde Azure-regio bevindt als de Azure NetApp-bestanden-implementatie.
-* Als u een andere VNet gebruikt in het gebied waar Azure NetApp-bestanden worden geïmplementeerd, moet u een peering maken tussen de twee VNets.
-* Ondersteuning `user` en `resource forest` typen van Azure NetApp Files.
-* Voor synchronisatietype u `All` selecteren `Scoped`of.   
-    Als u `Scoped`de juiste Azure AD-groep selecteert, wordt de juiste Azure AD-groep geselecteerd voor toegang tot SMB-shares.  Als u onzeker bent, `All` kunt u het synchronisatietype gebruiken.
-* Gebruik van de Enterprise of Premium SKU is vereist. De Standaard SKU wordt niet ondersteund.
+* Zorg ervoor dat het VNet of subnet waar AADDS wordt geïmplementeerd, zich in dezelfde Azure-regio bevindt als de Azure NetApp Files-implementatie.
+* Als u een ander VNet gebruikt in de regio waar Azure NetApp Files is geïmplementeerd, moet u een peering tussen de twee VNets maken.
+* Azure NetApp Files ondersteunt `user` en `resource forest` typen.
+* Voor het synchronisatie type kunt u of `All` `Scoped`selecteren.   
+    Als u selecteert `Scoped`, moet u ervoor zorgen dat de juiste Azure AD-groep is geselecteerd voor toegang tot SMB-shares.  Als u niet zeker weet, kunt u het `All` synchronisatie type gebruiken.
+* Het gebruik van de Enter prise-of Premium-SKU is vereist. De standaard-SKU wordt niet ondersteund.
 
-Wanneer u een Active Directory-verbinding maakt, moet u de volgende specificaties voor AADDS noteren:
+Wanneer u een Active Directory verbinding maakt, moet u rekening houden met de volgende specifieke voor AADDS:
 
-* U informatie voor **Primaire DNS,** **Secundaire DNS**en **AD DNS-domeinnaam** vinden in het menu AADDS.  
-Voor DNS-servers worden twee IP-adressen gebruikt voor het configureren van de Active Directory-verbinding. 
-* Het pad van `OU=AADDC Computers`de **organisatie-eenheid** is .  
-Deze instelling is geconfigureerd in de **Active Directory Connections** onder **NetApp-account:**
+* In het menu AADDS vindt u informatie over de **primaire**DNS-, **secundaire DNS**-en **AD DNS-domein naam** .  
+Voor DNS-servers worden er twee IP-adressen gebruikt voor het configureren van de Active Directory-verbinding. 
+* Het **pad voor de organisatie-eenheid** is `OU=AADDC Computers`.  
+Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** onder **NetApp-account**:
 
-  ![Pad van de organisatie-eenheid](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
+  ![Pad naar de organisatie-eenheid](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
 
-* **Gebruikersreferenties** kunnen elke gebruiker zijn die lid is van de Azure AD-groep **Azure AD DC Administrators**.
+* **Gebruikers naam** referenties kunnen alle gebruikers zijn die lid zijn van de Azure AD-groep **Azure AD DC-Administrators**.
 
 
-## <a name="create-an-active-directory-connection"></a>Een Active Directory-verbinding maken
+## <a name="create-an-active-directory-connection"></a>Een Active Directory verbinding maken
 
-1. Klik in uw NetApp-account op **Active Directory-verbindingen**en klik vervolgens op **Deelnemen**.  
+1. Klik vanuit uw NetApp-account op **Active Directory verbindingen**en klik vervolgens op **lid worden**.  
 
-    ![Active Directory-verbindingen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
+    ![Active Directory verbindingen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
-2. Geef in het venster Join Active Directory de volgende gegevens op op basis van de domeinservices die u wilt gebruiken:  
+2. Geef in het venster lid worden Active Directory de volgende informatie op op basis van de domein services die u wilt gebruiken:  
 
-    Zie [Beslissen welke domeinservices u wilt gebruiken](#decide-which-domain-services-to-use)voor informatie die specifiek is voor de domeinservices die u gebruikt. 
+    Zie [beslissen welke domein Services u moet gebruiken](#decide-which-domain-services-to-use)voor informatie die specifiek is voor de domein services die u gebruikt. 
 
     * **Primaire DNS**  
-        Dit is de DNS die vereist is voor de join- en SMB-verificatiebewerkingen van Active Directory-domein. 
+        Dit is de DNS-server die is vereist voor de Active Directory domein deelname en SMB-verificatie bewerkingen. 
     * **Secundaire DNS**   
-        Dit is de secundaire DNS-server voor het waarborgen van redundante naamservices. 
-    * **AD DNS-domeinnaam**  
-        Dit is de domeinnaam van uw Active Directory Domain Services waaraan u wilt deelnemen.
-    * **AD-sitenaam**  
-        Dit is de sitenaam waartoe de detectie van de domeincontroller beperkt blijft.
-    * **Voorvoegsel van smb-server (computeraccount)**  
-        Dit is het naamgevingsvoorvoegsel voor het machineaccount in Active Directory dat Azure NetApp-bestanden gebruiken voor het maken van nieuwe accounts.
+        Dit is de secundaire DNS-server voor het controleren van redundante naam Services. 
+    * **AD DNS-domein naam**  
+        Dit is de domein naam van de Active Directory Domain Services die u wilt toevoegen.
+    * **AD-site naam**  
+        Dit is de naam van de site die de detectie van de domein controller beperkt is.
+    * **Voor voegsel van SMB-server (computer-account)**  
+        Dit is het naam voorvoegsel voor het machine account in Active Directory dat Azure NetApp Files gebruikt voor het maken van nieuwe accounts.
 
-        Als de naamgevingsstandaard die uw organisatie bijvoorbeeld gebruikt voor bestandsservers NAS-01, NAS-02..., NAS-045, wordt ingevoerd voor het voorvoegsel. 
+        Als de naamgevings standaard die uw organisatie gebruikt voor bestands servers NAS-01, NAS-02..., NAS-045 is, voert u "NAS" in voor het voor voegsel. 
 
-        De service maakt indien nodig extra machineaccounts in Active Directory.
+        Met de service worden zo nodig extra machine accounts in Active Directory gemaakt.
 
-    * **Pad van de organisatie-eenheid**  
-        Dit is het LDAP-pad voor de organisatie-eenheid (OU) waar SMB-servermachineaccounts worden gemaakt. Dat wil zeggen, OU = tweede niveau, OU = eerste niveau. 
+    * **Pad naar de organisatie-eenheid**  
+        Dit is het LDAP-pad voor de organisatie-eenheid (OE) waar de computer accounts van de SMB-server worden gemaakt. Dat wil zeggen OU = 2e niveau, OE = eerste niveau. 
 
-        Als u Azure NetApp-bestanden gebruikt met Azure Active Directory `OU=AADDC Computers` Domain Services, wordt het pad van de organisatie-eenheid geopend wanneer u Active Directory configureert voor uw NetApp-account.
+        Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
         
-    * Referenties, inclusief **gebruikersnaam** en **wachtwoord**
+    * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
-    ![Lid worden van Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Active Directory toevoegen](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Klik op **Deelnemen**.  
 
-    De Active Directory-verbinding die u hebt gemaakt, wordt weergegeven.
+    De Active Directory verbinding die u hebt gemaakt, wordt weer gegeven.
 
-    ![Active Directory-verbindingen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![Active Directory verbindingen](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 > [!NOTE] 
-> U de gebruikersnaam- en wachtwoordvelden bewerken nadat u de Active Directory-verbinding hebt opgeslagen. Na het opslaan van de verbinding kunnen geen andere waarden worden bewerkt. Als u andere waarden wilt wijzigen, moet u eerst geïmplementeerde SMB-volumes verwijderen en vervolgens de Active Directory-verbinding verwijderen en opnieuw maken.
+> U kunt de velden gebruikers naam en wacht woord bewerken nadat u de Active Directory verbinding hebt opgeslagen. Er kunnen geen andere waarden worden bewerkt na het opslaan van de verbinding. Als u andere waarden moet wijzigen, moet u eerst alle geïmplementeerde SMB-volumes verwijderen en vervolgens de Active Directory verbinding verwijderen en opnieuw maken.
 
 ## <a name="add-an-smb-volume"></a>Een SMB-volume toevoegen
 
-1. Klik op het blad **Volumes** van het blad Capaciteitspools. 
+1. Klik op de Blade **volumes** op de Blade capaciteits groepen. 
 
     ![Navigeren naar volumes](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2. Klik op **+ Volume toevoegen** om een volume te maken.  
-    Het venster Een volume maken wordt weergegeven.
+    Het venster een volume maken wordt weer gegeven.
 
-3. Klik in het venster Een volume maken op **Maken** en geef informatie op voor de volgende velden:   
-    * **Volumenaam**      
+3. Klik in het venster een volume maken op **maken** en geef informatie op voor de volgende velden:   
+    * **Volume naam**      
         Geef de naam op voor het volume dat u wilt maken.   
 
-        Een volumenaam moet uniek zijn binnen elke capaciteitsgroep. De naam moet minstens drie tekens bevatten. U alfanumerieke tekens gebruiken.   
+        Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
 
-        U niet `default` als volumenaam gebruiken.
+        U kunt niet `default` gebruiken als de volume naam.
 
-    * **Capaciteitspool**  
-        Geef de capaciteitsgroep op waar het volume moet worden gemaakt.
+    * **Capaciteits pool**  
+        Geef de capaciteits pool op waar u het volume wilt maken.
 
     * **Quotum**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
@@ -196,30 +196,30 @@ Deze instelling is geconfigureerd in de **Active Directory Connections** onder *
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.  
 
     * **Virtueel netwerk**  
-        Geef het Virtual Network (VNet) van Azure op van waaruit u toegang wilt krijgen tot het volume.  
+        Geef het virtuele Azure-netwerk (VNet) op van waaruit u toegang wilt krijgen tot het volume.  
 
-        Het VNet dat u opgeeft, moet een subnet hebben dat is gedelegeerd aan Azure NetApp-bestanden. De Azure NetApp Files-service is alleen toegankelijk vanaf hetzelfde VNet of vanaf een VNet dat zich in dezelfde regio bevindt als het volume via VNet-peering. U hebt ook toegang tot het volume vanuit uw on-premises netwerk via Express Route.   
+        Het VNet dat u opgeeft, moet een subnet hebben gedelegeerd aan Azure NetApp Files. De Azure NetApp Files-service kan alleen worden geopend vanuit hetzelfde VNet of vanuit een VNet dat zich in dezelfde regio bevindt als het volume via VNet-peering. U kunt het volume ook openen vanuit uw on-premises netwerk via een snelle route.   
 
-    * **Subnet**  
+    * **Subnetrouter**  
         Geef het subnet op dat u wilt gebruiken voor het volume.  
         Het opgegeven subnet moet zijn gedelegeerd aan Azure NetApp Files. 
         
-        Als u een subnet niet hebt gedelegeerd, u op **Nieuw maken** klikken op de pagina Een volume maken. Geef vervolgens op de pagina Subnet maken de subnetgegevens op, en selecteer **Microsoft.NetApp/volumes** om het subnet te delegeren aan Azure NetApp Files. In elke VNet kan slechts één subnet worden gedelegeerd aan Azure NetApp-bestanden.   
+        Als u nog geen subnet hebt gedelegeerd, kunt u op de pagina een volume maken klikken op **Nieuw maken** . Geef vervolgens op de pagina Subnet maken de subnetgegevens op, en selecteer **Microsoft.NetApp/volumes** om het subnet te delegeren aan Azure NetApp Files. In elk VNet kan slechts één subnet worden gedelegeerd aan Azure NetApp Files.   
  
         ![ Een volume maken](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Subnet maken](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Klik **op Protocol** en vul de volgende informatie in:  
-    * Selecteer **SMB** als protocoltype voor het volume. 
-    * Selecteer uw **Active Directory-verbinding** in de vervolgkeuzelijst.
-    * Geef de naam op van het gedeelde volume in **De naam Delen**.
+4. Klik op **protocol** en voer de volgende informatie uit:  
+    * Selecteer **SMB** als het protocol type voor het volume. 
+    * Selecteer uw **Active Directory** verbinding in de vervolg keuzelijst.
+    * Geef de naam op van het gedeelde volume in **share naam**.
 
     ![SMB-protocol opgeven](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
-5. Klik **op Controleren + Maken** om de volumedetails te bekijken.  Klik vervolgens op **Maken** om het SMB-volume te maken.
+5. Klik op **beoordeling + maken** om de details van het volume te controleren.  Klik vervolgens op **maken** om het SMB-volume te maken.
 
-    Het volume dat u hebt gemaakt, wordt weergegeven op de pagina Volumes. 
+    Het volume dat u hebt gemaakt, wordt weer gegeven op de pagina volumes. 
  
     Een volume neemt het abonnement, de resourcegroep en de locatiekenmerken over van de bijbehorende capaciteitspool. U kunt de implementatiestatus van het volume controleren vanuit het tabblad Meldingen.
 
@@ -227,6 +227,6 @@ Deze instelling is geconfigureerd in de **Active Directory Connections** onder *
 
 * [Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
-* [Veelgestelde vragen aan het MKB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
+* [Veelgestelde vragen over SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * Meer informatie over [Integratie van virtuele netwerken voor Azure-services](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Een nieuw Active Directory-forest installeren met Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [Een nieuw Active Directory-forest installeren met behulp van Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

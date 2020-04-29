@@ -1,6 +1,6 @@
 ---
-title: Het rapport Deployment Planner voor VMware-noodherstel analyseren met Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u het rapport analyseren dat is gegenereerd door de Herstelimplementatieplanner voor VMware-noodherstel naar Azure, met behulp van Azure Site Recovery.
+title: Analyseer het Deployment Planner rapport voor VMware-nood herstel met Azure Site Recovery
+description: In dit artikel wordt beschreven hoe u het door de herstel Deployment Planner gegenereerde rapport kunt analyseren voor VMware-nood herstel op Azure met behulp van Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257509"
 ---
-# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Het rapport Deployment Planner voor VMware-noodherstel naar Azure analyseren
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Deployment Planner rapport voor VMware-nood herstel naar Azure
 
 Het gegenereerde Microsoft Excel-rapport bevat de volgende werkbladen:
 ## <a name="on-premises-summary"></a>Samenvatting on-premises
@@ -53,7 +53,7 @@ De aanbevelingen voor het eigenschappenvenster van de VMware naar Azure rapport 
 
 **Servernaam**: de naam of het IP-adres van de VMware vCenter of ESXi-host met de virtuele machines waarvoor het rapport wordt gegenereerd.
 
-**Gewenste RPO**: het gewenste beoogde herstelpunt (RPO) voor uw implementatie. Standaard wordt de vereiste netwerkbandbreedte berekend voor de RPO-waarden van 15, 30 en 60 minuten. Op basis van de selectie worden de betrokken waarden bijgewerkt op het blad. Als u de parameter *DesiredRPOinMin* hebt gebruikt tijdens het genereren van het rapport, wordt die waarde weergegeven in het gewenste RPO-resultaat.
+**Gewenste RPO**: het gewenste beoogde herstelpunt (RPO) voor uw implementatie. Standaard wordt de vereiste netwerkbandbreedte berekend voor de RPO-waarden van 15, 30 en 60 minuten. Op basis van de selectie worden de betrokken waarden bijgewerkt op het blad. Als u de *para desiredrpoinmin* -para meter hebt gebruikt tijdens het genereren van het rapport, wordt die waarde weer gegeven in het gewenste RPO-resultaat.
 
 ### <a name="profiling-overview"></a>Overzicht van profilering
 
@@ -92,7 +92,7 @@ Als u het hulpprogramma uitvoert op een configuratieserver of processerver die a
 Voor alle Enterprise-implementaties van Site Recovery wordt het gebruik van [ExpressRoute](https://aka.ms/expressroute) aanbevolen.
 
 ### <a name="required-storage-accounts"></a>Vereiste opslagaccounts
-De volgende grafiek geeft het totale aantal opslagaccounts aan (Standard Storage en Premium Storage) dat is vereist voor het beveiligen van alle compatibele virtuele machines. Zie de sectie 'VM-opslagplaatsing' voor meer informatie over welk opslagaccount u moet gebruiken voor elke virtuele machine. Als u v2.5 van Deployment Planner gebruikt, wordt in deze aanbeveling alleen het aantal standaardopslagaccounts voor cache weergegeven dat nodig is voor replicatie, omdat de gegevens rechtstreeks naar Beheerde schijven worden geschreven.
+De volgende grafiek geeft het totale aantal opslagaccounts aan (Standard Storage en Premium Storage) dat is vereist voor het beveiligen van alle compatibele virtuele machines. Zie de sectie 'VM-opslagplaatsing' voor meer informatie over welk opslagaccount u moet gebruiken voor elke virtuele machine. Als u v 2.5 van Deployment Planner gebruikt, wordt in deze aanbeveling alleen het aantal standaard cache opslag accounts weer gegeven dat nodig is voor replicatie, omdat de gegevens rechtstreeks naar Managed Disks worden geschreven.
 
 ![Vereiste opslagaccounts in de implementatieplanner](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -157,19 +157,19 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 ## <a name="vm-storage-placement"></a>VM-opslagplaatsing
 
 >[!Note]
->Deployment Planner v2.5 beveelt de opslagplaatsing aan voor machines die rechtstreeks naar beheerde schijven worden gerepliceerd.
+>Deployment Planner v 2.5 wordt de opslag locatie aanbevolen voor machines die rechtstreeks naar beheerde schijven zullen worden gerepliceerd.
 
 ![VM-opslagplaatsing](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Replicatieopslagtype:** een standaard- of premium beheerde schijf, die wordt gebruikt om alle bijbehorende VM's die in de kolom **VM's naar Plaats** worden genoemd, te repliceren.
+**Replicatie opslag type**: een standaard-of Premium-beheerde schijf, die wordt gebruikt voor het repliceren van alle bijbehorende vm's die worden vermeld in de kolom **vm's die moeten worden geplaatst** .
 
-**Log Storage Account Type:** Alle replicatielogboeken worden opgeslagen in een standaard opslagaccount.
+**Type logboek opslag account**: alle replicatie logboeken worden opgeslagen in een standaard-opslag account.
 
-**Voorgesteld voorvoegsel voor opslagaccount:** het voorgestelde voorvoegsel met drie tekens dat kan worden gebruikt voor het benoemen van het cacheopslagaccount. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
+**Voorgesteld voor voegsel voor opslag account**: het voorgestelde voor voegsel met drie tekens dat kan worden gebruikt voor het benoemen van het cache-opslag account. U kunt uw eigen voorvoegsel gebruiken, maar de suggestie van het hulpprogramma volgt de [naamgevingsregels voor partities voor opslagaccounts](https://aka.ms/storage-performance-checklist).
 
-**Voorgestelde naam van het logboekaccount:** de naam van het opslagaccount nadat u het voorgestelde voorvoegsel hebt opgenomen. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
+**Voorgestelde naam van het logboek account**: de naam van het opslag account na het toevoegen van het voorgestelde voor voegsel. Vervang de naam tussen de punthaken (< en >) door uw aangepaste invoer.
 
-**Plaatsingsoverzicht:** een overzicht van de schijven die nodig zijn om VM's te beveiligen op opslagtype. Het omvat het totale aantal VM's, de totale ingerichte grootte over alle schijven en het totale aantal schijven.
+**Plaatsing samen vatting**: een samen vatting van de schijven die nodig zijn voor beveiligde virtuele machines per opslag type. Het bevat het totale aantal Vm's, de totale ingerichte grootte op alle schijven en het totale aantal schijven.
 
 **Te plaatsen virtuele machines**: een lijst van alle virtuele machines die in het opgegeven opslagaccount moeten worden geplaatst voor optimale prestaties en optimaal gebruik.
 
@@ -178,7 +178,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 
 **VM-naam**: de naam of het IP-adres van de virtuele machine dat wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VMDK's) die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja\***. **Ja** \* is voor gevallen waarin de VM geschikt is voor [premium SSD's.](../virtual-machines/windows/disks-types.md) Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
+**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja\***. **Ja** \* is voor exemplaren waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15
 * 256 GB tot 512 GB is een P20.
@@ -186,11 +186,11 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 * 1025 GB tot 2048 GB is een P40.
 * 2049 GB tot 4095 GB is een P50.
 
-Als de werkbelastingskenmerken van een schijf deze bijvoorbeeld in de categorie P20 of P30 plaatsen, maar de grootte wordt toegewezen aan een lager type schijf van de premiumopslag, markeert het hulpprogramma dat VM als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
+Als bijvoorbeeld de eigenschappen van de werk belasting van een schijf in de categorie P20 of P30 worden geplaatst, maar de grootte ervan wordt toegewezen aan een lager type Premium-opslag schijf, markeert het hulp programma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
 **Opslagtype**: Standard of Premium.
 
-**Asrseeddisk (Managed Disk) gemaakt voor replicatie:** de naam van de schijf die wordt gemaakt wanneer u replicatie inschakelt. Het slaat de gegevens en de momentopnamen op in Azure.
+**Asrseeddisk (beheerde schijf) gemaakt voor replicatie**: de naam van de schijf die wordt gemaakt wanneer u replicatie inschakelt. De gegevens en de bijbehorende moment opnamen worden opgeslagen in Azure.
 
 **Piek R/W IOPS (met groeifactor)**: de piekworkload-IOPS voor lezen/schrijven op de schijf (standaard het 95e percentiel), inclusief de toekomstige groeifactor (standaard 30%). De totale IOPS voor lezen/schrijven van een virtuele machine is niet altijd de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven van de virtuele machine. De piek-IOPS voor lezen/schrijven van de virtuele machine is namelijk de piek van de som van de IOPS voor lezen/schrijven van de afzonderlijke schijven voor elke minuut van de profileringsperiode.
 
@@ -221,14 +221,14 @@ Als de werkbelastingskenmerken van een schijf deze bijvoorbeeld in de categorie 
 
 **VM-compatibiliteit**: geeft aan waarom de virtuele machine niet compatibel is voor gebruik met Site Recovery. De redenen worden voor elke niet-compatibele schijf van de virtuele machine beschreven. Op basis van gepubliceerde [opslaglimieten](https://aka.ms/azure-storage-scalbility-performance) kan dit een van de volgende redenen zijn:
 
-* Verkeerde grootte van de gegevensschijf of verkeerde os-schijfgrootte. [Bekijk](vmware-physical-azure-support-matrix.md#azure-vm-requirements) de ondersteuningslimieten. 
+* Verkeerde grootte van de gegevens schijf of onjuiste grootte van de besturingssysteem schijf. [Controleer](vmware-physical-azure-support-matrix.md#azure-vm-requirements) de ondersteunings limieten. 
 * Totale grootte van virtuele machine (replicatie + TFO) overschrijdt de ondersteunde limiet voor opslagaccounts (35 TB). Dit probleem treedt meestal op wanneer één schijf in de virtuele machine een prestatiekenmerk heeft dat groter is dan de maximaal ondersteunde limieten voor Standard-opslag van Azure of Site Recovery. De virtuele machine komt dan in aanmerking voor Premium Storage. De maximaal ondersteunde grootte van een Premium Storage-account is echter 35 TB en één beveiligde virtuele machine kan niet worden beveiligd via meerdere opslagaccounts. Houd er ook rekening mee dat bij het uitvoeren van een testfailover op een beveiligde virtuele machine, deze wordt uitgevoerd in het opslagaccount waarin ook de replicatie plaatsvindt. Stel in dit geval 2 x de grootte van de schijf in om replicatie mogelijk te maken en het testen van failover parallel uit te voeren.
 
 * De bron-IOPS is groter dan de ondersteunde IOPS-limiet voor opslag van 7500 per schijf.
 
 * De bron-IOPS is groter dan de ondersteunde IOPS-limiet voor opslag van 80.000 per schijf.
 
-* De gemiddelde gegevensverloop overschrijdt de ondersteunde limiet voor gegevensverloop van siteherstel van 20 MB/s voor de gemiddelde I/O-grootte voor de schijf.
+* Het gemiddelde gegevens verloop overschrijdt de ondersteunde Site Recovery gegevens verloop limiet van 20 MB/s voor de gemiddelde I/O-grootte voor de schijf.
 
 * Het piekgegevensverloop voor alle schijven in de virtuele machine overschrijdt de maximaal ondersteunde limiet voor het piekgegevensverloop van Site Recovery van 54 MB/s per virtuele machine.
 
@@ -255,12 +255,12 @@ Als de werkbelastingskenmerken van een schijf deze bijvoorbeeld in de categorie 
 
 **Opstarttype**: het opstarttype van de virtuele machine. Dit kan BIOS of EFI zijn.  Op dit moment biedt Azure Site Recovery ondersteuning voor Windows Server EFI-VM's (Windows Server 2012, 2012 R2 en 2016), als het aantal partities in de opstartschijf minder is dan 4 en de opstartsector 512 bytes groot is. Als u EFI-VM's wilt beveiligen, moet Azure Site Recovery Mobility Service versie 9.13 of hoger zijn. Alleen failover wordt ondersteund voor EFI-VM's. Failback wordt niet ondersteund.
 
-**OS-type:** het is het type besturingssysteem van de VM. Dit kan Windows of Linux zijn, of een ander besturingssysteem op basis van de sjabloon die in VMware vSphere is gekozen tijdens het maken van de VM.
+**Type besturings systeem**: dit is het type besturings systeem van de virtuele machine. Dit kan Windows of Linux zijn, of een ander besturingssysteem op basis van de sjabloon die in VMware vSphere is gekozen tijdens het maken van de VM.
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery-limieten
 De volgende tabel bevat de Azure Site Recovery-limieten. Deze limieten zijn gebaseerd op onze tests, maar dekken niet alle mogelijke toepassings-I/O-combinaties. De werkelijke resultaten kunnen variëren op basis van uw toepassings-I/O-combinatie. Voor optimale resultaten, zelfs na het plannen van de implementatie, is het altijd beter om toepassingen uitgebreid te testen met behulp van een testfailover. Zo krijgt u een nauwkeurig inzicht in de prestaties van de applicatie.
 
-**Replicatieopslagdoel** | **Gemiddelde I/O-grootte van bronschijf** |**Gemiddelde bronschijfgegevensverloop** | **Totaal bronschijfgegevensverloop per dag**
+**Doel van replicatie opslag** | **Gemiddelde I/O-grootte van bronschijf** |**Gemiddeld gegevens verloop van bron schijf** | **Totale gegevens verloop van bron schijf per dag**
 ---|---|---|---
 Standard Storage | 8 kB | 2 MB/s | 168 GB per schijf
 Premium P10 of P15 schijf | 8 kB  | 2 MB/s | 168 GB per schijf

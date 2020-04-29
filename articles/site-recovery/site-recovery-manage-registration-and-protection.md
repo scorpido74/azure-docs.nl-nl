@@ -1,6 +1,6 @@
 ---
-title: Servers verwijderen en beveiliging uitschakelen | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u servers uit een kluis voor siteherstel uitschrijven en de beveiliging van virtuele machines en fysieke servers uitschakelen.
+title: Servers verwijderen en beveiliging uitschakelen | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u servers van een Site Recovery kluis kunt verwijderen en de beveiliging van virtuele machines en fysieke servers kunt uitschakelen.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,47 +8,47 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257626"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Servers verwijderen en beveiliging uitschakelen
 
-In dit artikel wordt beschreven hoe u servers uiteenvalt uit een kluis van Recovery Services en hoe u de beveiliging uitschakelt voor machines die zijn beschermd door Site Recovery.
+In dit artikel wordt beschreven hoe u servers van een Recovery Services kluis kunt verwijderen en hoe u de beveiliging kunt uitschakelen voor computers die worden beveiligd door Site Recovery.
 
 
-## <a name="unregister-a--configuration-server"></a>Het registreren van een configuratieserver uitschrijven
+## <a name="unregister-a--configuration-server"></a>Registratie van een configuratie server ongedaan maken
 
-Als u VMware VM's of Windows/Linux-fysieke servers nabootst naar Azure, u een niet-verbonden configuratieserver als volgt uitschrijven uit een kluis:
+Als u virtuele VMware-machines of fysieke Windows/Linux-servers naar Azure repliceert, kunt u als volgt de registratie van een niet-verbonden configuratie server bij een kluis opheffen:
 
-1. [Schakel de bescherming van virtuele machines uit.](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)
-2. [Replicatiebeleid loskoppelen of verwijderen.](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)
-3. [De configuratieserver verwijderen](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
+1. [Schakel de beveiliging van virtuele machines uit](#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure).
+2. De koppeling van het replicatie beleid wordt [verwijderd](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) .
+3. [De configuratie server verwijderen](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
 
-## <a name="unregister-a-vmm-server"></a>Een VMM-server uitschrijven
+## <a name="unregister-a-vmm-server"></a>Registratie van een VMM-server ongedaan maken
 
-1. Stop met het repliceren van virtuele machines in clouds op de VMM-server die u wilt verwijderen.
-2. Verwijder netwerktoewijzingen die worden gebruikt door clouds op de VMM-server die u wilt verwijderen. Klik in **Site Recovery Infrastructure** > **For System Center VMM** > **Network Mapping**met de rechtermuisknop op de netwerktoewijzing > **Verwijderen.**
-3. Let op de ID van de VMM-server.
-4. Replicatiebeleid loskoppelen van clouds op de VMM-server die u wilt verwijderen.  Dubbelklik in **siteherstelinfrastructuur** > **voor Systeemcentrum VMM-replicatiebeleid** >  **Replication Policies**op het bijbehorende beleid. Klik met de rechtermuisknop op de cloud > **disassociate**.
-5. Verwijder de VMM-server of het actieve knooppunt. Klik in **Site Recovery Infrastructure** > **For System Center VMM** > **VMM-servers**met de rechtermuisknop op de server > **Verwijderen**.
-6. Als uw VMM-server de verbroken status heeft, downloadt en voert u het [opruimscript](https://aka.ms/asr-cleanup-script-vmm) uit op de VMM-server. Open PowerShell met de optie **Uitvoeren als beheerder** om het uitvoeringsbeleid voor het standaardbereik (LocalMachine) te wijzigen. Geef in het script de id op van de VMM-server die u wilt verwijderen. Het script verwijdert registratie- en cloudkoppelingsgegevens van de server.
-5. Voer het opschoningsscript uit op een secundaire VMM-server.
-6. Voer het opschoningsscript uit op andere passieve VMM-clusterknooppunten waarop de provider is geïnstalleerd.
-7. Verwijder de provider handmatig op de VMM-server. Als u een cluster hebt, verwijdert u uit alle knooppunten.
-8. Als uw virtuele machines zijn gerepliceerd naar Azure, moet u de Microsoft Recovery Services-agent verwijderen van Hyper-V-hosts in de verwijderde clouds.
+1. Stop met het repliceren van virtuele machines in Clouds op de VMM-server die u wilt verwijderen.
+2. Verwijder netwerk toewijzingen die worden gebruikt door Clouds op de VMM-server die u wilt verwijderen. Klik in **site Recovery infra structuur** > **voor System Center VMM** > -**netwerk toewijzing**met de rechter muisknop op de netwerk toewijzing > **verwijderen**.
+3. Noteer de ID van de VMM-server.
+4. Koppel het replicatie beleid van Clouds op de VMM-server die u wilt verwijderen.  Dubbel klik in **site Recovery-infra structuur** > **voor System Center VMM** >  -**replicatie beleid**op het bijbehorende beleid. Klik met de rechter muisknop op de Cloud > de **koppeling te verbreken**.
+5. De VMM-server of het actieve knoop punt verwijderen. Klik in **site Recovery infra structuur** > **voor System Center VMM** > **VMM-servers**met de rechter muisknop op de server > **verwijderen**.
+6. Als uw VMM-server de status verbroken heeft, downloadt en voert u het [opschoon script](https://aka.ms/asr-cleanup-script-vmm) uit op de VMM-server. Open Power shell met de optie **als administrator uitvoeren** om het uitvoerings beleid voor het standaard bereik (LocalMachine) te wijzigen. Geef in het script de ID op van de VMM-server die u wilt verwijderen. Met het script worden registratie-en Cloud koppelings gegevens van de server verwijderd.
+5. Voer het script voor opschonen op een secundaire VMM-server uit.
+6. Voer het opschoon script uit op alle andere passieve VMM-cluster knooppunten waarop de provider is geïnstalleerd.
+7. Verwijder de provider hand matig op de VMM-server. Als u een cluster hebt, verwijdert u van alle knoop punten.
+8. Als uw virtuele machines zijn gerepliceerd naar Azure, moet u de micro soft Recovery Services-agent verwijderen van Hyper-V-hosts in de verwijderde Clouds.
 
-## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>Een Hyper-V-host uitschrijven op een Hyper-V-site
+## <a name="unregister-a-hyper-v-host-in-a-hyper-v-site"></a>De registratie van een Hyper-V-host op een Hyper-V-site ongedaan maken
 
-Hyper-V-hosts die niet worden beheerd door VMM worden verzameld in een Hyper-V-site. Verwijder een host op een Hyper-V-site als volgt:
+Hyper-V-hosts die niet door VMM worden beheerd, worden in een Hyper-V-site verzameld. Verwijder een host op een Hyper-V-site als volgt:
 
-1. Replicatie uitschakelen voor Hyper-VVm's op de host.
-2. Beleid voor de Hyper-V-site loskoppelen. Dubbelklik in het replicatiebeleid > **voor siteherstelinfrastructuur voor hyper-v-sites** >  **Replication Policies**op het bijbehorende beleid. **Site Recovery Infrastructure** Klik met de rechtermuisknop op de site > **disassociate**.
-3. Hyper-V-hosts verwijderen. Klik in **Site Recovery Infrastructure** > **For Hyper-V Sites** > **Hyper-V Hosts**met de rechtermuisknop op de server > **Delete**.
-4. Verwijder de Hyper-V-site nadat alle hosts zijn verwijderd. Klik in **Site Recovery Infrastructure** > **For Hyper-V Sites** > **Hyper-V Sites**met de rechtermuisknop op de site > **Verwijderen**.
-5. Als uw Hyper-V-host de verbroken status **heeft,** voert u het volgende script uit op elke Hyper-V-host die u hebt verwijderd. Het script ruimt instellingen op de server op en maakt deze uit de kluis.
+1. Schakel replicatie uit voor Hyper-V-Vm's die zich op de host bevinden.
+2. Koppel het beleid voor de Hyper-V-site. Dubbel klik in **site Recovery-infra structuur** > voor het**replicatie beleid****van Hyper-V-sites** >  op het bijbehorende beleid. Klik met de rechter muisknop op de site > de **koppeling te verbreken**.
+3. Hyper-V-hosts verwijderen. Klik **in site Recovery-infra structuur** > **voor hyper-v-sites** > **hyper-v-hosts**met de rechter muisknop op de server > **verwijderen**.
+4. Verwijder de Hyper-V-site nadat alle hosts hiervan zijn verwijderd. Klik **in site Recovery-infra structuur** > **voor hyper-v** > -sites**hyper-v-sites**met de rechter muisknop op de site > **verwijderen**.
+5. Als de Hyper-V-host de status **verbroken** heeft, voert u het volgende script uit op elke hyper-v-host die u hebt verwijderd. Met het script worden instellingen op de server opgeschoond en wordt de registratie van de kluis ongedaan gemaakt.
 
 
 ```powershell
@@ -141,41 +141,41 @@ Hyper-V-hosts die niet worden beheerd door VMM worden verzameld in een Hyper-V-s
 ```
 
 
-## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Beveiliging uitschakelen voor een Vm of fysieke server van VMware (VMware naar Azure)
+## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Beveiliging uitschakelen voor een virtuele VMware-machine of fysieke server (VMware naar Azure)
 
-1. Klik in**gerepliceerde items**met **beveiligde items** > met de rechtermuisknop op de machine > **Replicatie uitschakelen**.
-2. Selecteer **in Replicatiepagina uitschakelen** een van de volgende opties:
-    - **Replicatie uitschakelen en verwijderen (aanbevolen)** - Met deze optie wordt het gerepliceerde item uit Azure Site Recovery verwijderd en wordt de replicatie voor de machine gestopt. De replicatieconfiguratie op configuration server wordt opgeschoond en de facturering van siteherstel voor deze beveiligde server is gestopt. Houd er rekening mee dat deze optie alleen kan worden gebruikt wanneer configuration server is verbonden.
-    - **Verwijderen** - Deze optie wordt verondersteld alleen te worden gebruikt als de bronomgeving is verwijderd of niet toegankelijk is (niet is verbonden). Hiermee wordt het gerepliceerde item verwijderd uit Azure Site Recovery (facturering wordt gestopt). De replicatieconfiguratie op de configuratieserver **wordt niet** opgeschoond. 
-
-> [!NOTE]
-> In beide opties wordt de mobiliteitsservice niet van de beveiligde servers verwijderd, maar moet u deze handmatig verwijderen. Als u van plan bent de server opnieuw te beveiligen met dezelfde configuratieserver, u het verwijderen van de mobiliteitsservice overslaan.
+1. Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
+2. Selecteer een van de volgende opties op de pagina **replicatie uitschakelen** :
+    - **Replicatie uitschakelen en verwijderen (aanbevolen)** : met deze optie wordt het gerepliceerde item verwijderd uit Azure site Recovery en wordt de replicatie voor de machine gestopt. De replicatie Configuratie op de configuratie server wordt opgeruimd en Site Recovery facturering voor deze beveiligde server is gestopt. Houd er rekening mee dat deze optie alleen kan worden gebruikt wanneer de configuratie server zich in de status verbonden bevindt.
+    - **Verwijderen** : deze optie moet alleen worden gebruikt als de bron omgeving is verwijderd of niet is geopend (niet verbonden). Hiermee wordt het gerepliceerde item verwijderd uit de Azure Site Recovery (facturering wordt gestopt). De replicatie Configuratie op de configuratie server **wordt niet** opgeschoond. 
 
 > [!NOTE]
-> Als u al hebt gefaald ten opzichte van een virtuele machine en deze wordt uitgevoerd in Azure, moet u er rekening mee houden dat de beveiliging uitschakelen niet wordt verwijderd/ van invloed is op het mislukte over VM.
-## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Beveiliging uitschakelen voor een Azure VM (Azure naar Azure)
-
--  Klik in**gerepliceerde items**met **beveiligde items** > met de rechtermuisknop op de machine > **Replicatie uitschakelen**.
-> [!NOTE]
-> mobiliteitsservice wordt niet verwijderd van de beveiligde servers, u moet deze handmatig verwijderen. Als u van plan bent de server opnieuw te beschermen, u het verwijderen van de mobiliteitsservice overslaan.
-
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Beveiliging uitschakelen voor een virtuele Hyper-V-machine (Hyper-V naar Azure)
+> In beide opties wordt de Mobility-service niet verwijderd van de beveiligde servers, moet u deze hand matig verwijderen. Als u van plan bent om de server opnieuw te beveiligen met behulp van dezelfde configuratie server, kunt u het verwijderen van de Mobility-service overs Laan.
 
 > [!NOTE]
-> Gebruik deze procedure als u Hyper-V VM's zonder VMM-server naar Azure repliceert. Als u uw virtuele machines repliceert met het **Scenario Systeemcentrum VMM naar Azure,** volgt u de instructies Beveiliging uitschakelen voor een virtuele hyper-v-machine die wordt gerepliceerd met het Scenario systeemcentrum VMM naar Azure
+> Als u al een failover hebt uitgevoerd voor een virtuele machine en deze actief is in azure, moet u er rekening mee houden dat het uitschakelen van de beveiliging geen invloed heeft op de failover van de virtuele machine.
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Beveiliging voor een Azure-VM uitschakelen (Azure naar Azure)
 
-1. Klik in**gerepliceerde items**met **beveiligde items** > met de rechtermuisknop op de machine > **Replicatie uitschakelen**.
-2. In **Replicatie uitschakelen**u de volgende opties selecteren:
-   - **Replicatie uitschakelen en verwijderen (aanbevolen)** - Met deze optie wordt het gerepliceerde item uit Azure Site Recovery verwijderd en wordt de replicatie voor de machine gestopt. Replicatieconfiguratie op de on-premises virtuele machine wordt opgeschoond en de facturering van siteherstel voor deze beveiligde server wordt gestopt.
-   - **Verwijderen** - Deze optie wordt verondersteld alleen te worden gebruikt als de bronomgeving is verwijderd of niet toegankelijk is (niet is verbonden). Hiermee wordt het gerepliceerde item verwijderd uit Azure Site Recovery (facturering wordt gestopt). Replicatieconfiguratie op de on-premises virtuele machine **wordt niet** opgeschoond. 
+-  Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
+> [!NOTE]
+> de Mobility-service wordt niet van de beveiligde servers verwijderd. u moet deze hand matig verwijderen. Als u van plan bent om de server opnieuw te beveiligen, kunt u het verwijderen van de Mobility-service overs Laan.
+
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Beveiliging uitschakelen voor een Hyper-V-virtuele machine (Hyper-V naar Azure)
+
+> [!NOTE]
+> Gebruik deze procedure als u virtuele Hyper-V-machines naar Azure repliceert zonder een VMM-server. Als u uw virtuele machines repliceert met het scenario van **System Center VMM naar Azure** , volgt u de instructies voor het uitschakelen van de beveiliging van een Hyper-V virtuele machine die wordt gerepliceerd met behulp van het System Center VMM naar Azure-scenario
+
+1. Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
+2. In **replicatie uitschakelen**kunt u de volgende opties selecteren:
+   - **Replicatie uitschakelen en verwijderen (aanbevolen)** : met deze optie wordt het gerepliceerde item verwijderd uit Azure site Recovery en wordt de replicatie voor de machine gestopt. De replicatie Configuratie op de on-premises virtuele machine wordt opgeruimd en Site Recovery facturering voor deze beveiligde server wordt gestopt.
+   - **Verwijderen** : deze optie moet alleen worden gebruikt als de bron omgeving is verwijderd of niet is geopend (niet verbonden). Hiermee wordt het gerepliceerde item verwijderd uit de Azure Site Recovery (facturering wordt gestopt). De replicatie Configuratie op de on-premises virtuele machine **wordt niet** opgeschoond. 
 
  > [!NOTE]
-     > Als u de optie **Verwijderen** hebt gekozen, voert u de volgende set scripts uit om de on-premises Hyper-V-server op te schonen.
+     > Als u de optie **verwijderen** hebt gekozen, voert u de volgende reeks scripts uit om de replicatie-instellingen op de lokale Hyper-V-Server op te schonen.
 
 > [!NOTE]
-> Als u al hebt gefaald ten opzichte van een virtuele machine en deze wordt uitgevoerd in Azure, moet u er rekening mee houden dat de beveiliging uitschakelen niet wordt verwijderd/ van invloed is op het mislukte over VM.
+> Als u al een failover hebt uitgevoerd voor een virtuele machine en deze actief is in azure, moet u er rekening mee houden dat het uitschakelen van de beveiliging geen invloed heeft op de failover van de virtuele machine.
 
-1. Op de bron Hyper-V-hostserver om replicatie voor de virtuele machine te verwijderen. SQLVM1 vervangen door de naam van uw virtuele machine en het script uitvoeren vanuit een administratieve PowerShell
+1. Op de bron-Hyper-V-hostserver om de replicatie voor de virtuele machine te verwijderen. Vervang SQLVM1 door de naam van uw virtuele machine en voer het script uit vanuit een beheer-Power shell
 
 ```powershell
     $vmName = "SQLVM1"
@@ -184,21 +184,21 @@ Hyper-V-hosts die niet worden beheerd door VMM worden verzameld in een Hyper-V-s
     $replicationService.RemoveReplicationRelationship($vm.__PATH)
 ```
 
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Beveiliging uitschakelen voor een virtuele hyper-v-machine die wordt gerepliceerd naar Azure met het Scenario Van Systeemcentrum VMM naar Azure
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Beveiliging uitschakelen voor een Hyper-V virtuele machine die naar Azure repliceert met het System Center VMM naar Azure-scenario
 
-1. Klik in**gerepliceerde items**met **beveiligde items** > met de rechtermuisknop op de machine > **Replicatie uitschakelen**.
-2. Selecteer **in Replicatie uitschakelen**een van de volgende opties:
+1. Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
+2. In **replicatie uitschakelen**selecteert u een van de volgende opties:
 
-   - **Replicatie uitschakelen en verwijderen (aanbevolen)** - Met deze optie wordt het gerepliceerde item uit Azure Site Recovery verwijderd en wordt de replicatie voor de machine gestopt. Replicatieconfiguratie op de on-premises virtuele machine wordt opgeschoond en de facturering met siteherstel voor deze beveiligde server wordt gestopt.
-   - **Verwijderen** - Deze optie wordt verondersteld alleen te worden gebruikt als de bronomgeving is verwijderd of niet toegankelijk is (niet is verbonden). Hiermee wordt het gerepliceerde item verwijderd uit Azure Site Recovery (facturering wordt gestopt). Replicatieconfiguratie op de on-premises virtuele machine **wordt niet** opgeschoond. 
+   - **Replicatie uitschakelen en verwijderen (aanbevolen)** : met deze optie wordt het gerepliceerde item verwijderd uit Azure site Recovery en wordt de replicatie voor de machine gestopt. De replicatie Configuratie op de on-premises virtuele machine wordt opgeruimd en Site Recovery facturering voor deze beveiligde server is gestopt.
+   - **Verwijderen** : deze optie moet alleen worden gebruikt als de bron omgeving is verwijderd of niet is geopend (niet verbonden). Hiermee wordt het gerepliceerde item verwijderd uit de Azure Site Recovery (facturering wordt gestopt). De replicatie Configuratie op de on-premises virtuele machine **wordt niet** opgeschoond. 
 
      > [!NOTE]
-     > Als u de optie **Verwijderen** hebt gekozen, u de volgende scripts tunen om de on-premises VMM-server op te schonen.
-3. Voer dit script uit op de bron VMM-server met PowerShell (vereiste beheerdersbevoegdheden) vanaf de VMM-console. Vervang de tijdelijke aanduiding **SQLVM1** door de naam van uw virtuele machine.
+     > Als u de optie **verwijderen** hebt gekozen, voert u de volgende scripts uit om de on-premises VMM-server van de replicatie-instellingen op te schonen.
+3. Voer dit script uit op de Bron-VMM-server met behulp van Power shell (beheerders bevoegdheden vereist) van de VMM-console. Vervang de tijdelijke aanduiding **SQLVM1** door de naam van uw virtuele machine.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
-4. In de bovenstaande stappen worden de replicatie-instellingen op de VMM-server gewist. Voer dit script uit om replicatie voor de virtuele machine die op de Hyper-V-hostserver wordt uitgevoerd, te stoppen. Vervang SQLVM1 door de naam van uw virtuele machine en host01.contoso.com door de naam van de Hyper-V-hostserver.
+4. Met de bovenstaande stappen worden de replicatie-instellingen op de VMM-Server gewist. Als u de replicatie voor de virtuele machine die wordt uitgevoerd op de Hyper-V-hostserver wilt stoppen, voert u dit script uit. Vervang SQLVM1 door de naam van uw virtuele machine en host01.contoso.com met de naam van de Hyper-V-hostserver.
 
 ```powershell
     $vmName = "SQLVM1"
@@ -208,26 +208,26 @@ Hyper-V-hosts die niet worden beheerd door VMM worden verzameld in een Hyper-V-s
     $replicationService.RemoveReplicationRelationship($vm.__PATH)
 ```
 
-## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Beveiliging uitschakelen voor een virtuele Hyper-V-machine die wordt gerepliceerd naar secundaire VMM-server met behulp van het Scenario van System Center VMM naar VMM
+## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Beveiliging uitschakelen voor een Hyper-V virtuele machine die wordt gerepliceerd naar een secundaire VMM-server met behulp van het System Center VMM naar VMM-scenario
 
-1. Klik in**gerepliceerde items**met **beveiligde items** > met de rechtermuisknop op de machine > **Replicatie uitschakelen**.
-2. Selecteer **in Replicatie uitschakelen**een van de volgende opties:
+1. Klik in **beveiligde items** > **gerepliceerde items**met de rechter muisknop op de machine > **Schakel replicatie uit**.
+2. In **replicatie uitschakelen**selecteert u een van de volgende opties:
 
-   - **Replicatie uitschakelen en verwijderen (aanbevolen)** - Met deze optie wordt het gerepliceerde item uit Azure Site Recovery verwijderd en wordt de replicatie voor de machine gestopt. Replicatieconfiguratie op de on-premises virtuele machine wordt opgeschoond en de facturering met siteherstel voor deze beveiligde server wordt gestopt.
-   - **Verwijderen** - Deze optie wordt verondersteld alleen te worden gebruikt als de bronomgeving is verwijderd of niet toegankelijk is (niet is verbonden). Hiermee wordt het gerepliceerde item verwijderd uit Azure Site Recovery (facturering wordt gestopt). Replicatieconfiguratie op de on-premises virtuele machine **wordt niet** opgeschoond. Voer de volgende set scripts uit om de on-premises virtuele machines van replicatieinstellingen op te schonen.
+   - **Replicatie uitschakelen en verwijderen (aanbevolen)** : met deze optie wordt het gerepliceerde item verwijderd uit Azure site Recovery en wordt de replicatie voor de machine gestopt. De replicatie Configuratie op de on-premises virtuele machine wordt opgeruimd en Site Recovery facturering voor deze beveiligde server is gestopt.
+   - **Verwijderen** : deze optie moet alleen worden gebruikt als de bron omgeving is verwijderd of niet is geopend (niet verbonden). Hiermee wordt het gerepliceerde item verwijderd uit de Azure Site Recovery (facturering wordt gestopt). De replicatie Configuratie op de on-premises virtuele machine **wordt niet** opgeschoond. Voer de volgende reeks scripts uit om de on-premises virtuele machines van de replicatie-instellingen op te schonen.
      > [!NOTE]
-     > Als u de optie **Verwijderen** hebt gekozen, u de volgende scripts tunen om de on-premises VMM-server op te schonen.
+     > Als u de optie **verwijderen** hebt gekozen, voert u de volgende scripts uit om de on-premises VMM-server van de replicatie-instellingen op te schonen.
 
-3. Voer dit script uit op de bron VMM-server met PowerShell (vereiste beheerdersbevoegdheden) vanaf de VMM-console. Vervang de tijdelijke aanduiding **SQLVM1** door de naam van uw virtuele machine.
+3. Voer dit script uit op de Bron-VMM-server met behulp van Power shell (beheerders bevoegdheden vereist) van de VMM-console. Vervang de tijdelijke aanduiding **SQLVM1** door de naam van uw virtuele machine.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
-4. Voer op de secundaire VMM-server dit script uit om de instellingen voor de secundaire virtuele machine op te schonen:
+4. Voer dit script uit op de secundaire VMM-server om de instellingen voor de secundaire virtuele machine op te schonen:
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Remove-SCVirtualMachine -VM $vm -Force
-5. Vernieuw op de secundaire VMM-server de virtuele machines op de Hyper-V-hostserver, zodat de secundaire VM opnieuw wordt gedetecteerd in de VMM-console.
-6. In de bovenstaande stappen worden de replicatie-instellingen op de VMM-server gewist. Als u de replicatie voor de virtuele machine wilt stoppen, voert u het volgende script uit oh de primaire en secundaire VM's. Vervang SQLVM1 door de naam van uw virtuele machine.
+5. Vernieuw de virtuele machines op de Hyper-V-hostserver op de secundaire VMM-server, zodat de secundaire virtuele machine weer wordt gedetecteerd in de VMM-console.
+6. In de bovenstaande stappen worden de replicatie-instellingen op de VMM-Server gewist. Als u de replicatie voor de virtuele machine wilt stoppen, voert u het volgende script uit om de primaire en secundaire Vm's uit te voeren. Vervang SQLVM1 door de naam van uw virtuele machine.
 
         Remove-VMReplication –VMName “SQLVM1”
 

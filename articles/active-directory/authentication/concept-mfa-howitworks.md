@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Multi-Factor Authentication
-description: Ontdek hoe Azure Multi-Factor Authentication de toegang tot gegevens en toepassingen helpt te waarborgen en tegelijkertijd aan de vraag van gebruikers naar een eenvoudig aanmeldingsproces te voldoen.
+description: Meer informatie over hoe Azure Multi-Factor Authentication u helpt de toegang tot gegevens en toepassingen te beschermen terwijl u aan de vraag van de gebruiker voor een eenvoudig aanmeldings proces voldoet.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,58 +12,58 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80667365"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Hoe werkt het - Azure Multi-Factor Authentication
 
-Meervoudige verificatie is een proces waarbij een gebruiker tijdens het aanmeldingsproces wordt gevraagd om een extra vorm van identificatie, zoals het invoeren van een code op zijn mobiele telefoon of het verstrekken van een vingerafdrukscan.
+Multi-factor Authentication is een proces waarbij een gebruiker wordt gevraagd tijdens het aanmeldings proces om een extra vorm van identificatie, zoals het invoeren van een code op hun cellphone of voor het bieden van een vingerafdruk scan.
 
-Als u alleen een wachtwoord gebruikt om een gebruiker te verifiëren, blijft er een onveilige vector over voor aanvallen. Als het wachtwoord zwak is of elders is blootgesteld, is het dan echt de gebruiker die zich aanmeldt met de gebruikersnaam en het wachtwoord, of is het een aanvaller? Wanneer u een tweede vorm van verificatie nodig hebt, wordt de beveiliging verhoogd omdat deze extra factor niet gemakkelijk is voor een aanvaller om te verkrijgen of te dupliceren.
+Als u alleen een wacht woord gebruikt om een gebruiker te verifiëren, blijft er een onveilige vector voor aanvallen. Als het wacht woord zwak is of elders is weer gegeven, is het echt de gebruiker die zich aanmeldt met de gebruikers naam en het wacht woord of is het een aanvaller? Wanneer u een tweede vorm van verificatie nodig hebt, wordt de beveiliging verhoogd omdat deze extra factor niet duidelijk is voor een aanvaller om te voor komen dat deze wordt opgehaald of gedupliceerd.
 
-![Conceptueel beeld van de verschillende vormen van multi-factor authenticatie](./media/concept-mfa-howitworks/methods.png)
+![Conceptuele afbeelding van de verschillende vormen van multi-factor Authentication](./media/concept-mfa-howitworks/methods.png)
 
-Azure Multi-Factor Authentication werkt door twee of meer van de volgende verificatiemethoden te vereisen:
+Azure Multi-Factor Authentication werkt door twee of meer van de volgende verificatie methoden te vereisen:
 
-* Iets wat je weet, typisch een wachtwoord.
-* Iets wat je hebt, zoals een vertrouwd apparaat dat niet gemakkelijk wordt gedupliceerd, zoals een telefoon of hardwaresleutel.
-* Iets wat je bent - biometrie zoals een vingerafdruk of gezichtsscan.
+* Iets wat u kent, doorgaans een wacht woord.
+* Iets wat u hebt, zoals een vertrouwd apparaat dat niet eenvoudig kan worden gedupliceerd, zoals een telefoon-of hardware-sleutel.
+* Iets wat u wilt: biometrie, zoals een vinger afdruk of een gezichts scan.
 
-Gebruikers kunnen zich in één stap registreren voor zowel selfservice wachtwoordreset als Azure Multi-Factor Authentication om de on-boarding-ervaring te vereenvoudigen. Beheerders kunnen bepalen welke vormen van secundaire verificatie kunnen worden gebruikt. Azure Multi-Factor Authentication kan ook vereist zijn wanneer gebruikers een selfservice wachtwoordreset uitvoeren om dat proces verder te beveiligen.
+Gebruikers kunnen zich registreren voor selfservice voor wachtwoord herstel en Azure Multi-Factor Authentication in één stap om de on-board ervaring te vereenvoudigen. Beheerders kunnen definiëren welke vormen van secundaire authenticatie kunnen worden gebruikt. Azure Multi-Factor Authentication kan ook vereist zijn wanneer gebruikers een self-service voor wachtwoord herstel moeten uitvoeren om dat proces verder te beveiligen.
 
-![Verificatiemethoden die worden gebruikt op het aanmeldingsscherm](media/concept-authentication-methods/overview-login.png)
+![Verificatie methoden die in gebruik zijn op het aanmeldings scherm](media/concept-authentication-methods/overview-login.png)
 
-Azure Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te waarborgen en tegelijkertijd de eenvoud voor gebruikers te behouden. Het biedt extra beveiliging door een tweede vorm van authenticatie te vereisen en levert sterke authenticatie via een reeks [gebruiksvriendelijke authenticatiemethoden.](concept-authentication-methods.md) Gebruikers kunnen al dan niet worden uitgedaagd voor MFA op basis van configuratiebeslissingen die een beheerder maakt.
+Azure Multi-Factor Authentication helpt bij het beschermen van de toegang tot gegevens en toepassingen, terwijl u eenvoudiger bent voor gebruikers. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en sterke verificatie te bieden met behulp van een bereik aan gebruiks vriendelijke [verificatie methoden](concept-authentication-methods.md). Gebruikers kunnen of kunnen niet worden aangevraagd voor MFA op basis van configuratie beslissingen die een beheerder doet.
 
-Uw toepassingen of services hoeven geen wijzigingen aan te brengen om Azure Multi-Factor Authentication te gebruiken. De verificatieprompts maken deel uit van de aanmeldingsgebeurtenis Azure AD, die de MFA-uitdaging automatisch opvraagt en verwerkt wanneer dat nodig is.
+Uw toepassingen of services hoeven geen wijzigingen aan te brengen om Azure Multi-Factor Authentication te gebruiken. De verificatie prompts maken deel uit van de Azure AD-aanmeldings gebeurtenis, die de MFA-Challenge automatisch aanvraagt en verwerkt wanneer dat nodig is.
 
-## <a name="available-verification-methods"></a>Beschikbare verificatiemethoden
+## <a name="available-verification-methods"></a>Beschik bare verificatie methoden
 
-Wanneer een gebruiker zich aanmeldt bij een toepassing of service en een MFA-prompt ontvangt, kan hij of zij kiezen uit een van hun geregistreerde vormen van aanvullende verificatie. Een beheerder kan registratie van deze Azure Multi-Factor Verification verification methoden vereisen, of de gebruiker heeft toegang tot zijn eigen [Mijn profiel](https://myprofile.microsoft.com) om verificatiemethoden te bewerken of toe te voegen.
+Wanneer een gebruiker zich aanmeldt bij een toepassing of service en een MFA-prompt ontvangt, kan hij of zij kiezen uit een van de geregistreerde formulieren van aanvullende verificatie. Een beheerder kan registratie van deze Azure Multi-Factor Authentication-verificatie methoden vereisen of de gebruiker kan toegang krijgen tot hun eigen [profiel](https://myprofile.microsoft.com) om verificatie methoden te bewerken of toe te voegen.
 
-De volgende aanvullende verificatievormen kunnen worden gebruikt met Azure Multi-Factor Authentication:
+De volgende aanvullende vormen van verificatie kunnen worden gebruikt met Azure Multi-Factor Authentication:
 
 * Microsoft Authenticator-app
-* OATH-hardwaretoken
+* OATH-hardware-token
 * Sms
 * Spraakoproep
 
 ## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication inschakelen en gebruiken
 
-Gebruikers en groepen kunnen worden ingeschakeld voor Azure Multi-Factor Authentication om extra verificatie te vragen tijdens de aanmeldingsgebeurtenis. [Beveiligingsstandaarden](../fundamentals/concept-fundamentals-security-defaults.md) zijn beschikbaar voor alle Azure AD-tenants om snel het gebruik van de Microsoft Authenticator-app voor alle gebruikers in te schakelen.
+Gebruikers en groepen kunnen worden ingeschakeld voor Azure Multi-Factor Authentication om te vragen om aanvullende verificatie tijdens de aanmeldings gebeurtenis. De [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md) zijn beschikbaar voor alle Azure AD-tenants om het gebruik van de Microsoft Authenticator-app snel in te scha kelen voor alle gebruikers.
 
-Voor gedetailleerdere besturingselementen kan [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) worden gebruikt om gebeurtenissen of toepassingen te definiëren waarvoor MFA vereist is. Met dit beleid kunnen regelmatig aanmeldingsgebeurtenissen worden toegestaan wanneer de gebruiker zich op het bedrijfsnetwerk of een geregistreerd apparaat bevindt, maar wordt gevraagd om aanvullende verificatiefactoren wanneer deze op afstand of op een persoonlijk apparaat zijn.
+Voor uitgebreidere besturings elementen kunnen beleids regels voor [voorwaardelijke toegang](../conditional-access/overview.md) worden gebruikt voor het definiëren van gebeurtenissen of toepassingen waarvoor MFA is vereist. Met deze beleids regels kunt u regel matige aanmeldings gebeurtenissen toestaan wanneer de gebruiker zich in het bedrijfs netwerk of een geregistreerd apparaat bevindt, maar u wordt gevraagd om aanvullende verificatie factoren wanneer het externe apparaat of op een persoon is.
 
-![Overzichtsdiagram over hoe voorwaardelijke toegang werkt om het aanmeldingsproces te beveiligen](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
+![Overzichts diagram van hoe voorwaardelijke toegang het aanmeldings proces kan beveiligen](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Functies en [licenties voor Azure Multi-Factor Authentication voor](concept-mfa-licensing.md)meer informatie over licenties.
+Zie voor meer informatie over licenties de [functies en licenties voor Azure multi-factor Authentication](concept-mfa-licensing.md).
 
-Als u MFA in actie wilt zien, schakelt u Azure Multi-Factor Authentication in voor een set testgebruikers in de volgende zelfstudie:
+Als u MFA in actie wilt zien, schakelt u Azure Multi-Factor Authentication in voor een set test gebruikers in de volgende zelf studie:
 
 > [!div class="nextstepaction"]
 > [Azure Multi-Factor Authentication inschakelen](tutorial-mfa-applications.md)
