@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Clarizen | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Clarizen | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Clarizen.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b34e6087f3a6e7f3cc0f46c53d4fe903838d210
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158595"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Zelfstudie: Azure Active Directory-integratie met Clarizen
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Zelf studie: integratie Azure Active Directory met Clarizen
 
 In deze zelfstudie leert u hoe u Clarizen kunt integreren met Azure Active Directory (Azure AD).
 Clarizen integreren met Azure AD biedt u de volgende voordelen:
@@ -33,7 +33,7 @@ Clarizen integreren met Azure AD biedt u de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -133,15 +133,15 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Clarizen, moet u de 
 
 1. Klik op uw gebruikersnaam en klik vervolgens op **Instellingen**.
 
-    ![Klikken op 'Instellingen' onder uw gebruikersnaam](./media/clarizen-tutorial/tutorial_clarizen_001.png "Instellingen")
+    ![Klik onder uw gebruikers naam op instellingen](./media/clarizen-tutorial/tutorial_clarizen_001.png "Instellingen")
 
-1. Klik op het tabblad **Globale instellingen.** Klik vervolgens naast **Federated Authentication**op **bewerken**.
+1. Klik op het tabblad **algemene instellingen** . Klik vervolgens naast **federatieve verificatie**op **bewerken**.
 
-    ![Tabblad 'Globale instellingen'](./media/clarizen-tutorial/tutorial_clarizen_002.png "Globale instellingen")
+    ![Tabblad Algemene instellingen](./media/clarizen-tutorial/tutorial_clarizen_002.png "Globale instellingen")
 
 1. Voer in het dialoogvenster **Federatieve aanmelding** de volgende stappen uit:
 
-    ![Dialoogvenster 'Federatieve verificatie'](./media/clarizen-tutorial/tutorial_clarizen_003.png "Federatieve verificatie")
+    ![Het dialoog venster federatieve verificatie](./media/clarizen-tutorial/tutorial_clarizen_003.png "Federatieve verificatie")
 
     a. Selecteer **Federatieve aanmelding inschakelen**.
 
@@ -163,7 +163,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -173,12 +173,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -200,9 +200,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -218,15 +218,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Clarizen, moet u ge
 
 2. Klik op **People**.
 
-    ![Klikken op 'Personen'](./media/clarizen-tutorial/create_aaduser_001.png "People")
+    ![Klikken op personen](./media/clarizen-tutorial/create_aaduser_001.png "People")
 
 3. Klik op **Gebruiker uitnodigen**.
 
-    ![Knop Gebruiker uitnodigen](./media/clarizen-tutorial/create_aaduser_002.png "Gebruikers uitnodigen")
+    ![Knop gebruiker uitnodigen](./media/clarizen-tutorial/create_aaduser_002.png "Gebruikers uitnodigen")
 
 1. Voer in het dialoogvenster **Personen uitnodigen** de volgende stappen uit:
 
-    ![Dialoogvenster Personen uitnodigen](./media/clarizen-tutorial/create_aaduser_003.png "Mensen uitnodigen")
+    ![Het dialoog venster personen uitnodigen](./media/clarizen-tutorial/create_aaduser_003.png "Personen uitnodigen")
 
     a. Typ in het tekstvak **E-mail** het e-mailadres van het account van Britta Simon.
 
@@ -246,6 +246,6 @@ Wanneer u op de tegel Clarizen in het toegangsvenster klikt, zou u automatisch m
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

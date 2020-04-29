@@ -1,5 +1,5 @@
 ---
-title: Failover en schalen van een container-app
+title: Een app voor containers failoveren en schalen
 description: In deze zelfstudie leert u hoe failovers worden verwerkt in een Azure Service Fabric-containertoepassing.  U leert ook hoe u de containers en services schaalt die in een cluster worden uitgevoerd.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614091"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Zelfstudie: Failover uitvoeren voor containerservices met Service Fabric en deze schalen

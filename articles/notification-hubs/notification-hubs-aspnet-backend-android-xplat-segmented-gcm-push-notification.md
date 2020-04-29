@@ -1,5 +1,5 @@
 ---
-title: Meldingen verzenden naar specifieke Android-apparaten via Azure Notification Hubs en Google Cloud Messaging | Microsoft Documenten
+title: Meldingen verzenden naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
 description: Leer hoe u pushmeldingen kunt verzenden naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
@@ -18,16 +18,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80127294"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Android-apparaten met Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Zelf studie: Push meldingen verzenden naar specifieke Android-apparaten met behulp van Google Cloud Messaging (afgeschaft)
 
 > [!WARNING]
-> Vanaf 10 april 2018 heeft Google Google Cloud Messaging (GCM) afgeschaft. De GCM-server en client API's worden afgeschaft en worden al op 29 mei 2019 verwijderd. Zie [GCM en FCM veelgestelde vragen](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
+> Sinds 10 april 2018 heeft Google afgeschaft Google Cloud Messaging (GCM). De GCM-server en de client-Api's zijn afgeschaft en worden verwijderd zodra 29 mei 2019. Zie [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 

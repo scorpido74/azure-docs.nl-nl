@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Aanmaakof | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Aanmaak.
+title: 'Zelf studie: integratie Azure Active Directory met Natura | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en het soort.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,43 +17,43 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eda2886c21e64faf71391d4eff1c6c53ea1a7f17
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73159786"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kindling"></a>Zelfstudie: Azure Active Directory-integratie met Aanmaakwerk
+# <a name="tutorial-azure-active-directory-integration-with-kindling"></a>Zelf studie: integratie met Natura Azure Active Directory
 
-In deze zelfstudie leert u hoe u Aanmaak integreren met Azure Active Directory (Azure AD).
-De integratie van Kindling met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u kunt integreren met Azure Active Directory (Azure AD).
+Het integreren van de aard van Azure AD biedt u de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Aanmaak.
-* U uw gebruikers automatisch laten aanmelden bij Kindling (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot het type.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij het type (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Aanling wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Natura wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Voortsteken eenmalig aanmeldingsabonnement
+* Abonnement waarbij eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Kindling ondersteunt **SP** geïnitieerde SSO
-* Aanling ondersteunt **Just In Time-gebruikersinrichting**
+* Natura ondersteunt door **SP** GEÏNITIEERDe SSO
+* Natura ondersteunt **just-in-time** -gebruikers inrichting
 
-## <a name="adding-kindling-from-the-gallery"></a>Kindling toevoegen vanuit de galerie
+## <a name="adding-kindling-from-the-gallery"></a>Typen toevoegen uit de galerie
 
-Als u de integratie van Aanling in Azure AD wilt configureren, moet u Kindling uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de aard van Azure AD wilt configureren, moet u de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Kindling uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om de selectie van de galerie toe te voegen:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +67,31 @@ Als u de integratie van Aanling in Azure AD wilt configureren, moet u Kindling u
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Aanmaak ,** selecteer **Aanmaak uit** het resultaatpaneel en klik in het zoekvak **op Aanmaak om** de toepassing toe te voegen.
+4. Typ in het zoekvak type **, selecteer selecteren** uit resultaat **paneel en klik**vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Aanmaakin de resultatenlijst](common/search-new-app.png)
+     ![In de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Kindling op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Kindling.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Natura op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker worden ingesteld.
 
-Als u Azure AD single sign-on met Aanling wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eén aanmelding smaken voor kindmaken configureren](#configure-kindling-single-sign-on)** om de instellingen voor eenmalig aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding configureren](#configure-kindling-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak De testgebruiker van Kindling](#create-kindling-test-user)** - om een tegenhanger van Britta Simon in Kindling te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. Een gebruiker voor het maken van een **[soort test](#create-kindling-test-user)** , voor een soort Julia Simon die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om eenmalig aanmelding van Azure AD met Aanmaakkunde te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Voorbewerken-toepassingen** de optie **Eén aanmelding .**
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **soort** toepassings integratie de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,20 +105,20 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om eenmalig aa
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Aanmaakdomein- en URL's met eenmalige aanmeldingsgegevens](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.kindlingapp.com`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het Support Team van Kindling Client](mailto:support@kindlingapp.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact opnemen met het [client ondersteunings team](mailto:support@kindlingapp.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Aanmaakvooraansteken** instellen de juiste URL(s) volgens uw vereiste.
+6. Kopieer op de sectie **instelling** instellen de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -128,9 +128,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om eenmalig aa
 
     c. Afmeldings-URL
 
-### <a name="configure-kindling-single-sign-on"></a>Eén aanmelding voor aanmaakdoende configureren
+### <a name="configure-kindling-single-sign-on"></a>Eenmalige aanmelding configureren
 
-Als u eenmalige aanmelding wilt configureren aan **de aanmaakzijde van Aanmaak,** moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam voor aanmaakwerk](mailto:support@kindlingapp.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Voor het configureren van eenmalige aanmelding aan **de zijkanten** moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar het [soort ondersteunings team](mailto:support@kindlingapp.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -140,7 +140,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -150,24 +150,24 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Kindling.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Aanmaak .**
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens selecteren **.**
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer In de lijst met toepassingen de optie **Aanmaak .**
+2. Selecteer in de lijst toepassingen de optie **soort**.
 
-    ![De koppeling Kindling in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling kind in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -177,26 +177,26 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-kindling-test-user"></a>Testgebruiker Voordelen maken
+### <a name="create-kindling-test-user"></a>Test gebruiker voor een soort maken
 
-In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Kindling. Beveeling ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Aanling, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in natura. Natura ondersteunt just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al bestaat in natura, wordt er na verificatie een nieuwe gemaakt.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Aanmaakining klikt in het toegangspaneel, moet u automatisch worden aangemeld bij de Aanmaakwaarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel soort in het toegangs venster klikt, moet u automatisch worden aangemeld bij het soort waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

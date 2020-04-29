@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Envi MMIS | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met ENVI MMIS | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Envi MMIS.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1689517042713e9a3ce75c6ada822cb3d6ff138
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73158268"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Zelfstudie: Azure Active Directory-integratie met Envi MMIS
+# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Zelf studie: integratie Azure Active Directory met ENVI MMIS
 
 In deze zelfstudie leert u hoe u Envi MMIS kunt integreren met Azure Active Directory (Azure AD).
 Door Envi MMIS te integreren met Envi MMIS krijgt u de volgende voordelen:
@@ -33,7 +33,7 @@ Door Envi MMIS te integreren met Envi MMIS krijgt u de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -102,11 +102,11 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
+4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
 
     ![Informatie over eenmalige aanmelding van domeinen en URL's van Envi MMIS](common/idp-intiated.png)
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://www.<CUSTOMER DOMAIN>.com/Account`
+    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://www.<CUSTOMER DOMAIN>.com/Account`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
@@ -163,7 +163,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     c. Klik op **Ok**.
 
-7. Als u het gedownloade metagegevensbestand hebt geüpload, worden de velden automatisch ingevuld. Klik **op Bijwerken**
+7. Als u het gedownloade metagegevensbestand hebt geüpload, worden de velden automatisch ingevuld. Klik op **bijwerken**
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/envimmis-tutorial/configure6.png)
 
@@ -175,7 +175,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -183,14 +183,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer In het veld **Naam** **BrittaSimon**in .
+    a. Voer **BrittaSimon**in het veld **naam** in.
   
-    b. Typ in het veld **Gebruikersnaam** **de tekst brittasimon\@yourcompanydomain.extension**  
+    b. Typ **\@brittasimon yourcompanydomain. extension** in het veld **gebruikers naam** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -212,11 +212,11 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen De optie **Britta Simon** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
 6. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onderaan het scherm klikken.
 
-7. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+7. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
 ### <a name="create-envi-mmis-test-user"></a>Envi MMIS-testgebruiker maken
 
@@ -238,7 +238,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Envi MMIS, moeten z
 
     ![Werknemer toevoegen](./media/envimmis-tutorial/user3.png)
 
-    a. Typ in het tekstvak **Gebruikersnaam** de gebruikersnaam van britta Simon-account zoals **brittasimon\@contoso.com**.
+    a. Typ in het tekstvak **gebruikers naam** de gebruikers naam van het Julia Simon-account, zoals **brittasimon\@contoso.com**.
     
     b. Typ in het tekstvak **First Name** de voornaam van BrittaSimon in, in dit geval **Britta**.
 
@@ -246,9 +246,9 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Envi MMIS, moeten z
 
     d. Voer de titel van de gebruiker in in **Title** van het tekstvak.
     
-    e. Typ in het tekstvak **E-mailadres** het e-mailadres van britta Simon-account, zoals **\@brittasimon contoso.com**.
+    e. Typ in het tekstvak **e-mail adres** het e-mail adres van het Julia Simon-account, zoals **\@brittasimon contoso.com**.
 
-    f. Typ in het tekstvak **SSO Gebruikersnaam** de gebruikersnaam van britta Simon-account zoals **\@brittasimon contoso.com**.
+    f. Typ in het tekstvak **SSO-gebruikers naam** de gebruikers naam van het Julia Simon-account, zoals **brittasimon\@contoso.com**.
 
     g. Klik op **Opslaan**.
 
@@ -262,7 +262,7 @@ Wanneer u in het toegangsvenster op de tegel Envi MMIS klikt, wordt u automatisc
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: WAF-beleid maken voor Azure Front Door - Azure-portal'
-description: In deze zelfstudie leert u hoe u een WAF-beleid (Web Application Firewall) maakt met behulp van de Azure-portal.
+title: 'Zelf studie: WAF-beleid maken voor Azure front-deur-Azure Portal'
+description: In deze zelf studie leert u hoe u een WAF-beleid (Web Application firewall) kunt maken met behulp van de Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
@@ -8,76 +8,76 @@ ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79475838"
 ---
-# <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Zelfstudie: Een webtoepassingsfirewallbeleid maken op Azure Front Door met de Azure-portal
+# <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Zelf studie: een firewall beleid voor webtoepassingen maken op de voor deur van Azure met behulp van de Azure Portal
 
-In deze zelfstudie ziet u hoe u een basisbeleid voor Azure Web Application Firewall (WAF) maken en toepassen op een front-endhost bij Azure Front Door.
+In deze zelf studie leert u hoe u een basis beleid voor Azure Web Application firewall (WAF) maakt en dit toepast op een front-end-host op Azure front deur.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een WAF-beleid maken
-> * Associëren met een frontend host
+> * Deze koppelen aan een frontend-host
 > * WAF-regels configureren
 
 ## <a name="prerequisites"></a>Vereisten
 
-Maak een voordeurprofiel door de instructies te volgen die in [Quickstart zijn beschreven: Maak een voordeurprofiel.](../../frontdoor/quickstart-create-front-door.md) 
+Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md). 
 
-## <a name="create-a-web-application-firewall-policy"></a>Een firewallbeleid voor webtoepassingen maken
+## <a name="create-a-web-application-firewall-policy"></a>Een firewall beleid voor webtoepassingen maken
 
-Maak eerst een basisWAF-beleid met beheerde Standaardregelset (DRS) met behulp van de portal. 
+Maak eerst een basis-WAF-beleid met beheerde standaard regelset (DRS) met behulp van de portal. 
 
-1. Selecteer linksboven in het scherm de optie **Een bron maken**>zoeken naar **WAF**>**selecteer webtoepassingsfirewall (Preview)** > selecteer **Maken**.
-2. Voer op het tabblad **Basisbeginselen** van de **beleidspagina Een WAF maken** de volgende gegevens in of selecteer deze, accepteer de standaardinstellingen voor de overige instellingen en selecteer **Vervolgens Controleren + maken:**
+1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource maken**>Zoek naar **WAF**>Selecteer **Web application firewall (preview)** > Selecteer **Create**.
+2. Voer op het tabblad **basis beginselen** van de pagina **een WAF-beleid maken** de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer vervolgens **controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Abonnement            |Selecteer de naam van uw voordeurabonnement.|
-    | Resourcegroep          |Selecteer de naam van de brongroep voordeur.|
+    | Abonnement            |Selecteer de naam van uw front-deur abonnement.|
+    | Resourcegroep          |Selecteer de naam van de resource groep voor de voor deur.|
     | Beleidsnaam             |Voer een unieke naam in voor uw WAF-beleid.|
 
    ![Een WAF-beleid maken](../media/waf-front-door-create-portal/basic.png)
 
-3. Selecteer op het tabblad **Koppeling** van de **beleidspagina Een WAF maken** de optie **Frontend-host toevoegen,** voer de volgende instellingen in en selecteer **Vervolgens Toevoegen:**
+3. Op het tabblad **koppeling** van de pagina **een WAF-beleid maken** selecteert u **frontend-host toevoegen**, voert u de volgende instellingen in en selecteert u **toevoegen**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Voordeur              | Selecteer de naam van het voordeurprofiel.|
-    | Frontend-host           | Selecteer de naam van de host van de voordeur en selecteer **Toevoegen**.|
+    | Voor deur              | Selecteer de naam van uw front deur-profiel.|
+    | Frontend-host           | Selecteer de naam van de voor deur van de host en selecteer vervolgens **toevoegen**.|
     
     > [!NOTE]
-    > Als de frontendhost is gekoppeld aan een WAF-beleid, wordt deze weergegeven als grijs weergegeven. U moet eerst de frontendhost uit het bijbehorende beleid verwijderen en vervolgens de frontendhost opnieuw koppelen aan een nieuw WAF-beleid.
-1. Selecteer **Controleren + maken**en selecteer Vervolgens **Maken**.
+    > Als de frontend-host aan een WAF-beleid is gekoppeld, wordt deze als grijs weer gegeven. U moet eerst de frontend-host uit het bijbehorende beleid verwijderen en vervolgens de frontend-host opnieuw koppelen aan een nieuw WAF-beleid.
+1. Selecteer **controleren + maken**en selecteer vervolgens **maken**.
 
-## <a name="configure-web-application-firewall-rules-optional"></a>Firewallregels voor webtoepassingen configureren (optioneel)
+## <a name="configure-web-application-firewall-rules-optional"></a>Firewall regels voor webtoepassingen configureren (optioneel)
 
-### <a name="change-mode"></a>De modus wijzigen
+### <a name="change-mode"></a>Modus wijzigen
 
-Wanneer u een WAF-beleid maakt, bevindt u zich met het standaard WAF-beleid in de **detectiemodus.** In **de detectiemodus** blokkeert WAF geen aanvragen, in plaats daarvan worden aanvragen die overeenkomen met de WAF-regels geregistreerd bij WAF-logboeken.
-Als u WAF in actie wilt zien, u de modusinstellingen wijzigen van **Detectie** naar **Preventie.** In **de preventiemodus** worden aanvragen die overeenkomen met regels die zijn gedefinieerd in DrS(Default Rule Set) geblokkeerd en geregistreerd bij WAF-logboeken.
+Wanneer u een WAF-beleid maakt, bevindt het standaard WAF-beleid zich in de **detectie** modus. In de **detectie** modus worden in plaats daarvan geen aanvragen door WAF geblokkeerd. aanvragen die overeenkomen met de WAF-regels worden in WAF-logboeken vastgelegd.
+Als u WAF in actie wilt zien, kunt u de modus instellingen wijzigen van **detectie** in **preventie**. In de **preventie** modus worden aanvragen die overeenkomen met de regels die zijn gedefinieerd in de standaardregelset (drs) geblokkeerd en geregistreerd bij WAF-Logboeken.
 
- ![WAF-beleidsmodus wijzigen](../media/waf-front-door-create-portal/policy.png)
+ ![WAF-beleids modus wijzigen](../media/waf-front-door-create-portal/policy.png)
 
 ### <a name="custom-rules"></a>Aangepaste regels
 
-U een aangepaste regel maken door **aangepaste regel toevoegen** te selecteren onder de sectie Aangepaste **regels.** Hiermee wordt de aangepaste pagina voor de configuratie van regels gestart. Hieronder vindt u een voorbeeld van het configureren van een aangepaste regel om een aanvraag te blokkeren als de querytekenreeks **blokkering**bevat.
+U kunt een aangepaste regel maken door **aangepaste regel toevoegen** te selecteren onder de sectie **aangepaste regels** . Hiermee opent u de pagina aangepaste regel configuratie. Hieronder ziet u een voor beeld van het configureren van een aangepaste regel voor het blok keren van een aanvraag als de query reeks **blockme**bevat.
 
-![WAF-beleidsmodus wijzigen](../media/waf-front-door-create-portal/customquerystring2.png)
+![WAF-beleids modus wijzigen](../media/waf-front-door-create-portal/customquerystring2.png)
 
-### <a name="default-rule-set-drs"></a>DrS (Standaardregelset)
+### <a name="default-rule-set-drs"></a>Standaardregelset (DRS)
 
-Standaardregelset met Azure is standaard ingeschakeld. Als u een afzonderlijke regel binnen een regelgroep wilt uitschakelen, vouwt u de regels binnen die regelgroep uit, schakelt u het **selectievakje** voor het regelnummer in en selecteert **u Uitschakelen** op het bovenstaande tabblad. Als u actietypen voor afzonderlijke regels in de regelset wilt wijzigen, schakelt u het selectievakje voor het regelnummer in en schakelt u het tabblad **Actie wijzigen** hierboven in.
+De standaard regelset die door Azure wordt beheerd, is standaard ingeschakeld. Als u een afzonderlijke regel binnen een regel groep wilt uitschakelen, vouwt u de regels binnen die regel groep uit, selecteert u het **selectie vakje** vóór het regel nummer en selecteert u **uitschakelen** op het bovenstaande tabblad. Als u de typen acties voor afzonderlijke regels in de regelset wilt wijzigen, schakelt u het selectie vakje vóór het regel nummer in en selecteert u vervolgens het tabblad **wijzigings actie** hierboven.
 
- ![WAF-regelset wijzigen](../media/waf-front-door-create-portal/managed2.png)
+ ![WAF Rule set wijzigen](../media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure Web Application Firewall](../overview.md)
-> [Meer informatie over Azure Front Door](../../frontdoor/front-door-overview.md)
+> [Meer informatie over Azure Web Application firewall](../overview.md)
+> meer[informatie over Azure front-deur](../../frontdoor/front-door-overview.md)

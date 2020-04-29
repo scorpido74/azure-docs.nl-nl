@@ -1,6 +1,6 @@
 ---
-title: De OPC Vault-certificaatbeheerservice veilig uitvoeren - Azure | Microsoft Documenten
-description: Beschrijft hoe u de OPC Vault-certificaatbeheerservice veilig uitvoeren in Azure en beoordeelt andere beveiligingsrichtlijnen waarmee u rekening moet houden.
+title: De OPC kluis Certificate Management-service veilig uitvoeren-Azure | Microsoft Docs
+description: Hierin wordt beschreven hoe u de OPC kluis Certificate Management-service veilig in azure uitvoert en andere beveiligings richtlijnen kunt bedenken.
 author: mregen
 ms.author: mregen
 ms.date: 8/16/2019
@@ -9,237 +9,237 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271705"
 ---
-# <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC Vault-certificaatbeheerservice veilig uitvoeren
+# <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
 
-In dit artikel wordt uitgelegd hoe u de OPC Vault-certificaatbeheerservice veilig uitvoeren in Azure en worden andere beveiligingsrichtlijnen beoordeeld waarmee u rekening moet houden.
+In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service veilig in azure kunt uitvoeren en andere beveiligings richtlijnen kunt bedenken.
 
 ## <a name="roles"></a>Rollen
 
 ### <a name="trusted-and-authorized-roles"></a>Vertrouwde en geautoriseerde rollen
 
-De OPC Vault-microservice zorgt voor verschillende rollen om toegang te krijgen tot verschillende delen van de service.
+Met de OPC-micro service kunt u afzonderlijke rollen gebruiken om toegang te krijgen tot verschillende onderdelen van de service.
 
 > [!IMPORTANT]
-> Tijdens de implementatie voegt het script alleen de gebruiker toe die het implementatiescript als gebruiker voor alle rollen uitvoert. Voor een productie-implementatie moet u deze roltoewijzing bekijken en op de juiste manier configureren door de onderstaande richtlijnen te volgen. Deze taak vereist handmatige toewijzing van rollen en services in de Azure Active Directory (Azure AD) Enterprise Applications-portal.
+> Tijdens de implementatie voegt het script alleen de gebruiker toe die het implementatie script uitvoert als een gebruiker voor alle rollen. Voor een productie-implementatie moet u deze roltoewijzing controleren en op de juiste wijze configureren door de onderstaande richt lijnen te volgen. Deze taak vereist hand matige toewijzing van functies en services in de Enter prise-portal van Azure Active Directory (Azure AD).
 
-### <a name="certificate-management-service-roles"></a>Servicerollen certificaatbeheer
+### <a name="certificate-management-service-roles"></a>Service rollen voor certificaat beheer
 
-De OPC Vault-microservice definieert de volgende rollen:
+De OPC-kluis micro service definieert de volgende rollen:
 
-- **Lezer**: Standaard heeft elke geverifieerde gebruiker in de tenant leestoegang. 
-  - Lees toegang tot aanvragen en certificaataanvragen. Kan een lijst en query voor toepassingen en certificaataanvragen. Ook informatie over apparaatdetectie en openbare certificaten zijn toegankelijk met leestoegang.
-- **Schrijver**: De rol Schrijver is toegewezen aan een gebruiker om schrijfmachtigingen toe te voegen voor bepaalde taken. 
-  - Lees/schrijf toegang tot aanvragen en certificaataanvragen. Kan toepassingen registreren, bijwerken en uitschrijven. Kan certificaataanvragen maken en goedgekeurde privésleutels en certificaten verkrijgen. Kan ook privésleutels verwijderen.
-- **Keurauto:** de rol van goedkeurder is toegewezen aan een gebruiker om certificaataanvragen goed te keuren of af te wijzen. De rol bevat geen andere rol.
-  - Naast de rol van goedgekeurde rol om toegang te krijgen tot de OPC Vault-microservice-API, moet de gebruiker ook de machtiging voor het ondertekenen van sleutels in Azure Key Vault hebben om de certificaten te kunnen ondertekenen.
-  - De rol Schrijver en goedkeuring moet aan verschillende gebruikers worden toegewezen.
-  - De belangrijkste rol van de keurgever is de goedkeuring van het genereren en afwijzen van certificaataanvragen.
-- **Beheerder**: de functie Administrator is toegewezen aan een gebruiker om de certificaatgroepen te beheren. De rol ondersteunt de rol van goedkeurder niet, maar omvat de rol Schrijver.
-  - De beheerder kan de certificaatgroepen beheren, de configuratie wijzigen en toepassingscertificaten intrekken door een nieuwe Certificate Revocation List (CRL) uit te geven.
-  - Idealiter worden de rollen Schrijver, Keurhier en Beheerder toegewezen aan verschillende gebruikers. Voor extra beveiliging heeft een gebruiker met de rol Approver of Administrator ook toestemming nodig voor het ondertekenen van sleutels in Key Vault, om certificaten uit te geven of om een CA-certificaat van de uitgever te vernieuwen.
-  - Naast de rol van microservicebeheer omvat de rol, maar is deze niet beperkt tot:
-    - Verantwoordelijkvoor het beheer van de implementatie van de beveiligingspraktijken van de CA.
-    - Beheer van de generatie, intrekking en opschorting van certificaten. 
-    - Cryptografische sleutellevenscyclusbeheer (bijvoorbeeld de vernieuwing van de CA-sleutels van de uitgever).
-    - Installatie, configuratie en onderhoud van services die de CA bedienen.
-    - Dagelijkse werking van de diensten. 
-    - CA en database back-up en herstel.
+- **Lezer**: standaard heeft elke geverifieerde gebruiker in de Tenant Lees toegang. 
+  - Lees toegang tot toepassingen en certificaat aanvragen. Kan toepassingen en certificaat aanvragen weer geven en er query's op uitvoeren. Detectie gegevens van apparaten en open bare certificaten zijn ook toegankelijk met lees toegang.
+- **Writer**: de rol schrijver wordt toegewezen aan een gebruiker om schrijf machtigingen voor bepaalde taken toe te voegen. 
+  - Lees-/schrijftoegang tot toepassingen en certificaat aanvragen. Kan toepassingen registreren, bijwerken en verwijderen. Kan certificaat aanvragen maken en goedgekeurde persoonlijke sleutels en certificaten verkrijgen. Kan ook persoonlijke sleutels verwijderen.
+- **Goed keurder**: de rol van de goed keurder is toegewezen aan een gebruiker om certificaat aanvragen goed te keuren of af te wijzen. De rol bevat geen andere functies.
+  - Naast de rol fiatteur om toegang te krijgen tot de OPC kluis micro Service-API, moet de gebruiker ook beschikken over de machtiging voor sleutel ondertekening in Azure Key Vault om de certificaten te kunnen ondertekenen.
+  - De rol schrijver en goed keurder moet aan verschillende gebruikers worden toegewezen.
+  - De belangrijkste rol van de goed keurder is het goed keuren van het genereren en afkeuren van certificaat aanvragen.
+- **Beheerder**: de beheerdersrol is toegewezen aan een gebruiker om de certificaat groepen te beheren. De rol biedt geen ondersteuning voor de functie goed keurder, maar bevat de rol schrijver.
+  - De beheerder kan de certificaat groepen beheren, de configuratie wijzigen en toepassings certificaten intrekken door een nieuwe certificaatintrekkingslijst (CRL) uit te geven.
+  - In het ideale geval worden de rollen schrijver, goed keurder en beheerder toegewezen aan verschillende gebruikers. Voor extra beveiliging moet een gebruiker met de rol goed keurder of beheerder ook beschikken over de machtiging voor het ondertekenen van sleutels in Key Vault, het uitgeven van certificaten of het vernieuwen van een certificaat van een certificerings instantie.
+  - Naast de rol van micro Service-beheer, bevat de rol, maar is niet beperkt tot:
+    - Verantwoordelijkheid voor het beheren van de implementatie van de beveiligings procedures van de CA.
+    - Beheer van het genereren, intrekken en opschorten van certificaten. 
+    - Beheer van de levens cyclus van cryptografische sleutels (bijvoorbeeld de verlenging van de CA-sleutels van de uitgever).
+    - Installatie, configuratie en onderhoud van services die de CA uitvoeren.
+    - Dagelijkse werking van de services. 
+    - Certificerings instantie en back-up en herstel van de data base.
 
 ### <a name="other-role-assignments"></a>Andere roltoewijzingen
 
-Houd ook rekening met de volgende rollen wanneer u de service uitvoert:
+Houd ook rekening met de volgende rollen wanneer u de-service uitvoert:
 
-- Bedrijfseigenaar van het certificaataanbestedingscontract met de externe rootcertificeringsinstantie (bijvoorbeeld wanneer de eigenaar certificaten van een externe CA koopt of een CA beheert die ondergeschikt is aan een externe CA).
-- Ontwikkeling en validatie van de Certificeringsinstantie.
-- Herziening van de controledossiers.
-- Personeel dat helpt bij het ondersteunen van de CA of het beheren van de fysieke en cloudfaciliteiten, maar niet direct wordt vertrouwd om CA-bewerkingen uit te voeren, bevindt zich in de *geautoriseerde* rol. De takendie personen in de geautoriseerde rol mogen uitvoeren, moeten ook worden gedocumenteerd.
+- Zakelijke eigenaar van het certificaat voor de inkoop van certificaten met de externe basis certificerings instantie (bijvoorbeeld wanneer de eigenaar certificaten koopt van een externe CA of een CA ondergaat die ondergeschikt is aan een externe CA).
+- Ontwikkeling en validatie van de certificerings instantie.
+- Controle records controleren.
+- Mede werkers die ondersteuning bieden voor de CA of het beheer van de fysieke en Cloud faciliteiten, maar niet rechtstreeks worden vertrouwd voor het uitvoeren van CA-bewerkingen, bevinden zich in de *gemachtigde* rol. De set taken die in de gemachtigde rol kunnen worden uitgevoerd, moet ook worden gedocumenteerd.
 
-### <a name="review-memberships-of-trusted-and-authorized-roles-quarterly"></a>Het aantal lidmaatschappen van vertrouwde en geautoriseerde rollen per kwartaal bekijken
+### <a name="review-memberships-of-trusted-and-authorized-roles-quarterly"></a>Lidmaatschappen van vertrouwde en geautoriseerde rollen per kwar taal controleren
 
-Bekijk het lidmaatschap van vertrouwde en geautoriseerde rollen ten minste driemaandelijks. Zorg ervoor dat de set mensen (voor handmatige processen) of serviceidentiteiten (voor geautomatiseerde processen) in elke rol tot een minimum wordt beperkt.
+Controleer het lidmaatschap van vertrouwde en geautoriseerde rollen ten minste één kwar taal. Zorg ervoor dat de verzameling personen (voor hand matige processen) of service-identiteiten (voor automatische processen) in elke rol tot een minimum wordt beperkt.
 
-### <a name="role-separation-between-certificate-requester-and-approver"></a>Rolscheiding tussen certificaataanvrager en keurgever
+### <a name="role-separation-between-certificate-requester-and-approver"></a>Functie scheiding tussen certificaat aanvrager en goed keurder
 
-Het certificaatuitgifteproces moet de scheiding van rollen tussen de certificaataanvrager en de certificaatgoedkeuringrol (personen of geautomatiseerde systemen) afdwingen. De afgifte van certificaten moet worden toegestaan door een rol van de goedkeuring van certificaten die controleert of de certificaataanvrager gemachtigd is certificaten te verkrijgen. De personen die de rol van de certificaatkeurgever bezitten, moeten een formeel gemachtigde persoon zijn.
+Het certificaat uitgifte proces moet functie scheiding afdwingen tussen de certificaat aanvrager en de rollen van de goed keurder van het certificaat (personen of geautomatiseerde systemen). Certificaat uitgifte moet worden geautoriseerd door een rol van een certificaat goed keurder die verifieert of de certificaat aanvrager toestemming heeft om certificaten te verkrijgen. De personen die de rol van certificaat goed keurder hebben, moeten een formeel gemachtigde persoon zijn.
 
-### <a name="restrict-assignment-of-privileged-roles"></a>Toewijzing van bevoorrechte rollen beperken
+### <a name="restrict-assignment-of-privileged-roles"></a>Toewijzing van geprivilegieerde rollen beperken
 
-U moet de toewijzing van bevoorrechte rollen, zoals het toestaan van lidmaatschap van de groep Administrators en Fiatteurs, beperken tot een beperkte set geautoriseerd personeel. Wijzigingen in een bevoorrechte rol moeten binnen 24 uur de toegang hebben ingetrokken. Tot slot u geprivilegieerde roltoewijzingen op kwartaalbasis bekijken en eventuele onnodige of verlopen toewijzingen verwijderen.
+U moet de toewijzing van geprivilegieerde rollen beperken, zoals het machtigen van lidmaatschap van de groep Administrators en goed keurders tot een beperkt aantal geautoriseerde mede werkers. Alle wijzigingen van geprivilegieerde rollen moeten binnen 24 uur toegang hebben ingetrokken. Ten slotte kunt u privileged Role Assignments op elk kwar taal controleren en overbodige of verlopen toewijzingen verwijderen.
 
-### <a name="privileged-roles-should-use-two-factor-authentication"></a>Bevoorrechte rollen moeten tweestapsverificatie gebruiken
+### <a name="privileged-roles-should-use-two-factor-authentication"></a>Geprivilegieerde rollen moeten gebruikmaken van twee ledige verificatie
 
-Gebruik multi-factor authenticatie (ook wel tweestapsverificatie genoemd) voor interactieve aanmeldingen van fiatteurs en beheerders bij de service.
+Gebruik multi-factor Authentication (ook wel twee ledige verificatie genoemd) voor interactieve aanmeldingen van goed keurders en beheerders bij de service.
 
-## <a name="certificate-service-operation-guidelines"></a>Richtlijnen voor de werking van certificaatservice
+## <a name="certificate-service-operation-guidelines"></a>Richt lijnen voor de werking van de certificaat service
 
-### <a name="operational-contacts"></a>Operationele contacten
+### <a name="operational-contacts"></a>Operationele contact personen
 
-De certificaatservice moet beschikken over een up-to-date beveiligingsresponsplan in het bestand, dat gedetailleerde contactpersonen voor operationele incidentrespons bevat.
+De Certificate-Service moet een up-to-date beveiligings antwoord plan hebben dat gedetailleerde contact personen voor operationele incidenten bevat.
 
 ### <a name="security-updates"></a>Beveiligingsupdates
 
-Alle systemen moeten continu worden gecontroleerd en bijgewerkt met de nieuwste beveiligingsupdates.
+Alle systemen moeten voortdurend worden bewaakt en bijgewerkt met de meest recente beveiligings updates.
 
 > [!IMPORTANT]
-> De GitHub repository van de OPC Vault-service wordt voortdurend bijgewerkt met beveiligingspatches. Controleer deze updates en pas ze regelmatig toe op de service.
+> De GitHub-opslag plaats van de OPC-kluis service wordt voortdurend bijgewerkt met beveiligings patches. Controleer deze updates en pas ze met regel matige tussen pozen toe op de service.
 
 ### <a name="security-monitoring"></a>Beveiligingsbewaking
 
-Abonneer u op of implementeer de juiste beveiligingsbewaking. U zich bijvoorbeeld abonneren op een centrale bewakingsoplossing (zoals Azure Security Center of Office 365-bewakingsoplossing) en deze op de juiste manier configureren om ervoor te zorgen dat beveiligingsgebeurtenissen naar de bewakingsoplossing worden verzonden.
+Abonneer u op of implementeer de juiste beveiligings bewaking. Neem bijvoorbeeld een abonnement op een centrale bewakings oplossing (zoals Azure Security Center of oplossing voor bewaking van Office 365) en configureer deze zo dat de beveiligings gebeurtenissen worden verzonden naar de bewakings oplossing.
 
 > [!IMPORTANT]
-> Standaard wordt de OPC Vault-service geïmplementeerd met [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) als bewakingsoplossing. Het toevoegen van een beveiligingsoplossing zoals [Azure Security Center](https://azure.microsoft.com/services/security-center/) is een aanrader.
+> Standaard wordt de OPC-kluis service geïmplementeerd met [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) als een bewakings oplossing. Het is raadzaam om een beveiligings oplossing toe te voegen, zoals [Azure Security Center](https://azure.microsoft.com/services/security-center/) .
 
-### <a name="assess-the-security-of-open-source-software-components"></a>De beveiliging van open-source softwarecomponenten beoordelen
+### <a name="assess-the-security-of-open-source-software-components"></a>De beveiliging van open-source software onderdelen evalueren
 
-Alle open-source componenten die binnen een product of dienst worden gebruikt, moeten vrij zijn van matige of grotere beveiligingsproblemen.
+Alle open source-onderdelen die in een product of service worden gebruikt, mogen geen beveiligings problemen met een gemiddelde of een grotere beveiliging hebben.
 
 > [!IMPORTANT]
-> Tijdens continue integratiebuilds scant de GitHub-repository van de OPC Vault-service alle componenten op kwetsbaarheden. Controleer deze updates op GitHub en pas ze regelmatig toe op de service.
+> Tijdens doorlopende integratie versies scant de GitHub-opslag plaats van de OPC-kluis service alle onderdelen op beveiligings problemen. Controleer deze updates op GitHub en pas ze met regel matige tussen pozen toe op de service.
 
-### <a name="maintain-an-inventory"></a>Een voorraad bijhouden
+### <a name="maintain-an-inventory"></a>Een inventaris onderhouden
 
-Houd een assetinventory bij voor alle productiehosts (inclusief permanente virtuele machines), apparaten, alle interne IP-adresbereiken, VIP's en openbare DNS-domeinnamen. Wanneer u een systeem, ip-adres, VIP- of openbaar DNS-domein toevoegt of verwijdert, moet u de voorraad binnen 30 dagen bijwerken.
+Onderhoud van een activa-inventaris voor alle productie-hosts (inclusief permanente virtuele machines), apparaten, alle interne IP-adresbereiken, Vip's en open bare DNS-domein namen. Telkens wanneer u een systeem, IP-adres van apparaat, VIP of openbaar DNS-domein toevoegt of verwijdert, moet u de inventaris binnen 30 dagen bijwerken.
 
-#### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Voorraad van de standaard azure OPC Vault-implementatie van microservice 
+#### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Inventarisatie van de standaard implementatie van Azure OPC kluis micro Services productie 
 
 In Azure:
-- **App-serviceplan**: App-serviceplan voor servicehosts. Standaard S1.
-- **App-service** voor microservice: de OPC Vault-servicehost.
-- **App-service** voor voorbeeldtoepassing: de opc-vault-voorbeeldtoepassinghost.
-- **Key Vault Standard:** Om geheimen en Azure Cosmos DB-sleutels voor de webservices op te slaan.
-- **Key Vault Premium:** Als u de CA-sleutels van de uitgever wilt hosten, voor ondertekeningsservice en voor kluisconfiguratie en -opslag van privésleutels van toepassingen.
-- **Azure Cosmos DB:** Database voor toepassings- en certificaataanvragen. 
-- **Application Insights**: (optioneel) Monitoring oplossing voor webservice en applicatie.
-- **Azure AD-toepassingsregistratie:** een registratie voor de voorbeeldtoepassing, de service en de randmodule.
+- **App service plan**: app service-plan voor service-hosts. Standaard S1.
+- **App service** voor micro service: de OPC kluis servicehost.
+- **App service** voor voorbeeld toepassing: de voor beeld-Toepassingshost van de OPC-kluis.
+- **Key Vault standaard**: voor het opslaan van geheimen en Azure Cosmos DB sleutels voor de webservices.
+- **Key Vault Premium**: voor het hosten van de CA-sleutels van de verlener, voor het ondertekenen van service en voor de kluis configuratie en opslag van persoonlijke sleutels van toepassingen.
+- **Azure Cosmos DB**: Data Base voor toepassings-en certificaat aanvragen. 
+- **Application Insights**: (optioneel) bewakings oplossing voor de webservice en toepassing.
+- **Registratie van Azure AD-toepassing**: een registratie voor de voorbeeld toepassing, de service en de Edge-module.
 
-Voor de cloudservices moeten alle hostnamen, resourcegroepen, resourcenamen, abonnements-id's en tenant-id's die worden gebruikt om de service te implementeren, worden gedocumenteerd. 
+Voor de Cloud Services moeten alle hostnamen, resource groepen, resource namen, abonnements-Id's en Tenant-Id's die worden gebruikt voor het implementeren van de service worden gedocumenteerd. 
 
-In Azure IoT Edge of een lokale IoT Edge-server:
-- **OPC Vault IoT Edge-module:** ondersteuning bieden voor een fabrieksnetwerk OPC UA Global Discovery Server. 
+In Azure IoT Edge of een lokale IoT Edge Server:
+- **OPC-kluis IOT Edge module**: ter ondersteuning van een Factory Network OPC UA Global Discovery-server. 
 
 Voor de IoT Edge-apparaten moeten de hostnamen en IP-adressen worden gedocumenteerd. 
 
-### <a name="document-the-certification-authorities-cas"></a>Documenteer de certificeringsinstanties (CV's)
+### <a name="document-the-certification-authorities-cas"></a>De certificerings instanties (Ca's) documenteren
 
-De CA-hiërarchiedocumentatie moet alle uitgevoerde CA's bevatten. Dit omvat alle gerelateerde ondergeschikte CA's, bovenliggende CA's en root-CA's, zelfs als ze niet door de service worden beheerd. In plaats van formele documentatie u een uitgebreide set van alle niet-verlopen CA-certificaten verstrekken.
-
-> [!NOTE]
-> De OPC Vault-voorbeeldtoepassing ondersteunt het downloaden van alle certificaten die in de service worden gebruikt en geproduceerd voor documentatie.
-
-### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>Documenteer de afgegeven certificaten door alle certificeringsinstanties (CA's)
-
-Geef een uitputtende set van alle certificaten die in de afgelopen 12 maanden zijn uitgegeven.
+De documentatie van de CA-hiërarchie moet alle geëxploiteerde certificerings instanties bevatten. Dit omvat alle verwante onderliggende Ca's, bovenliggende Ca's en basis certificerings instanties, zelfs wanneer deze niet door de service worden beheerd. In plaats van formele documentatie kunt u een volledige set van alle niet-verlopen CA-certificaten opgeven.
 
 > [!NOTE]
-> De OPC Vault-voorbeeldtoepassing ondersteunt het downloaden van alle certificaten die in de service worden gebruikt en geproduceerd voor documentatie.
+> De OPC-kluis voorbeeld toepassing ondersteunt het downloaden van alle certificaten die in de service voor documentatie worden gebruikt en gemaakt.
 
-### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>De standaardprocedure documenteren voor het veilig verwijderen van cryptografische sleutels
+### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>De verleende certificaten documenteren door alle certificerings instanties (Ca's)
 
-Tijdens de levensduur van een CA kan het verwijderen van sleutels slechts zelden plaatsvinden. Dit is de reden waarom geen enkele gebruiker het rechter-verwijderen van Key Vault Certificate Delete heeft toegewezen en waarom er geen API's zijn blootgesteld om een CA-certificaat van een uitgever te verwijderen. De handmatige standaardprocedure voor het veilig verwijderen van cryptografische sleutels van certificeringsinstanties is alleen beschikbaar door rechtstreeks toegang te krijgen tot Key Vault in de Azure-portal. U de certificaatgroep ook verwijderen in Key Vault. Schakel de functionaliteit [voor soft delete van Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) uit om ervoor te zorgen dat u onmiddellijk wordt verwijderd.
+Geef een volledig aantal certificaten op dat in de afgelopen twaalf maanden is uitgegeven.
+
+> [!NOTE]
+> De OPC-kluis voorbeeld toepassing ondersteunt het downloaden van alle certificaten die in de service voor documentatie worden gebruikt en gemaakt.
+
+### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>De standaard-werk procedure voor het veilig verwijderen van cryptografische sleutels documenteren
+
+Tijdens de levens duur van een CA kan de sleutel niet meer worden verwijderd. Daarom heeft geen enkele gebruiker Key Vault certificaat verwijderen recht toegewezen en waarom er geen Api's beschikbaar zijn voor het verwijderen van een certificaat van een certificerings instantie. De hand matige standaard werk wijze voor het veilig verwijderen van cryptografische sleutels van certificerings instanties is alleen beschikbaar door rechtstreeks toegang te krijgen tot Key Vault in de Azure Portal. U kunt ook de certificaat groep in Key Vault verwijderen. Schakel de [Key Vault Soft](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) -functie voor verwijderen uit om ervoor te zorgen dat deze direct wordt verwijderd.
 
 ## <a name="certificates"></a>Certificaten
 
-### <a name="certificates-must-comply-with-minimum-certificate-profile"></a>Certificaten moeten voldoen aan minimaal certificaatprofiel
+### <a name="certificates-must-comply-with-minimum-certificate-profile"></a>Certificaten moeten voldoen aan het minimum certificaat profiel
 
-De OPC Vault-service is een online CA die eindentiteitcertificaten uitgeeft aan abonnees. De OPC Vault-microservice volgt deze richtlijnen in de standaardimplementatie.
+De OPC-kluis service is een online certificerings instantie die eind entity certificaten verleent aan abonnees. De OPC-kluis micro service volgt deze richt lijnen in de standaard implementatie.
 
-- Alle certificaten moeten de volgende X.509-velden bevatten, zoals hieronder wordt aangegeven:
-  - De inhoud van het veld versie moet v3 zijn. 
-  - De inhoud van het elserienummerveld moet ten minste 8 bytes entropie bevatten die is verkregen uit een FIPS (Federal Information Processing Standards) 140 goedgekeurde random number generator.<br>
+- Alle certificaten moeten de volgende X. 509-velden bevatten, zoals hieronder is aangegeven:
+  - De inhoud van het versie veld moet v3 zijn. 
+  - De inhoud van het veld serialNumber moet ten minste 8 bytes van de entropie bevatten die is verkregen van een FIPS (Federal Information Processing Standards) 140 goedgekeurde wille keurige code ring.<br>
     > [!IMPORTANT]
-    > Het OPC Vault serienummer is standaard 20 bytes, en wordt verkregen uit het besturingssysteem cryptografische random number generator. De random number generator is FIPS 140 goedgekeurd op Windows-apparaten, maar niet op Linux. Houd hier rekening mee bij het kiezen van een service-implementatie die gebruik maakt van Linux VM's of Linux dockercontainers, waarop de onderliggende technologie OpenSSL niet FIPS 140 is goedgekeurd.
-  - De velden UniqueID en subjectUniqueID mogen niet aanwezig zijn.
-  - Eindentiteitcertificaten moeten worden geïdentificeerd met de basisbeperkingenextensie, overeenkomstig IETF RFC 5280.
-  - Het veld pathLenConstraint moet zijn ingesteld op 0 voor het CA-certificaat van uitgifte. 
-  - De extensie Uitgebreid sleutelgebruik moet aanwezig zijn en moet de minimale set object-id's (Extended Key Usage) bevatten. De anyExtendedKeyUsage OID (2.5.29.37.0) mag niet worden opgegeven. 
-  - De CRL Distribution Point (CDP)-extensie moet aanwezig zijn in het ISSUER CA-certificaat.<br>
+    > Het OPC-kluis serie nummer is standaard 20 bytes en wordt opgehaald uit het besturings systeem cryptografische wille keurig aantal generator. De generator voor wille keurige getallen is FIPS 140 goedgekeurd op Windows-apparaten, maar niet in Linux. Houd rekening met het volgende wanneer u een service-implementatie kiest die gebruikmaakt van Linux Vm's of Linux docker-containers, waarbij de onderliggende technologie OpenSSL niet is goedgekeurd voor FIPS 140.
+  - De velden issuerUniqueID en subjectUniqueID mogen niet aanwezig zijn.
+  - Certificaten van eind entiteiten moeten worden aangeduid met de extensie basis beperkingen, in overeenstemming met IETF RFC 5280.
+  - Het veld pathLenConstraint moet worden ingesteld op 0 voor het certificaat van de verlenende CA. 
+  - De uitbrei ding voor uitgebreide-sleutel gebruik moet aanwezig zijn en moet de minimale set met object-id's (Oid's) voor uitgebreide-sleutel gebruik bevatten. De OID van de anyExtendedKeyUsage (2.5.29.37.0) moet niet worden opgegeven. 
+  - De CRL-distributie punt (CDP) uitbrei ding moet aanwezig zijn in het CA-certificaat van de certificaat verlener.<br>
     > [!IMPORTANT]
-    > De CDP-extensie is aanwezig in OPC Vault CA-certificaten. Niettemin gebruiken OPC UA-apparaten aangepaste methoden om CRL's te distribueren.
-  - De extensie Toegang tot autoriteitinformatie moet aanwezig zijn in de abonneecertificaten.<br>
+    > De CDP-uitbrei ding is aanwezig in OPC-kluis CA-certificaten. OPC UA-apparaten gebruiken echter aangepaste methoden voor het distribueren van Crl's.
+  - De extensie voor toegang tot CA-gegevens moet aanwezig zijn in de abonnee certificaten.<br>
     > [!IMPORTANT]
-    > De extensie Toegang voor autoriteitinformatie is aanwezig in opc vault-abonneecertificaten. Niettemin gebruiken OPC UA-apparaten aangepaste methoden om emittent CA-informatie te distribueren.
-- Goedgekeurde asymmetrische algoritmen, sleutellengtes, hashfuncties en opvulmodi moeten worden gebruikt.
-  - RSA en SHA-2 zijn de enige ondersteunde algoritmen.
-  - RSA kan worden gebruikt voor versleuteling, sleuteluitwisseling en handtekening.
-  - RSA-versleuteling mag alleen de opvullingsmodi OAEP, RSA-KEM of RSA-PSS gebruiken.
-  - Sleutellengtes groter dan of gelijk aan 2048 bits zijn vereist.
-  - Gebruik de SHA-2-familie van hash-algoritmen (SHA256, SHA384 en SHA512).
-  - RSA Root CA-toetsen met een typische levensduur van meer dan of gelijk aan 20 jaar moeten 4096 bits of meer zijn.
-  - DE RSA Issuer CA-sleutels moeten ten minste 2048 bits zijn. Als de vervaldatum van het CA-certificaat na 2030 is, moet de CA-toets 4096 bits of meer zijn.
-- Levensduur van certificaat
-  - Root CA-certificaten: De maximale certificaatgeldigheidsperiode voor root-CA's mag niet langer zijn dan 25 jaar.
-  - Sub CA- of online Issuer CA-certificaten: de maximale certificaatgeldigheidsperiode voor CA's die online zijn en alleen abonneecertificaten uitgeven, mag niet langer zijn dan 6 jaar. Voor deze CA's mag de bijbehorende private signature-sleutel niet langer dan 3 jaar worden gebruikt om nieuwe certificaten af te geven.<br>
+    > De extensie voor toegang tot CA-gegevens is aanwezig in OPC kluis abonnee certificaten. De OPC UA-apparaten gebruiken echter aangepaste methoden voor het distribueren van CA-gegevens van de uitgever.
+- Goedgekeurde asymmetrische algoritmen, sleutel lengten, hash-functies en opvullings modi moeten worden gebruikt.
+  - RSA en SHA-2 zijn de enige algoritmen die worden ondersteund.
+  - RSA kan worden gebruikt voor versleuteling, sleutel uitwisseling en hand tekening.
+  - RSA-versleuteling moet alleen de opvullings modi OAEP, RSA-KEM of RSA-PSS gebruiken.
+  - Sleutel lengten die groter zijn dan of gelijk zijn aan 2048 bits zijn vereist.
+  - Gebruik de SHA-2-familie van hash-algoritmen (SHA256, SHA384 en SHA512 gebruikt).
+  - RSA-basis-CA-sleutels met een typische levens duur die groter is dan of gelijk is aan 20 jaar, moeten 4096 bits of meer zijn.
+  - CA-sleutels voor RSA-verlener moeten ten minste 2048 bits zijn. Als de verval datum van het CA-certificaat na 2030 is, moet de CA-sleutel 4096 bits of hoger zijn.
+- Levens duur van certificaat
+  - Basis-CA-certificaten: de maximale geldigheids periode van het certificaat voor basis-Ca's mag niet langer zijn dan 25 jaar.
+  - CA-certificaten voor subcertificerings instanties of online uitgevers: de maximale geldigheids periode van het certificaat voor Ca's die online zijn en alleen abonnee certificaten verlenen, mag niet langer zijn dan 6 jaar. Voor deze Ca's mag de gerelateerde persoonlijke handtekening sleutel niet langer dan drie jaar worden gebruikt voor het uitgeven van nieuwe certificaten.<br>
     > [!IMPORTANT]
-    > Het Issuer-certificaat, omdat het wordt gegenereerd in de standaard OPC Vault-microservice zonder externe Root CA, wordt behandeld als een online sub-CA, met respectievelijk vereisten en levensduur. De standaardlevensduur is ingesteld op 5 jaar, met een sleutellengte die groter is dan of gelijk is aan 2048.
-  - Alle asymmetrische toetsen moeten een maximale levensduur van 5 jaar hebben en een aanbevolen levensduur van 1 jaar.<br>
+    > Het certificaat van de certificerings instantie, zoals het wordt gegenereerd in de standaard OPC-kluis micro service zonder externe basis certificerings instantie, wordt beschouwd als een online subca, met de betreffende vereisten en levens duur. De standaard levensduur wordt ingesteld op 5 jaar, met een sleutel lengte die groter is dan of gelijk is aan 2048.
+  - Alle asymmetrische sleutels moeten een maximale levens duur van vijf jaar hebben en een aanbevolen levens duur van 1 jaar.<br>
     > [!IMPORTANT]
-    > Standaard hebben de looptijden van toepassingscertificaten die zijn uitgegeven met OPC Vault een levensduur van 2 jaar en moeten ze elk jaar worden vervangen. 
+    > De levens duur van toepassings certificaten die worden uitgegeven met de OPC-kluis hebben standaard een levens duur van 2 jaar en moeten elk jaar worden vervangen. 
   - Wanneer een certificaat wordt vernieuwd, wordt het vernieuwd met een nieuwe sleutel.
-- OPC UA-specifieke extensies in toepassingsinstantiecertificaten
-  - De onderwerpAltName-extensie bevat de toepassing Uri en hostnames. Deze kunnen ook FQDN-, IPv4- en IPv6-adressen bevatten.
-  - De keyUsage omvat digitalSignature, nonRepudiation, keyEncipherment, and dataEncipherment.
-  - De extendedKeyUsage bevat serverAuth en clientAuth.
-  - De autoriteitKeyIdentifier is opgegeven in ondertekende certificaten.
+- OPC UA-specifieke uitbrei dingen in toepassings exemplaar certificaten
+  - De subjectAltName-extensie bevat de toepassings-URI en hostnamen. Deze kunnen ook FQDN-, IPv4-en IPv6-adressen bevatten.
+  - Het gebruik van de digitalSignature, afwijzing, keyEncipherment en dataEncipherment.
+  - De extendedKeyUsage omvat serverAuth en clientAuth.
+  - De authorityKeyIdentifier wordt opgegeven in ondertekende certificaten.
 
-### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>CA-sleutels en certificaten moeten voldoen aan minimumvereisten
+### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>CA-sleutels en certificaten moeten voldoen aan de minimum vereisten
 
-- **Privésleutels**: RSA-toetsen moeten ten minste 2048 bits zijn. Als de vervaldatum van het CA-certificaat na 2030 is, moet de CA-toets 4096 bits of meer zijn.
-- **Looptijd**: De maximale geldigheidsduur van het certificaat voor A's die online zijn en alleen abonneecertificaten uitgeven, mag niet langer zijn dan 6 jaar. Voor deze CA's mag de bijbehorende private signature-sleutel niet langer dan 3 jaar worden gebruikt om nieuwe certificaten af te geven.
+- **Persoonlijke sleutels**: RSA-sleutels moeten ten minste 2048 bits zijn. Als de verval datum van het CA-certificaat na 2030 is, moet de CA-sleutel 4096 bits of hoger zijn.
+- **Levens duur**: de maximale geldigheids periode van het certificaat voor ca's die online zijn en alleen abonnee certificaten mogen niet langer zijn dan 6 jaar. Voor deze Ca's mag de gerelateerde persoonlijke handtekening sleutel niet langer dan drie jaar worden gebruikt voor het uitgeven van nieuwe certificaten.
 
-### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>CA-sleutels zijn beveiligd met hardwarebeveiligingsmodules
+### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>CA-sleutels worden beveiligd met behulp van hardware security modules
 
-OpcVault maakt gebruik van Azure Key Vault Premium en sleutels worden beschermd door FIPS 140-2 Level 2 Hardware Security Modules (HSM). 
+OpcVault maakt gebruik van Azure Key Vault Premium en sleutels worden beveiligd door de HSM (Hardware Security modules) van FIPS 140-2 level 2. 
 
-De cryptografische modules die Key Vault gebruikt, of het nu HSM of software is, zijn FIPS gevalideerd. Sleutels die zijn gemaakt of geïmporteerd als HSM-beveiligd, worden verwerkt in een HSM, gevalideerd naar FIPS 140-2 Level 2. Sleutels die zijn gemaakt of geïmporteerd als softwarebeveiligd, worden verwerkt in cryptografische modules die zijn gevalideerd naar FIPS 140-2 Niveau 1.
+De cryptografische modules die Key Vault gebruikt, of HSM of software, FIPS-gevalideerd zijn. Sleutels die zijn gemaakt of geïmporteerd als met HSM beveiligd, worden verwerkt in een HSM, gevalideerd op FIPS 140-2 level 2. Sleutels die zijn gemaakt of geïmporteerd als software-beveiligd, worden verwerkt in cryptografische modules die zijn gevalideerd voor FIPS 140-2 level 1.
 
-## <a name="operational-practices"></a>Operationele praktijken
+## <a name="operational-practices"></a>Operationele procedures
 
-### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-enrollment"></a>Standaard operationele PKI-praktijken documenteren en onderhouden voor certificaatinschrijving
+### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-enrollment"></a>Standaard operationele PKI-procedures voor certificaat inschrijving documenteren en onderhouden
 
-Documenteer en onderhoud standaard operationele procedures (SOP's) voor de manier waarop DE's certificaten afgeven, waaronder: 
+Standaardwerk procedures (Vereisteverklaringen) documenteren en onderhouden voor de manier waarop CAs certificaten uitgeeft, waaronder: 
 - Hoe de abonnee wordt geïdentificeerd en geverifieerd. 
-- Hoe de certificaataanvraag wordt verwerkt en gevalideerd (indien van toepassing, ook hoe certificaatverlengingen en hersleutelaanvragen worden verwerkt). 
-- Hoe uitgegeven certificaten worden uitgedeeld aan de abonnees. 
+- Hoe de certificaat aanvraag wordt verwerkt en gevalideerd (indien van toepassing, moet u ook zien hoe certificaat vernieuwing en aanvragen voor opnieuw genereren worden verwerkt). 
+- Hoe verleende certificaten worden gedistribueerd naar de abonnees. 
 
-De OPC Vault microservice SOP wordt beschreven in [de OPC Vault-architectuur](overview-opc-vault-architecture.md) en [Beheer de OPC Vault-certificaatservice.](howto-opc-vault-manage.md) De praktijken volgen "OPC Unified Architecture Specification Part 12: Discovery and Global Services."
+De OPC kluis micro service VKA wordt beschreven in [OPC-kluis architectuur](overview-opc-vault-architecture.md) en [beheert de OPC-kluis certificaat service](howto-opc-vault-manage.md). De procedures volgen ' OPC Unified architecture specification part ' 12: Discovery and Global Services. '
 
 
-### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Standaard operationele PKI-praktijken voor certificaatintrekking documenteren en onderhouden
+### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Standaard operationele PKI-procedures voor het intrekken van certificaten documenteren en onderhouden
 
-Het certificaatintrekkingsproces wordt beschreven in [de OPC Vault-architectuur](overview-opc-vault-architecture.md) en [Beheer de OPC Vault-certificaatservice.](howto-opc-vault-manage.md)
+Het intrekkings proces van het certificaat wordt beschreven in [OPC-kluis architectuur](overview-opc-vault-architecture.md) en [beheert de OPC-kluis certificaat service](howto-opc-vault-manage.md).
     
-### <a name="document-ca-key-generation-ceremony"></a>Document CA-sleutelgeneratieceremonie 
+### <a name="document-ca-key-generation-ceremony"></a>Ceremonie van CA-sleutel generatie documenteren 
 
-De issuer CA-sleutelgeneratie in de OPC Vault-microservice is vereenvoudigd vanwege de beveiligde opslag in Azure Key Vault. Zie [De OPC Vault-certificaatservice beheren](howto-opc-vault-manage.md)voor meer informatie.
+De CA-sleutel van de certificaat verlener in de OPC-kluis micro service is vereenvoudigd, vanwege de beveiligde opslag in Azure Key Vault. Zie [de OPC-kluis certificaat service beheren](howto-opc-vault-manage.md)voor meer informatie.
 
-Wanneer u echter een externe rootcertificeringsinstantie gebruikt, moet een CA-sleutelgeneratieceremonie voldoen aan de volgende vereisten.
+Wanneer u echter een externe basis certificerings instantie gebruikt, moet een generatie van de CA-sleutel voldoen aan de volgende vereisten.
 
-De CA-sleutelgeneratieceremonie moet worden uitgevoerd tegen een gedocumenteerd script dat ten minste de volgende items bevat: 
-- Definitie van rollen en deelnemersverantwoordelijkheden.
-- Goedkeuring voor het uitvoeren van de CA-sleutelgeneratieceremonie.
-- Cryptografische hardware en activeringsmaterialen die nodig zijn voor de ceremonie.
-- Hardwarevoorbereiding (inclusief het bijwerken en afmelden van asset/configuratie-informatie).
-- Installatie van het besturingssysteem.
-- Specifieke stappen uitgevoerd tijdens de CA-sleutelgeneratieceremonie, zoals: 
-  - INSTALLATIE en configuratie van CA-toepassingen.
-  - CA-sleutelgeneratie.
-  - CA-sleutelback-up.
-  - CA-certificaatondertekening.
-  - Importeren van ondertekende sleutels in de beveiligde HSM van de service.
-  - CA-systeem afsluiten.
-  - Bereiding van materialen voor opslag.
+Het genereren van de CA-sleutel moet worden uitgevoerd op basis van een gedocumenteerde script dat ten minste de volgende items bevat: 
+- Definitie van rollen en verantwoordelijkheden van deel nemers.
+- Goed keuring voor het genereren van de CA-sleutel generatie.
+- Cryptografische hardware en activerings materialen die vereist zijn voor de ceremonie.
+- Hardware-voor bereiding (inclusief Asset-en configuratie-informatie bijwerken en afmelden).
+- Installatie van het besturings systeem.
+- Specifieke stappen die worden uitgevoerd tijdens het genereren van de CA-sleutel, zoals: 
+  - Installatie en configuratie van de CA-toepassing.
+  - CA-sleutel genereren.
+  - CA-sleutel back-up.
+  - CA-certificaat ondertekening.
+  - Het importeren van ondertekende sleutels in de beveiligde HSM van de service.
+  - Het CA-systeem wordt afgesloten.
+  - Voor bereiding van materialen voor opslag.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u OPC Vault veilig beheren, u:
+Nu u hebt geleerd hoe u veilig OPC-kluis beheert, kunt u het volgende doen:
 
 > [!div class="nextstepaction"]
-> [Beveilig OPC UA-apparaten met OPC Vault](howto-opc-vault-secure.md)
+> [Veilige OPC UA-apparaten met OPC-kluis](howto-opc-vault-secure.md)

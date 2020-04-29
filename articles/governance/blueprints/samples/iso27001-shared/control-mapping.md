@@ -4,10 +4,10 @@ description: De toewijzing van het voor beeld van de ISO 27001-gedeelde services
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922523"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Beheer toewijzing van het voor beeld van de ISO 27001-gedeelde services blauw druk

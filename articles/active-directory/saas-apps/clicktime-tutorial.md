@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met ClickTime | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met ClickTime | Microsoft Docs'
 description: Lees hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ClickTime.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73157404"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelfstudie: Azure Active Directory-integratie met ClickTime
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelf studie: integratie Azure Active Directory met ClickTime
 
 In deze zelfstudie leert u hoe u ClickTime kunt integreren met Microsoft Azure Active Directory (Azure AD).
 Het integreren van ClickTime met Azure Active Directory biedt u de volgende voordelen:
@@ -33,7 +33,7 @@ Het integreren van ClickTime met Azure Active Directory biedt u de volgende voor
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -106,7 +106,7 @@ Om eenmalige aanmelding van Azure Active Directory met ClickTime te configureren
 
     ![Informatie over ClickTime-domein en -URL’s voor eenmalige aanmelding](common/idp-intiated.png)
 
-    a. Typ een URL in het tekstvak **Id:**`https://app.clicktime.com/sp/`
+    a. Typ een URL in het tekstvak **id** :`https://app.clicktime.com/sp/`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
     
@@ -155,7 +155,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -165,12 +165,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -192,9 +192,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -212,7 +212,7 @@ In het geval van ClickTime is inrichten een handmatige taak.
 
 1. Klik in de werkbalk bovenaan op **Company** en klik vervolgens op **People**.
    
-    ![Mensen](./media/clicktime-tutorial/tic777282.png "People")
+    ![People](./media/clicktime-tutorial/tic777282.png "People")
 
 1. Klik op **Add Person**.
    
@@ -220,11 +220,11 @@ In het geval van ClickTime is inrichten een handmatige taak.
 
 1. Voer in de sectie New Person de volgende stappen uit:
    
-    ![Mensen](./media/clicktime-tutorial/tic777284.png "People")
+    ![People](./media/clicktime-tutorial/tic777284.png "People")
    
     a.  Typ in het tekstvak **full name** de volledige naam van de gebruiker, zoals **Britta Simon**. 
   
-    b.  Typ in het **tekstvak e-mailadres** de e-mail van de gebruiker, zoals **brittasimon\@contoso.com**.
+    b.  Typ in het tekstvak **e-mail adres** het e-mail bericht van de gebruiker, zoals **\@brittasimon contoso.com**.
        
     > [!NOTE]
     > U kunt desgewenst extra eigenschappen voor het nieuwe persoonsobject instellen.
@@ -241,7 +241,7 @@ Wanneer u in het toegangsvenster op de tegel ClickTime klikt, wordt u automatisc
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

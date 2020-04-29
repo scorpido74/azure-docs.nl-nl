@@ -1,5 +1,5 @@
 ---
-title: Revisies gebruiken om niet-brekende wijzigingen veilig aan te brengen in API-beheer
+title: Revisies gebruiken om vaste wijzigingen veilig te maken in API Management
 titleSuffix: Azure API Management
 description: Volg de stappen van deze zelfstudie voor meer informatie over hoe u vaste wijzigingen aanbrengt met revisies in API Management.
 services: api-management
@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75442751"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Revisies gebruiken om vaste wijzigingen veilig in Azure API Management aan te brengen
@@ -53,7 +53,7 @@ In deze zelfstudie leert u het volgende:
     > U kunt ook **Revisie toevoegen** kiezen uit het contextmenu (**... **) van de API.
 
 5. Geef een beschrijving voor de nieuwe revisie, om te onthouden waar deze voor wordt gebruikt.
-6. Selecteer **Maken**
+6. Selecteer **maken**
 7. Uw nieuwe revisie wordt nu gemaakt.
 
     > [!NOTE]
@@ -84,21 +84,21 @@ In deze zelfstudie leert u het volgende:
 
 2. Open het contextmenu (**... **) voor **Revisie 2**.
 3. Selecteer **Instellen als huidige**.
-4. Controleer **Op het openbare wijzigingenlogboek voor deze API plaatsen**, als u opmerkingen over deze wijziging wilt plaatsen. Geef een beschrijving voor uw wijziging die ontwikkelaars zien, bijvoorbeeld: **Revisies testen. Nieuwe "test" bewerking toegevoegd.**
+4. Controleer **Op het openbare wijzigingenlogboek voor deze API plaatsen**, als u opmerkingen over deze wijziging wilt plaatsen. Geef een beschrijving op voor de wijziging die ontwikkel aars kunnen zien, bijvoorbeeld: **revisies testen. Nieuwe test bewerking toegevoegd.**
 5. **Revisie 2** is nu actueel.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Door de portal voor ontwikkelaars browsen om de wijzigingen en het logboek in te zien
 
-1. Selecteer **API's**in de Azure-portal .
+1. Selecteer in de Azure Portal **api's**.
 2. Selecteer **ontwikkelaarsportal** in het menu bovenaan.
 3. Selecteer **API's** en selecteer vervolgens **Demo Conference API**.
 4. U ziet dat uw nieuwe **test**bewerking nu beschikbaar is.
-5. Klik op **Changelog** in de buurt van de API-naam.
+5. Klik op **wijzigingen logboek** in de buurt van de API-naam.
 6. U ziet dat de vermelding van het wijzigingslogboek in deze lijst wordt weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een nieuwe revisie toevoegen

@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie`:` Gebruik een beheerde identiteit om toegang te krijgen tot Azure Data Lake Store - Windows - Azure AD
+title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure data Lake Store-Windows-Azure AD
 description: Een zelfstudie die laat zien hoe u toegang krijgt tot Azure Data Lake Storage met een door het Windows-VM-systeem toegewezen beheerde identiteit.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75977885"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store
@@ -54,7 +54,7 @@ Maak een nieuwe map in uw Data Lake Storage, en verleen de door het systeem toeg
 2. Klik op de Data Lake Storage die u wilt gebruiken voor deze zelfstudie.
 3. Klik op **Data Explorer** in de opdrachtbalk.
 4. De hoofdmap van de Data Lake Storage is geselecteerd.  Klik op **Toegang** in de opdrachtbalk.
-5. Klik op**toevoegen**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
+5. Klik op **Add**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
 6. Klik op **Machtigingen selecteren**.  Selecteer **Lezen** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Alleen een toegangsmachtiging**.  Klik op **Ok**.  De machtiging wordt toegevoegd.
 7. Sluit de blade **Toegang**.
 8. Voor deze zelfstudie maakt u een nieuwe map.  Klik op **Nieuwe map** in de opdrachtbalk en geef een naam voor de nieuwe map op, bijvoorbeeld **TestFolder**.  Klik op **Ok**.
@@ -76,7 +76,7 @@ In deze zelfstudie gebruikt u PowerShell voor het maken van REST-aanvragen om te
 1. Navigeer in Azure Portal naar **Virtuele machines**, ga naar uw virtuele Windows-machine, en klik op de pagina **Overzicht** op **Verbinden**.
 2. Voer uw referenties (**gebruikersnaam** en **wachtwoord**) in die u hebt toegevoegd bij het maken van de virtuele Windows-machine. 
 3. Nu u een **Verbinding met extern bureaublad** met de virtuele machine hebt gemaakt, opent u **PowerShell** in de externe sessie. 
-4. Gebruik de cmdlet `Invoke-WebRequest` van Powershell om een aanvraag te versturen naar de lokale beheerde identiteiten om een toegangstoken voor Azure Data Lake Store op te halen voor het Azure-resources-eindpunt.  De resource-id voor `https://datalake.azure.net/`Data Lake Store is .  Voor Data Lake moet u een exact overeenkomende resource-id opgeven, met de schuine streep op het einde.
+4. Gebruik de cmdlet `Invoke-WebRequest` van Powershell om een aanvraag te versturen naar de lokale beheerde identiteiten om een toegangstoken voor Azure Data Lake Store op te halen voor het Azure-resources-eindpunt.  De resource-id voor Data Lake Store `https://datalake.azure.net/`is.  Voor Data Lake moet u een exact overeenkomende resource-id opgeven, met de schuine streep op het einde.
 
    ```powershell
    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}

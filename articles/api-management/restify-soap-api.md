@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74108097"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Een SOAP-API importeren en deze converteren naar REST
@@ -32,7 +32,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
+Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -61,7 +61,7 @@ De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-star
     * **Onbeperkt**   
 10. Selecteer **Maken**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 

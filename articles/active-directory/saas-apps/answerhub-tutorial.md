@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met AnswerHub | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met AnswerHub | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en AnswerHub.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73152987"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Zelfstudie: Azure Active Directory-integratie met AnswerHub
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Zelf studie: integratie Azure Active Directory met AnswerHub
 
 In deze zelfstudie leert u hoe u AnswerHub kunt integreren met Azure Active Directory (Azure AD).
 Als u AnswerHub integreert met Azure AD biedt dit de volgende voordelen:
@@ -33,7 +33,7 @@ Als u AnswerHub integreert met Azure AD biedt dit de volgende voordelen:
 * U kunt uw accounts beheren vanaf een centrale locatie: de Azure-portal.
 
 Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -98,7 +98,7 @@ In deze sectie gaat u eenmalige aanmelding voor Azure AD in de Azure-portal inst
 
     ![Dialoogvenster voor het selecteren van een methode voor eenmalige aanmelding](common/select-saml-option.png)
 
-3. Selecteer op de pagina **Eén aanmelding instellen met SAML** het bewerkingspictogram om het dialoogvenster **BasisSAML-configuratie** te openen.
+3. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** het bewerkings pictogram om het dialoog venster **eenvoudige SAML-configuratie** te openen.
 
     ![Pagina Eenmalige aanmelding instellen met SAML](common/edit-urls.png)
 
@@ -145,7 +145,7 @@ In deze sectie stelt u eenmalige aanmelding voor AnswerHub in.
 
 4. Voltooi op het tabblad **IDP Config** de volgende stappen:
 
-    ![Tabblad Gebruikers & groepen](./media/answerhub-tutorial/ic785172.png "SAML-installatie")  
+    ![Tabblad & groepen van gebruikers](./media/answerhub-tutorial/ic785172.png "SAML-installatie")  
   
     a. Plak in het vak **IDP Login URL** de **aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
   
@@ -157,7 +157,7 @@ In deze sectie stelt u eenmalige aanmelding voor AnswerHub in.
 
 5. Voltooi in de sectie **Keys and Certificates** de volgende stappen:
 
-    ![Sectie Sleutels en certificaten](./media/answerhub-tutorial/ic785173.png "Sleutels en certificaten")  
+    ![De sectie sleutels en certificaten](./media/answerhub-tutorial/ic785173.png "Sleutels en certificaten")  
 
     a. Open in Kladblok het met Base64 gecodeerde certificaat dat u in de Azure-portal hebt gedownload, kopieer de inhoud en plak deze in het vak **IDP Public Key (x509 Format)**.
   
@@ -175,7 +175,7 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     ![Azure Active Directory, Gebruikers, Alle gebruikers selecteren](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![De knop Nieuwe gebruiker](common/new-user.png)
 
@@ -185,16 +185,16 @@ In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azu
 
     a. Voer in het vak **Naam****Britta Simon**in.
   
-    b. Voer **in** het vak Gebruikersnaam **brittasimon\@<yourcompanydomain.extension in>**.  
+    b. Voer in het vak **gebruikers naam** **brittasimon\@<yourcompanydomain. extension in>**.  
     Bijvoorbeeld BrittaSimon@contoso.com.
 
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+    c. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
 
     d. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u de gebruiker Britta Simon in om Azure AD single sign-on te gebruiken door de gebruiker toegang te verlenen tot AnswerHub.
+In deze sectie stelt u de gebruiker Julia Simon in voor het gebruik van eenmalige aanmelding voor Azure AD door de gebruikers toegang te verlenen tot AnswerHub.
 
 **Azure AD-testgebruiker toewijzen:**
 
@@ -236,7 +236,7 @@ Als u wilt dat Azure AD-testgebruikers zich kunnen aanmelden bij AnswerHub, moet
 
 4. Ga naar het linkerdeelvenster en selecteer in de sectie **Manage Users** de optie **Create or import users** en selecteer vervolgens **Users & Groups**.
 
-   ![Tabblad Gebruikers & groepen](./media/answerhub-tutorial/ic785175.png "Gebruikers & groepen")
+   ![Tabblad & groepen van gebruikers](./media/answerhub-tutorial/ic785175.png "Gebruikers & groepen")
 
 5. Voer het e-mailadres, de gebruikersnaam en het wachtwoord van een geldig Azure AD-account dat u wilt toevoegen in de desbetreffende vakken **Email address**, **Username** en **Password** in en selecteer **Save**.
 
@@ -247,13 +247,13 @@ Als u wilt dat Azure AD-testgebruikers zich kunnen aanmelden bij AnswerHub, moet
 
 In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u de tegel AnswerHub in het toegangsvenster selecteert, wordt u automatisch aangemeld bij de instantie van AnswerHub waarvoor u eenmalige aanmelding hebt ingesteld. Zie Inleiding tot het toegangspaneel voor meer informatie over [het toegangspaneel.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Wanneer u de tegel AnswerHub in het toegangsvenster selecteert, wordt u automatisch aangemeld bij de instantie van AnswerHub waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel (Inleiding tot het toegangs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)venster) voor meer informatie over het toegangs venster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Zelfstudies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

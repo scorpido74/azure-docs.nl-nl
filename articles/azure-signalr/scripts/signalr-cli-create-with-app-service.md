@@ -1,6 +1,6 @@
 ---
-title: SignalR-service maken met App-service met Azure CLI
-description: Gebruik Azure CLI om SignalR-service te maken met App Service. Lees alle CLI-opdrachten voor Azure SignalR-service.
+title: De signaal service maken met App Service met behulp van Azure CLI
+description: Gebruik Azure CLI om de signaal service met App Service te maken. Meer informatie over de CLI-opdrachten voor de Azure signalerings service.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158019"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Een SignalR-service maken met App Service

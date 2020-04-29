@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Een app implementeren vanuit GitHub'
-description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u een app vanuit GitHub implementeert.
+title: 'CLI: een app implementeren vanuit GitHub'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u een app implementeert vanuit GitHub.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -10,10 +10,10 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 368a5d6810de5628ab98a7bef43cfceab750f95f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057846"
 ---
 # <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Een App Service-app maken met implementatie vanuit GitHub met behulp van Azure CLI

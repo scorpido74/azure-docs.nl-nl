@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: da46cf826da40658883d22692e5038b09d222907
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75974532"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Zelfstudie: Azure Firewall-logboeken en metrische gegevens bewaken
@@ -44,7 +44,7 @@ Voordat u met deze zelfstudie begint, leest u de [Azure Firewall-logboeken en me
 Nadat u deze procedure voor het inschakelen van diagnostische logboekregistratie hebt voltooid, kan het enkele minuten duren voordat de gegevens in uw logboeken verschijnen. Als u aanvankelijk niets ziet, controleert u het een paar minuten later opnieuw.
 
 1. Open in de Azure-portal uw firewall-resourcegroep en klik op de firewall.
-2. Klik **onder Controleren**op Diagnostische **instellingen**.
+2. Klik onder **bewaking**op **Diagnostische instellingen**.
 
    Voor Azure Firewall zijn er twee servicespecifieke logboeken beschikbaar:
 
@@ -101,7 +101,7 @@ U kunt activiteitenlogboekgegevens bekijken en analyseren via een van de volgend
 
 [Azure Monitor-logboeken](../azure-monitor/insights/azure-networking-analytics.md) verzamelt de teller- en gebeurtenislogboekbestanden. Het omvat visualisaties en krachtige zoekmogelijkheden om uw logboeken te analyseren.
 
-Zie Voorbeeldquery's voor voorbeeldquery's voor [azure](log-analytics-samples.md)firewall-logboekanalyse.
+Zie [Azure Firewall log Analytics](log-analytics-samples.md)-voor beelden voor Azure Firewall log Analytics-voorbeeld query's.
 
 U kunt ook verbinding maken met uw opslagaccount en de JSON-logboekitems voor toegangs- en prestatielogboeken ophalen. Nadat u de JSON-bestanden hebt gedownload, kunt u ze naar de CSV-indeling converteren en in Excel, Power BI of een ander hulpprogramma voor gegevensvisualisatie bekijken.
 

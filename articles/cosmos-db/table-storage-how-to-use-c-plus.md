@@ -1,5 +1,5 @@
 ---
-title: Azure Table Storage en Azure Cosmos DB Table API gebruiken met C++
+title: Azure Table Storage en Azure Cosmos DB Table-API gebruiken met C++
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: e6d61e329ba91f53b11ace4d258b35950e188dcb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771220"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure-tabelopslag en Azure Cosmos DB Table-API gebruiken met C++
@@ -20,13 +20,13 @@ ms.locfileid: "76771220"
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-In deze handleiding ziet u veelvoorkomende scenario's met behulp van de Azure Table-opslagservice of Azure Cosmos DB Table API. De voorbeelden zijn geschreven in C++ en maken gebruik van de [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). In dit artikel worden de volgende scenario's bezien:
+In deze hand leiding worden veelgebruikte scenario's weer gegeven met behulp van de Azure Table Storage-service of de Azure Cosmos DB Table-API. De voorbeelden zijn geschreven in C++ en maken gebruik van de [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). In dit artikel komen de volgende scenario's aan bod:
 
 * Een tabel maken en verwijderen
-* Werken met tabelentiteiten
+* Werken met tabel entiteiten
 
 > [!NOTE]
-> Deze handleiding is gericht op de Azure-opslagclientbibliotheek voor C++ versie 1.0.0 en hoger. De aanbevolen versie is Storage Client Library 2.2.0, die beschikbaar is met [NuGet](https://www.nuget.org/packages/wastorage) of [GitHub.](https://github.com/Azure/azure-storage-cpp/)
+> Deze handleiding is gericht op de Azure-opslagclientbibliotheek voor C++ versie 1.0.0 en hoger. De aanbevolen versie is de opslag-client bibliotheek 2.2.0, die beschikbaar is via [NuGet](https://www.nuget.org/packages/wastorage) of [github](https://github.com/Azure/azure-storage-cpp/).
 >
 
 ## <a name="create-accounts"></a>Accounts maken
@@ -45,71 +45,71 @@ In deze handleiding ziet u veelvoorkomende scenario's met behulp van de Azure Ta
 
 ## <a name="create-a-c-application"></a>Een C++-toepassing maken
 
-In deze handleiding gebruikt u opslagfuncties van een C++ toepassing. Installeer hiervoor de Azure Storage Client Library voor C++.
+In deze hand leiding gebruikt u opslag functies van een C++-toepassing. U doet dit door de Azure Storage-client bibliotheek voor C++ te installeren.
 
-Als u de Azure Storage Client Library voor C++ wilt installeren, gebruikt u de volgende methoden:
+Als u de Azure Storage-client bibliotheek voor C++ wilt installeren, gebruikt u de volgende methoden:
 
-* **Linux:** Volg de instructies in de [Azure Storage Client Library voor C++ README: Aan de slag op linux-pagina.](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)
-* **Windows:** Gebruik [vcpkg](https://github.com/microsoft/vcpkg) in Windows als afhankelijkheidsmanager. Volg de [snelle start](https://github.com/microsoft/vcpkg#quick-start) om vcpkg te initialiseren. Gebruik vervolgens de volgende opdracht om de bibliotheek te installeren:
+* **Linux:** Volg de instructies in de [Azure Storage-client bibliotheek voor C++ Leesmij: aan de slag op de Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) -pagina.
+* **Windows:** Gebruik [vcpkg](https://github.com/microsoft/vcpkg) in Windows als afhankelijkheids beheer. Volg de [Quick Start](https://github.com/microsoft/vcpkg#quick-start) om vcpkg te initialiseren. Gebruik vervolgens de volgende opdracht om de bibliotheek te installeren:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-In het [README-bestand](https://github.com/Azure/azure-storage-cpp#download--install) vindt u een handleiding voor het bouwen van de broncode en exporteren naar Nuget.
+U vindt een hand leiding voor het maken van de bron code en het exporteren naar Nuget in het [Leesmij](https://github.com/Azure/azure-storage-cpp#download--install) -bestand.
 
 ### <a name="configure-access-to-the-table-client-library"></a>Toegang tot de tabelclientbibliotheek configureren
 
-Als u de Azure-opslag-API's `include` wilt gebruiken om toegang te krijgen tot tabellen, voegt u de volgende instructies toe aan de bovenkant van het C++-bestand:
+Als u de Azure Storage-Api's wilt gebruiken om toegang te krijgen `include` tot tabellen, voegt u de volgende instructies toe aan het begin van het C++-bestand:
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/table.h>
 ```
 
-Een Azure-opslagclient of Cosmos DB-client gebruikt een opslagverbindingstekenreeks voor het opslaan van eindpunten en referenties voor toegang tot gegevensbeheerservices. Wanneer u een clienttoepassing uitvoert, moet u de tekenreeks voor de opslagverbinding of de Azure Cosmos DB-verbindingstekenreeks in de juiste indeling opgeven.
+Een Azure-opslagclient of Cosmos DB-client gebruikt een opslagverbindingstekenreeks voor het opslaan van eindpunten en referenties voor toegang tot gegevensbeheerservices. Wanneer u een client toepassing uitvoert, moet u de opslag connection string of de Azure Cosmos DB connection string in de juiste indeling opgeven.
 
 ### <a name="set-up-an-azure-storage-connection-string"></a>Een Azure-opslagverbindingstekenreeks instellen
 
-In dit voorbeeld ziet u hoe u een statisch veld declareert om de tekenreeks azure storage-verbinding vast te houden:  
+In dit voor beeld ziet u hoe u een statisch veld declareert om de Azure Storage connection string op te slaan:  
 
 ```cpp
 // Define the Storage connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-Gebruik de naam van `<your_storage_account>`uw opslagaccount voor . Gebruik voor <your_storage_account_key> de toegangssleutel voor het opslagaccount dat wordt vermeld in de [Azure-portal.](https://portal.azure.com) Zie [Een opslagaccount maken](../storage/common/storage-create-storage-account.md)voor informatie over opslagaccounts en toegangssleutels.
+Gebruik de naam van uw opslag account voor `<your_storage_account>`. Gebruik voor <your_storage_account_key> de toegangs sleutel voor het opslag account dat wordt vermeld in de [Azure Portal](https://portal.azure.com). Zie [een opslag account maken](../storage/common/storage-create-storage-account.md)voor meer informatie over opslag accounts en toegangs sleutels.
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Een Azure Cosmos DB-verbindingstekenreeks instellen
 
-In dit voorbeeld ziet u hoe u een statisch veld declareert om de Azure Cosmos DB-verbindingstekenreeks vast te houden:
+In dit voor beeld ziet u hoe u een statisch veld declareert om de Azure Cosmos DB connection string op te slaan:
 
 ```cpp
 // Define the Azure Cosmos DB connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_cosmos_db_account>;AccountKey=<your_cosmos_db_account_key>;TableEndpoint=<your_cosmos_db_endpoint>"));
 ```
 
-Gebruik de naam van uw `<your_cosmos_db_account>`Azure Cosmos DB-account voor . Voer uw primaire `<your_cosmos_db_account_key>`sleutel in voor . Voer het eindpunt in dat wordt `<your_cosmos_db_endpoint>`vermeld in de [Azure-portal](https://portal.azure.com) voor .
+Gebruik de naam van uw Azure Cosmos DB-account `<your_cosmos_db_account>`voor. Voer uw primaire sleutel in `<your_cosmos_db_account_key>`voor. Voer het eind punt in dat [Azure portal](https://portal.azure.com) wordt weer `<your_cosmos_db_endpoint>`gegeven in de Azure portal voor.
 
-Als u uw toepassing in uw lokale Windows-computer wilt testen, kunt u de Azure-opslagemulator gebruiken die is geïnstalleerd met de [Azure SDK](https://azure.microsoft.com/downloads/). De opslagemulator is een hulpprogramma dat de Azure-blob-, wachtrij-en tabelservices simuleert die beschikbaar zijn op uw lokale ontwikkelingsmachine. In het volgende voorbeeld ziet u hoe u een statisch veld declareert om de verbindingstekenreeks vast te houden aan uw lokale opslagemulator:  
+Als u uw toepassing in uw lokale Windows-computer wilt testen, kunt u de Azure-opslagemulator gebruiken die is geïnstalleerd met de [Azure SDK](https://azure.microsoft.com/downloads/). De opslagemulator is een hulpprogramma dat de Azure-blob-, wachtrij-en tabelservices simuleert die beschikbaar zijn op uw lokale ontwikkelingsmachine. In het volgende voor beeld ziet u hoe u een statisch veld declareert om de connection string op te slaan op uw lokale opslag emulator:  
 
 ```cpp
 // Define the connection string with Azure storage emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Als u de Azure-opslagemulator wilt starten, selecteert u vanaf uw Windows-bureaublad de knop **Start** of de Windows-toets. Microsoft *Azure Storage Emulator*invoeren en uitvoeren . Zie [De Azure-opslagemulator gebruiken voor ontwikkeling en testen voor](../storage/common/storage-use-emulator.md)meer informatie.
+Als u de Azure-opslag emulator wilt starten, selecteert u de knop **Start** of de Windows-toets op het Windows-bureau blad. Voer *Microsoft Azure-opslagemulator*in en voer deze uit. Zie [de Azure-opslag emulator gebruiken voor ontwikkeling en testen](../storage/common/storage-use-emulator.md)voor meer informatie.
 
 ### <a name="retrieve-your-connection-string"></a>De verbindingsreeks ophalen
 
-U `cloud_storage_account` de klasse gebruiken om uw opslagaccountgegevens weer te geven. Als u uw opslagaccountgegevens wilt ophalen `parse` uit de tekenreeks voor opslagverbindingen, gebruikt u de methode.
+U kunt de `cloud_storage_account` -klasse gebruiken om de gegevens van uw opslag account te vertegenwoordigen. Als u de gegevens van uw opslag account wilt ophalen uit de opslag `parse` Connection String, gebruikt u de-methode.
 
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Vervolgens krijgt u een `cloud_table_client` verwijzing naar een klas. Met deze klasse u referentieobjecten opvragen voor tabellen en entiteiten die zijn opgeslagen in de opslagservice Tabel. Met de volgende `cloud_table_client` code wordt een object gemaakt met het opslagaccountobject dat u eerder hebt opgehaald:  
+Vervolgens haalt u een verwijzing naar een `cloud_table_client` klasse op. Met deze klasse kunt u referentie objecten voor tabellen en entiteiten ophalen die zijn opgeslagen in de Table Storage-service. Met de volgende code wordt `cloud_table_client` een-object gemaakt met behulp van het object van het opslag account dat u eerder hebt opgehaald:  
 
 ```cpp
 // Create the table client.
@@ -120,7 +120,7 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 
 ### <a name="create-a-table"></a>Een tabel maken
 
-Met `cloud_table_client` een object u referentieobjecten voor tabellen en entiteiten krijgen. Met de volgende `cloud_table_client` code wordt een object gemaakt en gebruikt u deze om een nieuwe tabel te maken.
+Met `cloud_table_client` een-object kunt u referentie objecten voor tabellen en entiteiten ophalen. Met de volgende code wordt `cloud_table_client` een object gemaakt en gebruikt om een nieuwe tabel te maken.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -138,9 +138,9 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
 
-Als u een entiteit aan een `table_entity` tabel wilt `table_operation::insert_entity`toevoegen, maakt u een nieuw object en geeft u het door aan . Met de volgende code gebruikt u de voornaam van de klant als de rijsleutel en de achternaam als de partitiesleutel. De partitie- en rijsleutel van een entiteit vormen samen de unieke id van de entiteit in de tabel. Entiteiten met dezelfde partitiesleutel kunnen sneller worden opgevraagd dan entiteiten met verschillende partitiesleutels. Het gebruik van diverse partitiesleutels zorgt voor een grotere schaalbaarheid van parallelle bewerkingen. Raadpleeg de [Controlelijst voor prestaties en schaalbaarheid van Microsoft Azure Storage](../storage/common/storage-performance-checklist.md) voor meer informatie.
+Als u een entiteit wilt toevoegen aan een tabel, maakt `table_entity` u een nieuw object en `table_operation::insert_entity`geeft u het door. Met de volgende code gebruikt u de voornaam van de klant als de rijsleutel en de achternaam als de partitiesleutel. De partitie- en rijsleutel van een entiteit vormen samen de unieke id van de entiteit in de tabel. Entiteiten met dezelfde partitie sleutel kunnen sneller worden opgevraagd dan entiteiten met verschillende partitie sleutels. Het gebruik van verschillende partitie sleutels maakt een grotere schaal baarheid van parallelle bewerkingen mogelijk. Raadpleeg de [Controlelijst voor prestaties en schaalbaarheid van Microsoft Azure Storage](../storage/common/storage-performance-checklist.md) voor meer informatie.
 
-Met de volgende code `table_entity` wordt een nieuw exemplaar gemaakt van bepaalde klantgegevens die u wilt opslaan. De code `table_operation::insert_entity` volgende aanroepen om een `table_operation` object te maken om een entiteit in een tabel in te voegen en koppelt de nieuwe tabelentiteit eraan. Ten slotte roept `execute` de code `cloud_table` de methode op het object aan. De `table_operation` nieuwe stuurt een verzoek naar de tabelservice `people` om de nieuwe klantentiteit in de tabel in te voegen.  
+Met de volgende code wordt een nieuw exemplaar `table_entity` van gemaakt met klant gegevens die moeten worden opgeslagen. De volgende code wordt `table_operation::insert_entity` aangeroepen om een `table_operation` object te maken om een entiteit in een tabel in te voegen en de nieuwe tabel entiteit hieraan te koppelen. Ten slotte roept de code de `execute` methode aan voor `cloud_table` het object. Het nieuwe `table_operation` stuurt een aanvraag naar het Table service om de nieuwe klant entiteit in de `people` tabel in te voegen.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -173,7 +173,7 @@ azure::storage::table_result insert_result = table.execute(insert_operation);
 
 ### <a name="insert-a-batch-of-entities"></a>Een batch entiteiten invoegen
 
-U kunt in één schrijfbewerking een batch entiteiten invoegen in de tabelservice. Met de volgende `table_batch_operation` code wordt een object gemaakt en worden er vervolgens drie invoegbewerkingen aan toegevoegd. Elke invoegbewerking wordt toegevoegd door een nieuw entiteitsobject `insert` te maken, de waarden in te stellen en vervolgens de methode op het `table_batch_operation` object aan te roepen om de entiteit te koppelen aan een nieuwe invoegbewerking. Vervolgens roept de `cloud_table.execute` code om de bewerking uit te voeren.  
+U kunt in één schrijfbewerking een batch entiteiten invoegen in de tabelservice. Met de volgende code wordt `table_batch_operation` een object gemaakt en vervolgens worden er drie insert-bewerkingen aan toegevoegd. Elke invoeg bewerking wordt toegevoegd door een nieuw entiteits object te maken, de waarden in te stellen en `insert` de methode vervolgens `table_batch_operation` aan te roepen voor het object om de entiteit te koppelen aan een nieuwe invoeg bewerking. Vervolgens worden de code aanroepen `cloud_table.execute` om de bewerking uit te voeren.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -223,16 +223,16 @@ std::vector<azure::storage::table_result> results = table.execute_batch(batch_op
 
 Een aantal zaken die u moet weten over batchbewerkingen:
 
-* U maximaal `insert`100 `delete`, `replace` `insert-or-merge`, `insert-or-replace` , `merge`, en bewerkingen in een combinatie in een enkele batch.  
-* Een batchbewerking kan een bewerking voor ophalen hebben, als dit de enige bewerking in de batch is.  
+* `insert`U kunt Maxi maal 100, `delete`, `merge` `replace` `insert-or-merge`,, en `insert-or-replace` bewerkingen uitvoeren in een combi natie van een enkele batch.  
+* Een batch-bewerking kan een ophaal bewerking hebben, als dit de enige bewerking in de batch is.  
 * Alle entiteiten in een batchbewerking moeten dezelfde partitiesleutel hebben.  
 * Een batchbewerking is beperkt tot een gegevensnettolading van 4 MB.  
 
-## <a name="query-and-modify-entities"></a>Entiteiten aanvragen en wijzigen
+## <a name="query-and-modify-entities"></a>Entiteiten opvragen en wijzigen
 
 ### <a name="retrieve-all-entities-in-a-partition"></a>Alle entiteiten in een partitie ophalen
 
-Als u een tabel wilt opvragen voor `table_query` alle entiteiten in een partitie, gebruikt u een object. In het volgende codevoorbeeld wordt `Smith` een filter opgegeven voor entiteiten waar de partitiesleutel is. In dit voorbeeld worden de velden van elke entiteit in de queryresultaten naar de console afgedrukt.  
+Gebruik een `table_query` -object om een tabel voor alle entiteiten in een partitie op te vragen. In het volgende code voorbeeld geeft u een filter op `Smith` voor entiteiten waar de partitie sleutel is. In dit voorbeeld worden de velden van elke entiteit in de queryresultaten naar de console afgedrukt.  
 
 > [!NOTE]
 > Deze methoden worden momenteel niet ondersteund voor C++ in Azure Cosmos DB.
@@ -267,11 +267,11 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-De query in dit voorbeeld retourneert alle entiteiten die overeenkomen met de filtercriteria. Als u grote tabellen hebt en de tabelentiteiten vaak moet downloaden, raden we u aan uw gegevens in plaats daarvan op te slaan in Azure-opslagblobs.
+De query in dit voor beeld retourneert alle entiteiten die voldoen aan de filter criteria. Als u grote tabellen hebt en de tabelentiteiten vaak moet downloaden, raden we u aan uw gegevens in plaats daarvan op te slaan in Azure-opslagblobs.
 
 ### <a name="retrieve-a-range-of-entities-in-a-partition"></a>Een bereik van entiteiten in een partitie ophalen
 
-Als u niet alle entiteiten in een partitie wilt opvragen, u een bereik opgeven. Combineer het filter van de partitiesleutel met een rijsleutelfilter. In het volgende codevoorbeeld worden twee filters `Smith` gebruikt om alle entiteiten in partitie te `E` krijgen waar de rijsleutel (voornaam) begint met een letter eerder dan in het alfabet en worden de queryresultaten afgedrukt.  
+Als u niet alle entiteiten in een partitie wilt opvragen, kunt u een bereik opgeven. Combi neer het partitie sleutel filter met een filter voor rij-sleutels. Het volgende code voorbeeld maakt gebruik van twee filters om alle entiteiten in `Smith` een partitie op te halen, waarbij de rij (voor naam) begint `E` met een letter eerder dan in het alfabet en de query resultaten vervolgens afdrukt.  
 
 > [!NOTE]
 > Deze methoden worden momenteel niet ondersteund voor C++ in Azure Cosmos DB.
@@ -312,7 +312,7 @@ for (; it != end_of_results; ++it)
 
 ### <a name="retrieve-a-single-entity"></a>Eén entiteit ophalen
 
-U kunt een query schrijven om één specifieke entiteit op te halen. De volgende `table_operation::retrieve_entity` code wordt `Jeff Smith`gebruikt om de klant op te geven . Deze methode retourneert slechts één entiteit in plaats `table_result`van een verzameling en de geretourneerde waarde bevindt zich in . Het opgeven van zowel partitie- als rijsleutels in een query is de snelste manier om één entiteit op te halen uit de Tabelservice.  
+U kunt een query schrijven om één specifieke entiteit op te halen. De volgende code gebruikt `table_operation::retrieve_entity` om de klant `Jeff Smith`op te geven. Deze methode retourneert slechts één entiteit, in plaats van een verzameling, en de geretourneerde waarde `table_result`is in. Het opgeven van zowel partitie- als rijsleutels in een query is de snelste manier om één entiteit op te halen uit de Tabelservice.  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -338,7 +338,7 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
 
 ### <a name="replace-an-entity"></a>Een entiteit vervangen
 
-Als u een entiteit wilt vervangen, haalt u deze op uit de Tabelservice, wijzigt u het entiteitsobject en slaat u de wijzigingen weer op in de Tabelservice. Met de volgende code wijzigt u het telefoonnummer en het e-mailadres van een bestaande klant. In plaats `table_operation::insert_entity`van te `table_operation::replace_entity`bellen, gebruikt deze code . Deze benadering zorgt ervoor dat de entiteit volledig wordt vervangen op de server, tenzij de entiteit op de server is gewijzigd sinds deze is opgehaald. Als deze is gewijzigd, mislukt de bewerking. Deze fout voorkomt dat uw toepassing een wijziging overschrijft die is aangebracht tussen het ophalen en bijwerken door een ander onderdeel. De juiste afhandeling van deze fout is om de entiteit opnieuw op te `table_operation::replace_entity` halen, uw wijzigingen aan te brengen, indien nog geldig, en vervolgens een andere bewerking uit te voeren.  
+Als u een entiteit wilt vervangen, haalt u deze op uit de Tabelservice, wijzigt u het entiteitsobject en slaat u de wijzigingen weer op in de Tabelservice. Met de volgende code wijzigt u het telefoonnummer en het e-mailadres van een bestaande klant. In plaats van `table_operation::insert_entity`aan te roepen, `table_operation::replace_entity`gebruikt deze code. Deze aanpak zorgt ervoor dat de entiteit volledig wordt vervangen op de server, tenzij de entiteit op de server is gewijzigd nadat deze is opgehaald. Als deze is gewijzigd, mislukt de bewerking. Met deze fout wordt voor komen dat uw toepassing een wijziging overschrijft tussen het ophalen en bijwerken van een ander onderdeel. De juiste afhandeling van deze fout is om de entiteit opnieuw op te halen, de wijzigingen aan te brengen, indien nog geldig en `table_operation::replace_entity` vervolgens een andere bewerking uit te voeren.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -370,7 +370,7 @@ azure::storage::table_result replace_result = table.execute(replace_operation);
 
 ### <a name="insert-or-replace-an-entity"></a>Een entiteit invoegen of vervangen
 
-`table_operation::replace_entity`bewerkingen mislukken als de entiteit is gewijzigd sinds deze van de server is opgehaald. Bovendien moet u de entiteit eerst van de `table_operation::replace_entity` server ophalen om succesvol te zijn. Soms weet u niet of de entiteit op de server bestaat. De huidige waarden die erin zijn opgeslagen, zijn niet relevant, omdat uw update ze allemaal moet overschrijven. Gebruik een `table_operation::insert_or_replace_entity` bewerking om dit resultaat te bereiken. Met deze bewerking wordt de entiteit ingevoegd als deze niet bestaat. De bewerking vervangt de entiteit als deze bestaat. In het volgende codevoorbeeld wordt `Jeff Smith` de klantentiteit nog steeds opgehaald, maar deze `table_operation::insert_or_replace_entity`wordt vervolgens opgeslagen op de server met behulp van . Eventuele wijzigingen die in de entiteit zijn aangebracht tussen het moment van ophalen en het moment van bijwerken, worden overschreven.  
+`table_operation::replace_entity`bewerkingen mislukken als de entiteit is gewijzigd nadat deze is opgehaald van de server. U moet de entiteit bovendien eerst ophalen van de server om `table_operation::replace_entity` te kunnen slagen. Soms weet u niet of de entiteit bestaat op de server. De huidige opgeslagen waarden zijn niet relevant, omdat uw update deze allemaal moet overschrijven. Gebruik een `table_operation::insert_or_replace_entity` bewerking om dit resultaat te bereiken. Met deze bewerking wordt de entiteit ingevoegd als deze niet bestaat. Met deze bewerking wordt de entiteit vervangen als deze bestaat. In het volgende code voorbeeld wordt de klant entiteit voor `Jeff Smith` nog steeds opgehaald, maar vervolgens teruggezonden naar de server met behulp `table_operation::insert_or_replace_entity`van. Eventuele wijzigingen die in de entiteit zijn aangebracht tussen het moment van ophalen en het moment van bijwerken, worden overschreven.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -403,7 +403,7 @@ azure::storage::table_result insert_or_replace_result = table.execute(insert_or_
 
 ### <a name="query-a-subset-of-entity-properties"></a>Een query uitvoeren op een subset van entiteitseigenschappen
 
-Met een query naar een tabel kunnen slechts enkele eigenschappen van een entiteit worden opgehaald. De query in de `table_query::set_select_columns` volgende code gebruikt de methode om alleen de e-mailadressen van entiteiten in de tabel terug te sturen.  
+Met een query naar een tabel kunnen slechts enkele eigenschappen van een entiteit worden opgehaald. In de query in de volgende code wordt `table_query::set_select_columns` de methode gebruikt om alleen de e-mail adressen van entiteiten in de tabel te retour neren.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -449,7 +449,7 @@ for (; it != end_of_results; ++it)
 
 ### <a name="delete-an-entity"></a>Een entiteit verwijderen
 
-U een entiteit verwijderen nadat u deze hebt opgehaald. Nadat u een entiteit `table_operation::delete_entity` hebt opgehaald, belt u met de entiteit om te verwijderen. Roep dan `cloud_table.execute` de methode. Met de volgende code wordt een entiteit met `Smith` een partitiesleutel `Jeff`van en een rijsleutel van .
+U kunt een entiteit verwijderen nadat u deze hebt opgehaald. Nadat u een entiteit hebt opgehaald, `table_operation::delete_entity` neemt u contact op met de entiteit die u wilt verwijderen. Roep vervolgens de `cloud_table.execute` methode aan. Met de volgende code wordt een entiteit opgehaald en verwijderd met de partitie `Smith` sleutel en een rij van `Jeff`.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -474,7 +474,7 @@ azure::storage::table_result delete_result = table.execute(delete_operation);
 
 ### <a name="delete-a-table"></a>Een tabel verwijderen
 
-Ten slotte wordt met het volgende codevoorbeeld een tabel uit een opslagaccount verwijderd. Een tabel die is verwijderd, kan na de verwijdering enige tijd niet opnieuw worden gemaakt.  
+Ten slotte wordt met het volgende codevoorbeeld een tabel uit een opslagaccount verwijderd. Een tabel die is verwijderd, is niet beschikbaar om opnieuw te worden gemaakt voor een bepaalde tijd na het verwijderen.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -499,7 +499,7 @@ else
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als uw project voor Visual Studio Community Edition buildfouten krijgt vanwege de bestanden *storage_account.h* en *table.h,* verwijdert u de **/tolerante compilerswitch:**
+Als uw project fouten opneemt in de Visual Studio Community-editie, worden er problemen opgebouwd vanwege de include-bestanden *storage_account. h* en *tabel. h*, verwijdert u de **/Permissive-** -compiler switch:
 
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Properties**.
 1. Vouw in het dialoogvenster **Eigenschappenpagina’s** de optie **Configuratie-eigenschappen** en vervolgens **C/C++** uit en selecteer **Taal**.
@@ -514,4 +514,4 @@ Volg deze links koppelingen meer informatie over Azure Storage en de tabel-API i
 * [Introductie tot de tabel-API](table-introduction.md)
 * [Azure Storage-resources in C++ weergeven](../storage/common/storage-c-plus-plus-enumeration.md)
 * [Naslaginformatie over de Storage-clientbibliotheek voor C++](https://azure.github.io/azure-storage-cpp)
-* [Azure Storage-documentatie](https://azure.microsoft.com/documentation/services/storage/)
+* [Documentatie voor Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

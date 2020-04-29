@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met BorrowBox | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met BorrowBox | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en BorrowBox.
 services: active-directory
 documentationCenter: na
@@ -17,43 +17,43 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b11ce4ba21a6fd4db047c75104729737956699c4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73157632"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Zelfstudie: Azure Active Directory-integratie met BorrowBox
+# <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Zelf studie: integratie Azure Active Directory met BorrowBox
 
-In deze zelfstudie leert u hoe u BorrowBox integreert met Azure Active Directory (Azure AD).
-Het integreren van BorrowBox met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u BorrowBox integreert met Azure Active Directory (Azure AD).
+Het integreren van BorrowBox met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot BorrowBox.
-* U uw gebruikers automatisch laten aanmelden bij BorrowBox (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot BorrowBox.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij BorrowBox (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met BorrowBox, hebt u de volgende items nodig:
+Als u Azure AD-integratie met BorrowBox wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* BorrowBox-abonnement met één aanmelding
+* Abonnement voor eenmalige aanmelding BorrowBox ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* BorrowBox ondersteunt **SP en IDP** gestart met SSO
-* BorrowBox ondersteunt **Just In Time** gebruikersinrichting
+* BorrowBox ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* BorrowBox ondersteunt **just-in-time** -gebruikers inrichting
 
-## <a name="adding-borrowbox-from-the-gallery"></a>BorrowBox toevoegen aan de galerie
+## <a name="adding-borrowbox-from-the-gallery"></a>BorrowBox toevoegen uit de galerie
 
-Als u de integratie van BorrowBox in Azure AD wilt configureren, moet u BorrowBox uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van BorrowBox in azure AD wilt configureren, moet u BorrowBox uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om BorrowBox uit de galerie toe te voegen:**
+**Voer de volgende stappen uit om BorrowBox toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +67,31 @@ Als u de integratie van BorrowBox in Azure AD wilt configureren, moet u BorrowBo
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **BorrowBox**in het zoekvak , selecteer **BorrowBox** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **BorrowBox**in het zoekvak, selecteer **BorrowBox** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![BorrowBox in de resultatenlijst](common/search-new-app.png)
+     ![BorrowBox in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met BorrowBox op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in BorrowBox.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met BorrowBox op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in BorrowBox tot stand worden gebracht.
 
-Als u Azure AD-singlesign-aan met BorrowBox wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met BorrowBox, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[BorrowBox Single Sign-On configureren](#configure-borrowbox-single-sign-on)** om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[BorrowBox eenmalige aanmelding configureren](#configure-borrowbox-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak BorrowBox-testgebruiker](#create-borrowbox-test-user)** - om een tegenhanger van Britta Simon in BorrowBox te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een BorrowBox-test gebruiker](#create-borrowbox-test-user)** -om een equivalent van Julia Simon in BorrowBox te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met BorrowBox te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met BorrowBox:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **BorrowBox-toepassingsintegratie** de optie **Eén aanmelding .**
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **BorrowBox** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -114,9 +114,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [borrowbox client support team](mailto:borrowbox@bolinda.com) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van BorrowBox](mailto:borrowbox@bolinda.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Uw BorrowBox-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. BorrowBox-toepassing verwacht **dat naam-id** wordt toegewezen met **user.mail,** dus u moet de toewijzing van het kenmerk bewerken door te klikken op pictogram **Bewerken** en de toewijzing van het kenmerk wijzigen.
+6. Uw BorrowBox-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. BorrowBox-toepassing verwacht dat **nameidentifier** moeten worden toegewezen aan **User. mail**, dus u moet de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
 
     ![installatiekopie](common/edit-attribute.png)
 
@@ -124,7 +124,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-8. Kopieer in de sectie **BorrowBox instellen** de juiste URL(s) volgens uw eis.
+8. Kopieer op de sectie **BorrowBox instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -134,9 +134,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-borrowbox-single-sign-on"></a>Eenmalig aanmelden voor borrowbox configureren
+### <a name="configure-borrowbox-single-sign-on"></a>Eenmalige aanmelding voor BorrowBox configureren
 
-Als u eenmalige aanmelding wilt configureren aan **de BorrowBox-kant,** moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar het [ondersteuningsteam van BorrowBox](mailto:borrowbox@bolinda.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **BorrowBox** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [BorrowBox ondersteunings team](mailto:borrowbox@bolinda.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -146,7 +146,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -156,24 +156,24 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot BorrowBox.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan BorrowBox.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **BorrowBox**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **BorrowBox**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **BorrowBox**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **BorrowBox**.
 
-    ![De koppeling BorrowBox in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling BorrowBox in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -183,29 +183,29 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-borrowbox-test-user"></a>De testgebruiker borrowbox maken
+### <a name="create-borrowbox-test-user"></a>BorrowBox-test gebruiker maken
 
-In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in BorrowBox. BorrowBox ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in BorrowBox, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in BorrowBox. BorrowBox biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in BorrowBox, wordt er een nieuwe gemaakt na verificatie.
 
 > [!Note]
-> Neem contact op met [BorrowBox](mailto:borrowbox@bolinda.com)support team als u handmatig een gebruiker wilt maken.
+> Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van BorrowBox](mailto:borrowbox@bolinda.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel BorrowBox in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de BorrowBox waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel BorrowBox in het toegangs venster klikt, moet u automatisch worden aangemeld bij de BorrowBox waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

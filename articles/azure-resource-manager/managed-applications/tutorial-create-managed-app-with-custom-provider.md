@@ -1,46 +1,46 @@
 ---
-title: Zelfstudie - aangepaste acties & resources
-description: In deze zelfstudie wordt beschreven hoe u een Azure Managed Application maakt met een Azure Custom Provider.
+title: Zelf studie-aangepaste acties & resources
+description: In deze zelf studie wordt beschreven hoe u een door Azure beheerde toepassing maakt met een aangepaste Azure-provider.
 ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650077"
 ---
-# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Zelfstudie: Beheerde toepassing maken met aangepaste acties en resources
+# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Zelf studie: een beheerde toepassing maken met aangepaste acties en resources
 
-In deze zelfstudie maakt u uw eigen beheerde toepassing met aangepaste acties en resources. De beheerde toepassing bevat een `Overview` aangepaste actie op de pagina, een `Table of Content` aangepast brontype dat wordt weergegeven als een afzonderlijk menu-item in en een aangepaste contextactie op de aangepaste resourcepagina.
+In deze zelf studie maakt u uw eigen beheerde toepassing met aangepaste acties en resources. De beheerde toepassing bevat een aangepaste actie op de `Overview` pagina, een aangepast resource type dat wordt weer gegeven als een afzonderlijke menu `Table of Content` opdracht in en een aangepaste context actie op de aangepaste resource pagina.
 
-Deze zelfstudie bevat de volgende stappen:
+Deze zelf studie bevat de volgende stappen:
 
 > [!div class="checklist"]
-> * Definitiebestand voor gebruikersinterface voor het maken van een beheerde toepassingsinstantie
-> * Ontwerpimplementatiesjabloon met [Azure Custom Provider,](../custom-providers/overview.md)Azure Storage Account en Azure-functie
-> * Auteur weergave definitie artefact met aangepaste acties en resources
-> * Een beheerde toepassingsdefinitie implementeren
-> * Een instantie van beheerde toepassing implementeren
+> * Het definitie bestand van de gebruikers interface voor het maken van een exemplaar van een beheerde toepassing
+> * Implementatie sjabloon voor ontwerpen met [aangepaste Azure-provider](../custom-providers/overview.md), Azure Storage-account en Azure-functie
+> * Ontwerp weergave definitie artefact met aangepaste acties en resources
+> * Een definitie van een beheerde toepassing implementeren
+> * Een exemplaar van een beheerde toepassing implementeren
 > * Aangepaste acties uitvoeren en aangepaste resources maken
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze zelfstudie te voltooien, moet je het weten:
+Voor het volt ooien van deze zelf studie moet u het volgende weten:
 
-* Een [beheerde toepassingsdefinitie maken en publiceren](publish-service-catalog-app.md).
-* [Servicecatalogus-app implementeren via Azure-portal](deploy-service-catalog-quickstart.md).
-* De [gebruikersinterface van Azure-portalen maken voor uw beheerde toepassing.](create-uidefinition-overview.md)
-* Bekijk de mogelijkheden [voor definitieartefacten.](concepts-view-definition.md)
-* [Azure Custom](../custom-providers/overview.md) Provider-mogelijkheden.
+* [Een definitie van een beheerde toepassing maken en publiceren](publish-service-catalog-app.md).
+* De [Service Catalog-app implementeren via Azure Portal](deploy-service-catalog-quickstart.md).
+* [Azure Portal gebruikers interface maken voor uw beheerde toepassing](create-uidefinition-overview.md).
+* Opties [voor definitie artefacten weer geven](concepts-view-definition.md) .
+* Mogelijkheden van de [aangepaste Azure-provider](../custom-providers/overview.md) .
 
-## <a name="user-interface-definition"></a>Definitie van gebruikersinterface
+## <a name="user-interface-definition"></a>Definitie van de gebruikers interface
 
-In deze zelfstudie maakt u een beheerde toepassing en de beheerde brongroep bevat aangepaste providerinstantie, opslagaccount en functie. De Azure-functie die in dit voorbeeld wordt gebruikt, implementeert een API die aangepaste providerbewerkingen voor acties en resources verwerkt. Azure Storage Account wordt gebruikt als basisopslag voor uw aangepaste providerresources.
+In deze zelf studie maakt u een beheerde toepassing en de bijbehorende beheerde resource groep bevat aangepast provider exemplaar, opslag account en functie. De Azure-functie die in dit voor beeld wordt gebruikt, implementeert een API die aangepaste provider bewerkingen verwerkt voor acties en resources. Azure Storage-account wordt gebruikt als basis opslag voor de resources van uw aangepaste provider.
 
-De definitie van de gebruikersinterface `funcname` voor `storagename` het maken van een beheerde toepassingsinstantie bevat en invoerelementen. De naam en de functienaam van het opslagaccount moeten wereldwijd uniek zijn. Standaard worden functiebestanden geïmplementeerd vanuit het [voorbeeldfunctiepakket,](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)maar u deze wijzigen door een invoerelement toe te voegen voor een pakketkoppeling in *createUIDefinition.json:*
+De definitie van de gebruikers interface voor het maken van een `funcname` exemplaar `storagename` van een beheerde toepassing bevat en de invoer elementen. De naam van het opslag account en de functie naam moeten wereld wijd uniek zijn. Standaard functie bestanden worden geïmplementeerd vanuit een [voorbeeld functie pakket](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), maar u kunt dit wijzigen door een INPUT-element toe te voegen voor een pakket koppeling in *createUIDefinition. json*:
 
 ```json
 {
@@ -73,7 +73,7 @@ De definitie van de gebruikersinterface `funcname` voor `storagename` het maken 
 }
 ```
 
-en uitvoer in *createUIDefinition.json:*
+en uitvoer in *createUIDefinition. json*:
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -81,13 +81,13 @@ en uitvoer in *createUIDefinition.json:*
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Het volledige *voorbeeld van createUIDefinition.json* is te vinden op [Reference: Artefacten voor gebruikersinterface-elementen.](reference-createuidefinition-artifact.md)
+U kunt het volledige *createUIDefinition. json* -voor beeld vinden in de [verwijzing: elementen artefacten van de gebruikers interface](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Sjabloon met aangepaste provider
 
-Als u een beheerde toepassingsinstantie wilt maken met aangepaste provider, moet u aangepaste providerbronnen definiëren met een naam **openbaar** en **Microsoft.CustomProviders/resourceProviders** typen in uw **mainTemplate.json**. In die resource definieert u de resourcetypen en -acties voor uw service. Als u Azure Function- en Azure `Microsoft.Web/sites` Storage `Microsoft.Storage/storageAccounts` Account-exemplaren wilt implementeren, worden resources van type en respectievelijk gedefinieerd.
+Als u een exemplaar van een beheerde toepassing met een aangepaste provider wilt maken, moet u een aangepaste provider resource met de naam **openbaar** en type **micro soft. CustomProviders/ResourceProviders** in uw **mainTemplate. json**definiëren. In die resource definieert u de resource typen en acties voor uw service. Als u Azure-functie-en Azure Storage-account exemplaren wilt `Microsoft.Web/sites` implementeren `Microsoft.Storage/storageAccounts` , definieert u de resources van het type en respectievelijk.
 
-In deze zelfstudie maakt `users` u `ping` één resourcetype, aangepaste actie en `users/contextAction` aangepaste actie `users` die wordt uitgevoerd in een context van een aangepaste bron. Voor elk resourcetype en elke actie wordt een eindpunt opgegeven dat wijst op de functie met de naam die is opgegeven in [createUIDefinition.json](#user-interface-definition). Geef de **routingType** op `Proxy,Cache` `Proxy` als voor resourcetypen en voor acties:
+In deze zelf studie `users` maakt u één resource type, `ping` aangepaste actie en `users/contextAction` aangepaste actie die worden uitgevoerd in een context van een `users` aangepaste resource. Geef voor elk resource type en elke actie een eind punt op dat verwijst naar de functie met de naam die is geleverd in [createUIDefinition. json](#user-interface-definition). Geef de **routingType** `Proxy,Cache` op voor de resource typen `Proxy` en voor acties:
 
 ```json
 {
@@ -122,18 +122,18 @@ In deze zelfstudie maakt `users` u `ping` één resourcetype, aangepaste actie e
 }
 ```
 
-Het volledige *voorbeeld van mainTemplate.json* is te vinden op [Referentie: Artefact van de sjabloon implementatie](reference-main-template-artifact.md).
+U kunt het volledige *mainTemplate. json* -voor beeld vinden op [Referentie: implementatie sjabloon artefact](reference-main-template-artifact.md).
 
 ## <a name="view-definition-artifact"></a>Definitie-artefact weergeven
 
-Als u de gebruikersinterface wilt definiëren die aangepaste acties en aangepaste bronnen in uw beheerde toepassing bevat, moet u **viewDefinition.json-artefact maken.** Zie [Artefact definitie van weergave weergeven in Azure Managed Applications](concepts-view-definition.md)voor meer informatie over artefacten met de weergavedefinitie.
+Als u gebruikers interface wilt definiëren die aangepaste acties en aangepaste resources in uw beheerde toepassing bevat, moet u **viewDefinition. json** -artefact maken. Zie [definitie artefact in azure Managed Applications weer geven](concepts-view-definition.md)voor meer informatie over het weer geven van definitie-artefacten.
 
-In deze zelfstudie definieert u:
-* Een *overzichtspagina* met werkbalkknop `TestAction` die een aangepaste actie met basistekstinvoer vertegenwoordigt.
-* Een *pagina Gebruikers* die een `users`aangepast resourcetype vertegenwoordigt.
-* Een aangepaste `users/contextAction` bronactie in de pagina *Gebruikers* die wordt `users`uitgevoerd in een context van aangepaste bron van het type .
+In deze zelf studie definieert u het volgende:
+* Een *overzichts* pagina met een werkbalk knop die een aangepaste `TestAction` actie vertegenwoordigt met de basis tekst invoer.
+* Een pagina met *gebruikers* die een aangepast resource type `users`vertegenwoordigt.
+* Een aangepaste resource actie `users/contextAction` op de pagina *gebruikers* die wordt uitgevoerd in een context van een aangepaste bron van `users`het type.
 
-In het volgende voorbeeld ziet u de weergaveconfiguratie voor een pagina 'Overzicht':
+In het volgende voor beeld ziet u de weergave configuratie voor een pagina overzicht:
 
 ```json
 {
@@ -150,7 +150,7 @@ In het volgende voorbeeld ziet u de weergaveconfiguratie voor een pagina 'Overzi
   }
 ```
 
-Het onderstaande voorbeeld bevat de configuratie van de pagina 'Gebruikers' met aangepaste bronactie:
+Het onderstaande voor beeld bevat de pagina configuratie van resources van ' gebruikers ' met aangepaste resource actie:
 
 ```json
 {
@@ -174,17 +174,17 @@ Het onderstaande voorbeeld bevat de configuratie van de pagina 'Gebruikers' met 
   }
 ```
 
-Het voorbeeld van de volledige *viewDefinition.json* is te vinden op [Referentie: Artefact voor definitie weergeven](reference-view-definition-artifact.md).
+Het volledige *viewDefinition. json* -voor beeld vindt u in de [verwijzing: View definition artefact](reference-view-definition-artifact.md).
 
-## <a name="managed-application-definition"></a>Beheerde toepassingsdefinitie
+## <a name="managed-application-definition"></a>Definitie van beheerde toepassing
 
-Verpak de volgende beheerde toepassingsartefacten om het archief te zippen en upload het naar opslag:
+Verpakken de volgende beheerde toepassings artefacten naar een zip-archief en upload deze naar opslag:
 
-* createUiDefinition.json
-* mainTemplate.json
-* viewDefinition.json
+* createUiDefinition. json
+* mainTemplate. json
+* viewDefinition. json
 
-Alle bestanden moeten op basisniveau zijn. Het pakket met artefacten kan worden opgeslagen in elke opslag, bijvoorbeeld GitHub blob of Azure Storage Account blob. Hier is een script om het toepassingspakket te uploaden naar een opslagaccount: 
+Alle bestanden moeten op hoofd niveau zijn. Het pakket met artefacten kan in elke opslag ruimte worden opgeslagen, bijvoorbeeld GitHub BLOB of Azure Storage-account-blob. Hier volgt een script voor het uploaden van het toepassings pakket naar het opslag account: 
 
 ```powershell
 $resourceGroup="appResourcesGroup"
@@ -215,7 +215,7 @@ Set-AzStorageBlobContent `
 $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx).ICloudBlob.uri.AbsoluteUri
 ```
 
-Voer het Azure CLI-script hieronder uit of volg de stappen in de Azure-portal om een door de servicecatalogus beheerde toepassingsdefinitie te implementeren:
+Voer hieronder het Azure CLI-script uit of volg de stappen in Azure Portal een definitie van een door een service catalogus beheerde toepassing te implementeren:
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -246,36 +246,36 @@ az managedapp definition create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer **alle services**in de Azure-portal . Typ en selecteer **Managed Applications Center**in de lijst met resources .
-2. Kies in het **Centrum beheerde toepassingen**de **optie Servicecatalogustoepassingsdefinitie** en klik op **Toevoegen**. 
+1. Selecteer in het Azure Portal **alle services**. In de lijst met resources typt en selecteert u **beheerd toepassingen centrum**.
+2. Kies **Service Catalog Application Definition** in het **beheerde toepassingen centrum**en klik op **toevoegen**. 
     
-    ![Servicecatalogus toevoegen](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
+    ![Service catalogus toevoegen](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
-3. Geef waarden op voor het maken van een definitie van servicecatalogus:
+3. Geef waarden op voor het maken van een service catalogus definitie:
 
-    * Geef een unieke **naam op** voor de definitie van de servicecatalogus, **weergavenaam** en *beschrijving*(optioneel).
-    * Selecteer de **groep Abonnement**, **Resource**en **Locatie** waar de toepassingsdefinitie wordt gemaakt. U dezelfde resourcegroep gebruiken die wordt gebruikt voor een zip-pakket of een nieuwe resourcegroep maken.
-    * Geef voor een **Pakketbestand Uri**het pad op naar het zip-bestand dat u in de vorige stap hebt gemaakt.
+    * Geef een unieke **naam** op voor de Service catalogus definitie, **weergave naam** en *Beschrijving*(optioneel).
+    * Selecteer het **abonnement**, de **resource groep**en de **locatie** waar de toepassings definitie wordt gemaakt. U kunt dezelfde resource groep gebruiken die wordt gebruikt voor een zip-pakket of voor het maken van een nieuwe resource groep.
+    * Geef voor de URI van een **pakket bestand**het pad op naar het zip-bestand dat u in de vorige stap hebt gemaakt.
 
     ![Waarden opgeven](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
 
-4. Wanneer u de sectie Verificatie- en vergrendelingsniveau hebt bereikt, selecteert u **Autorisatie toevoegen**.
+4. Wanneer u de sectie verificatie en vergrendelings niveau krijgt, selecteert u **autorisatie toevoegen**.
 
     ![Autorisatie toevoegen](./media/tutorial-create-managed-app-with-custom-provider/add-authorization.png)
 
-5. Selecteer een Azure Active Directory-groep om de resources te beheren en selecteer **OK**.
+5. Selecteer een Azure Active Directory groep om de resources te beheren en selecteer **OK**.
 
-   ![Autorisatiegroep toevoegen](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
+   ![Autorisatie groep toevoegen](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
 
-6. Wanneer u alle waarden hebt opgegeven, selecteert u **Maken**.
+6. Wanneer u alle waarden hebt ingevoerd, selecteert u **maken**.
 
-   ![Beheerde toepassingsdefinitie maken](./media/tutorial-create-managed-app-with-custom-provider/create-service-catalog-definition.png)
+   ![Definitie van beheerde toepassing maken](./media/tutorial-create-managed-app-with-custom-provider/create-service-catalog-definition.png)
 
 ---
 
-## <a name="managed-application-instance"></a>Exemplaar beheerde toepassing
+## <a name="managed-application-instance"></a>Exemplaar van beheerde toepassing
 
-Wanneer beheerde toepassingsdefinitie wordt geïmplementeerd, voert u het onderstaande script uit of volgt u de stappen in de Azure-portal om uw beheerde toepassingsinstantie te implementeren bij aangepaste provider:
+Wanneer de definitie van de beheerde toepassing is geïmplementeerd, voert u het onderstaande script uit of volgt u de stappen in Azure Portal om uw exemplaar van de beheerde toepassing te implementeren met een aangepaste provider:
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azurecli-interactive)
 
@@ -302,23 +302,23 @@ az managedapp create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer **alle services**in de Azure-portal . Typ en selecteer **Managed Applications Center**in de lijst met resources .
-2. Kies **servicecatalogustoepassingen** in het **Beheerde toepassingencentrum**en klik op **Toevoegen**. 
+1. Selecteer in het Azure Portal **alle services**. In de lijst met resources typt en selecteert u **beheerd toepassingen centrum**.
+2. Kies **Service Catalog-toepassingen** in het **beheerde toepassingen centrum**en klik op **toevoegen**. 
 
     ![Beheerde toepassing toevoegen](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
-3. In het paginatype **Servicecatalogus-toepassingen** zet u de weergavenaam van de servicecataloguscatalogus in het zoekvak. Selecteer de definitie die in vorige stap is gemaakt en klik op **Maken**.
+3. Op het pagina type **Service catalogus-toepassingen** geeft u de naam van de Service catalogus definitie weer in het zoekvak. Selecteer de definitie die u in de vorige stap hebt gemaakt en klik op **maken**.
 
     ![Servicecatalogus selecteren](./media/tutorial-create-managed-app-with-custom-provider/select-service-catalog-definition.png)
 
-4. Geef waarden op voor het maken van een beheerde toepassingsinstantie vanuit de definitie van servicecatalogus:
+4. Geef waarden op voor het maken van een exemplaar van een beheerde toepassing vanuit de Service catalogus definitie:
 
-    * Selecteer de **groep Abonnement**, **Resource**en **Locatie** waar de toepassingsinstantie wordt gemaakt.
-    * Geef een unieke Azure-functienaam en azure-opslagaccountnaam op.
+    * Selecteer het **abonnement**, de **resource groep**en de **locatie** waar het toepassings exemplaar wordt gemaakt.
+    * Geef een unieke naam op voor de Azure-functie en de Azure Storage account.
 
     ![Toepassingsinstellingen](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
 
-5. Wanneer de validatie is geslaagd, klikt u op **OK** om een instantie van een beheerde toepassing te implementeren. 
+5. Wanneer de validatie is voltooid, klikt u op **OK** om een exemplaar van een beheerde toepassing te implementeren. 
     
     ![Beheerde toepassing implementeren](./media/tutorial-create-managed-app-with-custom-provider/deploy-managed-application.png)
 
@@ -326,32 +326,32 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Aangepaste acties en resources
 
-Nadat de instantie van de servicecatalogustoepassing is geïmplementeerd, hebt u twee nieuwe brongroepen. Eerste resourcegroep `applicationGroup` bevat een instantie van de `managedResourceGroup` beheerde toepassing, de tweede resourcegroep bevat de resources voor de beheerde toepassing, inclusief **aangepaste provider.**
+Nadat het exemplaar van de Service catalogus toepassing is geïmplementeerd, hebt u twee nieuwe resource groepen. De eerste resource `applicationGroup` groep bevat een exemplaar van de beheerde toepassing, de tweede `managedResourceGroup` resource groep bevat de resources voor de beheerde toepassing, met inbegrip van een **aangepaste provider**.
 
-![Groepen toepassingsbronnen](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
+![Toepassings resource groepen](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 
-U naar beheerde toepassingsinstantie gaan en **aangepaste actie** uitvoeren op de pagina 'Overzicht', **aangepaste** bronnen voor gebruikers maken op de pagina 'Gebruikers' en **aangepaste contextactie** uitvoeren op aangepaste resource.
+U kunt naar het exemplaar van de beheerde toepassing gaan en **aangepaste actie** uitvoeren op de pagina overzicht, **gebruikers** aangepaste resource maken op de pagina gebruikers en **aangepaste context actie** uitvoeren op aangepaste resource.
 
-* Ga naar de pagina 'Overzicht' en klik op de knop 'Actie pingen':
+* Ga naar de pagina overzicht en klik op de knop ping actie:
 
 ![Aangepaste actie uitvoeren](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-action.png)
 
-* Ga naar de pagina 'Gebruikers' en klik op de knop Toevoegen. Geef ingangen op voor het maken van een resource en dien het formulier in:
+* Ga naar de pagina gebruikers en klik op de knop toevoegen. Geef invoer voor het maken van een resource op en verzend het formulier:
 
 ![Aangepaste resource maken](./media/tutorial-create-managed-app-with-custom-provider/create-custom-resource.png)
 
-* Ga naar de pagina 'Gebruikers', selecteer een bron voor 'gebruikers' en klik op Actie voor aangepaste context:
+* Ga naar de pagina gebruikers, selecteer een resource voor gebruikers en klik op aangepaste context actie:
 
 ![Aangepaste resource maken](./media/tutorial-create-managed-app-with-custom-provider/perform-custom-resource-action.png)
 
 [!INCLUDE [clean-up-section-portal](../../../includes/clean-up-section-portal.md)]
 
-## <a name="looking-for-help"></a>Op zoek naar hulp
+## <a name="looking-for-help"></a>Zoeken naar Help
 
-Als u vragen hebt over Azure Managed Applications, probeert u vragen te stellen op [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managedapps). Een soortgelijke vraag kan al zijn gesteld en beantwoord, dus controleer eerst voor het posten. Voeg de `azure-managedapps` tag toe om snel te reageren!
+Als u vragen hebt over Azure Managed Applications, kunt u vragen om [stack overflow](https://stackoverflow.com/questions/tagged/azure-managedapps). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag `azure-managedapps` toe om een snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Door Azure beheerde toepassingen in Marketplace](publish-marketplace-app.md) voor het in Azure Marketplace publiceren van uw beheerde toepassing.
 
-Meer informatie over [Azure Custom Providers](../custom-providers/overview.md).
+Meer informatie over [aangepaste Azure-providers](../custom-providers/overview.md).

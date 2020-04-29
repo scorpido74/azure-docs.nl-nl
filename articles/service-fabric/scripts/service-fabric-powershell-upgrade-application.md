@@ -1,6 +1,6 @@
 ---
-title: Een Service Fabric-toepassing upgraden in Powershell
-description: Azure PowerShell Script-voorbeeld - Upgrade en monitor een Azure Service Fabric-toepassing met Powershell.
+title: Een Service Fabric-toepassing bijwerken in Power shell
+description: Azure PowerShell script voorbeeld-een Azure Service Fabric-toepassing bijwerken en bewaken met behulp van Power shell.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,15 +15,15 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614737"
 ---
-# <a name="upgrade-a-service-fabric-application"></a>Een Service Fabric-toepassing upgraden
+# <a name="upgrade-a-service-fabric-application"></a>Een Service Fabric-toepassing bijwerken
 
-Met dit voorbeeldscript wordt een uitvoerende servicefabric-toepassingsinstantie ge-op-versie 1.3.0 uitgevoerd. Het script kopieert het nieuwe toepassingspakket naar het clusterimagearchief, registreert het toepassingstype en verwijdert het onnodige toepassingspakket.  Het script start een bewaakte upgrade en controleert continu de upgradestatus totdat de upgrade is voltooid of teruggedraaid. Pas de parameters zo nodig aan. 
+Met dit voorbeeld script wordt een actief Service Fabric toepassings exemplaar bijgewerkt naar versie 1.3.0. Het script kopieert het nieuwe toepassings pakket naar het cluster installatie kopie archief, registreert het toepassings type en verwijdert het overbodige toepassings pakket.  Het script start een bewaakte upgrade en controleert doorlopend de status van de upgrade totdat de upgrade is voltooid of teruggedraaid. Pas de parameters zo nodig aan. 
 
 Installeer indien nodig de Service Fabric PowerShell-module met de [Service Fabric-SDK](../service-fabric-get-started.md). 
 
@@ -37,18 +37,18 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-ServiceFabric-toepassing](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Haalt alle toepassingen in het cluster Service Fabric of een specifieke toepassing.  |
-| [Get-serviceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Krijgt de status van een servicefabric-toepassingsupgrade. |
-| [Get-serviceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Als u de toepassingstypen Service Fabric laat registreren in het cluster Service Fabric. |
-| [Register-ServiceFabricApplicationType uitschrijven](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | De registratie van een servicefabric-toepassingstype wordt uitgedaan.  |
-| [Copy-serviceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Hiermee kopieert u een servicefabric-toepassingspakket naar de afbeeldingswinkel.  |
-| [Register-serviceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Registreert een servicefabric-toepassingstype. |
-| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Hiermee wordt een Service Fabric-toepassing bijgewerkt naar de opgegeven versie van het toepassingstype. |
-| [Remove-serviceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Hiermee verwijdert u een servicefabric-toepassingspakket uit het afbeeldingsarchief.|
+| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Hiermee worden alle toepassingen in het Service Fabric cluster of een specifieke toepassing opgehaald.  |
+| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Hiermee wordt de status van een Service Fabric toepassing bijgewerkt. |
+| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Hiermee haalt u de Service Fabric toepassings typen die zijn geregistreerd op het Service Fabric cluster. |
+| [Registratie ongedaan maken-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Hiermee wordt de registratie van een Service Fabric toepassings type ongedaan gemaakt.  |
+| [Kopiëren-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Hiermee wordt een Service Fabric toepassings pakket gekopieerd naar de archief met installatie kopieën.  |
+| [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Registreert een Service Fabric toepassings type. |
+| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Hiermee wordt een Service Fabric-toepassing bijgewerkt naar de opgegeven versie van het toepassings type. |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Hiermee verwijdert u een Service Fabric toepassings pakket uit het archief met installatie kopieën.|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure PowerShell-documentatie](/powershell/azure/service-fabric/?view=azureservicefabricps)voor meer informatie over de PowerShell-module servicefabric.
+Zie [Azure PowerShell-documentatie](/powershell/azure/service-fabric/?view=azureservicefabricps)voor meer informatie over de service Fabric Power shell-module.
 
 Meer PowerShell-voorbeelden voor Azure Service Fabric vindt u in de [voorbeelden van Azure PowerShell](../service-fabric-powershell-samples.md).

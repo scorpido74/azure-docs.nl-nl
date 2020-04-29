@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met Zscaler 3 | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Zscaler 3.
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Zscaler drie | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Zscaler drie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,117 +17,117 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b23abcf9a39ce7f6d77bc40e7143505bc68e8b72
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72554984"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Zscaler Three
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Zscaler drie
 
-In deze zelfstudie leert u hoe u Zscaler Three integreren met Azure Active Directory (Azure AD). Wanneer u Zscaler Three integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u Zscaler kunt integreren met Azure Active Directory (Azure AD). Wanneer u Zscaler drie integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Zscaler 3.
-* Stel uw gebruikers in om automatisch te worden aangemeld bij Zscaler 3 met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Beheer in azure AD die toegang heeft tot Zscaler drie.
+* Stel in dat uw gebruikers zich automatisch kunnen aanmelden om drie met hun Azure AD-accounts te Zscaler.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Zscaler Three single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Zscaler-abonnement dat drie keer eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Zscaler Three steunt **SP** geïnitieerd sso
+* Zscaler drie ondersteunt door **SP** GEÏNITIEERDe SSO
 
-* Zscaler Three ondersteunt **Just In Time** gebruikersinrichting
+* Zscaler drie ondersteunt **just-in-time** -gebruikers inrichting
 
 > [!NOTE]
-> Id van deze toepassing is een vaste tekenreekswaarde, zodat slechts één instantie in één tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
-## <a name="adding-zscaler-three-from-the-gallery"></a>Zscaler Three toevoegen vanuit de galerie
+## <a name="adding-zscaler-three-from-the-gallery"></a>Zscaler drie van de galerie toevoegen
 
-Als u de integratie van Zscaler Three in Azure AD wilt configureren, moet u Zscaler Three uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Zscaler drie wilt configureren in azure AD, moet u Zscaler drie van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Zscaler Drie** in het zoekvak in de sectie **Toevoegen vanuit de galerie.**
-1. Selecteer **Zscaler Drie** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ **Zscaler drie** in het zoekvak van de sectie **toevoegen vanuit de galerie** .
+1. Selecteer **Zscaler** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-three"></a>Azure AD-aanmelding voor Zscaler Drie configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-three"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Zscaler drie
 
-Azure AD SSO configureren en testen met Zscaler Three met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Zscaler Three.
+Azure AD SSO met Zscaler drie configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Zscaler drie.
 
-Als u Azure AD SSO wilt configureren en testen met Zscaler Three, voert u de volgende bouwstenen uit:
+Als u Azure AD SSO wilt configureren en testen met Zscaler drie, voert u de volgende bouw stenen uit:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Configureer Zscaler Three SSO](#configure-zscaler-three-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    1. **[Zscaler Drie testgebruiker maken](#create-zscaler-three-test-user)** - om een tegenhanger van B.Simon in Zscaler 3 te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Zscaler drie SSO configureren](#configure-zscaler-three-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    1. **[Maak Zscaler drie test gebruiker](#create-zscaler-three-test-user)** : als u een equivalent van B. Simon wilt hebben in Zscaler drie dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Zscaler** Three-toepassingsintegratie de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de **Zscaler** -pagina voor het **beheren** van drie toepassings integratie en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden:
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-    Typ een URL in het tekstvak **AANmeldings-URL:**`https://login.zscalerthree.net/sfc_sso`
+    Typ een URL in het tekstvak **URL voor aanmelding** :`https://login.zscalerthree.net/sfc_sso`
 
-1. Uw Zscaler Three-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Uw Zscaler-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/edit-attribute.png)
 
-6. Naast bovenstaande, Zscaler Drie applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw eis.
+6. Daarnaast verwacht Zscaler drie toepassingen nog maar weinig kenmerken die kunnen worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
     
-    | Name | Bronkenmerk |
+    | Naam | Bronkenmerk |
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 
     > [!NOTE]
     > Klik [hier](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) als u wilt weten hoe u rollen in Azure AD moet configureren
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer in de sectie **Zscaler Drie instellen** de juiste URL(s) op basis van uw vereiste.
+1. Kopieer de juiste URL ('s) op basis van uw vereiste op de **Zscaler drie sectie instellen** .
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Zscaler Three.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Zscaler drie.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **Zscaler 3**in de lijst met toepassingen .
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Zscaler drie**.
 1. Selecteer in het dialoogvenster **Gebruikers en groepen****Britta Simon** in de lijst en klik op de knop **Selecteren** onder aan het scherm.
 
     ![installatiekopie](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
@@ -140,17 +140,17 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
     ![installatiekopie](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
 
-## <a name="configure-zscaler-three-sso"></a>Zscaler Three SSO configureren
+## <a name="configure-zscaler-three-sso"></a>Zscaler drie SSO configureren
 
-1. Als u de configuratie binnen Zscaler Three wilt automatiseren, moet u **de browserextensie Mijn apps Secure Sign-in** installeren door op **De extensie installeren**te klikken.
+1. Als u de configuratie binnen Zscaler drie wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Extensie Mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-2. Na het toevoegen van extensie aan de browser, klik op **Setup Zscaler Drie** zal u doorverwijzen naar de Zscaler Drie applicatie. Geef van daaruit de beheerdersreferenties op om u aan te melden bij Zscaler Three. De browserextensie configureert automatisch de toepassing voor u en automatiseert stappen 3-6.
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op **Setup Zscaler drie** wordt u naar de Zscaler drie-toepassing geleid. Geef de beheerders referenties op om u aan te melden bij Zscaler drie. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
 
     ![Instellen](common/setup-sso.png)
 
-3. Als u Zscaler Drie handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich aan bij uw bedrijfsite Zscaler Drie als beheerder en voert u de volgende stappen uit:
+3. Als u Zscaler drie hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw Zscaler drie bedrijfs site als beheerder en voert u de volgende stappen uit:
 
 4. Ga naar **Beheer > Verificatie > Verificatie-instellingen** en voer de volgende stappen uit:
    
@@ -195,7 +195,7 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
 2. Selecteer **Internetopties** in het menu **Extra** om het dialoogvenster **Internetopties** te openen.   
     
-     ![Internetopties](./media/zscaler-three-tutorial/ic769492.png "Internetopties")
+     ![Internet opties](./media/zscaler-three-tutorial/ic769492.png "Internet opties")
 
 3. Klik op het tabblad **Verbindingen**.   
   
@@ -205,11 +205,11 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
 5. In het gedeelte Proxyserver voert u de volgende stappen uit:   
    
-    ![Proxyserver](./media/zscaler-three-tutorial/ic769494.png "Proxyserver")
+    ![Proxy server](./media/zscaler-three-tutorial/ic769494.png "Proxyserver")
 
     a. Selecteer **Een proxyserver voor uw LAN-netwerk gebruiken**.
 
-    b. Typ gateway in het tekstvak **Adres. Zscaler Three.net**.
+    b. Typ in het tekstvak adres de tekst **gateway. Zscaler Three.net**.
 
     c. Typ **80** in het tekstvak Poort.
 
@@ -219,26 +219,26 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
 6. Klik op **OK** om het dialoogvenster **Internetopties** te sluiten.
 
-### <a name="create-zscaler-three-test-user"></a>Zscaler Drie testgebruiker maken
+### <a name="create-zscaler-three-test-user"></a>Zscaler drie test gebruiker maken
 
-In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in Zscaler Three. Zscaler Three ondersteunt just-in-time provisioning, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Zscaler Three, wordt er een nieuwe gemaakt wanneer u probeert toegang te krijgen tot Zscaler Three.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Zscaler drie. Zscaler drie ondersteunt just-in-time-inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Zscaler drie aanwezig is, wordt er een nieuwe gemaakt wanneer u Zscaler drie probeert te openen.
 
 >[!Note]
->Als u handmatig een gebruiker wilt maken, neemt u contact op met [het ondersteuningsteam van Zscaler Three.](https://www.zscaler.com/company/contact)
+>Als u hand matig een gebruiker moet maken, neemt u contact op met [Zscaler drie ondersteunings team](https://www.zscaler.com/company/contact).
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Zscaler Drie in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Zscaler 3 waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Zscaler drie tegels in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Zscaler drie waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Zscaler Three met Azure AD](https://aad.portal.azure.com/)
+- [Probeer Zscaler drie met Azure AD](https://aad.portal.azure.com/)
 

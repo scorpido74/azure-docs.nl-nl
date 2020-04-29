@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met ArcGIS Online | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met ArcGIS online | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ArcGIS Online.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74232098"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Zelfstudie: Azure Active Directory-integratie met ArcGIS Online
+# <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Zelf studie: integratie Azure Active Directory met ArcGIS online
 
 In deze zelfstudie leert u hoe u ArcGIS Online integreert met Azure Active Directory (Azure AD).
 De integratie van ArcGIS Online met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van ArcGIS Online met Azure AD heeft de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -137,11 +137,11 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure Ad met ArcGIS On
 
 4. Klik onder **Enterprise Logins** (Enterprise-aanmeldingen) op **SET IDENTITY PROVIDER** (Id-provider instellen).
 
-    ![Aanmeldingen voor ondernemingen](./media/arcgis-tutorial/ic784744.png "Aanmeldingen voor ondernemingen")
+    ![Zakelijke aanmeldingen](./media/arcgis-tutorial/ic784744.png "Zakelijke aanmeldingen")
 
 5. Voer op de configuratiepagina **Set Identity Provider** (Id-provider instellen)de volgende stappen uit:
 
-    ![Identiteitsprovider instellen](./media/arcgis-tutorial/ic784745.png "Identiteitsprovider instellen")
+    ![ID-provider instellen](./media/arcgis-tutorial/ic784745.png "ID-provider instellen")
 
     a. Typ de naam van uw organisatie in het tekstvak **Naam**.
 
@@ -159,7 +159,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -169,12 +169,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -196,9 +196,9 @@ In dit gedeelte stelt u Britta Simon in staat om gebruik te maken van eenmalige 
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -223,7 +223,7 @@ In het geval van ArcGIS Online is inrichten een handmatige taak.
    
      ![Toevoegen en controleren](./media/arcgis-tutorial/ic784749.png "Toevoegen en controleren")
     
-     a. Voer de **e-mail,** **voornaam**en **achternaam in** van een geldig Azure AD-account dat u wilt inrichten.
+     a. Voer de **e-mail**, **voor naam**en **Achternaam** in van een geldig Azure ad-account dat u wilt inrichten.
   
      b. Klik op **ADD AND REVIEW** (Toevoegen en controleren).
 5. Controleer de gegevens die u hebt ingevoerd en klik op **ADD MEMBERS** (Leden toevoegen).
@@ -243,7 +243,7 @@ Wanneer u op de tegel ArcGIS Online in het toegangsvenster klikt, zou u automati
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

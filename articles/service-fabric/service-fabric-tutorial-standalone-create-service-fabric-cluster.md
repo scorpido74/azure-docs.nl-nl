@@ -1,5 +1,5 @@
 ---
-title: Zelfstandige client servicefabric installeren
+title: Service Fabric zelfstandige client installeren
 description: In deze zelfstudie leert u hoe u de zelfstandige Service Fabric-client installeert in het cluster dat u in het vorige zelfstudieartikel hebt gemaakt.
 author: dkkapur
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75613938"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Zelfstudie: Service Fabric-cluster installeren en maken
 
-Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudiereeks maakt u een zelfstandig cluster dat wordt gehost op AWS of Azure en installeert u er een toepassing in.
+Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op AWS of Azure en hoe u een toepassing kunt installeren.
 
 Deze zelfstudie is deel twee van een serie. In deze zelfstudie wordt u stapsgewijs begeleid door het maken van een zelfstandig Service Fabric-cluster.
 
@@ -28,9 +28,9 @@ In deel twee van de serie leert u het volgende:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Het pakket Service Fabric voor Windows Server downloaden
 
-Service Fabric biedt een installatiepakket voor het maken van zelfstandige Service Fabric-clusters.  [Download het installatiepakket](https://go.microsoft.com/fwlink/?LinkId=730690) op uw lokale computer.  Zodra het met succes heeft gedownload kopiëren via de RDP-verbinding met uw VM, en plak het op het bureaublad.
+Service Fabric biedt een installatiepakket voor het maken van zelfstandige Service Fabric-clusters.  [Download het installatiepakket](https://go.microsoft.com/fwlink/?LinkId=730690) op uw lokale computer.  Zodra de app is gedownload, kopieert u deze via de RDP-verbinding met uw virtuele machine en plakt u deze op het bureau blad.
 
-Selecteer het zip-bestand en open het contextmenu en selecteer >  **Alle uitpakken uitpakken.****Extract**  Als u de bestanden uitpakt, wordt er op het bureaublad een map gegenereerd met de naam van het ZIP-bestand.
+Selecteer het zip-bestand en open het context menu en selecteer **Alles** > **uitpakken.**  Als u de bestanden uitpakt, wordt er op het bureaublad een map gegenereerd met de naam van het ZIP-bestand.
 
 U kunt desgewenst meer informatie weergeven over [de inhoud van het installatiepakket](service-fabric-cluster-standalone-package-contents.md).
 
@@ -120,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer uitvoeren
 
-Nu u verbinding maken met het cluster met Service Fabric\/Explorer, hetzij rechtstreeks\//<vanaf een van de machines met http: /localhost:19080/Explorer/index.html of op afstand met http:*IPAddressofaMachine*>:19080/Explorer/index.html.
+Nu kunt u verbinding maken met het cluster met Service Fabric Explorer rechtstreeks op een van de computers met http:\//localhost:19080/Explorer/index.html of extern met http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Knooppunten toevoegen en verwijderen
 

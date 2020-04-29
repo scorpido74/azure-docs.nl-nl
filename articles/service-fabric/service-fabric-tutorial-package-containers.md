@@ -1,5 +1,5 @@
 ---
-title: Containers verpakken en implementeren
+title: Containers inpakken en implementeren
 description: In deze zelfstudie leert u hoe u een Azure Service Fabric-toepassingsdefinitie kunt genereren met behulp van Yeoman en de toepassing verpakken.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78252751"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Zelfstudie: Containers verpakken en implementeren als een Service Fabric-toepassing met behulp van Yeoman
@@ -118,7 +118,7 @@ Meld u aan bij uw ACR-exemplaar. Gebruik de opdracht **az acr login** om de bewe
 az acr login --name <acrName>
 ```
 
-De opdracht retourneert een geslaagd bericht **dat is gelukt** als deze is voltooid.
+De opdracht retourneert een bericht dat de **aanmelding is** voltooid.
 
 Voer vervolgens de volgende opdracht uit om het wachtwoord van uw containerregister op te halen. Dit wachtwoord wordt door Service Fabric gebruikt voor authenticatie bij ACR om de containerinstallatiekopieën op te halen.
 
@@ -272,11 +272,11 @@ Gebruik het installatiescript uit de **TestContainer**-directory om het toepassi
 ./install.sh
 ```
 
-Open een browser en navigeer naar\/Service Fabric Explorer op http: /containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Vouw het knooppunt Toepassingen uit. U ziet dat er een vermelding is voor uw toepassingstype en nog een voor het exemplaar.
+Open een browser en ga naar Service Fabric Explorer op http:\//containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Vouw het knooppunt Toepassingen uit. U ziet dat er een vermelding is voor uw toepassingstype en nog een voor het exemplaar.
 
 ![Service Fabric Explorer][sfx]
 
-Om verbinding te maken met de lopende applicatie, open een webbrowser en\/ga naar de cluster url - bijvoorbeeld http: / containertestcluster.eastus.cloudapp.azure.com:80. U ziet nu de stemtoepassing in de webgebruikersinterface.
+Als u verbinding wilt maken met de actieve toepassing, opent u een webbrowser en gaat u naar de cluster-URL, bijvoorbeeld\/http:/containertestcluster.eastus.cloudapp.Azure.com:80. U ziet nu de stemtoepassing in de webgebruikersinterface.
 
 ![stemapp][votingapp]
 

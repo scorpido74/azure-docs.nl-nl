@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Implementeren vanuit lokale Git repo'
-description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u code implementeert uit een lokale Git-opslagplaats.
+title: 'CLI: implementeren vanuit lokale Git-opslag plaats'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u code kunt implementeren vanuit een lokale Git-opslag plaats.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 048f98aa-f708-44cb-9b9e-953f67dc6da8
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 11cb8bd25f82e480ddbb23151d8a7622fedc828a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044820"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Een App Service-app maken en code implementeren vanuit een lokale Git-opslagplaats met behulp van Azure CLI
 
-Met dit voorbeeldscript wordt een app in App-service gemaakt met de bijbehorende bronnen en wordt uw app-code vervolgens geïmplementeerd in een lokale Git-opslagplaats.
+Met dit voorbeeld script maakt u een app in App Service met de bijbehorende resources en implementeert u vervolgens uw app-code in een lokale Git-opslag plaats.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

@@ -1,6 +1,6 @@
 ---
 title: Query's uitvoeren met de API van Azure Cosmos DB voor MongoDB
-description: Meer informatie over het opvragen van gegevens uit de API van Azure Cosmos DB voor MongoDB met behulp van MongoDB-shell-opdrachten
+description: Meer informatie over het opvragen van gegevens uit de API van Azure Cosmos DB voor MongoDB met behulp van MongoDB-shell opdrachten
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870136"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Query's uitvoeren met behulp van de API van Azure Cosmos DB voor MongoDB

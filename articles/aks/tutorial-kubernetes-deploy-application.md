@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77593271"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassingen uitvoeren in AKS (Azure Kubernetes Service)
@@ -17,7 +17,7 @@ ms.locfileid: "77593271"
 Kubernetes biedt een gedistribueerd platform voor toepassingen in containers. U gaat uw eigen toepassingen en services implementeren in een Kubernetes-cluster, en u laat het cluster de beschikbaarheid en connectiviteit beheren. In deze zelfstudie, deel vier van zeven, wordt een voorbeeldtoepassing geïmplementeerd in een Kubernetes-cluster. Procedures voor:
 
 > [!div class="checklist"]
-> * Een Kubernetes-manifestbestand bijwerken
+> * Een Kubernetes-manifest bestand bijwerken
 > * Een toepassing in Kubernetes uitvoeren
 > * De toepassing testen
 
@@ -49,7 +49,7 @@ Het voorbeeldmanifestbestand van de Git-opslagplaats dat in de eerste zelfstudie
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Vervang *microsoft* door de naam van de ACR-aanmeldingsserver. De afbeeldingsnaam is te vinden op regel 51 van het manifestbestand. In het volgende voorbeeld ziet u de standaardnaam van de installatiekopie:
+Vervang *microsoft* door de naam van de ACR-aanmeldingsserver. De naam van de installatie kopie vindt u in regel 51 van het manifest bestand. In het volgende voorbeeld ziet u de standaardnaam van de installatiekopie:
 
 ```yaml
 containers:
@@ -112,7 +112,7 @@ Open een webbrowser naar het externe IP-adres van uw service als u de toepassing
 
 ![Afbeelding van Kubernetes-cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Als de toepassing niet is geladen, kan dit zijn veroorzaakt door een autorisatieprobleem met het register van de installatiekopie. Als u de status van uw containers wilt bekijken, gebruikt u de opdracht `kubectl get pods`. Zie [Authenticeren met Azure Container Registry van Azure Kubernetes Service](cluster-container-registry-integration.md)als de containerafbeeldingen niet kunnen worden opgehaald.
+Als de toepassing niet is geladen, kan dit zijn veroorzaakt door een autorisatieprobleem met het register van de installatiekopie. Als u de status van uw containers wilt bekijken, gebruikt u de opdracht `kubectl get pods`. Zie [verifiëren met Azure container Registry vanuit de Azure Kubernetes-service](cluster-container-registry-integration.md)als de container installatie kopieën niet kunnen worden opgehaald.
 
 ## <a name="next-steps"></a>Volgende stappen
 

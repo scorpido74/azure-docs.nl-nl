@@ -1,49 +1,49 @@
 ---
-title: Jupyter-notitieblokken maken en klonen - Proefversie van Azure Notebooks
-description: Azure Notebooks Preview-projecten beheren een verzameling notitieblokken en gerelateerde bestanden, die u maken nieuw of kloon uit een andere bron.
+title: Jupyter-notebooks maken en klonen-Azure Notebooks preview
+description: Azure Notebooks preview-projecten een verzameling van notitie blokken en gerelateerde bestanden beheren, die u kunt maken van een nieuwe of een kloon vanuit een andere bron.
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280571"
 ---
-# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projecten maken en klonen in Azure Notebooks Preview
+# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projecten maken en klonen in Azure Notebooks preview
 
-Azure Notebooks organiseert uw Jupyter-notitieblokken en gerelateerde bestanden in logische groepen die *projecten*worden genoemd. U maakt een project eerst als container en maakt of kloont vervolgens een of meer notitieblokken in een map naast andere projectbestanden. (Dit proces wordt gedemonstreerd in de [zelfstudie](tutorial-create-run-jupyter-notebook.md).)
+Azure Notebooks worden uw Jupyter-notebooks en gerelateerde bestanden ingedeeld in logische groepen die *projecten*worden genoemd. U maakt eerst een project als container en vervolgens maakt of kloont u een of meer notitie blokken in een map naast andere project bestanden. (Dit proces wordt in de [zelf studie](tutorial-create-run-jupyter-notebook.md)gedemonstreerd.)
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Een project onderhoudt ook metagegevens en andere configuratie-instellingen die van invloed zijn op de server waarop notitieblokken worden uitgevoerd, inclusief aangepaste installatiestappen en pakketinstallatie. Zie [Projecten beheren en configureren](configure-manage-azure-notebooks-projects.md)voor meer informatie.
+Een project houdt ook meta gegevens en andere configuratie-instellingen bij die van invloed zijn op de server waarop notitie blokken worden uitgevoerd, met inbegrip van aangepaste installatie stappen en pakket installatie. Zie [projecten beheren en configureren](configure-manage-azure-notebooks-projects.md)voor meer informatie.
 
-## <a name="use-the-my-projects-dashboard"></a>Het dashboard Mijn projecten gebruiken
+## <a name="use-the-my-projects-dashboard"></a>Het dash board mijn projecten gebruiken
 
-Op het dashboard `https://notebooks.azure.com/<userID>/projects` Mijn **projecten** u projecten bekijken, beheren en maken:
+In het dash board **Mijn projecten** op `https://notebooks.azure.com/<userID>/projects` kunt u projecten bekijken, beheren en maken:
 
-[![Dashboard Mijn projecten in Azure-notitieblokken](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Dash board van mijn projecten in Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
-Wat u op het dashboard doen, is afhankelijk van of u bent aangemeld met het account dat eigenaar is van de gebruikersnaam:
+Wat u op het dash board kunt doen, is afhankelijk van het feit of u bent aangemeld met het account dat eigenaar is van de gebruikers-ID:
 
 | Opdracht | Beschikbaar voor | Beschrijving |
 | --- | --- | --- |
-| **Uitvoeren** | Eigenaar | Hiermee start u de projectserver en opent u de projectmap in Jupyter. (Meer in het algemeen navigeert u eerst naar een projectmap en start u vervolgens vanaf daar een notitieblok.) |
-| **Downloaden** | Iedereen | Downloadt een kopie van het geselecteerde project als zip-bestand. |
-| **Delen** | Iedereen | Hiermee wordt de pop-up voor delen weergegeven waarmee u een URL verkrijgen voor een geselecteerd project, delen met sociale media, een e-mail met de URL verzenden en zowel HTML- als Markdown-code verkrijgen met een badge voor het starten van notitiebloken (zie [een startbadge verkrijgen](#obtain-a-launch-badge)) met de URL. |
+| **Uitvoeringsrun** | Eigenaar | Start de Project Server en opent de projectmap in Jupyter. (In de meeste gevallen gaat u eerst naar een projectmap en vervolgens een notitie blok starten.) |
+| **Downloaden** | Iedereen | Hiermee wordt een kopie van het geselecteerde project gedownload als een ZIP-bestand. |
+| **Delen** | Iedereen | Hier wordt de pop-up weer gegeven waarmee u een URL kunt verkrijgen voor een geselecteerd project, delen naar sociale media, een e-mail verzendt met de URL en de code voor HTML of prijs verlaging kunt verkrijgen voor met de badge ' Launch Notebook ' (Zie [een Launch badge verkrijgen](#obtain-a-launch-badge)) met de URL. |
 | **Verwijderen** | Eigenaar | Hiermee verwijdert u het geselecteerde project. Deze bewerking kan niet ongedaan worden gemaakt. |
-| **Terminal** | Eigenaar | Hiermee start u de projectserver en opent u een nieuw browservenster met de bash-terminal voor die server. |
-| **+ Nieuw project** | Eigenaar | Hiermee maakt u een nieuw project. Zie [Een nieuw project maken](#create-a-new-project). |
-| **GitHub Repo uploaden** | Eigenaar | Importeert een project van GitHub. [Een project importeren vanuit GitHub](#import-a-project-from-github). |
-| **Klonen** | Iedereen | Kopieert een geselecteerd project naar uw eigen account. Vraagt u om u aan te melden als u dit nog niet doet. Zie [Een project klonen](#clone-a-project). |
+| **Terminal** | Eigenaar | Hiermee wordt de Project Server gestart en vervolgens wordt er een nieuw browser venster geopend met de bash-terminal voor die server. |
+| **+ Nieuw project** | Eigenaar | Hiermee maakt u een nieuw project. Zie [een nieuw project maken](#create-a-new-project). |
+| **GitHub opslag plaats uploaden** | Eigenaar | Hiermee wordt een project uit GitHub geïmporteerd. [Importeer een project uit github](#import-a-project-from-github). |
+| **Klonen** | Iedereen | Hiermee wordt een geselecteerd project naar uw eigen account gekopieerd. Hiermee wordt u gevraagd om u aan te melden als dat nog niet het geval is. Zie [een project klonen](#clone-a-project). |
 
-### <a name="obtain-a-launch-badge"></a>Een launch badge verkrijgen
+### <a name="obtain-a-launch-badge"></a>Een Launch badge verkrijgen
 
-Wanneer u de opdracht **Delen** gebruikt en het tabblad **Insluiten** selecteert, u HTML-code of Markdown kopiëren waarmee een badge met 'startnotitieblok' wordt gemaakt:
+Wanneer u de opdracht **delen** gebruikt en het tabblad **insluiten** selecteert, kunt u HTML-code of-prijs opwaarderen die een ' notitie blok starten ' badge maakt:
 
-![Notitieblokbadge starten](https://notebooks.azure.com/launch.png)
+![Notebook-badge starten](https://notebooks.azure.com/launch.png)
 
-Als u geen Azure Notebooks-project hebt, u een koppeling maken die rechtstreeks vanuit GitHub wordt gekloond met de volgende sjablonen, waarbij u de juiste gebruikersnaam- en archiefnamen vervangt:
+Als u geen Azure Notebooks project hebt, kunt u rechtstreeks een koppeling maken die van GitHub wordt gekloond met behulp van de volgende sjablonen, waarbij u de juiste namen voor de gebruikers naam en de opslag plaats vervangt:
 
 ```html
 <a href="https://notebooks.azure.com/import/gh/<GitHub_username>/<repository_name>"><img src="https://notebooks.azure.com/launch.png" /></a>
@@ -55,67 +55,67 @@ Als u geen Azure Notebooks-project hebt, u een koppeling maken die rechtstreeks 
 
 ## <a name="create-a-new-project"></a>Een nieuw project maken
 
-Wanneer u de opdracht **+ Nieuw project** gebruikt, worden in Azure Notebooks een pop-up Nieuw project **maken** weergegeven. Voer in deze pop-up de volgende gegevens in en selecteer **Vervolgens Maken:**
+Wanneer u de **+ New Project** -opdracht gebruikt, wordt er een pop-upvenster **nieuw project maken** Azure notebooks weer gegeven. Voer in dit pop-upvenster de volgende gegevens in en selecteer vervolgens **maken**:
 
 | Veld | Beschrijving |
 | --- | --- |
-| Projectnaam | Een vriendelijke naam voor uw project die Azure Notebooks gebruikt voor weergavedoeleinden. Bijvoorbeeld 'Mijn notitieblokproject'. |
-| Project-id | Een aangepaste id die onderdeel wordt van de URL die `https://notebooks.azure.com/<user_id>/projects/<project_id>`u gebruikt om een project te delen (het formulier is). Deze id kan alleen letters, cijfers en koppeltekens gebruiken, is beperkt tot 30 tekens en kan geen [gereserveerde project-ID](#reserved-project-ids)zijn. Als u niet zeker weet wat u moet gebruiken, moet een gemeenschappelijke conventie een kleine versie van uw projectnaam gebruiken waarbij spaties worden omgezet in koppeltekens, zoals 'mijn-notebook-project' (afgekapt indien nodig om aan de lengtelimiet te voldoen). |
-| Public | Als deze optie is ingesteld, kan iedereen met de koppeling toegang krijgen tot het project. Wanneer u een privéproject maakt, moet u deze optie wissen. |
-| Initialiseiseer dit project met een README | Als u deze optie instelt, maakt u een *standaardbestand README.md* in het project. Een *README.md* bestand is desgewenst documentatie voor uw project. |
+| Projectnaam | Een beschrijvende naam voor het project die Azure Notebooks gebruikt voor weergave doeleinden. Bijvoorbeeld ' mijn notitie blok-project '. |
+| Project-id | Een aangepaste id die onderdeel wordt van de URL die u gebruikt om een project te delen (het `https://notebooks.azure.com/<user_id>/projects/<project_id>`formulier is). Deze ID mag alleen letters, cijfers en afbreek streepjes bevatten, is beperkt tot 30 tekens en kan geen [gereserveerde project-id](#reserved-project-ids)zijn. Als u niet zeker weet wat u moet gebruiken, is het een gemeen schappelijke Conventie om een kleine versie van uw project naam te gebruiken waarbij spaties worden omgezet in afbreek streepjes, zoals ' My-notebook-project ' (afgekapt indien nodig om de lengte te bepalen). |
+| Public | Indien ingesteld, staat iedereen met de koppeling toe om het project te openen. Schakel deze optie uit als u een persoonlijk project wilt maken. |
+| Dit project initialiseren met een Leesmij-bestand | Als deze instelling is ingesteld, wordt in het project een standaard *README.MD* -bestand gemaakt. In een *README.MD* -bestand kunt u indien gewenst documentatie voor uw project opgeven. |
 
-### <a name="reserved-project-ids"></a>Gereserveerde project-i-d's
+### <a name="reserved-project-ids"></a>Gereserveerde project-Id's
 
-De volgende gereserveerde woorden kunnen niet door zichzelf als project-id's worden gebruikt. Deze gereserveerde woorden kunnen echter worden gebruikt als onderdeel van langere project-id's.
+De volgende gereserveerde woorden kunnen niet worden gebruikt door zichzelf als project-Id's. Deze gereserveerde woorden kunnen echter worden gebruikt als onderdeel van langere project-Id's.
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
 | Info | account | beheer | api | blog | leslokaal |
 | content | dashboard | verkennen | FAQ | Help | html |
-| startpagina | importeren | Bibliotheek | beheer | nieuw | Notebook |
-| notebooks | pdf | trailer | Prijzen | profiel | zoeken |
+| startpagina | importeren | tagbibliotheek | beheer | nieuw | notitieblok |
+| notebooks | pdf | preview | koers | profiel | zoeken |
 | status | ondersteuning | test | | | |
 
-Als u een van deze woorden als project-id probeert te gebruiken, geven de pop-ups **Nieuw project** en **Projectinstellingen** maken aan: 'Bibliotheek-id is een gereserveerde id'.
+Als u een van deze woorden als project-ID probeert te gebruiken, worden de pop-up **nieuwe project** -en **project instellingen** maken popups, ' bibliotheek-id is een gereserveerde id '.
 
-Omdat een project-id ook deel uitmaakt van de URL van een project, kan ad blocker-software het gebruik van bepaalde zoekwoorden blokkeren, zoals 'advertentie'. Gebruik in dergelijke gevallen een ander woord in de project-ID.
+Omdat een project-ID ook deel uitmaakt van de URL van een project, kan het gebruik van bepaalde tref woorden, zoals ' advertisements ', worden geblokkeerd door de software van ad blocker. In dergelijke gevallen gebruikt u een ander woord in de project-ID.
 
-## <a name="import-a-project-from-github"></a>Een project importeren uit GitHub
+## <a name="import-a-project-from-github"></a>Een project uit GitHub importeren
 
-U eenvoudig een volledige openbare GitHub repo importeren als een project met alle gegevens en *README.md* bestanden. Gebruik de opdracht **GitHub Repo uploaden,** geef de volgende details op in de pop-up en selecteer **Importeren:**
+U kunt eenvoudig een volledige open bare GitHub-opslag plaats importeren als een project met inbegrip van alle gegevens-en *README.MD* -bestanden. Gebruik de **Upload github opslag plaats** opdracht, geef de volgende details op in het pop-upvenster en selecteer vervolgens **importeren**:
 
 | Veld | Beschrijving |
 | --- | --- |
-| GitHub-opslagplaats | De naam van de bronrepository op github.com. Als u bijvoorbeeld de Jupyter-notitieblokken [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)voor Azure Cognitive Services wilt klonen bij , voert u 'Microsoft/cognitive-services-notebooks' in.  |
-| Recursief klonen | GitHub-repositories kunnen meerdere onderliggende opslagplaatsen bevatten. Stel deze optie in als u de bovenliggende opslagplaats en al zijn kinderen wilt klonen. Omdat het mogelijk is voor een repository om veel kinderen te hebben, laat deze optie duidelijk, tenzij je weet dat je het nodig hebt. |
-| Projectnaam | Een vriendelijke naam voor uw project die Azure Notebooks gebruikt voor weergavedoeleinden. |
-| Project-id | Een aangepaste id die onderdeel wordt van de URL die `https://notebooks.azure.com/<user_id>/projects/<project_id>`u gebruikt om een project te delen (het formulier is). Deze id kan alleen letters, cijfers en koppeltekens gebruiken, is beperkt tot 30 tekens en kan geen [gereserveerde project-ID](#reserved-project-ids)zijn. Als u niet zeker weet wat u moet gebruiken, moet een gemeenschappelijke conventie een kleine versie van uw projectnaam gebruiken waarbij spaties worden omgezet in koppeltekens, zoals 'mijn-notebook-project' (afgekapt indien nodig om aan de lengtelimiet te voldoen). |
-| Public | Als deze optie is ingesteld, kan iedereen met de koppeling toegang krijgen tot het project. Wanneer u een privéproject maakt, moet u deze optie wissen. |
+| GitHub-opslagplaats | De naam van de bron opslagplaats op github.com. Als u bijvoorbeeld de Jupyter-notebooks voor Azure Cognitive Services wilt [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)klonen, voert u ' micro soft/cognitieve-Services-notebooks ' in.  |
+| Recursief klonen | GitHub-opslag plaatsen kunnen meerdere onderliggende opslag plaatsen bevatten. Stel deze optie in als u de bovenliggende en alle onderliggende opslag plaatsen wilt klonen. Omdat het mogelijk is dat een opslag plaats veel onderliggende items heeft, laat u deze optie uitgeschakeld, tenzij u er zeker van bent dat u ze nodig hebt. |
+| Projectnaam | Een beschrijvende naam voor het project die Azure Notebooks gebruikt voor weergave doeleinden. |
+| Project-id | Een aangepaste id die onderdeel wordt van de URL die u gebruikt om een project te delen (het `https://notebooks.azure.com/<user_id>/projects/<project_id>`formulier is). Deze ID mag alleen letters, cijfers en afbreek streepjes bevatten, is beperkt tot 30 tekens en kan geen [gereserveerde project-id](#reserved-project-ids)zijn. Als u niet zeker weet wat u moet gebruiken, is het een gemeen schappelijke Conventie om een kleine versie van uw project naam te gebruiken waarbij spaties worden omgezet in afbreek streepjes, zoals ' My-notebook-project ' (afgekapt indien nodig om de lengte te bepalen). |
+| Public | Indien ingesteld, staat iedereen met de koppeling toe om het project te openen. Schakel deze optie uit als u een persoonlijk project wilt maken. |
 
-Het importeren van een opslagplaats van GitHub importeert ook zijn geschiedenis. U standaard Git-opdrachten van de terminal gebruiken om nieuwe wijzigingen door te voeren, wijzigingen van GitHub te halen, enzovoort.
+Als u een opslag plaats importeert vanuit GitHub, wordt ook de geschiedenis geïmporteerd. U kunt standaard Git-opdrachten van de Terminal gebruiken om nieuwe wijzigingen door te voeren, wijzigingen op te halen van GitHub, enzovoort.
 
 ## <a name="clone-a-project"></a>Een project klonen
 
-Klonen maakt een kopie van een bestaand project in uw eigen account, waar u vervolgens een notitieblok of ander bestand in het project uitvoeren en wijzigen. U ook klonen gebruiken om kopieën te maken van uw eigen projecten waarin u experimenten of ander werk doet zonder het oorspronkelijke project te verstoren.
+Bij het klonen wordt een kopie gemaakt van een bestaand project in uw eigen account, waar u vervolgens elk notitie blok of ander bestand in het project kunt uitvoeren en wijzigen. U kunt ook klonen gebruiken om kopieën te maken van uw eigen projecten waarin u experimenten of andere werkzaamheden uitvoert zonder het oorspronkelijke project te verstoren.
 
 Een project klonen:
 
-1. Klik op het dashboard **Mijn projecten** met de rechtermuisknop op het gewenste project en selecteer **Clone** (sneltoets: c).
+1. Klik in het dash board **Mijn projecten** met de rechter muisknop op het gewenste project en selecteer **kloon** (sneltoets: c).
 
-    ![Opdracht Klonen in het menu projectcontext](media/clone-command.png)
+    ![De opdracht kopiëren in het context menu van het project](media/clone-command.png)
 
-1. Voer in de pop-up **Clone Project** een naam en id voor de kloon in en geef op of de kloon openbaar is. Deze instellingen zijn hetzelfde als voor een [nieuw project.](#create-a-new-project)
+1. Voer in het menu **kloon project** de naam en id in voor de kloon en geef op of de kloon openbaar is. Deze instellingen zijn hetzelfde als voor een [Nieuw project](#create-a-new-project).
 
-    ![Pop-up van Kloonproject](media/clone-project.png)
+    ![Menu Project klonen](media/clone-project.png)
 
-1. Nadat u de **knop Klonen** hebt geselecteerd, navigeert Azure Notebooks rechtstreeks naar de kopie.
+1. Nadat u de knop **klonen** hebt geselecteerd, gaat Azure notebooks rechtstreeks naar de kopie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Voorbeelden van notebooks verkennen](azure-notebooks-samples.md)
-- [Hoe: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-- [Hoe: pakketten installeren vanuit een notitieblok](install-packages-jupyter-notebook.md)
-- [Hoe: Een diavoorstelling presenteren](present-jupyter-notebooks-slideshow.md)
-- [Hoe: Werken met gegevensbestanden](work-with-project-data-files.md)
-- [Hoe: Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
-- [How to: Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)
+- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: pakketten installeren vanuit een notitie blok](install-packages-jupyter-notebook.md)
+- [Procedure: een diavoorstelling presen teren](present-jupyter-notebooks-slideshow.md)
+- [Procedure: werken met gegevens bestanden](work-with-project-data-files.md)
+- [Informatie over toegang tot gegevens bronnen](access-data-resources-jupyter-notebooks.md)
+- [Procedure: Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

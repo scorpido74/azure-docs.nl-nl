@@ -1,5 +1,5 @@
 ---
-title: Pushmeldingen verzenden naar specifieke Android-apps met Azure Notification Hubs
+title: Push meldingen verzenden naar specifieke Android-apps met behulp van Azure Notification Hubs
 description: Leer hoe u pushmeldingen kunt verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs.
 documentationcenter: android
 services: notification-hubs
@@ -18,17 +18,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75531119"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Android-apps met Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke Android-apps met behulp van Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Er wordt een WebAPI-back-end van ASP.NET gebruikt om clients te verifiëren en meldingen te genereren, zoals u kunt lezen in het artikel [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end). Deze zelfstudie bouwt voort op de meldingshub die u hebt gemaakt in de [zelfstudie: pushmeldingen naar Android-apparaten met behulp van Azure Notification Hubs en Firebase Cloud Messaging.](notification-hubs-android-push-notification-google-fcm-get-started.md)
+In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Er wordt een WebAPI-back-end van ASP.NET gebruikt om clients te verifiëren en meldingen te genereren, zoals u kunt lezen in het artikel [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end). Deze zelf studie is gebaseerd op de notification hub die u in de [zelf studie hebt gemaakt: Push meldingen naar Android-apparaten met behulp van Azure notification hubs en Firebase Cloud Messa ging](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -39,13 +39,13 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vul de [zelfstudie: Pushmeldingen naar Android-apparaten met Azure Notification Hubs en Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md) voordat je deze zelfstudie doet.
+Voltooi de [zelf studie: Push meldingen naar Android-apparaten met behulp van Azure notification hubs en Firebase Cloud Messa ging voordat u](notification-hubs-android-push-notification-google-fcm-get-started.md) deze zelf studie uitvoert.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Het Android-project maken
 
-De volgende stap is het bijwerken van de Android-toepassing die is gemaakt in de [zelfstudie: pushmeldingen naar Android-apparaten met behulp van Azure Notification Hubs en Firebase Cloud Messaging.](notification-hubs-android-push-notification-google-fcm-get-started.md)
+De volgende stap is het bijwerken van de Android-toepassing die in de [zelf studie is gemaakt: Push meldingen naar Android-apparaten met behulp van Azure notification hubs en Firebase Cloud Messa ging](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 1. Open het bestand `res/layout/activity_main.xml` en vervang de volgende inhoudsdefinities:
 
@@ -260,8 +260,8 @@ De volgende stap is het bijwerken van de Android-toepassing die is gemaakt in de
     }
     ```
 
-    Dit onderdeel implementeert de REST-aanroepen die nodig zijn om contact op te nemen met de backend van de app om zich te registreren voor pushmeldingen. Daarnaast wordt de *registrationIds* die is gemaakt door de meldingshub, lokaal opgeslagen. Zie [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end) voor meer informatie. Het maakt gebruik van een autorisatietoken dat is opgeslagen in lokale opslag wanneer u op de **knop Aanmelden** klikt.
-4. Voeg `MainActivity` in uw klas een `RegisterClient` veld voor de klasse en een tekenreeks toe voor het eindpunt van uw ASP.NET backend. Zorg ervoor dat u `<Enter Your Backend Endpoint>` vervangt door het eindpunt van de back-end dat u eerder hebt vastgesteld. Bijvoorbeeld `http://mybackend.azurewebsites.net`.
+    Dit onderdeel implementeert de REST-aanroepen die nodig zijn om contact op te nemen met de back-end van de app om te registreren voor push meldingen Daarnaast wordt de *registrationIds* die is gemaakt door de meldingshub, lokaal opgeslagen. Zie [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end) voor meer informatie. Er wordt een autorisatie token gebruikt dat is opgeslagen in de lokale opslag wanneer u op de knop **Aanmelden** klikt.
+4. Voeg in `MainActivity` uw klasse een veld toe voor de `RegisterClient` klasse en een teken reeks voor het eind punt van uw ASP.net-back-end. Zorg ervoor dat u `<Enter Your Backend Endpoint>` vervangt door het eindpunt van de back-end dat u eerder hebt vastgesteld. Bijvoorbeeld `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -322,7 +322,7 @@ De volgende stap is het bijwerken van de Android-toepassing die is gemaakt in de
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Voeg vervolgens de volgende methoden toe om de knop **Aanmelden** te verwerken klik op gebeurtenis en het verzenden van pushmeldingen.
+9. Voeg vervolgens de volgende methoden toe voor het afhandelen **van de aanmeldings** knop gebeurtenis klikken en verzenden van push meldingen.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -412,7 +412,7 @@ De volgende stap is het bijwerken van de Android-toepassing die is gemaakt in de
     }
     ```
 
-    De `login` handler voor de **knop Aanmelden** genereert een basisverificatietoken met behulp van de invoergebruikersnaam en `RegisterClient` -wachtwoord (het vertegenwoordigt een token dat uw verificatieschema gebruikt), en gebruikt vervolgens om de backend voor registratie aan te roepen.
+    De `login` handler voor de **aanmeldings** knop genereert een basis verificatie token met behulp van de gebruikers naam en het wacht woord van de invoer (dit is een token dat uw verificatie `RegisterClient` schema gebruikt). vervolgens wordt de back-end voor registratie aangeroepen.
 
     De methode `sendPush` roept de back-end aan om een beveiligde melding te activeren naar de gebruiker, op basis van de gebruikerstag. De Platform Notification Service die door `sendPush` wordt benaderd, is afhankelijk van de `pns`-tekenreeks die wordt doorgegeven.
 
@@ -472,7 +472,7 @@ De volgende stap is het bijwerken van de Android-toepassing die is gemaakt in de
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Als uw app is gericht op API-niveau 28 (Android 9.0) of hoger, neemt u de volgende verklaring op in het `<application>` element . `AndroidManifest.xml`
+13. Als uw app is gericht op API-niveau 28 (Android 9,0) of hoger, neemt u de volgende declaratie `<application>` op in `AndroidManifest.xml`het element van.
 
     ```xml
     <uses-library
@@ -485,7 +485,7 @@ De volgende stap is het bijwerken van de Android-toepassing die is gemaakt in de
 
 1. Voer de toepassing uit op een apparaat of in een emulator met Android Studio.
 2. Voer in de Android-app een gebruikersnaam en wachtwoord in. Deze moeten beide dezelfde tekenreekswaarde zijn en ze mogen geen spaties of speciale tekens bevatten.
-3. Klik in de Android-app op **Aanmelden**. Wacht op een pop-upbericht waarin **ondertekend en geregistreerd staat**. De knop **Send Notification** kan nu worden gekozen.
+3. Klik in de Android-app op **Aanmelden**. Wacht op een pop-upbericht waarin staat **aangemeld en geregistreerd**. De knop **Send Notification** kan nu worden gekozen.
 
     ![][A2]
 4. Klik op de wisselknoppen om alle platforms in te schakelen waarop u de app hebt uitgevoerd en een gebruiker hebt geregistreerd.

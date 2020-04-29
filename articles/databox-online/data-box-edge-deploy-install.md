@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie om te installeren - Uitpakken, rack, kabel Azure Data Box Edge fysiek apparaat | Microsoft Documenten
+title: Zelf studie voor installatie-unpack, Rack, kabel Azure Data Box Edge fysiek apparaat | Microsoft Docs
 description: De tweede zelfstudie over het installeren van Azure Data Box Edge gaat over het uitpakken, het in een rek monteren en het bekabelen van het fysieke apparaat.
 services: databox
 author: alkohli
@@ -10,13 +10,13 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76263945"
 ---
-# <a name="tutorial-install-azure-data-box-edge"></a>Zelfstudie: Azure Data Box Edge installeren
+# <a name="tutorial-install-azure-data-box-edge"></a>Zelf studie: Azure Data Box Edge installeren
 
 In deze zelfstudie wordt beschreven hoe u een fysiek Data Box Edge-apparaat installeert. De installatieprocedure omvat het uitpakken, het in een rek monteren en het bekabelen van het apparaat. 
 
@@ -37,7 +37,7 @@ De vereisten voor het installeren van een fysiek apparaat zijn als volgt:
 
 Zorg voordat u begint voor het volgende:
 
-* U hebt alle stappen voltooid in [Voorbereiden om Azure Data Box Edge te implementeren.](data-box-edge-deploy-prep.md)
+* U hebt alle stappen voor het voorbereiden van de [implementatie van Azure data Box Edge](data-box-edge-deploy-prep.md)voltooid.
     * U hebt een Data Box Edge-resource gemaakt voor het implementeren van uw apparaat.
     * U hebt de activeringscode gegenereerd voor het activeren van uw apparaat met de Data Box Edge-resource.
 
@@ -70,17 +70,17 @@ Dit apparaat wordt verzonden in één doos. Voer de volgende stappen uit om het 
 1. Leg de doos op een vlak, horizontaal oppervlak.
 2. Controleer de doos en het verpakkingsmateriaal op deuken, scheuren, waterschade of andere duidelijk zichtbare schade. Als de doos of het verpakkingsmateriaal ernstig beschadigd is, moet u de doos niet openen. Neem contact op met Microsoft Support om in overleg te bepalen of het apparaat nog in goede staat zal zijn.
 3. Pak de doos uit. Controleer of de inhoud van de doos bestaat uit de volgende items:
-    - Eén gegevensboxrandapparaat met één behuizing
+    - Eén behuizing Data Box Edge apparaat
     - Twee netsnoeren
-    - Eén railkitmontage
-    - Een informatieboekje voor veiligheid, milieu en regelgeving
+    - Eén Rail Kit-assembly
+    - Een boekje met veiligheids-, omgevings-en regelgevings informatie
 
 Als een of meer van de bovenstaande items ontbreken, neemt u contact op met de Data Box Edge-ondersteuning. De volgende stap is het in het rek monteren van uw apparaat.
 
 
 ## <a name="rack-the-device"></a>Het apparaat in het rek monteren
 
-Het apparaat moet worden geïnstalleerd in een standaard 19-inch rek. Gebruik de volgende procedure om uw apparaat op een standaard 19-inch rack te monteren.
+Het apparaat moet worden geïnstalleerd in een standaard 19-inch rek. Gebruik de volgende procedure om uw apparaat te koppelen aan een standaard 19-inch rack.
 
 > [!IMPORTANT]
 > Data Box Edge-apparaten moeten voor een goede werking in een rek worden gemonteerd.
@@ -88,128 +88,128 @@ Het apparaat moet worden geïnstalleerd in een standaard 19-inch rek. Gebruik de
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Lees voordat u begint de veiligheidsinstructies in uw boekje met veiligheids-, milieu- en regelgevingsinformatie. Dit boekje is verzonden met het apparaat.
-- Begin met het installeren van de rails in de toegewezen ruimte die het dichtst bij de onderkant van de rackbehuizing ligt.
-- Voor de opstelling van de gereedschapsrail:
-    -  Je moet acht schroeven leveren: #10-32, #12-24, #M5 of #M6. De kopdiameter van de schroeven moet minder dan 10 mm (0,4" zijn).
-    -  Je hebt een platte schroevendraaier nodig.
+- Lees voordat u begint de veiligheids instructies in uw boekje met veiligheid, milieu en reglementaire informatie. Dit boekje is geleverd bij het apparaat.
+- Beginnen met de installatie van de rails in de toegewezen ruimte die het dichtst bij de onderkant van de rack behuizing ligt.
+- Voor de configuratie van het hulp programma voor spoorstaaf montage:
+    -  U moet acht schroeven opgeven: #10-32, #12-24, #M5 of #M6. De hoofd diameter van de schroeven moet kleiner zijn dan 10 mm (0,4).
+    -  U hebt een draaier met een vlakke kanteling nodig.
 
-### <a name="identify-the-rail-kit-contents"></a>De inhoud van de railkit identificeren
+### <a name="identify-the-rail-kit-contents"></a>De inhoud van de Rail Kit identificeren
 
-Zoek de onderdelen voor het installeren van de railkitassemblage:
-1. Twee A7 Dell ReadyRails II schuifrailassemblages
-2. Twee haak- en lusriemen
+Zoek de onderdelen voor het installeren van de Rail Kit-assembly:
+1. Twee A7 Dell ReadyRails II-schuif rails
+2. Twee Hook-en loop riemen
 
-    ![Inhoud van de railkit identificeren](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
+    ![Inhoud van de Rail Kit identificeren](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
-### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Gereedschapsloze rails installeren en verwijderen (vierkante gat- of ronde gatrekken)
-
-> [!TIP]
-> Deze optie is gereedschapsloos omdat er geen gereedschap nodig is om de rails in de niet-gedraalde vierkante of ronde gaten in de rekken te installeren en te verwijderen.
-
-1. Plaats de linker en rechter rail eindstukken gelabeld **FRONT** naar binnen gericht en oriënteer elk eindstuk te zitten in de gaten aan de voorzijde van de verticale rekflenzen.
-2. Lijn elk eindstuk in de onderste en bovenste gaten van de gewenste U-ruimten uit.
-3. Schakel de achterkant van de rail in totdat deze volledig op de verticale rekflens zit en de vergrendeling op zijn plaats klikt. Herhaal deze stappen om het voorste uiteinde stuk op de verticale rekflens te plaatsen en te plaatsen.
-4. Als u de rails wilt verwijderen, trekt u aan de knop voor het loslaten van het eindstuk en ontseatt u elke rail.
-
-    ![Rails zonder gereedschap installeren en verwijderen](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
-
-### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Gereedschapsrails installeren en verwijderen (Threaded hole racks)
+### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Hulp programma-minder rails installeren en verwijderen (vier Kante openingen of racks met ronde openingen)
 
 > [!TIP]
-> Deze optie is uitgerust omdat het een gereedschap _(een platte schroevendraaier)_ nodig heeft om de rails in de schroefdraad ronde gaten in de rekken te installeren en te verwijderen.
+> Deze optie is minder goed, omdat deze geen hulpprogram ma's nodig heeft om de rails te installeren en verwijderen in de niet-gethreadde vier Kante of afgeronde gaten in de racks.
 
-1. Verwijder de pinnen van de voorste en achterste montagebeugels met behulp van een platte schroevendraaier.
-2. Trek en draai de railvergrendeling subassemblies om ze te verwijderen uit de montagebeugels.
-3. Bevestig de linker- en rechtermontagerails aan de voorste verticale rekflenzen met behulp van twee paar schroeven.
-4. Schuif de linker- en rechterachterbeugels naar voren tegen de verticale achterste rekflenzen en bevestig ze met behulp van twee paar schroeven.
+1. Plaats de eind stukken van de linker-en rechter lijn met het label aan de **voor zijde** naar rechts en zet elk eind stuk naar seat in de gaten aan de voor zijde van de verticale rack flenss.
+2. Elk eind stuk in de onderste en bovenste gaten van de gewenste U ruimten uitlijnen.
+3. Zet de back-end van de Rail totdat deze volledig is gekoppeld aan de verticale rack flens en klik op de vergren deling. Herhaal deze stappen om het front-end-gedeelte op de verticale rack flens te plaatsen en positioneren.
+4. Als u de rails wilt verwijderen, geeft u de vergren deling van de vergrendelings knop op het eind punt van het gedeelte op en verwijdert u elke rail.
 
-    ![Gereedschapsrails installeren en verwijderen](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Hulp programma-minder rails installeren en verwijderen](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
-### <a name="install-the-system-in-a-rack"></a>Het systeem in een rack installeren
+### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Uitgewerkte rails installeren en verwijderen (gethreadd hole-racks)
 
-1. Trek de binnenste schuifrails uit het rek totdat ze op hun plaats worden vergrendeld.
-2. Zoek de achterste rail standoff aan elke kant van het systeem en laat ze in de achterste J-slots op de dia samenstellingen. Draai het systeem naar beneden totdat alle railstandoffs in de J-sleuven zitten.
-3. Duw het systeem naar binnen totdat de slothendels op hun plaats klikken.
-4. Druk op de schuifontgrendelingsvergrendelingsknoppen op beide rails en schuif het systeem in het rek.
+> [!TIP]
+> Deze optie is alleen mogelijk als er een hulp programma (_een platte draaier_) is vereist voor het installeren en verwijderen van de rails in de geschroefde ronde gaten in de racks.
 
-    ![Installatiesysteem in een rack](./media/data-box-edge-deploy-install/installing-system-rack.png)
+1. Verwijder de pincodes van de voor-en hand beugels met een vlakke draaier.
+2. Haal de subassemblages van de Rail hendel op en Roteer ze om ze te verwijderen van de beugels.
+3. Koppel de linker-en rechter-koppel rails aan de voor zijde verticale rack flenss met behulp van twee combi Naties van schroeven.
+4. Schuif de linker-en rechter kant omhoog en klik op de pijl naar rechts op de verticale rack flens en voeg deze toe met behulp van twee combi Naties van schroeven.
 
-### <a name="remove-the-system-from-the-rack"></a>Het systeem uit het rek halen
+    ![Hulpprogram ma's voor het hulp programma installeren en verwijderen](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
 
-1. Plaats de slothendels aan de zijkanten van de binnenrails.
-2. Ontgrendel elke hendel door deze naar de ontgrendelingspositie te draaien.
-3. Pak de zijkanten van het systeem stevig vast en trek het naar voren totdat de railstandoffs zich aan de voorzijde van de J-sleuven bevinden. Til het systeem op en uit de buurt van het rek en plaats het op een vlakke ondergrond.
+### <a name="install-the-system-in-a-rack"></a>Het systeem in een rek installeren
 
-    ![Systeem uit het rek verwijderen](./media/data-box-edge-deploy-install/removing-system-rack.png)
+1. Haal de binnenste schuif rails uit het rek totdat ze zijn vergrendeld.
+2. Zoek de Standoff aan de achterzijde op elke zijde van het systeem en verlaag deze naar de eerste J-sleuven op de dia-verzamelingen. Roteer het systeem omlaag totdat alle Rail standoffs in de J-sleuven zijn geplaatst.
+3. Push het systeem naar binnen totdat de vergren delingen worden geplaatst.
+4. Druk op de knoppen voor het vergren delen van de schuif regelaar op beide rails en schuif het systeem in het rek.
 
-### <a name="engage-and-release-the-slam-latch"></a>Schakel de slagklink in en laat deze los
+    ![Systeem in een rek installeren](./media/data-box-edge-deploy-install/installing-system-rack.png)
+
+### <a name="remove-the-system-from-the-rack"></a>Het systeem uit het rek verwijderen
+
+1. Zoek de vergrendelings hendels aan de zijkanten van de interne rails.
+2. Ontgrendel elke hendel door deze naar de release positie te verplaatsen.
+3. Begrijpt de zijkanten van het systeem stevig af en haal het door, totdat de Rail standoffs vooraan in de J-sleuven staan. Til het systeem omhoog en weg van het rek en plaats het op een niveau vlak.
+
+    ![Het systeem uit het rek verwijderen](./media/data-box-edge-deploy-install/removing-system-rack.png)
+
+### <a name="engage-and-release-the-slam-latch"></a>De Slam-hendel benaderen en vrijgeven
 
 > [!NOTE]
-> Voor systemen die niet zijn uitgerust met slam-vergrendelingen, u het systeem beveiligen met schroeven, zoals beschreven in stap 3 van deze procedure.
+> Voor systemen die niet zijn uitgerust met Slam-hendels, kunt u het systeem beveiligen met schroeven, zoals beschreven in stap 3 van deze procedure.
 
-1. Naar voren, zoek de slam klink aan weerszijden van het systeem.
-2. De vergrendelingen gaan automatisch in werking als het systeem in het rek wordt geduwd en worden losgelaten door op de vergrendelingen te trekken.
-3. Om het systeem te beveiligen voor verzending in het rek of voor andere onstabiele omgevingen, zoek de hard-mount schroef onder elke vergrendeling en draai elke schroef met een #2 Phillips schroevendraaier.
+1. Zoek de Slam-hendel aan beide zijden van het systeem.
+2. De vergren delingen worden automatisch geactiveerd wanneer het systeem wordt gepusht naar het rek en wordt vrijgegeven door de vergren delingen op te halen.
+3. Als u het systeem voor verzen ding in het rek of voor andere onstabiele omgevingen wilt beveiligen, zoekt u de vaste montagekit onder elke hendel en draait u elke schroef met een #2 Phillips draaier.
 
-    ![Schakel en laat slamvergrendeling los](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+    ![Slam-hendel benaderen en vrijgeven](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
 
 ## <a name="cable-the-device"></a>Het apparaat bekabelen
 
-Leid de kabels en kabel vervolgens met uw apparaat. In de volgende procedures wordt uitgelegd hoe u uw Data Box Edge-apparaat bekabelen voor stroom en netwerk.
+De kabels routeren en vervolgens uw apparaat bekabelen. In de volgende procedures wordt uitgelegd hoe u uw Data Box Edge apparaat kunt bekabelen voor energie en netwerk.
 
 Voordat u begint met de bekabeling van uw apparaat, zorgt u ervoor dat u over de volgende zaken beschikt:
 
-- Uw databox rand fysiek apparaat, uitgepakt, en rack gemonteerd.
+- Uw Data Box Edge fysiek apparaat, uitgepakt en rek gekoppeld.
 - Twee netsnoeren.
 - Ten minste één 1-GbE RJ-45-netwerkkabel voor verbinding met de beheerinterface. Er zijn twee 1-GbE-netwerkinterfaces, één beheerinterface en één gegevensinterface, op het apparaat aanwezig.
 - Eén koperen 25-GbE SFP+-kabel voor elke te configureren netwerkinterface. Ten minste één netwerkinterface (PORT 2, PORT 3, PORT 4, PORT 5 of PORT 6) moet worden verbonden met internet (en met Azure).  
 - Toegang tot twee Power Distribution Units (aanbevolen).
 
 > [!NOTE]
-> - Als u slechts één datanetwerkinterface verbindt, raden we u aan een 25/10 GbE-netwerkinterface te gebruiken, zoals PORT 3, PORT 4, PORT 5 of PORT 6 om gegevens naar Azure te verzenden. 
+> - Als u slechts één gegevens netwerk interface verbindt, raden we u aan om een 25/10-GbE-netwerk interface te gebruiken, zoals poort 3, poort 4, poort 5 of poort 6 voor het verzenden van gegevens naar Azure. 
 > - Voor de beste prestaties en voor het verwerken van grote gegevensvolumes, kunt u eventueel alle gegevenspoorten verbinden.
-> - Het Data Box Edge-apparaat moet worden aangesloten op het datacenternetwerk, zodat het gegevens kan opnemen van gegevensbronservers.
+> - Het Data Box Edge apparaat moet worden verbonden met het datacenter netwerk zodat het gegevens kan opnemen van gegevens bron servers.
 
 Op uw Data Box Edge-apparaat:
 
-- Het voorpaneel heeft schijven en een aan/uit-knop.
+- Het voor paneel heeft schijf stations en een aan/uit-knop.
 
-    - Er zijn 10 schijfsleuven aan de voorkant van uw apparaat.
-    - Slot 0 heeft een 240 GB SATA-station dat wordt gebruikt als een besturingssysteemschijf. Slot 1 is leeg en slots 2 tot 9 zijn NVMe SSD's die als dataschijven worden gebruikt.
-- Het achterste vlak bevat redundante voedingen (PSU's).
-- Het achtervlak heeft zes netwerkinterfaces:
+    - Er zijn 10 schijf sleuven aan de voor zijde van het apparaat.
+    - Sleuf 0 heeft een 240-GB SATA-schijf dat wordt gebruikt als een besturingssysteem schijf. Sleuf 1 is leeg en sleuven van 2 tot 9 zijn NVMe Ssd's gebruikt als gegevens schijven.
+- Het back-vlak bevat redundante voedings eenheden (PSUs).
+- Het back-upvlak heeft zes netwerk interfaces:
 
-    - Twee interfaces van 1 Gbps.
-    - Vier 25-Gbps interfaces die ook kunnen dienen als 10-Gbps interfaces.
-    - Een baseboard management controller (BMC).
+    - Twee 1-Gbps-interfaces.
+    - 4 25-Gbps-interfaces die ook kunnen fungeren als 10-Gbps-interfaces.
+    - Een Base Board management controller (BMC).
 
-- Het achterste vlak heeft twee netwerkkaarten die overeenkomen met de 6 poorten:
+- Het back-upvlak heeft twee netwerk kaarten die overeenkomen met de 6 poorten:
 
     - QLogic FastLinQ 41264
     - QLogic FastLinQ 41262
 
-Ga voor een volledige lijst van ondersteunde kabels, switches en transceivers voor deze netwerkkaarten naar [Cavium FastlinQ 41000-serie interoperabiliteitsmatrix.](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)
+Voor een volledige lijst met ondersteunde kabels, switches en transceivers voor deze netwerk kaarten gaat u naar de [Cavium FastlinQ-serie](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)van de 41000-reeks.
  
 Voer de volgende stappen uit om uw apparaat te bekabelen voor stroom en verbinding met het netwerk.
 
-1. Identificeer de verschillende poorten op het achtervlak van uw apparaat.
+1. Identificeer de verschillende poorten op het achtergrond vlak van uw apparaat.
 
-    ![Achtervlak van een bekabeld apparaat](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    ![Achtergrond vlak van een aangesloten apparaat](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
-2. Zoek de schijfsleuven en de aan/uit-knop aan de voorkant van het apparaat.
+2. Zoek de schijf sleuven en de aan/uit-knop aan de voor zijde van het apparaat.
 
-    ![Voorvlak van een apparaat](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
+    ![Voor vlak van een apparaat](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
 
 3. Sluit de netsnoeren aan op de PSU's in de behuizing. Voor een hoge beschikbaarheid moet u beide PSU's verbinden met verschillende stopcontacten.
 4. Sluit de netsnoeren aan op de PDU's van het rek. Zorg ervoor dat de twee PSU's op verschillende stopcontacten zijn aangesloten.
-5. Druk op de aan/uit-knop om het apparaat in te schakelen.
+5. Druk op de aan/uit-knop om het apparaat in te scha kelen.
 6. Verbind PORT 1 van de 1-GbE netwerkinterface met de computer die wordt gebruikt voor het configureren van het fysieke apparaat. PORT 1 is de gereserveerde beheerinterface.
 7. Verbind één of meer interfaces, bijvoorbeeld PORT 2, PORT 3, PORT 4, PORT 5 of PORT 6 aan het netwerk van het datacenter of internet.
 
     - Gebruik de RJ-45-netwerkkabel als u PORT 2 verbindt.
-    - Gebruik voor de 10/25 GbE-netwerkinterfaces de SFP+ koperkabels.
+    - Gebruik de SFP + koper kabels voor de netwerk interfaces van 10/25 GbE.
 
 ## <a name="next-steps"></a>Volgende stappen
 

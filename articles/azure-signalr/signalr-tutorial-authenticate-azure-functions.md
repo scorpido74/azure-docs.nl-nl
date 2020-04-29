@@ -1,16 +1,16 @@
 ---
-title: 'Zelfstudie: Verificatie met Azure-functies - Azure SignalR'
-description: In deze zelfstudie leert u hoe u Azure SignalR Service-clients voor Azure-functies binding verifiëren
+title: 'Zelf studie: verificatie met Azure Functions-Azure-Signaalr'
+description: In deze zelf studie leert u hoe u Azure signalerings service-clients kunt verifiëren voor Azure Functions binding
 author: sffamily
 ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158146"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Zelfstudie: Verificatie van Azure SignalR Service met Azure Functions
@@ -45,26 +45,26 @@ Ga naar [Azure Portal](https://portal.azure.com/) en meld u aan met uw referenti
 
 U gaat de Azure Functions-app lokaal bouwen en testen. De app heeft toegang tot een exemplaar van SignalR Service in Azure die vooraf moet worden gemaakt.
 
-1. Klik op de knop**+** Een **resource** maken ( ) voor het maken van een nieuwe Azure-bron.
+1. Klik op de knop **een resource maken** (**+**) voor het maken van een nieuwe Azure-resource.
 
-1. Zoek naar **SignalR Service** en selecteer deze. Klik **op Maken**.
+1. Zoek naar **SignalR Service** en selecteer deze. Klik op **maken**.
 
     ![Nieuwe SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. Voer de volgende informatie in.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Resourcenaam | Een unieke naam voor het SignalR Service-exemplaar |
-    | Resourcegroep | Een nieuwe resourcegroep maken met een unieke naam |
+    | Resourcegroep | Een nieuwe resource groep met een unieke naam maken |
     | Locatie | Selecteer een locatie dicht bij u in de buurt |
     | Prijscategorie | Gratis |
 
-1. Klik **op Maken**.
+1. Klik op **maken**.
 
-1. Nadat de instantie is geïmplementeerd, opent u deze in de portal en zoekt u de pagina Instellingen. Wijzig de instelling Servicemodus in *Serverless*.
+1. Nadat het exemplaar is geïmplementeerd, opent u het in de portal en zoekt u de pagina instellingen. Wijzig de instelling van de service modus in *serverloze*.
 
-    ![SignalR-servicemodus](media/signalr-concept-azure-functions/signalr-service-mode.png)
+    ![Seingevings service-modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 
 ## <a name="initialize-the-function-app"></a>Initaliseer de functie-app
@@ -85,7 +85,7 @@ U gaat de Azure Functions-app lokaal bouwen en testen. De app heeft toegang tot 
 
 In deze zelfstudie worden Azure Functions-bindingen gebruikt voor de interactie met Azure SignalR Service. De bindingen van SignalR Service zijn, zoals de meeste andere bindingen, beschikbaar als extensie die moeten worden geïnstalleerd met behulp van de Azure Functions Core Tools CLI voordat ze kunnen worden gebruikt.
 
-1. Open een terminal in VS-code door Weergave >\` **Terminal** te selecteren in het menu (Ctrl- ).
+1. Open een terminal in VS code door **>-Terminal weer geven** te selecteren in het menu\`(CTRL-).
 
 1. Zorg dat de hoofdprojectmap de huidige map is.
 
@@ -124,7 +124,7 @@ Bij het lokaal uitvoeren van en opsporen van fouten in de Azure Functions-runtim
    * In het gedeelte `Host` worden de poort- en CORS-instellingen voor de lokale Functions-host geconfigureerd (deze instelling heeft geen functie bij uitvoering in Azure).
 
        > [!NOTE]
-       > Live Server is meestal geconfigureerd om `http://127.0.0.1:5500`inhoud van . Als u merkt dat deze een andere URL gebruikt of als `CORS` u een andere HTTP-server gebruikt, wijzigt u de instelling om de juiste oorsprong weer te geven.
+       > Live server is doorgaans geconfigureerd voor het leveren van `http://127.0.0.1:5500`inhoud van. Als u merkt dat het een andere URL gebruikt of als u een andere HTTP-server gebruikt, wijzigt u `CORS` de instelling zodat deze overeenkomt met de juiste oorsprong.
 
      ![SignalR Service-sleutel ophalen](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
@@ -134,10 +134,10 @@ Bij het lokaal uitvoeren van en opsporen van fouten in de Azure Functions-runtim
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>Een functie maken om gebruikerstoegang tot SignalR Service te verifiëren
 
-Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige verbindingsreferenties vereist voor het maken van verbinding met Azure SignalR Service. U maakt een HTTP-geactiveerde functie met de naam *onderhandelen* in uw functie-app om deze verbindingsgegevens terug te sturen.
+Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige verbindingsreferenties vereist voor het maken van verbinding met Azure SignalR Service. U maakt een door HTTP geactiveerde functie met de naam *Negotiate* in uw functie-app om deze verbindings gegevens te retour neren.
 
 > [!NOTE]
-> Deze functie moet worden benoemd *onderhandelen* als de SignalR `/negotiate`client vereist een eindpunt dat eindigt in .
+> Deze functie moet *onderhandelen* als de seingevings-client een eind punt nodig heeft dat eindigt op `/negotiate`.
 
 1. Open het opdrachtenpalet van VS Code (`Ctrl-Shift-P`, Mac OS: `Cmd-Shift-P`).
 
@@ -145,16 +145,16 @@ Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige ver
 
 1. Geef de volgende informatie op wanneer u daarom wordt gevraagd.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Map van de functie-app | Selecteer de hoofdprojectmap |
     | Template | HTTP-trigger |
-    | Name | negotiate |
+    | Naam | negotiate |
     | Autorisatieniveau | Anoniem |
 
-    Er wordt een map met de naam **onderhandelen** gemaakt die de nieuwe functie bevat.
+    Er wordt een map met de naam **Negotiate** gemaakt die de nieuwe functie bevat.
 
-1. Open **onderhandelen/function.json** om bindingen voor de functie te configureren. Wijzig de inhoud van het bestand in het volgende. Hiermee voegt u een invoerbinding toe die geldige referenties voor een client genereert, om verbinding te maken met een Azure SignalR Service-hub met de naam `chat`.
+1. Open **Negotiate/function. json** om bindingen voor de functie te configureren. Wijzig de inhoud van het bestand in het volgende. Hiermee voegt u een invoerbinding toe die geldige referenties voor een client genereert, om verbinding te maken met een Azure SignalR Service-hub met de naam `chat`.
 
     ```json
     {
@@ -184,7 +184,7 @@ Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige ver
 
     De eigenschap `userId` in de binding `signalRConnectionInfo` wordt gebruikt voor het maken van een geverifieerde verbinding met SignalR Service. Laat de eigenschap leeg voor lokale ontwikkeling. U zult deze gebruiken bij het implementeren van de functie-app naar Azure.
 
-1. Open **onderhandelen/index.js** om de hoofdtekst van de functie te bekijken. Wijzig de inhoud van het bestand in het volgende.
+1. Open **Negotiate/index. js** om de hoofd tekst van de functie weer te geven. Wijzig de inhoud van het bestand in het volgende.
 
     ```javascript
     module.exports = async function (context, req, connectionInfo) {
@@ -192,7 +192,7 @@ Wanneer de chat-app de eerste keer wordt geopend in de browser, zijn geldige ver
     };
     ```
 
-    Deze functie gebruikt de SignalR-verbindingsgegevens van de invoerbinding en retourneert die aan de client in de hoofdtekst van het HTTP-antwoord. De SignalR-client gebruikt deze informatie om verbinding te maken met de instantie SignalR Service.
+    Deze functie gebruikt de SignalR-verbindingsgegevens van de invoerbinding en retourneert die aan de client in de hoofdtekst van het HTTP-antwoord. De seingevings client gebruikt deze informatie om verbinding te maken met het signaal service-exemplaar.
 
 ## <a name="create-a-function-to-send-chat-messages"></a>Een functie maken voor het verzenden van chatberichten
 
@@ -204,11 +204,11 @@ De web-app vereist ook een HTTP-API voor het verzenden van chatberichten. Maakt 
 
 1. Geef de volgende informatie op wanneer u daarom wordt gevraagd.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Map van de functie-app | selecteer de hoofdprojectmap |
     | Template | HTTP-trigger |
-    | Name | SendMessage |
+    | Naam | SendMessage |
     | Autorisatieniveau | Anoniem |
 
     Er wordt een map genaamd **SendMessage** die de nieuwe functie bevat.
@@ -244,7 +244,7 @@ De web-app vereist ook een HTTP-API voor het verzenden van chatberichten. Maakt 
     ```
     Hiermee brengt u twee wijzigingen aan in de oorspronkelijke functie:
     * De route naar `messages` wordt gewijzigd en de HTTP-trigger voor de **POST** HTTP-methode wordt beperkt.
-    * Hiermee voegt u een outputbinding van de SignalR-service toe die een `chat`bericht dat door de functie wordt geretourneerd, verzendt naar alle clients die zijn verbonden met een SignalR Service-hub met de naam .
+    * Voegt een signaal/service-uitvoer binding toe die een bericht verzendt dat door de functie wordt geretourneerd naar alle clients die zijn verbonden met `chat`een signalerings service-hub met de naam.
 
 1. Sla het bestand op.
 
@@ -307,40 +307,40 @@ Tot nu toe voert u de functie-app en chattoepassing lokaal uit. U gaat ze nu imp
 
 ### <a name="create-a-storage-account"></a>Een Storage-account maken
 
-Een Azure Storage-account is vereist door een functie-app die wordt uitgevoerd in Azure. U host ook de webpagina voor de chat-gebruikersinterface met behulp van de statische websitesfunctie van Azure Storage.
+Een Azure Storage-account is vereist voor een functie-app die wordt uitgevoerd in Azure. U kunt ook de webpagina voor de chat-gebruikers interface hosten met behulp van de functie voor statische websites van Azure Storage.
 
-1. Klik in de Azure-portal op**+** de knop Een **resource** maken () voor het maken van een nieuwe Azure-bron.
+1. Klik in de Azure Portal op de knop **een resource maken** (**+**) voor het maken van een nieuwe Azure-resource.
 
-1. Selecteer de categorie **Opslag** en selecteer **vervolgens Opslagaccount**.
+1. Selecteer de categorie **opslag** en selecteer vervolgens **opslag account**.
 
 1. Voer de volgende informatie in.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
-    | Abonnement | Het abonnement selecteren dat de instantie SignalR Service bevat |
-    | Resourcegroep | Dezelfde resourcegroep selecteren |
-    | Resourcenaam | Een unieke naam voor het Opslagaccount |
-    | Locatie | Selecteer dezelfde locatie als uw andere bronnen |
+    | Abonnement | Het abonnement selecteren dat het signaal service-exemplaar bevat |
+    | Resourcegroep | Dezelfde resource groep selecteren |
+    | Resourcenaam | Een unieke naam voor het opslag account |
+    | Locatie | Selecteer dezelfde locatie als uw andere resources |
     | Prestaties | Standard |
     | Soort account | StorageV2 (general purpose v2) |
     | Replicatie | Lokaal redundante opslag (LRS) |
-    | Toegangslaag | Warm |
+    | Toegangs niveau | Warm |
 
-1. Klik **op Controleren + maken**en maak vervolgens **.**
+1. Klik op **beoordeling + maken**en vervolgens op **maken**.
 
 ### <a name="configure-static-websites"></a>Statische websites configureren
 
-1. Nadat het opslagaccount is gemaakt, opent u het in de Azure-portal.
+1. Nadat het opslag account is gemaakt, opent u het in de Azure Portal.
 
-1. Selecteer **Statische website**.
+1. Selecteer **statische website**.
 
-1. Selecteer **Ingeschakeld** om de statische websitefunctie in te schakelen.
+1. Selecteer **ingeschakeld** om de functie statische website in te scha kelen.
 
-1. Voer in **Indexdocumentnaam** *index.html*in .
+1. Voer *index. html*in bij naam van het **index document**.
 
 1. Klik op **Opslaan**.
 
-1. Er wordt een **primair eindpunt** weergegeven. Let op deze waarde. Het is nodig om de functie-app te configureren.
+1. Er wordt een **primair eind punt** weer gegeven. Noteer deze waarde. Dit is vereist voor het configureren van de functie-app.
 
 ### <a name="configure-function-app-for-authentication"></a>Functie-app voor verificatie configureren
 
@@ -348,7 +348,7 @@ Tot nu toe werkt de chat-app anoniem. In Azure gebruikt u [App Service-verificat
 
 Bij het verzenden van een bericht kan de app beslissen om het te verzenden naar alle verbonden clients of alleen naar de clients die zijn geverifieerd voor een bepaalde gebruiker.
 
-1. Open **onderhandelen/function.json**in VS-code .
+1. Open in VS code **Negotiate/function. json**.
 
 1. Plaats een [bindingexpressie](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) in de eigenschap *userId* van de binding *SignalRConnectionInfo*: `{headers.x-ms-client-principal-name}`. Hiermee stelt u de waarde in op de gebruikersnaam van de geverifieerde gebruiker. Het kenmerk ziet er nu als volgt uit.
 
@@ -365,20 +365,20 @@ Bij het verzenden van een bericht kan de app beslissen om het te verzenden naar 
 1. Sla het bestand op.
 
 
-### <a name="deploy-function-app-to-azure"></a>Functie-app implementeren naar Azure
+### <a name="deploy-function-app-to-azure"></a>Functie-app implementeren in azure
 
 1. Open het opdrachtenpalet van VS Code (`Ctrl-Shift-P`, Mac OS: `Cmd-Shift-P`) en selecteer **Azure Functions: naar functie-app implementeren**.
 
 1. Geef de volgende informatie op wanneer u daarom wordt gevraagd.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Map voor implementatie | Selecteer de hoofdprojectmap |
     | Abonnement | Selecteer uw abonnement |
     | Function App | Selecteren **Nieuwe functie-app maken** |
     | Naam van de functie-app | Voer een unieke naam in |
     | Resourcegroep | Selecteer dezelfde resourcegroep als het SignalR Service-exemplaar |
-    | Storage-account | Selecteer het opslagaccount dat u eerder hebt gemaakt |
+    | Storage-account | Selecteer het opslag account dat u eerder hebt gemaakt |
 
     Er wordt een nieuwe functie-app gemaakt in Azure en de implementatie begint. Wacht totdat de installatie is voltooid.
 
@@ -390,7 +390,7 @@ Bij het verzenden van een bericht kan de app beslissen om het te verzenden naar 
 
 1. Geef de volgende informatie op wanneer u daarom wordt gevraagd.
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Lokale instellingsbestand | local.settings.json |
     | Abonnement | Selecteer uw abonnement |
@@ -409,7 +409,7 @@ App Service-verificatie biedt ondersteuning voor verificatie met Azure Active Di
 
 1. Selecteer het abonnement en de naam van de functie-app om de functie-app te openen in Azure Portal.
 
-1. Zoek in de functie-app die in de portal is geopend het tabblad **Platformfuncties,** selecteer **Verificatie/autorisatie.**
+1. Ga in de functie-app die is geopend in de portal naar het tabblad **platform functies** en selecteer **verificatie/autorisatie**.
 
 1. Schakel App Service-verificatie **in**.
 
@@ -445,17 +445,17 @@ De web-App wordt gehost met behulp van de functie voor statische websites van Az
 
 1. Open het opdrachtenpalet van VS Code (`Ctrl-Shift-P`, Mac OS: `Cmd-Shift-P`).
 
-1. Zoek naar en selecteer de opdracht **Azure Storage: Deploy to Static Website.**
+1. Zoek en selecteer de opdracht **Azure Storage: implementeren op statische website** .
 
 1. Voer de volgende waarden in:
 
-    | Name | Waarde |
+    | Naam | Waarde |
     |---|---|
     | Abonnement | Selecteer uw abonnement |
-    | Storage-account | Selecteer het opslagaccount dat u eerder hebt gemaakt |
+    | Storage-account | Selecteer het opslag account dat u eerder hebt gemaakt |
     | Map voor implementatie | Selecteer **Bladeren** en selecteer de *inhoudsmap* |
 
-De bestanden in de *inhoudsmap* moeten nu worden geïmplementeerd op de statische website.
+De bestanden in de map *inhoud* moeten nu worden geïmplementeerd op de statische website.
 
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>CORS (Cross-Origin Resource Sharing) inschakelen voor de functie-app
 
@@ -463,15 +463,15 @@ Hoewel er een CORS-instelling staat in **local.settings.json**, wordt deze niet 
 
 1. Open de functie-app in de Azure-portal.
 
-1. Selecteer **CORS**onder het tabblad **Platformfuncties** .
+1. Ga naar het tabblad **platform functies** en selecteer **CORS**.
 
     ![CORS zoeken](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. Voeg in de sectie *Toegestane oorsprong* een vermelding toe met het *primaire* eindpunt */* van de statische website als de waarde (verwijder de trailing).
+1. Voeg in de sectie *toegestane oorsprong* een vermelding met het *primaire eind punt* van de statische website toe als waarde (Verwijder het */* navolgende).
 
-1. Om de SignalR JavaScript SDK-aanroep vanuit een browser uw functie-app te laten uitvoeren, moet ondersteuning voor referenties in CORS zijn ingeschakeld. Schakel het selectievakje Toegangsbeheer-toegestane referenties inschakelen in.
+1. Als u de functie-app vanuit een browser aanroept met de Signaale java script SDK, moet u ondersteuning voor referenties in CORS inschakelen. Schakel het selectie vakje Access-Control-Allow-referenties inschakelen in.
 
-    ![Toegangsbeheer-Toegestane-referenties inschakelen](media/signalr-tutorial-authenticate-azure-functions/signalr-cors-credentials.png)
+    ![Access Control-Allow-referenties inschakelen](media/signalr-tutorial-authenticate-azure-functions/signalr-cors-credentials.png)
 
 1. Klik op **Opslaan** om de CORS-instellingen vast te leggen.
 

@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Logboeken van archiefbestanden naar een opslagaccount | Microsoft Documenten
-description: Meer informatie over het instellen van Azure Diagnostics om Azure Active Directory-logboeken naar een opslagaccount te pushen
+title: 'Zelf studie: Directory-logboeken archiveren in een opslag account | Microsoft Docs'
+description: Meer informatie over het instellen van Azure Diagnostics om Azure Active Directory-logboeken te pushen naar een opslag account
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74007851"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Zelfstudie: Azure AD-logboeken archiveren naar een Azure-opslagaccount
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Zelf studie: Azure AD-logboeken archiveren in een Azure-opslag account
 
 In deze zelfstudie leert u diagnostische instellingen van Azure Monitor instellen voor het routeren van Azure Active Directory (AD)-logboeken naar een Azure-opslagaccount.
 
@@ -38,9 +38,9 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Activiteitenlogboeken in een Azure-opslagaccount archiveren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
-2. Selecteer **Azure Active Directory** > **Activity** > Audit**logs**. 
+2. Selecteer **Azure Active Directory** > **Activity** > **controle logboeken**voor activiteiten. 
 
 3. Selecteer **Exportinstellingen**. 
 
@@ -75,6 +75,6 @@ U hebt het volgende nodig om deze functie te gebruiken:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Controlelogboekenschema interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Schema van audit logboeken interpreteren in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Aanmeldingslogboekenschema interpreteren in Azure Monitor)
 * [Veelgestelde vragen en bekende problemen](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

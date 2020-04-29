@@ -1,17 +1,17 @@
 ---
-title: Een blockchain-toepassing maken - Azure Blockchain Workbench
-description: Zelfstudie over het maken van een blockchain-toepassing voor Azure Blockchain Workbench Preview.
+title: Een Block Chain-toepassing maken-Azure Block Chain workbench
+description: Zelf studie over het maken van een Block Chain-toepassing voor Azure Block Chain Workbench preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74324813"
 ---
-# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Zelfstudie: Een blockchain-toepassing maken voor Azure Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Zelf studie: een Block Chain-toepassing maken voor Azure Block Chain workbench
 
 U kunt Azure Blockchain Workbench gebruiken om een blockchain-toepassing te maken waarmee werkstromen voor meerdere partijen worden gerepresenteerd die door configuratie en slimme-contractcode worden gedefinieerd.
 
@@ -321,9 +321,9 @@ Als u een blockchain-toepassing aan Blockchain Workbench wilt toevoegen, uploadt
 
 1. Ga in een webbrowser naar het webadres van Blockchain Workbench, bijvoorbeeld `https://{workbench URL}.azurewebsites.net/`. De webtoepassing wordt gemaakt als u Blockchain Workbench implementeert. Zie [Web-URL van Blockchain Workbench](deploy.md#blockchain-workbench-web-url) voor informatie over waar u het webadres van Blockchain Workbench kunt vinden
 2. Meld u aan als een [Blockchain Workbench-beheerder](manage-users.md#manage-blockchain-workbench-administrators).
-3. Selecteer**Nieuw** **toepassingen** > . Het deelvenster **Nieuwe toepassing** wordt weergegeven.
-4. Selecteer **De contractconfiguratie** > **uploaden Blader** om het **configuratiebestand HelloBlockchain.json** te zoeken dat u hebt gemaakt. Het configuratiebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
-5. Selecteer **De contractcode uploaden** > **Blader** om het slimme contractcodebestand **van HelloBlockchain.sol** te zoeken. Het codebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
+3. Selecteer **toepassingen** > **Nieuw**. Het deelvenster **Nieuwe toepassing** wordt weergegeven.
+4. Selecteer **uploaden van de contract configuratie** > **Bladeren** om het configuratie bestand **HelloBlockchain. json** te vinden dat u hebt gemaakt. Het configuratiebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
+5. Selecteer **uploaden de contract code** > **Bladeren** om het bestand **HelloBlockchain. Sol** te zoeken. Het codebestand wordt automatisch gevalideerd. Selecteer de koppeling **Weergeven** om validatiefouten weer te geven. Corrigeer validatiefouten voordat u de toepassing implementeer.
 6. Selecteer **Implementeren** om de blockchain-toepassing te maken op basis van de configuratie- en slimme-contractbestanden.
 
 Het implementeren van de blockchain-toepassing neemt enkele minuten in beslag. Als de implementatie is voltooid, wordt de nieuwe toepassing weergegeven in **Toepassingen**. 
@@ -335,7 +335,7 @@ Het implementeren van de blockchain-toepassing neemt enkele minuten in beslag. A
 
 Voegen leden voor de toepassing aan uw toepassing toe om acties op contracten te initiëren en uit te voeren. Als u leden wilt toevoegen, moet u een [Blockchain-toepassingbeheerder](manage-users.md#manage-blockchain-workbench-administrators) zijn.
 
-1. Selecteer **toepassingen** > **Hallo, Blockchain!**.
+1. Select **Applications** > **Hello, Block Chain!**.
 2. Het aantal leden dat is gekoppeld aan de toepassing wordt weergegeven in de rechterbovenhoek van de pagina. Voor nieuwe toepassingen is het aantal leden nul.
 3. Selecteer de koppeling **leden** in de rechterbovenhoek van de pagina. De huidige ledenlijst voor de toepassing wordt weergegeven.
 4. Selecteer **Leden toevoegen** in de ledenlijst.

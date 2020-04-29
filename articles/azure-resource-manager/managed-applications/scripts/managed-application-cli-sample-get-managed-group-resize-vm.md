@@ -1,16 +1,16 @@
 ---
-title: Beheerde brongroep & het formaat van VM's wijzigen - Azure CLI
-description: Biedt Azure CLI-voorbeeldscript waarmee een beheerde brongroep wordt opgenomen in een Azure Managed Application. Het script wijzigt het formaat van VM's.
+title: Beheerde resource groep ophalen & grootte van Vm's wijzigen-Azure CLI
+description: Biedt een Azure CLI-voorbeeld script voor het ophalen van een beheerde resource groep in een door Azure beheerde toepassing. De grootte van de virtuele machines wordt door het script aangepast.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650056"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Resources in een beheerde resourcegroep opvragen en de grootte van virtuele machines wijzigen met Azure CLI

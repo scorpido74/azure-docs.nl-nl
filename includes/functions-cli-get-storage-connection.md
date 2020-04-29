@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 5cb345ef2d20f75066e90f9e6478be27f925b1b0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673375"
 ---
-### <a name="retrieve-the-azure-storage-connection-string"></a>De tekenreeks azure storage-verbinding ophalen
+### <a name="retrieve-the-azure-storage-connection-string"></a>De Azure Storage ophalen connection string
 
-Eerder hebt u een Azure Storage-account gemaakt voor gebruik door de functie-app. De verbindingstekenreeks voor dit account wordt veilig opgeslagen in app-instellingen in Azure. Als u de instelling downloadt naar het bestand *local.settings.json,* u die verbinding schrijven naar een opslagwachtrij in hetzelfde account gebruiken wanneer u de functie lokaal uitvoert. 
+U hebt eerder een Azure Storage-account gemaakt voor gebruik door de functie-app. De connection string voor dit account wordt veilig opgeslagen in de app-instellingen in Azure. Door de instelling in het bestand *Local. settings. json* te downloaden, kunt u deze verbinding schrijven naar een opslag wachtrij in hetzelfde account wanneer u de functie lokaal uitvoert. 
 
-1. Voer vanuit de hoofdmap van het project `<app_name>` de volgende opdracht uit, vervangen door de naam van uw functie-app van de vorige quickstart. Met deze opdracht worden alle bestaande waarden in het bestand overschreven.
+1. Voer de volgende opdracht uit vanuit de hoofdmap van het project en vervang `<app_name>` door de naam van de functie-app uit de vorige Snelstartgids. Met deze opdracht worden alle bestaande waarden in het bestand overschreven.
 
     ```
     func azure functionapp fetch-app-settings <app_name>
     ```
     
-1. Open *local.settings.json* en zoek `AzureWebJobsStorage`de waarde met de naam , de tekenreeks Opslagaccountverbinding. U gebruikt `AzureWebJobsStorage` de naam en de verbindingstekenreeks in andere secties van dit artikel.
+1. Open *Local. settings. json* en zoek de waarde met `AzureWebJobsStorage`de naam, het opslag account Connection String. U gebruikt de naam `AzureWebJobsStorage` en de Connection String in andere secties van dit artikel.
 
 > [!IMPORTANT]
-> Omdat *local.settings.json* geheimen bevat die zijn gedownload van Azure, sluit u dit bestand altijd uit van bronbeheer. Het *.gitignore-bestand* dat is gemaakt met een project voor lokale functies, sluit het bestand standaard uit.
+> Omdat *Local. settings. json* bevat geheimen die zijn gedownload van Azure, moet u dit bestand altijd uitsluiten van broncode beheer. Het *. gitignore* -bestand dat is gemaakt met een lokale functie project, sluit het bestand standaard uit.

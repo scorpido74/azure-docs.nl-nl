@@ -1,20 +1,20 @@
 ---
-title: 'Een Kubernetes-dev-ruimte maken: Visual Studio & .NET Core'
+title: 'Maak een Kubernetes dev-ruimte: Visual Studio & .NET core'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio gebruiken om een .NET Core-toepassing op Azure Kubernetes Service te debuggen en snel te herhalen
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio kunt gebruiken om fouten op te sporen en snel een .NET-kern toepassing te herhalen in azure Kubernetes service
+keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75770710"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Een Kubernetes-dev-ruimte maken: Visual Studio en .NET Core met Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio en .NET core met Azure dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -24,7 +24,7 @@ In deze handleiding leert u het volgende:
 - Uw code op een productieve manier ontwikkelen en testen in een teamomgeving.
 
 > [!Note]
-> Als u op enig moment **vast komt te zitten,** raadpleegt u de sectie [Probleemoplossing.](troubleshooting.md)
+> Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Een Kubernetes-cluster maken dat is ingeschakeld voor Azure Dev Spaces
@@ -32,9 +32,9 @@ In deze handleiding leert u het volgende:
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
 1. Kies **Een resource maken** > ga naar **Kubernetes** > selecteer **Kubernetes-service** > **Maken**.
 
-   Voer de volgende stappen uit onder elke kop van het *clusterformulier Kubernetes maken* en controleer of uw geselecteerde [regio Azure Dev Spaces ondersteunt.][supported-regions]
+   Voer de volgende stappen uit onder elke kop van het formulier *Create Kubernetes cluster* en controleer of de geselecteerde [regio Azure dev-ruimten ondersteunt][supported-regions].
 
-   - **PROJECTDETAILS**: selecteer een Azure-abonnement en een nieuwe of bestaande Azure-brongroep.
+   - **Project Details**: Selecteer een Azure-abonnement en een nieuwe of bestaande Azure-resource groep.
    - **CLUSTERDETAILS**: voer een naam, regio, versie en DNS-voorvoegsel voor het AKS-cluster in.
    - **SCHAAL**: selecteer een VM-grootte voor de AKS-agentknooppunten en het aantal knooppunten. Als u begint met Azure Dev Spaces, is één knooppunt voldoende voor het verkennen van alle functies. Het aantal knooppunten kan op elk gewenst moment na de implementatie van het cluster gemakkelijk worden aangepast. Let op: de VM-grootte kan niet meer worden gewijzigd als een AKS-cluster eenmaal is gemaakt. Zodra een AKS-cluster is geïmplementeerd, kunt u echter eenvoudig een nieuw AKS-cluster met grotere virtuele machines maken en Dev Spaces gebruiken om dat grotere cluster opnieuw te implementeren als u wilt opschalen.
 
@@ -50,15 +50,15 @@ In deze handleiding leert u het volgende:
 1. Selecteer **Controleren + maken** en vervolgens **Maken** wanneer u klaar bent.
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio-hulpprogramma's downloaden
-Installeer de nieuwste versie van [Visual Studio](https://www.visualstudio.com/vs/). Voor Visual Studio 2019 op Windows moet u de Azure Development-workload installeren. Voor Visual Studio 2017 op Windows moet u de ASP.NET- en webontwikkelingsworkload en [Visual Studio Tools voor Kubernetes](https://aka.ms/get-azds-visualstudio)installeren.
+Installeer de nieuwste versie van [Visual Studio](https://www.visualstudio.com/vs/). Voor Visual Studio 2019 in Windows moet u de werk belasting voor Azure Development installeren. Voor Visual Studio 2017 in Windows moet u de ASP.NET-en Web Development-werk belasting installeren, evenals [Visual Studio Tools voor Kubernetes](https://aka.ms/get-azds-visualstudio).
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Een web-app maken die wordt uitgevoerd in een container
 
-In deze sectie maakt u een ASP.NET Core-web-app en krijgt u deze in een container in Kubernetes.
+In deze sectie maakt u een ASP.NET Core web-app en haalt u deze op in een container in Kubernetes.
 
 ### <a name="create-an-aspnet-web-app"></a>Een ASP.NET-web-app maken
 
-Maak vanuit Visual Studio een nieuw project. Op dit moment moet het project een **ASP.NET Core-webtoepassing** zijn. Geef het project de naam **webfrontend**.
+Maak in Visual Studio een nieuw project. Op dit moment moet het project een **ASP.NET Core-webtoepassing** zijn. Geef het project de naam **webfrontend**.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -123,7 +123,7 @@ Azure Dev Spaces draait niet alleen om het ophalen van code die wordt uitgevoerd
 ### <a name="update-a-content-file"></a>Een inhoudsbestand bijwerken
 
 
-1. Zoek het bestand `./Views/Home/Index.cshtml` en bewerk de HTML-code. Wijzig bijvoorbeeld [regel 73 `<h2>Application uses</h2>` die wordt gelezen](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) in iets als: 
+1. Zoek het bestand `./Views/Home/Index.cshtml` en bewerk de HTML-code. Wijzig bijvoorbeeld [regel 73 die als volgt leest `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) : 
   
     ```html
     <h2>Hello k8s in Azure!</h2>`

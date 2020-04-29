@@ -1,19 +1,19 @@
 ---
-title: PowerShell-script om een Azure Cosmos DB-account met IP Firewall te maken
-description: Azure PowerShell-scriptvoorbeeld - Een Azure Cosmos DB-account maken met IP Firewall
+title: Power shell-script voor het maken van een Azure Cosmos DB-account met IP-firewall
+description: Azure PowerShell-voorbeeld script-een Azure Cosmos DB-account maken met de IP-firewall
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365667"
 ---
-# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Een Azure Cosmos DB-account maken met IP Firewall
+# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Een Azure Cosmos DB-account maken met een IP-firewall
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "80365667"
 ## <a name="sample-script"></a>Voorbeeldscript
 
 > [!NOTE]
-> Dit voorbeeld toont aan dat u een SQL (Core) API-account gebruikt. Als u dit voorbeeld wilt gebruiken voor andere API's, kopieert u de gerelateerde eigenschappen en past u deze toe op uw API-specifieke script
+> Dit voor beeld laat zien hoe u een SQL (core) API-account gebruikt. Als u dit voor beeld voor andere Api's wilt gebruiken, kopieert u de gerelateerde eigenschappen en past u deze toe op uw API-specifiek script
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-firewall-create.ps1 "Create an Azure Cosmos account with IP Firewall")]
 
@@ -41,8 +41,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Nieuw-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
-|**Azure-brongroepen**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
+|**Azure-resource groepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

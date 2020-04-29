@@ -1,6 +1,6 @@
 ---
-title: Servicewaarschuwingen instellen voor Windows Virtual Desktop - Azure
-description: Azure Service Status instellen om servicemeldingen voor Windows Virtual Desktop te ontvangen.
+title: Service waarschuwingen instellen voor het virtuele bureau blad van Windows-Azure
+description: Azure Service Health instellen om service meldingen te ontvangen voor Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,53 +9,53 @@ ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2834ba924fa9c29d955c38fbaeb45ab23e5c4e9b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79127710"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Zelfstudie: Servicewaarschuwingen instellen
+# <a name="tutorial-set-up-service-alerts"></a>Zelf studie: Service waarschuwingen instellen
 
-U Azure Service Health gebruiken om serviceproblemen en statusadviezen voor Windows Virtual Desktop te controleren. Azure Service Health kan u op de hoogte stellen van verschillende soorten waarschuwingen (bijvoorbeeld e-mail of sms), u helpen het effect van een probleem te begrijpen en u up-to-date houden terwijl het probleem is opgelost. Azure Service Health kan u ook helpen downtime te beperken en u voor te bereiden op gepland onderhoud en wijzigingen die van invloed kunnen zijn op de beschikbaarheid van uw resources.
+U kunt Azure Service Health gebruiken om service problemen en status adviezen te bewaken voor virtuele Windows-Bureau bladen. Azure Service Health kunt u op de hoogte stellen van verschillende soorten waarschuwingen (bijvoorbeeld e-mail of SMS), inzicht krijgen in het effect van een probleem en u blijft bijwerken terwijl het probleem wordt opgelost. Azure Service Health kunt u ook helpen bij het oplossen van uitval tijd en het plannen van gepland onderhoud en wijzigingen die van invloed kunnen zijn op de beschik baarheid van uw resources.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Servicewaarschuwingen maken en configureren.
+> * Service waarschuwingen maken en configureren.
 
-Zie de [Azure Health Documentation](https://docs.microsoft.com/azure/service-health/)voor meer informatie over Azure Service Health.
+Zie de [Azure Health-documentatie](https://docs.microsoft.com/azure/service-health/)voor meer informatie over Azure service health.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Zelfstudie: Een tenant maken in Windows Virtueel bureaublad](tenant-setup-azure-active-directory.md)
-- [Zelfstudie: Serviceprincipals en roltoewijzingen maken met PowerShell](create-service-principal-role-powershell.md)
-- [Zelfstudie: Een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Zelf studie: een Tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+- [Zelf studie: Service-principals en roltoewijzingen maken met Power shell](create-service-principal-role-powershell.md)
+- [Zelf studie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 
-## <a name="create-service-alerts"></a>Servicewaarschuwingen maken
+## <a name="create-service-alerts"></a>Service waarschuwingen maken
 
-In deze sectie ziet u hoe u Azure Service Health configureert en hoe u meldingen instelt, die u openen op de Azure-portal. U verschillende soorten waarschuwingen instellen en deze plannen om u tijdig op de hoogte te stellen.
+In deze sectie wordt beschreven hoe u Azure Service Health configureert en hoe u meldingen instelt, die u op de Azure Portal kunt openen. U kunt verschillende typen waarschuwingen instellen en deze plannen om u tijdig op de hoogte te stellen.
 
-### <a name="recommended-service-alerts"></a>Aanbevolen servicewaarschuwingen
+### <a name="recommended-service-alerts"></a>Aanbevolen Service waarschuwingen
 
-We raden u aan servicewaarschuwingen te maken voor de volgende typen gezondheidsgebeurtenissen:
+U wordt aangeraden Service waarschuwingen te maken voor de volgende status gebeurtenis typen:
 
-- **Serviceprobleem:** Ontvang meldingen over belangrijke problemen die van invloed zijn op de connectiviteit van uw gebruikers met de service of met de mogelijkheid om uw Windows Virtual Desktop-tenant te beheren.
-- **Gezondheidsadvies:** Ontvang meldingen die uw aandacht vereisen. Hieronder volgen enkele voorbeelden van dit type melding:
-    - Virtuele machines (VM's) niet veilig geconfigureerd als open poort 3389
+- **Service probleem:** Ontvang meldingen over belang rijke problemen die van invloed zijn op de connectiviteit van uw gebruikers met de service of met de mogelijkheid om uw Windows Virtual Desktop-Tenant te beheren.
+- **Status advies:** Ontvang meldingen die uw aandacht vereisen. Hier volgen enkele voor beelden van dit type melding:
+    - Virtual Machines (Vm's) niet veilig geconfigureerd als open poort 3389
     - Afschaffing van functionaliteit
 
-### <a name="configure-service-alerts"></a>Servicewaarschuwingen configureren
+### <a name="configure-service-alerts"></a>Service waarschuwingen configureren
 
-Servicewaarschuwingen configureren:
+Service waarschuwingen configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Servicestatus.**
-3. Gebruik de instructies in [Meldingen voor activiteitenlogboeken maken bij servicemeldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) om uw meldingen en meldingen in te stellen.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Selecteer **service health.**
+3. Volg de instructies in [waarschuwingen voor het maken van activiteiten logboeken voor service meldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) om uw waarschuwingen en meldingen in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure Service Health instellen en gebruiken om serviceproblemen en statusadviezen voor Windows Virtual Desktop te controleren. Ga door met het aanmaken van de functie Verbinding maken met Windows Virtual Desktop voor meer informatie over het aanmelden bij Windows Virtual Desktop.
+In deze zelf studie hebt u geleerd hoe u Azure Service Health kunt instellen en gebruiken om service problemen en status adviezen voor virtuele Windows-Bureau bladen te bewaken. Voor meer informatie over hoe u zich aanmeldt bij Windows Virtual Desktop, gaat u naar de How-procedures voor verbinding maken met Windows Virtual Desktop.
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met de Extern bureaublad-client op Windows 7 en Windows 10](./connect-windows-7-and-10.md)

@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 121f6ffa5c1a7c903e59be8a5bc3e1e1db0834fc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673364"
 ---
-## <a name="add-an-output-binding-definition-to-the-function"></a>Een uitvoerbindingsdefinitie toevoegen aan de functie
+## <a name="add-an-output-binding-definition-to-the-function"></a>Een definitie van een uitvoer binding toevoegen aan de functie
 
-Hoewel een functie slechts één trigger kan hebben, kan deze meerdere invoer- en uitvoerbindingen hebben, waarmee u verbinding maken met andere Azure-services en -bronnen zonder aangepaste integratiecode te schrijven. 
+Hoewel een functie slechts één trigger kan hebben, kan deze meerdere invoer-en uitvoer bindingen hebben, waarmee u verbinding kunt maken met andere Azure-Services en-resources zonder aangepaste integratie code te schrijven. 
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-U declareert deze bindingen in het *bestand function.json* in uw functiemap. Van de vorige quickstart bevat het bestand *function.json* in de `bindings` *map HttpExample* twee bindingen in de verzameling:  
+U declareert deze bindingen in het bestand *Function. json* in de map function. In de vorige Snelstartgids bevat het bestand *Function. json* in de map *HttpExample* twee bindingen in de `bindings` verzameling:  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
@@ -32,33 +32,33 @@ U declareert deze bindingen in het *bestand function.json* in uw functiemap. Van
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-Elke binding heeft ten minste een type, een richting en een naam. In het bovenstaande voorbeeld is de `httpTrigger` eerste `in`binding van type met de richting . Hiermee `in` geeft u voor de richting de naam op van een invoerparameter die naar de functie wordt verzonden wanneer deze door de trigger wordt aangeroepen. `name`  
+Elke binding heeft ten minste een type, een richting en een naam. In het bovenstaande voor beeld is de eerste binding van het `httpTrigger` type met de `in`richting. Hiermee geeft `in` u in de richting de naam op van een invoer parameter die wordt verzonden naar de functie wanneer deze wordt aangeroepen door de trigger. `name`  
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-De tweede binding in `res`de collectie wordt genoemd. Deze `http` binding is een`out`uitvoerbinding ( ) die wordt gebruikt om het HTTP-antwoord te schrijven. 
+De tweede binding in de verzameling heeft de `res`naam. Deze `http` binding is een uitvoer binding (`out`) die wordt gebruikt voor het schrijven van het HTTP-antwoord. 
 
-Als u vanuit deze functie naar een `out` Azure `queue` Storage-wachtrij `msg`wilt schrijven, voegt u een tekstbinding toe met de naam , zoals in de onderstaande code wordt weergegeven:
+Als u wilt schrijven naar een Azure Storage wachtrij van deze functie, `out` voegt u een `queue` binding van het `msg`type met de naam toe, zoals wordt weer gegeven in de onderstaande code:
 
 :::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-De tweede binding in de `http` collectie `out`is van type `name` met `$return` de richting , in welk geval de speciale van aangeeft dat deze binding de retourwaarde van de functie gebruikt in plaats van het verstrekken van een invoerparameter.
+De tweede binding in de verzameling is van het `http` type met de `out`richting, in dat geval het `name` speciale `$return` element geeft aan dat deze binding de retour waarde van de functie gebruikt in plaats van een invoer parameter op te geven.
 
-Als u vanuit deze functie naar een `out` Azure `queue` Storage-wachtrij `msg`wilt schrijven, voegt u een tekstbinding toe met de naam , zoals in de onderstaande code wordt weergegeven:
+Als u wilt schrijven naar een Azure Storage wachtrij van deze functie, `out` voegt u een `queue` binding van het `msg`type met de naam toe, zoals wordt weer gegeven in de onderstaande code:
 
 :::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-powershell"  
-De tweede binding in `res`de collectie wordt genoemd. Deze `http` binding is een`out`uitvoerbinding ( ) die wordt gebruikt om het HTTP-antwoord te schrijven. 
+De tweede binding in de verzameling heeft de `res`naam. Deze `http` binding is een uitvoer binding (`out`) die wordt gebruikt voor het schrijven van het HTTP-antwoord. 
 
-Als u vanuit deze functie naar een `out` Azure `queue` Storage-wachtrij `msg`wilt schrijven, voegt u een tekstbinding toe met de naam , zoals in de onderstaande code wordt weergegeven:
+Als u wilt schrijven naar een Azure Storage wachtrij van deze functie, `out` voegt u een `queue` binding van het `msg`type met de naam toe, zoals wordt weer gegeven in de onderstaande code:
 
 :::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
 ::: zone-end  
 
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-In dit `msg` geval wordt gegeven aan de functie als een output argument. Voor `queue` een type moet u ook de `queueName` naam van de wachtrij opgeven en de *naam* van de `connection`Azure Storage-verbinding (van *local.settings.json)* opgeven in . 
+In dit geval `msg` wordt de functie als uitvoer argument gegeven. Voor een `queue` type moet u ook de naam van de wachtrij opgeven in `queueName` en de *naam* van de Azure Storage verbinding (van *Local. settings. json*) invoeren in `connection`. 
 ::: zone-end  

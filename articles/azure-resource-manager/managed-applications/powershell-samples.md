@@ -1,26 +1,26 @@
 ---
 title: Azure PowerShell-voorbeelden
-description: Biedt Azure PowerShell-voorbeeldscripts die u gebruiken bij het werken met Azure Managed Applications.
+description: Biedt Azure PowerShell voorbeeld scripts die u kunt gebruiken bij het werken met Azure Managed Applications.
 author: tfitzmac
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 4e068f8cf64e653c6b0231cc1d1bcddfbb9e9c55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650301"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-voorbeelden
 
-De volgende tabel bevat koppelingen naar scripts voor Azure Managed Applications die de Azure PowerShell gebruiken.
+De volgende tabel bevat koppelingen naar scripts voor Azure Managed Applications die gebruikmaken van de Azure PowerShell.
 
 | | |
 |-|-|
 |**Een beheerde toepassing maken**||
-| [Beheerde toepassingsdefinitie maken](scripts/managed-application-powershell-sample-create-definition.md) | Hiermee maakt u een beheerde toepassingsdefinitie in de servicecatalogus.  |
-| [Beheerde toepassing implementeren](scripts/managed-application-poweshell-sample-create-application.md) | Implementeert een beheerde toepassing uit de servicecatalogus.  |
+| [Definitie van beheerde toepassing maken](scripts/managed-application-powershell-sample-create-definition.md) | Hiermee maakt u een definitie van een beheerde toepassing in de Service catalogus.  |
+| [Beheerde toepassing implementeren](scripts/managed-application-poweshell-sample-create-application.md) | Hiermee implementeert u een beheerde toepassing vanuit de Service catalogus.  |
 | | |
-|**Beheerde resourcegroep bijwerken**||
-| [Resources in beheerde resourcegroep en formaat VM's wijzigen](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | Hiermee worden resources uit de beheerde resourcegroep opgehaald en wordt het formaat van de VM's opnieuw gebruikt. |
+|**Beheerde resource groep bijwerken**||
+| [Resources in een beheerde resource groep ophalen en de grootte van virtuele machines wijzigen](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | Haalt resources van de beheerde resource groep en de grootte van de Vm's. |

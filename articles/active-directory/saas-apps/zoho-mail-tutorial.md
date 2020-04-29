@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Zoho | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Zoho | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Zoho.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3b5d0e52e927a44d5bce5314e724c1c753809ce0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74231944"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Zelfstudie: Azure Active Directory-integratie met Zoho
+# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Zelf studie: integratie Azure Active Directory met Zoho
 
 In deze zelfstudie leert u hoe u Zoho kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Zoho met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van Zoho met Azure AD heeft de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -139,7 +139,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Zoho wi
 
 4. Voer in het gedeelte **Details SAML-verificatie** de volgende stappen uit:
    
-    ![SAML-verificatiegegevens](./media/zoho-mail-tutorial/ic789609.png "SAML-verificatiegegevens")
+    ![Details van SAML-verificatie](./media/zoho-mail-tutorial/ic789609.png "Details van SAML-verificatie")
    
     a. Plak in het tekstvak **Aanmeldings-URL** de **aanmeldings-URL** die u in de Azure-portal hebt gekopieerd.
    
@@ -161,7 +161,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -171,12 +171,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -198,9 +198,9 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van eenmal
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -209,7 +209,7 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van eenmal
 Als u gebruikers van Azure AD in staat wilt stellen zich aan te melden bij Zoho Mail, moeten ze worden ingericht in Zoho Mail. Bij Zoho Mail is inrichten een handmatige taak.
 
 > [!NOTE]
-> U alle andere zoho mail-hulpprogramma's voor het maken van gebruikersaccounts of API's van Zoho Mail gebruiken om Azure AD-gebruikersaccounts in te richten.
+> U kunt elk ander Zoho-e-mail programma voor het maken van gebruikers accounts of Api's die worden geleverd door Zoho-mail gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
 
@@ -225,11 +225,11 @@ Als u gebruikers van Azure AD in staat wilt stellen zich aan te melden bij Zoho 
    
     ![Gebruiker toevoegen](./media/zoho-mail-tutorial/ic789612.png "Gebruiker toevoegen")
    
-    a. Typ in het tekstvak **Voornaam** de voornaam van de gebruiker zoals **Britta**.
+    a. Typ in het tekstvak **voor de voor naam** de voor naam van de gebruiker, zoals **Julia**.
 
-    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker zoals **Simon**.
+    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, zoals **Simon**.
 
-    c. Typ in het tekstvak **E-id** de e-id van de gebruiker, zoals **\@brittasimon contoso.com**.
+    c. In het tekstvak **e-mail-id** typt u de e-mail-id van de gebruiker, zoals **\@brittasimon contoso.com**.
 
     d. Voer in het tekstvak **Wachtwoord** het wachtwoord van de gebruiker in.
    
@@ -248,7 +248,7 @@ Wanneer u op de tegel Zoho in het toegangsvenster klikt, zou u automatisch moete
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

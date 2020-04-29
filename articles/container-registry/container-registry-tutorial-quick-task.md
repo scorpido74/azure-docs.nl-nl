@@ -1,17 +1,17 @@
 ---
-title: Zelfstudie - Snelle containerimagebuild
+title: Zelf studie-build van snelle container installatie kopie
 description: In deze zelfstudie leert u hoe een Docker-containerinstallatiekopie in Azure bouwt met Azure Container Registry Tasks (ACR Tasks) en deze vervolgens implementeert naar Azure Container Instances.
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78398501"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelfstudie: Containerafbeeldingen in de cloud maken en implementeren met Azure Container Registry Tasks
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure Container Registry taken
 
 **ACR Tasks** is een suite met functies in Azure Container Registry die gestroomlijnde en efficiënte builds van Docker-containerinstallatiekopieën mogelijk maakt in Azure. In dit artikel leert u hoe u de functie *quick task* van ACR Tasks gebruikt.
 
@@ -26,7 +26,7 @@ In deze zelfstudie, deel één van een reeks:
 > * Een containerinstallatiekopie maken in Azure
 > * Een container implementeren in Azure Container Instances
 
-In volgende zelfstudies leert u hoe u ACR Tasks gebruikt voor geautomatiseerde builds van containerinstallatiekopieën bij codedoorvoer en updates van basisinstallatiekopieën. [ACR-taken](container-registry-tasks-multi-step.md)kunnen ook taken in meerdere stappen uitvoeren, met behulp van een YAML-bestand om stappen te definiëren om meerdere containers te bouwen, te pushen en optioneel te testen.
+In volgende zelfstudies leert u hoe u ACR Tasks gebruikt voor geautomatiseerde builds van containerinstallatiekopieën bij codedoorvoer en updates van basisinstallatiekopieën. ACR-taken kunnen ook [taken met meerdere stappen](container-registry-tasks-multi-step.md)uitvoeren, met behulp van een yaml-bestand om de stappen voor het bouwen, pushen en optioneel testen van meerdere containers te definiëren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,7 +50,7 @@ Deze opslagplaats splitsen: https://github.com/Azure-Samples/acr-build-helloworl
 
 Wanneer u de opslagplaats hebt gesplitst, kloont u de fork en voert u de map in die de lokale kloon bevat.
 
-Kloon de repo met `git`, vervang ** \<je-github-gebruikersnaam\> ** door je GitHub-gebruikersnaam:
+Kloon de opslag plaats met `git`, vervang ** \<uw-github-username\> ** door uw github-gebruikers naam:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -70,9 +70,9 @@ De opdrachten in deze zelfstudiereeks zijn geformatteerd voor de Bash-shell. Als
 
 Nu u de broncode hebt opgehaald naar uw computer, volgt u deze stappen om een containerregister te maken en de containerinstallatiekopie te bouwen met ACR Tasks.
 
-Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang ** \<de\> registernaam** door een unieke naam voor uw nieuwe containerregister. De registernaam moet uniek zijn binnen Azure, alleen kleine letters bevatten en 5-50 alfanumerieke tekens bevatten. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
+Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang ** \<de register naam\> ** door een unieke naam voor het nieuwe container register. De register naam moet uniek zijn in azure, mag alleen kleine letters bevatten en mag 5-50 alfanumerieke tekens bevatten. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
 
-[![Start insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+[![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>

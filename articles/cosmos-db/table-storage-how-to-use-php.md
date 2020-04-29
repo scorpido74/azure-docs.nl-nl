@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771060"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>De Azure Storage-tabelservice of de Azure Cosmos DB Table-API gebruiken in PHP
@@ -95,7 +95,7 @@ U kunt als volgt toegang krijgen tot de opslagemulator:
 UseDevelopmentStorage = true
 ```
 
-Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt:
+Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt het volgende doen:
 
 * De verbindingsreeks rechtstreeks aan deze klasse doorgeven of
 * De **CloudConfigurationManager (CCM)** gebruiken om meerdere externe bronnen te controleren op de verbindingsreeks:

@@ -1,5 +1,5 @@
 ---
-title: Load balance VM's over beschikbaarheidszones - Azure CLI - Azure Load Balancer
+title: Taak verdeling van Vm's over beschikbaarheids zones-Azure CLI-Azure Load Balancer
 description: In dit Azure CLI-voorbeeldscript ziet u hoe u verkeer kunt verdelen over VM’s in meerdere beschikbaarheidszones
 documentationcenter: load-balancer
 author: asudbring
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79218329"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI-voorbeeldscript: Taken verdelen over VM's in meerdere beschikbaarheidszones

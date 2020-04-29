@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure Storage-code | Microsoft Documenten
-description: Voorbeeldcode en -toepassingen voor Azure Storage weergeven, downloaden en uitvoeren. Ontdek aan de slag met voorbeelden voor blobs, wachtrijen, tabellen en bestanden met behulp van de opslagclientbibliotheken .NET, Java, Python, Node.js, Azure CLI en C++.
+title: Voor beelden van Azure Storage code | Microsoft Docs
+description: Voorbeeld code en toepassingen voor Azure Storage weer geven, downloaden en uitvoeren. Ontdek aan de slag met voor beelden voor blobs, wacht rijen, tabellen en bestanden, met behulp van de client bibliotheken .NET, Java, Python, node. js, Azure CLI en C++ Storage.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/06/2019
@@ -8,47 +8,47 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f4d8eabdba32eaa0a2c04e6b330fbd4c8d3a563e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061144"
 ---
-# <a name="azure-storage-samples"></a>Azure Storage-voorbeelden
+# <a name="azure-storage-samples"></a>Azure Storage-voor beelden
 
-Gebruik de onderstaande koppelingen om voorbeeldcode en -toepassingen van Azure Storage weer te geven en te downloaden.
+Gebruik de onderstaande koppelingen om Azure Storage voorbeeld code en-toepassingen weer te geven en te downloaden.
 
-## <a name="azure-code-samples-library"></a>Azure Code Samples-bibliotheek
+## <a name="azure-code-samples-library"></a>Bibliotheek voor Azure-code voorbeelden
 
-De [Azure Code Samples-bibliotheek](https://azure.microsoft.com/documentation/samples/?service=storage) bevat voorbeelden voor Azure Storage die u lokaal downloaden en uitvoeren. De codevoorbeeldbibliotheek biedt voorbeeldcode in .zip-indeling. U ook de GitHub-repository voor elk voorbeeld bekijken en klonen.
+De bibliotheek voor [Azure-code voorbeelden](https://azure.microsoft.com/documentation/samples/?service=storage) bevat voor beelden voor Azure Storage die u lokaal kunt downloaden en uitvoeren. De voorbeeld bibliotheek code bevat voorbeeld code in. zip-indeling. U kunt ook bladeren en de GitHub-opslag plaats voor elk voor beeld klonen.
 
 ## <a name="net-samples"></a>.NET-voorbeelden
 
-Download de [.NET-clientbibliotheek van](https://www.nuget.org/packages/WindowsAzure.Storage/) NuGet om de .NET-clientbibliotheek te verkennen. De .NET-opslagclientbibliotheek is ook beschikbaar in de [Azure SDK voor .NET](https://azure.microsoft.com/downloads/).
+Down load de [.net Storage-client bibliotheek](https://www.nuget.org/packages/WindowsAzure.Storage/) van NuGet om de .net-voor beelden te verkennen. De .NET Storage-client bibliotheek is ook beschikbaar in de [Azure SDK voor .net](https://azure.microsoft.com/downloads/).
 
 * [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
 
 ## <a name="java-samples"></a>Java-voorbeelden
 
-Download de Java Storage [Client Library](https://github.com/azure/azure-storage-java)om de Java-voorbeelden te verkennen.
+Als u de Java-voor beelden wilt verkennen, downloadt u de [client bibliotheek voor Java-opslag](https://github.com/azure/azure-storage-java).
 
 * [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
 
 ## <a name="python-samples"></a>Python-voorbeelden
 
-Download de Python Storage [Client Library](https://github.com/azure/azure-storage-python)om de Python-voorbeelden te verkennen.
+Down load de [python Storage-client bibliotheek](https://github.com/azure/azure-storage-python)om de python-voor beelden te verkennen.
 
-* [Azure Storage-voorbeelden met Python](storage-samples-python.md)
+* [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
 
 ## <a name="nodejs-samples"></a>Node.js-voorbeelden
 
-Download de [Clientbibliotheek Node.js](https://github.com/Azure/azure-storage-node)om de voorbeelden van Node.js te verkennen.
+Down load de [node. js-opslag-client bibliotheek](https://github.com/Azure/azure-storage-node)om de voor beelden van node. js te verkennen.
 
-* [Azure Storage-voorbeelden met JavaScript/Node.js](storage-samples-javascript.md)
+* [Azure Storage voor beelden met behulp van Java script/node. js](storage-samples-javascript.md)
 
-## <a name="c-samples"></a>C++-monsters
+## <a name="c-samples"></a>C++-voor beelden
 
-Download de [C++ Storage Client Library](https://www.nuget.org/packages/wastorage/) van NuGet om de C++ voorbeelden te verkennen.
+Down load de [C++ Storage-client bibliotheek](https://www.nuget.org/packages/wastorage/) van NuGet om de voor beelden van c++ te verkennen.
 
 * [Aan de slag met blobs](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
 * [Aan de slag met tabellen](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
@@ -56,29 +56,29 @@ Download de [C++ Storage Client Library](https://www.nuget.org/packages/wastorag
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Als u de Azure CLI-voorbeelden wilt verkennen, [installeert u eerst de Azure CLI](/cli/azure/install-azure-cli).
+Als u de voor beelden van Azure CLI wilt verkennen, installeert u eerst [de Azure cli](/cli/azure/install-azure-cli).
 
-* [Aan de slag met de Azure CLI](/cli/azure/get-started-with-azure-cli)
-* [Azure Storage-voorbeelden met de Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli)
+* [Voor beelden Azure Storage met behulp van Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
 * [Populaire artikelen over het gebruik van de Azure CLI met Azure Storage](/cli/azure/popular-articles-using-the-azure-cli#storage)
 
-## <a name="api-reference-and-source-code"></a>API-verwijzing en broncode
+## <a name="api-reference-and-source-code"></a>API-verwijzing en bron code
 
 | Taal | API-verwijzing | Broncode |
 |----------|---------------|-------------|
-| .NET | [Naslaginformatie over de .NET-clientbibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Broncode voor de .NET-opslagclientbibliotheek](https://github.com/Azure/azure-storage-net) |
-| Java | [Naslaginformatie over java-clientbibliotheek](https://docs.microsoft.com/java/api/overview/azure/storage) | [Broncode voor de Java-opslagclientbibliotheek](https://github.com/azure/azure-storage-java) |
-| Python | [Naslaginformatie over python-clientbibliotheek](https://azure-storage.readthedocs.io/) | [Broncode voor de Python-opslagclientbibliotheek](https://github.com/Azure/azure-storage-p[ython]) |
-| Node.js | [Naslaginformatie over clientbibliotheek node.js](https://azure.github.io/azure-storage-node) | [Broncode voor de clientbibliotheek node.js-opslag](https://github.com/Azure/azure-storage-node) |
-| C++ | [Naslaginformatie over c++ clientbibliotheek](https://azure.github.io/azure-storage-cpp/) | [Broncode voor de C++-opslagclientbibliotheek](https://github.com/Azure/azure-storage-cpp)|
-| Azure CLI | [Naslaginformatie over Azure CLI-bibliotheek](/cli/azure/storage) | [Broncode voor de Azure CLI-opslagclientbibliotheek](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
+| .NET | [Naslag informatie voor .NET-client bibliotheken](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Bron code voor de .NET Storage-client bibliotheek](https://github.com/Azure/azure-storage-net) |
+| Java | [Naslag informatie voor Java-client bibliotheken](https://docs.microsoft.com/java/api/overview/azure/storage) | [Bron code voor de Java Storage-client bibliotheek](https://github.com/azure/azure-storage-java) |
+| Python | [Naslag informatie voor python-client bibliotheek](https://azure-storage.readthedocs.io/) | [Bron code voor de python Storage-client bibliotheek](https://github.com/Azure/azure-storage-p[ython]) |
+| Node.js | [Naslag informatie over node. js-client bibliotheek](https://azure.github.io/azure-storage-node) | [Bron code voor de node. js-opslag-client bibliotheek](https://github.com/Azure/azure-storage-node) |
+| C++ | [Naslag informatie over C++-client bibliotheek](https://azure.github.io/azure-storage-cpp/) | [Bron code voor de client bibliotheek van de C++-opslag](https://github.com/Azure/azure-storage-cpp)|
+| Azure CLI | [Naslag informatie over Azure CLI-bibliotheek](/cli/azure/storage) | [Bron code voor de Azure CLI Storage-client bibliotheek](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende artikelen worden elk van de voorbeelden geïndexeerd op service (blob, bestand, wachtrij, tabel).
+De volgende artikelen indexeert elk van de voor beelden per service (BLOB, bestand, wachtrij, tabel).
 
 * [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
 * [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
-* [Azure Storage-voorbeelden met JavaScript](storage-samples-javascript.md)
-* [Azure Storage-voorbeelden met Python](storage-samples-python.md)
-* [Azure Storage-voorbeelden met de Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
+* [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
+* [Voor beelden Azure Storage met behulp van Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)

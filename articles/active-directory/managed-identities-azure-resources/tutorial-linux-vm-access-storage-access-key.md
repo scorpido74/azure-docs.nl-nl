@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie`:` Gebruik een beheerde identiteit om toegang te krijgen tot Azure Storage via toegangssleutel - Linux - Azure AD
+title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage via de toegangs sleutel-Linux-Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273820"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage via een toegangssleutel
@@ -36,16 +36,16 @@ Deze zelfstudie laat zien hoe u toegangssleutels voor opslagaccounts kunt ophale
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken 
+## <a name="create-a-storage-account"></a>Create a storage account 
 
 Als u nog geen opslagaccount hebt, maakt u er nu een.  U kunt deze stap ook overslaan en de door het systeem toegewezen beheerde identiteit voor uw VM toegang verlenen tot de sleutels van een bestaand opslagaccount. 
 
 1. Klik op de knop **+/Nieuwe service maken** in de linkerbovenhoek van Azure Portal.
 2. Klik op **Opslag** en vervolgens op **Opslagaccount**. Het paneel Opslagaccount maken wordt weergegeven.
-3. Voer een **naam in** voor het opslagaccount, dat u later zult gebruiken.  
+3. Voer een **naam** in voor het opslag account dat u later gaat gebruiken.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op Resource Manager en Algemeen gebruik. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik **op Maken**.
+6. Klik op **maken**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Een IoT Plug and Play Preview-apparaat maken en testen | Microsoft Documenten
-description: Als apparaatontwikkelaar leest u over het gebruik van VS-code om een nieuw apparaatmodel voor een IoT Plug and Play Preview-apparaat te maken en te testen.
+title: Een IoT Plug en Play preview-apparaat maken en testen | Microsoft Docs
+description: Meer informatie over het gebruik van VS code voor het maken en testen van een nieuw mogelijkheidsprofiel voor een IoT Plug en Play preview-apparaat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/30/2019
@@ -10,69 +10,69 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 720b3e56e1dd45bd2940b337adefa6ebdaa2e5a1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76719718"
 ---
-# <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Zelfstudie: Een apparaatcapaciteitsmodel maken en testen met Visual Studio Code
+# <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Zelf studie: een mogelijkheidsprofiel maken en testen met Visual Studio code
 
-In deze zelfstudie ziet u hoe u als apparaatontwikkelaar Visual Studio Code gebruiken om een _apparaatcapaciteitsmodel_te maken. U het model gebruiken om skeletcode te genereren om te worden uitgevoerd op een apparaat dat verbinding maakt met een Azure IoT Hub-instantie in de cloud.
+In deze zelf studie ziet u hoe, als een ontwikkelaar van een apparaat, Visual Studio code moet gebruiken om een _mogelijkheidsprofiel_te maken. U kunt het model gebruiken om skelet code te genereren voor uitvoering op een apparaat dat verbinding maakt met een Azure IoT Hub-exemplaar in de Cloud.
 
-De sectie in deze zelfstudie waarin wordt beschreven hoe u de gegenereerde skeletcode bouwen, gaat ervan uit dat u Windows gebruikt.
+In het gedeelte in deze zelf studie waarin wordt beschreven hoe u de gegenereerde skelet code bouwt, wordt ervan uitgegaan dat u Windows gebruikt.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een apparaatcapaciteitsmodel maken
-> * Skeletapparaatcode genereren van het model
+> * Een mogelijkheidsprofiel maken
+> * Een apparaatcode van een skelet genereren op basis van het model
 > * De stubs in de gegenereerde code implementeren
-> * De code uitvoeren om de interacties met een IoT-hub te testen
+> * De code uitvoeren om de interacties te testen met een IoT-hub
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u in deze zelfstudie met het apparaatcapaciteitsmodel wilt werken, moet u het andere doen:
+Als u in deze zelf studie wilt werken met het mogelijkheidsprofiel, hebt u het volgende nodig:
 
-* [Visual Studio Code](https://code.visualstudio.com/download): VS Code is beschikbaar voor meerdere platforms
-* [Azure IoT-hulpprogramma's voor VS-code-uitbreidingspakket.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Gebruik de volgende stappen om het uitbreidingspakket in VS-code te installeren:
+* [Visual Studio code](https://code.visualstudio.com/download): VS code is beschikbaar voor meerdere platformen
+* [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket. Gebruik de volgende stappen om het uitbreidings pakket in VS code te installeren:
 
-    1. Selecteer in VS-code het tabblad **Extensies.**
-    1. Zoeken naar **Azure IoT-hulpprogramma's**.
+    1. Selecteer in VS code het tabblad **extensies** .
+    1. Zoek naar **Azure IOT-Hulpprogram ma's**.
     1. Selecteer **Installeren**.
 
-Als u de gegenereerde C-code in Windows wilt bouwen in deze zelfstudie, moet u het andere doen:
+Als u in deze zelf studie de gegenereerde C-code in Windows wilt maken, hebt u het volgende nodig:
 
-* [Bouw tools voor Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) met **C++ buildtools** en **NuGet package manager component** workloads. Of als u al [Visual Studio (Community, Professional of Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 of 2015 hebt met dezelfde workloads geïnstalleerd.
+* [Bouw Hulpprogram ma's voor Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) met **C++ build tools** en **NuGet package manager-onderdeel** workloads. Of als u [Visual Studio (Community, Professional of ENTER prise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 of 2015 al hebt geïnstalleerd met dezelfde workloads.
 * [Git](https://git-scm.com/download)
-* [Cmake](https://cmake.org/download/)
+* [CMake](https://cmake.org/download/)
 
-Als u uw apparaatcode in deze zelfstudie wilt testen, moet u het andere doen:
+Als u uw apparaatcode in deze zelf studie wilt testen, hebt u het volgende nodig:
 
-* De [Azure IoT-verkenner](https://github.com/Azure/azure-iot-explorer/releases).
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+* [Azure IOT Explorer](https://github.com/Azure/azure-iot-explorer/releases).
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="model-your-device"></a>Uw apparaat modelleren
+## <a name="model-your-device"></a>Uw apparaat model leren
 
-U gebruikt de _digitale tweedefinitietaal_ om een apparaatcapaciteitsmodel te maken. Een model bestaat meestal uit meerdere _interfacedefinitiebestanden_ en één modelbestand. De **Azure IoT-hulpprogramma's voor VS-code** bevatten hulpprogramma's waarmee u deze JSON-bestanden maken en bewerken.
+U gebruikt de _Digital-dubbele definitie taal_ om een mogelijkheidsprofiel te maken. Een model bestaat meestal uit meerdere _Interface_ definitie bestanden en één model bestand. De **Azure IOT-Hulpprogram ma's voor VS code** bevat hulpprogram ma's waarmee u deze json-bestanden kunt maken en bewerken.
 
-### <a name="create-the-interface-file"></a>Het interfacebestand maken
+### <a name="create-the-interface-file"></a>Het interface bestand maken
 
-Ga als het gaat om het maken van een interfacebestand dat de mogelijkheden van uw IoT-apparaat definieert in VS-code:
+Een interface bestand maken waarmee de mogelijkheden van uw IoT-apparaat in VS code worden gedefinieerd:
 
-1. Een map maken met de naam **devicemodel**.
+1. Maak een map met de naam **devicemodel**.
 
-1. Start VS-code en gebruik **Ctrl+Shift+P** om het opdrachtpalet te openen.
+1. Start VS code en gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug and Play in** en selecteer vervolgens de opdracht **IoT-stekker & Afspelen: Interface maken.**
+1. Voer **Plug en Play** in en selecteer de opdracht **IOT plug & Play: Create interface** .
 
-1. Blader naar en selecteer de **apparaatmodelmap die** u hebt gemaakt.
+1. Blader naar en selecteer de **devicemodel** -map die u hebt gemaakt.
 
-1. Voer **vervolgens EnvironmentalSensor** in als de naam van de interface en druk op **Enter**. VS Code maakt een voorbeeldinterfacebestand met de naam **EnvironmentalSensor.interface.json**.
+1. Voer **EnvironmentalSensor** in als de naam van de interface en druk op **Enter**. VS code maakt een voor beeld-interface bestand met de naam **EnvironmentalSensor. interface. json**.
 
-1. Vervang de inhoud van dit bestand door `{your name}` de `@id` volgende JSON en vervang in het veld een unieke waarde. Gebruik alleen de tekens a-z, A-Z, 0-9 en onderbied. Zie [Digital Twin-id-indeling](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format)voor meer informatie. De interface-id moet uniek zijn om de interface in de repository op te slaan:
+1. Vervang de inhoud van dit bestand door de volgende JSON en vervang `{your name}` in het `@id` veld door een unieke waarde. Gebruik alleen de tekens a-z, A-Z, 0-9 en onderstrepen. Zie [Digital Identifier-indeling](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format)voor meer informatie. De interface-ID moet uniek zijn voor het opslaan van de interface in de opslag plaats:
 
     ```json
     {
@@ -175,9 +175,9 @@ Ga als het gaat om het maken van een interfacebestand dat de mogelijkheden van u
     }
     ```
 
-    Deze interface definieert apparaateigenschappen zoals **klantnaam,** telemetrietypen zoals **Temperatuur**en opdrachten zoals **turnon**.
+    Deze interface definieert eigenschappen van apparaten, zoals de naam van de **klant**, de typen telemetrie, zoals de **Tempe ratuur**en opdrachten zoals **TurnOn**.
 
-1. Voeg aan het einde van dit interfacebestand een opdrachtmogelijkheid toe die **knipperen** wordt genoemd. Zorg ervoor dat u een komma toevoegt voordat u de opdracht toevoegt. Probeer de definitie te typen om te zien hoe intellisense, automatisch aanvullen en validatie u kunnen helpen bij het bewerken van een interfacedefinitie:
+1. Voeg aan het einde van dit interface bestand een opdracht functie toe met de naam **Blink** . Zorg ervoor dat u een komma toevoegt voordat u de opdracht toevoegt. Typ de definitie om te zien hoe IntelliSense, automatisch aanvullen en valideren u kunt helpen bij het bewerken van een interface definitie:
 
     ```json
     {
@@ -206,17 +206,17 @@ Ga als het gaat om het maken van een interfacebestand dat de mogelijkheden van u
 
 1. Sla het bestand op.
 
-### <a name="create-the-model-file"></a>Het modelbestand maken
+### <a name="create-the-model-file"></a>Het model bestand maken
 
-Het modelbestand geeft de interfaces op die uw IoT Plug and Play-apparaat implementeert. Er zijn meestal ten minste twee interfaces in een model - een of meer die de specifieke mogelijkheden van uw apparaat definiëren en een standaardinterface die alle IoT Plug and Play-apparaten moeten implementeren.
+In het model bestand worden de interfaces opgegeven die uw IoT Plug en Play-apparaat implementeert. Er zijn meestal ten minste twee interfaces in een model, een of meer, waarmee de specifieke mogelijkheden van uw apparaat worden gedefinieerd, en een standaard interface die door alle IoT Plug en Play-apparaten moet worden geïmplementeerd.
 
-Ga als het gaat om het maken van een modelbestand dat de interfaces opgeeft die uw IoT Plug and Play-apparaat implementeert in VS-code:
+Een model bestand maken dat de interfaces specificeert die uw IoT Plug en Play-apparaat implementeert in VS code:
 
-1. Gebruik **Ctrl+Shift+P** om het opdrachtpalet te openen.
+1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug and Play in** en selecteer vervolgens de opdracht **IoT-stekker & Spelen: Maak het model maken.** Voer vervolgens **SensorboxModel** in als de naam van het model. VS-code maakt een voorbeeldinterfacebestand met de naam **SensorboxModel.capabilitymodel.json**.
+1. Voer **Plug en Play** in en selecteer de opdracht **IOT plug & Play: Create Capability model** . Voer **SensorboxModel** in als de naam van het model. VS code maakt een voor beeld-interface bestand met de naam **SensorboxModel. capabilitymodel. json**.
 
-1. Vervang de inhoud van dit bestand door `{your name}` de `@id` volgende JSON en vervang in het veld en in de `EnvironmentalSensor` interface met dezelfde waarde die u hebt gebruikt in het bestand **EnvironmentalSensor.interface.json.** De interface-id moet uniek zijn om de interface in de repository op te slaan:
+1. Vervang de inhoud van dit bestand door de volgende JSON en vervang `{your name}` in het `@id` veld en in de `EnvironmentalSensor` interface met dezelfde waarde die u hebt gebruikt in het bestand **EnvironmentalSensor. interface. json** . De interface-ID moet uniek zijn voor het opslaan van de interface in de opslag plaats:
 
     ```json
     {
@@ -237,103 +237,103 @@ Ga als het gaat om het maken van een modelbestand dat de interfaces opgeeft die 
     }
     ```
 
-    Het model definieert een apparaat dat uw **EnvironmentalSensor-interface** en de standaard **Interface DeviceInformation** implementeert.
+    Het model definieert een apparaat dat uw **EnvironmentalSensor** -interface en de standaard **DeviceInformation** -interface implementeert.
 
 1. Sla het bestand op.
 
-### <a name="download-the-deviceinformation-interface"></a>De interface DeviceInformation downloaden
+### <a name="download-the-deviceinformation-interface"></a>De DeviceInformation-interface downloaden
 
-Voordat u skeletcode uit het model genereren, moet u een lokale kopie van de **Apparaatinformatie** maken vanuit de *openbare modelopslagplaats.* De openbare modelrepository bevat al de **DeviceInformation-interface.**
+Voordat u een skelet code van het model kunt genereren, moet u een lokale kopie van de **DeviceInformation** maken uit de *open bare model opslagplaats*. De open bare model opslagplaats bevat al de **DeviceInformation** -interface.
 
-Ga als het gaat om het downloaden van de **DeviceInformation-interface** van de openbare modelopslagplaats met VS-code:
+De **DeviceInformation** -interface vanuit de open bare model opslagplaats downloaden met behulp van VS code:
 
-1. Gebruik **Ctrl+Shift+P** om het opdrachtpalet te openen.
+1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug and Play**in, selecteer de opdracht **Modelopslagplaats** openen en selecteer Vervolgens Openbare **modelopslagplaats openen**.
+1. Voer **Plug en Play**in, selecteer de opdracht **model opslagplaats openen** en selecteer vervolgens **Open Public model-opslag**.
 
-1. Selecteer **Interfaces,** selecteer vervolgens de `urn:azureiot:DeviceManagement:DeviceInformation:1`apparaatinformatie-interface met ID en selecteer **Vervolgens Downloaden**.
+1. Selecteer **interfaces**, selecteer de apparaatgegevens interface met de id `urn:azureiot:DeviceManagement:DeviceInformation:1`en selecteer vervolgens **downloaden**.
 
-U hebt nu de drie bestanden die deel uitmaken van uw apparaat mogelijkheid model:
+U hebt nu de drie bestanden waaruit het mogelijkheidsprofiel kan worden gemaakt:
 
-* urn_azureiot_DeviceManagement_DeviceInformation_1.interface.json
-* EnvironmentalSensor.interface.json
-* SensorboxModel.capabilitymodel.json
+* urn_azureiot_DeviceManagement_DeviceInformation_1. interface. json
+* EnvironmentalSensor. interface. json
+* SensorboxModel. capabilitymodel. json
 
 ## <a name="publish-the-model"></a>Het model publiceren
 
-Als u het Azure IoT Explorer-hulpprogramma wilt lezen, moet u het publiceren in uw bedrijfsopslagplaats. Als u wilt publiceren vanuit VS-code, hebt u de verbindingstekenreeks voor de bedrijfsopslagplaats nodig:
+Als u het hulp programma Azure IoT Explorer wilt gebruiken om uw mogelijkheidsprofiel te lezen, moet u dit publiceren in de opslag plaats van uw bedrijf. Als u wilt publiceren vanuit VS code, hebt u de connection string nodig voor de bedrijfs opslagplaats:
 
-1. Navigeer naar de [Azure Certified for IoT-portal.](https://aka.ms/ACFI)
+1. Ga naar de [Azure Certified voor IOT-Portal](https://aka.ms/ACFI).
 
-1. Gebruik uw _Microsoft-werkaccount_ om u aan te melden bij de portal.
+1. Gebruik uw micro soft- _werk account_ om u aan te melden bij de portal.
 
-1. Selecteer **Bedrijfsopslagplaats** en vervolgens **Verbindingstekenreeksen**.
+1. Selecteer **bedrijfs opslagplaats** en vervolgens **verbindings reeksen**.
 
-1. Kopieer de verbindingstekenreeks.
+1. Kopieer de connection string.
 
-Ga als bedoeld als het gaat om het openen van uw bedrijfsrepository in VS Code:
+De opslag plaats van uw bedrijf in VS code openen:
 
-1. Gebruik **Ctrl+Shift+P** om het opdrachtpalet te openen.
+1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug and Play in** en selecteer vervolgens de opdracht **IoT Plug & Play: Open Model Repository.**
+1. Voer **Plug en Play** in en selecteer de optie **IOT plug & Play: open model repository** .
 
-1. Selecteer **Repository openen en** plak in uw verbindingstekenreeks.
+1. Selecteer **opslag plaats organisatie model openen** en plak de Connection String.
 
-1. Druk op **Enter** om uw bedrijfsopslagplaats te openen.
+1. Druk op **Enter** om de opslag plaats van uw bedrijf te openen.
 
-Ga als het gaat om het publiceren van uw apparaatcapaciteitsmodel en interfaces naar uw bedrijfsopslagplaats:
+Uw mogelijkheidsprofiel en interfaces publiceren naar uw bedrijfs opslagplaats:
 
-1. Gebruik **Ctrl+Shift+P** om het opdrachtpalet te openen.
+1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug and Play in** en selecteer vervolgens de opdracht **IoT Plug & Play: Bestanden verzenden naar Model Repository.**
+1. Voer **Plug en Play** in en selecteer vervolgens de **IOT plug & Play: bestanden verzenden naar model opslagplaats** opdracht.
 
-1. Selecteer de **bestanden EnvironmentalSensor.interface.json** en **SensorboxModel.capabilitymodel.json** en selecteer **OK**.
+1. Selecteer de bestanden **EnvironmentalSensor. interface. json** en **SensorboxModel. capabilitymodel. json** en selecteer **OK**.
 
-Uw bestanden worden nu opgeslagen in uw bedrijfsopslagplaats.
+Uw bestanden worden nu opgeslagen in de opslag plaats van uw bedrijf.
 
 ## <a name="generate-code"></a>Code genereren
 
-U de **Azure IoT-hulpprogramma's voor VS-code** gebruiken om skelet C-code van uw model te genereren. Ga als bedoeld als gevolg van het genereren van de skeletcode in VS-code:
+U kunt de **Azure IOT-Hulpprogram ma's voor VS code** gebruiken voor het genereren van een skelet C-code van uw model. De skelet code in VS code genereren:
 
-1. Gebruik **Ctrl+Shift+P** om het opdrachtpalet te openen.
+1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug and Play in** en selecteer vervolgens de opdracht **IoT-stekker & Play: Genereer apparaatcode.**
+1. Voer **Plug en Play** in en selecteer vervolgens de **IOT plug & Play: apparaatcode stub** -opdracht genereren.
 
-1. Selecteer het modelbestand **SensorboxModel.capabilitymodel.json** capability.
+1. Selecteer het **SensorboxModel. capabilitymodel. json** -bestand met het capaciteits model.
 
-1. Voer **sensorbox_app** in als de projectnaam.
+1. Voer **sensorbox_app** in als de project naam.
 
 1. Kies **ANSI C** als taal.
 
-1. Kies **via IoT Hub-verbindingstekenreeks** als de manier om verbinding te maken.
+1. Kies **Via IOT hub apparaat Connection String** als de manier om verbinding te maken.
 
-1. Kies **CMake Project in Windows** als projectsjabloon.
+1. Kies **cmake project in Windows** als project sjabloon.
 
-1. Kies **Via Vcpkg** als manier om het apparaat SDK op te nemen.
+1. Kies **via Vcpkg** als manier om de SDK voor het apparaat in te voegen.
 
-VS Code genereert de skeleton C-code en slaat de bestanden op in de **map sensorbox_app** in de **map modelcode.** VS Code opent een nieuw venster met de gegenereerde codebestanden.
+VS code genereert de code van de skelet C en slaat de bestanden op in de map **sensorbox_app** in de map **modelcode** . VS code opent een nieuw venster met de gegenereerde code bestanden.
 
 ## <a name="update-the-generated-code"></a>De gegenereerde code bijwerken
 
-Voordat u de code bouwen en uitvoeren, moet u de stopige eigenschappen, telemetrie en opdrachten implementeren.
+Voordat u de code kunt bouwen en uitvoeren, moet u de stubbed-eigenschappen, telemetrie en opdrachten implementeren.
 
-Ga als bedoeld als bedoeld bij implementaties van de stopcode in VS Code:
+Voor het leveren van implementaties voor de stubbed-code in VS code:
 
-1. Open het **SensorboxModel_impl.c-bestand.**
+1. Open het bestand **SensorboxModel_impl. c** .
 
-1. Voeg code toe om de stopfuncties te implementeren.
+1. Voeg code toe om de stubbed-functies te implementeren.
 
 1. Sla uw wijzigingen op.
 
 ## <a name="build-the-code"></a>De code bouwen
 
-Voordat u de code uitvoert om uw IoT Plug and Play-apparaat te testen met een Azure IoT-hub, moet u de code compileren.
+Voordat u de code uitvoert om uw IoT Plug en Play-apparaat te testen met een Azure IoT hub, moet u de code compileren.
 
-Volg de instructies in het **Readme.md-bestand** in de **map sensorbox_app** om de code op Windows te bouwen en uit te voeren. De volgende sectie bevat instructies voor het ophalen van een apparaatverbindingstekenreeks die u wilt gebruiken wanneer u de apparaatcode uitvoert.
+Volg de instructies in het **README.MD** -bestand in de map **sensorbox_app** om de code op Windows te bouwen en uit te voeren. De volgende sectie bevat instructies voor het ophalen van een apparaat connection string dat moet worden gebruikt wanneer u de apparaatcode uitvoert.
 
 ## <a name="test-the-code"></a>De code testen
 
-Wanneer u de code uitvoert, maakt deze verbinding met IoT Hub en wordt begonnen met het verzenden van voorbeeldtelemetrie- en eigenschapwaarden. Het apparaat reageert ook op opdrachten die vanuit de IoT Hub worden verzonden. Ga als volgt te werk om dit gedrag te verifiëren:
+Wanneer u de code uitvoert, maakt deze verbinding met IoT Hub en wordt het verzenden van voor beeld-telemetrie en eigenschaps waarden gestart. Het apparaat reageert ook op opdrachten die vanuit IoT Hub worden verzonden. U kunt dit gedrag als volgt controleren:
 
 1. Een IoT Hub maken:
 
@@ -343,16 +343,16 @@ Wanneer u de code uitvoert, maakt deze verbinding met IoT Hub en wordt begonnen 
       --resource-group environmentalsensorresources --sku F1
     ```
 
-1. Voeg een apparaat toe aan uw IoT-hub en haal de verbindingstekenreeks op:
+1. Voeg een apparaat toe aan uw IoT-hub en haal de connection string op:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {your iot hub name} --device-id MyPnPDevice
     az iot hub device-identity show-connection-string --hub-name {your iot hub name} --device-id MyPnPDevice --output table
     ```
 
-    Noteer de verbindingstekenreeks.
+    Noteer de connection string.
 
-1. Navigeer bij een opdrachtprompt naar de map **azure-iot-sdk-c** waar u de SDK en voorbeelden hebt gebouwd. Navigeer vervolgens naar de map **cmake\\\\sensorbox_app Release.**
+1. Ga bij een opdracht prompt naar de map **Azure-IOT-SDK-c** waarin u de SDK en voor beelden hebt gemaakt. Ga vervolgens naar de **map\\cmake\\sensorbox_app release** .
 
 1. Voer de volgende opdracht uit:
 
@@ -360,11 +360,11 @@ Wanneer u de code uitvoert, maakt deze verbinding met IoT Hub en wordt begonnen 
     sensorbox_app.exe {your device connection string}
     ```
 
-1. Gebruik het hulpprogramma azure IoT explorer om te communiceren met het IoT Plug and Play-apparaat dat is verbonden met uw IoT-hub. Zie [Azure IoT explorer installeren en gebruiken](./howto-install-iot-explorer.md)voor meer informatie.
+1. Gebruik het hulp programma Azure IoT Explorer om te communiceren met de IoT-Plug en Play apparaat dat is verbonden met uw IoT-hub. Zie voor meer informatie [Azure IOT Explorer installeren en gebruiken](./howto-install-iot-explorer.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT Plug and Play hebt gebouwd die klaar is voor certificering, leert u hoe u:
+Nu u een IoT Plug en Play hebt gemaakt voor certificering, leert u het volgende:
 
 > [!div class="nextstepaction"]
 > [Een apparaat bouwen dat gereed is voor certificering](tutorial-build-device-certification.md)

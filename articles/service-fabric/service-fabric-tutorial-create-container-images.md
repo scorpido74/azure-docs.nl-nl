@@ -1,5 +1,5 @@
 ---
-title: Containerafbeeldingen maken op ServiceFabric in Azure
+title: Container installatie kopieën maken op Service Fabric in azure
 description: In deze zelfstudie leert u hoe u containerinstallatiekopieën maakt voor een Service Fabric-toepassing met meerdere containers.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78252787"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Zelfstudie: Containerinstallatiekopieën maken in een Service Fabric-cluster in Linux
@@ -78,7 +78,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry implementeren
 
-Voer eerst de opdracht **az-aanmelding** uit om u aan te melden bij uw Azure-account.
+Voer eerst de opdracht **AZ login** uit om u aan te melden bij uw Azure-account.
 
 ```azurecli
 az login
@@ -98,7 +98,7 @@ Een resourcegroep maken met de opdracht **az group create**. In dit voorbeeld wo
 az group create --name <myResourceGroup> --location westus
 ```
 
-Maak een Azure Container-register met de opdracht **AZ ACR Create.** Vervang \<acrName > door de naam van het containerregister dat u wilt maken in het abonnement. Deze naam moet alfanumeriek en uniek zijn.
+Maak een Azure container Registry met de opdracht **AZ ACR Create** . Vervang \<acrName > door de naam van het containerregister dat u wilt maken in het abonnement. Deze naam moet alfanumeriek en uniek zijn.
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
@@ -106,9 +106,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 In de rest van deze zelfstudie wordt acrName gebruikt als tijdelijke aanduiding voor de naam van het gekozen containerregister. Noteer deze waarde.
 
-## <a name="sign-in-to-your-container-registry"></a>Aanmelden bij uw containerregister
+## <a name="sign-in-to-your-container-registry"></a>Aanmelden bij het container register
 
-Meld u aan bij uw ACR-instantie voordat u afbeeldingen erop duwt. Gebruik de opdracht **az acr login** om de bewerking te voltooien. Geef de unieke naam op die u het containerregister hebt gegeven toen u het maakte.
+Meld u aan bij uw ACR-exemplaar voordat u er installatie kopieën naar pusht. Gebruik de opdracht **az acr login** om de bewerking te voltooien. Geef de unieke naam op die u het containerregister hebt gegeven toen u het maakte.
 
 ```azurecli
 az acr login --name <acrName>

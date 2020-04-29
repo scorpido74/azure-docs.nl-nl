@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie - Azure Databricks implementeren met een Cosmos DB-eindpunt
-description: In deze zelfstudie wordt beschreven hoe u Azure Databricks implementeert in een virtueel netwerk met een Service Endpoint ingeschakeld voor Cosmos DB.
+title: Zelf studie-Azure Databricks implementeren met een Cosmos DB-eind punt
+description: In deze zelf studie wordt beschreven hoe u Azure Databricks implementeert in een virtueel netwerk met een service-eind punt dat is ingeschakeld voor Cosmos DB.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,127 +8,127 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74706168"
 ---
-# <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Zelfstudie: Azure Databricks implementeren met een Cosmos DB-eindpunt
+# <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Zelf studie: Azure Databricks implementeren met een Cosmos DB-eind punt
 
-In deze zelfstudie wordt beschreven hoe u een Door VNet geïnjecteerde Databricks-omgeving implementeert met een Service Endpoint ingeschakeld voor Cosmos DB.
+In deze zelf studie wordt beschreven hoe u een VNet-geïnjecteerde Databricks-omgeving implementeert met een service-eind punt dat is ingeschakeld voor Cosmos DB.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Azure Databricks-werkruimte maken in een virtueel netwerk
-> * Een eindpunt van de Cosmos DB-service maken
-> * Een Cosmos DB-account maken en gegevens importeren
+> * Een Azure Databricks-werk ruimte maken in een virtueel netwerk
+> * Een Cosmos DB Service-eind punt maken
+> * Een Cosmos DB account maken en gegevens importeren
 > * Een Azure Databricks-cluster maken
-> * Query Cosmos DB vanuit een Azure Databricks-notitieblok
+> * Cosmos DB opvragen van een Azure Databricks notitie blok
 
 ## <a name="prerequisites"></a>Vereisten
 
 Ga als volgt te werk voordat u begint:
 
-* Maak een [Azure Databricks-werkruimte in een virtueel netwerk.](quickstart-create-databricks-workspace-vnet-injection.md)
+* Een [Azure Databricks-werk ruimte maken in een virtueel netwerk](quickstart-create-databricks-workspace-vnet-injection.md).
 
-* Download de [Spark-connector](https://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.4/azure-cosmosdb-spark_2.4.0_2.11-1.3.4-uber.jar).
+* Down load de [Spark-connector](https://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.4/azure-cosmosdb-spark_2.4.0_2.11-1.3.4-uber.jar).
 
-* Download voorbeeldgegevens van de [NOAA National Centers for Environmental Information.](https://www.ncdc.noaa.gov/stormevents/) Selecteer een status of gebied en selecteer **Zoeken**. Accepteer op de volgende pagina de standaardinstellingen en selecteer **Zoeken**. Selecteer vervolgens **CSV Downloaden** aan de linkerkant van de pagina om de resultaten te downloaden.
+* Down load voorbeeld gegevens van de [NOAA National Centers voor omgevings informatie](https://www.ncdc.noaa.gov/stormevents/). Selecteer een staat of gebied en selecteer **zoeken**. Accepteer de standaard instellingen op de volgende pagina en selecteer **zoeken**. Selecteer vervolgens **CSV-down load** aan de linkerkant van de pagina om de resultaten te downloaden.
 
-* Download de [vooraf gecompileerde binaire](https://aka.ms/csdmtool) van de Azure Cosmos DB Data Migration Tool.
+* Down load het [vooraf gecompileerde binaire bestand](https://aka.ms/csdmtool) van het hulp programma voor gegevens migratie van Azure Cosmos db.
 
-## <a name="create-a-cosmos-db-service-endpoint"></a>Een eindpunt van de Cosmos DB-service maken
+## <a name="create-a-cosmos-db-service-endpoint"></a>Een Cosmos DB Service-eind punt maken
 
-1. Nadat u een Azure Databricks-werkruimte hebt geïmplementeerd in een virtueel netwerk, navigeert u naar het virtuele netwerk in de [Azure-portal.](https://portal.azure.com) Let op de openbare en private subnetten die zijn gemaakt via de databricks-implementatie.
+1. Wanneer u een Azure Databricks-werk ruimte hebt geïmplementeerd in een virtueel netwerk, gaat u naar het virtuele netwerk in de [Azure Portal](https://portal.azure.com). Let op de open bare en particuliere subnetten die zijn gemaakt via de Databricks-implementatie.
 
-   ![Virtuele netwerksubnetten](./media/service-endpoint-cosmosdb/virtual-network-subnets.png)
+   ![Subnetten van virtueel netwerk](./media/service-endpoint-cosmosdb/virtual-network-subnets.png)
 
-2. Selecteer het subnet openbaar en maak een eindpunt van de Cosmos *DB-service.* Dan **opslaan**.
+2. Selecteer het *open bare subnet* en maak een Cosmos DB Service-eind punt. **Sla**vervolgens op.
    
-   ![Een eindpunt van de Cosmos DB-service toevoegen](./media/service-endpoint-cosmosdb/add-cosmosdb-service-endpoint.png)
+   ![Een Cosmos DB Service-eind punt toevoegen](./media/service-endpoint-cosmosdb/add-cosmosdb-service-endpoint.png)
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB-account maken
 
-1. Open Azure Portal. Selecteer linksboven in het scherm **de**optie Een bron > Databases maken > Azure Cosmos DB .
+1. Open Azure Portal. Selecteer in de linkerbovenhoek van het scherm **een resource maken > data bases > Azure Cosmos DB**.
 
-2. Vul de **instantiegegevens** op het tabblad **Basis met** de volgende instellingen in:
+2. Vul de details van het **exemplaar** in op het tabblad **basis beginselen** met de volgende instellingen:
 
    |Instelling|Waarde|
    |-------|-----|
    |Abonnement|*uw abonnement*|
-   |Resourcegroep|*uw resourcegroep*|
-   |Accountnaam|db-vnet-service-eindpunt|
+   |Resourcegroep|*de resource groep*|
+   |Accountnaam|DB-vnet-service-eind punt|
    |API|Core (SQL)|
    |Locatie|VS - west|
    |Georedundantie|Uitschakelen|
    |Schrijven voor meerdere regio's|Inschakelen|
 
-   ![Een eindpunt van de Cosmos DB-service toevoegen](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
+   ![Een Cosmos DB Service-eind punt toevoegen](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
-3. Selecteer het tabblad **Netwerk** en configureer uw virtuele netwerk. 
+3. Selecteer het tabblad **netwerk** en configureer het virtuele netwerk. 
 
-   a. Kies het virtuele netwerk dat u als voorwaarde hebt gemaakt en selecteer vervolgens *openbaar subnet*. Merk op dat *private-subnet* heeft de opmerking *'Microsoft AzureCosmosDB' eindpunt ontbreekt'*. Dit komt omdat u alleen het eindpunt van de Cosmos *DB-service*hebt ingeschakeld op het openbare subnet .
+   a. Kies het virtuele netwerk dat u hebt gemaakt als een vereiste en selecteer vervolgens *openbaar subnet*. U ziet dat het *micro soft AzureCosmosDB-eind punt ontbreekt*in het *persoonlijke subnet* . Dit komt doordat u het Cosmos DB Service-eind punt alleen hebt ingeschakeld op het *open bare subnet*.
 
-   b. Zorg ervoor dat u **Toegang toestaan vanuit azure-portal** hebt ingeschakeld. Met deze instelling hebt u toegang tot uw Cosmos DB-account via de Azure-portal. Als deze optie is ingesteld op **Weigeren,** ontvangt u fouten wanneer u toegang probeert te krijgen tot uw account. 
+   b. Zorg ervoor dat u **toegang vanaf Azure Portal** hebt ingeschakeld. Met deze instelling krijgt u toegang tot uw Cosmos DB-account via de Azure Portal. Als deze optie is ingesteld op **weigeren**, worden er fouten weer gegeven wanneer u probeert toegang te krijgen tot uw account. 
 
    > [!NOTE]
-   > Het is niet nodig voor deze tutorial, maar u ook *toegang toestaan vanaf mijn IP* inschakelen als u de mogelijkheid wilt om toegang te krijgen tot uw Cosmos DB-account vanaf uw lokale machine. Als u bijvoorbeeld verbinding maakt met uw account met de Cosmos DB SDK, moet u deze instelling inschakelen. Als het is uitgeschakeld, ontvangt u fouten 'Toegang geweigerd'.
+   > Dit is niet nodig voor deze zelf studie, maar u kunt ook *toegang tot mijn IP-adres toestaan* als u de toegang tot uw Cosmos DB-account vanaf uw lokale computer wilt bieden. Als u bijvoorbeeld verbinding maakt met uw account met behulp van de SDK van Cosmos DB, moet u deze instelling inschakelen. Als deze is uitgeschakeld, ontvangt u fout bericht over geweigerde toegang.
 
-   ![Netwerkinstellingen voor Cosmos DB-account](./media/service-endpoint-cosmosdb/create-cosmosdb-account-network.png)
+   ![Netwerk instellingen van Cosmos DB account](./media/service-endpoint-cosmosdb/create-cosmosdb-account-network.png)
 
-4. Selecteer **Controleren + Maken**en maak **vervolgens** om uw Cosmos DB-account te maken binnen het virtuele netwerk.
+4. Selecteer **controleren + maken**en **maak** vervolgens uw Cosmos DB-account in het virtuele netwerk.
 
-5. Zodra uw Cosmos DB-account is gemaakt, navigeert u naar **Toetsen** onder **Instellingen**. Kopieer de primaire verbindingstekenreeks en sla deze op in een teksteditor voor later gebruik.
+5. Nadat uw Cosmos DB-account is gemaakt, gaat u naar **sleutels** onder **instellingen**. Kopieer de primaire connection string en sla deze op in een tekst editor voor later gebruik.
 
-    ![Pagina Cosmos DB-accountsleutels](./media/service-endpoint-cosmosdb/cosmos-keys.png)
+    ![Pagina Cosmos DB account sleutels](./media/service-endpoint-cosmosdb/cosmos-keys.png)
 
-6. Selecteer **Data Explorer** en Nieuwe **verzameling** om een nieuwe database en verzameling toe te voegen aan uw Cosmos DB-account.
+6. Selecteer **Data Explorer** en **nieuwe verzameling** om een nieuwe data base en verzameling toe te voegen aan uw Cosmos DB-account.
 
-    ![Cosmos DB nieuwe collectie](./media/service-endpoint-cosmosdb/new-collection.png)
+    ![Nieuwe verzameling Cosmos DB](./media/service-endpoint-cosmosdb/new-collection.png)
 
 ## <a name="upload-data-to-cosmos-db"></a>Gegevens uploaden naar Cosmos DB
 
-1. Open de grafische interfaceversie van het [hulpprogramma voor gegevensmigratie voor Cosmos DB](https://aka.ms/csdmtool), **Dtui.exe**.
+1. Open de grafische interface versie van het [hulp programma voor gegevens migratie voor Cosmos DB](https://aka.ms/csdmtool), **Dtui. exe**.
 
     ![Cosmos DB-hulpprogramma voor gegevensmigratie](./media/service-endpoint-cosmosdb/cosmos-data-migration-tool.png)
 
-2. Selecteer **csvbestand(en)** op het tabblad **Brongegevens** in de vervolgkeuzelijst **Importeren uit.** Selecteer vervolgens **Bestanden toevoegen** en voeg de stormgegevens toe die CSV als vereiste hebt gedownload.
+2. Selecteer op het tabblad **Bron gegevens** de optie **CSV-bestand (en)** in de vervolg keuzelijst **importeren vanuit** . Selecteer vervolgens **bestanden toevoegen** en voeg het Storm-gegevens CSV toe dat u hebt gedownload als een vereiste.
 
-    ![Broninformatie over gegevensmigratie van Cosmos DB](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
+    ![Bron informatie voor Cosmos DB hulp programma voor gegevens migratie](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
 
-3. Voer op het tabblad **Doelgegevens** de verbindingstekenreeks in. De indeling van `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`de verbindingstekenreeks is . Het AccountEndpoint en AccountKey zijn opgenomen in de primaire verbindingstekenreeks die u in de vorige sectie hebt opgeslagen. Toevoegen `Database=<your database name>` aan het einde van de verbindingstekenreeks en selecteer **Verifiëren**. Voeg vervolgens de naam van de verzameling en de partitiesleutel toe.
+3. Voer op het tabblad **doel gegevens** de Connection String in. De connection string indeling is `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. De AccountEndpoint en AccountKey zijn opgenomen in de primaire connection string die u in de vorige sectie hebt opgeslagen. Voeg `Database=<your database name>` aan het einde van de connection string toe en selecteer **verifiëren**. Voeg vervolgens de naam van de verzameling en de partitie sleutel toe.
 
-    ![Cosmos DB Data Migration Tool doelinformatie](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
+    ![Doel informatie voor het hulp programma voor gegevens migratie Cosmos DB](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
 
-4. Selecteer **Volgende** totdat u de overzichtspagina hebt. Selecteer vervolgens **Importeren**.
+4. Selecteer **volgende** totdat u de overzichts pagina krijgt. Selecteer vervolgens **importeren**.
 
-## <a name="create-a-cluster-and-add-library"></a>Een cluster maken en bibliotheek toevoegen
+## <a name="create-a-cluster-and-add-library"></a>Een cluster maken en een bibliotheek toevoegen
 
-1. Navigeer naar uw Azure Databricks-service in de [Azure-portal](https://portal.azure.com) en selecteer **Werkruimte starten.**
+1. Navigeer naar uw Azure Databricks-service in de [Azure Portal](https://portal.azure.com) en selecteer **werk ruimte starten**.
 
-   ![Werkruimte Databricks starten](./media/service-endpoint-cosmosdb/launch-workspace.png)
+   ![Databricks-werk ruimte starten](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
-2. Een nieuw cluster maken. Kies een clusternaam en accepteer de resterende standaardinstellingen.
+2. Maak een nieuw cluster. Kies een cluster naam en accepteer de overige standaard instellingen.
 
-   ![Nieuwe clusterinstellingen](./media/service-endpoint-cosmosdb/create-cluster.png)
+   ![Nieuwe cluster instellingen](./media/service-endpoint-cosmosdb/create-cluster.png)
 
-3. Nadat uw cluster is gemaakt, navigeert u naar de clusterpagina en selecteert u het tabblad **Bibliotheken.** Selecteer **Nieuw installeren** en upload het spark-connectorpotbestand om de bibliotheek te installeren.
+3. Nadat het cluster is gemaakt, gaat u naar de pagina cluster en selecteert u het tabblad **tape wisselaars** . Selecteer **nieuwe installeren** en upload het bestand Spark-connector jar om de bibliotheek te installeren.
 
-    ![Spark-connectorbibliotheek installeren](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
+    ![Spark-connector bibliotheek installeren](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
 
-    U controleren of de bibliotheek is geïnstalleerd op het tabblad **Bibliotheken.**
+    U kunt controleren of de bibliotheek is geïnstalleerd op het tabblad **tape wisselaars** .
 
-    ![Tabblad Gegevensstenenclusterbibliotheken](./media/service-endpoint-cosmosdb/installed-library.png)
+    ![Tabblad Databricks cluster bibliotheken](./media/service-endpoint-cosmosdb/installed-library.png)
 
-## <a name="query-cosmos-db-from-a-databricks-notebook"></a>Query Cosmos DB vanuit een Databricks-notitieblok
+## <a name="query-cosmos-db-from-a-databricks-notebook"></a>Cosmos DB opvragen van een Databricks-notebook
 
-1. Navigeer naar uw Azure Databricks-werkruimte en maak een nieuw python-notitieblok.
+1. Navigeer naar uw Azure Databricks-werk ruimte en maak een nieuwe python-notebook.
 
-    ![Nieuw Databricks-notitieblok maken](./media/service-endpoint-cosmosdb/new-python-notebook.png)
+    ![Nieuwe Databricks-notebook maken](./media/service-endpoint-cosmosdb/new-python-notebook.png)
 
-2. Voer de volgende python-code uit om de configuratie van de Cosmos DB-verbinding in te stellen. Wijzig het **eindpunt,** **masterkey,** **database**en **verzameling** dienovereenkomstig.
+2. Voer de volgende python-code uit om de configuratie van de Cosmos DB-verbinding in te stellen. Wijzig het **eind punt**, de hoofd **sleutel**, de **Data Base**en de **verzameling** dienovereenkomstig.
 
     ```python
     connectionConfig = {
@@ -143,33 +143,33 @@ Ga als volgt te werk voordat u begint:
     }
     ```
 
-3. Gebruik de volgende python-code om de gegevens te laden en een tijdelijke weergave te maken.
+3. Gebruik de volgende python-code om de gegevens te laden en een tijdelijke weer gave te maken.
 
     ```python
     users = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**connectionConfig).load()
     users.createOrReplaceTempView("storm")
     ```
 
-4. Gebruik de volgende magische opdracht om een SQL-instructie uit te voeren die gegevens retourneert.
+4. Gebruik de volgende Magic-opdracht om een SQL-instructie uit te voeren waarmee gegevens worden geretourneerd.
 
     ```python
     %sql
     select * from storm
     ```
 
-    U hebt uw Met VNet geïnjecteerde Databricks-werkruimte met succes verbonden met een Cosmos DB-bron met serviceeindpunt. Zie Azure Cosmos DB Connector voor [Apache Spark voor](https://github.com/Azure/azure-cosmosdb-spark)meer informatie over hoe u verbinding maken met Cosmos DB.
+    U hebt de door VNet geïnjecteerde Databricks-werk ruimte gekoppeld aan een service-Endpoint waarvoor Cosmos DB resource is ingeschakeld. Zie [Azure Cosmos DB-connector voor Apache Spark voor](https://github.com/Azure/azure-cosmosdb-spark)meer informatie over het maken van verbinding met Cosmos db.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de brongroep, de Azure Databricks-werkruimte en alle gerelateerde resources wanneer dit niet meer nodig is. Het verwijderen van de taak voorkomt onnodige facturering. Als u de Azure Databricks-werkruimte in de toekomst wilt gebruiken, u het cluster stoppen en het later opnieuw starten. Als u deze Azure Databricks-werkruimte niet meer wilt gebruiken, verwijdert u alle resources die u in deze zelfstudie hebt gemaakt met de volgende stappen:
+Als u deze niet meer nodig hebt, verwijdert u de resource groep, de Azure Databricks-werk ruimte en alle gerelateerde resources. Als u de taak verwijdert, vermijdt u onnodig factureren. Als u van plan bent de Azure Databricks-werk ruimte in de toekomst te gebruiken, kunt u het cluster stoppen en later opnieuw opstarten. Als u deze Azure Databricks werk ruimte niet wilt blijven gebruiken, verwijdert u alle resources die u in deze zelf studie hebt gemaakt met behulp van de volgende stappen:
 
-1. Klik in het linkermenu in de Azure-portal op **Resourcegroepen** en klik vervolgens op de naam van de resourcegroep die u hebt gemaakt.
+1. Klik in het menu aan de linkerkant in het Azure Portal op **resource groepen** en klik vervolgens op de naam van de resource groep die u hebt gemaakt.
 
-2. Selecteer op de pagina Met uw brongroep de optie **Verwijderen**, typ de naam van de bron die u wilt verwijderen in het tekstvak en selecteer opnieuw **verwijderen.**
+2. Selecteer op de pagina van de resource groep **verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en selecteer vervolgens opnieuw **verwijderen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een Azure Databricks-werkruimte geïmplementeerd in een virtueel netwerk en hebt u de Cosmos DB Spark-connector gebruikt om Cosmos DB-gegevens van Databricks op te vragen. Ga voor meer informatie over het werken met Azure Databricks in een virtueel netwerk verder naar de zelfstudie voor het gebruik van SQL Server met Azure Databricks.
+In deze zelf studie hebt u een Azure Databricks-werk ruimte geïmplementeerd in een virtueel netwerk en de Cosmos DB Spark-connector gebruikt om Cosmos DB gegevens op te vragen uit Databricks. Ga verder met de zelf studie voor het gebruik van SQL Server met Azure Databricks voor meer informatie over het werken met Azure Databricks in een virtueel netwerk.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een SQL Server Linux Docker-container in een virtueel netwerk opvragen vanuit een Azure Databricks-notitieblok](vnet-injection-sql-server.md)
+> [Zelf studie: een SQL Server Linux-docker-container in een virtueel netwerk doorzoeken van een Azure Databricks notebook](vnet-injection-sql-server.md)

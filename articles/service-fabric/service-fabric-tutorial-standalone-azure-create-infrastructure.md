@@ -1,87 +1,87 @@
 ---
-title: Infrastructuur maken voor een cluster op Azure VM's
-description: In deze zelfstudie leert u hoe u de Azure VM-infrastructuur instelt om een Cluster Van Servicefabric uit te voeren.
+title: Infra structuur maken voor een cluster op virtuele machines in azure
+description: In deze zelf studie leert u hoe u de Azure VM-infra structuur kunt instellen om een Service Fabric cluster uit te voeren.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614006"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: Azure VM-infrastructuur maken om een ServiceFabric-cluster te hosten
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Zelf studie: een Azure VM-infra structuur maken om een Service Fabric cluster te hosten
 
-Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudiereeks maakt u een zelfstandig cluster dat wordt gehost op Azure VM's en installeert u er een toepassing op.
+Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op virtuele machines van Azure en installeert u er een toepassing op.
 
-Deze zelfstudie is deel één van een serie. In dit artikel genereert u de Azure VM-resources die nodig zijn om uw zelfstandige cluster van Service Fabric te hosten. In andere artikelen uit deze serie gaat u een zelfstandig Service Fabric-cluster installeren, een voorbeeldtoepassing in het cluster installeren en ten slotte het cluster opschonen.
+Deze zelfstudie is deel één van een serie. In dit artikel genereert u de Azure VM-resources die nodig zijn voor het hosten van uw zelfstandige cluster van Service Fabric. In andere artikelen uit deze serie gaat u een zelfstandig Service Fabric-cluster installeren, een voorbeeldtoepassing in het cluster installeren en ten slotte het cluster opschonen.
 
 In deel 1 van de reeks leert u het volgende:
 
 > [!div class="checklist"]
-> * Een set AzureVM-exemplaren maken
+> * Een set AzureVM-instanties maken
 > * De beveiligingsgroep wijzigen
 > * Aanmelden bij een van de exemplaren
 > * Het exemplaar voorbereiden voor Service Fabric
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien.  Als u nog geen account hebt, gaat u naar de [Azure-portal](https://portal.azure.com) om er een te maken.
+U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien.  Als u nog geen account hebt, gaat u naar de [Azure Portal](https://portal.azure.com) om er een te maken.
 
-## <a name="create-azure-virtual-machine-instances"></a>Azure Virtual Machine-exemplaren maken
+## <a name="create-azure-virtual-machine-instances"></a>Exemplaren van virtuele Azure-machines maken
 
-1. Meld u aan bij de Azure-portal en selecteer **Virtuele machines** (geen virtuele machines (klassiek)).
+1. Meld u aan bij de Azure Portal en selecteer **virtuele machines** (niet virtual machines (klassiek)).
 
-   ![Azure-portalVM][az-console]
+   ![Azure Portal VM][az-console]
 
-2. Selecteer de knop **Toevoegen,** waarmee het **formulier Een virtuele machine maken** wordt geopend.
+2. Selecteer de knop **toevoegen** om het formulier **virtuele machine maken** te openen.
 
-3. Kies op het tabblad **Basisbeginselen** de gewenste abonnements- en resourcegroep (met een nieuwe brongroep wordt aanbevolen).
+3. Op het tabblad **basis beginselen** moet u het gewenste abonnement en de resource groep kiezen (met een nieuwe resource groep wordt aanbevolen).
 
-4. Wijzig het **afbeeldingstype** in **Windows Server 2016-datacenter**. 
+4. Wijzig het type **installatie kopie** naar **Windows Server 2016 Data Center**. 
  
-5. Wijzig de **instantiegrootte** in **Standaard DS2 v2**. Stel een **beheerder gebruikersnaam** en **wachtwoord,** nota wat ze zijn.
+5. Wijzig de instantie **grootte** in **Standard DS2 v2**. Stel een beheerders **naam** en- **wacht woord**in, waarbij u weet wat ze zijn.
 
-6. Laat de **inkomende poortregels** voorlopig geblokkeerd; we zullen deze configureren in de volgende sectie.
+6. De **Binnenkomende poort regels** voor Taan geblokkeerd laten. deze worden geconfigureerd in de volgende sectie.
 
-7. Maak **op** het tabblad Netwerken een nieuw **virtueel netwerk** en neem nota van de naam ervan.
+7. Op het tabblad **netwerken** maakt u een nieuwe **Virtual Network** en noteert u de naam.
 
-8. Stel vervolgens de **NIC-netwerkbeveiligingsgroep** in op **Geavanceerd**. Maak een nieuwe beveiligingsgroep, die de naam ervan opschrijft, en maak de volgende regels om TCP-verkeer van elke bron toe te staan:
+8. Stel vervolgens de **NIC-netwerk beveiligings groep** in op **Geavanceerd**. Maak een nieuwe beveiligings groep, laat de naam ongewijzigd en maak de volgende regels om TCP-verkeer toe te staan van elke bron:
 
-   ![sf-inbound][sf-inbound]
+   ![SF-inkomend][sf-inbound]
 
-   * Poort `3389`, voor RDP en ICMP (basisconnectiviteit).
-   * Poorten, `19000-19003`voor Service Fabric.
-   * Poorten, `19080-19081`voor Service Fabric.
-   * Poort `8080`, voor webbrowseraanvragen.
+   * Poort `3389`, voor RDP en ICMP (basis connectiviteit).
+   * Poorten `19000-19003`, voor service Fabric.
+   * Poorten `19080-19081`, voor service Fabric.
+   * Poort `8080`, voor webbrowser aanvragen.
 
    > [!TIP]
-   > Om uw virtuele machines te verbinden in Service Fabric, moeten de VM's die uw infrastructuur hosten dezelfde referenties hebben.  Er zijn twee manieren om consistente referenties te hanteren: alle machines toevoegen aan hetzelfde domein of op elke VM hetzelfde beheerderswachtwoord instellen. Gelukkig kunnen alle virtuele machines op hetzelfde **virtuele netwerk** eenvoudig verbinding maken, dus we zullen er zeker van zijn dat al onze exemplaren op hetzelfde netwerk staan.
+   > Om uw virtuele machines te verbinden in Service Fabric, moeten de VM's die uw infrastructuur hosten dezelfde referenties hebben.  Er zijn twee manieren om consistente referenties te hanteren: alle machines toevoegen aan hetzelfde domein of op elke VM hetzelfde beheerderswachtwoord instellen. Gelukkig staat Azure alle virtuele machines in hetzelfde **virtuele netwerk** toe om eenvoudig verbinding te maken. Daarom zullen we ervoor zorgen dat alle exemplaren op hetzelfde netwerk.
 
-9. Voeg een andere regel toe. Stel de bron in **op ServiceTag** en stel de bronservicetag in op **VirtualNetwork.** Service Fabric vereist dat de volgende poorten open zijn voor communicatie binnen het cluster: 135.137-139.445.20001-20031,20606-20861.
+9. Voeg nog een regel toe. Stel de bron in op **service label** en stel de bron service label in op **VirtualNetwork**. Service Fabric moeten de volgende poorten zijn geopend voor communicatie binnen het cluster: 135137-139, 445, 20001-20031, 20606-20861.
 
-   ![vnet-inbound][vnet-inbound]
+   ![vnet-inkomend][vnet-inbound]
 
-10. De rest van de opties zijn aanvaardbaar in hun standaardstatus. Bekijk ze als je wilt, en start dan je virtuele machine.
+10. De overige opties zijn acceptabel in de standaard status. Bekijk deze indien gewenst en start vervolgens de virtuele machine.
 
-## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Meer exemplaren maken voor uw Service Fabric-cluster
+## <a name="creating-more-instances-for-your-service-fabric-cluster"></a>Meer exemplaren maken voor uw Service Fabric cluster
 
-Start nog twee **virtuele machines,** zodat u dezelfde instellingen behoudt die in de vorige sectie zijn beschreven. Houd in het bijzonder dezelfde gebruikersnaam en wachtwoord van dezelfde beheerder aan. De beveiligingsgroep **Voor virtuele netwerken** en **NIC-netwerken** mag niet opnieuw worden gemaakt; selecteer de opties die u al hebt gemaakt in het vervolgkeuzemenu. Het kan enkele minuten duren voordat elk van uw exemplaren is geïmplementeerd.
+Start twee meer **virtual machines**en zorg ervoor dat u dezelfde instellingen behoudt als beschreven in de vorige sectie. Houd in het bijzonder dezelfde beheerders naam en hetzelfde wacht woord. De **beveiligings groep** voor **Virtual Network** en NIC-netwerk moet niet opnieuw worden gemaakt. Selecteer de items die u al hebt gemaakt in de vervolg keuzelijst. Het kan enkele minuten duren voordat elke instantie wordt geïmplementeerd.
 
 ## <a name="connect-to-your-instances"></a>Verbinding maken met uw instanties
 
-1. Selecteer een van uw exemplaren in de sectie **Virtuele machine.**
+1. Selecteer een van de exemplaren in de sectie **virtuele machine** .
 
-2. Neem op het tabblad **Overzicht** nota van het privé-IP-adres. *private* Klik vervolgens op **Verbinden**.
+2. Noteer het *privé* -IP-adres op het tabblad **overzicht** . Klik vervolgens op **verbinding maken**.
 
-3. Houd er op het **RDP-tabblad** rekening mee dat we het openbare IP-adres en poort 3389 gebruiken, dat we eerder specifiek hebben geopend. Download het RDP-bestand.
+3. Op het tabblad **RDP** ziet u dat we het open bare IP-adres en de poort 3389 gebruiken, die we specifiek eerder hebben geopend. Down load het RDP-bestand.
  
-4. Open het RDP-bestand en voer desgevraagd de gebruikersnaam en het wachtwoord in die u in de VM-installatie hebt opgegeven.
+4. Open het RDP-bestand en voer de gebruikers naam en het wacht woord in die u hebt opgegeven tijdens de installatie van de virtuele machine.
 
-5. Zodra u bent verbonden met een instantie, moet u valideren dat het externe register is uitgevoerd, SMB inschakelen en de vereiste poorten voor het Mkb- en externe register openen.
+5. Zodra u verbinding hebt gemaakt met een exemplaar, moet u controleren of het externe REGI ster actief is, SMB inschakelen en de vereiste poorten openen voor het SMB en het externe REGI ster.
 
-   Als u SMB wilt inschakelen, is dit de opdracht PowerShell:
+   Als u SMB wilt inschakelen, is dit de Power shell-opdracht:
 
    ```powershell
    netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
@@ -93,13 +93,13 @@ Start nog twee **virtuele machines,** zodat u dezelfde instellingen behoudt die 
    New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
-7. Herhaal dit proces voor uw andere instanties en wijs nogmaals op de privé-IP-adressen.
+7. Herhaal dit proces voor uw andere instanties en pas de privé-IP-adressen opnieuw uit.
 
 ## <a name="verify-your-settings"></a>Uw instellingen verifiëren
 
-1. Als u de basisconnectiviteit wilt valideren, maakt u verbinding met een van de VM's via RDP.
+1. Als u de basis verbinding wilt valideren, maakt u verbinding met een van de virtuele machines met behulp van RDP.
 
-2. Open de **opdrachtprompt** vanuit die VM en gebruik vervolgens de ping-opdracht om verbinding te maken van de ene vm naar de andere en vervang het onderstaande IP-adres door een van de privé-IP-adressen die u eerder hebt opgemerkt (niet het IP van de VM waarmee u al bent verbonden).
+2. Open de **opdracht prompt** vanuit die VM en gebruik vervolgens de ping-opdracht om verbinding te maken tussen de ene VM en de andere, waarbij u het IP-adres vervangt door een van de privé-IP-adressen die u eerder hebt genoteerd (en niet de IP van de virtuele machine waarmee u al bent verbonden).
 
    ```
    ping 172.31.20.163
@@ -116,14 +116,14 @@ Start nog twee **virtuele machines,** zodat u dezelfde instellingen behoudt die 
    De uitvoer moet gelijk zijn aan `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 
-   Nu zijn uw instanties goed voorbereid op Service Fabric.
+   Uw instanties zijn nu voor bereid voor Service Fabric.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel één van de serie hebt u geleerd hoe u drie Azure VM-exemplaren starten en deze configureren voor de installatie van Service Fabric:
+In deel één van de serie hebt u geleerd hoe u drie Azure VM-exemplaren kunt starten en ze kunt ophalen die zijn geconfigureerd voor de Service Fabric-installatie:
 
 > [!div class="checklist"]
-> * Een set Azure VM-exemplaren maken
+> * Een set van Azure VM-exemplaren maken
 > * De beveiligingsgroep wijzigen
 > * Aanmelden bij een van de exemplaren
 > * Het exemplaar voorbereiden voor Service Fabric

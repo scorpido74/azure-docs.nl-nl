@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie`:` Gebruik een beheerde identiteit om toegang te krijgen tot Azure Key Vault - Linux - Azure AD
+title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault-Linux-Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74232171"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Key Vault 
@@ -44,7 +44,7 @@ Met behulp van beheerde service-identiteiten voor Azure-resources kan uw code to
 
 Eerst moeten we een sleutelkluis maken en de door het systeem toegewezen beheerde identiteit van onze VM toegang tot de sleutelkluis verlenen.   
 
-1. Selecteer boven aan de linkernavigatiebalk De optie **Een resourcebeveiliging** > **+ kluis met identiteitssleutel** > **maken**.  
+1. Selecteer bovenaan de linkernavigatiebalk **een resource** > **maken beveiliging en identiteit** > **Key Vault**.  
 2. Geef een **naam** op voor de nieuwe sleutelkluis. 
 3. Zoek de sleutelkluis in hetzelfde abonnement en dezelfde resourcegroep als de virtuele machine die u eerder hebt gemaakt. 
 4. Selecteer **Toegangsbeleid** en klik op de knop **Nieuwe toevoegen**. 
@@ -69,7 +69,7 @@ Voeg vervolgens een geheim toe aan de sleutelkluis, zodat u het geheim later kun
 U hebt een SSH-client nodig om deze stappen uit te voeren.Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
  
 1. Navigeer in de portal naar de virtuele Linux-machine en klik in het **overzicht** op **Verbinden**. 
-2. **Maak verbinding** met de VM met de SSH-client van uw keuze. 
+2. **Maak verbinding** met de virtuele machine met de SSH-client van uw keuze. 
 3. Dien in het terminalvenster met behulp van CURL een aanvraag in bij het eindpunt van de lokaal beheerde identiteiten voor Azure-resources om een toegangstoken voor Azure Key Vault op te halen.  
  
     Hieronder ziet u de CURL-aanvraag voor het toegangstoken.  

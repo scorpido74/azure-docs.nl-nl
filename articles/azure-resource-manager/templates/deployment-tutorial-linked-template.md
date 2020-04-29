@@ -1,50 +1,50 @@
 ---
-title: Zelfstudie - Een gekoppelde sjabloon implementeren
+title: Zelf studie-een gekoppelde sjabloon implementeren
 description: Meer informatie over het implementeren van een gekoppelde sjabloon
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80672921"
 ---
-# <a name="tutorial-deploy-a-linked-template"></a>Zelfstudie: Een gekoppelde sjabloon implementeren
+# <a name="tutorial-deploy-a-linked-template"></a>Zelf studie: een gekoppelde sjabloon implementeren
 
-In de [vorige zelfstudies](./deployment-tutorial-local-template.md)hebt u geleerd hoe u een sjabloon implementeert die is opgeslagen in uw lokale computer. Als u complexe oplossingen wilt implementeren, u een sjabloon in veel sjablonen opsplitsen en deze sjablonen implementeren via een hoofdsjabloon. In deze zelfstudie leert u hoe u een hoofdsjabloon implementeert die de verwijzing naar een gekoppelde sjabloon bevat. Wanneer de hoofdsjabloon wordt geïmplementeerd, wordt de implementatie van de gekoppelde sjabloon geactiveerd. U leert ook hoe u de gekoppelde sjabloon opslaan en beveiligen met Behulp van SAS-token. Het duurt ongeveer **12 minuten** om te voltooien.
+In de [vorige zelf studies](./deployment-tutorial-local-template.md)hebt u geleerd hoe u een sjabloon kunt implementeren die is opgeslagen op de lokale computer. Als u complexe oplossingen wilt implementeren, kunt u een sjabloon in veel sjablonen opsplitsen en deze sjablonen implementeren via een hoofd sjabloon. In deze zelf studie leert u hoe u een hoofd sjabloon implementeert die de verwijzing naar een gekoppelde sjabloon bevat. Wanneer de hoofd sjabloon wordt geïmplementeerd, wordt de implementatie van de gekoppelde sjabloon geactiveerd. U leert ook hoe u de gekoppelde sjabloon kunt opslaan en beveiligen door gebruik te maken van SAS-tokens. Het duurt ongeveer **12 minuten** om te volt ooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We raden u aan de vorige zelfstudie te voltooien, maar deze is niet vereist.
+U wordt aangeraden om de vorige zelf studie te volt ooien, maar dit is niet vereist.
 
-## <a name="review-template"></a>Sjabloon bekijken
+## <a name="review-template"></a>Sjabloon controleren
 
-In de vorige zelfstudies implementeert u een sjabloon waarmee een opslagaccount, app-serviceplan en web-app zijn gemaakt. De gebruikte sjabloon was:
+In de vorige zelf studies implementeert u een sjabloon waarmee u een opslag account, App Service plan en web-app maakt. De gebruikte sjabloon is:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 ## <a name="create-a-linked-template"></a>Een gekoppelde sjabloon maken
 
-U de bron van het opslagaccount scheiden in een gekoppelde sjabloon:
+U kunt de bron van het opslag account in een gekoppelde sjabloon scheiden:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-De volgende sjabloon is de hoofdsjabloon.  Het gemarkeerde object **Microsoft.Resources/implementaties** laat zien hoe u een gekoppelde sjabloon aanroept. De gekoppelde sjabloon kan niet worden opgeslagen als een lokaal bestand of een bestand dat alleen beschikbaar is op uw lokale netwerk. U alleen een URI-waarde opgeven die *http* of *https*bevat. Resourcemanager moet toegang hebben tot de sjabloon. Een optie is om uw gekoppelde sjabloon in een opslagaccount te plaatsen en de URI voor dat item te gebruiken. De URI wordt doorgegeven aan een sjabloon met behulp van een parameter. Zie de gemarkeerde parameterdefinitie.
+De volgende sjabloon is de hoofd sjabloon.  Het gemarkeerde **micro soft. resources/Deployments-** object laat zien hoe u een gekoppelde sjabloon aanroept. De gekoppelde sjabloon kan niet worden opgeslagen als een lokaal bestand of een bestand dat alleen beschikbaar is op uw lokale netwerk. U kunt alleen een URI-waarde opgeven die *http* of *https*bevat. Resource Manager moet toegang hebben tot de sjabloon. U kunt ook de gekoppelde sjabloon in een opslag account plaatsen en de URI voor dat item gebruiken. De URI wordt door gegeven aan de sjabloon met behulp van een para meter. Bekijk de definitie van de gemarkeerde para meter.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Sla een kopie van de hoofdsjabloon op uw lokale computer op met de .json-extensie, bijvoorbeeld azuredeploy.json. U hoeft geen kopie van de gekoppelde sjabloon op te slaan.  De gekoppelde sjabloon wordt gekopieerd van een GitHub-opslagplaats naar een opslagaccount.
+Sla een kopie van de hoofd sjabloon op op uw lokale computer met de extensie. json, bijvoorbeeld azuredeploy. json. U hoeft geen kopie van de gekoppelde sjabloon op te slaan.  De gekoppelde sjabloon wordt gekopieerd van een GitHub-opslag plaats naar een opslag account.
 
 ## <a name="store-the-linked-template"></a>De gekoppelde sjabloon opslaan
 
-Met het volgende PowerShell-script wordt een opslagaccount gemaakt, wordt een container gemaakt en wordt de gekoppelde sjabloon van een GitHub-opslagplaats naar de container gekopieerd. Een kopie van de gekoppelde sjabloon wordt opgeslagen in [GitHub.](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json)
+Met het volgende Power shell-script maakt u een opslag account, maakt u een container en kopieert u de gekoppelde sjabloon uit een GitHub-opslag plaats naar de container. Een kopie van de gekoppelde sjabloon wordt opgeslagen in [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json).
 
-Selecteer **Try-it** om de Cloud Shell te openen, selecteer **Kopiëren** om het PowerShell-script te kopiëren en klik met de rechtermuisknop op het deelvenster shell om het script te plakken:
+Selecteer **try-it** om de Cloud shell te openen, selecteer **kopiëren** om het Power shell-script te kopiëren en klik met de rechter muisknop op het deel venster shell om het script te plakken:
 
 > [!IMPORTANT]
-> De namen van het opslagaccount moeten tussen de 3 en 24 tekens lang zijn en alleen getallen en kleine letters gebruiken. De naam moet uniek zijn. In de sjabloon is de naam van het opslagaccount de projectnaam met 'store' toegevoegd en moet de projectnaam tussen 3 en 11 tekens liggen. De projectnaam moet dus voldoen aan de vereisten voor de naam van het opslagaccount en heeft minder dan 11 tekens.
+> Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. De naam moet uniek zijn. In de sjabloon is de naam van het opslag account de project naam ' Store ' toegevoegd en de project naam moet tussen de 3 en 11 tekens lang zijn. De project naam moet dus voldoen aan de naam vereisten voor het opslag account en mag uit minder dan 11 tekens bestaan.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -87,12 +87,12 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Als u een privésjabloon wilt implementeren in een opslagaccount, genereert u een SAS-token en neemt u deze op in de URI voor de sjabloon. Stel de vervaldatum in om voldoende tijd te hebben om de implementatie te voltooien. De blob met de sjabloon is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de blob maakt, is de blob toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, heeft die gebruiker toegang tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u moet gevoelige gegevens zoals wachtwoorden niet rechtstreeks in de sjabloon opnemen.
+Als u een persoonlijke sjabloon in een opslag account wilt implementeren, genereert u een SAS-token en neemt u deze op in de URI voor de sjabloon. Stel de verloop tijd zo in dat er voldoende tijd is om de implementatie te volt ooien. De blob die de sjabloon bevat, is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de BLOB maakt, is de BLOB toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, kan die gebruiker toegang krijgen tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u mag geen gevoelige gegevens zoals wacht woorden rechtstreeks in de sjabloon toevoegen.
 
-Zie [Resourcegroep maken](./deployment-tutorial-local-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt.
+Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](./deployment-tutorial-local-template.md#create-resource-group).
 
 > [!NOTE]
-> In de onderstaande Azure CLI-code zou datumparameter -d een ongeldig argument zijn in macOS. Dus macOS-gebruikers, om 2 uur toe te voegen aan de huidige tijd in terminal op macOS moet je -v+2H gebruiken.
+> In de onderstaande Azure CLI-code is datum parameter-d een ongeldig argument in macOS. MacOS-gebruikers, om 2 uur toe te voegen aan de huidige tijd in de Terminal op macOS, moet u-v + 2H gebruiken.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -166,16 +166,16 @@ az deployment group create \
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Ruim de resources op die u hebt geïmplementeerd door de resourcegroep te verwijderen.
+Opschonen van de resources die u hebt geïmplementeerd door de resource groep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een gekoppelde sjabloon implementeert. In de volgende zelfstudie leert u hoe u een DevOp-pijplijn maakt om een sjabloon te implementeren.
+U hebt geleerd hoe u een gekoppelde sjabloon implementeert. In de volgende zelf studie leert u hoe u een DevOp-pijp lijn kunt maken voor het implementeren van een sjabloon.
 
 > [!div class="nextstepaction"]
 > [Een pijplijn maken](./deployment-tutorial-pipeline.md)

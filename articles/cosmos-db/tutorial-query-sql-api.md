@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Hoe query met SQL in Azure Cosmos DB?'
-description: "Zelfstudie: Meer informatie over query's met SQL-query's in Azure Cosmos DB met behulp van thw-queryspeeltuin"
+title: "Zelf studie: query's uitvoeren met SQL in Azure Cosmos DB?"
+description: "Zelf studie: informatie over het opvragen van query's met SQL-query's in Azure Cosmos DB met behulp van Thw-query Playground"
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870068"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de SQL-API
@@ -71,7 +71,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u een Azure Cosmos DB-account en ee
 
 Op basis van het bovenstaand voorbeelddocument van een familie retourneert de volgende SQL-query de documenten waarin het id-veld gelijk is aan `WakefieldFamily`. Omdat het een `SELECT *`-instructie is, is de uitvoer van de query het volledige JSON-document:
 
-**Query**
+**Query’s uitvoeren**
 
     SELECT * 
     FROM Families f 
@@ -112,7 +112,7 @@ Op basis van het bovenstaand voorbeelddocument van een familie retourneert de vo
 
 De volgende query retourneert alle opgegeven namen van kinderen in de familie waarvan de id overeenkomt met `WakefieldFamily`, gesorteerd op leerjaar.
 
-**Query**
+**Query’s uitvoeren**
 
     SELECT c.givenName 
     FROM Families f 

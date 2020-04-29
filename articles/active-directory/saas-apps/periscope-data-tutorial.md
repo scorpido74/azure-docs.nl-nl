@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Periscope-gegevens | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met peri Scope-gegevens | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Periscope Data.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73160196"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Zelfstudie: Azure Active Directory-integratie met Periscope-gegevens
+# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Zelf studie: integratie Azure Active Directory met peri Scope-gegevens
 
 In deze zelfstudie leert u hoe u Periscope Data kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Periscope Data met Azure Active Directory biedt de volgende voordelen:
@@ -32,7 +32,7 @@ De integratie van Periscope Data met Azure Active Directory biedt de volgende vo
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -125,7 +125,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 1. Meld u in een ander browservenster bij Periscope Data aan als beveiligingsbeheerder.
 
-2. Open het tandwielmenu linksonder en open het menu > **Factureringsbeveiliging** en voer de volgende stappen uit. **Billing** Alleen beheerders hebben toegang tot deze instellingen.
+2. Open in de linkerbenedenhoek het menu vistuig en open het menu **facturerings** > **beveiliging** en voer de volgende stappen uit. Alleen beheerders hebben toegang tot deze instellingen.
 
     ![Informatie voor Periscope Data configureren](./media/periscope-data-tutorial/configure01.png)
 
@@ -137,9 +137,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
     d. Zoek de code **SingleLogoutService** en plak de **Locatie**-waarde in het tekstvak **SLO URL**.
 
-    e. Kopieer de **id-waarde** voor uw instantie en plak deze in het tekstvak **Id (Entity ID)** van de sectie **BasisSAML-configuratie** op azure-portal.
+    e. Kopieer de **id** -waarde voor uw exemplaar en plak deze in de sectie **id (Entiteits-ID)** van **basis-SAML-configuratie** op Azure Portal.
 
-    f. Zoek de eerste tag van het XML-bestand, kopieer de waarde van **entityID** en plak deze in het tekstvak **Van de uitgever.**
+    f. Zoek de eerste tag van het XML-bestand, kopieer de waarde van **entityID** en plak deze in het tekstvak voor de **Uitgever** .
 
     g. Zoek de tag **IDPSSODescriptor** met SAML-protocol. In deze sectie vindt u de tag **KeyDescriptor** met **use=signing**. Kopieer de waarde van **X509Certificate** en plak deze in het tekstvak **Certificaat**.
 
@@ -157,7 +157,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -167,12 +167,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -194,9 +194,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -218,11 +218,11 @@ Als u wilt dat gebruikers van Azure Active Directory zich kunnen aanmelden bij P
 
     a. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **Britta**.
 
-    b. Voer in het tekstvak **Achternaam** de achternaam van de gebruiker in, zoals **Simon**.
+    b. Voer in het tekstvak **laatste naam** de achternaam van de gebruiker in, zoals **Simon**.
 
-    c. Voer in het tekstvak **E-mail** de e-mail van de gebruiker in, zoals **\@brittasimon contoso.com**.
+    c. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **brittasimon\@contoso.com**.
 
-    d. Klik **op TOEVOEGEN**.
+    d. Klik op **toevoegen**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -234,7 +234,7 @@ Wanneer u op de tegel Periscope Data in het toegangsvenster klikt, zou u automat
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

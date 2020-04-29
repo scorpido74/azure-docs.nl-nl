@@ -17,10 +17,10 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73160111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Zelf studie: integratie Azure Active Directory met SAManage
@@ -221,7 +221,7 @@ In het geval van Samanage is inrichten een handmatige taak.
 
 2. Klik op **Dashboard** en selecteer **Setup** in het linker navigatievenster.
    
-    ![Setup](./media/samanage-tutorial/tutorial_samanage_001.png "Setup")
+    ![Instellen](./media/samanage-tutorial/tutorial_samanage_001.png "Instellen")
 
 3. Klik op het tabblad **Users**
    

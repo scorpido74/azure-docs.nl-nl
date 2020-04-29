@@ -1,5 +1,5 @@
 ---
-title: Voorbeelden van conversievoorbeelden voor azure monitor-weergave voor werkmappen
+title: Conversie voorbeelden van Azure Monitor Designer naar werkmappen weer geven
 description: ''
 author: austonli
 ms.author: aul
@@ -7,19 +7,19 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274162"
 ---
-# <a name="view-designer-conversion-examples"></a>Voorbeelden van ontwerpconversie weergeven
+# <a name="view-designer-conversion-examples"></a>Conversie voorbeelden van Designer weer geven
 
-Als u de werkmap met het ontwerpontwerp met tabbladen wilt repliceren, kopieert en plakt u de volgende code in de geavanceerde editor, aangeduid met het </>-symbool op de werkbalk
+Als u de werkmap met tabbladen weer geven wilt repliceren, kopieert en plakt u de volgende code in de geavanceerde editor, die wordt aangeduid met het symbool </> in de werk balk
 
-![Werkbalk Geavanceerde editor](media/view-designer-conversion-examples/toolbar.png)
+![Geavanceerde editor werk balk](media/view-designer-conversion-examples/toolbar.png)
 
-Gebruikers moeten mogelijk hun query-instellingen en abonnementen bijwerken naar hun eigen toegankelijke bronnen
+Gebruikers moeten de query-instellingen en abonnementen mogelijk bijwerken naar hun eigen toegankelijke bronnen
 
 ## <a name="vertical"></a>Verticaal
 
@@ -337,7 +337,7 @@ Gebruikers moeten mogelijk hun query-instellingen en abonnementen bijwerken naar
 }
 ```
 
-## <a name="tabbed"></a>Tabbed 
+## <a name="tabbed"></a>Met tabbladen 
 
 ```Json
 {

@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een aangepaste VM-afbeelding gebruiken in een schaalset met Azure PowerShell
+title: Zelf studie-een aangepaste VM-installatie kopie gebruiken in een schaalset met Azure PowerShell
 description: Informatie over het gebruik van Azure PowerShell voor het maken van een aangepaste VM-installatiekopie die u kunt gebruiken voor het implementeren van een virtuele-machineschaalset
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76278295"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie voor virtuele-machineschaalsets maken en gebruiken met Azure PowerShell
@@ -25,7 +25,7 @@ Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden g
 > * Een aangepaste VM-installatiekopie maken van de bron-VM
 > * Een schaalset implementeren die gebruikmaakt van de aangepaste VM-installatiekopie
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -105,8 +105,8 @@ $image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID
 New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="configure-the-network-security-group-rules"></a>De groepsregels voor netwerkbeveiliging configureren
-Voordat we de schaalset maken, moeten we de regels van de netwerkbeveiligingsgroep configureren om toegang te krijgen tot HTTP, RDP en Remoting 
+## <a name="configure-the-network-security-group-rules"></a>De regels voor de netwerk beveiligings groep configureren
+Voordat u de Schaalset maakt, moet u de regels voor het koppelen van netwerk beveiligings groepen configureren om toegang tot HTTP, RDP en externe communicatie toe te staan 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80

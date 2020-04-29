@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Mimecast Personal Portal | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Mimecast Personal Portal | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Mimecast Personal Portal.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259635613855e4d7687cf569c94bbd3dd04027fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73160621"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Zelfstudie: Azure Active Directory-integratie met Mimecast Personal Portal
+# <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Zelf studie: integratie Azure Active Directory met Mimecast Personal Portal
 
 In deze zelfstudie leert u hoe u Mimecast Personal Portal kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Mimecast Personal Portal met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van Mimecast Personal Portal met Azure AD heeft de volgende voorde
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -163,15 +163,15 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij Mimecast Perso
 
 3. Klik op **Authentication Profiles**.
    
-    ![Verificatieprofielen](./media/mimecast-personal-portal-tutorial/ic794999.png "Verificatieprofielen")
+    ![Verificatie profielen](./media/mimecast-personal-portal-tutorial/ic794999.png "Verificatie profielen")
 
 4. Klik op **New Authentication Profile**.
    
-    ![Nieuw verificatieprofiel](./media/mimecast-personal-portal-tutorial/ic795000.png "Nieuw verificatieprofiel")
+    ![Nieuw verificatie profiel](./media/mimecast-personal-portal-tutorial/ic795000.png "Nieuw verificatie profiel")
 
 5. Voer in de sectie **Authentication Profile** de volgende stappen uit:
    
-    ![Verificatieprofiel](./media/mimecast-personal-portal-tutorial/ic795001.png "Verificatieprofiel")
+    ![Verificatie profiel](./media/mimecast-personal-portal-tutorial/ic795001.png "Verificatie profiel")
    
     a. Typ in het tekstvak **Description** een naam voor de configuratie.
    
@@ -181,9 +181,9 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding bij Mimecast Perso
    
     d. Plak in het tekstvak **Issuer URL** de waarde van **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
    
-    e. Plak in het tekstvak **Voor aanmeldings-URL** de waarde van **de aanmeldings-URL**, die u hebt gekopieerd vanuit azure-portal.
+    e. Plak in het tekstvak **URL voor aanmelding** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
    
-    f. Plak in het tekstvak **Van de URL van afmelden** de waarde van de URL van **Afmelden**, die u hebt gekopieerd van azure-portal.
+    f. Plak in het tekstvak **Afmeldings-URL** de waarde van de **afmeldings-URL**die u van Azure Portal hebt gekopieerd.
 
     g. Open in Kladblok het **met Base 64 gecodeerde certificaat** dat u hebt gedownload uit de Azure-portal, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **id-providercertificaat (metagegevens)**.
 
@@ -199,7 +199,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -209,12 +209,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -236,9 +236,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -268,7 +268,7 @@ U moet een domein registreren voordat u gebruikers kunt maken.
    
     ![Opslaan](./media/mimecast-personal-portal-tutorial/ic795006.png "Opslaan")
    
-    a. Typ **e-mailadres** van de gebruiker in het tekstvak **E-mailadres** als **\@BrittaSimon contoso.com**.
+    a. Typ in het tekstvak **e-mail adres** het **e-mail adres** van de gebruiker als **BrittaSimon\@contoso.com**.
     
     b. Typ in het tekstvak **Global Name** de **gebruikersnaam**: **BrittaSimon**.
 
@@ -289,7 +289,7 @@ Wanneer u op de tegel Mimecast Personal Portal in het toegangsvenster klikt, wor
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77565575"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Zelfstudie: Uw verbonden apparaten bulksgewijs beheren
@@ -31,7 +31,7 @@ In deze zelfstudie hebt u:
 > * De configuratie implementeren op de apparaten in de apparaatgroep
 > * De implementatie bewaken
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -71,11 +71,11 @@ Klik vervolgens op **Starten** op de tegel van de verbetering voor de externe be
 
 Als u de firmware automatisch wilt bijwerken op een groep apparaten, moeten de apparaten lid zijn van een apparaatgroep in uw externe bewakingsoplossing:
 
-1. Selecteer op de pagina **Apparaten** alle **IoT DevKit**-apparaten die u hebt verbonden met de oplossingsverbetering. Klik vervolgens op **Vacatures**.
+1. Selecteer op de pagina **Apparaten** alle **IoT DevKit**-apparaten die u hebt verbonden met de oplossingsverbetering. Klik vervolgens op **taken**.
 
-1. Selecteer **in** het deelvenster Vacatures **tags**, stel de taaknaam in op **AddDevKitTag**en voeg vervolgens een teksttag met de naam **IsDevKitDevice** met een waarde **Y toe.** Klik vervolgens op **Toepassen**.
+1. In het deel venster **taken** selecteert u **Tags**, stelt u de taak naam in op **AddDevKitTag**en voegt u vervolgens een tekst code toe met de naam **IsDevKitDevice** met een waarde van **Y**. Klik vervolgens op **Toep assen**.
 
-1. Nu kunt u de tagwaarden gebruiken om een apparaatgroep te maken. Klik **op** de pagina Apparaten op **Apparaatgroepen beheren**.
+1. Nu kunt u de tagwaarden gebruiken om een apparaatgroep te maken. Klik op de pagina **apparaten** op **Apparaatgroepen beheren**.
 
 1. Maak een tekstfilter dat de tagnaam **IsDevKitDevice** en de waarde **Y** in de voorwaarde gebruikt. Sla apparaatgroep op als **IoT DevKit-apparaten**.
 
@@ -228,7 +228,7 @@ In deze sectie gaat u een implementatie maken en uitvoeren die de apparaatconfig
 
     |Optie|Waarde|
     |---|---|
-    |Name|Firmware-update implementeren|
+    |Naam|Firmware-update implementeren|
     |Pakkettype|Apparaatconfiguratie|
     |Configuratietype|Firmware|
     |Pakket|firmware-update.json|

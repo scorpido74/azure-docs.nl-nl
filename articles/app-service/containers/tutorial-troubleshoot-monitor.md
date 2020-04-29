@@ -1,35 +1,35 @@
 ---
-title: 'Zelfstudie: Problemen oplossen met Azure-monitor'
-description: Ontdek hoe Azure Monitor en Log Analytics u helpt bij het bewaken van uw App Service-web-app. Azure Monitor maximaliseert de beschikbaarheid door een uitgebreide oplossing te leveren voor het bewaken van uw omgevingen.
+title: 'Zelf studie: problemen oplossen met Azure Monitor'
+description: Lees hoe u met Azure Monitor en Log Analytics uw App Service-web-app kunt bewaken. Azure Monitor maximaliseert de beschik baarheid door een uitgebreide oplossing te leveren voor het bewaken van uw omgevingen.
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
 ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78399525"
 ---
-# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Zelfstudie: Een App Service-app oplossen met Azure Monitor
+# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Zelf studie: problemen met Azure Monitor oplossen met een App Service-app
 
 > [!NOTE]
-> Azure Monitor-integratie met App Service is in [preview](https://aka.ms/appsvcblog-azmon).
+> Azure Monitor integratie met App Service is in [Preview](https://aka.ms/appsvcblog-azmon).
 >
 
-[Azure App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximaliseert de beschikbaarheid en prestaties van uw toepassingen en services door een uitgebreide oplossing te bieden voor het verzamelen, analyseren en handelen op telemetrie vanuit uw cloud- en on-premises omgevingen.
+[Azure App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximaliseert de beschik baarheid en prestaties van uw toepassingen en services door een uitgebreide oplossing te bieden voor het verzamelen, analyseren en uitvoeren van telemetrie in uw Cloud-en on-premises omgevingen.
 
-In deze zelfstudie ziet u hoe u een app oplossen met [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview). De voorbeeld-app bevat code die bedoeld is om het geheugen uit te putten en HTTP 500-fouten te veroorzaken, zodat u het probleem diagnosticeren en oplossen met Azure Monitor.
+In deze zelf studie ziet u hoe u een app oplost met [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview). De voor beeld-app bevat code die is bedoeld voor het gebruik van geheugen en die HTTP 500-fouten veroorzaken, zodat u het probleem kunt vaststellen en oplossen met behulp van Azure Monitor.
 
-Wanneer u klaar bent, wordt een voorbeeld-app uitgevoerd op App Service op Linux, geïntegreerd met [Azure Monitor.](https://docs.microsoft.com/azure/azure-monitor/overview)
+Wanneer u klaar bent, hebt u een voor beeld van een app die wordt uitgevoerd op App Service Linux geïntegreerd met [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een web-app configureren met Azure Monitor
-> * Consolelogboeken verzenden naar Log Analytics
-> * Logboekquery's gebruiken om fouten in webapps te identificeren en op te lossen
+> * Console logboeken naar Log Analytics verzenden
+> * Logboek query's gebruiken om fouten in de web-app op te sporen en op te lossen
 
 U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
@@ -37,7 +37,7 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze zelfstudie te voltooien, heb je het volledige zeggen nodig:
+Voor het volt ooien van deze zelf studie hebt u het volgende nodig:
 
 - [Azure-abonnement](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -45,7 +45,7 @@ Om deze zelfstudie te voltooien, heb je het volledige zeggen nodig:
 
 ## <a name="create-azure-resources"></a>Azure-resources maken
 
-Eerst voert u lokaal verschillende opdrachten uit om een voorbeeld-app in te stellen die u met deze zelfstudie wilt gebruiken. De opdrachten klonen een voorbeeld-app, maken Azure-resources, maken een implementatiegebruiker en implementeren de app naar Azure. U wordt gevraagd om het opgegeven wachtwoord als onderdeel van het maken van de implementatiegebruiker. 
+Eerst voert u meerdere opdrachten lokaal uit voor het instellen van een voor beeld-app voor gebruik in deze zelf studie. Met de opdrachten kloont u een voor beeld-app, maakt u Azure-resources, maakt u een implementatie gebruiker en implementeert u de app in Azure. U wordt gevraagd om het wacht woord dat u hebt opgegeven als onderdeel van het maken van de implementatie gebruiker. 
 
 ```bash
 git clone https://github.com/Azure-Samples/App-Service-Troubleshoot-Azure-Monitor
@@ -57,30 +57,30 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Azure Monitor configureren (voorbeeld)
+## <a name="configure-azure-monitor-preview"></a>Azure Monitor configureren (preview-versie)
 
-### <a name="create-a-log-analytics-workspace"></a>Een logboekanalysewerkruimte maken
+### <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken
 
-Nu u de voorbeeld-app hebt geïmplementeerd in Azure App Service, configureert u bewakingsmogelijkheden om de app op te lossen wanneer zich problemen voordoen. Azure Monitor slaat logboekgegevens op in een Log Analytics-werkruimte. Een werkruimte is een container die gegevens- en configuratiegegevens bevat.
+Nu u de voor beeld-app hebt geïmplementeerd op Azure App Service, configureert u de functionaliteit voor het controleren van problemen met de app wanneer er problemen optreden. Azure Monitor worden logboek gegevens opgeslagen in een Log Analytics-werk ruimte. Een werk ruimte is een container die gegevens-en configuratie gegevens bevat.
 
-In deze stap maakt u een werkruimte Log Analytics om Azure Monitor met uw app te configureren.
+In deze stap maakt u een Log Analytics werk ruimte om Azure Monitor met uw app te configureren.
 
 ```bash
 az monitor log-analytics workspace create --resource-group myResourceGroup --workspace-name myMonitorWorkspace
 ```
 
 > [!NOTE]
-> [Voor Azure Monitor Log Analytics betaalt u voor het innemen van gegevens en het bewaren van gegevens.](https://azure.microsoft.com/pricing/details/monitor/)
+> [Voor Azure Monitor Log Analytics betaalt u voor gegevens opname en gegevens retentie.](https://azure.microsoft.com/pricing/details/monitor/)
 >
 
 ### <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken
 
-Diagnostische instellingen kunnen worden gebruikt om metrische gegevens voor bepaalde Azure-services te verzamelen in Azure Monitor Logs voor analyse met andere bewakingsgegevens met behulp van logboekquery's. Voor deze zelfstudie schakelt u de webserver en standaard uitvoer-/foutlogboeken in. Zie [ondersteunde logboektypen](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) voor een volledige lijst met logboektypen en -beschrijvingen.
+Diagnostische instellingen kunnen worden gebruikt voor het verzamelen van metrische gegevens voor bepaalde Azure-Services in Azure Monitor logboeken voor analyse met andere bewakings informatie met behulp van logboek query's. Voor deze zelf studie schakelt u de webserver en standaard logboeken voor uitvoer/fouten in. Zie [ondersteunde logboek typen](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) voor een volledige lijst met logboek typen en beschrijvingen.
 
-U voert de volgende opdrachten uit om diagnostische instellingen voor AppServiceConsoleLogs (standaarduitvoer/fout) en AppServiceHTTPLogs (webserverlogboeken) te maken. Vervang _ \<>en_ _ \<>van de app-naam_ door uw waarden. 
+U voert de volgende opdrachten uit om Diagnostische instellingen te maken voor AppServiceConsoleLogs (standaard uitvoer/-fout) en AppServiceHTTPLogs (webserver logboeken). Vervang _ \<app-name>_ en _ \<de naam van de werk ruimte>_ met uw waarden. 
 
 > [!NOTE]
-> De eerste twee `resourceID` opdrachten `workspaceID`en variabelen die in `az monitor diagnostic-settings create` de opdracht moeten worden gebruikt. Zie [Diagnostische instellingen maken met Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) voor meer informatie over deze opdracht.
+> De eerste twee opdrachten, `resourceID` en `workspaceID`, zijn variabelen die moeten worden gebruikt in `az monitor diagnostic-settings create` de opdracht. Zie [Diagnostische instellingen maken met behulp van Azure cli](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) voor meer informatie over deze opdracht.
 >
 
 ```bash
@@ -101,79 +101,79 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 Blader naar `http://<app-name>.azurewebsites.net`.
 
-De voorbeeld-app ImageConverter converteert `JPG` `PNG`opgenomen afbeeldingen van . Een bug is bewust geplaatst in de code voor deze tutorial. Als u voldoende afbeeldingen selecteert, produceert de app een HTTP 500-fout tijdens het converteren van afbeeldingen. Stel je voor dat dit scenario niet werd overwogen tijdens de ontwikkelingsfase. U gebruikt Azure Monitor om de fout op te lossen.
+De voor beeld-app, ImageConverter, zet opgenomen `JPG` afbeeldingen `PNG`om van naar. Een bug is opzettelijk in de code voor deze zelf studie geplaatst. Als u voldoende installatie kopieën selecteert, produceert de app een HTTP 500-fout tijdens de conversie van de installatie kopie. Stel dat dit scenario tijdens de ontwikkelings fase niet werd overwogen. U gebruikt Azure Monitor om de fout op te lossen.
 
 ### <a name="verify-the-app-is-works"></a>Controleren of de app werkt
 
-Als u afbeeldingen `Tools` wilt `Convert to PNG`converteren, klikt u op en selecteert u .
+Als u afbeeldingen wilt converteren `Tools` , klikt `Convert to PNG`en selecteert u.
 
-![Klik op 'Extra' en selecteer 'Converteren naar PNG'](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
+![Klik op Hulpprogram Ma's en selecteer converteren naar PNG](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
 
-Selecteer de eerste twee `convert`afbeeldingen en klik op . Hiermee wordt met succes geconverteerd.
+Selecteer de eerste twee afbeeldingen en klik `convert`op. Hiermee wordt de conversie voltooid.
 
 ![De eerste twee afbeeldingen selecteren](./media/tutorial-azure-monitor/sample-monitor-app-convert-two-images.png)
 
-### <a name="break-the-app"></a>De app verbreken
+### <a name="break-the-app"></a>De app opdelen
 
-Nu u de app hebt geverifieerd door twee afbeeldingen succesvol te converteren, proberen we de eerste vijf afbeeldingen om te zetten.
+Nu u de app hebt gecontroleerd door twee afbeeldingen te converteren, zullen we proberen de eerste vijf installatie kopieën te converteren.
 
 ![Eerste vijf afbeeldingen converteren](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
 
-Deze actie mislukt en `HTTP 500` produceert een fout die niet is getest tijdens de ontwikkeling.
+Deze actie mislukt en resulteert in `HTTP 500` een fout die niet is getest tijdens de ontwikkeling.
 
 ![De conversie resulteert in een HTTP 500-fout](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
 
-## <a name="use-log-query-to-view-azure-monitor-logs"></a>Logboekquery gebruiken om Azure Monitor-logboeken weer te geven
+## <a name="use-log-query-to-view-azure-monitor-logs"></a>Logboek query gebruiken om Azure Monitor logboeken weer te geven
 
-Laten we eens kijken welke logboeken beschikbaar zijn in de werkruimte Log Analytics. 
+Laten we eens kijken welke logboeken er beschikbaar zijn in de Log Analytics-werk ruimte. 
 
-Klik op deze [koppeling naar de log-analysewerkruimte](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) om toegang te krijgen tot uw werkruimte in de Azure-portal.
+Klik op deze [log Analytics werkruimte koppeling](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) om toegang te krijgen tot uw werk ruimte in de Azure Portal.
 
-Selecteer in de Azure-portal de werkruimte Log Analytics.
+Selecteer uw Log Analytics-werk ruimte in de Azure Portal.
 
 ### <a name="log-queries"></a>Logboekquery's
 
-Met logboekquery's u de waarde van de gegevens die in Azure Monitor-logboeken worden verzameld, volledig benutten. U gebruikt logboekquery's om de logboeken in zowel AppServiceHTTPLogs als AppServiceConsoleLogs te identificeren. Zie het [overzicht van logboekquery's](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) voor meer informatie over logboekquery's.
+Met logboek query's kunt u de waarde van de gegevens die in Azure Monitor logboeken worden verzameld, volledig benutten. U gebruikt logboek query's om de logboeken in zowel AppServiceHTTPLogs als AppServiceConsoleLogs te identificeren. Zie het [overzicht van de logboek query](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) voor meer informatie over logboek query's.
 
-### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs weergeven met logboekquery
+### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs weer geven met logboek query
 
-Nu we de app hebben geopend, bekijken we de gegevens die zijn `AppServiceHTTPLogs`gekoppeld aan HTTP-aanvragen, gevonden in de .
+Nu u toegang hebt tot de app, gaan we de gegevens weer geven die zijn gekoppeld aan HTTP-aanvragen `AppServiceHTTPLogs`, gevonden in de.
 
-1. Klik `Logs` vanaf de linkernavigatie.
+1. Klik `Logs` op de navigatie balk aan de linkerkant.
 
-![Log Anlytics Worksace Logs](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
+![Logboeken Anlytics Worksace-logboeken](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
 
-2. Zoeken `appservice` naar en `AppServiceHTTPLogs`dubbelklik op .
+2. Zoek `appservice` en dubbel klik op `AppServiceHTTPLogs`.
 
-![Werkruimtetabellen voor logboekanalyses](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
+![Log Analytics-werkruimte tabellen](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
 
 3. Klik op `Run`.
 
-![LOG Analytics Workspace App Service HTTP-logboeken](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
+![Log Analytics werk ruimte App Service HTTP-logboeken](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
 
-De `AppServiceHTTPLogs` query retourneert alle aanvragen in de afgelopen 24 uur. De `ScStatus` kolom bevat de HTTP-status. Als u `HTTP 500` de fouten `ScStatus` wilt diagnosticeren, beperkt u de query tot 500 en voert u de query uit, zoals hieronder wordt weergegeven:
+De `AppServiceHTTPLogs` query retourneert alle aanvragen in de afgelopen 24 uur. De kolom `ScStatus` bevat de HTTP-status. Als u de `HTTP 500` fouten wilt vaststellen, beperkt `ScStatus` u de tot 500 en voert u de query uit, zoals hieronder wordt weer gegeven:
 
 ```kusto
 AppServiceHTTPLogs
 | where ScStatus == 500
 ```
 
-### <a name="view-appserviceconsolelogs-with-log-query"></a>AppServiceConsoleLogs weergeven met logboekquery
+### <a name="view-appserviceconsolelogs-with-log-query"></a>AppServiceConsoleLogs weer geven met logboek query
 
-Nu u de HTTP 500's hebt bevestigd, laten we eens kijken naar de standaard uitvoer/fouten van de app. Deze logboeken zijn te vinden in 'AppServiceConsoleLogs'.
+Nu u de HTTP-500 hebt bevestigd, gaan we eens kijken naar de standaard uitvoer/-fouten van de app. Deze logboeken zijn te vinden in ' AppServiceConsoleLogs '.
 
-(1) `+` Klik hierop om een nieuwe query te maken. 
+(1) Klik `+` om een nieuwe query te maken. 
 
-(2) Dubbelklik op `AppServiceConsoleLogs` de `Run`tabel en klik op . 
+(2) dubbel klik op de `AppServiceConsoleLogs` tabel en klik `Run`op. 
 
-Aangezien het converteren van vijf afbeeldingen resulteert in serverfouten, u `ResultDescription` zien of de app ook fouten schrijft door op fouten te filteren, zoals hieronder wordt weergegeven:
+Omdat het converteren van vijf installatie kopieën resulteert in Server fouten, kunt u zien of de app ook fouten schrijft `ResultDescription` door te filteren op fouten, zoals hieronder weer gegeven:
 
 ```kusto
 AppServiceConsoleLogs |
 where ResultDescription  contains "error" 
 ```
 
-In `ResultDescription` de kolom ziet u de volgende fout:
+In de `ResultDescription` kolom ziet u de volgende fout:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -181,16 +181,16 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>Lid worden van AppServiceHTTPLogs en AppServiceConsoleLogs
+### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>AppServiceHTTPLogs en AppServiceConsoleLogs toevoegen
 
-Nu u zowel HTTP 500's als standaardfouten hebt geïdentificeerd, moet u bevestigen of er een correlatie is tussen deze berichten. Vervolgens voegen jullie je bij de tabellen `TimeGenerated`op basis van de tijdstempel.
+Nu u zowel HTTP-500 als standaard fouten hebt geïdentificeerd, moet u controleren of er een correlatie bestaat tussen deze berichten. Vervolgens voegt u de tabellen samen toe op basis van de tijds tempel `TimeGenerated`.
 
 > [!NOTE]
-> Er is een query voor u voorbereid die het volgende doet:
+> Er is een query voor bereid voor u die het volgende doet:
 >
-> - Filtert HTTPLogs voor 500 fouten
-> - Consolelogboeken voor query's
-> - Voegt zich bij de tabellen op`TimeGenerated`
+> - Filters HTTPLogs voor 500-fouten
+> - Query-console logboeken
+> - Voegt de tabellen toe aan`TimeGenerated`
 >
 
 Voer de volgende query uit:
@@ -203,7 +203,7 @@ let myConsole = AppServiceConsoleLogs | project TimeGen=substring(TimeGenerated,
 myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, ResultDescription;
 ```
 
-In `ResultDescription` de kolom ziet u de volgende fout tegelijk met fouten in de webserver:
+In de `ResultDescription` kolom ziet u de volgende fout op hetzelfde moment als webserver fouten:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -211,23 +211,23 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-Het bericht stelt geheugen is uitgeput `process.php`op lijn 20 van . U hebt nu bevestigd dat de toepassing een fout heeft veroorzaakt tijdens de HTTP 500-fout. Laten we eens kijken naar de code om het probleem te identificeren.
+Het geheugen voor de status van berichten is uitgeput op regel 20 `process.php`van. U hebt nu bevestigd dat de toepassing een fout heeft veroorzaakt tijdens de HTTP 500-fout. Laten we eens kijken naar de code om het probleem te identificeren.
 
 ## <a name="identify-the-error"></a>De fout identificeren
 
-Open in de lokale `process.php` map de map en kijk naar lijn 20. 
+Open in de lokale map `process.php` en ga naar regel 20. 
 
 ```php
 imagepng($imgArray[$x], $filename);
 ```
 
-Het eerste `$imgArray[$x]`argument, , is een variabele die alle JPGs (in-memory) nodig conversie. Echter, `imagepng` alleen moet het beeld wordt omgezet en niet alle beelden. Voorladen van afbeeldingen is niet nodig en kan de geheugenuitputting veroorzaken, wat leidt tot HTTP 500's. Laten we de code bijwerken om afbeeldingen on-demand te laden om te zien of het probleem is opgelost. Vervolgens verbetert u de code om het geheugenprobleem aan te pakken.
+Het eerste argument, `$imgArray[$x]`, is een variabele met alle jpgs (in het geheugen) die moet worden geconverteerd. De afbeelding `imagepng` moet echter alleen worden geconverteerd en niet alle installatie kopieën. Het is niet nodig om installatie kopieën vooraf te laden en de geheugen ontdubbeling wordt mogelijk veroorzaakt door HTTP-500. We gaan de code bijwerken om afbeeldingen op aanvraag te laden om te zien of het probleem wordt opgelost. Vervolgens gaat u de code verbeteren om het geheugen probleem op te lossen.
 
 ## <a name="fix-the-app"></a>De app herstellen
 
 ### <a name="update-locally-and-redeploy-the-code"></a>De code lokaal bijwerken en opnieuw implementeren
 
-U brengt de `process.php` volgende wijzigingen aan om de geheugenuitputting te verwerken:
+U brengt de volgende wijzigingen aan `process.php` voor het afhandelen van de geheugen uitputting:
 
 ```php
 <?php
@@ -254,7 +254,7 @@ git push azure master
 
 Blader naar `http://<app-name>.azurewebsites.net`. 
 
-Het converteren van afbeeldingen mag niet langer leiden tot de HTTP 500-fouten.
+Het converteren van installatie kopieën mag niet langer de HTTP 500-fouten opleveren.
 
 ![PHP-app uitgevoerd in Azure App Service](./media/tutorial-azure-monitor/sample-monitor-app-working.png)
 
@@ -268,11 +268,11 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 Wat u hebt geleerd:
 
 > [!div class="checklist"]
-> * Een web-app configureren met Azure Monitor
-> * Verzonden logboeken naar Logboekanalyse
-> * Gebruikte logboekquery's om fouten in webapps te identificeren en op te lossen
+> * Een web-app geconfigureerd met Azure Monitor
+> * De logboeken zijn verzonden naar Log Analytics
+> * Gebruikte logboek query's voor het identificeren en oplossen van fouten in web-apps
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Volgende stappen
-* [Querylogboeken met Azure Monitor](../../azure-monitor/log-query/log-query-overview.md)
-* [Azure App-service oplossen in Visual Studio](../troubleshoot-dotnet-visual-studio.md)
-* [App-logboeken analyseren in HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [Query's uitvoeren op Logboeken met Azure Monitor](../../azure-monitor/log-query/log-query-overview.md)
+* [Problemen met Azure App Service oplossen in Visual Studio](../troubleshoot-dotnet-visual-studio.md)
+* [App-Logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Spraak, Python - Spraakservice herkennen'
+title: 'Quick Start: spraak herkennen, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: chlandsi
 ms.openlocfilehash: 3758b035e7840c63c895417d0ed3d8dca0ab618f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671185"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](../../../../get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=python&pivots=programming-language-python)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=python&pivots=programming-language-python)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
@@ -80,17 +80,17 @@ Voordat u aan de slag gaat, moet u:
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Sla de wijzigingen op `quickstart.py`die u hebt aangebracht in .
+1. Sla de wijzigingen op die u hebt `quickstart.py`aangebracht in.
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-1. Voer het voorbeeld uit vanaf de console of in uw IDE:
+1. Voer het voor beeld uit vanaf de-console of in uw IDE:
 
    ```
    python quickstart.py
    ```
 
-1. Spreek een Engelse woordgroep of zin in. De applicatie stuurt uw toespraak naar de Spraakdienst, die vertaalt en transcribeert naar tekst (in dit geval naar het Frans en Duits). De spraakservice stuurt de tekst vervolgens terug naar de toepassing voor weergave.
+1. Spreek een Engelse woordgroep of zin in. De toepassing stuurt uw spraak naar de speech-service, die vertaalt en transcribeert naar tekst (in dit geval naar Frans en Duits). De spraak service verzendt vervolgens de tekst terug naar de toepassing om weer te geven.
 
    ```
    Say something...

@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671092"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u aan de slag gaat, moet u:
+Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraakbron maken](~/articles/cognitive-services/speech-service/get-started.md)
-> * [Stel uw ontwikkelomgeving in en maak een leeg project](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * Een bot maken die is verbonden met het [kanaal Direct Line Spraak](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-> * Zorg ervoor dat u toegang hebt tot een microfoon voor audio-opname
+> * [Een Azure-spraak resource maken](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Stel uw ontwikkel omgeving in en maak een leeg project](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * Een bot maken die is verbonden met het [directe-lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 > 
   > [!NOTE]
-  > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
+  > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
 
 ## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
 
-De eerste stap is ervoor te zorgen dat u uw project open hebt in Visual Studio.
+De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend.
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een soort boilerplate-code
+## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
 
-Laten we wat code toevoegen die werkt als een skelet voor ons project.
+Laten we een code toevoegen die als een skelet voor het project werkt.
 
-1. Open **in** `MainPage.xaml`Solution Explorer .
+1. Open **Solution Explorer** `MainPage.xaml`in Solution Explorer.
 
-1. Vervang in de XAML-weergave van de ontwerper de volledige inhoud door het volgende fragment dat een rudimentaire gebruikersinterface definieert:
+1. Vervang in de XAML-weer gave van de ontwerp functie de volledige inhoud door het volgende code fragment dat een elementaire-gebruikers interface definieert:
 
     ```xml
     <Page
@@ -81,16 +81,16 @@ Laten we wat code toevoegen die werkt als een skelet voor ons project.
     </Page>
     ```
 
-De ontwerpweergave wordt bijgewerkt om de gebruikersinterface van de toepassing weer te geven.
+De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing weer te geven.
 
-1. Open **in Solution Explorer**het broncodebestand `MainPage.xaml.cs`met code achter . (Het is gegroepeerd `MainPage.xaml`onder .) Vervang de inhoud van dit bestand door het onderstaande, waaronder:
+1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs`voor de code achter. (Deze wordt gegroepeerd onder `MainPage.xaml`.) Vervang de inhoud van dit bestand door de onderstaande, inclusief:
 
-- `using`instructies voor `Speech` `Speech.Dialog` de naamruimten en naamruimten
-- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, verbonden met een knophandler
-- Basisgebruikersvan gebruikersinterface om berichten en fouten in de toepassing te presenteren
-- Een landingspunt voor het initialisatiecodepad dat later wordt ingevuld
-- Een helper om tekst-naar-spraak af te spelen (zonder streamingondersteuning)
-- Een lege knophandler om te beginnen met luisteren die later wordt ingevuld
+- `using`instructies voor de `Speech` en `Speech.Dialog` -naam ruimten
+- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
+- Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
+- Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
+- Een helper voor het afspelen van tekst naar spraak (zonder streaming-ondersteuning)
+- Een lege knop-handler om te Luis teren die later wordt ingevuld
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -259,7 +259,7 @@ De ontwerpweergave wordt bijgewerkt om de gebruikersinterface van de toepassing 
         }
     }
     ```
-1. Voeg het volgende codefragment toe `InitializeDialogServiceConnector`aan de methodetekst van . Met deze `DialogServiceConnector` code wordt de met uw abonnementsgegevens gemaakt.
+1. Voeg het volgende code fragment toe aan de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code maakt `DialogServiceConnector` u de met uw abonnements gegevens.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
@@ -273,14 +273,14 @@ De ontwerpweergave wordt bijgewerkt om de gebruikersinterface van de toepassing 
     ```
 
    > [!NOTE]
-   > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
+   > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
 
    > [!NOTE]
-   > Zie de botframeworkdocumentatie voor het Direct [Line Speech-kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)voor informatie over het configureren van uw bot.
+   > Zie voor meer informatie over het configureren van uw bot de bot Framework-documentatie voor [het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-1. Vervang de `YourSpeechSubscriptionKey` `YourServiceRegion` tekenreeksen en door uw eigen waarden voor uw spraakabonnement en [regio.](~/articles/cognitive-services/speech-service/regions.md)
+1. Vervang de teken `YourSpeechSubscriptionKey` reeksen `YourServiceRegion` en met uw eigen waarden voor uw spraak abonnement en- [regio](~/articles/cognitive-services/speech-service/regions.md).
 
-1. Het volgende codefragment toevoegen aan het einde `InitializeDialogServiceConnector`van de methodebody van . Met deze code worden handlers ingesteld `DialogServiceConnector` voor gebeurtenissen waarop wordt vertrouwd door de botactiviteiten, de resultaten van spraakherkenning en andere informatie te communiceren.
+1. Voeg het volgende code fragment toe aan het einde van de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code worden handlers ingesteld voor gebeurtenissen die zijn vertrouwd `DialogServiceConnector` door om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ De ontwerpweergave wordt bijgewerkt om de gebruikersinterface van de toepassing 
     };
     ```
 
-1. Voeg het volgende codefragment toe `ListenButton_ButtonClicked` aan `MainPage` de hoofdtekst van de methode in de klasse. Deze code `DialogServiceConnector` wordt ingesteld om te luisteren, omdat u de configuratie al hebt ingesteld en de gebeurtenishandlers hebt geregistreerd.
+1. Voeg het volgende code fragment toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse. `DialogServiceConnector` Met deze code wordt geluisterd, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
 
     ```csharp
     if (connector == null)
@@ -366,19 +366,19 @@ De ontwerpweergave wordt bijgewerkt om de gebruikersinterface van de toepassing 
     
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Nu bent u klaar om uw app te bouwen en uw aangepaste spraakassistent te testen met behulp van de spraakservice.
+Nu bent u klaar om uw app te bouwen en uw aangepaste spraak assistent te testen met behulp van de speech-service.
 
-1. Kies**build-oplossing** **bouwen** > om de toepassing te bouwen op de menubalk. De code moet nu zonder fouten worden gecompileerd.
+1. **Kies** > build**Build Solution** in de menu balk om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **Foutopsporing debuggen** > **debuggen** (of druk op **F5)** om de toepassing te starten. Het **helloworld** venster verschijnt.
+1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
-   ![Voorbeeld van UWP-spraakassistenttoepassing in C# - snel starten](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![Voor beeld van UWP Voice Assistant-toepassing in C#-Quick Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Selecteer **Microfoon inschakelen**en wanneer de aanvraag voor toegangsmachtigingen verschijnt, selecteert u **Ja**.
+1. Selecteer **microfoon inschakelen**en selecteer wanneer de toegangs machtigings aanvraag wordt weer gegeven, **Ja**.
 
-   ![Machtigingsaanvraag voor toegang voor microfoon](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Verzoek om toegang tot de microfoon](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Selecteer **Praten met uw bot**en spreek een Engelse zin of zin in de microfoon van uw apparaat. Uw toespraak wordt verzonden naar het kanaal Direct Line Speech en getranscribeerd naar tekst, die in het venster wordt weergegeven.
+1. Selecteer **praten met uw bot**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die wordt weer gegeven in het venster.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Bonusly | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Bonusly.
+title: 'Zelf studie: integratie met een bonus Azure Active Directory Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en een bonus.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,42 +17,42 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74232064"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Zelfstudie: Azure Active Directory-integratie met Bonusly
+# <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Zelf studie: integratie met een bonus Azure Active Directory
 
-In deze zelfstudie leert u hoe u Bonusly integreert met Azure Active Directory (Azure AD).
-Het integreren van Bonusly met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u een bonus kunt integreren met Azure Active Directory (Azure AD).
+Als u een bonus integreert met Azure AD, hebt u de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Bonusly.
-* U uw gebruikers automatisch laten inloggen op Bonusly (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD met toegang tot een bonus.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor een bonus (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie met Bonusly wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met een bonus wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Bonusly enkel aanmeldingingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Bonusly ondersteunt **IDP** geïnitieerde SSO
+* Hiermee wordt een bonus ondersteund voor **IDP** GEÏNITIEERDe SSO
 
-## <a name="adding-bonusly-from-the-gallery"></a>Bonusly toevoegen vanuit de galerij
+## <a name="adding-bonusly-from-the-gallery"></a>Een bonus toevoegen vanuit de galerie
 
-Als u de integratie van Bonusly in Azure AD wilt configureren, moet u Bonusly vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van een bonus wilt configureren in azure AD, moet u een bonus van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Bonusly vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Als u een bonus wilt toevoegen uit de galerie, voert u de volgende stappen uit:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,31 +66,31 @@ Als u de integratie van Bonusly in Azure AD wilt configureren, moet u Bonusly va
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ In het zoekvak **Bonus,** selecteer **Bonusly** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak een **bonus**, selecteer een **bonus** uit het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Bonusly in de resultatenlijst](common/search-new-app.png)
+    ![Bonus in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Bonusly op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Bonusly.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD met een bonus op basis van een test gebruiker met de naam **Julia Simon**configureren en testen.
+Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in een bonus worden ingesteld.
 
-Als u Azure AD-single sign-on met Bonusly wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met behulp van een bonus, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer bonusly single sign-on](#configure-bonusly-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding configureren](#configure-bonusly-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak bonusly test gebruiker](#create-bonusly-test-user)** - om een tegenhanger van Britta Simon in Bonusly die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+5. **[Maak een gebruiker voor een bonus test](#create-bonusly-test-user)** , zodat deze in een juliae, in een bonus is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Bonusly te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met een bonus:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Integratie van extra** toepassingen de optie Eén **aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **bonus** toepassings integratie de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,12 +104,12 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Bonusly Domain en URL's single sign-on informatie](common/idp-reply.png)
+    ![Gegevens over een bonus voor eenmalige aanmelding voor domeinen en Url's](common/idp-reply.png)
 
-    Typ in het tekstvak **URL beantwoorden** een URL met het volgende patroon:`https://Bonus.ly/saml/<tenant-name>`
+    Typ in het tekstvak **antwoord-URL** een URL met het volgende patroon:`https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke antwoord-URL. Neem contact op met [bonusly client support team](https://bonus.ly/contact) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke antwoord-URL. Neem contact op met het [ondersteunings team voor clients](https://bonus.ly/contact) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-7. Kopieer in de sectie **Bonusly instellen** de juiste URL(s) volgens uw vereiste.
+7. Kopieer op de sectie **bonus instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -129,26 +129,26 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Bonus- aanmelding configureren
+### <a name="configure-bonusly-single-sign-on"></a>Eenmalige aanmelding configureren
 
-1. Meld u in een ander browservenster aan bij uw **Bonusly-tenant.**
+1. Meld u in een ander browser venster aan bij uw **bonus** Tenant.
 
-1. Klik op de werkbalk bovenaan op **Instellingen** en selecteer **Vervolgens Integraties en apps**.
+1. Klik in de werk balk aan de bovenkant op **instellingen** en selecteer vervolgens **integraties en apps**.
 
-    ![Bonusly Sociale Sectie](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. Selecteer **SAML**onder **Eenmalig aanmelden**.
+    ![Informele sectie met een bonus](./media/bonus-tutorial/ic773686.png "Bonusly")
+1. Onder **eenmalige aanmelding**selecteert u **SAML**.
 
-1. Voer op de pagina **SAML** de volgende stappen uit:
+1. Voer de volgende stappen uit op de pagina **SAML** -dialoog vensters:
 
-    ![Bonusly Saml Dialog-pagina](./media/bonus-tutorial/ic773687.png "Bonusly")
+    ![Dialoog pagina voor een bonus SAML](./media/bonus-tutorial/ic773687.png "Bonusly")
 
-    a. Plak in het **url-tekstvak van IdP SSO-doel** de waarde van **de aanmeldings-URL**, die u hebt gekopieerd van azure-portal.
+    a. Plak in het tekstvak **IDP SSO-doel-URL** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
 
-    b. Plak in het tekstvak **URL-login-aanmelding** van IdP de waarde van **de aanmeldings-URL**, die u hebt gekopieerd van azure-portal.
+    b. Plak in het tekstvak **IDP aanmeld-URL** de waarde van de **aanmeldings-URL**die u hebt gekopieerd uit Azure Portal.
 
-    c. Plak in het tekstvak **idp-uitgever** de waarde van **Azure AD-id**, die u hebt gekopieerd van Azure-portal.
+    c. Plak in het tekstvak **IDP-Uitgever** de waarde van de **Azure ad-id**die u van Azure Portal hebt gekopieerd.
     
-    d. Plak de **thumbprint-waarde** die is gekopieerd van azure-portal in het tekstvak **Cert Fingerprint.**
+    d. Plak de waarde van de **vinger afdruk** die is gekopieerd van Azure Portal naar het tekstvak **certificaat vingerafdruk** .
     
     e. Klik op **Opslaan**.
 
@@ -160,7 +160,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -170,23 +170,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Bonusly.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door de toegang tot een bonus te verlenen.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer Vervolgens **Bonus .**
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **bonus**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Bonus .**
+2. Selecteer in de lijst toepassingen de optie **bonus**.
 
-    ![De bonuslink in de lijst Met toepassingen](common/all-applications.png)
+    ![De bonus koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -196,36 +196,36 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-bonusly-test-user"></a>Bonustestgebruiker maken
+### <a name="create-bonusly-test-user"></a>Gebruiker met een bonus test maken
 
-Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Bonusly, moeten ze worden ingericht in Bonusly. In het geval van Bonusly is inrichten een handmatige taak.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij een bonus, moeten ze in een bonus worden ingericht. In het geval van een bonus is het inrichten een hand matige taak.
 
 > [!NOTE]
-> U alle andere tools voor het maken van gebruikersaccounts voor extra gebruikers gebruiken of API's die door Bonusly worden verstrekt om Azure AD-gebruikersaccounts in te richten. 
+> U kunt alle andere hulpprogram ma's voor het maken van een bonus voor gebruikers accounts of Api's van een bonus gebruiken om Azure AD-gebruikers accounts in te richten. 
 
 **Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
 
-1. Meld u in een webbrowservenster aan bij uw Bonusly-tenant.
+1. Meld u in een webbrowser venster aan bij uw bonus Tenant.
 
 1. Klik op **Instellingen**.
 
     ![Instellingen](./media/bonus-tutorial/ic781041.png "Instellingen")
 
-1. Klik op het tabblad **Gebruikers en bonussen.**
+1. Klik op het tabblad **gebruikers en bonussen** .
 
     ![Gebruikers en bonussen](./media/bonus-tutorial/ic781042.png "Gebruikers en bonussen")
 
-1. Klik **op Gebruikers beheren**.
+1. Klik op **gebruikers beheren**.
 
     ![Gebruikers beheren](./media/bonus-tutorial/ic781043.png "Gebruikers beheren")
 
-1. Klik **op Gebruiker toevoegen**.
+1. Klik op **gebruiker toevoegen**.
 
     ![Gebruiker toevoegen](./media/bonus-tutorial/ic781044.png "Gebruiker toevoegen")
 
@@ -233,7 +233,7 @@ Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Bonusly, moete
 
     ![Gebruiker toevoegen](./media/bonus-tutorial/ic781045.png "Gebruiker toevoegen")  
 
-    a. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **Britta.**
+    a. Voer in het tekstvak **voor de voor naam** de voor naam van de gebruiker in, zoals **Julia**.
 
     b. Voer in het tekstvak **Last name** de achternaam van de gebruiker in, zoals **Simon**.
 
@@ -242,18 +242,18 @@ Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Bonusly, moete
     d. Klik op **Opslaan**.
 
     > [!NOTE]
-    > De houder van het Azure AD-account ontvangt een e-mail met een koppeling om het account te bevestigen voordat het actief wordt.  
+    > De houder van het Azure AD-account ontvangt een e-mail bericht met een koppeling om het account te bevestigen voordat het actief wordt.  
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de bonustegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Bonusly waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de bonus tegel in het toegangs venster klikt, wordt u automatisch aangemeld bij de bonus waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met Screencast-O-Matic | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Screencast-O-Matic.
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Screen cast-O-Matic | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en screen cast-O-Matic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,165 +17,165 @@ ms.date: 11/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc887e95b6fa6f8b17fbbb3dbaae5105385a07fa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74132150"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Screencast-O-Matic
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Screen cast-O-Matic
 
-In deze zelfstudie leert u hoe u Screencast-O-Matic integreert met Azure Active Directory (Azure AD). Wanneer u Screencast-O-Matic integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u screen cast-O-Matic integreert met Azure Active Directory (Azure AD). Wanneer u screen cast-O-Matic integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Screencast-O-Matic.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Screencast-O-Matic met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot screen cast-O-Matic.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij screen cast-O-Matic met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Screencast-O-Matic single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Screen cast-O-Matic eenmalige aanmelding (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Screencast-O-Matic ondersteunt **SP** geïnitieerde SSO
-* Screencast-O-Matic ondersteunt **Just In Time** gebruikersinrichting
+* Screen cast-O-Matic ondersteunt door **SP** GEÏNITIEERDe SSO
+* Screen cast-O-Matic ondersteunt **just-in-time** -gebruikers inrichting
 
-## <a name="adding-screencast-o-matic-from-the-gallery"></a>Screencast-O-Matic toevoegen vanuit de galerie
+## <a name="adding-screencast-o-matic-from-the-gallery"></a>Screen cast-O-Matic toevoegen uit de galerie
 
-Als u de integratie van Screencast-O-Matic in Azure AD wilt configureren, moet u Screencast-O-Matic vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van screen cast-O-Matic in azure AD wilt configureren, moet u screen cast-O-Matic van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Screencast-O-Matic** in de sectie **Toevoegen in de galerijsectie** in het zoekvak.
-1. Selecteer **Screencast-O-Matic** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in het gedeelte **toevoegen vanuit de galerie** de tekst **Screen cast-O-Matic** in het zoekvak.
+1. Selecteer **Screen cast-O-Matic** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Azure AD-aanmelding configureren en testen voor Screencast-O-Matic
+## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor screen cast-O-Matic
 
-Azure AD SSO configureren en testen met Screencast-O-Matic met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Screencast-O-Matic.
+Azure AD SSO configureren en testen met Screen cast-O-Matic met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in screen cast-O-Matic.
 
-Als u Azure AD SSO wilt configureren en testen met Screencast-O-Matic, voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met Screen cast-O-Matic, voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Configureer Screencast-O-Matic SSO](#configure-screencast-o-matic-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    * **[Maak Screencast-O-Matic-testgebruiker](#create-screencast-o-matic-test-user)** - om een tegenhanger van B.Simon in Screencast-O-Matic te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Configureer screen cast-O-Matic SSO](#configure-screencast-o-matic-sso)** -om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+    * **[Maak een screen cast-O-Matic-test gebruiker](#create-screencast-o-matic-test-user)** -als u een equivalent van B. Simon wilt hebben in screen cast-O-Matic dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Screencast-O-Matic-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Screen cast-O-Matic-** toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden:
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://screencast-o-matic.com/<InstanceName>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [Screencast-O-Matic Client support team](mailto:support@screencast-o-matic.com) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van screen cast-O-Matic](mailto:support@screencast-o-matic.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer in de sectie **Screencast-O-Matic instellen** de juiste URL(s) op basis van uw vereiste.
+1. Kopieer op de sectie **Screen cast-O-Matic instellen** de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Screencast-O-Matic.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan screen cast-O-Matic.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **Screencast-O-Matic**in de lijst met toepassingen .
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Screen cast-O-Matic**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-## <a name="configure-screencast-o-matic-sso"></a>Screencast-O-Matic SSO configureren
+## <a name="configure-screencast-o-matic-sso"></a>Screen cast-O-Matic SSO configureren
 
-1. Als u de configuratie binnen Screencast-O-Matic wilt automatiseren, moet u **de beveiligingsextensie Mijn apps Secure sign-in** installeren door op **De extensie installeren**te klikken.
+1. Als u de configuratie wilt automatiseren in screen cast-O-Matic, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Extensie Mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Screencast-O-Matic instellen** en verwijst u naar de Screencast-O-Matic-toepassing. Geef van daaruit de beheerdersreferenties op om u aan te melden bij Screencast-O-Matic. De browserextensie configureert automatisch de toepassing voor u en automatiseert stappen 3-11.
+1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Screen cast-o-Matic instellen** wordt u naar de Screen cast-o-Matic-toepassing geleid. Geef de beheerders referenties op om u aan te melden bij screen cast-O-Matic. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-11 geautomatiseerd.
 
-    ![Configuratie instellen](common/setup-sso.png)
+    ![Configuratie van Setup](common/setup-sso.png)
 
-1. Als u Screencast-O-Matic handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij uw bedrijf Screencast-O-Matic en voert u de volgende stappen uit:
+1. Als u screen cast-O-Matic hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw bedrijfs site screen cast-O-Matic als beheerder en voert u de volgende stappen uit:
 
-1. Klik op **Abonnement**.
+1. Klik op **abonnement**.
 
     ![Het abonnement](./media/screencast-tutorial/tutorial_screencast_sub.png)
 
-1. Klik onder sectie **Access-pagina** op **Instellen**.
+1. Klik onder de sectie **toegangs pagina** op **instellen**.
 
     ![De toegang](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
-1. Voer op de **pagina Toegangs instellen**de volgende stappen uit.
+1. Voer de volgende stappen uit op de **pagina toegang instellen**.
 
-1. Typ onder sectie **Access URL** de instantienaam in het opgegeven tekstvak.
+1. Typ in het gedeelte **toegangs-URL** naar INSTANCENAME in het opgegeven tekstvak.
 
     ![De toegang](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-1. Selecteer **Domeingebruiker vereisen** onder de sectie **SAML-gebruikersbeperking (optioneel).**
+1. Selecteer de sectie **domein gebruiker vereisen** onder **SAML-gebruikers beperking (optioneel)** .
 
-1. Klik **onder XML-bestand met IDP-metagegevens uploaden**op **Bestand kiezen** om de metagegevens te uploaden die u hebt gedownload van de Azure-portal.
+1. Klik onder **IDP XML-bestand voor meta gegevens uploaden**op **bestand kiezen** om de meta gegevens te uploaden die u hebt gedownload van Azure Portal.
 
 1. Klik op **OK**.
 
     ![De toegang](./media/screencast-tutorial/tutorial_screencast_save.png)
 
-### <a name="create-screencast-o-matic-test-user"></a>Screencast-O-Matic-testgebruiker maken
+### <a name="create-screencast-o-matic-test-user"></a>Screen cast-O-Matic-test gebruiker maken
 
-In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Screencast-O-Matic. Screencast-O-Matic ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Screencast-O-Matic, wordt er een nieuwe gemaakt na verificatie. Als u handmatig een gebruiker wilt maken, neemt u contact op met [screencast-O-Matic Client support team](mailto:support@screencast-o-matic.com).
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in screen cast-O-Matic. Screen cast-O-Matic ondersteunt just-in-time-gebruikers inrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in screen cast-O-Matic, wordt er een nieuwe gemaakt na verificatie. Als u hand matig een gebruiker moet maken, neemt u contact op met [het ondersteunings team van screen cast-O-Matic](mailto:support@screencast-o-matic.com).
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Screencast-O-Matic in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Screencast-O-Matic waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel screen cast-O-Matic in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Screen cast-O-Matic waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Screencast-O-Matic uitproberen met Azure AD](https://aad.portal.azure.com/)
+- [Probeer screen cast-O-Matic met Azure AD](https://aad.portal.azure.com/)

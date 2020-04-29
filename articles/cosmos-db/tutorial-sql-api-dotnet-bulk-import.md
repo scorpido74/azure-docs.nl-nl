@@ -1,6 +1,6 @@
 ---
-title: Bulkimportgegevens naar Azure Cosmos DB SQL API-account met behulp van de .Net SDK
-description: Meer informatie over het importeren of innemen van gegevens naar Azure Cosmos DB door een .NET-consoletoepassing te bouwen die de ingerichte doorvoer (RU/s) optimaliseert die nodig is voor het importeren van gegevens
+title: Gegevens bulksgewijs importeren naar Azure Cosmos DB SQL-API-account met behulp van de .NET SDK
+description: Meer informatie over het importeren of opnemen van gegevens naar Azure Cosmos DB door het bouwen van een .NET-console toepassing die de ingerichte door Voer (RU/s) optimaliseert die is vereist voor het importeren van gegevens
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
@@ -8,55 +8,55 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77587563"
 ---
-# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Bulkimportgegevens naar Azure Cosmos DB SQL API-account met behulp van de .NET SDK
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Gegevens bulksgewijs importeren naar Azure Cosmos DB SQL-API-account met behulp van de .NET SDK
 
-In deze zelfstudie ziet u hoe u een .NET-consoletoepassing maken die de ingerichte doorvoer (RU/s) optimaliseert die nodig is om gegevens naar Azure Cosmos DB te importeren. In dit artikel leest u gegevens uit een voorbeeldgegevensbron en importeert u deze in een Azure Cosmos-container.
-Deze zelfstudie maakt gebruik van [versie 3.0+](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) van de Azure Cosmos DB .NET SDK, die kan worden gericht op .NET Framework of .NET Core.
+Deze zelf studie laat zien hoe u een .NET-console toepassing bouwt die de ingerichte door Voer (RU/s) optimaliseert die is vereist om gegevens te importeren in Azure Cosmos DB. In dit artikel leest u gegevens uit een voorbeeld gegevens bron en importeert u deze in een Azure Cosmos-container.
+In deze zelf studie wordt [versie 3.0 +](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) van de Azure Cosmos db .NET SDK gebruikt, die kan worden gericht op .NET Framework of .net core.
 
 In deze zelfstudie komt het volgende aan bod:
 
 > [!div class="checklist"]
 > * Een Azure Cosmos-account maken
 > * Uw project configureren
-> * Verbinding maken met een Azure Cosmos-account met ingeschakelde bulkondersteuning
-> * Een gegevensimport uitvoeren via bewerkingen voor gelijktijdige maken
+> * Verbinding maken met een Azure Cosmos-account waarvoor bulk ondersteuning is ingeschakeld
+> * Een gegevens import uitvoeren met gelijktijdige bewerkingen voor maken
 
 ## <a name="prerequisites"></a>Vereisten
 
-Controleer voordat u de instructies in dit artikel volgt, dat u de volgende bronnen hebt:
+Voordat u de instructies in dit artikel volgt, moet u ervoor zorgen dat u over de volgende resources beschikt:
 
-* Een actief Azure-account. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+* Een actief Azure-account. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). U controleren welke versie beschikbaar `dotnet --version`is in uw omgeving door.
+* [Net Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). U kunt controleren welke versie beschikbaar is in uw omgeving door uit `dotnet --version`te voeren.
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Stap 1: een Azure Cosmos DB-account maken
 
-[Maak een Azure Cosmos DB SQL API-account](create-cosmosdb-resources-portal.md) vanaf de Azure-portal of u het account maken met behulp van de [Azure Cosmos DB Emulator.](local-emulator.md)
+[Maak een Azure Cosmos DB SQL-API-account](create-cosmosdb-resources-portal.md) van de Azure portal of u kunt het account maken met behulp van de [Azure Cosmos DB emulator](local-emulator.md).
 
-## <a name="step-2-set-up-your-net-project"></a>Stap 2: Uw .NET-project instellen
+## <a name="step-2-set-up-your-net-project"></a>Stap 2: uw .NET-project instellen
 
-Open de opdrachtprompt van Windows of een Terminal-venster vanaf uw lokale computer. U voert alle opdrachten in de volgende secties uit vanaf de opdrachtprompt of terminal. Voer de volgende dotnet nieuwe opdracht uit om een nieuwe app te maken met de naam *bulk-import-demo*. De `--langVersion` parameter stelt de eigenschap *LangVersion* in in het gemaakte projectbestand.
+Open de Windows-opdracht prompt of een Terminal venster op de lokale computer. Alle opdrachten in de volgende secties worden uitgevoerd vanaf de opdracht prompt of Terminal. Voer de volgende DotNet-nieuwe opdracht uit om een nieuwe app te maken met de naam *bulksgewijs importeren-demo*. Met `--langVersion` de para meter wordt de eigenschap *LangVersion* in het gemaakte project bestand ingesteld.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
    ```
 
-Wijzig uw map in de nieuw gemaakte app-map. U de toepassing bouwen met:
+Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
 
    ```bash
    cd bulk-import-demo
    dotnet build
    ```
 
-De verwachte output van de build moet er ongeveer zo uitzien:
+De verwachte uitvoer van de build moet er ongeveer als volgt uitzien:
 
    ```bash
    Restore completed in 100.37 ms for C:\Users\user1\Downloads\CosmosDB_Samples\bulk-import-demo\bulk-import-demo.csproj.
@@ -69,29 +69,29 @@ De verwachte output van de build moet er ongeveer zo uitzien:
    Time Elapsed 00:00:34.17
    ```
 
-## <a name="step-3-add-the-azure-cosmos-db-package"></a>Stap 3: Het Azure Cosmos DB-pakket toevoegen
+## <a name="step-3-add-the-azure-cosmos-db-package"></a>Stap 3: het Azure Cosmos DB-pakket toevoegen
 
-Installeer de Azure Cosmos DB-clientbibliotheek voor .NET Core met behulp van de opdracht Dotnet add package terwijl u zich nog in de toepassingsmap bevindt.
+Terwijl u nog steeds in de toepassingsmap, installeert u de Azure Cosmos DB-client bibliotheek voor .NET core met behulp van de DotNet opdracht add package.
 
    ```bash
    dotnet add package Microsoft.Azure.Cosmos
    ```
 
-## <a name="step-4-get-your-azure-cosmos-account-credentials"></a>Stap 4: Uw Azure Cosmos-accountreferenties ophalen
+## <a name="step-4-get-your-azure-cosmos-account-credentials"></a>Stap 4: de referenties van uw Azure Cosmos-account ophalen
 
-De voorbeeldtoepassing moet worden geverifieerd naar uw Azure Cosmos-account. Als u wilt verifiëren, moet u de azure cosmos-accountreferenties doorgeven aan de toepassing. Haal uw Azure Cosmos-accountreferenties op door de volgende stappen te volgen:
+De voorbeeld toepassing moet worden geverifieerd bij uw Azure Cosmos-account. Als u zich wilt verifiëren, moet u de referenties van het Azure Cosmos-account door geven aan de toepassing. U kunt de referenties van uw Azure Cosmos-account ophalen door de volgende stappen uit te voeren:
 
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1.  Navigeer naar uw Azure Cosmos-account.
-1.  Open het deelvenster **Sleutels** en kopieer de **URI-** en **primaire sleutel** van uw account.
+1.  Open het deel venster **sleutels** en kopieer de **URI** en de **primaire sleutel** van uw account.
 
-Als u de Azure Cosmos DB Emulator gebruikt, u de [emulatorreferenties uit dit artikel](local-emulator.md#authenticating-requests)verkrijgen.
+Als u de Azure Cosmos DB-emulator gebruikt, haalt u de [emulator-referenties op uit dit artikel](local-emulator.md#authenticating-requests).
 
-## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>Stap 5: Het Object CosmosClient initialiseren met ondersteuning voor bulkuitvoering
+## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>Stap 5: Initialiseer het CosmosClient-object met ondersteuning voor bulk uitvoering
 
-Open het `Program.cs` gegenereerde bestand in een codeeditor. U maakt een nieuw exemplaar van CosmosClient met bulkuitvoering ingeschakeld en gebruikt deze om bewerkingen uit te voeren tegen Azure Cosmos DB. 
+Open het gegenereerde `Program.cs` bestand in een code-editor. U maakt een nieuw exemplaar van CosmosClient waarvoor bulk uitvoering is ingeschakeld en die het gebruikt om bewerkingen uit te voeren op basis van Azure Cosmos DB. 
 
-Laten we beginnen met het `Main` overschrijven van de standaardmethode en het definiëren van de globale variabelen. Deze globale variabelen omvatten het eindpunt en de autorisatiesleutels, de naam van de database, de container die u maakt en het aantal items dat u in bulk invoegt. Zorg ervoor dat u de eindpunt- en autorisatiesleutelwaarden vervangt op basis van uw omgeving. 
+Laten we beginnen met het overschrijven van de `Main` standaard methode en het definiëren van de globale variabelen. Deze globale variabelen bevatten de eind punt-en autorisatie sleutels, de naam van de data base, de container die u gaat maken en het aantal items dat u in bulk wilt invoegen. Zorg ervoor dat u de endpointURL-en autorisatie sleutel waarden vervangt volgens uw omgeving. 
 
 
    ```csharp
@@ -118,63 +118,63 @@ Laten we beginnen met het `Main` overschrijven van de standaardmethode en het de
    }
    ```
 
-Voeg `Main` in de methode de volgende code toe om het object CosmosClient te initialiseren:
+Voeg in `Main` de-methode de volgende code toe om het CosmosClient-object te initialiseren:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
 
-Nadat de bulkuitvoering is ingeschakeld, groepeert de CosmosClient gelijktijdige bewerkingen intern in afzonderlijke serviceoproepen. Op deze manier optimaliseert het doorvoergebruik door serviceoproepen over partities te distribueren en uiteindelijk individuele resultaten toe te wijzen aan de oorspronkelijke bellers.
+Nadat de bulk uitvoering is ingeschakeld, worden in de CosmosClient intern gelijktijdige bewerkingen in enkele service aanroepen gegroepeerd. Op deze manier optimaliseert het het gebruik van de door Voer om service aanroepen over partities te verdelen en uiteindelijk afzonderlijke resultaten toe te wijzen aan de oorspronkelijke bellers.
 
-U dan een container maken om al onze artikelen op te slaan.  Definieer `/pk` als de partitiesleutel, 50000 RU/s als ingerichte doorvoer en een aangepast indexeringsbeleid dat alle velden uitsluit om de schrijfdoorvoer te optimaliseren. Voeg de volgende code toe na de initialisatie-instructie CosmosClient:
+U kunt vervolgens een container maken om al onze items op te slaan.  Definieer `/pk` als de partitie sleutel, 50000 ru/s als ingerichte door Voer en een aangepast indexerings beleid waarmee alle velden worden uitgesloten voor het optimaliseren van de schrijf doorvoer. Voeg de volgende code toe na de CosmosClient-initialisatie-instructie:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
 
-## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>Stap 6: Een lijst met gelijktijdige taken invullen
+## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>Stap 6: een lijst met gelijktijdige taken vullen
 
-Als u wilt profiteren van de ondersteuning voor bulkuitvoering, maakt u een lijst met asynchrone taken op basis van de bron van gegevens en de bewerkingen die u wilt uitvoeren, en gebruikt u `Task.WhenAll` deze om deze gelijktijdig uit te voeren.
-Laten we beginnen met het gebruik van "Bogus" gegevens om een lijst van items uit ons gegevensmodel te genereren. In een real-world applicatie, zouden de items afkomstig zijn van uw gewenste gegevensbron.
+Als u de ondersteuning voor bulk uitvoering wilt benutten, maakt u een lijst met asynchrone taken op basis van de gegevens bron en de bewerkingen die u wilt uitvoeren `Task.WhenAll` , en gebruikt u deze om ze gelijktijdig uit te voeren.
+Laten we beginnen met ' loze ' gegevens om een lijst met items van ons gegevens model te genereren. In een echte toepassing zijn de items afkomstig uit de gewenste gegevens bron.
 
-Voeg eerst het Bogus-pakket toe aan de oplossing met behulp van de opdracht dotnet add package.
+Voeg eerst het loze pakket toe aan de oplossing met behulp van de DotNet opdracht add package.
 
    ```bash
    dotnet add package Bogus
    ```
 
-Definieer de definitie van de items die u wilt opslaan. U moet de `Item` klasse `Program.cs` in het bestand definiëren:
+Definieer de definitie van de items die u wilt opslaan. U moet de `Item` klasse in het `Program.cs` bestand definiëren:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
 
-Maak vervolgens een helperfunctie `Program` in de klasse. Deze helperfunctie krijgt het aantal items dat u hebt gedefinieerd om willekeurige gegevens in te voegen en genereert:
+Maak vervolgens een hulp functie binnen de `Program` klasse. Met deze hulp functie wordt het aantal items opgehaald dat u hebt gedefinieerd om wille keurige gegevens te plaatsen en te genereren:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Lees de items en serialiseren ze in `System.Text.Json` stream exemplaren met behulp van de klasse. Vanwege de aard van de automatisch gegenereerde gegevens, bent u serialiseren van de gegevens als stromen. U de item-instantie ook rechtstreeks gebruiken, maar door deze te converteren naar streams, u gebruikmaken van de prestaties van stream-API's in de CosmosClient. Meestal u de gegevens direct gebruiken zolang u de partitiesleutel kent. 
+Lees de items en serialisatie deze naar stream-instanties met behulp van de `System.Text.Json` -klasse. Vanwege de aard van de automatisch gegenereerde gegevens, moet u de gegevens serialiseren als stromen. U kunt het item exemplaar ook rechtstreeks gebruiken, maar door ze te converteren naar stromen, kunt u gebruikmaken van de prestaties van stream-Api's in de CosmosClient. Normaal gesp roken kunt u de gegevens rechtstreeks gebruiken zolang u de partitie sleutel kent. 
 
 
-Als u de gegevens wilt `Main` converteren naar het streamen van instanties, voegt u binnen de methode de volgende code toe direct na het maken van de container:
+Als u de gegevens wilt converteren naar stream-exemplaren `Main` , voegt u in de-methode de volgende code toe nadat u de container hebt gemaakt:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-Vervolgens gebruikt u de gegevensstromen om gelijktijdige taken te maken en de takenlijst in te vullen om de items in de container in te voegen. Als u deze bewerking wilt uitvoeren, voegt u de volgende code toe aan de `Program` klasse:
+Gebruik vervolgens de gegevens stromen om gelijktijdige taken te maken en de taken lijst in te vullen om de items in de container in te voegen. Als u deze bewerking wilt uitvoeren, voegt u de volgende `Program` code toe aan de klasse:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 
-Al deze gelijktijdige puntbewerkingen worden samen uitgevoerd (dat is in bulk) zoals beschreven in de inleidingssectie.
+Al deze gelijktijdige punt bewerkingen worden samen uitgevoerd (dat is in bulk), zoals beschreven in de sectie Inleiding.
 
-## <a name="step-7-run-the-sample"></a>Stap 7: Het voorbeeld uitvoeren
+## <a name="step-7-run-the-sample"></a>Stap 7: het voor beeld uitvoeren
 
-Om het voorbeeld uit te voeren, kunt `dotnet` u het eenvoudig doen met de opdracht:
+Als u het voor beeld wilt uitvoeren, kunt u dit gewoon doen met `dotnet` de opdracht:
 
    ```bash
    dotnet run
    ```
 
-## <a name="get-the-complete-sample"></a>Download het volledige voorbeeld
+## <a name="get-the-complete-sample"></a>Het volledige voor beeld ophalen
 
-Als je geen tijd hebt om de stappen in deze zelfstudie te voltooien, of gewoon de codevoorbeelden wilt downloaden, kun je deze krijgen van [GitHub.](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer)
+Als u geen tijd hebt gehad om de stappen in deze zelf studie uit te voeren of als u alleen de code voorbeelden wilt downloaden, kunt u deze ophalen van [github](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer).
 
-Zorg ervoor dat u na het klonen van het project de gewenste referenties binnen [Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25)bijwerkt.
+Nadat u het project hebt gekloond, moet u ervoor zorgen dat u de gewenste referenties in [Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25)bijwerkt.
 
-Het voorbeeld kan worden uitgevoerd door te `dotnet`wijzigen in de repository directory en met behulp van:
+Het voor beeld kan worden uitgevoerd door naar de map opslag plaats te `dotnet`overschakelen en te gebruiken:
 
    ```bash
    cd cosmos-dotnet-bulk-import-throughput-optimizer
@@ -183,15 +183,15 @@ Het voorbeeld kan worden uitgevoerd door te `dotnet`wijzigen in de repository di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u de volgende stappen uitgevoerd:
+In deze zelf studie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
 > * Een Azure Cosmos-account maken
 > * Uw project configureren
-> * Verbinding maken met een Azure Cosmos-account met ingeschakelde bulkondersteuning
-> * Een gegevensimport uitvoeren via bewerkingen voor gelijktijdige maken
+> * Verbinding maken met een Azure Cosmos-account waarvoor bulk ondersteuning is ingeschakeld
+> * Een gegevens import uitvoeren met gelijktijdige bewerkingen voor maken
 
-U nu verder gaan naar de volgende zelfstudie:
+U kunt nu door gaan met de volgende zelf studie:
 
 > [!div class="nextstepaction"]
 >[Query's uitvoeren in Azure Cosmos DB met behulp van de SQL-API](tutorial-query-sql-api.md)

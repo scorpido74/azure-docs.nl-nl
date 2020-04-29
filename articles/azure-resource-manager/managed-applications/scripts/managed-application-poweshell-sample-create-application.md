@@ -1,16 +1,16 @@
 ---
-title: Voorbeeld van Azure PowerShell-script - Een beheerde toepassing implementeren
-description: Biedt een voorbeeld van Azure PowerShell-voorbeeld dat een beheerde toepassingsdefinitie implementeert in het abonnement.
+title: Voor beeld van Azure PowerShell-script-een beheerde toepassing implementeren
+description: Biedt Azure PowerShell voorbeeld script voor het implementeren van een definitie van een beheerde toepassing op het abonnement.
 author: tfitzmac
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650168"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Een beheerde toepassing implementeren voor een servicecatalogus met Azure PowerShell

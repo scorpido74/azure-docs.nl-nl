@@ -1,15 +1,15 @@
 ---
-title: Voorbeeldprojecten
-description: Biedt een overzicht van voorbeeldprojecten die beschikbaar zijn voor Azure Managed Applications.
+title: Voorbeeld projecten
+description: Hierin wordt een overzicht gegeven van de voorbeeld projecten die beschikbaar zijn voor Azure Managed Applications.
 author: tfitzmac
 ms.topic: sample
 ms.date: 09/04/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7c04f5d78f742eda70e71d9bee9ce4482c48f0f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650049"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Voorbeeldprojecten voor met Azure beheerde toepassingen

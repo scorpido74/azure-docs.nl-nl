@@ -1,22 +1,22 @@
 ---
-title: 'Patroon: veldeigenschappen in een beleidsdefinitie'
-description: Dit Azure-beleidspatroon geeft een voorbeeld van het gebruik van veldeigenschappen in een beleidsdefinitie.
+title: 'Patroon: veld eigenschappen in een beleids definitie'
+description: Dit Azure Policy patroon bevat een voor beeld van het gebruik van veld eigenschappen in een beleids definitie.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: e65767dd9cbe7b2192c21f779643289e5a7fc45e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77172861"
 ---
-# <a name="azure-policy-pattern-field-properties"></a>Azure-beleidspatroon: veldeigenschappen
+# <a name="azure-policy-pattern-field-properties"></a>Azure Policy patroon: veld eigenschappen
 
-De [veldoperator](../concepts/definition-structure.md#fields) evalueert de opgegeven eigenschap of [alias](../concepts/definition-structure.md#aliases) naar een opgegeven waarde voor een bepaalde [voorwaarde](../concepts/definition-structure.md#conditions).
+De [veld](../concepts/definition-structure.md#fields) operator evalueert de opgegeven eigenschap of [alias](../concepts/definition-structure.md#aliases) naar een opgegeven waarde voor een bepaalde [voor waarde](../concepts/definition-structure.md#conditions).
 
-## <a name="sample-policy-definition"></a>Voorbeeldbeleidsdefinitie
+## <a name="sample-policy-definition"></a>Voor beeld van beleids definitie
 
-Met deze beleidsdefinitie u toegestane regio's definiëren die voldoen aan de geolocatievereisten van uw organisatie. De toegestane resources worden gedefinieerd in **parameterlijstAllowedLocations** _(array)._ Resources die overeenkomen met de definitie [worden geweigerd](../concepts/effects.md#deny).
+Met deze beleids definitie kunt u toegestane regio's definiëren die voldoen aan de geografische locatie vereisten van uw organisatie. De toegestane resources worden gedefinieerd in de para meter **listOfAllowedLocations** (_matrix_). Resources die overeenkomen met de definitie, worden [geweigerd](../concepts/effects.md#deny).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json":::
 
@@ -24,13 +24,13 @@ Met deze beleidsdefinitie u toegestane regio's definiëren die voldoen aan de ge
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json" range="18-36" highlight="3,7,11":::
 
-De **veldoperator** wordt drie keer gebruikt binnen de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf**.
+De **veld** operator wordt drie keer gebruikt binnen de [logische operator](../concepts/definition-structure.md#logical-operators) **overzet**.
 
-- Het eerste gebruik `location` evalueert de eigenschap met de **voorwaarde nietIn** aan de parameter **listOfAllowedLocations.** **notIn** werkt zoals het verwacht een _array_ en de parameter is een _array_. Als `location` de van de gemaakte of bijgewerkte resource niet in de goedgekeurde lijst staat, wordt dit element geëvalueerd in true.
-- Het tweede gebruik evalueert ook de `location` eigenschap, maar gebruikt de voorwaarde **notEquals** om te zien of de resource _globaal_is. Als `location` de van de gemaakte of bijgewerkte resource niet _globaal_is, wordt dit element geëvalueerd in true.
-- Het laatste gebruik `type` evalueert de eigenschap en gebruikt de **voorwaarde notEquals** om het resourcetype te valideren, niet _Microsoft.AzureActiveDirectory/b2cDirectories_. Als dit niet het geval is, wordt dit element geëvalueerd.
+- Het eerste gebruik evalueert de `location` eigenschap met de **notIn** -voor waarde naar de para meter **listOfAllowedLocations** . **notIn** werkt zoals verwacht een _matrix_ en de para meter is een _matrix_. Als de `location` van de gemaakte of bijgewerkte resource zich niet in de goedgekeurde lijst bevindt, resulteert dit element in waar.
+- Met het tweede gebruik wordt ook de `location` eigenschap geëvalueerd, maar wordt de **notEquals** -voor waarde gebruikt om te zien of de resource _globaal_is. Als het `location` van de gemaakte of bijgewerkte resource niet _globaal_is, resulteert dit element in waar.
+- Met het laatste gebruik wordt de `type` eigenschap geëvalueerd en de **notEquals** -voor waarde voor het valideren van het resource type is niet _micro soft. AzureActiveDirectory/b2cDirectories_. Als dat niet het geval is, resulteert dit element in waar.
 
-Als alle drie de voorwaardeverklaringen in de logische operator **allOf** true evalueren, wordt het maken of bijwerken van de resource geblokkeerd door Azure Policy.
+Als alle drie voorwaarde-instructies in de logische operator **overzet** de waarde True evalueren, wordt het maken of bijwerken van de resource geblokkeerd door Azure Policy.
 
 ## <a name="next-steps"></a>Volgende stappen
 

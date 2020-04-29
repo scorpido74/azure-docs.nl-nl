@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met AppBlade | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met AppBlade | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en AppBlade.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f7085841a9d2bdb0be11c62d2b19bd3a39cf4915
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73152851"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Zelfstudie: Azure Active Directory-integratie met AppBlade
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Zelf studie: integratie Azure Active Directory met AppBlade
 
 In deze zelfstudie leert u hoe u AppBlade integreert met Azure AD (Azure Active Directory).
 De integratie van AppBlade met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van AppBlade met Azure AD heeft de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -138,7 +138,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -148,12 +148,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -175,15 +175,15 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van Azure-een
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-appblade-test-user"></a>AppBlade-testgebruiker maken
 
-Het doel van deze sectie is om in de AppBlade een gebruiker met de naam Britta Simon te maken. AppBlade biedt ondersteuning voor Just-In-Time-inrichting. Dit is standaard ingeschakeld. **Zorg ervoor dat uw domeinnaam is geconfigureerd met AppBlade voor gebruikersinrichting. Daarna werkt alleen de just-in-time gebruikersinrichting.**
+Het doel van deze sectie is om in de AppBlade een gebruiker met de naam Britta Simon te maken. AppBlade biedt ondersteuning voor Just-In-Time-inrichting. Dit is standaard ingeschakeld. **Zorg ervoor dat uw domein naam is geconfigureerd met AppBlade voor het inrichten van gebruikers. Daarna werkt alleen de just-in-time-gebruikers inrichting.**
 
 Als de gebruiker een e-mailadres heeft dat eindigt op het domein dat is geconfigureerd met AppBlade voor uw account, is deze gebruiker automatisch lid van het account met het door u opgegeven machtigingsniveau. Dit niveau kan zijn: Basic (een gebruiker die alleen toepassingen kan installeren), Teamlid (een gebruiker die nieuwe app-versies kan uploaden en projecten kan beheren), of Beheerder (een gebruiker met volledige beheerdersbevoegdheden voor het account). U wordt geadviseerd om Basic te kiezen en het niveau voor gebruikers vervolgens handmatig te verhogen via een beheerdersaanmelding. (In AppBlade moet vooraf een beheerdersaanmelding worden geconfigureerd, of na de aanmelding moet het niveau van een gebruiker namens de klant worden verhoogd.)
 
@@ -202,6 +202,6 @@ Wanneer u op de tegel AppBlade in het toegangsvenster klikt, wordt u automatisch
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

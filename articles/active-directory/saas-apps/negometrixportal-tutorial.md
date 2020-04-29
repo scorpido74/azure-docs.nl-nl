@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met NegometrixPortal Single Sign On (SSO) | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en NegometrixPortal Single Sign On (SSO).
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met NegometrixPortal single sign on (SSO) | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en NegometrixPortal single sign on (SSO).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,143 +17,143 @@ ms.date: 11/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97cc8e4a69155dcce402d34d3d1afba18f74d60e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74085455"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-negometrixportal-single-sign-on-sso"></a>Zelfstudie: SSO-integratie (Single Sign-on) van Azure Active Directory met NegometrixPortal Single Sign On (SSO)
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-negometrixportal-single-sign-on-sso"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met NegometrixPortal single sign on (SSO)
 
-In deze zelfstudie leert u hoe u NegometrixPortal Single Sign On (SSO) integreert met Azure Active Directory (Azure AD). Wanneer u NegometrixPortal Single Sign On (SSO) integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u NegometrixPortal single sign on (SSO) integreert met Azure Active Directory (Azure AD). Wanneer u NegometrixPortal single sign on (SSO) integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot NegometrixPortal Single Sign On (SSO).
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij NegometrixPortal Single Sign On (SSO) met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot NegometrixPortal single sign on (SSO).
+* Stel uw gebruikers in staat om automatisch te worden aangemeld voor NegometrixPortal single sign on (SSO) met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* NegometrixPortal Single Sign On (SSO) single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* NegometrixPortal eenmalige aanmelding (SSO) abonnement voor eenmalig aanmelden (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* NegometrixPortal Single Sign On (SSO) ondersteunt **SP** geïnitieerde SSO
+* NegometrixPortal eenmalige aanmelding (SSO) ondersteunt door **SP** GEÏNITIEERDe SSO
 
 > [!NOTE]
-> Id van deze toepassing is een vaste tekenreekswaarde, zodat slechts één instantie in één tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
-## <a name="adding-negometrixportal-single-sign-on-sso-from-the-gallery"></a>NegometrixPortal Single Sign On (SSO) toevoegen vanuit de galerie
+## <a name="adding-negometrixportal-single-sign-on-sso-from-the-gallery"></a>NegometrixPortal eenmalige aanmelding (SSO) toevoegen vanuit de galerie
 
-Als u de integratie van NegometrixPortal Single Sign On (SSO) in Azure AD wilt configureren, moet u NegometrixPortal Single Sign On (SSO) vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van NegometrixPortal single sign on (SSO) wilt configureren in azure AD, moet u NegometrixPortal single sign on (SSO) toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **NegometrixPortal Single Sign On (SSO)** in de sectie **Toevoegen vanuit de galerie** in het zoekvak.
-1. Selecteer **NegometrixPortal Single Sign On (SSO)** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **NegometrixPortal single sign on (SSO)** in het zoekvak.
+1. Selecteer **NegometrixPortal single sign on (SSO)** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-negometrixportal-single-sign-on-sso"></a>Azure AD-eenmaligaanmelding configureren en testen voor Eenmalige aanmelding van NegometrixPortal (SSO)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-negometrixportal-single-sign-on-sso"></a>Eenmalige aanmelding van Azure AD configureren en testen voor NegometrixPortal single sign on (SSO)
 
-Azure AD SSO configureren en testen met NegometrixPortal Single Sign On (SSO) met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in NegometrixPortal Single Sign On (SSO).
+Azure AD SSO configureren en testen met NegometrixPortal single sign on (SSO) met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in NegometrixPortal single sign on (SSO).
 
-Als u Azure AD SSO wilt configureren en testen met NegometrixPortal Single Sign On (SSO), voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met NegometrixPortal single sign on (SSO), voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[NegometrixPortal Single Sign On (SSO) SSO](#configure-negometrixportal-single-sign-on-sso-sso)** configureren - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    * **[NegometrixPortal Single Sign On (SSO) testgebruiker](#create-negometrixportal-single-sign-on-sso-test-user)** maken - om een tegenhanger van B.Simon in NegometrixPortal Single Sign On (SSO) te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[NegometrixPortal eenmalige aanmelding (SSO) SSO configureren](#configure-negometrixportal-single-sign-on-sso-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een NegometrixPortal-test gebruiker (SSO) voor eenmalige aanmelding](#create-negometrixportal-single-sign-on-sso-test-user)** . deze heeft een equivalent van B. Simon in NegometrixPortal single sign on (SSO) dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **SSO-toepassingsintegratie (NegometrixPortal)** de sectie **Beheren** en selecteer **eenmalige aanmelding.**
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de NegometrixPortal-toepassings integratie pagina voor **eenmalige aanmelding (SSO)** , zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden:
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://portal.negometrix.com/sso/<CUSTOMURL>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [negometrixPortal Single Sign On (SSO) Client support team](mailto:sander.hoek@negometrix.com) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van NegometrixPortal single sign on (SSO)](mailto:sander.hoek@negometrix.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. NegometrixPortal Single Sign On (SSO) applicatie verwacht dat de SAML beweringen in een specifieke indeling, die vereist dat u aangepaste attribuut toewijzingen toe te voegen aan uw SAML token attributen configuratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. De NegometrixPortal-toepassing voor eenmalige aanmelding (SSO) verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. Naast bovenstaande, NegometrixPortal Single Sign On (SSO) applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
+1. De NegometrixPortal-toepassing voor eenmalige aanmelding (SSO) verwacht slechts enkele kenmerken te worden door gegeven in een SAML-respons die hieronder wordt weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------------|  --------- |
-    | Upn | user.userprincipalname |
+    | UPN | user.userprincipalname |
 
-1. Klik op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op de knop Kopiëren om **de url van de appfederatie-metagegevens** te kopiëren en op uw computer op te slaan.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot NegometrixPortal Single Sign On (SSO).
+In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen aan NegometrixPortal single sign on (SSO).
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **NegometrixPortal Single Sign On (SSO)** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **NegometrixPortal single sign on (SSO)**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-## <a name="configure-negometrixportal-single-sign-on-sso-sso"></a>NegometrixPortal Single Sign On (SSO) SSO configureren
+## <a name="configure-negometrixportal-single-sign-on-sso-sso"></a>Eenmalige aanmelding (SSO) NegometrixPortal configureren
 
-Als u de single sign-on op **de SSO-kant (NegometrixPortal Single Sign On)** wilt configureren, moet u de url van de **app-federatie metagegevens** naar [het Ondersteuningsteam voor eenmalig aanmelden (NegometrixPortal)](mailto:sander.hoek@negometrix.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **NegometrixPortal single sign on (SSO)** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [NegometrixPortal ondersteunings team voor eenmalige aanmelding (SSO)](mailto:sander.hoek@negometrix.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-negometrixportal-single-sign-on-sso-test-user"></a>NegometrixPortal Single Sign On (SSO) testgebruiker maken
+### <a name="create-negometrixportal-single-sign-on-sso-test-user"></a>NegometrixPortal-test gebruiker voor eenmalige aanmelding (SSO) maken
 
-In deze sectie maakt u een gebruiker genaamd B.Simon in NegometrixPortal Single Sign On (SSO). Werk samen met [het Ondersteuningsteam van NegometrixPortal Single Sign On (SSO)](mailto:sander.hoek@negometrix.com) om de gebruikers toe te voegen aan het NegometrixPortal Single Sign On (SSO) platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in NegometrixPortal single sign on (SSO). Werk met het [ondersteunings team voor NegometrixPortal single sign on (SSO)](mailto:sander.hoek@negometrix.com) om de gebruikers toe te voegen aan het SSO-platform (NegometrixPortal single sign on). Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de SSO-tegel (NegometrixPortal Single Sign On) (SSO) klikt in het toegangspaneel, moet u automatisch worden aangemeld bij de NegometrixPortal Single Sign On (SSO) waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel NegometrixPortal single sign on (SSO) in het toegangs venster klikt, moet u automatisch worden aangemeld bij de NegometrixPortal single sign on (SSO) waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer NegometrixPortal Single Sign On (SSO) met Azure AD](https://aad.portal.azure.com/)
+- [Probeer NegometrixPortal eenmalige aanmelding (SSO) met Azure AD](https://aad.portal.azure.com/)

@@ -1,5 +1,5 @@
 ---
-title: Toegang tot Azure Storage met een beheerde identiteit met Windows VM-systeem | Microsoft Documenten
+title: Toegang tot Azure Storage via een door het Windows-VM-systeem toegewezen beheerde identiteit | Microsoft Docs
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75971964"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage
@@ -60,7 +60,7 @@ In deze sectie maakt u een opslagaccount.
 3. Geef onder **Naam** een naam voor het opslagaccount op.
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op **Resource Manager** en **Storage (algemeen gebruik v1)**.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik **op Maken**.
+6. Klik op **maken**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -82,12 +82,12 @@ Voor bestanden is blobopslag nodig, dus moeten we een blobcontainer maken waarin
 
 ### <a name="grant-access"></a>Toegang verlenen
 
-In deze sectie ziet u hoe u uw VM-toegang verleent tot een Azure Storage-container. U kunt de door het systeem toegewezen beheerde identiteit van de virtuele machine gebruiken om de gegevens in de Azure Storage-blob op te halen.
+In deze sectie wordt beschreven hoe u uw VM toegang verleent tot een Azure Storage-container. U kunt de door het systeem toegewezen beheerde identiteit van de virtuele machine gebruiken om de gegevens in de Azure Storage-blob op te halen.
 
 1. Navigeer terug naar het zojuist gemaakte opslagaccount.
 2. Klik op de koppeling **Toegangsbeheer (IAM)** in het linkerpaneel.
-3. Klik **op + Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor uw vm toe te voegen.
-4. Selecteer **onder Rol**in de vervolgkeuzelijst De optie **Opslagblob-gegevenslezer**.
+3. Klik op **+ roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor uw virtuele machine toe te voegen.
+4. Selecteer onder **rol**in de vervolg keuzelijst **Storage BLOB data Reader**.
 5. In de volgende vervolgkeuzelijst, onder **Toegang toewijzen aan**, kiest u **Virtuele machine**.
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op **Alle resourcegroepen**.
 7. Kies onder **Selecteren** uw virtuele machine en klik vervolgens op **Opslaan**.
@@ -98,7 +98,7 @@ In deze sectie ziet u hoe u uw VM-toegang verleent tot een Azure Storage-contain
 
 Azure Storage biedt systeemeigen ondersteuning voor Microsoft Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van een beheerde identiteit direct kunnen worden geaccepteerd. Dit maakt deel uit van de integratie van Azure Storage met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
-Hier vindt u een voorbeeld van een .NET-code van het openen van een verbinding met Azure Storage met behulp van een toegangstoken en vervolgens het lezen van de inhoud van het bestand dat u eerder hebt gemaakt. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de beheerde identiteit van de virtuele machine. .NET Framework 4.6 of hoger is vereist om de methode voor toegangstoken te gebruiken. Vervang de waarde van `<URI to blob file>` dienovereenkomstig. U kunt deze waarde verkrijgen door te navigeren naar het bestand dat u hebt gemaakt en geüpload naar de blobopslag en de **URL** onder **Eigenschappen** op de pagina **Overzicht** te kopiëren.
+Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met Azure Storage met behulp van een toegangs token en het lezen van de inhoud van het bestand dat u eerder hebt gemaakt. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de beheerde identiteit van de virtuele machine. .NET Framework 4,6 of hoger is vereist voor het gebruik van de methode voor toegangs tokens. Vervang de waarde van `<URI to blob file>` dienovereenkomstig. U kunt deze waarde verkrijgen door te navigeren naar het bestand dat u hebt gemaakt en geüpload naar de blobopslag en de **URL** onder **Eigenschappen** op de pagina **Overzicht** te kopiëren.
 
 ```csharp
 using System;

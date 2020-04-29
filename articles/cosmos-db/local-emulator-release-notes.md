@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos Emulator download en release notes Azure Cosmos Emulator download en release notes Azure Cosmos Emulator download en release notes Azure Cosmos
-description: Download de Azure Cosmos emulator release notes voor verschillende versies en download informatie.
+title: Azure Cosmos-emulator downloaden en release-opmerkingen
+description: Down load de release opmerkingen voor de Azure Cosmos-emulator voor verschillende versies en down load gegevens.
 ms.service: cosmos-db
 ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
 ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77168654"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - Notities vrijgeven en informatie downloaden
+# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator-opmerkingen bij de release en informatie over downloaden
 
-In dit artikel ziet u de azure cosmos-releasenotities met een lijst met functie-updates die in elke release zijn gemaakt. Het bevat ook de nieuwste versie van emulator te downloaden en te gebruiken.
+Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een lijst met onderdeel updates die zijn gemaakt in elke release. Ook wordt de meest recente versie van de emulator weer gegeven die u kunt downloaden en gebruiken.
 
 ## <a name="download"></a>Download
 
@@ -28,30 +28,30 @@ In dit artikel ziet u de azure cosmos-releasenotities met een lijst met functie-
 
 ### <a name="291"></a>2.9.1
 
-- Deze release lost enkele problemen in de query-API-ondersteuning op en herstelt de compatibiliteit met oudere bes.
+- Deze release corrigeert problemen in de query-API en herstelt de compatibiliteit met oudere OSs, zoals Windows Server 2012.
 
 ### <a name="290"></a>2.9.0
 
-- In deze versie wordt de optie toegevoegd om de consistentie in te stellen op consistent voorvoegsel en de maximale limieten voor gebruikers en machtigingen te verhogen.
+- Deze release voegt de optie toe om de consistentie in te stellen op consistent voor voegsel en verg root de maximum limieten voor gebruikers en machtigingen.
 
 ### <a name="272"></a>2.7.2
 
-- Deze release voegt MongoDB versie 3.6 server ondersteuning toe aan de Cosmos Emulator. Als u een MongoDB-eindpunt wilt starten dat is gericht op versie 3.6 van de service, start u de emulator vanaf een opdrachtregel administrator met de optie "/EnableMongoDBEndpoint=3.6".
+- Deze release voegt MongoDB versie 3,6-server ondersteuning toe aan de Cosmos-emulator. Als u een MongoDB-eind punt met de doel versie 3,6 van de service wilt starten, start u de emulator vanaf een opdracht regel van de beheerder met de optie '/EnableMongoDBEndpoint = 3.6 '.
 
 ### <a name="270"></a>2.7.0
 
-- Deze release lost een regressie op waardoor gebruikers geen query's konden uitvoeren op het SQL API-account van de emulator wanneer ze .NET-kern- of x86.NET-gebaseerde clients gebruiken.
+- Deze release corrigeert een regressie waarmee wordt voor komen dat gebruikers query's uitvoeren op het SQL-API-account van de emulator bij gebruik van .NET core-of x86 .NET-clients.
 
 ### <a name="246"></a>2.4.6
 
-- Deze release biedt pariteit met de functies in de Azure Cosmos-service vanaf juli 2019, met de uitzonderingen die zijn vermeld in [Lokaal ontwikkelen met Azure Cosmos-emulator](local-emulator.md). Het lost ook verschillende bugs met betrekking tot emulator shutdown wanneer aangeroepen via command line en interne IP-adres overschrijvingen voor SDK-clients met behulp van directe modus connectiviteit.
+- Deze release biedt pariteit met de functies van de Azure Cosmos-service vanaf juli 2019, met de uitzonde ringen die worden vermeld in [lokaal ontwikkelen met de Azure Cosmos-emulator](local-emulator.md). Daarnaast worden verschillende fouten met betrekking tot het afsluiten van de emulator opgelost wanneer deze via de opdracht regel en het interne IP-adres worden overschreven voor SDK-clients die gebruikmaken van de directe modus connectiviteit.
 
 ### <a name="243"></a>2.4.3
 
-- Standaard uitgeschakeld bij het starten van de MongoDB-service. Alleen het SQL-eindpunt is standaard ingeschakeld. De gebruiker moet het eindpunt handmatig starten met de opdrachtregeloptie "/EnableMongoDbEndpoint". Nu, het is net als alle andere service eindpunten, zoals Gremlin, Cassandra, en Table.
-- Fixed a bug in the emulator when starting with "/AllowNetworkAccess" where the Gremlin, Cassandra, and Table endpoints waren not properly handling requests from external clients.
-- Voeg directe verbindingspoorten toe aan de instellingen voor firewallregels.
+- Standaard het starten van de MongoDB-service is uitgeschakeld. Alleen het SQL-eind punt is standaard ingeschakeld. De gebruiker moet het eind punt hand matig starten met de opdracht regel optie '/EnableMongoDbEndpoint ' van de emulator. Nu ziet u alle andere service-eind punten, zoals Gremlin, Cassandra en Table.
+- Er is een fout opgelost in de emulator tijdens het starten met '/AllowNetworkAccess ', waarbij de Gremlin, Cassandra en Table-eind punten geen aanvragen van externe clients goed kunnen verwerken.
+- Voeg directe verbindings poorten toe aan de instellingen van de firewall regels.
 
 ### <a name="240"></a>2.4.0
 
-- Fixed an issue with emulator not to start when network monitoring apps, such as Pulse Client, are present on the host computer.
+- Er is een probleem opgelost waarbij een emulator niet kan worden gestart wanneer netwerk bewaking-apps, zoals pulse-client, aanwezig zijn op de hostcomputer.

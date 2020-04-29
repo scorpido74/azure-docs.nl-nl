@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Adobe Experience Manager | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Adobe Experience Manager | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Adobe Experience Manager configureert.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f39751f40b32c5da24e13d75d2607d7da0a57ad3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73154114"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Zelfstudie: Azure Active Directory-integratie met Adobe Experience Manager
+# <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Zelf studie: integratie Azure Active Directory met Adobe Experience Manager
 
 In deze zelfstudie leert u hoe u Adobe Experience Manager integreert met Azure Active Directory (Azure AD).
 De integratie van Adobe Experience Manager met Azure AD heeft de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van Adobe Experience Manager met Azure AD heeft de volgende voorde
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -104,7 +104,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
+4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
 
     ![Gegevens van domein en URL's voor eenmalige aanmelding van Adobe Experience Manager](common/idp-intiated.png)
 
@@ -139,7 +139,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 1. Open in een ander browservenster de beheerportal van **Adobe Experience Manager**.
 
-2. Selecteer**Gebruikers**van > **instellingenbeveiliging** > . **Settings**
+2. Selecteer **instellingen** > **beveiligings** > **gebruikers**.
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
@@ -147,7 +147,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
-4. Selecteer **Accountinstellingen** > **TrustStore beheren**.
+4. Selecteer **account instellingen** > **TrustStore beheren**.
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
@@ -163,11 +163,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
-8. Selecteer **Accountinstellingen** > **Sleutelarchief maken/beheren**. Maak een KeyStore door een wachtwoord op te geven.
+8. Selecteer **account instellingen** > de optie voor het**maken/beheren**van de opslag. Maak een KeyStore door een wachtwoord op te geven.
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
-9. Ga terug naar het beginscherm. Selecteer vervolgens Operations**Web** > **Console** **instellingen** > .
+9. Ga terug naar het beginscherm. Selecteer vervolgens **instellingen** > **Operations** > **web console**.
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
@@ -211,7 +211,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -221,12 +221,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -248,9 +248,9 @@ In dit gedeelte geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -258,7 +258,7 @@ In dit gedeelte geeft u Britta Simon de mogelijkheid om eenmalige aanmelding van
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon in Adobe Experience Manager. Als u de optie **Autocreate CRX Users** hebt geselecteerd, worden gebruikers automatisch gemaakt na een geslaagde verificatie.
 
-Als u gebruikers handmatig wilt maken, werkt u samen met het [ondersteuningsteam](https://helpx.adobe.com/support/experience-manager.html) van Adobe Experience Manager om de gebruikers toe te voegen in het Adobe Experience Manager-platform.
+Als u gebruikers hand matig wilt maken, gebruikt u het [ondersteunings team van Adobe Experience Manager](https://helpx.adobe.com/support/experience-manager.html)om de gebruikers toe te voegen aan het Adobe Experience Manager-platform.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -270,6 +270,6 @@ Wanneer u in het toegangsvenster op de tegel Adobe Experience Manager klikt, wor
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

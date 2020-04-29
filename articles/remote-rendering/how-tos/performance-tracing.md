@@ -1,132 +1,132 @@
 ---
-title: Prestatiesporen aan clientzijde maken
-description: Aanbevolen procedures voor prestatieprofilering aan de clientzijde met WPF
+title: Prestatietracering aan de clientzijde maken
+description: Aanbevolen procedures voor het profileren van prestaties aan client zijde met WPF
 author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681309"
 ---
-# <a name="create-client-side-performance-traces"></a>Prestatiesporen aan clientzijde maken
+# <a name="create-client-side-performance-traces"></a>Prestatietracering aan de clientzijde maken
 
-Er zijn vele redenen waarom de prestaties van Azure Remote Rendering mogelijk niet zo goed zijn als gewenst. Naast pure rendering prestaties op de cloud server, vooral de kwaliteit van de netwerkverbinding heeft een aanzienlijke invloed op de ervaring. Als u de prestaties van de server wilt profileren, raadpleegt u [prestatiequery's aan de serverzijde](../overview/features/performance-queries.md)van het hoofdstuk .
+Er zijn verschillende redenen waarom de prestaties van de externe rendering van Azure niet zo goed mogelijk zijn. Afgezien van de zuivere rendering-prestaties op de Cloud Server, met name de kwaliteit van de netwerk verbinding, heeft dit een grote invloed op de ervaring. Als u de prestaties van de server wilt profileren, raadpleegt u de hoofd stukken voor [prestatie query's](../overview/features/performance-queries.md)op de server.
 
-Dit hoofdstuk richt zich op het identificeren van potentiële knelpunten aan de klantzijde door middel *van prestatiesporen.*
+Dit hoofd stuk richt zich op het identificeren van mogelijke knel punten aan de client zijde via *prestatie traceringen*.
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u nieuw bent in de Windows-functionaliteit voor het traceren van prestaties, worden in dit gedeelte de meest fundamentele termen en toepassingen vermeld om u op weg te helpen.
+Als u geen ervaring hebt met de functionaliteit voor het traceren van Windows-prestaties, wordt in deze sectie de meest fundamentele voor waarden en toepassingen vermeld om u op weg te helpen.
 
-### <a name="installation"></a>Installeren
+### <a name="installation"></a>Installatie
 
-De toepassingen die worden gebruikt om tracering te doen met ARR zijn tools voor algemeen gebruik die kunnen worden gebruikt voor alle Windows-ontwikkeling. Ze worden geleverd via de [Windows Performance Toolkit.](https://docs.microsoft.com/windows-hardware/test/wpt/) Download de [Windows Assessment and Deployment Kit](https://docs.microsoft.com/windows-hardware/get-started/adk-install)om deze toolkit te downloaden.
+De toepassingen die worden gebruikt voor tracering met ARR zijn hulpprogram ma's voor algemeen gebruik die kunnen worden gebruikt voor alle Windows-ontwikkel aars. Ze worden via de [Windows-prestatie Toolkit](https://docs.microsoft.com/windows-hardware/test/wpt/)verschaft. Als u deze Toolkit wilt downloaden, downloadt u de [Windows Assessment and Deployment Kit](https://docs.microsoft.com/windows-hardware/get-started/adk-install).
 
 ### <a name="terminology"></a>Terminologie
 
-Bij het zoeken naar informatie over prestatiesporen, zult u onvermijdelijk komen over een scala van termen. De belangrijkste zijn:
+Wanneer u zoekt naar informatie over prestatie traceringen, zult u onvermijdelijk over een reeks voor waarden komen. De belangrijkste zijn:
 
 * `ETW`
 * `ETL`
 * `WPR`
 * `WPA`
 
-**ETW** staat voor [ **E**vent **T**racing voor **W**indows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Het is gewoon de overkoepelende naam voor de efficiënte kernel-level tracing faciliteit die is ingebouwd in Windows. Het wordt *event* tracing genoemd, omdat toepassingen die ETW ondersteunen gebeurtenissen uitzenden om acties te registreren die kunnen helpen om prestatieproblemen op te sporen. Standaard zendt het besturingssysteem al gebeurtenissen uit voor zaken als schijftoegangen, taakswitches en dergelijke. Toepassingen zoals ARR zenden bovendien aangepaste gebeurtenissen uit, bijvoorbeeld over gedropte frames, netwerklag etc.
+**Etw** staat voor [ **E**ventilator **T**-race voor **W**Windows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Het is gewoon de naam van de overkoepelend voor de efficiënte tracering faciliteit op kernelniveau die is ingebouwd in Windows. Het wordt *gebeurtenis* tracering genoemd, omdat toepassingen die ondersteuning bieden voor etw, gebeurtenissen kunnen verzenden naar logboek acties die kunnen helpen bij het volgen van prestatie problemen. Standaard verzendt het besturings systeem al gebeurtenissen voor zaken als schijf toegang, taak switches en dergelijke. Toepassingen zoals ARR verzenden bovendien aangepaste gebeurtenissen, bijvoorbeeld het geval van verwijderde frames, netwerk vertraging, enzovoort.
 
-**ETL** staat voor **E**vent **T**race **L**ogging. Het betekent gewoon dat een spoor is verzameld (ingelogd) en wordt daarom meestal gebruikt als de bestandsextensie voor bestanden die de traceringsgegevens opslaan. Dus als je een trace maakt, \*heb je meestal achteraf een .etl-bestand.
+**ETL** staat voor **E**ventilator **T**race **L**ogging. Dit betekent gewoon dat een tracering is verzameld (vastgelegd) en wordt daarom doorgaans gebruikt als de bestands extensie voor bestanden die de tracerings gegevens opslaan. Als u een tracering volgt, hebt u meestal een \*ETL-bestand.
 
-**WPR** staat voor [ **W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) en is de naam van de applicatie die de registratie van gebeurtenissporen start en stopt. WPR neemt een\*profielbestand (.wprp) dat configureert welke exacte gebeurtenissen moeten worden logboeken. Een `wprp` dergelijk bestand is voorzien van de ARR SDK. Wanneer u sporen op een desktop-pc doet, u WPR rechtstreeks starten. Wanneer u een trace op de HoloLens doet, gaat u meestal via de webinterface.
+De **aanvraag staat voor** [ **W**Windows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) en is de naam van de toepassing die de registratie van gebeurtenis traceringen start en stopt. Voor het aanmeldingen wordt\*een profiel bestand (. wprp) gebruikt dat de exacte gebeurtenissen configureert die moeten worden geregistreerd. Een `wprp` dergelijk bestand wordt meegeleverd met de ARR-SDK. Bij het uitvoeren van traceringen op een desktop computer, kunt u direct op de slag starten. Wanneer u een tracering op de HoloLens uitvoert, gaat u doorgaans door de webinterface.
 
-**WPA** staat voor [ **W**indows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) en is \*de naam van de GUI-toepassing die wordt gebruikt om .etl-bestanden te openen en de gegevens te doorzoeken om prestatieproblemen te identificeren. Met WPA u gegevens sorteren op verschillende criteria, de gegevens op verschillende manieren weergeven, in details graven en informatie correleren.
+**WPA** staat voor [ **W**Windows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) en is de naam van de GUI-toepassing die wordt gebruikt voor \*het openen van. etl-bestanden en SIFT door de gegevens om prestatie problemen te identificeren. Met WPA kunt u gegevens sorteren op verschillende criteria, de gegevens op verschillende manieren weer geven, meer informatie bekijken en gegevens correleren.
 
-Hoewel ETL-sporen kunnen worden gemaakt op elk Windows-apparaat (lokale pc, HoloLens, cloudserver, enz.), worden ze meestal opgeslagen op schijf en geanalyseerd met WPA op een desktop-pc. ETL-bestanden kunnen worden verzonden naar andere ontwikkelaars voor hen om een kijkje te nemen. Houd er rekening mee dat gevoelige informatie, zoals bestandspaden en IP-adressen, kan worden vastgelegd in ETL-sporen. U ETW op twee manieren gebruiken: om sporen op te nemen of om sporen te analyseren. Het opnemen van sporen is rechttoe rechtaan en vereist een minimale setup. Het analyseren van sporen aan de andere kant vereist een fatsoenlijk begrip van zowel de WPA tool en het probleem dat u onderzoekt. Algemeen materiaal voor het leren van WPA zal hieronder worden gegeven, evenals richtlijnen voor het interpreteren van ARR-specifieke sporen.
+U kunt ETL-traceringen maken op elk Windows-apparaat (lokale PC, HoloLens, Cloud Server, enzovoort), ze worden meestal opgeslagen op schijf en geanalyseerd met WPA op een desktop-PC. ETL-bestanden kunnen naar andere ontwikkel aars worden verzonden om ze te laten zien. Houd er rekening mee dat gevoelige informatie, zoals bestands paden en IP-adressen, in ETL-traceringen kan worden vastgelegd. U kunt ETW op twee manieren gebruiken: voor het vastleggen van traceringen of voor het analyseren van traceringen. Registratie traceringen zijn recht vooruit en vereisen een minimale installatie. Voor het analyseren van traceringen voor de andere kant is een goede uitleg vereist van zowel het WPA-hulp programma als het probleem dat u onderzoekt. Algemeen materiaal voor Learning WPA vindt u hieronder en richt lijnen voor het interpreteren van ARR-specifieke traceringen.
 
-## <a name="recording-a-trace-on-a-local-pc"></a>Een trace opnemen op een lokale pc
+## <a name="recording-a-trace-on-a-local-pc"></a>Een tracering op een lokale computer vastleggen
 
-Om ARR-prestatieproblemen te identificeren, moet u liever rechtstreeks een trace op een HoloLens doen, want dat is de enige manier om een momentopname van de werkelijke prestatiekenmerken te krijgen. Als u echter specifiek een spoor wilt maken zonder de HoloLens-prestatiebeperkingen of als u gewoon wilt leren hoe u WPA moet gebruiken en geen realistisch spoor nodig hebt, u dit als geen realistisch onderzoek uitvoeren.
+Als u problemen met ARR-prestaties wilt identificeren, kunt u het beste rechtstreeks op een HoloLens volgen, omdat dit de enige manier is om een moment opname van de werkelijke prestatie kenmerken te verkrijgen. Als u echter specifiek een tracering wilt uitvoeren zonder de prestatie beperkingen van HoloLens of als u wilt weten hoe u WPA kunt gebruiken en geen realistische tracering nodig hebt, kunt u dit ook doen.
 
-### <a name="wpr-configuration"></a>WPR-configuratie
+### <a name="wpr-configuration"></a>Configuratie van de aanaan
 
-1. Start de [Windows Performance Recorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) in het *startmenu.*
+1. Start de [Windows-prestatie recorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) vanuit het *menu Start*.
 1. **Meer opties** uitbreiden
-1. Klik **op Profielen toevoegen...**
-1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling.wprp*. U dit bestand vinden in de ARR SDK onder *Extra/ETLProfiles*.
-   Het profiel wordt nu vermeld in WPR onder *Aangepaste metingen*. Zorg ervoor dat dit het enige ingeschakelde profiel is.
-1. Uitbreiden *Eerste niveau triage:*
-    * Als u alleen maar een snel spoor van de ARR-netwerkgebeurtenissen wilt vastleggen, schakelt u deze optie **uit.**
-    * Als u ARR-netwerkgebeurtenissen moet correleren met andere systeemkenmerken, zoals CPU- of geheugengebruik, schakelt u deze optie **in.**
-    * Als u deze optie inschakelt, zal het spoor waarschijnlijk meerdere gigabytes groot zijn en duurt het lang om op te slaan en te openen in WPA.
+1. Klik op **profielen toevoegen...**
+1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling. wprp*. U kunt dit bestand vinden in de ARR SDK onder *tools/ETLProfiles*.
+   Het profiel wordt nu weer gegeven in de lijst met *maat eenheden onder Aangepaste metingen*. Zorg ervoor dat dit het enige ingeschakelde profiel is.
+1. Sorteren van het *eerste niveau*uitvouwen:
+    * Als u alleen een snelle tracering van de ARR-netwerk gebeurtenissen wilt vastleggen, schakelt u deze optie **uit** .
+    * Schakel deze optie **in** als u ARR-netwerk gebeurtenissen moet correleren met andere systeem kenmerken, zoals CPU of geheugen gebruik.
+    * Als u deze optie inschakelt, is de tracering waarschijnlijk meerdere gigabytes groot en kan het lang duren om op te slaan en te openen in WPA.
 
-Daarna moet uw WPR-configuratie er als volgt uitzien:
+Daarna moet de configuratie van uw aangaan eruitzien als volgt:
 
-![WPR-configuratie](./media/wpr.png)
+![Configuratie van de aanaan](./media/wpr.png)
 
 ### <a name="recording"></a>Opnemen
 
-Klik **op Start** om een trace op te nemen. U de opname op elk gewenst moment starten en stoppen; u hoeft uw aanvraag niet te sluiten voordat u dit doet. Zoals u zien hoeft u niet aan te geven welke toepassing moet worden getraceerd, omdat ETW altijd een trace voor het hele systeem registreert. Het `wprp` bestand geeft aan welke typen gebeurtenissen moeten worden geregistreerd.
+Klik op **starten** om het vastleggen van een tracering te starten. U kunt de opname op elk gewenst moment starten en stoppen. u hoeft uw toepassing niet te sluiten voordat u dit doet. Zoals u kunt zien, is het niet nodig om op te geven welke toepassing moet worden getraceerd, omdat ETW altijd een tracering vastlegt voor het hele systeem. In `wprp` het bestand wordt opgegeven welke typen gebeurtenissen moeten worden vastgelegd.
 
-Klik **op Opslaan** om de opname te stoppen en geef op waar het ETL-bestand moet worden opgeslagen.
+Klik op **Opslaan** om de opname te stoppen en op te geven waar het ETL-bestand moet worden opgeslagen.
 
-U hebt nu een ETL-bestand dat u rechtstreeks in WPA openen of naar iemand anders verzenden.
+U hebt nu een ETL-bestand dat u rechtstreeks kunt openen in WPA of naar iemand anders wilt verzenden.
 
-## <a name="recording-a-trace-on-a-hololens"></a>Een spoor opnemen op een HoloLens
+## <a name="recording-a-trace-on-a-hololens"></a>Een tracering op een HoloLens vastleggen
 
-Als u een trace op een HoloLens wilt opnemen, start u het apparaat op en voert u het IP-adres in een browser in om de Apparaatportal te *openen.*
+Als u een tracering op een HoloLens wilt vastleggen, start u uw apparaat op en voert u het IP-adres in een browser in om de portal van het *apparaat*te openen.
 
-![Apparaatportal](./media/wpr-hl.png)
+![Portal voor apparaten](./media/wpr-hl.png)
 
-1. Navigeer aan de linkerkant naar *Prestaties > Prestatietracering*.
-1. **Aangepaste profielen selecteren**
-1. Klik **op Bladeren...**
-1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling.wprp*. U dit bestand vinden in de ARR SDK onder *Extra/ETLProfiles*.
-1. Klik **op Traceerstarten**
-1. De HoloLens is nu bezig met het opnemen van een spoor. Zorg ervoor dat u de prestatieproblemen activeert die u wilt onderzoeken. Klik vervolgens op **Trace stoppen.**
-1. Het spoor wordt onderaan de webpagina weergegeven. Klik op het schijfpictogram aan de rechterkant om het ETL-bestand te downloaden.
+1. Ga aan de linkerkant naar *prestaties > prestatie tracering*.
+1. **Aangepaste profielen** selecteren
+1. Klik op **Bladeren...**
+1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling. wprp*. U kunt dit bestand vinden in de ARR SDK onder *tools/ETLProfiles*.
+1. Klik op **Tracering starten**
+1. De HoloLens is nu bezig met het vastleggen van een tracering. Zorg ervoor dat de prestatie problemen die u wilt onderzoeken, worden geactiveerd. Klik vervolgens op **tracering stoppen**.
+1. De tracering wordt weer gegeven aan de onderkant van de webpagina. Klik aan de rechter kant op het schijf pictogram om het ETL-bestand te downloaden.
 
-U hebt nu een ETL-bestand dat u rechtstreeks in WPA openen of naar iemand anders verzenden.
+U hebt nu een ETL-bestand dat u rechtstreeks kunt openen in WPA of naar iemand anders wilt verzenden.
 
-## <a name="analyzing-traces-with-wpa"></a>Traceersporen analyseren met WPA
+## <a name="analyzing-traces-with-wpa"></a>Traceringen analyseren met WPA
 
-### <a name="wpa-basics"></a>WPA-basisprincipes
+### <a name="wpa-basics"></a>Basis beginselen van WPA
 
-Windows Performance Analyzer is de standaardtool om ETL-bestanden te openen en de sporen te inspecteren. Een uitleg hoe WPA werkt is buiten het bereik van dit artikel. Om aan de slag te gaan, bekijk deze bronnen:
+Windows Performance Analyzer is het standaard programma voor het openen van ETL-bestanden en het controleren van de traceringen. Een uitleg hoe WPA werkt buiten het bereik van dit artikel. Bekijk de volgende bronnen om aan de slag te gaan:
 
-* Bekijk de [introductievideo's](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) voor een eerste overzicht.
-* WPA zelf heeft een *tabblad Aan de slag,* waarin algemene stappen worden uitgelegd. Bekijk de beschikbare onderwerpen. Vooral onder "Gegevens bekijken" krijg je een snelle introductie hoe je grafieken maakt voor specifieke gegevens.
-* Er is uitstekende informatie [op deze website,](https://randomascii.wordpress.com/2015/09/24/etw-central/)echter, niet alles is relevant voor beginners.
+* Bekijk de [inleidende Video's](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) voor een eerste overzicht.
+* WPA zelf bevat een tabblad *aan de slag* , waarin algemene stappen worden uitgelegd. Bekijk de beschik bare onderwerpen. Met name bij ' gegevens weer geven ' krijgt u een snelle inleiding hoe u grafieken voor specifieke gegevens kunt maken.
+* Er is een uitstekende informatie [over deze website](https://randomascii.wordpress.com/2015/09/24/etw-central/), maar dit is niet alle relevant voor beginners.
 
-### <a name="graphing-data"></a>Grafiekgegevens
+### <a name="graphing-data"></a>Grafiek gegevens
 
-Om te beginnen met ARR tracing, de volgende stukken zijn goed om te weten.
+Om aan de slag te gaan met ARR-tracering zijn de volgende onderdelen goed te weten.
 
-![Prestatiegrafiek](./media/wpa-graph.png)
+![Prestatie grafiek](./media/wpa-graph.png)
 
-De afbeelding hierboven toont een tabel met traceringsgegevens en een grafiekweergave van dezelfde gegevens.
+In de bovenstaande afbeelding ziet u een tabel met tracerings gegevens en een grafiek weergave van dezelfde gegevens.
 
-Let in de tabel onderaan op de gele (gouden) balk en de blauwe balk. U deze balken slepen en op elke positie plaatsen.
+Kijk in de tabel aan de onderkant van de gele (gouden) balk en de blauwe balk. U kunt deze balken slepen en op elke positie plaatsen.
 
-Alle **kolommen links van de gele balk** worden geïnterpreteerd als **toetsen**. Toetsen worden gebruikt om de structuur van de boom in de linkerbovenhoek venster. Hier hebben we twee *belangrijke* kolommen, "Provider Naam" en "Taak naam". Bijgevolg is de boomstructuur in het venster linksboven twee niveaus diep. Als u de volgorde van de kolommen wijzigt of kolommen toevoegt of verwijdert uit het sleutelgebied, verandert de structuur in de structuurweergave.
+Alle **kolommen links van de gele balk** worden als **sleutels**geïnterpreteerd. Sleutels worden gebruikt om de structuur te structureren in het venster linksboven. Hier ziet u twee *belang rijke* kolommen: ' provider naam ' en ' taak naam '. De boom structuur in het venster linksboven is dus twee niveaus dieper. Als u de volg orde van de kolommen of het toevoegen of verwijderen van kolommen uit het sleutel gebied wijzigt, wordt de structuur in de structuur weergave gewijzigd.
 
-**Kolommen rechtsonder van de blauwe balk** worden gebruikt voor de **grafiekweergave** in het venster rechtsboven. Meestal wordt alleen de eerste kolom gebruikt, maar voor sommige grafiekmodi zijn meerdere kolommen met gegevens vereist. Als lijngrafieken werken, moet de *aggregatiemodus* op die kolom worden ingesteld. Gebruik 'Avg' of 'Max'. De aggregatiemodus wordt gebruikt om de waarde van de grafiek op een bepaalde pixel te bepalen, wanneer een pixel een bereik met meerdere gebeurtenissen bestrijkt. Dit kan worden waargenomen door aggregatie in te stellen op 'Som' en vervolgens in en uit te zoomen.
+**Kolommen aan de rechter kant van de blauwe balk** worden gebruikt voor de **grafiek weergave** in het venster rechtsboven. De meeste tijd wordt alleen de eerste kolom gebruikt, maar voor sommige grafiek modi zijn meerdere kolommen met gegevens vereist. Lijn grafieken werkt alleen als de *aggregatie modus* voor die kolom is ingesteld. Gebruik ' AVG ' of ' Max '. De aggregatie modus wordt gebruikt om de waarde van de grafiek te bepalen op basis van een pixel, wanneer een pixel een bereik met meerdere gebeurtenissen bedekt. Dit kan worden waargenomen door aggregatie in te stellen op Sum en vervolgens in en uit te zoomen.
 
 De kolommen in het midden hebben geen speciale betekenis.
 
-![Weergave gebeurtenissen](./media/wpa-event-view.png)
+![Weer gave gebeurtenissen](./media/wpa-event-view.png)
 
-In de *Editor voor de weergave algemene gebeurtenissen* u alle kolommen configureren die moeten worden weergegeven, de aggregatiemodus, sorteren en welke kolommen worden gebruikt als toetsen of voor grafieken. In het bovenstaande voorbeeld is **Veld 2** ingeschakeld en veld 3 - 6 uitgeschakeld. Veld 2 is meestal het eerste *aangepaste gegevensveld* van een ETW-gebeurtenis en dus voor ARR-gebeurtenissen voor "FrameStatistics", die een aantal netwerklatentiewaarde vertegenwoordigen. Andere kolommen 'Veld' inschakelen om verdere waarden van deze gebeurtenis te zien.
+In de *algemene gebeurtenissen weergave-editor* kunt u alle kolommen configureren die worden weer gegeven, de samenvoegings modus, sorteren en welke kolommen worden gebruikt als sleutels of voor het maken van grafieken. In het bovenstaande voor beeld is **veld 2** ingeschakeld en wordt veld 3-6 uitgeschakeld. Veld 2 is doorgaans het eerste *aangepaste gegevens* veld van een etw-gebeurtenis en dus voor ARR "FrameStatistics"-gebeurtenissen, die een bepaalde netwerk latentie waarde vertegenwoordigen. Andere veld kolommen inschakelen om verdere waarden van deze gebeurtenis weer te geven.
 
-### <a name="presets"></a>Voorinstellingen
+### <a name="presets"></a>Stations
 
-Om een trace goed te analyseren, moet u uw eigen workflow en voorkeursgegevensweergeven achterhalen. Om echter snel een overzicht te krijgen van de ARR-specifieke gebeurtenissen, nemen we het profiel van het Windows Software Protection Platform en voorinstellingen in de map *Tools/ETLProfiles*op. Als u een volledig profiel wilt laden, selecteert u *Profielen > Toepassen...* in de WPA-menubalk of opent u het deelvenster *Mijn voorinstellingen* *(Venster > Mijn voorinstellingen)* en selecteert *u Importeren*. De eerste zal het opzetten van een volledige WPA configuratie zoals in de afbeelding hieronder. Deze laatste maakt alleen presets voor de verschillende weergaveconfiguraties beschikbaar en stelt u in staat om snel een weergave te openen om een specifiek stuk ARR-gebeurtenisgegevens te bekijken.
+Als u een tracering correct wilt analyseren, moet u uw eigen werk stroom en de voor keur voor de gegevens weergave ervan bepalen. Als u echter een snel overzicht wilt krijgen van de ARR-specifieke gebeurtenissen, bevatten we Windows Software Protection platform profiel en voor instellingen bestanden in de map *tools/ETLProfiles*. Als u een volledig profiel wilt laden, selecteert u *profielen > Toep assen...* via de menu balk van WPA of opent u het deel venster *mijn voor instellingen* (*venster > mijn voor*keuren) en selecteert u *importeren*. Met de eerste wordt een volledige WPA-configuratie ingesteld, zoals in de onderstaande afbeelding. Er worden alleen voor instellingen gemaakt voor de verschillende weergave configuraties die beschikbaar zijn en u kunt snel een weer gave openen om een specifiek stukje gebeurtenis gegevens te bekijken.
 
-![Voorinstellingen](./media/wpa-arr-trace.png)
+![Stations](./media/wpa-arr-trace.png)
 
-De afbeelding hierboven toont weergaven van verschillende ARR-specifieke gebeurtenissen plus een weergave van het totale CPU-gebruik.
+In de bovenstaande afbeelding ziet u weer gaven van verschillende ARR-specifieke gebeurtenissen plus een weer gave van het totale CPU-gebruik.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Prestatiequery's aan de serverzijde](../overview/features/performance-queries.md)
+* [Prestatiequery's aan serverzijde](../overview/features/performance-queries.md)

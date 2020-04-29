@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Gebruikers toegang verlenen tot Azure-bronnen met RBAC en de Azure-portal '
-description: Lees in deze zelfstudie hoe u een gebruiker toegang verleent tot Azure-bronnen met behulp van RBAC (Role-based access control) in de Azure-portal.
+title: 'Zelf studie: gebruikers toegang verlenen tot Azure-resources met RBAC en de Azure Portal '
+description: In deze zelf studie leert u hoe u een gebruiker toegang verleent tot Azure-resources met behulp van op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,13 +14,13 @@ ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
 ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77138098"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zelfstudie: Een gebruiker toegang verlenen tot Azure-bronnen met RBAC en de Azure-portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal
 
 [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in een resourcegroep.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * Toegang voor een gebruiker toewijzen op het niveau van een resourcegroep
 > * Toegang intrekken
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -68,7 +68,7 @@ In RBAC verleent u toegang door een roltoewijzing te maken.
 
    ![De blade Toegangsbeheer (IAM) voor een resourcegroep](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. Klik **op** > **Roltoewijzing toevoegen toevoegen** om het deelvenster Roltoewijzing toevoegen te openen.
+1. Klik op**toewijzing van roltoewijzing** toevoegen om het deel venster roltoewijzing toevoegen te openen. **Add** > 
 
    Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie Roltoewijzing toevoegen uitgeschakeld.
 
@@ -115,4 +115,4 @@ Als u in RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijz
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een gebruiker toegang verlenen tot Azure-bronnen met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md)
